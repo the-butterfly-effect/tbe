@@ -1,0 +1,15 @@
+RATIONALE BEHIND THE 3rdParty DIRECTORY
+=======================================
+
+The 3rdParty directory contains libraries and other parts that are
+required for building The Butterfly Effect and are not usually 
+available on systems - or where versioning is important.
+
+
+ode    -    http://opende.sourceforge.net/
+Many distributions do not ship this library, and/or are shipping
+outdated or malfunctioning versions. The Butterfly Effect links
+statically against the library - and does not use features like
+drawstuff.
+
+
