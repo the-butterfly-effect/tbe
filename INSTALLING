@@ -8,15 +8,16 @@ How to build:
 1)
 Make sure that you have all tools & libraries installed that you need.
 These include:
-  * gcc
-  * qt        (which must be QT version 4.4 or higher)
-  * qt-devel
-
+  * gcc, glibc-devel, make
+  * autoconf, automake
+  * libqt4        (which must be QT version 4.4 or higher)
+  * libqt4-devel
+  * probably a significant of dependencies of the above
 
 2)
 build everything in 3rdParty:
  - make -C 3rdParty
-
+(don't worry, this will be integrated into the make of step 3 at some point)
 
 3)
 build the main project
@@ -25,4 +26,3 @@ build the main project
 
 
 That's it for now!
-  
