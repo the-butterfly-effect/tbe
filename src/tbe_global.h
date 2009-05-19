@@ -37,7 +37,6 @@
 #include <stdio.h>
 #include <time.h>
 extern int theVerbosity;	// actually defined in main.cpp
-extern int thePPPVerbosity;
 #define MAX_VERBOSITY 6
 // note: the below is actually GCC-specific, see "info:/gcc/Variadic Macros"
 #define DEBUG1(format, ...)	{if (theVerbosity>=1) printf("##P1 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
