@@ -1,6 +1,12 @@
 ROADMAP FOR THE BUTTERFLY EFFECT
 ================================
 
+MISSING (i.e. still have to be added to the below milestones)
+  * persistency (popup warnings, settings, user progress)
+  * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
+  * right-mouse button to adjust properties (e.g. trapdoor threshold)
+
+
 Milestone 1 - Bowling for Butterflies
 Version 0.10
 Features:
@@ -12,8 +18,8 @@ Features:
     speeds up, runs over a horizontal part and kicks over the pin
     which flies away
   * MainWindow displays and the above simulation is shown
-    in the GraphicsView
-  * Start button works
+    in the GraphicsView using circles and rectangles
+  * Start button works, stop button works, reset button works.
 NOT PLAYABLE
 
 
@@ -55,6 +61,8 @@ FIRST PLAYABLE (but probably very dumb looking)
 Milestone 5 - It's make over time!
 Version 0.50
   * add images & animation
+    - make decision about how to do scaling
+  * zooming
   * implement more objects
     - penguin, herring
     - granite block
@@ -71,7 +79,8 @@ Version 0.60
   * rope
   * skyhooks
   * wheel
-  * block hooks
+  * block hooks so you can tie a block to a rope
+  * balloons
   * add corresponding more levels
   * Windows version
 
