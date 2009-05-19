@@ -1,0 +1,96 @@
+ROADMAP FOR THE BUTTERFLY EFFECT
+================================
+
+Milestone 1 - Bowling for Butterflies
+Version 0.10
+Features:
+  * Object model implemented, OpenDE implemented
+  * Implemented modelling for:
+    - Ramp, Floor
+    - BowlingBall, BowlingPin
+  * Hardcoded level, where the bowling ball falls on the ramp
+    speeds up, runs over a horizontal part and kicks over the pin
+    which flies away
+  * MainWindow displays and the above simulation is shown
+    in the GraphicsView
+  * Start button works
+NOT PLAYABLE
+
+
+Milestone 2 - Levelling the Lands
+Version 0.20
+Features:
+  * write two Levels in XML by hand
+    - one of them is the above simple bowling
+    - the other one is a more complex level with multiple floors
+  * Implement level class and parse XML file to objects
+  * menu File>Open works
+  * automated regression tests for XML parser/world builder
+  * automated regression tests for Ball&Ramp
+NOT PLAYABLE
+
+Milestone 3 - Dragging along
+Version 0.30
+Features:
+  * implement Drag&Drop from toolchest to GraphicsView
+  * implement moving of objects within GraphicsView
+  * Allow saving of view into XML File
+  * implement post-its
+  * i18n
+NOT PLAYABLE
+
+Milestone 4 - Size does matter
+Version 0.40
+  * implement sizing of some objects (e.g. ramp)
+  * implement trap door
+  * implement styrofoam block
+  * implement soccer ball and gummi ball
+  * split level between pre-defined objects and tool chest available objects
+    - a checkmark sign on the drawing?
+  * add 8 more levels
+  * add difference between play mode and level editor
+  * add concept of "winning" a level
+FIRST PLAYABLE (but probably very dumb looking)
+
+Milestone 5 - It's make over time!
+Version 0.50
+  * add images & animation
+  * implement more objects
+    - penguin, herring
+    - granite block
+    - cylinder (rolls horizontally) - allows for see-saw and stone-age carts
+  * implement foreground/background scenery images
+  * improve existing 10 levels and add 10 more
+    - make sure to have some basic tutorials
+  * add concept of order in levels, so players can start
+    and then move on without having to use File>Open
+FIRST WIDELY ANNOUNCEABLE VERSION
+
+Milestone 6 - Rope
+Version 0.60
+  * rope
+  * skyhooks
+  * wheel
+  * block hooks
+  * add corresponding more levels
+  * Windows version
+
+Milestone 7 - Finishing Touches
+Version 1.0
+  * validate order of all levels
+  * obsessive completion criteria?
+  * storyline?
+  * beautify everything, custom graphics and such
+  * audio?
+  * packaging: add installers
+  * MacOSX version?
+  * bugfixing
+
+
+
+
+Milestone 8 - etc
+Version 1.1
+  * liquid
+etc
+
