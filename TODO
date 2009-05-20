@@ -60,11 +60,15 @@ FIRST PLAYABLE (but probably very dumb looking)
 
 Milestone 5 - It's make over time!
 Version 0.50
+  * commission a logo
+  * add splash screen (reading in all images will take a while)
   * add images & animation
+    - all images in SVG format ?!?
     - make decision about how to do scaling
   * zooming
   * implement more objects
-    - penguin, herring
+    - penguin, herring ?
+	- butterfly, flower ?
     - granite block
     - cylinder (rolls horizontally) - allows for see-saw and stone-age carts
   * implement foreground/background scenery images
