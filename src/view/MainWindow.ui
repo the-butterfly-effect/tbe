@@ -37,7 +37,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Objects</string>
+       <string>The Tool Box</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -54,26 +54,6 @@
            <height>16777215</height>
           </size>
          </property>
-         <item>
-          <property name="text">
-           <string>Bowling ball</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Brick</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Marble</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ramp</string>
-          </property>
-         </item>
         </widget>
        </item>
       </layout>
@@ -134,7 +114,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>&amp;File</string>
     </property>
     <addaction name="actionOpen_savegame"/>
     <addaction name="actionSave"/>
@@ -152,13 +132,13 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>&amp;View</string>
     </property>
     <addaction name="actionZoom_In"/>
     <addaction name="actionZoom_Out"/>
@@ -172,6 +152,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Save...</string>
    </property>
@@ -182,28 +165,43 @@
    </property>
   </action>
   <action name="actionCut">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Cu&amp;t</string>
    </property>
   </action>
   <action name="actionCopy">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Copy</string>
    </property>
   </action>
   <action name="actionPaste">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Paste</string>
    </property>
   </action>
   <action name="actionRestart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Restart Level...</string>
    </property>
   </action>
   <action name="actionOpen_savegame">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>Open savegame...</string>
+    <string>&amp;Open savegame...</string>
    </property>
   </action>
   <action name="actionZoom_to_all">
@@ -221,6 +219,9 @@
    <property name="text">
     <string>Zoom In</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
   </action>
   <action name="actionZoom_Out">
    <property name="enabled">
@@ -228,6 +229,9 @@
    </property>
    <property name="text">
     <string>Zoom Out</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
    </property>
   </action>
   <action name="action_Quit">
@@ -237,5 +241,22 @@
   </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>action_Quit</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>361</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

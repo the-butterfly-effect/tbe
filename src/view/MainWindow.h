@@ -29,8 +29,9 @@ public:
      MainWindow(QWidget *parent = 0);
 	 
 private slots:
-     void on_pushButton_Start_clicked(void);
-     void on_pushButton_Stop_clicked(void);
+	void on_actionAbout_activated(void);
+    void on_pushButton_Start_clicked(void);
+    void on_pushButton_Stop_clicked(void);
 
 private:
      Ui::MainWindow ui;

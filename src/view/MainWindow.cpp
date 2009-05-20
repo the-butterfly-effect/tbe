@@ -18,7 +18,10 @@
 
 #include "tbe_global.h"
 #include "MainWindow.h"
+#include "Popup.h"
 
+//////////////////////////////////////////////////////////////////////////////
+// constructors & destructors
 
 MainWindow::MainWindow(QWidget *parent)
      : QMainWindow(parent)  
@@ -26,7 +29,18 @@ MainWindow::MainWindow(QWidget *parent)
         ui.setupUi(this);              
 }                           
 
+//////////////////////////////////////////////////////////////////////////////
+// public slots - alphabetical
 
+void MainWindow::on_actionAbout_activated()
+{
+	Popup::Info("<b>The Butterfly Effect</b><br><br>"
+				"An open source game that uses realistic physics"
+				" simulations to combine lots of simple mechanical elements"
+				" to achieve a simple goal in the most complex way possible.<br><br>"
+				"(C) 2009 Peter van Ginneken and Klaas van Gend<br>"
+				"Licensed under GPL version 2", this);
+}
 
 void MainWindow::on_pushButton_Start_clicked()
 {
