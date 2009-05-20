@@ -15,6 +15,7 @@ HEADERS	+= src/tbe_global.h \
 	src/model/BaseObject.h \
 	src/model/MovingObject.h \
 	src/model/Position.h \
+	src/view/Popup.h \
 	src/view/MainWindow.h \
 	
 	
