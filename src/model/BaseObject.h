@@ -20,7 +20,6 @@
 #define BASEOBJECT_H
 
 #include <qstring.h>
-//#include qptrlist.h
 #include "ode/ode.h"
 
 #include "Position.h"
@@ -48,39 +47,19 @@ public:
 				 */
 				virtual ~BaseObject ( );
 
-				// Static Public attributes
-				//  
-
-				// Public attributes
-				//  
-
-
 				// Public attribute accessor methods
 				//  
 
+				/// returns the Name of the object.
+				virtual const QString getName ( ) const = 0;
 
-				// Public attribute accessor methods
-				//  
+				/// returns the Tooltip of the object.
+				virtual const QString getToolTip ( ) const = 0;
 
-
-
-				/**
-				 */
-				virtual const QString& getName ( ) const = 0;
-
-
-				/**
-				 */
-				virtual const QString& getToolTip ( ) const = 0;
-
-				/**
-				 * @return bool
-				 */
+				/// returns true if the object can be rotated by the user
 				virtual bool isRotatable ( ) const = 0;
 
-				/**
-				 * @return bool
-				 */
+				/// returns true if the object can be resized by the user
 				virtual bool isResizable ( ) const = 0;
 
 				
