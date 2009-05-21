@@ -26,6 +26,9 @@
 /**
   * class MovingObject
   * 
+  * This class inherits from BaseObject, but because it does not implement 
+  * any of the pure virtual members of BaseObject, 
+  * it is an abstract class itself
   */
 
 class MovingObject : virtual public BaseObject
