@@ -50,7 +50,7 @@ public:
 				Qt::NoButton);
 		// critical errors? we might want to explain the user on 
 		// how to help solve this!
-		printAbortMessage(0);
+//		printAbortMessage(0);
 		// printAbortMessage doesn't exit - good!
 		// leaves us room to explain why we actually stop
 		DEBUG1("Critical Popup - application will halt\n");
