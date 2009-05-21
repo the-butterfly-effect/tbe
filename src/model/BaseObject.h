@@ -21,8 +21,14 @@
 
 #include <qstring.h>
 #include "ode/ode.h"
+#include "tbe_global.h"
 
 #include "Position.h"
+
+// FIXME: hack hack hack
+// defined and initialized in main.cpp
+extern dWorldID theGlobalWorldID;
+extern dSpaceID theGlobalSpaceID;
 
 /**
   * class BaseObject
@@ -89,33 +95,19 @@ protected:
 
 
 private:
+	// Private attributes
+	
+	Position theCenter;
+	dReal theWidth;
+	dReal theHeight;
+	dReal theScale;
 
-				// Static Private attributes
-				//  
-
-				// Private attributes
-				//  
-
-				Position theCenter;
-				dReal theWidth;
-				dReal theHeight;
-				dBodyID theBodyID;
-				dGeomID theGeomID;
-				dReal theScale;
-public:
-
-
-				// Private attribute accessor methods
-				//  
-
-private:
+protected:
+	dBodyID theBodyID;
+	dGeomID theGeomID;
 
 public:
-
-
 				// Private attribute accessor methods
-				//  
-
 
 				/**
 				 * Set the value of theCenter

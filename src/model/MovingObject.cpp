@@ -18,12 +18,14 @@
 
 #include "MovingObject.h"
 #include <assert.h>
+#include "tbe_global.h"
 
 // Constructors/Destructors
 //  
 
 MovingObject::MovingObject ( ) 
 {
+	DEBUG5("MovingObject::MovingObject\n");
 	dMassSetZero(&theMass);
 }
 
@@ -40,25 +42,30 @@ void MovingObject::adjustMass(dReal newmass)
 {
 	assert(theMass.mass!=0);
 	dMassAdjust (&theMass, newmass);
+	// we assume that the mass has already been assigned to a body here
 }
 
 void MovingObject::setMassBox (dReal total_mass, dReal lx, dReal ly)
 {
 	dMassSetBoxTotal (&theMass, total_mass, lx, ly, 0.0);
+	dBodySetMass (theBodyID, &theMass);
 }
 
 void MovingObject::setMassCapsule (dReal total_mass, int direction, dReal radius, dReal length)
 {
 	dMassSetCapsuleTotal (&theMass, total_mass, direction, radius, length);
+	dBodySetMass (theBodyID, &theMass);
 }
 
 void MovingObject::setMassSphere (dReal total_mass, dReal radius)
 {
 	dMassSetSphereTotal (&theMass, total_mass, radius);
+	dBodySetMass (theBodyID, &theMass);
 }
 
 void MovingObject::setMassTrimesh(dReal total_mass, dGeomID g)
 {
 	dMassSetTrimesh (&theMass, 1.0, g);
 	dMassAdjust (&theMass, total_mass);
+	dBodySetMass (theBodyID, &theMass);
 }

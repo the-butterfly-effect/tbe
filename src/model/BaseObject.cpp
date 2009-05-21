@@ -28,7 +28,18 @@ BaseObject::BaseObject ( )
 
 BaseObject::~BaseObject ( ) 
 {
+	// destroy the Geometry
+	dGeomSetData(theGeomID, NULL);
+	dGeomDestroy(theGeomID);
+	theGeomID = NULL;
 	
+	// destroy the Body
+	dBodyDestroy(theBodyID);
+	theBodyID = NULL;
+	
+	// mass will be destroyed in MovingObject
+	
+	// any joints will be destroyed in the implementation class
 }
 
 //  
@@ -45,5 +56,11 @@ BaseObject::~BaseObject ( )
 
 void BaseObject::initAttributes ( ) 
 {
+	DEBUG5("BaseObject::initAttributes\n");
+	theBodyID = dBodyCreate (theGlobalWorldID);
+
 	theScale = 1.0;
+	theWidth = 1.0;
+	theHeight = 1.0;
+	// don't need to initialise theCenter - it has a default constructor
 }
