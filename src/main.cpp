@@ -24,6 +24,7 @@
 #include <QtGui>
 
 #include "BowlingBall.h"
+#include "BowlingPin.h"
 
 
 // the verbosity for all logging - by default defined at 5 (most logging)
@@ -67,7 +68,6 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
     contact.surface.bounce += getBounce(b1);
     contact.surface.bounce += getBounce(b2);
     contact.surface.bounce /= 2;
-printf("bouncyness:%f\n", contact.surface.bounce);    
   	
     // bounce_vel is the minimum incoming velocity to cause a bounce
     contact.surface.bounce_vel = 0.1;
@@ -115,11 +115,17 @@ int main(int argc, char **argv)
     dWorldSetCFM (theGlobalWorldID, 1e-5);
     
     BowlingBall myBall;
-    myBall.setTheCenter( Position(0, 3, 0) );
+    myBall.setTheCenter( Position(0.5, 2, 0) );
     myBall.reset();
     
+    BowlingPin myPin;
+    myPin.setTheCenter( Position(1, 0.20, 0) );
+    myPin.reset();
+    
+    
     ///////////////////////////////////
-    dCreatePlane (theGlobalSpaceID,0,1,0,0);
+    dCreatePlane (theGlobalSpaceID, 0.0, 1.0, 0,0);
+    dCreatePlane (theGlobalSpaceID, 1.0, 0.0, 0,0);
     contactgroup1 = dJointGroupCreate (0);
     // run simulation
     int i;
@@ -132,9 +138,11 @@ int main(int argc, char **argv)
 
 		// redraw sphere at new location
 	    const dReal *pos1 = dGeomGetPosition (myBall.getTheGeomID());
+	    const dReal *pos2 = dGeomGetPosition (myPin.getTheGeomID());
 		
-		printf("%f \t %f,%f,%f\n", mytime, 
-				pos1[0], pos1[1], pos1[2]);
+		printf("%f \t %f\t%f\t%f \t %f\t%f\t%f\n", mytime, 
+				pos1[0], pos1[1], pos1[2],
+				pos2[0], pos2[1], pos2[2]);
     }
     
     
