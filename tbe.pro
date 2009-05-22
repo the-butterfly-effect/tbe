@@ -13,6 +13,7 @@ INCLUDEPATH	+= 3rdParty/include src src/model src/view src/base
 
 HEADERS	+= src/tbe_global.h \
 	src/model/BaseObject.h \
+	src/model/BowlingBall.h \
 	src/model/MovingObject.h \
 	src/model/Position.h \
 	src/view/Popup.h \
@@ -21,6 +22,7 @@ HEADERS	+= src/tbe_global.h \
 	
 SOURCES	+= src/main.cpp \
 	src/model/BaseObject.cpp \
+	src/model/BowlingBall.cpp \
 	src/model/MovingObject.cpp \
 	src/model/Position.cpp \
 	src/view/MainWindow.cpp \
