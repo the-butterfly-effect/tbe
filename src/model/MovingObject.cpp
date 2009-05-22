@@ -51,9 +51,23 @@ void MovingObject::setMassBox (dReal total_mass, dReal lx, dReal ly)
 	dBodySetMass (theBodyID, &theMass);
 }
 
-void MovingObject::setMassCapsule (dReal total_mass, int direction, dReal radius, dReal length)
+void MovingObject::setMassCapsule (
+		dReal total_mass, 
+		Direction direction, 
+		dReal radius, 
+		dReal length)
 {
 	dMassSetCapsuleTotal (&theMass, total_mass, direction, radius, length);
+	dBodySetMass (theBodyID, &theMass);
+}
+
+void MovingObject::setMassCylinder (
+		dReal total_mass, 
+		Direction direction, 
+		dReal radius, 
+		dReal length)
+{
+	dMassSetCylinderTotal (&theMass, total_mass, direction, radius, length);
 	dBodySetMass (theBodyID, &theMass);
 }
 

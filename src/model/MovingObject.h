@@ -62,16 +62,33 @@ public:
 	}
 
 protected:
+	enum Direction
+	{
+		AlongXAxis = 1,
+		AlongYAxis = 2,
+		AlongZAxis = 3
+	};
+	
 	/// sets the object's mass in kg, assumes sphere form with radius in meter
 	void setMassSphere (dReal total_mass, dReal radius);
-	/** sets the object's mass assumes capsule geometry
-	 *  note that this one does have direction - where Cylinder has not!!!
+	
+	/** sets the object's mass assuming capsule geometry
+	 *  note that this one does have a direction  
 	 * @param total_mass in kg
-	 * @param direction 1=x, 2=y, 3=z axis
+	 * @param direction (see Direction enum)
+	 * @param radius in meter
+	 * @param length (not counting caps) in meter
+	 */
+	void setMassCapsule (dReal total_mass, Direction direction, dReal radius, dReal length);
+
+	/** sets the object's mass assuming cylinder geometry
+	 *  note that this one does have direction
+	 * @param total_mass in kg
+	 * @param direction (see Direction enum)
 	 * @param radius in meter
 	 * @param length in meter
 	 */
-	void setMassCapsule (dReal total_mass, int direction, dReal radius, dReal length);
+	void setMassCylinder (dReal total_mass, Direction direction, dReal radius, dReal length);
 
 	/** sets the object's mass assuming rectangle geometry
 	 * @param total_mass in kg
