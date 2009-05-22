@@ -11,6 +11,7 @@ BowlingBall::BowlingBall ( )
 	// and a weight of 6.0 kg.
 	setTheGeomID( dCreateSphere (theGlobalSpaceID, 0.11) );
 	setMassSphere(6.0, 0.11);
+	setTheBounciness(0.2);
 }
 
 BowlingBall::~BowlingBall ( ) { }

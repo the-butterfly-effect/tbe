@@ -58,9 +58,23 @@ void BaseObject::initAttributes ( )
 {
 	DEBUG5("BaseObject::initAttributes\n");
 	theBodyID = dBodyCreate (theGlobalWorldID);
+	dBodySetData(theBodyID, this);
+	
+	theGeomID = 0;
 
 	theScale = 1.0;
 	theWidth = 1.0;
 	theHeight = 1.0;
+	theBounciness = 1.0;
 	// don't need to initialise theCenter - it has a default constructor
+}
+
+void BaseObject::reset ( ) 
+{
+	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 
+			getName().toAscii().constData(), theCenter.x, theCenter.y, theCenter.angle);
+	dBodySetPosition(theBodyID, theCenter.x, theCenter.y, 0.0);
+	dMatrix3 R;
+	dRFromAxisAndAngle (R, 0.0, 0.0, 1.0, theCenter.angle);
+	dBodySetRotation(theBodyID, R);
 }

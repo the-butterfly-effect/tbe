@@ -19,6 +19,7 @@
 #ifndef BASEOBJECT_H
 #define BASEOBJECT_H
 
+#include <assert.h>
 #include <qstring.h>
 #include "ode/ode.h"
 #include "tbe_global.h"
@@ -68,6 +69,8 @@ public:
 				/// returns true if the object can be resized by the user
 				virtual bool isResizable ( ) const = 0;
 
+				/// resets the object into the start position/situation
+				virtual void reset(void);
 				
 protected:
 
@@ -101,6 +104,12 @@ private:
 	dReal theWidth;
 	dReal theHeight;
 	dReal theScale;
+	/** indicates how object should bounce - two objects of 0.0 will stick 
+	 *  together, whereas two objects of 1.0 will bounce without loosing
+	 *  energy. Bounciness over 1.0 will resulting in ever larger bounces
+	 *  (not really realistic, right?)
+	 */
+	dReal theBounciness;
 
 protected:
 	dBodyID theBodyID;
@@ -174,11 +183,30 @@ public:
 				}
 
 				/**
+				 * Set the value of theBounciness 
+				 *   (0.0 = stick, 1.0 = full elastic bounce)
+				 * @param new_var the new value of theBounciness
+				 */
+				void setTheBounciness ( dReal new_var )
+				{	theBounciness = new_var; }
+
+				/**
+				 * Get the value of theBounciness
+				 *   (0.0 = stick, 1.0 = full elastic bounce)
+				 * @return the value of theBounciness
+				 */
+				dReal getTheBounciness ( )				 
+				{	return theBounciness; }
+
+				/**
 				 * Set the value of theGeomID
 				 * @param new_var the new value of theGeomID
 				 */
-				void setTheGeomID ( dGeomID new_var )				 {
-												theGeomID = new_var;
+				void setTheGeomID ( dGeomID new_var )				
+				{
+					assert(theGeomID==0);
+					theGeomID = new_var;
+					dGeomSetBody (theGeomID, theBodyID);
 				}
 
 				/**
