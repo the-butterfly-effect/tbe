@@ -34,44 +34,44 @@ class BowlingPin : public MovingObject
 {
 public:
 
-				// Constructors/Destructors
-				//  
+	// Constructors/Destructors
+	//  
+	
+	/**
+	 * Empty Constructor
+	 */
+	BowlingPin ( );
+	
+	/**
+	 * Empty Destructor
+	 */
+	virtual ~BowlingPin ( );
+	
+	// Public attribute accessor methods
+	//  
 
-
-				/**
-				 * Empty Constructor
-				 */
-				BowlingPin ( );
-
-				/**
-				 * Empty Destructor
-				 */
-				virtual ~BowlingPin ( );
-
-				// Public attribute accessor methods
-				//  
-				/// returns the Name of the object.
-				virtual const QString getName ( ) const
-				{
-					return QObject::tr("Bowling Pin");
-				}
-
-				/// returns the Tooltip of the object.
-				virtual const QString getToolTip ( ) const
-				{
-					return QObject::tr("Bowling pins are meant to be run "
-							"over - and most people prefer to do that using "
-							"a Bowling Ball.");
-				}
-
-				/// returns true if the object can be rotated by the user
-				virtual bool isRotatable ( ) const
-				{	return false;	}
-
-				/// returns true if the object can be resized by the user
-				virtual bool isResizable ( ) const
-				{	return false;	}
-
+	/// returns the Name of the object.
+	virtual const QString getName ( ) const
+	{
+		return QObject::tr("Bowling Pin");
+	}
+	
+	/// returns the Tooltip of the object.
+	virtual const QString getToolTip ( ) const
+	{
+		return QObject::tr("Bowling pins are meant to be run "
+				"over - and most people prefer to do that using "
+				"a Bowling Ball.");
+	}
+	
+	/// returns true if the object can be rotated by the user
+	virtual bool isRotatable ( ) const
+	{	return false;	}
+	
+	/// returns true if the object can be resized by the user
+	virtual bool isResizable ( ) const
+	{	return false;	}
+	
 };
 
 #endif // BOWLINGPIN_H

@@ -29,7 +29,7 @@ BowlingPin::BowlingPin ( )
 	// radius = 0.06 m
 	// total length of the pin is 0.38m - i.e. "length" is 0.24m.
 	// the weight of a pin is standardized at 1.5 kg.
-	setTheGeomID( dCreateCylinder (theGlobalSpaceID, 0.06, 0.12) );
+	setTheGeomID( dCreateCylinder (getSpaceID(), 0.06, 0.12) );
 	setMassCylinder(1.5, AlongYAxis, 0.06, 0.12);
 	setTheBounciness(0.8);
 }

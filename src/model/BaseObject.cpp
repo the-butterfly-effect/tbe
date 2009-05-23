@@ -18,6 +18,12 @@
 
 #include "BaseObject.h"
 
+// Static variables
+static dWorldID theStaticWorldID = NULL;
+static dSpaceID theStaticSpaceID = NULL;
+
+
+
 // Constructors/Destructors
 //  
 
@@ -50,6 +56,28 @@ BaseObject::~BaseObject ( )
 // Accessor methods
 //  
 
+dSpaceID BaseObject::getSpaceID(void)
+{
+	assert (theStaticSpaceID);
+	return theStaticSpaceID;
+}
+
+dWorldID BaseObject::getWorldID(void)
+{
+	assert (theStaticWorldID);
+	return theStaticWorldID;
+}
+
+void BaseObject::setTheSpaceID(dSpaceID anID)
+{
+	theStaticSpaceID = anID;
+}
+
+void BaseObject::setTheWorldID(dWorldID anID)
+{
+	theStaticWorldID = anID;
+}
+
 
 // Other methods
 //  
@@ -57,12 +85,11 @@ BaseObject::~BaseObject ( )
 void BaseObject::initAttributes ( ) 
 {
 	DEBUG5("BaseObject::initAttributes\n");
-	theBodyID = dBodyCreate (theGlobalWorldID);
+	theBodyID = dBodyCreate (getWorldID());
 	dBodySetData(theBodyID, this);
 	
 	theGeomID = 0;
 
-	theScale = 1.0;
 	theWidth = 1.0;
 	theHeight = 1.0;
 	theBounciness = 1.0;

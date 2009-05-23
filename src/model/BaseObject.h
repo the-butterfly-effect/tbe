@@ -26,216 +26,191 @@
 
 #include "Position.h"
 
-// FIXME: hack hack hack
-// defined and initialized in main.cpp
-extern dWorldID theGlobalWorldID;
-extern dSpaceID theGlobalSpaceID;
-
 /**
   * class BaseObject
-  * 
+  *
+  * abstract base class for everything in the simulation model 
   */
 
 class BaseObject
 {
 public:
 
-				// Constructors/Destructors
-				//  
+	// Constructors/Destructors
+	//  
 
+	/**
+	 * Empty Constructor
+	 */
+	BaseObject ( );
 
-				/**
-				 * Empty Constructor
-				 */
-				BaseObject ( );
+	/**
+	 * Empty Destructor
+	 */
+	virtual ~BaseObject ( );
 
-				/**
-				 * Empty Destructor
-				 */
-				virtual ~BaseObject ( );
+	// Public attribute accessor methods
+	//  
 
-				// Public attribute accessor methods
-				//  
+	/// returns the Name of the object.
+	virtual const QString getName ( ) const = 0;
 
-				/// returns the Name of the object.
-				virtual const QString getName ( ) const = 0;
+	/// returns the Tooltip of the object.
+	virtual const QString getToolTip ( ) const = 0;
 
-				/// returns the Tooltip of the object.
-				virtual const QString getToolTip ( ) const = 0;
+	/// returns true if the object can be rotated by the user
+	virtual bool isRotatable ( ) const = 0;
 
-				/// returns true if the object can be rotated by the user
-				virtual bool isRotatable ( ) const = 0;
+	/// returns true if the object can be resized by the user
+	virtual bool isResizable ( ) const = 0;
 
-				/// returns true if the object can be resized by the user
-				virtual bool isResizable ( ) const = 0;
+	/// resets the object into the start position/situation
+	virtual void reset(void);
 
-				/// resets the object into the start position/situation
-				virtual void reset(void);
-				
-protected:
-
-				// Static Protected attributes
-				//  
-
-				// Protected attributes
-				//  
-
-public:
-
-
-				// Protected attribute accessor methods
-				//  
-
-protected:
-
-public:
-
-
-				// Protected attribute accessor methods
-				//  
-
-protected:
-
+	
+	// FIXME: the following two should get their own friend subclass 
+	// - accessible only by the World class
+	
+	/// static member to set the world ID where objects should be in
+	static void setTheWorldID(dWorldID anID);
+	
+	/// static member to set the space ID where objects should be in
+	static void setTheSpaceID(dSpaceID anID);
 
 private:
 	// Private attributes
+	//
 	
-	Position theCenter;
-	dReal theWidth;
-	dReal theHeight;
-	dReal theScale;
-	/** indicates how object should bounce - two objects of 0.0 will stick 
-	 *  together, whereas two objects of 1.0 will bounce without loosing
-	 *  energy. Bounciness over 1.0 will resulting in ever larger bounces
-	 *  (not really realistic, right?)
+	/** the position of the center of the object. Note that this attribute
+	 *  is not updated during simulations, so we don't need to reset it
 	 */
+	Position theCenter;
+	
+	/// width of the object. If object is resizable, this can be changed by user 
+	dReal theWidth;
+	
+	/// height of object. If object is resizable, this can be changed by user
+	dReal theHeight;
+	
+	/** indicates how object should bounce - two objects of 0.0 will stick 
+	*  together, whereas two objects of 1.0 will bounce without loosing
+	*  energy. Bounciness over 1.0 will resulting in ever larger bounces
+	*  (not really realistic, right?)
+	*/
 	dReal theBounciness;
 
 protected:
 	dBodyID theBodyID;
 	dGeomID theGeomID;
 
+	dWorldID getWorldID(void);
+	dSpaceID getSpaceID(void);
+	
 public:
-				// Private attribute accessor methods
+	// public attribute accessor methods
 
-				/**
-				 * Set the value of theCenter
-				 * @param new_var the new value of theCenter
-				 */
-				void setTheCenter ( Position new_var )				 {
-												theCenter = new_var;
-				}
+	/**
+	 * Set the value of theCenter
+	 * @param new_var the new value of theCenter
+	 */
+	void setTheCenter ( Position new_var )				 {
+									theCenter = new_var;
+	}
 
-				/**
-				 * Get the value of theCenter
-				 * @return the value of theCenter
-				 */
-				Position getTheCenter ( )				 {
-								return theCenter;
-				}
+	/**
+	 * Get the value of theCenter
+	 * @return the value of theCenter
+	 */
+	Position getTheCenter ( )				 {
+					return theCenter;
+	}
 
-				/**
-				 * Set the value of theWidth
-				 * @param new_var the new value of theWidth
-				 */
-				void setTheWidth ( dReal new_var )				 {
-												theWidth = new_var;
-				}
+	/**
+	 * Set the value of theWidth
+	 * @param new_var the new value of theWidth
+	 */
+	void setTheWidth ( dReal new_var )				 {
+									theWidth = new_var;
+	}
 
-				/**
-				 * Get the value of theWidth
-				 * @return the value of theWidth
-				 */
-				dReal getTheWidth ( )				 {
-								return theWidth;
-				}
+	/**
+	 * Get the value of theWidth
+	 * @return the value of theWidth
+	 */
+	dReal getTheWidth ( )				 {
+					return theWidth;
+	}
 
-				/**
-				 * Set the value of theHeight
-				 * @param new_var the new value of theHeight
-				 */
-				void setTheHeight ( dReal new_var )				 {
-												theHeight = new_var;
-				}
+	/**
+	 * Set the value of theHeight
+	 * @param new_var the new value of theHeight
+	 */
+	void setTheHeight ( dReal new_var )				 {
+									theHeight = new_var;
+	}
 
-				/**
-				 * Get the value of theHeight
-				 * @return the value of theHeight
-				 */
-				dReal getTheHeight ( )				 {
-								return theHeight;
-				}
+	/**
+	 * Get the value of theHeight
+	 * @return the value of theHeight
+	 */
+	dReal getTheHeight ( )				 {
+					return theHeight;
+	}
 
-				/**
-				 * Set the value of theBodyID
-				 * @param new_var the new value of theBodyID
-				 */
-				void setTheBodyID ( dBodyID new_var )				 {
-												theBodyID = new_var;
-				}
+	/**
+	 * Set the value of theBodyID
+	 * @param new_var the new value of theBodyID
+	 */
+	void setTheBodyID ( dBodyID new_var )				 {
+									theBodyID = new_var;
+	}
 
-				/**
-				 * Get the value of theBodyID
-				 * @return the value of theBodyID
-				 */
-				dBodyID getTheBodyID ( )				 {
-								return theBodyID;
-				}
+	/**
+	 * Get the value of theBodyID
+	 * @return the value of theBodyID
+	 */
+	dBodyID getTheBodyID ( )				 {
+					return theBodyID;
+	}
 
-				/**
-				 * Set the value of theBounciness 
-				 *   (0.0 = stick, 1.0 = full elastic bounce)
-				 * @param new_var the new value of theBounciness
-				 */
-				void setTheBounciness ( dReal new_var )
-				{	theBounciness = new_var; }
+	/**
+	 * Set the value of theBounciness 
+	 *   (0.0 = stick, 1.0 = full elastic bounce)
+	 * @param new_var the new value of theBounciness
+	 */
+	void setTheBounciness ( dReal new_var )
+	{	theBounciness = new_var; }
 
-				/**
-				 * Get the value of theBounciness
-				 *   (0.0 = stick, 1.0 = full elastic bounce)
-				 * @return the value of theBounciness
-				 */
-				dReal getTheBounciness ( )				 
-				{	return theBounciness; }
+	/**
+	 * Get the value of theBounciness
+	 *   (0.0 = stick, 1.0 = full elastic bounce)
+	 * @return the value of theBounciness
+	 */
+	dReal getTheBounciness ( )				 
+	{	return theBounciness; }
 
-				/**
-				 * Set the value of theGeomID
-				 * @param new_var the new value of theGeomID
-				 */
-				void setTheGeomID ( dGeomID new_var )				
-				{
-					assert(theGeomID==0);
-					theGeomID = new_var;
-					dGeomSetBody (theGeomID, theBodyID);
-				}
+	/**
+	 * Set the value of theGeomID
+	 * @param new_var the new value of theGeomID
+	 */
+	void setTheGeomID ( dGeomID new_var )				
+	{
+		assert(theGeomID==0);
+		theGeomID = new_var;
+		dGeomSetBody (theGeomID, theBodyID);
+	}
 
-				/**
-				 * Get the value of theGeomID
-				 * @return the value of theGeomID
-				 */
-				dGeomID getTheGeomID ( )				 {
-								return theGeomID;
-				}
+	/**
+	 * Get the value of theGeomID
+	 * @return the value of theGeomID
+	 */
+	dGeomID getTheGeomID ( )				 {
+					return theGeomID;
+	}
 
-				/**
-				 * Set the value of theScale
-				 * @param new_var the new value of theScale
-				 */
-				void setTheScale ( dReal new_var )				 {
-												theScale = new_var;
-				}
-
-				/**
-				 * Get the value of theScale
-				 * @return the value of theScale
-				 */
-				dReal getTheScale ( )				 {
-								return theScale;
-				}
 private:
 
-
-				void initAttributes ( ) ;
+	void initAttributes ( ) ;
 
 };
 

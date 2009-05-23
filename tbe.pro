@@ -17,6 +17,7 @@ HEADERS	+= src/tbe_global.h \
 	src/model/BowlingPin.h \
 	src/model/MovingObject.h \
 	src/model/Position.h \
+	src/model/World.h \
 	src/view/Popup.h \
 	src/view/MainWindow.h \
 	
@@ -27,6 +28,7 @@ SOURCES	+= src/main.cpp \
 	src/model/BowlingPin.cpp \
 	src/model/MovingObject.cpp \
 	src/model/Position.cpp \
+	src/model/World.cpp \
 	src/view/MainWindow.cpp \
 	
 

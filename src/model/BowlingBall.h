@@ -34,94 +34,42 @@ class BowlingBall : public MovingObject
 {
 public:
 
-				// Constructors/Destructors
-				//  
+	// Constructors/Destructors
+	//  
 
+	/**
+	 * Empty Constructor
+	 */
+	BowlingBall ( );
 
-				/**
-				 * Empty Constructor
-				 */
-				BowlingBall ( );
+	/**
+	 * Empty Destructor
+	 */
+	virtual ~BowlingBall ( );
 
-				/**
-				 * Empty Destructor
-				 */
-				virtual ~BowlingBall ( );
+	// Public attribute accessor methods
+	//  
 
-				// Public attribute accessor methods
-				//  
-				/// returns the Name of the object.
-				virtual const QString getName ( ) const
-				{
-					return QObject::tr("Bowling Ball");
-				}
+	/// returns the Name of the object.
+	virtual const QString getName ( ) const
+	{
+		return QObject::tr("Bowling Ball");
+	}
 
-				/// returns the Tooltip of the object.
-				virtual const QString getToolTip ( ) const
-				{
-					return QObject::tr("Your average bowling ball - heavy, "
-							"round and willing to roll");
-				}
+	/// returns the Tooltip of the object.
+	virtual const QString getToolTip ( ) const
+	{
+		return QObject::tr("Your average bowling ball - heavy, "
+				"round and willing to roll");
+	}
 
-				/// returns true if the object can be rotated by the user
-				virtual bool isRotatable ( ) const
-				{	return false;	}
+	/// returns true if the object can be rotated by the user
+	virtual bool isRotatable ( ) const
+	{	return false;	}
 
-				/// returns true if the object can be resized by the user
-				virtual bool isResizable ( ) const
-				{	return false;	}
-
-
-protected:
-
-				// Static Protected attributes
-				//  
-
-				// Protected attributes
-				//  
-
-public:
-
-
-				// Protected attribute accessor methods
-				//  
-
-protected:
-
-public:
-
-
-				// Protected attribute accessor methods
-				//  
-
-protected:
-
-
-private:
-
-				// Static Private attributes
-				//  
-
-				// Private attributes
-				//  
-
-public:
-
-
-				// Private attribute accessor methods
-				//  
-
-private:
-
-public:
-
-
-				// Private attribute accessor methods
-				//  
-
-private:
-
-
+	/// returns true if the object can be resized by the user
+	virtual bool isResizable ( ) const
+	{	return false;	}
 
 };
 
