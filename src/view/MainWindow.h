@@ -21,13 +21,18 @@
 
 #include "ui_MainWindow.h"
 
+// forward declarations
+class DrawWorld;
+
 class MainWindow : public QMainWindow
 {
      Q_OBJECT
 
 public:
      MainWindow(QWidget *parent = 0);
-	 
+
+     void setScene(DrawWorld* aScene);
+     
 private slots:
 	void on_actionAbout_activated(void);
     void on_pushButton_Start_clicked(void);

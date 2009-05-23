@@ -20,6 +20,8 @@
 #include "MainWindow.h"
 #include "Popup.h"
 
+#include "DrawWorld.h"
+
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
 
@@ -51,3 +53,31 @@ void MainWindow::on_pushButton_Stop_clicked()
 {
 	DEBUG5("MainWindow::on_pushButton_Stop_clicked()\n");
 }
+
+//////////////////////////////////////////////////////////////////////////////
+// public accessor methods
+
+void MainWindow::setScene(DrawWorld* aScene)
+{
+	ui.graphicsView->setScene(aScene);
+	
+	// calculate x scaling and y scaling
+	QSize myViewSize = ui.graphicsView->size();
+	float xScale = (myViewSize.width()-10) / aScene->getWidth();
+	float yScale = (myViewSize.height()-10) / aScene->getHeight();
+
+	// and use the least for both X and Y
+	if (xScale > yScale)
+		xScale = yScale;
+	// X horizontal positive to right
+	// Y vertical   positive up -> that's why we need the negative
+	ui.graphicsView->scale(1.0*xScale, -1.0*xScale);
+	
+	// TODO FIXME HACK HACK HACK
+	// hook up animation to start button
+    QObject::connect(ui.pushButton_Start, SIGNAL(clicked()), aScene, SLOT(timeStep()));
+	
+	
+//	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
+}
+
