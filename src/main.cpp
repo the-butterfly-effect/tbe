@@ -43,39 +43,44 @@ int main(int argc, char **argv)
     MainWindow myMain;
     myMain.show();
     
-    World myWorld;
+    World* myWorld = new World();
     
-    BowlingBall myBall;
-    myBall.setTheCenter( Position(0.5, 2, 0) );
-    myBall.reset();
+    BowlingBall* myBallPtr = new BowlingBall();
+    myBallPtr->setTheCenter( Position(0.5, 2, 0) );
+    myWorld->addObject(myBallPtr);
     
-    BowlingPin myPin;
-    myPin.setTheCenter( Position(1, 0.20, 0) );
-    myPin.reset();
+    BowlingPin* myPinPtr = new BowlingPin();
+    myPinPtr->setTheCenter( Position(1, 0.20, 0) );
+    myWorld->addObject(myPinPtr);
     
+    myWorld->createScene(&myMain);
     
     ///////////////////////////////////
     // run simulation - still has to move to World class
-    int i;
-    for(i=0; i<200;i++)
-    {
-    	static float mytime=0.0;
-    	
-		mytime += myWorld.simStep();
-
-		// redraw sphere at new location
-	    const dReal *pos1 = dGeomGetPosition (myBall.getTheGeomID());
-	    const dReal *pos2 = dGeomGetPosition (myPin.getTheGeomID());
-		
-		printf("%f \t %f\t%f\t%f \t %f\t%f\t%f\n", mytime, 
-				pos1[0], pos1[1], pos1[2],
-				pos2[0], pos2[1], pos2[2]);
-    }
+//    int i;
+//    for(i=0; i<2;i++)
+//    {
+//    	static float mytime=0.0;
+//    	
+//		mytime += myWorld->simStep();
+//
+//		// redraw sphere at new location
+//	    const dReal *pos1 = dGeomGetPosition (myBallPtr->getTheGeomID());
+//	    const dReal *pos2 = dGeomGetPosition (myPinPtr->getTheGeomID());
+//		
+//		printf("%f \t %f\t%f\t%f \t %f\t%f\t%f\n", mytime, 
+//				pos1[0], pos1[1], pos1[2],
+//				pos2[0], pos2[1], pos2[2]);
+//    }
     
-    
-    // clean up
-    dCloseODE();
-    return 0;
     ///////////////////////////////////
-//    return app.exec();
+    int myReturn=app.exec();
+
+    delete myWorld;
+    myWorld = NULL;
+    
+    // clean up (QT cleans up itself)
+    dCloseODE();
+    
+    return myReturn;
 }
