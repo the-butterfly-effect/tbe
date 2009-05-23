@@ -24,14 +24,18 @@
 
 BowlingPin::BowlingPin ( ) 
 {
+	// TODO/FIXME: for now, the pin is defined lying - not standing!!! 
 	DEBUG5("BowlingPin::BowlingPin\n");
 	// set the bowling pin to be a cylinder
-	// radius = 0.06 m
-	// total length of the pin is 0.38m - i.e. "length" is 0.24m.
-	// the weight of a pin is standardized at 1.5 kg.
-	setTheGeomID( dCreateCylinder (getSpaceID(), 0.06, 0.12) );
-	setMassCylinder(1.5, AlongYAxis, 0.06, 0.12);
+	const dReal myRadius = 0.06; // m
+	const dReal myLength = 0.38; // m
+	const dReal myMass   = 1.5;  // kg
+	setTheGeomID( dCreateCylinder (getSpaceID(), myRadius, myLength) );
+	setMassCylinder(myMass, AlongXAxis, myRadius, myLength);
 	setTheBounciness(0.8);
+	
+	setTheWidth(myLength);
+	setTheHeight(2.0*myRadius);
 }
 
 BowlingPin::~BowlingPin ( )
