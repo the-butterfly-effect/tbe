@@ -68,12 +68,12 @@ dWorldID BaseObject::getWorldID(void)
 	return theStaticWorldID;
 }
 
-void BaseObject::setTheSpaceID(dSpaceID anID)
+void BaseObject::ForWorldOnly::setTheSpaceID(dSpaceID anID)
 {
 	theStaticSpaceID = anID;
 }
 
-void BaseObject::setTheWorldID(dWorldID anID)
+void BaseObject::ForWorldOnly::setTheWorldID(dWorldID anID)
 {
 	theStaticWorldID = anID;
 }

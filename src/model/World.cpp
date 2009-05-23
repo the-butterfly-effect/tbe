@@ -42,11 +42,11 @@ World::~World ( )
     
     dSpaceDestroy (theGlobalSpaceID);
     theGlobalSpaceID = 0;
-    BaseObject::setTheSpaceID(theGlobalSpaceID);
+    BaseObject::ForWorldOnly::setTheSpaceID(theGlobalSpaceID);
     
     dWorldDestroy (theGlobalWorldID);
     theGlobalWorldID = 0;
-    BaseObject::setTheWorldID(theGlobalWorldID);
+    BaseObject::ForWorldOnly::setTheWorldID(theGlobalWorldID);
 
 }
 
@@ -75,10 +75,10 @@ dReal World::getBounce(dBodyID b1)
 void World::initAttributes( )
 {
     theGlobalWorldID = dWorldCreate ();
-    BaseObject::setTheWorldID(theGlobalWorldID);
+    BaseObject::ForWorldOnly::setTheWorldID(theGlobalWorldID);
     
     theGlobalSpaceID = dHashSpaceCreate (0);
-    BaseObject::setTheSpaceID(theGlobalSpaceID);
+    BaseObject::ForWorldOnly::setTheSpaceID(theGlobalSpaceID);
 
     contactgroup1 = dJointGroupCreate (0);
 

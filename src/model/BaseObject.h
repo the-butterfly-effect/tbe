@@ -67,16 +67,22 @@ public:
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 
-	
-	// FIXME: the following two should get their own friend subclass 
-	// - accessible only by the World class
-	
-	/// static member to set the world ID where objects should be in
-	static void setTheWorldID(dWorldID anID);
-	
-	/// static member to set the space ID where objects should be in
-	static void setTheSpaceID(dSpaceID anID);
 
+	/** the two members in this class should only be accessible to the
+	 *  World class
+	 */
+	class ForWorldOnly
+	{
+	private:
+		friend class World;
+	
+		/// static member to set the world ID where objects should be in
+		static void setTheWorldID(dWorldID anID);
+		
+		/// static member to set the space ID where objects should be in
+		static void setTheSpaceID(dSpaceID anID);
+	};
+		
 private:
 	// Private attributes
 	//
