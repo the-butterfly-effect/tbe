@@ -20,11 +20,15 @@
 #define WORLD_H
 
 #include <assert.h>
-#include <qstring.h>
+#include <QString>
+#include <QList>
 #include "ode/ode.h"
 #include "tbe_global.h"
 
-#include "BaseObject.h"
+// Forward Definitions:
+class BaseObject;
+class MainWindow;
+class DrawWorld;
 
 /**
   * class World
@@ -50,8 +54,19 @@ public:
 	virtual ~World ( );
 
 	
-	void start (void);
-	void stop  (void);
+	/** adds object to the World.
+	 *  @param anObjectPtr
+	 *  @return true if success - false if object already present
+	 */
+	bool addObject(BaseObject* anObjectPtr);
+    
+	/** creates the corresponding DrawWorld and sets it up as the GraphicsScene
+	 *  it will add all known BaseObjects to the Scene
+	 */
+    void createScene(MainWindow* myMainPtr);
+	
+	
+	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
 
@@ -82,6 +97,11 @@ public:
 private:
 
 	void initAttributes ( ) ;
+	
+	typedef QList<BaseObject*> BaseObjectPtrList;
+	BaseObjectPtrList theObjectPtrList;
+	
+	DrawWorld* theDrawWorldPtr;
 
 };
 

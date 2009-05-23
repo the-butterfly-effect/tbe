@@ -17,6 +17,7 @@
  */
 
 #include "BaseObject.h"
+#include "DrawObject.h"
 
 // Static variables
 static dWorldID theStaticWorldID = NULL;
@@ -34,6 +35,8 @@ BaseObject::BaseObject ( )
 
 BaseObject::~BaseObject ( ) 
 {
+	DEBUG5("~BaseObject() for %p\n", this);
+	
 	// destroy the Geometry
 	dGeomSetData(theGeomID, NULL);
 	dGeomDestroy(theGeomID);
@@ -82,6 +85,10 @@ void BaseObject::ForWorldOnly::setTheWorldID(dWorldID anID)
 // Other methods
 //  
 
+DrawObject*  BaseObject::createDrawObject(void)
+{ return new DrawObject(this); }
+
+
 void BaseObject::initAttributes ( ) 
 {
 	DEBUG5("BaseObject::initAttributes\n");
@@ -94,6 +101,8 @@ void BaseObject::initAttributes ( )
 	theHeight = 1.0;
 	theBounciness = 1.0;
 	// don't need to initialise theCenter - it has a default constructor
+	
+	theDrawObjectPtr = NULL;
 }
 
 void BaseObject::reset ( ) 

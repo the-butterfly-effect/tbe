@@ -26,6 +26,10 @@
 
 #include "Position.h"
 
+// Forward Declarations
+class DrawObject;
+
+
 /**
   * class BaseObject
   *
@@ -68,7 +72,7 @@ public:
 	virtual void reset(void);
 
 
-	/** the two members in this class should only be accessible to the
+	/** the two STATIC members in this class should only be accessible to the
 	 *  World class
 	 */
 	class ForWorldOnly
@@ -82,6 +86,8 @@ public:
 		/// static member to set the space ID where objects should be in
 		static void setTheSpaceID(dSpaceID anID);
 	};
+
+	virtual DrawObject* createDrawObject();
 		
 private:
 	// Private attributes
@@ -111,6 +117,9 @@ protected:
 
 	dWorldID getWorldID(void);
 	dSpaceID getSpaceID(void);
+	
+	/// pointer to a DrawObject that will draw this object
+	DrawObject* theDrawObjectPtr;
 	
 public:
 	// public attribute accessor methods

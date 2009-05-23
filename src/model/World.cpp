@@ -17,7 +17,9 @@
  */
 
 #include "World.h"
-
+#include "BaseObject.h"
+#include "DrawWorld.h"
+#include "DrawObject.h"
 
 // FIXME: hack hack
 float delta = 0.01;
@@ -37,7 +39,16 @@ World::World ( )
 
 World::~World ( ) 
 {
-	DEBUG5("World::~World\n");
+	DEBUG5("World::~World - clear the ObjectPtrList \n");
+	
+	while(theObjectPtrList.isEmpty()==false)
+	{
+		BaseObject* myPtr = theObjectPtrList.first();
+		delete myPtr;
+		theObjectPtrList.pop_front();
+	}
+	
+	DEBUG5("World::~World - destroy the rest \n");
 	dJointGroupDestroy (contactgroup1);
     
     dSpaceDestroy (theGlobalSpaceID);
@@ -61,6 +72,41 @@ World::~World ( )
 // Other methods
 //  
 
+bool World::addObject(BaseObject* anObjectPtr)
+{
+	DEBUG5("addObject(%p = %s)\n", anObjectPtr, anObjectPtr->getName().toAscii().constData());
+	if (theObjectPtrList.contains(anObjectPtr))
+		return false;
+	
+	theObjectPtrList.push_back(anObjectPtr);
+	anObjectPtr->reset();
+	
+	// if we have a graphical representation already, add object there, too
+	if (theDrawWorldPtr)
+	{
+		// TODO
+		assert(false);
+	}
+	return true;
+}
+
+void World::createScene(MainWindow* myMainPtr)
+{
+	// create a DrawWorld instance, that will immediately attach itself to 
+	// the graphicsView in the main window
+	assert(theDrawWorldPtr == NULL);
+	theDrawWorldPtr = new DrawWorld(myMainPtr, this);
+	
+	// get all BaseObjects to register themselves in the DrawWorld
+	BaseObjectPtrList::iterator i;
+	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+	{
+		DEBUG5("adding item %p\n",*i);
+		theDrawWorldPtr->addItem((*i)->createDrawObject());
+	}
+}
+
+
 dReal World::getBounce(dBodyID b1)
 {
 	if (b1 == NULL)
@@ -74,6 +120,8 @@ dReal World::getBounce(dBodyID b1)
 
 void World::initAttributes( )
 {
+	theDrawWorldPtr = NULL;
+	
     theGlobalWorldID = dWorldCreate ();
     BaseObject::ForWorldOnly::setTheWorldID(theGlobalWorldID);
     
