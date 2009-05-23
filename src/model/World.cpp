@@ -61,6 +61,17 @@ World::~World ( )
 // Other methods
 //  
 
+dReal World::getBounce(dBodyID b1)
+{
+	if (b1 == NULL)
+		return 1.0;
+
+	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dBodyGetData(b1));
+	if (myObject1)
+		return  myObject1->getTheBounciness();
+	return 1.0;
+}
+
 void World::initAttributes( )
 {
     theGlobalWorldID = dWorldCreate ();
@@ -77,17 +88,6 @@ void World::initAttributes( )
 
     dCreatePlane (theGlobalSpaceID, 0.0, 1.0, 0,0);
     dCreatePlane (theGlobalSpaceID, 1.0, 0.0, 0,0);
-}
-
-dReal World::getBounce(dBodyID b1)
-{
-	if (b1 == NULL)
-		return 1.0;
-
-	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dBodyGetData(b1));
-	if (myObject1)
-		return  myObject1->getTheBounciness();
-	return 1.0;
 }
 
 void World::nearCallback (void *data, dGeomID o1, dGeomID o2)
@@ -123,7 +123,7 @@ void World::reset ( )
 	DEBUG5("World::reset()\n");
 }
 
-void World::simLoop (void)
+dReal World::simStep (void)
 {
     // find collisions and add contact joints
     dSpaceCollide (theGlobalSpaceID, 0, &World::nearCallback);
@@ -132,5 +132,7 @@ void World::simLoop (void)
     dWorldStep (theGlobalWorldID, delta);  
     // remove all contact joints
     dJointGroupEmpty (contactgroup1);
+    
+    return delta;
 }
 

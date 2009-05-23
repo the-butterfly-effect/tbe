@@ -55,8 +55,11 @@ public:
 	void reset (void);
 	
 
-	/// simulation loop
-	void simLoop (void);
+	/** take one step in the simulation loop 
+	 * 
+	 * @return the time step taken in the simulation step
+	 */
+	dReal simStep (void);
 
 private:	
 	/// this is called by dSpaceCollide when two objects in space are
