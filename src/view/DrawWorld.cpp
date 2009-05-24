@@ -43,7 +43,7 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 DrawWorld::~DrawWorld ( ) 
 {
-
+	DEBUG5("DrawWorld::~DrawWorld ( )\n");
 }
 
 //  

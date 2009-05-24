@@ -38,10 +38,10 @@ public:
 	
 	Q_OBJECT
 
+public:
 	// Constructors/Destructors
 	//  
 
-public:
 	/**
 	 * Empty Constructor
 	 */
@@ -52,30 +52,22 @@ public:
 	 */
 	virtual ~DrawWorld ( );
 
-	float getWidth()
-	{ return 5.0; };
-	
-	float getHeight()
+	// TODO - This info should not be static, but come from Level or World ?!?
+	dReal getWidth()
 	{ return 4.0; };
+	
+	// TODO - This info should not be static, but come from Level or World ?!?
+	dReal getHeight()
+	{ return 3.0; };
 	
 	
 public slots:
 	void timeStep(void);
 	
-protected:
-    // Protected attribute accessor methods
-	//  
-
-
-protected:
-
-	// Protected attributes
-	//  
-
 private:
-
 	// Private attributes
 	//  
+
 	MainWindow* theMainWindowPtr;
 	World* theWorldPtr;
 
@@ -84,9 +76,8 @@ public:
 
 private:
 
-
 	void initAttributes ( ) ;
 
 };
 
-#endif // DRAWOBJECT_H
+#endif // DRAWWORLD_H
