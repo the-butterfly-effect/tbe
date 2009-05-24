@@ -19,7 +19,6 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <QString>
 #include <QList>
 #include "ode/ode.h"
 #include "tbe_global.h"
@@ -32,7 +31,7 @@ class DrawWorld;
 /**
   * class World
   *
-  * the class holding all BaseObjects and doing the simulation 
+  * the class holding all BaseObjects and is responsible for the simulation 
   */
 
 class World
@@ -59,23 +58,26 @@ public:
 	 */
 	bool addObject(BaseObject* anObjectPtr);
     
-	/** creates the corresponding DrawWorld and sets it up as the GraphicsScene
+	/** creates the corresponding DrawWorld and asks it to
+	 *  sets itself up as the GraphicsScene
 	 *  it will add all known BaseObjects to the Scene
 	 */
     void createScene(MainWindow* myMainPtr);
 	
-	
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
-
 	/** take one step in the simulation loop 
 	 * 
 	 * @return the time step taken in the simulation step
 	 */
 	dReal simStep (void);
 
-private:	
+	
+public:
+	// Public attribute accessor methods
+
+private:
 	/** this is called by dSpaceCollide when two objects in space are
 	 *  potentially colliding.
 	 *  if dSpaceCollide is used correctly, theDataPtr actually contains
@@ -94,27 +96,36 @@ private:
 	 */
 	void nearCallbackReal(dGeomID o1, dGeomID o2);
 
+	/** this member tries to figure out the bounciness of the body
+	 * 
+	 * @param b1 the body to query for bounciness
+	 * @return the bounciness
+	 */
 	static dReal getBounce(dBodyID b1);
-	
-public:
-	// Public attribute accessor methods
-	//  
-
-private:
-	// Private attributes
-	//
-	
-public:
-	// Public attribute accessor methods
-
-private:
 
 	void initAttributes ( ) ;
 	
+private:	
+	// Private attributes
+	//
+
 	typedef QList<BaseObject*> BaseObjectPtrList;
+	
+	/// the list of all objects managed by this World 
 	BaseObjectPtrList theObjectPtrList;
 	
+	/// pointer to the associated VIEW class of World
 	DrawWorld* theDrawWorldPtr;
+
+	// The three attributes that make World tick: 
+	// 
+	
+	dWorldID theGlobalWorldID;
+	dSpaceID theGlobalSpaceID;
+	dJointGroupID contactgroup1;
+	
+	/// the time taking in each time step
+	static const dReal deltaTime = 0.01;
 
 };
 

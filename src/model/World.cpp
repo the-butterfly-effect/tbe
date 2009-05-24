@@ -21,14 +21,6 @@
 #include "DrawWorld.h"
 #include "DrawObject.h"
 
-// FIXME: hack hack
-float delta = 0.01;
-
-dWorldID theGlobalWorldID;
-dSpaceID theGlobalSpaceID;
-dJointGroupID contactgroup1;
-
-
 // Constructors/Destructors
 //  
 
@@ -185,12 +177,13 @@ dReal World::simStep (void)
 {
     // find collisions and add contact joints
     dSpaceCollide (theGlobalSpaceID, this, nearCallbackStatic);
+    
     // step the simulation
+	dWorldStep (theGlobalWorldID, deltaTime);
 	
-    dWorldStep (theGlobalWorldID, delta);  
     // remove all contact joints
     dJointGroupEmpty (contactgroup1);
     
-    return delta;
+    return deltaTime;
 }
 
