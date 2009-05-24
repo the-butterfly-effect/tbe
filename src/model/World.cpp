@@ -98,7 +98,6 @@ void World::createScene(MainWindow* myMainPtr)
 	}
 }
 
-
 dReal World::getBounce(dBodyID b1)
 {
 	if (b1 == NULL)
@@ -132,6 +131,10 @@ void World::initAttributes( )
 
 void World::nearCallbackReal (dGeomID o1, dGeomID o2)
 {
+	// TODO: the code in this member is still relatively simple
+	// compared to the demo code from the opende wiki:
+	// http://opende.sourceforge.net/wiki/index.php/Collision_callback_member_function
+	
     dBodyID b1 = dGeomGetBody(o1);
     dBodyID b2 = dGeomGetBody(o2);
     dContact contact;  
