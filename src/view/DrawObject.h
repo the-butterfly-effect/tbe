@@ -27,7 +27,9 @@ class BaseObject;
 
 
 /** class DrawObject
+  *
   * This class abstracts the actual drawing of objects
+  * 
   */
 
 class DrawObject : public QGraphicsItem
@@ -36,7 +38,6 @@ public:
 
 	// Constructors/Destructors
 	//  
-
 
 	/**
 	 * Empty Constructor
@@ -48,11 +49,15 @@ public:
 	 */
 	virtual ~DrawObject ( );
 
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+	/// overriden from QGraphicsItem
+    virtual QRectF boundingRect() const;
+
+    /// overriden from QGraphicsItem
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget);
 
 protected:
+	/// overriden from QGraphicsItem
     void advance(int step);
 
 protected:
@@ -73,19 +78,7 @@ protected:
 	dBodyID getTheBodyID ( )
 	{	return theBodyID; }
 
-protected:
-
-	// Static Protected attributes
-	//  
-
-	// Protected attributes
-	//  
-
 private:
-
-	// Static Private attributes
-	//  
-
 	// Private attributes
 	//  
 
@@ -93,10 +86,7 @@ private:
 	BaseObject* theBaseObjectPtr;
 	
 private:
-
-
 	void initAttributes ( ) ;
-
 };
 
 #endif // DRAWOBJECT_H

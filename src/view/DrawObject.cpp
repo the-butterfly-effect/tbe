@@ -38,8 +38,8 @@ DrawObject::~DrawObject ( ) { }
 
 void DrawObject::advance(int step)
 {
-   const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);    
+	// TODO: Add rotation here
+	const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
 	setPos(pos1[0], pos1[1]);
 }
 
