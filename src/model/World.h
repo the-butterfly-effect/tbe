@@ -19,7 +19,6 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <assert.h>
 #include <QString>
 #include <QList>
 #include "ode/ode.h"
@@ -105,4 +104,4 @@ private:
 
 };
 
-#endif // BASEOBJECT_H
+#endif // WORLD_H
