@@ -138,7 +138,7 @@ void World::initAttributes( )
     dCreatePlane (theGlobalSpaceID, 1.0, 0.0, 0,0);
 }
 
-void World::nearCallback (void *data, dGeomID o1, dGeomID o2)
+void World::nearCallbackReal (dGeomID o1, dGeomID o2)
 {
     dBodyID b1 = dGeomGetBody(o1);
     dBodyID b2 = dGeomGetBody(o2);
@@ -166,6 +166,16 @@ void World::nearCallback (void *data, dGeomID o1, dGeomID o2)
     }
 }
 
+// Remember, this function is static, it has no "this" pointer,
+// nor any of the other members of the World class.
+void World::nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2)
+{
+    // theDataPtr is the "this" that was passed into dSpaceCollide
+    World* theWorldPtr = reinterpret_cast<World*>(theDataPtr);
+    if (theWorldPtr)
+    	theWorldPtr->nearCallbackReal (o1, o2);
+}
+	
 void World::reset ( ) 
 {
 	DEBUG5("World::reset()\n");
@@ -174,7 +184,7 @@ void World::reset ( )
 dReal World::simStep (void)
 {
     // find collisions and add contact joints
-    dSpaceCollide (theGlobalSpaceID, 0, &World::nearCallback);
+    dSpaceCollide (theGlobalSpaceID, this, nearCallbackStatic);
     // step the simulation
 	
     dWorldStep (theGlobalWorldID, delta);  

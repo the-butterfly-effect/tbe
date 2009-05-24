@@ -76,13 +76,27 @@ public:
 	dReal simStep (void);
 
 private:	
-	/// this is called by dSpaceCollide when two objects in space are
-	/// potentially colliding.
-	static void nearCallback (void *data, dGeomID o1, dGeomID o2);
+	/** this is called by dSpaceCollide when two objects in space are
+	 *  potentially colliding.
+	 *  if dSpaceCollide is used correctly, theDataPtr actually contains
+	 *  the address of the real instance of World - this is a static member!
+	 *  the actual code is in nearCallbackReal().
+	 *  @param theDataPtr - pointer to a World instance
+	 *  @param o1 first geometry that collides
+	 *  @param o2 second geometry that collides
+	 */
+	static void nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2);
 	
+	/** this is called by dSpaceCollide when two objects in space are
+	 *  potentially colliding - see also the nearCallbackStatic() member
+	 *  @param o1 first geometry that collides
+	 *  @param o2 second geometry that collides
+	 */
+	void nearCallbackReal(dGeomID o1, dGeomID o2);
 
 	static dReal getBounce(dBodyID b1);
 	
+public:
 	// Public attribute accessor methods
 	//  
 
