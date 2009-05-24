@@ -20,6 +20,7 @@
 #define MAINWINDOW_H_
 
 #include "ui_MainWindow.h"
+#include "StartStopReset.h"
 
 // forward declarations
 class DrawWorld;
@@ -35,11 +36,21 @@ public:
      
 private slots:
 	void on_actionAbout_activated(void);
-    void on_pushButton_Start_clicked(void);
-    void on_pushButton_Stop_clicked(void);
+    void on_pushButton_Reset_clicked(void)
+    { emit theSimStateMachine.on_pushButton_Reset_clicked(); }
+    void on_pushButton_StartStopContinue_clicked(void)
+    { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }
 
 private:
      Ui::MainWindow ui;
+     
+     /** the state machine handling the Start/Stop/Continue/Rest buttons
+      *  and the actual simulation timing
+      *  
+      *  TODO: Due to separation of concerns, maybe move the actual
+      *         timing & simulation stuff out of this?
+      */
+     StartStopReset	theSimStateMachine;
 };
 
  

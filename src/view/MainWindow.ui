@@ -78,16 +78,9 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_Start">
+        <widget class="QPushButton" name="pushButton_StartStopContinue">
          <property name="text">
           <string>Start</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_Stop">
-         <property name="text">
-          <string>Stop</string>
          </property>
         </widget>
        </item>
@@ -109,7 +102,7 @@
      <x>0</x>
      <y>0</y>
      <width>724</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -145,8 +138,17 @@
     <addaction name="separator"/>
     <addaction name="actionZoom_to_all"/>
    </widget>
+   <widget class="QMenu" name="menuSimulation">
+    <property name="title">
+     <string>&amp;Simulation</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStop"/>
+    <addaction name="actionReset"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuSimulation"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -237,6 +239,21 @@
   <action name="action_Quit">
    <property name="text">
     <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>S&amp;top</string>
+   </property>
+  </action>
+  <action name="actionReset">
+   <property name="text">
+    <string>&amp;Reset</string>
    </property>
   </action>
  </widget>

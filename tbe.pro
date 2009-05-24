@@ -23,6 +23,7 @@ HEADERS	+= src/tbe_global.h \
 	src/view/DrawObject.h \
 	src/view/DrawWorld.h \
 	src/view/MainWindow.h \
+	src/view/StartStopReset.h \
 	
 	
 SOURCES	+= src/main.cpp \
@@ -36,6 +37,7 @@ SOURCES	+= src/main.cpp \
 	src/view/DrawObject.cpp \
 	src/view/DrawWorld.cpp \
 	src/view/MainWindow.cpp \
+	src/view/StartStopReset.cpp \
 	
 
 FORMS	= \

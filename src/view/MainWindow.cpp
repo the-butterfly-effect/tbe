@@ -26,7 +26,7 @@
 // constructors & destructors
 
 MainWindow::MainWindow(QWidget *parent)
-     : QMainWindow(parent)  
+     : QMainWindow(parent), theSimStateMachine(&ui)
 {                                      
         ui.setupUi(this);              
 }                           
@@ -42,16 +42,6 @@ void MainWindow::on_actionAbout_activated()
 				" to achieve a simple goal in the most complex way possible.<br><br>"
 				"(C) 2009 Peter van Ginneken and Klaas van Gend<br>"
 				"Licensed under GPL version 2", this);
-}
-
-void MainWindow::on_pushButton_Start_clicked()
-{
-	DEBUG5("MainWindow::on_pushButton_Start_clicked()\n");
-}
-
-void MainWindow::on_pushButton_Stop_clicked()
-{
-	DEBUG5("MainWindow::on_pushButton_Stop_clicked()\n");
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -75,7 +65,7 @@ void MainWindow::setScene(DrawWorld* aScene)
 	
 	// TODO FIXME HACK HACK HACK
 	// hook up animation to start button
-    QObject::connect(ui.pushButton_Start, SIGNAL(clicked()), aScene, SLOT(timeStep()));
+//    QObject::connect(ui.pushButton_Start, SIGNAL(clicked()), aScene, SLOT(timeStep()));
 	
 	
 //	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
