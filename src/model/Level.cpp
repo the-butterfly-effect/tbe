@@ -16,45 +16,38 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-
-#include "MainWindow.h"
-
-#include "ode/ode.h"
-
-#include <QtGui>
-
 #include "Level.h"
 #include "World.h"
+#include "BaseObject.h"
+#include "BowlingBall.h"
+#include "BowlingPin.h"
 
 
-// the verbosity for all logging - by default defined at 5 (most logging)
-int theVerbosity = 5;
+// Constructors/Destructors
+//  
 
-
-int main(int argc, char **argv)
+Level::Level ( ) 
 {
-	// init Qt (graphics toolkit) - www.qtsoftware.com
-	QApplication app(argc, argv);
-	// init OpenDE (physics library) - opende.sf.net
-    dInitODE ();
-
-    // setup main window
-    MainWindow myMain;
-    myMain.show();
+    theWorldPtr = new World();
     
-    // create level and display in main window
-    Level* myLevelPtr = new Level();
-    myLevelPtr->getTheWorldPtr()->createScene(&myMain);
-
-    // run the main display loop    
-    int myReturn=app.exec();
+    // local scope is enough - World will take over ownership
+    BowlingBall* myBallPtr = new BowlingBall();
+    myBallPtr->setTheCenter( Position(0.5, 2, 0) );
+    theWorldPtr->addObject(myBallPtr);
     
-    // close down    
-    delete myLevelPtr;
-    myLevelPtr = NULL;
-    
-    // clean up (QT cleans up after itself)
-    dCloseODE();
-    
-    return myReturn;
+    // local scope is enough - World will take over ownership
+    BowlingPin* myPinPtr = new BowlingPin();
+    myPinPtr->setTheCenter( Position(1, 0.20, 0) );
+    theWorldPtr->addObject(myPinPtr);
 }
+
+Level::~Level ( ) 
+{
+	DEBUG5("World::~World - clear the ObjectPtrList \n");
+    delete theWorldPtr;
+    theWorldPtr = NULL;
+}
+
+//  
+// Methods
+//  
