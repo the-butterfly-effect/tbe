@@ -14,15 +14,24 @@ These include:
   * libqt4-devel
   * probably a significant of dependencies of the above
 
+1.5)
+Make sure that you do *not* have libode-devel installed on your system.
+
+
 2)
-build everything in 3rdParty:
- - make -C 3rdParty
+As a *NORMAL* user, build everything in 3rdParty:
+    $   make -C 3rdParty
 (don't worry, this will be integrated into the make of step 3 at some point)
 
 3)
-build the main project
- - qmake
- - make
+As a *NORMAL* user, build the main project:
+    $   qmake
+    $   make
 
+4)
+How to run:
+    $   ./tbe
+    
+    
 
 That's it for now!
