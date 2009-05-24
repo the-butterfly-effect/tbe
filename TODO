@@ -10,16 +10,18 @@ MISSING (i.e. still have to be added to the below milestones)
 Milestone 1 - Bowling for Butterflies
 Version 0.10
 Features:
-  * Object model implemented, OpenDE implemented
+  x Object model implemented, OpenDE implemented
+  * Fix objects to Z=0 plane
   * Implemented modelling for:
     - Ramp, Floor
-    - BowlingBall, BowlingPin
+    x BowlingBall, BowlingPin
   * Hardcoded level, where the bowling ball falls on the ramp
     speeds up, runs over a horizontal part and kicks over the pin
     which flies away
   * MainWindow displays and the above simulation is shown
-    in the GraphicsView using circles and rectangles
-  * Start button works, stop button works, reset button works.
+    in the GraphicsView using circles and/or rectangles
+  x Start button works, stop button works, 
+  * Reset button works.
 NOT PLAYABLE
 
 
