@@ -125,7 +125,7 @@ private:
 	dJointGroupID contactgroup1;
 	
 	/// the time taking in each time step
-	static const dReal deltaTime = 0.01;
+	static const dReal deltaTime = 0.005;
 
 };
 

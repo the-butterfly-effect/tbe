@@ -131,34 +131,62 @@ void World::initAttributes( )
 
 void World::nearCallbackReal (dGeomID o1, dGeomID o2)
 {
-	// TODO: the code in this member is still relatively simple
-	// compared to the demo code from the opende wiki:
+	// this code is heavily borrowed from:
 	// http://opende.sourceforge.net/wiki/index.php/Collision_callback_member_function
-	
-    dBodyID b1 = dGeomGetBody(o1);
-    dBodyID b2 = dGeomGetBody(o2);
-    dContact contact;  
-    contact.surface.mode = dContactBounce | dContactSoftCFM;
-    // friction parameter
-    contact.surface.mu = dInfinity;
+
+	if (!(o1 && o2))
+	{
+		DEBUG3("CollisionCallback with null geometry\n");
+		return;
+	}
+
+	// ignore collisions between bodies that are connected by the same joint
+	dBodyID myBody1 = NULL;
+	dBodyID myBody2 = NULL;
+
+	if (o1!=NULL)
+		myBody1 = dGeomGetBody (o1);
+	if (o2!=NULL)
+		myBody2 = dGeomGetBody (o2);
+
+	if (myBody1 && myBody2 && dAreConnected (myBody1, myBody2))
+	{
+		DEBUG5("ignore collisions between bodies that are connected by the same joint\n");
+		return;
+	}
 
     // bounce is the amount of "bouncyness".
-    contact.surface.bounce = 0;
-    contact.surface.bounce += getBounce(b1);
-    contact.surface.bounce += getBounce(b2);
-    contact.surface.bounce /= 2;
-  	
-    // bounce_vel is the minimum incoming velocity to cause a bounce
-    contact.surface.bounce_vel = 0.1;
-    // constraint force mixing parameter
-    // not filled in - use global default //  contact.surface.soft_cfm = 1e-5;  
-    int numc = dCollide (o1,o2,1,&contact.geom,sizeof(dContact));
-    if (numc) 
-    {
-    	DEBUG5("nearCallback\n");
-        dJointID c = dJointCreateContact (theGlobalWorldID, contactgroup1, &contact);
-        dJointAttach (c,b1,b2);
-    }
+	// if the objects have a bounciness specified, let's use that.
+    dReal myBounce = 0.0;
+    myBounce += getBounce(myBody1);
+    myBounce += getBounce(myBody2);
+    myBounce /= 2.0;
+	
+	
+	const int ODE_MAX_CONTACTS=10;
+	
+	dContact myContacts[ODE_MAX_CONTACTS];
+	int myContactCount = dCollide (o1, o2, ODE_MAX_CONTACTS, &myContacts[0].geom, sizeof (dContact));
+	if (myContactCount)
+	{
+		int myMax = myContactCount;
+		if (myMax > ODE_MAX_CONTACTS)
+			myMax = ODE_MAX_CONTACTS;
+		for (int i=0; i<myMax; i++)
+		{
+			myContacts[i].surface.mode = dContactBounce; 
+			myContacts[i].surface.mu = dInfinity;
+			myContacts[i].surface.bounce = myBounce;
+			myContacts[i].surface.bounce_vel = (dReal) 0.01;
+			myContacts[i].surface.slip1 = (dReal) 0.1;
+			myContacts[i].surface.slip2 = (dReal) 0.1;
+
+			dJointID myContactJoint = dJointCreateContact (theGlobalWorldID, 
+														 contactgroup1, 
+														 &myContacts[i]);
+			dJointAttach (myContactJoint, myBody1, myBody2);
+		}
+	}
 }
 
 // Remember, this function is static, it has no "this" pointer,
