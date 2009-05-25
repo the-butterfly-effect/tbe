@@ -21,6 +21,7 @@
 #include "BaseObject.h"
 #include "BowlingBall.h"
 #include "BowlingPin.h"
+#include "Ramp.h"
 
 
 // Constructors/Destructors
@@ -32,13 +33,28 @@ Level::Level ( )
     
     // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr = new BowlingBall();
-    myBallPtr->setTheCenter( Position(0.5, 2, 0) );
+    myBallPtr->setTheCenter( Position(2.85, 1.0, 0) );
     theWorldPtr->addObject(myBallPtr);
-    
+
+    // local scope is enough - World will take over ownership
+    BowlingBall* myBallPtr2 = new BowlingBall();
+    myBallPtr2->setTheCenter( Position(3.15, 1.0, 0) );
+    theWorldPtr->addObject(myBallPtr2);
+
+    // local scope is enough - World will take over ownership
+    BowlingBall* myBallPtr3 = new BowlingBall();
+    myBallPtr3->setTheCenter( Position(0.4, 2.0, 0) );
+    theWorldPtr->addObject(myBallPtr3);
+
     // local scope is enough - World will take over ownership
     BowlingPin* myPinPtr = new BowlingPin();
-    myPinPtr->setTheCenter( Position(1, 0.20, 0) );
+    myPinPtr->setTheCenter( Position(3, 0.20, 0) );
     theWorldPtr->addObject(myPinPtr);
+
+    // local scope is enough - World will take over ownership
+    Ramp* myRampPtr = new Ramp();
+    myRampPtr->setTheCenter( Position(0.5, 0.5, 0) );
+    theWorldPtr->addObject(myRampPtr);
 }
 
 Level::~Level ( ) 

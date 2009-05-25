@@ -128,65 +128,57 @@ public:
 	 * Set the value of theCenter
 	 * @param new_var the new value of theCenter
 	 */
-	void setTheCenter ( Position new_var )				 {
-									theCenter = new_var;
-	}
+	void setTheCenter ( Position new_var )
+		{ theCenter = new_var;	}
 
 	/**
 	 * Get the value of theCenter
 	 * @return the value of theCenter
 	 */
-	Position getTheCenter ( )				 {
-					return theCenter;
-	}
+	Position getTheCenter ( )
+		{ return theCenter; }
 
 	/**
 	 * Set the value of theWidth
 	 * @param new_var the new value of theWidth
 	 */
-	void setTheWidth ( dReal new_var )				 {
-									theWidth = new_var;
-	}
+	void setTheWidth ( dReal new_var )
+		{ theWidth = new_var; }
 
 	/**
 	 * Get the value of theWidth
 	 * @return the value of theWidth
 	 */
-	dReal getTheWidth ( )				 {
-					return theWidth;
-	}
+	dReal getTheWidth ( )
+		{ return theWidth; }
 
 	/**
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
 	 */
-	void setTheHeight ( dReal new_var )				 {
-									theHeight = new_var;
-	}
+	void setTheHeight ( dReal new_var )
+		{ theHeight = new_var;	}
 
 	/**
 	 * Get the value of theHeight
 	 * @return the value of theHeight
 	 */
-	dReal getTheHeight ( )				 {
-					return theHeight;
-	}
+	dReal getTheHeight ( )
+		{ return theHeight; }
 
 	/**
 	 * Set the value of theBodyID
 	 * @param new_var the new value of theBodyID
 	 */
-	void setTheBodyID ( dBodyID new_var )				 {
-									theBodyID = new_var;
-	}
+	void setTheBodyID ( dBodyID new_var )
+		{ theBodyID = new_var; }
 
 	/**
 	 * Get the value of theBodyID
 	 * @return the value of theBodyID
 	 */
-	dBodyID getTheBodyID ( )				 {
-					return theBodyID;
-	}
+	virtual dBodyID getTheBodyID ( )
+		{ return theBodyID; }
 
 	/**
 	 * Set the value of theBounciness 
@@ -194,7 +186,7 @@ public:
 	 * @param new_var the new value of theBounciness
 	 */
 	void setTheBounciness ( dReal new_var )
-	{	theBounciness = new_var; }
+		{ theBounciness = new_var; }
 
 	/**
 	 * Get the value of theBounciness
@@ -202,13 +194,13 @@ public:
 	 * @return the value of theBounciness
 	 */
 	dReal getTheBounciness ( )				 
-	{	return theBounciness; }
+		{ return theBounciness; }
 
 	/**
 	 * Set the value of theGeomID
 	 * @param new_var the new value of theGeomID
 	 */
-	void setTheGeomID ( dGeomID new_var )				
+	virtual void setTheGeomID ( dGeomID new_var )				
 	{
 		assert(theGeomID==0);
 		theGeomID = new_var;
@@ -219,9 +211,8 @@ public:
 	 * Get the value of theGeomID
 	 * @return the value of theGeomID
 	 */
-	dGeomID getTheGeomID ( )				 {
-					return theGeomID;
-	}
+	dGeomID getTheGeomID ( )
+		{ return theGeomID; }
 
 private:
 
