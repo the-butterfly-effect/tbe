@@ -56,6 +56,9 @@ void MainWindow::setScene(DrawWorld* aScene)
 	float xScale = (myViewSize.width()-10) / aScene->getWidth();
 	float yScale = (myViewSize.height()-10) / aScene->getHeight();
 
+	// TODO FIXME: fitInView causes a segfault :-(
+//	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
+
 	// and use the least for both X and Y
 	if (xScale > yScale)
 		xScale = yScale;
@@ -63,10 +66,7 @@ void MainWindow::setScene(DrawWorld* aScene)
 	// Y vertical   positive up -> that's why we need the negative
 	ui.graphicsView->scale(1.0*xScale, -1.0*xScale);
 	
-	// TODO FIXME HACK HACK HACK
-	// hook up animation to start button
-//    QObject::connect(ui.pushButton_Start, SIGNAL(clicked()), aScene, SLOT(timeStep()));
-	
+    QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
 	
 //	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
 }

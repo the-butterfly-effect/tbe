@@ -61,6 +61,8 @@ public:
 
 	void goToState(TheStates aNewState);
 
+signals:
+	void runSimStep(void);
 	
 public slots:
 	/** public slot for Reset UI actions

@@ -152,7 +152,7 @@ void StartStopReset::on_timerTick()
 	// this is probably done easiest by linking up the Level/World immediately, so
 	// we do not need to go through DrawWorld.
 	// (and we probably need to run multiple time steps per timer Tick)
-	emit reinterpret_cast<DrawWorld*>(theMainWindowUIPtr->graphicsView->scene())->timeStep();
+	emit runSimStep();
 }
 
 void StartStopReset::resetSim(void)
