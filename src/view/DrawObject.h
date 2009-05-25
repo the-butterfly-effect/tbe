@@ -78,6 +78,8 @@ protected:
 	dBodyID getTheBodyID ( )
 	{	return theBodyID; }
 
+	void applyPosition(void);
+	
 private:
 	// Private attributes
 	//  

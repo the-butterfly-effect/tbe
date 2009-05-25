@@ -64,10 +64,9 @@ void MainWindow::setScene(DrawWorld* aScene)
 		xScale = yScale;
 	// X horizontal positive to right
 	// Y vertical   positive up -> that's why we need the negative
-	ui.graphicsView->scale(1.0*xScale, -1.0*xScale);
+	ui.graphicsView->scale(1.0*xScale, 1.0*xScale);
+	ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
 	
     QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
-	
-//	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
 }
 

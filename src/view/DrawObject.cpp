@@ -38,13 +38,25 @@ DrawObject::~DrawObject ( ) { }
 
 void DrawObject::advance(int step)
 {
-	// TODO: Add rotation here
-	const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-	setPos(pos1[0], pos1[1]);
+	applyPosition();
+}
+
+void DrawObject::applyPosition(void)
+{
+	// TODO FIXME: Add rotation here
+    const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
+//DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);
+    
+    // Qt has Y positive downwards, whereas all of the model has Y upwards.
+    // that's what the minus is for :-)
+    setPos(pos1[0], -pos1[1]);
 }
 
 QRectF DrawObject::boundingRect() const
 {
+// TODO FIXME: this is plain wrong.
+//    return QRectF(-theBaseObjectPtr->getTheWidth()/2.0, -theBaseObjectPtr->getTheHeight()/2.0,
+//					theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
     qreal adjust = 0.5;
     return QRectF(-18 - adjust, -22 - adjust,
                   36 + adjust, 60 + adjust);
@@ -60,10 +72,7 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
     // Body
     myPainter->setBrush(color);
-    myPainter->drawEllipse(-1, -1, 1, 1);
+    myPainter->drawEllipse(-1, -1, 2, 2);
 
-
-    const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);    
-    setPos(pos1[0], pos1[1]);
+    applyPosition();
 }
