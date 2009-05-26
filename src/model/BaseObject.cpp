@@ -43,7 +43,8 @@ BaseObject::~BaseObject ( )
 	theGeomID = NULL;
 	
 	// destroy the Body
-	dBodyDestroy(theBodyID);
+	if (theBodyID)
+		dBodyDestroy(theBodyID);
 	theBodyID = NULL;
 	
 	// mass will be destroyed in MovingObject
