@@ -69,9 +69,13 @@ protected:
 		AlongZAxis = 3
 	};
 	
-	/// sets the object's mass in kg, assumes sphere form with radius in meter
-	void setMassSphere (dReal total_mass, dReal radius);
-	
+	/** sets the object's mass assuming rectangle geometry
+	 * @param total_mass in kg
+	 * @param lx length in X axis
+	 * @param ly length in Y axis
+	 */
+	void setMassBox (dReal total_mass, dReal lx, dReal ly);
+
 	/** sets the object's mass assuming capsule geometry
 	 *  note that this one does have a direction  
 	 * @param total_mass in kg
@@ -90,13 +94,9 @@ protected:
 	 */
 	void setMassCylinder (dReal total_mass, Direction direction, dReal radius, dReal length);
 
-	/** sets the object's mass assuming rectangle geometry
-	 * @param total_mass in kg
-	 * @param lx length in X axis
-	 * @param ly length in Y axis
-	 */
-	void setMassBox (dReal total_mass, dReal lx, dReal ly);
-	
+	/// sets the object's mass in kg, assumes sphere form with radius in meter
+	void setMassSphere (dReal total_mass, dReal radius);
+
 	void setMassTrimesh(dReal total_mass, dGeomID g);
 	
 	/// modifies the EXISTING mass to be newmass - in kg
