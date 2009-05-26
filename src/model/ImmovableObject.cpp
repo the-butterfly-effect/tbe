@@ -43,7 +43,6 @@ ImmovableObject::~ImmovableObject ( )
 void ImmovableObject::reset ( ) 
 {
 	Position myCenter = getTheCenter();
-	myCenter.angle=-1.0;
 	DEBUG5("BaseObject::reset() geom pos for '%s' to (%f,%f)@%f\n", 
 			getName().toAscii().constData(), myCenter.x, myCenter.y, myCenter.angle);
 	dGeomSetPosition(theGeomID, myCenter.x, myCenter.y, 0.0);
