@@ -26,6 +26,9 @@
 #define APPFLAVOUR ""
 #endif
 
+const float PI    = 3.14159265;
+const float SQRT2 = 1.41421356;
+
 /* Debug verbosity
  * level 1 = very little information, autodetect KILLING
  * level 2 = level 1 + autodetect GOOD/BAD + some general messages on behaviour
