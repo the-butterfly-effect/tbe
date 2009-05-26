@@ -69,6 +69,9 @@ public:
 	virtual bool isResizable ( ) const
 	{	return true;	}
 
+private:
+	/// TODO: lalalala
+	void adjustParameters(void);
 };
 
 #endif // RAMP_H

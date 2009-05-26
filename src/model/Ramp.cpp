@@ -25,11 +25,18 @@
 Ramp::Ramp ( ) 
 {
 	DEBUG5("Ramp::Ramp\n");
-	setTheGeomID( dCreateBox (getSpaceID(), 1.0, 0.1, 1.0) );
+	
+	// the RAMP is defined as a bar from top left to bottom right.
+	// for the whole of the width of the block - which is 1.0 for now
+	// and the whole heigth of the block - which happens also to be 1.0
+	
+	setTheGeomID( dCreateBox (getSpaceID(), SQRT2, 0.03, 1.0) );
 	setTheBounciness(0.2);
 	
 	setTheWidth(1.0);
-	setTheHeight(0.1);
+	setTheHeight(1.0);
+	setAngle(-PI/4.0);
+	
 }
 
 Ramp::~Ramp ( ) { }

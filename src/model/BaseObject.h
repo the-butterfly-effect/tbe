@@ -129,7 +129,12 @@ public:
 	 * @param new_var the new value of theCenter
 	 */
 	void setTheCenter ( Position new_var )
-		{ theCenter = new_var;	}
+	{
+		theCenter.x = new_var.x;
+		theCenter.y = new_var.y;
+		if (isRotatable())
+			theCenter.angle = new_var.angle;
+	}
 
 	/**
 	 * Get the value of theCenter
@@ -214,6 +219,10 @@ public:
 	dGeomID getTheGeomID ( )
 		{ return theGeomID; }
 
+protected:
+	void setAngle(dReal anAngle)
+		{ theCenter.angle = anAngle; }
+	
 private:
 
 	void initAttributes ( ) ;
