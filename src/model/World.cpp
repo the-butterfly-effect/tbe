@@ -101,12 +101,12 @@ void World::createScene(MainWindow* myMainPtr)
 dReal World::getBounce(dBodyID b1)
 {
 	if (b1 == NULL)
-		return 1.0;
+		return 0.2;
 
 	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dBodyGetData(b1));
 	if (myObject1)
 		return  myObject1->getTheBounciness();
-	return 1.0;
+	return 0.2;
 }
 
 void World::initAttributes( )
