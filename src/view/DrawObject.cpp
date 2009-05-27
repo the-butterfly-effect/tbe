@@ -13,13 +13,17 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 {
 	theBodyID = aBaseObjectPtr->getTheBodyID();
 	initAttributes();
-//	dReal myX = 
-//	setRect ( qreal x, qreal y, qreal width, qreal height )
 
-	// only set the scale once !!!
-    DEBUG5("scale %p: %f, %f\n", this, theBaseObjectPtr->getTheWidth()/2.0, theBaseObjectPtr->getTheHeight()/2.0);
-    scale(theBaseObjectPtr->getTheWidth()/2.0, theBaseObjectPtr->getTheHeight()/2.0);
-
+	// the objects sizes usually are less than a meter
+	// however, that does not sit well with QPainter, which is still a 
+	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
+	// that's what we need scaling for.
+	
+	// TODO: Let's assume milimeters here!
+    scale(1.0/theScale, 1.0/theScale);
+    
+    // in radians!
+    theOldAngle=0;//aBaseObjectPtr->getTheCenter().angle;
 }
 
 DrawObject::~DrawObject ( ) { }
@@ -45,21 +49,25 @@ void DrawObject::applyPosition(void)
 {
 	// TODO FIXME: Add rotation here
     const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
+    const dReal *ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
 //DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);
+    
+    qreal myAngle = atan2(ang[1], ang[0]);
     
     // Qt has Y positive downwards, whereas all of the model has Y upwards.
     // that's what the minus is for :-)
     setPos(pos1[0], -pos1[1]);
+    rotate((myAngle-theOldAngle)*180/3.14);
+    theOldAngle=myAngle;
 }
 
 QRectF DrawObject::boundingRect() const
 {
-// TODO FIXME: this is plain wrong.
-//    return QRectF(-theBaseObjectPtr->getTheWidth()/2.0, -theBaseObjectPtr->getTheHeight()/2.0,
-//					theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
-    qreal adjust = 0.5;
-    return QRectF(-18 - adjust, -22 - adjust,
-                  36 + adjust, 60 + adjust);
+	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	qreal adjust = 0.1;
+	
+    return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
 }
 
 void DrawObject::initAttributes ( ) 
@@ -69,10 +77,16 @@ void DrawObject::initAttributes ( )
 
 void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {
+	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+printf("%p: %f %f\n", this, myWidth, myHeight);
 	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
     // Body
+    myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
+
     myPainter->setBrush(color);
-    myPainter->drawEllipse(-1, -1, 2, 2);
+
+    myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
 
     applyPosition();
 }

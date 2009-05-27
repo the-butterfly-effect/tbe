@@ -58,7 +58,7 @@ public:
 
 protected:
 	/// overriden from QGraphicsItem
-    void advance(int step);
+    virtual void advance(int step);
 
 protected:
     // Protected attribute accessor methods
@@ -80,15 +80,20 @@ protected:
 
 	void applyPosition(void);
 	
-private:
+protected:
 	// Private attributes
 	//  
 
 	dBodyID theBodyID;
 	BaseObject* theBaseObjectPtr;
+
+	static const qreal theScale = 100.0;
+	
+	// current angle of the object in radians!
+	qreal	theOldAngle;
 	
 private:
-	void initAttributes ( ) ;
+	virtual void initAttributes ( ) ;
 };
 
 #endif // DRAWOBJECT_H
