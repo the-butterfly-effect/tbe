@@ -32,6 +32,12 @@ Level::Level ( )
     theWorldPtr = new World();
     
     // local scope is enough - World will take over ownership
+    Ramp* myRampPtr = new Ramp();
+    myRampPtr->setTheCenter( Position(0.75, 0.75, 0) );
+    myRampPtr->setTheWidth(1.5);
+    theWorldPtr->addObject(myRampPtr);
+
+    // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr = new BowlingBall();
     myBallPtr->setTheCenter( Position(2.85, 1.0, 0) );
     theWorldPtr->addObject(myBallPtr);
@@ -43,7 +49,7 @@ Level::Level ( )
 
     // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr3 = new BowlingBall();
-    myBallPtr3->setTheCenter( Position(0.4, 2.0, 0) );
+    myBallPtr3->setTheCenter( Position(0.3, 2.0, 0) );
     theWorldPtr->addObject(myBallPtr3);
 
     // local scope is enough - World will take over ownership
@@ -51,10 +57,6 @@ Level::Level ( )
     myPinPtr->setTheCenter( Position(3, 0.20, 0) );
     theWorldPtr->addObject(myPinPtr);
 
-    // local scope is enough - World will take over ownership
-    Ramp* myRampPtr = new Ramp();
-    myRampPtr->setTheCenter( Position(0.5, 0.5, 0) );
-    theWorldPtr->addObject(myRampPtr);
 }
 
 Level::~Level ( ) 

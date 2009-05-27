@@ -56,6 +56,14 @@ public:
 	// Public attribute accessor methods
 	//  
 
+	enum SizeDirections
+	{
+		NORESIZING = 0,
+		HORIZONTALRESIZE = 1,
+		VERTICALRESIZE = 2,
+		TOTALRESIZE = 3
+	};
+	
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const = 0;
 
@@ -65,8 +73,8 @@ public:
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const = 0;
 
-	/// returns true if the object can be resized by the user
-	virtual bool isResizable ( ) const = 0;
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const = 0;
 
 	/// resets the object into the start position/situation
 	virtual void reset(void);
@@ -147,8 +155,8 @@ public:
 	 * Set the value of theWidth
 	 * @param new_var the new value of theWidth
 	 */
-	void setTheWidth ( dReal new_var )
-		{ theWidth = new_var; }
+	virtual void setTheWidth ( dReal new_var )
+		{ if (new_var>0.01) theWidth = new_var; }
 
 	/**
 	 * Get the value of theWidth
@@ -161,8 +169,8 @@ public:
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
 	 */
-	void setTheHeight ( dReal new_var )
-		{ theHeight = new_var;	}
+	virtual void setTheHeight ( dReal new_var )
+		{ if (new_var>0.01) theHeight = new_var;	}
 
 	/**
 	 * Get the value of theHeight

@@ -68,9 +68,9 @@ public:
 	virtual bool isRotatable ( ) const
 	{	return false;	}
 	
-	/// returns true if the object can be resized by the user
-	virtual bool isResizable ( ) const
-	{	return false;	}
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
 	
 };
 

@@ -65,13 +65,28 @@ public:
 	virtual bool isRotatable ( ) const
 	{	return false;	}
 
-	/// returns true if the object can be resized by the user
-	virtual bool isResizable ( ) const
-	{	return true;	}
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const
+	{	return TOTALRESIZE;	}
 
+	/**
+	 * Set the value of theWidth
+	 * @param new_var the new value of theWidth
+	 */
+	virtual void setTheWidth ( dReal new_var );
+
+	/**
+	 * Set the value of theHeight
+	 * @param new_var the new value of theHeight
+	 */
+	virtual void setTheHeight ( dReal new_var );
+	
+	
 private:
 	/// TODO: lalalala
 	void adjustParameters(void);
+	
+	static const dReal theSlabThickness = 0.03; // m
 };
 
 #endif // RAMP_H

@@ -18,6 +18,7 @@
 
 #include "Ramp.h"
 #include "tbe_global.h"
+#include <cmath>
 
 // Constructors/Destructors
 //  
@@ -30,7 +31,7 @@ Ramp::Ramp ( )
 	// for the whole of the width of the block - which is 1.0 for now
 	// and the whole heigth of the block - which happens also to be 1.0
 	
-	setTheGeomID( dCreateBox (getSpaceID(), SQRT2, 0.03, 1.0) );
+	setTheGeomID( dCreateBox (getSpaceID(), SQRT2, theSlabThickness, 1.0) );
 	setTheBounciness(0.2);
 	
 	setTheWidth(1.0);
@@ -49,8 +50,36 @@ Ramp::~Ramp ( ) { }
 // Accessor methods
 //  
 
+void Ramp::setTheWidth ( dReal new_var )
+{
+	// adjusting the width also implies that the slap changes rotation and size
+	if (new_var <= 0.01)
+		return;
+	BaseObject::setTheWidth(new_var);
+	adjustParameters();
+}
+
+void Ramp::setTheHeight ( dReal new_var )
+{
+	//adjusting the height also implies that the slap changes rotation and size
+	if (new_var <= 0.01)
+		return;
+	BaseObject::setTheHeight(new_var);
+	adjustParameters();	
+}
+
 
 // Other methods
 //  
 
-
+void Ramp::adjustParameters(void)
+{
+	// width or height was just adjusted
+	// let's recalculate everything
+	dReal mySlabLength = sqrt(getTheWidth()*getTheWidth()+getTheHeight()*getTheHeight());
+	
+	dReal myAngle = atan2(getTheHeight(),getTheWidth());
+	
+	setAngle(-myAngle);
+	dGeomBoxSetLengths(getTheGeomID(), mySlabLength, theSlabThickness, 1.0 );
+}
