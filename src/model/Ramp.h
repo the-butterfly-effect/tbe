@@ -81,12 +81,20 @@ public:
 	 */
 	virtual void setTheHeight ( dReal new_var );
 	
+	virtual DrawObject* createDrawObject();
 	
 private:
 	/// TODO: lalalala
 	void adjustParameters(void);
 	
 	static const dReal theSlabThickness = 0.03; // m
+	
+	dReal getSlabLength(void)
+		{ return sqrt(getTheWidth()*getTheWidth()+getTheHeight()*getTheHeight()); }
+	dReal getSlabAngle(void)
+	{ return -atan2(getTheHeight(),getTheWidth()); }
+
+	friend class DrawRamp;
 };
 
 #endif // RAMP_H

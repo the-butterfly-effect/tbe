@@ -19,6 +19,7 @@
 #include "Ramp.h"
 #include "tbe_global.h"
 #include <cmath>
+#include "DrawRamp.h"
 
 // Constructors/Destructors
 //  
@@ -76,10 +77,10 @@ void Ramp::adjustParameters(void)
 {
 	// width or height was just adjusted
 	// let's recalculate everything
-	dReal mySlabLength = sqrt(getTheWidth()*getTheWidth()+getTheHeight()*getTheHeight());
 	
-	dReal myAngle = atan2(getTheHeight(),getTheWidth());
-	
-	setAngle(-myAngle);
-	dGeomBoxSetLengths(getTheGeomID(), mySlabLength, theSlabThickness, 1.0 );
+	setAngle(getSlabAngle());
+	dGeomBoxSetLengths(getTheGeomID(), getSlabLength(), theSlabThickness, 1.0 );
 }
+
+DrawObject*  Ramp::createDrawObject(void)
+{ return new DrawRamp(this); }

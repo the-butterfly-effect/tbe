@@ -23,6 +23,7 @@ HEADERS	+= src/tbe_global.h \
 	src/model/World.h \
 	src/view/Popup.h \
 	src/view/DrawObject.h \
+	src/view/DrawRamp.h \
 	src/view/DrawWorld.h \
 	src/view/MainWindow.h \
 	src/view/StartStopReset.h \
@@ -39,6 +40,7 @@ SOURCES	+= src/main.cpp \
 	src/model/Ramp.cpp \
 	src/model/World.cpp \
 	src/view/DrawObject.cpp \
+	src/view/DrawRamp.cpp \
 	src/view/DrawWorld.cpp \
 	src/view/MainWindow.cpp \
 	src/view/StartStopReset.cpp \
