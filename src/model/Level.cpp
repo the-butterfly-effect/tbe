@@ -33,7 +33,7 @@ Level::Level ( )
     
     // local scope is enough - World will take over ownership
     Ramp* myRampPtr = new Ramp();
-    myRampPtr->setTheCenter( Position(0.75, 0.75, 0) );
+    myRampPtr->setTheCenter( Position(0.75, 0.5, 0) );
     myRampPtr->setTheWidth(1.5);
     theWorldPtr->addObject(myRampPtr);
 
