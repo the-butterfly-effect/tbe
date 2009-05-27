@@ -31,11 +31,20 @@ BowlingPin::BowlingPin ( )
 	const dReal myLength = 0.38; // m
 	const dReal myMass   = 1.5;  // kg
 	setTheGeomID( dCreateCylinder (getSpaceID(), myRadius, myLength) );
-	setMassCylinder(myMass, AlongXAxis, myRadius, myLength);
+	setMassCylinder(myMass, AlongZAxis, myRadius, myLength);
+	
+	// the dCreateCylinder creates a cylinder along the Z axis.
+	dMatrix3 R;
+	dRFromAxisAndAngle(R, 1.0, 0.0, 0.0, -PI/2);
+	dGeomSetRotation(theGeomID, R);
+	dMassRotate(&theMass, R);
+	
+	
 	setTheBounciness(0.8);
 	
-	setTheWidth(myLength);
-	setTheHeight(2.0*myRadius);
+	setTheWidth(2.0*myRadius);
+	setTheHeight(myLength);
+//	setAngle(PI/2.0);
 }
 
 BowlingPin::~BowlingPin ( )

@@ -40,12 +40,12 @@ Level::Level ( )
     // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr = new BowlingBall();
     myBallPtr->setTheCenter( Position(2.85, 1.0, 0) );
-    theWorldPtr->addObject(myBallPtr);
+//    theWorldPtr->addObject(myBallPtr);
 
     // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr2 = new BowlingBall();
     myBallPtr2->setTheCenter( Position(3.15, 1.0, 0) );
-    theWorldPtr->addObject(myBallPtr2);
+//    theWorldPtr->addObject(myBallPtr2);
 
     // local scope is enough - World will take over ownership
     BowlingBall* myBallPtr3 = new BowlingBall();
