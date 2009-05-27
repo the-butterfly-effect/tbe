@@ -174,8 +174,8 @@ void World::nearCallbackReal (dGeomID o1, dGeomID o2)
 			myMax = ODE_MAX_CONTACTS;
 		for (int i=0; i<myMax; i++)
 		{
-			myContacts[i].surface.mode = dContactBounce; 
-			myContacts[i].surface.mu = dInfinity;
+			myContacts[i].surface.mode = dContactApprox1 | dContactBounce; 
+			myContacts[i].surface.mu = 1;
 			myContacts[i].surface.bounce = myBounce;
 			myContacts[i].surface.bounce_vel = (dReal) 0.01;
 			myContacts[i].surface.slip1 = (dReal) 0.1;
