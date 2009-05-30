@@ -51,7 +51,7 @@ BowlingPin::BowlingPin ( )
 	dMassRotate(&theMass, R);
 	
 	
-	setTheBounciness(0.8);
+	setTheBounciness(1.0);
 	
 	setTheWidth(2.0*myRadius);
 	setTheHeight(myLength);
