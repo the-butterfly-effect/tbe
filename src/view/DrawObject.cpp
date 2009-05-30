@@ -18,8 +18,8 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	// however, that does not sit well with QPainter, which is still a 
 	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
 	// that's what we need scaling for.
-	
-	// TODO: Let's assume milimeters here!
+	//
+	// theScale is set to 100.0 - that implies centimeters. 
     scale(1.0/theScale, 1.0/theScale);
     
     // in radians!
@@ -47,11 +47,10 @@ void DrawObject::advance(int step)
 
 void DrawObject::applyPosition(void)
 {
-	// TODO FIXME: Add rotation here
     const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
     const dReal *ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
-//DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);
-    
+
+    // TODO: this can be done a lot nicer with QTranform
     qreal myAngle = atan2(ang[1], ang[0]);
     
     // Qt has Y positive downwards, whereas all of the model has Y upwards.

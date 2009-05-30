@@ -65,8 +65,6 @@ protected:
     // Protected attribute accessor methods
 	//  
 
-	virtual void applyPosition(void);
-	
 private:
 	virtual void initAttributes ( ) ;
 };

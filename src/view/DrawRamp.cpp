@@ -34,21 +34,6 @@ void DrawRamp::advance(int step)
 	//applyPosition();
 }
 
-void DrawRamp::applyPosition(void)
-{
-	// TODO FIXME: Add rotation here
-    const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-    const dReal *ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
-    
-    qreal myAngle = atan2(ang[1], ang[0]);
-    
-    // Qt has Y positive downwards, whereas all of the model has Y upwards.
-    // that's what the minus is for :-)
-    setPos(pos1[0], -pos1[1]);
-    rotate((myAngle-theOldAngle)*180/3.14);
-    theOldAngle=myAngle;
-}
-
 QRectF DrawRamp::boundingRect() const
 {
 	Ramp* myRampPtr = reinterpret_cast<Ramp*>(theBaseObjectPtr);

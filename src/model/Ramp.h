@@ -84,7 +84,7 @@ public:
 	virtual DrawObject* createDrawObject();
 	
 private:
-	/// TODO: lalalala
+	/// this member recalculates the size of the slab based on current size
 	void adjustParameters(void);
 	
 	static const dReal theSlabThickness = 0.03; // m

@@ -79,8 +79,7 @@ bool World::addObject(BaseObject* anObjectPtr)
 	// if we have a graphical representation already, add object there, too
 	if (theDrawWorldPtr)
 	{
-		// TODO
-		assert(false);
+		theDrawWorldPtr->addItem(anObjectPtr->createDrawObject());
 	}
 	return true;
 }

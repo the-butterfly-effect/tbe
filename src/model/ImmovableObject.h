@@ -44,7 +44,6 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-	// TODO: figure parameters out
 	ImmovableObject (  );
 	
 	/**

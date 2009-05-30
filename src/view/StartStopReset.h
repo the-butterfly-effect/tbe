@@ -26,9 +26,6 @@
 /** class StartStopReset
   *
   * This class implements the state machine around start/stop/continue/reset.
-  * 
-  * TODO: modify the start/stop/continue button to follow suit
-  * 
   */
 
 class StartStopReset : public QObject
@@ -62,7 +59,7 @@ public:
 	void goToState(TheStates aNewState);
 
 signals:
-	/// this signal is emitted on each timer step (TODO: that is not correct)
+	/// this signal is emitted on each timer step
 	void runSimStep(void);
 	
 	/// this signal is emitted when the world needs to reset to its original position

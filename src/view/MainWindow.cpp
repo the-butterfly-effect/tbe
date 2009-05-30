@@ -51,22 +51,25 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
 	ui.graphicsView->setScene(aScene);
 	
-	// calculate x scaling and y scaling
-	QSize myViewSize = ui.graphicsView->size();
-	float xScale = (myViewSize.width()-10) / aScene->getWidth();
-	float yScale = (myViewSize.height()-10) / aScene->getHeight();
-
-	// TODO FIXME: fitInView causes a segfault :-(
+	// Unfortunately, fitInView() causes a segfault :-(
 //	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
 
-	// and use the lowest value for both X and Y to keep correct aspect ratio
-	if (xScale > yScale)
-		xScale = yScale;
-	// X horizontal positive to right
-	// Y vertical   positive up -> that's why we need the negative
-	ui.graphicsView->scale(1.0*xScale, 1.0*xScale);
-	ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
+	// that's why I have to do it "by hand":
+	{
+		// calculate x scaling and y scaling
+		QSize myViewSize = ui.graphicsView->size();
+		float xScale = (myViewSize.width()-10) / aScene->getWidth();
+		float yScale = (myViewSize.height()-10) / aScene->getHeight();
 	
+		// and use the lowest value for both X and Y to keep correct aspect ratio
+		if (xScale > yScale)
+			xScale = yScale;
+		// X horizontal positive to right
+		// Y vertical   positive up -> that's why we need the negative
+		ui.graphicsView->scale(1.0*xScale, 1.0*xScale);
+		ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
+	}
+		
     QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
     QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
     
