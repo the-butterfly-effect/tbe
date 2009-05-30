@@ -66,6 +66,8 @@ World::~World ( )
 
 bool World::addObject(BaseObject* anObjectPtr)
 {
+	if (anObjectPtr == NULL)
+		return false;
 	DEBUG5("addObject(%p = %s)\n", anObjectPtr, anObjectPtr->getName().toAscii().constData());
 	if (theObjectPtrList.contains(anObjectPtr))
 		return false;
