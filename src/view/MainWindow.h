@@ -32,7 +32,7 @@ class MainWindow : public QMainWindow
 public:
      MainWindow(QWidget *parent = 0);
 
-     void setScene(DrawWorld* aScene);
+     void setScene(DrawWorld* aScene, const QString& aLevelName);
      
 private slots:
 	void on_actionAbout_activated(void);

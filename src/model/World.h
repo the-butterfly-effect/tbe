@@ -19,6 +19,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include <QString>
 #include <QList>
 #include "ode/ode.h"
 #include "tbe_global.h"
@@ -42,9 +43,10 @@ public:
 	//  
 
 	/**
-	 * Empty Constructor
+	 * Simple Constructor
+	 * @param aName - name of the Level
 	 */
-	World ( );
+	World (const QString& aName);
 
 	/**
 	 * Empty Destructor
@@ -63,7 +65,12 @@ public:
 	 *  it will add all known BaseObjects to the Scene
 	 */
     void createScene(MainWindow* myMainPtr);
-	
+    
+    /** returns the name of the Level that created the World
+     */
+    const QString& getName(void) const
+		{ return theLevelName; } 
+    
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
@@ -126,7 +133,8 @@ private:
 	
 	/// the time taking in each time step
 	static const dReal deltaTime = 0.005;
-
+	
+	QString theLevelName;
 };
 
 #endif // WORLD_H

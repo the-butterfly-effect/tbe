@@ -47,7 +47,7 @@ void MainWindow::on_actionAbout_activated()
 //////////////////////////////////////////////////////////////////////////////
 // public accessor methods
 
-void MainWindow::setScene(DrawWorld* aScene)
+void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
 	ui.graphicsView->setScene(aScene);
 	
@@ -59,7 +59,7 @@ void MainWindow::setScene(DrawWorld* aScene)
 	// TODO FIXME: fitInView causes a segfault :-(
 //	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
 
-	// and use the least for both X and Y
+	// and use the lowest value for both X and Y to keep correct aspect ratio
 	if (xScale > yScale)
 		xScale = yScale;
 	// X horizontal positive to right
@@ -69,5 +69,7 @@ void MainWindow::setScene(DrawWorld* aScene)
 	
     QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
     QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
+    
+    setWindowTitle(APPNAME " - " + aLevelName);
 }
 

@@ -33,7 +33,7 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 {
 	initAttributes();
 	
-	aMainWindowPtr->setScene(this);
+	aMainWindowPtr->setScene(this, theWorldPtr->getName());
 
 	theBackGroundRectPtr = addRect(QRectF(0, -3, 4, 3));
 	addRect(QRectF(0, -1, 1, 1));

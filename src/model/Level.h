@@ -59,9 +59,13 @@ public:
 public:
 	// Public accessor methods
 	//
+
+	/// returns the Level's title
+	virtual const QString getName ( ) const
+		{ return "Bowling for Butterflies"; }
 	
 	World* getTheWorldPtr(void)
-	{	return theWorldPtr; }
+		{ return theWorldPtr; }
 
 
 private:	

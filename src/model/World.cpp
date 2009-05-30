@@ -24,7 +24,8 @@
 // Constructors/Destructors
 //  
 
-World::World ( ) 
+World::World ( const QString& aName)
+	: theLevelName(aName)
 {
 	initAttributes();
 }

@@ -25,7 +25,7 @@
 
 Level::Level ( ) 
 {
-    theWorldPtr = new World();
+    theWorldPtr = new World(getName());
     
     BaseObject* myBOPtr;
     
