@@ -4,8 +4,6 @@ ROADMAP FOR THE BUTTERFLY EFFECT
 MISSING (i.e. still have to be added to the below milestones)
   * persistency (popup warnings, settings, user progress)
   * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
-  * right-mouse button to adjust properties (e.g. trapdoor threshold)
-
 
 Milestone 1 - Bowling for Butterflies
 Version 0.10
@@ -14,7 +12,7 @@ Features:
   x Implemented modelling for:
     x Ramp
     x BowlingBall
-    - BowlingPin
+    x BowlingPin
   x Hardcoded level, where the bowling ball falls on the ramp
     speeds up, runs over a horizontal part and kicks over the pin
     which flies away
@@ -23,10 +21,9 @@ Features:
   x Start button works, stop button works, 
   * Reset button works.
   * Timing is correct.
-  * Fix objects to Z=0 plane
-  * Bouncing is correct
-    - need to get Data* off Body into Geom so can also get bouciness from immovables
-NOT PLAYABLE
+  x Fix objects to Z=0 plane
+  x Bouncing is more-or-less correct
+NOT A PLAYABLE GAME
 
 
 Milestone 2 - Levelling the Lands
@@ -41,7 +38,7 @@ Features:
   * menu File>Open works
   * automated regression tests for XML parser/world builder
   * automated regression tests for Ball&Ramp
-NOT PLAYABLE
+NOT A PLAYABLE GAME
 
 Milestone 3 - Dragging along
 Version 0.30
@@ -51,7 +48,9 @@ Features:
   * Allow saving of view into XML File
   * implement post-its
   * i18n
-NOT PLAYABLE
+  * right-mouse button to adjust properties (e.g. resize, rotate, trapdoor threshold)
+    - implement as a "pie menu"
+NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
 Version 0.40
