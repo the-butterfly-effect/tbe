@@ -204,6 +204,11 @@ void World::nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2)
 void World::reset ( ) 
 {
 	DEBUG5("World::reset()\n");
+	BaseObjectPtrList::iterator i;
+	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+	{
+		(*i)->reset();
+	}
 }
 
 dReal World::simStep (void)

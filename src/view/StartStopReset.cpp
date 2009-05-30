@@ -58,6 +58,7 @@ void StartStopReset::on_pushButton_Reset_clicked(void)
 		return;
 	}
 	goToState(NOTSTARTED);
+	emit resetSim();
 }
 
 void StartStopReset::on_pushButton_Toggle_clicked(void)
@@ -153,11 +154,6 @@ void StartStopReset::on_timerTick()
 	// we do not need to go through DrawWorld.
 	// (and we probably need to run multiple time steps per timer Tick)
 	emit runSimStep();
-}
-
-void StartStopReset::resetSim(void)
-{
-	// TODO: implement this
 }
 
 void StartStopReset::setMenuState(void)

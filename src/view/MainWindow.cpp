@@ -68,5 +68,6 @@ void MainWindow::setScene(DrawWorld* aScene)
 	ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
 	
     QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
+    QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
 }
 

@@ -124,12 +124,18 @@ void BaseObject::reset ( )
 {
 	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 
 			getName().toAscii().constData(), theCenter.x, theCenter.y, theCenter.angle);
+	
+	// reset the position
 	dBodySetPosition(theBodyID, theCenter.x, theCenter.y, 0.0);
-	// TODO FIXME: the below code conflicts with the code to put th
-	// cylinder upright in BowlingPin... 
-//	dMatrix3 R;
-//	dRFromAxisAndAngle (R, 0.0, 0.0, 1.0, theCenter.angle);
-//	dBodySetRotation(theBodyID, R);
+
+	// reset the rotational angle
+	dMatrix3 R;
+	dRFromAxisAndAngle (R, 0.0, 0.0, 1.0, theCenter.angle);
+	dBodySetRotation(theBodyID, R);
+
+	// reset the velocities 
+	dBodySetLinearVel  (theBodyID, 0.0, 0.0, 0.0);
+	dBodySetAngularVel (theBodyID, 0.0, 0.0, 0.0);
 }
 
 

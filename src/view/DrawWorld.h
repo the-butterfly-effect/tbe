@@ -63,6 +63,7 @@ public:
 	
 public slots:
 	void timeStep(void);
+	void resetWorld(void);
 	
 private:
 	// Private attributes

@@ -62,7 +62,11 @@ public:
 	void goToState(TheStates aNewState);
 
 signals:
+	/// this signal is emitted on each timer step (TODO: that is not correct)
 	void runSimStep(void);
+	
+	/// this signal is emitted when the world needs to reset to its original position
+	void resetSim(void);
 	
 public slots:
 	/** public slot for Reset UI actions
@@ -85,7 +89,6 @@ private:
 	void setResetButtonState(bool isOn);
 
 	
-	void resetSim();
 	void startSim();
 	void stopSim();
 	

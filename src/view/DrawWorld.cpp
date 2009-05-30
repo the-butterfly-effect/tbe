@@ -66,7 +66,14 @@ void DrawWorld::initAttributes ( )
 
 void DrawWorld::timeStep( )
 {
-	DEBUG5("TIMESTEP\n");
 	theWorldPtr->simStep();
+	advance();
+}
+
+void DrawWorld::resetWorld( )
+{
+	DEBUG5("RESET WORLD\n");
+	theWorldPtr->reset();
+	// and redraw
 	advance();
 }
