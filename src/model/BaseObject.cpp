@@ -79,6 +79,14 @@ dWorldID BaseObject::getWorldID(void)
 	return theStaticWorldID;
 }
 
+void BaseObject::setTheGeomID ( dGeomID new_var )
+{
+	assert(theGeomID==0);
+	theGeomID = new_var;
+	dGeomSetBody (theGeomID, theBodyID);
+	dGeomSetData(theGeomID, this);
+}
+
 void BaseObject::ForWorldOnly::setTheSpaceID(dSpaceID anID)
 {
 	theStaticSpaceID = anID;
@@ -101,7 +109,6 @@ void BaseObject::initAttributes ( )
 {
 	DEBUG5("BaseObject::initAttributes\n");
 	theBodyID = dBodyCreate (getWorldID());
-	dBodySetData(theBodyID, this);
 	
 	theGeomID = 0;
 

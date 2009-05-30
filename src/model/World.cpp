@@ -100,12 +100,12 @@ void World::createScene(MainWindow* myMainPtr)
 	}
 }
 
-dReal World::getBounce(dBodyID b1)
+dReal World::getBounce(dGeomID aGeom)
 {
-	if (b1 == NULL)
+	if (aGeom == NULL)
 		return 0.2;
 
-	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dBodyGetData(b1));
+	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dGeomGetData(aGeom));
 	if (myObject1)
 		return  myObject1->getTheBounciness();
 	return 0.2;
@@ -131,12 +131,12 @@ void World::initAttributes( )
     dCreatePlane (theGlobalSpaceID, 1.0, 0.0, 0,0);
 }
 
-void World::nearCallbackReal (dGeomID o1, dGeomID o2)
+void World::nearCallbackReal (dGeomID aGeom1, dGeomID aGeom2)
 {
 	// this code is heavily borrowed from:
 	// http://opende.sourceforge.net/wiki/index.php/Collision_callback_member_function
 
-	if (!(o1 && o2))
+	if (!(aGeom1 && aGeom2))
 	{
 		DEBUG3("CollisionCallback with null geometry\n");
 		return;
@@ -146,10 +146,10 @@ void World::nearCallbackReal (dGeomID o1, dGeomID o2)
 	dBodyID myBody1 = NULL;
 	dBodyID myBody2 = NULL;
 
-	if (o1!=NULL)
-		myBody1 = dGeomGetBody (o1);
-	if (o2!=NULL)
-		myBody2 = dGeomGetBody (o2);
+	if (aGeom1!=NULL)
+		myBody1 = dGeomGetBody (aGeom1);
+	if (aGeom2!=NULL)
+		myBody2 = dGeomGetBody (aGeom2);
 
 	if (myBody1 && myBody2 && dAreConnected (myBody1, myBody2))
 	{
@@ -160,15 +160,15 @@ void World::nearCallbackReal (dGeomID o1, dGeomID o2)
     // bounce is the amount of "bouncyness".
 	// if the objects have a bounciness specified, let's use that.
     dReal myBounce = 0.0;
-    myBounce += getBounce(myBody1);
-    myBounce += getBounce(myBody2);
+    myBounce += getBounce(aGeom1);
+    myBounce += getBounce(aGeom2);
     myBounce /= 2.0;
 	
 	
 	const int ODE_MAX_CONTACTS=10;
 	
 	dContact myContacts[ODE_MAX_CONTACTS];
-	int myContactCount = dCollide (o1, o2, ODE_MAX_CONTACTS, &myContacts[0].geom, sizeof (dContact));
+	int myContactCount = dCollide (aGeom1, aGeom2, ODE_MAX_CONTACTS, &myContacts[0].geom, sizeof (dContact));
 	if (myContactCount)
 	{
 		int myMax = myContactCount;

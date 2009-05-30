@@ -96,12 +96,12 @@ private:
 	 */
 	void nearCallbackReal(dGeomID o1, dGeomID o2);
 
-	/** this member tries to figure out the bounciness of the body
+	/** this member tries to figure out the bounciness of the geometry
 	 * 
-	 * @param b1 the body to query for bounciness
+	 * @param b1 the geometry to query for bounciness
 	 * @return the bounciness
 	 */
-	static dReal getBounce(dBodyID b1);
+	static dReal getBounce(dGeomID b1);
 
 	void initAttributes ( ) ;
 	

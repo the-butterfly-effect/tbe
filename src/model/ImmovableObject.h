@@ -58,18 +58,6 @@ public:
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 	
-	/**
-	 * Set the value of theGeomID
-	 * @param new_var the new value of theGeomID
-	 */
-	virtual void setTheGeomID ( dGeomID new_var )				
-	{
-		assert(theGeomID==0);
-		theGeomID = new_var;
-		
-		// immovable objects do not have a body
-		/*dGeomSetBody (theGeomID, theBodyID);*/
-	}
 };
 
 #endif // IMMOVABLEOBJECT_H

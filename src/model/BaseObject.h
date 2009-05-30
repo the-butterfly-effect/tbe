@@ -221,12 +221,7 @@ public:
 	 * Set the value of theGeomID
 	 * @param new_var the new value of theGeomID
 	 */
-	virtual void setTheGeomID ( dGeomID new_var )				
-	{
-		assert(theGeomID==0);
-		theGeomID = new_var;
-		dGeomSetBody (theGeomID, theBodyID);
-	}
+	virtual void setTheGeomID ( dGeomID new_var );
 
 	/**
 	 * Get the value of theGeomID
