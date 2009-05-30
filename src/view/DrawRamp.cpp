@@ -39,7 +39,6 @@ void DrawRamp::applyPosition(void)
 	// TODO FIXME: Add rotation here
     const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
     const dReal *ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
-//DEBUG5("%p: %f, %f\n", this, pos1[0], pos1[1]);
     
     qreal myAngle = atan2(ang[1], ang[0]);
     
@@ -70,9 +69,9 @@ void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWid
 	qreal myWidth = myRampPtr->getSlabLength()*theScale;
 	qreal myHeight= myRampPtr->theSlabThickness*theScale;
 	
-	DEBUG5("void DrawRamp::paint - %fx%f\n",
-			   myRampPtr->getSlabLength(), 
-			   myRampPtr->theSlabThickness);
+//	DEBUG5("void DrawRamp::paint - %fx%f\n",
+//			   myRampPtr->getSlabLength(), 
+//			   myRampPtr->theSlabThickness);
 	
 	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
     myPainter->setBrush(color);
