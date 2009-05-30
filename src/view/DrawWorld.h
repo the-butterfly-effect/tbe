@@ -54,7 +54,7 @@ public:
 
 	// TODO - This info should not be static, but come from Level or World ?!?
 	dReal getWidth()
-	{ return 4.0; };
+	{ return 6.0; };
 	
 	// TODO - This info should not be static, but come from Level or World ?!?
 	dReal getHeight()
