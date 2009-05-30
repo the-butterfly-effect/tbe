@@ -37,6 +37,12 @@ Level::Level ( )
 
     myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3, 0.19, 0));
     theWorldPtr->addObject(myBOPtr);
+
+    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3.23, 0.19, 0));
+    theWorldPtr->addObject(myBOPtr);
+
+    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3.46, 0.19, 0));
+    theWorldPtr->addObject(myBOPtr);
 }
 
 Level::~Level ( ) 
