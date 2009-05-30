@@ -1,6 +1,18 @@
 #include "BowlingBall.h"
 #include "tbe_global.h"
 
+
+// this class' ObjectFactory
+class BowlingBallObjectFactory : public ObjectFactory
+{
+public:
+	BowlingBallObjectFactory(void)
+	{	announceObjectType("Bowling Ball", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new BowlingBall(); }
+};
+static BowlingBallObjectFactory theFactory;
+
 // Constructors/Destructors
 //  
 

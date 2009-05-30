@@ -18,10 +18,6 @@
 
 #include "Level.h"
 #include "World.h"
-#include "BaseObject.h"
-#include "BowlingBall.h"
-#include "BowlingPin.h"
-#include "Ramp.h"
 
 
 // Constructors/Destructors
@@ -31,32 +27,16 @@ Level::Level ( )
 {
     theWorldPtr = new World();
     
-    // local scope is enough - World will take over ownership
-    Ramp* myRampPtr = new Ramp();
-    myRampPtr->setTheCenter( Position(0.75, 0.5, 0) );
-    myRampPtr->setTheWidth(1.5);
-    theWorldPtr->addObject(myRampPtr);
+    BaseObject* myBOPtr;
+    
+    myBOPtr = ObjectFactory::createObject("Ramp", Position(0.75, 0.5, 0), 1.5);
+    theWorldPtr->addObject(myBOPtr);
 
-    // local scope is enough - World will take over ownership
-    BowlingBall* myBallPtr = new BowlingBall();
-    myBallPtr->setTheCenter( Position(2.85, 1.0, 0) );
-//    theWorldPtr->addObject(myBallPtr);
+    myBOPtr = ObjectFactory::createObject("Bowling Ball", Position(0.3, 2.0, 0));
+    theWorldPtr->addObject(myBOPtr);
 
-    // local scope is enough - World will take over ownership
-    BowlingBall* myBallPtr2 = new BowlingBall();
-    myBallPtr2->setTheCenter( Position(3.15, 1.0, 0) );
-//    theWorldPtr->addObject(myBallPtr2);
-
-    // local scope is enough - World will take over ownership
-    BowlingBall* myBallPtr3 = new BowlingBall();
-    myBallPtr3->setTheCenter( Position(0.3, 2.0, 0) );
-    theWorldPtr->addObject(myBallPtr3);
-
-    // local scope is enough - World will take over ownership
-    BowlingPin* myPinPtr = new BowlingPin();
-    myPinPtr->setTheCenter( Position(3, 0.20, 0) );
-    theWorldPtr->addObject(myPinPtr);
-
+    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3, 0.19, 0));
+    theWorldPtr->addObject(myBOPtr);
 }
 
 Level::~Level ( ) 

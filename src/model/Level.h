@@ -23,6 +23,7 @@
 #include <QString>
 #include <QList>
 #include "tbe_global.h"
+#include "BaseObject.h"
 
 // Forward Declarations:
 class MainWindow;
@@ -38,7 +39,7 @@ class World;
   * File parsing will only come in Milestone 2.
   */
 
-class Level
+class Level : public ObjectFactory
 {
 public:
 
@@ -61,12 +62,13 @@ public:
 	
 	World* getTheWorldPtr(void)
 	{	return theWorldPtr; }
-	
-	
-	
+
+
 private:	
 	World* theWorldPtr;
-	
+
+	/// implementation of ObjectFactory - not needed in Level...
+	virtual BaseObject* createObject(void) const { return NULL; }
 };
 
 #endif // LEVEL_H

@@ -20,7 +20,7 @@
 #define BASEOBJECT_H
 
 #include <assert.h>
-#include <qstring.h>
+#include <QString>
 #include "ode/ode.h"
 #include "tbe_global.h"
 
@@ -28,7 +28,15 @@
 
 // Forward Declarations
 class DrawObject;
+class ObjectFactory;
 
+
+//   ************************************************
+//   *                                              *
+//   * NOTE: the ObjectFactory class declaration is *
+//   *       below the BaseObject declaration       *
+//   *                                              *
+//   ************************************************
 
 /**
   * class BaseObject
@@ -235,6 +243,43 @@ private:
 
 	void initAttributes ( ) ;
 
+};
+
+//////////////////////////////////////////////////////////////////////////////
+
+/**
+ *  class ObjectFactory
+ *  
+ *  This class will be implemented for each "final" Object type.
+ *  There should be a static instance in each Object's cpp file. 
+ *  At system start it will announce the type to Level and do the real Object creation.
+ */
+class ObjectFactory
+{
+	// there's nothing public here - nobody should call anything in this class
+	// directly.
+	
+protected:
+	/** create the object aName and return a pointer to it
+	 * @param aName
+	 * @param aPostion
+	 * @param aWidth    width of the object in meter - default 1.0
+	 * @param anHeight  height of the object in meter - default 1.0
+	 * @return a valid pointer to a newly created object or NULL if not found
+	 */
+	BaseObject* createObject(
+			const QString& aName, 
+			const Position aPostion, 
+			const dReal aWidth = 1.0,
+			const dReal anHeight = 1.0) const;
+	
+	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
+	
+	/** pure virtual function that creates an object of the type the factory is for
+	 *  must be implemented for each real factory.
+	 * @return pointer to a newly instantiated object
+	 */
+	virtual BaseObject* createObject(void) const = 0;
 };
 
 #endif // BASEOBJECT_H

@@ -19,6 +19,17 @@
 #include "BowlingPin.h"
 #include "tbe_global.h"
 
+// this class' ObjectFactory
+class BowlingPinObjectFactory : public ObjectFactory
+{
+public:
+	BowlingPinObjectFactory(void)
+	{	announceObjectType("Bowling Pin", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new BowlingPin(); }
+};
+static BowlingPinObjectFactory theFactory;
+
 // Constructors/Destructors
 //  
 

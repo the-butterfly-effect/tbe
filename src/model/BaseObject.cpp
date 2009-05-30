@@ -18,11 +18,18 @@
 
 #include "BaseObject.h"
 #include "DrawObject.h"
+#include <QMap>
 
 // Static variables
 static dWorldID theStaticWorldID = NULL;
 static dSpaceID theStaticSpaceID = NULL;
 
+//   ***********************************************
+//   *                                             *
+//   * NOTE: the ObjectFactory class definition is *
+//   *       below the BaseObject definition       *
+//   *                                             *
+//   ***********************************************
 
 
 // Constructors/Destructors
@@ -116,4 +123,51 @@ void BaseObject::reset ( )
 //	dMatrix3 R;
 //	dRFromAxisAndAngle (R, 0.0, 0.0, 1.0, theCenter.angle);
 //	dBodySetRotation(theBodyID, R);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+/** small, only locally used class
+  */
+class FactoryList
+{
+public:
+	void insert(const QString& aName, ObjectFactory* theFactoryPtr)
+		{ theMap[aName]=theFactoryPtr; }
+	const ObjectFactory* getFactoryPtr(const QString& aName) const
+		{ return theMap[aName]; }
+private:
+	typedef QMap<QString, ObjectFactory*> TheMap;
+	TheMap theMap;
+};
+static FactoryList* theFactoryListPtr=NULL;
+
+void
+ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr)
+{
+	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)\n", 
+			anObjectTypeName.toAscii().constData(), aThisPtr);
+	if (theFactoryListPtr==NULL)
+		theFactoryListPtr = new FactoryList();
+	theFactoryListPtr->insert(anObjectTypeName,aThisPtr);
+}
+
+BaseObject* 
+ObjectFactory::createObject(
+		const QString& aName, 
+		const Position aPosition,
+		const dReal aWidth,
+		const dReal anHeight) const
+{
+	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
+	if (myFactoryPtr == NULL)
+		return NULL;
+	BaseObject* myObjectPtr = myFactoryPtr->createObject();
+	myObjectPtr->setTheCenter(aPosition);
+	if (myObjectPtr->isResizable() & BaseObject::HORIZONTALRESIZE)
+		myObjectPtr->setTheWidth(aWidth);
+	if (myObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
+		myObjectPtr->setTheHeight(anHeight);
+	return myObjectPtr;
 }

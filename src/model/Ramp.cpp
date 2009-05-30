@@ -21,6 +21,17 @@
 #include <cmath>
 #include "DrawRamp.h"
 
+//// this class' ObjectFactory
+class RampObjectFactory : public ObjectFactory
+{
+public:
+	RampObjectFactory(void)
+	{	announceObjectType("Ramp", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new Ramp(); }
+};
+static RampObjectFactory theFactory;
+
 // Constructors/Destructors
 //  
 
