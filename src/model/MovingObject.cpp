@@ -27,11 +27,14 @@ MovingObject::MovingObject ( )
 {
 	DEBUG5("MovingObject::MovingObject\n");
 	dMassSetZero(&theMass);
+
+	thePlane2DJoint = dJointCreatePlane2D (getWorldID(), 0);
+    dJointAttach (thePlane2DJoint, theBodyID, 0);
 }
 
 MovingObject::~MovingObject ( ) 
 {
-	// nothing to do here
+	dJointDestroy(thePlane2DJoint);
 }
 
 //  

@@ -29,6 +29,11 @@
   * This class inherits from BaseObject, but because it does not implement 
   * any of the pure virtual members of BaseObject, 
   * it is an abstract class itself
+  * 
+  * MovingObject adds two concepts to BaseObject:
+  *   * Mass
+  *   * Fixation to the Z=0 plane 
+  *     TODO: force-feedback from joint not implemented!!!
   */
 
 class MovingObject : virtual public BaseObject
@@ -104,6 +109,7 @@ protected:
 
 protected:
 	dMass theMass;
+	dJointID thePlane2DJoint;
 };
 
 #endif // MOVINGOBJECT_H

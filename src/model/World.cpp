@@ -177,7 +177,7 @@ void World::nearCallbackReal (dGeomID aGeom1, dGeomID aGeom2)
 		for (int i=0; i<myMax; i++)
 		{
 			myContacts[i].surface.mode = dContactApprox1 | dContactBounce; 
-			myContacts[i].surface.mu = 1;
+			myContacts[i].surface.mu = 0.25;
 			myContacts[i].surface.bounce = myBounce;
 			myContacts[i].surface.bounce_vel = (dReal) 0.01;
 			myContacts[i].surface.slip1 = (dReal) 0.1;
@@ -210,6 +210,18 @@ dReal World::simStep (void)
 {
     // find collisions and add contact joints
     dSpaceCollide (theGlobalSpaceID, this, nearCallbackStatic);
+
+// TODO: This is not yet implemented (and maybe we don't need to?)
+//    // revisit all Plane2D joints to make sure they work correctly
+//	BaseObjectPtrList::iterator i;
+//	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+//	{
+//		if ((*i)->getTheBodyID() == NULL)
+//			continue;
+//		DEBUG5("fixing plane2d for item %p\n",*i);
+//		// TODO: (*i)->fixupPlane2DJoint();
+//	}
+
     
     // step the simulation
 	dWorldStep (theGlobalWorldID, deltaTime);
