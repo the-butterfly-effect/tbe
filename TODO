@@ -1,12 +1,8 @@
 ROADMAP FOR THE BUTTERFLY EFFECT
 ================================
 
-MISSING (i.e. still have to be added to the below milestones)
-  * persistency (popup warnings, settings, user progress)
-  * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
-
 Milestone 1 - Bowling for Butterflies
-Version 0.10
+COMPLETED: Subversion revision 101
 Features:
   x Object model implemented, OpenDE implemented
   x Implemented modelling for:
@@ -85,6 +81,8 @@ Version 0.50
     - make sure to have some basic tutorials
   * add concept of order in levels, so players can start
     and then move on without having to use File>Open
+  * persistency (popup warnings, settings, user progress)
+  * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 Milestone 6 - Rope
