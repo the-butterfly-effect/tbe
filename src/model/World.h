@@ -74,9 +74,11 @@ public:
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
-	/** take one step in the simulation loop 
+	/** take one step in the simulation loop
+	 *  Note that due to a limitation in OpenDE, each step is fixed time 
 	 * 
-	 * @return the time step taken in the simulation step
+	 * @return the time step taken in the simulation step in seconds 
+	 *         (most likely only a fraction of a second)
 	 */
 	dReal simStep (void);
 

@@ -23,6 +23,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QTimer>
+#include <QTime>
 
 // forward declarations
 class World;
@@ -83,6 +84,7 @@ private:
 	World* theWorldPtr;
 
 	QTimer theTimer;
+	QTime  theSimulationTime;
 	
 public:
 	QGraphicsRectItem* theBackGroundRectPtr;

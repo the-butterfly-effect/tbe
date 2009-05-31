@@ -66,9 +66,10 @@ void DrawWorld::initAttributes ( )
 
 void DrawWorld::on_timerTick()
 {
-	// TODO: make this real time.
-	// (we probably need to run multiple time steps per timer Tick)
-	theWorldPtr->simStep();
+	while(theSimulationTime < QTime::currentTime())
+	{
+		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep()*1000.0);
+	}
 	advance();
 }
 
@@ -84,6 +85,7 @@ void DrawWorld::startTimer(void)
 {
 	DEBUG5("DrawWorld::startTimer(void)\n");
 	theTimer.start(1000/25);
+	theSimulationTime = QTime::currentTime();
 }
 
 void DrawWorld::stopTimer(void)
