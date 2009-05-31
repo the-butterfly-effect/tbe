@@ -31,6 +31,13 @@ StartStopReset::StartStopReset (Ui::MainWindow* aMainWindowUIPtr)
 	: theMainWindowUIPtr(aMainWindowUIPtr), theState(StartStopReset::NOTSTARTED)
 {
 	DEBUG5("StartStopReset::StartStopReset\n");
+	
+	// If only the following code was possible :-(
+	// MainWindow is not yet fully initialised when this constructor is run.
+	// So we'll have to hope that the UI file has everything correct... 
+//	setPushButtonState();
+//	setMenuState();
+//	setResetButtonState(theState==STOPPED);
 }
 
 StartStopReset::~StartStopReset ( ) 
