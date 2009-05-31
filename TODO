@@ -19,8 +19,8 @@ Features:
   x MainWindow displays and the above simulation is shown
     in the GraphicsView using circles and/or rectangles
   x Start button works, stop button works, 
-  * Reset button works.
-  * Timing is correct.
+  x Reset button works.
+  x Timing is correct.
   x Fix objects to Z=0 plane
   x Bouncing is more-or-less correct
 NOT A PLAYABLE GAME
@@ -35,10 +35,12 @@ Features:
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
   * Implement level class and parse XML file to objects
+  * do not (re)paint objects that have not moved
   * menu File>Open works
   * automated regression tests for XML parser/world builder
   * automated regression tests for Ball&Ramp
 NOT A PLAYABLE GAME
+
 
 Milestone 3 - Dragging along
 Version 0.30
