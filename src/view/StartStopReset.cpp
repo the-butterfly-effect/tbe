@@ -31,7 +31,6 @@ StartStopReset::StartStopReset (Ui::MainWindow* aMainWindowUIPtr)
 	: theMainWindowUIPtr(aMainWindowUIPtr), theState(StartStopReset::NOTSTARTED)
 {
 	DEBUG5("StartStopReset::StartStopReset\n");
-	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 }
 
 StartStopReset::~StartStopReset ( ) 
@@ -118,7 +117,7 @@ void StartStopReset::goToState(TheStates aNewState)
 			case STOPPED:		// no need for action
 				break;
 			case RUNNING:		// continue button clicked
-				startSim();
+				emit startSim();
 				theState = aNewState;
 				break;
 			}
@@ -132,7 +131,7 @@ void StartStopReset::goToState(TheStates aNewState)
 				assert(false);
 				break;
 			case STOPPED:		// stop button clicked
-				stopSim();
+				emit stopSim();
 				theState = aNewState;
 				break;
 			case RUNNING:		// no need for action
@@ -145,15 +144,6 @@ void StartStopReset::goToState(TheStates aNewState)
 	setPushButtonState();
 	setMenuState();
 	setResetButtonState(theState==STOPPED);
-}
-
-void StartStopReset::on_timerTick()
-{
-	// TODO: make this real time.
-	// this is probably done easiest by linking up the Level/World immediately, so
-	// we do not need to go through DrawWorld.
-	// (and we probably need to run multiple time steps per timer Tick)
-	emit runSimStep();
 }
 
 void StartStopReset::setMenuState(void)
@@ -184,15 +174,4 @@ void StartStopReset::setResetButtonState(bool isOn)
 	theMainWindowUIPtr->pushButton_Reset->setEnabled(isOn);
 }
 
-void StartStopReset::startSim(void)
-{
-	DEBUG5("StartStopReset::startSim(void)\n");
-	theTimer.start(1000/25);
-}
-
-void StartStopReset::stopSim(void)
-{
-	DEBUG5("StartStopReset::stopSim(void)\n");
-	theTimer.stop();
-}
 

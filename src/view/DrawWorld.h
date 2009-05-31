@@ -22,6 +22,7 @@
 #include "ode/ode.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
+#include <QTimer>
 
 // forward declarations
 class World;
@@ -62,8 +63,17 @@ public:
 	
 	
 public slots:
-	void timeStep(void);
 	void resetWorld(void);
+
+	/// public slot: start (or continue) the simulation
+	void startTimer();
+	
+	/// public slot: stop the simulation
+	void stopTimer();
+
+private slots:
+	/// called whenever a timer tick happens
+	void on_timerTick(void);
 	
 private:
 	// Private attributes
@@ -72,6 +82,8 @@ private:
 	MainWindow* theMainWindowPtr;
 	World* theWorldPtr;
 
+	QTimer theTimer;
+	
 public:
 	QGraphicsRectItem* theBackGroundRectPtr;
 

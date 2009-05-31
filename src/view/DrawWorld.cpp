@@ -34,10 +34,10 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	initAttributes();
 	
 	aMainWindowPtr->setScene(this, theWorldPtr->getName());
+	
+	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 
 	theBackGroundRectPtr = addRect(QRectF(0, -3, 4, 3));
-	addRect(QRectF(0, -1, 1, 1));
-	addRect(QRectF(2, -1, 1, 1));
 }
 
 
@@ -64,8 +64,10 @@ void DrawWorld::initAttributes ( )
 	DEBUG5("void DrawWorld::initAttributes\n");
 }
 
-void DrawWorld::timeStep( )
+void DrawWorld::on_timerTick()
 {
+	// TODO: make this real time.
+	// (we probably need to run multiple time steps per timer Tick)
 	theWorldPtr->simStep();
 	advance();
 }
@@ -76,4 +78,16 @@ void DrawWorld::resetWorld( )
 	theWorldPtr->reset();
 	// and redraw
 	advance();
+}
+
+void DrawWorld::startTimer(void)
+{
+	DEBUG5("DrawWorld::startTimer(void)\n");
+	theTimer.start(1000/25);
+}
+
+void DrawWorld::stopTimer(void)
+{
+	DEBUG5("DrawWorld::stopTimer(void)\n");
+	theTimer.stop();
 }

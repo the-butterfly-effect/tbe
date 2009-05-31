@@ -59,8 +59,11 @@ public:
 	void goToState(TheStates aNewState);
 
 signals:
-	/// this signal is emitted on each timer step
-	void runSimStep(void);
+	/// signal: start or continue button clicked
+	void startSim();
+	
+	/// signal: stop button clicked
+	void stopSim();
 	
 	/// this signal is emitted when the world needs to reset to its original position
 	void resetSim(void);
@@ -75,10 +78,6 @@ public slots:
 	/** public slot for Start/Stop/Continue actions
 	 */
 	void on_pushButton_Toggle_clicked(void);
-
-private slots:
-	/// called whenever a timer tick happens
-	void on_timerTick(void);
 	
 private:
 	void setMenuState(void);
@@ -86,8 +85,6 @@ private:
 	void setResetButtonState(bool isOn);
 
 	
-	void startSim();
-	void stopSim();
 	
 private:
 	Ui::MainWindow* theMainWindowUIPtr;
@@ -96,8 +93,6 @@ private:
 	 *  The only member allowed to touch theState is goToState()!!!
 	 */
 	TheStates theState;
-	
-	QTimer theTimer;
 };
 
 #endif // DRAWOBJECT_H

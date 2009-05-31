@@ -70,7 +70,8 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 		ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
 	}
 		
-    QObject::connect(&theSimStateMachine, SIGNAL(runSimStep()), aScene, SLOT(timeStep()));
+    QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
+    QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
     
     setWindowTitle(APPNAME " - " + aLevelName);
