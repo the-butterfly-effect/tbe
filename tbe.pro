@@ -11,6 +11,8 @@ INCLUDEPATH	+= 3rdParty/include src src/model src/view src/base
 
 #CXXFLAGS += -ggdb3 -O0
 
+QT += core gui xml
+
 HEADERS	+= src/tbe_global.h \
 	src/model/BaseObject.h \
 	src/model/BowlingBall.h \
