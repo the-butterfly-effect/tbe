@@ -38,15 +38,25 @@ int main(int argc, char **argv)
 	// init OpenDE (physics library) - opende.sf.net
     dInitODE ();
 
-    // setup main window
-    MainWindow myMain;
-    myMain.show();
-    
+	// TODO: boo - fixed file name !!!
+    QString myFileName = "randomcode/xml-read/examplelevel.xml";
     // create level and display in main window
     Level* myLevelPtr = new Level();
+    if (myLevelPtr->load(myFileName)==false)
+    {
+    	// TODO: popup and such
+    	DEBUG1("ERROR during reading file '%s': %s\n",
+    			myFileName.toAscii().constData(),
+    			myLevelPtr->getErrorMessage().toAscii().constData() );
+    	return 1;
+    }
+   
+	// setup main window
+	MainWindow myMain;
+	myMain.show();
     myLevelPtr->getTheWorldPtr()->createScene(&myMain);
 
-    // run the main display loop    
+	// run the main display loop    
     int myReturn=app.exec();
     
     // close down    

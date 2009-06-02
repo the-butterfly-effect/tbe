@@ -20,6 +20,7 @@
 #define LEVEL_H
 
 #include <assert.h>
+#include <QObject>
 #include <QString>
 #include <QList>
 #include "tbe_global.h"
@@ -35,17 +36,17 @@ class World;
   * the level reads the objects from a file and creates the world containing
   * the various objects
   * 
-  * FIXME: for now, Level is just a single, hardcoded level.
-  * File parsing will only come in Milestone 2.
+  * Level inherits QObject to make i18n of error messages easier 
   */
 
-class Level : public ObjectFactory
+class Level :  public QObject, public ObjectFactory
 {
-public:
+	Q_OBJECT
 
 	// Constructors/Destructors
 	//  
-
+public:
+	
 	/**
 	 * Empty Constructor
 	 */
@@ -60,6 +61,17 @@ public:
 	// Public accessor methods
 	//
 
+	/** returns an already internationalized error message if load() or
+	 *  save() failed.
+	 *  
+	 *  if load() or save() succeeded or if other members were run,
+	 *  the output is undefined (probably an empty string, though)
+	 *  
+	 * @return a string with the error.
+	 */ 
+	const QString& getErrorMessage(void)
+		{ return theErrorMessage; }
+
 	/// returns the Level's title
 	virtual const QString getName ( ) const
 		{ return "Bowling for Butterflies"; }
@@ -67,12 +79,35 @@ public:
 	World* getTheWorldPtr(void)
 		{ return theWorldPtr; }
 
-
+	/** open file containing a level definition, parse it, build the Level
+	 * 
+	 * @param aFileName file to parse and populate Level with.
+	 * @return false if loading failed - error message will be set.
+	 */
+	bool load(const QString& aFileName);
+	
+	/** save the Level to a file
+	 *  the file name must be unique - overwriting is not allowed here
+	 * 
+	 * @param aFileName file to serialize the Level/World to.
+	 * @return false if saving failed - error message will be set.
+	 */
+	//bool save(const QString& aFileName);
+	
 private:	
 	World* theWorldPtr;
 
 	/// implementation of ObjectFactory - not needed in Level...
 	virtual BaseObject* createObject(void) const { return NULL; }
+	
+	QString theLevelName;
+	QString theLevelAuthor;
+	QString theLevelLicense;
+	
+	/** Contains an error message if load() or save() failed.
+	 *  The message was i18n'ed when it was set - no need to run tr() again.
+	 */ 
+	QString theErrorMessage;
 };
 
 #endif // LEVEL_H
