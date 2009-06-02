@@ -30,7 +30,7 @@ Features:
   * write two Levels in XML by hand
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
-  * Implement level class and parse XML file to objects
+  x Implement level class and parse XML file to objects
   * do not (re)paint objects that have not moved
   * menu File>Open works
   * automated regression tests for XML parser/world builder
