@@ -77,35 +77,41 @@ Level::~Level ( )
 // Methods
 //  
 
-bool
+QString
 Level::load(const QString& aFileName)
 {
-	theErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
+	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");
+	
+	QDomNode myNode, q;
+	QDomNode mySceneNode;
+	QDomElement myElement;
+	QDomElement myDocElem;
+		
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))
-		return false;
+		goto not_good;
 
-	theErrorMessage = tr("Cannot parse file - not valid XML?");
+	myErrorMessage = tr("Cannot parse file - not valid XML?");
 	if (!myDocument.setContent(&myFile))
-		return false;
+		goto not_good;
 	myFile.close();
 
-	QDomElement docElem = myDocument.documentElement();
+	myDocElem = myDocument.documentElement();
 
 	//
 	// parse the Level Info section
 	//
-	theErrorMessage = tr("Parsing '%1' section failed").arg(theLevelInfoString);
-	QDomNode myLevelInfoNode=docElem.firstChildElement(theLevelInfoString);
-	if (myLevelInfoNode.isNull())
-		return false;
-	theLevelName   = myLevelInfoNode.firstChildElement(theLevelNameString).text();
-	theLevelAuthor = myLevelInfoNode.firstChildElement(theLevelAuthorString).text();;
-	theLevelLicense= myLevelInfoNode.firstChildElement(theLevelLicenseString).text();;
+	myErrorMessage = tr("Parsing '%1' section failed").arg(theLevelInfoString);
+	myNode=myDocElem.firstChildElement(theLevelInfoString);
+	if (myNode.isNull())
+		goto not_good;
+	theLevelName   = myNode.firstChildElement(theLevelNameString).text();
+	theLevelAuthor = myNode.firstChildElement(theLevelAuthorString).text();;
+	theLevelLicense= myNode.firstChildElement(theLevelLicenseString).text();;
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
-		return false;
+		goto not_good;
 	DEBUG5("level name:    '%s'\n", theLevelName.toAscii().constData());
 	DEBUG5("level author:  '%s'\n", theLevelAuthor.toAscii().constData());
 	DEBUG5("level license: '%s'\n", theLevelLicense.toAscii().constData());
@@ -113,18 +119,17 @@ Level::load(const QString& aFileName)
 	//
 	// parse the Scene section
 	//
-	theErrorMessage = tr("Parsing '%1' section failed").arg(theSceneString);
-	QDomNode mySceneNode=docElem.firstChildElement(theSceneString);
+	myErrorMessage = tr("Parsing '%1' section failed").arg(theSceneString);
+	mySceneNode=myDocElem.firstChildElement(theSceneString);
 
 	// TODO: implement view
-	theErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
-	QDomNode myViewNode=mySceneNode.firstChildElement(theViewString);
+	myErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
+	myNode=mySceneNode.firstChildElement(theViewString);
 	
 	
-	theErrorMessage = tr("Parsing '%1' section failed").arg(thePredefinedString);
-	QDomNode myPredefinedNode = mySceneNode.firstChildElement(thePredefinedString);
-	QDomNode q;
-	for (q=myPredefinedNode.firstChild(); !q.isNull(); q=q.nextSibling())
+	myErrorMessage = tr("Parsing '%1' section failed").arg(thePredefinedString);
+	myNode = mySceneNode.firstChildElement(thePredefinedString);
+	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
 	{
 		// an object entry has the following layout:
 		// <object type="Ramp" X="1.0" Y="0.5" width="2.0"/>
@@ -132,8 +137,9 @@ Level::load(const QString& aFileName)
 		// optional are:  angle, width, height
 		// TODO: also optional are properties
 	
+		// simple sanity check
 		if (q.nodeName() != theObjectString)
-			return false;
+			goto not_good;
 
 		// the nodemap contains all the parameters, or not...
 		QDomNamedNodeMap myNodes = q.attributes();
@@ -147,7 +153,7 @@ Level::load(const QString& aFileName)
 	    			  myNodes.namedItem("Y").nodeValue().toDouble(&isOK2),
 	    			  myNodes.namedItem("angle").nodeValue().toDouble()));
 	    if (!isOK1 || !isOK2)
-	    	return false;
+	    	goto not_good;
 	    QString myValue = myNodes.namedItem("width").nodeValue();
 	    if (myValue.isEmpty()==false)
 	    	myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
@@ -155,22 +161,28 @@ Level::load(const QString& aFileName)
 	    if (myValue.isEmpty()==false)
 	    	myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
 	    if (!isOK1 || !isOK2)
-	    	return false;
+	    	goto not_good;
 	    theWorldPtr->addObject(myBOPtr);
 
 	    // TODO: add Property handling here
 	    
-		if (q==myPredefinedNode.lastChild())
+		if (q==myNode.lastChild())
 			break;
 	}
 	
 	//
 	// parse the Toolbox section
 	// 
+	myErrorMessage = tr("Parsing '%1' section failed").arg(theToolboxString);
 	// TODO: not implemented for Milestone 2.
-	theErrorMessage = tr("Parsing '%1' section failed").arg(theToolboxString);
 
+	
+	
 	// and everything went OK - we're done :-)
-	theErrorMessage = "";
-	return true;
+	myErrorMessage = "";
+
+	// if goto not_good was called, we get here, too
+	// theErrorMessage is set - let's return it!
+not_good:
+	return myErrorMessage;
 }

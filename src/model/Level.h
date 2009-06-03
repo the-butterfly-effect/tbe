@@ -61,17 +61,6 @@ public:
 	// Public accessor methods
 	//
 
-	/** returns an already internationalized error message if load() or
-	 *  save() failed.
-	 *  
-	 *  if load() or save() succeeded or if other members were run,
-	 *  the output is undefined (probably an empty string, though)
-	 *  
-	 * @return a string with the error.
-	 */ 
-	const QString& getErrorMessage(void)
-		{ return theErrorMessage; }
-
 	/// returns the Level's title
 	virtual const QString getName ( ) const
 		{ return "Bowling for Butterflies"; }
@@ -82,9 +71,10 @@ public:
 	/** open file containing a level definition, parse it, build the Level
 	 * 
 	 * @param aFileName file to parse and populate Level with.
-	 * @return false if loading failed - error message will be set.
+	 * @return empty string is returned if loading was successful, otherwise
+	 *			the return will contain the i18n'ed error message
 	 */
-	bool load(const QString& aFileName);
+	QString load(const QString& aFileName);
 	
 	/** save the Level to a file
 	 *  the file name must be unique - overwriting is not allowed here
@@ -103,11 +93,6 @@ private:
 	QString theLevelName;
 	QString theLevelAuthor;
 	QString theLevelLicense;
-	
-	/** Contains an error message if load() or save() failed.
-	 *  The message was i18n'ed when it was set - no need to run tr() again.
-	 */ 
-	QString theErrorMessage;
 };
 
 #endif // LEVEL_H

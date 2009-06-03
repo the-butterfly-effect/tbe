@@ -42,12 +42,13 @@ int main(int argc, char **argv)
     QString myFileName = "randomcode/xml-read/examplelevel.xml";
     // create level and display in main window
     Level* myLevelPtr = new Level();
-    if (myLevelPtr->load(myFileName)==false)
+    QString myErrorMessage = myLevelPtr->load(myFileName); 
+    if (!myErrorMessage.isEmpty())
     {
     	// TODO: popup and such
     	DEBUG1("ERROR during reading file '%s': %s\n",
     			myFileName.toAscii().constData(),
-    			myLevelPtr->getErrorMessage().toAscii().constData() );
+    			myErrorMessage.toAscii().constData() );
     	return 1;
     }
    
