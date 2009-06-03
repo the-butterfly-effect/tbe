@@ -23,10 +23,6 @@
 
 #include <QtGui>
 
-#include "Level.h"
-#include "World.h"
-
-
 // the verbosity for all logging - by default defined at 5 (most logging)
 int theVerbosity = 5;
 
@@ -38,31 +34,12 @@ int main(int argc, char **argv)
 	// init OpenDE (physics library) - opende.sf.net
     dInitODE ();
 
-	// TODO: boo - fixed file name !!!
-    QString myFileName = "randomcode/xml-read/examplelevel.xml";
-    // create level and display in main window
-    Level* myLevelPtr = new Level();
-    QString myErrorMessage = myLevelPtr->load(myFileName); 
-    if (!myErrorMessage.isEmpty())
-    {
-    	// TODO: popup and such
-    	DEBUG1("ERROR during reading file '%s': %s\n",
-    			myFileName.toAscii().constData(),
-    			myErrorMessage.toAscii().constData() );
-    	return 1;
-    }
-   
 	// setup main window
 	MainWindow myMain;
 	myMain.show();
-    myLevelPtr->getTheWorldPtr()->createScene(&myMain);
 
 	// run the main display loop    
     int myReturn=app.exec();
-    
-    // close down    
-    delete myLevelPtr;
-    myLevelPtr = NULL;
     
     // clean up (QT cleans up after itself)
     dCloseODE();

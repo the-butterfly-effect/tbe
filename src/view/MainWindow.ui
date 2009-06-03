@@ -86,11 +86,11 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_Reset">
-         <property name="text">
-          <string>Reset</string>
-         </property>
          <property name="enabled">
           <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Reset</string>
          </property>
         </widget>
        </item>
@@ -112,6 +112,8 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <addaction name="actionOpen_level"/>
+    <addaction name="separator"/>
     <addaction name="actionOpen_savegame"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
@@ -257,6 +259,11 @@
   <action name="actionReset">
    <property name="text">
     <string>&amp;Reset</string>
+   </property>
+  </action>
+  <action name="actionOpen_level">
+   <property name="text">
+    <string>Open level</string>
    </property>
   </action>
  </widget>

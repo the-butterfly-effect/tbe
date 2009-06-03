@@ -20,6 +20,8 @@
 #include "MainWindow.h"
 #include "Popup.h"
 
+#include "Level.h"
+#include "World.h"
 #include "DrawWorld.h"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -36,13 +38,37 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::on_actionAbout_activated()
 {
-	Popup::Info("<b>The Butterfly Effect</b><br><br>"
+	Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
 				"An open source game that uses realistic physics"
 				" simulations to combine lots of simple mechanical elements"
 				" to achieve a simple goal in the most complex way possible.<br><br>"
 				"(C) 2009 Peter van Ginneken and Klaas van Gend<br>"
-				"Licensed under GPL version 2", this);
+				"Licensed under GPL version 2"), this);
 }
+
+void MainWindow::on_actionOpen_level_activated()
+{
+	// TODO this code is more-or-less temporary 
+	// - it should be replaced by a dashboard style interface 
+	QString fileName = QFileDialog::getOpenFileName(this,
+	     tr("Open Level"), ".", tr("TBE Levels (*.xml *.tbe)"));
+	
+	// TODO: boo - fixed file name !!!
+    
+	// create level and display in main window
+    Level* myLevelPtr = new Level();
+    QString myErrorMessage = myLevelPtr->load(fileName); 
+    if (!myErrorMessage.isEmpty())
+    {
+    	// TODO: popup and such
+    	DEBUG1("ERROR during reading file '%s': %s\n",
+    			fileName.toAscii().constData(),
+    			myErrorMessage.toAscii().constData() );
+    	exit(1);
+    }
+    myLevelPtr->getTheWorldPtr()->createScene(this);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////
 // public accessor methods
