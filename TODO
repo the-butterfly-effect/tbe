@@ -25,16 +25,16 @@ NOT A PLAYABLE GAME
 Milestone 2 - Levelling the Lands
 Version 0.20
 Features:
-  * Implement model for:
-    - Floor
+  * Implement models for:
+    - Floor (horizontal, not bouncy)
+    - Wall  (vertical, bouncy)
   * write two Levels in XML by hand
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
   * do not (re)paint objects that have not moved
-  * menu File>Open works
-  * automated regression tests for XML parser/world builder
-  * automated regression tests for Ball&Ramp
+  x menu File>Open works
+  / implement moving of objects within GraphicsView
 NOT A PLAYABLE GAME
 
 
@@ -42,12 +42,12 @@ Milestone 3 - Dragging along
 Version 0.30
 Features:
   * implement Drag&Drop from toolchest to GraphicsView
-  * implement moving of objects within GraphicsView
   * Allow saving of view into XML File
   * implement post-its
   * i18n
   * right-mouse button to adjust properties (e.g. resize, rotate, trapdoor threshold)
     - implement as a "pie menu"
+  * automated regression tests for XML parser/world builder
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
