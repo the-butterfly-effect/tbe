@@ -35,6 +35,11 @@ Features:
   * do not (re)paint objects that have not moved
   x menu File>Open works
   / implement moving of objects within GraphicsView
+    x the actual moving of a single object
+    - rubber banding - moving multiple objects
+    - moves must be persistent (i.e. start-stop-reset should remember the new position)
+    - if start button says continue (i.e. sim has run but not yet reset), 
+      it should not be possible to move objects around 
 NOT A PLAYABLE GAME
 
 
