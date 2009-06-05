@@ -57,6 +57,15 @@ public:
                QWidget *widget);
 
 protected:
+
+	/** overridden from QGraphicsItem
+	 *  if the user drags the object around, this even will be called for each pixel.
+	 *  let's actually adjust the coordinates!!!
+	 *  
+	 *  @param event the even to handle
+	 */
+	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
+
 	/// overriden from QGraphicsItem
     virtual void advance(int step);
 

@@ -118,6 +118,9 @@ void BaseObject::initAttributes ( )
 	// don't need to initialise theCenter - it has a default constructor
 	
 	theDrawObjectPtr = NULL;
+	
+	// TODO - we need to move this into Level, once Toolbox is implemented
+	theIsMovable = true;
 }
 
 void BaseObject::reset ( ) 

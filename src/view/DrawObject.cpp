@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
+#include <QGraphicsSceneMouseEvent>
 
 // Constructors/Destructors
 //  
@@ -24,6 +25,11 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
     
     // in radians!
     theOldAngle=0;//aBaseObjectPtr->getTheCenter().angle;
+    
+    // make sure that this item is selectable & draggable
+    // (if the object allows it - of course)
+    if (aBaseObjectPtr->isMovable())
+    	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
 
 DrawObject::~DrawObject ( ) { }
@@ -73,6 +79,15 @@ void DrawObject::initAttributes ( )
 {
 	
 }
+
+void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
+{
+	DEBUG5("DrawObject::sceneEven(%d)\n", event->type());
+	QPointF myPos=event->scenePos ();
+	dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myPos.x(), -myPos.y(), 0.0);
+	return QGraphicsItem::mouseMoveEvent(event);
+}
+
 
 void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {

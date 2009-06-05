@@ -30,7 +30,11 @@
 MainWindow::MainWindow(QWidget *parent)
      : QMainWindow(parent), theSimStateMachine(&ui)
 {                                      
-        ui.setupUi(this);              
+	ui.setupUi(this);
+	
+	ui.graphicsView->setInteractive(true);
+	ui.graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
+	ui.graphicsView->setRubberBandSelectionMode(Qt::ContainsItemShape);
 }                           
 
 //////////////////////////////////////////////////////////////////////////////

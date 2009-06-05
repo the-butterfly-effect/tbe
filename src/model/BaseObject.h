@@ -78,6 +78,10 @@ public:
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const = 0;
 
+	/// returns true if the object can be moved by the user
+	virtual bool isMovable ( ) const
+		{ return theIsMovable; }
+	
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const = 0;
 
@@ -127,6 +131,12 @@ private:
 	*/
 	dReal theBounciness;
 
+	/** true if the user can move this object
+	 *  note that this has nothing to do with MovingObject or ImmovableObject
+	 *  it has to do with the level design - as such, Level can modify this setting
+	 */
+	bool theIsMovable;
+	
 protected:
 	dBodyID theBodyID;
 	dGeomID theGeomID;
@@ -140,6 +150,13 @@ protected:
 public:
 	// public attribute accessor methods
 
+	/**
+	 * Sets whether the object can be moved by the user
+	 * @param aNewState true if movable, false if not
+	 */
+	void setIsMovable(bool aNewState)
+		{ theIsMovable = aNewState; }
+	
 	/**
 	 * Set the value of theCenter
 	 * @param new_var the new value of theCenter
