@@ -11,7 +11,7 @@ INCLUDEPATH	+= 3rdParty/include src src/model src/view src/base
 
 #CXXFLAGS += -ggdb3 -O0
 
-QT += core gui xml
+QT += core gui xml svg
 
 HEADERS	+= src/tbe_global.h \
 	src/model/BaseObject.h \
@@ -28,6 +28,7 @@ HEADERS	+= src/tbe_global.h \
 	src/view/DrawRamp.h \
 	src/view/DrawWorld.h \
 	src/view/MainWindow.h \
+	src/view/SplashScreen.h \
 	src/view/StartStopReset.h \
 	
 	
@@ -45,6 +46,7 @@ SOURCES	+= src/main.cpp \
 	src/view/DrawRamp.cpp \
 	src/view/DrawWorld.cpp \
 	src/view/MainWindow.cpp \
+	src/view/SplashScreen.cpp \
 	src/view/StartStopReset.cpp \
 	
 

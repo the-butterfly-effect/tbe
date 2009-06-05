@@ -41,6 +41,7 @@ private slots:
     { emit theSimStateMachine.on_pushButton_Reset_clicked(); }
     void on_pushButton_StartStopContinue_clicked(void)
     { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }
+	void on_splashScreen_clicked(void);
 
 private:
      Ui::MainWindow ui;
@@ -52,6 +53,12 @@ private:
       *         timing & simulation stuff out of this?
       */
      StartStopReset	theSimStateMachine;
+     
+     /** loads the level specified by the file name
+      * 
+      * @param aFileName guess what: the file name. Duh.
+      */
+     void loadLevel(const QString& aFileName);
 };
 
  

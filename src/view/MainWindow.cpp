@@ -23,6 +23,7 @@
 #include "Level.h"
 #include "World.h"
 #include "DrawWorld.h"
+#include "SplashScreen.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
@@ -32,9 +33,25 @@ MainWindow::MainWindow(QWidget *parent)
 {                                      
 	ui.setupUi(this);
 	
+	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
+	QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
+
+	mySplashScenePtr->addItem(myTitlePagePtr);
+	
+	// basic properties of the view
 	ui.graphicsView->setInteractive(true);
 	ui.graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
 	ui.graphicsView->setRubberBandSelectionMode(Qt::ContainsItemShape);
+
+	// set my splash screen scene in view and make it fit nicely
+	ui.graphicsView->setScene(mySplashScenePtr);
+	QRectF myRect = myTitlePagePtr->boundingRect ();
+	// TODO: FIXME: this /32.0 is wrong. very wrong :-(
+	myRect.setWidth(myRect.width()/20.0);
+	myRect.setHeight(myRect.height()/20.0);
+	ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
+	connect(myTitlePagePtr, SIGNAL(clicked()), 
+			this, SLOT(on_splashScreen_clicked()));
 }                           
 
 //////////////////////////////////////////////////////////////////////////////
@@ -54,28 +71,35 @@ void MainWindow::on_actionOpen_level_activated()
 {
 	// TODO this code is more-or-less temporary 
 	// - it should be replaced by a dashboard style interface 
-	QString fileName = QFileDialog::getOpenFileName(this,
+	QString myFileName = QFileDialog::getOpenFileName(this,
 	     tr("Open Level"), ".", tr("TBE Levels (*.xml *.tbe)"));
-	
-	// TODO: boo - fixed file name !!!
-    
+	loadLevel(myFileName);
+}
+ 
+void MainWindow::on_splashScreen_clicked(void)
+{
+	// TODO: FIXME: hardcoded level name!!!
+	loadLevel("levels/draft/001_bowling_for_butterflies.xml");
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// public accessor methods
+
+void MainWindow::loadLevel(const QString& aFileName)
+{
 	// create level and display in main window
     Level* myLevelPtr = new Level();
-    QString myErrorMessage = myLevelPtr->load(fileName); 
+    QString myErrorMessage = myLevelPtr->load(aFileName); 
     if (!myErrorMessage.isEmpty())
     {
     	// TODO: popup and such
     	DEBUG1("ERROR during reading file '%s': %s\n",
-    			fileName.toAscii().constData(),
+    			aFileName.toAscii().constData(),
     			myErrorMessage.toAscii().constData() );
     	exit(1);
     }
     myLevelPtr->getTheWorldPtr()->createScene(this);
 }
-
-
-//////////////////////////////////////////////////////////////////////////////
-// public accessor methods
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
