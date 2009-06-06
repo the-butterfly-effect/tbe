@@ -54,14 +54,12 @@ public:
 	 */
 	virtual ~DrawWorld ( );
 
-	// TODO - This info should not be static, but come from Level or World ?!?
-	dReal getWidth()
-	{ return 6.0; };
 	
-	// TODO - This info should not be static, but come from Level or World ?!?
-	dReal getHeight()
-	{ return 3.0; };
+	// Public accessor methods
+	//
 	
+	dReal getWidth();
+	dReal getHeight();
 	
 public slots:
 	void resetWorld(void);
@@ -86,9 +84,6 @@ private:
 	QTimer theTimer;
 	QTime  theSimulationTime;
 	
-public:
-	QGraphicsRectItem* theBackGroundRectPtr;
-
 private:
 
 	void initAttributes ( ) ;

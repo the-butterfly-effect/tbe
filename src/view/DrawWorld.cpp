@@ -37,8 +37,10 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 
-	addLine(0,0, 4,0);
-	addLine(0,0, 0,-3);
+	addLine(0,0, theWorldPtr->getTheWorldWidth(),0);
+	addLine(theWorldPtr->getTheWorldWidth(),0, theWorldPtr->getTheWorldWidth(),-theWorldPtr->getTheWorldHeight());
+	addLine(theWorldPtr->getTheWorldWidth(),-theWorldPtr->getTheWorldHeight(), 0,-theWorldPtr->getTheWorldHeight());
+	addLine(0,-theWorldPtr->getTheWorldHeight(), 0,0);
 }
 
 
@@ -55,6 +57,15 @@ DrawWorld::~DrawWorld ( )
 
 // Accessor methods
 //  
+dReal DrawWorld::getWidth()
+{
+	return theWorldPtr->getTheWorldWidth(); 
+}
+
+dReal DrawWorld::getHeight()
+{
+	return theWorldPtr->getTheWorldHeight(); 
+}
 
 
 // Other methods
