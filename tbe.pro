@@ -23,6 +23,7 @@ HEADERS	+= src/tbe_global.h \
 	src/model/MovingObject.h \
 	src/model/Position.h \
 	src/model/Ramp.h \
+	src/model/Wall.h \
 	src/model/World.h \
 	src/view/Popup.h \
 	src/view/DrawObject.h \
@@ -43,6 +44,7 @@ SOURCES	+= src/main.cpp \
 	src/model/MovingObject.cpp \
 	src/model/Position.cpp \
 	src/model/Ramp.cpp \
+	src/model/Wall.cpp \
 	src/model/World.cpp \
 	src/view/DrawObject.cpp \
 	src/view/DrawRamp.cpp \
