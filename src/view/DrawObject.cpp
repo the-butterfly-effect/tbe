@@ -66,7 +66,7 @@ DrawObject::~DrawObject ( ) { }
 // Other methods
 //  
 
-void DrawObject::advance(int step)
+void DrawObject::advance(int)
 {
 	applyPosition();
 }
@@ -129,7 +129,9 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 {
 	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
-printf("%p: %f %f\n", this, myWidth, myHeight);
+
+	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
+	
 	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
     // Body
     myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
