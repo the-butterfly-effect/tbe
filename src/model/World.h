@@ -86,6 +86,13 @@ public:
 public:
 	// Public attribute accessor methods
 
+	void setTheWorldSize(dReal aWidth, dReal aHeight)
+		{ theWorldWidth=aWidth; theWorldHeight=aHeight; }
+	dReal getTheWorldWidth(void)
+		{ return theWorldWidth; }
+	dReal getTheWorldHeight(void)
+		{ return theWorldHeight; }
+
 private:
 	/** this is called by dSpaceCollide when two objects in space are
 	 *  potentially colliding.
@@ -137,6 +144,9 @@ private:
 	static const dReal deltaTime = 0.005;
 	
 	QString theLevelName;
+
+	dReal	theWorldWidth;
+	dReal	theWorldHeight;
 };
 
 #endif // WORLD_H

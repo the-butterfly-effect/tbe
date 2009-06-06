@@ -8,10 +8,8 @@
   <source>hand-written</source>
 </levelinfo>
 <scene>
-  <view altitude="6">
-    <width>6</width>
-    <height>3</height>
-  </view>
+  <scenesize width="6" height="4" />
+  <view width="6" height="3" X="3" Y="1.5" />
   <predefined>
     <object type="Bowling Ball"        X="0.4" Y="3.0" />
     <object type="Bowling Pin"  id="1" X="3.0" Y="0.19"/>

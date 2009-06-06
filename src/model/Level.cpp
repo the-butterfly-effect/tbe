@@ -32,11 +32,20 @@ static const char* theLevelInfoString = "levelinfo";
 	static const char* theLevelAuthorString  = "author";
 	static const char* theLevelLicenseString = "license";
 static const char* theSceneString = "scene";
+	static const char* theSceneSizeString  = "scenesize";
 	static const char* theViewString       = "view";
 	static const char* thePredefinedString = "predefined";
 	static const char* theObjectString     = "object";
 	static const char* thePropertyString   = "license";
 static const char* theToolboxString = "toolbox";
+
+
+static const char* theWidthAttributeString     = "width";
+static const char* theHeightAttributeString    = "height";
+static const char* theXAttributeString         = "X";
+static const char* theYAttributeString         = "Y";
+static const char* theAngleAttributeString     = "angle";
+static const char* theTypeAttributeString      = "type";
 
 
 // Constructors/Destructors
@@ -45,25 +54,6 @@ static const char* theToolboxString = "toolbox";
 Level::Level ( ) 
 {
     theWorldPtr = new World(getName());
-
-#if 0
-    BaseObject* myBOPtr;
-    
-    myBOPtr = ObjectFactory::createObject("Ramp", Position(0.75, 0.5, 0), 1.5);
-    theWorldPtr->addObject(myBOPtr);
-
-    myBOPtr = ObjectFactory::createObject("Bowling Ball", Position(0.3, 2.0, 0));
-    theWorldPtr->addObject(myBOPtr);
-
-    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3, 0.19, 0));
-    theWorldPtr->addObject(myBOPtr);
-
-    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3.23, 0.19, 0));
-    theWorldPtr->addObject(myBOPtr);
-
-    myBOPtr = ObjectFactory::createObject("Bowling Pin", Position(3.46, 0.19, 0));
-    theWorldPtr->addObject(myBOPtr);
-#endif
 }
 
 Level::~Level ( ) 
@@ -87,7 +77,12 @@ Level::load(const QString& aFileName)
 	QDomNode mySceneNode;
 	QDomElement myElement;
 	QDomElement myDocElem;
-		
+	QDomNamedNodeMap myNodeMap;
+    bool isOK1, isOK2;
+
+    dReal myWidth;
+    dReal myHeight;
+    
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))
 		goto not_good;
@@ -122,6 +117,14 @@ Level::load(const QString& aFileName)
 	myErrorMessage = tr("Parsing '%1' section failed").arg(theSceneString);
 	mySceneNode=myDocElem.firstChildElement(theSceneString);
 
+	myNode=mySceneNode.firstChildElement(theSceneSizeString);
+	myNodeMap = myNode.attributes();
+	myWidth = myNodeMap.namedItem(theWidthAttributeString).nodeValue().toDouble(&isOK1);
+	myHeight= myNodeMap.namedItem(theHeightAttributeString).nodeValue().toDouble(&isOK2);
+    if (!isOK1 || !isOK2)
+    	goto not_good;
+	theWorldPtr->setTheWorldSize(myWidth, myHeight);
+
 	// TODO: implement view
 	myErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
@@ -142,22 +145,20 @@ Level::load(const QString& aFileName)
 			goto not_good;
 
 		// the nodemap contains all the parameters, or not...
-		QDomNamedNodeMap myNodes = q.attributes();
+		myNodeMap = q.attributes();
 	    
-	    bool isOK1, isOK2;
-
 	    BaseObject* myBOPtr;
 	    myBOPtr = ObjectFactory::createObject(
-	    	myNodes.namedItem("type").nodeValue(), 
-	    	Position( myNodes.namedItem("X").nodeValue().toDouble(&isOK1),
-	    			  myNodes.namedItem("Y").nodeValue().toDouble(&isOK2),
-	    			  myNodes.namedItem("angle").nodeValue().toDouble()));
+	    	myNodeMap.namedItem(theTypeAttributeString).nodeValue(), 
+	    	Position( myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
+	    			  myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
+	    			  myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble()));
 	    if (!isOK1 || !isOK2)
 	    	goto not_good;
-	    QString myValue = myNodes.namedItem("width").nodeValue();
+	    QString myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
 	    if (myValue.isEmpty()==false)
 	    	myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
-	    myValue = myNodes.namedItem("height").nodeValue();
+	    myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
 	    if (myValue.isEmpty()==false)
 	    	myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
 	    if (!isOK1 || !isOK2)
