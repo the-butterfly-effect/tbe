@@ -101,9 +101,25 @@ void DrawObject::initAttributes ( )
 void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::sceneEven(%d)\n", event->type());
+
+	dReal orgposx = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
+	dReal orgposy = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
+	
 	QPointF myPos=event->scenePos ();
-	dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myPos.x(), -myPos.y(), 0.0);
-	return QGraphicsItem::mouseMoveEvent(event);
+	
+	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
+			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
+	{
+		dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myPos.x(), -myPos.y(), 0.0);
+		applyPosition();
+		
+		// if the new position collides with another, reset the position to the original one
+		if (!scene()->collidingItems(this).isEmpty())
+		{
+			dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), orgposx, orgposy, 0.0);
+			applyPosition();
+		}
+	}
 }
 
 

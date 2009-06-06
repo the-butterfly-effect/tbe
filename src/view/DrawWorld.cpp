@@ -37,7 +37,8 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 
-	theBackGroundRectPtr = addRect(QRectF(0, -3, 4, 3));
+	addLine(0,0, 4,0);
+	addLine(0,0, 0,-3);
 }
 
 
