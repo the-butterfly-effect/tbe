@@ -28,7 +28,7 @@ DrawRamp::~DrawRamp ( ) { }
 // Other methods
 //  
 
-void DrawRamp::advance(int step)
+void DrawRamp::advance(int)
 {
 	// this object never moves - it shouldn't need to advance...
 	//applyPosition();
