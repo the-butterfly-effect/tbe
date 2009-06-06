@@ -161,10 +161,12 @@ void StartStopReset::setMenuState(void)
 void StartStopReset::setPushButtonState(void)
 {
 	QString myButtonText;
+	bool isInteractive = false;
 	switch(theState)
 	{
 	case NOTSTARTED:
 		myButtonText = tr("START");
+		isInteractive = true;
 		break;
 	case STOPPED:
 		myButtonText = tr("CONTINUE");
@@ -174,6 +176,7 @@ void StartStopReset::setPushButtonState(void)
 		break;
 	}
 	theMainWindowUIPtr->pushButton_StartStopContinue->setText(myButtonText);
+	theMainWindowUIPtr->graphicsView->setInteractive(isInteractive);
 }
 
 void StartStopReset::setResetButtonState(bool isOn)

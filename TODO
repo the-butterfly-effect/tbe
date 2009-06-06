@@ -36,10 +36,12 @@ Features:
   x menu File>Open works
   / implement moving of objects within GraphicsView
     x the actual moving of a single object
-    - rubber banding - moving multiple objects
+    / rubber banding - moving multiple objects
     - moves must be persistent (i.e. start-stop-reset should remember the new position)
-    - if start button says continue (i.e. sim has run but not yet reset), 
-      it should not be possible to move objects around 
+    x if start button says continue (i.e. sim has run but not yet reset), 
+      it should not be possible to move objects around
+  * centering on play field is automated and read from xml file
+  * loading a new level works correctly and removes previous level 
 NOT A PLAYABLE GAME
 
 
