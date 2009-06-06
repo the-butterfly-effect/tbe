@@ -48,6 +48,8 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
     // (if the object allows it - of course)
     if (aBaseObjectPtr->isMovable())
     	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    
+    setCacheMode(QGraphicsItem::ItemCoordinateCache);
 }
 
 DrawObject::~DrawObject ( ) { }
@@ -88,7 +90,7 @@ QRectF DrawObject::boundingRect() const
 {
 	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
-	qreal adjust = 0.1;
+	qreal adjust = 0.03;
 	
     return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
 }

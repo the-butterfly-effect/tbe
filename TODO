@@ -25,14 +25,14 @@ NOT A PLAYABLE GAME
 Milestone 2 - Levelling the Lands
 Version 0.20
 Features:
-  * Implement models for:
+  x Implement models for:
     - Floor (horizontal, not bouncy)
     - Wall  (vertical, bouncy)
-  * write two Levels in XML by hand
+  x write two Levels in XML by hand
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
-  * do not (re)paint objects that have not moved
+  x do not (re)paint objects that have not moved
   x menu File>Open works
   / implement moving of objects within GraphicsView
     x the actual moving of a single object
