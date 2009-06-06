@@ -17,6 +17,7 @@ HEADERS	+= src/tbe_global.h \
 	src/model/BaseObject.h \
 	src/model/BowlingBall.h \
 	src/model/BowlingPin.h \
+	src/model/Floor.h \
 	src/model/ImmovableObject.h \
 	src/model/Level.h \
 	src/model/MovingObject.h \
@@ -36,6 +37,7 @@ SOURCES	+= src/main.cpp \
 	src/model/BaseObject.cpp \
 	src/model/BowlingBall.cpp \
 	src/model/BowlingPin.cpp \
+	src/model/Floor.cpp \
 	src/model/ImmovableObject.cpp \
 	src/model/Level.cpp \
 	src/model/MovingObject.cpp \
