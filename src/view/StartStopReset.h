@@ -34,6 +34,7 @@ public:
 
 	Q_OBJECT
 
+public:
 	enum TheStates
 	{
 		NOTSTARTED,	// pushbutton should show START
@@ -41,7 +42,6 @@ public:
 		RUNNING		// pushbutton should show STOP 
 	};
 
-public:
 	// Constructors/Destructors
 	//  
 

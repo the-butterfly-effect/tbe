@@ -104,6 +104,7 @@ void MainWindow::loadLevel(const QString& aFileName)
     	exit(1);
     }
     theLevelPtr->getTheWorldPtr()->createScene(this);
+    theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)

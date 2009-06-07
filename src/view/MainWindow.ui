@@ -82,6 +82,9 @@
          <property name="text">
           <string>Start</string>
          </property>
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
        <item>

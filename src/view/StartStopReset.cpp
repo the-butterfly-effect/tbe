@@ -176,6 +176,7 @@ void StartStopReset::setPushButtonState(void)
 		break;
 	}
 	theMainWindowUIPtr->pushButton_StartStopContinue->setText(myButtonText);
+	theMainWindowUIPtr->pushButton_StartStopContinue->setEnabled(true);
 	theMainWindowUIPtr->graphicsView->setInteractive(isInteractive);
 }
 

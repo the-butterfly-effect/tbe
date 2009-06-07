@@ -41,8 +41,8 @@ Features:
     x if start button says continue (i.e. sim has run but not yet reset), 
       it should not be possible to move objects around
   x centering on play field is automated
-  / loading a new level works correctly and removes previous level 
-    - start-stop-continue-reset is reset as well
+  x loading a new level works correctly and removes previous level 
+    x start-stop-continue-reset is reset as well
 NOT A PLAYABLE GAME
 
 
