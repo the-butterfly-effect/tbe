@@ -49,7 +49,8 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
     if (aBaseObjectPtr->isMovable())
     	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     
-    setCacheMode(QGraphicsItem::ItemCoordinateCache);
+//    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
+    setToolTip(theBaseObjectPtr->getToolTip());
 }
 
 DrawObject::~DrawObject ( ) { }
