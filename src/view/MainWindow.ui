@@ -22,7 +22,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" rowspan="2">
-     <widget class="QGraphicsView" name="graphicsView">
+     <widget class="ResizingGraphicsView" name="graphicsView">
       <property name="dragMode">
        <enum>QGraphicsView::ScrollHandDrag</enum>
       </property>

@@ -30,6 +30,7 @@ HEADERS	+= src/tbe_global.h \
 	src/view/DrawRamp.h \
 	src/view/DrawWorld.h \
 	src/view/MainWindow.h \
+	src/view/resizinggraphicsview.h \
 	src/view/SplashScreen.h \
 	src/view/StartStopReset.h \
 	

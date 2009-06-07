@@ -32,7 +32,7 @@ Features:
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
-  x do not (re)paint objects that have not moved
+  * do not (re)paint objects that have not moved
   x menu File>Open works
   / implement moving of objects within GraphicsView
     x the actual moving of a single object
@@ -40,8 +40,9 @@ Features:
     - moves must be persistent (i.e. start-stop-reset should remember the new position)
     x if start button says continue (i.e. sim has run but not yet reset), 
       it should not be possible to move objects around
-  * centering on play field is automated and read from xml file
-  * loading a new level works correctly and removes previous level 
+  x centering on play field is automated
+  / loading a new level works correctly and removes previous level 
+    - start-stop-continue-reset is reset as well
 NOT A PLAYABLE GAME
 
 

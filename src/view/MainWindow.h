@@ -24,6 +24,7 @@
 
 // forward declarations
 class DrawWorld;
+class Level;
 
 class MainWindow : public QMainWindow
 {
@@ -31,6 +32,7 @@ class MainWindow : public QMainWindow
 
 public:
      MainWindow(QWidget *parent = 0);
+     ~MainWindow();
 
      void setScene(DrawWorld* aScene, const QString& aLevelName);
      
@@ -45,6 +47,7 @@ private slots:
 
 private:
      Ui::MainWindow ui;
+     Level* theLevelPtr;
      
      /** the state machine handling the Start/Stop/Continue/Rest buttons
       *  and the actual simulation timing
@@ -59,6 +62,9 @@ private:
       * @param aFileName guess what: the file name. Duh.
       */
      void loadLevel(const QString& aFileName);
+     
+     /// deletes the existing Level instance and removes its view
+     void purgeLevel(void);
 };
 
  

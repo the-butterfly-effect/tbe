@@ -29,7 +29,7 @@
 // constructors & destructors
 
 MainWindow::MainWindow(QWidget *parent)
-     : QMainWindow(parent), theSimStateMachine(&ui)
+     : QMainWindow(parent), theLevelPtr(NULL), theSimStateMachine(&ui)
 {                                      
 	ui.setupUi(this);
 	
@@ -39,9 +39,6 @@ MainWindow::MainWindow(QWidget *parent)
 	mySplashScenePtr->addItem(myTitlePagePtr);
 	
 	// basic properties of the view
-	ui.graphicsView->setInteractive(true);
-	ui.graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
-	ui.graphicsView->setRubberBandSelectionMode(Qt::ContainsItemShape);
 
 	// set my splash screen scene in view and make it fit nicely
 	ui.graphicsView->setScene(mySplashScenePtr);
@@ -53,6 +50,11 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(myTitlePagePtr, SIGNAL(clicked()), 
 			this, SLOT(on_splashScreen_clicked()));
 }                           
+
+MainWindow::~MainWindow()
+{
+	purgeLevel();
+}
 
 //////////////////////////////////////////////////////////////////////////////
 // public slots - alphabetical
@@ -87,9 +89,12 @@ void MainWindow::on_splashScreen_clicked(void)
 
 void MainWindow::loadLevel(const QString& aFileName)
 {
+	if (theLevelPtr != NULL)
+		purgeLevel();
+	
 	// create level and display in main window
-    Level* myLevelPtr = new Level();
-    QString myErrorMessage = myLevelPtr->load(aFileName); 
+    theLevelPtr = new Level();
+    QString myErrorMessage = theLevelPtr->load(aFileName); 
     if (!myErrorMessage.isEmpty())
     {
     	// TODO: popup and such
@@ -98,32 +103,15 @@ void MainWindow::loadLevel(const QString& aFileName)
     			myErrorMessage.toAscii().constData() );
     	exit(1);
     }
-    myLevelPtr->getTheWorldPtr()->createScene(this);
+    theLevelPtr->getTheWorldPtr()->createScene(this);
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
-	ui.graphicsView->setScene(aScene);
-	
-	// Unfortunately, fitInView() causes a segfault :-(
-//	ui.graphicsView->fitInView(aScene->theBackGroundRectPtr);
+	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, aLevelName.toAscii().constData());
 
-	// that's why I have to do it "by hand":
-	{
-		// calculate x scaling and y scaling
-		QSize myViewSize = ui.graphicsView->size();
-		float xScale = (myViewSize.width()-10) / aScene->getWidth();
-		float yScale = (myViewSize.height()-10) / aScene->getHeight();
-	
-		// and use the lowest value for both X and Y to keep correct aspect ratio
-		if (xScale > yScale)
-			xScale = yScale;
-		// X horizontal positive to right
-		// Y vertical   positive up -> that's why we need the negative
-		ui.graphicsView->scale(1.0*xScale, 1.0*xScale);
-		ui.graphicsView->centerOn(aScene->getWidth()/2.0, -aScene->getHeight()/2.0);
-	}
-		
+	ui.graphicsView->setScene(aScene);
+
     QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
@@ -131,3 +119,30 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
     setWindowTitle(APPNAME " - " + aLevelName);
 }
 
+void MainWindow::purgeLevel(void)
+{
+	DEBUG5("MainWindow::purgeLevel(void)\n");
+	if (theLevelPtr==NULL)
+		return;
+	
+QMatrix myMatrix = ui.graphicsView->matrix();
+DEBUG5("matrix: %f %f - %f %f - %f %f\n",
+		myMatrix.m11(), myMatrix.m12(), 
+		myMatrix.m21(), myMatrix.m22(),
+		myMatrix.dx(), myMatrix.dy());
+
+	// disconnect & delete the Scene//DrawWorld
+	// keep in mind that we have a view that's not happy now!
+	QGraphicsScene* myScene = ui.graphicsView->scene();
+	if (myScene != NULL)
+	{
+		ui.graphicsView->setScene(NULL);
+		QMatrix myMatrix;
+		ui.graphicsView->setMatrix(myMatrix);
+		delete myScene;
+	}
+		
+	// disconnect the World
+	delete theLevelPtr;
+	theLevelPtr=NULL;
+}

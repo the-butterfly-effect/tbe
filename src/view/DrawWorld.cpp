@@ -25,6 +25,31 @@
 #include <QPainter>
 #include <QStyleOption>
 
+
+/** the Dot class is a helper - it's a true QGraphicsItem, it's
+ *  just invisible (nothing is drawn) and very very small
+ *  However - it does affect to what size the Scene streches.
+ */
+class Dot : public QGraphicsItem
+{
+public:
+	Dot(qreal x, qreal y)
+	{
+		setPos(x,y);
+		setFlags(0);
+		setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
+	}
+
+	/// overriden from QGraphicsItem
+    virtual QRectF boundingRect() const
+    {    return QRectF(0,0, 0.001, 0.001); }
+	
+	/// overriden from QGraphicsItem
+    virtual void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget *)
+    { /* nothing! */ }
+};
+
+
 // Constructors/Destructors
 //  
 
@@ -42,6 +67,11 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	addLine(getWidth(),0,            getWidth(),-getHeight());
 	addLine(getWidth(),-getHeight(), 0,-getHeight());
 	addLine(0,-getHeight(),          0,0);
+	
+	// two dots on top-right and bottom-left to make sure that the Scene
+	// is rendered in total
+	addItem(new Dot(getWidth()+0.01, -getHeight()-0.01));
+	addItem(new Dot(          -0.01,             +0.01));
 }
 
 
