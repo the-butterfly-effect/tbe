@@ -37,10 +37,11 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 
-	addLine(0,0, theWorldPtr->getTheWorldWidth(),0);
-	addLine(theWorldPtr->getTheWorldWidth(),0, theWorldPtr->getTheWorldWidth(),-theWorldPtr->getTheWorldHeight());
-	addLine(theWorldPtr->getTheWorldWidth(),-theWorldPtr->getTheWorldHeight(), 0,-theWorldPtr->getTheWorldHeight());
-	addLine(0,-theWorldPtr->getTheWorldHeight(), 0,0);
+	// draw a box as the outline of the World
+	addLine(0,0,                     getWidth(),0);
+	addLine(getWidth(),0,            getWidth(),-getHeight());
+	addLine(getWidth(),-getHeight(), 0,-getHeight());
+	addLine(0,-getHeight(),          0,0);
 }
 
 
