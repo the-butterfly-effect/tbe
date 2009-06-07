@@ -23,11 +23,6 @@
     <object type="Floor"               X="3.5" Y="2.0" width="5.0"/>
     <object type="Floor"               X="3.5" Y="1.0" width="5.0"/>
     <object type="Wall"                X="6.0" Y="2.0" height="4.0"/>
-    <object type="Note" X="2.2" Y="0.3">
-       <property key="page1">This looks simple, does it?\nUse the ball to topple the pins.</property>
-       <property key="page2">Aww. The ball falls down.\nThat's called gravity.</property>
-       <property key="page3">You probably have to make it roll?</property>
-    </object> 
   </predefined>
   <scenery>
     <!-- no scenery yet -->
