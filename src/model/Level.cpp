@@ -53,7 +53,7 @@ static const char* theTypeAttributeString      = "type";
 
 Level::Level ( ) 
 {
-    theWorldPtr = new World(getName());
+    theWorldPtr = new World();
 }
 
 Level::~Level ( ) 
@@ -110,6 +110,7 @@ Level::load(const QString& aFileName)
 	DEBUG5("level name:    '%s'\n", theLevelName.toAscii().constData());
 	DEBUG5("level author:  '%s'\n", theLevelAuthor.toAscii().constData());
 	DEBUG5("level license: '%s'\n", theLevelLicense.toAscii().constData());
+	theWorldPtr->setLevelName(theLevelName);
 	
 	//
 	// parse the Scene section

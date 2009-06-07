@@ -44,9 +44,8 @@ public:
 
 	/**
 	 * Simple Constructor
-	 * @param aName - name of the Level
 	 */
-	World (const QString& aName);
+	World (void);
 
 	/**
 	 * Empty Destructor
@@ -66,11 +65,6 @@ public:
 	 */
     void createScene(MainWindow* myMainPtr);
     
-    /** returns the name of the Level that created the World
-     */
-    const QString& getName(void) const
-		{ return theLevelName; } 
-    
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
@@ -84,7 +78,15 @@ public:
 
 	
 public:
-	// Public attribute accessor methods
+    /** returns the name of the Level that created the World
+     */
+    const QString& getName(void) const
+		{ return theLevelName; } 
+
+    void setLevelName(const QString& aName)
+		{ theLevelName = aName; }
+    
+    // Public attribute accessor methods
 
 	void setTheWorldSize(dReal aWidth, dReal aHeight)
 		{ theWorldWidth=aWidth; theWorldHeight=aHeight; }

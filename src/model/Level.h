@@ -62,8 +62,8 @@ public:
 	//
 
 	/// returns the Level's title
-	virtual const QString getName ( ) const
-		{ return "Bowling for Butterflies"; }
+	virtual const QString& getName ( ) const
+		{ return theLevelName; }
 	
 	World* getTheWorldPtr(void)
 		{ return theWorldPtr; }
