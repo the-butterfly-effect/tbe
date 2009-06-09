@@ -32,7 +32,6 @@ Features:
     - one of them is the above simple bowling
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
-  * do not (re)paint objects that have not moved
   x menu File>Open works
   / implement moving of objects within GraphicsView
     x the actual moving of a single object
@@ -40,9 +39,11 @@ Features:
     - moves must be persistent (i.e. start-stop-reset should remember the new position)
     x if start button says continue (i.e. sim has run but not yet reset), 
       it should not be possible to move objects around
+  * basic foundations for UNDO feature
   x centering on play field is automated
   x loading a new level works correctly and removes previous level 
     x start-stop-continue-reset is reset as well
+  x add splash screen
 NOT A PLAYABLE GAME
 
 
@@ -50,7 +51,7 @@ Milestone 3 - Dragging along
 Version 0.30
 Features:
   * implement Drag&Drop from toolchest to GraphicsView
-  * Allow saving of view into XML File
+  * Allow saving of view into XML File (i.e. "saved game")
   * implement post-its
   * i18n
   * right-mouse button to adjust properties (e.g. resize, rotate, trapdoor threshold)
@@ -74,7 +75,7 @@ FIRST PLAYABLE (but probably very dumb looking)
 Milestone 5 - It's make over time!
 Version 0.50
   * commission a logo
-  * add splash screen (reading in all images will take a while)
+  * do not (re)paint objects that have not moved
   * add images & animation
     - all images in SVG format ?!?
     - make decision about how to do scaling
