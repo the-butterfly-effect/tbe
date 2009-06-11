@@ -20,7 +20,7 @@
 #define TBE_GLOBAL
 
 #define APPNAME "The Butterfly Effect"
-#define APPRELEASE "0.0.1"
+#define APPRELEASE "0.0.2"
 /* for your special versioning needs, normally empty */
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""
