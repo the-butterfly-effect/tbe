@@ -21,6 +21,7 @@
 
 #include "ui_MainWindow.h"
 #include "StartStopReset.h"
+#include <QUndoGroup>
 
 // forward declarations
 class DrawWorld;
@@ -43,11 +44,16 @@ private slots:
     { emit theSimStateMachine.on_pushButton_Reset_clicked(); }
     void on_pushButton_StartStopContinue_clicked(void)
     { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }
-	void on_splashScreen_clicked(void);
+	void slot_splashScreen_clicked(void);
 
 private:
      Ui::MainWindow ui;
      Level* theLevelPtr;
+     DrawWorld* theScenePtr;
+     
+     QUndoGroup theUndoGroup;
+     QAction*	theUndoActionPtr;
+     QAction*	theRedoActionPtr;
      
      /** the state machine handling the Start/Stop/Continue/Rest buttons
       *  and the actual simulation timing

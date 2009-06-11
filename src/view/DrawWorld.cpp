@@ -20,6 +20,7 @@
 #include "World.h"
 #include "MainWindow.h"
 #include "tbe_global.h"
+#include "DrawObject.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -72,6 +73,9 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	// is rendered in total
 	addItem(new Dot(getWidth()+0.01, -getHeight()-0.01));
 	addItem(new Dot(          -0.01,             +0.01));
+	
+	// announce my UndoStack to all future DrawObjects:
+	DrawObject::setUndoStackPtr(&theUndoStack);
 }
 
 

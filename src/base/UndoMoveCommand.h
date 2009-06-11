@@ -16,56 +16,57 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef DRAWRAMP_H
-#define DRAWRAMP_H
+#ifndef UNDOMOVECOMMAND_H
+#define UNDOMOVECOMMAND_H
 
-#include "ode/ode.h"
-#include "DrawObject.h"
-#include "Ramp.h"
+#include <assert.h>
+#include <QString>
+#include <QUndoCommand>
+#include "tbe_global.h"
 
-// forward declarations
+#include "Position.h"
+
+// Forward Declarations
+class DrawObject;
 class BaseObject;
 
 
-/** class DrawObject
+/**
+  * class UndoMoveCommand
   *
-  * This class abstracts the actual drawing of objects
-  * 
+  * abstract base class for everything in the simulation model 
   */
 
-class DrawRamp : public DrawObject
+class UndoMoveCommand : public QUndoCommand
 {
 public:
-	
+
 	// Constructors/Destructors
 	//  
 
-	/**
-	 * Empty Constructor
+	/** constructor
+	 * 
+	 * @param aDrawObjectPtr pointer to a DrawObject
+	 * @param aBaseObjectPtr pointer to a BaseObject
 	 */
-	DrawRamp (BaseObject* aBaseObjectPtr);
+	UndoMoveCommand (DrawObject* aDrawObjectPtr, 
+			BaseObject* aBaseObjectPtr);
 
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~DrawRamp ( );
+	virtual ~UndoMoveCommand ( );
 
-	/// overriden from QGraphicsItem
-    virtual QRectF boundingRect() const;
-
-    /// overriden from QGraphicsItem
-    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
-
-	/// overriden from QGraphicsItem
-    virtual void advance(int step);
-
-protected:
-    // Protected attribute accessor methods
-	//  
-
+	
+	virtual void redo ();
+	virtual void undo ();
+	
 private:
-	virtual void initAttributes ( ) ;
+	BaseObject* theBaseObjectPtr;
+	DrawObject* theDrawObjectPtr;
+	Position	theOldPosition;
+	Position	theNewPosition;
 };
 
-#endif // DRAWRAMP_H
+
+#endif // UNDOMOVECOMMAND_H

@@ -14,6 +14,7 @@ INCLUDEPATH	+= 3rdParty/include src src/model src/view src/base
 QT += core gui xml svg
 
 HEADERS	+= src/tbe_global.h \
+	src/base/UndoMoveCommand.h \
 	src/model/BaseObject.h \
 	src/model/BowlingBall.h \
 	src/model/BowlingPin.h \
@@ -36,6 +37,7 @@ HEADERS	+= src/tbe_global.h \
 	
 	
 SOURCES	+= src/main.cpp \
+	src/base/UndoMoveCommand.cpp \
 	src/model/BaseObject.cpp \
 	src/model/BowlingBall.cpp \
 	src/model/BowlingPin.cpp \

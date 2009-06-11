@@ -29,17 +29,17 @@
 // constructors & destructors
 
 MainWindow::MainWindow(QWidget *parent)
-     : QMainWindow(parent), theLevelPtr(NULL), theSimStateMachine(&ui)
+	: QMainWindow(parent), theLevelPtr(NULL),
+	  theScenePtr(NULL), theSimStateMachine(&ui)
 {                                      
 	ui.setupUi(this);
-	
+
+	// TODO: fixme: hardcoded path here!
 	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
 	QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
 
 	mySplashScenePtr->addItem(myTitlePagePtr);
 	
-	// basic properties of the view
-
 	// set my splash screen scene in view and make it fit nicely
 	ui.graphicsView->setScene(mySplashScenePtr);
 	QRectF myRect = myTitlePagePtr->boundingRect ();
@@ -48,7 +48,18 @@ MainWindow::MainWindow(QWidget *parent)
 	myRect.setHeight(myRect.height()/20.0);
 	ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
 	connect(myTitlePagePtr, SIGNAL(clicked()), 
-			this, SLOT(on_splashScreen_clicked()));
+			this, SLOT(slot_splashScreen_clicked()));
+	
+	// setup UndoGroup's QActions and add them to Edit menu
+	theUndoActionPtr = theUndoGroup.createUndoAction(this, tr("&Undo"));
+	theUndoActionPtr->setShortcut(tr("Ctrl+Z"));
+	ui.menuEdit->addAction(theUndoActionPtr);
+	
+	theRedoActionPtr = theUndoGroup.createRedoAction(this, tr("&Redo"));
+	QList<QKeySequence> redoShortcuts;
+	redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
+	theRedoActionPtr->setShortcuts(redoShortcuts);
+	ui.menuEdit->addAction(theRedoActionPtr);
 }                           
 
 MainWindow::~MainWindow()
@@ -77,8 +88,8 @@ void MainWindow::on_actionOpen_level_activated()
 	     tr("Open Level"), ".", tr("TBE Levels (*.xml *.tbe)"));
 	loadLevel(myFileName);
 }
- 
-void MainWindow::on_splashScreen_clicked(void)
+
+void MainWindow::slot_splashScreen_clicked(void)
 {
 	// TODO: FIXME: hardcoded level name!!!
 	loadLevel("levels/draft/001_bowling_for_butterflies.xml");
@@ -110,12 +121,16 @@ void MainWindow::loadLevel(const QString& aFileName)
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
 	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, aLevelName.toAscii().constData());
+	theScenePtr=aScene;
 
 	ui.graphicsView->setScene(aScene);
 
     QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
+    
+    theUndoGroup.addStack(aScene->getTheUndoStackPtr());
+    theUndoGroup.setActiveStack(aScene->getTheUndoStackPtr());
     
     setWindowTitle(APPNAME " - " + aLevelName);
 }
@@ -126,21 +141,23 @@ void MainWindow::purgeLevel(void)
 	if (theLevelPtr==NULL)
 		return;
 	
-QMatrix myMatrix = ui.graphicsView->matrix();
-DEBUG5("matrix: %f %f - %f %f - %f %f\n",
-		myMatrix.m11(), myMatrix.m12(), 
-		myMatrix.m21(), myMatrix.m22(),
-		myMatrix.dx(), myMatrix.dy());
-
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
-	QGraphicsScene* myScene = ui.graphicsView->scene();
-	if (myScene != NULL)
+	ui.graphicsView->setScene(NULL);
+	QMatrix myMatrix;
+	ui.graphicsView->setMatrix(myMatrix);
+	if (theScenePtr != NULL)
 	{
-		ui.graphicsView->setScene(NULL);
-		QMatrix myMatrix;
-		ui.graphicsView->setMatrix(myMatrix);
-		delete myScene;
+	    QObject::disconnect(&theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
+	    QObject::disconnect(&theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
+	    QObject::disconnect(&theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
+
+	    // Destroying theScene (which is a DrawWorld) will automatically
+	    // destroy the associated UndoStack. The UndoStack will de-register 
+	    // itself with the UndoGroup - no need to do anything myself here :-)
+
+	    delete theScenePtr;
+		theScenePtr=NULL;
 	}
 		
 	// disconnect the World

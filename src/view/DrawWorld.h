@@ -24,6 +24,7 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include <QTime>
+#include <QUndoStack>
 
 // forward declarations
 class World;
@@ -60,6 +61,9 @@ public:
 	
 	dReal getWidth();
 	dReal getHeight();
+
+	QUndoStack* getTheUndoStackPtr(void)
+		{ return &theUndoStack; }
 	
 public slots:
 	void resetWorld(void);
@@ -83,6 +87,8 @@ private:
 
 	QTimer theTimer;
 	QTime  theSimulationTime;
+	
+	QUndoStack	theUndoStack;
 	
 private:
 

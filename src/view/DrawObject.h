@@ -24,7 +24,7 @@
 
 // forward declarations
 class BaseObject;
-
+class QUndoStack;
 
 /** class DrawObject
   *
@@ -56,8 +56,14 @@ public:
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget);
 
-protected:
+    static void setUndoStackPtr(QUndoStack* aPtr);
 
+	/// overriden from QGraphicsItem
+    virtual void advance(int step);
+
+protected:
+	static QUndoStack* getUndoStackPtr(void);
+	
 	/** overridden from QGraphicsItem
 	 *  if the user drags the object around, this even will be called for each pixel.
 	 *  let's actually adjust the coordinates!!!
@@ -66,9 +72,14 @@ protected:
 	 */
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
 
-	/// overriden from QGraphicsItem
-    virtual void advance(int step);
-
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user *releases* the left mouse button 
+	 *    - so we can take action if it is a drag 
+	 *  
+	 *  @param event the even to handle
+	 */
+	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
+	
 protected:
     // Protected attribute accessor methods
 	//  

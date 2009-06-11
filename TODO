@@ -33,13 +33,13 @@ Features:
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
   x menu File>Open works
-  / implement moving of objects within GraphicsView
+    !BUG file->open cancel crashes application
+  x implement moving of objects within GraphicsView
     x the actual moving of a single object
-    / rubber banding - moving multiple objects
-    - moves must be persistent (i.e. start-stop-reset should remember the new position)
+    x moves must be persistent (i.e. start-stop-reset should remember the new position)
     x if start button says continue (i.e. sim has run but not yet reset), 
       it should not be possible to move objects around
-  * basic foundations for UNDO feature
+  x implement UNDO feature
   x centering on play field is automated
   x loading a new level works correctly and removes previous level 
     x start-stop-continue-reset is reset as well
@@ -50,6 +50,7 @@ NOT A PLAYABLE GAME
 Milestone 3 - Dragging along
 Version 0.30
 Features:
+  * show difference between selected & unselected object
   * implement Drag&Drop from toolchest to GraphicsView
   * Allow saving of view into XML File (i.e. "saved game")
   * implement post-its
@@ -96,6 +97,7 @@ FIRST WIDELY ANNOUNCEABLE VERSION
 
 Milestone 6 - Rope
 Version 0.60
+  * implement moving multiple objects (rubber band used right)
   * rope
   * skyhooks
   * wheel

@@ -23,6 +23,13 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QGraphicsSceneMouseEvent>
+#include <QUndoStack>
+
+#include "UndoMoveCommand.h"
+
+// set/get using static setter/getter in DrawObject
+// as such it is available to DrawObject and derived classes
+static QUndoStack* theUndoStackPtr = NULL;
 
 // Constructors/Destructors
 //  
@@ -62,6 +69,18 @@ DrawObject::~DrawObject ( ) { }
 
 // Accessor methods
 //  
+
+void DrawObject::setUndoStackPtr(QUndoStack* aPtr)
+{
+	assert(aPtr != NULL);
+	theUndoStackPtr = aPtr;
+}
+    
+QUndoStack* DrawObject::getUndoStackPtr(void)
+{
+	assert(theUndoStackPtr != NULL);
+	return theUndoStackPtr;
+}
 
 
 // Other methods
@@ -103,7 +122,7 @@ void DrawObject::initAttributes ( )
 
 void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("DrawObject::sceneEven(%d)\n", event->type());
+	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
 
 	dReal orgposx = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
 	dReal orgposy = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
@@ -125,6 +144,18 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	}
 }
 
+void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
+{
+	DEBUG5("DrawObject::mouseReleaseEvent(%d)\n", event->type());
+	// TODO: FIXME: for now, we're not discriminative for left or right mousebutton...
+	DEBUG5("for button %d\n", event->button());
+
+	// create and file an UndoMoveCommand
+	// note that the MoveCommand also pushes the move to BaseObject
+	UndoMoveCommand* myCommandPtr = new UndoMoveCommand(this, theBaseObjectPtr);
+	getUndoStackPtr()->push(myCommandPtr);
+	QGraphicsItem::mouseReleaseEvent(event);
+}
 
 void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {
