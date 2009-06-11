@@ -86,6 +86,8 @@ void MainWindow::on_actionOpen_level_activated()
 	// - it should be replaced by a dashboard style interface 
 	QString myFileName = QFileDialog::getOpenFileName(this,
 	     tr("Open Level"), ".", tr("TBE Levels (*.xml *.tbe)"));
+	if (myFileName.isEmpty())
+		return;
 	loadLevel(myFileName);
 }
 

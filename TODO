@@ -23,7 +23,7 @@ NOT A PLAYABLE GAME
 
 
 Milestone 2 - Levelling the Lands
-Version 0.20
+COMPLETED: Subversion revision 143
 Features:
   x Implement models for:
     - Floor (horizontal, not bouncy)
@@ -33,7 +33,6 @@ Features:
     - the other one is a more complex level with multiple floors
   x Implement level class and parse XML file to objects
   x menu File>Open works
-    !BUG file->open cancel crashes application
   x implement moving of objects within GraphicsView
     x the actual moving of a single object
     x moves must be persistent (i.e. start-stop-reset should remember the new position)
