@@ -1,0 +1,37 @@
+The Butterfly Effect - INSTALLING
+=================================
+
+
+How to build:
+
+
+1)
+Make sure that you have all tools & libraries installed that you need.
+These include:
+  * gcc, glibc-devel, make
+  * autoconf, automake
+  * libqt4        (which must be QT version 4.4 or higher)
+  * libqt4-devel
+  * probably a significant of dependencies of the above
+
+1.5)
+Make sure that you do *not* have libode-devel installed on your system.
+
+
+2)
+As a *NORMAL* user, build everything in 3rdParty:
+    $   make -C 3rdParty
+(don't worry, this will be integrated into the make of step 3 at some point)
+
+3)
+As a *NORMAL* user, build the main project:
+    $   qmake
+    $   make
+
+4)
+How to run:
+    $   ./tbe
+    
+    
+
+That's it for now!
