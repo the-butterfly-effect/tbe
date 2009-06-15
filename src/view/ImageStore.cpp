@@ -116,7 +116,7 @@ QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 
 	// so, it's not in our cache yet...
 	// let's try to find the file and create the renderer...
-	QStringList mySearchPath = QString(".:images:images/icons:images/objects").split(":",QString::SkipEmptyParts);
+	QStringList mySearchPath = QString(".:images:images/icons:images/objects:images/src").split(":",QString::SkipEmptyParts);
 	QStringList::iterator i;
 	QSvgRenderer* myPtr = NULL;
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
