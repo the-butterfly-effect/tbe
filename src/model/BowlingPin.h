@@ -46,6 +46,8 @@ public:
 	 * Empty Destructor
 	 */
 	virtual ~BowlingPin ( );
+
+	virtual DrawObject* createDrawObject();
 	
 	// Public attribute accessor methods
 	//  

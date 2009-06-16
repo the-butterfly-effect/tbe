@@ -26,7 +26,7 @@
 class BaseObject;
 class QUndoStack;
 class Anchors;
-
+class QSvgRenderer;
 
 /** class DrawObject
   *
@@ -41,10 +41,12 @@ public:
 	// Constructors/Destructors
 	//  
 
-	/**
-	 * Empty Constructor
-	 */
+	/// Simple Constructor
 	DrawObject (BaseObject* aBaseObjectPtr);
+
+	/// Svg Constructor
+	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName);
+
 
 	/**
 	 * Empty Destructor
@@ -137,8 +139,8 @@ protected:
 	// current angle of the object in radians!
 	qreal	theOldAngle;
 	
-//	HoverPointer* theHoverPtr;
 	Anchors* theAnchorsPtr;
+	QSvgRenderer*	theRenderer;
 
 private:
 	virtual void initAttributes ( ) ;

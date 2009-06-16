@@ -20,6 +20,7 @@
 #include "BaseObject.h"
 #include "PieMenu.h"
 #include "Anchors.h"
+#include "ImageStore.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -37,33 +38,18 @@ static QUndoStack* theUndoStackPtr = NULL;
 //  
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL)
 {
-	theBodyID = aBaseObjectPtr->getTheBodyID();
 	initAttributes();
-
-	// the objects sizes usually are less than a meter
-	// however, that does not sit well with QPainter, which is still a 
-	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
-	// that's what we need scaling for.
-	//
-	// theScale is set to 100.0 - that implies centimeters. 
-    scale(1.0/theScale, 1.0/theScale);
-    
-    // in radians!
-    theOldAngle=0;//aBaseObjectPtr->getTheCenter().angle;
-    
-    // make sure that this item is selectable & draggable
-    // (if the object allows it - of course)
-    if (aBaseObjectPtr->isMovable())
-	{
-    	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-		setAcceptHoverEvents(true);
-	}
-
-//    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
-    setToolTip(theBaseObjectPtr->getToolTip());
 }
+
+DrawObject::DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName)
+	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL)
+{
+	initAttributes();
+	theRenderer = ImageStore::getRenderer(anImageName);
+}
+
 
 DrawObject::~DrawObject ( ) { }
 
@@ -130,8 +116,6 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 
-#include <QGraphicsSvgItem>
-
 void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent * event )
 {
 	DEBUG5("HOVER START\n");
@@ -153,7 +137,32 @@ void DrawObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent *)
 
 void DrawObject::initAttributes ( )
 {
-	
+	theBodyID = theBaseObjectPtr->getTheBodyID();
+
+	// the objects sizes usually are less than a meter
+	// however, that does not sit well with QPainter, which is still a
+	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
+	// that's what we need scaling for.
+	//
+	// theScale is set to 100.0 - that implies centimeters.
+	scale(1.0/theScale, 1.0/theScale);
+
+	// in radians!
+	theOldAngle=0;//aBaseObjectPtr->getTheCenter().angle;
+
+	// make sure that this item is selectable & draggable
+	// (if the object allows it - of course)
+	if (theBaseObjectPtr->isMovable())
+	{
+		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+		setAcceptHoverEvents(true);
+	}
+
+//    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
+	setToolTip(theBaseObjectPtr->getToolTip());
+
+	applyPosition();
+
 }
 
 void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
@@ -197,16 +206,22 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 {
 	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 	
-	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-    // Body
-    myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	if (theRenderer == NULL)
+	{
+		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+		// Body
+		myPainter->drawRect(myRect);
+		myPainter->setBrush(color);
+		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	}
+	else
+	{
+		theRenderer->render(myPainter, myRect);
+		//myPainter->drawRect(myRect);
+	}
 
-    myPainter->setBrush(color);
-
-    myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
-
-    applyPosition();
 }

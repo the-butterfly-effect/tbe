@@ -17,6 +17,7 @@
  */
 
 #include "BowlingPin.h"
+#include "DrawObject.h"
 #include "tbe_global.h"
 
 // this class' ObjectFactory
@@ -56,3 +57,6 @@ BowlingPin::~BowlingPin ( )
 //  
 // Methods
 //  
+
+DrawObject*  BowlingPin::createDrawObject(void)
+{ return new DrawObject(this, "Bowling_Pin"); }
