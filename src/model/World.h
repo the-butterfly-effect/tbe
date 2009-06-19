@@ -59,15 +59,26 @@ public:
 	 */
 	bool addObject(BaseObject* anObjectPtr);
     
+
+	/** removes the BaseObject pointed to by anObjectPtrPtr from the World and delete's anObjectPtr
+	 *  it will also change the anObjectPtr to NULL
+	 *  @param anObjectPtrPtr pointer to pointer to object to delete
+	 *  @return true if success - false if object was not found
+	 */
+	bool deleteObject(BaseObject** anObjectPtrPtr);
+
+
 	/** creates the corresponding DrawWorld and asks it to
 	 *  sets itself up as the GraphicsScene
 	 *  it will add all known BaseObjects to the Scene
 	 */
     void createScene(MainWindow* myMainPtr);
     
+
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
+
 	/** take one step in the simulation loop
 	 *  Note that due to a limitation in OpenDE, each step is fixed time 
 	 * 

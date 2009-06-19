@@ -94,4 +94,8 @@ void Ramp::adjustParameters(void)
 }
 
 DrawObject*  Ramp::createDrawObject(void)
-{ return new DrawRamp(this); }
+{
+	assert(theDrawObjectPtr==NULL);
+	theDrawObjectPtr = new DrawRamp(this);
+	return theDrawObjectPtr;
+}

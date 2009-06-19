@@ -57,6 +57,14 @@ BaseObject::~BaseObject ( )
 	// mass will be destroyed in MovingObject
 	
 	// any joints will be destroyed in the implementation class
+
+
+	//
+	if (theDrawObjectPtr)
+	{
+		delete theDrawObjectPtr;
+		theDrawObjectPtr = NULL;
+	}
 }
 
 //  
@@ -102,7 +110,11 @@ void BaseObject::ForWorldOnly::setTheWorldID(dWorldID anID)
 //  
 
 DrawObject*  BaseObject::createDrawObject(void)
-{ return new DrawObject(this); }
+{
+	assert(theDrawObjectPtr==NULL);
+	theDrawObjectPtr = new DrawObject(this);
+	return theDrawObjectPtr;
+}
 
 
 void BaseObject::initAttributes ( ) 

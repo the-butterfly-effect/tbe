@@ -99,6 +99,30 @@ void World::createScene(MainWindow* myMainPtr)
 	}
 }
 
+
+bool World::deleteObject(BaseObject** anObjectPtrPtr)
+{
+	if (*anObjectPtrPtr == NULL)
+		return false;
+	DEBUG5("deleteObject(%p = %s)\n", *anObjectPtrPtr, (*anObjectPtrPtr)->getName().toAscii().constData());
+	int myPos = theObjectPtrList.indexOf(*anObjectPtrPtr);
+
+	if (myPos == -1)
+		return false;
+
+	delete *anObjectPtrPtr;
+	*anObjectPtrPtr = NULL;
+
+	theObjectPtrList.removeAt(myPos);
+
+	// note that the above deletion will also
+	// result in deletion of the corresponding DrawObject and its removal
+	// from the DrawWorld
+
+	return true;
+}
+
+
 dReal World::getBounce(dGeomID aGeom)
 {
 	if (aGeom == NULL)
