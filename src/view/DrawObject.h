@@ -167,6 +167,8 @@ protected:
 
 private:
 	virtual void initAttributes ( ) ;
+
+	friend class PieMenu;
 };
 
 #endif // DRAWOBJECT_H

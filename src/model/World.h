@@ -53,19 +53,23 @@ public:
 	virtual ~World ( );
 
 	
-	/** adds object to the World.
+	/** adds object to the World
+	 *  if the BaseObject knows about a DrawObject,
+	 *      that one will be added to the DrawWorld as well.
 	 *  @param anObjectPtr
 	 *  @return true if success - false if object already present
 	 */
 	bool addObject(BaseObject* anObjectPtr);
     
 
-	/** removes the BaseObject pointed to by anObjectPtrPtr from the World and delete's anObjectPtr
-	 *  it will also change the anObjectPtr to NULL
-	 *  @param anObjectPtrPtr pointer to pointer to object to delete
+	/** removes the BaseObject pointed to by anObjectPtr from the World.
+	 *  This means that the caller is now responsible for the pointer
+	 *   - World doesn't destroy the BaseObject !!!
+	 *  It does not remove the DrawObject from the DrawWorld, though!
+	 *  @param anObjectPtr pointer to object to be removed
 	 *  @return true if success - false if object was not found
 	 */
-	bool deleteObject(BaseObject** anObjectPtrPtr);
+	bool removeObject(BaseObject* anObjectPtr);
 
 
 	/** creates the corresponding DrawWorld and asks it to

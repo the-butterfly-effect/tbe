@@ -29,6 +29,7 @@
 // Forward Declarations
 class DrawObject;
 class ObjectFactory;
+class World;
 
 
 //   ************************************************
@@ -106,6 +107,9 @@ public:
 		/// static member to set the space ID where objects should be in
 		static void setTheSpaceID(dSpaceID anID);
 	};
+
+	// TODO: FIXME: rogue pointer here!!!
+	World* theWorldPtr;
 
 	virtual DrawObject* createDrawObject();
 		

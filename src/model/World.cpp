@@ -74,6 +74,7 @@ bool World::addObject(BaseObject* anObjectPtr)
 	
 	theObjectPtrList.push_back(anObjectPtr);
 	anObjectPtr->reset();
+	anObjectPtr->theWorldPtr = this;
 	
 	// if we have a graphical representation already, add object there, too
 	if (theDrawWorldPtr)
@@ -97,29 +98,6 @@ void World::createScene(MainWindow* myMainPtr)
 		DEBUG5("adding item %p\n",*i);
 		theDrawWorldPtr->addItem((*i)->createDrawObject());
 	}
-}
-
-
-bool World::deleteObject(BaseObject** anObjectPtrPtr)
-{
-	if (*anObjectPtrPtr == NULL)
-		return false;
-	DEBUG5("deleteObject(%p = %s)\n", *anObjectPtrPtr, (*anObjectPtrPtr)->getName().toAscii().constData());
-	int myPos = theObjectPtrList.indexOf(*anObjectPtrPtr);
-
-	if (myPos == -1)
-		return false;
-
-	delete *anObjectPtrPtr;
-	*anObjectPtrPtr = NULL;
-
-	theObjectPtrList.removeAt(myPos);
-
-	// note that the above deletion will also
-	// result in deletion of the corresponding DrawObject and its removal
-	// from the DrawWorld
-
-	return true;
 }
 
 
@@ -223,7 +201,23 @@ void World::nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2)
     if (theWorldPtr)
     	theWorldPtr->nearCallbackReal (o1, o2);
 }
-	
+
+
+bool World::removeObject(BaseObject* anObjectPtr)
+{
+	if (anObjectPtr == NULL)
+		return false;
+	DEBUG5("removeObject(%p = %s)\n", anObjectPtr, anObjectPtr->getName().toAscii().constData());
+	int myPos = theObjectPtrList.indexOf(anObjectPtr);
+
+	if (myPos == -1)
+		return false;
+
+	theObjectPtrList.removeAt(myPos);
+
+	return true;
+}
+
 void World::reset ( ) 
 {
 	DEBUG5("World::reset()\n");

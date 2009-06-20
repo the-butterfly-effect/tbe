@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef UNDOMOVECOMMAND_H
-#define UNDOMOVECOMMAND_H
+#ifndef UNDODELETECOMMAND_H
+#define UNDODELETECOMMAND_H
 
 #include <assert.h>
 #include <QString>
@@ -30,14 +30,14 @@
 class DrawObject;
 class BaseObject;
 
-
 /**
-  * class UndoMoveCommand
+  * class UndoDeleteCommand
   *
-  * undo/redo for the moving of objects
+  * removes the DrawObject and BaseObject from the DrawWorld and World, but in such fashion
+  * that it can redo that - if needed
   */
 
-class UndoMoveCommand : public QUndoCommand
+class UndoDeleteCommand : public QUndoCommand
 {
 public:
 
@@ -49,13 +49,13 @@ public:
 	 * @param aDrawObjectPtr pointer to a DrawObject
 	 * @param aBaseObjectPtr pointer to a BaseObject
 	 */
-	UndoMoveCommand (DrawObject* aDrawObjectPtr, 
+	UndoDeleteCommand (DrawObject* aDrawObjectPtr,
 			BaseObject* aBaseObjectPtr);
 
 	/**
-	 * Empty Destructor
+	 * Destructor
 	 */
-	virtual ~UndoMoveCommand ( );
+	virtual ~UndoDeleteCommand ( );
 
 	
 	virtual void redo ();
@@ -64,9 +64,7 @@ public:
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;
-	Position	theOldPosition;
-	Position	theNewPosition;
 };
 
 
-#endif // UNDOMOVECOMMAND_H
+#endif // UNDODELETECOMMAND_H

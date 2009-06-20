@@ -22,6 +22,7 @@
 #include "DrawObject.h"
 #include "PieMenu.h"
 #include "ImageStore.h"
+#include "UndoDeleteCommand.h"
 
 
 PieMenu::PieMenu(DrawObject* aDrawObjectPtr)
@@ -65,6 +66,8 @@ void PieMenu::deleteObject(void)
 {
 	// TODO: implemente delete
 	// do this by implementing UndoDeleteCommand
+	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theDrawObjectPtr, theDrawObjectPtr->getBaseObjectPtr());
+	theDrawObjectPtr->getUndoStackPtr()->push(myCommandPtr);
 }
 
 
