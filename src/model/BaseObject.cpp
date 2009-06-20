@@ -58,8 +58,7 @@ BaseObject::~BaseObject ( )
 	
 	// any joints will be destroyed in the implementation class
 
-
-	//
+	// delete the corresponding DrawObject - if it exists
 	if (theDrawObjectPtr)
 	{
 		delete theDrawObjectPtr;
