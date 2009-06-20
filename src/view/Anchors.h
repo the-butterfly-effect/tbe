@@ -58,15 +58,15 @@ public:
 
 	/// @returns the width of the DrawObject we're drawing anchors around
 	qreal getWidth(void)
-		{ return theDrawObjectPtr->theBaseObjectPtr->getTheWidth(); }
+		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheWidth(); }
 
 	/// @returns the height of the DrawObject we're drawing anchors around
 	qreal getHeight(void)
-		{ return theDrawObjectPtr->theBaseObjectPtr->getTheHeight(); }
+		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheHeight(); }
 
 	/// @returns the center Position of the DrawObject we're drawing anchors around
 	Position getCenter(void)
-		{ return theDrawObjectPtr->theBaseObjectPtr->getTheCenter(); }
+		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheCenter(); }
 
 protected slots:
 

@@ -37,19 +37,19 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	// the below code creates the 8 anchors around the object
 
 	PieMenu::EditMode myMode = PieMenu::NONE;
-	if (theDrawObjectPtr->theBaseObjectPtr->isResizable()&BaseObject::HORIZONTALRESIZE)
+	if (theDrawObjectPtr->getBaseObjectPtr()->isResizable()&BaseObject::HORIZONTALRESIZE)
 		myMode = PieMenu::RESIZE_HORI;
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  VMIDDLE, this));
 	theAnchorList.push_back(new Anchor(myMode, RIGHT, VMIDDLE, this));
 
-	if (theDrawObjectPtr->theBaseObjectPtr->isResizable()&BaseObject::VERTICALRESIZE)
+	if (theDrawObjectPtr->getBaseObjectPtr()->isResizable()&BaseObject::VERTICALRESIZE)
 		myMode = PieMenu::RESIZE_VERTI;
 	else
 		myMode = PieMenu::NONE;
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
 
-	if (theDrawObjectPtr->theBaseObjectPtr->isRotatable())
+	if (theDrawObjectPtr->getBaseObjectPtr()->isRotatable())
 		myMode = PieMenu::ROTATE;
 	else
 		myMode = PieMenu::NONE;

@@ -18,12 +18,11 @@
 
 #include "tbe_global.h"
 #include "BaseObject.h"
+#include "DrawWorld.h"
 #include "DrawObject.h"
 #include "PieMenu.h"
 #include "ImageStore.h"
 
-
-static PieMenu::EditMode theGlobalEditMode = PieMenu::MOVE;
 
 PieMenu::PieMenu(DrawObject* aDrawObjectPtr)
 		: theDrawObjectPtr(aDrawObjectPtr)
@@ -50,15 +49,9 @@ QAction* PieMenu::actionFactoryMethod(const QString anIconName, const QString& a
 
 void PieMenu::createActions(void)
 {
-	BaseObject* myBOPtr = theDrawObjectPtr->theBaseObjectPtr;
+	BaseObject* myBOPtr = theDrawObjectPtr->getBaseObjectPtr();
 	QString myBOName = myBOPtr->getName();
 
-	actionFactoryMethod(getEditModeIconName(MOVE), tr("Move %1").arg(myBOName),
-						tr("In this mode, you can move %1 around").arg(myBOName),
-						SLOT(move()), true);
-	actionFactoryMethod(getEditModeIconName(RESIZE_ROTATE), tr("Resize/Rotate"),
-						tr("In this mode, you can resize or rotate %1").arg(myBOName),
-						SLOT(resizeRotate()), myBOPtr->isRotatable() | myBOPtr->isResizable());
 	actionFactoryMethod("ActionDelete", tr("Delete %1").arg(myBOName),
 						tr("This will delete %1 from the screen and put it back in the Toolbox").arg(myBOName),
 						SLOT(deleteObject()), myBOPtr->isMovable());
@@ -70,20 +63,13 @@ void PieMenu::createActions(void)
 
 void PieMenu::deleteObject(void)
 {
-	// TODO implement delete
+	// TODO: implemente delete
+	// do this by implementing UndoDeleteCommand
 }
 
-
-PieMenu::EditMode
-PieMenu::getEditMode()
-{
-	return theGlobalEditMode;
-}
 
 QString PieMenu::getEditModeIconName(PieMenu::EditMode anEditMode)
 {
-	if (anEditMode==0)
-		anEditMode=theGlobalEditMode;
 	switch(anEditMode)
 	{
 	case MOVE:
@@ -100,11 +86,4 @@ QString PieMenu::getEditModeIconName(PieMenu::EditMode anEditMode)
 		return "ActionNone";
 	}
 	return "";
-}
-
-
-void PieMenu::setEditMode(EditMode aNewEditMode)
-{
-	DEBUG4("setEditMode(%d)\n", aNewEditMode);
-	theGlobalEditMode = aNewEditMode;
 }

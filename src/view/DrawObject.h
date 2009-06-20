@@ -20,6 +20,7 @@
 #define DRAWOBJECT_H
 
 #include "ode/ode.h"
+
 #include <QGraphicsItem>
 
 // forward declarations
@@ -65,7 +66,12 @@ public:
 	/// overriden from QGraphicsItem
     virtual void advance(int step);
 
+	BaseObject* getBaseObjectPtr(void) const
+		{ return theBaseObjectPtr; }
+
+
 protected:
+
 	static QUndoStack* getUndoStackPtr(void);
 
 	/** overridden from QGraphicsItem
@@ -75,6 +81,19 @@ protected:
 	 */
 	virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
 
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user selects the object
+	 *    - so we can have theEditState take action
+	 *  @param event the even to handle
+	 */
+	virtual void focusInEvent ( QFocusEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user deselects the object
+	 *    - so we can have theEditState take action
+	 *  @param event the even to handle
+	 */
+	virtual void focusOutEvent ( QFocusEvent * event );
 
 	/** overridden from QGraphicsItem
 	 *  if called, setup a hover icon (indicating current action)
@@ -127,6 +146,8 @@ protected:
 
 	void applyPosition(void);
 	
+	virtual void paintHighlighted(QPainter* myPainter);
+
 protected:
 	// Private attributes
 	//  
@@ -142,12 +163,10 @@ protected:
 	Anchors* theAnchorsPtr;
 	QSvgRenderer*	theRenderer;
 
+	bool isHighlighted;
+
 private:
 	virtual void initAttributes ( ) ;
-
-	friend class PieMenu;
-	friend class HoverPointer;
-	friend class Anchors;
 };
 
 #endif // DRAWOBJECT_H

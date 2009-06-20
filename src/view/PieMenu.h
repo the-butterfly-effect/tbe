@@ -70,12 +70,6 @@ public:
 protected slots:
 		void deleteObject(void);
 
-		void move(void)
-		{ setEditMode(MOVE); }
-
-		void resizeRotate(void)
-		{ setEditMode(RESIZE_ROTATE); }
-
 private:
 		/** this member populates the menu
 		 */
@@ -92,8 +86,6 @@ private:
 									 const char* aSlotName, bool isEnabled=true);
 
 		DrawObject* theDrawObjectPtr;
-
-		void setEditMode(EditMode aNewEditMode);
 };
 
 #endif // PIEMENU_H

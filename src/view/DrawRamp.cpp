@@ -53,7 +53,9 @@ void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWid
 	Ramp* myRampPtr = reinterpret_cast<Ramp*>(theBaseObjectPtr);
 	qreal myWidth = myRampPtr->getSlabLength()*theScale;
 	qreal myHeight= myRampPtr->theSlabThickness*theScale;
-	
+
+	paintHighlighted(myPainter);
+
 //	DEBUG5("void DrawRamp::paint - %fx%f\n",
 //			   myRampPtr->getSlabLength(), 
 //			   myRampPtr->theSlabThickness);

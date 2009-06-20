@@ -26,6 +26,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QGraphicsSceneMouseEvent>
+#include <QFocusEvent>
 #include <QUndoStack>
 
 #include "UndoMoveCommand.h"
@@ -33,6 +34,8 @@
 // set/get using static setter/getter in DrawObject
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;
+
+//EditState DrawObject::theEditState;
 
 // Constructors/Destructors
 //  
@@ -51,7 +54,14 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName)
 }
 
 
-DrawObject::~DrawObject ( ) { }
+DrawObject::~DrawObject ( )
+{
+	if (theAnchorsPtr)
+	{
+		delete theAnchorsPtr;
+		theAnchorsPtr = NULL;
+	}
+}
 
 //  
 // Methods
@@ -72,7 +82,6 @@ QUndoStack* DrawObject::getUndoStackPtr(void)
 	assert(theUndoStackPtr != NULL);
 	return theUndoStackPtr;
 }
-
 
 // Other methods
 //  
@@ -116,23 +125,32 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 
-void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent * event )
+void DrawObject::focusInEvent ( QFocusEvent * event )
 {
-	DEBUG5("HOVER START\n");
-	if (theAnchorsPtr==NULL)
-	{
-		theAnchorsPtr = new Anchors(this);
-	}
+	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
+	assert(theAnchorsPtr==NULL);
+	theAnchorsPtr=new Anchors(this);
+	isHighlighted=true;
+}
+
+void DrawObject::focusOutEvent ( QFocusEvent * event )
+{
+	DEBUG5("focusOutEvent for %p with %d\n", this, event->reason());
+	assert(theAnchorsPtr!=NULL);
+	delete theAnchorsPtr;
+	theAnchorsPtr = NULL;
+	isHighlighted=false;
+}
+
+
+void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent *)
+{
+	// TODO: hover should report to EditState - so it can create a HoverPointer for delete
 }
 
 void DrawObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent *)
 {
-	DEBUG5("HOVER LEAVE\n");
-	if (theAnchorsPtr!=NULL)
-	{
-		delete theAnchorsPtr;
-		theAnchorsPtr=NULL;
-	}
+	// TODO: hover should report to EditState - so it can create a HoverPointer for delete
 }
 
 void DrawObject::initAttributes ( )
@@ -154,9 +172,11 @@ void DrawObject::initAttributes ( )
 	// (if the object allows it - of course)
 	if (theBaseObjectPtr->isMovable())
 	{
-		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 		setAcceptHoverEvents(true);
 	}
+
+	isHighlighted = false;
 
 //    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
@@ -209,12 +229,14 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
-	
+
+	paintHighlighted(myPainter);
+
 	if (theRenderer == NULL)
 	{
 		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
 		// Body
-		myPainter->drawRect(myRect);
+//		myPainter->drawRect(myRect);
 		myPainter->setBrush(color);
 		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
 	}
@@ -224,4 +246,22 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 		//myPainter->drawRect(myRect);
 	}
 
+}
+
+void DrawObject::paintHighlighted(QPainter* myPainter)
+{
+	if (isHighlighted)
+	{
+		Position myC = theBaseObjectPtr->getTheCenter();
+		qreal myW = theBaseObjectPtr->getTheWidth();
+		qreal myH = theBaseObjectPtr->getTheHeight();
+
+		// calculate the box in Scene coordinates:
+		QRectF myBox(myC.x-0.5*myW, -myC.y-0.5*myH, myW, myH);
+
+		// but we draw in item coordinates:
+		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+		myPainter->setBrush(color);
+		myPainter->drawPolygon(mapFromScene(myBox));
+	}
 }
