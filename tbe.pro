@@ -18,8 +18,8 @@ QT += core \
     xml \
     svg
 HEADERS += src/tbe_global.h \
-	src/base/UndoDeleteCommand.h \
-	src/base/UndoMoveCommand.h \
+    src/base/UndoDeleteCommand.h \
+    src/base/UndoMoveCommand.h \
     src/model/BaseObject.h \
     src/model/BowlingBall.h \
     src/model/BowlingPin.h \
@@ -41,10 +41,11 @@ HEADERS += src/tbe_global.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
     src/view/SplashScreen.h \
-	src/view/StartStopReset.h
+    src/view/StartStopReset.h \
+    src/model/VolleyBall.h
 SOURCES += src/main.cpp \
-	src/base/UndoDeleteCommand.cpp \
-	src/base/UndoMoveCommand.cpp \
+    src/base/UndoDeleteCommand.cpp \
+    src/base/UndoMoveCommand.cpp \
     src/model/BaseObject.cpp \
     src/model/BowlingBall.cpp \
     src/model/BowlingPin.cpp \
@@ -64,7 +65,8 @@ SOURCES += src/main.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
     src/view/SplashScreen.cpp \
-	src/view/StartStopReset.cpp
+    src/view/StartStopReset.cpp \
+    src/model/VolleyBall.cpp
 FORMS = src/view/MainWindow.ui
 DISTFILES = README \
     TODO \
