@@ -8,7 +8,7 @@
   <source>hand-written</source>
 </levelinfo>
 <scene>
-  <scenesize width="6" height="4" />
+  <scenesize width="4.5" height="4" />
   <view width="6" height="3" X="3" Y="1.5" />
   <predefined>
     <object type="VolleyBall"        X="0.4" Y="3.0" />
@@ -16,7 +16,7 @@
     <object type="Bowling Pin"  id="2" X="3.2" Y="0.25"/>
     <object type="Bowling Pin"         X="3.4" Y="0.19"/>
     <object type="Ramp"                X="1.0" Y="0.5" width="2.0"/>
-    <object type="Ramp"                X="5.95" Y="0.5" width="0.1" />
+    <object type="Ramp"                X="4.45" Y="0.5" width="0.1" />
     <object type="Note" X="2.2" Y="0.3">
        <property key="page1">This looks simple, does it?\nUse the ball to topple the pins.</property>
        <property key="page2">Aww. The ball falls down.\nThat's called gravity.</property>
