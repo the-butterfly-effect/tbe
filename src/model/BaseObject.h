@@ -39,6 +39,25 @@ class World;
 //   *                                              *
 //   ************************************************
 
+
+/* ABOUT BODIES, GEOMETRIES, MASSES AND THE BASEOBJECT CLASS
+   In OpenDE, we have Worlds, Bodies, Geometries, Joints and Masses
+	 * World    - the "space" all bodies live in
+	 * Body     - the concept of an object in the world
+	 * Mass     - the mass of the total body
+	 * Geometry - the dimensions of a body
+	 * Joint    - the link between two bodies, constraining their relative movement
+   The Geometry is very relevant to collision detection: no geometry, no collision
+	 It is possible to have multiple Geometries on a single Body - useful for making more complex shaped objects
+   The Body is very relevant to motion: no body, no movement
+	 The ImmovableObject class uses this trick: it defines a geom without a body
+   The Mass is very relevant to acceleration/deceleration Note that a mass can have a different shape than a geometry!
+	 Mass is created and managed in the MovingObject class
+
+   When a BaseObject is register()ed, the body, all geoms and the mass are created
+   When a BaseObject is deregister()ed, the body, all geoms and the mass have to be deleted
+*/
+
 /**
   * class BaseObject
   *
@@ -92,6 +111,8 @@ public:
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 
+//	bool deregister(void);
+//	bool register(void);
 
 	/** the two STATIC members in this class should only be accessible to the
 	 *  World class
