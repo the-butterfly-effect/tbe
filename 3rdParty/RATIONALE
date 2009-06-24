@@ -13,3 +13,9 @@ statically against the library - and does not use features like
 drawstuff.
 
 
+Box2D  -    http://box2d.sourceforge.net/
+Another physics library - a replacement of ode which isn't a great
+fit for TBE.
+Again, many distributions do not ship this library, and/or are 
+shipping outdated or malfunctioning versions. The Butterfly Effect 
+links statically against the library.
