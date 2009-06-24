@@ -49,15 +49,20 @@ NOT A PLAYABLE GAME
 Milestone 3 - Dragging along
 Version 0.30
 Features:
+  * Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
   * implement Drag&Drop from toolchest to GraphicsView
   * Allow saving of view into XML File (i.e. "saved game")
   * implement post-its
+  x implement volleyball
   / i18n of application
   / right-mouse button to adjust properties (e.g. resize, rotate, trapdoor threshold)
-	x implement menu
-	x make hovering icon to show what action will be done
+    / highlight selected object
+	x implement RMB menu
+	  / delete
+	  - adjust properties (for Milestone 4?!)
+	/ add anchors around object
 	- actually implement hori/verti resize
-	- show difference between selected & unselected object
+	- actually implement rotation
   * automated regression tests for XML parser/world builder
 NOT REALLY A PLAYABLE GAME
 
