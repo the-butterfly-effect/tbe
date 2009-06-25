@@ -6,12 +6,12 @@ MYINCDIR=${PWD}/include
 MYLIBDIR=${PWD}/libs
 
 
-
+# no longer build ode
 all:	box2d
 
 clean:
 	rm -rf ${ODE}
-
+	rm -rf ${BOX2D}
 
 mrproper: clean
 	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/*
@@ -27,3 +27,4 @@ box2d:
 	patch -p0 <box2d_compile.patch
 	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
+	cp ${BOX2D}/Box2D/Include/Box2D.h include
