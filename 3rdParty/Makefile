@@ -1,4 +1,5 @@
 ODE=ode-0.11
+BOX2D=Box2D_v2.0.1
 
 
 MYINCDIR=${PWD}/include
@@ -6,7 +7,7 @@ MYLIBDIR=${PWD}/libs
 
 
 
-all:	ode
+all:	box2d
 
 clean:
 	rm -rf ${ODE}
@@ -21,3 +22,8 @@ ode:
 	make -C ${ODE}
 	make -C ${ODE} install
 
+box2d:
+	unzip ${BOX2D}.zip
+	patch -p0 <box2d_compile.patch
+	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
+	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
