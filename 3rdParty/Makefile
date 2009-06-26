@@ -27,4 +27,4 @@ box2d:
 	patch -p0 <box2d_compile.patch
 	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
-	cp ${BOX2D}/Box2D/Include/Box2D.h include
+	# not possible to extract includes - they're a mess
