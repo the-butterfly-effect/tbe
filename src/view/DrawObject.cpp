@@ -93,17 +93,12 @@ void DrawObject::advance(int)
 
 void DrawObject::applyPosition(void)
 {
-    const dReal* pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-    const dReal* ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
-
-    // TODO: this can be done a lot nicer with QTranform
-    qreal myAngle = atan2(ang[1], ang[0]);
-    
+	Position myPosition = theBaseObjectPtr->getTempCenter();
     // Qt has Y positive downwards, whereas all of the model has Y upwards.
     // that's what the minus is for :-)
-    setPos(pos1[0], -pos1[1]);
-    rotate((myAngle-theOldAngle)*180/3.14);
-    theOldAngle=myAngle;
+    setPos(myPosition.x, -myPosition.y);
+    rotate((myPosition.angle-theOldAngle)*180/3.14);
+    theOldAngle=myPosition.angle;
 }
 
 QRectF DrawObject::boundingRect() const
@@ -166,7 +161,7 @@ void DrawObject::initAttributes ( )
 	scale(1.0/theScale, 1.0/theScale);
 
 	// in radians!
-	theOldAngle=0;//aBaseObjectPtr->getTheCenter().angle;
+	theOldAngle=0;//aBaseObjectPtr->getOrigCenter().angle;
 
 	// make sure that this item is selectable & draggable
 	// (if the object allows it - of course)
@@ -189,9 +184,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
 
-	qreal orgposx = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
-	qreal orgposy = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
-	
+	Position myOrgPos = theBaseObjectPtr->getTempCenter();
 	QPointF myPos=event->scenePos ();
 	
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
@@ -203,7 +196,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 		// if the new position collides with another, reset the position to the original one
 		if (!scene()->collidingItems(this).isEmpty())
 		{
-			dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), orgposx, orgposy, 0.0);
+			dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myOrgPos.x, myOrgPos.y, 0.0);
 			applyPosition();
 		}
 	}
@@ -252,7 +245,7 @@ void DrawObject::paintHighlighted(QPainter* myPainter)
 {
 	if (isHighlighted)
 	{
-		Position myC = theBaseObjectPtr->getTheCenter();
+		Position myC = theBaseObjectPtr->getOrigCenter();
 		qreal myW = theBaseObjectPtr->getTheWidth();
 		qreal myH = theBaseObjectPtr->getTheHeight();
 

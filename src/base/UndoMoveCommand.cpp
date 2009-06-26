@@ -20,10 +20,6 @@
 #include "BaseObject.h"
 #include "DrawObject.h"
 
-// TODO: FIXME: this include should not be necessary!!!
-#include "ode/ode.h"
-
-
 // Constructors/Destructors
 //  
 
@@ -36,13 +32,8 @@ UndoMoveCommand::UndoMoveCommand (
 {
 	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
-	theOldPosition = theBaseObjectPtr->getTheCenter();
-	
-	// TODO: FIXME: ugly - direct model access outside the model class
-	theNewPosition.x = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
-	theNewPosition.y = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
-	// TODO: FIXME: rotation not implemented yet
-	theNewPosition.angle = 0;
+	theOldPosition = theBaseObjectPtr->getOrigCenter();
+	theNewPosition = theBaseObjectPtr->getTempCenter();
 
 	setText("Move " + theBaseObjectPtr->getName());
 }

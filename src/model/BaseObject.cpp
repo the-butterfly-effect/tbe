@@ -86,6 +86,14 @@ dWorldID BaseObject::getWorldID(void)
 	return theStaticWorldID;
 }
 
+Position BaseObject::getTempCenter (void)
+{
+    const dReal* pos = dGeomGetPosition (getTheGeomID());
+    const dReal* ang  = dGeomGetRotation (getTheGeomID());
+    qreal myAngle = atan2(ang[1], ang[0]);
+    return Position(pos[0], pos[1], myAngle);
+}
+
 void BaseObject::setTheGeomID ( dGeomID new_var )
 {
 	assert(theGeomID==0);

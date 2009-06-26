@@ -195,11 +195,23 @@ public:
 	}
 
 	/**
-	 * Get the value of theCenter
+	 * Get the Position of the object.
+	 * This is the "original" center, i.e. where the object will
+	 * return to after a "reset". 
 	 * @return the value of theCenter
 	 */
-	Position getTheCenter ( )
+	Position getOrigCenter ( )
 		{ return theCenter; }
+
+	/**
+	 * Get the current Position of the object.
+	 * This is the current center, i.e. where the object is now.
+	 * During/After simulations or during mouse drag of the object, this 
+	 * may be different from the getOrigCenter above.
+	 *  
+	 * @return the value of theCenter
+	 */
+	Position getTempCenter ( );
 
 	/**
 	 * Set the value of theWidth

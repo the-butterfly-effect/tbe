@@ -66,7 +66,7 @@ public:
 
 	/// @returns the center Position of the DrawObject we're drawing anchors around
 	Position getCenter(void)
-		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheCenter(); }
+		{ return theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter(); }
 
 protected slots:
 
