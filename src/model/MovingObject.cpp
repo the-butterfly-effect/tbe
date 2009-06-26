@@ -41,46 +41,46 @@ MovingObject::~MovingObject ( )
 // Methods - sorted alphabetically
 //  
 
-void MovingObject::adjustMass(dReal newmass)
+void MovingObject::adjustMass(qreal newmass)
 {
 	assert(theMass.mass!=0);
 	dMassAdjust (&theMass, newmass);
 	// we assume that the mass has already been assigned to a body here
 }
 
-void MovingObject::setMassBox (dReal total_mass, dReal lx, dReal ly)
+void MovingObject::setMassBox (qreal total_mass, qreal lx, qreal ly)
 {
 	dMassSetBoxTotal (&theMass, total_mass, lx, ly, 0.0);
 	dBodySetMass (theBodyID, &theMass);
 }
 
 void MovingObject::setMassCapsule (
-		dReal total_mass, 
+		qreal total_mass, 
 		Direction direction, 
-		dReal radius, 
-		dReal length)
+		qreal radius, 
+		qreal length)
 {
 	dMassSetCapsuleTotal (&theMass, total_mass, direction, radius, length);
 	dBodySetMass (theBodyID, &theMass);
 }
 
 void MovingObject::setMassCylinder (
-		dReal total_mass, 
+		qreal total_mass, 
 		Direction direction, 
-		dReal radius, 
-		dReal length)
+		qreal radius, 
+		qreal length)
 {
 	dMassSetCylinderTotal (&theMass, total_mass, direction, radius, length);
 	dBodySetMass (theBodyID, &theMass);
 }
 
-void MovingObject::setMassSphere (dReal total_mass, dReal radius)
+void MovingObject::setMassSphere (qreal total_mass, qreal radius)
 {
 	dMassSetSphereTotal (&theMass, total_mass, radius);
 	dBodySetMass (theBodyID, &theMass);
 }
 
-void MovingObject::setMassTrimesh(dReal total_mass, dGeomID g)
+void MovingObject::setMassTrimesh(qreal total_mass, dGeomID g)
 {
 	dMassSetTrimesh (&theMass, 1.0, g);
 	dMassAdjust (&theMass, total_mass);

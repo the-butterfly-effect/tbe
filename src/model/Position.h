@@ -19,7 +19,7 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include "ode/ode.h"
+#include "tbe_global.h"
 
 /**
   * class Position
@@ -36,18 +36,18 @@ public:
 	/**
 	 * Empty Constructor - set x (m), y(m), angle(radial)
 	 */
-	Position (dReal anX=0.0, dReal aY=0.0, dReal anAngle=0.0);
+	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
 	
 	// Public attributes
 	
 	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
-	dReal x;
+	qreal x;
 	
 	/// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
-	dReal y;
+	qreal y;
 	
 	/// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
-	dReal angle;
+	qreal angle;
 };
 
 #endif // POSITION_H

@@ -93,8 +93,8 @@ void DrawObject::advance(int)
 
 void DrawObject::applyPosition(void)
 {
-    const dReal *pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
-    const dReal *ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
+    const dReal* pos1 = dGeomGetPosition (theBaseObjectPtr->getTheGeomID());
+    const dReal* ang  = dGeomGetRotation (theBaseObjectPtr->getTheGeomID());
 
     // TODO: this can be done a lot nicer with QTranform
     qreal myAngle = atan2(ang[1], ang[0]);
@@ -189,8 +189,8 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
 
-	dReal orgposx = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
-	dReal orgposy = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
+	qreal orgposx = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[0];
+	qreal orgposy = dGeomGetPosition(theBaseObjectPtr->getTheGeomID())[1];
 	
 	QPointF myPos=event->scenePos ();
 	

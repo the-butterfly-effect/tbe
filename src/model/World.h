@@ -89,7 +89,7 @@ public:
 	 * @return the time step taken in the simulation step in seconds 
 	 *         (most likely only a fraction of a second)
 	 */
-	dReal simStep (void);
+	qreal simStep (void);
 
 	
 public:
@@ -103,11 +103,11 @@ public:
     
     // Public attribute accessor methods
 
-	void setTheWorldSize(dReal aWidth, dReal aHeight)
+	void setTheWorldSize(qreal aWidth, qreal aHeight)
 		{ theWorldWidth=aWidth; theWorldHeight=aHeight; }
-	dReal getTheWorldWidth(void)
+	qreal getTheWorldWidth(void)
 		{ return theWorldWidth; }
-	dReal getTheWorldHeight(void)
+	qreal getTheWorldHeight(void)
 		{ return theWorldHeight; }
 
 private:
@@ -134,7 +134,7 @@ private:
 	 * @param b1 the geometry to query for bounciness
 	 * @return the bounciness
 	 */
-	static dReal getBounce(dGeomID b1);
+	static qreal getBounce(dGeomID b1);
 
 	void initAttributes ( ) ;
 	
@@ -158,12 +158,12 @@ private:
 	dJointGroupID contactgroup1;
 	
 	/// the time taking in each time step
-	static const dReal deltaTime = 0.005;
+	static const qreal deltaTime = 0.005;
 	
 	QString theLevelName;
 
-	dReal	theWorldWidth;
-	dReal	theWorldHeight;
+	qreal	theWorldWidth;
+	qreal	theWorldHeight;
 };
 
 #endif // WORLD_H

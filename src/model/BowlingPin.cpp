@@ -38,9 +38,9 @@ BowlingPin::BowlingPin ( )
 {
 	DEBUG5("BowlingPin::BowlingPin\n");
 	// set the bowling pin to be a *box* - not a cylinder
-	const dReal myRadius = 0.06; // m
-	const dReal myLength = 0.38; // m
-	const dReal myMass   = 1.5;  // kg
+	const qreal myRadius = 0.06; // m
+	const qreal myLength = 0.38; // m
+	const qreal myMass   = 1.5;  // kg
 	setTheGeomID( dCreateBox (getSpaceID(), 2*myRadius, myLength, 1.0) );
 	setMassBox(myMass, 2*myRadius, myLength);
 	

@@ -59,8 +59,8 @@ public:
 	// Public accessor methods
 	//
 	
-	dReal getWidth();
-	dReal getHeight();
+	qreal getWidth();
+	qreal getHeight();
 
 	QUndoStack* getTheUndoStackPtr(void)
 		{ return &theUndoStack; }

@@ -185,8 +185,8 @@ BaseObject*
 ObjectFactory::createObject(
 		const QString& aName, 
 		const Position aPosition,
-		const dReal aWidth,
-		const dReal anHeight) const
+		const qreal aWidth,
+		const qreal anHeight) const
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
 	if (myFactoryPtr == NULL)

@@ -39,7 +39,7 @@ VolleyBall::VolleyBall ( )
 {
 	DEBUG5("VolleyBall::VolleyBall\n");
 	// volleyball circumference is 66 cm -> 21 cm diameter
-	const dReal myRadius = 0.105;
+	const qreal myRadius = 0.105;
 	// and a weight of 280 grams
 	setTheGeomID( dCreateSphere (getSpaceID(), myRadius) );
 	setMassSphere(0.280, myRadius);

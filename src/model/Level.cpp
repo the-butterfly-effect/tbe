@@ -80,8 +80,8 @@ Level::load(const QString& aFileName)
 	QDomNamedNodeMap myNodeMap;
     bool isOK1, isOK2;
 
-    dReal myWidth;
-    dReal myHeight;
+    qreal myWidth;
+    qreal myHeight;
     
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))

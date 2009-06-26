@@ -144,17 +144,17 @@ private:
 	Position theCenter;
 	
 	/// width of the object. If object is resizable, this can be changed by user 
-	dReal theWidth;
+	qreal theWidth;
 	
 	/// height of object. If object is resizable, this can be changed by user
-	dReal theHeight;
+	qreal theHeight;
 	
 	/** indicates how object should bounce - two objects of 0.0 will stick 
 	*  together, whereas two objects of 1.0 will bounce without loosing
 	*  energy. Bounciness over 1.0 will resulting in ever larger bounces
 	*  (not really realistic, right?)
 	*/
-	dReal theBounciness;
+	qreal theBounciness;
 
 	/** true if the user can move this object
 	 *  note that this has nothing to do with MovingObject or ImmovableObject
@@ -205,28 +205,28 @@ public:
 	 * Set the value of theWidth
 	 * @param new_var the new value of theWidth
 	 */
-	virtual void setTheWidth ( dReal new_var )
+	virtual void setTheWidth ( qreal new_var )
 		{ if (new_var>0.01) theWidth = new_var; }
 
 	/**
 	 * Get the value of theWidth
 	 * @return the value of theWidth
 	 */
-	dReal getTheWidth ( )
+	qreal getTheWidth ( )
 		{ return theWidth; }
 
 	/**
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
 	 */
-	virtual void setTheHeight ( dReal new_var )
+	virtual void setTheHeight ( qreal new_var )
 		{ if (new_var>0.01) theHeight = new_var;	}
 
 	/**
 	 * Get the value of theHeight
 	 * @return the value of theHeight
 	 */
-	dReal getTheHeight ( )
+	qreal getTheHeight ( )
 		{ return theHeight; }
 
 	/**
@@ -248,7 +248,7 @@ public:
 	 *   (0.0 = stick, 1.0 = full elastic bounce)
 	 * @param new_var the new value of theBounciness
 	 */
-	void setTheBounciness ( dReal new_var )
+	void setTheBounciness ( qreal new_var )
 		{ theBounciness = new_var; }
 
 	/**
@@ -256,7 +256,7 @@ public:
 	 *   (0.0 = stick, 1.0 = full elastic bounce)
 	 * @return the value of theBounciness
 	 */
-	dReal getTheBounciness ( )				 
+	qreal getTheBounciness ( )				 
 		{ return theBounciness; }
 
 	/**
@@ -273,7 +273,7 @@ public:
 		{ return theGeomID; }
 
 protected:
-	void setAngle(dReal anAngle)
+	void setAngle(qreal anAngle)
 		{ theCenter.angle = anAngle; }
 	
 private:
@@ -307,8 +307,8 @@ protected:
 	BaseObject* createObject(
 			const QString& aName, 
 			const Position aPostion, 
-			const dReal aWidth = 1.0,
-			const dReal anHeight = 1.0) const;
+			const qreal aWidth = 1.0,
+			const qreal anHeight = 1.0) const;
 	
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 	

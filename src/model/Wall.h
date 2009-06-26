@@ -73,12 +73,12 @@ public:
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
 	 */
-	virtual void setTheHeight ( dReal new_var );
+	virtual void setTheHeight ( qreal new_var );
 
 	virtual DrawObject* createDrawObject();
 	
 private:
-	static const dReal theSlabThickness = 0.03; // m
+	static const qreal theSlabThickness = 0.03; // m
 };
 
 #endif // WALL_H

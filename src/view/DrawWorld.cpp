@@ -92,12 +92,12 @@ DrawWorld::~DrawWorld ( )
 
 // Accessor methods
 //  
-dReal DrawWorld::getWidth()
+qreal DrawWorld::getWidth()
 {
 	return theWorldPtr->getTheWorldWidth(); 
 }
 
-dReal DrawWorld::getHeight()
+qreal DrawWorld::getHeight()
 {
 	return theWorldPtr->getTheWorldHeight(); 
 }

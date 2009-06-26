@@ -57,7 +57,7 @@ Wall::~Wall ( ) { }
 // Accessor methods
 //  
 
-void Wall::setTheHeight ( dReal new_var )
+void Wall::setTheHeight ( qreal new_var )
 {
 	//adjusting the height also implies that the slap changes rotation and size
 	if (new_var <= 0.01)

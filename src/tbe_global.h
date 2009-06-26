@@ -26,6 +26,8 @@
 #define APPFLAVOUR ""
 #endif
 
+#include <QtGlobal>
+
 const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;
 

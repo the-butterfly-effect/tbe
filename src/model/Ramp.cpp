@@ -62,7 +62,7 @@ Ramp::~Ramp ( ) { }
 // Accessor methods
 //  
 
-void Ramp::setTheWidth ( dReal new_var )
+void Ramp::setTheWidth ( qreal new_var )
 {
 	// adjusting the width also implies that the slap changes rotation and size
 	if (new_var <= 0.01)
@@ -71,7 +71,7 @@ void Ramp::setTheWidth ( dReal new_var )
 	adjustParameters();
 }
 
-void Ramp::setTheHeight ( dReal new_var )
+void Ramp::setTheHeight ( qreal new_var )
 {
 	//adjusting the height also implies that the slap changes rotation and size
 	if (new_var <= 0.01)

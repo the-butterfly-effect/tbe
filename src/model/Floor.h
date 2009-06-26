@@ -73,7 +73,7 @@ public:
 	 * Set the value of theWidth
 	 * @param new_var the new value of theWidth
 	 */
-	virtual void setTheWidth ( dReal new_var );
+	virtual void setTheWidth ( qreal new_var );
 
 	virtual DrawObject* createDrawObject();
 	
@@ -81,11 +81,11 @@ private:
 	/// this member recalculates the size of the slab based on current size
 	void adjustParameters(void);
 	
-	static const dReal theSlabThickness = 0.03; // m
+	static const qreal theSlabThickness = 0.03; // m
 	
-	dReal getSlabLength(void)
+	qreal getSlabLength(void)
 		{ return getTheWidth();}
-	dReal getSlabAngle(void)
+	qreal getSlabAngle(void)
 	{ return 0.0; }
 
 	friend class DrawRamp;

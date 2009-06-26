@@ -101,7 +101,7 @@ void World::createScene(MainWindow* myMainPtr)
 }
 
 
-dReal World::getBounce(dGeomID aGeom)
+qreal World::getBounce(dGeomID aGeom)
 {
 	if (aGeom == NULL)
 		return 0.2;
@@ -160,7 +160,7 @@ void World::nearCallbackReal (dGeomID aGeom1, dGeomID aGeom2)
 
     // bounce is the amount of "bouncyness".
 	// if the objects have a bounciness specified, let's use that.
-    dReal myBounce = 0.0;
+    qreal myBounce = 0.0;
     myBounce += getBounce(aGeom1);
     myBounce += getBounce(aGeom2);
     myBounce /= 2.0;
@@ -180,9 +180,9 @@ void World::nearCallbackReal (dGeomID aGeom1, dGeomID aGeom2)
 			myContacts[i].surface.mode = dContactApprox1 | dContactBounce; 
 			myContacts[i].surface.mu = 0.25;
 			myContacts[i].surface.bounce = myBounce;
-			myContacts[i].surface.bounce_vel = (dReal) 0.01;
-			myContacts[i].surface.slip1 = (dReal) 0.1;
-			myContacts[i].surface.slip2 = (dReal) 0.1;
+			myContacts[i].surface.bounce_vel = 0.01;
+			myContacts[i].surface.slip1 = 0.1;
+			myContacts[i].surface.slip2 = 0.1;
 
 			dJointID myContactJoint = dJointCreateContact (theGlobalWorldID, 
 														 contactgroup1, 
@@ -228,7 +228,7 @@ void World::reset ( )
 	}
 }
 
-dReal World::simStep (void)
+qreal World::simStep (void)
 {
     // find collisions and add contact joints
     dSpaceCollide (theGlobalSpaceID, this, nearCallbackStatic);

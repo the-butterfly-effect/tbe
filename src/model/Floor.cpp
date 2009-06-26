@@ -59,7 +59,7 @@ Floor::~Floor ( ) { }
 // Accessor methods
 //  
 
-void Floor::setTheWidth ( dReal new_var )
+void Floor::setTheWidth ( qreal new_var )
 {
 	// adjusting the width also implies that the slap changes rotation and size
 	if (new_var <= 0.1)

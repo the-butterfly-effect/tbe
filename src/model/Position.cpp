@@ -20,7 +20,7 @@
 
 // Constructors/Destructors
 
-Position::Position (dReal anX, dReal aY, dReal anAngle)
+Position::Position (qreal anX, qreal aY, qreal anAngle)
 	: x(anX), y(aY), angle(anAngle)
 {
 	// nothing to do here, sorry...

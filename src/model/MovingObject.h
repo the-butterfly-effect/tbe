@@ -60,7 +60,7 @@ public:
 	 * Get the value of theMass
 	 * @return the value of theMass in kg
 	 */
-	dReal getTheMass(void)
+	qreal getTheMass(void)
 	{
 		return theMass.mass;
 	}
@@ -78,7 +78,7 @@ protected:
 	 * @param lx length in X axis
 	 * @param ly length in Y axis
 	 */
-	void setMassBox (dReal total_mass, dReal lx, dReal ly);
+	void setMassBox (qreal total_mass, qreal lx, qreal ly);
 
 	/** sets the object's mass assuming capsule geometry
 	 *  note that this one does have a direction  
@@ -87,7 +87,7 @@ protected:
 	 * @param radius in meter
 	 * @param length (not counting caps) in meter
 	 */
-	void setMassCapsule (dReal total_mass, Direction direction, dReal radius, dReal length);
+	void setMassCapsule (qreal total_mass, Direction direction, qreal radius, qreal length);
 
 	/** sets the object's mass assuming cylinder geometry
 	 *  note that this one does have direction
@@ -96,15 +96,15 @@ protected:
 	 * @param radius in meter
 	 * @param length in meter
 	 */
-	void setMassCylinder (dReal total_mass, Direction direction, dReal radius, dReal length);
+	void setMassCylinder (qreal total_mass, Direction direction, qreal radius, qreal length);
 
 	/// sets the object's mass in kg, assumes sphere form with radius in meter
-	void setMassSphere (dReal total_mass, dReal radius);
+	void setMassSphere (qreal total_mass, qreal radius);
 
-	void setMassTrimesh(dReal total_mass, dGeomID g);
+	void setMassTrimesh(qreal total_mass, dGeomID g);
 	
 	/// modifies the EXISTING mass to be newmass - in kg
-	void adjustMass(dReal newmass);
+	void adjustMass(qreal newmass);
 
 protected:
 	dMass theMass;
