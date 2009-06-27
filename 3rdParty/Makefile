@@ -25,6 +25,7 @@ ode:
 box2d:
 	unzip ${BOX2D}.zip
 	patch -p0 <box2d_compile.patch
+	patch -p0 <box2d_fix_warnings.patch
 	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
 	# not possible to extract includes - they're a mess
