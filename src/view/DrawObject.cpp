@@ -150,8 +150,6 @@ void DrawObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent *)
 
 void DrawObject::initAttributes ( )
 {
-	theBodyID = theBaseObjectPtr->getTheBodyID();
-
 	// the objects sizes usually are less than a meter
 	// however, that does not sit well with QPainter, which is still a
 	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
@@ -190,13 +188,14 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
 			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myPos.x(), -myPos.y(), 0.0);
+		// TODO FIXME: no angle yet
+		theBaseObjectPtr->setTempCenter(Position(myPos.x(), -myPos.y(), 0.0));
 		applyPosition();
 		
 		// if the new position collides with another, reset the position to the original one
 		if (!scene()->collidingItems(this).isEmpty())
 		{
-			dGeomSetPosition(theBaseObjectPtr->getTheGeomID(), myOrgPos.x, myOrgPos.y, 0.0);
+			theBaseObjectPtr->setTempCenter(Position(myOrgPos.x, myOrgPos.y, 0.0));
 			applyPosition();
 		}
 	}

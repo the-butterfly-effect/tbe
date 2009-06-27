@@ -56,14 +56,14 @@ UndoMoveCommand::~UndoMoveCommand ( )
 //  
 void UndoMoveCommand::redo ()
 {
-	theBaseObjectPtr->setTheCenter(theNewPosition);
+	theBaseObjectPtr->setOrigCenter(theNewPosition);
 	theBaseObjectPtr->reset();
 	theDrawObjectPtr->advance(0);
 }
 
 void UndoMoveCommand::undo ()
 {
-	theBaseObjectPtr->setTheCenter(theOldPosition);
+	theBaseObjectPtr->setOrigCenter(theOldPosition);
 	theBaseObjectPtr->reset();
 	theDrawObjectPtr->advance(0);
 }

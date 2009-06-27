@@ -19,8 +19,6 @@
 #ifndef DRAWOBJECT_H
 #define DRAWOBJECT_H
 
-#include "ode/ode.h"
-
 #include <QGraphicsItem>
 
 // forward declarations
@@ -130,20 +128,6 @@ protected:
     // Protected attribute accessor methods
 	//  
 
-	/**
-	 * Set the value of theBodyID
-	 * @param new_var the new value of theBodyID
-	 */
-	void setTheBodyID ( dBodyID new_var )
-	{	theBodyID = new_var; }
-
-	/**
-	 * Get the value of theBodyID
-	 * @return the value of theBodyID
-	 */
-	dBodyID getTheBodyID ( )
-	{	return theBodyID; }
-
 	void applyPosition(void);
 	
 	virtual void paintHighlighted(QPainter* myPainter);
@@ -152,7 +136,6 @@ protected:
 	// Private attributes
 	//  
 
-	dBodyID theBodyID;
 	BaseObject* theBaseObjectPtr;
 
 	static const qreal theScale = 100.0;

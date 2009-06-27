@@ -183,16 +183,24 @@ public:
 		{ theIsMovable = aNewState; }
 	
 	/**
-	 * Set the value of theCenter
+	 * Set the value of theCenter - this is the "original" center,
+	 * i.e. where the object will return to after a "reset".
 	 * @param new_var the new value of theCenter
 	 */
-	void setTheCenter ( Position new_var )
+	void setOrigCenter ( Position new_var )
 	{
 		theCenter.x = new_var.x;
 		theCenter.y = new_var.y;
 		if (isRotatable())
 			theCenter.angle = new_var.angle;
 	}
+
+	/**
+	 * Set the value of theCenter - this is the "temporary" center,
+	 * i.e. used during mouse movements only
+	 * @param new_var the new value of the center of the body
+	 */
+	void setTempCenter ( Position new_var );
 
 	/**
 	 * Get the Position of the object.

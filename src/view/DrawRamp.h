@@ -19,7 +19,6 @@
 #ifndef DRAWRAMP_H
 #define DRAWRAMP_H
 
-#include "ode/ode.h"
 #include "DrawObject.h"
 #include "Ramp.h"
 

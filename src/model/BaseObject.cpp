@@ -94,6 +94,12 @@ Position BaseObject::getTempCenter (void)
     return Position(pos[0], pos[1], myAngle);
 }
 
+void BaseObject::setTempCenter ( Position new_var )
+{
+	dGeomSetPosition(getTheGeomID(), new_var.x, new_var.y, 0.0);
+	// TODO FIXME: no angle yet
+}
+
 void BaseObject::setTheGeomID ( dGeomID new_var )
 {
 	assert(theGeomID==0);
@@ -200,7 +206,7 @@ ObjectFactory::createObject(
 	if (myFactoryPtr == NULL)
 		return NULL;
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
-	myObjectPtr->setTheCenter(aPosition);
+	myObjectPtr->setOrigCenter(aPosition);
 	if (myObjectPtr->isResizable() & BaseObject::HORIZONTALRESIZE)
 		myObjectPtr->setTheWidth(aWidth);
 	if (myObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)

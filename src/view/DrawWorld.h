@@ -19,7 +19,6 @@
 #ifndef DRAWWORLD_H
 #define DRAWWORLD_H
 
-#include "ode/ode.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QTimer>
