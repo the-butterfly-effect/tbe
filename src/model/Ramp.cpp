@@ -47,7 +47,7 @@ Ramp::Ramp ( )
 	
 	setTheWidth(1.0);
 	setTheHeight(1.0);
-	setAngle(-PI/4.0);
+	setAngle(0.0);
 	
 }
 
