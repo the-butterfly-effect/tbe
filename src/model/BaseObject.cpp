@@ -19,10 +19,10 @@
 #include "BaseObject.h"
 #include "DrawObject.h"
 #include <QMap>
+#include "Box2D.h"
 
 // Static variables
-static dWorldID theStaticWorldID = NULL;
-static dSpaceID theStaticSpaceID = NULL;
+static b2World* theStaticB2WorldPtr = NULL;
 
 //   ***********************************************
 //   *                                             *
@@ -43,22 +43,24 @@ BaseObject::BaseObject ( )
 BaseObject::~BaseObject ( ) 
 {
 	DEBUG5("~BaseObject() for %p\n", this);
-	
-	// destroy the Geometry
-	dGeomSetData(theGeomID, NULL);
-	dGeomDestroy(theGeomID);
-	theGeomID = NULL;
-	
-	// destroy the Body
-	if (theBodyID)
-		dBodyDestroy(theBodyID);
-	theBodyID = NULL;
-	
-	// mass will be destroyed in MovingObject
-	
-	// any joints will be destroyed in the implementation class
 
-	// delete the corresponding DrawObject - if it exists
+	// destroy the Body
+	// (will also destroy the shapes)
+	
+	// destroy the ShapeDefs
+	//
+	clearShapeList();
+	
+	// destroy the BodyDef
+	//
+	if (theB2BodyDefPtr)
+	{
+		delete theB2BodyDefPtr;
+		theB2BodyDefPtr=NULL;
+	}
+
+	// delete the corresponding DrawObject
+	//
 	if (theDrawObjectPtr)
 	{
 		delete theDrawObjectPtr;
@@ -74,53 +76,49 @@ BaseObject::~BaseObject ( )
 // Accessor methods
 //  
 
-dSpaceID BaseObject::getSpaceID(void)
+b2World* BaseObject::getB2WorldPtr(void)
 {
-	assert (theStaticSpaceID);
-	return theStaticSpaceID;
-}
-
-dWorldID BaseObject::getWorldID(void)
-{
-	assert (theStaticWorldID);
-	return theStaticWorldID;
+	assert (theStaticB2WorldPtr);
+	return theStaticB2WorldPtr;
 }
 
 Position BaseObject::getTempCenter (void)
 {
-    const dReal* pos = dGeomGetPosition (getTheGeomID());
-    const dReal* ang  = dGeomGetRotation (getTheGeomID());
-    qreal myAngle = atan2(ang[1], ang[0]);
-    return Position(pos[0], pos[1], myAngle);
+	// no physics object, no temp center
+	if (isPhysicsObjectCreated()==false)
+		return getOrigCenter();
+	
+	return Position(theB2BodyPtr->GetPosition().x,
+					theB2BodyPtr->GetPosition().y,
+					theB2BodyPtr->GetAngle());
 }
 
 void BaseObject::setTempCenter ( Position new_var )
 {
-	dGeomSetPosition(getTheGeomID(), new_var.x, new_var.y, 0.0);
-	// TODO FIXME: no angle yet
+	assert(isPhysicsObjectCreated());
+	theB2BodyPtr->SetXForm(b2Vec2(new_var.x, new_var.y), new_var.angle);
 }
 
-void BaseObject::setTheGeomID ( dGeomID new_var )
-{
-	assert(theGeomID==0);
-	theGeomID = new_var;
-	dGeomSetBody (theGeomID, theBodyID);
-	dGeomSetData(theGeomID, this);
-}
 
-void BaseObject::ForWorldOnly::setTheSpaceID(dSpaceID anID)
+void BaseObject::ForWorldOnly::setTheB2WorldPtr(b2World* aPtr)
 {
-	theStaticSpaceID = anID;
-}
-
-void BaseObject::ForWorldOnly::setTheWorldID(dWorldID anID)
-{
-	theStaticWorldID = anID;
+	theStaticB2WorldPtr = aPtr;
 }
 
 
 // Other methods
 //  
+
+
+void BaseObject::clearShapeList()
+{
+	while(theShapeList.isEmpty()==false)
+	{
+		b2ShapeDef* mySDPtr = theShapeList.first();
+		delete mySDPtr;
+		theShapeList.pop_front();
+	}
+}
 
 DrawObject*  BaseObject::createDrawObject(void)
 {
@@ -129,14 +127,44 @@ DrawObject*  BaseObject::createDrawObject(void)
 	return theDrawObjectPtr;
 }
 
+void BaseObject::createPhysicsObject()
+{
+	// first fixup the bodydef with the current position
+	assert(theB2BodyDefPtr!=NULL);
+	theB2BodyDefPtr->position.Set(theCenter.x, theCenter.y);
+	theB2BodyDefPtr->angle = theCenter.angle;
+	// do not set mass properties here - that will be done in MovableObject
+	// (and as such is done already when we get here)
+	
+	// then create the body
+	if (theB2BodyPtr!=NULL)
+		deletePhysicsObject();
+	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
+	
+	// then create the shapes from the shapedefs
+	ShapeList::const_iterator myI = theShapeList.begin();
+	for (;myI != theShapeList.end(); ++myI)
+	{
+		(*myI)->restitution = theBounciness;
+		theB2BodyPtr->CreateShape(*myI);
+	}
+	theB2BodyPtr->SetMassFromShapes();
+}
+
+void BaseObject::deletePhysicsObject()
+{
+	// have B2World destroy the body - that will automatically destroy
+	// the shapes
+	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+	theB2BodyPtr = NULL;
+}
 
 void BaseObject::initAttributes ( ) 
 {
 	DEBUG5("BaseObject::initAttributes\n");
-	theBodyID = dBodyCreate (getWorldID());
+	theB2BodyDefPtr=NULL;
+	theB2BodyPtr=NULL;
 	
-	theGeomID = 0;
-
 	theWidth = 1.0;
 	theHeight = 1.0;
 	theBounciness = 1.0;
@@ -149,22 +177,29 @@ void BaseObject::initAttributes ( )
 	theIsMovable = true;
 }
 
+bool BaseObject::isSleeping() const
+{
+	if (isPhysicsObjectCreated()) 
+		return theB2BodyPtr->IsSleeping(); 
+	else 
+		return false;
+}
+
+	
 void BaseObject::reset ( ) 
 {
 	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 
 			getName().toAscii().constData(), theCenter.x, theCenter.y, theCenter.angle);
+
+	if(isPhysicsObjectCreated()==false)
+		return;
 	
 	// reset the position
-	dBodySetPosition(theBodyID, theCenter.x, theCenter.y, 0.0);
+	setTempCenter(getOrigCenter());
 
-	// reset the rotational angle
-	dMatrix3 R;
-	dRFromAxisAndAngle (R, 0.0, 0.0, 1.0, theCenter.angle);
-	dBodySetRotation(theBodyID, R);
-
-	// reset the velocities 
-	dBodySetLinearVel  (theBodyID, 0.0, 0.0, 0.0);
-	dBodySetAngularVel (theBodyID, 0.0, 0.0, 0.0);
+	// reset the velocities and such
+	theB2BodyPtr->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+	theB2BodyPtr->SetAngularVelocity(0.0f);
 }
 
 

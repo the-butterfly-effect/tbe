@@ -19,6 +19,7 @@
 #include "BowlingPin.h"
 #include "DrawObject.h"
 #include "tbe_global.h"
+#include "Box2D.h"
 
 // this class' ObjectFactory
 class BowlingPinObjectFactory : public ObjectFactory
@@ -41,9 +42,19 @@ BowlingPin::BowlingPin ( )
 	const qreal myRadius = 0.06; // m
 	const qreal myLength = 0.38; // m
 	const qreal myMass   = 1.5;  // kg
-	setTheGeomID( dCreateBox (getSpaceID(), 2*myRadius, myLength, 1.0) );
-	setMassBox(myMass, 2*myRadius, myLength);
 	
+	b2PolygonDef* boxDef = new b2PolygonDef();
+	
+	boxDef->SetAsBox  	( 2*myRadius, myLength,
+			b2Vec2(myRadius, myLength/2.0), 0.0);
+	
+	// ramp is immovable -> no mass -> no density 
+	boxDef->density = myMass/(2*myRadius*myLength);
+	
+	// delete any shapes on the body
+	// and create a new shape from the above polygon def
+	theShapeList.push_back(boxDef);
+
 	setTheBounciness(1.1);
 	
 	setTheWidth(2.0*myRadius);

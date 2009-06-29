@@ -18,8 +18,8 @@
 
 #include "Ramp.h"
 #include "tbe_global.h"
-#include <cmath>
 #include "DrawRamp.h"
+#include "Box2D.h"
 
 //// this class' ObjectFactory
 class RampObjectFactory : public ObjectFactory
@@ -43,7 +43,6 @@ Ramp::Ramp ( )
 	// for the whole of the width of the block - which is 1.0 for now
 	// and the whole heigth of the block - which happens also to be 1.0
 	
-	setTheGeomID( dCreateBox (getSpaceID(), SQRT2, theSlabThickness, 1.0) );
 	setTheBounciness(0.2);
 	
 	setTheWidth(1.0);
@@ -86,11 +85,23 @@ void Ramp::setTheHeight ( qreal new_var )
 
 void Ramp::adjustParameters(void)
 {
-	// width or height was just adjusted
-	// let's recalculate everything
+	// note that the angle is not used at all here !!!
+	qreal myHW = getTheWidth()/2.0;
+	qreal myHH = getTheHeight()/2.0;
 	
-	setAngle(getSlabAngle());
-	dGeomBoxSetLengths(getTheGeomID(), getSlabLength(), theSlabThickness, 1.0 );
+	b2PolygonDef* rampDef = new b2PolygonDef();
+	rampDef->vertexCount = 4;
+	rampDef->vertices[0].Set(-myHW, +myHH);
+	rampDef->vertices[1].Set(+myHW, -myHH+theSlabThickness);
+	rampDef->vertices[2].Set(+myHW, -myHH);
+	rampDef->vertices[3].Set(-myHW, +myHH-theSlabThickness);
+	// ramp is immovable -> no mass -> no density 
+	rampDef->density = 0.0;
+	
+	// delete any shapes on the body
+	// and create a new shape from the above polygon def
+	clearShapeList();
+	theShapeList.push_back(rampDef);
 }
 
 DrawObject*  Ramp::createDrawObject(void)

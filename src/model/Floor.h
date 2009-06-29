@@ -19,8 +19,7 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "ImmovableObject.h"
-#include <qobject.h>
+#include "BaseObject.h"
 
 /**
   * class Floor
@@ -29,7 +28,7 @@
   * It is only resizable in width. 
   */
 
-class Floor : public ImmovableObject
+class Floor : public BaseObject
 {
 public:
 

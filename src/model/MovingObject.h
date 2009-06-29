@@ -18,10 +18,8 @@
 
 #ifndef MOVINGOBJECT_H
 #define MOVINGOBJECT_H
-#include "BaseObject.h"
 
-#include <qstring.h>
-#include "ode/ode.h"
+#include "BaseObject.h"
 
 /**
   * class MovingObject
@@ -30,10 +28,8 @@
   * any of the pure virtual members of BaseObject, 
   * it is an abstract class itself
   * 
-  * MovingObject adds two concepts to BaseObject:
+  * MovingObject adds one concept to BaseObject:
   *   * Mass
-  *   * Fixation to the Z=0 plane 
-  *     TODO: force-feedback from joint not implemented!!!
   */
 
 class MovingObject : virtual public BaseObject
@@ -57,58 +53,15 @@ public:
 	// 
 	
 	/**
-	 * Get the value of theMass
+	 * Get the total mass of the object in kg
 	 * @return the value of theMass in kg
 	 */
-	qreal getTheMass(void)
-	{
-		return theMass.mass;
-	}
+	qreal getTotalMass(void);
 
 protected:
-	enum Direction
-	{
-		AlongXAxis = 1,
-		AlongYAxis = 2,
-		AlongZAxis = 3
-	};
-	
-	/** sets the object's mass assuming rectangle geometry
-	 * @param total_mass in kg
-	 * @param lx length in X axis
-	 * @param ly length in Y axis
-	 */
-	void setMassBox (qreal total_mass, qreal lx, qreal ly);
+	/// modifies the EXISTING total mass across all shapes to be newmass - in kg
+	void setTotalMass(qreal newmass);
 
-	/** sets the object's mass assuming capsule geometry
-	 *  note that this one does have a direction  
-	 * @param total_mass in kg
-	 * @param direction (see Direction enum)
-	 * @param radius in meter
-	 * @param length (not counting caps) in meter
-	 */
-	void setMassCapsule (qreal total_mass, Direction direction, qreal radius, qreal length);
-
-	/** sets the object's mass assuming cylinder geometry
-	 *  note that this one does have direction
-	 * @param total_mass in kg
-	 * @param direction (see Direction enum)
-	 * @param radius in meter
-	 * @param length in meter
-	 */
-	void setMassCylinder (qreal total_mass, Direction direction, qreal radius, qreal length);
-
-	/// sets the object's mass in kg, assumes sphere form with radius in meter
-	void setMassSphere (qreal total_mass, qreal radius);
-
-	void setMassTrimesh(qreal total_mass, dGeomID g);
-	
-	/// modifies the EXISTING mass to be newmass - in kg
-	void adjustMass(qreal newmass);
-
-protected:
-	dMass theMass;
-	dJointID thePlane2DJoint;
 };
 
 #endif // MOVINGOBJECT_H

@@ -19,18 +19,24 @@
 #ifndef BASEOBJECT_H
 #define BASEOBJECT_H
 
-#include <assert.h>
-#include <QString>
-#include "ode/ode.h"
 #include "tbe_global.h"
-
 #include "Position.h"
+
+#include <assert.h>
+#include <QObject>
+#include <QString>
+#include <QList>
 
 // Forward Declarations
 class DrawObject;
 class ObjectFactory;
 class World;
-
+class ShapeList;
+class b2Body;
+class b2BodyDef;
+class b2World;
+class b2ShapeDef;
+class b2Shape;
 
 //   ************************************************
 //   *                                              *
@@ -40,23 +46,23 @@ class World;
 //   ************************************************
 
 
-/* ABOUT BODIES, GEOMETRIES, MASSES AND THE BASEOBJECT CLASS
-   In OpenDE, we have Worlds, Bodies, Geometries, Joints and Masses
-	 * World    - the "space" all bodies live in
-	 * Body     - the concept of an object in the world
-	 * Mass     - the mass of the total body
-	 * Geometry - the dimensions of a body
-	 * Joint    - the link between two bodies, constraining their relative movement
-   The Geometry is very relevant to collision detection: no geometry, no collision
-	 It is possible to have multiple Geometries on a single Body - useful for making more complex shaped objects
-   The Body is very relevant to motion: no body, no movement
-	 The ImmovableObject class uses this trick: it defines a geom without a body
-   The Mass is very relevant to acceleration/deceleration Note that a mass can have a different shape than a geometry!
-	 Mass is created and managed in the MovingObject class
-
-   When a BaseObject is register()ed, the body, all geoms and the mass are created
-   When a BaseObject is deregister()ed, the body, all geoms and the mass have to be deleted
-*/
+// ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
+//
+//   In Box2D, we have Worlds, Bodies, Shapes and Joints:
+//
+//	 * World    - the "space" all bodies live in
+//	 * Body     - the concept of an object in the world. 
+//	 *            Mass is linked to Body, no mass implied a rigid, static body
+//	 * Shape    - the shape of a body - a series of convex polygons or circles
+//	 *            It is possible to use more than one shape in a body
+//	 * Joint    - the link between two bodies, constraining relative movement
+//
+//	At instance creation, the bodydef and the shapedef will be created
+//	At instance creation, also the body and shapes will be created
+//
+//	Upon deletion, body and shape are deleted but the defs are kept
+//	Upon undelete, body and shape are re-created based on the defs 
+//
 
 /**
   * class BaseObject
@@ -108,6 +114,14 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const = 0;
 
+	/** returns true if the object is sleeping
+	 *  sleeping objects do not cost calculation time
+	 *  DrawObject uses this as a debugging aid
+	 *  
+	 * @return true if B2Body actually exists *and* is sleeping, false otherwise 
+	 */
+	bool isSleeping() const;
+	
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 
@@ -123,17 +137,19 @@ public:
 		friend class World;
 	
 		/// static member to set the world ID where objects should be in
-		static void setTheWorldID(dWorldID anID);
-		
-		/// static member to set the space ID where objects should be in
-		static void setTheSpaceID(dSpaceID anID);
+		static void setTheB2WorldPtr(b2World* aPtr);
 	};
 
 	// TODO: FIXME: rogue pointer here!!!
 	World* theWorldPtr;
 
 	virtual DrawObject* createDrawObject();
-		
+
+	virtual void createPhysicsObject(void);
+	virtual void deletePhysicsObject(void);
+	virtual bool isPhysicsObjectCreated(void) const
+		{ return theB2BodyPtr!=NULL; }
+	
 private:
 	// Private attributes
 	//
@@ -161,13 +177,18 @@ private:
 	 *  it has to do with the level design - as such, Level can modify this setting
 	 */
 	bool theIsMovable;
+
 	
 protected:
-	dBodyID theBodyID;
-	dGeomID theGeomID;
+	typedef QList<b2ShapeDef*> ShapeList;
+	ShapeList theShapeList;
 
-	dWorldID getWorldID(void);
-	dSpaceID getSpaceID(void);
+	void clearShapeList();
+	
+	b2Body* theB2BodyPtr;
+	b2BodyDef* theB2BodyDefPtr;
+	
+	b2World* getB2WorldPtr(void);
 	
 	/// pointer to a DrawObject that will draw this object
 	DrawObject* theDrawObjectPtr;
@@ -250,20 +271,6 @@ public:
 		{ return theHeight; }
 
 	/**
-	 * Set the value of theBodyID
-	 * @param new_var the new value of theBodyID
-	 */
-	void setTheBodyID ( dBodyID new_var )
-		{ theBodyID = new_var; }
-
-	/**
-	 * Get the value of theBodyID
-	 * @return the value of theBodyID
-	 */
-	virtual dBodyID getTheBodyID ( )
-		{ return theBodyID; }
-
-	/**
 	 * Set the value of theBounciness 
 	 *   (0.0 = stick, 1.0 = full elastic bounce)
 	 * @param new_var the new value of theBounciness
@@ -278,19 +285,6 @@ public:
 	 */
 	qreal getTheBounciness ( )				 
 		{ return theBounciness; }
-
-	/**
-	 * Set the value of theGeomID
-	 * @param new_var the new value of theGeomID
-	 */
-	virtual void setTheGeomID ( dGeomID new_var );
-
-	/**
-	 * Get the value of theGeomID
-	 * @return the value of theGeomID
-	 */
-	dGeomID getTheGeomID ( )
-		{ return theGeomID; }
 
 protected:
 	void setAngle(qreal anAngle)

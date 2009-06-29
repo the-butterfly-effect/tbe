@@ -26,63 +26,22 @@
 MovingObject::MovingObject ( ) 
 {
 	DEBUG5("MovingObject::MovingObject\n");
-	dMassSetZero(&theMass);
-
-	thePlane2DJoint = dJointCreatePlane2D (getWorldID(), 0);
-    dJointAttach (thePlane2DJoint, theBodyID, 0);
 }
 
 MovingObject::~MovingObject ( ) 
 {
-	dJointDestroy(thePlane2DJoint);
 }
 
 //  
 // Methods - sorted alphabetically
 //  
 
-void MovingObject::adjustMass(qreal newmass)
+qreal MovingObject::getTotalMass(void)
 {
-	assert(theMass.mass!=0);
-	dMassAdjust (&theMass, newmass);
-	// we assume that the mass has already been assigned to a body here
+	return 0.0f;
 }
 
-void MovingObject::setMassBox (qreal total_mass, qreal lx, qreal ly)
+void MovingObject::setTotalMass(qreal newmass)
 {
-	dMassSetBoxTotal (&theMass, total_mass, lx, ly, 0.0);
-	dBodySetMass (theBodyID, &theMass);
-}
-
-void MovingObject::setMassCapsule (
-		qreal total_mass, 
-		Direction direction, 
-		qreal radius, 
-		qreal length)
-{
-	dMassSetCapsuleTotal (&theMass, total_mass, direction, radius, length);
-	dBodySetMass (theBodyID, &theMass);
-}
-
-void MovingObject::setMassCylinder (
-		qreal total_mass, 
-		Direction direction, 
-		qreal radius, 
-		qreal length)
-{
-	dMassSetCylinderTotal (&theMass, total_mass, direction, radius, length);
-	dBodySetMass (theBodyID, &theMass);
-}
-
-void MovingObject::setMassSphere (qreal total_mass, qreal radius)
-{
-	dMassSetSphereTotal (&theMass, total_mass, radius);
-	dBodySetMass (theBodyID, &theMass);
-}
-
-void MovingObject::setMassTrimesh(qreal total_mass, dGeomID g)
-{
-	dMassSetTrimesh (&theMass, 1.0, g);
-	dMassAdjust (&theMass, total_mass);
-	dBodySetMass (theBodyID, &theMass);
+	// TODO
 }

@@ -19,8 +19,7 @@
 #ifndef RAMP_H
 #define RAMP_H
 
-#include "ImmovableObject.h"
-#include <qobject.h>
+#include "BaseObject.h"
 
 /**
   * class Ramp
@@ -29,7 +28,7 @@
   * in a diagonal way. Using width and height, you can resize it. 
   */
 
-class Ramp : public ImmovableObject
+class Ramp : public BaseObject
 {
 public:
 
@@ -86,14 +85,9 @@ public:
 private:
 	/// this member recalculates the size of the slab based on current size
 	void adjustParameters(void);
-	
+
 	static const qreal theSlabThickness = 0.03; // m
 	
-	qreal getSlabLength(void)
-		{ return sqrt(getTheWidth()*getTheWidth()+getTheHeight()*getTheHeight()); }
-	qreal getSlabAngle(void)
-	{ return -atan2(getTheHeight(),getTheWidth()); }
-
 	friend class DrawRamp;
 };
 

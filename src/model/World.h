@@ -21,7 +21,7 @@
 
 #include <QString>
 #include <QList>
-#include "ode/ode.h"
+#include "Box2D.h"
 #include "tbe_global.h"
 
 // Forward Definitions:
@@ -111,31 +111,6 @@ public:
 		{ return theWorldHeight; }
 
 private:
-	/** this is called by dSpaceCollide when two objects in space are
-	 *  potentially colliding.
-	 *  if dSpaceCollide is used correctly, theDataPtr actually contains
-	 *  the address of the real instance of World - this is a static member!
-	 *  the actual code is in nearCallbackReal().
-	 *  @param theDataPtr - pointer to a World instance
-	 *  @param o1 first geometry that collides
-	 *  @param o2 second geometry that collides
-	 */
-	static void nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2);
-	
-	/** this is called by dSpaceCollide when two objects in space are
-	 *  potentially colliding - see also the nearCallbackStatic() member
-	 *  @param o1 first geometry that collides
-	 *  @param o2 second geometry that collides
-	 */
-	void nearCallbackReal(dGeomID o1, dGeomID o2);
-
-	/** this member tries to figure out the bounciness of the geometry
-	 * 
-	 * @param b1 the geometry to query for bounciness
-	 * @return the bounciness
-	 */
-	static qreal getBounce(dGeomID b1);
-
 	void initAttributes ( ) ;
 	
 private:	
@@ -150,15 +125,20 @@ private:
 	/// pointer to the associated VIEW class of World
 	DrawWorld* theDrawWorldPtr;
 
-	// The three attributes that make World tick: 
+	// The two attributes that make World tick:
 	// 
 	
-	dWorldID theGlobalWorldID;
-	dSpaceID theGlobalSpaceID;
-	dJointGroupID contactgroup1;
+	b2World* theB2WorldPtr;
+	b2AABB*  theAABBPtr;
+	
+	/// Do we want to let bodies sleep?
+	static const bool doSleep = true;
 	
 	/// the time taking in each time step
-	static const qreal deltaTime = 0.005;
+	static const qreal theDeltaTime = 0.01;
+	
+	/// the number of iterations of Box2D per time step
+	static const unsigned int theIterationcount = 10;
 	
 	QString theLevelName;
 

@@ -19,6 +19,7 @@
 #include "VolleyBall.h"
 #include "DrawObject.h"
 #include "tbe_global.h"
+#include "Box2D.h"
 
 
 // this class' ObjectFactory
@@ -41,9 +42,18 @@ VolleyBall::VolleyBall ( )
 	// volleyball circumference is 66 cm -> 21 cm diameter
 	const qreal myRadius = 0.105;
 	// and a weight of 280 grams
-	setTheGeomID( dCreateSphere (getSpaceID(), myRadius) );
-	setMassSphere(0.280, myRadius);
-	setTheBounciness(0.75);
+	const qreal myMass = 0.280; // kg
+
+	b2CircleDef* ballDef = new b2CircleDef();
+	
+	ballDef->radius = myRadius;
+
+	// ramp is immovable -> no mass -> no density 
+	ballDef->density = myMass/(PI*2*myRadius);
+	
+	// delete any shapes on the body
+	// and create a new shape from the above polygon def
+	theShapeList.push_back(ballDef);
 	
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);

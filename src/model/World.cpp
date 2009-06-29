@@ -41,16 +41,18 @@ World::~World ( )
 	}
 	
 	DEBUG5("World::~World - destroy the rest \n");
-	dJointGroupDestroy (contactgroup1);
-    
-    dSpaceDestroy (theGlobalSpaceID);
-    theGlobalSpaceID = 0;
-    BaseObject::ForWorldOnly::setTheSpaceID(theGlobalSpaceID);
-    
-    dWorldDestroy (theGlobalWorldID);
-    theGlobalWorldID = 0;
-    BaseObject::ForWorldOnly::setTheWorldID(theGlobalWorldID);
+	if (theB2WorldPtr)
+	{
+		delete theB2WorldPtr;
+		theB2WorldPtr = NULL;
+		BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
 
+	}
+	if (theAABBPtr)
+	{
+		delete theAABBPtr;
+		theAABBPtr = NULL;
+	}
 }
 
 //  
@@ -100,108 +102,37 @@ void World::createScene(MainWindow* myMainPtr)
 	}
 }
 
-
-qreal World::getBounce(dGeomID aGeom)
-{
-	if (aGeom == NULL)
-		return 0.2;
-
-	BaseObject* myObject1 = reinterpret_cast<BaseObject*>(dGeomGetData(aGeom));
-	if (myObject1)
-		return  myObject1->getTheBounciness();
-	return 0.2;
-}
-
 void World::initAttributes( )
 {
 	theDrawWorldPtr = NULL;
 	
-    theGlobalWorldID = dWorldCreate ();
-    BaseObject::ForWorldOnly::setTheWorldID(theGlobalWorldID);
-    
-    theGlobalSpaceID = dHashSpaceCreate (0);
-    BaseObject::ForWorldOnly::setTheSpaceID(theGlobalSpaceID);
+	theAABBPtr = new b2AABB();
+	theAABBPtr->lowerBound.Set(-5.0f, -50.0f);
+	theAABBPtr->upperBound.Set(100.0f, 100.0f);
 
-    contactgroup1 = dJointGroupCreate (0);
+	// Define the gravity vector.
+	b2Vec2 myGravity(0.0f, -9.81f);
 
-    // gravity is along negative Y axis
-    dWorldSetGravity ( theGlobalWorldID,    0.0, -9.81, 0.0);
-    dWorldSetCFM (theGlobalWorldID, 1e-5);
-
-    dCreatePlane (theGlobalSpaceID, 0.0, 1.0, 0,0);
-    dCreatePlane (theGlobalSpaceID, 1.0, 0.0, 0,0);
-}
-
-void World::nearCallbackReal (dGeomID aGeom1, dGeomID aGeom2)
-{
-	// this code is heavily borrowed from:
-	// http://opende.sourceforge.net/wiki/index.php/Collision_callback_member_function
-
-	if (!(aGeom1 && aGeom2))
-	{
-		DEBUG3("CollisionCallback with null geometry\n");
-		return;
-	}
-
-	// ignore collisions between bodies that are connected by the same joint
-	dBodyID myBody1 = NULL;
-	dBodyID myBody2 = NULL;
-
-	if (aGeom1!=NULL)
-		myBody1 = dGeomGetBody (aGeom1);
-	if (aGeom2!=NULL)
-		myBody2 = dGeomGetBody (aGeom2);
-
-	if (myBody1 && myBody2 && dAreConnected (myBody1, myBody2))
-	{
-		DEBUG5("ignore collisions between bodies that are connected by the same joint\n");
-		return;
-	}
-
-    // bounce is the amount of "bouncyness".
-	// if the objects have a bounciness specified, let's use that.
-    qreal myBounce = 0.0;
-    myBounce += getBounce(aGeom1);
-    myBounce += getBounce(aGeom2);
-    myBounce /= 2.0;
+	// Construct a world object, which will hold and simulate the rigid bodies.
+	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
 	
-	
-	const int ODE_MAX_CONTACTS=10;
-	
-	dContact myContacts[ODE_MAX_CONTACTS];
-	int myContactCount = dCollide (aGeom1, aGeom2, ODE_MAX_CONTACTS, &myContacts[0].geom, sizeof (dContact));
-	if (myContactCount)
-	{
-		int myMax = myContactCount;
-		if (myMax > ODE_MAX_CONTACTS)
-			myMax = ODE_MAX_CONTACTS;
-		for (int i=0; i<myMax; i++)
-		{
-			myContacts[i].surface.mode = dContactApprox1 | dContactBounce; 
-			myContacts[i].surface.mu = 0.25;
-			myContacts[i].surface.bounce = myBounce;
-			myContacts[i].surface.bounce_vel = 0.01;
-			myContacts[i].surface.slip1 = 0.1;
-			myContacts[i].surface.slip2 = 0.1;
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(50.01f, -1.0f);
+	b2Body* groundBody = theB2WorldPtr->CreateBody(&groundBodyDef);
+	b2PolygonDef groundShapeDef;
+	groundShapeDef.SetAsBox(50.0f, 1.0f);
+	groundBody->CreateShape(&groundShapeDef);
 
-			dJointID myContactJoint = dJointCreateContact (theGlobalWorldID, 
-														 contactgroup1, 
-														 &myContacts[i]);
-			dJointAttach (myContactJoint, myBody1, myBody2);
-		}
-	}
+	// Define the left wall body.
+	b2BodyDef leftBodyDef;
+	leftBodyDef.position.Set(-1.0f, 50.01f);
+	b2Body* leftBody = theB2WorldPtr->CreateBody(&leftBodyDef);
+	b2PolygonDef leftShapeDef;
+	leftShapeDef.SetAsBox(1.0f, 50.0f);
+	leftBody->CreateShape(&leftShapeDef);
 }
-
-// Remember, this function is static, it has no "this" pointer,
-// nor any of the other members of the World class.
-void World::nearCallbackStatic (void* theDataPtr, dGeomID o1, dGeomID o2)
-{
-    // theDataPtr is the "this" that was passed into dSpaceCollide
-    World* theWorldPtr = reinterpret_cast<World*>(theDataPtr);
-    if (theWorldPtr)
-    	theWorldPtr->nearCallbackReal (o1, o2);
-}
-
 
 bool World::removeObject(BaseObject* anObjectPtr)
 {
@@ -230,27 +161,6 @@ void World::reset ( )
 
 qreal World::simStep (void)
 {
-    // find collisions and add contact joints
-    dSpaceCollide (theGlobalSpaceID, this, nearCallbackStatic);
-
-// TODO: This is not yet implemented (and maybe we don't need to?)
-//    // revisit all Plane2D joints to make sure they work correctly
-//	BaseObjectPtrList::iterator i;
-//	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
-//	{
-//		if ((*i)->getTheBodyID() == NULL)
-//			continue;
-//		DEBUG5("fixing plane2d for item %p\n",*i);
-//		// TODO: (*i)->fixupPlane2DJoint();
-//	}
-
-    
-    // step the simulation
-	dWorldStep (theGlobalWorldID, deltaTime);
-	
-    // remove all contact joints
-    dJointGroupEmpty (contactgroup1);
-    
-    return deltaTime;
+	theB2WorldPtr->Step(theDeltaTime,theIterationcount);
+	return theDeltaTime;
 }
-
