@@ -8,14 +8,14 @@ How to build:
 1)
 Make sure that you have all tools & libraries installed that you need.
 These include:
-  * gcc, glibc-devel, make
-  * autoconf, automake
+  * gcc, glibc-devel
+  * make
+  * (autoconf, automake)
   * libqt4        (which must be QT version 4.4 or higher)
   * libqt4-devel
-  * probably a significant of dependencies of the above
-
-1.5)
-Make sure that you do *not* have libode-devel installed on your system.
+  * patch
+  * you probably will have to install more packages than the above list
+    because they have dependencies - make sure to install these as well.
 
 
 2)

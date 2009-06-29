@@ -18,9 +18,6 @@
 
 
 #include "MainWindow.h"
-
-#include "ode/ode.h"
-
 #include <QtGui>
 
 // the verbosity for all logging - by default defined at 5 (most logging)
@@ -31,8 +28,6 @@ int main(int argc, char **argv)
 {
 	// init Qt (graphics toolkit) - www.qtsoftware.com
 	QApplication app(argc, argv);
-	// init OpenDE (physics library) - opende.sf.net
-    dInitODE ();
 
 	// read the locale from the environment and set the language...
 	// TODO: This is fairly basic - I probably need to "borrow"
@@ -47,10 +42,7 @@ int main(int argc, char **argv)
 	myMain.show();
 
 	// run the main display loop    
-    int myReturn=app.exec();
+	int myReturn=app.exec();
     
-    // clean up (QT cleans up after itself)
-    dCloseODE();
-    
-    return myReturn;
+	return myReturn;
 }

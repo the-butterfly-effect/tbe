@@ -3,11 +3,10 @@ LANGUAGE = C++
 CONFIG += qt \
     warn_on \
     release
-LIBS += -lode \
-	-lbox2d \
+LIBS += -lbox2d \
     -L3rdParty/libs
 DEFINES += QT_NO_ASCII_CAST
-INCLUDEPATH += 3rdParty/include \
+INCLUDEPATH += \
 	3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src \
     src/model \
