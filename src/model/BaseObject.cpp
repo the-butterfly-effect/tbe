@@ -129,6 +129,7 @@ DrawObject*  BaseObject::createDrawObject(void)
 
 void BaseObject::createPhysicsObject()
 {
+	DEBUG5("BaseObject::createPhysicsObject()\n");
 	// first fixup the bodydef with the current position
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(theCenter.x, theCenter.y);
@@ -140,6 +141,7 @@ void BaseObject::createPhysicsObject()
 	if (theB2BodyPtr!=NULL)
 		deletePhysicsObject();
 	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
+	assert(theB2BodyPtr != NULL);
 	
 	// then create the shapes from the shapedefs
 	ShapeList::const_iterator myI = theShapeList.begin();
@@ -153,6 +155,7 @@ void BaseObject::createPhysicsObject()
 
 void BaseObject::deletePhysicsObject()
 {
+	DEBUG5("BaseObject::deletePhysicsObject()\n");
 	// have B2World destroy the body - that will automatically destroy
 	// the shapes
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
@@ -162,7 +165,7 @@ void BaseObject::deletePhysicsObject()
 void BaseObject::initAttributes ( ) 
 {
 	DEBUG5("BaseObject::initAttributes\n");
-	theB2BodyDefPtr=NULL;
+	theB2BodyDefPtr= new b2BodyDef();
 	theB2BodyPtr=NULL;
 	
 	theWidth = 1.0;
@@ -238,6 +241,7 @@ ObjectFactory::createObject(
 		const qreal anHeight) const
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
+	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", aName.toAscii().constData(), myFactoryPtr);
 	if (myFactoryPtr == NULL)
 		return NULL;
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
@@ -246,5 +250,6 @@ ObjectFactory::createObject(
 		myObjectPtr->setTheWidth(aWidth);
 	if (myObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
 		myObjectPtr->setTheHeight(anHeight);
+	myObjectPtr->createPhysicsObject();
 	return myObjectPtr;
 }
