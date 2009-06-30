@@ -45,8 +45,9 @@ BowlingPin::BowlingPin ( )
 	
 	b2PolygonDef* boxDef = new b2PolygonDef();
 	
-	boxDef->SetAsBox  	( 2*myRadius, myLength,
-			b2Vec2(myRadius, myLength/2.0), 0.0);
+	// remember, SetAsBox takes half width and half height
+	// and will center around the center - exactly what we want :-)
+	boxDef->SetAsBox  	( myRadius, myLength/2.0);
 	
 	// ramp is immovable -> no mass -> no density 
 	boxDef->density = myMass/(2*myRadius*myLength);
@@ -55,7 +56,7 @@ BowlingPin::BowlingPin ( )
 	// and create a new shape from the above polygon def
 	theShapeList.push_back(boxDef);
 
-	setTheBounciness(1.1);
+	setTheBounciness(0.85);
 	
 	setTheWidth(2.0*myRadius);
 	setTheHeight(myLength);
