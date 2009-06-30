@@ -48,7 +48,7 @@ VolleyBall::VolleyBall ( )
 	
 	ballDef->radius = myRadius;
 
-	ballDef->density = myMass/(PI*2*myRadius);
+	ballDef->density = myMass/(PI*myRadius*myRadius);
 
 	// delete any shapes on the body
 	// and create a new shape from the above polygon def
@@ -56,7 +56,7 @@ VolleyBall::VolleyBall ( )
 	
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);
-	setTheBounciness(0.75);
+	setTheBounciness(0.8);
 }
 
 VolleyBall::~VolleyBall ( ) { }
