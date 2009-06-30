@@ -48,16 +48,15 @@ VolleyBall::VolleyBall ( )
 	
 	ballDef->radius = myRadius;
 
-	// ramp is immovable -> no mass -> no density 
 	ballDef->density = myMass/(PI*2*myRadius);
-	
+
 	// delete any shapes on the body
 	// and create a new shape from the above polygon def
 	theShapeList.push_back(ballDef);
 	
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);
-
+	setTheBounciness(0.75);
 }
 
 VolleyBall::~VolleyBall ( ) { }
