@@ -151,6 +151,8 @@ void BaseObject::createPhysicsObject()
 		theB2BodyPtr->CreateShape(*myI);
 	}
 	theB2BodyPtr->SetMassFromShapes();
+	DEBUG5("Object %s has mass %f kg\n", getName().toAscii().constData(),
+		theB2BodyPtr->GetMass());
 }
 
 void BaseObject::deletePhysicsObject()
