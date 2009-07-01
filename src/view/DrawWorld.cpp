@@ -165,9 +165,8 @@ void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 	QPolygonF myPoly;
 	for (int i=0; i<vertexCount; i++)
 	{
-		if (vertices[i].x < -0.1 || vertices[i].y < -0.1)
-			;
-//			return;
+		if (vertices[i].x < -0.5 || vertices[i].y < -0.5)
+			return;
 		myPoly << QPointF(vertices[i].x, -vertices[i].y);
 	}
 	addDebugDrawToList(addPolygon(myPoly, pen, brush));
