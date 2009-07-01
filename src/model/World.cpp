@@ -93,6 +93,13 @@ void World::createScene(MainWindow* myMainPtr)
 	assert(theDrawWorldPtr == NULL);
 	theDrawWorldPtr = new DrawWorld(myMainPtr, this);
 	
+#ifdef DRAWDEBUG
+	// if DRAWDEBUG is defined, DrawWorld also inherits from the b2DrawDebug class
+	// and will cause drawing of all shapes - good for debugging new objects
+	// but we have to register the debug thingie first.
+	theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+#endif
+
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
@@ -123,6 +130,7 @@ void World::initAttributes( )
 	b2Body* groundBody = theB2WorldPtr->CreateBody(&groundBodyDef);
 	b2PolygonDef groundShapeDef;
 	groundShapeDef.SetAsBox(50.0f, 1.0f);
+	groundShapeDef.restitution=0.0f;
 	groundBody->CreateShape(&groundShapeDef);
 
 	// Define the left wall body.
@@ -131,6 +139,7 @@ void World::initAttributes( )
 	b2Body* leftBody = theB2WorldPtr->CreateBody(&leftBodyDef);
 	b2PolygonDef leftShapeDef;
 	leftShapeDef.SetAsBox(1.0f, 50.0f);
+	leftShapeDef.restitution=0.0f;
 	leftBody->CreateShape(&leftShapeDef);
 }
 

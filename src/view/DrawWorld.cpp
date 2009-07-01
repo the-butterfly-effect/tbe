@@ -76,6 +76,10 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
+
+#ifdef DRAWDEBUG
+	SetFlags (e_shapeBit);
+#endif
 }
 
 
@@ -115,7 +119,7 @@ void DrawWorld::on_timerTick()
 {
 	while(theSimulationTime < QTime::currentTime())
 	{
-		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep()*1000.0);
+		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep()*2000.0);
 	}
 	advance();
 }
@@ -140,3 +144,56 @@ void DrawWorld::stopTimer(void)
 	DEBUG5("DrawWorld::stopTimer(void)\n");
 	theTimer.stop();
 }
+
+
+
+
+
+#ifdef DRAWDEBUG
+
+/// Draw a closed polygon provided in CCW order.
+void DrawWorld::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+{
+	DEBUG5("DrawWorld::DrawPolygon\n");
+}
+/// Draw a solid closed polygon provided in CCW order.
+void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+{
+	DEBUG5("DrawWorld::DrawSolidPolygon\n");
+	QPen pen(Qt::green, 0.01, Qt::SolidLine);
+	QBrush brush(Qt::NoBrush);
+	QPolygonF myPoly;
+	for (int i=0; i<vertexCount; i++)
+	{
+		if (vertices[i].x < -0.1 || vertices[i].y < -0.1)
+			;
+//			return;
+		myPoly << QPointF(vertices[i].x, -vertices[i].y);
+	}
+	addPolygon(myPoly, pen, brush);
+}
+/// Draw a circle.
+void DrawWorld::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
+{
+	DEBUG5("DrawWorld::DrawCircle\n");
+}
+/// Draw a solid circle.
+void DrawWorld::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
+{
+	DEBUG5("DrawWorld::DrawSolidCircle\n");
+	QPen pen(Qt::green, 0.01, Qt::SolidLine);
+	QBrush brush(Qt::NoBrush);
+	addEllipse(center.x,-center.y, 2.0*radius,2.0*radius, pen, brush);
+}
+/// Draw a line segment.
+void DrawWorld::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
+{
+	DEBUG5("DrawWorld::DrawSegment\n");
+}
+/// Draw a transform. Choose your own length scale.
+/// @param xf a transform.
+void DrawWorld::DrawXForm(const b2XForm& xf)
+{
+	DEBUG5("DrawWorld::DrawXForm\n");
+}
+#endif
