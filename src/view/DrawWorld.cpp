@@ -170,7 +170,7 @@ void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 //			return;
 		myPoly << QPointF(vertices[i].x, -vertices[i].y);
 	}
-	addPolygon(myPoly, pen, brush);
+	addDebugDrawToList(addPolygon(myPoly, pen, brush));
 }
 /// Draw a circle.
 void DrawWorld::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
@@ -183,7 +183,7 @@ void DrawWorld::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Ve
 	DEBUG5("DrawWorld::DrawSolidCircle\n");
 	QPen pen(Qt::green, 0.01, Qt::SolidLine);
 	QBrush brush(Qt::NoBrush);
-	addEllipse(center.x,-center.y, 2.0*radius,2.0*radius, pen, brush);
+	addDebugDrawToList(addEllipse(center.x-radius,-center.y-radius, 2.0*radius,2.0*radius, pen, brush));
 }
 /// Draw a line segment.
 void DrawWorld::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
@@ -195,5 +195,16 @@ void DrawWorld::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& c
 void DrawWorld::DrawXForm(const b2XForm& xf)
 {
 	DEBUG5("DrawWorld::DrawXForm\n");
+}
+
+void DrawWorld::addDebugDrawToList(QGraphicsItem* anItem)
+{
+	theGraphicsList.push_back(anItem);
+	while (theGraphicsList.count() > theMaxNumberOfGraphicsListElements)
+	{
+		QGraphicsItem* myItemPtr = theGraphicsList.first();
+		theGraphicsList.pop_front();
+		delete myItemPtr;
+	}
 }
 #endif

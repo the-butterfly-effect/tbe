@@ -88,6 +88,12 @@ public:
 		/// Draw a transform. Choose your own length scale.
 		/// @param xf a transform.
 		virtual void DrawXForm(const b2XForm& xf);
+
+private:
+		const static int theMaxNumberOfGraphicsListElements = 25;
+		typedef QList<QGraphicsItem*> GraphicsList;
+		GraphicsList theGraphicsList;
+		void addDebugDrawToList(QGraphicsItem* anItem);
 #endif
 	
 public slots:
