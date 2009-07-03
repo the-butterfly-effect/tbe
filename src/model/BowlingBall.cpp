@@ -18,6 +18,7 @@
 
 #include "BowlingBall.h"
 #include "tbe_global.h"
+#include "Box2D.h"
 
 
 // this class' ObjectFactory
@@ -40,13 +41,21 @@ BowlingBall::BowlingBall ( )
 	// set the bowling ball to have a 0.11 meter diameter
 	const qreal myRadius = 0.11;
 	// and a weight of 6.0 kg.
-	setTheGeomID( dCreateSphere (getSpaceID(), myRadius) );
-	setMassSphere(6.0, myRadius);
-	setTheBounciness(0.2);
-	
+	const qreal myMass = 6.0; // kg
+
+	b2CircleDef* ballDef = new b2CircleDef();
+
+	ballDef->radius = myRadius;
+
+	ballDef->density = myMass/(PI*myRadius*myRadius);
+
+	// delete any shapes on the body
+	// and create a new shape from the above polygon def
+	theShapeList.push_back(ballDef);
+
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);
-
+	setTheBounciness(0.1);
 }
 
 BowlingBall::~BowlingBall ( ) { }

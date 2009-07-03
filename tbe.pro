@@ -22,7 +22,8 @@ HEADERS += src/tbe_global.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/model/BaseObject.h \
-    src/model/BowlingPin.h \
+	src/model/BowlingBall.h \
+	src/model/BowlingPin.h \
     src/model/Level.h \
     src/model/MovingObject.h \
     src/model/Position.h \
@@ -42,7 +43,6 @@ HEADERS += src/tbe_global.h \
     src/model/VolleyBall.h
 
 NOT_USED_HEADERS += \
-    src/model/BowlingBall.h \
     src/model/ImmovableObject.h \
     src/model/Wall.h \
     src/model/Floor.h \
@@ -52,7 +52,8 @@ SOURCES += src/main.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/model/BaseObject.cpp \
-    src/model/BowlingPin.cpp \
+	src/model/BowlingBall.cpp \
+	src/model/BowlingPin.cpp \
     src/model/Level.cpp \
     src/model/MovingObject.cpp \
     src/model/Position.cpp \
@@ -70,7 +71,6 @@ SOURCES += src/main.cpp \
     src/view/StartStopReset.cpp \
 
 NOT_USED_SOURCE=\
-    src/model/BowlingBall.cpp \
     src/model/Floor.cpp \
     src/model/ImmovableObject.cpp \
     src/model/Wall.cpp \
