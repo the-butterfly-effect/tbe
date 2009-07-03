@@ -73,7 +73,7 @@ void Floor::adjustParameters(void)
 	// Floors cannot rotate.
 	qreal myHW = getTheWidth()/2.0;
 
-	const float theAspect = 10.0;
+	const float theAspect = 12.0;
 
 	// because width/height <= 12.0
 	// we better make floor from multiple parts if we need wider floors
