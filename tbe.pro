@@ -24,7 +24,8 @@ HEADERS += src/tbe_global.h \
     src/model/BaseObject.h \
 	src/model/BowlingBall.h \
 	src/model/BowlingPin.h \
-    src/model/Level.h \
+	src/model/Floor.h \
+	src/model/Level.h \
     src/model/MovingObject.h \
     src/model/Position.h \
     src/model/Ramp.h \
@@ -45,7 +46,6 @@ HEADERS += src/tbe_global.h \
 NOT_USED_HEADERS += \
     src/model/ImmovableObject.h \
     src/model/Wall.h \
-    src/model/Floor.h \
 
 
 SOURCES += src/main.cpp \
@@ -54,7 +54,8 @@ SOURCES += src/main.cpp \
     src/model/BaseObject.cpp \
 	src/model/BowlingBall.cpp \
 	src/model/BowlingPin.cpp \
-    src/model/Level.cpp \
+	src/model/Floor.cpp \
+	src/model/Level.cpp \
     src/model/MovingObject.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
@@ -71,7 +72,6 @@ SOURCES += src/main.cpp \
     src/view/StartStopReset.cpp \
 
 NOT_USED_SOURCE=\
-    src/model/Floor.cpp \
     src/model/ImmovableObject.cpp \
     src/model/Wall.cpp \
 

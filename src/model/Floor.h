@@ -74,20 +74,11 @@ public:
 	 */
 	virtual void setTheWidth ( qreal new_var );
 
-	virtual DrawObject* createDrawObject();
-	
 private:
 	/// this member recalculates the size of the slab based on current size
 	void adjustParameters(void);
 	
-	static const qreal theSlabThickness = 0.03; // m
-	
-	qreal getSlabLength(void)
-		{ return getTheWidth();}
-	qreal getSlabAngle(void)
-	{ return 0.0; }
-
-	friend class DrawRamp;
+	static const qreal theSlabThickness = 0.1; // m
 };
 
 #endif // FLOOR_H
