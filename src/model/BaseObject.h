@@ -247,7 +247,7 @@ public:
 	 * @param new_var the new value of theWidth
 	 */
 	virtual void setTheWidth ( qreal new_var )
-		{ if (new_var>0.01) theWidth = new_var; }
+		{ if (new_var>0.1) theWidth = new_var; }
 
 	/**
 	 * Get the value of theWidth
@@ -261,7 +261,7 @@ public:
 	 * @param new_var the new value of theHeight
 	 */
 	virtual void setTheHeight ( qreal new_var )
-		{ if (new_var>0.01) theHeight = new_var;	}
+		{ if (new_var>0.1) theHeight = new_var;	}
 
 	/**
 	 * Get the value of theHeight
