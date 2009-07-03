@@ -97,8 +97,8 @@ void DrawObject::applyPosition(void)
     // Qt has Y positive downwards, whereas all of the model has Y upwards.
     // that's what the minus is for :-)
     setPos(myPosition.x, -myPosition.y);
-    rotate((myPosition.angle-theOldAngle)*180/3.14);
-    theOldAngle=myPosition.angle;
+	rotate((-myPosition.angle-theOldAngle)*180/3.14);
+	theOldAngle=-myPosition.angle;
 }
 
 QRectF DrawObject::boundingRect() const
