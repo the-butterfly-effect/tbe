@@ -159,7 +159,6 @@ void DrawWorld::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2C
 /// Draw a solid closed polygon provided in CCW order.
 void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
-	DEBUG5("DrawWorld::DrawSolidPolygon\n");
 	QPen pen(Qt::green, 0.01, Qt::SolidLine);
 	QBrush brush(Qt::NoBrush);
 	QPolygonF myPoly;
@@ -179,7 +178,6 @@ void DrawWorld::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& 
 /// Draw a solid circle.
 void DrawWorld::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
 {
-	DEBUG5("DrawWorld::DrawSolidCircle\n");
 	QPen pen(Qt::green, 0.01, Qt::SolidLine);
 	QBrush brush(Qt::NoBrush);
 	addDebugDrawToList(addEllipse(center.x-radius,-center.y-radius, 2.0*radius,2.0*radius, pen, brush));
