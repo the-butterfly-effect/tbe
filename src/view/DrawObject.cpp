@@ -21,6 +21,7 @@
 #include "PieMenu.h"
 #include "Anchors.h"
 #include "ImageStore.h"
+#include "DrawWorld.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -41,13 +42,15 @@ static QUndoStack* theUndoStackPtr = NULL;
 //  
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL),
+	theUndeleteDrawWorldPtr(NULL)
 {
 	initAttributes();
 }
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName)
-	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL),
+	theUndeleteDrawWorldPtr(NULL)
 {
 	initAttributes();
 	theRenderer = ImageStore::getRenderer(anImageName);
@@ -119,6 +122,12 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 	}
 }
 
+bool DrawObject::deregister()
+{
+	theUndeleteDrawWorldPtr = reinterpret_cast<DrawWorld*>(scene());
+	scene()->removeItem(this);
+	return true;
+}
 
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
@@ -256,4 +265,11 @@ void DrawObject::paintHighlighted(QPainter* myPainter)
 		myPainter->setBrush(color);
 		myPainter->drawPolygon(mapFromScene(myBox));
 	}
+}
+
+bool DrawObject::reregister()
+{
+	assert(theUndeleteDrawWorldPtr);
+	theUndeleteDrawWorldPtr->addItem(this);
+	return true;
 }

@@ -125,8 +125,15 @@ public:
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 
-//	bool deregister(void);
-//	bool register(void);
+	/** removes itself from the physics model, World and DrawWorld
+	 */
+	bool deregister(void);
+
+	/** adds itself (again) to physics model and world
+	 *  if missing, it will create the corresponding DrawObject
+	 *  and (re)registers it with the DrawWorld
+	 */
+	bool reregister(void);
 
 	/** the two STATIC members in this class should only be accessible to the
 	 *  World class

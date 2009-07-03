@@ -18,6 +18,7 @@
 
 #include "BaseObject.h"
 #include "DrawObject.h"
+#include "World.h"
 #include <QMap>
 #include "Box2D.h"
 
@@ -160,8 +161,20 @@ void BaseObject::deletePhysicsObject()
 	DEBUG5("BaseObject::deletePhysicsObject()\n");
 	// have B2World destroy the body - that will automatically destroy
 	// the shapes
-	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+	if (theB2BodyPtr!=NULL)
+		getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 	theB2BodyPtr = NULL;
+}
+
+
+bool BaseObject::deregister(void)
+{
+	deletePhysicsObject();
+	theWorldPtr->removeObject(this);
+	if (theDrawObjectPtr)
+		theDrawObjectPtr->deregister();
+	// note that we keep the pointer - and will re-use it in the future if needed
+	return true;
 }
 
 void BaseObject::initAttributes ( ) 
@@ -190,7 +203,17 @@ bool BaseObject::isSleeping() const
 		return false;
 }
 
-	
+bool BaseObject::reregister(void)
+{
+	reset();
+	theWorldPtr->addObject(this);
+	if (theDrawObjectPtr == NULL)
+		createDrawObject();
+	theDrawObjectPtr->reregister();
+	createPhysicsObject();
+	return true;
+}
+
 void BaseObject::reset ( ) 
 {
 	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 

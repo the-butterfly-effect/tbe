@@ -78,11 +78,6 @@ bool World::addObject(BaseObject* anObjectPtr)
 	anObjectPtr->reset();
 	anObjectPtr->theWorldPtr = this;
 	
-	// if we have a graphical representation already, add object there, too
-	if (theDrawWorldPtr)
-	{
-		theDrawWorldPtr->addItem(anObjectPtr->createDrawObject());
-	}
 	return true;
 }
 
@@ -152,9 +147,7 @@ bool World::removeObject(BaseObject* anObjectPtr)
 
 	if (myPos == -1)
 		return false;
-
 	theObjectPtrList.removeAt(myPos);
-
 	return true;
 }
 

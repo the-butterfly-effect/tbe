@@ -61,21 +61,18 @@ UndoDeleteCommand::~UndoDeleteCommand ( )
 //  
 void UndoDeleteCommand::redo ()
 {
+	DEBUG3("UndoDeleteCommand::redo() START\n");
 	// remove the DrawObject from the scene, but keep the pointer
-	theDrawObjectPtr->scene()->removeItem(theDrawObjectPtr);
-
-	// remove the BaseObject from the scene
-	assert(theBaseObjectPtr->theWorldPtr->removeObject(theBaseObjectPtr));
-
-	// TODO: and also remove the GeomID/BodyID from the WorldID
+	assert(theBaseObjectPtr->deregister());
 
 	// TODO: a delete also implies (if not in Level editor mode) that
 	// the object is available in the tool box again
+	DEBUG3("UndoDeleteCommand::redo() END\n");
 }
 
 void UndoDeleteCommand::undo ()
 {
-	theBaseObjectPtr->theWorldPtr->addObject(theBaseObjectPtr);
-
-	// TODO: FIXME: An undo of the delete kind also must imply a "reset"
+	DEBUG3("UndoDeleteCommand::undo() START\n");
+	theBaseObjectPtr->reregister();
+	DEBUG3("UndoDeleteCommand::undo() END\n");
 }

@@ -26,6 +26,7 @@ class BaseObject;
 class QUndoStack;
 class Anchors;
 class QSvgRenderer;
+class DrawWorld;
 
 /** class DrawObject
   *
@@ -66,6 +67,15 @@ public:
 
 	BaseObject* getBaseObjectPtr(void) const
 		{ return theBaseObjectPtr; }
+
+	/** removes itself from the DrawWorld
+	 */
+	bool deregister(void);
+
+	/** adds itself again to the DrawWorld
+	 *  Note: this function is not suitable for first registration!!!
+	 */
+	bool reregister();
 
 
 protected:
@@ -147,6 +157,10 @@ protected:
 	QSvgRenderer*	theRenderer;
 
 	bool isHighlighted;
+
+	/// pointer for undeleting this object
+	///   - only usable *after* a deregister() !!!
+	DrawWorld* theUndeleteDrawWorldPtr;
 
 private:
 	virtual void initAttributes ( ) ;
