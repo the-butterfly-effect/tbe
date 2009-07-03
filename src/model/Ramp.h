@@ -83,10 +83,10 @@ public:
 	virtual DrawObject* createDrawObject();
 	
 private:
-	/// this member recalculates the size of the slab based on current size
+	/// this member fixes up the physical model based on new width or height
 	void adjustParameters(void);
 
-	static const qreal theSlabThickness = 0.03; // m
+	static const qreal theSlabThickness = 0.04; // m
 	
 	friend class DrawRamp;
 };

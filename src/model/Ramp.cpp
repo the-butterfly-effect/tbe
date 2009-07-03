@@ -35,7 +35,7 @@ static RampObjectFactory theFactory;
 // Constructors/Destructors
 //  
 
-Ramp::Ramp ( ) 
+Ramp::Ramp ( ) : BaseObject()
 {
 	DEBUG5("Ramp::Ramp\n");
 	
@@ -44,11 +44,7 @@ Ramp::Ramp ( )
 	// and the whole heigth of the block - which happens also to be 1.0
 	
 	setTheBounciness(0.2);
-	
-	setTheWidth(1.0);
-	setTheHeight(1.0);
-	setAngle(0.0);
-	
+	adjustParameters();
 }
 
 Ramp::~Ramp ( ) { }
@@ -63,20 +59,16 @@ Ramp::~Ramp ( ) { }
 
 void Ramp::setTheWidth ( qreal new_var )
 {
-	// adjusting the width also implies that the slap changes rotation and size
-	if (new_var <= 0.01)
-		return;
 	BaseObject::setTheWidth(new_var);
+	DEBUG5("Ramp::setTheWidth (%f)\n", getTheWidth());
 	adjustParameters();
 }
 
 void Ramp::setTheHeight ( qreal new_var )
 {
-	//adjusting the height also implies that the slap changes rotation and size
-	if (new_var <= 0.01)
-		return;
 	BaseObject::setTheHeight(new_var);
-	adjustParameters();	
+	DEBUG5("Ramp::setTheHeight (%f)\n", getTheHeight());
+	adjustParameters();
 }
 
 
@@ -85,28 +77,41 @@ void Ramp::setTheHeight ( qreal new_var )
 
 void Ramp::adjustParameters(void)
 {
-	// note that the angle is not used at all here !!!
+	// note that the angle property is totally ignored here
+	// Ramps cannot rotate.
 	qreal myHW = getTheWidth()/2.0;
 	qreal myHH = getTheHeight()/2.0;
+
+	DEBUG5("Ramp::adjustParameters wxh=%fx%f\n", myHW, myHH);
 	
 	b2PolygonDef* rampDef = new b2PolygonDef();
+	// make sure to make the vertex run counter clockwise
 	rampDef->vertexCount = 4;
-	rampDef->vertices[0].Set(-myHW, +myHH);
-	rampDef->vertices[1].Set(+myHW, -myHH+theSlabThickness);
-	rampDef->vertices[2].Set(+myHW, -myHH);
-	rampDef->vertices[3].Set(-myHW, +myHH-theSlabThickness);
-	// ramp is immovable -> no mass -> no density 
+	rampDef->vertices[0].Set(-myHW, myHH);
+	rampDef->vertices[1].Set(-myHW, myHH-4*theSlabThickness);
+	rampDef->vertices[2].Set(+myHW,-myHH);
+	rampDef->vertices[3].Set(+myHW,-myHH+theSlabThickness);
+
+	// ramp is immovable -> no mass -> no density
 	rampDef->density = 0.0;
 	
 	// delete any shapes on the body
 	// and create a new shape from the above polygon def
 	clearShapeList();
 	theShapeList.push_back(rampDef);
+
+	// if there already is a physicsobject, it's wrong
+	if (isPhysicsObjectCreated())
+	{
+		deletePhysicsObject();
+		createPhysicsObject();
+	}
 }
 
 DrawObject*  Ramp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
+	adjustParameters();
 	theDrawObjectPtr = new DrawRamp(this);
 	return theDrawObjectPtr;
 }

@@ -90,7 +90,7 @@ Position BaseObject::getTempCenter (void)
 	
 	return Position(theB2BodyPtr->GetPosition().x,
 					theB2BodyPtr->GetPosition().y,
-					theB2BodyPtr->GetAngle());
+					-theB2BodyPtr->GetAngle());
 }
 
 void BaseObject::setTempCenter ( Position new_var )
