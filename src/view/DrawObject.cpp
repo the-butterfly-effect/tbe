@@ -191,8 +191,16 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
 
+	// TODO: problem: if you click an object near the side, it will still register as if you
+	// clicked in the exact center - with an unvoluntary movement as a result
+
 	Position myOrgPos = theBaseObjectPtr->getTempCenter();
 	QPointF myPos=event->scenePos ();
+	if (theAnchorsPtr)
+	{
+		delete theAnchorsPtr;
+		theAnchorsPtr = NULL;
+	}
 	
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
 			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
@@ -216,11 +224,16 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	// TODO: FIXME: for now, we're not discriminative for left or right mousebutton...
 	DEBUG5("for button %d\n", event->button());
 
+	// is the position any different?
+	// TODO: if position is same, no need to do undomove
+
 	// create and file an UndoMoveCommand
 	// note that the MoveCommand also pushes the move to BaseObject
 	UndoMoveCommand* myCommandPtr = new UndoMoveCommand(this, theBaseObjectPtr);
 	getUndoStackPtr()->push(myCommandPtr);
 	QGraphicsItem::mouseReleaseEvent(event);
+	if (theAnchorsPtr==NULL)
+		theAnchorsPtr= new Anchors(this);
 }
 
 void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
