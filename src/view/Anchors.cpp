@@ -91,6 +91,9 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 	// get the QSvgRenderer for my icon
 	setSharedRenderer(ImageStore::getRenderer(PieMenu::getEditModeIconName(aDirection)));
 
+	if (aDirection!=PieMenu::NONE)
+		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsFocusable);
+
 	// calculate how to scale my icon to look like it should
 	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
 	printf("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
@@ -110,11 +113,13 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 
 void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
+	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
 
 	QPointF myPos=event->scenePos ();
 
 	// calculate which direction we're moving
+	// keep in mind the Anchor code is direction-agnostic
+	//if (theDirection==PieMenu::RESIZE_HORI)
 	// if (hori) deltaverti = 0;
 	// if (verti) deltahori = 0;
 
@@ -125,9 +130,24 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 {
+	DEBUG5("Anchor::mousePressEvent\n");
+
 	// record cursor position here
+	QPointF thePrevMousePos=event->scenePos ();
+
 	// reset cursor to hori/verti/rotate
-	// (see QCursor)
+	if (theDirection==PieMenu::RESIZE_HORI)
+		setCursor(Qt::SizeHorCursor);
+	if (theDirection==PieMenu::RESIZE_VERTI)
+		setCursor(Qt::SizeVerCursor);
+	// TODO: add cursor ROTATE shape
+}
+
+void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
+{
+	DEBUG5("Anchor::mouseReleaseEvent\n");
+
+	// TODO: finalize resize here (if there was one, that is)
 }
 
 void Anchor::updatePosition()

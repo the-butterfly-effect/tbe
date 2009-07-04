@@ -107,11 +107,18 @@ public slots:
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
 
 	/** overridden from QGraphicsItem
-	 *  we want to know when the user presses the left mouse button
+	 *  we want to know when the user clicks on this Anchor
 	 *
 	 *  @param event the even to handle
 	 */
 	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this Anchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
 
 	/// slot that tells the position may have changed - called by the Anchors class.
 	void updatePosition(void);
@@ -122,8 +129,10 @@ private:
 	Anchors::HPosition theHPos;
 	Anchors::VPosition theVPos;
 	static const int theIconSize = 16;
+	qreal theDelta;
 
 	qreal theOffset;
+	QPointF thePrevMousePos;
 };
 
 

@@ -36,20 +36,20 @@
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;
 
-//EditState DrawObject::theEditState;
+Anchors* DrawObject::theAnchorsPtr = NULL;
 
 // Constructors/Destructors
 //  
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL),
+	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	theUndeleteDrawWorldPtr(NULL)
 {
 	initAttributes();
 }
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName)
-	: theBaseObjectPtr(aBaseObjectPtr), theAnchorsPtr(NULL), theRenderer (NULL),
+	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	theUndeleteDrawWorldPtr(NULL)
 {
 	initAttributes();
@@ -132,20 +132,11 @@ bool DrawObject::deregister()
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
-	assert(theAnchorsPtr==NULL);
+	if (theAnchorsPtr!=NULL)
+		delete theAnchorsPtr;
 	theAnchorsPtr=new Anchors(this);
 	isHighlighted=true;
 }
-
-void DrawObject::focusOutEvent ( QFocusEvent * event )
-{
-	DEBUG5("focusOutEvent for %p with %d\n", this, event->reason());
-	assert(theAnchorsPtr!=NULL);
-	delete theAnchorsPtr;
-	theAnchorsPtr = NULL;
-	isHighlighted=false;
-}
-
 
 void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent *)
 {

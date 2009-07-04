@@ -97,13 +97,6 @@ protected:
 	virtual void focusInEvent ( QFocusEvent * event );
 
 	/** overridden from QGraphicsItem
-	 *  we want to know when the user deselects the object
-	 *    - so we can have theEditState take action
-	 *  @param event the even to handle
-	 */
-	virtual void focusOutEvent ( QFocusEvent * event );
-
-	/** overridden from QGraphicsItem
 	 *  if called, setup a hover icon (indicating current action)
 	 *  or not (if object is immovable)
 	 *
@@ -153,7 +146,12 @@ protected:
 	// current angle of the object in radians!
 	qreal	theOldAngle;
 	
-	Anchors* theAnchorsPtr;
+	/** Pointer to an Achors class
+	 *  This pointer is shared across all DrawObjects,
+	 *  as such you shouldn't assume it's yours
+	 */
+	static Anchors* theAnchorsPtr;
+
 	QSvgRenderer*	theRenderer;
 
 	bool isHighlighted;
