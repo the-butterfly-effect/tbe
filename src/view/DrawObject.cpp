@@ -220,8 +220,7 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 
 	// create and file an UndoMoveCommand
 	// note that the MoveCommand also pushes the move to BaseObject
-	UndoMoveCommand* myCommandPtr = new UndoMoveCommand(this, theBaseObjectPtr);
-	getUndoStackPtr()->push(myCommandPtr);
+	pushUndo(new UndoMoveCommand(this, theBaseObjectPtr));
 	QGraphicsItem::mouseReleaseEvent(event);
 	if (theAnchorsPtr==NULL)
 		theAnchorsPtr= new Anchors(this);
@@ -269,6 +268,13 @@ void DrawObject::paintHighlighted(QPainter* myPainter)
 		myPainter->setBrush(color);
 		myPainter->drawPolygon(mapFromScene(myBox));
 	}
+}
+
+
+bool DrawObject::pushUndo(QUndoCommand* anUndo)
+{
+	getUndoStackPtr()->push(anUndo);
+	return true;
 }
 
 bool DrawObject::reregister()

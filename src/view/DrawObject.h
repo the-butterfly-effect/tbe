@@ -24,6 +24,7 @@
 // forward declarations
 class BaseObject;
 class QUndoStack;
+class QUndoCommand;
 class Anchors;
 class QSvgRenderer;
 class DrawWorld;
@@ -77,6 +78,7 @@ public:
 	 */
 	bool reregister();
 
+	bool pushUndo(QUndoCommand* anUndo);
 
 protected:
 

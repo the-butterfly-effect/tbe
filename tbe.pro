@@ -6,8 +6,7 @@ CONFIG += qt \
 LIBS += -lbox2d \
     -L3rdParty/libs
 DEFINES += QT_NO_ASCII_CAST
-INCLUDEPATH += \
-	3rdParty/Box2D_v2.0.1/Box2D/Include/ \
+INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src \
     src/model \
     src/view \
@@ -22,10 +21,10 @@ HEADERS += src/tbe_global.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/model/BaseObject.h \
-	src/model/BowlingBall.h \
-	src/model/BowlingPin.h \
-	src/model/Floor.h \
-	src/model/Level.h \
+    src/model/BowlingBall.h \
+    src/model/BowlingPin.h \
+    src/model/Floor.h \
+    src/model/Level.h \
     src/model/MovingObject.h \
     src/model/Position.h \
     src/model/Ramp.h \
@@ -41,21 +40,18 @@ HEADERS += src/tbe_global.h \
     src/view/resizinggraphicsview.h \
     src/view/SplashScreen.h \
     src/view/StartStopReset.h \
-    src/model/VolleyBall.h
-
-NOT_USED_HEADERS += \
-    src/model/ImmovableObject.h \
-    src/model/Wall.h \
-
-
+    src/model/VolleyBall.h \
+    src/base/UndoResizeCommand.h
+NOT_USED_HEADERS += src/model/ImmovableObject.h \
+    src/model/Wall.h
 SOURCES += src/main.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/model/BaseObject.cpp \
-	src/model/BowlingBall.cpp \
-	src/model/BowlingPin.cpp \
-	src/model/Floor.cpp \
-	src/model/Level.cpp \
+    src/model/BowlingBall.cpp \
+    src/model/BowlingPin.cpp \
+    src/model/Floor.cpp \
+    src/model/Level.cpp \
     src/model/MovingObject.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
@@ -70,12 +66,9 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopReset.cpp \
-
-NOT_USED_SOURCE=\
-    src/model/ImmovableObject.cpp \
-    src/model/Wall.cpp \
-
-
+    src/base/UndoResizeCommand.cpp
+NOT_USED_SOURCE = src/model/ImmovableObject.cpp \
+    src/model/Wall.cpp
 FORMS = src/view/MainWindow.ui
 DISTFILES = README \
     TODO \

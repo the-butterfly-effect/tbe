@@ -86,7 +86,10 @@ void Anchors::rotate(qreal aDelta)
 //////////////////////////////////////////////////////////////////////////////
 
 Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors::VPosition aVPos, Anchors* aParent)
-		: theParentPtr(aParent), theDirection(aDirection), theHPos(anHPos), theVPos(aVPos)
+		: theParentPtr(aParent),
+		  theDirection(aDirection),
+		  theHPos(anHPos), theVPos(aVPos),
+		  theUndoPtr(NULL)
 {
 	// get the QSvgRenderer for my icon
 	setSharedRenderer(ImageStore::getRenderer(PieMenu::getEditModeIconName(aDirection)));
@@ -115,17 +118,13 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
 
-	QPointF myPos=event->scenePos ();
-
 	// calculate which direction we're moving
-	// keep in mind the Anchor code is direction-agnostic
-	//if (theDirection==PieMenu::RESIZE_HORI)
-	// if (hori) deltaverti = 0;
-	// if (verti) deltahori = 0;
-
-	// if the resize succeeds, it will force an updatePosition()
-	// if the resize fails, we don't really care :-)
-//  theParentPtr->resize(theDirection, +-amount);
+	QPointF myDelta = event->scenePos() - thePrevMousePos;
+	if (theDirection==PieMenu::RESIZE_HORI)
+		myDelta.setY(0);
+	if (theDirection==PieMenu::RESIZE_VERTI)
+		myDelta.setX(0);
+	theUndoPtr->setDelta(theHPos, myDelta);
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
@@ -133,7 +132,7 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 	DEBUG5("Anchor::mousePressEvent\n");
 
 	// record cursor position here
-	QPointF thePrevMousePos=event->scenePos ();
+	thePrevMousePos=event->scenePos ();
 
 	// reset cursor to hori/verti/rotate
 	if (theDirection==PieMenu::RESIZE_HORI)
@@ -141,13 +140,30 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 	if (theDirection==PieMenu::RESIZE_VERTI)
 		setCursor(Qt::SizeVerCursor);
 	// TODO: add cursor ROTATE shape
+
+	assert(theUndoPtr==NULL);
+	theUndoPtr = theParentPtr->createUndoResize();
 }
 
 void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
-	// TODO: finalize resize here (if there was one, that is)
+	QPointF myDelta = event->scenePos() - thePrevMousePos;
+	if (theDirection==PieMenu::RESIZE_HORI)
+		myDelta.setY(0);
+	if (theDirection==PieMenu::RESIZE_VERTI)
+		myDelta.setX(0);
+
+	// there was actual movement?
+	if (myDelta.x()+myDelta.y() > 0.0)
+	{
+		DEBUG5("PUSHED UNDO RESIZE: dx=%f, dy=%f\n", myDelta.x(), myDelta.y());
+		theParentPtr->pushUndo(theUndoPtr);
+		// and make sure a next resize starts all over again
+		theUndoPtr = NULL;
+		thePrevMousePos=event->scenePos ();
+	}
 }
 
 void Anchor::updatePosition()

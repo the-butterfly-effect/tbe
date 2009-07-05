@@ -55,15 +55,16 @@ Features:
   * implement post-its
   x implement volleyball
   / i18n of application
-  / right-mouse button to adjust properties (e.g. resize, rotate, trapdoor threshold)
+  / right-mouse button + anchors to adjust properties (e.g. resize, rotate, trapdoor threshold)
     / highlight selected object
 	x implement RMB menu
-	  / delete
-	  - adjust properties (for Milestone 4?!)
-	/ add anchors around object
-	- actually implement hori/verti resize
+	  x delete
+	  - adjust properties (move to Milestone 4?!)
+	x add anchors around object
+	x actually implement hori/verti resize
 	- actually implement rotation
   * automated regression tests for XML parser/world builder
+  * make simulation speed adjustable:  1/4x 1/2x 1x (4x?)  (it is currently hardcoded to 1/2x)
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter

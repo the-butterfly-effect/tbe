@@ -25,12 +25,12 @@
 #include "PieMenu.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
+#include "UndoResizeCommand.h"
 
 // forward declarations
-class DrawObject;
 class Anchor;
 class QGraphicsScene;
-
+class QUndoCommand;
 
 /// the Anchors class manages the resize/rotate anchors around a selected DrawObject
 class Anchors : public QObject
@@ -67,6 +67,13 @@ public:
 	/// @returns the center Position of the DrawObject we're drawing anchors around
 	Position getCenter(void)
 		{ return theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter(); }
+
+	UndoResizeCommand* createUndoResize(void)
+		{ return new UndoResizeCommand(theDrawObjectPtr, theDrawObjectPtr->getBaseObjectPtr()); }
+
+	bool pushUndo(QUndoCommand* anUndo)
+		{ return theDrawObjectPtr->pushUndo(anUndo); }
+
 
 protected slots:
 
@@ -133,6 +140,8 @@ private:
 
 	qreal theOffset;
 	QPointF thePrevMousePos;
+
+	UndoResizeCommand* theUndoPtr;
 };
 
 
