@@ -74,6 +74,8 @@ public:
 	bool pushUndo(QUndoCommand* anUndo)
 		{ return theDrawObjectPtr->pushUndo(anUndo); }
 
+	/// iterates through all Anchor's to make them update their position
+	void updatePosition();
 
 protected slots:
 
@@ -83,8 +85,6 @@ protected slots:
 	/// ask theDrawObject to rotate aDelta radians
 	void rotate(qreal aDelta);
 
-signals:
-	void updatePosition();
 
 private:
 	DrawObject* theDrawObjectPtr;

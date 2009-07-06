@@ -84,6 +84,14 @@ void Anchors::rotate(qreal aDelta)
 {
 }
 
+void Anchors::updatePosition()
+{
+	for (int i=0; i<theAnchorList.count();i++)
+	{
+		theAnchorList[i]->updatePosition();
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////////
 
 Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors::VPosition aVPos, Anchors* aParent)
@@ -126,6 +134,8 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	if (theDirection==PieMenu::RESIZE_VERTI)
 		myDelta.setX(0);
 	theUndoPtr->setDelta(theHPos, myDelta);
+
+	theParentPtr->updatePosition();
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
