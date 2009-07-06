@@ -133,9 +133,17 @@ void DrawObject::focusInEvent ( QFocusEvent * event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
 	if (theAnchorsPtr!=NULL)
+	{
+		// the Anchors destructor will notify the other DrawObject
 		delete theAnchorsPtr;
+	}
 	theAnchorsPtr=new Anchors(this);
 	isHighlighted=true;
+}
+
+void DrawObject::focusRemove(void)
+{
+	isHighlighted = false;
 }
 
 void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent *)

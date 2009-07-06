@@ -80,6 +80,9 @@ public:
 
 	bool pushUndo(QUndoCommand* anUndo);
 
+	/// removes highlighting from this object
+	void focusRemove(void);
+
 protected:
 
 	static QUndoStack* getUndoStackPtr(void);
