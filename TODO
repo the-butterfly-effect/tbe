@@ -49,26 +49,26 @@ NOT A PLAYABLE GAME
 Milestone 3 - Dragging along
 Version 0.30
 Features:
-  * Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
+  x Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
   * implement Drag&Drop from toolchest to GraphicsView
   * Allow saving of view into XML File (i.e. "saved game")
   * implement post-its
   x implement volleyball
   / i18n of application
-  / right-mouse button + anchors to adjust properties (e.g. resize, rotate, trapdoor threshold)
-    / highlight selected object
+  x right-mouse button + anchors to adjust properties (e.g. resize, rotate, trapdoor threshold)
 	x implement RMB menu
 	  x delete
-	  - adjust properties (move to Milestone 4?!)
 	x add anchors around object
 	x actually implement hori/verti resize
-	- actually implement rotation
   * automated regression tests for XML parser/world builder
   * make simulation speed adjustable:  1/4x 1/2x 1x (4x?)  (it is currently hardcoded to 1/2x)
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
 Version 0.40
+  * RMB actions
+	- adjust properties
+	- actually implement rotation
   * implement trap door
   * implement styrofoam block
   * implement soccer ball and gummi ball

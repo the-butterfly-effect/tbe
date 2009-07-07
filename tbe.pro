@@ -41,7 +41,8 @@ HEADERS += src/tbe_global.h \
     src/view/SplashScreen.h \
     src/view/StartStopReset.h \
     src/model/VolleyBall.h \
-    src/base/UndoResizeCommand.h
+    src/base/UndoResizeCommand.h \
+    src/model/ToolBoxItemListModel.h
 NOT_USED_HEADERS += src/model/ImmovableObject.h \
     src/model/Wall.h
 SOURCES += src/main.cpp \
@@ -66,7 +67,8 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopReset.cpp \
-    src/base/UndoResizeCommand.cpp
+    src/base/UndoResizeCommand.cpp \
+    src/model/ToolBoxItemListModel.cpp
 NOT_USED_SOURCE = src/model/ImmovableObject.cpp \
     src/model/Wall.cpp
 FORMS = src/view/MainWindow.ui

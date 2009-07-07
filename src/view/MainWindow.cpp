@@ -25,6 +25,8 @@
 #include "DrawWorld.h"
 #include "SplashScreen.h"
 
+#include "ToolBoxItemListModel.h"
+
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
 
@@ -118,6 +120,9 @@ void MainWindow::loadLevel(const QString& aFileName)
     }
     theLevelPtr->getTheWorldPtr()->createScene(this);
     theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
+
+	ToolBoxItemListModel* theNewToolbox = new ToolBoxItemListModel();
+	ui.theToolBoxView->setModel(theNewToolbox);
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
