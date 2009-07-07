@@ -125,6 +125,7 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 bool DrawObject::deregister()
 {
 	theUndeleteDrawWorldPtr = reinterpret_cast<DrawWorld*>(scene());
+	focusRemove();
 	scene()->removeItem(this);
 	return true;
 }
@@ -138,12 +139,17 @@ void DrawObject::focusInEvent ( QFocusEvent * event )
 		delete theAnchorsPtr;
 	}
 	theAnchorsPtr=new Anchors(this);
-	isHighlighted=true;
+	update();
 }
 
-void DrawObject::focusRemove(void)
+void DrawObject::focusRemove(bool alsoDeleteAnchors)
 {
-	isHighlighted = false;
+	if (theAnchorsPtr!=NULL && alsoDeleteAnchors==true)
+	{
+		delete theAnchorsPtr;
+		theAnchorsPtr=NULL;
+	}
+	update();
 }
 
 void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent *)
@@ -176,8 +182,6 @@ void DrawObject::initAttributes ( )
 		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 		setAcceptHoverEvents(true);
 	}
-
-	isHighlighted = false;
 
 //    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
@@ -242,8 +246,6 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 
 	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 
-	paintHighlighted(myPainter);
-
 	if (theRenderer == NULL)
 	{
 		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
@@ -259,25 +261,6 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	}
 
 }
-
-void DrawObject::paintHighlighted(QPainter* myPainter)
-{
-	if (isHighlighted)
-	{
-		Position myC = theBaseObjectPtr->getOrigCenter();
-		qreal myW = theBaseObjectPtr->getTheWidth();
-		qreal myH = theBaseObjectPtr->getTheHeight();
-
-		// calculate the box in Scene coordinates:
-		QRectF myBox(myC.x-0.5*myW, -myC.y-0.5*myH, myW, myH);
-
-		// but we draw in item coordinates:
-		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-		myPainter->setBrush(color);
-		myPainter->drawPolygon(mapFromScene(myBox));
-	}
-}
-
 
 bool DrawObject::pushUndo(QUndoCommand* anUndo)
 {

@@ -80,8 +80,11 @@ public:
 
 	bool pushUndo(QUndoCommand* anUndo);
 
-	/// removes highlighting from this object
-	void focusRemove(void);
+	/** removes highlighting from this object and anchors - if needed
+	 *  @param alsoDeleteAnchors use true if also to delete Anchors, supply
+	 *			false if called from Anchors itself
+	 */
+	void focusRemove(bool alsoDeleteAnchors=true);
 
 protected:
 
@@ -138,8 +141,6 @@ protected:
 
 	void applyPosition(void);
 	
-	virtual void paintHighlighted(QPainter* myPainter);
-
 protected:
 	// Private attributes
 	//  
@@ -158,8 +159,6 @@ protected:
 	static Anchors* theAnchorsPtr;
 
 	QSvgRenderer*	theRenderer;
-
-	bool isHighlighted;
 
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!

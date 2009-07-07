@@ -62,8 +62,6 @@ void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWid
 	myPainter->drawLine(myBounds.bottomRight(), myBounds.topLeft()+mySlabH);
 	myPainter->drawLine(myBounds.topLeft()+mySlabH, myBounds.topLeft());
 
-	paintHighlighted(myPainter);
-
 //	DEBUG5("void DrawRamp::paint - %fx%f\n",
 //			   myRampPtr->getSlabLength(), 
 //			   myRampPtr->theSlabThickness);

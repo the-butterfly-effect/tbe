@@ -63,7 +63,7 @@ void UndoResizeCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->update();
+	theDrawObjectPtr->focusRemove();
 }
 
 void UndoResizeCommand::undo ()
@@ -75,7 +75,7 @@ void UndoResizeCommand::undo ()
 	theBaseObjectPtr->setOrigCenter(theOldCenter);
 
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->update();
+	theDrawObjectPtr->focusRemove();
 }
 
 void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)

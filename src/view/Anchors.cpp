@@ -67,7 +67,7 @@ Anchors::~Anchors()
 		delete myPtr;
 		theAnchorList.pop_front();
 	}
-	theDrawObjectPtr->focusRemove();
+	theDrawObjectPtr->focusRemove(false);
 }
 
 
