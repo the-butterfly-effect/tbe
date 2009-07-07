@@ -19,15 +19,27 @@
 #include "ToolBoxItemListModel.h"
 #include "ImageStore.h"
 
+
+ToolBoxItem::ToolBoxItem(
+		unsigned int   aCount, const QIcon&   anIcon,
+		const QString& aName,  const QString& aTooltip)
+		: theCount(aCount), theIcon(anIcon),
+		  theName(aName),   theTooltip(aTooltip)
+{
+	; // nothing to do here...
+}
+
+
 ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 		: QAbstractListModel(parent)
 {
-	theList.push_back("Aap");
-	theList.push_back("Noot");
-	theList.push_back("Mies");
-	theList.push_back("Wim");
-	theList.push_back("Zus");
-	theList.push_back("Jet");
+	QIcon myIcon = ImageStore::getQIcon("ActionDelete", QSize(32,32));
+	theList.push_back( ToolBoxItem(  3, myIcon, "Aap",  "dit is een aap"));
+	theList.push_back( ToolBoxItem(  3, myIcon, "Noot", "Noot is tweede in het leesplankje"));
+	theList.push_back( ToolBoxItem(999, myIcon, "Mies", "Mies Bouwman?"));
+	theList.push_back( ToolBoxItem(  3, myIcon, "Wim",  "Wim Lex"));
+	theList.push_back( ToolBoxItem(  2, myIcon, "Zus",  "Zus was vroeger een voornaam"));
+	theList.push_back( ToolBoxItem(  1, myIcon, "Jet", " Jet is de laatste uit de eerste rij"));
 }
 
 
@@ -39,12 +51,25 @@ ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 
 	if (index.row() >= theList.size())
 		return QVariant();
+	const ToolBoxItem& myItem = theList.at(index.row());
 
-	if (role == Qt::DisplayRole)
-		return theList.at(index.row());
-	if (role == Qt::DecorationRole)
-		return ImageStore::getQIcon("ActionDelete", QSize(32,32));
-	return QVariant();
+	switch(role)
+	{
+	case Qt::DisplayRole:
+		if (myItem.theCount!=ToolBoxItem::INFINITE)
+			return tr("%2 (%1 left)").arg(QString::number(myItem.theCount), myItem.theName);
+		else
+			return tr("%1 (unlimited)").arg(myItem.theName);;
+		break;
+	case Qt::DecorationRole:
+		return theList.at(index.row()).theIcon;
+		break;
+	case Qt::ToolTipRole:
+		return theList.at(index.row()).theTooltip;
+		break;
+	default:
+		return QVariant();
+	}
 }
 
 

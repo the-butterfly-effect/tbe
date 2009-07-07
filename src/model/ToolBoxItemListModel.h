@@ -21,7 +21,7 @@
 
 #include "tbe_global.h"
 
-#include <QPixmap>
+#include <QIcon>
 #include <QString>
 #include <QList>
 #include <QAbstractListModel>
@@ -32,18 +32,26 @@
 class ToolBoxItem
 {
 public:
+	const static unsigned int INFINITE = 999;
+
+	ToolBoxItem(unsigned int aCount,
+				const QIcon& anIcon,
+				const QString& aName,
+				const QString& aTooltip);
+//	ToolBoxItem(unsigned int aCount,
+//				const BaseObject& anObject);
+
+	/// Qt::EditRole  - the number of objects left
+	unsigned int theCount;
 
 	/// Qt::DecorationRole - the icon to show
-	QPixmap theIcon;
+	QIcon   theIcon;
 
 	/// Qt::DisplayRole - the Name of the object
 	QString	theName;
 
 	/// Qt::ToolTipRole - the tooltip
 	QString	theTooltip;
-
-	/// Qt::EditRole  - the number of objects left
-	int		theCount;
 
 	/// TODO: add pointer to actual factory
 };
@@ -76,9 +84,9 @@ public:
 	bool removeRows(int row, int count, const QModelIndex &parent);
 
 private:
-//	typedef QList<ToolBoxItem*> ToolBoxItemPtrList;
-//	ToolBoxItemPtrList theList;
-	QStringList	theList;
+	typedef QList<ToolBoxItem> ToolBoxItemPtrList;
+	ToolBoxItemPtrList theList;
+//	QStringList	theList;
 };
 
 #endif // TOOLBOXITEMLISTMODEL_H
