@@ -130,10 +130,15 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// calculate which direction we're moving
 	QPointF myDelta = event->scenePos() - thePrevMousePos;
 	if (theDirection==PieMenu::RESIZE_HORI)
+	{
 		myDelta.setY(0);
+		theUndoPtr->setDelta(theHPos, myDelta);
+	}
 	if (theDirection==PieMenu::RESIZE_VERTI)
+	{
 		myDelta.setX(0);
-	theUndoPtr->setDelta(theHPos, myDelta);
+		theUndoPtr->setDelta(theVPos, myDelta);
+	}
 
 	theParentPtr->updatePosition();
 }
