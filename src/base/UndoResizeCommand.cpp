@@ -63,7 +63,6 @@ void UndoResizeCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->focusRemove();
 }
 
 void UndoResizeCommand::undo ()
