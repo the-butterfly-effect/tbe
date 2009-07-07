@@ -229,10 +229,14 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 
 	// is the position any different?
 	// TODO: if position is same, no need to do undomove
-
-	// create and file an UndoMoveCommand
-	// note that the MoveCommand also pushes the move to BaseObject
-	pushUndo(new UndoMoveCommand(this, theBaseObjectPtr));
+	Position myDelta = (theBaseObjectPtr->getOrigCenter()) - (theBaseObjectPtr->getTempCenter());
+	if (fabs(myDelta.x) > Position::minimalMove ||
+		fabs(myDelta.y) > Position::minimalMove)
+	{
+		// create and file an UndoMoveCommand
+		// note that the MoveCommand also pushes the move to BaseObject
+		pushUndo(new UndoMoveCommand(this, theBaseObjectPtr));
+	}
 	QGraphicsItem::mouseReleaseEvent(event);
 	if (theAnchorsPtr==NULL)
 		theAnchorsPtr= new Anchors(this);

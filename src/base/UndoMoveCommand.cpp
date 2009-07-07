@@ -58,7 +58,6 @@ void UndoMoveCommand::redo ()
 {
 	theBaseObjectPtr->setOrigCenter(theNewPosition);
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->focusRemove();
 	theDrawObjectPtr->advance(0);
 }
 
