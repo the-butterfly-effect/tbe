@@ -20,6 +20,7 @@
 #define POSITION_H
 
 #include "tbe_global.h"
+#include <QPointF>
 
 /**
   * class Position
@@ -48,6 +49,22 @@ public:
 	
 	/// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
 	qreal angle;
+
+	const static qreal minimalMove = 0.005;
 };
+
+
+/// add two Positions together (including angle!)
+Position operator+(const Position& p1, const Position& p2);
+
+/// add Position+QPointF
+Position operator+(const Position& p1, const QPointF& p2);
+
+/// add two Positions together (including angle!)
+Position operator-(const Position& p1, const Position& p2);
+
+/// constant multiplies vector only - not the angle
+Position operator*(const qreal p1, const Position& p2);
+
 
 #endif // POSITION_H
