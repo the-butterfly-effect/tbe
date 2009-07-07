@@ -165,21 +165,24 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
-	QPointF myDelta = event->scenePos() - thePrevMousePos;
-	if (theDirection==PieMenu::RESIZE_HORI)
-		myDelta.setY(0);
-	if (theDirection==PieMenu::RESIZE_VERTI)
-		myDelta.setX(0);
-
 	// there was actual movement?
-	if (myDelta.x()+myDelta.y() > 0.0)
+	if (theUndoPtr->isResized())
 	{
-		DEBUG5("PUSHED UNDO RESIZE: dx=%f, dy=%f\n", myDelta.x(), myDelta.y());
+		DEBUG5("PUSHED UNDO RESIZE\n");
 		theParentPtr->pushUndo(theUndoPtr);
-		// and make sure a next resize starts all over again
 		theUndoPtr = NULL;
-		thePrevMousePos=event->scenePos ();
 	}
+	else
+	{
+		DEBUG5("CLEARED UNDO RESIZE\n");
+		if (theUndoPtr)
+		{
+			theUndoPtr->undo();
+			delete theUndoPtr;
+		}
+		theUndoPtr = NULL;
+	}
+	thePrevMousePos=event->scenePos ();
 }
 
 void Anchor::updatePosition()

@@ -20,6 +20,8 @@
 #include "BaseObject.h"
 #include "DrawObject.h"
 
+#include <cmath>
+
 // Constructors/Destructors
 //  
 
@@ -54,6 +56,19 @@ UndoResizeCommand::~UndoResizeCommand ( )
 
 // Other methods
 //  
+
+bool UndoResizeCommand::isResized(void)
+{
+	if (theNewSize.isNull())
+		return false;
+
+	QPointF theDelta = theOldSize-theNewSize;
+	if (fabs(theDelta.x()) < 0.005 && fabs(theDelta.y()) < 0.005)
+		return false;
+	return true;
+}
+
+
 void UndoResizeCommand::redo ()
 {
 	theBaseObjectPtr->setTheWidth(theNewSize.x());

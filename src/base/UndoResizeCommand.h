@@ -64,6 +64,9 @@ public:
 
 	void setDelta(qreal anAnchorPos, QPointF aDelta);
 
+	/// @returns true if there is an actual resize
+	bool isResized(void);
+
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;
