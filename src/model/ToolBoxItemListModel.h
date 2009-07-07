@@ -66,8 +66,14 @@ public:
 	virtual QVariant data(const QModelIndex &index, int role) const;
 
 	/// required implementation from QAbstractListModel
+	Qt::ItemFlags flags(const QModelIndex &index) const;
+
+	/// required implementation from QAbstractListModel
 	virtual QVariant headerData(int section, Qt::Orientation orientation,
 						int role = Qt::DisplayRole) const;
+
+	/// required implementation from QAbstractListModel
+	bool removeRows(int row, int count, const QModelIndex &parent);
 
 private:
 //	typedef QList<ToolBoxItem*> ToolBoxItemPtrList;

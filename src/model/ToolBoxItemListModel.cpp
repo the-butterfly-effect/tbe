@@ -17,6 +17,7 @@
  */
 
 #include "ToolBoxItemListModel.h"
+#include "ImageStore.h"
 
 ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 		: QAbstractListModel(parent)
@@ -33,32 +34,52 @@ ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 
  QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
  {
-	 if (!index.isValid())
-		 return QVariant();
+	if (!index.isValid())
+		return QVariant();
 
-	 if (index.row() >= theList.size())
-		 return QVariant();
+	if (index.row() >= theList.size())
+		return QVariant();
 
-	 if (role == Qt::DisplayRole)
-		 return theList.at(index.row());
-	 else
-		 return QVariant();
- }
-
- QVariant ToolBoxItemListModel::headerData(int section, Qt::Orientation orientation,
-									  int role) const
- {
-	 if (role != Qt::DisplayRole)
-		 return QVariant();
-
-	 if (orientation == Qt::Horizontal)
-		 return QString("Column %1").arg(section);
-	 else
-		 return QString("Row %1").arg(section);
- }
+	if (role == Qt::DisplayRole)
+		return theList.at(index.row());
+	if (role == Qt::DecorationRole)
+		return ImageStore::getQIcon("ActionDelete", QSize(32,32));
+	return QVariant();
+}
 
 
- int ToolBoxItemListModel::rowCount(const QModelIndex &parent) const
- {
-	 return theList.count();
- }
+Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
+{
+	if (index.isValid())
+		return (Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled);
+
+	return Qt::ItemIsDropEnabled;
+}
+
+
+QVariant ToolBoxItemListModel::headerData(int section, Qt::Orientation orientation,
+								  int role) const
+{
+//	if (role == Qt::DecorationRole)
+//		return ImageStore::getQIcon("ActionDelete", QSize(32,32));
+	if (role != Qt::DisplayRole)
+		return QVariant();
+
+	if (orientation == Qt::Horizontal)
+		return QString("Column %1").arg(section);
+	else
+		return QString("Row %1").arg(section);
+}
+
+
+bool ToolBoxItemListModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+	// TODO: NOT IMPLEMENTED YET
+	return false;
+}
+
+
+int ToolBoxItemListModel::rowCount(const QModelIndex &parent) const
+{
+	return theList.count();
+}
