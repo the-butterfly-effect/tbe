@@ -63,7 +63,7 @@ bool UndoResizeCommand::isResized(void)
 		return false;
 
 	QPointF theDelta = theOldSize-theNewSize;
-	if (fabs(theDelta.x()) < 0.005 && fabs(theDelta.y()) < 0.005)
+	if (fabs(theDelta.x()) < Position::minimalMove && fabs(theDelta.y()) < Position::minimalMove)
 		return false;
 	return true;
 }
@@ -96,10 +96,6 @@ void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
 {
 	aDelta.setY(-aDelta.y());
 	theNewSize = theOldSize + anAnchorPos*aDelta;
-
-	theNewCenter = theOldCenter;
-	theNewCenter.x += 0.5*aDelta.x();
-	theNewCenter.y += 0.5*aDelta.y();
-
+	theNewCenter = theOldCenter + 0.5*aDelta;
 	redo();
 }
