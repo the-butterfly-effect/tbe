@@ -76,14 +76,6 @@ QGraphicsScene* Anchors::getScenePtr()
 	return theDrawObjectPtr->scene();
 }
 
-void Anchors::resize(PieMenu::EditMode aDirection, qreal aDelta)
-{
-}
-
-void Anchors::rotate(qreal aDelta)
-{
-}
-
 void Anchors::updatePosition()
 {
 	for (int i=0; i<theAnchorList.count();i++)

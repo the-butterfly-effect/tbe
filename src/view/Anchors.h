@@ -77,15 +77,6 @@ public:
 	/// iterates through all Anchor's to make them update their position
 	void updatePosition();
 
-protected slots:
-
-	/// ask theDrawObject to rosize in aDirection for aDelta meters
-	void resize(PieMenu::EditMode aDirection, qreal aDelta);
-
-	/// ask theDrawObject to rotate aDelta radians
-	void rotate(qreal aDelta);
-
-
 private:
 	DrawObject* theDrawObjectPtr;
 
