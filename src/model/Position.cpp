@@ -28,7 +28,7 @@ Position::Position (qreal anX, qreal aY, qreal anAngle)
 }
 
 Position::Position (const QPointF& aPoint)
-		: x(aPoint.x()), y(aPoint.y()), angle(0)
+		: x(aPoint.x()), y(-aPoint.y()), angle(0)
 {
 	// again: nothing to do here.
 }
