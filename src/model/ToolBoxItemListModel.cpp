@@ -19,6 +19,10 @@
 #include "ToolBoxItemListModel.h"
 #include "ImageStore.h"
 
+#include <QMimeData>
+
+const char* ToolBoxItemListModel::ToolboxMimeType = "image/x-puzzle-piece";
+
 
 ToolBoxItem::ToolBoxItem(
 		unsigned int   aCount, const QIcon&   anIcon,
@@ -56,15 +60,18 @@ QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
 			return tr("%1 (unlimited)").arg(myItem.theName);;
 		break;
 	case Qt::DecorationRole:
-		return theList.at(index.row()).theIcon;
+		return myItem.theIcon;
 		break;
 	case Qt::ToolTipRole:
-		return theList.at(index.row()).theTooltip;
+		return myItem.theTooltip;
 		break;
+	case Qt::EditRole:
+		return myItem.theName;
 	default:
 		return QVariant();
 	}
 }
+
 
 bool ToolBoxItemListModel::fillFromObjectFactory(void)
 {
@@ -95,18 +102,34 @@ Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
 }
 
 
-QVariant ToolBoxItemListModel::headerData(int section, Qt::Orientation orientation,
-								  int role) const
+QMimeData* ToolBoxItemListModel::mimeData(const QModelIndexList &indexes) const
 {
-	// TODO: I borrowed this from an example, but I don't think it fits the bill
+	QMimeData *mimeData = new QMimeData();
+	QByteArray encodedData;
 
-	if (role != Qt::DisplayRole)
-		return QVariant();
+	QDataStream stream(&encodedData, QIODevice::WriteOnly);
 
-	if (orientation == Qt::Horizontal)
-		return QString("Column %1").arg(section);
-	else
-		return QString("Row %1").arg(section);
+	foreach (QModelIndex index, indexes)
+	{
+		if (index.isValid())
+		{
+			// stream theName of the object to create only
+			QString myItemName = qVariantValue<QString>(data(index, Qt::EditRole));
+			DEBUG5("ToolBoxItemListModel::mimeData: '%s'\n", myItemName.toAscii().constData());
+			stream << myItemName;
+		}
+	}
+
+	mimeData->setData(ToolboxMimeType, encodedData);
+	return mimeData;
+}
+
+
+QStringList ToolBoxItemListModel::mimeTypes() const
+{
+	QStringList types;
+	types << ToolboxMimeType;
+	return types;
 }
 
 
@@ -121,3 +144,11 @@ int ToolBoxItemListModel::rowCount(const QModelIndex &parent) const
 {
 	return theList.count();
 }
+
+
+Qt::DropActions ToolBoxItemListModel::supportedDropActions() const
+{
+	return Qt::CopyAction | Qt::MoveAction;
+}
+
+

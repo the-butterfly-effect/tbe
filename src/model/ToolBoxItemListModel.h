@@ -42,13 +42,15 @@ public:
 //	ToolBoxItem(unsigned int aCount,
 //				const BaseObject& anObject);
 
-	/// Qt::EditRole  - the number of objects left
+	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
 
 	/// Qt::DecorationRole - the icon to show
 	QIcon   theIcon;
 
-	/// Qt::DisplayRole - the Name of the object
+	/** Qt::EditRole & Qt::DisplayRole - the Name of the object
+	 *  (Qt::DisplayRole is the Count and theName together)
+	 */
 	QString	theName;
 
 	/// Qt::ToolTipRole - the tooltip
@@ -64,6 +66,9 @@ class ToolBoxItemListModel : public QAbstractListModel
 	Q_OBJECT
 
 public:
+	/// the mime type - as agreed upon between the ToolBox and the DrawWorld
+	static const char* ToolboxMimeType;
+
 	ToolBoxItemListModel(QObject *parent = 0);
 
 	/** Fills the Toolbox with all known Objects.
@@ -71,8 +76,8 @@ public:
 	 */
 	bool fillFromObjectFactory(void);
 
-	/// required implementation from QAbstractListModel
-	virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+
+// ----- the below are needed to get a ListModel
 
 	/// required implementation from QAbstractListModel
 	virtual QVariant data(const QModelIndex &index, int role) const;
@@ -81,11 +86,28 @@ public:
 	Qt::ItemFlags flags(const QModelIndex &index) const;
 
 	/// required implementation from QAbstractListModel
-	virtual QVariant headerData(int section, Qt::Orientation orientation,
-						int role = Qt::DisplayRole) const;
+	bool removeRows(int row, int count, const QModelIndex &parent);
 
 	/// required implementation from QAbstractListModel
-	bool removeRows(int row, int count, const QModelIndex &parent);
+	virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+
+// ----- the below are needed for Drag&Drop
+
+	Qt::DropActions supportedDropActions() const;
+
+	/// needed for Drag&Drop
+//	bool dropMimeData(const QMimeData *data, Qt::DropAction action,
+//					  int row, int column, const QModelIndex &parent);
+	/// needed for Drag&Drop
+	QMimeData *mimeData(const QModelIndexList &indexes) const;
+
+	/// needed for Drag&Drop
+	QStringList mimeTypes() const;
+
+	/// needed for Drag&Drop
+//	Qt::DropActions supportedDropActions() const;
+
+
 
 private:
 	typedef QList<ToolBoxItem> ToolBoxItemPtrList;

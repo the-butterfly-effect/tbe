@@ -21,10 +21,12 @@
 #include "MainWindow.h"
 #include "tbe_global.h"
 #include "DrawObject.h"
+#include "ToolBoxItemListModel.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
+#include <QDropEvent>
 
 
 /** the Dot class is a helper - it's a true QGraphicsItem, it's
@@ -80,6 +82,8 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 #ifdef DRAWDEBUG
 	SetFlags (e_shapeBit);
 #endif
+
+	setAcceptDrops(true);
 }
 
 
@@ -110,6 +114,31 @@ qreal DrawWorld::getHeight()
 // Other methods
 //  
 
+void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
+{
+	DEBUG5("void DrawWorld::dropEvenFromView\n");
+	if (event->mimeData()->hasFormat(ToolBoxItemListModel::ToolboxMimeType))
+	{
+		QByteArray pieceData = event->mimeData()->data("image/x-puzzle-piece");
+		QDataStream stream(&pieceData, QIODevice::ReadOnly);
+		QString myObjectName;
+		stream >> myObjectName;
+
+		DEBUG5("the object is: '%s' @ %f,%f\n", myObjectName.toAscii().constData(), aDropPos.x(), aDropPos.y());
+
+		BaseObject* myObjectPtr = ObjectFactory::createObject(myObjectName, Position(aDropPos));
+		theWorldPtr->addObject(myObjectPtr);
+		addItem(myObjectPtr->createDrawObject());
+
+		event->setDropAction(Qt::MoveAction);
+		event->accept();
+	}
+	else
+	{
+		event->ignore();
+	}
+}
+
 void DrawWorld::initAttributes ( ) 
 {
 	DEBUG5("void DrawWorld::initAttributes\n");
@@ -130,11 +159,24 @@ void DrawWorld::resetWorld( )
 	theWorldPtr->reset();
 	// and redraw
 	advance();
+	setAcceptDrops(true);
+}
+
+void DrawWorld::setAcceptDrops(bool isOn)
+{
+	QGraphicsView* myView = views()[0];
+	DEBUG5("DrawWorld::setAcceptDrops(%d) for view %p\n", isOn, myView);
+	if (myView != NULL)
+	{
+		myView->setAcceptDrops(isOn);
+		DEBUG5("new view drop state: %d\n", myView->acceptDrops());
+	}
 }
 
 void DrawWorld::startTimer(void)
 {
 	DEBUG5("DrawWorld::startTimer(void)\n");
+	setAcceptDrops(false);
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
 }
@@ -152,12 +194,13 @@ void DrawWorld::stopTimer(void)
 #ifdef DRAWDEBUG
 
 /// Draw a closed polygon provided in CCW order.
-void DrawWorld::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+void DrawWorld::DrawPolygon(UNUSED_ARG const b2Vec2* vertices, UNUSED_ARG int32 vertexCount, UNUSED_ARG const b2Color& color)
 {
 	DEBUG5("DrawWorld::DrawPolygon\n");
 }
 /// Draw a solid closed polygon provided in CCW order.
-void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount,
+								 UNUSED_ARG const b2Color& color)
 {
 	QPen pen(Qt::green, 0.01, Qt::SolidLine);
 	QBrush brush(Qt::NoBrush);
@@ -171,25 +214,31 @@ void DrawWorld::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 	addDebugDrawToList(addPolygon(myPoly, pen, brush));
 }
 /// Draw a circle.
-void DrawWorld::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
+void DrawWorld::DrawCircle(UNUSED_ARG const b2Vec2& center,
+						   UNUSED_ARG float32 radius,
+						   UNUSED_ARG const b2Color& color)
 {
 	DEBUG5("DrawWorld::DrawCircle\n");
 }
 /// Draw a solid circle.
-void DrawWorld::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
+void DrawWorld::DrawSolidCircle(const b2Vec2& center, float32 radius,
+								UNUSED_ARG const b2Vec2& axis,
+								UNUSED_ARG const b2Color& color)
 {
 	QPen pen(Qt::green, 0.01, Qt::SolidLine);
 	QBrush brush(Qt::NoBrush);
 	addDebugDrawToList(addEllipse(center.x-radius,-center.y-radius, 2.0*radius,2.0*radius, pen, brush));
 }
 /// Draw a line segment.
-void DrawWorld::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
+void DrawWorld::DrawSegment(UNUSED_ARG const b2Vec2& p1,
+							UNUSED_ARG const b2Vec2& p2,
+							UNUSED_ARG const b2Color& color)
 {
 	DEBUG5("DrawWorld::DrawSegment\n");
 }
 /// Draw a transform. Choose your own length scale.
 /// @param xf a transform.
-void DrawWorld::DrawXForm(const b2XForm& xf)
+void DrawWorld::DrawXForm(UNUSED_ARG const b2XForm& xf)
 {
 	DEBUG5("DrawWorld::DrawXForm\n");
 }

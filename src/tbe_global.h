@@ -53,4 +53,7 @@ extern int theVerbosity;	// actually defined in main.cpp
 #define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("##P6 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 
 
+
+#define UNUSED_ARG __attribute__((unused))
+
 #endif // TBE_GLOBAL

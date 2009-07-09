@@ -24,8 +24,13 @@
 #ifndef RESIZINGGRAPHICSVIEW_H_
 #define RESIZINGGRAPHICSVIEW_H_
 
+#include "tbe_global.h"
+#include "ToolBoxItemListModel.h"
+#include "DrawWorld.h"
+
 #include <QGraphicsView>
 #include <QTimer>
+#include <QDragEnterEvent>
 
 /** a customized QGraphicsView that does not suffer from fitting problems
  */
@@ -72,6 +77,41 @@ protected:
 		QGraphicsView::resizeEvent(event);
 		on_timerTick();
 	}
+
+	/// event handler override from QGraphicsView to accept drops
+	/// and forward them to our graphics scene - which knows more...
+	virtual void dropEvent (QDropEvent* event)
+	{
+		DEBUG5("void ResizingGraphicsView::dropEvent\n");
+		QPointF myPos = mapToScene(event->pos());
+		if (scene()!=NULL)
+			reinterpret_cast<DrawWorld*>(scene())->dropEventFromView(myPos, event);
+	}
+
+	void dragEnterEvent(QDragEnterEvent *event)
+	{
+		if (event->mimeData()->hasFormat(ToolBoxItemListModel::ToolboxMimeType) && scene()!=NULL)
+		{
+			DEBUG5("void ResizingGraphicsView::dragEnterEvent - accept\n");
+			event->accept();
+		}
+		else
+		{
+			DEBUG5("void ResizingGraphicsView::dragEnterEvent - denied\n");
+			event->ignore();
+		}
+	}
+
+	/// apparently required to override to get D&D to work - even if empty
+	virtual void dragLeaveEvent(QDragLeaveEvent*)
+	{
+	}
+
+	/// apparently required to override to get D&D to work - even if empty
+	virtual void dragMoveEvent(QDragMoveEvent*)
+	{
+	}
+
 protected slots:
 	void on_timerTick(void)
 		{ if (scene()) 

@@ -19,6 +19,8 @@
 #ifndef DRAWWORLD_H
 #define DRAWWORLD_H
 
+#include "BaseObject.h"
+
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QTimer>
@@ -34,13 +36,13 @@
 // forward declarations
 class World;
 class MainWindow;
-
+class QDropEvent;
 
 /** class DrawObject
   * This class abstracts the actual drawing of objects
   */
 
-class DrawWorld : public QGraphicsScene
+class DrawWorld : public QGraphicsScene, public ObjectFactory
 #ifdef DRAWDEBUG
 		, public b2DebugDraw
 #endif
@@ -73,6 +75,10 @@ public:
 	QUndoStack* getTheUndoStackPtr(void)
 		{ return &theUndoStack; }
 
+	/// event handler called by the view for drops
+	virtual void dropEventFromView (const QPointF& aDropPos, QDropEvent* event);
+
+protected:
 
 #ifdef DRAWDEBUG
 		/// Draw a closed polygon provided in CCW order.
@@ -124,6 +130,12 @@ private:
 private:
 
 	void initAttributes ( ) ;
+
+	/// modifies the view (!) to accept drop events or not
+	void setAcceptDrops(bool isOn);
+
+	/// implementation of ObjectFactory - not needed in Level...
+	virtual BaseObject* createObject(void) const { return NULL; }
 
 };
 
