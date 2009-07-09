@@ -35,9 +35,11 @@ public:
 	// Constructors/Destructors
 	
 	/**
-	 * Empty Constructor - set x (m), y(m), angle(radial)
+	 * Constructor - set x (m), y(m), angle(radial)
 	 */
 	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
+
+	Position (const QPointF& aPoint);
 	
 	// Public attributes
 	

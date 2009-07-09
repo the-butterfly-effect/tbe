@@ -27,6 +27,13 @@ Position::Position (qreal anX, qreal aY, qreal anAngle)
 	;
 }
 
+Position::Position (const QPointF& aPoint)
+		: x(aPoint.x()), y(aPoint.y()), angle(0)
+{
+	// again: nothing to do here.
+}
+
+
 Position operator+(const Position& p1, const Position& p2)
 {
 	return Position(p1.x+p2.x, p1.y+p2.y, p1.angle+p2.angle);
