@@ -33,19 +33,13 @@ ToolBoxItem::ToolBoxItem(
 ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 		: QAbstractListModel(parent)
 {
-	QIcon myIcon = ImageStore::getQIcon("ActionDelete", QSize(32,32));
-	theList.push_back( ToolBoxItem(  3, myIcon, "Aap",  "dit is een aap"));
-	theList.push_back( ToolBoxItem(  3, myIcon, "Noot", "Noot is tweede in het leesplankje"));
-	theList.push_back( ToolBoxItem(999, myIcon, "Mies", "Mies Bouwman?"));
-	theList.push_back( ToolBoxItem(  3, myIcon, "Wim",  "Wim Lex"));
-	theList.push_back( ToolBoxItem(  2, myIcon, "Zus",  "Zus was vroeger een voornaam"));
-	theList.push_back( ToolBoxItem(  1, myIcon, "Jet", " Jet is de laatste uit de eerste rij"));
+	; // nothing to do here either...
 }
 
 
 
- QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
- {
+QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
+{
 	if (!index.isValid())
 		return QVariant();
 
@@ -72,6 +66,25 @@ ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
 	}
 }
 
+bool ToolBoxItemListModel::fillFromObjectFactory(void)
+{
+	ObjectFactory::ObjectFactoryList* myListPtr = ObjectFactory::getAllFactories();
+	int i=0;
+	for (i=0; i< myListPtr->count(); i++)
+	{
+		BaseObject* myPtr = myListPtr->at(i)->createObject();
+		if (myPtr != NULL)
+		{
+			// TODO: get the Icon (name) from the BaseObject
+			QIcon myIcon = ImageStore::getQIcon("ActionRotate", QSize(32,32));
+			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr->getToolTip()));
+			delete myPtr;
+		}
+	}
+	delete myListPtr;
+	return true;
+}
+
 
 Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
 {
@@ -85,8 +98,8 @@ Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
 QVariant ToolBoxItemListModel::headerData(int section, Qt::Orientation orientation,
 								  int role) const
 {
-//	if (role == Qt::DecorationRole)
-//		return ImageStore::getQIcon("ActionDelete", QSize(32,32));
+	// TODO: I borrowed this from an example, but I don't think it fits the bill
+
 	if (role != Qt::DisplayRole)
 		return QVariant();
 

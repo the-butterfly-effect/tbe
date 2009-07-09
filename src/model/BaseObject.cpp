@@ -241,12 +241,26 @@ public:
 	void insert(const QString& aName, ObjectFactory* theFactoryPtr)
 		{ theMap[aName]=theFactoryPtr; }
 	const ObjectFactory* getFactoryPtr(const QString& aName) const
-		{ return theMap[aName]; }
+		{ return theMap.value(aName); }
+
+	ObjectFactory::ObjectFactoryList* getAllFactories(void)
+	{
+		ObjectFactory::ObjectFactoryList* myList = new ObjectFactory::ObjectFactoryList();
+		TheMap::iterator myI = theMap.begin();
+		while (myI != theMap.end())
+		{
+			myList->push_back(*myI);
+			++myI;
+		}
+		return myList;
+	}
+
 private:
 	typedef QMap<QString, ObjectFactory*> TheMap;
 	TheMap theMap;
 };
 static FactoryList* theFactoryListPtr=NULL;
+
 
 void
 ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr)
@@ -277,4 +291,11 @@ ObjectFactory::createObject(
 		myObjectPtr->setTheHeight(anHeight);
 	myObjectPtr->createPhysicsObject();
 	return myObjectPtr;
+}
+
+ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
+{
+	if (theFactoryListPtr==NULL)
+		return NULL;
+	return theFactoryListPtr->getAllFactories();
 }

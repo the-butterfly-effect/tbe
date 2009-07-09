@@ -122,7 +122,9 @@ void MainWindow::loadLevel(const QString& aFileName)
     theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
 
 	ToolBoxItemListModel* theNewToolbox = new ToolBoxItemListModel();
+	theNewToolbox->fillFromObjectFactory();
 	ui.theToolBoxView->setModel(theNewToolbox);
+	ui.theToolBoxView->setViewMode(QListView::IconMode);
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)

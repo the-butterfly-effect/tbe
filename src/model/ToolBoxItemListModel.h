@@ -20,6 +20,7 @@
 #define TOOLBOXITEMLISTMODEL_H
 
 #include "tbe_global.h"
+#include "BaseObject.h"
 
 #include <QIcon>
 #include <QString>
@@ -65,6 +66,9 @@ class ToolBoxItemListModel : public QAbstractListModel
 public:
 	ToolBoxItemListModel(QObject *parent = 0);
 
+	/** Fills the Toolbox with all known Objects.
+	 *  This is of course only to be done in Level Editor mode or cheat...
+	 */
 	bool fillFromObjectFactory(void);
 
 	/// required implementation from QAbstractListModel
@@ -86,7 +90,6 @@ public:
 private:
 	typedef QList<ToolBoxItem> ToolBoxItemPtrList;
 	ToolBoxItemPtrList theList;
-//	QStringList	theList;
 };
 
 #endif // TOOLBOXITEMLISTMODEL_H

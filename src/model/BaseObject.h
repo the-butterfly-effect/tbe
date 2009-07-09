@@ -316,7 +316,9 @@ class ObjectFactory
 {
 	// there's nothing public here - nobody should call anything in this class
 	// directly.
-	
+public:
+	typedef QList<const ObjectFactory*> ObjectFactoryList;
+
 protected:
 	/** create the object aName and return a pointer to it
 	 * @param aName
@@ -333,6 +335,13 @@ protected:
 	
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 	
+	/** create an ObjectFactoryList with pointers to all known ObjectFactories.
+	 *  it is up to the caller (usually ToolBoxItemListModel) to delete the list
+	 *  - do not delete the contents of the list.
+	 */
+	static ObjectFactoryList* getAllFactories(void);
+	friend class ToolBoxItemListModel;
+
 	/** pure virtual function that creates an object of the type the factory is for
 	 *  must be implemented for each real factory.
 	 * @return pointer to a newly instantiated object
