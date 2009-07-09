@@ -125,6 +125,11 @@ void MainWindow::loadLevel(const QString& aFileName)
 	theNewToolbox->fillFromObjectFactory();
 	ui.theToolBoxView->setModel(theNewToolbox);
 	ui.theToolBoxView->setViewMode(QListView::IconMode);
+	ui.theToolBoxView->setIconSize(QSize(32, 32));
+	ui.theToolBoxView->setGridSize(QSize(100, 50));
+	ui.theToolBoxView->setMovement(QListView::Snap);
+	ui.theToolBoxView->setAcceptDrops(true);
+	ui.theToolBoxView->setDragEnabled(true);
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
