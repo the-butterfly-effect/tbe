@@ -50,7 +50,7 @@ Milestone 3 - Dragging along
 Version 0.30
 Features:
   x Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
-  * implement Drag&Drop from toolchest to GraphicsView
+  x implement Drag&Drop from toolchest to GraphicsView
   * Allow saving of view into XML File (i.e. "saved game")
   * implement post-its
   x implement volleyball
