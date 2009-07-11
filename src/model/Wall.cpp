@@ -39,7 +39,7 @@ Wall::Wall ( )
 	DEBUG5("Wall::Wall\n");
 	
 	setTheWidth(theSlabThickness);
-	setTheBounciness(0.1);
+	setTheBounciness(0.4);
 	adjustParameters();
 }
 
