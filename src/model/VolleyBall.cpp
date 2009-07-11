@@ -27,7 +27,7 @@ class VolleyBallObjectFactory : public ObjectFactory
 {
 public:
 	VolleyBallObjectFactory(void)
-	{	announceObjectType("VolleyBall", this); }
+	{	announceObjectType("Volleyball", this); }
 	virtual BaseObject* createObject(void) const
 	{	return new VolleyBall(); }
 };

@@ -81,8 +81,6 @@ void Floor::adjustParameters(void)
 
 	DEBUG5("******* mynumber: %f, w=%f\n", myNrOfElements, myHW);
 
-	Position myPos = getOrigCenter();
-
 	qreal myBaseElemWidth = theAspect*theSlabThickness;
 	for (float i=0.0; i<myNrOfElements; i+=1.0)
 	{
