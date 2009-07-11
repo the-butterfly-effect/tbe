@@ -155,6 +155,10 @@ void MainWindow::purgeLevel(void)
 	if (theLevelPtr==NULL)
 		return;
 	
+	// disconnect the World
+	delete theLevelPtr;
+	theLevelPtr=NULL;
+
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
 	ui.graphicsView->setScene(NULL);
@@ -174,7 +178,4 @@ void MainWindow::purgeLevel(void)
 		theScenePtr=NULL;
 	}
 		
-	// disconnect the World
-	delete theLevelPtr;
-	theLevelPtr=NULL;
 }
