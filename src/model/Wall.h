@@ -19,8 +19,7 @@
 #ifndef WALL_H
 #define WALL_H
 
-#include "ImmovableObject.h"
-#include <qobject.h>
+#include <BaseObject.h>
 
 /**
   * class Floor
@@ -29,7 +28,7 @@
   * It is only resizable in width. 
   */
 
-class Wall : public ImmovableObject
+class Wall : public BaseObject
 {
 public:
 
@@ -58,7 +57,7 @@ public:
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{
-		return QObject::tr("This is a wall piece: vertical of course.");
+		return QObject::tr("This is a wall piece: vertical and impenetrable.");
 	}
 
 	/// returns true if the object can be rotated by the user
@@ -75,10 +74,11 @@ public:
 	 */
 	virtual void setTheHeight ( qreal new_var );
 
-	virtual DrawObject* createDrawObject();
-	
 private:
-	static const qreal theSlabThickness = 0.03; // m
+	/// this member recalculates the shape based on current size
+	void adjustParameters(void);
+
+	static const qreal theSlabThickness = 0.10; // m
 };
 
 #endif // WALL_H

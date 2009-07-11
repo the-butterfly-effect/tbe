@@ -18,8 +18,7 @@
 
 #include "Wall.h"
 #include "tbe_global.h"
-#include <cmath>
-#include "DrawRamp.h"
+#include "Box2D.h"
 
 //// this class' ObjectFactory
 class WallObjectFactory : public ObjectFactory
@@ -39,12 +38,9 @@ Wall::Wall ( )
 {
 	DEBUG5("Wall::Wall\n");
 	
-	setTheGeomID( dCreateBox (getSpaceID(), theSlabThickness, 1.0, 1.0) );
-	setTheBounciness(0.7);
-	
-	BaseObject::setTheWidth(theSlabThickness);
-	BaseObject::setTheHeight(1.0);
-	BaseObject::setAngle(0.0);
+	setTheWidth(theSlabThickness);
+	setTheBounciness(0.1);
+	adjustParameters();
 }
 
 Wall::~Wall ( ) { }
@@ -60,15 +56,34 @@ Wall::~Wall ( ) { }
 void Wall::setTheHeight ( qreal new_var )
 {
 	//adjusting the height also implies that the slap changes rotation and size
-	if (new_var <= 0.01)
+	if (new_var <= 0.10)
 		return;
 	BaseObject::setTheHeight(new_var);
-	dGeomBoxSetLengths(getTheGeomID(), theSlabThickness, new_var, 1.0 );
+	adjustParameters();
 }
 
 
 // Other methods
 //  
 
-DrawObject*  Wall::createDrawObject(void)
-{ return new DrawObject(this); }
+void Wall::adjustParameters(void)
+{
+	clearShapeList();
+	qreal myHH = getTheHeight()/2.0;
+
+	Position myPos = getOrigCenter();
+
+	b2PolygonDef* boxDef = new b2PolygonDef();
+	boxDef->SetAsBox  	( theSlabThickness/2.0, myHH,
+						  b2Vec2(0.0, 0.0), 0);
+	// wall is immovable -> no mass -> no density
+	boxDef->density = 0.0;
+	theShapeList.push_back(boxDef);
+
+	// if there already is a physicsobject, it's wrong
+	if (isPhysicsObjectCreated())
+	{
+		deletePhysicsObject();
+		createPhysicsObject();
+	}
+}
