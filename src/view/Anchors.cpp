@@ -34,6 +34,8 @@
 Anchors::Anchors(DrawObject* anObjectPtr)
 		: theDrawObjectPtr(anObjectPtr)
 {
+	DEBUG5("Anchors::Anchors for %p\n", anObjectPtr);
+
 	// the below code creates the 8 anchors around the object
 
 	PieMenu::EditMode myMode = PieMenu::NONE;
