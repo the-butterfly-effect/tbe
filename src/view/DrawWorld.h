@@ -100,6 +100,7 @@ private:
 		typedef QList<QGraphicsItem*> GraphicsList;
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);
+		void clearGraphicsList(int aCount);
 #endif
 	
 public slots:

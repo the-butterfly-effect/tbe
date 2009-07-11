@@ -160,6 +160,9 @@ void DrawWorld::resetWorld( )
 	// and redraw
 	advance();
 	setAcceptDrops(true);
+#ifdef DRAWDEBUG
+	clearGraphicsList(0);
+#endif
 }
 
 void DrawWorld::setAcceptDrops(bool isOn)
@@ -176,6 +179,8 @@ void DrawWorld::setAcceptDrops(bool isOn)
 void DrawWorld::startTimer(void)
 {
 	DEBUG5("DrawWorld::startTimer(void)\n");
+
+	// TODO: unselect current object
 	setAcceptDrops(false);
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
@@ -246,7 +251,12 @@ void DrawWorld::DrawXForm(UNUSED_ARG const b2XForm& xf)
 void DrawWorld::addDebugDrawToList(QGraphicsItem* anItem)
 {
 	theGraphicsList.push_back(anItem);
-	while (theGraphicsList.count() > theMaxNumberOfGraphicsListElements)
+	clearGraphicsList(theMaxNumberOfGraphicsListElements);
+}
+
+void DrawWorld::clearGraphicsList(int aCount)
+{
+	while (theGraphicsList.count() > aCount)
 	{
 		QGraphicsItem* myItemPtr = theGraphicsList.first();
 		theGraphicsList.pop_front();
