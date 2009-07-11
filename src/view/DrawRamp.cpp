@@ -36,7 +36,7 @@ void DrawRamp::advance(int)
 
 QRectF DrawRamp::boundingRect() const
 {
-	Ramp* myRampPtr = reinterpret_cast<Ramp*>(theBaseObjectPtr);
+	RightRamp* myRampPtr = reinterpret_cast<RightRamp*>(theBaseObjectPtr);
 	qreal myWidth = myRampPtr->getTheWidth()*theScale;
 	qreal myHeight= myRampPtr->getTheHeight()*theScale;
 	const qreal adjust = 0.1;
@@ -52,15 +52,27 @@ void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWid
 {
 	QRectF myBounds = boundingRect();
 
-	Ramp* myRampPtr = reinterpret_cast<Ramp*>(theBaseObjectPtr);
+	RightRamp* myRampPtr = reinterpret_cast<RightRamp*>(theBaseObjectPtr);
 	QPointF mySlabH(0, myRampPtr->theSlabThickness*theScale);
 
 	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
 	myPainter->setBrush(color);
-	myPainter->drawLine(myBounds.topLeft(), myBounds.bottomRight()-mySlabH);
-	myPainter->drawLine(myBounds.bottomRight()-mySlabH, myBounds.bottomRight());
-	myPainter->drawLine(myBounds.bottomRight(), myBounds.topLeft()+mySlabH);
-	myPainter->drawLine(myBounds.topLeft()+mySlabH, myBounds.topLeft());
+
+	if (myRampPtr->isRight)
+	{
+		myPainter->drawLine(myBounds.topLeft(), myBounds.bottomRight()-mySlabH);
+		myPainter->drawLine(myBounds.bottomRight()-mySlabH, myBounds.bottomRight());
+		myPainter->drawLine(myBounds.bottomRight(), myBounds.topLeft()+mySlabH);
+		myPainter->drawLine(myBounds.topLeft()+mySlabH, myBounds.topLeft());
+	}
+	else
+	{
+		myPainter->drawLine(myBounds.topRight(), myBounds.bottomLeft()-mySlabH);
+		myPainter->drawLine(myBounds.bottomLeft()-mySlabH, myBounds.bottomLeft());
+		myPainter->drawLine(myBounds.bottomLeft(), myBounds.topRight()+mySlabH);
+		myPainter->drawLine(myBounds.topRight()+mySlabH, myBounds.topRight());
+	}
+
 
 //	DEBUG5("void DrawRamp::paint - %fx%f\n",
 //			   myRampPtr->getSlabLength(), 

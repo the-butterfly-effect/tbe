@@ -22,32 +22,44 @@
 #include "Box2D.h"
 
 //// this class' ObjectFactory
-class RampObjectFactory : public ObjectFactory
+class RightRampObjectFactory : public ObjectFactory
 {
 public:
-	RampObjectFactory(void)
-	{	announceObjectType("Ramp", this); }
+	RightRampObjectFactory(void)
+	{	announceObjectType("RightRamp", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Ramp(); }
+	{	return new RightRamp(); }
 };
-static RampObjectFactory theFactory;
+static RightRampObjectFactory theRFactory;
+
+class LeftRampObjectFactory : public ObjectFactory
+{
+public:
+	LeftRampObjectFactory(void)
+	{	announceObjectType("LeftRamp", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new LeftRamp(); }
+};
+static LeftRampObjectFactory theLFactory;
+
 
 // Constructors/Destructors
 //  
 
-Ramp::Ramp ( ) : BaseObject()
+RightRamp::RightRamp ( ) : BaseObject()
 {
-	DEBUG5("Ramp::Ramp\n");
+	DEBUG5("RightRamp::RightRamp\n");
 	
 	// the RAMP is defined as a bar from top left to bottom right.
 	// for the whole of the width of the block - which is 1.0 for now
 	// and the whole heigth of the block - which happens also to be 1.0
 	
+	isRight=true;
 	setTheBounciness(0.2);
 	adjustParameters();
 }
 
-Ramp::~Ramp ( ) { }
+RightRamp::~RightRamp ( ) { }
 
 //  
 // Methods
@@ -57,17 +69,17 @@ Ramp::~Ramp ( ) { }
 // Accessor methods
 //  
 
-void Ramp::setTheWidth ( qreal new_var )
+void RightRamp::setTheWidth ( qreal new_var )
 {
 	BaseObject::setTheWidth(new_var);
-	DEBUG5("Ramp::setTheWidth (%f)\n", getTheWidth());
+	DEBUG5("RightRamp::setTheWidth (%f)\n", getTheWidth());
 	adjustParameters();
 }
 
-void Ramp::setTheHeight ( qreal new_var )
+void RightRamp::setTheHeight ( qreal new_var )
 {
 	BaseObject::setTheHeight(new_var);
-	DEBUG5("Ramp::setTheHeight (%f)\n", getTheHeight());
+	DEBUG5("RightRamp::setTheHeight (%f)\n", getTheHeight());
 	adjustParameters();
 }
 
@@ -75,22 +87,34 @@ void Ramp::setTheHeight ( qreal new_var )
 // Other methods
 //  
 
-void Ramp::adjustParameters(void)
+void RightRamp::adjustParameters(void)
 {
 	// note that the angle property is totally ignored here
 	// Ramps cannot rotate.
 	qreal myHW = getTheWidth()/2.0;
 	qreal myHH = getTheHeight()/2.0;
 
-	DEBUG5("Ramp::adjustParameters wxh=%fx%f\n", myHW, myHH);
+	DEBUG5("RightRamp::adjustParameters wxh=%fx%f\n", myHW, myHH);
 	
 	b2PolygonDef* rampDef = new b2PolygonDef();
 	// make sure to make the vertex run counter clockwise
 	rampDef->vertexCount = 4;
-	rampDef->vertices[0].Set(-myHW, myHH);
-	rampDef->vertices[1].Set(-myHW, myHH-4*theSlabThickness);
-	rampDef->vertices[2].Set(+myHW,-myHH);
-	rampDef->vertices[3].Set(+myHW,-myHH+theSlabThickness);
+
+	if (isRight)
+	{
+		rampDef->vertices[0].Set(-myHW, myHH);
+		rampDef->vertices[1].Set(-myHW, myHH-4*theSlabThickness);
+		rampDef->vertices[2].Set(+myHW,-myHH);
+		rampDef->vertices[3].Set(+myHW,-myHH+theSlabThickness);
+	}
+	else
+	{
+		rampDef->vertices[0].Set(-myHW,-myHH+theSlabThickness);
+		rampDef->vertices[1].Set(-myHW,-myHH);
+		rampDef->vertices[2].Set(+myHW, myHH-4*theSlabThickness);
+		rampDef->vertices[3].Set(+myHW, myHH);
+	}
+
 
 	// ramp is immovable -> no mass -> no density
 	rampDef->density = 0.0;
@@ -108,7 +132,7 @@ void Ramp::adjustParameters(void)
 	}
 }
 
-DrawObject*  Ramp::createDrawObject(void)
+DrawObject*  RightRamp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();

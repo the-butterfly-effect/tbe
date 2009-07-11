@@ -15,7 +15,7 @@
     <object type="Bowling Pin"  id="1" X="3.0" Y="0.19"/>
     <object type="Bowling Pin"  id="2" X="3.2" Y="0.25"/>
     <object type="Bowling Pin"         X="3.4" Y="0.19"/>
-    <object type="Ramp"                X="1.0" Y="0.5" width="2.0"/>
+	<object type="RightRamp"           X="1.0" Y="0.5" width="2.0"/>
     <object type="Note" X="2.2" Y="0.3">
        <property key="page1">This looks simple, does it?\nUse the ball to topple the pins.</property>
        <property key="page2">Aww. The ball falls down.\nThat's called gravity.</property>

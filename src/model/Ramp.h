@@ -22,13 +22,13 @@
 #include "BaseObject.h"
 
 /**
-  * class Ramp
+  * class RightRamp
   * 
   * This class defines a ramp. Essentially a ramp is a slab (small box)
   * in a diagonal way. Using width and height, you can resize it. 
   */
 
-class Ramp : public BaseObject
+class RightRamp : public BaseObject
 {
 public:
 
@@ -38,12 +38,12 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-	Ramp ( );
+	RightRamp ( );
 
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~Ramp ( );
+	virtual ~RightRamp ( );
 
 	// Public attribute accessor methods
 	//  
@@ -51,13 +51,13 @@ public:
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{
-		return QObject::tr("Ramp");
+		return QObject::tr("RightRamp");
 	}
 
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{
-		return QObject::tr("This is a ramp.");
+		return QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right.");
 	}
 
 	/// returns true if the object can be rotated by the user
@@ -82,13 +82,44 @@ public:
 	
 	virtual DrawObject* createDrawObject();
 	
-private:
+protected:
 	/// this member fixes up the physical model based on new width or height
 	void adjustParameters(void);
 
 	static const qreal theSlabThickness = 0.04; // m
-	
+
 	friend class DrawRamp;
+
+	bool isRight;
+};
+
+
+class LeftRamp : public RightRamp
+{
+public:
+	/**
+	 * Empty Constructor
+	 */
+	LeftRamp ( ) : RightRamp ()
+	{ isRight=false; adjustParameters(); }
+
+	/**
+	 * Empty Destructor
+	 */
+	virtual ~LeftRamp ( ) {};
+
+	/// returns the Name of the object.
+	virtual const QString getName ( ) const
+	{
+		return QObject::tr("LeftRamp");
+	}
+
+	/// returns the Tooltip of the object.
+	virtual const QString getToolTip ( ) const
+	{
+		return QObject::tr("This is a ramp. The right is higher than the left, so things slide to the left.");
+	}
+
 };
 
 #endif // RAMP_H
