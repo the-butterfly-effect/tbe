@@ -180,8 +180,12 @@ void DrawWorld::startTimer(void)
 {
 	DEBUG5("DrawWorld::startTimer(void)\n");
 
-	// TODO: unselect current object
+	// TODO: upon reset, the old object gets focus again - thanks, Qt!
+	DrawObject myTemp(NULL);
+	setFocusItem(&myTemp);
+
 	setAcceptDrops(false);
+
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
 }
