@@ -73,7 +73,7 @@ void Floor::adjustParameters(void)
 	// Floors cannot rotate.
 	qreal myHW = getTheWidth()/2.0;
 
-	const float theAspect = 12.0;
+	const float theAspect = 10.0;
 
 	// because width/height <= 12.0
 	// we better make floor from multiple parts if we need wider floors
@@ -82,26 +82,32 @@ void Floor::adjustParameters(void)
 	DEBUG5("******* mynumber: %f, w=%f\n", myNrOfElements, myHW);
 
 	qreal myBaseElemWidth = theAspect*theSlabThickness;
+	qreal myDoneWidth = 0.0;
 	for (float i=0.0; i<myNrOfElements; i+=1.0)
 	{
 		b2PolygonDef* boxDef = new b2PolygonDef();
-		float myFraction = myNrOfElements-i;
-		if (myFraction > 1.0)
-			myFraction = 1.0;
-		float myElemWidth = myFraction*myBaseElemWidth;
 
-		if ((theSlabThickness/myElemWidth) > theAspect)
+		// make sure *not* to have a small last part - i.e. the last two parts
+		// average their width.
+		float myElemWidth=myBaseElemWidth;
+		if (getTheWidth()-myDoneWidth < 2.0*myBaseElemWidth)
 		{
-			DEBUG5("element aspect ratio wrong - skipping\n");
-			continue;
+			if (getTheWidth()-myDoneWidth > 1.0*myBaseElemWidth)
+			{
+				myElemWidth = (getTheWidth()-myDoneWidth)/2.0;
+			}
+			else
+			{
+				myElemWidth = getTheWidth()-myDoneWidth;
+			}
 		}
-
-	DEBUG5("elem %f: %fx%f\n", i, myElemWidth, theSlabThickness);
+		DEBUG5("elem %f: %fx%f\n", i, myElemWidth, theSlabThickness);
 		boxDef->SetAsBox  	( myElemWidth/2.0, theSlabThickness/2.0,
-							  b2Vec2(-myHW+i*myBaseElemWidth+0.5*myElemWidth, 0.0), 0);
+							  b2Vec2(-myHW+myDoneWidth+0.5*myElemWidth, 0.0), 0);
 		// floor is immovable -> no mass -> no density
 		boxDef->density = 0.0;
 		theShapeList.push_back(boxDef);
+		myDoneWidth += myElemWidth;
 	}
 
 	// if there already is a physicsobject, it's wrong
