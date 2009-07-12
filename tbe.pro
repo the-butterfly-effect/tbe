@@ -20,8 +20,8 @@ QT += core \
 HEADERS += src/tbe_global.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
-	src/base/UndoResizeCommand.h \
-	src/model/BaseObject.h \
+    src/base/UndoResizeCommand.h \
+    src/model/BaseObject.h \
     src/model/BowlingBall.h \
     src/model/BowlingPin.h \
     src/model/Floor.h \
@@ -29,10 +29,10 @@ HEADERS += src/tbe_global.h \
     src/model/MovingObject.h \
     src/model/Position.h \
     src/model/Ramp.h \
-	src/model/ToolBoxItemListModel.h \
-	src/model/VolleyBall.h \
-	src/model/Wall.h \
-	src/model/World.h \
+    src/model/ToolBoxItemListModel.h \
+    src/model/VolleyBall.h \
+    src/model/Wall.h \
+    src/model/World.h \
     src/view/Anchors.h \
     src/view/DrawObject.h \
     src/view/DrawRamp.h \
@@ -43,12 +43,12 @@ HEADERS += src/tbe_global.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
     src/view/SplashScreen.h \
-	src/view/StartStopReset.h
+    src/view/StartStopReset.h
 SOURCES += src/main.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
-	src/base/UndoResizeCommand.cpp \
-	src/model/BaseObject.cpp \
+    src/base/UndoResizeCommand.cpp \
+    src/model/BaseObject.cpp \
     src/model/BowlingBall.cpp \
     src/model/BowlingPin.cpp \
     src/model/Floor.cpp \
@@ -56,10 +56,10 @@ SOURCES += src/main.cpp \
     src/model/MovingObject.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
-	src/model/ToolBoxItemListModel.cpp \
-	src/model/VolleyBall.cpp \
-	src/model/Wall.cpp \
-	src/model/World.cpp \
+    src/model/ToolBoxItemListModel.cpp \
+    src/model/VolleyBall.cpp \
+    src/model/Wall.cpp \
+    src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/DrawObject.cpp \
     src/view/DrawRamp.cpp \
@@ -68,8 +68,9 @@ SOURCES += src/main.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
     src/view/SplashScreen.cpp \
-	src/view/StartStopReset.cpp
-FORMS = src/view/MainWindow.ui
+    src/view/StartStopReset.cpp
+FORMS = src/view/MainWindow.ui \
+    src/view/SaveLevelInfo.ui
 DISTFILES = README \
     TODO \
     AUTHORS \
