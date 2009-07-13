@@ -21,9 +21,10 @@
 
 #include <QDomDocument>
 #include <QFile>
+#include <QTextStream>
 
 // TODO: remove this
-#include <iostream>
+//#include <iostream>
 
 // Strings identifying elements/nodes in the XML file
 //
@@ -187,4 +188,25 @@ Level::load(const QString& aFileName)
 	// theErrorMessage is set - let's return it!
 not_good:
 	return myErrorMessage;
+}
+
+
+bool Level::save(const QString& aFileName)
+{
+	QDomDocument myDocument("mydocument");
+
+
+	// success: we're going to write!
+	QFile myFile(aFileName);
+	if (!myFile.open(QFile::WriteOnly | QFile::Text))
+	{
+		QString myError = tr("Cannot write file '%1': %2.")
+			.arg(aFileName, myFile.errorString());
+		DEBUG1("ERROR: %s\n", myError.toAscii().constData());
+		return false;
+	}
+	const int IndentSize = 4;
+	QTextStream myOut(&myFile);
+	myDocument.save(myOut, IndentSize);
+	return true;
 }

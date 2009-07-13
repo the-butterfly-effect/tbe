@@ -42,8 +42,9 @@ HEADERS += src/tbe_global.h \
     src/view/PieMenu.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
-    src/view/SplashScreen.h \
-    src/view/StartStopReset.h
+	src/view/SaveLevelInfo.h \
+	src/view/SplashScreen.h \
+	src/view/StartStopReset.h
 SOURCES += src/main.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
@@ -67,8 +68,9 @@ SOURCES += src/main.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
-    src/view/SplashScreen.cpp \
-    src/view/StartStopReset.cpp
+	src/view/SaveLevelInfo.cpp \
+	src/view/SplashScreen.cpp \
+	src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/SaveLevelInfo.ui
 DISTFILES = README \

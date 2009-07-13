@@ -156,7 +156,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
    <property name="enabled">
-    <bool>false</bool>
+	<bool>true</bool>
    </property>
    <property name="text">
     <string>Save...</string>

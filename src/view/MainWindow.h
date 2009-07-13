@@ -40,7 +40,11 @@ public:
 private slots:
 	void on_actionAbout_activated(void);
 	void on_actionOpen_level_activated(void);
-    void on_pushButton_Reset_clicked(void)
+
+	// write the current level layout to disk
+	void on_actionSave_activated(void);
+
+	void on_pushButton_Reset_clicked(void)
     { emit theSimStateMachine.on_pushButton_Reset_clicked(); }
     void on_pushButton_StartStopContinue_clicked(void)
     { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }

@@ -26,6 +26,7 @@
 #include "SplashScreen.h"
 
 #include "ToolBoxItemListModel.h"
+#include "SaveLevelInfo.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
@@ -92,6 +93,20 @@ void MainWindow::on_actionOpen_level_activated()
 		return;
 	loadLevel(myFileName);
 }
+
+
+void MainWindow::on_actionSave_activated()
+{
+	DEBUG5("MainWindow::on_actionSave_activated()\n");
+	SaveLevelInfo mySaveLevel(theLevelPtr,this);
+	int myReturnCode = mySaveLevel.exec();
+	if (myReturnCode == QDialog::Rejected)
+		return;
+	// TODO: check if the name exists, etc, etc, etc...
+	mySaveLevel.commitToLevel();
+	theLevelPtr->save("temporaryname.xml");
+}
+
 
 void MainWindow::slot_splashScreen_clicked(void)
 {

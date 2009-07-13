@@ -82,7 +82,7 @@ public:
 	 * @param aFileName file to serialize the Level/World to.
 	 * @return false if saving failed - error message will be set.
 	 */
-	//bool save(const QString& aFileName);
+	bool save(const QString& aFileName);
 	
 private:	
 	World* theWorldPtr;
@@ -93,6 +93,10 @@ private:
 	QString theLevelName;
 	QString theLevelAuthor;
 	QString theLevelLicense;
+	QString	theLevelDescription;
+	QString theLevelDateString;
+
+	friend class SaveLevelInfo;
 };
 
 #endif // LEVEL_H
