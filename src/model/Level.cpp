@@ -118,9 +118,9 @@ Level::load(const QString& aFileName)
 	//
 	// parse the Scene section
 	//
-	myErrorMessage = tr("Parsing '%1' section failed").arg(theSceneString);
 	mySceneNode=myDocElem.firstChildElement(theSceneString);
 
+	myErrorMessage = tr("Parsing '%1' section failed").arg(theSceneSizeString);
 	myNode=mySceneNode.firstChildElement(theSceneSizeString);
 	myNodeMap = myNode.attributes();
 	myWidth = myNodeMap.namedItem(theWidthAttributeString).nodeValue().toDouble(&isOK1);
@@ -128,7 +128,7 @@ Level::load(const QString& aFileName)
     if (!isOK1 || !isOK2)
     	goto not_good;
 	theWorldPtr->theWorldWidth=myWidth;
-	theWorldPtr->theWorldWidth=myHeight;
+	theWorldPtr->theWorldHeight=myHeight;
 
 	// TODO: implement view
 	myErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
@@ -240,10 +240,10 @@ bool Level::save(const QString& aFileName)
 	QDomElement mySceneParent = myDocument.createElement(theSceneString);
 	myRoot.appendChild(mySceneParent);
 	// ... add scenesize
-	QDomElement mySceneSizeNode = myDocument.createElement(theObjectString);
+	QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
 	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
 	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
-	mySceneParent.appendChild(mySceneSizeNode);
+	mySceneParent.appendChild(mySceneSizeNode);	
 	// ... add the predefined elements
 	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
 	mySceneParent.appendChild(myPredefinedParent);
