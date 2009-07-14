@@ -19,7 +19,6 @@
 #include "Level.h"
 #include "World.h"
 
-#include <QDomDocument>
 #include <QFile>
 #include <QTextStream>
 
@@ -28,10 +27,13 @@
 
 // Strings identifying elements/nodes in the XML file
 //
+static const char* theRootNodeString= "tbe-level";
 static const char* theLevelInfoString = "levelinfo";
-	static const char* theLevelNameString    = "title";
-	static const char* theLevelAuthorString  = "author";
-	static const char* theLevelLicenseString = "license";
+	static const char* theLevelAuthorString       = "author";
+	static const char* theLevelDateString         = "date";
+	static const char* theLevelDescriptionString  = "description";
+	static const char* theLevelLicenseString      = "license";
+	static const char* theLevelNameString         = "title";
 static const char* theSceneString = "scene";
 	static const char* theSceneSizeString  = "scenesize";
 	static const char* theViewString       = "view";
@@ -111,7 +113,7 @@ Level::load(const QString& aFileName)
 	DEBUG5("level name:    '%s'\n", theLevelName.toAscii().constData());
 	DEBUG5("level author:  '%s'\n", theLevelAuthor.toAscii().constData());
 	DEBUG5("level license: '%s'\n", theLevelLicense.toAscii().constData());
-	theWorldPtr->setLevelName(theLevelName);
+	theWorldPtr->theLevelName = theLevelName;
 	
 	//
 	// parse the Scene section
@@ -125,7 +127,8 @@ Level::load(const QString& aFileName)
 	myHeight= myNodeMap.namedItem(theHeightAttributeString).nodeValue().toDouble(&isOK2);
     if (!isOK1 || !isOK2)
     	goto not_good;
-	theWorldPtr->setTheWorldSize(myWidth, myHeight);
+	theWorldPtr->theWorldWidth=myWidth;
+	theWorldPtr->theWorldWidth=myHeight;
 
 	// TODO: implement view
 	myErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
@@ -191,10 +194,68 @@ not_good:
 }
 
 
+void
+Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
+{
+	QDomElement myReturn = aParent.ownerDocument().createElement(anElementName);
+	QDomText myT = aParent.ownerDocument().createTextNode(aText);
+	myReturn.appendChild(myT);
+	aParent.appendChild(myReturn);
+}
+
+void
+Level::addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const
+{
+	QDomElement myNode = aParent.ownerDocument().createElement(theObjectString);
+	myNode.setAttribute(theTypeAttributeString, anObjectRef.getName());
+	myNode.setAttribute(theXAttributeString, anObjectRef.getOrigCenter().x);
+	myNode.setAttribute(theYAttributeString, anObjectRef.getOrigCenter().y);
+	if (anObjectRef.isRotatable())
+		myNode.setAttribute(theAngleAttributeString, anObjectRef.getOrigCenter().angle);
+	if (anObjectRef.isResizable() & BaseObject::HORIZONTALRESIZE)
+		myNode.setAttribute(theWidthAttributeString, anObjectRef.getTheWidth());
+	if (anObjectRef.isResizable() & BaseObject::VERTICALRESIZE)
+		myNode.setAttribute(theHeightAttributeString, anObjectRef.getTheHeight());
+	aParent.appendChild(myNode);
+}
+
+
 bool Level::save(const QString& aFileName)
 {
+	DEBUG5("Level::save(%s)\n", aFileName.toAscii().constData());
 	QDomDocument myDocument("mydocument");
+	QDomElement myRoot = myDocument.createElement(theRootNodeString);
+	myDocument.appendChild(myRoot);
 
+	// LevelInfo
+	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
+	myRoot.appendChild(myLevelInfo);
+	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
+	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
+	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
+	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
+	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
+
+	// Scene
+	QDomElement mySceneParent = myDocument.createElement(theSceneString);
+	myRoot.appendChild(mySceneParent);
+	// ... add scenesize
+	QDomElement mySceneSizeNode = myDocument.createElement(theObjectString);
+	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
+	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
+	mySceneParent.appendChild(mySceneSizeNode);
+	// ... add the predefined elements
+	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
+	mySceneParent.appendChild(myPredefinedParent);
+	World::BaseObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
+	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
+		addBaseObject(myPredefinedParent, *(*myI));
+	// ... TODO: add view
+
+
+	// Toolbox
+	QDomElement myToolboxParent = myDocument.createElement(theToolboxString);
+	myRoot.appendChild(myToolboxParent);
 
 	// success: we're going to write!
 	QFile myFile(aFileName);

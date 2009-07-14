@@ -23,7 +23,7 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 {
 	ui.setupUi(this);
 	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
-	ui.theDateField            ->setText(theLevelPtr->theLevelDateString);
+	ui.theDateField            ->setText(theLevelPtr->theLevelDate);
 	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
 	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
 	ui.theTitleField           ->setText(theLevelPtr->theLevelName);

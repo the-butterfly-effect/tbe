@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QString>
 #include <QList>
+#include <QDomDocument>
 #include "tbe_global.h"
 #include "BaseObject.h"
 
@@ -83,6 +84,12 @@ public:
 	 * @return false if saving failed - error message will be set.
 	 */
 	bool save(const QString& aFileName);
+
+
+protected:
+	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
+	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
+	void addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const;
 	
 private:	
 	World* theWorldPtr;
@@ -94,7 +101,7 @@ private:
 	QString theLevelAuthor;
 	QString theLevelLicense;
 	QString	theLevelDescription;
-	QString theLevelDateString;
+	QString theLevelDate;
 
 	friend class SaveLevelInfo;
 };

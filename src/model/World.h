@@ -93,18 +93,14 @@ public:
 
 	
 public:
-    /** returns the name of the Level that created the World
+	// Public attribute accessor methods
+	//
+
+	/** returns the name of the Level that created the World
      */
     const QString& getName(void) const
 		{ return theLevelName; } 
 
-    void setLevelName(const QString& aName)
-		{ theLevelName = aName; }
-    
-    // Public attribute accessor methods
-
-	void setTheWorldSize(qreal aWidth, qreal aHeight)
-		{ theWorldWidth=aWidth; theWorldHeight=aHeight; }
 	qreal getTheWorldWidth(void)
 		{ return theWorldWidth; }
 	qreal getTheWorldHeight(void)
@@ -144,6 +140,8 @@ private:
 
 	qreal	theWorldWidth;
 	qreal	theWorldHeight;
+
+	friend class Level;
 };
 
 #endif // WORLD_H

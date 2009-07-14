@@ -77,13 +77,13 @@ BaseObject::~BaseObject ( )
 // Accessor methods
 //  
 
-b2World* BaseObject::getB2WorldPtr(void)
+b2World* BaseObject::getB2WorldPtr(void) const
 {
 	assert (theStaticB2WorldPtr);
 	return theStaticB2WorldPtr;
 }
 
-Position BaseObject::getTempCenter (void)
+Position BaseObject::getTempCenter (void) const
 {
 	// no physics object, no temp center
 	if (isPhysicsObjectCreated()==false)

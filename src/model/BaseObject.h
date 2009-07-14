@@ -195,7 +195,7 @@ protected:
 	b2Body* theB2BodyPtr;
 	b2BodyDef* theB2BodyDefPtr;
 	
-	b2World* getB2WorldPtr(void);
+	b2World* getB2WorldPtr(void) const;
 	
 	/// pointer to a DrawObject that will draw this object
 	DrawObject* theDrawObjectPtr;
@@ -236,7 +236,7 @@ public:
 	 * return to after a "reset". 
 	 * @return the value of theCenter
 	 */
-	Position getOrigCenter ( )
+	Position getOrigCenter ( ) const
 		{ return theCenter; }
 
 	/**
@@ -247,7 +247,7 @@ public:
 	 *  
 	 * @return the value of theCenter
 	 */
-	Position getTempCenter ( );
+	Position getTempCenter ( ) const;
 
 	/**
 	 * Set the value of theWidth
@@ -260,7 +260,7 @@ public:
 	 * Get the value of theWidth
 	 * @return the value of theWidth
 	 */
-	qreal getTheWidth ( )
+	qreal getTheWidth ( ) const
 		{ return theWidth; }
 
 	/**
@@ -274,7 +274,7 @@ public:
 	 * Get the value of theHeight
 	 * @return the value of theHeight
 	 */
-	qreal getTheHeight ( )
+	qreal getTheHeight ( ) const
 		{ return theHeight; }
 
 	/**
