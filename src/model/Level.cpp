@@ -73,6 +73,8 @@ Level::~Level ( )
 QString
 Level::load(const QString& aFileName)
 {
+	theFileName = aFileName;
+
 	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");
 	

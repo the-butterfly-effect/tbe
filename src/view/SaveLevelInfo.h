@@ -32,7 +32,13 @@ public:
 	SaveLevelInfo(Level* aLevelPtr, QWidget *parent = 0);
 	virtual ~SaveLevelInfo();
 
-	void commitToLevel(void);
+	/** takes the input from the form and fills in the Level fields
+	 *  @returns false if level data is invalid - Level is not changed.
+	 */
+	bool commitToLevel(void);
+
+public slots:
+	void on_FileDialogButton_clicked();
 
 private:
 	Ui::SaveLevelInfo ui;

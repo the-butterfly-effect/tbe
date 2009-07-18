@@ -103,6 +103,8 @@ private:
 	QString	theLevelDescription;
 	QString theLevelDate;
 
+	QString theFileName;
+
 	friend class SaveLevelInfo;
 };
 

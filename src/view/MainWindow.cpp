@@ -102,8 +102,12 @@ void MainWindow::on_actionSave_activated()
 	int myReturnCode = mySaveLevel.exec();
 	if (myReturnCode == QDialog::Rejected)
 		return;
+
+	// for now we ignore the return code...
+	if (mySaveLevel.commitToLevel()==false)
+		Popup::Warning(tr("You did not fill in all fields - but level saved anyway\n"));
+
 	// TODO: check if the name exists, etc, etc, etc...
-	mySaveLevel.commitToLevel();
 	theLevelPtr->save("temporaryname.xml");
 }
 

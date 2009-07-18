@@ -16,17 +16,29 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "tbe_global.h"
 #include "SaveLevelInfo.h"
+#include <QFileDialog>
 
 SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 	: QDialog(parent), theLevelPtr(aLevelPtr)
 {
 	ui.setupUi(this);
+	ui.theFileNameField        ->setText(theLevelPtr->theFileName);
 	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
-	ui.theDateField            ->setText(theLevelPtr->theLevelDate);
 	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
 	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
 	ui.theTitleField           ->setText(theLevelPtr->theLevelName);
+
+	QDate myDate = QDate::fromString(theLevelPtr->theLevelDate);
+	if (myDate.isValid())
+		ui.theDateEdit->setDate(myDate);
+	else
+	{
+		DEBUG5("SaveLevelInfo::SaveLevelInfo - Date '%s' is not understood, setting to current date\n",
+			   theLevelPtr->theLevelDate.toAscii().constData());
+		ui.theDateEdit->setDate(QDate::currentDate());
+	}
 
 	// FIXME: TEMPORARY
 	ui.theLevelDescriptionField->setText("THIS DIALOG IS NOT IMPLEMENTED YET!!!");
@@ -39,7 +51,34 @@ SaveLevelInfo::~SaveLevelInfo()
 
 
 
-void SaveLevelInfo::commitToLevel(void)
+bool SaveLevelInfo::commitToLevel(void)
 {
-	// TODO: Implement
+	if (ui.theTitleField->text().isEmpty())
+		return false;
+	if (ui.theAuthorNameField->text().isEmpty())
+		return false;
+
+	theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text();
+	theLevelPtr->theLevelDate        = ui.theDateEdit->text();
+	theLevelPtr->theLevelDescription = ui.theLevelDescriptionField->toPlainText();
+	theLevelPtr->theLevelLicense     = ui.theLicenseField->text();
+	theLevelPtr->theLevelName        = ui.theTitleField->text();
+
+	if (ui.theFileNameField->text().isEmpty())
+		return false;
+	else
+		theLevelPtr->theFileName = ui.theFileNameField->text();
+
+	return true;
+}
+
+
+void SaveLevelInfo::on_FileDialogButton_clicked()
+{
+	// use QFileInfo to brush up the file name
+	QFileInfo myFileInfo(ui.theFileNameField->text());
+
+	QString myFileName = QFileDialog::getSaveFileName(this,
+		tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
+	ui.theFileNameField->setText(myFileName);
 }
