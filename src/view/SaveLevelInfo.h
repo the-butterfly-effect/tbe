@@ -37,12 +37,31 @@ public:
 	 */
 	bool commitToLevel(void);
 
+	QString getFileName(void) const
+		{ return ui.theFileNameField->text(); }
+
 public slots:
 	void on_FileDialogButton_clicked();
+
+	/// overridden to intercept the accept and allow to check the file name
+	virtual void accept();
 
 private:
 	Ui::SaveLevelInfo ui;
 	Level*	theLevelPtr;
+
+	/** checks whether a file name already exists.
+	 *  if the file exists and isUserOKOverwrintingFile is not true,
+	 *  it will popup a question for overwrite?
+	 *  @returns true if user is OK with overwriting
+	 *           *or* isUserOKOverwrintingFile is already true
+	 *           *or* the file does not exist yet
+	 */
+	bool performFileExists(const QString& aFileName);
+
+
+	/// set to true if user answered the question whether the file should be overwritten
+	bool isUserOKOverwrintingFile;
 };
 
 #endif // SAVELEVELINFO_H
