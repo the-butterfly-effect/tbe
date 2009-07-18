@@ -48,33 +48,45 @@ void DrawRamp::initAttributes ( )
 	
 }
 
-void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
+QPainterPath DrawRamp::shape() const
 {
-	QRectF myBounds = boundingRect();
-
 	RightRamp* myRampPtr = reinterpret_cast<RightRamp*>(theBaseObjectPtr);
-	QPointF mySlabH(0, myRampPtr->theSlabThickness*theScale);
+	qreal myHW = myRampPtr->getTheWidth()*theScale/2.0;
+	qreal myHH = myRampPtr->getTheHeight()*theScale/2.0;
+	qreal mySH = myRampPtr->theSlabThickness*theScale;
 
-	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-	myPainter->setBrush(color);
-
+	QPolygonF myPoly;
 	if (myRampPtr->isRight)
 	{
-		myPainter->drawLine(myBounds.topLeft(), myBounds.bottomRight()-mySlabH);
-		myPainter->drawLine(myBounds.bottomRight()-mySlabH, myBounds.bottomRight());
-		myPainter->drawLine(myBounds.bottomRight(), myBounds.topLeft()+mySlabH);
-		myPainter->drawLine(myBounds.topLeft()+mySlabH, myBounds.topLeft());
+		myPoly << QPointF(-myHW, -myHH);
+		myPoly << QPointF(-myHW, -myHH+mySH);
+		myPoly << QPointF( myHW,  myHH);
+		myPoly << QPointF( myHW,  myHH-mySH);
+		myPoly << QPointF(-myHW, -myHH);
 	}
 	else
 	{
-		myPainter->drawLine(myBounds.topRight(), myBounds.bottomLeft()-mySlabH);
-		myPainter->drawLine(myBounds.bottomLeft()-mySlabH, myBounds.bottomLeft());
-		myPainter->drawLine(myBounds.bottomLeft(), myBounds.topRight()+mySlabH);
-		myPainter->drawLine(myBounds.topRight()+mySlabH, myBounds.topRight());
+		myPoly << QPointF( myHW, -myHH);
+		myPoly << QPointF(-myHW,  myHH-mySH);
+		myPoly << QPointF(-myHW,  myHH);
+		myPoly << QPointF( myHW, -myHH+mySH);
+		myPoly << QPointF( myHW, -myHH);
 	}
 
+	QPainterPath myPath;
+	myPath.addPolygon(myPoly);
+	return myPath;
+}
 
-//	DEBUG5("void DrawRamp::paint - %fx%f\n",
+void DrawRamp::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
+{
+	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+	myPainter->setBrush(color);
+
+	QPainterPath myPath = shape();
+	myPainter->drawPath(myPath);
+
+	//	DEBUG5("void DrawRamp::paint - %fx%f\n",
 //			   myRampPtr->getSlabLength(), 
 //			   myRampPtr->theSlabThickness);
 	

@@ -52,6 +52,9 @@ public:
 	/// overriden from QGraphicsItem
     virtual QRectF boundingRect() const;
 
+	/// overriden from QGraphicsItem
+	QPainterPath shape() const;
+
     /// overriden from QGraphicsItem
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget);
