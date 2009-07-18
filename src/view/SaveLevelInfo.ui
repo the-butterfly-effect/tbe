@@ -193,7 +193,7 @@
    <sender>theFileDialogButton</sender>
    <signal>clicked()</signal>
    <receiver>SaveLevelInfo</receiver>
-   <slot>on_FileDialogButton_clicked()</slot>
+   <slot>FileDialogButton_clicked()</slot>
   </connection>
  </connections>
 </ui>

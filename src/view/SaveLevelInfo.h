@@ -41,10 +41,15 @@ public:
 		{ return ui.theFileNameField->text(); }
 
 public slots:
-	void on_FileDialogButton_clicked();
+	void FileDialogButton_clicked();
 
 	/// overridden to intercept the accept and allow to check the file name
 	virtual void accept();
+
+	/// called whenever the user changes the text.
+	void fileNameChanged()
+		{ isUserOKOverwrintingFile = false; }
+
 
 private:
 	Ui::SaveLevelInfo ui;
@@ -58,6 +63,7 @@ private:
 	 *           *or* the file does not exist yet
 	 */
 	bool performFileExists(const QString& aFileName);
+
 
 
 	/// set to true if user answered the question whether the file should be overwritten

@@ -43,8 +43,7 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 		ui.theDateEdit->setDate(QDate::currentDate());
 	}
 
-	// FIXME: TEMPORARY
-	ui.theLevelDescriptionField->setText("THIS DIALOG IS NOT IMPLEMENTED YET!!!");
+	connect(ui.theFileNameField, SIGNAL(textEdited(const QString &)), this, SLOT(fileNameChanged()));
 }
 
 
@@ -83,6 +82,23 @@ bool SaveLevelInfo::commitToLevel(void)
 }
 
 
+void SaveLevelInfo::FileDialogButton_clicked()
+{
+	// use QFileInfo to brush up the file name
+	QFileInfo myFileInfo(ui.theFileNameField->text());
+
+	isUserOKOverwrintingFile = false;
+
+	QString myFileName = QFileDialog::getSaveFileName(this,
+		tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
+
+	if (performFileExists(myFileName)==false)
+		return;
+
+	ui.theFileNameField->setText(myFileName);
+}
+
+
 bool SaveLevelInfo::performFileExists(const QString& aFileName)
 {
 	if (isUserOKOverwrintingFile==true)
@@ -97,20 +113,4 @@ bool SaveLevelInfo::performFileExists(const QString& aFileName)
 		isUserOKOverwrintingFile = true;
 	}
 	return true;
-}
-
-void SaveLevelInfo::on_FileDialogButton_clicked()
-{
-	// use QFileInfo to brush up the file name
-	QFileInfo myFileInfo(ui.theFileNameField->text());
-
-	isUserOKOverwrintingFile = false;
-
-	QString myFileName = QFileDialog::getSaveFileName(this,
-		tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
-
-	if (performFileExists(myFileName)==false)
-		return;
-
-	ui.theFileNameField->setText(myFileName);
 }
