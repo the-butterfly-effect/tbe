@@ -107,8 +107,13 @@ void MainWindow::on_actionSave_activated()
 	if (mySaveLevel.commitToLevel()==false)
 		Popup::Warning(tr("You did not fill in all fields - but level saved anyway\n"));
 
-	// TODO: check if the name exists, etc, etc, etc...
-	theLevelPtr->save("temporaryname.xml");
+	QFileInfo myFileInfo(mySaveLevel.getFileName());
+
+	DEBUG5("File '%s' is readable: %d, writeable: %d\n",
+		   myFileInfo.absoluteFilePath().toAscii().constData(),
+		   myFileInfo.isReadable(), myFileInfo.isWritable());
+
+	theLevelPtr->save(myFileInfo.absoluteFilePath());
 }
 
 
