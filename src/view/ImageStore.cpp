@@ -26,32 +26,6 @@
 
 static ImageStore* theImageStorePtr = NULL;
 
-/*
-class SvgIcon : public QIcon
-{
-	Q_OBJECT
-public:
-
-	void setRenderer(QSvgRenderer* aRenderer)
-	{ theSvgRenderer = aRenderer; }
-
-protected:
-
-
-private:
-	QSvgRenderer* theSvgRenderer;
-};
-*/
-
-
-
-
-
-
-
-
-
-
 // Constructors/Destructors
 //
 
@@ -79,6 +53,50 @@ ImageStore& ImageStore::me()
 //
 
 
+QString ImageStore::getFilePath(const QString& anImageName, const QString& anExtension) const
+{
+	// let's try to find the file and create the renderer...
+	QStringList mySearchPath = QString(".:images:images/icons:images/objects:images/src").split(":",QString::SkipEmptyParts);
+	QStringList::iterator i;
+	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
+	{
+		QString myFullName = (*i) + "/" + anImageName + anExtension;
+		DEBUG5("searching for '%s' ... ", myFullName.toAscii().constData());
+		if (QFile::exists(myFullName) == false)
+		{
+			DEBUG5("not found\n");
+			continue;
+		}
+		return myFullName;
+	}
+	return QString();
+}
+
+QPixmap* ImageStore::getMePNGPixmap(const QString& anImageName)
+{
+	assert(!anImageName.isEmpty());
+	assert(theImageStorePtr != NULL);
+
+	// if anImageName is in store, we're done quickly :-)
+	PixmapMap::iterator mySearchResult = thePixmapMap.find(anImageName);
+	if (mySearchResult != thePixmapMap.end())
+	{
+		DEBUG5("found (cached) QPixmap for '%s'\n", anImageName.toAscii().constData());
+		return mySearchResult.value();
+	}
+
+	// so, it's not in our cache yet...
+	// let's try to find the file and create the pixmap...
+	QString myFullName = getFilePath(anImageName, ".png");
+	QPixmap* myPtr = new QPixmap(myFullName);
+	if (myPtr == NULL)
+		return NULL;
+	if (myPtr->isNull())
+		return NULL;
+	thePixmapMap[anImageName]=myPtr;
+	DEBUG5("my QPixmap* is %p\n", myPtr);
+	return myPtr;
+}
 
 QIcon ImageStore::getMeQIcon(const QString& anImageName, const QSize& aSize)
 {
@@ -116,27 +134,15 @@ QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 
 	// so, it's not in our cache yet...
 	// let's try to find the file and create the renderer...
-	QStringList mySearchPath = QString(".:images:images/icons:images/objects:images/src").split(":",QString::SkipEmptyParts);
-	QStringList::iterator i;
-	QSvgRenderer* myPtr = NULL;
-	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
-	{
-		QString myFullName = (*i) + "/" + anImageName + ".svg";
-		DEBUG5("searching for '%s' ... ", myFullName.toAscii().constData());
-		if (QFile::exists(myFullName) == false)
-		{
-			DEBUG5("not found\n");
-			continue;
-		}
-		DEBUG5("found!!!\n");
-		myPtr = new QSvgRenderer(myFullName);
-		assert(myPtr!=NULL);
-		if (myPtr == NULL)
-			continue;
-		assert(myPtr->isValid());
-		theRendererMap[anImageName]=myPtr;
-		break;
-	}
+	QString myFullName = getFilePath(anImageName, ".svg");
+	QSvgRenderer* myPtr = new QSvgRenderer(myFullName);
+	if (myPtr == NULL)
+		return NULL;
+	if (myPtr->isValid()==false)
+		return NULL;
+	theRendererMap[anImageName]=myPtr;
 	DEBUG5("my Renderer is %p\n", myPtr);
 	return myPtr;
 }
+
+

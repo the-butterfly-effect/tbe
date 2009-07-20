@@ -29,7 +29,7 @@
  *  and return the requested imageobject/render type
  *  it caches renderers to SVG images it has loaded
  *
- *  ImageStone also cares for itself to try different paths, only specify
+ *  ImageStore also cares for itself to try different paths, only specify
  *  the image file name (like "ActionMove") - we'll add the .svg ourselves
  */
 class ImageStore
@@ -40,20 +40,31 @@ class ImageStore
 	/////////////////////////////////////////////////////////////////////////////
 public:
 
-	/// @returns a QIcon with the image requested. if no image found, QIcon.isValid() will return false
+	/** always accessible (singleton) function to get an Icon from an SVG
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @param   aSize         QSize of the icon
+	 *   @returns a QIcon with the image requested. if no image found, QIcon.isValid() will return false
+	 */
 	static QIcon getQIcon(const QString& anImageName, const QSize& aSize)
 		{ return me().getMeQIcon(anImageName, aSize); }
 
+	/** always accessible (singleton) function to get a SVG Renderer
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @returns pointer to the SVGRenderer or NULL if not found
+	 */
 	static QSvgRenderer* getRenderer(const QString& anImageName)
 		{ return me().getMeRenderer(anImageName); }
 
+	/** filters through all necessary directories to find the requested PNG
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @returns QPixmap pointer for the PNG image
+	 */
+	static QPixmap* getPNGPixmap(const QString& anImageName)
+		{ return me().getMePNGPixmap(anImageName); }
 
 	/////////////////////////////////////////////////////////////////////////////
 	// don't even *think* of using anything from below
 	/////////////////////////////////////////////////////////////////////////////
-private:
-	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
-
 private:
 	static ImageStore& me();
 
@@ -73,8 +84,17 @@ private:
 	 */
 	QSvgRenderer* getMeRenderer(const QString& anImageName);
 
+	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
+
+	QPixmap* getMePNGPixmap(const QString& anImageName);
+
+	QString getFilePath(const QString& anImageName, const QString& anExtension) const;
+
 	typedef QMap<QString, QSvgRenderer*> RendererMap;
 	RendererMap theRendererMap;
+
+	typedef QMap<QString, QPixmap*> PixmapMap;
+	PixmapMap thePixmapMap;
 };
 
 #endif // IMAGESTORE_H
