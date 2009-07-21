@@ -26,6 +26,7 @@
 #include <QObject>
 #include <QString>
 #include <QList>
+#include <QMap>
 
 // Forward Declarations
 class DrawObject;
@@ -37,6 +38,7 @@ class b2BodyDef;
 class b2World;
 class b2ShapeDef;
 class b2Shape;
+class BaseObjectSerializer;
 
 //   ************************************************
 //   *                                              *
@@ -157,6 +159,9 @@ public:
 	virtual bool isPhysicsObjectCreated(void) const
 		{ return theB2BodyPtr!=NULL; }
 	
+
+	const BaseObjectSerializer* getSerializer(void) const;
+
 private:
 	// Private attributes
 	//
@@ -199,7 +204,12 @@ protected:
 	
 	/// pointer to a DrawObject that will draw this object
 	DrawObject* theDrawObjectPtr;
+
+	typedef QMap<QString,QString> PropertyMap;
+	PropertyMap theProperties;
 	
+	friend class BaseObjectSerializer;
+
 public:
 	// public attribute accessor methods
 
@@ -292,6 +302,9 @@ public:
 	 */
 	qreal getTheBounciness ( )				 
 		{ return theBounciness; }
+
+	void  setProperty(const QString& aKey, const QString& aValue)
+		{ theProperties[aKey] = aValue; }
 
 protected:
 	void setAngle(qreal anAngle)

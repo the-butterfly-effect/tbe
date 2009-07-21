@@ -19,8 +19,8 @@
 #include "BaseObject.h"
 #include "DrawObject.h"
 #include "World.h"
-#include <QMap>
 #include "Box2D.h"
+#include "BaseObjectSerializer.h"
 
 // Static variables
 static b2World* theStaticB2WorldPtr = NULL;
@@ -175,6 +175,11 @@ bool BaseObject::deregister(void)
 		theDrawObjectPtr->deregister();
 	// note that we keep the pointer - and will re-use it in the future if needed
 	return true;
+}
+
+const BaseObjectSerializer* BaseObject::getSerializer(void) const
+{
+	return new BaseObjectSerializer(this);
 }
 
 void BaseObject::initAttributes ( ) 

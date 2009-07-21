@@ -18,6 +18,7 @@
 
 #include "Level.h"
 #include "World.h"
+#include "BaseObjectSerializer.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -26,6 +27,7 @@
 //#include <iostream>
 
 // Strings identifying elements/nodes in the XML file
+// (the ones without static are also used in BaseObjectSerializer.cpp)
 //
 static const char* theRootNodeString= "tbe-level";
 static const char* theLevelInfoString = "levelinfo";
@@ -38,17 +40,17 @@ static const char* theSceneString = "scene";
 	static const char* theSceneSizeString  = "scenesize";
 	static const char* theViewString       = "view";
 	static const char* thePredefinedString = "predefined";
-	static const char* theObjectString     = "object";
+		   const char* theObjectString     = "object";
 	static const char* thePropertyString   = "license";
 static const char* theToolboxString = "toolbox";
 
 
-static const char* theWidthAttributeString     = "width";
-static const char* theHeightAttributeString    = "height";
-static const char* theXAttributeString         = "X";
-static const char* theYAttributeString         = "Y";
-static const char* theAngleAttributeString     = "angle";
-static const char* theTypeAttributeString      = "type";
+const char* theWidthAttributeString     = "width";
+const char* theHeightAttributeString    = "height";
+const char* theXAttributeString         = "X";
+const char* theYAttributeString         = "Y";
+const char* theAngleAttributeString     = "angle";
+const char* theTypeAttributeString      = "type";
 
 
 // Constructors/Destructors
@@ -208,17 +210,12 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const Q
 void
 Level::addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const
 {
-	QDomElement myNode = aParent.ownerDocument().createElement(theObjectString);
-	myNode.setAttribute(theTypeAttributeString, anObjectRef.getName());
-	myNode.setAttribute(theXAttributeString, anObjectRef.getOrigCenter().x);
-	myNode.setAttribute(theYAttributeString, anObjectRef.getOrigCenter().y);
-	if (anObjectRef.isRotatable())
-		myNode.setAttribute(theAngleAttributeString, anObjectRef.getOrigCenter().angle);
-	if (anObjectRef.isResizable() & BaseObject::HORIZONTALRESIZE)
-		myNode.setAttribute(theWidthAttributeString, anObjectRef.getTheWidth());
-	if (anObjectRef.isResizable() & BaseObject::VERTICALRESIZE)
-		myNode.setAttribute(theHeightAttributeString, anObjectRef.getTheHeight());
-	aParent.appendChild(myNode);
+	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
+	if (myBOS!=NULL)
+	{
+		myBOS->serialize(&aParent);
+		delete myBOS;
+	}
 }
 
 

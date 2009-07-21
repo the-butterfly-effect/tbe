@@ -18,6 +18,7 @@ QT += core \
     xml \
     svg
 HEADERS += src/tbe_global.h \
+	src/base/BaseObjectSerializer.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
@@ -42,11 +43,12 @@ HEADERS += src/tbe_global.h \
     src/view/PieMenu.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
-	src/view/SaveLevelInfo.h \
-	src/view/SplashScreen.h \
+    src/view/SaveLevelInfo.h \
+    src/view/SplashScreen.h \
 	src/view/StartStopReset.h
 SOURCES += src/main.cpp \
-    src/base/UndoDeleteCommand.cpp \
+	src/base/BaseObjectSerializer.cpp \
+	src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
     src/model/BaseObject.cpp \
@@ -68,8 +70,8 @@ SOURCES += src/main.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
-	src/view/SaveLevelInfo.cpp \
-	src/view/SplashScreen.cpp \
+    src/view/SaveLevelInfo.cpp \
+    src/view/SplashScreen.cpp \
 	src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/SaveLevelInfo.ui
