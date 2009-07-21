@@ -45,8 +45,14 @@ public:
 	/// Simple Constructor
 	DrawObject (BaseObject* aBaseObjectPtr);
 
-	/// Svg Constructor
-	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName);
+	enum ImageType
+	{
+		IMAGE_PNG,
+		IMAGE_SVG
+	};
+
+	/// Svg/Png Constructor
+	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_SVG);
 
 
 	/**

@@ -49,7 +49,9 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 		initAttributes();
 }
 
-DrawObject::DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName)
+DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
+						const QString& anImageName,
+						DrawObject::ImageType anImageType)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	theUndeleteDrawWorldPtr(NULL)
 {
