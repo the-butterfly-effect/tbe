@@ -41,7 +41,7 @@ static const char* theSceneString = "scene";
 	static const char* theViewString       = "view";
 	static const char* thePredefinedString = "predefined";
 		   const char* theObjectString     = "object";
-	static const char* thePropertyString   = "license";
+	static const char* thePropertyString   = "property";
 static const char* theToolboxString = "toolbox";
 
 
@@ -162,20 +162,34 @@ Level::load(const QString& aFileName)
 	    	Position( myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
 	    			  myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
 	    			  myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble()));
-	    if (!isOK1 || !isOK2)
-	    	goto not_good;
-	    QString myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
-	    if (myValue.isEmpty()==false)
-	    	myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
-	    myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
-	    if (myValue.isEmpty()==false)
-	    	myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
-	    if (!isOK1 || !isOK2)
-	    	goto not_good;
-	    theWorldPtr->addObject(myBOPtr);
+		if (!isOK1 || !isOK2)
+			goto not_good;
+		QString myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
+		if (myValue.isEmpty()==false)
+			myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
+		myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
+		if (myValue.isEmpty()==false)
+			myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
+		if (!isOK1 || !isOK2)
+			goto not_good;
+		if (q.hasChildNodes()==true)
+		{
+			// to parse:   <property key="texture">used_wood_bar</property>
+			QDomElement i;
+			for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
+			{
+				if (i.nodeName() != thePropertyString)
+					goto not_good;
+				QString myKey = i.attributes().item(0).nodeValue();
+				QString myValue = i.text();
+				DEBUG5("   property: '%s'='%s'\n",
+					   myKey.toAscii().constData(),
+					   myValue.toAscii().constData());
+				myBOPtr->setProperty(myKey, myValue);
+			}
+		}
+		theWorldPtr->addObject(myBOPtr);
 
-	    // TODO: add Property handling here
-	    
 		if (q==myNode.lastChild())
 			break;
 	}
