@@ -19,7 +19,7 @@
 	<object width="4.5" X="2.25" Y="0.05" type="Floor">
 	   <property key="texture">used_wood_bar</property>
 	</object>
-	<object type="Note" X="2.2" Y="0.3">
+	<object type="NoteIt" X="2.2" Y="0.3">
        <property key="page1">This looks simple, does it?\nUse the ball to topple the pins.</property>
        <property key="page2">Aww. The ball falls down.\nThat's called gravity.</property>
        <property key="page3">You probably have to make it roll?</property>
