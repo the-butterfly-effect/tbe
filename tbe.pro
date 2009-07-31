@@ -18,7 +18,7 @@ QT += core \
     xml \
     svg
 HEADERS += src/tbe_global.h \
-	src/base/BaseObjectSerializer.h \
+    src/base/BaseObjectSerializer.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
@@ -28,14 +28,16 @@ HEADERS += src/tbe_global.h \
     src/model/Floor.h \
     src/model/Level.h \
     src/model/MovingObject.h \
-    src/model/Position.h \
+	src/model/NoteIt.h \
+	src/model/Position.h \
     src/model/Ramp.h \
     src/model/ToolBoxItemListModel.h \
     src/model/VolleyBall.h \
     src/model/Wall.h \
     src/model/World.h \
     src/view/Anchors.h \
-    src/view/DrawObject.h \
+	src/view/DrawNoteIt.h \
+	src/view/DrawObject.h \
     src/view/DrawRamp.h \
     src/view/DrawWorld.h \
     src/view/ImageStore.h \
@@ -47,8 +49,8 @@ HEADERS += src/tbe_global.h \
     src/view/SplashScreen.h \
 	src/view/StartStopReset.h
 SOURCES += src/main.cpp \
-	src/base/BaseObjectSerializer.cpp \
-	src/base/UndoDeleteCommand.cpp \
+    src/base/BaseObjectSerializer.cpp \
+    src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
     src/model/BaseObject.cpp \
@@ -57,14 +59,16 @@ SOURCES += src/main.cpp \
     src/model/Floor.cpp \
     src/model/Level.cpp \
     src/model/MovingObject.cpp \
-    src/model/Position.cpp \
+	src/model/NoteIt.cpp \
+	src/model/Position.cpp \
     src/model/Ramp.cpp \
     src/model/ToolBoxItemListModel.cpp \
     src/model/VolleyBall.cpp \
     src/model/Wall.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
-    src/view/DrawObject.cpp \
+	src/view/DrawNoteIt.cpp \
+	src/view/DrawObject.cpp \
     src/view/DrawRamp.cpp \
     src/view/DrawWorld.cpp \
     src/view/ImageStore.cpp \
