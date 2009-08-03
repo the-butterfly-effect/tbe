@@ -32,10 +32,12 @@ class BaseObject;
   * and cannot be moved *BUT* can be clicked to reveal "hints"...
   */
 
-class DrawNoteIt : public DrawObject
+class DrawNoteIt : public QObject, public DrawObject
 {
-public:
 	
+	Q_OBJECT
+
+public:
 	// Constructors/Destructors
 	//  
 
@@ -49,13 +51,29 @@ public:
 	 */
 	virtual ~DrawNoteIt ( );
 
+	/** overridden from QGraphicsItem
+	 * upon a double click event, let's show the text of the note-its
+	 */
+	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* );
 
-protected:
-    // Protected attribute accessor methods
-	//  
+	/// overridden from DrawObject to make sure it is not selected
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent* )
+		{ ; }
+
+	/// overridden from DrawObject to make sure it is not selected
+	virtual void focusInEvent ( QFocusEvent* )
+		{ ; }
+
+protected slots:
+	void nextClicked();
 
 private:
 	virtual void initAttributes ( ) ;
+
+	unsigned int theCurrentPage;
+
+	QDialog*	theDialogPtr;
+
 };
 
 #endif // DRAWNOTEIT_H

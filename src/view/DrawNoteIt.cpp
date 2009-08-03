@@ -18,6 +18,7 @@
 
 #include "DrawNoteIt.h"
 #include "BaseObject.h"
+#include "ui_NoteItViewer.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -30,9 +31,17 @@ DrawNoteIt::DrawNoteIt (BaseObject* aBaseObjectPtr)
 	: DrawObject(aBaseObjectPtr, "NoteIt")
 {
 	// everything is done in the DrawObject constructor
+	DEBUG5("DrawNoteIt\n");
+
+	setFlag(QGraphicsItem::ItemIsSelectable,true);
+
 }
 
-DrawNoteIt::~DrawNoteIt ( ) { }
+DrawNoteIt::~DrawNoteIt ( )
+{
+	if (theDialogPtr)
+		delete theDialogPtr;
+}
 
 //  
 // Methods
@@ -49,4 +58,32 @@ DrawNoteIt::~DrawNoteIt ( ) { }
 void DrawNoteIt::initAttributes ( )
 {
 	
+}
+
+
+void DrawNoteIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
+{
+	DEBUG5("double click!!!\n");
+	 theDialogPtr = new QDialog;
+	 Ui::NoteItViewer myUI;
+	 myUI.setupUi(theDialogPtr);
+
+	 theCurrentPage = 0;
+	 nextClicked();
+
+	 QObject::connect(static_cast<QObject*>(myUI.pushButton_Next), SIGNAL(clicked()),
+					  this, SLOT(nextClicked()));
+
+	 theDialogPtr->exec();
+}
+
+
+void DrawNoteIt::nextClicked()
+{
+	theCurrentPage++;
+	// if there is a next page, display it
+
+	// if there is no next page, replace button text with "Finish"
+
+	// if it already says Finish, close it!
 }
