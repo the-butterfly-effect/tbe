@@ -108,9 +108,10 @@ Level::load(const QString& aFileName)
 	myNode=myDocElem.firstChildElement(theLevelInfoString);
 	if (myNode.isNull())
 		goto not_good;
-	theLevelName   = myNode.firstChildElement(theLevelNameString).text();
-	theLevelAuthor = myNode.firstChildElement(theLevelAuthorString).text();;
-	theLevelLicense= myNode.firstChildElement(theLevelLicenseString).text();;
+	theLevelName       = myNode.firstChildElement(theLevelNameString).text();
+	theLevelAuthor     = myNode.firstChildElement(theLevelAuthorString).text();
+	theLevelLicense    = myNode.firstChildElement(theLevelLicenseString).text();
+	theLevelDescription= myNode.firstChildElement(theLevelDescriptionString).text();
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
 		goto not_good;
