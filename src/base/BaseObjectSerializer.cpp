@@ -28,6 +28,7 @@ extern const char* theXAttributeString;
 extern const char* theYAttributeString;
 extern const char* theAngleAttributeString;
 extern const char* theTypeAttributeString;
+extern const char* thePropertyString;
 
 
 BaseObjectSerializer::BaseObjectSerializer(const BaseObject* anObjectPtr)
@@ -49,5 +50,21 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 		myNode.setAttribute(theWidthAttributeString, theBaseObjectPtr->getTheWidth());
 	if (theBaseObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
 		myNode.setAttribute(theHeightAttributeString, theBaseObjectPtr->getTheHeight());
+
+	if (theBaseObjectPtr->theProperties.isEmpty()==false)
+	{
+		BaseObject::PropertyMap::const_iterator i;
+		for ( i = theBaseObjectPtr->theProperties.constBegin();
+			  i!= theBaseObjectPtr->theProperties.constEnd();
+			 ++i)
+		{
+			QDomElement myProperty = aParent->ownerDocument().createElement(thePropertyString);
+			myProperty.setAttribute("key", i.key());
+			QDomText myT = aParent->ownerDocument().createTextNode(i.value());
+			myProperty.appendChild(myT);
+			myNode.appendChild(myProperty);
+		}
+	}
+
 	aParent->appendChild(myNode);
 }
