@@ -53,19 +53,26 @@ Features:
   x implement Drag&Drop from toolchest to GraphicsView
   x Allow saving of view into XML File (i.e. "saved game")
   / implement post-its
+	* size of drawn NoteIt is wrong
   x implement volleyball
   / i18n of application
+	x GUI
+	x NoteIt
+	* Level Name
+	* Level Description
   x right-mouse button + anchors to adjust properties (e.g. resize, rotate, trapdoor threshold)
 	x implement RMB menu
 	  x delete
 	x add anchors around object
 	x actually implement hori/verti resize
-  * automated regression tests for XML parser/world builder
-  * make simulation speed adjustable:  1/4x 1/2x 1x (4x?)  (it is currently hardcoded to 1/2x)
+  x make simulation speed adjustable:  1/4x 1/2x 1x (2x)
+  * redo DrawObject to allow for arbitrarily scaled square objects, automatically splitting it up
+	in multiple Box2D objects if needed
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
 Version 0.40
+  * automated regression tests for XML parser/world builder
   * RMB actions
 	- adjust properties
 	- actually implement rotation

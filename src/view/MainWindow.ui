@@ -22,7 +22,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" rowspan="2">
-     <widget class="ResizingGraphicsView" name="graphicsView" native="true"/>
+     <widget class="ResizingGraphicsView" name="graphicsView"/>
     </item>
     <item row="0" column="1">
      <widget class="QGroupBox" name="groupBox">
@@ -104,7 +104,7 @@
      <x>0</x>
      <y>0</y>
      <width>724</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -143,9 +143,23 @@
     <property name="title">
      <string>&amp;Simulation</string>
     </property>
+    <widget class="QMenu" name="menuSpeed">
+     <property name="toolTip">
+      <string>adjust the simulation speed</string>
+     </property>
+     <property name="title">
+      <string>Sim Speed</string>
+     </property>
+     <addaction name="action_quarter_speed"/>
+     <addaction name="action_half_speed"/>
+     <addaction name="action_normal_speed"/>
+     <addaction name="action_double_speed"/>
+    </widget>
     <addaction name="actionStart"/>
     <addaction name="actionStop"/>
     <addaction name="actionReset"/>
+    <addaction name="separator"/>
+    <addaction name="menuSpeed"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -156,7 +170,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
    <property name="enabled">
-	<bool>true</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Save...</string>
@@ -236,6 +250,50 @@
   <action name="actionOpen_level">
    <property name="text">
     <string>Open level</string>
+   </property>
+  </action>
+  <action name="action_quarter_speed">
+   <property name="checkable">
+	<bool>true</bool>
+   </property>
+   <property name="text">
+    <string>1/4 speed</string>
+   </property>
+   <property name="toolTip">
+    <string>makes the simulation run at quarter speed</string>
+   </property>
+  </action>
+  <action name="action_half_speed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>1/2 speed</string>
+   </property>
+   <property name="toolTip">
+    <string>makes the simulation run at half speed</string>
+   </property>
+  </action>
+  <action name="action_normal_speed">
+   <property name="checkable">
+	<bool>true</bool>
+   </property>
+   <property name="text">
+    <string>1/1 speed</string>
+   </property>
+   <property name="toolTip">
+    <string>makes the simulation run at normal &quot;real world&quot; speed</string>
+   </property>
+  </action>
+  <action name="action_double_speed">
+   <property name="checkable">
+	<bool>true</bool>
+   </property>
+   <property name="text">
+    <string>2x speed</string>
+   </property>
+   <property name="toolTip">
+    <string>makes the simulation run at double speed</string>
    </property>
   </action>
  </widget>

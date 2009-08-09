@@ -27,7 +27,8 @@
 #include <QTime>
 #include <QUndoStack>
 
-#define DRAWDEBUG
+//#define DRAWDEBUG
+#undef DRAWDEBUG
 
 #ifdef DRAWDEBUG
  #include "Box2D.h"
@@ -78,6 +79,10 @@ public:
 	/// event handler called by the view for drops
 	virtual void dropEventFromView (const QPointF& aDropPos, QDropEvent* event);
 
+	/// sets the simulation speed. 1 = "real world" speed, 0.5 means slowed down, 2.0 means sped up
+	void setSimSpeed(qreal theDivision)
+	{ theSimSpeed = 1000.0 / theDivision; }
+
 protected:
 
 #ifdef DRAWDEBUG
@@ -127,6 +132,9 @@ private:
 	QTime  theSimulationTime;
 	
 	QUndoStack	theUndoStack;
+
+	/// milliseconds per time step ???
+	qreal theSimSpeed;
 	
 private:
 

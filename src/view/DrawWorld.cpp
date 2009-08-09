@@ -142,13 +142,14 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 void DrawWorld::initAttributes ( ) 
 {
 	DEBUG5("void DrawWorld::initAttributes\n");
+	theSimSpeed = 1000.0;
 }
 
 void DrawWorld::on_timerTick()
 {
 	while(theSimulationTime < QTime::currentTime())
 	{
-		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep()*2000.0);
+		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * theSimSpeed);
 	}
 	advance();
 }

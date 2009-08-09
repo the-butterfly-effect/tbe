@@ -50,6 +50,15 @@ private slots:
     { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }
 	void slot_splashScreen_clicked(void);
 
+	void on_action_quarter_speed_activated(void)
+	{ setSimSpeed(0.25); }
+	void on_action_half_speed_activated(void)
+	{ setSimSpeed(0.5); }
+	void on_action_normal_speed_activated(void)
+	{ setSimSpeed(1); }
+	void on_action_double_speed_activated(void)
+	{ setSimSpeed(2.0); }
+
 private:
      Ui::MainWindow ui;
      Level* theLevelPtr;
@@ -59,6 +68,8 @@ private:
      QAction*	theUndoActionPtr;
      QAction*	theRedoActionPtr;
      
+	 qreal theSimSpeed;
+
      /** the state machine handling the Start/Stop/Continue/Rest buttons
       *  and the actual simulation timing
       *  
@@ -75,6 +86,9 @@ private:
      
      /// deletes the existing Level instance and removes its view
      void purgeLevel(void);
+
+	 /// sets the simulation speed
+	 void setSimSpeed(qreal aSpeed);
 };
 
  

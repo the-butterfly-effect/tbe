@@ -63,6 +63,8 @@ MainWindow::MainWindow(QWidget *parent)
 	redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
 	theRedoActionPtr->setShortcuts(redoShortcuts);
 	ui.menuEdit->addAction(theRedoActionPtr);
+
+	setSimSpeed(0.5);
 }                           
 
 MainWindow::~MainWindow()
@@ -162,6 +164,7 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 	theScenePtr=aScene;
 
 	ui.graphicsView->setScene(aScene);
+	aScene->setSimSpeed(theSimSpeed);
 
     QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
     QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
@@ -202,4 +205,18 @@ void MainWindow::purgeLevel(void)
 		theScenePtr=NULL;
 	}
 		
+}
+
+
+void MainWindow::setSimSpeed(qreal aSpeed)
+{
+	DEBUG5("MainWindow::setSimSpeed(%f)\n", aSpeed);
+
+	ui.action_quarter_speed->setChecked(aSpeed == 0.25);
+	ui.action_half_speed->setChecked(aSpeed == 0.5);
+	ui.action_normal_speed->setChecked(aSpeed == 1.0);
+	ui.action_double_speed->setChecked(aSpeed == 2.0);
+	theSimSpeed = aSpeed;
+	if (theScenePtr)
+		theScenePtr->setSimSpeed(theSimSpeed);
 }
