@@ -303,8 +303,14 @@ public:
 	qreal getTheBounciness ( )				 
 		{ return theBounciness; }
 
+	/// set property aKey to aValue
 	void  setProperty(const QString& aKey, const QString& aValue)
 		{ theProperties[aKey] = aValue; }
+
+	/// @returns the value for property aKey
+	/// - or an empty string if it does not exist
+	QString getProperty(const QString& aKey)
+	{ return theProperties.value(aKey, ""); }
 
 protected:
 	void setAngle(qreal anAngle)

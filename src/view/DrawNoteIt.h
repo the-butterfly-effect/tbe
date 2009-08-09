@@ -21,6 +21,7 @@
 
 #include "DrawObject.h"
 #include "NoteIt.h"
+#include "ui_NoteItViewer.h"
 
 // forward declarations
 class BaseObject;
@@ -70,10 +71,19 @@ protected slots:
 private:
 	virtual void initAttributes ( ) ;
 
+	/** retrieves the noteit page from the BaseObject's properties list
+	  * the pages are numbered  "page1", "page2", etc.
+	  * i18n exists: "page1_nl" is the dutch version of page1.
+	  * if a page only exists in English, that one is returned.
+	  * returns an empty string if the page does not exist.
+	  */
+	QString getPageString(unsigned int aPage);
+
 	unsigned int theCurrentPage;
 
 	QDialog*	theDialogPtr;
 
+	Ui::NoteItViewer* theUIPtr;
 };
 
 #endif // DRAWNOTEIT_H

@@ -20,10 +20,13 @@
 	   <property key="texture">used_wood_bar</property>
 	</object>
 	<object type="NoteIt" X="2.2" Y="0.3">
-       <property key="page1">This looks simple, does it?\nUse the ball to topple the pins.</property>
-       <property key="page2">Aww. The ball falls down.\nThat's called gravity.</property>
-       <property key="page3">You probably have to make it roll?</property>
-    </object> 
+	   <property key="page1">This looks simple, does it?&lt;br&gt;&lt;br&gt;Use the ball to topple the pins...</property>
+	   <property key="page1_nl">Dit ziet er simpel uit, he?&lt;br&gt;&lt;br&gt;Bowl de kegels om met de bal...</property>
+	   <property key="page2">Aww. The ball falls down.&lt;br&gt;That's called gravity.</property>
+	   <property key="page2_nl">Ojee. De bal valt omlaag...&lt;br&gt;Dat heet nou zwaartekracht.</property>
+	   <property key="page3">You probably have to make it roll?&lt;br&gt;&lt;br&gt;&lt;br&gt;Was signed: The Noteboy</property>
+	   <property key="page3_nl">Misschien moet je de bal aan het rollen krijgen?&lt;br&gt;&lt;br&gt;&lt;br&gt;Was getekend: De Noteboy</property>
+	</object>
   </predefined>
   <scenery>
     <!-- no scenery yet -->

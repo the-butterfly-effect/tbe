@@ -27,6 +27,7 @@
 #endif
 
 #include <QtGlobal>
+#include <QString>
 
 const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;
@@ -55,5 +56,10 @@ extern int theVerbosity;	// actually defined in main.cpp
 
 
 #define UNUSED_ARG __attribute__((unused))
+
+const char* ASCII(const QString& aQString)
+{
+	return aQString.toAscii().constData();
+}
 
 #endif // TBE_GLOBAL

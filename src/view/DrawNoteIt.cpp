@@ -18,7 +18,6 @@
 
 #include "DrawNoteIt.h"
 #include "BaseObject.h"
-#include "ui_NoteItViewer.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -55,6 +54,28 @@ DrawNoteIt::~DrawNoteIt ( )
 // Other methods
 //  
 
+
+QString DrawNoteIt::getPageString(unsigned int aPage)
+{
+	QString myPageNr = "page"+QString::number(aPage);
+	QString myPlainPage = theBaseObjectPtr->getProperty(myPageNr);
+	if (myPlainPage.isEmpty())
+		return myPlainPage;
+	// first look for page1_nl, then for page1_nl_NL
+	QString myLocName = QLocale::system().name();
+	myPageNr += "_" + myLocName.mid(0,2);
+	QString myLocal1Page = theBaseObjectPtr->getProperty(myPageNr);
+	myPageNr += "_" + myLocName.mid(3,2);
+	QString myLocal2Page = theBaseObjectPtr->getProperty(myPageNr);
+
+	if (myLocal2Page.isEmpty()==false)
+		return myLocal2Page;
+	if (myLocal1Page.isEmpty()==false)
+		return myLocal1Page;
+	return myPlainPage;
+}
+
+
 void DrawNoteIt::initAttributes ( )
 {
 	
@@ -65,14 +86,16 @@ void DrawNoteIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 {
 	DEBUG5("double click!!!\n");
 	 theDialogPtr = new QDialog;
-	 Ui::NoteItViewer myUI;
-	 myUI.setupUi(theDialogPtr);
+	 theUIPtr = new Ui::NoteItViewer();
+	 theUIPtr->setupUi(theDialogPtr);
 
 	 theCurrentPage = 0;
 	 nextClicked();
 
-	 QObject::connect(static_cast<QObject*>(myUI.pushButton_Next), SIGNAL(clicked()),
+	 QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
 					  this, SLOT(nextClicked()));
+	 QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
+					  theDialogPtr, SLOT(reject()));
 
 	 theDialogPtr->exec();
 }
@@ -81,9 +104,20 @@ void DrawNoteIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 void DrawNoteIt::nextClicked()
 {
 	theCurrentPage++;
-	// if there is a next page, display it
+	QString myPageString = getPageString(theCurrentPage);
+
+	// no page? that means the user has hit the finish button
+	if (myPageString.isEmpty())
+	{
+		theDialogPtr->accept();
+		return;
+	}
+
+	theUIPtr->theLabel->setText("<b>"+myPageString+"</b>");
+	theUIPtr->theLabel->setAlignment(Qt::AlignCenter);
+	theUIPtr->theLabel->setWordWrap(true);
 
 	// if there is no next page, replace button text with "Finish"
-
-	// if it already says Finish, close it!
+	if (getPageString(theCurrentPage+1).isEmpty())
+		theUIPtr->pushButton_Next->setText(tr("Finish"));
 }
