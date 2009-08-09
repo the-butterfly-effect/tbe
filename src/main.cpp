@@ -46,3 +46,9 @@ int main(int argc, char **argv)
     
 	return myReturn;
 }
+
+
+const char* ASCII(const QString& aQString)
+{
+	return aQString.toAscii().constData();
+}

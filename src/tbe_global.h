@@ -25,7 +25,6 @@
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""
 #endif
-
 #include <QtGlobal>
 #include <QString>
 
@@ -57,9 +56,7 @@ extern int theVerbosity;	// actually defined in main.cpp
 
 #define UNUSED_ARG __attribute__((unused))
 
-const char* ASCII(const QString& aQString)
-{
-	return aQString.toAscii().constData();
-}
+/// implemented in main.cpp
+extern const char* ASCII(const QString& aQString);
 
 #endif // TBE_GLOBAL
