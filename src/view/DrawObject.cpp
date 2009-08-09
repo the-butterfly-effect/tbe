@@ -31,6 +31,7 @@
 #include <QUndoStack>
 
 #include "UndoMoveCommand.h"
+#include <cmath>
 
 // set/get using static setter/getter in DrawObject
 // as such it is available to DrawObject and derived classes
