@@ -80,8 +80,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4402174"
-     inkscape:cx="36.513742"
-     inkscape:cy="156.22641"
+     inkscape:cx="113.17736"
+     inkscape:cy="176.36227"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -111,7 +111,7 @@
         </dc:rights>
         <dc:publisher>
           <cc:Agent>
-            <dc:title></dc:title>
+            <dc:title />
           </cc:Agent>
         </dc:publisher>
         <dc:source>original work</dc:source>
@@ -155,7 +155,7 @@
        width="413.83575"
        height="27.773584"
        x="-266.89755"
-       y="362.461"
+       y="362.46103"
        transform="matrix(0.7118364,-0.7023453,0.7071068,0.7071068,0,0)"
        ry="13.886792" />
     <rect
@@ -164,40 +164,41 @@
        width="413.83575"
        height="27.773584"
        x="-582.87158"
-       y="48.614635"
+       y="48.614601"
        transform="matrix(-0.7118364,-0.7023453,-0.7071068,0.7071068,0,0)"
        ry="13.886792" />
     <text
        xml:space="preserve"
-       style="font-size:71.45404816px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-       x="185.52917"
-       y="314.85794"
-       id="text2390"
-       transform="scale(1.2123987,0.8248112)"><tspan
+       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans Bold"
+       x="153.27394"
+       y="254.95395"
+       id="text2398"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan2392"
-         x="185.52917"
-         y="314.85794"
-         style="font-weight:bold;text-align:center;text-anchor:middle">Image</tspan><tspan
-         sodipodi:role="line"
-         x="185.52917"
-         y="404.17551"
-         id="tspan2394"
-         style="font-weight:bold;text-align:center;text-anchor:middle">not</tspan><tspan
-         sodipodi:role="line"
-         x="185.52917"
-         y="493.49307"
-         id="tspan2396"
-         style="font-weight:bold;text-align:center;text-anchor:middle">found</tspan></text>
-    <flowRoot
+         id="tspan2400"
+         x="153.27394"
+         y="254.95395">image</tspan></text>
+    <text
        xml:space="preserve"
-       id="flowRoot2398"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><flowRegion
-         id="flowRegion2400"><rect
-           id="rect2402"
-           width="215.24529"
-           height="149.28302"
-           x="52.07547"
-           y="126.36981" /></flowRegion><flowPara
-         id="flowPara2404"></flowPara></flowRoot>  </g>
+       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans Bold"
+       x="184.79738"
+       y="325.08224"
+       id="text2402"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2404"
+         x="184.79738"
+         y="325.08224">not</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans Bold"
+       x="150.05128"
+       y="381.32376"
+       id="text2406"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2408"
+         x="150.05128"
+         y="381.32376">Found</tspan></text>
+  </g>
 </svg>

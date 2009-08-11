@@ -56,7 +56,7 @@ ImageStore& ImageStore::me()
 QString ImageStore::getFilePath(const QString& anImageName, const QString& anExtension) const
 {
 	// let's try to find the file and create the renderer...
-	QStringList mySearchPath = QString(".:images:images/icons:images/objects:images/src").split(":",QString::SkipEmptyParts);
+	QStringList mySearchPath = QString(".:images:images/icons:images/objects:images/src:images/src/NotFound").split(":",QString::SkipEmptyParts);
 	QStringList::iterator i;
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
 	{
@@ -121,7 +121,10 @@ QIcon ImageStore::getMeQIcon(const QString& anImageName, const QSize& aSize)
 
 QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 {
-	assert(!anImageName.isEmpty());
+	const char* NOTFOUND="NotFound";
+
+	if(anImageName.isEmpty())
+		return getMeRenderer(NOTFOUND);
 	assert(theImageStorePtr != NULL);
 
 	// if anImageName is in store, we're done quickly :-)
@@ -139,7 +142,12 @@ QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 	if (myPtr == NULL)
 		return NULL;
 	if (myPtr->isValid()==false)
-		return NULL;
+	{
+		if (anImageName != NOTFOUND)
+			return getMeRenderer(NOTFOUND);
+		else
+			return NULL;
+	}
 	theRendererMap[anImageName]=myPtr;
 	DEBUG5("my Renderer is %p\n", myPtr);
 	return myPtr;
