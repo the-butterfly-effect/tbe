@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="368"
+   height="368"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="NotFound.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3163">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3165" />
+      <stop
+         style="stop-color:#8f8f8f;stop-opacity:1;"
+         offset="1"
+         id="stop3167" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3155">
+      <stop
+         style="stop-color:#0006ff;stop-opacity:1;"
+         offset="0"
+         id="stop3157" />
+      <stop
+         style="stop-color:#61ffd8;stop-opacity:1;"
+         offset="1"
+         id="stop3159" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="linearGradient3161"
+       x1="171.42857"
+       y1="432.36218"
+       x2="285.71429"
+       y2="138.07646"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(39.422382,124.24451)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3163"
+       id="linearGradient3169"
+       x1="377.14285"
+       y1="198.07645"
+       x2="128.57144"
+       y2="303.79074"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(39.422382,124.24451)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4402174"
+     inkscape:cx="36.513742"
+     inkscape:cy="156.22641"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1070"
+     inkscape:window-height="729"
+     inkscape:window-x="157"
+     inkscape:window-y="39" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Image not found</dc:title>
+        <dc:date>Aug 11 2009</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Klaas van Gend</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>CC-SA-3.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title></dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>original work</dc:source>
+        <dc:description>This is a placeholder for any image that is not found.</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-39.422382,-124.24451)">
+    <rect
+       style="fill:url(#linearGradient3161);fill-opacity:1;stroke:url(#linearGradient3169);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect2383"
+       width="360"
+       height="360"
+       x="43.422382"
+       y="128.24451"
+       ry="17.35849" />
+    <rect
+       style="fill:#ff0000;fill-opacity:0.89803922;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3195"
+       width="413.83575"
+       height="27.773584"
+       x="-266.89755"
+       y="362.461"
+       transform="matrix(0.7118364,-0.7023453,0.7071068,0.7071068,0,0)"
+       ry="13.886792" />
+    <rect
+       style="fill:#ff0000;fill-opacity:0.89552241;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3199"
+       width="413.83575"
+       height="27.773584"
+       x="-582.87158"
+       y="48.614635"
+       transform="matrix(-0.7118364,-0.7023453,-0.7071068,0.7071068,0,0)"
+       ry="13.886792" />
+    <text
+       xml:space="preserve"
+       style="font-size:71.45404816px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="185.52917"
+       y="314.85794"
+       id="text2390"
+       transform="scale(1.2123987,0.8248112)"><tspan
+         sodipodi:role="line"
+         id="tspan2392"
+         x="185.52917"
+         y="314.85794"
+         style="font-weight:bold;text-align:center;text-anchor:middle">Image</tspan><tspan
+         sodipodi:role="line"
+         x="185.52917"
+         y="404.17551"
+         id="tspan2394"
+         style="font-weight:bold;text-align:center;text-anchor:middle">not</tspan><tspan
+         sodipodi:role="line"
+         x="185.52917"
+         y="493.49307"
+         id="tspan2396"
+         style="font-weight:bold;text-align:center;text-anchor:middle">found</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2398"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><flowRegion
+         id="flowRegion2400"><rect
+           id="rect2402"
+           width="215.24529"
+           height="149.28302"
+           x="52.07547"
+           y="126.36981" /></flowRegion><flowPara
+         id="flowPara2404"></flowPara></flowRoot>  </g>
+</svg>
