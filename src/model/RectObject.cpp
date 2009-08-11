@@ -122,7 +122,39 @@ void RectObject::adjustParameters(void)
 
 void RectObject::adjustTallParametersPart(void)
 {
-	// FIXME/TODO: implement
+	// we know that height/width > ASPECT_RATIO
+	// so use multiple shapes to fix that
+	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
+	// also, calculate the density correctly - each shape has same density
+	qreal myDensity = getProperty(MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+
+	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
+	qreal myDoneHeight = 0.0;
+	for (int i=0; i<myNrOfElements; i++)
+	{
+		b2PolygonDef* boxDef = new b2PolygonDef();
+
+		// make sure *not* to have a small last part - i.e. the last two parts
+		// average their height.
+		float myElemHeight=myBaseElemHeight;
+		if (getTheHeight()-myDoneHeight < 2.0*myBaseElemHeight)
+		{
+			if (getTheHeight()-myDoneHeight > 1.0*myBaseElemHeight)
+			{
+				myElemHeight = (getTheHeight()-myDoneHeight)/2.0;
+			}
+			else
+			{
+				myElemHeight = getTheHeight()-myDoneHeight;
+			}
+		}
+		DEBUG5("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
+		boxDef->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
+							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
+		boxDef->density = myDensity;
+		theShapeList.push_back(boxDef);
+		myDoneHeight += myElemHeight;
+	}
 }
 
 void RectObject::adjustWideParametersPart(void)
