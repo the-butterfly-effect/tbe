@@ -48,11 +48,12 @@ public:
 	enum ImageType
 	{
 		IMAGE_PNG,
-		IMAGE_SVG
+		IMAGE_SVG,
+		IMAGE_ANY
 	};
 
 	/// Svg/Png Constructor
-	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_SVG);
+	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
 
 
 	/**

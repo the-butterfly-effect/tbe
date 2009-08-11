@@ -52,7 +52,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
-						DrawObject::ImageType anImageType)
+						UNUSED_ARG DrawObject::ImageType anImageType)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	theUndeleteDrawWorldPtr(NULL)
 {

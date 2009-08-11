@@ -304,7 +304,7 @@ public:
 		{ return theBounciness; }
 
 	/// set property aKey to aValue
-	void  setProperty(const QString& aKey, const QString& aValue)
+	virtual void  setProperty(const QString& aKey, const QString& aValue)
 		{ theProperties[aKey] = aValue; }
 
 	/// @returns the value for property aKey
