@@ -54,6 +54,8 @@ RectObject::RectObject ( ) : BaseObject(), theNameString(DEFAULT_RECTOBJECT_NAME
 
 	// because this object is very flexible and many parameters can be set through
 	// the Properties, do not assume too much here...
+
+	// also: keep in mind that child objects may set some things automatically
 }
 
 RectObject::~RectObject ( ) { }

@@ -19,7 +19,7 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "BaseObject.h"
+#include "RectObject.h"
 
 /**
   * class Floor
@@ -28,7 +28,7 @@
   * It is only resizable in width. 
   */
 
-class Floor : public BaseObject
+class Floor : public RectObject
 {
 public:
 
@@ -67,18 +67,6 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return HORIZONTALRESIZE;	}
-
-	/**
-	 * Set the value of theWidth
-	 * @param new_var the new value of theWidth
-	 */
-	virtual void setTheWidth ( qreal new_var );
-
-private:
-	/// this member recalculates the size of the slab based on current size
-	void adjustParameters(void);
-	
-	static const qreal theSlabThickness = 0.1; // m
 };
 
 #endif // FLOOR_H
