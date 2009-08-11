@@ -102,8 +102,18 @@ public:
 	
 protected:
 	/// this member fixes up the physical model based on new width or height
+	/// do not override unless Klaas okays it
 	void adjustParameters(void);
 
+	static const qreal ASPECT_RATIO = 10.0;
+
+private:
+	/// adjustParameters for tall objects (where height/width > ASPECT_RATIO)
+	/// only expected to be called from adjustParameters()
+	void adjustTallParametersPart();
+	/// adjustParameters for wide objects (where width/height > ASPECT_RATIO)
+	/// only expected to be called from adjustParameters()
+	void adjustWideParametersPart();
 
 	QString theNameString;
 	QString theToolTipString;

@@ -1,43 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mydocument>
 <tbe-level>
-<levelinfo>
-  <title>Bowling for Butterflies</title>
-  <author>Klaas van Gend</author>
-  <date>20090630</date>
-  <license>GPLv2</license>
-  <source>hand-written</source>
-</levelinfo>
-<scene>
-  <scenesize width="4.5" height="4" />
-  <view width="6" height="3" X="3" Y="1.5" />
-  <predefined>
-    <object type="Bowling Ball"        X="0.4" Y="3.0" />
-	<object type="Bowling Pin"  id="1" X="3.0" Y="0.29"/>
-	<object type="Bowling Pin"  id="2" X="3.2" Y="0.29"/>
-	<object type="Bowling Pin"         X="3.4" Y="0.29"/>
-	<object type="RightRamp"           X="1.0" Y="0.6" width="2.0"/>
-	<object width="4.5" X="2.25" Y="0.05" type="Floor">
-	   <property key="texture">used_wood_bar</property>
-	</object>
-	<object type="NoteIt" X="2.2" Y="0.3">
-	   <property key="page1">This looks simple, does it?&lt;br&gt;&lt;br&gt;Use the ball to topple the pins...</property>
-	   <property key="page1_nl">Dit ziet er simpel uit, he?&lt;br&gt;&lt;br&gt;Bowl de kegels om met de bal...</property>
-	   <property key="page2">Aww. The ball falls down.&lt;br&gt;That's called gravity.</property>
-	   <property key="page2_nl">Ojee. De bal valt omlaag...&lt;br&gt;Dat heet nou zwaartekracht.</property>
-	   <property key="page3">You probably have to make it roll?&lt;br&gt;&lt;br&gt;&lt;br&gt;Was signed: The Noteboy</property>
-	   <property key="page3_nl">Misschien moet je de bal aan het rollen krijgen?&lt;br&gt;&lt;br&gt;&lt;br&gt;Was getekend: De Noteboy</property>
-	</object>
-  </predefined>
-  <scenery>
-    <!-- no scenery yet -->
-  </scenery>
-  <goal>
-    <success id="1">angle!=0</success>
-    <success id="2">X&gt;3.4</success>
-  </goal>
-</scene>
-<toolbox>
-  <object count="1" name="Ramp" />
-  <object count="1" name="Trap Door" />
-</toolbox>
+    <levelinfo>
+        <title>Bowling for Butterflies</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>square</description>
+        <date>8/11/09</date>
+    </levelinfo>
+    <scene>
+        <scenesize width="4.5" height="4" />
+        <predefined>
+            <object X="0.4" Y="3" type="Bowling Ball" />
+            <object X="3" Y="0.29" type="Bowling Pin" />
+            <object X="3.2" Y="0.29" type="Bowling Pin" />
+            <object X="3.4" Y="0.29" type="Bowling Pin" />
+            <object width="2" X="1" Y="0.6" height="1" type="RightRamp" />
+            <object width="4.5" X="2.25" Y="0.05" type="Floor" >
+                <property key="texture" >used_wood_bar</property>
+            </object>
+            <object X="2.2" Y="0.3" type="NoteIt" >
+                <property key="page1" >This looks simple, does it?&lt;br>&lt;br>Use the ball to topple the pins...</property>
+                <property key="page1_nl" >Dit ziet er simpel uit, he?&lt;br>&lt;br>Bowl de kegels om met de bal...</property>
+                <property key="page2" >Aww. The ball falls down.&lt;br>That's called gravity.</property>
+                <property key="page2_nl" >Ojee. De bal valt omlaag...&lt;br>Dat heet nou zwaartekracht.</property>
+                <property key="page3" >You probably have to make it roll?&lt;br>&lt;br>&lt;br>Was signed: The Noteboy</property>
+                <property key="page3_nl" >Misschien moet je de bal aan het rollen krijgen?&lt;br>&lt;br>&lt;br>Was getekend: De Noteboy</property>
+            </object>
+            <object width="1" X="3.720406293869019" Y="3.312260389328003" height="1" type="RectObject">
+	      <property key="ImageName">square</property>
+	      <property key="Mass">10.0</property>
+	    </object>
+        </predefined>
+    </scene>
+    <toolbox/>
 </tbe-level>

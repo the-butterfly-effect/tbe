@@ -31,6 +31,8 @@ static const char* DESCRIPTION_STRING = "Description";
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
 
+
+
 //// this class' ObjectFactory
 class RectObjectFactory : public ObjectFactory
 {
@@ -87,17 +89,15 @@ void RectObject::adjustParameters(void)
 
 	clearShapeList();
 
-	if (getTheWidth()/getTheHeight() > 10.0)
+	if (getTheWidth()/getTheHeight() > ASPECT_RATIO)
 	{
-		// FIXME/TODO: implement
-//		adjust_wide_Parameters();
+		adjustWideParametersPart();
 	}
 	else
 	{
-		if (getTheWidth()/getTheHeight() < 1/10.0)
+		if (getTheWidth()/getTheHeight() < 1/ASPECT_RATIO)
 		{
-			// FIXME/TODO: implement
-//			adjust_tall_Parameters();
+			adjustTallParametersPart();
 		}
 		else
 		{
@@ -119,6 +119,50 @@ void RectObject::adjustParameters(void)
 		createPhysicsObject();
 	}
 }
+
+void RectObject::adjustTallParametersPart(void)
+{
+	// FIXME/TODO: implement
+}
+
+void RectObject::adjustWideParametersPart(void)
+{
+	// we know that width/height > ASPECT_RATIO
+	// so use multiple shapes to fix that
+	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
+	// also, calculate the density correctly - each shape has same density
+	qreal myDensity = getProperty(MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+
+	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
+	qreal myDoneWidth = 0.0;
+	for (int i=0; i<myNrOfElements; i++)
+	{
+		b2PolygonDef* boxDef = new b2PolygonDef();
+
+		// make sure *not* to have a small last part - i.e. the last two parts
+		// average their width.
+		float myElemWidth=myBaseElemWidth;
+		if (getTheWidth()-myDoneWidth < 2.0*myBaseElemWidth)
+		{
+			if (getTheWidth()-myDoneWidth > 1.0*myBaseElemWidth)
+			{
+				myElemWidth = (getTheWidth()-myDoneWidth)/2.0;
+			}
+			else
+			{
+				myElemWidth = getTheWidth()-myDoneWidth;
+			}
+		}
+//		DEBUG5("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
+		boxDef->SetAsBox  	( myElemWidth/2.0, getTheHeight()/2.0,
+							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
+		boxDef->density = myDensity;
+		theShapeList.push_back(boxDef);
+		myDoneWidth += myElemWidth;
+	}
+
+}
+
 
 DrawObject*  RectObject::createDrawObject(void)
 {
