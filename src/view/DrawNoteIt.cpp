@@ -27,7 +27,7 @@
 //  
 
 DrawNoteIt::DrawNoteIt (BaseObject* aBaseObjectPtr)
-	: DrawObject(aBaseObjectPtr, "NoteIt")
+	: DrawObject(aBaseObjectPtr, "NoteIt"), theDialogPtr(NULL)
 {
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawNoteIt\n");
