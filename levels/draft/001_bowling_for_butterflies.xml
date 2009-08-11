@@ -16,7 +16,7 @@
             <object X="3.4" Y="0.29" type="Bowling Pin" />
             <object width="2" X="1" Y="0.6" height="1" type="RightRamp" />
             <object width="4.5" X="2.25" Y="0.05" type="Floor" >
-                <property key="texture" >used_wood_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.2" Y="0.3" type="NoteIt" >
                 <property key="page1" >This looks simple, does it?&lt;br>&lt;br>Use the ball to topple the pins...</property>

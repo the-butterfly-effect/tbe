@@ -66,11 +66,11 @@ Features:
 	x add anchors around object
 	x actually implement hori/verti resize
   x make simulation speed adjustable:  1/4x 1/2x 1x (2x)
-  / redo DrawObject to allow for arbitrarily scaled square objects, automatically splitting it up
+  x redo DrawObject to allow for arbitrarily scaled square objects, automatically splitting it up
 	in multiple Box2D objects if needed
 	* rewrite Wall object
-	* rewrite Floor object
-  * use "not found" image placeholder
+	x rewrite Floor object
+  x use "not found" image placeholder
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter

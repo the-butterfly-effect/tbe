@@ -44,7 +44,7 @@ Anchors* DrawObject::theAnchorsPtr = NULL;
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	theUndeleteDrawWorldPtr(NULL)
+	thePixmapPtr(NULL),	theUndeleteDrawWorldPtr(NULL)
 {
 	if (theBaseObjectPtr!=NULL)
 		initAttributes();
@@ -54,10 +54,13 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	theUndeleteDrawWorldPtr(NULL)
+	thePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL)
 {
 	initAttributes();
-	theRenderer = ImageStore::getRenderer(anImageName);
+	if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
+		thePixmapPtr= ImageStore::getPNGPixmap(anImageName);
+	if (thePixmapPtr == NULL)
+		theRenderer = ImageStore::getRenderer(anImageName);
 }
 
 
@@ -254,20 +257,22 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 
 	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 
-	if (theRenderer == NULL)
+	if (thePixmapPtr != NULL)
 	{
-		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-		// Body
-//		myPainter->drawRect(myRect);
-		myPainter->setBrush(color);
-		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
-	}
-	else
-	{
-		theRenderer->render(myPainter, myRect);
-		//myPainter->drawRect(myRect);
+		myPainter->drawPixmap(myRect, *thePixmapPtr, thePixmapPtr->rect());
+		return;
 	}
 
+	if (theRenderer != NULL)
+	{
+		theRenderer->render(myPainter, myRect);
+		return;
+	}
+
+	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+	// Body
+	myPainter->setBrush(color);
+	myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
 }
 
 bool DrawObject::pushUndo(QUndoCommand* anUndo)

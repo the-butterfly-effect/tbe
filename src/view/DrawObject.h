@@ -166,6 +166,7 @@ protected:
 	static Anchors* theAnchorsPtr;
 
 	QSvgRenderer*	theRenderer;
+	QPixmap*		thePixmapPtr;
 
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!
