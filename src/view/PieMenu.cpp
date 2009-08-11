@@ -23,7 +23,7 @@
 #include "PieMenu.h"
 #include "ImageStore.h"
 #include "UndoDeleteCommand.h"
-
+#include "Popup.h"
 
 PieMenu::PieMenu(DrawObject* aDrawObjectPtr)
 		: theDrawObjectPtr(aDrawObjectPtr)
@@ -53,19 +53,26 @@ void PieMenu::createActions(void)
 	BaseObject* myBOPtr = theDrawObjectPtr->getBaseObjectPtr();
 	QString myBOName = myBOPtr->getName();
 
+	// FIXME/TODO: the below should only show on user inserted objects *or*
+	// when we are in LevelEditor mode...
 	actionFactoryMethod("ActionDelete", tr("Delete %1").arg(myBOName),
 						tr("This will delete %1 from the screen and put it back in the Toolbox").arg(myBOName),
 						SLOT(deleteObject()), myBOPtr->isMovable());
+	// FIXME/TODO: the below probably should look significantly different between
+	// level editor mode (which should just launch a key/value editor) or
+	// the regular play - where you probably get a graphic dialog with dials or so.
 	actionFactoryMethod("ActionAdjust", tr("Adjust Properties"),
 						tr("(if possibile) Modify the properties of %1").arg(myBOName),
 						SLOT(adjust()), false);
+	// FIXME/TODO: the below should only show during level editor mode
+	actionFactoryMethod("ActionTexture", tr("Set Texture"),
+						tr("(if possibile) Allow to set a custom texture"),
+						SLOT(setTexture()), false);
 }
 
 
 void PieMenu::deleteObject(void)
 {
-	// TODO: implemente delete
-	// do this by implementing UndoDeleteCommand
 	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theDrawObjectPtr, theDrawObjectPtr->getBaseObjectPtr());
 	theDrawObjectPtr->getUndoStackPtr()->push(myCommandPtr);
 }
@@ -89,4 +96,10 @@ QString PieMenu::getEditModeIconName(PieMenu::EditMode anEditMode)
 		return "ActionNone";
 	}
 	return "";
+}
+
+void PieMenu::setTexture(void)
+{
+	// TODO/FIXME: implement this...
+	Popup::Info(tr("This dialog is not implemented yet"), this);
 }

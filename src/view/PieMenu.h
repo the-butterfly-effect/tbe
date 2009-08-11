@@ -67,8 +67,9 @@ public:
 
 		static QString getEditModeIconName(EditMode anEditMode=static_cast<EditMode>(0));
 
-protected slots:
+private slots:
 		void deleteObject(void);
+		void setTexture(void);
 
 private:
 		/** this member populates the menu
