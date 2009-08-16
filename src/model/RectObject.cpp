@@ -22,12 +22,12 @@
 #include "DrawObject.h"
 
 
-static const char* OBJECT_NAME_STRING  = "ObjectName";
-static const char* BOUNCINESS_STRING  = "Bounciness";
-static const char* RESIZABLE_STRING   = "Resizable";
-static const char* MASS_STRING        = "Mass";
-static const char* IMAGE_NAME_STRING   = "ImageName";
-static const char* DESCRIPTION_STRING = "Description";
+const char* OBJECT_NAME_STRING  = "ObjectName";
+const char* BOUNCINESS_STRING  = "Bounciness";
+const char* RESIZABLE_STRING   = "Resizable";
+const char* MASS_STRING        = "Mass";
+const char* IMAGE_NAME_STRING   = "ImageName";
+const char* DESCRIPTION_STRING = "Description";
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
 

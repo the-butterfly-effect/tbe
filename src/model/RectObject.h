@@ -21,6 +21,14 @@
 
 #include "BaseObject.h"
 
+extern const char* OBJECT_NAME_STRING;
+extern const char* BOUNCINESS_STRING;
+extern const char* RESIZABLE_STRING;
+extern const char* MASS_STRING;
+extern const char* IMAGE_NAME_STRING;
+extern const char* DESCRIPTION_STRING;	/// contains Tooltip
+
+
 /**
   * class RectObject
   * 
