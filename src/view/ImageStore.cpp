@@ -57,7 +57,7 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 {
 	// let's try to find the file and create the renderer...
 	QStringList mySearchPath = QString(".:images:images/icons:images/objects:"
-									   "images/src:images/src/NotFound:"
+									   "images/src:"
 									   "images/textures").split(":",QString::SkipEmptyParts);
 	QStringList::iterator i;
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
