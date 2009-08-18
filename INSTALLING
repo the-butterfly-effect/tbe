@@ -19,8 +19,9 @@ These include:
 
 
 2)
-As a *NORMAL* user, build everything in 3rdParty:
+As a *NORMAL* user, build everything in 3rdParty and images/src:
     $   make -C 3rdParty
+    $   make -C images/src all
 (don't worry, this will be integrated into the make of step 3 at some point)
 
 3)
