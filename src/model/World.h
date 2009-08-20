@@ -24,10 +24,54 @@
 #include "Box2D.h"
 #include "tbe_global.h"
 
+#include <set>
+
 // Forward Definitions:
 class BaseObject;
 class MainWindow;
 class DrawWorld;
+
+/*
+/// this class can be registered to receive all contact points
+/// for each simulation step. That's a lot of calls, usually :-(
+/// also note that the data has very limited usability it is totally
+/// renewed every step.
+class ContactListener : public b2ContactListener
+{
+protected:
+	/// implemented from b2ContactListener: add a new contact point
+	void Add(const b2ContactPoint* point);
+	/// implemented from b2ContactListener: change a contact point to persist
+	void Persist(const b2ContactPoint* point);
+	/// implemented from b2ContactListener: remove a contact point
+	void Remove(const b2ContactPoint* point);
+
+	/// it doesn't make sense to use any more complex storage than vector
+	/// the good news is that vector makes a copy upon insertion
+	/// - that's what we need anyway
+	vector<b2ContactPoint> myList;
+};
+*/
+
+
+/** if this interface is attached() to World,
+  * the World instance will call back every registered
+  * interface immediately after each time step.
+  */
+class SimStepCallbackInterface
+{
+	// only usable by World
+	friend class World;
+private:
+	/** if the interface is registered with World,
+	  * World will call back every registered interface
+	  * immediately after each time step.
+	  * @param aTimeStep	time step between previous and new time
+	  * @param aTotalTime	the new total time
+	  */
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) = 0;
+};
+
 
 /**
   * class World
@@ -91,7 +135,26 @@ public:
 	 */
 	qreal simStep (void);
 
-	
+public:
+	//////////////////////////////////////////////////////////////////////////
+	// the call back interface for simstep
+
+	/** register a SimStepCallbackInterface
+	  * @param anInterface - interface to register for callbacks every time step
+	  * @returns true if registering successful, false if not (already registered? NULL?)
+	  */
+	bool registerCallback(SimStepCallbackInterface* anInterface);
+
+	/** unregister a SimStepCallbackInterface
+	  * @param anInterface - interface to register for callbacks every time step
+	  * @returns true if unregistering successful, false if not (not registered? NULL?)
+	  */
+	bool unregisterCallback(SimStepCallbackInterface* anInterface);
+
+private:
+	typedef std::set<SimStepCallbackInterface*> CallbackList;
+	CallbackList theCallbackList;
+
 public:
 	// Public attribute accessor methods
 	//

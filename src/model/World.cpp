@@ -75,8 +75,8 @@ bool World::addObject(BaseObject* anObjectPtr)
 		return false;
 	
 	theObjectPtrList.push_back(anObjectPtr);
-	anObjectPtr->reset();
 	anObjectPtr->theWorldPtr = this;
+	anObjectPtr->reset();
 	
 	return true;
 }
@@ -151,6 +151,15 @@ bool World::removeObject(BaseObject* anObjectPtr)
 	return true;
 }
 
+bool World::registerCallback(SimStepCallbackInterface* anInterface)
+{
+	if (anInterface==NULL)
+		return false;
+	theCallbackList.insert(anInterface);
+	return true;
+}
+
+
 void World::reset ( ) 
 {
 	DEBUG5("World::reset()\n");
@@ -163,6 +172,27 @@ void World::reset ( )
 
 qreal World::simStep (void)
 {
+	// run the simulation
 	theB2WorldPtr->Step(theDeltaTime,theIterationcount);
+
+	// run all the callbacks per sim step
+	CallbackList::iterator i;
+	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
+	{
+		// FIXME: total time not available???
+		(*i)->callbackStep(theDeltaTime, 0.0);
+	}
+
+	// run all the callbacks for each sensor
+	// (not implemented yet)
+
 	return theDeltaTime;
+}
+
+bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
+{
+	if (anInterface==NULL)
+		return false;
+	theCallbackList.erase(anInterface);
+	return true;
 }
