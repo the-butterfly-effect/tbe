@@ -58,6 +58,17 @@ CokeMentosBottle::CokeMentosBottle()
 	setBottleStatus(UNTRIGGERED);
 }
 
+void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
+{
+	DEBUG5("coke receives callback\n");
+}
+
+void CokeMentosBottle::reset(void)
+{
+	theWorldPtr->registerCallback(this);
+	BaseObject::reset();
+}
+
 
 void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 {

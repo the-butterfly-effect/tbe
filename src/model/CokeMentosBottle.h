@@ -20,12 +20,13 @@
 #define COKEMENTOSBOTTLE_H
 
 #include "RectObject.h"
+#include "World.h"
 
 /** this class implements the famous coke+mentos trick:
   * insert a mentos in a coke bottle and it will blow a
   * huge fountain - until the bottle is empty.
   */
-class CokeMentosBottle : public RectObject
+class CokeMentosBottle : public RectObject, public SimStepCallbackInterface
 {
 public:
     CokeMentosBottle();
@@ -58,6 +59,14 @@ public:
 
 	/// one of the two ways to trigger the blowing:
 	void setBottleStatus(BottleStatus aNewStat);
+
+	/// overridden from BaseObject because this class wants to register for callbacks
+	virtual void reset(void);
+
+private:
+	/// implemented from SimStepCallbackInterface
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+
 
 private:
 	// Private things
