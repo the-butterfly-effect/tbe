@@ -111,7 +111,7 @@ public:
 protected:
 	/// this member fixes up the physical model based on new width or height
 	/// do not override unless Klaas okays it
-	void adjustParameters(void);
+	virtual void adjustParameters(void);
 
 	static const qreal ASPECT_RATIO = 10.0;
 
