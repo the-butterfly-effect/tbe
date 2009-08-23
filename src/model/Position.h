@@ -62,7 +62,7 @@ Position operator+(const Position& p1, const Position& p2);
 /// add Position+QPointF
 Position operator+(const Position& p1, const QPointF& p2);
 
-/// add two Positions together (including angle!)
+/// subtracts two Positions (including angle!)
 Position operator-(const Position& p1, const Position& p2);
 
 /// constant multiplies vector only - not the angle
