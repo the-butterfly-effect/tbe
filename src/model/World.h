@@ -135,6 +135,10 @@ public:
 	 */
 	qreal simStep (void);
 
+	/// returns the gravity constant for this world
+	virtual qreal getG(void)
+	{ return -9.81; }
+
 public:
 	//////////////////////////////////////////////////////////////////////////
 	// the call back interface for simstep
