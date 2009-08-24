@@ -91,47 +91,47 @@
     <message>
         <location filename="../src/view/MainWindow.ui" line="92"/>
         <source>Reset</source>
-        <translation type="unfinished">Terugstellen</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="112"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bestand</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="124"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Wijzig</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="129"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="135"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>Beel&amp;d</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="144"/>
         <source>&amp;Simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Simulatie</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="162"/>
         <source>Save...</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="167"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Info...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="175"/>
         <source>Restart Level...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Herstart Level...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="183"/>
