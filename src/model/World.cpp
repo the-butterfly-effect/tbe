@@ -163,10 +163,23 @@ bool World::registerCallback(SimStepCallbackInterface* anInterface)
 void World::reset ( ) 
 {
 	DEBUG5("World::reset()\n");
-	BaseObjectPtrList::iterator i;
-	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+
+	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
+	for (; i!= theObjectPtrList.end(); ++i)
 	{
-		(*i)->reset();
+		DEBUG5("*i=%p, '%s'\n", *i, ASCII((*i)->getName()));
+		if ((*i)->isTemp())
+		{
+			DEBUG5("----delete %p\n", *i);
+			// FIXME/TODO: this erase does not as expected
+			BaseObjectPtrList::iterator j=theObjectPtrList.erase(i);
+			if ((*j)==(*i))
+				break;
+		}
+		else
+		{
+			(*i)->reset();
+		}
 	}
 }
 

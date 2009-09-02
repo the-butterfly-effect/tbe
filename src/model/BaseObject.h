@@ -124,6 +124,10 @@ public:
 	 */
 	bool isSleeping() const;
 	
+	/// returns true if the object should not surive a World::reset()
+	virtual bool isTemp() const
+	{ return false; }
+
 	/// resets the object into the start position/situation
 	virtual void reset(void);
 
