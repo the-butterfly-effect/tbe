@@ -182,11 +182,12 @@ CokeSplatter::CokeSplatter()
 	setProperty(IMAGE_NAME_STRING, "CokeSplatter");
 	setProperty(DESCRIPTION_STRING, "");
 
+	// the actual shape
 	b2CircleDef* myBubbleDef = new b2CircleDef();
 	myBubbleDef->radius = theRadius;
 	myBubbleDef->density= 0.01 / (PI * theRadius * theRadius);
-
 	theShapeList.push_back(myBubbleDef);
+
 	setTheBounciness(0.0);
 	setTheWidth(2*theRadius);
 	setTheHeight(2*theRadius);
@@ -194,6 +195,7 @@ CokeSplatter::CokeSplatter()
 
 CokeSplatter::~CokeSplatter()
 {
+	DEBUG5("CokeSplatter::~CokeSplatter()\n");
 }
 
 void CokeSplatter::reset()

@@ -46,7 +46,8 @@ BaseObject::~BaseObject ( )
 	DEBUG5("~BaseObject() for %p\n", this);
 
 	// destroy the Body
-	// (will also destroy the shapes)
+	//
+	deletePhysicsObject();
 	
 	// destroy the ShapeDefs
 	//

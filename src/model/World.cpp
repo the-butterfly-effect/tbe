@@ -165,20 +165,17 @@ void World::reset ( )
 	DEBUG5("World::reset()\n");
 
 	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
-	for (; i!= theObjectPtrList.end(); ++i)
+	while (i!= theObjectPtrList.end())
 	{
-		DEBUG5("*i=%p, '%s'\n", *i, ASCII((*i)->getName()));
 		if ((*i)->isTemp())
 		{
-			DEBUG5("----delete %p\n", *i);
-			// FIXME/TODO: this erase does not as expected
-			BaseObjectPtrList::iterator j=theObjectPtrList.erase(i);
-			if ((*j)==(*i))
-				break;
+			delete (*i);
+			i = theObjectPtrList.erase(i);
 		}
 		else
 		{
 			(*i)->reset();
+			++i;
 		}
 	}
 }
