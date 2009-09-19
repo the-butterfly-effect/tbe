@@ -17,6 +17,7 @@
  */
 
 #include "Position.h"
+#include "Box2D.h"
 
 // Constructors/Destructors
 
@@ -31,6 +32,12 @@ Position::Position (const QPointF& aPoint)
 		: x(aPoint.x()), y(-aPoint.y()), angle(0)
 {
 	// again: nothing to do here.
+}
+
+
+b2Vec2 Position::toB2Vec2(void)
+{
+	return b2Vec2(x,y);
 }
 
 
@@ -53,3 +60,4 @@ Position operator*(const qreal p1, const Position& p2)
 {
 	return Position(p1*p2.x, p1*p2.y, p2.angle);
 }
+

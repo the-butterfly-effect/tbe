@@ -22,6 +22,8 @@
 #include "tbe_global.h"
 #include <QPointF>
 
+class b2Vec2;
+
 /**
   * class Position
   * 
@@ -53,6 +55,8 @@ public:
 	qreal angle;
 
 	const static qreal minimalMove = 0.005;
+
+	b2Vec2 toB2Vec2(void);
 };
 
 
