@@ -86,7 +86,7 @@ private:
 
 	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
 
-	QPixmap* getMePNGPixmap(const QString& anImageName);
+	QPixmap* getMePNGPixmap(QString anImageName);
 
 	QString getFilePath(const QString& anImageName, const QString& anExtension) const;
 

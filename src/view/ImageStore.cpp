@@ -26,6 +26,9 @@
 
 static ImageStore* theImageStorePtr = NULL;
 
+static const char* NOTFOUND="NotFound";
+
+
 // Constructors/Destructors
 //
 
@@ -74,9 +77,11 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 	return QString();
 }
 
-QPixmap* ImageStore::getMePNGPixmap(const QString& anImageName)
+QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
 {
-	assert(!anImageName.isEmpty());
+	if (anImageName.isEmpty())
+		anImageName = NOTFOUND;
+
 	assert(theImageStorePtr != NULL);
 
 	// if anImageName is in store, we're done quickly :-)
@@ -123,8 +128,6 @@ QIcon ImageStore::getMeQIcon(const QString& anImageName, const QSize& aSize)
 
 QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 {
-	const char* NOTFOUND="NotFound";
-
 	if(anImageName.isEmpty())
 		return getMeRenderer(NOTFOUND);
 	assert(theImageStorePtr != NULL);
