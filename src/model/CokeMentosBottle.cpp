@@ -67,13 +67,13 @@ void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
 {
 	DEBUG5("coke receives callback\n");
 
+	// FIXME: TEMP CODE !!!
 	// this is just a simple delay/rate limiter
-	static int myBlowcount = 0;
-	myBlowcount++;
-	if (myBlowcount > 50 && ((myBlowcount%4)==0))
+	// should be triggered, obviously...
+	theBlowcount++;
+	if (theBlowcount > 50 && ((theBlowcount%3)==0))
 	{
-		static int mySplatterCount = 0;
-		newSplatter(mySplatterCount++);
+		newSplatter(theSplatterCount++);
 	}
 }
 
@@ -81,6 +81,7 @@ void CokeMentosBottle::reset(void)
 {
 	theWorldPtr->registerCallback(this);
 	BaseObject::reset();
+	setBottleStatus(UNTRIGGERED);
 }
 
 
@@ -90,6 +91,8 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	{
 	case UNTRIGGERED:
 		theCokeAmount = 2.0;
+		theBlowcount  = 0;
+		theSplatterCount = 0;
 		break;
 	case TRIGGERED:
 		break;
@@ -137,13 +140,13 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 
 	CokeSplatter* mySplatter = new CokeSplatter();
 
-	// start position for the splatter is above the opening: (0, +0.53*object height)
+	// start position for the splatter is above the opening: (0, +0.59*object height)
 	Position myStartPos = getTempCenter();
 
 	// the bottle position contains the angle, we need that to compensate for
 	// rotated bottles
 	qreal myAngle = myStartPos.angle;
-	myStartPos = myStartPos + Position(getTheHeight()*-0.53*sin(myAngle), getTheHeight()*0.53*cos(myAngle), PI/2.0);
+	myStartPos = myStartPos + Position(getTheHeight()*-0.59*sin(myAngle), getTheHeight()*0.59*cos(myAngle), PI/2.0);
 
 	// departure velocity
 	qreal myH;
@@ -160,14 +163,17 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	// normal world to calculate it - not related to the G in a alternative world.
 	// (otherwise, the coke bottle would blow as high on the moon as on earth)
 	qreal myV = sqrt(2.0 * 9.81 * myH);
-	const qreal mySplatterMass = 0.01;
+	const qreal mySplatterMass = 0.015;
 	mySplatter->setAll(theWorldPtr, myStartPos, myV, mySplatterMass);
 
 	theCokeAmount -= mySplatterMass;
 	updateMass();
 
-	// TODO: don't forget Newton's action = -reaction;
-	//theB2BodyPtr->ApplyImpulse();
+	// and don't forget Newton's action = -reaction !!!
+	qreal myImpulse = mySplatterMass*myV;
+	// FIXME: to improve the "feeling", we help the impulse a bit here...
+	Position myImpulseVector = -2.0*Position(-myImpulse*sin(myAngle), myImpulse*cos(myAngle), 0.0);
+	theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -176,7 +182,7 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 //////////////////////////////////////////////////////////////////////////////
 
 CokeSplatter::CokeSplatter()
-		: RectObject(), isResetForReal(false)
+		: RectObject()
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
 	setProperty(IMAGE_NAME_STRING, "CokeSplatter");
@@ -188,9 +194,15 @@ CokeSplatter::CokeSplatter()
 	myBubbleDef->density= 0.01 / (PI * theRadius * theRadius);
 	theShapeList.push_back(myBubbleDef);
 
+	// the sensor - slightly larger
+	// (sensor is used for collision detection & getting rid of the object if needed)
+	b2CircleDef* mySensorDef = new b2CircleDef();
+	mySensorDef->radius = 1.01 * theRadius;
+	mySensorDef->isSensor = true;
+	mySensorDef->userData = this;
+	theShapeList.push_back(mySensorDef);
+
 	setTheBounciness(0.0);
-	setTheWidth(2*theRadius);
-	setTheHeight(2*theRadius);
 }
 
 CokeSplatter::~CokeSplatter()
@@ -198,17 +210,15 @@ CokeSplatter::~CokeSplatter()
 	DEBUG5("CokeSplatter::~CokeSplatter()\n");
 }
 
-void CokeSplatter::reset()
-{
-	DEBUG5("reset() body pos for 'CokeSplatter' %p\n", this);
-	if(isResetForReal==false)
-		return;
-	assert(false);
-	deregister();
 
-	// we need this, but let's not - for now
-	// delete this;
+void CokeSplatter::callBackSensor(b2ContactPoint* aCPPtr)
+{
+	// oww we hit something.
+	// that's the end for us
+	//   - just allow for some time to transfer the impact
+	theWorldPtr->removeMe(this, 0.1);
 }
+
 
 void CokeSplatter::setAll(World* aWorldPtr,
 						  const Position& aStartPos,
@@ -220,15 +230,18 @@ void CokeSplatter::setAll(World* aWorldPtr,
 		   aVelocity, aSplatterMass);
 
 	setOrigCenter(aStartPos);
+	// the displayed image is larger than the actual object
+	setTheWidth(5*theRadius);
+	setTheHeight(3.5*theRadius);
+	DEBUG5("wxh = %fx%f\n", getTheWidth(), getTheHeight());
 	aWorldPtr->addObject(this);
 	createPhysicsObject();
+
 
 	qreal myAngle = aStartPos.angle;
 	b2Vec2 myVelVec(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
 	DEBUG5("velocity: %f,%f\n", myVelVec.x, myVelVec.y);
 	theB2BodyPtr->SetLinearVelocity(myVelVec);
-
-	isResetForReal = true;
 
 	// FIXME: variable mass is ignored for now...
 }

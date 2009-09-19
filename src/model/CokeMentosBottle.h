@@ -55,24 +55,30 @@ public:
 	void setAll(World* aWorldPtr, const Position& aStartPos,
 				qreal aVelocity, qreal aSplatterMass);
 
-	/// reset() is called in two situations:
-	/// 1) by World on addObject() -> ignore this one
-	/// 2) by World on reset of World -> delete ourselves
-	/// see also isResetForReal .
+	/// reset() has no effect on a CokeSplatter
 	/// overridden from RectObject
-	virtual void reset(void);
+	virtual void reset(void)
+	{ ; }
+
+	/// called if Object has registered a sensor share
+	/// CokeSplatter needs to know if it has hit another object
+	///  - because that implies that we should delete ourselves soon...
+	/// overridden from BaseObject
+	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 protected:
 	/// overridden from RectObject to remove the functionality
 	virtual void adjustParameters(void)
-	{ ; };
+	{ ; }
 
 	const static qreal theRadius = 0.04;
-
-	/// true if we're outside initialisation.
-	/// in that case reset() will remove this object from World
-	bool isResetForReal;
 };
+
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
 
 /** this class implements the famous coke+mentos trick:
   * insert a mentos in a coke bottle and it will blow a
@@ -146,6 +152,12 @@ private:
 	/// 2.0l at start, reducing fast whilst blowing.
 	/// unit: kg or l (who cares)
 	qreal	theCokeAmount;
+
+
+	/// FIXME: TEMP CODE !!!
+	int theBlowcount;
+	int theSplatterCount;
+
 };
 
 #endif // COKEMENTOSBOTTLE_H
