@@ -19,39 +19,54 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <QString>
-#include <QList>
 #include "Box2D.h"
 #include "tbe_global.h"
 
+#include <QString>
+#include <QList>
+#include <QMap>
 #include <set>
+#include <vector>
 
 // Forward Definitions:
 class BaseObject;
 class MainWindow;
 class DrawWorld;
 
-/*
-/// this class can be registered to receive all contact points
-/// for each simulation step. That's a lot of calls, usually :-(
-/// also note that the data has very limited usability it is totally
-/// renewed every step.
+
+/** this class can be registered to receive all contact points
+ *  for each simulation step. That's a lot of calls, usually :-(
+ *  also note that the data has very limited usability it is totally
+ *  renewed every step.
+ */
 class ContactListener : public b2ContactListener
 {
 protected:
 	/// implemented from b2ContactListener: add a new contact point
-	void Add(const b2ContactPoint* point);
-	/// implemented from b2ContactListener: change a contact point to persist
-	void Persist(const b2ContactPoint* point);
-	/// implemented from b2ContactListener: remove a contact point
-	void Remove(const b2ContactPoint* point);
+	void Add(const b2ContactPoint* point)
+	{ theAddedCPList.push_back(*point); }
+
+	/// implemented from b2ContactListener: list a persisting contact point
+	void Persist(const b2ContactPoint*)
+	{ /* no action */ }
+
+	/// implemented from b2ContactListener: contact point was removed
+	void Remove(const b2ContactPoint*)
+	{ /* no action */ }
 
 	/// it doesn't make sense to use any more complex storage than vector
 	/// the good news is that vector makes a copy upon insertion
 	/// - that's what we need anyway
-	vector<b2ContactPoint> myList;
+	typedef std::vector<b2ContactPoint> ContactPointList;
+	ContactPointList theAddedCPList;
+
+	/// erase all lists again
+	void clearLists(void)
+	{
+		theAddedCPList.clear();
+	}
 };
-*/
+
 
 
 /** if this interface is attached() to World,
@@ -79,7 +94,7 @@ private:
   * the class holding all BaseObjects and is responsible for the simulation 
   */
 
-class World
+class World : public ContactListener
 {
 public:
 
@@ -114,6 +129,16 @@ public:
 	 *  @return true if success - false if object was not found
 	 */
 	bool removeObject(BaseObject* anObjectPtr);
+
+
+	/** removes the BaseObject pointed to from world after all simulations
+	  * have run for another aDeltaTime seconds
+	  * removal will be done after everything has simulated.
+	  * World will take care of everything
+	  * @param anObjectPtr
+	  * @param aDeltaTime   time (in seconds) the object still has to live
+	  */
+	void removeMe(BaseObject* anObjectPtr, qreal aDeltaTime);
 
 
 	/** creates the corresponding DrawWorld and asks it to
@@ -185,6 +210,10 @@ private:
 	/// the list of all objects managed by this World 
 	BaseObjectPtrList theObjectPtrList;
 	
+	typedef QMap<BaseObject*, qreal> ToRemoveList;
+	ToRemoveList theToBeRemovedList;
+
+
 	/// pointer to the associated VIEW class of World
 	DrawWorld* theDrawWorldPtr;
 

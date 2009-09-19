@@ -78,6 +78,11 @@ bool World::addObject(BaseObject* anObjectPtr)
 	anObjectPtr->theWorldPtr = this;
 	anObjectPtr->reset();
 	
+	if (theDrawWorldPtr)
+	{
+		theDrawWorldPtr->addItem(anObjectPtr->createDrawObject());
+	}
+
 	return true;
 }
 
@@ -118,6 +123,7 @@ void World::initAttributes( )
 	// Construct a world object, which will hold and simulate the rigid bodies.
 	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
 	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
+	theB2WorldPtr->SetContactListener(this);
 	
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
@@ -136,6 +142,16 @@ void World::initAttributes( )
 	leftShapeDef.SetAsBox(1.0f, 50.0f);
 	leftShapeDef.restitution=0.0f;
 	leftBody->CreateShape(&leftShapeDef);
+}
+
+void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
+{
+	// add to the list of "todo"
+	// note that this list is actually a map
+	//   - we won't allow double insertions of the same object
+	if (theToBeRemovedList.contains(anObjectPtr))
+		return;
+	theToBeRemovedList.insert(anObjectPtr, aDeltaTime);
 }
 
 bool World::removeObject(BaseObject* anObjectPtr)
@@ -178,10 +194,17 @@ void World::reset ( )
 			++i;
 		}
 	}
+
+	// emptying the theObjectPtrList automatically also
+	// took care of everything in the theToBeRemovedList
+	theToBeRemovedList.clear();
 }
 
 qreal World::simStep (void)
 {
+	// clear the contact point lists
+	clearLists();
+
 	// run the simulation
 	theB2WorldPtr->Step(theDeltaTime,theIterationcount);
 
@@ -194,7 +217,44 @@ qreal World::simStep (void)
 	}
 
 	// run all the callbacks for each sensor
-	// (not implemented yet)
+	ContactPointList::iterator j = theAddedCPList.begin();
+	for (; j!=theAddedCPList.end(); ++j)
+	{
+		b2ContactPoint* myCPPtr = &(*j);
+		b2Shape* myShape1 = myCPPtr->shape1;
+		b2Shape* myShape2 = myCPPtr->shape2;
+
+		// only call the sensor when only one of both contacts is a sensor
+		if (myShape1->IsSensor() && !myShape2->IsSensor())
+		{
+			BaseObject* myPtr = reinterpret_cast<BaseObject*>(myShape1->GetUserData());
+			if (myPtr!=NULL)
+				myPtr->callBackSensor(myCPPtr);
+		}
+		if (!myShape1->IsSensor() && myShape2->IsSensor())
+		{
+			BaseObject* myPtr = reinterpret_cast<BaseObject*>(myShape2->GetUserData());
+			if (myPtr!=NULL)
+				myPtr->callBackSensor(myCPPtr);
+		}
+	}
+
+
+	ToRemoveList::iterator k;
+	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
+	{
+		k.value() -= theDeltaTime;
+		if (k.value() <= 0.0)
+		{
+			removeObject(k.key());
+			delete k.key();
+			k = theToBeRemovedList.erase(k);
+		}
+		else
+		{
+			++k;
+		}
+	}
 
 	return theDeltaTime;
 }
