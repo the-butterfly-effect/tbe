@@ -1,0 +1,30 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Introducing the coke bottle</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Introducing the specially prepared coke/mentos fountain bottle.</description>
+        <date>9/18/09</date>
+    </levelinfo>
+    <scene>
+        <scenesize width="4.5" height="4" />
+        <predefined>
+            <object X="3.006150960922241" Y="2.370385408401489" type="Bowling Pin" />
+            <object width="4.5" X="2.25" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1444635416666668" X="2.291895866394043" Y="1.412812455495199" height="2.075307291666667" type="RectObject" />
+            <object X="2.448874950408936" Y="0.3532031178474426" type="Coke+Mentos Bottle" angle="0" >
+                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
+Look: it blows if triggered!</property>
+                <property key="ImageName" >CokeMentosBottle</property>
+            </object>
+            <object width="1" X="0.5180312395095825" Y="0.6514635682106018" height="1" type="RightRamp" />
+            <object X="0.1883749961853027" Y="1.23228645324707" type="Bowling Ball" />
+            <object X="2.503817796707153" Y="2.291895866394043" type="Volleyball" />
+            <object width="0.5447604166666666" X="2.809927081425984" Y="1.142023464997609" height="2.075307291666666" type="RectObject" />
+        </predefined>
+    </scene>
+    <toolbox/>
+</tbe-level>
