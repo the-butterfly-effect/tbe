@@ -35,6 +35,7 @@ class World;
 class ShapeList;
 class b2Body;
 class b2BodyDef;
+class b2ContactPoint;
 class b2World;
 class b2ShapeDef;
 class b2Shape;
@@ -163,8 +164,13 @@ public:
 	virtual bool isPhysicsObjectCreated(void) const
 		{ return theB2BodyPtr!=NULL; }
 	
-
 	const BaseObjectSerializer* getSerializer(void) const;
+
+	/// called if Object has registered a sensor share
+	/// the default is to do completely nothing - you'll have to override
+	virtual void callBackSensor(b2ContactPoint*)
+	{ return; }
+
 
 private:
 	// Private attributes
