@@ -121,8 +121,13 @@ void MainWindow::on_actionSave_activated()
 
 void MainWindow::slot_splashScreen_clicked(void)
 {
+	QStringList myArguments = QApplication::arguments();
+	QString myLevelName = "levels/draft/001_bowling_for_butterflies.xml";
+	if (myArguments.count()>1)
+		myLevelName = myArguments[1];
+
 	// TODO: FIXME: hardcoded level name!!!
-	loadLevel("levels/draft/001_bowling_for_butterflies.xml");
+	loadLevel(myLevelName);
 }
 
 //////////////////////////////////////////////////////////////////////////////
