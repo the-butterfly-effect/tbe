@@ -153,6 +153,8 @@ private:
 	/// unit: kg or l (who cares)
 	qreal	theCokeAmount;
 
+	/// the weight of an empty bottle in [kg]
+	static const double theBottleMass = 0.2;
 
 	/// FIXME: TEMP CODE !!!
 	int theBlowcount;

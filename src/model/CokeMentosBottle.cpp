@@ -105,10 +105,12 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 
 void CokeMentosBottle::updateMass(void)
 {
+	if (theCokeAmount < 0.0)
+		theCokeAmount = 0.0;
 	b2MassData myMass;
 	myMass.center = theB2BodyPtr->GetLocalCenter();
 	myMass.I      = theB2BodyPtr->GetInertia();
-	myMass.mass   = theCokeAmount + 0.1;
+	myMass.mass   = theCokeAmount + theBottleMass;
 	theB2BodyPtr->SetMass(&myMass);
 
 	// test
@@ -233,7 +235,6 @@ void CokeSplatter::setAll(World* aWorldPtr,
 	// the displayed image is larger than the actual object
 	setTheWidth(5*theRadius);
 	setTheHeight(3.5*theRadius);
-	DEBUG5("wxh = %fx%f\n", getTheWidth(), getTheHeight());
 	aWorldPtr->addObject(this);
 	createPhysicsObject();
 
