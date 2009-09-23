@@ -85,6 +85,8 @@ public:
 	 */
 	bool save(const QString& aFileName);
 
+	/// returns the path to the file that describes the current level
+	static QString getPathToLevelFile(void);
 
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
@@ -102,8 +104,6 @@ private:
 	QString theLevelLicense;
 	QString	theLevelDescription;
 	QString theLevelDate;
-
-	QString theFileName;
 
 	friend class SaveLevelInfo;
 };

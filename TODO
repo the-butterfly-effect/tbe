@@ -76,11 +76,11 @@ Features:
 	x rewrite Wall object - removed - use RectObject now :-)
 	x rewrite Floor object
   x use "not found" image placeholder
+  x add current directory to list of dirs searched by ImageStore
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
 Version 0.40
-  * add current directory to list of dirs searched by ImageStore
   * implement foreground/background scenery images
   * implement rotation of relevant objects
   * do not (re)paint objects that are sleeping

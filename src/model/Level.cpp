@@ -21,6 +21,7 @@
 #include "BaseObjectSerializer.h"
 
 #include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
 
 // TODO: remove this
@@ -53,6 +54,12 @@ const char* theAngleAttributeString     = "angle";
 const char* theTypeAttributeString      = "type";
 
 
+// static (always accessible) data member
+// for this file only
+static QString theFileName;
+
+
+
 // Constructors/Destructors
 //  
 
@@ -71,6 +78,16 @@ Level::~Level ( )
 //  
 // Methods
 //  
+
+QString
+Level::getPathToLevelFile(void)
+{
+	if (theFileName.isEmpty())
+		return ".";
+	else
+		return QFileInfo(theFileName).absolutePath();
+}
+
 
 QString
 Level::load(const QString& aFileName)
