@@ -25,8 +25,8 @@ HEADERS += src/tbe_global.h \
     src/model/BaseObject.h \
     src/model/BowlingBall.h \
     src/model/BowlingPin.h \
-	src/model/CokeMentosBottle.h \
-	src/model/Floor.h \
+    src/model/CokeMentosBottle.h \
+    src/model/Floor.h \
     src/model/Level.h \
     src/model/MovingObject.h \
     src/model/NoteIt.h \
@@ -35,7 +35,6 @@ HEADERS += src/tbe_global.h \
     src/model/RectObject.h \
     src/model/ToolBoxItemListModel.h \
     src/model/VolleyBall.h \
-    src/model/Wall.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/DrawNoteIt.h \
@@ -49,7 +48,7 @@ HEADERS += src/tbe_global.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
-	src/view/StartStopReset.h
+    src/view/StartStopReset.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/UndoDeleteCommand.cpp \
@@ -58,8 +57,8 @@ SOURCES += src/main.cpp \
     src/model/BaseObject.cpp \
     src/model/BowlingBall.cpp \
     src/model/BowlingPin.cpp \
-	src/model/CokeMentosBottle.cpp \
-	src/model/Floor.cpp \
+    src/model/CokeMentosBottle.cpp \
+    src/model/Floor.cpp \
     src/model/Level.cpp \
     src/model/MovingObject.cpp \
     src/model/NoteIt.cpp \
@@ -68,7 +67,6 @@ SOURCES += src/main.cpp \
     src/model/RectObject.cpp \
     src/model/ToolBoxItemListModel.cpp \
     src/model/VolleyBall.cpp \
-    src/model/Wall.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/DrawNoteIt.cpp \
@@ -80,7 +78,7 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
-	src/view/StartStopReset.cpp
+    src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
     src/view/SaveLevelInfo.ui

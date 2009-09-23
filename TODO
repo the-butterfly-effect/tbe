@@ -55,16 +55,16 @@ Features:
   / implement post-its
 	* size of drawn NoteIt is wrong
   x implement volleyball
-  x implement coke-mentos-bottle
-	* implement contacts/sensors
-	* implement callback interface per simstep
+  / implement coke-mentos-bottle
+	x implement contacts/sensors
+	* actual bottle trigger
+	x implement callback interface per simstep
 	* figure out how to draw the liquid color differently over time
-	* figure out how to model the splatter - separate class???
-  / i18n of application
+	x figure out how to model the splatter - separate class???
+	* what to do with the cap?
+  x i18n of application
 	x GUI
 	x NoteIt
-	* Level Name
-	* Level Description
   x right-mouse button + anchors to adjust properties (e.g. resize, rotate, trapdoor threshold)
 	x implement RMB menu
 	  x delete
@@ -73,41 +73,44 @@ Features:
   x make simulation speed adjustable:  1/4x 1/2x 1x (2x)
   x redo DrawObject to allow for arbitrarily scaled square objects, automatically splitting it up
 	in multiple Box2D objects if needed
-	* rewrite Wall object
+	x rewrite Wall object - removed - use RectObject now :-)
 	x rewrite Floor object
   x use "not found" image placeholder
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Size does matter
 Version 0.40
-  * automated regression tests for XML parser/world builder
+  * add current directory to list of dirs searched by ImageStore
+  * implement foreground/background scenery images
+  * implement rotation of relevant objects
+  * do not (re)paint objects that are sleeping
+  * add images & animation
+	- all images in SVG format ?!?
+	- make decision about how to do scaling
   * RMB actions
 	- adjust properties
 	- actually implement rotation
-  * implement trap door
-  * implement styrofoam block
-  * implement soccer ball and gummi ball
   * split level between pre-defined objects and tool chest available objects
     - a checkmark sign on the drawing?
-  * add 8 more levels
+  * create all levels for ELCE
   * add difference between play mode and level editor
-  * add concept of "winning" a level
-FIRST PLAYABLE (but probably very dumb looking)
+FIRST PLAYABLE - with a supervisor
 
-Milestone 5 - It's make over time!
+Milestone 5 - It's make over time! (post-ELCE)
 Version 0.50
-  * implement rotation of relevant objects
-  * do not (re)paint objects that have not moved
-  * add images & animation
-    - all images in SVG format ?!?
-    - make decision about how to do scaling
+  * add concept of "winning" a level
+  * automated regression tests for XML parser/world builder
+  * finish i18n of application
+	* Level Name
+	* Level Description
   * zooming
   * implement more objects
     - penguin, herring ?
 	- butterfly, flower ?
     - granite block
     - cylinder (rolls horizontally) - allows for see-saw and stone-age carts
-  * implement foreground/background scenery images
+	- trap door
+	- soccer ball / gummi ball
   * improve existing 10 levels and add 10 more
     - make sure to have some basic tutorials
   * add concept of order in levels, so players can start
