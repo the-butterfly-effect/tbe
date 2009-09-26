@@ -208,14 +208,6 @@ qreal World::simStep (void)
 	// run the simulation
 	theB2WorldPtr->Step(theDeltaTime,theIterationcount);
 
-	// run all the callbacks per sim step
-	CallbackList::iterator i;
-	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
-	{
-		// FIXME: total time not available???
-		(*i)->callbackStep(theDeltaTime, 0.0);
-	}
-
 	// run all the callbacks for each sensor
 	ContactPointList::iterator j = theAddedCPList.begin();
 	for (; j!=theAddedCPList.end(); ++j)
@@ -224,21 +216,28 @@ qreal World::simStep (void)
 		b2Shape* myShape1 = myCPPtr->shape1;
 		b2Shape* myShape2 = myCPPtr->shape2;
 
-		// only call the sensor when only one of both contacts is a sensor
+		// only call the sensor when just *one* of both shapes is a sensor
 		if (myShape1->IsSensor() && !myShape2->IsSensor())
 		{
-			BaseObject* myPtr = reinterpret_cast<BaseObject*>(myShape1->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myShape1->GetUserData());
 			if (myPtr!=NULL)
 				myPtr->callBackSensor(myCPPtr);
 		}
 		if (!myShape1->IsSensor() && myShape2->IsSensor())
 		{
-			BaseObject* myPtr = reinterpret_cast<BaseObject*>(myShape2->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myShape2->GetUserData());
 			if (myPtr!=NULL)
 				myPtr->callBackSensor(myCPPtr);
 		}
 	}
 
+	// run all the callbacks per sim step
+	CallbackList::iterator i;
+	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
+	{
+		// FIXME: total time not available???
+		(*i)->callbackStep(theDeltaTime, 0.0);
+	}
 
 	ToRemoveList::iterator k;
 	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )

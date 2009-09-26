@@ -49,6 +49,16 @@ class BaseObjectSerializer;
 //   ************************************************
 
 
+class SensorInterface
+{
+public:
+	/// called if Object has registered a sensor share
+	/// the default is to do completely nothing - you'll have to override
+	virtual void callBackSensor(b2ContactPoint*)
+	{ return; }
+};
+
+
 // ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
 //
 //   In Box2D, we have Worlds, Bodies, Shapes and Joints:
@@ -73,7 +83,7 @@ class BaseObjectSerializer;
   * abstract base class for everything in the simulation model 
   */
 
-class BaseObject
+class BaseObject : public SensorInterface
 {
 public:
 
@@ -165,12 +175,6 @@ public:
 		{ return theB2BodyPtr!=NULL; }
 	
 	const BaseObjectSerializer* getSerializer(void) const;
-
-	/// called if Object has registered a sensor share
-	/// the default is to do completely nothing - you'll have to override
-	virtual void callBackSensor(b2ContactPoint*)
-	{ return; }
-
 
 private:
 	// Private attributes
