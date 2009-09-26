@@ -79,6 +79,17 @@ Level::~Level ( )
 // Methods
 //  
 
+void
+Level::addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const
+{
+	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
+	if (myBOS!=NULL)
+	{
+		myBOS->serialize(&aParent);
+		delete myBOS;
+	}
+}
+
 QString
 Level::getPathToLevelFile(void)
 {
@@ -88,6 +99,11 @@ Level::getPathToLevelFile(void)
 		return QFileInfo(theFileName).absolutePath();
 }
 
+QString
+Level::getLevelFileName(void)
+{
+	return theFileName;
+}
 
 QString
 Level::load(const QString& aFileName)
@@ -239,17 +255,6 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const Q
 	aParent.appendChild(myReturn);
 }
 
-void
-Level::addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const
-{
-	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
-	if (myBOS!=NULL)
-	{
-		myBOS->serialize(&aParent);
-		delete myBOS;
-	}
-}
-
 
 bool Level::save(const QString& aFileName)
 {
@@ -301,4 +306,10 @@ bool Level::save(const QString& aFileName)
 	QTextStream myOut(&myFile);
 	myDocument.save(myOut, IndentSize);
 	return true;
+}
+
+void
+Level::setLevelFileName(const QString& aName)
+{
+	theFileName = aName;
 }

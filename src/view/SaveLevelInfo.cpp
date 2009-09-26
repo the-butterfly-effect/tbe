@@ -27,7 +27,7 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 	isUserOKOverwrintingFile = false;
 
 	ui.setupUi(this);
-	ui.theFileNameField        ->setText(theLevelPtr->theFileName);
+	ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
 	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
 	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
 	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
@@ -76,7 +76,7 @@ bool SaveLevelInfo::commitToLevel(void)
 	if (ui.theFileNameField->text().isEmpty())
 		return false;
 	else
-		theLevelPtr->theFileName = ui.theFileNameField->text();
+		theLevelPtr->setLevelFileName(ui.theFileNameField->text());
 
 	return true;
 }

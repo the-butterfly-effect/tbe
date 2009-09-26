@@ -88,6 +88,14 @@ public:
 	/// returns the path to the file that describes the current level
 	static QString getPathToLevelFile(void);
 
+	/// returns the name of the file that describes the current level
+	static QString getLevelFileName(void);
+
+private:
+	/// sets the name of the file that describes the current level
+	/// only called by SaveLevelInfo.cpp (which is a friend)
+	void setLevelFileName(const QString& aName);
+
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
 	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
