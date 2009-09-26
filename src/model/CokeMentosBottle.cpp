@@ -17,6 +17,7 @@
  */
 
 #include "CokeMentosBottle.h"
+#include "DrawCokeMentosBottle.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 
@@ -127,6 +128,16 @@ void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
 
 }
 
+
+DrawObject*  CokeMentosBottle::createDrawObject(void)
+{
+	assert(theDrawObjectPtr==NULL);
+	adjustParameters();
+	theDrawObjectPtr = new DrawCokeMentosBottle(this, getProperty(IMAGE_NAME_STRING));
+	return theDrawObjectPtr;
+}
+
+
 void CokeMentosBottle::reset(void)
 {
 	theWorldPtr->registerCallback(this);
@@ -162,7 +173,10 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 void CokeMentosBottle::updateMass(void)
 {
 	if (theCokeAmount < 0.0)
+	{
 		theCokeAmount = 0.0;
+		setBottleStatus(EMPTY);
+	}
 	b2MassData myMass;
 	myMass.center = theB2BodyPtr->GetLocalCenter();
 	myMass.I      = theB2BodyPtr->GetInertia();

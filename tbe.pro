@@ -48,7 +48,8 @@ HEADERS += src/tbe_global.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
-    src/view/StartStopReset.h
+    src/view/StartStopReset.h \
+    src/view/DrawCokeMentosBottle.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/UndoDeleteCommand.cpp \
@@ -78,7 +79,8 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
-    src/view/StartStopReset.cpp
+    src/view/StartStopReset.cpp \
+    src/view/DrawCokeMentosBottle.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
     src/view/SaveLevelInfo.ui

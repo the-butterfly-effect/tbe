@@ -55,13 +55,13 @@ Features:
   / implement post-its
 	* size of drawn NoteIt is wrong
   x implement volleyball
-  / implement coke-mentos-bottle
+  X implement coke-mentos-bottle
 	x implement contacts/sensors
-	* actual bottle trigger
+	x actual bottle trigger
 	x implement callback interface per simstep
-	* figure out how to draw the liquid color differently over time
+	x figure out how to draw the liquid color differently over time
 	x figure out how to model the splatter - separate class???
-	* what to do with the cap?
+	x remove cap after blowing starts
   x i18n of application
 	x GUI
 	x NoteIt

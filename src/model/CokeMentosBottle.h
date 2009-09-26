@@ -114,9 +114,13 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-
 	/// one of the two ways to trigger the blowing:
 	void setBottleStatus(BottleStatus aNewStat);
+
+	/// one of the two ways to trigger the blowing:
+	BottleStatus getBottleStatus(void)
+	{ return theBottleStatus; }
+
 
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
@@ -126,6 +130,9 @@ public:
 	///  - because that implies that we might need to start blowing
 	/// overridden from SensorInterface
 	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+
+	/// overriden from BaseObject
+	virtual DrawObject* createDrawObject();
 
 private:
 	/// implemented from SimStepCallbackInterface
