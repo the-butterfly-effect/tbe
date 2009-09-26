@@ -63,7 +63,7 @@ public:
 	/// called if Object has registered a sensor share
 	/// CokeSplatter needs to know if it has hit another object
 	///  - because that implies that we should delete ourselves soon...
-	/// overridden from BaseObject
+	/// overridden from SensorInterface
 	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 protected:
@@ -121,6 +121,12 @@ public:
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
 
+	/// called if Object has registered a sensor share
+	/// CokeMentosBottle needs to know if it has hit another object
+	///  - because that implies that we might need to start blowing
+	/// overridden from SensorInterface
+	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+
 private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
@@ -129,7 +135,6 @@ private:
 	 *  @param aSequenceNr the sequence number of the splatter
 	 */
 	void newSplatter(unsigned int aSequenceNr);
-	//(const Position& aStartPoint, qreal aVelocity, qreal aMass);
 
 private:
 	// Private things
@@ -157,8 +162,17 @@ private:
 	static const double theBottleMass = 0.2;
 
 	/// FIXME: TEMP CODE !!!
-	int theBlowcount;
 	int theSplatterCount;
+	
+	/// true when the bottle's sensor is touching something
+	bool hasContact;
+
+	/// starts ticking once the bottle is triggered
+	int theCountdown;
+
+	/// used to calculate the velocity change - which is used to see if the bottle is hit
+	b2Vec2 thePreviousVelocity;
+
 
 };
 

@@ -46,35 +46,86 @@ CokeMentosBottle::CokeMentosBottle()
 	setTheWidth(0.166);
 	setTheHeight(0.501);
 
-	b2PolygonDef* my5PointPinDef = new b2PolygonDef();
-	my5PointPinDef->vertexCount = 5;
-	my5PointPinDef->vertices[0].Set( 0    ,  0.25);
-	my5PointPinDef->vertices[1].Set(-0.083,  0.12);
-	my5PointPinDef->vertices[2].Set(-0.075, -0.251);
-	my5PointPinDef->vertices[3].Set( 0.075, -0.251);
-	my5PointPinDef->vertices[4].Set( 0.083,  0.12);
-	// approximation of the initial mass - we'll fix it later on...
-	my5PointPinDef->density = 2.1 / (0.166*0.501);
-	
-	// delete any shapes on the body
-	// and create a new shape from the above polygon def
-	theShapeList.push_back(my5PointPinDef);
+	// the first one is the real bottle
+	{
+		b2PolygonDef* my5PointPinDef = new b2PolygonDef();
+		my5PointPinDef->vertexCount = 6;
+		my5PointPinDef->vertices[0].Set(-0.01 ,  0.25);
+		my5PointPinDef->vertices[1].Set(-0.083,  0.12);
+		my5PointPinDef->vertices[2].Set(-0.075, -0.251);
+		my5PointPinDef->vertices[3].Set( 0.075, -0.251);
+		my5PointPinDef->vertices[4].Set( 0.083,  0.12);
+		my5PointPinDef->vertices[5].Set( 0.01 ,  0.25);
+		// approximation of the initial mass - we'll fix it later on...
+		my5PointPinDef->density = 2.1 / (0.166*0.501);
+		theShapeList.push_back(my5PointPinDef);
+	}
+
+	// the second one is the sensor
+	{
+		b2PolygonDef* my5PointPinDef = new b2PolygonDef();
+		my5PointPinDef->vertexCount = 6;
+		my5PointPinDef->vertices[0].Set(-0.01 ,  0.25);
+		my5PointPinDef->vertices[1].Set(-0.083,  0.12);
+		my5PointPinDef->vertices[2].Set(-0.075, -0.251);
+		my5PointPinDef->vertices[3].Set( 0.075, -0.251);
+		my5PointPinDef->vertices[4].Set( 0.083,  0.12);
+		my5PointPinDef->vertices[5].Set( 0.01 ,  0.25);
+		my5PointPinDef->isSensor = true;
+		my5PointPinDef->userData = this;
+		theShapeList.push_back(my5PointPinDef);
+	}
+
 	setTheBounciness(0.3);
 	setBottleStatus(UNTRIGGERED);
 }
 
+void CokeMentosBottle::callBackSensor(b2ContactPoint* aCPPtr)
+{
+	hasContact = true;
+}
+
 void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
 {
-	DEBUG5("coke receives callback\n");
+	DEBUG6("coke receives callback\n");
 
-	// FIXME: TEMP CODE !!!
-	// this is just a simple delay/rate limiter
-	// should be triggered, obviously...
-	theBlowcount++;
-	if (theBlowcount > 50 && ((theBlowcount%3)==0))
+	switch(theBottleStatus)
 	{
-		newSplatter(theSplatterCount++);
+	case UNTRIGGERED:
+		{
+			//  check for impact
+			b2Vec2 myVelo = theB2BodyPtr->GetLinearVelocity();
+			if (myVelo.Length()<0.1)
+				break;
+			if ( abs(1.0-thePreviousVelocity.Length()/myVelo.Length()) > 0.2 && hasContact)
+			{
+				DEBUG5("CokeBottle was hit\n");
+				setBottleStatus(TRIGGERED);
+			}
+
+			thePreviousVelocity = myVelo;
+			hasContact = false;
+			break;
+		}
+	case TRIGGERED:
+		theCountdown--;
+		printf("Bottle TRIGGERED - %d\n", theCountdown);
+		if (theCountdown > 0)
+			break;
+		setBottleStatus(BLOWING);
+	case BLOWING:
+		// this is just a rate limiter
+		theCountdown--;
+		if (((theCountdown%3)==0))
+		{
+			newSplatter(theSplatterCount++);
+		}
+		break;
+	case EMPTY:
+		break;
 	}
+
+
 }
 
 void CokeMentosBottle::reset(void)
@@ -82,6 +133,8 @@ void CokeMentosBottle::reset(void)
 	theWorldPtr->registerCallback(this);
 	BaseObject::reset();
 	setBottleStatus(UNTRIGGERED);
+	thePreviousVelocity = b2Vec2(0,0);
+	hasContact = false;
 }
 
 
@@ -91,14 +144,18 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	{
 	case UNTRIGGERED:
 		theCokeAmount = 2.0;
-		theBlowcount  = 0;
 		theSplatterCount = 0;
+		theBottleStatus=UNTRIGGERED;
 		break;
 	case TRIGGERED:
+		theBottleStatus=TRIGGERED;
+		theCountdown = 100;
 		break;
 	case BLOWING:
+		theBottleStatus=BLOWING;
 		break;
 	case EMPTY:
+		theBottleStatus=EMPTY;
 		break;
 	}
 }
