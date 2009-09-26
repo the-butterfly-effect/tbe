@@ -109,7 +109,6 @@ void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
 		}
 	case TRIGGERED:
 		theCountdown--;
-		printf("Bottle TRIGGERED - %d\n", theCountdown);
 		if (theCountdown > 0)
 			break;
 		setBottleStatus(BLOWING);
