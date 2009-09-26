@@ -5,28 +5,29 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>"Rollerbaan"</description>
-        <date>9/19/09</date>
+        <date>9/27/09</date>
     </levelinfo>
     <scene>
         <scenesize width="4.5" height="4" />
         <predefined>
-            <object X="3" Y="0.29" type="Bowling Pin" />
-            <object X="3.2" Y="0.29" type="Bowling Pin" />
-            <object X="3.4" Y="0.29" type="Bowling Pin" />
+            <object X="3" Y="0.26" type="Bowling Pin" />
+            <object X="3.2" Y="0.26" type="Bowling Pin" />
+            <object X="3.4" Y="0.26" type="Bowling Pin" />
             <object width="4.5" X="2.25" Y="0.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="0.3" Y="0.41" type="Coke+Mentos Bottle" angle="1.57" >
+            <object X="0.3" Y="0.48" type="Coke+Mentos Bottle" angle="1.57" >
                 <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
 Look: it blows if triggered!</property>
                 <property key="ImageName" >CokeMentosBottle</property>
             </object>
-            <object X="0.2" Y="0.21" type="Volleyball" />
-            <object X="0.42" Y="0.21" type="Volleyball" />
-            <object X="0.64" Y="0.21" type="Volleyball" />
-            <object X="0.86" Y="0.21" type="Volleyball" />
-            <object X="1.08" Y="0.21" type="Volleyball" />
-            <object width="0.4270260416666667" X="4.285531044006348" Y="0.6043698191642761" height="1" type="RectObject" />
+            <object X="0.1" Y="0.21" type="Volleyball" />
+            <object X="0.32" Y="0.21" type="Volleyball" />
+            <object X="0.54" Y="0.21" type="Volleyball" />
+            <object X="0.76" Y="0.21" type="Volleyball" />
+            <object X="0.98" Y="0.21" type="Volleyball" />
+            <object width="0.3" X="4.35" Y="0.6" height="1" type="RectObject" />
+            <object width="0.3" X="2.2" Y="0.15" height="0.1" type="RectObject" />
         </predefined>
     </scene>
     <toolbox/>
