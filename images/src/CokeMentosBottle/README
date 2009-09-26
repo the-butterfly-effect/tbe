@@ -6,4 +6,6 @@ source:    http://openclipart.org/media/files/jonata/3952
 filename:  modified_PET.svg
 author:    Klaas van Gend, based on above jonata_PET.svg
 license:   CC-SA-3.0
+note:	   the image now contains named layers and invisible align marks to allow
+           individual rendering of all layers whilst keeping the same scaling.
 
