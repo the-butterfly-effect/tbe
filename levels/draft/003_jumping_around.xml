@@ -8,16 +8,19 @@
         <date>8/2/09</date>
     </levelinfo>
     <scene>
-        <scenesize width="4.5" height="3" />
+        <scenesize width="5" height="3" />
         <predefined>
             <object X="0.2" Y="2.85" type="Bowling Ball" />
             <object width="0.9" X="1.1" Y="2.4" type="Floor" />
-            <object X="0.7456510663032532" Y="2.558760404586792" type="Volleyball" />
-            <object width="0.4304057198833053" X="4.274893283843994" Y="1.274247050285339" type="Floor" />
-            <object X="4.210299968719482" Y="1.532619714736938" type="Bowling Pin" />
+            <object X="0.75" Y="2.55" type="Volleyball" />
+            <object width="0.4" X="4.2" Y="1.3" height="0.1" type="RectObject" >
+              <property key="Bounciness" >0.1</property>
+	    </object>
+            <object X="4.2" Y="1.55" type="Bowling Pin" />
             <object X="2" Y="0.5" type="NoteIt" />
-            <object X="4.442510604858398" Y="0.6671614464124044" height="1.324989583333333" type="Wall" />
-            <object width="0.6075520833333334" X="0.3100338686307271" Y="2.590156358083089" height="0.3642343750000001" type="RightRamp" />
+            <object X="4.35" Y="0.65" height="1.3" width="0.1" type="RectObject" />
+            <object X="4.95" Y="0.65" height="1.3" width="0.1" type="RectObject" />
+            <object width="0.6" X="0.3" Y="2.6" height="0.4" type="RightRamp" />
         </predefined>
     </scene>
     <toolbox/>
