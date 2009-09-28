@@ -4,17 +4,15 @@
         <title>Bowling for Butterflies</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>square</description>
-        <date>8/11/09</date>
+        <description>temp with coke bottle</description>
+        <date>9/28/09</date>
     </levelinfo>
     <scene>
         <scenesize width="4.5" height="4" />
         <predefined>
-            <object X="0.4" Y="3" type="Bowling Ball" />
             <object X="3" Y="0.29" type="Bowling Pin" />
             <object X="3.2" Y="0.29" type="Bowling Pin" />
             <object X="3.4" Y="0.29" type="Bowling Pin" />
-            <object width="2" X="1" Y="0.6" height="1" type="RightRamp" />
             <object width="4.5" X="2.25" Y="0.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -26,10 +24,17 @@
                 <property key="page3" >You probably have to make it roll?&lt;br>&lt;br>&lt;br>Was signed: The Noteboy</property>
                 <property key="page3_nl" >Misschien moet je de bal aan het rollen krijgen?&lt;br>&lt;br>&lt;br>Was getekend: De Noteboy</property>
             </object>
-            <object width="1" X="3.720406293869019" Y="3.312260389328003" height="1" type="RectObject">
-	      <property key="ImageName">square</property>
-	      <property key="Mass">10.0</property>
-	    </object>
+            <object X="0.3" Y="0.53" type="Coke+Mentos Bottle" angle="1.55" >
+                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
+Look: it blows if triggered!</property>
+                <property key="ImageName" >CokeMentosBottle</property>
+            </object>
+            <object X="0.2" Y="0.21" type="Volleyball" />
+            <object X="0.42" Y="0.21" type="Volleyball" />
+            <object X="0.64" Y="0.21" type="Volleyball" />
+            <object X="0.86" Y="0.21" type="Volleyball" />
+            <object X="1.08" Y="0.21" type="Volleyball" />
+            <object width="0.2621979166666668" X="4.360096288045248" Y="0.6043698191642761" height="1" type="RectObject" />
         </predefined>
     </scene>
     <toolbox/>
