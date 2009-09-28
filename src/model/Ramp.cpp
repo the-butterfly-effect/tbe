@@ -103,15 +103,15 @@ void RightRamp::adjustParameters(void)
 	if (isRight)
 	{
 		rampDef->vertices[0].Set(-myHW, myHH);
-		rampDef->vertices[1].Set(-myHW, myHH-4*theSlabThickness);
-		rampDef->vertices[2].Set(+myHW,-myHH);
+		rampDef->vertices[1].Set(-myHW,-myHH);
+		rampDef->vertices[2].Set(+myHW, -myHH);
 		rampDef->vertices[3].Set(+myHW,-myHH+theSlabThickness);
 	}
 	else
 	{
 		rampDef->vertices[0].Set(-myHW,-myHH+theSlabThickness);
 		rampDef->vertices[1].Set(-myHW,-myHH);
-		rampDef->vertices[2].Set(+myHW, myHH-4*theSlabThickness);
+		rampDef->vertices[2].Set(+myHW, -myHH);
 		rampDef->vertices[3].Set(+myHW, myHH);
 	}
 
