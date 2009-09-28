@@ -96,7 +96,15 @@ void UndoResizeCommand::undo ()
 void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
 {
 	aDelta.setY(-aDelta.y());
-	theNewSize = theOldSize + anAnchorPos*aDelta;
+
+	// check if new size is possible
+	QPointF theTempSize = theOldSize + anAnchorPos*aDelta;
+	if (theTempSize.x() < 0.1 ||
+		theTempSize.y() < 0.1)
+		return;
+
+	theNewSize = theTempSize;
+
 	theNewCenter = theOldCenter + 0.5*aDelta;
 	redo();
 }
