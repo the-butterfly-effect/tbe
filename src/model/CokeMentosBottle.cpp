@@ -81,12 +81,12 @@ CokeMentosBottle::CokeMentosBottle()
 	setBottleStatus(UNTRIGGERED);
 }
 
-void CokeMentosBottle::callBackSensor(b2ContactPoint* aCPPtr)
+void CokeMentosBottle::callBackSensor(b2ContactPoint*)
 {
 	hasContact = true;
 }
 
-void CokeMentosBottle::callbackStep (qreal aTimeStep, qreal aTotalTime)
+void CokeMentosBottle::callbackStep (qreal, qreal)
 {
 	DEBUG6("coke receives callback\n");
 
@@ -283,7 +283,7 @@ CokeSplatter::~CokeSplatter()
 }
 
 
-void CokeSplatter::callBackSensor(b2ContactPoint* aCPPtr)
+void CokeSplatter::callBackSensor(b2ContactPoint*)
 {
 	// oww we hit something.
 	// that's the end for us
