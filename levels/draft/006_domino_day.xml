@@ -5,7 +5,7 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Not affiliated with the yearly event.</description>
-        <date>9/28/09</date>
+        <date>9/29/09</date>
     </levelinfo>
     <scene>
         <scenesize width="6" height="3" />
@@ -17,42 +17,52 @@
             </object>
             <object width="0.1" X="1.1" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="1.5" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="1.9" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="2.3" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="2.7" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="3.1" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="3.5" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="3.9" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="4.3" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="4.7" Y="2.65" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="5" X="3.5" Y="1.6" height="0.1" type="RectObject" >
@@ -65,46 +75,52 @@
             </object>
             <object width="0.1" X="4.9" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="4.5" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="4.1" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.1" X="3.7" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="3.4" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="3.3" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="3.1" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="2.9" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="2.7" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="2.5" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="2.3" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="2.1" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoBlue</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="1.9" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="1.7" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="1.5" Y="1.9" height="0.5" type="RectObject" >
+            <object width="0.1" X="1.3" Y="1.9" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="Mass" >2.5</property>
-            </object>
-            <object width="0.1" X="1.1" Y="1.9" height="0.5" type="RectObject" >
-                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="5" X="2.5" Y="0.8" height="0.1" type="RectObject" >
@@ -115,10 +131,12 @@
 Look: it blows if triggered!</property>
                 <property key="ImageName" >CokeMentosBottle</property>
             </object>
-            <object width="1" X="0.95" Y="0.92" height="0.14" type="RectObject" />
+            <object width="1" X="0.95" Y="0.92" height="0.14" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+            </object>
             <object X="0.12" Y="0.95" type="Volleyball" />
             <object X="0.34" Y="0.95" type="Volleyball" />
-            <object width="0.4536397800183318" X="0.7726306319236755" Y="1.434885382652283" height="0.2384069660861594" type="LeftRamp" angle="0" />
+            <object width="0.35" X="0.825" Y="1.44" height="0.24" type="LeftRamp" angle="0" />
             <object width="0.6" X="5.7" Y="1.3" height="0.6" type="RightRamp" angle="3.14" />
             <object X="4.5" Y="0.2" type="Bowling Pin" />
             <object X="4.2" Y="0.2" type="Bowling Pin" />
@@ -141,8 +159,8 @@ Look: it blows if triggered!</property>
                 <property key="Bounciness" >0.1</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="1.2" X="5.4" Y="0.6" height="0.8" type="LeftRamp" angle="0" />
-            <object width="0.35" X="0.76" Y="0.36" height="0.10" type="RectObject" />
+            <object width="1.2" X="5.4" Y="0.630353345554537" height="0.7392933088909257" type="LeftRamp" angle="0" />
+            <object width="0.35" X="0.76" Y="0.36" height="0.1" type="RectObject" />
             <object X="0.9" Y="0.53" type="Bowling Ball" />
             <object X="0.5" Y="0.32" type="Bowling Pin" />
             <object width="0.25" X="0.55" Y="0.06" height="0.12" type="RectObject" />
