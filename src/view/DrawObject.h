@@ -176,6 +176,7 @@ private:
 	virtual void initAttributes ( ) ;
 
 	friend class PieMenu;
+	friend class UndoResizeCommand;
 };
 
 #endif // DRAWOBJECT_H

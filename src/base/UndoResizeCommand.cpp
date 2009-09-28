@@ -78,6 +78,7 @@ void UndoResizeCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->reset();
+	theDrawObjectPtr->applyPosition();
 }
 
 void UndoResizeCommand::undo ()
