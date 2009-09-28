@@ -1,12 +1,22 @@
 all:
-	for I in `ls -1p | grep '/'`; do echo $$I; make -C $$I all_image; done;
+	@for I in `ls -1p | grep '/'`; do make -C $$I all_image; done;
 
 clean:
-	for I in `ls -1p | grep '/'`; do echo $$I; make -C $$I all_clean; done;
+	@for I in `ls -1p | grep '/'`; do make -C $$I all_clean; done;
 
 all_image:
-	cp ${SVGSRC} ../${SVGDST}
+	@if [ -n "${SVGDST}" ]; \
+	then \
+		cp ${SVGSRC} ../${SVGDST}; \
+	else \
+		for I in "${SVGSRC}"; do cp $$I ..; done; \
+	fi;
 
 all_clean:
-	rm -f ../${SVGDST}
+	if [ -n "${SVGDST}" ]; \
+	then \
+		rm -f ../${SVGDST}; \
+	else \
+		cd .. && rm -f ${SVGSRC}; \
+	fi;
 	
