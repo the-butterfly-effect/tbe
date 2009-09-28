@@ -38,7 +38,7 @@ NoteIt::NoteIt( )
 {
 	// Post-its are 3x3 inch (i.e. 8x8 cm)
 	// but because they are too small, we will triple each side and make them 22x22 cm...
-	const int mySideLength = 0.22;
+	const double mySideLength = 0.22;
 
 	setTheWidth(mySideLength);
 	setTheHeight(mySideLength);

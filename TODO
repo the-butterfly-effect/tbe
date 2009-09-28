@@ -52,8 +52,7 @@ Features:
   x Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
   x implement Drag&Drop from toolchest to GraphicsView
   x Allow saving of view into XML File (i.e. "saved game")
-  / implement post-its
-	* size of drawn NoteIt is wrong
+  x implement post-its
   x implement volleyball
   X implement coke-mentos-bottle
 	x implement contacts/sensors
