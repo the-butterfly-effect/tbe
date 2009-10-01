@@ -102,7 +102,7 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 
 	// calculate how to scale my icon to look like it should
 	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
-	printf("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
+	DEBUG5("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
 	// so we now know that our image should be reduced to width&height
 	scale(mySquare.width()/boundingRect().width(),
 		  mySquare.height()/boundingRect().height());

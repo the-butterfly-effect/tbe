@@ -255,7 +255,7 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
-	DEBUG5("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
+	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 
 	if (thePixmapPtr != NULL)
 	{
