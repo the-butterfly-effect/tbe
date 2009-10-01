@@ -44,13 +44,13 @@ const float SQRT2 = 1.41421356;
 extern int theVerbosity;	// actually defined in main.cpp
 #define MAX_VERBOSITY 6
 // note: the below is actually GCC-specific, see "info:/gcc/Variadic Macros"
-#define DEBUG1(format, ...)	{if (theVerbosity>=1) printf("##P1 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG2(format, ...)	{if (theVerbosity>=2) printf("##P2 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG3(format, ...)	{if (theVerbosity>=3) printf("##P3 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG4(format, ...)	{if (theVerbosity>=4) printf("##P4 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG1(format, ...)	{if (theVerbosity>=1) printf("**** t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG2(format, ...)	{if (theVerbosity>=2) printf("***  t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG3(format, ...)	{if (theVerbosity>=3) printf("**   t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG4(format, ...)	{if (theVerbosity>=4) printf("*    t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 #define DEBUG4NT(format, ...)	{if (theVerbosity>=4) printf(format, ## __VA_ARGS__);}
-#define DEBUG5(format, ...)	{if (theVerbosity>=5) printf("##P5 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("##P6 t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG5(format, ...)	{if (theVerbosity>=5) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 
 
 
