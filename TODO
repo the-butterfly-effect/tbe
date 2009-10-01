@@ -47,7 +47,7 @@ NOT A PLAYABLE GAME
 
 
 Milestone 3 - Dragging along
-Version 0.30
+COMPLETED: Subversion revision 334
 Features:
   x Switch from OpenDE (3D physics library) to Box2D (2D graphics library)
   x implement Drag&Drop from toolchest to GraphicsView
@@ -78,25 +78,32 @@ Features:
   x add current directory to list of dirs searched by ImageStore
 NOT REALLY A PLAYABLE GAME
 
-Milestone 4 - Size does matter
+Milestone 4 - Getting ready for prime time
 Version 0.40
   * implement foreground/background scenery images
   * implement rotation of relevant objects
   * do not (re)paint objects that are sleeping
+	- is this actually happening?
+	- does it help if we make ramp and Bowlingball PNG/SVG instead of draw?
+	- set all objects to sleep at clicking "start" and reset the sleep status at reset?
   * add images & animation
-	- all images in SVG format ?!?
-	- make decision about how to do scaling
-  * RMB actions
-	- adjust properties
-	- actually implement rotation
-  * split level between pre-defined objects and tool chest available objects
-    - a checkmark sign on the drawing?
+	/ all images in SVG or PNG format (implemented in milestone 3 already)
+	x all images are scaled to fit their outline (implemented in milestone 3 already)
+  / add difference between play mode and level editor
+  / split level between pre-defined objects and toolbox available objects
+	x definition of XML for config file
+	/ parsing of XML for config file
+	* drag-drop of RectObject derived goes OK
+	* solve Volleyball/VolleyBall issues
+	  this involves splitting between technical name and visible name ?!?
+	* decrease available object count in toolbox on successful Drag&Drop
   * create all levels for ELCE
-  * add difference between play mode and level editor
 FIRST PLAYABLE - with a supervisor
 
 Milestone 5 - It's make over time! (post-ELCE)
 Version 0.50
+  * RMB actions
+	- adjust properties
   * add concept of "winning" a level
   * automated regression tests for XML parser/world builder
   * finish i18n of application
