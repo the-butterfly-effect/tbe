@@ -68,3 +68,53 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 
 	aParent->appendChild(myNode);
 }
+
+
+BaseObject*
+BaseObjectSerializer::createObjectFromDom(const QDomNode& q)
+{
+	QDomNamedNodeMap myNodeMap;
+	bool isOK1, isOK2;
+	BaseObject* myBOPtr;
+	QString myValue;
+
+	// the nodemap contains all the parameters, or not...
+	myNodeMap = q.attributes();
+
+	myBOPtr = ObjectFactory::createObject(
+		myNodeMap.namedItem(theTypeAttributeString).nodeValue(),
+		Position( myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
+				  myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
+				  myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble()));
+	if (!isOK1 || !isOK2)
+		goto not_good;
+	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
+	if (myValue.isEmpty()==false)
+		myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
+	myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
+	if (myValue.isEmpty()==false)
+		myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
+	if (!isOK1 || !isOK2)
+		goto not_good;
+	if (q.hasChildNodes()==true)
+	{
+		// to parse:   <property key="texture">used_wood_bar</property>
+		QDomElement i;
+		for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
+		{
+			if (i.nodeName() != thePropertyString)
+				goto not_good;
+			QString myKey = i.attributes().item(0).nodeValue();
+			QString myValue = i.text();
+			DEBUG5("   property: '%s'='%s'\n",
+				   myKey.toAscii().constData(),
+				   myValue.toAscii().constData());
+			myBOPtr->setProperty(myKey, myValue);
+		}
+	}
+
+	return myBOPtr;
+not_good:
+	delete myBOPtr;
+	return NULL;
+}

@@ -27,8 +27,8 @@
 #include <QTime>
 #include <QUndoStack>
 
-//#define DRAWDEBUG
-#undef DRAWDEBUG
+#define DRAWDEBUG
+//#undef DRAWDEBUG
 
 #ifdef DRAWDEBUG
  #include "Box2D.h"
@@ -101,7 +101,7 @@ protected:
 		virtual void DrawXForm(const b2XForm& xf);
 
 private:
-		const static int theMaxNumberOfGraphicsListElements = 25;
+		const static int theMaxNumberOfGraphicsListElements = 125;
 		typedef QList<QGraphicsItem*> GraphicsList;
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);
@@ -143,8 +143,8 @@ private:
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);
 
-	/// implementation of ObjectFactory - not needed in Level...
-	virtual BaseObject* createObject(void) const { return NULL; }
+	/// implementation of ObjectFactory - not needed in DrawWorld...
+	virtual BaseObject* createObject(void) { return NULL; }
 
 };
 

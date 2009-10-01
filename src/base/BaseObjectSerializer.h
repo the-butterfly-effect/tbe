@@ -23,6 +23,7 @@
 
 // forward declarations:
 class QDomElement;
+class QDomNode;
 
 /** This Serializer can only be created by the BaseObject itself
  *  Once created, if you feed it a QDomElement pointer, it will
@@ -31,7 +32,7 @@ class QDomElement;
  *
  *  INSTANCES OF THIS CLASS SHOULD ONLY EXIST FOR A SHORT WHILE
  */
-class BaseObjectSerializer
+class BaseObjectSerializer : public ObjectFactory
 {
 public:
 	/** create a QDomElement of the BaseObject this instance
@@ -42,6 +43,9 @@ public:
 
 	~BaseObjectSerializer() {};
 
+
+	static BaseObject* createObjectFromDom(const QDomNode& q);
+
 private:
 	/// constructor only called by BaseObject
 	BaseObjectSerializer(const BaseObject* anObjectPtr);
@@ -49,6 +53,9 @@ private:
 	friend class BaseObject;
 
 	const BaseObject* theBaseObjectPtr;
+
+	/// implementation of ObjectFactory - not needed in BaseObjectSerializer...
+	virtual BaseObject* createObject(void) const { return NULL; }
 
 	// TODO: neutralize copy constructor and assignment operator
 	BaseObjectSerializer(BaseObjectSerializer&);

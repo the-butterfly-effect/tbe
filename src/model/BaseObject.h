@@ -360,11 +360,11 @@ protected:
 	 * @param anHeight  height of the object in meter - default 1.0
 	 * @return a valid pointer to a newly created object or NULL if not found
 	 */
-	BaseObject* createObject(
+	static BaseObject* createObject(
 			const QString& aName, 
 			const Position aPostion, 
 			const qreal aWidth = 1.0,
-			const qreal anHeight = 1.0) const;
+			const qreal anHeight = 1.0);
 	
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 	

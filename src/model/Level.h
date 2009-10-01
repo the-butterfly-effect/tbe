@@ -40,7 +40,7 @@ class World;
   * Level inherits QObject to make i18n of error messages easier 
   */
 
-class Level :  public QObject, public ObjectFactory
+class Level :  public QObject
 {
 	Q_OBJECT
 
@@ -104,9 +104,6 @@ protected:
 private:	
 	World* theWorldPtr;
 
-	/// implementation of ObjectFactory - not needed in Level...
-	virtual BaseObject* createObject(void) const { return NULL; }
-	
 	QString theLevelName;
 	QString theLevelAuthor;
 	QString theLevelLicense;

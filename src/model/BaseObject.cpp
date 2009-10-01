@@ -283,7 +283,7 @@ ObjectFactory::createObject(
 		const QString& aName, 
 		const Position aPosition,
 		const qreal aWidth,
-		const qreal anHeight) const
+		const qreal anHeight)
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
 	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", aName.toAscii().constData(), myFactoryPtr);
