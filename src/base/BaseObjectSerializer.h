@@ -30,7 +30,11 @@ class QDomNode;
  *  create a QDomElement representing itself and add it to the
  *  forementioned element.
  *
+ *  The second usage of this class is to create the right BaseObject
+ *  from the XML DOM node.
+ *
  *  INSTANCES OF THIS CLASS SHOULD ONLY EXIST FOR A SHORT WHILE
+ *  (if at all)
  */
 class BaseObjectSerializer : public ObjectFactory
 {
@@ -44,6 +48,11 @@ public:
 	~BaseObjectSerializer() {};
 
 
+	/** create a BaseObject from the information in the provided Dom
+	 *  @param q  the QDomNode containing the object definition
+	 *  @returns  NULL if failed or a pointer to a valid BaseObject if successful.
+	 *            Note that that BaseObject is still on its own - not attached to a World yet.
+	 */
 	static BaseObject* createObjectFromDom(const QDomNode& q);
 
 private:
@@ -57,8 +66,9 @@ private:
 	/// implementation of ObjectFactory - not needed in BaseObjectSerializer...
 	virtual BaseObject* createObject(void) const { return NULL; }
 
-	// TODO: neutralize copy constructor and assignment operator
+	/// Neutralize copy constructor and assignment operator
 	BaseObjectSerializer(BaseObjectSerializer&);
+	/// Neutralize copy constructor and assignment operator
 	BaseObjectSerializer& operator=(const BaseObjectSerializer&);
 };
 
