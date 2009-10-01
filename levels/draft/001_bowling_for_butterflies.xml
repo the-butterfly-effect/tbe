@@ -11,8 +11,8 @@
         <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
             <object width="2" height="1" type="RightRamp" />
 	</toolboxitem>
-        <toolboxitem count="2" name="VolleyBall">
-            <object type="VolleyBall" />
+        <toolboxitem count="2" name="Volleyball" icon="VolleyBall">
+            <object type="Volleyball" />
 	</toolboxitem>
         <toolboxitem count="20" name="Domino Stone" icon="DominoRed">
 	    <object width="0.1" X="1.1" Y="2.65" height="0.5" type="RectObject">

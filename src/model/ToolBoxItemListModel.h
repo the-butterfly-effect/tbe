@@ -83,9 +83,7 @@ public:
 	 *  @param aToolboxDomNode QDomNode called "toolbox" containing "toolboxitems"
 	 *  @returns true if successful
 	 */
-	bool fillFromDomNode(const QDomNode& aToolboxDomNode)
-	{ return fillFromObjectFactory();}
-
+	bool fillFromDomNode(const QDomNode& aToolboxDomNode);
 
 // ----- the below are needed to get a ListModel
 

@@ -18,8 +18,10 @@
 
 #include "ToolBoxItemListModel.h"
 #include "ImageStore.h"
+#include "BaseObjectSerializer.h"
 
 #include <QMimeData>
+#include <QDomNode>
 
 const char* ToolBoxItemListModel::ToolboxMimeType = "image/x-puzzle-piece";
 
@@ -55,7 +57,7 @@ QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
 	{
 	case Qt::DisplayRole:
 		if (myItem.theCount!=ToolBoxItem::INFINITE)
-			return tr("%2 (%1 left)").arg(QString::number(myItem.theCount), myItem.theName);
+			return tr("%1x %2").arg(QString::number(myItem.theCount), myItem.theName);
 		else
 			return tr("%1 (unlimited)").arg(myItem.theName);;
 		break;
@@ -72,6 +74,72 @@ QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
 	}
 }
 
+bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
+{
+	bool myResult = true;
+	QDomNode myTBI, myO;
+
+	// simple sanity check
+	if (aToolboxDomNode.nodeName() != "toolbox")
+	{
+		DEBUG1("Level's <toolbox> node is not called toolbox ?!?\n");
+		return false;
+	}
+
+	for (myTBI=aToolboxDomNode.firstChild(); !myTBI.isNull(); myTBI=myTBI.nextSibling())
+	{
+		// a toolbox object entry has the following layout:
+		// <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
+		//      <object width="2" height="1" type="RightRamp" />
+		// </toolboxitem>
+
+		// simple sanity checks
+		if (myTBI.nodeName() != "toolboxitem")
+		{
+			DEBUG2("error parsing toolbox: expected <toolboxitem> but got <%s>\n", ASCII(myTBI.nodeName()));
+			myResult = false;
+			break;
+		}
+
+		myO = myTBI.firstChild();
+		if (myO.nodeName() != "object")
+		{
+			DEBUG2("error parsing toolbox: expected <object> but got <%s>\n", ASCII(myO.nodeName()));
+			myResult = false;
+			break;
+		}
+
+		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(myO, false);
+//		BaseObject* myBOPtr = ObjectFactory::getAllFactories()->at(0)->createObject();
+		if (myBOPtr == NULL)
+		{
+			DEBUG2("error parsing toolbox: did not get valid object '%s' from <object>\n",
+				   ASCII(myO.attributes().namedItem("name").nodeValue()));
+			myResult = false;
+			break;
+		}
+
+		QDomNamedNodeMap myNodeMap = myTBI.attributes();
+		QString myTBI_Name     = myNodeMap.namedItem("name").nodeValue();
+		QString myTBI_IconName = myNodeMap.namedItem("icon").nodeValue();
+		bool    isOK;
+		int     myTBI_Count = myNodeMap.namedItem("count").nodeValue().toInt(&isOK);
+		if (!isOK)
+			myTBI_Count = ToolBoxItem::INFINITE;
+
+		// TODO: this way of getting icon names is not foolproof, but it works (for now)
+		if (myTBI_IconName.isEmpty())
+			myTBI_IconName = myBOPtr->getName();
+
+		QIcon myIcon = ImageStore::getQIcon(myTBI_IconName, QSize(32,32));
+		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myBOPtr->getToolTip()));
+		delete myBOPtr;
+
+		if (myTBI==aToolboxDomNode.lastChild())
+			break;
+	}
+	return myResult;
+}
 
 bool ToolBoxItemListModel::fillFromObjectFactory(void)
 {
@@ -83,7 +151,7 @@ bool ToolBoxItemListModel::fillFromObjectFactory(void)
 		if (myPtr != NULL)
 		{
 			// TODO: get the Icon (name) from the BaseObject
-			QIcon myIcon = ImageStore::getQIcon("ActionRotate", QSize(32,32));
+			QIcon myIcon = ImageStore::getQIcon("NotFound", QSize(32,32));
 			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr->getToolTip()));
 			delete myPtr;
 		}
