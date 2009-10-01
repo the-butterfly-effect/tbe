@@ -71,12 +71,19 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 
 
 BaseObject*
-BaseObjectSerializer::createObjectFromDom(const QDomNode& q)
+BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 {
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
 	BaseObject* myBOPtr;
 	QString myValue;
+
+	/// simple sanity check first...
+	if (q.nodeName() != "object")
+	{
+		DEBUG2("createObjectFromDom: expected <object> but got <%s>\n", ASCII(q.nodeName()));
+		return NULL;
+	}
 
 	// the nodemap contains all the parameters, or not...
 	myNodeMap = q.attributes();
@@ -86,15 +93,17 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q)
 		Position( myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
 				  myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
 				  myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble()));
-	if (!isOK1 || !isOK2)
+	if (isXYMandatory && (!isOK1 || !isOK2))
 		goto not_good;
 	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
 		myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
+	if (!isOK1)
+		goto not_good;
 	myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
 		myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
-	if (!isOK1 || !isOK2)
+	if (!isOK1)
 		goto not_good;
 	if (q.hasChildNodes()==true)
 	{

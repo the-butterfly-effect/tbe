@@ -152,7 +152,9 @@ Level::load(const QString& aFileName)
 	DEBUG5("level author:  '%s'\n", theLevelAuthor.toAscii().constData());
 	DEBUG5("level license: '%s'\n", theLevelLicense.toAscii().constData());
 	theWorldPtr->theLevelName = theLevelName;
-	
+
+	theToolboxDomNode = myDocElem.firstChildElement("toolbox");
+
 	//
 	// parse the Scene section
 	//
@@ -181,13 +183,12 @@ Level::load(const QString& aFileName)
 		// <object type="Ramp" X="1.0" Y="0.5" width="2.0"/>
 		// of these, type, X and Y are *MANDATORY*
 		// optional are:  angle, width, height
-		// TODO: also optional are properties
 	
 		// simple sanity check
 		if (q.nodeName() != theObjectString)
 			goto not_good;
 
-		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q);
+		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
 		if (myBOPtr == NULL)
 			goto not_good;
 		theWorldPtr->addObject(myBOPtr);

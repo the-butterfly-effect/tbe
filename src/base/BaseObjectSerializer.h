@@ -50,10 +50,11 @@ public:
 
 	/** create a BaseObject from the information in the provided Dom
 	 *  @param q  the QDomNode containing the object definition
+	 *  @param isXYMandatory  set to true if X="" and Y="" are mandatory for the object
 	 *  @returns  NULL if failed or a pointer to a valid BaseObject if successful.
 	 *            Note that that BaseObject is still on its own - not attached to a World yet.
 	 */
-	static BaseObject* createObjectFromDom(const QDomNode& q);
+	static BaseObject* createObjectFromDom(const QDomNode& q, bool isXYMandatory);
 
 private:
 	/// constructor only called by BaseObject
