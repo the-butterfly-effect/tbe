@@ -144,7 +144,7 @@ private:
 	void setAcceptDrops(bool isOn);
 
 	/// implementation of ObjectFactory - not needed in DrawWorld...
-	virtual BaseObject* createObject(void) { return NULL; }
+	virtual BaseObject* createObject(void) const { return NULL; }
 
 };
 
