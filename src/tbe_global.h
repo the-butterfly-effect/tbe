@@ -59,4 +59,8 @@ extern int theVerbosity;	// actually defined in main.cpp
 /// implemented in main.cpp
 extern const char* ASCII(const QString& aQString);
 
+
+/// defined in main.cpp
+extern bool theIsLevelEditor;
+
 #endif // TBE_GLOBAL

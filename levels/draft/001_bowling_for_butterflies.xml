@@ -4,12 +4,28 @@
         <title>Bowling for Butterflies</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>temp with coke bottle</description>
-        <date>9/28/09</date>
+        <description>square</description>
+        <date>8/11/09</date>
     </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
+            <object width="2" height="1" type="RightRamp" />
+	</toolboxitem>
+        <toolboxitem count="2" name="VolleyBall">
+            <object type="VolleyBall" />
+	</toolboxitem>
+        <toolboxitem count="20" name="Domino Stone" icon="DominoRed">
+	    <object width="0.1" X="1.1" Y="2.65" height="0.5" type="RectObject">
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >DominoRed</property>
+                <property key="Mass" >2.5</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
     <scene>
         <scenesize width="4.5" height="4" />
         <predefined>
+            <object X="0.4" Y="3" type="Bowling Ball" />
             <object X="3" Y="0.29" type="Bowling Pin" />
             <object X="3.2" Y="0.29" type="Bowling Pin" />
             <object X="3.4" Y="0.29" type="Bowling Pin" />
@@ -24,18 +40,6 @@
                 <property key="page3" >You probably have to make it roll?&lt;br>&lt;br>&lt;br>Was signed: The Noteboy</property>
                 <property key="page3_nl" >Misschien moet je de bal aan het rollen krijgen?&lt;br>&lt;br>&lt;br>Was getekend: De Noteboy</property>
             </object>
-            <object X="0.3" Y="0.53" type="Coke+Mentos Bottle" angle="1.55" >
-                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
-Look: it blows if triggered!</property>
-                <property key="ImageName" >CokeMentosBottle</property>
-            </object>
-            <object X="0.2" Y="0.21" type="Volleyball" />
-            <object X="0.42" Y="0.21" type="Volleyball" />
-            <object X="0.64" Y="0.21" type="Volleyball" />
-            <object X="0.86" Y="0.21" type="Volleyball" />
-            <object X="1.08" Y="0.21" type="Volleyball" />
-            <object width="0.2621979166666668" X="4.360096288045248" Y="0.6043698191642761" height="1" type="RectObject" />
         </predefined>
     </scene>
-    <toolbox/>
 </tbe-level>

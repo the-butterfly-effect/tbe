@@ -21,7 +21,11 @@
 #include <QtGui>
 
 // the verbosity for all logging - by default defined at 5 (most logging)
-int theVerbosity = 5;
+int theVerbosity = 4;
+
+// this variable defines whether we are playing or a level editor
+// TODO/FIXME: this should go into preferences or so at some point
+bool theIsLevelEditor = false;
 
 
 int main(int argc, char **argv)

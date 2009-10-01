@@ -70,6 +70,8 @@ public:
 		{ return theWorldPtr; }
 
 	/** open file containing a level definition, parse it, build the Level
+	 *  if run into a <toolbox> section, keep a reference to that so the toolbox
+	 *  can benefit later...
 	 * 
 	 * @param aFileName file to parse and populate Level with.
 	 * @return empty string is returned if loading was successful, otherwise
@@ -85,11 +87,15 @@ public:
 	 */
 	bool save(const QString& aFileName);
 
-	/// returns the path to the file that describes the current level
+	/// @returns the path to the file that describes the current level
 	static QString getPathToLevelFile(void);
 
-	/// returns the name of the file that describes the current level
+	/// @returns the name of the file that describes the current level
 	static QString getLevelFileName(void);
+
+	/// @returns a reference to the QDomNode containing the toolbox description
+	const QDomNode& getToolboxDomNode(void) const
+	{ return theToolboxDomNode; }
 
 private:
 	/// sets the name of the file that describes the current level
@@ -109,6 +115,11 @@ private:
 	QString theLevelLicense;
 	QString	theLevelDescription;
 	QString theLevelDate;
+
+	/** populated during load(), this DomNode contains the contents for the toolbox
+	 *  if no load() has happened, this is empty.
+	 */
+	QDomNode theToolboxDomNode;
 
 	friend class SaveLevelInfo;
 };

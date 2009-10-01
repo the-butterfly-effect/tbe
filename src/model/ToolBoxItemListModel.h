@@ -27,6 +27,8 @@
 #include <QList>
 #include <QAbstractListModel>
 
+// forward declarations
+class QDomNode;
 
 /// this class contains everything one needs to know
 /// to add an item to the toolbox
@@ -75,6 +77,14 @@ public:
 	 *  This is of course only to be done in Level Editor mode or cheat...
 	 */
 	bool fillFromObjectFactory(void);
+
+	/** Fills the Toolbox with everything specified
+	 *  in the XML DOM node called "toolbox"
+	 *  @param aToolboxDomNode QDomNode called "toolbox" containing "toolboxitems"
+	 *  @returns true if successful
+	 */
+	bool fillFromDomNode(const QDomNode& aToolboxDomNode)
+	{ return fillFromObjectFactory();}
 
 
 // ----- the below are needed to get a ListModel

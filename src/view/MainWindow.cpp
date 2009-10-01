@@ -137,23 +137,28 @@ void MainWindow::loadLevel(const QString& aFileName)
 {
 	if (theLevelPtr != NULL)
 		purgeLevel();
-	
+
 	// create level and display in main window
-    theLevelPtr = new Level();
-    QString myErrorMessage = theLevelPtr->load(aFileName); 
-    if (!myErrorMessage.isEmpty())
-    {
-    	// TODO: popup and such
-    	DEBUG1("ERROR during reading file '%s': %s\n",
-    			aFileName.toAscii().constData(),
-    			myErrorMessage.toAscii().constData() );
-    	exit(1);
-    }
-    theLevelPtr->getTheWorldPtr()->createScene(this);
-    theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
+	theLevelPtr = new Level();
+	QString myErrorMessage = theLevelPtr->load(aFileName);
+	if (!myErrorMessage.isEmpty())
+	{
+		// TODO: popup and such
+		DEBUG1("ERROR during reading file '%s': %s\n",
+				aFileName.toAscii().constData(),
+				myErrorMessage.toAscii().constData() );
+		exit(1);
+	}
+	theLevelPtr->getTheWorldPtr()->createScene(this);
+	theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
 
 	ToolBoxItemListModel* theNewToolbox = new ToolBoxItemListModel();
-	theNewToolbox->fillFromObjectFactory();
+
+	if (theIsLevelEditor)
+		theNewToolbox->fillFromObjectFactory();
+	else
+		theNewToolbox->fillFromDomNode(theLevelPtr->getToolboxDomNode());
+
 	ui.theToolBoxView->setModel(theNewToolbox);
 	ui.theToolBoxView->setViewMode(QListView::IconMode);
 	ui.theToolBoxView->setIconSize(QSize(32, 32));
