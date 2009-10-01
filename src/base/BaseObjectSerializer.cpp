@@ -75,7 +75,6 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 {
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
-	BaseObject* myBOPtr;
 	QString myValue;
 
 	/// simple sanity check first...
@@ -88,23 +87,47 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 	// the nodemap contains all the parameters, or not...
 	myNodeMap = q.attributes();
 
-	myBOPtr = ObjectFactory::createObject(
-		myNodeMap.namedItem(theTypeAttributeString).nodeValue(),
-		Position( myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
-				  myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
-				  myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble()));
-	if (isXYMandatory && (!isOK1 || !isOK2))
+	QString myObjectType = myNodeMap.namedItem(theTypeAttributeString).nodeValue();
+	Position myObjectPosition(
+			myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
+			myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
+			myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble());
+	if (!isOK1 || !isOK2)
+	{
+		if (isXYMandatory)
+		{
+			DEBUG2("createObjectFromDom: '%s' has invalid X or Y\n", ASCII(myObjectType));
+			return NULL;
+		}
+		myObjectPosition = Position(0,0,0);
+	}
+
+	BaseObject* myBOPtr = ObjectFactory::createObject( myObjectType, myObjectPosition);
+	if (myBOPtr==NULL)
+	{
+		DEBUG2("createObjectFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
 		goto not_good;
+	}
+
+	isOK1=true;
 	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
 		myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
 	if (!isOK1)
+	{
+		DEBUG2("createObjectFromDom: '%s' has invalid %s\n", ASCII(myObjectType), theWidthAttributeString);
 		goto not_good;
+	}
+
+	isOK1=true;
 	myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
 		myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
 	if (!isOK1)
+	{
+		DEBUG2("createObjectFromDom: '%s' has invalid %s\n", ASCII(myObjectType), theHeightAttributeString);
 		goto not_good;
+	}
 	if (q.hasChildNodes()==true)
 	{
 		// to parse:   <property key="texture">used_wood_bar</property>
@@ -122,6 +145,7 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 		}
 	}
 
+	DEBUG4("createObjectFromDom for '%s' successful\n", ASCII(myObjectType));
 	return myBOPtr;
 not_good:
 	delete myBOPtr;
