@@ -40,9 +40,7 @@ public:
 	ToolBoxItem(unsigned int aCount,
 				const QIcon& anIcon,
 				const QString& aName,
-				const QString& aTooltip);
-//	ToolBoxItem(unsigned int aCount,
-//				const BaseObject& anObject);
+				const BaseObject* anObjectPtr);
 
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
@@ -58,7 +56,10 @@ public:
 	/// Qt::ToolTipRole - the tooltip
 	QString	theTooltip;
 
-	/// TODO: add pointer to actual factory
+	/** pointer to instantiated baseobject. Note that this object is
+	 *  not handed out to the playing field - we only hand out copies.
+	 */
+	const BaseObject*	theExampleObjectPtr;
 };
 
 

@@ -26,14 +26,24 @@
 const char* ToolBoxItemListModel::ToolboxMimeType = "image/x-puzzle-piece";
 
 
-ToolBoxItem::ToolBoxItem(
-		unsigned int   aCount, const QIcon&   anIcon,
-		const QString& aName,  const QString& aTooltip)
-		: theCount(aCount), theIcon(anIcon),
-		  theName(aName),   theTooltip(aTooltip)
+ToolBoxItem::ToolBoxItem(unsigned int aCount,
+				const QIcon&   anIcon,
+				const QString& aName,
+				const BaseObject* anObjectPtr)
+	: theCount(aCount),
+	theIcon(anIcon),
+	theName(aName),
+	theTooltip(anObjectPtr->getToolTip()),
+	theExampleObjectPtr(anObjectPtr)
+
 {
 	; // nothing to do here...
 }
+
+
+
+// **************************************************************************
+// **************************************************************************
 
 
 ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
@@ -132,7 +142,7 @@ bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
 			myTBI_IconName = myBOPtr->getName();
 
 		QIcon myIcon = ImageStore::getQIcon(myTBI_IconName, QSize(32,32));
-		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myBOPtr->getToolTip()));
+		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myBOPtr));
 		delete myBOPtr;
 
 		if (myTBI==aToolboxDomNode.lastChild())
@@ -150,9 +160,9 @@ bool ToolBoxItemListModel::fillFromObjectFactory(void)
 		BaseObject* myPtr = myListPtr->at(i)->createObject();
 		if (myPtr != NULL)
 		{
-			// TODO: get the Icon (name) from the BaseObject
-			QIcon myIcon = ImageStore::getQIcon("NotFound", QSize(32,32));
-			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr->getToolTip()));
+			// TODO: this way of getting icon names is not foolproof, but it works (for now)
+			QIcon myIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr));
 			delete myPtr;
 		}
 	}
