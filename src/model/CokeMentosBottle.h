@@ -180,6 +180,9 @@ private:
 	/// used to calculate the velocity change - which is used to see if the bottle is hit
 	b2Vec2 thePreviousVelocity;
 
+	/// used to calculate the angular velocity change - which is used to see if the bottle is hit
+	float thePreviousAngVelocity;
+
 
 };
 

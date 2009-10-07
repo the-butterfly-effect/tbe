@@ -59,6 +59,7 @@ CokeMentosBottle::CokeMentosBottle()
 		my5PointPinDef->vertices[5].Set( 0.01 ,  0.25);
 		// approximation of the initial mass - we'll fix it later on...
 		my5PointPinDef->density = 2.1 / (0.166*0.501);
+		my5PointPinDef->friction = 0.0;
 		theShapeList.push_back(my5PointPinDef);
 	}
 
@@ -96,15 +97,23 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 		{
 			//  check for impact
 			b2Vec2 myVelo = theB2BodyPtr->GetLinearVelocity();
-			if (myVelo.Length()<0.1)
+			float  myAVelo= theB2BodyPtr->GetAngularVelocity();
+			if (myVelo.Length()<0.1 && myAVelo <0.1)
 				break;
 			if ( abs(1.0-thePreviousVelocity.Length()/myVelo.Length()) > 0.2 && hasContact)
 			{
-				DEBUG5("CokeBottle was hit\n");
+				DEBUG5("CokeBottle was hit - LINEAR\n");
 				setBottleStatus(TRIGGERED);
+				break;
 			}
-
+			if ( abs(1.0-thePreviousAngVelocity/myAVelo) > 0.2 && hasContact)
+			{
+				DEBUG5("CokeBottle was hit - ANGULAR\n");
+				setBottleStatus(TRIGGERED);
+				break;
+			}
 			thePreviousVelocity = myVelo;
+			thePreviousAngVelocity = myAVelo;
 			hasContact = false;
 			break;
 		}
@@ -144,6 +153,7 @@ void CokeMentosBottle::reset(void)
 	BaseObject::reset();
 	setBottleStatus(UNTRIGGERED);
 	thePreviousVelocity = b2Vec2(0,0);
+	thePreviousAngVelocity = 0.0;
 	hasContact = false;
 }
 
