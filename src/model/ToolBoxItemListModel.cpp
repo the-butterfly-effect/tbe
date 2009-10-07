@@ -40,6 +40,11 @@ ToolBoxItem::ToolBoxItem(unsigned int aCount,
 	; // nothing to do here...
 }
 
+ToolBoxItem::~ToolBoxItem()
+{
+	if (theExampleObjectPtr)
+		delete theExampleObjectPtr;
+}
 
 
 // **************************************************************************
@@ -163,7 +168,8 @@ bool ToolBoxItemListModel::fillFromObjectFactory(void)
 			// TODO: this way of getting icon names is not foolproof, but it works (for now)
 			QIcon myIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
 			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr));
-			delete myPtr;
+			// do not delete the object - it is now part of the ToolBoxItem...
+			// delete myPtr;
 		}
 	}
 	delete myListPtr;

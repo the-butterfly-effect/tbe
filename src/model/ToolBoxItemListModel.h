@@ -42,6 +42,8 @@ public:
 				const QString& aName,
 				const BaseObject* anObjectPtr);
 
+	virtual ~ToolBoxItem();
+
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
 
