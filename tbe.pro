@@ -2,7 +2,7 @@ TEMPLATE = app
 LANGUAGE = C++
 CONFIG += qt \
     warn_on \
-	debug
+    debug
 LIBS += -lbox2d \
     -L3rdParty/libs
 DEFINES += QT_NO_ASCII_CAST
@@ -11,9 +11,9 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src/model \
     src/view \
     src/base
-
-QMAKE_CXXFLAGS_DEBUG += -ggdb3 -O0 -Wextra
-
+QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
+    -O0 \
+    -Wextra
 QT += core \
     gui \
     xml \
@@ -50,7 +50,8 @@ HEADERS += src/tbe_global.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
     src/view/StartStopReset.h \
-    src/view/DrawCokeMentosBottle.h
+    src/view/DrawCokeMentosBottle.h \
+    src/model/Butterfly.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/UndoDeleteCommand.cpp \
@@ -81,7 +82,8 @@ SOURCES += src/main.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopReset.cpp \
-    src/view/DrawCokeMentosBottle.cpp
+    src/view/DrawCokeMentosBottle.cpp \
+    src/model/Butterfly.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
     src/view/SaveLevelInfo.ui
