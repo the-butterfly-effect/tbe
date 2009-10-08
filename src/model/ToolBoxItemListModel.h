@@ -44,6 +44,11 @@ public:
 
 	virtual ~ToolBoxItem();
 
+	QVariant getID(void) const
+	{
+		return "TBE-" + QString::number(reinterpret_cast<qulonglong>(theExampleObjectPtr),16);
+	}
+
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
 
@@ -87,6 +92,13 @@ public:
 	 *  @returns true if successful
 	 */
 	bool fillFromDomNode(const QDomNode& aToolboxDomNode);
+
+	/** get a copy of the object in the ToolBoxItem specified
+	  * @param anObjectName  internal name (see data(,Qt::EditRole)) of a ToolBoxItem
+	  * @returns NULL if Object is not available, otherwise pointer to new fresh object
+	  *          it will also decrease the counter of the item
+	  */
+	BaseObject* getMeACopyOf(const QString& anObjectName);
 
 // ----- the below are needed to get a ListModel
 

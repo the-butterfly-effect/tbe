@@ -116,7 +116,7 @@ qreal DrawWorld::getHeight()
 
 void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 {
-	DEBUG5("void DrawWorld::dropEvenFromView\n");
+	DEBUG4("void DrawWorld::dropEvenFromView\n");
 	if (event->mimeData()->hasFormat(ToolBoxItemListModel::ToolboxMimeType))
 	{
 		QByteArray pieceData = event->mimeData()->data("image/x-puzzle-piece");
@@ -124,9 +124,13 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 		QString myObjectName;
 		stream >> myObjectName;
 
-		DEBUG5("the object is: '%s' @ %f,%f\n", myObjectName.toAscii().constData(), aDropPos.x(), aDropPos.y());
+		DEBUG4("  the object is: '%s' @ %f,%f\n", myObjectName.toAscii().constData(), aDropPos.x(), aDropPos.y());
 
-		BaseObject* myObjectPtr = ObjectFactory::createObject(myObjectName, Position(aDropPos));
+		// now we know the ID of the object, let's retrieve a copy from the Toolbox
+		BaseObject* myObjectPtr = theMainWindowPtr->askToolBoxForCopyOf(myObjectName);
+		myObjectPtr->setOrigCenter(Position(aDropPos));
+		myObjectPtr->createPhysicsObject();
+
 		theWorldPtr->addObject(myObjectPtr);
 
 		event->setDropAction(Qt::MoveAction);

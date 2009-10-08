@@ -42,8 +42,11 @@ ToolBoxItem::ToolBoxItem(unsigned int aCount,
 
 ToolBoxItem::~ToolBoxItem()
 {
-	if (theExampleObjectPtr)
-		delete theExampleObjectPtr;
+	DEBUG3("TODO/FIXME: ToolBoxItem::~ToolBoxItem() does not delete %p\n", theExampleObjectPtr);
+	// note: because ToolBoxItem is copied on insertion, it would delete its pointer
+	// so we need to have an intelligent copy constructor/assignment operator here...
+//	if (theExampleObjectPtr)
+//		delete theExampleObjectPtr;
 }
 
 
@@ -82,8 +85,8 @@ QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
 	case Qt::ToolTipRole:
 		return myItem.theTooltip;
 		break;
-	case Qt::EditRole:
-		return myItem.theName;
+	case Qt::EditRole:	// edit role is used to build the mime type
+		return myItem.getID();
 	default:
 		return QVariant();
 	}
@@ -186,6 +189,25 @@ Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
 }
 
 
+BaseObject* ToolBoxItemListModel::getMeACopyOf(const QString& anObjectName)
+{
+	// iterate through the list to find the item whose data() equals anObjectName
+
+	ToolBoxItemPtrList::iterator i;
+	for (i= theList.begin(); i != theList.end(); ++i)
+	{
+		if ((*i).getID() == anObjectName)
+		{
+			// TODO/FIXME: We'll always return the same pointer, that's wrong
+			return const_cast<BaseObject*>((*i).theExampleObjectPtr);
+		}
+	}
+
+	return NULL;
+}
+
+
+
 QMimeData* ToolBoxItemListModel::mimeData(const QModelIndexList &indexes) const
 {
 	QMimeData *mimeData = new QMimeData();
@@ -217,14 +239,14 @@ QStringList ToolBoxItemListModel::mimeTypes() const
 }
 
 
-bool ToolBoxItemListModel::removeRows(int row, int count, const QModelIndex &parent)
+bool ToolBoxItemListModel::removeRows(int, int, const QModelIndex& )
 {
 	// TODO: NOT IMPLEMENTED YET
 	return false;
 }
 
 
-int ToolBoxItemListModel::rowCount(const QModelIndex &parent) const
+int ToolBoxItemListModel::rowCount(const QModelIndex&) const
 {
 	return theList.count();
 }

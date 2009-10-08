@@ -37,6 +37,16 @@ public:
 
      void setScene(DrawWorld* aScene, const QString& aLevelName);
      
+
+	BaseObject* askToolBoxForCopyOf(const QString& anObjectID)
+	{
+		if (theToolboxModel)
+			return theToolboxModel->getMeACopyOf(anObjectID);
+		else
+			return NULL;
+	}
+
+
 private slots:
 	void on_actionAbout_activated(void);
 	void on_actionOpen_level_activated(void);
@@ -60,35 +70,36 @@ private slots:
 	{ setSimSpeed(2.0); }
 
 private:
-     Ui::MainWindow ui;
-     Level* theLevelPtr;
-     DrawWorld* theScenePtr;
-     
-     QUndoGroup theUndoGroup;
-     QAction*	theUndoActionPtr;
-     QAction*	theRedoActionPtr;
-     
-	 qreal theSimSpeed;
+	Ui::MainWindow ui;
+	Level* theLevelPtr;
+	DrawWorld* theScenePtr;
+	ToolBoxItemListModel* theToolboxModel;
 
-     /** the state machine handling the Start/Stop/Continue/Rest buttons
-      *  and the actual simulation timing
-      *  
-      *  TODO: Due to separation of concerns, maybe move the actual
-      *         timing & simulation stuff out of this?
-      */
-     StartStopReset	theSimStateMachine;
-     
-     /** loads the level specified by the file name
-      * 
-      * @param aFileName guess what: the file name. Duh.
-      */
-     void loadLevel(const QString& aFileName);
-     
-     /// deletes the existing Level instance and removes its view
-     void purgeLevel(void);
+	QUndoGroup theUndoGroup;
+	QAction*	theUndoActionPtr;
+	QAction*	theRedoActionPtr;
 
-	 /// sets the simulation speed
-	 void setSimSpeed(qreal aSpeed);
+	qreal theSimSpeed;
+
+	/** the state machine handling the Start/Stop/Continue/Rest buttons
+	 *  and the actual simulation timing
+	 *
+	 *  TODO: Due to separation of concerns, maybe move the actual
+	 *         timing & simulation stuff out of this?
+	 */
+	StartStopReset	theSimStateMachine;
+
+	/** loads the level specified by the file name
+	 *
+	 * @param aFileName guess what: the file name. Duh.
+	 */
+	void loadLevel(const QString& aFileName);
+
+	/// deletes the existing Level instance and removes its view
+	void purgeLevel(void);
+
+	/// sets the simulation speed
+	void setSimSpeed(qreal aSpeed);
 };
 
  

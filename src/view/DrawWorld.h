@@ -43,7 +43,7 @@ class QDropEvent;
   * This class abstracts the actual drawing of objects
   */
 
-class DrawWorld : public QGraphicsScene, public ObjectFactory
+class DrawWorld : public QGraphicsScene
 #ifdef DRAWDEBUG
 		, public b2DebugDraw
 #endif
@@ -142,9 +142,6 @@ private:
 
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);
-
-	/// implementation of ObjectFactory - not needed in DrawWorld...
-	virtual BaseObject* createObject(void) const { return NULL; }
 
 };
 

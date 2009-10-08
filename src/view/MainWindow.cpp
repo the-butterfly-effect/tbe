@@ -152,14 +152,14 @@ void MainWindow::loadLevel(const QString& aFileName)
 	theLevelPtr->getTheWorldPtr()->createScene(this);
 	theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
 
-	ToolBoxItemListModel* theNewToolbox = new ToolBoxItemListModel();
+	theToolboxModel = new ToolBoxItemListModel();
 
 	if (theIsLevelEditor)
-		theNewToolbox->fillFromObjectFactory();
+		theToolboxModel->fillFromObjectFactory();
 	else
-		theNewToolbox->fillFromDomNode(theLevelPtr->getToolboxDomNode());
+		theToolboxModel->fillFromDomNode(theLevelPtr->getToolboxDomNode());
 
-	ui.theToolBoxView->setModel(theNewToolbox);
+	ui.theToolBoxView->setModel(theToolboxModel);
 	ui.theToolBoxView->setViewMode(QListView::IconMode);
 	ui.theToolBoxView->setIconSize(QSize(32, 32));
 	ui.theToolBoxView->setGridSize(QSize(100, 50));
