@@ -128,18 +128,20 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 
 		// now we know the ID of the object, let's retrieve a copy from the Toolbox
 		BaseObject* myObjectPtr = theMainWindowPtr->askToolBoxForCopyOf(myObjectName);
-		myObjectPtr->setOrigCenter(Position(aDropPos));
-		myObjectPtr->createPhysicsObject();
+		if (myObjectPtr != NULL)
+		{
+			myObjectPtr->setOrigCenter(Position(aDropPos));
+			myObjectPtr->createPhysicsObject();
 
-		theWorldPtr->addObject(myObjectPtr);
+			theWorldPtr->addObject(myObjectPtr);
 
-		event->setDropAction(Qt::MoveAction);
-		event->accept();
+			event->setDropAction(Qt::MoveAction);
+			event->accept();
+			return;
+		}
 	}
-	else
-	{
-		event->ignore();
-	}
+
+	event->ignore();
 }
 
 void DrawWorld::initAttributes ( ) 

@@ -92,11 +92,11 @@ Version 0.40
   / add difference between play mode and level editor
   / split level between pre-defined objects and toolbox available objects
 	x definition of XML for config file
-	/ parsing of XML for config file
-	* drag-drop of RectObject derived goes OK
+	x parsing of XML for config file
+	x drag-drop of RectObject derived goes OK
 	* solve Volleyball/VolleyBall issues
 	  this involves splitting between technical name and visible name ?!?
-	* decrease available object count in toolbox on successful Drag&Drop
+	x decrease available object count in toolbox on successful Drag&Drop
   * create all levels for ELCE
 FIRST PLAYABLE - with a supervisor
 
