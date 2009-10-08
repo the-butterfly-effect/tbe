@@ -28,7 +28,7 @@
 //  
 
 DrawCokeMentosBottle::DrawCokeMentosBottle (BaseObject* aBaseObjectPtr,
-						const QString& anImageName,
+						UNUSED_ARG const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
 	: DrawObject(aBaseObjectPtr, "CokeMentosBottle")
 {
