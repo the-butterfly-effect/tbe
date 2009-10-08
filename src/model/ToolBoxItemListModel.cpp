@@ -29,24 +29,66 @@ const char* ToolBoxItemListModel::ToolboxMimeType = "image/x-puzzle-piece";
 ToolBoxItem::ToolBoxItem(unsigned int aCount,
 				const QIcon&   anIcon,
 				const QString& aName,
-				const BaseObject* anObjectPtr)
+				QDomNode aDomNode)
 	: theCount(aCount),
 	theIcon(anIcon),
 	theName(aName),
-	theTooltip(anObjectPtr->getToolTip()),
-	theExampleObjectPtr(anObjectPtr)
-
+	theDomNode(aDomNode),
+	theFactoryPtr(NULL)
 {
-	; // nothing to do here...
+	; // nothing to do
+}
+
+
+ToolBoxItem::ToolBoxItem(const ObjectFactory* aFactoryPtr)
+	: theCount(INFINITE),
+	theFactoryPtr(aFactoryPtr)
+{
+	assert(aFactoryPtr != NULL);
+	if (aFactoryPtr==NULL)
+		return;
+	BaseObject* myPtr = aFactoryPtr->createObject();
+	if (myPtr != NULL)
+	{
+		// TODO: this way of getting icon names is not foolproof, but it works (for now)
+		theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+		theName = myPtr->getName();
+		delete myPtr;
+	}
 }
 
 ToolBoxItem::~ToolBoxItem()
 {
-	DEBUG3("TODO/FIXME: ToolBoxItem::~ToolBoxItem() does not delete %p\n", theExampleObjectPtr);
-	// note: because ToolBoxItem is copied on insertion, it would delete its pointer
-	// so we need to have an intelligent copy constructor/assignment operator here...
-//	if (theExampleObjectPtr)
-//		delete theExampleObjectPtr;
+	; // nothing to do anymore - there are no pointers in here...
+}
+
+
+BaseObject* ToolBoxItem::getNewObject(void)
+{
+	if (theCount <= 0)
+		return NULL;
+
+	BaseObject* myBOPtr = NULL;
+	if (theFactoryPtr != NULL)
+	{
+		myBOPtr = theFactoryPtr->createObject();
+	}
+	else
+	{
+		myBOPtr = BaseObjectSerializer::createObjectFromDom(theDomNode, false);
+		if (myBOPtr == NULL)
+		{
+			DEBUG2("error parsing toolbox: did not get valid object '%s' from <object>\n",
+				   ASCII(theDomNode.attributes().namedItem("name").nodeValue()));
+		}
+	}
+	if (myBOPtr!=NULL && theCount > 0)
+	{
+		if (theCount != INFINITE)
+			theCount--;
+	}
+
+	return myBOPtr;
 }
 
 
@@ -127,16 +169,6 @@ bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
 			break;
 		}
 
-		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(myO, false);
-//		BaseObject* myBOPtr = ObjectFactory::getAllFactories()->at(0)->createObject();
-		if (myBOPtr == NULL)
-		{
-			DEBUG2("error parsing toolbox: did not get valid object '%s' from <object>\n",
-				   ASCII(myO.attributes().namedItem("name").nodeValue()));
-			myResult = false;
-			break;
-		}
-
 		QDomNamedNodeMap myNodeMap = myTBI.attributes();
 		QString myTBI_Name     = myNodeMap.namedItem("name").nodeValue();
 		QString myTBI_IconName = myNodeMap.namedItem("icon").nodeValue();
@@ -147,11 +179,10 @@ bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
 
 		// TODO: this way of getting icon names is not foolproof, but it works (for now)
 		if (myTBI_IconName.isEmpty())
-			myTBI_IconName = myBOPtr->getName();
+			myTBI_IconName = myTBI_Name;
 
 		QIcon myIcon = ImageStore::getQIcon(myTBI_IconName, QSize(32,32));
-		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myBOPtr));
-		delete myBOPtr;
+		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myO));
 
 		if (myTBI==aToolboxDomNode.lastChild())
 			break;
@@ -165,14 +196,10 @@ bool ToolBoxItemListModel::fillFromObjectFactory(void)
 	int i=0;
 	for (i=0; i< myListPtr->count(); i++)
 	{
-		BaseObject* myPtr = myListPtr->at(i)->createObject();
+		const ObjectFactory* myPtr = myListPtr->at(i);
 		if (myPtr != NULL)
 		{
-			// TODO: this way of getting icon names is not foolproof, but it works (for now)
-			QIcon myIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
-			theList.push_back( ToolBoxItem( ToolBoxItem::INFINITE, myIcon, myPtr->getName(),  myPtr));
-			// do not delete the object - it is now part of the ToolBoxItem...
-			// delete myPtr;
+			theList.push_back(ToolBoxItem(myPtr));
 		}
 	}
 	delete myListPtr;
@@ -198,8 +225,7 @@ BaseObject* ToolBoxItemListModel::getMeACopyOf(const QString& anObjectName)
 	{
 		if ((*i).getID() == anObjectName)
 		{
-			// TODO/FIXME: We'll always return the same pointer, that's wrong
-			return const_cast<BaseObject*>((*i).theExampleObjectPtr);
+			return (*i).getNewObject();
 		}
 	}
 

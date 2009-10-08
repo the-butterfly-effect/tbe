@@ -26,28 +26,36 @@
 #include <QString>
 #include <QList>
 #include <QAbstractListModel>
-
-// forward declarations
-class QDomNode;
+#include <QDomNode>
 
 /// this class contains everything one needs to know
 /// to add an item to the toolbox
 class ToolBoxItem
 {
 public:
+	virtual ~ToolBoxItem();
+
+private:
+	friend class ToolBoxItemListModel;
+
 	const static unsigned int INFINITE = 999;
 
 	ToolBoxItem(unsigned int aCount,
 				const QIcon& anIcon,
 				const QString& aName,
-				const BaseObject* anObjectPtr);
+				const QDomNode myDomNode);
 
-	virtual ~ToolBoxItem();
+	ToolBoxItem(const ObjectFactory* aFactoryPtr);
 
 	QVariant getID(void) const
 	{
-		return "TBE-" + QString::number(reinterpret_cast<qulonglong>(theExampleObjectPtr),16);
+		return "TBE-" + QString::number(reinterpret_cast<qulonglong>(this),16);
 	}
+
+	/** returns a pointer to a new object and decreases the count of objects left
+	  * @returns a valid pointer to a new object or NULL if no objects left or errors
+	  */
+	BaseObject* getNewObject(void);
 
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
@@ -61,12 +69,14 @@ public:
 	QString	theName;
 
 	/// Qt::ToolTipRole - the tooltip
+	/// FIXME: no longer initialised...
 	QString	theTooltip;
 
-	/** pointer to instantiated baseobject. Note that this object is
-	 *  not handed out to the playing field - we only hand out copies.
-	 */
-	const BaseObject*	theExampleObjectPtr;
+	/// using the BaseObjectSerializer, we can create objects from this DomNode
+	QDomNode theDomNode;
+
+	/// using the ObjectFactory, we can create objects from this Name
+	const ObjectFactory* theFactoryPtr;
 };
 
 

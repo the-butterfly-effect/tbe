@@ -383,6 +383,7 @@ protected:
 	 * @return pointer to a newly instantiated object
 	 */
 	virtual BaseObject* createObject(void) const = 0;
+	friend class ToolBoxItem;
 };
 
 #endif // BASEOBJECT_H
