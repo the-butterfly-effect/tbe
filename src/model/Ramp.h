@@ -62,7 +62,7 @@ public:
 
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const
-	{	return false;	}
+	{	return true;	}
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
