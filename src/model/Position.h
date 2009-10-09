@@ -57,6 +57,8 @@ public:
 	const static qreal minimalMove = 0.005;
 
 	b2Vec2 toB2Vec2(void);
+
+	qreal length(void);
 };
 
 
@@ -67,6 +69,7 @@ Position operator+(const Position& p1, const Position& p2);
 Position operator+(const Position& p1, const QPointF& p2);
 
 /// subtracts two Positions (including angle!)
+/// ofcourse, the end result probably is a vector, but ok...
 Position operator-(const Position& p1, const Position& p2);
 
 /// constant multiplies vector only - not the angle

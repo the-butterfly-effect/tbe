@@ -19,6 +19,8 @@
 #include "Position.h"
 #include "Box2D.h"
 
+#include <cmath>
+
 // Constructors/Destructors
 
 Position::Position (qreal anX, qreal aY, qreal anAngle)
@@ -32,6 +34,11 @@ Position::Position (const QPointF& aPoint)
 		: x(aPoint.x()), y(-aPoint.y()), angle(0)
 {
 	// again: nothing to do here.
+}
+
+qreal Position::length(void)
+{
+	return sqrt(x*x+y*y);
 }
 
 
