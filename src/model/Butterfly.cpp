@@ -40,12 +40,16 @@ Butterfly::Butterfly()
 {
 	setProperty(IMAGE_NAME_STRING, "Butterfly");
 	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
+	setProperty(MASS_STRING, QString::number(theButterflyMass));
+	setTheBounciness(0.3);
 
 	// the SVG is 223x339 "pixels"
 	setTheWidth(0.15);
 	setTheHeight(0.15*339./223.);
 
-	setTheBounciness(0.3);
+	adjustParameters();
+
+	setState(STATIONARY_FLAP_OPEN);
 }
 
 Butterfly::~Butterfly()
@@ -62,6 +66,35 @@ void Butterfly::callBackSensor(b2ContactPoint*)
 void Butterfly::callbackStep (qreal, qreal)
 {
 	DEBUG6("Butterfly receives callback\n");
+
+	switch(getState())
+	{
+		case STILL: // not implemented yet
+		case DEAD:	// not implemented yet
+			// nothing to do
+			break;
+		case STATIONARY_FLAP_OPEN:
+		case STATIONARY_FLAP_HALF:
+		{
+			Position myDistance = theStationaryPosition - getTempCenter();
+			if (myDistance.length() > getTheHeight()/2.0)
+			{
+				Position myImpulseVector = theButterflyMass * myDistance;
+				// FIXME/TODO: limit the maximum impulse
+				theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), getTempCenter().toB2Vec2());
+
+				if (getState()==STATIONARY_FLAP_HALF)
+					setState(STATIONARY_FLAP_OPEN);
+				else
+					setState(STATIONARY_FLAP_HALF);
+			}
+			break;
+		}
+		case MOTION_FLAP_OPEN:
+		case MOTION_FLAP_HALF:
+			// nothing to do yet
+			break;
+	}
 }
 
 
@@ -75,9 +108,16 @@ DrawObject*  Butterfly::createDrawObject(void)
 }
 
 
+void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
+{
+	theButterflyState = aNewStateSuggestion;
+}
+
 void Butterfly::reset(void)
 {
 	theWorldPtr->registerCallback(this);
 	BaseObject::reset();
 	hasContact = false;
+	theStationaryPosition = getOrigCenter();
+	setState(STATIONARY_FLAP_OPEN);
 }

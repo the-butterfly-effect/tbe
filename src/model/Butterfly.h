@@ -57,6 +57,24 @@ public:
 	/// because we need to instantiate a special DrawButterfly class
 	virtual DrawObject* createDrawObject();
 
+	enum ButterflyStatus
+	{
+		STILL,				// not implemented yet
+		STATIONARY_FLAP_OPEN,
+		STATIONARY_FLAP_HALF,
+		MOTION_FLAP_OPEN,
+		MOTION_FLAP_HALF,
+		DEAD				// not implemented yet
+	};
+
+	/// @returns the state of the butterfly state machine
+	ButterflyStatus getState(void)
+	{	return theButterflyState; }
+
+protected:
+	/// suggest a new state of the butterfly state machine
+	void setState(ButterflyStatus aNewStateSuggestion);
+
 private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
@@ -66,18 +84,21 @@ private:
 
 	// Things from RectObject that need adjustments:
 
-	/// overridden from RectObject to remove the functionality
-	virtual void adjustParameters(void)
-	{ ; };
-
-
 private:
-
 	/// the weight of the butterfly (10 grams)
 	static const double theButterflyMass = 0.01;
 
+	/// central variable of the Butterfly state machine
+	ButterflyStatus theButterflyState;
+
 	/// true when the bottle's sensor is touching something
 	bool hasContact;
+
+	/// height at which the butterfly started - needed for stationary flapping
+	Position theStationaryPosition;
+
+	/// FIXME: TODO
+	signed int theCountdown;
 };
 
 #endif // BUTTERFLY_H
