@@ -17,8 +17,7 @@
  */
 
 #include "Butterfly.h"
-//#include "DrawButterfly.h"
-#include "DrawObject.h"
+#include "DrawButterfly.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 
@@ -41,7 +40,9 @@ Butterfly::Butterfly()
 	setProperty(IMAGE_NAME_STRING, "Butterfly");
 	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
 	setProperty(MASS_STRING, QString::number(theButterflyMass));
-	setTheBounciness(0.3);
+
+	// butterflies don't bounce *ever*
+	setTheBounciness(0.0);
 
 	// the SVG is 223x339 "pixels"
 	setTheWidth(0.15);
@@ -67,6 +68,11 @@ void Butterfly::callbackStep (qreal, qreal)
 {
 	DEBUG6("Butterfly receives callback\n");
 
+	theCountdown--;
+	if (theCountdown >0)
+		return;
+	theCountdown=6;
+
 	switch(getState())
 	{
 		case STILL: // not implemented yet
@@ -77,9 +83,9 @@ void Butterfly::callbackStep (qreal, qreal)
 		case STATIONARY_FLAP_HALF:
 		{
 			Position myDistance = theStationaryPosition - getTempCenter();
-			if (myDistance.length() > getTheHeight()/2.0)
+			if (getTempCenter().y < theStationaryPosition.y)
 			{
-				Position myImpulseVector = theButterflyMass * myDistance;
+				Position myImpulseVector = 0.4 * theButterflyMass * myDistance;
 				// FIXME/TODO: limit the maximum impulse
 				theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), getTempCenter().toB2Vec2());
 
@@ -102,8 +108,7 @@ DrawObject*  Butterfly::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
-//	theDrawObjectPtr = new DrawButterfly(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawButterfly(this, getProperty(IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }
 

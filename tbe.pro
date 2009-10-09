@@ -14,6 +14,7 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
     -Wextra
+QMAKE_CXX_FLAGS_RELEASE += -Wextra
 QT += core \
     gui \
     xml \
@@ -26,7 +27,8 @@ HEADERS += src/tbe_global.h \
     src/model/BaseObject.h \
     src/model/BowlingBall.h \
     src/model/BowlingPin.h \
-    src/model/CokeMentosBottle.h \
+	src/model/Butterfly.h \
+	src/model/CokeMentosBottle.h \
     src/model/Floor.h \
     src/model/Level.h \
     src/model/MovingObject.h \
@@ -38,6 +40,8 @@ HEADERS += src/tbe_global.h \
     src/model/VolleyBall.h \
     src/model/World.h \
     src/view/Anchors.h \
+	src/view/DrawButterfly.h \
+	src/view/DrawCokeMentosBottle.h \
     src/view/DrawNoteIt.h \
     src/view/DrawObject.h \
     src/view/DrawRamp.h \
@@ -49,9 +53,7 @@ HEADERS += src/tbe_global.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
-    src/view/StartStopReset.h \
-    src/view/DrawCokeMentosBottle.h \
-    src/model/Butterfly.h
+	src/view/StartStopReset.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/UndoDeleteCommand.cpp \
@@ -60,7 +62,8 @@ SOURCES += src/main.cpp \
     src/model/BaseObject.cpp \
     src/model/BowlingBall.cpp \
     src/model/BowlingPin.cpp \
-    src/model/CokeMentosBottle.cpp \
+	src/model/Butterfly.cpp \
+	src/model/CokeMentosBottle.cpp \
     src/model/Floor.cpp \
     src/model/Level.cpp \
     src/model/MovingObject.cpp \
@@ -72,7 +75,9 @@ SOURCES += src/main.cpp \
     src/model/VolleyBall.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
-    src/view/DrawNoteIt.cpp \
+	src/view/DrawButterfly.cpp \
+	src/view/DrawCokeMentosBottle.cpp \
+	src/view/DrawNoteIt.cpp \
     src/view/DrawObject.cpp \
     src/view/DrawRamp.cpp \
     src/view/DrawWorld.cpp \
@@ -81,9 +86,7 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
-    src/view/StartStopReset.cpp \
-    src/view/DrawCokeMentosBottle.cpp \
-    src/model/Butterfly.cpp
+	src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
     src/view/SaveLevelInfo.ui
