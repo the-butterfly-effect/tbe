@@ -102,6 +102,10 @@ FIRST PLAYABLE - with a supervisor
 
 Milestone 5 - It's make over time! (post-ELCE)
 Version 0.50
+  * Important overdue refactorings:
+	- splitup Position into Vector and Position (Vector has no angle)
+	- Merge BaseObject and RectObject
+	- Create Ball class and merge BowlingBall and Volleyball into Ball
   * RMB actions
 	- adjust properties
   * add concept of "winning" a level
