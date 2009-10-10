@@ -111,7 +111,18 @@ public:
 	 */
 	virtual ~World ( );
 
-	
+	/** adds a joint to the World
+	 *  @param aJointDefPtr
+	 *  @return pointer to new joint
+	 */
+	b2Joint* addJoint(b2JointDef* aJointDefPtr)
+	{
+		if (theB2WorldPtr==NULL)
+			return NULL;
+		else
+			return theB2WorldPtr->CreateJoint(aJointDefPtr);
+	}
+
 	/** adds object to the World
 	 *  if the BaseObject knows about a DrawObject,
 	 *      that one will be added to the DrawWorld as well.
@@ -120,6 +131,15 @@ public:
 	 */
 	bool addObject(BaseObject* anObjectPtr);
     
+	/** removes a joint from the World
+	 *  NOTE: the b2Bodies the joint is linked to should both still exist!
+	 *  @param aJointPtr pointer to the joint to remove
+	 */
+	void removeJoint(b2Joint* aJointPtr)
+	{
+		if (theB2WorldPtr!=NULL)
+			theB2WorldPtr->DestroyJoint(aJointDefPtr);
+	}
 
 	/** removes the BaseObject pointed to by anObjectPtr from the World.
 	 *  This means that the caller is now responsible for the pointer
