@@ -42,6 +42,8 @@ public:
 	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
 
 	Position (const QPointF& aPoint);
+
+	Position (const b2Vec2& aVec);
 	
 	// Public attributes
 	

@@ -36,6 +36,14 @@ Position::Position (const QPointF& aPoint)
 	// again: nothing to do here.
 }
 
+
+Position::Position (const b2Vec2& aVec)
+		: x(aVec.x), y(aVec.y), angle(0)
+{
+	// yawn, again: nothing to do here.
+}
+
+
 qreal Position::length(void)
 {
 	return sqrt(x*x+y*y);
