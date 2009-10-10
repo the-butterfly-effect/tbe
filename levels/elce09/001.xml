@@ -1,0 +1,36 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>The Butterfly effect of CELF</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>First Demonstration: how does the Butterfly Effect work...</description>
+        <date>10/10/09</date>
+    </levelinfo>
+    <scene>
+        <scenesize width="2.3" height="1.7" />
+        <predefined>
+            <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
+                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+            </object>
+            <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Flower" >
+                <property key="ImageName" >Empty</property>
+            </object>
+            <object width="0.6" X="1.5" Y="1.2" height="0.6" type="RectObject" >
+                <property key="ImageName" >that_is_flower</property>
+            </object>
+            <object width="0.6" X="0.35" Y="1.1" height="0.6" type="RectObject" >
+                <property key="ImageName" >that_is_butterfly</property>
+            </object>
+            <object width="2.3" X="1.15" Y="0.05" type="Floor" >
+                <property key="ImageName" >White-to-green</property>
+            </object>
+            <object X="0.28684201836586" Y="0.3565036356449127" type="Butterfly" >
+                <property key="Description" >lalala FIXME</property>
+                <property key="ImageName" >Butterfly</property>
+                <property key="Mass" >0.01</property>
+            </object>
+        </predefined>
+    </scene>
+    <toolbox/>
+</tbe-level>
