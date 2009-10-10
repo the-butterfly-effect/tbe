@@ -1,0 +1,34 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Marble Boulevard</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description></description>
+        <date>10/11/09</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="2" name="Ramp /" icon="LeftRam">
+            <object width="4.5" height="0.6" type="LeftRamp" angle="0" />
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6.9" height="6" />
+        <predefined>
+            <object X="0.3" Y="2.7" type="Bowling Ball" />
+            <object X="0.3365204334259033" Y="1.177821516990662" type="Bowling Ball" />
+            <object X="6.3" Y="5.4" type="Bowling Ball" />
+            <object X="6.4" Y="0.39" type="Bowling Pin" />
+            <object width="5" X="4" Y="5" height="0.7" type="LeftRamp" angle="0" />
+            <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" />
+            <object width="5" X="2.6" Y="2.3" height="0.7" type="RightRamp" angle="0" />
+            <object width="4.6" X="2.4" Y="0.5" height="0.7" type="RightRamp" angle="0" />
+            <object width="0.4124062500000004" X="6.706203125" Y="3.3" height="5.4" type="RectObject" />
+            <object width="0.1" X="0.05" Y="3" height="6" type="RectObject" />
+            <object width="0.2996093749999996" X="6.3998046875" Y="0.16" type="Floor" />
+            <object width="1.03178125" X="5.015890624999999" Y="0.16" type="Floor" />
+            <object width="0.1" X="6.85" Y="0.3" height="0.6" type="RectObject" />
+        </predefined>
+    </scene>
+    <toolbox/>
+</tbe-level>
