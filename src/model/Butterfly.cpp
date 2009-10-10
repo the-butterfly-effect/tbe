@@ -21,10 +21,7 @@
 #include "tbe_global.h"
 #include "Box2D.h"
 
-
-static const char* FLOWER_X = "Flower-X";
-static const char* FLOWER_Y = "Flower-Y";
-
+#include "Flower.h"
 
 //// this class' ObjectFactory
 class ButterflyObjectFactory : public ObjectFactory
@@ -40,7 +37,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 Butterfly::Butterfly()
-		: RectObject(), theCountdown(1)
+		: RectObject(), theCountdown(1), theJointPtr(NULL)
 {
 	setProperty(IMAGE_NAME_STRING, "Butterfly");
 	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
@@ -56,6 +53,7 @@ Butterfly::Butterfly()
 	adjustParameters();
 
 	setState(FLAP_OPEN);
+
 }
 
 Butterfly::~Butterfly()
@@ -82,63 +80,11 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 		case FLAP_OPEN:
 		case FLAP_HALF:
 		{
-			// always apply damping in X direction - linear and opposite to speed
-			b2Vec2 mySpeed = theB2BodyPtr->GetLinearVelocity();
-			mySpeed.y = 0;
-			theB2BodyPtr->ApplyForce( -0.7*theButterflyMass*mySpeed, getTempCenter().toB2Vec2());
-
 			theCountdown--;
 			if (theCountdown >0)
 				return;
 			theCountdown=10;
 			DEBUG5("****stationary flapping Butterfly\n");
-
-			// if we are moving, how far are we?
-			// i.e. if the butterfly should fly up/down
-
-
-			// calculate vertical impulse - rate limited
-			qreal myDY = theTargetPos.y - getTempCenter().y;
-			qreal myYImpulse = 0.0;
-			if (myDY > 0.0)
-			{
-				myYImpulse = 100 * theButterflyMass * myDY;
-				// FIXME/TODO: rate limit this impulse
-			}
-			const qreal myYRate = 0.90*theButterflyMass;
-			if (myYImpulse > myYRate)
-				myYImpulse = myYRate;
-			if (myYImpulse < -myYRate)
-				myYImpulse = -myYRate;
-
-
-			// we already know the horizontal impulse :-)
-			qreal myDX= theTargetPos.x - getTempCenter().x;
-			qreal myXImpulse = theHorizontalImpulsePerSecond;
-			if (myDX < 0.0)
-				myXImpulse *= -1.0;
-//			const qreal myXRate = 0.015;
-//			if (myXImpulse > myXRate)
-//				myXImpulse = myXRate;
-//			if (myXImpulse < -myXRate)
-//				myXImpulse = -myXRate;
-
-			// rate limit thrust
-			// you cannot deliver both Y and X thrust
-			// (i.e. remove impulse in same direction of speed)
-			b2Vec2 myVelo = theB2BodyPtr->GetLinearVelocity();
-			if (myVelo.y < 0.0)
-				myVelo.y = 0;
-			if (myVelo.Length() > 0.10)
-				myXImpulse /= 2.0;
-
-			Position myTotImpulse = Position(myXImpulse, myYImpulse);
-
-printf("deltax:%f, dx:%f, impulse: %f,%f\n", myDX, myVelo.x,
-	   myTotImpulse.x, myTotImpulse.y);
-
-			theB2BodyPtr->ApplyImpulse( (aDeltaTime*myTotImpulse).toB2Vec2(),
-									   getTempCenter().toB2Vec2());
 
 			// and flap
 			if (getState()==FLAP_HALF)
@@ -160,28 +106,54 @@ DrawObject*  Butterfly::createDrawObject(void)
 }
 
 
-bool Butterfly::goToFlower(void)
+bool Butterfly::setupFlowerJoint(void)
 {
-	printf("****************goToFlower enter\n");
+	// FIXME: REMOVE
+	DEBUG2("****************setupFlowerJoint enter\n");
 
-	// if there is no such setting, we'll have position (0.0)
-	float myFlowerX = getProperty(FLOWER_X).toFloat();
-	float myFlowerY = getProperty(FLOWER_Y).toFloat();
-	if (myFlowerX == 0.0 && myFlowerY == 0.0)
-		theTargetPos = getOrigCenter();
-	else
-		theTargetPos = Position(myFlowerX, myFlowerY);
+	Flower* myFlowerPtr = Flower::getFlowerPtr();
+	if (myFlowerPtr == NULL)
+		return false;
+	b2Body* myFlowerBodyPtr = myFlowerPtr->theB2BodyPtr;
+	if (myFlowerBodyPtr == NULL)
+		return false;
+
+	DEBUG2("*** GOOD: FlowerBody exists\n");
+
+	if (theB2BodyPtr == NULL)
+		return false;
+	DEBUG2("*** GOOD: ButterflyBody exists\n");
+
+	b2PrismaticJointDef myJointDef;
+
+	Position myAxis = myFlowerPtr->getTempCenter() - getOrigCenter();
+
+//	myJointDef.Initialize(myFlowerBodyPtr, theB2BodyPtr, myFlowerBodyPtr->GetLocalCenter(), myAxis.toB2Vec2());
+	myJointDef.Initialize(myFlowerBodyPtr, theB2BodyPtr, b2Vec2(0,0),  myAxis.toB2Vec2());
+	myJointDef.lowerTranslation = -3*myAxis.length();
+	myJointDef.upperTranslation = 3*myAxis.length();
+	myJointDef.enableLimit = true;
+	myJointDef.enableMotor = true;
+	myJointDef.maxMotorForce = 0.01f;
+	myJointDef.motorSpeed = 0.2;	// move 5 cm per second towards the flower (i.e. distance shrinks)
+
+	if (theJointPtr)
+		delete theJointPtr;
+	theJointPtr = new Joint(&myJointDef,theWorldPtr);
+
+//	b2PrismaticJointDef jp;
+//	jp.Initialize(m_ground,m_elev, bd.position, b2Vec2(0.0f, 1.0f));
+//	jp.lowerTranslation =  0.0f;
+//	jp.upperTranslation = 100.0f;
+//	jp.enableLimit = true;
+//	jp.enableMotor = true;
+//	jp.maxMotorForce = 10000.f;
+//	jp.motorSpeed    = 0.f;
+//	m_joint_elev = (b2PrismaticJoint*)m_world->CreateJoint(&jp);
 
 
-	Position myDistance = getOrigCenter() - theTargetPos;
-
-	// Let's limit a butterfly to a maximum horizontal speed of 10cm/second
-	if (myDistance.length() == 0.0)
-		theHorizontalImpulsePerSecond = 0.0;
-	else
-		theHorizontalImpulsePerSecond = 10.0*theButterflyMass/(myDistance.length()/0.10) * myDistance.length();
-
-printf("****************goToFlower succeeded\n");
+	// FIXME: REMOVE
+	DEBUG2("****************setupFlowerJoint successfulexit\n");
 	return true;
 }
 
@@ -192,9 +164,13 @@ void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 
 void Butterfly::reset(void)
 {
+
 	theWorldPtr->registerCallback(this);
-	BaseObject::reset();
+	RectObject::reset();
 	hasContact = false;
 	
-	goToFlower();
+	if (theJointPtr)
+		delete theJointPtr;
+	theJointPtr = NULL;
+	setupFlowerJoint();
 }

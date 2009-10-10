@@ -23,6 +23,26 @@
 #include "World.h"
 
 
+
+class Joint
+{
+public:
+	Joint(b2PrismaticJointDef* aDef, World* aPtr)
+			: thePrismaticJointToFlower(NULL)
+	{
+		printf("$$$$$$$$$$$$$$$$$$$$$$$ Joint() %p\n", this);
+		thePrismaticJointToFlower = dynamic_cast<b2PrismaticJoint*>(aPtr->addJoint(aDef));
+	}
+
+	~Joint()
+	{
+		printf("$$$$$$$$$$$$$$$$$$$$$$$ ~Joint %p\n", this);
+		delete thePrismaticJointToFlower;
+	}
+
+	b2PrismaticJoint* thePrismaticJointToFlower;
+};
+
 /** this class implements the Butterfly:
   * a Butterfly always flies to a flower - if it sees one
   */
@@ -70,12 +90,9 @@ public:
 	{	return theButterflyState; }
 
 	/** sets up the Butterfly to fly to a Flower
-	  * FIXME: for now, coordinates of the flower are expected to be
-	  * in properties FLOWER-X and FLOWER-Y
 	  * @returns true if successful, otherwise returns false
 	  */
-	bool goToFlower(void);
-
+	bool setupFlowerJoint(void);
 
 protected:
 	/// suggest a new state of the butterfly state machine
@@ -92,7 +109,7 @@ private:
 
 private:
 	/// the weight of the butterfly (10 grams)
-	static const double theButterflyMass = 0.1;
+	static const double theButterflyMass = 0.01;
 
 	/// central variable of the Butterfly state machine
 	ButterflyStatus theButterflyState;
@@ -103,12 +120,8 @@ private:
 	/// FIXME: TODO
 	signed int theCountdown;
 
-	/// if moving to a flower, this is the horizontal impulse per second
-	/// that should be applied to the butterfly
-	qreal theHorizontalImpulsePerSecond;
+	Joint* theJointPtr;
 
-	/// if moving to a flower, this is the target position for the butterfly
-	Position theTargetPos;
 };
 
 #endif // BUTTERFLY_H
