@@ -80,7 +80,7 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	DrawObject::setUndoStackPtr(&theUndoStack);
 
 #ifdef DRAWDEBUG
-	SetFlags (e_shapeBit);
+	SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
 #endif
 
 	setAcceptDrops(true);
@@ -249,7 +249,8 @@ void DrawWorld::DrawSegment(UNUSED_ARG const b2Vec2& p1,
 							UNUSED_ARG const b2Vec2& p2,
 							UNUSED_ARG const b2Color& color)
 {
-	DEBUG5("DrawWorld::DrawSegment\n");
+	QPen pen(Qt::cyan, 0.01, Qt::SolidLine);
+	addDebugDrawToList(addLine(p1.x,-p1.y, p2.x, -p2.y, pen));
 }
 /// Draw a transform. Choose your own length scale.
 /// @param xf a transform.
