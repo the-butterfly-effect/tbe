@@ -24,8 +24,8 @@
 /**
   * class Floor
   * 
-  * This class defines a floor. Essentially a ramp is a slab (small box)
-  * It is only resizable in width. 
+  * This class defines a floor. Essentially, a floor is static (no mass)
+  * and only resizable in width.
   */
 
 class Floor : public RectObject
