@@ -11,7 +11,7 @@
         <toolboxitem count="9" name="Bowling Pin" icon="Bowling_Pin">
             <object type="Bowling Pin" />
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball" icon="Bowling Ball">
+        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
             <object type="Bowling Ball" />
         </toolboxitem>
     </toolbox>

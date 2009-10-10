@@ -80,9 +80,10 @@ private:
 	/** this member will load (or return a cached) the QSvgRenderer for image "anImageName.svg"
 	 *  it will search through all paths to try to find the image
 	 *  @param anImageName - the image name (without preceding paths or the extension)
+	 *  @param returnNotFound - if image not found, return NULL or the "NotFound" image
 	 *  @returns NULL if not found or a pointer to a valid, initialised QSvgRenderer
 	 */
-	QSvgRenderer* getMeRenderer(const QString& anImageName);
+	QSvgRenderer* getMeRenderer(const QString& anImageName, bool returnNotFound=false);
 
 	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
 

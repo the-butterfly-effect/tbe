@@ -82,6 +82,7 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 
 QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
 {
+	DEBUG5("getMePNGPixmap(\"%s\")\n", ASCII(anImageName));
 	if (anImageName.isEmpty())
 		anImageName = NOTFOUND;
 
@@ -110,26 +111,41 @@ QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
 
 QIcon ImageStore::getMeQIcon(const QString& anImageName, const QSize& aSize)
 {
-	QSvgRenderer* myRenderer = getRenderer(anImageName);
-
-	// no renderer found? return an empty icon...
-	if (myRenderer == NULL)
-		return QIcon();
-
-	// cool! we have a renderer. Now let's render!
+	DEBUG5("getMeQIcon(\"%s\")\n", ASCII(anImageName));
 	QPixmap myPixmap(aSize);
 	myPixmap.fill(QColor(255,255,255,0));
-	QPainter myPainter;
-	myPainter.begin(&myPixmap);
-	myPainter.setRenderHint(QPainter::Antialiasing);
-	myRenderer->render(&myPainter);
-	myPainter.end();
+
+	// first try SVG
+	// if no SVG found, try PNG
+	// if no PNG found, retry the SVG but allow the "NotFound" image
+	QSvgRenderer* myRenderer = getMeRenderer(anImageName, false);
+	QPixmap* myPNG;
+	if (myRenderer == NULL)
+	{
+		myPNG = getMePNGPixmap(anImageName);
+		if (myPNG==NULL)
+			myRenderer = getMeRenderer(anImageName);
+		else
+			myPixmap = *myPNG;
+	}
+
+	// no renderer found? return an empty icon...
+	if (myRenderer != NULL)
+	{
+		// cool! we have a renderer. Now let's render!
+		QPainter myPainter;
+		myPainter.begin(&myPixmap);
+		myPainter.setRenderHint(QPainter::Antialiasing);
+		myRenderer->render(&myPainter);
+		myPainter.end();
+	}
+
 	QIcon myIcon(myPixmap);
 	return myIcon;
 }
 
 
-QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
+QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName, bool returnNotFound)
 {
 	if(anImageName.isEmpty())
 		return getMeRenderer(NOTFOUND);
@@ -151,7 +167,7 @@ QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName)
 		return NULL;
 	if (myPtr->isValid()==false)
 	{
-		if (anImageName != NOTFOUND)
+		if (anImageName != NOTFOUND && returnNotFound)
 			return getMeRenderer(NOTFOUND);
 		else
 			return NULL;

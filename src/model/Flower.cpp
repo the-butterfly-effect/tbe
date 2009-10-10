@@ -42,7 +42,7 @@ static  FlowerPtrList theGlobalFlowerPtrs;
 
 Flower::Flower ( )
 {
-	DEBUG2("Flower::Flower, this=%p\n", this);
+	DEBUG5("Flower::Flower, this=%p\n", this);
 	setTheBounciness(0.0);
 	adjustParameters();
 	theGlobalFlowerPtrs.push_back(this);
@@ -50,7 +50,7 @@ Flower::Flower ( )
 
 Flower::~Flower ( )
 {
-	DEBUG2("************* Flower::~Flower\n");
+	DEBUG5("Flower::~Flower\n");
 	int i = theGlobalFlowerPtrs.indexOf(this);
 	theGlobalFlowerPtrs.removeAt(i);
 }

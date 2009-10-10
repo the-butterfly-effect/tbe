@@ -17,8 +17,10 @@
  */
 
 #include "BowlingBall.h"
+#include "DrawObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
+
 
 
 // this class' ObjectFactory
@@ -71,5 +73,8 @@ BowlingBall::~BowlingBall ( ) { }
 
 // Other methods
 //  
+
+DrawObject*  BowlingBall::createDrawObject(void)
+{ return new DrawObject(this, "Bowling_Ball"); }
 
 

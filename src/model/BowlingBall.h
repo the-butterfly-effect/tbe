@@ -50,6 +50,8 @@ public:
 	// Public attribute accessor methods
 	//  
 
+	virtual DrawObject* createDrawObject();
+
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{
