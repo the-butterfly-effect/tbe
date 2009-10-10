@@ -17,11 +17,11 @@
  */
 
 #include "Butterfly.h"
+#include "Flower.h"
 #include "DrawButterfly.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 
-#include "Flower.h"
 
 //// this class' ObjectFactory
 class ButterflyObjectFactory : public ObjectFactory
@@ -37,7 +37,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 Butterfly::Butterfly()
-		: RectObject(), theCountdown(1), theJointPtr(NULL)
+		: RectObject(), theCountdown(1)
 {
 	setProperty(IMAGE_NAME_STRING, "Butterfly");
 	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
@@ -53,7 +53,6 @@ Butterfly::Butterfly()
 	adjustParameters();
 
 	setState(FLAP_OPEN);
-
 }
 
 Butterfly::~Butterfly()
@@ -83,8 +82,32 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			theCountdown--;
 			if (theCountdown >0)
 				return;
-			theCountdown=10;
-			DEBUG5("****stationary flapping Butterfly\n");
+			theCountdown=9;
+
+			// calculate vertical impulse - rate limited
+			qreal myDY = theTargetPos.y - getTempCenter().y;
+			qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
+			qreal myYImpulse = 0.0;
+			if (myDY > 0.0)
+			{
+				myYImpulse = 0.2 * myDY - 0.1*myYd;
+			}
+			const qreal myYRate = 2.0 * theButterflyMass;
+			if (myYImpulse > myYRate)
+				myYImpulse = myYRate;
+			if (myYImpulse < -myYRate)
+				myYImpulse = -myYRate;
+
+			// maintain horizontal speed
+			// TODO/FIXME: Butterfly can only fly from left to right
+			qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
+			qreal myXImpulse = 0;
+			if (myXd<0.1)
+				myXImpulse = 0.01;
+
+			Position myTotImpulse = aDeltaTime * Position(myXImpulse, myYImpulse);
+
+			theB2BodyPtr->ApplyImpulse( myTotImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
 
 			// and flap
 			if (getState()==FLAP_HALF)
@@ -106,55 +129,13 @@ DrawObject*  Butterfly::createDrawObject(void)
 }
 
 
-bool Butterfly::setupFlowerJoint(void)
+void Butterfly::goToFlower(void)
 {
-	// FIXME: REMOVE
-	DEBUG2("****************setupFlowerJoint enter\n");
-
 	Flower* myFlowerPtr = Flower::getFlowerPtr();
 	if (myFlowerPtr == NULL)
-		return false;
-	b2Body* myFlowerBodyPtr = myFlowerPtr->theB2BodyPtr;
-	if (myFlowerBodyPtr == NULL)
-		return false;
-
-	DEBUG2("*** GOOD: FlowerBody exists\n");
-
-	if (theB2BodyPtr == NULL)
-		return false;
-	DEBUG2("*** GOOD: ButterflyBody exists\n");
-
-	b2PrismaticJointDef myJointDef;
-
-	Position myAxis = myFlowerPtr->getTempCenter() - getOrigCenter();
-
-//	myJointDef.Initialize(myFlowerBodyPtr, theB2BodyPtr, myFlowerBodyPtr->GetLocalCenter(), myAxis.toB2Vec2());
-	myJointDef.Initialize(myFlowerBodyPtr, theB2BodyPtr, b2Vec2(0,0),  myAxis.toB2Vec2());
-	myJointDef.lowerTranslation = -3*myAxis.length();
-	myJointDef.upperTranslation = 3*myAxis.length();
-	myJointDef.enableLimit = true;
-	myJointDef.enableMotor = true;
-	myJointDef.maxMotorForce = 0.01f;
-	myJointDef.motorSpeed = 0.2;	// move 5 cm per second towards the flower (i.e. distance shrinks)
-
-	if (theJointPtr)
-		delete theJointPtr;
-	theJointPtr = new Joint(&myJointDef,theWorldPtr);
-
-//	b2PrismaticJointDef jp;
-//	jp.Initialize(m_ground,m_elev, bd.position, b2Vec2(0.0f, 1.0f));
-//	jp.lowerTranslation =  0.0f;
-//	jp.upperTranslation = 100.0f;
-//	jp.enableLimit = true;
-//	jp.enableMotor = true;
-//	jp.maxMotorForce = 10000.f;
-//	jp.motorSpeed    = 0.f;
-//	m_joint_elev = (b2PrismaticJoint*)m_world->CreateJoint(&jp);
-
-
-	// FIXME: REMOVE
-	DEBUG2("****************setupFlowerJoint successfulexit\n");
-	return true;
+		theTargetPos = getOrigCenter();
+	else
+		theTargetPos = myFlowerPtr->getOrigCenter();
 }
 
 void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
@@ -164,13 +145,9 @@ void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 
 void Butterfly::reset(void)
 {
-
 	theWorldPtr->registerCallback(this);
 	RectObject::reset();
 	hasContact = false;
 	
-	if (theJointPtr)
-		delete theJointPtr;
-	theJointPtr = NULL;
-	setupFlowerJoint();
+	goToFlower();
 }

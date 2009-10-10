@@ -23,26 +23,6 @@
 #include "World.h"
 
 
-
-class Joint
-{
-public:
-	Joint(b2PrismaticJointDef* aDef, World* aPtr)
-			: thePrismaticJointToFlower(NULL)
-	{
-		printf("$$$$$$$$$$$$$$$$$$$$$$$ Joint() %p\n", this);
-		thePrismaticJointToFlower = dynamic_cast<b2PrismaticJoint*>(aPtr->addJoint(aDef));
-	}
-
-	~Joint()
-	{
-		printf("$$$$$$$$$$$$$$$$$$$$$$$ ~Joint %p\n", this);
-		delete thePrismaticJointToFlower;
-	}
-
-	b2PrismaticJoint* thePrismaticJointToFlower;
-};
-
 /** this class implements the Butterfly:
   * a Butterfly always flies to a flower - if it sees one
   */
@@ -90,9 +70,10 @@ public:
 	{	return theButterflyState; }
 
 	/** sets up the Butterfly to fly to a Flower
-	  * @returns true if successful, otherwise returns false
+	  * or flap idly if there is no flower
 	  */
-	bool setupFlowerJoint(void);
+	void goToFlower(void);
+
 
 protected:
 	/// suggest a new state of the butterfly state machine
@@ -108,20 +89,21 @@ private:
 	// Things from RectObject that need adjustments:
 
 private:
-	/// the weight of the butterfly (10 grams)
-	static const double theButterflyMass = 0.01;
+	/// the weight of the butterfly (100 grams)
+	static const double theButterflyMass = 0.1;
 
 	/// central variable of the Butterfly state machine
 	ButterflyStatus theButterflyState;
 
 	/// true when the bottle's sensor is touching something
+	/// not in use yet
 	bool hasContact;
 
 	/// FIXME: TODO
 	signed int theCountdown;
 
-	Joint* theJointPtr;
-
+	/// if moving to a flower, this is the target position for the butterfly
+	Position theTargetPos;
 };
 
 #endif // BUTTERFLY_H
