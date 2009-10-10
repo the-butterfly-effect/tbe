@@ -25,7 +25,7 @@ int theVerbosity = 4;
 
 // this variable defines whether we are playing or a level editor
 // TODO/FIXME: this should go into preferences or so at some point
-bool theIsLevelEditor = false;
+bool theIsLevelEditor = true;
 
 
 int main(int argc, char **argv)

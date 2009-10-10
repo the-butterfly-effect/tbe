@@ -138,7 +138,7 @@ public:
 	void removeJoint(b2Joint* aJointPtr)
 	{
 		if (theB2WorldPtr!=NULL)
-			theB2WorldPtr->DestroyJoint(aJointDefPtr);
+			theB2WorldPtr->DestroyJoint(aJointPtr);
 	}
 
 	/** removes the BaseObject pointed to by anObjectPtr from the World.

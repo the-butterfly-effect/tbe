@@ -10,6 +10,7 @@
     <scene>
         <scenesize width="4.5" height="4" />
         <predefined>
+            <object X="3.5" Y="0.62" type="Flower" />
             <object X="0.4" Y="3" type="Bowling Ball" />
             <object X="3" Y="0.29" type="Bowling Pin" />
             <object X="3.2" Y="0.29" type="Bowling Pin" />
@@ -32,10 +33,14 @@
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
             </object>
-            <object X="1.5" Y="0.34" type="Coke+Mentos Bottle" angle="3.14" >
+            <object X="2.0" Y="0.34" type="Coke+Mentos Bottle" angle="3.14" >
                 <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
 Look: it blows if triggered!</property>
                 <property key="ImageName" >CokeMentosBottle</property>
+            </object>
+            <object width="0.1" X="1.5" Y="0.4" height="0.6" type="RectObject" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.03</property>
             </object>
         </predefined>
     </scene>

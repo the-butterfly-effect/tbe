@@ -27,8 +27,8 @@
 #include <QTime>
 #include <QUndoStack>
 
-//#define DRAWDEBUG
-#undef DRAWDEBUG
+#define DRAWDEBUG
+//#undef DRAWDEBUG
 
 #ifdef DRAWDEBUG
  #include "Box2D.h"
