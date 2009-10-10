@@ -5,23 +5,8 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>square</description>
-        <date>8/11/09</date>
+        <date>10/10/09</date>
     </levelinfo>
-    <toolbox>
-        <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
-            <object width="2" height="1" type="RightRamp" />
-	</toolboxitem>
-        <toolboxitem count="2" name="Volleyball" icon="VolleyBall">
-            <object type="Volleyball" />
-	</toolboxitem>
-        <toolboxitem count="20" name="Domino Stone" icon="DominoRed">
-	    <object width="0.1" X="1.1" Y="2.65" height="0.5" type="RectObject">
-                <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >DominoRed</property>
-                <property key="Mass" >2.5</property>
-            </object>
-        </toolboxitem>
-    </toolbox>
     <scene>
         <scenesize width="4.5" height="4" />
         <predefined>
@@ -40,6 +25,19 @@
                 <property key="page3" >You probably have to make it roll?&lt;br>&lt;br>&lt;br>Was signed: The Noteboy</property>
                 <property key="page3_nl" >Misschien moet je de bal aan het rollen krijgen?&lt;br>&lt;br>&lt;br>Was getekend: De Noteboy</property>
             </object>
+            <object X="1" Y="0.65" type="Butterfly" >
+                <property key="Description" >lalala FIXME</property>
+                <property key="Flower-X" >4.00</property>
+                <property key="Flower-Y" >0.65</property>
+                <property key="ImageName" >Butterfly</property>
+                <property key="Mass" >0.01</property>
+            </object>
+            <object X="1.5" Y="0.34" type="Coke+Mentos Bottle" angle="3.14" >
+                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
+Look: it blows if triggered!</property>
+                <property key="ImageName" >CokeMentosBottle</property>
+            </object>
         </predefined>
     </scene>
+    <toolbox/>
 </tbe-level>

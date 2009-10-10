@@ -21,6 +21,11 @@
 #include "tbe_global.h"
 #include "Box2D.h"
 
+
+static const char* FLOWER_X = "Flower-X";
+static const char* FLOWER_Y = "Flower-Y";
+
+
 //// this class' ObjectFactory
 class ButterflyObjectFactory : public ObjectFactory
 {
@@ -35,7 +40,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 Butterfly::Butterfly()
-		: RectObject()
+		: RectObject(), theCountdown(1)
 {
 	setProperty(IMAGE_NAME_STRING, "Butterfly");
 	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
@@ -50,7 +55,7 @@ Butterfly::Butterfly()
 
 	adjustParameters();
 
-	setState(STATIONARY_FLAP_OPEN);
+	setState(FLAP_OPEN);
 }
 
 Butterfly::~Butterfly()
@@ -64,14 +69,9 @@ void Butterfly::callBackSensor(b2ContactPoint*)
 	hasContact = true;
 }
 
-void Butterfly::callbackStep (qreal, qreal)
+void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 {
 	DEBUG6("Butterfly receives callback\n");
-
-	theCountdown--;
-	if (theCountdown >0)
-		return;
-	theCountdown=6;
 
 	switch(getState())
 	{
@@ -79,27 +79,74 @@ void Butterfly::callbackStep (qreal, qreal)
 		case DEAD:	// not implemented yet
 			// nothing to do
 			break;
-		case STATIONARY_FLAP_OPEN:
-		case STATIONARY_FLAP_HALF:
+		case FLAP_OPEN:
+		case FLAP_HALF:
 		{
-			Position myDistance = theStationaryPosition - getTempCenter();
-			if (getTempCenter().y < theStationaryPosition.y)
-			{
-				Position myImpulseVector = 0.4 * theButterflyMass * myDistance;
-				// FIXME/TODO: limit the maximum impulse
-				theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), getTempCenter().toB2Vec2());
+			// always apply damping in X direction - linear and opposite to speed
+			b2Vec2 mySpeed = theB2BodyPtr->GetLinearVelocity();
+			mySpeed.y = 0;
+			theB2BodyPtr->ApplyForce( -0.7*theButterflyMass*mySpeed, getTempCenter().toB2Vec2());
 
-				if (getState()==STATIONARY_FLAP_HALF)
-					setState(STATIONARY_FLAP_OPEN);
-				else
-					setState(STATIONARY_FLAP_HALF);
+			theCountdown--;
+			if (theCountdown >0)
+				return;
+			theCountdown=10;
+			DEBUG5("****stationary flapping Butterfly\n");
+
+			// if we are moving, how far are we?
+			// i.e. if the butterfly should fly up/down
+
+
+			// calculate vertical impulse - rate limited
+			qreal myDY = theTargetPos.y - getTempCenter().y;
+			qreal myYImpulse = 0.0;
+			if (myDY > 0.0)
+			{
+				myYImpulse = 100 * theButterflyMass * myDY;
+				// FIXME/TODO: rate limit this impulse
 			}
+			const qreal myYRate = 0.90*theButterflyMass;
+			if (myYImpulse > myYRate)
+				myYImpulse = myYRate;
+			if (myYImpulse < -myYRate)
+				myYImpulse = -myYRate;
+
+
+			// we already know the horizontal impulse :-)
+			qreal myDX= theTargetPos.x - getTempCenter().x;
+			qreal myXImpulse = theHorizontalImpulsePerSecond;
+			if (myDX < 0.0)
+				myXImpulse *= -1.0;
+//			const qreal myXRate = 0.015;
+//			if (myXImpulse > myXRate)
+//				myXImpulse = myXRate;
+//			if (myXImpulse < -myXRate)
+//				myXImpulse = -myXRate;
+
+			// rate limit thrust
+			// you cannot deliver both Y and X thrust
+			// (i.e. remove impulse in same direction of speed)
+			b2Vec2 myVelo = theB2BodyPtr->GetLinearVelocity();
+			if (myVelo.y < 0.0)
+				myVelo.y = 0;
+			if (myVelo.Length() > 0.10)
+				myXImpulse /= 2.0;
+
+			Position myTotImpulse = Position(myXImpulse, myYImpulse);
+
+printf("deltax:%f, dx:%f, impulse: %f,%f\n", myDX, myVelo.x,
+	   myTotImpulse.x, myTotImpulse.y);
+
+			theB2BodyPtr->ApplyImpulse( (aDeltaTime*myTotImpulse).toB2Vec2(),
+									   getTempCenter().toB2Vec2());
+
+			// and flap
+			if (getState()==FLAP_HALF)
+				setState(FLAP_OPEN);
+			else
+				setState(FLAP_HALF);
 			break;
 		}
-		case MOTION_FLAP_OPEN:
-		case MOTION_FLAP_HALF:
-			// nothing to do yet
-			break;
 	}
 }
 
@@ -113,6 +160,31 @@ DrawObject*  Butterfly::createDrawObject(void)
 }
 
 
+bool Butterfly::goToFlower(void)
+{
+	printf("****************goToFlower enter\n");
+
+	// if there is no such setting, we'll have position (0.0)
+	float myFlowerX = getProperty(FLOWER_X).toFloat();
+	float myFlowerY = getProperty(FLOWER_Y).toFloat();
+	if (myFlowerX == 0.0 && myFlowerY == 0.0)
+		theTargetPos = getOrigCenter();
+	else
+		theTargetPos = Position(myFlowerX, myFlowerY);
+
+
+	Position myDistance = getOrigCenter() - theTargetPos;
+
+	// Let's limit a butterfly to a maximum horizontal speed of 10cm/second
+	if (myDistance.length() == 0.0)
+		theHorizontalImpulsePerSecond = 0.0;
+	else
+		theHorizontalImpulsePerSecond = 10.0*theButterflyMass/(myDistance.length()/0.10) * myDistance.length();
+
+printf("****************goToFlower succeeded\n");
+	return true;
+}
+
 void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 {
 	theButterflyState = aNewStateSuggestion;
@@ -123,6 +195,6 @@ void Butterfly::reset(void)
 	theWorldPtr->registerCallback(this);
 	BaseObject::reset();
 	hasContact = false;
-	theStationaryPosition = getOrigCenter();
-	setState(STATIONARY_FLAP_OPEN);
+	
+	goToFlower();
 }

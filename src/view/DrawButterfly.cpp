@@ -77,22 +77,13 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 		Butterfly::ButterflyStatus myStatus =
 				dynamic_cast<Butterfly*>(theBaseObjectPtr)->getState();
 
-
-//		Butterfly::STILL
-//		Butterfly::STATIONARY_FLAP_OPEN
-//		Butterfly::STATIONARY_FLAP_HALF
-//		Butterfly::MOTION_FLAP_OPEN
-//		Butterfly::MOTION_FLAP_HALF
-//		Butterfly::DEAD
-
 		if (myStatus == Butterfly::DEAD)
 		{
 			assert(false);
 			return;
 		}
 
-		if (myStatus == Butterfly::STATIONARY_FLAP_HALF ||
-			myStatus == Butterfly::MOTION_FLAP_HALF)
+		if (myStatus == Butterfly::FLAP_HALF)
 			theRenderer->render(myPainter, "Wing-halfopen", myRect);
 
 		if (myStatus == Butterfly::STILL)
@@ -100,8 +91,7 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 
 		theRenderer->render(myPainter, "Body", myRect);
 
-		if (myStatus == Butterfly::STATIONARY_FLAP_OPEN ||
-			myStatus == Butterfly::MOTION_FLAP_OPEN)
+		if (myStatus == Butterfly::FLAP_OPEN)
 			theRenderer->render(myPainter, "Wing-open", myRect);
 
 		return;

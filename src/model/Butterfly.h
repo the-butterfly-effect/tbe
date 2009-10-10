@@ -60,16 +60,22 @@ public:
 	enum ButterflyStatus
 	{
 		STILL,				// not implemented yet
-		STATIONARY_FLAP_OPEN,
-		STATIONARY_FLAP_HALF,
-		MOTION_FLAP_OPEN,
-		MOTION_FLAP_HALF,
+		FLAP_OPEN,
+		FLAP_HALF,
 		DEAD				// not implemented yet
 	};
 
 	/// @returns the state of the butterfly state machine
 	ButterflyStatus getState(void)
 	{	return theButterflyState; }
+
+	/** sets up the Butterfly to fly to a Flower
+	  * FIXME: for now, coordinates of the flower are expected to be
+	  * in properties FLOWER-X and FLOWER-Y
+	  * @returns true if successful, otherwise returns false
+	  */
+	bool goToFlower(void);
+
 
 protected:
 	/// suggest a new state of the butterfly state machine
@@ -86,7 +92,7 @@ private:
 
 private:
 	/// the weight of the butterfly (10 grams)
-	static const double theButterflyMass = 0.01;
+	static const double theButterflyMass = 0.1;
 
 	/// central variable of the Butterfly state machine
 	ButterflyStatus theButterflyState;
@@ -94,11 +100,15 @@ private:
 	/// true when the bottle's sensor is touching something
 	bool hasContact;
 
-	/// height at which the butterfly started - needed for stationary flapping
-	Position theStationaryPosition;
-
 	/// FIXME: TODO
 	signed int theCountdown;
+
+	/// if moving to a flower, this is the horizontal impulse per second
+	/// that should be applied to the butterfly
+	qreal theHorizontalImpulsePerSecond;
+
+	/// if moving to a flower, this is the target position for the butterfly
+	Position theTargetPos;
 };
 
 #endif // BUTTERFLY_H
