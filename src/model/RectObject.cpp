@@ -22,11 +22,12 @@
 #include "DrawObject.h"
 
 
-const char* OBJECT_NAME_STRING  = "ObjectName";
+const char* OBJECT_NAME_STRING = "ObjectName";
 const char* BOUNCINESS_STRING  = "Bounciness";
 const char* RESIZABLE_STRING   = "Resizable";
 const char* MASS_STRING        = "Mass";
-const char* IMAGE_NAME_STRING   = "ImageName";
+const char* FRICTION_STRING    = "Friction";
+const char* IMAGE_NAME_STRING  = "ImageName";
 const char* DESCRIPTION_STRING = "Description";
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
@@ -110,6 +111,7 @@ void RectObject::adjustParameters(void)
 			// get mass:  no mass -> no density -> no motion
 			qreal myMass = getProperty(MASS_STRING).toDouble();
 			boxDef->density = myMass / getTheWidth()*getTheHeight();
+			setFriction(boxDef);
 			theShapeList.push_back(boxDef);
 		}
 	}
@@ -154,6 +156,7 @@ void RectObject::adjustTallParametersPart(void)
 		boxDef->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
 							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
 		boxDef->density = myDensity;
+		setFriction(boxDef);
 		theShapeList.push_back(boxDef);
 		myDoneHeight += myElemHeight;
 	}
@@ -191,6 +194,7 @@ void RectObject::adjustWideParametersPart(void)
 		boxDef->SetAsBox  	( myElemWidth/2.0, getTheHeight()/2.0,
 							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
 		boxDef->density = myDensity;
+		setFriction(boxDef);
 		theShapeList.push_back(boxDef);
 		myDoneWidth += myElemWidth;
 	}
@@ -204,6 +208,14 @@ DrawObject*  RectObject::createDrawObject(void)
 	adjustParameters();
 	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
+}
+
+void  RectObject::setFriction(b2PolygonDef* aBoxDef)
+{
+	bool isOK = false;
+	qreal myFriction = getProperty(FRICTION_STRING).toDouble(&isOK);
+	if (isOK)
+		aBoxDef->friction = myFriction;
 }
 
 void  RectObject::setProperty(const QString& aKey, const QString& aValue)

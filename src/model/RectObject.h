@@ -25,8 +25,13 @@ extern const char* OBJECT_NAME_STRING;
 extern const char* BOUNCINESS_STRING;
 extern const char* RESIZABLE_STRING;
 extern const char* MASS_STRING;
+extern const char* FRICTION_STRING;
 extern const char* IMAGE_NAME_STRING;
 extern const char* DESCRIPTION_STRING;	/// contains Tooltip
+
+/// forward declarations
+struct b2PolygonDef;
+
 
 
 /**
@@ -114,6 +119,8 @@ protected:
 	virtual void adjustParameters(void);
 
 	static const qreal ASPECT_RATIO = 10.0;
+
+	void setFriction(b2PolygonDef* aBoxDef);
 
 private:
 	/// adjustParameters for tall objects (where height/width > ASPECT_RATIO)
