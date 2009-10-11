@@ -45,7 +45,6 @@ HEADERS += src/tbe_global.h \
     src/view/DrawCokeMentosBottle.h \
     src/view/DrawNoteIt.h \
     src/view/DrawObject.h \
-    src/view/DrawRamp.h \
     src/view/DrawWorld.h \
     src/view/ImageStore.h \
     src/view/MainWindow.h \
@@ -81,7 +80,6 @@ SOURCES += src/main.cpp \
     src/view/DrawCokeMentosBottle.cpp \
     src/view/DrawNoteIt.cpp \
     src/view/DrawObject.cpp \
-    src/view/DrawRamp.cpp \
     src/view/DrawWorld.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
