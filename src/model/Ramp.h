@@ -19,7 +19,7 @@
 #ifndef RAMP_H
 #define RAMP_H
 
-#include "BaseObject.h"
+#include "RectObject.h"
 
 /**
   * class RightRamp
@@ -28,7 +28,7 @@
   * in a diagonal way. Using width and height, you can resize it. 
   */
 
-class RightRamp : public BaseObject
+class RightRamp : public RectObject
 {
 public:
 
@@ -87,8 +87,6 @@ protected:
 	void adjustParameters(void);
 
 	static const qreal theSlabThickness = 0.04; // m
-
-	friend class DrawRamp;
 
 	bool isRight;
 };

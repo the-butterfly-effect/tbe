@@ -69,12 +69,13 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
 	{
 		QString myFullName = (*i) + "/" + anImageName + anExtension;
-		DEBUG5("searching for '%s' ... ", myFullName.toAscii().constData());
+		DEBUG4("searching for '%s' ... ", myFullName.toAscii().constData());
 		if (QFile::exists(myFullName) == false)
 		{
-			DEBUG5("not found\n");
+			DEBUG4("not found\n");
 			continue;
 		}
+		DEBUG4("found.\n");
 		return myFullName;
 	}
 	return QString();

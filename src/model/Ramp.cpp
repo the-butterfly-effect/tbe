@@ -18,7 +18,7 @@
 
 #include "Ramp.h"
 #include "tbe_global.h"
-#include "DrawRamp.h"
+#include "DrawObject.h"
 #include "Box2D.h"
 
 //// this class' ObjectFactory
@@ -46,7 +46,7 @@ static LeftRampObjectFactory theLFactory;
 // Constructors/Destructors
 //  
 
-RightRamp::RightRamp ( ) : BaseObject()
+RightRamp::RightRamp ( ) : RectObject()
 {
 	DEBUG5("RightRamp::RightRamp\n");
 	
@@ -136,6 +136,6 @@ DrawObject*  RightRamp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawRamp(this);
+	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }
