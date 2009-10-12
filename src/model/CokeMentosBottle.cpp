@@ -155,6 +155,11 @@ void CokeMentosBottle::reset(void)
 	thePreviousVelocity = b2Vec2(0,0);
 	thePreviousAngVelocity = 0.0;
 	hasContact = false;
+
+	bool isOK = false;
+	theThrust = getProperty("Thrust").toDouble(&isOK);
+	if (isOK==false)
+		theThrust = 2.0;
 }
 
 
@@ -253,8 +258,9 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 
 	// and don't forget Newton's action = -reaction !!!
 	qreal myImpulse = mySplatterMass*myV;
-	// FIXME: to improve the "feeling", we help the impulse a bit here...
-	Position myImpulseVector = -2.0*Position(-myImpulse*sin(myAngle), myImpulse*cos(myAngle), 0.0);
+	// HACK HACK HACK: to improve the "feeling", we help the impulse a bit here...
+	// The Thrust is actually adjustable as a property - default is 2.0 (see reset()).
+	Position myImpulseVector = -theThrust*Position(-myImpulse*sin(myAngle), myImpulse*cos(myAngle), 0.0);
 	theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
 }
 

@@ -183,6 +183,9 @@ private:
 	/// used to calculate the angular velocity change - which is used to see if the bottle is hit
 	float thePreviousAngVelocity;
 
+	/// constant that describes how much the coke splatter acts on the bottle
+	qreal theThrust;
+
 
 };
 
