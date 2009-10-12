@@ -169,6 +169,7 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	{
 	case UNTRIGGERED:
 		theCokeAmount = 2.0;
+		updateMass();
 		theSplatterCount = 0;
 		theBottleStatus=UNTRIGGERED;
 		break;
@@ -192,14 +193,15 @@ void CokeMentosBottle::updateMass(void)
 		theCokeAmount = 0.0;
 		setBottleStatus(EMPTY);
 	}
+	if (theB2BodyPtr==NULL)
+		return;
+
 	b2MassData myMass;
 	myMass.center = theB2BodyPtr->GetLocalCenter();
 	myMass.I      = theB2BodyPtr->GetInertia();
 	myMass.mass   = theCokeAmount + theBottleMass;
-	theB2BodyPtr->SetMass(&myMass);
 
-	// test
-	myMass.mass = 0;
+	theB2BodyPtr->SetMass(&myMass);
 }
 
 void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
