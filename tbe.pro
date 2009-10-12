@@ -52,6 +52,7 @@ HEADERS += src/tbe_global.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
+    src/model/Scenery.h \
     src/view/SplashScreen.h \
     src/view/StartStopReset.h
 SOURCES += src/main.cpp \
@@ -85,6 +86,7 @@ SOURCES += src/main.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
+    src/model/Scenery.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
