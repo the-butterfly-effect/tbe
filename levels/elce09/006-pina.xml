@@ -18,25 +18,29 @@ Let's have some coconuts!
                 <property key="Bounciness" >0.1</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Slab???" icon="NotFound">
-            <object width="0.1" X="5.45" Y="0.7" height="1.2" type="RectObject">
-                <property key="ImageName" >xxx</property>
+        <toolboxitem count="1" name="wood bar" icon="used_wood_bar">
+            <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Mass" >20</property>
+                <property key="Friction" >0</property>
                 <property key="Bounciness" >0.1</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5.5" height="4" />
+        <scenesize width="6.0" height="4" />
         <predefined>
             <object width="2.3" X="4.4" Y="2.1" height="4.2" type="Scenery" >
                 <property key="ImageName" >palmtree</property>
             </object>
-            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
+            <object width="6" X="3" Y="0.05" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
                 <property key="Friction" >0.6</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object width="0.2" X="0.4" Y="0.25" height="0.3" type="RightRamp" angle="0" />
+            <object width="0.2" X="0.4" Y="0.25" height="0.3" type="RightRamp" angle="0">
+                <property key="ImageName" >Empty</property>
+            </object>
             <object X="0.75" Y="1.37" type="Coke+Mentos Bottle" angle="3.14" >
                 <property key="ImageName" >CokeMentosBottle</property>
                 <property key="Thrust" >12</property>
@@ -45,25 +49,24 @@ Let's have some coconuts!
                 <property key="ImageName" >Empty</property>
             </object>
             <object X="4.4" Y="2.87" type="Bowling Ball" />
-            <object X="1.65" Y="0.4" width="0.85" height="0.6" type="RectObject">
-                <property key="ImageName" >coke-crate</property>
-                <property key="Mass" >18</property>
-                <property key="Friction" >1</property>
+            <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
+                <property key="ImageName" >boulder</property>
+            </object>
+            <object width="0.5" X="5.75" Y="1.5" height="2.8" type="RectObject">
+                <property key="ImageName" >oldbrick</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" />
-            <object width="0.1" X="5.45" Y="0.7" height="1.2" type="RectObject">
-                <property key="ImageName" >xxx</property>
-                <property key="Bounciness" >0.1</property>
-            </object>
-            <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
-                <property key="ImageName" >xxx</property>
-                <property key="Mass" >20</property>
-                <property key="Friction" >0</property>
-                <property key="Bounciness" >0.1</property>
-            </object>
-	    <object X="0.45" Y="1.05" width="0.8" height="1.9" type="Scenery">
+	    <object X="0.225" Y="1.05" width="0.45" height="1.9" type="Scenery">
                 <property key="ImageName" >006-stick-figure</property>
+            </object>
+	    <object X="0.62" Y="1.775" width="0.35" height="0.45" type="Scenery">
+                <property key="ImageName" >006-stick-figure-arm</property>
+            </object>
+            <object width="0.1" X="5.1" Y="0.15" height="0.1" type="RectObject" angle="0" >
+                <property key="ImageName" >boulder</property>
+            </object>
+            <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0" >
+                <property key="ImageName" >boulder</property>
             </object>
         </predefined>
     </scene>

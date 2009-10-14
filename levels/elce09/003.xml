@@ -36,9 +36,15 @@
             <object width="0.1" X="0.05" Y="2.5" height="5" type="RectObject" angle="3.1415">
 	                    <property key="ImageName" >right-side-frame.003</property>
             </object>
-            <object width="0.2996093749999996" X="6.3998046875" Y="0.16" type="Floor" />
-            <object width="1.03178125" X="5.015890624999999" Y="0.16" type="Floor" />
-            <object width="0.1" X="6.85" Y="0.3" height="0.6" type="RectObject" />
+            <object width="0.2996093749999996" X="6.3998046875" Y="0.16" type="Floor" >
+	                    <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="1.03178125" X="5.015890624999999" Y="0.16" type="Floor" >
+	                    <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="6.85" Y="0.3" height="0.6" type="RectObject">
+	                    <property key="ImageName" >used_wood_bar</property>
+            </object>
         </predefined>
     </scene>
     <toolbox/>

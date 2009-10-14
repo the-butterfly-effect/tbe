@@ -27,6 +27,9 @@
             <object width="1.5" X="0.75" Y="0.075" height="0.15" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
+            <object width="0.5" X="1.75" Y="0.075" height="0.15" type="Scenery" >
+                <property key="ImageName" >basket</property>
+            </object>
             <object width="0.3" X="2.15" Y="0.075" height="0.15" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
@@ -36,7 +39,9 @@
                 <property key="Mass" >0.01</property>
             </object>
             <object X="1.4" Y="0.27" type="Volleyball" />
-            <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" />
+            <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" >
+                <property key="ImageName" >right-ramp</property>
+            </object>
         </predefined>
     </scene>
     <toolbox/>
