@@ -14,105 +14,133 @@
             <object width="8" X="4" Y="0.05" type="Floor" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >0.6</property>
-                <property key="ImageName" >White-to-green</property>
+                <property key="ImageName" >DarkerGreen</property>
             </object>
             <object width="0.4" X="7.388730525970459" Y="4.220031261444092" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="7.4" Y="4.4" type="Flower" >
+            <object X="7.7" Y="4.4" type="Flower" >
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="6.219767093658447" Y="4.484702110290527" type="Butterfly" >
-                <property key="Description" >lalala FIXME</property>
+            <object X="4.65" Y="4.00" type="Butterfly" >
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
             </object>
+            <object width="0.85" height="0.86" X="5.91" Y="3.73" type="RectObject">
+                <property key="ImageName" >oldbrick</property>
+                <property key="Friction" >1</property>
+                <property key="Bounciness" >0.1</property>
+            </object>
             <object width="0.35" X="6.67" Y="4.1" height="1" type="RectObject" >
+                <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
             <object width="0.35" X="6.63" Y="3.1" height="1" type="RectObject" >
+                <property key="Friction" >0.1</property>
+                <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.35" X="6.65" Y="2.1" height="1" type="RectObject" >
+            <object width="0.35" X="6.60" Y="2.1" height="1" type="RectObject" >
+                <property key="Friction" >0.1</property>
+                <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
             <object width="0.35" X="6.67" Y="1.1" height="1" type="RectObject" >
+                <property key="Friction" >0.1</property>
+                <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.35" X="6.67" Y="0.35" height="0.5" type="RectObject" >
+            <object width="0.35" X="6.62" Y="0.35" height="0.5" type="RectObject" >
+                <property key="Friction" >0.1</property>
+                <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.7" X="7.45" Y="1.94" height="3.65" type="RectObject">
+            <object width="0.6" X="7.55" Y="1.94" height="3.65" type="RectObject">
                 <property key="ImageName" >oldbrick</property>
             </object>
-            <object width="0.2" X="5.5" Y="0.9" height="1.6" type="RectObject" />
-            <object width="0.2" X="4.8" Y="1.0" height="1.4" type="RectObject" />
+            <object width="0.2" X="5.5" Y="0.9" height="1.6" type="RectObject">
+                <property key="Bounciness" >0.2</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.2" X="4.8" Y="1.0" height="1.4" type="RectObject">
+                <property key="Bounciness" >0.2</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
             <object X="5.168435573577881" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >CokeMentosBottle</property>
-                <property key="Thrust" >5</property>
+                <property key="Thrust" >20</property>
             </object>
             <object X="5.337530612945557" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >CokeMentosBottle</property>
-                <property key="Thrust" >5</property>
+                <property key="Thrust" >20</property>
             </object>
             <object X="4.999340057373047" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >CokeMentosBottle</property>
-                <property key="Thrust" >5</property>
+                <property key="Thrust" >20</property>
             </object>
-            <object width="0.5" X="5.15" Y="0.85" height="0.5" type="RectObject" >
+            <object width="0.5" X="5.15" Y="0.83" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="Friction" >0</property>
+                <property key="Friction" >0.1</property>
                 <property key="ImageName" >styrofoam</property>
-                <property key="Mass" >2</property>
+                <property key="Mass" >20</property>
             </object>
             <object width="1.7" X="4.1" Y="2" height="0.6" type="RightRamp" angle="0" >
+                <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >right-ramp</property>
             </object>
-            <object width="2.3" X="2.1" Y="2.25" type="Floor" />
+            <object width="0.4" X="5.80" Y="1.5" height="0.4" type="RightRamp" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >right-ramp</property>
+            </object>
+            <object width="2.3" X="2.1" Y="2.25" type="Floor">
+                <property key="ImageName" >DarkerGreen</property>
+            </object>
             <object X="3.1" Y="2.5" type="Bowling Ball" />
-            <object width="0.1" X="3.1" Y="2.35" height="0.1" type="RectObject" />
+            <object width="0.1" X="3.1" Y="2.35" height="0.1" type="RectObject" >
+                <property key="Bounciness" >0.0</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
             <object width="0.1" X="2.8" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
             <object width="0.1" X="2.5" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
             <object width="0.1" X="2.2" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
             <object width="0.1" X="1.9" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
             <object width="0.1" X="1.6" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
             <object width="0.1" X="1.3" Y="2.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
+		<property key="Bounciness">0.1</property>
+                <property key="ImageName" >DominoBlue</property>
             </object>
-            <object X="0.42" Y="0.38" type="Coke+Mentos Bottle" angle="1.57" >
+            <object X="0.44" Y="0.18" type="Coke+Mentos Bottle" angle="1.55" >
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >CokeMentosBottle</property>
-            </object>
-            <object X="0.11" Y="0.2" type="Bowling Ball" />
-            <object X="0.32" Y="0.2" type="Bowling Ball" />
-            <object X="0.53" Y="0.2" type="Bowling Ball" />
-            <object X="0.74" Y="0.2" type="Bowling Ball" />
-            <object X="0.95" Y="0.2" type="Bowling Ball" />
-            <object X="1.16" Y="0.2" type="Bowling Ball" />
-            <object X="1.37" Y="0.2" type="Bowling Ball" />
-            <object X="1.58" Y="0.2" type="Bowling Ball" />
-            <object X="1.79" Y="0.2" type="Bowling Ball" />
-            <object width="0.26" X="0.13" Y="0.58" height="0.12" type="RightRamp" angle="0" />
-            <object width="0.72" X="0.87" Y="0.67" height="0.3" type="LeftRamp" angle="0">
-                <property key="ImageName" >left-ramp</property>
             </object>
             <object X="1.18" Y="4.7" type="Bowling Ball" />
             <object width="0.1" X="4.3" Y="4.30" height="0.5" type="RectObject" >
@@ -173,13 +201,18 @@
             <object width="0.3" X="1.1" Y="3.9" height="0.15" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
             </object>
-            <object width="0.2" X="0.95" Y="4.0" type="Floor" />
+            <object width="0.1" X="1.0" Y="4.0" type="Floor">
+                <property key="Friction" >0.6</property>
+                <property key="ImageName" >DarkerBlue</property>
+            </object>
             <object width="0.1" X="1.0" Y="4.3" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
 		<property key="Bounciness">0.1</property>
                 <property key="ImageName" >DominoRed</property>
             </object>
-            <object width="3.1" X="2.8" Y="4.0" type="Floor" />
+            <object width="3.1" X="2.8" Y="4.0" type="Floor">
+                <property key="ImageName" >DarkerBlue</property>
+            </object>
             <object width="0.1" X="4.3" Y="3.55" height="0.5" type="RectObject" >
                 <property key="Mass" >3</property>
 		<property key="Bounciness">0.1</property>
@@ -235,8 +268,10 @@
 		<property key="Bounciness">0.1</property>
                 <property key="ImageName" >DominoGreen</property>
             </object>
-            <object width="3.7" X="3.1" Y="3.25" type="Floor" />
-            <object width="0.8" X="4.9" Y="3.90" height="0.5" type="LeftRamp" angle="0">
+            <object width="5.1" X="3.8" Y="3.25" type="Floor">
+                <property key="ImageName" >DarkerRed</property>
+            </object>
+            <object width="1.0" X="4.99" Y="3.90" height="0.5" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
             </object>
             <object width="0.5" X="0.95" Y="2.8" height="0.5" type="RightRamp" angle="0">
