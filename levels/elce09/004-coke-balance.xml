@@ -1,0 +1,60 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Balancing Coke</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Balance your diet? Drink Coke!
+</description>
+        <date>10/11/09</date>
+    </levelinfo>
+    <scene>
+        <scenesize width="4.5" height="3.0" />
+        <predefined>
+            <object width="2.2" X="1.4" Y="0.3" height="0.1" type="RectObject" >
+                <property key="Friction" >2.0</property>
+                <property key="Bounciness" >0.0</property>
+                <property key="Mass" >6.0</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="4.5" X="2.25" Y="0.05" type="Floor" >
+                <property key="Bounciness" >0.1</property>
+                <property key="Friction" >0.6</property>
+                <property key="ImageName" >White-to-green</property>
+            </object>
+            <object X="0.4" Y="0.6" type="Coke+Mentos Bottle" angle="0" >
+                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
+Look: it blows if triggered!</property>
+                <property key="ImageName" >CokeMentosBottle</property>
+                <property key="Friction" >2.0</property>
+            </object>
+            <object width="0.15" X="1.70" Y="0.175" height="0.15" type="LeftRamp" angle="0" />
+            <object X="2.4" Y="0.45" type="Bowling Ball" />
+            <object X="4.2" Y="0.27" type="Bowling Pin" />
+            <object X="4.0" Y="0.27" type="Bowling Pin" />
+            <object X="3.8" Y="0.27" type="Bowling Pin" />
+            <object width="0.1" X="2.2" Y="0.55" height="0.1" type="RectObject" >
+                <property key="Friction" >2.0</property>
+                <property key="Bounciness" >0.0</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="0.54" Y="0.80" height="0.3" type="RectObject" >
+                <property key="Friction" >2.0</property>
+                <property key="Bounciness" >0.0</property>
+                <property key="ImageName" >Empty</property>
+            </object>
+            <object width="0.29" X="0.145" Y="0.45" height="0.7" type="RectObject" >
+                <property key="Bounciness" >0.0</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="1.4" X="3.8" Y="0.6" height="0.2" type="LeftRamp" angle="0" >
+                <property key="ImageName" >left-ramp</property>
+            </object>
+            <object width="1.4" X="0.7" Y="2.95" height="0.1" type="RectObject" >
+                <property key="Bounciness" >0.0</property>
+                <property key="ImageName" >Empty</property>
+            </object>
+        </predefined>
+    </scene>
+    <toolbox/>
+</tbe-level>
