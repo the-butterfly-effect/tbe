@@ -1,0 +1,48 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Introducing the coke bottle</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Introducing the specially prepared coke/mentos fountain bottle.</description>
+        <date>10/11/09</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="2" name="Coke+Mentos" icon="CokeMentosBottle">
+            <object type="Coke+Mentos Bottle" angle="0" >
+                <property key="Bounciness" >0</property>
+                <property key="ImageName" >CokeMentosBottle</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3" height="2.5" />
+        <predefined>
+            <object width="3" X="1.5" Y="0.05" type="Floor" >
+                <property key="ImageName" >Yellow-to-brown</property>
+            </object>
+            <object width="0.3" X="2.2" Y="0.7" height="1.2" type="RectObject" >
+                <property key="Bounciness" >0</property>
+            </object>
+            <object width="0.14" X="1.8" Y="1.312065104166667" height="0.5758697916666666" type="RectObject" />
+            <object X="2" Y="1.4" type="Volleyball" />
+            <object X="2.34" Y="1.46" type="Bowling Pin" />
+            <object width="0.1" X="2.95" Y="0.5" height="0.8" type="RectObject" >
+                <property key="Bounciness" >0</property>
+            </object>
+            <object width="0.85" X="0.43" Y="0.40" height="0.6" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+                <property key="Friction" >1</property>
+                <property key="ImageName" >coke-crate</property>
+                <property key="Mass" >18</property>
+            </object>
+            <object width="0.85" X="0.43" Y="1.00" height="0.6" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+                <property key="Friction" >1</property>
+                <property key="ImageName" >coke-crate</property>
+                <property key="Mass" >18</property>
+            </object>
+        </predefined>
+    </scene>
+    <toolbox/>
+</tbe-level>
