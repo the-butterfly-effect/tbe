@@ -34,7 +34,7 @@ Let's have some coconuts!
                 <property key="ImageName" >palmtree</property>
             </object>
             <object width="6" X="3" Y="0.05" type="Floor" >
-                <property key="ImageName" >White-to-green</property>
+                <property key="ImageName" >Yellow-to-brown</property>
                 <property key="Friction" >0.6</property>
                 <property key="Bounciness" >0.1</property>
             </object>
@@ -64,9 +64,11 @@ Let's have some coconuts!
             </object>
             <object width="0.1" X="5.1" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
+                <property key="Bounciness" >0.1</property>
             </object>
             <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
+                <property key="Bounciness" >0.1</property>
             </object>
         </predefined>
     </scene>

@@ -16,9 +16,24 @@
                 <property key="ImageName" >DominoRed</property>
             </object>
         </toolboxitem>
+	<toolboxitem count="1" name="Styrofoam" icon="styrofoam">
+            <object width="0.25" height="0.8" type="RectObject" >
+                <property key="Friction" >0.3</property>
+                <property key="Bounciness" >0.2</property>
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass" >1</property>
+            </object>
+        </toolboxitem>
         <toolboxitem count="1" name="Left Ramp" icon="left-ramp">
             <object width="1.0" height="0.5" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
+            </object>
+        </toolboxitem>
+	<toolboxitem count="1" name="Ruud" icon="006-stick-figure">
+            <object width="0.7" height="1.8" type="Scenery" >
+                <property key="Friction" >0.3</property>
+                <property key="Bounciness" >0.2</property>
+                <property key="ImageName" >006-stick-figure</property>
             </object>
         </toolboxitem>
     </toolbox>
@@ -273,6 +288,15 @@
                 <property key="ImageName" >DarkerRed</property>
             </object>
             <object width="0.5" X="0.95" Y="2.8" height="0.5" type="RightRamp" angle="0">
+                <property key="ImageName" >right-ramp</property>
+            </object>
+            <object width="2.5" X="2.5" Y="1.1" height="0.8" type="LeftRamp" angle="0">
+                <property key="ImageName" >left-ramp</property>
+            </object>
+            <object width="1.6" X="5.5" Y="2.7" height="0.8" type="LeftRamp" angle="0">
+                <property key="ImageName" >left-ramp</property>
+            </object>
+            <object width="0.8" X="4.2" Y="0.8" height="0.5" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
         </predefined>
