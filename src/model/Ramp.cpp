@@ -71,6 +71,8 @@ RightRamp::~RightRamp ( ) { }
 
 void RightRamp::setTheWidth ( qreal new_var )
 {
+	if (new_var < 0.12)
+		return;
 	BaseObject::setTheWidth(new_var);
 	DEBUG5("RightRamp::setTheWidth (%f)\n", getTheWidth());
 	adjustParameters();
@@ -78,6 +80,8 @@ void RightRamp::setTheWidth ( qreal new_var )
 
 void RightRamp::setTheHeight ( qreal new_var )
 {
+	if (new_var < 0.12)
+		return;
 	BaseObject::setTheHeight(new_var);
 	DEBUG5("RightRamp::setTheHeight (%f)\n", getTheHeight());
 	adjustParameters();
