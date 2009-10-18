@@ -7,7 +7,7 @@
         <description>Introducing the specially prepared coke/mentos fountain bottle.</description>
         <date>10/11/09</date>
     </levelinfo>
-     <toolbox>
+    <toolbox>
         <toolboxitem count="2" name="Coke+Mentos" icon="CokeMentosBottle">
             <object type="Coke+Mentos Bottle" angle="0" >
                 <property key="Bounciness" >0</property>
@@ -20,6 +20,13 @@
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="10" name="Boulder" icon="boulder">
+            <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0" >
+                <property key="ImageName" >boulder</property>
+                <property key="Bounciness" >0.1</property>
+                <property key="Mass" >0.2</property>
             </object>
         </toolboxitem>
     </toolbox>
