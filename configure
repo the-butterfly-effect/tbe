@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "This is not a true, proper autotools ./configure"
+echo "However, it does do the same - it will setup everything so you can run make"
+
+make -C 3rdParty
+make -C images/src all
+qmake
+
+echo "you should be able to run 'make' to build The Butterfly Effect now"
+
