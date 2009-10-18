@@ -6,3 +6,10 @@ Project Management:
 
 Development:
 * kvangend@users.sf.net - Klaas van Gend
+The Butterfly Effect is a happy user of the Box2D and QT libraries.
+
+Graphics:
+* many graphics were borrowed or adapted from the web.
+  In all directories that contain graphics,  there should be a README listing the origins.
+  Note that most used graphics come from openclipart.org and are under a PD license.
+
