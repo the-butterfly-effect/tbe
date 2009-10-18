@@ -80,30 +80,33 @@ NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Getting ready for prime time
 Version 0.40
-  * implement foreground/background scenery images
-  * implement rotation of relevant objects
+  / implement foreground/background scenery images
+    - layering is not selectable yet
+  x add images & animation
+	x all images in SVG or PNG format (implemented in milestone 3 already)
+	x all images are scaled to fit their outline (implemented in milestone 3 already)
+  x add difference between play mode and level editor
+        - currently only switchable from src/main.cpp and a recompile
+  x split level between pre-defined objects and toolbox available objects
+	x definition of XML for config file
+	x parsing of XML for config file
+	x drag-drop of RectObject derived goes OK
+	x decrease available object count in toolbox on successful Drag&Drop
+  x create all levels for ELCE
+FIRST PLAYABLE - with a supervisor
+
+
+Milestone 5 - It's make over time! (post-ELCE)
+Version 0.50
+  * solve Volleyball/VolleyBall issues
+    this involves splitting between technical name and visible name ?!?
   * do not (re)paint objects that are sleeping
 	- is this actually happening?
 	- does it help if we make ramp and Bowlingball PNG/SVG instead of draw?
 	- set all objects to sleep at clicking "start" and reset the sleep status at reset?
-  * add images & animation
-	/ all images in SVG or PNG format (implemented in milestone 3 already)
-	x all images are scaled to fit their outline (implemented in milestone 3 already)
-  / add difference between play mode and level editor
-  / split level between pre-defined objects and toolbox available objects
-	x definition of XML for config file
-	x parsing of XML for config file
-	x drag-drop of RectObject derived goes OK
-	* solve Volleyball/VolleyBall issues
-	  this involves splitting between technical name and visible name ?!?
-	x decrease available object count in toolbox on successful Drag&Drop
-  * create all levels for ELCE
-FIRST PLAYABLE - with a supervisor
-
-Milestone 5 - It's make over time! (post-ELCE)
-Version 0.50
+  * implement rotation of relevant objects
   * Important overdue refactorings:
-	- splitup Position into Vector and Position (Vector has no angle)
+	- split Position into Vector and Position, where Position is (Vector + angle)
 	- Merge BaseObject and RectObject
 	- Create Ball class and merge BowlingBall and Volleyball into Ball
   * RMB actions

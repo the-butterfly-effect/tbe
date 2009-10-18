@@ -1,8 +1,16 @@
-Welcome to "The Butterfly Effect", Milestone 1.
+Welcome to "The Butterfly Effect", Milestone 4.
 
-This is not a playable game and is not planned to be for quite some time.
+This is not entirely a playable game yet.
+
+As of October 16, 2009, the game is playable 'under supervision': 
+  * there are 7 separate puzzles in the levels/elce09 directory
+  * but there is no code for winning a level yet
+The Butterfly effect was run as part of the end presentation of the Embedded 
+Linux Conference Europe 2009 in Grenoble, where Klaas was hosting the game
+on the podium and the audience could play in turns.
+
 Please refer to the TODO file to see how far the development has to 
-proceed to make it playable.
+proceeded since to make it playable.
 
 Regards,
 
