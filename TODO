@@ -93,6 +93,7 @@ Version 0.40
 	x drag-drop of RectObject derived goes OK
 	x decrease available object count in toolbox on successful Drag&Drop
   x create all levels for ELCE
+        * use round_coconut.svg as image for coconut instead of BowlingBall.
 FIRST PLAYABLE - with a supervisor
 
 
