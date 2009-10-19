@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
 {                                      
 	ui.setupUi(this);
 
+	showMaximized();
+
 	// TODO: fixme: hardcoded path here!
 	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
 	QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
