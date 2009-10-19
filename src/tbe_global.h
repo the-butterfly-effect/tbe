@@ -62,5 +62,6 @@ extern const char* ASCII(const QString& aQString);
 
 /// defined in main.cpp
 extern bool theIsLevelEditor;
+extern bool theDrawDebug;
 
 #endif // TBE_GLOBAL

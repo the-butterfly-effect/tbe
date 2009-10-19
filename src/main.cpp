@@ -20,13 +20,18 @@
 #include "MainWindow.h"
 #include <QtGui>
 
-// the verbosity for all logging - by default defined at 5 (most logging)
+// the verbosity for all logging - by default defined at 4
+// accepted values are 0 (no logging) - 6 (most logging)
+// note that levels 5 and 6 affect playing
 int theVerbosity = 4;
 
 // this variable defines whether we are playing or a level editor
 // TODO/FIXME: this should go into preferences or so at some point
 bool theIsLevelEditor = false;
 
+// this variable defines whether we are showing Box2D debugging info or not
+// TODO/FIXME: this should go into preferences or so at some point
+bool theDrawDebug = false;
 
 int main(int argc, char **argv)
 {
