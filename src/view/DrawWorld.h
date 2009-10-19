@@ -27,12 +27,7 @@
 #include <QTime>
 #include <QUndoStack>
 
-#define DRAWDEBUG
-//#undef DRAWDEBUG
-
-#ifdef DRAWDEBUG
- #include "Box2D.h"
-#endif
+#include "Box2D.h"
 
 // forward declarations
 class World;
@@ -44,9 +39,7 @@ class QDropEvent;
   */
 
 class DrawWorld : public QGraphicsScene
-#ifdef DRAWDEBUG
 		, public b2DebugDraw
-#endif
 {
 public:
 	
@@ -85,7 +78,6 @@ public:
 
 protected:
 
-#ifdef DRAWDEBUG
 		/// Draw a closed polygon provided in CCW order.
 		virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
 		/// Draw a solid closed polygon provided in CCW order.
@@ -106,7 +98,6 @@ private:
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);
 		void clearGraphicsList(int aCount);
-#endif
 	
 public slots:
 	void resetWorld(void);

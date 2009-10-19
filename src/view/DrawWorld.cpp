@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "tbe_global.h"
 #include "DrawWorld.h"
 #include "World.h"
 #include "MainWindow.h"
-#include "tbe_global.h"
 #include "DrawObject.h"
 #include "ToolBoxItemListModel.h"
 
@@ -79,9 +79,8 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 
-#ifdef DRAWDEBUG
-	SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
-#endif
+	if (theDrawDebug)
+		SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
 
 	setAcceptDrops(true);
 }
@@ -166,9 +165,8 @@ void DrawWorld::resetWorld( )
 	// and redraw
 	advance();
 	setAcceptDrops(true);
-#ifdef DRAWDEBUG
-	clearGraphicsList(0);
-#endif
+	if (theDrawDebug)
+		clearGraphicsList(0);
 }
 
 void DrawWorld::setAcceptDrops(bool isOn)
@@ -205,8 +203,6 @@ void DrawWorld::stopTimer(void)
 
 
 
-
-#ifdef DRAWDEBUG
 
 /// Draw a closed polygon provided in CCW order.
 void DrawWorld::DrawPolygon(UNUSED_ARG const b2Vec2* vertices, UNUSED_ARG int32 vertexCount, UNUSED_ARG const b2Color& color)
@@ -274,4 +270,3 @@ void DrawWorld::clearGraphicsList(int aCount)
 		delete myItemPtr;
 	}
 }
-#endif
