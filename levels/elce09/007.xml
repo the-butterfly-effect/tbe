@@ -302,8 +302,8 @@
                 <property key="page1" >The final killer challenge...</property>
                 <property key="page2" >Look: it's that butterfly and flower again.</property>
                 <property key="page3" >But there's some styrofoam in the way...</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
-                <property key="page5" >&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
+                <property key="page4" >By the way:&lt;br&gr;&lt;br&gt;I think that Ruud guy is useless...</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Note-it boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
 	    </object>
         </predefined>
     </scene>
