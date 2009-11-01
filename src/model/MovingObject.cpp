@@ -41,7 +41,7 @@ qreal MovingObject::getTotalMass(void)
 	return 0.0f;
 }
 
-void MovingObject::setTotalMass(qreal newmass)
+void MovingObject::setTotalMass(qreal)
 {
 	// TODO
 }
