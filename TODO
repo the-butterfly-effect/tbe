@@ -79,21 +79,22 @@ Features:
 NOT REALLY A PLAYABLE GAME
 
 Milestone 4 - Getting ready for prime time
-Version 0.40
+Completed: revision 420.
   / implement foreground/background scenery images
-    - layering is not selectable yet
+	* layering is not selectable yet
   x add images & animation
 	x all images in SVG or PNG format (implemented in milestone 3 already)
 	x all images are scaled to fit their outline (implemented in milestone 3 already)
   x add difference between play mode and level editor
-        - currently only switchable from src/main.cpp and a recompile
+	* currently only switchable from src/main.cpp and a recompile
   x split level between pre-defined objects and toolbox available objects
 	x definition of XML for config file
 	x parsing of XML for config file
 	x drag-drop of RectObject derived goes OK
 	x decrease available object count in toolbox on successful Drag&Drop
   x create all levels for ELCE
-        * use round_coconut.svg as image for coconut instead of BowlingBall.
+	* use round_coconut.svg as image for coconut instead of BowlingBall.
+  x add choose level dialog
 FIRST PLAYABLE - with a supervisor
 
 
