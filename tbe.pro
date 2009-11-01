@@ -37,10 +37,12 @@ HEADERS += src/tbe_global.h \
     src/model/Position.h \
     src/model/Ramp.h \
     src/model/RectObject.h \
+    src/model/Scenery.h \
     src/model/ToolBoxItemListModel.h \
     src/model/VolleyBall.h \
     src/model/World.h \
     src/view/Anchors.h \
+    src/view/ChooseLevel.h \
     src/view/DrawButterfly.h \
     src/view/DrawCokeMentosBottle.h \
     src/view/DrawNoteIt.h \
@@ -52,7 +54,6 @@ HEADERS += src/tbe_global.h \
     src/view/Popup.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
-    src/model/Scenery.h \
     src/view/SplashScreen.h \
     src/view/StartStopReset.h
 SOURCES += src/main.cpp \
@@ -73,10 +74,12 @@ SOURCES += src/main.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
     src/model/RectObject.cpp \
+    src/model/Scenery.cpp \
     src/model/ToolBoxItemListModel.cpp \
     src/model/VolleyBall.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
+    src/view/ChooseLevel.cpp \
     src/view/DrawButterfly.cpp \
     src/view/DrawCokeMentosBottle.cpp \
     src/view/DrawNoteIt.cpp \
@@ -86,12 +89,12 @@ SOURCES += src/main.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
-    src/model/Scenery.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopReset.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
-    src/view/SaveLevelInfo.ui
+    src/view/SaveLevelInfo.ui \
+    src/view/ChooseLevel.ui
 DISTFILES = README \
     TODO \
     AUTHORS \

@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "MainWindow.h"
 #include "Popup.h"
-
+#include "ChooseLevel.h"
 #include "Level.h"
 #include "World.h"
 #include "DrawWorld.h"
@@ -89,13 +89,13 @@ void MainWindow::on_actionAbout_activated()
 
 void MainWindow::on_actionOpen_level_activated()
 {
-	// TODO this code is more-or-less temporary 
-	// - it should be replaced by a dashboard style interface 
-	QString myFileName = QFileDialog::getOpenFileName(this,
-	     tr("Open Level"), ".", tr("TBE Levels (*.xml *.tbe)"));
-	if (myFileName.isEmpty())
-		return;
-	loadLevel(myFileName);
+	ChooseLevel myDialog;
+	myDialog.show();
+	myDialog.exec();
+	QString myLevelName = myDialog.getCurrent();
+
+	// TODO: FIXME: hardcoded path here!!!
+	loadLevel("levels/elce09/"+myLevelName);
 }
 
 
@@ -124,12 +124,10 @@ void MainWindow::on_actionSave_activated()
 void MainWindow::slot_splashScreen_clicked(void)
 {
 	QStringList myArguments = QApplication::arguments();
-	QString myLevelName = "levels/draft/001_bowling_for_butterflies.xml";
 	if (myArguments.count()>1)
-		myLevelName = myArguments[1];
-
-	// TODO: FIXME: hardcoded level name!!!
-	loadLevel(myLevelName);
+		loadLevel(myArguments[1]);
+	else
+		on_actionOpen_level_activated();
 }
 
 //////////////////////////////////////////////////////////////////////////////
