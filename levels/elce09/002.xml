@@ -1,10 +1,10 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>The Butterfly effect of CELF</title>
+        <title>The Butterfly effect of CELF level 2</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>First Demonstration: how does the Butterfly Effect work...</description>
+        <description>Level with a small user interaction: that volleyball is in the way... Goal: Butterfly to the Flower.</description>
         <date>10/10/09</date>
     </levelinfo>
      <toolbox>
@@ -42,6 +42,11 @@
             <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" >
                 <property key="ImageName" >right-ramp</property>
             </object>
+            <object X="1.1" Y="1.0" type="NoteIt">
+                <property key="page1" >Our little Butterfly...&lt;br&gt;&lt;br&gt;Another day, another flower...</property>
+                <property key="page2" >But I'm not so sure about that volley ball.</property>
+                <property key="page3" >Hmmm... You see that hole?&lt;br&gt;Behind the volley ball!</property>
+	    </object>
         </predefined>
     </scene>
     <toolbox/>

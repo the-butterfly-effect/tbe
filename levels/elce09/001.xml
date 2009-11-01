@@ -4,8 +4,9 @@
         <title>The Butterfly effect of CELF</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>First Demonstration: how does the Butterfly Effect work...</description>
-        <date>10/10/09</date>
+        <description>First Demonstration: how does the Butterfly Effect work...
+Goal: Butterfly to the Flower.</description>
+        <date>11/1/09</date>
     </levelinfo>
     <scene>
         <scenesize width="2.3" height="1.7" />
@@ -30,6 +31,11 @@
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
             </object>
+            <object X="2.1" Y="1.5" type="NoteIt">
+                <property key="page1" >You see that butterfly?</property>
+                <property key="page2" >It wants to go to the flower...</property>
+                <property key="page3" >Click the start button right below&lt;br&gt;to make it happen!</property>
+	    </object>
         </predefined>
     </scene>
     <toolbox/>

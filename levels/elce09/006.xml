@@ -1,12 +1,10 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Pinacolada instead of Coke</title>
+        <title>Coconut instead of Coke</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Can you live from just coke?
-Let's have some coconuts!
-</description>
+        <description>Can you live from just coke? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
@@ -70,6 +68,12 @@ Let's have some coconuts!
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>
             </object>
+            <object X="2.8" Y="1.4" type="NoteIt">
+                <property key="page1" >This is Ruud.&lt;br&gt;&lt;br&gt;He's on a small desert island.</property>
+                <property key="page2" >A few crates of coke washed up shore lately - so he's not thirsty.</property>
+                <property key="page3" >But do you see those coconuts?</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Note-it boy</property>
+	    </object>
         </predefined>
     </scene>
     <toolbox/>

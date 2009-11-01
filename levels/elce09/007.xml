@@ -4,8 +4,7 @@
         <title>Double Action</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>This is the first double-action level - two things need to happen at once...
-</description>
+        <description>This is the first double-action level - two things need to happen at once... Goal: Butterfly to Flower.</description>
         <date>10/13/09</date>
     </levelinfo>
      <toolbox>
@@ -299,6 +298,13 @@
             <object width="0.8" X="4.2" Y="0.8" height="0.5" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
+            <object X="2.0" Y="1.7" type="NoteIt">
+                <property key="page1" >The final killer challenge...</property>
+                <property key="page2" >Look: it's that butterfly and flower again.</property>
+                <property key="page3" >But there's some styrofoam in the way...</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
+	    </object>
         </predefined>
     </scene>
     <toolbox/>

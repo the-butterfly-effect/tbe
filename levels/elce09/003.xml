@@ -4,7 +4,7 @@
         <title>Marble Boulevard</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description></description>
+        <description>Goal: Topple the pin.</description>
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
@@ -45,6 +45,12 @@
             <object width="0.1" X="6.85" Y="0.3" height="0.6" type="RectObject">
 	                    <property key="ImageName" >used_wood_bar</property>
             </object>
+            <object X="6.3" Y="0.8" type="NoteIt">
+                <property key="page1" >No butterflies here!&lt;br&gt;&lt;br&gt;</property>
+                <property key="page2" >Topple the bowling pin below.</property>
+                <property key="page3" >Hmmm... &lt;br&gt;&lt;br&gt;This reminds me of a kids' game!</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
+	    </object>
         </predefined>
     </scene>
     <toolbox/>

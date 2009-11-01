@@ -7,22 +7,33 @@ Anonymous_daffodil.klaas.svg
 Adapted by Klaas van Gend: mirrored, added leaves.
 
 basket.svg
-SOURCE: Original work by Klaas van Gend for TBE
-
 black.svg
-SOURCE: Original work by Klaas van Gend for TBE
-
 boulder.svg
-SOURCE: Original work by Klaas van Gend for TBE
-
 coke_crate.svg
-SOURCE: Original work by Klaas van Gend for TBE
-
 DarkerBlue.svg
 DarkerGreen.svg
 DarkerRed.svg
+Empty.svg
 SOURCE: Original work by Klaas van Gend for TBE
 
-Empty.svg
-just an empty file.
+oldbrick.png
+SOURCE: see file 2009-05-14-oldbrick_1000texture_1.jpg in the images/textures directory
 
+palmtree.svg
+right-side-frame.003.svg
+round_coconut.svg
+SOURCE: Original work by Klaas van Gend for TBE
+
+styrofoam.png
+SOURCE: see file 2009-03-17-styrofoam_texture.jpg in the images/textures directory
+
+that_is_butterfly.svg
+that_is_flower.svg
+White-to-green.svg
+Yellow-to-brown.svg
+SOURCE: Original work by Klaas van Gend for TBE
+
+
+TODO: 
+* Move Darker*, White-to-green, Yellow-to-brown to textures
+* move oldbrick and styrofoam to textures
