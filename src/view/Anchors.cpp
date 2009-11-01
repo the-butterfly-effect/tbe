@@ -36,22 +36,26 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 {
 	DEBUG5("Anchors::Anchors for %p\n", anObjectPtr);
 
-	// the below code creates the 8 anchors around the object
+	// only create anchors when it is a player-inserted object
+	BaseObject* myBOPtr = theDrawObjectPtr->getBaseObjectPtr();
+	if (myBOPtr->isMovable()==false)
+		return;
 
+	// the below code creates the 8 anchors around the object
 	PieMenu::EditMode myMode = PieMenu::NONE;
-	if (theDrawObjectPtr->getBaseObjectPtr()->isResizable()&BaseObject::HORIZONTALRESIZE)
+	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE)
 		myMode = PieMenu::RESIZE_HORI;
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  VMIDDLE, this));
 	theAnchorList.push_back(new Anchor(myMode, RIGHT, VMIDDLE, this));
 
-	if (theDrawObjectPtr->getBaseObjectPtr()->isResizable()&BaseObject::VERTICALRESIZE)
+	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE)
 		myMode = PieMenu::RESIZE_VERTI;
 	else
 		myMode = PieMenu::NONE;
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
 
-	if (theDrawObjectPtr->getBaseObjectPtr()->isRotatable())
+	if (myBOPtr->isRotatable())
 		myMode = PieMenu::ROTATE;
 	else
 		myMode = PieMenu::NONE;

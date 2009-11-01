@@ -50,11 +50,6 @@ public:
 		return "";
 	}
 
-	/// returns true if the object can be moved by the user
-	/// Scenerys cannot be adjusted by the player
-	virtual bool isMovable ( ) const
-		{ return false; }
-
 	/// returns true if the object can be rotated by the user
 	/// Scenerys cannot be adjusted by the player
 	virtual bool isRotatable ( ) const

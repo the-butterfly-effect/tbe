@@ -51,11 +51,6 @@ public:
 						   "You might want to read them - it may help!");
 	}
 
-	/// returns true if the object can be moved by the user
-	/// NoteIts cannot be adjusted by the player
-	virtual bool isMovable ( ) const
-		{ return false; }
-
 	/// returns true if the object can be rotated by the user
 	/// NoteIts cannot be adjusted by the player
 	virtual bool isRotatable ( ) const

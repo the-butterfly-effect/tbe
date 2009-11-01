@@ -326,6 +326,9 @@ public:
 	QString getProperty(const QString& aKey)
 	{ return theProperties.value(aKey, ""); }
 
+	void removeProperty(const QString& aKey)
+	{ theProperties.remove(aKey); }
+
 protected:
 	void setAngle(qreal anAngle)
 		{ theCenter.angle = anAngle; }

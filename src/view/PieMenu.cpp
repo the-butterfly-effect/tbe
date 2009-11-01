@@ -53,11 +53,10 @@ void PieMenu::createActions(void)
 	BaseObject* myBOPtr = theDrawObjectPtr->getBaseObjectPtr();
 	QString myBOName = myBOPtr->getName();
 
-	// FIXME/TODO: the below should only show on user inserted objects *or*
-	// when we are in LevelEditor mode...
 	actionFactoryMethod("ActionDelete", tr("Delete %1").arg(myBOName),
 						tr("This will delete %1 from the screen and put it back in the Toolbox").arg(myBOName),
 						SLOT(deleteObject()), myBOPtr->isMovable());
+
 	// FIXME/TODO: the below probably should look significantly different between
 	// level editor mode (which should just launch a key/value editor) or
 	// the regular play - where you probably get a graphic dialog with dials or so.

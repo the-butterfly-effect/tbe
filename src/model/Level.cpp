@@ -24,9 +24,6 @@
 #include <QFileInfo>
 #include <QTextStream>
 
-// TODO: remove this
-//#include <iostream>
-
 // Strings identifying elements/nodes in the XML file
 // (the ones without static are also used in BaseObjectSerializer.cpp)
 //
@@ -45,14 +42,12 @@ static const char* theSceneString = "scene";
 		   const char* thePropertyString   = "property";
 static const char* theToolboxString = "toolbox";
 
-
 const char* theWidthAttributeString     = "width";
 const char* theHeightAttributeString    = "height";
 const char* theXAttributeString         = "X";
 const char* theYAttributeString         = "Y";
 const char* theAngleAttributeString     = "angle";
 const char* theTypeAttributeString      = "type";
-
 
 // static (always accessible) data member
 // for this file only
@@ -191,6 +186,8 @@ Level::load(const QString& aFileName)
 		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
 		if (myBOPtr == NULL)
 			goto not_good;
+		if (theIsLevelEditor==false)
+			myBOPtr->setIsMovable(false);
 		theWorldPtr->addObject(myBOPtr);
 
 		if (q==myNode.lastChild())

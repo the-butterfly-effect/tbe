@@ -122,7 +122,8 @@ QRectF DrawObject::boundingRect() const
 
 void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
-	if (theBaseObjectPtr->isMovable())
+	if (theBaseObjectPtr->isMovable()==true &&
+		theIsLevelEditor == false)
 	{
 		PieMenu myMenu(this);
 		myMenu.exec(event->screenPos());
@@ -200,6 +201,10 @@ void DrawObject::initAttributes ( )
 void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
+
+	// do not allow movement of predefined objects in game mode
+	if (theBaseObjectPtr->isMovable() == false)
+		return;
 
 	// TODO: problem: if you click an object near the side, it will still register as if you
 	// clicked in the exact center - with an unvoluntary movement as a result
