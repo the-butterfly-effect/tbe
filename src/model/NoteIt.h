@@ -47,7 +47,7 @@ public:
 	virtual const QString getToolTip ( ) const
 	{
 		return QObject::tr("Someone left notes all over the place.\n"
-						   "You know, those yellow 3inch pieces of paper.\n"
+						   "You know, those yellow 3x3 inch pieces of paper.\n"
 						   "You might want to read them - it may help!");
 	}
 
