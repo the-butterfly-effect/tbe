@@ -114,7 +114,7 @@ void MainWindow::on_actionSave_activated()
 	QFileInfo myFileInfo(mySaveLevel.getFileName());
 
 	DEBUG5("File '%s' is readable: %d, writeable: %d\n",
-		   myFileInfo.absoluteFilePath().toAscii().constData(),
+		   ASCII(myFileInfo.absoluteFilePath()),
 		   myFileInfo.isReadable(), myFileInfo.isWritable());
 
 	theLevelPtr->save(myFileInfo.absoluteFilePath());
@@ -145,8 +145,8 @@ void MainWindow::loadLevel(const QString& aFileName)
 	{
 		// TODO: popup and such
 		DEBUG1("ERROR during reading file '%s': %s\n",
-				aFileName.toAscii().constData(),
-				myErrorMessage.toAscii().constData() );
+				ASCII(aFileName),
+				ASCII(myErrorMessage) );
 		exit(1);
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
@@ -170,7 +170,7 @@ void MainWindow::loadLevel(const QString& aFileName)
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
-	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, aLevelName.toAscii().constData());
+	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, ASCII(aLevelName));
 	theScenePtr=aScene;
 
 	ui.graphicsView->setScene(aScene);

@@ -41,7 +41,7 @@ public:
 	 */
 	static inline void Critical(const QString& anErrorMessage, QWidget* currentWidget = NULL)
 	{
-		DEBUG1("*** CRITICAL ERROR: %s\n", anErrorMessage.toAscii().constData());
+		DEBUG1("*** CRITICAL ERROR: %s\n", ASCII(anErrorMessage));
 		QMessageBox::critical (currentWidget, 
 				APPNAME " - critical error",
 				anErrorMessage,
@@ -64,7 +64,7 @@ public:
 	 */
 	static inline void Info(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
-		DEBUG2("Info Message: %s\n",aMessage.toAscii().constData());
+		DEBUG2("Info Message: %s\n", ASCII(aMessage));
 		QMessageBox::information (currentWidget, 
 				APPNAME " - informational message",
 				aMessage,
@@ -80,7 +80,7 @@ public:
 	 */
 	static inline void Warning(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
-		DEBUG2("Warning Message: %s\n",aMessage.toAscii().constData());
+		DEBUG2("Warning Message: %s\n", ASCII(aMessage));
 		QMessageBox::warning (currentWidget, 
 				APPNAME " - warning",
 				aMessage,
@@ -97,7 +97,7 @@ public:
 	 */
 	static inline bool YesNoQuestion(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
-		DEBUG2("Yes/No Question: %s\n", aMessage.toAscii().constData());
+		DEBUG2("Yes/No Question: %s\n", ASCII(aMessage));
 		if (QMessageBox::question(currentWidget, 
 				APPNAME " - question",
 				aMessage,

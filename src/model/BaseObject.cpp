@@ -153,7 +153,7 @@ void BaseObject::createPhysicsObject()
 		theB2BodyPtr->CreateShape(*myI);
 	}
 	theB2BodyPtr->SetMassFromShapes();
-	DEBUG5("Object %s has mass %f kg\n", getName().toAscii().constData(),
+	DEBUG5("Object %s has mass %f kg\n", ASCII(getName()),
 		theB2BodyPtr->GetMass());
 }
 
@@ -223,7 +223,7 @@ bool BaseObject::reregister(void)
 void BaseObject::reset ( ) 
 {
 	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 
-			getName().toAscii().constData(), theCenter.x, theCenter.y, theCenter.angle);
+			ASCII(getName()), theCenter.x, theCenter.y, theCenter.angle);
 
 	if(isPhysicsObjectCreated()==false)
 		return;
@@ -272,7 +272,7 @@ void
 ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr)
 {
 	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)\n", 
-			anObjectTypeName.toAscii().constData(), aThisPtr);
+			ASCII(anObjectTypeName), aThisPtr);
 	if (theFactoryListPtr==NULL)
 		theFactoryListPtr = new FactoryList();
 	theFactoryListPtr->insert(anObjectTypeName,aThisPtr);
@@ -286,7 +286,7 @@ ObjectFactory::createObject(
 		const qreal anHeight)
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
-	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", aName.toAscii().constData(), myFactoryPtr);
+	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == NULL)
 		return NULL;
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();

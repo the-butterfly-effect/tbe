@@ -42,7 +42,7 @@ UndoResizeCommand::UndoResizeCommand (
 
 UndoResizeCommand::~UndoResizeCommand ( )
 {
-	DEBUG5("~UndoResizeCommand() for %p - %s\n", this, text().toAscii().constData());
+	DEBUG5("~UndoResizeCommand() for %p - %s\n", this, ASCII(text()));
 	// there's nothing to do here...
 }
 

@@ -40,7 +40,7 @@ UndoMoveCommand::UndoMoveCommand (
 
 UndoMoveCommand::~UndoMoveCommand ( ) 
 {
-	DEBUG5("~UndoMoveCommand() for %p - %s\n", this, text().toAscii().constData());
+	DEBUG5("~UndoMoveCommand() for %p - %s\n", this, ASCII(text()));
 	// there's nothing to do here...
 }
 

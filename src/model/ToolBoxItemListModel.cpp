@@ -247,7 +247,7 @@ QMimeData* ToolBoxItemListModel::mimeData(const QModelIndexList &indexes) const
 		{
 			// stream theName of the object to create only
 			QString myItemName = qVariantValue<QString>(data(index, Qt::EditRole));
-			DEBUG5("ToolBoxItemListModel::mimeData: '%s'\n", myItemName.toAscii().constData());
+			DEBUG5("ToolBoxItemListModel::mimeData: '%s'\n", ASCII(myItemName));
 			stream << myItemName;
 		}
 	}

@@ -123,7 +123,7 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 		QString myObjectName;
 		stream >> myObjectName;
 
-		DEBUG4("  the object is: '%s' @ %f,%f\n", myObjectName.toAscii().constData(), aDropPos.x(), aDropPos.y());
+		DEBUG4("  the object is: '%s' @ %f,%f\n", ASCII(myObjectName), aDropPos.x(), aDropPos.y());
 
 		// now we know the ID of the object, let's retrieve a copy from the Toolbox
 		BaseObject* myObjectPtr = theMainWindowPtr->askToolBoxForCopyOf(myObjectName);

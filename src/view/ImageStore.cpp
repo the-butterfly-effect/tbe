@@ -69,13 +69,13 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
 	{
 		QString myFullName = (*i) + "/" + anImageName + anExtension;
-		DEBUG4("searching for '%s' ... ", myFullName.toAscii().constData());
+		DEBUG5("searching for '%s' ... ", ASCII(myFullName));
 		if (QFile::exists(myFullName) == false)
 		{
-			DEBUG4("not found\n");
+			DEBUG5("not found\n");
 			continue;
 		}
-		DEBUG4("found.\n");
+		DEBUG5("found.\n");
 		return myFullName;
 	}
 	return QString();
@@ -93,7 +93,7 @@ QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
 	PixmapMap::iterator mySearchResult = thePixmapMap.find(anImageName);
 	if (mySearchResult != thePixmapMap.end())
 	{
-		DEBUG5("found (cached) QPixmap for '%s'\n", anImageName.toAscii().constData());
+		DEBUG5("found (cached) QPixmap for '%s'\n", ASCII(anImageName));
 		return mySearchResult.value();
 	}
 
@@ -156,7 +156,7 @@ QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName, bool returnN
 	RendererMap::iterator mySearchResult = theRendererMap.find(anImageName);
 	if (mySearchResult != theRendererMap.end())
 	{
-		DEBUG5("found (cached) QSvgRenderer for '%s'\n", anImageName.toAscii().constData());
+		DEBUG5("found (cached) QSvgRenderer for '%s'\n", ASCII(anImageName));
 		return mySearchResult.value();
 	}
 

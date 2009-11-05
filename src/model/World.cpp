@@ -70,7 +70,7 @@ bool World::addObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG5("addObject(%p = %s)\n", anObjectPtr, anObjectPtr->getName().toAscii().constData());
+	DEBUG5("addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
 	if (theObjectPtrList.contains(anObjectPtr))
 		return false;
 	
@@ -158,7 +158,7 @@ bool World::removeObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG5("removeObject(%p = %s)\n", anObjectPtr, anObjectPtr->getName().toAscii().constData());
+	DEBUG5("removeObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
 	int myPos = theObjectPtrList.indexOf(anObjectPtr);
 
 	if (myPos == -1)

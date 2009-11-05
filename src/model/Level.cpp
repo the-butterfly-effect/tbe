@@ -143,9 +143,9 @@ Level::load(const QString& aFileName)
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
 		goto not_good;
-	DEBUG5("level name:    '%s'\n", theLevelName.toAscii().constData());
-	DEBUG5("level author:  '%s'\n", theLevelAuthor.toAscii().constData());
-	DEBUG5("level license: '%s'\n", theLevelLicense.toAscii().constData());
+	DEBUG5("level name:    '%s'\n", ASCII(theLevelName));
+	DEBUG5("level author:  '%s'\n", ASCII(theLevelAuthor));
+	DEBUG5("level license: '%s'\n", ASCII(theLevelLicense));
 	theWorldPtr->theLevelName = theLevelName;
 
 	theToolboxDomNode = myDocElem.firstChildElement("toolbox");
@@ -224,7 +224,7 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const Q
 
 bool Level::save(const QString& aFileName)
 {
-	DEBUG5("Level::save(%s)\n", aFileName.toAscii().constData());
+	DEBUG5("Level::save(%s)\n", ASCII(aFileName));
 	QDomDocument myDocument("mydocument");
 	QDomElement myRoot = myDocument.createElement(theRootNodeString);
 	myDocument.appendChild(myRoot);
@@ -265,7 +265,7 @@ bool Level::save(const QString& aFileName)
 	{
 		QString myError = tr("Cannot write file '%1': %2.")
 			.arg(aFileName, myFile.errorString());
-		DEBUG1("ERROR: %s\n", myError.toAscii().constData());
+		DEBUG1("ERROR: %s\n", ASCII(myError));
 		return false;
 	}
 	const int IndentSize = 4;

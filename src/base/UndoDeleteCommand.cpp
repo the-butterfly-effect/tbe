@@ -41,7 +41,7 @@ UndoDeleteCommand::UndoDeleteCommand (
 
 UndoDeleteCommand::~UndoDeleteCommand ( )
 {
-	DEBUG5("~UndoDeleteCommand() for %p - %s\n", this, text().toAscii().constData());
+	DEBUG5("~UndoDeleteCommand() for %p - %s\n", this, ASCII(text()));
 	// upon deletion of this object, we finally can delete the objects it holds hostage, too
 	delete theBaseObjectPtr;
 	theBaseObjectPtr = NULL;
