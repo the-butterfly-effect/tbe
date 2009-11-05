@@ -100,40 +100,50 @@ FIRST PLAYABLE - with a supervisor
 
 Milestone 5 - It's make over time! (post-ELCE)
 Version 0.50
-  * solve Volleyball/VolleyBall issues
-    this involves splitting between technical name and visible name ?!?
-  * do not (re)paint objects that are sleeping
-	- is this actually happening?
-	- does it help if we make ramp and Bowlingball PNG/SVG instead of draw?
-	- set all objects to sleep at clicking "start" and reset the sleep status at reset?
   * implement rotation of relevant objects
+	- requires implementing UndoRotateCommand
   * Important overdue refactorings:
-	- split Position into Vector and Position, where Position is (Vector + angle)
 	- Merge BaseObject and RectObject
+	- refactor UndoMoveCommand, so we don't need differentiation between positions in BaseObject
 	- Create Ball class and merge BowlingBall and Volleyball into Ball
-  * RMB actions
-	- adjust properties
   * add concept of "winning" a level
+  * add concept of order in levels, so players can start
+	and then move on without having to use File>Open
+  * make sure butterfly dies if hit by something
+  * add two more levels
+FIRST WIDELY ANNOUNCEABLE VERSION
+
+
+Milestone 5.5 - inbetween
+  * investigate GLUON
+  * Important overdue refactorings:
+	* switching to Gluon may solve this already?
+	- split Position into Vector and Position, where Position is (Vector + angle)
+  * do not (re)paint objects that are sleeping
+	* switching to Gluon may solve this already
+	- is this actually happening?
+	- set all objects to sleep at clicking "start" and reset the sleep status at reset?
+  * solve Volleyball/VolleyBall issues
+	this involves splitting between technical name and visible name ?!?
   * automated regression tests for XML parser/world builder
   * finish i18n of application
 	* Level Name
 	* Level Description
   * zooming
-  * implement more objects
-    - penguin, herring ?
-	- butterfly, flower ?
-    - granite block
-    - cylinder (rolls horizontally) - allows for see-saw and stone-age carts
-	- trap door
-	- soccer ball / gummi ball
-  * improve existing 10 levels and add 10 more
-    - make sure to have some basic tutorials
-  * add concept of order in levels, so players can start
-    and then move on without having to use File>Open
   * persistency (popup warnings, settings, user progress)
   * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
   * i18n of levels
-FIRST WIDELY ANNOUNCEABLE VERSION
+  * implement more objects
+	- penguin, herring ?
+	- granite block
+	- cylinder (rolls horizontally) - allows for see-saw and stone-age carts - yet another ball actually
+	- trap door
+	- soccer ball / gummi ball
+  * improve existing 9 levels and add 10 more
+	- make sure to have some basic tutorials
+  * RMB actions
+	- adjust properties
+
 
 Milestone 6 - Rope
 Version 0.60
