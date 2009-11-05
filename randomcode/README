@@ -1,8 +1,0 @@
-This directory contains code that was used to understand pieces of the 
-programming - as such, you'll find code snippets from various Qt projects 
-and OpenDE examples here. All of them slightly modified to understand how
-things work.
-
-As such, this directory probably is interesting only to Klaas, not to anyone else.
-It will probably vanish after the first public release.
-
