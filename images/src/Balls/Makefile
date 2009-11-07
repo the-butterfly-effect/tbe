@@ -1,3 +1,3 @@
 include ../Makefile 
-SVGSRC=TennisBall.svg
+SVGSRC=TennisBall.svg VolleyBall.svg
 
