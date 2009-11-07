@@ -30,37 +30,53 @@ public:
 	BowlingBallObjectFactory(void)
 	{	announceObjectType("Bowling Ball", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new BowlingBall(); }
+	{	return new AbstractBall("Bowling Ball", "Your average bowling ball - heavy, "
+				"round and willing to roll", "Bowling_Ball", 0.11, 6.0, 0.1 ); }
 };
-static BowlingBallObjectFactory theFactory;
+static BowlingBallObjectFactory theBFactory;
+
+
+
+// this class' ObjectFactory
+class VolleyBallObjectFactory : public ObjectFactory
+{
+public:
+	VolleyBallObjectFactory(void)
+	{	announceObjectType("Volleyball", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new AbstractBall("Volley Ball", "Your average volleyball - it's light, "
+				"soft and fairly bouncy.", "VolleyBall", 0.105, 0.280, 0.8); }
+};
+static VolleyBallObjectFactory theVFactory;
+
+
+
+
 
 // Constructors/Destructors
 //  
 
-BowlingBall::BowlingBall ( ) 
+AbstractBall::AbstractBall (const QString& aName,
+				  const QString& aTooltip,
+				  const QString& anImageName,
+				  qreal aRadius,
+				  qreal aMass,
+				  qreal aBounciness)
+	: theBallName(aName), theBallTooltip(aTooltip), theBallImage(anImageName)
 {
-	DEBUG5("BowlingBall::BowlingBall\n");
-	// set the bowling ball to have a 0.11 meter diameter
-	const qreal myRadius = 0.11;
-	// and a weight of 6.0 kg.
-	const qreal myMass = 6.0; // kg
+	DEBUG5("AbstractBall::AbstractBall\n");
 
 	b2CircleDef* ballDef = new b2CircleDef();
-
-	ballDef->radius = myRadius;
-
-	ballDef->density = myMass/(PI*myRadius*myRadius);
-
-	// delete any shapes on the body
-	// and create a new shape from the above polygon def
+	ballDef->radius = aRadius;
+	ballDef->density = aMass/(PI*aRadius*aRadius);
 	theShapeList.push_back(ballDef);
 
-	setTheWidth(2.0*myRadius);
-	setTheHeight(2.0*myRadius);
-	setTheBounciness(0.1);
+	setTheWidth(2.0*aRadius);
+	setTheHeight(2.0*aRadius);
+	setTheBounciness(aBounciness);
 }
 
-BowlingBall::~BowlingBall ( ) { }
+AbstractBall::~AbstractBall ( ) { }
 
 //  
 // Methods
@@ -74,7 +90,7 @@ BowlingBall::~BowlingBall ( ) { }
 // Other methods
 //  
 
-DrawObject*  BowlingBall::createDrawObject(void)
-{ return new DrawObject(this, "Bowling_Ball"); }
+DrawObject*  AbstractBall::createDrawObject(void)
+{ return new DrawObject(this, theBallImage); }
 
 

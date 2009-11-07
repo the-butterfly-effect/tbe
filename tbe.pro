@@ -32,14 +32,12 @@ HEADERS += src/tbe_global.h \
     src/model/Floor.h \
     src/model/Flower.h \
     src/model/Level.h \
-    src/model/MovingObject.h \
     src/model/NoteIt.h \
     src/model/Position.h \
     src/model/Ramp.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
     src/model/ToolBoxItemListModel.h \
-    src/model/VolleyBall.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
@@ -69,14 +67,12 @@ SOURCES += src/main.cpp \
     src/model/Floor.cpp \
     src/model/Flower.cpp \
     src/model/Level.cpp \
-    src/model/MovingObject.cpp \
     src/model/NoteIt.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
     src/model/ToolBoxItemListModel.cpp \
-    src/model/VolleyBall.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \

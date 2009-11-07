@@ -16,36 +16,35 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef BOWLINGBALL_H
-#define BOWLINGBALL_H
+#ifndef ABSTRACTBALL_H
+#define ABSTRACTBALL_H
 
-#include "MovingObject.h"
-#include <qobject.h>
+#include "BaseObject.h"
 
 /**
-  * class BowlingBall
+  * class AbstractBall
   * 
-  * it implements a normal bowling ball - heavy and big
-  * we've decided not to try to model the holes for grip :-)
-  * and we're very lazy - we've decide to model the ball as uniform massive
+  * The AbstractBall class essentially models anything resembling a circle.
+  * It is used with a specialised factory to build the various types of balls
   */
 
-class BowlingBall : public MovingObject
+class AbstractBall : public BaseObject
 {
 public:
 
 	// Constructors/Destructors
 	//  
 
-	/**
-	 * Empty Constructor
-	 */
-	BowlingBall ( );
+	/// Constructor
+	AbstractBall (const QString& aName,
+				  const QString& aTooltip,
+				  const QString& anImageName,
+				  qreal aRadius,
+				  qreal aMass,
+				  qreal aBounciness);
 
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~BowlingBall ( );
+	/// virtual destructor
+	virtual ~AbstractBall ( );
 
 	// Public attribute accessor methods
 	//  
@@ -54,16 +53,11 @@ public:
 
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
-	{
-		return QObject::tr("Bowling Ball");
-	}
+	{	return theBallName;	}
 
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
-	{
-		return QObject::tr("Your average bowling ball - heavy, "
-				"round and willing to roll");
-	}
+	{	return theBallTooltip; }
 
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const
@@ -73,6 +67,10 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
+private:
+	QString theBallName;
+	QString theBallTooltip;
+	QString theBallImage;
 };
 
-#endif // BOWLINGBALL_H
+#endif // ABSTRACTBALL_H
