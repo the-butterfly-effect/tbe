@@ -16,41 +16,67 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "BowlingBall.h"
+#include "AbstractBall.h"
 #include "DrawObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 
 
-
-// this class' ObjectFactory
-class BowlingBallObjectFactory : public ObjectFactory
+/** the AbstractBall's ObjectFactory
+ *  note that it is slightly more complex than usual, because it is generalised
+ *  to create any type of ball. Below the declaration, there will be several
+ *  global instances each identifying one ball type
+ */
+class BallObjectFactory : public ObjectFactory
 {
 public:
-	BowlingBallObjectFactory(void)
-	{	announceObjectType("Bowling Ball", this); }
+	BallObjectFactory(
+		const QString& anInternalName,
+		const QString& aDisplayName,
+		const QString& aTooltip,
+		const QString& anImageName,
+		qreal aRadius,
+		qreal aMass,
+		qreal aBounciness)
+			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
+			  theImageName(anImageName), theRadius(aRadius),
+			  theMass(aMass), theBounciness(aBounciness)
+	{	announceObjectType(anInternalName, this); }
+
 	virtual BaseObject* createObject(void) const
-	{	return new AbstractBall("Bowling Ball", "Your average bowling ball - heavy, "
-				"round and willing to roll", "Bowling_Ball", 0.11, 6.0, 0.1 ); }
+	{	return new AbstractBall(theDisplayName, theTooltip, theImageName,
+								theRadius, theMass, theBounciness); }
+private:
+		QString theDisplayName;
+		QString theTooltip;
+		QString theImageName;
+		qreal theRadius;
+		qreal theMass;
+		qreal theBounciness;
 };
-static BowlingBallObjectFactory theBFactory;
 
 
+// we are lazy and do not model the holes in the ball, nor do we attempt to model
+// the non-uniform weight distribution in the ball - we assume it to be uniform
+static BallObjectFactory theBBFactory("Bowling Ball",
+	QObject::tr("Bowling Ball"),
+	QObject::tr("Your average bowling ball - heavy, round and willing to roll"),
+	"Bowling_Ball", 0.11, 6.0, 0.1 );
 
-// this class' ObjectFactory
-class VolleyBallObjectFactory : public ObjectFactory
-{
-public:
-	VolleyBallObjectFactory(void)
-	{	announceObjectType("Volleyball", this); }
-	virtual BaseObject* createObject(void) const
-	{	return new AbstractBall("Volley Ball", "Your average volleyball - it's light, "
-				"soft and fairly bouncy.", "VolleyBall", 0.105, 0.280, 0.8); }
-};
-static VolleyBallObjectFactory theVFactory;
+// we are lazy and do not model the air, we assume it to be uniform in mass
+static BallObjectFactory theVBFactory("Volleyball",
+	QObject::tr("Volley Ball"),
+	QObject::tr("Your average volleyball - it's light, soft and fairly bouncy."),
+	"VolleyBall", 0.105, 0.280, 0.8);
 
 
-
+// the official standards say that a tennis ball dropped from 100 inch should bounce 53-58 inch.
+// thanks to http://en.wikipedia.org/wiki/Tennis_ball
+// we are lazy and do not model the air, we assume it to be uniform in mass
+static BallObjectFactory theTBFactory("Tennis Ball",
+	QObject::tr("Tennis Ball"),
+	QObject::tr("A tennis ball is small, hairy and fairly bouncy."),
+	"TennisBall", 0.033, 0.058, 0.56);
 
 
 // Constructors/Destructors
