@@ -24,8 +24,8 @@ HEADERS += src/tbe_global.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
+    src/model/AbstractBall.h \
     src/model/BaseObject.h \
-    src/model/BowlingBall.h \
     src/model/BowlingPin.h \
     src/model/Butterfly.h \
     src/model/CokeMentosBottle.h \
@@ -59,8 +59,8 @@ SOURCES += src/main.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
+    src/model/AbstractBall.cpp \
     src/model/BaseObject.cpp \
-    src/model/BowlingBall.cpp \
     src/model/BowlingPin.cpp \
     src/model/Butterfly.cpp \
     src/model/CokeMentosBottle.cpp \
