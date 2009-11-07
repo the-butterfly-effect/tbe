@@ -19,18 +19,17 @@
 #ifndef BOWLINGPIN_H
 #define BOWLINGPIN_H
 
-#include "MovingObject.h"
-#include <qobject.h>
+#include "BaseObject.h"
 
 /**
   * class BowlingPin
   * 
-  * it implements a normal bowling ball - heavy and big
-  * we've decided not to try to model the holes for grip :-)
-  * and we're very lazy - we've decide to model the ball as uniform massive
+  * This class presents a bowling pin.
+  * The modelling is not entirely accurante as the mass is not uniform in
+  * a normal bowling pin - there are holes in the larger body.
   */
 
-class BowlingPin : public MovingObject
+class BowlingPin : public BaseObject
 {
 public:
 
