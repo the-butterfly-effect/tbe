@@ -42,8 +42,8 @@ static CokeMentosObjectFactory theCMBottleObjectFactory;
 CokeMentosBottle::CokeMentosBottle()
 		: RectObject()
 {
-	setProperty(IMAGE_NAME_STRING, "CokeMentosBottle");
-	setProperty(DESCRIPTION_STRING, QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!"));
+	theToolTipString = QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!");
+	theNameString = QObject::tr("Coke+Mentos Bottle");
 	setTheWidth(0.166);
 	setTheHeight(0.501);
 
@@ -137,12 +137,11 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 
 }
 
-
 DrawObject*  CokeMentosBottle::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawCokeMentosBottle(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawCokeMentosBottle(this, "CokeMentosBottle");
 	return theDrawObjectPtr;
 }
 

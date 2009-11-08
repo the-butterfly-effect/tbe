@@ -97,13 +97,6 @@ public:
 		EMPTY
 	};
 
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getName ( ) const
-	{
-		return QObject::tr("Coke+Mentos Bottle");
-	}
-
 	/// returns true if the object can be rotated by the user
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual bool isRotatable ( ) const

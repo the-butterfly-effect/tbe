@@ -130,6 +130,7 @@ private:
 	/// only expected to be called from adjustParameters()
 	void adjustWideParametersPart();
 
+protected:
 	QString theNameString;
 	QString theToolTipString;
 };
