@@ -76,3 +76,13 @@ Position operator*(const qreal p1, const Position& p2)
 	return Position(p1*p2.x, p1*p2.y, p2.angle);
 }
 
+bool operator==(const Position& p1, const Position& p2)
+{
+	if (fabs(p1.x - p2.x) < Position::minimalMove)
+		return false;
+	if (fabs(p1.y - p2.y) < Position::minimalMove)
+		return false;
+	if (p1.angle != p2.angle)
+		return false;
+	return true;
+}

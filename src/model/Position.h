@@ -77,5 +77,7 @@ Position operator-(const Position& p1, const Position& p2);
 /// constant multiplies vector only - not the angle
 Position operator*(const qreal p1, const Position& p2);
 
+/// compare two positions
+bool operator==(const Position& p1, const Position& p2);
 
 #endif // POSITION_H
