@@ -34,7 +34,7 @@ class BaseObject;
 /**
   * class UndoMoveCommand
   *
-  * undo/redo for the moving of objects
+  * undo/redo for the moving of objects by the user
   */
 
 class UndoMoveCommand : public QUndoCommand
@@ -45,6 +45,8 @@ public:
 	//  
 
 	/** constructor
+	 * this constructor will automatically retrieve the "old" Original
+	 * position from aBaseObjectPtr
 	 * 
 	 * @param aDrawObjectPtr pointer to a DrawObject
 	 * @param aBaseObjectPtr pointer to a BaseObject
@@ -57,7 +59,15 @@ public:
 	 */
 	virtual ~UndoMoveCommand ( );
 
-	
+	const Position& getOrigPos(void)
+	{	return theOldPosition; }
+
+	void setNewPosition(const Position& aNewPos)
+	{	theNewPosition = aNewPos; }
+
+	bool hasMoved(void)
+	{	return theOldPosition == theNewPosition; }
+
 	virtual void redo ();
 	virtual void undo ();
 	

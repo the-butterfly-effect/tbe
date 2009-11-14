@@ -44,7 +44,7 @@ Anchors* DrawObject::theAnchorsPtr = NULL;
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL),	theUndeleteDrawWorldPtr(NULL)
+	thePixmapPtr(NULL),	theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	if (theBaseObjectPtr!=NULL)
 		initAttributes();
@@ -54,7 +54,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL)
+	thePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	initAttributes();
 	if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
@@ -198,6 +198,7 @@ void DrawObject::initAttributes ( )
 
 }
 
+
 void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("DrawObject::mouseMoveEvent(%d)\n", event->type());
@@ -206,29 +207,34 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	if (theBaseObjectPtr->isMovable() == false)
 		return;
 
+	QPointF myPos=event->scenePos ();
+
+
+	// if this is the first call to mouseMove, we need to create and initialise the undomove
+	if (theUndoMovePtr ==NULL)
+	{
+		theUndoMovePtr = new UndoMoveCommand(this, theBaseObjectPtr);
+		if (theAnchorsPtr)
+		{
+			delete theAnchorsPtr;
+			theAnchorsPtr = NULL;
+		}
+	}
+
+
 	// TODO: problem: if you click an object near the side, it will still register as if you
 	// clicked in the exact center - with an unvoluntary movement as a result
 
-	Position myOrgPos = theBaseObjectPtr->getTempCenter();
-	QPointF myPos=event->scenePos ();
-	if (theAnchorsPtr)
-	{
-		delete theAnchorsPtr;
-		theAnchorsPtr = NULL;
-	}
-	
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
 			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		// TODO FIXME: no angle yet
-		theBaseObjectPtr->setTempCenter(Position(myPos.x(), -myPos.y(), 0.0));
-		applyPosition();
+		theUndoMovePtr->setNewPosition(myPos);
+		theUndoMovePtr->redo();
 		
 		// if the new position collides with another, reset the position to the original one
 		if (!scene()->collidingItems(this).isEmpty())
 		{
-			theBaseObjectPtr->setTempCenter(Position(myOrgPos.x, myOrgPos.y, 0.0));
-			applyPosition();
+			theUndoMovePtr->redo();
 		}
 	}
 }
@@ -239,16 +245,16 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	// TODO: FIXME: for now, we're not discriminative for left or right mousebutton...
 	DEBUG5("for button %d\n", event->button());
 
+	if (theUndoMovePtr == NULL)
+		return;
+
 	// is the position any different?
-	// TODO: if position is same, no need to do undomove
-	Position myDelta = (theBaseObjectPtr->getOrigCenter()) - (theBaseObjectPtr->getTempCenter());
-	if (fabs(myDelta.x) > Position::minimalMove ||
-		fabs(myDelta.y) > Position::minimalMove)
-	{
-		// create and file an UndoMoveCommand
-		// note that the MoveCommand also pushes the move to BaseObject
-		pushUndo(new UndoMoveCommand(this, theBaseObjectPtr));
-	}
+	if (theUndoMovePtr->hasMoved())
+		pushUndo(theUndoMovePtr);
+	else
+		delete theUndoMovePtr;
+	theUndoMovePtr = NULL;
+
 	QGraphicsItem::mouseReleaseEvent(event);
 	if (theAnchorsPtr==NULL)
 		theAnchorsPtr= new Anchors(this);

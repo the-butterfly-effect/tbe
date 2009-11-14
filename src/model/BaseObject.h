@@ -241,6 +241,7 @@ public:
 	 */
 	void setOrigCenter ( Position new_var )
 	{
+		// FIXME: why not use assignment?
 		theCenter.x = new_var.x;
 		theCenter.y = new_var.y;
 		if (isRotatable())
@@ -248,8 +249,9 @@ public:
 	}
 
 	/**
-	 * Set the value of theCenter - this is the "temporary" center,
-	 * i.e. used during mouse movements only
+	 * Set the center position of the object.
+	 * note that this does not affect the OrigCenter position.
+	 * note: do not use this to move an object during simulation
 	 * @param new_var the new value of the center of the body
 	 */
 	void setTempCenter ( Position new_var );
@@ -266,12 +268,11 @@ public:
 	/**
 	 * Get the current Position of the object.
 	 * This is the current center, i.e. where the object is now.
-	 * During/After simulations or during mouse drag of the object, this 
-	 * may be different from the getOrigCenter above.
-	 *  
+	 *
 	 * @return the value of theCenter
 	 */
 	Position getTempCenter ( ) const;
+
 
 	/**
 	 * Set the value of theWidth

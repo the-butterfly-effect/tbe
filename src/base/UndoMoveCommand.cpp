@@ -33,7 +33,6 @@ UndoMoveCommand::UndoMoveCommand (
 	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
 	theOldPosition = theBaseObjectPtr->getOrigCenter();
-	theNewPosition = theBaseObjectPtr->getTempCenter();
 
 	setText("Move " + theBaseObjectPtr->getName());
 }

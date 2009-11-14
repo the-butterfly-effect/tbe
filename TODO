@@ -104,7 +104,7 @@ Version 0.50
 	- requires implementing UndoRotateCommand
   / Important overdue refactorings:
 	- Merge BaseObject and RectObject
-	- refactor UndoMoveCommand, so we don't need differentiation between positions in BaseObject
+	x refactor UndoMoveCommand/DrawObject
 	x Create AbstractBall class and merge BowlingBall and Volleyball into that
   * add concept of "winning" a level
   * add concept of order in levels, so players can start

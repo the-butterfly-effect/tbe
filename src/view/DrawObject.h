@@ -25,6 +25,7 @@
 class BaseObject;
 class QUndoStack;
 class QUndoCommand;
+class UndoMoveCommand;
 class Anchors;
 class QSvgRenderer;
 class DrawWorld;
@@ -171,6 +172,9 @@ protected:
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!
 	DrawWorld* theUndeleteDrawWorldPtr;
+
+	/// pointer to QUndoCommand for move
+	UndoMoveCommand* theUndoMovePtr;
 
 private:
 	virtual void initAttributes ( ) ;
