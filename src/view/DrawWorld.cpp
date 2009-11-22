@@ -147,7 +147,15 @@ void DrawWorld::initAttributes ( )
 {
 	DEBUG5("void DrawWorld::initAttributes\n");
 	theSimSpeed = 1000.0;
+	theCongratulations = NULL;
 }
+
+void DrawWorld::on_OneSecondAfterWinning(void)
+{
+	stopTimer();
+	emit levelWon();
+}
+
 
 void DrawWorld::on_timerTick()
 {
@@ -157,6 +165,25 @@ void DrawWorld::on_timerTick()
 	}
 	advance();
 }
+
+
+void DrawWorld::on_winning(void)
+{
+	// only need to display the graphicsitem once...
+	if (theCongratulations!=NULL)
+		return;
+
+	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
+	theCongratulations->setText(tr("Congratulations!!!"));
+	QRectF myBounds = theCongratulations->boundingRect();
+	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
+
+	theCongratulations->scale(myResize, myResize);
+	theCongratulations->setPos(0, -(getHeight()/2.0));
+
+	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
+}
+
 
 void DrawWorld::resetWorld( )
 {

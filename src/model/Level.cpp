@@ -19,6 +19,7 @@
 #include "Level.h"
 #include "World.h"
 #include "BaseObjectSerializer.h"
+#include "GoalSerializer.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -41,6 +42,8 @@ static const char* theSceneString = "scene";
 		   const char* theObjectString     = "object";
 		   const char* thePropertyString   = "property";
 static const char* theToolboxString = "toolbox";
+static const char* theGoalsString = "goals";
+		   const char* theGoalString = "goal";
 
 const char* theWidthAttributeString     = "width";
 const char* theHeightAttributeString    = "height";
@@ -48,6 +51,7 @@ const char* theXAttributeString         = "X";
 const char* theYAttributeString         = "Y";
 const char* theAngleAttributeString     = "angle";
 const char* theTypeAttributeString      = "type";
+const char* theIDAttributeString        = "ID";
 
 // static (always accessible) data member
 // for this file only
@@ -109,7 +113,10 @@ Level::load(const QString& aFileName)
 	QDomDocument myDocument("mydocument");
 	
 	QDomNode myNode, q;
+
+	// TODO: rename mySceneNode to myActiveNode
 	QDomNode mySceneNode;
+
 	QDomElement myElement;
 	QDomElement myDocElem;
 	QDomNamedNodeMap myNodeMap;
@@ -120,11 +127,16 @@ Level::load(const QString& aFileName)
     
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))
+	{
+		myErrorMessage = tr("Cannot read file %1").arg(aFileName);
 		goto not_good;
+	}
 
-	myErrorMessage = tr("Cannot parse file - not valid XML?");
 	if (!myDocument.setContent(&myFile))
+	{
+		myErrorMessage = tr("Cannot parse file - not valid XML?");
 		goto not_good;
+	}
 	myFile.close();
 
 	myDocElem = myDocument.documentElement();
@@ -132,7 +144,7 @@ Level::load(const QString& aFileName)
 	//
 	// parse the Level Info section
 	//
-	myErrorMessage = tr("Parsing '%1' section failed").arg(theLevelInfoString);
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theLevelInfoString);
 	myNode=myDocElem.firstChildElement(theLevelInfoString);
 	if (myNode.isNull())
 		goto not_good;
@@ -142,7 +154,10 @@ Level::load(const QString& aFileName)
 	theLevelDescription= myNode.firstChildElement(theLevelDescriptionString).text();
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
+	{
+		myErrorMessage += "level, author or license info missing";
 		goto not_good;
+	}
 	DEBUG5("level name:    '%s'\n", ASCII(theLevelName));
 	DEBUG5("level author:  '%s'\n", ASCII(theLevelAuthor));
 	DEBUG5("level license: '%s'\n", ASCII(theLevelLicense));
@@ -160,8 +175,11 @@ Level::load(const QString& aFileName)
 	myNodeMap = myNode.attributes();
 	myWidth = myNodeMap.namedItem(theWidthAttributeString).nodeValue().toDouble(&isOK1);
 	myHeight= myNodeMap.namedItem(theHeightAttributeString).nodeValue().toDouble(&isOK2);
-    if (!isOK1 || !isOK2)
-    	goto not_good;
+	if (!isOK1 || !isOK2)
+	{
+		myErrorMessage += tr("scene width or height unspecified");
+		goto not_good;
+	}
 	theWorldPtr->theWorldWidth=myWidth;
 	theWorldPtr->theWorldHeight=myHeight;
 
@@ -170,7 +188,7 @@ Level::load(const QString& aFileName)
 	myNode=mySceneNode.firstChildElement(theViewString);
 	
 	
-	myErrorMessage = tr("Parsing '%1' section failed").arg(thePredefinedString);
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
 	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
 	{
@@ -181,11 +199,17 @@ Level::load(const QString& aFileName)
 	
 		// simple sanity check
 		if (q.nodeName() != theObjectString)
+		{
+			myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theObjectString).arg(q.nodeName());
 			goto not_good;
+		}
 
 		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
 		if (myBOPtr == NULL)
+		{
+			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
+		}
 		if (theIsLevelEditor==false)
 			myBOPtr->setIsMovable(false);
 		theWorldPtr->addObject(myBOPtr);
@@ -195,10 +219,50 @@ Level::load(const QString& aFileName)
 	}
 	
 	//
-	// parse the Toolbox section
+	// parse the Goal section
 	// 
-	myErrorMessage = tr("Parsing '%1' section failed").arg(theToolboxString);
-	// TODO: not implemented for Milestone 2.
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
+	mySceneNode=myDocElem.firstChildElement(theGoalsString);
+	if (mySceneNode.nodeName()!= theGoalsString)
+	{
+		myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
+		goto not_good;
+	}
+	for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
+	{
+		// a goal entry has the following layout:
+		//	<goal type="distance" lessthan="0.3">
+		//		 <object ID="Butterfly"/>
+		//		 <object ID="Flower"/>
+		//	</goal>
+		//
+		// of these, 'type' is mandatory
+		// everything else is optional and depends on the type of goal
+
+		// simple sanity check
+		if (q.nodeName() != theGoalString)
+		{
+			myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
+			goto not_good;
+		}
+
+		Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
+		if (myGPtr == NULL)
+		{
+			myErrorMessage += tr("createObjectFromDom failed");
+			goto not_good;
+		}
+		if (myGPtr->parseProperties(theWorldPtr)==false)
+		{
+			myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
+			goto not_good;
+		}
+
+		theWorldPtr->addGoal(myGPtr);
+
+		if (q==myNode.lastChild())
+			break;
+	}
 
 	
 	

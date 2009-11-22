@@ -18,6 +18,7 @@
 
 #include "World.h"
 #include "BaseObject.h"
+#include "Goal.h"
 #include "DrawWorld.h"
 #include "DrawObject.h"
 
@@ -66,6 +67,13 @@ World::~World ( )
 // Other methods
 //  
 
+void World::addGoal(Goal* aGoalPtr)
+{
+	if (aGoalPtr == NULL)
+		return;
+	theGoalPtrList.push_back(aGoalPtr);
+}
+
 bool World::addObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
@@ -108,6 +116,23 @@ void World::createScene(MainWindow* myMainPtr)
 		theDrawWorldPtr->addItem((*i)->createDrawObject());
 	}
 }
+
+BaseObject* World::findObjectByID(const QString& anID)
+{
+	if (anID.isEmpty())
+		return NULL;
+
+	// iterate through all BaseObjects
+	BaseObjectPtrList::iterator i;
+	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+	{
+		if ((*i)->getID() == anID)
+			return (*i);
+	}
+
+	return NULL;
+}
+
 
 void World::initAttributes( )
 {
@@ -239,6 +264,7 @@ qreal World::simStep (void)
 		(*i)->callbackStep(theDeltaTime, 0.0);
 	}
 
+	// remove all scheduled BaseObjects from the World
 	ToRemoveList::iterator k;
 	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
 	{
@@ -255,6 +281,18 @@ qreal World::simStep (void)
 		}
 	}
 
+	// check if all goals are met
+	GoalPtrList::iterator l;
+	if (theGoalPtrList.count()==0)
+		goto goals_not_met;
+	for (l=theGoalPtrList.begin(); l!=theGoalPtrList.end(); ++l)
+	{
+		if ((*l)->checkForSuccess()==false)
+			goto goals_not_met;
+	}
+	emit theDrawWorldPtr->on_winning();
+
+goals_not_met:
 	return theDeltaTime;
 }
 

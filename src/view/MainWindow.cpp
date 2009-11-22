@@ -168,6 +168,11 @@ void MainWindow::loadLevel(const QString& aFileName)
 	ui.theToolBoxView->setDragEnabled(true);
 }
 
+void MainWindow::on_levelWon()
+{
+	emit on_actionOpen_level_activated();
+}
+
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
 	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, ASCII(aLevelName));
@@ -176,10 +181,11 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 	ui.graphicsView->setScene(aScene);
 	aScene->setSimSpeed(theSimSpeed);
 
-    QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
-    QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
-    QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
-    
+	QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
+	QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
+	QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
+	QObject::connect(aScene, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
+
     theUndoGroup.addStack(aScene->getTheUndoStackPtr());
     theUndoGroup.setActiveStack(aScene->getTheUndoStackPtr());
     
@@ -203,9 +209,10 @@ void MainWindow::purgeLevel(void)
 	ui.graphicsView->setMatrix(myMatrix);
 	if (theScenePtr != NULL)
 	{
-	    QObject::disconnect(&theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
-	    QObject::disconnect(&theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
-	    QObject::disconnect(&theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
+		QObject::disconnect(&theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
+		QObject::disconnect(&theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
+		QObject::disconnect(&theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
+		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
 
 	    // Destroying theScene (which is a DrawWorld) will automatically
 	    // destroy the associated UndoStack. The UndoStack will de-register 

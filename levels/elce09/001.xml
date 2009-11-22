@@ -14,7 +14,7 @@ Goal: Butterfly to the Flower.</description>
             <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Flower" >
+			<object X="1.95" Y="0.63" width="0.2" height="0.2" type="Flower" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="0.6" X="1.5" Y="1.2" height="0.6" type="RectObject" >
@@ -26,8 +26,8 @@ Goal: Butterfly to the Flower.</description>
             <object width="2.3" X="1.15" Y="0.05" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
-            <object X="0.28684201836586" Y="0.3565036356449127" type="Butterfly" >
-                <property key="Description" >lalala FIXME</property>
+			<object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
+				<property key="Description" >This is the butterfly.</property>
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
             </object>
@@ -39,4 +39,11 @@ Goal: Butterfly to the Flower.</description>
         </predefined>
     </scene>
     <toolbox/>
+	<goals>
+		<goal type="distance">
+		   <property key="lessthan">0.27</property>
+		   <property key="object1">Butterfly</property>
+		   <property key="object2">Flower</property>
+		</goal>
+	</goals>
 </tbe-level>

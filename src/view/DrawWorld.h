@@ -98,7 +98,11 @@ private:
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);
 		void clearGraphicsList(int aCount);
-	
+
+signals:
+	/// emitted once the level is won
+	void levelWon(void);
+
 public slots:
 	void resetWorld(void);
 
@@ -108,10 +112,16 @@ public slots:
 	/// public slot: stop the simulation
 	void stopTimer();
 
+	/// called on winning by World.
+	void on_winning(void);
+
 private slots:
 	/// called whenever a timer tick happens
 	void on_timerTick(void);
-	
+
+	/// called by a oneshot timer after on_winning() was called
+	void on_OneSecondAfterWinning(void);
+
 private:
 	// Private attributes
 	//  
@@ -127,6 +137,11 @@ private:
 	/// milliseconds per time step ???
 	qreal theSimSpeed;
 	
+	/** this is initialised to display Congratulations on the scene
+	  * by on_winning()
+	  */
+	QGraphicsSimpleTextItem* theCongratulations;
+
 private:
 
 	void initAttributes ( ) ;

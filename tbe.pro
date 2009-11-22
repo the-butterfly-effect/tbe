@@ -21,6 +21,7 @@ QT += core \
     svg
 HEADERS += src/tbe_global.h \
     src/base/BaseObjectSerializer.h \
+    src/base/GoalSerializer.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
@@ -31,6 +32,7 @@ HEADERS += src/tbe_global.h \
     src/model/CokeMentosBottle.h \
     src/model/Floor.h \
     src/model/Flower.h \
+    src/model/Goal.h \
     src/model/Level.h \
     src/model/NoteIt.h \
     src/model/Position.h \
@@ -56,6 +58,7 @@ HEADERS += src/tbe_global.h \
     src/view/StartStopReset.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
+    src/base/GoalSerializer.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
@@ -66,6 +69,7 @@ SOURCES += src/main.cpp \
     src/model/CokeMentosBottle.cpp \
     src/model/Floor.cpp \
     src/model/Flower.cpp \
+    src/model/Goal.cpp \
     src/model/Level.cpp \
     src/model/NoteIt.cpp \
     src/model/Position.cpp \

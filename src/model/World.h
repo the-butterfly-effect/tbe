@@ -30,6 +30,7 @@
 
 // Forward Definitions:
 class BaseObject;
+class Goal;
 class MainWindow;
 class DrawWorld;
 
@@ -130,7 +131,25 @@ public:
 	 *  @return true if success - false if object already present
 	 */
 	bool addObject(BaseObject* anObjectPtr);
-    
+
+	/** adds an instantiated Goal to the World
+	 *  @param aGoalPtr pointer to an instantiated class with Goal interface
+	 */
+	void addGoal(Goal* aGoalPtr);
+
+	/** creates the corresponding DrawWorld and asks it to
+	 *  sets itself up as the GraphicsScene
+	 *  it will add all known BaseObjects to the Scene
+	 */
+	void createScene(MainWindow* myMainPtr);
+
+	/** find an object with a given ID within world
+	 *  @param anID  the ID to find for. Because not all objects have an ID,
+	 *               an empty ID will cause a NULL return.
+	 *  @returns NULL if not found or a pointer if found.
+	 */
+	BaseObject* findObjectByID(const QString& anID);
+
 	/** removes a joint from the World
 	 *  NOTE: the b2Bodies the joint is linked to should both still exist!
 	 *  @param aJointPtr pointer to the joint to remove
@@ -141,16 +160,6 @@ public:
 			theB2WorldPtr->DestroyJoint(aJointPtr);
 	}
 
-	/** removes the BaseObject pointed to by anObjectPtr from the World.
-	 *  This means that the caller is now responsible for the pointer
-	 *   - World doesn't destroy the BaseObject !!!
-	 *  It does not remove the DrawObject from the DrawWorld, though!
-	 *  @param anObjectPtr pointer to object to be removed
-	 *  @return true if success - false if object was not found
-	 */
-	bool removeObject(BaseObject* anObjectPtr);
-
-
 	/** removes the BaseObject pointed to from world after all simulations
 	  * have run for another aDeltaTime seconds
 	  * removal will be done after everything has simulated.
@@ -160,13 +169,14 @@ public:
 	  */
 	void removeMe(BaseObject* anObjectPtr, qreal aDeltaTime);
 
-
-	/** creates the corresponding DrawWorld and asks it to
-	 *  sets itself up as the GraphicsScene
-	 *  it will add all known BaseObjects to the Scene
+	/** removes the BaseObject pointed to by anObjectPtr from the World.
+	 *  This means that the caller is now responsible for the pointer
+	 *   - World doesn't destroy the BaseObject !!!
+	 *  It does not remove the DrawObject from the DrawWorld, though!
+	 *  @param anObjectPtr pointer to object to be removed
+	 *  @return true if success - false if object was not found
 	 */
-    void createScene(MainWindow* myMainPtr);
-    
+	bool removeObject(BaseObject* anObjectPtr);
 
 	/// keep the scene, set all objects back in original position
 	void reset (void);
@@ -233,6 +243,8 @@ private:
 	typedef QMap<BaseObject*, qreal> ToRemoveList;
 	ToRemoveList theToBeRemovedList;
 
+	typedef QList<Goal*> GoalPtrList;
+	GoalPtrList theGoalPtrList;
 
 	/// pointer to the associated VIEW class of World
 	DrawWorld* theDrawWorldPtr;

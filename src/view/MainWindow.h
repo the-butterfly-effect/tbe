@@ -46,7 +46,6 @@ public:
 			return NULL;
 	}
 
-
 private slots:
 	void on_actionAbout_activated(void);
 	void on_actionOpen_level_activated(void);
@@ -68,6 +67,9 @@ private slots:
 	{ setSimSpeed(1); }
 	void on_action_double_speed_activated(void)
 	{ setSimSpeed(2.0); }
+
+	/// called by DrawWorld once alls goals are met
+	void on_levelWon(void);
 
 private:
 	Ui::MainWindow ui;

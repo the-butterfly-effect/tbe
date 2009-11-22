@@ -105,10 +105,13 @@ Version 0.50
   / Important overdue refactorings:
 	- Merge BaseObject and RectObject
 	x refactor UndoMoveCommand/DrawObject
+	- re-add collision detection for user added objects (=regression from above refactoring)
 	x Create AbstractBall class and merge BowlingBall and Volleyball into that
-  * add concept of "winning" a level
-  * add concept of order in levels, so players can start
-	and then move on without having to use File>Open
+  / add concept of "winning" a level
+	x for proximity (butterfly close to flower)
+	- for change of parameter (object moved/toppled)
+  / add concept of order in levels, so players can start
+	and then move on without having to use File>Open (currently buggy)
   * make sure butterfly dies if hit by something
   x add Tennisball object
   * add two more levels

@@ -21,7 +21,7 @@
             <object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="2.1" Y="0.43" width="0.1" height="0.1" type="Flower" >
+			<object X="2.1" Y="0.43" width="0.1" height="0.1" type="Flower" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="1.5" X="0.75" Y="0.075" height="0.15" type="Floor" >
@@ -33,7 +33,7 @@
             <object width="0.3" X="2.15" Y="0.075" height="0.15" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
-            <object X="0.5" Y="0.44" type="Butterfly" >
+			<object X="0.5" Y="0.44" type="Butterfly" ID="Butterfly">
                 <property key="Description" >lalala FIXME</property>
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
@@ -49,5 +49,11 @@
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="distance">
+		   <property key="lessthan">0.27</property>
+		   <property key="object1">Butterfly</property>
+		   <property key="object2">Flower</property>
+		</goal>
+	</goals>
 </tbe-level>

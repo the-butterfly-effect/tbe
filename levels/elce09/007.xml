@@ -44,13 +44,13 @@
                 <property key="Friction" >0.6</property>
                 <property key="ImageName" >DarkerGreen</property>
             </object>
-            <object width="0.4" X="7.388730525970459" Y="4.220031261444092" height="0.9" type="RectObject" >
+			<object width="0.4" X="7.4" Y="4.2" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="7.7" Y="4.4" type="Flower" >
+			<object X="7.3" Y="4.4" width="0.2" height="0.2" type="Flower" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="4.65" Y="4.30" type="Butterfly" >
+			<object X="4.65" Y="4.30" type="Butterfly" ID="Butterfly">
                 <property key="ImageName" >Butterfly</property>
                 <property key="Mass" >0.01</property>
             </object>
@@ -307,5 +307,11 @@
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="distance">
+		   <property key="lessthan">0.27</property>
+		   <property key="object1">Butterfly</property>
+		   <property key="object2">Flower</property>
+		</goal>
+	</goals>
 </tbe-level>
