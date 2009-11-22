@@ -114,6 +114,12 @@ public:
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const = 0;
 
+	const QString& getID (void) const
+	{	return theID; }
+
+	void setID (const QString& anID)
+	{	theID = anID; }
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const = 0;
 
@@ -218,6 +224,11 @@ protected:
 	
 	/// pointer to a DrawObject that will draw this object
 	DrawObject* theDrawObjectPtr;
+
+	/** string with this object's ID
+	 *  will be set during init by the serializer (or not)
+	 */
+	QString theID;
 
 	typedef QMap<QString,QString> PropertyMap;
 	PropertyMap theProperties;

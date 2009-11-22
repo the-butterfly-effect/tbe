@@ -28,6 +28,7 @@ extern const char* theXAttributeString;
 extern const char* theYAttributeString;
 extern const char* theAngleAttributeString;
 extern const char* theTypeAttributeString;
+extern const char* theIDAttributeString;
 extern const char* thePropertyString;
 
 
@@ -50,6 +51,8 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 		myNode.setAttribute(theWidthAttributeString, theBaseObjectPtr->getTheWidth());
 	if (theBaseObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
 		myNode.setAttribute(theHeightAttributeString, theBaseObjectPtr->getTheHeight());
+	if (theBaseObjectPtr->getID().isEmpty()==false)
+		myNode.setAttribute(theIDAttributeString, theBaseObjectPtr->getID());
 
 	if (theBaseObjectPtr->theProperties.isEmpty()==false)
 	{
@@ -108,6 +111,8 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 		DEBUG2("createObjectFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
 		goto not_good;
 	}
+
+	myBOPtr->setID(myNodeMap.namedItem(theIDAttributeString).nodeValue());
 
 	isOK1=true;
 	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
