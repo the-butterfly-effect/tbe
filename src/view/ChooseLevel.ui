@@ -18,8 +18,8 @@
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Please select the level you want to play.
-* Note that &quot;winning&quot; a level is not implemented yet.
-* Look for the post-it notes for help.
+
+Look for the post-it notes for help.
 </string>
      </property>
     </widget>
