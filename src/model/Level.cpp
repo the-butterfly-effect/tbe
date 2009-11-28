@@ -197,7 +197,9 @@ Level::load(const QString& aFileName)
 		// of these, type, X and Y are *MANDATORY*
 		// optional are:  angle, width, height
 	
-		// simple sanity check
+		// simple sanity checks
+		if (q.nodeName() == "#comment")
+			continue;
 		if (q.nodeName() != theObjectString)
 		{
 			myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theObjectString).arg(q.nodeName());
@@ -239,7 +241,9 @@ Level::load(const QString& aFileName)
 		// of these, 'type' is mandatory
 		// everything else is optional and depends on the type of goal
 
-		// simple sanity check
+		// simple sanity checks
+		if (q.nodeName() == "#comment")
+			continue;
 		if (q.nodeName() != theGoalString)
 		{
 			myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
