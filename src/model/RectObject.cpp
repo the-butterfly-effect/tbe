@@ -212,10 +212,16 @@ DrawObject*  RectObject::createDrawObject(void)
 
 void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 {
+	// only set friction if it is special
+	if (getProperty(FRICTION_STRING).isEmpty())
+		return;
+
 	bool isOK = false;
-	qreal myFriction = getProperty(FRICTION_STRING).toDouble(&isOK);
+	double myFriction = getProperty(FRICTION_STRING).toDouble(&isOK);
 	if (isOK)
 		aBoxDef->friction = myFriction;
+	else
+		assert(false);
 }
 
 void  RectObject::setProperty(const QString& aKey, const QString& aValue)
