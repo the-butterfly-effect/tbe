@@ -42,9 +42,9 @@ Look: it blows if triggered!</property>
                 <property key="Friction" >2.0</property>
             </object>
             <object width="0.15" X="1.70" Y="0.175" height="0.15" type="LeftRamp" angle="0" />
-            <object X="4.2" Y="0.27" type="Bowling Pin" />
-            <object X="4.0" Y="0.27" type="Bowling Pin" />
-            <object X="3.8" Y="0.27" type="Bowling Pin" />
+			<object X="4.2" Y="0.27" type="Bowling Pin" ID="Pin1" />
+			<object X="4.0" Y="0.27" type="Bowling Pin" ID="Pin2" />
+			<object X="3.8" Y="0.27" type="Bowling Pin" ID="Pin3" />
             <object width="0.1" X="2.2" Y="0.55" height="0.1" type="RectObject" >
                 <property key="Friction" >2.0</property>
                 <property key="Bounciness" >0.0</property>
@@ -75,5 +75,18 @@ Look: it blows if triggered!</property>
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="positionchange">
+		   <property key="anglechanged">anglechanged</property>
+		   <property key="object">Pin1</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="anglechanged">anglechanged</property>
+		   <property key="object">Pin2</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="anglechanged">anglechanged</property>
+		   <property key="object">Pin3</property>
+		</goal>
+	</goals>
 </tbe-level>

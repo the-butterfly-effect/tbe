@@ -63,6 +63,26 @@ public:
 	virtual bool parseProperties(World* aWorldPtr) = 0;
 
 protected:
+	/** returns true if property aPropertyName exists *and*
+	  * its value can be parsed to fit aFloat
+	  * @param aPropertyName
+	  * @param aFloat		  OUTPUT upon success contains value of property
+	  * @returns true if success. if no success aFloat is unchanged
+	  */
+	bool propertyToFloat(const QString& aPropertyName, float* aFloat);
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value is the ID of an existing BaseObject instance
+	  * @param aWorldPtr
+	  * @param aPropertyName
+	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject
+	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
+	  */
+	bool propertyToObjectPtr(World* aWorldPtr,
+							 const QString& aPropertyName,
+							 BaseObject** aBOPtrPtr);
+
+protected:
 	typedef QMap<QString,QString> PropertyMap;
 	PropertyMap theProperties;
 };
@@ -91,37 +111,43 @@ public:
 
 private:
 	DistanceType theType;
-	qreal theLimit;
+	float theLimit;
 	BaseObject* theFirstPtr;
 	BaseObject* theSecondPtr;
 };
 
 /// implemented Goal - win if Position of an Object changes
-//class GoalPositionChange : public Goal
-//{
-//public:
-//	enum PositionType
-//	{
-//		NOTYPE,
-//		XCHANGED,
-//		YCHANGED,
-//		ACHANGED
-//	};
-//
-//	/** constructor
-//	  * NOTE: this class is only fully usable after parseProperties has been run
-//	  */
-//	GoalPositionChange();
-//	virtual ~GoalPositionChange();
-//
-//	virtual bool parseProperties(World* aWorldPtr);
-//
-//	bool checkForSuccess(void);
-//
-//private:
-//	PositionType theType;
-//	BaseObject* theBOPtr;
-//};
+class GoalPositionChange : public Goal
+{
+public:
+	enum PositionType
+	{
+		NOTYPE,
+		XCHANGED,
+		XBELOW,
+		XOVER,
+		YCHANGED,
+		YBELOW,
+		YOVER,
+		ANGLECHANGED,
+		ANYTHINGCHANGED
+	};
+
+	/** constructor
+	  * NOTE: this class is only fully usable after parseProperties has been run
+	  */
+	GoalPositionChange();
+	virtual ~GoalPositionChange();
+
+	virtual bool parseProperties(World* aWorldPtr);
+
+	bool checkForSuccess(void);
+
+private:
+	PositionType theType;
+	BaseObject* theBOPtr;
+	float theLimit;
+};
 
 // future goal classes will include isHit, and maybe things like isAlive.
 

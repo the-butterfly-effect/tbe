@@ -38,7 +38,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	/// simple sanity check first...
 	if (q.nodeName() != theGoalString)
 	{
-		DEBUG2("createObjectFromDom: expected <%s> but got <%s>\n", ASCII(theGoalString), ASCII(q.nodeName()));
+		DEBUG2("createGoalFromDom: expected <%s> but got <%s>\n", ASCII(theGoalString), ASCII(q.nodeName()));
 		return NULL;
 	}
 
@@ -50,10 +50,12 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	Goal* myGPtr = NULL;
 	if (myObjectType=="distance")
 		myGPtr = new GoalDistance();
+	if (myObjectType=="positionchange")
+		myGPtr = new GoalPositionChange();
 
 	if (myGPtr==NULL)
 	{
-		DEBUG2("createObjectFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
+		DEBUG2("createGoalFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
 		goto not_good;
 	}
 
@@ -74,7 +76,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 		}
 	}
 
-	DEBUG4("createObjectFromDom for '%s' successful\n", ASCII(myObjectType));
+	DEBUG4("createGoalFromDom for '%s' successful\n", ASCII(myObjectType));
 	return myGPtr;
 not_good:
 	delete myGPtr;

@@ -44,7 +44,7 @@
                 <property key="ImageName" >oldbrick</property>
             </object>
             <object X="1.86" Y="1.4" type="Volleyball" />
-            <object X="2.34" Y="1.47" type="Bowling Pin" />
+			<object X="2.34" Y="1.47" type="Bowling Pin" ID="Pin"/>
             <object X="2.45" Y="0.30" type="Bowling Pin" />
             <object X="2.55" Y="0.50" type="Bowling Pin" />
             <object X="2.65" Y="0.30" type="Bowling Pin" />
@@ -86,5 +86,10 @@
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="positionchange">
+		   <property key="anglechanged">ychanged</property>
+		   <property key="object">Pin</property>
+		</goal>
+	</goals>
 </tbe-level>

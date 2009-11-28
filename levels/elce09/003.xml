@@ -20,7 +20,7 @@
             <object X="0.3" Y="2.75" type="Bowling Ball" />
             <object X="0.3" Y="1.1" type="Bowling Ball" />
             <object X="2.6" Y="4.2" type="Bowling Ball" />
-            <object X="6.4" Y="0.39" type="Bowling Pin" />
+			<object X="6.4" Y="0.39" type="Bowling Pin" ID="Pin" />
             <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" >
                 <property key="ImageName" >right-ramp</property>
             </object>
@@ -53,5 +53,10 @@
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="positionchange">
+		   <property key="anglechanged">anglechanged</property>
+		   <property key="object">Pin</property>
+		</goal>
+	</goals>
 </tbe-level>

@@ -46,7 +46,7 @@
             <object width="0.1" X="4.4" Y="2.7" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="4.4" Y="2.87" type="Bowling Ball" />
+			<object X="4.4" Y="2.87" type="Bowling Ball" ID="Coconut" />
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
             </object>
@@ -76,5 +76,10 @@
 	    </object>
         </predefined>
     </scene>
-    <toolbox/>
+	<goals>
+		<goal type="positionchange">
+		   <property key="ybelow">1.0</property>
+		   <property key="object">Coconut</property>
+		</goal>
+	</goals>
 </tbe-level>
