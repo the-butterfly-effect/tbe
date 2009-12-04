@@ -290,11 +290,9 @@ ObjectFactory::createObject(
 	if (myFactoryPtr == NULL)
 		return NULL;
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
-	myObjectPtr->setOrigCenter(aPosition);
-	if (myObjectPtr->isResizable() & BaseObject::HORIZONTALRESIZE)
-		myObjectPtr->setTheWidth(aWidth);
-	if (myObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
-		myObjectPtr->setTheHeight(anHeight);
+	myObjectPtr->theCenter=aPosition;
+	myObjectPtr->theWidth=aWidth;
+	myObjectPtr->theHeight=anHeight;
 	myObjectPtr->createPhysicsObject();
 	return myObjectPtr;
 }

@@ -91,7 +91,7 @@ public:
 	/// returns true if the object can be rotated by the user
 	/// FIXME/TODO: MUST BE FLEXIBLE
 	virtual bool isRotatable ( ) const
-	{	return false;	}
+	{	return rotatableInfo;	}
 
 	/// returns whether the object can be resized by the user
 	/// FIXME/TODO: MUST BE FLEXIBLE
@@ -133,6 +133,9 @@ private:
 protected:
 	QString theNameString;
 	QString theToolTipString;
+
+	bool rotatableInfo;
+	SizeDirections resizableInfo;
 };
 
 #endif // RECTOBJECT_H

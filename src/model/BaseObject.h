@@ -352,6 +352,8 @@ private:
 	// disable copy constructor / assignment operator
 	BaseObject(const BaseObject& aBORefToCopy);
 	BaseObject& operator = (const BaseObject& aBORefToCopy);
+
+	friend class ObjectFactory;
 };
 
 //////////////////////////////////////////////////////////////////////////////

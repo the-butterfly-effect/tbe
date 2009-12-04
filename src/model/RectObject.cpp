@@ -25,6 +25,7 @@
 const char* OBJECT_NAME_STRING = "ObjectName";
 const char* BOUNCINESS_STRING  = "Bounciness";
 const char* RESIZABLE_STRING   = "Resizable";
+const char* ROTATABLE_STRING   = "Rotatable";
 const char* MASS_STRING        = "Mass";
 const char* FRICTION_STRING    = "Friction";
 const char* IMAGE_NAME_STRING  = "ImageName";
@@ -57,6 +58,8 @@ RectObject::RectObject ( ) : BaseObject(), theNameString(DEFAULT_RECTOBJECT_NAME
 	// the Properties, do not assume too much here...
 
 	// also: keep in mind that child objects may set some things automatically
+	rotatableInfo = false;
+	resizableInfo = NORESIZING;
 }
 
 RectObject::~RectObject ( ) { }
@@ -231,16 +234,29 @@ void  RectObject::setProperty(const QString& aKey, const QString& aValue)
 
 	BaseObject::setProperty(aKey,aValue);
 
+	if (aKey == ROTATABLE_STRING)
+	{
+		rotatableInfo = false;
+		if (aValue == "yes" || aValue == "true")
+			rotatableInfo = true;
+	}
+
 	if (aKey == OBJECT_NAME_STRING)
 		theNameString = aValue;
 	if (aKey == BOUNCINESS_STRING)
 		setTheBounciness(aValue.toDouble());
 	if (aKey == RESIZABLE_STRING)
 	{
-		// FIXME: TODO:  IMPLEMENT THIS PART
-		// and run adjust
+		// we do not check for noresize, that's the default
+		resizableInfo = NORESIZING;
+		if (aValue == "horizontal")
+			resizableInfo = HORIZONTALRESIZE;
+		if (aValue == "vertical")
+			resizableInfo = VERTICALRESIZE;
+		if (aValue == "totalresize")
+			resizableInfo = TOTALRESIZE;
 		adjustParameters();
-	};
+	}
 	if (aKey == MASS_STRING)
 		adjustParameters();
 	// No need to do image name
