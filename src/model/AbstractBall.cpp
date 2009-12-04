@@ -117,6 +117,10 @@ AbstractBall::~AbstractBall ( ) { }
 //  
 
 DrawObject*  AbstractBall::createDrawObject(void)
-{ return new DrawObject(this, theBallImage); }
+{
+	DrawObject* myObjPtr = new DrawObject(this, theBallImage);
+	myObjPtr->setZValue(10.0);
+	return myObjPtr;
+}
 
 

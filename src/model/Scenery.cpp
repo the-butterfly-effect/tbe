@@ -55,5 +55,6 @@ DrawObject*  Scenery::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr->setZValue(0.1);
 	return theDrawObjectPtr;
 }

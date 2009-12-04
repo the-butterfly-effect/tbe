@@ -291,8 +291,10 @@ ObjectFactory::createObject(
 		return NULL;
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
 	myObjectPtr->theCenter=aPosition;
-	myObjectPtr->theWidth=aWidth;
-	myObjectPtr->theHeight=anHeight;
+	if (aWidth!=1.0)
+		myObjectPtr->theWidth=aWidth;
+	if (anHeight!=1.0)
+		myObjectPtr->theHeight=anHeight;
 	myObjectPtr->createPhysicsObject();
 	return myObjectPtr;
 }
