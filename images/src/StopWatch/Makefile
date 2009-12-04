@@ -1,4 +1,3 @@
-SVGSRC=StartStopWatch.svg
-SVGDST=StartStopWatch.svg
-
 include ../Makefile 
+SVGSRC=StartStopWatch.svg StartStopWatchHand.svg
+
