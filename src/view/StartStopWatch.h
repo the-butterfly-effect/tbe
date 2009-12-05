@@ -55,18 +55,44 @@ public slots:
 	void clicked_on_watch();
 	void clicked_on_reset();
 
+
+signals:
+	/// signal: start (or continue) simulation
+	void startSim();
+
+	/// signal: stop simulation
+	void stopSim();
+
+	/// signal: when World needs to reset to its original position
+	void resetSim(void);
+
+protected:
+	/// overridden to capture mouse clicks on the stopwatch
+	virtual void mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent );
+
 private slots:
 	/// the actual member that rotates the seconds hand
 	void progressHand();
 
 private:
-	QTimer theTimer;
+	void removeResetButton();
+	void showResetButton();
 
+	void startStopwatch();
+	void stopStopwatch();
+	void resetStopwatch();
+
+
+	QTimer theTimer;
 	QGraphicsSvgItem* theStopWatchSvgPtr;
 	QGraphicsSvgItem* theStopWatchHandSvgPtr;
-
 	QTransform	theRotation;
+	QToolButton* theResetButton;
 
+	/** the variable behind the state machine
+	 *  The only member allowed to touch theState is goToState()!!!
+	 */
+	TheStates theState;
 };
 
 #endif // STARTSTOPWATCH_H

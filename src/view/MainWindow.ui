@@ -56,44 +56,19 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGraphicsView" name="StartStopView">
       <property name="minimumSize">
        <size>
-        <width>64</width>
-        <height>0</height>
+        <width>80</width>
+        <height>80</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>128</width>
-        <height>16777215</height>
+        <height>128</height>
        </size>
       </property>
-      <property name="title">
-       <string>Game Controls</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QPushButton" name="pushButton_StartStopContinue">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Start</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_Reset">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Reset</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </item>
    </layout>
@@ -254,7 +229,7 @@
   </action>
   <action name="action_quarter_speed">
    <property name="checkable">
-	<bool>true</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>1/4 speed</string>
@@ -276,7 +251,7 @@
   </action>
   <action name="action_normal_speed">
    <property name="checkable">
-	<bool>true</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>1/1 speed</string>
@@ -287,7 +262,7 @@
   </action>
   <action name="action_double_speed">
    <property name="checkable">
-	<bool>true</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>2x speed</string>

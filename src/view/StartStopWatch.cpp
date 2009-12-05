@@ -23,6 +23,7 @@
 
 
 StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
+		: theResetButton(NULL)
 {
 	// set scene to view
 	QGraphicsView* myViewPtr = aMainWindowUIPtr->StartStopView;
@@ -39,6 +40,10 @@ StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
 	myPol.setVerticalPolicy(QSizePolicy::Expanding);
 	myViewPtr->setSizePolicy(myPol);
 
+	// I don't want the View to be different from the background.
+	// FIXME/TODO: this is not entirely correct now, but we're close.
+	myViewPtr->setFrameStyle(QFrame::NoFrame);
+	setBackgroundBrush(QApplication::palette().window());
 
 	// get our SVG renderers
 	QSvgRenderer* myRenderer = ImageStore::getRenderer("StartStopWatch");
@@ -71,10 +76,7 @@ StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
 
 	progressHand();
 
-	// I want the hand to progress 10 times per second
-	connect(&theTimer, SIGNAL(timeout()), this, SLOT(progressHand()));
-	theTimer.start(1000/10);
-
+	theState = NOTSTARTED;
 }
 
 StartStopWatch::~StartStopWatch()
@@ -87,23 +89,146 @@ StartStopWatch::~StartStopWatch()
 
 void StartStopWatch::clicked_on_watch()
 {
+	DEBUG4("StartStopWatch::clicked_on_watch(void) whilst in state %d\n", theState);
+	switch(theState)
+	{
+	case NOTSTARTED:
+		goToState(RUNNING);
+		break;
+	case STOPPED:
+		goToState(RUNNING);
+		break;
+	case RUNNING:
+		goToState(STOPPED);
+		break;
+	}
 }
 
 
 
 void StartStopWatch::clicked_on_reset()
 {
+	// this should only be possible to call when the reset button is visible
+	goToState(NOTSTARTED);
 }
 
 
 void StartStopWatch::goToState(TheStates aNewState)
 {
-}
+	// let's implement the whole 3x3 matrix of possibilities
+	// this should be the only member in the class that modifies theState!!!
+	switch(theState)
+	{
+	case NOTSTARTED:
+		{
+			switch (aNewState)
+			{
+			case NOTSTARTED:	// no need for action
+				break;
+			case STOPPED:		// should not happen
+				assert(false);
+			case RUNNING:		// start button clicked
+				startStopwatch();
+				theState = aNewState;
+				break;
+			}
+			break;
+		}
+	case STOPPED:
+		{
+			switch (aNewState)
+			{
+			case NOTSTARTED:	// reset button clicked
+				removeResetButton();
+				resetStopwatch();
+				theState = aNewState;
+				break;
+			case STOPPED:		// no need for action
+				break;
+			case RUNNING:		// continue button clicked
+				removeResetButton();
+				startStopwatch();
+				theState = aNewState;
+				break;
+			}
+			break;
+		}
+	case RUNNING:
+		{
+			switch (aNewState)
+			{
+			case NOTSTARTED:
+				// should not happen in normal use
+				// so let's go to stopped first
+				goToState(STOPPED);
+				goToState(NOTSTARTED);
+				break;
+			case STOPPED:		// stop button clicked
+				stopStopwatch();
+				showResetButton();
+				theState = aNewState;
+				break;
+			case RUNNING:		// no need for action
+				break;
+			}
+			break;
+		}
+	} // end-of-switch
 
+}
 
 void StartStopWatch::progressHand(void)
 {
-
+	// make the transform incremental: rotate some more
 	theStopWatchHandSvgPtr->setTransform(theRotation, true);
 }
 
+void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
+{
+	QGraphicsItem* myItemPtr = itemAt(aMouseEvent->scenePos());
+	if (myItemPtr==theStopWatchSvgPtr || myItemPtr==theStopWatchHandSvgPtr)
+		clicked_on_watch();
+	else
+		assert(false);
+}
+
+void StartStopWatch::removeResetButton(void)
+{
+	assert(theResetButton != NULL);
+	delete theResetButton;
+	theResetButton=NULL;
+}
+
+void StartStopWatch::resetStopwatch()
+{
+	// we need to reset the hand
+	// i.e. we use the absolute transform - that will go back to (almost) start
+	theStopWatchHandSvgPtr->setTransform(theRotation, false);
+}
+
+void StartStopWatch::showResetButton(void)
+{
+	assert(theResetButton == NULL);
+
+	// and initialise the reset button
+	theResetButton = new QToolButton(NULL);
+	theResetButton->setIcon(ImageStore::getQIcon("ActionUndo", QSize(64,64)));
+	theResetButton->setIconSize(QSize(64,64));
+	addWidget(theResetButton);
+	connect(theResetButton, SIGNAL(clicked()), this, SLOT(clicked_on_reset()));
+}
+
+void StartStopWatch::startStopwatch()
+{
+	// I want the hand to progress 10 times per second
+	connect(&theTimer, SIGNAL(timeout()), this, SLOT(progressHand()));
+	theTimer.start(1000/10);
+
+	emit startSim();
+}
+
+void StartStopWatch::stopStopwatch()
+{
+	theTimer.stop();
+	emit stopSim();
+}

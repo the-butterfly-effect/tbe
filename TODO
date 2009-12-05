@@ -110,10 +110,13 @@ Version 0.50
 	x for proximity (butterfly close to flower)
 	x for change of parameter (object moved/toppled)
   / add concept of order in levels, so players can start
-	and then move on without having to use File>Open (currently buggy)
+	- and then move on without having to use File>Open
+  / make start-stop-reset more intuitive
+	/ use stopwatch animated image
+	- hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
   * make sure butterfly dies if hit by something
   x add Tennisball object
-  * add two more levels
+  / add two more levels
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 

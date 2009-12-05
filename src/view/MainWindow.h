@@ -20,7 +20,7 @@
 #define MAINWINDOW_H_
 
 #include "ui_MainWindow.h"
-#include "StartStopReset.h"
+#include "StartStopWatch.h"
 #include <QUndoGroup>
 
 // forward declarations
@@ -53,10 +53,6 @@ private slots:
 	// write the current level layout to disk
 	void on_actionSave_activated(void);
 
-	void on_pushButton_Reset_clicked(void)
-    { emit theSimStateMachine.on_pushButton_Reset_clicked(); }
-    void on_pushButton_StartStopContinue_clicked(void)
-    { emit theSimStateMachine.on_pushButton_Toggle_clicked(); }
 	void slot_splashScreen_clicked(void);
 
 	void on_action_quarter_speed_activated(void)
@@ -89,7 +85,7 @@ private:
 	 *  TODO: Due to separation of concerns, maybe move the actual
 	 *         timing & simulation stuff out of this?
 	 */
-	StartStopReset	theSimStateMachine;
+	StartStopWatch*	theSimStateMachine;
 
 	/** loads the level specified by the file name
 	 *

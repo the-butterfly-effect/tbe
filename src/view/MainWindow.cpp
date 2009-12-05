@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <QFileInfo>
+
 #include "tbe_global.h"
 #include "MainWindow.h"
 #include "Popup.h"
@@ -33,11 +35,12 @@
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), theLevelPtr(NULL),
-	  theScenePtr(NULL), theSimStateMachine(&ui)
+	  theScenePtr(NULL)
 {                                      
 	ui.setupUi(this);
-
 	showMaximized();
+
+	theSimStateMachine = new StartStopWatch(&ui);
 
 	// TODO: fixme: hardcoded path here!
 	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
@@ -150,7 +153,7 @@ void MainWindow::loadLevel(const QString& aFileName)
 		exit(1);
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
-	theSimStateMachine.goToState(StartStopReset::NOTSTARTED);
+	theSimStateMachine->goToState(StartStopWatch::NOTSTARTED);
 
 	theToolboxModel = new ToolBoxItemListModel();
 
@@ -181,9 +184,9 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 	ui.graphicsView->setScene(aScene);
 	aScene->setSimSpeed(theSimSpeed);
 
-	QObject::connect(&theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
-	QObject::connect(&theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
-	QObject::connect(&theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
+	QObject::connect(theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
+	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
+	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
 	QObject::connect(aScene, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
 
     theUndoGroup.addStack(aScene->getTheUndoStackPtr());
@@ -209,9 +212,9 @@ void MainWindow::purgeLevel(void)
 	ui.graphicsView->setMatrix(myMatrix);
 	if (theScenePtr != NULL)
 	{
-		QObject::disconnect(&theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
-		QObject::disconnect(&theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
-		QObject::disconnect(&theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
+		QObject::disconnect(theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
+		QObject::disconnect(theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
+		QObject::disconnect(theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
 		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
 
 	    // Destroying theScene (which is a DrawWorld) will automatically
