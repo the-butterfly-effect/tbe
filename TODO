@@ -111,10 +111,11 @@ Version 0.50
 	x for change of parameter (object moved/toppled)
   / add concept of order in levels, so players can start
 	- and then move on without having to use File>Open
-  / make start-stop-reset more intuitive
+  x make start-stop-reset more intuitive
 	x use stopwatch animated image
-	/ hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
+	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
   * make sure butterfly dies if hit by something
+	- also terminate simulation in that case
   x add Tennisball object
   / add two more levels
 FIRST WIDELY ANNOUNCEABLE VERSION

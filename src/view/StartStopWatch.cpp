@@ -22,23 +22,9 @@
 #include <QGraphicsSvgItem>
 
 
-StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
+StartStopWatch::StartStopWatch()
 		: theResetSvgPtr(NULL)
 {
-	// set scene to view
-	QGraphicsView* myViewPtr = aMainWindowUIPtr->StartStopView;
-	myViewPtr->setScene(this);
-	myViewPtr->setAlignment(Qt::AlignCenter);
-	myViewPtr->setInteractive(true);
-	myViewPtr->setDragMode(QGraphicsView::NoDrag);
-
-	myViewPtr->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	myViewPtr->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-	QSizePolicy myPol;
-	myPol.setHorizontalPolicy(QSizePolicy::Expanding);
-	myPol.setVerticalPolicy(QSizePolicy::Expanding);
-	myViewPtr->setSizePolicy(myPol);
 
 	// I don't want the View to be different from the background.
 	// FIXME/TODO: this is not entirely correct now, but we're close.
@@ -56,8 +42,6 @@ StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
 	theStopWatchHandSvgPtr->setSharedRenderer(myRenderer);
 	theStopWatchHandSvgPtr->setZValue(2.0);
 	addItem(theStopWatchHandSvgPtr);
-
-	myViewPtr->fitInView(itemsBoundingRect(), Qt::KeepAspectRatio);
 
 	// the stopwatch is 255x306 (pixels)
 	// the Hand is 15x141 (pixels)

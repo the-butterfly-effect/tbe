@@ -37,7 +37,7 @@ class StartStopWatch : public QGraphicsScene
 
 public:
 	/// constructor
-	StartStopWatch(Ui::MainWindow* aMainWindowUIPtr);
+	StartStopWatch();
 	virtual ~StartStopWatch();
 
 	enum TheStates

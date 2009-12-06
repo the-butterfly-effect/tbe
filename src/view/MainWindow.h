@@ -67,10 +67,6 @@ private slots:
 	void on_levelWon(void);
 
 private:
-	/** DrawWorld needs access to the UI
-	  * to setup itself
-	  */
-	friend class DrawWorld;
 	Ui::MainWindow ui;
 
 	Level* theLevelPtr;

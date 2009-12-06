@@ -78,6 +78,9 @@ public:
 	void setSimSpeed(qreal theDivision)
 	{ theSimSpeed = 1000.0 / theDivision; }
 
+	/// @returns a pointer to an initialised StartStopWatch (which derives from QGraphicsScene)
+	QGraphicsScene* getStartStopWatchPtr();
+
 protected:
 
 		/// Draw a closed polygon provided in CCW order.

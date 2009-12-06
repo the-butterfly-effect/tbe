@@ -58,7 +58,7 @@ public:
 //  
 
 DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
-	: theMainWindowPtr(aMainWindowPtr), theWorldPtr(aWorldPtr)
+	: theMainWindowPtr(aMainWindowPtr), theWorldPtr(aWorldPtr), theSimStateMachine(NULL)
 {
 	initAttributes();
 	
@@ -103,15 +103,20 @@ DrawWorld::~DrawWorld ( )
 
 
 // Accessor methods
-//  
-qreal DrawWorld::getWidth()
-{
-	return theWorldPtr->getTheWorldWidth(); 
-}
-
+//
 qreal DrawWorld::getHeight()
 {
 	return theWorldPtr->getTheWorldHeight(); 
+}
+
+QGraphicsScene* DrawWorld::getStartStopWatchPtr()
+{
+	return theSimStateMachine;
+}
+
+qreal DrawWorld::getWidth()
+{
+	return theWorldPtr->getTheWorldWidth();
 }
 
 
@@ -154,7 +159,7 @@ void DrawWorld::initAttributes ( )
 	theSimSpeed = 1000.0;
 	theCongratulations = NULL;
 
-	theSimStateMachine = new StartStopWatch(&(theMainWindowPtr->ui));
+	theSimStateMachine = new StartStopWatch();
 	QObject::connect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));

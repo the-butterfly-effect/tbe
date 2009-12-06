@@ -68,9 +68,18 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.menuEdit->addAction(theRedoActionPtr);
 
 	// I don't want the View to be different from the background.
-	// FIXME/TODO: that white block is ugly :-(
 	ui.StartStopView->setFrameStyle(QFrame::NoFrame);
-	//setBackgroundBrush(QApplication::palette().window());
+	ui.StartStopView->setAlignment(Qt::AlignCenter);
+	ui.StartStopView->setInteractive(true);
+	ui.StartStopView->setDragMode(QGraphicsView::NoDrag);
+	ui.StartStopView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	ui.StartStopView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	QSizePolicy myPol;
+	myPol.setHorizontalPolicy(QSizePolicy::Expanding);
+	myPol.setVerticalPolicy(QSizePolicy::Expanding);
+	ui.StartStopView->setSizePolicy(myPol);
+	// FIXME/TODO: that white block is ugly :-(
+	// "missing scene"->setBackgroundBrush(QApplication::palette().window());
 
 
 	setSimSpeed(0.5);
@@ -193,6 +202,10 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
     theUndoGroup.setActiveStack(aScene->getTheUndoStackPtr());
     
     setWindowTitle(APPNAME " - " + aLevelName);
+
+	// also set the startstopwatch view
+	ui.StartStopView->setScene(aScene->getStartStopWatchPtr());
+	ui.StartStopView->fitInView(aScene->getStartStopWatchPtr()->itemsBoundingRect(), Qt::KeepAspectRatio);
 }
 
 void MainWindow::purgeLevel(void)
