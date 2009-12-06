@@ -69,6 +69,22 @@
         <height>154</height>
        </size>
       </property>
+      <property name="toolTip">
+       <string>You can click on the stopwatch to start/stop the simulation.
+Once the simulation has run and is stopped, you can reset the simulation using the reset arrow.</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
      </widget>
     </item>
    </layout>

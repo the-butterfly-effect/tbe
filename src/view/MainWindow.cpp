@@ -68,16 +68,6 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.menuEdit->addAction(theRedoActionPtr);
 
 	// I don't want the View to be different from the background.
-	ui.StartStopView->setFrameStyle(QFrame::NoFrame);
-	ui.StartStopView->setAlignment(Qt::AlignCenter);
-	ui.StartStopView->setInteractive(true);
-	ui.StartStopView->setDragMode(QGraphicsView::NoDrag);
-	ui.StartStopView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	ui.StartStopView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	QSizePolicy myPol;
-	myPol.setHorizontalPolicy(QSizePolicy::Expanding);
-	myPol.setVerticalPolicy(QSizePolicy::Expanding);
-	ui.StartStopView->setSizePolicy(myPol);
 	// FIXME/TODO: that white block is ugly :-(
 	// "missing scene"->setBackgroundBrush(QApplication::palette().window());
 
