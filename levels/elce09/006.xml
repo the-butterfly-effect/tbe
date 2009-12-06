@@ -13,6 +13,8 @@
                 <property key="ImageName" >coke-crate</property>
                 <property key="Mass" >18</property>
                 <property key="Friction" >1</property>
+                <property key="Resizable" >horizontalresize</property>
+                <property key="Rotatable" >true</property>
                 <property key="Bounciness" >0.1</property>
             </object>
         </toolboxitem>

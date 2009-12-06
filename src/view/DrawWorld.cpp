@@ -180,6 +180,7 @@ void DrawWorld::on_winning(void)
 
 	theCongratulations->scale(myResize, myResize);
 	theCongratulations->setPos(0, -(getHeight()/2.0));
+	theCongratulations->setZValue(0.01);
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
 }
