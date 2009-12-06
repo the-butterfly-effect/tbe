@@ -112,7 +112,7 @@ Version 0.50
   / add concept of order in levels, so players can start
 	- and then move on without having to use File>Open
   / make start-stop-reset more intuitive
-	/ use stopwatch animated image
+	x use stopwatch animated image
 	- hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
   * make sure butterfly dies if hit by something
   x add Tennisball object
