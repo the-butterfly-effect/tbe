@@ -176,6 +176,8 @@ protected:
 	/// pointer to QUndoCommand for move
 	UndoMoveCommand* theUndoMovePtr;
 
+	bool isCollidingDuringDrag;
+
 private:
 	virtual void initAttributes ( ) ;
 

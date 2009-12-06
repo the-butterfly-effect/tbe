@@ -102,9 +102,8 @@ Milestone 5 - It's make over time! (post-ELCE)
 Version 0.50
   * implement rotation of relevant objects
 	- requires implementing UndoRotateCommand
-  / Important overdue refactorings:
+  x Important overdue refactorings:
 	x refactor UndoMoveCommand/DrawObject
-	- re-add collision detection for user added objects (=regression from above refactoring)
 	x Create AbstractBall class and merge BowlingBall and Volleyball into that
   x add concept of "winning" a level
 	x for proximity (butterfly close to flower)
@@ -118,6 +117,10 @@ Version 0.50
 	- also terminate simulation in that case
   x add Tennisball object
   / add two more levels
+  x make collision detection on mouse move better/more usable
+  - if collision happens and user releases mouse button, go back to last known good.
+  - upon drag-n-drop from toolbox, also do collision detection
+  - generalize collision detection so it also works with CokeMentosBottle
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 

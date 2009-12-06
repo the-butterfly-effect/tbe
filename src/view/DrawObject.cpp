@@ -194,6 +194,8 @@ void DrawObject::initAttributes ( )
 //    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
 
+	isCollidingDuringDrag=false;
+
 	applyPosition();
 
 }
@@ -225,6 +227,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// TODO: problem: if you click an object near the side, it will still register as if you
 	// clicked in the exact center - with an unvoluntary movement as a result
 
+	// collision detection
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
 			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
@@ -232,9 +235,10 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 		theUndoMovePtr->redo();
 		
 		// if the new position collides with another, reset the position to the original one
+		isCollidingDuringDrag=false;
 		if (!scene()->collidingItems(this).isEmpty())
 		{
-			theUndoMovePtr->redo();
+			isCollidingDuringDrag=true;
 		}
 	}
 }
@@ -248,6 +252,16 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	if (theUndoMovePtr == NULL)
 		return;
 
+	// are we currently in a collision?
+	if (isCollidingDuringDrag)
+	{
+		theUndoMovePtr->undo();
+		delete theUndoMovePtr;
+		theUndoMovePtr= NULL;
+		isCollidingDuringDrag=false;
+		goto cleanup;
+	}
+
 	// is the position any different?
 	if (theUndoMovePtr->hasMoved())
 		pushUndo(theUndoMovePtr);
@@ -255,6 +269,7 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 		delete theUndoMovePtr;
 	theUndoMovePtr = NULL;
 
+cleanup:
 	QGraphicsItem::mouseReleaseEvent(event);
 	if (theAnchorsPtr==NULL)
 		theAnchorsPtr= new Anchors(this);
@@ -267,6 +282,16 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
+
+	// draw a dotted outline if colliding during move of object
+	if (isCollidingDuringDrag)
+	{
+		QPen myPen(Qt::DashLine);
+		myPainter->setPen(myPen);
+		QColor myColor(Qt::transparent);
+		myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
+		return;
+	}
 
 	if (thePixmapPtr != NULL)
 	{
