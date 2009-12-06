@@ -42,7 +42,6 @@ StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
 
 	// I don't want the View to be different from the background.
 	// FIXME/TODO: this is not entirely correct now, but we're close.
-	myViewPtr->setFrameStyle(QFrame::NoFrame);
 	setBackgroundBrush(QApplication::palette().window());
 
 	// get our SVG renderers

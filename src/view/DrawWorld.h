@@ -33,6 +33,8 @@
 class World;
 class MainWindow;
 class QDropEvent;
+class StartStopWatch;
+
 
 /** class DrawObject
   * This class abstracts the actual drawing of objects
@@ -148,6 +150,12 @@ private:
 
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);
+
+	/** the state machine handling the Start/Stop/Continue/Rest buttons
+	 *  and the actual simulation timing
+	 */
+	StartStopWatch*	theSimStateMachine;
+
 
 };
 

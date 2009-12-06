@@ -40,8 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.setupUi(this);
 	showMaximized();
 
-	theSimStateMachine = new StartStopWatch(&ui);
-
 	// TODO: fixme: hardcoded path here!
 	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
 	QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
@@ -68,6 +66,12 @@ MainWindow::MainWindow(QWidget *parent)
 	redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
 	theRedoActionPtr->setShortcuts(redoShortcuts);
 	ui.menuEdit->addAction(theRedoActionPtr);
+
+	// I don't want the View to be different from the background.
+	// FIXME/TODO: that white block is ugly :-(
+	ui.StartStopView->setFrameStyle(QFrame::NoFrame);
+	//setBackgroundBrush(QApplication::palette().window());
+
 
 	setSimSpeed(0.5);
 }                           
@@ -153,7 +157,6 @@ void MainWindow::loadLevel(const QString& aFileName)
 		exit(1);
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
-	theSimStateMachine->goToState(StartStopWatch::NOTSTARTED);
 
 	theToolboxModel = new ToolBoxItemListModel();
 
@@ -184,9 +187,6 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 	ui.graphicsView->setScene(aScene);
 	aScene->setSimSpeed(theSimSpeed);
 
-	QObject::connect(theSimStateMachine, SIGNAL(startSim()), aScene, SLOT(startTimer()));
-	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  aScene, SLOT(stopTimer()));
-	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), aScene, SLOT(resetWorld()));
 	QObject::connect(aScene, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
 
     theUndoGroup.addStack(aScene->getTheUndoStackPtr());
@@ -212,9 +212,6 @@ void MainWindow::purgeLevel(void)
 	ui.graphicsView->setMatrix(myMatrix);
 	if (theScenePtr != NULL)
 	{
-		QObject::disconnect(theSimStateMachine, SIGNAL(startSim()), theScenePtr, SLOT(startTimer()));
-		QObject::disconnect(theSimStateMachine, SIGNAL(stopSim()),  theScenePtr, SLOT(stopTimer()));
-		QObject::disconnect(theSimStateMachine, SIGNAL(resetSim()), theScenePtr, SLOT(resetWorld()));
 		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
 
 	    // Destroying theScene (which is a DrawWorld) will automatically

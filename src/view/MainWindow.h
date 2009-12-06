@@ -20,7 +20,6 @@
 #define MAINWINDOW_H_
 
 #include "ui_MainWindow.h"
-#include "StartStopWatch.h"
 #include <QUndoGroup>
 
 // forward declarations
@@ -68,7 +67,12 @@ private slots:
 	void on_levelWon(void);
 
 private:
+	/** DrawWorld needs access to the UI
+	  * to setup itself
+	  */
+	friend class DrawWorld;
 	Ui::MainWindow ui;
+
 	Level* theLevelPtr;
 	DrawWorld* theScenePtr;
 	ToolBoxItemListModel* theToolboxModel;
@@ -78,14 +82,6 @@ private:
 	QAction*	theRedoActionPtr;
 
 	qreal theSimSpeed;
-
-	/** the state machine handling the Start/Stop/Continue/Rest buttons
-	 *  and the actual simulation timing
-	 *
-	 *  TODO: Due to separation of concerns, maybe move the actual
-	 *         timing & simulation stuff out of this?
-	 */
-	StartStopWatch*	theSimStateMachine;
 
 	/** loads the level specified by the file name
 	 *

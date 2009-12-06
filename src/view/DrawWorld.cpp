@@ -22,6 +22,7 @@
 #include "MainWindow.h"
 #include "DrawObject.h"
 #include "ToolBoxItemListModel.h"
+#include "StartStopWatch.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -90,6 +91,10 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 DrawWorld::~DrawWorld ( ) 
 {
 	DEBUG5("DrawWorld::~DrawWorld ( )\n");
+	QObject::disconnect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
+	QObject::disconnect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
+	QObject::disconnect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
+	delete theSimStateMachine;
 }
 
 //  
@@ -148,6 +153,11 @@ void DrawWorld::initAttributes ( )
 	DEBUG5("void DrawWorld::initAttributes\n");
 	theSimSpeed = 1000.0;
 	theCongratulations = NULL;
+
+	theSimStateMachine = new StartStopWatch(&(theMainWindowPtr->ui));
+	QObject::connect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
+	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
+	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
 }
 
 void DrawWorld::on_OneSecondAfterWinning(void)
