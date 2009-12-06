@@ -87,7 +87,7 @@ private:
 	QGraphicsSvgItem* theStopWatchSvgPtr;
 	QGraphicsSvgItem* theStopWatchHandSvgPtr;
 	QTransform	theRotation;
-	QToolButton* theResetButton;
+	QGraphicsSvgItem* theResetSvgPtr;
 
 	/** the variable behind the state machine
 	 *  The only member allowed to touch theState is goToState()!!!

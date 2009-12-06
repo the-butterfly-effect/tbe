@@ -23,7 +23,7 @@
 
 
 StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
-		: theResetButton(NULL)
+		: theResetSvgPtr(NULL)
 {
 	// set scene to view
 	QGraphicsView* myViewPtr = aMainWindowUIPtr->StartStopView;
@@ -60,21 +60,18 @@ StartStopWatch::StartStopWatch(Ui::MainWindow* aMainWindowUIPtr)
 
 	myViewPtr->fitInView(itemsBoundingRect(), Qt::KeepAspectRatio);
 
-	// the stopwatch is 290x290 (pixels)
-	// the Hand is x (pixels)
-	// the center of the stopwatch is at 163.4 x 127.7
-	// the center of the Hand is at  65.7 x 36.0
+	// the stopwatch is 255x306 (pixels)
+	// the Hand is 15x141 (pixels)
+	// the center of the stopwatch is at 128 x (306-127=179)
+	// the center of the Hand is at  7 x (141-48=93)
 	// (all measured from the top-left corner)
 
-	const qreal myHandRx = 65.7;
-	const qreal myHandRy = 36.0;
-	const qreal myHandH  = 102.9;
-	theStopWatchHandSvgPtr->setPos( 163.4-myHandRx, 127.7-myHandRy);
+	const qreal myHandRx = 7;
+	const qreal myHandRy = 93;
+	theStopWatchHandSvgPtr->setPos(128-myHandRx, 179-myHandRy);
 
 	// let's move 2 degrees (1/3 second) per progress step
-	theRotation = QTransform().translate(myHandRx, myHandH-myHandRy).rotate(2).translate(-myHandRx, -myHandH+myHandRy);
-
-	progressHand();
+	theRotation = QTransform().translate(myHandRx, myHandRy).rotate(2).translate(-myHandRx, -myHandRy);
 
 	theState = NOTSTARTED;
 }
@@ -188,15 +185,15 @@ void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 	QGraphicsItem* myItemPtr = itemAt(aMouseEvent->scenePos());
 	if (myItemPtr==theStopWatchSvgPtr || myItemPtr==theStopWatchHandSvgPtr)
 		clicked_on_watch();
-	else
-		assert(false);
+	if (myItemPtr==theResetSvgPtr)
+		clicked_on_reset();
 }
 
 void StartStopWatch::removeResetButton(void)
 {
-	assert(theResetButton != NULL);
-	delete theResetButton;
-	theResetButton=NULL;
+	assert(theResetSvgPtr != NULL);
+	delete theResetSvgPtr;
+	theResetSvgPtr=NULL;
 }
 
 void StartStopWatch::resetStopwatch()
@@ -204,18 +201,19 @@ void StartStopWatch::resetStopwatch()
 	// we need to reset the hand
 	// i.e. we use the absolute transform - that will go back to (almost) start
 	theStopWatchHandSvgPtr->setTransform(theRotation, false);
+	emit resetSim();
 }
 
 void StartStopWatch::showResetButton(void)
 {
-	assert(theResetButton == NULL);
+	assert(theResetSvgPtr == NULL);
 
 	// and initialise the reset button
-	theResetButton = new QToolButton(NULL);
-	theResetButton->setIcon(ImageStore::getQIcon("ActionUndo", QSize(64,64)));
-	theResetButton->setIconSize(QSize(64,64));
-	addWidget(theResetButton);
-	connect(theResetButton, SIGNAL(clicked()), this, SLOT(clicked_on_reset()));
+	QSvgRenderer* myRenderer = ImageStore::getRenderer("ActionUndo");
+	theResetSvgPtr = new QGraphicsSvgItem(NULL);
+	theResetSvgPtr->setSharedRenderer(myRenderer);
+	theResetSvgPtr->setZValue(5.0);
+	addItem(theResetSvgPtr);
 }
 
 void StartStopWatch::startStopwatch()
