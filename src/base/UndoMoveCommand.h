@@ -62,8 +62,25 @@ public:
 	const Position& getOrigPos(void)
 	{	return theOldPosition; }
 
-	void setNewPosition(const Position& aNewPos)
-	{	theNewPosition = aNewPos; }
+	/** Throw away the new position and rever to the last known good position.
+	  * If setNewPosition() has never been called with a new good position,
+	  * that means the original position (i.e. object has not moved) !!!
+	  *
+	  * Automatically calls redo() to effectuate the changes.
+	  */
+	void revertToLastGood(void)
+	{	theNewPosition = theLastGoodPosition; redo();}
+
+	/** sets the new position. if this position is known good, the "last known good position" is set as well.
+	  * @param aNewPos	new position
+	  * @param isGood   true if new position is known good (i.e. is not colliding)
+	  */
+	void setNewPosition(const Position& aNewPos, bool isGood)
+	{
+		theNewPosition = aNewPos;
+		if (isGood)
+			theLastGoodPosition = aNewPos;
+	}
 
 	bool hasMoved(void)
 	{	return theOldPosition == theNewPosition; }
@@ -74,8 +91,9 @@ public:
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;
-	Position	theOldPosition;
+	Position	theLastGoodPosition;
 	Position	theNewPosition;
+	Position	theOldPosition;
 };
 
 

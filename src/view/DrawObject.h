@@ -96,6 +96,11 @@ public:
 
 protected:
 
+	/** collision detection, sets isCollidingDuringDrag if true
+	  * @returns true if collision detected
+	  */
+	bool checkForCollision(void);
+
 	static QUndoStack* getUndoStackPtr(void);
 
 	/** overridden from QGraphicsItem

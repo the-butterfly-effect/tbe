@@ -98,10 +98,8 @@ Completed: revision 420.
 FIRST PLAYABLE - with a supervisor
 
 
-Milestone 5 - It's make over time! (post-ELCE)
+Milestone 5 - It's make over time! (NLLGG talk)
 Version 0.50
-  * implement rotation of relevant objects
-	- requires implementing UndoRotateCommand
   x Important overdue refactorings:
 	x refactor UndoMoveCommand/DrawObject
 	x Create AbstractBall class and merge BowlingBall and Volleyball into that
@@ -118,13 +116,17 @@ Version 0.50
   x add Tennisball object
   / add two more levels
   x make collision detection on mouse move better/more usable
-  - if collision happens and user releases mouse button, go back to last known good.
+  x if collision happens and user releases mouse button, go back to last known good.
   - upon drag-n-drop from toolbox, also do collision detection
-  - generalize collision detection so it also works with CokeMentosBottle
+  x generalize collision detection so it also works with CokeMentosBottle
+  * clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
 Milestone 5.5 - inbetween
+  * implement rotation of relevant objects
+	- requires implementing UndoRotateCommand
+	- and re-enable in Anchors::Anchors
   * investigate GLUON
   * Important overdue refactorings:
 	* switching to Gluon may solve this already?

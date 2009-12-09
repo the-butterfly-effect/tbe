@@ -120,6 +120,12 @@ QRectF DrawObject::boundingRect() const
     return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
 }
 
+bool DrawObject::checkForCollision(void)
+{
+	isCollidingDuringDrag = (scene()->collidingItems(this).isEmpty() == false);
+	return isCollidingDuringDrag;
+}
+
 void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
 	if (theBaseObjectPtr->isMovable()==true &&
@@ -223,43 +229,36 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 		}
 	}
 
-
 	// TODO: problem: if you click an object near the side, it will still register as if you
 	// clicked in the exact center - with an unvoluntary movement as a result
 
-	// collision detection
-	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0 
-			&& (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
+	checkForCollision();
+
+	// do not allow object to be moved through X and Y axes to negative coords
+	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
+		 && (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		theUndoMovePtr->setNewPosition(myPos);
+		theUndoMovePtr->setNewPosition(myPos, (isCollidingDuringDrag==false) );
 		theUndoMovePtr->redo();
-		
-		// if the new position collides with another, reset the position to the original one
-		isCollidingDuringDrag=false;
-		if (!scene()->collidingItems(this).isEmpty())
-		{
-			isCollidingDuringDrag=true;
-		}
 	}
 }
 
 void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("DrawObject::mouseReleaseEvent(%d)\n", event->type());
+	DEBUG5("DrawObject::mouseReleaseEvent(%d) for button %d\n", event->type(), event->button());
 	// TODO: FIXME: for now, we're not discriminative for left or right mousebutton...
-	DEBUG5("for button %d\n", event->button());
 
 	if (theUndoMovePtr == NULL)
 		return;
 
 	// are we currently in a collision?
+	// in that case, go back to last known good
+	checkForCollision();
 	if (isCollidingDuringDrag)
 	{
-		theUndoMovePtr->undo();
-		delete theUndoMovePtr;
-		theUndoMovePtr= NULL;
-		isCollidingDuringDrag=false;
-		goto cleanup;
+		DEBUG4("Reverting to last known non-colliding position\n");
+		theUndoMovePtr->revertToLastGood();
+		isCollidingDuringDrag = false;
 	}
 
 	// is the position any different?
@@ -269,7 +268,6 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 		delete theUndoMovePtr;
 	theUndoMovePtr = NULL;
 
-cleanup:
 	QGraphicsItem::mouseReleaseEvent(event);
 	if (theAnchorsPtr==NULL)
 		theAnchorsPtr= new Anchors(this);

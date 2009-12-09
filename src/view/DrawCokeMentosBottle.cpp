@@ -70,6 +70,15 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 
 	DEBUG5("DrawCokeMentosBottle::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 
+	// draw a dotted outline if colliding during move of object
+	if (isCollidingDuringDrag)
+	{
+		QPen myPen(Qt::DashLine);
+		myPainter->setPen(myPen);
+		QColor myColor(Qt::transparent);
+		myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
+		return;
+	}
 
 	if (theRenderer != NULL)
 	{
