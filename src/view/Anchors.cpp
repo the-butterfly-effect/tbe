@@ -55,9 +55,10 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
 
-	if (myBOPtr->isRotatable())
-		myMode = PieMenu::ROTATE;
-	else
+// FIXME/TODO: Rotation is disabled for now
+//	if (myBOPtr->isRotatable())
+//		myMode = PieMenu::ROTATE;
+//	else
 		myMode = PieMenu::NONE;
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  BOTTOM, this));
