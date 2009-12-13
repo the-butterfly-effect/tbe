@@ -118,6 +118,12 @@ protected:
 	virtual void focusInEvent ( QFocusEvent * event );
 
 	/** overridden from QGraphicsItem
+	 *  we want to know when the user deselects the object
+	 *  @param event the even to handle
+	 */
+	virtual void focusOutEvent ( QFocusEvent * event );
+
+	/** overridden from QGraphicsItem
 	 *  if called, setup a hover icon (indicating current action)
 	 *  or not (if object is immovable)
 	 *

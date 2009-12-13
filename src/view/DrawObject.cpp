@@ -160,6 +160,7 @@ void DrawObject::drawCollisionCross(QPainter* aPainter, const QRectF& myRect)
 		}
 	}
 }
+
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
@@ -170,6 +171,13 @@ void DrawObject::focusInEvent ( QFocusEvent * event )
 	}
 	theAnchorsPtr=new Anchors(this);
 	update();
+}
+
+void DrawObject::focusOutEvent ( QFocusEvent * event )
+{
+	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
+	delete theAnchorsPtr;
+	theAnchorsPtr = NULL;
 }
 
 void DrawObject::focusRemove(bool alsoDeleteAnchors)
