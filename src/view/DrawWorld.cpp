@@ -167,7 +167,9 @@ void DrawWorld::initAttributes ( )
 
 void DrawWorld::on_OneSecondAfterWinning(void)
 {
-	stopTimer();
+	theSimStateMachine->goToState(StartStopWatch::STOPPED);
+	delete theSimStateMachine;
+	theSimStateMachine = NULL;
 	emit levelWon();
 }
 
