@@ -174,6 +174,9 @@ protected:
 	QSvgRenderer*	theRenderer;
 	QPixmap*		thePixmapPtr;
 
+	/// we only need one Cross Renderer for all DrawObjects...
+	static QSvgRenderer*	theCrossRendererPtr;
+
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!
 	DrawWorld* theUndeleteDrawWorldPtr;

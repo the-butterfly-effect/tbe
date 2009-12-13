@@ -39,6 +39,8 @@ static QUndoStack* theUndoStackPtr = NULL;
 
 Anchors* DrawObject::theAnchorsPtr = NULL;
 
+QSvgRenderer* DrawObject::theCrossRendererPtr = NULL;
+
 // Constructors/Destructors
 //  
 
@@ -197,6 +199,11 @@ void DrawObject::initAttributes ( )
 		setAcceptHoverEvents(true);
 	}
 
+	if (theCrossRendererPtr==NULL)
+	{
+		theCrossRendererPtr = ImageStore::getRenderer("BigCross");
+	}
+
 //    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
 
@@ -280,33 +287,37 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
-
-	// draw a dotted outline if colliding during move of object
-	if (isCollidingDuringDrag)
-	{
-		QPen myPen(Qt::DashLine);
-		myPainter->setPen(myPen);
-		QColor myColor(Qt::transparent);
-		myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
-		return;
-	}
-
 	if (thePixmapPtr != NULL)
 	{
 		myPainter->drawPixmap(myRect, *thePixmapPtr, thePixmapPtr->rect());
-		return;
+		goto checkForCollision;
 	}
 
 	if (theRenderer != NULL)
 	{
 		theRenderer->render(myPainter, myRect);
-		return;
+		goto checkForCollision;
 	}
 
-	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-	// Body
-	myPainter->setBrush(color);
-	myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	// Backup for Body drawing
+	{
+		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+		myPainter->setBrush(color);
+		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	}
+
+checkForCollision:
+	// draw a dotted outline if colliding during move of object
+	if (isCollidingDuringDrag)
+	{
+		if (theCrossRendererPtr)
+			theCrossRendererPtr->render(myPainter, myRect);
+		else
+		{
+			myPainter->drawLine(-myWidth/2, -myHeight/2, myWidth, +myHeight);
+			myPainter->drawLine(-myWidth/2, +myHeight/2, myWidth, -myHeight);
+		}
+	}
 }
 
 bool DrawObject::pushUndo(QUndoCommand* anUndo)
