@@ -117,13 +117,13 @@ Version 0.50
   / add two more levels
   x make collision detection on mouse move better/more usable
   x if collision happens and user releases mouse button, go back to last known good.
-  - upon drag-n-drop from toolbox, also do collision detection
   x generalize collision detection so it also works with CokeMentosBottle
-  * clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
+  x clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
 Milestone 5.5 - inbetween
+  * upon drag-n-drop from toolbox, also do collision detection
   * implement rotation of relevant objects
 	- requires implementing UndoRotateCommand
 	- and re-enable in Anchors::Anchors
