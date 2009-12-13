@@ -66,17 +66,28 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 
-	// draw a box as the outline of the World
-	addLine(0,0,                     getWidth(),0);
-	addLine(getWidth(),0,            getWidth(),-getHeight());
-	addLine(getWidth(),-getHeight(), 0,-getHeight());
-	addLine(0,-getHeight(),          0,0);
-	
+	if (theIsLevelEditor)
+	{
+		// draw a box as the outline of the World
+		addLine(0,0,                     getWidth(),0);
+		addLine(getWidth(),0,            getWidth(),-getHeight());
+		addLine(getWidth(),-getHeight(), 0,-getHeight());
+		addLine(0,-getHeight(),          0,0);
+	}
+
 	// two dots on top-right and bottom-left to make sure that the Scene
 	// is rendered in total
 	addItem(new Dot(getWidth()+0.01, -getHeight()-0.01));
 	addItem(new Dot(          -0.01,             +0.01));
 	
+	// a blue gradient background
+	// FIXME: I can imagine we're going to make this flexible later
+	setBackgroundBrush(Qt::blue);
+	QLinearGradient myBackground(0,0, 0,-getHeight());
+	myBackground.setColorAt(0, QColor(Qt::white));
+	myBackground.setColorAt(1, QColor(121,159,255,255));
+	setBackgroundBrush(myBackground);
+
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 
