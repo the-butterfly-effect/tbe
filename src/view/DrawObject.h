@@ -154,6 +154,10 @@ protected:
 
 	void applyPosition(void);
 	
+	/// if the object is colliding, draw a big fat cross
+	void drawCollisionCross(QPainter* aPainter, const QRectF& myRect);
+
+
 protected:
 	// Private attributes
 	//  

@@ -146,6 +146,20 @@ bool DrawObject::deregister()
 	return true;
 }
 
+void DrawObject::drawCollisionCross(QPainter* aPainter, const QRectF& myRect)
+{
+	// draw a dotted outline if colliding during move of object
+	if (isCollidingDuringDrag)
+	{
+		if (theCrossRendererPtr)
+			theCrossRendererPtr->render(aPainter, myRect);
+		else
+		{
+			aPainter->drawLine(myRect.bottomLeft(), myRect.topRight());
+			aPainter->drawLine(myRect.bottomRight(), myRect.topLeft());
+		}
+	}
+}
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
@@ -303,21 +317,11 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	{
 		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
 		myPainter->setBrush(color);
-		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+		myPainter->drawEllipse(myRect);
 	}
 
 checkForCollision:
-	// draw a dotted outline if colliding during move of object
-	if (isCollidingDuringDrag)
-	{
-		if (theCrossRendererPtr)
-			theCrossRendererPtr->render(myPainter, myRect);
-		else
-		{
-			myPainter->drawLine(-myWidth/2, -myHeight/2, myWidth, +myHeight);
-			myPainter->drawLine(-myWidth/2, +myHeight/2, myWidth, -myHeight);
-		}
-	}
+	drawCollisionCross(myPainter, myRect);
 }
 
 bool DrawObject::pushUndo(QUndoCommand* anUndo)

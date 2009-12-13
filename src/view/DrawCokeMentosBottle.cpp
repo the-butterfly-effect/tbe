@@ -68,18 +68,7 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
-	DEBUG5("DrawCokeMentosBottle::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
-
-	// draw a dotted outline if colliding during move of object
-	if (isCollidingDuringDrag)
-	{
-		QPen myPen(Qt::DashLine);
-		myPainter->setPen(myPen);
-		QColor myColor(Qt::transparent);
-		myPainter->drawRect(-myWidth/2, -myHeight/2, myWidth, myHeight);
-		return;
-	}
-
+	DEBUG6("DrawCokeMentosBottle::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 	if (theRenderer != NULL)
 	{
 		// what to render depends on the state of the object
@@ -99,11 +88,17 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 			|| myStatus == CokeMentosBottle::TRIGGERED)
 			theRenderer->render(myPainter, "cap", myRect);
 
-		return;
+		goto checkForCollision;
 	}
 
-	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-	// Body
-	myPainter->setBrush(color);
-	myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	{
+		// Body
+		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+		myPainter->setBrush(color);
+		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
+	}
+
+checkForCollision:
+	drawCollisionCross(myPainter, myRect);
+
 }
