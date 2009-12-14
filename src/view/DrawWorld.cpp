@@ -41,7 +41,6 @@ public:
 	{
 		setPos(x,y);
 		setFlags(0);
-		setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	}
 
 	/// overriden from QGraphicsItem
