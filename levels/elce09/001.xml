@@ -33,8 +33,17 @@ Goal: Butterfly to the Flower.</description>
             </object>
             <object X="2.1" Y="1.5" type="NoteIt">
                 <property key="page1" >You see that butterfly?</property>
+                <property key="page1_nl" >Zie je die vlinder?</property>
                 <property key="page2" >It wants to go to the flower...</property>
-                <property key="page3" >Click the start button right below&lt;br&gt;to make it happen!</property>
+                <property key="page2_nl" >Die wil naar de bloem...</property>
+                <property key="page3" >Once this Note-It is gone,&lt;br&gt;&lt;br&gt;click the stopwatch right below&lt;br&gt;to make it happen!</property>
+                <property key="page3_nl" >Als deze Note-It zo verdwenen is,&lt;br&gt;klik dan op de stopwatch om te starten.</property>
+                <property key="page4" >If you click the stopwatch again, the simulation will stop.&lt;br&gt;There's also a green 'reset' button now.</property>
+                <property key="page4_nl" >Als je nog eens klikt op de stopwatch, dan stopt alles weer.&lt;br&gt;Er komt dan ook een groene 'reset' pijl bij.</property>
+                <property key="page5" >But I've said enough...&lt;br&gt;Good luck!</property>
+                <property key="page5_nl" >Maar ik heb genoeg gezegd...&lt;br&gt;Veel success!</property>
+                <property key="page6" >... The Note-it boy</property>
+                <property key="page6_nl" >... De Note-it boy</property>
 	    </object>
         </predefined>
     </scene>
