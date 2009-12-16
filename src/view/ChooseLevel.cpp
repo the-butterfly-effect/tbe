@@ -23,7 +23,6 @@ ChooseLevel::ChooseLevel(QWidget *parent) :
     QDialog(parent),
 	m_ui(new Ui::ChooseLevel)
 {
-printf("HOI\n");
     m_ui->setupUi(this);
 	show();
 }
