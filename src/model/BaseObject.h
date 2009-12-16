@@ -36,6 +36,7 @@ class ShapeList;
 class b2Body;
 class b2BodyDef;
 class b2ContactPoint;
+class b2ContactResult;
 class b2World;
 class b2ShapeDef;
 class b2Shape;
@@ -57,6 +58,42 @@ public:
 	virtual void callBackSensor(b2ContactPoint*)
 	{ return; }
 };
+
+
+/** Interface to indicate a BaseObject child class is interested in
+ *  information on impulses acting on its body.
+ *
+ *  Don't forget to override the isInterested*() if you want the report*() !!!
+ *
+ * I don't expect any class will inherit this class directly - BaseObject
+ * already does that. Just override what you need.
+ */
+class ImpulseInterface
+{
+public:
+	/// please override and return true if you want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return false; }
+
+	/// please override and return true if you want reports on NormalImpulse
+	virtual bool isInterestedInTangentImpulse(void)
+	{ return false; }
+
+	/** will be called by World to report normal impulse length
+	  * note that an object resting on top of another already has a (constant)
+	  * normal impulse vector.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(UNUSED_ARG qreal anImpulseLength) {};
+
+	/** will be called by World to report tangential impulse length
+	  * note that an object resting on top of another has no tangential
+	  * impulse vector.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportTangentImpulse(UNUSED_ARG qreal anImpulse) {};
+};
+
 
 
 // ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
@@ -83,7 +120,7 @@ public:
   * abstract base class for everything in the simulation model 
   */
 
-class BaseObject : public SensorInterface
+class BaseObject : public SensorInterface, public ImpulseInterface
 {
 public:
 

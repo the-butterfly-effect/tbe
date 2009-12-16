@@ -256,6 +256,33 @@ qreal World::simStep (void)
 		}
 	}
 
+	// check all contactresults if either of the objects is interested
+	// in hearing the impulses...
+	for (ContactResultList::iterator k = theContactResultList.begin();
+			 k!=theContactResultList.end(); ++k)
+	{
+		b2ContactResult* myResPtr = &(*k);
+		BaseObject* myBO1Ptr = reinterpret_cast<BaseObject*>(myResPtr->shape1->GetUserData());
+		BaseObject* myBO2Ptr = reinterpret_cast<BaseObject*>(myResPtr->shape2->GetUserData());
+
+		if (myBO1Ptr!=NULL)
+		{
+			if (myBO1Ptr->isInterestedInNormalImpulse())
+				myBO1Ptr->reportNormalImpulseLength( myResPtr->normalImpulse );
+			if (myBO1Ptr->isInterestedInTangentImpulse())
+				myBO1Ptr->reportTangentImpulse( myResPtr->tangentImpulse );
+		}
+
+		if (myBO2Ptr!=NULL)
+		{
+			if (myBO2Ptr->isInterestedInNormalImpulse())
+				myBO2Ptr->reportNormalImpulseLength( myResPtr->normalImpulse );
+			if (myBO2Ptr->isInterestedInTangentImpulse())
+				myBO2Ptr->reportTangentImpulse( myResPtr->tangentImpulse );
+		}
+	}
+
+
 	// run all the callbacks per sim step
 	CallbackList::iterator i;
 	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)

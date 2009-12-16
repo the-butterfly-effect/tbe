@@ -55,16 +55,27 @@ protected:
 	void Remove(const b2ContactPoint*)
 	{ /* no action */ }
 
+	/** implemented from b2ContactListener:
+	 *  contact point resulted in a normal or tangential impulse
+	 */
+	void Result(const b2ContactResult* result)
+	{
+		theContactResultList.push_back(*result);
+	}
+
 	/// it doesn't make sense to use any more complex storage than vector
 	/// the good news is that vector makes a copy upon insertion
 	/// - that's what we need anyway
 	typedef std::vector<b2ContactPoint> ContactPointList;
 	ContactPointList theAddedCPList;
+	typedef std::vector<b2ContactResult> ContactResultList;
+	ContactResultList theContactResultList;
 
 	/// erase all lists again
 	void clearLists(void)
 	{
 		theAddedCPList.clear();
+		theContactResultList.clear();
 	}
 };
 
