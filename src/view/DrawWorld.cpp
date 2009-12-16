@@ -175,6 +175,31 @@ void DrawWorld::initAttributes ( )
 	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
 }
 
+
+void DrawWorld::on_death(void)
+{
+	// only need to display the graphicsitem once...
+	if (theCongratulations!=NULL)
+		return;
+
+	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
+	theCongratulations->setText(tr("Death!!!"));
+	QRectF myBounds = theCongratulations->boundingRect();
+	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
+
+	theCongratulations->scale(myResize, myResize);
+	theCongratulations->setPos(0, -(getHeight()/2.0));
+	theCongratulations->setZValue(0.01);
+
+	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterDeath()));
+}
+
+
+void DrawWorld::on_OneSecondAfterDeath(void)
+{
+	theSimStateMachine->goToState(StartStopWatch::BROKEN);
+}
+
 void DrawWorld::on_OneSecondAfterWinning(void)
 {
 	theSimStateMachine->goToState(StartStopWatch::STOPPED);
@@ -192,7 +217,6 @@ void DrawWorld::on_timerTick()
 	}
 	advance();
 }
-
 
 void DrawWorld::on_winning(void)
 {
@@ -222,6 +246,12 @@ void DrawWorld::resetWorld( )
 	setAcceptDrops(true);
 	if (theDrawDebug)
 		clearGraphicsList(0);
+
+	if (theCongratulations!=NULL)
+	{
+		delete theCongratulations;
+		theCongratulations=NULL;
+	}
 }
 
 void DrawWorld::setAcceptDrops(bool isOn)

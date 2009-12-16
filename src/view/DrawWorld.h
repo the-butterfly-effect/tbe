@@ -36,8 +36,8 @@ class QDropEvent;
 class StartStopWatch;
 
 
-/** class DrawObject
-  * This class abstracts the actual drawing of objects
+/** class DrawWorld
+  * This class contains the Draw* objects and is the QGraphicsScene
   */
 
 class DrawWorld : public QGraphicsScene
@@ -120,12 +120,18 @@ public slots:
 	/// called on winning by World.
 	void on_winning(void);
 
+	/// called on death of an object
+	void on_death(void);
+
 private slots:
-	/// called whenever a timer tick happens
-	void on_timerTick(void);
+	/// called by a oneshot timer after on_death() was called
+	void on_OneSecondAfterDeath(void);
 
 	/// called by a oneshot timer after on_winning() was called
 	void on_OneSecondAfterWinning(void);
+
+	/// called whenever a timer tick happens
+	void on_timerTick(void);
 
 private:
 	// Private attributes
