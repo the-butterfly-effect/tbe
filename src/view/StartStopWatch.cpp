@@ -31,13 +31,14 @@ StartStopWatch::StartStopWatch()
 	setBackgroundBrush(QApplication::palette().window());
 
 	// get our SVG renderers
-	QSvgRenderer* myRenderer = ImageStore::getRenderer("StartStopWatch");
+	theStopwatchRendererPtr = ImageStore::getRenderer("StartStopWatch");
+	theBrokenStopwatchRendererPtr = ImageStore::getRenderer("StartStopWatchBroken");
 	theStopWatchSvgPtr = new QGraphicsSvgItem(NULL);
-	theStopWatchSvgPtr->setSharedRenderer(myRenderer);
+	theStopWatchSvgPtr->setSharedRenderer(theStopwatchRendererPtr);
 	theStopWatchSvgPtr->setZValue(1.0);
 	addItem(theStopWatchSvgPtr);
 
-	myRenderer = ImageStore::getRenderer("StartStopWatchHand");
+	QSvgRenderer* myRenderer = ImageStore::getRenderer("StartStopWatchHand");
 	theStopWatchHandSvgPtr = new QGraphicsSvgItem(NULL);
 	theStopWatchHandSvgPtr->setSharedRenderer(myRenderer);
 	theStopWatchHandSvgPtr->setZValue(2.0);
@@ -81,6 +82,9 @@ void StartStopWatch::clicked_on_watch()
 	case RUNNING:
 		goToState(STOPPED);
 		break;
+	case BROKEN:
+		goToState(NOTSTARTED);
+		break;
 	}
 }
 
@@ -111,6 +115,9 @@ void StartStopWatch::goToState(TheStates aNewState)
 				startStopwatch();
 				theState = aNewState;
 				break;
+			case BROKEN:		// should not happen
+				assert(false);
+				break;
 			}
 			break;
 		}
@@ -129,6 +136,9 @@ void StartStopWatch::goToState(TheStates aNewState)
 				removeResetButton();
 				startStopwatch();
 				theState = aNewState;
+				break;
+			case BROKEN:		// should not happen
+				assert(false);
 				break;
 			}
 			break;
@@ -149,6 +159,33 @@ void StartStopWatch::goToState(TheStates aNewState)
 				theState = aNewState;
 				break;
 			case RUNNING:		// no need for action
+				break;
+			case BROKEN:
+				stopStopwatch();
+				showResetButton();
+				// show broken watch
+				showWatch(true);
+				theState = aNewState;
+				break;
+			}
+			break;
+		}
+	case BROKEN:
+		{
+			switch (aNewState)
+			{
+			case NOTSTARTED:
+				// no longer show broken watch
+				showWatch(false);
+				resetStopwatch();
+				removeResetButton();
+				theState = aNewState;
+				break;
+			case BROKEN:
+				break;
+			case STOPPED:
+			case RUNNING:
+				assert(false);
 				break;
 			}
 			break;
@@ -198,6 +235,17 @@ void StartStopWatch::showResetButton(void)
 	theResetSvgPtr->setZValue(5.0);
 	addItem(theResetSvgPtr);
 }
+
+void StartStopWatch::showWatch(bool isBroken)
+{
+	if (isBroken)
+		theStopWatchSvgPtr->setSharedRenderer(theBrokenStopwatchRendererPtr);
+	else
+		theStopWatchSvgPtr->setSharedRenderer(theStopwatchRendererPtr);
+	// only display the hand when not broken
+	theStopWatchHandSvgPtr->setVisible(isBroken==false);
+}
+
 
 void StartStopWatch::startStopwatch()
 {

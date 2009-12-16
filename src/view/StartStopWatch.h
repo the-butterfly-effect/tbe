@@ -25,7 +25,7 @@
 
 // forward declarations
 class QGraphicsSvgItem;
-
+class QSvgRenderer;
 
 /** This is the new view/controller class for start/stop.
   * It uses an animated representation of a stopwatch
@@ -44,7 +44,8 @@ public:
 	{
 		NOTSTARTED,	// stopwatch is stationary at zero
 		STOPPED,	// stopwatch is stationary at nonzero (also show reset button)
-		RUNNING		// stopwatch is running
+		RUNNING,	// stopwatch is running
+		BROKEN,		// stopwatch is broken - probably because "butterfly has died"
 	};
 
 	/// the base of the state machine
@@ -77,6 +78,7 @@ private slots:
 private:
 	void removeResetButton();
 	void showResetButton();
+	void showWatch(bool isBroken);
 
 	void startStopwatch();
 	void stopStopwatch();
@@ -88,6 +90,9 @@ private:
 	QGraphicsSvgItem* theStopWatchHandSvgPtr;
 	QTransform	theRotation;
 	QGraphicsSvgItem* theResetSvgPtr;
+
+	QSvgRenderer* theBrokenStopwatchRendererPtr;
+	QSvgRenderer* theStopwatchRendererPtr;
 
 	/** the variable behind the state machine
 	 *  The only member allowed to touch theState is goToState()!!!
