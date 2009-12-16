@@ -61,11 +61,6 @@ Butterfly::~Butterfly()
 }
 
 
-void Butterfly::callBackSensor(b2ContactPoint*)
-{
-	hasContact = true;
-}
-
 void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 {
 	DEBUG6("Butterfly receives callback\n");
@@ -73,8 +68,13 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 	switch(getState())
 	{
 		case STILL: // not implemented yet
-		case DEAD:	// not implemented yet
-			// nothing to do
+			break;
+		case DEAD:
+			// nothing to do, we just leave gravity take its course
+
+			// FIXME: it would be nice if the butterfly would land on its back
+
+			// Note that the DrawButterfly::paint will signal the DrawWorld of death
 			break;
 		case FLAP_OPEN:
 		case FLAP_HALF:
@@ -138,6 +138,16 @@ void Butterfly::goToFlower(void)
 		theTargetPos = myFlowerPtr->getOrigCenter();
 }
 
+
+void Butterfly::reportNormalImpulseLength(qreal anImpulseLength)
+{
+	printf("**************** normal impulse: %f\n", anImpulseLength);
+	if(anImpulseLength<0.0003)
+		return;
+	setState(DEAD);
+}
+
+
 void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 {
 	theButterflyState = aNewStateSuggestion;
@@ -145,9 +155,9 @@ void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 
 void Butterfly::reset(void)
 {
+	setState(FLAP_OPEN);
 	theWorldPtr->registerCallback(this);
 	RectObject::reset();
-	hasContact = false;
 	
 	goToFlower();
 }

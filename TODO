@@ -111,14 +111,18 @@ Version 0.50
   x make start-stop-reset more intuitive
 	x use stopwatch animated image
 	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
-  * make sure butterfly dies if hit by something
-	- also terminate simulation in that case
+  x make sure butterfly dies if hit by something
+	x also terminate simulation in that case
   x add Tennisball object
   / add two more levels
   x make collision detection on mouse move better/more usable
   x if collision happens and user releases mouse button, go back to last known good.
   x generalize collision detection so it also works with CokeMentosBottle
   x clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
+  * honor "resizable" property
+  * highlight NoteIts on hovering over them.
+  * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
+  * dragging back to toolbox doesn't work
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 

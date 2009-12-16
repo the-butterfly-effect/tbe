@@ -114,6 +114,7 @@ void RectObject::adjustParameters(void)
 			// get mass:  no mass -> no density -> no motion
 			qreal myMass = getProperty(MASS_STRING).toDouble();
 			boxDef->density = myMass / getTheWidth()*getTheHeight();
+			boxDef->userData = this;
 			setFriction(boxDef);
 			theShapeList.push_back(boxDef);
 		}
@@ -159,6 +160,7 @@ void RectObject::adjustTallParametersPart(void)
 		boxDef->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
 							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
 		boxDef->density = myDensity;
+		boxDef->userData = this;
 		setFriction(boxDef);
 		theShapeList.push_back(boxDef);
 		myDoneHeight += myElemHeight;
@@ -197,6 +199,7 @@ void RectObject::adjustWideParametersPart(void)
 		boxDef->SetAsBox  	( myElemWidth/2.0, getTheHeight()/2.0,
 							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
 		boxDef->density = myDensity;
+		boxDef->userData = this;
 		setFriction(boxDef);
 		theShapeList.push_back(boxDef);
 		myDoneWidth += myElemWidth;

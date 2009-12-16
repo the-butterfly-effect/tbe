@@ -19,6 +19,7 @@
 #include "DrawButterfly.h"
 #include "BaseObject.h"
 #include "ImageStore.h"
+#include "DrawWorld.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -78,11 +79,8 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 				dynamic_cast<Butterfly*>(theBaseObjectPtr)->getState();
 
 		if (myStatus == Butterfly::DEAD)
-		{
-			assert(false);
-			return;
-		}
-
+			emit (reinterpret_cast<DrawWorld*>(scene()))->on_death();
+		
 		if (myStatus == Butterfly::FLAP_HALF)
 			theRenderer->render(myPainter, "Wing-halfopen", myRect);
 
@@ -91,7 +89,7 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 
 		theRenderer->render(myPainter, "Body", myRect);
 
-		if (myStatus == Butterfly::FLAP_OPEN)
+		if (myStatus == Butterfly::FLAP_OPEN || myStatus == Butterfly::DEAD)
 			theRenderer->render(myPainter, "Wing-open", myRect);
 
 		return;

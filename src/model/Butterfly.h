@@ -51,7 +51,7 @@ public:
 	/// called if Object has registered a sensor share
 	/// Butterfly needs to know if it has hit another object
 	/// overridden from SensorInterface
-	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+//	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 	/// overriden from BaseObject
 	/// because we need to instantiate a special DrawButterfly class
@@ -75,6 +75,19 @@ public:
 	void goToFlower(void);
 
 
+public:
+	// the following two members are part of the normal impulse reporting
+
+	/// overridden from BaseObject - we want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return true; }
+
+	/** overridden from BaseObject - we want to receive
+	  * reports on the normal impulse.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+
 protected:
 	/// suggest a new state of the butterfly state machine
 	void setState(ButterflyStatus aNewStateSuggestion);
@@ -94,10 +107,6 @@ private:
 
 	/// central variable of the Butterfly state machine
 	ButterflyStatus theButterflyState;
-
-	/// true when the bottle's sensor is touching something
-	/// not in use yet
-	bool hasContact;
 
 	/// FIXME: TODO
 	signed int theCountdown;
