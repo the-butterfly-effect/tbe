@@ -21,7 +21,7 @@
 #include "DrawButterfly.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-
+#include "Property.h"
 
 //// this class' ObjectFactory
 class ButterflyObjectFactory : public ObjectFactory
@@ -39,9 +39,8 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 Butterfly::Butterfly()
 		: RectObject(), theCountdown(1)
 {
-	setProperty(IMAGE_NAME_STRING, "Butterfly");
-	setProperty(DESCRIPTION_STRING, QObject::tr("lalala FIXME"));
-	setProperty(MASS_STRING, QString::number(theButterflyMass));
+	setProperty(Property::DESCRIPTION_STRING, QObject::tr("A Butterfly flaps happily around - to flowers mostly."));
+	setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
 
 	// butterflies don't bounce *ever*
 	setTheBounciness(0.0);
@@ -124,7 +123,7 @@ DrawObject*  Butterfly::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawButterfly(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawButterfly(this, "Butterfly");
 	return theDrawObjectPtr;
 }
 

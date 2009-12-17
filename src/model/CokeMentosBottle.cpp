@@ -20,6 +20,7 @@
 #include "DrawCokeMentosBottle.h"
 #include "tbe_global.h"
 #include "Box2D.h"
+#include "Property.h"
 
 /// Note: CokeSplatter does not have an ObjectFactory
 /// as it cannot be instantiated by a user (neither in-game
@@ -274,8 +275,8 @@ CokeSplatter::CokeSplatter()
 		: RectObject()
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
-	setProperty(IMAGE_NAME_STRING, "CokeSplatter");
-	setProperty(DESCRIPTION_STRING, "");
+	setProperty(Property::IMAGE_NAME_STRING, "CokeSplatter");
+	setProperty(Property::DESCRIPTION_STRING, "");
 
 	// the actual shape
 	b2CircleDef* myBubbleDef = new b2CircleDef();

@@ -20,19 +20,9 @@
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "DrawObject.h"
-
-
-const char* OBJECT_NAME_STRING = "ObjectName";
-const char* BOUNCINESS_STRING  = "Bounciness";
-const char* RESIZABLE_STRING   = "Resizable";
-const char* ROTATABLE_STRING   = "Rotatable";
-const char* MASS_STRING        = "Mass";
-const char* FRICTION_STRING    = "Friction";
-const char* IMAGE_NAME_STRING  = "ImageName";
-const char* DESCRIPTION_STRING = "Description";
+#include "Property.h"
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
-
 
 
 //// this class' ObjectFactory
@@ -112,7 +102,7 @@ void RectObject::adjustParameters(void)
 			boxDef->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
 
 			// get mass:  no mass -> no density -> no motion
-			qreal myMass = getProperty(MASS_STRING).toDouble();
+			qreal myMass = getProperty(Property::MASS_STRING).toDouble();
 			boxDef->density = myMass / getTheWidth()*getTheHeight();
 			boxDef->userData = this;
 			setFriction(boxDef);
@@ -134,7 +124,7 @@ void RectObject::adjustTallParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = getProperty(MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	qreal myDensity = getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
 	qreal myDoneHeight = 0.0;
@@ -173,7 +163,7 @@ void RectObject::adjustWideParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = getProperty(MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	qreal myDensity = getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
 	qreal myDoneWidth = 0.0;
@@ -212,18 +202,18 @@ DrawObject*  RectObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }
 
 void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 {
 	// only set friction if it is special
-	if (getProperty(FRICTION_STRING).isEmpty())
+	if (getProperty(Property::FRICTION_STRING).isEmpty())
 		return;
 
 	bool isOK = false;
-	double myFriction = getProperty(FRICTION_STRING).toDouble(&isOK);
+	double myFriction = getProperty(Property::FRICTION_STRING).toDouble(&isOK);
 	if (isOK)
 		aBoxDef->friction = myFriction;
 	else
@@ -237,18 +227,18 @@ void  RectObject::setProperty(const QString& aKey, const QString& aValue)
 
 	BaseObject::setProperty(aKey,aValue);
 
-	if (aKey == ROTATABLE_STRING)
+	if (aKey == Property::ROTATABLE_STRING)
 	{
 		rotatableInfo = false;
 		if (aValue == "yes" || aValue == "true")
 			rotatableInfo = true;
 	}
 
-	if (aKey == OBJECT_NAME_STRING)
+	if (aKey == Property::OBJECT_NAME_STRING)
 		theNameString = aValue;
-	if (aKey == BOUNCINESS_STRING)
+	if (aKey == Property::BOUNCINESS_STRING)
 		setTheBounciness(aValue.toDouble());
-	if (aKey == RESIZABLE_STRING)
+	if (aKey == Property::RESIZABLE_STRING)
 	{
 		// we do not check for noresize, that's the default
 		resizableInfo = NORESIZING;
@@ -260,9 +250,9 @@ void  RectObject::setProperty(const QString& aKey, const QString& aValue)
 			resizableInfo = TOTALRESIZE;
 		adjustParameters();
 	}
-	if (aKey == MASS_STRING)
+	if (aKey == Property::MASS_STRING)
 		adjustParameters();
 	// No need to do image name
-	if (aKey == DESCRIPTION_STRING)
+	if (aKey == Property::DESCRIPTION_STRING)
 		theToolTipString = aValue;
 }

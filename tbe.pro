@@ -22,6 +22,7 @@ QT += core \
 HEADERS += src/tbe_global.h \
     src/base/BaseObjectSerializer.h \
     src/base/GoalSerializer.h \
+    src/base/Property.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
@@ -59,6 +60,7 @@ HEADERS += src/tbe_global.h \
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/GoalSerializer.cpp \
+    src/base/Property.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \

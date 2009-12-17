@@ -20,6 +20,7 @@
 #include "tbe_global.h"
 #include "DrawObject.h"
 #include "Box2D.h"
+#include "Property.h"
 
 //// this class' ObjectFactory
 class RightRampObjectFactory : public ObjectFactory
@@ -140,6 +141,6 @@ DrawObject*  RightRamp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }

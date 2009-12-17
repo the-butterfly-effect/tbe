@@ -20,6 +20,7 @@
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "DrawObject.h"
+#include "Property.h"
 
 // this class' ObjectFactory
 class SceneryObjectFactory : public ObjectFactory
@@ -54,7 +55,7 @@ Scenery::~Scenery( )
 DrawObject*  Scenery::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this, getProperty(IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
 	theDrawObjectPtr->setZValue(0.1);
 	return theDrawObjectPtr;
 }
