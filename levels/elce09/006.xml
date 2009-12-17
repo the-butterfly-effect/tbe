@@ -30,7 +30,7 @@
     <scene>
         <scenesize width="6.0" height="4" />
         <predefined>
-            <object width="2.3" X="4.4" Y="2.1" height="4.2" type="Scenery" >
+            <object width="2.8" X="4.4" Y="2.1" height="4.2" type="Scenery" >
                 <property key="ImageName" >palmtree</property>
             </object>
             <object width="6" X="3" Y="0.05" type="Floor" >
@@ -48,7 +48,9 @@
             <object width="0.1" X="4.4" Y="2.7" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
             </object>
-			<object X="4.4" Y="2.87" type="Bowling Ball" ID="Coconut" />
+	    <object X="4.4" Y="2.87" type="Bowling Ball" ID="Coconut">
+                <property key="ImageName" >coconut</property>
+            </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
             </object>

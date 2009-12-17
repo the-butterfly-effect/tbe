@@ -21,6 +21,9 @@
 #include "tbe_global.h"
 #include "Box2D.h"
 
+// this property string is defined in RectObject.cpp
+extern const char* IMAGE_NAME_STRING;
+
 
 /** the AbstractBall's ObjectFactory
  *  note that it is slightly more complex than usual, because it is generalised
@@ -118,6 +121,9 @@ AbstractBall::~AbstractBall ( ) { }
 
 DrawObject*  AbstractBall::createDrawObject(void)
 {
+	QString myImageName = getProperty(IMAGE_NAME_STRING);
+	if (myImageName.isEmpty()==false)
+		theBallImage = myImageName;
 	DrawObject* myObjPtr = new DrawObject(this, theBallImage);
 	myObjPtr->setZValue(10.0);
 	return myObjPtr;
