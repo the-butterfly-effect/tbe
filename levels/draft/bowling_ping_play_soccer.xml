@@ -1,0 +1,76 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bowling Pin plays soccer...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>The Bowling Ball cannot kick the Bowling Pin in the goal.</description>
+        <date>12/17/09</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Tennis Ball" icon="Tennis Ball">
+	    <object type="Tennis Ball" />
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.5" height="3.0" />
+        <predefined>
+            <object width="0.1" X="0.05" Y="1.45" height="2.7" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+
+	    <object X="0.5" Y="2.4" type="Bowling Ball" />
+            <object X="1.9" Y="1.72" width="3.6" height="0.8" type="RightRamp" angle="0">
+                <property key="ImageName" >right-ramp</property>
+            </object>
+            
+            <object X="3.95" Y="1.17" type="Coke+Mentos Bottle" angle="-1.57" />
+            <object width="4.3" X="2.5" Y="1.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="1.2" X="4.05" Y="1.85" height="0.1" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="4.45" Y="1.45" height="0.7" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="2.0" X="1.1" Y="1.25" height="0.1" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+
+            <object X="1.95" Y="0.59" width="3.7" height="0.65" type="RightRamp" angle="0">
+                <property key="ImageName" >right-ramp</property>
+            </object>
+	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+            <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
+                <property key="ImageName" >goal-scenery</property>
+            </object>
+            <object width="4.5" X="2.25" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            
+            <object width="4.5" X="2.25" Y="0.55" height="1.0" type="Scenery" >
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="2.0" X="1.1" Y="1.75" height="1.4" type="Scenery" >
+                <property key="ImageName">Empty</property>
+            </object>
+
+	    <object X="3.6" Y="0.7" type="NoteIt">
+                <property key="page1">Kick that pin in the goal!</property>
+                <property key="page2">Wait a minute!&lt;br&gt;That Bowling Ball won't do it...</property>
+                <property key="page3" >But that's not an ordinary cola bottle...</property>
+                <property key="page4" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
+                <property key="page5" >Note-it boy played the world cup soccer...&lt;br&gt;&lt;br&gt;... in a previous life!</property>
+	    </object>
+            
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xover">4.0</property>
+		   <property key="object">thepin</property>
+		</goal>
+	</goals>
+</tbe-level>
