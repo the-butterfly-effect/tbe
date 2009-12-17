@@ -183,6 +183,7 @@
             <object X="0.2" Y="1.4" type="NoteIt">
                 <property key="page1" >That coke bottle blows ...&lt;br&gt;&lt;br&gt;but it blows too early</property>
                 <property key="page2" >Don't we all?</property>
+                <property key="page3" >&lt;br&gt;&lt;br&gt; ... the Note-It boy</property>
 	    </object>
             <object width="0.35" X="0.825" Y="1.44" height="0.24" type="LeftRamp" angle="0" >
                     <property key="ImageName" >left-ramp</property>
