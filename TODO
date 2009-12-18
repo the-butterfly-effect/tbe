@@ -123,6 +123,8 @@ Version 0.50
   * highlight NoteIts on hovering over them.
   * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
   * dragging back to toolbox doesn't work
+  * add icon to program
+  * build script to release
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
