@@ -108,6 +108,7 @@ Version 0.50
 	x for change of parameter (object moved/toppled)
   / add concept of order in levels, so players can start
 	- and then move on without having to use File>Open
+	- add File>Open Custom...
   x make start-stop-reset more intuitive
 	x use stopwatch animated image
 	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
@@ -120,11 +121,16 @@ Version 0.50
   x generalize collision detection so it also works with CokeMentosBottle
   x clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
   * honor "resizable" property
-  * highlight NoteIts on hovering over them.
+  * highlight NoteIts on hovering over them
+	- or just change mouse pointer (QCursor) for any clickable item???
   * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
   * dragging back to toolbox doesn't work
   * add icon to program
   * build script to release
+  * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
+  * Shrink Bounding rectangles on e.g. Ramps
+  * hook up start/stop/reset in menu
+  * if level started from command line, do not display splash screen
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
