@@ -18,7 +18,7 @@
 
 #include "Ramp.h"
 #include "tbe_global.h"
-#include "DrawObject.h"
+#include "DrawRamp.h"
 #include "Box2D.h"
 #include "Property.h"
 
@@ -141,6 +141,6 @@ DrawObject*  RightRamp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawRamp(this, getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }

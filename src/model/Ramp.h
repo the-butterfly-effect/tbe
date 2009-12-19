@@ -89,6 +89,7 @@ protected:
 	static const qreal theSlabThickness = 0.04; // m
 
 	bool isRight;
+	friend class DrawRamp;
 };
 
 
