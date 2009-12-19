@@ -130,7 +130,7 @@ Version 0.50
   * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp
   * hook up start/stop/reset in menu
-  * if level started from command line, do not display splash screen
+  x if level started from command line, do not display splash screen
   * fix segfault on resize attempt
 FIRST WIDELY ANNOUNCEABLE VERSION
 

@@ -40,22 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.setupUi(this);
 	showMaximized();
 
-	// TODO: fixme: hardcoded path here!
-	QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
-	QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
 
-	mySplashScenePtr->addItem(myTitlePagePtr);
-	
-	// set my splash screen scene in view and make it fit nicely
-	ui.graphicsView->setScene(mySplashScenePtr);
-	QRectF myRect = myTitlePagePtr->boundingRect ();
-	// TODO: FIXME: this /32.0 is wrong. very wrong :-(
-	myRect.setWidth(myRect.width()/20.0);
-	myRect.setHeight(myRect.height()/20.0);
-	ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
-	connect(myTitlePagePtr, SIGNAL(clicked()), 
-			this, SLOT(slot_splashScreen_clicked()));
-	
 	// setup UndoGroup's QActions and add them to Edit menu
 	theUndoActionPtr = theUndoGroup.createUndoAction(this, tr("&Undo"));
 	theUndoActionPtr->setShortcut(tr("Ctrl+Z"));
@@ -71,8 +56,33 @@ MainWindow::MainWindow(QWidget *parent)
 	// FIXME/TODO: that white block is ugly :-(
 	// "missing scene"->setBackgroundBrush(QApplication::palette().window());
 
-
 	setSimSpeed(0.5);
+
+	// if level specified on command line, don't display splash screen
+	QStringList myArguments = QApplication::arguments();
+	if (myArguments.count()>1)
+	{
+		slot_splashScreen_clicked();
+	}
+	else
+	{
+		// TODO: fixme: hardcoded path here!
+		QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/illustrations/title_page.svg");
+		QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
+
+		mySplashScenePtr->addItem(myTitlePagePtr);
+
+		// set my splash screen scene in view and make it fit nicely
+		ui.graphicsView->setScene(mySplashScenePtr);
+		QRectF myRect = myTitlePagePtr->boundingRect ();
+		// TODO: FIXME: this /32.0 is wrong. very wrong :-(
+		myRect.setWidth(myRect.width()/20.0);
+		myRect.setHeight(myRect.height()/20.0);
+		ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
+		connect(myTitlePagePtr, SIGNAL(clicked()),
+				this, SLOT(slot_splashScreen_clicked()));
+	}
+
 }                           
 
 MainWindow::~MainWindow()
