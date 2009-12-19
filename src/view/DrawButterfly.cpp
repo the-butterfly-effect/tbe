@@ -29,8 +29,8 @@
 //  
 
 DrawButterfly::DrawButterfly (BaseObject* aBaseObjectPtr,
-						UNUSED_ARG const QString& anImageName,
-						UNUSED_ARG DrawObject::ImageType anImageType)
+						const QString& anImageName,
+						DrawObject::ImageType anImageType)
 	: DrawObject(aBaseObjectPtr, anImageName)
 {
 	// everything is done in the DrawObject constructor
