@@ -242,11 +242,11 @@ void  RectObject::setProperty(const QString& aKey, const QString& aValue)
 	{
 		// we do not check for noresize, that's the default
 		resizableInfo = NORESIZING;
-		if (aValue == "horizontal")
+		if (aValue == Property::HORIZONTAL_STRING)
 			resizableInfo = HORIZONTALRESIZE;
-		if (aValue == "vertical")
+		if (aValue == Property::VERTICAL_STRING)
 			resizableInfo = VERTICALRESIZE;
-		if (aValue == "totalresize")
+		if (aValue == Property::TOTALRESIZE_STRING)
 			resizableInfo = TOTALRESIZE;
 		adjustParameters();
 	}

@@ -120,7 +120,7 @@ Version 0.50
   x if collision happens and user releases mouse button, go back to last known good.
   x generalize collision detection so it also works with CokeMentosBottle
   x clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
-  * honor "resizable" property
+  x honor "resizable" property
   * highlight NoteIts on hovering over them
 	- or just change mouse pointer (QCursor) for any clickable item???
   * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
@@ -131,6 +131,7 @@ Version 0.50
   x Shrink bounding rectangles on RightRamp and LeftRamp
   * hook up start/stop/reset in menu
   * if level started from command line, do not display splash screen
+  * fix segfault on resize attempt
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 

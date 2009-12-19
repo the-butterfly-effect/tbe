@@ -60,26 +60,23 @@ public:
 		return QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right.");
 	}
 
-	/// returns true if the object can be rotated by the user
+	/// overridden from RectObject: returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const
 	{	return true;	}
 
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return TOTALRESIZE;	}
-
-	/**
+	/** overridden from RectObject:
 	 * Set the value of theWidth
 	 * @param new_var the new value of theWidth
 	 */
 	virtual void setTheWidth ( qreal new_var );
 
-	/**
+	/** overridden from RectObject:
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
 	 */
 	virtual void setTheHeight ( qreal new_var );
 	
+	/// overridden from RectObject
 	virtual DrawObject* createDrawObject();
 	
 protected:

@@ -22,14 +22,32 @@
 class Property
 {
 public:
+
+	// the following strings are property names, as used in
+	// the level definition XML file:
+	//           <object width="0.25" height="0.8" type="RectObject" >
+	//                <property key="Friction" >0.3</property>
+	//                <property key="Bounciness" >0.2</property>
+	//                <property key="ImageName" >styrofoam</property>
+	//                <property key="Mass" >1</property>
+	//           </object>
+
 	static const char* OBJECT_NAME_STRING;
-	static const char* BOUNCINESS_STRING;
-	static const char* RESIZABLE_STRING;
-	static const char* ROTATABLE_STRING;
-	static const char* MASS_STRING;
-	static const char* FRICTION_STRING;
-	static const char* IMAGE_NAME_STRING;
-	static const char* DESCRIPTION_STRING;
+	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce
+	static const char* RESIZABLE_STRING;		// see below
+	static const char* ROTATABLE_STRING;		// "true" or "false"
+	static const char* MASS_STRING;				// 0.0 - inf, in [kg]
+	static const char* FRICTION_STRING;			// 0.0 - 1.0, where 0=frictionless and 1=no slip
+	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
+	static const char* DESCRIPTION_STRING;		// tooltip  FIXME/TODO: i18n on this
+
+	// the following strings are used within e.g. RectObject as part
+	// of the above RESIZABLE_STRING:
+
+	static const char* NONE_STRING;
+	static const char* HORIZONTAL_STRING;
+	static const char* VERTICAL_STRING;
+	static const char* TOTALRESIZE_STRING;
 };
 
 #endif // PROPERTY_H

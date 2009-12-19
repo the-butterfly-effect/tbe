@@ -21,18 +21,8 @@
 
 #include "BaseObject.h"
 
-extern const char* OBJECT_NAME_STRING;
-extern const char* BOUNCINESS_STRING;
-extern const char* RESIZABLE_STRING;
-extern const char* MASS_STRING;
-extern const char* FRICTION_STRING;
-extern const char* IMAGE_NAME_STRING;
-extern const char* DESCRIPTION_STRING;	/// contains Tooltip
-
 /// forward declarations
 struct b2PolygonDef;
-
-
 
 /**
   * class RectObject
@@ -43,13 +33,7 @@ struct b2PolygonDef;
   * Many things will use this class as a base - it should replace Floor and Wall for example.
   *
   *
-  * Parameters that can be set through Properties:
-  *   * ObjectName  - name under which the object can appear in the toolbox
-  *   * Bounciness  - number between 0 and 2.0 - note that 1.0 already is very bouncy!
-  *   * Resizable   - "none", "hori", "verti" or "both"
-  *   * Mass        - in kg
-  *   * ImageName   - png or svg file, do not specify the extension
-  *   * Description - the "tooltip" - description shown when hovering over the object
+  * Parameters that can be set through Properties are defined in Property.h
   */
 
 class RectObject : public BaseObject
@@ -94,9 +78,8 @@ public:
 	{	return rotatableInfo;	}
 
 	/// returns whether the object can be resized by the user
-	/// FIXME/TODO: MUST BE FLEXIBLE
 	virtual SizeDirections isResizable ( ) const
-	{	return TOTALRESIZE;	}
+	{	return resizableInfo;	}
 
 
 	/**

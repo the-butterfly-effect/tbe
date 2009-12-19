@@ -29,3 +29,9 @@ const char* Property::MASS_STRING        = "Mass";
 const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::DESCRIPTION_STRING = "Description";
+
+
+const char* Property::NONE_STRING        = "none";
+const char* Property::HORIZONTAL_STRING  = "horizontal";
+const char* Property::VERTICAL_STRING    = "vertical";
+const char* Property::TOTALRESIZE_STRING = "totalresize";
