@@ -13,6 +13,7 @@
                 <property key="Mass" >3</property>
 		<property key="Bounciness">0.1</property>
                 <property key="ImageName" >DominoRed</property>
+		<property key="Resizable"> none</property>
             </object>
         </toolboxitem>
 	<toolboxitem count="1" name="Styrofoam" icon="styrofoam">
@@ -21,18 +22,12 @@
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
+		<property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Left Ramp" icon="left-ramp">
             <object width="1.0" height="0.5" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
-            </object>
-        </toolboxitem>
-	<toolboxitem count="1" name="Ruud" icon="006-stick-figure">
-            <object width="0.7" height="1.8" type="Scenery" >
-                <property key="Friction" >0.3</property>
-                <property key="Bounciness" >0.2</property>
-                <property key="ImageName" >006-stick-figure</property>
             </object>
         </toolboxitem>
     </toolbox>
@@ -301,9 +296,8 @@
             <object X="2.0" Y="1.7" type="NoteIt">
                 <property key="page1" >The final killer challenge...</property>
                 <property key="page2" >Look: it's that butterfly and flower again.</property>
-                <property key="page3" >But there's some styrofoam in the way...</property>
-                <property key="page4" >By the way:&lt;br&gr;&lt;br&gt;I think that Ruud guy is useless...</property>
-                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Note-it boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
+                <property key="page3" >But there's some styrofoam blocks in the way...</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
 	    </object>
         </predefined>
     </scene>
