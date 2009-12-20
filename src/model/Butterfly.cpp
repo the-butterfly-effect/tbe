@@ -140,7 +140,6 @@ void Butterfly::goToFlower(void)
 
 void Butterfly::reportNormalImpulseLength(qreal anImpulseLength)
 {
-	printf("**************** normal impulse: %f\n", anImpulseLength);
 	if(anImpulseLength<0.0003)
 		return;
 	setState(DEAD);
