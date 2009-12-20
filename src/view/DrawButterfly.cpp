@@ -31,7 +31,7 @@
 DrawButterfly::DrawButterfly (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						DrawObject::ImageType anImageType)
-	: DrawObject(aBaseObjectPtr, anImageName)
+	: DrawObject(aBaseObjectPtr, anImageName, anImageType)
 {
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawButterfly\n");
