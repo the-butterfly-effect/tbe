@@ -79,7 +79,9 @@ public:
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
-	{	return resizableInfo;	}
+	{	// FIXME/TODO: this is a hack for the level editor!
+		return (theIsLevelEditor==true)?TOTALRESIZE:resizableInfo;
+	}
 
 
 	/**
