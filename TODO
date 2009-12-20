@@ -106,9 +106,9 @@ Version 0.50
   x add concept of "winning" a level
 	x for proximity (butterfly close to flower)
 	x for change of parameter (object moved/toppled)
-  / add concept of order in levels, so players can start
-	- and then move on without having to use File>Open
-	- add File>Open Custom...
+  x add concept of order in levels, so players can start
+	x make the dialog modal - no way around it!
+	x add File>Open Custom...
   x make start-stop-reset more intuitive
 	x use stopwatch animated image
 	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)

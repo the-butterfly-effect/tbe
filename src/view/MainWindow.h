@@ -47,6 +47,7 @@ public:
 
 private slots:
 	void on_actionAbout_activated(void);
+	void on_actionOpen_custom_level_activated(void);
 	void on_actionOpen_level_activated(void);
 
 	// write the current level layout to disk

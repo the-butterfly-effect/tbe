@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>ChooseLevel</class>
  <widget class="QDialog" name="ChooseLevel">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>

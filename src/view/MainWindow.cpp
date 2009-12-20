@@ -17,6 +17,7 @@
  */
 
 #include <QFileInfo>
+#include <QFileDialog>
 
 #include "tbe_global.h"
 #include "MainWindow.h"
@@ -103,17 +104,27 @@ void MainWindow::on_actionAbout_activated()
 				"Licensed under GPL version 2"), this);
 }
 
+void MainWindow::on_actionOpen_custom_level_activated()
+{
+	QString myFileName = QFileDialog::getOpenFileName(this,
+		 tr("Open Level"), ".", tr("TBE Levels (*.xml)"));
+	if (myFileName.isEmpty())
+		return;
+	loadLevel(myFileName);
+}
+
 void MainWindow::on_actionOpen_level_activated()
 {
+	// in ChooseLevel.ui, the dialog is made ApplicationGlobal.
 	ChooseLevel myDialog;
-	myDialog.show();
-	myDialog.exec();
+	if (myDialog.exec()==QDialog::Rejected)
+		return;
+
 	QString myLevelName = myDialog.getCurrent();
 
 	// TODO: FIXME: hardcoded path here!!!
 	loadLevel("levels/elce09/"+myLevelName);
 }
-
 
 void MainWindow::on_actionSave_activated()
 {

@@ -98,18 +98,6 @@ Once the simulation has run and is stopped, you can reset the simulation using t
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>&amp;File</string>
-    </property>
-    <addaction name="actionOpen_level"/>
-    <addaction name="separator"/>
-    <addaction name="actionOpen_savegame"/>
-    <addaction name="actionSave"/>
-    <addaction name="separator"/>
-    <addaction name="actionRestart"/>
-    <addaction name="action_Quit"/>
-   </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
      <string>Edit</string>
@@ -151,6 +139,19 @@ Once the simulation has run and is stopped, you can reset the simulation using t
     <addaction name="actionReset"/>
     <addaction name="separator"/>
     <addaction name="menuSpeed"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpen_level"/>
+	<addaction name="actionOpen_custom_level"/>
+	<addaction name="separator"/>
+    <addaction name="actionOpen_savegame"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionRestart"/>
+    <addaction name="action_Quit"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -240,7 +241,13 @@ Once the simulation has run and is stopped, you can reset the simulation using t
   </action>
   <action name="actionOpen_level">
    <property name="text">
-    <string>Open level</string>
+    <string>Open level...</string>
+   </property>
+   <property name="iconText">
+    <string>Open level...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open level...</string>
    </property>
   </action>
   <action name="action_quarter_speed">
@@ -285,6 +292,11 @@ Once the simulation has run and is stopped, you can reset the simulation using t
    </property>
    <property name="toolTip">
     <string>makes the simulation run at double speed</string>
+   </property>
+  </action>
+  <action name="actionOpen_custom_level">
+   <property name="text">
+    <string>Open custom level...</string>
    </property>
   </action>
  </widget>
