@@ -65,8 +65,18 @@ public:
 	virtual void focusInEvent ( QFocusEvent* )
 		{ ; }
 
+	/// overriden from DrawObject to allow extra graphics on hovering
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+			   QWidget *widget);
+
 protected slots:
 	void nextClicked();
+
+protected:
+	/// overridden to allow highlighting
+	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
+	/// overridden to allow highlighting
+	virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
 
 private:
 	virtual void initAttributes ( ) ;
@@ -84,6 +94,8 @@ private:
 	QDialog*	theDialogPtr;
 
 	Ui::NoteItViewer* theUIPtr;
+
+	bool isHovering;
 };
 
 #endif // DRAWNOTEIT_H

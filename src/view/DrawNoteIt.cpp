@@ -33,7 +33,9 @@ DrawNoteIt::DrawNoteIt (BaseObject* aBaseObjectPtr)
 	DEBUG5("DrawNoteIt\n");
 
 	setFlag(QGraphicsItem::ItemIsSelectable,true);
-
+	setCacheMode(QGraphicsItem::NoCache);
+	setAcceptHoverEvents(true);
+	isHovering = false;
 }
 
 DrawNoteIt::~DrawNoteIt ( )
@@ -53,6 +55,18 @@ DrawNoteIt::~DrawNoteIt ( )
 
 // Other methods
 //  
+void DrawNoteIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+{
+	isHovering=true;
+	update();
+}
+
+void DrawNoteIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+{
+	isHovering=false;
+	update();
+}
+
 
 
 QString DrawNoteIt::getPageString(unsigned int aPage)
@@ -120,4 +134,24 @@ void DrawNoteIt::nextClicked()
 	// if there is no next page, replace button text with "Finish"
 	if (getPageString(theCurrentPage+1).isEmpty())
 		theUIPtr->pushButton_Next->setText(tr("Finish"));
+}
+
+
+void DrawNoteIt::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *myStyle, QWidget *myWPtr)
+{
+	DrawObject::paint(myPainter, myStyle, myWPtr);
+
+	if (isHovering)
+	{
+		qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
+		qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+		QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
+
+		QPen   myPen(Qt::NoPen);
+		myPainter->setPen(myPen);
+		QColor myColor(255,255,255,155);
+		myPainter->setBrush(myColor);
+
+		myPainter->drawRect(myRect);
+	}
 }
