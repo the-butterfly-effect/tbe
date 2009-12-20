@@ -103,7 +103,8 @@
                 <property key="page2">Use a proper football this time!</property>
                 <property key="page3" >(Or a "soccer" ball for you Americans)</property>
                 <property key="page4" >Looks like there's something missing...</property>
-                <property key="page5" >Note-it boy likes styrofoam ... &lt;br&gt;&lt;br&gt;... for breakfast!</property>
+                <property key="page5" >Hint: first put it on the floor,&lt;br&gt;then adjust height,&lt;br&gt;then the width...</property>
+                <property key="page6" >Note-it boy &lt;br&gt;likes playing with styrofoam ... &lt;br&gt;&lt;br&gt;... for breakfast!</property>
 	    </object>
             
         </predefined>
