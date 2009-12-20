@@ -120,9 +120,8 @@ void RightRamp::adjustParameters(void)
 		rampDef->vertices[3].Set(+myHW, myHH);
 	}
 
-
-	// ramp is immovable -> no mass -> no density
-	rampDef->density = 0.0;
+	qreal myMass = getProperty(Property::MASS_STRING).toDouble();
+	rampDef->density = 0.5*myMass / getTheWidth()*getTheHeight();
 	
 	// delete any shapes on the body
 	// and create a new shape from the above polygon def
