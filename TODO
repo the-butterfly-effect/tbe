@@ -125,7 +125,7 @@ Version 0.50
 	- or just change mouse pointer (QCursor) for any clickable item???
   * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
   * dragging back to toolbox doesn't work
-  * add icon to program
+  x add icon to program
   * build script to release
   * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp

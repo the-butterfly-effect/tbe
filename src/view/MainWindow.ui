@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>The Butterfly Effect</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../images/illustrations/tbe-icon.qrc">
+    <normaloff>:/newPrefix/tbe-icon.png</normaloff>:/newPrefix/tbe-icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" rowspan="2">
@@ -145,8 +149,8 @@ Once the simulation has run and is stopped, you can reset the simulation using t
      <string>&amp;File</string>
     </property>
     <addaction name="actionOpen_level"/>
-	<addaction name="actionOpen_custom_level"/>
-	<addaction name="separator"/>
+    <addaction name="actionOpen_custom_level"/>
+    <addaction name="separator"/>
     <addaction name="actionOpen_savegame"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
@@ -307,7 +311,9 @@ Once the simulation has run and is stopped, you can reset the simulation using t
    <header>resizinggraphicsview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../images/illustrations/tbe-icon.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>action_Quit</sender>
