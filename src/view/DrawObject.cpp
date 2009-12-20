@@ -173,12 +173,12 @@ void DrawObject::focusInEvent ( QFocusEvent * event )
 	update();
 }
 
-void DrawObject::focusOutEvent ( QFocusEvent * event )
-{
-	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
-	delete theAnchorsPtr;
-	theAnchorsPtr = NULL;
-}
+//void DrawObject::focusOutEvent ( QFocusEvent * event )
+//{
+//	DEBUG1("focusOutEvent for %p with %d\n", this, event->reason());
+//	delete theAnchorsPtr;
+//	theAnchorsPtr = NULL;
+//}
 
 void DrawObject::focusRemove(bool alsoDeleteAnchors)
 {
