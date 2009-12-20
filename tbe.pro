@@ -110,5 +110,4 @@ unix {
 }
 OTHER_FILES += TODO
 TRANSLATIONS = i18n/tbe_nl.ts
-RESOURCES += images/illustrations/tbe-icon.qrc \
-    images/illustrations/tbe-icon.qrc
+RESOURCES += images/illustrations/tbe-icon.qrc
