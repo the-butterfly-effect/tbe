@@ -1,0 +1,117 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Football in Styrofoam...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>The soccer ball must kick the pin. But there's something missing.</description>
+        <date>12/20/09</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="2" name="Styrofoam Block" icon="styrofoam">
+            <object width="1.0" height="0.5" type="RectObject">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Bounciness">0.6</property>
+                <property key="Resizable">totalresize</property>
+                <property key="Mass">1.0</property>
+            </object>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.5" height="3.0" />
+        <predefined>
+            <object width="0.1" X="0.05" Y="1.45" height="2.7" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="0.1" X="4.45" Y="1.45" height="2.7" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+
+	    <object X="0.4" Y="2.7" type="Soccer Ball" />
+
+           <object width="2.0" X="3.4" Y="2.65" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object X="3.4" width="2.0" height="0.5" Y="2.35" type="RightRamp" angle="3.14">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.6</property>
+	    </object>
+
+
+	    <object X="2.0" width="3.8" height="0.5" Y="2.05" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.6</property>
+	    </object>
+            <object width="3.8" X="2.0" Y="1.75" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+
+
+	    <object X="4.1" width="0.6" height="0.4" Y="1.5" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.6</property>
+	    </object>
+            <object width="1.0" X="3.9" Y="1.15" height="0.3" type="RectObject">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Bounciness">0.6</property>
+            </object>
+           <object width="3.8" X="2.5" Y="0.95" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object X="0.8" width="0.4" height="0.3" Y="1.15" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.5</property>
+                <property key="Mass">0.6</property>
+	    </object>
+	    <object X="0.3" width="0.4" height="0.3" Y="1.55" type="LeftRamp" angle="3.14">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.6</property>
+	    </object>
+
+	    <object X="0.4" width="0.6" height="0.4" Y="0.5" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.6</property>
+	    </object>
+            <object width="1.0" X="0.6" Y="0.25" height="0.3" type="RectObject">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Bounciness">0.5</property>
+            </object>
+	    <object X="3.4" width="0.4" height="0.3" Y="0.25" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.6</property>
+                <property key="Mass">0.6</property>
+	    </object>
+
+
+
+
+	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+            <object width="0.4" X="4.17" Y="0.45" height="0.7" type="Scenery" >
+                <property key="ImageName" >goal-scenery</property>
+            </object>
+	    <object X="4.3" width="0.15" height="0.7" Y="0.45" type="RightRamp" angle="3.14">
+                <property key="ImageName">styrofoam-right</property>
+	    </object>
+            <object width="4.5" X="2.25" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            
+	    <object X="3.6" Y="0.7" type="NoteIt">
+                <property key="page1">Another pin needs kicking!</property>
+                <property key="page2">Use a proper football this time!</property>
+                <property key="page3" >(Or a "soccer" ball for you Americans)</property>
+                <property key="page4" >Looks like there's something missing...</property>
+                <property key="page5" >Note-it boy likes styrofoam ... &lt;br&gt;&lt;br&gt;... for breakfast!</property>
+	    </object>
+            
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xover">4.0</property>
+		   <property key="object">thepin</property>
+		</goal>
+	</goals>
+</tbe-level>
