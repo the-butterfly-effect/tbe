@@ -78,6 +78,14 @@ static BallObjectFactory theTBFactory("Tennis Ball",
 	QObject::tr("A tennis ball is small, hairy and fairly bouncy."),
 	"TennisBall", 0.033, 0.058, 0.56);
 
+// the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
+// thanks to http://en.wikipedia.org/wiki/Football_(ball)
+// we are lazy and do not model the air, we assume it to be uniform in mass
+static BallObjectFactory theSoccerFactory("Soccer Ball",
+	QObject::tr("Soccer Ball"),
+	QObject::tr("A football - or soccer ball."),
+	"SoccerBall", 0.110, 0.430, 0.56);
+
 
 // Constructors/Destructors
 //  
