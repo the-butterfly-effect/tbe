@@ -63,6 +63,8 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 		thePixmapPtr= ImageStore::getPNGPixmap(anImageName);
 	if (thePixmapPtr == NULL)
 		theRenderer = ImageStore::getRenderer(anImageName);
+
+	setCacheMode(QGraphicsItem::ItemCoordinateCache);
 }
 
 

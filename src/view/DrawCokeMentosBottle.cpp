@@ -35,7 +35,8 @@ DrawCokeMentosBottle::DrawCokeMentosBottle (BaseObject* aBaseObjectPtr,
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawCokeMentosBottle\n");
 
-	setFlag(QGraphicsItem::ItemIsSelectable,true);
+//	setFlag(QGraphicsItem::ItemIsSelectable,true);
+	setCacheMode(QGraphicsItem::NoCache);
 }
 
 DrawCokeMentosBottle::~DrawCokeMentosBottle ( )
