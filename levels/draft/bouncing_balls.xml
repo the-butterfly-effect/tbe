@@ -1,0 +1,66 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bouncing Balls</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Bouncing Balls - put in basket</description>
+        <date>12/22/09</date>
+    </levelinfo>
+     <toolbox>
+         <toolboxitem count="1" name="Ramp \" icon="right-ramp">
+            <object width="2.0" height="0.5" type="RightRamp" angle="0">
+                <property key="ImageName">right-ramp</property>
+            </object>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4" height="3" />
+        <predefined>
+
+	<object X="0.4" Y="2.5" type="Tennis Ball" ID="bow"/>
+	<object X="0.5" Y="2.5" type="Tennis Ball" ID="bow"/>
+	<object X="0.7" Y="2.5" type="Volleyball" ID="bow"/>
+	<object X="1.0" Y="2.5" type="Soccer Ball" ID="bow"/>
+	<object X="1.3" Y="2.5" type="Bowling Ball" ID="bow"/>
+	<object X="1.6" Y="2.5" type="Bowling Ball" ID="bow"/>
+	
+	
+	
+        <object width="4.0" X="2" Y="0.02" height="0.10" type="RectObject">
+            <property key="ImageName">used_wood_bar</property>
+            <property key="Bounciness">0.2</property>
+        </object>
+
+  <object X="1.5" Y="0.5" type="NoteIt">
+      <property key="page1" >Welcome back!</property>
+      <property key="page2" >No butterfly here...&lt;br&gt;&lt;br&gt;Don't worry - we haven't seen the last one yet</property>
+      <property key="page3" >My mum told me to clean my room.&lt;br&gt;&lt;br&gt;All balls must go in the basket.</property>
+      <property key="page4" >... An unhappy&lt;br&gt;&lt;br&gt;&lt;br&gt;Note-It Boy</property>
+  </object>
+
+	
+      <object width="0.1" X="3.15" Y="0.7" height="1.2" type="RectObject" >
+	<property key="ImageName" >used_wood_bar</property>
+	<property key="Bounciness">0.05</property>
+      </object>
+      <object width="0.8" X="2.7" Y="0.5" height="0.8" type="Scenery" >
+	<property key="ImageName" >basket</property>
+      </object>
+      <object width="0.1" X="2.25" Y="0.5" height="0.8" type="RectObject" >
+	<property key="ImageName" >used_wood_bar</property>
+	<property key="Bounciness">0.05</property>
+      </object>
+
+	
+	
+	
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xover">3.5</property>
+		   <property key="object">bow</property>
+		</goal>
+	</goals>
+</tbe-level>
