@@ -129,7 +129,6 @@ Version 0.50
   * build script to release
   * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp
-  * hook up start/stop/reset in menu
   x if level started from command line, do not display splash screen
   * PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
 	is nice, but breaks Coke+Mentos and Butterfly - and the red cross over the objects upon forbidden drag.

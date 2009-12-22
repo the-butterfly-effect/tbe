@@ -122,6 +122,19 @@ Once the simulation has run and is stopped, you can reset the simulation using t
     <addaction name="separator"/>
     <addaction name="actionZoom_to_all"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpen_level"/>
+    <addaction name="actionOpen_custom_level"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_savegame"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionRestart"/>
+    <addaction name="action_Quit"/>
+   </widget>
    <widget class="QMenu" name="menuSimulation">
     <property name="title">
      <string>&amp;Simulation</string>
@@ -138,24 +151,7 @@ Once the simulation has run and is stopped, you can reset the simulation using t
      <addaction name="action_normal_speed"/>
      <addaction name="action_double_speed"/>
     </widget>
-    <addaction name="actionStart"/>
-    <addaction name="actionStop"/>
-    <addaction name="actionReset"/>
-    <addaction name="separator"/>
     <addaction name="menuSpeed"/>
-   </widget>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>&amp;File</string>
-    </property>
-    <addaction name="actionOpen_level"/>
-    <addaction name="actionOpen_custom_level"/>
-    <addaction name="separator"/>
-    <addaction name="actionOpen_savegame"/>
-    <addaction name="actionSave"/>
-    <addaction name="separator"/>
-    <addaction name="actionRestart"/>
-    <addaction name="action_Quit"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
