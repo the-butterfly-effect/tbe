@@ -1,0 +1,134 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Find the Message...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>The Large rectangular objects can move - and there's a message behind them.</description>
+        <date>12/21/09</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Volley Ball" icon="Volleyball">
+	    <object type="Volleyball"  />
+        </toolboxitem>
+        <toolboxitem count="1" name="Football" icon="Soccer Ball">
+	    <object type="Soccer Ball" />
+        </toolboxitem>
+        <toolboxitem count="1" name="Bowling Ball" icon="Bowling Ball">
+	    <object type="Bowling Ball"/>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="5.5" height="4" />
+        <predefined>
+            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="0.05" Y="1.45" height="2.7" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+            
+	    <object width="2.0" X="2.10" Y="1.75" height="1.4" type="Scenery" >
+                <property key="ImageName" >thankyou</property>
+            </object>
+
+	    <!--object X="0.2" Y="2.7" type="Volleyball"  /-->
+	    <!--object X="0.5" Y="2.9" type="Soccer Ball" /-->
+	    <!--object X="0.8" Y="3.5" type="Bowling Ball"/-->
+
+	    <object width="2.2" X="3.50" Y="2.5" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+
+
+	    <!-- ############ top row ################ -->
+            <object width="0.6" X="0.95" Y="2.0" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object X="0.8" width="0.3" height="0.4" Y="2.25" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.1</property>
+	    </object>
+            <object width="3.0" X="3.10" Y="2.0" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="2.0" X="2.10" Y="2.25" height="0.39" type="RectObject" ID="styro-top">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass"      >30</property>
+            </object>
+
+	    <!-- ############ middle row ################ -->
+            <object width="0.9" X="0.85" Y="1.5" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object X="0.5" width="0.3" height="0.3" Y="1.7" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.1</property>
+	    </object>
+            <object width="2.9" X="3.15" Y="1.5" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="2.0" X="2.10" Y="1.75" height="0.39" type="RectObject" ID="styro-mid">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass"      >1.5</property>
+                <property key="Friction"  >0.1</property>
+            </object>
+
+
+	    <!-- ############ bottom row ################ -->
+            <object width="1.3" X="0.7" Y="1.0" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object X="0.175" width="0.15" height="0.3" Y="1.2" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.01</property>
+	    </object>
+            <object width="2.7" X="3.25" Y="1.0" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="2.0" X="2.10" Y="1.25" height="0.39" type="RectObject" ID="styro-bot">
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass"      >1.5</property>
+                <property key="Friction"  >0.05</property>
+            </object>
+
+	    <!-- ############ basket ################ -->
+	    <object width="0.95" X="1.625" Y="0.525" height="0.85" type="Scenery" >
+                <property key="ImageName" >thankyou</property>
+            </object>
+
+            <object width="0.1" X="1.1" Y="0.525" height="0.85" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+
+            <object width="0.1" X="2.15" Y="0.525" height="0.85" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.05</property>
+            </object>
+
+	    <object X="3.6" Y="0.7" type="NoteIt">
+                <property key="page1">It's almost time&lt;br&gt;for goodbyes</property>
+                <property key="page2"> :-( </property>
+                <property key="page3">Look for the last message</property>
+                <property key="page4">... Note-It Boy</property>
+	    </object>
+            
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xover">3.8</property>
+		   <property key="object">styro-top</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="xover">3.8</property>
+		   <property key="object">styro-mid</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="xover">3.8</property>
+		   <property key="object">styro-bot</property>
+		</goal>
+	</goals>
+</tbe-level>
