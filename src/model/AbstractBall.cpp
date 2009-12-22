@@ -67,7 +67,7 @@ static BallObjectFactory theBBFactory("Bowling Ball",
 static BallObjectFactory theVBFactory("Volleyball",
 	QObject::tr("Volley Ball"),
 	QObject::tr("Your average volleyball - it's light, soft and fairly bouncy."),
-	"VolleyBall", 0.105, 0.280, 0.8);
+	"VolleyBall", 0.105, 0.280, 0.65);
 
 
 // the official standards say that a tennis ball dropped from 100 inch should bounce 53-58 inch.
@@ -76,7 +76,7 @@ static BallObjectFactory theVBFactory("Volleyball",
 static BallObjectFactory theTBFactory("Tennis Ball",
 	QObject::tr("Tennis Ball"),
 	QObject::tr("A tennis ball is small, hairy and fairly bouncy."),
-	"TennisBall", 0.033, 0.058, 0.56);
+	"TennisBall", 0.034, 0.058, 0.56);
 
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
 // thanks to http://en.wikipedia.org/wiki/Football_(ball)
