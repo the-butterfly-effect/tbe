@@ -22,8 +22,10 @@
 #ifndef POPUP_H_
 #define POPUP_H_
 
-#include <qstring.h>
-#include <qmessagebox.h>
+#include <QString>
+#include <QMessageBox>
+
+#include "tbe_global.h"
 
 // for exit(3)
 #include <cstdlib>
