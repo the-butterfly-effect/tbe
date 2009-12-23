@@ -1,11 +1,10 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>The Butterfly effect of CELF</title>
+        <title>The Butterfly effect 101</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>First Demonstration: how does the Butterfly Effect work...
-Goal: Butterfly to the Flower.</description>
+        <description>First Demonstration: how does the Butterfly Effect work...</description>
         <date>11/1/09</date>
     </levelinfo>
     <scene>

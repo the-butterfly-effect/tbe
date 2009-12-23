@@ -1,10 +1,10 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>The Butterfly effect of CELF level 2</title>
+        <title>The Butterfly effect 102</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Level with a small user interaction: that volleyball is in the way... Goal: Butterfly to the Flower.</description>
+        <description>Level with a small user interaction: a volleyball is in the way... </description>
         <date>10/10/09</date>
     </levelinfo>
      <toolbox>

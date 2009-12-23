@@ -18,16 +18,16 @@
         <scenesize width="4" height="3" />
         <predefined>
 
-	<object X="0.4" Y="2.5" type="Tennis Ball" ID="bow"/>
-	<object X="0.5" Y="2.5" type="Tennis Ball" ID="bow"/>
-	<object X="0.7" Y="2.5" type="Volleyball" ID="bow"/>
-	<object X="1.0" Y="2.5" type="Soccer Ball" ID="bow"/>
-	<object X="1.3" Y="2.5" type="Bowling Ball" ID="bow"/>
-	<object X="1.6" Y="2.5" type="Bowling Ball" ID="bow"/>
+	<object X="0.4" Y="2.5" type="Tennis Ball" ID="ten1"/>
+	<object X="0.5" Y="2.5" type="Tennis Ball" ID="ten2"/>
+	<object X="0.7" Y="2.5" type="Volleyball" ID="vol"/>
+	<object X="1.0" Y="2.5" type="Soccer Ball" ID="soc"/>
+	<object X="1.3" Y="2.5" type="Bowling Ball" ID="bow1"/>
+	<object X="1.6" Y="2.5" type="Bowling Ball" ID="bow2"/>
 	
 	
 	
-        <object width="4.0" X="2" Y="0.02" height="0.10" type="RectObject">
+        <object width="4.0" X="2" Y="0.05" height="0.10" type="RectObject">
             <property key="ImageName">used_wood_bar</property>
             <property key="Bounciness">0.2</property>
         </object>
@@ -58,9 +58,11 @@
         </predefined>
     </scene>
 	<goals>
-		<goal type="positionchange">
-		   <property key="xover">3.5</property>
-		   <property key="object">bow</property>
-		</goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">ten1</property></goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">ten2</property></goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">vol</property></goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">soc</property></goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">bow1</property></goal>
+	<goal type="positionchange"> <property key="xover">2.25</property><property key="object">bow2</property></goal>
 	</goals>
 </tbe-level>
