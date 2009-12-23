@@ -7,16 +7,16 @@ clean:
 all_image:
 	@if [ -n "${SVGDST}" ]; \
 	then \
-		cp ${SVGSRC} ../${SVGDST}; \
+		cp ${SVGSRC} ../../${SVGDST}; \
 	else \
-		for I in "${SVGSRC}"; do cp $$I ..; done; \
+		for I in "${SVGSRC}"; do cp $$I ../..; done; \
 	fi;
 
 all_clean:
 	if [ -n "${SVGDST}" ]; \
 	then \
-		rm -f ../${SVGDST}; \
+		rm -f ../../${SVGDST}; \
 	else \
-		cd .. && rm -f ${SVGSRC}; \
+		cd ../.. && rm -f ${SVGSRC}; \
 	fi;
 	

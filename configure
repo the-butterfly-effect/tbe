@@ -12,7 +12,7 @@ then
 fi
 
 make -C 3rdParty
-make -C images/src all
+make -C images all
 qmake
 
 echo "You should be able to run 'make' to build The Butterfly Effect now."
