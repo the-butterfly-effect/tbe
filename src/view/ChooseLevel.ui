@@ -29,6 +29,17 @@ Double-click for the post-it notes for help.
    </item>
    <item>
     <widget class="QTreeWidget" name="theTreeWidget">
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>#</string>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>Level Title</string>

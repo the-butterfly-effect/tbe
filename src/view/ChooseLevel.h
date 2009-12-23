@@ -69,9 +69,8 @@ private:
 		{ return errorStr; }
 
 	private:
-
+		int		theNr;
 		QTreeWidget* theTreeWidget;
-		QTreeWidgetItem* item;
 		QString currentText;
 		QString errorStr;
 	}; // end-of-LevelList

@@ -23,8 +23,9 @@
 
 #include <QXmlSimpleReader>
 
-static const int  TITLE_COLUMN=0;
-static const int  FILENAME_COLUMN=1;
+static const int  NR_COLUMN=0;
+static const int  TITLE_COLUMN=1;
+static const int  FILENAME_COLUMN=2;
 
 
 ChooseLevel::ChooseLevel(QWidget *parent) :
@@ -90,7 +91,7 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 
  ChooseLevel::LevelList::LevelList(QTreeWidget* aTreeWidget)
  {
-	 item = 0;
+	 theNr = 0;
 	 theTreeWidget =  aTreeWidget;
 	 currentText.clear();
  }
@@ -104,26 +105,23 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 		// remove any starting/trailing whitespace and add the path name
 		currentText = "levels/" + currentText.trimmed();
 
-		QTreeWidgetItem* item;
-		item = new QTreeWidgetItem(theTreeWidget);
-		if (item)
-			item->setText(FILENAME_COLUMN, currentText);
-		printf("item done, text is '%s'\n", ASCII(currentText));
-		FastLevelParser myParser;
+		QTreeWidgetItem* item = new QTreeWidgetItem(theTreeWidget);
+		item->setText(NR_COLUMN, QString::number(++theNr));
+		item->setText(FILENAME_COLUMN, currentText);
 
+		// read Level title and Level description from the level file
+		FastLevelParser myParser;
 		QXmlSimpleReader reader;
 		reader.setContentHandler(&myParser);
 		reader.setErrorHandler(&myParser);
-
 		QFile file(currentText);
 		if (!file.open(QFile::ReadOnly | QFile::Text))
 			goto RETURN;
 
 		QXmlInputSource xmlInputSource(&file);
 		reader.parse(xmlInputSource);
-
 		if (myParser.theTitle.isEmpty()==false)
-			item->setData(Qt::DisplayRole, TITLE_COLUMN, myParser.theTitle);
+			item->setText(TITLE_COLUMN, myParser.theTitle);
 		if (myParser.theDescription.isEmpty()==false)
 			item->setToolTip(TITLE_COLUMN, myParser.theDescription);
 	}
