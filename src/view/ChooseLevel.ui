@@ -22,48 +22,18 @@
      <property name="text">
       <string>Please select the level you want to play.
 
-Look for the post-it notes for help.
+Double-click for the post-it notes for help.
 </string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget">
-     <item>
+    <widget class="QTreeWidget" name="theTreeWidget">
+     <column>
       <property name="text">
-       <string>001.xml - Just a Butterfly</string>
+       <string>Level Title</string>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>002.xml - Bowling for Butterflies</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>003.xml - Marble Boulevard</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>004.xml - Balancing a Coke diet...</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>005.xml - Join the pins</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>006.xml - Coconut instead of Coke</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>007.xml - Double Action</string>
-      </property>
-     </item>
+     </column>
     </widget>
    </item>
    <item>

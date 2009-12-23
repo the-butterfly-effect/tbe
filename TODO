@@ -109,13 +109,14 @@ Version 0.50
   x add concept of order in levels, so players can start
 	x make the dialog modal - no way around it!
 	x add File>Open Custom...
+	x make it flexible: allow more than one directory with levels
   x make start-stop-reset more intuitive
 	x use stopwatch animated image
 	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
   x make sure butterfly dies if hit by something
 	x also terminate simulation in that case
   x add Tennisball object
-  / add two more levels
+  x add two more levels (actually more than two :-)
   x make collision detection on mouse move better/more usable
   x if collision happens and user releases mouse button, go back to last known good.
   x generalize collision detection so it also works with CokeMentosBottle

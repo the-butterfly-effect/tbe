@@ -21,6 +21,9 @@
 
 #include <QtGui/QDialog>
 
+#include <QTreeWidget>
+#include <QXmlDefaultHandler>
+
 namespace Ui {
 	class ChooseLevel;
 }
@@ -34,7 +37,7 @@ public:
 	QString getCurrent(void);
 
 protected slots:
-	void on_listWidget_itemDoubleClicked()
+	void on_theTreeWidget_itemDoubleClicked()
 	{ emit accept();}
 
 protected:
@@ -42,6 +45,65 @@ protected:
 
 private:
 	Ui::ChooseLevel *m_ui;
+
+	bool readLevels(const QString& aFileName);
+
+
+	/// this class is used by ChooseLevel to build the TreeView
+	class LevelList : public QXmlDefaultHandler
+	{
+	public:
+		/// constructor - Note that the file name is specified on a different call
+		LevelList(QTreeWidget* aListWidget);
+
+		/// implemented from QXmlDefaultHandler
+		bool endElement(const QString &namespaceURI, const QString &localName,
+						const QString &qName);
+		/// implemented from QXmlDefaultHandler
+		bool characters(const QString &aStr)
+		{ currentText += aStr; return true; }
+
+		/// implemented from QXmlDefaultHandler
+		bool fatalError(const QXmlParseException &exception);
+		QString errorString() const
+		{ return errorStr; }
+
+	private:
+
+		QTreeWidget* theTreeWidget;
+		QTreeWidgetItem* item;
+		QString currentText;
+		QString errorStr;
+	}; // end-of-LevelList
+
+
+	/// this class is used by the above LevelList class to quickly retrieve title and description from a level
+	class FastLevelParser : public QXmlDefaultHandler
+	{
+	public:
+		/// empty constructor - Note that the file name is specified on a different call
+		FastLevelParser(void) {};
+
+		/// implemented from QXmlDefaultHandler
+		bool endElement(const QString &namespaceURI, const QString &localName,
+						const QString &qName);
+
+		/// implemented from QXmlDefaultHandler
+		bool characters(const QString &aStr)
+		{ currentText += aStr; return true; }
+
+
+		QString errorString() const
+		{ return errorStr; }
+
+		QString theTitle;
+		QString theDescription;
+
+	private:
+		QString currentText;
+		QString errorStr;
+	}; // end-of FastLevelParser
+
 };
 
 #endif // ChooseLevel_H

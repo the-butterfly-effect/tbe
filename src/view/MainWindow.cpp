@@ -121,9 +121,7 @@ void MainWindow::on_actionOpen_level_activated()
 		return;
 
 	QString myLevelName = myDialog.getCurrent();
-
-	// TODO: FIXME: hardcoded path here!!!
-	loadLevel("levels/elce09/"+myLevelName);
+	loadLevel(myLevelName);
 }
 
 void MainWindow::on_actionSave_activated()
