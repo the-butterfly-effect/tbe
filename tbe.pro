@@ -102,7 +102,7 @@ FORMS = src/view/MainWindow.ui \
 DISTFILES = README \
     TODO \
     AUTHORS \
-    COPYING
+	COPYING
 unix { 
     UI_DIR = .ui
     MOC_DIR = .moc
