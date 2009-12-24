@@ -225,6 +225,11 @@ private:
 	typedef std::set<SimStepCallbackInterface*> CallbackList;
 	CallbackList theCallbackList;
 
+
+	/// the actual (internal) call to add the DrawObject of a BaseObject
+	/// to the corresponding DrawWorld
+	void addBaseObjectToDrawWorld(BaseObject* aBOPtr);
+
 public:
 	// Public attribute accessor methods
 	//

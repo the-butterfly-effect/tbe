@@ -86,12 +86,18 @@ bool World::addObject(BaseObject* anObjectPtr)
 	anObjectPtr->theWorldPtr = this;
 	anObjectPtr->reset();
 	
+	addBaseObjectToDrawWorld(anObjectPtr);
+	return true;
+}
+
+void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
+{
 	if (theDrawWorldPtr)
 	{
-		theDrawWorldPtr->addItem(anObjectPtr->createDrawObject());
+		DrawObject* myDOPtr = aBOPtr->createDrawObject();
+		theDrawWorldPtr->addItem(myDOPtr);
+		myDOPtr->setupCache();
 	}
-
-	return true;
 }
 
 void World::createScene(MainWindow* myMainPtr)
@@ -113,7 +119,7 @@ void World::createScene(MainWindow* myMainPtr)
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
 		DEBUG5("adding item %p\n",*i);
-		theDrawWorldPtr->addItem((*i)->createDrawObject());
+		addBaseObjectToDrawWorld(*i);
 	}
 }
 

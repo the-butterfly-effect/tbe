@@ -39,7 +39,6 @@ class DrawWorld;
 class DrawObject : public QGraphicsItem
 {
 public:
-
 	// Constructors/Destructors
 	//  
 
@@ -93,6 +92,9 @@ public:
 	 *			false if called from Anchors itself
 	 */
 	void focusRemove(bool alsoDeleteAnchors=true);
+
+	/// setup caching for this object
+	void setupCache(void);
 
 protected:
 

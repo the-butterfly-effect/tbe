@@ -61,6 +61,9 @@ public:
 	 */
 	virtual ~DrawWorld ( );
 
+
+	qreal pixelsPerSceneUnitHorizontal(void);
+
 	
 	// Public accessor methods
 	//

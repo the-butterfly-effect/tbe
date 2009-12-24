@@ -65,8 +65,6 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 		thePixmapPtr= ImageStore::getPNGPixmap(anImageName);
 	if (thePixmapPtr == NULL)
 		theRenderer = ImageStore::getRenderer(anImageName);
-
-	setCacheMode(QGraphicsItem::ItemCoordinateCache);
 }
 
 
@@ -208,7 +206,6 @@ void DrawObject::initAttributes ( )
 		setAcceptHoverEvents(true);
 	}
 
-//    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
 
 	theCrossPtr = NULL;
@@ -360,4 +357,21 @@ void DrawObject::Cross::paint(QPainter* myPainter, const QStyleOptionGraphicsIte
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 	if (theCrossRendererPtr)
 		theCrossRendererPtr->render(myPainter, myRect);
+}
+
+
+void DrawObject::setupCache(void)
+{
+	// In most situations, we want to cache the SVG drawing into a bitmap
+	// so we save a lot of CPU performance on drawing.
+	// (derived classes can fix this - e.g. Butterfly and CokeMentosBottle)
+	// The problem is that QT does a crappy job at guessing the bitmap size
+	// so we have to calculate that ourselves...
+	qreal pix=reinterpret_cast<DrawWorld*>(scene())->pixelsPerSceneUnitHorizontal();
+
+	// unfortunately, QT doesn't like my calculations...
+//	setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(256,256));
+
+//	setCacheMode(QGraphicsItem::ItemCoordinateCache,
+//				 QSize(boundingRect().width()*pix,boundingRect().height()*pix) );
 }

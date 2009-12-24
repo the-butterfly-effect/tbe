@@ -354,3 +354,12 @@ void DrawWorld::clearGraphicsList(int aCount)
 		delete myItemPtr;
 	}
 }
+
+
+qreal DrawWorld::pixelsPerSceneUnitHorizontal(void)
+{
+	printf("sceneRect w=%f\n", sceneRect().width());
+	qreal myViewSizeWidth = views().first()->size().width();
+	printf("vRect w=%f\n", myViewSizeWidth);
+	return myViewSizeWidth/sceneRect().width();
+}

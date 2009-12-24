@@ -123,21 +123,25 @@ Version 0.50
   - clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
   x honor "resizable" property
   x highlight NoteIts on hovering over them
-	- or just change mouse pointer (QCursor) for any clickable item???
   * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
-  * dragging back to toolbox doesn't work
+  * Improve Drag & Drop
+	- Dragging back to toolbox doesn't work
+	- upon drag-n-drop from toolbox, show image and do collision detection
+	- Toolbox need to become a derived class (See puzzle PiecesList for example)
   x add icon to program
-  * build script to release
+  / build script to release
   * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp
   x if level started from command line, do not display splash screen
-  * PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
-	is nice, but breaks Coke+Mentos and Butterfly - and the red cross over the objects upon forbidden drag.
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
 Milestone 5.5 - inbetween
-  * upon drag-n-drop from toolbox, also do collision detection
+  / PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
+	- would be nice - indeed improves performance but deteriorates gfx quality
+	x I implemented custom cache sizes - but that kills QT :-(
+	- so it is disabled again
+  * change mouse pointer (QCursor) when hovering over any clickable item
   * implement rotation of relevant objects
 	- requires implementing UndoRotateCommand
 	- and re-enable in Anchors::Anchors
