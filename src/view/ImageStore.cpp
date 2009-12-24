@@ -60,9 +60,7 @@ ImageStore& ImageStore::me()
 QString ImageStore::getFilePath(const QString& anImageName, const QString& anExtension) const
 {
 	// let's try to find the file and create the renderer...
-	QStringList mySearchPath = QString(".:images:images/icons:images/objects:"
-									   "images/src:"
-									   "images/textures").split(":",QString::SkipEmptyParts);
+	QStringList mySearchPath = QString(".:images").split(":",QString::SkipEmptyParts);
 	// add the local directory of the level file to the search path - at the beginning...
 	mySearchPath.push_front(Level::getPathToLevelFile());
 	QStringList::iterator i;
