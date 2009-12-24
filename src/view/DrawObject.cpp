@@ -39,7 +39,7 @@ static QUndoStack* theUndoStackPtr = NULL;
 
 Anchors* DrawObject::theAnchorsPtr = NULL;
 
-QSvgRenderer* DrawObject::theCrossRendererPtr = NULL;
+QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 
 // Constructors/Destructors
 //  
@@ -48,6 +48,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	thePixmapPtr(NULL),	theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
+	DEBUG6("DrawObject::DrawObject(%p)\n", aBaseObjectPtr);
 	if (theBaseObjectPtr!=NULL)
 		initAttributes();
 }
@@ -58,6 +59,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
 	thePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
+	DEBUG6("DrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
 	initAttributes();
 	if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
 		thePixmapPtr= ImageStore::getPNGPixmap(anImageName);
@@ -126,8 +128,15 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
-	isCollidingDuringDrag = (scene()->collidingItems(this).isEmpty() == false);
-	return isCollidingDuringDrag;
+	bool myTemp = (scene()->collidingItems(this).isEmpty() == false);
+
+	if (myTemp == true && theCrossPtr==NULL)
+		theCrossPtr = new Cross(this);
+
+	if (myTemp == false && theCrossPtr!=NULL)
+		removeCollisionCross();
+
+	return myTemp;
 }
 
 void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
@@ -144,23 +153,9 @@ bool DrawObject::deregister()
 {
 	theUndeleteDrawWorldPtr = reinterpret_cast<DrawWorld*>(scene());
 	focusRemove();
+	removeCollisionCross();
 	scene()->removeItem(this);
 	return true;
-}
-
-void DrawObject::drawCollisionCross(QPainter* aPainter, const QRectF& myRect)
-{
-	// draw a dotted outline if colliding during move of object
-	if (isCollidingDuringDrag)
-	{
-		if (theCrossRendererPtr)
-			theCrossRendererPtr->render(aPainter, myRect);
-		else
-		{
-			aPainter->drawLine(myRect.bottomLeft(), myRect.topRight());
-			aPainter->drawLine(myRect.bottomRight(), myRect.topLeft());
-		}
-	}
 }
 
 void DrawObject::focusInEvent ( QFocusEvent * event )
@@ -192,16 +187,6 @@ void DrawObject::focusRemove(bool alsoDeleteAnchors)
 	update();
 }
 
-void DrawObject::hoverMoveEvent ( QGraphicsSceneHoverEvent *)
-{
-	// TODO: hover should report to EditState - so it can create a HoverPointer for delete
-}
-
-void DrawObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent *)
-{
-	// TODO: hover should report to EditState - so it can create a HoverPointer for delete
-}
-
 void DrawObject::initAttributes ( )
 {
 	// the objects sizes usually are less than a meter
@@ -223,15 +208,13 @@ void DrawObject::initAttributes ( )
 		setAcceptHoverEvents(true);
 	}
 
-	if (theCrossRendererPtr==NULL)
-	{
-		theCrossRendererPtr = ImageStore::getRenderer("BigCross");
-	}
-
 //    setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(128,128));
 	setToolTip(theBaseObjectPtr->getToolTip());
 
-	isCollidingDuringDrag=false;
+	theCrossPtr = NULL;
+
+	// set the Z-Value for all objects to approx 2 - Scenery will draw behind this
+	setZValue(2.1);
 
 	applyPosition();
 
@@ -269,7 +252,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
 		 && (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		theUndoMovePtr->setNewPosition(myPos, (isCollidingDuringDrag==false) );
+		theUndoMovePtr->setNewPosition(myPos, (theCrossPtr==NULL) );
 		theUndoMovePtr->redo();
 	}
 }
@@ -284,12 +267,12 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 
 	// are we currently in a collision?
 	// in that case, go back to last known good
-	checkForCollision();
-	if (isCollidingDuringDrag)
+	if (checkForCollision())
 	{
 		DEBUG4("Reverting to last known non-colliding position\n");
 		theUndoMovePtr->revertToLastGood();
-		isCollidingDuringDrag = false;
+		update(boundingRect());
+		removeCollisionCross();
 	}
 
 	// is the position any different?
@@ -314,24 +297,19 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	if (thePixmapPtr != NULL)
 	{
 		myPainter->drawPixmap(myRect, *thePixmapPtr, thePixmapPtr->rect());
-		goto checkForCollision;
+		return;
 	}
 
 	if (theRenderer != NULL)
 	{
 		theRenderer->render(myPainter, myRect);
-		goto checkForCollision;
+		return;
 	}
 
 	// Backup for Body drawing
-	{
-		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-		myPainter->setBrush(color);
-		myPainter->drawEllipse(myRect);
-	}
-
-checkForCollision:
-	drawCollisionCross(myPainter, myRect);
+	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+	myPainter->setBrush(color);
+	myPainter->drawEllipse(myRect);
 }
 
 bool DrawObject::pushUndo(QUndoCommand* anUndo)
@@ -340,9 +318,46 @@ bool DrawObject::pushUndo(QUndoCommand* anUndo)
 	return true;
 }
 
+
+void DrawObject::removeCollisionCross(void)
+{
+	if (theCrossPtr)
+	{
+		delete theCrossPtr;
+		theCrossPtr = NULL;
+	}
+}
+
 bool DrawObject::reregister()
 {
 	assert(theUndeleteDrawWorldPtr);
 	theUndeleteDrawWorldPtr->addItem(this);
 	return true;
+}
+
+
+DrawObject::Cross::Cross(DrawObject* aParent)
+{
+	DEBUG1("Cross::Cross()\n");
+	if (theCrossRendererPtr==NULL)
+	{
+		theCrossRendererPtr = ImageStore::getRenderer("BigCross");
+	}
+
+	theBaseObjectPtr = aParent->theBaseObjectPtr;
+	setParentItem(aParent);
+}
+
+DrawObject::Cross::~Cross()
+{
+	// nothing to do
+}
+
+void DrawObject::Cross::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
+{
+	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
+	if (theCrossRendererPtr)
+		theCrossRendererPtr->render(myPainter, myRect);
 }

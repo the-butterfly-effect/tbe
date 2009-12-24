@@ -124,21 +124,6 @@ protected:
 //	virtual void focusOutEvent ( QFocusEvent * event );
 
 	/** overridden from QGraphicsItem
-	 *  if called, setup a hover icon (indicating current action)
-	 *  or not (if object is immovable)
-	 *
-	 *  @param event the event to handle
-	 */
-	virtual void hoverMoveEvent ( QGraphicsSceneHoverEvent * event );
-
-	/** overridden from QGraphicsItem
-	 *  if called, remove the hover icon (indicating current action)
-	 *
-	 *  @param event the event to handle
-	 */
-	virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
-
-	/** overridden from QGraphicsItem
 	 *  if the user drags the object around, this even will be called for each pixel.
 	 *  let's actually adjust the coordinates!!!
 	 *  
@@ -153,19 +138,18 @@ protected:
 	 *  @param event the even to handle
 	 */
 	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
-	
-protected:
-    // Protected attribute accessor methods
-	//  
-
-	void applyPosition(void);
-	
-	/// if the object is colliding, draw a big fat cross
-	void drawCollisionCross(QPainter* aPainter, const QRectF& myRect);
-
 
 protected:
-	// Private attributes
+	// Protected members
+	//
+
+	virtual void applyPosition(void);
+
+	/// removes the collision cross - if there is one
+	void removeCollisionCross(void);
+	
+protected:
+	// Protected attributes
 	//  
 
 	BaseObject* theBaseObjectPtr;
@@ -184,9 +168,6 @@ protected:
 	QSvgRenderer*	theRenderer;
 	QPixmap*		thePixmapPtr;
 
-	/// we only need one Cross Renderer for all DrawObjects...
-	static QSvgRenderer*	theCrossRendererPtr;
-
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!
 	DrawWorld* theUndeleteDrawWorldPtr;
@@ -194,13 +175,42 @@ protected:
 	/// pointer to QUndoCommand for move
 	UndoMoveCommand* theUndoMovePtr;
 
-	bool isCollidingDuringDrag;
-
 private:
 	virtual void initAttributes ( ) ;
 
 	friend class PieMenu;
 	friend class UndoResizeCommand;
+
+
+	/** this class-in-class displays the Cross over the
+	  * item in case of a collision
+	  */
+	class Cross : public QGraphicsItem
+	{
+	public:
+		Cross(DrawObject* aParent);
+		virtual ~Cross();
+
+		/** overriden from QGraphicsItem
+		  * we return a boundingRect far away from any other object
+		  * so there's definitely no collission with this one :-)
+		  */
+		virtual QRectF boundingRect() const
+		{ return QRectF(-10.0,-10.0, 0.1, 0.1); }
+
+		/// overriden from QGraphicsItem
+		virtual void paint(QPainter *painter,
+						   const QStyleOptionGraphicsItem *option,
+						   QWidget *widget);
+	private:
+		/// we only need one Cross Renderer for all DrawObjects...
+		static QSvgRenderer*	theCrossRendererPtr;
+
+		BaseObject* theBaseObjectPtr;
+	};
+
+	Cross* theCrossPtr;
+	friend class Cross;
 };
 
 #endif // DRAWOBJECT_H

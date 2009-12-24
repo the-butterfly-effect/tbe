@@ -89,17 +89,11 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 			|| myStatus == CokeMentosBottle::TRIGGERED)
 			theRenderer->render(myPainter, "cap", myRect);
 
-		goto checkForCollision;
+		return;
 	}
 
-	{
-		// Body
-		QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
-		myPainter->setBrush(color);
-		myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
-	}
-
-checkForCollision:
-	drawCollisionCross(myPainter, myRect);
-
+	// backup Body draw
+	QColor color(qrand() % 256, qrand() % 256, qrand() % 256);
+	myPainter->setBrush(color);
+	myPainter->drawEllipse(-myWidth/2, -myHeight/2, myWidth, myHeight);
 }
