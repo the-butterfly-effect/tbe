@@ -133,6 +133,18 @@ qreal DrawWorld::getWidth()
 // Other methods
 //  
 
+void DrawWorld::displaySimpleText(const QString& aString)
+{
+	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
+	theCongratulations->setText(aString);
+	QRectF myBounds = theCongratulations->boundingRect();
+	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
+
+	theCongratulations->scale(myResize, myResize);
+	theCongratulations->setPos(0, -(getHeight()/2.0));
+	theCongratulations->setZValue(10.0);
+}
+
 void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 {
 	DEBUG4("void DrawWorld::dropEvenFromView\n");
@@ -182,14 +194,7 @@ void DrawWorld::on_death(void)
 	if (theCongratulations!=NULL)
 		return;
 
-	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
-	theCongratulations->setText(tr("Death!!!"));
-	QRectF myBounds = theCongratulations->boundingRect();
-	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
-
-	theCongratulations->scale(myResize, myResize);
-	theCongratulations->setPos(0, -(getHeight()/2.0));
-	theCongratulations->setZValue(0.01);
+	displaySimpleText(tr("Death!!!"));
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterDeath()));
 }
@@ -224,17 +229,11 @@ void DrawWorld::on_winning(void)
 	if (theCongratulations!=NULL)
 		return;
 
-	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
-	theCongratulations->setText(tr("Congratulations!!!"));
-	QRectF myBounds = theCongratulations->boundingRect();
-	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
-
-	theCongratulations->scale(myResize, myResize);
-	theCongratulations->setPos(0, -(getHeight()/2.0));
-	theCongratulations->setZValue(0.01);
+	displaySimpleText(tr("Congratulations"));
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
 }
+
 
 
 void DrawWorld::resetWorld( )

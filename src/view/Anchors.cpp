@@ -112,7 +112,7 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 	scale(mySquare.width()/boundingRect().width(),
 		  mySquare.height()/boundingRect().height());
 	theParentPtr->getScenePtr()->addItem(this);
-	setZValue(1.0);
+	setZValue(10.0);
 
 	theOffset=mySquare.width()/2.0;
 	updatePosition();

@@ -157,6 +157,12 @@ private:
 
 	void initAttributes ( ) ;
 
+	/** puts a string as the topmost item on the Scene
+	  * @param aString  the string to display
+	  * @post  theCongratulations will point to the QGSimpleTextItem
+	  */
+	void displaySimpleText(const QString& aString);
+
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);
 
