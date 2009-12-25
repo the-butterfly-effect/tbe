@@ -57,12 +57,14 @@ DrawNoteIt::~DrawNoteIt ( )
 //  
 void DrawNoteIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
+	setCursor(QCursor(Qt::PointingHandCursor));
 	isHovering=true;
 	update();
 }
 
 void DrawNoteIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
+	unsetCursor();
 	isHovering=false;
 	update();
 }
