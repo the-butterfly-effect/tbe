@@ -18,6 +18,7 @@
 
 #include <QFileInfo>
 #include <QFileDialog>
+#include <QSettings>
 
 #include "tbe_global.h"
 #include "MainWindow.h"
@@ -194,6 +195,11 @@ void MainWindow::loadLevel(const QString& aFileName)
 
 void MainWindow::on_levelWon()
 {
+	{
+		QString myLevelFileName = Level::getLevelFileName();
+		QSettings mySettings;
+		mySettings.setValue("completed/"+myLevelFileName, "done");
+	}
 	emit on_actionOpen_level_activated();
 }
 

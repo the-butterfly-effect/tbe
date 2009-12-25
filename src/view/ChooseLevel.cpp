@@ -22,6 +22,8 @@
 #include "tbe_global.h"
 
 #include <QXmlSimpleReader>
+#include <QSettings>
+#include <QTreeWidgetItemIterator>
 
 static const int  NR_COLUMN=0;
 static const int  TITLE_COLUMN=1;
@@ -82,7 +84,20 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 
 	QXmlInputSource xmlInputSource(&file);
 	if (reader.parse(xmlInputSource))
+	{
+		// find the first item that not has "done" in the NR_COLUMN field
+		QTreeWidgetItemIterator it(m_ui->theTreeWidget);
+		while( *it )
+		{
+			if ( (*it)->text(NR_COLUMN) != "done")
+			{
+				(*it)->setSelected(true);
+				break;
+			}
+			++it;
+		}
 		return true;
+	}
 	return false;
 }
 
@@ -124,6 +139,10 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 			item->setText(TITLE_COLUMN, myParser.theTitle);
 		if (myParser.theDescription.isEmpty()==false)
 			item->setToolTip(TITLE_COLUMN, myParser.theDescription);
+
+		QSettings mySettings;
+		if (mySettings.value("completed/"+currentText).isValid())
+			item->setText(NR_COLUMN, "done");
 	}
 RETURN:
 	currentText.clear();

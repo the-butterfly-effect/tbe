@@ -46,6 +46,16 @@ int main(int argc, char **argv)
 	translator.load(QString("i18n/tbe_") + locale);
 	app.installTranslator(&translator);
 
+	QCoreApplication::setOrganizationName("Sourceforge.net");
+	QCoreApplication::setOrganizationDomain("tbe.sf.net");
+	QCoreApplication::setApplicationName("The Butterfly Effect");
+
+	{
+		QSettings mySettings;
+		printf("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
+	}
+
+
 	// setup main window
 	MainWindow myMain;
 	myMain.show();

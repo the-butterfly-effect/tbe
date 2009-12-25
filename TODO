@@ -110,6 +110,7 @@ Version 0.50
 	x make the dialog modal - no way around it!
 	x add File>Open Custom...
 	x make it flexible: allow more than one directory with levels
+	x mark levels as "done"
   x make start-stop-reset more intuitive
 	x use stopwatch animated image
 	x hook the stopwatch class to drawworld (if no drawworld, no stopwatch)
@@ -123,7 +124,7 @@ Version 0.50
   - clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
   x honor "resizable" property
   x highlight NoteIts on hovering over them
-  * RMB->delete is broken - also try to get rid of setAcceptHover() in DrawObject
+    x also set cursor to PointingHand shape - for any selectable item
   * Improve Drag & Drop
 	- Dragging back to toolbox doesn't work
 	- upon drag-n-drop from toolbox, show image and do collision detection
@@ -133,6 +134,7 @@ Version 0.50
   * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp
   x if level started from command line, do not display splash screen
+
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
@@ -141,7 +143,6 @@ Milestone 5.5 - inbetween
 	- would be nice - indeed improves performance but deteriorates gfx quality
 	x I implemented custom cache sizes - but that kills QT :-(
 	- so it is disabled again
-  * change mouse pointer (QCursor) when hovering over any clickable item
   * implement rotation of relevant objects
 	- requires implementing UndoRotateCommand
 	- and re-enable in Anchors::Anchors
