@@ -126,15 +126,20 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
-	bool myTemp = (scene()->collidingItems(this).isEmpty() == false);
+	// before we check for collision, let's make sure the cross is not colliding...
+	if (theCrossPtr != NULL)
+		theCrossPtr->setVisible(false);
+	bool isColliding = (scene()->collidingItems(this).isEmpty() == false);
+	if (theCrossPtr != NULL)
+		theCrossPtr->setVisible(true);
 
-	if (myTemp == true && theCrossPtr==NULL)
+	// adjust the existence of the cross depending on the collision state
+	if (isColliding == true && theCrossPtr==NULL)
 		theCrossPtr = new Cross(this);
-
-	if (myTemp == false && theCrossPtr!=NULL)
+	if (isColliding == false && theCrossPtr!=NULL)
 		removeCollisionCross();
 
-	return myTemp;
+	return isColliding;
 }
 
 void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
