@@ -36,11 +36,11 @@
             </object>
         </toolboxitem>
 	<toolboxitem count="1" name="Block" icon="styrofoam">
-            <object width="0.9" height="0.2" type="RectObject" >
+            <object width="0.8" height="0.1" type="RectObject" >
                 <property key="Friction" >1.5</property>
-                <property key="Bounciness" >0.1</property>
+                <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >styrofoam</property>
-		<property key="Resizable">no</property>
+		<property key="Resizable">vertical</property>
 		<property key="Rotate">no</property>
             </object>
         </toolboxitem>
@@ -114,10 +114,11 @@
 	    <!-- ############################ LOWER DOMINO ROW ################### -->
             <object width="5" X="3.5" Y="1.6" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
+                <property key="Bounciness" >0.0</property>
             </object>
             <object width="0.2" X="5.9" Y="2" height="1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness" >0.0</property>
             </object>
             <object X="5.1" Y="1.97" type="Bowling Ball" />
             <object width="0.7" X="5.45" Y="1.7" height="0.3" type="RectObject" >
