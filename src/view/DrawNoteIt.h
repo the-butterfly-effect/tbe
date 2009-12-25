@@ -57,9 +57,11 @@ public:
 	 */
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* );
 
-	/// overridden from DrawObject to make sure it is not selected
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent* )
-		{ ; }
+	/** overridden from QGraphicsItem
+	 * also, upon a single click event, let's show the text of the note-its
+	 */
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
+		{ mouseDoubleClickEvent(anEvent); }
 
 	/// overridden from DrawObject to make sure it is not selected
 	virtual void focusInEvent ( QFocusEvent* )
