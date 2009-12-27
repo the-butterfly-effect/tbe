@@ -136,6 +136,12 @@ private slots:
 	/// called whenever a timer tick happens
 	void on_timerTick(void);
 
+protected:
+	/** overridden from QGraphicsScene:
+	  * do not respond to UI when not allowed to
+	  */
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
+
 private:
 	// Private attributes
 	//  
@@ -147,6 +153,8 @@ private:
 	QTime  theSimulationTime;
 	
 	QUndoStack	theUndoStack;
+
+	bool isUserInteractionAllowed;
 
 	/// milliseconds per time step ???
 	qreal theSimSpeed;

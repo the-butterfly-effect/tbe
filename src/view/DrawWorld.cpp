@@ -21,6 +21,7 @@
 #include "World.h"
 #include "MainWindow.h"
 #include "DrawObject.h"
+#include "Popup.h"
 #include "toolbox.h"
 #include "StartStopWatch.h"
 
@@ -28,6 +29,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QDropEvent>
+
 
 
 /** the Dot class is a helper - it's a true QGraphicsItem, it's
@@ -183,10 +185,25 @@ void DrawWorld::initAttributes ( )
 	theSimSpeed = 1000.0;
 	theCongratulations = NULL;
 
+	isUserInteractionAllowed = true;
+
 	theSimStateMachine = new StartStopWatch();
 	QObject::connect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
+}
+
+
+void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+{
+	if (isUserInteractionAllowed)
+	{
+		QGraphicsScene::mousePressEvent(mouseEvent);
+	}
+	else
+	{
+		Popup::Warning(tr("You can only change things when the scene is in rest."), views().first());
+	}
 }
 
 
@@ -244,6 +261,7 @@ void DrawWorld::resetWorld( )
 	theWorldPtr->reset();
 	// and redraw
 	advance();
+	isUserInteractionAllowed = true;
 	setAcceptDrops(true);
 	if (theDrawDebug)
 		clearGraphicsList(0);
@@ -275,6 +293,7 @@ void DrawWorld::startTimer(void)
 	setFocusItem(&myTemp);
 
 	setAcceptDrops(false);
+	isUserInteractionAllowed = false;
 
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
