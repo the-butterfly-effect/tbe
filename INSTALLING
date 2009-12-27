@@ -19,7 +19,8 @@ These include:
 
 
 2)
-As a *NORMAL* user, build the main project. Note that the below configure is not autotools based,
+As a *NORMAL* user, build the main project. 
+Note that the below configure is not autotools based,
 it is just a bash script setting up the Box2d libraries and the images.
     $   chmod u+x configure
     $   ./configure
@@ -29,6 +30,10 @@ it is just a bash script setting up the Box2d libraries and the images.
 How to run:
     $   ./tbe
     
-    
+There is no need to install anything - it will run from its working directory.
+If you really want, there is a script to build a tar archive with the minimum number
+of files you need to play...
 
 That's it for now!
+Have fun!
+
