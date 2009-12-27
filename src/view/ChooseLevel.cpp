@@ -91,6 +91,7 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 		{
 			if ( (*it)->text(NR_COLUMN) != "done")
 			{
+				m_ui->theTreeWidget->setCurrentItem(*it);
 				(*it)->setSelected(true);
 				break;
 			}
