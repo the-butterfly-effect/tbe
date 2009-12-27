@@ -121,24 +121,23 @@ Version 0.50
   x make collision detection on mouse move better/more usable
   x if collision happens and user releases mouse button, go back to last known good.
   x generalize collision detection so it also works with CokeMentosBottle
-  - clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
   x honor "resizable" property
   x highlight NoteIts on hovering over them
     x also set cursor to PointingHand shape - for any selectable item
-  * Improve Drag & Drop
-	- Dragging back to toolbox doesn't work
-	- upon drag-n-drop from toolbox, show image and do collision detection
-	- Toolbox need to become a derived class (See puzzle PiecesList for example)
   x add icon to program
   / build script to release
-  * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
   x Shrink bounding rectangles on RightRamp and LeftRamp
   x if level started from command line, do not display splash screen
-
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
 Milestone 5.5 - inbetween
+  * clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
+  * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
+  * Improve Drag & Drop
+	- Make drag-n-drop Undoable
+	- Dragging back to toolbox doesn't work
+	- upon drag-n-drop from toolbox, show image and do collision detection
   / PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
 	- would be nice - indeed improves performance but deteriorates gfx quality
 	x I implemented custom cache sizes - but that kills QT :-(
@@ -150,6 +149,7 @@ Milestone 5.5 - inbetween
   * Important overdue refactorings:
 	* switching to Gluon may solve this already?
 	- split Position into Vector and Position, where Position is (Vector + angle)
+  * remove small littering artifacts when moving objects around
   * do not (re)paint objects that are sleeping
 	* switching to Gluon may solve this already
 	- is this actually happening?

@@ -1,22 +1,30 @@
-Welcome to "The Butterfly Effect", Milestone 4.
+Welcome to "The Butterfly Effect", Milestone 5.
 
-This is not entirely a playable game yet.
+This is a fully playable game, but no yet completely finished.
 
-As of October 16, 2009, the game is playable 'under supervision': 
-  * there are 7 separate puzzles polished enough to play 
-  * but there is no code for winning a level yet
-The Butterfly effect was run as part of the end presentation of the Embedded 
-Linux Conference Europe 2009 in Grenoble, where Klaas was hosting the game
-on the podium and the audience could play in turns.
+There are 13 levels.
+All levels are playable, some levels may need a bit more polish.
 
-This milestone extends slightly beyondn that, because it contains a few bug
-fixes, a level choose dialog and it is no longer possible to move predefined
-objects.
+You need to have at least QT 4.4 installed to run the game.
 
-A *rudimentary* level editor is available when you edit src/main.cpp line 30
+We are aware that some levels (most importantly "house of cards")
+consume a lot of CPU power in rendering. 
+This will be addressed in a future milestone.
+
+Other known bugs:
+  * dragging objects back to the ToolBox does not work yet
+  * level "Coconut instead of Coke" may crash
+  * the coke bottle in  "Coconut instead of Coke" may disappear
+  * dragging some objects leaves visual artefacts - these are harmless.
+  * various balls may look a bit odd and may not be round
+
+A very *rudimentary* level editor is available when you edit src/main.cpp line 30
 to read " = true;" However, don't expect magic: most of the levels were
-created with some help of the editor only: it was mostly hacking XML directly.
+created with little help of the editor: we mostly hacked the XML directly.
 
+We would love to hear your thoughts and comments about the game!
+Don't be shy - post your thoughts in the TBE Open Discussion forum on
+   http://www.sf.net/projects/tbe
 
 Regards,
 
