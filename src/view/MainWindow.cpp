@@ -29,7 +29,7 @@
 #include "DrawWorld.h"
 #include "SplashScreen.h"
 
-#include "ToolBoxItemListModel.h"
+#include "toolbox.h"
 #include "SaveLevelInfo.h"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -177,20 +177,12 @@ void MainWindow::loadLevel(const QString& aFileName)
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
 
-	theToolboxModel = new ToolBoxItemListModel();
+	ui.theToolBoxView->clear();
 
 	if (theIsLevelEditor)
-		theToolboxModel->fillFromObjectFactory();
+		ui.theToolBoxView->fillFromObjectFactory();
 	else
-		theToolboxModel->fillFromDomNode(theLevelPtr->getToolboxDomNode());
-
-	ui.theToolBoxView->setModel(theToolboxModel);
-	ui.theToolBoxView->setViewMode(QListView::IconMode);
-	ui.theToolBoxView->setIconSize(QSize(32, 32));
-	ui.theToolBoxView->setGridSize(QSize(100, 50));
-	ui.theToolBoxView->setMovement(QListView::Snap);
-	ui.theToolBoxView->setAcceptDrops(true);
-	ui.theToolBoxView->setDragEnabled(true);
+		ui.theToolBoxView->fillFromDomNode(theLevelPtr->getToolboxDomNode());
 }
 
 void MainWindow::on_levelWon()

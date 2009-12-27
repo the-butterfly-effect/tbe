@@ -41,7 +41,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QListView" name="theToolBoxView">
+		<widget class="ToolBox" name="theToolBoxView">
          <property name="minimumSize">
           <size>
            <width>64</width>

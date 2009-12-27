@@ -16,31 +16,35 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "ToolBoxItemListModel.h"
+#include <QtGui>
+
+#include "toolbox.h"
+//#include "TBItem.h"
+
 #include "ImageStore.h"
 #include "BaseObjectSerializer.h"
 
 #include <QMimeData>
-#include <QDomNode>
-
-const char* ToolBoxItemListModel::ToolboxMimeType = "image/x-puzzle-piece";
 
 
-ToolBoxItem::ToolBoxItem(unsigned int aCount,
+const char* TBItem::ToolboxMimeType = "image/x-tbe-object";
+
+
+TBItem::TBItem(unsigned int aCount,
 				const QIcon&   anIcon,
 				const QString& aName,
 				QDomNode aDomNode)
 	: theCount(aCount),
-	theIcon(anIcon),
 	theName(aName),
 	theDomNode(aDomNode),
 	theFactoryPtr(NULL)
 {
-	; // nothing to do
+	setIcon(anIcon);
+	modifyCount(0);
 }
 
 
-ToolBoxItem::ToolBoxItem(const ObjectFactory* aFactoryPtr)
+TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	: theCount(INFINITE),
 	theFactoryPtr(aFactoryPtr)
 {
@@ -51,19 +55,13 @@ ToolBoxItem::ToolBoxItem(const ObjectFactory* aFactoryPtr)
 	if (myPtr != NULL)
 	{
 		// TODO: this way of getting icon names is not foolproof, but it works (for now)
-		theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
-		theName = myPtr->getName();
+		setIcon( ImageStore::getQIcon(myPtr->getName(), QSize(32,32)) );
+		setText( myPtr->getName() );
 		delete myPtr;
 	}
 }
 
-ToolBoxItem::~ToolBoxItem()
-{
-	; // nothing to do anymore - there are no pointers in here...
-}
-
-
-BaseObject* ToolBoxItem::getNewObject(void)
+BaseObject* TBItem::getNewObject(void)
 {
 	if (theCount <= 0)
 		return NULL;
@@ -82,59 +80,101 @@ BaseObject* ToolBoxItem::getNewObject(void)
 				   ASCII(theDomNode.attributes().namedItem("name").nodeValue()));
 		}
 	}
-	if (myBOPtr!=NULL && theCount > 0)
-	{
-		if (theCount != INFINITE)
-			theCount--;
-	}
 
 	return myBOPtr;
 }
 
-
-// **************************************************************************
-// **************************************************************************
-
-
-ToolBoxItemListModel::ToolBoxItemListModel(QObject *parent)
-		: QAbstractListModel(parent)
+bool TBItem::modifyCount(int delta)
 {
-	; // nothing to do here either...
+	if (theCount != INFINITE)
+		theCount += delta;
+	setText( QObject::tr("%1x %2").arg(theCount).arg(theName));
+	return theCount > 0;
 }
 
 
 
-QVariant ToolBoxItemListModel::data(const QModelIndex &index, int role) const
+// #######################################################################
+
+
+ToolBox::ToolBox(QWidget *parent)
+	: QListWidget(parent)
 {
-	if (!index.isValid())
-		return QVariant();
+	setAcceptDrops(true);
+	setDragEnabled(true);
+	setDropIndicatorShown(true);
+	setGridSize(QSize(100, 50));
+	setIconSize(QSize(32, 32));
+	setMovement(QListView::Snap);
+	setSpacing(10);
+	setViewMode(QListView::IconMode);
+}
 
-	if (index.row() >= theList.size())
-		return QVariant();
-	const ToolBoxItem& myItem = theList.at(index.row());
+void ToolBox::dragEnterEvent(QDragEnterEvent *event)
+{
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
+		event->accept();
+	else
+		event->ignore();
+}
 
-	switch(role)
+void ToolBox::dragMoveEvent(QDragMoveEvent *event)
+{
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
 	{
-	case Qt::DisplayRole:
-		if (myItem.theCount!=ToolBoxItem::INFINITE)
-			return tr("%1x %2").arg(QString::number(myItem.theCount), myItem.theName);
-		else
-			return tr("%1 (unlimited)").arg(myItem.theName);;
-		break;
-	case Qt::DecorationRole:
-		return myItem.theIcon;
-		break;
-	case Qt::ToolTipRole:
-		return myItem.theTooltip;
-		break;
-	case Qt::EditRole:	// edit role is used to build the mime type
-		return myItem.getID();
-	default:
-		return QVariant();
+		event->setDropAction(Qt::MoveAction);
+		event->accept();
+	} else
+		event->ignore();
+}
+
+void ToolBox::dropEvent(QDropEvent *event)
+{
+	DEBUG4("void ToolBox::dropEvent(\"%s\")\n", ASCII(event->mimeData()->formats().join(";")));
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
+	{
+		QByteArray pieceData = event->mimeData()->data(TBItem::ToolboxMimeType);
+		QDataStream dataStream(&pieceData, QIODevice::ReadOnly);
+		QString myObjectName;
+		dataStream >> myObjectName;
+
+		// FIXME/TODO: add handling of the dropped object here...
+
+		event->setDropAction(Qt::MoveAction);
+		event->accept();
+	} else
+		event->ignore();
+}
+
+void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)
+{
+	DEBUG4("ToolBox::startDrag()\n");
+	TBItem *item = dynamic_cast<TBItem*>(currentItem());
+
+	// create MIME data
+	QByteArray itemData;
+	QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+	dataStream << item->getID();
+	QMimeData* myMimeDataPtr = new QMimeData;
+	myMimeDataPtr->setData(TBItem::ToolboxMimeType, itemData);
+
+	// add an icon to the QDrag
+	QPixmap pixmap = item->icon().pixmap(32); //qVariantValue<QPixmap>(item->data(Qt::UserRole));
+	QDrag *drag = new QDrag(this);
+	drag->setMimeData(myMimeDataPtr);
+	drag->setHotSpot(QPoint(pixmap.width()/2, pixmap.height()/2));
+	drag->setPixmap(pixmap);
+
+	if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
+	{
+		// delete item in the toolbox if all are gone
+		if (item->modifyCount(-1) == false)
+			delete takeItem(row(item));
 	}
 }
 
-bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
+
+bool ToolBox::fillFromDomNode(const QDomNode& aToolboxDomNode)
 {
 	bool myResult = true;
 	QDomNode myTBI, myO;
@@ -175,22 +215,22 @@ bool ToolBoxItemListModel::fillFromDomNode(const QDomNode& aToolboxDomNode)
 		bool    isOK;
 		int     myTBI_Count = myNodeMap.namedItem("count").nodeValue().toInt(&isOK);
 		if (!isOK)
-			myTBI_Count = ToolBoxItem::INFINITE;
+			myTBI_Count = TBItem::INFINITE;
 
 		// TODO: this way of getting icon names is not foolproof, but it works (for now)
 		if (myTBI_IconName.isEmpty())
 			myTBI_IconName = myTBI_Name;
 
 		QIcon myIcon = ImageStore::getQIcon(myTBI_IconName, QSize(32,32));
-		theList.push_back( ToolBoxItem( myTBI_Count, myIcon, myTBI_Name,  myO));
-
+		TBItem* myItemPtr = new TBItem( myTBI_Count, myIcon, myTBI_Name,  myO);
+		addItem(myItemPtr);
 		if (myTBI==aToolboxDomNode.lastChild())
 			break;
 	}
 	return myResult;
 }
 
-bool ToolBoxItemListModel::fillFromObjectFactory(void)
+bool ToolBox::fillFromObjectFactory(void)
 {
 	ObjectFactory::ObjectFactoryList* myListPtr = ObjectFactory::getAllFactories();
 	int i=0;
@@ -199,88 +239,23 @@ bool ToolBoxItemListModel::fillFromObjectFactory(void)
 		const ObjectFactory* myPtr = myListPtr->at(i);
 		if (myPtr != NULL)
 		{
-			theList.push_back(ToolBoxItem(myPtr));
+			TBItem* myTBItemPtr = new TBItem(myPtr);
+			addItem(myTBItemPtr);
 		}
 	}
 	delete myListPtr;
 	return true;
 }
 
-
-Qt::ItemFlags ToolBoxItemListModel::flags(const QModelIndex &index) const
+BaseObject* ToolBox::getMeACopyOf(const QString& anObjectName)
 {
-	if (index.isValid())
-		return (Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled);
-
-	return Qt::ItemIsDropEnabled;
-}
-
-
-BaseObject* ToolBoxItemListModel::getMeACopyOf(const QString& anObjectName)
-{
-	// iterate through the list to find the item whose data() equals anObjectName
-
-	ToolBoxItemPtrList::iterator i;
-	for (i= theList.begin(); i != theList.end(); ++i)
+	int i=0;
+	while ( item(i)!=0)
 	{
-		if ((*i).getID() == anObjectName)
-		{
-			return (*i).getNewObject();
-		}
+		TBItem* myItem = dynamic_cast<TBItem*>(item(i));
+		if (myItem->getID() == anObjectName)
+			return myItem->getNewObject();
+		++i;
 	}
-
 	return NULL;
 }
-
-
-
-QMimeData* ToolBoxItemListModel::mimeData(const QModelIndexList &indexes) const
-{
-	QMimeData *mimeData = new QMimeData();
-	QByteArray encodedData;
-
-	QDataStream stream(&encodedData, QIODevice::WriteOnly);
-
-	foreach (QModelIndex index, indexes)
-	{
-		if (index.isValid())
-		{
-			// stream theName of the object to create only
-			QString myItemName = qVariantValue<QString>(data(index, Qt::EditRole));
-			DEBUG5("ToolBoxItemListModel::mimeData: '%s'\n", ASCII(myItemName));
-			stream << myItemName;
-		}
-	}
-
-	mimeData->setData(ToolboxMimeType, encodedData);
-	return mimeData;
-}
-
-
-QStringList ToolBoxItemListModel::mimeTypes() const
-{
-	QStringList types;
-	types << ToolboxMimeType;
-	return types;
-}
-
-
-bool ToolBoxItemListModel::removeRows(int, int, const QModelIndex& )
-{
-	// TODO: NOT IMPLEMENTED YET
-	return false;
-}
-
-
-int ToolBoxItemListModel::rowCount(const QModelIndex&) const
-{
-	return theList.count();
-}
-
-
-Qt::DropActions ToolBoxItemListModel::supportedDropActions() const
-{
-	return Qt::CopyAction | Qt::MoveAction;
-}
-
-

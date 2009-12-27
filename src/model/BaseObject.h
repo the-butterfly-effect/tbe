@@ -430,14 +430,14 @@ protected:
 	 *  - do not delete the contents of the list.
 	 */
 	static ObjectFactoryList* getAllFactories(void);
-	friend class ToolBoxItemListModel;
+	friend class ToolBox;
 
 	/** pure virtual function that creates an object of the type the factory is for
 	 *  must be implemented for each real factory.
 	 * @return pointer to a newly instantiated object
 	 */
 	virtual BaseObject* createObject(void) const = 0;
-	friend class ToolBoxItem;
+	friend class TBItem;
 };
 
 #endif // BASEOBJECT_H

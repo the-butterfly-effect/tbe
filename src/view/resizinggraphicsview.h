@@ -25,7 +25,7 @@
 #define RESIZINGGRAPHICSVIEW_H_
 
 #include "tbe_global.h"
-#include "ToolBoxItemListModel.h"
+#include "toolbox.h"
 #include "DrawWorld.h"
 
 #include <QGraphicsView>
@@ -82,7 +82,7 @@ protected:
 	/// and forward them to our graphics scene - which knows more...
 	virtual void dropEvent (QDropEvent* event)
 	{
-		DEBUG5("void ResizingGraphicsView::dropEvent\n");
+		DEBUG4("void ResizingGraphicsView::dropEvent(\"%s\")\n", ASCII(event->mimeData()->formats().join(";")));
 		QPointF myPos = mapToScene(event->pos());
 		if (scene()!=NULL)
 			reinterpret_cast<DrawWorld*>(scene())->dropEventFromView(myPos, event);
@@ -90,14 +90,14 @@ protected:
 
 	void dragEnterEvent(QDragEnterEvent *event)
 	{
-		if (event->mimeData()->hasFormat(ToolBoxItemListModel::ToolboxMimeType) && scene()!=NULL)
+		if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) && scene()!=NULL)
 		{
-			DEBUG5("void ResizingGraphicsView::dragEnterEvent - accept\n");
+			DEBUG4("void ResizingGraphicsView::dragEnterEvent(\"%s\") - accept\n", ASCII(event->mimeData()->formats().join(";")));
 			event->accept();
 		}
 		else
 		{
-			DEBUG5("void ResizingGraphicsView::dragEnterEvent - denied\n");
+			DEBUG3("void ResizingGraphicsView::dragEnterEvent(\"%s\") - denied\n", ASCII(event->mimeData()->formats().join(";")));
 			event->ignore();
 		}
 	}

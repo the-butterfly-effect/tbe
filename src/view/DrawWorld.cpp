@@ -21,7 +21,7 @@
 #include "World.h"
 #include "MainWindow.h"
 #include "DrawObject.h"
-#include "ToolBoxItemListModel.h"
+#include "toolbox.h"
 #include "StartStopWatch.h"
 
 #include <QGraphicsScene>
@@ -148,9 +148,9 @@ void DrawWorld::displaySimpleText(const QString& aString)
 void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 {
 	DEBUG4("void DrawWorld::dropEvenFromView\n");
-	if (event->mimeData()->hasFormat(ToolBoxItemListModel::ToolboxMimeType))
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
 	{
-		QByteArray pieceData = event->mimeData()->data("image/x-puzzle-piece");
+		QByteArray pieceData = event->mimeData()->data(TBItem::ToolboxMimeType);
 		QDataStream stream(&pieceData, QIODevice::ReadOnly);
 		QString myObjectName;
 		stream >> myObjectName;
@@ -158,20 +158,22 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 		DEBUG4("  the object is: '%s' @ %f,%f\n", ASCII(myObjectName), aDropPos.x(), aDropPos.y());
 
 		// now we know the ID of the object, let's retrieve a copy from the Toolbox
-		BaseObject* myObjectPtr = theMainWindowPtr->askToolBoxForCopyOf(myObjectName);
-		if (myObjectPtr != NULL)
+		if (event->source() != NULL)
 		{
-			myObjectPtr->setOrigCenter(Position(aDropPos));
-			myObjectPtr->createPhysicsObject();
+			BaseObject* myObjectPtr = dynamic_cast<ToolBox*>(event->source())->getMeACopyOf(myObjectName);
+			if (myObjectPtr != NULL)
+			{
+				myObjectPtr->setOrigCenter(Position(aDropPos));
+				myObjectPtr->createPhysicsObject();
 
-			theWorldPtr->addObject(myObjectPtr);
+				theWorldPtr->addObject(myObjectPtr);
 
-			event->setDropAction(Qt::MoveAction);
-			event->accept();
-			return;
+				event->setDropAction(Qt::MoveAction);
+				event->accept();
+				return;
+			}
 		}
 	}
-
 	event->ignore();
 }
 

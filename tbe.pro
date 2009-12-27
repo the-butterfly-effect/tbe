@@ -40,7 +40,6 @@ HEADERS += src/tbe_global.h \
     src/model/Ramp.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
-    src/model/ToolBoxItemListModel.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
@@ -57,7 +56,8 @@ HEADERS += src/tbe_global.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
-    src/view/StartStopWatch.h
+    src/view/StartStopWatch.h \
+    src/view/toolbox.h
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/GoalSerializer.cpp \
@@ -79,7 +79,6 @@ SOURCES += src/main.cpp \
     src/model/Ramp.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
-    src/model/ToolBoxItemListModel.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \
@@ -94,7 +93,8 @@ SOURCES += src/main.cpp \
     src/view/PieMenu.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
-    src/view/StartStopWatch.cpp
+    src/view/StartStopWatch.cpp \
+    src/view/toolbox.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/NoteItViewer.ui \
     src/view/SaveLevelInfo.ui \
@@ -102,7 +102,7 @@ FORMS = src/view/MainWindow.ui \
 DISTFILES = README \
     TODO \
     AUTHORS \
-	COPYING
+    COPYING
 unix { 
     UI_DIR = .ui
     MOC_DIR = .moc

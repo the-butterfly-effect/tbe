@@ -35,15 +35,6 @@ public:
      ~MainWindow();
 
      void setScene(DrawWorld* aScene, const QString& aLevelName);
-     
-
-	BaseObject* askToolBoxForCopyOf(const QString& anObjectID)
-	{
-		if (theToolboxModel)
-			return theToolboxModel->getMeACopyOf(anObjectID);
-		else
-			return NULL;
-	}
 
 private slots:
 	void on_actionAbout_activated(void);
@@ -72,7 +63,6 @@ private:
 
 	Level* theLevelPtr;
 	DrawWorld* theScenePtr;
-	ToolBoxItemListModel* theToolboxModel;
 
 	QUndoGroup theUndoGroup;
 	QAction*	theUndoActionPtr;
