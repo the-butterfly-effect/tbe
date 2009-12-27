@@ -132,8 +132,6 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	DrawObject* myObjPtr = new DrawObject(this, theBallImage);
 	myObjPtr->setZValue(10.0);
 
-	// FIXME: HACK HACK HACK - this caches all balls to speed up drawing...
-	myObjPtr->setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(200,200));
 	return myObjPtr;
 }
 

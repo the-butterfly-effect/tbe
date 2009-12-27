@@ -12,11 +12,14 @@ consume a lot of CPU power in rendering.
 This will be addressed in a future milestone.
 
 Other known bugs:
+  * when you drag an object into the scene, you can place it anywhere
+    only when you try to move it after it is dropped, collision detection
+    is enabled.
   * dragging objects back to the ToolBox does not work yet
+  * collision detection also does not work for resizing of objects
   * level "Coconut instead of Coke" may crash
   * the coke bottle in  "Coconut instead of Coke" may disappear
   * dragging some objects leaves visual artefacts - these are harmless.
-  * various balls may look a bit odd and may not be round
 
 A very *rudimentary* level editor is available when you edit src/main.cpp line 30
 to read " = true;" However, don't expect magic: most of the levels were
