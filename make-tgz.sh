@@ -14,6 +14,9 @@ echo "AUTHORS" >> $FILELIST
 echo "README"  >> $FILELIST
 echo "tbe"     >> $FILELIST
 
+# remove all symbols from tbe - to remove size
+strip tbe
+
 # all images in the images directory
 # including the README - which should contain all resources
 find images  -maxdepth 1 -a \( -name '*.png' -o -name '*.svg' -o -name README \) | sort >>$FILELIST
