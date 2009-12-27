@@ -85,8 +85,8 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	// FIXME: I can imagine we're going to make this flexible later
 	setBackgroundBrush(Qt::blue);
 	QLinearGradient myBackground(0,0, 0,-getHeight());
-	myBackground.setColorAt(0, QColor(Qt::white));
-	myBackground.setColorAt(1, QColor(121,159,255,255));
+	myBackground.setColorAt(0, QColor(212,212,255,255));
+	myBackground.setColorAt(1, QColor(121,121,235,255));
 	setBackgroundBrush(myBackground);
 
 	// announce my UndoStack to all future DrawObjects:
