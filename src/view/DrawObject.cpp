@@ -372,9 +372,9 @@ void DrawObject::setupCache(void)
 	// (derived classes can fix this - e.g. Butterfly and CokeMentosBottle)
 	// The problem is that QT does a crappy job at guessing the bitmap size
 	// so we have to calculate that ourselves...
-	qreal pix=reinterpret_cast<DrawWorld*>(scene())->pixelsPerSceneUnitHorizontal();
 
 	// unfortunately, QT doesn't like my calculations...
+//	qreal pix=reinterpret_cast<DrawWorld*>(scene())->pixelsPerSceneUnitHorizontal();
 //	setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(256,256));
 
 //	setCacheMode(QGraphicsItem::ItemCoordinateCache,
