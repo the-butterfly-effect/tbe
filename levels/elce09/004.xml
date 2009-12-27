@@ -11,14 +11,6 @@
         <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
             <object type="Bowling Ball" />
         </toolboxitem>
-        <toolboxitem count="1" name="Styrofoam" icon="styrofoam">
-            <object width="0.25" height="0.8" type="RectObject" >
-                <property key="Friction" >0.3</property>
-                <property key="Bounciness" >0.2</property>
-                <property key="ImageName" >styrofoam</property>
-                <property key="Mass" >1</property>
-            </object>
-        </toolboxitem>
     </toolbox>
 
     <scene>

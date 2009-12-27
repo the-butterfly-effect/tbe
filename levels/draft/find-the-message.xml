@@ -54,7 +54,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="2.0" X="2.10" Y="2.25" height="0.39" type="RectObject" ID="styro-top">
-                <property key="ImageName" >styrofoam</property>
+                <property key="ImageName" >birch_bar</property>
                 <property key="Mass"      >30</property>
             </object>
 

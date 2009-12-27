@@ -81,8 +81,9 @@
             </object>
             <object X="2.8" Y="1.4" type="NoteIt">
                 <property key="page1" >Those pins always long for company.</property>
-                <property key="page2" >Let's join the lonely one to the left with his friends below.</property>
-                <property key="page3" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
+                <property key="page2" >Let's join the lonely one above with his friends below.</property>
+                <property key="page3" >By the way: you may sometimes have more in your toolbox than you need...</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
 	    </object>
         </predefined>
     </scene>
