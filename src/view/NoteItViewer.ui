@@ -87,7 +87,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Note-It viewer</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -144,7 +144,7 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-	  <widget class="QPushButton" name="pushButton_Cancel">
+      <widget class="QPushButton" name="pushButton_Cancel">
        <property name="text">
         <string>Cancel</string>
        </property>
