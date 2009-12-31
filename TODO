@@ -99,7 +99,7 @@ FIRST PLAYABLE - with a supervisor
 
 
 Milestone 5 - It's make over time! (NLLGG talk)
-Version 0.50
+COMPLETED: revision 556
   x Important overdue refactorings:
 	x refactor UndoMoveCommand/DrawObject
 	x Create AbstractBall class and merge BowlingBall and Volleyball into that
@@ -125,84 +125,49 @@ Version 0.50
   x highlight NoteIts on hovering over them
     x also set cursor to PointingHand shape - for any selectable item
   x add icon to program
-  / build script to release
+  x build script to release
   x Shrink bounding rectangles on RightRamp and LeftRamp
   x if level started from command line, do not display splash screen
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
-Milestone 5.5 - inbetween
+Milestone 6 - inbetween
+NOTE: As of the end of Milestone 5, we now have TRAC on Sourceforge to handle the action items for a release.
+So this list will dimnish in usability and contents over time as line items migrate into TRAC.
   * clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
-  * "Bowling for Butterflies": butterfly "stuiteren" sometimes crashes the butterfly onto the bowlingball
-  * Improve Drag & Drop
-	- Make drag-n-drop Undoable
-	- Dragging back to toolbox doesn't work
-	- upon drag-n-drop from toolbox, show image and do collision detection
   / PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
 	- would be nice - indeed improves performance but deteriorates gfx quality
 	x I implemented custom cache sizes - but that kills QT :-(
 	- so it is disabled again
-  * implement rotation of relevant objects
-	- requires implementing UndoRotateCommand
-	- and re-enable in Anchors::Anchors
-  * investigate GLUON
-  * Important overdue refactorings:
-	* switching to Gluon may solve this already?
-	- split Position into Vector and Position, where Position is (Vector + angle)
-  * remove small littering artifacts when moving objects around
-  * do not (re)paint objects that are sleeping
-	* switching to Gluon may solve this already
-	- is this actually happening?
-	- set all objects to sleep at clicking "start" and reset the sleep status at reset?
-  * solve Volleyball/VolleyBall issues
-	this involves splitting between technical name and visible name ?!?
-  * automated regression tests for XML parser/world builder
   * finish i18n of application
 	* Level Name
 	* Level Description
-  * zooming
-  * persistency (popup warnings, settings, user progress)
-  * user configurable settings (display scenery or not, zoom follows objects, animate postits, automatically load/save)
   * i18n of levels
   * implement more objects
-	- penguin, herring ?
+	- penguin, herring ?   (or cat - mouse - cheese?)
 	- granite block
-	- cylinder (rolls horizontally) - allows for see-saw and stone-age carts - yet another ball actually
 	- trap door
-	- soccer ball / gummi ball
-  * improve existing 9 levels and add 10 more
-	- make sure to have some basic tutorials
+	- gummi ball
+	- Truck (i.e. with space to put something on that needs moving).
   * RMB actions
 	- adjust properties
 
 
-Milestone 6 - Rope
-Version 0.60
-  * implement moving multiple objects (rubber band used right)
-  * rope
-  * skyhooks
+Later milestones
+  * finish level editor
+  * investigate GLUON again
   * wheel
-  * block hooks so you can tie a block to a rope
   * balloons
   * add corresponding more levels
-  * Windows version
-
-Milestone 7 - Finishing Touches
-Version 1.0
   * validate order of all levels
+  * zooming (like World Of Goo)
   * obsessive completion criteria?
-  * storyline?
+  * storyline
   * beautify everything, custom graphics and such
   * audio?
   * packaging: add installers
   * MacOSX version?
+  * Windows version
   * bugfixing
-
-
-
-
-Milestone 8 - etc
-Version 1.1
   * liquid
-etc
 
