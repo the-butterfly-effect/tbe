@@ -164,7 +164,15 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
-	// there was actual movement?
+	// are we currently in a collision?
+	// in that case, go back to last known good
+	if (theUndoPtr->isGood()==false)
+	{
+		DEBUG4("Reverting to last known non-colliding position\n");
+		theUndoPtr->revertToLastGood();
+	}
+
+	// there was actual resizing???
 	if (theUndoPtr->isResized())
 	{
 		DEBUG5("PUSHED UNDO RESIZE\n");
@@ -189,8 +197,8 @@ void Anchor::updatePosition()
 	// TODO: the below code is executed 8 times for each resize/rotate
 	// it may be smarter to just supply the Position and width/height as arguments
 	Position myC = theParentPtr->getCenter();
-	qreal myDX = 0.5*theParentPtr->getWidth()  * static_cast<qreal>(theHPos);
-	qreal myDY = 0.5*theParentPtr->getHeight() * static_cast<qreal>(theVPos);
+	qreal myDX = (0.5*theParentPtr->getWidth() +theOffset) * static_cast<qreal>(theHPos);
+	qreal myDY = (0.5*theParentPtr->getHeight()+theOffset) * static_cast<qreal>(theVPos);
 
 	myDX += (static_cast<qreal>(theHPos)-1.0)*theOffset;
 	myDY += (static_cast<qreal>(theVPos)+1.0)*theOffset;

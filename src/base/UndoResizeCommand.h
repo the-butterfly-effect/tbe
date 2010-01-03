@@ -62,19 +62,40 @@ public:
 	virtual void redo ();
 	virtual void undo ();
 
+	/** sets the new delta.
+	  * if this new delta does not result in a collission, the "last known good delta" is set as well.
+	  * @param anAnchorPos
+	  * @param aDelta
+	  */
 	void setDelta(qreal anAnchorPos, QPointF aDelta);
+
+	/// @returns true if the Object is currently not colliding
+	bool isGood(void)
+	{ return isColliding == false; }
 
 	/// @returns true if there is an actual resize
 	bool isResized(void);
+
+	/** Throw away the new delta and rever to the last known good delta.
+	  * If setNewPosition() has never been called with a new good delta,
+	  * that means the original position (i.e. object has not moved) !!!
+	  *
+	  * Automatically calls redo() to effectuate the changes.
+	  */
+	void revertToLastGood(void);
 
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;
 
 	Position	theOldCenter;
+	Position	theLastGoodCenter;
 	Position	theNewCenter;
 	QPointF		theOldSize;
+	QPointF		theLastGoodSize;
 	QPointF		theNewSize;
+
+	bool isColliding;
 };
 
 #endif // UndoResizeCommand_H

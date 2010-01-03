@@ -35,8 +35,10 @@ UndoResizeCommand::UndoResizeCommand (
 	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
 	theOldCenter = theBaseObjectPtr->getOrigCenter();
+	theLastGoodCenter = theOldCenter;
 	theNewCenter = theBaseObjectPtr->getTempCenter();
 	theOldSize = QPointF(theBaseObjectPtr->getTheWidth(),theBaseObjectPtr->getTheHeight());
+	theLastGoodSize = theOldSize;
 	setText("Resize " + theBaseObjectPtr->getName());
 }
 
@@ -81,17 +83,15 @@ void UndoResizeCommand::redo ()
 	theDrawObjectPtr->applyPosition();
 }
 
-void UndoResizeCommand::undo ()
+
+void UndoResizeCommand::revertToLastGood(void)
 {
-	theBaseObjectPtr->setTheWidth(theOldSize.x());
-	theBaseObjectPtr->setTheHeight(theOldSize.y());
-
-	theBaseObjectPtr->setTempCenter(theOldCenter);
-	theBaseObjectPtr->setOrigCenter(theOldCenter);
-
-	theBaseObjectPtr->reset();
-	theDrawObjectPtr->focusRemove();
+	theNewSize = theLastGoodSize;
+	theNewCenter = theLastGoodCenter;
+	theDrawObjectPtr->removeCollisionCross();
+	redo();
 }
+
 
 void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
 {
@@ -107,4 +107,27 @@ void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
 
 	theNewCenter = theOldCenter + 0.5*aDelta;
 	redo();
+
+	// collision detection - only do this *after* the redraw :-)
+	isColliding = theDrawObjectPtr->checkForCollision();
+	if (isColliding == false)
+	{
+		theLastGoodSize = theNewSize;
+		theLastGoodCenter = theNewCenter;
+	}
+
+}
+
+
+void UndoResizeCommand::undo ()
+{
+	theBaseObjectPtr->setTheWidth(theOldSize.x());
+	theBaseObjectPtr->setTheHeight(theOldSize.y());
+
+	theBaseObjectPtr->setTempCenter(theOldCenter);
+	theBaseObjectPtr->setOrigCenter(theOldCenter);
+
+	theBaseObjectPtr->reset();
+	theDrawObjectPtr->focusRemove();
+	theDrawObjectPtr->applyPosition();
 }
