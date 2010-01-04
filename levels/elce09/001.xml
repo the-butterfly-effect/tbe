@@ -1,11 +1,13 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>The Butterfly effect 101</title>
-        <author>Klaas van Gend</author>
+		<title>The Butterfly Effect 101</title>
+		<title lang="nl">Het vlindereffect (beginnerscursus)</title>
+		<author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>First Demonstration: how does the Butterfly Effect work...</description>
-        <date>11/1/09</date>
+		<description lang="nl">Eerste demonstratie van het vlindereffect in actie...</description>
+		<date>11/1/09</date>
     </levelinfo>
     <scene>
         <scenesize width="2.3" height="1.7" />

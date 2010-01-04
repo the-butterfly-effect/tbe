@@ -137,9 +137,9 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 		QXmlInputSource xmlInputSource(&file);
 		reader.parse(xmlInputSource);
 		if (myParser.theTitle.isEmpty()==false)
-			item->setText(TITLE_COLUMN, myParser.theTitle);
+			item->setText(TITLE_COLUMN, myParser.theTitle.result());
 		if (myParser.theDescription.isEmpty()==false)
-			item->setToolTip(TITLE_COLUMN, myParser.theDescription);
+			item->setToolTip(TITLE_COLUMN, myParser.theDescription.result());
 
 		QSettings mySettings;
 		if (mySettings.value("completed/"+currentText).isValid())
@@ -162,17 +162,65 @@ bool ChooseLevel::LevelList::fatalError(const QXmlParseException &exception)
 
 // ###################################################
 
+ChooseLevel::LocalString::LocalString(void)
+{
+	QLocale mySysLocale = QLocale::system();
+	the5Char = mySysLocale.name();
+}
+
+void ChooseLevel::LocalString::check(const QString& aValue, const QString& aLangCode)
+{
+	// rule 1
+	if (aLangCode.isEmpty() && theLang.isEmpty())
+		theString = aValue;
+
+	// rule 2
+	if (theLang.size()<3 && aLangCode.left(2) == the5Char.left(2))
+	{
+		// but not if we already have "nl", are looking for "nl_NL" and we now get "nl_BE"
+		if ( !(aLangCode.size()==5 && theLang.size()==2) )
+		{
+			theString = aValue;
+			theLang = aLangCode.left(2);
+		}
+	}
+
+	// rule 3
+	if (theLang.size()<3 && aLangCode == the5Char)
+	{
+		theString = aValue;
+		theLang = aLangCode;
+	}
+}
+
+// ###################################################
+
 bool ChooseLevel::FastLevelParser::endElement(const QString & /* namespaceURI */,
 											  const QString & /* localName */,
 											  const QString &qName)
 {
 	if (qName == "title")
-		theTitle = currentText.trimmed();
+		theTitle.check(currentText.trimmed(), theAttrs.value("lang"));
+
 	if (qName == "description")
-		theDescription = currentText.trimmed();
+		theDescription.check(currentText.trimmed(), theAttrs.value("lang"));
 
 	// no need to parse everything beyond the levelinfo
 	if (qName == "levelinfo")
 		return false;
+
+	currentText = "";
+	return true;
+}
+
+
+bool ChooseLevel::FastLevelParser::startElement(const QString &, const QString &,
+					   const QString &qName, const QXmlAttributes &attributes)
+{
+	// this potentially is an expensive copy operation, let's reduce it...
+	if (qName == "title" || qName == "description")
+	{
+		theAttrs = attributes;
+	}
 	return true;
 }

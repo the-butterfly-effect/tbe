@@ -76,7 +76,42 @@ private:
 	}; // end-of-LevelList
 
 
-	/// this class is used by the above LevelList class to quickly retrieve title and description from a level
+	/// this QString-on-steroids only copies a string it is in the right locale
+	class LocalString
+	{
+	public:
+		LocalString();
+
+		/** checks if string aValue is in the right locale
+		  *  (we get that locale from the QLocale::system() )
+		  *  we follow these rules:
+		  *    1) if nothing set and we find a <title> without a language - let's use it
+		  *    2) if we find a title with the corresponding language - let's use it instead of rule 1
+		  *    3) if we find a title with a full corresponding "language_country", let's use that one instead of 1 or 2
+		  *  @param aValue   string to be copied if one of the above rules matches
+		  *  @param aLangCode  the locale code - either empty, or "nl" or "nl_BE" format
+		  */
+		void check(const QString& aValue, const QString& aLangCode);
+
+		bool isEmpty(void)
+		{ return theString.isEmpty(); }
+
+		const QString & result()
+		{ return theString; }
+
+	private:
+		/// constructor will initialize this with the 5-character language+country code.
+		QString the5Char;
+		/// contains the already detected language
+		QString theLang;
+		/// contains the current value - in theLang language
+		QString theString;
+	};
+
+
+	/** this class is used after the above LevelList class to quickly retrieve
+	  * title and description from a level (in the right locale)
+	  */
 	class FastLevelParser : public QXmlDefaultHandler
 	{
 	public:
@@ -84,25 +119,30 @@ private:
 		FastLevelParser(void) {};
 
 		/// implemented from QXmlDefaultHandler
-		bool endElement(const QString &namespaceURI, const QString &localName,
+		virtual bool endElement(const QString &namespaceURI, const QString &localName,
 						const QString &qName);
 
 		/// implemented from QXmlDefaultHandler
-		bool characters(const QString &aStr)
+		virtual bool characters(const QString &aStr)
 		{ currentText += aStr; return true; }
 
+
+		virtual bool startElement(const QString &namespaceURI, const QString &localName,
+					   const QString &qName, const QXmlAttributes &attributes);
 
 		QString errorString() const
 		{ return errorStr; }
 
-		QString theTitle;
-		QString theDescription;
+		LocalString theTitle;
+		LocalString theDescription;
+
+		QXmlAttributes theAttrs;
 
 	private:
 		QString currentText;
 		QString errorStr;
-	}; // end-of FastLevelParser
 
+	}; // end-of FastLevelParser
 };
 
 #endif // ChooseLevel_H
