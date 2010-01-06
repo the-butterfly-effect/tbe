@@ -48,6 +48,28 @@ public:
 	static const char* HORIZONTAL_STRING;
 	static const char* VERTICAL_STRING;
 	static const char* TOTALRESIZE_STRING;
+
+	// the following strings are used by the various Goal classes:
+	//
+
+	// GoalDistance
+	static const char* S_LESSTHAN;
+	static const char* S_MORETHAN;
+
+	// GoalPositionChange
+	static const char* S_XCHANGED;
+	static const char* S_XBELOW;
+	static const char* S_XOVER;
+	static const char* S_YCHANGED;
+	static const char* S_YBELOW;
+	static const char* S_YOVER;
+	static const char* S_ACHANGED;
+	static const char* S_ANYTHING;
+
+	// Goal, PivotPoint:
+	static const char* OBJECT_STRING;
+	static const char* OBJECT1_STRING;
+	static const char* OBJECT2_STRING;
 };
 
 #endif // PROPERTY_H

@@ -20,6 +20,7 @@
 #include "BaseObject.h"
 #include "Goal.h"
 #include "Position.h"
+#include "Property.h"
 #include "World.h"
 
 Goal::Goal()
@@ -119,13 +120,9 @@ bool GoalDistance::parseProperties(World* aWPtr)
 	}
 
 
-	// parse lessthan or morethan
-	const char* S_LESSTHAN = "lessthan";
-	const char* S_MORETHAN = "morethan";
-
-	if (propertyToFloat(S_LESSTHAN, &theLimit))
+	if (propertyToFloat(Property::S_LESSTHAN, &theLimit))
 		theType=LESSTHAN;
-	if (propertyToFloat(S_MORETHAN, &theLimit))
+	if (propertyToFloat(Property::S_MORETHAN, &theLimit))
 		theType=MORETHAN;
 	if (theType == NOTYPE)
 	{
@@ -135,14 +132,14 @@ bool GoalDistance::parseProperties(World* aWPtr)
 
 
 	// parse object1 and object2
-	if (propertyToObjectPtr(aWPtr, "object1", &theFirstPtr)==false)
+	if (propertyToObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
 	{
-		DEBUG2("object1 is not an existing, valid object\n");
+		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT1_STRING);
 		return false;
 	}
-	if (propertyToObjectPtr(aWPtr, "object2", &theSecondPtr)==false)
+	if (propertyToObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
 	{
-		DEBUG2("object2 is not an existing, valid object\n");
+		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT2_STRING);
 		return false;
 	}
 
@@ -233,29 +230,21 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 
 
 	// parse *changed - no value, only a key
-	const char* S_XCHANGED = "xchanged";
-	const char* S_XBELOW   = "xbelow";
-	const char* S_XOVER    = "xover";
-	const char* S_YCHANGED = "ychanged";
-	const char* S_YBELOW   = "ybelow";
-	const char* S_YOVER    = "yover";
-	const char* S_ACHANGED = "anglechanged";
-	const char* S_ANYTHING = "anythingchanged";
-	if (getProperty(S_XCHANGED).isEmpty()==false)
+	if (getProperty(Property::S_XCHANGED).isEmpty()==false)
 		theType=XCHANGED;
-	if (propertyToFloat(S_XBELOW, &theLimit))
+	if (propertyToFloat(Property::S_XBELOW, &theLimit))
 		theType=XBELOW;
-	if (propertyToFloat(S_XOVER, &theLimit))
+	if (propertyToFloat(Property::S_XOVER, &theLimit))
 		theType=XOVER;
-	if (getProperty(S_YCHANGED).isEmpty()==false)
+	if (getProperty(Property::S_YCHANGED).isEmpty()==false)
 		theType=YCHANGED;
-	if (propertyToFloat(S_YBELOW, &theLimit))
+	if (propertyToFloat(Property::S_YBELOW, &theLimit))
 		theType=YBELOW;
-	if (propertyToFloat(S_YOVER, &theLimit))
+	if (propertyToFloat(Property::S_YOVER, &theLimit))
 		theType=YOVER;
-	if (getProperty(S_ACHANGED).isEmpty()==false)
+	if (getProperty(Property::S_ACHANGED).isEmpty()==false)
 		theType=ANGLECHANGED;
-	if (getProperty(S_ANYTHING).isEmpty()==false)
+	if (getProperty(Property::S_ANYTHING).isEmpty()==false)
 		theType=ANYTHINGCHANGED;
 	if (theType == NOTYPE)
 	{
@@ -264,9 +253,9 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	}
 
 	// parse object
-	if (propertyToObjectPtr(aWPtr, "object", &theBOPtr)==false)
+	if (propertyToObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
 	{
-		DEBUG2("object is not an existing, valid object\n");
+		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
 		return false;
 	}
 	return true;

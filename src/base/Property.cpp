@@ -35,3 +35,20 @@ const char* Property::NONE_STRING        = "none";
 const char* Property::HORIZONTAL_STRING  = "horizontal";
 const char* Property::VERTICAL_STRING    = "vertical";
 const char* Property::TOTALRESIZE_STRING = "totalresize";
+
+
+const char* Property::S_LESSTHAN = "lessthan";
+const char* Property::S_MORETHAN = "morethan";
+
+const char* Property::S_XCHANGED = "xchanged";
+const char* Property::S_XBELOW   = "xbelow";
+const char* Property::S_XOVER    = "xover";
+const char* Property::S_YCHANGED = "ychanged";
+const char* Property::S_YBELOW   = "ybelow";
+const char* Property::S_YOVER    = "yover";
+const char* Property::S_ACHANGED = "anglechanged";
+const char* Property::S_ANYTHING = "anythingchanged";
+
+const char* Property::OBJECT_STRING  = "object";
+const char* Property::OBJECT1_STRING = "object1";
+const char* Property::OBJECT2_STRING = "object2";
