@@ -102,7 +102,7 @@ void RectObject::adjustParameters(void)
 			boxDef->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
 
 			// get mass:  no mass -> no density -> no motion
-			qreal myMass = getProperty(Property::MASS_STRING).toDouble();
+			qreal myMass = theProps.getProperty(Property::MASS_STRING).toDouble();
 			boxDef->density = myMass / getTheWidth()*getTheHeight();
 			boxDef->userData = this;
 			setFriction(boxDef);
@@ -124,7 +124,7 @@ void RectObject::adjustTallParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	qreal myDensity = theProps.getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
 	qreal myDoneHeight = 0.0;
@@ -163,7 +163,7 @@ void RectObject::adjustWideParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	qreal myDensity = theProps.getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
 	qreal myDoneWidth = 0.0;
@@ -202,18 +202,18 @@ DrawObject*  RectObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }
 
 void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 {
 	// only set friction if it is special
-	if (getProperty(Property::FRICTION_STRING).isEmpty())
+	if (theProps.getProperty(Property::FRICTION_STRING).isEmpty())
 		return;
 
 	bool isOK = false;
-	double myFriction = getProperty(Property::FRICTION_STRING).toDouble(&isOK);
+	double myFriction = theProps.getProperty(Property::FRICTION_STRING).toDouble(&isOK);
 	if (isOK)
 		aBoxDef->friction = myFriction;
 	else
@@ -225,7 +225,7 @@ void  RectObject::setProperty(const QString& aKey, const QString& aValue)
 	// apart from actually setting the property, we also must
 	// check if this is a known property that should take effect immediately
 
-	BaseObject::setProperty(aKey,aValue);
+	theProps.setProperty(aKey,aValue);
 
 	if (aKey == Property::ROTATABLE_STRING)
 	{

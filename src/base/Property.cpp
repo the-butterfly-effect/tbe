@@ -30,6 +30,7 @@ const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::DESCRIPTION_STRING = "Description";
 
+const char* Property::THRUST_STRING      = "Thrust";
 
 const char* Property::NONE_STRING        = "none";
 const char* Property::HORIZONTAL_STRING  = "horizontal";
@@ -52,3 +53,20 @@ const char* Property::S_ANYTHING = "anythingchanged";
 const char* Property::OBJECT_STRING  = "object";
 const char* Property::OBJECT1_STRING = "object1";
 const char* Property::OBJECT2_STRING = "object2";
+
+
+bool PropertyList::propertyToFloat(const QString& aPropertyName,
+										 float* aFloat)
+{
+	QString myValue = getProperty(aPropertyName);
+	if (myValue.isEmpty())
+		return false;
+
+	bool isOK = false;
+	float myFloat = myValue.toFloat(&isOK);
+	if (isOK == false)
+		return false;
+
+	*aFloat = myFloat;
+	return true;
+}

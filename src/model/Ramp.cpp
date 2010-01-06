@@ -120,7 +120,7 @@ void RightRamp::adjustParameters(void)
 		rampDef->vertices[3].Set(+myHW, myHH);
 	}
 
-	qreal myMass = getProperty(Property::MASS_STRING).toDouble();
+	qreal myMass = theProps.getProperty(Property::MASS_STRING).toDouble();
 	rampDef->density = 0.5*myMass / getTheWidth()*getTheHeight();
 	
 	// delete any shapes on the body
@@ -140,6 +140,6 @@ DrawObject*  RightRamp::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawRamp(this, getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawRamp(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }

@@ -55,7 +55,7 @@ Scenery::~Scenery( )
 DrawObject*  Scenery::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this, getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
 	// set the ZValue below 2 (the default for DrawObjects)
 	// because we want Scenery to draw behind other objects
 	theDrawObjectPtr->setZValue(0.1);

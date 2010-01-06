@@ -54,11 +54,11 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 	if (theBaseObjectPtr->getID().isEmpty()==false)
 		myNode.setAttribute(theIDAttributeString, theBaseObjectPtr->getID());
 
-	if (theBaseObjectPtr->theProperties.isEmpty()==false)
+	if (theBaseObjectPtr->theProps.getPropertyCount() > 0)
 	{
-		BaseObject::PropertyMap::const_iterator i;
-		for ( i = theBaseObjectPtr->theProperties.constBegin();
-			  i!= theBaseObjectPtr->theProperties.constEnd();
+		PropertyList::PropertyMap::const_iterator i;
+		for ( i = theBaseObjectPtr->theProps.constPropertyBegin();
+			  i!= theBaseObjectPtr->theProps.constPropertyEnd();
 			 ++i)
 		{
 			QDomElement myProperty = aParent->ownerDocument().createElement(thePropertyString);
@@ -146,7 +146,7 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 			DEBUG5("   property: '%s'='%s'\n",
 				   ASCII(myKey),
 				   ASCII(myValue));
-			myBOPtr->setProperty(myKey, myValue);
+			myBOPtr->theProps.setProperty(myKey, myValue);
 		}
 	}
 

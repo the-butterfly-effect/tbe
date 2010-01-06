@@ -21,6 +21,7 @@
 
 #include "tbe_global.h"
 #include "Position.h"
+#include "Property.h"
 
 #include <assert.h>
 #include <QObject>
@@ -219,6 +220,8 @@ public:
 	
 	const BaseObjectSerializer* getSerializer(void) const;
 
+	PropertyList theProps;
+
 private:
 	// Private attributes
 	//
@@ -267,9 +270,6 @@ protected:
 	 */
 	QString theID;
 
-	typedef QMap<QString,QString> PropertyMap;
-	PropertyMap theProperties;
-	
 	friend class BaseObjectSerializer;
 
 public:
@@ -365,18 +365,6 @@ public:
 	 */
 	qreal getTheBounciness ( )				 
 		{ return theBounciness; }
-
-	/// set property aKey to aValue
-	virtual void  setProperty(const QString& aKey, const QString& aValue)
-		{ theProperties[aKey] = aValue; }
-
-	/// @returns the value for property aKey
-	/// - or an empty string if it does not exist
-	QString getProperty(const QString& aKey)
-	{ return theProperties.value(aKey, ""); }
-
-	void removeProperty(const QString& aKey)
-	{ theProperties.remove(aKey); }
 
 protected:
 	void setAngle(qreal anAngle)

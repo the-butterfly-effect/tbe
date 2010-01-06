@@ -126,7 +126,7 @@ AbstractBall::~AbstractBall ( ) { }
 
 DrawObject*  AbstractBall::createDrawObject(void)
 {
-	QString myImageName = getProperty(Property::IMAGE_NAME_STRING);
+	QString myImageName = theProps.getProperty(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty()==false)
 		theBallImage = myImageName;
 	DrawObject* myObjPtr = new DrawObject(this, theBallImage);

@@ -33,28 +33,12 @@ Goal::~Goal()
 	// nothing to do here
 }
 
-bool Goal::propertyToFloat(const QString& aPropertyName,
-										 float* aFloat)
-{
-	QString myValue = getProperty(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-
-	bool isOK = false;
-	float myFloat = myValue.toFloat(&isOK);
-	if (isOK == false)
-		return false;
-
-	*aFloat = myFloat;
-	return true;
-}
-
 bool Goal::propertyToObjectPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
 		BaseObject** aBOPtrPtr)
 {
-	QString myValue = getProperty(aPropertyName);
+	QString myValue = theProps.getProperty(aPropertyName);
 	if (myValue.isEmpty())
 		return false;
 	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
@@ -113,16 +97,16 @@ bool GoalDistance::parseProperties(World* aWPtr)
 
 	// there are 4 types of properties: ("lessthan" OR "morethan") AND "object1" AND "object2"
 	// but we expect only to have 3 properties - any other number is wrong
-	if (theProperties.count() != 3)
+	if (theProps.getPropertyCount() != 3)
 	{
 		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
 		return false;
 	}
 
 
-	if (propertyToFloat(Property::S_LESSTHAN, &theLimit))
+	if (theProps.propertyToFloat(Property::S_LESSTHAN, &theLimit))
 		theType=LESSTHAN;
-	if (propertyToFloat(Property::S_MORETHAN, &theLimit))
+	if (theProps.propertyToFloat(Property::S_MORETHAN, &theLimit))
 		theType=MORETHAN;
 	if (theType == NOTYPE)
 	{
@@ -222,7 +206,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 
 	// there are 5 types of properties: (xchanged/ychanged/anglechanged/anythingchanged AND object)
 	// but we expect only to have 2 properties - any other number is wrong
-	if (theProperties.count() != 2)
+	if (theProps.getPropertyCount() != 2)
 	{
 		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
 		return false;
@@ -230,21 +214,21 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 
 
 	// parse *changed - no value, only a key
-	if (getProperty(Property::S_XCHANGED).isEmpty()==false)
+	if (theProps.getProperty(Property::S_XCHANGED).isEmpty()==false)
 		theType=XCHANGED;
-	if (propertyToFloat(Property::S_XBELOW, &theLimit))
+	if (theProps.propertyToFloat(Property::S_XBELOW, &theLimit))
 		theType=XBELOW;
-	if (propertyToFloat(Property::S_XOVER, &theLimit))
+	if (theProps.propertyToFloat(Property::S_XOVER, &theLimit))
 		theType=XOVER;
-	if (getProperty(Property::S_YCHANGED).isEmpty()==false)
+	if (theProps.getProperty(Property::S_YCHANGED).isEmpty()==false)
 		theType=YCHANGED;
-	if (propertyToFloat(Property::S_YBELOW, &theLimit))
+	if (theProps.propertyToFloat(Property::S_YBELOW, &theLimit))
 		theType=YBELOW;
-	if (propertyToFloat(Property::S_YOVER, &theLimit))
+	if (theProps.propertyToFloat(Property::S_YOVER, &theLimit))
 		theType=YOVER;
-	if (getProperty(Property::S_ACHANGED).isEmpty()==false)
+	if (theProps.getProperty(Property::S_ACHANGED).isEmpty()==false)
 		theType=ANGLECHANGED;
-	if (getProperty(Property::S_ANYTHING).isEmpty()==false)
+	if (theProps.getProperty(Property::S_ANYTHING).isEmpty()==false)
 		theType=ANYTHINGCHANGED;
 	if (theType == NOTYPE)
 	{

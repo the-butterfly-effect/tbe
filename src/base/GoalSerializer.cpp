@@ -72,7 +72,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 			DEBUG5("   property: '%s'='%s'\n",
 				   ASCII(myKey),
 				   ASCII(myValue));
-			myGPtr->setProperty(myKey, myValue);
+			myGPtr->theProps.setProperty(myKey, myValue);
 		}
 	}
 

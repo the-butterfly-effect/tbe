@@ -74,15 +74,15 @@ void DrawNoteIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 QString DrawNoteIt::getPageString(unsigned int aPage)
 {
 	QString myPageNr = "page"+QString::number(aPage);
-	QString myPlainPage = theBaseObjectPtr->getProperty(myPageNr);
+	QString myPlainPage = theBaseObjectPtr->theProps.getProperty(myPageNr);
 	if (myPlainPage.isEmpty())
 		return myPlainPage;
 	// first look for page1_nl, then for page1_nl_NL
 	QString myLocName = QLocale::system().name();
 	myPageNr += "_" + myLocName.mid(0,2);
-	QString myLocal1Page = theBaseObjectPtr->getProperty(myPageNr);
+	QString myLocal1Page = theBaseObjectPtr->theProps.getProperty(myPageNr);
 	myPageNr += "_" + myLocName.mid(3,2);
-	QString myLocal2Page = theBaseObjectPtr->getProperty(myPageNr);
+	QString myLocal2Page = theBaseObjectPtr->theProps.getProperty(myPageNr);
 
 	if (myLocal2Page.isEmpty()==false)
 		return myLocal2Page;

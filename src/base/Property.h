@@ -19,6 +19,51 @@
 #ifndef PROPERTY_H
 #define PROPERTY_H
 
+#include <QString>
+#include <QMap>
+
+class PropertyList
+{
+public:
+	/// set property aKey to aValue
+	virtual void  setProperty(const QString& aKey, const QString& aValue)
+		{ theProperties[aKey] = aValue; }
+
+	/** @returns the value for property aKey
+	  *  - or an empty string if it does not exist
+	  */
+	virtual QString getProperty(const QString& aKey)
+	{ return theProperties.value(aKey, ""); }
+
+	///
+	virtual void removeProperty(const QString& aKey)
+	{ theProperties.remove(aKey); }
+
+	typedef QMap<QString,QString> PropertyMap;
+
+	PropertyMap::const_iterator constPropertyBegin(void) const
+	{ return theProperties.constBegin(); }
+
+	PropertyMap::const_iterator constPropertyEnd(void) const
+	{ return theProperties.constEnd(); }
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value can be parsed to fit aFloat
+	  * @param aPropertyName
+	  * @param aFloat		  OUTPUT upon success contains value of property
+	  * @returns true if success. if no success aFloat is unchanged
+	  */
+	bool propertyToFloat(const QString& aPropertyName, float* aFloat);
+
+	/// @returns the number of properties in this class
+	int  getPropertyCount(void) const
+	{ return theProperties.count(); }
+
+private:
+	PropertyMap theProperties;
+};
+
+
 class Property
 {
 public:
@@ -48,6 +93,12 @@ public:
 	static const char* HORIZONTAL_STRING;
 	static const char* VERTICAL_STRING;
 	static const char* TOTALRESIZE_STRING;
+
+	// the following is only used by CokeMentosBottle
+	//
+
+	static const char* THRUST_STRING;
+
 
 	// the following strings are used by the various Goal classes:
 	//

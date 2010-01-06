@@ -157,7 +157,7 @@ void CokeMentosBottle::reset(void)
 	hasContact = false;
 
 	bool isOK = false;
-	theThrust = getProperty("Thrust").toDouble(&isOK);
+	theThrust = theProps.getProperty(Property::THRUST_STRING).toDouble(&isOK);
 	if (isOK==false)
 		theThrust = 2.0;
 }

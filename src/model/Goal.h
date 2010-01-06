@@ -19,7 +19,7 @@
 #ifndef GOAL_H
 #define GOAL_H
 
-#include <QMap>
+#include "Property.h"
 
 // forward declarations
 class World;
@@ -42,19 +42,6 @@ public:
 	  */
 	virtual bool checkForSuccess(void) = 0;
 
-	/// set property aKey to aValue
-	virtual void  setProperty(const QString& aKey, const QString& aValue)
-	{ theProperties[aKey] = aValue; }
-
-	/// @returns the value for property aKey
-	/// - or an empty string if it does not exist
-	QString getProperty(const QString& aKey)
-	{ return theProperties.value(aKey, ""); }
-
-	/// remove a property
-	void removeProperty(const QString& aKey)
-	{ theProperties.remove(aKey); }
-
 	/** after all properties are set, call this function
 	  * to have the goal actually try to understand the
 	  * properties.
@@ -63,14 +50,6 @@ public:
 	virtual bool parseProperties(World* aWorldPtr) = 0;
 
 protected:
-	/** returns true if property aPropertyName exists *and*
-	  * its value can be parsed to fit aFloat
-	  * @param aPropertyName
-	  * @param aFloat		  OUTPUT upon success contains value of property
-	  * @returns true if success. if no success aFloat is unchanged
-	  */
-	bool propertyToFloat(const QString& aPropertyName, float* aFloat);
-
 	/** returns true if property aPropertyName exists *and*
 	  * its value is the ID of an existing BaseObject instance
 	  * @param aWorldPtr
@@ -82,9 +61,8 @@ protected:
 							 const QString& aPropertyName,
 							 BaseObject** aBOPtrPtr);
 
-protected:
-	typedef QMap<QString,QString> PropertyMap;
-	PropertyMap theProperties;
+	PropertyList theProps;
+	friend class GoalSerializer;
 };
 
 /// implemented Goal - distance between two objects grows larger than or is less than a limit
