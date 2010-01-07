@@ -202,7 +202,7 @@ void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 	}
 	else
 	{
-		Popup::Warning(tr("You can only change things when the scene is in rest."), views().first());
+		Popup::Warning(tr("You cannot make changes now. You need to reset the stopwatch first."), views().first());
 	}
 }
 

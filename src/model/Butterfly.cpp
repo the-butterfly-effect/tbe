@@ -39,7 +39,6 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 Butterfly::Butterfly()
 		: RectObject(), theCountdown(1)
 {
-	setProperty(Property::DESCRIPTION_STRING, QObject::tr("A Butterfly flaps happily around - to flowers mostly."));
 	setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
 
 	// butterflies don't bounce *ever*

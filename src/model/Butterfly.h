@@ -36,9 +36,12 @@ public:
 	/// returns the Name of the object.
 	/// overridden from parent
 	virtual const QString getName ( ) const
-	{
-		return QObject::tr("Butterfly");
-	}
+	{	return QObject::tr("Butterfly"); }
+
+	/// returns the Name of the object.
+	/// overridden from parent
+	virtual const QString getToolTip ( ) const
+	{	return QObject::tr("Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers."); }
 
 	/// returns whether the object can be resized by the user
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
@@ -47,11 +50,6 @@ public:
 
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
-
-	/// called if Object has registered a sensor share
-	/// Butterfly needs to know if it has hit another object
-	/// overridden from SensorInterface
-//	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 	/// overriden from BaseObject
 	/// because we need to instantiate a special DrawButterfly class

@@ -66,7 +66,7 @@ static BallObjectFactory theBBFactory("Bowling Ball",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theVBFactory("Volleyball",
 	QObject::tr("Volley Ball"),
-	QObject::tr("Your average volleyball - it's light, soft and fairly bouncy."),
+	QObject::tr("A volleyball - you know: light, soft and fairly bouncy."),
 	"VolleyBall", 0.105, 0.280, 0.65);
 
 
@@ -75,7 +75,7 @@ static BallObjectFactory theVBFactory("Volleyball",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theTBFactory("Tennis Ball",
 	QObject::tr("Tennis Ball"),
-	QObject::tr("A tennis ball is small, hairy and fairly bouncy."),
+	QObject::tr("A tennis ball is small, fuzzy and known for turning heads."),
 	"TennisBall", 0.034, 0.058, 0.56);
 
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
@@ -83,7 +83,7 @@ static BallObjectFactory theTBFactory("Tennis Ball",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theSoccerFactory("Soccer Ball",
 	QObject::tr("Soccer Ball"),
-	QObject::tr("A football - or soccer ball."),
+	QObject::tr("A football (of the spherical persuasion)."),
 	"SoccerBall", 0.110, 0.430, 0.56);
 
 

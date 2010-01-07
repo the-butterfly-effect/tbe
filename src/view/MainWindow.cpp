@@ -108,7 +108,7 @@ void MainWindow::on_actionAbout_activated()
 void MainWindow::on_actionOpen_custom_level_activated()
 {
 	QString myFileName = QFileDialog::getOpenFileName(this,
-		 tr("Open Level"), ".", tr("TBE Levels (*.xml)"));
+		 tr("Open level"), ".", tr("TBE levels (*.xml)"));
 	if (myFileName.isEmpty())
 		return;
 	loadLevel(myFileName);

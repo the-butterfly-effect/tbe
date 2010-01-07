@@ -170,7 +170,7 @@ Level::load(const QString& aFileName)
 	//
 	mySceneNode=myDocElem.firstChildElement(theSceneString);
 
-	myErrorMessage = tr("Parsing '%1' section failed").arg(theSceneSizeString);
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theSceneSizeString);
 	myNode=mySceneNode.firstChildElement(theSceneSizeString);
 	myNodeMap = myNode.attributes();
 	myWidth = myNodeMap.namedItem(theWidthAttributeString).nodeValue().toDouble(&isOK1);
@@ -184,7 +184,7 @@ Level::load(const QString& aFileName)
 	theWorldPtr->theWorldHeight=myHeight;
 
 	// TODO: implement view
-	myErrorMessage = tr("Parsing '%1' section failed").arg(theViewString);
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
 	
 	
