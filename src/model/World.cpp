@@ -107,12 +107,11 @@ void World::createScene(MainWindow* myMainPtr)
 	assert(theDrawWorldPtr == NULL);
 	theDrawWorldPtr = new DrawWorld(myMainPtr, this);
 	
-#ifdef DRAWDEBUG
-	// if DRAWDEBUG is defined, DrawWorld also inherits from the b2DrawDebug class
-	// and will cause drawing of all shapes - good for debugging new objects
+	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
+	// all shapes - useful for debugging new objects
 	// but we have to register the debug thingie first.
-	theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
-#endif
+	if (theDrawDebug==true)
+		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
 
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;
