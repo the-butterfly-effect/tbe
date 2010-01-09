@@ -16,8 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "Position.h"
 #include "Property.h"
+#include <QStringList>
 
+#include "tbe_global.h"
 
 // these are the identifiers of the properties in the XML file
 // do not translate - ever!
@@ -68,5 +71,33 @@ bool PropertyList::propertyToFloat(const QString& aPropertyName,
 		return false;
 
 	*aFloat = myFloat;
+	return true;
+}
+
+
+bool PropertyList::propertyToPosition(const QString& aPropertyName, Position* aPosition)
+{
+	QString myValue = getProperty(aPropertyName);
+	if (myValue.isEmpty())
+		return false;
+
+	bool isOK = false;
+
+	// we have deltaX before, and deltaY after the comma
+	QStringList myList = myValue.split(",");
+	if (myList.count()!=2)
+	{
+		DEBUG2("propertyToPosition '%s' does not have a comma?\n", ASCII(myValue));
+		return false;
+	}
+	float dx =  myList.first().toFloat(&isOK);
+	if (isOK == false)
+		return false;
+	float dy =  myList.last().toFloat(&isOK);
+	if (isOK == false)
+		return false;
+
+	aPosition->x = dx;
+	aPosition->y = dy;
 	return true;
 }

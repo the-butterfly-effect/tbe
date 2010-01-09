@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,6 +21,10 @@
 
 #include <QString>
 #include <QMap>
+
+// forward declarations
+class Position;
+
 
 class PropertyList
 {
@@ -54,6 +58,14 @@ public:
 	  * @returns true if success. if no success aFloat is unchanged
 	  */
 	bool propertyToFloat(const QString& aPropertyName, float* aFloat);
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value can be parsed to fit aFloat
+	  * @param aPropertyName
+	  * @param aFloat		  OUTPUT upon success contains value of property
+	  * @returns true if success. if no success aFloat is unchanged
+	  */
+	bool propertyToPosition(const QString& aPropertyName, Position* aPosition);
 
 	/// @returns the number of properties in this class
 	int  getPropertyCount(void) const
@@ -121,6 +133,7 @@ public:
 	static const char* OBJECT_STRING;
 	static const char* OBJECT1_STRING;
 	static const char* OBJECT2_STRING;
+
 };
 
 #endif // PROPERTY_H
