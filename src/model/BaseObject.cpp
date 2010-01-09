@@ -90,9 +90,7 @@ Position BaseObject::getTempCenter (void) const
 	if (isPhysicsObjectCreated()==false)
 		return getOrigCenter();
 	
-	return Position(theB2BodyPtr->GetPosition().x,
-					theB2BodyPtr->GetPosition().y,
-					theB2BodyPtr->GetAngle());
+	return Position(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 }
 
 void BaseObject::setTempCenter ( Position new_var )
@@ -131,7 +129,7 @@ DrawObject*  BaseObject::createDrawObject(void)
 
 void BaseObject::createPhysicsObject()
 {
-	DEBUG5("BaseObject::createPhysicsObject()\n");
+	DEBUG5("BaseObject::createPhysicsObject() for %s\n", ASCII(getName()));
 	// first fixup the bodydef with the current position
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(theCenter.x, theCenter.y);
