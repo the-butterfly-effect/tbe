@@ -41,10 +41,10 @@ public:
 	 */
 	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
 
-	Position (const QPointF& aPoint);
+	Position (const QPointF& aPoint, qreal anAngle = 0.0);
 
-	Position (const b2Vec2& aVec);
-	
+	Position (const b2Vec2& aVec, qreal anAngle = 0.0);
+
 	// Public attributes
 	
 	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter

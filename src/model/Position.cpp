@@ -30,15 +30,15 @@ Position::Position (qreal anX, qreal aY, qreal anAngle)
 	;
 }
 
-Position::Position (const QPointF& aPoint)
-		: x(aPoint.x()), y(-aPoint.y()), angle(0)
+Position::Position (const QPointF& aPoint, qreal anAngle)
+		: x(aPoint.x()), y(-aPoint.y()), angle(anAngle)
 {
 	// again: nothing to do here.
 }
 
 
-Position::Position (const b2Vec2& aVec)
-		: x(aVec.x), y(aVec.y), angle(0)
+Position::Position (const b2Vec2& aVec, qreal anAngle)
+		: x(aVec.x), y(aVec.y), angle(anAngle)
 {
 	// yawn, again: nothing to do here.
 }
