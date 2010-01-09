@@ -143,9 +143,8 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 				goto not_good;
 			QString myKey = i.attributes().item(0).nodeValue();
 			QString myValue = i.text();
-			DEBUG5("   property: '%s'='%s'\n",
-				   ASCII(myKey),
-				   ASCII(myValue));
+
+			DEBUG5("   %s\n", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myValue)));
 			myBOPtr->theProps.setProperty(myKey, myValue);
 		}
 	}
