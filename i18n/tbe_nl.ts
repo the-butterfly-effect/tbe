@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="17"/>
         <source>Choose your game!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kies je spel!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="23"/>
@@ -14,7 +14,9 @@
 
 Double-click for the post-it notes for help.
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Selecteer het level dat je wilt spelen.
+
+Dubbelklik op de post-it briefjes voor hulp.</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="40"/>
@@ -24,7 +26,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="45"/>
         <source>Level Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Level titel</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="79"/>
