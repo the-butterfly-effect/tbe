@@ -58,6 +58,12 @@ const char* Property::OBJECT1_STRING = "object1";
 const char* Property::OBJECT2_STRING = "object2";
 
 
+bool PropertyList::doesPropertyExists(const QString& aKey) const
+{
+	return theProperties.find(aKey) != theProperties.end();
+}
+
+
 bool PropertyList::propertyToFloat(const QString& aPropertyName,
 										 float* aFloat)
 {

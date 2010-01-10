@@ -214,21 +214,21 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 
 
 	// parse *changed - no value, only a key
-	if (theProps.getProperty(Property::S_XCHANGED).isEmpty()==false)
+	if (theProps.doesPropertyExists(Property::S_XCHANGED))
 		theType=XCHANGED;
 	if (theProps.propertyToFloat(Property::S_XBELOW, &theLimit))
 		theType=XBELOW;
 	if (theProps.propertyToFloat(Property::S_XOVER, &theLimit))
 		theType=XOVER;
-	if (theProps.getProperty(Property::S_YCHANGED).isEmpty()==false)
+	if (theProps.doesPropertyExists(Property::S_YCHANGED))
 		theType=YCHANGED;
 	if (theProps.propertyToFloat(Property::S_YBELOW, &theLimit))
 		theType=YBELOW;
 	if (theProps.propertyToFloat(Property::S_YOVER, &theLimit))
 		theType=YOVER;
-	if (theProps.getProperty(Property::S_ACHANGED).isEmpty()==false)
+	if (theProps.doesPropertyExists(Property::S_ACHANGED))
 		theType=ANGLECHANGED;
-	if (theProps.getProperty(Property::S_ANYTHING).isEmpty()==false)
+	if (theProps.doesPropertyExists(Property::S_ANYTHING))
 		theType=ANYTHINGCHANGED;
 	if (theType == NOTYPE)
 	{

@@ -43,6 +43,8 @@ public:
 	virtual void removeProperty(const QString& aKey)
 	{ theProperties.remove(aKey); }
 
+	bool doesPropertyExists(const QString& aKey) const;
+
 	typedef QMap<QString,QString> PropertyMap;
 
 	PropertyMap::const_iterator constPropertyBegin(void) const
