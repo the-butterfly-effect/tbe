@@ -52,11 +52,11 @@
             <object width="0.1" X="6.85" Y="0.32" height="0.64" type="RectObject">
 	                    <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="6.3" Y="0.8" type="NoteIt">
+            <object X="6.3" Y="0.8" type="PostIt">
                 <property key="page1" >No butterflies here!&lt;br&gt;&lt;br&gt;</property>
                 <property key="page2" >Topple the bowling pin below.</property>
                 <property key="page3" >Hmmm... &lt;br&gt;&lt;br&gt;This reminds me of a kids' game!</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
 	    </object>
         </predefined>
     </scene>

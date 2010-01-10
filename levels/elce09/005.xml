@@ -79,11 +79,11 @@
                 <property key="Friction" >1</property>
                 <property key="ImageName" >coke-crate</property>
             </object>
-            <object X="2.8" Y="1.4" type="NoteIt">
+            <object X="2.8" Y="1.4" type="PostIt">
                 <property key="page1" >Those pins always long for company.</property>
                 <property key="page2" >Let's join the lonely one above with his friends below.</property>
                 <property key="page3" >By the way: you may sometimes have more in your toolbox than you need...</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
 	    </object>
         </predefined>
     </scene>

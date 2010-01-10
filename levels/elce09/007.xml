@@ -293,11 +293,11 @@
             <object width="0.8" X="4.2" Y="0.8" height="0.5" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
-            <object X="2.0" Y="1.7" type="NoteIt">
+            <object X="2.0" Y="1.7" type="PostIt">
                 <property key="page1" >The final killer challenge...</property>
                 <property key="page2" >Look: it's that butterfly and flower again.</property>
                 <property key="page3" >But there's some styrofoam blocks in the way...</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Note-it boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
 	    </object>
         </predefined>
     </scene>

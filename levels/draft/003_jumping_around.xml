@@ -17,7 +17,7 @@
               <property key="Bounciness" >0.1</property>
 	    </object>
             <object X="4.2" Y="1.55" type="Bowling Pin" />
-            <object X="2" Y="0.5" type="NoteIt" />
+            <object X="2" Y="0.5" type="PostIt" />
             <object X="4.35" Y="0.65" height="1.3" width="0.1" type="RectObject" />
             <object X="4.95" Y="0.65" height="1.3" width="0.1" type="RectObject" />
             <object width="0.6" X="0.3" Y="2.6" height="0.4" type="RightRamp" />

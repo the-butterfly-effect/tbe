@@ -108,11 +108,11 @@
                 <property key="Bounciness">0.05</property>
             </object>
 
-	    <object X="3.6" Y="0.7" type="NoteIt">
+	    <object X="3.6" Y="0.7" type="PostIt">
                 <property key="page1">It's almost time&lt;br&gt;for goodbyes</property>
                 <property key="page2"> :-( </property>
                 <property key="page3">Look for the last message</property>
-                <property key="page4">... Note-It Boy</property>
+                <property key="page4">... the Post-It Boy</property>
 	    </object>
             
         </predefined>

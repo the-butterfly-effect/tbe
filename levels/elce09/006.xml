@@ -73,11 +73,11 @@
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object X="2.8" Y="1.4" type="NoteIt">
+            <object X="2.8" Y="1.4" type="PostIt">
                 <property key="page1" >This is Ruud.&lt;br&gt;&lt;br&gt;He's on a small desert island.</property>
                 <property key="page2" >A few crates of coke washed up shore lately - so he's not thirsty.</property>
                 <property key="page3" >But do you see those coconuts?</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Note-it boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Post-It boy</property>
 	    </object>
         </predefined>
     </scene>

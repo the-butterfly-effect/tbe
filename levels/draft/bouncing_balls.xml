@@ -32,13 +32,13 @@
             <property key="Bounciness">0.2</property>
         </object>
 
-  <object X="1.5" Y="0.5" type="NoteIt">
+  <object X="1.5" Y="0.5" type="PostIt">
       <property key="page1" >Welcome back!</property>
       <property key="page2" >No butterfly here...&lt;br&gt;&lt;br&gt;Don't worry - we haven't seen the last one yet</property>
       <property key="page3" >My mum told me to clean my room.&lt;br&gt;&lt;br&gt;All balls must go in the basket.</property>
       <property key="page4" >Someone told me to drag the ramp from the toolbox into the big window.&lt;br&gt;... after you've read my note!</property>
       <property key="page5" >But why do I have to clean my room every year?</property>
-      <property key="page6" >... An unhappy&lt;br&gt;&lt;br&gt;&lt;br&gt;Note-It Boy</property>
+      <property key="page6" >... An unhappy&lt;br&gt;&lt;br&gt;&lt;br&gt;Post-It Boy</property>
   </object>
 
 	

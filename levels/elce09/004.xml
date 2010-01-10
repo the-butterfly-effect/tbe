@@ -63,13 +63,13 @@ Look: it blows if triggered!</property>
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="4.0" Y="1.2" type="NoteIt">
+            <object X="4.0" Y="1.2" type="PostIt">
                 <property key="page1" >The goal here is to topple the pins below.</property>
                 <property key="page2" >I'm thirsty!</property>
                 <property key="page3" >But that's not an ordinary cola bottle...</property>
                 <property key="page4" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
                 <property key="page5" >Where does the cola go?</property>
-                <property key="page6" >&lt;br&gt;&lt;br&gt; ... thirsty Note-it boy</property>
+                <property key="page6" >&lt;br&gt;&lt;br&gt; ... thirsty Post-It boy</property>
 	    </object>
         </predefined>
     </scene>
