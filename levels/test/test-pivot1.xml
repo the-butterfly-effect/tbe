@@ -1,0 +1,60 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>PivotPoint test Level...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>This is just a level to prove PivotPoint correct operation.</description>
+        <date>Jan 8, 2010</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+	    <object type="Bowling Ball"/>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="5.5" height="4" />
+        <predefined>
+            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            
+            <object width="3.0" height="0.2" X="1.75" Y="2.50" type="RectObject" ID="horibar">
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">2.0</property>
+            </object>
+            
+            <object type="PivotPoint" X="1.75" Y="2.50" >
+                <property key="object">horibar</property>
+            </object>
+            
+            <object width="1.0" height="0.2" X="4.5" Y="3.50" type="RectObject" ID="topbar">
+                <property key="ImageName">birch_bar</property>
+            </object>
+            <object width="1.1" height="0.2" X="3.55" Y="3.50" type="RectObject" ID="handle1">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="1.0" height="0.2" X="2.6" Y="3.50" type="RectObject" ID="handle2">
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">2.0</property>
+            </object>
+            <object type="PivotPoint" X="4.0" Y="3.50" >
+                <property key="object1">topbar</property>
+                <property key="object2">handle1</property>
+            </object>
+            <object type="PivotPoint" X="3.1" Y="3.50" >
+                <property key="object1">handle1</property>
+                <property key="object2">handle2</property>
+            </object>
+            
+            
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="anglechanged"></property>
+		   <property key="object">horibar</property>
+		</goal>
+	</goals>
+</tbe-level>
