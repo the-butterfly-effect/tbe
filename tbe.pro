@@ -35,9 +35,9 @@ HEADERS += src/tbe_global.h \
     src/model/Flower.h \
     src/model/Goal.h \
     src/model/Level.h \
-    src/model/NoteIt.h \
     src/model/PivotPoint.h \
     src/model/Position.h \
+    src/model/PostIt.h \
     src/model/Ramp.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
@@ -46,8 +46,8 @@ HEADERS += src/tbe_global.h \
     src/view/ChooseLevel.h \
     src/view/DrawButterfly.h \
     src/view/DrawCokeMentosBottle.h \
-    src/view/DrawNoteIt.h \
     src/view/DrawObject.h \
+    src/view/DrawPostIt.h \
     src/view/DrawRamp.h \
     src/view/DrawWorld.h \
     src/view/ImageStore.h \
@@ -75,9 +75,9 @@ SOURCES += src/main.cpp \
     src/model/Flower.cpp \
     src/model/Goal.cpp \
     src/model/Level.cpp \
-    src/model/NoteIt.cpp \
     src/model/PivotPoint.cpp \
     src/model/Position.cpp \
+    src/model/PostIt.cpp \
     src/model/Ramp.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
@@ -86,8 +86,8 @@ SOURCES += src/main.cpp \
     src/view/ChooseLevel.cpp \
     src/view/DrawButterfly.cpp \
     src/view/DrawCokeMentosBottle.cpp \
-    src/view/DrawNoteIt.cpp \
     src/view/DrawObject.cpp \
+    src/view/DrawPostIt.cpp \
     src/view/DrawRamp.cpp \
     src/view/DrawWorld.cpp \
     src/view/ImageStore.cpp \
@@ -98,7 +98,7 @@ SOURCES += src/main.cpp \
     src/view/StartStopWatch.cpp \
     src/view/toolbox.cpp
 FORMS = src/view/MainWindow.ui \
-    src/view/NoteItViewer.ui \
+    src/view/PostItViewer.ui \
     src/view/SaveLevelInfo.ui \
     src/view/ChooseLevel.ui
 DISTFILES = README \

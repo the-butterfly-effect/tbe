@@ -16,50 +16,50 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "NoteIt.h"
+#include "PostIt.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "DrawNoteIt.h"
+#include "DrawPostIt.h"
 
 // this class' ObjectFactory
-class NoteItObjectFactory : public ObjectFactory
+class PostItObjectFactory : public ObjectFactory
 {
 public:
-	NoteItObjectFactory(void)
-	{	announceObjectType("NoteIt", this); }
+	PostItObjectFactory(void)
+	{	announceObjectType("PostIt", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new NoteIt(); }
+	{	return new PostIt(); }
 };
-static NoteItObjectFactory theFactory;
+static PostItObjectFactory theFactory;
 
 
 
-NoteIt::NoteIt( )
+PostIt::PostIt( )
 {
-	// Post-its are 3x3 inch (i.e. 8x8 cm)
+	// Post-Its are 3x3 inch (i.e. 8x8 cm)
 	// but because they are too small, we will triple each side and make them 22x22 cm...
 	const double mySideLength = 0.22;
 
 	setTheWidth(mySideLength);
 	setTheHeight(mySideLength);
 
-	// Note that NoteIt doesn't have a physics representation
+	// Note that PostIt doesn't have a physics representation
 	// it is only graphics
 
-	DEBUG5("NoteIt::NoteIt done\n");
+	DEBUG5("PostIt::PostIt done\n");
 }
 
 
-NoteIt::~NoteIt( )
+PostIt::~PostIt( )
 {
 	;
 }
 
 
 
-DrawObject*  NoteIt::createDrawObject(void)
+DrawObject*  PostIt::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawNoteIt(this);
+	theDrawObjectPtr = new DrawPostIt(this);
 	return theDrawObjectPtr;
 }

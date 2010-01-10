@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NoteItViewer</class>
- <widget class="QDialog" name="NoteItViewer">
+ <class>PostItViewer</class>
+ <widget class="QDialog" name="PostItViewer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -87,7 +87,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Note-It viewer</string>
+   <string>Post-It viewer</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

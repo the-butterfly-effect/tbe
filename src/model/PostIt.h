@@ -16,23 +16,23 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef NOTEIT_H
-#define NOTEIT_H
+#ifndef POSTIT_H
+#define POSTIT_H
 
 #include "BaseObject.h"
 
 
-/** the NoteIt class is where the level hints are.
+/** the PostIt class is where the level hints are.
  *  the player can click on them to get the hints.
  *
- *  NoteIts do not have a body or shape in simulation
+ *  PostIts do not have a body or shape in simulation
  */
-class NoteIt : public BaseObject
+class PostIt : public BaseObject
 {
 public:
-    NoteIt();
+    PostIt();
 
-	virtual ~NoteIt();
+	virtual ~PostIt();
 
 	// Public attribute accessor methods
 	//
@@ -40,7 +40,7 @@ public:
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{
-		return QObject::tr("NoteIt");
+		return QObject::tr("PostIt");
 	}
 
 	/// returns the Tooltip of the object.
@@ -52,12 +52,12 @@ public:
 	}
 
 	/// returns true if the object can be rotated by the user
-	/// NoteIts cannot be adjusted by the player
+	/// PostIts cannot be adjusted by the player
 	virtual bool isRotatable ( ) const
 	{	return false; }
 
 	/// returns whether the object can be resized by the user
-	/// NoteIts cannot be adjusted by the player
+	/// PostIts cannot be adjusted by the player
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
@@ -65,4 +65,4 @@ public:
 
 };
 
-#endif // NOTEIT_H
+#endif // POSTIT_H

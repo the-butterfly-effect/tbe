@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "DrawNoteIt.h"
+#include "DrawPostIt.h"
 #include "BaseObject.h"
 
 #include <QGraphicsScene>
@@ -24,13 +24,13 @@
 #include <QStyleOption>
 
 // Constructors/Destructors
-//  
+//
 
-DrawNoteIt::DrawNoteIt (BaseObject* aBaseObjectPtr)
-	: DrawObject(aBaseObjectPtr, "NoteIt"), theDialogPtr(NULL)
+DrawPostIt::DrawPostIt (BaseObject* aBaseObjectPtr)
+	: DrawObject(aBaseObjectPtr, "PostIt"), theDialogPtr(NULL)
 {
 	// everything is done in the DrawObject constructor
-	DEBUG5("DrawNoteIt\n");
+	DEBUG5("DrawPostIt\n");
 
 	setFlag(QGraphicsItem::ItemIsSelectable,true);
 	setCacheMode(QGraphicsItem::NoCache);
@@ -38,31 +38,31 @@ DrawNoteIt::DrawNoteIt (BaseObject* aBaseObjectPtr)
 	isHovering = false;
 }
 
-DrawNoteIt::~DrawNoteIt ( )
+DrawPostIt::~DrawPostIt ( )
 {
 	if (theDialogPtr)
 		delete theDialogPtr;
 }
 
-//  
+//
 // Methods
-//  
+//
 
 
 // Accessor methods
-//  
+//
 
 
 // Other methods
-//  
-void DrawNoteIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+//
+void DrawPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
 	setCursor(QCursor(Qt::PointingHandCursor));
 	isHovering=true;
 	update();
 }
 
-void DrawNoteIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+void DrawPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
 	unsetCursor();
 	isHovering=false;
@@ -71,7 +71,7 @@ void DrawNoteIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 
 
 
-QString DrawNoteIt::getPageString(unsigned int aPage)
+QString DrawPostIt::getPageString(unsigned int aPage)
 {
 	QString myPageNr = "page"+QString::number(aPage);
 	QString myPlainPage = theBaseObjectPtr->theProps.getProperty(myPageNr);
@@ -92,17 +92,17 @@ QString DrawNoteIt::getPageString(unsigned int aPage)
 }
 
 
-void DrawNoteIt::initAttributes ( )
+void DrawPostIt::initAttributes ( )
 {
-	
+
 }
 
 
-void DrawNoteIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
+void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 {
 	DEBUG5("double click!!!\n");
 	 theDialogPtr = new QDialog;
-	 theUIPtr = new Ui::NoteItViewer();
+	 theUIPtr = new Ui::PostItViewer();
 	 theUIPtr->setupUi(theDialogPtr);
 
 	 theCurrentPage = 0;
@@ -117,7 +117,7 @@ void DrawNoteIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 }
 
 
-void DrawNoteIt::nextClicked()
+void DrawPostIt::nextClicked()
 {
 	theCurrentPage++;
 	QString myPageString = getPageString(theCurrentPage);
@@ -139,7 +139,7 @@ void DrawNoteIt::nextClicked()
 }
 
 
-void DrawNoteIt::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *myStyle, QWidget *myWPtr)
+void DrawPostIt::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *myStyle, QWidget *myWPtr)
 {
 	DrawObject::paint(myPainter, myStyle, myWPtr);
 

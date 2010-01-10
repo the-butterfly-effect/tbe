@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -16,41 +16,41 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef DRAWNOTEIT_H
-#define DRAWNOTEIT_H
+#ifndef DRAWPOSTIT_H
+#define DRAWPOSTIT_H
 
 #include "DrawObject.h"
-#include "NoteIt.h"
-#include "ui_NoteItViewer.h"
+#include "PostIt.h"
+#include "ui_PostItViewer.h"
 
 // forward declarations
 class BaseObject;
 
 
-/** class DrawNoteIt
+/** class DrawPostIt
   *
-  * This class draws the NoteIt class, which has no physics representation,
+  * This class draws the PostIt class, which has no physics representation,
   * and cannot be moved *BUT* can be clicked to reveal "hints"...
   */
 
-class DrawNoteIt : public QObject, public DrawObject
+class DrawPostIt : public QObject, public DrawObject
 {
-	
+
 	Q_OBJECT
 
 public:
 	// Constructors/Destructors
-	//  
+	//
 
 	/**
 	 * Empty Constructor
 	 */
-	DrawNoteIt (BaseObject* aBaseObjectPtr);
+	DrawPostIt (BaseObject* aBaseObjectPtr);
 
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~DrawNoteIt ( );
+	virtual ~DrawPostIt ( );
 
 	/** overridden from QGraphicsItem
 	 * upon a double click event, let's show the text of the note-its
@@ -83,7 +83,7 @@ protected:
 private:
 	virtual void initAttributes ( ) ;
 
-	/** retrieves the noteit page from the BaseObject's properties list
+	/** retrieves the Post-It page from the BaseObject's properties list
 	  * the pages are numbered  "page1", "page2", etc.
 	  * i18n exists: "page1_nl" is the dutch version of page1.
 	  * if a page only exists in English, that one is returned.
@@ -95,9 +95,9 @@ private:
 
 	QDialog*	theDialogPtr;
 
-	Ui::NoteItViewer* theUIPtr;
+	Ui::PostItViewer* theUIPtr;
 
 	bool isHovering;
 };
 
-#endif // DRAWNOTEIT_H
+#endif // DRAWPOSTIT_H
