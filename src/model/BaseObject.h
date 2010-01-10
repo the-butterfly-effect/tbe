@@ -272,6 +272,10 @@ protected:
 
 	friend class BaseObjectSerializer;
 
+	// PivotPoint needs access to the B2BodyPtr.
+	// TODO/FIXME: I know this is ugly. sorry.
+	friend class PivotPoint;
+
 public:
 	// public attribute accessor methods
 
@@ -319,7 +323,7 @@ public:
 	 *
 	 * @return the value of theCenter
 	 */
-	Position getTempCenter ( ) const;
+	virtual Position getTempCenter ( ) const;
 
 
 	/**

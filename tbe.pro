@@ -36,6 +36,7 @@ HEADERS += src/tbe_global.h \
     src/model/Goal.h \
     src/model/Level.h \
     src/model/NoteIt.h \
+    src/model/PivotPoint.h \
     src/model/Position.h \
     src/model/Ramp.h \
     src/model/RectObject.h \
@@ -75,6 +76,7 @@ SOURCES += src/main.cpp \
     src/model/Goal.cpp \
     src/model/Level.cpp \
     src/model/NoteIt.cpp \
+    src/model/PivotPoint.cpp \
     src/model/Position.cpp \
     src/model/Ramp.cpp \
     src/model/RectObject.cpp \

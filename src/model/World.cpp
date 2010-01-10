@@ -21,6 +21,7 @@
 #include "Goal.h"
 #include "DrawWorld.h"
 #include "DrawObject.h"
+#include "PivotPoint.h"
 
 // Constructors/Destructors
 //  
@@ -154,7 +155,8 @@ void World::initAttributes( )
 	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
 	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
 	theB2WorldPtr->SetContactListener(this);
-	
+	theB2WorldPtr->SetDestructionListener(this);
+
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position.Set(50.01f, -1.0f);
@@ -163,6 +165,7 @@ void World::initAttributes( )
 	groundShapeDef.SetAsBox(50.0f, 1.0f);
 	groundShapeDef.restitution=0.0f;
 	groundBody->CreateShape(&groundShapeDef);
+	PivotPoint::setGroundBodyPtr(groundBody);
 
 	// Define the left wall body.
 	b2BodyDef leftBodyDef;

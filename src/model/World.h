@@ -22,6 +22,8 @@
 #include "Box2D.h"
 #include "tbe_global.h"
 
+#include "PivotPoint.h"
+
 #include <QString>
 #include <QList>
 #include <QMap>
@@ -81,6 +83,24 @@ protected:
 
 
 
+class DestructionListener : public b2DestructionListener
+{
+public:
+	/// implemented from b2DestructionListener
+	/// this member is called whenever a Joint is (implicitly) destructed
+	/// let's notify the corresponding object in our World
+	virtual void SayGoodbye(b2Joint* joint)
+	{
+		// we *know* that all b2Joints will have UserData
+		reinterpret_cast<PivotPoint*>(joint->GetUserData())->jointWasDeleted();
+	}
+
+	/// not interested...
+	virtual void SayGoodbye(b2Shape*) {};
+};
+
+
+
 /** if this interface is attached() to World,
   * the World instance will call back every registered
   * interface immediately after each time step.
@@ -106,7 +126,7 @@ private:
   * the class holding all BaseObjects and is responsible for the simulation 
   */
 
-class World : public ContactListener
+class World : public ContactListener, public DestructionListener
 {
 public:
 
@@ -122,18 +142,6 @@ public:
 	 * Empty Destructor
 	 */
 	virtual ~World ( );
-
-	/** adds a joint to the World
-	 *  @param aJointDefPtr
-	 *  @return pointer to new joint
-	 */
-	b2Joint* addJoint(b2JointDef* aJointDefPtr)
-	{
-		if (theB2WorldPtr==NULL)
-			return NULL;
-		else
-			return theB2WorldPtr->CreateJoint(aJointDefPtr);
-	}
 
 	/** adds object to the World
 	 *  if the BaseObject knows about a DrawObject,
