@@ -30,7 +30,7 @@
             </object>
             
 	    <object width="2.0" X="2.10" Y="1.75" height="1.4" type="Scenery" >
-                <property key="ImageName" >thankyou</property>
+                <property key="ImageName" >thank-you-stone</property>
             </object>
 
 	    <!--object X="0.2" Y="2.7" type="Volleyball"  /-->
