@@ -220,6 +220,10 @@ public:
 	
 	const BaseObjectSerializer* getSerializer(void) const;
 
+	/// parse all properties
+	virtual void  parseProperties(void)
+	{ ; }
+
 	PropertyList theProps;
 
 private:

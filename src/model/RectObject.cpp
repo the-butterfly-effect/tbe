@@ -102,8 +102,9 @@ void RectObject::adjustParameters(void)
 			boxDef->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
 
 			// get mass:  no mass -> no density -> no motion
-			qreal myMass = theProps.getProperty(Property::MASS_STRING).toDouble();
-			boxDef->density = myMass / getTheWidth()*getTheHeight();
+			float myMass;
+			if (theProps.propertyToFloat(Property::MASS_STRING, &myMass))
+				boxDef->density = myMass / getTheWidth()*getTheHeight();
 			boxDef->userData = this;
 			setFriction(boxDef);
 			theShapeList.push_back(boxDef);
@@ -220,39 +221,27 @@ void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 		assert(false);
 }
 
-void  RectObject::setProperty(const QString& aKey, const QString& aValue)
+void  RectObject::parseProperties(void)
 {
-	// apart from actually setting the property, we also must
-	// check if this is a known property that should take effect immediately
+	rotatableInfo = false;
+	theProps.propertyToBool(Property::ROTATABLE_STRING, &rotatableInfo);
+	theProps.propertyToString(Property::OBJECT_NAME_STRING,&theNameString);
 
-	theProps.setProperty(aKey,aValue);
-
-	if (aKey == Property::ROTATABLE_STRING)
-	{
-		rotatableInfo = false;
-		if (aValue == "yes" || aValue == "true")
-			rotatableInfo = true;
-	}
-
-	if (aKey == Property::OBJECT_NAME_STRING)
-		theNameString = aValue;
-	if (aKey == Property::BOUNCINESS_STRING)
-		setTheBounciness(aValue.toDouble());
-	if (aKey == Property::RESIZABLE_STRING)
+	float myFloat;
+	if(theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat))
+		setTheBounciness(myFloat);
+	QString myString;
+	if (theProps.propertyToString(Property::RESIZABLE_STRING, &myString))
 	{
 		// we do not check for noresize, that's the default
 		resizableInfo = NORESIZING;
-		if (aValue == Property::HORIZONTAL_STRING)
+		if (myString == Property::HORIZONTAL_STRING)
 			resizableInfo = HORIZONTALRESIZE;
-		if (aValue == Property::VERTICAL_STRING)
+		if (myString == Property::VERTICAL_STRING)
 			resizableInfo = VERTICALRESIZE;
-		if (aValue == Property::TOTALRESIZE_STRING)
+		if (myString == Property::TOTALRESIZE_STRING)
 			resizableInfo = TOTALRESIZE;
-		adjustParameters();
 	}
-	if (aKey == Property::MASS_STRING)
-		adjustParameters();
-	// No need to do image name
-	if (aKey == Property::DESCRIPTION_STRING)
-		theToolTipString = aValue;
+	theProps.propertyToString(Property::DESCRIPTION_STRING, &theToolTipString);
+	adjustParameters();
 }

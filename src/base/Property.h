@@ -36,7 +36,7 @@ public:
 	/** @returns the value for property aKey
 	  *  - or an empty string if it does not exist
 	  */
-	virtual QString getProperty(const QString& aKey)
+	virtual QString getProperty(const QString& aKey) const
 	{ return theProperties.value(aKey, ""); }
 
 	///
@@ -54,12 +54,12 @@ public:
 	{ return theProperties.constEnd(); }
 
 	/** returns true if property aPropertyName exists *and*
-	  * its value can be parsed to fit aFloat
+	  * its value can be parsed to fit a bool (true/false/yes/no)
 	  * @param aPropertyName
-	  * @param aFloat		  OUTPUT upon success contains value of property
-	  * @returns true if success. if no success aFloat is unchanged
+	  * @param aBool	  OUTPUT upon success contains value of property
+	  * @returns true if success. if no success aBool is unchanged
 	  */
-	bool propertyToFloat(const QString& aPropertyName, float* aFloat);
+	bool propertyToBool(const QString& aPropertyName, bool* aBool) const;
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit aFloat
@@ -67,7 +67,23 @@ public:
 	  * @param aFloat		  OUTPUT upon success contains value of property
 	  * @returns true if success. if no success aFloat is unchanged
 	  */
-	bool propertyToPosition(const QString& aPropertyName, Position* aPosition);
+	bool propertyToFloat(const QString& aPropertyName, float* aFloat) const;
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value can be parsed to fit a position (x,y)
+	  * @param aPropertyName
+	  * @param aPosition		  OUTPUT upon success contains value of property
+	  * @returns true if success. if no success aPosition is unchanged
+	  */
+	bool propertyToPosition(const QString& aPropertyName, Position* aPosition) const;
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value can be parsed to fit a string - that's always the case if not empty :-)
+	  * @param aPropertyName
+	  * @param aString		  OUTPUT upon success contains the value string
+	  * @returns true if success (i.e. there is a string). false if empty
+	  */
+	bool propertyToString(const QString& aPropertyName, QString* aString) const;
 
 	/// @returns the number of properties in this class
 	int  getPropertyCount(void) const

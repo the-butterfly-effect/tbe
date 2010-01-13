@@ -275,8 +275,8 @@ CokeSplatter::CokeSplatter()
 		: RectObject()
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
-	setProperty(Property::IMAGE_NAME_STRING, "CokeSplatter");
-	setProperty(Property::DESCRIPTION_STRING, "");
+	theProps.setProperty(Property::IMAGE_NAME_STRING, "CokeSplatter");
+	theProps.setProperty(Property::DESCRIPTION_STRING, "");
 
 	// the actual shape
 	b2CircleDef* myBubbleDef = new b2CircleDef();

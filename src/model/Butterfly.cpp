@@ -39,7 +39,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 Butterfly::Butterfly()
 		: RectObject(), theCountdown(1)
 {
-	setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
+	theProps.setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
 
 	// butterflies don't bounce *ever*
 	setTheBounciness(0.0);

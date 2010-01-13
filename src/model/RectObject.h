@@ -68,9 +68,9 @@ public:
 		return theToolTipString;
 	}
 
-	/// set property aKey to aValue
-	/// overridden from BaseObject
-	virtual void  setProperty(const QString& aKey, const QString& aValue);
+	/// parse all properties
+	/// partially overridden from BaseObject
+	virtual void  parseProperties(void);
 
 	/// returns true if the object can be rotated by the user
 	/// FIXME/TODO: MUST BE FLEXIBLE

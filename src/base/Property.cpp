@@ -64,8 +64,32 @@ bool PropertyList::doesPropertyExists(const QString& aKey) const
 }
 
 
+bool PropertyList::propertyToBool(const QString& aPropertyName,
+								   bool* aBool) const
+{
+	bool myResult;
+	QString myValue = getProperty(aPropertyName);
+	if (myValue.isEmpty())
+		return false;
+
+	if (myValue =="true")
+	{ myResult=true; goto done;	}
+	if (myValue =="yes")
+	{ myResult=true; goto done;	}
+	if (myValue =="false")
+	{ myResult=false; goto done;	}
+	if (myValue =="no")
+	{ myResult=false; goto done;	}
+
+	return false;
+
+done:
+	*aBool = myResult;
+	return true;
+}
+
 bool PropertyList::propertyToFloat(const QString& aPropertyName,
-										 float* aFloat)
+								   float* aFloat) const
 {
 	QString myValue = getProperty(aPropertyName);
 	if (myValue.isEmpty())
@@ -81,7 +105,7 @@ bool PropertyList::propertyToFloat(const QString& aPropertyName,
 }
 
 
-bool PropertyList::propertyToPosition(const QString& aPropertyName, Position* aPosition)
+bool PropertyList::propertyToPosition(const QString& aPropertyName, Position* aPosition) const
 {
 	QString myValue = getProperty(aPropertyName);
 	if (myValue.isEmpty())
@@ -105,5 +129,14 @@ bool PropertyList::propertyToPosition(const QString& aPropertyName, Position* aP
 
 	aPosition->x = dx;
 	aPosition->y = dy;
+	return true;
+}
+
+bool PropertyList::propertyToString(const QString& aPropertyName, QString* aString) const
+{
+	QString myValue = getProperty(aPropertyName);
+	if (myValue.isEmpty())
+		return false;
+	*aString = myValue;
 	return true;
 }
