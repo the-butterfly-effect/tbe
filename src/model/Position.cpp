@@ -25,34 +25,63 @@
 
 Position::Position (qreal anX, qreal aY, qreal anAngle)
 	: x(anX), y(aY), angle(anAngle)
-{
-	// nothing to do here, sorry...
-	;
+{	; // nothing to do here, sorry...
 }
 
 Position::Position (const QPointF& aPoint, qreal anAngle)
 		: x(aPoint.x()), y(-aPoint.y()), angle(anAngle)
-{
-	// again: nothing to do here.
+{	; // nothing to do here, sorry...
 }
 
 
 Position::Position (const b2Vec2& aVec, qreal anAngle)
 		: x(aVec.x), y(aVec.y), angle(anAngle)
-{
-	// yawn, again: nothing to do here.
+{	; // nothing to do here, sorry...
 }
 
 
 qreal Position::length(void)
-{
-	return sqrt(x*x+y*y);
-}
+{	return sqrt(x*x+y*y); }
 
 
 b2Vec2 Position::toB2Vec2(void)
+{	return b2Vec2(x,y); }
+
+
+
+Vector::Vector (qreal anX, qreal aY)
+	: x(anX), y(aY)
+{	; // nothing to do here, sorry...
+}
+
+Vector::Vector (const QPointF& aPoint)
+		: x(aPoint.x()), y(-aPoint.y())
+{	; // nothing to do here, sorry...
+}
+
+
+Vector::Vector (const b2Vec2& aVec)
+		: x(aVec.x), y(aVec.y)
+{	; // nothing to do here, sorry...
+}
+
+
+qreal Vector::length(void)
+{	return sqrt(x*x+y*y); }
+
+
+b2Vec2 Vector::toB2Vec2(void)
+{	return b2Vec2(x,y); }
+
+Position Vector::toPosition(void)
+{	return Position(x,y); }
+
+
+Position operator+(const Position& p1, const Vector& v1)
 {
-	return b2Vec2(x,y);
+	float myCos = cos(p1.angle);
+	float mySin = sin(p1.angle);
+	return Position(p1.x +v1.x*myCos - v1.y*mySin, p1.y +v1.x*mySin +v1.y*myCos, p1.angle);
 }
 
 
@@ -74,6 +103,11 @@ Position operator-(const Position& p1, const Position& p2)
 Position operator*(const qreal p1, const Position& p2)
 {
 	return Position(p1*p2.x, p1*p2.y, p2.angle);
+}
+
+Vector operator*(const qreal c1, const Vector& v1)
+{
+	return Vector(c1*v1.x, c1*v1.y);
 }
 
 bool operator==(const Position& p1, const Position& p2)

@@ -23,13 +23,33 @@
 #include <QPointF>
 
 class b2Vec2;
+class Position;
+
+class Vector
+{
+public:
+	// constructors
+	Vector (qreal anX=0.0, qreal aY=0.0);
+	Vector (const QPointF& aPoint);
+	Vector (const b2Vec2& aVec);
+
+	qreal length(void);
+
+	b2Vec2   toB2Vec2(void);
+	Position toPosition(void);
+
+	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
+	qreal x;
+
+	/// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
+	qreal y;
+};
 
 /**
   * class Position
   * 
   * This class abstracts the Position - x,y,angle
   */
-
 class Position
 {
 public:
@@ -64,7 +84,16 @@ public:
 };
 
 
-/// add two Positions together (including angle!)
+/** add a Vector to a Position
+ *  - that implies that the vector is multiplied with the angle
+ *    i.e. in the local object coordinates
+ */
+Position operator+(const Position& p1, const Vector& v1);
+
+/** FIXME: THIS ONE HAS TO GO
+ *  add a Position to a Position
+ *  - BUG: x+x, y+y, angle+angle is not right
+ */
 Position operator+(const Position& p1, const Position& p2);
 
 /// add Position+QPointF
@@ -75,7 +104,10 @@ Position operator+(const Position& p1, const QPointF& p2);
 Position operator-(const Position& p1, const Position& p2);
 
 /// constant multiplies vector only - not the angle
-Position operator*(const qreal p1, const Position& p2);
+Position operator*(const qreal c1, const Position& p1);
+
+/// constant multiplies vector
+Vector operator*(const qreal c1, const Vector& p1);
 
 /// compare two positions
 bool operator==(const Position& p1, const Position& p2);
