@@ -30,7 +30,11 @@ class b2RevoluteJoint;
 class PivotPoint : public BaseObject
 {
 public:
-	PivotPoint();
+	/// empty constructor
+	PivotPoint(void);
+
+	/// constructor to add pivot for an object to world
+	PivotPoint(BaseObject* aBaseObject, const Position& aPosition);
 
 	virtual ~PivotPoint() {};
 

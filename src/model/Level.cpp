@@ -215,6 +215,7 @@ Level::load(const QString& aFileName)
 		if (theIsLevelEditor==false)
 			myBOPtr->setIsMovable(false);
 		theWorldPtr->addObject(myBOPtr);
+		myBOPtr->parseProperties();
 
 		if (q==myNode.lastChild())
 			break;

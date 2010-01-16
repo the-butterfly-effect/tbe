@@ -207,6 +207,21 @@ bool BaseObject::isSleeping() const
 		return false;
 }
 
+void BaseObject::parseProperties(void)
+{
+	float myFloat;
+	if (theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat))
+		setTheBounciness(myFloat);
+
+	Vector myDelta;
+	if (theProps.propertyToVector(Property::PIVOTPOINT_STRING, &myDelta))
+	{
+		PivotPoint* myPP = new PivotPoint(this, theCenter+myDelta);
+		theWorldPtr->addObject(myPP);
+	}
+}
+
+
 bool BaseObject::reregister(void)
 {
 	reset();

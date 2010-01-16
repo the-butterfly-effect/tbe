@@ -45,6 +45,13 @@ PivotPoint::PivotPoint()
 	DEBUG5("PivotPoint::PivotPoint\n");
 }
 
+PivotPoint::PivotPoint(BaseObject* aBaseObject, const Position& aPosition)
+		: theFirstPtr(aBaseObject), theSecondPtr(NULL), theJointPtr(NULL)
+{
+	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n", aBaseObject, aPosition.x, aPosition.y);
+	setOrigCenter(aPosition);
+}
+
 DrawObject*  PivotPoint::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
@@ -64,7 +71,9 @@ void PivotPoint::createPhysicsObject(void)
 	if (theWorldPtr==NULL)
 		return;
 
-	// parse object/object1
+	// *** parse object/object1
+	// NOTE: if we used the constructor with baseobject, this will still work
+	// because propertyToObjectPtr only modifies theFirstPtr if successful
 	propertyToObjectPtr(theWorldPtr, Property::OBJECT1_STRING, &theFirstPtr);
 	if (theFirstPtr==NULL)
 		propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theFirstPtr);
@@ -76,7 +85,7 @@ void PivotPoint::createPhysicsObject(void)
 	b2Body* myFirstB2BodyPtr = theFirstPtr->theB2BodyPtr;
 	assert (myFirstB2BodyPtr);
 
-	// parse (optional) object2
+	// *** parse (optional) object2
 	propertyToObjectPtr(theWorldPtr, Property::OBJECT2_STRING, &theSecondPtr);
 
 	// if there is no object2, use the ground body.
@@ -85,7 +94,7 @@ void PivotPoint::createPhysicsObject(void)
 	if (theSecondPtr != NULL)
 	mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
 
-	// and initialise Box2D's joint:
+	// *** initialise Box2D's joint:
 	// note: Initialize() uses a global coordinate...
 	b2RevoluteJointDef myJointDef;
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());

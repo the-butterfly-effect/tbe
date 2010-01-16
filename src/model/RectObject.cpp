@@ -223,13 +223,13 @@ void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 
 void  RectObject::parseProperties(void)
 {
+	// first parse everything that BaseObject already knows about
+	BaseObject::parseProperties();
+
 	rotatableInfo = false;
 	theProps.propertyToBool(Property::ROTATABLE_STRING, &rotatableInfo);
 	theProps.propertyToString(Property::OBJECT_NAME_STRING,&theNameString);
 
-	float myFloat;
-	if(theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat))
-		setTheBounciness(myFloat);
 	QString myString;
 	if (theProps.propertyToString(Property::RESIZABLE_STRING, &myString))
 	{

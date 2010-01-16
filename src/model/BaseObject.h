@@ -220,9 +220,10 @@ public:
 	
 	const BaseObjectSerializer* getSerializer(void) const;
 
-	/// parse all properties
-	virtual void  parseProperties(void)
-	{ ; }
+	/** parse all properties
+	  * NOTE: BaseObject only understands PivotPoint and Bounciness
+	  */
+	virtual void  parseProperties(void);
 
 	PropertyList theProps;
 

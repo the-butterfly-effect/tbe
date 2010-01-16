@@ -32,6 +32,7 @@ const char* Property::MASS_STRING        = "Mass";
 const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::DESCRIPTION_STRING = "Description";
+const char* Property::PIVOTPOINT_STRING  = "PivotPoint";
 
 const char* Property::THRUST_STRING      = "Thrust";
 
@@ -105,31 +106,41 @@ bool PropertyList::propertyToFloat(const QString& aPropertyName,
 }
 
 
-bool PropertyList::propertyToPosition(const QString& aPropertyName, Position* aPosition) const
+bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosition) const
 {
-	QString myValue = getProperty(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-
 	bool isOK = false;
+	QStringList myList;
+	float dx, dy;
 
-	// we have deltaX before, and deltaY after the comma
-	QStringList myList = myValue.split(",");
+	QString myValue = getProperty(aPropertyName).trimmed();
+	if (myValue.isEmpty())
+		goto done;
+
+	// we have deltaX before and deltaY after the comma
+	myList = myValue.split(",");
 	if (myList.count()!=2)
 	{
-		DEBUG2("propertyToPosition '%s' does not have a comma?\n", ASCII(myValue));
-		return false;
+		DEBUG2("propertyToVector '%s' does not have a comma?\n", ASCII(myValue));
+		goto done;
 	}
-	float dx =  myList.first().toFloat(&isOK);
+
+	myValue = myList.first().remove(0,1);  // remove left brace
+	dx =  myValue.toFloat(&isOK);
 	if (isOK == false)
-		return false;
-	float dy =  myList.last().toFloat(&isOK);
+		goto done;
+
+	myValue = myList.last();
+	myValue.chop(1);	// remove right brace
+	dy =  myValue.toFloat(&isOK);
 	if (isOK == false)
-		return false;
+		goto done;
 
 	aPosition->x = dx;
 	aPosition->y = dy;
-	return true;
+	isOK = true;
+
+done:
+	return isOK;
 }
 
 bool PropertyList::propertyToString(const QString& aPropertyName, QString* aString) const

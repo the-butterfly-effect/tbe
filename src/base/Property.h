@@ -23,7 +23,7 @@
 #include <QMap>
 
 // forward declarations
-class Position;
+class Vector;
 
 
 class PropertyList
@@ -71,11 +71,12 @@ public:
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a position (x,y)
+	  * because there is no angle, we use the Vector class, not Position.
 	  * @param aPropertyName
 	  * @param aPosition		  OUTPUT upon success contains value of property
 	  * @returns true if success. if no success aPosition is unchanged
 	  */
-	bool propertyToPosition(const QString& aPropertyName, Position* aPosition) const;
+	bool propertyToVector(const QString& aPropertyName, Vector* aPosition) const;
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a string - that's always the case if not empty :-)
@@ -115,6 +116,7 @@ public:
 	static const char* FRICTION_STRING;			// 0.0 - 1.0, where 0=frictionless and 1=no slip
 	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
 	static const char* DESCRIPTION_STRING;		// tooltip  FIXME/TODO: i18n on this
+	static const char* PIVOTPOINT_STRING;		// coordinate - where to put a pivot point to world
 
 	// the following strings are used within e.g. RectObject as part
 	// of the above RESIZABLE_STRING:
