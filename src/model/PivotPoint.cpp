@@ -94,10 +94,25 @@ void PivotPoint::createPhysicsObject(void)
 	if (theSecondPtr != NULL)
 	mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
 
+	Vector myCoordinates = getOrigCenter().toVector();
+	if (myCoordinates == Vector(0,0))
+	{
+		if (theSecondPtr == NULL)
+		{
+			myCoordinates = theFirstPtr->getOrigCenter().toVector();
+		}
+		else
+		{
+			// average between the two object's centers
+			myCoordinates = 0.5* (theSecondPtr->getOrigCenter().toVector()
+								  + theFirstPtr->getOrigCenter().toVector());
+		}
+	}
+
 	// *** initialise Box2D's joint:
 	// note: Initialize() uses a global coordinate...
 	b2RevoluteJointDef myJointDef;
-	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
+	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, myCoordinates.toB2Vec2());
 	myJointDef.userData = this;
 
 	// TODO/FIXME: not implemented property yet

@@ -135,8 +135,8 @@ bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosit
 	if (isOK == false)
 		goto done;
 
-	aPosition->x = dx;
-	aPosition->y = dy;
+	aPosition->dx = dx;
+	aPosition->dy = dy;
 	isOK = true;
 
 done:

@@ -29,7 +29,7 @@ class Vector
 {
 public:
 	// constructors
-	Vector (qreal anX=0.0, qreal aY=0.0);
+	Vector (qreal aDX=0.0, qreal aDY=0.0);
 	Vector (const QPointF& aPoint);
 	Vector (const b2Vec2& aVec);
 
@@ -38,11 +38,8 @@ public:
 	b2Vec2   toB2Vec2(void);
 	Position toPosition(void);
 
-	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
-	qreal x;
-
-	/// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
-	qreal y;
+	qreal dx;
+	qreal dy;
 };
 
 /**
@@ -80,6 +77,9 @@ public:
 
 	b2Vec2 toB2Vec2(void);
 
+	Vector toVector(void)
+	{ return Vector(x,y); }
+
 	qreal length(void);
 };
 
@@ -99,6 +99,9 @@ Position operator+(const Position& p1, const Position& p2);
 /// add Position+QPointF
 Position operator+(const Position& p1, const QPointF& p2);
 
+/// adds a Vector to a Vector
+Vector operator+(const Vector& v1, const Vector& v2);
+
 /// subtracts two Positions (including angle!)
 /// ofcourse, the end result probably is a vector, but ok...
 Position operator-(const Position& p1, const Position& p2);
@@ -111,5 +114,8 @@ Vector operator*(const qreal c1, const Vector& p1);
 
 /// compare two positions
 bool operator==(const Position& p1, const Position& p2);
+
+/// compare two positions
+bool operator==(const Vector& p1, const Vector& v2);
 
 #endif // POSITION_H
