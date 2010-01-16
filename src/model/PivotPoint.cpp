@@ -40,13 +40,13 @@ static PivotPointObjectFactory theRFactory;
 
 
 PivotPoint::PivotPoint()
-		: theFirstPtr(NULL), theSecondPtr(NULL), theJointPtr(NULL)
+		: theFirstPtr(NULL), theSecondPtr(NULL), theJointPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG5("PivotPoint::PivotPoint\n");
 }
 
 PivotPoint::PivotPoint(BaseObject* aBaseObject, const Position& aPosition)
-		: theFirstPtr(aBaseObject), theSecondPtr(NULL), theJointPtr(NULL)
+		: theFirstPtr(aBaseObject), theSecondPtr(NULL), theJointPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n", aBaseObject, aPosition.x, aPosition.y);
 	setOrigCenter(aPosition);
@@ -101,7 +101,7 @@ void PivotPoint::createPhysicsObject(void)
 	myJointDef.userData = this;
 
 	// TODO/FIXME: not implemented property yet
-	myJointDef.collideConnected = false;
+	myJointDef.collideConnected = areObjectsColliding;
 
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
@@ -120,6 +120,13 @@ Position PivotPoint::getTempCenter (void) const
 	// FIXME/TODO: this is not entirely correct as a pivot point *could* move.
 	return getOrigCenter();
 }
+
+void PivotPoint::parseProperties(void)
+{
+	BaseObject::parseProperties();
+	theProps.propertyToBool(Property::COLLIDE_STRING, &areObjectsColliding);
+}
+
 
 bool PivotPoint::propertyToObjectPtr(
 		World* aWPtr,

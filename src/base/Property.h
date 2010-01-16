@@ -153,6 +153,7 @@ public:
 	static const char* OBJECT_STRING;
 	static const char* OBJECT1_STRING;
 	static const char* OBJECT2_STRING;
+	static const char* COLLIDE_STRING;
 
 };
 

@@ -57,6 +57,7 @@ const char* Property::S_ANYTHING = "anythingchanged";
 const char* Property::OBJECT_STRING  = "object";
 const char* Property::OBJECT1_STRING = "object1";
 const char* Property::OBJECT2_STRING = "object2";
+const char* Property::COLLIDE_STRING = "collide";
 
 
 bool PropertyList::doesPropertyExists(const QString& aKey) const

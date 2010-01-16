@@ -1,0 +1,69 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>PivotPoint test Level...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>This is just a level to prove PivotPoint correct operation. In this case, there is a hinge.</description>
+        <date>Jan 8, 2010</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+	    <object type="Bowling Ball"/>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="5.5" height="4" />
+        <predefined>
+            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+
+            <object width="2.0" height="0.4" X="0.95" Y="1.35" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+
+            <object width="2.0" height="0.2" X="1.0" Y="1.00" type="RectObject" ID="horibar">
+                <property key="ImageName">birch_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            
+            <object width="0.2" height="1.0" X="2.1" Y="1.60" type="RectObject" ID="vertibar">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Mass">2.0</property>
+                <property key="Bounciness">0.5</property>
+            </object>
+            
+	    <object type="PivotPoint" X="2.0" Y="1.1">
+		<property key="object1">horibar</property>
+		<property key="object2">vertibar</property>
+		<property key="collide">true</property>
+	    </object>
+
+
+            <object width="2.0" height="0.2" X="1.4" Y="0.70" type="RectObject" ID="horibar2">
+                <property key="ImageName">birch_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            
+            <object width="0.2" height="1.0" X="2.5" Y="1.30" type="RectObject" ID="vertibar2">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Mass">2.0</property>
+                <property key="Bounciness">0.5</property>
+            </object>
+            
+	    <object type="PivotPoint" X="2.4" Y="0.8">
+		<property key="object1">horibar2</property>
+		<property key="object2">vertibar2</property>
+		<property key="collide">false</property>
+	    </object>
+
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="anglechanged"></property>
+		   <property key="object">horibar</property>
+		</goal>
+	</goals>
+</tbe-level>

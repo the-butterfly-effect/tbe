@@ -82,6 +82,10 @@ public:
 	virtual bool isRotatable ( ) const
 	{	return false;	}
 
+	/// overridden from BaseObject
+	/// parses all properties that PivotPoint understands
+	virtual void  parseProperties(void);
+
 	/** "resets the object into the start position/situation"
 	  * in this case, the *first* reset will find the object(s) and setup the joint
 	  * any subsequent calls don't need help.
@@ -113,6 +117,11 @@ private:
 	BaseObject* theSecondPtr;
 
 	b2RevoluteJoint* theJointPtr;
+
+	/** use property 'collide' to set this.
+	  * true means that objects can collide - useful for true hinges
+	  */
+	bool areObjectsColliding;
 };
 
 #endif // PIVOTPOINT_H
