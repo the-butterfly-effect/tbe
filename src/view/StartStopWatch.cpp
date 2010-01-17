@@ -70,7 +70,7 @@ StartStopWatch::~StartStopWatch()
 
 void StartStopWatch::clicked_on_watch()
 {
-	DEBUG4("StartStopWatch::clicked_on_watch(void) whilst in state %d\n", theState);
+	DEBUG5("StartStopWatch::clicked_on_watch(void) whilst in state %d\n", theState);
 	switch(theState)
 	{
 	case NOTSTARTED:
@@ -191,7 +191,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 			break;
 		}
 	} // end-of-switch
-
+	DEBUG4("StartStopWatch: the new state is %d\n", theState);
 }
 
 void StartStopWatch::progressHand(void)
