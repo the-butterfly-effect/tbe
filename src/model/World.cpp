@@ -165,7 +165,17 @@ void World::initAttributes( )
 	groundShapeDef.SetAsBox(50.0f, 1.0f);
 	groundShapeDef.restitution=0.0f;
 	groundBody->CreateShape(&groundShapeDef);
-	PivotPoint::setGroundBodyPtr(groundBody);
+
+	// Define the zero body - only used to make DrawDebug look good :-)
+	b2BodyDef zeroBodyDef;
+	zeroBodyDef.position.Set(-0.06f, -0.06f);
+	b2Body* zeroBody = theB2WorldPtr->CreateBody(&zeroBodyDef);
+	b2PolygonDef zeroShapeDef;
+	zeroShapeDef.SetAsBox(0.05f, 0.05f);
+	zeroShapeDef.restitution=0.0f;
+	zeroBody->CreateShape(&zeroShapeDef);
+	PivotPoint::setGroundBodyPtr(zeroBody);
+
 
 	// Define the left wall body.
 	b2BodyDef leftBodyDef;
