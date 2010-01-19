@@ -169,6 +169,7 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 				myObjectPtr->createPhysicsObject();
 
 				theWorldPtr->addObject(myObjectPtr);
+				myObjectPtr->parseProperties();
 
 				event->setDropAction(Qt::MoveAction);
 				event->accept();
