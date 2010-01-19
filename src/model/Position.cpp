@@ -47,6 +47,8 @@ qreal Position::length(void)
 b2Vec2 Position::toB2Vec2(void)
 {	return b2Vec2(x,y); }
 
+QString Position::toString(void)
+{	return QString("(%1,%2)@%3").arg(x).arg(y).arg(angle); }
 
 
 Vector::Vector (qreal aDX, qreal aDY)
@@ -76,6 +78,8 @@ b2Vec2 Vector::toB2Vec2(void)
 Position Vector::toPosition(void)
 {	return Position(dx,dy, 0); }
 
+QString Vector::toString(void)
+{	return QString("(%1,%2)").arg(dx).arg(dy); }
 
 Position operator+(const Position& p1, const Vector& v1)
 {

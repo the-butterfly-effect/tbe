@@ -37,6 +37,7 @@ public:
 
 	b2Vec2   toB2Vec2(void);
 	Position toPosition(void);
+	QString  toString(void);
 
 	qreal dx;
 	qreal dy;
@@ -75,9 +76,9 @@ public:
 
 	const static qreal minimalMove = 0.005;
 
-	b2Vec2 toB2Vec2(void);
-
-	Vector toVector(void)
+	b2Vec2  toB2Vec2(void);
+	QString toString(void);
+	Vector  toVector(void)
 	{ return Vector(x,y); }
 
 	qreal length(void);
