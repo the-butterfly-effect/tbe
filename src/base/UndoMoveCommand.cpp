@@ -60,6 +60,7 @@ void UndoMoveCommand::redo ()
 {
 	theBaseObjectPtr->setOrigCenter(theNewPosition);
 	theBaseObjectPtr->reset();
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theDrawObjectPtr->advance(0);
 }
 
@@ -67,6 +68,7 @@ void UndoMoveCommand::undo ()
 {
 	theBaseObjectPtr->setOrigCenter(theOldPosition);
 	theBaseObjectPtr->reset();
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theDrawObjectPtr->focusRemove();
 	theDrawObjectPtr->advance(0);
 }

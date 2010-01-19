@@ -27,14 +27,18 @@ class b2RevoluteJoint;
 
 
 /// class to implement rotational joints
-class PivotPoint : public BaseObject
+class PivotPoint : public BaseObject, public JointInterface
 {
 public:
 	/// empty constructor
 	PivotPoint(void);
 
-	/// constructor to add pivot for an object to world
-	PivotPoint(BaseObject* aBaseObject, const Position& aPosition);
+	/** constructor to add pivot for an object to world
+	  * @param aBaseObject
+	  * @param aRelativePosition the (relative!) position of this pivot point
+	  *                          relative to the center of the BaseObject
+	  */
+	PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition);
 
 	virtual ~PivotPoint() {};
 
@@ -97,8 +101,10 @@ public:
 	static void setGroundBodyPtr(b2Body* aPtr);
 
 	/// called by World when the joint was "implicitly destructed"
-	void jointWasDeleted(void)
-	{	theJointPtr = NULL;	}
+	void jointWasDeleted(void);
+
+	/// implemented from JointInterface
+	virtual	void physicsObjectStatus(JointStatus aStatus);
 
 protected:
 	/** returns true if property aPropertyName exists *and*
@@ -122,6 +128,8 @@ private:
 	  * true means that objects can collide - useful for true hinges
 	  */
 	bool areObjectsColliding;
+
+	Vector thePosRelativeToFirst;
 };
 
 #endif // PIVOTPOINT_H

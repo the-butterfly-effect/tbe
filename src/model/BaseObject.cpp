@@ -153,6 +153,7 @@ void BaseObject::createPhysicsObject()
 	theB2BodyPtr->SetMassFromShapes();
 	DEBUG5("Object %s has mass %f kg\n", ASCII(getName()),
 		theB2BodyPtr->GetMass());
+	notifyJoints(JointInterface::CREATED);
 }
 
 void BaseObject::deletePhysicsObject()
@@ -163,6 +164,7 @@ void BaseObject::deletePhysicsObject()
 	if (theB2BodyPtr!=NULL)
 		getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 	theB2BodyPtr = NULL;
+	notifyJoints(JointInterface::DELETED);
 }
 
 
@@ -207,6 +209,16 @@ bool BaseObject::isSleeping() const
 		return false;
 }
 
+void BaseObject::notifyJoints(JointInterface::JointStatus aStatus)
+{
+	JointList::const_iterator i = theJointList.constBegin();
+	while (i != theJointList.constEnd())
+	{
+		(*i)->physicsObjectStatus(aStatus);
+		++i;
+	}
+}
+
 void BaseObject::parseProperties(void)
 {
 	float myFloat;
@@ -216,7 +228,7 @@ void BaseObject::parseProperties(void)
 	Vector myDelta;
 	if (theProps.propertyToVector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
-		PivotPoint* myPP = new PivotPoint(this, theCenter+myDelta);
+		PivotPoint* myPP = new PivotPoint(this, myDelta);
 		theWorldPtr->addObject(myPP);
 	}
 }
@@ -247,6 +259,14 @@ void BaseObject::reset ( )
 	// reset the velocities and such
 	theB2BodyPtr->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 	theB2BodyPtr->SetAngularVelocity(0.0f);
+}
+
+void BaseObject::setOrigCenter ( Position new_var )
+{
+	theCenter.x = new_var.x;
+	theCenter.y = new_var.y;
+	if (isRotatable())
+		theCenter.angle = new_var.angle;
 }
 
 
@@ -318,3 +338,4 @@ ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
 		return NULL;
 	return theFactoryListPtr->getAllFactories();
 }
+

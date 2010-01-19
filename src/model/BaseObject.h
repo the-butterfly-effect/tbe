@@ -28,6 +28,7 @@
 #include <QString>
 #include <QList>
 #include <QMap>
+#include <QSet>
 
 // Forward Declarations
 class DrawObject;
@@ -49,6 +50,26 @@ class BaseObjectSerializer;
 //   *       below the BaseObject declaration       *
 //   *                                              *
 //   ************************************************
+
+/** This interface is implemented by all joints that attach to objects
+  * it is used to attach and for notification when the physics objects
+  * have been removed
+  */
+class JointInterface
+{
+public:
+	enum JointStatus
+	{
+		CREATED = 1,
+		POSUPDATE,
+		DELETED
+	};
+
+	/** called by the BaseObject(-derivate) (and/or UndoXXXCommand)
+	  * to annouce that its physics object(s) have been re-created.
+	  */
+	virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
+};
 
 
 class SensorInterface
@@ -211,6 +232,12 @@ public:
 	// TODO: FIXME: rogue pointer here!!!
 	World* theWorldPtr;
 
+	/** Adds the Joint to the list.
+	 *  If this object runs createPhysObject, it will notify all Joints
+	 */
+	void addJoint(JointInterface* aJoint)
+	{	theJointList.insert(aJoint); }
+
 	virtual DrawObject* createDrawObject();
 
 	virtual void createPhysicsObject(void);
@@ -219,6 +246,12 @@ public:
 		{ return theB2BodyPtr!=NULL; }
 	
 	const BaseObjectSerializer* getSerializer(void) const;
+
+	/** announce to all registered joints that the physicsobject has been
+	  * created/deleted.
+	  * @param aStatus indicates if the B2Body was created or deleted
+	  */
+	void notifyJoints(JointInterface::JointStatus aStatus);
 
 	/** parse all properties
 	  * NOTE: BaseObject only understands PivotPoint and Bounciness
@@ -257,6 +290,9 @@ private:
 
 	
 protected:
+	typedef QSet<JointInterface*>  JointList;
+	JointList theJointList;
+
 	typedef QList<b2ShapeDef*> ShapeList;
 	ShapeList theShapeList;
 
@@ -296,14 +332,7 @@ public:
 	 * i.e. where the object will return to after a "reset".
 	 * @param new_var the new value of theCenter
 	 */
-	void setOrigCenter ( Position new_var )
-	{
-		// FIXME: why not use assignment?
-		theCenter.x = new_var.x;
-		theCenter.y = new_var.y;
-		if (isRotatable())
-			theCenter.angle = new_var.angle;
-	}
+	void setOrigCenter ( Position new_var );
 
 	/**
 	 * Set the center position of the object.

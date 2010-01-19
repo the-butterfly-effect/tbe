@@ -45,11 +45,13 @@ PivotPoint::PivotPoint()
 	DEBUG5("PivotPoint::PivotPoint\n");
 }
 
-PivotPoint::PivotPoint(BaseObject* aBaseObject, const Position& aPosition)
+PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
 		: theFirstPtr(aBaseObject), theSecondPtr(NULL), theJointPtr(NULL), areObjectsColliding(false)
 {
-	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n", aBaseObject, aPosition.x, aPosition.y);
-	setOrigCenter(aPosition);
+	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n",
+		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
+	thePosRelativeToFirst = aRelativePosition;
+	setOrigCenter(aBaseObject->getOrigCenter()+aRelativePosition);
 }
 
 DrawObject*  PivotPoint::createDrawObject(void)
@@ -66,8 +68,6 @@ DrawObject*  PivotPoint::createDrawObject(void)
 
 void PivotPoint::createPhysicsObject(void)
 {
-	DEBUG5("PivotPoint::createPhysObj() with %p...\n", theWorldPtr);
-
 	if (theWorldPtr==NULL)
 		return;
 
@@ -79,10 +79,11 @@ void PivotPoint::createPhysicsObject(void)
 		propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theFirstPtr);
 	if (theFirstPtr==NULL)
 	{
-		DEBUG2("PivotPoint: No valid first object found...\n");
+		DEBUG4("PivotPoint: No valid first object found...\n");
 		return;
 	}
 	b2Body* myFirstB2BodyPtr = theFirstPtr->theB2BodyPtr;
+	theFirstPtr->addJoint(this);
 	assert (myFirstB2BodyPtr);
 
 	// *** parse (optional) object2
@@ -92,25 +93,24 @@ void PivotPoint::createPhysicsObject(void)
 	// available as theGroundBodyPtr...
 	b2Body* mySecondB2BodyPtr = theGroundBodyPtr;
 	if (theSecondPtr != NULL)
-	mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
+	{
+		mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
+		theSecondPtr->addJoint(this);
+	}
 
 	// *** initialise Box2D's joint:
 	// note: Initialize() uses a global coordinate...
 	b2RevoluteJointDef myJointDef;
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
 	myJointDef.userData = this;
-
-	// TODO/FIXME: not implemented property yet
 	myJointDef.collideConnected = areObjectsColliding;
-
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 void PivotPoint::deletePhysicsObject(void)
 {
-	DEBUG5("PivotPoint::deletePhys()...\n");
 	if (theJointPtr)
-		delete theJointPtr;
+		getB2WorldPtr()->DestroyJoint(theJointPtr);
 	theJointPtr = NULL;
 }
 
@@ -120,6 +120,13 @@ Position PivotPoint::getTempCenter (void) const
 	// FIXME/TODO: this is not entirely correct as a pivot point *could* move.
 	return getOrigCenter();
 }
+
+void PivotPoint::jointWasDeleted(void)
+{
+	DEBUG2("PivotPoint::jointWasDeleted(void)\n");
+	theJointPtr = NULL;
+}
+
 
 void PivotPoint::parseProperties(void)
 {
@@ -150,4 +157,22 @@ void PivotPoint::reset(void)
 void PivotPoint::setGroundBodyPtr(b2Body* aPtr)
 {
 	theGroundBodyPtr = aPtr;
+}
+
+void PivotPoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
+{
+	switch (aStatus)
+	{
+	case JointInterface::CREATED:
+		createPhysicsObject();
+		break;
+	case JointInterface::DELETED:
+		deletePhysicsObject();
+		break;
+	case JointInterface::POSUPDATE:
+		deletePhysicsObject();
+		setOrigCenter(theFirstPtr->getOrigCenter()+thePosRelativeToFirst);
+		createPhysicsObject();
+		break;
+	}
 }
