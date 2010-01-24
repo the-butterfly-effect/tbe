@@ -39,6 +39,13 @@ public:
 	Position toPosition(void);
 	QString  toString(void);
 
+	/** Converts a string in format "(0.0,0.0)" into this Vector
+	  * If the conversion is not successful, the Vector is not modified.
+	  * @param aString the string to convert
+	  * @returns true if conversion successful.
+	  */
+	bool fromString(QString aString);
+
 	qreal dx;
 	qreal dy;
 };

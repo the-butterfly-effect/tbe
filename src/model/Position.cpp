@@ -20,6 +20,7 @@
 #include "Box2D.h"
 
 #include <cmath>
+#include <QStringList>
 
 // Constructors/Destructors
 
@@ -67,6 +68,41 @@ Vector::Vector (const b2Vec2& aVec)
 {	; // nothing to do here, sorry...
 }
 
+bool Vector::fromString(QString aString)
+{
+	bool isOK = false;
+	qreal myDX, myDY;
+	QStringList myList;
+	QString myValue;
+
+	aString = aString.trimmed();
+	if (aString.left(1)!="(")
+		goto done;
+	aString = aString.remove(0,1);
+	if (aString.right(1)!=")")
+		goto done;
+	aString.chop(1);
+
+	// we have deltaX before and deltaY after the comma
+	myList = aString.split(",");
+	if (myList.count()!=2)
+		goto done;
+
+	myDX =  myList.first().toFloat(&isOK);
+	if (isOK == false)
+		goto done;
+
+	myDY =  myList.last().toFloat(&isOK);
+	if (isOK == false)
+		goto done;
+
+	dx = myDX;
+	dy = myDY;
+	isOK = true;
+
+done:
+	return isOK;
+}
 
 qreal Vector::length(void)
 {	return sqrt(dx*dx+dy*dy); }

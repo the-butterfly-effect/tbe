@@ -109,38 +109,11 @@ bool PropertyList::propertyToFloat(const QString& aPropertyName,
 
 bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosition) const
 {
-	bool isOK = false;
-	QStringList myList;
-	float dx, dy;
-
 	QString myValue = getProperty(aPropertyName).trimmed();
-	if (myValue.isEmpty())
-		goto done;
-
-	// we have deltaX before and deltaY after the comma
-	myList = myValue.split(",");
-	if (myList.count()!=2)
-	{
-		DEBUG2("propertyToVector '%s' does not have a comma?\n", ASCII(myValue));
-		goto done;
-	}
-
-	myValue = myList.first().remove(0,1);  // remove left brace
-	dx =  myValue.toFloat(&isOK);
-	if (isOK == false)
-		goto done;
-
-	myValue = myList.last();
-	myValue.chop(1);	// remove right brace
-	dy =  myValue.toFloat(&isOK);
-	if (isOK == false)
-		goto done;
-
-	aPosition->dx = dx;
-	aPosition->dy = dy;
-	isOK = true;
-
-done:
+	Vector myVector;
+	bool isOK = myVector.fromString(myValue);
+	if (isOK)
+		*aPosition = myVector;
 	return isOK;
 }
 
