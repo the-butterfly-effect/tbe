@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009-2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@
 // Forward Declarations
 class DrawObject;
 class BaseObject;
+class ToolBox;
 
 /**
   * class UndoDeleteCommand
@@ -57,10 +58,30 @@ public:
 	 */
 	virtual ~UndoDeleteCommand ( );
 
-	
+	/** called by resizinggraphicsview to confirm that the Drag/Drop succeeded
+	  * this member will push itself onto the UndoStack and announce the
+	  * modification to the ToolBox
+	  */
+	void push();
+
+	/** (overridden from QUndoCommand)
+	  * will deregister BaseObject and DrawObject
+	  * and announce itself to ToolBox
+	  */
 	virtual void redo ();
+
+	/** each ToolBox constructor sets a pointer to iself so UDC can
+	 *  announce itself to the Toolbox - after all,
+	 *  a deleted object should re-appear in the ToolBox
+	 */
+	static void setToolBoxPtr(ToolBox* aPtr);
+
+	/** (overridden from QUndoCommand)
+	  * will reregister BaseObject and DrawObject
+	  * and announce that to ToolBox
+	  */
 	virtual void undo ();
-	
+
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;

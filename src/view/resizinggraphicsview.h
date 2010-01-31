@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009-2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -42,22 +42,7 @@ public:
 	/** the constructor
 	 *  it sets a lot of custom settings that we need for our GraphicsView
 	 */
-	ResizingGraphicsView (QWidget* aParent)
-		: QGraphicsView(aParent)
-	{
-		setAlignment(Qt::AlignCenter);
-
-		setInteractive(true);
-		setDragMode(QGraphicsView::RubberBandDrag);
-		setRubberBandSelectionMode(Qt::ContainsItemShape);
-
-		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	    QSizePolicy vpol;
-	    vpol.setHorizontalPolicy(QSizePolicy::Expanding);
-	    vpol.setVerticalPolicy(QSizePolicy::Expanding);
-		setSizePolicy(vpol);
-	}
+	ResizingGraphicsView (QWidget* aParent);
 
 	virtual ~ResizingGraphicsView() {;}
 
@@ -111,6 +96,8 @@ protected:
 	virtual void dragMoveEvent(QDragMoveEvent*)
 	{
 	}
+
+	virtual void mouseMoveEvent(QMouseEvent* event);
 
 protected slots:
 	void on_timerTick(void)

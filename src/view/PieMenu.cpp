@@ -73,7 +73,7 @@ void PieMenu::createActions(void)
 void PieMenu::deleteObject(void)
 {
 	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theDrawObjectPtr, theDrawObjectPtr->getBaseObjectPtr());
-	theDrawObjectPtr->getUndoStackPtr()->push(myCommandPtr);
+	myCommandPtr->push();
 }
 
 

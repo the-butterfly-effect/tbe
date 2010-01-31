@@ -93,6 +93,7 @@ SOURCES += src/main.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
+    src/view/resizinggraphicsview.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopWatch.cpp \

@@ -26,13 +26,16 @@
 #include <QDomNode>
 #include <QListWidget>
 #include <QListWidgetItem>
-
+#include <QSet>
 
 class TBItem : public QListWidgetItem
 {
 public:
-	/// the mime type - as agreed upon between the ToolBox and the DrawWorld
+	/// the mime type - from ToolBox to DrawWorld
 	static const char* ToolboxMimeType;
+
+	/// the mime type - from DrawWorld to Toolbox
+	static const char* DrawWorldMimeType;
 
 	TBItem(unsigned int aCount,
 		   const QIcon& anIcon,
@@ -72,6 +75,9 @@ private:
 
 	/// using the ObjectFactory, we can create objects from this Name
 	const ObjectFactory* theFactoryPtr;
+
+	typedef QSet<BaseObject*> BaseObjectPtrList;
+	BaseObjectPtrList theCreatedObjectPtrList;
 };
 
 
@@ -81,6 +87,7 @@ class ToolBox : public QListWidget
 
 public:
 	ToolBox(QWidget *parent = 0);
+	virtual ~ToolBox();
 
 	/** Fills the Toolbox with all known Objects.
 	 *  This is of course only to be done in Level Editor mode or cheat...
@@ -100,6 +107,11 @@ public:
 	  *          it will also decrease the counter of the item
 	  */
 	BaseObject* getMeACopyOf(const QString& anObjectName);
+
+	/** called by UndoDeleteCommand to tell ToolBox that an object has been
+	  * deleted and as such should be added back into the ToolBox
+	  */
+	bool announceReturnOfBaseObject(BaseObject* aPtr);
 
 protected:
 	void dragEnterEvent(QDragEnterEvent *event);

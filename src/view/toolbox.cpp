@@ -19,15 +19,15 @@
 #include <QtGui>
 
 #include "toolbox.h"
-//#include "TBItem.h"
-
 #include "ImageStore.h"
 #include "BaseObjectSerializer.h"
+#include "UndoDeleteCommand.h"
 
 #include <QMimeData>
 
 
-const char* TBItem::ToolboxMimeType = "image/x-tbe-object";
+const char* TBItem::ToolboxMimeType   = "image/x-tbe-tool-scene";
+const char* TBItem::DrawWorldMimeType = "image/x-tbe-scene-tool";
 
 
 TBItem::TBItem(unsigned int aCount,
@@ -108,11 +108,25 @@ ToolBox::ToolBox(QWidget *parent)
 	setMovement(QListView::Snap);
 	setSpacing(10);
 	setViewMode(QListView::IconMode);
+	UndoDeleteCommand::setToolBoxPtr(this);
+}
+
+ToolBox::~ToolBox()
+{
+	UndoDeleteCommand::setToolBoxPtr(NULL);
+}
+
+bool ToolBox::announceReturnOfBaseObject(BaseObject* aPtr)
+{
+	// TODO/FIXME implement this!!!
+	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ announceReturnOfBO(%p)\n", aPtr);
+	return true;
 }
 
 void ToolBox::dragEnterEvent(QDragEnterEvent *event)
 {
-	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) ||
+		event->mimeData()->hasFormat(TBItem::DrawWorldMimeType))
 		event->accept();
 	else
 		event->ignore();
@@ -120,7 +134,8 @@ void ToolBox::dragEnterEvent(QDragEnterEvent *event)
 
 void ToolBox::dragMoveEvent(QDragMoveEvent *event)
 {
-	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) ||
+		event->mimeData()->hasFormat(TBItem::DrawWorldMimeType))
 	{
 		event->setDropAction(Qt::MoveAction);
 		event->accept();
@@ -131,7 +146,7 @@ void ToolBox::dragMoveEvent(QDragMoveEvent *event)
 void ToolBox::dropEvent(QDropEvent *event)
 {
 	DEBUG4("void ToolBox::dropEvent(\"%s\")\n", ASCII(event->mimeData()->formats().join(";")));
-	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
+	if (event->mimeData()->hasFormat(TBItem::DrawWorldMimeType))
 	{
 		QByteArray pieceData = event->mimeData()->data(TBItem::ToolboxMimeType);
 		QDataStream dataStream(&pieceData, QIODevice::ReadOnly);
@@ -142,7 +157,8 @@ void ToolBox::dropEvent(QDropEvent *event)
 
 		event->setDropAction(Qt::MoveAction);
 		event->accept();
-	} else
+	}
+	else
 		event->ignore();
 }
 

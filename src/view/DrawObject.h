@@ -193,8 +193,9 @@ protected:
 private:
 	virtual void initAttributes ( ) ;
 
-	friend class PieMenu;
-	friend class UndoResizeCommand;
+	// all below friends are needed for Undoing actions
+	friend class UndoResizeCommand;    // resize
+	friend class UndoDeleteCommand;    // delete
 
 
 	/** this class-in-class displays the Cross over the

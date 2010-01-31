@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009-2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,6 +21,9 @@
 #include "DrawObject.h"
 #include <QGraphicsScene>
 #include "World.h"
+#include "toolbox.h"
+
+static ToolBox* theCurrentToolBoxPtr = NULL;
 
 // Constructors/Destructors
 //  
@@ -59,16 +62,29 @@ UndoDeleteCommand::~UndoDeleteCommand ( )
 
 // Other methods
 //  
+
+void UndoDeleteCommand::push()
+{
+	theDrawObjectPtr->getUndoStackPtr()->push(this);
+}
+
+
 void UndoDeleteCommand::redo ()
 {
 	DEBUG3("UndoDeleteCommand::redo() START\n");
 	// remove the DrawObject from the scene, but keep the pointer
 	assert(theBaseObjectPtr->deregister());
-
-	// TODO: a delete also implies (if not in Level editor mode) that
-	// the object is available in the tool box again
+	if (theCurrentToolBoxPtr)
+		theCurrentToolBoxPtr->announceReturnOfBaseObject(theBaseObjectPtr);
 	DEBUG3("UndoDeleteCommand::redo() END\n");
 }
+
+
+void UndoDeleteCommand::setToolBoxPtr(ToolBox* aPtr)
+{
+	theCurrentToolBoxPtr = aPtr;
+}
+
 
 void UndoDeleteCommand::undo ()
 {
