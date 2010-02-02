@@ -54,10 +54,6 @@ MainWindow::MainWindow(QWidget *parent)
 	theRedoActionPtr->setShortcuts(redoShortcuts);
 	ui.menuEdit->addAction(theRedoActionPtr);
 
-	// I don't want the View to be different from the background.
-	// FIXME/TODO: that white block is ugly :-(
-	// "missing scene"->setBackgroundBrush(QApplication::palette().window());
-
 	setSimSpeed(0.5);
 
 	// if level specified on command line, don't display splash screen
