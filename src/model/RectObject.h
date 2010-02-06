@@ -48,6 +48,12 @@ public:
 	 */
 	RectObject ( );
 
+	/// elaborate constructor, only used by the ConcreteRectObject thingies
+	RectObject( const QString& aDisplayName,
+				const QString& aTooltip,
+				const QString& aImageName,
+				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness);
+
 	/**
 	 * Empty Destructor
 	 */
