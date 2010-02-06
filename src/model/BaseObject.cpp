@@ -321,7 +321,10 @@ ObjectFactory::createObject(
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
 	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == NULL)
+	{
+		DEBUG1("There is no factory for Object type %s\n", ASCII(aName));
 		return NULL;
+	}
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
 	myObjectPtr->theCenter=aPosition;
 	if (aWidth!=1.0)
