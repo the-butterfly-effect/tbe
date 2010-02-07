@@ -19,7 +19,6 @@
 #include "UndoDeleteCommand.h"
 #include "BaseObject.h"
 #include "DrawObject.h"
-#include <QGraphicsScene>
 #include "World.h"
 #include "toolbox.h"
 
@@ -35,12 +34,12 @@ UndoDeleteCommand::UndoDeleteCommand (
 			isInUse(false)
 {
 	assert(aBaseObjectPtr);
-	setText("Delete " + theBaseObjectPtr->getName());
+	setText(QObject::tr("Delete %1").arg(theBaseObjectPtr->getName()));
 }
 
 UndoDeleteCommand::~UndoDeleteCommand ( )
 {
-	DEBUG1("~UndoDeleteCommand() for %p - %s\n", this, ASCII(text()));
+	DEBUG5("~UndoDeleteCommand()/this=%p - %s\n", this, ASCII(text()));
 	if (isInUse)
 	{
 		// upon deletion of this object, we finally can delete the objects it holds hostage, too
@@ -57,6 +56,12 @@ UndoDeleteCommand::~UndoDeleteCommand ( )
 // Accessor methods
 //  
 
+ToolBox* UndoDeleteCommand::getCurrentToolboxPtr(void)
+{
+	return theCurrentToolBoxPtr;
+}
+
+
 // Other methods
 //  
 
@@ -65,11 +70,9 @@ void UndoDeleteCommand::push()
 	theBaseObjectPtr->theDrawObjectPtr->getUndoStackPtr()->push(this);
 }
 
-
 void UndoDeleteCommand::redo ()
 {
 	DEBUG3("UndoDeleteCommand::redo() START\n");
-	// remove the DrawObject from the scene, but keep the pointer
 	assert(theBaseObjectPtr->deregister());
 	if (theCurrentToolBoxPtr)
 		theCurrentToolBoxPtr->modifyCountOfBaseObject(theBaseObjectPtr,+1);
@@ -87,7 +90,6 @@ void UndoDeleteCommand::setToolBoxPtr(ToolBox* aPtr)
 void UndoDeleteCommand::undo ()
 {
 	DEBUG3("UndoDeleteCommand::undo() START\n");
-
 	if (theCurrentToolBoxPtr)
 		theCurrentToolBoxPtr->modifyCountOfBaseObject(theBaseObjectPtr,-1);
 	theBaseObjectPtr->reregister();

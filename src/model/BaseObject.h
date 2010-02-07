@@ -417,7 +417,11 @@ private:
 	BaseObject& operator = (const BaseObject& aBORefToCopy);
 
 	friend class ObjectFactory;
+
+	// TODO/FIXME: this is getting ugly...
 	friend class UndoDeleteCommand;
+	friend class UndoMoveCommand;
+	friend class UndoResizeCommand;
 };
 
 //////////////////////////////////////////////////////////////////////////////

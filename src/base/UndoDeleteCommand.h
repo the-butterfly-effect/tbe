@@ -80,11 +80,13 @@ public:
 	  */
 	virtual void undo ();
 
-private:
+protected:
 	BaseObject* theBaseObjectPtr;
 
 	/// true if this UndoDeleteCommand was pushed onto the undo stack
 	bool isInUse;
+
+	static ToolBox* getCurrentToolboxPtr(void);
 };
 
 
