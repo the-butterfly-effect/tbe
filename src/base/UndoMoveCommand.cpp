@@ -24,16 +24,13 @@
 //  
 
 UndoMoveCommand::UndoMoveCommand (
-		DrawObject* aDrawObjectPtr, 
 		BaseObject* aBaseObjectPtr)
 		  : QUndoCommand(), 
-			theBaseObjectPtr(aBaseObjectPtr), 
-			theDrawObjectPtr(aDrawObjectPtr)
+			theBaseObjectPtr(aBaseObjectPtr)
 {
-	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
 
-	setText("Move " + theBaseObjectPtr->getName());
+	setText(QObject::tr("Move %1").arg(theBaseObjectPtr->getName()));
 	DEBUG5("UndoMoveCommand() for %p - %s\n", this, ASCII(text()));
 
 	theOldPosition = theBaseObjectPtr->getOrigCenter();
@@ -61,7 +58,7 @@ void UndoMoveCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewPosition);
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
-	theDrawObjectPtr->advance(0);
+	theBaseObjectPtr->theDrawObjectPtr->advance(0);
 }
 
 void UndoMoveCommand::undo ()
@@ -69,6 +66,6 @@ void UndoMoveCommand::undo ()
 	theBaseObjectPtr->setOrigCenter(theOldPosition);
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
-	theDrawObjectPtr->focusRemove();
-	theDrawObjectPtr->advance(0);
+	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
+	theBaseObjectPtr->theDrawObjectPtr->advance(0);
 }

@@ -47,11 +47,9 @@ public:
 
 	/** constructor
 	 * 
-	 * @param aDrawObjectPtr pointer to a DrawObject
 	 * @param aBaseObjectPtr pointer to a BaseObject
 	 */
-	UndoResizeCommand (DrawObject* aDrawObjectPtr,
-			BaseObject* aBaseObjectPtr);
+	UndoResizeCommand (BaseObject* aBaseObjectPtr);
 
 	/**
 	 * Empty Destructor
@@ -86,7 +84,6 @@ public:
 
 private:
 	BaseObject* theBaseObjectPtr;
-	DrawObject* theDrawObjectPtr;
 
 	Position	theOldCenter;
 	Position	theLastGoodCenter;

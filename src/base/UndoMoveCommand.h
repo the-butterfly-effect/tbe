@@ -27,7 +27,6 @@
 #include "Position.h"
 
 // Forward Declarations
-class DrawObject;
 class BaseObject;
 
 
@@ -48,11 +47,9 @@ public:
 	 * this constructor will automatically retrieve the "old" Original
 	 * position from aBaseObjectPtr
 	 * 
-	 * @param aDrawObjectPtr pointer to a DrawObject
 	 * @param aBaseObjectPtr pointer to a BaseObject
 	 */
-	UndoMoveCommand (DrawObject* aDrawObjectPtr, 
-			BaseObject* aBaseObjectPtr);
+	UndoMoveCommand (BaseObject* aBaseObjectPtr);
 
 	/**
 	 * Empty Destructor
@@ -90,7 +87,6 @@ public:
 	
 private:
 	BaseObject* theBaseObjectPtr;
-	DrawObject* theDrawObjectPtr;
 	Position	theLastGoodPosition;
 	Position	theNewPosition;
 	Position	theOldPosition;

@@ -26,20 +26,17 @@
 //  
 
 UndoResizeCommand::UndoResizeCommand (
-		DrawObject* aDrawObjectPtr, 
 		BaseObject* aBaseObjectPtr)
 		  : QUndoCommand(), 
-			theBaseObjectPtr(aBaseObjectPtr), 
-			theDrawObjectPtr(aDrawObjectPtr)
+			theBaseObjectPtr(aBaseObjectPtr)
 {
-	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
 	theOldCenter = theBaseObjectPtr->getOrigCenter();
 	theLastGoodCenter = theOldCenter;
 	theNewCenter = theBaseObjectPtr->getTempCenter();
 	theOldSize = QPointF(theBaseObjectPtr->getTheWidth(),theBaseObjectPtr->getTheHeight());
 	theLastGoodSize = theOldSize;
-	setText("Resize " + theBaseObjectPtr->getName());
+	setText(QObject::tr("Resize %1").arg(theBaseObjectPtr->getName()));
 }
 
 UndoResizeCommand::~UndoResizeCommand ( )
@@ -80,7 +77,7 @@ void UndoResizeCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->applyPosition();
+	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
 }
 
 
@@ -88,7 +85,7 @@ void UndoResizeCommand::revertToLastGood(void)
 {
 	theNewSize = theLastGoodSize;
 	theNewCenter = theLastGoodCenter;
-	theDrawObjectPtr->removeCollisionCross();
+	theBaseObjectPtr->theDrawObjectPtr->removeCollisionCross();
 	redo();
 }
 
@@ -109,7 +106,7 @@ void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
 	redo();
 
 	// collision detection - only do this *after* the redraw :-)
-	isColliding = theDrawObjectPtr->checkForCollision();
+	isColliding = theBaseObjectPtr->theDrawObjectPtr->checkForCollision();
 	if (isColliding == false)
 	{
 		theLastGoodSize = theNewSize;
@@ -128,6 +125,6 @@ void UndoResizeCommand::undo ()
 	theBaseObjectPtr->setOrigCenter(theOldCenter);
 
 	theBaseObjectPtr->reset();
-	theDrawObjectPtr->focusRemove();
-	theDrawObjectPtr->applyPosition();
+	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
+	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
 }
