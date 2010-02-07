@@ -85,6 +85,9 @@ public:
 private:
 	BaseObject* theBaseObjectPtr;
 	DrawObject* theDrawObjectPtr;
+
+	/// true if this UndoDeleteCommand was pushed onto the undo stack
+	bool isInUse;
 };
 
 

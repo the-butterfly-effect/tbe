@@ -46,42 +46,48 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 	QPoint myPos = event->pos();
 	QGraphicsItem* myItem = itemAt(myPos);
 
-	// anything within 16 pixels of the right border is under consideration...
-	if (myPos.x() > (width()-16) && myItem!=NULL)
+	// anything that is a real object
+	if (myItem!=NULL && event->buttons()!=Qt::NoButton)
 	{
 		// OK, here's a dirty trick.
-		// If we get here, we know that myItem is a DrawObject
-		// and is movable and has moved out of the view to the right
-		// ("by accident", that is towards the toolbox)
-		// So, let's create the UndoDeleteCommand and the QDrag
+		// If we get here, we hopefully know that myItem is a DrawObject
 		DrawObject* myDOPtr = reinterpret_cast<DrawObject*>(myItem);
 		BaseObject* myBOPtr = myDOPtr->getBaseObjectPtr();
 
-		// create MIME data
-		QByteArray itemData;
-		QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-		dataStream << "TBE-lala"; //item->getID();
-		QMimeData* myMimeDataPtr = new QMimeData;
-		myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
-
-		// add an icon to the QDrag
-		// FIXME/TODO: improve the icon choosing capabilities
-		QPixmap myPixmap = ImageStore::getPNGPixmap("SoccerBall")->scaledToWidth(32);
-		QDrag *drag = new QDrag(this);
-		drag->setMimeData(myMimeDataPtr);
-		drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
-		drag->setPixmap(myPixmap);
-
-		UndoDeleteCommand* myCommandPtr =
-				new UndoDeleteCommand(myDOPtr, myBOPtr);
-		if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
+		// calculate wether we are close to the right border...
+		//
+		// I need to map the width of the object to the width of the view.
+		// Unfortunately, that can only be done for QPoints: a detour :-(
+		QPointF myObjWidth = mapFromScene(myBOPtr->getTheWidth()/2.0, 0.0);
+		if (myPos.x() + myObjWidth.x() > width()-5)
 		{
-			myCommandPtr->push();
-			return;
-		}
+			UndoDeleteCommand* myCommandPtr =
+					new UndoDeleteCommand(myDOPtr, myBOPtr);
 
-		delete myCommandPtr;
-		myCommandPtr = NULL;
+			// create MIME data
+			QByteArray itemData;
+			QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+			dataStream << "TBE-lala"; //item->getID();
+			QMimeData* myMimeDataPtr = new QMimeData;
+			myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
+
+			// add an icon to the QDrag
+			// FIXME/TODO: improve the icon choosing capabilities
+			QPixmap myPixmap = ImageStore::getPNGPixmap("SoccerBall")->scaledToWidth(32);
+			QDrag *drag = new QDrag(this);
+			drag->setMimeData(myMimeDataPtr);
+			drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
+			drag->setPixmap(myPixmap);
+
+			if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
+			{
+				myCommandPtr->push();
+				return;
+			}
+
+			delete myCommandPtr;
+			myCommandPtr = NULL;
+		}
 	}
 
 	// no, we still have an object to move around

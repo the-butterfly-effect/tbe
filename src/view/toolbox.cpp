@@ -80,7 +80,6 @@ BaseObject* TBItem::getNewObject(void)
 				   ASCII(theDomNode.attributes().namedItem("name").nodeValue()));
 		}
 	}
-
 	return myBOPtr;
 }
 
@@ -118,8 +117,12 @@ ToolBox::~ToolBox()
 
 bool ToolBox::announceReturnOfBaseObject(BaseObject* aPtr)
 {
-	// TODO/FIXME implement this!!!
-	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ announceReturnOfBO(%p)\n", aPtr);
+	if(aPtr == NULL)
+		return false;
+	CreationMap::iterator myIterator = theCreationMap.find(aPtr);
+	if (myIterator == theCreationMap.end())
+		return false;
+	(*myIterator)->modifyCount(+1);
 	return true;
 }
 
@@ -153,8 +156,6 @@ void ToolBox::dropEvent(QDropEvent *event)
 		QString myObjectName;
 		dataStream >> myObjectName;
 
-		// FIXME/TODO: add handling of the dropped object here...
-
 		event->setDropAction(Qt::MoveAction);
 		event->accept();
 	}
@@ -165,7 +166,11 @@ void ToolBox::dropEvent(QDropEvent *event)
 void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)
 {
 	DEBUG4("ToolBox::startDrag()\n");
-	TBItem *item = dynamic_cast<TBItem*>(currentItem());
+	TBItem* item = dynamic_cast<TBItem*>(currentItem());
+
+	// don't start a D&D if we have nothing left...
+	if (item->hasObjectsLeft()==false)
+		return;
 
 	// create MIME data
 	QByteArray itemData;
@@ -181,12 +186,8 @@ void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)
 	drag->setHotSpot(QPoint(pixmap.width()/2, pixmap.height()/2));
 	drag->setPixmap(pixmap);
 
-	if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
-	{
-		// delete item in the toolbox if all are gone
-		if (item->modifyCount(-1) == false)
-			delete takeItem(row(item));
-	}
+	// no need to check if it succeeds - getMeACopy() will be called anyway.
+	drag->exec(Qt::MoveAction);
 }
 
 
@@ -270,7 +271,14 @@ BaseObject* ToolBox::getMeACopyOf(const QString& anObjectName)
 	{
 		TBItem* myItem = dynamic_cast<TBItem*>(item(i));
 		if (myItem->getID() == anObjectName)
-			return myItem->getNewObject();
+		{
+			BaseObject* myPtr = myItem->getNewObject();
+			if (myPtr == NULL)
+				return NULL;
+			myItem->modifyCount(-1);
+			theCreationMap.insert(myPtr, myItem);
+			return myPtr;
+		}
 		++i;
 	}
 	return NULL;

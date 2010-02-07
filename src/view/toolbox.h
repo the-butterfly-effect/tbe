@@ -56,6 +56,9 @@ public:
 		return "TBE-" + QString::number(reinterpret_cast<qulonglong>(this),16);
 	}
 
+	bool hasObjectsLeft(void)
+	{ return (theCount>0); }
+
 	/** modifies the number of objects left,
 	  * will also change the object description (which contains the object count)
 	  * @param aDelta - the number to add/subtract
@@ -75,9 +78,6 @@ private:
 
 	/// using the ObjectFactory, we can create objects from this Name
 	const ObjectFactory* theFactoryPtr;
-
-	typedef QSet<BaseObject*> BaseObjectPtrList;
-	BaseObjectPtrList theCreatedObjectPtrList;
 };
 
 
@@ -118,6 +118,11 @@ protected:
 	void dragMoveEvent(QDragMoveEvent *event);
 	void dropEvent(QDropEvent *event);
 	void startDrag(Qt::DropActions supportedActions);
+
+private:
+	typedef QMap<BaseObject*, TBItem*> CreationMap;
+	/// contains a list of all created BaseObjects and their creators
+	CreationMap theCreationMap;
 };
 
 #endif // TOOLBOX_H
