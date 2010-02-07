@@ -69,7 +69,7 @@ public:
 		{ return theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter(); }
 
 	UndoResizeCommand* createUndoResize(void)
-		{ return new UndoResizeCommand(theDrawObjectPtr, theDrawObjectPtr->getBaseObjectPtr()); }
+		{ return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr()); }
 
 	bool pushUndo(QUndoCommand* anUndo)
 		{ return theDrawObjectPtr->pushUndo(anUndo); }

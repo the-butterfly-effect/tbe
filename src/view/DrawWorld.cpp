@@ -24,6 +24,7 @@
 #include "Popup.h"
 #include "toolbox.h"
 #include "StartStopWatch.h"
+#include "UndoInsertCommand.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -167,8 +168,11 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 			{
 				myObjectPtr->setOrigCenter(Position(aDropPos));
 				myObjectPtr->createPhysicsObject();
-
 				theWorldPtr->addObject(myObjectPtr);
+
+				UndoInsertCommand* myUndo = new UndoInsertCommand(myObjectPtr);
+				theUndoStack.push(myUndo);
+
 				myObjectPtr->parseProperties();
 
 				event->setDropAction(Qt::MoveAction);
