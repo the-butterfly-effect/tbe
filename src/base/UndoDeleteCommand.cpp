@@ -29,17 +29,12 @@ static ToolBox* theCurrentToolBoxPtr = NULL;
 //  
 
 UndoDeleteCommand::UndoDeleteCommand (
-		DrawObject* aDrawObjectPtr, 
 		BaseObject* aBaseObjectPtr)
 		  : QUndoCommand(), 
 			theBaseObjectPtr(aBaseObjectPtr), 
-			theDrawObjectPtr(aDrawObjectPtr),
 			isInUse(false)
 {
-	assert(aDrawObjectPtr);
 	assert(aBaseObjectPtr);
-
-
 	setText("Delete " + theBaseObjectPtr->getName());
 }
 
@@ -51,8 +46,6 @@ UndoDeleteCommand::~UndoDeleteCommand ( )
 		// upon deletion of this object, we finally can delete the objects it holds hostage, too
 		delete theBaseObjectPtr;
 		theBaseObjectPtr = NULL;
-		// deleting theBaseObjectPtr should also delete the DrawObject :-)
-		theDrawObjectPtr = NULL;
 	}
 }
 
@@ -69,8 +62,7 @@ UndoDeleteCommand::~UndoDeleteCommand ( )
 
 void UndoDeleteCommand::push()
 {
-	theDrawObjectPtr->getUndoStackPtr()->push(this);
-	isInUse=true;
+	theBaseObjectPtr->theDrawObjectPtr->getUndoStackPtr()->push(this);
 }
 
 
@@ -80,7 +72,8 @@ void UndoDeleteCommand::redo ()
 	// remove the DrawObject from the scene, but keep the pointer
 	assert(theBaseObjectPtr->deregister());
 	if (theCurrentToolBoxPtr)
-		theCurrentToolBoxPtr->announceReturnOfBaseObject(theBaseObjectPtr);
+		theCurrentToolBoxPtr->modifyCountOfBaseObject(theBaseObjectPtr,+1);
+	isInUse=true;
 	DEBUG3("UndoDeleteCommand::redo() END\n");
 }
 
@@ -94,6 +87,10 @@ void UndoDeleteCommand::setToolBoxPtr(ToolBox* aPtr)
 void UndoDeleteCommand::undo ()
 {
 	DEBUG3("UndoDeleteCommand::undo() START\n");
+
+	if (theCurrentToolBoxPtr)
+		theCurrentToolBoxPtr->modifyCountOfBaseObject(theBaseObjectPtr,-1);
 	theBaseObjectPtr->reregister();
+	isInUse=false;
 	DEBUG3("UndoDeleteCommand::undo() END\n");
 }

@@ -46,8 +46,9 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 	QPoint myPos = event->pos();
 	QGraphicsItem* myItem = itemAt(myPos);
 
-	// anything that is a real object
-	if (myItem!=NULL && event->buttons()!=Qt::NoButton)
+	// limit our efforts:
+	// only for real objects, while we're actually dragging
+	if (myItem!=NULL && event->buttons()==Qt::LeftButton)
 	{
 		// OK, here's a dirty trick.
 		// If we get here, we hopefully know that myItem is a DrawObject
@@ -59,10 +60,10 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 		// I need to map the width of the object to the width of the view.
 		// Unfortunately, that can only be done for QPoints: a detour :-(
 		QPointF myObjWidth = mapFromScene(myBOPtr->getTheWidth()/2.0, 0.0);
-		if (myPos.x() + myObjWidth.x() > width()-5)
+		if (myPos.x() + myObjWidth.x() > width()-5 && myBOPtr->isMovable())
 		{
 			UndoDeleteCommand* myCommandPtr =
-					new UndoDeleteCommand(myDOPtr, myBOPtr);
+					new UndoDeleteCommand(myBOPtr);
 
 			// create MIME data
 			QByteArray itemData;

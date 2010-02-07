@@ -47,11 +47,9 @@ public:
 
 	/** constructor
 	 * 
-	 * @param aDrawObjectPtr pointer to a DrawObject
 	 * @param aBaseObjectPtr pointer to a BaseObject
 	 */
-	UndoDeleteCommand (DrawObject* aDrawObjectPtr,
-			BaseObject* aBaseObjectPtr);
+	UndoDeleteCommand (BaseObject* aBaseObjectPtr);
 
 	/**
 	 * Destructor
@@ -84,7 +82,6 @@ public:
 
 private:
 	BaseObject* theBaseObjectPtr;
-	DrawObject* theDrawObjectPtr;
 
 	/// true if this UndoDeleteCommand was pushed onto the undo stack
 	bool isInUse;

@@ -109,9 +109,10 @@ public:
 	BaseObject* getMeACopyOf(const QString& anObjectName);
 
 	/** called by UndoDeleteCommand to tell ToolBox that an object has been
-	  * deleted and as such should be added back into the ToolBox
+	  * deleted or undeleted and as such the count of its line item should change
+	  * @param aDelta
 	  */
-	bool announceReturnOfBaseObject(BaseObject* aPtr);
+	bool modifyCountOfBaseObject(BaseObject* aPtr, signed int aDelta);
 
 protected:
 	void dragEnterEvent(QDragEnterEvent *event);

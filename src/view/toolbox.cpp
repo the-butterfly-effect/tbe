@@ -115,17 +115,6 @@ ToolBox::~ToolBox()
 	UndoDeleteCommand::setToolBoxPtr(NULL);
 }
 
-bool ToolBox::announceReturnOfBaseObject(BaseObject* aPtr)
-{
-	if(aPtr == NULL)
-		return false;
-	CreationMap::iterator myIterator = theCreationMap.find(aPtr);
-	if (myIterator == theCreationMap.end())
-		return false;
-	(*myIterator)->modifyCount(+1);
-	return true;
-}
-
 void ToolBox::dragEnterEvent(QDragEnterEvent *event)
 {
 	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) ||
@@ -161,6 +150,17 @@ void ToolBox::dropEvent(QDropEvent *event)
 	}
 	else
 		event->ignore();
+}
+
+bool ToolBox::modifyCountOfBaseObject(BaseObject* aPtr, signed int aDelta)
+{
+	if(aPtr == NULL)
+		return false;
+	CreationMap::iterator myIterator = theCreationMap.find(aPtr);
+	if (myIterator == theCreationMap.end())
+		return false;
+	(*myIterator)->modifyCount(aDelta);
+	return true;
 }
 
 void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)

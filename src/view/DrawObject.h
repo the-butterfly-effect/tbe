@@ -77,15 +77,6 @@ public:
 	BaseObject* getBaseObjectPtr(void) const
 		{ return theBaseObjectPtr; }
 
-	/** removes itself from the DrawWorld
-	 */
-	bool deregister(void);
-
-	/** adds itself again to the DrawWorld
-	 *  Note: this function is not suitable for first registration!!!
-	 */
-	bool reregister();
-
 	bool pushUndo(QUndoCommand* anUndo);
 
 	/** removes highlighting from this object and anchors - if needed
@@ -227,6 +218,10 @@ private:
 
 	Cross* theCrossPtr;
 	friend class Cross;
+
+private:
+	// kill the default constructor
+	DrawObject();
 };
 
 #endif // DRAWOBJECT_H

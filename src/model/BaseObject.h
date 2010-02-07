@@ -417,6 +417,7 @@ private:
 	BaseObject& operator = (const BaseObject& aBORefToCopy);
 
 	friend class ObjectFactory;
+	friend class UndoDeleteCommand;
 };
 
 //////////////////////////////////////////////////////////////////////////////

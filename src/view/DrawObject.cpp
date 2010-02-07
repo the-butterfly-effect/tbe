@@ -152,15 +152,6 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 	}
 }
 
-bool DrawObject::deregister()
-{
-	theUndeleteDrawWorldPtr = reinterpret_cast<DrawWorld*>(scene());
-	focusRemove();
-	removeCollisionCross();
-	scene()->removeItem(this);
-	return true;
-}
-
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
@@ -329,14 +320,6 @@ void DrawObject::removeCollisionCross(void)
 		theCrossPtr = NULL;
 	}
 }
-
-bool DrawObject::reregister()
-{
-	assert(theUndeleteDrawWorldPtr);
-	theUndeleteDrawWorldPtr->addItem(this);
-	return true;
-}
-
 
 DrawObject::Cross::Cross(DrawObject* aParent)
 {

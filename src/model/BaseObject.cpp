@@ -171,10 +171,11 @@ void BaseObject::deletePhysicsObject()
 bool BaseObject::deregister(void)
 {
 	deletePhysicsObject();
-	theWorldPtr->removeObject(this);
 	if (theDrawObjectPtr)
-		theDrawObjectPtr->deregister();
-	// note that we keep the pointer - and will re-use it in the future if needed
+		delete theDrawObjectPtr;
+	theDrawObjectPtr=NULL;
+	theWorldPtr->removeObject(this);
+	// note that we do not delete ourselves!
 	return true;
 }
 
@@ -236,11 +237,9 @@ void BaseObject::parseProperties(void)
 
 bool BaseObject::reregister(void)
 {
-	reset();
 	theWorldPtr->addObject(this);
 	if (theDrawObjectPtr == NULL)
 		createDrawObject();
-	theDrawObjectPtr->reregister();
 	createPhysicsObject();
 	return true;
 }
