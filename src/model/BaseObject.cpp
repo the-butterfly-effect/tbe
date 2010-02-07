@@ -318,7 +318,7 @@ ObjectFactory::createObject(
 		const qreal anHeight)
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
-	DEBUG5("ObjectFactory::createObject(\"%s\") is %p\n", ASCII(aName), myFactoryPtr);
+	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p\n", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == NULL)
 	{
 		DEBUG1("There is no factory for Object type %s\n", ASCII(aName));
