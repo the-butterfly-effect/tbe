@@ -40,7 +40,7 @@ BowlingPin::BowlingPin ( )
 	DEBUG5("BowlingPin::BowlingPin\n");
 	// set the bowling pin to be a *box* - not a cylinder
 	const qreal myRadius = 0.06; // m
-	const qreal myLength = 0.38; // m
+	const qreal myLength = 0.34; // m
 	const qreal myMass   = 1.5;  // kg
 	
 	b2PolygonDef* my5PointPinDef = new b2PolygonDef();
