@@ -131,43 +131,7 @@ COMPLETED: revision 556
 FIRST WIDELY ANNOUNCEABLE VERSION
 
 
-Milestone 6 - inbetween
-NOTE: As of the end of Milestone 5, we now have TRAC on Sourceforge to handle the action items for a release.
+Milestone 6 and later
+As of the end of Milestone 5, we now have TRAC on Sourceforge to handle the action items for a release.
 So this list will dimnish in usability and contents over time as line items migrate into TRAC.
-  * clicking on anything not movable (or clicking on nothing) should remove the anchors from the currently selected.
-  / PERFORMANCE: 	setCacheMode(QGraphicsItem::ItemCoordinateCache);
-	- would be nice - indeed improves performance but deteriorates gfx quality
-	x I implemented custom cache sizes - but that kills QT :-(
-	- so it is disabled again
-  * finish i18n of application
-	* Level Name
-	* Level Description
-  * i18n of levels
-  * implement more objects
-	- penguin, herring ?   (or cat - mouse - cheese?)
-	- granite block
-	- trap door
-	- gummi ball
-	- Truck (i.e. with space to put something on that needs moving).
-  * RMB actions
-	- adjust properties
-
-
-Later milestones
-  * finish level editor
-  * investigate GLUON again
-  * wheel
-  * balloons
-  * add corresponding more levels
-  * validate order of all levels
-  * zooming (like World Of Goo)
-  * obsessive completion criteria?
-  * storyline
-  * beautify everything, custom graphics and such
-  * audio?
-  * packaging: add installers
-  * MacOSX version?
-  * Windows version
-  * bugfixing
-  * liquid
-
+(This file will be removed in Milestone 7)
