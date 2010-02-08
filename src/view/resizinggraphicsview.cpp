@@ -73,8 +73,7 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 			myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
 
 			// add an icon to the QDrag
-			// FIXME/TODO: improve the icon choosing capabilities
-			QPixmap myPixmap = ImageStore::getPNGPixmap("SoccerBall")->scaledToWidth(32);
+			QPixmap myPixmap = ImageStore::getPNGPixmap("ToRight")->scaledToWidth(32);
 			QDrag *drag = new QDrag(this);
 			drag->setMimeData(myMimeDataPtr);
 			drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
