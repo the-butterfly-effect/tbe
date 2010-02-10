@@ -107,6 +107,8 @@ public:
 	//                <property key="ImageName" >styrofoam</property>
 	//                <property key="Mass" >1</property>
 	//           </object>
+	// all of these are usable in RectObject
+	// all of these (except resizable string) are usable in PolyObject
 
 	static const char* OBJECT_NAME_STRING;
 	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce

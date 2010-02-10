@@ -61,7 +61,7 @@
            <object width="3.8" X="2.5" Y="0.95" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-	    <object X="0.8" width="0.4" height="0.3" Y="1.15" type="LeftRamp">
+	    <object X="0.8" width="0.4" height="0.25" Y="1.15" type="LeftRamp">
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Bounciness">0.5</property>
                 <property key="Mass">0.9</property>
@@ -80,7 +80,7 @@
                 <property key="ImageName" >styrofoam</property>
                 <property key="Bounciness">0.5</property>
             </object>
-	    <object X="3.4" width="0.4" height="0.3" Y="0.25" type="RightRamp">
+	    <object X="3.4" width="0.4" height="0.25" Y="0.25" type="RightRamp">
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.6</property>
                 <property key="Mass">0.9</property>
