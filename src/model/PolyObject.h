@@ -70,7 +70,7 @@ public:
 
 	/// parse all properties
 	/// partially overridden from BaseObject
-	virtual void  parseProperties(void);
+//	virtual void  parseProperties(void);
 
 	/// returns true if the object can be rotated by the user
 	/// FIXME/TODO: MUST BE FLEXIBLE
@@ -79,29 +79,12 @@ public:
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
-	{	return false;	}
-
-
-	/**
-	 * Set the value of theWidth
-	 * @param new_var the new value of theWidth
-	 */
-	virtual void setTheWidth ( qreal new_var );
-
-	/**
-	 * Set the value of theHeight
-	 * @param new_var the new value of theHeight
-	 */
-	virtual void setTheHeight ( qreal new_var );
+	{	return NORESIZING;	}
 
 
 	virtual DrawObject* createDrawObject();
 
 protected:
-	/// this member fixes up the physical model based on new width or height
-	/// do not override unless Klaas okays it
-	virtual void adjustParameters(void);
-
 	void setFriction(b2PolygonDef* aBoxDef);
 
 protected:

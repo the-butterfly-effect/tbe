@@ -37,7 +37,7 @@ HEADERS += src/tbe_global.h \
     src/model/Goal.h \
     src/model/Level.h \
     src/model/PivotPoint.h \
-    src/model/PolyPbject.h \
+    src/model/PolyObject.h \
     src/model/Position.h \
     src/model/PostIt.h \
     src/model/Ramp.h \
@@ -78,8 +78,8 @@ SOURCES += src/main.cpp \
     src/model/Flower.cpp \
     src/model/Goal.cpp \
     src/model/Level.cpp \
-    src/model/PolyObject.cpp \
     src/model/PivotPoint.cpp \
+    src/model/PolyObject.cpp \
     src/model/Position.cpp \
     src/model/PostIt.cpp \
     src/model/Ramp.cpp \

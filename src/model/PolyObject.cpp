@@ -16,56 +16,59 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "RectObject.h"
+#include "PolyObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "DrawObject.h"
 #include "Property.h"
 
-static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
+static const char* DEFAULT_POLYOBJECT_NAME = "PolyObject";
 
 
 //// this class' ObjectFactory
-class RectObjectFactory : public ObjectFactory
+class PolyObjectFactory : public ObjectFactory
 {
 public:
-	RectObjectFactory(void)
-	{	announceObjectType(DEFAULT_RECTOBJECT_NAME, this); }
+	PolyObjectFactory(void)
+	{	announceObjectType(DEFAULT_POLYOBJECT_NAME, this); }
 	virtual BaseObject* createObject(void) const
-	{	return new RectObject(); }
+	{	return new PolyObject(); }
 };
-static RectObjectFactory theRectObjectFactory;
+static PolyObjectFactory theRectObjectFactory;
 
 
-/** the AbstractRectObjectFactory
- *  note that it is slightly more complex than usual, because it is generalised
- *  to create any type of rectobject. Below the declaration, there will be several
+/** the AbstractPolyObjectFactory
+ *  Note that it is slightly more complex than usual, because it is generalised
+ *  to create any type of PolyObject. Below the declaration, there will be several
  *  global instances each identifying one rectobject type
  */
-class AbstractRectObjectFactory : public ObjectFactory
+class AbstractPolyObjectFactory : public ObjectFactory
 {
 public:
-	AbstractRectObjectFactory(
+	AbstractPolyObjectFactory(
 		const QString& anInternalName,
 		const QString& aDisplayName,
 		const QString& aTooltip,
 		const QString& anImageName,
+		const QString& anOutline,
 		qreal aWidth,
 		qreal aHeight,
 		qreal aMass,
 		qreal aBounciness)
 			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
-			  theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
+			  theImageName(anImageName), theOutline(anOutline),
+			  theWidth(aWidth), theHeight(aHeight),
 			  theMass(aMass), theBounciness(aBounciness)
 	{	announceObjectType(anInternalName, this); }
 
 	virtual BaseObject* createObject(void) const
-	{	return new RectObject(theDisplayName, theTooltip, theImageName,
+	{	return new PolyObject(theDisplayName, theTooltip, theImageName, theOutline,
 								theWidth, theHeight, theMass, theBounciness); }
 private:
 		QString theDisplayName;
 		QString theTooltip;
 		QString theImageName;
+		QString theOutline;
 		qreal theWidth;
 		qreal theHeight;
 		qreal theMass;
@@ -73,51 +76,47 @@ private:
 };
 
 
-static AbstractRectObjectFactory theDomRedFactory("DominoRed",
-	QObject::tr("Domino (Red)"),
-	QObject::tr("The famous plastic red domino stone"),
-	"DominoRed", 0.1, 0.5, 2.5, 0.1 );
-
-static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
-	QObject::tr("Domino (Blue)"),
-	QObject::tr("The famous plastic blue domino stone"),
-	"DominoBlue", 0.1, 0.5, 2.5, 0.1 );
-
-static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
-	QObject::tr("Domino (Green)"),
-	QObject::tr("The famous plastic green domino stone"),
-	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
+static AbstractPolyObjectFactory theNewBowlingPinFactory(
+	"BowlinPin2",
+	QObject::tr("BowlingPin2"),
+	QObject::tr("Bowling pins are meant to be run "
+				"over - and most people prefer to do that using "
+				"a Bowling Ball.""The famous plastic red domino stone"),
+	"BowlingPin",
+	"(0,0.17)=(-0.06,0)=(-0.03,-0.17)=(0.03,-0.17)=(0.06,0)",
+	0.12, 0.34, 1.5, 0.4 );
 
 
 // Constructors/Destructors
 //
 
-RectObject::RectObject ( ) : BaseObject(), theNameString(DEFAULT_RECTOBJECT_NAME)
+PolyObject::PolyObject ( ) : BaseObject(), theNameString(DEFAULT_POLYOBJECT_NAME)
 {
-	DEBUG5("RectObject::RectObject\n");
+	DEBUG5("PolyObject::PolyObject\n");
 
 	// because this object is very flexible and many parameters can be set through
 	// the Properties, do not assume too much here...
 
 	// also: keep in mind that child objects may set some things automatically
 	rotatableInfo = false;
-	resizableInfo = NORESIZING;
 }
 
-RectObject::RectObject( const QString& aDisplayName,
+PolyObject::PolyObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& aImageName,
+				const QString& anOutline,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
 	setTheWidth(aWidth);
 	setTheHeight(aHeight);
+	// TODO: do something with theOutline
 	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
 }
 
-RectObject::~RectObject ( ) { }
+PolyObject::~PolyObject ( ) { }
 
 //
 // Methods
@@ -127,72 +126,16 @@ RectObject::~RectObject ( ) { }
 // Accessor methods
 //
 
-void RectObject::setTheWidth ( qreal new_var )
-{
-	BaseObject::setTheWidth(new_var);
-	DEBUG5("RectObject::setTheWidth (%f)\n", getTheWidth());
-	adjustParameters();
-}
-
-void RectObject::setTheHeight ( qreal new_var )
-{
-	BaseObject::setTheHeight(new_var);
-	DEBUG5("RectObject::setTheHeight (%f)\n", getTheHeight());
-	adjustParameters();
-}
-
-
 // Other methods
 //
-
-void RectObject::adjustParameters(void)
-{
-
-	clearShapeList();
-
-	if (getTheWidth()/getTheHeight() > ASPECT_RATIO)
-	{
-		adjustWideParametersPart();
-	}
-	else
-	{
-		if (getTheWidth()/getTheHeight() < 1/ASPECT_RATIO)
-		{
-			adjustTallParametersPart();
-		}
-		else
-		{
-			DEBUG5("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
-			b2PolygonDef* boxDef = new b2PolygonDef();
-			boxDef->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
-
-			// get mass:  no mass -> no density -> no motion
-			float myMass;
-			if (theProps.propertyToFloat(Property::MASS_STRING, &myMass))
-				boxDef->density = myMass / getTheWidth()*getTheHeight();
-			boxDef->userData = this;
-			setFriction(boxDef);
-			theShapeList.push_back(boxDef);
-		}
-	}
-
-	// if there already is a physicsobject, it's wrong
-	if (isPhysicsObjectCreated())
-	{
-		deletePhysicsObject();
-		createPhysicsObject();
-	}
-}
-
-
 
 DrawObject*  PolyObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	adjustParameters();
 	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
 	return theDrawObjectPtr;
 }
+
 
 void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 {
