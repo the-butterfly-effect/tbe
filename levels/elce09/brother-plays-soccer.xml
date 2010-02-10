@@ -1,0 +1,70 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>My brother likes soccer</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly.</description>
+        <date>10 Feb 2010</date>
+    </levelinfo>
+     <toolbox>
+       <toolboxitem count="1" name="Soccer Ball" icon="SoccerBall">
+ 	 <object type="Soccer Ball" ID="soc"/>
+       </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5.0" height="3" />
+        <predefined>
+	    <object X="0.75" Y="1.05" width="0.345" height="1.9" type="Scenery">
+                <property key="ImageName" >brother-soccer</property>
+            </object>
+            <object width="5.0" X="2.5" Y="0.05" type="Floor" >
+                <property key="Bounciness" >0.4</property>
+                <property key="Friction" >0.2</property>
+                <property key="ImageName" >White-to-green</property>
+            </object>
+	    <object X="0.50" Y="0.65" width="0.15" height="0.84" type="RectObject" angle="-0.8">
+                <property key="ImageName" >brother-soccer-leg</property>
+		<property key="PivotPoint">(0.0,0.38)</property>
+		<property key="Mass">20.0</property>
+	    </object>
+	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+            <object width="0.4" X="4.4" Y="0.45" height="0.7" type="Scenery" >
+                <property key="ImageName" >goal-scenery</property>
+            </object>
+            <object width="0.1" X="4.6" Y="0.65" height="1.1" type="RectObject" >
+                <property key="ImageName" >Empty</property>
+                <property key="Bounciness" >0.2</property>
+            </object>
+	    
+            <object width="0.20" X="4.9" Y="0.325" height="0.55" type="RectObject" >
+                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+            </object>
+		<object X="4.9" Y="0.53" width="0.1" height="0.1" type="Flower" ID="Flower">
+                <property key="ImageName" >Empty</property>
+            </object>
+	    
+	    <object X="2.5" Y="0.54" type="Butterfly" ID="Butterfly">
+                <property key="Description" >Be careful not to hit it!</property>
+                <property key="ImageName" >Butterfly</property>
+                <property key="Mass" >0.01</property>
+            </object>
+	    
+	    
+	    
+            <object X="2.8" Y="1.4" type="PostIt">
+                <property key="page1" >This is my brother.&lt;br&gt;&lt;br&gt;He is of the sporty type.</property>
+                <property key="page2" >But he has no friends, only a bowling pin.</property>
+                <property key="page3" >He want to shoot the pin into the goal.</property>
+                <property key="page4" >Why is that butterfly there??</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... a lazy Post-It boy</property>
+	    </object>
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xover">4.2</property>
+		   <property key="object">thepin</property>
+		</goal>
+	</goals>
+</tbe-level>
