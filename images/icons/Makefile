@@ -1,8 +1,8 @@
 all:
 	cp Action*.svg ..
-	cp ToRight.svg ..
+	cp ToRight.png ..
 
 clean:
 	rm -f ../Action*.svg
-	rm -f ../ToRight.svg
+	rm -f ../ToRight.*
 

@@ -73,6 +73,9 @@ private:
 	/// the name of the object
 	QString	theName;
 
+	/// the icon of the object
+	QIcon theIcon;
+
 	/// using the BaseObjectSerializer, we can create objects from this DomNode
 	QDomNode theDomNode;
 

@@ -36,10 +36,11 @@ TBItem::TBItem(unsigned int aCount,
 				QDomNode aDomNode)
 	: theCount(aCount),
 	theName(aName),
+	theIcon(anIcon),
 	theDomNode(aDomNode),
 	theFactoryPtr(NULL)
 {
-	setIcon(anIcon);
+	// actually display the count + setIcon
 	modifyCount(0);
 }
 
@@ -55,7 +56,8 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	if (myPtr != NULL)
 	{
 		// TODO: this way of getting icon names is not foolproof, but it works (for now)
-		setIcon( ImageStore::getQIcon(myPtr->getName(), QSize(32,32)) );
+		theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+		setIcon(theIcon);
 		setText( myPtr->getName() );
 		delete myPtr;
 	}
@@ -88,7 +90,19 @@ bool TBItem::modifyCount(int delta)
 	if (theCount != INFINITE)
 		theCount += delta;
 	setText( QObject::tr("%1x %2").arg(theCount).arg(theName));
-	return theCount > 0;
+
+	if (theCount >0)
+	{
+		// (re)set original icon
+		setIcon(theIcon);
+		return false;
+	}
+	else
+	{
+		// replace icon by cross
+		setIcon(ImageStore::getQIcon("BigCross", QSize(32,32)));
+		return true;
+	}
 }
 
 
@@ -275,7 +289,6 @@ BaseObject* ToolBox::getMeACopyOf(const QString& anObjectName)
 			BaseObject* myPtr = myItem->getNewObject();
 			if (myPtr == NULL)
 				return NULL;
-			myItem->modifyCount(-1);
 			theCreationMap.insert(myPtr, myItem);
 			return myPtr;
 		}
