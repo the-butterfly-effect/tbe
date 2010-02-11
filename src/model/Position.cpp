@@ -101,6 +101,8 @@ bool Vector::fromString(QString aString)
 	isOK = true;
 
 done:
+	if (isOK==false)
+		DEBUG4("Vector.fromString(%s) failed!\n", ASCII(aString));
 	return isOK;
 }
 
