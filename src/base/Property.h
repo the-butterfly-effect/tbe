@@ -120,6 +120,9 @@ public:
 	static const char* DESCRIPTION_STRING;		// tooltip  FIXME/TODO: i18n on this
 	static const char* PIVOTPOINT_STRING;		// coordinate - where to put a pivot point to world
 
+	// this one is unique to PolyObject
+	static const char* POLYGONS_STRING;			// set(s) of coordinates
+
 	// the following strings are used within e.g. RectObject as part
 	// of the above RESIZABLE_STRING:
 

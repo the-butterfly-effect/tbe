@@ -77,12 +77,12 @@ private:
 
 
 static AbstractPolyObjectFactory theNewBowlingPinFactory(
-	"BowlinPin2",
+	"BowlingPin2",
 	QObject::tr("BowlingPin2"),
 	QObject::tr("Bowling pins are meant to be run "
 				"over - and most people prefer to do that using "
 				"a Bowling Ball.""The famous plastic red domino stone"),
-	"BowlingPin",
+	"Bowling_Pin",
 	"(0,0.17)=(-0.06,0)=(-0.03,-0.17)=(0.03,-0.17)=(0.06,0)",
 	0.12, 0.34, 1.5, 0.4 );
 
@@ -111,7 +111,7 @@ PolyObject::PolyObject( const QString& aDisplayName,
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
 	setTheWidth(aWidth);
 	setTheHeight(aHeight);
-	// TODO: do something with theOutline
+	theProps.setProperty(Property::POLYGONS_STRING, anOutline);
 	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
 }
@@ -128,6 +128,47 @@ PolyObject::~PolyObject ( ) { }
 
 // Other methods
 //
+
+void PolyObject::parseProperties(void)
+{
+
+	BaseObject::parseProperties();
+
+	clearShapeList();
+
+	QString myPolygons;
+	theProps.propertyToString(Property::POLYGONS_STRING, &myPolygons);
+	QStringList myPolygonList = myPolygons.split(";");
+
+	QStringList::iterator i = myPolygonList.begin();
+	while (i!=myPolygonList.end())
+	{
+		b2PolygonDef* myPolyDef = new b2PolygonDef();
+
+		QStringList myCoordList = (*i).split("=");
+		int j = 0;
+		myPolyDef->vertexCount = myCoordList.count();
+		for (; j<myCoordList.count(); j++)
+		{
+			assert (j < b2_maxPolygonVertices);
+			Vector myCoord;
+			assert (myCoord.fromString(myCoordList.at(j)) == true);
+			myPolyDef->vertices[j]=myCoord.toB2Vec2();
+		}
+
+		// get mass:  no mass -> no density -> no motion
+		float myMass;
+		if (theProps.propertyToFloat(Property::MASS_STRING, &myMass))
+			myPolyDef->density = myMass / getTheWidth()*getTheHeight();
+		myPolyDef->userData = this;
+		setFriction(myPolyDef);
+		theShapeList.push_back(myPolyDef);
+		++i;
+	}
+
+	createPhysicsObject();
+
+}
 
 DrawObject*  PolyObject::createDrawObject(void)
 {

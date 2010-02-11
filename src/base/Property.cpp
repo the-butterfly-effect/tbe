@@ -33,6 +33,7 @@ const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::DESCRIPTION_STRING = "Description";
 const char* Property::PIVOTPOINT_STRING  = "PivotPoint";
+const char* Property::POLYGONS_STRING    = "Polygons";
 
 const char* Property::THRUST_STRING      = "Thrust";
 

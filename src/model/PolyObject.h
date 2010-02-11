@@ -70,7 +70,7 @@ public:
 
 	/// parse all properties
 	/// partially overridden from BaseObject
-//	virtual void  parseProperties(void);
+	virtual void  parseProperties(void);
 
 	/// returns true if the object can be rotated by the user
 	/// FIXME/TODO: MUST BE FLEXIBLE
