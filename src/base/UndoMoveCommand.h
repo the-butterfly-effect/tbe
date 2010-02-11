@@ -48,8 +48,9 @@ public:
 	 * position from aBaseObjectPtr
 	 * 
 	 * @param aBaseObjectPtr pointer to a BaseObject
+	 * @param aHotSpot mouse position offset from the center of the object
 	 */
-	UndoMoveCommand (BaseObject* aBaseObjectPtr);
+	UndoMoveCommand (BaseObject* aBaseObjectPtr, const Vector& aHotSpot);
 
 	/**
 	 * Empty Destructor
@@ -75,6 +76,8 @@ public:
 	void setNewPosition(const Position& aNewPos, bool isGood)
 	{
 		theNewPosition = aNewPos;
+		theNewPosition.x -= theHotSpot.dx;
+		theNewPosition.y -= theHotSpot.dy;
 		if (isGood)
 			theLastGoodPosition = aNewPos;
 	}
@@ -90,6 +93,7 @@ private:
 	Position	theLastGoodPosition;
 	Position	theNewPosition;
 	Position	theOldPosition;
+	Vector		theHotSpot;
 };
 
 

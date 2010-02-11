@@ -24,9 +24,11 @@
 //  
 
 UndoMoveCommand::UndoMoveCommand (
-		BaseObject* aBaseObjectPtr)
+		BaseObject* aBaseObjectPtr,
+		const Vector& aHotSpot)
 		  : QUndoCommand(), 
-			theBaseObjectPtr(aBaseObjectPtr)
+			theBaseObjectPtr(aBaseObjectPtr),
+			theHotSpot(aHotSpot)
 {
 	assert(aBaseObjectPtr);
 

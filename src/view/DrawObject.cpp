@@ -228,7 +228,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
 	if (theUndoMovePtr ==NULL)
 	{
-		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr);
+		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*Vector(event->pos()));
 		if (theAnchorsPtr)
 		{
 			delete theAnchorsPtr;
