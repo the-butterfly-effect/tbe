@@ -77,8 +77,8 @@ private:
 
 
 static AbstractPolyObjectFactory theNewBowlingPinFactory(
-	"BowlingPin2",
-	QObject::tr("BowlingPin2"),
+	"Bowling Pin",
+	QObject::tr("Bowling Pin"),
 	QObject::tr("Bowling pins are meant to be run "
 				"over - and most people prefer to do that using "
 				"a Bowling Ball.""The famous plastic red domino stone"),

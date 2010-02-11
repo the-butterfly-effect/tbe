@@ -29,7 +29,6 @@ HEADERS += src/tbe_global.h \
     src/base/UndoResizeCommand.h \
     src/model/AbstractBall.h \
     src/model/BaseObject.h \
-    src/model/BowlingPin.h \
     src/model/Butterfly.h \
     src/model/CokeMentosBottle.h \
     src/model/Floor.h \
@@ -71,7 +70,6 @@ SOURCES += src/main.cpp \
     src/base/UndoResizeCommand.cpp \
     src/model/AbstractBall.cpp \
     src/model/BaseObject.cpp \
-    src/model/BowlingPin.cpp \
     src/model/Butterfly.cpp \
     src/model/CokeMentosBottle.cpp \
     src/model/Floor.cpp \
