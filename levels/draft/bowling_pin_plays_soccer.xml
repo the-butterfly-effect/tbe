@@ -42,7 +42,9 @@
             <object X="1.95" Y="0.59" width="3.7" height="0.65" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
-	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" >
+		    <property key="Mass"> 1.0</property>
+	    </object>
             <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
                 <property key="ImageName" >goal-scenery</property>
             </object>

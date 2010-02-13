@@ -1,0 +1,84 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Skyhook</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>A weight on a chain, hanging on... nothing?</description>
+        <date>Feb 13, 2010</date>
+    </levelinfo>
+    <scene>
+        <scenesize width="6.5" height="3.5" />
+        <predefined>
+            <object width="0.1" X="-0.05" Y="1.75" height="3.5" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >birch_bar</property>
+            </object>
+            <object width="0.1" X="6.45" Y="1.75" height="3.5" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >birch_bar</property>
+            </object>
+            <object width="6.4" X="3.2" Y="0.05" height="0.1" type="RectObject" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >birch_bar</property>
+            </object>
+	
+	    <object X="3.0" Y="3.3" type="PostIt" />
+            <object X="2.7" Y="3.3" width="0.20" height="0.26" type="Scenery">
+	       <property key="ImageName">skyhook</property>
+	    </object>
+            <object X="2.74" Y="2.25" width="0.10" height="2.0" type="RectObject" ID="Chain">
+	       <property key="ImageName">agone_chains</property>
+	       <property key="Mass">0.5</property>
+	       <property key="PivotPoint">(0,0.95)</property>
+	    </object>
+            <object X="2.74" Y="1.1" width="0.40" height="0.4" type="RectObject" ID="Weight">
+	       <property key="ImageName">weight</property>
+	       <property key="Mass">20</property>
+	    </object>
+
+	    <object type="PivotPoint" X="2.74" Y="1.28">
+		<property key="object1">Chain</property>
+		<property key="object2">Weight</property>
+		<property key="collide">false</property>
+	    </object>
+
+	    <object width="1.46" height="0.1" X="0.97" Y="1.4" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+            </object>
+            <object X="0.25" Y="1.55" type="Volleyball" ID="leftball"/>
+            <object X="1.6" Y="1.52" type="Coke+Mentos Bottle" angle="-1.57" />
+	    <object width="1.46" height="0.1" X="0.97" Y="1.7" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+            </object>
+
+	    <object width="1.46" height="0.1" X="4.46" Y="1.4" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+            </object>
+            <object X="5.13" Y="1.55" type="Volleyball" ID="rightball"/>
+            <object X="3.83" Y="1.52" type="Coke+Mentos Bottle" angle="1.57" />
+	    <object width="1.46" height="0.1" X="4.46" Y="1.7" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+            </object>
+
+
+
+	    <object width="2.0" height="0.1" X="4.8" Y="0.9" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Bounciness" >0.1</property>
+            </object>
+            <object X="5.6" Y="1.12" type="Coke+Mentos Bottle" angle="-1.57" />
+
+        </predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="ybelow">0.3</property>
+		   <property key="object">leftball</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="ybelow">0.3</property>
+		   <property key="object">rightball</property>
+		</goal>
+	</goals>
+</tbe-level>
