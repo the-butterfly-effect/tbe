@@ -8,7 +8,7 @@
         <date>Feb 13, 2010</date>
     </levelinfo>
     <scene>
-        <scenesize width="6.5" height="3.5" />
+        <scenesize width="6.5" height="3.7" />
         <predefined>
             <object width="0.1" X="-0.05" Y="1.75" height="3.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -23,22 +23,58 @@
                 <property key="ImageName" >birch_bar</property>
             </object>
 	
-	    <object X="3.0" Y="3.3" type="PostIt" />
-            <object X="2.7" Y="3.3" width="0.20" height="0.26" type="Scenery">
+	    <object X="3.0" Y="3.5" type="PostIt" />
+            <object X="2.7" Y="3.5" width="0.20" height="0.26" type="Scenery">
 	       <property key="ImageName">skyhook</property>
 	    </object>
-            <object X="2.74" Y="2.25" width="0.10" height="2.0" type="RectObject" ID="Chain">
+            <object X="2.74" Y="3.20" width="0.10" height="0.5" type="RectObject" ID="Chain1">
+	       <property key="ImageName">agone_chains</property>
+	       <property key="Mass">0.3</property>
+	       <property key="PivotPoint">(0,0.25)</property>
+	    </object>
+            <object X="2.74" Y="2.78" width="0.10" height="0.5" type="RectObject" ID="Chain2">
+	       <property key="ImageName">agone_chains</property>
+	       <property key="Mass">0.3</property>
+	    </object>
+	    <object type="PivotPoint" X="2.74" Y="2.98">
+		<property key="object1">Chain1</property>
+		<property key="object2">Chain2</property>
+		<property key="collide">false</property>
+	    </object>
+            <object X="2.74" Y="2.36" width="0.10" height="0.5" type="RectObject" ID="Chain3">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
-	       <property key="PivotPoint">(0,0.95)</property>
 	    </object>
-            <object X="2.74" Y="1.1" width="0.40" height="0.4" type="RectObject" ID="Weight">
+	    <object type="PivotPoint" X="2.74" Y="2.56">
+		<property key="object1">Chain2</property>
+		<property key="object2">Chain3</property>
+		<property key="collide">false</property>
+	    </object>
+            <object X="2.74" Y="1.94" width="0.10" height="0.5" type="RectObject" ID="Chain4">
+	       <property key="ImageName">agone_chains</property>
+	       <property key="Mass">0.5</property>
+	    </object>
+	    <object type="PivotPoint" X="2.74" Y="2.14">
+		<property key="object1">Chain3</property>
+		<property key="object2">Chain4</property>
+		<property key="collide">false</property>
+	    </object>
+            <object X="2.74" Y="1.52" width="0.10" height="0.5" type="RectObject" ID="Chain5">
+	       <property key="ImageName">agone_chains</property>
+	       <property key="Mass">0.5</property>
+	    </object>
+	    <object type="PivotPoint" X="2.74" Y="1.72">
+		<property key="object1">Chain4</property>
+		<property key="object2">Chain5</property>
+		<property key="collide">false</property>
+	    </object>
+            <object X="2.74" Y="1.16" width="0.40" height="0.4" type="RectObject" ID="Weight">
 	       <property key="ImageName">weight</property>
 	       <property key="Mass">20</property>
 	    </object>
 
-	    <object type="PivotPoint" X="2.74" Y="1.28">
-		<property key="object1">Chain</property>
+	    <object type="PivotPoint" X="2.74" Y="1.30">
+		<property key="object1">Chain5</property>
 		<property key="object2">Weight</property>
 		<property key="collide">false</property>
 	    </object>
