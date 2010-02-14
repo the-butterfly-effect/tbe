@@ -32,7 +32,6 @@ HEADERS += src/tbe_global.h \
     src/model/Butterfly.h \
     src/model/CokeMentosBottle.h \
     src/model/Floor.h \
-    src/model/Flower.h \
     src/model/Goal.h \
     src/model/Level.h \
     src/model/PivotPoint.h \
@@ -73,7 +72,6 @@ SOURCES += src/main.cpp \
     src/model/Butterfly.cpp \
     src/model/CokeMentosBottle.cpp \
     src/model/Floor.cpp \
-    src/model/Flower.cpp \
     src/model/Goal.cpp \
     src/model/Level.cpp \
     src/model/PivotPoint.cpp \

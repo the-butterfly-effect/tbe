@@ -15,7 +15,7 @@
             <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-			<object X="1.95" Y="0.63" width="0.2" height="0.2" type="Flower" ID="Flower">
+            <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="0.6" X="1.5" Y="1.2" height="0.6" type="RectObject" >
@@ -30,6 +30,7 @@
 			<object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
 				<property key="Description" >This is the butterfly.</property>
                 <property key="ImageName" >Butterfly</property>
+                <property key="object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
             <object X="2.1" Y="1.5" type="PostIt">

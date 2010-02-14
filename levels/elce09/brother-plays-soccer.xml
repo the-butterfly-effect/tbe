@@ -40,13 +40,13 @@
             <object width="0.20" X="4.9" Y="0.325" height="0.55" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-		<object X="4.9" Y="0.53" width="0.1" height="0.1" type="Flower" ID="Flower">
+		<object X="4.9" Y="0.53" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
 	    
 	    <object X="2.5" Y="0.54" type="Butterfly" ID="Butterfly">
                 <property key="Description" >Be careful not to hit it!</property>
-                <property key="ImageName" >Butterfly</property>
+                <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
 	    
