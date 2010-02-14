@@ -24,7 +24,8 @@
 
 // forward declarations
 class Vector;
-
+class World;
+class BaseObject;
 
 class PropertyList
 {
@@ -68,6 +69,17 @@ public:
 	  * @returns true if success. if no success aFloat is unchanged
 	  */
 	bool propertyToFloat(const QString& aPropertyName, float* aFloat) const;
+
+	/** returns true if property aPropertyName exists *and*
+	  * its value is the ID of an existing BaseObject instance
+	  * @param aWorldPtr
+	  * @param aPropertyName
+	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject
+	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
+	  */
+	bool propertyToObjectPtr(World* aWorldPtr,
+							 const QString& aPropertyName,
+							 BaseObject** aBOPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a position (x,y)

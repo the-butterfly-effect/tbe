@@ -50,17 +50,6 @@ public:
 	virtual bool parseProperties(World* aWorldPtr) = 0;
 
 protected:
-	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing BaseObject instance
-	  * @param aWorldPtr
-	  * @param aPropertyName
-	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject
-	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
-	  */
-	bool propertyToObjectPtr(World* aWorldPtr,
-							 const QString& aPropertyName,
-							 BaseObject** aBOPtrPtr);
-
 	PropertyList theProps;
 	friend class GoalSerializer;
 };

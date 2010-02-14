@@ -33,20 +33,6 @@ Goal::~Goal()
 	// nothing to do here
 }
 
-bool Goal::propertyToObjectPtr(
-		World* aWPtr,
-		const QString& aPropertyName,
-		BaseObject** aBOPtrPtr)
-{
-	QString myValue = theProps.getProperty(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
-	if (*aBOPtrPtr == NULL)
-		return false;
-	return true;
-}
-
 
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// GoalDistance //////////////////////////////////
@@ -116,12 +102,12 @@ bool GoalDistance::parseProperties(World* aWPtr)
 
 
 	// parse object1 and object2
-	if (propertyToObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
+	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT1_STRING);
 		return false;
 	}
-	if (propertyToObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
+	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT2_STRING);
 		return false;
@@ -237,7 +223,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	}
 
 	// parse object
-	if (propertyToObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
+	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
 		return false;

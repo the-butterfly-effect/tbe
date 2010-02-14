@@ -18,6 +18,8 @@
 
 #include "Position.h"
 #include "Property.h"
+#include "BaseObject.h"
+#include "World.h"
 #include <QStringList>
 
 #include "tbe_global.h"
@@ -104,6 +106,21 @@ bool PropertyList::propertyToFloat(const QString& aPropertyName,
 		return false;
 
 	*aFloat = myFloat;
+	return true;
+}
+
+
+bool PropertyList::propertyToObjectPtr(
+		World* aWPtr,
+		const QString& aPropertyName,
+		BaseObject** aBOPtrPtr)
+{
+	QString myValue = getProperty(aPropertyName);
+	if (myValue.isEmpty())
+		return false;
+	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
+	if (*aBOPtrPtr == NULL)
+		return false;
 	return true;
 }
 
