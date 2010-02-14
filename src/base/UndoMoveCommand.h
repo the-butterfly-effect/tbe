@@ -79,7 +79,7 @@ public:
 		theNewPosition.x -= theHotSpot.dx;
 		theNewPosition.y -= theHotSpot.dy;
 		if (isGood)
-			theLastGoodPosition = aNewPos;
+			theLastGoodPosition = theNewPosition;
 	}
 
 	bool hasMoved(void)
