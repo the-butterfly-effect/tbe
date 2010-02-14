@@ -7,8 +7,21 @@
         <description>A weight on a chain, hanging on... nothing?</description>
         <date>Feb 13, 2010</date>
     </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Coke+Mentos Bottle" icon="CokeMentosBottle">
+            <object type="Coke+Mentos Bottle"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Left Ramp" icon="styrofoam-left">
+	    <object height="0.4" Y="1.05" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.3</property>
+                <property key="Mass">0.3</property>
+	    </object>
+        </toolboxitem>
+    </toolbox>
     <scene>
         <scenesize width="6.5" height="3.7" />
+	    
         <predefined>
             <object width="0.1" X="-0.05" Y="1.75" height="3.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -23,7 +36,14 @@
                 <property key="ImageName" >birch_bar</property>
             </object>
 	
-	    <object X="3.0" Y="3.5" type="PostIt" />
+	    <object X="3.0" Y="3.5" type="PostIt">
+                <property key="page1" >Look, that's a skyhook.&lt;br&gt;&lt;br&gt;A pretty nifty invention, if I may say so.</property>
+                <property key="page2" >Just hook it up in the air&lt;br&gt;and it stays there.</property>
+                <property key="page3" >And you can hang a lot of weight on it, too!</property>
+                <property key="page4" >Don't tell anyone about it, I still need to file a patent!</property>
+                <property key="page5" >Have you read Focault's Pendulum?</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+	    </object>
             <object X="2.7" Y="3.5" width="0.20" height="0.26" type="Scenery">
 	       <property key="ImageName">skyhook</property>
 	    </object>
@@ -70,7 +90,7 @@
 	    </object>
             <object X="2.74" Y="1.16" width="0.40" height="0.4" type="RectObject" ID="Weight">
 	       <property key="ImageName">weight</property>
-	       <property key="Mass">20</property>
+	       <property key="Mass">10</property>
 	    </object>
 
 	    <object type="PivotPoint" X="2.74" Y="1.30">
@@ -79,42 +99,74 @@
 		<property key="collide">false</property>
 	    </object>
 
+
+
 	    <object width="1.46" height="0.1" X="0.97" Y="1.4" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
             </object>
             <object X="0.25" Y="1.55" type="Volleyball" ID="leftball"/>
             <object X="1.6" Y="1.52" type="Coke+Mentos Bottle" angle="-1.57" />
-	    <object width="1.46" height="0.1" X="0.97" Y="1.7" type="RectObject">
+	    <object width="1.7" height="0.1" X="0.85" Y="1.74" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
             </object>
 
-	    <object width="1.46" height="0.1" X="4.46" Y="1.4" type="RectObject">
+	    <object width="2.38" height="0.1" X="4.97" Y="1.4" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
             </object>
             <object X="5.13" Y="1.55" type="Volleyball" ID="rightball"/>
-            <object X="3.83" Y="1.52" type="Coke+Mentos Bottle" angle="1.57" />
-	    <object width="1.46" height="0.1" X="4.46" Y="1.7" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
-            </object>
-
-
-
-	    <object width="2.0" height="0.1" X="4.8" Y="0.9" type="RectObject">
+            <object X="3.82" Y="1.52" type="Coke+Mentos Bottle" angle="1.57" />
+	    <object width="2.6" height="0.1" X="5.1" Y="1.74" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object X="5.6" Y="1.12" type="Coke+Mentos Bottle" angle="-1.57" />
+
+
+
+            <object X="2.24" Y="0.27" type="Bowling Pin" ID="Left-Pin"/>
+            <object X="3.24" Y="0.27" type="Bowling Pin" ID="Right-Pin"/>
+	    <object X="2.65" width="0.2" height="0.6" Y="0.4" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.3</property>
+	    </object>
+	    <object X="2.85" width="0.2" height="0.6" Y="0.4" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+
+	    <object width="2.08" height="0.1" X="2.74" Y="0.7" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Bounciness" >0.1</property>
+            </object>
+	    <object width="0.1" height="0.7" X="1.65" Y="1.0" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Bounciness" >0.1</property>
+            </object>
+	    <object width="0.1" height="0.7" X="3.83" Y="1.0" type="RectObject">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Bounciness" >0.1</property>
+            </object>
+
+	    <object X="0.2" width="0.4" height="0.4" Y="0.3" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+
+	    <object X="6.2" width="0.4" height="0.4" Y="0.3" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.3</property>
+	    </object>
 
         </predefined>
     </scene>
 	<goals>
 		<goal type="positionchange">
-		   <property key="ybelow">0.3</property>
-		   <property key="object">leftball</property>
+		   <property key="anglechanged"></property>
+		   <property key="object">Left-Pin</property>
 		</goal>
 		<goal type="positionchange">
-		   <property key="ybelow">0.3</property>
-		   <property key="object">rightball</property>
+		   <property key="anglechanged"></property>
+		   <property key="object">Right-Pin</property>
 		</goal>
 	</goals>
 </tbe-level>
+ 
