@@ -48,6 +48,10 @@
             <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
                 <property key="ImageName" >goal-scenery</property>
             </object>
+	    <object X="4.42" width="0.15" height="0.7" Y="0.45" type="RightRamp" angle="3.14">
+                <property key="ImageName">Empty</property>
+	    </object>
+
             <object width="4.5" X="2.25" Y="0.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
