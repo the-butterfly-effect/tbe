@@ -76,9 +76,6 @@ public:
 	 */
 	virtual void setTheHeight ( qreal new_var );
 	
-	/// overridden from RectObject
-	virtual DrawObject* createDrawObject();
-	
 protected:
 	/// this member fixes up the physical model based on new width or height
 	void adjustParameters(void);

@@ -82,8 +82,6 @@ public:
 	{	return NORESIZING;	}
 
 
-	virtual DrawObject* createDrawObject();
-
 protected:
 	void setFriction(b2PolygonDef* aBoxDef);
 

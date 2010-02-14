@@ -135,11 +135,3 @@ void RightRamp::adjustParameters(void)
 		createPhysicsObject();
 	}
 }
-
-DrawObject*  RightRamp::createDrawObject(void)
-{
-	assert(theDrawObjectPtr==NULL);
-	adjustParameters();
-	theDrawObjectPtr = new DrawRamp(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
-	return theDrawObjectPtr;
-}

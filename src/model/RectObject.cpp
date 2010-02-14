@@ -266,10 +266,8 @@ void RectObject::adjustWideParametersPart(void)
 
 DrawObject*  RectObject::createDrawObject(void)
 {
-	assert(theDrawObjectPtr==NULL);
 	adjustParameters();
-	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
-	return theDrawObjectPtr;
+	return BaseObject::createDrawObject();
 }
 
 void  RectObject::setFriction(b2PolygonDef* aBoxDef)

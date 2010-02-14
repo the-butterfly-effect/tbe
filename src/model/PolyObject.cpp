@@ -170,14 +170,6 @@ void PolyObject::parseProperties(void)
 
 }
 
-DrawObject*  PolyObject::createDrawObject(void)
-{
-	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
-	return theDrawObjectPtr;
-}
-
-
 void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 {
 	// only set friction if it is special

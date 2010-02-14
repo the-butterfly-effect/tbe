@@ -123,7 +123,8 @@ void BaseObject::clearShapeList()
 DrawObject*  BaseObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this);
+	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr->setZValue(10.0);
 	return theDrawObjectPtr;
 }
 
