@@ -17,7 +17,6 @@
  */
 
 #include "Butterfly.h"
-#include "Flower.h"
 #include "DrawButterfly.h"
 #include "tbe_global.h"
 #include "Box2D.h"
@@ -133,7 +132,7 @@ void Butterfly::goToFlower(void)
 	if (theProps.propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &myFlowerPtr)==false)
 		theTargetPos = getOrigCenter();
 	else
-		theTargetPos = reinterpret_cast<Flower*>(myFlowerPtr)->getOrigCenter();
+		theTargetPos = myFlowerPtr->getOrigCenter();
 }
 
 
