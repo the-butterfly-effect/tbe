@@ -26,27 +26,38 @@ Dubbelklik op de post-it briefjes voor hulp.</translation>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="45"/>
         <source>Level Title</source>
-        <translation type="unfinished">Level titel</translation>
+        <translatorcomment>ik heb de hoofdletter maar overgenomen...</translatorcomment>
+        <translation>Level Titel</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="79"/>
         <source>Level parser:
 Cannot read the level descriptions in &apos;%1&apos;:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Level parser: Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege &apos;%2&apos;.</translation>
     </message>
+</context>
+<context>
+    <name>ChooseLevel::LevelList</name>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="155"/>
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>LevelList:\nInleesfout in regel %1, kolom %2:\n%3</translation>
     </message>
 </context>
 <context>
     <name>DrawNoteIt</name>
     <message>
-        <location filename="../src/view/DrawNoteIt.cpp" line="138"/>
+        <source>Finish</source>
+        <translation type="obsolete">Klaar</translation>
+    </message>
+</context>
+<context>
+    <name>DrawPostIt</name>
+    <message>
+        <location filename="../src/view/DrawPostIt.cpp" line="138"/>
         <source>Finish</source>
         <translation>Klaar</translation>
     </message>
@@ -58,17 +69,17 @@ Parse error at line %1, column %2:
         <translation type="obsolete">Je kunt nu niets wijzigen. Je moet eerst de stopwatch resetten.</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="205"/>
+        <location filename="../src/view/DrawWorld.cpp" line="210"/>
         <source>You cannot make changes now. You need to reset the stopwatch first.</source>
         <translation>Je kunt nu niets wijzigen. Je moet eerst de stopwatch resetten.</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="216"/>
+        <location filename="../src/view/DrawWorld.cpp" line="221"/>
         <source>Death!!!</source>
         <translation>Dood!!!</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="251"/>
+        <location filename="../src/view/DrawWorld.cpp" line="256"/>
         <source>Congratulations</source>
         <translation>Gefeliciteerd</translation>
     </message>
@@ -96,7 +107,7 @@ Parse error at line %1, column %2:
         <location filename="../src/model/Level.cpp" line="173"/>
         <location filename="../src/model/Level.cpp" line="187"/>
         <location filename="../src/model/Level.cpp" line="191"/>
-        <location filename="../src/model/Level.cpp" line="226"/>
+        <location filename="../src/model/Level.cpp" line="227"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation>Inlezen van paragraaf &apos;%1&apos; is mislukt: </translation>
     </message>
@@ -111,28 +122,28 @@ Parse error at line %1, column %2:
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="205"/>
-        <location filename="../src/model/Level.cpp" line="249"/>
+        <location filename="../src/model/Level.cpp" line="250"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="212"/>
-        <location filename="../src/model/Level.cpp" line="256"/>
+        <location filename="../src/model/Level.cpp" line="257"/>
         <source>createObjectFromDom failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="230"/>
+        <location filename="../src/model/Level.cpp" line="231"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="261"/>
+        <location filename="../src/model/Level.cpp" line="262"/>
         <source>&lt;%1&gt; properties could not be parsed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="334"/>
+        <location filename="../src/model/Level.cpp" line="335"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -166,7 +177,7 @@ Parse error at line %1, column %2:
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="100"/>
-        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2</source>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -379,28 +390,12 @@ Once the simulation has run and is stopped, you can reset the simulation using t
 <context>
     <name>NoteItViewer</name>
     <message>
-        <location filename="../src/view/NoteItViewer.ui" line="90"/>
-        <source>Note-It viewer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/NoteItViewer.ui" line="96"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;This is not empty...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/NoteItViewer.ui" line="142"/>
         <source>Next&gt;</source>
-        <translation>Volgende&gt;</translation>
+        <translation type="obsolete">Volgende&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/NoteItViewer.ui" line="149"/>
         <source>Cancel</source>
-        <translation>Afbreken</translation>
+        <translation type="obsolete">Afbreken</translation>
     </message>
 </context>
 <context>
@@ -450,6 +445,33 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>PostItViewer</name>
+    <message>
+        <location filename="../src/view/PostItViewer.ui" line="90"/>
+        <source>Post-It viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/PostItViewer.ui" line="96"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;This is not empty...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/PostItViewer.ui" line="142"/>
+        <source>Next&gt;</source>
+        <translation type="unfinished">Volgende&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/view/PostItViewer.ui" line="149"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Afbreken</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="62"/>
@@ -474,31 +496,51 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="77"/>
         <source>Tennis Ball</source>
-        <translation type="unfinished"></translation>
+        <translation>Tennisbal</translation>
     </message>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="78"/>
         <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een tennisbal is klein, pluizig en kan alle hoofden ritmisch laten draaien.</translation>
     </message>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="86"/>
         <source>A football (of the spherical persuasion).</source>
-        <translation type="unfinished"></translation>
+        <translation>Een voetbal (rond, niet de Amerikaanse variant).</translation>
     </message>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="85"/>
         <source>Soccer Ball</source>
-        <translation type="unfinished"></translation>
+        <translation>Voetbal</translation>
     </message>
     <message>
-        <location filename="../src/model/BowlingPin.h" line="57"/>
+        <location filename="../src/model/PolyObject.cpp" line="81"/>
         <source>Bowling Pin</source>
+        <translation>Kegel</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="82"/>
+        <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.The famous plastic red domino stone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BowlingPin.h" line="63"/>
-        <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
+        <location filename="../src/model/PolyObject.cpp" line="91"/>
+        <source>Skyhook</source>
+        <translation>Hemelhaakje</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="92"/>
+        <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="101"/>
+        <source>Weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="102"/>
+        <source>A serious mass. As heavy as it looks!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -523,12 +565,12 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/NoteIt.h" line="43"/>
-        <source>NoteIt</source>
+        <location filename="../src/model/PostIt.h" line="43"/>
+        <source>PostIt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/NoteIt.h" line="49"/>
+        <location filename="../src/model/PostIt.h" line="49"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
@@ -545,12 +587,12 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Ramp.h" line="110"/>
+        <location filename="../src/model/Ramp.h" line="107"/>
         <source>LeftRamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Ramp.h" line="116"/>
+        <location filename="../src/model/Ramp.h" line="113"/>
         <source>This is a ramp. The right is higher than the left, so things slide to the left.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -569,23 +611,73 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Flower.h" line="55"/>
-        <source>Flower</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Flower.h" line="61"/>
-        <source>This is a Flower. Flowers attract Butterflies.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/Scenery.h" line="43"/>
         <source>Scenery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/toolbox.cpp" line="91"/>
+        <location filename="../src/view/toolbox.cpp" line="92"/>
         <source>%1x %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoDeleteCommand.cpp" line="37"/>
+        <source>Delete %1</source>
+        <translation type="unfinished">Verwijder %1</translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoInsertCommand.cpp" line="33"/>
+        <source>Insert %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoMoveCommand.cpp" line="35"/>
+        <source>Move %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoResizeCommand.cpp" line="39"/>
+        <source>Resize %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PivotPoint.h" line="58"/>
+        <source>PivotPoint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PivotPoint.h" line="72"/>
+        <source>Objects rotate around this point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="77"/>
+        <source>Domino (Red)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="78"/>
+        <source>The famous plastic red domino stone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="82"/>
+        <source>Domino (Blue)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="83"/>
+        <source>The famous plastic blue domino stone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="87"/>
+        <source>Domino (Green)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="88"/>
+        <source>The famous plastic green domino stone</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
