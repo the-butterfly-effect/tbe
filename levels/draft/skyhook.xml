@@ -44,58 +44,58 @@
                 <property key="page5" >Have you read Focault's Pendulum?</property>
                 <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
 	    </object>
-            <object X="2.7" Y="3.5" width="0.20" height="0.26" type="Scenery">
+            <object X="2.72" Y="3.5" width="0.20" height="0.23" type="Scenery">
 	       <property key="ImageName">skyhook</property>
 	    </object>
-            <object X="2.74" Y="3.20" width="0.10" height="0.5" type="RectObject" ID="Chain1">
+            <object X="2.74" Y="3.22" width="0.10" height="0.46" type="RectObject" ID="Chain1">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
 	       <property key="PivotPoint">(0,0.25)</property>
 	    </object>
-            <object X="2.74" Y="2.78" width="0.10" height="0.5" type="RectObject" ID="Chain2">
+            <object X="2.74" Y="2.82" width="0.10" height="0.46" type="RectObject" ID="Chain2">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="2.98">
+	    <object type="PivotPoint" X="2.74" Y="3.02">
 		<property key="object1">Chain1</property>
 		<property key="object2">Chain2</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="2.36" width="0.10" height="0.5" type="RectObject" ID="Chain3">
+            <object X="2.74" Y="2.42" width="0.10" height="0.46" type="RectObject" ID="Chain3">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="2.56">
+	    <object type="PivotPoint" X="2.74" Y="2.62">
 		<property key="object1">Chain2</property>
 		<property key="object2">Chain3</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.94" width="0.10" height="0.5" type="RectObject" ID="Chain4">
+            <object X="2.74" Y="2.02" width="0.10" height="0.46" type="RectObject" ID="Chain4">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="2.14">
+	    <object type="PivotPoint" X="2.74" Y="2.22">
 		<property key="object1">Chain3</property>
 		<property key="object2">Chain4</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.52" width="0.10" height="0.5" type="RectObject" ID="Chain5">
+            <object X="2.74" Y="1.62" width="0.10" height="0.46" type="RectObject" ID="Chain5">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="1.72">
+	    <object type="PivotPoint" X="2.74" Y="1.82">
 		<property key="object1">Chain4</property>
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.16" width="0.40" height="0.40" type="PolyObject" ID="Weight">
+            <object X="2.74" Y="1.26" width="0.40" height="0.40" type="PolyObject" ID="Weight">
 	       <property key="Polygons">(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)</property>
 	       <property key="ImageName">weight</property>
 	       <property key="Mass">10</property>
 	       <property key="Bounciness">0.3</property>
 	    </object>
 
-	    <object type="PivotPoint" X="2.74" Y="1.30">
+	    <object type="PivotPoint" X="2.74" Y="1.42">
 		<property key="object1">Chain5</property>
 		<property key="object2">Weight</property>
 		<property key="collide">false</property>
@@ -107,7 +107,7 @@
                 <property key="ImageName" >birch_bar</property>
             </object>
             <object X="0.25" Y="1.55" type="Volleyball" ID="leftball"/>
-            <object X="1.6" Y="1.52" type="Coke+Mentos Bottle" angle="-1.57" />
+            <object X="1.64" Y="1.52" type="Coke+Mentos Bottle" angle="-1.57" />
 	    <object width="1.7" height="0.1" X="0.85" Y="1.74" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
             </object>
