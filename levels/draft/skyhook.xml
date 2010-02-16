@@ -44,13 +44,17 @@
                 <property key="page5" >Have you read Focault's Pendulum?</property>
                 <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
 	    </object>
-            <object X="2.72" Y="3.5" width="0.20" height="0.23" type="Scenery">
-	       <property key="ImageName">skyhook</property>
-	    </object>
+	    
+            <object X="2.72" Y="3.5" type="Skyhook" ID="Skyhook"/>
+	    
             <object X="2.74" Y="3.22" width="0.10" height="0.46" type="RectObject" ID="Chain1">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
-	       <property key="PivotPoint">(0,0.25)</property>
+	    </object>
+	    <object type="PivotPoint" X="2.74" Y="3.42">
+		<property key="object1">Skyhook</property>
+		<property key="object2">Chain1</property>
+		<property key="collide">false</property>
 	    </object>
             <object X="2.74" Y="2.82" width="0.10" height="0.46" type="RectObject" ID="Chain2">
 	       <property key="ImageName">agone_chains</property>
@@ -88,12 +92,7 @@
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.26" width="0.40" height="0.40" type="PolyObject" ID="Weight">
-	       <property key="Polygons">(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)</property>
-	       <property key="ImageName">weight</property>
-	       <property key="Mass">10</property>
-	       <property key="Bounciness">0.3</property>
-	    </object>
+            <object X="2.74" Y="1.26" type="Weight" ID="Weight" />
 
 	    <object type="PivotPoint" X="2.74" Y="1.42">
 		<property key="object1">Chain5</property>

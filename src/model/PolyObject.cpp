@@ -76,7 +76,7 @@ private:
 };
 
 
-static AbstractPolyObjectFactory theNewBowlingPinFactory(
+static AbstractPolyObjectFactory theBowlingPinFactory(
 	"Bowling Pin",
 	QObject::tr("Bowling Pin"),
 	QObject::tr("Bowling pins are meant to be run "
@@ -86,6 +86,23 @@ static AbstractPolyObjectFactory theNewBowlingPinFactory(
 	"(0,0.17)=(-0.06,0)=(-0.03,-0.17)=(0.03,-0.17)=(0.06,0)",
 	0.12, 0.34, 1.5, 0.4 );
 
+static AbstractPolyObjectFactory theSkyhookFactory(
+	"Skyhook",
+	QObject::tr("Skyhook"),
+	QObject::tr("A skyhook just hangs in the air. And you can hang a"
+				" lot of weight on it!"),
+	"Skyhook",
+	"(-0.03,-0.07)=(0.01,-0.11)=(0.05,-0.11)=(0.1,-0.05)=(0.1,-0.02)"
+	"=(0.08,0.00)=(-0.02,-0.03)",
+	0.20, 0.23, 0.0, 0.4 );
+
+static AbstractPolyObjectFactory theWeightFactory(
+	"Weight",
+	QObject::tr("Weight"),
+	QObject::tr("A serious mass. As heavy as it looks!"),
+	"Weight",
+	"(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)",
+	0.40, 0.40, 10.0, 0.3 );
 
 // Constructors/Destructors
 //
