@@ -88,9 +88,11 @@
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.16" width="0.40" height="0.4" type="RectObject" ID="Weight">
+            <object X="2.74" Y="1.16" width="0.40" height="0.40" type="PolyObject" ID="Weight">
+	       <property key="Polygons">(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)</property>
 	       <property key="ImageName">weight</property>
 	       <property key="Mass">10</property>
+	       <property key="Bounciness">0.3</property>
 	    </object>
 
 	    <object type="PivotPoint" X="2.74" Y="1.30">
