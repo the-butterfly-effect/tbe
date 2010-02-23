@@ -1,0 +1,75 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>PolyObject test Level...</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>This is just a level to prove PolyObject correct operation. It will only make sense if you enable debug drawing.</description>
+        <date>Feb 12, 2010</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+	    <object type="Bowling Ball"/>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.0" height="2.5" />
+        <predefined>
+            <object width="4.0" X="2.0" Y="0.05" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            
+            <object width="0.203" height="0.385" X="2.75" Y="0.5" type="RectObject">
+                <property key="ImageName">leftfoot</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+            
+            <object width="0.203" height="0.385" X="3.08" Y="0.5" type="RectObject">
+                <property key="ImageName">rightfoot</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+            
+            <object width="0.211" height="0.451" X="2.80" Y="0.8" type="RectObject">
+                <property key="ImageName">leftleg</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+            
+            <object width="0.211" height="0.451" X="3.03" Y="0.8" type="RectObject">
+                <property key="ImageName">rightleg</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+            
+            <object width="0.404" height="0.976" X="2.91" Y="1.32" type="RectObject">
+                <property key="ImageName">body</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+
+            <object width="0.602" height="0.224" X="2.58" Y="1.4" type="RectObject">
+                <property key="ImageName">lefthand</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+            
+            <object width="0.602" height="0.224" X="3.23" Y="1.4" type="RectObject">
+                <property key="ImageName">righthand</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+            </object>
+
+
+	    <object X="3.65" Y="0.3" type="Bowling Pin" ID="pin"/>
+
+</predefined>
+    </scene>
+	<goals>
+		<goal type="positionchange">
+		   <property key="xbelow">1.0</property>
+		   <property key="object">pin</property>
+		</goal>
+	</goals>
+</tbe-level>
