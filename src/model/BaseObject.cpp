@@ -135,7 +135,7 @@ void BaseObject::createPhysicsObject()
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(theCenter.x, theCenter.y);
 	theB2BodyDefPtr->angle = theCenter.angle;
-	// do not set mass properties here - that will be done in MovableObject
+	// do not set mass properties here - that will be done in derived classes
 	// (and as such is done already when we get here)
 	
 	// then create the body
