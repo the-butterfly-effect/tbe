@@ -4,7 +4,12 @@
         <title>Party at the office</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Jumping Jack celebrates a party at the office. Isn't that fun?</description>
+        <description>Jumping Jack celebrates a party at the office. Isn't that fun?
+        
+        This level cannot be completed without the "Rope" class, which is defined in
+        TRAC ticket 16 - https://sourceforge.net/apps/trac/tbe/ticket/16
+        
+        </description>
         <date>Feb 28, 2010</date>
     </levelinfo>
      <toolbox>
