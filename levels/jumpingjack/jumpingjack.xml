@@ -1,11 +1,11 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>PolyObject test Level...</title>
+        <title>Party at the office</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>This is just a level to prove PolyObject correct operation. It will only make sense if you enable debug drawing.</description>
-        <date>Feb 12, 2010</date>
+        <description>Jumping Jack celebrates a party at the office. Isn't that fun?</description>
+        <date>Feb 28, 2010</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
@@ -20,45 +20,56 @@
                 <property key="Bounciness">0.1</property>
             </object>
             
-            <object width="0.203" height="0.385" X="2.75" Y="0.5" type="RectObject">
+            <object width="0.203" height="0.385" X="2.75" Y="0.7" type="RectObject" ID="leftfoot">
                 <property key="ImageName">leftfoot</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
             </object>
-            
-            <object width="0.203" height="0.385" X="3.08" Y="0.5" type="RectObject">
+            <object width="0.211" height="0.451" X="2.80" Y="1.0" type="RectObject" ID="leftleg">
+                <property key="ImageName">leftleg</property>
+                <property key="Bounciness">0.1</property>
+		<property key="Mass">1.0</property>
+		<property key="PivotPoint">(-0.005,0.125)</property>
+            </object>
+	    <object type="PivotPoint" X="2.787" Y="0.846">
+		  <property key="object1">leftfoot</property>
+		  <property key="object2">leftleg</property>
+		  <property key="collide">false</property>
+	    </object>
+	    
+            <object width="0.203" height="0.385" X="3.08" Y="0.7" type="RectObject" ID="rightfoot">
                 <property key="ImageName">rightfoot</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
             </object>
-            
-            <object width="0.211" height="0.451" X="2.80" Y="0.8" type="RectObject">
-                <property key="ImageName">leftleg</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
-            </object>
-            
-            <object width="0.211" height="0.451" X="3.03" Y="0.8" type="RectObject">
+            <object width="0.211" height="0.451" X="3.03" Y="1.0" type="RectObject" ID="rightleg">
                 <property key="ImageName">rightleg</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
+		<property key="PivotPoint">(0.005,0.125)</property>
             </object>
+	    <object type="PivotPoint" X="3.043" Y="0.846">
+		  <property key="object1">rightfoot</property>
+		  <property key="object2">rightleg</property>
+		  <property key="collide">false</property>
+	    </object>
             
-            <object width="0.404" height="0.976" X="2.91" Y="1.32" type="RectObject">
+            <object width="0.404" height="0.976" X="2.91" Y="1.52" type="Scenery">
                 <property key="ImageName">body</property>
-                <property key="Bounciness">0.1</property>
             </object>
 
-            <object width="0.602" height="0.224" X="2.58" Y="1.4" type="RectObject">
+            <object width="0.602" height="0.224" X="2.58" Y="1.6" type="RectObject">
                 <property key="ImageName">lefthand</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
+		<property key="PivotPoint">(0.208,0.036)</property>
             </object>
             
-            <object width="0.602" height="0.224" X="3.23" Y="1.4" type="RectObject">
+            <object width="0.602" height="0.224" X="3.23" Y="1.61" type="RectObject">
                 <property key="ImageName">righthand</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
+		<property key="PivotPoint">(-0.208,0.036)</property>
             </object>
 
 
