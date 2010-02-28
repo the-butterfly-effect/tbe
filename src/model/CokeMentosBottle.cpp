@@ -260,6 +260,18 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	theCokeAmount -= mySplatterMass;
 	updateMass();
 
+	// Small HACK :-)
+	// if we're out-of-bounds, let's misuse the thrust to limit the velocity...
+	// this will have two effects:
+	//   1) the last splatter (giving impulse to a nearly-empty bottle) won't work
+	//   2) and using thrust in the wrong direction actually limits speed!
+	if (myStartPos.x > 1.4*theWorldPtr->getTheWorldWidth() ||
+		myStartPos.y > 1.4*theWorldPtr->getTheWorldHeight())
+	{
+		if (theThrust>0)
+			theThrust = - 0.7;
+	}
+
 	// and don't forget Newton's action = -reaction !!!
 	qreal myImpulse = mySplatterMass*myV;
 	// HACK HACK HACK: to improve the "feeling", we help the impulse a bit here...
