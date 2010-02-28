@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>My brother likes soccer</title>
+        <title lang="nl">Mijn broer houdt van voetbal</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly.</description>
+        <description lang="nl">Voetbal gaat over scoren. Schop die kegel de goal in, maar raak de vlinder niet.</description>
         <date>10 Feb 2010</date>
     </levelinfo>
      <toolbox>
@@ -58,6 +60,11 @@
                 <property key="page3" >He want to shoot the pin into the goal.</property>
                 <property key="page4" >Why is that butterfly there??</property>
                 <property key="page5" >&lt;br&gt;&lt;br&gt; ... a lazy Post-It boy</property>
+                 <property key="page1_nl" >Dit is mijn broer.&lt;br&gt;&lt;br&gt;Hij is duidelijk sportiever dan ik.</property>
+                 <property key="page2_nl" >Maar hij heeft geen vriendjes, alleen een kegel.</property>
+                 <property key="page3_nl" >Hij wil die kegel de goal inschieten.</property>
+                 <property key="page4_nl" >Maar wat doet die vlinder daar?</property>
+                 <property key="page5_nl" >&lt;br&gt;&lt;br&gt; ... een luie Post-It boy</property>
 	    </object>
         </predefined>
     </scene>
