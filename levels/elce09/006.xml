@@ -21,7 +21,7 @@
         <toolboxitem count="1" name="wood bar" icon="used_wood_bar">
             <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
-                <property key="Mass" >20</property>
+                <property key="Mass" >8</property>
                 <property key="Friction" >0</property>
                 <property key="Resizable" >horizontal</property>
                 <property key="Bounciness" >0.1</property>
@@ -44,7 +44,8 @@
             </object>
             <object X="0.75" Y="1.37" type="Coke+Mentos Bottle" angle="3.14" >
                 <property key="ImageName" >CokeMentosBottle</property>
-                <property key="Thrust" >12</property>
+                <property key="Thrust" >5</property>
+                <property key="Mass">1</property>
             </object>
             <object width="0.1" X="4.4" Y="2.7" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
@@ -54,6 +55,7 @@
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
+                <property key="Bounciness" >0.1</property>
             </object>
             <object width="0.5" X="5.75" Y="1.5" height="2.8" type="RectObject">
                 <property key="ImageName" >oldbrick</property>

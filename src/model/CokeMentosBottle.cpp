@@ -168,7 +168,9 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	switch(aNewStat)
 	{
 	case UNTRIGGERED:
-		theCokeAmount = 2.0;
+		// allow to set arbitrary illing of the bottle
+		if (theProps.propertyToFloat(Property::MASS_STRING, &theCokeAmount)==false)
+			theCokeAmount = 2.0;
 		updateMass();
 		theSplatterCount = 0;
 		theBottleStatus=UNTRIGGERED;

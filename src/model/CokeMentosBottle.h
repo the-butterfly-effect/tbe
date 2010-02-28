@@ -156,7 +156,8 @@ private:
 	/// the amount of liquid still in the bottle
 	/// 2.0l at start, reducing fast whilst blowing.
 	/// unit: kg or l (who cares)
-	qreal	theCokeAmount;
+	/// (note: using the MASS property, you can adjust this)
+	float theCokeAmount;
 
 	/// the weight of an empty bottle in [kg]
 	static const double theBottleMass = 0.2;
