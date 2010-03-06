@@ -81,15 +81,36 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
+	/**
+	 * Set the value of theWidth
+	 * @param new_var the new value of theWidth
+	 */
+	virtual void setTheWidth ( qreal new_var );
+
+	/**
+	 * Set the value of theHeight
+	 * @param new_var the new value of theHeight
+	 */
+	virtual void setTheHeight ( qreal new_var );
 
 protected:
-	void setFriction(b2PolygonDef* aBoxDef);
+	virtual void setFriction(b2PolygonDef* aBoxDef);
+
+	/** Parse the property POLYGONS_STRING into
+	 *  shapes.
+	 *  note: does not clear the shapelist!
+	 */
+	virtual void fillShapeList(void);
+
 
 protected:
 	QString theNameString;
 	QString theToolTipString;
 
 	bool rotatableInfo;
+
+	qreal theOriginalWidth;
+	qreal theOriginalHeight;
 };
 
 #endif // POLYOBJECT_H

@@ -126,8 +126,10 @@ PolyObject::PolyObject( const QString& aDisplayName,
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
-	setTheWidth(aWidth);
-	setTheHeight(aHeight);
+	theOriginalWidth = aWidth;
+	BaseObject::setTheWidth(aWidth);
+	theOriginalHeight = aHeight;
+	BaseObject::setTheHeight(aHeight);
 	theProps.setProperty(Property::POLYGONS_STRING, anOutline);
 	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
@@ -143,15 +145,34 @@ PolyObject::~PolyObject ( ) { }
 // Accessor methods
 //
 
+void PolyObject::setTheWidth ( qreal new_var )
+{
+	BaseObject::setTheWidth(new_var);
+	clearShapeList();
+	fillShapeList();
+}
+
+void PolyObject::setTheHeight ( qreal new_var )
+{
+	BaseObject::setTheHeight(new_var);
+	clearShapeList();
+	fillShapeList();
+}
+
 // Other methods
 //
 
-void PolyObject::parseProperties(void)
+
+void PolyObject::fillShapeList(void)
 {
+	float myMass;
+	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
 
-	BaseObject::parseProperties();
-
-	clearShapeList();
+	Vector myScale(1.0, 1.0);
+	if (fabs(theOriginalWidth)>Position::minimalMove)
+		myScale.dx = getTheWidth()/theOriginalWidth;
+	if (fabs(theOriginalHeight)>Position::minimalMove)
+		myScale.dy = getTheHeight()/theOriginalHeight;
 
 	QString myPolygons;
 	theProps.propertyToString(Property::POLYGONS_STRING, &myPolygons);
@@ -170,18 +191,27 @@ void PolyObject::parseProperties(void)
 			assert (j < b2_maxPolygonVertices);
 			Vector myCoord;
 			assert (myCoord.fromString(myCoordList.at(j)) == true);
-			myPolyDef->vertices[j]=myCoord.toB2Vec2();
+			Vector myScaledCoord = myScale*myCoord;
+			myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
 		}
 
 		// get mass:  no mass -> no density -> no motion
-		float myMass;
-		if (theProps.propertyToFloat(Property::MASS_STRING, &myMass))
+		if (myMass != 0.0)
 			myPolyDef->density = myMass / getTheWidth()*getTheHeight();
 		myPolyDef->userData = this;
 		setFriction(myPolyDef);
 		theShapeList.push_back(myPolyDef);
 		++i;
 	}
+}
+
+void PolyObject::parseProperties(void)
+{
+
+	BaseObject::parseProperties();
+
+	clearShapeList();
+	fillShapeList();
 
 	createPhysicsObject();
 
