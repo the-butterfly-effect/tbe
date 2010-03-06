@@ -4,17 +4,30 @@
         <title>Pin rack</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>lalalala</description>
+        <description>Score 100 points by putting the Tennis ball into the right slot.</description>
         <date>Feb 28, 2010</date>
     </levelinfo>
-     <toolbox>
+    <toolbox>
         <toolboxitem count="10" name="BowlingBall" icon="Bowling_Ball">
             <object type="Bowling Ball"/>
+        </toolboxitem>
+        <toolboxitem count="5" name="wood bar" icon="used_wood_bar">
+            <object width="0.8" height="0.1" type="RectObject">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Mass" >10</property>
+                <property key="Friction" >0.8</property>
+                <property key="Resizable" >horizontal</property>
+                <property key="Bounciness" >0.4</property>
+            </object>
         </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="6.5" height="4.0" />
         <predefined>
+
+	    <object X="3.25" Y="0.25" width="2.3" height="0.3" type="Scenery" >
+                <property key="ImageName" >prizes</property>
+            </object>
 
 	    <object X="3.25" Y="0.05" width="2.5" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -52,9 +65,10 @@
             
 	    <object X="3.3" Y="3.7" type="PostIt">
                 <property key="page1" >Another game from my childhood.</property>
-                <property key="page2" >And again my nice invention the skyhook.</property>
-                <property key="page3" >Lalala insert more blabla here...</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page2" >And again my best invention yet: the skyhook.</property>
+                <property key="page3" >As you can guess, I only want maximum score...</property>
+                <property key="page4" >One Hundred, please!</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
 	    </object>
 	    
 	    <object X="1.5" Y="3.9" width="0.45" height="0.18" type="RectObject" >
@@ -69,51 +83,59 @@
                 <property key="ImageName" >birch_bar</property>
             </object>
 
-            <object X="2.00" Y="3.7" type="Tennis Ball" ID="TennisBall"/>
+            <object X="1.95" Y="3.7" type="Tennis Ball" ID="TennisBall"/>
 
-	    <object X="3.25" Y="3.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.25" Y="3.2" type="Skyhook" ID="Skyhook"/>
+	    
+	    <object X="3.05" Y="2.78" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.45" Y="2.78" type="Skyhook" ID="Skyhook"/>
 
-	    <object X="3.05" Y="2.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.45" Y="2.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.85" Y="2.36" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.25" Y="2.36" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.65" Y="2.36" type="Skyhook" ID="Skyhook"/>
 
-	    <object X="2.85" Y="2.4" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.25" Y="2.4" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.65" Y="2.4" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.65" Y="1.94" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.05" Y="1.94" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.45" Y="1.94" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.85" Y="1.94" type="Skyhook" ID="Skyhook"/>
 
-	    <object X="2.65" Y="2.0" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.05" Y="2.0" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.45" Y="2.0" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.85" Y="2.0" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.45" Y="1.52" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.85" Y="1.52" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.25" Y="1.52" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.65" Y="1.52" type="Skyhook" ID="Skyhook"/>
+	    <object X="4.05" Y="1.52" type="Skyhook" ID="Skyhook"/>
 
-	    <object X="2.45" Y="1.6" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="2.85" Y="1.6" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.25" Y="1.6" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.65" Y="1.6" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="4.05" Y="1.6" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-
-	    <object X="2.25" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="2.65" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.05" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.45" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.85" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="4.25" Y="1.2" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.25" Y="1.1" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.65" Y="1.1" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.05" Y="1.1" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.45" Y="1.1" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.85" Y="1.1" type="Skyhook" ID="Skyhook"/>
+	    <object X="4.25" Y="1.1" type="Skyhook" ID="Skyhook"/>
 
 
-	    <object X="2.05" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="2.45" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="2.85" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.25" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="3.65" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="4.05" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
-	    <object X="4.45" Y="0.8" width="0.1" height="0.115" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.05" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.45" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="2.85" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.25" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="3.65" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="4.05" Y="0.68" type="Skyhook" ID="Skyhook"/>
+	    <object X="4.45" Y="0.68" type="Skyhook" ID="Skyhook"/>
 
-</predefined>
+	</predefined>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="ybelow">0.5</property>
-		   <property key="object">TennisBall</property>
-		</goal>
-	</goals>
+    <goals>
+	<goal type="positionchange">
+	    <property key="ybelow">0.3</property>
+	    <property key="object">TennisBall</property>
+	</goal>
+	<goal type="positionchange">
+	    <property key="xbelow">4.45</property>
+	    <property key="object">TennisBall</property>
+	</goal>
+	<goal type="positionchange">
+	    <property key="xover">4.05</property>
+	    <property key="object">TennisBall</property>
+	</goal>
+    </goals>
 </tbe-level>
  
