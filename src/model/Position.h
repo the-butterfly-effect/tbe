@@ -114,16 +114,16 @@ Vector operator+(const Vector& v1, const Vector& v2);
 /// ofcourse, the end result probably is a vector, but ok...
 Position operator-(const Position& p1, const Position& p2);
 
-/// constant multiplies vector only - not the angle
-Position operator*(const qreal c1, const Position& p1);
-
 /// constant multiplies vector
 Vector operator*(const qreal c1, const Vector& p1);
+
+/// scale - Vector multiplies Vector into a Vector
+Vector operator*(const Vector& v1, const Vector& v2);
 
 /// compare two positions
 bool operator==(const Position& p1, const Position& p2);
 
-/// compare two positions
+/// compare two vectors
 bool operator==(const Vector& p1, const Vector& v2);
 
 #endif // POSITION_H

@@ -102,7 +102,7 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			if (myXd<0.1)
 				myXImpulse = 0.01;
 
-			Position myTotImpulse = aDeltaTime * Position(myXImpulse, myYImpulse);
+			Vector myTotImpulse = aDeltaTime * Vector(myXImpulse, myYImpulse);
 
 			theB2BodyPtr->ApplyImpulse( myTotImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
 

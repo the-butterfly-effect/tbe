@@ -70,6 +70,10 @@ Vector::Vector (const b2Vec2& aVec)
 
 bool Vector::fromString(QString aString)
 {
+	// don't even bother converting an empty string
+	if(aString.isEmpty())
+		return false;
+
 	bool isOK = false;
 	qreal myDX, myDY;
 	QStringList myList;
@@ -147,14 +151,14 @@ Position operator-(const Position& p1, const Position& p2)
 	return Position(p1.x-p2.x, p1.y-p2.y, p1.angle-p2.angle);
 }
 
-Position operator*(const qreal p1, const Position& p2)
-{
-	return Position(p1*p2.x, p1*p2.y, p2.angle);
-}
-
 Vector operator*(const qreal c1, const Vector& v1)
 {
 	return Vector(c1*v1.dx, c1*v1.dy);
+}
+
+Vector operator*(const Vector& v1, const Vector& v2)
+{
+	return Vector(v2.dx*v1.dx, v2.dy*v1.dy);
 }
 
 bool operator==(const Position& p1, const Position& p2)

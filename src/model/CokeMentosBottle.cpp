@@ -276,7 +276,7 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	qreal myImpulse = mySplatterMass*myV;
 	// HACK HACK HACK: to improve the "feeling", we help the impulse a bit here...
 	// The Thrust is actually adjustable as a property - default is 2.0 (see reset()).
-	Position myImpulseVector = -theThrust*Position(-myImpulse*sin(myAngle), myImpulse*cos(myAngle), 0.0);
+	Vector myImpulseVector = -theThrust*Vector(-myImpulse*sin(myAngle), myImpulse*cos(myAngle));
 	theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
 }
 
