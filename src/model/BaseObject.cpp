@@ -124,7 +124,8 @@ DrawObject*  BaseObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
 	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
-	theDrawObjectPtr->setZValue(10.0);
+
+	setDrawObjectZValue(2.0);
 	return theDrawObjectPtr;
 }
 
@@ -259,6 +260,13 @@ void BaseObject::reset ( )
 	// reset the velocities and such
 	theB2BodyPtr->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 	theB2BodyPtr->SetAngularVelocity(0.0f);
+}
+
+
+void  BaseObject::setDrawObjectZValue(float aDefaultValue)
+{
+	theProps.propertyToFloat(Property::ZVALUE_STRING, &aDefaultValue);
+	theDrawObjectPtr->setZValue(aDefaultValue);
 }
 
 void BaseObject::setOrigCenter ( Position new_var )

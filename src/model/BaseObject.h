@@ -408,6 +408,12 @@ protected:
 	void setAngle(qreal anAngle)
 		{ theCenter.angle = anAngle; }
 	
+	/** sets the ZValue for theDrawObject to
+	 *  the value set in Property::ZVALUE_STRING or
+	 *  or (only if the above property doesn't exist) to @param aDefaultValue
+	 */
+	void setDrawObjectZValue(float aDefaultValue);
+
 private:
 
 	void initAttributes ( ) ;

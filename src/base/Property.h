@@ -119,18 +119,24 @@ public:
 	//                <property key="ImageName" >styrofoam</property>
 	//                <property key="Mass" >1</property>
 	//           </object>
-	// all of these are usable in RectObject
-	// all of these (except resizable string) are usable in PolyObject
+
+	// all below are used in BaseObject
+	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
+	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce
+	static const char* PIVOTPOINT_STRING;		// coordinate - where to put a pivot point to world
+	static const char* ZVALUE_STRING;    		// depth in image, 0.1 = default for Scenery,
+												// 2.0 is default for normal objects
+
+
+	// all below are usable in RectObject
+	// all below (except resizable string) are usable in PolyObject
 
 	static const char* OBJECT_NAME_STRING;
-	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce
 	static const char* RESIZABLE_STRING;		// see below
 	static const char* ROTATABLE_STRING;		// "true" or "false"
-	static const char* MASS_STRING;				// 0.0 - inf, in [kg]
-	static const char* FRICTION_STRING;			// 0.0 - 1.0, where 0=frictionless and 1=no slip
-	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
+	static const char* MASS_STRING;	    		// 0.0 - inf, in [kg]
+	static const char* FRICTION_STRING; 		// 0.0 - 1.0, where 0=frictionless and 1=no slip
 	static const char* DESCRIPTION_STRING;		// tooltip  FIXME/TODO: i18n on this
-	static const char* PIVOTPOINT_STRING;		// coordinate - where to put a pivot point to world
 
 	// this one is unique to PolyObject
 	static const char* POLYGONS_STRING;			// set(s) of coordinates

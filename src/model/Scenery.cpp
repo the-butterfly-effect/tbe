@@ -55,8 +55,8 @@ Scenery::~Scenery( )
 DrawObject*  Scenery::createDrawObject(void)
 {
 	BaseObject::createDrawObject();
-	// set the ZValue below 2 (the default for DrawObjects)
-	// because we want Scenery to draw behind other objects
-	theDrawObjectPtr->setZValue(0.1);
+	// redo the ZValue: BaseObject will set it to 2.0 (default for DrawObjects)
+	// if not in Properties, set to 0.1: Scenery draws behind other objects
+	setDrawObjectZValue(0.1);
 	return theDrawObjectPtr;
 }

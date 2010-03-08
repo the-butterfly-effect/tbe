@@ -205,12 +205,7 @@ void DrawObject::initAttributes ( )
 	setToolTip(theBaseObjectPtr->getToolTip());
 
 	theCrossPtr = NULL;
-
-	// set the Z-Value for all objects to approx 2 - Scenery will draw behind this
-	setZValue(2.1);
-
 	applyPosition();
-
 }
 
 

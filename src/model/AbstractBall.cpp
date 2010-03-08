@@ -130,8 +130,7 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	if (myImageName.isEmpty()==false)
 		theBallImage = myImageName;
 	theDrawObjectPtr = new DrawObject(this, theBallImage);
-	theDrawObjectPtr->setZValue(10.0);
-
+	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
 }
 
