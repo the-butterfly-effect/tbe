@@ -65,7 +65,20 @@ public:
 	/// overriden from QGraphicsItem
     virtual QRectF boundingRect() const;
 
-    /// overriden from QGraphicsItem
+	/** Generate a bitmap (QPixmap) of size aWidth*aHeight
+	  * and draw the object within the bitmap.
+	  * Make sure its aspect ratio keeps correct.
+	  * if aWidth or aHeight is zero, the bitmap will be scaled to fit the
+	  * current view (i.e. the resizinggraphicsview).
+	  * @param aWidth   width of the bitmap in screen pixels or 0
+	  * @param aHeight  height of the bitmap in screen pixels or 0
+	  * @returns QPixmap*, caller is responsible for destruction.
+	  *
+	  * TODO/FIXME: Future improvement: use QPixmapCache classes
+	  */
+	QPixmap* createBitmap(int aWidth=0, int aHeight=0);
+
+	/// overriden from QGraphicsItem
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget);
 

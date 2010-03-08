@@ -24,6 +24,7 @@
 #include "DrawWorld.h"
 
 #include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QPainter>
 #include <QStyleOption>
 #include <QGraphicsSceneMouseEvent>
@@ -151,6 +152,28 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 		myMenu.exec(event->screenPos());
 	}
 }
+
+QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
+{
+	DEBUG5("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
+	if (aWidth==0 || aHeight == 0)
+	{
+		// if the DrawObject has not been added to DrawWorld yet, scene() might be
+		// unset. If you run into this assert: that's probably why.
+		assert (scene()!=NULL);
+		QPolygon myPoly = scene()->views()[0]->mapFromScene(boundingRect());
+		aWidth = myPoly.boundingRect().width();
+		aHeight= myPoly.boundingRect().height();
+	}
+
+	QPixmap* myPixmap = new QPixmap(aWidth, aHeight);
+	myPixmap->fill(QColor(Qt::transparent));
+	QPainter myPainter(myPixmap);
+	myPainter.translate(aWidth/2, aHeight/2);
+	paint(&myPainter, NULL, NULL);
+	return myPixmap;
+}
+
 
 void DrawObject::focusInEvent ( QFocusEvent * event )
 {
