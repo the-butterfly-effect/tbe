@@ -22,6 +22,12 @@
 #include "UndoDeleteCommand.h"
 #include "ImageStore.h"
 
+
+// local, always existing variable.
+// It is kept current every time by the constructor and/or resize
+// through the updatePixelsPerUnit() member
+static float thePixelsPerSceneUnitHorizontal;
+
 ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
 	: QGraphicsView(aParent)
 {
@@ -37,8 +43,27 @@ ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
 	vpol.setHorizontalPolicy(QSizePolicy::Expanding);
 	vpol.setVerticalPolicy(QSizePolicy::Expanding);
 	setSizePolicy(vpol);
+	updatePixelsPerUnit();
 }
 
+void ResizingGraphicsView::dragEnterEvent(QDragEnterEvent *event)
+{
+	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) && scene()!=NULL)
+	{
+		DEBUG4("void ResizingGraphicsView::dragEnterEvent(\"%s\") - accept\n", ASCII(event->mimeData()->formats().join(";")));
+		event->accept();
+	}
+	else
+	{
+		DEBUG3("void ResizingGraphicsView::dragEnterEvent(\"%s\") - denied\n", ASCII(event->mimeData()->formats().join(";")));
+		event->ignore();
+	}
+}
+
+float ResizingGraphicsView::getPixelsPerSceneUnitHorizontal(void)
+{
+	return thePixelsPerSceneUnitHorizontal;
+}
 
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 {
@@ -92,4 +117,18 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 
 	// no, we still have an object to move around
 	QGraphicsView::mouseMoveEvent(event);
+}
+
+void ResizingGraphicsView::on_timerTick(void)
+{
+	if (scene())
+		QGraphicsView::fitInView(scene()->itemsBoundingRect(), Qt::KeepAspectRatio);
+	updatePixelsPerUnit();
+}
+
+void ResizingGraphicsView::updatePixelsPerUnit()
+{
+	QPolygon myPoly = mapFromScene(QRectF(0,0,1,0));
+	thePixelsPerSceneUnitHorizontal = myPoly.boundingRect().width();
+	DEBUG5("ResizingGraphicsView::updatePixelsPerUnit() - now is %f\n", thePixelsPerSceneUnitHorizontal);
 }

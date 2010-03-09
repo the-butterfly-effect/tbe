@@ -380,10 +380,3 @@ void DrawWorld::clearGraphicsList(int aCount)
 		delete myItemPtr;
 	}
 }
-
-
-qreal DrawWorld::pixelsPerSceneUnitHorizontal(void)
-{
-	qreal myViewSizeWidth = views().first()->size().width();
-	return myViewSizeWidth/sceneRect().width();
-}

@@ -22,9 +22,9 @@
 #include "Anchors.h"
 #include "ImageStore.h"
 #include "DrawWorld.h"
+#include "resizinggraphicsview.h"
 
 #include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QPainter>
 #include <QStyleOption>
 #include <QGraphicsSceneMouseEvent>
@@ -155,21 +155,25 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 {
-	DEBUG5("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
+	DEBUG4("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
+	int myWidth = aWidth;
+	int myHeight= aHeight;
 	if (aWidth==0 || aHeight == 0)
 	{
-		// if the DrawObject has not been added to DrawWorld yet, scene() might be
-		// unset. If you run into this assert: that's probably why.
-		assert (scene()!=NULL);
-		QPolygon myPoly = scene()->views()[0]->mapFromScene(boundingRect());
-		aWidth = myPoly.boundingRect().width();
-		aHeight= myPoly.boundingRect().height();
+		float myPixPerUnit = ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+		DEBUG4("   %f pix/m at %f x %f\n", myPixPerUnit, theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
+		myWidth = theBaseObjectPtr->getTheWidth() *myPixPerUnit;
+		myHeight= theBaseObjectPtr->getTheHeight()*myPixPerUnit;
 	}
+	DEBUG4("   will do %d x %d bitmap\n", myWidth, myHeight);
+	assert(myWidth>0);
+	assert(myHeight>0);
 
-	QPixmap* myPixmap = new QPixmap(aWidth, aHeight);
+	QPixmap* myPixmap = new QPixmap(myWidth, myHeight);
 	myPixmap->fill(QColor(Qt::transparent));
 	QPainter myPainter(myPixmap);
-	myPainter.translate(aWidth/2, aHeight/2);
+	myPainter.drawRect(0,0,myWidth-1,myHeight-1);
+	myPainter.translate(myWidth/2, myHeight/2);
 	paint(&myPainter, NULL, NULL);
 	return myPixmap;
 }

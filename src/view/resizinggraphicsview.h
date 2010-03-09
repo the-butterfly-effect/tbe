@@ -46,6 +46,14 @@ public:
 
 	virtual ~ResizingGraphicsView() {;}
 
+	/** This function returns the number of pixels that the view currently
+	  * displays per unit (meter) in the scene. This number is used to
+	  * calculate bitmap sizes for objects.
+	  * STATIC FUNCTION, ACCESSIBLE WITHOUT POINTER.
+	  * @returns a floating value usually higher than 50
+	  */
+	static float getPixelsPerSceneUnitHorizontal(void);
+
 	/** this override works around a quirk in QGraphicsView,
 	 *  where fitInView() works - but only after adding the scene is done and rendered
 	 *  so we set a singleshot timer to redo the fitInView later...
@@ -61,7 +69,10 @@ protected:
 	{
 		QGraphicsView::resizeEvent(event);
 		on_timerTick();
+		updatePixelsPerUnit();
 	}
+
+	void updatePixelsPerUnit();
 
 	/// event handler override from QGraphicsView to accept drops
 	/// and forward them to our graphics scene - which knows more...
@@ -73,19 +84,7 @@ protected:
 			reinterpret_cast<DrawWorld*>(scene())->dropEventFromView(myPos, event);
 	}
 
-	void dragEnterEvent(QDragEnterEvent *event)
-	{
-		if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) && scene()!=NULL)
-		{
-			DEBUG4("void ResizingGraphicsView::dragEnterEvent(\"%s\") - accept\n", ASCII(event->mimeData()->formats().join(";")));
-			event->accept();
-		}
-		else
-		{
-			DEBUG3("void ResizingGraphicsView::dragEnterEvent(\"%s\") - denied\n", ASCII(event->mimeData()->formats().join(";")));
-			event->ignore();
-		}
-	}
+	void dragEnterEvent(QDragEnterEvent *event);
 
 	/// apparently required to override to get D&D to work - even if empty
 	virtual void dragLeaveEvent(QDragLeaveEvent*)
@@ -100,9 +99,7 @@ protected:
 	virtual void mouseMoveEvent(QMouseEvent* event);
 
 protected slots:
-	void on_timerTick(void)
-		{ if (scene()) 
-			QGraphicsView::fitInView(scene()->itemsBoundingRect(), Qt::KeepAspectRatio); }
+	void on_timerTick(void);
 };
 
 #endif /* RESIZINGGRAPHICSVIEW_H_ */
