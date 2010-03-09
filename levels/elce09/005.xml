@@ -8,7 +8,7 @@
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Coke+Mentos" icon="CokeMentosBottle">
+        <toolboxitem count="2" name="Coke+Mentos">
             <object type="Coke+Mentos Bottle" angle="0" >
                 <property key="Bounciness" >0</property>
                 <property key="ImageName" >CokeMentosBottle</property>

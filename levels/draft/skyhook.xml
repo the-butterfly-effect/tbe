@@ -10,10 +10,10 @@
         <date>Feb 13, 2010</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Coke+Mentos Bottle" icon="CokeMentosBottle">
+        <toolboxitem count="1" name="Coke+Mentos Bottle">
             <object type="Coke+Mentos Bottle"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Left Ramp" icon="styrofoam-left">
+        <toolboxitem count="1" name="Left Ramp">
 	    <object height="0.4" Y="1.05" type="LeftRamp">
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Bounciness">0.3</property>

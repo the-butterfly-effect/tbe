@@ -11,7 +11,7 @@
         <toolboxitem count="2" name="Domino" icon="Domino-Stone-Red">
             <object type="DominoRed" />
         </toolboxitem>
-	<toolboxitem count="1" name="Styrofoam" icon="styrofoam">
+	<toolboxitem count="1" name="Styrofoam">
             <object width="0.25" height="0.8" type="RectObject" >
                 <property key="Friction" >0.3</property>
                 <property key="Bounciness" >0.2</property>
@@ -20,7 +20,7 @@
 		<property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Left Ramp" icon="left-ramp">
+        <toolboxitem count="1" name="Left Ramp">
             <object width="1.0" height="0.5" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
             </object>

@@ -8,7 +8,7 @@
         <date>12/17/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Tennis Ball" icon="TennisBall">
+        <toolboxitem count="1" name="Tennis Ball">
 	    <object type="Tennis Ball" />
         </toolboxitem>
    </toolbox>

@@ -8,7 +8,7 @@
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="2" name="Ramp /" icon="left-ramp">
+        <toolboxitem count="2" name="Ramp /">
             <object width="4.5" height="0.6" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
                 <property key="Resizable" >horizontal</property>

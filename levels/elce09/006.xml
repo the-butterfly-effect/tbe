@@ -8,7 +8,7 @@
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="2" name="Cola Crate" icon="coke-crate">
+        <toolboxitem count="2" name="Cola Crate">
             <object width="0.85" height="0.6" type="RectObject">
                 <property key="ImageName" >coke-crate</property>
                 <property key="Mass" >18</property>
@@ -18,7 +18,7 @@
                 <property key="Bounciness" >0.1</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="wood bar" icon="used_wood_bar">
+        <toolboxitem count="1" name="wood bar">
             <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Mass" >8</property>

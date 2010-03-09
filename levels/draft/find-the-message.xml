@@ -8,13 +8,13 @@
         <date>12/21/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Volley Ball" icon="VolleyBall">
+        <toolboxitem count="1" name="Volley Ball">
 	    <object type="Volleyball"  />
         </toolboxitem>
-        <toolboxitem count="1" name="Football" icon="SoccerBall">
+        <toolboxitem count="1" name="Football">
 	    <object type="Soccer Ball" />
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+        <toolboxitem count="1" name="Bowling Ball">
 	    <object type="Bowling Ball"/>
         </toolboxitem>
    </toolbox>

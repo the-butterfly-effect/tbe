@@ -8,7 +8,7 @@
         <date>12/20/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="2" name="Styrofoam Block" icon="styrofoam">
+        <toolboxitem count="2" name="Styrofoam Block">
             <object width="1.0" height="0.5" type="RectObject">
                 <property key="ImageName" >styrofoam</property>
                 <property key="Bounciness">0.6</property>

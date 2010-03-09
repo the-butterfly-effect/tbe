@@ -10,10 +10,10 @@
 		<date>10/10/09</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="9" name="Bowling Pin" icon="Bowling_Pin">
+        <toolboxitem count="9" name="Bowling Pin">
             <object type="Bowling Pin" />
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+        <toolboxitem count="1" name="Bowling Ball">
             <object type="Bowling Ball" />
         </toolboxitem>
     </toolbox>
