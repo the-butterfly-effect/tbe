@@ -18,11 +18,8 @@
             <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
-            <object width="0.6" X="1.5" Y="1.2" height="0.6" type="RectObject" >
-                <property key="ImageName" >that_is_flower</property>
-            </object>
-            <object width="0.6" X="0.35" Y="1.1" height="0.6" type="RectObject" >
-                <property key="ImageName" >that_is_butterfly</property>
+            <object width="0.4" X="0.55" Y="0.65" height="0.4" type="Scenery" >
+                <property key="ImageName" >dream-of-flowers</property>
             </object>
             <object width="2.3" X="1.15" Y="0.05" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
@@ -33,19 +30,19 @@
                 <property key="object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
-            <object X="2.1" Y="1.5" type="PostIt">
+            <object X="1.1" Y="1.5" type="PostIt">
                 <property key="page1" >You see that butterfly?</property>
                 <property key="page1_nl" >Zie je die vlinder?</property>
                 <property key="page2" >It wants to go to the flower...</property>
                 <property key="page2_nl" >Die wil naar de bloem...</property>
-                <property key="page3" >Once this Post-It is gone,&lt;br&gt;&lt;br&gt;click the stopwatch right below&lt;br&gt;to make it happen!</property>
-                <property key="page3_nl" >Als deze Post-It zo verdwenen is,&lt;br&gt;klik dan op de stopwatch om te starten.</property>
+                <property key="page3" >&lt;i&gt;Once this Post-It is gone,&lt;/i&gt;&lt;br&gt;&lt;br&gt;click the stopwatch right below&lt;br&gt;to make it happen!</property>
+                <property key="page3_nl" >&lt;i&gt;Als deze Post-It zo verdwenen is,&lt;/i&gt;&lt;br&gt;klik dan op de stopwatch om te starten.</property>
                 <property key="page4" >If you click the stopwatch again, the simulation will stop.&lt;br&gt;There's also a green 'reset' button now.</property>
                 <property key="page4_nl" >Als je nog eens klikt op de stopwatch, dan stopt alles weer.&lt;br&gt;Er komt dan ook een groene 'reset' pijl bij.</property>
-                <property key="page5" >But I've said enough...&lt;br&gt;Good luck!</property>
-                <property key="page5_nl" >Maar ik heb genoeg gezegd...&lt;br&gt;Veel success!</property>
+                <property key="page5" >But I've said enough...&lt;br&gt;&lt;br&gt;   Good luck!</property>
+                <property key="page5_nl" >Maar ik heb genoeg gezegd...&lt;br&gt;&lt;br&gt;Veel success!</property>
                 <property key="page6" >... The Post-It boy</property>
-                <property key="page6_nl" >... De Post-It boy</property>
+                <property key="page6_nl" >... de Post-It boy</property>
 	    </object>
         </predefined>
     </scene>
