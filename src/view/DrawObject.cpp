@@ -174,6 +174,17 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	QPainter myPainter(myPixmap);
 	myPainter.drawRect(0,0,myWidth-1,myHeight-1);
 	myPainter.translate(myWidth/2, myHeight/2);
+
+	// let's try to do some scaling
+	float myScaleX = boundingRect().width()/myWidth;
+	float myScaleY = boundingRect().height()/myHeight;
+	float myTrueScale;
+	if (myScaleY > myScaleX)
+		myTrueScale = 1/myScaleY;
+	else
+		myTrueScale = 1/myScaleX;
+	myPainter.scale(myTrueScale, myTrueScale);
+
 	paint(&myPainter, NULL, NULL);
 	return myPixmap;
 }
