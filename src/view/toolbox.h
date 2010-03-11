@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ public:
 	static const char* DrawWorldMimeType;
 
 	TBItem(unsigned int aCount,
-		   const QIcon& anIcon,
+		   const QString& anIconName,
 		   const QString& aName,
 		   const QDomNode myDomNode);
 
@@ -66,7 +66,18 @@ public:
 	  */
 	bool modifyCount(int aDelta);
 
+	/// TODO
+	QPixmap* createPixmap(void);
+
 private:
+	/** Create the icon, either based on:
+	  *   a) the BaseObject's DrawObject (preferred) or
+	  *   b) based on the object name
+	  * (Note that custom provided icons are handled in the large constructor)
+	  *  @returns the name of the BaseObject, empty string if not creatable
+	  */
+	QString createIcon(void);
+
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
 

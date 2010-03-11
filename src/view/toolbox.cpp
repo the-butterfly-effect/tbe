@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 #include "ImageStore.h"
 #include "BaseObjectSerializer.h"
 #include "UndoDeleteCommand.h"
+#include "DrawObject.h"
 
 #include <QMimeData>
 
@@ -31,17 +32,23 @@ const char* TBItem::DrawWorldMimeType = "image/x-tbe-scene-tool";
 
 
 TBItem::TBItem(unsigned int aCount,
-				const QIcon&   anIcon,
+				const QString& anIconName,
 				const QString& aName,
 				QDomNode aDomNode)
 	: theCount(aCount),
 	theName(aName),
-	theIcon(anIcon),
 	theDomNode(aDomNode),
 	theFactoryPtr(NULL)
 {
+	if (anIconName.isEmpty())
+		createIcon();
+	else
+		theIcon = ImageStore::getQIcon(anIconName, QSize(32,32));
+
+
 	// actually display the count + setIcon
 	modifyCount(0);
+
 }
 
 
@@ -52,15 +59,51 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	assert(aFactoryPtr != NULL);
 	if (aFactoryPtr==NULL)
 		return;
-	BaseObject* myPtr = aFactoryPtr->createObject();
+	setText (createIcon());
+}
+
+QString TBItem::createIcon(void)
+{
+	QString myName;
+	BaseObject* myPtr = getNewObject();
 	if (myPtr != NULL)
 	{
-		// TODO: this way of getting icon names is not foolproof, but it works (for now)
-		theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+		myName = myPtr->getName();
+		DrawObject* myDOPtr = myPtr->createDrawObject();
+		if (myDOPtr != NULL)
+		{
+			QPixmap* myPixmap = myDOPtr->createBitmap(32,32);
+			theIcon = QIcon(*myPixmap);
+		}
+		else
+		{
+			// let's hope this works.
+			// TODO: if not, we can still try the image name property...
+			theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+		}
 		setIcon(theIcon);
-		setText( myPtr->getName() );
-		delete myPtr;
 	}
+	delete myPtr;
+	return myName;
+}
+
+QPixmap* TBItem::createPixmap(void)
+{
+	QPixmap* myPixmapPtr;
+	BaseObject* myPtr = getNewObject();
+	if (myPtr != NULL)
+	{
+		DrawObject* myDOPtr = myPtr->createDrawObject();
+		if (myDOPtr != NULL)
+			myPixmapPtr = myDOPtr->createBitmap();
+		else
+		{
+			// TODO - BASED ON THIS CODE:
+			theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(32,32));
+		}
+	}
+	delete myPtr;
+	return myPixmapPtr;
 }
 
 BaseObject* TBItem::getNewObject(void)
@@ -194,14 +237,14 @@ void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)
 	myMimeDataPtr->setData(TBItem::ToolboxMimeType, itemData);
 
 	// add an icon to the QDrag
-	QPixmap pixmap = item->icon().pixmap(32); //qVariantValue<QPixmap>(item->data(Qt::UserRole));
-	QDrag *drag = new QDrag(this);
-	drag->setMimeData(myMimeDataPtr);
-	drag->setHotSpot(QPoint(pixmap.width()/2, pixmap.height()/2));
-	drag->setPixmap(pixmap);
+	QPixmap myPixmap = item->icon().pixmap(32);
+	QDrag* myDragPtr = new QDrag(this);
+	myDragPtr->setMimeData(myMimeDataPtr);
+	myDragPtr->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
+	myDragPtr->setPixmap(myPixmap);
 
 	// no need to check if it succeeds - getMeACopy() will be called anyway.
-	drag->exec(Qt::MoveAction);
+	myDragPtr->exec(Qt::MoveAction);
 }
 
 
@@ -248,12 +291,7 @@ bool ToolBox::fillFromDomNode(const QDomNode& aToolboxDomNode)
 		if (!isOK)
 			myTBI_Count = TBItem::INFINITE;
 
-		// TODO: this way of getting icon names is not foolproof, but it works (for now)
-		if (myTBI_IconName.isEmpty())
-			myTBI_IconName = myTBI_Name;
-
-		QIcon myIcon = ImageStore::getQIcon(myTBI_IconName, QSize(32,32));
-		TBItem* myItemPtr = new TBItem( myTBI_Count, myIcon, myTBI_Name,  myO);
+		TBItem* myItemPtr = new TBItem( myTBI_Count, myTBI_IconName, myTBI_Name,  myO);
 		addItem(myItemPtr);
 		if (myTBI==aToolboxDomNode.lastChild())
 			break;
