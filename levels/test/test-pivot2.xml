@@ -13,7 +13,7 @@
         <date>Jan 16, 2010</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Bowling Ball" icon="Bowling_Ball">
+        <toolboxitem count="1" name="Bowling Ball">
 	    <object type="Bowling Ball"/>
         </toolboxitem>
    </toolbox>

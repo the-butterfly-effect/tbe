@@ -1,4 +1,4 @@
-SVGSRC=Bowling_Ball.png
-SVGDST=Bowling_Ball.png
+SVGSRC=BowlingBall.png
+SVGDST=BowlingBall.png
 
 include ../Makefile 

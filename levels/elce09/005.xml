@@ -43,8 +43,8 @@
                 <property key="Bounciness" >0</property>
                 <property key="ImageName" >oldbrick</property>
             </object>
-            <object X="1.86" Y="1.4" type="Volleyball" />
-			<object X="2.34" Y="1.47" type="Bowling Pin" ID="Pin"/>
+            <object X="1.86" Y="1.4" type="Volley Ball" />
+	    <object X="2.34" Y="1.47" type="Bowling Pin" ID="Pin"/>
             <object X="2.45" Y="0.30" type="Bowling Pin" />
             <object X="2.55" Y="0.50" type="Bowling Pin" />
             <object X="2.65" Y="0.30" type="Bowling Pin" />

@@ -9,7 +9,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Volley Ball">
-	    <object type="Volleyball"  />
+	    <object type="Volley Ball"  />
         </toolboxitem>
         <toolboxitem count="1" name="Football">
 	    <object type="Soccer Ball" />

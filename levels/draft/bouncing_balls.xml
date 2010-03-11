@@ -20,7 +20,7 @@
 
 	<object X="0.4" Y="2.5" type="Tennis Ball" ID="ten1"/>
 	<object X="0.5" Y="2.5" type="Tennis Ball" ID="ten2"/>
-	<object X="0.7" Y="2.5" type="Volleyball" ID="vol"/>
+	<object X="0.7" Y="2.5" type="Volley Ball" ID="vol"/>
 	<object X="1.0" Y="2.5" type="Soccer Ball" ID="soc"/>
 	<object X="1.3" Y="2.5" type="Bowling Ball" ID="bow1"/>
 	<object X="1.6" Y="2.5" type="Bowling Ball" ID="bow2"/>

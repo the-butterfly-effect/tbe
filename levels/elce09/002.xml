@@ -40,7 +40,7 @@
                 <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
-            <object X="1.4" Y="0.27" type="Volleyball" />
+            <object X="1.4" Y="0.27" type="Volley Ball" />
             <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" >
                 <property key="ImageName" >right-ramp</property>
             </object>
