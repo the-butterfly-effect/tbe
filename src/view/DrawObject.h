@@ -101,7 +101,20 @@ public:
 	/// setup caching for this object
 	void setupCache(void);
 
+	/** Set the Z-ordering (which object is drawn on top of which).
+	  * the highest number is drawn on top.
+	  *  - default for objects is 2
+	  *  - default for Scenery is 0.1
+	  * the ZValue is actually set in setupCache()
+	  * @param aZValue the Z Value to set drawing to
+	  * OVERRIDDEN FROM QGraphicsItem
+	  */
+	virtual void setZValue(float aZValue)
+	{ theZValue = aZValue; }
+
+
 protected:
+	float theZValue;
 
 	/** collision detection, sets isCollidingDuringDrag if true
 	  * @returns true if collision detected

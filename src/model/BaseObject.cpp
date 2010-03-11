@@ -265,6 +265,8 @@ void BaseObject::reset ( )
 
 void  BaseObject::setDrawObjectZValue(float aDefaultValue)
 {
+	assert(theDrawObjectPtr != NULL);
+	// if no property with a float type found, aDefaultValue is unchanged
 	theProps.propertyToFloat(Property::ZVALUE_STRING, &aDefaultValue);
 	theDrawObjectPtr->setZValue(aDefaultValue);
 }

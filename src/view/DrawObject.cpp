@@ -221,6 +221,8 @@ void DrawObject::initAttributes ( )
 	// in radians!
 	theOldAngle=0;//aBaseObjectPtr->getOrigCenter().angle;
 
+	theZValue = 2.0;
+
 	// make sure that this item is selectable & draggable
 	// (if the object allows it - of course)
 	if (theBaseObjectPtr->isMovable())
@@ -384,4 +386,9 @@ void DrawObject::setupCache(void)
 
 //	setCacheMode(QGraphicsItem::ItemCoordinateCache,
 //				 QSize(boundingRect().width()*pix,boundingRect().height()*pix) );
+
+
+	// we also still need to set the ZValue of this object.
+	// it only now guaranteed has a parent
+	QGraphicsItem::setZValue(theZValue);
 }
