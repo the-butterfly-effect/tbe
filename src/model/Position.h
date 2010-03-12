@@ -35,9 +35,9 @@ public:
 
 	qreal length(void);
 
-	b2Vec2   toB2Vec2(void);
-	Position toPosition(void);
-	QString  toString(void);
+	b2Vec2   toB2Vec2(void) const;
+	Position toPosition(void) const;
+	QString  toString(void) const;
 
 	/** Converts a string in format "(0.0,0.0)" into this Vector
 	  * If the conversion is not successful, the Vector is not modified.
@@ -83,9 +83,9 @@ public:
 
 	const static qreal minimalMove = 0.005;
 
-	b2Vec2  toB2Vec2(void);
-	QString toString(void);
-	Vector  toVector(void)
+	b2Vec2  toB2Vec2(void) const;
+	QString toString(void) const;
+	Vector  toVector(void) const
 	{ return Vector(x,y); }
 
 	qreal length(void);

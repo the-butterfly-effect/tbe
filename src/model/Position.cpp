@@ -45,10 +45,10 @@ qreal Position::length(void)
 {	return sqrt(x*x+y*y); }
 
 
-b2Vec2 Position::toB2Vec2(void)
+b2Vec2 Position::toB2Vec2(void) const
 {	return b2Vec2(x,y); }
 
-QString Position::toString(void)
+QString Position::toString(void) const
 {	return QString("(%1,%2)@%3").arg(x).arg(y).arg(angle); }
 
 
@@ -114,13 +114,13 @@ qreal Vector::length(void)
 {	return sqrt(dx*dx+dy*dy); }
 
 
-b2Vec2 Vector::toB2Vec2(void)
+b2Vec2 Vector::toB2Vec2(void) const
 {	return b2Vec2(dx,dy); }
 
-Position Vector::toPosition(void)
+Position Vector::toPosition(void) const
 {	return Position(dx,dy, 0); }
 
-QString Vector::toString(void)
+QString Vector::toString(void) const
 {	return QString("(%1,%2)").arg(dx).arg(dy); }
 
 Position operator+(const Position& p1, const Vector& v1)
