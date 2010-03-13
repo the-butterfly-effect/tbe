@@ -67,6 +67,8 @@ public:
 protected:
 	virtual void resizeEvent(QResizeEvent * event)
 	{
+		if (isDoNotResize==true)
+			return;
 		QGraphicsView::resizeEvent(event);
 		on_timerTick();
 		updatePixelsPerUnit();
@@ -74,22 +76,23 @@ protected:
 
 	void updatePixelsPerUnit();
 
-	/// event handler override from QGraphicsView to accept drops
-	/// and forward them to our graphics scene - which knows more...
 	virtual void dropEvent (QDropEvent* event)
-	{
-		DEBUG4("void ResizingGraphicsView::dropEvent(\"%s\")\n", ASCII(event->mimeData()->formats().join(";")));
-		QPointF myPos = mapToScene(event->pos());
-		if (scene()!=NULL)
-			reinterpret_cast<DrawWorld*>(scene())->dropEventFromView(myPos, event);
-	}
+	{ QGraphicsView::dropEvent(event); isDoNotResize = false; }
 
-	// D&D of objects from the toolbox is completely handled in DrawWorld
-	//	virtual void dragEnterEvent(QDragEnterEvent *event);
-	//	virtual void dragLeaveEvent(QDragLeaveEvent*);
-	//	virtual void dragMoveEvent(QDragMoveEvent*);
+	// D&D of objects from the toolbox is completely handled in DrawWorld,
+	// but we need to make sure we don't resize during drag&drop
+	virtual void dragEnterEvent(QDragEnterEvent* event)
+	{ isDoNotResize = true; QGraphicsView::dragEnterEvent(event); }
+	virtual void dragLeaveEvent(QDragLeaveEvent* event)
+	{ QGraphicsView::dragLeaveEvent(event); isDoNotResize = false; }
 
+	/** OVERRIDDEN from QGraphicsView
+	  * if mouse is near end of the view, start a drag&drop
+	  */
 	virtual void mouseMoveEvent(QMouseEvent* event);
+
+	/// boolean indicates whether we should ignore resize events
+	bool isDoNotResize;
 
 protected slots:
 	void on_timerTick(void);

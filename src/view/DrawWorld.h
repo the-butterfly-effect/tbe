@@ -71,7 +71,7 @@ public:
 		{ return &theUndoStack; }
 
 	/// event handler called by the view for drops
-	virtual void dropEventFromView (const QPointF& aDropPos, QDropEvent* event);
+	virtual void dropEvent (QGraphicsSceneDragDropEvent * event);
 
 	/// sets the simulation speed. 1 = "real world" speed, 0.5 means slowed down, 2.0 means sped up
 	void setSimSpeed(qreal theDivision)

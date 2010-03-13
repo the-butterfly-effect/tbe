@@ -211,9 +211,9 @@ void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 }
 
 
-void DrawWorld::dropEventFromView (const QPointF&, QDropEvent* event)
+void DrawWorld::dropEvent ( QGraphicsSceneDragDropEvent * event)
 {
-	DEBUG4("void DrawWorld::dropEvenFromView\n");
+	DEBUG4("void DrawWorld::dropEvent\n");
 	if (theInsertUndoPtr!=NULL)
 	{
 		theUndoStack.push(theInsertUndoPtr);
