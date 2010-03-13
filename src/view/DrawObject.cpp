@@ -256,23 +256,22 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// do not allow movement of predefined objects in game mode
 	if (theBaseObjectPtr->isMovable() == false)
 		return;
+	mouseMoveEvent(event->scenePos ());
+}
 
-	QPointF myPos=event->scenePos ();
 
-
+void DrawObject::mouseMoveEvent ( const QPointF& myPos )
+{
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
 	if (theUndoMovePtr ==NULL)
 	{
-		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*Vector(event->pos()));
+		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*Vector(myPos));
 		if (theAnchorsPtr)
 		{
 			delete theAnchorsPtr;
 			theAnchorsPtr = NULL;
 		}
 	}
-
-	// TODO: problem: if you click an object near the side, it will still register as if you
-	// clicked in the exact center - with an unvoluntary movement as a result
 
 	checkForCollision();
 

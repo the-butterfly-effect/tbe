@@ -23,6 +23,8 @@
 #include "World.h"
 #include "toolbox.h"
 
+#include <QGraphicsSceneMouseEvent>
+
 // Constructors/Destructors
 //  
 
@@ -54,6 +56,9 @@ void UndoInsertCommand::redo ()
 {
 	DEBUG3("UndoInsertCommand::redo() START\n");
 
+	QGraphicsSceneMouseEvent myEvent;
+	theBaseObjectPtr->theDrawObjectPtr->mouseReleaseEvent ( &myEvent );
+
 	if (getCurrentToolboxPtr())
 		getCurrentToolboxPtr()->modifyCountOfBaseObject(theBaseObjectPtr,-1);
 	theBaseObjectPtr->reregister();
@@ -61,6 +66,10 @@ void UndoInsertCommand::redo ()
 	DEBUG3("UndoInsertCommand::redo() END\n");
 }
 
+void UndoInsertCommand::setNewPosition(const Position& aNewPos)
+{
+	theBaseObjectPtr->theDrawObjectPtr->mouseMoveEvent(QPointF(aNewPos.x, aNewPos.y));
+}
 
 void UndoInsertCommand::undo ()
 {

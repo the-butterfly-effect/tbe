@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,7 +30,6 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QDropEvent>
-
 
 
 /** the Dot class is a helper - it's a true QGraphicsItem, it's
@@ -148,9 +147,9 @@ void DrawWorld::displaySimpleText(const QString& aString)
 	theCongratulations->setZValue(10.0);
 }
 
-void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
+void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 {
-	DEBUG4("void DrawWorld::dropEvenFromView\n");
+	DEBUG4("DrawWorld::dragEnterEvent ()\n");
 	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
 	{
 		QByteArray pieceData = event->mimeData()->data(TBItem::ToolboxMimeType);
@@ -158,7 +157,8 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 		QString myObjectName;
 		stream >> myObjectName;
 
-		DEBUG4("  the object is: '%s' @ %f,%f\n", ASCII(myObjectName), aDropPos.x(), aDropPos.y());
+		DEBUG4("  the object is: '%s' @ %f,%f\n", ASCII(myObjectName),
+			   event->scenePos().x(), event->scenePos().y());
 
 		// now we know the ID of the object, let's retrieve a copy from the Toolbox
 		if (event->source() != NULL)
@@ -166,16 +166,14 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 			BaseObject* myObjectPtr = dynamic_cast<ToolBox*>(event->source())->getMeACopyOf(myObjectName);
 			if (myObjectPtr != NULL)
 			{
-				myObjectPtr->setOrigCenter(Position(aDropPos));
+				myObjectPtr->setOrigCenter(Position(event->scenePos()));
 				myObjectPtr->createPhysicsObject();
 				theWorldPtr->addObject(myObjectPtr);
 
-				UndoInsertCommand* myUndo = new UndoInsertCommand(myObjectPtr);
-				theUndoStack.push(myUndo);
+				theInsertUndoPtr = new UndoInsertCommand(myObjectPtr);
 
 				myObjectPtr->parseProperties();
 
-				event->setDropAction(Qt::MoveAction);
 				event->accept();
 				return;
 			}
@@ -184,11 +182,55 @@ void DrawWorld::dropEventFromView (const QPointF& aDropPos, QDropEvent* event)
 	event->ignore();
 }
 
+void DrawWorld::dragLeaveEvent ( QGraphicsSceneDragDropEvent * event )
+{
+	DEBUG4("DrawWorld::dragLeaveEvent()\n");
+	if (theInsertUndoPtr!=NULL)
+	{
+		theInsertUndoPtr->undo();
+		delete theInsertUndoPtr;
+		theInsertUndoPtr = NULL;
+	}
+	event->accept();
+}
+
+void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
+{
+	DEBUG4("DrawWorld::dragMoveEvent ()\n");
+	if (theInsertUndoPtr==NULL)
+	{
+		DEBUG3("DrawWorld::dragMoveEvent IGNORED()\n");
+		event->ignore();
+		return;
+	}
+
+	// do not use the QPointF constructor because that one will negate y
+	Position myPosition(event->scenePos().x(), event->scenePos().y());
+	theInsertUndoPtr->setNewPosition(myPosition);
+	event->accept();
+}
+
+
+void DrawWorld::dropEventFromView (const QPointF&, QDropEvent* event)
+{
+	DEBUG4("void DrawWorld::dropEvenFromView\n");
+	if (theInsertUndoPtr!=NULL)
+	{
+		theUndoStack.push(theInsertUndoPtr);
+		theInsertUndoPtr = NULL;
+		event->setDropAction(Qt::MoveAction);
+		event->accept();
+	}
+	else
+		event->ignore();
+}
+
 void DrawWorld::initAttributes ( ) 
 {
 	DEBUG5("void DrawWorld::initAttributes\n");
 	theSimSpeed = 1000.0;
 	theCongratulations = NULL;
+	theInsertUndoPtr = NULL;
 
 	isUserInteractionAllowed = true;
 

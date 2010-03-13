@@ -84,17 +84,10 @@ protected:
 			reinterpret_cast<DrawWorld*>(scene())->dropEventFromView(myPos, event);
 	}
 
-	void dragEnterEvent(QDragEnterEvent *event);
-
-	/// apparently required to override to get D&D to work - even if empty
-	virtual void dragLeaveEvent(QDragLeaveEvent*)
-	{
-	}
-
-	/// apparently required to override to get D&D to work - even if empty
-	virtual void dragMoveEvent(QDragMoveEvent*)
-	{
-	}
+	// D&D of objects from the toolbox is completely handled in DrawWorld
+	//	virtual void dragEnterEvent(QDragEnterEvent *event);
+	//	virtual void dragLeaveEvent(QDragLeaveEvent*);
+	//	virtual void dragMoveEvent(QDragMoveEvent*);
 
 	virtual void mouseMoveEvent(QMouseEvent* event);
 

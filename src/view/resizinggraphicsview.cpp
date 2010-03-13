@@ -46,20 +46,6 @@ ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
 	updatePixelsPerUnit();
 }
 
-void ResizingGraphicsView::dragEnterEvent(QDragEnterEvent *event)
-{
-	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType) && scene()!=NULL)
-	{
-		DEBUG4("void ResizingGraphicsView::dragEnterEvent(\"%s\") - accept\n", ASCII(event->mimeData()->formats().join(";")));
-		event->accept();
-	}
-	else
-	{
-		DEBUG3("void ResizingGraphicsView::dragEnterEvent(\"%s\") - denied\n", ASCII(event->mimeData()->formats().join(";")));
-		event->ignore();
-	}
-}
-
 float ResizingGraphicsView::getPixelsPerSceneUnitHorizontal(void)
 {
 	return thePixelsPerSceneUnitHorizontal;

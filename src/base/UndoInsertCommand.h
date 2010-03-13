@@ -54,6 +54,13 @@ public:
 	  * will unregister BaseObject and "return it" to ToolBox
 	  */
 	virtual void undo ();
+
+	/** D&D will always require a move after the insert.
+	  * i.e. during the dragMoveEvent(), we will have to update the
+	  * position of the not-yet-inserted object
+	  * @param aNewPos the new position
+	  */
+	void setNewPosition(const Position& aNewPos);
 };
 
 #endif // UNDOINSERTCOMMAND_H

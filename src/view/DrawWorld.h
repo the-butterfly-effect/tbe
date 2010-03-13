@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -34,7 +34,7 @@ class World;
 class MainWindow;
 class QDropEvent;
 class StartStopWatch;
-
+class UndoInsertCommand;
 
 /** class DrawWorld
   * This class contains the Draw* objects and is the QGraphicsScene
@@ -81,7 +81,14 @@ public:
 	QGraphicsScene* getStartStopWatchPtr();
 
 protected:
+	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
+	virtual void dragEnterEvent ( QGraphicsSceneDragDropEvent * event );
+	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
+	virtual void dragLeaveEvent ( QGraphicsSceneDragDropEvent * event );
+	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
+	virtual void dragMoveEvent ( QGraphicsSceneDragDropEvent * event );
 
+protected:
 		/// Draw a closed polygon provided in CCW order.
 		virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
 		/// Draw a solid closed polygon provided in CCW order.
@@ -178,7 +185,10 @@ private:
 	 */
 	StartStopWatch*	theSimStateMachine;
 
-
+	/** as long as we are in drag&drop, we'll have to maintain
+	  * a pointer to the UndoInsertCommand-in-progress
+	  */
+	UndoInsertCommand* theInsertUndoPtr;
 };
 
 #endif // DRAWWORLD_H

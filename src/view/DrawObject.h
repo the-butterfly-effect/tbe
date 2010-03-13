@@ -150,6 +150,9 @@ protected:
 	 *  @param event the even to handle
 	 */
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
+	virtual void mouseMoveEvent ( const QPointF& aPos );
+
+friend class UndoInsertCommand;
 
 	/** overridden from QGraphicsItem
 	 *  we want to know when the user *releases* the left mouse button 
