@@ -187,7 +187,7 @@ void DrawWorld::dragLeaveEvent ( QGraphicsSceneDragDropEvent * event )
 	DEBUG4("DrawWorld::dragLeaveEvent()\n");
 	if (theInsertUndoPtr!=NULL)
 	{
-		theInsertUndoPtr->undo();
+		theInsertUndoPtr->cancel();
 		delete theInsertUndoPtr;
 		theInsertUndoPtr = NULL;
 	}
@@ -216,7 +216,15 @@ void DrawWorld::dropEvent ( QGraphicsSceneDragDropEvent * event)
 	DEBUG4("void DrawWorld::dropEvent\n");
 	if (theInsertUndoPtr!=NULL)
 	{
-		theUndoStack.push(theInsertUndoPtr);
+		if (theInsertUndoPtr->checkForValidPositionOrRevert()==false)
+		{
+			// we have never been in a good position
+			theInsertUndoPtr->cancel();
+			delete theInsertUndoPtr;
+		}
+		else
+			theUndoStack.push(theInsertUndoPtr);
+
 		theInsertUndoPtr = NULL;
 		event->setDropAction(Qt::MoveAction);
 		event->accept();

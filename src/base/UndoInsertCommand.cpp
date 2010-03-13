@@ -17,6 +17,7 @@
  */
 
 #include "UndoInsertCommand.h"
+#include "UndoMoveCommand.h"
 
 #include "BaseObject.h"
 #include "DrawObject.h"
@@ -52,12 +53,35 @@ UndoInsertCommand::~UndoInsertCommand ( )
 // Other methods
 //  
 
+void UndoInsertCommand::cancel(void)
+{
+	theBaseObjectPtr->deregister();
+	delete theBaseObjectPtr;
+	theBaseObjectPtr=NULL;
+}
+
+bool UndoInsertCommand::checkForValidPositionOrRevert(void)
+{
+	bool isGood = true;
+	UndoMoveCommand* myUMCPtr = theBaseObjectPtr->theDrawObjectPtr->theUndoMovePtr;
+	if (myUMCPtr->revertIfNeeded()==true)
+	{
+		if (myUMCPtr->hasMoved()==false)
+		{
+			// we're in trouble: the object never was valid - we need to cancel D&D
+			isGood = false;
+		}
+		// we're in good shape: even though the last position was illegal,
+		// we did have a good position in the history
+	}
+	delete myUMCPtr;
+	theBaseObjectPtr->theDrawObjectPtr->theUndoMovePtr = NULL;
+	return isGood;
+}
+
 void UndoInsertCommand::redo ()
 {
 	DEBUG3("UndoInsertCommand::redo() START\n");
-
-	QGraphicsSceneMouseEvent myEvent;
-	theBaseObjectPtr->theDrawObjectPtr->mouseReleaseEvent ( &myEvent );
 
 	if (getCurrentToolboxPtr())
 		getCurrentToolboxPtr()->modifyCountOfBaseObject(theBaseObjectPtr,-1);

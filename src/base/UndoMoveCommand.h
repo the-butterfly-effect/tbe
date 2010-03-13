@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -81,6 +81,11 @@ public:
 		if (isGood)
 			theLastGoodPosition = theNewPosition;
 	}
+
+	/** If current position is illegal, revert to last known good
+	  * @returns true if revert was needed
+	  */
+	bool revertIfNeeded(void);
 
 	bool hasMoved(void)
 	{	return theOldPosition == theNewPosition; }

@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -61,6 +61,23 @@ void UndoMoveCommand::redo ()
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->theDrawObjectPtr->advance(0);
+}
+
+bool UndoMoveCommand::revertIfNeeded(void)
+{
+	DrawObject* theDOPtr = theBaseObjectPtr->theDrawObjectPtr;
+
+	// are we currently in a collision?
+	// in that case, go back to last known good
+	if (theDOPtr->checkForCollision())
+	{
+		DEBUG4("Reverting to last known non-colliding position\n");
+		revertToLastGood();
+		theDOPtr->update(theDOPtr->boundingRect());
+		theDOPtr->removeCollisionCross();
+		return true;
+	}
+	return false;
 }
 
 void UndoMoveCommand::undo ()

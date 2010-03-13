@@ -153,6 +153,7 @@ protected:
 	virtual void mouseMoveEvent ( const QPointF& aPos );
 
 friend class UndoInsertCommand;
+friend class UndoMoveCommand;
 
 	/** overridden from QGraphicsItem
 	 *  we want to know when the user *releases* the left mouse button 

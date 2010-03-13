@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -263,7 +263,7 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 void DrawObject::mouseMoveEvent ( const QPointF& myPos )
 {
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
-	if (theUndoMovePtr ==NULL)
+	if (theUndoMovePtr==NULL)
 	{
 		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*Vector(myPos));
 		if (theAnchorsPtr)
@@ -292,15 +292,7 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	if (theUndoMovePtr == NULL)
 		return;
 
-	// are we currently in a collision?
-	// in that case, go back to last known good
-	if (checkForCollision())
-	{
-		DEBUG4("Reverting to last known non-colliding position\n");
-		theUndoMovePtr->revertToLastGood();
-		update(boundingRect());
-		removeCollisionCross();
-	}
+	theUndoMovePtr->revertIfNeeded();
 
 	// is the position any different?
 	if (theUndoMovePtr->hasMoved())

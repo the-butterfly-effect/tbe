@@ -55,6 +55,18 @@ public:
 	  */
 	virtual void undo ();
 
+	/** if insertion goes away without UndoInsertCommand ever being
+	  * put to good use, call this member to clean up.
+	  */
+	void cancel (void);
+
+	/** if current position of inserted object is illegal, revert to
+	  * last "known good" (thanks to UndoMoveCommand).
+	  * @returns false if there is no last known good, true in all other cases
+	  * @post if false is returned, the BaseObject is deleted
+	  */
+	bool checkForValidPositionOrRevert(void);
+
 	/** D&D will always require a move after the insert.
 	  * i.e. during the dragMoveEvent(), we will have to update the
 	  * position of the not-yet-inserted object
