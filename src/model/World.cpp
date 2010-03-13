@@ -96,8 +96,11 @@ void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 	if (theDrawWorldPtr)
 	{
 		DrawObject* myDOPtr = aBOPtr->createDrawObject();
-		theDrawWorldPtr->addItem(myDOPtr);
-		myDOPtr->setupCache();
+		if (myDOPtr!=NULL)
+		{
+			theDrawWorldPtr->addItem(myDOPtr);
+			myDOPtr->setupCache();
+		}
 	}
 }
 
