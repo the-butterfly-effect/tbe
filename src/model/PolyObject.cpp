@@ -104,6 +104,25 @@ static AbstractPolyObjectFactory theWeightFactory(
 	"(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)",
 	0.40, 0.40, 10.0, 0.3 );
 
+static AbstractPolyObjectFactory theLeftRampFactory(
+	"LeftRamp",
+	QObject::tr("Ramp to the left"),
+	QObject::tr("This is a ramp. The left is lower than the right, so things slide to the left."),
+	"left-ramp",
+	"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+	1.0, 1.0, 0.0, 0.2 );
+
+static AbstractPolyObjectFactory theRightRampFactory(
+	"RightRamp",
+	QObject::tr("Ramp to the right"),
+	QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right."),
+	"right-ramp",
+	"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+	1.0, 1.0, 0.0, 0.2 );
+
+
+
+
 // Constructors/Destructors
 //
 

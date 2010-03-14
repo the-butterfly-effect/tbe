@@ -38,7 +38,6 @@ HEADERS += src/tbe_global.h \
     src/model/PolyObject.h \
     src/model/Position.h \
     src/model/PostIt.h \
-    src/model/Ramp.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
     src/model/World.h \
@@ -48,7 +47,6 @@ HEADERS += src/tbe_global.h \
     src/view/DrawCokeMentosBottle.h \
     src/view/DrawObject.h \
     src/view/DrawPostIt.h \
-    src/view/DrawRamp.h \
     src/view/DrawWorld.h \
     src/view/ImageStore.h \
     src/view/MainWindow.h \
@@ -78,7 +76,6 @@ SOURCES += src/main.cpp \
     src/model/PolyObject.cpp \
     src/model/Position.cpp \
     src/model/PostIt.cpp \
-    src/model/Ramp.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
     src/model/World.cpp \
@@ -88,7 +85,6 @@ SOURCES += src/main.cpp \
     src/view/DrawCokeMentosBottle.cpp \
     src/view/DrawObject.cpp \
     src/view/DrawPostIt.cpp \
-    src/view/DrawRamp.cpp \
     src/view/DrawWorld.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
