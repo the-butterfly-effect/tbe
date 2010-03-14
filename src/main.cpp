@@ -33,6 +33,11 @@ bool theIsLevelEditor = false;
 // TODO/FIXME: this should go into preferences or so at some point
 bool theDrawDebug = false;
 
+// This variable defines whether TBE caches bitmaps of objects to speed
+// up rendering. Actual implementation in DrawObject::setupCache() and
+// ResizingGraphicsView::updatePixelsPerUnit() .
+bool theTBECaching = true;
+
 int main(int argc, char **argv)
 {
 	// init Qt (graphics toolkit) - www.qtsoftware.com

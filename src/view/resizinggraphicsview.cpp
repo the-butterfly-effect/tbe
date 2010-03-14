@@ -116,4 +116,12 @@ void ResizingGraphicsView::updatePixelsPerUnit()
 	QPolygon myPoly = mapFromScene(QRectF(0,0,1,0));
 	thePixelsPerSceneUnitHorizontal = myPoly.boundingRect().width();
 	DEBUG5("ResizingGraphicsView::updatePixelsPerUnit() - now is %f\n", thePixelsPerSceneUnitHorizontal);
+
+	if (theTBECaching==true)
+	{
+		// also redo all caching for our objects
+		DrawWorld* myScene = dynamic_cast<DrawWorld*>(scene());
+		if (myScene != NULL)
+			myScene->invalidateCaching();
+	}
 }

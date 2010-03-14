@@ -248,6 +248,18 @@ void DrawWorld::initAttributes ( )
 	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
 }
 
+void DrawWorld::invalidateCaching(void)
+{
+	QList<QGraphicsItem *> myItemList = items();
+	QList<QGraphicsItem *>::iterator i = myItemList.begin();
+	while(i!= myItemList.end())
+	{
+		DrawObject* myDOPtr = dynamic_cast<DrawObject*>(*i);
+		if (myDOPtr)
+			myDOPtr->setupCache();
+		++i;
+	}
+}
 
 void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {

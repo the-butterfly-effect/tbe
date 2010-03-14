@@ -172,7 +172,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	QPixmap* myPixmap = new QPixmap(myWidth, myHeight);
 	myPixmap->fill(QColor(Qt::transparent));
 	QPainter myPainter(myPixmap);
-	myPainter.drawRect(0,0,myWidth-1,myHeight-1);
+//	myPainter.drawRect(0,0,myWidth-1,myHeight-1);
 	myPainter.translate(myWidth/2, myHeight/2);
 
 	// let's try to do some scaling
@@ -382,13 +382,17 @@ void DrawObject::setupCache(void)
 	// The problem is that QT does a crappy job at guessing the bitmap size
 	// so we have to calculate that ourselves...
 
-	// unfortunately, QT doesn't like my calculations...
-//	qreal pix=reinterpret_cast<DrawWorld*>(scene())->pixelsPerSceneUnitHorizontal();
-//	setCacheMode(QGraphicsItem::ItemCoordinateCache, QSize(256,256));
-
-//	setCacheMode(QGraphicsItem::ItemCoordinateCache,
-//				 QSize(boundingRect().width()*pix,boundingRect().height()*pix) );
-
+	if (theRenderer!=NULL)
+	{
+		setCacheMode(QGraphicsItem::NoCache);
+		if (thePixmapPtr!=NULL)
+		{
+			delete thePixmapPtr;
+			thePixmapPtr=NULL;
+		}
+		// let's try to use the renderer to create a cached image:
+		thePixmapPtr = createBitmap();
+	}
 
 	// we also still need to set the ZValue of this object.
 	// it only now guaranteed has a parent

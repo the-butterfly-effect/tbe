@@ -80,6 +80,11 @@ public:
 	/// @returns a pointer to an initialised StartStopWatch (which derives from QGraphicsScene)
 	QGraphicsScene* getStartStopWatchPtr();
 
+	/** iterate through all registered objects and make them create new
+	  * bitmap caches.
+	  */
+	void invalidateCaching(void);
+
 protected:
 	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
 	virtual void dragEnterEvent ( QGraphicsSceneDragDropEvent * event );
