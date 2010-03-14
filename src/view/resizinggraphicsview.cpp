@@ -55,15 +55,14 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 {
 	// if we're running out of the widget to the right, let's start the Drag&Drop
 	QPoint myPos = event->pos();
-	QGraphicsItem* myItem = itemAt(myPos);
 
-	// limit our efforts:
-	// only for real objects, while we're actually dragging
-	if (myItem!=NULL && event->buttons()==Qt::LeftButton)
+	// limit our efforts: for real objects, while we're actually dragging
+	// OK, here's a dirty trick.
+	// If we get here, we hopefully know that myItem is a DrawObject
+	// if it is not, dynamic_cast will return NULL.
+	DrawObject* myDOPtr = dynamic_cast<DrawObject*>(itemAt(myPos));
+	if (myDOPtr!=NULL && event->buttons()==Qt::LeftButton)
 	{
-		// OK, here's a dirty trick.
-		// If we get here, we hopefully know that myItem is a DrawObject
-		DrawObject* myDOPtr = reinterpret_cast<DrawObject*>(myItem);
 		BaseObject* myBOPtr = myDOPtr->getBaseObjectPtr();
 
 		// calculate wether we are close to the right border...
