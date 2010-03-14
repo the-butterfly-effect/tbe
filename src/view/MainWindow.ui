@@ -41,7 +41,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-		<widget class="ToolBox" name="theToolBoxView">
+        <widget class="ToolBox" name="theToolBoxView" native="true">
          <property name="minimumSize">
           <size>
            <width>64</width>
@@ -99,7 +99,7 @@ Once the simulation has run and is stopped, you can reset the simulation using t
      <x>0</x>
      <y>0</y>
      <width>724</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEdit">
@@ -111,6 +111,9 @@ Once the simulation has run and is stopped, you can reset the simulation using t
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="actionBrand_names"/>
+	<addaction name="actionLibraries"/>
+	<addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -170,7 +173,7 @@ Once the simulation has run and is stopped, you can reset the simulation using t
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>About...</string>
+    <string>&amp;About...</string>
    </property>
   </action>
   <action name="actionRestart">
@@ -299,12 +302,27 @@ Once the simulation has run and is stopped, you can reset the simulation using t
     <string>Open custom level...</string>
    </property>
   </action>
+  <action name="actionBrand_names">
+   <property name="text">
+    <string>&amp;Brand names...</string>
+   </property>
+  </action>
+  <action name="actionLibraries">
+   <property name="text">
+    <string>&amp;Libraries...</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>ResizingGraphicsView</class>
    <extends>QGraphicsView</extends>
    <header>resizinggraphicsview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolBox</class>
+   <extends>QWidget</extends>
+   <header>toolbox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

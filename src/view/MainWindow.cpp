@@ -98,7 +98,34 @@ void MainWindow::on_actionAbout_activated()
 				" simulations to combine lots of simple mechanical elements"
 				" to achieve a simple goal in the most complex way possible.<br><br>"
 				"(C) 2009-2010 Peter van Ginneken and Klaas van Gend<br>"
-				"Licensed under GPL version 2"), this);
+				"Licensed under GPL version 2 - <i>only</i>."), this);
+}
+
+void MainWindow::on_actionBrand_names_activated()
+{
+	Popup::Info(tr("<b>The Butterfly Effect - Brand names</b><br><br>"
+				"<b>Coke</b>, diet Coke, Coca Cola and the bottle shape are "
+				"world-wide registered trademarks of the Coca Cola company."
+				"<br>"
+				"<b>Mentos</b> is a registered trademark of Perfetti Van Melle "
+				"<br>"
+				"The use of a Mentos in diet Coke is widely described - and "
+				"apparently works best with diet Coke and Mentos. <br><br>"
+				"'The Butterfly Effect' as a concept has existed since at least "
+				"mid 1950s. We are not affiliated with the 2004 movie in any way."
+				""), this);
+}
+
+void MainWindow::on_actionLibraries_activated()
+{
+	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
+				"The Butterfly Effect is a proud user of the Box2D"
+				"Physics Library. Please refer to http://www.box2d.org/ ."
+				"<br>"
+				"The Butterfly Effect uses Nokia's Qt as GUI toolkit. "
+				"We are happy with the continued support of Qt by Nokia. "
+				"Please refer to http://qt.nokia.com/ ."
+				""), this);
 }
 
 void MainWindow::on_actionOpen_custom_level_activated()
