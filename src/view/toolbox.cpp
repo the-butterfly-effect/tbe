@@ -43,7 +43,8 @@ TBItem::TBItem(unsigned int aCount,
 	if (anIconName.isEmpty())
 		createIcon();
 	else
-		theIcon = ImageStore::getQIcon(anIconName, QSize(48,48));
+		theIcon = ImageStore::getQIcon(anIconName,
+				  QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 
 
 	// actually display the count + setIcon
@@ -72,14 +73,16 @@ QString TBItem::createIcon(void)
 		DrawObject* myDOPtr = myPtr->createDrawObject();
 		if (myDOPtr != NULL)
 		{
-			QPixmap* myPixmap = myDOPtr->createBitmap(48,48);
+			QPixmap* myPixmap = myDOPtr->createBitmap(
+									TOOLBOX_ICON_SIZE, TOOLBOX_ICON_SIZE);
 			theIcon = QIcon(*myPixmap);
 		}
 		else
 		{
 			// let's hope this works.
 			// TODO: if not, we can still try the image name property...
-			theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(48,48));
+			theIcon = ImageStore::getQIcon(myPtr->getName(),
+						QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 		}
 		setIcon(theIcon);
 	}
@@ -99,7 +102,8 @@ QPixmap* TBItem::createPixmap(void)
 		else
 		{
 			// TODO - BASED ON THIS CODE:
-			theIcon = ImageStore::getQIcon(myPtr->getName(), QSize(48,48));
+			theIcon = ImageStore::getQIcon(myPtr->getName(),
+							QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 		}
 	}
 	delete myPtr;
@@ -143,7 +147,8 @@ bool TBItem::modifyCount(int delta)
 	else
 	{
 		// replace icon by cross
-		setIcon(ImageStore::getQIcon("BigCross", QSize(48,48)));
+		setIcon(ImageStore::getQIcon("BigCross",
+						QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE)));
 		return true;
 	}
 }
@@ -160,7 +165,7 @@ ToolBox::ToolBox(QWidget *parent)
 	setDragEnabled(true);
 	setDropIndicatorShown(true);
 	setGridSize(QSize(100, 64));
-	setIconSize(QSize(48, 48));
+	setIconSize(QSize(TBItem::TOOLBOX_ICON_SIZE, TBItem::TOOLBOX_ICON_SIZE));
 	setMovement(QListView::Snap);
 	setSpacing(10);
 	setViewMode(QListView::IconMode);

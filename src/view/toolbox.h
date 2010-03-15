@@ -50,6 +50,7 @@ public:
 	BaseObject* getNewObject(void);
 
 	const static unsigned int INFINITE = 999;
+	const static unsigned int TOOLBOX_ICON_SIZE = 48;
 
 	QString getID(void) const
 	{
