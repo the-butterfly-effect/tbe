@@ -46,7 +46,6 @@ TBItem::TBItem(unsigned int aCount,
 		theIcon = ImageStore::getQIcon(anIconName,
 				  QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 
-
 	// actually display the count + setIcon
 	modifyCount(0);
 
@@ -60,51 +59,39 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	assert(aFactoryPtr != NULL);
 	if (aFactoryPtr==NULL)
 		return;
-	setText (createIcon());
-}
-
-QString TBItem::createIcon(void)
-{
-	QString myName;
+	createIcon();
 	BaseObject* myPtr = getNewObject();
 	if (myPtr != NULL)
 	{
-		myName = myPtr->getName();
-		DrawObject* myDOPtr = myPtr->createDrawObject();
-		if (myDOPtr != NULL)
-		{
-			QPixmap* myPixmap = myDOPtr->createBitmap(
-									TOOLBOX_ICON_SIZE, TOOLBOX_ICON_SIZE);
-			theIcon = QIcon(*myPixmap);
-		}
-		else
-		{
-			// let's hope this works.
-			// TODO: if not, we can still try the image name property...
-			theIcon = ImageStore::getQIcon(myPtr->getName(),
-						QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
-		}
-		setIcon(theIcon);
+		theName = myPtr->getName();
+		delete myPtr;
 	}
-	delete myPtr;
-	return myName;
 }
 
-QPixmap* TBItem::createPixmap(void)
+void TBItem::createIcon(void)
 {
-	QPixmap* myPixmapPtr;
+	QPixmap* myPixmap = createPixmap(TOOLBOX_ICON_SIZE);
+	if (myPixmap != NULL)
+		theIcon = QIcon(*myPixmap);
+	else
+	{
+		// let's hope this works.
+		// TODO: if not, we can still try the image name property...
+		theIcon = ImageStore::getQIcon(theName,
+					QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
+	}
+	setIcon(theIcon);
+}
+
+QPixmap* TBItem::createPixmap(int aSuggestedSize)
+{
+	QPixmap* myPixmapPtr = NULL;
 	BaseObject* myPtr = getNewObject();
 	if (myPtr != NULL)
 	{
 		DrawObject* myDOPtr = myPtr->createDrawObject();
 		if (myDOPtr != NULL)
-			myPixmapPtr = myDOPtr->createBitmap();
-		else
-		{
-			// TODO - BASED ON THIS CODE:
-			theIcon = ImageStore::getQIcon(myPtr->getName(),
-							QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
-		}
+			myPixmapPtr = myDOPtr->createBitmap(aSuggestedSize, aSuggestedSize);
 	}
 	delete myPtr;
 	return myPixmapPtr;
@@ -241,12 +228,9 @@ void ToolBox::startDrag(Qt::DropActions /*supportedActions*/)
 	QMimeData* myMimeDataPtr = new QMimeData;
 	myMimeDataPtr->setData(TBItem::ToolboxMimeType, itemData);
 
-	// add an icon to the QDrag
-	QPixmap myPixmap = item->icon().pixmap(32);
+	// let's NOT add an icon to the QDrag
 	QDrag* myDragPtr = new QDrag(this);
 	myDragPtr->setMimeData(myMimeDataPtr);
-	myDragPtr->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
-	myDragPtr->setPixmap(myPixmap);
 
 	// no need to check if it succeeds - getMeACopy() will be called anyway.
 	myDragPtr->exec(Qt::MoveAction);

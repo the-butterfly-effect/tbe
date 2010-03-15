@@ -67,17 +67,17 @@ public:
 	  */
 	bool modifyCount(int aDelta);
 
-	/// TODO
-	QPixmap* createPixmap(void);
+	/** @returns a pointer to a pixmap of either the suggested size
+	  * or smaller - if the item itself is smaller
+	  */
+	QPixmap* createPixmap(int aSuggestedSize);
 
 private:
 	/** Create the icon, either based on:
 	  *   a) the BaseObject's DrawObject (preferred) or
 	  *   b) based on the object name
-	  * (Note that custom provided icons are handled in the large constructor)
-	  *  @returns the name of the BaseObject, empty string if not creatable
 	  */
-	QString createIcon(void);
+	void createIcon(void);
 
 	/// the number of objects left (part of Qt::DisplayRole)
 	unsigned int theCount;
