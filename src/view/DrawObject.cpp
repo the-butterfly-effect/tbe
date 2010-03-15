@@ -156,8 +156,8 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 {
 	DEBUG4("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
-	int myWidth = aWidth;
-	int myHeight= aHeight;
+	float myWidth = aWidth;
+	float myHeight= aHeight;
 	if (aWidth==0 || aHeight == 0)
 	{
 		float myPixPerUnit = ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
@@ -165,7 +165,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 		myWidth = theBaseObjectPtr->getTheWidth() *myPixPerUnit;
 		myHeight= theBaseObjectPtr->getTheHeight()*myPixPerUnit;
 	}
-	DEBUG4("   will do %d x %d bitmap\n", myWidth, myHeight);
+	DEBUG4("   will do %f x %f bitmap\n", myWidth, myHeight);
 	assert(myWidth>0);
 	assert(myHeight>0);
 
