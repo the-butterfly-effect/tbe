@@ -14,7 +14,7 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
-   sodipodi:docname="skyhook.svg"
+   sodipodi:docname="Skyhook.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0">
   <defs
@@ -418,8 +418,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.0175575"
-     inkscape:cx="82.417403"
-     inkscape:cy="63.296404"
+     inkscape:cx="82.417402"
+     inkscape:cy="63.296403"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -555,11 +555,5 @@
          style="fill:url(#radialGradient3476);fill-opacity:1;stroke:none;stroke-width:0.625;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:type="arc" />
     </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 54.348591,154.42953 L 86.825187,184.91777 L 120.13168,185.91077 L 164.70274,132.22614 L 163.27528,112.39027 L 149.79002,100.41234 L 64.020358,120.42127 L 54.348591,154.42953 z"
-       id="path2483"
-       transform="translate(266.35577,135.00495)"
-       sodipodi:nodetypes="cccccccc" />
   </g>
 </svg>
