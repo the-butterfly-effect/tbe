@@ -1,0 +1,106 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Topple the other way</title>
+        <title lang="nl">Naar de andere kant</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Two bowling balls, the wrong ball kicks the pin.</description>
+        <description lang="nl">Twee bowlingballen, maar de verkeerde raakt de kegel eerst.</description>
+        <date>03/20/10</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="10kg Weight">
+	    <object width="0.6" type="Weight" ID="Weight" />
+	</toolboxitem>
+        <toolboxitem count="1" name="Ramp /">
+            <object width="1.6" height="0.5" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp \">
+            <object width="1.6" height="0.5" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.4" height="3" />
+        <predefined>
+
+	    <object width="0.8" X="2.2" Y="0.05" height="0.10" type="Floor" >
+                <property key="ImageName" >birch_bar</property>
+                <property key="Friction" >0.4</property>
+            </object>
+	    <object width="1.8" X="0.9" Y="0.05" height="0.10" type="Floor" >
+                <property key="ImageName" >White-to-green</property>
+                <property key="Friction" >0.4</property>
+            </object>
+	    <object width="1.8" X="3.5" Y="0.05" height="0.10" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Friction" >0.4</property>
+            </object>
+
+  <object X="2.2" Y="2.6" type="PostIt">
+      <property key="page1">Pin topples to green in two moves.</property>
+      <property key="page2">&lt;br&gt;&lt;br&gt;Post-It Boy&lt;br&gt;&lt;br&gt; ... is brief for once</property>
+      <property key="page3">(Ssst... I'm playing chess)</property>
+      <property key="page1_nl">Kegel valt naar groen in twee zetten.</property>
+      <property key="page2_nl">&lt;br&gt;&lt;br&gt;Post-It Boy&lt;br&gt;&lt;br&gt; ... houdt 't een keer kort</property>
+      <property key="page3_nl">(Sssht... Ben aan 't schaken)</property>
+  </object>
+
+
+            <object X="2.2" Y="2.3" width="0.1" height="0.1" type="RectObject" ID="BrassPin">
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >4.5</property>
+            </object>
+
+            <object X="2.2" Y="2.3" width="2.8" height="0.15" type="RectObject" ID="Bar">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >8</property>
+                <property key="Friction" >0.7</property>
+                <property key="Resizable" >none</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+	    <object type="PivotPoint" X="2.2" Y="2.3">
+	      <property key="object1">Bar</property>
+	      <property key="object2">BrassPin</property>
+	      <property key="collide">false</property>
+	    </object>
+
+            <object X="1.0" Y="2.5" type="Bowling Ball" />
+            <object X="3.5" Y="2.5" type="Bowling Ball" />
+<!--            <object X="2.65" Y="2.7" type="Weight" ID="Weight" />-->
+
+
+            <object X="3.6" Y="1.9" width="1.6" height="0.4" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+            </object>
+
+            <object X="0.8" Y="1.9" width="1.6" height="0.4" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+
+
+            <object X="3.4" Y="0.6" width="2.0" height="0.2" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+                <property key="Friction" >0.5</property>
+            </object>
+
+            <object X="1.0" Y="0.6" width="2.0" height="0.2" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+                <property key="Friction" >0.5</property>
+            </object>
+
+            <object X="2.2" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+
+        </predefined>
+    </scene>
+    <goals>
+	    <goal type="positionchange">
+		<property key="xbelow">1.7</property>
+		<property key="object">BowlingPin</property>
+	    </goal>
+    </goals>
+</tbe-level>
