@@ -2,16 +2,18 @@
 <tbe-level>
     <levelinfo>
         <title>Im Perfect Balance</title>
+        <title lang="nl">Im Perfecte Balans</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>A balancing beam threatens to kill a butterfly. But that's not all that needs fixing.</description>
-        <date>12/22/09</date>
+        <description lang="nl">Een vallende balk bedreigt een vlinder. Maar dat is niet het enige dat moet worden opgelost.</description>
+        <date>03/20/10</date>
     </levelinfo>
      <toolbox>
          <toolboxitem count="1" name="Bowling Ball">
             <object type="Bowling Ball" />
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1" name="Ramp \">
 	    <object height="0.3" width="0.6" type="RightRamp">
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.3</property>
@@ -33,6 +35,11 @@
       <property key="page3" >Like a 'Sword of Damocles'. &lt;br&gt;&lt;br&gt;Would it also loose appetite if it knew?</property>
       <property key="page4" >Please make the butterfly happy!&lt;br&gt;&lt;br&gt;That's the least we can do.</property>
       <property key="page5" >&lt;br&gt;&lt;br&gt;... An unhappy&lt;br&gt;&lt;br&gt;Post-It Boy</property>
+      <property key="page1_nl">Im Perfecte Balans...&lt;br&gt;&lt;br&gt;Klinkt bijna als een albumtitel van 'Art Of Noise'</property>
+      <property key="page2_nl">Dat arme vlindertje heeft geen idee wat er boven z'n hoofd hangt...</property>
+      <property key="page3_nl">Als een 'Zwaard van Damokles'. &lt;br&gt;&lt;br&gt;Zou 'ie ook ineens geen eetlust meer hebben?</property>
+      <property key="page4_nl">Maak alsjeblieft de vlinder blij!&lt;br&gt;&lt;br&gt;Dat is wel het minste wat we kunnen doen.</property>
+      <property key="page5_nl">&lt;br&gt;&lt;br&gt;... Een minder vrolijke&lt;br&gt;&lt;br&gt;Post-It Boy</property>
   </object>
 
 
