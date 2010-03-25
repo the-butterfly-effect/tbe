@@ -93,16 +93,11 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 	DrawObject* myDOPtr = dynamic_cast<DrawObject*>(itemAt(myPos));
 	if (myDOPtr!=NULL && event->buttons()==Qt::LeftButton)
 	{
-		BaseObject* myBOPtr = myDOPtr->getBaseObjectPtr();
-
-// FIXME/TODO: current code is not taking hotspot into account
 				
 		// calculate wether we are close to the right border...
 		//
-		// I need to map the width of the object to the width of the view.
-		// Unfortunately, that can only be done for QPoints: a detour :-(
-		QPointF myObjWidth = mapFromScene(myBOPtr->getTheWidth()/2.0, 0.0);
-		if (myPos.x() + myObjWidth.x() > width()-5 && myBOPtr->isMovable())
+		BaseObject* myBOPtr = myDOPtr->getBaseObjectPtr();
+		if (myPos.x() >   width()-5 && myBOPtr->isMovable())
 		{
 			if (handleDnD(myBOPtr))
 				return;
