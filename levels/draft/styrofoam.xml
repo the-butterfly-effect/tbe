@@ -91,7 +91,8 @@
 
 	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
             <object width="0.4" X="4.17" Y="0.45" height="0.7" type="Scenery" >
-                <property key="ImageName" >goal-scenery</property>
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">4</property>
             </object>
 	    <object X="4.3" width="0.15" height="0.7" Y="0.45" type="RightRamp" angle="3.14">
                 <property key="ImageName">Empty</property>
