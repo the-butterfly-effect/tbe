@@ -106,7 +106,7 @@ static AbstractPolyObjectFactory theWeightFactory(
 
 static AbstractPolyObjectFactory theLeftRampFactory(
 	"LeftRamp",
-	QObject::tr("Ramp to the left"),
+	QObject::tr("Left Ramp"),
 	QObject::tr("This is a ramp. The left is lower than the right, so things slide to the left."),
 	"left-ramp",
 	"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
@@ -114,7 +114,7 @@ static AbstractPolyObjectFactory theLeftRampFactory(
 
 static AbstractPolyObjectFactory theRightRampFactory(
 	"RightRamp",
-	QObject::tr("Ramp to the right"),
+	QObject::tr("Right Ramp"),
 	QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right."),
 	"right-ramp",
 	"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
