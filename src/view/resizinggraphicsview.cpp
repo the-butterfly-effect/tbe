@@ -51,6 +51,36 @@ float ResizingGraphicsView::getPixelsPerSceneUnitHorizontal(void)
 	return thePixelsPerSceneUnitHorizontal;
 }
 
+bool ResizingGraphicsView::handleDnD(BaseObject* aBOPtr)
+{
+	UndoDeleteCommand* myCommandPtr =
+			new UndoDeleteCommand(aBOPtr);
+
+	// create MIME data
+	QByteArray itemData;
+	QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+	dataStream << "TBE-lala"; //item->getID();
+	QMimeData* myMimeDataPtr = new QMimeData;
+	myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
+
+	// add an icon to the QDrag
+	QPixmap myPixmap = ImageStore::getPNGPixmap("ToRight")->scaledToWidth(32);
+	QDrag *drag = new QDrag(this);
+	drag->setMimeData(myMimeDataPtr);
+	drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
+	drag->setPixmap(myPixmap);
+
+	if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
+	{
+		myCommandPtr->push();
+		return true;
+	}
+
+	delete myCommandPtr;
+	myCommandPtr = NULL;
+	return false;
+}
+
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 {
 	// if we're running out of the widget to the right, let's start the Drag&Drop
@@ -65,6 +95,8 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 	{
 		BaseObject* myBOPtr = myDOPtr->getBaseObjectPtr();
 
+// FIXME/TODO: current code is not taking hotspot into account
+				
 		// calculate wether we are close to the right border...
 		//
 		// I need to map the width of the object to the width of the view.
@@ -72,31 +104,8 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 		QPointF myObjWidth = mapFromScene(myBOPtr->getTheWidth()/2.0, 0.0);
 		if (myPos.x() + myObjWidth.x() > width()-5 && myBOPtr->isMovable())
 		{
-			UndoDeleteCommand* myCommandPtr =
-					new UndoDeleteCommand(myBOPtr);
-
-			// create MIME data
-			QByteArray itemData;
-			QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-			dataStream << "TBE-lala"; //item->getID();
-			QMimeData* myMimeDataPtr = new QMimeData;
-			myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
-
-			// add an icon to the QDrag
-			QPixmap myPixmap = ImageStore::getPNGPixmap("ToRight")->scaledToWidth(32);
-			QDrag *drag = new QDrag(this);
-			drag->setMimeData(myMimeDataPtr);
-			drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
-			drag->setPixmap(myPixmap);
-
-			if (drag->exec(Qt::MoveAction) == Qt::MoveAction)
-			{
-				myCommandPtr->push();
+			if (handleDnD(myBOPtr))
 				return;
-			}
-
-			delete myCommandPtr;
-			myCommandPtr = NULL;
 		}
 	}
 

@@ -91,6 +91,12 @@ protected:
 	  */
 	virtual void mouseMoveEvent(QMouseEvent* event);
 
+	/** the actual creation of the mime data and corresponding UndoDelete
+	  * @param aBOPtr pointer to the BaseObject to move to the toolbox
+	  * @returns true if success or false if not (dnd didn't happen)
+	  */
+	bool handleDnD(BaseObject* aBOPtr);
+
 	/// boolean indicates whether we should ignore resize events
 	bool isDoNotResize;
 
