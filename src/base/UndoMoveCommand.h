@@ -57,8 +57,11 @@ public:
 	 */
 	virtual ~UndoMoveCommand ( );
 
-	const Position& getOrigPos(void)
+	const Position& getOrigPos(void) const
 	{	return theOldPosition; }
+
+	const Vector& getHotSpot(void) const
+	{	return theHotSpot; }
 
 	/** Throw away the new position and rever to the last known good position.
 	  * If setNewPosition() has never been called with a new good position,

@@ -150,7 +150,7 @@ protected:
 	 *  @param event the even to handle
 	 */
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
-	virtual void mouseMoveEvent ( const QPointF& aPos );
+	virtual void mouseMoveEvent ( const QPointF& aPos, const QPointF& bPos = QPointF(0,0) );
 
 friend class UndoInsertCommand;
 friend class UndoMoveCommand;

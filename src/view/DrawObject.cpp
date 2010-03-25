@@ -256,16 +256,17 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// do not allow movement of predefined objects in game mode
 	if (theBaseObjectPtr->isMovable() == false)
 		return;
-	mouseMoveEvent(event->scenePos ());
+	mouseMoveEvent(event->scenePos(), event->pos());
 }
 
 
-void DrawObject::mouseMoveEvent ( const QPointF& myPos )
+void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotspotPos)
 {
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
 	if (theUndoMovePtr==NULL)
 	{
-		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*Vector(myPos));
+		Vector myPos(aHotspotPos);
+		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*myPos);
 		if (theAnchorsPtr)
 		{
 			delete theAnchorsPtr;
@@ -276,10 +277,10 @@ void DrawObject::mouseMoveEvent ( const QPointF& myPos )
 	checkForCollision();
 
 	// do not allow object to be moved through X and Y axes to negative coords
-	if ( (myPos.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
-		 && (myPos.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
+	if ( (aScenePos.x()-theUndoMovePtr->getHotSpot().dx-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
+		 && (aScenePos.y()+theUndoMovePtr->getHotSpot().dy+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		theUndoMovePtr->setNewPosition(myPos, (theCrossPtr==NULL) );
+		theUndoMovePtr->setNewPosition(aScenePos, (theCrossPtr==NULL) );
 		theUndoMovePtr->redo();
 	}
 }
