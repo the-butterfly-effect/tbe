@@ -5,6 +5,7 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Not affiliated with the yearly event.</description>
+        <description lang="nl">Niet gelieerd aan de jaarlijkse show.</description>
         <date>9/29/09</date>
     </levelinfo>
      <toolbox>
@@ -19,8 +20,9 @@
         </toolboxitem>
 	<toolboxitem count="1" name="Block" icon="styrofoam">
             <object width="0.8" height="0.1" type="RectObject" >
-                <property key="Friction" >1.5</property>
-                <property key="Bounciness" >0.0</property>
+                <property key="Friction" >0.2</property>
+                <property key="Mass" >0.2</property>
+                <property key="Bounciness" >0.5</property>
                 <property key="ImageName" >styrofoam</property>
 		<property key="Resizable">vertical</property>
 		<property key="Rotate">no</property>
@@ -54,7 +56,7 @@
             <object X="4.3" Y="2.65" type="DominoBlue" />
             <object X="4.7" Y="2.65" type="DominoRed" />
 	    <!-- ############################ MIDDLE DOMINO ROW ################### -->
-            <object width="4.6" X="3.1" Y="1.6" height="0.1" type="RectObject" >
+            <object width="4.2" X="3.3" Y="1.6" height="0.1" type="RectObject" >
                 <property key="ImageName" >birch_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
@@ -81,20 +83,28 @@
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >birch_bar</property>
             </object>
+            <object width="0.3" X="1.05" Y="1.5" height="0.1" type="RectObject" >
+                <property key="ImageName" >birch_bar</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+            <object X="1.05" Y="1.8" type="Coke+Mentos Bottle" />
 	    <!-- ############################ COKE ROW ################### -->
-            <object X="0.63" Y="1.12" type="Coke+Mentos Bottle" angle="1.57" />
             <object width="0.1" X="1.1" Y="0.93" height="0.16" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >birch_bar</property>
             </object>
             <object X="0.2" Y="1.4" type="PostIt">
-                <property key="page1" >That coke bottle blows ...&lt;br&gt;&lt;br&gt;but it blows too early</property>
-                <property key="page2" >Don't we all?</property>
-                <property key="page3" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page1" >It falls down, blows ...&lt;br&gt;&lt;br&gt;and doesn't do anything useful</property>
+                <property key="page2" >Sounds like a junk, does it?</property>
+                <property key="page3" >That's half of the problem you need to fix here...</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page5" >PS: Those dominos are quite big, aren't they?</property>
+                <property key="page1_nl" >Hij valt en spuit... &lt;br&gt;&lt;br&gt;en doet niks</property>
+                <property key="page2_nl" >Klinkt als een junk, toch?</property>
+                <property key="page3_nl" >Maar dat is maar de helft van het probleem dat je moet oplossen...</property>
+                <property key="page4_nl" >&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
+                <property key="page5_nl" >PS: Vind je die dominostenen ook niet wat groot?</property>
 	    </object>
-            <object width="0.35" X="0.825" Y="1.44" height="0.24" type="LeftRamp" angle="0" >
-                    <property key="ImageName" >left-ramp</property>
-            </object>
             <object width="0.6" X="5.7" Y="1.28" height="0.55" type="RightRamp" angle="3.14" >
                     <property key="ImageName" >right-ramp</property>
             </object>
@@ -108,7 +118,7 @@
             <object X="2.7" Y="0.2" height="0.4" type="DominoBlue" />
             <object X="2.4" Y="0.2" height="0.4" type="DominoRed" />
             <object X="2.1" Y="0.2" height="0.4" type="DominoGreen" />
-            <object width="1.2" X="5.4" Y="0.630353345554537" height="0.7392933088909257" type="LeftRamp" angle="0">
+            <object width="1.2" X="5.4" Y="0.65" height="0.70" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
             </object>
             <object width="0.35" X="0.76" Y="0.205" height="0.41" type="RectObject">
