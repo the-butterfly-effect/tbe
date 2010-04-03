@@ -1,4 +1,4 @@
-SVGSRC=modified_PET.svg
+SVGSRC=coke_PET.svg
 SVGDST=CokeMentosBottle.svg
 
 include ../Makefile 
