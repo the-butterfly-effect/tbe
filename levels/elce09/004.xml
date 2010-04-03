@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Balancing Coke</title>
+	<title lang="nl">Coke in balans</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Balance your diet? Drink Coke! Goal: Topple the pins.</description> 
+        <description lang="nl">Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om.</description> 
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
@@ -16,11 +18,12 @@
     <scene>
         <scenesize width="4.5" height="3.0" />
         <predefined>
-            <object width="2.2" X="1.4" Y="0.3" height="0.1" type="RectObject" >
+            <object width="2.2" X="1.4" Y="0.3" height="0.1" type="RectObject" ID="Bar">
                 <property key="Friction" >2.0</property>
                 <property key="Bounciness" >0.0</property>
                 <property key="Mass" >6.0</property>
-                <property key="ImageName" >used_wood_bar</property>
+                <property key="ImageName" >birch_bar</property>
+                <property key="PivotPoint">(0.3,-0.05)</property>
             </object>
             <object width="4.5" X="2.25" Y="0.05" type="Floor" >
                 <property key="Bounciness" >0.1</property>
@@ -28,12 +31,9 @@
                 <property key="ImageName" >White-to-green</property>
             </object>
             <object X="0.4" Y="0.6" type="Coke+Mentos Bottle" angle="0" >
-                <property key="Description" >This is a prepared Coke bottle with a Mentos in it.
-Look: it blows if triggered!</property>
-                <property key="ImageName" >CokeMentosBottle</property>
                 <property key="Friction" >2.0</property>
             </object>
-            <object width="0.15" X="1.70" Y="0.175" height="0.15" type="LeftRamp" angle="0" >
+	    <object width="0.15" X="1.70" Y="0.175" height="0.15" type="Scenery" angle="0" >
                 <property key="ImageName" >triangle</property>
             </object>
 			<object X="4.2" Y="0.27" type="Bowling Pin" ID="Pin1" />
@@ -70,6 +70,12 @@ Look: it blows if triggered!</property>
                 <property key="page4" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
                 <property key="page5" >Where does the cola go?</property>
                 <property key="page6" >&lt;br&gt;&lt;br&gt; ... thirsty Post-It boy</property>
+                <property key="page1_nl" >De bedoeling is om de kegels hieronder om te gooien.</property>
+                <property key="page2_nl" >Ik heb dorst!</property>
+                <property key="page3_nl" >Da's geen gewone cola fles...</property>
+                <property key="page4_nl" >Het is een Coke-Mentos fontein, klaar om te spuiten!&lt;br&gt;Een lichte schok is genoeg!</property>
+                <property key="page5_nl" >Maar waar gaat de cola heen?</property>
+                <property key="page6_nl" >&lt;br&gt;&lt;br&gt; ... dorstige Post-It boy</property>
 	    </object>
         </predefined>
     </scene>
