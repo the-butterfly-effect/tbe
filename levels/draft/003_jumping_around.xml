@@ -24,7 +24,7 @@
                 <property key="ImageName" >birch_bar</property>
             </object>
 
-            <object width="0.6" X="0.3" Y="2.6" height="0.4" type="RightRamp">
+            <object width="0.6" X="0.3" Y="2.64" height="0.4" type="RightRamp">
                 <property key="ImageName" >right-ramp</property>
 	    </object>
 
@@ -33,6 +33,10 @@
                 <property key="page2" >I don't think the Bowling Ball can reach the pin...</property>
                 <property key="page3" >But that ball has a jumpy friend!</property>
                 <property key="page4" >the Post-It Boy</property>
+                <property key="page1_nl" >Bowlingbal tegen Kegel.&lt;br&gt;&lt;br&gt;Wie zal winnen?</property>
+                <property key="page2_nl" >Ik denk niet dat de bal de kegel een haar kan krenken...</property>
+                <property key="page3_nl" >Maar die bal heeft nog een springerig vriendje!</property>
+                <property key="page4_nl" >de Post-It Boy</property>
 	    </object>
             
 
