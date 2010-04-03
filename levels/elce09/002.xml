@@ -23,24 +23,24 @@
             <object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="2.1" Y="0.43" width="0.1" height="0.1" type="Scenery" ID="Flower">
+            <object X="2.1" Y="0.432" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
-            <object width="1.5" X="0.75" Y="0.075" height="0.15" type="Floor" >
+            <object width="1.5" X="0.75" Y="0.085" height="0.17" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
             <object width="0.5" X="1.75" Y="0.075" height="0.15" type="Scenery" >
                 <property key="ImageName" >basket</property>
             </object>
-            <object width="0.3" X="2.15" Y="0.075" height="0.15" type="Floor" >
+            <object width="0.3" X="2.15" Y="0.085" height="0.17" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
-			<object X="0.5" Y="0.44" type="Butterfly" ID="Butterfly">
+			<object X="0.5" Y="0.46" type="Butterfly" ID="Butterfly">
                 <property key="ImageName" >Butterfly</property>
                 <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
-            <object X="1.4" Y="0.27" type="Volley Ball" />
+            <object X="1.4" Y="0.29" type="Volley Ball" />
             <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" >
                 <property key="ImageName" >right-ramp</property>
             </object>
