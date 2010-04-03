@@ -20,12 +20,15 @@
   <defs
      id="defs5739">
     <linearGradient
-       inkscape:collect="always"
        id="linearGradient6258">
       <stop
          style="stop-color:#008000;stop-opacity:1;"
          offset="0"
          id="stop6260" />
+      <stop
+         id="stop3229"
+         offset="0.94950616"
+         style="stop-color:#008000;stop-opacity:0.38011697;" />
       <stop
          style="stop-color:#008000;stop-opacity:0;"
          offset="1"
@@ -44,9 +47,10 @@
        id="linearGradient6264"
        x1="420"
        y1="626.64795"
-       x2="422.85715"
-       y2="293.79077"
-       gradientUnits="userSpaceOnUse" />
+       x2="418.98871"
+       y2="258.07651"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.001545,0,-0.9682066)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -58,14 +62,14 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="375"
-     inkscape:cy="520"
+     inkscape:zoom="0.51700504"
+     inkscape:cx="281.42859"
+     inkscape:cy="197.14286"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="746"
-     inkscape:window-height="729"
+     inkscape:window-height="783"
      inkscape:window-x="487"
      inkscape:window-y="42" />
   <metadata
@@ -85,11 +89,11 @@
      id="layer1"
      transform="translate(-102.85714,-258.07648)">
     <rect
-       style="fill:url(#linearGradient6264);fill-opacity:1;stroke:none;stroke-width:10.05010033;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6264);fill-opacity:1;stroke:none;stroke-width:10.05010032999999936;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect5747"
        width="562.85718"
-       height="368.57144"
+       height="369.14093"
        x="102.85714"
-       y="258.07648" />
+       y="257.50702" />
   </g>
 </svg>
