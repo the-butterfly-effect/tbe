@@ -13,7 +13,7 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
-   sodipodi:docname="jumpingjack_diy.svg"
+   sodipodi:docname="jumpingjack.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <sodipodi:namedview
      id="base"
@@ -25,16 +25,16 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.36753496"
-     inkscape:cx="422.05229"
-     inkscape:cy="523.74627"
+     inkscape:zoom="0.55859332"
+     inkscape:cx="373.82949"
+     inkscape:cy="518.75574"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="973"
-     inkscape:window-x="1276"
-     inkscape:window-y="-4"
+     inkscape:window-width="1272"
+     inkscape:window-height="783"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      showguides="true"
      inkscape:guide-bbox="true">
     <inkscape:grid
@@ -61,7 +61,25 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Jumping Jack for Office Parties</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>kaa-ching (Klaas van Gend)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>original work for 'The Butterfly Effect' game</dc:source>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -663,30 +681,17 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
-       x="43.066551"
-       y="61.65522"
+       style="font-size:45.94035339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="44.779369"
+       y="59.00964"
        id="text3483"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       transform="scale(0.9570907,1.044833)"><tspan
          sodipodi:role="line"
          id="tspan3485"
-         x="43.066551"
-         y="61.65522">De Kantoorfeestjes trekpop</tspan></text>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot3487"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
-       transform="matrix(0,-1,1,0,-289.77907,1337.2405)"><flowRegion
-         id="flowRegion3489"><rect
-           id="rect3491"
-           width="397.24112"
-           height="225.82886"
-           x="314.25583"
-           y="589.82117"
-           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans" /></flowRegion><flowPara
-         id="flowPara3493">Print uit en plak op karton of zwaar papier. Verander het gezicht zodat het lijkt op de jarige. Kleur in (of laat je kind 't doen). Knip langs de randjes. Maak gaatjes in alle zwarte punten en plaats splitpennen en touwtjes zoals hierbeneden aangegeven.</flowPara><flowPara
-         id="flowPara3495" /><flowPara
-         id="flowPara3497">Trek aan het touwtje en het feest kan beginnen!</flowPara></flowRoot>    <g
+         x="44.779369"
+         y="59.00964">Jumping Jack for Office Parties</tspan></text>
+    <g
        id="g4352"
        transform="matrix(0.4288908,0,0,0.4288908,128.48502,599.26901)">
       <path
@@ -908,5 +913,21 @@
          id="tspan4381"
          x="247.5955"
          y="467.38382">(C) Kaa-ching 2010</tspan></text>
-  </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2776"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       transform="matrix(0,-1,1,0,-276.01283,1336.061)"><flowRegion
+         id="flowRegion2778"><rect
+           id="rect2780"
+           width="397.24112"
+           height="225.82886"
+           x="314.25583"
+           y="589.82117"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans" /></flowRegion><flowPara
+         id="flowPara2786">Print it and glue to cardboard.</flowPara><flowPara
+         id="flowPara2793">Modify the face to match the birthday boy/girl.</flowPara><flowPara
+         id="flowPara2795">Colorize the drawing (or have your kids do it). Cut around the lines and put pins and wires as depicted below.</flowPara><flowPara
+         id="flowPara2797" /><flowPara
+         id="flowPara2799">Pull the string and the party can start!!!</flowPara></flowRoot>  </g>
 </svg>
