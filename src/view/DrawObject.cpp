@@ -127,19 +127,23 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
-	// before we check for collision, let's make sure the cross is not colliding...
-	if (theCrossPtr != NULL)
-		theCrossPtr->setVisible(false);
-	bool isColliding = (scene()->collidingItems(this).isEmpty() == false);
-	if (theCrossPtr != NULL)
-		theCrossPtr->setVisible(true);
-
-	// adjust the existence of the cross depending on the collision state
-	if (isColliding == true && theCrossPtr==NULL)
-		theCrossPtr = new Cross(this);
-	if (isColliding == false && theCrossPtr!=NULL)
-		removeCollisionCross();
-
+	bool isColliding = false;
+	int myCount = scene()->collidingItems(this).count();
+	if (theCrossPtr!=NULL)
+	{
+		if (myCount>1)
+			isColliding = true;
+		else
+			removeCollisionCross();
+	}
+	else
+	{
+		if (myCount>0)
+		{
+			isColliding = true;
+			theCrossPtr = new Cross(this);
+		}
+	}
 	return isColliding;
 }
 
@@ -155,17 +159,17 @@ void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 {
-	DEBUG4("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
+	DEBUG5("createBitmap for %p (%dx%d)\n", this, aWidth, aHeight);
 	float myWidth = aWidth;
 	float myHeight= aHeight;
 	if (aWidth==0 || aHeight == 0)
 	{
 		float myPixPerUnit = ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
-		DEBUG4("   %f pix/m at %f x %f\n", myPixPerUnit, theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
+		DEBUG5("   %f pix/m at %f x %f\n", myPixPerUnit, theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
 		myWidth = theBaseObjectPtr->getTheWidth() *myPixPerUnit;
 		myHeight= theBaseObjectPtr->getTheHeight()*myPixPerUnit;
 	}
-	DEBUG4("   will do %f x %f bitmap\n", myWidth, myHeight);
+	DEBUG5("   will do %f x %f bitmap\n", myWidth, myHeight);
 	assert(myWidth>0);
 	assert(myHeight>0);
 
@@ -350,7 +354,7 @@ void DrawObject::removeCollisionCross(void)
 
 DrawObject::Cross::Cross(DrawObject* aParent)
 {
-	DEBUG1("Cross::Cross()\n");
+	DEBUG5("Cross::Cross()\n");
 	if (theCrossRendererPtr==NULL)
 	{
 		theCrossRendererPtr = ImageStore::getRenderer("BigCross");
