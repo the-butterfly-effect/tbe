@@ -9,8 +9,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="177.16536"
-   height="24.80315"
+   width="178.16536"
+   height="25.511494"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
@@ -129,9 +129,9 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1241"
-     inkscape:window-height="778"
-     inkscape:window-x="-4"
-     inkscape:window-y="-3"
+     inkscape:window-height="782"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      showguides="true"
      inkscape:guide-bbox="true" />
   <metadata
@@ -149,7 +149,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-97.14286,-307.55905)">
+     transform="translate(-96.64286,-307.19557)">
     <g
        id="g3404"
        transform="matrix(-1,0,0,1,371.45108,0)">
