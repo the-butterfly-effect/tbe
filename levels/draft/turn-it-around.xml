@@ -1,0 +1,95 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Turn it around</title>
+        <title lang="nl">Draai de lat</title>
+        <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>A ball on a bar. Turn it around. Topple the pin.</description>
+        <description lang="nl">Een bal op een lat. Draai de lat. Kegel de kegel.</description>
+        <date>04/17/10</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Hammer">
+	    <object width="0.45" height="0.18" type="RectObject" >
+                <property key="ImageName">hammer</property>
+                <property key="Mass">15.0</property>
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.0</property>
+                <property key="PivotPoint">(0.2,0)</property>
+	    </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp /">
+            <object width="1.6" height="0.5" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp \">
+            <object width="1.6" height="0.5" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.4" height="3" />
+        <predefined>
+
+            <object X="0.78" Y="0.32" width="1.2" height="0.1" type="RectObject" angle="-0.45">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            
+	    <object width="1.8" X="2.2" Y="0.05" height="0.10" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Friction" >0.4</property>
+            </object>
+
+            <object X="3.62" Y="0.32" width="1.2" height="0.1" type="RectObject" angle="0.45">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+
+
+  <object X="2.2" Y="2.6" type="PostIt">
+      <property key="page1">This is not a stable equibrium, any excitation will make it move.</property>
+      <property key="page2">Topple pin to the right.&lt;br&gt;No: Left!&lt;br&gt;OK, OK, to the right.</property>
+      <property key="page3">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;...me</property>
+      <property key="page1_nl">Dit is geen stabiel evenwicht, elke aanraking start de beweging.</property>
+      <property key="page2_nl">Kegel naar rechts.&lt;br&gt;Nee: naar links!&lt;br&gt;Okee, okee - toch naar rechts.</property>
+      <property key="page3_nl">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;...ikke</property>
+  </object>
+
+
+            <object X="2.2" Y="1.9" width="0.1" height="0.1" type="RectObject" ID="BrassPin">
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >4.5</property>
+            </object>
+
+            <object X="2.2" Y="1.9" width="2.8" height="0.15" type="RectObject" ID="Bar">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >8</property>
+                <property key="Friction" >0.7</property>
+                <property key="Resizable" >none</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+	    <object type="PivotPoint" X="2.2" Y="1.9">
+	      <property key="object1">Bar</property>
+	      <property key="object2">BrassPin</property>
+	      <property key="collide">false</property>
+	    </object>
+
+            <object X="2.2" Y="2.08" type="Bowling Ball" />
+
+            <object X="2.2" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+
+        </predefined>
+    </scene>
+    <goals>
+	    <goal type="positionchange">
+		<property key="xover">2.6</property>
+		<property key="object">BowlingPin</property>
+	    </goal>
+    </goals>
+</tbe-level>
