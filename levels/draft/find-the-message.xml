@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Find the Message...</title>
+        <title lang="nl">Zoek de boodschap...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>The Large rectangular objects can move - and there's a message behind them.</description>
+        <description>The large rectangular objects can move - and there's a message behind them.</description>
+        <description lang="nl">De grote balken kunnen bewegen - en er zit een boodschap achter.</description>
         <date>12/21/09</date>
     </levelinfo>
      <toolbox>
@@ -113,6 +115,10 @@
                 <property key="page2"> :-( </property>
                 <property key="page3">Look for the last message</property>
                 <property key="page4">... the Post-It Boy</property>
+                <property key="page1_nl">Het is bijna tijd om afscheid te nemen</property>
+                <property key="page2_nl"> :-( </property>
+                <property key="page3_nl">Zoek een laatste bericht</property>
+                <property key="page4_nl">... Post-It Boy</property>
 	    </object>
             
         </predefined>

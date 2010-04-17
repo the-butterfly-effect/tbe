@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>The House of Cards</title>
+        <title lang="nl">Het Kaartenhuis</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>How do YOU demolish a house of cards?</description>
+        <description lang="nl">Hoe sloop JIJ een kaartenhuis?</description>
         <date>12/03/09</date>
     </levelinfo>
      <toolbox>
@@ -29,6 +31,11 @@
                 <property key="page3" >Your job:&lt;br&gt;tear it down!</property>
                 <property key="page4" >&lt;br&gt; was signed:&lt;br&gt;&lt;br&gt;the Post-It boy
                           &lt;br&gt;(in a destructive mood)</property>
+                <property key="page1_nl" >Een kaartenhuis.</property>
+                <property key="page2_nl" >Zoals je weet,&lt;br&gt;zijn deze niet zo stevig.</property>
+                <property key="page3_nl" >Jouw taak:&lt;br&gt;slopen!</property>
+                <property key="page4_nl" >&lt;br&gt; getekend:&lt;br&gt;&lt;br&gt;Post-It boy
+                          &lt;br&gt;(in een destructieve stemming)</property>
             </object>
 
             <object width="0.1" X="1.5" Y="1.5" height="3.0" type="RectObject" angle="2.97">

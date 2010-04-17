@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Pin rack</title>
+        <title lang="nl">Spijkerraam</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Score 100 points by putting the Tennis ball into the right slot.</description>
+        <description lang="nl">Scoor 100 punten door de tennisbal in het juiste vakje te laten vallen.</description>
         <date>Feb 28, 2010</date>
     </levelinfo>
     <toolbox>
@@ -72,6 +74,11 @@
                 <property key="page3" >As you can guess, I only want maximum score...</property>
                 <property key="page4" >One Hundred, please!</property>
                 <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page1_nl" >Nog een spelletje uit mijn vroege jeugd.</property>
+                <property key="page2_nl" >En wederom mijn geweldige hemelhaakjes.</property>
+                <property key="page3_nl" >Zoals je vast al geraden hebt, wil ik alleen een maximale score...</property>
+                <property key="page4_nl" >Honderd, graag!</property>
+                <property key="page5_nl" >&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
 	    </object>
 	    
 	    <object X="1.5" Y="3.9" width="0.45" height="0.18" type="RectObject" >

@@ -45,12 +45,12 @@
                 <property key="page4" >Don't tell anyone about it, I still need to file a patent!</property>
                 <property key="page5" >Have you read 'Focault's Pendulum'?</property>
                 <property key="page6" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
-                <property key="page1" lang="nl">Kijk, dat is nou een hemelhaakje.&lt;br&gt;&lt;br&gt;Een slimme uitvinding, al zeg ik 't zelf...</property>
-                <property key="page2" lang="nl">Hang 't in de lucht &lt;br&gt; en het blijft hangen.</property>
-                <property key="page3" lang="nl">En je kunt er nog een hoop gewicht aan hangen, ook!</property>
-                <property key="page4" lang="nl">(Niet verder vertellen, ik moet 't patent nog steeds aanvragen)</property>
-                <property key="page5" lang="nl">Heb je toevallig 'De slinger van Focault' gelezen?</property>
-                <property key="page6" lang="nl">&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
+                <property key="page1_nl">Kijk, dat is nou een hemelhaakje.&lt;br&gt;&lt;br&gt;Een slimme uitvinding, al zeg ik 't zelf...</property>
+                <property key="page2_nl">Hang 't in de lucht &lt;br&gt; en het blijft hangen.</property>
+                <property key="page3_nl">En je kunt er nog een hoop gewicht aan hangen, ook!</property>
+                <property key="page4_nl">(Niet verder vertellen, ik moet 't patent nog steeds aanvragen)</property>
+                <property key="page5_nl">Heb je toevallig 'De slinger van Focault' gelezen?</property>
+                <property key="page6_nl">&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
 	    </object>
 	    
             <object X="2.72" Y="3.5" type="Skyhook" ID="Skyhook"/>
