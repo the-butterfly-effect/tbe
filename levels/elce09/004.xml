@@ -69,13 +69,13 @@
                 <property key="page3" >But that's not an ordinary cola bottle...</property>
                 <property key="page4" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
                 <property key="page5" >Where does the cola go?</property>
-                <property key="page6" >&lt;br&gt;&lt;br&gt; ... thirsty Post-It boy</property>
+                <property key="page6" >&lt;br&gt;&lt;br&gt; ... thirsty Post-it Boy</property>
                 <property key="page1_nl" >De bedoeling is om de kegels hieronder om te gooien.</property>
                 <property key="page2_nl" >Ik heb dorst!</property>
                 <property key="page3_nl" >Da's geen gewone cola fles...</property>
                 <property key="page4_nl" >Het is een Coke-Mentos fontein, klaar om te spuiten!&lt;br&gt;Een lichte schok is genoeg!</property>
                 <property key="page5_nl" >Maar waar gaat de cola heen?</property>
-                <property key="page6_nl" >&lt;br&gt;&lt;br&gt; ... dorstige Post-It boy</property>
+                <property key="page6_nl" >&lt;br&gt;&lt;br&gt; ... dorstige Post-it Boy</property>
 	    </object>
         </predefined>
     </scene>
