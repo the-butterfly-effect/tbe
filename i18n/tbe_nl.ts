@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="17"/>
         <source>Choose your game!</source>
-        <translation type="unfinished">Kies je spel!</translation>
+        <translation>Kies je spel!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="23"/>
@@ -14,14 +14,14 @@
 
 Double-click for the post-it notes for help.
 </source>
-        <translation type="unfinished">Selecteer het level dat je wilt spelen.
+        <translation>Selecteer het level dat je wilt spelen.
 
 Dubbelklik op de post-it briefjes voor hulp.</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="40"/>
         <source>#</source>
-        <translation type="unfinished"></translation>
+        <translation>nummer</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="45"/>
@@ -69,17 +69,17 @@ Parse error at line %1, column %2:
         <translation type="obsolete">Je kunt nu niets wijzigen. Je moet eerst de stopwatch resetten.</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="210"/>
+        <location filename="../src/view/DrawWorld.cpp" line="272"/>
         <source>You cannot make changes now. You need to reset the stopwatch first.</source>
         <translation>Je kunt nu niets wijzigen. Je moet eerst de stopwatch resetten.</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="221"/>
+        <location filename="../src/view/DrawWorld.cpp" line="283"/>
         <source>Death!!!</source>
         <translation>Dood!!!</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="256"/>
+        <location filename="../src/view/DrawWorld.cpp" line="318"/>
         <source>Congratulations</source>
         <translation>Gefeliciteerd</translation>
     </message>
@@ -118,34 +118,34 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/model/Level.cpp" line="180"/>
         <source>scene width or height unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte of hoogte scene niet opgegeven</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="205"/>
         <location filename="../src/model/Level.cpp" line="250"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>verwachtte sectie &lt;%1&gt;, kreeg &lt;%2&gt;</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="212"/>
         <location filename="../src/model/Level.cpp" line="257"/>
         <source>createObjectFromDom failed</source>
-        <translation type="unfinished"></translation>
+        <translation>createObjectFromDom weigerde</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="231"/>
         <source>no &lt;%1&gt; section found!</source>
-        <translation type="unfinished"></translation>
+        <translation>geen sectie &lt;%1&gt; gevonden!</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="262"/>
         <source>&lt;%1&gt; properties could not be parsed</source>
-        <translation type="unfinished"></translation>
+        <translation>eigenschappen voor &lt;%1&gt; werden niet begrepen</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="335"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand &apos;%1&apos; niet schrijven vanwege: %2</translation>
     </message>
 </context>
 <context>
@@ -158,7 +158,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/MainWindow.cpp" line="48"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Z</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="51"/>
@@ -168,27 +168,37 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/MainWindow.cpp" line="53"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-Y</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="53"/>
         <source>Shift+Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="100"/>
-        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.cpp" line="96"/>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.</source>
+        <translation>&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="111"/>
+        <location filename="../src/view/MainWindow.cpp" line="106"/>
+        <source>&lt;b&gt;The Butterfly Effect - Brand names&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Coke&lt;/b&gt;, diet Coke, Coca Cola and the bottle shape are world-wide registered trademarks of the Coca Cola company.&lt;br&gt;&lt;b&gt;Mentos&lt;/b&gt; is a registered trademark of Perfetti Van Melle.&lt;br&gt;The use of a Mentos in diet Coke is widely described - and apparently works best with diet Coke and Mentos. &lt;br&gt;&lt;br&gt;&lt;b&gt;Post-it&lt;/b&gt; is a registered trademark of 3M. &lt;br&gt;&lt;br&gt;&apos;The Butterfly Effect&apos; as a concept of chaos theory has existed since at least the mid 1950s. We are not affiliated with the 2004 movie in any way.</source>
+        <translation>&lt;b&gt;Het vlindereffect - merknamen&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Coke&lt;/b&gt;, diet Coke, Coca-Cola en de vorm van de fles zijn wereldwijd geregistreerde merknamen van the Coca Cola Company.&lt;br&gt;&lt;b&gt;Mentos&lt;/b&gt; is een geregistreerd handelsmerk van Perfetti Van Melle.&lt;br&gt;Het gebruik van Mentos in diet Coke is uitvoerig gedocumenteerd en werkt klaarblijkelijk het beste met diet Coke en Mentos.&lt;br&gt;&lt;br&gt;&lt;b&gt;Post-it&lt;/b&gt; is een geregistreerd handelsmerk van 3M.&lt;br&gt;&lt;br&gt;&apos;The Butterfly Effect&apos; oftewel het vlindereffect als een begrip voor chaostheorie bestaat op z&apos;n minst sinds halverwege de jaren 1950. Er is geen verband met de film uit 2004.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="123"/>
+        <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2DPhysics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses Nokia&apos;s Qt as GUI toolkit. We are happy with the continued support of Qt by Nokia. Please refer to http://qt.nokia.com/ .</source>
+        <translation>&lt;b&gt;Het vlindereffect - bibliotheken&lt;/b&gt;&lt;br&gt;&lt;br&gt;Het vlindereffect is een trots gebruiker van de Box@d Physics Library. Meer informatie is te vinden op http://www.box2d.org/ . &lt;br&gt;Het vlindereffect gebruikt Nokia&apos;s Qt voor alle schermweergave. Wij zijn blij met de voortdurende ondersteuning van Nokia voor Qt. Meer informatie over Qt op: http://qt.nokia.com/ .</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="136"/>
         <source>Open level</source>
-        <translation type="unfinished"></translation>
+        <translation>Open level</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="111"/>
+        <location filename="../src/view/MainWindow.cpp" line="136"/>
         <source>TBE levels (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlindereffect levels (*.xml)</translation>
     </message>
     <message>
         <source>Open Level</source>
@@ -203,7 +213,7 @@ Parse error at line %1, column %2:
         <translation type="obsolete">TBE Levels (*.xml *.tbe)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="138"/>
+        <location filename="../src/view/MainWindow.cpp" line="163"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Je hebt nog niet alle velden ingevuld - maar het level wordt toch opgeslagen
@@ -218,16 +228,16 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/MainWindow.ui" line="40"/>
         <source>The Tool Box</source>
-        <translation type="unfinished">Gereedschapskist</translation>
+        <translation>Gereedschapskist</translation>
     </message>
     <message>
         <source>Game Controls</source>
         <translation type="obsolete">Spelbesturing</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="229"/>
+        <location filename="../src/view/MainWindow.ui" line="232"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -237,10 +247,11 @@ Parse error at line %1, column %2:
         <location filename="../src/view/MainWindow.ui" line="77"/>
         <source>You can click on the stopwatch to start/stop the simulation.
 Once the simulation has run and is stopped, you can reset the simulation using the reset arrow.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op de stopwatch om de simulatie te starten of stoppen.
+Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="127"/>
+        <location filename="../src/view/MainWindow.ui" line="130"/>
         <source>&amp;File</source>
         <translation>&amp;Bestand</translation>
     </message>
@@ -255,136 +266,150 @@ Once the simulation has run and is stopped, you can reset the simulation using t
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="118"/>
+        <location filename="../src/view/MainWindow.ui" line="121"/>
         <source>&amp;View</source>
         <translation>Beel&amp;d</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="140"/>
+        <location filename="../src/view/MainWindow.ui" line="143"/>
         <source>&amp;Simulation</source>
         <translation>&amp;Simulatie</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="144"/>
-        <source>adjust the simulation speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/view/MainWindow.ui" line="147"/>
-        <source>Sim Speed</source>
-        <translation type="unfinished">Snelheid</translation>
+        <source>adjust the simulation speed</source>
+        <translation>pas de simulatiesnelheid aan</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="168"/>
+        <location filename="../src/view/MainWindow.ui" line="150"/>
+        <source>Sim Speed</source>
+        <translation>Snelheid</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="171"/>
         <source>Save...</source>
         <translation>Opslaan...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="173"/>
         <source>About...</source>
-        <translation>&amp;Info...</translation>
+        <translation type="obsolete">&amp;Info...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="181"/>
+        <location filename="../src/view/MainWindow.ui" line="184"/>
         <source>Restart Level...</source>
-        <translation type="unfinished">Herstart Level...</translation>
+        <translation>Herstart Level...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="189"/>
+        <location filename="../src/view/MainWindow.ui" line="192"/>
         <source>&amp;Open savegame...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="197"/>
+        <location filename="../src/view/MainWindow.ui" line="200"/>
         <source>Zoom to all...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.ui" line="205"/>
-        <source>Zoom In</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitzoomen tot alles zichtbaar is...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="208"/>
-        <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <source>Zoom In</source>
+        <translation>Inzoomen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="216"/>
-        <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.ui" line="211"/>
+        <source>Ctrl++</source>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="219"/>
-        <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <source>Zoom Out</source>
+        <translation>Uitzoomen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="224"/>
+        <location filename="../src/view/MainWindow.ui" line="222"/>
+        <source>Ctrl+-</source>
+        <translation>Ctrl+-</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="227"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="234"/>
+        <location filename="../src/view/MainWindow.ui" line="237"/>
         <source>S&amp;top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="239"/>
+        <location filename="../src/view/MainWindow.ui" line="242"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Reset</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="244"/>
         <location filename="../src/view/MainWindow.ui" line="247"/>
         <location filename="../src/view/MainWindow.ui" line="250"/>
+        <location filename="../src/view/MainWindow.ui" line="253"/>
         <source>Open level...</source>
-        <translation type="unfinished"></translation>
+        <translation>Open level...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="299"/>
+        <location filename="../src/view/MainWindow.ui" line="302"/>
         <source>Open custom level...</source>
-        <translation type="unfinished"></translation>
+        <translation>Open aangepast level...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="258"/>
-        <source>1/4 speed</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.ui" line="307"/>
+        <source>&amp;Brand names...</source>
+        <translation>&amp;Merknamen...</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="312"/>
+        <source>&amp;Libraries...</source>
+        <translation>&amp;Bibliotheken...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="261"/>
-        <source>makes the simulation run at quarter speed</source>
-        <translation type="unfinished"></translation>
+        <source>1/4 speed</source>
+        <translation>1/4 snelheid</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="269"/>
-        <source>1/2 speed</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.ui" line="176"/>
+        <source>&amp;About...</source>
+        <translation>&amp;Info...</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="264"/>
+        <source>makes the simulation run at quarter speed</source>
+        <translation>speel simulatie op een kwart van de snelheid</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="272"/>
-        <source>makes the simulation run at half speed</source>
-        <translation type="unfinished"></translation>
+        <source>1/2 speed</source>
+        <translation>1/2 speed</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="280"/>
-        <source>1/1 speed</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.ui" line="275"/>
+        <source>makes the simulation run at half speed</source>
+        <translation>speel de simulatie op halve snelheid</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="283"/>
-        <source>makes the simulation run at normal &quot;real world&quot; speed</source>
-        <translation type="unfinished"></translation>
+        <source>1/1 speed</source>
+        <translation>1/1 speed</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="291"/>
-        <source>2x speed</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/MainWindow.ui" line="286"/>
+        <source>makes the simulation run at normal &quot;real world&quot; speed</source>
+        <translation>speel simulatie op normale snelheid</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="294"/>
+        <source>2x speed</source>
+        <translation>2x snelheid</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="297"/>
         <source>makes the simulation run at double speed</source>
-        <translation type="unfinished"></translation>
+        <translation>speel de simulatie op dubbele snelheid</translation>
     </message>
 </context>
 <context>
@@ -463,12 +488,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/PostItViewer.ui" line="142"/>
         <source>Next&gt;</source>
-        <translation type="unfinished">Volgende&gt;</translation>
+        <translation>Volgende&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/PostItViewer.ui" line="149"/>
         <source>Cancel</source>
-        <translation type="unfinished">Afbreken</translation>
+        <translation>Afbreken</translation>
     </message>
 </context>
 <context>
@@ -490,8 +515,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="69"/>
-        <source>A volleyball - you know: light, soft and fairly bouncy.</source>
+        <source>A volley ball - you know: light, soft and fairly bouncy.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A volleyball - you know: light, soft and fairly bouncy.</source>
+        <translation type="obsolete">Een volleybal - licht, zacht en vrij stuiterig.</translation>
     </message>
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="77"/>
@@ -520,7 +549,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="82"/>
-        <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.The famous plastic red domino stone</source>
+        <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -544,29 +573,45 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/model/PolyObject.cpp" line="109"/>
+        <source>Left Ramp</source>
+        <translation>Helling naar links</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="110"/>
+        <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
+        <translation>Dit is een helling. Links is lager dan rechts, dus natuurlijk glijden dingen naar links.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="117"/>
+        <source>Right Ramp</source>
+        <translation>Helling naar rechts</translation>
+    </message>
+    <message>
         <location filename="../src/model/Floor.h" line="54"/>
         <source>Floor</source>
-        <translation type="unfinished"></translation>
+        <translation>Vloer</translation>
     </message>
     <message>
         <location filename="../src/model/Floor.h" line="60"/>
         <source>This is a floor piece: flat and horizontal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een stuk vloer: vlak en horizontaal.</translation>
     </message>
     <message>
         <location filename="../src/model/CokeMentosBottle.cpp" line="46"/>
         <source>This is a prepared Coke bottle with a Mentos in it.
 Look: it blows if triggered!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een geprepareerde fles Cola light met een Mentos erin.
+Kijk: hij zal spuiten als je &apos;m schudt.</translation>
     </message>
     <message>
         <location filename="../src/model/CokeMentosBottle.cpp" line="47"/>
         <source>Coke+Mentos Bottle</source>
-        <translation type="unfinished"></translation>
+        <translation>Fles Cola light met Mentos</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.h" line="43"/>
-        <source>PostIt</source>
+        <source>Post-it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -574,27 +619,14 @@ Look: it blows if triggered!</source>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
-        <translation type="unfinished"></translation>
+        <translation>Iemand heeft allemaal gele velletjes achtergelaten.
+Met notities erop.
+Misschien wil je ze lezen - het zou kunnen helpen!</translation>
     </message>
     <message>
-        <location filename="../src/model/Ramp.h" line="54"/>
-        <source>RightRamp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Ramp.h" line="60"/>
+        <location filename="../src/model/PolyObject.cpp" line="118"/>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Ramp.h" line="107"/>
-        <source>LeftRamp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Ramp.h" line="113"/>
-        <source>This is a ramp. The right is higher than the left, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een helling. Links is hoger dan rechts, dus natuurlijk glijden dingen naar rechts.</translation>
     </message>
     <message>
         <source>Your average volleyball - it&apos;s light, soft and fairly bouncy.</source>
@@ -608,77 +640,77 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/model/Butterfly.h" line="44"/>
         <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlinder (Flappus Chaoticus Kapottus Snellus) - altijd op zoek naar bloemen.</translation>
     </message>
     <message>
         <location filename="../src/model/Scenery.h" line="43"/>
         <source>Scenery</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtergrond</translation>
     </message>
     <message>
-        <location filename="../src/view/toolbox.cpp" line="92"/>
+        <location filename="../src/view/toolbox.cpp" line="126"/>
         <source>%1x %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1x %2</translation>
     </message>
     <message>
         <location filename="../src/base/UndoDeleteCommand.cpp" line="37"/>
         <source>Delete %1</source>
-        <translation type="unfinished">Verwijder %1</translation>
+        <translation>Verwijder %1</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoInsertCommand.cpp" line="33"/>
+        <location filename="../src/base/UndoInsertCommand.cpp" line="36"/>
         <source>Insert %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg %1 toe</translation>
     </message>
     <message>
         <location filename="../src/base/UndoMoveCommand.cpp" line="35"/>
         <source>Move %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats %1</translation>
     </message>
     <message>
         <location filename="../src/base/UndoResizeCommand.cpp" line="39"/>
         <source>Resize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas afmetingen %1 aan</translation>
     </message>
     <message>
         <location filename="../src/model/PivotPoint.h" line="58"/>
         <source>PivotPoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Schanier</translation>
     </message>
     <message>
         <location filename="../src/model/PivotPoint.h" line="72"/>
         <source>Objects rotate around this point</source>
-        <translation type="unfinished"></translation>
+        <translation>Objecten draaien om dit punt</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="77"/>
         <source>Domino (Red)</source>
-        <translation type="unfinished"></translation>
+        <translation>Domino (Rood)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="78"/>
         <source>The famous plastic red domino stone</source>
-        <translation type="unfinished"></translation>
+        <translation>De beroemde plastic rode domino steen</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="82"/>
         <source>Domino (Blue)</source>
-        <translation type="unfinished"></translation>
+        <translation>Domino (Blauw)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="83"/>
         <source>The famous plastic blue domino stone</source>
-        <translation type="unfinished"></translation>
+        <translation>De beroemde plastic blauwe domino steen</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="87"/>
         <source>Domino (Green)</source>
-        <translation type="unfinished"></translation>
+        <translation>Domino (Groen)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="88"/>
         <source>The famous plastic green domino stone</source>
-        <translation type="unfinished"></translation>
+        <translation>De beroemde plastic groene domino steen</translation>
     </message>
 </context>
 <context>
@@ -686,18 +718,19 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="93"/>
         <source>Save Level</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla Level op</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="93"/>
         <source>TBE levels (*.tbe *.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>vlindereffect levels (*.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="110"/>
         <source>A File with name &apos;%1&apos; file already exists. Overwrite?
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Een bestand genaamd &apos;%1&apos; bestaat al. Overschrijven?
+</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="14"/>
@@ -707,52 +740,52 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="22"/>
         <source>File name to save to:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestandsnaam om meet op te slaan:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="39"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="48"/>
         <source>Level information</source>
-        <translation type="unfinished"></translation>
+        <translation>Level informatie</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="54"/>
         <source>Title*:</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel*:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="71"/>
         <source>Author Name*:</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteur*:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="88"/>
         <source>License:</source>
-        <translation type="unfinished"></translation>
+        <translation>Licentie:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="95"/>
         <source>GPLv2</source>
-        <translation type="unfinished"></translation>
+        <translation>GPLv2</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="102"/>
         <source>Date:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="115"/>
-        <source>Level Description (make sure to use Postman for hints)*:</source>
+        <source>Level Description (make sure to use Post-it notes for hints)*:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="140"/>
         <source>*: information shown at level start</source>
-        <translation type="unfinished"></translation>
+        <translation>*: informatie wordt getoond bij de aanvang van het level</translation>
     </message>
 </context>
 <context>
