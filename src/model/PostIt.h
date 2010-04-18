@@ -40,7 +40,7 @@ public:
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{
-		return QObject::tr("PostIt");
+		return QObject::tr("Post-it");
 	}
 
 	/// returns the Tooltip of the object.

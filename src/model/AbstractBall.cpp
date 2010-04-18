@@ -66,7 +66,7 @@ static BallObjectFactory theBBFactory("Bowling Ball",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theVBFactory("Volley Ball",
 	QObject::tr("Volley Ball"),
-	QObject::tr("A volleyball - you know: light, soft and fairly bouncy."),
+	QObject::tr("A volley ball - you know: light, soft and fairly bouncy."),
 	"VolleyBall", 0.105, 0.280, 0.65);
 
 
