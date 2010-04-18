@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Blow da Bottle</title>
+        <title lang="nl">Laat de fles knallen</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Goal: join all bowling pins together.</description>
+        <description lang="nl">Doel: breng alle kegels samen.</description>
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
@@ -83,7 +85,11 @@
                 <property key="page1" >Those pins always long for company.</property>
                 <property key="page2" >Let's join the lonely one above with his friends below.</property>
                 <property key="page3" >By the way: you may sometimes have more in your toolbox than you need...</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-it Boy</property>
+                <property key="page1_nl" >Die kegels verlangen altijd naar gezelschap.</property>
+                <property key="page2_nl" >Laten we 'm eens bij zijn vriendjes beneden brengen.</property>
+                <property key="page3_nl" >Overigens: soms heb je meer in je gereedschapskist dan je nodig hebt...</property>
+                <property key="page4_nl" >&lt;br&gt;&lt;br&gt; ... Post-it Boy</property>
 	    </object>
         </predefined>
     </scene>

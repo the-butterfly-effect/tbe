@@ -2,12 +2,12 @@
 <tbe-level>
     <levelinfo>
         <title>The Butterfly effect 102</title>
-		<title lang="nl">Het vlindereffect (vervolgcursus)</title>
-		<author>Klaas van Gend</author>
+	<title lang="nl">Het vlindereffect (vervolgcursus)</title>
+	<author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Level with a small user interaction: a volleyball is in the way... </description>
-		<description lang="nl">Dit level vereist enige speler-actie: er ligt een volleybal in de weg... </description>
-		<date>10/10/09</date>
+	<description lang="nl">Dit level vereist enige speler-actie: er ligt een volleybal in de weg... </description>
+	<date>10/10/09</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="9" name="Bowling Pin">
@@ -49,6 +49,10 @@
                 <property key="page2" >But I'm not so sure about that volley ball.</property>
                 <property key="page3" >Hmmm... You see that hole?&lt;br&gt;Behind the volley ball!</property>
                 <property key="page4" >... Was signed:&lt;br&gt;&lt;br&gt;the Post-It Boy</property>
+                <property key="page1_nl">Aggut, ons vlindertje...&lt;br&gt;&lt;br&gt;Een nieuwe dag, een nieuwe bloem...</property>
+                <property key="page2_nl">Maar ik ben niet zo gek op die volleybal.</property>
+                <property key="page3_nl">Hmmm... Zie je die kuil?&lt;br&gt;Achter de volleybal!</property>
+                <property key="page4_nl">... Getekend:&lt;br&gt;&lt;br&gt;Post-It Boy</property>
 	    </object>
         </predefined>
     </scene>

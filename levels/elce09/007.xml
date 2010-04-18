@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Double Action</title>
+        <title lang="nl">Dubbele actie</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>This is the first double-action level - two things need to happen at once... Goal: Butterfly to Flower.</description>
+        <description>Two things need to happen at once... Goal: Butterfly to Flower.</description>
+        <description lang="nl">Twee dingen tegelijkertijd... Het doel: Vlinder naar bloem.</description>
         <date>10/13/09</date>
     </levelinfo>
      <toolbox>
@@ -186,6 +188,10 @@
                 <property key="page2" >Look: it's that butterfly and flower again.</property>
                 <property key="page3" >But there's some styrofoam blocks in the way...</property>
                 <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy&lt;br&gt;&lt;br&gt; ... almost done with his home work!</property>
+                <property key="page1_nl">De laatste, slopende uitdaging...</property>
+                <property key="page2_nl">Kijk nou: vlinder en bloempje zijn terug.</property>
+                <property key="page3_nl">Maar er staan wat blokken piepschuim in de weg...</property>
+                <property key="page4_nl">&lt;br&gt;&lt;br&gt; ... Post-It boy&lt;br&gt;&lt;br&gt; ... bijna klaar met z'n huiswerk!</property>
 	    </object>
         </predefined>
     </scene>

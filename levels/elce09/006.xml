@@ -5,6 +5,7 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Can you live from just coke? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
+        <description lang="nl">Kun je leven op alleen cola? Dan nemen we er toch een kokosnootje bij! Doel: schiet de kokosnoot uit de boom.</description>
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
@@ -77,9 +78,13 @@
             </object>
             <object X="2.8" Y="1.4" type="PostIt">
                 <property key="page1" >This is Ruud.&lt;br&gt;&lt;br&gt;He's on a small desert island.</property>
-                <property key="page2" >A few crates of coke washed up shore lately - so he's not thirsty.</property>
+                <property key="page2" >A few crates of Coke washed up shore lately - so he's not thirsty.</property>
                 <property key="page3" >But do you see those coconuts?</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Post-It boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Post-it Boy</property>
+                <property key="page1" >Dit is Ruud.&lt;br&gt;&lt;br&gt;Hij is gedumpt op een klein tropisch eiland.</property>
+                <property key="page2" >Gelukkig zijn er wat kratten cola aangespoeld - dorstig is 'ie niet.</property>
+                <property key="page3" >Maar zie je die kokosnoten hangen?</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... een hongerige Post-it Boy</property>
 	    </object>
         </predefined>
     </scene>
