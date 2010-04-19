@@ -281,15 +281,9 @@ void DrawWorld::on_death(void)
 		return;
 
 	displaySimpleText(tr("Death!!!"));
-
-	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterDeath()));
-}
-
-
-void DrawWorld::on_OneSecondAfterDeath(void)
-{
 	theSimStateMachine->goToState(StartStopWatch::BROKEN);
 }
+
 
 void DrawWorld::on_OneSecondAfterWinning(void)
 {

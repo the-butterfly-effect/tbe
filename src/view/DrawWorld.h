@@ -138,9 +138,6 @@ public slots:
 	void on_death(void);
 
 private slots:
-	/// called by a oneshot timer after on_death() was called
-	void on_OneSecondAfterDeath(void);
-
 	/// called by a oneshot timer after on_winning() was called
 	void on_OneSecondAfterWinning(void);
 
