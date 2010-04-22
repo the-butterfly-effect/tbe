@@ -72,7 +72,7 @@
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0" >
+            <object width="0.1" X="2.65" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>
             </object>
