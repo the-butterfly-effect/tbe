@@ -41,9 +41,21 @@
                 <property key="Mass" >0.01</property>
             </object>
             <object X="1.4" Y="0.29" type="Volley Ball" />
-            <object width="0.80" X="0.4" Y="0.85" height="0.4" type="RightRamp" angle="0" >
-                <property key="ImageName" >right-ramp</property>
+            
+            <object width="0.9" X="0.4" Y="0.85" height="0.1" type="RectObject" angle="-0.45">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="ZValue" >0.6</property>
+                <property key="Bounciness" >0.05</property>
             </object>
+            <object width="0.2" X="0.1" Y="0.55" height="0.9" type="RectObject">
+                <property key="ImageName" >oldbrick</property>
+                <property key="ZValue" >0.5</property>
+            </object>
+            <object width="0.4" X="0.25" Y="0.73" height="0.1" type="RectObject" angle="0.7">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="ZValue" >0.4</property>
+            </object>
+            
             <object X="1.1" Y="1.0" type="PostIt">
                 <property key="page1" >Our little Butterfly...&lt;br&gt;&lt;br&gt;Another day, another flower...</property>
                 <property key="page2" >But I'm not so sure about that volley ball.</property>
