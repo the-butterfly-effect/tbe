@@ -1,0 +1,156 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Springboard</title>
+        <title lang="nl">Springplank</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>.</description>
+        <description lang="nl">.</description>
+        <date>04/17/10</date>
+    </levelinfo>
+     <toolbox>
+        <toolboxitem count="1" name="Hammer">
+	    <object width="0.45" height="0.18" type="RectObject" >
+                <property key="ImageName">hammer</property>
+                <property key="Mass">15.0</property>
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.0</property>
+                <property key="PivotPoint">(0.2,0)</property>
+	    </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp /">
+            <object width="1.6" height="0.5" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp \">
+            <object width="1.6" height="0.5" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+        </toolboxitem>
+   </toolbox>
+    <scene>
+        <scenesize width="4.6" height="3" />
+        <predefined>
+
+            <object X="0.05" Y="1.0" width="0.1" height="2.0" type="RectObject">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            
+	    <object width="4.6" X="2.3" Y="0.05" height="0.10" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Friction" >0.4</property>
+            </object>
+
+  <object X="1.2" Y="2.6" type="PostIt">
+      <property key="page1">This is not a stable equibrium, any excitation will make it move.</property>
+      <property key="page2">Topple pin to the right.&lt;br&gt;No: Left!&lt;br&gt;OK, OK, to the right.</property>
+      <property key="page3">&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;...me</property>
+  </object>
+
+            <object X="1.25" Y="1.6" width="0.6" height="0.2" type="RightRamp">
+                <property key="ImageName">right-ramp</property>
+            </object>
+
+
+            <object X="1.2" Y="0.6" width="0.1" height="0.1" type="RectObject" ID="BrassPin">
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >4.5</property>
+            </object>
+
+            <object X="1.0" Y="0.6" width="1.6" height="0.1" type="RectObject" ID="Bar">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >4</property>
+                <property key="Friction" >0.7</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+	    <object type="PivotPoint" X="1.2" Y="0.6">
+	      <property key="object1">Bar</property>
+	      <property key="object2">BrassPin</property>
+	      <property key="collide">false</property>
+	    </object>
+            <object X="0.25" Y="0.7" width="0.1" height="0.1" type="RectObject" ID="Stop">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >0.5</property>
+                <property key="Friction" >0.7</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+	    <object type="PivotPoint" X="0.25" Y="0.65">
+	      <property key="object1">Bar</property>
+	      <property key="object2">Stop</property>
+	      <property key="collide">true</property>
+	    </object>
+            <object X="0.4" Y="0.75" type="Volley Ball" />
+
+            <object X="0.2" Y="0.40" width="0.2" height="0.2" type="RectObject" ID="Stop">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness" >0.0</property>
+            </object>
+
+
+            <object X="1.7" Y="2.08" type="Bowling Ball" />
+
+
+            <object X="2.05" Y="1.0" width="0.1" height="2.0" type="RectObject">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object X="2.55" Y="1.55" width="0.1" height="2.0" type="RectObject">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object X="2.3" Y="0.19" width="0.6" height="0.1" type="RectObject" angle="-0.45">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="ZValue">0.7</property>
+            </object>
+            <object X="1.95" Y="0.14" width="0.3" height="0.1" type="RectObject" angle="0.7">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="ZValue">0.7</property>
+            </object>
+
+            <object X="3.2" Y="0.6" width="1.4" height="0.1" type="RectObject">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object X="3.2" Y="1.57" width="2.3" height="0.1" type="RectObject" angle="-0.98">
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="ZValue">0.7</property>
+            </object>
+
+            <object X="3.4" Y="0.27" type="Bowling Pin" ID="BowlingPin2"/>
+
+            <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
+                <property key="ImageName" >goal-scenery</property>
+                <property key="ZValue">4</property>
+            </object>
+	    <object X="4.42" width="0.15" height="0.7" Y="0.45" type="RightRamp" angle="3.14">
+                <property key="ImageName">Empty</property>
+	    </object>
+
+	    <object width="2.6" X="3.3" Y="1.4" height="2.6" type="Scenery" >
+                <property key="ImageName" >birch_bar</property>
+                <property key="ZValue">0.1</property>
+            </object>
+
+
+        </predefined>
+    </scene>
+    <goals>
+	    <goal type="positionchange">
+		<property key="xover">3.9</property>
+		<property key="object">BowlingPin2</property>
+	    </goal>
+    </goals>
+</tbe-level>
