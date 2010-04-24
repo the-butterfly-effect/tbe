@@ -5,7 +5,7 @@
         <title lang="nl">Geniale inval 1</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>This mechanism appears more complex than it is.</description>
+        <description>This mechanism appears more complex than it actually is.</description>
         <description lang="nl">Dit mechaniek lijkt op het eerste gezicht ingewikkelder dan het echt is.</description>
         <date>04/23/10</date>
     </levelinfo>
@@ -36,12 +36,12 @@
       <property key="page1">Don't worry.</property>
       <property key="page2">This is not as complicated as it looks. It almost works!</property>
       <property key="page3">Put the styrofoam ramp in place...</property>
-      <property key="page4">And enjoy your first Rube Goldberg-ish contraption.</property>
+      <property key="page4">And enjoy your first large Rube Goldberg-ish contraption.</property>
       <property key="page5">&lt;br&gt;&lt;br&gt;the Post-it Boy</property>
       <property key="page1_nl">Maak je niet ongerust.</property>
       <property key="page2_nl">Dit ziet er ingewikkelder uit dan het is. Het werkt al bijna!</property>
       <property key="page3_nl">Plaats je piepschuim helling...</property>
-      <property key="page4_nl">En geniet van je eerste "Rube Goldberg" mechaniek.</property>
+      <property key="page4_nl">En geniet van je eerste grote "Rube Goldberg" mechaniek.</property>
       <property key="page5_nl">&lt;br&gt;&lt;br&gt;Post-it Boy</property>
   </object>
 
