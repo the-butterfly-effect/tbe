@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Bouncing Balls</title>
+        <title lang="nl"></title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Bouncing Balls - put in basket</description>
+        <description lang="nl">Stuiterende ballen - in de mand</description>
         <date>12/22/09</date>
     </levelinfo>
      <toolbox>
@@ -39,6 +41,12 @@
       <property key="page4" >Someone told me to drag the ramp from the toolbox into the big window.&lt;br&gt;... after you've read my note!</property>
       <property key="page5" >But why do I have to clean my room every year?</property>
       <property key="page6" >... An unhappy&lt;br&gt;&lt;br&gt;&lt;br&gt;Post-It Boy</property>
+      <property key="page1_nl" >Welkom terug!</property>
+      <property key="page2_nl" >Geen vlinder hiero...&lt;br&gt;&lt;br&gt;Wanhoop niet - er komen er nog meer</property>
+      <property key="page3_nl" >Van mijn moeder moet ik m'n kamer opruimen.&lt;br&gt;&lt;br&gt;Alle ballen moeten in de mand.</property>
+      <property key="page4_nl" >Iemand zei me om een helling van de gereedschapskist in het veld te slepen.&lt;br&gt;... nadat je de post-it uit hebt!</property>
+      <property key="page5_nl" >Maar waarom moet ik elk jaar mijn kamer opruimen?</property>
+      <property key="page6_nl" >... Een niet-zo-blije&lt;br&gt;&lt;br&gt;&lt;br&gt;Post-It Boy</property>
   </object>
 
 	

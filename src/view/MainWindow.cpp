@@ -107,12 +107,14 @@ void MainWindow::on_actionBrand_names_activated()
 				"<b>Coke</b>, diet Coke, Coca Cola and the bottle shape are "
 				"world-wide registered trademarks of the Coca Cola company."
 				"<br>"
-				"<b>Mentos</b> is a registered trademark of Perfetti Van Melle "
+				"<b>Mentos</b> is a registered trademark of Perfetti Van Melle."
 				"<br>"
 				"The use of a Mentos in diet Coke is widely described - and "
 				"apparently works best with diet Coke and Mentos. <br><br>"
-				"'The Butterfly Effect' as a concept has existed since at least "
-				"mid 1950s. We are not affiliated with the 2004 movie in any way."
+				"<b>Post-it</b> is a registered trademark of 3M. <br><br>"
+				"'The Butterfly Effect' as a concept of chaos theory "
+				"has existed since at least the mid 1950s. "
+				"We are not affiliated with the 2004 movie in any way."
 				""), this);
 }
 

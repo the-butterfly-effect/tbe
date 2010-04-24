@@ -112,7 +112,7 @@
    <item>
     <widget class="QLabel" name="label_10">
      <property name="text">
-      <string>Level Description (make sure to use Postman for hints)*:</string>
+	  <string>Level Description (make sure to use Post-it notes for hints)*:</string>
      </property>
     </widget>
    </item>

@@ -45,64 +45,66 @@
                 <property key="page4" >Don't tell anyone about it, I still need to file a patent!</property>
                 <property key="page5" >Have you read 'Focault's Pendulum'?</property>
                 <property key="page6" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
-                <property key="page1" lang="nl">Kijk, dat is nou een hemelhaakje.&lt;br&gt;&lt;br&gt;Een slimme uitvinding, al zeg ik 't zelf...</property>
-                <property key="page2" lang="nl">Hang 't in de lucht &lt;br&gt; en het blijft hangen.</property>
-                <property key="page3" lang="nl">En je kunt er nog een hoop gewicht aan hangen, ook!</property>
-                <property key="page4" lang="nl">(Niet verder vertellen, ik moet 't patent nog steeds aanvragen)</property>
-                <property key="page5" lang="nl">Heb je toevallig 'De slinger van Focault' gelezen?</property>
-                <property key="page6" lang="nl">&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
+                <property key="page1_nl">Kijk, dat is nou een hemelhaakje.&lt;br&gt;&lt;br&gt;Een slimme uitvinding, al zeg ik 't zelf...</property>
+                <property key="page2_nl">Hang 't in de lucht &lt;br&gt; en het blijft hangen.</property>
+                <property key="page3_nl">En je kunt er nog een hoop gewicht aan hangen, ook!</property>
+                <property key="page4_nl">(Niet verder vertellen, ik moet 't patent nog steeds aanvragen)</property>
+                <property key="page5_nl">Heb je toevallig 'De slinger van Focault' gelezen?</property>
+                <property key="page6_nl">&lt;br&gt;&lt;br&gt; ... de Post-It boy</property>
 	    </object>
 	    
-            <object X="2.72" Y="3.5" type="Skyhook" ID="Skyhook"/>
+            <object X="2.72" Y="3.52" type="Skyhook" ID="Skyhook">
+	       <property key="ZValue">0.3</property>
+	    </object>
 	    
-            <object X="2.74" Y="3.22" width="0.10" height="0.46" type="RectObject" ID="Chain1">
+            <object X="2.74" Y="3.24" width="0.10" height="0.46" type="RectObject" ID="Chain1">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="3.42">
+	    <object type="PivotPoint" X="2.74" Y="3.44">
 		<property key="object1">Skyhook</property>
 		<property key="object2">Chain1</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="2.82" width="0.10" height="0.46" type="RectObject" ID="Chain2">
+            <object X="2.74" Y="2.84" width="0.10" height="0.46" type="RectObject" ID="Chain2">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="3.02">
+	    <object type="PivotPoint" X="2.74" Y="3.04">
 		<property key="object1">Chain1</property>
 		<property key="object2">Chain2</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="2.42" width="0.10" height="0.46" type="RectObject" ID="Chain3">
+            <object X="2.74" Y="2.44" width="0.10" height="0.46" type="RectObject" ID="Chain3">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="2.62">
+	    <object type="PivotPoint" X="2.74" Y="2.64">
 		<property key="object1">Chain2</property>
 		<property key="object2">Chain3</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="2.02" width="0.10" height="0.46" type="RectObject" ID="Chain4">
+            <object X="2.74" Y="2.04" width="0.10" height="0.46" type="RectObject" ID="Chain4">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="2.22">
+	    <object type="PivotPoint" X="2.74" Y="2.24">
 		<property key="object1">Chain3</property>
 		<property key="object2">Chain4</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.62" width="0.10" height="0.46" type="RectObject" ID="Chain5">
+            <object X="2.74" Y="1.64" width="0.10" height="0.46" type="RectObject" ID="Chain5">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="1.82">
+	    <object type="PivotPoint" X="2.74" Y="1.84">
 		<property key="object1">Chain4</property>
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.26" type="Weight" ID="Weight" />
+            <object X="2.74" Y="1.28" type="Weight" ID="Weight" />
 
-	    <object type="PivotPoint" X="2.74" Y="1.42">
+	    <object type="PivotPoint" X="2.74" Y="1.44">
 		<property key="object1">Chain5</property>
 		<property key="object2">Weight</property>
 		<property key="collide">false</property>

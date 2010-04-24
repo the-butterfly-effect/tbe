@@ -37,7 +37,10 @@ class StartStopWatch;
 class UndoInsertCommand;
 
 /** class DrawWorld
-  * This class contains the Draw* objects and is the QGraphicsScene
+  * This class contains the Draw* objects and is the QGraphicsScene.
+  * It contains the timers that run the simulation.
+  * It also maintains the undo stack and handles drag-n-drop from the toolbox.
+  * Lastly, it implements the debug callbacks from Box2D to draw outlines.
   */
 
 class DrawWorld : public QGraphicsScene
@@ -135,9 +138,6 @@ public slots:
 	void on_death(void);
 
 private slots:
-	/// called by a oneshot timer after on_death() was called
-	void on_OneSecondAfterDeath(void);
-
 	/// called by a oneshot timer after on_winning() was called
 	void on_OneSecondAfterWinning(void);
 

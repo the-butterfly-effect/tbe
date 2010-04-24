@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Marble Boulevard</title>
+        <title lang="nl">Knikkerboulevard</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Goal: Topple the pin.</description>
+        <description lang="nl">Doel: Kegel de kegel om.</description>
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
@@ -56,7 +58,11 @@
                 <property key="page1" >No butterflies here!&lt;br&gt;&lt;br&gt;</property>
                 <property key="page2" >Topple the bowling pin below.</property>
                 <property key="page3" >Hmmm... &lt;br&gt;&lt;br&gt;This reminds me of a kids' game!</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-It boy</property>
+                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-it Boy</property>
+                <property key="page1_nl" >Geen vlinders hiero!&lt;br&gt;&lt;br&gt;</property>
+                <property key="page2_nl" >Kegel de kegel om.</property>
+                <property key="page3_nl" >Hmmm... &lt;br&gt;&lt;br&gt;Dit doet me aan een kinderspeeltje denken!</property>
+                <property key="page4_nl" >&lt;br&gt;&lt;br&gt; ... Post-it Boy</property>
 	    </object>
         </predefined>
     </scene>

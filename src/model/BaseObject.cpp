@@ -234,6 +234,13 @@ void BaseObject::parseProperties(void)
 		PivotPoint* myPP = new PivotPoint(this, myDelta);
 		theWorldPtr->addObject(myPP);
 	}
+
+	// For normal situations, i.e. created by Level for World
+	// the setupCache() is run twice. But that's not a problem.
+	// For inserted objects (i.e. drag from toolbox), this is
+	// the only time setupCache is called. Let's cherish it.
+	if (theDrawObjectPtr)
+		theDrawObjectPtr->setupCache();
 }
 
 

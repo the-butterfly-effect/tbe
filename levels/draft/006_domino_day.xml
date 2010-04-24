@@ -2,6 +2,7 @@
 <tbe-level>
     <levelinfo>
         <title>Domino Day</title>
+        <title lang="nl">Domino Day</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Not affiliated with the yearly event.</description>

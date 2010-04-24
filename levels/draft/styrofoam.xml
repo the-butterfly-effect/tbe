@@ -2,6 +2,7 @@
 <tbe-level>
     <levelinfo>
         <title>Football in Styrofoam...</title>
+        <title lang="nl">Voetbal in piepschuim...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The soccer ball must kick the pin. But there's something missing.</description>
@@ -108,6 +109,11 @@
                 <property key="page4" >Looks like there's something missing...</property>
                 <property key="page5" >Hint: first put it on the floor,&lt;br&gt;then adjust height,&lt;br&gt;then the width...</property>
                 <property key="page6" >Post-It boy &lt;br&gt;likes playing with styrofoam ... &lt;br&gt;&lt;br&gt;... for breakfast!</property>
+                <property key="page1_nl">Nog een kegel moet om!</property>
+                <property key="page2_nl">Met een echte voetbal deze keer!</property>
+                <property key="page3_nl">Maar ontbreekt er niet nog wat?</property>
+                <property key="page4_nl">TIP: plaats het eerst op de ondergrond,&lt;br&gt;pas dan hoogte aan,&lt;br&gt;en dan de breedte...</property>
+                <property key="page5_nl">Post-It boy &lt;br&gt;speelt graag met piepschuim ... &lt;br&gt;&lt;br&gt;... als ontbijt!</property>
 	    </object>
             
         </predefined>

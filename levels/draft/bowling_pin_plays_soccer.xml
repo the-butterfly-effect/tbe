@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Bowling Pin plays soccer...</title>
+        <title lang="nl">Kegel speelt voetbal...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The Bowling Ball cannot kick the Bowling Pin in the goal.</description>
+        <description lang="nl">De bowlingbal kan de kegel niet in de goal schoppen.</description>
         <date>12/17/09</date>
     </levelinfo>
      <toolbox>
@@ -72,6 +74,13 @@
                 <property key="page5" >But that's not an ordinary cola bottle...</property>
                 <property key="page6" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
                 <property key="page7" >Post-it boy played the world cup soccer...&lt;br&gt;&lt;br&gt;(in a previous life)</property>
+                <property key="page1_nl">Ik lijk op m'n broer - ik speel ook voetbal!</property>
+                <property key="page2_nl">Schop die kegel de goal in!</property>
+                <property key="page3_nl">GOOOOAAAAAL !!!</property>
+                <property key="page4_nl">Hee wacht eens!&lt;br&gt;Die bowlingbal lukt het niet...</property>
+                <property key="page5_nl">Maar da's geen gewone colafles...</property>
+                <property key="page6_nl">Het is een Coke-Mentos geiser, klaar om te spuiten!&lt;br&gt;een lichte schok is genoeg!</property>
+                <property key="page7_nl">Post-it boy heeft in de wereldcup voetbal gespeeld...&lt;br&gt;&lt;br&gt;(in een vorig leven)</property>
 	    </object>
             
         </predefined>
