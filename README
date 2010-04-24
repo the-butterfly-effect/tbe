@@ -1,29 +1,25 @@
-Welcome to "The Butterfly Effect", Milestone 5.
+Welcome to "The Butterfly Effect", Milestone 6.
 
 This is a fully playable game, but no yet completely finished.
 
-There are 13 levels.
+There are 26 levels.
 All levels are playable, some levels may need a bit more polish.
 
 You need to have at least QT 4.4 installed to run the game.
 
-We are aware that some levels (most importantly "house of cards")
-consume a lot of CPU power in rendering. 
-This will be addressed in a future milestone.
+New features & highlights in Milestone 6:
+    * finished i18n framework + support for dutch (nl) language
+    * 13 new levels 
+    * finish drag&drop of objects
+    * new concept: PivotPoint makes hinges and such possible
+    * new concept: PolyObject allows non-square objects
+    * Many bug fixes and small improvements
 
-Other known bugs:
-  * when you drag an object into the scene, you can place it anywhere
-    only when you try to move it after it is dropped, collision detection
-    is enabled.
-  * dragging objects back to the ToolBox does not work yet
-  * collision detection also does not work for resizing of objects
-  * level "Coconut instead of Coke" may crash
-  * the coke bottle in  "Coconut instead of Coke" may disappear
-  * dragging some objects leaves visual artefacts - these are harmless.
+Known bugs:
+  * some images may have 'garbage' on their borders during play.
+    this is harmless but may be confusing.
 
-A very *rudimentary* level editor is available when you edit src/main.cpp line 30
-to read " = true;" However, don't expect magic: most of the levels were
-created with little help of the editor: we mostly hacked the XML directly.
+We thank our beta players for their comments on the playability of the levels.
 
 We would love to hear your thoughts and comments about the game!
 Don't be shy - post your thoughts in the TBE Open Discussion forum on
