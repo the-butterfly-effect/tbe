@@ -5,7 +5,7 @@ MYINCDIR=include
 MYLIBDIR=libs
 
 
-all:	libs/libbox2d.a
+all:	libs/libbox2d.a 
 
 clean:
 	rm -rf ${BOX2D}
@@ -17,3 +17,11 @@ libs/libbox2d.a:
 	patch -p0 <box2d_fix_warnings.patch
 	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
+
+QTVERSION=qt-x11-opensource-src-4.5.3.tar.gz
+
+libs/qt: ${QTVERSION}
+	tar xvf ${QTVERSION}
+
+${QTVERSION}:
+	curl --remote-name ftp://ftp.qt.nokia.com/qt/source/qt-x11-opensource-src-4.5.3.tar.gz
