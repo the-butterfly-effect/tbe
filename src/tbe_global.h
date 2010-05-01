@@ -39,6 +39,7 @@ const float SQRT2 = 1.41421356;
  * level 5 = all debugging, including entry of functions under scrutiny
  * level 6 = timing info on serial port
  */
+#if !defined(NDEBUG)
 #include <stdio.h>
 #include <time.h>
 extern int theVerbosity;	// actually defined in main.cpp
@@ -51,7 +52,15 @@ extern int theVerbosity;	// actually defined in main.cpp
 #define DEBUG4NT(format, ...)	{if (theVerbosity>=4) printf(format, ## __VA_ARGS__);}
 #define DEBUG5(format, ...)	{if (theVerbosity>=5) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 #define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-
+#else
+#define DEBUG1(format, ...)     { /**/ }
+#define DEBUG2(format, ...)     { /**/ }
+#define DEBUG3(format, ...)     { /**/ }
+#define DEBUG4(format, ...)     { /**/ }
+#define DEBUG4NT(format, ...)     { /**/ }
+#define DEBUG5(format, ...)     { /**/ }
+#define DEBUG6(format, ...)     { /**/ }
+#endif
 
 
 #define UNUSED_ARG __attribute__((unused))

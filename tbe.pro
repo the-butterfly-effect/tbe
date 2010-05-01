@@ -14,7 +14,7 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
     -Wextra
-QMAKE_CXX_FLAGS_RELEASE += -Wextra
+QMAKE_CXXFLAGS_RELEASE += -Wextra -DNDEBUG
 QT += core \
     gui \
     xml \
