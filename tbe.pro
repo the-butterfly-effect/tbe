@@ -4,7 +4,7 @@ CONFIG += qt \
     warn_on \
     debug
 LIBS += -lbox2d \
-    -L3rdParty/libs
+    -L3rdParty/lib
 DEFINES += QT_NO_ASCII_CAST
 INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src \
