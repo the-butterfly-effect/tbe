@@ -1,27 +1,62 @@
 BOX2D=Box2D_v2.0.1
+QTVERSION=qt-x11-opensource-src-4.5.3
+INSTALLJAMMER=InstallJammer-1.2.14-Linux-x86-Install
 
+MY3RDPARTYDIR=${PWD}
+MYINCDIR=${MY3RDPARTYDIR}/include
+MYLIBDIR=${MY3RDPARTYDIR}/libs
+MYBINDIR=${MY3RDPARTYDIR}/bin
 
-MYINCDIR=include
-MYLIBDIR=libs
+# this will allow 3 parallel build threads - works great on a Core2 Duo :-)
+FASTERMAKE=-j3
 
+# only build static box2d / use Qt from host system
+all:	${MYLIBDIR}/libbox2d.a 
 
-all:	libs/libbox2d.a 
+# only build (static) QT for release builds
+release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a
 
+# clean all build artifacts
 clean:
 	rm -rf ${BOX2D}
-	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/*
+	rm -rf ${QTVERSION}
+	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/*
 
-libs/libbox2d.a:
+#----------------------------- internal targets
+
+${MYLIBDIR}/libbox2d.a:
 	unzip ${BOX2D}.zip
 	patch -p0 <box2d_compile.patch
 	patch -p0 <box2d_fix_warnings.patch
-	cd ${BOX2D}/Box2D/Source && make Gen/float/libbox2d.a 
-	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a libs
+	cd ${BOX2D}/Box2D/Source && make ${FASTERMAKE} Gen/float/libbox2d.a 
+	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a ${MYLIBDIR}
 
-QTVERSION=qt-x11-opensource-src-4.5.3.tar.gz
 
-libs/qt: ${QTVERSION}
-	tar xvf ${QTVERSION}
+# QT is build statically, with as little options as reasonably possible
+# we also specifically exclude the graphical developer tools 
+# (designer/linguist/assistant) from the build to save time
+${MYLIBDIR}/libQtCore.a: ${QTVERSION}.tar.gz
+	tar xzf ${QTVERSION}.tar.gz
+	mv ${QTVERSION}/tools/tools.pro ${QTVERSION}/tools/tools.pro.old
+	cat ${QTVERSION}/tools/tools.pro.old | sed s/designer// \
+		| sed s/assistant// > ${QTVERSION}/tools/tools.pro
+	mv ${QTVERSION}/tools/linguist/linguist.pro ${QTVERSION}/tools/linguist/linguist.pro.old
+	cat ${QTVERSION}/tools/linguist/linguist.pro.old | grep -v linguist \
+		> ${QTVERSION}/tools/linguist/linguist.pro
+	cd ${QTVERSION} && echo "yes" | ./configure -release -opensource -static \
+           -exceptions -silent -no-largefile\
+           -no-accessibility -no-qt3support -no-xmlpatterns -no-phonon -no-webkit \
+           -no-scripttools -no-gif -no-libtiff -no-libmng -no-openssl -no-nis -no-cups \
+           -no-iconv -no-pch -no-dbus -no-gtkstyle -no-nas-sound \
+           -nomake examples -nomake demos -nomake docs \
+           -prefix ${MY3RDPARTYDIR}
+	cd ${QTVERSION} && make ${FASTERMAKE}
+	cd ${QTVERSION} && make install
 
-${QTVERSION}:
-	curl --remote-name ftp://ftp.qt.nokia.com/qt/source/qt-x11-opensource-src-4.5.3.tar.gz
+
+${QTVERSION}.tar.gz:
+	curl --remote-name ftp://ftp.qt.nokia.com/qt/source/${QTVERSION}.tar.gz
+
+
+${INSTALLJAMMER}:
+	curl --remote-name http://downloads.installjammer.com/installjammer/1.2/${INSTALLJAMMER}

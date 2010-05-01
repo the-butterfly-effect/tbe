@@ -6,16 +6,14 @@ required for building The Butterfly Effect and are not usually
 available on systems - or where versioning is important.
 
 
-ode    -    http://opende.sourceforge.net/
-Many distributions do not ship this library, and/or are shipping
-outdated or malfunctioning versions. The Butterfly Effect links
-statically against the library - and does not use features like
-drawstuff.
-
-
 Box2D  -    http://box2d.sourceforge.net/
-Another physics library - a replacement of ode which isn't a great
-fit for TBE.
-Again, many distributions do not ship this library, and/or are 
+A physics library for TBE.
+Many distributions do not ship this library, and/or are 
 shipping outdated or malfunctioning versions. The Butterfly Effect 
 links statically against the library.
+
+
+QT -        http://qt.nokia.com/
+Even though QT is shipped by many distributions, we want to
+be sure - we link against a static QT build in our release builds.
+
