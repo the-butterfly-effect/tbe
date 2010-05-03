@@ -16,15 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include <QtGui>
-
 #include "toolbox.h"
 #include "ImageStore.h"
 #include "BaseObjectSerializer.h"
 #include "UndoDeleteCommand.h"
 #include "DrawObject.h"
 
+#include <QtGui>
 #include <QMimeData>
+#include <cassert>
 
 
 const char* TBItem::ToolboxMimeType   = "image/x-tbe-tool-scene";

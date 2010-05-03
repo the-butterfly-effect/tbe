@@ -209,7 +209,9 @@ void PolyObject::fillShapeList(void)
 		{
 			assert (j < b2_maxPolygonVertices);
 			Vector myCoord;
-			assert (myCoord.fromString(myCoordList.at(j)) == true);
+			bool isDone = myCoord.fromString(myCoordList.at(j));
+			assert (isDone == true);
+			UNUSED_VAR(isDone);
 			Vector myScaledCoord = myScale*myCoord;
 			myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
 		}

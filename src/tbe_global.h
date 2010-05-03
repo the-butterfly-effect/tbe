@@ -64,6 +64,7 @@ extern int theVerbosity;	// actually defined in main.cpp
 
 
 #define UNUSED_ARG __attribute__((unused))
+#define UNUSED_VAR(x) ((void)(x))
 
 /// Converts a QString into a char* .
 /// This function is NOT REENTRANT - make sure not to use it twice in the same set of arguments...

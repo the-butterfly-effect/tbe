@@ -19,7 +19,6 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include <assert.h>
 #include <QObject>
 #include <QString>
 #include <QList>

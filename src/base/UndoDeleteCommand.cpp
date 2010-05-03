@@ -73,7 +73,9 @@ void UndoDeleteCommand::push()
 void UndoDeleteCommand::redo ()
 {
 	DEBUG3("UndoDeleteCommand::redo() START\n");
-	assert(theBaseObjectPtr->deregister());
+	bool isDone = theBaseObjectPtr->deregister();
+	assert (isDone);
+	UNUSED_VAR(isDone);
 	if (theCurrentToolBoxPtr)
 		theCurrentToolBoxPtr->modifyCountOfBaseObject(theBaseObjectPtr,+1);
 	isInUse=true;

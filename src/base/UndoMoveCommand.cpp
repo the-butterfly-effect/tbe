@@ -20,6 +20,8 @@
 #include "BaseObject.h"
 #include "DrawObject.h"
 
+#include <cassert>
+
 // Constructors/Destructors
 //  
 

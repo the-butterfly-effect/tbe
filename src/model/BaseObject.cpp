@@ -95,7 +95,9 @@ Position BaseObject::getTempCenter (void) const
 
 void BaseObject::setTempCenter ( Position new_var )
 {
-	assert(isPhysicsObjectCreated());
+	bool isDone = isPhysicsObjectCreated();
+	assert(isDone);
+	UNUSED_VAR(isDone);
 	theB2BodyPtr->SetXForm(b2Vec2(new_var.x, new_var.y), new_var.angle);
 }
 

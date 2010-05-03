@@ -19,7 +19,6 @@
 #ifndef UNDOMOVECOMMAND_H
 #define UNDOMOVECOMMAND_H
 
-#include <assert.h>
 #include <QString>
 #include <QUndoCommand>
 #include "tbe_global.h"

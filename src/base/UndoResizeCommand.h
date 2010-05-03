@@ -19,7 +19,6 @@
 #ifndef UNDORESIZECOMMAND_H
 #define UNDORESIZECOMMAND_H
 
-#include <assert.h>
 #include <QString>
 #include <QUndoCommand>
 #include <QPointF>

@@ -23,7 +23,6 @@
 #include "Position.h"
 #include "Property.h"
 
-#include <assert.h>
 #include <QObject>
 #include <QString>
 #include <QList>

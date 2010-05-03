@@ -19,7 +19,6 @@
 #ifndef UNDODELETECOMMAND_H
 #define UNDODELETECOMMAND_H
 
-#include <assert.h>
 #include <QString>
 #include <QUndoCommand>
 #include "tbe_global.h"

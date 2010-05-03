@@ -98,7 +98,9 @@ void UndoInsertCommand::setNewPosition(const Position& aNewPos)
 void UndoInsertCommand::undo ()
 {
 	DEBUG3("UndoInsertCommand::undo() START\n");
-	assert(theBaseObjectPtr->deregister());
+	bool isDone = theBaseObjectPtr->deregister();
+	assert (isDone);
+	UNUSED_VAR(isDone);
 	if (getCurrentToolboxPtr())
 		getCurrentToolboxPtr()->modifyCountOfBaseObject(theBaseObjectPtr,+1);
 	isInUse=true;

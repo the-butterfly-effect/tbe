@@ -24,6 +24,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
+#include <cassert>
 
 
 //////////////////////////////////////////////////////////////////////////////
