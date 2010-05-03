@@ -11,6 +11,7 @@ then
 	echo "Sorry..."
 fi
 
+echo "pwd=$PWD or `pwd`"
 make -C 3rdParty
 make -C images all
 qmake
