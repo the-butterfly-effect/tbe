@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -45,6 +45,7 @@ public:
 		NOTSTARTED,	// stopwatch is stationary at zero
 		STOPPED,	// stopwatch is stationary at nonzero (also show reset button)
 		RUNNING,	// stopwatch is running
+		FAST,		// stopwatch is running in fast forward
 		BROKEN,		// stopwatch is broken - probably because "butterfly has died"
 	};
 
@@ -55,7 +56,7 @@ public:
 public slots:
 	void clicked_on_watch();
 	void clicked_on_reset();
-
+	void clicked_on_fastforward();
 
 signals:
 	/// signal: start (or continue) simulation
@@ -67,6 +68,12 @@ signals:
 	/// signal: when World needs to reset to its original position
 	void resetSim(void);
 
+	/// signal: speed up
+	void goFast();
+
+	/// signal: slow down
+	void goSlow();
+
 protected:
 	/// overridden to capture mouse clicks on the stopwatch
 	virtual void mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent );
@@ -76,7 +83,9 @@ private slots:
 	void progressHand();
 
 private:
+	void removeFastForwardButton();
 	void removeResetButton();
+	void showFastForwardButton();
 	void showResetButton();
 	void showWatch(bool isBroken);
 
@@ -90,6 +99,7 @@ private:
 	QGraphicsSvgItem* theStopWatchHandSvgPtr;
 	QTransform	theRotation;
 	QGraphicsSvgItem* theResetSvgPtr;
+	QGraphicsSvgItem* theFastForwardSvgPtr;
 
 	QSvgRenderer* theBrokenStopwatchRendererPtr;
 	QSvgRenderer* theStopwatchRendererPtr;

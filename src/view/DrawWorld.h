@@ -131,6 +131,12 @@ public slots:
 	/// public slot: stop the simulation
 	void stopTimer();
 
+	/// public slot: used when clicked fastforward
+	void goFast();
+
+	/// public slot: used when clicked go slow
+	void goSlow();
+
 	/// called on winning by World.
 	void on_winning(void);
 

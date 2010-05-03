@@ -106,6 +106,8 @@ DrawWorld::~DrawWorld ( )
 	QObject::disconnect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
 	QObject::disconnect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
 	QObject::disconnect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
+	QObject::disconnect(theSimStateMachine, SIGNAL(goFast()),   this, SLOT(goFast()));
+	QObject::disconnect(theSimStateMachine, SIGNAL(goSlow()),   this, SLOT(goSlow()));
 	delete theSimStateMachine;
 }
 
@@ -231,6 +233,16 @@ void DrawWorld::dropEvent ( QGraphicsSceneDragDropEvent * event)
 	}
 	else
 		event->ignore();
+}
+
+void DrawWorld::goFast()
+{
+	theSimSpeed *= 4;
+}
+
+void DrawWorld::goSlow()
+{
+	theSimSpeed /= 4;
 }
 
 void DrawWorld::initAttributes ( ) 

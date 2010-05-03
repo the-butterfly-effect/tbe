@@ -4,8 +4,10 @@ INSTALLJAMMER=InstallJammer-1.2.14-Linux-x86-Install
 
 MY3RDPARTYDIR=${PWD}
 MYINCDIR=${MY3RDPARTYDIR}/include
-MYLIBDIR=${MY3RDPARTYDIR}/libs
+MYLIBDIR=${MY3RDPARTYDIR}/lib
 MYBINDIR=${MY3RDPARTYDIR}/bin
+MYMKSPECDIR=${MY3RDPARTYDIR}/mkspecs
+MYPLUGINSDIR=${MY3RDPARTYDIR}/plugins
 
 # this will allow 3 parallel build threads - works great on a Core2 Duo :-)
 FASTERMAKE=-j3
@@ -20,12 +22,12 @@ release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a
 clean:
 	rm -rf ${BOX2D}
 	rm -rf ${QTVERSION}
-	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/*
+	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/* ${MYPLUGINSDIR}/* ${MYMKSPECDIR}/*
 
 #----------------------------- internal targets
 
 ${MYLIBDIR}/libbox2d.a:
-	unzip ${BOX2D}.zip
+	unzip -q ${BOX2D}.zip
 	patch -p0 <box2d_compile.patch
 	patch -p0 <box2d_fix_warnings.patch
 	cd ${BOX2D}/Box2D/Source && make ${FASTERMAKE} Gen/float/libbox2d.a 
@@ -43,11 +45,11 @@ ${MYLIBDIR}/libQtCore.a: ${QTVERSION}.tar.gz
 	mv ${QTVERSION}/tools/linguist/linguist.pro ${QTVERSION}/tools/linguist/linguist.pro.old
 	cat ${QTVERSION}/tools/linguist/linguist.pro.old | grep -v linguist \
 		> ${QTVERSION}/tools/linguist/linguist.pro
-	cd ${QTVERSION} && echo "yes" | ./configure -release -opensource -static \
+	cd ${QTVERSION} && echo "yes" | ./configure -release -opensource \
            -exceptions -silent -no-largefile\
-           -no-accessibility -no-qt3support -no-xmlpatterns -no-phonon -no-webkit \
-           -no-scripttools -no-gif -no-libtiff -no-libmng -no-openssl -no-nis -no-cups \
-           -no-iconv -no-pch -no-dbus -no-gtkstyle -no-nas-sound \
+           -no-accessibility -no-qt3support -no-phonon -no-webkit -no-scripttools\
+           -no-gif -no-libtiff -no-libmng -no-openssl -no-nis -no-cups \
+           -no-iconv -no-pch -no-dbus -no-nas-sound \
            -nomake examples -nomake demos -nomake docs \
            -prefix ${MY3RDPARTYDIR}
 	cd ${QTVERSION} && make ${FASTERMAKE}

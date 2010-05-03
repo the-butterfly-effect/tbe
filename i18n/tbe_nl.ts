@@ -79,7 +79,7 @@ Parse error at line %1, column %2:
         <translation>Dood!!!</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="318"/>
+        <location filename="../src/view/DrawWorld.cpp" line="312"/>
         <source>Congratulations</source>
         <translation>Gefeliciteerd</translation>
     </message>
@@ -663,12 +663,12 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Voeg %1 toe</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoMoveCommand.cpp" line="35"/>
+        <location filename="../src/base/UndoMoveCommand.cpp" line="37"/>
         <source>Move %1</source>
         <translation>Verplaats %1</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoResizeCommand.cpp" line="39"/>
+        <location filename="../src/base/UndoResizeCommand.cpp" line="40"/>
         <source>Resize %1</source>
         <translation>Pas afmetingen %1 aan</translation>
     </message>

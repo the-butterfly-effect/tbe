@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 
 
 StartStopWatch::StartStopWatch()
-		: theResetSvgPtr(NULL)
+		: theResetSvgPtr(NULL), theFastForwardSvgPtr(NULL)
 {
 
 	// I don't want the View to be different from the background.
@@ -82,6 +82,9 @@ void StartStopWatch::clicked_on_watch()
 	case RUNNING:
 		goToState(STOPPED);
 		break;
+	case FAST:
+		goToState(RUNNING);
+		break;
 	case BROKEN:
 		goToState(NOTSTARTED);
 		break;
@@ -96,9 +99,15 @@ void StartStopWatch::clicked_on_reset()
 	goToState(NOTSTARTED);
 }
 
+void StartStopWatch::clicked_on_fastforward()
+{
+	// only possible to call when the fastforward button is visible
+	goToState(FAST);
+}
 
 void StartStopWatch::goToState(TheStates aNewState)
 {
+	DEBUG4("StartStopWatch::goToState from %d to %d\n", theState, aNewState);
 	// let's implement the whole 3x3 matrix of possibilities
 	// this should be the only member in the class that modifies theState!!!
 	switch(theState)
@@ -111,10 +120,13 @@ void StartStopWatch::goToState(TheStates aNewState)
 				break;
 			case STOPPED:		// should not happen
 				assert(false);
-			case RUNNING:		// start button clicked
+			case RUNNING:		// watch clicked
 				startStopwatch();
+				showFastForwardButton();
 				theState = aNewState;
 				break;
+			case FAST:			// should not happen
+				assert(false);
 			case BROKEN:		// should not happen
 				assert(false);
 				break;
@@ -132,18 +144,21 @@ void StartStopWatch::goToState(TheStates aNewState)
 				break;
 			case STOPPED:		// no need for action
 				break;
-			case RUNNING:		// continue button clicked
+			case RUNNING:		// watch clicked again
 				removeResetButton();
+				showFastForwardButton();
 				startStopwatch();
 				theState = aNewState;
 				break;
 			case BROKEN:		// should not happen
+			case FAST:			// should not happen
 				assert(false);
 				break;
 			}
 			break;
 		}
 	case RUNNING:
+	case FAST:
 		{
 			switch (aNewState)
 			{
@@ -156,13 +171,26 @@ void StartStopWatch::goToState(TheStates aNewState)
 			case STOPPED:		// stop button clicked
 				stopStopwatch();
 				showResetButton();
+				removeFastForwardButton();
 				theState = aNewState;
 				break;
 			case RUNNING:		// no need for action
+				if (theState==FAST)
+				{
+					showFastForwardButton();
+					goFast();
+					theState = aNewState;
+				}
+				break;
+			case FAST:			// fast-forward button clicked
+				removeFastForwardButton();
+				goSlow();
+				theState = aNewState;
 				break;
 			case BROKEN:
 				stopStopwatch();
 				showResetButton();
+				removeFastForwardButton();
 				// show broken watch
 				showWatch(true);
 				theState = aNewState;
@@ -179,12 +207,14 @@ void StartStopWatch::goToState(TheStates aNewState)
 				showWatch(false);
 				resetStopwatch();
 				removeResetButton();
+				removeFastForwardButton();
 				theState = aNewState;
 				break;
 			case BROKEN:
 				break;
 			case STOPPED:
 			case RUNNING:
+			case FAST:
 				assert(false);
 				break;
 			}
@@ -207,6 +237,15 @@ void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 		clicked_on_watch();
 	if (myItemPtr==theResetSvgPtr)
 		clicked_on_reset();
+	if (myItemPtr==theFastForwardSvgPtr)
+		clicked_on_fastforward();
+}
+
+void StartStopWatch::removeFastForwardButton(void)
+{
+	assert(theFastForwardSvgPtr != NULL);
+	delete theFastForwardSvgPtr;
+	theFastForwardSvgPtr=NULL;
 }
 
 void StartStopWatch::removeResetButton(void)
@@ -222,6 +261,19 @@ void StartStopWatch::resetStopwatch()
 	// i.e. we use the absolute transform - that will go back to (almost) start
 	theStopWatchHandSvgPtr->setTransform(theRotation, false);
 	emit resetSim();
+}
+
+void StartStopWatch::showFastForwardButton(void)
+{
+	assert(theFastForwardSvgPtr == NULL);
+
+	// and initialise the reset button
+	QSvgRenderer* myRenderer = ImageStore::getRenderer("ActionFastForward");
+	theFastForwardSvgPtr = new QGraphicsSvgItem(NULL);
+	theFastForwardSvgPtr->setSharedRenderer(myRenderer);
+	theFastForwardSvgPtr->setZValue(5.0);
+	addItem(theFastForwardSvgPtr);
+	theFastForwardSvgPtr->setPos(255-65, 306-65);
 }
 
 void StartStopWatch::showResetButton(void)
