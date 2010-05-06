@@ -149,7 +149,7 @@ void World::initAttributes( )
 	theAABBPtr->upperBound.Set(100.0f, 100.0f);
 
 	// Define the gravity vector.
-	b2Vec2 myGravity(0.0f, -9.81f);
+	b2Vec2 myGravity(0.0f, getG());
 
 	// Construct a world object, which will hold and simulate the rigid bodies.
 	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
