@@ -34,13 +34,13 @@
                 <property key="page1" >You see that butterfly?</property>
                 <property key="page2" >It wants to go to the flower...</property>
                 <property key="page3" >&lt;i&gt;Once this Post-It is gone,&lt;/i&gt;&lt;br&gt;&lt;br&gt;click the stopwatch right below&lt;br&gt;to make it happen!</property>
-                <property key="page4" >If you click the stopwatch again, the simulation will stop.&lt;br&gt;There's also a green 'reset' button now.</property>
+                <property key="page4" >If you click the stopwatch again, the simulation will stop.&lt;br&gt;There's also a green 'reset' button now. &lt;br&gt; &lt;br&gt; During the simulation, there's also a 'fast forward'.</property>
                 <property key="page5" >But I've said enough...&lt;br&gt;&lt;br&gt;   Good luck!</property>
                 <property key="page6" >... The Post-It boy</property>
                 <property key="page1_nl" >Zie je die vlinder?</property>
                 <property key="page2_nl" >Die wil naar de bloem...</property>
                 <property key="page3_nl" >&lt;i&gt;Als deze Post-It zo verdwenen is,&lt;/i&gt;&lt;br&gt;klik dan op de stopwatch om te starten.</property>
-                <property key="page4_nl" >Als je nog eens klikt op de stopwatch, dan stopt alles weer.&lt;br&gt;Er komt dan ook een groene 'reset' pijl bij.</property>
+                <property key="page4_nl" >Als je nog eens klikt op de stopwatch, dan stopt alles weer.&lt;br&gt;Er komt dan ook een groene 'reset' pijl bij. &lt;br&gt;&lt;br&gt;Tijdens de simulatie is er ook nog een 'snel vooruitspoelen' knop.</property>
                 <property key="page5_nl" >Maar ik heb genoeg gezegd...&lt;br&gt;&lt;br&gt;Veel success!</property>
                 <property key="page6_nl" >... de Post-It boy</property>
 	    </object>

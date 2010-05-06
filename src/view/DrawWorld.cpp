@@ -237,17 +237,19 @@ void DrawWorld::dropEvent ( QGraphicsSceneDragDropEvent * event)
 
 void DrawWorld::goFast()
 {
+	DEBUG4("void DrawWorld::goFast()\n");
 	theSimSpeed *= 4;
 }
 
 void DrawWorld::goSlow()
 {
+	DEBUG4("void DrawWorld::goSlow()\n");
 	theSimSpeed /= 4;
 }
 
 void DrawWorld::initAttributes ( ) 
 {
-	DEBUG5("void DrawWorld::initAttributes\n");
+	DEBUG4("void DrawWorld::initAttributes\n");
 	theSimSpeed = 1000.0;
 	theCongratulations = NULL;
 	theInsertUndoPtr = NULL;
@@ -258,6 +260,8 @@ void DrawWorld::initAttributes ( )
 	QObject::connect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(stopSim()),  this, SLOT(stopTimer()));
 	QObject::connect(theSimStateMachine, SIGNAL(resetSim()), this, SLOT(resetWorld()));
+	QObject::connect(theSimStateMachine, SIGNAL(goFast()),   this, SLOT(goFast()));
+	QObject::connect(theSimStateMachine, SIGNAL(goSlow()),   this, SLOT(goSlow()));
 }
 
 void DrawWorld::invalidateCaching(void)

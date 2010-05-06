@@ -56,6 +56,7 @@ StartStopWatch::StartStopWatch()
 
 	// let's move 2 degrees (1/3 second) per progress step
 	theRotation = QTransform().translate(myHandRx, myHandRy).rotate(2).translate(-myHandRx, -myHandRy);
+	theFastRotation = QTransform().translate(myHandRx, myHandRy).rotate(4*2).translate(-myHandRx, -myHandRy);
 
 	theState = NOTSTARTED;
 }
@@ -171,20 +172,23 @@ void StartStopWatch::goToState(TheStates aNewState)
 			case STOPPED:		// stop button clicked
 				stopStopwatch();
 				showResetButton();
-				removeFastForwardButton();
+				if (theState==RUNNING)
+					removeFastForwardButton();
+				else
+					emit goSlow();
 				theState = aNewState;
 				break;
 			case RUNNING:		// no need for action
 				if (theState==FAST)
 				{
 					showFastForwardButton();
-					goFast();
+					emit goFast();
 					theState = aNewState;
 				}
 				break;
 			case FAST:			// fast-forward button clicked
 				removeFastForwardButton();
-				goSlow();
+				emit goSlow();
 				theState = aNewState;
 				break;
 			case BROKEN:
@@ -224,12 +228,6 @@ void StartStopWatch::goToState(TheStates aNewState)
 	DEBUG4("StartStopWatch: the new state is %d\n", theState);
 }
 
-void StartStopWatch::progressHand(void)
-{
-	// make the transform incremental: rotate some more
-	theStopWatchHandSvgPtr->setTransform(theRotation, true);
-}
-
 void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 {
 	QGraphicsItem* myItemPtr = itemAt(aMouseEvent->scenePos());
@@ -239,6 +237,16 @@ void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 		clicked_on_reset();
 	if (myItemPtr==theFastForwardSvgPtr)
 		clicked_on_fastforward();
+}
+
+void StartStopWatch::progressHand(void)
+{
+	// make the transform incremental: rotate some more
+	// in fast forward, let's rotate some more more
+	if (theFastForwardSvgPtr == NULL)
+		theStopWatchHandSvgPtr->setTransform(theFastRotation, true);
+	else
+		theStopWatchHandSvgPtr->setTransform(theRotation, true);
 }
 
 void StartStopWatch::removeFastForwardButton(void)

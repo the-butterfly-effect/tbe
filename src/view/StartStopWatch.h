@@ -98,6 +98,7 @@ private:
 	QGraphicsSvgItem* theStopWatchSvgPtr;
 	QGraphicsSvgItem* theStopWatchHandSvgPtr;
 	QTransform	theRotation;
+	QTransform	theFastRotation;
 	QGraphicsSvgItem* theResetSvgPtr;
 	QGraphicsSvgItem* theFastForwardSvgPtr;
 
