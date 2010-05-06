@@ -2,7 +2,7 @@
 <tbe-level>
     <levelinfo>
         <title>Bouncing Balls</title>
-        <title lang="nl"></title>
+        <title lang="nl">Stuiterende ballen</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Bouncing Balls - put in basket</description>
@@ -46,7 +46,7 @@
       <property key="page3_nl" >Van mijn moeder moet ik m'n kamer opruimen.&lt;br&gt;&lt;br&gt;Alle ballen moeten in de mand.</property>
       <property key="page4_nl" >Iemand zei me om een helling van de gereedschapskist in het veld te slepen.&lt;br&gt;... nadat je de post-it uit hebt!</property>
       <property key="page5_nl" >Maar waarom moet ik elk jaar mijn kamer opruimen?</property>
-      <property key="page6_nl" >... Een niet-zo-blije&lt;br&gt;&lt;br&gt;&lt;br&gt;Post-It Boy</property>
+      <property key="page6_nl" >... Een niet-zo-vrolijke&lt;br&gt;&lt;br&gt;&lt;br&gt;Post-It Boy</property>
   </object>
 
 	
