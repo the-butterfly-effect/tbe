@@ -225,13 +225,13 @@ void DrawWorld::dropEvent ( QGraphicsSceneDragDropEvent * event)
 void DrawWorld::goFast()
 {
 	DEBUG4("void DrawWorld::goFast()\n");
-	theSimSpeed *= 4;
+	theSimSpeed /= 4;
 }
 
 void DrawWorld::goSlow()
 {
 	DEBUG4("void DrawWorld::goSlow()\n");
-	theSimSpeed /= 4;
+	theSimSpeed *= 4;
 }
 
 void DrawWorld::initAttributes ( ) 

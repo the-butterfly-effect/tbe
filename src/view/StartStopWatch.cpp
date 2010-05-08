@@ -159,6 +159,39 @@ void StartStopWatch::goToState(TheStates aNewState)
 			break;
 		}
 	case RUNNING:
+		{
+			switch (aNewState)
+			{
+			case NOTSTARTED:
+				// should not happen in normal use
+				// so let's go to stopped first
+				goToState(STOPPED);
+				goToState(NOTSTARTED);
+				break;
+			case STOPPED:		// stop button clicked
+				stopStopwatch();
+				showResetButton();
+				removeFastForwardButton();
+				theState = aNewState;
+				break;
+			case RUNNING:		// no need for action
+				break;
+			case FAST:			// fast-forward button clicked
+				removeFastForwardButton();
+				emit goFast();
+				theState = aNewState;
+				break;
+			case BROKEN:
+				stopStopwatch();
+				showResetButton();
+				removeFastForwardButton();
+				// show broken watch
+				showWatch(true);
+				theState = aNewState;
+				break;
+			}
+			break;
+		}
 	case FAST:
 		{
 			switch (aNewState)
@@ -172,29 +205,20 @@ void StartStopWatch::goToState(TheStates aNewState)
 			case STOPPED:		// stop button clicked
 				stopStopwatch();
 				showResetButton();
-				if (theState==RUNNING)
-					removeFastForwardButton();
-				else
-					emit goSlow();
-				theState = aNewState;
-				break;
-			case RUNNING:		// no need for action
-				if (theState==FAST)
-				{
-					showFastForwardButton();
-					emit goFast();
-					theState = aNewState;
-				}
-				break;
-			case FAST:			// fast-forward button clicked
-				removeFastForwardButton();
 				emit goSlow();
 				theState = aNewState;
+				break;
+			case RUNNING:		// slow down
+				showFastForwardButton();
+				emit goSlow();
+				theState = aNewState;
+				break;
+			case FAST:			// nothing to do
 				break;
 			case BROKEN:
 				stopStopwatch();
 				showResetButton();
-				removeFastForwardButton();
+				emit goSlow();
 				// show broken watch
 				showWatch(true);
 				theState = aNewState;
@@ -211,7 +235,6 @@ void StartStopWatch::goToState(TheStates aNewState)
 				showWatch(false);
 				resetStopwatch();
 				removeResetButton();
-				removeFastForwardButton();
 				theState = aNewState;
 				break;
 			case BROKEN:
