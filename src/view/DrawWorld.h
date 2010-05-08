@@ -26,6 +26,7 @@
 #include <QTimer>
 #include <QTime>
 #include <QUndoStack>
+#include <QGraphicsSvgItem>
 
 #include "Box2D.h"
 
@@ -172,21 +173,10 @@ private:
 
 	/// milliseconds per time step ???
 	qreal theSimSpeed;
-	
-	/** this is initialised to display Congratulations on the scene
-	  * by on_winning()
-	  */
-	QGraphicsSimpleTextItem* theCongratulations;
 
 private:
 
 	void initAttributes ( ) ;
-
-	/** puts a string as the topmost item on the Scene
-	  * @param aString  the string to display
-	  * @post  theCongratulations will point to the QGSimpleTextItem
-	  */
-	void displaySimpleText(const QString& aString);
 
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);
@@ -200,6 +190,22 @@ private:
 	  * a pointer to the UndoInsertCommand-in-progress
 	  */
 	UndoInsertCommand* theInsertUndoPtr;
+
+	/** this local class displays the Congratulations or Death message
+	  * with a nice SVG background
+	  */
+	class CongratDeathMessage : QGraphicsSvgItem
+	{
+	public:
+		CongratDeathMessage(const QString& aMessage, DrawWorld* aScene);
+	private:
+		// I originally also wanted to hookup onClick events, but
+		// that makes no sense as the DrawWorld is still in locked state:
+		// you'll always get a message to reset the stopwatch.
+	};
+
+	CongratDeathMessage* theCongratDeathBoxPtr;
+
 };
 
 #endif // DRAWWORLD_H

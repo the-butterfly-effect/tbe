@@ -26,11 +26,9 @@
 #include "StartStopWatch.h"
 #include "UndoInsertCommand.h"
 
-#include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
 #include <QDropEvent>
-
 
 /** the Dot class is a helper - it's a true QGraphicsItem, it's
  *  just invisible (nothing is drawn) and very very small
@@ -137,17 +135,6 @@ qreal DrawWorld::getWidth()
 // Other methods
 //  
 
-void DrawWorld::displaySimpleText(const QString& aString)
-{
-	theCongratulations = new QGraphicsSimpleTextItem(NULL, this);
-	theCongratulations->setText(aString);
-	QRectF myBounds = theCongratulations->boundingRect();
-	qreal myResize = 0.8 * getWidth() / myBounds.width() ;
-
-	theCongratulations->scale(myResize, myResize);
-	theCongratulations->setPos(0, -(getHeight()/2.0));
-	theCongratulations->setZValue(10.0);
-}
 
 void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 {
@@ -251,8 +238,8 @@ void DrawWorld::initAttributes ( )
 {
 	DEBUG4("void DrawWorld::initAttributes\n");
 	theSimSpeed = 1000.0;
-	theCongratulations = NULL;
 	theInsertUndoPtr = NULL;
+	theCongratDeathBoxPtr = NULL;
 
 	isUserInteractionAllowed = true;
 
@@ -293,10 +280,11 @@ void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 void DrawWorld::on_death(void)
 {
 	// only need to display the graphicsitem once...
-	if (theCongratulations!=NULL)
+	if (theCongratDeathBoxPtr!=NULL)
 		return;
+	else
+		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Death - retry?"), this);
 
-	displaySimpleText(tr("Death!!!"));
 	theSimStateMachine->goToState(StartStopWatch::BROKEN);
 }
 
@@ -322,10 +310,10 @@ void DrawWorld::on_timerTick()
 void DrawWorld::on_winning(void)
 {
 	// only need to display the graphicsitem once...
-	if (theCongratulations!=NULL)
+	if (theCongratDeathBoxPtr!=NULL)
 		return;
-
-	displaySimpleText(tr("Congratulations"));
+	else
+		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Congratulations"), this);
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
 }
@@ -343,10 +331,10 @@ void DrawWorld::resetWorld( )
 	if (theDrawDebug)
 		clearGraphicsList(0);
 
-	if (theCongratulations!=NULL)
+	if (theCongratDeathBoxPtr!=NULL)
 	{
-		delete theCongratulations;
-		theCongratulations=NULL;
+		delete theCongratDeathBoxPtr;
+		theCongratDeathBoxPtr=NULL;
 	}
 }
 
@@ -451,4 +439,31 @@ void DrawWorld::clearGraphicsList(int aCount)
 		theGraphicsList.pop_front();
 		delete myItemPtr;
 	}
+}
+
+// FIXME: hardcoded path here!
+DrawWorld::CongratDeathMessage::CongratDeathMessage(
+		const QString& aMessage,
+		DrawWorld* aScenePtr) : QGraphicsSvgItem("images/congrat-death-border.svg")
+{
+	// the image is put in scene coordinates
+	QRectF myImageBounds = boundingRect();
+	QRectF mySceneBounds(0,-aScenePtr->getHeight(),
+						 aScenePtr->getWidth(), aScenePtr->getHeight());
+
+	qreal myResize = 0.8 * mySceneBounds.width() / myImageBounds.width() ;
+	scale(myResize, myResize);
+	setPos(mySceneBounds.center()-mapToScene(boundingRect().center()));
+	setZValue(10.0);
+	aScenePtr->addItem(this);
+
+	// No need to keep the myTextPtr outside the constructor as QT will
+	// keep track of the children itself
+	QGraphicsSimpleTextItem* myTextPtr = new QGraphicsSimpleTextItem(aMessage, this);
+	QRectF myTextBounds = myTextPtr->boundingRect();
+	myResize = 0.9 * boundingRect().width() / myTextBounds.width() ;
+	myTextPtr->setBrush(Qt::white);
+	myTextPtr->scale(myResize, myResize);
+	myTextBounds = myTextPtr->mapToParent( myTextPtr->boundingRect() ).boundingRect();
+	myTextPtr->setPos(boundingRect().center() - myTextBounds.center());
 }
