@@ -42,7 +42,22 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.setupUi(this);
 	showMaximized();
 
-
+#ifdef XXXNDEBUG
+	// hook up the menus - only in release mode when compiled
+	// with static library - see ticket:77
+	#warning compiling the on_action connects into MainWindow
+	QObject::connect(this, SIGNAL(actionAbout()),             this, SLOT(on_actionAbout_activated()));
+	QObject::connect(this, SIGNAL(actionBrand_names()),       this, SLOT(on_actionBrand_names_activated()));
+	QObject::connect(this, SIGNAL(actionLibraries()),         this, SLOT(on_actionLibraries_activated()));
+	QObject::connect(this, SIGNAL(actionOpen_custom_level()), this, SLOT(on_actionOpen_custom_level_activated()));
+	QObject::connect(this, SIGNAL(actionOpen_level()),        this, SLOT(on_actionOpen_level_activated()));
+	QObject::connect(this, SIGNAL(actionSave()),              this, SLOT(on_actionSave_activated()));
+	QObject::connect(this, SIGNAL(action_quarter_speed()),    this, SLOT(on_action_quarter_speed_activated()));
+	QObject::connect(this, SIGNAL(action_half_speed()),       this, SLOT(on_action_half_speed_activated()));
+	QObject::connect(this, SIGNAL(action_normal_speed()),     this, SLOT(on_action_normal_speed_activated()));
+	QObject::connect(this, SIGNAL(action_double_speed()),     this, SLOT(on_action_double_speed_activated()));
+#endif
+			
 	// setup UndoGroup's QActions and add them to Edit menu
 	theUndoActionPtr = theUndoGroup.createUndoAction(this, tr("&Undo"));
 	theUndoActionPtr->setShortcut(tr("Ctrl+Z"));
