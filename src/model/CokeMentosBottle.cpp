@@ -327,7 +327,7 @@ void CokeSplatter::callBackSensor(b2ContactPoint*)
 void CokeSplatter::setAll(World* aWorldPtr,
 						  const Position& aStartPos,
 						  qreal aVelocity,
-						  qreal aSplatterMass)
+						  UNUSED_ARG qreal aSplatterMass)
 {
 	DEBUG5("CokeSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,

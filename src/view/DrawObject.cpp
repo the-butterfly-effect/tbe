@@ -194,7 +194,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 }
 
 
-void DrawObject::focusInEvent ( QFocusEvent * event )
+void DrawObject::focusInEvent ( UNUSED_ARG QFocusEvent* event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
 	if (theAnchorsPtr!=NULL)
