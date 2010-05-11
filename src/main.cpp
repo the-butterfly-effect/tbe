@@ -51,8 +51,8 @@ int main(int argc, char **argv)
 	translator.load(QString("i18n/tbe_") + locale);
 	app.installTranslator(&translator);
 
-	QCoreApplication::setOrganizationName("Sourceforge.net");
-	QCoreApplication::setOrganizationDomain("tbe.sf.net");
+	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
+	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
 	QCoreApplication::setApplicationName("The Butterfly Effect");
 
 	{

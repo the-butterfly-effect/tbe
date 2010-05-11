@@ -113,7 +113,9 @@ void MainWindow::on_actionAbout_activated()
 				" simulations to combine lots of simple mechanical elements"
 				" to achieve a simple goal in the most complex way possible.<br><br>"
 				"(C) 2009-2010 Peter van Ginneken and Klaas van Gend<br>"
-				"Licensed under GPL version 2 - <i>only</i>."), this);
+				"Licensed under GPL version 2 - <i>only</i>.<br><br>"
+				"See http://%1/ for more info on this project.")
+				.arg(QCoreApplication::instance()->organizationDomain()), this);
 }
 
 void MainWindow::on_actionBrand_names_activated()
