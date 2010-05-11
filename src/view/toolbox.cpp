@@ -21,6 +21,7 @@
 #include "BaseObjectSerializer.h"
 #include "UndoDeleteCommand.h"
 #include "DrawObject.h"
+#include "LocalString.h"
 
 #include <QtGui>
 #include <QMimeData>
@@ -253,6 +254,7 @@ bool ToolBox::fillFromDomNode(const QDomNode& aToolboxDomNode)
 	{
 		// a toolbox object entry has the following layout:
 		// <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
+		//      <name lang="nl">Helling rechts</name>
 		//      <object width="2" height="1" type="RightRamp" />
 		// </toolboxitem>
 
@@ -264,23 +266,25 @@ bool ToolBox::fillFromDomNode(const QDomNode& aToolboxDomNode)
 			break;
 		}
 
-		myO = myTBI.firstChild();
-		if (myO.nodeName() != "object")
+		myO = myTBI.firstChildElement("object");
+		if (myO.isNull())
 		{
-			DEBUG2("error parsing toolbox: expected <object> but got <%s>\n", ASCII(myO.nodeName()));
+			DEBUG2("error parsing toolbox: no <object> found\n");
 			myResult = false;
 			break;
 		}
 
 		QDomNamedNodeMap myNodeMap = myTBI.attributes();
-		QString myTBI_Name     = myNodeMap.namedItem("name").nodeValue();
+		LocalString myTBI_Name;
+		myTBI_Name.fillFromDOM(myTBI, "name", myNodeMap.namedItem("name").nodeValue());
+
 		QString myTBI_IconName = myNodeMap.namedItem("icon").nodeValue();
 		bool    isOK;
 		int     myTBI_Count = myNodeMap.namedItem("count").nodeValue().toInt(&isOK);
 		if (!isOK)
 			myTBI_Count = TBItem::INFINITE;
 
-		TBItem* myItemPtr = new TBItem( myTBI_Count, myTBI_IconName, myTBI_Name,  myO);
+		TBItem* myItemPtr = new TBItem( myTBI_Count, myTBI_IconName, myTBI_Name.result(),  myO);
 		addItem(myItemPtr);
 		if (myTBI==aToolboxDomNode.lastChild())
 			break;

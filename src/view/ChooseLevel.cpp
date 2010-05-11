@@ -162,39 +162,6 @@ bool ChooseLevel::LevelList::fatalError(const QXmlParseException &exception)
 
 // ###################################################
 
-ChooseLevel::LocalString::LocalString(void)
-{
-	QLocale mySysLocale = QLocale::system();
-	the5Char = mySysLocale.name();
-}
-
-void ChooseLevel::LocalString::check(const QString& aValue, const QString& aLangCode)
-{
-	// rule 1
-	if (aLangCode.isEmpty() && theLang.isEmpty())
-		theString = aValue;
-
-	// rule 2
-	if (theLang.size()<3 && aLangCode.left(2) == the5Char.left(2))
-	{
-		// but not if we already have "nl", are looking for "nl_NL" and we now get "nl_BE"
-		if ( !(aLangCode.size()==5 && theLang.size()==2) )
-		{
-			theString = aValue;
-			theLang = aLangCode.left(2);
-		}
-	}
-
-	// rule 3
-	if (theLang.size()<3 && aLangCode == the5Char)
-	{
-		theString = aValue;
-		theLang = aLangCode;
-	}
-}
-
-// ###################################################
-
 bool ChooseLevel::FastLevelParser::endElement(const QString & /* namespaceURI */,
 											  const QString & /* localName */,
 											  const QString &qName)

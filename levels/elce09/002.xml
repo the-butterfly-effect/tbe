@@ -1,20 +1,22 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>The Butterfly effect 102</title>
+	<title>The Butterfly effect 102</title>
 	<title lang="nl">Het vlindereffect (vervolgcursus)</title>
 	<author>Klaas van Gend</author>
-        <license>GPLv2</license>
-        <description>Level with a small user interaction: a volleyball is in the way... </description>
+	<license>GPLv2</license>
+	<description>Level with a small user interaction: a volleyball is in the way... </description>
 	<description lang="nl">Dit level vereist enige speler-actie: er ligt een volleybal in de weg... </description>
 	<date>10/10/09</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="9" name="Bowling Pin">
+			<name lang="nl">Kegel</name>
             <object type="Bowling Pin" />
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
-            <object type="Bowling Ball" />
+			<name lang="nl">Bowlingbal</name>
+			<object type="Bowling Ball" />
         </toolboxitem>
     </toolbox>
     <scene>

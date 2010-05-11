@@ -29,9 +29,9 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 	ui.setupUi(this);
 	ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
 	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
-	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
+	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription.result());
 	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
-	ui.theTitleField           ->setText(theLevelPtr->theLevelName);
+	ui.theTitleField           ->setText(theLevelPtr->theLevelName.result());
 
 	QDate myDate = QDate::fromString(theLevelPtr->theLevelDate);
 	if (myDate.isValid())
@@ -69,9 +69,9 @@ bool SaveLevelInfo::commitToLevel(void)
 
 	theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text();
 	theLevelPtr->theLevelDate        = ui.theDateEdit->text();
-	theLevelPtr->theLevelDescription = ui.theLevelDescriptionField->toPlainText();
+	theLevelPtr->theLevelDescription.check(ui.theLevelDescriptionField->toPlainText(), "");
 	theLevelPtr->theLevelLicense     = ui.theLicenseField->text();
-	theLevelPtr->theLevelName        = ui.theTitleField->text();
+	theLevelPtr->theLevelName.check(ui.theTitleField->text(), "");
 
 	if (ui.theFileNameField->text().isEmpty())
 		return false;

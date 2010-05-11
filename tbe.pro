@@ -14,7 +14,8 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
     -Wextra
-QMAKE_CXXFLAGS_RELEASE += -Wextra -DNDEBUG
+QMAKE_CXXFLAGS_RELEASE += -Wextra \
+    -DNDEBUG
 QT += core \
     gui \
     xml \
@@ -22,6 +23,7 @@ QT += core \
 HEADERS += src/tbe_global.h \
     src/base/BaseObjectSerializer.h \
     src/base/GoalSerializer.h \
+    src/base/LocalString.h \
     src/base/Property.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoInsertCommand.h \
@@ -60,6 +62,7 @@ HEADERS += src/tbe_global.h \
 SOURCES += src/main.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/GoalSerializer.cpp \
+    src/base/LocalString.cpp \
     src/base/Property.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoInsertCommand.cpp \

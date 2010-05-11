@@ -108,6 +108,7 @@ QString
 Level::load(const QString& aFileName)
 {
 	theFileName = aFileName;
+	DEBUG2("Level::load(%s)\n", ASCII(aFileName));
 
 	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");
@@ -128,7 +129,7 @@ Level::load(const QString& aFileName)
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))
 	{
-		myErrorMessage = tr("Cannot read file %1").arg(aFileName);
+		myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 		goto not_good;
 	}
 
@@ -148,21 +149,25 @@ Level::load(const QString& aFileName)
 	myNode=myDocElem.firstChildElement(theLevelInfoString);
 	if (myNode.isNull())
 		goto not_good;
-	theLevelName       = myNode.firstChildElement(theLevelNameString).text();
+	theLevelName       .fillFromDOM(myNode,theLevelNameString);
 	theLevelAuthor     = myNode.firstChildElement(theLevelAuthorString).text();
 	theLevelLicense    = myNode.firstChildElement(theLevelLicenseString).text();
-	theLevelDescription= myNode.firstChildElement(theLevelDescriptionString).text();
+	theLevelDescription.fillFromDOM(myNode, theLevelDescriptionString);
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
 	{
 		myErrorMessage += "level, author or license info missing";
 		goto not_good;
 	}
-	DEBUG5("level name:    '%s'\n", ASCII(theLevelName));
+	DEBUG5("level name:    '%s'\n", ASCII(theLevelName.result()));
 	DEBUG5("level author:  '%s'\n", ASCII(theLevelAuthor));
 	DEBUG5("level license: '%s'\n", ASCII(theLevelLicense));
-	theWorldPtr->theLevelName = theLevelName;
+	theWorldPtr->theLevelName = theLevelName.result();
 
+	//
+	// save the Toolbox node for later
+	// (it is handled within ToolBox::fillFromDomNode())
+	//
 	theToolboxDomNode = myDocElem.firstChildElement("toolbox");
 
 	//
@@ -301,10 +306,10 @@ bool Level::save(const QString& aFileName)
 	// LevelInfo
 	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
 	myRoot.appendChild(myLevelInfo);
-	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
+	addTextElement(myLevelInfo, theLevelNameString, theLevelName.result());
 	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
 	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
-	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
+	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription.result());
 	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
 
 	// Scene

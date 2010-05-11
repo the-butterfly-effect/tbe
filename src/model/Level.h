@@ -25,6 +25,7 @@
 #include <QDomDocument>
 #include "tbe_global.h"
 #include "BaseObject.h"
+#include "LocalString.h"
 
 // Forward Declarations:
 class MainWindow;
@@ -63,7 +64,7 @@ public:
 
 	/// returns the Level's title
 	virtual const QString& getName ( ) const
-		{ return theLevelName; }
+		{ return theLevelName.result(); }
 	
 	World* getTheWorldPtr(void)
 		{ return theWorldPtr; }
@@ -109,10 +110,10 @@ protected:
 private:	
 	World* theWorldPtr;
 
-	QString theLevelName;
+	LocalString theLevelName;
 	QString theLevelAuthor;
 	QString theLevelLicense;
-	QString	theLevelDescription;
+	LocalString theLevelDescription;
 	QString theLevelDate;
 
 	/** populated during load(), this DomNode contains the contents for the toolbox

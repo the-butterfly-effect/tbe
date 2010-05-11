@@ -19,6 +19,8 @@
 #ifndef ChooseLevel_H
 #define ChooseLevel_H
 
+#include "LocalString.h"
+
 #include <QtGui/QDialog>
 
 #include <QTreeWidget>
@@ -74,39 +76,6 @@ private:
 		QString currentText;
 		QString errorStr;
 	}; // end-of-LevelList
-
-
-	/// this QString-on-steroids only copies a string it is in the right locale
-	class LocalString
-	{
-	public:
-		LocalString();
-
-		/** checks if string aValue is in the right locale
-		  *  (we get that locale from the QLocale::system() )
-		  *  we follow these rules:
-		  *    1) if nothing set and we find a <title> without a language - let's use it
-		  *    2) if we find a title with the corresponding language - let's use it instead of rule 1
-		  *    3) if we find a title with a full corresponding "language_country", let's use that one instead of 1 or 2
-		  *  @param aValue   string to be copied if one of the above rules matches
-		  *  @param aLangCode  the locale code - either empty, or "nl" or "nl_BE" format
-		  */
-		void check(const QString& aValue, const QString& aLangCode);
-
-		bool isEmpty(void)
-		{ return theString.isEmpty(); }
-
-		const QString & result()
-		{ return theString; }
-
-	private:
-		/// constructor will initialize this with the 5-character language+country code.
-		QString the5Char;
-		/// contains the already detected language
-		QString theLang;
-		/// contains the current value - in theLang language
-		QString theString;
-	};
 
 
 	/** this class is used after the above LevelList class to quickly retrieve
