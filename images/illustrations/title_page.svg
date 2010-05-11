@@ -152,7 +152,7 @@
        fx="195.47585"
        fy="290.5737"
        r="186.54019"
-       gradientTransform="matrix(-0.7189454,0.3824608,-0.4881147,-0.6782053,755.27949,161.71898)"
+       gradientTransform="matrix(-0.7189454,0.3824608,-0.4881147,-0.6782053,935.50728,411.845)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -165,15 +165,15 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4592644"
-     inkscape:cx="368.64756"
-     inkscape:cy="152.02112"
+     inkscape:zoom="1.0371168"
+     inkscape:cx="309.63485"
+     inkscape:cy="73.922889"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1270"
-     inkscape:window-height="959"
-     inkscape:window-x="0"
+     inkscape:window-height="783"
+     inkscape:window-x="2"
      inkscape:window-y="0" />
   <metadata
      id="metadata7">
@@ -385,16 +385,6 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:8.69970608px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-       x="206.56667"
-       y="324.16299"
-       id="text2588"><tspan
-         sodipodi:role="line"
-         id="tspan2590"
-         x="206.56667"
-         y="324.16299">(click this pane to start)</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-size:71.62693787px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:0.48648652;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35675677;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold"
        x="173.43137"
        y="304.46829"
@@ -412,13 +402,5 @@
      id="layer3"
      inkscape:label="foreground"
      style="display:inline"
-     transform="translate(-39.029442,-34.325558)">
-    <rect
-       style="opacity:1;fill:url(#radialGradient3428);fill-opacity:1;stroke:none;stroke-width:1.11654711;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.35675677"
-       id="rect3410"
-       width="433.94757"
-       height="297.54617"
-       x="44.123772"
-       y="34.325558" />
-  </g>
+     transform="translate(-39.029442,-34.325558)" />
 </svg>

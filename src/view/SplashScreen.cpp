@@ -19,10 +19,8 @@
 #include "tbe_global.h"
 #include "SplashScreen.h"
 
-//#include <QGraphicsScene>
-//#include <QPainter>
-//#include <QStyleOption>
 #include <QGraphicsSceneMouseEvent>
+#include <QBrush>
 
 // Constructors/Destructors
 //  
@@ -33,6 +31,18 @@ SplashScreen::SplashScreen (const QString& anSVGFileName)
 	: QGraphicsSvgItem(anSVGFileName)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable);
+
+	// No need to keep the myTextPtr outside the constructor as QT will
+	// keep track of the children itself
+	QGraphicsSimpleTextItem* myTextPtr = new QGraphicsSimpleTextItem(tr("(click this pane to start)"), this);
+	QRectF myTextBounds = myTextPtr->boundingRect();
+	qreal myResize = 0.3 * boundingRect().width() / myTextBounds.width() ;
+	myTextPtr->setBrush(Qt::red);
+	myTextPtr->scale(myResize, myResize);
+	myTextBounds = myTextPtr->mapToParent( myTextPtr->boundingRect() ).boundingRect();
+	myTextPtr->setPos( boundingRect().center().x()-myTextBounds.center().x(),
+					   boundingRect().height()-1.5*myTextBounds.height());
+
 }
 
 SplashScreen::~SplashScreen ( ) { }
@@ -49,7 +59,7 @@ SplashScreen::~SplashScreen ( ) { }
 // Other methods
 //  
 
-void SplashScreen::mousePressEvent ( QGraphicsSceneMouseEvent * event )
+void SplashScreen::mousePressEvent ( UNUSED_ARG QGraphicsSceneMouseEvent * event )
 {
 	DEBUG5("SplashScreen::sceneEvent(%d)\n", event->type());
 	emit clicked();
