@@ -69,6 +69,5 @@ LocalString::fillFromDOM(
 		check(myE.text(), myE.attribute("lang",""));
 		myE = myE.nextSiblingElement(aTagString);
 	}
-	printf("return: '%s'\n", ASCII(result()));
 }
 
