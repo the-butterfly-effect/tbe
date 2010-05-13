@@ -47,6 +47,13 @@ TBItem::TBItem(unsigned int aCount,
 		theIcon = ImageStore::getQIcon(anIconName,
 				  QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 
+	if (aName.isEmpty())
+	{
+		BaseObject* myBOPtr = getNewObject();
+		theName = myBOPtr->getName();
+		delete myBOPtr;
+	}
+
 	// actually display the count + setIcon
 	modifyCount(0);
 
@@ -253,10 +260,13 @@ bool ToolBox::fillFromDomNode(const QDomNode& aToolboxDomNode)
 	for (myTBI=aToolboxDomNode.firstChild(); !myTBI.isNull(); myTBI=myTBI.nextSibling())
 	{
 		// a toolbox object entry has the following layout:
-		// <toolboxitem count="1" name="Right Ramp" icon="RightRamp">
-		//      <name lang="nl">Helling rechts</name>
+		// <toolboxitem count="1" name="Ramp \" icon="RightRamp">
+		//      <name lang="nl">Helling \</name>
 		//      <object width="2" height="1" type="RightRamp" />
 		// </toolboxitem>
+
+		// note that name is optional, if no name specified, we will take the
+		// name from the object - which *might* be localized (maybe not)...
 
 		// simple sanity checks
 		if (myTBI.nodeName() != "toolboxitem")
