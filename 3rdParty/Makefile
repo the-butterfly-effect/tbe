@@ -45,7 +45,7 @@ ${MYLIBDIR}/libQtCore.a: ${QTVERSION}.tar.gz
 	mv ${QTVERSION}/tools/linguist/linguist.pro ${QTVERSION}/tools/linguist/linguist.pro.old
 	cat ${QTVERSION}/tools/linguist/linguist.pro.old | grep -v linguist \
 		> ${QTVERSION}/tools/linguist/linguist.pro
-	cd ${QTVERSION} && echo "yes" | ./configure -release -opensource \
+	cd ${QTVERSION} && echo "yes" | ./configure -opensource -static\
            -exceptions -silent -no-largefile\
            -no-accessibility -no-qt3support -no-phonon -no-webkit -no-scripttools\
            -no-gif -no-libtiff -no-libmng -no-openssl -no-nis -no-cups \
