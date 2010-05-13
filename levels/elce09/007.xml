@@ -14,6 +14,7 @@
             <object type="DominoRed" />
         </toolboxitem>
 	<toolboxitem count="1" name="Styrofoam">
+            <name lang="nl">Piepschuim</name>
             <object width="0.25" height="0.8" type="RectObject" >
                 <property key="Friction" >0.3</property>
                 <property key="Bounciness" >0.2</property>
@@ -22,7 +23,8 @@
 		<property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Left Ramp">
+        <toolboxitem count="1" name="Ramp /">
+            <name lang="nl">Helling /</name>
             <object width="1.0" height="0.5" type="LeftRamp" angle="0">
                 <property key="ImageName" >left-ramp</property>
             </object>

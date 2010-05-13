@@ -11,9 +11,11 @@
     </levelinfo>
      <toolbox>
          <toolboxitem count="1" name="Bowling Ball">
+            <name lang="nl">Bowlingbal</name>
             <object type="Bowling Ball" />
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
+            <name lang="nl">Helling \</name>
 	    <object height="0.3" width="0.6" type="RightRamp">
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.3</property>

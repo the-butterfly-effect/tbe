@@ -10,6 +10,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="2" name="Styrofoam Block">
+            <name lang="nl">Blok piepschuim</name>
             <object width="1.0" height="0.5" type="RectObject">
                 <property key="ImageName" >styrofoam</property>
                 <property key="Bounciness">0.6</property>

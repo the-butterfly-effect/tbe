@@ -11,16 +11,19 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Ramp /">
+            <name lang="nl">Helling /</name>
             <object width="1.6" height="0.3" type="LeftRamp">
                 <property key="ImageName">left-ramp</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
+            <name lang="nl">Helling \</name>
             <object width="1.4" height="0.5" type="RightRamp">
                 <property key="ImageName">right-ramp</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="I-Beam">
+        <toolboxitem count="1" name="Beam">
+            <name lang="nl">Balk</name>
             <object X="3.7" Y="0.85" width="1.2" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.0</property>
                 <property key="Friction" >0.3</property>

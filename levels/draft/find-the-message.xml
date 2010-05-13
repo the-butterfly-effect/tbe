@@ -11,12 +11,15 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Volley Ball">
+            <name lang="nl">Volleybal</name>
 	    <object type="Volley Ball"  />
         </toolboxitem>
         <toolboxitem count="1" name="Football">
+            <name lang="nl">Voetbal</name>
 	    <object type="Soccer Ball" />
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
+            <name lang="nl">Bowlingbal</name>
 	    <object type="Bowling Ball"/>
         </toolboxitem>
    </toolbox>

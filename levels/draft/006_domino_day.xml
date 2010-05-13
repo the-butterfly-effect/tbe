@@ -11,15 +11,19 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Small Domino" icon="Domino-Stone-Red">
+			<name lang="nl">Kleine dominosteen</name>
             <object height="0.5" type="DominoBlue" />
         </toolboxitem>
         <toolboxitem count="1" name="Medium Domino" icon="Domino-Stone-Red">
+			<name lang="nl">Middel dominosteen</name>
             <object height="0.6" type="DominoRed" />
         </toolboxitem>
         <toolboxitem count="1" name="Large Domino" icon="Domino-Stone-Red">
+			<name lang="nl">Grote dominosteen</name>
             <object width="0.1" height="0.7" type="DominoGreen" />
         </toolboxitem>
 	<toolboxitem count="1" name="Block" icon="styrofoam">
+			<name lang="nl">Piepschuim blok</name>
             <object width="0.8" height="0.1" type="RectObject" >
                 <property key="Friction" >0.2</property>
                 <property key="Mass" >0.2</property>

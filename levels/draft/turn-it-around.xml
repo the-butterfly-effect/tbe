@@ -11,6 +11,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Hammer">
+            <name lang="nl">Hamer</name>
 	    <object width="0.45" height="0.18" type="RectObject" >
                 <property key="ImageName">hammer</property>
                 <property key="Mass">15.0</property>
@@ -20,11 +21,13 @@
 	    </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp /">
+            <name lang="nl">Helling /</name>
             <object width="1.6" height="0.5" type="LeftRamp">
                 <property key="ImageName">left-ramp</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
+            <name lang="nl">Helling \</name>
             <object width="1.6" height="0.5" type="RightRamp">
                 <property key="ImageName">right-ramp</property>
             </object>

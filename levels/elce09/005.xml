@@ -10,13 +10,15 @@
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Coke+Mentos">
+        <toolboxitem count="2" name="Coke+Mentos Bottle">
+            <name lang="nl">Coke-Mentos fles</name>
             <object type="Coke+Mentos Bottle" angle="0" >
                 <property key="Bounciness" >0</property>
                 <property key="ImageName" >CokeMentosBottle</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Styrofoam" icon="styrofoam">
+            <name lang="nl">Piepschuim blok</name>
             <object width="0.25" height="0.8" type="RectObject" >
                 <property key="Friction" >0.3</property>
                 <property key="Bounciness" >0.2</property>
@@ -25,6 +27,7 @@
             </object>
         </toolboxitem>
         <toolboxitem count="10" name="Boulder" icon="boulder">
+            <name lang="nl">Steen</name>
             <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>

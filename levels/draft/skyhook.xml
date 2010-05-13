@@ -11,9 +11,11 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Coke+Mentos Bottle">
+            <name lang="nl">Coke-Mentos fles</name>
             <object type="Coke+Mentos Bottle"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Left Ramp">
+        <toolboxitem count="1" name="Ramp /">
+            <name lang="nl">Helling /</name>
 	    <object height="0.4" Y="1.05" type="LeftRamp">
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Bounciness">0.3</property>

@@ -11,11 +11,13 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Skyhook">
+            <name lang="nl">Hemelhaakje</name>
             <object type="Skyhook" ID="Skyhook">
                 <property key="ZValue" >0.2</property>
             </object>
         </toolboxitem>
         <toolboxitem count="2" name="Beam">
+            <name lang="nl">Balk</name>
             <object width="1.4" height="0.1" type="RectObject">
                 <property key="ImageName" >i-beam</property>
                 <property key="Mass" >10</property>

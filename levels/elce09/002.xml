@@ -11,12 +11,12 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="9" name="Bowling Pin">
-			<name lang="nl">Kegel</name>
+            <name lang="nl">Kegel</name>
             <object type="Bowling Pin" />
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
-			<name lang="nl">Bowlingbal</name>
-			<object type="Bowling Ball" />
+            <name lang="nl">Bowlingbal</name>
+            <object type="Bowling Ball" />
         </toolboxitem>
     </toolbox>
     <scene>

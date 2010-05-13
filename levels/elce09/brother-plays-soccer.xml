@@ -11,7 +11,8 @@
     </levelinfo>
      <toolbox>
        <toolboxitem count="1" name="Soccer Ball">
- 	 <object type="Soccer Ball" ID="soc"/>
+            <name lang="nl">Voetbal</name>
+            <object type="Soccer Ball" ID="soc"/>
        </toolboxitem>
     </toolbox>
     <scene>

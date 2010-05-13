@@ -11,6 +11,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Tennis Ball">
+            <name lang="nl">Tennisbal</name>
 	    <object type="Tennis Ball" />
         </toolboxitem>
    </toolbox>
