@@ -3,10 +3,10 @@
 #QMAKE=`which qmake`
 QMAKE=3rdParty/bin/qmake
 
-make -C 3rdParty release
+(cd 3rdParty && make release)
 
 mv tbe.pro tbe.pro.old
-cat tbe.pro.old | sed s/debug/release link_prl/ >tbe.pro
+cat tbe.pro.old | sed 's/debug/release link_prl/' >tbe.pro
 
 ${QMAKE} tbe.pro
 make clean
