@@ -3,6 +3,8 @@
 #QMAKE=`which qmake`
 QMAKE=3rdParty/bin/qmake
 
+QT4DIR=`echo $QMAKE | sed 's/\/qmake//'`
+
 (cd 3rdParty && make release)
 
 mv tbe.pro tbe.pro.old
@@ -12,6 +14,6 @@ ${QMAKE} tbe.pro
 make clean
 make
 strip tbe
-lupdate tbe.pro
-lrelease tbe.pro
+${QT4DIR}/lupdate tbe.pro
+${QT4DIR}/lrelease tbe.pro
 
