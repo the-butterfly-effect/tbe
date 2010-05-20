@@ -138,7 +138,7 @@ void MainWindow::on_actionBrand_names_activated()
 void MainWindow::on_actionLibraries_activated()
 {
 	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
-				"The Butterfly Effect is a proud user of the Box2D"
+				"The Butterfly Effect is a proud user of the Box2D "
 				"Physics Library. Please refer to http://www.box2d.org/ ."
 				"<br>"
 				"The Butterfly Effect uses Nokia's Qt as GUI toolkit. "
