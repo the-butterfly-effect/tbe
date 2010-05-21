@@ -30,6 +30,9 @@ class BaseObject;
 class PropertyList
 {
 public:
+	/// empty virtual destructor
+	virtual ~PropertyList() {;}
+
 	/// set property aKey to aValue
 	virtual void  setProperty(const QString& aKey, const QString& aValue)
 		{ theProperties[aKey] = aValue; }

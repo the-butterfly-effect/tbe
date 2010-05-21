@@ -57,6 +57,9 @@ class BaseObjectSerializer;
 class JointInterface
 {
 public:
+	/// empty virtual destructor
+	virtual ~JointInterface() {;}
+
 	enum JointStatus
 	{
 		CREATED = 1,
@@ -74,6 +77,9 @@ public:
 class SensorInterface
 {
 public:
+	/// empty virtual destructor
+	virtual ~SensorInterface() {;}
+
 	/// called if Object has registered a sensor share
 	/// the default is to do completely nothing - you'll have to override
 	virtual void callBackSensor(b2ContactPoint*)
@@ -92,6 +98,9 @@ public:
 class ImpulseInterface
 {
 public:
+	/// empty virtual destructor
+	virtual ~ImpulseInterface() {;}
+
 	/// please override and return true if you want reports on NormalImpulse
 	virtual bool isInterestedInNormalImpulse(void)
 	{ return false; }
@@ -444,6 +453,9 @@ class ObjectFactory
 	// there's nothing public here - nobody should call anything in this class
 	// directly.
 public:
+	/// empty virtual destructor
+	virtual ~ObjectFactory() {;}
+
 	typedef QList<const ObjectFactory*> ObjectFactoryList;
 
 protected:

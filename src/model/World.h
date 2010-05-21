@@ -107,6 +107,10 @@ public:
   */
 class SimStepCallbackInterface
 {
+public:
+	/// empty virtual destructor
+	virtual ~SimStepCallbackInterface() {;}
+
 	// only usable by World
 	friend class World;
 private:
