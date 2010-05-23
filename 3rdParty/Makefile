@@ -16,13 +16,14 @@ FASTERMAKE=-j3
 all:	${MYLIBDIR}/libbox2d.a 
 
 # only build (static) QT for release builds
-release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a
+release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a installjammer
 
 # clean all build artifacts
 clean:
 	rm -rf ${BOX2D}
 	rm -rf ${QTVERSION}
 	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/* ${MYPLUGINSDIR}/* ${MYMKSPECDIR}/*
+	rm -rf installjammer
 
 #----------------------------- internal targets
 
@@ -61,3 +62,10 @@ ${QTVERSION}.tar.gz:
 
 ${INSTALLJAMMER}:
 	curl --remote-name http://downloads.installjammer.com/installjammer/1.2/${INSTALLJAMMER}
+
+installjammer: ${INSTALLJAMMER}
+	chmod u+x ${INSTALLJAMMER}
+	echo -e "Y\n\n" | ./${INSTALLJAMMER} --mode console --response-file install-jammer-answers
+	echo -e 'IJLOCATION=`echo $$0 | sed s^/installjammer$$^^`/../installjammer/installjammer\necho ijloc: $${IJLOCATION}\ncd $${IJLOCATION} && ./installjammer' >${MYBINDIR}/installjammer
+	chmod u+x ${MYBINDIR}/installjammer
+
