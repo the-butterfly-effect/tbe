@@ -47,7 +47,6 @@ ${MYLIBDIR}/libQtCore.a: ${QTVERSION}.tar.gz
 		> ${QTVERSION}/tools/linguist/linguist.pro
 	cd ${QTVERSION} && echo "yes" | ./configure -opensource -static\
            -exceptions -silent -no-largefile\
-           -no-accessibility -no-qt3support \
            -no-gif -no-libtiff -no-libmng -no-openssl -no-nis -no-cups \
            -no-iconv -no-pch -no-dbus -no-nas-sound \
            -nomake examples -nomake demos -nomake docs \
