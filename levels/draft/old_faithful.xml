@@ -24,12 +24,12 @@
         </toolboxitem>
         <toolboxitem count="1" name="Beam">
             <name lang="nl">Balk</name>
-            <object X="3.7" Y="0.85" width="1.2" height="0.1" type="RectObject" >
+            <object width="1.2" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.0</property>
-                <property key="Friction" >0.3</property>
+                <property key="Friction" >0.5</property>
                 <property key="ImageName" >i-beam</property>
                 <property key="Resizable" >none</property>
-                <property key="Mass" >1000.0</property>
+                <property key="Mass" >500.0</property>
                 <property key="ZValue" >3.0</property>
             </object>
         </toolboxitem>
@@ -64,20 +64,23 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.31" Y="0.55" width="0.6" height="0.1" type="RectObject" >
-                <property key="Bounciness" >0.05</property>
+                <property key="Bounciness" >0.00</property>
+                <property key="Friction" >0.5</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.52" Y="0.45" width="0.1" height="0.2" type="RectObject" >
-                <property key="Bounciness" >0.05</property>
+                <property key="Bounciness" >0.00</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.77" Y="0.55" width="0.1" height="0.1" type="RectObject" >
+                <property key="Bounciness" >0.0</property>
+                <property key="Friction" >0.5</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.66" Y="0.35" type="Coke+Mentos Bottle" >
                 <property key="Thrust">7</property>
             </object>
-            <object X="2.8" Y="0.35" width="0.1" height="0.5" type="RectObject" >
+            <object X="2.8" Y="0.349" width="0.1" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.05</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -122,18 +125,6 @@
             <object X="4.1" Y="0.65" type="Skyhook">
                 <property key="ZValue" >0.1</property>
             </object>
-            
-            
-            <!--object X="3.7" Y="0.85" width="1.2" height="0.1" type="RectObject" >
-                <property key="Bounciness" >0.0</property>
-                <property key="Friction" >0.3</property>
-                <property key="ImageName" >i-beam</property>
-                <property key="Resizable" >none</property>
-                <property key="Mass" >10.0</property>
-            </object-->
-            <!--object X="2.25" Y="1.6" width="1.6" height="0.3" type="LeftRamp" >
-                <property key="ImageName" >left-ramp</property>
-            </object-->
         </predefined>
     </scene>
     <goals>

@@ -20,7 +20,7 @@
             <name lang="nl">Balk</name>
             <object width="0.8" height="0.1" type="RectObject">
                 <property key="ImageName" >i-beam</property>
-                <property key="Mass" >20</property>
+                <property key="Mass" >500</property>
                 <property key="Friction" >0.1</property>
                 <property key="Resizable" >none</property>
                 <property key="Bounciness" >0.0</property>
