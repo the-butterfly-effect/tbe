@@ -500,6 +500,7 @@ File ::D0B10B56-9E85-C464-622E-CA281D78E019 -name veined_marble_2052058.JPG -par
 File ::07A6F045-E2FF-0645-1A2B-4A3F9DC22009 -name chickenwire-texture.svg -parent B9B989A1-D7B8-32C9-142B-353AD142AA4F
 File ::D1EA4399-6EE1-CB9A-2FA9-CD8C96461A33 -name chickenwire-texture.png -parent B9B989A1-D7B8-32C9-142B-353AD142AA4F
 File ::CB04CFC3-E223-0C8F-31AC-EB63F63B50E3 -name chickenwire-texture.png -parent D3397C91-BF36-B3FD-B199-BD95968F1AD7
+File ::2BCB0034-9337-7A0C-1E5F-7EE429361697 -name tbe-icon.png -parent D3397C91-BF36-B3FD-B199-BD95968F1AD7
 FileGroup ::E883F35F-B961-5A96-6208-564C51411278 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows TarArchive ZipArchive} -name i18n -parent FileGroups
 File ::AA591167-FB22-B9C1-B978-BC25FD9ACA2D -type dir -name ../i18n -parent E883F35F-B961-5A96-6208-564C51411278
 File ::44BD2EA1-8FE6-8723-3F7E-AD4EF52DE447 -name dictionary.ods -active 0 -parent AA591167-FB22-B9C1-B978-BC25FD9ACA2D
@@ -752,7 +753,7 @@ array set Properties {
 {<%InstallDir%>}
 
 3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB,FileSize
-{6638281}
+{6661663}
 
 3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB,Name
 {levels and images}
@@ -845,7 +846,7 @@ array set Properties {
 {<%InstallDir%>}
 
 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C,FileSize
-{7875744}
+{12771918}
 
 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C,Name
 {Program Files}
@@ -1430,7 +1431,7 @@ F7C81190-DE6B-7214-0D86-C1C6F01AF517,Conditions
 {2 conditions}
 
 F7C81190-DE6B-7214-0D86-C1C6F01AF517,Destination,subst
-{0}
+{1}
 
 F7C81190-DE6B-7214-0D86-C1C6F01AF517,DestinationLabel,subst
 {0}
