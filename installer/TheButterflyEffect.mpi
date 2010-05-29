@@ -1371,7 +1371,10 @@ CFB76BC6-4A66-E327-C797-CA38027FD97B,Conditions
 {2 conditions}
 
 CFB76BC6-4A66-E327-C797-CA38027FD97B,IconPath
-{../images/illustrations/tbe-icon.png}
+{<%InstallDir%>/images/tbe-icon.png}
+
+CFB76BC6-4A66-E327-C797-CA38027FD97B,InstallForAllUsers
+{Yes}
 
 CFB76BC6-4A66-E327-C797-CA38027FD97B,ShortcutName
 {<%AppName%>}
