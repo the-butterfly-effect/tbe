@@ -8,6 +8,9 @@ then
   echo "  <target> the directory to put files into"
   echo "           make sure to use a target name that contains a version number"
   echo "           e.g.   TheButterFlyEffect-m7";
+  echo
+  echo "Please refer to https://sourceforge.net/apps/trac/tbe/wiki/HowToMakeARelease for more info" 
+  echo
   exit 1;
 fi;
 
@@ -45,5 +48,5 @@ echo $2/levels/levels.xml >>$MANIFEST
 
 # and now... create the source archive...
 echo "Creating the tarball from the manifest";
-tar czvf $2.src.tgz --files-from=$MANIFEST
+tar czf $2.src.tgz --files-from=$MANIFEST
 
