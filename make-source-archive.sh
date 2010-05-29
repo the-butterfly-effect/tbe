@@ -21,32 +21,40 @@ then
 fi;
 
 # build the target directory and remove all subversion cruft
-echo "building directory '$2'";
+echo "* Building directory '$2'";
 cp -a $1 $2;
 find $2 -name '.svn' -exec rm -rf {} \; 2>/dev/null
 
 MANIFEST=manifest.txt
 
 # files from the base directory:
-echo "Building manifest file '$MANIFEST' for the source archive";
+echo "* Building manifest file '$MANIFEST' for the source archive";
 echo "$2/COPYING"     > $MANIFEST
 echo "$2/AUTHORS"     >> $MANIFEST
 echo "$2/README"      >> $MANIFEST
 echo "$2/INSTALLING"  >> $MANIFEST
 echo "$2/tbe.pro"     >> $MANIFEST
 echo "$2/configure"   >> $MANIFEST
-find $2/src      | sort >>$MANIFEST
-find $2/3rdParty | sort >>$MANIFEST
+echo "$2/make-release.sh" >> $MANIFEST
+echo "$2/make-source-archive.sh"   >> $MANIFEST
+find $2/installer >>$MANIFEST
+find $2/src       >>$MANIFEST
+find $2/3rdParty  >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.png" >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.qrc" >>$MANIFEST
 
 make -C $2/images all 1>/dev/null;
-find $2/images  -maxdepth 1 -a \( -name '*.png' -o -name '*.svg' -o -name 'README' \) | sort >>$MANIFEST
-find $2/levels/draft -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' | sort >>$MANIFEST
-find $2/levels/elce09 -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' | sort >>$MANIFEST
+find $2/images  -maxdepth 1 -a \( -name '*.png' -o -name '*.svg' -o -name 'README' \) >>$MANIFEST
+find $2/levels/draft -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
+find $2/levels/elce09 -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
 echo $2/levels/levels.xml >>$MANIFEST
 
+# for pure joy, let's sort the manifest
+echo "* Sorting the entries of the manifest";
+sort $MANIFEST >$MANIFEST.tmp
+mv $MANIFEST.tmp $MANIFEST
+
 # and now... create the source archive...
-echo "Creating the tarball from the manifest";
+echo "* Creating the tarball from the manifest";
 tar czf $2.src.tgz --files-from=$MANIFEST
 
