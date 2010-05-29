@@ -526,7 +526,7 @@ InstallComponent BA594893-5EC5-37BC-4DFC-5A28021BAF5A -setup Install -type pane 
 InstallComponent FC03A94B-53DC-BBC2-3B77-AB46F83157D2 -setup Install -type action -conditions {C5220D66-0788-F41A-8B3F-C0E8F3FAF77A 7139004A-1562-89F5-C10A-0EDF19F1C876} -title {View Readme Checkbutton} -component AddWidget -command insert -active Yes -parent BA594893-5EC5-37BC-4DFC-5A28021BAF5A
 Condition C5220D66-0788-F41A-8B3F-C0E8F3FAF77A -active Yes -parent FC03A94B-53DC-BBC2-3B77-AB46F83157D2 -title {File Exists Condition} -component FileExistsCondition -TreeObject::id C5220D66-0788-F41A-8B3F-C0E8F3FAF77A
 Condition 7139004A-1562-89F5-C10A-0EDF19F1C876 -active Yes -parent FC03A94B-53DC-BBC2-3B77-AB46F83157D2 -title {String Is Condition} -component StringIsCondition -TreeObject::id 7139004A-1562-89F5-C10A-0EDF19F1C876
-InstallComponent 276F43CF-4C70-896B-669D-9D2EB1AF25D4 -setup Install -type action -conditions {F6D303B3-97A3-B29B-C516-FD21013B0451 9C59D5E2-365E-3A2D-1962-A93A34C5D908} -title {Launch Application Checkbutton} -component AddWidget -command insert -active Yes -parent BA594893-5EC5-37BC-4DFC-5A28021BAF5A
+InstallComponent 276F43CF-4C70-896B-669D-9D2EB1AF25D4 -setup Install -type action -conditions {F6D303B3-97A3-B29B-C516-FD21013B0451 9C59D5E2-365E-3A2D-1962-A93A34C5D908} -title {Launch Application Checkbutton} -component AddWidget -command insert -active No -parent BA594893-5EC5-37BC-4DFC-5A28021BAF5A
 Condition F6D303B3-97A3-B29B-C516-FD21013B0451 -active Yes -parent 276F43CF-4C70-896B-669D-9D2EB1AF25D4 -title {File Exists Condition} -component FileExistsCondition -TreeObject::id F6D303B3-97A3-B29B-C516-FD21013B0451
 Condition 9C59D5E2-365E-3A2D-1962-A93A34C5D908 -active Yes -parent 276F43CF-4C70-896B-669D-9D2EB1AF25D4 -title {String Is Condition} -component StringIsCondition -TreeObject::id 9C59D5E2-365E-3A2D-1962-A93A34C5D908
 InstallComponent 5D128C87-B984-7887-005B-E53EE2461875 -setup Install -type action -conditions {2688A55E-0119-51FD-AA4A-049063543458 5D0A4683-7691-0D42-6AD1-6B4AC3C506AD} -title {Desktop Shortcut Checkbutton} -component AddWidget -command insert -active Yes -parent BA594893-5EC5-37BC-4DFC-5A28021BAF5A
@@ -691,6 +691,9 @@ array set Properties {
 
 2688A55E-0119-51FD-AA4A-049063543458,Filename
 {<%ProgramExecutable%>}
+
+276F43CF-4C70-896B-669D-9D2EB1AF25D4,Active
+{No}
 
 276F43CF-4C70-896B-669D-9D2EB1AF25D4,Background
 {white}
