@@ -38,6 +38,15 @@ bool theDrawDebug = false;
 // ResizingGraphicsView::updatePixelsPerUnit() .
 bool theTBECaching = true;
 
+// This variable defines whether TBE displays a frame refresh counter or not
+// TODO/FIXME: this should go into preferences or so at some point
+// (enabled in debug builds/disabled in release builds)
+#ifdef NDEBUG
+bool theDisplayFramerate = false;
+#else
+bool theDisplayFramerate = true;
+#endif
+
 int main(int argc, char **argv)
 {
 	// init Qt (graphics toolkit) - www.qtsoftware.com

@@ -76,5 +76,6 @@ extern const char* ASCII(const QString& aQString);
 extern bool theIsLevelEditor;
 extern bool theDrawDebug;
 extern bool theTBECaching;
+extern bool theDisplayFramerate;
 
 #endif // TBE_GLOBAL

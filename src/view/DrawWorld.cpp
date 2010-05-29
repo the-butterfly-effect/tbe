@@ -64,6 +64,7 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	aMainWindowPtr->setScene(this, theWorldPtr->getName());
 	
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
+	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 
 	if (theIsLevelEditor)
 	{
@@ -305,7 +306,15 @@ void DrawWorld::on_timerTick()
 		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * theSimSpeed);
 	}
 	advance();
+	theFramesPerSecond++;
 }
+
+void DrawWorld::on_framerateTimerTick()
+{
+	theMainWindowPtr->statusBar()->showMessage(tr("Framerate: %1 fps").arg(theFramesPerSecond), 3500);
+	theFramesPerSecond = 0;
+}
+
 
 void DrawWorld::on_winning(void)
 {
@@ -362,11 +371,19 @@ void DrawWorld::startTimer(void)
 
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
+
+	if (theDisplayFramerate)
+	{
+		// update framerate every second
+		theFramerateTimer.start(1000);
+		theFramesPerSecond = 0;
+	}
 }
 
 void DrawWorld::stopTimer(void)
 {
 	DEBUG5("DrawWorld::stopTimer(void)\n");
+	theFramerateTimer.stop();
 	theTimer.stop();
 }
 

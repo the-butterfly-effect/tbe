@@ -151,6 +151,9 @@ private slots:
 	/// called whenever a timer tick happens
 	void on_timerTick(void);
 
+	/// called whenever the framerate timer tick happens
+	void on_framerateTimerTick(void);
+
 protected:
 	/** overridden from QGraphicsScene:
 	  * do not respond to UI when not allowed to
@@ -165,6 +168,7 @@ private:
 	World* theWorldPtr;
 
 	QTimer theTimer;
+	QTimer theFramerateTimer;
 	QTime  theSimulationTime;
 	
 	QUndoStack	theUndoStack;
@@ -173,6 +177,8 @@ private:
 
 	/// milliseconds per time step ???
 	qreal theSimSpeed;
+
+	unsigned int theFramesPerSecond;
 
 private:
 
