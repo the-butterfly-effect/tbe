@@ -35,3 +35,17 @@ SOURCE:  http://openclipart.org/media/files/agone/11265
 
 * Anonymous_daffodil.klaas.svg
 Please refer to the levels/elce09/README file for info
+
+* Anonymous_Blue_bike.svg
+AUTHOR:  Franck Doucet
+LICENSE: PD
+SOURCE:  Blue bicycle (originally named "vtt_02")
+         http://www.openclipart.org/detail/23878
+
+* blue_bike_wheel.svg
+* blue_bike_frame.svg
+AUTHOR:  Klaas van Gend
+LICENSE: PD
+Remix of the above Anonymous_Blue_bike to fit what's needed for TBE and
+make sure that it renders as expected in QTs SVG engine.
+
