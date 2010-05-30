@@ -144,6 +144,9 @@ public:
 	// this one is unique to PolyObject
 	static const char* POLYGONS_STRING;			// set(s) of coordinates
 
+	// this one is unique to CustomBall
+	static const char* RADIUS_STRING;	    	// 0.0 - inf, in [m]
+
 	// the following strings are used within e.g. RectObject as part
 	// of the above RESIZABLE_STRING:
 

@@ -26,19 +26,20 @@
 
 // these are the identifiers of the properties in the XML file
 // do not translate - ever!
-const char* Property::OBJECT_NAME_STRING = "ObjectName";
 const char* Property::BOUNCINESS_STRING  = "Bounciness";
-const char* Property::RESIZABLE_STRING   = "Resizable";
-const char* Property::ROTATABLE_STRING   = "Rotatable";
-const char* Property::MASS_STRING        = "Mass";
+const char* Property::DESCRIPTION_STRING = "Description";
 const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
-const char* Property::DESCRIPTION_STRING = "Description";
+const char* Property::MASS_STRING        = "Mass";
+const char* Property::OBJECT_NAME_STRING = "ObjectName";
 const char* Property::PIVOTPOINT_STRING  = "PivotPoint";
 const char* Property::POLYGONS_STRING    = "Polygons";
+const char* Property::RADIUS_STRING      = "Radius";
+const char* Property::RESIZABLE_STRING   = "Resizable";
+const char* Property::ROTATABLE_STRING   = "Rotatable";
+const char* Property::THRUST_STRING      = "Thrust";
 const char* Property::ZVALUE_STRING      = "ZValue";
 
-const char* Property::THRUST_STRING      = "Thrust";
 
 const char* Property::NONE_STRING        = "none";
 const char* Property::HORIZONTAL_STRING  = "horizontal";
