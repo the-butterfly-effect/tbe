@@ -73,4 +73,20 @@ private:
 	QString theBallImage;
 };
 
+
+class CustomBall : public AbstractBall
+{
+public:
+	/// Constructor
+	CustomBall ();
+
+	/// virtual destructor
+	virtual ~CustomBall ( );
+
+	virtual DrawObject* createDrawObject();
+
+	/// we need to parse the Radius - duh
+	virtual void  parseProperties(void);
+};
+
 #endif // ABSTRACTBALL_H

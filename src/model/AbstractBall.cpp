@@ -134,4 +134,57 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	return theDrawObjectPtr;
 }
 
+// ---------------------------------------------------------
 
+//// this class' ObjectFactory
+class CustomBallObjectFactory : public ObjectFactory
+{
+public:
+	CustomBallObjectFactory(void)
+	{	announceObjectType("Custom Ball", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new CustomBall(); }
+};
+static CustomBallObjectFactory theCustomBallObjectFactory;
+
+
+CustomBall::CustomBall (void)
+	: AbstractBall("Custom Ball", "", "", 1.0, 1.0, 0.2)
+{
+	DEBUG5("CustomBall::CustomBall\n");
+}
+
+CustomBall::~CustomBall ( )
+{
+}
+
+DrawObject* CustomBall::createDrawObject()
+{
+	parseProperties();
+	return AbstractBall::createDrawObject();
+}
+
+void  CustomBall::parseProperties(void)
+{
+	AbstractBall::parseProperties();
+	DEBUG5("CustomBall::parseProperties(void)\n");
+
+
+	float myRadius;
+	float myMass;
+	theProps.propertyToFloat(Property::RADIUS_STRING, &myRadius);
+	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	if (myRadius==0.0)
+		myRadius=0.1;
+
+	deletePhysicsObject();
+	b2CircleDef* ballDef = new b2CircleDef();
+	ballDef->radius = myRadius;
+	ballDef->density = myMass/(PI*myRadius*myRadius);
+	theShapeList.clear();
+	theShapeList.push_back(ballDef);
+
+	setTheWidth(2.0*myRadius);
+	setTheHeight(2.0*myRadius);
+	createPhysicsObject();
+}
