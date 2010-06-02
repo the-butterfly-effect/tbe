@@ -35,8 +35,7 @@ ChooseLevel::ChooseLevel(QWidget *parent) :
 	m_ui(new Ui::ChooseLevel)
 {
     m_ui->setupUi(this);
-	// TODO/FIXME: hardcoded file name here
-	readLevels("levels/levels.xml");
+	readLevels( LEVELS_DIRECTORY + "/levels.xml" );
 	show();
 }
 
@@ -119,7 +118,7 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 	if (qName == "level")
 	{
 		// remove any starting/trailing whitespace and add the path name
-		currentText = "levels/" + currentText.trimmed();
+		currentText = LEVELS_DIRECTORY + "/" + currentText.trimmed();
 
 		QTreeWidgetItem* item = new QTreeWidgetItem(theTreeWidget);
 		item->setText(NR_COLUMN, QString::number(++theNr));

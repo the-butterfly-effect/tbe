@@ -79,8 +79,8 @@ MainWindow::MainWindow(QWidget *parent)
 	}
 	else
 	{
-		// TODO: fixme: hardcoded path here!
-		QGraphicsSvgItem* myTitlePagePtr = new SplashScreen("images/title_page.svg");
+		QGraphicsSvgItem* myTitlePagePtr = new SplashScreen(
+				IMAGES_DIRECTORY + "/title_page.svg" );
 		QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
 
 		mySplashScenePtr->addItem(myTitlePagePtr);

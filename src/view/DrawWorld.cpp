@@ -458,10 +458,10 @@ void DrawWorld::clearGraphicsList(int aCount)
 	}
 }
 
-// FIXME: hardcoded path here!
 DrawWorld::CongratDeathMessage::CongratDeathMessage(
 		const QString& aMessage,
-		DrawWorld* aScenePtr) : QGraphicsSvgItem("images/congrat-death-border.svg")
+		DrawWorld* aScenePtr)
+		: QGraphicsSvgItem(IMAGES_DIRECTORY + "/congrat-death-border.svg")
 {
 	// the image is put in scene coordinates
 	QRectF myImageBounds = boundingRect();
