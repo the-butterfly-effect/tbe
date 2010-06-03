@@ -43,6 +43,8 @@ find $2/src       >>$MANIFEST
 find $2/3rdParty  >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.png" >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.qrc" >>$MANIFEST
+echo "$2/images/illustrations/installer-side-image.png" >>$MANIFEST
+echo "$2/images/illustrations/installer-top-icon.png" >>$MANIFEST
 
 make -C $2/images all >/dev/null;
 find $2/images  -maxdepth 1 -type f  >>$MANIFEST
