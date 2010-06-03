@@ -64,8 +64,8 @@ ${INSTALLJAMMER}:
 	curl --remote-name http://downloads.installjammer.com/installjammer/1.2/${INSTALLJAMMER}
 
 installjammer: ${INSTALLJAMMER}
-	chmod u+x ${INSTALLJAMMER}
-	echo -e "Y\n\n" | ./${INSTALLJAMMER} --mode console --response-file install-jammer-answers
-	echo -e 'IJLOCATION=`echo $$0 | sed s^/installjammer$$^^`/../installjammer/installjammer\ncd $${IJLOCATION} && ./installjammer $$@' >${MYBINDIR}/installjammer
-	chmod u+x ${MYBINDIR}/installjammer
+	chmod u+x ${INSTALLJAMMER};
+	/bin/echo -e "Y\n\n" | ./${INSTALLJAMMER} --mode console --response-file install-jammer-answers;
+	/bin/echo -e 'IJLOCATION=`echo $$0 | sed s^/installjammer$$^^`/../installjammer/installjammer\ncd $${IJLOCATION} && ./installjammer $$@' >${MYBINDIR}/installjammer;
+	chmod u+x ${MYBINDIR}/installjammer;
 
