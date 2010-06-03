@@ -11,7 +11,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Ramp \">
-            <name lang="nl">Hemelhaakje</name>
+            <name lang="nl">Helling \</name>
 	    <object X="0.30" width="0.4" height="0.3" Y="0.35" type="RightRamp">
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.3</property>
