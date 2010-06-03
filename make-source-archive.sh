@@ -37,14 +37,15 @@ echo "$2/tbe.pro"     >> $MANIFEST
 echo "$2/configure"   >> $MANIFEST
 echo "$2/make-release.sh" >> $MANIFEST
 echo "$2/make-source-archive.sh"   >> $MANIFEST
+find $2/i18n -name '*.ts' >> $MANIFEST
 find $2/installer >>$MANIFEST
 find $2/src       >>$MANIFEST
 find $2/3rdParty  >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.png" >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.qrc" >>$MANIFEST
 
-make -C $2/images all 1>/dev/null;
-find $2/images  -maxdepth 1 -a \( -name '*.png' -o -name '*.svg' -o -name 'README' \) >>$MANIFEST
+make -C $2/images all >/dev/null;
+find $2/images  -maxdepth 1 -type f  >>$MANIFEST
 find $2/levels/draft -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
 find $2/levels/elce09 -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
 echo $2/levels/levels.xml >>$MANIFEST
