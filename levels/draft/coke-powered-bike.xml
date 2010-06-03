@@ -3,7 +3,7 @@
     <levelinfo>
         <title>Coke Powered Bike</title>
         <title lang="nl">De colafiets</title>
-        <author>Klaas van Gend</author>
+        <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
         <license>GPLv2</license>
         <description>.</description>
         <description lang="nl">.</description>
