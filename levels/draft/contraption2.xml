@@ -41,7 +41,7 @@
                 <property key="Friction" >0.6</property>
             </object>
 
-  <object Y="2.3" X="2.5" type="PostIt">
+  <object Y="2.1" X="2.7" type="PostIt">
       <property key="page1">Another contraption for the creative mind.</property>
       <property key="page2">You see that bowling ball at the top-right? &lt;br&gt;&lt;br&gt;It wants to topple the pin next to it.</property>
       <property key="page3">But a lot needs to happen before that pin moves.</property>
@@ -53,14 +53,12 @@
   </object>
 
             <object X="3.45" Y="3.5" type="Bowling Ball" />
-
-
 	    <object width="2.8" X="2.2" Y="3.15" height="0.10" type="Floor" angle="0.14">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.8</property>
             </object>
 
-	    <!-- top ball stop -->
+	    <!-- ==================== top lever ==================== -->
             <object X="1.0" Y="2.7" type="Custom Ball" ID="BrassPin">
                 <property key="Radius" >0.05</property>
                 <property key="ImageName" >brass-pin</property>
@@ -98,7 +96,7 @@
             </object>
 
 
-	    <!-- bottom ball stop -->
+	    <!-- ==================== bottom left lever ====================  -->
             <object X="1.0" Y="1.25" type="Custom Ball" ID="BrassPin2">
                 <property key="Radius" >0.05</property>
                 <property key="ImageName" >brass-pin</property>
@@ -147,9 +145,7 @@
 
 
 
-
-
-
+	    <!-- ====================  bottom right lever ====================  -->
             <object X="3.05" Y="1.2" width="1.4" height="0.1" type="RectObject" ID="Bar3" angle="0.2">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >4</property>
@@ -181,37 +177,24 @@
 	      <property key="object2">Bar3x</property>
 	      <property key="collide">false</property>
 	    </object>
-
             <object X="2.25" Y="1.04" type="Bowling Ball" />
             <object X="2.13" Y="0.96" width="0.3" height="0.15" type="RightRamp">
                 <property key="ImageName">right-ramp</property>
             </object>
+
+
+
+
             <object X="1.7" Y="0.70" height="0.1" width="1.0" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.1</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-            <!--object X="1.00" Y="0.65" width="0.4" height="0.2" type="LeftRamp">
-                <property key="ImageName">left-ramp</property>
-            </object-->
-
-
             <object X="3.5" Y="0.6" height="0.1" width="1.4" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.1</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -239,14 +222,15 @@
             <object X="0.85" Y="0.3" height="0.4" type="DominoBlue" />
 
 
+	    <!-- ==================== right side, including pin and basket ============== -->
 
             <object X="4.2" Y="3.43" type="Bowling Pin" ID="BowlingPin2"/>
 
-            <object X="3.85" Y="2.8" width="0.7" height="0.1" type="RectObject">
+            <object X="3.87" Y="2.8" width="0.56" height="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.05</property>
             </object>
-            <object X="3.55" Y="2.9" width="0.1" height="0.9" type="RectObject">
+            <object X="3.55" Y="3.05" width="0.1" height="0.6" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.05</property>
             </object>
