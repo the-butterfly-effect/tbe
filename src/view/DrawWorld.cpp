@@ -243,6 +243,7 @@ void DrawWorld::initAttributes ( )
 	theCongratDeathBoxPtr = NULL;
 
 	isUserInteractionAllowed = true;
+	DrawObject::setIsSimRunning(false);
 
 	theSimStateMachine = new StartStopWatch();
 	QObject::connect(theSimStateMachine, SIGNAL(startSim()), this, SLOT(startTimer()));
@@ -368,6 +369,7 @@ void DrawWorld::startTimer(void)
 
 	setAcceptDrops(false);
 	isUserInteractionAllowed = false;
+	DrawObject::setIsSimRunning(true);
 
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
@@ -385,6 +387,7 @@ void DrawWorld::stopTimer(void)
 	DEBUG5("DrawWorld::stopTimer(void)\n");
 	theFramerateTimer.stop();
 	theTimer.stop();
+	DrawObject::setIsSimRunning(false);
 }
 
 

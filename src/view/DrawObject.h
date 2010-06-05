@@ -98,6 +98,14 @@ public:
 	 */
 	void focusRemove(bool alsoDeleteAnchors=true);
 
+	/** static function, called by DrawWorld to indicate whether
+	  * the simulation is running or not.
+	  * Currently, the only customer of this info is paint(),
+	  * which has to decide if it draws all objects or not.
+	  * @param aBool  true to signal that sim is running.
+	  */
+	static void setIsSimRunning(bool aBool);
+
 	/// setup caching for this object
 	void setupCache(void);
 
@@ -111,7 +119,6 @@ public:
 	  */
 	virtual void setZValue(float aZValue)
 	{ theZValue = aZValue; }
-
 
 protected:
 	float theZValue;

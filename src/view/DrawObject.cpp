@@ -38,6 +38,8 @@
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;
 
+static bool isSimRunning = false;
+
 Anchors* DrawObject::theAnchorsPtr = NULL;
 
 QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
@@ -85,6 +87,12 @@ DrawObject::~DrawObject ( )
 
 // Accessor methods
 //  
+
+void DrawObject::setIsSimRunning(bool aBool)
+{
+	isSimRunning = aBool;
+}
+
 
 void DrawObject::setUndoStackPtr(QUndoStack* aPtr)
 {
@@ -313,6 +321,9 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 
 void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {
+	if ( theDrawDebug==true && isSimRunning==true )
+		return;
+
 	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
