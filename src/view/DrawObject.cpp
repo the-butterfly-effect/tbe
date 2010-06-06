@@ -34,6 +34,8 @@
 #include "UndoMoveCommand.h"
 #include <cmath>
 
+static const int EXTRA_WHITESPACE = 2;
+
 // set/get using static setter/getter in DrawObject
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;
@@ -181,11 +183,11 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	assert(myWidth>0);
 	assert(myHeight>0);
 
-	QPixmap* myPixmap = new QPixmap(myWidth, myHeight);
+	QPixmap* myPixmap = new QPixmap(myWidth+EXTRA_WHITESPACE, myHeight+EXTRA_WHITESPACE);
 	myPixmap->fill(QColor(Qt::transparent));
 	QPainter myPainter(myPixmap);
-//	myPainter.drawRect(0,0,myWidth-1,myHeight-1);
-	myPainter.translate(myWidth/2, myHeight/2);
+//	myPainter.drawRect(0,0,myWidth+EXTRA_WHITESPACE-1,myHeight+EXTRA_WHITESPACE-1);
+	myPainter.translate((myWidth+EXTRA_WHITESPACE+1)/2, (myHeight+EXTRA_WHITESPACE+1)/2);
 
 	// let's try to do some scaling
 	float myScaleX = boundingRect().width()/myWidth;
@@ -326,6 +328,15 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 
 	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
 	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+
+	// only when we're using the cached bitmaps, (which have a few pix whitespace)
+	// let's paint larger to offset the whitespace.
+	if (theCachePixmapPtr != NULL)
+	{
+	  myWidth += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	  myHeight += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	}
+	
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
