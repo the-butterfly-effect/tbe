@@ -208,8 +208,17 @@ protected:
 	 */
 	static Anchors* theAnchorsPtr;
 
-	QSvgRenderer*	theRenderer;
-	QPixmap*		thePixmapPtr;
+	/// pointer to renderer for SVG images (if present)
+	/// either this one or thePixmapPtr should exist
+	QSvgRenderer*   theRenderer;
+	
+	/// pointer to pixmap for PNG images (if present)
+	/// either this one or theRenderer should exist
+	QPixmap*        thePixmapPtr;
+
+	/// scaled/rendered pixmap cached for faster display
+	/// created by setupCache()
+	QPixmap*        theCachePixmapPtr;
 
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!

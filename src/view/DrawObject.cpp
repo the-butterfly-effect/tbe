@@ -49,7 +49,7 @@ QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL),	theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	thePixmapPtr(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p)\n", aBaseObjectPtr);
 	if (theBaseObjectPtr!=NULL)
@@ -60,7 +60,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
 	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	thePixmapPtr(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
 	initAttributes();
@@ -329,12 +329,18 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
+	if (theCachePixmapPtr != NULL)
+	{
+		myPainter->drawPixmap(myRect, *theCachePixmapPtr, theCachePixmapPtr->rect());
+		return;
+	}
+
 	if (thePixmapPtr != NULL)
 	{
 		myPainter->drawPixmap(myRect, *thePixmapPtr, thePixmapPtr->rect());
 		return;
 	}
-
+	
 	if (theRenderer != NULL)
 	{
 		theRenderer->render(myPainter, myRect);
@@ -398,16 +404,16 @@ void DrawObject::setupCache(void)
 	// The problem is that QT does a crappy job at guessing the bitmap size
 	// so we have to calculate that ourselves...
 
-	if (theRenderer!=NULL)
+	if (theRenderer!=NULL || thePixmapPtr!=NULL)
 	{
 		setCacheMode(QGraphicsItem::NoCache);
-		if (thePixmapPtr!=NULL)
+		if (theCachePixmapPtr!=NULL)
 		{
-			delete thePixmapPtr;
-			thePixmapPtr=NULL;
+			delete theCachePixmapPtr;
+			theCachePixmapPtr=NULL;
 		}
 		// let's try to use the renderer to create a cached image:
-		thePixmapPtr = createBitmap();
+		theCachePixmapPtr = createBitmap();
 	}
 
 	// we also still need to set the ZValue of this object.
