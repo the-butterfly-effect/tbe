@@ -50,18 +50,20 @@ CokeMentosBottle::CokeMentosBottle()
 
 	// the first one is the real bottle
 	{
-		b2PolygonDef* my5PointPinDef = new b2PolygonDef();
-		my5PointPinDef->vertexCount = 6;
-		my5PointPinDef->vertices[0].Set(-0.01 ,  0.25);
-		my5PointPinDef->vertices[1].Set(-0.083,  0.12);
-		my5PointPinDef->vertices[2].Set(-0.075, -0.251);
-		my5PointPinDef->vertices[3].Set( 0.075, -0.251);
-		my5PointPinDef->vertices[4].Set( 0.083,  0.12);
-		my5PointPinDef->vertices[5].Set( 0.01 ,  0.25);
+		b2PolygonDef* my8PointPinDef = new b2PolygonDef();
+		my8PointPinDef->vertexCount = 8;
+		my8PointPinDef->vertices[0].Set(-0.01 ,  0.25);
+		my8PointPinDef->vertices[1].Set(-0.083,  0.12);
+		my8PointPinDef->vertices[2].Set(-0.075, -0.249);
+		my8PointPinDef->vertices[3].Set(-0.073, -0.251);
+		my8PointPinDef->vertices[4].Set( 0.073, -0.251);
+		my8PointPinDef->vertices[5].Set( 0.075, -0.249);
+		my8PointPinDef->vertices[6].Set( 0.083,  0.12);
+		my8PointPinDef->vertices[7].Set( 0.01 ,  0.25);
 		// approximation of the initial mass - we'll fix it later on...
-		my5PointPinDef->density = 2.1 / (0.166*0.501);
-		my5PointPinDef->friction = 0.0;
-		theShapeList.push_back(my5PointPinDef);
+		my8PointPinDef->density = 2.1 / (0.166*0.501);
+		my8PointPinDef->friction = 0.0;
+		theShapeList.push_back(my8PointPinDef);
 	}
 
 	// the second one is the sensor
