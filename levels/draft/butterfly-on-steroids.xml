@@ -178,7 +178,7 @@
                 <property key="Friction" >0.4</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-	    <object width="0.18" X="0.35" Y="2.5" height="0.25" type="Skyhook" >
+	    <object width="0.18" X="0.35" Y="2.48" height="0.25" type="Skyhook" >
             </object>
             
             <object width="0.5" height="0.14" X="0.2" Y="1.95" type="RightRamp">

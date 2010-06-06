@@ -104,7 +104,7 @@
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
-            <object X="2.74" Y="1.28" type="Weight" ID="Weight" />
+            <object X="2.74" Y="1.28" height="0.35" type="Weight" ID="Weight" />
 
 	    <object type="PivotPoint" X="2.74" Y="1.44">
 		<property key="object1">Chain5</property>
