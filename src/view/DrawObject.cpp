@@ -359,7 +359,6 @@ bool DrawObject::pushUndo(QUndoCommand* anUndo)
 	return true;
 }
 
-
 void DrawObject::removeCollisionCross(void)
 {
 	if (theCrossPtr)
@@ -368,6 +367,39 @@ void DrawObject::removeCollisionCross(void)
 		theCrossPtr = NULL;
 	}
 }
+
+void DrawObject::setupCache(void)
+{
+	// In most situations, we want to cache the SVG drawing into a bitmap
+	// so we save a lot of CPU performance on drawing.
+	// (derived classes can fix this - e.g. Butterfly and CokeMentosBottle)
+	// The problem is that QT does a crappy job at guessing the bitmap size
+	// so we have to calculate that ourselves...
+
+	if (theRenderer!=NULL || thePixmapPtr!=NULL)
+	{
+		setCacheMode(QGraphicsItem::NoCache);
+		if (theCachePixmapPtr!=NULL)
+		{
+			delete theCachePixmapPtr;
+			theCachePixmapPtr=NULL;
+		}
+		// let's try to use the renderer to create a cached image:
+		theCachePixmapPtr = createBitmap();
+	}
+
+	// we also still need to set the ZValue of this object.
+	// it only now guaranteed has a parent
+	QGraphicsItem::setZValue(theZValue);
+}
+
+
+
+
+
+
+// ==================== DrawObject::Cross ==================================
+
 
 DrawObject::Cross::Cross(DrawObject* aParent)
 {
@@ -393,30 +425,4 @@ void DrawObject::Cross::paint(QPainter* myPainter, const QStyleOptionGraphicsIte
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 	if (theCrossRendererPtr)
 		theCrossRendererPtr->render(myPainter, myRect);
-}
-
-
-void DrawObject::setupCache(void)
-{
-	// In most situations, we want to cache the SVG drawing into a bitmap
-	// so we save a lot of CPU performance on drawing.
-	// (derived classes can fix this - e.g. Butterfly and CokeMentosBottle)
-	// The problem is that QT does a crappy job at guessing the bitmap size
-	// so we have to calculate that ourselves...
-
-	if (theRenderer!=NULL || thePixmapPtr!=NULL)
-	{
-		setCacheMode(QGraphicsItem::NoCache);
-		if (theCachePixmapPtr!=NULL)
-		{
-			delete theCachePixmapPtr;
-			theCachePixmapPtr=NULL;
-		}
-		// let's try to use the renderer to create a cached image:
-		theCachePixmapPtr = createBitmap();
-	}
-
-	// we also still need to set the ZValue of this object.
-	// it only now guaranteed has a parent
-	QGraphicsItem::setZValue(theZValue);
 }
