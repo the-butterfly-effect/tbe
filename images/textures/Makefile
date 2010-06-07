@@ -1,7 +1,7 @@
 all:
 	cp used_wood_bar.png ..
-	cp chickenwire-texture.png ..
+	cp chickenwire-texture.svg ..
 	cp birch_bar.png ..
 
 clean:
-	rm ../used_wood_bar.png ../chickenwire-texture.png ../birch_bar.png
+	rm ../used_wood_bar.png ../chickenwire-texture.svg ../birch_bar.png
