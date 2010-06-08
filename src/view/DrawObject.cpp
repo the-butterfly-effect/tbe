@@ -138,21 +138,13 @@ QRectF DrawObject::boundingRect() const
 bool DrawObject::checkForCollision(void)
 {
 	bool isColliding = false;
+	removeCollisionCross();
+
 	int myCount = scene()->collidingItems(this).count();
-	if (theCrossPtr!=NULL)
+	if (myCount>=1)
 	{
-		if (myCount>1)
-			isColliding = true;
-		else
-			removeCollisionCross();
-	}
-	else
-	{
-		if (myCount>0)
-		{
-			isColliding = true;
-			theCrossPtr = new Cross(this);
-		}
+		isColliding = true;
+		theCrossPtr = new Cross(this);
 	}
 	return isColliding;
 }
