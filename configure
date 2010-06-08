@@ -4,19 +4,26 @@ echo "This is not a true, proper autotools ./configure"
 echo "However, it does do the same - it will setup everything so you can run make"
 echo
 
+(cd 3rdParty && make)
+
+if test -f images/Makefile;
+then
+	make -C images all;
+fi;
+
 if test -z "`which qmake 2>/dev/null`" -o -z "`which moc 2>/dev/null`" -o -z "`which uic 2>/dev/null`";
 then 
-	echo "ERROR: Did not find the QT4 tools in your path. You probably need to install another package.";
+	echo "ERROR: Did not find the QT4 tools in your path. You probably need to install"
+	echo "another package.";
 	echo "It is usually called 'libqt-dev' or 'libqt4-devel' or something similar";
-	echo "Sorry..."
+	echo
+	echo "Alternatively, run the 'make-release.sh' script that will build a static QT"
+	echo "library and link against that one."
+else
+	qmake
+	echo
+	echo "You should be able to run 'make' to build The Butterfly Effect now."
+	echo "Once that's done, the game is playable by running ./tbe ..."
+	echo
 fi
-
-(cd 3rdParty && make)
-make -C images all
-qmake
-
-echo
-echo "You should be able to run 'make' to build The Butterfly Effect now."
-echo "Once that's done, the game is playable by running ./tbe ..."
-echo
 
