@@ -2,6 +2,8 @@ all:
 	cp used_wood_bar.png ..
 	cp chickenwire-texture.svg ..
 	cp birch_bar.png ..
+	cp oldbrick.png ..
+	cp styrofoam.png ..
 
 clean:
-	rm ../used_wood_bar.png ../chickenwire-texture.svg ../birch_bar.png
+	rm ../used_wood_bar.png ../chickenwire-texture.svg ../birch_bar.png ../oldbrick.png ../styrofoam.png

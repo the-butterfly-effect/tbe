@@ -16,16 +16,10 @@ DarkerRed.svg
 Empty.svg
 SOURCE: Original work by Klaas van Gend for TBE
 
-oldbrick.png
-SOURCE: see file 2009-05-14-oldbrick_1000texture_1.jpg in the images/textures directory
-
 palmtree.svg
 right-side-frame.003.svg
 round_coconut.svg
 SOURCE: Original work by Klaas van Gend for TBE
-
-styrofoam.png
-SOURCE: see file 2009-03-17-styrofoam_texture.jpg in the images/textures directory
 
 that_is_butterfly.svg
 that_is_flower.svg
@@ -36,4 +30,3 @@ SOURCE: Original work by Klaas van Gend for TBE
 
 TODO: 
 * Move Darker*, White-to-green, Yellow-to-brown to textures
-* move oldbrick and styrofoam to textures
