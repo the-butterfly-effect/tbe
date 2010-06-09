@@ -163,7 +163,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/MainWindow.cpp" line="51"/>
         <source>&amp;Redo</source>
-        <translation>Opnieuw uitvoeren</translation>
+        <translation type="unfinished">Opnieuw uitvoe&amp;ren</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="53"/>
@@ -302,7 +302,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="192"/>
         <source>&amp;Open savegame...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Savegame &amp;openen</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="200"/>
@@ -332,12 +332,12 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="227"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">stop &amp;q</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="237"/>
         <source>S&amp;top</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">S&amp;top</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="242"/>
@@ -451,7 +451,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/PieMenu.cpp" line="64"/>
         <source>(if possibile) Modify the properties of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>(zo mogelijk) Pas de eigenschappen aan van %1</translation>
     </message>
     <message>
         <location filename="../src/view/PieMenu.cpp" line="67"/>
@@ -466,7 +466,8 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/PieMenu.cpp" line="103"/>
         <source>This dialog is not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Geimplementeerd is technisch juist maar klinkt niet lekker.</translatorcomment>
+        <translation>Deze dialoog is nog niet geimplementeerd</translation>
     </message>
 </context>
 <context>
@@ -474,7 +475,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/PostItViewer.ui" line="90"/>
         <source>Post-It viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Post-It viewer</translation>
     </message>
     <message>
         <location filename="../src/view/PostItViewer.ui" line="96"/>
@@ -516,7 +517,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/model/AbstractBall.cpp" line="69"/>
         <source>A volley ball - you know: light, soft and fairly bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een volley bal. Je weet wel, licht zacht en stuitert wel lekker. </translation>
     </message>
     <message>
         <source>A volleyball - you know: light, soft and fairly bouncy.</source>
@@ -550,7 +551,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/model/PolyObject.cpp" line="82"/>
         <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kegels zijn om om te gooien. De meeste mensen doen dat het liefst met een Bowlingbal.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="91"/>
@@ -560,17 +561,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/model/PolyObject.cpp" line="92"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation type="unfinished"></translation>
+        <translation>De luchhaak hangt daar maar rond in de lucht. Kan nog best veel gewicht hebben.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="101"/>
         <source>Weight</source>
-        <translation type="unfinished"></translation>
+        <translation>Gewicht</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="102"/>
         <source>A serious mass. As heavy as it looks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Een serieus gewicht. Net zo zwaar als het er uit ziet</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="109"/>
@@ -612,7 +613,7 @@ Kijk: hij zal spuiten als je &apos;m schudt.</translation>
     <message>
         <location filename="../src/model/PostIt.h" line="43"/>
         <source>Post-it</source>
-        <translation type="unfinished"></translation>
+        <translation>Post-it</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.h" line="49"/>
@@ -678,7 +679,7 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Schanier</translation>
     </message>
     <message>
-        <location filename="../src/model/PivotPoint.h" line="72"/>
+        <location filename="../src/model/PivotPoint.h" line="64"/>
         <source>Objects rotate around this point</source>
         <translation>Objecten draaien om dit punt</translation>
     </message>
@@ -735,12 +736,12 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="14"/>
         <source>Save Level - Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Level info opslaan</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="22"/>
         <source>File name to save to:</source>
-        <translation type="unfinished">Bestandsnaam om meet op te slaan:</translation>
+        <translation>Bestandsnaam om mee op te slaan:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="39"/>
@@ -780,7 +781,7 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="115"/>
         <source>Level Description (make sure to use Post-it notes for hints)*:</source>
-        <translation type="unfinished"></translation>
+        <translation>Level omschrijving (denk aan de Post-It opmerkingen om een hint te geven)</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="140"/>
