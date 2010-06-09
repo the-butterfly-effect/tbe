@@ -26,13 +26,18 @@ it is just a bash script setting up the Box2d libraries and the images.
     $   ./configure
     $   make
 
+
+3)
+If you want to run TBE in another language (note: only Dutch 'nl' is i
+supported right now) you need to do the following:
+    $   lupdate tbe.pro
+    $   lrelease tbe.pro
+
 4)
 How to run:
     $   ./tbe
     
 There is no need to install anything - it will run from its working directory.
-If you really want, there is a script to build a tar archive with the minimum number
-of files you need to play...
 
 That's it for now!
 Have fun!
