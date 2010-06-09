@@ -4,30 +4,33 @@ This is a fully playable game, but no yet completely finished.
 With this Milestone 7, we promote the game from alpha to beta quality.
 
 If you downloaded the source archive - please refer to the file INSTALLING
-to learn how to turn the sources into a working game.
+to learn how to turn the sources into a working game and RUNNING on how
+to run the game.
 
 If you downloaded the installer, you now have an icon on your desktop: 
-enjoy the game!
+just (double-)click it to enjoy the game.
 
 There are 30 levels.
-All levels are playable, some levels may need a bit more polish.
+All levels are playable, a few levels may need a bit more polish.
 
 New features & highlights in Milestone 7:
-    * serious performance improvements - usually around 300%
+    * Serious performance improvements - usually around 300%
     * 4 new levels
-    * more i18n support 
-    * installer images for 32-bit and 64-bit Linux, using static
+    * More i18n, now including level titles and items
+    * Installer images for 32-bit and 64-bit Linux, using static
       builds of QT - validated to work on various Linux distros
     * Many bug fixes and small improvements
 
 Known bugs:
   * Some images may have 'garbage' on their borders during play.
-    this is harmless but may be confusing.
-  * The level editor is unusable
+    This is harmless but may be confusing. ticket:89
+  * The level editor is unusable. ticket:69, ticket:46
+  * The installers do not install into the "start menu", ticket:97
 
 We thank our beta players for their comments on the playability of the levels.
 
 We would love to hear your thoughts and comments about the game!
+
 Don't be shy - post your thoughts in the TBE Open Discussion forum 
    http://www.the-butterfly-effect.org/
 
