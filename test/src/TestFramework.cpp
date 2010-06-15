@@ -19,6 +19,9 @@
 #include "TestFramework.h"
 #include <QApplication>
 
+#include <unistd.h>
+#include <cstdio>
+#include <cassert>
 
 const char* ASCII(const QString& aQString)
 {
@@ -45,10 +48,32 @@ TestFramework::~TestFramework()
 
 void TestFramework::run(void)
 {
+	int myTotalOKs   = 0;
+	int myTotalFAILs = 0;
+
 	ChapterList::iterator myPtr = theChapters.begin();
+	int myChapterNumber = 1;
 	while (myPtr != theChapters.end())
 	{
-		// TODO: insert actual running here
+		printf("********** Chapter %d: `%s` *******\n\n", myChapterNumber, ASCII((*myPtr)->getTitle()));
+
+		(*myPtr)->setUp();
+		(*myPtr)->runTests();
+		(*myPtr)->tearDown();
+		(*myPtr)->finish();
+		myTotalOKs   += (*myPtr)->getOKs();
+		myTotalFAILs += (*myPtr)->getFAILs();
+
 		++myPtr;
+		++myChapterNumber;
 	}
+
+	int myTotal = myTotalOKs + myTotalFAILs;
+	assert(myTotal > 0);
+	printf("\nTotal summary:\n==============\n");
+	printf("Total Chapters run : % 2d\n", myChapterNumber-1 );
+	printf("Total OKs  : % 3d, (% 4d %%)\n",
+		   myTotalOKs, (100*myTotalOKs)/myTotal);
+	printf("Total FAILs: % 3d, (% 4d %%)\n\n",
+		   myTotalFAILs, (100*myTotalFAILs)/myTotal);
 }

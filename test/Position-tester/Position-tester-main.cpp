@@ -17,41 +17,52 @@
  */
 
 #include "TestFramework.h"
+#include "TestChapter.h"
 #include "tbe_global.h"
-#include "AbstractBall.h"
+#include "Position.h"
 
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
 // note that levels 5 and 6 affect playing
 int theVerbosity = 4;
 
-class TestChapter1 : public TestChapter
+class TestPosition : public TestChapter
 {
 public:
-	TestChapter1() : TestChapter(1, "save a BaseObject")
-	{}
-	
+	TestPosition() : TestChapter("Test Position class")	{}
 	virtual bool runTests();
 };
 
-extern
-
-
-bool TestChapter1::runTests(void)
+class TestVector : public TestChapter
 {
-	check(true, "true");
+public:
+	TestVector() : TestChapter("Test Vector class")	{}
+	virtual bool runTests();
+};
+
+
+bool TestPosition::runTests(void)
+{
+	check(true, "true \n");
 
 	return true;
 }
 
+bool TestVector::runTests(void)
+{
+	check(true, "true \n");
+
+	return true;
+}
 
 
 int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
-	myFramework.add( new TestChapter1 );
-	
+	myFramework.add( new TestPosition );
+	myFramework.add( new TestVector );
+
 	myFramework.run();
 
 	return 0;

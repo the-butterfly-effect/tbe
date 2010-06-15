@@ -26,11 +26,10 @@
 
 #define testmsg(format, ...)	printf("    " format, ## __VA_ARGS__);
 
-TestChapter::TestChapter(int aNumber, QString aTitle)
+TestChapter::TestChapter(QString aTitle) : theTitle(aTitle)
 {
 	theNumberOfOKs = 0;
 	theNumberOfFAILs = 0;
-	printf("********** Chapter %d: `%s` *******\n\n", aNumber, ASCII(aTitle));
 }
 
 TestChapter::~TestChapter()
@@ -68,10 +67,10 @@ void TestChapter::finish(void)
 {
 	int myTotal = theNumberOfOKs + theNumberOfFAILs;
 	assert(myTotal > 0);
-	printf("\nSummary:\n--------\n");
-	printf("Number of OKs  : % 3d, (% 4d %%)\n",
+	printf("\nChapter summary:");
+	printf("OKs  : % 3d, (% 4d %%)   /    ",
 		   theNumberOfOKs, (100*theNumberOfOKs)/myTotal);
-	printf("Number of FAILs: % 3d, (% 4d %%)\n\n",
+	printf("FAILs: % 3d, (% 4d %%)\n\n",
 		   theNumberOfFAILs, (100*theNumberOfFAILs)/myTotal);
 }
 

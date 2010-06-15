@@ -16,12 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+
+#ifndef TESTCHAPTER_H
+#define TESTCHAPTER_H
+
 #include <QString>
 
 class TestChapter
 {
 public:
-	TestChapter(int aNumber, QString aTitle);
+	TestChapter(QString aTitle);
 	virtual ~TestChapter();
 
 	/// will contain the setup code
@@ -37,11 +41,22 @@ public:
 	/// if you want to define paragraphs
 	virtual bool runTests() = 0;
 
+
+
+public:  // the below are only for TestChapter
 	void finish(void);
+
+	const QString& getTitle(void) const {return theTitle;}
+	int getOKs(void) const {return theNumberOfOKs;}
+	int getFAILs(void) const {return theNumberOfFAILs;}
 
 protected:
 	bool check(bool aCondition, const QString& aMessage, bool abortIfWrong=false);
 
 	int theNumberOfOKs;
 	int theNumberOfFAILs;
+
+	QString theTitle;
 };
+
+#endif // TESTCHAPTER_H
