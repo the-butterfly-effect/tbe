@@ -1,6 +1,7 @@
 BOX2D=Box2D_v2.0.1
 QTVERSION=qt-x11-opensource-src-4.5.3
 INSTALLJAMMER=InstallJammer-1.2.14-Linux-x86-Install
+WINBOX2D=WinBox2D
 
 MY3RDPARTYDIR=${PWD}
 MYINCDIR=${MY3RDPARTYDIR}/include
@@ -24,6 +25,7 @@ clean:
 	rm -rf ${QTVERSION}
 	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/* ${MYPLUGINSDIR}/* ${MYMKSPECDIR}/*
 	rm -rf installjammer
+	rm -rf ${WINBOX2D} ${WINBOX2D}.zip
 
 #----------------------------- internal targets
 
@@ -33,6 +35,26 @@ ${MYLIBDIR}/libbox2d.a:
 	patch -p0 <box2d_fix_warnings.patch
 	cd ${BOX2D}/Box2D/Source && make ${FASTERMAKE} Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a ${MYLIBDIR}
+
+# because I don't have a shell environment on my windows box, I need to
+# simplify my directory structure :-(
+# here we create a zip archive with all flattened files
+${WINBOX2D}.zip: ${MYLIBDIR}/libbox2d.a
+	mkdir -p ${WINBOX2D}
+	find ${BOX2D}/Box2D/Source -name '*.cpp' > ${WINBOX2D}/manifest
+	find ${BOX2D}/Box2D/Source -name '*.h'  >> ${WINBOX2D}/manifest
+	echo "SOURCES= \\" > ${WINBOX2D}/Makefile
+	for I in `cat ${WINBOX2D}/manifest`; \
+		do \
+		FULLNAME=`echo $$I | sed 's|.*/||'`; \
+		#echo I $$I full $${FULLNAME}; \
+		cat $$I | sed 's|#include ".*/\(.*\.h\)"|#include "\1"|' >${WINBOX2D}/$${FULLNAME}; \
+		echo "$${FULLNAME} \\" >> ${WINBOX2D}/Makefile; \
+	done;
+	/bin/echo -e '\nlibbox2d.a: $$(SOURCES:.cpp=.o)\n\tar cr $$@ $$^\n\tranlib $$@' >> ${WINBOX2D}/Makefile
+	/bin/echo -e '\n%.o: %.cpp\n\tc++ -O2 -c -o $$@ $$<' >> ${WINBOX2D}/Makefile
+	zip ${WINBOX2D}.zip ${WINBOX2D}/*
+	rm -rf ${WINBOX2D}
 
 
 # QT is build statically, with as little options as reasonably possible
