@@ -63,10 +63,12 @@
                 <property key="page2" >But I'm not so sure about that volley ball.</property>
                 <property key="page3" >Hmmm... You see that hole?&lt;br&gt;Behind the volley ball!</property>
                 <property key="page4" >... Was signed:&lt;br&gt;&lt;br&gt;the Post-It Boy</property>
+                <property key="page5" >Note:&lt;br&gt;If the stopwatch runs, a green fast forward button appears.&lt;br&gt;&lt;br&gt;That will speed up the simulation.</property>
                 <property key="page1_nl">Aggut, ons vlindertje...&lt;br&gt;&lt;br&gt;Een nieuwe dag, een nieuwe bloem...</property>
                 <property key="page2_nl">Maar ik ben niet zo gek op die volleybal.</property>
                 <property key="page3_nl">Hmmm... Zie je die kuil?&lt;br&gt;Achter de volleybal!</property>
                 <property key="page4_nl">... Getekend:&lt;br&gt;&lt;br&gt;Post-It Boy</property>
+                <property key="page5_nl">PS:&lt;br&gt;Als de stopwatch loopt verschijnt er een groene doorspoelknop.&lt;br&gt;&lt;br&gt;Deze maakt de simulatie sneller.</property>
 	    </object>
         </predefined>
     </scene>
