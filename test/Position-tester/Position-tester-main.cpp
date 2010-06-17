@@ -21,6 +21,8 @@
 #include "tbe_global.h"
 #include "Position.h"
 
+#include <cmath>
+
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
 // note that levels 5 and 6 affect playing
@@ -43,7 +45,23 @@ public:
 
 bool TestPosition::runTests(void)
 {
-	check(true, "true \n");
+	// simple construction tests
+	{
+	Position myPos(23.3, 68.4, 42.1);
+	check(myPos.x == 23.3, "X correct \n");
+	check(myPos.y == 68.4, "Y correct \n");
+	check(myPos.angle == 42.1, "angle correct \n");
+	check(myPos.length() == sqrt(23.3*23.3+68.4*68.4), "length is correct \n");
+
+	Position myPos2 = myPos;
+	check (myPos == myPos2, "== works correctly \n");
+	}
+
+	// slightly harder
+	Position myPos1(1.0, 2.0, 0.0);
+	Vector   myVect(1.0, 2.0);
+
+	check( (myPos1+myVect) == Position(2.0, 4.0, 0), "without angle, addition is easy\n");
 
 	return true;
 }
@@ -61,7 +79,7 @@ int main(int argc, char *argv[])
 	TestFramework myFramework(argc, argv);
 
 	myFramework.add( new TestPosition );
-	myFramework.add( new TestVector );
+//	myFramework.add( new TestVector );
 
 	myFramework.run();
 

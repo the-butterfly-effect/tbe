@@ -157,9 +157,9 @@ Vector operator*(const Vector& v1, const Vector& v2)
 
 bool operator==(const Position& p1, const Position& p2)
 {
-	if (fabs(p1.x - p2.x) < Position::minimalMove)
+	if (fabs(p1.x - p2.x) > Position::minimalMove)
 		return false;
-	if (fabs(p1.y - p2.y) < Position::minimalMove)
+	if (fabs(p1.y - p2.y) > Position::minimalMove)
 		return false;
 	if (p1.angle != p2.angle)
 		return false;
