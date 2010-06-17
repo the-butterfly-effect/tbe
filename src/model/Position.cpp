@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -43,7 +43,6 @@ Position::Position (const b2Vec2& aVec, qreal anAngle)
 
 qreal Position::length(void)
 {	return sqrt(x*x+y*y); }
-
 
 b2Vec2 Position::toB2Vec2(void) const
 {	return b2Vec2(x,y); }
@@ -130,12 +129,6 @@ Position operator+(const Position& p1, const Vector& v1)
 	return Position(p1.x +v1.dx*myCos - v1.dy*mySin, p1.y +v1.dx*mySin +v1.dy*myCos, p1.angle);
 }
 
-
-Position operator+(const Position& p1, const Position& p2)
-{
-	return Position(p1.x+p2.x, p1.y+p2.y, p1.angle+p2.angle);
-}
-
 Position operator+(const Position& p1, const QPointF& p2)
 {
 	return Position(p1.x+p2.x(), p1.y+p2.y(), p1.angle);
@@ -146,10 +139,11 @@ Vector operator+(const Vector& v1, const Vector& v2)
 	return Vector(v1.dx+v2.dx, v1.dy+v2.dy);
 }
 
-Position operator-(const Position& p1, const Position& p2)
+Vector operator-(const Vector& v1, const Vector& v2)
 {
-	return Position(p1.x-p2.x, p1.y-p2.y, p1.angle-p2.angle);
+	return Vector(v1.dx-v2.dx, v1.dy-v2.dy);
 }
+
 
 Vector operator*(const qreal c1, const Vector& v1)
 {

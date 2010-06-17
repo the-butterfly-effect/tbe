@@ -57,7 +57,8 @@ bool GoalDistance::checkForSuccess(void)
 	if (theFirstPtr == NULL || theSecondPtr == NULL)
 		return false;
 
-	Position myDistanceVector = theFirstPtr->getTempCenter() - theSecondPtr->getTempCenter();
+	Vector myDistanceVector = (theFirstPtr->getTempCenter().toVector())
+							  - (theSecondPtr->getTempCenter().toVector());
 	switch(theType)
 	{
 	case NOTYPE:

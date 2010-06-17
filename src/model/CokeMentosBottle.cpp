@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -233,13 +233,15 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 
 	CokeSplatter* mySplatter = new CokeSplatter();
 
-	// start position for the splatter is above the opening: (0, +0.59*object height)
+	// Start position for the splatter is above the opening:
+	// i.e. (0, +0.59*object height). The magic number 0.59 is "slightly more than 1/2"...
+	// I figured out the number by experiment
+	const qreal SPLATTER_START = 0.60;
 	Position myStartPos = getTempCenter();
-
-	// the bottle position contains the angle, we need that to compensate for
-	// rotated bottles
-	qreal myAngle = myStartPos.angle;
-	myStartPos = myStartPos + Position(getTheHeight()*-0.59*sin(myAngle), getTheHeight()*0.59*cos(myAngle), PI/2.0);
+	myStartPos = myStartPos + Vector(0, SPLATTER_START*getTheHeight());
+	// we need this 90 degrees because the bottle is modelled vertical,
+	// not horizontal
+	myStartPos.angle += PI/2.0;
 
 	// departure velocity
 	qreal myH;
@@ -278,6 +280,7 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	qreal myImpulse = mySplatterMass*myV;
 	// HACK HACK HACK: to improve the "feeling", we help the impulse a bit here...
 	// The Thrust is actually adjustable as a property - default is 2.0 (see reset()).
+	qreal myAngle = getTempCenter().angle;
 	Vector myImpulseVector = -theThrust*Vector(-myImpulse*sin(myAngle), myImpulse*cos(myAngle));
 	theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
 }

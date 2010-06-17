@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -98,21 +98,14 @@ public:
  */
 Position operator+(const Position& p1, const Vector& v1);
 
-/** FIXME: THIS ONE HAS TO GO
- *  add a Position to a Position
- *  - BUG: x+x, y+y, angle+angle is not right
- */
-Position operator+(const Position& p1, const Position& p2);
-
 /// add Position+QPointF
 Position operator+(const Position& p1, const QPointF& p2);
 
 /// adds a Vector to a Vector
 Vector operator+(const Vector& v1, const Vector& v2);
 
-/// subtracts two Positions (including angle!)
-/// ofcourse, the end result probably is a vector, but ok...
-Position operator-(const Position& p1, const Position& p2);
+/// subtracts two Vectors
+Vector operator-(const Vector& p1, const Vector& p2);
 
 /// constant multiplies vector
 Vector operator*(const qreal c1, const Vector& p1);
