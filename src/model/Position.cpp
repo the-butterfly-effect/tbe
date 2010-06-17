@@ -169,9 +169,9 @@ bool operator==(const Position& p1, const Position& p2)
 
 bool operator==(const Vector& v1, const Vector& v2)
 {
-	if (fabs(v1.dx - v2.dx) < Position::minimalMove)
+	if (fabs(v1.dx - v2.dx) > Position::minimalMove)
 		return false;
-	if (fabs(v1.dy - v2.dy) < Position::minimalMove)
+	if (fabs(v1.dy - v2.dy) > Position::minimalMove)
 		return false;
 	return true;
 }
