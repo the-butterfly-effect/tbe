@@ -43,6 +43,7 @@ ${WINBOX2D}.zip: ${MYLIBDIR}/libbox2d.a
 	mkdir -p ${WINBOX2D}
 	find ${BOX2D}/Box2D/Source -name '*.cpp' > ${WINBOX2D}/manifest
 	find ${BOX2D}/Box2D/Source -name '*.h'  >> ${WINBOX2D}/manifest
+	echo ${BOX2D}/Box2D/Include/Box2D.h     >> ${WINBOX2D}/manifest
 	echo "SOURCES= \\" > ${WINBOX2D}/Makefile
 	for I in `cat ${WINBOX2D}/manifest`; \
 		do \
