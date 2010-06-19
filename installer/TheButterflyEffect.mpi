@@ -54,7 +54,7 @@ EnableResponseFiles
 {Yes}
 
 Ext
-{}
+{.exe}
 
 ExtractSolidArchivesOnStartup
 {No}
@@ -230,7 +230,7 @@ test
 {Testing Switch Yes No {} {run uninstaller without uninstalling any files}}
 
 }
-FileGroup ::5BC4DCD0-A747-97F6-12B7-0F4C0A40724C -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows TarArchive ZipArchive} -name {Program Files} -parent FileGroups
+FileGroup ::5BC4DCD0-A747-97F6-12B7-0F4C0A40724C -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 TarArchive ZipArchive} -name {Program Files} -parent FileGroups
 File ::54461B81-3445-0C57-C53C-59CAC420C689 -name ../tbe -parent 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C
 File ::F4DAC27E-EAF2-C54E-D90E-222949F9F088 -name ../README -parent 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C
 File ::89FF44CC-990B-E70D-6127-60A62495DAC8 -name ../AUTHORS -parent 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C
@@ -262,8 +262,21 @@ File ::689145FA-180B-3FD1-D17D-CE749BC8493D -name test-poly1.xml -parent 3D0F79A
 File ::E7625856-1888-EAA8-1DD7-112A6423CAA8 -filemethod {Always overwrite files} -type dir -savefiles No -name ../images -parent 3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB
 FileGroup ::E883F35F-B961-5A96-6208-564C51411278 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows TarArchive ZipArchive} -name i18n -parent FileGroups
 File ::AA591167-FB22-B9C1-B978-BC25FD9ACA2D -type dir -savefiles No -name ../i18n -parent E883F35F-B961-5A96-6208-564C51411278
+FileGroup ::FCF733E7-C29F-E864-8573-7EF1D619304E -setup Install -active Yes -platforms {Windows ZipArchive} -name {Windows Files} -parent FileGroups
+File ::AC792613-B21B-6B65-04FF-D678FE5845E6 -name ../QtCore4.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::3B680032-4900-3C17-50CF-CBA063CA4487 -name ../QtGui4.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::6A62B90B-6FDB-F145-61CE-69F33CDE4F78 -name ../QtSvg4.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::010130F4-AEB4-D5E4-F9C8-69D5AE293C86 -name ../QtXml4.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::12C42037-3BED-68C9-372F-DDC63E2A4052 -name ../libgcc_s_dw2-1.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::60079493-2282-4EE4-C091-1CF2B9C0347F -name ../mingwm10.dll -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::62BBDA4C-3336-6B2D-735B-61303AE174EE -name ../tbe.exe -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::221F1BF3-6161-9979-D31F-3A773E341ED2 -name ../AUTHORS.txt -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::3F6AAD2F-E290-BAD5-6064-65794F012980 -name ../COPYING.txt -parent FCF733E7-C29F-E864-8573-7EF1D619304E
+File ::FDEBE3A6-9F74-DEB6-E410-0B1AE818012A -name ../README.txt -parent FCF733E7-C29F-E864-8573-7EF1D619304E
 Component ::C084FC12-4438-D162-D7DD-D44F99E5E3B8 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name {Default Component} -parent Components
-SetupType ::7D7CFBA2-4849-EE00-A285-F699BF79BAFD -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name Typical -parent SetupTypes
+Component ::97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name WindowsComponent -parent Components
+SetupType ::7D7CFBA2-4849-EE00-A285-F699BF79BAFD -setup Install -active Yes -platforms {FreeBSD-7-x86 FreeBSD-x86 Linux-x86 Linux-x86_64} -name UNIX -parent SetupTypes
+SetupType ::4042CC1A-2480-EF68-A54F-04749719BB73 -setup Install -active Yes -platforms {Solaris-x86 Windows} -name Windows -parent SetupTypes
 
 InstallComponent FD29B3E7-30D8-2B39-B921-6A7BF1C608B1 -setup Install -type pane -title {Welcome Screen} -component Welcome -active Yes -parent StandardInstall
 InstallComponent 0166644D-0EBA-46A6-3C34-C652CE72088A -setup Install -type pane -title {License Agreement} -component License -active Yes -parent StandardInstall
@@ -508,10 +521,22 @@ array set Properties {
 {<%InstallDir%>}
 
 3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB,FileSize
-{6661663}
+{16992790}
 
 3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB,Name
 {levels and images}
+
+4042CC1A-2480-EF68-A54F-04749719BB73,Components
+{97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416}
+
+4042CC1A-2480-EF68-A54F-04749719BB73,Description,subst
+{1}
+
+4042CC1A-2480-EF68-A54F-04749719BB73,DisplayName,subst
+{1}
+
+4042CC1A-2480-EF68-A54F-04749719BB73,Name
+{UNIX}
 
 407640E0-DC49-FCCC-5862-AD4958F8B48C,CheckCondition
 {Before Action is Executed}
@@ -601,7 +626,7 @@ array set Properties {
 {<%InstallDir%>}
 
 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C,FileSize
-{12771918}
+{17447}
 
 5BC4DCD0-A747-97F6-12B7-0F4C0A40724C,Name
 {Program Files}
@@ -766,7 +791,7 @@ array set Properties {
 {1}
 
 7D7CFBA2-4849-EE00-A285-F699BF79BAFD,Name
-{Typical}
+{UNIX}
 
 7E24B0AA-20E2-CB4D-DC84-FE90C4A2FADD,ExitType
 {Finish}
@@ -797,6 +822,18 @@ array set Properties {
 
 93E73C6F-756B-260B-1FA5-721E5CCC164E,Filename
 {<%ProgramExecutable%>}
+
+97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416,Description,subst
+{1}
+
+97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416,DisplayName,subst
+{1}
+
+97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416,FileGroups
+{3D51EA43-B39E-E8BE-40E5-BE6D9825C7CB E883F35F-B961-5A96-6208-564C51411278 FCF733E7-C29F-E864-8573-7EF1D619304E}
+
+97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416,Name
+{WindowsComponent}
 
 99808A94-CE0C-77F1-B79A-092902EBB0FF,ExecuteAction
 {Before Pane is Displayed}
@@ -1138,7 +1175,7 @@ E883F35F-B961-5A96-6208-564C51411278,Destination
 {<%InstallDir%>}
 
 E883F35F-B961-5A96-6208-564C51411278,FileSize
-{19446}
+{59002}
 
 E883F35F-B961-5A96-6208-564C51411278,Name
 {i18n}
@@ -1229,6 +1266,15 @@ FC03A94B-53DC-BBC2-3B77-AB46F83157D2,X
 
 FC03A94B-53DC-BBC2-3B77-AB46F83157D2,Y
 {140}
+
+FCF733E7-C29F-E864-8573-7EF1D619304E,Destination
+{<%InstallDir%>}
+
+FCF733E7-C29F-E864-8573-7EF1D619304E,FileSize
+{13257826}
+
+FCF733E7-C29F-E864-8573-7EF1D619304E,Name
+{Windows Files}
 
 FD29B3E7-30D8-2B39-B921-6A7BF1C608B1,BackButton,subst
 {1}
@@ -1852,7 +1898,7 @@ TarArchive,VirtualTextMap
 {<%InstallDir%> <%ShortAppName%>}
 
 Windows,Active
-{No}
+{Yes}
 
 Windows,BuildSeparateArchives
 {No}
