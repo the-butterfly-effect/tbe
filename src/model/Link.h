@@ -28,8 +28,8 @@
 ///
 /// <!-- the x/y/angle in the object tag is ignored and/or recalculated when needed -->
 /// <object type="Link" X="2.74" Y="3.44" angle="2.12">
-///    <property key="Connection1">Skyhook@(1,2)</property>
-///    <property key="Connection2">Chain3@(-1,2)</property>
+///    <property key="object1">Skyhook@(1,2)</property>
+///    <property key="object2">Chain3@(-1,2)</property>
 ///    <property key="ImageName">flat-chain</property>
 /// </object>
 
