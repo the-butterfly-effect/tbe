@@ -22,6 +22,8 @@
 #include <cmath>
 #include <QStringList>
 
+const qreal Position::minimalMove;
+
 // Constructors/Destructors
 
 Position::Position (qreal anX, qreal aY, qreal anAngle)

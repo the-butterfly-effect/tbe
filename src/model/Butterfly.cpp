@@ -35,6 +35,10 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 
+
+const double Butterfly::theButterflyMass;
+
+
 Butterfly::Butterfly()
 		: RectObject(), theCountdown(1)
 {

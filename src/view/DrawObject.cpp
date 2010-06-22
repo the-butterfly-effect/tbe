@@ -36,6 +36,9 @@
 
 static const int EXTRA_WHITESPACE = 2;
 
+const qreal DrawObject::theScale;
+
+
 // set/get using static setter/getter in DrawObject
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;

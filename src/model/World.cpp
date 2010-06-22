@@ -23,6 +23,9 @@
 #include "DrawObject.h"
 #include "PivotPoint.h"
 
+
+const qreal World::theDeltaTime;
+
 // Constructors/Destructors
 //  
 
