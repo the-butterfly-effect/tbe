@@ -147,6 +147,11 @@ public:
 	// this one is unique to CustomBall
 	static const char* RADIUS_STRING;	    	// 0.0 - inf, in [m]
 
+	// these ones are used by the various joints
+	static const char* TORQUE_STRING;			// -inf - +inf in [Nm]
+	static const char* SPEED_STRING;			// -inf - +inf in either [m/s] or [rad/s]
+	static const char* FORCE_STRING;			// -inf - +inf in [N]
+
 	// the following strings are used within e.g. RectObject as part
 	// of the above RESIZABLE_STRING:
 

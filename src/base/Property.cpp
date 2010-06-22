@@ -46,6 +46,9 @@ const char* Property::HORIZONTAL_STRING  = "horizontal";
 const char* Property::VERTICAL_STRING    = "vertical";
 const char* Property::TOTALRESIZE_STRING = "totalresize";
 
+const char* Property::TORQUE_STRING		 = "Torque";
+const char* Property::SPEED_STRING		 = "Speed";
+const char* Property::FORCE_STRING       = "Force";
 
 const char* Property::S_LESSTHAN = "lessthan";
 const char* Property::S_MORETHAN = "morethan";

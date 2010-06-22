@@ -88,6 +88,20 @@ void PivotPoint::createPhysicsObject(void)
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
 	myJointDef.userData = this;
 	myJointDef.collideConnected = areObjectsColliding;
+
+	// set motor speed and/or torque
+	// note that we have the + defined in the mathematical way,
+	// with the y in the opposite direction from QT, that means a minus somewhere
+	float myTorque = 1000.0;
+	myJointDef.enableMotor = theProps.propertyToFloat(Property::TORQUE_STRING, &myTorque);
+	float myMotorSpeed = 0.0;
+	if (theProps.propertyToFloat(Property::SPEED_STRING, &myMotorSpeed))
+		myJointDef.enableMotor = true;
+	myJointDef.maxMotorTorque = myTorque;
+	myJointDef.motorSpeed = -myMotorSpeed;
+
+printf("speed: %f, torque: %f, enabled: %d\n", myMotorSpeed, myTorque, myJointDef.enableMotor);
+
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
