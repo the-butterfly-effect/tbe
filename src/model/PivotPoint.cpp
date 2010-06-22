@@ -22,9 +22,6 @@
 #include "Box2D.h"
 #include "DrawObject.h"
 
-/// pointer to World's groundbody.
-static b2Body* theGroundBodyPtr = NULL;
-
 //// this class' ObjectFactory
 class PivotPointObjectFactory : public ObjectFactory
 {
@@ -39,30 +36,18 @@ static PivotPointObjectFactory theRFactory;
 
 
 PivotPoint::PivotPoint()
-		: theFirstPtr(NULL), theSecondPtr(NULL), theJointPtr(NULL), areObjectsColliding(false)
+		: theFirstPtr(NULL), theSecondPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG5("PivotPoint::PivotPoint\n");
 }
 
 PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
-		: theFirstPtr(aBaseObject), theSecondPtr(NULL), theJointPtr(NULL), areObjectsColliding(false)
+		: theFirstPtr(aBaseObject), theSecondPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n",
 		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
 	thePosRelativeToFirst = aRelativePosition;
-	setOrigCenter(aBaseObject->getOrigCenter()+aRelativePosition);
-}
-
-DrawObject*  PivotPoint::createDrawObject(void)
-{
-	assert(theDrawObjectPtr==NULL);
-	if (isPhysicsObjectCreated()==false)
-		createPhysicsObject();
-	QString myImageName = theProps.getProperty(Property::IMAGE_NAME_STRING);
-	if (myImageName.isEmpty())
-		return NULL;
-	theDrawObjectPtr = new DrawObject(this, myImageName);
-	return theDrawObjectPtr;
+	updateOrigCenter();
 }
 
 void PivotPoint::createPhysicsObject(void)
@@ -90,7 +75,7 @@ void PivotPoint::createPhysicsObject(void)
 
 	// if there is no object2, use the ground body.
 	// available as theGroundBodyPtr...
-	b2Body* mySecondB2BodyPtr = theGroundBodyPtr;
+	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
 	if (theSecondPtr != NULL)
 	{
 		mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
@@ -106,26 +91,6 @@ void PivotPoint::createPhysicsObject(void)
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
-void PivotPoint::deletePhysicsObject(void)
-{
-	if (theJointPtr)
-		getB2WorldPtr()->DestroyJoint(theJointPtr);
-	theJointPtr = NULL;
-}
-
-Position PivotPoint::getTempCenter (void) const
-{
-	// no physics object, no temp center
-	// FIXME/TODO: this is not entirely correct as a pivot point *could* move.
-	return getOrigCenter();
-}
-
-void PivotPoint::jointWasDeleted(void)
-{
-	DEBUG2("PivotPoint::jointWasDeleted(void)\n");
-	theJointPtr = NULL;
-}
-
 
 void PivotPoint::parseProperties(void)
 {
@@ -134,44 +99,7 @@ void PivotPoint::parseProperties(void)
 }
 
 
-bool PivotPoint::propertyToObjectPtr(
-		World* aWPtr,
-		const QString& aPropertyName,
-		BaseObject** aBOPtrPtr)
+void PivotPoint::updateOrigCenter(void)
 {
-	QString myValue = theProps.getProperty(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
-	if (*aBOPtrPtr == NULL)
-		return false;
-	return true;
-}
-
-void PivotPoint::reset(void)
-{
-	// nothing to do here
-}
-
-void PivotPoint::setGroundBodyPtr(b2Body* aPtr)
-{
-	theGroundBodyPtr = aPtr;
-}
-
-void PivotPoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
-{
-	switch (aStatus)
-	{
-	case JointInterface::CREATED:
-		createPhysicsObject();
-		break;
-	case JointInterface::DELETED:
-		deletePhysicsObject();
-		break;
-	case JointInterface::POSUPDATE:
-		deletePhysicsObject();
-		setOrigCenter(theFirstPtr->getOrigCenter()+thePosRelativeToFirst);
-		createPhysicsObject();
-		break;
-	}
+	setOrigCenter(theFirstPtr->getOrigCenter()+thePosRelativeToFirst);
 }

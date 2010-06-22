@@ -30,6 +30,7 @@ HEADERS += src/tbe_global.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
     src/model/AbstractBall.h \
+    src/model/BaseJoint.h \
     src/model/BaseObject.h \
     src/model/Butterfly.h \
     src/model/CokeMentosBottle.h \
@@ -69,6 +70,7 @@ SOURCES += src/main.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
     src/model/AbstractBall.cpp \
+    src/model/BaseJoint.cpp \
     src/model/BaseObject.cpp \
     src/model/Butterfly.cpp \
     src/model/CokeMentosBottle.cpp \
