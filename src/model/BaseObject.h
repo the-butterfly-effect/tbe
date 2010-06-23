@@ -246,6 +246,10 @@ public:
 	void addJoint(JointInterface* aJoint)
 	{	theJointList.insert(aJoint); }
 
+	/** Creates the drawObject, sets ZValue to 2 (or to whatever the
+	  * the ZValue property is set to) and returns a pointer to it.
+	  * @returns pointer to DrawObject
+	  */
 	virtual DrawObject* createDrawObject();
 
 	virtual void createPhysicsObject(void);

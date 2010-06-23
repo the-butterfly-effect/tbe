@@ -49,16 +49,17 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.0</property>
             </object>
-	    <object width="0.8" X="1.0" Y="1.35" height="0.10" type="RectObject" ID="Lever">
+	    <object width="0.8" X="1.2" Y="1.35" height="0.10" type="RectObject" ID="Lever">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Friction" >0.0</property>
                 <property key="Mass"     >3.0</property>
             </object>
             
-	    <object type="Link" X="0" Y="0" width="1.0" height="0.1" angle="0">
-	      <property key="object1">SteamWheel@(-0.1,-0.7)</property>
+	    <object type="Link" X="0" Y="0" width="1.84" height="0.15" angle="0">
+	      <property key="object1">SteamWheel@(0,-0.68)</property>
 	      <property key="object2">Lever@(0.35,0)</property>
 	      <property key="ImageName">birch_bar</property>
+	      <property key="ZValue">5</property>
 	    </object>
 
 	    <object type="Link" X="0" Y="0" width="1.4" height="0.1" angle="0">
