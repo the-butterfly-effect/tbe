@@ -99,7 +99,7 @@ Position Link::getTempCenter() const
 	// TODO: calculate the angle!
 	Vector myDiff = myV1 - myV2;
 	if (myDiff.dx == 0)
-		myDiff.dx = 0.01;
+		myDiff.dx = 0.0001;
 
 	double myAngle = atanf(fabs(myDiff.dy / myDiff.dx));
 
