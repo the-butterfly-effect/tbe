@@ -100,7 +100,8 @@ Position Link::getTempCenter() const
 	Vector myDiff = myV1 - myV2;
 	if (myDiff.dx == 0)
 		myDiff.dx = 0.01;
-	double myAngle = atan(abs(myDiff.dy / myDiff.dx));
+
+	double myAngle = atanf(fabs(myDiff.dy / myDiff.dx));
 
 	if (myDiff.dx > 0)
 	{
@@ -117,7 +118,7 @@ Position Link::getTempCenter() const
 			myAngle = PI + myAngle;
 	}
 
-	myAngle -= PI/2;
+	myAngle += PI;
 	return Position(myMiddle.toB2Vec2(), myAngle);
 }
 
