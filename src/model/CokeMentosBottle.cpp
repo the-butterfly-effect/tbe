@@ -40,6 +40,9 @@ static CokeMentosObjectFactory theCMBottleObjectFactory;
 
 
 
+const double CokeMentosBottle::theBottleMass;
+
+
 CokeMentosBottle::CokeMentosBottle()
 		: RectObject()
 {
