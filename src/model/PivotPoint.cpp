@@ -36,13 +36,13 @@ static PivotPointObjectFactory theRFactory;
 
 
 PivotPoint::PivotPoint()
-		: theFirstPtr(NULL), theSecondPtr(NULL), areObjectsColliding(false)
+		: BaseJoint(), theFirstPtr(NULL), theSecondPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG5("PivotPoint::PivotPoint\n");
 }
 
 PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
-		: theFirstPtr(aBaseObject), theSecondPtr(NULL), areObjectsColliding(false)
+		: BaseJoint(), theFirstPtr(aBaseObject), theSecondPtr(NULL), areObjectsColliding(false)
 {
 	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n",
 		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);

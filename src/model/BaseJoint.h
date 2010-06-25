@@ -28,7 +28,7 @@ class b2RevoluteJoint;
 class BaseJoint : public BaseObject, public JointInterface
 {
 public:
-    BaseJoint();
+	BaseJoint(void);
 
 	virtual DrawObject* createDrawObject();
 

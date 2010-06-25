@@ -25,7 +25,7 @@
 /// pointer to World's groundbody.
 static b2Body* theGroundBodyPtr = NULL;
 
-BaseJoint::BaseJoint() : theJointPtr(NULL)
+BaseJoint::BaseJoint(void) : theJointPtr(NULL)
 {
 }
 
