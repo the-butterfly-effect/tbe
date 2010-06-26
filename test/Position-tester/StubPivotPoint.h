@@ -16,42 +16,18 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "TestFramework.h"
-#include "TestChapter.h"
-#include "tbe_global.h"
-#include "Position.h"
+#ifndef STUBPIVOTPOINT_H
+#define STUBPIVOTPOINT_H
 
-#include <cmath>
+#include "BaseObject.h"
 
-// the verbosity for all logging - by default defined at 4
-// accepted values are 0 (no logging) - 6 (most logging)
-// note that levels 5 and 6 affect playing
-int theVerbosity = 4;
-
-class TestBaseObject : public TestChapter
+class PivotPoint : public BaseObject
 {
 public:
-	TestBaseObject() : TestChapter("Test BaseObject class")	{}
-	virtual bool runTests();
+	PivotPoint();
+	PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition);
+
+	virtual ~PivotPoint() {}
 };
 
-bool TestBaseObject::runTests(void)
-{
-	// todo: insert test here...
-
-
-	return true;
-}
-
-
-
-int main(int argc, char *argv[])
-{
-	TestFramework myFramework(argc, argv);
-
-	myFramework.add( new TestBaseObject );
-
-	myFramework.run();
-
-	return 0;
-}
+#endif // STUBPIVOTPOINT_H

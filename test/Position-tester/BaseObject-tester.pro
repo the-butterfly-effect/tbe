@@ -14,25 +14,28 @@ LIBS += -lbox2d \
 SOURCES += ../src/TestFramework.cpp \
     ../src/TestChapter.cpp \
     BaseObject-tester-main.cpp \
+    ../../src/base/BaseObjectSerializer.cpp \
     ../../src/base/Property.cpp \
     ../../src/model/BaseObject.cpp \
     ../../src/model/Position.cpp \
     ../src/StubWorld.cpp \
     ../src/StubDrawWorld.cpp \
-    ../src/StubDrawObject.cpp
+    ../src/StubDrawObject.cpp \
+    StubPivotPoint.cpp \
+    ../src/StubLevel.cpp
 HEADERS += ../src/TestFramework.h \
     ../src/TestChapter.h \
     ../../src/tbe_global.h \
+    ../../src/base/BaseObjectSerializer.h \
     ../../src/base/Property.h \
     ../../src/model/BaseObject.h \
     ../../src/model/Position.h \
+    ../../src/model/PivotPoint.h \
     ../src/StubWorld.h \
     ../src/StubDrawWorld.h \
-    ../src/StubDrawObject.h
+    ../src/StubDrawObject.h \
+    StubPivotPoint.h
 INCLUDEPATH += ../src \
     ../../3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     ../../src \
-	../../src/base
-
-# I don't want to include anything from src/model and src/view
-# because these will need stubbing anyway...
+    ../../src/base
