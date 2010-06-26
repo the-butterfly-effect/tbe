@@ -117,6 +117,7 @@ BaseObject* TBItem::getNewObject(void)
 	}
 	else
 	{
+		assert(theDomNode.isNull()==false);
 		myBOPtr = BaseObjectSerializer::createObjectFromDom(theDomNode, false);
 		if (myBOPtr == NULL)
 		{
