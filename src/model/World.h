@@ -22,7 +22,7 @@
 #include "Box2D.h"
 #include "tbe_global.h"
 
-#include "PivotPoint.h"
+#include "BaseJoint.h"
 
 #include <QString>
 #include <QList>
@@ -92,7 +92,7 @@ public:
 	virtual void SayGoodbye(b2Joint* joint)
 	{
 		// we *know* that all b2Joints will have UserData
-		reinterpret_cast<PivotPoint*>(joint->GetUserData())->jointWasDeleted();
+		reinterpret_cast<BaseJoint*>(joint->GetUserData())->jointWasDeleted();
 	}
 
 	/// not interested...

@@ -21,6 +21,7 @@
 #include "World.h"
 #include "Box2D.h"
 #include "BaseObjectSerializer.h"
+#include "PivotPoint.h"
 
 // Static variables
 static b2World* theStaticB2WorldPtr = NULL;

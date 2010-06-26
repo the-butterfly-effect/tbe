@@ -100,8 +100,6 @@ void PivotPoint::createPhysicsObject(void)
 	myJointDef.maxMotorTorque = myTorque;
 	myJointDef.motorSpeed = -myMotorSpeed;
 
-printf("speed: %f, torque: %f, enabled: %d\n", myMotorSpeed, myTorque, myJointDef.enableMotor);
-
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 

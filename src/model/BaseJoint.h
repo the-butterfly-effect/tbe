@@ -78,6 +78,11 @@ public:
 	virtual void updateOrigCenter(void) = 0;
 
 protected:
+	/// if you have only one object, it is supposed to be static
+	/// related to the world i.e. the ground body. This is where to get it.
+	/// (see also setGroundBodyPtr() ).
+	b2Body* getGroundBodyPtr(void);
+
 	/** returns true if property aPropertyName exists *and*
 	  * its value is the ID of an existing BaseObject instance
 	  * @param aWorldPtr
@@ -102,8 +107,6 @@ protected:
 							 BaseObject** aBOPtrPtr,
 							 Vector** aVectorPtrPtr);
 
-protected:
-	b2Body* getGroundBodyPtr(void);
 	b2RevoluteJoint* theJointPtr;
 };
 
