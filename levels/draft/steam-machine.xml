@@ -55,10 +55,10 @@
                 <property key="Mass"     >3.0</property>
             </object>
             
-	    <object type="Link" X="0" Y="0" width="1.84" height="0.15" angle="0">
+	    <object type="Link" X="0" Y="0" width="1.84" height="0.18" angle="0">
 	      <property key="object1">SteamWheel@(0,-0.68)</property>
 	      <property key="object2">Lever@(0.35,0)</property>
-	      <property key="ImageName">birch_bar</property>
+	      <property key="ImageName">driver-1m</property>
 	      <property key="ZValue">5</property>
 	    </object>
 
