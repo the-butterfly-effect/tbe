@@ -25,10 +25,20 @@
 class b2BodyPtr;
 class b2RevoluteJoint;
 
+/** BaseJoint is the base class for all Joints
+  * it concerns itself with figuring out the ground object and
+  * receiving signals to delete physics objects.
+  *
+  * it also contains some common property parsing for all joints
+  */
 class BaseJoint : public BaseObject, public JointInterface
 {
 public:
+	// empty constructor
 	BaseJoint(void);
+
+	// virtual, empty destructor
+	virtual ~BaseJoint() {}
 
 	virtual DrawObject* createDrawObject();
 

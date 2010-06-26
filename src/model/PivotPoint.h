@@ -23,7 +23,28 @@
 
 
 
-/// class to implement rotational joints
+/// This class implements rotational joints - between objects or between one
+/// object and "the world". 
+/// Rotational joints can have an engine (implementing torque and/or 
+/// rotational speed).
+///
+/// Example usage:
+///    <object type="PivotPoint" X="3.2" Y="2.0">
+///       <property key="object">Lever</property>
+///    </object>
+///
+///    <object type="PivotPoint" X="3.2" Y="1.8">
+///        <property key="object">SteamWheel</property>
+///        <property key="Speed">1.0</property>
+///        <property key="Torque">50.0</property>
+///    </object>
+///
+///	   <object type="PivotPoint" X="3.95" Y="0.95">
+///       <property key="object1">Bar</property>
+///       <property key="object2">Handle</property>
+///       <property key="collide">false</property>
+///    </object>
+/// See also http://sourceforge.net/apps/trac/tbe/wiki/PivotPoint
 class PivotPoint : public BaseJoint
 {
 public:
@@ -37,7 +58,7 @@ public:
 	  */
 	PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition);
 
-	virtual ~PivotPoint() {};
+	virtual ~PivotPoint() {}
 
 	/// overridden from BaseObject
 	/// (this class does not have a body, only a joint)

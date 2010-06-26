@@ -38,7 +38,7 @@ class Link : public BaseJoint
 public:
 	Link();
 
-	virtual ~Link() {};
+	virtual ~Link() {}
 
 	/// overridden from BaseObject
 	/// (this class does not have a body, only a joint)

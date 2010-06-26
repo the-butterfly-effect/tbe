@@ -21,7 +21,7 @@
 #include "Goal.h"
 #include "DrawWorld.h"
 #include "DrawObject.h"
-#include "PivotPoint.h"
+#include "BaseJoint.h"
 
 
 const qreal World::theDeltaTime;
@@ -177,7 +177,7 @@ void World::initAttributes( )
 	zeroShapeDef.SetAsBox(0.05f, 0.05f);
 	zeroShapeDef.restitution=0.0f;
 	zeroBody->CreateShape(&zeroShapeDef);
-	PivotPoint::setGroundBodyPtr(zeroBody);
+	BaseJoint::setGroundBodyPtr(zeroBody);
 
 
 	// Define the left wall body.
