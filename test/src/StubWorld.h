@@ -22,7 +22,8 @@
 #include "Box2D.h"
 #include "tbe_global.h"
 #include "BaseObject.h"
-#include "StubDrawWorld.h"
+
+class DrawWorld;
 
 /**
   * STUB VERSION OF World

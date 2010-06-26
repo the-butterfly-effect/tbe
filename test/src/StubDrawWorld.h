@@ -20,7 +20,7 @@
 #define STUBDRAWWORLD_H
 
 #include "BaseObject.h"
-#include "StubWorld.h"
+#include "World.h"
 
 #include <QGraphicsScene>
 #include <QUndoStack>

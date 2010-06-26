@@ -64,6 +64,12 @@ public:
 	/// setup caching for this object
 	void setupCache(void);
 
+protected:
+	BaseObject* theBaseObjectPtr;
+
+private:
+	virtual void initAttributes ( ) ;
+
 };
 
 #endif // STUBDRAWOBJECT_H

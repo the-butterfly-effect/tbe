@@ -21,3 +21,7 @@
 DrawWorld::DrawWorld()
 {
 }
+
+DrawWorld::~DrawWorld()
+{
+}

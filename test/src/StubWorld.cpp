@@ -73,12 +73,13 @@ bool World::addObject(BaseObject* anObjectPtr)
 
 void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 {
-	if (theDrawWorldPtr)
+/*	if (theDrawWorldPtr)
 	{
 		DrawObject* myDOPtr = aBOPtr->createDrawObject();
 		if (myDOPtr!=NULL)
 			theDrawWorldPtr->addItem(myDOPtr);
 	}
+*/
 }
 
 

@@ -16,28 +16,51 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "StubDrawObject.h"
+#include "DrawObject.h"
+#include "BaseObject.h"
 
-DrawObject::DrawObject()
+DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
+	: theBaseObjectPtr(aBaseObjectPtr)
+{
+	DEBUG6("StubDrawObject::DrawObject(%p)\n", aBaseObjectPtr);
+	if (theBaseObjectPtr!=NULL)
+		initAttributes();
+}
+
+DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
+						const QString& anImageName,
+						UNUSED_ARG DrawObject::ImageType anImageType)
+	: theBaseObjectPtr(aBaseObjectPtr)
+{
+	DEBUG6("StubDrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
+	initAttributes();
+}
+
+
+DrawObject::~DrawObject ( )
 {
 }
 
 
 QRectF DrawObject::boundingRect() const
 {
-	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	qreal myWidth = theBaseObjectPtr->getTheWidth();
+	qreal myHeight= theBaseObjectPtr->getTheHeight();
 	qreal adjust = 0.03;
 
 	return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
 }
 
 
+void DrawObject::initAttributes ( )
+{
+}
+
+
 void DrawObject::paint(QPainter*, const QStyleOptionGraphicsItem *, QWidget *)
 {
-	if ( theDrawDebug==true && isSimRunning==true )
-		return;
+}
 
-	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+void DrawObject::setupCache(void)
+{
 }
