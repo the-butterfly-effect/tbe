@@ -61,7 +61,7 @@ b2Body* BaseJoint::getGroundBodyPtr(void)
 void BaseJoint::jointWasDeleted(void)
 {
 	// if this member is called, the joint is already gone
-	DEBUG2("BaseJoint::jointWasDeleted(void)\n");
+	DEBUG2("BaseJoint::jointWasDeleted(void) for %p\n", this);
 	theJointPtr = NULL;
 }
 
