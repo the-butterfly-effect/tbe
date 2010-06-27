@@ -181,6 +181,16 @@ void PolyObject::setTheHeight ( qreal new_var )
 // Other methods
 //
 
+void PolyObject::createPhysicsObject(void)
+{
+	if (theShapeList.isEmpty())
+	{
+		printf("no shape!\n");
+		return;
+	}
+	BaseObject::createPhysicsObject();
+}
+
 
 void PolyObject::fillShapeList(void)
 {
@@ -202,7 +212,14 @@ void PolyObject::fillShapeList(void)
 	{
 		b2PolygonDef* myPolyDef = new b2PolygonDef();
 
-		QStringList myCoordList = (*i).split("=");
+		QString myCoordString = (*i);
+		if (myCoordString.isEmpty())
+		{
+printf("empty\n");
+			++i;
+			continue;
+		}
+		QStringList myCoordList = myCoordString.split("=");
 		int j = 0;
 		myPolyDef->vertexCount = myCoordList.count();
 		for (; j<myCoordList.count(); j++)
@@ -231,9 +248,9 @@ void PolyObject::parseProperties(void)
 
 	BaseObject::parseProperties();
 
+	deletePhysicsObject();
 	clearShapeList();
 	fillShapeList();
-
 	createPhysicsObject();
 
 }

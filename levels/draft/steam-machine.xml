@@ -31,43 +31,53 @@
         <scenesize width="4.4" height="3" />
         <predefined>
 
-	    <object X="3.2" Y="1.8" type="Custom Ball" ID="SteamWheel">
+
+
+<!-- steam wheel + driver + lever -->
+	    <object X="1.84" Y="1.35" type="Custom Ball" ID="SteamWheel" angle="1.57">
                 <property key="ImageName">steam-wheel</property>
-                <property key="Radius"   >0.8</property>
+                <property key="Radius"   >0.3</property>
                 <property key="Mass"     >3.0</property>
             </object>
-	    <object type="PivotPoint" X="3.2" Y="1.8">
+	    <object type="PivotPoint" X="1.84" Y="1.35">
 	      <property key="object">SteamWheel</property>
-	      <property key="Speed">1.0</property>
+	      <property key="Speed">-1.0</property>
 	    </object>
 
-	    <object width="1.6" X="1.3" Y="1.25" height="0.10" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Friction" >0.0</property>
-            </object>
-	    <object width="1.6" X="1.3" Y="1.46" height="0.10" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Friction" >0.0</property>
-            </object>
-	    <object width="0.8" X="1.2" Y="1.35" height="0.10" type="RectObject" ID="Lever">
+	    <object width="0.8" X="0.5" Y="1.35" height="0.10" type="RectObject" ID="Lever">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Friction" >0.0</property>
                 <property key="Mass"     >3.0</property>
             </object>
             
-	    <object type="Link" X="0" Y="0" width="1.84" height="0.18" angle="0">
-	      <property key="object1">SteamWheel@(0,-0.68)</property>
+	    <object type="Link" X="0" Y="0" width="0.83" height="0.09" angle="0">
+	      <property key="object1">SteamWheel@(-0.24,0)</property>
 	      <property key="object2">Lever@(0.35,0)</property>
 	      <property key="ImageName">driver-1m</property>
 	      <property key="ZValue">5</property>
 	    </object>
-
-	    <object type="Link" X="0" Y="0" width="1.4" height="0.1" angle="0">
-	      <property key="object1">SteamWheel@(-0.7,0.0)</property>
-	      <property key="object2">SteamWheel@(0.7,0.0)</property>
-	      <property key="ImageName">i-beam</property>
-	    </object>
-
+	    <object width="0.8" X="0.8" Y="1.25" height="0.10" type="Floor" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Friction" >0.0</property>
+            </object>
+            
+            
+            <object X="1.9" Y="2.6" type="Bowling Ball" />
+            <object X="1.7" Y="2.6" type="Bowling Ball" />
+            <object X="1.5" Y="2.6" type="Bowling Ball" />
+            <object X="1.3" Y="2.6" type="Bowling Ball" />
+            
+             <object type="PolyObject" width="0.1" height="0.1" X="0.05" Y="1.25">
+                <property key="Polygons">(-1,1)=(-1,-1)=(1,-1)</property>
+             </object>
+            <object width="0.1" height="1.1" X="0.05" Y="0.65" type="RectObject">
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Friction" >0.4</property>
+            </object>
+            
+            <object width="1.6" height="0.5" X="1.2" Y="1.65" type="LeftRamp">
+                <property key="ImageName">left-ramp</property>
+            </object>
 
 	    <object width="0.8" X="2.2" Y="0.05" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>

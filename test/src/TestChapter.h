@@ -22,6 +22,10 @@
 
 #include <QString>
 
+// TODO/FIXME: move this into TestChapter
+#define testmsg(format, ...)	printf("    " format, ## __VA_ARGS__)
+
+
 class TestChapter
 {
 public:

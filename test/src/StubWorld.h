@@ -62,6 +62,8 @@ public:
 	 */
 	BaseObject* findObjectByID(const QString& anID);
 
+	virtual qreal getG(void) { return -9.81; }
+
 	/** removes a joint from the World
 	 *  NOTE: the b2Bodies the joint is linked to should both still exist!
 	 *  @param aJointPtr pointer to the joint to remove
@@ -93,11 +95,10 @@ public:
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 
-private:
+public:
 	void addBaseObjectToDrawWorld(BaseObject* aBOPtr);
 	void initAttributes ( ) ;
 
-	b2World* theB2WorldPtr;
 	typedef QList<BaseObject*> BaseObjectPtrList;
 	DrawWorld* theDrawWorldPtr;
 
@@ -107,6 +108,11 @@ private:
 	typedef QMap<BaseObject*, qreal> ToRemoveList;
 	ToRemoveList theToBeRemovedList;
 
+	b2World* theB2WorldPtr;
+	b2AABB*  theAABBPtr;
+
+	/// Do we want to let bodies sleep?
+	static const bool doSleep = true;
 };
 
 #endif // STUBWORLD_H

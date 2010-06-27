@@ -69,6 +69,7 @@ BaseObject::~BaseObject ( )
 		delete theDrawObjectPtr;
 		theDrawObjectPtr = NULL;
 	}
+	DEBUG6("~BaseObject() done\n");
 }
 
 //  
@@ -115,6 +116,7 @@ void BaseObject::ForWorldOnly::setTheB2WorldPtr(b2World* aPtr)
 
 void BaseObject::clearShapeList()
 {
+	DEBUG6("BaseObject::clearShapeList()\n");
 	while(theShapeList.isEmpty()==false)
 	{
 		b2ShapeDef* mySDPtr = theShapeList.first();
@@ -285,8 +287,7 @@ void BaseObject::setOrigCenter ( Position new_var )
 {
 	theCenter.x = new_var.x;
 	theCenter.y = new_var.y;
-	if (isRotatable())
-		theCenter.angle = new_var.angle;
+	theCenter.angle = new_var.angle;
 }
 
 

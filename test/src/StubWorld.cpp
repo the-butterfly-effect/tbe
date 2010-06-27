@@ -103,6 +103,17 @@ BaseObject* World::findObjectByID(const QString& anID)
 void World::initAttributes( )
 {
 	theDrawWorldPtr = NULL;
+
+	theAABBPtr = new b2AABB();
+	theAABBPtr->lowerBound.Set(-5.0f, -50.0f);
+	theAABBPtr->upperBound.Set(100.0f, 100.0f);
+
+	// Define the gravity vector.
+	b2Vec2 myGravity(0.0f, getG());
+
+	// Construct a world object, which will hold and simulate the rigid bodies.
+	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
 }
 
 void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)

@@ -24,8 +24,6 @@
 #include <cerrno>
 #include <cassert>
 
-#define testmsg(format, ...)	printf("    " format, ## __VA_ARGS__);
-
 TestChapter::TestChapter(QString aTitle) : theTitle(aTitle)
 {
 	theNumberOfOKs = 0;
@@ -48,7 +46,10 @@ bool TestChapter::check(bool aCondition, const QString& aMessage, bool abortIfWr
 	else
 	{
 		printf("* \033[1m\033[31mFAIL: %s \033[m", ASCII(aMessage));
-		testmsg("the strerror might help: '%s'\n", strerror(errno));
+		if (errno != EAGAIN)
+			testmsg("the strerror might help: '%s'\n", strerror(errno));
+		else
+			testmsg("\n");
 		theNumberOfFAILs++;
 		
 		if (abortIfWrong)

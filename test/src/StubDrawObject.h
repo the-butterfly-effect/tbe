@@ -64,10 +64,10 @@ public:
 	/// setup caching for this object
 	void setupCache(void);
 
-protected:
+public:
 	BaseObject* theBaseObjectPtr;
 
-private:
+public:
 	virtual void initAttributes ( ) ;
 
 };

@@ -65,14 +65,14 @@ public:
 	  */
 	void invalidateCaching(void);
 
-private:
+public:
 		const static int theMaxNumberOfGraphicsListElements = 125;
 		typedef QList<QGraphicsItem*> GraphicsList;
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);
 		void clearGraphicsList(int aCount);
 
-private:
+public:
 	World* theWorldPtr;
 	void initAttributes ( ) ;
 
