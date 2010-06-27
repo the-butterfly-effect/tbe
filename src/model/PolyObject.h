@@ -60,8 +60,6 @@ public:
 	// Public attribute accessor methods
 	//
 
-	void createPhysicsObject(void);
-
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{	return theNameString;	}
