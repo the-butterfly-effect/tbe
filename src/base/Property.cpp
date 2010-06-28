@@ -148,3 +148,32 @@ bool PropertyList::propertyToString(const QString& aPropertyName, QString* aStri
 	*aString = myValue;
 	return true;
 }
+
+
+void PropertyList::setDefaultPropertiesString(const QString& aSeparableString)
+{
+	if (aSeparableString.isEmpty())
+		return;
+	QStringList myKeyValues = aSeparableString.split("/");
+	QStringList::iterator myI = myKeyValues.begin();
+
+	while ((myI != myKeyValues.end()) && ((*myI).isNull()==false))
+	{
+		if ((*myI).contains(":")!=false)
+		{
+			QStringList myKV = (*myI).split(":");
+			QString myKey   = myKV[0];
+			QString myValue = myKV[1];
+			if (myKey.startsWith("-"))
+			{
+				theDefaultProperties.remove(myKey.remove(0,1));
+				goto next;
+			}
+			if (theDefaultProperties.contains(myKey))
+				theDefaultProperties.remove(myKey);
+			theDefaultProperties.insert(myKey,myValue);
+		}
+next:
+		++myI;
+	}
+}

@@ -33,9 +33,35 @@ public:
 	/// empty virtual destructor
 	virtual ~PropertyList() {;}
 
+	/** set (or add) default properties that the object this property list
+	  * belongs to, understands.
+	  *
+	  * format: aa:bb/cc:dd/-ee:/ff:/gg:hh
+	  *   * different key:value pairs are separated by slashes
+	  *   * keys and values are separated by colons
+	  *   * aa, bb, ee, ff and gg are property keys (keys always start A-Z
+	  *     or a-z) and bb, dd and hh are values
+	  *   * if there is no value (like ff), that implies the default value is
+	  *     empty
+	  *   * if the key is preceded by a minus (like ee), that implies this
+	  *     default property does not exist for this object (even though the
+	  *     parent may know)
+	  *   * if key are entered twice, they will be filtered and the last
+	  *     occcuring value is used
+	  */
+	void setDefaultPropertiesString(const QString& aSeparableString);
+
 	/// set property aKey to aValue
 	virtual void  setProperty(const QString& aKey, const QString& aValue)
 		{ theProperties[aKey] = aValue; }
+
+	/** @returns the value for a default property aKey
+	  * if the default property doesn't exist, it returns a null string
+	  * this is different from "" - which is an empty string
+	  */
+	virtual QString getDefaultProperty(const QString& aKey) const
+	{ if (theDefaultProperties.contains(aKey)==false) return QString();
+	  else return theDefaultProperties.value(aKey); }
 
 	/** @returns the value for property aKey
 	  *  - or an empty string if it does not exist
@@ -107,6 +133,8 @@ public:
 
 private:
 	PropertyMap theProperties;
+
+	PropertyMap theDefaultProperties;
 };
 
 

@@ -205,6 +205,12 @@ void BaseObject::initAttributes ( )
 
 	// TODO - we need to move this into Level, once Toolbox is implemented
 	theIsMovable = true;
+
+	theProps.setDefaultPropertiesString(
+		Property::IMAGE_NAME_STRING + QString(":/") +
+		Property::BOUNCINESS_STRING + QString(":/") +
+		Property::PIVOTPOINT_STRING + QString(":/") +
+		Property::ZVALUE_STRING + QString(":2.0/") );
 }
 
 bool BaseObject::isSleeping() const

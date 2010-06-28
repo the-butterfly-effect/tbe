@@ -34,6 +34,9 @@ int theVerbosity = 6;
 class BaseObjectForTesting : public BaseObject, public JointInterface
 {
 public:
+	BaseObjectForTesting ()
+	{ theProps.setDefaultPropertiesString("TestProperty1:one/TestProperty2:/Mass:6.84/Bounciness:2.0/"); }
+
 	virtual const QString getName      () const {return "BaseObjectForTesting";}
 	virtual const QString getToolTip   () const {return "lala";}
 	virtual bool isRotatable           () const {return false;}
@@ -47,6 +50,16 @@ public:
 	friend class TestBaseObjectParse;
 };
 
+class BaseObjectForTesting2 : public BaseObjectForTesting
+{
+public:
+	BaseObjectForTesting2 ()
+	{ theProps.setDefaultPropertiesString("/-Mass:"); }
+
+	virtual const QString getName      () const {return "BaseObjectForTesting2";}
+
+	friend class TestBaseObjectParse;
+};
 
 
 class TestBaseObjectInit : public TestChapter
@@ -118,8 +131,23 @@ bool TestBaseObjectInit::runTests(void)
 
 bool TestBaseObjectParse::runTests(void)
 {
-	// todo: insert test here...
-	check(true, "DUMMY TEST: Chapter present\n");
+	BaseObjectForTesting  myBO;
+	BaseObjectForTesting2 myBO2;
+
+	check(myBO.theProps.getDefaultProperty(Property::ZVALUE_STRING)=="2.0",
+		  "Default property from BaseObject is present\n");
+	check(myBO.theProps.getDefaultProperty(Property::IMAGE_NAME_STRING)=="",
+		  "Default property from BaseObject is empty\n");
+	check(myBO.theProps.getDefaultProperty("DoesNotExist").isNull(),
+		  "Nonexistant default property from BaseObject is null\n");
+	check(myBO.theProps.getDefaultProperty(Property::BOUNCINESS_STRING)=="2.0",
+		  "Default property from BaseObjectTester is present\n");
+	check(myBO.theProps.getDefaultProperty(Property::MASS_STRING)=="6.84",
+		  "Default Mass property is set in first one\n");
+	check(myBO2.theProps.getDefaultProperty(Property::MASS_STRING)=="",
+		  "Default Mass property is correctly removed in second\n");
+
+	// TODO: check on property number and ask for the full list
 
 	return true;
 }
@@ -129,7 +157,7 @@ int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
-	myFramework.add( new TestBaseObjectInit );
+//	myFramework.add( new TestBaseObjectInit );
 	myFramework.add( new TestBaseObjectParse);
 
 	myFramework.run();
