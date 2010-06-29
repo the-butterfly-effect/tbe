@@ -104,7 +104,8 @@ SOURCES += src/main.cpp \
 FORMS = src/view/MainWindow.ui \
     src/view/PostItViewer.ui \
     src/view/SaveLevelInfo.ui \
-    src/view/ChooseLevel.ui
+    src/view/ChooseLevel.ui \
+    src/view/EditObjectDialog.ui
 DISTFILES = README \
     TODO \
     AUTHORS \
