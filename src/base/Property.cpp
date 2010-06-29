@@ -73,6 +73,18 @@ bool PropertyList::doesPropertyExists(const QString& aKey) const
 	return theProperties.find(aKey) != theProperties.end();
 }
 
+QStringList PropertyList::getDefaultPropertyList(void) const
+{
+	QStringList myProps;
+	PropertyMap::const_iterator myI = theDefaultProperties.begin();
+	while (myI != theDefaultProperties.end())
+	{
+		myProps.push_back( myI.key() );
+		++myI;
+	}
+	return myProps;
+}
+
 
 bool PropertyList::propertyToBool(const QString& aPropertyName,
 								   bool* aBool) const
@@ -87,9 +99,9 @@ bool PropertyList::propertyToBool(const QString& aPropertyName,
 	if (myValue =="yes")
 	{ myResult=true; goto done;	}
 	if (myValue =="false")
-	{ myResult=false; goto done;	}
+	{ myResult=false; goto done;}
 	if (myValue =="no")
-	{ myResult=false; goto done;	}
+	{ myResult=false; goto done;}
 
 	return false;
 

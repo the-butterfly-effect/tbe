@@ -42,6 +42,11 @@ const double Butterfly::theButterflyMass;
 Butterfly::Butterfly()
 		: RectObject(), theCountdown(1)
 {
+	theProps.setDefaultPropertiesString(
+			Property::OBJECT_STRING + QString(":/") +
+			Property::BOUNCINESS_STRING + QString(":0/") +
+			Property::MASS_STRING
+				+ ":" + QString::number(theButterflyMass) + "/");
 	theProps.setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
 
 	// butterflies don't bounce *ever*

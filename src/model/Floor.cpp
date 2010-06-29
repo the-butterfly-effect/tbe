@@ -37,9 +37,18 @@ static FloorObjectFactory theFactory;
 Floor::Floor ( ) 
 {
 	DEBUG5("Floor::Floor\n");
+
+	theProps.setDefaultPropertiesString(
+			Property::IMAGE_NAME_STRING + QString(":used_wood_bar/") +
+			Property::BOUNCINESS_STRING + QString(":0.1/") +
+			Property::MASS_STRING + QString(":0.0/") );
 	
 	setTheHeight(0.1);
-	setTheBounciness(0.1);
+
+	float myFloat = 0.1;
+	theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat);
+	setTheBounciness(myFloat);
+
 	adjustParameters();
 }
 

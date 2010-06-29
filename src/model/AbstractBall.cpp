@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -108,6 +108,9 @@ AbstractBall::AbstractBall (const QString& aName,
 	setTheWidth(2.0*aRadius);
 	setTheHeight(2.0*aRadius);
 	setTheBounciness(aBounciness);
+
+	// for none of the AbstractBalls, you're supposed to change the image...
+	theProps.setDefaultPropertiesString("-" + QString(Property::IMAGE_NAME_STRING) + ":");
 }
 
 AbstractBall::~AbstractBall ( ) { }
@@ -152,6 +155,11 @@ CustomBall::CustomBall (void)
 	: AbstractBall("Custom Ball", "", "", 1.0, 1.0, 0.2)
 {
 	DEBUG5("CustomBall::CustomBall\n");
+
+	theProps.setDefaultPropertiesString(
+			Property::IMAGE_NAME_STRING + QString(":/") +
+			Property::RADIUS_STRING + ":1/" +
+			Property::MASS_STRING +":/" );
 }
 
 CustomBall::~CustomBall ( )

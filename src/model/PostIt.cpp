@@ -45,6 +45,9 @@ PostIt::PostIt( )
 
 	// Note that PostIt doesn't have a physics representation
 	// it is only graphics
+	theProps.setDefaultPropertiesString(
+			QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
+			"-" + Property::MASS_STRING + QString(":/") );
 
 	DEBUG5("PostIt::PostIt done\n");
 }

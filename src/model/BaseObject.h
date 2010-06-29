@@ -429,7 +429,7 @@ protected:
 
 private:
 
-	void initAttributes ( ) ;
+	virtual void initAttributes ( ) ;
 
 	// disable copy constructor / assignment operator
 	BaseObject(const BaseObject& aBORefToCopy);

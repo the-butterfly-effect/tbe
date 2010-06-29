@@ -52,25 +52,30 @@ public:
 	void setDefaultPropertiesString(const QString& aSeparableString);
 
 	/// set property aKey to aValue
-	virtual void  setProperty(const QString& aKey, const QString& aValue)
+	void setProperty(const QString& aKey, const QString& aValue)
 		{ theProperties[aKey] = aValue; }
 
 	/** @returns the value for a default property aKey
 	  * if the default property doesn't exist, it returns a null string
 	  * this is different from "" - which is an empty string
 	  */
-	virtual QString getDefaultProperty(const QString& aKey) const
+	QString getDefaultProperty(const QString& aKey) const
 	{ if (theDefaultProperties.contains(aKey)==false) return QString();
 	  else return theDefaultProperties.value(aKey); }
+
+	/** @returns a QStringList with all known default properties for
+	  * the object.
+	  */
+	QStringList getDefaultPropertyList(void) const;
 
 	/** @returns the value for property aKey
 	  *  - or an empty string if it does not exist
 	  */
-	virtual QString getProperty(const QString& aKey) const
+	QString getProperty(const QString& aKey) const
 	{ return theProperties.value(aKey, ""); }
 
 	///
-	virtual void removeProperty(const QString& aKey)
+	void removeProperty(const QString& aKey)
 	{ theProperties.remove(aKey); }
 
 	bool doesPropertyExists(const QString& aKey) const;

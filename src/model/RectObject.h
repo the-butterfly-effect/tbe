@@ -109,6 +109,8 @@ protected:
 	/// do not override unless Klaas okays it
 	virtual void adjustParameters(void);
 
+	virtual void initAttributes ( );
+
 	static const qreal ASPECT_RATIO = 10.0;
 
 	void setFriction(b2PolygonDef* aBoxDef);

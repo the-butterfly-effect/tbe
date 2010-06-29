@@ -36,18 +36,21 @@ static PivotPointObjectFactory theRFactory;
 
 
 PivotPoint::PivotPoint()
-		: BaseJoint(), theFirstPtr(NULL), theSecondPtr(NULL), areObjectsColliding(false)
+		: BaseJoint(), theFirstPtr(NULL)
+
 {
 	DEBUG5("PivotPoint::PivotPoint\n");
+	initAttributes ();
 }
 
 PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
-		: BaseJoint(), theFirstPtr(aBaseObject), theSecondPtr(NULL), areObjectsColliding(false)
+		: BaseJoint(), theFirstPtr(aBaseObject)
 {
 	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n",
 		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
 	thePosRelativeToFirst = aRelativePosition;
 	updateOrigCenter();
+	initAttributes();
 }
 
 void PivotPoint::createPhysicsObject(void)
@@ -103,6 +106,16 @@ void PivotPoint::createPhysicsObject(void)
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
+void PivotPoint::initAttributes ( )
+{
+	theSecondPtr = NULL;
+	areObjectsColliding=false;
+
+	theProps.setDefaultPropertiesString(
+		Property::OBJECT1_STRING + QString(":/") +
+		Property::OBJECT2_STRING + QString(":/") +
+		"-" + Property::MASS_STRING + ":/" );
+}
 
 void PivotPoint::parseProperties(void)
 {

@@ -104,6 +104,7 @@ RectObject::RectObject ( ) : BaseObject(), theNameString(DEFAULT_RECTOBJECT_NAME
 	// also: keep in mind that child objects may set some things automatically
 	rotatableInfo = false;
 	resizableInfo = NORESIZING;
+	initAttributes();
 }
 
 RectObject::RectObject( const QString& aDisplayName,
@@ -117,6 +118,7 @@ RectObject::RectObject( const QString& aDisplayName,
 	setTheHeight(aHeight);
 	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
+	initAttributes();
 }
 
 RectObject::~RectObject ( ) { }
@@ -272,19 +274,16 @@ DrawObject*  RectObject::createDrawObject(void)
 	return BaseObject::createDrawObject();
 }
 
-void  RectObject::setFriction(b2PolygonDef* aBoxDef)
-{
-	// only set friction if it is special
-	if (theProps.getProperty(Property::FRICTION_STRING).isEmpty())
-		return;
 
-	bool isOK = false;
-	double myFriction = theProps.getProperty(Property::FRICTION_STRING).toDouble(&isOK);
-	if (isOK)
-		aBoxDef->friction = myFriction;
-	else
-		assert(false);
+void RectObject::initAttributes ( )
+{
+	theProps.setDefaultPropertiesString(
+		Property::FRICTION_STRING    + QString(":/") +
+		Property::ROTATABLE_STRING   + QString(":/") +
+		Property::RESIZABLE_STRING   + QString(":/") +
+		Property::DESCRIPTION_STRING + QString(":/") );
 }
+
 
 void  RectObject::parseProperties(void)
 {
@@ -309,4 +308,18 @@ void  RectObject::parseProperties(void)
 	}
 	theProps.propertyToString(Property::DESCRIPTION_STRING, &theToolTipString);
 	adjustParameters();
+}
+
+void  RectObject::setFriction(b2PolygonDef* aBoxDef)
+{
+	// only set friction if it is special
+	if (theProps.getProperty(Property::FRICTION_STRING).isEmpty())
+		return;
+
+	bool isOK = false;
+	double myFriction = theProps.getProperty(Property::FRICTION_STRING).toDouble(&isOK);
+	if (isOK)
+		aBoxDef->friction = myFriction;
+	else
+		assert(false);
 }

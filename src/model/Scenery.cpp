@@ -41,6 +41,15 @@ Scenery::Scenery( ) : RectObject()
 	// it is only graphics
 
 	deletePhysicsObject();
+
+	// only keep DESCRIPTION, IMAGE_NAME and ZVALUE
+	theProps.setDefaultPropertiesString(
+		QString("-")   + Property::BOUNCINESS_STRING  +
+		QString(":/-") + Property::FRICTION_STRING    +
+		QString(":/-") + Property::PIVOTPOINT_STRING  +
+		QString(":/-") + Property::RESIZABLE_STRING   +
+		QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
+
 	DEBUG5("Scenery::Scenery done\n");
 }
 

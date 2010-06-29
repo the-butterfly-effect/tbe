@@ -257,7 +257,7 @@ public:
 		{ return theWorldHeight; }
 
 private:
-	void initAttributes ( ) ;
+	virtual void initAttributes ( ) ;
 	
 private:	
 	// Private attributes

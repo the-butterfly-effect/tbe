@@ -291,8 +291,7 @@ void BaseObject::setOrigCenter ( Position new_var )
 {
 	theCenter.x = new_var.x;
 	theCenter.y = new_var.y;
-	if (isRotatable())
-		theCenter.angle = new_var.angle;
+	theCenter.angle = new_var.angle;
 }
 
 

@@ -152,6 +152,11 @@ PolyObject::PolyObject( const QString& aDisplayName,
 	theProps.setProperty(Property::POLYGONS_STRING, anOutline);
 	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
+
+	theProps.setDefaultPropertiesString(
+		Property::FRICTION_STRING + QString(":/") +
+		Property::IMAGE_NAME_STRING + QString(":/") +
+		Property::POLYGONS_STRING + QString(":/") );
 }
 
 PolyObject::~PolyObject ( ) { }

@@ -182,7 +182,7 @@ private:
 
 private:
 
-	void initAttributes ( ) ;
+	virtual void initAttributes ( ) ;
 
 	/// modifies the view (!) to accept drop events or not
 	void setAcceptDrops(bool isOn);

@@ -86,6 +86,10 @@ CokeMentosBottle::CokeMentosBottle()
 
 	setTheBounciness(0.3);
 	setBottleStatus(UNTRIGGERED);
+
+	theProps.setDefaultPropertiesString(
+		Property::MASS_STRING + QString(":2.0/") +
+		Property::THRUST_STRING + QString(":2.0/") );
 }
 
 void CokeMentosBottle::callBackSensor(b2ContactPoint*)

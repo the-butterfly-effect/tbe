@@ -39,6 +39,11 @@ Link::Link()
 	theSecondPtr = NULL;
 	theFirstLocalPosPtr = NULL;
 	theSecondLocalPosPtr = NULL;
+
+	theProps.setDefaultPropertiesString(
+			Property::OBJECT1_STRING + QString(":/") +
+			Property::OBJECT2_STRING + QString(":/") +
+			"-" + Property::MASS_STRING + ":/" );
 }
 
 void Link::createPhysicsObject(void)

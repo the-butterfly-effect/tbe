@@ -23,7 +23,7 @@
 #include "BaseObject.h"
 #include "World.h"
 
-#include <cmath>
+#include <QStringList>
 
 
 // the verbosity for all logging - by default defined at 4
@@ -123,7 +123,8 @@ bool TestBaseObjectInit::runTests(void)
 	myWorldPtr->addObject(&myBO);
 		check(myWorldPtr->theObjectPtrList.count() == 1, "addObject succeeded\n");
 
-	// parseProperties is in the next test...
+	// the last entry in DrawWorld::dragEnterEvent:
+	// parseProperties() is in the next test...
 
 	return true;
 }
@@ -131,23 +132,33 @@ bool TestBaseObjectInit::runTests(void)
 
 bool TestBaseObjectParse::runTests(void)
 {
-	BaseObjectForTesting  myBO;
+	BaseObjectForTesting  myBO1;
 	BaseObjectForTesting2 myBO2;
 
-	check(myBO.theProps.getDefaultProperty(Property::ZVALUE_STRING)=="2.0",
+	// check default property behavior
+
+	check(myBO1.theProps.getDefaultProperty(Property::ZVALUE_STRING)=="2.0",
 		  "Default property from BaseObject is present\n");
-	check(myBO.theProps.getDefaultProperty(Property::IMAGE_NAME_STRING)=="",
+	check(myBO1.theProps.getDefaultProperty(Property::IMAGE_NAME_STRING)=="",
 		  "Default property from BaseObject is empty\n");
-	check(myBO.theProps.getDefaultProperty("DoesNotExist").isNull(),
+	check(myBO1.theProps.getDefaultProperty("DoesNotExist").isNull(),
 		  "Nonexistant default property from BaseObject is null\n");
-	check(myBO.theProps.getDefaultProperty(Property::BOUNCINESS_STRING)=="2.0",
+	check(myBO1.theProps.getDefaultProperty(Property::BOUNCINESS_STRING)=="2.0",
 		  "Default property from BaseObjectTester is present\n");
-	check(myBO.theProps.getDefaultProperty(Property::MASS_STRING)=="6.84",
+	check(myBO1.theProps.getDefaultProperty(Property::MASS_STRING)=="6.84",
 		  "Default Mass property is set in first one\n");
 	check(myBO2.theProps.getDefaultProperty(Property::MASS_STRING)=="",
 		  "Default Mass property is correctly removed in second\n");
 
-	// TODO: check on property number and ask for the full list
+	QStringList myProps1 = myBO1.theProps.getDefaultPropertyList();
+	QStringList myProps2 = myBO2.theProps.getDefaultPropertyList();
+	check(myProps2.count()+1 == myProps1.count(),
+		  "The default propertylist for BO2 has one property less\n");
+	check(myProps2.indexOf("Mass") == -1, "Mass as a property is missing\n");
+	check(myProps1.indexOf("Mass") > 0, "Indeed the missing property is Mass\n");
+
+	// actually implement tests for parseProperties() here
+
 
 	return true;
 }
@@ -157,7 +168,7 @@ int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
-//	myFramework.add( new TestBaseObjectInit );
+	myFramework.add( new TestBaseObjectInit );
 	myFramework.add( new TestBaseObjectParse);
 
 	myFramework.run();

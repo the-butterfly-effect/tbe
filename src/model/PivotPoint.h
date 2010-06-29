@@ -94,6 +94,8 @@ public:
 protected:
 
 private:
+	virtual void initAttributes ( );
+
 	BaseObject* theFirstPtr;
 	BaseObject* theSecondPtr;
 
