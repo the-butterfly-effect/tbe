@@ -4,11 +4,37 @@ echo "This is not a true, proper autotools ./configure"
 echo "However, it does do the same - it will setup everything so you can run make"
 echo
 
-(cd 3rdParty && make)
+###########################################################
+## LET'S CHECK FOR SOME PREREQUISITES
 
-if test -f images/Makefile;
+MISSINGPACKAGE=0;
+
+if test -z "`which ar 2>/dev/null`";
 then
-	make -C images all;
+	echo "ERROR: Did not find the 'ar' application in your path."
+	echo "Please install it (usually the 'binutils' package).";
+	MISSINGPACKAGE=1;
+fi;
+
+if test -z "`which g++ 2>/dev/null`";
+then
+	echo "ERROR: Did not find the 'g++' application in your path."
+	echo "Please install it (package is called 'g++' or 'gcc').";
+	MISSINGPACKAGE=1;
+fi;
+
+if test -z "`which make 2>/dev/null`";
+then
+	echo "ERROR: Did not find the 'make' application in your path."
+	echo "Please install it.";
+	MISSINGPACKAGE=1;
+fi;
+
+if test -z "`which patch 2>/dev/null`";
+then
+	echo "ERROR: Did not find the 'patch' application in your path."
+	echo "Please install it.";
+	MISSINGPACKAGE=1;
 fi;
 
 if test -z "`which qmake 2>/dev/null`" -o -z "`which moc 2>/dev/null`" -o -z "`which uic 2>/dev/null`";
@@ -19,11 +45,31 @@ then
 	echo
 	echo "Alternatively, run the 'make-release.sh' script that will build a static QT"
 	echo "library and link against that one."
-else
-	qmake
+	MISSINGPACKAGE=1;
+fi;
+
+if test $MISSINGPACKAGE -eq 1;
+then
 	echo
-	echo "You should be able to run 'make' to build The Butterfly Effect now."
-	echo "Once that's done, the game is playable by running ./tbe ..."
-	echo
-fi
+	echo "Oops, not all dependencies are met. I will quit now to allow you"
+	echo "to install these packages..."
+	exit;
+fi;    
+
+
+###########################################################
+## FINALLY DONE CHECKING PREREQUISITES
+
+(cd 3rdParty && make)
+
+if test -f images/Makefile;
+then
+	make -C images all;
+fi;
+
+qmake
+echo
+echo "You should be able to run 'make' to build The Butterfly Effect now."
+echo "Once that's done, the game is playable by running ./tbe ..."
+echo
 
