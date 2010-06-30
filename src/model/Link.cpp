@@ -54,7 +54,7 @@ void Link::createPhysicsObject(void)
 	// *** parse connection1
 	// NOTE: if we used the constructor with baseobject, this will still work
 	// because propertyToObjectPtr only modifies theFirstPtr if successful
-	propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
+	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
 								  &theFirstPtr, &theFirstLocalPosPtr);
 	assert(theFirstPtr!=NULL);
 	assert(theFirstLocalPosPtr!=NULL);
@@ -68,7 +68,7 @@ void Link::createPhysicsObject(void)
 	theFirstPtr->addJoint(this);
 
 	// *** parse connection2
-	propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
+	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
 								  &theSecondPtr, &theSecondLocalPosPtr);
 	assert(theSecondPtr!=NULL);
 	assert(theSecondLocalPosPtr!=NULL);

@@ -116,6 +116,19 @@ public:
 							 BaseObject** aBOPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
+	  * its value is the ID of an existing BaseObject instance
+	  * @param aWorldPtr
+	  * @param aPropertyName
+	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject*
+	  * @param aVectorPtrPtr  OUTPUT upon success contains pointer to a Vector*
+	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
+	  */
+	bool propertyToObjectPlusVectorPtr(World* aWorldPtr,
+							 const QString& aPropertyName,
+							 BaseObject** aBOPtrPtr,
+							 Vector** aVectorPtrPtr);
+
+	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a position (x,y)
 	  * because there is no angle, we use the Vector class, not Position.
 	  * @param aPropertyName

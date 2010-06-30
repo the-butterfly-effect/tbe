@@ -141,6 +141,27 @@ bool PropertyList::propertyToObjectPtr(
 	return true;
 }
 
+bool PropertyList::propertyToObjectPlusVectorPtr(
+		World* aWPtr,
+		const QString& aPropertyName,
+		BaseObject** aBOPtrPtr,
+		Vector** aVectorPtrPtr)
+{
+	QStringList myStrings = getProperty(aPropertyName).split("@");
+	if (myStrings.count() != 2)
+		return false;
+
+	*aBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
+	if (*aBOPtrPtr == NULL)
+		return false;
+
+	Vector* myVPtr = new Vector();
+	if (myVPtr->fromString(myStrings[1]) == false)
+		return false;
+
+	*aVectorPtrPtr = myVPtr;
+	return true;
+}
 
 bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosition) const
 {

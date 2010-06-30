@@ -83,19 +83,6 @@ protected:
 	/// (see also setGroundBodyPtr() ).
 	b2Body* getGroundBodyPtr(void);
 
-	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing BaseObject instance
-	  * @param aWorldPtr
-	  * @param aPropertyName
-	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject*
-	  * @param aVectorPtrPtr  OUTPUT upon success contains pointer to a Vector*
-	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
-	  */
-	bool propertyToObjectPlusVectorPtr(World* aWorldPtr,
-							 const QString& aPropertyName,
-							 BaseObject** aBOPtrPtr,
-							 Vector** aVectorPtrPtr);
-
 	b2RevoluteJoint* theJointPtr;
 };
 
