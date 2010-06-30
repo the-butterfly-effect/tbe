@@ -31,7 +31,7 @@
 // note that levels 5 and 6 affect playing
 int theVerbosity = 6;
 
-class BaseObjectForTesting : public BaseObject, public JointInterface
+class BaseObjectForTesting : public BaseObject
 {
 public:
 	BaseObjectForTesting ()
@@ -42,13 +42,19 @@ public:
 	virtual bool isRotatable           () const {return false;}
 	virtual SizeDirections isResizable () const {return NORESIZING;}
 
-	JointStatus theLastStatus;
-	virtual	void physicsObjectStatus(JointStatus aStatus)
-	{ theLastStatus = aStatus; }
-
 	friend class TestBaseObjectInit;
 	friend class TestBaseObjectParse;
 };
+
+
+class BOFTJoint : public JointInterface
+{
+public:
+	JointStatus theLastStatus;
+	virtual	void physicsObjectStatus(JointStatus aStatus)
+	{ theLastStatus = aStatus; }
+};
+
 
 class BaseObjectForTesting2 : public BaseObjectForTesting
 {
@@ -94,8 +100,12 @@ bool TestBaseObjectInit::runTests(void)
 		check(myBO.getTempCenter() == Position(3.42,6.84,1.57), "Position is reported correctly\n");
 
 	testmsg("First createPhysicsObject\n");
-	myBO.theLastStatus = static_cast<JointInterface::JointStatus>(0);
-	myBO.addJoint(&myBO);
+	// because there is no refcounting, if the joint doesn't outlive
+	// the BO, the app will crash. That's why we have to accept some
+	// memory leakage here... (okok, I could have written a destructor)
+	BOFTJoint* myJointPtr = new BOFTJoint();
+	myJointPtr->theLastStatus = static_cast<JointInterface::JointStatus>(0);
+	myBO.addJoint(myJointPtr);
 	myBO.createPhysicsObject();
 		check(myBO.theB2BodyPtr != NULL, "A Physics object now exists\n");
 		check(myWorldPtr->theB2WorldPtr->GetBodyCount() == 2, "One body is now registered\n");
@@ -103,13 +113,13 @@ bool TestBaseObjectInit::runTests(void)
 		 // which should be the same - within rounding
 		check(myBO.getTempCenter().toString() == "(3.42,6.84)@1.57", "Position is reported correctly\n");
 		check(myWorldPtr->theObjectPtrList.count() == 0, "create Physics body doesn't add BaseObject to World\n");
-		check(myBO.theLastStatus == JointInterface::CREATED, "joint notification of creation was done\n");
+		check(myJointPtr->theLastStatus == JointInterface::CREATED, "joint notification of creation was done\n");
 		b2Body* myBodyPtr = myBO.theB2BodyPtr;
 	testmsg("First deletePhysicsObject\n");
 	myBO.deletePhysicsObject();
 		check(myBO.theB2BodyPtr == NULL, "Pointer to Physics object now NULL\n");
 		check(myWorldPtr->theB2WorldPtr->GetBodyCount() == 1, "b2Body gone from World\n");
-		check(myBO.theLastStatus == JointInterface::DELETED, "joint notification of deletion was done\n");
+		check(myJointPtr->theLastStatus == JointInterface::DELETED, "joint notification of deletion was done\n");
 
 	// let's redo physics object creation - the old one should be deleted and the
 	// new one should have taken the place, everywhere

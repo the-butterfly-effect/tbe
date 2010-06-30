@@ -158,7 +158,7 @@ CustomBall::CustomBall (void)
 
 	theProps.setDefaultPropertiesString(
 			Property::IMAGE_NAME_STRING + QString(":/") +
-			Property::RADIUS_STRING + ":1/" +
+			Property::RADIUS_STRING + ":0.1/" +
 			Property::MASS_STRING +":/" );
 }
 

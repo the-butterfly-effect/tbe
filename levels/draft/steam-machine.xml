@@ -62,13 +62,6 @@
 	      <property key="ZValue">5</property>
 	    </object>
 
-	    <object type="Link" X="0" Y="0" width="1.4" height="0.1" angle="0">
-	      <property key="object1">SteamWheel@(-0.7,0.0)</property>
-	      <property key="object2">SteamWheel@(0.7,0.0)</property>
-	      <property key="ImageName">i-beam</property>
-	    </object>
-
-
 	    <object width="0.8" X="2.2" Y="0.05" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.4</property>
