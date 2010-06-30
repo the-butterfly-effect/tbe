@@ -1,5 +1,5 @@
 QT += xml
-TARGET = Position-tester
+TARGET = tester
 CONFIG += qt \
     warn_on \
     debug
