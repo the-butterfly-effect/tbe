@@ -21,7 +21,7 @@ SOURCES += ../src/TestFramework.cpp \
     ../src/StubWorld.cpp \
     ../src/StubDrawWorld.cpp \
     ../src/StubDrawObject.cpp \
-    StubPivotPoint.cpp \
+    ../src/StubPivotPoint.cpp \
     ../src/StubLevel.cpp
 HEADERS += ../src/TestFramework.h \
     ../src/TestChapter.h \
@@ -30,11 +30,10 @@ HEADERS += ../src/TestFramework.h \
     ../../src/base/Property.h \
     ../../src/model/BaseObject.h \
     ../../src/model/Position.h \
-    ../../src/model/PivotPoint.h \
     ../src/StubWorld.h \
     ../src/StubDrawWorld.h \
     ../src/StubDrawObject.h \
-    StubPivotPoint.h
+    ../src/StubPivotPoint.h
 INCLUDEPATH += ../src \
     ../../3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     ../../src \
