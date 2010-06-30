@@ -61,9 +61,9 @@ void PivotPoint::createPhysicsObject(void)
 	// *** parse object/object1
 	// NOTE: if we used the constructor with baseobject, this will still work
 	// because propertyToObjectPtr only modifies theFirstPtr if successful
-	propertyToObjectPtr(theWorldPtr, Property::OBJECT1_STRING, &theFirstPtr);
+	theProps.propertyToObjectPtr(theWorldPtr, Property::OBJECT1_STRING, &theFirstPtr);
 	if (theFirstPtr==NULL)
-		propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theFirstPtr);
+		theProps.propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theFirstPtr);
 	if (theFirstPtr==NULL)
 	{
 		DEBUG4("PivotPoint: No valid first object found...\n");
@@ -74,7 +74,7 @@ void PivotPoint::createPhysicsObject(void)
 	assert (myFirstB2BodyPtr);
 
 	// *** parse (optional) object2
-	propertyToObjectPtr(theWorldPtr, Property::OBJECT2_STRING, &theSecondPtr);
+	theProps.propertyToObjectPtr(theWorldPtr, Property::OBJECT2_STRING, &theSecondPtr);
 
 	// if there is no object2, use the ground body.
 	// available as theGroundBodyPtr...

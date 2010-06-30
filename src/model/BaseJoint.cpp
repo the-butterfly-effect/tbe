@@ -84,21 +84,6 @@ void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 	}
 }
 
-bool BaseJoint::propertyToObjectPtr(
-		World* aWPtr,
-		const QString& aPropertyName,
-		BaseObject** aBOPtrPtr)
-{
-	QString myValue = theProps.getProperty(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
-	if (*aBOPtrPtr == NULL)
-		return false;
-	return true;
-}
-
-
 bool BaseJoint::propertyToObjectPlusVectorPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
