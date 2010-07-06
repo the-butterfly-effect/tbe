@@ -75,8 +75,9 @@ public:
 
 	/** @returns the value for property aKey
 	  *  - or an empty string if it does not exist
+	  *  - does NOT return the default value for aKey
 	  */
-	QString getProperty(const QString& aKey) const
+	QString getPropertyNoDefault(const QString& aKey) const
 	{ return theProperties.value(aKey, ""); }
 
 	///

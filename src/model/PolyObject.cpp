@@ -246,12 +246,11 @@ void PolyObject::parseProperties(void)
 void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 {
 	// only set friction if it is special
-	if (theProps.getProperty(Property::FRICTION_STRING).isEmpty())
+	if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
 		return;
 
-	bool isOK = false;
-	double myFriction = theProps.getProperty(Property::FRICTION_STRING).toDouble(&isOK);
-	if (isOK)
+	float myFriction = 0;
+	if (theProps.propertyToFloat(Property::FRICTION_STRING, &myFriction))
 		aBoxDef->friction = myFriction;
 	else
 		assert(false);

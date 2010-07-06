@@ -179,7 +179,7 @@ private:
 	float thePreviousAngVelocity;
 
 	/// constant that describes how much the coke splatter acts on the bottle
-	qreal theThrust;
+	float theThrust;
 
 
 };

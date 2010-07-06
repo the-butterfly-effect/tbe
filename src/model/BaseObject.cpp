@@ -126,7 +126,8 @@ void BaseObject::clearShapeList()
 DrawObject*  BaseObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this, theProps.getProperty(Property::IMAGE_NAME_STRING));
+	theDrawObjectPtr = new DrawObject(this,
+			theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING));
 
 	setDrawObjectZValue(2.0);
 	return theDrawObjectPtr;

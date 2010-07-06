@@ -36,7 +36,7 @@ DrawObject*  BaseJoint::createDrawObject(void)
 	assert(theDrawObjectPtr==NULL);
 	if (isPhysicsObjectCreated()==false)
 		createPhysicsObject();
-	QString myImageName = theProps.getProperty(Property::IMAGE_NAME_STRING);
+	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty())
 		return NULL;
 	theDrawObjectPtr = new DrawObject(this, myImageName);

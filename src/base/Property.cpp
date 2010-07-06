@@ -90,7 +90,7 @@ bool PropertyList::propertyToBool(const QString& aPropertyName,
 								   bool* aBool) const
 {
 	bool myResult;
-	QString myValue = getProperty(aPropertyName).toLower();
+	QString myValue = getPropertyNoDefault(aPropertyName).toLower();
 	if (myValue.isEmpty())
 		return false;
 
@@ -113,7 +113,7 @@ done:
 bool PropertyList::propertyToFloat(const QString& aPropertyName,
 								   float* aFloat) const
 {
-	QString myValue = getProperty(aPropertyName);
+	QString myValue = getPropertyNoDefault(aPropertyName);
 	if (myValue.isEmpty())
 		return false;
 
@@ -132,7 +132,7 @@ bool PropertyList::propertyToObjectPtr(
 		const QString& aPropertyName,
 		BaseObject** aBOPtrPtr)
 {
-	QString myValue = getProperty(aPropertyName);
+	QString myValue = getPropertyNoDefault(aPropertyName);
 	if (myValue.isEmpty())
 		return false;
 	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
@@ -147,7 +147,7 @@ bool PropertyList::propertyToObjectPlusVectorPtr(
 		BaseObject** aBOPtrPtr,
 		Vector** aVectorPtrPtr)
 {
-	QStringList myStrings = getProperty(aPropertyName).split("@");
+	QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
 	if (myStrings.count() != 2)
 		return false;
 
@@ -165,7 +165,7 @@ bool PropertyList::propertyToObjectPlusVectorPtr(
 
 bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosition) const
 {
-	QString myValue = getProperty(aPropertyName).trimmed();
+	QString myValue = getPropertyNoDefault(aPropertyName).trimmed();
 	Vector myVector;
 	bool isOK = myVector.fromString(myValue);
 	if (isOK)
@@ -175,7 +175,7 @@ bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosit
 
 bool PropertyList::propertyToString(const QString& aPropertyName, QString* aString) const
 {
-	QString myValue = getProperty(aPropertyName);
+	QString myValue = getPropertyNoDefault(aPropertyName);
 	if (myValue.isEmpty())
 		return false;
 	*aString = myValue;

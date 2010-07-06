@@ -165,10 +165,8 @@ void CokeMentosBottle::reset(void)
 	thePreviousAngVelocity = 0.0;
 	hasContact = false;
 
-	bool isOK = false;
-	theThrust = theProps.getProperty(Property::THRUST_STRING).toDouble(&isOK);
-	if (isOK==false)
-		theThrust = 2.0;
+	theThrust = 2.0;
+	theProps.propertyToFloat(Property::THRUST_STRING, &theThrust);
 }
 
 

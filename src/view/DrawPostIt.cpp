@@ -74,21 +74,19 @@ void DrawPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 QString DrawPostIt::getPageString(unsigned int aPage)
 {
 	QString myPageNr = "page"+QString::number(aPage);
-	QString myPlainPage = theBaseObjectPtr->theProps.getProperty(myPageNr);
-	if (myPlainPage.isEmpty())
-		return myPlainPage;
-	// first look for page1_nl, then for page1_nl_NL
+
+	// get the default/original string (English) in 'page1'
+	// this will be returned if none of the below exist
+	QString myPageString = theBaseObjectPtr->theProps.getPropertyNoDefault(myPageNr);
+
+	// then look for 'page1_nl', then for 'page1_nl_NL'
+	// if the second one exists, it overrides an existing first one
 	QString myLocName = QLocale::system().name();
 	myPageNr += "_" + myLocName.mid(0,2);
-	QString myLocal1Page = theBaseObjectPtr->theProps.getProperty(myPageNr);
+	theBaseObjectPtr->theProps.propertyToString(myPageNr, &myPageString);
 	myPageNr += "_" + myLocName.mid(3,2);
-	QString myLocal2Page = theBaseObjectPtr->theProps.getProperty(myPageNr);
-
-	if (myLocal2Page.isEmpty()==false)
-		return myLocal2Page;
-	if (myLocal1Page.isEmpty()==false)
-		return myLocal1Page;
-	return myPlainPage;
+	theBaseObjectPtr->theProps.propertyToString(myPageNr, &myPageString);
+	return myPageString;
 }
 
 

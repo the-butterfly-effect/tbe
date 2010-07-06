@@ -194,7 +194,9 @@ void RectObject::adjustTallParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = theProps.getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	float myMass = 0.0;
+	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
 	qreal myDoneHeight = 0.0;
@@ -233,7 +235,9 @@ void RectObject::adjustWideParametersPart(void)
 	// so use multiple shapes to fix that
 	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
 	// also, calculate the density correctly - each shape has same density
-	qreal myDensity = theProps.getProperty(Property::MASS_STRING).toDouble() / (getTheWidth()*getTheHeight());
+	float myMass = 0.0;
+	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
 	qreal myDoneWidth = 0.0;
@@ -313,12 +317,11 @@ void  RectObject::parseProperties(void)
 void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 {
 	// only set friction if it is special
-	if (theProps.getProperty(Property::FRICTION_STRING).isEmpty())
+	if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
 		return;
 
-	bool isOK = false;
-	double myFriction = theProps.getProperty(Property::FRICTION_STRING).toDouble(&isOK);
-	if (isOK)
+	float myFriction = 0;
+	if (theProps.propertyToFloat(Property::FRICTION_STRING, &myFriction))
 		aBoxDef->friction = myFriction;
 	else
 		assert(false);
