@@ -90,7 +90,7 @@ bool PropertyList::propertyToBool(const QString& aPropertyName,
 								   bool* aBool) const
 {
 	bool myResult;
-	QString myValue = getProperty(aPropertyName);
+	QString myValue = getProperty(aPropertyName).toLower();
 	if (myValue.isEmpty())
 		return false;
 
@@ -210,3 +210,16 @@ next:
 		++myI;
 	}
 }
+
+
+void PropertyList::setProperty(const QString& aKey, bool aValue)
+{ theProperties[aKey] = aValue?"true":"false"; }
+
+void PropertyList::setProperty(const QString& aKey, const char* aValue)
+{ theProperties[aKey] = aValue; }
+
+void PropertyList::setProperty(const QString& aKey, const float aValue)
+{ theProperties[aKey] = QString::number(aValue); }
+
+void PropertyList::setProperty(const QString& aKey, const QString& aValue)
+{ theProperties[aKey] = aValue; }

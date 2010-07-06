@@ -51,9 +51,14 @@ public:
 	  */
 	void setDefaultPropertiesString(const QString& aSeparableString);
 
+	/// set property aKey to boolean aValue
+	void setProperty(const QString& aKey, bool aValue);
+	/// set property aKey to char* aValue
+	void setProperty(const QString& aKey, const char* aValue);
+	/// set property aKey to float aValue
+	void setProperty(const QString& aKey, const float aValue);
 	/// set property aKey to aValue
-	void setProperty(const QString& aKey, const QString& aValue)
-		{ theProperties[aKey] = aValue; }
+	void setProperty(const QString& aKey, const QString& aValue);
 
 	/** @returns the value for a default property aKey
 	  * if the default property doesn't exist, it returns a null string
