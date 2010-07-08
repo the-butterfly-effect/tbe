@@ -5,12 +5,8 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Jumping Jack celebrates a party at the office. Isn't that fun?
-        
-        This level cannot be completed without the "Rope" class, which is defined in
-        TRAC ticket 16 - https://sourceforge.net/apps/trac/tbe/ticket/16
-        
         </description>
-        <date>Feb 28, 2010</date>
+        <date>Jul 08, 2010</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
@@ -25,12 +21,14 @@
                 <property key="Bounciness">0.1</property>
             </object>
             
-            <object width="0.203" height="0.385" X="2.75" Y="1.2" type="RectObject" ID="leftfoot">
+            <object width="0.203" height="0.385" X="2.75" Y="1.2" type="PolyObject" ID="leftfoot">
+	        <property key="Polygons">(0.096,0.121)=(0.030,0.182)=(-0.031,0.096)=(-0.042,-0.187)=(0.072,-0.188)</property>
                 <property key="ImageName">leftfoot</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
             </object>
             <object width="0.211" height="0.451" X="2.80" Y="1.5" type="RectObject" ID="leftleg">
+	        <property key="Polygons">(0.038,0.200)=(-0.064,0.200)=(-0.101,0.115)=(-0.076,-0.191)=(-0.046,-0.221)=(0.015,-0.221)=(0.046,-0.191)</property>
                 <property key="ImageName">leftleg</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
@@ -42,12 +40,14 @@
 		  <property key="collide">false</property>
 	    </object>
 	    
-            <object width="0.203" height="0.385" X="3.08" Y="1.2" type="RectObject" ID="rightfoot">
-                <property key="ImageName">rightfoot</property>
+            <object width="0.203" height="0.385" X="3.08" Y="1.2" type="PolyObject" ID="rightfoot">
+	        <property key="Polygons">(-0.072,-0.188)=(0.042,-0.187)=(0.031,0.096)=(-0.030,0.182)=(-0.096,0.121)</property>
+	        <property key="ImageName">rightfoot</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
             </object>
-            <object width="0.211" height="0.451" X="3.03" Y="1.5" type="RectObject" ID="rightleg">
+            <object width="0.211" height="0.451" X="3.03" Y="1.5" type="PolyObject" ID="rightleg">
+	        <property key="Polygons">(-0.046,-0.191)=(-0.015,-0.221)=(0.046,-0.221)=(0.076,-0.191)=(0.101,0.115)=(0.064,0.200)=(-0.038,0.200)</property>
                 <property key="ImageName">rightleg</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
@@ -63,14 +63,16 @@
                 <property key="ImageName">body</property>
             </object>
 
-            <object width="0.602" height="0.224" X="2.58" Y="2.1" type="RectObject">
+            <object width="0.602" height="0.224" X="2.58" Y="2.1" type="PolyObject">
+	        <property key="Polygons">(0.290,0.012)=(0.210,0.102)=(-0.229,0.057)=(-0.297,0.007)=(-0.284,-0.131)=(0.050,-0.105)</property>
                 <property key="ImageName">lefthand</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
 		<property key="PivotPoint">(0.208,0.036)</property>
             </object>
             
-            <object width="0.602" height="0.224" X="3.23" Y="2.11" type="RectObject">
+            <object width="0.602" height="0.224" X="3.23" Y="2.11" type="PolyObject">
+	        <property key="Polygons">(-0.293,-0.012)=(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)</property>
                 <property key="ImageName">righthand</property>
                 <property key="Bounciness">0.1</property>
 		<property key="Mass">1.0</property>
