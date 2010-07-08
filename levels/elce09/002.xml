@@ -25,7 +25,7 @@
             <object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="2.1" Y="0.432" width="0.1" height="0.1" type="Scenery" ID="Flower">
+            <object X="2.1" Y="0.400" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="1.3" X="0.85" Y="0.085" height="0.17" type="Floor" >
@@ -37,12 +37,18 @@
             <object width="0.3" X="2.15" Y="0.085" height="0.17" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
-			<object X="0.5" Y="0.46" type="Butterfly" ID="Butterfly">
+			<object X="0.5" Y="0.40" type="Butterfly" ID="Butterfly">
                 <property key="ImageName" >Butterfly</property>
                 <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
-            <object X="1.4" Y="0.29" type="Volley Ball" />
+            
+            <object X="1.4" Y="0.29" width="0.21" height="0.21" type="PolyObject">
+<property key="Polygons">(0.105,0.000)=(0.065,0.082)=(-0.023,0.102)=(-0.095,0.046)=(-0.095,-0.046)=(-0.023,-0.102)=(0.065,-0.082)</property>
+                <property key="Mass">0.2</property>
+                <property key="Bounciness">0.75</property>
+                <property key="ImageName" >VolleyBall</property>
+            </object>
             
             <object width="0.9" X="0.4" Y="0.85" height="0.1" type="RectObject" angle="-0.45">
                 <property key="ImageName" >used_wood_bar</property>
