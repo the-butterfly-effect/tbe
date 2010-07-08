@@ -200,14 +200,14 @@ void PolyObject::fillShapeList(void)
 
 	QString myPolygons;
 	theProps.propertyToString(Property::POLYGONS_STRING, &myPolygons);
-	QStringList myPolygonList = myPolygons.split(";");
+	QStringList myPolygonList = myPolygons.split(";",QString::SkipEmptyParts);
 
 	QStringList::iterator i = myPolygonList.begin();
 	while (i!=myPolygonList.end())
 	{
 		b2PolygonDef* myPolyDef = new b2PolygonDef();
 
-		QStringList myCoordList = (*i).split("=");
+		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
 		int j = 0;
 		myPolyDef->vertexCount = myCoordList.count();
 		for (; j<myCoordList.count(); j++)
