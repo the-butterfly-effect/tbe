@@ -74,8 +74,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>You can click on the stopwatch to start/stop the simulation.
-Once the simulation has run and is stopped, you can reset the simulation using the reset arrow.</string>
+	      <string>Click on the stopwatch to start/stop the simulation.</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
