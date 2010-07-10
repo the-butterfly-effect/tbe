@@ -217,6 +217,8 @@ public:
 
 	static const char* THRUST_STRING;
 
+	// used by Link
+	static const char* OVERLAP_STRING;		// % (the overlap is split between left&right)
 
 	// the following strings are used by the various Goal classes:
 	//
