@@ -58,33 +58,33 @@ public:
 	 *  where fitInView() works - but only after adding the scene is done and rendered
 	 *  so we set a singleshot timer to redo the fitInView later...
 	 */
-	void setScene ( QGraphicsScene * scene )
+	void setScene ( QGraphicsScene * aScene )
 	{
-		QGraphicsView::setScene(scene); 		
+		QGraphicsView::setScene(aScene);
 		QTimer::singleShot(200, this, SLOT(on_timerTick()));
 	}
 	
 protected:
-	virtual void resizeEvent(QResizeEvent * event)
+	virtual void resizeEvent(QResizeEvent * anEvent)
 	{
 		if (isDoNotResize==true)
 			return;
-		QGraphicsView::resizeEvent(event);
+		QGraphicsView::resizeEvent(anEvent);
 		on_timerTick();
 		updatePixelsPerUnit();
 	}
 
 	void updatePixelsPerUnit();
 
-	virtual void dropEvent (QDropEvent* event)
-	{ QGraphicsView::dropEvent(event); isDoNotResize = false; }
+	virtual void dropEvent (QDropEvent* anEvent)
+	{ QGraphicsView::dropEvent(anEvent); isDoNotResize = false; }
 
 	// D&D of objects from the toolbox is completely handled in DrawWorld,
 	// but we need to make sure we don't resize during drag&drop
-	virtual void dragEnterEvent(QDragEnterEvent* event)
-	{ isDoNotResize = true; QGraphicsView::dragEnterEvent(event); }
-	virtual void dragLeaveEvent(QDragLeaveEvent* event)
-	{ QGraphicsView::dragLeaveEvent(event); isDoNotResize = false; }
+	virtual void dragEnterEvent(QDragEnterEvent* anEvent)
+	{ isDoNotResize = true; QGraphicsView::dragEnterEvent(anEvent); }
+	virtual void dragLeaveEvent(QDragLeaveEvent* anEvent)
+	{ QGraphicsView::dragLeaveEvent(anEvent); isDoNotResize = false; }
 
 	/** OVERRIDDEN from QGraphicsView
 	  * if mouse is near end of the view, start a drag&drop
