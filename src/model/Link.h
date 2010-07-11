@@ -40,6 +40,11 @@ public:
 
 	virtual ~Link() {}
 
+	/** (overridden from BaseObject to fixup aspect ratio)
+	  * @returns pointer to DrawObject
+	  */
+	virtual DrawObject* createDrawObject();
+
 	/// overridden from BaseObject
 	/// (this class does not have a body, only a joint)
 	virtual void createPhysicsObject(void);

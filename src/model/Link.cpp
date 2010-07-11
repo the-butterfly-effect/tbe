@@ -18,6 +18,7 @@
 
 #include "tbe_global.h"
 #include "Link.h"
+#include "DrawObject.h"
 
 #include "Box2D.h"
 #include <cassert>
@@ -43,19 +44,43 @@ Link::Link()
 	theProps.setDefaultPropertiesString(
 			Property::OBJECT1_STRING + QString(":/") +
 			Property::OBJECT2_STRING + QString(":/") +
+			Property::OVERLAP_STRING + QString(":10/") +
 			"-" + Property::MASS_STRING + ":/" );
 }
+
+DrawObject*  Link::createDrawObject(void)
+{
+	// this temporary draw object is needed to figure out
+	// the dimensions of the image we are drawing,
+	// so we can keep the aspect ratio correct.
+	DrawObject* myTempDrawObject = BaseObject::createDrawObject();
+	float myAspectRatio = myTempDrawObject->getUnscaledAspectRatio();
+	delete myTempDrawObject;
+	theDrawObjectPtr = NULL;
+
+	// we set the longest value to be the width and the shortest to be the
+	// height, i.e. FOR NOW, we assume all images to be horizontal...
+	Vector myV1 = (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toVector();
+	Vector myV2 = (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toVector();
+	qreal myLength = (myV2 - myV1).length();
+
+	float myOverlap = 10;
+	theProps.propertyToFloat(Property::OVERLAP_STRING, &myOverlap);
+	float myAdjustedWidth = myLength*(1.0+myOverlap/100.0);
+	float myAdjustedHeight= myAdjustedWidth/myAspectRatio;
+
+	setTheWidth(myAdjustedWidth);
+	setTheHeight(myAdjustedHeight);
+
+	return BaseObject::createDrawObject();
+}
+
 
 void Link::createPhysicsObject(void)
 {
 	if (theWorldPtr==NULL)
 		return;
 
-	// *** parse connection1
-	// NOTE: if we used the constructor with baseobject, this will still work
-	// because propertyToObjectPtr only modifies theFirstPtr if successful
-	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
-								  &theFirstPtr, &theFirstLocalPosPtr);
 	assert(theFirstPtr!=NULL);
 	assert(theFirstLocalPosPtr!=NULL);
 	if (theFirstPtr==NULL)
@@ -67,9 +92,6 @@ void Link::createPhysicsObject(void)
 	assert (myFirstB2BodyPtr);
 	theFirstPtr->addJoint(this);
 
-	// *** parse connection2
-	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
-								  &theSecondPtr, &theSecondLocalPosPtr);
 	assert(theSecondPtr!=NULL);
 	assert(theSecondLocalPosPtr!=NULL);
 	if (theSecondPtr==NULL)
@@ -85,17 +107,19 @@ void Link::createPhysicsObject(void)
 	// note: Initialize() uses a global coordinate...
 	b2DistanceJointDef myJointDef;
 
-	// TODO: this one...
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
 						  (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toB2Vec2(),
 						  (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toB2Vec2());
 	myJointDef.userData = this;
 	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
-
 }
 
 Position Link::getTempCenter() const
 {
+	assert(theFirstPtr!=NULL);
+	assert(theFirstLocalPosPtr!=NULL);
+	assert(theSecondPtr!=NULL);
+	assert(theSecondLocalPosPtr!=NULL);
 	Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
 	Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
 	Vector myMiddle = myV1 + myV2;
@@ -130,6 +154,21 @@ Position Link::getTempCenter() const
 
 void Link::parseProperties(void)
 {
+	BaseObject::parseProperties();
+	if (theWorldPtr==NULL)
+		return;
+
+	// *** parse object1 & object2
+	// NOTE: if we used the constructor with baseobject, (i.e. properties
+	// aren't read yet) this will still work because propertyToObjectPtr
+	// only modifies theFirstPtr/theSecondPtr if successful
+	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
+								  &theFirstPtr, &theFirstLocalPosPtr);
+
+	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
+								  &theSecondPtr, &theSecondLocalPosPtr);
+
+	createPhysicsObject();
 }
 
 void Link::updateOrigCenter(void)
