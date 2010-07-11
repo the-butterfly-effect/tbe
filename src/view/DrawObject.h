@@ -65,6 +65,12 @@ public:
 	/// overriden from QGraphicsItem
     virtual QRectF boundingRect() const;
 
+	/** @returns the aspect ratio of this draw object
+	  * before any scaling. It always returns (width/height)
+	  * This is based on the Document size (SVG) or pixmap size.
+	  */
+	virtual float getUnscaledAspectRatio(void) const;
+
 	/** Generate a bitmap (QPixmap) of size aWidth*aHeight
 	  * and draw the object within the bitmap.
 	  * Make sure its aspect ratio keeps correct.

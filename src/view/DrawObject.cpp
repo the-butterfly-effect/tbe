@@ -104,7 +104,22 @@ void DrawObject::setUndoStackPtr(QUndoStack* aPtr)
 	assert(aPtr != NULL);
 	theUndoStackPtr = aPtr;
 }
-    
+
+float DrawObject::getUnscaledAspectRatio(void) const
+{
+	QSize mySize(1, 1);
+
+	if (theRenderer != NULL)
+		mySize = theRenderer->defaultSize();
+
+	if (thePixmapPtr != NULL)
+		mySize = thePixmapPtr->size();
+
+	return static_cast<float>(mySize.width())/
+			static_cast<float>(mySize.height());
+}
+
+
 QUndoStack* DrawObject::getUndoStackPtr(void)
 {
 	assert(theUndoStackPtr != NULL);
