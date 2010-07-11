@@ -25,6 +25,8 @@
 
 
 const qreal World::theDeltaTime;
+const unsigned int World::theIterationcount;
+
 
 // Constructors/Destructors
 //  

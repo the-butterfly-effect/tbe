@@ -290,7 +290,7 @@ private:
 	static const qreal theDeltaTime = 0.01;
 	
 	/// the number of iterations of Box2D per time step
-	static const unsigned int theIterationcount = 10;
+	static const unsigned int theIterationcount = 100;
 	
 	QString theLevelName;
 
