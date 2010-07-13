@@ -42,6 +42,14 @@ public:
 	virtual bool runTests();
 };
 
+class TestVector2 : public TestChapter
+{
+public:
+	TestVector2() : TestChapter("Test Vector class, part length+angle")	{}
+	virtual bool runTests();
+
+	bool areEqualF(double A, double B)	{return (A-B)<0.00001f;}
+};
 
 bool TestPosition::runTests(void)
 {
@@ -122,6 +130,29 @@ bool TestVector::runTests(void)
 	return true;
 }
 
+bool TestVector2::runTests(void)
+{
+	// These four vectors are each in their own quadrant
+	// let's see if the lengths and angles are calculated correctly
+	Vector myV1 (1.0, 1.0);
+	Vector myV2 (-1.7320508f, 1.0);
+	Vector myV3 (-3.0,-5.0);
+	Vector myV4 (2.0, -2.0);
+
+	check ( areEqualF( myV1.length(), SQRT2),   "V1 length is correct\n");
+	check ( areEqualF( myV1.toAngle(), PI/4.0), "V1 angle is correct\n");
+
+	check ( areEqualF( myV2.length(), sqrtf(5.0)),  "V2 length is correct\n");
+	check ( areEqualF(myV2.toAngle(), PI - PI/6.0f), "V2 angle is correct\n");
+
+	check ( areEqualF( myV3.length(), 6.0), "V3 length is correct\n");
+	check ( areEqualF(myV3.toAngle(), 4.171970), "V3 angle is correct\n");
+
+	check ( areEqualF( myV4.length(), sqrtf(8)), "V4 length is correct\n");
+	check ( areEqualF(myV3.toAngle(), 1.5*PI),   "V4 angle is correct\n");
+
+	return true;
+}
 
 int main(int argc, char *argv[])
 {
@@ -129,6 +160,7 @@ int main(int argc, char *argv[])
 
 	myFramework.add( new TestPosition );
 	myFramework.add( new TestVector );
+	myFramework.add( new TestVector2 );
 
 	myFramework.run();
 

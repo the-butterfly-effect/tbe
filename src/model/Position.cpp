@@ -115,6 +115,34 @@ qreal Vector::length(void)
 {	return sqrt(dx*dx+dy*dy); }
 
 
+
+qreal Vector::toAngle(void) const
+{
+	// prevent division by zero -
+	// even though C++ already knows about NaN and such
+	qreal myDX = dx;
+	if (myDX == 0.0f)
+		myDX = 0.0001f;
+
+	qreal myAngle = atanf(fabs(dy / myDX));
+
+	if (myDX > 0)
+	{
+		if (dy > 0)
+			myAngle = myAngle;
+		else
+			myAngle = 2*PI - myAngle;
+	}
+	else
+	{
+		if (dy > 0)
+			myAngle = PI - myAngle;
+		else
+			myAngle = PI + myAngle;
+	}
+	return myAngle;
+}
+
 b2Vec2 Vector::toB2Vec2(void) const
 {	return b2Vec2(dx,dy); }
 

@@ -38,6 +38,7 @@ public:
 	b2Vec2   toB2Vec2(void) const;
 	Position toPosition(void) const;
 	QString  toString(void) const;
+	qreal	 toAngle(void) const;
 
 	/** Converts a string in format "(0.0,0.0)" into this Vector
 	  * If the conversion is not successful, the Vector is not modified.
