@@ -13,7 +13,8 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src/base
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
-    -Wextra
+    -Wextra -Wpointer-arith -Wlogical-op 
+#	-Wfloat-equal -Wshadow -Wcast-qual
 QMAKE_CXXFLAGS_RELEASE += -Wextra \
     -DNDEBUG
 QT += core \
@@ -116,5 +117,7 @@ unix {
     OBJECTS_DIR = .obj
 }
 OTHER_FILES += TODO
-TRANSLATIONS = i18n/tbe_nl.ts
+TRANSLATIONS = \
+    i18n/tbe_nl.ts \
+    i18n/tbe_es.ts
 RESOURCES += images/illustrations/tbe-icon.qrc
