@@ -36,6 +36,7 @@ static LinkObjectFactory theLinkFactory;
 
 Link::Link()
 {
+	DEBUG1("Link::Link() start\n");
 	theFirstPtr = NULL;
 	theSecondPtr = NULL;
 	theFirstLocalPosPtr = NULL;
@@ -46,6 +47,7 @@ Link::Link()
 			Property::OBJECT2_STRING + QString(":/") +
 			Property::OVERLAP_STRING + QString(":10/") +
 			"-" + Property::MASS_STRING + ":/" );
+	DEBUG1("Link::Link() end\n");
 }
 
 DrawObject*  Link::createDrawObject(void)
@@ -58,11 +60,33 @@ DrawObject*  Link::createDrawObject(void)
 	delete myTempDrawObject;
 	theDrawObjectPtr = NULL;
 
+	// this happens if e.g. we are in level editor mode
+	if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
+		theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
+	{
+		if (myAspectRatio > 1.0)
+		{
+			setTheWidth(myAspectRatio);
+			setTheHeight(1.0);
+		}
+		else
+		{
+			setTheWidth(1.0);
+			setTheHeight(myAspectRatio);
+		}
+		return BaseObject::createDrawObject();
+	}
+
+
 	// we set the longest value to be the width and the shortest to be the
 	// height, i.e. FOR NOW, we assume all images to be horizontal...
 	Vector myV1 = (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toVector();
 	Vector myV2 = (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toVector();
-	qreal myLength = (myV2 - myV1).length();
+	Vector myDiff = myV2 - myV1;
+
+	// guess we need something like "polar notation"...
+	qreal myAngle = myDiff.toAngle();
+	qreal myLength= myDiff.length();
 
 	float myOverlap = 10;
 	theProps.propertyToFloat(Property::OVERLAP_STRING, &myOverlap);
@@ -116,38 +140,18 @@ void Link::createPhysicsObject(void)
 
 Position Link::getTempCenter() const
 {
-	assert(theFirstPtr!=NULL);
-	assert(theFirstLocalPosPtr!=NULL);
-	assert(theSecondPtr!=NULL);
-	assert(theSecondLocalPosPtr!=NULL);
+	if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
+		theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
+		return getOrigCenter();
+
 	Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
 	Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
 	Vector myMiddle = myV1 + myV2;
 	myMiddle = 0.5 * myMiddle;
 
-	// TODO: calculate the angle!
 	Vector myDiff = myV1 - myV2;
-	if (myDiff.dx == 0)
-		myDiff.dx = 0.0001;
+	double myAngle = myDiff.toAngle();
 
-	double myAngle = atanf(fabs(myDiff.dy / myDiff.dx));
-
-	if (myDiff.dx > 0)
-	{
-		if (myDiff.dy > 0)
-			myAngle = myAngle;
-		else
-			myAngle = 2*PI - myAngle;
-	}
-	else
-	{
-		if (myDiff.dy > 0)
-			myAngle = PI - myAngle;
-		else
-			myAngle = PI + myAngle;
-	}
-
-	myAngle += PI;
 	return Position(myMiddle.toB2Vec2(), myAngle);
 }
 
