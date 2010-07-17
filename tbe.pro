@@ -13,8 +13,11 @@ INCLUDEPATH += 3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     src/base
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
-    -Wextra -Wpointer-arith -Wlogical-op 
-#	-Wfloat-equal -Wshadow -Wcast-qual
+    -Wextra \
+    -Wpointer-arith \
+    -Wlogical-op
+
+# -Wfloat-equal -Wshadow -Wcast-qual
 QMAKE_CXXFLAGS_RELEASE += -Wextra \
     -DNDEBUG
 QT += core \
@@ -53,6 +56,7 @@ HEADERS += src/tbe_global.h \
     src/view/DrawObject.h \
     src/view/DrawPostIt.h \
     src/view/DrawWorld.h \
+    src/view/EditObjectDialog.h \
     src/view/ImageStore.h \
     src/view/MainWindow.h \
     src/view/PieMenu.h \
@@ -94,6 +98,7 @@ SOURCES += src/main.cpp \
     src/view/DrawObject.cpp \
     src/view/DrawPostIt.cpp \
     src/view/DrawWorld.cpp \
+    src/view/EditObjectDialog.cpp \
     src/view/ImageStore.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
@@ -101,7 +106,7 @@ SOURCES += src/main.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopWatch.cpp \
-    src/view/toolbox.cpp
+    src/view/toolbox.cpp 
 FORMS = src/view/MainWindow.ui \
     src/view/PostItViewer.ui \
     src/view/SaveLevelInfo.ui \
@@ -117,7 +122,6 @@ unix {
     OBJECTS_DIR = .obj
 }
 OTHER_FILES += TODO
-TRANSLATIONS = \
-    i18n/tbe_nl.ts \
+TRANSLATIONS = i18n/tbe_nl.ts \
     i18n/tbe_es.ts
 RESOURCES += images/illustrations/tbe-icon.qrc

@@ -27,6 +27,8 @@
 #include <cassert>
 
 
+EditObjectDialog* Anchors::theObjectDialogPtr = NULL;
+
 //////////////////////////////////////////////////////////////////////////////
 // first the implementation for class Anchors, below for class Anchor
 // (note the missing 's')
@@ -44,12 +46,12 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 
 	// the below code creates the 8 anchors around the object
 	PieMenu::EditMode myMode = PieMenu::NONE;
-	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE)
+	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE || theIsLevelEditor)
 		myMode = PieMenu::RESIZE_HORI;
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  VMIDDLE, this));
 	theAnchorList.push_back(new Anchor(myMode, RIGHT, VMIDDLE, this));
 
-	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE)
+	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE || theIsLevelEditor)
 		myMode = PieMenu::RESIZE_VERTI;
 	else
 		myMode = PieMenu::NONE;
@@ -57,7 +59,7 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
 
 // FIXME/TODO: Rotation is disabled for now
-//	if (myBOPtr->isRotatable())
+//	if (myBOPtr->isRotatable() || theIsLevelEditor)
 //		myMode = PieMenu::ROTATE;
 //	else
 		myMode = PieMenu::NONE;
@@ -65,6 +67,17 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  BOTTOM, this));
 	theAnchorList.push_back(new Anchor(myMode, RIGHT, BOTTOM, this));
 	theAnchorList.push_back(new Anchor(myMode, RIGHT, TOP,    this));
+
+	if (theIsLevelEditor)
+	{
+		if (theObjectDialogPtr == NULL)
+		{
+			theObjectDialogPtr = new EditObjectDialog(myBOPtr, QApplication::activeWindow());
+			theObjectDialogPtr->show();
+		}
+		else
+			theObjectDialogPtr->readFromObject(myBOPtr);
+	}
 }
 
 Anchors::~Anchors()

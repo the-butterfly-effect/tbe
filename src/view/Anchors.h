@@ -26,6 +26,7 @@
 #include "DrawObject.h"
 #include "BaseObject.h"
 #include "UndoResizeCommand.h"
+#include "EditObjectDialog.h"
 
 // forward declarations
 class Anchor;
@@ -82,6 +83,8 @@ private:
 
 	typedef QList<Anchor*> AnchorList;
 	AnchorList theAnchorList;
+
+	static EditObjectDialog* theObjectDialogPtr;
 };
 
 
