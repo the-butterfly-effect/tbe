@@ -31,6 +31,7 @@ HEADERS += src/tbe_global.h \
     src/base/Property.h \
     src/base/UndoDeleteCommand.h \
     src/base/UndoInsertCommand.h \
+    src/base/UndoManualCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoResizeCommand.h \
     src/model/AbstractBall.h \
@@ -73,6 +74,7 @@ SOURCES += src/main.cpp \
     src/base/Property.cpp \
     src/base/UndoDeleteCommand.cpp \
     src/base/UndoInsertCommand.cpp \
+    src/base/UndoManualCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoResizeCommand.cpp \
     src/model/AbstractBall.cpp \
@@ -106,7 +108,7 @@ SOURCES += src/main.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
     src/view/StartStopWatch.cpp \
-    src/view/toolbox.cpp 
+    src/view/toolbox.cpp
 FORMS = src/view/MainWindow.ui \
     src/view/PostItViewer.ui \
     src/view/SaveLevelInfo.ui \

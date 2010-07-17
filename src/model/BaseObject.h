@@ -441,6 +441,7 @@ private:
 	friend class UndoDeleteCommand;
 	friend class UndoMoveCommand;
 	friend class UndoResizeCommand;
+	friend class UndoManualCommand;
 	friend class UndoInsertCommand;
 };
 

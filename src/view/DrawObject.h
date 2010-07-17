@@ -238,6 +238,7 @@ private:
 
 	// all below friends are needed for Undoing actions
 	friend class UndoResizeCommand;    // resize
+	friend class UndoManualCommand;    // resize/move by EditObjectDialog
 	friend class UndoDeleteCommand;    // delete
 
 

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 #include "ui_EditObjectDialog.h"
 #include "tbe_global.h"
 #include "BaseObject.h"
+#include "UndoManualCommand.h"
 #include <QDialog>
 
 class EditObjectDialog : public QDialog
@@ -44,10 +45,16 @@ public:
 	  */
 	void readFromObject(BaseObject* aBaseObjectPtr);
 
+private slots:
+	void position_valueChanged    ( double aDouble );
+	void widthHeight_valueChanged ( double aDouble );
+
 private:
 	Ui::EditObjectDialog ui;
 
 	BaseObject* theBOPtr;
+
+	UndoManualCommand* theUndoPtr;
 
 };
 
