@@ -28,8 +28,8 @@ class BaseObject;
 
 /** class DrawButterfly
   *
-  * This class draws the CokeMentosBottle class, which has several layers
-  * of drawing, depending on whether the bottle is full, triggered or empty
+  * This class draws the Butterfly class, which has several layers
+  * of drawing - the flapping of the wings
   */
 
 class DrawButterfly : public QObject, public DrawObject
