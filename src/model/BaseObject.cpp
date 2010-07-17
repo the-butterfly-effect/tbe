@@ -335,6 +335,7 @@ ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory
 	if (theFactoryListPtr==NULL)
 		theFactoryListPtr = new FactoryList();
 	theFactoryListPtr->insert(anObjectTypeName,aThisPtr);
+	aThisPtr->theFactoryName = anObjectTypeName;
 }
 
 BaseObject* 

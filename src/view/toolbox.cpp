@@ -67,6 +67,7 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	assert(aFactoryPtr != NULL);
 	if (aFactoryPtr==NULL)
 		return;
+	DEBUG4("TBItem::TBItem(ObjectFactory*) for %s\n", ASCII(aFactoryPtr->getFactoryName()));
 	createIcon();
 	BaseObject* myPtr = getNewObject();
 	if (myPtr != NULL)

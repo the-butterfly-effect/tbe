@@ -479,6 +479,9 @@ protected:
 	
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 	
+	QString getFactoryName(void) const
+	{ return theFactoryName; }
+
 	/** create an ObjectFactoryList with pointers to all known ObjectFactories.
 	 *  it is up to the caller (usually ToolBoxItemListModel) to delete the list
 	 *  - do not delete the contents of the list.
@@ -492,6 +495,8 @@ protected:
 	 */
 	virtual BaseObject* createObject(void) const = 0;
 	friend class TBItem;
+private:
+	QString theFactoryName;
 };
 
 #endif // BASEOBJECT_H
