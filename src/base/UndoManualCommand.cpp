@@ -19,6 +19,7 @@
 #include "UndoManualCommand.h"
 #include "BaseObject.h"
 #include "DrawObject.h"
+#include "Anchors.h"
 
 #include <cassert>
 #include <cmath>
@@ -83,7 +84,12 @@ void UndoManualCommand::redo ()
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->reset();
-	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
+	DrawObject* myDOPtr = theBaseObjectPtr->theDrawObjectPtr;
+	myDOPtr->applyPosition();
+	if (myDOPtr->theAnchorsPtr != NULL)
+		myDOPtr->theAnchorsPtr->updatePosition();
+	else
+		myDOPtr->theAnchorsPtr = new Anchors(myDOPtr);
 }
 
 
@@ -105,12 +111,17 @@ void UndoManualCommand::setNewVal(Position aPos)
 
 void UndoManualCommand::setNewVal(qreal anWidth, qreal aHeight)
 {
-	if (anWidth > Position::minimalMove)
-		theNewSize.setX(anWidth);
-	if (aHeight  > Position::minimalMove)
-		theNewSize.setY(aHeight);
+	theNewSize.setX(anWidth);
+	theNewSize.setY(aHeight);
 
+	// It is unfair: QT doesn't redraw if just the size changed
+	// So we need to force a position change...
+	double myRandom = 0.0001 * qrand() / (double)RAND_MAX;
+
+	theNewCenter.x += myRandom;
 	redo();
+	theNewCenter.x -= myRandom;
+
 	// no need for collision detection - we're the manual one
 }
 
