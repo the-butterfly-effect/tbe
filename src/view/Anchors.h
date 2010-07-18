@@ -57,18 +57,6 @@ public:
 		BOTTOM=1
 	};
 
-	/// @returns the width of the DrawObject we're drawing anchors around
-	qreal getWidth(void)
-		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheWidth(); }
-
-	/// @returns the height of the DrawObject we're drawing anchors around
-	qreal getHeight(void)
-		{ return theDrawObjectPtr->getBaseObjectPtr()->getTheHeight(); }
-
-	/// @returns the center Position of the DrawObject we're drawing anchors around
-	Position getCenter(void)
-		{ return theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter(); }
-
 	UndoResizeCommand* createUndoResize(void)
 		{ return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr()); }
 
@@ -122,7 +110,7 @@ public slots:
 	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
 
 	/// slot that tells the position may have changed - called by the Anchors class.
-	void updatePosition(void);
+	void updatePosition(Position myC, qreal myW, qreal myH);
 
 private:
 	Anchors* theParentPtr;
@@ -134,6 +122,7 @@ private:
 
 	qreal theOffset;
 	QPointF thePrevMousePos;
+	qreal theOldAngle;
 
 	UndoResizeCommand* theUndoPtr;
 };

@@ -25,6 +25,7 @@
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
 #include <cassert>
+#include <cmath>
 
 
 EditObjectDialog* Anchors::theObjectDialogPtr = NULL;
@@ -58,10 +59,9 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
 
-// FIXME/TODO: Rotation is disabled for now
-//	if (myBOPtr->isRotatable() || theIsLevelEditor)
-//		myMode = PieMenu::ROTATE;
-//	else
+	if (myBOPtr->isRotatable() || theIsLevelEditor)
+		myMode = PieMenu::ROTATE;
+	else
 		myMode = PieMenu::NONE;
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  TOP,    this));
 	theAnchorList.push_back(new Anchor(myMode, LEFT,  BOTTOM, this));
@@ -78,6 +78,7 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 		else
 			theObjectDialogPtr->readFromObject(myBOPtr);
 	}
+	updatePosition();
 }
 
 Anchors::~Anchors()
@@ -99,19 +100,26 @@ QGraphicsScene* Anchors::getScenePtr()
 
 void Anchors::updatePosition()
 {
+	Position myC = theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter();
+	myC.angle = fmodf(myC.angle, PI*2.0);
+	qreal myW = theDrawObjectPtr->getBaseObjectPtr()->getTheWidth();
+	qreal myH = theDrawObjectPtr->getBaseObjectPtr()->getTheHeight();
+
 	for (int i=0; i<theAnchorList.count();i++)
 	{
-		theAnchorList[i]->updatePosition();
+		theAnchorList[i]->updatePosition(myC, myW, myH);
 	}
 }
 
 //////////////////////////////////////////////////////////////////////////////
 
+const int Anchor::theIconSize;
+
 Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors::VPosition aVPos, Anchors* aParent)
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
 		  theHPos(anHPos), theVPos(aVPos),
-		  theUndoPtr(NULL)
+		  theOldAngle(0), theUndoPtr(NULL)
 {
 	// get the QSvgRenderer for my icon
 	setSharedRenderer(ImageStore::getRenderer(PieMenu::getEditModeIconName(aDirection)));
@@ -129,7 +137,6 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 	setZValue(10.0);
 
 	theOffset=mySquare.width()/2.0;
-	updatePosition();
 
 	if (aDirection != PieMenu::NONE)
 		setEnabled(true);
@@ -206,16 +213,18 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	thePrevMousePos=event->scenePos ();
 }
 
-void Anchor::updatePosition()
+void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 {
-	// TODO: the below code is executed 8 times for each resize/rotate
-	// it may be smarter to just supply the Position and width/height as arguments
-	Position myC = theParentPtr->getCenter();
-	qreal myDX = (0.5*theParentPtr->getWidth() +theOffset) * static_cast<qreal>(theHPos);
-	qreal myDY = (0.5*theParentPtr->getHeight()+theOffset) * static_cast<qreal>(theVPos);
+	qreal myDX = (0.5*myW+theOffset) * static_cast<qreal>(theHPos);
+	qreal myDY = (0.5*myH+theOffset) * static_cast<qreal>(theVPos);
 
-	myDX += (static_cast<qreal>(theHPos)-1.0)*theOffset;
-	myDY += (static_cast<qreal>(theVPos)+1.0)*theOffset;
+	// let's use existing magic for the angle calculation
+	myC = myC + Vector(myDX,myDY);
 
-	setPos(myC.x+myDX, -myC.y-myDY);
+	myC = myC + Vector( (static_cast<qreal>(theHPos)-1.0)*theOffset,
+						 (static_cast<qreal>(theVPos)+1.0)*theOffset);
+
+	setPos(myC.x, -myC.y);
+	rotate((-myC.angle-theOldAngle)*180/3.14);
+	theOldAngle=-myC.angle;
 }
