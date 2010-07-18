@@ -45,15 +45,6 @@ void EditObjectDialog::position_valueChanged (double )
 				ui.spinBoxAngle->value() ) );
 }
 
-void EditObjectDialog::widthHeight_valueChanged (double )
-{
-	if (theUndoPtr == NULL)
-		theUndoPtr = new UndoManualCommand(theBOPtr);
-	theUndoPtr->setNewVal(
-			ui.spinBoxWidth->value(),
-			ui.spinBoxHeight->value() );
-}
-
 void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 {
 	disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
@@ -115,4 +106,13 @@ theEnd:
 		setEnabled(true);
 	theBOPtr = aBaseObjectPtr;
 	return;
+}
+
+void EditObjectDialog::widthHeight_valueChanged (double )
+{
+	if (theUndoPtr == NULL)
+		theUndoPtr = new UndoManualCommand(theBOPtr);
+	theUndoPtr->setNewVal(
+			ui.spinBoxWidth->value(),
+			ui.spinBoxHeight->value() );
 }
