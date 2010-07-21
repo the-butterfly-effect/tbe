@@ -75,14 +75,7 @@ public:
 	  * @param aNewPos	new position
 	  * @param isGood   true if new position is known good (i.e. is not colliding)
 	  */
-	void setNewPosition(const Position& aNewPos, bool isGood)
-	{
-		theNewPosition = aNewPos;
-		theNewPosition.x -= theHotSpot.dx;
-		theNewPosition.y -= theHotSpot.dy;
-		if (isGood)
-			theLastGoodPosition = theNewPosition;
-	}
+	void setNewPosition(const Position& aNewPos, bool isGood);
 
 	/** If current position is illegal, revert to last known good
 	  * @returns true if revert was needed

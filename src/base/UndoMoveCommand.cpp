@@ -82,6 +82,19 @@ bool UndoMoveCommand::revertIfNeeded(void)
 	return false;
 }
 
+
+void UndoMoveCommand::setNewPosition(const Position& aNewPos, bool isGood)
+{
+	theNewPosition = aNewPos;
+	theNewPosition.x -= theHotSpot.dx;
+	theNewPosition.y -= theHotSpot.dy;
+	theNewPosition.angle = theOldPosition.angle;
+	if (isGood)
+		theLastGoodPosition = theNewPosition;
+}
+
+
+
 void UndoMoveCommand::undo ()
 {
 	theBaseObjectPtr->setOrigCenter(theOldPosition);
