@@ -191,7 +191,7 @@ bool operator==(const Position& p1, const Position& p2)
 		return false;
 	if (fabs(p1.y - p2.y) > Position::minimalMove)
 		return false;
-	if (p1.angle != p2.angle)
+	if (fabs(p1.angle-p2.angle) > Position::minimalMove)
 		return false;
 	return true;
 }
