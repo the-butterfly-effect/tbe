@@ -20,6 +20,7 @@
 #include "ImageStore.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
+#include "UndoResizeCommand.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -46,27 +47,27 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 		return;
 
 	// the below code creates the 8 anchors around the object
-	PieMenu::EditMode myMode = PieMenu::NONE;
+	AnchorType myMode = NONE;
 	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE || theIsLevelEditor)
-		myMode = PieMenu::RESIZE_HORI;
-	theAnchorList.push_back(new Anchor(myMode, LEFT,  VMIDDLE, this));
-	theAnchorList.push_back(new Anchor(myMode, RIGHT, VMIDDLE, this));
+		myMode = RESIZE;
+	theAnchorList.push_back(new Anchor(myMode, Anchor::RIGHT, this));
+	theAnchorList.push_back(new Anchor(myMode, Anchor::LEFT, this));
 
 	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE || theIsLevelEditor)
-		myMode = PieMenu::RESIZE_VERTI;
+		myMode = RESIZE;
 	else
-		myMode = PieMenu::NONE;
-	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, TOP,    this));
-	theAnchorList.push_back(new Anchor(myMode, HMIDDLE, BOTTOM, this));
+		myMode = NONE;
+	theAnchorList.push_back(new Anchor(myMode, Anchor::TOP, this));
+	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOM, this));
 
 	if (myBOPtr->isRotatable() || theIsLevelEditor)
-		myMode = PieMenu::ROTATE;
+		myMode = ROTATE;
 	else
-		myMode = PieMenu::NONE;
-	theAnchorList.push_back(new Anchor(myMode, LEFT,  TOP,    this));
-	theAnchorList.push_back(new Anchor(myMode, LEFT,  BOTTOM, this));
-	theAnchorList.push_back(new Anchor(myMode, RIGHT, BOTTOM, this));
-	theAnchorList.push_back(new Anchor(myMode, RIGHT, TOP,    this));
+		myMode = NONE;
+	theAnchorList.push_back(new Anchor(myMode, Anchor::TOPRIGHT, this));
+	theAnchorList.push_back(new Anchor(myMode, Anchor::TOPLEFT, this));
+	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMLEFT, this));
+	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMRIGHT, this));
 
 	if (theIsLevelEditor)
 	{
@@ -92,6 +93,11 @@ Anchors::~Anchors()
 	theDrawObjectPtr->focusRemove(false);
 }
 
+UndoResizeCommand* Anchors::createUndoResize(void)
+{
+	return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr());
+}
+
 
 QGraphicsScene* Anchors::getScenePtr()
 {
@@ -115,17 +121,29 @@ void Anchors::updatePosition()
 
 const int Anchor::theIconSize;
 
-Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors::VPosition aVPos, Anchors* aParent)
+Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
-		  theHPos(anHPos), theVPos(aVPos),
+		  theIndex(anIndex),
 		  theOldAngle(0), theUndoPtr(NULL)
 {
 	// get the QSvgRenderer for my icon
-	setSharedRenderer(ImageStore::getRenderer(PieMenu::getEditModeIconName(aDirection)));
+	switch (aDirection)
+	{
+		case Anchors::NONE:
+			setSharedRenderer(ImageStore::getRenderer("ActionNone"));
+			break;
+		case Anchors::RESIZE:
+			setSharedRenderer(ImageStore::getRenderer("ActionResizeHori"));
+			break;
+		case Anchors::ROTATE:
+			setSharedRenderer(ImageStore::getRenderer("ActionRotate"));
+			break;
+	}
 
-	if (aDirection!=PieMenu::NONE)
+	if (aDirection!=Anchors::NONE)
 		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsFocusable);
+
 
 	// calculate how to scale my icon to look like it should
 	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
@@ -133,47 +151,110 @@ Anchor::Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors:
 	// so we now know that our image should be reduced to width&height
 	scale(mySquare.width()/boundingRect().width(),
 		  mySquare.height()/boundingRect().height());
+
+	rotate(-theIndex*45.0);
+
 	theParentPtr->getScenePtr()->addItem(this);
 	setZValue(10.0);
 
-	theOffset=mySquare.width()/2.0;
+	theOffset=mySquare.width()/2;
 
-	if (aDirection != PieMenu::NONE)
+	if (aDirection != Anchors::NONE)
 		setEnabled(true);
+
 }
+
+
+int Anchor::getDX()
+{
+	switch (theIndex)
+	{
+		case RIGHT:
+		case TOPRIGHT:
+		case BOTTOMRIGHT:
+			return 1;
+			break;
+
+		case TOP:
+		case BOTTOM:
+			return 0;
+			break;
+
+		case TOPLEFT:
+		case LEFT:
+		case BOTTOMLEFT:
+			return -1;
+			break;
+	}
+	return 0;
+}
+
+int Anchor::getDY()
+{
+	switch (theIndex)
+	{
+		case RIGHT:
+		case LEFT:
+			return 0;
+			break;
+
+		case TOPRIGHT:
+		case TOP:
+		case TOPLEFT:
+			return 1;
+			break;
+
+		case BOTTOMRIGHT:
+		case BOTTOM:
+		case BOTTOMLEFT:
+			return -1;
+			break;
+	}
+	return 0;
+}
+
 
 
 void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
+	DEBUG3("Anchor::mouseMoveEvent(%d)\n", event->type());
 
 	// calculate which direction we're moving
-	QPointF myDelta = event->scenePos() - thePrevMousePos;
-	if (theDirection==PieMenu::RESIZE_HORI)
-	{
-		myDelta.setY(0);
-		theUndoPtr->setDelta(theHPos, myDelta);
-	}
-	if (theDirection==PieMenu::RESIZE_VERTI)
-	{
-		myDelta.setX(0);
-		theUndoPtr->setDelta(theVPos, myDelta);
-	}
+	Vector myDelta = event->scenePos() - thePrevMousePos;
+//	if (theIndex==0 || theIndex==4)
+//	{
+//		myDelta.setY(0);
+//		theUndoPtr->setDelta(getDX(theIndex), myDelta);
+//	}
+//	if (theIndex==2 || theIndex==6)
+//	{
+//		myDelta.setX(0);
+//		theUndoPtr->setDelta(getDY(theIndex), myDelta);
+//	}
+
+//	if (theIndex==0 || theIndex==2 || theIndex==4 || theIndex==6)
+//	{
+//		theUndoPtr->setDelta2(theIndex, myDelta);
+//	}
+
+
+	theUndoPtr->setDelta3(theIndex, event->scenePos());
 
 	theParentPtr->updatePosition();
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("Anchor::mousePressEvent\n");
+	DEBUG3("Anchor::mousePressEvent\n");
 
 	// record cursor position here
 	thePrevMousePos=event->scenePos ();
 
 	// reset cursor to hori/verti/rotate
-	if (theDirection==PieMenu::RESIZE_HORI)
+	// TODO/FIXME: this code is obviously ignoring rotation...
+	if (theIndex==RIGHT || theIndex==LEFT)
 		setCursor(Qt::SizeHorCursor);
-	if (theDirection==PieMenu::RESIZE_VERTI)
+	if (theIndex==TOP || theIndex==BOTTOM)
 		setCursor(Qt::SizeVerCursor);
 	// TODO: add cursor ROTATE shape
 
@@ -183,7 +264,7 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 
 void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG5("Anchor::mouseReleaseEvent\n");
+	DEBUG3("Anchor::mouseReleaseEvent\n");
 
 	// are we currently in a collision?
 	// in that case, go back to last known good
@@ -215,16 +296,19 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 {
-	qreal myDX = (0.5*myW+theOffset) * static_cast<qreal>(theHPos);
-	qreal myDY = (0.5*myH+theOffset) * static_cast<qreal>(theVPos);
-
-	// let's use existing magic for the angle calculation
+	// calculate the position of the center of the anchor
+	qreal myDX = (0.5*myW+0.3*theOffset) * static_cast<qreal>(getDX());
+	qreal myDY = (0.5*myH+0.3*theOffset) * static_cast<qreal>(getDY());
 	myC = myC + Vector(myDX,myDY);
 
-	myC = myC + Vector( (static_cast<qreal>(theHPos)-1.0)*theOffset,
-						 (static_cast<qreal>(theVPos)+1.0)*theOffset);
+	// anchor center correction
+	qreal myTempAngle = myC.angle;
+	myC.angle = theIndex*PI/4.;
+	myC = myC + Vector(theOffset,theOffset);
+	myC.angle = myTempAngle;
 
-	setPos(myC.x, -myC.y);
+	// the final rotate/move
 	rotate((-myC.angle-theOldAngle)*180/3.14);
+	setPos(myC.x, -myC.y);
 	theOldAngle=-myC.angle;
 }

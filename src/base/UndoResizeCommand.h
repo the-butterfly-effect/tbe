@@ -25,6 +25,7 @@
 #include "tbe_global.h"
 
 #include "Position.h"
+#include "Anchors.h"
 
 // Forward Declarations
 class DrawObject;
@@ -64,7 +65,8 @@ public:
 	  * @param anAnchorPos
 	  * @param aDelta
 	  */
-	void setDelta(qreal anAnchorPos, QPointF aDelta);
+//	void setDelta(qreal anAnchorPos, QPointF aDelta);
+	void setDelta3(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
 
 	/// @returns true if the Object is currently not colliding
 	bool isGood(void)

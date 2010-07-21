@@ -25,13 +25,14 @@
 #include "PieMenu.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
-#include "UndoResizeCommand.h"
+//#include "UndoResizeCommand.h"
 #include "EditObjectDialog.h"
 
 // forward declarations
 class Anchor;
 class QGraphicsScene;
 class QUndoCommand;
+class UndoResizeCommand;
 
 /// the Anchors class manages the resize/rotate anchors around a selected DrawObject
 class Anchors : public QObject
@@ -44,21 +45,14 @@ public:
 
 	QGraphicsScene* getScenePtr();
 
-	enum HPosition
+	enum AnchorType
 	{
-		LEFT=-1,
-		HMIDDLE=0,
-		RIGHT=1
-	};
-	enum VPosition
-	{
-		TOP=-1,
-		VMIDDLE=0,
-		BOTTOM=1
+		NONE,
+		RESIZE,
+		ROTATE
 	};
 
-	UndoResizeCommand* createUndoResize(void)
-		{ return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr()); }
+	UndoResizeCommand* createUndoResize(void);
 
 	bool pushUndo(QUndoCommand* anUndo)
 		{ return theDrawObjectPtr->pushUndo(anUndo); }
@@ -83,8 +77,20 @@ class Anchor : public QGraphicsSvgItem
 	Q_OBJECT
 
 public:
+	enum AnchorPosition
+	{
+		RIGHT       = 0,
+		TOPRIGHT    = 1,
+		TOP         = 2,
+		TOPLEFT     = 3,
+		LEFT        = 4,
+		BOTTOMLEFT  = 5,
+		BOTTOM      = 6,
+		BOTTOMRIGHT = 7
+	};
+
 	/// Constructor
-	Anchor(PieMenu::EditMode aDirection, Anchors::HPosition anHPos, Anchors::VPosition aVPos, Anchors* aParent);
+	Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent);
 
 public slots:
 	/** overridden from QGraphicsItem
@@ -114,17 +120,19 @@ public slots:
 
 private:
 	Anchors* theParentPtr;
-	PieMenu::EditMode theDirection;
-	Anchors::HPosition theHPos;
-	Anchors::VPosition theVPos;
+	Anchors::AnchorType theDirection;
+	AnchorPosition theIndex;
 	static const int theIconSize = 16;
 	qreal theDelta;
 
 	qreal theOffset;
-	QPointF thePrevMousePos;
+	Vector thePrevMousePos;
 	qreal theOldAngle;
 
 	UndoResizeCommand* theUndoPtr;
+
+	int getDX();
+	int getDY();
 };
 
 
