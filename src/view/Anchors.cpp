@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -217,35 +217,14 @@ int Anchor::getDY()
 
 void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG3("Anchor::mouseMoveEvent(%d)\n", event->type());
-
-	// calculate which direction we're moving
-	Vector myDelta = event->scenePos() - thePrevMousePos;
-//	if (theIndex==0 || theIndex==4)
-//	{
-//		myDelta.setY(0);
-//		theUndoPtr->setDelta(getDX(theIndex), myDelta);
-//	}
-//	if (theIndex==2 || theIndex==6)
-//	{
-//		myDelta.setX(0);
-//		theUndoPtr->setDelta(getDY(theIndex), myDelta);
-//	}
-
-//	if (theIndex==0 || theIndex==2 || theIndex==4 || theIndex==6)
-//	{
-//		theUndoPtr->setDelta2(theIndex, myDelta);
-//	}
-
-
-	theUndoPtr->setDelta3(theIndex, event->scenePos());
-
+	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
+	theUndoPtr->updateResize(theIndex, event->scenePos());
 	theParentPtr->updatePosition();
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG3("Anchor::mousePressEvent\n");
+	DEBUG5("Anchor::mousePressEvent\n");
 
 	// record cursor position here
 	thePrevMousePos=event->scenePos ();
@@ -264,7 +243,7 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 
 void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 {
-	DEBUG3("Anchor::mouseReleaseEvent\n");
+	DEBUG5("Anchor::mouseReleaseEvent\n");
 
 	// are we currently in a collision?
 	// in that case, go back to last known good

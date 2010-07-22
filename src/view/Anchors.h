@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,7 +25,6 @@
 #include "PieMenu.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
-//#include "UndoResizeCommand.h"
 #include "EditObjectDialog.h"
 
 // forward declarations

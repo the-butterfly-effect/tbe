@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -91,33 +91,23 @@ void UndoResizeCommand::revertToLastGood(void)
 }
 
 
-//void UndoResizeCommand::setDelta(qreal anAnchorPos, QPointF aDelta)
-//{
-//	aDelta.setY(-aDelta.y());
-//
-//	// check if new size is possible
-//	QPointF theTempSize = theOldSize + anAnchorPos*aDelta;
-//	if (theTempSize.x() < 0.1 ||
-//		theTempSize.y() < 0.1)
-//		return;
-//
-//	theNewSize = theTempSize;
-//
-//	theNewCenter = theOldCenter + 0.5*aDelta;
-//	redo();
-//
-//	// collision detection - only do this *after* the redraw :-)
-//	isColliding = theBaseObjectPtr->theDrawObjectPtr->checkForCollision();
-//	if (isColliding == false)
-//	{
-//		theLastGoodSize = theNewSize;
-//		theLastGoodCenter = theNewCenter;
-//	}
-//
-//}
+void UndoResizeCommand::undo ()
+{
+	theBaseObjectPtr->setTheWidth(theOldSize.x());
+	theBaseObjectPtr->setTheHeight(theOldSize.y());
 
-void UndoResizeCommand::setDelta3(Anchor::AnchorPosition anIndex,
-								  const QPointF& aCursorPos)
+	theBaseObjectPtr->setTempCenter(theOldCenter);
+	theBaseObjectPtr->setOrigCenter(theOldCenter);
+
+	theBaseObjectPtr->reset();
+	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
+	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
+}
+
+
+void UndoResizeCommand::updateResize(
+		Anchor::AnchorPosition anIndex,
+		const QPointF& aCursorPos)
 {
 	// Essentially, we're going to project the current cursor position
 	// across the axis through the object center and the anchor
@@ -133,31 +123,25 @@ void UndoResizeCommand::setDelta3(Anchor::AnchorPosition anIndex,
 
 	// TODO: The above calculations are ignoring the hotspot
 
-	// if we're on the positive side of the object's projection
-	// the new center has to move to old center plus half the change
-	// similar for the negative side...
-
 	// This works - even for larger angles!
-	if (anIndex==0 || anIndex==4)
+	if (anIndex==Anchor::RIGHT || anIndex==Anchor::LEFT)
 	{
 		float myOldWidth = theOldSize.x()/2.0;
 		theNewSize = QPointF(myLengthAcrossAxis+myOldWidth, theOldSize.y());
-		if (anIndex==0)
+		if (anIndex==Anchor::RIGHT)
 			theNewCenter = theOldCenter + Vector(0.5*(myLengthAcrossAxis-myOldWidth),0);
-		if (anIndex==4)
+		if (anIndex==Anchor::LEFT)
 			theNewCenter = theOldCenter + Vector(-0.5*(myLengthAcrossAxis-myOldWidth),0);
 	}
-	if (anIndex==2 || anIndex==6)
+	if (anIndex==Anchor::TOP || anIndex==Anchor::BOTTOM)
 	{
 		float myOldHeight= theOldSize.y()/2.0;
 		theNewSize = QPointF(theOldSize.x(), myLengthAcrossAxis+myOldHeight);
-		if (anIndex==2)
+		if (anIndex==Anchor::TOP)
 			theNewCenter = theOldCenter + Vector(0, 0.5*(myLengthAcrossAxis-myOldHeight));
-		if (anIndex==6)
+		if (anIndex==Anchor::BOTTOM)
 			theNewCenter = theOldCenter + Vector(0, -0.5*(myLengthAcrossAxis-myOldHeight));
 	}
-
-
 
 	redo();
 
@@ -168,19 +152,4 @@ void UndoResizeCommand::setDelta3(Anchor::AnchorPosition anIndex,
 		theLastGoodSize = theNewSize;
 		theLastGoodCenter = theNewCenter;
 	}
-}
-
-
-
-void UndoResizeCommand::undo ()
-{
-	theBaseObjectPtr->setTheWidth(theOldSize.x());
-	theBaseObjectPtr->setTheHeight(theOldSize.y());
-
-	theBaseObjectPtr->setTempCenter(theOldCenter);
-	theBaseObjectPtr->setOrigCenter(theOldCenter);
-
-	theBaseObjectPtr->reset();
-	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
-	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
 }

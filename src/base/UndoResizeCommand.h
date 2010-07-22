@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -60,13 +60,12 @@ public:
 	virtual void redo ();
 	virtual void undo ();
 
-	/** sets the new delta.
-	  * if this new delta does not result in a collission, the "last known good delta" is set as well.
-	  * @param anAnchorPos
-	  * @param aDelta
+	/** updates the resizing information
+	  * if this new size does not result in a collission, the "last known good" is set as well.
+	  * @param anIndex indication of which Anchor is involved
+	  * @param aCursorPos the actual position of the hotspot of the mouse
 	  */
-//	void setDelta(qreal anAnchorPos, QPointF aDelta);
-	void setDelta3(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
+	void updateResize(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
 
 	/// @returns true if the Object is currently not colliding
 	bool isGood(void)
