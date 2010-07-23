@@ -63,7 +63,7 @@ public:
 	/** updates the resizing information
 	  * if this new size does not result in a collission, the "last known good" is set as well.
 	  * @param anIndex indication of which Anchor is involved
-	  * @param aCursorPos the actual position of the hotspot of the mouse
+	  * @param aCursorPos the actual position
 	  */
 	void updateResize(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
 

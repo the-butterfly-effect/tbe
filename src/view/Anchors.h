@@ -125,7 +125,6 @@ private:
 	qreal theDelta;
 
 	qreal theOffset;
-	Vector thePrevMousePos;
 	qreal theOldAngle;
 
 	UndoResizeCommand* theUndoPtr;

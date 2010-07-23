@@ -121,8 +121,6 @@ void UndoResizeCommand::updateResize(
 	float myAxisAngle = anIndex*PI/4 + theOldCenter.angle;
 	float myLengthAcrossAxis = myVectorToCenter.length()*cos(myAngle-myAxisAngle);
 
-	// TODO: The above calculations are ignoring the hotspot
-
 	// This works - even for larger angles!
 	if (anIndex==Anchor::RIGHT || anIndex==Anchor::LEFT)
 	{

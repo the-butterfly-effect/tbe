@@ -215,19 +215,19 @@ int Anchor::getDY()
 
 
 
-void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
+void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
+
+	// TODO: The below function is ignoring the hotspot,
+	// just like us :-) I don't think users will notice.
 	theUndoPtr->updateResize(theIndex, event->scenePos());
 	theParentPtr->updatePosition();
 }
 
-void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
+void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("Anchor::mousePressEvent\n");
-
-	// record cursor position here
-	thePrevMousePos=event->scenePos ();
 
 	// reset cursor to hori/verti/rotate
 	// TODO/FIXME: this code is obviously ignoring rotation...
@@ -241,7 +241,7 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent * event )
 	theUndoPtr = theParentPtr->createUndoResize();
 }
 
-void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
+void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
@@ -270,7 +270,6 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 		}
 		theUndoPtr = NULL;
 	}
-	thePrevMousePos=event->scenePos ();
 }
 
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
