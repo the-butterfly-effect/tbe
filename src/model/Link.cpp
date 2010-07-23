@@ -36,7 +36,7 @@ static LinkObjectFactory theLinkFactory;
 
 Link::Link()
 {
-	DEBUG1("Link::Link() start\n");
+	DEBUG5("Link::Link() start\n");
 	theFirstPtr = NULL;
 	theSecondPtr = NULL;
 	theFirstLocalPosPtr = NULL;
@@ -47,7 +47,7 @@ Link::Link()
 			Property::OBJECT2_STRING + QString(":/") +
 			Property::OVERLAP_STRING + QString(":10/") +
 			"-" + Property::MASS_STRING + ":/" );
-	DEBUG1("Link::Link() end\n");
+	DEBUG5("Link::Link() end\n");
 }
 
 DrawObject*  Link::createDrawObject(void)
