@@ -232,11 +232,10 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
-	DEBUG2("Anchor::mousePressEvent\n");
+	DEBUG5("Anchor::mousePressEvent\n");
 
 	// reset cursor to hori/verti/rotate
-	// TODO/FIXME: this code is obviously ignoring rotation...
-
+	// and setup the corresponding undo class
 	assert(theUndoRPtr==NULL);
 	switch (theIndex)
 	{

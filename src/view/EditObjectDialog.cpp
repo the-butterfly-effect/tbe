@@ -22,7 +22,7 @@
 EditObjectDialog::EditObjectDialog(BaseObject* aBaseObjectPtr, QWidget *aParent)
 		: QDialog(aParent, Qt::Tool), theBOPtr(aBaseObjectPtr), theUndoPtr(NULL)
 {
-	DEBUG1("EditObjectDialog::EditObjectDialog\n");
+	DEBUG4("EditObjectDialog::EditObjectDialog\n");
 	ui.setupUi(this);
 
 	theBOPtr = NULL;
