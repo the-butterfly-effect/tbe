@@ -82,7 +82,7 @@ public:
 	  */
 	bool revertIfNeeded(void);
 
-	bool hasMoved(void)
+	bool isChanged(void)
 	{	return theOldPosition == theNewPosition; }
 
 	virtual void redo ();

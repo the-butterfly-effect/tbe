@@ -31,8 +31,7 @@
 class Anchor;
 class QGraphicsScene;
 class QUndoCommand;
-class UndoResizeCommand;
-class UndoRotateCommand;
+class UndoRCommand;
 
 /// the Anchors class manages the resize/rotate anchors around a selected DrawObject
 class Anchors : public QObject
@@ -52,8 +51,8 @@ public:
 		ROTATE
 	};
 
-	UndoResizeCommand* createUndoResize(void);
-	UndoRotateCommand* createUndoRotate(const Vector& aHotspot);
+	UndoRCommand* createUndoResize(void);
+	UndoRCommand* createUndoRotate(const Vector& aHotspot);
 
 	bool pushUndo(QUndoCommand* anUndo)
 		{ return theDrawObjectPtr->pushUndo(anUndo); }
@@ -129,8 +128,7 @@ private:
 	qreal theOffset;
 	qreal theOldAngle;
 
-	UndoResizeCommand* theUndoResizePtr;
-	UndoRotateCommand* theUndoRotatePtr;
+	UndoRCommand* theUndoRPtr;
 
 	int getDX();
 	int getDY();

@@ -33,12 +33,31 @@ class BaseObject;
 
 
 /**
+  * class UndoRCommand
+  *
+  * abstract interface for UndoResizeCommand and UndoRotateCommand
+  */
+
+class UndoRCommand : public QUndoCommand
+{
+public:
+	UndoRCommand ();
+	virtual ~UndoRCommand ( );
+	virtual bool isChanged(void) = 0;
+	virtual bool isGood(void) = 0;
+	virtual void revertToLastGood(void) = 0;
+	virtual void update(Anchor::AnchorPosition anIndex, const Vector& aCursorPos) = 0;
+};
+
+
+
+/**
   * class UndoResizeCommand
   *
   * undo/redo for the moving of objects
   */
 
-class UndoResizeCommand : public QUndoCommand
+class UndoResizeCommand : public UndoRCommand
 {
 public:
 
@@ -77,7 +96,7 @@ public:
 	  * @param anIndex indication of which Anchor is involved
 	  * @param aCursorPos the actual position
 	  */
-	void updateResize(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
+	void update(Anchor::AnchorPosition anIndex, const Vector& aCursorPos);
 
 	virtual void redo ();
 	virtual void undo ();

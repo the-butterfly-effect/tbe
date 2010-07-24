@@ -28,7 +28,7 @@
 UndoRotateCommand::UndoRotateCommand (
 		BaseObject* aBaseObjectPtr,
 		const Vector& aHotSpot)
-		  : QUndoCommand(), 
+		  : UndoRCommand(),
 			theBaseObjectPtr(aBaseObjectPtr)
 {
 	assert(aBaseObjectPtr);
@@ -90,7 +90,7 @@ void UndoRotateCommand::revertToLastGood(void)
 }
 
 
-void UndoRotateCommand::setNewRotation(const Vector& aNewPos)
+void UndoRotateCommand::update(Anchor::AnchorPosition, const Vector& aNewPos)
 {
 	Vector theDeltaVector = aNewPos - theOldCenter.toVector();
 	theNewAngle = (theDeltaVector.toAngle() - theHotSpotAngle) + theOldCenter.angle;

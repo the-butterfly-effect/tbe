@@ -23,12 +23,19 @@
 #include <cassert>
 #include <cmath>
 
+UndoRCommand::UndoRCommand()
+		: QUndoCommand()
+{}
+
+UndoRCommand::~UndoRCommand()
+{}
+
 // Constructors/Destructors
 //  
 
 UndoResizeCommand::UndoResizeCommand (
 		BaseObject* aBaseObjectPtr)
-		  : QUndoCommand(), 
+		  : UndoRCommand(),
 			theBaseObjectPtr(aBaseObjectPtr)
 {
 	assert(aBaseObjectPtr);
@@ -107,9 +114,9 @@ void UndoResizeCommand::undo ()
 }
 
 
-void UndoResizeCommand::updateResize(
+void UndoResizeCommand::update(
 		Anchor::AnchorPosition anIndex,
-		const QPointF& aCursorPos)
+		const Vector& aCursorPos)
 {
 	// Essentially, we're going to project the current cursor position
 	// across the axis through the object center and the anchor

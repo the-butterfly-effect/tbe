@@ -66,7 +66,7 @@ bool UndoInsertCommand::checkForValidPositionOrRevert(void)
 	UndoMoveCommand* myUMCPtr = theBaseObjectPtr->theDrawObjectPtr->theUndoMovePtr;
 	if (myUMCPtr->revertIfNeeded()==true)
 	{
-		if (myUMCPtr->hasMoved()==false)
+		if (myUMCPtr->isChanged()==false)
 		{
 			// we're in trouble: the object never was valid - we need to cancel D&D
 			isGood = false;

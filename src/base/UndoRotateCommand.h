@@ -25,6 +25,8 @@
 #include "tbe_global.h"
 
 #include "Position.h"
+#include "Anchors.h"
+#include "UndoResizeCommand.h"
 
 // Forward Declarations
 class BaseObject;
@@ -36,7 +38,7 @@ class BaseObject;
   * undo/redo for the rotation of objects by the user
   */
 
-class UndoRotateCommand : public QUndoCommand
+class UndoRotateCommand : public UndoRCommand
 {
 public:
 
@@ -75,11 +77,11 @@ public:
 	  */
 	void revertToLastGood(void);
 
-	/** sets the new rotation. if this rotation is known good,
+	/** update to the new rotation. if this rotation is known good,
 	  * the "last known good rotation" is set as well.
 	  * @param aNewPos	new position of the mouse pointer
 	  */
-	void setNewRotation(const Vector& aNewPos);
+	void update(Anchor::AnchorPosition anIndex, const Vector& aNewPos);
 
 	virtual void redo ();
 	virtual void undo ();

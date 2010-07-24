@@ -165,9 +165,6 @@ protected:
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
 	virtual void mouseMoveEvent ( const QPointF& aPos, const QPointF& bPos = QPointF(0,0) );
 
-friend class UndoInsertCommand;
-friend class UndoMoveCommand;
-
 	/** overridden from QGraphicsItem
 	 *  we want to know when the user *releases* the left mouse button 
 	 *    - so we can take action if it is a drag 
@@ -238,8 +235,11 @@ private:
 
 	// all below friends are needed for Undoing actions
 	friend class UndoResizeCommand;    // resize
-	friend class UndoManualCommand;    // resize/move by EditObjectDialog
+	friend class UndoRotateCommand;    // rotate
+	friend class UndoManualCommand;    // resize/rotate/move by EditObjectDialog
 	friend class UndoDeleteCommand;    // delete
+	friend class UndoInsertCommand;
+	friend class UndoMoveCommand;
 
 
 	/** this class-in-class displays the Cross over the

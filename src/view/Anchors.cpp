@@ -94,12 +94,12 @@ Anchors::~Anchors()
 	theDrawObjectPtr->focusRemove(false);
 }
 
-UndoRotateCommand* Anchors::createUndoRotate(const Vector& aHotspot)
+UndoRCommand* Anchors::createUndoRotate(const Vector& aHotspot)
 {
 	return new UndoRotateCommand(theDrawObjectPtr->getBaseObjectPtr(), aHotspot);
 }
 
-UndoResizeCommand* Anchors::createUndoResize(void)
+UndoRCommand* Anchors::createUndoResize(void)
 {
 	return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr());
 }
@@ -131,7 +131,7 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
 		  theIndex(anIndex),
-		  theOldAngle(0), theUndoResizePtr(NULL), theUndoRotatePtr(NULL)
+		  theOldAngle(0), theUndoRPtr(NULL)
 {
 	// get the QSvgRenderer for my icon
 	switch (aDirection)
@@ -225,41 +225,30 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
 
-	if ((theIndex%2)==0)
-	{
-		// RESIZE:
-		// The below function is ignoring the hotspot,
-		// just like us :-) I don't think users will notice.
-		theUndoResizePtr->updateResize(theIndex, event->scenePos());
-	}
-	else
-	{
-		// ROTATE:
-		theUndoRotatePtr->setNewRotation(event->scenePos());
-	}
+	assert(theUndoRPtr!=NULL);
+	theUndoRPtr->update(theIndex, event->scenePos());
 	theParentPtr->updatePosition();
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
-	DEBUG5("Anchor::mousePressEvent\n");
+	DEBUG2("Anchor::mousePressEvent\n");
 
 	// reset cursor to hori/verti/rotate
 	// TODO/FIXME: this code is obviously ignoring rotation...
 
-	assert(theUndoResizePtr==NULL);
-	assert(theUndoRotatePtr==NULL);
+	assert(theUndoRPtr==NULL);
 	switch (theIndex)
 	{
 		case RIGHT:
 		case LEFT:
 			setCursor(Qt::SizeHorCursor);
-			theUndoResizePtr = theParentPtr->createUndoResize();
+			theUndoRPtr = theParentPtr->createUndoResize();
 			break;
 		case TOP:
 		case BOTTOM:
 			setCursor(Qt::SizeVerCursor);
-			theUndoResizePtr = theParentPtr->createUndoResize();
+			theUndoRPtr = theParentPtr->createUndoResize();
 			break;
 		case TOPLEFT:
 		case TOPRIGHT:
@@ -267,7 +256,7 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 		case BOTTOMRIGHT:
 			// TODO: add cursor ROTATE shape
 			// store this position - calculate differential angles later
-			theUndoRotatePtr = theParentPtr->createUndoRotate(event->scenePos());
+			theUndoRPtr = theParentPtr->createUndoRotate(event->scenePos());
 			break;
 	}
 }
@@ -276,45 +265,34 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
-	if (theUndoResizePtr!=NULL)
+	if (theUndoRPtr!=NULL)
 	{
-
 		// are we currently in a collision?
 		// in that case, go back to last known good
-		if (theUndoResizePtr->isGood()==false)
+		if (theUndoRPtr->isGood()==false)
 		{
 			DEBUG4("Reverting to last known non-colliding position\n");
-			theUndoResizePtr->revertToLastGood();
+			theUndoRPtr->revertToLastGood();
 		}
 
 		// there was actual resizing???
-		if (theUndoResizePtr->isChanged())
+		if (theUndoRPtr->isChanged())
 		{
-			DEBUG5("PUSHED UNDO RESIZE\n");
-			theParentPtr->pushUndo(theUndoResizePtr);
-			theUndoResizePtr = NULL;
+			DEBUG5("PUSHED UNDO\n");
+			theParentPtr->pushUndo(theUndoRPtr);
+			theUndoRPtr = NULL;
 		}
 		else
 		{
-			DEBUG5("CLEARED UNDO RESIZE\n");
-			if (theUndoResizePtr)
+			DEBUG5("CLEARED UNDO\n");
+			if (theUndoRPtr)
 			{
-				theUndoResizePtr->undo();
-				delete theUndoResizePtr;
+				theUndoRPtr->undo();
+				delete theUndoRPtr;
 			}
-			theUndoResizePtr = NULL;
+			theUndoRPtr = NULL;
 		}
 	}
-
-	if (theUndoRotatePtr!=NULL)
-	{
-		// TODO: this part is not implemented yet
-assert(false);
-		theUndoRotatePtr->undo();
-		delete  theUndoRotatePtr;
-		theUndoRotatePtr = NULL;
-	}
-
 }
 
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
