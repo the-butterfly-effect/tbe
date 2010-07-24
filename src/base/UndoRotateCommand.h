@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009,2010 Klaas van Gend
+ * This file copyright (C) 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,29 +16,27 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef UNDORESIZECOMMAND_H
-#define UNDORESIZECOMMAND_H
+#ifndef UNDOROTATECOMMAND_H
+#define UNDOROTATECOMMAND_H
 
 #include <QString>
 #include <QUndoCommand>
-//#include <QPointF>
+#include <cmath>
 #include "tbe_global.h"
 
 #include "Position.h"
-#include "Anchors.h"
 
 // Forward Declarations
-class DrawObject;
 class BaseObject;
 
 
 /**
-  * class UndoResizeCommand
+  * class UndoRotateCommand
   *
-  * undo/redo for the moving of objects
+  * undo/redo for the rotation of objects by the user
   */
 
-class UndoResizeCommand : public QUndoCommand
+class UndoRotateCommand : public QUndoCommand
 {
 public:
 
@@ -46,53 +44,55 @@ public:
 	//  
 
 	/** constructor
+	 * this constructor will automatically retrieve the "old" Original
+	 * position from aBaseObjectPtr
 	 * 
 	 * @param aBaseObjectPtr pointer to a BaseObject
+	 * @param aHotSpot mouse position offset from the center of the object
 	 */
-	UndoResizeCommand (BaseObject* aBaseObjectPtr);
+	UndoRotateCommand (BaseObject* aBaseObjectPtr, const Vector& aHotSpot);
 
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~UndoResizeCommand ( );
+	virtual ~UndoRotateCommand ( );
 
-	
-	/// @returns true if there is an actual resize
+	const Position& getOrigPos(void) const
+	{	return theOldCenter; }
+
+	/// @returns true if there is an actual rotation
 	virtual bool isChanged(void);
 
 	/// @returns true if the Object is currently not colliding
 	bool isGood(void)
 	{ return isColliding == false; }
 
-	/** Throw away the new delta and rever to the last known good delta.
-	  * If setNewPosition() has never been called with a new good delta,
+	/** Throw away the new position and rever to the last known good position.
+	  * If setNewPosition() has never been called with a new good position,
 	  * that means the original position (i.e. object has not moved) !!!
 	  *
 	  * Automatically calls redo() to effectuate the changes.
 	  */
 	void revertToLastGood(void);
 
-	/** updates the resizing information
-	  * if this new size does not result in a collission, the "last known good" is set as well.
-	  * @param anIndex indication of which Anchor is involved
-	  * @param aCursorPos the actual position
+	/** sets the new rotation. if this rotation is known good,
+	  * the "last known good rotation" is set as well.
+	  * @param aNewPos	new position of the mouse pointer
 	  */
-	void updateResize(Anchor::AnchorPosition anIndex, const QPointF& aCursorPos);
+	void setNewRotation(const Vector& aNewPos);
 
 	virtual void redo ();
 	virtual void undo ();
-
+	
 private:
 	BaseObject* theBaseObjectPtr;
-
 	Position	theOldCenter;
-	Position	theLastGoodCenter;
-	Position	theNewCenter;
-	QPointF		theOldSize;
-	QPointF		theLastGoodSize;
-	QPointF		theNewSize;
+	float		theHotSpotAngle;
+	float		theLastGoodAngle;
+	float		theNewAngle;
 
 	bool isColliding;
 };
 
-#endif // UndoResizeCommand_H
+
+#endif // UNDOROTATECOMMAND_H

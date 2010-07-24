@@ -57,13 +57,15 @@ UndoResizeCommand::~UndoResizeCommand ( )
 // Other methods
 //  
 
-bool UndoResizeCommand::isResized(void)
+bool UndoResizeCommand::isChanged(void)
 {
 	if (theNewSize.isNull())
 		return false;
 
 	QPointF theDelta = theOldSize-theNewSize;
 	if (fabs(theDelta.x()) < Position::minimalMove && fabs(theDelta.y()) < Position::minimalMove)
+		return false;
+	if (fabs(theDelta.y()) < Position::minimalMove && fabs(theDelta.y()) < Position::minimalMove)
 		return false;
 	return true;
 }

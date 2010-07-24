@@ -21,6 +21,7 @@
 #include "DrawObject.h"
 #include "BaseObject.h"
 #include "UndoResizeCommand.h"
+#include "UndoRotateCommand.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -93,6 +94,11 @@ Anchors::~Anchors()
 	theDrawObjectPtr->focusRemove(false);
 }
 
+UndoRotateCommand* Anchors::createUndoRotate(const Vector& aHotspot)
+{
+	return new UndoRotateCommand(theDrawObjectPtr->getBaseObjectPtr(), aHotspot);
+}
+
 UndoResizeCommand* Anchors::createUndoResize(void)
 {
 	return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr());
@@ -125,7 +131,7 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
 		  theIndex(anIndex),
-		  theOldAngle(0), theUndoPtr(NULL)
+		  theOldAngle(0), theUndoResizePtr(NULL), theUndoRotatePtr(NULL)
 {
 	// get the QSvgRenderer for my icon
 	switch (aDirection)
@@ -219,57 +225,96 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
 
-	// TODO: The below function is ignoring the hotspot,
-	// just like us :-) I don't think users will notice.
-	theUndoPtr->updateResize(theIndex, event->scenePos());
+	if ((theIndex%2)==0)
+	{
+		// RESIZE:
+		// The below function is ignoring the hotspot,
+		// just like us :-) I don't think users will notice.
+		theUndoResizePtr->updateResize(theIndex, event->scenePos());
+	}
+	else
+	{
+		// ROTATE:
+		theUndoRotatePtr->setNewRotation(event->scenePos());
+	}
 	theParentPtr->updatePosition();
 }
 
-void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent*)
+void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
 	DEBUG5("Anchor::mousePressEvent\n");
 
 	// reset cursor to hori/verti/rotate
 	// TODO/FIXME: this code is obviously ignoring rotation...
-	if (theIndex==RIGHT || theIndex==LEFT)
-		setCursor(Qt::SizeHorCursor);
-	if (theIndex==TOP || theIndex==BOTTOM)
-		setCursor(Qt::SizeVerCursor);
-	// TODO: add cursor ROTATE shape
 
-	assert(theUndoPtr==NULL);
-	theUndoPtr = theParentPtr->createUndoResize();
+	assert(theUndoResizePtr==NULL);
+	assert(theUndoRotatePtr==NULL);
+	switch (theIndex)
+	{
+		case RIGHT:
+		case LEFT:
+			setCursor(Qt::SizeHorCursor);
+			theUndoResizePtr = theParentPtr->createUndoResize();
+			break;
+		case TOP:
+		case BOTTOM:
+			setCursor(Qt::SizeVerCursor);
+			theUndoResizePtr = theParentPtr->createUndoResize();
+			break;
+		case TOPLEFT:
+		case TOPRIGHT:
+		case BOTTOMLEFT:
+		case BOTTOMRIGHT:
+			// TODO: add cursor ROTATE shape
+			// store this position - calculate differential angles later
+			theUndoRotatePtr = theParentPtr->createUndoRotate(event->scenePos());
+			break;
+	}
 }
 
 void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
 
-	// are we currently in a collision?
-	// in that case, go back to last known good
-	if (theUndoPtr->isGood()==false)
+	if (theUndoResizePtr!=NULL)
 	{
-		DEBUG4("Reverting to last known non-colliding position\n");
-		theUndoPtr->revertToLastGood();
+
+		// are we currently in a collision?
+		// in that case, go back to last known good
+		if (theUndoResizePtr->isGood()==false)
+		{
+			DEBUG4("Reverting to last known non-colliding position\n");
+			theUndoResizePtr->revertToLastGood();
+		}
+
+		// there was actual resizing???
+		if (theUndoResizePtr->isChanged())
+		{
+			DEBUG5("PUSHED UNDO RESIZE\n");
+			theParentPtr->pushUndo(theUndoResizePtr);
+			theUndoResizePtr = NULL;
+		}
+		else
+		{
+			DEBUG5("CLEARED UNDO RESIZE\n");
+			if (theUndoResizePtr)
+			{
+				theUndoResizePtr->undo();
+				delete theUndoResizePtr;
+			}
+			theUndoResizePtr = NULL;
+		}
 	}
 
-	// there was actual resizing???
-	if (theUndoPtr->isResized())
+	if (theUndoRotatePtr!=NULL)
 	{
-		DEBUG5("PUSHED UNDO RESIZE\n");
-		theParentPtr->pushUndo(theUndoPtr);
-		theUndoPtr = NULL;
+		// TODO: this part is not implemented yet
+assert(false);
+		theUndoRotatePtr->undo();
+		delete  theUndoRotatePtr;
+		theUndoRotatePtr = NULL;
 	}
-	else
-	{
-		DEBUG5("CLEARED UNDO RESIZE\n");
-		if (theUndoPtr)
-		{
-			theUndoPtr->undo();
-			delete theUndoPtr;
-		}
-		theUndoPtr = NULL;
-	}
+
 }
 
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
