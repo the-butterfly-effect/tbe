@@ -17,7 +17,7 @@
  */
 
 #include "AbstractBall.h"
-#include "DrawObject.h"
+#include "DrawAbstractBall.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "Property.h"
@@ -132,7 +132,7 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty()==false)
 		theBallImage = myImageName;
-	theDrawObjectPtr = new DrawObject(this, theBallImage);
+	theDrawObjectPtr = new DrawAbstractBall(this, theBallImage);
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
 }

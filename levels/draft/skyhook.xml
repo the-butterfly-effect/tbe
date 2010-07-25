@@ -14,14 +14,6 @@
             <name lang="nl">Coke-Mentos fles</name>
             <object type="Coke+Mentos Bottle"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
-            <name lang="nl">Helling /</name>
-	    <object height="0.4" Y="1.05" type="LeftRamp">
-                <property key="ImageName">styrofoam-left</property>
-                <property key="Bounciness">0.3</property>
-                <property key="Mass">0.3</property>
-	    </object>
-        </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="6.5" height="3.7" />
@@ -69,12 +61,6 @@
 		<property key="collide">false</property>
 	    </object>
 	    
-<object type="Link" X="2.74" Y="2.84" angle="0.0" width="0.46" height="0.1">
-    <property key="object1">Chain1@(0,-0.20)</property>
-    <property key="object2">Chain3@(0,0.20)</property>
-    <property key="ImageName">agone_chains_rot</property>
-</object>
-	    
             <object X="2.74" Y="2.44" width="0.10" height="0.46" type="RectObject" ID="Chain3">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
@@ -85,11 +71,12 @@
 		<property key="collide">false</property>
 	    </object>
 
-<object type="Link" X="2.74" Y="2.04" angle="0.0" width="0.46" height="0.1">
-    <property key="object1">Chain3@(0,-0.20)</property>
-    <property key="object2">Chain5@(0,0.20)</property>
-    <property key="ImageName">agone_chains_rot</property>
+<object type="Link" X="2.74" Y="2.84" angle="0.0" width="0.46" height="0.1">
+    <property key="object1">Chain1@(0,-0.20)</property>
+    <property key="object2">Chain3@(0,0.20)</property>
+    <property key="ImageName">agone_chains</property>
 </object>
+
             <object X="2.74" Y="1.64" width="0.10" height="0.46" type="RectObject" ID="Chain5">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
@@ -99,6 +86,12 @@
 		<property key="object2">Chain5</property>
 		<property key="collide">false</property>
 	    </object>
+
+<object type="Link" X="2.74" Y="2.04" angle="0.0" width="0.46" height="0.1">
+    <property key="object1">Chain3@(0,-0.20)</property>
+    <property key="object2">Chain5@(0,0.20)</property>
+    <property key="ImageName">agone_chains</property>
+</object>
             <object X="2.74" Y="1.28" height="0.35" type="Weight" ID="Weight" />
 
 	    <object type="PivotPoint" X="2.74" Y="1.44">

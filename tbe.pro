@@ -53,6 +53,7 @@ HEADERS += src/tbe_global.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
+    src/view/DrawAbstractBall.h \
     src/view/DrawButterfly.h \
     src/view/DrawCokeMentosBottle.h \
     src/view/DrawObject.h \
@@ -97,6 +98,7 @@ SOURCES += src/main.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \
+    src/view/DrawAbstractBall.cpp \
     src/view/DrawButterfly.cpp \
     src/view/DrawCokeMentosBottle.cpp \
     src/view/DrawObject.cpp \
