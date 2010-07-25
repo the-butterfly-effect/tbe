@@ -320,7 +320,7 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	theUndoMovePtr->revertIfNeeded();
 
 	// is the position any different?
-	if (theUndoMovePtr->hasMoved())
+	if (theUndoMovePtr->isChanged())
 		pushUndo(theUndoMovePtr);
 	else
 		delete theUndoMovePtr;
