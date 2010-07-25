@@ -1,4 +1,4 @@
-/* The AbstractBall Effect
+/* The Butterfly Effect
  * This file copyright (C) 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
