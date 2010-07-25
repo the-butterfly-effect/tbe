@@ -88,7 +88,7 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 		QTreeWidgetItemIterator it(m_ui->theTreeWidget);
 		while( *it )
 		{
-			if ( (*it)->text(NR_COLUMN) != "done")
+			if ( (*it)->text(NR_COLUMN) != tr("done"))
 			{
 				m_ui->theTreeWidget->setCurrentItem(*it);
 				(*it)->setSelected(true);
@@ -142,7 +142,7 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 
 		QSettings mySettings;
 		if (mySettings.value("completed/"+currentText).isValid())
-			item->setText(NR_COLUMN, "done");
+			item->setText(NR_COLUMN, tr("done"));
 	}
 RETURN:
 	currentText.clear();
