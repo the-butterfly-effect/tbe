@@ -93,6 +93,9 @@ public:
 	 */
 	virtual void setTheHeight ( qreal new_var );
 
+	/// overridden so we can use our DrawPolyObject
+	virtual DrawObject* createDrawObject();
+
 protected:
 	virtual void setFriction(b2PolygonDef* aBoxDef);
 

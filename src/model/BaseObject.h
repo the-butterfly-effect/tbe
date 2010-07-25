@@ -308,6 +308,8 @@ protected:
 	typedef QList<b2ShapeDef*> ShapeList;
 	ShapeList theShapeList;
 
+	friend class DrawPolyObject;
+
 	void clearShapeList();
 	
 	b2Body* theB2BodyPtr;

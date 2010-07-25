@@ -80,6 +80,7 @@ extern const char* ASCII(const QString& aQString);
 /// defined in main.cpp
 extern bool theIsLevelEditor;
 extern bool theDrawDebug;
+extern bool theDrawPolyOutline;
 extern bool theTBECaching;
 extern bool theDisplayFramerate;
 

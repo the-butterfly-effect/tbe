@@ -19,7 +19,7 @@
 #include "PolyObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "DrawObject.h"
+#include "DrawPolyObject.h"
 #include "Property.h"
 
 static const char* DEFAULT_POLYOBJECT_NAME = "PolyObject";
@@ -75,7 +75,6 @@ private:
 		qreal theBounciness;
 };
 
-
 static AbstractPolyObjectFactory theBowlingPinFactory(
 	"Bowling Pin",
 	QObject::tr("Bowling Pin"),
@@ -83,7 +82,9 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 				"over - and most people prefer to do that using "
 				"a Bowling Ball."),
 	"Bowling_Pin",
-	"(0,0.17)=(-0.06,0)=(-0.03,-0.17)=(0.03,-0.17)=(0.06,0)",
+	"(0.02,0.17)=(-0.02,0.17)=(-0.04,0.14)=(-0.04,0.07)=(0.04,0.07)=(0.04,0.14);"
+	"(-0.04,0.03)=(-0.06,-0.04)=(-0.06,-0.11)=(-0.03,-0.17)="
+	"(0.03,-0.17)=(0.06,-0.11)=(0.06,-0.04)=(0.04,0.03)",
 	0.12, 0.34, 1.5, 0.4 );
 
 static AbstractPolyObjectFactory theSkyhookFactory(
@@ -186,6 +187,13 @@ void PolyObject::setTheHeight ( qreal new_var )
 // Other methods
 //
 
+DrawObject*  PolyObject::createDrawObject(void)
+{
+	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
+	theDrawObjectPtr = new DrawPolyObject(this, myImageName);
+	setDrawObjectZValue(3.0);
+	return theDrawObjectPtr;
+}
 
 void PolyObject::fillShapeList(void)
 {

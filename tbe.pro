@@ -57,6 +57,7 @@ HEADERS += src/tbe_global.h \
     src/view/DrawButterfly.h \
     src/view/DrawCokeMentosBottle.h \
     src/view/DrawObject.h \
+    src/view/DrawPolyObject.h \
     src/view/DrawPostIt.h \
     src/view/DrawWorld.h \
     src/view/EditObjectDialog.h \
@@ -102,6 +103,7 @@ SOURCES += src/main.cpp \
     src/view/DrawButterfly.cpp \
     src/view/DrawCokeMentosBottle.cpp \
     src/view/DrawObject.cpp \
+    src/view/DrawPolyObject.cpp \
     src/view/DrawPostIt.cpp \
     src/view/DrawWorld.cpp \
     src/view/EditObjectDialog.cpp \
