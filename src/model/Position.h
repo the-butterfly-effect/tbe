@@ -28,10 +28,15 @@ class Position;
 class Vector
 {
 public:
-	// constructors
-	Vector (qreal aDX=0.0, qreal aDY=0.0);
+	// obvious constructors
+	Vector (void);
+	Vector (qreal aDX, qreal aDY);
 	Vector (const QPointF& aPoint);
 	Vector (const b2Vec2& aVec);
+
+	/// constructs a vector of length 1 in direction anAngle
+	Vector (qreal anAngle);
+
 
 	qreal length(void);
 

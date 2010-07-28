@@ -53,6 +53,17 @@ QString Position::toString(void) const
 {	return QString("(%1,%2)@%3").arg(x).arg(y).arg(angle); }
 
 
+Vector::Vector (void)
+		: dx(0), dy(0)
+{	; // nothing to do here, sorry...
+}
+
+Vector::Vector (qreal anAngle)
+{
+	dx = cos(anAngle);
+	dy = sin(anAngle);
+}
+
 Vector::Vector (qreal aDX, qreal aDY)
 	: dx(aDX), dy(aDY)
 {	; // nothing to do here, sorry...
