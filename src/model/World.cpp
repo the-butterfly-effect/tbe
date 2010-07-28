@@ -246,6 +246,7 @@ void World::reset ( )
 	// emptying the theObjectPtrList automatically also
 	// took care of everything in the theToBeRemovedList
 	theToBeRemovedList.clear();
+	theTotalTime = 0;
 }
 
 qreal World::simStep (void)
@@ -310,8 +311,7 @@ qreal World::simStep (void)
 	CallbackList::iterator i;
 	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
 	{
-		// FIXME: total time not available???
-		(*i)->callbackStep(theDeltaTime, 0.0);
+		(*i)->callbackStep(theDeltaTime, theTotalTime);
 	}
 
 	// remove all scheduled BaseObjects from the World
@@ -330,6 +330,8 @@ qreal World::simStep (void)
 			++k;
 		}
 	}
+
+	theTotalTime += theDeltaTime;
 
 	// check if all goals are met
 	GoalPtrList::iterator l;

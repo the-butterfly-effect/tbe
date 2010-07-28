@@ -297,6 +297,8 @@ private:
 	qreal	theWorldWidth;
 	qreal	theWorldHeight;
 
+	qreal	theTotalTime;
+
 	friend class Level;
 };
 
