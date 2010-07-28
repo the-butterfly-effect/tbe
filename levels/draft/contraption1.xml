@@ -20,7 +20,7 @@
         </toolboxitem>
    </toolbox>
     <scene>
-        <scenesize width="4.6" height="3.5" />
+        <scenesize width="4.7" height="3.5" />
         <predefined>
 
             <object X="0.05" Y="1.80" width="0.1" height="3.4" type="RectObject">
@@ -28,7 +28,7 @@
                 <property key="Bounciness" >0.05</property>
             </object>
             
-	    <object width="4.6" X="2.3" Y="0.05" height="0.10" type="Floor" >
+	    <object width="4.7" X="2.35" Y="0.05" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.6</property>
             </object>
@@ -108,11 +108,11 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.8</property>
             </object>
-            <object X="4.2" Y="0.3" height="0.4" type="DominoRed">
+            <object X="4.1" Y="0.3" height="0.4" type="DominoRed">
                 <property key="Friction" >0.1</property>
                 <property key="Mass" >1.0</property>
             </object>
-            <object X="3.9" Y="0.3" height="0.4" type="DominoGreen" >
+            <object X="3.85" Y="0.3" height="0.4" type="DominoGreen" >
                 <property key="Mass" >1.0</property>
             </object>
             <object X="3.6" Y="0.3" height="0.4" type="DominoBlue" />
@@ -126,27 +126,25 @@
             <object X="1.2" Y="0.3" height="0.4" type="DominoGreen" />
             <object X="0.9" Y="0.3" height="0.4" type="DominoBlue" />
 
-            <object X="4.4" Y="0.36" type="Coke+Mentos Bottle" angle="3.14" >
-	        <property key="Thrust" >5</property>
-            </object>
+            <object X="4.3" Y="0.36" type="Balloon"/>
 
 	    <!-- ===================== 'outer slakkenhuis' ================= -->
 	    <object width="3.7" X="2.45" Y="0.6" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.4</property>
             </object>
-            <object X="4.55" Y="1.30" width="0.1" height="2.4" type="RectObject">
+            <object X="4.65" Y="1.30" width="0.1" height="2.4" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.1</property>
             </object>
             <object X="2.05" Y="1.50" width="0.1" height="1.8" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-	    <object width="2.5" X="3.25" Y="2.45" height="0.10" type="Floor" >
+	    <object width="2.6" X="3.3" Y="2.45" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.4</property>
             </object>
-	    <object X="4.3" width="0.4" height="0.4" Y="2.2" type="RightRamp" angle="3.14">
+	    <object X="4.45" width="0.3" height="0.6" Y="2.1" type="RightRamp" angle="3.14">
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.1</property>
 	    </object>
@@ -159,13 +157,16 @@
             <object X="4.15" Y="1.20" width="0.1" height="1.2" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-	    <object width="1.7" X="3.35" Y="1.85" height="0.10" type="Floor" >
+	    <object width="1.6" X="3.3" Y="1.8" height="0.10" type="Floor" angle="0.05">
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+	    <object width="0.2" X="4.10" Y="1.85" height="0.10" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.55" Y="1.45" width="0.1" height="0.7" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="2.80" Y="2.00" type="Volley Ball" />
+            <object X="4.20" Y="2.00" type="Volley Ball" />
 
 
         </predefined>
