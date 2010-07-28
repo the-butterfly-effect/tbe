@@ -36,6 +36,7 @@ HEADERS += src/tbe_global.h \
     src/base/UndoResizeCommand.h \
     src/base/UndoRotateCommand.h \
     src/model/AbstractBall.h \
+    src/model/BalloonCactus.h \
     src/model/BaseJoint.h \
     src/model/BaseObject.h \
     src/model/Butterfly.h \
@@ -82,6 +83,7 @@ SOURCES += src/main.cpp \
     src/base/UndoResizeCommand.cpp \
     src/base/UndoRotateCommand.cpp \
     src/model/AbstractBall.cpp \
+    src/model/BalloonCactus.cpp \
     src/model/BaseJoint.cpp \
     src/model/BaseObject.cpp \
     src/model/Butterfly.cpp \
