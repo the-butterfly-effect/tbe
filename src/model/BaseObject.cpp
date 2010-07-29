@@ -166,7 +166,7 @@ void BaseObject::createPhysicsObject()
 
 void BaseObject::deletePhysicsObject()
 {
-	DEBUG5("BaseObject::deletePhysicsObject() for %s\n", ASCII(getName()));
+	DEBUG5("BaseObject::deletePhysicsObject() for %p\n", this);
 	// have B2World destroy the body - that will automatically destroy
 	// the shapes
 	if (theB2BodyPtr!=NULL)
