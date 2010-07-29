@@ -94,6 +94,7 @@
 	    <object width="0.1" X="4.05" Y="1.15" height="0.3" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.8</property>
+                <property key="Bounciness" >0.1</property>
             </object>
 	    <object width="0.1" X="4.55" Y="1.15" height="2.3" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
