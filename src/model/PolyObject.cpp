@@ -160,7 +160,10 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		Property::POLYGONS_STRING + QString(":/") );
 }
 
-PolyObject::~PolyObject ( ) { }
+PolyObject::~PolyObject ( )
+{
+	DEBUG5("PolyObject::~PolyObject()\n");
+}
 
 //
 // Methods

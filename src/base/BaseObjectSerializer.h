@@ -45,7 +45,7 @@ public:
 	 */
 	void serialize(QDomElement* aParent) const;
 
-	~BaseObjectSerializer() {};
+	virtual ~BaseObjectSerializer() {};
 
 
 	/** create a BaseObject from the information in the provided Dom

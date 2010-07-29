@@ -78,6 +78,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 
 DrawObject::~DrawObject ( )
 {
+	DEBUG5("DrawObject::~DrawObject() this=%p, bo=%p\n", this, theBaseObjectPtr);
 	if (theAnchorsPtr)
 	{
 		delete theAnchorsPtr;

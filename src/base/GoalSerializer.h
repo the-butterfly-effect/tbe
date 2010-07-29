@@ -45,7 +45,7 @@ public:
 	 */
 	// void serialize(QDomElement* aParent) const;
 
-	~GoalSerializer() {};
+	virtual ~GoalSerializer() {};
 
 
 	/** create a Goal from the information in the provided Dom

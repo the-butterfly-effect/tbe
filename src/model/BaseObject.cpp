@@ -39,12 +39,13 @@ static b2World* theStaticB2WorldPtr = NULL;
 
 BaseObject::BaseObject ( ) 
 {
+	DEBUG6("BaseObject::BaseObject() for %p\n", this);
 	initAttributes();
 }
 
 BaseObject::~BaseObject ( ) 
 {
-	DEBUG5("~BaseObject() for %p\n", this);
+	DEBUG5("BaseObject::~BaseObject() for %p\n", this);
 
 	// destroy the Body
 	//
@@ -154,7 +155,8 @@ void BaseObject::createPhysicsObject()
 	for (;myI != theShapeList.end(); ++myI)
 	{
 		(*myI)->restitution = theBounciness;
-		theB2BodyPtr->CreateShape(*myI);
+		b2Shape* myPtr = theB2BodyPtr->CreateShape(*myI);
+		DEBUG5("  Shape* = %p\n", myPtr);
 	}
 	theB2BodyPtr->SetMassFromShapes();
 	DEBUG5("Object %s has mass %f kg\n", ASCII(getName()),
@@ -164,7 +166,7 @@ void BaseObject::createPhysicsObject()
 
 void BaseObject::deletePhysicsObject()
 {
-	DEBUG5("BaseObject::deletePhysicsObject()\n");
+	DEBUG5("BaseObject::deletePhysicsObject() for %s\n", ASCII(getName()));
 	// have B2World destroy the body - that will automatically destroy
 	// the shapes
 	if (theB2BodyPtr!=NULL)
@@ -353,6 +355,7 @@ ObjectFactory::createObject(
 		return NULL;
 	}
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
+	DEBUG5("  object created = %p\n", myObjectPtr);
 	myObjectPtr->theCenter=aPosition;
 	if (aWidth!=1.0)
 		myObjectPtr->theWidth=aWidth;

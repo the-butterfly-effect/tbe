@@ -34,7 +34,7 @@ class ChooseLevel : public QDialog {
     Q_OBJECT
 public:
 	ChooseLevel(QWidget *parent = 0);
-	~ChooseLevel();
+	virtual ~ChooseLevel();
 
 	QString getCurrent(void);
 

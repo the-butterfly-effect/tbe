@@ -34,13 +34,14 @@ DrawPolyObject::DrawPolyObject (BaseObject* aBaseObjectPtr,
 	: DrawObject(aBaseObjectPtr, anImageName, anImageType)
 {
 	// everything is done in the DrawObject constructor
-	DEBUG5("DrawPolyObject\n");
+	DEBUG5("DrawPolyObject::DrawPolyObject()\n");
 
 	setFlag(QGraphicsItem::ItemIsSelectable,true);
 }
 
 DrawPolyObject::~DrawPolyObject ( )
 {
+	DEBUG5("DrawPolyObject::~DrawPolyObject() for %p\n", this);
 }
 
 //  
