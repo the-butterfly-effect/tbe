@@ -103,6 +103,7 @@ AbstractBall::AbstractBall (const QString& aName,
 	b2CircleDef* ballDef = new b2CircleDef();
 	ballDef->radius = aRadius;
 	ballDef->density = aMass/(PI*aRadius*aRadius);
+	ballDef->userData = this;
 	theShapeList.push_back(ballDef);
 
 	setTheWidth(2.0*aRadius);
@@ -189,6 +190,7 @@ void  CustomBall::parseProperties(void)
 	b2CircleDef* ballDef = new b2CircleDef();
 	ballDef->radius = myRadius;
 	ballDef->density = myMass/(PI*myRadius*myRadius);
+	ballDef->userData = this;
 	theShapeList.clear();
 	theShapeList.push_back(ballDef);
 

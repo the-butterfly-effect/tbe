@@ -80,6 +80,25 @@ void World::addGoal(Goal* aGoalPtr)
 	theGoalPtrList.push_back(aGoalPtr);
 }
 
+
+void World::addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2)
+{
+	// always make sure to get the lowest pointer value in #1
+	// (this simplifies lookup)
+	if (anObject1 > anObject2)
+	{
+		BaseObject* myTemp = anObject1;
+		anObject1 = anObject2;
+		anObject2 = myTemp;
+	}
+
+	// only insert when not combo is not present yet
+	if (theNoCollisionList.contains(anObject1, anObject2)==false)
+		theNoCollisionList.insert(anObject1, anObject2);
+}
+
+
+
 bool World::addObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
@@ -161,6 +180,7 @@ void World::initAttributes( )
 	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
 	theB2WorldPtr->SetContactListener(this);
 	theB2WorldPtr->SetDestructionListener(this);
+	theB2WorldPtr->SetContactFilter(this);
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
@@ -169,7 +189,8 @@ void World::initAttributes( )
 	b2PolygonDef groundShapeDef;
 	groundShapeDef.SetAsBox(50.0f, 1.0f);
 	groundShapeDef.restitution=0.0f;
-	groundBody->CreateShape(&groundShapeDef);
+	b2Shape* myShapePtr = groundBody->CreateShape(&groundShapeDef);
+	DEBUG5("ground body: %p\n", myShapePtr);
 
 	// Define the zero body - only used to make DrawDebug look good :-)
 	b2BodyDef zeroBodyDef;
@@ -178,7 +199,8 @@ void World::initAttributes( )
 	b2PolygonDef zeroShapeDef;
 	zeroShapeDef.SetAsBox(0.05f, 0.05f);
 	zeroShapeDef.restitution=0.0f;
-	zeroBody->CreateShape(&zeroShapeDef);
+	myShapePtr = zeroBody->CreateShape(&zeroShapeDef);
+	DEBUG5("zero body: %p\n", myShapePtr);
 	BaseJoint::setGroundBodyPtr(zeroBody);
 
 
@@ -189,7 +211,8 @@ void World::initAttributes( )
 	b2PolygonDef leftShapeDef;
 	leftShapeDef.SetAsBox(1.0f, 50.0f);
 	leftShapeDef.restitution=0.0f;
-	leftBody->CreateShape(&leftShapeDef);
+	myShapePtr = leftBody->CreateShape(&leftShapeDef);
+	DEBUG5("left wall body: %p\n", myShapePtr);
 }
 
 void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
@@ -248,6 +271,33 @@ void World::reset ( )
 	theToBeRemovedList.clear();
 	theTotalTime = 0;
 }
+
+
+bool World::ShouldCollide(
+			b2Shape* shape1,
+			b2Shape* shape2)
+{
+	BaseObject* myObj1 = reinterpret_cast<BaseObject*>(shape1->GetUserData());
+	BaseObject* myObj2 = reinterpret_cast<BaseObject*>(shape2->GetUserData());
+
+	if (myObj1 == NULL || myObj2 == NULL)
+		return true;
+
+	// always make sure to get the lowest pointer value in #1
+	// (this simplifies lookup)
+	if (myObj1 > myObj2)
+	{
+		BaseObject* myTemp = myObj1;
+		myObj1 = myObj2;
+		myObj2 = myTemp;
+	}
+
+	if (theNoCollisionList.contains(myObj1, myObj2))
+		return false;
+	return true;
+}
+
+
 
 qreal World::simStep (void)
 {

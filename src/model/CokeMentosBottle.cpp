@@ -66,6 +66,7 @@ CokeMentosBottle::CokeMentosBottle()
 		// approximation of the initial mass - we'll fix it later on...
 		my8PointPinDef->density = 2.1 / (0.166*0.501);
 		my8PointPinDef->friction = 0.0;
+		my8PointPinDef->userData = this;
 		theShapeList.push_back(my8PointPinDef);
 	}
 

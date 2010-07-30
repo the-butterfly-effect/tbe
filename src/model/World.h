@@ -130,7 +130,7 @@ private:
   * the class holding all BaseObjects and is responsible for the simulation 
   */
 
-class World : public ContactListener, public DestructionListener
+class World : public ContactListener, public DestructionListener, public b2ContactFilter
 {
 public:
 
@@ -216,6 +216,28 @@ public:
 	/// returns the gravity constant for this world
 	virtual qreal getG(void)
 	{ return -9.81; }
+
+
+public:
+	//////////////////////////////////////////////////////////////////////////
+	// the call back interface for b2ContactFilter && assorted stuff
+
+	/// implemented from b2ContactFilter
+	/// @returns true if shape1 and shape2 should collide
+	virtual bool ShouldCollide(
+			b2Shape* shape1,
+			b2Shape* shape2);
+
+	/** add the set of anObject1 and anObject2 to a list of objects that
+	  * cannot collide.
+	  * @param anObject1	pointer to an object
+	  * @param anObject2	pointer to a second object
+	  */
+	void addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2);
+
+private:
+	typedef QMultiHash<BaseObject*, BaseObject*> NoCollisionList;
+	NoCollisionList theNoCollisionList;
 
 public:
 	//////////////////////////////////////////////////////////////////////////

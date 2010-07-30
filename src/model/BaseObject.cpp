@@ -212,6 +212,7 @@ void BaseObject::initAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::IMAGE_NAME_STRING + QString(":/") +
 		Property::BOUNCINESS_STRING + QString(":/") +
+		Property::NOCOLLISION_STRING+ QString(":/") +
 		Property::PIVOTPOINT_STRING + QString(":/") +
 		Property::ZVALUE_STRING + QString(":2.0/") );
 }
@@ -245,6 +246,18 @@ void BaseObject::parseProperties(void)
 	{
 		PivotPoint* myPP = new PivotPoint(this, myDelta);
 		theWorldPtr->addObject(myPP);
+	}
+
+	QString myNoCollisionObjectIDs;
+	theProps.propertyToString(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
+	QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
+	QStringList::iterator myI = myObjIDList.begin();
+	while (myI != myObjIDList.end())
+	{
+		BaseObject* myObjPtr = theWorldPtr->findObjectByID(*myI);
+		if (myObjPtr!=NULL)
+			theWorldPtr->addNoCollisionCombo(this, myObjPtr);
+		++myI;
 	}
 
 	// For normal situations, i.e. created by Level for World

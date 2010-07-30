@@ -178,6 +178,7 @@ public:
 	// all below are used in BaseObject
 	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
 	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce
+	static const char* NOCOLLISION_STRING;		// Object IDs that we do not collide with - separated by ';'
 	static const char* PIVOTPOINT_STRING;		// coordinate - where to put a pivot point to world
 	static const char* ZVALUE_STRING;    		// depth in image, 0.1 = default for Scenery,
 												// 2.0 is default for normal objects

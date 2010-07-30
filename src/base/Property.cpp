@@ -31,6 +31,7 @@ const char* Property::DESCRIPTION_STRING = "Description";
 const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::MASS_STRING        = "Mass";
+const char* Property::NOCOLLISION_STRING = "NoCollision";
 const char* Property::OBJECT_NAME_STRING = "ObjectName";
 const char* Property::PIVOTPOINT_STRING  = "PivotPoint";
 const char* Property::POLYGONS_STRING    = "Polygons";
