@@ -239,7 +239,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
 
-	    <object X="5.32" Y="1.85" width="0.6" height="0.67" type="Scenery">
+	    <object X="5.32" Y="1.6" width="0.6" height="1.0" type="Scenery">
                 <property key="ImageName">xray2000</property>
             </object>
 
