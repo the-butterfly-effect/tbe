@@ -166,10 +166,10 @@ void Link::parseProperties(void)
 	// NOTE: if we used the constructor with baseobject, (i.e. properties
 	// aren't read yet) this will still work because propertyToObjectPtr
 	// only modifies theFirstPtr/theSecondPtr if successful
-	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
+	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
 								  &theFirstPtr, &theFirstLocalPosPtr);
 
-	theProps.propertyToObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
+	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
 								  &theSecondPtr, &theSecondLocalPosPtr);
 
 	createPhysicsObject();

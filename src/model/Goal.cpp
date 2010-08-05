@@ -103,12 +103,12 @@ bool GoalDistance::parseProperties(World* aWPtr)
 
 
 	// parse object1 and object2
-	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
+	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT1_STRING);
 		return false;
 	}
-	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
+	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT2_STRING);
 		return false;
@@ -224,7 +224,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	}
 
 	// parse object
-	if (theProps.propertyToObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
+	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
 		return false;

@@ -125,7 +125,7 @@ public:
 	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
-	bool propertyToObjectPtr(World* aWorldPtr,
+	bool property2ObjectPtr(World* aWorldPtr,
 							 const QString& aPropertyName,
 							 BaseObject** aBOPtrPtr);
 
@@ -137,7 +137,7 @@ public:
 	  * @param aVectorPtrPtr  OUTPUT upon success contains pointer to a Vector*
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
-	bool propertyToObjectPlusVectorPtr(World* aWorldPtr,
+	bool property2ObjectPlusVectorPtr(World* aWorldPtr,
 							 const QString& aPropertyName,
 							 BaseObject** aBOPtrPtr,
 							 Vector** aVectorPtrPtr);

@@ -147,7 +147,7 @@ bool PropertyList::property2Float(const QString& aPropertyName,
 }
 
 
-bool PropertyList::propertyToObjectPtr(
+bool PropertyList::property2ObjectPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
 		BaseObject** aBOPtrPtr)
@@ -161,7 +161,7 @@ bool PropertyList::propertyToObjectPtr(
 	return true;
 }
 
-bool PropertyList::propertyToObjectPlusVectorPtr(
+bool PropertyList::property2ObjectPlusVectorPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
 		BaseObject** aBOPtrPtr,

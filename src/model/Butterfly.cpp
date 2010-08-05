@@ -139,7 +139,7 @@ DrawObject*  Butterfly::createDrawObject(void)
 void Butterfly::goToFlower(void)
 {
 	BaseObject* myFlowerPtr;
-	if (theProps.propertyToObjectPtr(theWorldPtr, Property::OBJECT_STRING, &myFlowerPtr)==false)
+	if (theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING, &myFlowerPtr)==false)
 		theTargetPos = getOrigCenter();
 	else
 		theTargetPos = myFlowerPtr->getOrigCenter();
