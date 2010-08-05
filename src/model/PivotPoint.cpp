@@ -114,13 +114,14 @@ void PivotPoint::initAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::OBJECT1_STRING + QString(":/") +
 		Property::OBJECT2_STRING + QString(":/") +
+		Property::COLLIDE_STRING + QString(":false/") +
 		"-" + Property::MASS_STRING + ":/" );
 }
 
 void PivotPoint::parseProperties(void)
 {
 	BaseObject::parseProperties();
-	theProps.propertyToBool(Property::COLLIDE_STRING, &areObjectsColliding);
+	theProps.property2Bool(Property::COLLIDE_STRING, &areObjectsColliding);
 }
 
 

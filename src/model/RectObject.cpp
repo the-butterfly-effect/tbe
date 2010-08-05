@@ -283,9 +283,10 @@ void RectObject::initAttributes ( )
 {
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
-		Property::ROTATABLE_STRING   + QString(":/") +
+		Property::ROTATABLE_STRING   + QString(":false/") +
 		Property::RESIZABLE_STRING   + QString(":/") +
 		Property::DESCRIPTION_STRING + QString(":/") );
+	rotatableInfo = false;
 }
 
 
@@ -294,8 +295,7 @@ void  RectObject::parseProperties(void)
 	// first parse everything that BaseObject already knows about
 	BaseObject::parseProperties();
 
-	rotatableInfo = false;
-	theProps.propertyToBool(Property::ROTATABLE_STRING, &rotatableInfo);
+	theProps.property2Bool(Property::ROTATABLE_STRING, &rotatableInfo);
 	theProps.propertyToString(Property::OBJECT_NAME_STRING,&theNameString);
 
 	QString myString;

@@ -51,19 +51,19 @@ bool TestPropertyList::runTests(void)
 	myPL.setProperty("Key1", "abcde");
 	myPL.setProperty("Key2", "xyz");
 	check(myPL.getPropertyCount() == 2, "proper count of properties\n");
-	check(myPL.getProperty("Key1") == "abcde", "correct retrieval of property 1\n");
-	check(myPL.getProperty("Key2") == "xyz", "correct retrieval of property 2\n");
+	check(myPL.getPropertyNoDefault("Key1") == "abcde", "correct retrieval of property 1\n");
+	check(myPL.getPropertyNoDefault("Key2") == "xyz", "correct retrieval of property 2\n");
 	check(myPL.getPropertyCount() == 2, "still 2 properties\n");
 	myPL.removeProperty("Key2");
 	check(myPL.getPropertyCount() == 1, "after removal, 1 property remains\n");
-	check(myPL.getProperty("Key1") == "abcde", "correct retrieval of property 1\n");
-	check(myPL.getProperty("Key2") == "", "correct (failed) retrieval of property 2\n");
+	check(myPL.getPropertyNoDefault("Key1") == "abcde", "correct retrieval of property 1\n");
+	check(myPL.getPropertyNoDefault("Key2") == "", "correct (failed) retrieval of property 2\n");
 	myPL.removeProperty("Key2");
 	myPL.removeProperty("Ridiculus String");
 	check(myPL.getPropertyCount() == 1, "after failed removals, still 1 property remains\n");
 
-	// propertyToBool parsing
-	testmsg("propertyToBool tests\n");
+	// property2Bool parsing - no default substitutions
+	testmsg("propertyToBool tests, no default substitutions\n");
 	bool myBool = 0;
 	myPL.setProperty("Bool1", "true");
 	myPL.setProperty("Bool2", "True");
@@ -73,23 +73,23 @@ bool TestPropertyList::runTests(void)
 	myPL.setProperty("Bool6", "none");  // fail
 	myPL.setProperty("Bool7", "1");   // fail
 
-	check(myPL.propertyToBool("Bool1",&myBool)==true && myBool==true,   "Bool1 was correctly retrieved\n");
-	check(myPL.propertyToBool("NoBool",&myBool)==false && myBool==true, "Failed key lookup doesn't touch variable\n");
-	check(myPL.propertyToBool("Bool5",&myBool)==true && myBool==false,  "Bool5 was correctly retrieved\n");
-	check(myPL.propertyToBool("Bool2",&myBool)==true && myBool==true,   "Bool2 was correctly retrieved\n");
-	check(myPL.propertyToBool("Bool6",&myBool)==false && myBool==true,  "Bool6 was correctly ignored\n");
-	check(myPL.propertyToBool("Bool5",&myBool)==true && myBool==false,  "Bool5 was correctly retrieved again\n");
-	check(myPL.propertyToBool("Bool4",&myBool)==false && myBool==false, "Bool4 was correctly ignored\n");
-	check(myPL.propertyToBool("Bool7",&myBool)==false && myBool==false, "Bool7 was correctly ignored\n");
-	check(myPL.propertyToBool("Bool3",&myBool)==true && myBool==true,   "Bool3 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool1",&myBool,false)==true && myBool==true,   "Bool1 was correctly retrieved\n");
+	check(myPL.property2Bool("NoBool",&myBool,false)==false && myBool==true, "Failed key lookup doesn't touch variable\n");
+	check(myPL.property2Bool("Bool5",&myBool,false)==true && myBool==false,  "Bool5 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool2",&myBool,false)==true && myBool==true,   "Bool2 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool6",&myBool,false)==false && myBool==true,  "Bool6 was correctly ignored\n");
+	check(myPL.property2Bool("Bool5",&myBool,false)==true && myBool==false,  "Bool5 was correctly retrieved again\n");
+	check(myPL.property2Bool("Bool4",&myBool,false)==false && myBool==false, "Bool4 was correctly ignored\n");
+	check(myPL.property2Bool("Bool7",&myBool,false)==false && myBool==false, "Bool7 was correctly ignored\n");
+	check(myPL.property2Bool("Bool3",&myBool,false)==true && myBool==true,   "Bool3 was correctly retrieved\n");
 
 	myPL.setProperty("Bool8", true);
 	myPL.setProperty("Bool9", false);
 	myPL.setProperty("Bool5", true);
 
-	check(myPL.propertyToBool("Bool9",&myBool)==true && myBool==false,   "Bool9 was correctly retrieved\n");
-	check(myPL.propertyToBool("Bool8",&myBool)==true && myBool==true,   "Bool8 was correctly retrieved\n");
-	check(myPL.propertyToBool("Bool8",&myBool)==true && myBool==true,   "Bool8 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool9",&myBool, false)==true && myBool==false,   "Bool9 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool8",&myBool, false)==true && myBool==true,   "Bool8 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool8",&myBool, false)==true && myBool==true,   "Bool8 was correctly retrieved\n");
 
 
 	// propertyToFloat parsing of float parameters
@@ -137,11 +137,56 @@ bool TestPropertyList::runTests(void)
 }
 
 
+class TestPropertyWithDefaults : public TestChapter
+{
+public:
+	TestPropertyWithDefaults() : TestChapter("Test Property With Defaults")	{}
+	virtual bool runTests();
+
+	bool floatcompare(float a, float b)
+	{ return (a*a-b*b < 0.0001)?true:false; }
+};
+
+
+bool TestPropertyWithDefaults::runTests(void)
+{
+	// property2Bool parsing - with default substitution
+	testmsg("propertyToBool tests, no default substitutions\n");
+	PropertyList myPL;
+	bool myBool = 0;
+	myPL.setProperty("Bool1", "true");   // no default
+	// no Bool2, default present
+	// no Bool3, default present
+	// Bool4 is true, default is false
+	myPL.setProperty("Bool4", "true");   // no default
+	// no Bool5, default is invalid
+	myPL.setDefaultPropertiesString("Bool2:true/Bool3:false/Bool4:false/Bool5:wrong/");
+
+	check(myPL.getDefaultProperty("Bool2")=="true", "default for Bool2 is present\n");
+	check(myPL.getDefaultProperty("Bool5")=="wrong", "default for Bool5 is present and wrong\n");
+	check(myPL.getDefaultProperty("Bool1").isEmpty(), "no default for Bool1\n");
+
+	check(myPL.property2Bool("Bool1",&myBool,true)==true && myBool==true,   "Bool1 was correctly retrieved\n");
+	check(myPL.property2Bool("NoBool",&myBool,true)==false && myBool==true, "Failed key lookup doesn't touch variable\n");
+	check(myPL.property2Bool("Bool2",&myBool,true)==true && myBool==true,   "default value Bool2 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool3",&myBool,true)==true && myBool==false,   "default value Bool3 was correctly retrieved\n");
+	check(myPL.property2Bool("Bool4",&myBool,true)==true && myBool==true,   "real Bool4 gets preference over default\n");
+	check(myPL.property2Bool("Bool5",&myBool,true)==false && myBool==true,   "Bool5 default is invalid, variable untouched\n");
+
+	myPL.removeProperty("Bool4");
+	check(myPL.property2Bool("Bool4",&myBool,true)==true && myBool==false,   "default Bool4 gets chosen once real value is gone\n");
+
+	return true;
+}
+
+
+
 int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
 	myFramework.add( new TestPropertyList );
+	myFramework.add( new TestPropertyWithDefaults );
 
 	myFramework.run();
 

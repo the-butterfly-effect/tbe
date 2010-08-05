@@ -88,26 +88,38 @@ QStringList PropertyList::getDefaultPropertyList(void) const
 }
 
 
-bool PropertyList::propertyToBool(const QString& aPropertyName,
-								   bool* aBool) const
+bool PropertyList::property2Bool(const QString& aPropertyName,
+								 bool* aBool,
+								 bool useDefault) const
 {
 	bool myResult;
+
+	int myPass = 1;
 	QString myValue = getPropertyNoDefault(aPropertyName).toLower();
-	if (myValue.isEmpty())
+	while (myPass < 3)
+	{
+		if (myValue.isEmpty() && useDefault==false)
+			return false;
+
+		// if myValue is empty, none of these will ever trigger
+		// if myValue is nonempty and we parse, we're happy
+		if (myValue =="true")
+		{ myResult=true; break;	}
+		if (myValue =="yes")
+		{ myResult=true; break;	}
+		if (myValue =="false")
+		{ myResult=false; break; }
+		if (myValue =="no")
+		{ myResult=false; break; }
+
+		// ok, myValue was empty or unparsed. let's get the
+		// default and go again...
+		myValue = getDefaultProperty(aPropertyName).toLower();
+		myPass++;
+	}
+	if (myPass>=3)
 		return false;
 
-	if (myValue =="true")
-	{ myResult=true; goto done;	}
-	if (myValue =="yes")
-	{ myResult=true; goto done;	}
-	if (myValue =="false")
-	{ myResult=false; goto done;}
-	if (myValue =="no")
-	{ myResult=false; goto done;}
-
-	return false;
-
-done:
 	*aBool = myResult;
 	return true;
 }

@@ -96,11 +96,16 @@ public:
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a bool (true/false/yes/no)
+	  *
 	  * @param aPropertyName
 	  * @param aBool	  OUTPUT upon success contains value of property
-	  * @returns true if success. if no success aBool is unchanged
+	  * @param useDefault if true, get default property value if property not found
+	  * @returns true if success and false if not.
+	  *   if no success aBool will either be untouched (useDefault=false) or
+	  *   will the default value (useDefault=true) or will be untouched
+	  *   (useDefault=true but no default found)
 	  */
-	bool propertyToBool(const QString& aPropertyName, bool* aBool) const;
+	bool property2Bool(const QString& aPropertyName, bool* aBool, bool useDefault=true) const;
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit aFloat
