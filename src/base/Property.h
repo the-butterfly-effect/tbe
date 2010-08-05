@@ -143,13 +143,16 @@ public:
 							 Vector** aVectorPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
-	  * its value can be parsed to fit a position (x,y)
+	  * its value can be parsed to fit a vector (x,y)
 	  * because there is no angle, we use the Vector class, not Position.
 	  * @param aPropertyName
-	  * @param aPosition		  (output) upon success contains value of property
-	  * @returns true if success. if no success aPosition is unchanged
+	  * @param aVector		  (output) upon success contains value of property
+	  * @returns true if success and false if not.
+	  *   if no success aVector will either be untouched (useDefault=false) or
+	  *   will the default value (useDefault=true) or will be untouched
+	  *   (useDefault=true but no default found)
 	  */
-	bool propertyToVector(const QString& aPropertyName, Vector* aPosition) const;
+	bool property2Vector(const QString& aPropertyName, Vector* aVector, bool useDefault=true) const;
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a string - that's always the case if not empty :-)

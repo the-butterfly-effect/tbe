@@ -243,7 +243,7 @@ void BaseObject::parseProperties(void)
 	setTheBounciness(myFloat);
 
 	Vector myDelta;
-	if (theProps.propertyToVector(Property::PIVOTPOINT_STRING, &myDelta))
+	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
 		PivotPoint* myPP = new PivotPoint(this, myDelta);
 		theWorldPtr->addObject(myPP);

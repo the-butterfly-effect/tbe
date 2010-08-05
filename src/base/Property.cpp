@@ -199,14 +199,31 @@ bool PropertyList::property2String(const QString& aPropertyName, QString* aStrin
 	return true;
 }
 
-bool PropertyList::propertyToVector(const QString& aPropertyName, Vector* aPosition) const
+bool PropertyList::property2Vector(const QString& aPropertyName, Vector* aPosition, bool useDefault) const
 {
 	QString myValue = getPropertyNoDefault(aPropertyName).trimmed();
+	if (myValue.isEmpty() && useDefault==false)
+		return false;
+
 	Vector myVector;
 	bool isOK = myVector.fromString(myValue);
 	if (isOK)
+	{
 		*aPosition = myVector;
-	return isOK;
+		return true;
+	}
+
+	myValue = getDefaultProperty(aPropertyName).trimmed();
+	if (myValue.isEmpty())
+		return false;
+	isOK = myVector.fromString(myValue);
+	if (isOK)
+	{
+		*aPosition = myVector;
+		return true;
+	}
+
+	return false;
 }
 
 void PropertyList::setDefaultPropertiesString(const QString& aSeparableString)
