@@ -98,7 +98,7 @@ public:
 	  * its value can be parsed to fit a bool (true/false/yes/no)
 	  *
 	  * @param aPropertyName
-	  * @param aBool	  OUTPUT upon success contains value of property
+	  * @param aBool	  (output) upon success contains value of property
 	  * @param useDefault if true, get default property value if property not found
 	  * @returns true if success and false if not.
 	  *   if no success aBool will either be untouched (useDefault=false) or
@@ -110,7 +110,7 @@ public:
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit aFloat
 	  * @param aPropertyName
-	  * @param aFloat		  OUTPUT upon success contains value of property
+	  * @param aFloat		  (output) upon success contains value of property
 	  * @returns true if success and false if not.
 	  *   if no success aFloat will either be untouched (useDefault=false) or
 	  *   will the default value (useDefault=true) or will be untouched
@@ -121,8 +121,8 @@ public:
 	/** returns true if property aPropertyName exists *and*
 	  * its value is the ID of an existing BaseObject instance
 	  * @param aWorldPtr
-	  * @param aPropertyName
-	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject
+	  * @param aPropertyName (output)
+	  * @param aBOPtrPtr	 (output) upon success contains pointer to BaseObject
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
 	bool property2ObjectPtr(World* aWorldPtr,
@@ -133,8 +133,8 @@ public:
 	  * its value is the ID of an existing BaseObject instance
 	  * @param aWorldPtr
 	  * @param aPropertyName
-	  * @param aBOPtrPtr	  OUTPUT upon success contains pointer to BaseObject*
-	  * @param aVectorPtrPtr  OUTPUT upon success contains pointer to a Vector*
+	  * @param aBOPtrPtr	  (output) upon success contains pointer to BaseObject*
+	  * @param aVectorPtrPtr  (output) upon success contains pointer to a Vector*
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
 	bool property2ObjectPlusVectorPtr(World* aWorldPtr,
@@ -146,7 +146,7 @@ public:
 	  * its value can be parsed to fit a position (x,y)
 	  * because there is no angle, we use the Vector class, not Position.
 	  * @param aPropertyName
-	  * @param aPosition		  OUTPUT upon success contains value of property
+	  * @param aPosition		  (output) upon success contains value of property
 	  * @returns true if success. if no success aPosition is unchanged
 	  */
 	bool propertyToVector(const QString& aPropertyName, Vector* aPosition) const;
@@ -154,10 +154,13 @@ public:
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a string - that's always the case if not empty :-)
 	  * @param aPropertyName
-	  * @param aString		  OUTPUT upon success contains the value string
-	  * @returns true if success (i.e. there is a string). false if empty
+	  * @param aString		  (output) upon success contains the value string
+	  * @returns true if success and false if not.
+	  *   if no success aString will either be untouched (useDefault=false) or
+	  *   will the default value (useDefault=true) or will be untouched
+	  *   (useDefault=true but no default found)
 	  */
-	bool propertyToString(const QString& aPropertyName, QString* aString) const;
+	bool property2String(const QString& aPropertyName, QString* aString, bool useDefault=true) const;
 
 	/// @returns the number of properties in this class
 	int  getPropertyCount(void) const

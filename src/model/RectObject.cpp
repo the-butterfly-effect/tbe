@@ -284,7 +284,7 @@ void RectObject::initAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
 		Property::ROTATABLE_STRING   + QString(":false/") +
-		Property::RESIZABLE_STRING   + QString(":/") +
+		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" +
 		Property::DESCRIPTION_STRING + QString(":/") );
 	rotatableInfo = false;
 }
@@ -296,10 +296,10 @@ void  RectObject::parseProperties(void)
 	BaseObject::parseProperties();
 
 	theProps.property2Bool(Property::ROTATABLE_STRING, &rotatableInfo);
-	theProps.propertyToString(Property::OBJECT_NAME_STRING,&theNameString);
+	theProps.property2String(Property::OBJECT_NAME_STRING,&theNameString);
 
 	QString myString;
-	if (theProps.propertyToString(Property::RESIZABLE_STRING, &myString))
+	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
 	{
 		// we do not check for noresize, that's the default
 		resizableInfo = NORESIZING;
@@ -310,7 +310,7 @@ void  RectObject::parseProperties(void)
 		if (myString == Property::TOTALRESIZE_STRING)
 			resizableInfo = TOTALRESIZE;
 	}
-	theProps.propertyToString(Property::DESCRIPTION_STRING, &theToolTipString);
+	theProps.property2String(Property::DESCRIPTION_STRING, &theToolTipString);
 	adjustParameters();
 }
 

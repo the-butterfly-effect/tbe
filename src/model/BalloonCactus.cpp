@@ -33,17 +33,17 @@ public:
 static BalloonObjectFactory theBalloonObjectFactory;
 
 
-
-static const double theBalloonMass = 0.1;
-
-
 Balloon::Balloon()
 		: PolyObject()
 {
 	// no special properties
 	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":Balloon/"));
-	theProps.setProperty(Property::IMAGE_NAME_STRING,"Balloon");
+		Property::IMAGE_NAME_STRING + QString(":Balloon/") +
+		Property::MASS_STRING + ":0.1/" +
+		Property::POLYGONS_STRING + ":"
+	"(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
+	"=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
+	"=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)" + "/");
 
 	BaseObject::setTheWidth(0.27);
 	BaseObject::setTheHeight(0.36);
@@ -51,11 +51,6 @@ Balloon::Balloon()
 	// balloons bounce very well
 	setTheBounciness(0.7);
 
-	theProps.setProperty(Property::MASS_STRING, "0.1");
-	theProps.setProperty(Property::POLYGONS_STRING,
-	"(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
-	"=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
-	"=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)");
 	fillShapeList();
 }
 
@@ -76,7 +71,6 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	// i.e. the "drag" or "air restance"
 	if (aDeltaTime >= aTotalTime)
 	{
-printf("first!\n");
 		// on the first call, set the previous position
 		thePreviousPosition = getTempCenter();
 	}
@@ -89,8 +83,8 @@ printf("first!\n");
 
 	Vector myForceVector = myForce * Vector(mySpeedVector.toAngle());
 	theB2BodyPtr->ApplyForce(myForceVector.toB2Vec2(), (getTempCenter()).toB2Vec2());
-	printf("speed: %f@%f / force: %f\n", mySpeedVector.length()/aDeltaTime,
-		   mySpeedVector.toAngle(), myForceVector.length());
+//	printf("speed: %f@%f / force: %f\n", mySpeedVector.length()/aDeltaTime,
+//		   mySpeedVector.toAngle(), myForceVector.length());
 
 	thePreviousPosition = getTempCenter();
 }

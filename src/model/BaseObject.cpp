@@ -250,7 +250,7 @@ void BaseObject::parseProperties(void)
 	}
 
 	QString myNoCollisionObjectIDs;
-	theProps.propertyToString(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
+	theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
 	QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
 	QStringList::iterator myI = myObjIDList.begin();
 	while (myI != myObjIDList.end())

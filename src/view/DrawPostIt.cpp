@@ -83,9 +83,9 @@ QString DrawPostIt::getPageString(unsigned int aPage)
 	// if the second one exists, it overrides an existing first one
 	QString myLocName = QLocale::system().name();
 	myPageNr += "_" + myLocName.mid(0,2);
-	theBaseObjectPtr->theProps.propertyToString(myPageNr, &myPageString);
+	theBaseObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
 	myPageNr += "_" + myLocName.mid(3,2);
-	theBaseObjectPtr->theProps.propertyToString(myPageNr, &myPageString);
+	theBaseObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
 	return myPageString;
 }
 

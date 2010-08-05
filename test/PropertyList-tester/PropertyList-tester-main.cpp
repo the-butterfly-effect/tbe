@@ -122,7 +122,17 @@ bool TestPropertyList::runTests(void)
 	check(myPL.property2Float("Float8",&myFloat,false)==true && floatcompare(myFloat,6.84),
 		  "Float8 was correctly retrieved\n");
 
+	// property2String parsing - no default substitutions
+	testmsg("propertyToString tests, no default substitutions\n");
+	myPL.setProperty("String1", "sixeightfour");
+	// no String2
 
+	QString myString;
+	check(myPL.property2String("String1",&myString,false)==true, "String1 was retrieved\n");
+	check(myString=="sixeightfour", "and String1 was correctly retrieved\n");
+	myString = "lala";
+	check(myPL.property2String("String2",&myString,false)==false && myString=="lala",
+		  "String2 doesn't exist and myString wasn't touched\n");
 
 	// propertyToVector (note that this relies heavily on Vector,
 	// so we have not much to test for here...)
@@ -151,7 +161,7 @@ public:
 bool TestPropertyWithDefaults::runTests(void)
 {
 	// property2Bool parsing - with default substitution
-	testmsg("propertyToBool tests, no default substitutions\n");
+	testmsg("propertyToBool tests, with default substitutions\n");
 	PropertyList myPL;
 	bool myBool = 0;
 	myPL.setProperty("Bool1", "true");   // no default
@@ -196,6 +206,24 @@ bool TestPropertyWithDefaults::runTests(void)
 	check(myPL.property2Float("Float4",&myFloat, true)==false,
 		  "Float4 was correctly ignored\n");
 	check(floatcompare(myFloat, -100.01), "for Float4, float was correctly left untouched\n");
+
+
+	// property2String parsing - with default substitutions
+	testmsg("propertyToString tests, with default substitutions\n");
+	myPL.setProperty("String1", "threefourtwo");
+	// no String2, no default string2
+	myPL.setDefaultPropertiesString("String1:sixeightfour/String3:onetwothree/");
+
+	QString myString;
+	check(myPL.property2String("String1",&myString,true)==true, "String1 was retrieved\n");
+	check(myString=="threefourtwo", "and String1 was correctly retrieved\n");
+	myString = "lala";
+	check(myPL.property2String("String2",&myString,true)==false && myString=="lala",
+		  "String2 doesn't exist and myString wasn't touched\n");
+	check(myPL.property2String("String3",&myString,true)==true && myString=="onetwothree",
+		  "String3 taken from default correctly\n");
+
+
 
 	return true;
 }

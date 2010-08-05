@@ -85,7 +85,7 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 		{
 			QString myKey = *myI;
 			QString myValue = aBaseObjectPtr->theProps.getDefaultProperty(*myI);
-			aBaseObjectPtr->theProps.propertyToString(*myI, &myValue);
+			aBaseObjectPtr->theProps.property2String(*myI, &myValue);
 			QTreeWidgetItem* myLine = new QTreeWidgetItem(ui.treeWidget);
 			myLine->setText(0, myKey);
 			myLine->setText(1, myValue);

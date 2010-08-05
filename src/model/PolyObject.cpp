@@ -192,7 +192,8 @@ void PolyObject::setTheHeight ( qreal new_var )
 
 DrawObject*  PolyObject::createDrawObject(void)
 {
-	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
+	QString myImageName;
+	theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName);
 	theDrawObjectPtr = new DrawPolyObject(this, myImageName);
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
@@ -210,7 +211,7 @@ void PolyObject::fillShapeList(void)
 		myScale.dy = getTheHeight()/theOriginalHeight;
 
 	QString myPolygons;
-	theProps.propertyToString(Property::POLYGONS_STRING, &myPolygons);
+	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
 	QStringList myPolygonList = myPolygons.split(";",QString::SkipEmptyParts);
 
 	QStringList::iterator i = myPolygonList.begin();
