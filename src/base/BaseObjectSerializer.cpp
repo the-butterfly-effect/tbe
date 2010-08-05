@@ -41,19 +41,20 @@ BaseObjectSerializer::BaseObjectSerializer(const BaseObject* anObjectPtr)
 void
 BaseObjectSerializer::serialize(QDomElement* aParent) const
 {
+	// save basic values that are part of the object
+	// TODO: only save values that are different from default
 	QDomElement myNode = aParent->ownerDocument().createElement(theObjectString);
 	myNode.setAttribute(theTypeAttributeString, theBaseObjectPtr->getName());
 	myNode.setAttribute(theXAttributeString, theBaseObjectPtr->getOrigCenter().x);
 	myNode.setAttribute(theYAttributeString, theBaseObjectPtr->getOrigCenter().y);
-	if (theBaseObjectPtr->isRotatable())
-		myNode.setAttribute(theAngleAttributeString, theBaseObjectPtr->getOrigCenter().angle);
-	if (theBaseObjectPtr->isResizable() & BaseObject::HORIZONTALRESIZE)
-		myNode.setAttribute(theWidthAttributeString, theBaseObjectPtr->getTheWidth());
-	if (theBaseObjectPtr->isResizable() & BaseObject::VERTICALRESIZE)
-		myNode.setAttribute(theHeightAttributeString, theBaseObjectPtr->getTheHeight());
+	myNode.setAttribute(theAngleAttributeString, theBaseObjectPtr->getOrigCenter().angle);
+	myNode.setAttribute(theWidthAttributeString, theBaseObjectPtr->getTheWidth());
+	myNode.setAttribute(theHeightAttributeString, theBaseObjectPtr->getTheHeight());
 	if (theBaseObjectPtr->getID().isEmpty()==false)
 		myNode.setAttribute(theIDAttributeString, theBaseObjectPtr->getID());
 
+	// save properties
+	// only save properties that are non-default
 	if (theBaseObjectPtr->theProps.getPropertyCount() > 0)
 	{
 		PropertyList::PropertyMap::const_iterator i;
@@ -61,6 +62,11 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 			  i!= theBaseObjectPtr->theProps.constPropertyEnd();
 			 ++i)
 		{
+			QString myDefValue = theBaseObjectPtr->theProps.getDefaultProperty(i.key());
+			// do not save default values
+			if (myDefValue == i.value())
+				continue;
+
 			QDomElement myProperty = aParent->ownerDocument().createElement(thePropertyString);
 			myProperty.setAttribute("key", i.key());
 			QDomText myT = aParent->ownerDocument().createTextNode(i.value());
