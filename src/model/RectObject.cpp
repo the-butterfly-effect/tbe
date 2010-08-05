@@ -172,7 +172,7 @@ void RectObject::adjustParameters(void)
 
 			// get mass:  no mass -> no density -> no motion
 			float myMass;
-			if (theProps.propertyToFloat(Property::MASS_STRING, &myMass))
+			if (theProps.property2Float(Property::MASS_STRING, &myMass))
 				boxDef->density = myMass / getTheWidth()*getTheHeight();
 			boxDef->userData = this;
 			setFriction(boxDef);
@@ -195,7 +195,7 @@ void RectObject::adjustTallParametersPart(void)
 	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
 	// also, calculate the density correctly - each shape has same density
 	float myMass = 0.0;
-	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	theProps.property2Float(Property::MASS_STRING, &myMass);
 	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
@@ -236,7 +236,7 @@ void RectObject::adjustWideParametersPart(void)
 	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
 	// also, calculate the density correctly - each shape has same density
 	float myMass = 0.0;
-	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	theProps.property2Float(Property::MASS_STRING, &myMass);
 	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
 
 	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
@@ -321,7 +321,7 @@ void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 		return;
 
 	float myFriction = 0;
-	if (theProps.propertyToFloat(Property::FRICTION_STRING, &myFriction))
+	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
 		aBoxDef->friction = myFriction;
 	else
 		assert(false);

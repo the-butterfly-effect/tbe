@@ -124,17 +124,23 @@ bool PropertyList::property2Bool(const QString& aPropertyName,
 	return true;
 }
 
-bool PropertyList::propertyToFloat(const QString& aPropertyName,
-								   float* aFloat) const
+bool PropertyList::property2Float(const QString& aPropertyName,
+								  float* aFloat,
+								  bool useDefault) const
+
 {
 	QString myValue = getPropertyNoDefault(aPropertyName);
-	if (myValue.isEmpty())
+	if (myValue.isEmpty() && useDefault==false)
 		return false;
 
 	bool isOK = false;
 	float myFloat = myValue.toFloat(&isOK);
 	if (isOK == false)
-		return false;
+	{
+		myFloat = getDefaultProperty(aPropertyName).toFloat(&isOK);
+		if (isOK == false)
+			return false;
+	}
 
 	*aFloat = myFloat;
 	return true;

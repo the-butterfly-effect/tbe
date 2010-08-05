@@ -102,24 +102,24 @@ bool TestPropertyList::runTests(void)
 	myPL.setProperty("Float7", "23+45.4");   // fail
 	myPL.setProperty("Float8", 6.84f);
 
-	testmsg("propertyToFloat tests\n");
+	testmsg("propertyToFloat tests, no default substitutions\n");
 	float myFloat = 0;
-	check(myPL.propertyToFloat("Float1",&myFloat)==true && floatcompare(myFloat,68.4),
+	check(myPL.property2Float("Float1",&myFloat,false)==true && floatcompare(myFloat,68.4),
 		  "Float1 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float2",&myFloat)==true && floatcompare(myFloat,-6.84),
+	check(myPL.property2Float("Float2",&myFloat,false)==true && floatcompare(myFloat,-6.84),
 		  "Float2 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float3",&myFloat)==true && floatcompare(myFloat,-1.03e-3),
+	check(myPL.property2Float("Float3",&myFloat,false)==true && floatcompare(myFloat,-1.03e-3),
 		  "Float3 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float4",&myFloat)==false,
+	check(myPL.property2Float("Float4",&myFloat,false)==false,
 		  "Float4 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float5",&myFloat)==true && floatcompare(myFloat,23),
+	check(myPL.property2Float("Float5",&myFloat,false)==true && floatcompare(myFloat,23),
 		  "Float5 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float6",&myFloat)==false,
+	check(myPL.property2Float("Float6",&myFloat,false)==false,
 		  "Float6 was correctly retrieved\n");
 	check(myFloat==23, "failed retrieval doesn't affect float value\n");
-	check(myPL.propertyToFloat("Float7",&myFloat)==false,
+	check(myPL.property2Float("Float7",&myFloat,false)==false,
 		  "Float7 was correctly retrieved\n");
-	check(myPL.propertyToFloat("Float8",&myFloat)==true && floatcompare(myFloat,6.84),
+	check(myPL.property2Float("Float8",&myFloat,false)==true && floatcompare(myFloat,6.84),
 		  "Float8 was correctly retrieved\n");
 
 
@@ -175,6 +175,27 @@ bool TestPropertyWithDefaults::runTests(void)
 
 	myPL.removeProperty("Bool4");
 	check(myPL.property2Bool("Bool4",&myBool,true)==true && myBool==false,   "default Bool4 gets chosen once real value is gone\n");
+
+
+	// propertyToFloat parsing of float parameters
+	myPL.setProperty("Float1", "68.4");	// no default
+	myPL.setProperty("Float2", "bad");	// default = 6.84
+	// no Float3, default = 3.42
+	// no Float4, default is bad
+	myPL.setDefaultPropertiesString("Float2:-6.84/Float3:3.42/Float4:bad/");
+
+	testmsg("propertyToFloat tests\n");
+	float myFloat = 0;
+	check(myPL.property2Float("Float1",&myFloat, true)==true && floatcompare(myFloat,68.4),
+		  "Float1 was correctly retrieved\n");
+	check(myPL.property2Float("Float2",&myFloat, true)==true && floatcompare(myFloat,-6.84),
+		  "bad Float2 ignored, default was correctly retrieved\n");
+	check(myPL.property2Float("Float3",&myFloat, true)==true && floatcompare(myFloat,3.42),
+		  "default for Float3 was correctly retrieved\n");
+	myFloat = -100.01;
+	check(myPL.property2Float("Float4",&myFloat, true)==false,
+		  "Float4 was correctly ignored\n");
+	check(floatcompare(myFloat, -100.01), "for Float4, float was correctly left untouched\n");
 
 	return true;
 }

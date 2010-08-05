@@ -45,8 +45,8 @@ Floor::Floor ( )
 	
 	setTheHeight(0.1);
 
-	float myFloat = 0.1;
-	theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat);
+	float myFloat;
+	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
 	setTheBounciness(myFloat);
 
 	adjustParameters();

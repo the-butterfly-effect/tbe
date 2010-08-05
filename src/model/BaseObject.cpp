@@ -211,7 +211,7 @@ void BaseObject::initAttributes ( )
 
 	theProps.setDefaultPropertiesString(
 		Property::IMAGE_NAME_STRING + QString(":/") +
-		Property::BOUNCINESS_STRING + QString(":/") +
+		Property::BOUNCINESS_STRING + QString(":0.3/") +
 		Property::NOCOLLISION_STRING+ QString(":/") +
 		Property::PIVOTPOINT_STRING + QString(":/") +
 		Property::ZVALUE_STRING + QString(":2.0/") );
@@ -237,9 +237,10 @@ void BaseObject::notifyJoints(JointInterface::JointStatus aStatus)
 
 void BaseObject::parseProperties(void)
 {
+	// use the default if nothing else...
 	float myFloat;
-	if (theProps.propertyToFloat(Property::BOUNCINESS_STRING, &myFloat))
-		setTheBounciness(myFloat);
+	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
+	setTheBounciness(myFloat);
 
 	Vector myDelta;
 	if (theProps.propertyToVector(Property::PIVOTPOINT_STRING, &myDelta))
@@ -298,8 +299,8 @@ void BaseObject::reset ( )
 void  BaseObject::setDrawObjectZValue(float aDefaultValue)
 {
 	assert(theDrawObjectPtr != NULL);
-	// if no property with a float type found, aDefaultValue is unchanged
-	theProps.propertyToFloat(Property::ZVALUE_STRING, &aDefaultValue);
+	// if no property with a float type found, leave aDefaultValue is unchanged
+	theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
 	theDrawObjectPtr->setZValue(aDefaultValue);
 }
 

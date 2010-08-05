@@ -166,8 +166,7 @@ void CokeMentosBottle::reset(void)
 	thePreviousAngVelocity = 0.0;
 	hasContact = false;
 
-	theThrust = 2.0;
-	theProps.propertyToFloat(Property::THRUST_STRING, &theThrust);
+	theProps.property2Float(Property::THRUST_STRING, &theThrust);
 }
 
 
@@ -177,8 +176,7 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	{
 	case UNTRIGGERED:
 		// allow to set arbitrary illing of the bottle
-		if (theProps.propertyToFloat(Property::MASS_STRING, &theCokeAmount)==false)
-			theCokeAmount = 2.0;
+		theProps.property2Float(Property::MASS_STRING, &theCokeAmount);
 		updateMass();
 		theSplatterCount = 0;
 		theBottleStatus=UNTRIGGERED;

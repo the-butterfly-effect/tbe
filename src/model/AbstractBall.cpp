@@ -160,7 +160,7 @@ CustomBall::CustomBall (void)
 	theProps.setDefaultPropertiesString(
 			Property::IMAGE_NAME_STRING + QString(":/") +
 			Property::RADIUS_STRING + ":0.1/" +
-			Property::MASS_STRING +":/" );
+			Property::MASS_STRING +":1.0/" );
 }
 
 CustomBall::~CustomBall ( )
@@ -181,8 +181,8 @@ void  CustomBall::parseProperties(void)
 
 	float myRadius;
 	float myMass;
-	theProps.propertyToFloat(Property::RADIUS_STRING, &myRadius);
-	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	theProps.property2Float(Property::RADIUS_STRING, &myRadius);
+	theProps.property2Float(Property::MASS_STRING, &myMass);
 	if (myRadius==0.0)
 		myRadius=0.1;
 

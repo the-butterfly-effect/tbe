@@ -201,7 +201,7 @@ DrawObject*  PolyObject::createDrawObject(void)
 void PolyObject::fillShapeList(void)
 {
 	float myMass;
-	theProps.propertyToFloat(Property::MASS_STRING, &myMass);
+	theProps.property2Float(Property::MASS_STRING, &myMass);
 
 	Vector myScale(1.0, 1.0);
 	if (fabs(theOriginalWidth)>Position::minimalMove)
@@ -261,7 +261,7 @@ void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 		return;
 
 	float myFriction = 0;
-	if (theProps.propertyToFloat(Property::FRICTION_STRING, &myFriction))
+	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
 		aBoxDef->friction = myFriction;
 	else
 		assert(false);

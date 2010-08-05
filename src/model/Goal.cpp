@@ -91,9 +91,9 @@ bool GoalDistance::parseProperties(World* aWPtr)
 	}
 
 
-	if (theProps.propertyToFloat(Property::S_LESSTHAN, &theLimit))
+	if (theProps.property2Float(Property::S_LESSTHAN, &theLimit,false))
 		theType=LESSTHAN;
-	if (theProps.propertyToFloat(Property::S_MORETHAN, &theLimit))
+	if (theProps.property2Float(Property::S_MORETHAN, &theLimit,false))
 		theType=MORETHAN;
 	if (theType == NOTYPE)
 	{
@@ -203,15 +203,15 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	// parse *changed - no value, only a key
 	if (theProps.doesPropertyExists(Property::S_XCHANGED))
 		theType=XCHANGED;
-	if (theProps.propertyToFloat(Property::S_XBELOW, &theLimit))
+	if (theProps.property2Float(Property::S_XBELOW, &theLimit,false))
 		theType=XBELOW;
-	if (theProps.propertyToFloat(Property::S_XOVER, &theLimit))
+	if (theProps.property2Float(Property::S_XOVER, &theLimit,false))
 		theType=XOVER;
 	if (theProps.doesPropertyExists(Property::S_YCHANGED))
 		theType=YCHANGED;
-	if (theProps.propertyToFloat(Property::S_YBELOW, &theLimit))
+	if (theProps.property2Float(Property::S_YBELOW, &theLimit,false))
 		theType=YBELOW;
-	if (theProps.propertyToFloat(Property::S_YOVER, &theLimit))
+	if (theProps.property2Float(Property::S_YOVER, &theLimit,false))
 		theType=YOVER;
 	if (theProps.doesPropertyExists(Property::S_ACHANGED))
 		theType=ANGLECHANGED;

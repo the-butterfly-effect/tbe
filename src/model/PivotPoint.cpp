@@ -96,9 +96,9 @@ void PivotPoint::createPhysicsObject(void)
 	// note that we have the + defined in the mathematical way,
 	// with the y in the opposite direction from QT, that means a minus somewhere
 	float myTorque = 1000.0;
-	myJointDef.enableMotor = theProps.propertyToFloat(Property::TORQUE_STRING, &myTorque);
+	myJointDef.enableMotor = theProps.property2Float(Property::TORQUE_STRING, &myTorque);
 	float myMotorSpeed = 0.0;
-	if (theProps.propertyToFloat(Property::SPEED_STRING, &myMotorSpeed))
+	if (theProps.property2Float(Property::SPEED_STRING, &myMotorSpeed))
 		myJointDef.enableMotor = true;
 	myJointDef.maxMotorTorque = myTorque;
 	myJointDef.motorSpeed = -myMotorSpeed;
@@ -114,6 +114,8 @@ void PivotPoint::initAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::OBJECT1_STRING + QString(":/") +
 		Property::OBJECT2_STRING + QString(":/") +
+		Property::SPEED_STRING + QString(":/") +
+		Property::TORQUE_STRING + QString(":/") +
 		Property::COLLIDE_STRING + QString(":false/") +
 		"-" + Property::MASS_STRING + ":/" );
 }

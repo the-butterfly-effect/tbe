@@ -111,9 +111,12 @@ public:
 	  * its value can be parsed to fit aFloat
 	  * @param aPropertyName
 	  * @param aFloat		  OUTPUT upon success contains value of property
-	  * @returns true if success. if no success aFloat is unchanged
+	  * @returns true if success and false if not.
+	  *   if no success aFloat will either be untouched (useDefault=false) or
+	  *   will the default value (useDefault=true) or will be untouched
+	  *   (useDefault=true but no default found)
 	  */
-	bool propertyToFloat(const QString& aPropertyName, float* aFloat) const;
+	bool property2Float(const QString& aPropertyName, float* aFloat, bool useDefault=true) const;
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value is the ID of an existing BaseObject instance

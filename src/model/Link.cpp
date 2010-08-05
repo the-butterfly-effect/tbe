@@ -89,7 +89,7 @@ DrawObject*  Link::createDrawObject(void)
 	qreal myLength= myDiff.length();
 
 	float myOverlap = 10;
-	theProps.propertyToFloat(Property::OVERLAP_STRING, &myOverlap);
+	theProps.property2Float(Property::OVERLAP_STRING, &myOverlap);
 	float myAdjustedWidth = myLength*(1.0+myOverlap/100.0);
 	float myAdjustedHeight= myAdjustedWidth/myAspectRatio;
 
