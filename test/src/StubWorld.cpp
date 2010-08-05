@@ -83,6 +83,12 @@ void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 }
 
 
+void World::addNoCollisionCombo(BaseObject*, BaseObject*)
+{
+
+}
+
+
 BaseObject* World::findObjectByID(const QString& anID)
 {
 	if (anID.isEmpty())

@@ -55,6 +55,13 @@ public:
 	 */
 	bool addObject(BaseObject* anObjectPtr);
 
+	/** add the set of anObject1 and anObject2 to a list of objects that
+	  * cannot collide.
+	  * @param anObject1	pointer to an object
+	  * @param anObject2	pointer to a second object
+	  */
+	void addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2);
+
 	/** find an object with a given ID within world
 	 *  @param anID  the ID to find for. Because not all objects have an ID,
 	 *               an empty ID will cause a NULL return.
