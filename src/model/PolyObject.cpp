@@ -145,19 +145,18 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
-	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
 	theOriginalWidth = aWidth;
 	BaseObject::setTheWidth(aWidth);
 	theOriginalHeight = aHeight;
 	BaseObject::setTheHeight(aHeight);
-	theProps.setProperty(Property::POLYGONS_STRING, anOutline);
-	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
 	setTheBounciness(aBounciness);
 
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING + QString(":/") +
-		Property::IMAGE_NAME_STRING + QString(":/") +
-		Property::POLYGONS_STRING + QString(":/") );
+		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
+		Property::MASS_STRING + ":" + QString::number(aMass) + QString("/") +
+		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
+		);
 }
 
 PolyObject::~PolyObject ( )
