@@ -3,7 +3,7 @@
 # -------------------------------------------------
 QT += xml \
     testlib
-TARGET = ../../ChooseLevel-tester
+TARGET = tester
 CONFIG += qt warn_on debug
 TEMPLATE = app
 SOURCES += ChooseLevel-tester-main.cpp \
