@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -79,4 +79,28 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 not_good:
 	delete myGPtr;
 	return NULL;
+}
+
+
+bool GoalSerializer::serialize(const Goal* aGoalPtr, QDomElement& aParent)
+{
+	QDomElement myNode = aParent.ownerDocument().createElement(theGoalString);
+
+	// save Goal Type
+	myNode.setAttribute(theTypeAttributeString, aGoalPtr->getGoalType());
+
+	// save all properties (no defaults here)
+	PropertyList::PropertyMap::const_iterator i = aGoalPtr->theProps.constPropertyBegin();
+	while (i != aGoalPtr->theProps.constPropertyEnd())
+	{
+		QDomElement myProperty = aParent.ownerDocument().createElement(thePropertyString);
+		myProperty.setAttribute("key", i.key());
+		QDomText myT = aParent.ownerDocument().createTextNode(i.value());
+		myProperty.appendChild(myT);
+		myNode.appendChild(myProperty);
+		++i;
+	 }
+
+	aParent.appendChild(myNode);
+	return true;
 }

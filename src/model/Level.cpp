@@ -313,6 +313,11 @@ bool Level::save(const QString& aFileName)
 	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription.result());
 	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
 
+
+	// Toolbox
+	QDomElement myToolboxParent = myDocument.createElement(theToolboxString);
+	myRoot.appendChild(myToolboxParent);
+
 	// Scene
 	QDomElement mySceneParent = myDocument.createElement(theSceneString);
 	myRoot.appendChild(mySceneParent);
@@ -329,10 +334,12 @@ bool Level::save(const QString& aFileName)
 		addBaseObject(myPredefinedParent, *(*myI));
 	// ... TODO: add view
 
-
-	// Toolbox
-	QDomElement myToolboxParent = myDocument.createElement(theToolboxString);
-	myRoot.appendChild(myToolboxParent);
+	// Goals
+	QDomElement myGoalsParent = myDocument.createElement(theGoalsString);
+	myRoot.appendChild(myGoalsParent);
+	World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
+	for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
+		GoalSerializer::serialize(*myG, myGoalsParent);
 
 	// success: we're going to write!
 	QFile myFile(aFileName);

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,8 +33,7 @@ class QDomNode;
  *  The second usage of this class is to create the right Goals
  *  from the XML DOM node.
  *
- *  INSTANCES OF THIS CLASS SHOULD ONLY EXIST FOR A SHORT WHILE
- *  (if at all)
+ *  INSTANCES OF THIS CLASS SHOULD NEVER EXIST
  */
 class GoalSerializer
 {
@@ -54,6 +53,14 @@ public:
 	 *            Note that that Goal is still on its own - not attached to a World yet.
 	 */
 	static Goal* createObjectFromDom(const QDomNode& q);
+
+
+	/** create a QDomElement of the Goal anGoalPtr and add it to aParent
+	  * @param aGoalPtr pointer to the goal to serialize (=save)
+	  * @param aParent QDomElement pointer to add the serialized data to
+	  * @returns true if successful
+	  */
+	static bool serialize(const Goal* aGoalPtr, QDomElement& aParent);
 
 private:
 	/// constructor only called by Goal

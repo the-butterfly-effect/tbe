@@ -34,6 +34,8 @@ public:
     Goal();
 	virtual ~Goal();
 
+	virtual const QString getGoalType(void) const = 0;
+
 	/** Pure virtual member - check if this goal is met.
 	  * Note that it is up to the class to decide if a goal is met forever or needs to be met
 	  * (that makes a difference if you have more than one goal)
@@ -72,6 +74,9 @@ public:
 	GoalDistance();
 	virtual ~GoalDistance();
 
+	virtual const QString getGoalType(void) const
+	{	return "distance";	};
+
 	virtual bool parseProperties(World* aWorldPtr);
 
 	bool checkForSuccess(void);
@@ -105,6 +110,9 @@ public:
 	  */
 	GoalPositionChange();
 	virtual ~GoalPositionChange();
+
+	virtual const QString getGoalType(void) const
+	{	return "positionchange";	};
 
 	virtual bool parseProperties(World* aWorldPtr);
 
