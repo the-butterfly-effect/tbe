@@ -29,29 +29,9 @@ LocalString::LocalString(void)
 	the5Char = mySysLocale.name();
 }
 
-void LocalString::check(const QString& aValue, const QString& aLangCode)
+void LocalString::add(const QString& aValue, const QString& aLangCode)
 {
-	// rule 1
-	if (aLangCode.isEmpty() && theLang.isEmpty())
-		theString = aValue;
-
-	// rule 2
-	if (theLang.size()<3 && aLangCode.left(2) == the5Char.left(2))
-	{
-		// but not if we already have "nl", are looking for "nl_NL" and we now get "nl_BE"
-		if ( !(aLangCode.size()==5 && theLang.size()==2) )
-		{
-			theString = aValue;
-			theLang = aLangCode.left(2);
-		}
-	}
-
-	// rule 3
-	if (theLang.size()<3 && aLangCode == the5Char)
-	{
-		theString = aValue;
-		theLang = aLangCode;
-	}
+		theStringList.insert(aLangCode, aValue);
 }
 
 void
@@ -60,14 +40,57 @@ LocalString::fillFromDOM(
 		const QString& aTagString,
 		const QString& aDefault)
 {
-	if (aDefault.isEmpty()==false)
-		check(aDefault, "");
-
 	QDomElement myE = aNode.firstChildElement(aTagString);
 	while (myE.isNull()==false)
 	{
-		check(myE.text(), myE.attribute("lang",""));
+		theStringList.insert(myE.attribute("lang",""), myE.text());
 		myE = myE.nextSiblingElement(aTagString);
 	}
 }
 
+
+QString LocalString::result() const
+{
+	QString myReturn;
+	QString myLang;
+
+	LocalStringList::const_iterator i = theStringList.begin();
+	while (i != theStringList.end())
+	{
+		QString aLangCode = i.key();
+		QString aValue = i.value();
+
+		// we follow these rules:
+		// 1) if nothing set and we find a <title> without a language - let's
+		//    use it
+		// 2) if we find a title with the corresponding language - let's use
+		//    it instead of rule 1
+		// 3) if we find a title with a full corresponding "language_country",
+		//    let's use that one instead of 1 or 2
+
+		// rule 1
+		if (aLangCode.isEmpty() && myLang.isEmpty())
+			myReturn = aValue;
+
+		// rule 2
+		if (myLang.size()<3 && aLangCode.left(2) == the5Char.left(2))
+		{
+			// but not if we already have "nl", are looking for "nl_NL" and we now get "nl_BE"
+			if ( !(aLangCode.size()==5 && myLang.size()==2) )
+			{
+				myReturn = aValue;
+				myLang = aLangCode.left(2);
+			}
+		}
+
+		// rule 3
+		if (myLang.size()<3 && aLangCode == the5Char)
+		{
+			myReturn = aValue;
+			myLang = aLangCode;
+		}
+
+		++i;
+	}
+	return myReturn;
+}

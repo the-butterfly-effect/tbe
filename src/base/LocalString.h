@@ -21,25 +21,22 @@
 
 #include <QString>
 #include <QDomNode>
+#include <QMap>
 
-/// this QString-on-steroids only copies a string it is in the right locale
+/// this QString-on-steroids keeps copies of all localized strings
+/// but will only return the string in the currently set locale
 class LocalString
 {
 public:
 	LocalString();
 
-	/** checks if string aValue is in the right locale
-	  *  (we get that locale from the QLocale::system() )
-	  *  we follow these rules:
-	  *    1) if nothing set and we find a <title> without a language - let's use it
-	  *    2) if we find a title with the corresponding language - let's use it instead of rule 1
-	  *    3) if we find a title with a full corresponding "language_country", let's use that one instead of 1 or 2
+	/** adds string aValue and its locale to the list
 	  *
 	  *  Note: you'll probably use multiple calls to check() if you are using the SAX model
 	  *  @param aValue   string to be copied if one of the above rules matches
 	  *  @param aLangCode  the locale code - either empty, or "nl" or "nl_BE" format
 	  */
-	void check(const QString& aValue, const QString& aLangCode);
+	void add(const QString& aValue, const QString& aLangCode);
 
 	/** read within the DomNode Dom to find all tags with a lang="lang"
 	  * and find the string which fits the current locale best
@@ -64,18 +61,24 @@ public:
 						const QString& aTagString, const QString& aDefault="");
 
 	bool isEmpty(void)
-	{ return theString.isEmpty(); }
+	{ return theStringList.isEmpty(); }
 
-	const QString & result() const
-	{ return theString; }
+	/**
+	  *  we follow these rules:
+	  *    1) if nothing set and we find a <title> without a language - let's use it
+	  *    2) if we find a title with the corresponding language - let's use it instead of rule 1
+	  *    3) if we find a title with a full corresponding "language_country", let's use that one instead of 1 or 2
+	  */
+	QString result() const;
 
 private:
-	/// constructor will initialize this with the 5-character language+country code.
 	QString the5Char;
-	/// contains the already detected language
-	QString theLang;
-	/// contains the current value - in theLang language
-	QString theString;
+
+	/// contains all strings read
+	typedef QMap<QString,QString> LocalStringList;
+	LocalStringList theStringList;
+
+	friend class TestLocalString;
 };
 
 #endif // LOCALSTRING_H

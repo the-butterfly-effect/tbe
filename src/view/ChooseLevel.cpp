@@ -166,10 +166,10 @@ bool ChooseLevel::FastLevelParser::endElement(const QString & /* namespaceURI */
 											  const QString &qName)
 {
 	if (qName == "title")
-		theTitle.check(currentText.trimmed(), theAttrs.value("lang"));
+		theTitle.add(currentText.trimmed(), theAttrs.value("lang"));
 
 	if (qName == "description")
-		theDescription.check(currentText.trimmed(), theAttrs.value("lang"));
+		theDescription.add(currentText.trimmed(), theAttrs.value("lang"));
 
 	// no need to parse everything beyond the levelinfo
 	if (qName == "levelinfo")

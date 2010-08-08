@@ -69,9 +69,9 @@ bool SaveLevelInfo::commitToLevel(void)
 
 	theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text();
 	theLevelPtr->theLevelDate        = ui.theDateEdit->text();
-	theLevelPtr->theLevelDescription.check(ui.theLevelDescriptionField->toPlainText(), "");
+	theLevelPtr->theLevelDescription.add(ui.theLevelDescriptionField->toPlainText(), "");
 	theLevelPtr->theLevelLicense     = ui.theLicenseField->text();
-	theLevelPtr->theLevelName.check(ui.theTitleField->text(), "");
+	theLevelPtr->theLevelName.add(ui.theTitleField->text(), "");
 
 	if (ui.theFileNameField->text().isEmpty())
 		return false;
