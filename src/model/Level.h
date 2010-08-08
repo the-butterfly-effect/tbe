@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -105,8 +105,9 @@ private:
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
 	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
+	void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
 	void addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const;
-	
+
 private:	
 	World* theWorldPtr;
 

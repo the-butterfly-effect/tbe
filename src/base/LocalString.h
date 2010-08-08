@@ -79,6 +79,9 @@ private:
 	LocalStringList theStringList;
 
 	friend class TestLocalString;
+
+	// TODO/FIXME: This one shouldn't be necessary :-(
+	friend class Level;
 };
 
 #endif // LOCALSTRING_H

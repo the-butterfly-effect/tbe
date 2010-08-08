@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -296,6 +296,22 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const Q
 	aParent.appendChild(myReturn);
 }
 
+void
+Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
+{
+	LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
+	while (myL != anLS.theStringList.end())
+	{
+		QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
+		QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
+		myElement.appendChild(myT);
+		if (myL.key().isEmpty() == false)
+			myElement.setAttribute("lang", myL.key());
+		aParent.appendChild(myElement);
+		++myL;
+	}
+}
+
 
 bool Level::save(const QString& aFileName)
 {
@@ -307,10 +323,10 @@ bool Level::save(const QString& aFileName)
 	// LevelInfo
 	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
 	myRoot.appendChild(myLevelInfo);
-	addTextElement(myLevelInfo, theLevelNameString, theLevelName.result());
+	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
 	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
 	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
-	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription.result());
+	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
 	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
 
 
