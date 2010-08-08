@@ -63,7 +63,7 @@ public:
 	//
 
 	/// returns the Level's title
-	virtual const QString& getName ( ) const
+	virtual QString getName ( ) const
 		{ return theLevelName.result(); }
 	
 	World* getTheWorldPtr(void)
