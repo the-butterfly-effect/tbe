@@ -122,6 +122,7 @@ private:
 	QDomNode theToolboxDomNode;
 
 	friend class SaveLevelInfo;
+	friend class LevelInfoDialog;
 };
 
 #endif // LEVEL_H

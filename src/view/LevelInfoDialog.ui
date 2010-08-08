@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>LevelInfoDialog</class>
  <widget class="QWidget" name="LevelInfoDialog">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +15,9 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -86,12 +92,18 @@
        <property name="text">
         <string>Let's Play!</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../images/illustrations/tbe-icon.qrc">
+         <normaloff>:/newPrefix/tbe-icon.png</normaloff>:/newPrefix/tbe-icon.png</iconset>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../images/illustrations/tbe-icon.qrc"/>
+ </resources>
  <connections/>
 </ui>

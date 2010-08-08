@@ -152,6 +152,7 @@ Level::load(const QString& aFileName)
 	theLevelName       .fillFromDOM(myNode,theLevelNameString);
 	theLevelAuthor     = myNode.firstChildElement(theLevelAuthorString).text();
 	theLevelLicense    = myNode.firstChildElement(theLevelLicenseString).text();
+	theLevelDate       = myNode.firstChildElement(theLevelDateString).text();
 	theLevelDescription.fillFromDOM(myNode, theLevelDescriptionString);
 
 	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())

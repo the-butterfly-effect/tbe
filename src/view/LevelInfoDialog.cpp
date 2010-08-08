@@ -20,11 +20,17 @@
 #include "LevelInfoDialog.h"
 #include "ui_LevelInfoDialog.h"
 
-LevelInfoDialog::LevelInfoDialog(QWidget *parent) :
+LevelInfoDialog::LevelInfoDialog(Level* aLevelPtr, QWidget *parent) :
     QWidget(parent),
     m_ui(new Ui::LevelInfoDialog)
 {
     m_ui->setupUi(this);
+
+	m_ui->labelTitle->setText(tr("Title: <b>%1</b>").arg(aLevelPtr->theLevelName.result()));
+	m_ui->labelAuthor->setText(tr("Author: <b>%1</b>").arg(aLevelPtr->theLevelAuthor));
+	m_ui->labelLicense->setText(tr("License: <b>%1</b>").arg(aLevelPtr->theLevelLicense));
+	m_ui->labelCreationDate->setText(tr("Date: <b>%1</b>").arg(aLevelPtr->theLevelDate));
+	m_ui->textBrowser->setText(aLevelPtr->theLevelDescription.result());
 }
 
 LevelInfoDialog::~LevelInfoDialog()
@@ -43,3 +49,11 @@ void LevelInfoDialog::changeEvent(QEvent *e)
         break;
     }
 }
+
+void LevelInfoDialog::on_pushButton_clicked(void)
+{
+	// as far as I know, I'm allowed to do this, the destructor will notify the
+	// parent (i.e. QGraphicsScene i.e. DrawWorld) of its imminent destruction.
+	delete this;
+}
+

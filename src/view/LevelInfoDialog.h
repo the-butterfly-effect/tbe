@@ -20,6 +20,7 @@
 #define LEVELINFODIALOG_H
 
 #include <QtGui/QWidget>
+#include "Level.h"
 
 namespace Ui {
     class LevelInfoDialog;
@@ -28,11 +29,15 @@ namespace Ui {
 class LevelInfoDialog : public QWidget {
     Q_OBJECT
 public:
-    LevelInfoDialog(QWidget *parent = 0);
+	LevelInfoDialog(Level* aLevelPtr, QWidget *parent = 0);
     ~LevelInfoDialog();
 
 protected:
     void changeEvent(QEvent *e);
+
+private slots:
+	void on_pushButton_clicked(void);
+
 
 private:
     Ui::LevelInfoDialog *m_ui;
