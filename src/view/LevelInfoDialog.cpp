@@ -26,9 +26,13 @@ LevelInfoDialog::LevelInfoDialog(Level* aLevelPtr, QWidget *parent) :
 {
     m_ui->setupUi(this);
 
+	//: translators: please do not try to translate the <b>%1</b> part!
 	m_ui->labelTitle->setText(tr("Title: <b>%1</b>").arg(aLevelPtr->theLevelName.result()));
+	//: translators: please do not try to translate the <b>%1</b> part!
 	m_ui->labelAuthor->setText(tr("Author: <b>%1</b>").arg(aLevelPtr->theLevelAuthor));
+	//: translators: please do not try to translate the <b>%1</b> part!
 	m_ui->labelLicense->setText(tr("License: <b>%1</b>").arg(aLevelPtr->theLevelLicense));
+	//: translators: please do not try to translate the <b>%1</b> part!
 	m_ui->labelCreationDate->setText(tr("Date: <b>%1</b>").arg(aLevelPtr->theLevelDate));
 	m_ui->textBrowser->setText(aLevelPtr->theLevelDescription.result());
 }
