@@ -38,7 +38,7 @@ void
 LocalString::fillFromDOM(
 		const QDomNode& aNode,
 		const QString& aTagString,
-		const QString& aDefault)
+		const QString& )
 {
 	QDomElement myE = aNode.firstChildElement(aTagString);
 	while (myE.isNull()==false)

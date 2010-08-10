@@ -48,6 +48,9 @@ public:
 private slots:
 	void position_valueChanged    ( double aDouble );
 	void widthHeight_valueChanged ( double aDouble );
+	void propertyCellChanged ( int row, int column );
+	void lineEditID_valueChanged ( void );
+
 
 private:
 	Ui::EditObjectDialog ui;

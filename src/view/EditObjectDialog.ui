@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>458</height>
+    <width>359</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,6 +61,13 @@
        <widget class="QToolButton" name="toolButtonImage">
         <property name="text">
          <string>Image</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonGoals">
+        <property name="text">
+         <string>Goals</string>
         </property>
        </widget>
       </item>
@@ -231,18 +238,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTreeWidget" name="treeWidget">
-     <column>
-      <property name="text">
-       <string>Property</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Value</string>
-      </property>
-     </column>
-    </widget>
+	<widget class="QTableWidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>
