@@ -61,6 +61,7 @@ HEADERS += src/tbe_global.h \
     src/view/DrawPolyObject.h \
     src/view/DrawPostIt.h \
     src/view/DrawWorld.h \
+    src/view/GoalEditor.h \
     src/view/EditObjectDialog.h \
     src/view/ImageStore.h \
     src/view/LevelInfoDialog.h \
@@ -110,6 +111,7 @@ SOURCES += src/main.cpp \
     src/view/DrawPostIt.cpp \
     src/view/DrawWorld.cpp \
     src/view/EditObjectDialog.cpp \
+    src/view/GoalEditor.cpp \
     src/view/ImageStore.cpp \
     src/view/LevelInfoDialog.cpp \
     src/view/MainWindow.cpp \
@@ -124,7 +126,8 @@ FORMS = src/view/MainWindow.ui \
     src/view/SaveLevelInfo.ui \
     src/view/ChooseLevel.ui \
     src/view/EditObjectDialog.ui \
-    src/view/LevelInfoDialog.ui
+    src/view/LevelInfoDialog.ui \
+    src/view/GoalEditor.ui
 DISTFILES = README \
     TODO \
     AUTHORS \
