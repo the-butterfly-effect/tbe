@@ -117,6 +117,20 @@ bool GoalDistance::parseProperties(World* aWPtr)
 	return true;
 }
 
+QString GoalDistance::goalToStringList() const
+{
+	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+	QString myString = QString("%1;%2;%3;%4;%5")
+					   .arg(QObject::tr("Distance"))
+					   .arg(theFirstPtr->getID())
+					   .arg(theType==MORETHAN?">":"<")
+					   .arg(QString::number(theLimit))
+					   .arg(theSecondPtr->getID());
+	return myString;
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// GoalPositionChange ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -160,7 +174,7 @@ bool GoalPositionChange::checkForSuccess(void)
 			return true;
 		break;
 	case YCHANGED:
-		if (fabs(myNewPos.x - myOldPos.x) > MINCHANGE)
+		if (fabs(myNewPos.y - myOldPos.y) > MINCHANGE)
 			return true;
 		break;
 	case YBELOW:
@@ -172,7 +186,7 @@ bool GoalPositionChange::checkForSuccess(void)
 			return true;
 		break;
 	case ANGLECHANGED:
-		if (fabs(myNewPos.x - myOldPos.x) > MINCHANGE)
+		if (fabs(myNewPos.angle - myOldPos.angle) > MINCHANGE)
 			return true;
 		break;
 	case ANYTHINGCHANGED:
@@ -232,3 +246,44 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	return true;
 }
 
+
+QString GoalPositionChange::goalToStringList() const
+{
+	QString myVariable;
+	QString myCondition;
+	QString myLimit;
+	switch(theType)
+	{
+	case NOTYPE:
+		break;
+	case XCHANGED:
+		myVariable = "X"; myCondition = QObject::tr("changed"); break;
+	case XBELOW:
+		myLimit = QString::number(theLimit);
+		myVariable = "X"; myCondition = "<"; break;
+	case XOVER:
+		myLimit = QString::number(theLimit);
+		myVariable = "X"; myCondition = ">"; break;
+	case YCHANGED:
+		myVariable = "Y"; myCondition = QObject::tr("changed"); break;
+	case YBELOW:
+		myLimit = QString::number(theLimit);
+		myVariable = "Y"; myCondition = "<"; break;
+	case YOVER:
+		myLimit = QString::number(theLimit);
+		myVariable = "Y"; myCondition = ">"; break;
+	case ANGLECHANGED:
+		myVariable = "Angle"; myCondition = QObject::tr("changed"); break;
+	case ANYTHINGCHANGED:
+		myVariable = QObject::tr("X/Y/Angle"); myCondition = QObject::tr("changed"); break;
+	}
+
+	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
+	QString myString = QString("%1;%2;%3;%4;")
+					   //: translators: %1 can be X, Y, Angle or X/Y/Angle
+					   .arg(QObject::tr("Position %1").arg(myVariable))
+					   .arg(theBOPtr->getID())
+					   .arg(myCondition)
+					   .arg(myLimit);
+	return myString;
+}

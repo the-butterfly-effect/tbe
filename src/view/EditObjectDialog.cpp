@@ -17,6 +17,7 @@
  */
 
 #include "EditObjectDialog.h"
+#include "GoalEditor.h"
 #include "DrawObject.h"
 
 EditObjectDialog::EditObjectDialog(BaseObject* aBaseObjectPtr, QWidget *aParent)
@@ -40,6 +41,15 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 	// FIXME/TODO: put this into an UNDO
 	theBOPtr->setID(ui.lineEditID->text().trimmed());
 }
+
+
+void EditObjectDialog::on_toolButtonGoals_clicked()
+{
+	// the Goals dialog is modal, i.e. it can stay floating around
+	GoalEditor* theGoalEditorPtr = new GoalEditor(theBOPtr->theWorldPtr, QApplication::activeWindow());
+	theGoalEditorPtr->show();
+}
+
 
 
 void EditObjectDialog::position_valueChanged (double )
@@ -121,11 +131,9 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 			QString myKey = *myI;
 			QString myValue = aBaseObjectPtr->theProps.getDefaultProperty(*myI);
 			aBaseObjectPtr->theProps.property2String(*myI, &myValue);
-			QTableWidgetItem* myKeyItem = new QTableWidgetItem();
-			myKeyItem->setText(myKey);
+			QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
 			ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
-			QTableWidgetItem* myValueItem = new QTableWidgetItem();
-			myValueItem->setText(myValue);
+			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
 			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
 			ui.tableWidget->setItem(myRow, 0, myValueItem);
 

@@ -19,23 +19,29 @@
 #ifndef GOALEDITOR_H
 #define GOALEDITOR_H
 
+#include "ui_GoalEditor.h"
 #include <QtGui/QDialog>
 
-namespace Ui {
-    class GoalEditor;
-}
+// forward declarations
+class World;
+
 
 class GoalEditor : public QDialog {
     Q_OBJECT
 public:
-    GoalEditor(QWidget *parent = 0);
+	GoalEditor(World* aWorldPtr, QWidget *parent = 0);
     ~GoalEditor();
 
 protected:
     void changeEvent(QEvent *e);
 
+
+	void populate(void);
+
 private:
-    Ui::GoalEditor *m_ui;
+	Ui::GoalEditor ui;
+
+	World* theWorldPtr;
 };
 
 #endif // GOALEDITOR_H

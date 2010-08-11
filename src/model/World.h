@@ -322,6 +322,10 @@ private:
 	qreal	theTotalTime;
 
 	friend class Level;
+
+	// FIXME/TODO: get rid of this friend
+	// the easiest way is to move this into GoalSerializer...
+	friend class GoalEditor;
 };
 
 #endif // WORLD_H

@@ -52,6 +52,17 @@ public:
 	virtual bool parseProperties(World* aWorldPtr) = 0;
 
 protected:
+	/** generates a QString representing this goal
+	  * the returned QString will have the following format:
+	  * Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+	  * @returns the string
+	  *
+	  * @note only for access by GoalSerializer...
+	  */
+	virtual QString goalToStringList() const = 0;
+
+
+protected:
 	PropertyList theProps;
 	friend class GoalSerializer;
 };
@@ -80,6 +91,9 @@ public:
 	virtual bool parseProperties(World* aWorldPtr);
 
 	bool checkForSuccess(void);
+
+protected:
+	virtual QString goalToStringList() const;
 
 private:
 	DistanceType theType;
@@ -117,6 +131,9 @@ public:
 	virtual bool parseProperties(World* aWorldPtr);
 
 	bool checkForSuccess(void);
+
+protected:
+	virtual QString goalToStringList() const;
 
 private:
 	PositionType theType;

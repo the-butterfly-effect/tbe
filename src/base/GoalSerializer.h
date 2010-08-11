@@ -62,6 +62,15 @@ public:
 	  */
 	static bool serialize(const Goal* aGoalPtr, QDomElement& aParent);
 
+	/** creates a QStringList from a goal
+	  * the returned QStringList will have the following format:
+	  * Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+	  * @param aGoalPtr the Goal instance to build a string from
+	  * @returns the string list describing *aGoalPtr
+	  */
+	static QStringList goalToStringList(const Goal* aGoalPtr);
+
+
 private:
 	/// constructor only called by Goal
 	// (not implemented yet)

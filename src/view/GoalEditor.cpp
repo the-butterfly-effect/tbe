@@ -17,18 +17,21 @@
  */
 
 #include "GoalEditor.h"
-#include "ui_GoalEditor.h"
+#include "Goal.h"
+#include "GoalSerializer.h"
+#include "World.h"
 
-GoalEditor::GoalEditor(QWidget *parent) :
-    QDialog(parent),
-    m_ui(new Ui::GoalEditor)
+GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
+	QDialog(parent),
+	theWorldPtr(aWorldPtr)
 {
-    m_ui->setupUi(this);
+	ui.setupUi(this);
+	populate();
 }
 
 GoalEditor::~GoalEditor()
 {
-    delete m_ui;
+//	delete ui;
 }
 
 void GoalEditor::changeEvent(QEvent *e)
@@ -36,9 +39,46 @@ void GoalEditor::changeEvent(QEvent *e)
     QDialog::changeEvent(e);
     switch (e->type()) {
     case QEvent::LanguageChange:
-        m_ui->retranslateUi(this);
+		ui.retranslateUi(this);
         break;
     default:
         break;
     }
+}
+
+void GoalEditor::populate(void)
+{
+	assert(theWorldPtr!=NULL);
+
+	ui.tableWidget->clear();
+	ui.tableWidget->setHorizontalHeaderLabels(
+			tr("Variable;Object;Cond.;Value;Object2").split(";") );
+	ui.tableWidget->setRowCount(theWorldPtr->theGoalPtrList.count());
+
+	int myRow = 0;
+	World::GoalPtrList::const_iterator myG = theWorldPtr->theGoalPtrList.begin();
+	while (myG != theWorldPtr->theGoalPtrList.end())
+	{
+		// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+		QStringList myGoal = GoalSerializer::goalToStringList(*myG);
+
+		for (int i=0; i<5; i++)
+		{
+			if (myGoal[i].isEmpty()==false)
+			{
+				QTableWidgetItem* myItemPtr = new QTableWidgetItem(myGoal[i]);
+				ui.tableWidget->setItem(myRow, i, myItemPtr);
+				// fields 1 and 4 are object names - make them red if trouble
+				if (i==1 || i==4)
+				{
+					if (theWorldPtr->findObjectByID(myGoal[i])==NULL)
+						myItemPtr->setForeground(QBrush(Qt::red));
+				}
+			}
+		}
+
+		++myG;
+		myRow++;
+	}
+
 }

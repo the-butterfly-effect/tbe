@@ -19,6 +19,8 @@
 #include "tbe_global.h"
 #include "GoalSerializer.h"
 #include <QDomElement>
+#include <QStringList>
+#include <cassert>
 
 
 // these are all declared in Level.cpp
@@ -79,6 +81,12 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 not_good:
 	delete myGPtr;
 	return NULL;
+}
+
+
+QStringList GoalSerializer::goalToStringList(const Goal* aGoalPtr)
+{
+	return aGoalPtr->goalToStringList().split(";");
 }
 
 

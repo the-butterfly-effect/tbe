@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>343</width>
-    <height>183</height>
+    <width>528</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,12 +15,35 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>A level can only be won if all goals are satisfied. If an ObjectID is red, that ID currently does not exist.</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QTableWidget" name="tableWidget">
      <row>
       <property name="text">
        <string>1</string>
       </property>
      </row>
+     <row>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Variable</string>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>ObjectID</string>
@@ -28,7 +51,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Condition</string>
+       <string>Req</string>
       </property>
      </column>
      <column>
@@ -36,19 +59,54 @@
        <string>Value</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>ObjectID2</string>
+      </property>
+     </column>
      <item row="0" column="0">
       <property name="text">
-       <string>Butterfly</string>
+       <string>X position</string>
       </property>
      </item>
      <item row="0" column="1">
       <property name="text">
-       <string>xover</string>
+       <string>Butterfly</string>
       </property>
      </item>
      <item row="0" column="2">
       <property name="text">
+       <string>&gt;</string>
+      </property>
+     </item>
+     <item row="0" column="3">
+      <property name="text">
        <string>4.3</string>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string>Distance</string>
+      </property>
+     </item>
+     <item row="1" column="1">
+      <property name="text">
+       <string>Butterfly</string>
+      </property>
+     </item>
+     <item row="1" column="2">
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </item>
+     <item row="1" column="3">
+      <property name="text">
+       <string>2.0</string>
+      </property>
+     </item>
+     <item row="1" column="4">
+      <property name="text">
+       <string>Flower</string>
       </property>
      </item>
     </widget>
