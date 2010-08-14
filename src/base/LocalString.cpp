@@ -34,6 +34,16 @@ void LocalString::add(const QString& aValue, const QString& aLangCode)
 		theStringList.insert(aLangCode, aValue);
 }
 
+void LocalString::clear()
+{
+	theStringList.clear();
+}
+
+QString LocalString::english() const
+{
+	return theStringList.find("").value();
+}
+
 void
 LocalString::fillFromDOM(
 		const QDomNode& aNode,
@@ -47,7 +57,6 @@ LocalString::fillFromDOM(
 		myE = myE.nextSiblingElement(aTagString);
 	}
 }
-
 
 QString LocalString::result() const
 {

@@ -71,6 +71,10 @@ public:
 	  */
 	QString result() const;
 
+	void clear();
+
+	QString english() const;
+
 private:
 	QString the5Char;
 
