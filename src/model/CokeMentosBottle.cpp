@@ -70,32 +70,12 @@ CokeMentosBottle::CokeMentosBottle()
 		theShapeList.push_back(my8PointPinDef);
 	}
 
-	// the second one is the sensor
-	{
-		b2PolygonDef* my5PointPinDef = new b2PolygonDef();
-		my5PointPinDef->vertexCount = 6;
-		my5PointPinDef->vertices[0].Set(-0.01 ,  0.25);
-		my5PointPinDef->vertices[1].Set(-0.083,  0.12);
-		my5PointPinDef->vertices[2].Set(-0.075, -0.251);
-		my5PointPinDef->vertices[3].Set( 0.075, -0.251);
-		my5PointPinDef->vertices[4].Set( 0.083,  0.12);
-		my5PointPinDef->vertices[5].Set( 0.01 ,  0.25);
-		my5PointPinDef->isSensor = true;
-		my5PointPinDef->userData = this;
-		theShapeList.push_back(my5PointPinDef);
-	}
-
 	setTheBounciness(0.3);
 	setBottleStatus(UNTRIGGERED);
 
 	theProps.setDefaultPropertiesString(
 		Property::MASS_STRING + QString(":2.0/") +
 		Property::THRUST_STRING + QString(":2.0/") );
-}
-
-void CokeMentosBottle::callBackSensor(b2ContactPoint*)
-{
-	hasContact = true;
 }
 
 void CokeMentosBottle::callbackStep (qreal, qreal)
@@ -105,29 +85,7 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 	switch(theBottleStatus)
 	{
 	case UNTRIGGERED:
-		{
-			//  check for impact
-			b2Vec2 myVelo = theB2BodyPtr->GetLinearVelocity();
-			float  myAVelo= theB2BodyPtr->GetAngularVelocity();
-			if (myVelo.Length()<0.1 && myAVelo <0.1)
-				break;
-			if ( abs(1.0-thePreviousVelocity.Length()/myVelo.Length()) > 0.2 && hasContact)
-			{
-				DEBUG5("CokeBottle was hit - LINEAR\n");
-				setBottleStatus(TRIGGERED);
-				break;
-			}
-			if ( abs(1.0-thePreviousAngVelocity/myAVelo) > 0.2 && hasContact)
-			{
-				DEBUG5("CokeBottle was hit - ANGULAR\n");
-				setBottleStatus(TRIGGERED);
-				break;
-			}
-			thePreviousVelocity = myVelo;
-			thePreviousAngVelocity = myAVelo;
-			hasContact = false;
-			break;
-		}
+		break;
 	case TRIGGERED:
 		theCountdown--;
 		if (theCountdown > 0)
@@ -156,15 +114,18 @@ DrawObject*  CokeMentosBottle::createDrawObject(void)
 	return theDrawObjectPtr;
 }
 
+void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)
+{
+	if (anImpulseLength > 1 && theBottleStatus==UNTRIGGERED)
+		setBottleStatus(TRIGGERED);
+}
+
 
 void CokeMentosBottle::reset(void)
 {
 	theWorldPtr->registerCallback(this);
 	BaseObject::reset();
 	setBottleStatus(UNTRIGGERED);
-	thePreviousVelocity = b2Vec2(0,0);
-	thePreviousAngVelocity = 0.0;
-	hasContact = false;
 
 	theProps.property2Float(Property::THRUST_STRING, &theThrust);
 }

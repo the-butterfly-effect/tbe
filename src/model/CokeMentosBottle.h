@@ -114,15 +114,18 @@ public:
 	BottleStatus getBottleStatus(void)
 	{ return theBottleStatus; }
 
+	/// overridden from BaseObject - we want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return true; }
+
+	/** overridden from BaseObject - we want to receive
+	  * reports on the normal impulse.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(qreal anImpulseLength);
 
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
-
-	/// called if Object has registered a sensor share
-	/// CokeMentosBottle needs to know if it has hit another object
-	///  - because that implies that we might need to start blowing
-	/// overridden from SensorInterface
-	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 	/// overriden from BaseObject
 	virtual DrawObject* createDrawObject();
@@ -166,17 +169,8 @@ private:
 	/// used in the calculation of the exit velocity of the splatter
 	int theSplatterCount;
 	
-	/// true when the bottle's sensor is touching something
-	bool hasContact;
-
 	/// starts ticking once the bottle is triggered
 	int theCountdown;
-
-	/// used to calculate the velocity change - which is used to see if the bottle is hit
-	b2Vec2 thePreviousVelocity;
-
-	/// used to calculate the angular velocity change - which is used to see if the bottle is hit
-	float thePreviousAngVelocity;
 
 	/// constant that describes how much the coke splatter acts on the bottle
 	float theThrust;
