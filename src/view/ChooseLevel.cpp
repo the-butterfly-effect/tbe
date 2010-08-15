@@ -30,13 +30,14 @@ static const int  TITLE_COLUMN=1;
 static const int  FILENAME_COLUMN=2;
 
 
-ChooseLevel::ChooseLevel(QWidget *parent) :
+ChooseLevel::ChooseLevel(QWidget *parent, bool isNoShow) :
     QDialog(parent),
 	m_ui(new Ui::ChooseLevel)
 {
     m_ui->setupUi(this);
 	readLevels( LEVELS_DIRECTORY + "/levels.xml" );
-	show();
+	if (!isNoShow)
+		show();
 }
 
 ChooseLevel::~ChooseLevel()

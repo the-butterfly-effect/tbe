@@ -33,7 +33,7 @@ namespace Ui {
 class ChooseLevel : public QDialog {
     Q_OBJECT
 public:
-	ChooseLevel(QWidget *parent = 0);
+	ChooseLevel(QWidget *parent = 0, bool isNoShow=false);
 	virtual ~ChooseLevel();
 
 	QString getCurrent(void);

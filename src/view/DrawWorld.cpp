@@ -294,8 +294,6 @@ void DrawWorld::on_death(void)
 void DrawWorld::on_OneSecondAfterWinning(void)
 {
 	theSimStateMachine->goToState(StartStopWatch::STOPPED);
-	delete theSimStateMachine;
-	theSimStateMachine = NULL;
 	emit levelWon();
 }
 

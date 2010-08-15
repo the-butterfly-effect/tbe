@@ -19,6 +19,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QSettings>
+#include <QPushButton>
 
 #include "tbe_global.h"
 #include "MainWindow.h"
@@ -160,7 +161,7 @@ void MainWindow::on_actionOpen_custom_level_activated()
 void MainWindow::on_actionOpen_level_activated()
 {
 	// in ChooseLevel.ui, the dialog is made ApplicationGlobal.
-	ChooseLevel myDialog;
+	ChooseLevel myDialog(this);
 	if (myDialog.exec()==QDialog::Rejected)
 		return;
 
@@ -237,16 +238,6 @@ void MainWindow::loadLevel(const QString& aFileName)
 	myInfoDialog->show();
 }
 
-void MainWindow::on_levelWon()
-{
-	{
-		QString myLevelFileName = Level::getLevelFileName();
-		QSettings mySettings;
-		mySettings.setValue("completed/"+myLevelFileName, "done");
-	}
-	emit on_actionOpen_level_activated();
-}
-
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 {
 	DEBUG5("MainWindow::setScene(%p, %s)\n", aScene, ASCII(aLevelName));
@@ -255,7 +246,7 @@ void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
 	ui.graphicsView->setScene(aScene);
 	aScene->setSimSpeed(theSimSpeed);
 
-	QObject::connect(aScene, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
+	QObject::connect(aScene, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
 
     theUndoGroup.addStack(aScene->getTheUndoStackPtr());
     theUndoGroup.setActiveStack(aScene->getTheUndoStackPtr());
@@ -284,7 +275,7 @@ void MainWindow::purgeLevel(void)
 	ui.graphicsView->setMatrix(myMatrix);
 	if (theScenePtr != NULL)
 	{
-		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(on_levelWon()));
+		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
 
 	    // Destroying theScene (which is a DrawWorld) will automatically
 	    // destroy the associated UndoStack. The UndoStack will de-register 
@@ -309,3 +300,46 @@ void MainWindow::setSimSpeed(qreal aSpeed)
 	if (theScenePtr)
 		theScenePtr->setSimSpeed(theSimSpeed);
 }
+
+void MainWindow::slot_clear_buttons(void)
+{
+	delete theButtons[0];
+	theButtons[0]=NULL;
+	delete theButtons[1];
+	theButtons[1]=NULL;
+	delete theButtons[2];
+	theButtons[2]=NULL;
+}
+
+void MainWindow::slot_levelWon()
+{
+	{
+		QString myLevelFileName = Level::getLevelFileName();
+		QSettings mySettings;
+		mySettings.setValue("completed/"+myLevelFileName, "done");
+	}
+	QSize myViewSize = ui.graphicsView->size();
+	theButtons[0] = new QPushButton(tr("Replay"), ui.graphicsView);
+	theButtons[0]->move(myViewSize.width()/3,myViewSize.height()/2);
+	theButtons[0]->show();
+	theButtons[1] = new QPushButton(tr("Choose..."), ui.graphicsView);
+	theButtons[1]->move(myViewSize.width()/2,myViewSize.height()/2);
+	theButtons[1]->show();
+	theButtons[2] = new QPushButton(tr("Next>"), ui.graphicsView);
+	theButtons[2]->move(2*myViewSize.width()/3,myViewSize.height()/2);
+	theButtons[2]->show();
+
+	connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld();));
+	connect(theButtons[1], SIGNAL(clicked()), this, SLOT(on_actionOpen_level_activated()));
+	connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_next_level()));
+	connect(theButtons[0], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+	connect(theButtons[1], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+	connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+}
+
+void MainWindow::slot_next_level(void)
+{
+	ChooseLevel myDialog(this, true);
+	loadLevel(myDialog.getCurrent());
+}
+
