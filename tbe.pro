@@ -68,6 +68,7 @@ HEADERS += src/tbe_global.h \
     src/view/MainWindow.h \
     src/view/PieMenu.h \
     src/view/Popup.h \
+    src/view/PostItEditor.h \
     src/view/resizinggraphicsview.h \
     src/view/SaveLevelInfo.h \
     src/view/SplashScreen.h \
@@ -116,6 +117,7 @@ SOURCES += src/main.cpp \
     src/view/LevelInfoDialog.cpp \
     src/view/MainWindow.cpp \
     src/view/PieMenu.cpp \
+    src/view/PostItEditor.cpp \
     src/view/resizinggraphicsview.cpp \
     src/view/SaveLevelInfo.cpp \
     src/view/SplashScreen.cpp \
@@ -127,7 +129,8 @@ FORMS = src/view/MainWindow.ui \
     src/view/ChooseLevel.ui \
     src/view/EditObjectDialog.ui \
     src/view/LevelInfoDialog.ui \
-    src/view/GoalEditor.ui
+    src/view/GoalEditor.ui \
+    src/view/PostItEditor.ui
 DISTFILES = README \
     TODO \
     AUTHORS \
