@@ -51,7 +51,7 @@
 	       <property key="ZValue">0.3</property>
 	    </object>
 	    
-            <object X="2.74" Y="3.24" width="0.10" height="0.46" type="RectObject" ID="Chain1">
+            <object X="2.74" Y="3.22" width="0.44" height="0.10" angle="1.57" type="RectObject" ID="Chain1">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.3</property>
 	    </object>
@@ -61,7 +61,7 @@
 		<property key="collide">false</property>
 	    </object>
 	    
-            <object X="2.74" Y="2.44" width="0.10" height="0.46" type="RectObject" ID="Chain3">
+            <object X="2.74" Y="2.50" width="0.44" height="0.10" angle="1.57" type="RectObject" ID="Chain3">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
@@ -71,30 +71,27 @@
 		<property key="collide">false</property>
 	    </object>
 
-<object type="Link" X="2.74" Y="2.84" angle="0.0" width="0.46" height="0.1">
-    <property key="object1">Chain1@(0,-0.20)</property>
-    <property key="object2">Chain3@(0,0.20)</property>
+<object type="Link" X="2.74" Y="2.84" >
+    <property key="object1">Chain1@(-0.20,0)</property>
+    <property key="object2">Chain3@(0.20,0)</property>
     <property key="ImageName">agone_chains</property>
+    <property key="Overlap">20</property>
 </object>
 
-            <object X="2.74" Y="1.64" width="0.10" height="0.46" type="RectObject" ID="Chain5">
+            <object X="2.74" Y="1.74" width="0.44" height="0.10" type="RectObject" ID="Chain5" angle="1.57">
 	       <property key="ImageName">agone_chains</property>
 	       <property key="Mass">0.5</property>
 	    </object>
-	    <object type="PivotPoint" X="2.74" Y="1.84">
-		<property key="object1">Chain4</property>
-		<property key="object2">Chain5</property>
-		<property key="collide">false</property>
-	    </object>
 
-<object type="Link" X="2.74" Y="2.04" angle="0.0" width="0.46" height="0.1">
-    <property key="object1">Chain3@(0,-0.20)</property>
-    <property key="object2">Chain5@(0,0.20)</property>
+<object type="Link" X="2.74" Y="2.04" >
+    <property key="object1">Chain3@(-0.20,0)</property>
+    <property key="object2">Chain5@(0.20,0)</property>
     <property key="ImageName">agone_chains</property>
+    <property key="Overlap">20</property>
 </object>
-            <object X="2.74" Y="1.28" height="0.35" type="Weight" ID="Weight" />
+            <object X="2.74" Y="1.38" height="0.35" type="Weight" ID="Weight" />
 
-	    <object type="PivotPoint" X="2.74" Y="1.44">
+	    <object type="PivotPoint" X="2.74" Y="1.54">
 		<property key="object1">Chain5</property>
 		<property key="object2">Weight</property>
 		<property key="collide">false</property>
