@@ -88,10 +88,10 @@ public:
 
 	typedef QMap<QString,QString> PropertyMap;
 
-	PropertyMap::const_iterator constPropertyBegin(void) const
+	PropertyMap::const_iterator constBegin(void) const
 	{ return theProperties.constBegin(); }
 
-	PropertyMap::const_iterator constPropertyEnd(void) const
+	PropertyMap::const_iterator constEnd(void) const
 	{ return theProperties.constEnd(); }
 
 	/** returns true if property aPropertyName exists *and*

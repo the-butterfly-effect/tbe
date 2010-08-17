@@ -98,8 +98,8 @@ bool GoalSerializer::serialize(const Goal* aGoalPtr, QDomElement& aParent)
 	myNode.setAttribute(theTypeAttributeString, aGoalPtr->getGoalType());
 
 	// save all properties (no defaults here)
-	PropertyList::PropertyMap::const_iterator i = aGoalPtr->theProps.constPropertyBegin();
-	while (i != aGoalPtr->theProps.constPropertyEnd())
+	PropertyList::PropertyMap::const_iterator i = aGoalPtr->theProps.constBegin();
+	while (i != aGoalPtr->theProps.constEnd())
 	{
 		QDomElement myProperty = aParent.ownerDocument().createElement(thePropertyString);
 		myProperty.setAttribute("key", i.key());

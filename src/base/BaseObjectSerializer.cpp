@@ -58,8 +58,8 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 	if (theBaseObjectPtr->theProps.getPropertyCount() > 0)
 	{
 		PropertyList::PropertyMap::const_iterator i;
-		for ( i = theBaseObjectPtr->theProps.constPropertyBegin();
-			  i!= theBaseObjectPtr->theProps.constPropertyEnd();
+		for ( i = theBaseObjectPtr->theProps.constBegin();
+			  i!= theBaseObjectPtr->theProps.constEnd();
 			 ++i)
 		{
 			QString myDefValue = theBaseObjectPtr->theProps.getDefaultProperty(i.key());
