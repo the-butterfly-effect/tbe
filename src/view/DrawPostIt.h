@@ -52,6 +52,9 @@ public:
 	 */
 	virtual ~DrawPostIt ( );
 
+	/// this member starts the display of the actual Post-It dialog
+	void displayPostit(void);
+
 	/** overridden from QGraphicsItem
 	 * upon a double click event, let's show the text of the note-its
 	 */

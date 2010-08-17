@@ -19,23 +19,69 @@
 #ifndef POSTITEDITOR_H
 #define POSTITEDITOR_H
 
+#include "BaseObject.h"
+#include "DrawPostIt.h"
 #include <QtGui/QDialog>
+#include <QtGui/QIcon>
+
+// forward declarations
+class QPlainTextEdit;
 
 namespace Ui {
     class PostItEditor;
 }
 
+/** This is the UI class for the Post-It editor
+  * used to display and edit all tabs whilst editing Levels
+  */
 class PostItEditor : public QDialog {
     Q_OBJECT
 public:
-    PostItEditor(QWidget *parent = 0);
+	PostItEditor(BaseObject* aBaseObjectPtr, DrawPostIt* aDrawObject, QWidget *parent = 0);
     ~PostItEditor();
 
+	// this class has no further public members
+
 protected:
+	/// change the UI language (QT internal)
     void changeEvent(QEvent *e);
 
 private:
+	/// retrieve all content from the Post-It and fill the corresponding tabs
+	void fillTabs(void);
+
+	QString pageNrToTabString(int aPage);
+	QString pageNrToXmlArg(int aPage);
+
+	/// rewrite all tabs to have subsequent numbering
+	void reflowTabs(int aChangedIndex);
+
+	/// write all tab contents back to the Post-It
+	void serializeTabs(void);
+
+	/// @returns pointer to currently selected QPlainTextEdit
+	QPlainTextEdit* getCurrentEdit(void);
+
+private slots:
+	void on_toolButtonBold_clicked();
+	void on_toolButtonItalics_clicked();
+	void on_toolButtonMinus_clicked();
+	void on_toolButtonNewline_clicked();
+	void on_toolButtonPlus_clicked();
+	void on_toolButtonTest_clicked();
+
+	/// overridden to actually write the results to the Post-It
+	void slot_accepted();
+
+	/// overridden to be able to mark text edits as changed
+	void slot_textChanged();
+
+private:
     Ui::PostItEditor *m_ui;
+	BaseObject* theBaseObjectPtr;
+	DrawPostIt* theDrawObject;
+
+	QIcon theIsChangedIcon;
 };
 
 #endif // POSTITEDITOR_H

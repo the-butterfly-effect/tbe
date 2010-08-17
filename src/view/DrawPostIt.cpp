@@ -18,6 +18,7 @@
 
 #include "DrawPostIt.h"
 #include "BaseObject.h"
+#include "PostItEditor.h"
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -55,6 +56,23 @@ DrawPostIt::~DrawPostIt ( )
 
 // Other methods
 //
+
+void DrawPostIt::displayPostit(void)
+{
+	theDialogPtr = new QDialog;
+	theUIPtr = new Ui::PostItViewer();
+	theUIPtr->setupUi(theDialogPtr);
+
+	theCurrentPage = 0;
+	nextClicked();
+
+	QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
+				  this, SLOT(nextClicked()));
+	QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
+				  theDialogPtr, SLOT(reject()));
+	theDialogPtr->exec();
+	}
+
 void DrawPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
 	setCursor(QCursor(Qt::PointingHandCursor));
@@ -99,19 +117,13 @@ void DrawPostIt::initAttributes ( )
 void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 {
 	DEBUG5("double click!!!\n");
-	 theDialogPtr = new QDialog;
-	 theUIPtr = new Ui::PostItViewer();
-	 theUIPtr->setupUi(theDialogPtr);
-
-	 theCurrentPage = 0;
-	 nextClicked();
-
-	 QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
-					  this, SLOT(nextClicked()));
-	 QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
-					  theDialogPtr, SLOT(reject()));
-
-	 theDialogPtr->exec();
+	if (theIsLevelEditor)
+	{
+		QDialog* myEditorPtr = new PostItEditor(theBaseObjectPtr, this);
+		myEditorPtr->exec();
+	}
+	else
+		displayPostit();
 }
 
 
