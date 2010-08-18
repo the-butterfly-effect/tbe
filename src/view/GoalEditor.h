@@ -38,6 +38,11 @@ protected:
 
 	void populate(void);
 
+
+private slots:
+	void on_toolButtonMinus_clicked();
+	void on_toolButtonPlus_clicked();
+
 private:
 	Ui::GoalEditor ui;
 

@@ -19,6 +19,7 @@
 #include "GoalEditor.h"
 #include "Goal.h"
 #include "GoalSerializer.h"
+#include "Popup.h"
 #include "World.h"
 
 GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
@@ -46,11 +47,39 @@ void GoalEditor::changeEvent(QEvent *e)
     }
 }
 
+void GoalEditor::on_toolButtonMinus_clicked()
+{
+	if (ui.tableWidget->rowCount()==0)
+		return;
+	int myLine = ui.tableWidget->currentRow();
+	ui.tableWidget->setRangeSelected(
+			QTableWidgetSelectionRange(myLine, 0, myLine, ui.tableWidget->columnCount()-1), true);
+	QList<QTableWidgetItem *> myList = ui.tableWidget->selectedItems();
+
+	//: translator, be careful not to translate the %'s and the <br>'s...
+	if (Popup::YesNoQuestion(tr("Are you sure you want to remove goal %1:"
+							"<br>%2 %3 %4 %5").arg(myLine+1)
+			.arg(myList[0]->text()).arg(myList[1]->text())
+			.arg(myList[2]->text()).arg(myList[3]->text())
+			.arg(myList[4]->text()),
+			this) == true)
+	{
+		ui.tableWidget->removeRow(myLine);
+	}
+}
+
+void GoalEditor::on_toolButtonPlus_clicked()
+{
+	// FIXME/TODO: still to do...
+}
+
+
 void GoalEditor::populate(void)
 {
 	assert(theWorldPtr!=NULL);
 
 	ui.tableWidget->clear();
+	ui.tableWidget->setColumnCount(5);
 	ui.tableWidget->setHorizontalHeaderLabels(
 			tr("Variable;Object;Cond.;Value;Object2").split(";") );
 	ui.tableWidget->setRowCount(theWorldPtr->theGoalPtrList.count());
@@ -74,6 +103,12 @@ void GoalEditor::populate(void)
 					if (theWorldPtr->findObjectByID(myGoal[i])==NULL)
 						myItemPtr->setForeground(QBrush(Qt::red));
 				}
+			}
+			else
+			{
+				QTableWidgetItem* myItemPtr = new QTableWidgetItem(" ");
+				myItemPtr->setBackgroundColor(QColor(Qt::gray));
+				ui.tableWidget->setItem(myRow, i, myItemPtr);
 			}
 		}
 
