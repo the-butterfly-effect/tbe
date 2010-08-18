@@ -19,6 +19,7 @@
 #include "EditObjectDialog.h"
 #include "GoalEditor.h"
 #include "DrawObject.h"
+#include "ImageStore.h"
 
 EditObjectDialog::EditObjectDialog(BaseObject* aBaseObjectPtr, QWidget *aParent)
 		: QDialog(aParent, Qt::Tool), theBOPtr(aBaseObjectPtr), theUndoPtr(NULL)
@@ -73,6 +74,11 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 	if (myValue == myPropValue)
 		return;
 	// so, yes it changed.
+
+// FIXME/TODO: this line doesn't work as expected - it will crash tbe.
+// I think this is due to recursive calling propertyCellChanged...
+//	ui.tableWidget->item(aRow, 0)->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
+
 	// FIXME/TODO: put this into an UNDO
 	theBOPtr->theProps.setProperty(myKey, myValue);
 	// and run object's parseProperties to make sure the sim is updated
@@ -129,12 +135,14 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 		while (myI != myAllPropertiesList.end())
 		{
 			QString myKey = *myI;
-			QString myValue = aBaseObjectPtr->theProps.getDefaultProperty(*myI);
+			QString myValue;
 			aBaseObjectPtr->theProps.property2String(*myI, &myValue);
 			QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
 			ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
 			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
 			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
+			if (myValue != aBaseObjectPtr->theProps.getDefaultProperty(*myI))
+				myValueItem->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
 			ui.tableWidget->setItem(myRow, 0, myValueItem);
 
 			myRow++;
