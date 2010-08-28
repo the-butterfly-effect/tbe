@@ -29,6 +29,11 @@ int theVerbosity = 4;
 // TODO/FIXME: this should go into preferences or so at some point
 bool theIsLevelEditor = true;
 
+// this variable defines whether in the level editor we are expecting collision
+// detection to work or not - you want this on to align certain things
+// TODO/FIXME: this should go into preferences or so at some point
+bool theIsCollisionOn = false;
+
 // this variable defines whether we are showing Box2D debugging info or not
 // TODO/FIXME: this should go into preferences or so at some point
 bool theDrawDebug = false;

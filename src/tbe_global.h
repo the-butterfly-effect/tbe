@@ -78,10 +78,11 @@ extern const char* ASCII(const QString& aQString);
 #define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/levels")
 
 /// defined in main.cpp
-extern bool theIsLevelEditor;
+extern bool theDisplayFramerate;
 extern bool theDrawDebug;
 extern bool theDrawPolyOutline;
+extern bool theIsCollisionOn;
+extern bool theIsLevelEditor;
 extern bool theTBECaching;
-extern bool theDisplayFramerate;
 
 #endif // TBE_GLOBAL

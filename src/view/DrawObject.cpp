@@ -156,6 +156,10 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
+	// are we in the level editor???
+	if (theIsLevelEditor==true && theIsCollisionOn==false)
+		return false;
+
 	bool isColliding = false;
 	removeCollisionCross();
 
