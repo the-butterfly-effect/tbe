@@ -63,12 +63,12 @@
                 <property key="page2">Volley balls can do that, too.&lt;br&gt;&lt;br&gt;Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>
                 <property key="page4">&lt;br&gt; &lt;br&gt; the Post-It Boy </property>
-                <property key="page5">By the way: it is possible with only two ###!</property>
+                <property key="page5">By the way: it is possible with only two pins!</property>
                 <property key="page1_nl">Poing Poing Poing &lt;br&gt; &lt;br&gt; ... de wereldberoemde hit van &lt;i&gt;Rotterdam Termination Source&lt;/i&gt;</property>
                 <property key="page2_nl">Maar volleyballen kunnen dat ook.&lt;br&gt;&lt;br&gt;Wedden?</property>
                 <property key="page4_nl">Oja, beide kegels moeten naar beneden. </property>
                 <property key="page4_nl">&lt;br&gt; &lt;br&gt;Post-It Boy </property>
-                <property key="page5_nl">PS: Het is mogelijk met maar twee ###!</property>
+                <property key="page5_nl">PS: Het is mogelijk met maar twee punaises!</property>
 	    </object>
 
             <object width="5.0" X="2.5" Y="0.05" height="0.1" type="RectObject" >
@@ -84,6 +84,9 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="4.6" Y="1.82" type="Bowling Pin" ID="RightPin" />
+            <object X="4.8" Y="1.9" height="0.1" width="0.2" type="RectObject">
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
 
             <object X="2.9" Y="0.98" height="0.1" width="3.2" type="RectObject" angle="-0.25">
                 <property key="ImageName" >used_wood_bar</property>
