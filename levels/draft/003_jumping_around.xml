@@ -20,11 +20,11 @@
         <predefined>
             <object X="0.2" Y="2.85" type="Bowling Ball" />
             <object width="0.9" X="1.1" Y="2.4" height="0.1" type="RectObject" >
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
 	    </object>
             <object X="1.05" Y="1.2" height="2.3" width="0.1" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
 
             <object width="0.6" X="0.3" Y="2.64" height="0.4" type="RightRamp">
