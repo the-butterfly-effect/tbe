@@ -251,6 +251,27 @@ void StartStopWatch::goToState(TheStates aNewState)
 	DEBUG4("StartStopWatch: the new state is %d\n", theState);
 }
 
+void StartStopWatch::keypress_go()
+{
+	// let's emulate mouse clicks
+	if(theState==NOTSTARTED || theState==STOPPED)
+		clicked_on_watch();
+}
+
+void StartStopWatch::keypress_pause()
+{
+	// let's emulate mouse clicks
+	if(theState==RUNNING)
+		clicked_on_watch();
+}
+
+void StartStopWatch::keypress_reset()
+{
+	// let's emulate mouse clicks
+	if(theState==STOPPED || theState==BROKEN)
+		clicked_on_reset();
+}
+
 void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 {
 	QGraphicsItem* myItemPtr = itemAt(aMouseEvent->scenePos());

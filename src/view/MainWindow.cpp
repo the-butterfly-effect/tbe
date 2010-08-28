@@ -33,6 +33,7 @@
 #include "toolbox.h"
 #include "SaveLevelInfo.h"
 #include "LevelInfoDialog.h"
+#include "StartStopWatch.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
@@ -138,9 +139,15 @@ void MainWindow::on_actionBrand_names_activated()
 				""), this);
 }
 
+void MainWindow::on_actionGo_activated(void)
+{
+	emit reinterpret_cast<StartStopWatch*>(ui.StartStopView->scene())->keypress_go();
+}
+
 void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 {
 	theIsLevelEditor=true;
+	ui.actionSave->setEnabled(true);
 	ui.actionGo_To_Level_Editor->setEnabled(false);
 	ui.theToolBoxView->fillFromObjectFactory();
 }
@@ -175,6 +182,16 @@ void MainWindow::on_actionOpen_level_activated()
 
 	QString myLevelName = myDialog.getCurrent();
 	loadLevel(myLevelName);
+}
+
+void MainWindow::on_actionPause_activated(void)
+{
+	emit reinterpret_cast<StartStopWatch*>(ui.StartStopView->scene())->keypress_pause();
+}
+
+void MainWindow::on_actionReset_2_activated(void)
+{
+	emit reinterpret_cast<StartStopWatch*>(ui.StartStopView->scene())->keypress_reset();
 }
 
 void MainWindow::on_actionSave_activated()

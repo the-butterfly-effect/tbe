@@ -58,6 +58,10 @@ public slots:
 	void clicked_on_reset();
 	void clicked_on_fastforward();
 
+	void keypress_go();
+	void keypress_pause();
+	void keypress_reset();
+
 signals:
 	/// signal: start (or continue) simulation
 	void startSim();

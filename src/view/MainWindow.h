@@ -40,10 +40,13 @@ public:
 private slots:
 	void on_actionAbout_activated(void);
 	void on_actionBrand_names_activated(void);
+	void on_actionGo_activated(void);
 	void on_actionGo_To_Level_Editor_activated(void);
 	void on_actionLibraries_activated(void);
 	void on_actionOpen_custom_level_activated(void);
 	void on_actionOpen_level_activated(void);
+	void on_actionPause_activated(void);
+	void on_actionReset_2_activated(void);
 
 	// write the current level layout to disk
 	void on_actionSave_activated(void);
