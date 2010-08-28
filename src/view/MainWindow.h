@@ -32,7 +32,8 @@ class MainWindow : public QMainWindow
      Q_OBJECT
 
 public:
-     MainWindow(QWidget *parent = 0);
+	/// @param isMaximized: display fullscreen or not?
+	 MainWindow(bool isMaximized, QWidget *parent = 0);
 	 virtual ~MainWindow();
 
      void setScene(DrawWorld* aScene, const QString& aLevelName);

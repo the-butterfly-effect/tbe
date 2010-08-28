@@ -74,6 +74,8 @@ static bool displayHelp(QString /*anArgument*/ )
 	printf(" -L                  start in level creator mode\n");
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
+	printf(" --windowed          display in a window (default is fullscreen)\n");
+	printf(" -W                  display in a window (default is fullscreen)\n");
 	printf("\n");
 	exit(1);
 }
@@ -98,6 +100,14 @@ static bool setVerbosity(QString anArgument)
 	return true;
 }
 
+// local variable
+static bool theIsMaximized = true;
+static bool setWindowed( QString /*anArgument*/ )
+{
+	theIsMaximized = false;
+	return true;
+}
+
 
 // this struct is used to list all long and short arguments
 // it also contains a function pointer to a static function below
@@ -117,6 +127,7 @@ static struct s_args theArgsTable[] =
 	{ "help",          "h", false, displayHelp, },
 	{ "level-creator", "L", false, goLevelCreator, },
 	{ "verbosity",     "v", true,  setVerbosity, },
+	{ "windowed",      "W", false, setWindowed, },
 //	keep this one last:
 	{ "\0", "\0", false, NULL, },
 };
@@ -214,16 +225,17 @@ int main(int argc, char **argv)
 		displayHelp("");
 
 	DEBUG3("SUMMARY:\n");
-	DEBUG3("Verbosity is: %d\n", theVerbosity);
+	DEBUG3("Verbosity is: %d / Fullscreen is %d\n", theVerbosity, theIsMaximized);
 	DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
 
+	// which settings file is used can be confusing to the user...
 	{
 		QSettings mySettings;
-		printf("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
+		DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
 	}
 
 	// setup main window
-	MainWindow myMain;
+	MainWindow myMain(theIsMaximized);
 	myMain.show();
 
 	// run the main display loop    

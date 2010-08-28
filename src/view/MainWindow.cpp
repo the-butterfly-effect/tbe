@@ -39,12 +39,13 @@
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	: QMainWindow(parent), theLevelPtr(NULL),
 	  theScenePtr(NULL)
 {                                      
 	ui.setupUi(this);
-	showMaximized();
+	if (isMaximized)
+		showMaximized();
 
 #ifdef XXXNDEBUG
 	// hook up the menus - only in release mode when compiled
