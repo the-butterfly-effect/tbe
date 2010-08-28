@@ -218,8 +218,7 @@ Level::load(const QString& aFileName)
 			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
 		}
-		if (theIsLevelEditor==false)
-			myBOPtr->setIsMovable(false);
+		myBOPtr->setIsMovable(false);
 		theWorldPtr->addObject(myBOPtr);
 		myBOPtr->parseProperties();
 

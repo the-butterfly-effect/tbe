@@ -95,6 +95,14 @@ Position BaseObject::getTempCenter (void) const
 	return Position(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 }
 
+bool BaseObject::isMovable ( ) const
+{
+	if (theIsLevelEditor)
+		return true;
+	else
+		return theIsMovable;
+}
+
 void BaseObject::setTempCenter ( Position new_var )
 {
 	bool isDone = isPhysicsObjectCreated();
@@ -385,4 +393,3 @@ ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
 		return NULL;
 	return theFactoryListPtr->getAllFactories();
 }
-

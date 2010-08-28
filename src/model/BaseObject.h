@@ -191,8 +191,7 @@ public:
 	virtual const QString getToolTip ( ) const = 0;
 
 	/// returns true if the object can be moved by the user
-	virtual bool isMovable ( ) const
-		{ return theIsMovable; }
+	virtual bool isMovable ( ) const;
 	
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const = 0;

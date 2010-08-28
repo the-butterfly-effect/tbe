@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
 	#warning compiling the on_action connects into MainWindow
 	QObject::connect(this, SIGNAL(actionAbout()),             this, SLOT(on_actionAbout_activated()));
 	QObject::connect(this, SIGNAL(actionBrand_names()),       this, SLOT(on_actionBrand_names_activated()));
+	QObject::connect(this, SIGNAL(actionGo_To_Level_Editor()), this, SLOT(on_actionGo_To_Level_Editor_activated()));
 	QObject::connect(this, SIGNAL(actionLibraries()),         this, SLOT(on_actionLibraries_activated()));
 	QObject::connect(this, SIGNAL(actionOpen_custom_level()), this, SLOT(on_actionOpen_custom_level_activated()));
 	QObject::connect(this, SIGNAL(actionOpen_level()),        this, SLOT(on_actionOpen_level_activated()));
@@ -135,6 +136,13 @@ void MainWindow::on_actionBrand_names_activated()
 				"has existed since at least the mid 1950s. "
 				"We are not affiliated with the 2004 movie in any way."
 				""), this);
+}
+
+void MainWindow::on_actionGo_To_Level_Editor_activated(void)
+{
+	theIsLevelEditor=true;
+	ui.actionGo_To_Level_Editor->setEnabled(false);
+	ui.theToolBoxView->fillFromObjectFactory();
 }
 
 void MainWindow::on_actionLibraries_activated()
