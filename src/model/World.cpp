@@ -163,6 +163,21 @@ BaseObject* World::findObjectByID(const QString& anID)
 	return NULL;
 }
 
+QStringList World::getAllIDs(void) const
+{
+	QStringList myIDList;
+
+	// iterate through all BaseObjects
+	BaseObjectPtrList::const_iterator i;
+	for (i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+	{
+		QString myID = (*i)->getID();
+		if (myID.isEmpty()==false)
+			myIDList.push_back(myID);
+	}
+	return myIDList;
+}
+
 
 void World::initAttributes( )
 {

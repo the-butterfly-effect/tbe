@@ -173,6 +173,12 @@ public:
 	 */
 	BaseObject* findObjectByID(const QString& anID);
 
+	/** @returns a list with all object IDs present in the World
+	  * this list can be empty
+	  * and can (but shouldn't) contain multiple entries for the same ID
+	  */
+	QStringList getAllIDs(void) const;
+
 	/** removes a joint from the World
 	 *  NOTE: the b2Bodies the joint is linked to should both still exist!
 	 *  @param aJointPtr pointer to the joint to remove
