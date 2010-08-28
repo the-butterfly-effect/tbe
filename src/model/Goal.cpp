@@ -124,7 +124,7 @@ QString GoalDistance::goalToStringList() const
 {
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	QString myString = QString("%1;%2;%3;%4;%5")
-					   .arg(GoalEditor::getColumnZero()[GoalEditor::DISTANCE])
+					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::DISTANCE])
 					   .arg(theFirstPtr->getID())
 					   .arg(theType==MORETHAN?">":"<")
 					   .arg(QString::number(theLimit))
@@ -257,19 +257,19 @@ QString GoalPositionChange::goalToStringList() const
 	QString myLimit;
 
 	if ((theType&0x03)==1)
-		myCondition="<";
-	if ((theType&0x03)==2)
-		myCondition=">";
-	if ((theType&0x03)==3)
 		myCondition=QObject::tr("changed");
+	if ((theType&0x03)==2)
+		myCondition="<";
+	if ((theType&0x03)==3)
+		myCondition=">";
 
-	if ((theType&0x03)==1 || (theType&0x03)==1)
+	if ((theType&0x03)==2 || (theType&0x03)==3)
 		myLimit = QString::number(theLimit);
 
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
 	QString myString = QString("%1;%2;%3;%4;")
 					   //: translators: %1 can be X, Y, Angle or X/Y/Angle
-					   .arg(GoalEditor::getColumnZero()[theType])
+					   .arg(GoalSerializer::getColumnZero()[theType/4])
 					   .arg(theBOPtr->getID())
 					   .arg(myCondition)
 					   .arg(myLimit);

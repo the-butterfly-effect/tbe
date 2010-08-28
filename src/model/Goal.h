@@ -20,7 +20,7 @@
 #define GOAL_H
 
 #include "Property.h"
-#include "GoalEditor.h"
+#include "GoalSerializer.h"
 
 // forward declarations
 class World;
@@ -109,15 +109,15 @@ class GoalPositionChange : public Goal
 public:
 	enum PositionType
 	{
-		NOTYPE          = 0,
-		XCHANGED        = GoalEditor::POSITIONX + 1,
-		XBELOW          = GoalEditor::POSITIONX  + 2,
-		XOVER           = GoalEditor::POSITIONX   + 3,
-		YCHANGED        = GoalEditor::POSITIONY + 1,
-		YBELOW          = GoalEditor::POSITIONY  + 2,
-		YOVER           = GoalEditor::POSITIONY   + 3,
-		ANGLECHANGED    = GoalEditor::ANGLE     + 1,
-		ANYTHINGCHANGED = GoalEditor::ANYTHING  + 1
+		NOTYPE          = 255,
+		XCHANGED        = 4*GoalSerializer::POSITIONX + 1,
+		XBELOW          = 4*GoalSerializer::POSITIONX  + 2,
+		XOVER           = 4*GoalSerializer::POSITIONX   + 3,
+		YCHANGED        = 4*GoalSerializer::POSITIONY + 1,
+		YBELOW          = 4*GoalSerializer::POSITIONY  + 2,
+		YOVER           = 4*GoalSerializer::POSITIONY   + 3,
+		ANGLECHANGED    = 4*GoalSerializer::ANGLE     + 1,
+		ANYTHINGCHANGED = 4*GoalSerializer::ANYTHING  + 1
 	};
 
 	/** constructor

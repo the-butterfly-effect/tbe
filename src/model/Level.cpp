@@ -20,6 +20,7 @@
 #include "World.h"
 #include "BaseObjectSerializer.h"
 #include "GoalSerializer.h"
+#include "Goal.h"
 
 #include <QFile>
 #include <QFileInfo>

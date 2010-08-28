@@ -19,9 +19,8 @@
 #ifndef GOALSERIALIZER_H
 #define GOALSERIALIZER_H
 
-#include "Goal.h"
-
 // forward declarations:
+class Goal;
 class QDomElement;
 class QDomNode;
 
@@ -70,6 +69,18 @@ public:
 	  */
 	static QStringList goalToStringList(const Goal* aGoalPtr);
 
+	enum GoalTypes
+	{
+		POSITIONX,
+		POSITIONY,
+		ANGLE,
+		ANYTHING,
+		DISTANCE
+	};
+
+	/// @returns a sparsely populated QStringList with all possible
+	/// entries for column zero. They follow the enum GoalTypes.
+	static QStringList getColumnZero(void);
 
 private:
 	/// constructor only called by Goal

@@ -35,7 +35,6 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	theWorldPtr(aWorldPtr)
 {
 	ui.setupUi(this);
-
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	theModel = new QStandardItemModel(4, 1);
 
@@ -44,20 +43,21 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	theModel->setHorizontalHeaderLabels(QString("Variable;Object;Cond.;Value;Object2").split(";"));
 
 	ui.tableView->setModel(theModel);
-
 	// setup the various delegates for the different columns
 	ComboBoxDelegate* myVariableDelegate = new ComboBoxDelegate();
-	myVariableDelegate->setItems(getColumnZero());
+	myVariableDelegate->setItems(GoalSerializer::getColumnZero());
 	ui.tableView->setItemDelegateForColumn ( 0, myVariableDelegate);
 
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
 	myConditionDelegate->setItems(QString(">;<;"+tr("change")).split(";"));
 	ui.tableView->setItemDelegateForColumn ( 2, myConditionDelegate);
 	ui.tableView->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate());
+
 	ComboBoxDelegate* myObjectIDDelegate = new ComboBoxDelegate();
 	myObjectIDDelegate->setItems(theWorldPtr->getAllIDs());
 	ui.tableView->setItemDelegateForColumn ( 1, myObjectIDDelegate);
 	ui.tableView->setItemDelegateForColumn ( 4, myObjectIDDelegate);
+
 	populate();
 }
 
@@ -77,19 +77,6 @@ void GoalEditor::changeEvent(QEvent *e)
     default:
         break;
     }
-}
-
-QStringList GoalEditor::getColumnZero(void)
-{
-
-	// sparsely populated QStringList
-	QStringList myVariables;
-	myVariables.insert(POSITIONX,   QObject::tr("Position X"));
-	myVariables.insert(POSITIONY,   QObject::tr("Position Y"));
-	myVariables.insert(ANGLE,       QObject::tr("Angle"));
-	myVariables.insert(ANYTHING,    QObject::tr("X/Y/Angle"));
-	myVariables.insert(DISTANCE,    QObject::tr("Distance"));
-	return myVariables;
 }
 
 
@@ -137,6 +124,7 @@ void GoalEditor::populate(void)
 		QStringList myGoal = GoalSerializer::goalToStringList(*myG);
 		QList<QStandardItem*> myRowList;
 
+		assert(myGoal.size()==5);
 		for (int i=0; i<5; i++)
 		{
 			if (myGoal[i].isEmpty()==false)

@@ -41,19 +41,6 @@ public:
 	GoalEditor(World* aWorldPtr, QWidget *parent = 0);
     ~GoalEditor();
 
-	enum GoalTypes
-	{
-		POSITIONX = 4,
-		POSITIONY = 8,
-		ANGLE     = 16,
-		ANYTHING  = 4+8+16,
-		DISTANCE  = 32
-	};
-
-	/// @returns a sparsely populated QStringList with all possible
-	/// entries for column zero. They follow the enum GoalTypes.
-	static QStringList getColumnZero(void);
-
 protected:
     void changeEvent(QEvent *e);
 

@@ -17,6 +17,7 @@
  */
 
 #include "tbe_global.h"
+#include "Goal.h"
 #include "GoalSerializer.h"
 #include <QDomElement>
 #include <QStringList>
@@ -83,6 +84,18 @@ not_good:
 	return NULL;
 }
 
+QStringList GoalSerializer::getColumnZero(void)
+{
+
+	// sparsely populated QStringList
+	QStringList myVariables;
+	myVariables.insert(POSITIONX,   QObject::tr("Position X"));
+	myVariables.insert(POSITIONY,   QObject::tr("Position Y"));
+	myVariables.insert(ANGLE,       QObject::tr("Angle"));
+	myVariables.insert(ANYTHING,    QObject::tr("X/Y/Angle"));
+	myVariables.insert(DISTANCE,    QObject::tr("Distance"));
+	return myVariables;
+}
 
 QStringList GoalSerializer::goalToStringList(const Goal* aGoalPtr)
 {
