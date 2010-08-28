@@ -48,7 +48,7 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	// setup the various delegates for the different columns
 	// TODO: the Combo delegate for the first column
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
-	myConditionDelegate->setItems(QString(">;<").split(";"));
+	myConditionDelegate->setItems(QString(">;<;"+tr("change")).split(";"));
 	ui.tableView->setItemDelegateForColumn ( 2, myConditionDelegate);
 	ui.tableView->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate());
 	ComboBoxDelegate* myObjectIDDelegate = new ComboBoxDelegate();

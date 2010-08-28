@@ -252,12 +252,14 @@ QString GoalPositionChange::goalToStringList() const
 	QString myVariable;
 	QString myCondition;
 	QString myLimit;
+	static const QString CHANGED=QObject::tr("changed");
+	static const QString ANGLE=QObject::tr("Angle");
 	switch(theType)
 	{
 	case NOTYPE:
 		break;
 	case XCHANGED:
-		myVariable = "X"; myCondition = QObject::tr("changed"); break;
+		myVariable = "X"; myCondition = CHANGED; break;
 	case XBELOW:
 		myLimit = QString::number(theLimit);
 		myVariable = "X"; myCondition = "<"; break;
@@ -265,7 +267,7 @@ QString GoalPositionChange::goalToStringList() const
 		myLimit = QString::number(theLimit);
 		myVariable = "X"; myCondition = ">"; break;
 	case YCHANGED:
-		myVariable = "Y"; myCondition = QObject::tr("changed"); break;
+		myVariable = "Y"; myCondition = CHANGED; break;
 	case YBELOW:
 		myLimit = QString::number(theLimit);
 		myVariable = "Y"; myCondition = "<"; break;
@@ -273,9 +275,9 @@ QString GoalPositionChange::goalToStringList() const
 		myLimit = QString::number(theLimit);
 		myVariable = "Y"; myCondition = ">"; break;
 	case ANGLECHANGED:
-		myVariable = "Angle"; myCondition = QObject::tr("changed"); break;
+		myVariable = ANGLE; myCondition = CHANGED; break;
 	case ANYTHINGCHANGED:
-		myVariable = QObject::tr("X/Y/Angle"); myCondition = QObject::tr("changed"); break;
+		myVariable = "X/Y/"+ANGLE; myCondition = CHANGED; break;
 	}
 
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
