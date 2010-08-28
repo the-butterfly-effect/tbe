@@ -5,8 +5,8 @@
 	<title lang="nl">Het vlindereffect (beginnerscursus)</title>
 	<author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>First Demonstration: how does the Butterfly Effect work...</description>
-	<description lang="nl">Eerste demonstratie van het vlindereffect in actie...</description>
+        <description>First Demonstration: how does the Butterfly Effect work...&lt;br>You might want to click on the Post-it note!</description>
+	<description lang="nl">Eerste demonstratie van het vlindereffect in actie...&lt;br>Klik vooral eerst op de Post-it note!</description>
 	<date>11/1/09</date>
     </levelinfo>
     <scene>
