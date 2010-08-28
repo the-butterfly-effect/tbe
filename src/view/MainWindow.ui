@@ -335,7 +335,7 @@
   </action>
   <action name="actionGo_To_Level_Editor">
    <property name="text">
-    <string>Go To Level Editor Mode</string>
+    <string>Go To Level Creator Mode</string>
    </property>
   </action>
   <action name="actionGo">
