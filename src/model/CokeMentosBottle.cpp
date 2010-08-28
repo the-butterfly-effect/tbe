@@ -57,10 +57,10 @@ CokeMentosBottle::CokeMentosBottle()
 		my8PointPinDef->vertexCount = 8;
 		my8PointPinDef->vertices[0].Set(-0.01 ,  0.25);
 		my8PointPinDef->vertices[1].Set(-0.083,  0.12);
-		my8PointPinDef->vertices[2].Set(-0.075, -0.249);
-		my8PointPinDef->vertices[3].Set(-0.073, -0.251);
-		my8PointPinDef->vertices[4].Set( 0.073, -0.251);
-		my8PointPinDef->vertices[5].Set( 0.075, -0.249);
+		my8PointPinDef->vertices[2].Set(-0.075, -0.234);
+		my8PointPinDef->vertices[3].Set(-0.060, -0.251);
+		my8PointPinDef->vertices[4].Set( 0.060, -0.251);
+		my8PointPinDef->vertices[5].Set( 0.075, -0.234);
 		my8PointPinDef->vertices[6].Set( 0.083,  0.12);
 		my8PointPinDef->vertices[7].Set( 0.01 ,  0.25);
 		// approximation of the initial mass - we'll fix it later on...
@@ -116,7 +116,7 @@ DrawObject*  CokeMentosBottle::createDrawObject(void)
 
 void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)
 {
-	if (anImpulseLength > 1 && theBottleStatus==UNTRIGGERED)
+	if (anImpulseLength > 0.6 && theBottleStatus==UNTRIGGERED)
 		setBottleStatus(TRIGGERED);
 }
 
