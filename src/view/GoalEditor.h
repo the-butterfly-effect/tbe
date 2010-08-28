@@ -20,12 +20,21 @@
 #define GOALEDITOR_H
 
 #include "ui_GoalEditor.h"
-#include <QtGui/QDialog>
+#include <QDialog>
+#include <QItemDelegate>
 
 // forward declarations
 class World;
+class QStandardItemModel;
 
 
+// this header file contains three class declarations:
+// first GoalEditor, then ComboBoxDelegate, then DoubleSpinBoxDelegate
+
+
+/// the GoalEditor dialog pops up a QTableView with rows that each represent
+/// a Goal.
+/// Each column has a dedicated delegate to edit the contents of that column.
 class GoalEditor : public QDialog {
     Q_OBJECT
 public:
@@ -35,9 +44,7 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
-
 	void populate(void);
-
 
 private slots:
 	void on_toolButtonMinus_clicked();
@@ -45,8 +52,63 @@ private slots:
 
 private:
 	Ui::GoalEditor ui;
+	QStandardItemModel* theModel;
 
 	World* theWorldPtr;
 };
+
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+/// this is the Delegate to edit a field using a ComboBox with predefined values
+class ComboBoxDelegate : public QItemDelegate
+{
+	Q_OBJECT
+
+public:
+	ComboBoxDelegate(QObject *parent = 0);
+
+	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+						  const QModelIndex &index) const;
+
+	void setEditorData(QWidget *editor, const QModelIndex &index) const;
+
+	void setItems(const QStringList);
+
+	void setModelData(QWidget *editor, QAbstractItemModel *model,
+					  const QModelIndex &index) const;
+
+	void updateEditorGeometry(QWidget *editor,
+							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+
+private:
+	QStringList theList;
+};
+
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+
+/// this is the Delegate to edit a field using a QDoubleSpinBox
+class DoubleSpinBoxDelegate : public QItemDelegate
+{
+	Q_OBJECT
+
+public:
+	DoubleSpinBoxDelegate(QObject *parent = 0);
+
+	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+						  const QModelIndex &index) const;
+
+	void setEditorData(QWidget *editor, const QModelIndex &index) const;
+	void setModelData(QWidget *editor, QAbstractItemModel *model,
+					  const QModelIndex &index) const;
+
+	void updateEditorGeometry(QWidget *editor,
+							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+};
+
 
 #endif // GOALEDITOR_H
