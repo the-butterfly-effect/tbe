@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,6 +22,9 @@
 #include "Position.h"
 #include "Property.h"
 #include "World.h"
+#include "GoalEditor.h"
+
+#include <QStringList>
 
 Goal::Goal()
 {
@@ -121,7 +124,7 @@ QString GoalDistance::goalToStringList() const
 {
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	QString myString = QString("%1;%2;%3;%4;%5")
-					   .arg(QObject::tr("Distance"))
+					   .arg(GoalEditor::getColumnZero()[GoalEditor::DISTANCE])
 					   .arg(theFirstPtr->getID())
 					   .arg(theType==MORETHAN?">":"<")
 					   .arg(QString::number(theLimit))
@@ -252,38 +255,21 @@ QString GoalPositionChange::goalToStringList() const
 	QString myVariable;
 	QString myCondition;
 	QString myLimit;
-	static const QString CHANGED=QObject::tr("changed");
-	static const QString ANGLE=QObject::tr("Angle");
-	switch(theType)
-	{
-	case NOTYPE:
-		break;
-	case XCHANGED:
-		myVariable = "X"; myCondition = CHANGED; break;
-	case XBELOW:
+
+	if ((theType&0x03)==1)
+		myCondition="<";
+	if ((theType&0x03)==2)
+		myCondition=">";
+	if ((theType&0x03)==3)
+		myCondition=QObject::tr("changed");
+
+	if ((theType&0x03)==1 || (theType&0x03)==1)
 		myLimit = QString::number(theLimit);
-		myVariable = "X"; myCondition = "<"; break;
-	case XOVER:
-		myLimit = QString::number(theLimit);
-		myVariable = "X"; myCondition = ">"; break;
-	case YCHANGED:
-		myVariable = "Y"; myCondition = CHANGED; break;
-	case YBELOW:
-		myLimit = QString::number(theLimit);
-		myVariable = "Y"; myCondition = "<"; break;
-	case YOVER:
-		myLimit = QString::number(theLimit);
-		myVariable = "Y"; myCondition = ">"; break;
-	case ANGLECHANGED:
-		myVariable = ANGLE; myCondition = CHANGED; break;
-	case ANYTHINGCHANGED:
-		myVariable = "X/Y/"+ANGLE; myCondition = CHANGED; break;
-	}
 
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
 	QString myString = QString("%1;%2;%3;%4;")
 					   //: translators: %1 can be X, Y, Angle or X/Y/Angle
-					   .arg(QObject::tr("Position %1").arg(myVariable))
+					   .arg(GoalEditor::getColumnZero()[theType])
 					   .arg(theBOPtr->getID())
 					   .arg(myCondition)
 					   .arg(myLimit);

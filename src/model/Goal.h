@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,6 +20,7 @@
 #define GOAL_H
 
 #include "Property.h"
+#include "GoalEditor.h"
 
 // forward declarations
 class World;
@@ -108,15 +109,15 @@ class GoalPositionChange : public Goal
 public:
 	enum PositionType
 	{
-		NOTYPE,
-		XCHANGED,
-		XBELOW,
-		XOVER,
-		YCHANGED,
-		YBELOW,
-		YOVER,
-		ANGLECHANGED,
-		ANYTHINGCHANGED
+		NOTYPE          = 0,
+		XCHANGED        = GoalEditor::POSITIONX + 1,
+		XBELOW          = GoalEditor::POSITIONX  + 2,
+		XOVER           = GoalEditor::POSITIONX   + 3,
+		YCHANGED        = GoalEditor::POSITIONY + 1,
+		YBELOW          = GoalEditor::POSITIONY  + 2,
+		YOVER           = GoalEditor::POSITIONY   + 3,
+		ANGLECHANGED    = GoalEditor::ANGLE     + 1,
+		ANYTHINGCHANGED = GoalEditor::ANYTHING  + 1
 	};
 
 	/** constructor

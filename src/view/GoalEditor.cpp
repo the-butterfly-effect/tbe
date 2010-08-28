@@ -46,7 +46,10 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	ui.tableView->setModel(theModel);
 
 	// setup the various delegates for the different columns
-	// TODO: the Combo delegate for the first column
+	ComboBoxDelegate* myVariableDelegate = new ComboBoxDelegate();
+	myVariableDelegate->setItems(getColumnZero());
+	ui.tableView->setItemDelegateForColumn ( 0, myVariableDelegate);
+
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
 	myConditionDelegate->setItems(QString(">;<;"+tr("change")).split(";"));
 	ui.tableView->setItemDelegateForColumn ( 2, myConditionDelegate);
@@ -75,6 +78,20 @@ void GoalEditor::changeEvent(QEvent *e)
         break;
     }
 }
+
+QStringList GoalEditor::getColumnZero(void)
+{
+
+	// sparsely populated QStringList
+	QStringList myVariables;
+	myVariables.insert(POSITIONX,   QObject::tr("Position X"));
+	myVariables.insert(POSITIONY,   QObject::tr("Position Y"));
+	myVariables.insert(ANGLE,       QObject::tr("Angle"));
+	myVariables.insert(ANYTHING,    QObject::tr("X/Y/Angle"));
+	myVariables.insert(DISTANCE,    QObject::tr("Distance"));
+	return myVariables;
+}
+
 
 void GoalEditor::on_toolButtonMinus_clicked()
 {
