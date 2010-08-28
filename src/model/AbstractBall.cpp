@@ -111,7 +111,8 @@ AbstractBall::AbstractBall (const QString& aName,
 	setTheBounciness(aBounciness);
 
 	// for none of the AbstractBalls, you're supposed to change the image...
-	theProps.setDefaultPropertiesString("-" + QString(Property::IMAGE_NAME_STRING) + ":");
+	theProps.setDefaultPropertiesString("-" + QString(Property::IMAGE_NAME_STRING) + ":/"
+				+ QString(Property::BOUNCINESS_STRING) + QString(":%1").arg(aBounciness));
 }
 
 AbstractBall::~AbstractBall ( ) { }
@@ -138,7 +139,9 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	return theDrawObjectPtr;
 }
 
-// ---------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------CustomBall--------------------------------
+// ---------------------------------------------------------------------------
 
 //// this class' ObjectFactory
 class CustomBallObjectFactory : public ObjectFactory
