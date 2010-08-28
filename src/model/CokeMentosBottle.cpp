@@ -70,7 +70,7 @@ CokeMentosBottle::CokeMentosBottle()
 		theShapeList.push_back(my8PointPinDef);
 	}
 
-	setTheBounciness(0.3);
+	setTheBounciness(0.2);
 	setBottleStatus(UNTRIGGERED);
 
 	theProps.setDefaultPropertiesString(
