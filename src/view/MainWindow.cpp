@@ -77,8 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
 	setSimSpeed(0.5);
 
 	// if level specified on command line, don't display splash screen
-	QStringList myArguments = QApplication::arguments();
-	if (myArguments.count()>1)
+	if (theStartFileName.isEmpty()==false)
 	{
 		slot_splashScreen_clicked();
 	}
@@ -242,11 +241,10 @@ void MainWindow::on_actionSave_activated()
 
 void MainWindow::slot_splashScreen_clicked(void)
 {
-	QStringList myArguments = QApplication::arguments();
-	if (myArguments.count()>1)
-		loadLevel(myArguments[1]);
-	else
+	if (theStartFileName.isEmpty())
 		on_actionOpen_level_activated();
+	else
+		loadLevel(theStartFileName);
 }
 
 //////////////////////////////////////////////////////////////////////////////

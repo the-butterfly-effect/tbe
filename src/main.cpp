@@ -57,6 +57,76 @@ bool theDisplayFramerate = false;
 bool theDisplayFramerate = true;
 #endif
 
+QString theStartFileName;
+
+
+// -----------------------------------------------------------------------
+// ------------------------- Command Line Parsing ------------------------
+// -----------------------------------------------------------------------
+
+
+static bool displayHelp(QString /*anArgument*/ )
+{
+	printf(APPNAME " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
+	printf(" --help              gives this help text\n");
+	printf(" -h                  gives this help text\n");
+	printf(" --level-creator     start in level creator mode\n");
+	printf(" -L                  start in level creator mode\n");
+	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
+	printf(" -v <lvl>            set verbosity\n");
+	printf("\n");
+	exit(1);
+}
+
+static bool goLevelCreator( QString /*anArgument*/ )
+{
+	theIsLevelEditor = true;
+	return true;
+}
+
+static bool setVerbosity(QString anArgument)
+{
+	// the argument should be a number. Let's parse.
+	int myNumber = anArgument.toInt();
+	if (myNumber < 1 || myNumber > MAX_VERBOSITY)
+	{
+		printf("ERROR: verbosity argument should be between 1 and %d\n", MAX_VERBOSITY);
+		return false;
+	}
+	theVerbosity = myNumber;
+	DEBUG2("set verbosity level to %d\n", theVerbosity);
+	return true;
+}
+
+
+// this struct is used to list all long and short arguments
+// it also contains a function pointer to a static function below
+// that actually acts on the argument
+struct s_args
+{
+	QString theFullCommand;
+	QString theShortCommand;
+	bool needsArgument;
+	bool (*theFunctionPtr)(QString anArgument);
+};
+
+
+static struct s_args theArgsTable[] =
+{
+// keep sorted alphabetically, please
+	{ "help",          "h", false, displayHelp, },
+	{ "level-creator", "L", false, goLevelCreator, },
+	{ "verbosity",     "v", true,  setVerbosity, },
+//	keep this one last:
+	{ "\0", "\0", false, NULL, },
+};
+
+
+// -----------------------------------------------------------------------
+// ---------------------------------- main() -----------------------------
+// -----------------------------------------------------------------------
+
+
 int main(int argc, char **argv)
 {
 	// init Qt (graphics toolkit) - www.qtsoftware.com
@@ -74,11 +144,83 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
 	QCoreApplication::setApplicationName("The Butterfly Effect");
 
+	QStringList myCmdLineList = app.arguments();
+
+	bool isParsingSuccess=true;
+	// we can skip argument zero - that's the tbe executable itself
+	for (int i=1; i<myCmdLineList.size() && isParsingSuccess; i++)
+	{
+		QString myArg = myCmdLineList[i];
+		if (myArg.startsWith("-"))
+		{
+			// remove one or two dashes - we're slightly more flexible than usual
+			myArg.remove(0,1);
+			if (myArg.startsWith("-"))
+				myArg.remove(0,1);
+
+			// extract value with = if there is one
+			QStringList myExp = myArg.split("=");
+
+			// is it matching with short or long?
+			int j=0;
+			bool isMatch=false;
+			while(theArgsTable[j].theFunctionPtr != NULL)
+			{
+				if (myExp[0] == theArgsTable[j].theFullCommand
+					|| myExp[0] == theArgsTable[j].theShortCommand)
+				{
+					isMatch=true;
+					QString myVal;
+					if (theArgsTable[j].needsArgument == true)
+					{
+						// was it '='?
+						if (myExp.count()==2)
+							myVal = myExp[1];
+						else
+						{
+							// or is it ' ' -> which means we need to grab next arg
+							if (i+1<myCmdLineList.size())
+							{
+								myVal = myCmdLineList[i+1];
+								i++;
+							}
+							else
+							{
+								isParsingSuccess=false;
+								break;
+							}
+						}
+					}
+					if (theArgsTable[j].theFunctionPtr(myVal)==false)
+						isParsingSuccess=false;
+				}
+				++j;
+			}
+			if (isMatch==false)
+			{
+				isParsingSuccess=false;
+				break;
+			}
+		}
+		else
+		{
+			// if it is a single string, it probably is a file name
+			theStartFileName = myArg;
+		}
+
+	}
+
+	if (isParsingSuccess==false)
+		displayHelp("");
+
+	DEBUG3("SUMMARY:\n");
+	DEBUG3("Verbosity is: %d\n", theVerbosity);
+	DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
+
 	{
 		QSettings mySettings;
 		printf("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
 	}
-
 
 	// setup main window
 	MainWindow myMain;

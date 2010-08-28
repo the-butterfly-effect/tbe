@@ -84,5 +84,6 @@ extern bool theDrawPolyOutline;
 extern bool theIsCollisionOn;
 extern bool theIsLevelEditor;
 extern bool theTBECaching;
+extern QString theStartFileName;
 
 #endif // TBE_GLOBAL
