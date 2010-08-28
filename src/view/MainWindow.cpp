@@ -47,6 +47,9 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	if (isMaximized)
 		showMaximized();
 
+	if (theIsLevelEditor)
+		emit on_actionGo_To_Level_Editor_activated();
+
 #ifdef XXXNDEBUG
 	// hook up the menus - only in release mode when compiled
 	// with static library - see ticket:77
@@ -150,7 +153,10 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	theIsLevelEditor=true;
 	ui.actionSave->setEnabled(true);
 	ui.actionGo_To_Level_Editor->setEnabled(false);
-	ui.theToolBoxView->fillFromObjectFactory();
+
+	// if a level is already loaded, let's populate the toolbox
+	if (theScenePtr!=NULL)
+		ui.theToolBoxView->fillFromObjectFactory();
 
 	// populate the view menu more
 	// we need to add the Goal Editor
