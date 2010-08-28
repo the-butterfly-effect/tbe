@@ -91,13 +91,9 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 
-	if (theDrawDebug)
-		SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
-
+	setDrawDebug();
 	setAcceptDrops(true);
 }
-
-
 
 DrawWorld::~DrawWorld ( ) 
 {
@@ -355,6 +351,17 @@ void DrawWorld::setAcceptDrops(bool isOn)
 		myView->setAcceptDrops(isOn);
 		DEBUG5("new view drop state: %d\n", myView->acceptDrops());
 	}
+}
+
+void DrawWorld::setDrawDebug()
+{
+	if (theDrawDebug)
+	{
+		SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
+		clearGraphicsList(0);
+	}
+	else
+		ClearFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
 }
 
 void DrawWorld::startTimer(void)

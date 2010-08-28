@@ -71,6 +71,8 @@ public:
 	qreal getWidth();
 	qreal getHeight();
 
+	void setDrawDebug();
+
 	QUndoStack* getTheUndoStackPtr(void)
 		{ return &theUndoStack; }
 

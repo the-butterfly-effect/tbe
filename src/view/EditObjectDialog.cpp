@@ -17,7 +17,6 @@
  */
 
 #include "EditObjectDialog.h"
-#include "GoalEditor.h"
 #include "DrawObject.h"
 #include "ImageStore.h"
 
@@ -42,16 +41,6 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 	// FIXME/TODO: put this into an UNDO
 	theBOPtr->setID(ui.lineEditID->text().trimmed());
 }
-
-
-void EditObjectDialog::on_toolButtonGoals_clicked()
-{
-	// the Goals dialog is modal, i.e. it can stay floating around
-	GoalEditor* theGoalEditorPtr = new GoalEditor(theBOPtr->theWorldPtr, QApplication::activeWindow());
-	theGoalEditorPtr->show();
-}
-
-
 
 void EditObjectDialog::position_valueChanged (double )
 {

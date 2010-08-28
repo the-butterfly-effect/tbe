@@ -135,8 +135,7 @@ void World::createScene(MainWindow* myMainPtr)
 	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
 	// all shapes - useful for debugging new objects
 	// but we have to register the debug thingie first.
-	if (theDrawDebug==true)
-		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+	theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
 
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;

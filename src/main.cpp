@@ -35,12 +35,12 @@ bool theIsLevelEditor = false;
 bool theIsCollisionOn = false;
 
 // this variable defines whether we are showing Box2D debugging info or not
-// TODO/FIXME: this should go into preferences or so at some point
+// switching this option is possible through the theDrawDebugActionPtr in MainWindow
 bool theDrawDebug = false;
 
 // this variable defines whether DrawPolyOutline draws the polygons
 // over the image
-// TODO/FIXME: this should go into preferences or so at some point
+// switching this option is possible through the theDrawOutlineActionPtr in MainWindow
 bool theDrawPolyOutline = false;
 
 // This variable defines whether TBE caches bitmaps of objects to speed

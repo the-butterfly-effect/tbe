@@ -65,6 +65,14 @@ private slots:
 	/// called internally by all inside graphicsview
 	void slot_clear_buttons(void);
 
+	/// slot for QAction menu-view-"draw debug"
+	void slot_drawDebugAction_toggle(bool isChecked);
+	/// slot for QAction menu-view-"draw polyoutline"
+	void slot_drawOutlineAction_toggle(bool isChecked);
+
+	/// slot for QAction menu-view-GoalEditor
+	void slot_goalEditorAction_clicked(void);
+
 	/// called by DrawWorld once alls goals are met
 	void slot_levelWon(void);
 
@@ -78,6 +86,9 @@ private:
 	DrawWorld* theScenePtr;
 
 	QUndoGroup theUndoGroup;
+	QAction*	theDrawDebugActionPtr;
+	QAction*	theDrawOutlineActionPtr;
+	QAction*	theGoalEditorActionPtr;
 	QAction*	theUndoActionPtr;
 	QAction*	theRedoActionPtr;
 	QPushButton* theButtons[3];

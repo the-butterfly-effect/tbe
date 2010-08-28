@@ -34,6 +34,7 @@
 #include "SaveLevelInfo.h"
 #include "LevelInfoDialog.h"
 #include "StartStopWatch.h"
+#include "GoalEditor.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
@@ -150,6 +151,29 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	ui.actionSave->setEnabled(true);
 	ui.actionGo_To_Level_Editor->setEnabled(false);
 	ui.theToolBoxView->fillFromObjectFactory();
+
+	// populate the view menu more
+	// we need to add the Goal Editor
+	// and we need to add the debug drawing entries
+
+	ui.menuView->addSeparator();
+	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
+	theGoalEditorActionPtr = new QAction( tr("Goal Editor ..."), this);
+	ui.menuView->addAction(theGoalEditorActionPtr);
+	connect(theGoalEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_goalEditorAction_clicked(void)));
+
+	ui.menuView->addSeparator();
+	theDrawDebugActionPtr = new QAction( tr("Draw Box2D debug in sim"), this);
+	theDrawDebugActionPtr->setCheckable(true);
+	theDrawDebugActionPtr->setChecked(theDrawDebug);
+	ui.menuView->addAction(theDrawDebugActionPtr);
+	connect(theDrawDebugActionPtr,SIGNAL(toggled(bool)), this, SLOT(slot_drawDebugAction_toggle(bool)));
+	theDrawOutlineActionPtr = new QAction( tr("Draw PolyObject outlines"), this);
+	theDrawOutlineActionPtr->setEnabled(false);
+	theDrawOutlineActionPtr->setCheckable(true);
+	theDrawOutlineActionPtr->setChecked(theDrawPolyOutline);
+	ui.menuView->addAction(theDrawOutlineActionPtr);
+	connect(theDrawOutlineActionPtr,SIGNAL(toggled(bool)), this, SLOT(slot_drawOutlineAction_toggle(bool)));
 }
 
 void MainWindow::on_actionLibraries_activated()
@@ -334,6 +358,28 @@ void MainWindow::slot_clear_buttons(void)
 	theButtons[1]=NULL;
 	delete theButtons[2];
 	theButtons[2]=NULL;
+}
+
+void MainWindow::slot_drawDebugAction_toggle(bool isChecked)
+{
+	theDrawDebug = isChecked;
+	theDrawDebugActionPtr->setChecked(theDrawDebug);
+	theScenePtr->setDrawDebug();
+}
+
+void MainWindow::slot_drawOutlineAction_toggle(bool isChecked)
+{
+	theDrawPolyOutline = isChecked;
+	theDrawOutlineActionPtr->setChecked(theDrawPolyOutline);
+	// TODO/FIXME: add resize of window here to force redraw of all bitmaps
+}
+
+
+void MainWindow::slot_goalEditorAction_clicked(void)
+{
+	// the Goals dialog is modal, i.e. it can stay floating around
+	GoalEditor* myGoalEditorPtr = new GoalEditor(theLevelPtr->getTheWorldPtr(), this);
+	myGoalEditorPtr->show();
 }
 
 void MainWindow::slot_levelWon()

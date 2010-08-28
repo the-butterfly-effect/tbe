@@ -51,9 +51,6 @@ private slots:
 	void propertyCellChanged ( int row, int column );
 	void lineEditID_valueChanged ( void );
 
-	void on_toolButtonGoals_clicked();
-
-
 private:
 	Ui::EditObjectDialog ui;
 
