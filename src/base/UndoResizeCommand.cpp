@@ -72,8 +72,6 @@ bool UndoResizeCommand::isChanged(void)
 	QPointF theDelta = theOldSize-theNewSize;
 	if (fabs(theDelta.x()) < Position::minimalMove && fabs(theDelta.y()) < Position::minimalMove)
 		return false;
-	if (fabs(theDelta.y()) < Position::minimalMove && fabs(theDelta.y()) < Position::minimalMove)
-		return false;
 	return true;
 }
 
@@ -134,6 +132,8 @@ void UndoResizeCommand::update(
 	if (anIndex==Anchor::RIGHT || anIndex==Anchor::LEFT)
 	{
 		float myOldWidth = theOldSize.x()/2.0;
+		if (myLengthAcrossAxis+myOldWidth < 0.1)
+			return;
 		theNewSize = QPointF(myLengthAcrossAxis+myOldWidth, theOldSize.y());
 		if (anIndex==Anchor::RIGHT)
 			theNewCenter = theOldCenter + Vector(0.5*(myLengthAcrossAxis-myOldWidth),0);
@@ -143,6 +143,8 @@ void UndoResizeCommand::update(
 	if (anIndex==Anchor::TOP || anIndex==Anchor::BOTTOM)
 	{
 		float myOldHeight= theOldSize.y()/2.0;
+		if (myLengthAcrossAxis+myOldHeight < 0.1)
+			return;
 		theNewSize = QPointF(theOldSize.x(), myLengthAcrossAxis+myOldHeight);
 		if (anIndex==Anchor::TOP)
 			theNewCenter = theOldCenter + Vector(0, 0.5*(myLengthAcrossAxis-myOldHeight));
