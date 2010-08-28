@@ -155,19 +155,34 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
+	bool isColliding = false;
+
 	// are we in the level editor???
+	// if so: there is a "feature" to disable collision detection
 	if (theIsLevelEditor==true && theIsCollisionOn==false)
 		return false;
 
-	bool isColliding = false;
-	removeCollisionCross();
+	// get the list of all collisions and count non-Anchors/non-Cross items
+	QList<QGraphicsItem *> myCollides = collidingItems();
+	int myCount = 0;
+	for (int i=0; i< myCollides.size(); i++)
+	{
+		if (theAnchorsPtr)
+			if (theAnchorsPtr->isAnchor(myCollides[i]))
+				continue;
+		if (myCollides[i]==theCrossPtr)
+			continue;
+		myCount++;
+	}
 
-	int myCount = scene()->collidingItems(this).count();
 	if (myCount>=1)
 	{
 		isColliding = true;
-		theCrossPtr = new Cross(this);
+		if (theCrossPtr==NULL)
+			theCrossPtr = new Cross(this);
 	}
+	if (!isColliding)
+		removeCollisionCross();
 	return isColliding;
 }
 

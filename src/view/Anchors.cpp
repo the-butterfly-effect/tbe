@@ -115,6 +115,16 @@ UndoRCommand* Anchors::createUndoResize(void)
 }
 
 
+bool Anchors::isAnchor(QGraphicsItem* anItem)
+{
+	for (int i=0; i<theAnchorList.size();i++)
+	{
+		if (theAnchorList[i]==anItem)
+			return true;
+	}
+	return false;
+}
+
 QGraphicsScene* Anchors::getScenePtr()
 {
 	return theDrawObjectPtr->scene();

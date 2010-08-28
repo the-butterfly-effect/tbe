@@ -56,6 +56,9 @@ public:
 	UndoRCommand* createUndoResize(void);
 	UndoRCommand* createUndoRotate(const Vector& aHotspot);
 
+	/// @returns true if anItem is one of the Anchors
+	bool isAnchor(QGraphicsItem* anItem);
+
 	bool pushUndo(QUndoCommand* anUndo)
 		{ return theDrawObjectPtr->pushUndo(anUndo); }
 
