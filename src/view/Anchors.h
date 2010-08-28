@@ -22,7 +22,6 @@
 #include <QGraphicsItem>
 #include <QGraphicsSvgItem>
 
-#include "PieMenu.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
 #include "EditObjectDialog.h"
@@ -33,7 +32,7 @@ class QGraphicsScene;
 class QUndoCommand;
 class UndoRCommand;
 
-/// the Anchors class manages the resize/rotate anchors around a selected DrawObject
+/// the Anchors class manages the resize/rotate/delete anchors around a selected DrawObject
 class Anchors : public QObject
 {
 	Q_OBJECT
@@ -47,10 +46,13 @@ public:
 	enum AnchorType
 	{
 		NONE,
-		RESIZE,
-		ROTATE
+		RESIZEHORI,
+		RESIZEVERTI,
+		ROTATE,
+		DELETE
 	};
 
+	void          createUndoDelete(void);
 	UndoRCommand* createUndoResize(void);
 	UndoRCommand* createUndoRotate(const Vector& aHotspot);
 
@@ -86,7 +88,8 @@ public:
 		LEFT        = 4,
 		BOTTOMLEFT  = 5,
 		BOTTOM      = 6,
-		BOTTOMRIGHT = 7
+		BOTTOMRIGHT = 7,
+		TOPLEFTLEFT = 8
 	};
 
 	/// Constructor

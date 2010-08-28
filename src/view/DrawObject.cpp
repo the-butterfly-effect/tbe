@@ -18,7 +18,6 @@
 
 #include "DrawObject.h"
 #include "BaseObject.h"
-#include "PieMenu.h"
 #include "Anchors.h"
 #include "ImageStore.h"
 #include "DrawWorld.h"
@@ -170,16 +169,6 @@ bool DrawObject::checkForCollision(void)
 		theCrossPtr = new Cross(this);
 	}
 	return isColliding;
-}
-
-void DrawObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
-{
-	if (theBaseObjectPtr->isMovable()==true &&
-		theIsLevelEditor == false)
-	{
-		PieMenu myMenu(this);
-		myMenu.exec(event->screenPos());
-	}
 }
 
 QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)

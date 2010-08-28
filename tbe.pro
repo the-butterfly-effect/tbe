@@ -66,7 +66,6 @@ HEADERS += src/tbe_global.h \
     src/view/ImageStore.h \
     src/view/LevelInfoDialog.h \
     src/view/MainWindow.h \
-    src/view/PieMenu.h \
     src/view/Popup.h \
     src/view/PostItEditor.h \
     src/view/resizinggraphicsview.h \
@@ -116,7 +115,6 @@ SOURCES += src/main.cpp \
     src/view/ImageStore.cpp \
     src/view/LevelInfoDialog.cpp \
     src/view/MainWindow.cpp \
-    src/view/PieMenu.cpp \
     src/view/PostItEditor.cpp \
     src/view/resizinggraphicsview.cpp \
     src/view/SaveLevelInfo.cpp \

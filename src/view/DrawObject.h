@@ -137,13 +137,6 @@ protected:
 	static QUndoStack* getUndoStackPtr(void);
 
 	/** overridden from QGraphicsItem
-	 *  if called, setup a context menu - a straight Qt Menu for now :-(
-	 *
-	 *  @param event the event to handle
-	 */
-	virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
-
-	/** overridden from QGraphicsItem
 	 *  we want to know when the user selects the object
 	 *    - so we can have theEditState take action
 	 *  @param event the even to handle

@@ -22,6 +22,7 @@
 #include "BaseObject.h"
 #include "UndoResizeCommand.h"
 #include "UndoRotateCommand.h"
+#include "UndoDeleteCommand.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -50,12 +51,12 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	// the below code creates the 8 anchors around the object
 	AnchorType myMode = NONE;
 	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE || theIsLevelEditor)
-		myMode = RESIZE;
+		myMode = RESIZEHORI;
 	theAnchorList.push_back(new Anchor(myMode, Anchor::RIGHT, this));
 	theAnchorList.push_back(new Anchor(myMode, Anchor::LEFT, this));
 
 	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE || theIsLevelEditor)
-		myMode = RESIZE;
+		myMode = RESIZEVERTI;
 	else
 		myMode = NONE;
 	theAnchorList.push_back(new Anchor(myMode, Anchor::TOP, this));
@@ -69,6 +70,9 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new Anchor(myMode, Anchor::TOPLEFT, this));
 	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMLEFT, this));
 	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMRIGHT, this));
+
+	// the DELETE button is displayed left of topleft
+	theAnchorList.push_back(new Anchor(DELETE, Anchor::TOPLEFTLEFT, this));
 
 	if (theIsLevelEditor)
 	{
@@ -92,6 +96,12 @@ Anchors::~Anchors()
 		theAnchorList.pop_front();
 	}
 	theDrawObjectPtr->focusRemove(false);
+}
+
+void Anchors::createUndoDelete(void)
+{
+	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theDrawObjectPtr->getBaseObjectPtr());
+	myCommandPtr->push();
 }
 
 UndoRCommand* Anchors::createUndoRotate(const Vector& aHotspot)
@@ -139,11 +149,17 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 		case Anchors::NONE:
 			setSharedRenderer(ImageStore::getRenderer("ActionNone"));
 			break;
-		case Anchors::RESIZE:
+		case Anchors::RESIZEHORI:
 			setSharedRenderer(ImageStore::getRenderer("ActionResizeHori"));
+			break;
+		case Anchors::RESIZEVERTI:
+			setSharedRenderer(ImageStore::getRenderer("ActionResizeVerti"));
 			break;
 		case Anchors::ROTATE:
 			setSharedRenderer(ImageStore::getRenderer("ActionRotate"));
+			break;
+		case Anchors::DELETE:
+			setSharedRenderer(ImageStore::getRenderer("ActionDelete"));
 			break;
 	}
 
@@ -157,8 +173,6 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 	// so we now know that our image should be reduced to width&height
 	scale(mySquare.width()/boundingRect().width(),
 		  mySquare.height()/boundingRect().height());
-
-	rotate(-theIndex*45.0);
 
 	theParentPtr->getScenePtr()->addItem(this);
 	setZValue(10.0);
@@ -186,6 +200,7 @@ int Anchor::getDX()
 			return 0;
 			break;
 
+		case TOPLEFTLEFT:
 		case TOPLEFT:
 		case LEFT:
 		case BOTTOMLEFT:
@@ -207,6 +222,7 @@ int Anchor::getDY()
 		case TOPRIGHT:
 		case TOP:
 		case TOPLEFT:
+		case TOPLEFTLEFT:
 			return 1;
 			break;
 
@@ -257,12 +273,19 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 			// store this position - calculate differential angles later
 			theUndoRPtr = theParentPtr->createUndoRotate(event->scenePos());
 			break;
+		case TOPLEFTLEFT:
+			// the DELETE button
+			theParentPtr->createUndoDelete();
+			break;
 	}
 }
 
 void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("Anchor::mouseReleaseEvent\n");
+
+	// delete has no release event, clicking is enough.
+	// so that one is missing here...
 
 	if (theUndoRPtr!=NULL)
 	{
@@ -297,15 +320,12 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 {
 	// calculate the position of the center of the anchor
-	qreal myDX = (0.5*myW+0.3*theOffset) * static_cast<qreal>(getDX());
-	qreal myDY = (0.5*myH+0.3*theOffset) * static_cast<qreal>(getDY());
-	myC = myC + Vector(myDX,myDY);
+	qreal myDX = (0.5*myW+1.5*theOffset) * static_cast<qreal>(getDX()) - theOffset;
+	qreal myDY = (0.5*myH+1.5*theOffset) * static_cast<qreal>(getDY()) + theOffset;
+	if (theIndex==Anchor::TOPLEFTLEFT)
+		myDX = myDX -2.5*theOffset;
 
-	// anchor center correction
-	qreal myTempAngle = myC.angle;
-	myC.angle = theIndex*PI/4.;
-	myC = myC + Vector(theOffset,theOffset);
-	myC.angle = myTempAngle;
+	myC = myC + Vector(myDX,myDY);
 
 	// the final rotate/move
 	rotate((-myC.angle-theOldAngle)*180/3.14);
