@@ -49,7 +49,7 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	ui.tableView->setItemDelegateForColumn ( 0, myVariableDelegate);
 
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
-	myConditionDelegate->setItems(QString(">;<;"+tr("change")).split(";"));
+	myConditionDelegate->setItems(QString(">;<;"+getT10nOf_change()).split(";"));
 	ui.tableView->setItemDelegateForColumn ( 2, myConditionDelegate);
 	ui.tableView->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate());
 
@@ -58,6 +58,7 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	ui.tableView->setItemDelegateForColumn ( 1, myObjectIDDelegate);
 	ui.tableView->setItemDelegateForColumn ( 4, myObjectIDDelegate);
 
+	connect(theModel, SIGNAL(itemChanged(QStandardItem*)), this, SLOT(slot_itemChanged(QStandardItem*)));
 	populate();
 }
 
@@ -79,25 +80,57 @@ void GoalEditor::changeEvent(QEvent *e)
     }
 }
 
+void GoalEditor::fixupCellColoring(int aRow)
+{
+	// highlight cells as red if object name doesn't exist
+	if (theWorldPtr->findObjectByID(theModel->item(aRow, 1)->text())==NULL)
+		theModel->item(aRow, 1)->setForeground(QBrush(Qt::red));
+	else
+		theModel->item(aRow, 1)->setForeground(QBrush(Qt::black));
+	if (theWorldPtr->findObjectByID(theModel->item(aRow, 4)->text())==NULL)
+		theModel->item(aRow, 4)->setForeground(Qt::red);
+	else
+		theModel->item(aRow, 4)->setForeground(Qt::black);
+
+	// grey out cells if contents cannot exist
+	if (theModel->item(aRow,2)->text()==getT10nOf_change())
+	{
+		theModel->item(aRow, 3)->setBackground(Qt::gray);
+		theModel->item(aRow, 3)->setText("");
+		theModel->item(aRow, 4)->setBackground(Qt::gray);
+		theModel->item(aRow, 4)->setText("");
+	}
+	else
+	{
+		theModel->item(aRow, 3)->setBackground(Qt::white);
+
+		// Position doesn't need field 4
+		if (GoalSerializer::getColumnZero().indexOf(theModel->item(aRow,0)->text())
+				 < GoalSerializer::DISTANCE)
+		{
+			theModel->item(aRow, 4)->setBackground(Qt::gray);
+			theModel->item(aRow, 4)->setText("");
+		}
+		else
+			// otherwise need all fields
+			theModel->item(aRow, 4)->setBackground(Qt::white);
+	}
+
+}
+
 
 void GoalEditor::on_toolButtonMinus_clicked()
 {
 	if (theModel->rowCount()==0)
 		return;
 	int myLine = ui.tableView->currentIndex().row();
-	QList<QStandardItem*> myList;
-	myList.push_back(theModel->item(myLine,0));
-	myList.push_back(theModel->item(myLine,1));
-	myList.push_back(theModel->item(myLine,2));
-	myList.push_back(theModel->item(myLine,3));
-	myList.push_back(theModel->item(myLine,4));
+
+	QString myRowString = rowToString(myLine, ' ');
 
 	//: translator, be careful not to translate the %'s and the <br>'s...
 	if (Popup::YesNoQuestion(tr("Are you sure you want to remove goal %1:"
-							"<br>%2 %3 %4 %5").arg(myLine+1)
-			.arg(myList[0]->text()).arg(myList[1]->text())
-			.arg(myList[2]->text()).arg(myList[3]->text())
-			.arg(myList[4]->text()),
+							"<br>%2").arg(myLine+1)
+			.arg(myRowString.replace('<',"&lt;")),
 			this) == true)
 	{
 		theModel->removeRow(myLine);
@@ -106,7 +139,14 @@ void GoalEditor::on_toolButtonMinus_clicked()
 
 void GoalEditor::on_toolButtonPlus_clicked()
 {
-	// FIXME/TODO: still to do...
+	QList<QStandardItem*> myList;
+	myList.push_back(new QStandardItem(""));
+	myList.push_back(new QStandardItem(tr("no object")));
+	myList.push_back(new QStandardItem(">"));
+	myList.push_back(new QStandardItem("0.0"));
+	myList.push_back(new QStandardItem(tr("no object")));
+	theModel->appendRow(myList);
+	fixupCellColoring(theModel->rowCount()-1);
 }
 
 
@@ -127,25 +167,11 @@ void GoalEditor::populate(void)
 		assert(myGoal.size()==5);
 		for (int i=0; i<5; i++)
 		{
-			if (myGoal[i].isEmpty()==false)
-			{
-				QStandardItem* myItemPtr = new QStandardItem(myGoal[i]);
-				myRowList.push_back(myItemPtr);
-				// fields 1 and 4 are object names - make them red if trouble
-				if (i==1 || i==4)
-				{
-					if (theWorldPtr->findObjectByID(myGoal[i])==NULL)
-						myItemPtr->setForeground(QBrush(Qt::red));
-				}
-			}
-			else
-			{
-				QStandardItem* myItemPtr = new QStandardItem("");
-				myItemPtr->setBackground(QBrush(QColor(Qt::gray)));
-				myRowList.push_back(myItemPtr);
-			}
+			QStandardItem* myItemPtr = new QStandardItem(myGoal[i]);
+			myRowList.push_back(myItemPtr);
 		}
 		theModel->appendRow(myRowList);
+		fixupCellColoring(myRow);
 
 		++myG;
 		myRow++;
@@ -153,6 +179,40 @@ void GoalEditor::populate(void)
 
 }
 
+QString GoalEditor::rowToString(int aRow, char aSeparator) const
+{
+	if (theModel->rowCount()<aRow)
+		return "";
+	return QString("%1%2%3%4%5%6%7%8%9")
+			.arg(theModel->item(aRow,0)->text()).arg(aSeparator)
+			.arg(theModel->item(aRow,1)->text()).arg(aSeparator)
+			.arg(theModel->item(aRow,2)->text()).arg(aSeparator)
+			.arg(theModel->item(aRow,3)->text()).arg(aSeparator)
+			.arg(theModel->item(aRow,4)->text());
+}
+
+void GoalEditor::slot_itemChanged(QStandardItem* anItem)
+{
+	int myRow = anItem->row();
+
+	// the X/Y/Angle cell only accepts 'change' as field 2
+	if (theModel->item(myRow,0)->text()==GoalSerializer::getColumnZero()[GoalSerializer::ANYTHING])
+	{
+		DEBUG2("Goal type Position X/Y/Angle + '>' or '<' cannot exist -> fixing...\n");
+		theModel->item(myRow,2)->setText(getT10nOf_change());
+	}
+
+	// Distance and 'change' cannot work together
+	if (theModel->item(myRow,0)->text()==GoalSerializer::getColumnZero()[GoalSerializer::DISTANCE]
+		&& theModel->item(myRow,2)->text()==getT10nOf_change())
+	{
+		DEBUG2("Goal type Distance + 'change' cannot exist -> fixing...\n");
+		theModel->item(myRow,2)->setText(">");
+	}
+
+	// we need to ensure that the row is still correctly greyed out / turned red...
+	fixupCellColoring(myRow);
+}
 
 
 // --------------------------------------------------------------------------

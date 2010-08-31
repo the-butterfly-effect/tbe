@@ -86,8 +86,9 @@ not_good:
 
 QStringList GoalSerializer::getColumnZero(void)
 {
-
-	// sparsely populated QStringList
+	// this QStringList is populated in a strict order
+	// don't change this - some code expects all POSITION entries (i.e. 0-3)
+	// to come before DISTANCE (i.e. 4)
 	QStringList myVariables;
 	myVariables.insert(POSITIONX,   QObject::tr("Position X"));
 	myVariables.insert(POSITIONY,   QObject::tr("Position Y"));

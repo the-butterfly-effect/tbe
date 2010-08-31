@@ -69,6 +69,9 @@ public:
 	  */
 	static QStringList goalToStringList(const Goal* aGoalPtr);
 
+	/// the Goal Types indicate the type of goal. 0-3 (POSITIONX-ANYTHING) are
+	/// subtypes of GoalPositionChange, 4 (DISTANCE) is a GoalDistance
+	/// don't change existing numbers, quite some code depends on the order
 	enum GoalTypes
 	{
 		POSITIONX,

@@ -26,6 +26,7 @@
 // forward declarations
 class World;
 class QStandardItemModel;
+class QStandardItem;
 
 
 // this header file contains three class declarations:
@@ -41,14 +42,34 @@ public:
 	GoalEditor(World* aWorldPtr, QWidget *parent = 0);
     ~GoalEditor();
 
+	static QString getT10nOf_change(void)
+	{ return tr("change"); }
+
 protected:
     void changeEvent(QEvent *e);
 
+	/** depending on the contents of the cells,
+	  * turns cells red (if object names do not exist) or greys/ungreys cells
+	  * @param aRow to fix the coloring for.
+	  */
+	void fixupCellColoring(int aRow);
+
 	void populate(void);
+
+	/** retrieves the input from the fields of row aRow and
+	  * collides them to a string - with separator aSeparator
+	  * @param aRow  row identifier
+	  * @param aSeparator character to separate the fields
+	  *                   probably only ' ' and ';' will be used
+	  * @return the concatenated string
+	  */
+	QString rowToString(int aRow, char aSeparator) const;
 
 private slots:
 	void on_toolButtonMinus_clicked();
 	void on_toolButtonPlus_clicked();
+
+	void slot_itemChanged(QStandardItem* anItem);
 
 private:
 	Ui::GoalEditor ui;
