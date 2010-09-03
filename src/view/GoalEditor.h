@@ -65,6 +65,13 @@ protected:
 	  */
 	QString rowToString(int aRow, char aSeparator) const;
 
+public slots:
+	/** Overridden from QDialog to be able to save the Goals
+	  * when the user closes the dialog and prevent the
+	  * dialog from closing when the Goals cannot be saved due to errors.
+	  */
+	virtual void accept();
+
 private slots:
 	void on_toolButtonMinus_clicked();
 	void on_toolButtonPlus_clicked();

@@ -18,7 +18,9 @@
 
 #include "tbe_global.h"
 #include "Goal.h"
+#include "GoalEditor.h"
 #include "GoalSerializer.h"
+#include "World.h"
 #include <QDomElement>
 #include <QStringList>
 #include <cassert>
@@ -83,6 +85,67 @@ not_good:
 	delete myGPtr;
 	return NULL;
 }
+
+Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aString)
+{
+	Goal* myGoal = NULL;
+
+	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+	QStringList myList = aString.split(";");
+
+	if (myList.size()<3)
+		return NULL;
+	int myType = getColumnZero().indexOf(myList[0]);
+	if (myType==-1)
+	{
+		DEBUG2("Problem: Goal type not recognized\n");
+		return NULL;
+	}
+
+	if (myType ==DISTANCE)
+	{
+		myGoal = new GoalDistance();
+		if (myList.size()!=5)
+			return NULL;
+		if (myList[2]!=">" && myList[2]!="<")
+			return NULL;
+		if (myList[2]==">")
+			myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
+		if (myList[2]=="<")
+			myGoal->theProps.setProperty(Property::S_LESSTHAN, myList[3]);
+		myGoal->theProps.setProperty(Property::OBJECT1_STRING, myList[1]);
+		myGoal->theProps.setProperty(Property::OBJECT2_STRING, myList[4]);
+	}
+	else
+	{
+		myGoal = new GoalPositionChange();
+		myGoal->theProps.setProperty(Property::OBJECT_STRING, myList[1]);
+		if (myType==POSITIONX && myList[2]==GoalEditor::getT10nOf_change())
+			myGoal->theProps.setProperty(Property::S_XCHANGED, "");
+		if (myType==POSITIONX && myList[2]==">")
+			myGoal->theProps.setProperty(Property::S_XOVER, myList[3]);
+		if (myType==POSITIONX && myList[2]=="<")
+			myGoal->theProps.setProperty(Property::S_XBELOW, myList[3]);
+
+		if (myType==POSITIONY && myList[2]==GoalEditor::getT10nOf_change())
+			myGoal->theProps.setProperty(Property::S_YCHANGED, "");
+		if (myType==POSITIONY && myList[2]==">")
+			myGoal->theProps.setProperty(Property::S_YOVER, myList[3]);
+		if (myType==POSITIONY && myList[2]=="<")
+			myGoal->theProps.setProperty(Property::S_YBELOW, myList[3]);
+
+		if (myType==ANGLE && myList[2]==GoalEditor::getT10nOf_change())
+			myGoal->theProps.setProperty(Property::S_ACHANGED, "");
+		if (myType==ANYTHING && myList[2]==GoalEditor::getT10nOf_change())
+			myGoal->theProps.setProperty(Property::S_ANYTHING, "");
+	}
+
+	if (myGoal->parseProperties(aWorldPtr)==true)
+		return myGoal;
+	delete myGoal;
+	return NULL;
+}
+
 
 QStringList GoalSerializer::getColumnZero(void)
 {

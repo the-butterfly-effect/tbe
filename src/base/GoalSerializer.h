@@ -21,6 +21,7 @@
 
 // forward declarations:
 class Goal;
+class World;
 class QDomElement;
 class QDomNode;
 
@@ -53,6 +54,15 @@ public:
 	 */
 	static Goal* createObjectFromDom(const QDomNode& q);
 
+	/** create a Goal from the information provided in the aString.
+	  * format of the aString is:
+	  *    Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
+	  * @param    aWorldPtr pointer to the World instance, used to check ObjectIDs
+	  * @param    aString the string to parse into a Goal
+	  * @returns  NULL if failed or a pointer to a valid Goal if successful.
+	  *           Note that that Goal is still on its own - not attached to a World yet.
+	  */
+	static Goal* createObjectFromString(World* aWorldPtr, const QString& aString);
 
 	/** create a QDomElement of the Goal anGoalPtr and add it to aParent
 	  * @param aGoalPtr pointer to the goal to serialize (=save)
@@ -68,6 +78,7 @@ public:
 	  * @returns the string list describing *aGoalPtr
 	  */
 	static QStringList goalToStringList(const Goal* aGoalPtr);
+
 
 	/// the Goal Types indicate the type of goal. 0-3 (POSITIONX-ANYTHING) are
 	/// subtypes of GoalPositionChange, 4 (DISTANCE) is a GoalDistance
@@ -89,9 +100,6 @@ private:
 	/// constructor only called by Goal
 	// (not implemented yet)
 	//GoalSerializer(const Goal* anObjectPtr);
-
-	// (not implemented yet)
-	//friend class Goal;
 
 	/// Neutralize copy constructor and assignment operator
 	GoalSerializer(GoalSerializer&);

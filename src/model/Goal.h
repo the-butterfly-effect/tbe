@@ -101,6 +101,8 @@ private:
 	float theLimit;
 	BaseObject* theFirstPtr;
 	BaseObject* theSecondPtr;
+
+	friend class GoalSerializer;
 };
 
 /// implemented Goal - win if Position of an Object changes

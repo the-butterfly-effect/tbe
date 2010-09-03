@@ -68,6 +68,43 @@ GoalEditor::~GoalEditor()
 	delete theModel;
 }
 
+
+void GoalEditor::accept()
+{
+
+	// first, we're going to use the serializer to create the new Goals
+	// only when we've been able to create all the Goals classes, we will
+	// discard the old ones and put the new ones to work.
+
+	typedef QList<Goal*> GoalPtrList;
+	GoalPtrList theGoalPtrList;
+
+	for(int i=0; i<theModel->rowCount(); i++)
+	{
+		QString myString = rowToString(i, ';');
+		Goal* myGoal = GoalSerializer::createObjectFromString(theWorldPtr, myString);
+		if (myGoal != NULL)
+		{
+			theGoalPtrList.push_back(myGoal);
+			continue;
+		}
+		else
+		{
+			delete myGoal;
+			Popup::Warning(tr("Not all goals are OK\nNothing was changed yet, please fix."), this);
+			return;
+		}
+	}
+
+	// update the goals to the Worlds
+	theWorldPtr->theGoalPtrList.clear();
+	for (int i=0; i<theGoalPtrList.size(); i++)
+		theWorldPtr->addGoal(theGoalPtrList[i]);
+
+	QDialog::accept();
+}
+
+
 void GoalEditor::changeEvent(QEvent *e)
 {
     QDialog::changeEvent(e);
