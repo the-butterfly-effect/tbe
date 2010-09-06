@@ -34,29 +34,18 @@ static BalloonObjectFactory theBalloonObjectFactory;
 
 
 Balloon::Balloon()
-		: PolyObject()
+		: PolyObject(QObject::tr("Balloon"),
+					 QObject::tr("a Helium Balloon. Lighter than air, it moves up."),
+					 "Balloon",
+					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
+					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
+					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
+					 0.27, 0.36, 0.1, 0.7)
 {
-	// no special properties
-	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":Balloon/") +
-		Property::MASS_STRING + ":0.1/" +
-		Property::POLYGONS_STRING + ":"
-	"(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
-	"=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
-	"=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)" + "/");
-
-	BaseObject::setTheWidth(0.27);
-	BaseObject::setTheHeight(0.36);
-
-	// balloons bounce very well
-	setTheBounciness(0.7);
-
-	fillShapeList();
 }
 
 Balloon::~Balloon()
 {
-	;
 }
 
 

@@ -33,16 +33,6 @@ public:
 
 	virtual ~Balloon();
 
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getName ( ) const
-	{	return QObject::tr("Balloon"); }
-
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getToolTip ( ) const
-	{	return QObject::tr("a Helium Balloon. Lighter than air, it moves up."); }
-
 	/// returns whether the object can be resized by the user
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual SizeDirections isResizable ( ) const
