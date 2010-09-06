@@ -115,3 +115,57 @@ void Balloon::setTheHeight (qreal)
 	// deliberately empty
 	return;
 }
+
+
+///---------------------------------------------------------------------------
+///------------------------ Cactus -------------------------------------------
+///---------------------------------------------------------------------------
+
+
+//// this class' ObjectFactory
+class CactusObjectFactory : public ObjectFactory
+{
+public:
+	CactusObjectFactory(void)
+	{	announceObjectType("Cactus", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new Cactus(); }
+};
+static CactusObjectFactory theCactusObjectFactory;
+
+
+Cactus::Cactus() : PolyObject(QObject::tr("Cactus"),
+							  QObject::tr("Cactacea Bulbuous Stingus - a Cactus has spines!"),
+							  "Cactus",
+							  // first the pot:
+							  "(-0.11,-0.038)=(-0.053,-0.2)=(0.053,-0.2)=(0.11,-0.038);"
+							  // then the plant itself:
+							  "(0.045,-0.036)=(0.085,0.012)=(0.092,0.089)=(0.046,0.156)=(0.00,0.171)"
+							  "=(-0.046,0.156)=(-0.092,0.089)=(-0.085,0.012)=(-0.045,-0.036)"
+							  ,
+							  0.25, 0.4, 1.0, 0.3)
+{
+// SENSOR RIGHT HALF:	74,-36 112,12 121,85 96,144 38,188
+
+}
+
+Cactus::~Cactus()
+{
+}
+
+
+///---------------------------------------------------------------------------
+///------------------------ Bed Of Nails -------------------------------------
+///---------------------------------------------------------------------------
+
+
+//// this class' ObjectFactory
+//class BedOfNailsObjectFactory : public ObjectFactory
+//{
+//public:
+//	BedOfNailsObjectFactory(void)
+//	{	announceObjectType("BedOfNails", this); }
+//	virtual BaseObject* createObject(void) const
+//	{	return new BedOfNails(); }
+//};
+//static BedOfNailsObjectFactory theBedOfNailsObjectFactory;

@@ -83,4 +83,41 @@ private:
 	Position thePreviousPosition;
 };
 
+class Cactus : public PolyObject
+{
+public:
+	Cactus();
+
+	virtual ~Cactus();
+
+	/// returns whether the object can be resized by the user
+	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
+};
+
+class BedOfNails : public Cactus
+{
+public:
+	BedOfNails();
+
+	virtual ~BedOfNails();
+
+	/// returns the Name of the object.
+	/// overridden from parent
+	virtual const QString getName ( ) const
+	{	return QObject::tr("BedOfNails"); }
+
+	/// returns the Name of the object.
+	/// overridden from parent
+	virtual const QString getToolTip ( ) const
+	{	return QObject::tr("Do not touch a bed of nails - it stings!"); }
+
+	/// returns whether the object can be resized by the user
+	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
+};
+
+
 #endif // Balloon_H
