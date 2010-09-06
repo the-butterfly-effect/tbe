@@ -283,13 +283,16 @@ void MainWindow::loadLevel(const QString& aFileName)
 		ui.theToolBoxView->fillFromDomNode(theLevelPtr->getToolboxDomNode());
 
 	// display the level info
-	LevelInfoDialog* myInfoDialog = new LevelInfoDialog(theLevelPtr, this);
-	myInfoDialog->setAutoFillBackground(true);
-	QSize myDialogSize = myInfoDialog->size();
-	QSize myViewSize = ui.graphicsView->size();
-	myInfoDialog->move((myViewSize.width()-myDialogSize.width())/2,
-					   (myViewSize.height()-myDialogSize.height())/2);
-	myInfoDialog->show();
+	if (!theIsLevelEditor)
+	{
+		LevelInfoDialog* myInfoDialog = new LevelInfoDialog(theLevelPtr, this);
+		myInfoDialog->setAutoFillBackground(true);
+		QSize myDialogSize = myInfoDialog->size();
+		QSize myViewSize = ui.graphicsView->size();
+		myInfoDialog->move((myViewSize.width()-myDialogSize.width())/2,
+						   (myViewSize.height()-myDialogSize.height())/2);
+		myInfoDialog->show();
+	}
 }
 
 void MainWindow::setScene(DrawWorld* aScene, const QString& aLevelName)
