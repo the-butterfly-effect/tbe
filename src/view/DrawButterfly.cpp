@@ -72,7 +72,7 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 	DEBUG5("DrawButterfly::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 
 
-	if (theRenderer != NULL)
+	if (getRenderer() != NULL)
 	{
 		// what to render depends on the state of the object
 		Butterfly::ButterflyStatus myStatus =
@@ -82,15 +82,15 @@ void DrawButterfly::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *,
 			emit (reinterpret_cast<DrawWorld*>(scene()))->on_death();
 		
 		if (myStatus == Butterfly::FLAP_HALF)
-			theRenderer->render(myPainter, "Wing-halfopen", myRect);
+			getRenderer()->render(myPainter, "Wing-halfopen", myRect);
 
 		if (myStatus == Butterfly::STILL)
-			theRenderer->render(myPainter, "Wing-closed", myRect);
+			getRenderer()->render(myPainter, "Wing-closed", myRect);
 
-		theRenderer->render(myPainter, "Body", myRect);
+		getRenderer()->render(myPainter, "Body", myRect);
 
 		if (myStatus == Butterfly::FLAP_OPEN || myStatus == Butterfly::DEAD)
-			theRenderer->render(myPainter, "Wing-open", myRect);
+			getRenderer()->render(myPainter, "Wing-open", myRect);
 
 		return;
 	}

@@ -70,7 +70,7 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawCokeMentosBottle::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
-	if (theRenderer != NULL)
+	if (getRenderer() != NULL)
 	{
 		// what to render depends on the state of the object
 		CokeMentosBottle::BottleStatus myStatus =
@@ -78,16 +78,16 @@ void DrawCokeMentosBottle::paint(QPainter* myPainter, const QStyleOptionGraphics
 
 		if (myStatus == CokeMentosBottle::TRIGGERED
 			|| myStatus == CokeMentosBottle::BLOWING)
-			theRenderer->render(myPainter, "foam", myRect);
+			getRenderer()->render(myPainter, "foam", myRect);
 
 		if (myStatus == CokeMentosBottle::UNTRIGGERED)
-			theRenderer->render(myPainter, "liquid", myRect);
+			getRenderer()->render(myPainter, "liquid", myRect);
 
-		theRenderer->render(myPainter, "bottle", myRect);
+		getRenderer()->render(myPainter, "bottle", myRect);
 
 		if (myStatus == CokeMentosBottle::UNTRIGGERED
 			|| myStatus == CokeMentosBottle::TRIGGERED)
-			theRenderer->render(myPainter, "cap", myRect);
+			getRenderer()->render(myPainter, "cap", myRect);
 
 		return;
 	}

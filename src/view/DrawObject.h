@@ -206,11 +206,20 @@ protected:
 
 	/// pointer to renderer for SVG images (if present)
 	/// either this one or thePixmapPtr should exist
-	QSvgRenderer*   theRenderer;
-	
+	QSvgRenderer*   theRenderers;
+
+	/// TODO: document
+	QSvgRenderer* getRenderer(void) const
+	{ return theRenderers; }
+
 	/// pointer to pixmap for PNG images (if present)
 	/// either this one or theRenderer should exist
-	QPixmap*        thePixmapPtr;
+	QPixmap*        thePixmapPtrs;
+
+	/// TODO: document
+	QPixmap*	getPixmapPtr(void) const
+	{	return thePixmapPtrs;}
+
 
 	/// scaled/rendered pixmap cached for faster display
 	/// created by setupCache()

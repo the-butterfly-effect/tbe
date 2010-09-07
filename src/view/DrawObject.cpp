@@ -52,8 +52,8 @@ QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 //  
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), theRenderers(NULL),
+	thePixmapPtrs(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p)\n", aBaseObjectPtr);
 	if (theBaseObjectPtr!=NULL)
@@ -63,15 +63,15 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
-	: theBaseObjectPtr(aBaseObjectPtr), theRenderer (NULL),
-	thePixmapPtr(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), theRenderers(NULL),
+	thePixmapPtrs(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
 	initAttributes();
 	if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
-		thePixmapPtr= ImageStore::getPNGPixmap(anImageName);
-	if (thePixmapPtr == NULL)
-		theRenderer = ImageStore::getRenderer(anImageName);
+		thePixmapPtrs = ImageStore::getPNGPixmap(anImageName);
+	if (thePixmapPtrs == NULL)
+		theRenderers  = ImageStore::getRenderer(anImageName);
 }
 
 
@@ -109,11 +109,11 @@ float DrawObject::getUnscaledAspectRatio(void) const
 {
 	QSize mySize(1, 1);
 
-	if (theRenderer != NULL)
-		mySize = theRenderer->defaultSize();
+	if (getRenderer() != NULL)
+		mySize = getRenderer()->defaultSize();
 
-	if (thePixmapPtr != NULL)
-		mySize = thePixmapPtr->size();
+	if (getPixmapPtr() != NULL)
+		mySize = getPixmapPtr()->size();
 
 	return static_cast<float>(mySize.width())/
 			static_cast<float>(mySize.height());
@@ -365,15 +365,15 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 		return;
 	}
 
-	if (thePixmapPtr != NULL)
+	if (getPixmapPtr() != NULL)
 	{
-		myPainter->drawPixmap(myRect, *thePixmapPtr, thePixmapPtr->rect());
+		myPainter->drawPixmap(myRect, *getPixmapPtr(), getPixmapPtr()->rect());
 		return;
 	}
 	
-	if (theRenderer != NULL)
+	if (getRenderer() != NULL)
 	{
-		theRenderer->render(myPainter, myRect);
+		getRenderer()->render(myPainter, myRect);
 		return;
 	}
 
@@ -406,7 +406,7 @@ void DrawObject::setupCache(void)
 	// The problem is that QT does a crappy job at guessing the bitmap size
 	// so we have to calculate that ourselves...
 
-	if (theRenderer!=NULL || thePixmapPtr!=NULL)
+	if (getRenderer()!=NULL || getPixmapPtr()!=NULL)
 	{
 		setCacheMode(QGraphicsItem::NoCache);
 		if (theCachePixmapPtr!=NULL)
