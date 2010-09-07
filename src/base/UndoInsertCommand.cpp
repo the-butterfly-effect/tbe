@@ -34,12 +34,12 @@ UndoInsertCommand::UndoInsertCommand (
 		  : UndoDeleteCommand(aBaseObjectPtr)
 {
 	setText(QObject::tr("Insert %1").arg(theBaseObjectPtr->getName()));
-	DEBUG1("UndoInsertCommand()/this=%p - %s\n", this, ASCII(text()));
+	DEBUG4("UndoInsertCommand()/this=%p - %s\n", this, ASCII(text()));
 }
 
 UndoInsertCommand::~UndoInsertCommand ( )
 {
-	DEBUG1("~UndoInsertCommand()/this=%p - %s\n", this, ASCII(text()));
+	DEBUG4("~UndoInsertCommand()/this=%p - %s\n", this, ASCII(text()));
 }
 
 //  
