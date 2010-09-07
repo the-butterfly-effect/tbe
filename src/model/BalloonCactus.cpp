@@ -21,6 +21,19 @@
 #include "Box2D.h"
 #include "Property.h"
 
+
+//
+//  This source file lists 3 classes:
+//    * Balloon
+//    * Cactus
+//    * BedOfNails
+//
+
+///---------------------------------------------------------------------------
+///------------------------ Balloon ------------------------------------------
+///---------------------------------------------------------------------------
+
+
 //// this class' ObjectFactory
 class BalloonObjectFactory : public ObjectFactory
 {
@@ -42,6 +55,7 @@ Balloon::Balloon()
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
 					 0.27, 0.36, 0.1, 0.7)
 {
+	theState = BALLOON;
 }
 
 Balloon::~Balloon()
@@ -78,6 +92,12 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	thePreviousPosition = getTempCenter();
 }
 
+Balloon::States Balloon::goToState(Balloon::States aNewState)
+{
+	// TODO: implement me!
+
+	return theState;
+}
 
 
 void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
@@ -90,19 +110,14 @@ void Balloon::reset(void)
 	theWorldPtr->registerCallback(this);
 	PolyObject::reset();
 //	thePreviousPosition = getOrigCenter();
+
+	theState = BALLOON;
 }
 
-
-void Balloon::setTheWidth (qreal)
+void Balloon::stung(void)
 {
-	// deliberately empty
-	return;
-}
-
-void Balloon::setTheHeight (qreal)
-{
-	// deliberately empty
-	return;
+	if (theState == BALLOON)
+		goToState(POPPING);
 }
 
 
@@ -134,13 +149,61 @@ Cactus::Cactus() : PolyObject(QObject::tr("Cactus"),
 							  ,
 							  0.25, 0.4, 1.0, 0.3)
 {
-// SENSOR RIGHT HALF:	74,-36 112,12 121,85 96,144 38,188
-
 }
 
 Cactus::~Cactus()
 {
 }
+
+void Cactus::callBackSensor(b2ContactPoint* aPoint)
+{
+	BaseObject* myOtherObject=NULL;
+
+	// which one of the two shapes is not me?
+	if (aPoint->shape1->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape2->GetUserData());
+	if (aPoint->shape2->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape1->GetUserData());
+	if (myOtherObject==NULL)
+		return;
+
+	// is it a Balloon?
+	// then pop it!
+	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
+	if (myBalloonPtr!=NULL)
+		myBalloonPtr->stung();
+
+}
+
+void Cactus::fillShapeList(void)
+{
+	PolyObject::fillShapeList();
+
+	// And add the sensor to the shapes
+	b2PolygonDef* mySensorDef = new b2PolygonDef();
+	mySensorDef->vertexCount = 10;
+	mySensorDef->vertices[0]=b2Vec2( 0.074, -0.036);
+	mySensorDef->vertices[1]=b2Vec2( 0.112,  0.012);
+	mySensorDef->vertices[2]=b2Vec2( 0.121,  0.085);
+	mySensorDef->vertices[3]=b2Vec2( 0.096,  0.144);
+	mySensorDef->vertices[4]=b2Vec2( 0.038,  0.188);
+	mySensorDef->vertices[5]=b2Vec2(-0.038,  0.188);
+	mySensorDef->vertices[6]=b2Vec2(-0.096,  0.144);
+	mySensorDef->vertices[7]=b2Vec2(-0.121,  0.085);
+	mySensorDef->vertices[8]=b2Vec2(-0.112,  0.012);
+	mySensorDef->vertices[9]=b2Vec2(-0.074, -0.036);
+	mySensorDef->isSensor = true;
+	mySensorDef->userData = this;
+	theShapeList.push_back(mySensorDef);
+}
+
+void Cactus::reset(void)
+{
+	PolyObject::reset();
+
+	printf("Number of objects in Shapelist: %d\n", theShapeList.count());
+}
+
 
 
 ///---------------------------------------------------------------------------
@@ -158,3 +221,8 @@ Cactus::~Cactus()
 //	{	return new BedOfNails(); }
 //};
 //static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
+
+
+// TODO: for the constructor
+//  QObject::tr("BedOfNails"),
+//  QObject::tr("Do not touch a bed of nails - it stings!"),

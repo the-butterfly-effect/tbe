@@ -23,6 +23,13 @@
 #include "World.h"
 
 
+//
+//  This header file lists 3 classes:
+//    * Balloon
+//    * Cactus
+//    * BedOfNails
+//
+
 /** this class implements a Balloon
   *
   */
@@ -38,17 +45,28 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/// overridden from BaseObject because this class wants to register for callbacks
+	/// overridden from PolyObject because this class wants to register for
+	/// callbacks and needs to reset its state machine
 	virtual void reset(void);
 
+	/// this enum defines the states of the balloon
+	enum States
+	{
+		BALLOON,
+		POPPING,
+		POPPED
+	};
 
-	/// overridden to prevent adjusting width/height
-	virtual void setTheHeight ( qreal new_var );
+	/// called by a Cactus or BedOfNails if the balloon is hit
+	void stung(void);
 
-	/// overridden to prevent adjusting width/height
-	virtual void setTheWidth ( qreal new_var );
-
-
+protected:
+	/// call this function to suggest a state change to the Balloon
+	/// note that the Balloon can decide not to follow your state change,
+	/// going from popped to balloon isn't supported (just like real life)
+	/// @param aNewState the suggestion for a new state
+	/// @returns the state after this function completes
+	virtual States goToState(States aNewState);
 
 public:
 	// the following two members are part of the normal impulse reporting
@@ -70,9 +88,22 @@ private:
 private:
 	// Private things
 
+	/// used to calculate the speed of moving
 	Position thePreviousPosition;
+
+	/// the state variable
+	States theState;
 };
 
+
+///---------------------------------------------------------------------------
+///------------------------- Cactus ------------------------------------------
+///---------------------------------------------------------------------------
+
+/** This class implements a Cactus.
+  * For now, the most important feature of a cactus is that it can pop a Balloon.
+  * (In the future, we might want to add the ability to break the pot or the cactus)
+  */
 class Cactus : public PolyObject
 {
 public:
@@ -84,29 +115,36 @@ public:
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
+
+	/// Overridden so we will get notified if something poppable hits our
+	/// sharp points
+	void callBackSensor(b2ContactPoint* aPoint);
+
+	/** Overridden from PolyObject because we also have a sensor
+	 *  here...
+	 */
+	virtual void fillShapeList(void);
+
+	/// overridden from PolyObject because this class wants to register for
+	/// callbacks and needs to reset its state machine
+	virtual void reset(void);
 };
 
+
+///---------------------------------------------------------------------------
+///------------------------- BedOfNails --------------------------------------
+///---------------------------------------------------------------------------
+
+/** This class implements a bed of nails.
+  * For now, the most important feature is that it can pop a Balloon.
+  * (i.e. it is a streched, one-sided cactus)
+  */
 class BedOfNails : public Cactus
 {
 public:
 	BedOfNails();
 
 	virtual ~BedOfNails();
-
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getName ( ) const
-	{	return QObject::tr("BedOfNails"); }
-
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getToolTip ( ) const
-	{	return QObject::tr("Do not touch a bed of nails - it stings!"); }
-
-	/// returns whether the object can be resized by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
 };
 
 
