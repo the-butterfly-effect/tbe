@@ -230,7 +230,6 @@ void Cactus::callBackSensor(b2ContactPoint* aPoint)
 	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
 	if (myBalloonPtr!=NULL)
 		myBalloonPtr->stung();
-
 }
 
 void Cactus::fillShapeList(void)
@@ -255,32 +254,73 @@ void Cactus::fillShapeList(void)
 	theShapeList.push_back(mySensorDef);
 }
 
-void Cactus::reset(void)
-{
-	PolyObject::reset();
-
-	printf("Number of objects in Shapelist: %d\n", theShapeList.count());
-}
-
-
 
 ///---------------------------------------------------------------------------
 ///------------------------ Bed Of Nails -------------------------------------
 ///---------------------------------------------------------------------------
 
 
-//// this class' ObjectFactory
-//class BedOfNailsObjectFactory : public ObjectFactory
-//{
-//public:
-//	BedOfNailsObjectFactory(void)
-//	{	announceObjectType("BedOfNails", this); }
-//	virtual BaseObject* createObject(void) const
-//	{	return new BedOfNails(); }
-//};
-//static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
+// this class' ObjectFactory
+class BedOfNailsObjectFactory : public ObjectFactory
+{
+public:
+	BedOfNailsObjectFactory(void)
+	{	announceObjectType("BedOfNails", this); }
+	virtual BaseObject* createObject(void) const
+	{	return new BedOfNails(); }
+};
+static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
 
 
-// TODO: for the constructor
-//  QObject::tr("BedOfNails"),
-//  QObject::tr("Do not touch a bed of nails - it stings!"),
+BedOfNails::BedOfNails()
+		: PolyObject(QObject::tr("Bed of Nails"),
+					 QObject::tr("Do not touch a bed of nails - it stings!"),
+					 "BedOfNails",
+					 // first the bar:
+					 "(-0.4,-0.075)=(0.4,-0.075)=(0.4,0.006)=(-0.4,0.006);"
+					 // then the nails block:
+					 "(-0.34,-0.05)=(0.34,-0.05)=(0.34,0.06)=(-0.34,0.06)"
+					 ,
+					 0.8, 0.15, 0.0, 0.2)
+{
+}
+
+BedOfNails::~BedOfNails()
+{
+}
+
+void BedOfNails::callBackSensor(b2ContactPoint* aPoint)
+{
+	BaseObject* myOtherObject=NULL;
+
+	// which one of the two shapes is not me?
+	if (aPoint->shape1->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape2->GetUserData());
+	if (aPoint->shape2->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape1->GetUserData());
+	if (myOtherObject==NULL)
+		return;
+
+	// is it a Balloon?
+	// then pop it!
+	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
+	if (myBalloonPtr!=NULL)
+		myBalloonPtr->stung();
+}
+
+void BedOfNails::fillShapeList(void)
+{
+	PolyObject::fillShapeList();
+
+	// And add the sensor to the shapes
+	b2PolygonDef* mySensorDef = new b2PolygonDef();
+	mySensorDef->vertexCount = 4;
+	mySensorDef->vertices[0]=b2Vec2(-0.335, -0.04);
+	mySensorDef->vertices[1]=b2Vec2( 0.335, -0.04);
+	mySensorDef->vertices[2]=b2Vec2( 0.335,  0.07);
+	mySensorDef->vertices[3]=b2Vec2(-0.335,  0.07);
+	mySensorDef->isSensor = true;
+	mySensorDef->userData = this;
+	theShapeList.push_back(mySensorDef);
+}
+

@@ -139,10 +139,6 @@ public:
 	 *  here...
 	 */
 	virtual void fillShapeList(void);
-
-	/// overridden from PolyObject because this class wants to register for
-	/// callbacks and needs to reset its state machine
-	virtual void reset(void);
 };
 
 
@@ -154,12 +150,20 @@ public:
   * For now, the most important feature is that it can pop a Balloon.
   * (i.e. it is a streched, one-sided cactus)
   */
-class BedOfNails : public Cactus
+class BedOfNails : public PolyObject
 {
 public:
 	BedOfNails();
 
 	virtual ~BedOfNails();
+
+	/// Overridden so we will get notified if something poppable hits our
+	/// sharp points
+	void callBackSensor(b2ContactPoint* aPoint);
+
+	/** Just like Cactus, we need to redefine the shapes
+	 */
+	virtual void fillShapeList(void);
 };
 
 
