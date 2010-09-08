@@ -74,6 +74,10 @@ protected:
 	/// @returns the state after this function completes
 	virtual States goToState(States aNewState);
 
+	/// will replace the existing set of shapes by a smaller shape that
+	/// fits the BalloonRest image. Do not call from within a Box2D callback
+	void switchToSmallShape(void);
+
 public:
 	// the following two members are part of the normal impulse reporting
 
@@ -91,6 +95,9 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
+	virtual void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
+
 private:
 	// Private things
 
@@ -99,6 +106,8 @@ private:
 
 	/// the state variable
 	States theState;
+
+	qreal thePoppingTimeStart;
 };
 
 

@@ -49,7 +49,7 @@ static BalloonObjectFactory theBalloonObjectFactory;
 Balloon::Balloon()
 		: PolyObject(QObject::tr("Balloon"),
 					 QObject::tr("a Helium Balloon. Lighter than air, it moves up."),
-					 "Balloon;BalloonPoof",
+					 "Balloon;BalloonPoof;BalloonRest",
 					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
@@ -67,10 +67,14 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
 	DEBUG6("Balloon receives callback\n");
 
-	// we only need to do this when we're still a balloon
-	if (theState != BALLOON)
-		return;
+	if (theState == BALLOON)
+		callbackStepBalloon(aDeltaTime, aTotalTime);
+	if (theState == POPPING)
+		callbackStepPopping(aDeltaTime, aTotalTime);
+}
 
+void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
+{
 	// the upward force...
 	theB2BodyPtr->ApplyForce(b2Vec2(0,0.1), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
 
@@ -96,6 +100,19 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	thePreviousPosition = getTempCenter();
 }
 
+void Balloon::callbackStepPopping(qreal aDeltaTime, qreal aTotalTime)
+{
+	// is this the first callback in Popping state???
+	if (thePoppingTimeStart<0.0001)
+	{
+		thePoppingTimeStart=aTotalTime;
+		switchToSmallShape();
+	}
+	if (aTotalTime-thePoppingTimeStart > 0.3)
+		goToState(POPPED);
+}
+
+
 Balloon::States Balloon::goToState(Balloon::States aNewState)
 {
 printf("Balloon change state request from %d to %d.\n", theState, aNewState);
@@ -105,9 +122,8 @@ printf("Balloon change state request from %d to %d.\n", theState, aNewState);
 	case BALLOON:
 		if (aNewState==POPPING)
 		{
-printf("POP!!!\n");
 			theState = POPPING;
-			// FIXME/TODO: set timer so we know to move to popped
+			// everything else will be handled in callbackStepPopping
 		}
 		break;
 	case POPPING:
@@ -133,15 +149,33 @@ void Balloon::reset(void)
 {
 	theWorldPtr->registerCallback(this);
 	PolyObject::reset();
-//	thePreviousPosition = getOrigCenter();
 
+	// and go back to the first state - with the right set of shapes
 	theState = BALLOON;
+	thePoppingTimeStart = 0;
+	deletePhysicsObject();
+	fillShapeList();
+	createPhysicsObject();
 }
 
 void Balloon::stung(void)
 {
 	if (theState == BALLOON)
 		goToState(POPPING);
+}
+
+void Balloon::switchToSmallShape(void)
+{
+	deletePhysicsObject();
+	theShapeList.clear();
+
+	b2PolygonDef* myRestDef = new b2PolygonDef();
+	myRestDef->SetAsBox(0.05, 0.05);
+	myRestDef->density= 0.001 / (0.1 * 0.1);
+	myRestDef->userData = this;
+	theShapeList.push_back(myRestDef);
+
+	createPhysicsObject();
 }
 
 
