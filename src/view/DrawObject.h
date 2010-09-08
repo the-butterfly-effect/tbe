@@ -204,26 +204,31 @@ protected:
 	 */
 	static Anchors* theAnchorsPtr;
 
-	/// pointer to renderer for SVG images (if present)
+private:
+	/// list of pointers to renderer for SVG images (if present)
 	/// either this one or thePixmapPtr should exist
-	QSvgRenderer*   theRenderers;
+	QList<QSvgRenderer*>   theRenderers;
 
-	/// TODO: document
-	QSvgRenderer* getRenderer(void) const
-	{ return theRenderers; }
-
-	/// pointer to pixmap for PNG images (if present)
+	/// list of pointers to pixmap for PNG images (if present)
 	/// either this one or theRenderer should exist
-	QPixmap*        thePixmapPtrs;
-
-	/// TODO: document
-	QPixmap*	getPixmapPtr(void) const
-	{	return thePixmapPtrs;}
-
+	QList<QPixmap*>        thePixmapPtrs;
 
 	/// scaled/rendered pixmap cached for faster display
 	/// created by setupCache()
-	QPixmap*        theCachePixmapPtr;
+	QList<QPixmap*>        theCachePixmapPtrs;
+
+	/// true if DrawObject is in Caching mode
+	bool isCaching;
+	/// will be set to a value while we're caching - see setupCache()
+	int  theCachingIndex;
+
+protected:
+	/// @returns the renderer for the current image frame
+	QSvgRenderer* getRenderer(void) const;
+	/// @returns the pixmap for the current image frame
+	QPixmap*      getPixmapPtr(void) const;
+
+
 
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!

@@ -52,8 +52,8 @@ QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 //  
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr), theRenderers(NULL),
-	thePixmapPtrs(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr),
+	isCaching(false), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p)\n", aBaseObjectPtr);
 	if (theBaseObjectPtr!=NULL)
@@ -63,15 +63,31 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
-	: theBaseObjectPtr(aBaseObjectPtr), theRenderers(NULL),
-	thePixmapPtrs(NULL), theCachePixmapPtr(NULL), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), isCaching(false), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
 	initAttributes();
-	if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
-		thePixmapPtrs = ImageStore::getPNGPixmap(anImageName);
-	if (thePixmapPtrs == NULL)
-		theRenderers  = ImageStore::getRenderer(anImageName);
+
+	QStringList myImageNames = anImageName.split(";");
+	for (int i=0; i< myImageNames.count(); i++)
+	{
+		if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
+		{
+			QPixmap* myPtr = ImageStore::getPNGPixmap(myImageNames[i]);
+			if (myPtr == NULL)
+				break;
+			thePixmapPtrs.push_back(myPtr);
+		}
+	}
+	if (thePixmapPtrs.size() == 0)
+	{
+		for (int i=0; i< myImageNames.count(); i++)
+		{
+			theRenderers.push_back(ImageStore::getRenderer(myImageNames[i]));
+		}
+	}
+
+	DEBUG6("  Total images: %d pixmap, %d svg\n", thePixmapPtrs.count(), theRenderers.count());
 }
 
 
@@ -252,6 +268,36 @@ void DrawObject::focusRemove(bool alsoDeleteAnchors)
 	update();
 }
 
+QPixmap* DrawObject::getPixmapPtr(void) const
+{
+	if (theBaseObjectPtr==NULL)
+		return NULL;
+	int myIndex = theBaseObjectPtr->getImageIndex();
+	if (isCaching)
+		myIndex = theCachingIndex;
+	if (thePixmapPtrs.count()>myIndex)
+		return thePixmapPtrs[myIndex];
+	else
+		if (thePixmapPtrs.count()>0)
+			return thePixmapPtrs[0];
+	return NULL;
+}
+
+QSvgRenderer* DrawObject::getRenderer(void) const
+{
+	if (theBaseObjectPtr==NULL)
+		return NULL;
+	int myIndex = theBaseObjectPtr->getImageIndex();
+	if (isCaching)
+		myIndex = theCachingIndex;
+	if (theRenderers.count()>myIndex)
+		return theRenderers[myIndex];
+	else
+		if (theRenderers.count()>0)
+			return theRenderers[0];
+	return NULL;
+}
+
 void DrawObject::initAttributes ( )
 {
 	// the objects sizes usually are less than a meter
@@ -350,7 +396,8 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 
 	// only when we're using the cached bitmaps, (which have a few pix whitespace)
 	// let's paint larger to offset the whitespace.
-	if (theCachePixmapPtr != NULL)
+	int myCachedCount = theCachePixmapPtrs.count();
+	if (myCachedCount != 0 && isCaching==false)
 	{
 	  myWidth += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
 	  myHeight += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
@@ -359,9 +406,13 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
-	if (theCachePixmapPtr != NULL)
+	if (myCachedCount != 0 && isCaching==false)
 	{
-		myPainter->drawPixmap(myRect, *theCachePixmapPtr, theCachePixmapPtr->rect());
+		int myIndex = theBaseObjectPtr->getImageIndex();
+		if (myIndex >= myCachedCount)
+			myIndex = 0;
+		myPainter->drawPixmap(myRect, *theCachePixmapPtrs[myIndex],
+							  theCachePixmapPtrs[myIndex]->rect());
 		return;
 	}
 
@@ -409,13 +460,16 @@ void DrawObject::setupCache(void)
 	if (getRenderer()!=NULL || getPixmapPtr()!=NULL)
 	{
 		setCacheMode(QGraphicsItem::NoCache);
-		if (theCachePixmapPtr!=NULL)
+		theCachePixmapPtrs.clear();
+		isCaching = true;
+		for(theCachingIndex=0;
+			theCachingIndex<theRenderers.count()+thePixmapPtrs.count();
+			theCachingIndex++)
 		{
-			delete theCachePixmapPtr;
-			theCachePixmapPtr=NULL;
+			// let's try to use the renderer to create a cached image:
+			theCachePixmapPtrs.push_back(createBitmap());
 		}
-		// let's try to use the renderer to create a cached image:
-		theCachePixmapPtr = createBitmap();
+		isCaching = false;
 	}
 
 	// we also still need to set the ZValue of this object.

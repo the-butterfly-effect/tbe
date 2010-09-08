@@ -287,6 +287,11 @@ public:
 
 	PropertyList theProps;
 
+	/// returns the image index, will be used by DrawObject for animation
+	/// @returns: the default implementation always returns 0 - no animation.
+	virtual int getImageIndex(void)
+	{ return 0; }
+
 private:
 	// Private attributes
 	//
