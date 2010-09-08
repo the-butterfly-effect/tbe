@@ -49,7 +49,7 @@ static BalloonObjectFactory theBalloonObjectFactory;
 Balloon::Balloon()
 		: PolyObject(QObject::tr("Balloon"),
 					 QObject::tr("a Helium Balloon. Lighter than air, it moves up."),
-					 "Balloon",
+					 "Balloon;BalloonPoof",
 					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
@@ -66,6 +66,10 @@ Balloon::~Balloon()
 void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
 	DEBUG6("Balloon receives callback\n");
+
+	// we only need to do this when we're still a balloon
+	if (theState != BALLOON)
+		return;
 
 	// the upward force...
 	theB2BodyPtr->ApplyForce(b2Vec2(0,0.1), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
@@ -94,8 +98,28 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 
 Balloon::States Balloon::goToState(Balloon::States aNewState)
 {
-	// TODO: implement me!
+printf("Balloon change state request from %d to %d.\n", theState, aNewState);
 
+	switch (theState)
+	{
+	case BALLOON:
+		if (aNewState==POPPING)
+		{
+printf("POP!!!\n");
+			theState = POPPING;
+			// FIXME/TODO: set timer so we know to move to popped
+		}
+		break;
+	case POPPING:
+		if (aNewState==POPPED)
+		{
+			theState = POPPED;
+		}
+		break;
+	case POPPED:
+		// nothing to do - end state
+		break;
+	}
 	return theState;
 }
 

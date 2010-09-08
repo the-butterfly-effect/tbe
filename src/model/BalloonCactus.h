@@ -60,6 +60,12 @@ public:
 	/// called by a Cactus or BedOfNails if the balloon is hit
 	void stung(void);
 
+	/// overridden from BaseObject to allow representation of the states
+	/// @returns: returns a numerical index similar to the state
+	virtual int getImageIndex(void)
+	{ return theState; }
+
+
 protected:
 	/// call this function to suggest a state change to the Balloon
 	/// note that the Balloon can decide not to follow your state change,

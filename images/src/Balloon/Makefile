@@ -1,3 +1,3 @@
 include ../Makefile 
-SVGSRC=Balloon.svg BedOfNails.svg Cactus.svg
+SVGSRC=Balloon.svg BalloonPoof.svg BedOfNails.svg Cactus.svg
 
