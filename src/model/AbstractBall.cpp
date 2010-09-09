@@ -134,6 +134,9 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty()==false)
 		theBallImage = myImageName;
+	else
+		if (theBallImage.isEmpty())
+			theBallImage = getName();
 	theDrawObjectPtr = new DrawAbstractBall(this, theBallImage);
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
@@ -148,7 +151,7 @@ class CustomBallObjectFactory : public ObjectFactory
 {
 public:
 	CustomBallObjectFactory(void)
-	{	announceObjectType("Custom Ball", this); }
+	{	announceObjectType("CustomBall", this); }
 	virtual BaseObject* createObject(void) const
 	{	return new CustomBall(); }
 };
@@ -156,12 +159,12 @@ static CustomBallObjectFactory theCustomBallObjectFactory;
 
 
 CustomBall::CustomBall (void)
-	: AbstractBall("Custom Ball", "", "", 1.0, 1.0, 0.2)
+	: AbstractBall("CustomBall", "CustomBall", "", 1.0, 1.0, 0.2)
 {
 	DEBUG5("CustomBall::CustomBall\n");
 
 	theProps.setDefaultPropertiesString(
-			Property::IMAGE_NAME_STRING + QString(":/") +
+			Property::IMAGE_NAME_STRING + QString(":CustomBall/") +
 			Property::RADIUS_STRING + ":0.1/" +
 			Property::MASS_STRING +":1.0/" );
 }

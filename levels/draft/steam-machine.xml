@@ -31,7 +31,7 @@
         <scenesize width="4.4" height="3" />
         <predefined>
 
-	    <object X="3.2" Y="1.8" type="Custom Ball" ID="SteamWheel">
+	    <object X="3.2" Y="1.8" type="CustomBall" ID="SteamWheel">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.8</property>
                 <property key="Mass"     >3.0</property>

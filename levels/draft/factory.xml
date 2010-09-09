@@ -38,7 +38,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
 
-	    <object X="1.7" Y="1.3" type="Custom Ball" ID="Wheel1">
+	    <object X="1.7" Y="1.3" type="CustomBall" ID="Wheel1">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.2</property>
                 <property key="Mass"     >3.0</property>
@@ -48,7 +48,7 @@
 	      <property key="Speed">4.0</property>
 	    </object>
 
-	    <object X="3.7" Y="1.3" type="Custom Ball" ID="Wheel2">
+	    <object X="3.7" Y="1.3" type="CustomBall" ID="Wheel2">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.2</property>
                 <property key="Mass"     >3.0</property>
@@ -96,7 +96,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
 
-	    <object X="2.2" Y="2.1" type="Custom Ball" ID="Wheel3">
+	    <object X="2.2" Y="2.1" type="CustomBall" ID="Wheel3">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.2</property>
                 <property key="Mass"     >3.0</property>
@@ -106,7 +106,7 @@
 	      <property key="Speed">-4.0</property>
 	    </object>
 
-	    <object X="4.8" Y="2.1" type="Custom Ball" ID="Wheel4">
+	    <object X="4.8" Y="2.1" type="CustomBall" ID="Wheel4">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.2</property>
                 <property key="Mass"     >3.0</property>
@@ -192,7 +192,7 @@
 
 
 
-	    <object X="4.5" Y="1.3" type="Custom Ball" ID="Wheel5">
+	    <object X="4.5" Y="1.3" type="CustomBall" ID="Wheel5">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.3</property>
                 <property key="Mass"     >3.0</property>
