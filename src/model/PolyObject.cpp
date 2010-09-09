@@ -133,6 +133,12 @@ PolyObject::PolyObject ( ) : BaseObject(), theNameString(DEFAULT_POLYOBJECT_NAME
 
 	// because this object is very flexible and many parameters can be set through
 	// the Properties, do not assume too much here...
+	theProps.setDefaultPropertiesString(
+		Property::FRICTION_STRING + QString(":/") +
+		Property::IMAGE_NAME_STRING + QString(":PolyObject/") +
+		Property::MASS_STRING + QString(":/") +
+		Property::POLYGONS_STRING + QString(":(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)/")
+		);
 
 	// also: keep in mind that child objects may set some things automatically
 	rotatableInfo = false;
@@ -193,6 +199,8 @@ DrawObject*  PolyObject::createDrawObject(void)
 {
 	QString myImageName;
 	theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName);
+	if (myImageName.isEmpty())
+		myImageName = getName();
 	theDrawObjectPtr = new DrawPolyObject(this, myImageName);
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
