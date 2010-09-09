@@ -74,7 +74,6 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 		theName = myPtr->getName();
 		delete myPtr;
 	}
-printf("lala\n");
 	createIcon();
 }
 
