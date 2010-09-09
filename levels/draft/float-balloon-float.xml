@@ -36,8 +36,8 @@
                 <property key="page3" >I want to be a balloon &lt;br> ... &lt;br> and be the first to set foot on Alpha Centauri!</property>
                 <property key="page4" >... The Post-It boy</property>
                 <property key="page1_nl">Waar gaan ballonnen heen?&lt;br>Ze kunnen niet eeuwig opstijgen!</property>
-                <property key="page1_nl">Of vliegen ze door naar de sterren?</property>
-                <property key="page1_nl">Ik wil ook een ballon zijn &lt;br> ... &lt;br> en de eerste zijn die voet zet op Alpha Centauri!</property>
+                <property key="page2_nl">Of vliegen ze door naar de sterren?</property>
+                <property key="page3_nl">Ik wil ook een ballon zijn &lt;br> ... &lt;br> en de eerste zijn die voet zet op Alpha Centauri!</property>
                 <property key="page4_nl" >... de Post-It boy</property>
             </object>
             <object width="0.12" X="0.18" Y="0.278" height="0.34" type="Bowling Pin" ID="thePin" angle="0" />
