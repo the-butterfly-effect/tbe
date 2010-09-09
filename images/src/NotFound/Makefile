@@ -1,3 +1,3 @@
 include ../Makefile 
-SVGSRC=NotFound.svg BigCross.svg
+SVGSRC=BigCross.svg CustomBall.svg NotFound.svg PolyObject.svg RectObject.svg Scenery.svg
 
