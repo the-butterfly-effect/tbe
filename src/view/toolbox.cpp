@@ -68,13 +68,14 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	if (aFactoryPtr==NULL)
 		return;
 	DEBUG4("TBItem::TBItem(ObjectFactory*) for %s\n", ASCII(aFactoryPtr->getFactoryName()));
-	createIcon();
 	BaseObject* myPtr = getNewObject();
 	if (myPtr != NULL)
 	{
 		theName = myPtr->getName();
 		delete myPtr;
 	}
+printf("lala\n");
+	createIcon();
 }
 
 void TBItem::createIcon(void)

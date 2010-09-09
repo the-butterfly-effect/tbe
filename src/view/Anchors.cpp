@@ -73,6 +73,9 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 
 	// the DELETE button is displayed left of topleft
 	theAnchorList.push_back(new Anchor(DELETE, Anchor::TOPLEFTLEFT, this));
+	// the Object properties button is displayed above topleft
+//	if (theIsLevelEditor)
+//		theAnchorList.push_back(new Anchor(OBJPROPS, Anchor::TOPLEFTTOP, this));
 
 	if (theIsLevelEditor)
 	{
@@ -82,7 +85,10 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 			theObjectDialogPtr->show();
 		}
 		else
+		{
 			theObjectDialogPtr->readFromObject(myBOPtr);
+			theObjectDialogPtr->show();
+		}
 	}
 	updatePosition();
 }

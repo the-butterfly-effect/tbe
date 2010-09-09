@@ -360,11 +360,14 @@ void MainWindow::setSimSpeed(qreal aSpeed)
 
 void MainWindow::slot_clear_buttons(void)
 {
-	delete theButtons[0];
+	if (theButtons[0])
+		delete theButtons[0];
 	theButtons[0]=NULL;
-	delete theButtons[1];
+	if (theButtons[1])
+		delete theButtons[1];
 	theButtons[1]=NULL;
-	delete theButtons[2];
+	if (theButtons[2])
+		delete theButtons[2];
 	theButtons[2]=NULL;
 }
 
@@ -392,28 +395,30 @@ void MainWindow::slot_goalEditorAction_clicked(void)
 
 void MainWindow::slot_levelWon()
 {
+	if (theIsLevelEditor==false)
 	{
 		QString myLevelFileName = Level::getLevelFileName();
 		QSettings mySettings;
 		mySettings.setValue("completed/"+myLevelFileName, "done");
-	}
-	QSize myViewSize = ui.graphicsView->size();
-	theButtons[0] = new QPushButton(tr("Replay"), ui.graphicsView);
-	theButtons[0]->move(myViewSize.width()/3,myViewSize.height()/2);
-	theButtons[0]->show();
-	theButtons[1] = new QPushButton(tr("Choose..."), ui.graphicsView);
-	theButtons[1]->move(myViewSize.width()/2,myViewSize.height()/2);
-	theButtons[1]->show();
-	theButtons[2] = new QPushButton(tr("Next>"), ui.graphicsView);
-	theButtons[2]->move(2*myViewSize.width()/3,myViewSize.height()/2);
-	theButtons[2]->show();
 
-	connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld();));
-	connect(theButtons[1], SIGNAL(clicked()), this, SLOT(on_actionOpen_level_activated()));
-	connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_next_level()));
-	connect(theButtons[0], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
-	connect(theButtons[1], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
-	connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+		QSize myViewSize = ui.graphicsView->size();
+		theButtons[0] = new QPushButton(tr("Replay"), ui.graphicsView);
+		theButtons[0]->move(myViewSize.width()/3,myViewSize.height()/2);
+		theButtons[0]->show();
+		theButtons[1] = new QPushButton(tr("Choose..."), ui.graphicsView);
+		theButtons[1]->move(myViewSize.width()/2,myViewSize.height()/2);
+		theButtons[1]->show();
+		theButtons[2] = new QPushButton(tr("Next>"), ui.graphicsView);
+		theButtons[2]->move(2*myViewSize.width()/3,myViewSize.height()/2);
+		theButtons[2]->show();
+
+		connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld();));
+		connect(theButtons[1], SIGNAL(clicked()), this, SLOT(on_actionOpen_level_activated()));
+		connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_next_level()));
+		connect(theButtons[0], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+		connect(theButtons[1], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+		connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
+	}
 }
 
 void MainWindow::slot_next_level(void)

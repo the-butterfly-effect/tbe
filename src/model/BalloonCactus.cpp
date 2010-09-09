@@ -94,13 +94,13 @@ void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
 
 	Vector myForceVector = myForce * Vector(mySpeedVector.toAngle());
 	theB2BodyPtr->ApplyForce(myForceVector.toB2Vec2(), (getTempCenter()).toB2Vec2());
-//	printf("speed: %f@%f / force: %f\n", mySpeedVector.length()/aDeltaTime,
+//	DEBUG1("speed: %f@%f / force: %f\n", mySpeedVector.length()/aDeltaTime,
 //		   mySpeedVector.toAngle(), myForceVector.length());
 
 	thePreviousPosition = getTempCenter();
 }
 
-void Balloon::callbackStepPopping(qreal aDeltaTime, qreal aTotalTime)
+void Balloon::callbackStepPopping(qreal /*aDeltaTime*/, qreal aTotalTime)
 {
 	// is this the first callback in Popping state???
 	if (thePoppingTimeStart<0.0001)
@@ -115,7 +115,7 @@ void Balloon::callbackStepPopping(qreal aDeltaTime, qreal aTotalTime)
 
 Balloon::States Balloon::goToState(Balloon::States aNewState)
 {
-printf("Balloon change state request from %d to %d.\n", theState, aNewState);
+	DEBUG5("Balloon change state request from %d to %d.\n", theState, aNewState);
 
 	switch (theState)
 	{
@@ -124,6 +124,11 @@ printf("Balloon change state request from %d to %d.\n", theState, aNewState);
 		{
 			theState = POPPING;
 			// everything else will be handled in callbackStepPopping
+		}
+		if (aNewState==POPPED)
+		{
+			// typical case of "this should never happen"
+			assert(false);
 		}
 		break;
 	case POPPING:
@@ -142,6 +147,10 @@ printf("Balloon change state request from %d to %d.\n", theState, aNewState);
 
 void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 {
+	// also pop the balloon if it is maltreated
+	// WARNING: Magic number here!!!
+	if (anImpulseLength > 2.2 && theState==BALLOON)
+		goToState(POPPING);
 }
 
 
@@ -154,6 +163,7 @@ void Balloon::reset(void)
 	theState = BALLOON;
 	thePoppingTimeStart = 0;
 	deletePhysicsObject();
+	clearShapeList();
 	fillShapeList();
 	createPhysicsObject();
 }
@@ -166,16 +176,19 @@ void Balloon::stung(void)
 
 void Balloon::switchToSmallShape(void)
 {
+	// save the current position - as it is only stored within the B2Body
+	Position myCurrentPos = getTempCenter();
+
 	deletePhysicsObject();
-	theShapeList.clear();
+	clearShapeList();
 
 	b2PolygonDef* myRestDef = new b2PolygonDef();
-	myRestDef->SetAsBox(0.05, 0.05);
+	myRestDef->SetAsBox(0.04, 0.04);
 	myRestDef->density= 0.001 / (0.1 * 0.1);
 	myRestDef->userData = this;
 	theShapeList.push_back(myRestDef);
 
-	createPhysicsObject();
+	createPhysicsObject(myCurrentPos);
 }
 
 
@@ -273,7 +286,7 @@ static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
 
 
 BedOfNails::BedOfNails()
-		: PolyObject(QObject::tr("Bed of Nails"),
+		: PolyObject(QObject::tr("BedOfNails"),
 					 QObject::tr("Do not touch a bed of nails - it stings!"),
 					 "BedOfNails",
 					 // first the bar:

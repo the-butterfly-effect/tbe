@@ -41,7 +41,7 @@ bool theDrawDebug = false;
 // this variable defines whether DrawPolyOutline draws the polygons
 // over the image
 // switching this option is possible through the theDrawOutlineActionPtr in MainWindow
-bool theDrawPolyOutline = false;
+bool theDrawPolyOutline = true;
 
 // This variable defines whether TBE caches bitmaps of objects to speed
 // up rendering. Actual implementation in DrawObject::setupCache() and

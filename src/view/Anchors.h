@@ -49,7 +49,8 @@ public:
 		RESIZEHORI,
 		RESIZEVERTI,
 		ROTATE,
-		DELETE
+		DELETE,
+		OBJPROPS
 	};
 
 	void          createUndoDelete(void);
@@ -92,7 +93,8 @@ public:
 		BOTTOMLEFT  = 5,
 		BOTTOM      = 6,
 		BOTTOMRIGHT = 7,
-		TOPLEFTLEFT = 8
+		TOPLEFTLEFT = 8,
+		TOPLEFTTOP  = 9,
 	};
 
 	/// Constructor

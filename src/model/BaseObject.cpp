@@ -135,20 +135,28 @@ void BaseObject::clearShapeList()
 DrawObject*  BaseObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawObject(this,
-			theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING));
+	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
+	if (myImageName.isEmpty())
+		myImageName = getName();
+
+	theDrawObjectPtr = new DrawObject(this, myImageName);
 
 	setDrawObjectZValue(2.0);
 	return theDrawObjectPtr;
 }
 
-void BaseObject::createPhysicsObject()
+void BaseObject::createPhysicsObject(void)
+{
+	createPhysicsObject(theCenter);
+}
+
+void BaseObject::createPhysicsObject(Position aPosition)
 {
 	DEBUG5("BaseObject::createPhysicsObject() for %s\n", ASCII(getName()));
 	// first fixup the bodydef with the current position
 	assert(theB2BodyDefPtr!=NULL);
-	theB2BodyDefPtr->position.Set(theCenter.x, theCenter.y);
-	theB2BodyDefPtr->angle = theCenter.angle;
+	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
+	theB2BodyDefPtr->angle = aPosition.angle;
 	// do not set mass properties here - that will be done in derived classes
 	// (and as such is done already when we get here)
 	
@@ -219,6 +227,7 @@ void BaseObject::initAttributes ( )
 
 	theProps.setDefaultPropertiesString(
 		Property::IMAGE_NAME_STRING + QString(":/") +
+		Property::MASS_STRING + QString(":/") +
 		Property::BOUNCINESS_STRING + QString(":0.3/") +
 		Property::NOCOLLISION_STRING+ QString(":/") +
 		Property::PIVOTPOINT_STRING + QString(":/") +

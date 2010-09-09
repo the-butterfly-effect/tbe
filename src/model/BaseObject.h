@@ -267,7 +267,16 @@ public:
 	  */
 	virtual DrawObject* createDrawObject();
 
+	/// create a physics object (i.e. B2Body) and add all shapes to it
+	/// if a B2Body already exists, it is deleted first.
+	/// the object will be positioned at theCenter.
 	virtual void createPhysicsObject(void);
+
+	/// create a physics object (i.e. B2Body) and add all shapes to it
+	/// if a B2Body already exists, it is deleted first.
+	/// @param aPosition the position of the center of the object.
+	virtual void createPhysicsObject(Position aPosition);
+
 	virtual void deletePhysicsObject(void);
 	virtual bool isPhysicsObjectCreated(void) const
 		{ return theB2BodyPtr!=NULL; }
