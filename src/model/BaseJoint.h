@@ -64,6 +64,10 @@ public:
 	/// called by World when the joint was "implicitly destructed"
 	void jointWasDeleted(void);
 
+	/// when this member is called, this PivotPoint will be
+	/// marked as chilld, i.e. it will not save itself
+	void markAsChild(void);
+
 	/// implemented from JointInterface
 	virtual	void physicsObjectStatus(JointStatus aStatus);
 

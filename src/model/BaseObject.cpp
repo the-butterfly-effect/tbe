@@ -263,6 +263,7 @@ void BaseObject::parseProperties(void)
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
 		PivotPoint* myPP = new PivotPoint(this, myDelta);
+		myPP->markAsChild();
 		theWorldPtr->addObject(myPP);
 	}
 

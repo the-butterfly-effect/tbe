@@ -228,12 +228,14 @@ public:
 	static const char* TOTALRESIZE_STRING;
 
 	// the following is only used by CokeMentosBottle
-	//
-
 	static const char* THRUST_STRING;
 
 	// used by Link
 	static const char* OVERLAP_STRING;		// % (the overlap is split between left&right)
+
+	// INTERNAL ONLY, this property indicates that
+	// this object shouldn't be serialized - it's a child object
+	static const char* ISCHILD_STRING;		// value doesn't matter, as long as it is nonempty
 
 	// the following strings are used by the various Goal classes:
 	//

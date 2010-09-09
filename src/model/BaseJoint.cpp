@@ -65,6 +65,10 @@ void BaseJoint::jointWasDeleted(void)
 	theJointPtr = NULL;
 }
 
+void BaseJoint::markAsChild(void)
+{
+	theProps.setProperty(Property::ISCHILD_STRING, "yes");
+}
 
 void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 {

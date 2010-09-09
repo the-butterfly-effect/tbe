@@ -69,6 +69,7 @@ const char* Property::OBJECT1_STRING = "object1";
 const char* Property::OBJECT2_STRING = "object2";
 const char* Property::COLLIDE_STRING = "collide";
 
+const char* Property::ISCHILD_STRING = "__isChild";
 
 bool PropertyList::doesPropertyExists(const QString& aKey) const
 {
