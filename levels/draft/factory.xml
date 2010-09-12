@@ -92,16 +92,16 @@
 
 
 
-	    <object X="3.5" Y="2.1" width="2.8" height="0.2" type="Scenery">
+	    <object X="3.0" Y="2.1" width="3.8" height="0.2" type="Scenery">
                 <property key="ImageName">used_wood_bar</property>
             </object>
 
-	    <object X="2.2" Y="2.1" type="CustomBall" ID="Wheel3">
+	    <object X="1.2" Y="2.1" type="CustomBall" ID="Wheel3">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius"   >0.2</property>
                 <property key="Mass"     >3.0</property>
             </object>
-	    <object type="PivotPoint" X="2.2" Y="2.1">
+	    <object type="PivotPoint" X="1.2" Y="2.1">
 	      <property key="object">Wheel3</property>
 	      <property key="Speed">-4.0</property>
 	    </object>
@@ -115,13 +115,13 @@
 	      <property key="object">Wheel4</property>
 	    </object>
 
-	    <object type="RectObject" X="3.5" Y="1.93" width="2.7" height="0.14" ID="Driver3">
+	    <object type="RectObject" X="3.0" Y="1.93" width="3.7" height="0.14" ID="Driver3">
 	      <property key="ImageName">driver-2m</property>
 	      <property key="ZValue">5</property>
 	      <property key="Bounciness">0.1</property>
 	      <property key="Mass">1</property>
 	    </object>
-	    <object type="PivotPoint" X="2.2" Y="1.93">
+	    <object type="PivotPoint" X="1.2" Y="1.93">
 	      <property key="object1">Wheel3</property>
 	      <property key="object2">Driver3</property>
 	    </object>
@@ -130,14 +130,14 @@
 	      <property key="object2">Driver3</property>
 	    </object>
 
-	    <object type="RectObject" X="3.5" Y="2.27" width="2.7" height="0.14" ID="Driver4">
+	    <object type="RectObject" X="3.0" Y="2.27" width="3.7" height="0.14" ID="Driver4">
 	      <property key="ImageName">driver-2m</property>
 	      <property key="ZValue">1</property>
 	      <property key="Bounciness">0.1</property>
 	      <property key="Mass">1</property>
 	      <property key="NoCollision">Driver3</property>
 	    </object>
-	    <object type="PivotPoint" X="2.2" Y="2.27">
+	    <object type="PivotPoint" X="1.2" Y="2.27">
 	      <property key="object1">Wheel3</property>
 	      <property key="object2">Driver4</property>
 	    </object>
@@ -159,8 +159,20 @@
 
 
 
-	    <object X="2.6" Y="2.64" width="0.4" type="Weight" ID="Weight" />
+	    <object X="1.4" Y="2.64" width="0.4" type="Weight" ID="Weight" />
 
+
+	    <object X="2.0" Y="2.44" width="0.2" height="0.2" type="RectObject">
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">1.0</property>
+                <property key="Bounciness">0</property>
+            </object>
+
+	    <object X="2.6" Y="2.44" width="0.2" height="0.2" type="RectObject">
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">1.0</property>
+                <property key="Bounciness">0</property>
+            </object>
 
 	    <object X="3.2" Y="2.44" width="0.2" height="0.2" type="RectObject">
                 <property key="ImageName">birch_bar</property>
@@ -201,11 +213,16 @@
 	      <property key="object">Wheel5</property>
 	      <property key="Speed">-4.0</property>
 	    </object>
-	    <object X="5.0" Y="1.3" width="0.2" height="0.4" type="RectObject" ID="Piston">
+	    <object X="5.05" Y="1.45" type="CustomBall" >
+                <property key="ImageName">brass-pin</property>
+                <property key="Radius"   >0.05</property>
+                <property key="Mass"     > 0</property>
+            </object>
+	    <object X="5.0" Y="1.25" width="0.1" height="0.3" type="RectObject" ID="Piston">
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">4.0</property>
-                <property key="Friction">0</property>
                 <property key="Bounciness">0</property>
+                <property key="TranslationGuide">0</property>
             </object>
 	    <object X="0" Y="0" type="Link">
 		<property key="object1">Piston@(0,0)</property>
@@ -214,7 +231,7 @@
 		<property key="ZValue">5</property>
 	    </object>
 
-	    <object X="5.0" Y="1.05" width="0.2" height="0.1" type="RectObject">
+	    <object X="4.95" Y="1.05" width="0.3" height="0.1" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
             </object>
 	    <object X="5.4" Y="1.05" width="0.6" height="0.1" type="RectObject">
@@ -267,12 +284,19 @@
 	    
 
 
-	    <object X="2.6" Y="0.7" width="1.2" height="0.1" type="RectObject" ID="Keeper1">
+	    <object X="2.65" Y="0.88" type="Soccer Ball"/>
+	    <object X="2.6" Y="0.7" width="1.0" height="0.1" type="RectObject" ID="Keeper1">
                 <property key="ImageName">birch_bar</property>
                 <property key="Bounciness">0</property>
                 <property key="Mass">1</property>
-                <property key="PivotPoint">(0,0)</property>
             </object>
+<object type="PivotPoint" X="2.6" Y="0.7" width="0.1" height="0.1">
+  <property key="object">Keeper1</property>  <property key="ImageName">brass-pin</property>
+  <property key="ZValue">4</property>
+</object>
+<object type="RectObject" X="2.5" Y="0.3" width="0.1" height="0.1">
+  <property key="ImageName">brass-pin</property>
+</object>
 	    <object X="2.6" Y="0.45" width="0.1" height="0.4" type="RectObject" ID="Keeper2">
                 <property key="ImageName">birch_bar</property>
                 <property key="Bounciness">0</property>
@@ -303,24 +327,58 @@
                 <property key="Friction" >0.4</property>
             </object>
 
-
   <object X="4.7" Y="2.8" type="PostIt">
-      <property key="page1">Pin topples to green in two moves.</property>
-      <property key="page2">&lt;br&gt;&lt;br&gt;Post-It Boy&lt;br&gt;&lt;br&gt; ... is brief for once</property>
-      <property key="page3">(Ssst... I'm playing chess)</property>
-      <property key="page1_nl">Kegel valt naar groen in twee zetten.</property>
-      <property key="page2_nl">&lt;br&gt;&lt;br&gt;Post-It Boy&lt;br&gt;&lt;br&gt; ... houdt 't een keer kort</property>
-      <property key="page3_nl">(Sssht... Ben aan 't schaken)</property>
+      <property key="page1">This is a factory.</property>
+      <property key="page2">I think something's cooking here...</property>
+      <property key="page3">... waiting for breakfast</property>
   </object>
 
+<object X="0.4" Y="2.4" type="BedOfNails" angle="3.14"/>
 
-            <object X="2.2" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+<object X="0.6" Y="1.4" width="1.1" height="0.1" type="RectObject">
+  <property key="ImageName">birch_bar</property>
+  <property key="Mass">1.0</property>
+  <property key="PivotPoint">(0,0)</property>
+</object>
+<object type="Scenery" X="0.6" Y="1.4" width="0.1" height="0.1">
+  <property key="ImageName">brass-pin</property>
+  <property key="ZValue">10</property>
+</object>
+
+<object X="0.6" Y="1.6" type="Soccer Ball"/>
+
+<object X="0.6" Y="0.65" width="1.1" height="0.1" type="RectObject" ID="Door">
+  <property key="ImageName">birch_bar</property>
+  <property key="Mass">1.0</property>
+</object>
+<object type="PivotPoint" X="0.1" Y="0.65" width="0.1" height="0.1">
+  <property key="object">Door</property>
+  <property key="ImageName">brass-pin</property>
+</object>
+
+<object X="1.0" Y="0.35" width="0.1" height="0.49" type="RectObject">
+  <property key="ImageName">styrofoam</property>
+  <property key="Mass">0.2</property>
+  <property key="Friction">0.1</property>
+</object>
+
+<object X="1.95" Y="0.55" width="0.3" height="0.1" type="RectObject">
+  <property key="ImageName">used_wood_bar</property>
+</object>
+
+
+<object X="1.8" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+<object width="0.3" X="2.05" Y="0.34" height="0.48" type="Scenery" >
+    <property key="ImageName" >goal-scenery</property>
+    <property key="ZValue">4</property>
+</object>
+
 
         </predefined>
     </scene>
     <goals>
 	    <goal type="positionchange">
-		<property key="xbelow">1.7</property>
+		<property key="xover">2.0</property>
 		<property key="object">BowlingPin</property>
 	    </goal>
     </goals>
