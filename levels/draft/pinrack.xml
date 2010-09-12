@@ -38,36 +38,36 @@
 
 	    <object X="3.25" Y="0.05" width="2.5" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
 
             <object X="4.45" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="4.05" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="3.65" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="3.25" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.85" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.45" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="2.05" Y="0.25" width="0.1" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             
 	    <object X="3.3" Y="3.7" type="PostIt">
@@ -92,7 +92,7 @@
 
 	    <object X="2.3" Y="3.4" width="1.5" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
 
             <object X="1.95" Y="3.7" type="Tennis Ball" ID="TennisBall"/>
