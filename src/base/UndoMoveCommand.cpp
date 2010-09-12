@@ -63,6 +63,7 @@ void UndoMoveCommand::redo ()
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->theDrawObjectPtr->advance(0);
+	theBaseObjectPtr->theDrawObjectPtr->focusInEvent();
 }
 
 bool UndoMoveCommand::revertIfNeeded(void)
@@ -102,4 +103,5 @@ void UndoMoveCommand::undo ()
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
 	theBaseObjectPtr->theDrawObjectPtr->advance(0);
+	theBaseObjectPtr->theDrawObjectPtr->focusInEvent();
 }

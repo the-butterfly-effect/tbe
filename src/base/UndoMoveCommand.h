@@ -83,7 +83,7 @@ public:
 	bool revertIfNeeded(void);
 
 	bool isChanged(void)
-	{	return theOldPosition == theNewPosition; }
+	{	return !(theOldPosition == theNewPosition); }
 
 	virtual void redo ();
 	virtual void undo ();
