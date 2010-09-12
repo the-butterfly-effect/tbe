@@ -97,9 +97,7 @@ public:
 	const QDomNode& getToolboxDomNode(void) const
 	{ return theToolboxDomNode; }
 
-private:
 	/// sets the name of the file that describes the current level
-	/// only called by SaveLevelInfo.cpp (which is a friend)
 	void setLevelFileName(const QString& aName);
 
 protected:

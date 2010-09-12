@@ -41,7 +41,10 @@ void LocalString::clear()
 
 QString LocalString::english() const
 {
-	return theStringList.find("").value();
+	if (theStringList.count()==0)
+		return "";
+	else
+		return theStringList.find("").value();
 }
 
 void

@@ -159,16 +159,22 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	if (theScenePtr!=NULL)
 		ui.theToolBoxView->fillFromObjectFactory();
 
-	// populate the view menu more
-	// we need to add the Goal Editor
-	// and we need to add the debug drawing entries
+	// add menu item File > New... - at the top!
+	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
+	theNewLevelActionPtr = new QAction( tr("New Level ..."), this);
+	ui.menuFile->insertAction(ui.menuFile->actions().first(), theNewLevelActionPtr);
+	connect(theNewLevelActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_newLevelAction_clicked()));
 
+
+	// populate the view menu more
 	ui.menuView->addSeparator();
+
 	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
 	theGoalEditorActionPtr = new QAction( tr("Goal Editor ..."), this);
 	ui.menuView->addAction(theGoalEditorActionPtr);
 	connect(theGoalEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_goalEditorAction_clicked(void)));
 
+	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
 	theLevelPropertiesEditorActionPtr = new QAction( tr("Level Settings Editor ..."), this);
 	ui.menuView->addAction(theLevelPropertiesEditorActionPtr);
 	connect(theLevelPropertiesEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_levelPropertiesEditorAction_clicked(void)));
@@ -435,6 +441,29 @@ void MainWindow::slot_levelWon()
 		connect(theButtons[1], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
 		connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));
 	}
+}
+
+void MainWindow::slot_newLevelAction_clicked(void)
+{
+	if (theLevelPtr!=NULL)
+	{
+		if (Popup::YesNoQuestion(tr("WARNING: you already have a level open. Do you want to discard that?"),this)==false)
+			return;
+		purgeLevel();
+	}
+	ui.theToolBoxView->clear();
+
+	// and we have a clean slate :-)
+	theLevelPtr = new Level();
+	theLevelPtr->getTheWorldPtr()->createScene(this);
+	theLevelPtr->setLevelFileName("./lala.xml");
+
+	// set the level properties and first save
+	slot_levelPropertiesEditorAction_clicked();
+	on_actionSave_activated();
+
+	// and fill up the toolbox again.
+	ui.theToolBoxView->fillFromObjectFactory();
 }
 
 void MainWindow::slot_next_level(void)

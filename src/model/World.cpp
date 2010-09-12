@@ -375,6 +375,7 @@ qreal World::simStep (void)
 	CallbackList::iterator i;
 	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
 	{
+		printf("before; going to call %p\n", *i);
 		(*i)->callbackStep(theDeltaTime, theTotalTime);
 	}
 
