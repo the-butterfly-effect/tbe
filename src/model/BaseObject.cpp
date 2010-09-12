@@ -303,6 +303,7 @@ bool BaseObject::reregister(void)
 	if (theDrawObjectPtr == NULL)
 		createDrawObject();
 	createPhysicsObject();
+	theDrawObjectPtr->focusInEvent();
 	return true;
 }
 

@@ -84,25 +84,27 @@ public:
 	  */
 	QPixmap* createBitmap(int aWidth=0, int aHeight=0);
 
-	/// overriden from QGraphicsItem
-    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
-
-    static void setUndoStackPtr(QUndoStack* aPtr);
 
 	/// overriden from QGraphicsItem
     virtual void advance(int step);
 
-	BaseObject* getBaseObjectPtr(void) const
-		{ return theBaseObjectPtr; }
-
-	bool pushUndo(QUndoCommand* anUndo);
+	/// covenience version without event of focusInEvent
+	virtual void focusInEvent (void);
 
 	/** removes highlighting from this object and anchors - if needed
 	 *  @param alsoDeleteAnchors use true if also to delete Anchors, supply
 	 *			false if called from Anchors itself
 	 */
 	void focusRemove(bool alsoDeleteAnchors=true);
+
+	BaseObject* getBaseObjectPtr(void) const
+		{ return theBaseObjectPtr; }
+
+	/// overriden from QGraphicsItem
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+			   QWidget *widget);
+
+	bool pushUndo(QUndoCommand* anUndo);
 
 	/** static function, called by DrawWorld to indicate whether
 	  * the simulation is running or not.
@@ -111,6 +113,8 @@ public:
 	  * @param aBool  true to signal that sim is running.
 	  */
 	static void setIsSimRunning(bool aBool);
+
+	static void setUndoStackPtr(QUndoStack* aPtr);
 
 	/// setup caching for this object
 	void setupCache(void);

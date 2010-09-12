@@ -70,8 +70,11 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 
 	// FIXME/TODO: put this into an UNDO
 	theBOPtr->theProps.setProperty(myKey, myValue);
-	// and run object's parseProperties to make sure the sim is updated
+
+	// now we need to make sure everything is updated correctly...
 	theBOPtr->parseProperties();
+	theBOPtr->deregister();
+	theBOPtr->reregister();
 }
 
 
