@@ -22,6 +22,7 @@
 #include "UndoDeleteCommand.h"
 #include "DrawObject.h"
 #include "LocalString.h"
+#include "BaseJoint.h"
 
 #include <QtGui>
 #include <QMimeData>
@@ -67,8 +68,14 @@ TBItem::TBItem(const ObjectFactory* aFactoryPtr)
 	assert(aFactoryPtr != NULL);
 	if (aFactoryPtr==NULL)
 		return;
+
 	DEBUG4("TBItem::TBItem(ObjectFactory*) for %s\n", ASCII(aFactoryPtr->getFactoryName()));
 	BaseObject* myPtr = getNewObject();
+
+	// FIXME: HACK HACK HACK: satisfy ticket:141 do not add Joints/Links/etc to toolbox
+	if (dynamic_cast<BaseJoint*>(myPtr)!=NULL)
+		return;
+
 	if (myPtr != NULL)
 	{
 		theName = myPtr->getName();
@@ -314,7 +321,8 @@ bool ToolBox::fillFromObjectFactory(void)
 		if (myPtr != NULL)
 		{
 			TBItem* myTBItemPtr = new TBItem(myPtr);
-			addItem(myTBItemPtr);
+			if (myTBItemPtr->getName().isEmpty()==false)
+				addItem(myTBItemPtr);
 		}
 	}
 	delete myListPtr;

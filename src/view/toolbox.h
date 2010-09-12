@@ -57,6 +57,9 @@ public:
 		return "TBE-" + QString::number(reinterpret_cast<qulonglong>(this),16);
 	}
 
+	QString getName() const
+	{	return theName; }
+
 	bool hasObjectsLeft(void)
 	{ return (theCount>0); }
 
