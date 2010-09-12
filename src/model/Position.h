@@ -87,7 +87,7 @@ public:
 	/// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
 	qreal angle;
 
-	const static qreal minimalMove = 0.005;
+	const static qreal minimalMove;
 
 	b2Vec2  toB2Vec2(void) const;
 	QString toString(void) const;

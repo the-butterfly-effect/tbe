@@ -22,7 +22,8 @@
 #include <cmath>
 #include <QStringList>
 
-const qreal Position::minimalMove;
+const qreal Position::minimalMove = 0.005;
+
 
 // Constructors/Destructors
 
@@ -129,15 +130,19 @@ qreal Vector::length(void)
 
 qreal Vector::toAngle(void) const
 {
-	// prevent division by zero -
+	// prevent division by zero
 	// even though C++ already knows about NaN and such
-	qreal myDX = dx;
-	if (myDX == 0.0f)
-		myDX = 0.0001f;
+	if (fabs(dx) < Position::minimalMove)
+	{
+		if (dy > 0.0)
+			return PI/2.0;
+		else
+			return 3.0*PI/2.0;
+	}
 
-	qreal myAngle = atanf(fabs(dy / myDX));
+	qreal myAngle = atanf(fabs(dy / dx));
 
-	if (myDX > 0)
+	if (dx > 0)
 	{
 		if (dy > 0)
 			myAngle = myAngle;
