@@ -81,6 +81,9 @@ public:
 
 	virtual void updateOrigCenter(void) = 0;
 
+	b2Body* getB2BodyPtrFor(BaseObject* anObject)
+	{ return anObject->theB2BodyPtr; }
+
 protected:
 	/// if you have only one object, it is supposed to be static
 	/// related to the world i.e. the ground body. This is where to get it.

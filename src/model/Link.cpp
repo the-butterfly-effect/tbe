@@ -112,7 +112,7 @@ void Link::createPhysicsObject(void)
 		DEBUG4("Link: No valid first object found...\n");
 		return;
 	}
-	b2Body* myFirstB2BodyPtr = theFirstPtr->theB2BodyPtr;
+	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr);
 	assert (myFirstB2BodyPtr);
 	theFirstPtr->addJoint(this);
 
@@ -123,7 +123,7 @@ void Link::createPhysicsObject(void)
 		DEBUG4("Link: No valid second object found...\n");
 		return;
 	}
-	b2Body* mySecondB2BodyPtr = theSecondPtr->theB2BodyPtr;
+	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr);
 	assert (mySecondB2BodyPtr);
 	theSecondPtr->addJoint(this);
 

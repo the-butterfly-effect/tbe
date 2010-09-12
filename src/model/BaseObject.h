@@ -356,10 +356,8 @@ protected:
 
 	friend class BaseObjectSerializer;
 
-	// PivotPoint & Link need access to the B2BodyPtr.
-	// TODO/FIXME: I know this is ugly. sorry.
-	friend class PivotPoint;
-	friend class Link;
+	// All Joints need access to the B2BodyPtr.
+	friend class BaseJoint;
 
 public:
 	// public attribute accessor methods
