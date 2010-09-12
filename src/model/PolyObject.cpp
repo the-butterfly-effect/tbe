@@ -127,21 +127,12 @@ static AbstractPolyObjectFactory theRightRampFactory(
 // Constructors/Destructors
 //
 
-PolyObject::PolyObject ( ) : BaseObject(), theNameString(DEFAULT_POLYOBJECT_NAME)
+PolyObject::PolyObject ( )
 {
-	DEBUG5("PolyObject::PolyObject\n");
-
-	// because this object is very flexible and many parameters can be set through
-	// the Properties, do not assume too much here...
-	theProps.setDefaultPropertiesString(
-		Property::FRICTION_STRING + QString(":/") +
-		Property::IMAGE_NAME_STRING + QString(":PolyObject/") +
-		Property::MASS_STRING + QString(":/") +
-		Property::POLYGONS_STRING + QString(":(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)/")
-		);
-
-	// also: keep in mind that child objects may set some things automatically
-	rotatableInfo = false;
+	DEBUG5("PolyObject::PolyObject()\n");
+	PolyObject(DEFAULT_POLYOBJECT_NAME, "", DEFAULT_POLYOBJECT_NAME,
+			   "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+				1.0, 1.0, 0, 0.3);
 }
 
 PolyObject::PolyObject( const QString& aDisplayName,
@@ -151,16 +142,19 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
+	DEBUG5("PolyObject::PolyObject(%s)\n", ASCII(aDisplayName));
 	theOriginalWidth = aWidth;
 	BaseObject::setTheWidth(aWidth);
 	theOriginalHeight = aHeight;
 	BaseObject::setTheHeight(aHeight);
 	setTheBounciness(aBounciness);
+	rotatableInfo = false;	// this is the default, will be fixed in parseProperties
 
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
 		Property::MASS_STRING + ":" + QString::number(aMass) + QString("/") +
+		Property::ROTATABLE_STRING + QString(":false/") +
 		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
 		);
 }
@@ -254,10 +248,10 @@ void PolyObject::parseProperties(void)
 {
 
 	BaseObject::parseProperties();
+	theProps.property2Bool(Property::ROTATABLE_STRING, &rotatableInfo, false);
 
 	clearShapeList();
 	fillShapeList();
-
 	createPhysicsObject();
 
 }
