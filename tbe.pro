@@ -51,6 +51,7 @@ HEADERS += src/tbe_global.h \
     src/model/PostIt.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
+    src/model/TranslationGuide.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
@@ -100,6 +101,7 @@ SOURCES += src/main.cpp \
     src/model/PostIt.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
+    src/model/TranslationGuide.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \

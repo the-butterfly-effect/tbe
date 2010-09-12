@@ -22,6 +22,7 @@
 #include "Box2D.h"
 #include "BaseObjectSerializer.h"
 #include "PivotPoint.h"
+#include "TranslationGuide.h"
 
 // Static variables
 static b2World* theStaticB2WorldPtr = NULL;
@@ -231,6 +232,7 @@ void BaseObject::initAttributes ( )
 		Property::BOUNCINESS_STRING + QString(":0.3/") +
 		Property::NOCOLLISION_STRING+ QString(":/") +
 		Property::PIVOTPOINT_STRING + QString(":/") +
+		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
 		Property::ZVALUE_STRING + QString(":2.0/") );
 }
 
@@ -265,6 +267,13 @@ void BaseObject::parseProperties(void)
 		PivotPoint* myPP = new PivotPoint(this, myDelta);
 		myPP->markAsChild();
 		theWorldPtr->addObject(myPP);
+	}
+	float myAngle;
+	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
+	{
+		TranslationGuide* myTJ = new TranslationGuide(this, myAngle);
+		myTJ->markAsChild();
+		theWorldPtr->addObject(myTJ);
 	}
 
 	QString myNoCollisionObjectIDs;
