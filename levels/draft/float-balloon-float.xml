@@ -10,19 +10,12 @@
         <date>9/9/10</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Bed of Nails">
+        <toolboxitem count="2" name="Bed of Nails">
             <name lang="nl">Spijkerbed</name>
             <object type="BedOfNails" >
                 <property key="Rotatable" >true</property>
             </object>
 	</toolboxitem>
-        <toolboxitem count="1" name="Bar">
-            <name lang="nl">Balk</name>
-            <object width="1" height="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Rotatable" >true</property>
-            </object>
-        </toolboxitem>
    </toolbox>
     <scene>
         <scenesize width="2.3" height="1.7" />
@@ -45,7 +38,7 @@
                 <property key="ImageName" >oldbrick</property>
             </object>
             <object width="1.3" X="1.65" Y="1.07" height="0.1" type="RectObject" angle="0" >
-                <property key="ImageName" >used_wood_bar</property>
+                <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >2.0</property>
                 <property key="PivotPoint" >(0,0)</property>
             </object>
