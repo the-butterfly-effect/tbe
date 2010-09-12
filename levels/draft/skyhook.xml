@@ -21,15 +21,15 @@
         <predefined>
             <object width="0.1" X="-0.05" Y="1.75" height="3.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="0.1" X="6.45" Y="1.75" height="3.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="6.4" X="3.2" Y="0.05" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
 	
 	    <object X="3.0" Y="3.5" type="PostIt">
@@ -100,21 +100,25 @@
 
 
 	    <object width="1.46" height="0.1" X="0.97" Y="1.4" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="0.25" Y="1.55" type="Volley Ball" ID="leftball"/>
-            <object X="1.64" Y="1.52" type="Coke+Mentos Bottle" angle="-1.57" />
+            <object X="1.64" Y="1.54" type="Coke+Mentos Bottle" angle="-1.57">
+		<property key="TranslationGuide">0</property>
+	    </object>
 	    <object width="1.7" height="0.1" X="0.85" Y="1.74" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
 
 	    <object width="2.38" height="0.1" X="4.97" Y="1.4" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="5.13" Y="1.55" type="Volley Ball" ID="rightball"/>
-            <object X="3.82" Y="1.52" type="Coke+Mentos Bottle" angle="1.57" />
+            <object X="3.82" Y="1.54" type="Coke+Mentos Bottle" angle="1.57">
+		<property key="TranslationGuide">0</property>
+	    </object>
 	    <object width="2.6" height="0.1" X="5.1" Y="1.74" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
             </object>
 
@@ -132,15 +136,15 @@
             </object>
 
 	    <object width="2.08" height="0.1" X="2.74" Y="0.7" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
             </object>
 	    <object width="0.1" height="0.7" X="1.65" Y="1.0" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
             </object>
 	    <object width="0.1" height="0.7" X="3.83" Y="1.0" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
             </object>
 
