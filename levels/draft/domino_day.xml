@@ -39,7 +39,7 @@
         <predefined>
             <object width="6" X="3" Y="-0.04" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="1" X="0.5" Y="2.75" height="0.4" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
@@ -48,7 +48,7 @@
 	    <!-- ############################ UPPER DOMINO ROW ################### -->
             <object width="4" X="3" Y="2.35" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="1.1" Y="2.65" type="DominoRed" />
             <object X="1.5" Y="2.65" type="DominoGreen" />
@@ -62,17 +62,17 @@
             <object X="4.7" Y="2.65" type="DominoRed" />
 	    <!-- ############################ MIDDLE DOMINO ROW ################### -->
             <object width="4.2" X="3.3" Y="1.6" height="0.1" type="RectObject" >
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
             <object width="0.3" X="5.8" Y="2.05" height="1" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
             <object X="5.1" Y="1.97" type="Bowling Ball" />
             <object width="0.6" X="5.35" Y="1.7" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="4.9" Y="1.9" type="DominoGreen" />
             <object X="4.5" Y="1.9" type="DominoBlue" />
@@ -86,17 +86,17 @@
             <object X="1.3" Y="1.9" type="DominoGreen" />
             <object width="5" X="2.5" Y="0.8" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="0.3" X="1.05" Y="1.5" height="0.1" type="RectObject" >
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
             <object X="1.05" Y="1.8" type="Coke+Mentos Bottle" />
 	    <!-- ############################ COKE ROW ################### -->
             <object width="0.1" X="1.1" Y="0.93" height="0.16" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="0.2" Y="1.4" type="PostIt">
                 <property key="page1" >It falls down, blows ...&lt;br&gt;&lt;br&gt;and doesn't do anything useful</property>
@@ -127,12 +127,12 @@
                 <property key="ImageName" >left-ramp</property>
             </object>
             <object width="0.35" X="0.76" Y="0.205" height="0.41" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="0.9" Y="0.53" type="Bowling Ball" />
             <object X="0.5" Y="0.32" type="Bowling Pin" ID="Left-Bottom-Pin"/>
             <object width="0.20" X="0.5" Y="0.06" height="0.12" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >used_wood_bar</property>
             </object>
         </predefined>
     </scene>
