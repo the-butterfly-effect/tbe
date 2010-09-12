@@ -73,6 +73,8 @@ private slots:
 
 	/// slot for QAction menu-view-GoalEditor
 	void slot_goalEditorAction_clicked(void);
+	/// slot for QAction menu-view-LevelPropertiesEditor
+	void slot_levelPropertiesEditorAction_clicked(void);
 
 	/// called by DrawWorld once alls goals are met
 	void slot_levelWon(void);
@@ -90,6 +92,7 @@ private:
 	QAction*	theDrawDebugActionPtr;
 	QAction*	theDrawOutlineActionPtr;
 	QAction*	theGoalEditorActionPtr;
+	QAction*	theLevelPropertiesEditorActionPtr;
 	QAction*	theUndoActionPtr;
 	QAction*	theRedoActionPtr;
 	QPushButton* theButtons[3];

@@ -329,9 +329,10 @@ private:
 
 	friend class Level;
 
-	// FIXME/TODO: get rid of this friend
+	// FIXME/TODO: get rid of these friends
 	// the easiest way is to move this into GoalSerializer...
 	friend class GoalEditor;
+	friend class EditLevelProperties;
 };
 
 #endif // WORLD_H

@@ -66,31 +66,10 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 
-	if (theIsLevelEditor)
-	{
-		// draw a box as the outline of the World
-		addLine(0,0,                     getWidth(),0);
-		addLine(getWidth(),0,            getWidth(),-getHeight());
-		addLine(getWidth(),-getHeight(), 0,-getHeight());
-		addLine(0,-getHeight(),          0,0);
-	}
-
-	// two dots on top-right and bottom-left to make sure that the Scene
-	// is rendered in total
-	addItem(new Dot(getWidth()+0.01, -getHeight()-0.01));
-	addItem(new Dot(          -0.01,             +0.01));
-	
-	// a blue gradient background
-	// FIXME: I can imagine we're going to make this flexible later
-	setBackgroundBrush(Qt::blue);
-	QLinearGradient myBackground(0,0, 0,-getHeight());
-	myBackground.setColorAt(0, QColor(212,212,255,255));
-	myBackground.setColorAt(1, QColor(121,121,235,255));
-	setBackgroundBrush(myBackground);
+	drawOutlineAndBackground();
 
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
-
 	setDrawDebug();
 	setAcceptDrops(true);
 }
@@ -194,6 +173,43 @@ void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 	Position myPosition(event->scenePos().x(), event->scenePos().y());
 	theInsertUndoPtr->setNewPosition(myPosition);
 	event->accept();
+}
+
+
+void DrawWorld::drawOutlineAndBackground(void)
+{
+	while (theBasicDrawWorldItems.count()>0)
+	{
+		QGraphicsItem* myItem = theBasicDrawWorldItems.last();
+		theBasicDrawWorldItems.pop_back();
+		delete myItem;
+	}
+
+	if (theIsLevelEditor)
+	{
+		// draw a box as the outline of the World
+		theBasicDrawWorldItems.push_back(addLine(0,0,                     getWidth(),0));
+		theBasicDrawWorldItems.push_back(addLine(getWidth(),0,            getWidth(),-getHeight()));
+		theBasicDrawWorldItems.push_back(addLine(getWidth(),-getHeight(), 0,-getHeight()));
+		theBasicDrawWorldItems.push_back(addLine(0,-getHeight(),          0,0));
+	}
+
+	// two dots on top-right and bottom-left to make sure that the Scene
+	// is rendered in total
+	QGraphicsItem* myDot = new Dot(getWidth()+0.01, -getHeight()-0.01);
+	theBasicDrawWorldItems.push_back(myDot);
+	addItem(myDot);
+	myDot =                new Dot(          -0.01,             +0.01);
+	theBasicDrawWorldItems.push_back(myDot);
+	addItem(myDot);
+
+	// a blue gradient background
+	// TODO/FIXME: We're going to make this flexible later (see ticket:58)
+	setBackgroundBrush(Qt::blue);
+	QLinearGradient myBackground(0,0, 0,-getHeight());
+	myBackground.setColorAt(0, QColor(212,212,255,255));
+	myBackground.setColorAt(1, QColor(121,121,235,255));
+	setBackgroundBrush(myBackground);
 }
 
 

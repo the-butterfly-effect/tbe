@@ -124,6 +124,7 @@ private:
 
 	friend class SaveLevelInfo;
 	friend class LevelInfoDialog;
+	friend class EditLevelProperties;
 };
 
 #endif // LEVEL_H

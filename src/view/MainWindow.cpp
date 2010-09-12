@@ -35,6 +35,7 @@
 #include "LevelInfoDialog.h"
 #include "StartStopWatch.h"
 #include "GoalEditor.h"
+#include "EditLevelProperties.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // constructors & destructors
@@ -167,6 +168,10 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	theGoalEditorActionPtr = new QAction( tr("Goal Editor ..."), this);
 	ui.menuView->addAction(theGoalEditorActionPtr);
 	connect(theGoalEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_goalEditorAction_clicked(void)));
+
+	theLevelPropertiesEditorActionPtr = new QAction( tr("Level Settings Editor ..."), this);
+	ui.menuView->addAction(theLevelPropertiesEditorActionPtr);
+	connect(theLevelPropertiesEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_levelPropertiesEditorAction_clicked(void)));
 
 	ui.menuView->addSeparator();
 	theDrawDebugActionPtr = new QAction( tr("Draw Box2D debug in sim"), this);
@@ -388,9 +393,20 @@ void MainWindow::slot_drawOutlineAction_toggle(bool isChecked)
 
 void MainWindow::slot_goalEditorAction_clicked(void)
 {
-	// the Goals dialog is modal, i.e. it can stay floating around
+	// the Goals dialog is modeless, i.e. it can stay floating around
 	GoalEditor* myGoalEditorPtr = new GoalEditor(theLevelPtr->getTheWorldPtr(), this);
 	myGoalEditorPtr->show();
+}
+
+void MainWindow::slot_levelPropertiesEditorAction_clicked(void)
+{
+	// this dialog is modal, i.e. user has to click OK/Cancel
+	EditLevelProperties* myEditorPtr = new EditLevelProperties(theLevelPtr, this);
+	myEditorPtr->show();
+	// I don't care about the return.
+	// If it was OK, the dialog already 'fixed' everything.
+	myEditorPtr->exec();
+	emit ui.graphicsView->on_timerTick();
 }
 
 void MainWindow::slot_levelWon()

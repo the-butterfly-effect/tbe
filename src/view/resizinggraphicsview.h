@@ -100,7 +100,7 @@ protected:
 	/// boolean indicates whether we should ignore resize events
 	bool isDoNotResize;
 
-protected slots:
+public slots:
 	void on_timerTick(void);
 };
 

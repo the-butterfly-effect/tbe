@@ -91,6 +91,9 @@ public:
 	  */
 	void invalidateCaching(void);
 
+	/// (re-)draws the outline and the background
+	void drawOutlineAndBackground();
+
 protected:
 	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
 	virtual void dragEnterEvent ( QGraphicsSceneDragDropEvent * event );
@@ -198,6 +201,8 @@ private:
 	  * a pointer to the UndoInsertCommand-in-progress
 	  */
 	UndoInsertCommand* theInsertUndoPtr;
+
+	QList<QGraphicsItem*> theBasicDrawWorldItems;
 
 	/** this local class displays the Congratulations or Death message
 	  * with a nice SVG background
