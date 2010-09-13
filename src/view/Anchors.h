@@ -65,6 +65,13 @@ public:
 	/// iterates through all Anchor's to make them update their position
 	void updatePosition();
 
+	static EditObjectDialog* getEditObjectDialogPtr(void)
+	{ return theObjectDialogPtr; }
+	static void clearEditObjectDialogPtr(void)
+	{ if (theObjectDialogPtr)
+		delete theObjectDialogPtr;
+		theObjectDialogPtr = NULL; }
+
 private:
 	DrawObject* theDrawObjectPtr;
 
