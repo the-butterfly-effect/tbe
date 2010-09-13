@@ -88,21 +88,24 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	}
 	else
 	{
-		QGraphicsSvgItem* myTitlePagePtr = new SplashScreen(
-				IMAGES_DIRECTORY + "/title_page.svg" );
-		QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
+		if (theIsLevelEditor==false)
+		{
+			QGraphicsSvgItem* myTitlePagePtr = new SplashScreen(
+					IMAGES_DIRECTORY + "/title_page.svg" );
+			QGraphicsScene* mySplashScenePtr = new QGraphicsScene(NULL);
 
-		mySplashScenePtr->addItem(myTitlePagePtr);
+			mySplashScenePtr->addItem(myTitlePagePtr);
 
-		// set my splash screen scene in view and make it fit nicely
-		ui.graphicsView->setScene(mySplashScenePtr);
-		QRectF myRect = myTitlePagePtr->boundingRect ();
-		// TODO: FIXME: this /32.0 is wrong. very wrong :-(
-		myRect.setWidth(myRect.width()/20.0);
-		myRect.setHeight(myRect.height()/20.0);
-		ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
-		connect(myTitlePagePtr, SIGNAL(clicked()),
-				this, SLOT(slot_splashScreen_clicked()));
+			// set my splash screen scene in view and make it fit nicely
+			ui.graphicsView->setScene(mySplashScenePtr);
+			QRectF myRect = myTitlePagePtr->boundingRect ();
+			// TODO: FIXME: this /32.0 is wrong. very wrong :-(
+			myRect.setWidth(myRect.width()/20.0);
+			myRect.setHeight(myRect.height()/20.0);
+			ui.graphicsView->fitInView(myRect, Qt::KeepAspectRatio);
+			connect(myTitlePagePtr, SIGNAL(clicked()),
+					this, SLOT(slot_splashScreen_clicked()));
+		}
 	}
 
 }                           
@@ -152,7 +155,6 @@ void MainWindow::on_actionGo_activated(void)
 void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 {
 	theIsLevelEditor=true;
-	ui.actionSave->setEnabled(true);
 	ui.actionGo_To_Level_Editor->setEnabled(false);
 
 	// if a level is already loaded, let's populate the toolbox
@@ -164,7 +166,8 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	theNewLevelActionPtr = new QAction( tr("New Level ..."), this);
 	ui.menuFile->insertAction(ui.menuFile->actions().first(), theNewLevelActionPtr);
 	connect(theNewLevelActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_newLevelAction_clicked()));
-
+	ui.actionSave->setEnabled(true);
+	ui.actionSave_As->setEnabled(true);
 
 	// populate the view menu more
 	ui.menuView->addSeparator();
@@ -237,7 +240,24 @@ void MainWindow::on_actionReset_2_activated(void)
 
 void MainWindow::on_actionSave_activated()
 {
+	if (theLevelPtr==NULL)
+		return;
+
 	DEBUG5("MainWindow::on_actionSave_activated()\n");
+	QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
+	if (theLevelPtr->save(myFileInfo.absoluteFilePath())==false)
+		Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
+	else
+		ui.statusbar->showMessage(tr("File '%1' saved.").arg(myFileInfo.absoluteFilePath()),5);
+}
+
+void MainWindow::on_actionSave_As_activated()
+{
+	assert(theLevelPtr);
+	if (theLevelPtr==NULL)
+		return;
+
+	DEBUG5("MainWindow::on_actionSave_As_activated()\n");
 	SaveLevelInfo mySaveLevel(theLevelPtr,this);
 	int myReturnCode = mySaveLevel.exec();
 	if (myReturnCode == QDialog::Rejected)
@@ -253,7 +273,7 @@ void MainWindow::on_actionSave_activated()
 		   ASCII(myFileInfo.absoluteFilePath()),
 		   myFileInfo.isReadable(), myFileInfo.isWritable());
 
-	theLevelPtr->save(myFileInfo.absoluteFilePath());
+	on_actionSave_activated();
 }
 
 
@@ -460,7 +480,7 @@ void MainWindow::slot_newLevelAction_clicked(void)
 
 	// set the level properties and first save
 	slot_levelPropertiesEditorAction_clicked();
-	on_actionSave_activated();
+	on_actionSave_As_activated();
 
 	// and fill up the toolbox again.
 	ui.theToolBoxView->fillFromObjectFactory();

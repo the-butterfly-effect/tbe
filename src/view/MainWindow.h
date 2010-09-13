@@ -49,8 +49,10 @@ private slots:
 	void on_actionPause_activated(void);
 	void on_actionReset_2_activated(void);
 
-	// write the current level layout to disk
+	/// menu action: write the current level layout to disk
 	void on_actionSave_activated(void);
+	/// menu action: write the current level to disk and ask for parameters
+	void on_actionSave_As_activated(void);
 
 	void slot_splashScreen_clicked(void);
 
