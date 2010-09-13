@@ -60,6 +60,9 @@ public:
 	/// set property aKey to aValue
 	void setProperty(const QString& aKey, const QString& aValue);
 
+	/// remove all properties
+	void clear(void);
+
 	/** @returns the value for a default property aKey
 	  * if the default property doesn't exist, it returns a null string
 	  * this is different from "" - which is an empty string

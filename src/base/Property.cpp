@@ -72,6 +72,14 @@ const char* Property::COLLIDE_STRING = "collide";
 
 const char* Property::ISCHILD_STRING = "__isChild";
 
+
+
+void PropertyList::clear (void)
+{
+	theProperties.clear();
+}
+
+
 bool PropertyList::doesPropertyExists(const QString& aKey) const
 {
 	return theProperties.find(aKey) != theProperties.end();

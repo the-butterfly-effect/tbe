@@ -165,6 +165,10 @@ void PostItEditor::reflowTabs(int aChangedIndex)
 void PostItEditor::serializeTabs(void)
 {
 	assert(theBaseObjectPtr!=NULL);
+
+	// FIXME/TODO: this clear is very blunt - it erases all i18n!!!
+	theBaseObjectPtr->theProps.clear();
+
 	// write new contents to each changed page
 	for(int i=0; i < m_ui->tabWidget->count(); i++)
 	{
@@ -175,7 +179,7 @@ void PostItEditor::serializeTabs(void)
 		{
 			QString myKey = pageNrToXmlArg(i+1);
 
-			// remove all pageX derivates
+			// remove all translations for this page
 			PropertyList::PropertyMap::const_iterator myP = theBaseObjectPtr->theProps.constBegin();
 			while (myP != theBaseObjectPtr->theProps.constEnd())
 			{
