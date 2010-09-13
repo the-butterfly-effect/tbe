@@ -156,7 +156,6 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 
 void Balloon::reset(void)
 {
-	theWorldPtr->registerCallback(this);
 	PolyObject::reset();
 
 	// and go back to the first state - with the right set of shapes
@@ -166,6 +165,7 @@ void Balloon::reset(void)
 	clearShapeList();
 	fillShapeList();
 	createPhysicsObject();
+	theWorldPtr->registerCallback(this);
 }
 
 void Balloon::stung(void)
