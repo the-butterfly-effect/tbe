@@ -103,7 +103,7 @@ bool World::addObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG5("addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
+	DEBUG3("addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
 	if (theObjectPtrList.contains(anObjectPtr))
 		return false;
 	
@@ -254,6 +254,7 @@ bool World::removeObject(BaseObject* anObjectPtr)
 
 bool World::registerCallback(SimStepCallbackInterface* anInterface)
 {
+	DEBUG5("World::registerCallback(%p)\n", anInterface);
 	if (anInterface==NULL)
 		return false;
 	theCallbackList.insert(anInterface);
@@ -372,12 +373,8 @@ qreal World::simStep (void)
 
 
 	// run all the callbacks per sim step
-	CallbackList::iterator i;
-	for (i=theCallbackList.begin(); i != theCallbackList.end(); ++i)
-	{
-		printf("before; going to call %p\n", *i);
-		(*i)->callbackStep(theDeltaTime, theTotalTime);
-	}
+	foreach(SimStepCallbackInterface* i, theCallbackList)
+		i->callbackStep(theDeltaTime, theTotalTime);
 
 	// remove all scheduled BaseObjects from the World
 	ToRemoveList::iterator k;
@@ -399,12 +396,11 @@ qreal World::simStep (void)
 	theTotalTime += theDeltaTime;
 
 	// check if all goals are met
-	GoalPtrList::iterator l;
 	if (theGoalPtrList.count()==0)
 		goto goals_not_met;
-	for (l=theGoalPtrList.begin(); l!=theGoalPtrList.end(); ++l)
+	foreach(Goal* l, theGoalPtrList)
 	{
-		if ((*l)->checkForSuccess()==false)
+		if (l->checkForSuccess()==false)
 			goto goals_not_met;
 	}
 	emit theDrawWorldPtr->on_winning();
@@ -417,6 +413,6 @@ bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 {
 	if (anInterface==NULL)
 		return false;
-	theCallbackList.erase(anInterface);
+	theCallbackList.remove(anInterface);
 	return true;
 }

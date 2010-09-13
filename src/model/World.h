@@ -27,7 +27,7 @@
 #include <QString>
 #include <QList>
 #include <QMap>
-#include <set>
+#include <QSet>
 #include <vector>
 
 // Forward Definitions:
@@ -262,7 +262,7 @@ public:
 	bool unregisterCallback(SimStepCallbackInterface* anInterface);
 
 private:
-	typedef std::set<SimStepCallbackInterface*> CallbackList;
+	typedef QSet<SimStepCallbackInterface*> CallbackList;
 	CallbackList theCallbackList;
 
 
