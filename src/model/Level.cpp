@@ -158,11 +158,6 @@ Level::load(const QString& aFileName)
 	theLevelDate       = myNode.firstChildElement(theLevelDateString).text();
 	theLevelDescription.fillFromDOM(myNode, theLevelDescriptionString);
 
-	if (theLevelName.isEmpty() || theLevelAuthor.isEmpty() || theLevelLicense.isEmpty())
-	{
-		myErrorMessage += "level, author or license info missing";
-		goto not_good;
-	}
 	DEBUG5("level name:    '%s'\n", ASCII(theLevelName.result()));
 	DEBUG5("level author:  '%s'\n", ASCII(theLevelAuthor));
 	DEBUG5("level license: '%s'\n", ASCII(theLevelLicense));
