@@ -246,12 +246,8 @@ bool BaseObject::isSleeping() const
 
 void BaseObject::notifyJoints(JointInterface::JointStatus aStatus)
 {
-	JointList::const_iterator i = theJointList.constBegin();
-	while (i != theJointList.constEnd())
-	{
-		(*i)->physicsObjectStatus(aStatus);
-		++i;
-	}
+	foreach(JointInterface* j, theJointList)
+		j->physicsObjectStatus(aStatus);
 }
 
 void BaseObject::parseProperties(void)
