@@ -21,6 +21,7 @@
 #include "DrawObject.h"
 #include "World.h"
 #include "toolbox.h"
+#include "Anchors.h"
 
 static ToolBox* theCurrentToolBoxPtr = NULL;
 
@@ -74,6 +75,7 @@ void UndoDeleteCommand::redo ()
 {
 	DEBUG3("UndoDeleteCommand::redo() START\n");
 	bool isDone = theBaseObjectPtr->deregister();
+	Anchors::clearEditObjectDialogPtr();
 	assert (isDone);
 	UNUSED_VAR(isDone);
 	if (theCurrentToolBoxPtr)

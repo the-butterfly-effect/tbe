@@ -23,6 +23,7 @@
 #include "DrawObject.h"
 #include "World.h"
 #include "toolbox.h"
+#include "Anchors.h"
 
 #include <QGraphicsSceneMouseEvent>
 
@@ -99,6 +100,7 @@ void UndoInsertCommand::undo ()
 {
 	DEBUG3("UndoInsertCommand::undo() START\n");
 	bool isDone = theBaseObjectPtr->deregister();
+	Anchors::clearEditObjectDialogPtr();
 	assert (isDone);
 	UNUSED_VAR(isDone);
 	if (getCurrentToolboxPtr())

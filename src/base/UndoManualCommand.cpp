@@ -82,6 +82,7 @@ void UndoManualCommand::redo ()
 
 	theBaseObjectPtr->setTempCenter(theNewCenter);
 	theBaseObjectPtr->setOrigCenter(theNewCenter);
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 
 	theBaseObjectPtr->reset();
 	DrawObject* myDOPtr = theBaseObjectPtr->theDrawObjectPtr;
@@ -133,6 +134,7 @@ void UndoManualCommand::undo ()
 
 	theBaseObjectPtr->setTempCenter(theOldCenter);
 	theBaseObjectPtr->setOrigCenter(theOldCenter);
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->theDrawObjectPtr->focusRemove();

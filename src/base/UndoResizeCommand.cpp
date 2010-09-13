@@ -19,6 +19,7 @@
 #include "UndoResizeCommand.h"
 #include "BaseObject.h"
 #include "DrawObject.h"
+#include "EditObjectDialog.h"
 
 #include <cassert>
 #include <cmath>
@@ -86,6 +87,7 @@ void UndoResizeCommand::redo ()
 
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
+	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
 
@@ -109,6 +111,7 @@ void UndoResizeCommand::undo ()
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
+	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
 

@@ -80,6 +80,7 @@ void UndoRotateCommand::redo ()
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->theDrawObjectPtr->advance(0);
+	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
 
@@ -112,4 +113,5 @@ void UndoRotateCommand::undo ()
 	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
 	theBaseObjectPtr->theDrawObjectPtr->advance(0);
+	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
