@@ -91,8 +91,11 @@ public:
 	  */
 	void invalidateCaching(void);
 
+	/// deletes the outline
+	void deleteOutline(void);
+
 	/// (re-)draws the outline and the background
-	void drawOutlineAndBackground();
+	void drawOutlineAndBackground(void);
 
 protected:
 	/// OVERRIDDEN from QGraphicsScene to handle drag&drop

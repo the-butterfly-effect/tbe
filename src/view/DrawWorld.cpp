@@ -48,8 +48,8 @@ public:
     {    return QRectF(0,0, 0.001, 0.001); }
 	
 	/// overriden from QGraphicsItem
-    virtual void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget *)
-    { /* nothing! */ }
+	virtual void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget *)
+	{ /* nothing! */ }
 };
 
 
@@ -111,6 +111,16 @@ qreal DrawWorld::getWidth()
 // Other methods
 //  
 
+
+void DrawWorld::deleteOutline(void)
+{
+	while (theBasicDrawWorldItems.count()>0)
+	{
+		QGraphicsItem* myItem = theBasicDrawWorldItems.last();
+		theBasicDrawWorldItems.pop_back();
+		delete myItem;
+	}
+}
 
 void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 {
@@ -178,12 +188,9 @@ void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 
 void DrawWorld::drawOutlineAndBackground(void)
 {
-	while (theBasicDrawWorldItems.count()>0)
-	{
-		QGraphicsItem* myItem = theBasicDrawWorldItems.last();
-		theBasicDrawWorldItems.pop_back();
-		delete myItem;
-	}
+	DEBUG1("void DrawWorld::drawOutlineAndBackground(void)\n");
+
+	deleteOutline();
 
 	if (theIsLevelEditor)
 	{
@@ -194,12 +201,14 @@ void DrawWorld::drawOutlineAndBackground(void)
 		theBasicDrawWorldItems.push_back(addLine(0,-getHeight(),          0,0));
 	}
 
-	// two dots on top-right and bottom-left to make sure that the Scene
-	// is rendered in total
-	QGraphicsItem* myDot = new Dot(getWidth()+0.01, -getHeight()-0.01);
-	theBasicDrawWorldItems.push_back(myDot);
-	addItem(myDot);
-	myDot =                new Dot(          -0.01,             +0.01);
+	// a dot on top-right to make sure that the Scene
+	// is rendered in total, with the bottom-left corner at the bottomleft
+	// and without any room for the view to start scrolling during drag & drop
+	int myViewWidthPixels=views()[0]->width();
+	int myViewHeightPixels=views()[0]->height();
+	qreal myViewWidthReal = myViewWidthPixels/ ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	qreal myViewHeightReal = myViewHeightPixels/ ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	QGraphicsItem* myDot =                new Dot(myViewWidthReal, -myViewHeightReal);
 	theBasicDrawWorldItems.push_back(myDot);
 	addItem(myDot);
 

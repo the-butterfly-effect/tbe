@@ -71,7 +71,6 @@ protected:
 			return;
 		QGraphicsView::resizeEvent(anEvent);
 		on_timerTick();
-		updatePixelsPerUnit();
 	}
 
 	void updatePixelsPerUnit();

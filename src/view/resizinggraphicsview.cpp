@@ -111,14 +111,17 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 void ResizingGraphicsView::on_timerTick(void)
 {
 	if (scene())
+	{
+		dynamic_cast<DrawWorld*>(scene())->deleteOutline();
 		QGraphicsView::fitInView(scene()->itemsBoundingRect(), Qt::KeepAspectRatio);
+		dynamic_cast<DrawWorld*>(scene())->drawOutlineAndBackground();
+	}
 	updatePixelsPerUnit();
 }
 
 void ResizingGraphicsView::updatePixelsPerUnit()
 {
-	QPolygon myPoly = mapFromScene(QRectF(0,0,1,0));
-	thePixelsPerSceneUnitHorizontal = myPoly.boundingRect().width();
+	thePixelsPerSceneUnitHorizontal = ceil(viewportTransform().m11());
 	DEBUG5("ResizingGraphicsView::updatePixelsPerUnit() - now is %f\n", thePixelsPerSceneUnitHorizontal);
 
 	if (theTBECaching==true)
