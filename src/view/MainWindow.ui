@@ -73,9 +73,6 @@
         <height>154</height>
        </size>
       </property>
-      <property name="toolTip">
-       <string>Click on the stopwatch to start/stop the simulation.</string>
-      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>

@@ -52,6 +52,9 @@ public:
 	/// the base of the state machine
 	void goToState(TheStates aNewState);
 
+	/// set tooltip to display or remove tooltip to display
+	/// @param isToSet true if is to display tooltip, false if not to show it
+	void displayTooltip(bool isToSet);
 
 public slots:
 	void clicked_on_watch();
@@ -96,7 +99,6 @@ private:
 	void startStopwatch();
 	void stopStopwatch();
 	void resetStopwatch();
-
 
 	QTimer theTimer;
 	QGraphicsSvgItem* theStopWatchSvgPtr;

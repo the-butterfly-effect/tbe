@@ -99,6 +99,8 @@ qreal DrawWorld::getHeight()
 
 QGraphicsScene* DrawWorld::getStartStopWatchPtr()
 {
+	if (theSimStateMachine)
+		theSimStateMachine->displayTooltip(true);
 	return theSimStateMachine;
 }
 

@@ -21,7 +21,6 @@
 
 #include <QGraphicsSvgItem>
 
-
 StartStopWatch::StartStopWatch()
 		: theResetSvgPtr(NULL), theFastForwardSvgPtr(NULL)
 {
@@ -67,8 +66,6 @@ StartStopWatch::~StartStopWatch()
 }
 
 
-
-
 void StartStopWatch::clicked_on_watch()
 {
 	DEBUG5("StartStopWatch::clicked_on_watch(void) whilst in state %d\n", theState);
@@ -104,6 +101,17 @@ void StartStopWatch::clicked_on_fastforward()
 {
 	// only possible to call when the fastforward button is visible
 	goToState(FAST);
+}
+
+void StartStopWatch::displayTooltip(bool isToSet)
+{
+	if (views().count()>0)
+	{
+		if (isToSet)
+			views()[0]->setToolTip(tr("Click on the stopwatch to start/stop the simulation."));
+		else
+			views()[0]->setToolTip(tr(""));
+	}
 }
 
 void StartStopWatch::goToState(TheStates aNewState)
@@ -358,10 +366,12 @@ void StartStopWatch::startStopwatch()
 	theTimer.start(1000/10);
 
 	emit startSim();
+	displayTooltip(false);
 }
 
 void StartStopWatch::stopStopwatch()
 {
 	theTimer.stop();
 	emit stopSim();
+	displayTooltip(true);
 }
