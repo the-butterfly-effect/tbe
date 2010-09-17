@@ -102,8 +102,6 @@ RectObject::RectObject ( ) : BaseObject(), theNameString(DEFAULT_RECTOBJECT_NAME
 	// the Properties, do not assume too much here...
 
 	// also: keep in mind that child objects may set some things automatically
-	rotatableInfo = false;
-	resizableInfo = NORESIZING;
 	initAttributes();
 }
 
@@ -287,6 +285,7 @@ void RectObject::initAttributes ( )
 		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" +
 		Property::DESCRIPTION_STRING + QString(":/") );
 	rotatableInfo = false;
+	resizableInfo = NORESIZING;
 }
 
 
@@ -301,7 +300,7 @@ void  RectObject::parseProperties(void)
 	QString myString;
 	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
 	{
-		// we do not check for noresize, that's the default
+		// we do not check for none, that's the default
 		resizableInfo = NORESIZING;
 		if (myString == Property::HORIZONTAL_STRING)
 			resizableInfo = HORIZONTALRESIZE;
