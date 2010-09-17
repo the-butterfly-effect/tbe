@@ -87,7 +87,8 @@ void UndoResizeCommand::redo ()
 
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
-	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
+	if (Anchors::getEditObjectDialogPtr())
+		Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
 
@@ -111,7 +112,8 @@ void UndoResizeCommand::undo ()
 	theBaseObjectPtr->reset();
 	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
-	Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
+	if (Anchors::getEditObjectDialogPtr())
+		Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
 
