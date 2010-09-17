@@ -183,7 +183,7 @@ void Balloon::switchToSmallShape(void)
 	clearShapeList();
 
 	b2PolygonDef* myRestDef = new b2PolygonDef();
-	myRestDef->SetAsBox(0.04, 0.04);
+	myRestDef->SetAsBox(0.05, 0.05);
 	myRestDef->density= 0.001 / (0.1 * 0.1);
 	myRestDef->userData = this;
 	theShapeList.push_back(myRestDef);
