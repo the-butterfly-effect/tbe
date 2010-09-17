@@ -68,6 +68,9 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 	drawOutlineAndBackground();
 
+	// make sure to never shrink smaller than the specified size
+	addItem(new Dot(getWidth(), -getHeight()));
+
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 	setDrawDebug();
