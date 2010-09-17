@@ -112,9 +112,12 @@ void ResizingGraphicsView::on_timerTick(void)
 {
 	if (scene())
 	{
-		dynamic_cast<DrawWorld*>(scene())->deleteOutline();
+		DrawWorld* myWorld = dynamic_cast<DrawWorld*>(scene());
+		if (myWorld != NULL)
+			myWorld->deleteOutline();
 		QGraphicsView::fitInView(scene()->itemsBoundingRect(), Qt::KeepAspectRatio);
-		dynamic_cast<DrawWorld*>(scene())->drawOutlineAndBackground();
+		if (myWorld != NULL)
+			myWorld->drawOutlineAndBackground();
 	}
 	updatePixelsPerUnit();
 }
