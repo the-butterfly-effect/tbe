@@ -45,6 +45,9 @@ public:
 	QString  toString(void) const;
 	qreal	 toAngle(void) const;
 
+	/// @returns this vector, rotated along anAngle
+	Vector rotate(qreal anAngle) const;
+
 	/** Converts a string in format "(0.0,0.0)" into this Vector
 	  * If the conversion is not successful, the Vector is not modified.
 	  * @param aString the string to convert

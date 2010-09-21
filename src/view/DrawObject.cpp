@@ -341,6 +341,9 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// do not allow movement of predefined objects in game mode
 	if (theBaseObjectPtr->isMovable() == false)
 		return;
+
+	// unfortunately, the hot spot position in the event
+	// is in item coordinates, so it rotates around with the object
 	mouseMoveEvent(event->scenePos(), event->pos());
 }
 

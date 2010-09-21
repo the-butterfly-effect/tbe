@@ -126,7 +126,12 @@ done:
 qreal Vector::length(void)
 {	return sqrt(dx*dx+dy*dy); }
 
-
+Vector Vector::rotate(qreal anAngle) const
+{
+	float myCos = cos(anAngle);
+	float mySin = sin(anAngle);
+	return  Vector(myCos*dx - mySin*dy, mySin*dx + myCos*dy);
+}
 
 qreal Vector::toAngle(void) const
 {

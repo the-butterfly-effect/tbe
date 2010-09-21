@@ -29,8 +29,7 @@ UndoMoveCommand::UndoMoveCommand (
 		BaseObject* aBaseObjectPtr,
 		const Vector& aHotSpot)
 		  : QUndoCommand(), 
-			theBaseObjectPtr(aBaseObjectPtr),
-			theHotSpot(aHotSpot)
+			theBaseObjectPtr(aBaseObjectPtr)
 {
 	assert(aBaseObjectPtr);
 
@@ -39,6 +38,10 @@ UndoMoveCommand::UndoMoveCommand (
 
 	theOldPosition = theBaseObjectPtr->getOrigCenter();
 	theLastGoodPosition = theOldPosition;
+
+	// and 'fix' the Hotspot for the angle
+	// as it is reported in item coordinates...
+	theHotSpot = aHotSpot.rotate(theLastGoodPosition.angle);
 }
 
 UndoMoveCommand::~UndoMoveCommand ( ) 
