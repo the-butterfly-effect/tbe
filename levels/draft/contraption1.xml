@@ -46,7 +46,7 @@
       <property key="page5_nl">&lt;br&gt;&lt;br&gt;Post-it Boy</property>
   </object>
 
-            <object X="4.3" Y="3.3" type="Bowling Ball" />
+            <object X="4.3" Y="3.3" type="BowlingBall" />
 
             <object X="2.6" Y="2.8" width="4.0" height="0.6" type="LeftRamp">
                 <property key="ImageName">left-ramp</property>
@@ -72,7 +72,7 @@
 	      <property key="collide">false</property>
 	    </object>
 
-            <object X="1.56" Y="2.07" type="Bowling Ball" />
+            <object X="1.56" Y="2.07" type="BowlingBall" />
             <object X="1.3" Y="1.85" width="1.4" height="0.5" type="LeftRamp">
                 <property key="ImageName">left-ramp</property>
             </object>
@@ -97,7 +97,7 @@
 	      <property key="collide">false</property>
 	    </object>
 
-            <object X="1.56" Y="1.12" type="Bowling Ball" />
+            <object X="1.56" Y="1.12" type="BowlingBall" />
             <object X="1.3" Y="0.95" width="1.4" height="0.3" type="LeftRamp">
                 <property key="ImageName">left-ramp</property>
             </object>
@@ -147,7 +147,7 @@
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.1</property>
 	    </object>
-           <object X="3.7" Y="0.82" type="Bowling Pin" ID="BowlingPin2"/>
+           <object X="3.7" Y="0.82" type="BowlingPin" ID="BowlingPin2"/>
             <object X="4.15" Y="1.20" width="0.1" height="1.2" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -160,7 +160,7 @@
             <object X="2.55" Y="1.45" width="0.1" height="0.7" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="4.20" Y="2.00" type="Volley Ball" />
+            <object X="4.20" Y="2.00" type="VolleyBall" />
 
 
         </predefined>

@@ -10,9 +10,9 @@
         <date>Feb 28, 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="10" name="BowlingBall">
+        <toolboxitem count="10" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball">
+            <object type="BowlingBall">
                 <property key="ZValue" >3.0</property>
             </object>
         </toolboxitem>
@@ -95,7 +95,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
 
-            <object X="1.95" Y="3.7" type="Tennis Ball" ID="TennisBall"/>
+            <object X="1.95" Y="3.7" type="TennisBall" ID="TennisBall"/>
 
 	    <object X="3.25" Y="3.2" type="Skyhook" ID="Skyhook"/>
 	    

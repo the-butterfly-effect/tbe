@@ -12,7 +12,7 @@
      <toolbox>
         <toolboxitem count="1" name="Tennis Ball">
             <name lang="nl">Tennisbal</name>
-	    <object type="Tennis Ball" />
+	    <object type="TennisBall" />
         </toolboxitem>
    </toolbox>
     <scene>
@@ -23,12 +23,12 @@
                 <property key="Bounciness">0.05</property>
             </object>
 
-	    <object X="0.5" Y="2.4" type="Bowling Ball" />
+	    <object X="0.5" Y="2.4" type="BowlingBall" />
             <object X="1.9" Y="1.72" width="3.6" height="0.8" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
             
-            <object X="3.95" Y="1.17" type="Coke+Mentos Bottle" angle="-1.57" />
+            <object X="3.95" Y="1.17" type="CokeMentosBottle" angle="-1.57" />
             <object width="4.3" X="2.5" Y="1.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -45,7 +45,7 @@
             <object X="1.95" Y="0.59" width="3.7" height="0.65" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
             </object>
-	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" >
+	    <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin" >
 		    <property key="Mass"> 1.0</property>
 	    </object>
             <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >

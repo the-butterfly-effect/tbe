@@ -12,7 +12,7 @@
      <toolbox>
         <toolboxitem count="2" name="Soccer Ball">
             <name lang="nl">Voetbal</name>
-	    <object type="Soccer Ball" />
+	    <object type="SoccerBall" />
 	</toolboxitem>
    </toolbox>
     <scene>
@@ -53,10 +53,10 @@
 	      <property key="collide">false</property>
 	    </object>
 
-            <object X="0.22" Y="1.4" type="Coke+Mentos Bottle" ID="LeftBottle">
+            <object X="0.22" Y="1.4" type="CokeMentosBottle" ID="LeftBottle">
                 <property key="Thrust">6</property>
             </object>
-            <object X="2.58" Y="1.4" type="Coke+Mentos Bottle" ID="RightBottle" angle="3.14">
+            <object X="2.58" Y="1.4" type="CokeMentosBottle" ID="RightBottle" angle="3.14">
                 <property key="Thrust">6</property>
             </object>
 	    <object type="PivotPoint" X="0.3" Y="1.45">
@@ -163,7 +163,7 @@
                 <property key="Friction" >0.4</property>
             </object>
             
-            <object X="4.7" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+            <object X="4.7" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
             
 	    <object width="0.1" X="2.75" Y="2.05" height="2.00" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>

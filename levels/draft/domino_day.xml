@@ -44,7 +44,7 @@
             <object width="1" X="0.5" Y="2.75" height="0.4" type="RightRamp" angle="0">
                 <property key="ImageName" >right-ramp</property>
 	    </object>
-            <object X="0.78" Y="2.88" type="Bowling Ball" />
+            <object X="0.78" Y="2.88" type="BowlingBall" />
 	    <!-- ############################ UPPER DOMINO ROW ################### -->
             <object width="4" X="3" Y="2.35" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -69,7 +69,7 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-            <object X="5.1" Y="1.97" type="Bowling Ball" />
+            <object X="5.1" Y="1.97" type="BowlingBall" />
             <object width="0.6" X="5.35" Y="1.7" height="0.3" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >used_wood_bar</property>
@@ -92,7 +92,7 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-            <object X="1.05" Y="1.8" type="Coke+Mentos Bottle" />
+            <object X="1.05" Y="1.8" type="CokeMentos Bottle" />
 	    <!-- ############################ COKE ROW ################### -->
             <object width="0.1" X="1.1" Y="0.93" height="0.16" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -129,8 +129,8 @@
             <object width="0.35" X="0.76" Y="0.205" height="0.41" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="0.9" Y="0.53" type="Bowling Ball" />
-            <object X="0.5" Y="0.32" type="Bowling Pin" ID="Left-Bottom-Pin"/>
+            <object X="0.9" Y="0.53" type="BowlingBall" />
+            <object X="0.5" Y="0.32" type="BowlingPin" ID="Left-Bottom-Pin"/>
             <object width="0.20" X="0.5" Y="0.06" height="0.12" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>

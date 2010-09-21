@@ -20,11 +20,11 @@
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball"/>
+            <object type="BowlingBall"/>
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Pin">
             <name lang="nl">Kegel</name>
-            <object type="Bowling Pin"/>
+            <object type="BowlingPin"/>
         </toolboxitem>
    </toolbox>
     <scene>
@@ -52,7 +52,7 @@
       <property key="page5_nl">&lt;br&gt;&lt;br&gt;Post-it Boy</property>
   </object>
 
-            <object X="3.45" Y="3.5" type="Bowling Ball" />
+            <object X="3.45" Y="3.5" type="BowlingBall" />
 	    <object width="2.8" X="2.2" Y="3.15" height="0.10" type="Floor" angle="0.14">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.8</property>
@@ -132,7 +132,7 @@
 	      <property key="collide">false</property>
 	    </object>
 
-            <object X="0.25" Y="1.11" type="Bowling Ball" />
+            <object X="0.25" Y="1.11" type="BowlingBall" />
             <object X="0.2" Y="1.01" width="0.2" height="0.15" type="RightRamp">
                 <property key="ImageName">right-ramp</property>
             </object>
@@ -177,7 +177,7 @@
 	      <property key="object2">Bar3x</property>
 	      <property key="collide">false</property>
 	    </object>
-            <object X="2.25" Y="1.04" type="Bowling Ball" />
+            <object X="2.25" Y="1.04" type="BowlingBall" />
             <object X="2.13" Y="0.96" width="0.3" height="0.15" type="RightRamp">
                 <property key="ImageName">right-ramp</property>
             </object>
@@ -224,7 +224,7 @@
 
 	    <!-- ==================== right side, including pin and basket ============== -->
 
-            <object X="4.2" Y="3.43" type="Bowling Pin" ID="BowlingPin2"/>
+            <object X="4.2" Y="3.43" type="BowlingPin" ID="BowlingPin2"/>
 
             <object X="3.87" Y="2.8" width="0.56" height="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
@@ -241,7 +241,7 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.05</property>
             </object>
-            <object X="4.38" Y="0.35" type="Coke+Mentos Bottle" angle="3.14" >
+            <object X="4.38" Y="0.35" type="CokeMentosBottle" angle="3.14" >
 	        <property key="Thrust" >5</property>
             </object>
             <object X="4.42" Y="3.5" width="0.4" height="0.2" type="LeftRamp" angle="1.57">

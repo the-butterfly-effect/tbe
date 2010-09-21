@@ -12,7 +12,7 @@
      <toolbox>
          <toolboxitem count="1" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball" />
+            <object type="BowlingBall" />
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
             <name lang="nl">Helling \</name>

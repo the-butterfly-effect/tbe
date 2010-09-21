@@ -9,7 +9,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
-	    <object type="Bowling Ball"/>
+	    <object type="BowlingBall"/>
         </toolboxitem>
    </toolbox>
     <scene>

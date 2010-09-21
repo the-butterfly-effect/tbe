@@ -12,11 +12,11 @@
      <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball" />
+            <object type="BowlingBall" />
         </toolboxitem>
         <toolboxitem count="1" name="Volley Ball">
             <name lang="nl">Volleybal</name>
-            <object type="Volley Ball" />
+            <object type="VolleyBall" />
         </toolboxitem>
    </toolbox>
     <scene>
@@ -152,7 +152,7 @@
             </object>
 
 	    <!-- ===================== Pin + Goal ================= -->
-            <object X="3.4" Y="0.27" type="Bowling Pin" ID="BowlingPin2"/>
+            <object X="3.4" Y="0.27" type="BowlingPin" ID="BowlingPin2"/>
             <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
                 <property key="ImageName" >goal-scenery</property>
                 <property key="ZValue">4</property>

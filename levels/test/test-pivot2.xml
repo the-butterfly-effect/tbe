@@ -14,7 +14,7 @@
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
-	    <object type="Bowling Ball"/>
+	    <object type="BowlingBall"/>
         </toolboxitem>
    </toolbox>
     <scene>
@@ -24,43 +24,43 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             
-	    <object type="Bowling Ball" X="0.1" Y="0.92" angle="-0.35">
+	    <object type="BowlingBall" X="0.1" Y="0.92" angle="-0.35">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
 
-	    <object type="Bowling Ball" X="1.0" Y="0.8">
+	    <object type="BowlingBall" X="1.0" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="1.22" Y="0.8">
+	    <object type="BowlingBall" X="1.22" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="1.44" Y="0.8">
+	    <object type="BowlingBall" X="1.44" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="1.66" Y="0.8">
+	    <object type="BowlingBall" X="1.66" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="1.88" Y="0.8">
+	    <object type="BowlingBall" X="1.88" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="2.10" Y="0.8">
+	    <object type="BowlingBall" X="2.10" Y="0.8">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>
 	    </object>
-	    <object type="Bowling Ball" X="2.32" Y="0.8" ID="thelast">
+	    <object type="BowlingBall" X="2.32" Y="0.8" ID="thelast">
                 <property key="ImageName" >metalball</property>
 	        <property key="PivotPoint">(0.0,2.0)</property>
 		<property key="Friction">0</property>

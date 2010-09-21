@@ -32,14 +32,14 @@
                 <property key="Friction">0.0</property>
                 <property key="PivotPoint">(0.2,0)</property>
 	    </object>
-            <object X="0.5" Y="2.35" type="Volley Ball" ID="Ball"/>
+            <object X="0.5" Y="2.35" type="VolleyBall" ID="Ball"/>
             <object width="1.1" X="0.6" Y="2.15" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
 	    </object>
 
 
-            <object X="0.7" Y="1.67" type="Bowling Pin" ID="LeftPin" />
+            <object X="0.7" Y="1.67" type="BowlingPin" ID="LeftPin" />
             <object X="0.8" Y="0.8" height="1.4" width="0.4" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
@@ -76,14 +76,14 @@
                 <property key="Bounciness" >0.1</property>
 	    </object>
 
-            <object X="4.25" Y="1.82" type="Coke+Mentos Bottle" angle="-1.57" />
+            <object X="4.25" Y="1.82" type="CokeMentosBottle" angle="-1.57" />
             <object X="4.25" Y="1.69" height="0.12" width="0.5" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="4.55" Y="1.6" height="0.1" width="0.2" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="4.6" Y="1.82" type="Bowling Pin" ID="RightPin" />
+            <object X="4.6" Y="1.82" type="BowlingPin" ID="RightPin" />
             <object X="4.8" Y="1.9" height="0.1" width="0.2" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>

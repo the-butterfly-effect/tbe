@@ -94,19 +94,16 @@
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="5.168435573577881" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
+            <object X="5.168435573577881" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >CokeMentosBottle</property>
                 <property key="Thrust" >20</property>
             </object>
-            <object X="5.337530612945557" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
+            <object X="5.337530612945557" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >CokeMentosBottle</property>
                 <property key="Thrust" >20</property>
             </object>
-            <object X="4.999340057373047" Y="0.34" type="Coke+Mentos Bottle" angle="3.1415" >
+            <object X="4.999340057373047" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >CokeMentosBottle</property>
                 <property key="Thrust" >20</property>
             </object>
             <object width="0.5" X="5.15" Y="0.83" height="0.5" type="RectObject" >
@@ -126,7 +123,7 @@
             <object width="2.3" X="2.1" Y="2.25" type="Floor">
                 <property key="ImageName" >DarkerGreen</property>
             </object>
-            <object X="3.1" Y="2.5" type="Bowling Ball" />
+            <object X="3.1" Y="2.5" type="BowlingBall" />
             <object width="0.1" X="3.1" Y="2.35" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >used_wood_bar</property>
@@ -137,11 +134,10 @@
             <object X="1.9" Y="2.55" type="DominoBlue" />
             <object X="1.6" Y="2.55" type="DominoBlue" />
             <object X="1.3" Y="2.55" type="DominoBlue" />
-            <object X="0.44" Y="0.18" type="Coke+Mentos Bottle" angle="1.55" >
+            <object X="0.44" Y="0.18" type="CokeMentosBottle" angle="1.55" >
                 <property key="Bounciness" >0.0</property>
-                <property key="ImageName" >CokeMentosBottle</property>
             </object>
-            <object X="1.18" Y="4.7" type="Bowling Ball" />
+            <object X="1.18" Y="4.7" type="BowlingBall" />
             <object X="4.3" Y="4.30" type="DominoRed" />
             <object X="4.0" Y="4.30" type="DominoRed" />
             <object X="3.7" Y="4.30" type="DominoRed" />

@@ -12,7 +12,7 @@
     <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball" />
+            <object type="BowlingBall" />
         </toolboxitem>
     </toolbox>
 
@@ -31,15 +31,15 @@
                 <property key="Friction" >0.6</property>
                 <property key="ImageName" >White-to-green</property>
             </object>
-            <object X="0.4" Y="0.6" type="Coke+Mentos Bottle" angle="0" >
+            <object X="0.4" Y="0.6" type="CokeMentosBottle" angle="0" >
                 <property key="Friction" >2.0</property>
             </object>
 	    <object width="0.15" X="1.70" Y="0.175" height="0.15" type="Scenery" angle="0" >
                 <property key="ImageName" >triangle</property>
             </object>
-			<object X="4.2" Y="0.27" type="Bowling Pin" ID="Pin1" />
-			<object X="4.0" Y="0.27" type="Bowling Pin" ID="Pin2" />
-			<object X="3.8" Y="0.27" type="Bowling Pin" ID="Pin3" />
+			<object X="4.2" Y="0.27" type="BowlingPin" ID="Pin1" />
+			<object X="4.0" Y="0.27" type="BowlingPin" ID="Pin2" />
+			<object X="3.8" Y="0.27" type="BowlingPin" ID="Pin3" />
             <object width="0.1" X="2.2" Y="0.55" height="0.1" type="RectObject" >
                 <property key="Friction" >2.0</property>
                 <property key="Bounciness" >0.0</property>

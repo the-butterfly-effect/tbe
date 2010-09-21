@@ -11,14 +11,14 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Volley Ball">
-			<name lang="nl">Volleybal</name>
-            <object type="Volley Ball"/>
+		<name lang="nl">Volleybal</name>
+            <object type="VolleyBall"/>
         </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="5" height="3" />
         <predefined>
-            <object X="0.2" Y="2.85" type="Bowling Ball" />
+            <object X="0.2" Y="2.85" type="BowlingBall" />
             <object width="0.9" X="1.1" Y="2.4" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
@@ -66,7 +66,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
 
-            <object X="4.1" Y="1.07" type="Bowling Pin" ID="the Pin" />
+            <object X="4.1" Y="1.07" type="BowlingPin" ID="the Pin" />
         </predefined>
     </scene>
     <goals>

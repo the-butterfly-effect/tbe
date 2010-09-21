@@ -12,9 +12,8 @@
     <toolbox>
         <toolboxitem count="2" name="Coke+Mentos Bottle">
             <name lang="nl">Coke-Mentos fles</name>
-            <object type="Coke+Mentos Bottle" angle="0" >
+            <object type="CokeMentosBottle" angle="0" >
                 <property key="Bounciness" >0</property>
-                <property key="ImageName" >CokeMentosBottle</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Styrofoam" icon="styrofoam">
@@ -48,13 +47,13 @@
                 <property key="Bounciness" >0</property>
                 <property key="ImageName" >oldbrick</property>
             </object>
-            <object X="1.86" Y="1.4" type="Volley Ball" />
-	    <object X="2.34" Y="1.47" type="Bowling Pin" ID="Pin"/>
-            <object X="2.45" Y="0.30" type="Bowling Pin" />
-            <object X="2.55" Y="0.50" type="Bowling Pin" />
-            <object X="2.65" Y="0.30" type="Bowling Pin" />
-            <object X="2.75" Y="0.50" type="Bowling Pin" />
-            <object X="2.85" Y="0.30" type="Bowling Pin" />
+            <object X="1.86" Y="1.4" type="VolleyBall" />
+	    <object X="2.34" Y="1.47" type="BowlingPin" ID="Pin"/>
+            <object X="2.45" Y="0.30" type="BowlingPin" />
+            <object X="2.55" Y="0.50" type="BowlingPin" />
+            <object X="2.65" Y="0.30" type="BowlingPin" />
+            <object X="2.75" Y="0.50" type="BowlingPin" />
+            <object X="2.85" Y="0.30" type="BowlingPin" />
             <object width="0.1" X="2.95" Y="0.5" height="0.8" type="RectObject" >
                 <property key="ImageName" >oldbrick</property>
                 <property key="Bounciness" >0</property>

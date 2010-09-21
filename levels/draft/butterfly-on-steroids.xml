@@ -12,7 +12,7 @@
      <toolbox>
         <toolboxitem count="3" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="Bowling Ball" />
+            <object type="BowlingBall" />
         </toolboxitem>
    </toolbox>
     <scene>
@@ -101,7 +101,7 @@
                 <property key="Friction" >0.8</property>
             </object>
 
-            <object X="1.77" Y="0.72" type="Coke+Mentos Bottle" angle="1.57"/>
+            <object X="1.77" Y="0.72" type="CokeMentosBottle" angle="1.57"/>
 
 	    <object width="1.2" X="2.3" Y="0.6" height="0.10" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
@@ -164,7 +164,7 @@
 	    </object>
 
 
-            <object X="0.7" Y="0.34" type="Coke+Mentos Bottle" angle="3.14">
+            <object X="0.7" Y="0.34" type="CokeMentosBottle" angle="3.14">
                 <property key="Thrust" >15.0</property>
                 <property key="Mass" >   0.7</property>
             </object>

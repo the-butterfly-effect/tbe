@@ -45,15 +45,14 @@
             <object width="0.2" X="0.4" Y="0.25" height="0.3" type="RightRamp" angle="0">
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="0.75" Y="1.37" type="Coke+Mentos Bottle" angle="3.14" >
-                <property key="ImageName" >CokeMentosBottle</property>
+            <object X="0.75" Y="1.37" type="CokeMentosBottle" angle="3.14" >
                 <property key="Thrust" >5</property>
                 <property key="Mass">1</property>
             </object>
             <object width="0.1" X="4.4" Y="2.7" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
             </object>
-	    <object X="4.4" Y="2.87" type="Bowling Ball" ID="Coconut">
+	    <object X="4.4" Y="2.87" type="BowlingBall" ID="Coconut">
                 <property key="ImageName" >coconut</property>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >

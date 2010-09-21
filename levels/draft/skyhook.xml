@@ -12,7 +12,7 @@
      <toolbox>
         <toolboxitem count="1" name="Coke+Mentos Bottle">
             <name lang="nl">Coke-Mentos fles</name>
-            <object type="Coke+Mentos Bottle"/>
+            <object type="CokeMentosBottle"/>
         </toolboxitem>
     </toolbox>
     <scene>
@@ -102,8 +102,8 @@
 	    <object width="1.46" height="0.1" X="0.97" Y="1.4" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="0.25" Y="1.55" type="Volley Ball" ID="leftball"/>
-            <object X="1.64" Y="1.54" type="Coke+Mentos Bottle" angle="-1.57">
+            <object X="0.25" Y="1.55" type="VolleyBall" ID="leftball"/>
+            <object X="1.64" Y="1.54" type="CokeMentosBottle" angle="-1.57">
 		<property key="TranslationGuide">0</property>
 	    </object>
 	    <object width="1.7" height="0.1" X="0.85" Y="1.74" type="RectObject">
@@ -113,8 +113,8 @@
 	    <object width="2.38" height="0.1" X="4.97" Y="1.4" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="5.13" Y="1.55" type="Volley Ball" ID="rightball"/>
-            <object X="3.82" Y="1.54" type="Coke+Mentos Bottle" angle="1.57">
+            <object X="5.13" Y="1.55" type="VolleyBall" ID="rightball"/>
+            <object X="3.82" Y="1.54" type="CokeMentosBottle" angle="1.57">
 		<property key="TranslationGuide">0</property>
 	    </object>
 	    <object width="2.6" height="0.1" X="5.1" Y="1.74" type="RectObject">
@@ -124,8 +124,8 @@
 
 
 
-            <object X="2.24" Y="0.27" type="Bowling Pin" ID="Left-Pin"/>
-            <object X="3.24" Y="0.27" type="Bowling Pin" ID="Right-Pin"/>
+            <object X="2.24" Y="0.27" type="BowlingPin" ID="Left-Pin"/>
+            <object X="3.24" Y="0.27" type="BowlingPin" ID="Right-Pin"/>
 	    <object X="2.65" width="0.2" height="0.6" Y="0.4" type="LeftRamp">
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Bounciness">0.3</property>

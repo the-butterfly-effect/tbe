@@ -12,7 +12,7 @@
      <toolbox>
         <toolboxitem count="1" name="Marble" >
             <name lang="nl">Knikker</name>
-            <object type="Bowling Ball">
+            <object type="BowlingBall">
                 <property key="ImageName">SABROG_Glass_Blue_Ball</property>
             </object>
         </toolboxitem>

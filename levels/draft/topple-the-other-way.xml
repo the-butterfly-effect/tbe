@@ -72,8 +72,8 @@
 	      <property key="collide">false</property>
 	    </object>
 
-            <object X="1.0" Y="2.5" type="Bowling Ball" />
-            <object X="3.5" Y="2.5" type="Bowling Ball" />
+            <object X="1.0" Y="2.5" type="BowlingBall" />
+            <object X="3.5" Y="2.5" type="BowlingBall" />
 <!--            <object X="2.65" Y="2.7" type="Weight" ID="Weight" />-->
 
 
@@ -96,7 +96,7 @@
                 <property key="Friction" >0.5</property>
             </object>
 
-            <object X="2.2" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+            <object X="2.2" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
 
         </predefined>
     </scene>

@@ -31,7 +31,7 @@
                 <property key="Bounciness">0.05</property>
             </object>
 
-	    <object X="0.4" Y="2.7" type="Soccer Ball" />
+	    <object X="0.4" Y="2.7" type="SoccerBall" />
 
            <object width="2.0" X="3.4" Y="2.65" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
@@ -91,7 +91,7 @@
 
 
 
-	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+	    <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin" />
             <object width="0.4" X="4.17" Y="0.45" height="0.7" type="Scenery" >
                 <property key="ImageName">goal-scenery</property>
                 <property key="ZValue">4</property>

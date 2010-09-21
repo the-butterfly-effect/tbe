@@ -24,13 +24,13 @@
             <object width="6.9" X="3.45" Y="-0.05" type="Floor" >
 	      <property key="ImageName" >used_wood_bar</property>
             </object>
-	    <object X="0.3" Y="2.75" type="Bowling Ball" />
-            <object X="0.3" Y="1.1" type="Bowling Ball" />
-            <object X="2.6" Y="4.4" type="Bowling Ball" />
+	    <object X="0.3" Y="2.75" type="BowlingBall" />
+            <object X="0.3" Y="1.1" type="BowlingBall" />
+            <object X="2.6" Y="4.4" type="BowlingBall" />
             <object width="0.2" X="6.4" Y="0.7" height="0.15" type="LeftRamp" angle="0" >
                 <property key="ImageName" >left-ramp</property>
             </object>
-	    <object X="6.4" Y="0.39" type="Bowling Pin" ID="Pin" />
+	    <object X="6.4" Y="0.39" type="BowlingPin" ID="Pin" />
             <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" >
                 <property key="ImageName" >right-ramp</property>
             </object>

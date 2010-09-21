@@ -12,7 +12,7 @@
      <toolbox>
        <toolboxitem count="1" name="Soccer Ball">
             <name lang="nl">Voetbal</name>
-            <object type="Soccer Ball" ID="soc"/>
+            <object type="SoccerBall" ID="soc"/>
        </toolboxitem>
     </toolbox>
     <scene>
@@ -31,7 +31,7 @@
 		<property key="PivotPoint">(0.0,0.38)</property>
 		<property key="Mass">20.0</property>
 	    </object>
-	    <object X="3.9" Y="0.26" type="Bowling Pin" ID="thepin" />
+	    <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin" />
             <object width="0.4" X="4.4" Y="0.45" height="0.7" type="Scenery" >
                 <property key="ImageName" >goal-scenery</property>
                 <property key="ZValue">4</property>

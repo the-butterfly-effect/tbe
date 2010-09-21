@@ -46,7 +46,7 @@
                 <property key="Friction">0.0</property>
                 <property key="PivotPoint">(0.2,0)</property>
 	    </object>
-            <object X="0.5" Y="2.35" type="Bowling Ball" ID="Ball"/>
+            <object X="0.5" Y="2.35" type="BowlingBall" ID="Ball"/>
 
             <object X="2" Y="0.5" type="PostIt">
                 <property key="page1" >Remember this gap?</property>
@@ -83,7 +83,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
 
-            <object X="4.1" Y="1.99" type="Bowling Pin" ID="the Pin" />
+            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin" />
         </predefined>
     </scene>
     <goals>

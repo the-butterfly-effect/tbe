@@ -49,7 +49,7 @@
                 <property key="Bounciness" >0.0</property>
             </object>
 
-            <object X="0.8" Y="2.95" type="Tennis Ball" ID="Ball"/>
+            <object X="0.8" Y="2.95" type="TennisBall" ID="Ball"/>
 
             <object X="2" Y="0.5" type="PostIt">
                 <property key="page1" >Look, another gap.</property>
@@ -84,7 +84,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
 
-            <object X="4.1" Y="1.99" type="Bowling Pin" ID="the Pin" />
+            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin" />
         </predefined>
     </scene>
     <goals>

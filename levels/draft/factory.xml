@@ -284,7 +284,7 @@
 	    
 
 
-	    <object X="2.65" Y="0.88" type="Soccer Ball"/>
+	    <object X="2.65" Y="0.88" type="SoccerBall"/>
 	    <object X="2.6" Y="0.7" width="1.0" height="0.1" type="RectObject" ID="Keeper1">
                 <property key="ImageName">birch_bar</property>
                 <property key="Bounciness">0</property>
@@ -345,7 +345,7 @@
   <property key="ZValue">10</property>
 </object>
 
-<object X="0.6" Y="1.6" type="Soccer Ball"/>
+<object X="0.6" Y="1.6" type="SoccerBall"/>
 
 <object X="0.6" Y="0.65" width="1.1" height="0.1" type="RectObject" ID="Door">
   <property key="ImageName">birch_bar</property>
@@ -367,7 +367,7 @@
 </object>
 
 
-<object X="1.8" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+<object X="1.8" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
 <object width="0.3" X="2.05" Y="0.34" height="0.48" type="Scenery" >
     <property key="ImageName" >goal-scenery</property>
     <property key="ZValue">4</property>
