@@ -1,3 +1,3 @@
 include ../Makefile 
-SVGSRC=left-ramp.svg right-ramp.svg
+SVGSRC=LeftRamp.svg RightRamp.svg
 

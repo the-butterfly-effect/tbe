@@ -1,4 +1,4 @@
-SVGSRC=Bowling_Pin.svg
-SVGDST=Bowling_Pin.svg
+SVGSRC=BowlingPin.svg
+SVGDST=BowlingPin.svg
 
 include ../Makefile 
