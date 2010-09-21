@@ -194,8 +194,15 @@ public:
 		TOTALRESIZE = 3
 	};
 	
-	/// returns the Name of the object.
+	/** returns the Name of the object, for users.
+	 *  If a non-US locale is specified, the returned string
+	 *  will already be translated
+	 */
 	virtual const QString getName ( ) const = 0;
+
+	/// @returns the internal (CamelCased) object name
+	QString getInternalName( ) const
+	{ return theInternalName; }
 
 	const QString& getID (void) const
 	{	return theID; }
@@ -349,10 +356,14 @@ protected:
 	/// pointer to a DrawObject that will draw this object
 	DrawObject* theDrawObjectPtr;
 
-	/** string with this object's ID
+	/** string with this object's ID (a random, untranslated string
+	 *  used to identify individual objects in a level)
 	 *  will be set during init by the serializer (or not)
 	 */
 	QString theID;
+
+	/// the internal name (usually set by the ObjectFactory)
+	QString theInternalName;
 
 	friend class BaseObjectSerializer;
 

@@ -35,8 +35,8 @@ public:
 	/// overridden from parent
 	virtual const QString getName ( ) const
 	{
-		// don't translate this one - not visible to user, ever...
-		return "CokeSplatter";
+		//: don't translate this one - not visible to user, ever...
+		return "Coke Splatter";
 	}
 
 

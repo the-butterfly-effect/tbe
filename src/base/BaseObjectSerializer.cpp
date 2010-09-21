@@ -50,7 +50,7 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 	// save basic values that are part of the object
 	// TODO: only save values that are different from default
 	QDomElement myNode = aParent->ownerDocument().createElement(theObjectString);
-	myNode.setAttribute(theTypeAttributeString, theBaseObjectPtr->getName());
+	myNode.setAttribute(theTypeAttributeString, theBaseObjectPtr->getInternalName());
 	myNode.setAttribute(theXAttributeString, theBaseObjectPtr->getOrigCenter().x);
 	myNode.setAttribute(theYAttributeString, theBaseObjectPtr->getOrigCenter().y);
 	myNode.setAttribute(theAngleAttributeString, theBaseObjectPtr->getOrigCenter().angle);

@@ -76,7 +76,7 @@ private:
 };
 
 static AbstractPolyObjectFactory theBowlingPinFactory(
-	"Bowling Pin",
+	"BowlingPin",
 	QObject::tr("Bowling Pin"),
 	QObject::tr("Bowling pins are meant to be run "
 				"over - and most people prefer to do that using "

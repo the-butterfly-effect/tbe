@@ -393,7 +393,9 @@ ObjectFactory::createObject(
 		return NULL;
 	}
 	BaseObject* myObjectPtr = myFactoryPtr->createObject();
-	DEBUG5("  object created = %p\n", myObjectPtr);
+	DEBUG5("  object created = %p, i18n name = '%s'\n", myObjectPtr, ASCII(myObjectPtr->getName()));
+	assert (aName.contains(" ")==false);
+	myObjectPtr->theInternalName = aName;
 	myObjectPtr->theCenter=aPosition;
 	if (aWidth!=1.0)
 		myObjectPtr->theWidth=aWidth;

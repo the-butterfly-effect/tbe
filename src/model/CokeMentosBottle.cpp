@@ -32,7 +32,7 @@ class CokeMentosObjectFactory : public ObjectFactory
 {
 public:
 	CokeMentosObjectFactory(void)
-	{	announceObjectType("Coke+Mentos Bottle", this); }
+	{	announceObjectType("CokeMentosBottle", this); }
 	virtual BaseObject* createObject(void) const
 	{	return new CokeMentosBottle(); }
 };

@@ -58,13 +58,13 @@ private:
 
 // we are lazy and do not model the holes in the ball, nor do we attempt to model
 // the non-uniform weight distribution in the ball - we assume it to be uniform
-static BallObjectFactory theBBFactory("Bowling Ball",
+static BallObjectFactory theBBFactory("BowlingBall",
 	QObject::tr("Bowling Ball"),
 	QObject::tr("Your average bowling ball - heavy, round and willing to roll"),
 	"BowlingBall", 0.11, 6.0, 0.1 );
 
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theVBFactory("Volley Ball",
+static BallObjectFactory theVBFactory("VolleyBall",
 	QObject::tr("Volley Ball"),
 	QObject::tr("A volley ball - you know: light, soft and fairly bouncy."),
 	"VolleyBall", 0.105, 0.280, 0.65);
@@ -73,7 +73,7 @@ static BallObjectFactory theVBFactory("Volley Ball",
 // the official standards say that a tennis ball dropped from 100 inch should bounce 53-58 inch.
 // thanks to http://en.wikipedia.org/wiki/Tennis_ball
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theTBFactory("Tennis Ball",
+static BallObjectFactory theTBFactory("TennisBall",
 	QObject::tr("Tennis Ball"),
 	QObject::tr("A tennis ball is small, fuzzy and known for turning heads."),
 	"TennisBall", 0.034, 0.058, 0.56);
@@ -81,7 +81,7 @@ static BallObjectFactory theTBFactory("Tennis Ball",
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
 // thanks to http://en.wikipedia.org/wiki/Football_(ball)
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theSoccerFactory("Soccer Ball",
+static BallObjectFactory theSoccerFactory("SoccerBall",
 	QObject::tr("Soccer Ball"),
 	QObject::tr("A football (of the spherical persuasion)."),
 	"SoccerBall", 0.110, 0.430, 0.56);
