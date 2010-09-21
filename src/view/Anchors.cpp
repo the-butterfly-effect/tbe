@@ -148,7 +148,7 @@ void Anchors::updatePosition()
 
 //////////////////////////////////////////////////////////////////////////////
 
-const int Anchor::theIconSize;
+const int Anchor::theIconSize = 16;
 
 Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
 		: theParentPtr(aParent),
@@ -176,10 +176,6 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 			break;
 	}
 
-	if (aDirection!=Anchors::NONE)
-		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsFocusable);
-
-
 	// calculate how to scale my icon to look like it should
 	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
 	DEBUG5("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
@@ -191,10 +187,6 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 	setZValue(10.0);
 
 	theOffset=mySquare.width()/2;
-
-	if (aDirection != Anchors::NONE)
-		setEnabled(true);
-
 }
 
 
@@ -254,7 +246,8 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
 
-	assert(theUndoRPtr!=NULL);
+	if(theUndoRPtr==NULL)
+		return;
 	theUndoRPtr->update(theIndex, event->scenePos());
 	theParentPtr->updatePosition();
 }
@@ -262,6 +255,10 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
 	DEBUG5("Anchor::mousePressEvent\n");
+
+	// only active this if there are real icons to be had
+	if (theDirection==Anchors::NONE)
+		return;
 
 	// reset cursor to hori/verti/rotate
 	// and setup the corresponding undo class
@@ -300,33 +297,33 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 	// delete has no release event, clicking is enough.
 	// so that one is missing here...
 
-	if (theUndoRPtr!=NULL)
-	{
-		// are we currently in a collision?
-		// in that case, go back to last known good
-		if (theUndoRPtr->isGood()==false)
-		{
-			DEBUG4("Reverting to last known non-colliding position\n");
-			theUndoRPtr->revertToLastGood();
-		}
+	if (theUndoRPtr==NULL)
+		return;
 
-		// there was actual resizing???
-		if (theUndoRPtr->isChanged())
+	// are we currently in a collision?
+	// in that case, go back to last known good
+	if (theUndoRPtr->isGood()==false)
+	{
+		DEBUG4("Reverting to last known non-colliding position\n");
+		theUndoRPtr->revertToLastGood();
+	}
+
+	// there was actual resizing???
+	if (theUndoRPtr->isChanged())
+	{
+		DEBUG5("PUSHED UNDO\n");
+		theParentPtr->pushUndo(theUndoRPtr);
+		theUndoRPtr = NULL;
+	}
+	else
+	{
+		DEBUG5("CLEARED UNDO\n");
+		if (theUndoRPtr)
 		{
-			DEBUG5("PUSHED UNDO\n");
-			theParentPtr->pushUndo(theUndoRPtr);
-			theUndoRPtr = NULL;
+			theUndoRPtr->undo();
+			delete theUndoRPtr;
 		}
-		else
-		{
-			DEBUG5("CLEARED UNDO\n");
-			if (theUndoRPtr)
-			{
-				theUndoRPtr->undo();
-				delete theUndoRPtr;
-			}
-			theUndoRPtr = NULL;
-		}
+		theUndoRPtr = NULL;
 	}
 }
 

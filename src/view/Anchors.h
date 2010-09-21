@@ -135,7 +135,7 @@ private:
 	Anchors* theParentPtr;
 	Anchors::AnchorType theDirection;
 	AnchorPosition theIndex;
-	static const int theIconSize = 16;
+	static const int theIconSize;
 	qreal theDelta;
 
 	qreal theOffset;
