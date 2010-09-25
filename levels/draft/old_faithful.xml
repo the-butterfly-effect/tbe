@@ -13,13 +13,13 @@
         <toolboxitem count="1" name="Ramp /">
             <name lang="nl">Helling /</name>
             <object width="1.6" height="0.3" type="LeftRamp">
-                <property key="ImageName">left-ramp</property>
+                <property key="ImageName">LeftRamp</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
             <name lang="nl">Helling \</name>
             <object width="1.4" height="0.5" type="RightRamp">
-                <property key="ImageName">right-ramp</property>
+                <property key="ImageName">RightRamp</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Beam">
@@ -55,7 +55,7 @@
             <object X="0.2" Y="1" type="BowlingBall" />
             
             <!--object X="0.9" Y="0.4" width="1.8" height="0.6" type="RightRamp" >
-                <property key="ImageName" >right-ramp</property>
+                <property key="ImageName" >RightRamp</property>
             </object-->
             
             <object X="1.25" Y="0.75" width="1.6" height="0.1" type="RectObject" angle="-0.25">

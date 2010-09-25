@@ -28,7 +28,7 @@
             </object>
 
             <object width="0.6" X="0.3" Y="2.64" height="0.4" type="RightRamp">
-                <property key="ImageName" >right-ramp</property>
+                <property key="ImageName" >RightRamp</property>
 	    </object>
 
             <object X="2" Y="0.5" type="PostIt">

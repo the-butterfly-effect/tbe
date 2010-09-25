@@ -42,7 +42,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="1" X="0.5" Y="2.75" height="0.4" type="RightRamp" angle="0">
-                <property key="ImageName" >right-ramp</property>
+                <property key="ImageName" >RightRamp</property>
 	    </object>
             <object X="0.78" Y="2.88" type="BowlingBall" />
 	    <!-- ############################ UPPER DOMINO ROW ################### -->
@@ -92,7 +92,7 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-            <object X="1.05" Y="1.8" type="CokeMentos Bottle" />
+            <object X="1.05" Y="1.8" type="CokeMentosBottle" />
 	    <!-- ############################ COKE ROW ################### -->
             <object width="0.1" X="1.1" Y="0.93" height="0.16" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
@@ -111,7 +111,7 @@
                 <property key="page5_nl" >PS: Vind je die dominostenen ook niet wat groot?</property>
 	    </object>
             <object width="0.6" X="5.7" Y="1.28" height="0.55" type="RightRamp" angle="3.14" >
-                    <property key="ImageName" >right-ramp</property>
+                    <property key="ImageName" >RightRamp</property>
             </object>
 	    <!-- ############################ BOTTOM DOMINO ROW ################### -->
             <object X="4.5" Y="0.2" height="0.4" type="DominoBlue" />
@@ -124,7 +124,7 @@
             <object X="2.4" Y="0.2" height="0.4" type="DominoRed" />
             <object X="2.1" Y="0.2" height="0.4" type="DominoGreen" />
             <object width="1.2" X="5.4" Y="0.65" height="0.70" type="LeftRamp" angle="0">
-                <property key="ImageName" >left-ramp</property>
+                <property key="ImageName" >LeftRamp</property>
             </object>
             <object width="0.35" X="0.76" Y="0.205" height="0.41" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>

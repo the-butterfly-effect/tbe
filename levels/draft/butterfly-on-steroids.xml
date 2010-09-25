@@ -182,10 +182,7 @@
 	    <object width="0.18" X="0.35" Y="2.48" height="0.25" type="Skyhook" >
             </object>
             
-            <object width="0.5" height="0.14" X="0.2" Y="1.95" type="RightRamp">
-                <property key="ImageName">right-ramp</property>
-            </object>
-            
+	    <object width="0.5" height="0.14" X="0.2" Y="1.95" type="RightRamp"/>           
 	    <object width="0.1" X="0.85" Y="1.2" height="1.5" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.4</property>

@@ -12,10 +12,8 @@
      <toolbox>
          <toolboxitem count="1" name="Ramp \">
             <name lang="nl">Rechtse helling</name>
-            <object width="2.0" height="0.5" type="RightRamp" angle="0">
-                <property key="ImageName">right-ramp</property>
-            </object>
-        </toolboxitem>
+	    <object width="2.0" height="0.5" type="RightRamp" angle="0"/>
+       </toolboxitem>
    </toolbox>
     <scene>
         <scenesize width="4" height="3" />

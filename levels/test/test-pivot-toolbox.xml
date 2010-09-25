@@ -32,7 +32,7 @@
             </object>
 
             <object width="2.0" height="0.4" X="0.95" Y="1.35" type="RightRamp">
-                <property key="ImageName">right-ramp</property>
+                <property key="ImageName">RightRamp</property>
             </object>
 
             <object width="2.0" height="0.2" X="1.0" Y="1.00" type="RectObject" ID="horibar">

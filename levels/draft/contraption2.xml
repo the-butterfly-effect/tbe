@@ -92,7 +92,7 @@
             </object>
 
             <object X="0.3" Y="2.27" width="0.4" height="0.2" type="LeftRamp">
-                <property key="ImageName">left-ramp</property>
+                <property key="ImageName">LeftRamp</property>
             </object>
 
 
@@ -134,7 +134,7 @@
 
             <object X="0.25" Y="1.11" type="BowlingBall" />
             <object X="0.2" Y="1.01" width="0.2" height="0.15" type="RightRamp">
-                <property key="ImageName">right-ramp</property>
+                <property key="ImageName">RightRamp</property>
             </object>
             <object X="0.7" Y="1.1" type="CustomBall">
                 <property key="Radius" >0.05</property>
@@ -179,7 +179,7 @@
 	    </object>
             <object X="2.25" Y="1.04" type="BowlingBall" />
             <object X="2.13" Y="0.96" width="0.3" height="0.15" type="RightRamp">
-                <property key="ImageName">right-ramp</property>
+                <property key="ImageName">RightRamp</property>
             </object>
 
 
@@ -245,7 +245,7 @@
 	        <property key="Thrust" >5</property>
             </object>
             <object X="4.42" Y="3.5" width="0.4" height="0.2" type="LeftRamp" angle="1.57">
-                <property key="ImageName">left-ramp</property>
+                <property key="ImageName">LeftRamp</property>
             </object>
             <object X="4.55" Y="1.90" width="0.1" height="3.6" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>

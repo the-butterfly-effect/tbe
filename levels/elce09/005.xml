@@ -14,6 +14,7 @@
             <name lang="nl">Coke-Mentos fles</name>
             <object type="CokeMentosBottle" angle="0" >
                 <property key="Bounciness" >0</property>
+                <property key="Rotatable" >false</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Styrofoam" icon="styrofoam">
@@ -40,9 +41,7 @@
             <object width="3" X="1.5" Y="0.05" type="Floor" >
                 <property key="ImageName" >Yellow-to-brown</property>
             </object>
-            <object width="2.6" X="1.3" Y="2.05" height="0.4" type="RightRamp" angle="0" >
-                <property key="ImageName" >right-ramp</property>
-            </object>
+	    <object width="2.6" X="1.3" Y="2.05" height="0.4" type="RightRamp" angle="0" />
             <object width="0.44" X="2.13" Y="0.7" height="1.2" type="RectObject" >
                 <property key="Bounciness" >0</property>
                 <property key="ImageName" >oldbrick</property>

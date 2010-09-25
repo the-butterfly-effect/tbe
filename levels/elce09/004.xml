@@ -54,12 +54,8 @@
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="1.4" X="1.8" Y="0.8" height="0.2" type="LeftRamp" angle="0" >
-                <property key="ImageName" >left-ramp</property>
-            </object>
-            <object width="1.4" X="3.8" Y="0.6" height="0.2" type="LeftRamp" angle="0" >
-                <property key="ImageName" >left-ramp</property>
-            </object>
+	    <object width="1.4" X="1.8" Y="0.8" height="0.2" type="LeftRamp" angle="0" />
+	    <object width="1.4" X="3.8" Y="0.6" height="0.2" type="LeftRamp" angle="0" />
             <object width="1.4" X="0.7" Y="2.95" height="0.1" type="RectObject" >
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >Empty</property>
