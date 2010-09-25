@@ -81,7 +81,7 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 	QObject::tr("Bowling pins are meant to be run "
 				"over - and most people prefer to do that using "
 				"a Bowling Ball."),
-	"Bowling_Pin",
+	"BowlingPin",
 	"(0.02,0.17)=(-0.02,0.17)=(-0.04,0.14)=(-0.04,0.07)=(0.04,0.07)=(0.04,0.14);"
 	"(-0.04,0.03)=(-0.06,-0.04)=(-0.06,-0.11)=(-0.03,-0.17)="
 	"(0.03,-0.17)=(0.06,-0.11)=(0.06,-0.04)=(0.04,0.03)",
@@ -109,7 +109,7 @@ static AbstractPolyObjectFactory theLeftRampFactory(
 	"LeftRamp",
 	QObject::tr("Left Ramp"),
 	QObject::tr("This is a ramp. The left is lower than the right, so things slide to the left."),
-	"left-ramp",
+	"LeftRamp",
 	"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
 	1.0, 1.0, 0.0, 0.2 );
 
@@ -117,7 +117,7 @@ static AbstractPolyObjectFactory theRightRampFactory(
 	"RightRamp",
 	QObject::tr("Right Ramp"),
 	QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right."),
-	"right-ramp",
+	"RightRamp",
 	"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
