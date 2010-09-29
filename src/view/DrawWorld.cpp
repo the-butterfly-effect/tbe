@@ -25,6 +25,7 @@
 #include "toolbox.h"
 #include "StartStopWatch.h"
 #include "UndoInsertCommand.h"
+#include "Anchors.h"
 
 #include <QPainter>
 #include <QStyleOption>
@@ -401,10 +402,13 @@ void DrawWorld::startTimer(void)
 	// TODO: upon reset, the old object gets focus again - thanks, Qt!
 	DrawObject myTemp(NULL);
 	setFocusItem(&myTemp);
+	myTemp.focusRemove(true);
+	Anchors::clearEditObjectDialogPtr();
 
 	setAcceptDrops(false);
 	isUserInteractionAllowed = false;
 	DrawObject::setIsSimRunning(true);
+
 
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
