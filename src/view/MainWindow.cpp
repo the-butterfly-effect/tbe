@@ -298,10 +298,8 @@ void MainWindow::loadLevel(const QString& aFileName)
 	QString myErrorMessage = theLevelPtr->load(aFileName);
 	if (!myErrorMessage.isEmpty())
 	{
-		// TODO: popup and such
-		DEBUG1("ERROR during reading file '%s': %s\n",
-				ASCII(aFileName),
-				ASCII(myErrorMessage) );
+		Popup::Critical(tr("ERROR during reading file '%1': '%2'\n")
+						.arg(aFileName).arg(myErrorMessage) );
 		exit(1);
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
@@ -413,7 +411,7 @@ void MainWindow::slot_drawOutlineAction_toggle(bool isChecked)
 {
 	theDrawPolyOutline = isChecked;
 	theDrawOutlineActionPtr->setChecked(theDrawPolyOutline);
-	// TODO/FIXME: add resize of window here to force redraw of all bitmaps
+	ui.graphicsView->updatePixelsPerUnit();
 }
 
 

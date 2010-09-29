@@ -135,7 +135,6 @@ FORMS = src/view/MainWindow.ui \
     src/view/GoalEditor.ui \
     src/view/PostItEditor.ui
 DISTFILES = README \
-    TODO \
     AUTHORS \
     COPYING
 unix { 
@@ -143,7 +142,6 @@ unix {
     MOC_DIR = .moc
     OBJECTS_DIR = .obj
 }
-OTHER_FILES += TODO
 TRANSLATIONS = i18n/tbe_nl.ts \
     i18n/tbe_es.ts
 RESOURCES += images/illustrations/tbe-icon.qrc

@@ -63,7 +63,8 @@ public:
 		QGraphicsView::setScene(aScene);
 		QTimer::singleShot(200, this, SLOT(on_timerTick()));
 	}
-	
+	void updatePixelsPerUnit();
+
 protected:
 	virtual void resizeEvent(QResizeEvent * anEvent)
 	{
@@ -72,8 +73,6 @@ protected:
 		QGraphicsView::resizeEvent(anEvent);
 		on_timerTick();
 	}
-
-	void updatePixelsPerUnit();
 
 	virtual void dropEvent (QDropEvent* anEvent)
 	{ QGraphicsView::dropEvent(anEvent); isDoNotResize = false; }
