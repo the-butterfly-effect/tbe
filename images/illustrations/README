@@ -8,9 +8,10 @@ license:   PD (Public Domain)
 source:    http://openclipart.org/media/people/jbruce/papilio
 
 filename:
-  tbe-icon.png
+  jbruce_butterfly_(papilio_philenor)_-_top_modified_for_icon.svg
+  tbe-icon.png, tbe-icon.ico
 author:    "jbruce", modified by Klaas van Gend
-this is the above jbruce_butterfly_(papilio_philenor)_-_top.svg file, rotated and exported in 32x32 pixels
+this is the above jbruce_butterfly_(papilio_philenor)_-_top.svg file, rotated and exported in 32x32 / 128x128 pixels
 
 filename:
   thank-you-stone.svg
