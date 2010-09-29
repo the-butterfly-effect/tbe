@@ -101,10 +101,11 @@ fi
 check_packages
 make_3rdParty
 make_images
-qmake
 
 # setup the actual DATADIR
 cat src/tbe_global.h.in | sed "s!%%DATADIR!$DATADIR!" >src/tbe_global.h
+
+qmake
 
 # and give some hints on what to do next
 echo
