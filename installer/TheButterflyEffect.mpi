@@ -276,7 +276,7 @@ File ::FDEBE3A6-9F74-DEB6-E410-0B1AE818012A -name ../README.txt -parent FCF733E7
 Component ::C084FC12-4438-D162-D7DD-D44F99E5E3B8 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name {Default Component} -parent Components
 Component ::97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name WindowsComponent -parent Components
 SetupType ::7D7CFBA2-4849-EE00-A285-F699BF79BAFD -setup Install -active Yes -platforms {FreeBSD-x86 Linux-x86 Linux-x86_64} -name UNIX -parent SetupTypes
-SetupType ::4042CC1A-2480-EF68-A54F-04749719BB73 -setup Install -active Yes -platforms {Windows} -name Windows -parent SetupTypes
+SetupType ::4042CC1A-2480-EF68-A54F-04749719BB73 -setup Install -active Yes -platforms Windows -name Windows -parent SetupTypes
 
 InstallComponent FD29B3E7-30D8-2B39-B921-6A7BF1C608B1 -setup Install -type pane -title {Welcome Screen} -component Welcome -active Yes -parent StandardInstall
 InstallComponent 0166644D-0EBA-46A6-3C34-C652CE72088A -setup Install -type pane -title {License Agreement} -component License -active Yes -parent StandardInstall
@@ -332,9 +332,14 @@ InstallComponent C78EF006-D32A-1FE7-23D2-FA66DD4FD537 -setup Install -type actio
 InstallComponent 546B2197-62E8-8912-681D-BD8D6F8F028F -setup Install -type actiongroup -title {Install Actions} -alias {Install Actions} -active Yes -parent ActionGroupsInstall
 InstallComponent 4C786F70-5B34-5C08-97DA-AB439A86590A -setup Install -type action -title {Install Selected Files} -component InstallSelectedFiles -active Yes -parent 546B2197-62E8-8912-681D-BD8D6F8F028F
 InstallComponent D4E03311-4731-6F39-9850-6FF5D2AAB6CB -setup Install -type actiongroup -title {Finish Actions} -alias {Finish Actions} -active Yes -parent ActionGroupsInstall
-InstallComponent CFB76BC6-4A66-E327-C797-CA38027FD97B -setup Install -type action -conditions {E5B71331-7F95-EF11-4482-07EDFEEC3C6F 407640E0-DC49-FCCC-5862-AD4958F8B48C} -title {Install Desktop Shortcut} -component InstallDesktopShortcut -command insert -active Yes -parent D4E03311-4731-6F39-9850-6FF5D2AAB6CB
+InstallComponent FE3DED96-1459-12B2-5EC0-B821F334EE2E -setup Install -type action -conditions {DBCE602F-D748-353D-79F3-236202ED7548 051B73F5-161B-4D75-947A-5C826503DCD3 BF9C66F3-0323-81FF-7CE5-F3987ED3670E} -title {Install Non-Windows Desktop Shortcut} -component InstallDesktopShortcut -command insert -alias {Install non-windows Desktop Shortcut} -active Yes -parent D4E03311-4731-6F39-9850-6FF5D2AAB6CB
+Condition DBCE602F-D748-353D-79F3-236202ED7548 -active Yes -parent FE3DED96-1459-12B2-5EC0-B821F334EE2E -title {String Is Condition} -component StringIsCondition -TreeObject::id E5B71331-7F95-EF11-4482-07EDFEEC3C6F
+Condition 051B73F5-161B-4D75-947A-5C826503DCD3 -active Yes -parent FE3DED96-1459-12B2-5EC0-B821F334EE2E -title {File Exists Condition} -component FileExistsCondition -TreeObject::id 407640E0-DC49-FCCC-5862-AD4958F8B48C
+Condition BF9C66F3-0323-81FF-7CE5-F3987ED3670E -active Yes -parent FE3DED96-1459-12B2-5EC0-B821F334EE2E -title {Platform Condition} -component PlatformCondition -TreeObject::id A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0
+InstallComponent CFB76BC6-4A66-E327-C797-CA38027FD97B -setup Install -type action -conditions {E5B71331-7F95-EF11-4482-07EDFEEC3C6F 407640E0-DC49-FCCC-5862-AD4958F8B48C A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0} -title {Install Windows Desktop Shortcut} -component InstallDesktopShortcut -command insert -alias {Install Windows Desktop Shortcut} -active Yes -parent D4E03311-4731-6F39-9850-6FF5D2AAB6CB
 Condition E5B71331-7F95-EF11-4482-07EDFEEC3C6F -active Yes -parent CFB76BC6-4A66-E327-C797-CA38027FD97B -title {String Is Condition} -component StringIsCondition -TreeObject::id E5B71331-7F95-EF11-4482-07EDFEEC3C6F
 Condition 407640E0-DC49-FCCC-5862-AD4958F8B48C -active Yes -parent CFB76BC6-4A66-E327-C797-CA38027FD97B -title {File Exists Condition} -component FileExistsCondition -TreeObject::id 407640E0-DC49-FCCC-5862-AD4958F8B48C
+Condition A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0 -active Yes -parent CFB76BC6-4A66-E327-C797-CA38027FD97B -title {Platform Condition} -component PlatformCondition -TreeObject::id A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0
 InstallComponent 35A033ED-090F-71A6-4FAD-FE8A0521104A -setup Install -type action -conditions {E4163D3F-BBA7-505F-7DB0-218ECDF9640C 4D042333-8A3F-C93A-23C5-58F7DD604DC1 CC184F14-C4F0-42A5-F6A2-FE7FF6FC0B8B} -title {View Readme Window} -component TextWindow -command insert -active Yes -parent D4E03311-4731-6F39-9850-6FF5D2AAB6CB
 Condition E4163D3F-BBA7-505F-7DB0-218ECDF9640C -active Yes -parent 35A033ED-090F-71A6-4FAD-FE8A0521104A -title {String Is Condition} -component StringIsCondition -TreeObject::id E4163D3F-BBA7-505F-7DB0-218ECDF9640C
 Condition 4D042333-8A3F-C93A-23C5-58F7DD604DC1 -active Yes -parent 35A033ED-090F-71A6-4FAD-FE8A0521104A -title {String Is Condition} -component StringIsCondition -TreeObject::id 4D042333-8A3F-C93A-23C5-58F7DD604DC1
@@ -405,6 +410,12 @@ array set Properties {
 
 0166644D-0EBA-46A6-3C34-C652CE72088A,UserMustAcceptLicense
 {No}
+
+051B73F5-161B-4D75-947A-5C826503DCD3,CheckCondition
+{Before Action is Executed}
+
+051B73F5-161B-4D75-947A-5C826503DCD3,Filename
+{<%ProgramExecutable%>}
 
 0B5CE134-42C4-2486-0C16-7AD890795054,Action
 {Install Actions}
@@ -871,6 +882,12 @@ array set Properties {
 9FE13D46-CA53-6378-FD81-6EF1EF7384B8,Y
 {160}
 
+A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0,CheckCondition
+{Before Action is Executed}
+
+A50FDC84-B4C8-0B3F-ABE1-F87A3C9BBFA0,Platform
+{Windows}
+
 A55FA30D-2E26-B28B-A462-655B86D1E6A1,CheckCondition
 {Before Action is Executed}
 
@@ -1009,6 +1026,15 @@ BE40A8B2-16CA-5B3C-70A2-7FAF80411F64,Action
 BF652713-AA8B-A265-97F3-4B85C4F7AC19,Message,subst
 {1}
 
+BF9C66F3-0323-81FF-7CE5-F3987ED3670E,CheckCondition
+{Before Action is Executed}
+
+BF9C66F3-0323-81FF-7CE5-F3987ED3670E,Operator
+{is not}
+
+BF9C66F3-0323-81FF-7CE5-F3987ED3670E,Platform
+{Windows}
+
 C084FC12-4438-D162-D7DD-D44F99E5E3B8,Description,subst
 {1}
 
@@ -1090,11 +1116,14 @@ CC184F14-C4F0-42A5-F6A2-FE7FF6FC0B8B,Filename
 CCC8B272-5F2B-7F79-8BDF-FDC6EFB93AC9,Action
 {Uninstall Actions}
 
+CFB76BC6-4A66-E327-C797-CA38027FD97B,Alias
+{Install Windows Desktop Shortcut}
+
 CFB76BC6-4A66-E327-C797-CA38027FD97B,Conditions
-{2 conditions}
+{3 conditions}
 
 CFB76BC6-4A66-E327-C797-CA38027FD97B,IconPath
-{<%InstallDir%>/images/tbe-icon.png}
+{<%InstallDir%>/images/tbe-icon.ico}
 
 CFB76BC6-4A66-E327-C797-CA38027FD97B,InstallForAllUsers
 {Yes}
@@ -1125,6 +1154,12 @@ D4E03311-4731-6F39-9850-6FF5D2AAB6CB,Alias
 
 D4E03311-4731-6F39-9850-6FF5D2AAB6CB,Conditions
 {0 conditions}
+
+DBCE602F-D748-353D-79F3-236202ED7548,CheckCondition
+{Before Action is Executed}
+
+DBCE602F-D748-353D-79F3-236202ED7548,String
+{<%CreateDesktopShortcut%>}
 
 E4163D3F-BBA7-505F-7DB0-218ECDF9640C,CheckCondition
 {Before Action is Executed}
@@ -1182,6 +1217,9 @@ E883F35F-B961-5A96-6208-564C51411278,Name
 
 E8EDF49F-5342-4D69-664A-2626552EB69A,Alias
 {Uninstall Actions}
+
+E8EDF49F-5342-4D69-664A-2626552EB69A,Conditions
+{0 conditions}
 
 EAE36B8C-1C93-2B0F-04A0-41330AC76275,Default
 {Yes}
@@ -1293,6 +1331,27 @@ FD29B3E7-30D8-2B39-B921-6A7BF1C608B1,Message,subst
 
 FD29B3E7-30D8-2B39-B921-6A7BF1C608B1,NextButton,subst
 {1}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,Alias
+{Install non-windows Desktop Shortcut}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,Conditions
+{3 conditions}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,IconPath
+{<%InstallDir%>/images/tbe-icon.png}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,InstallForAllUsers
+{Yes}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,ShortcutName
+{<%AppName%>}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,TargetFileName
+{<%ProgramExecutable%>}
+
+FE3DED96-1459-12B2-5EC0-B821F334EE2E,WorkingDirectory
+{<%InstallDir%>}
 
 FreeBSD-4-x86,Active
 {No}
