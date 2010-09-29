@@ -94,7 +94,7 @@ void PostItEditor::on_toolButtonBold_clicked()
 
 void PostItEditor::on_toolButtonItalics_clicked()
 {
-	// TODO/FIXME: if some block is selected, put <b> around it.
+	// TODO/FIXME: if some block is selected, put <i> around it.
 
 	//: dear translator, please only translate the ITALICS word
 	emit getCurrentEdit()->insertPlainText(tr("<i>ITALICS</i>"));
