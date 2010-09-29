@@ -103,7 +103,7 @@ make_3rdParty
 make_images
 
 # setup the actual DATADIR
-cat src/tbe_global.h.in | sed "s!%%DATADIR!$DATADIR!" >src/tbe_global.h
+cat src/tbe_global.h.in | sed "s!%%DATADIR!QString(\"$DATADIR\")!" >src/tbe_global.h
 
 qmake
 
