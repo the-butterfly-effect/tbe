@@ -275,8 +275,8 @@ File ::3F6AAD2F-E290-BAD5-6064-65794F012980 -name ../COPYING.txt -parent FCF733E
 File ::FDEBE3A6-9F74-DEB6-E410-0B1AE818012A -name ../README.txt -parent FCF733E7-C29F-E864-8573-7EF1D619304E
 Component ::C084FC12-4438-D162-D7DD-D44F99E5E3B8 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name {Default Component} -parent Components
 Component ::97B35719-1DB4-0EDD-3FFC-AD9F3AB2E416 -setup Install -active Yes -platforms {AIX-ppc FreeBSD-4-x86 FreeBSD-5-x86 FreeBSD-6-x86 FreeBSD-7-x86 FreeBSD-x86 HPUX-hppa Linux-x86 Linux-x86_64 Solaris-sparc Solaris-x86 Windows} -name WindowsComponent -parent Components
-SetupType ::7D7CFBA2-4849-EE00-A285-F699BF79BAFD -setup Install -active Yes -platforms {FreeBSD-7-x86 FreeBSD-x86 Linux-x86 Linux-x86_64} -name UNIX -parent SetupTypes
-SetupType ::4042CC1A-2480-EF68-A54F-04749719BB73 -setup Install -active Yes -platforms {Solaris-x86 Windows} -name Windows -parent SetupTypes
+SetupType ::7D7CFBA2-4849-EE00-A285-F699BF79BAFD -setup Install -active Yes -platforms {FreeBSD-x86 Linux-x86 Linux-x86_64} -name UNIX -parent SetupTypes
+SetupType ::4042CC1A-2480-EF68-A54F-04749719BB73 -setup Install -active Yes -platforms {Windows} -name Windows -parent SetupTypes
 
 InstallComponent FD29B3E7-30D8-2B39-B921-6A7BF1C608B1 -setup Install -type pane -title {Welcome Screen} -component Welcome -active Yes -parent StandardInstall
 InstallComponent 0166644D-0EBA-46A6-3C34-C652CE72088A -setup Install -type pane -title {License Agreement} -component License -active Yes -parent StandardInstall
