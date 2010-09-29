@@ -1,73 +1,113 @@
 #!/bin/bash
 
-echo "This is not a true, proper autotools ./configure"
-echo "However, it does do the same - it will setup everything so you can run make"
-echo
+function test_package() {
+if test -z "`which $1 2>/dev/null`";
+then
+    echo "ERROR: Did not find the '$1' application in your path."
+    echo "Please install it - it's usually in the '$2' package."
+    return 1
+else
+    echo "Found '$1'."
+    return 0
+fi;
+}
 
 ###########################################################
 ## LET'S CHECK FOR SOME PREREQUISITES
+##
+function check_packages() {
 
+echo "Check for required packages for the build..."
+echo
 MISSINGPACKAGE=0;
+STATICQT=0;
 
-if test -z "`which ar 2>/dev/null`";
-then
-	echo "ERROR: Did not find the 'ar' application in your path."
-	echo "Please install it (usually the 'binutils' package).";
-	MISSINGPACKAGE=1;
+test_package ar 'binutils'; 
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; fi
+test_package g++   'g++ or gcc';
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; fi
+test_package make  'make';
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; fi
+test_package patch 'patch';
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; fi
+
+test_package qmake 'libqt-dev,libqt4-devel or similar'
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; let STATICQT++; fi
+test_package moc   'libqt-dev,libqt4-devel or similar'
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; let STATICQT++; fi
+test_package uic   'libqt-dev,libqt4-devel or similar'
+if [ $? = 1 ] ; then let MISSINGPACKAGE++; let STATICQT++; fi
+
+if [ $STATICQT -lt 0 ]; then
+    echo "Alternatively, run the 'make-release.sh' script that will build a static QT"
+    echo "library and link against that one."
 fi;
 
-if test -z "`which g++ 2>/dev/null`";
-then
-	echo "ERROR: Did not find the 'g++' application in your path."
-	echo "Please install it (package is called 'g++' or 'gcc').";
-	MISSINGPACKAGE=1;
-fi;
-
-if test -z "`which make 2>/dev/null`";
-then
-	echo "ERROR: Did not find the 'make' application in your path."
-	echo "Please install it.";
-	MISSINGPACKAGE=1;
-fi;
-
-if test -z "`which patch 2>/dev/null`";
-then
-	echo "ERROR: Did not find the 'patch' application in your path."
-	echo "Please install it.";
-	MISSINGPACKAGE=1;
-fi;
-
-if test -z "`which qmake 2>/dev/null`" -o -z "`which moc 2>/dev/null`" -o -z "`which uic 2>/dev/null`";
-then 
-	echo "ERROR: Did not find the QT4 tools in your path. You probably need to install"
-	echo "another package.";
-	echo "It is usually called 'libqt-dev' or 'libqt4-devel' or something similar";
+if [ $MISSINGPACKAGE -lt 0 ]; then
 	echo
-	echo "Alternatively, run the 'make-release.sh' script that will build a static QT"
-	echo "library and link against that one."
-	MISSINGPACKAGE=1;
-fi;
-
-if test $MISSINGPACKAGE -eq 1;
-then
-	echo
-	echo "Oops, not all dependencies are met. I will quit now to allow you"
-	echo "to install these packages..."
+	echo "Oops, not all dependencies are met. I will quit now so you can"
+	echo "install these packages..."
 	exit;
-fi;    
+fi;
+};
+##
+## END CHECKING PREREQUISITES
 
 
 ###########################################################
-## FINALLY DONE CHECKING PREREQUISITES
-
+function make_3rdParty() {
 (cd 3rdParty && make)
+}
 
+###########################################################
+function make_images() {
 if test -f images/Makefile;
 then
 	make -C images all;
 fi;
+}
 
+###########################################################
+function display_help() {
+echo "This is not a true, proper autotools ./configure"
+echo "However, it does do the same - it will setup everything so you can run make"
+echo
+echo "Options:"
+echo "  --help, -h, -?         displays this text"
+echo "  --datadir=path/to/data sets the directory to find the data, used for"
+echo "                         levels, images and i18n. e.g. /usr/share/tbe"
+echo "                         default is the directory the tbe binary is in"
+echo
+exit
+};
+
+
+###########################################################
+## Let's start checking command line options
+DATADIR=BINARY_DIRECTORY
+
+MYARG=`echo $1 | sed 's/^--//' | sed 's/=.*$//'`
+MYVAL=`echo $1 | sed 's/^--.*=//'`
+
+if [ $# -gt 0 ] ; then
+  if [ $MYARG = "help" -o $1 = '-h' -o $1 = '-?' ] ; then
+    display_help;
+  fi
+  if [ $MYARG = "datadir" ] ; then
+    DATADIR=$MYVAL;
+  fi
+fi
+
+check_packages
+make_3rdParty
+make_images
 qmake
+
+# setup the actual DATADIR
+cat src/tbe_global.h.in | sed "s!%%DATADIR!$DATADIR!" >src/tbe_global.h
+
+# and give some hints on what to do next
+echo
 echo
 echo "You should be able to run 'make' to build The Butterfly Effect now."
 echo "Once that's done, the game is playable by running ./tbe ..."

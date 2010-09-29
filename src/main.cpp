@@ -148,7 +148,7 @@ int main(int argc, char **argv)
 	//       the (maybe too flexible) code from umtsmon
 	QString locale = QLocale::system().name();
 	QTranslator translator;
-	translator.load(QString("i18n/tbe_") + locale);
+	translator.load(I18N_DIRECTORY + "/tbe_" + locale);
 	app.installTranslator(&translator);
 
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
