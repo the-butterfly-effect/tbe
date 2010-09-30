@@ -97,11 +97,6 @@ public:
 		EMPTY
 	};
 
-	/// returns true if the object can be rotated by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
-	virtual bool isRotatable ( ) const
-	{	return true;	}
-
 	/// returns whether the object can be resized by the user
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual SizeDirections isResizable ( ) const
