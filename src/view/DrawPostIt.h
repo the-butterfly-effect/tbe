@@ -62,9 +62,9 @@ public:
 
 	/** overridden from QGraphicsItem
 	 * also, upon a single click event, let's show the text of the note-its
+	 * (or just do move if we're in leveleditor)
 	 */
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
-		{ mouseDoubleClickEvent(anEvent); }
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
 
 	/// overridden from DrawObject to make sure it is not selected
 	virtual void focusInEvent ( QFocusEvent* )

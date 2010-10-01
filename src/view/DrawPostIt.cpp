@@ -126,6 +126,14 @@ void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 		displayPostit();
 }
 
+void DrawPostIt::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
+{
+	// depending on whether we're level editor or not, move or display
+	if (theIsLevelEditor)
+		DrawObject::mousePressEvent(anEvent);
+	else
+		mouseDoubleClickEvent(anEvent);
+}
 
 void DrawPostIt::nextClicked()
 {
