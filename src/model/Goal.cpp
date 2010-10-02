@@ -66,7 +66,6 @@ bool GoalDistance::checkForSuccess(void)
 	{
 	case NOTYPE:
 		return false;
-		break;
 	case LESSTHAN:
 		if (myDistanceVector.length() < theLimit)
 			return true;
@@ -163,7 +162,6 @@ bool GoalPositionChange::checkForSuccess(void)
 	{
 	case NOTYPE:
 		return false;
-		break;
 	case XCHANGED:
 		if (fabs(myNewPos.x - myOldPos.x) > MINCHANGE)
 			return true;
@@ -195,9 +193,7 @@ bool GoalPositionChange::checkForSuccess(void)
 	case ANYTHINGCHANGED:
 		if (myNewPos == myOldPos)
 			return false;
-		else
-			return true;
-		break;
+		return true;
 	}
 	return false;
 }

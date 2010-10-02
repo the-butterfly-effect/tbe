@@ -129,6 +129,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 				break;
 			case STOPPED:		// should not happen
 				assert(false);
+				break;
 			case RUNNING:		// watch clicked
 				startStopwatch();
 				showFastForwardButton();
@@ -136,6 +137,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 				break;
 			case FAST:			// should not happen
 				assert(false);
+				break;
 			case BROKEN:		// should not happen
 				assert(false);
 				break;

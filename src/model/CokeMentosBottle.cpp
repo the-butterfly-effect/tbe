@@ -91,6 +91,7 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 		if (theCountdown > 0)
 			break;
 		setBottleStatus(BLOWING);
+		break;
 	case BLOWING:
 		// this is just a rate limiter
 		theCountdown--;

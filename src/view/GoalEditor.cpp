@@ -292,14 +292,6 @@ void ComboBoxDelegate::setModelData(QWidget *anEditor, QAbstractItemModel *model
 	model->setData(index, myValue, Qt::EditRole);
 }
 
-void ComboBoxDelegate::updateEditorGeometry(QWidget *editor,
-const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
-{
-	editor->setGeometry(option.rect);
-}
-
-
-
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(QObject *parent)

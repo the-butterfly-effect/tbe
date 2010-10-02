@@ -452,7 +452,7 @@ void MainWindow::slot_levelWon()
 		theButtons[2]->move(2*myViewSize.width()/3,myViewSize.height()/2);
 		theButtons[2]->show();
 
-		connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld();));
+		connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld()));
 		connect(theButtons[1], SIGNAL(clicked()), this, SLOT(on_actionOpen_level_activated()));
 		connect(theButtons[2], SIGNAL(clicked()), this, SLOT(slot_next_level()));
 		connect(theButtons[0], SIGNAL(clicked()), this, SLOT(slot_clear_buttons()));

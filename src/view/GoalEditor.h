@@ -107,9 +107,6 @@ public:
 	void setModelData(QWidget *editor, QAbstractItemModel *model,
 					  const QModelIndex &index) const;
 
-	void updateEditorGeometry(QWidget *editor,
-							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
-
 private:
 	QStringList theList;
 };

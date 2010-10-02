@@ -68,9 +68,7 @@ public:
 	static EditObjectDialog* getEditObjectDialogPtr(void)
 	{ return theObjectDialogPtr; }
 	static void clearEditObjectDialogPtr(void)
-	{ if (theObjectDialogPtr)
-		delete theObjectDialogPtr;
-		theObjectDialogPtr = NULL; }
+	{ delete theObjectDialogPtr; theObjectDialogPtr = NULL; }
 
 private:
 	DrawObject* theDrawObjectPtr;

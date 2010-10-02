@@ -50,12 +50,12 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 
 	// the below code creates the 8 anchors around the object
 	AnchorType myMode = NONE;
-	if (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE || theIsLevelEditor)
+	if ( (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE) || theIsLevelEditor)
 		myMode = RESIZEHORI;
 	theAnchorList.push_back(new Anchor(myMode, Anchor::RIGHT, this));
 	theAnchorList.push_back(new Anchor(myMode, Anchor::LEFT, this));
 
-	if (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE || theIsLevelEditor)
+	if ( (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE) || theIsLevelEditor)
 		myMode = RESIZEVERTI;
 	else
 		myMode = NONE;
@@ -198,19 +198,16 @@ int Anchor::getDX()
 		case TOPRIGHT:
 		case BOTTOMRIGHT:
 			return 1;
-			break;
 
 		case TOP:
 		case BOTTOM:
 			return 0;
-			break;
 
 		case TOPLEFTLEFT:
 		case TOPLEFT:
 		case LEFT:
 		case BOTTOMLEFT:
 			return -1;
-			break;
 	}
 	return 0;
 }
@@ -222,20 +219,17 @@ int Anchor::getDY()
 		case RIGHT:
 		case LEFT:
 			return 0;
-			break;
 
 		case TOPRIGHT:
 		case TOP:
 		case TOPLEFT:
 		case TOPLEFTLEFT:
 			return 1;
-			break;
 
 		case BOTTOMRIGHT:
 		case BOTTOM:
 		case BOTTOMLEFT:
 			return -1;
-			break;
 	}
 	return 0;
 }
