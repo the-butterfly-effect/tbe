@@ -123,6 +123,10 @@ private:
 	friend class SaveLevelInfo;
 	friend class LevelInfoDialog;
 	friend class EditLevelProperties;
+
+	// prevent copy constructor / assignment operator
+	Level(const Level&);
+	const Level& operator= (const Level&);
 };
 
 #endif // LEVEL_H

@@ -222,6 +222,9 @@ private:
 
 	CongratDeathMessage* theCongratDeathBoxPtr;
 
+	// prevent copy constructor / assignment operator
+	DrawWorld(const DrawWorld&);
+	const DrawWorld& operator= (const DrawWorld&);
 };
 
 #endif // DRAWWORLD_H

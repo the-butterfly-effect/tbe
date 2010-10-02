@@ -101,6 +101,11 @@ private:
 	Ui::PostItViewer* theUIPtr;
 
 	bool isHovering;
+
+	// prevent copy constructor / assignment operator
+	DrawPostIt(const DrawPostIt&);
+	const DrawPostIt& operator= (const DrawPostIt&);
+
 };
 
 #endif // DRAWPOSTIT_H

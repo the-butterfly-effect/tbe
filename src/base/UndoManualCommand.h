@@ -92,6 +92,10 @@ private:
 	QPointF		theNewSize;
 
 	bool isColliding;
+
+	// kill possibility for copy constructor&assignment operator
+	UndoManualCommand(const UndoManualCommand&);
+	const UndoManualCommand& operator=(const UndoManualCommand&);
 };
 
 #endif // UndoMANUALCommand_H

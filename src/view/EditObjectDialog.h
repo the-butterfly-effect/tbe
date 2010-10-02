@@ -58,6 +58,9 @@ private:
 
 	UndoManualCommand* theUndoPtr;
 
+	// kill possibility for copy constructor&assignment operator
+	EditObjectDialog(const EditObjectDialog&);
+	const EditObjectDialog& operator=(const EditObjectDialog&);
 };
 
 #endif // EDITOBJECTDIALOG_H

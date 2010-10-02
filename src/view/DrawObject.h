@@ -278,14 +278,20 @@ private:
 		static QSvgRenderer*	theCrossRendererPtr;
 
 		BaseObject* theBaseObjectPtr;
+
+		// kill possibility for copy constructor&assignment operator
+		Cross(const DrawObject::Cross&);
+		const DrawObject::Cross& operator=(const DrawObject::Cross&);
 	};
 
 	Cross* theCrossPtr;
 	friend class Cross;
 
 private:
-	// kill the default constructor
+	// kill the default constructor, copy constructor & assignment operator
 	DrawObject();
+	DrawObject(const DrawObject&);
+	const DrawObject& operator=(const DrawObject&);
 };
 
 #endif // DRAWOBJECT_H

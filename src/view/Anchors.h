@@ -77,6 +77,10 @@ private:
 	AnchorList theAnchorList;
 
 	static EditObjectDialog* theObjectDialogPtr;
+
+	// kill copy constructor & assignment operator
+	Anchors(const Anchors&);
+	const Anchors& operator=(const Anchors&);
 };
 
 
@@ -143,6 +147,10 @@ private:
 
 	int getDX();
 	int getDY();
+
+	// kill copy constructor & assignment operator
+	Anchor(const Anchor&);
+	const Anchor& operator=(const Anchor&);
 };
 
 

@@ -96,6 +96,10 @@ private:
 
 	/// using the ObjectFactory, we can create objects from this Name
 	const ObjectFactory* theFactoryPtr;
+
+	// kill possibility for copy constructor&assignment operator
+	TBItem(const TBItem&);
+	TBItem& operator=(const TBItem&);
 };
 
 
