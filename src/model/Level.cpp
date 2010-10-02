@@ -125,6 +125,7 @@ Level::load(const QString& aFileName)
 	QDomElement myDocElem;
 	QDomNamedNodeMap myNodeMap;
     bool isOK1, isOK2;
+	bool hasProblem = false;
 
     qreal myWidth;
     qreal myHeight;
@@ -227,60 +228,67 @@ Level::load(const QString& aFileName)
 	//
 	// parse the Goal section
 	// 
-	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
-	mySceneNode=myDocElem.firstChildElement(theGoalsString);
-	if (mySceneNode.nodeName()!= theGoalsString)
+	do {
+		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
+		mySceneNode=myDocElem.firstChildElement(theGoalsString);
+		if (mySceneNode.nodeName()!= theGoalsString)
+		{
+			myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
+			goto not_good;
+		}
+		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
+		{
+			// a goal entry has the following layout:
+			//	<goal type="distance" lessthan="0.3">
+			//		 <object ID="Butterfly"/>
+			//		 <object ID="Flower"/>
+			//	</goal>
+			//
+			// of these, 'type' is mandatory
+			// everything else is optional and depends on the type of goal
+
+			// simple sanity checks
+			if (q.nodeName() == "#comment")
+				continue;
+			if (q.nodeName() != theGoalString)
+			{
+				myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
+				hasProblem = true;
+				continue;
+			}
+
+			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
+			if (myGPtr == NULL)
+			{
+				myErrorMessage += tr("createObjectFromDom failed");
+				hasProblem = true;
+				continue;
+			}
+			if (myGPtr->parseProperties(theWorldPtr)==false)
+			{
+				myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
+				hasProblem = true;
+				continue;
+			}
+
+			theWorldPtr->addGoal(myGPtr);
+
+			if (q==myNode.lastChild())
+				break;
+		}
+	} while (false);  // i.e. always run this loop only once
+	if (hasProblem==true)
 	{
-		myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
-		goto not_good;
+		return "W " + myErrorMessage;
 	}
-	for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
-	{
-		// a goal entry has the following layout:
-		//	<goal type="distance" lessthan="0.3">
-		//		 <object ID="Butterfly"/>
-		//		 <object ID="Flower"/>
-		//	</goal>
-		//
-		// of these, 'type' is mandatory
-		// everything else is optional and depends on the type of goal
-
-		// simple sanity checks
-		if (q.nodeName() == "#comment")
-			continue;
-		if (q.nodeName() != theGoalString)
-		{
-			myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
-			goto not_good;
-		}
-
-		Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
-		if (myGPtr == NULL)
-		{
-			myErrorMessage += tr("createObjectFromDom failed");
-			goto not_good;
-		}
-		if (myGPtr->parseProperties(theWorldPtr)==false)
-		{
-			myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
-			goto not_good;
-		}
-
-		theWorldPtr->addGoal(myGPtr);
-
-		if (q==myNode.lastChild())
-			break;
-	}
-
-	
-	
+		
 	// and everything went OK - we're done :-)
-	myErrorMessage = "";
+	return "";
 
 	// if goto not_good was called, we get here, too
 	// theErrorMessage is set - let's return it!
 not_good:
-	return myErrorMessage;
+	return "E " + myErrorMessage;
 }
 
 

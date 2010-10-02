@@ -298,9 +298,20 @@ void MainWindow::loadLevel(const QString& aFileName)
 	QString myErrorMessage = theLevelPtr->load(aFileName);
 	if (!myErrorMessage.isEmpty())
 	{
-		Popup::Critical(tr("ERROR during reading file '%1': '%2'\n")
-						.arg(aFileName).arg(myErrorMessage) );
-		exit(1);
+		QChar myFirst = myErrorMessage[0];
+		myErrorMessage = myErrorMessage.mid(1);
+		if (myFirst == 'E')
+		{
+			Popup::Critical(tr("ERROR during reading file '%1': '%2'\n")
+							.arg(aFileName).arg(myErrorMessage), this );
+			exit(1);
+		}
+		if (myFirst == 'W')
+		{
+			Popup::Warning(tr("Non-fatal problem reading file '%1': '%2'.\n"
+							  "This may affect playability, though!")
+							.arg(aFileName).arg(myErrorMessage), this );
+		}
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(this);
 
