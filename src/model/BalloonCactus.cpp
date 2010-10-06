@@ -46,10 +46,15 @@ public:
 static BalloonObjectFactory theBalloonObjectFactory;
 
 
+const qreal Balloon::POPPING_TIME = 0.3;
+const qreal Balloon::POPPED_MASS  = 0.6;
+const qreal Balloon::POPPED_TIME  = 2.0;
+
+
 Balloon::Balloon()
 		: PolyObject(QObject::tr("Balloon"),
 					 QObject::tr("a Helium Balloon. Lighter than air, it moves up."),
-					 "Balloon;BalloonPoof;BalloonRest",
+					 "Balloon;BalloonPoof;BalloonRest;Empty",
 					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
@@ -67,10 +72,20 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
 	DEBUG6("Balloon receives callback\n");
 
-	if (theState == BALLOON)
+	switch(theState)
+	{
+	case BALLOON:
 		callbackStepBalloon(aDeltaTime, aTotalTime);
-	if (theState == POPPING)
+		break;
+	case POPPING:
 		callbackStepPopping(aDeltaTime, aTotalTime);
+		break;
+	case POPPED:
+		callbackStepPopped(aDeltaTime, aTotalTime);
+		break;
+	case GONE:
+		break;
+	}
 }
 
 void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
@@ -100,6 +115,26 @@ void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
 	thePreviousPosition = getTempCenter();
 }
 
+void Balloon::callbackStepPopped(qreal /*aDeltaTime*/, qreal aTotalTime)
+{
+	// during the Popped state, which lasts for POPPED_TIME (only 2-3 seconds),
+	// we reduce the mass step by step
+	// once the time runs out, we switch to "GONE" state
+
+	assert(thePoppingTimeStart>0.1);
+	qreal myDelta = aTotalTime - thePoppingTimeStart - POPPING_TIME;
+	if ( myDelta >= POPPED_TIME)
+		goToState(GONE);
+	else
+	{
+//		struct b2MassData myData;
+//		myData.mass  = POPPED_MASS - POPPED_MASS/(POPPED_TIME-myDelta);
+//		myData.center= b2Vec2(0,0);
+//		myData.I     = theB2BodyPtr->GetInertia();
+//		theB2BodyPtr->SetMass(&myData);
+	}
+}
+
 void Balloon::callbackStepPopping(qreal /*aDeltaTime*/, qreal aTotalTime)
 {
 	// is this the first callback in Popping state???
@@ -108,7 +143,7 @@ void Balloon::callbackStepPopping(qreal /*aDeltaTime*/, qreal aTotalTime)
 		thePoppingTimeStart=aTotalTime;
 		switchToSmallShape();
 	}
-	if (aTotalTime-thePoppingTimeStart > 0.3)
+	if (aTotalTime-thePoppingTimeStart > POPPING_TIME)
 		goToState(POPPED);
 }
 
@@ -138,7 +173,14 @@ Balloon::States Balloon::goToState(Balloon::States aNewState)
 		}
 		break;
 	case POPPED:
-		// nothing to do - end state
+		if (aNewState==GONE)
+		{
+			theState=GONE;
+			deletePhysicsObject();
+		}
+		break;
+	case GONE:
+		// nothing to be done here...
 		break;
 	}
 	return theState;

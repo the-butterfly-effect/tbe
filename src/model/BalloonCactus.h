@@ -54,7 +54,8 @@ public:
 	{
 		BALLOON,
 		POPPING,
-		POPPED
+		POPPED,
+		GONE
 	};
 
 	/// called by a Cactus or BedOfNails if the balloon is hit
@@ -96,6 +97,7 @@ private:
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
 	virtual void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepPopped  (qreal aTimeStep, qreal aTotalTime);
 	virtual void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
 
 private:
@@ -108,6 +110,10 @@ private:
 	States theState;
 
 	qreal thePoppingTimeStart;
+
+	const static qreal POPPING_TIME;
+	const static qreal POPPED_MASS;
+	const static qreal POPPED_TIME;
 };
 
 
