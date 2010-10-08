@@ -84,7 +84,7 @@ exit
 
 ###########################################################
 ## Let's start checking command line options
-DATADIR=BINARY_DIRECTORY
+DATADIR=""
 
 MYARG=`echo $1 | sed 's/^--//' | sed 's/=.*$//'`
 MYVAL=`echo $1 | sed 's/^--.*=//'`
@@ -103,7 +103,11 @@ make_3rdParty
 make_images
 
 # setup the actual DATADIR
-cat src/tbe_global.h.in | sed "s!%%DATADIR!QString(\"$DATADIR\")!" >src/tbe_global.h
+if [ -n "$DATADIR" ]; then 
+    cat src/tbe_global.h.in | sed "s!%%DATADIR!QString(\"$DATADIR\")!" >src/tbe_global.h
+else
+    cat src/tbe_global.h.in | sed "s!%%DATADIR!BINARY_DIRECTORY!" >src/tbe_global.h
+fi
 
 qmake
 
