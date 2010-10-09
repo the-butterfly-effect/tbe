@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,7 +17,6 @@
  */
 
 #include "Butterfly.h"
-#include "DrawButterfly.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "Property.h"
@@ -36,7 +35,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 
-const double Butterfly::theButterflyMass;
+const double Butterfly::theButterflyMass = 0.1;
 
 
 Butterfly::Butterfly()
@@ -45,9 +44,9 @@ Butterfly::Butterfly()
 	theProps.setDefaultPropertiesString(
 			Property::OBJECT_STRING + QString(":/") +
 			Property::BOUNCINESS_STRING + QString(":0/") +
+			Property::IMAGE_NAME_STRING  + QString(":ButterflyStill;ButterflyOpen;ButterflyHalfOpen;ButterflyStill/") +
 			Property::MASS_STRING
 				+ ":" + QString::number(theButterflyMass) + "/");
-	theProps.setProperty(Property::MASS_STRING, QString::number(theButterflyMass));
 
 	// butterflies don't bounce *ever*
 	setTheBounciness(0.0);
@@ -79,8 +78,9 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			// nothing to do, we just leave gravity take its course
 
 			// FIXME: it would be nice if the butterfly would land on its back
+			// This should be doable by moving the center of the mass to the back.
 
-			// Note that the DrawButterfly::paint will signal the DrawWorld of death
+			theWorldPtr->signalDeath();
 			break;
 		case FLAP_OPEN:
 		case FLAP_HALF:
@@ -124,15 +124,6 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			break;
 		}
 	}
-}
-
-
-DrawObject*  Butterfly::createDrawObject(void)
-{
-	assert(theDrawObjectPtr==NULL);
-	adjustParameters();
-	theDrawObjectPtr = new DrawButterfly(this, "Butterfly");
-	return theDrawObjectPtr;
 }
 
 

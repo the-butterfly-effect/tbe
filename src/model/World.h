@@ -210,6 +210,8 @@ public:
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 	
+	/// called on death of an object (possibly several times!)
+	void signalDeath(void);
 
 	/** take one step in the simulation loop
 	 *  Note that due to a limitation in OpenDE, each step is fixed time 

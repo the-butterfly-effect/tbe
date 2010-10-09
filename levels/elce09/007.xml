@@ -43,9 +43,7 @@
                 <property key="ImageName" >Empty</property>
             </object>
 			<object X="4.65" Y="4.34" type="Butterfly" ID="Butterfly">
-                <property key="ImageName" >Butterfly</property>
                 <property key="Object" >Flower</property>
-                <property key="Mass" >0.01</property>
             </object>
             <object width="0.85" height="0.86" X="5.91" Y="3.73" type="RectObject">
                 <property key="ImageName" >oldbrick</property>

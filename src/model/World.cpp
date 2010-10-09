@@ -409,6 +409,11 @@ goals_not_met:
 	return theDeltaTime;
 }
 
+void World::signalDeath(void)
+{
+	emit theDrawWorldPtr->on_death();
+}
+
 bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 {
 	if (anInterface==NULL)

@@ -77,9 +77,7 @@
 
 
 	    <object X="2.5" Y="0.94" type="Butterfly" ID="Butterfly">
-                <property key="ImageName" >Butterfly</property>
                 <property key="Object" >Flower</property>
-                <property key="Mass" >0.01</property>
             </object>
 
 	    <object width="0.5" height="0.1" X="4.25" Y="0.48" type="RectObject">

@@ -38,9 +38,7 @@
                 <property key="ImageName" >White-to-green</property>
             </object>
 			<object X="0.5" Y="0.40" type="Butterfly" ID="Butterfly">
-                <property key="ImageName" >Butterfly</property>
                 <property key="Object" >Flower</property>
-                <property key="Mass" >0.01</property>
             </object>
             
             <object X="1.4" Y="0.29" width="0.21" height="0.21" type="PolyObject">

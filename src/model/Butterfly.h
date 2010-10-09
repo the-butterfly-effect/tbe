@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -51,10 +51,6 @@ public:
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
 
-	/// overriden from BaseObject
-	/// because we need to instantiate a special DrawButterfly class
-	virtual DrawObject* createDrawObject();
-
 	enum ButterflyStatus
 	{
 		STILL,				// not implemented yet
@@ -66,6 +62,11 @@ public:
 	/// @returns the state of the butterfly state machine
 	ButterflyStatus getState(void)
 	{	return theButterflyState; }
+
+	/// overridden from BaseObject to allow representation of the states
+	/// @returns: returns a numerical index similar to the state
+	virtual int getImageIndex(void)
+	{ return getState(); }
 
 	/** sets up the Butterfly to fly to a Flower
 	  * or flap idly if there is no flower
@@ -101,7 +102,7 @@ private:
 
 private:
 	/// the weight of the butterfly (100 grams)
-	static const double theButterflyMass = 0.1;
+	static const double theButterflyMass;
 
 	/// central variable of the Butterfly state machine
 	ButterflyStatus theButterflyState;
