@@ -121,7 +121,7 @@ protected:
 		virtual void DrawXForm(const b2XForm& xf);
 
 private:
-		const static int theMaxNumberOfGraphicsListElements = 125;
+		const static int theMaxNumberOfGraphicsListElements;
 		typedef QList<QGraphicsItem*> GraphicsList;
 		GraphicsList theGraphicsList;
 		void addDebugDrawToList(QGraphicsItem* anItem);

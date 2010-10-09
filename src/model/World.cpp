@@ -24,8 +24,9 @@
 #include "BaseJoint.h"
 
 
-const qreal World::theDeltaTime;
-const unsigned int World::theIterationcount;
+const bool World::doSleep = true;
+const qreal World::theDeltaTime = 0.01;
+const unsigned int World::theIterationcount = 100;
 
 
 // Constructors/Destructors

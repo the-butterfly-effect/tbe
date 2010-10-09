@@ -39,7 +39,7 @@ static CokeMentosObjectFactory theCMBottleObjectFactory;
 
 
 
-const double CokeMentosBottle::theBottleMass;
+const double CokeMentosBottle::theBottleMass = 0.2;
 
 
 CokeMentosBottle::CokeMentosBottle()
@@ -248,7 +248,7 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-const qreal CokeSplatter::theRadius;
+const qreal CokeSplatter::theRadius = 0.04;
 
 
 CokeSplatter::CokeSplatter()

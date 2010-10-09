@@ -109,7 +109,7 @@ protected:
 
 	virtual void initAttributes ( );
 
-	static const qreal ASPECT_RATIO = 10.0;
+	static const qreal ASPECT_RATIO;
 
 	void setFriction(b2PolygonDef* aBoxDef);
 

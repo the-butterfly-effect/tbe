@@ -314,13 +314,13 @@ private:
 	b2AABB*  theAABBPtr;
 	
 	/// Do we want to let bodies sleep?
-	static const bool doSleep = true;
+	static const bool doSleep;
 	
 	/// the time taking in each time step
-	static const qreal theDeltaTime = 0.01;
+	static const qreal theDeltaTime;
 	
 	/// the number of iterations of Box2D per time step
-	static const unsigned int theIterationcount = 100;
+	static const unsigned int theIterationcount;
 	
 	QString theLevelName;
 

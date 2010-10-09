@@ -54,6 +54,9 @@ public:
 };
 
 
+const int DrawWorld::theMaxNumberOfGraphicsListElements = 125;
+
+
 // Constructors/Destructors
 //  
 

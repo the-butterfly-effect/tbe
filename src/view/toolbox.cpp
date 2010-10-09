@@ -31,6 +31,8 @@
 
 const char* TBItem::ToolboxMimeType   = "image/x-tbe-tool-scene";
 const char* TBItem::DrawWorldMimeType = "image/x-tbe-scene-tool";
+const unsigned int TBItem::INFINITE = 999;
+const unsigned int TBItem::TOOLBOX_ICON_SIZE = 48;
 
 
 TBItem::TBItem(unsigned int aCount,

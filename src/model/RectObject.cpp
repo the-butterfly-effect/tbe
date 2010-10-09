@@ -24,7 +24,7 @@
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
 
-const qreal RectObject::ASPECT_RATIO;
+const qreal RectObject::ASPECT_RATIO = 10.0;
 
 
 //// this class' ObjectFactory

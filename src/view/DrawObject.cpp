@@ -35,7 +35,7 @@
 
 static const int EXTRA_WHITESPACE = 2;
 
-const qreal DrawObject::theScale;
+const qreal DrawObject::theScale = 100.0;
 
 
 // set/get using static setter/getter in DrawObject

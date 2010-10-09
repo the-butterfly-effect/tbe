@@ -197,7 +197,7 @@ protected:
 
 	BaseObject* theBaseObjectPtr;
 
-	static const qreal theScale = 100.0;
+	static const qreal theScale;
 	
 	// current angle of the object in radians!
 	qreal	theOldAngle;

@@ -71,7 +71,7 @@ protected:
 	virtual void adjustParameters(void)
 	{ ; }
 
-	const static qreal theRadius = 0.04;
+	const static qreal theRadius;
 };
 
 
@@ -160,7 +160,7 @@ private:
 	float theCokeAmount;
 
 	/// the weight of an empty bottle in [kg]
-	static const double theBottleMass = 0.2;
+	static const double theBottleMass;
 
 	/// the number of splatters splat.
 	/// used in the calculation of the exit velocity of the splatter
