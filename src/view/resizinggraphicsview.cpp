@@ -81,6 +81,14 @@ bool ResizingGraphicsView::handleDnD(BaseObject* aBOPtr)
 	return false;
 }
 
+void ResizingGraphicsView::keyPressEvent(QKeyEvent* anEvent)
+{
+	if (theIsLevelEditor==false)
+		return;
+	QGraphicsView::keyPressEvent(anEvent);
+}
+
+
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent* event)
 {
 	// if we're running out of the widget to the right, let's start the Drag&Drop

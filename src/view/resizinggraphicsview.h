@@ -84,6 +84,12 @@ protected:
 	virtual void dragLeaveEvent(QDragLeaveEvent* anEvent)
 	{ QGraphicsView::dragLeaveEvent(anEvent); isDoNotResize = false; }
 
+
+	/** OVERRIDDEN from QGraphicsView
+	  * remove the ability to use pageup/pagedown
+	  */
+	virtual void keyPressEvent(QKeyEvent* anEvent);
+
 	/** OVERRIDDEN from QGraphicsView
 	  * if mouse is near end of the view, start a drag&drop
 	  */
