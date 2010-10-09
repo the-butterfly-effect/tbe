@@ -17,7 +17,6 @@
  */
 
 #include "CokeMentosBottle.h"
-#include "DrawCokeMentosBottle.h"
 #include "tbe_global.h"
 #include "Box2D.h"
 #include "Property.h"
@@ -74,6 +73,7 @@ CokeMentosBottle::CokeMentosBottle()
 	setBottleStatus(UNTRIGGERED);
 
 	theProps.setDefaultPropertiesString(
+		Property::IMAGE_NAME_STRING  + QString(":CokeBottleNormal;CokeBottleFoaming;CokeBottleBlowing;CokeBottleEmpty/") +
 		Property::MASS_STRING + QString(":2.0/") +
 		Property::THRUST_STRING + QString(":2.0/") );
 }
@@ -105,14 +105,6 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 	}
 
 
-}
-
-DrawObject*  CokeMentosBottle::createDrawObject(void)
-{
-	assert(theDrawObjectPtr==NULL);
-	adjustParameters();
-	theDrawObjectPtr = new DrawCokeMentosBottle(this, "CokeMentosBottle");
-	return theDrawObjectPtr;
 }
 
 void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)

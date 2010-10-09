@@ -136,8 +136,8 @@ void BaseObject::clearShapeList()
 DrawObject*  BaseObject::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
-	if (myImageName.isEmpty())
+	QString myImageName;
+	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getName();
 
 	theDrawObjectPtr = new DrawObject(this, myImageName);

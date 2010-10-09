@@ -105,8 +105,13 @@ public:
 	/// one of the two ways to trigger the blowing:
 	void setBottleStatus(BottleStatus aNewStat);
 
-	/// one of the two ways to trigger the blowing:
+	/// @returns the current bottle state
 	BottleStatus getBottleStatus(void)
+	{ return theBottleStatus; }
+
+	/// overridden from BaseObject to allow representation of the states
+	/// @returns: returns a numerical index similar to the state
+	virtual int getImageIndex(void)
 	{ return theBottleStatus; }
 
 	/// overridden from BaseObject - we want reports on NormalImpulse
@@ -121,9 +126,6 @@ public:
 
 	/// overridden from BaseObject because this class wants to register for callbacks
 	virtual void reset(void);
-
-	/// overriden from BaseObject
-	virtual DrawObject* createDrawObject();
 
 private:
 	/// implemented from SimStepCallbackInterface
