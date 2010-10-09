@@ -35,7 +35,7 @@ static ButterflyObjectFactory theButterflyObjectFactory;
 
 
 
-const double Butterfly::theButterflyMass = 0.1;
+const double Butterfly::theButterflyMass = 0.01;
 
 
 Butterfly::Butterfly()
@@ -98,7 +98,7 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			{
 				myYImpulse = 0.2 * myDY - 0.1*myYd;
 			}
-			const qreal myYRate = 2.0 * theButterflyMass;
+			const qreal myYRate = 25.0 * theButterflyMass;
 			if (myYImpulse > myYRate)
 				myYImpulse = myYRate;
 			if (myYImpulse < -myYRate)
