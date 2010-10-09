@@ -15,7 +15,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docbase="/home/evans/Desktop"
-   sodipodi:docname="coke_PET.svg"
+   sodipodi:docname="CokeBottleFoaming.svg"
    version="1.0"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:modified="true"
@@ -882,13 +882,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1247596"
-     inkscape:cx="83.405425"
+     inkscape:cx="-30.396671"
      inkscape:cy="252.4984"
      inkscape:document-units="px"
      inkscape:current-layer="foam"
      inkscape:window-width="1153"
      inkscape:window-height="783"
-     inkscape:window-x="0"
+     inkscape:window-x="119"
      inkscape:window-y="0"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -910,43 +910,9 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
-     id="liquid"
-     inkscape:label="liquid"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <path
-       transform="translate(-102.08726,-60.975131)"
-       style="fill:#3c0000;fill-opacity:1;stroke:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       d="M 185.42494,119.48832 C 176.42595,119.48831 167.71643,120.94871 159.57102,123.63948 C 155.5783,163.32398 109.18882,162.23945 107.89512,241.40267 L 110.2847,339.4233 C 126.7569,387.20568 128.21892,436.39526 113.88398,487.0658 L 114.01006,492.23765 C 114.7132,521.0805 121.94045,545.42991 143.11937,545.4299 C 157.11327,545.42991 162.94766,536.29112 163.28317,532.83093 C 163.28324,545.50363 170.16574,559.22568 186.00731,559.22562 C 201.67243,559.22566 208.18415,545.13341 208.18414,532.83096 C 208.98829,535.01958 214.70602,543.81804 228.70106,543.81803 C 244.92679,543.81809 255.68769,518.53455 256.64598,492.23757 L 257.11048,479.49103 C 250.00049,441.01487 242.87046,402.55446 262.06954,343.40689 L 265.72665,243.0504 C 266.0862,166.66866 212.31217,158.39749 210.74263,123.47101 C 202.75834,120.8878 194.23429,119.4883 185.42494,119.48832 z"
-       id="filling"
-       sodipodi:nodetypes="cccccssczcssccccc"
-       inkscape:label="filling" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       id="path3516"
-       sodipodi:cx="162.92206"
-       sodipodi:cy="4.3595386"
-       sodipodi:rx="3.0274572"
-       sodipodi:ry="3.2517133"
-       d="M 165.94952,4.3595386 A 3.0274572,3.2517133 0 1 1 159.8946,4.3595386 A 3.0274572,3.2517133 0 1 1 165.94952,4.3595386 z"
-       transform="translate(3.198e-2,-0.607825)" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       id="path3532"
-       sodipodi:cx="162.92206"
-       sodipodi:cy="4.3595386"
-       sodipodi:rx="3.0274572"
-       sodipodi:ry="3.2517133"
-       d="M 165.94952,4.3595386 A 3.0274572,3.2517133 0 1 1 159.8946,4.3595386 A 3.0274572,3.2517133 0 1 1 165.94952,4.3595386 z"
-       transform="translate(-159.3946,493.08766)" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
      id="foam"
      inkscape:label="foam"
-     style="display:none"
+     style="display:inline"
      sodipodi:insensitive="true">
     <path
        style="fill:#f2aa5d;fill-opacity:1;stroke:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"

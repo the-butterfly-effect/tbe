@@ -1,4 +1,3 @@
-SVGSRC=coke_PET.svg
-SVGDST=CokeMentosBottle.svg
-
 include ../Makefile 
+SVGSRC=CokeBottleBlowing.svg  CokeBottleEmpty.svg  CokeBottleFoaming.svg  CokeBottleNormal.svg
+

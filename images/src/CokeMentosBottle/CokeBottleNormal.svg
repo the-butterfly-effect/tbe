@@ -15,7 +15,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docbase="/home/evans/Desktop"
-   sodipodi:docname="coke_PET.svg"
+   sodipodi:docname="CokeBottleNormal.svg"
    version="1.0"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:modified="true"
@@ -882,13 +882,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1247596"
-     inkscape:cx="83.405425"
+     inkscape:cx="-30.396671"
      inkscape:cy="252.4984"
      inkscape:document-units="px"
-     inkscape:current-layer="foam"
+     inkscape:current-layer="bottle"
      inkscape:window-width="1153"
      inkscape:window-height="783"
-     inkscape:window-x="0"
+     inkscape:window-x="119"
      inkscape:window-y="0"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -941,43 +941,6 @@
        sodipodi:ry="3.2517133"
        d="M 165.94952,4.3595386 A 3.0274572,3.2517133 0 1 1 159.8946,4.3595386 A 3.0274572,3.2517133 0 1 1 165.94952,4.3595386 z"
        transform="translate(-159.3946,493.08766)" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="foam"
-     inkscape:label="foam"
-     style="display:none"
-     sodipodi:insensitive="true">
-    <path
-       style="fill:#f2aa5d;fill-opacity:1;stroke:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       d="M 83.337677,58.513192 C 75.071223,58.513183 65.129768,59.62425 57.564717,61.910584 C 54.769816,102.8978 6.7505738,102.19951 5.4783151,181.74574 L 7.9196924,276.27069 C 25.61982,328.93762 24.840699,378.13969 11.761972,425.03558 L 11.9228,431.26252 C 12.667722,460.10432 19.85319,484.45478 41.03211,484.45477 C 55.02601,484.45478 60.8604,475.31599 61.19591,471.8558 C 61.19598,484.5285 68.07848,498.25055 83.920047,498.25049 C 99.585167,498.25053 106.09689,484.15828 106.09688,471.85583 C 106.90103,474.04445 112.61876,482.84291 126.6138,482.8429 C 142.83953,482.84296 153.67107,457.5619 154.55872,431.26244 L 155.0494,416.72442 C 148.54741,378.17894 140.02301,341.29474 159.61981,281.31097 L 162.98029,181.74572 C 163.02203,99.041887 116.9441,107.61814 107.70634,62.300635 C 100.03923,59.938385 91.745872,58.513177 83.337677,58.513192 z"
-       id="path3432"
-       sodipodi:nodetypes="cccccssczcssccccc"
-       inkscape:label="filling" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       id="path3518"
-       sodipodi:cx="162.92206"
-       sodipodi:cy="4.3595386"
-       sodipodi:rx="3.0274572"
-       sodipodi:ry="3.2517133"
-       d="M 165.94952,4.3595386 A 3.0274572,3.2517133 0 1 1 159.8946,4.3595386 A 3.0274572,3.2517133 0 1 1 165.94952,4.3595386 z"
-       transform="translate(3.198e-2,-0.607825)" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
-       id="path3530"
-       sodipodi:cx="162.92206"
-       sodipodi:cy="4.3595386"
-       sodipodi:rx="3.0274572"
-       sodipodi:ry="3.2517133"
-       d="M 165.94952,4.3595386 A 3.0274572,3.2517133 0 1 1 159.8946,4.3595386 A 3.0274572,3.2517133 0 1 1 165.94952,4.3595386 z"
-       transform="translate(-159.3946,493.08766)" />
-    <path
-       style="fill:#f2aa5d;fill-opacity:1;stroke:none;stroke-width:4.03399992;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline"
-       d="M 82.6875,30.9375 C 68.911968,30.9375 57.75,34.012378 57.75,37.78125 C 57.75,38.006839 57.796853,38.217605 57.875,38.4375 C 57.878452,38.447214 57.871399,38.459048 57.875,38.46875 C 57.86425,38.544286 57.84375,38.608901 57.84375,38.6875 L 57.84375,81.125 C 57.84375,82.019477 58.574274,82.71875 59.46875,82.71875 L 106.84375,82.71875 C 107.73823,82.71875 108.46875,82.019476 108.46875,81.125 L 108.46875,38.6875 C 108.46875,38.044595 108.10388,37.510108 107.5625,37.25 C 106.54757,33.733601 95.794123,30.9375 82.6875,30.9375 z"
-       id="rect4495" />
   </g>
   <g
      inkscape:label="bottle"

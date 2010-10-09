@@ -13,3 +13,8 @@ filename:  coke_PET.svg
 author:    Klaas van Gend, based on above modified_PET.svg
 license:   CC-SA-3.0
 note:	   modified outline and colors to fit diet coke bottle better
+
+filename:  CokeBottle*.svg (*=Normal;Foaming;Blowing;Empty)
+author:    Klaas van Gend, based on above coke_PET.svg
+license:   CC-SA-3.0
+note:	   Derived+Simplified from coke_PET.svg: 4 images for the different stages
