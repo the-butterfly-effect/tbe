@@ -1,4 +1,3 @@
-SVGSRC=Butterfly.svg
-SVGDST=Butterfly.svg
-
 include ../Makefile 
+SVGSRC=ButterflyHalfOpen.svg  ButterflyOpen.svg  ButterflyStill.svg
+
