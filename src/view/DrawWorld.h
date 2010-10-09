@@ -166,7 +166,7 @@ protected:
 	/** overridden from QGraphicsScene:
 	  * do not respond to UI when not allowed to
 	  */
-	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
+	virtual void focusInEvent ( QFocusEvent * focusEvent );
 
 private:
 	// Private attributes

@@ -293,18 +293,22 @@ void DrawWorld::invalidateCaching(void)
 	}
 }
 
-void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+void DrawWorld::focusInEvent ( QFocusEvent * focusEvent )
 {
 	if (isUserInteractionAllowed)
 	{
-		QGraphicsScene::mousePressEvent(mouseEvent);
+		QGraphicsScene::focusInEvent(focusEvent);
 	}
 	else
 	{
-		Popup::Warning(tr("You cannot make changes now. You need to reset the stopwatch first."), views().first());
+		if (true == Popup::YesNoQuestion(
+				tr("You cannot make changes now. Reset the stopwatch?"),
+				views().first()))
+		{
+			emit theSimStateMachine->clicked_on_reset();
+		}
 	}
 }
-
 
 void DrawWorld::on_death(void)
 {
