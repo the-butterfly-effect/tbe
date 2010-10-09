@@ -374,6 +374,7 @@ void StartStopWatch::startStopwatch()
 void StartStopWatch::stopStopwatch()
 {
 	theTimer.stop();
+	disconnect(&theTimer, SIGNAL(timeout()), this, SLOT(progressHand()));
 	emit stopSim();
 	displayTooltip(true);
 }
