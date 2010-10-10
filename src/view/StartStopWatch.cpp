@@ -282,6 +282,13 @@ void StartStopWatch::keypress_reset()
 
 void StartStopWatch::mousePressEvent (QGraphicsSceneMouseEvent * aMouseEvent )
 {
+	// handle right-mouse button as "always reset"
+	if (aMouseEvent->buttons().testFlag(Qt::RightButton))
+	{
+		clicked_on_reset();
+		return;
+	}
+
 	QGraphicsItem* myItemPtr = itemAt(aMouseEvent->scenePos());
 	if (myItemPtr==theStopWatchSvgPtr || myItemPtr==theStopWatchHandSvgPtr)
 		clicked_on_watch();
