@@ -405,6 +405,13 @@ ObjectFactory::createObject(
 	return myObjectPtr;
 }
 
+
+BaseObject* ObjectFactory::fixObject(BaseObject* anObject) const
+{
+	anObject->theInternalName = theFactoryName;
+	return anObject;
+}
+
 ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
 {
 	if (theFactoryListPtr==NULL)

@@ -29,7 +29,7 @@ public:
 	TranslationGuideObjectFactory(void)
 	{	announceObjectType("TranslationGuide", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new TranslationGuide(); }
+	{	return fixObject(new TranslationGuide()); }
 };
 static TranslationGuideObjectFactory theRFactory;
 

@@ -41,7 +41,7 @@ public:
 	BalloonObjectFactory(void)
 	{	announceObjectType("Balloon", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Balloon(); }
+	{	return fixObject(new Balloon()); }
 };
 static BalloonObjectFactory theBalloonObjectFactory;
 
@@ -246,7 +246,7 @@ public:
 	CactusObjectFactory(void)
 	{	announceObjectType("Cactus", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Cactus(); }
+	{	return fixObject(new Cactus()); }
 };
 static CactusObjectFactory theCactusObjectFactory;
 
@@ -322,7 +322,7 @@ public:
 	BedOfNailsObjectFactory(void)
 	{	announceObjectType("BedOfNails", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new BedOfNails(); }
+	{	return fixObject(new BedOfNails()); }
 };
 static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
 

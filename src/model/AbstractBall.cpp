@@ -44,8 +44,8 @@ public:
 	{	announceObjectType(anInternalName, this); }
 
 	virtual BaseObject* createObject(void) const
-	{	return new AbstractBall(theDisplayName, theTooltip, theImageName,
-								theRadius, theMass, theBounciness); }
+	{	return fixObject(new AbstractBall(theDisplayName, theTooltip, theImageName,
+								theRadius, theMass, theBounciness)); }
 private:
 		QString theDisplayName;
 		QString theTooltip;
@@ -153,7 +153,7 @@ public:
 	CustomBallObjectFactory(void)
 	{	announceObjectType("CustomBall", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new CustomBall(); }
+	{	return fixObject(new CustomBall()); }
 };
 static CustomBallObjectFactory theCustomBallObjectFactory;
 

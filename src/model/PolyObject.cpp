@@ -32,7 +32,7 @@ public:
 	PolyObjectFactory(void)
 	{	announceObjectType(DEFAULT_POLYOBJECT_NAME, this); }
 	virtual BaseObject* createObject(void) const
-	{	return new PolyObject(); }
+	{	return fixObject(new PolyObject()); }
 };
 static PolyObjectFactory theRectObjectFactory;
 
@@ -62,8 +62,10 @@ public:
 	{	announceObjectType(anInternalName, this); }
 
 	virtual BaseObject* createObject(void) const
-	{	return new PolyObject(theDisplayName, theTooltip, theImageName, theOutline,
-								theWidth, theHeight, theMass, theBounciness); }
+	{	return fixObject(new PolyObject(theDisplayName, theTooltip,
+										theImageName, theOutline,
+										theWidth, theHeight, theMass,
+										theBounciness)); }
 private:
 		QString theDisplayName;
 		QString theTooltip;

@@ -28,7 +28,7 @@ public:
 	PostItObjectFactory(void)
 	{	announceObjectType("PostIt", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new PostIt(); }
+	{	return fixObject(new PostIt()); }
 };
 static PostItObjectFactory theFactory;
 

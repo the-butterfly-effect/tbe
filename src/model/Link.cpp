@@ -30,7 +30,7 @@ public:
 	LinkObjectFactory(void)
 	{	announceObjectType("Link", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Link(); }
+	{	return fixObject(new Link()); }
 };
 static LinkObjectFactory theLinkFactory;
 

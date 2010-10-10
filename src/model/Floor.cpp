@@ -27,7 +27,7 @@ public:
 	FloorObjectFactory(void)
 	{	announceObjectType("Floor", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Floor(); }
+	{	return fixObject(new Floor()); }
 };
 static FloorObjectFactory theFactory;
 

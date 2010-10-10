@@ -34,7 +34,7 @@ public:
 	RectObjectFactory(void)
 	{	announceObjectType(DEFAULT_RECTOBJECT_NAME, this); }
 	virtual BaseObject* createObject(void) const
-	{	return new RectObject(); }
+	{	return fixObject(new RectObject()); }
 };
 static RectObjectFactory theRectObjectFactory;
 
@@ -62,8 +62,9 @@ public:
 	{	announceObjectType(anInternalName, this); }
 
 	virtual BaseObject* createObject(void) const
-	{	return new RectObject(theDisplayName, theTooltip, theImageName,
-								theWidth, theHeight, theMass, theBounciness); }
+	{	return fixObject(new RectObject(theDisplayName, theTooltip,
+										theImageName, theWidth, theHeight,
+										theMass, theBounciness)); }
 private:
 		QString theDisplayName;
 		QString theTooltip;

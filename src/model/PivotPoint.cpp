@@ -29,7 +29,7 @@ public:
 	PivotPointObjectFactory(void)
 	{	announceObjectType("PivotPoint", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new PivotPoint(); }
+	{	return fixObject(new PivotPoint()); }
 };
 static PivotPointObjectFactory theRFactory;
 

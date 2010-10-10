@@ -33,7 +33,7 @@ public:
 	CokeMentosObjectFactory(void)
 	{	announceObjectType("CokeMentosBottle", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new CokeMentosBottle(); }
+	{	return fixObject(new CokeMentosBottle()); }
 };
 static CokeMentosObjectFactory theCMBottleObjectFactory;
 

@@ -521,6 +521,9 @@ protected:
 	
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 	
+	/// setup e.g. theInternalName of the object
+	BaseObject* fixObject(BaseObject*) const;
+
 	QString getFactoryName(void) const
 	{ return theFactoryName; }
 

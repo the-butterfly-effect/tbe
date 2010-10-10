@@ -28,7 +28,7 @@ public:
 	ButterflyObjectFactory(void)
 	{	announceObjectType("Butterfly", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Butterfly(); }
+	{	return fixObject(new Butterfly()); }
 };
 static ButterflyObjectFactory theButterflyObjectFactory;
 

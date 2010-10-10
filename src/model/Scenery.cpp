@@ -29,7 +29,7 @@ public:
 	SceneryObjectFactory(void)
 	{	announceObjectType("Scenery", this); }
 	virtual BaseObject* createObject(void) const
-	{	return new Scenery(); }
+	{	return fixObject(new Scenery()); }
 };
 static SceneryObjectFactory theFactory;
 
