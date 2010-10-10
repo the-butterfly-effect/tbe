@@ -319,7 +319,7 @@ void DrawWorld::on_death(void)
 	if (theCongratDeathBoxPtr!=NULL)
 		return;
 	else
-		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Death - retry?"), this);
+		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Death - retry?"), this, theMainWindowPtr);
 
 	theSimStateMachine->goToState(StartStopWatch::BROKEN);
 }
@@ -355,7 +355,7 @@ void DrawWorld::on_winning(void)
 	if (theCongratDeathBoxPtr!=NULL)
 		return;
 	else
-		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Congratulations"), this);
+		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Congratulations"), this, theMainWindowPtr);
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
 }
@@ -509,8 +509,9 @@ void DrawWorld::clearGraphicsList(int aCount)
 
 DrawWorld::CongratDeathMessage::CongratDeathMessage(
 		const QString& aMessage,
-		DrawWorld* aScenePtr)
-		: QGraphicsSvgItem(IMAGES_DIRECTORY + "/congrat-death-border.svg")
+		DrawWorld* aScenePtr,
+		MainWindow* aMainWindowPtr)
+		: QGraphicsSvgItem(IMAGES_DIRECTORY + "/congrat-death-border.svg"), theScenePtr(aScenePtr)
 {
 	// the image is put in scene coordinates
 	QRectF myImageBounds = boundingRect();
@@ -523,13 +524,54 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 	setZValue(10.0);
 	aScenePtr->addItem(this);
 
-	// No need to keep the myTextPtr outside the constructor as QT will
-	// keep track of the children itself
-	QGraphicsSimpleTextItem* myTextPtr = new QGraphicsSimpleTextItem(aMessage, this);
-	QRectF myTextBounds = myTextPtr->boundingRect();
+	theTextPtr = new QGraphicsSimpleTextItem(aMessage, this);
+	QRectF myTextBounds = theTextPtr->boundingRect();
 	myResize = 0.9 * boundingRect().width() / myTextBounds.width() ;
-	myTextPtr->setBrush(Qt::white);
-	myTextPtr->scale(myResize, myResize);
-	myTextBounds = myTextPtr->mapToParent( myTextPtr->boundingRect() ).boundingRect();
-	myTextPtr->setPos(boundingRect().center() - myTextBounds.center());
+	theTextPtr->setBrush(Qt::white);
+	theTextPtr->scale(myResize, myResize);
+	myTextBounds = theTextPtr->mapToParent( theTextPtr->boundingRect() ).boundingRect();
+	theTextPtr->setPos(boundingRect().center() - myTextBounds.center());
+
+	QGraphicsView* myView = aScenePtr->views()[0];
+	theButtons[0] = new QPushButton(tr("Replay"), myView );
+	theButtons[0]->show();
+	theButtons[1] = new QPushButton(tr("Choose..."), myView );
+	theButtons[1]->show();
+	theButtons[2] = new QPushButton(tr("Next>"), myView );
+	theButtons[2]->show();
+	moveButtons();
+
+	connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld()));
+	connect(theButtons[1], SIGNAL(clicked()), aMainWindowPtr, SLOT(on_actionOpen_level_activated()));
+	connect(theButtons[2], SIGNAL(clicked()), aMainWindowPtr, SLOT(slot_next_level()));
+
+}
+
+DrawWorld::CongratDeathMessage::~CongratDeathMessage()
+{
+	delete theButtons[0];
+	delete theButtons[1];
+	delete theButtons[2];
+}
+
+void DrawWorld::CongratDeathMessage::moveButtons()
+{
+	QGraphicsView* myView = theScenePtr->views()[0];
+	QPointF myButtonLPos = theTextPtr->mapToScene(QPointF(theTextPtr->boundingRect().left(),
+								  theTextPtr->boundingRect().bottom()));
+
+	theButtons[0]->move(myView->mapFromScene(myButtonLPos));
+
+	theButtons[1]->move(theButtons[0]->x() + theButtons[0]->width() + 20,
+						theButtons[0]->y());
+
+	theButtons[2]->move(theButtons[1]->x() + theButtons[1]->width() + 20,
+						theButtons[1]->y());
+}
+
+void DrawWorld::CongratDeathMessage::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+			   QWidget *widget)
+{
+	QGraphicsSvgItem::paint(painter, option, widget);
+	moveButtons();
 }

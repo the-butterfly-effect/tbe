@@ -25,7 +25,6 @@
 // forward declarations
 class DrawWorld;
 class Level;
-class QPushButton;
 
 class MainWindow : public QMainWindow
 {
@@ -65,9 +64,6 @@ private slots:
 	void on_action_double_speed_activated(void)
 	{ setSimSpeed(2.0); }
 
-	/// called internally by all inside graphicsview
-	void slot_clear_buttons(void);
-
 	/// slot for QAction menu-view-"draw debug"
 	void slot_drawDebugAction_toggle(bool isChecked);
 	/// slot for QAction menu-view-"draw polyoutline"
@@ -101,7 +97,6 @@ private:
 	QAction*	theNewLevelActionPtr;
 	QAction*	theUndoActionPtr;
 	QAction*	theRedoActionPtr;
-	QPushButton* theButtons[3];
 
 	qreal theSimSpeed;
 

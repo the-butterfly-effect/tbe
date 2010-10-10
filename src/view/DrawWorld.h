@@ -21,12 +21,13 @@
 
 #include "BaseObject.h"
 
-#include <QGraphicsScene>
 #include <QGraphicsRectItem>
-#include <QTimer>
-#include <QTime>
-#include <QUndoStack>
+#include <QGraphicsScene>
 #include <QGraphicsSvgItem>
+#include <QPushButton>
+#include <QTime>
+#include <QTimer>
+#include <QUndoStack>
 
 #include "Box2D.h"
 
@@ -213,11 +214,23 @@ private:
 	class CongratDeathMessage : QGraphicsSvgItem
 	{
 	public:
-		CongratDeathMessage(const QString& aMessage, DrawWorld* aScene);
+		CongratDeathMessage(const QString& aMessage, DrawWorld* aScene, MainWindow* aMainWindowPtr);
+		virtual ~CongratDeathMessage();
 	private:
 		// I originally also wanted to hookup onClick events, but
 		// that makes no sense as the DrawWorld is still in locked state:
 		// you'll always get a message to reset the stopwatch.
+
+		QPushButton* theButtons[3];
+		QGraphicsScene* theScenePtr;
+		QGraphicsSimpleTextItem* theTextPtr;
+
+		void moveButtons(void);
+
+		/// overriden so we can move the buttons around
+		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+			   QWidget *widget);
+
 	};
 
 	CongratDeathMessage* theCongratDeathBoxPtr;

@@ -12,7 +12,9 @@
      <toolbox>
         <toolboxitem count="1" name="Coke+Mentos Bottle">
             <name lang="nl">Coke-Mentos fles</name>
-            <object type="CokeMentosBottle"/>
+	    <object type="CokeMentosBottle">
+		    <property key="Rotatable">true</property>
+	    </object>
         </toolboxitem>
     </toolbox>
     <scene>
