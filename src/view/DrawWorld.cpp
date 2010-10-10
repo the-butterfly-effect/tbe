@@ -296,11 +296,11 @@ void DrawWorld::invalidateCaching(void)
 	}
 }
 
-void DrawWorld::focusInEvent ( QFocusEvent * focusEvent )
+void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
 	if (isUserInteractionAllowed)
 	{
-		QGraphicsScene::focusInEvent(focusEvent);
+		QGraphicsScene::mousePressEvent(mouseEvent);
 	}
 	else
 	{
