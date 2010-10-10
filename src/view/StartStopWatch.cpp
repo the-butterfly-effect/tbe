@@ -128,7 +128,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 			case NOTSTARTED:	// no need for action
 				break;
 			case STOPPED:		// should not happen
-				assert(false);
+				DEBUG2("state change ignored\n");
 				break;
 			case RUNNING:		// watch clicked
 				startStopwatch();
@@ -136,10 +136,8 @@ void StartStopWatch::goToState(TheStates aNewState)
 				theState = aNewState;
 				break;
 			case FAST:			// should not happen
-				assert(false);
-				break;
 			case BROKEN:		// should not happen
-				assert(false);
+				DEBUG2("state change ignored\n");
 				break;
 			}
 			break;
@@ -163,7 +161,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 				break;
 			case BROKEN:		// should not happen
 			case FAST:			// should not happen
-				assert(false);
+				DEBUG2("state change ignored\n");
 				break;
 			}
 			break;
@@ -252,7 +250,7 @@ void StartStopWatch::goToState(TheStates aNewState)
 			case STOPPED:
 			case RUNNING:
 			case FAST:
-				assert(false);
+				DEBUG2("state change ignored\n");
 				break;
 			}
 			break;
