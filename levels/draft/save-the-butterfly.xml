@@ -1,0 +1,79 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Save the butterfly!</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>save the butterfly, topple the pin.
+</description>
+        <date>10/11/10</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="7" height="4" />
+        <predefined>
+            <object width="0.2212238609790802" X="6.802119700801657" Y="0.3333304077386856" height="0.4064355790615082" type="RectObject" angle="0" >
+                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+            </object>
+            <object width="0.2" X="6.76" Y="0.4" height="0.2" type="Scenery" ID="Flower" angle="0" >
+                <property key="ImageName" >lala</property>
+            </object>
+            <object width="3.125626087188721" X="5.43718695640564" Y="0.05000000074505806" height="0.1" type="Floor" angle="0" >
+                <property key="ImageName" >White-to-green</property>
+            </object>
+            <object width="0.15" X="3.958200313402838" Y="0.2940220136943474" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0" >
+                <property key="Description" >This is the butterfly.</property>
+                <property key="object" >Flower</property>
+            </object>
+            <object width="0.22" X="0.8054592312308121" Y="3.401516555575522" height="0.22" type="BowlingBall" angle="0" />
+            <object width="2.361613512039185" X="2.706045031547546" Y="0.05000000074505806" height="0.1" type="Floor" angle="0" />
+            <object width="1.69867479801178" X="0.7595076698975269" Y="0.3516205919917393" height="0.1" type="Floor" angle="-0.3767769336700439" />
+            <object width="0.22" X="0.1796793741007611" Y="3.382929022271148" height="0.22" type="BowlingBall" angle="0" />
+            <object width="0.15" X="3.800074557755689" Y="0.4500000000000001" height="0.7000000000000001" type="RectObject" ID="Styro" angle="0" >
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass" >0.01</property>
+                <property key="TranslationGuide" >1.57</property>
+            </object>
+            <object width="0.27" X="3.43" Y="1.840000000000003" height="0.36" type="Balloon" ID="Balloon1" angle="0.18" />
+            <object width="0.27" X="3.65" Y="2.04" height="0.36" type="Balloon" ID="Balloon2" angle="0" />
+            <object width="0.27" X="3.95" Y="2.04" height="0.36" type="Balloon" ID="Balloon3" angle="0" />
+            <object width="0.27" X="4.2" Y="1.84" height="0.36" type="Balloon" ID="Balloon4" angle="-0.18" />
+            <object width="2.577562808990479" X="5.17" Y="0.74" height="0.1" type="Floor" angle="0" />
+            <object width="0.12" X="5.81" Y="0.9600000000000001" height="0.34" type="BowlingPin" angle="0" />
+            <object width="0.25" X="2.541456417387653" Y="2.457282903035162" height="0.4" type="Cactus" angle="-1.5708" />
+            <object width="0.6925209164619446" X="2.180505146474305" Y="2.214819282204452" height="0.1" type="Floor" angle="0" />
+            <object width="1.185407519340515" X="4.194912297811045" Y="0.8740942895320224" height="0.3951358497142792" type="Link" angle="0" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon1@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.25)</property>
+            </object>
+            <object width="1.352105379104614" X="2.74" Y="2.84" height="0.4507018029689789" type="Link" angle="0" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon2@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.25)</property>
+            </object>
+            <object width="1.352105379104614" X="2.74" Y="2.84" height="0.4507018029689789" type="Link" angle="0" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon3@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.25)</property>
+            </object>
+            <object width="1.196215867996216" X="2.74" Y="2.84" height="0.3987386226654053" type="Link" angle="0" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon4@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.25)</property>
+            </object>
+            <object width="1" X="0.9296002185961108" Y="3.025436610013066" height="0.5374336838722229" type="RightRamp" angle="0" />
+            <object width="2.119999999999998" X="2.63" Y="0.74" height="0.1" type="Floor" angle="0" />
+            <object width="1" X="1.14" Y="0.93" height="0.1" type="Floor" angle="-0.38" />
+            <object width="0.15" X="4.853442757758933" Y="1.50982042145777" height="1" type="RectObject" angle="0" >
+                <property key="ImageName" >oldbrick</property>
+            </object>
+            <object width="0.2836369276046753" X="2.635480809133326" Y="2.285985301841523" height="0.1" type="Floor" angle="0.5793893337249756" />
+            <object width="1" X="3.836940384023307" Y="2.894862338515145" height="0.1" type="Floor" angle="0" />
+            <object width="0.22" X="1.902872873377412" Y="0.2433181706941609" height="0.22" type="BowlingBall" angle="0" />
+            <object width="0.22" X="2.139952116617877" Y="0.2620349530552502" height="0.22" type="BowlingBall" angle="0" />
+            <object width="0.166" X="2.021580802887315" Y="2.333322887831073" height="0.501" type="CokeMentosBottle" angle="1.54539680480957" />
+        </predefined>
+    </scene>
+    <goals/>
+</tbe-level>
