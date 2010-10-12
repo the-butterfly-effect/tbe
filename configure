@@ -38,12 +38,12 @@ if [ $? = 1 ] ; then let MISSINGPACKAGE++; let STATICQT++; fi
 test_package uic   'libqt-dev,libqt4-devel or similar'
 if [ $? = 1 ] ; then let MISSINGPACKAGE++; let STATICQT++; fi
 
-if [ $STATICQT -lt 0 ]; then
+if [ $STATICQT -gt 0 ]; then
     echo "Alternatively, run the 'make-release.sh' script that will build a static QT"
     echo "library and link against that one."
 fi;
 
-if [ $MISSINGPACKAGE -lt 0 ]; then
+if [ $MISSINGPACKAGE -gt 0 ]; then
 	echo
 	echo "Oops, not all dependencies are met. I will quit now so you can"
 	echo "install these packages..."
