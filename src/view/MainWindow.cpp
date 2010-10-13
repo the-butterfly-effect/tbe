@@ -159,6 +159,10 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	// if a level is already loaded, let's populate the toolbox
 	if (theScenePtr!=NULL)
 		ui.theToolBoxView->fillFromObjectFactory();
+	// and make sure we can select all existing objects
+	DrawWorld* myDWPtr = dynamic_cast<DrawWorld*>(theScenePtr);
+	if (myDWPtr!=NULL)
+		myDWPtr->makeAllObjectsSelectable();
 
 	// add menu item File > New... - at the top!
 	//: translators: the ... indicates that this opens a new dialog - keep in the translation!

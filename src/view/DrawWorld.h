@@ -98,6 +98,11 @@ public:
 	/// (re-)draws the outline and the background
 	void drawOutlineAndBackground(void);
 
+	/** iterate over all DrawObjects and make them selectable.
+	  * this member is called when a user switches over to level creator mode
+	  */
+	void makeAllObjectsSelectable();
+
 protected:
 	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
 	virtual void dragEnterEvent ( QGraphicsSceneDragDropEvent * event );

@@ -296,6 +296,17 @@ void DrawWorld::invalidateCaching(void)
 	}
 }
 
+void DrawWorld::makeAllObjectsSelectable()
+{
+	QList<QGraphicsItem *> myItems = items ();
+	foreach(QGraphicsItem* i, myItems)
+	{
+		DrawObject* myDOPtr = dynamic_cast<DrawObject*>(i);
+		if (myDOPtr!=NULL)
+			myDOPtr->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+	}
+}
+
 void DrawWorld::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
 	if (isUserInteractionAllowed)
