@@ -294,7 +294,7 @@ public:
 	  * created/deleted.
 	  * @param aStatus indicates if the B2Body was created or deleted
 	  */
-	void notifyJoints(JointInterface::JointStatus aStatus);
+	virtual void notifyJoints(JointInterface::JointStatus aStatus);
 
 	/** parse all properties
 	  * NOTE: BaseObject only understands PivotPoint and Bounciness

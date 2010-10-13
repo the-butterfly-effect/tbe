@@ -66,6 +66,8 @@ public:
 	virtual int getImageIndex(void)
 	{ return theState; }
 
+	/// overridden to make sure joints are not re-created outside BALLOON state
+	virtual void notifyJoints(JointInterface::JointStatus aStatus);
 
 protected:
 	/// call this function to suggest a state change to the Balloon

@@ -40,7 +40,7 @@ public:
 
 	virtual ~Link() {}
 
-	/** (overridden from BaseObject to fixup aspect ratio)
+	/** (overridden from BaseJoint to fixup aspect ratio and overlap)
 	  * @returns pointer to DrawObject
 	  */
 	virtual DrawObject* createDrawObject();

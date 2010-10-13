@@ -186,6 +186,13 @@ Balloon::States Balloon::goToState(Balloon::States aNewState)
 	return theState;
 }
 
+void Balloon::notifyJoints(JointInterface::JointStatus aStatus)
+{
+	if (theState != BALLOON && aStatus==JointInterface::CREATED)
+		return;
+	BaseObject::notifyJoints(aStatus);
+}
+
 
 void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 {

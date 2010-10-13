@@ -76,9 +76,13 @@ void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 	{
 	case JointInterface::CREATED:
 		createPhysicsObject();
+		if (theDrawObjectPtr)
+			theDrawObjectPtr->setVisible(true);
 		break;
 	case JointInterface::DELETED:
 		deletePhysicsObject();
+		if (theDrawObjectPtr)
+			theDrawObjectPtr->setVisible(false);
 		break;
 	case JointInterface::POSUPDATE:
 		deletePhysicsObject();
