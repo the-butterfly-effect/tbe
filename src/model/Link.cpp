@@ -84,13 +84,9 @@ DrawObject*  Link::createDrawObject(void)
 	Vector myV2 = (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toVector();
 	Vector myDiff = myV2 - myV1;
 
-	// guess we need something like "polar notation"...
-	qreal myAngle = myDiff.toAngle();
-	qreal myLength= myDiff.length();
-
 	float myOverlap = 10;
 	theProps.property2Float(Property::OVERLAP_STRING, &myOverlap);
-	float myAdjustedWidth = myLength*(1.0+myOverlap/100.0);
+	float myAdjustedWidth = myDiff.length()*(1.0+myOverlap/100.0);
 	float myAdjustedHeight= myAdjustedWidth/myAspectRatio;
 
 	setTheWidth(myAdjustedWidth);
