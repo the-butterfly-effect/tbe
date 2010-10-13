@@ -2,16 +2,36 @@
 <tbe-level>
     <levelinfo>
         <title>Save the butterfly!</title>
+        <title lang="nl">Red de vlinder!</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>save the butterfly, topple the pin.
-</description>
+        <description>save the butterfly, topple the pin.</description>
+        <description lang="nl">red de vlinder, kegel de kegel.</description>
         <date>10/11/10</date>
     </levelinfo>
-    <toolbox/>
+     <toolbox>
+        <toolboxitem count="1" name="Right Ramp">
+            <name lang="nl">Helling \</name>
+           <object width="0.9"  height="0.5" type="RightRamp" angle="0" />
+ 	</toolboxitem>
+        <toolboxitem count="2" name="Cactus">
+            <name lang="nl">Cactus</name>
+            <object type="Cactus" />
+	</toolboxitem>
+   </toolbox>
     <scene>
         <scenesize width="7" height="4" />
         <predefined>
+  <object X="4.5" Y="1.2" type="PostIt">
+      <property key="page1">Have you seen the movie "UP"?&lt;br&gt;&lt;br&gt;Unfortunately, I don't have that many balloons.</property>
+      <property key="page2">I don't think it's not fair: butterflies can fly by themselves.</property>
+      <property key="page3">Our goal is to keep them alive. And topple the pin.</property>
+      <property key="page4">&lt;br&gt;&lt;br&gt;the Post-it Boy&lt;br&gt;&lt;br&gt;saves the animals...</property>
+      <property key="page1">Heb je de film "UP" gezien?&lt;br&gt;&lt;br&gt;Jammer genoeg heb ik niet zoveel ballonnen.</property>
+      <property key="page2">Het is niet eerlijk: vlinders kunnen zelf vliegen.</property>
+      <property key="page3">Ons doel is om de vlinder in leven te houden. En de kegel om te kegelen...</property>
+      <property key="page4">&lt;br&gt;&lt;br&gt;Post-it Boy&lt;br&gt;&lt;br&gt;(lid van de dierenbescherming)</property>
+  </object>
             <object width="0.2212238609790802" X="6.802119700801657" Y="0.3333304077386856" height="0.4064355790615082" type="RectObject" angle="0" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
@@ -28,7 +48,11 @@
             <object width="0.22" X="0.8054592312308121" Y="3.401516555575522" height="0.22" type="BowlingBall" angle="0" />
             <object width="2.361613512039185" X="2.706045031547546" Y="0.05000000074505806" height="0.1" type="Floor" angle="0" />
             <object width="1.69867479801178" X="0.7595076698975269" Y="0.3516205919917393" height="0.1" type="Floor" angle="-0.3767769336700439" />
-            <object width="0.22" X="0.1796793741007611" Y="3.382929022271148" height="0.22" type="BowlingBall" angle="0" />
+            <object width="1.3" X="1.1" Y="0.98" height="0.1" type="Floor" angle="-0.38" />
+            <object width="2.0" X="2.69" Y="0.74" height="0.1" type="Floor" angle="0">
+                <property key="Friction" >0.9</property>
+            </object>
+            <object width="0.22" X="0.19" Y="3.382929022271148" height="0.22" type="BowlingBall" angle="0" />
             <object width="0.15" X="3.80" Y="0.45" height="0.70" type="RectObject" ID="Styro" angle="0" >
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >0.01</property>
@@ -36,16 +60,17 @@
                 <property key="Bounciness" >0.7</property>
                 <property key="TranslationGuide" >1.57</property>
             </object>
-            <object width="0.27" X="3.48" Y="1.840000000000003" height="0.36" type="Balloon" ID="Balloon1" angle="0.18" />
+            <object width="0.27" X="3.48" Y="1.84" height="0.36" type="Balloon" ID="Balloon1" angle="0.18" />
             <object width="0.27" X="3.66" Y="2.04" height="0.36" type="Balloon" ID="Balloon2" angle="0" />
             <object width="0.27" X="3.94" Y="2.04" height="0.36" type="Balloon" ID="Balloon3" angle="0" />
             <object width="0.27" X="4.12" Y="1.84" height="0.36" type="Balloon" ID="Balloon4" angle="-0.18" />
             <object width="0.27" X="3.80" Y="1.68" height="0.36" type="Balloon" ID="Balloon5" angle="0" />
-            <object width="2.577562808990479" X="5.17" Y="0.74" height="0.1" type="Floor" angle="0" />
-            <object width="0.12" X="5.81" Y="0.9600000000000001" height="0.34" type="BowlingPin" angle="0" />
-            <object width="0.25" X="2.541456417387653" Y="2.457282903035162" height="0.4" type="Cactus" angle="-1.5708" />
+            <object width="2.6" X="5.2" Y="0.74" height="0.1" type="Floor" angle="0" />
+            <object width="1.6" X="5.7" Y="1.20" height="0.1" type="Floor" angle="0" />
+            <object width="0.12" X="5.81" Y="0.9600000000000001" height="0.34" type="BowlingPin" ID="thePin" angle="0" />
+            <!--object width="0.25" X="2.541456417387653" Y="2.457282903035162" height="0.4" type="Cactus" angle="-1.5708" /-->
             <object width="0.6925209164619446" X="2.180505146474305" Y="2.214819282204452" height="0.1" type="Floor" angle="0" />
-            <object width="1.133368849754333" X="4.194912297811045" Y="0.8740942895320224" height="0.3777896165847778" type="Link" angle="0" >
+            <object width="1.133368849754333" X="2.74" Y="2.84" height="0.3777896165847778" type="Link" angle="0" >
                 <property key="ImageName" >rope</property>
                 <property key="object1" >Balloon1@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
@@ -70,18 +95,43 @@
                 <property key="object1" >Balloon5@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
-            <object width="1" X="0.9296002185961108" Y="3.025436610013066" height="0.5374336838722229" type="RightRamp" angle="0" />
-            <object width="2.119999999999998" X="2.63" Y="0.74" height="0.1" type="Floor" angle="0" />
-            <object width="1" X="1.14" Y="0.93" height="0.1" type="Floor" angle="-0.38" />
+            <!--object width="1" X="0.9296002185961108" Y="3.025436610013066" height="0.5374336838722229" type="RightRamp" angle="0" /-->
             <object width="0.15" X="4.853442757758933" Y="1.50982042145777" height="1" type="RectObject" angle="0" >
                 <property key="ImageName" >oldbrick</property>
+                <property key="ZValue">10</property>
             </object>
-            <object width="0.2836369276046753" X="2.635480809133326" Y="2.285985301841523" height="0.1" type="Floor" angle="0.5793893337249756" />
-            <object width="1" X="3.836940384023307" Y="2.894862338515145" height="0.1" type="Floor" angle="0" />
+            <object width="0.15" X="0.5" Y="1.65" height="1" type="RectObject" angle="0" >
+                <property key="ImageName" >oldbrick</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.15" X="0.03" Y="0.5" height="1" type="RectObject" angle="0" >
+                <property key="ImageName" >oldbrick</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.15" X="0.5" Y="2.65" height="1" type="RectObject" angle="0" >
+                <property key="ImageName" >oldbrick</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.42" X="2.68" Y="2.32" height="0.1" type="Floor" angle="0.58" />
+            <object width="1" X="3.82" Y="2.8" height="0.1" type="Floor" angle="0" />
+            <object width="1.5" X="4.07" Y="1.4" height="0.1" type="Floor" angle="0" >
+                <property key="ZValue">9</property>
+            </object>
+            <object width="0.42" X="3.2" Y="1.295" height="0.1" type="Floor" angle="0.58" />
+      	    <object width="1.0" X="3.82" Y="2.1" height="1.4" type="Scenery" >
+                <property key="ImageName" >chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+
             <object width="0.22" X="1.902872873377412" Y="0.2433181706941609" height="0.22" type="BowlingBall" angle="0" />
             <object width="0.22" X="2.139952116617877" Y="0.2620349530552502" height="0.22" type="BowlingBall" angle="0" />
-            <object width="0.166" X="2.021580802887315" Y="2.333322887831073" height="0.501" type="CokeMentosBottle" angle="1.54539680480957" />
+            <!--object width="0.166" X="2.021580802887315" Y="2.333322887831073" height="0.501" type="CokeMentosBottle" angle="1.54539680480957" /-->
         </predefined>
     </scene>
-    <goals/>
+    <goals>
+        <goal type="positionchange" >
+            <property key="anglechanged" ></property>
+            <property key="object" >thePin</property>
+        </goal>
+    </goals>
 </tbe-level>
