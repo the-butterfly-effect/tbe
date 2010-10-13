@@ -217,6 +217,9 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	DEBUG5("   will do %f x %f bitmap\n", myWidth, myHeight);
 	assert(myWidth>0);
 	assert(myHeight>0);
+	// debugging assistant: catch runaway scene scalings
+	assert(myWidth<2000);
+	assert(myHeight<2000);
 
 	QPixmap* myPixmap = new QPixmap(myWidth+EXTRA_WHITESPACE, myHeight+EXTRA_WHITESPACE);
 	myPixmap->fill(QColor(Qt::transparent));
