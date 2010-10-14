@@ -6,7 +6,7 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Topple the pin.</description>
-        <description>Laat de kegel omvallen.</description>
+        <description lang="nl">Laat de kegel omvallen.</description>
         <date>9/9/10</date>
     </levelinfo>
      <toolbox>
