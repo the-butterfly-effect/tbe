@@ -72,9 +72,6 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 	drawOutlineAndBackground();
 
-	// make sure to never shrink smaller than the specified size
-	addItem(new Dot(getWidth(), -getHeight()));
-
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 	setDrawDebug();
@@ -129,6 +126,7 @@ void DrawWorld::deleteOutline(void)
 		theBasicDrawWorldItems.pop_back();
 		delete myItem;
 	}
+	drawDots();
 }
 
 void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
@@ -194,6 +192,16 @@ void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 	event->accept();
 }
 
+void DrawWorld::drawDots(void)
+{
+	// make sure to never shrink smaller than the specified size
+	QGraphicsItem* myDot = new Dot(getWidth(), -getHeight());
+	theBasicDrawWorldItems.push_back(myDot);
+	addItem(myDot);
+	myDot = new Dot(0,0);
+	theBasicDrawWorldItems.push_back(myDot);
+	addItem(myDot);
+}
 
 void DrawWorld::drawOutlineAndBackground(void)
 {
@@ -220,6 +228,7 @@ void DrawWorld::drawOutlineAndBackground(void)
 	QGraphicsItem* myDot =                new Dot(myViewWidthReal, -myViewHeightReal);
 	theBasicDrawWorldItems.push_back(myDot);
 	addItem(myDot);
+	drawDots();
 
 	// a blue gradient background
 	// TODO/FIXME: We're going to make this flexible later (see ticket:58)

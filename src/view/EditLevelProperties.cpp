@@ -60,5 +60,7 @@ void EditLevelProperties::slot_accepted()
 	theLevelPtr->theWorldPtr->theWorldWidth = m_ui->doubleSpinBoxWidth->value();
 
 	// and force the redraw...
-	theLevelPtr->theWorldPtr->theDrawWorldPtr->drawOutlineAndBackground();
+	DrawWorld* myPtr = theLevelPtr->theWorldPtr->theDrawWorldPtr;
+	if (myPtr)
+		myPtr->drawOutlineAndBackground();
 }

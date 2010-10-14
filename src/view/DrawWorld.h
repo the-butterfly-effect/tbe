@@ -133,6 +133,10 @@ private:
 		void addDebugDrawToList(QGraphicsItem* anItem);
 		void clearGraphicsList(int aCount);
 
+	/// (internal use only)
+	/// draws two dots to indicate official maximum scene size.
+	void drawDots(void);
+
 signals:
 	/// emitted once the level is won
 	void levelWon(void);

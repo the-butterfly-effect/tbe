@@ -66,8 +66,8 @@ static QString theFileName;
 Level::Level ( ) 
 {
 	theWorldPtr = new World();
-	theWorldPtr->theWorldWidth = 3.0;
-	theWorldPtr->theWorldWidth = 2.0;
+	theWorldPtr->theWorldWidth  = 3.0;
+	theWorldPtr->theWorldHeight = 2.0;
 }
 
 Level::~Level ( ) 
