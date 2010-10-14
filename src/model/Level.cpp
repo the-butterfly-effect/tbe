@@ -168,7 +168,7 @@ Level::load(const QString& aFileName)
 	// save the Toolbox node for later
 	// (it is handled within ToolBox::fillFromDomNode())
 	//
-	theToolboxDomNode = myDocElem.firstChildElement("toolbox");
+	theToolboxDomNode = myDocElem.firstChildElement(theToolboxString).cloneNode(true);
 
 	//
 	// parse the Scene section
@@ -336,8 +336,10 @@ bool Level::save(const QString& aFileName)
 
 
 	// Toolbox
-	QDomElement myToolboxParent = myDocument.createElement(theToolboxString);
-	myRoot.appendChild(myToolboxParent);
+	if (theToolboxDomNode.isNull())
+		theToolboxDomNode = myDocument.createElement(theToolboxString);
+	QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
+	myRoot.appendChild(myToolboxCopy);
 
 	// Scene
 	QDomElement mySceneParent = myDocument.createElement(theSceneString);
