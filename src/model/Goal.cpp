@@ -253,7 +253,7 @@ QString GoalPositionChange::goalToStringList() const
 	QString myLimit;
 
 	if ((theType&0x03)==1)
-		myCondition=QObject::tr("changed");
+		myCondition=GoalEditor::getT10nOf_change();
 	if ((theType&0x03)==2)
 		myCondition="<";
 	if ((theType&0x03)==3)
