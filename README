@@ -1,7 +1,11 @@
-Welcome to "The Butterfly Effect", Milestone 7.
+Welcome to "The Butterfly Effect", Milestone 8.
 
-This is a fully playable game, but no yet completely finished.
-With this Milestone 7, we promote the game from alpha to beta quality.
+This is a fully playable game of beta quality, well on its way to a shiny
+1.0 release. For anyone who has played earlier versions of the game, you'll
+notice several new levels, a much improved user interface and a level creator!
+
+You can download the game at its website, 
+go to          http://the-butterfly-effect.org/
 
 If you downloaded the source archive - please refer to the file INSTALLING
 to learn how to turn the sources into a working game and RUNNING on how
@@ -10,22 +14,36 @@ to run the game.
 If you downloaded the installer, you now have an icon on your desktop: 
 just (double-)click it to enjoy the game.
 
-There are 30 levels.
+There are ### 40 levels.
 All levels are playable, a few levels may need a bit more polish.
 
-New features & highlights in Milestone 7:
-    * Serious performance improvements - usually around 300%
-    * 4 new levels
-    * More i18n, now including level titles and items
-    * Installer images for 32-bit and 64-bit Linux, using static
-      builds of QT - validated to work on various Linux distros
-    * Many bug fixes and small improvements
+New features & highlights in Milestone 8:
+    * Level Creator - see below
+    * ### new levels, 
+      introducing the following new objects:
+      - Balloon
+      - Cactus (pops Balloon)
+      - Bed of Nails (also pops Balloon)
+      - Link (to connect two objects)
+      - Translation Joint (limits movement to 1 axis, prevents rotation)
+      - the ability to put a torque and/or speed on a PivotPoint
+    * Many fixes to the usability of the user interface
+    * Partial translations into Spanish
 
-Known bugs:
-  * Some images may have 'garbage' on their borders during play.
+
+The Level Creator
+###
+https://sf.net/apps/trac/tbe/wiki/LevelCreator
+
+
+Known bugs and issues:
+  * Some images may have a 'garbage line ' on one or more borders during play.
     This is harmless but may be confusing. ticket:89
-  * The level editor is unusable. ticket:69, ticket:46
   * The installers do not install into the "start menu", ticket:97
+  * The Level Creator isn't finished, nor really polished yet.
+    The manual of the Level Creator discusses the limitations, 
+    tickets 132, 147, 149, 151, 171, 177, 178 and others.
+
 
 We thank our beta players for their comments on the playability of the levels.
 
@@ -34,6 +52,8 @@ We would love to hear your thoughts and comments about the game!
 Don't be shy - post your thoughts in the TBE Open Discussion forum 
    http://www.the-butterfly-effect.org/
 
+
 Regards,
 
-Peter van Ginneken and Klaas van Gend
+Peter van Ginneken, Klaas van Gend
+and everyone who contributed to TBE
