@@ -31,9 +31,9 @@ clean:
 
 ${MYLIBDIR}/libbox2d.a:
 	unzip -q ${BOX2D}.zip
-	patch -p0 <box2d_compile.patch
-	patch -p0 <box2d_fix_warnings.patch
-	patch -p0 <box2d_increase_polygon_vertices.patch
+	patch --silent -p0 <box2d_compile.patch
+	patch --silent -p0 <box2d_fix_warnings.patch
+	patch --silent -p0 <box2d_increase_polygon_vertices.patch
 	cd ${BOX2D}/Box2D/Source && make ${FASTERMAKE} Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a ${MYLIBDIR}
 

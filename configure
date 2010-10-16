@@ -18,7 +18,6 @@ fi;
 function check_packages() {
 
 echo "Check for required packages for the build..."
-echo
 MISSINGPACKAGE=0;
 STATICQT=0;
 
@@ -49,6 +48,8 @@ if [ $MISSINGPACKAGE -gt 0 ]; then
 	echo "install these packages..."
 	exit;
 fi;
+echo
+echo
 };
 ##
 ## END CHECKING PREREQUISITES
@@ -56,14 +57,16 @@ fi;
 
 ###########################################################
 function make_3rdParty() {
-(cd 3rdParty && make)
+echo "Building directory 3rdParty..."
+(cd 3rdParty && make --quiet all)
 }
 
 ###########################################################
 function make_images() {
+echo "Building directory images..."
 if test -f images/Makefile;
 then
-	make -C images all;
+	make --quiet -C images all;
 fi;
 }
 
@@ -109,6 +112,7 @@ else
     cat src/tbe_global.h.in | sed "s!%%DATADIR!BINARY_DIRECTORY!" >src/tbe_global.h
 fi
 
+echo "Building Makefile..."
 qmake
 
 # and give some hints on what to do next
