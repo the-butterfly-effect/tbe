@@ -1,9 +1,10 @@
 The Butterfly Effect - INSTALLING
 =================================
 
+If you downloaded an installer and executed it, being able to read
+this file already suggests you're done - the installer did its work.
 
-How to build:
-
+This file explains step-by-step how to build TBE from the source archive.
 
 1)
 Make sure that you have all tools & libraries installed that you need.
@@ -21,7 +22,8 @@ requires building QT first - you'll now also need:
   * a lot of X11 development libraries
   * wget
 However, doing a static build is beyond the scope of this document, 
-please refer to the TBE wiki.
+please refer to the TBE wiki:
+https://sourceforge.net/apps/trac/tbe/wiki/HowToMakeARelease
 
 
 2)
@@ -34,15 +36,13 @@ it is just a bash script setting up the Box2d libraries and the images.
 
 
 3)
-If you want to run TBE in another language (note: only Dutch 'nl' is i
-supported right now) you need to do the following:
+If you want to run TBE in another language (note: only Dutch 'nl' and Spanish
+'es' are supported right now) you need to do the following:
     $   lupdate tbe.pro
     $   lrelease tbe.pro
 
 4)
-How to run:
-    $   ./tbe
-    
+For info on how to run TBE, please refer to the RUNNING document.
 There is no need to install anything - it will run from its working directory.
 
 That's it for now!
