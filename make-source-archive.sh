@@ -32,6 +32,7 @@ echo "* Building manifest file '$MANIFEST' for the source archive";
 echo "$2/COPYING"     > $MANIFEST
 echo "$2/AUTHORS"     >> $MANIFEST
 echo "$2/README"      >> $MANIFEST
+echo "$2/RUNNING"     >> $MANIFEST
 echo "$2/INSTALLING"  >> $MANIFEST
 echo "$2/tbe.pro"     >> $MANIFEST
 echo "$2/configure"   >> $MANIFEST
