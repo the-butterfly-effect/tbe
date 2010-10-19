@@ -108,9 +108,18 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <widget class="QMenu" name="menuContribute">
+     <property name="title">
+      <string>&amp;Contribute</string>
+     </property>
+	 <addaction name="actionSuggestions"/>
+     <addaction name="actionBug_Reports"/>
+     <addaction name="actionNew_Levels"/>
+    </widget>
     <addaction name="actionBrand_names"/>
     <addaction name="actionLibraries"/>
     <addaction name="separator"/>
+    <addaction name="menuContribute"/>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -366,6 +375,21 @@
    </property>
    <property name="text">
     <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionSuggestions">
+   <property name="text">
+    <string>&amp;Suggestions...</string>
+   </property>
+  </action>
+  <action name="actionBug_Reports">
+   <property name="text">
+    <string>&amp;Bug Reports...</string>
+   </property>
+  </action>
+  <action name="actionNew_Levels">
+   <property name="text">
+    <string>&amp;New Levels...</string>
    </property>
   </action>
  </widget>

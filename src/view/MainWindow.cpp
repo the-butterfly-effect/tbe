@@ -119,6 +119,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionAbout_activated()
 {
+	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
 				"An open source game that uses realistic physics"
 				" simulations to combine lots of simple mechanical elements"
@@ -129,8 +130,26 @@ void MainWindow::on_actionAbout_activated()
 				.arg(QCoreApplication::instance()->organizationDomain()), this);
 }
 
+void MainWindow::on_actionBug_Reports_activated()
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect - Bug Reports</b><br><br>"
+				   "Of course, this game is not bug free yet.<br>"
+				   "If you come across anything that you think should not "
+				   "happen, please let us know. Go to our ticket website:"
+				   "<br><a href=\""
+				   "http://sourceforge.net/apps/trac/tbe/newticket\">"
+				   "http://sourceforge.net/apps/trac/tbe/newticket</a><br>"
+				   "Please tell us at least the name of the level, what you "
+				   "expected to happen and what did happen. If you want to "
+				   "learn how we fix your issue, please provide a valid "
+				   "e-mail address."
+				""), this);
+}
+
 void MainWindow::on_actionBrand_names_activated()
 {
+	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Brand names</b><br><br>"
 				"<b>Coke</b>, diet Coke, Coca Cola and the bottle shape are "
 				"world-wide registered trademarks of the Coca Cola company."
@@ -201,6 +220,7 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 
 void MainWindow::on_actionLibraries_activated()
 {
+	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
 				"The Butterfly Effect is a proud user of the Box2D "
 				"Physics Library. Please refer to http://www.box2d.org/ ."
@@ -210,6 +230,20 @@ void MainWindow::on_actionLibraries_activated()
 				"Please refer to http://qt.nokia.com/ ."
 				""), this);
 }
+
+void MainWindow::on_actionNew_Levels_activated(void)
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect - Create New Levels</b><br><br>"
+				   "We know you can design better levels than we do!<br>"
+				   "Use the Level Creator to build your levels and please submit them to us.<br>"
+				   "Even if your level is not finished yet, don't hestitate to share it with us! "
+				   "Of course, define how you think it should work so others can join in."
+				   "<br><br>This is our level mailing list:<br>"
+				   "<a href=\"mailto:tbe-levels@lists.sf.net\">tbe-levels@lists.sf.net</a><br>"
+				   ""), this);
+}
+
 
 void MainWindow::on_actionOpen_custom_level_activated()
 {
@@ -277,6 +311,18 @@ void MainWindow::on_actionSave_As_activated()
 		   myFileInfo.isReadable(), myFileInfo.isWritable());
 
 	on_actionSave_activated();
+}
+
+
+void MainWindow::on_actionSuggestions_activated()
+{
+	Popup::Info(tr("<b>The Butterfly Effect - Suggestions</b><br><br>"
+				   "If you have great ideas for new features in the game, "
+				   "please go to our shiny forums at: <br><a href=\""
+				   "http://sourceforge.net/projects/tbe/forums/forum/953128\">"
+				   "http://sourceforge.net/projects/tbe/forums/forum/953128</a>"
+				   "<br>to share your ideas with the world."
+				""), this);
 }
 
 
