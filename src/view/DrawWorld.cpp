@@ -553,11 +553,11 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 	theTextPtr->setPos(boundingRect().center() - myTextBounds.center());
 
 	QGraphicsView* myView = aScenePtr->views()[0];
-	theButtons[0] = new QPushButton(tr("Replay"), myView );
+	theButtons[0] = new QPushButton(tr("&Replay"), myView );
 	theButtons[0]->show();
-	theButtons[1] = new QPushButton(tr("Choose..."), myView );
+	theButtons[1] = new QPushButton(tr("&Choose..."), myView );
 	theButtons[1]->show();
-	theButtons[2] = new QPushButton(tr("Next>"), myView );
+	theButtons[2] = new QPushButton(tr("&Next>"), myView );
 	theButtons[2]->show();
 	moveButtons();
 
