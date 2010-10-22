@@ -56,6 +56,8 @@ DrawObject*  Link::createDrawObject(void)
 	// the dimensions of the image we are drawing,
 	// so we can keep the aspect ratio correct.
 	DrawObject* myTempDrawObject = BaseJoint::createDrawObject();
+	if(myTempDrawObject==NULL)
+		return NULL;
 	float myAspectRatio = myTempDrawObject->getUnscaledAspectRatio();
 	delete myTempDrawObject;
 	theDrawObjectPtr = NULL;
