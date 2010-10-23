@@ -9,13 +9,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300"
+   width="150"
    height="100"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="rope_rot.svg"
+   sodipodi:docname="shortballoonrope.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
@@ -46,7 +46,7 @@
        x2="397.04724"
        y2="526.18109"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.06,0,0,1,-920.55116,-154.13387)" />
+       gradientTransform="matrix(8.0985899e-2,0,0,0.5,-556.31163,33.956686)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -59,15 +59,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8933333"
-     inkscape:cx="-47.975351"
-     inkscape:cy="150"
+     inkscape:cx="206.81339"
+     inkscape:cy="107.74648"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1272"
      inkscape:window-height="783"
-     inkscape:window-x="0"
-     inkscape:window-y="0" />
+     inkscape:window-x="1280"
+     inkscape:window-y="182" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -87,12 +87,12 @@
     <rect
        style="fill:url(#linearGradient3203);fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2383"
-       width="53"
-       height="300"
-       x="-552.68109"
+       width="4.0492949"
+       height="150"
+       x="-528.20575"
        y="222.04724"
-       rx="26.5"
-       ry="27.347944"
+       rx="2.0246475"
+       ry="13.673972"
        transform="matrix(0,-1,1,0,0,0)" />
   </g>
 </svg>

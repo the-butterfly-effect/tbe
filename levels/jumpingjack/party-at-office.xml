@@ -73,25 +73,25 @@
                 <property key="PivotPoint" >(-0.208,0.036)</property>
                 <property key="Polygons" >(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)=(-0.293,-0.012)</property>
             </object>
-            <object width="0.1" X="2.91" Y="1.72" height="0.6" type="RectObject" ID="rope1" angle="0" >
+            <object width="0.1" X="2.91" Y="1.72" height="0.5" type="RectObject" ID="rope1" angle="0" >
                 <property key="ImageName" >rope</property>
                 <property key="Mass" >0.1</property>
             </object>
             <object width="1" X="2.89" Y="1.64" height="1" type="Link" angle="0" >
                 <property key="object1" >lefthand@(0.285,0.020)</property>
-                <property key="object2" >rope1@(-0.05,0.3)</property>
+                <property key="object2" >rope1@(-0.05,0.25)</property>
             </object>
             <object width="1" X="2.93" Y="1.64" height="1" type="Link" angle="0" >
                 <property key="object1" >righthand@(-0.285,0.020)</property>
-                <property key="object2" >rope1@(0.05,0.3)</property>
+                <property key="object2" >rope1@(0.05,0.25)</property>
             </object>
             <object width="1" X="2.89" Y="1.24" height="1" type="Link" angle="0" >
                 <property key="object1" >rightleg@(-0.095,0.135)</property>
-                <property key="object2" >rope1@(-0.05,-0.3)</property>
+                <property key="object2" >rope1@(-0.05,-0.25)</property>
             </object>
             <object width="1" X="2.93" Y="1.24" height="1" type="Link" angle="0" >
                 <property key="object1" >leftleg@(0.090,0.135)</property>
-                <property key="object2" >rope1@(0.05,-0.3)</property>
+                <property key="object2" >rope1@(0.05,-0.25)</property>
             </object>
             <object width="0.1" X="2.91" Y="1.09" height="0.3" type="RectObject" ID="rope2" angle="0" >
                 <property key="ImageName" >rope</property>
@@ -105,8 +105,8 @@
             </object>
             <object width="0.1979999840259552" X="2.8" Y="0.9399999999999999" height="0.06599999219179153" type="Link" angle="0" >
                 <property key="ImageName" >rope_rot</property>
-                <property key="object1" >rope1@(0.00,-0.3)</property>
-                <property key="object2" >rope2@(0.0,0.15)</property>
+                <property key="object1" >rope1@(0.00,-0.23)</property>
+                <property key="object2" >rope2@(0.0,0.13)</property>
             </object>
             <object width="0.6" X="2.9" Y="0.49" height="0.1" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.0</property>
@@ -134,7 +134,7 @@
             <object width="1.941630601882935" X="1.57" Y="1.61" height="0.1" type="Floor" angle="0" />
             <object width="0.22" X="0.641045192939547" Y="1.306588901372415" height="0.22" type="BowlingBall" angle="0" />
             <object width="0.27" X="1.297460583881838" Y="1.840458810499068" height="0.36" type="Balloon" ID="balloon" angle="0" />
-            <object width="1.905362129211426" X="1.683554208920231" Y="1.171847052209926" height="0.1" type="Floor" angle="0" />
+            <object width="1.905362129211426" X="1.683554208920231" Y="1.161847052209926" height="0.12" type="Floor" angle="0" />
             <object width="0.12" X="2.120885299124304" Y="0.7255891714496775" height="0.34" type="BowlingPin" ID="top pin" angle="0" />
             <object width="0.2" X="0.8737813234329224" Y="1.322921209885845" height="0.2" type="RectObject" ID="gift" angle="0" >
                 <property key="ImageName" >elkbuntu_Blue_gift_with_golden_ribbon</property>
@@ -144,23 +144,33 @@
             <object width="0.1" X="0.05000000000000002" Y="1" height="1.8" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.4482322931289673" X="1.183980713536178" Y="1.486808100048265" height="0.1494107693433762" type="Link" angle="0" >
-                <property key="ImageName" >rope_rot</property>
+            <object width="0.4636567831039429" X="1.183980713536178" Y="1.486808100048265" height="0.3091045320034027" type="Link" angle="0" >
+                <property key="ImageName" >shortballoonrope</property>
+                <property key="ZValue" >10.0</property>
                 <property key="object1" >balloon@(0.00,-0.17)</property>
-                <property key="object2" >gift@(0.10,0.10)</property>
+                <property key="object2" >gift@(0.09,0.09)</property>
             </object>
             <object width="0.27" X="1.031741678884383" Y="1.837444036774943" height="0.36" type="Balloon" ID="balloon2" angle="0" />
-            <object width="0.3909799158573151" X="1.183980713536178" Y="1.486808100048265" height="0.1303266435861588" type="Link" angle="0" >
-                <property key="ImageName" >rope_rot</property>
+            <object width="0.3832785785198212" X="1.183980713536178" Y="1.486808100048265" height="0.2555190622806549" type="Link" angle="0" >
+                <property key="ImageName" >shortballoonrope</property>
+                <property key="ZValue" >10.0</property>
                 <property key="object1" >balloon2@(0.00,-0.17)</property>
-                <property key="object2" >gift@(-0.10,0.10)</property>
+                <property key="object2" >gift@(-0.08,0.09)</property>
             </object>
             <object width="0.1" X="2.600022514841157" Y="0.45" height="0.1" type="Scenery" angle="0" >
                 <property key="ImageName" >brass-pin</property>
                 <property key="ZValue" >12.0</property>
             </object>
-            <object width="0.22" X="1.086662464985994" Y="0.8865910364145658" height="0.22" type="PostIt" angle="0" />
-            <object width="0.5196148157119751" X="1.868249779547354" Y="1.204333933044861" height="0.1" type="Floor" angle="0.1428549289703369" />
+            <object width="0.22" X="1.086662464985994" Y="0.8865910364145658" height="0.22" type="PostIt" angle="0" >
+                <property key="page1" >It's party time at the office!&lt;br>&lt;br>Jumping Jack has his birthday!!!</property>
+                <property key="page2" >(Jack usually doesn't get much attention, he's already happy that we thought of him)</property>
+                <property key="page3" >There's cola,&lt;br>and there's even a gift!</property>
+                <property key="page4" >Let's present the gift to him, shall we?</property>
+                <property key="page5" >... the Post-it Boy</property>
+            </object>
+            <object width="0.5196148157119751" X="1.868249779547354" Y="1.19" height="0.1" type="Floor" angle="0.1" >
+                <property key="ZValue" >1.0</property>
+            </object>
             <object width="0.8" X="1.87" Y="2.08" height="0.15" type="BedOfNails" angle="-3.14" />
             <object width="0.25" X="0.129457980479179" Y="2.342012493699873" height="0.4" type="Cactus" angle="0" />
         </predefined>
