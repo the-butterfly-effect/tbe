@@ -8,149 +8,151 @@
         </description>
         <date>Jul 08, 2010</date>
     </levelinfo>
-     <toolbox>
-        <toolboxitem count="1" name="Bowling Ball">
-	    <object type="Bowling Ball"/>
+    <toolbox>
+        <toolboxitem count="1" name="Bowling Ball" >
+            <object type="BowlingBall" />
         </toolboxitem>
-   </toolbox>
+    </toolbox>
     <scene>
         <scenesize width="4.4" height="2.8" />
         <predefined>
-            <object width="4.4" X="2.2" Y="0.05" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness">0.1</property>
+            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="Floor" angle="0" />
+            <object width="0.203" X="2.75" Y="1.2" height="0.385" type="PolyObject" ID="leftfoot" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >leftfoot</property>
+                <property key="Mass" >1.0</property>
+                <property key="Polygons" >(0.096,0.121)=(0.030,0.182)=(-0.010,0.182)=(-0.04,0.11)=(-0.042,-0.187)=(0.072,-0.188)</property>
             </object>
-            
-            <object width="0.203" height="0.385" X="2.75" Y="1.2" type="PolyObject" ID="leftfoot">
-	        <property key="Polygons">(0.096,0.121)=(0.030,0.182)=(-0.031,0.096)=(-0.042,-0.187)=(0.072,-0.188)</property>
-                <property key="ImageName">leftfoot</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
+            <object width="0.211" X="2.8" Y="1.5" height="0.451" type="PolyObject" ID="leftleg" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >leftleg</property>
+                <property key="Mass" >1.0</property>
+                <property key="PivotPoint" >(-0.005,0.125)</property>
+                <property key="Polygons" >(0.038,0.200)=(-0.064,0.200)=(-0.101,0.115)=(-0.076,-0.191)=(-0.046,-0.221)=(0.015,-0.221)=(0.046,-0.191)</property>
             </object>
-            <object width="0.211" height="0.451" X="2.80" Y="1.5" type="PolyObject" ID="leftleg">
-	        <property key="Polygons">(0.038,0.200)=(-0.064,0.200)=(-0.101,0.115)=(-0.076,-0.191)=(-0.046,-0.221)=(0.015,-0.221)=(0.046,-0.191)</property>
-                <property key="ImageName">leftleg</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
-		<property key="PivotPoint">(-0.005,0.125)</property>
+            <object width="1" X="2.787" Y="1.346" height="1" type="PivotPoint" angle="0" >
+                <property key="object1" >leftfoot</property>
+                <property key="object2" >leftleg</property>
             </object>
-	    <object type="PivotPoint" X="2.787" Y="1.346">
-		  <property key="object1">leftfoot</property>
-		  <property key="object2">leftleg</property>
-		  <property key="collide">false</property>
-	    </object>
-	    
-            <object width="0.203" height="0.385" X="3.08" Y="1.2" type="PolyObject" ID="rightfoot">
-	        <property key="Polygons">(-0.072,-0.188)=(0.042,-0.187)=(0.031,0.096)=(-0.030,0.182)=(-0.096,0.121)</property>
-	        <property key="ImageName">rightfoot</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
+            <object width="0.203" X="3.08" Y="1.2" height="0.385" type="PolyObject" ID="rightfoot" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >rightfoot</property>
+                <property key="Mass" >1.0</property>
+                <property key="Polygons" >(-0.072,-0.188)=(0.042,-0.187)=(0.04,0.12)=(0.010,0.182)=(-0.030,0.182)=(-0.096,0.121)</property>
             </object>
-            <object width="0.211" height="0.451" X="3.03" Y="1.5" type="PolyObject" ID="rightleg">
-	        <property key="Polygons">(-0.046,-0.191)=(-0.015,-0.221)=(0.046,-0.221)=(0.076,-0.191)=(0.101,0.115)=(0.064,0.200)=(-0.038,0.200)</property>
-                <property key="ImageName">rightleg</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
-		<property key="PivotPoint">(0.005,0.125)</property>
+            <object width="0.211" X="3.03" Y="1.5" height="0.451" type="PolyObject" ID="rightleg" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >rightleg</property>
+                <property key="Mass" >1.0</property>
+                <property key="PivotPoint" >(0.005,0.125)</property>
+                <property key="Polygons" >(-0.046,-0.191)=(-0.015,-0.221)=(0.046,-0.221)=(0.076,-0.191)=(0.101,0.115)=(0.064,0.200)=(-0.038,0.200)</property>
             </object>
-	    <object type="PivotPoint" X="3.043" Y="1.346">
-		  <property key="object1">rightfoot</property>
-		  <property key="object2">rightleg</property>
-		  <property key="collide">false</property>
-	    </object>
-            
-            <!--object width="0.404" height="0.976" X="2.91" Y="2.02" type="Scenery">
-                <property key="ImageName">body</property>
-            </object-->
-
-            <object width="0.602" height="0.224" X="2.58" Y="2.1" type="PolyObject" ID="lefthand">
-	        <property key="Polygons">(0.290,0.012)=(0.210,0.102)=(-0.229,0.057)=(-0.297,0.007)=(-0.284,-0.015)=(0.050,-0.105)</property>
-                <property key="ImageName">lefthand</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
-		<property key="PivotPoint">(0.208,0.036)</property>
+            <object width="1" X="3.043" Y="1.346" height="1" type="PivotPoint" angle="0" >
+                <property key="object1" >rightfoot</property>
+                <property key="object2" >rightleg</property>
             </object>
-            
-            <object width="0.602" height="0.224" X="3.23" Y="2.11" type="PolyObject" ID="righthand">
-	        <property key="Polygons">(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)=(-0.293,-0.012)</property>
-                <property key="ImageName">righthand</property>
-                <property key="Bounciness">0.1</property>
-		<property key="Mass">1.0</property>
-		<property key="PivotPoint">(-0.208,0.036)</property>
+            <object width="0.602" X="2.58" Y="2.1" height="0.224" type="PolyObject" ID="lefthand" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >lefthand</property>
+                <property key="Mass" >1.0</property>
+                <property key="PivotPoint" >(0.208,0.036)</property>
+                <property key="Polygons" >(0.290,0.012)=(0.210,0.102)=(-0.229,0.057)=(-0.297,0.007)=(-0.284,-0.015)=(0.050,-0.105)</property>
             </object>
-
-	    <object width="0.1" height="0.6" X="2.91" Y="1.72" type="RectObject" ID="rope1">
+            <object width="0.602" X="3.23" Y="2.11" height="0.224" type="PolyObject" ID="righthand" angle="0" >
+                <property key="Bounciness" >0.1</property>
+                <property key="ImageName" >righthand</property>
+                <property key="Mass" >1.0</property>
+                <property key="PivotPoint" >(-0.208,0.036)</property>
+                <property key="Polygons" >(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)=(-0.293,-0.012)</property>
+            </object>
+            <object width="0.1" X="2.91" Y="1.72" height="0.6" type="RectObject" ID="rope1" angle="0" >
                 <property key="ImageName" >rope</property>
-                <property key="Mass">0.1</property>
+                <property key="Mass" >0.1</property>
             </object>
-
-<object type="Link" X="2.89" Y="1.64" angle="0.0">
-    <property key="object1">lefthand@(0.285,0.020)</property>
-    <property key="object2">rope1@(-0.05,0.3)</property>
-</object>
-<object type="Link" X="2.93" Y="1.64" angle="0.0">
-    <property key="object1">righthand@(-0.285,0.020)</property>
-    <property key="object2">rope1@(0.05,0.3)</property>
-</object>
-
-<object type="Link" X="2.89" Y="1.24" angle="0.0">
-    <property key="object1">rightleg@(-0.095,0.135)</property>
-    <property key="object2">rope1@(-0.05,-0.3)</property>
-</object>
-<object type="Link" X="2.93" Y="1.24" angle="0.0">
-    <property key="object1">leftleg@(0.090,0.135)</property>
-    <property key="object2">rope1@(0.05,-0.3)</property>
-</object>
-
-
-	    <object width="0.1" height="0.3" X="2.91" Y="1.09" type="RectObject" ID="rope2">
+            <object width="1" X="2.89" Y="1.64" height="1" type="Link" angle="0" >
+                <property key="object1" >lefthand@(0.285,0.020)</property>
+                <property key="object2" >rope1@(-0.05,0.3)</property>
+            </object>
+            <object width="1" X="2.93" Y="1.64" height="1" type="Link" angle="0" >
+                <property key="object1" >righthand@(-0.285,0.020)</property>
+                <property key="object2" >rope1@(0.05,0.3)</property>
+            </object>
+            <object width="1" X="2.89" Y="1.24" height="1" type="Link" angle="0" >
+                <property key="object1" >rightleg@(-0.095,0.135)</property>
+                <property key="object2" >rope1@(-0.05,-0.3)</property>
+            </object>
+            <object width="1" X="2.93" Y="1.24" height="1" type="Link" angle="0" >
+                <property key="object1" >leftleg@(0.090,0.135)</property>
+                <property key="object2" >rope1@(0.05,-0.3)</property>
+            </object>
+            <object width="0.1" X="2.91" Y="1.09" height="0.3" type="RectObject" ID="rope2" angle="0" >
                 <property key="ImageName" >rope</property>
-                <property key="Mass">0.1</property>
+                <property key="Mass" >0.1</property>
             </object>
-            
-            <object X="2.80" Y="0.74" type="Weight" ID="Weight" />
-
-<object type="Link" X="2.91" Y="0.94" angle="0.0" width="0.2" height="0.1">
+            <object width="0.4" X="2.8" Y="0.74" height="0.4" type="Weight" ID="Weight" angle="0" />
+            <object width="0.1329135000705719" X="2.91" Y="0.9399999999999999" height="0.0443045012652874" type="Link" angle="0" >
                 <property key="ImageName" >rope_rot</property>
-    <property key="object1">rope2@(0.00,-0.15)</property>
-    <property key="object2">Weight@(0.0,0.15)</property>
-</object>
-<object type="Link" X="2.80" Y="0.94" angle="0.0" width="0.2" height="0.1">
+                <property key="object1" >rope2@(0.00,-0.15)</property>
+                <property key="object2" >Weight@(0.0,0.15)</property>
+            </object>
+            <object width="0.1979999840259552" X="2.8" Y="0.9399999999999999" height="0.06599999219179153" type="Link" angle="0" >
                 <property key="ImageName" >rope_rot</property>
-    <property key="object1">rope1@(0.00,-0.3)</property>
-    <property key="object2">rope2@(0.0,0.15)</property>
-</object>
-
-
-            <object width="0.6" height="0.1" X="2.9" Y="0.49" type="RectObject" >
+                <property key="object1" >rope1@(0.00,-0.3)</property>
+                <property key="object2" >rope2@(0.0,0.15)</property>
+            </object>
+            <object width="0.6" X="2.9" Y="0.49" height="0.1" type="RectObject" angle="0" >
+                <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >birch_bar</property>
-                <property key="Bounciness">0.0</property>
-                <property key="Mass">1.0</property>
-		<property key="PivotPoint">(-0.3,-0.05)</property>
+                <property key="Mass" >1.0</property>
+                <property key="PivotPoint" >(-0.3,-0.05)</property>
             </object>
-            <object width="0.6" height="0.1" X="2.3" Y="0.49" type="RectObject" >
+            <object width="0.6" X="2.3" Y="0.49" height="0.1" type="RectObject" angle="0" >
+                <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness">0.1</property>
             </object>
-            <object width="0.6" height="0.1" X="3.55" Y="0.49" type="RectObject" >
+            <object width="0.6" X="3.55" Y="0.49" height="0.1" type="RectObject" angle="0" >
+                <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness">0.1</property>
             </object>
-
-
-<object X="0.4" Y="0.25" width="0.6" height="0.3" type="RightRamp"/>
-
-
-	    <object X="3.1" Y="0.27" type="Bowling Pin" ID="pin">
-                <property key="Bounciness">0.0</property>
+            <object width="0.6" X="0.3999999959642616" Y="0.2540830737807661" height="0.3" type="RightRamp" angle="0" />
+            <object width="0.12" X="3.1" Y="0.27" height="0.34" type="BowlingPin" ID="pin" angle="0" >
+                <property key="Bounciness" >0.0</property>
             </object>
-
-</predefined>
+            <object width="0.5675495862960815" X="1.186137795448303" Y="2.061960604559228" height="0.130658894777298" type="Floor" angle="0" />
+            <object width="0.166" X="2.123259303459138" Y="2.213386694183446" height="0.501" type="CokeMentosBottle" angle="4.727452278137207" />
+            <object width="0.25" X="0.5054976304590972" Y="2.301035922522841" height="0.1" type="Floor" angle="0.26" />
+            <object width="0.334829568862915" X="0.1418117321737019" Y="1.968110592398521" height="0.3162619769573212" type="Floor" angle="1.57" />
+            <object width="0.25" X="0.51" Y="1.64" height="0.1" type="Floor" angle="-0.26" />
+            <object width="0.2499999999999999" X="0.3208435485410095" Y="2.186904789860443" height="0.1" type="Floor" angle="0.7900000214576721" />
+            <object width="0.25" X="0.33" Y="1.76" height="0.1" type="Floor" angle="-0.79" />
+            <object width="0.6682507395744324" X="0.9399999999999999" Y="1.61" height="0.1" type="Floor" angle="0" />
+            <object width="0.22" X="0.641045192939547" Y="1.306588901372415" height="0.22" type="BowlingBall" angle="0" />
+            <object width="0.8" X="1.869851676095382" Y="2.049061401036357" height="0.15" type="BedOfNails" angle="3.141303300857544" />
+            <object width="0.27" X="1.376001503835961" Y="1.816975249329392" height="0.36" type="Balloon" ID="balloon" angle="0" />
+            <object width="0.7104577422142029" X="1.086102045223942" Y="1.171847052209926" height="0.1" type="Floor" angle="0" />
+            <object width="0.12" X="1.363752245903015" Y="1.396416849725795" height="0.34" type="BowlingPin" ID="top pin" angle="0" />
+            <object width="0.3850129544734955" X="1.840996684680013" Y="1.291651508658942" height="0.1" type="Floor" angle="0.7614110708236694" />
+            <object width="0.21" X="0.8737813234329224" Y="1.322921209885845" height="0.21" type="VolleyBall" ID="volley" angle="0" />
+            <object width="0.3931342661380768" X="0.5748150461340574" Y="1.102730303837186" height="0.1" type="Floor" angle="0.3662298917770386" />
+            <object width="1" X="1.461746336706178" Y="0.7921195629984574" height="0.1" type="Floor" angle="0" />
+            <object width="0.1" X="0.05000000000000002" Y="1" height="1.8" type="RectObject" angle="0" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.506455659866333" X="0.9711836249576278" Y="1.580641335130584" height="1.519366979598999" type="Link" angle="0" >
+                <property key="ImageName" >rope_rot</property>
+                <property key="object1" >balloon@(0.00,-0.17)</property>
+                <property key="object2" >volley@(0.10,0.10)</property>
+            </object>
+            <object width="0.1" X="2.600022514841157" Y="0.45" height="0.1" type="Scenery" angle="0" >
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >12.0</property>
+            </object>
+        </predefined>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="xbelow">1.0</property>
-		   <property key="object">pin</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="positionchange" >
+            <property key="object" >pin</property>
+            <property key="xbelow" >1.0</property>
+        </goal>
+    </goals>
 </tbe-level>
