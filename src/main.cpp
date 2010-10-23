@@ -72,8 +72,10 @@ static bool displayHelp(QString /*anArgument*/ )
 	printf(" -h                  gives this help text\n");
 	printf(" --level-creator     start in level creator mode\n");
 	printf(" -L                  start in level creator mode\n");
+#if !defined(NDEBUG)
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
+#endif
 	printf(" --windowed          display in a window (default is fullscreen)\n");
 	printf(" -W                  display in a window (default is fullscreen)\n");
 	printf("\n");
@@ -86,6 +88,7 @@ static bool goLevelCreator( QString /*anArgument*/ )
 	return true;
 }
 
+#if !defined(NDEBUG)
 static bool setVerbosity(QString anArgument)
 {
 	// the argument should be a number. Let's parse.
@@ -99,6 +102,7 @@ static bool setVerbosity(QString anArgument)
 	DEBUG2("set verbosity level to %d\n", theVerbosity);
 	return true;
 }
+#endif
 
 // local variable
 static bool theIsMaximized = true;
@@ -126,7 +130,9 @@ static struct s_args theArgsTable[] =
 // keep sorted alphabetically, please
 	{ "help",          "h", false, displayHelp, },
 	{ "level-creator", "L", false, goLevelCreator, },
+#if !defined(NDEBUG)
 	{ "verbosity",     "v", true,  setVerbosity, },
+#endif
 	{ "windowed",      "W", false, setWindowed, },
 //	keep this one last:
 	{ "\0", "\0", false, NULL, },
