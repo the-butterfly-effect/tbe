@@ -134,11 +134,11 @@
             <object width="0.3850129544734955" X="1.840996684680013" Y="1.291651508658942" height="0.1" type="Floor" angle="0.7614110708236694" />
             <object width="0.21" X="0.8737813234329224" Y="1.322921209885845" height="0.21" type="VolleyBall" ID="volley" angle="0" />
             <object width="0.3931342661380768" X="0.5748150461340574" Y="1.102730303837186" height="0.1" type="Floor" angle="0.3662298917770386" />
-            <object width="1" X="1.461746336706178" Y="0.7921195629984574" height="0.1" type="Floor" angle="0" />
+            <object width="0.4" X="1.570030200669277" Y="0.8" height="0.1" type="Floor" angle="0" />
             <object width="0.1" X="0.05000000000000002" Y="1" height="1.8" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.506455659866333" X="0.9711836249576278" Y="1.580641335130584" height="1.519366979598999" type="Link" angle="0" >
+            <object width="0.506455659866333" X="0.9711836249576278" Y="1.580641335130584" height="0.1688185483217239" type="Link" angle="0" >
                 <property key="ImageName" >rope_rot</property>
                 <property key="object1" >balloon@(0.00,-0.17)</property>
                 <property key="object2" >volley@(0.10,0.10)</property>
@@ -147,12 +147,22 @@
                 <property key="ImageName" >brass-pin</property>
                 <property key="ZValue" >12.0</property>
             </object>
+            <object width="0.3441616892814636" X="1.719276187112754" Y="1.0169666915363" height="0.1" type="Floor" angle="1.57" />
+            <object width="0.4651981890201569" X="1.4" Y="0.98" height="0.1" type="Floor" angle="1.57" />
+            <object width="0.2200000000000001" X="1.563985383573698" Y="1.034237146377563" height="0.37" type="Scenery" angle="0" >
+                <property key="ImageName" >basket</property>
+            </object>
+            <object width="0.4500000000000001" X="2.91" Y="2.03" height="0.93" type="Scenery" angle="0" >
+                <property key="Description" >a Jumping Jack is a paper puppet that will move arms and legs when you pull the cord</property>
+                <property key="ImageName" >body</property>
+                <property key="ZValue" >12.0</property>
+            </object>
         </predefined>
     </scene>
     <goals>
         <goal type="positionchange" >
-            <property key="object" >pin</property>
-            <property key="xbelow" >1.0</property>
+            <property key="object" >top pin</property>
+            <property key="ybelow" >1.2</property>
         </goal>
     </goals>
 </tbe-level>
