@@ -310,13 +310,11 @@ void BaseObject::reset ( )
 
 	if(isPhysicsObjectCreated()==false)
 		return;
-	
-	// reset the position
-	setTempCenter(getOrigCenter());
 
-	// reset the velocities and such
-	theB2BodyPtr->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-	theB2BodyPtr->SetAngularVelocity(0.0f);
+	// deleting and re-creating the Physics Object will
+	// force a reset of the impulses and positions
+	deletePhysicsObject();
+	createPhysicsObject();
 }
 
 
