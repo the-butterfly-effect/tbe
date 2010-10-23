@@ -51,6 +51,7 @@ make -C $2/images all >/dev/null;
 find $2/images  -maxdepth 1 -type f  | grep -v 'Makefile' >>$MANIFEST
 find $2/levels/draft -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
 find $2/levels/elce09 -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
+find $2/levels/jumpingjack -name '*.xml' -o -name '*.svg' -o -name '*.png' -o -name 'README' >>$MANIFEST
 echo $2/levels/levels.xml >>$MANIFEST
 
 # for pure joy, let's sort the manifest
