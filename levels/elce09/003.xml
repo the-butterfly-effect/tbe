@@ -26,19 +26,11 @@
 	    <object X="0.3" Y="2.75" type="BowlingBall" />
             <object X="0.3" Y="1.1" type="BowlingBall" />
             <object X="2.6" Y="4.4" type="BowlingBall" />
-            <object width="0.2" X="6.4" Y="0.7" height="0.15" type="LeftRamp" angle="0" >
-                <property key="ImageName" >LeftRamp</property>
-            </object>
+	    <object width="0.2" X="6.4" Y="0.7" height="0.15" type="LeftRamp" angle="0" />
 	    <object X="6.4" Y="0.39" type="BowlingPin" ID="Pin" />
-            <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" >
-                <property key="ImageName" >RightRamp</property>
-            </object>
-            <object width="5" X="2.6" Y="2.3" height="0.7" type="RightRamp" angle="0" >
-                <property key="ImageName" >RightRamp</property>
-            </object>
-            <object width="4.6" X="2.4" Y="0.5" height="0.7" type="RightRamp" angle="0" >
-                <property key="ImageName" >RightRamp</property>
-            </object>
+	    <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" />
+	    <object width="5" X="2.6" Y="2.3" height="0.7" type="RightRamp" angle="0" />
+	    <object width="4.6" X="2.4" Y="0.51" height="0.7" type="RightRamp" angle="0" />
             <object width="0.4" X="6.7" Y="2.8" height="4.4" type="RectObject">
 	                    <property key="ImageName" >right-side-frame.003</property>
             </object>
