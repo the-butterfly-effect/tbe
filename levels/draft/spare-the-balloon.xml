@@ -1,0 +1,97 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Spare the Balloon</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Kick the pin.</description>
+        <date>10/24/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Cactus" >
+            <name lang="nl" >Cactus</name>
+            <object type="Cactus" >
+                <property key="Mass" >4</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Wood Bar" >
+            <name lang="nl" >Houten balk</name>
+            <object width="0.4" height="0.1" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Rotatable" >true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3.5" height="2" />
+        <predefined>
+            <object width="3.5" X="1.750084727870713" Y="0.05" height="0.1" type="Floor" angle="0" />
+            <object width="0.27" X="0.8079839650145773" Y="0.3879489795918367" height="0.36" type="Balloon" angle="0" />
+            <object width="0.8" X="1.006365991128542" Y="1.820760539311644" height="0.15" type="BedOfNails" angle="-3.140053987503052" />
+            <object width="0.1" X="0.5515802083057145" Y="1.490437794456677" height="0.9108348488807678" type="Floor" angle="0" />
+            <object width="0.5" X="0.3499999999999996" Y="0.4999999999999999" height="0.8" type="RectObject" angle="0" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="0.05" Y="1" height="1.8" type="RectObject" angle="0" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.25" X="1.222185131195335" Y="0.2975247813411079" height="0.4" type="Cactus" angle="0" />
+            <object width="0.25" X="1.96" Y="0.7" height="1.2" type="RectObject" angle="0" >
+                <property key="ImageName" >oldbrick</property>
+            </object>
+            <object width="0.2455975115299225" X="1.400026811567982" Y="1.076330955525951" height="0.1" type="Floor" angle="-1.57" />
+            <object width="0.4474409222602844" X="1.396284246156588" Y="0.3217056090041255" height="0.1" type="Floor" angle="4.708058834075928" />
+            <object width="0.5384212136268616" X="2.142092266132531" Y="1.139649393322594" height="0.1" type="Floor" angle="0.880348801612854" >
+                <property key="ZValue" >0.5</property>
+            </object>
+            <object width="0.1" X="1.893180766564766" Y="1.592626671091941" height="0.3999999999999999" type="DominoBlue" angle="0" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.02</property>
+            </object>
+            <object width="1" X="2.337170870194562" Y="1.347793825241359" height="0.1" type="Floor" angle="0" >
+                <property key="Friction" >1.0</property>
+            </object>
+            <object width="0.1" X="2.193818284437467" Y="1.595725166667162" height="0.3999999999999999" type="DominoGreen" angle="0" >
+                <property key="ImageName" >DominoGreen</property>
+                <property key="Mass" >0.02</property>
+            </object>
+            <object width="0.1" X="2.494298434935713" Y="1.595725301318886" height="0.3999999999999999" type="DominoRed" angle="0" >
+                <property key="ImageName" >DominoRed</property>
+                <property key="Mass" >0.05</property>
+            </object>
+            <object width="0.1" X="2.788732297989162" Y="1.592626802352635" height="0.3999999999999999" type="DominoBlue" angle="0" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.1</property>
+            </object>
+            <object width="1" X="2.996245145797729" Y="1.131521955673758" height="0.6952052116394043" type="LeftRamp" angle="0" />
+            <object width="0.1715594828128815" X="2.411607619709251" Y="0.7560329422128728" height="0.1" type="Floor" angle="0" />
+            <object width="0.22" X="2.435417522123894" Y="0.9171546902654867" height="0.22" type="SoccerBall" angle="0" />
+            <object width="0.12" X="3.045821150442478" Y="0.2757661061946903" height="0.34" type="BowlingPin" ID="thepin" angle="0" />
+            <object width="0.8439328670501709" X="2.506111878710848" Y="0.2747879565149493" height="0.3512721955776215" type="RightRamp" angle="0" />
+            <object width="1.403618574142456" X="0.7018092274665833" Y="1.95" height="0.1" type="Floor" angle="0" />
+            <object width="0.4" X="3.3" Y="0.4399999999999998" height="0.7" type="Scenery" angle="0" >
+                <property key="ImageName" >goal-scenery</property>
+                <property key="ZValue" >8.0</property>
+            </object>
+            <object width="1" X="3.417284384988949" Y="0.6037468094389268" height="0.1481598019599915" type="LeftRamp" angle="1.57" >
+                <property key="ImageName" >Empty</property>
+            </object>
+            <object width="0.2" X="1.449708009666834" Y="1.895069891228587" height="0.1" type="Floor" angle="1.57" />
+            <object width="0.166" X="0.35" Y="0.98" height="0.501" type="CokeMentosBottle" angle="-1.53" />
+            <object width="0.1" X="2.782449102641333" Y="1.251792215806489" height="0.1" type="Floor" angle="0" />
+            <object width="1.556586980819702" X="2.716809549621228" Y="1.874589854921071" height="0.1" type="Floor" angle="0" />
+            <object width="0.22" X="0.3377360234485897" Y="0.700260011920929" height="0.22" type="PostIt" angle="0" >
+                <property key="page1" >That poor balloon is on its way to its doom</property>
+                <property key="page2" >Let's spare the balloon, there's a pin that needs kicking.</property>
+                <property key="page3" >I still have other ideas that need balloons...</property>
+                <property key="page4" >... the Post-it Boy</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange" >
+            <property key="object" >thepin</property>
+            <property key="xover" >3.15</property>
+        </goal>
+    </goals>
+</tbe-level>
