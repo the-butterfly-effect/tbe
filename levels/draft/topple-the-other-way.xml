@@ -20,12 +20,6 @@
                 <property key="ImageName">LeftRamp</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \">
-            <name lang="nl">Helling \</name>
-            <object width="1.6" height="0.5" type="RightRamp">
-                <property key="ImageName">RightRamp</property>
-            </object>
-        </toolboxitem>
    </toolbox>
     <scene>
         <scenesize width="4.4" height="3" />
@@ -86,12 +80,12 @@
             </object>
 
 
-            <object X="3.4" Y="0.6" width="2.0" height="0.2" type="LeftRamp">
+            <object X="3.45" Y="0.6" width="1.9" height="0.2" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
                 <property key="Friction" >0.5</property>
             </object>
 
-            <object X="1.0" Y="0.6" width="2.0" height="0.2" type="RightRamp">
+            <object X="0.95" Y="0.57" width="1.9" height="0.2" type="RightRamp">
                 <property key="ImageName">RightRamp</property>
                 <property key="Friction" >0.5</property>
             </object>
