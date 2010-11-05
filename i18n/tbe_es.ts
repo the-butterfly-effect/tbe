@@ -37,10 +37,12 @@ Cannot read the level descriptions in &apos;%1&apos;:
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="92"/>
-        <location filename="../src/view/ChooseLevel.cpp" line="146"/>
         <source>done</source>
         <translation>Hecho</translation>
     </message>
+</context>
+<context>
+    <name>ChooseLevel::LevelList</name>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="155"/>
         <source>LevelList:
@@ -48,12 +50,10 @@ Parse error at line %1, column %2:
 %3</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ChooseLevel::LevelList</name>
     <message>
+        <location filename="../src/view/ChooseLevel.cpp" line="146"/>
         <source>done</source>
-        <translation type="obsolete">Hecho</translation>
+        <translation type="unfinished">Hecho</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@ Parse error at line %1, column %2:
 <context>
     <name>DrawPostIt</name>
     <message>
-        <location filename="../src/view/DrawPostIt.cpp" line="148"/>
+        <location filename="../src/view/DrawPostIt.cpp" line="156"/>
         <source>Finish</source>
         <translation>Finalizar</translation>
     </message>
@@ -74,17 +74,17 @@ Parse error at line %1, column %2:
 <context>
     <name>DrawWorld</name>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="303"/>
-        <source>You cannot make changes now. You need to reset the stopwatch first.</source>
-        <translation></translation>
+        <location filename="../src/view/DrawWorld.cpp" line="328"/>
+        <source>You cannot make changes now. Reset the stopwatch?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="314"/>
+        <location filename="../src/view/DrawWorld.cpp" line="342"/>
         <source>Death - retry?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="339"/>
+        <location filename="../src/view/DrawWorld.cpp" line="367"/>
         <source>Framerate: %1 fps</source>
         <translation type="unfinished"></translation>
     </message>
@@ -93,9 +93,27 @@ Parse error at line %1, column %2:
         <translation type="obsolete">¡¡¡Muerte!!!</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="350"/>
+        <location filename="../src/view/DrawWorld.cpp" line="378"/>
         <source>Congratulations</source>
         <translation>Felicidades</translation>
+    </message>
+</context>
+<context>
+    <name>DrawWorld::CongratDeathMessage</name>
+    <message>
+        <location filename="../src/view/DrawWorld.cpp" line="556"/>
+        <source>&amp;Replay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/DrawWorld.cpp" line="558"/>
+        <source>&amp;Choose...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/DrawWorld.cpp" line="560"/>
+        <source>&amp;Next&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -244,7 +262,7 @@ Nothing was changed yet, please fix.</source>
     <name>Level</name>
     <message>
         <location filename="../src/model/Level.cpp" line="116"/>
-        <location filename="../src/model/Level.cpp" line="135"/>
+        <location filename="../src/model/Level.cpp" line="136"/>
         <source>Cannot read file &apos;%1&apos;</source>
         <translation>No se puede leer el fichero &apos;%1&apos;</translation>
     </message>
@@ -253,16 +271,16 @@ Nothing was changed yet, please fix.</source>
         <translation type="obsolete">No se puede leer el fichero %1</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="141"/>
+        <location filename="../src/model/Level.cpp" line="142"/>
         <source>Cannot parse file - not valid XML?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="151"/>
-        <location filename="../src/model/Level.cpp" line="177"/>
-        <location filename="../src/model/Level.cpp" line="191"/>
-        <location filename="../src/model/Level.cpp" line="195"/>
-        <location filename="../src/model/Level.cpp" line="230"/>
+        <location filename="../src/model/Level.cpp" line="152"/>
+        <location filename="../src/model/Level.cpp" line="178"/>
+        <location filename="../src/model/Level.cpp" line="192"/>
+        <location filename="../src/model/Level.cpp" line="196"/>
+        <location filename="../src/model/Level.cpp" line="232"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation>Analizando &apos;%1&apos; la seccion a fallado:</translation>
     </message>
@@ -271,34 +289,34 @@ Nothing was changed yet, please fix.</source>
         <translation type="obsolete">Analizando &apos;%1&apos; la seccion a fallado</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="184"/>
+        <location filename="../src/model/Level.cpp" line="185"/>
         <source>scene width or height unspecified</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="209"/>
-        <location filename="../src/model/Level.cpp" line="253"/>
+        <location filename="../src/model/Level.cpp" line="210"/>
+        <location filename="../src/model/Level.cpp" line="255"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="216"/>
-        <location filename="../src/model/Level.cpp" line="260"/>
+        <location filename="../src/model/Level.cpp" line="217"/>
+        <location filename="../src/model/Level.cpp" line="263"/>
         <source>createObjectFromDom failed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="234"/>
+        <location filename="../src/model/Level.cpp" line="236"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="265"/>
+        <location filename="../src/model/Level.cpp" line="269"/>
         <source>&lt;%1&gt; properties could not be parsed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="361"/>
+        <location filename="../src/model/Level.cpp" line="371"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation></translation>
     </message>
@@ -363,110 +381,131 @@ Nothing was changed yet, please fix.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="72"/>
+        <location filename="../src/view/MainWindow.cpp" line="71"/>
         <source>&amp;Undo</source>
         <translation>&amp;Deshacer</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="73"/>
+        <location filename="../src/view/MainWindow.cpp" line="72"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="76"/>
+        <location filename="../src/view/MainWindow.cpp" line="75"/>
         <source>&amp;Redo</source>
         <translation type="unfinished">&amp;Rehacer</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="78"/>
+        <location filename="../src/view/MainWindow.cpp" line="77"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl-Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="78"/>
+        <location filename="../src/view/MainWindow.cpp" line="77"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Shift+Ctrl+Z</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="123"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="166"/>
+        <location filename="../src/view/MainWindow.cpp" line="136"/>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="188"/>
         <source>New Level ...</source>
         <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="176"/>
+        <location filename="../src/view/MainWindow.cpp" line="198"/>
         <source>Goal Editor ...</source>
         <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="181"/>
+        <location filename="../src/view/MainWindow.cpp" line="203"/>
         <source>Level Settings Editor ...</source>
         <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="186"/>
+        <location filename="../src/view/MainWindow.cpp" line="208"/>
         <source>Draw Box2D debug in sim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="191"/>
+        <location filename="../src/view/MainWindow.cpp" line="213"/>
         <source>Draw PolyObject outlines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="201"/>
+        <location filename="../src/view/MainWindow.cpp" line="224"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses Nokia&apos;s Qt as GUI toolkit. We are happy with the continued support of Qt by Nokia. Please refer to http://qt.nokia.com/ .</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="249"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
+        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hestitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="286"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="251"/>
+        <location filename="../src/view/MainWindow.cpp" line="288"/>
         <source>File &apos;%1&apos; saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="447"/>
-        <source>Replay</source>
+        <location filename="../src/view/MainWindow.cpp" line="319"/>
+        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="450"/>
-        <source>Choose...</source>
+        <location filename="../src/view/MainWindow.cpp" line="354"/>
+        <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="453"/>
+        <location filename="../src/view/MainWindow.cpp" line="360"/>
+        <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
+This may affect playability, though!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Next&gt;</source>
-        <translation type="unfinished">Siguiente&gt;</translation>
+        <translation type="obsolete">Siguiente&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="470"/>
+        <location filename="../src/view/MainWindow.cpp" line="497"/>
         <source>WARNING: you already have a level open. Do you want to discard that?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="135"/>
+        <location filename="../src/view/MainWindow.cpp" line="153"/>
         <source>&lt;b&gt;The Butterfly Effect - Brand names&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Coke&lt;/b&gt;, diet Coke, Coca Cola and the bottle shape are world-wide registered trademarks of the Coca Cola company.&lt;br&gt;&lt;b&gt;Mentos&lt;/b&gt; is a registered trademark of Perfetti Van Melle.&lt;br&gt;The use of a Mentos in diet Coke is widely described - and apparently works best with diet Coke and Mentos. &lt;br&gt;&lt;br&gt;&lt;b&gt;Post-it&lt;/b&gt; is a registered trademark of 3M. &lt;br&gt;&lt;br&gt;&apos;The Butterfly Effect&apos; as a concept of chaos theory has existed since at least the mid 1950s. We are not affiliated with the 2004 movie in any way.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="251"/>
         <source>Open level</source>
         <translation>Abrir nivel</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="251"/>
         <source>TBE levels (*.xml)</source>
         <translation>Niveles TBE (*.xml)</translation>
     </message>
@@ -483,7 +522,7 @@ Nothing was changed yet, please fix.</source>
         <translation type="obsolete">Niveles TBE (*.xml *.tbe)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="268"/>
+        <location filename="../src/view/MainWindow.cpp" line="305"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation></translation>
@@ -504,42 +543,42 @@ Nothing was changed yet, please fix.</source>
         <translation type="obsolete">Controles del juego</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="236"/>
+        <location filename="../src/view/MainWindow.ui" line="245"/>
         <source>Start</source>
         <translation>Comenzar</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="336"/>
+        <location filename="../src/view/MainWindow.ui" line="345"/>
         <source>Go To Level Creator Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="341"/>
+        <location filename="../src/view/MainWindow.ui" line="350"/>
         <source>Go</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="344"/>
+        <location filename="../src/view/MainWindow.ui" line="353"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="349"/>
+        <location filename="../src/view/MainWindow.ui" line="358"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="352"/>
+        <location filename="../src/view/MainWindow.ui" line="361"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="357"/>
+        <location filename="../src/view/MainWindow.ui" line="366"/>
         <source>Reset</source>
         <translation type="unfinished">Reiniciar</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="127"/>
+        <location filename="../src/view/MainWindow.ui" line="136"/>
         <source>&amp;File</source>
         <translation>&amp;Fichero</translation>
     </message>
@@ -554,22 +593,22 @@ Nothing was changed yet, please fix.</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="118"/>
+        <location filename="../src/view/MainWindow.ui" line="127"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="140"/>
+        <location filename="../src/view/MainWindow.ui" line="149"/>
         <source>&amp;Simulation</source>
         <translation>&amp;Simular</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="144"/>
+        <location filename="../src/view/MainWindow.ui" line="153"/>
         <source>adjust the simulation speed</source>
         <translation>Ajusta la velocidad de simulación</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="147"/>
+        <location filename="../src/view/MainWindow.ui" line="156"/>
         <source>Sim Speed</source>
         <translation>Velocidad simulación</translation>
     </message>
@@ -582,164 +621,184 @@ Nothing was changed yet, please fix.</source>
         <translation type="obsolete">&amp;Info...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="172"/>
+        <location filename="../src/view/MainWindow.ui" line="181"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="175"/>
+        <location filename="../src/view/MainWindow.ui" line="184"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="188"/>
+        <location filename="../src/view/MainWindow.ui" line="197"/>
         <source>Restart Level...</source>
         <translation>Reiniciar nivel...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="196"/>
+        <location filename="../src/view/MainWindow.ui" line="205"/>
         <source>&amp;Open savegame...</source>
         <translation type="unfinished">Abrir &amp;juego salvado</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="204"/>
+        <location filename="../src/view/MainWindow.ui" line="213"/>
         <source>Zoom to all...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="212"/>
+        <location filename="../src/view/MainWindow.ui" line="221"/>
         <source>Zoom In</source>
         <translation>Zoom +</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="215"/>
+        <location filename="../src/view/MainWindow.ui" line="224"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="223"/>
+        <location filename="../src/view/MainWindow.ui" line="232"/>
         <source>Zoom Out</source>
         <translation>Uitzoomen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="226"/>
+        <location filename="../src/view/MainWindow.ui" line="235"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="231"/>
+        <location filename="../src/view/MainWindow.ui" line="240"/>
         <source>&amp;Quit</source>
         <translation type="unfinished">&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="241"/>
+        <location filename="../src/view/MainWindow.ui" line="250"/>
         <source>S&amp;top</source>
         <translation type="unfinished">S&amp;Arriba</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="246"/>
+        <location filename="../src/view/MainWindow.ui" line="255"/>
         <source>&amp;Reset</source>
         <translation>&amp;Reset</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="251"/>
-        <location filename="../src/view/MainWindow.ui" line="254"/>
-        <location filename="../src/view/MainWindow.ui" line="257"/>
+        <location filename="../src/view/MainWindow.ui" line="260"/>
+        <location filename="../src/view/MainWindow.ui" line="263"/>
+        <location filename="../src/view/MainWindow.ui" line="266"/>
         <source>Open level...</source>
         <translation>Abrir nivel...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="260"/>
+        <location filename="../src/view/MainWindow.ui" line="269"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="274"/>
+        <location filename="../src/view/MainWindow.ui" line="283"/>
         <source>Ctrl+1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="288"/>
+        <location filename="../src/view/MainWindow.ui" line="297"/>
         <source>Ctrl+2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="302"/>
+        <location filename="../src/view/MainWindow.ui" line="311"/>
         <source>Ctrl+3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="316"/>
+        <location filename="../src/view/MainWindow.ui" line="325"/>
         <source>Ctrl+4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="321"/>
+        <location filename="../src/view/MainWindow.ui" line="330"/>
         <source>Open custom level...</source>
         <translation>Abrir nivel personalizado...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="326"/>
+        <location filename="../src/view/MainWindow.ui" line="335"/>
         <source>&amp;Brand names...</source>
         <translation>&amp;Marcas comerciales...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="331"/>
+        <location filename="../src/view/MainWindow.ui" line="340"/>
         <source>&amp;Libraries...</source>
         <translation>&amp;Librerías...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="360"/>
+        <location filename="../src/view/MainWindow.ui" line="369"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="368"/>
+        <location filename="../src/view/MainWindow.ui" line="377"/>
         <source>Save As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="268"/>
+        <location filename="../src/view/MainWindow.ui" line="382"/>
+        <source>&amp;Suggestions...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="387"/>
+        <source>&amp;Bug Reports...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="392"/>
+        <source>&amp;New Levels...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="277"/>
         <source>1/4 speed</source>
         <translation>velocidad 1/4</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="180"/>
+        <location filename="../src/view/MainWindow.ui" line="113"/>
+        <source>&amp;Contribute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="189"/>
         <source>&amp;About...</source>
         <translation>&amp;Info...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="271"/>
+        <location filename="../src/view/MainWindow.ui" line="280"/>
         <source>makes the simulation run at quarter speed</source>
         <translation>haz la simulación a un cuarto de velocidad</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="282"/>
+        <location filename="../src/view/MainWindow.ui" line="291"/>
         <source>1/2 speed</source>
         <translation>velocidad 1/2</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="285"/>
+        <location filename="../src/view/MainWindow.ui" line="294"/>
         <source>makes the simulation run at half speed</source>
         <translation>haz la simulación a la mitad de velocidad</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="296"/>
+        <location filename="../src/view/MainWindow.ui" line="305"/>
         <source>1/1 speed</source>
         <translation>velocidad 1/1</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="299"/>
+        <location filename="../src/view/MainWindow.ui" line="308"/>
         <source>makes the simulation run at normal &quot;real world&quot; speed</source>
         <translation>haz la simulación a la velocidad normal del &quot;mundo real&quot;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="310"/>
+        <location filename="../src/view/MainWindow.ui" line="319"/>
         <source>2x speed</source>
         <translation>velocidad x2</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="313"/>
+        <location filename="../src/view/MainWindow.ui" line="322"/>
         <source>makes the simulation run at double speed</source>
         <translation></translation>
     </message>
@@ -930,47 +989,47 @@ p, li { white-space: pre-wrap; }
         <translation>Balón de futbol</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="80"/>
+        <location filename="../src/model/PolyObject.cpp" line="82"/>
         <source>Bowling Pin</source>
         <translation>Bolo</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="81"/>
+        <location filename="../src/model/PolyObject.cpp" line="83"/>
         <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="92"/>
+        <location filename="../src/model/PolyObject.cpp" line="95"/>
         <source>Skyhook</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="93"/>
+        <location filename="../src/model/PolyObject.cpp" line="96"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="102"/>
+        <location filename="../src/model/PolyObject.cpp" line="105"/>
         <source>Weight</source>
         <translation>Peso</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="103"/>
+        <location filename="../src/model/PolyObject.cpp" line="106"/>
         <source>A serious mass. As heavy as it looks!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="110"/>
+        <location filename="../src/model/PolyObject.cpp" line="113"/>
         <source>Left Ramp</source>
         <translation>Rampa izquierda</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="111"/>
+        <location filename="../src/model/PolyObject.cpp" line="114"/>
         <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="118"/>
+        <location filename="../src/model/PolyObject.cpp" line="121"/>
         <source>Right Ramp</source>
         <translation>Rampa derecha</translation>
     </message>
@@ -985,13 +1044,13 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/CokeMentosBottle.cpp" line="49"/>
+        <location filename="../src/model/CokeMentosBottle.cpp" line="48"/>
         <source>This is a prepared Coke bottle with a Mentos in it.
 Look: it blows if triggered!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/CokeMentosBottle.cpp" line="50"/>
+        <location filename="../src/model/CokeMentosBottle.cpp" line="49"/>
         <source>Coke+Mentos Bottle</source>
         <translation>Botella de refresco cola + caramelos de menta</translation>
     </message>
@@ -1012,7 +1071,7 @@ You might want to read them - it may help!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="119"/>
+        <location filename="../src/model/PolyObject.cpp" line="122"/>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
         <translation></translation>
     </message>
@@ -1032,7 +1091,7 @@ You might want to read them - it may help!</source>
         <translation>Escenario</translation>
     </message>
     <message>
-        <location filename="../src/view/toolbox.cpp" line="143"/>
+        <location filename="../src/view/toolbox.cpp" line="145"/>
         <source>%1x %2</source>
         <translation>%1x %2</translation>
     </message>
@@ -1068,32 +1127,32 @@ You might want to read them - it may help!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="79"/>
+        <location filename="../src/model/RectObject.cpp" line="80"/>
         <source>Domino (Red)</source>
         <translation>Dominó (Rojo)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="80"/>
+        <location filename="../src/model/RectObject.cpp" line="81"/>
         <source>The famous plastic red domino stone</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="84"/>
+        <location filename="../src/model/RectObject.cpp" line="85"/>
         <source>Domino (Blue)</source>
         <translation>Dominó (Azul)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="85"/>
+        <location filename="../src/model/RectObject.cpp" line="86"/>
         <source>The famous plastic blue domino stone</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="89"/>
+        <location filename="../src/model/RectObject.cpp" line="90"/>
         <source>Domino (Green)</source>
         <translation>Dominó (Verde)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="90"/>
+        <location filename="../src/model/RectObject.cpp" line="91"/>
         <source>The famous plastic green domino stone</source>
         <translation></translation>
     </message>
@@ -1138,38 +1197,33 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="50"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="55"/>
         <source>Balloon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="51"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="56"/>
         <source>a Helium Balloon. Lighter than air, it moves up.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="212"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="261"/>
         <source>Cactus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="213"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="262"/>
         <source>Cactacea Bulbuous Stingus - a Cactus has spines!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="289"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="338"/>
         <source>BedOfNails</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="290"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="339"/>
         <source>Do not touch a bed of nails - it stings!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Goal.cpp" line="260"/>
-        <source>changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
