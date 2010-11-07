@@ -160,19 +160,19 @@
             </object>
             <object width="0.1" X="3.98" Y="0.3" height="0.4" type="DominoGreen" angle="0" >
                 <property key="ImageName" >DominoGreen</property>
-                <property key="Mass" >4.0</property>
+                <property key="Mass" >5.0</property>
             </object>
             <object width="0.1" X="3.66" Y="0.3" height="0.4" type="DominoBlue" angle="0" >
                 <property key="ImageName" >DominoBlue</property>
-                <property key="Mass" >3.0</property>
+                <property key="Mass" >4.0</property>
             </object>
             <object width="0.1" X="3.34" Y="0.3" height="0.4" type="DominoRed" angle="0" >
                 <property key="ImageName" >DominoRed</property>
-                <property key="Mass" >2.5</property>
+                <property key="Mass" >3.5</property>
             </object>
-            <object width="0.1" X="3.02" Y="0.3" height="0.4" type="DominoGreen" angle="0" >
+            <object width="0.1" X="3.06" Y="0.3" height="0.4" type="DominoGreen" angle="0" >
                 <property key="ImageName" >DominoGreen</property>
-                <property key="Mass" >2.5</property>
+                <property key="Mass" >3.5</property>
             </object>
             <object width="0.1" X="2.9" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.0</property>
