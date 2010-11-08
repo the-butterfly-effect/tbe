@@ -61,6 +61,9 @@ private:
 	// kill possibility for copy constructor&assignment operator
 	EditObjectDialog(const EditObjectDialog&);
 	const EditObjectDialog& operator=(const EditObjectDialog&);
+
+	// persistant position of the dialog
+	static QPoint thePosition;
 };
 
 #endif // EDITOBJECTDIALOG_H

@@ -20,6 +20,10 @@
 #include "DrawObject.h"
 #include "ImageStore.h"
 
+#include <QCloseEvent>
+
+QPoint EditObjectDialog::thePosition = QPoint(0,0);
+
 EditObjectDialog::EditObjectDialog(BaseObject* aBaseObjectPtr, QWidget *aParent)
 		: QDialog(aParent, Qt::Tool), theBOPtr(aBaseObjectPtr), theUndoPtr(NULL)
 {
@@ -29,12 +33,17 @@ EditObjectDialog::EditObjectDialog(BaseObject* aBaseObjectPtr, QWidget *aParent)
 	theBOPtr = NULL;
 	readFromObject(aBaseObjectPtr);
 
+	// upon the very very first init of this dialog, let Qt place the dialog
+	// that will at least ensure that the dialog is overlapping the main window.
+	// after that, we're in charge!
+	if (thePosition != QPoint(0,0))
+		move(thePosition);
 }
 
 EditObjectDialog::~EditObjectDialog()
 {
+	thePosition = pos();
 }
-
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
