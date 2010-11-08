@@ -157,7 +157,7 @@ Parse error at line %1, column %2:
 <context>
     <name>EditObjectDialog</name>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="105"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="114"/>
         <source>Basic Properties for %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,7 +207,7 @@ Parse error at line %1, column %2:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="123"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="132"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
