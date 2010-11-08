@@ -34,8 +34,11 @@ ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
 	setAlignment(Qt::AlignCenter);
 
 	setInteractive(true);
-	setDragMode(QGraphicsView::RubberBandDrag);
-	setRubberBandSelectionMode(Qt::ContainsItemShape);
+	setDragMode(QGraphicsView::NoDrag);
+
+// if we ever want to go back to RubberBandDrag for multiple selection:
+//	setDragMode(QGraphicsView::RubberBandDrag);
+//	setRubberBandSelectionMode(Qt::ContainsItemShape);
 
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -142,4 +145,10 @@ void ResizingGraphicsView::updatePixelsPerUnit()
 		if (myScene != NULL)
 			myScene->invalidateCaching();
 	}
+}
+
+
+void ResizingGraphicsView::wheelEvent ( QWheelEvent * /*anEvent*/ )
+{
+	// ignore this event
 }

@@ -95,6 +95,8 @@ protected:
 	  */
 	virtual void mouseMoveEvent(QMouseEvent* event);
 
+	virtual void wheelEvent ( QWheelEvent * event );
+
 	/** the actual creation of the mime data and corresponding UndoDelete
 	  * @param aBOPtr pointer to the BaseObject to move to the toolbox
 	  * @returns true if success or false if not (dnd didn't happen)
