@@ -34,7 +34,7 @@ ${MYLIBDIR}/libbox2d.a:
 	patch --silent -p0 <box2d_compile.patch
 	patch --silent -p0 <box2d_fix_warnings.patch
 	patch --silent -p0 <box2d_increase_polygon_vertices.patch
-	cd ${BOX2D}/Box2D/Source && make ${FASTERMAKE} Gen/float/libbox2d.a 
+	cd ${BOX2D}/Box2D/Source && ${MAKE} ${FASTERMAKE} Gen/float/libbox2d.a 
 	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a ${MYLIBDIR}
 
 # because I don't have a shell environment on my windows box, I need to
@@ -76,8 +76,8 @@ ${MYLIBDIR}/libQtCore.a: ${QTVERSION}.tar.gz
            -no-iconv -no-pch -no-dbus -no-nas-sound \
            -nomake examples -nomake demos -nomake docs \
            -prefix ${MY3RDPARTYDIR}
-	cd ${QTVERSION} && make ${FASTERMAKE}
-	cd ${QTVERSION} && make install
+	cd ${QTVERSION} && ${MAKE} ${FASTERMAKE}
+	cd ${QTVERSION} && ${MAKE} install
 
 
 ${QTVERSION}.tar.gz:
