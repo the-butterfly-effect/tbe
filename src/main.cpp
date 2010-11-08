@@ -253,5 +253,7 @@ int main(int argc, char **argv)
 
 const char* ASCII(const QString& aQString)
 {
-	return aQString.toAscii().constData();
+	static char myString[256];
+	strncpy(myString, aQString.toAscii().constData(), 255);
+	return myString;
 }
