@@ -182,6 +182,7 @@ QStringList World::getAllIDs(void) const
 void World::initAttributes( )
 {
 	theDrawWorldPtr = NULL;
+	theTotalTime = 0.0f;
 	
 	theAABBPtr = new b2AABB();
 	theAABBPtr->lowerBound.Set(-5.0f, -50.0f);
