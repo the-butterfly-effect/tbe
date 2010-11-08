@@ -148,7 +148,8 @@ void ResizingGraphicsView::updatePixelsPerUnit()
 }
 
 
-void ResizingGraphicsView::wheelEvent ( QWheelEvent * /*anEvent*/ )
+void ResizingGraphicsView::wheelEvent ( QWheelEvent * anEvent )
 {
-	// ignore this event
+	// ignore this event, i.e. don't act on it...
+	anEvent->accept();
 }
