@@ -47,6 +47,7 @@ CokeMentosBottle::CokeMentosBottle()
 {
 	theToolTipString = QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!");
 	theNameString = QObject::tr("Coke+Mentos Bottle");
+	theCokeAmount = 0.0;
 	setTheWidth(0.166);
 	setTheHeight(0.501);
 

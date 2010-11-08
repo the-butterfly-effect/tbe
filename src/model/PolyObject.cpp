@@ -130,7 +130,7 @@ static AbstractPolyObjectFactory theRightRampFactory(
 // Constructors/Destructors
 //
 
-PolyObject::PolyObject ( )
+PolyObject::PolyObject ( ) 
 {
 	DEBUG5("PolyObject::PolyObject()\n");
 	PolyObject(DEFAULT_POLYOBJECT_NAME, "", DEFAULT_POLYOBJECT_NAME,
@@ -145,10 +145,8 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
-	DEBUG5("PolyObject::PolyObject(%s)\n", ASCII(aDisplayName));
-	theOriginalWidth = aWidth;
+	DEBUG5("PolyObject::PolyObject(%s, %f, %f)\n", ASCII(aDisplayName), aWidth, aHeight);
 	BaseObject::setTheWidth(aWidth);
-	theOriginalHeight = aHeight;
 	BaseObject::setTheHeight(aHeight);
 	setTheBounciness(aBounciness);
 	rotatableInfo = false;	// this is the default, will be fixed in parseProperties
@@ -209,11 +207,6 @@ void PolyObject::fillShapeList(void)
 	theProps.property2Float(Property::MASS_STRING, &myMass);
 
 	Vector myScale(1.0, 1.0);
-	if (fabs(theOriginalWidth)>Position::minimalMove)
-		myScale.dx = getTheWidth()/theOriginalWidth;
-	if (fabs(theOriginalHeight)>Position::minimalMove)
-		myScale.dy = getTheHeight()/theOriginalHeight;
-
 	QString myPolygons;
 	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
 	QStringList myPolygonList = myPolygons.split(";",QString::SkipEmptyParts);

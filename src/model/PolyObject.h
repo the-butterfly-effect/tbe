@@ -105,15 +105,15 @@ protected:
 	 */
 	virtual void fillShapeList(void);
 
-
+private:
+	PolyObject(const PolyObject& aRef);
+	PolyObject& operator = (const PolyObject& aRef);
+	
 protected:
 	QString theNameString;
 	QString theToolTipString;
 
 	bool rotatableInfo;
-
-	qreal theOriginalWidth;
-	qreal theOriginalHeight;
 };
 
 #endif // POLYOBJECT_H
