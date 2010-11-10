@@ -582,7 +582,7 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="345"/>
         <source>Go To Level Creator Mode</source>
-        <translation>Ga naar de level bouwer modus.</translation>
+        <translation>Ga naar de levelschepper modus.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="350"/>
