@@ -146,11 +146,6 @@ PolyObject::PolyObject( const QString& aDisplayName,
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
 	DEBUG5("PolyObject::PolyObject(%s, %f, %f)\n", ASCII(aDisplayName), aWidth, aHeight);
-	BaseObject::setTheWidth(aWidth);
-	BaseObject::setTheHeight(aHeight);
-	setTheBounciness(aBounciness);
-	rotatableInfo = false;	// this is the default, will be fixed in parseProperties
-
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
@@ -158,6 +153,12 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		Property::ROTATABLE_STRING + QString(":false/") +
 		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
 		);
+
+	BaseObject::setTheWidth(aWidth);
+	BaseObject::setTheHeight(aHeight);
+	setTheBounciness(aBounciness);
+	rotatableInfo = false;	// this is the default, will be fixed in parseProperties
+
 }
 
 PolyObject::~PolyObject ( )
@@ -203,13 +204,20 @@ DrawObject*  PolyObject::createDrawObject(void)
 
 void PolyObject::fillShapeList(void)
 {
+	DEBUG5("void PolyObject::fillShapeList(void)\n");
+
 	float myMass;
 	theProps.property2Float(Property::MASS_STRING, &myMass);
 
-	Vector myScale(1.0, 1.0);
 	QString myPolygons;
 	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
 	QStringList myPolygonList = myPolygons.split(";",QString::SkipEmptyParts);
+
+	if (theAABB.isInitialised()==false)
+		theAABB = AABB(myPolygons);
+	if (theAABB.isInitialised()==false)
+		return;
+	Vector myScale(getTheWidth()/theAABB.getOrigWidth(), getTheHeight()/theAABB.getOrigHeight());
 
 	QStringList::iterator i = myPolygonList.begin();
 	while (i!=myPolygonList.end())
@@ -263,4 +271,77 @@ void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 		aBoxDef->friction = myFriction;
 	else
 		assert(false);
+}
+
+
+
+
+PolyObject::AABB::AABB(void) :
+		theOrigWidth(UNDEFINED), theOrigHeight(UNDEFINED)
+{
+}
+
+PolyObject::AABB::AABB(QString& aPolygonDefs) :
+		theOrigWidth(UNDEFINED), theOrigHeight(UNDEFINED)
+{
+	DEBUG5("PolyObject::AABB::AABB(%s)\n", ASCII(aPolygonDefs));
+	float myMinX = 0.0f;
+	float myMaxX = 0.0f;
+	float myMinY = 0.0f;
+	float myMaxY = 0.0f;
+
+	if (aPolygonDefs.isEmpty())
+	{
+		DEBUG4("ignoring empty polygon def\n");
+		return;
+	}
+
+	QStringList myPolygonList = aPolygonDefs.split(";",QString::SkipEmptyParts);
+	QStringList::iterator i = myPolygonList.begin();
+	while (i!=myPolygonList.end())
+	{
+		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
+		int j = 0;
+		for (; j<myCoordList.count(); j++)
+		{
+			Vector myCoord;
+			bool isDone = myCoord.fromString(myCoordList.at(j));
+			assert (isDone == true);
+			UNUSED_VAR(isDone);
+
+			if (myMinX > myCoord.dx)
+				myMinX = myCoord.dx;
+			if (myMinY > myCoord.dy)
+				myMinY = myCoord.dy;
+			if (myMaxX < myCoord.dx)
+				myMaxX = myCoord.dx;
+			if (myMaxY < myCoord.dy)
+				myMaxY = myCoord.dy;
+		}
+		++i;
+	}
+
+	assert (myMaxX != myMinX);
+	assert (myMaxY != myMinY);
+
+	theOrigWidth  = myMaxX - myMinX;
+	theOrigHeight = myMaxY - myMinY;
+	DEBUG5("  AABB for this PolyObject: %fx%f\n", theOrigWidth, theOrigHeight);
+}
+
+float PolyObject::AABB::getOrigWidth()
+{
+	assert(isInitialised());
+	return theOrigWidth;
+}
+
+float PolyObject::AABB::getOrigHeight()
+{
+	assert(isInitialised());
+	return theOrigHeight;
+}
+
+bool PolyObject::AABB::isInitialised()
+{
+	return theOrigHeight != UNDEFINED;
 }

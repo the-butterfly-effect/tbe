@@ -114,6 +114,33 @@ protected:
 	QString theToolTipString;
 
 	bool rotatableInfo;
+
+	/// AABB calculates the Axis-Aligned Bounding Box
+	/// which we can use for scaling
+	class AABB {
+	public:
+		// default constructor, just to make sure we can detect uninit usage
+		AABB(void);
+
+		/// constructor
+		/// @param myPolygons string with the polygons definiton
+		AABB(QString& myPolygons);
+
+		/// @returns the width of the unscaled object
+		float getOrigWidth();
+		/// @returns the height the unscaled object
+		float getOrigHeight();
+		/// @returns true if the AABB are initialised
+		bool isInitialised();
+
+	private:
+		float theOrigWidth;
+		float theOrigHeight;
+
+		static const float UNDEFINED = 99999.0f;
+	};
+
+	AABB theAABB;
 };
 
 #endif // POLYOBJECT_H
