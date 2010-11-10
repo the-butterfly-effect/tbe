@@ -14,7 +14,7 @@ to run the game.
 If you downloaded the installer, you now have an icon on your desktop: 
 just (double-)click it to enjoy the game.
 
-There are 36 levels.
+There are 35 levels.
 All levels are playable, a few levels may need a bit more polish.
 
 New features & highlights in Milestone 8:
@@ -32,9 +32,11 @@ New features & highlights in Milestone 8:
 
 
 The Level Creator
-###
+This is a new feature of TBE. You can now adapt the existing levels or create your own.
+Currently the Level Creator is still a bit rough on the edges. If you have never worked with
+CAD applications, it may not be your cup of tea yet - but please try!
+We are writing a manual for the Level Creator in our wiki:
 https://sf.net/apps/trac/tbe/wiki/LevelCreator
-
 
 Known bugs and issues:
   * Some images may have a 'garbage line ' on one or more borders during play.
