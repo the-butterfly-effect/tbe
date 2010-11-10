@@ -2,9 +2,12 @@
 <tbe-level>
     <levelinfo>
         <title>Party at the office</title>
+        <title lang="nl">Feestje op kantoor</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Jumping Jack celebrates a party at the office. Isn't that fun?
+        </description>
+        <description lang="nl">Houten Klaas viert een feestje op kantoor. Leuk toch?
         </description>
         <date>Jul 08, 2010 - Oct 23, 2010</date>
     </levelinfo>
@@ -163,10 +166,15 @@
             </object>
             <object width="0.22" X="1.086662464985994" Y="0.8865910364145658" height="0.22" type="PostIt" angle="0" >
                 <property key="page1" >It's party time at the office!&lt;br>&lt;br>Jumping Jack has his birthday!!!</property>
+                <property key="page1_nl">Het is tijd voor een feestje op kantoor!&lt;br>&lt;br>Houten Klaas is jarig!!!</property>
                 <property key="page2" >(Jack usually doesn't get much attention, he's already happy that we thought of him)</property>
+                <property key="page2_nl">(Klaas krijgt meestal niet zo veel aandacht, hij is allang blij dat we aan hem hebben gedacht.)</property>
                 <property key="page3" >There's cola,&lt;br>and there's even a gift!</property>
+                <property key="page3_nl">Er is cola,&lt;br>en er is zelfs een cadeautje!</property>
                 <property key="page4" >Let's present the gift to him, shall we?</property>
+                <property key="page4_nl">Laten we hem zijn cadeautje maar geven.</property>
                 <property key="page5" >... the Post-it Boy</property>
+                <property key="page5_nl">... Post-it Boy</property>
             </object>
             <object width="0.5196148157119751" X="1.868249779547354" Y="1.19" height="0.1" type="Floor" angle="0.1" >
                 <property key="ZValue" >1.0</property>
