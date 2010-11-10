@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Spare the Balloon</title>
+        <title lang="nl">Redt de ballon</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>Kick the pin.</description>
+        <description lang="nl">Schop de kegel.</description>
         <date>10/24/10</date>
     </levelinfo>
     <toolbox>
@@ -32,7 +34,7 @@
             <object width="0.5" X="0.3499999999999996" Y="0.4999999999999999" height="0.8" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.1" X="0.05" Y="1" height="1.8" type="RectObject" angle="0" >
+            <object width="0.1" X="0.05" Y="1" height="1.84" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object width="0.25" X="1.222185131195335" Y="0.2975247813411079" height="0.4" type="Cactus" angle="0" />
@@ -85,7 +87,13 @@
                 <property key="page2" >Let's spare the balloon, there's a pin that needs kicking.</property>
                 <property key="page3" >I still have other ideas that need balloons...</property>
                 <property key="page4" >... the Post-it Boy</property>
+                <property key="page1_nl" >Die arme ballon is op weg naar z'n einde</property>
+                <property key="page2_nl" >Laten we ballon proberen te sparen, er moet nog een kegel om.</property>
+                <property key="page3_nl" >En ik heb nog wat andere plannetjes met ballonnen...</property>
+                <property key="page4_nl" >... Post-it Boy</property>
             </object>
+            <object width="0.7" X="2.692752560202591" Y="0.6605458482688635" height="0.1" type="Floor" angle="6.009073734283447" />
+            <object width="0.3056791722774506" X="0.1547501540751033" Y="1.835131162424319" height="0.1" type="Floor" angle="0.7503029108047485" />
         </predefined>
     </scene>
     <goals>
