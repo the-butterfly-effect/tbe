@@ -60,6 +60,8 @@ void ChooseLevel::changeEvent(QEvent *e)
 QString ChooseLevel::getCurrent(void)
 {
 	QTreeWidgetItem* myItemPtr = m_ui->theTreeWidget->currentItem();
+	if (myItemPtr==NULL)
+		return "";
 	return myItemPtr->text(FILENAME_COLUMN);
 }
 

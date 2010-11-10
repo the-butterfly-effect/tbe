@@ -36,6 +36,8 @@ public:
 	ChooseLevel(QWidget *parent = 0, bool isNoShow=false);
 	virtual ~ChooseLevel();
 
+	/// @returns the currently selected level, which should be the first
+	/// not-conquered level. If there is none, returns an empty string.
 	QString getCurrent(void);
 
 protected slots:

@@ -516,6 +516,10 @@ void MainWindow::slot_newLevelAction_clicked(void)
 void MainWindow::slot_next_level(void)
 {
 	ChooseLevel myDialog(this, true);
-	loadLevel(myDialog.getCurrent());
+	QString myNextLevelName = myDialog.getCurrent();
+	if (myNextLevelName.isEmpty()==false)
+		loadLevel(myNextLevelName);
+	else
+		emit on_actionOpen_level_activated();
 }
 
