@@ -2,11 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Spare the Balloon</title>
-        <title lang="nl">Redt de ballon</title>
+        <title lang="nl" >Redt de ballon</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>Kick the pin.</description>
-        <description lang="nl">Schop de kegel.</description>
+        <description lang="nl" >Schop de kegel.</description>
         <date>10/24/10</date>
     </levelinfo>
     <toolbox>
@@ -28,7 +28,7 @@
         <scenesize width="3.5" height="2" />
         <predefined>
             <object width="3.5" X="1.750084727870713" Y="0.05" height="0.1" type="Floor" angle="0" />
-            <object width="0.27" X="0.8079839650145773" Y="0.3879489795918367" height="0.36" type="Balloon" angle="0" />
+            <object width="0.27" X="0.8100000000000001" Y="0.39" height="0.36" type="Balloon" angle="0" />
             <object width="0.8" X="1.006365991128542" Y="1.820760539311644" height="0.15" type="BedOfNails" angle="-3.140053987503052" />
             <object width="0.1" X="0.5515802083057145" Y="1.490437794456677" height="0.9108348488807678" type="Floor" angle="0" />
             <object width="0.5" X="0.3499999999999996" Y="0.4999999999999999" height="0.8" type="RectObject" angle="0" >
@@ -37,12 +37,14 @@
             <object width="0.1" X="0.05" Y="1" height="1.84" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.25" X="1.222185131195335" Y="0.2975247813411079" height="0.4" type="Cactus" angle="0" />
+	    <object width="0.25" X="1.215988143631758" Y="0.2014714155679889" height="0.4" type="Cactus" angle="0">
+                <property key="Mass" >0</property>
+            </object>
             <object width="0.25" X="1.96" Y="0.7" height="1.2" type="RectObject" angle="0" >
                 <property key="ImageName" >oldbrick</property>
             </object>
-            <object width="0.2455975115299225" X="1.400026811567982" Y="1.076330955525951" height="0.1" type="Floor" angle="-1.57" />
-            <object width="0.4474409222602844" X="1.396284246156588" Y="0.3217056090041255" height="0.1" type="Floor" angle="4.708058834075928" />
+            <object width="0.2455975115299225" X="1.4" Y="1.1" height="0.1" type="Floor" angle="-1.57" />
+            <object width="0.3822582960128784" X="1.396143121416166" Y="0.2891145934171133" height="0.1" type="Floor" angle="4.708058834075928" />
             <object width="0.5384212136268616" X="2.142092266132531" Y="1.139649393322594" height="0.1" type="Floor" angle="0.880348801612854" >
                 <property key="ZValue" >0.5</property>
             </object>
@@ -84,12 +86,12 @@
             <object width="1.556586980819702" X="2.716809549621228" Y="1.874589854921071" height="0.1" type="Floor" angle="0" />
             <object width="0.22" X="0.3377360234485897" Y="0.700260011920929" height="0.22" type="PostIt" angle="0" >
                 <property key="page1" >That poor balloon is on its way to its doom</property>
-                <property key="page2" >Let's spare the balloon, there's a pin that needs kicking.</property>
-                <property key="page3" >I still have other ideas that need balloons...</property>
-                <property key="page4" >... the Post-it Boy</property>
                 <property key="page1_nl" >Die arme ballon is op weg naar z'n einde</property>
+                <property key="page2" >Let's spare the balloon, there's a pin that needs kicking.</property>
                 <property key="page2_nl" >Laten we ballon proberen te sparen, er moet nog een kegel om.</property>
+                <property key="page3" >I still have other ideas that need balloons...</property>
                 <property key="page3_nl" >En ik heb nog wat andere plannetjes met ballonnen...</property>
+                <property key="page4" >... the Post-it Boy</property>
                 <property key="page4_nl" >... Post-it Boy</property>
             </object>
             <object width="0.7" X="2.692752560202591" Y="0.6605458482688635" height="0.1" type="Floor" angle="6.009073734283447" />
