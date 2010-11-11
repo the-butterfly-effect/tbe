@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Balloons do Poof</title>
+        <title lang="nl">Ballonnen doen Poef</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>There are two ways to pop a balloon.</description>
+        <description lang="nl">Er zijn twee manieren om een ballon te laten klappen.</description>
         <date>10/6/10</date>
     </levelinfo>
      <toolbox>
@@ -30,6 +32,11 @@
             <object width="0.2" X="0.95" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
+	    <object width="0.70" X="0.80" Y="0.30" height="0.60" type="Scenery" >
+                <property key="ImageName" >chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+          
             <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" angle="0" />
             <object width="0.1" X="0.5" Y="1.05" height="1.9" type="RectObject" angle="0" >
                 <property key="ImageName" >oldbrick</property>
@@ -64,6 +71,10 @@
                 <property key="page2" >And a balloon that wants to go up.</property>
                 <property key="page3" >I'm sure the balloon has something to do with the solution to this level!</property>
                 <property key="page4" >...&lt;br>was signed:&lt;br>the Post-it Boy</property>
+                <property key="page1_nl" >Kijk: daar staan twee kegels.</property>
+                <property key="page2_nl" >En een ballon die omhoog wil.</property>
+                <property key="page3_nl" >Ik weet zeker dat de ballon iets met de oplossing te maken heeft!</property>
+                <property key="page4_nl" >...&lt;br>getekend:&lt;br>Post-it Boy</property>
             </object>
         </predefined>
     </scene>
