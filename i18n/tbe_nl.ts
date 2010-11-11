@@ -27,17 +27,17 @@ Dubbelklik op de post-it briefjes voor hulp.</translation>
         <location filename="../src/view/ChooseLevel.ui" line="45"/>
         <source>Level Title</source>
         <translatorcomment>ik heb de hoofdletter maar overgenomen...</translatorcomment>
-        <translation>Level Titel</translation>
+        <translation>Level titel</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="79"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="81"/>
         <source>Level parser:
 Cannot read the level descriptions in &apos;%1&apos;:
 %2.</source>
         <translation>Level parser: Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege &apos;%2&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="92"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="94"/>
         <source>done</source>
         <translation>gereed</translation>
     </message>
@@ -51,12 +51,12 @@ Parse error at line %1, column %2:
 <context>
     <name>ChooseLevel::LevelList</name>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="146"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="148"/>
         <source>done</source>
         <translation>gereed</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="155"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="157"/>
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
@@ -124,7 +124,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/DrawWorld.cpp" line="558"/>
         <source>&amp;Choose...</source>
-        <translation>&amp;Kies</translation>
+        <translation>&amp;Kies...</translation>
     </message>
     <message>
         <location filename="../src/view/DrawWorld.cpp" line="560"/>
@@ -294,7 +294,7 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
         <location filename="../src/model/Level.cpp" line="142"/>
         <source>Cannot parse file - not valid XML?</source>
         <translatorcomment>Ik ben niet heel blij met parse&gt;lezen...</translatorcomment>
-        <translation>Kan bestand niet lezen - geen geldige XML?</translation>
+        <translation>Kan bestand niet inlezen - geen geldige XML?</translation>
     </message>
     <message>
         <location filename="../src/model/Level.cpp" line="152"/>
@@ -666,7 +666,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="205"/>
         <source>&amp;Open savegame...</source>
-        <translation>Savegame &amp;openen</translation>
+        <translation>Savegame &amp;openen...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="213"/>
@@ -768,7 +768,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="382"/>
         <source>&amp;Suggestions...</source>
-        <translation>&amp;Suggesties</translation>
+        <translation>&amp;Suggesties...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="387"/>
@@ -778,7 +778,7 @@ Als de simulatie is gestopt, kun je resetten met de groene pijl.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="392"/>
         <source>&amp;New Levels...</source>
-        <translation>&amp;Nieuwe levels</translation>
+        <translation>&amp;Nieuwe levels...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="277"/>
