@@ -164,11 +164,11 @@
     </scene>
 	<goals>
 		<goal type="positionchange">
-		   <property key="anglechanged"></property>
+		   <property key="xover">2.26</property>
 		   <property key="object">Left-Pin</property>
 		</goal>
 		<goal type="positionchange">
-		   <property key="anglechanged"></property>
+		   <property key="xbelow">3.22</property>
 		   <property key="object">Right-Pin</property>
 		</goal>
 	</goals>
