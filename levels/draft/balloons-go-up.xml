@@ -58,9 +58,9 @@
             <object width="0,1" X="3,95" Y="0,6" height="1" type="RectObject" angle="0">
                 <property key="ImageName">oldbrick</property>
             </object>
-            <object width="0,3602304756641388" X="3,711360891431623" Y="0,2766191922037579" height="0,3461564779281616" type="LeftRamp" angle="0"/>
-            <object width="0,21" X="1,9" Y="1,22" height="0,21" type="VolleyBall" angle="0"/>
-            <object width="0,21" X="3,1" Y="1,22" height="0,21" type="VolleyBall" angle="0"/>
+            <object width="0.3602304756641388" X="3.711360891431623" Y="0.2766191922037579" height="0.3461564779281616" type="LeftRamp" angle="0"/>
+            <object width="0.21" X="1.9" Y="1.22" height="0.21" type="VolleyBall" angle="0"/>
+            <object width="0.21" X="3.1" Y="1.22" height="0.21" type="VolleyBall" angle="0"/>
         </predefined>
     </scene>
     <goals>
