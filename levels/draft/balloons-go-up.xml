@@ -42,7 +42,9 @@
             <object width="0.4" X="2.5" Y="0.54" height="0.88" type="RectObject" angle="0">
                 <property key="ImageName">oldbrick</property>
             </object>
-            <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0"/>
+            <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0">
+                <property key="Mass">0.09</property>
+            </object>
             <object width="0.1000000014901161" X="2.5" Y="1.07" height="0.1000000014901161" type="CustomBall" angle="0">
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
