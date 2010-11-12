@@ -17,51 +17,54 @@
         </toolboxitem>
         <toolboxitem count="1" name="Right Ramp">
             <name lang="nl">Helling naar Rechts</name>
-            <object width="0.7" height="0.4" type="RightRamp" angle="0" />
+            <object width="0.7" height="0.4" type="RightRamp" angle="0"/>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="4" height="2" />
+        <scenesize width="4" height="2"/>
         <predefined>
-            <object width="4" X="2.000055150302851" Y="0.05" height="0.1" type="Floor" angle="0" >
-                <property key="ImageName" >White-to-green</property>
+            <object width="4" X="2.000055150302851" Y="0.05" height="0.1" type="Floor" angle="0">
+                <property key="ImageName">White-to-green</property>
             </object>
-            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0" >
-                <property key="page1" >You've seen this before: a Bowling Ball and a Bowling Pin. But this time, there's a wall in-between.</property>
-                <property key="page2" >I'm pretty sure that because they lack opposable thumbs, Bowling Balls cannot climb walls.</property>
-                <property key="page3" >Do you know what an unstable equilibrium is?</property>
-                <property key="page4" >... The Post-It boy</property>
+            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
+                <property key="page1">You've seen this before: a Bowling Ball and a Bowling Pin. But this time, there's a wall in-between.</property>
+                <property key="page2">I'm pretty sure that because they lack opposable thumbs, Bowling Balls cannot climb walls.</property>
+                <property key="page3">Do you know what an unstable equilibrium is?</property>
+                <property key="page4">... The Post-It boy</property>
             </object>
-            <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0" />
-            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
+            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="RectObject" angle="0">
+                <property key="ImageName">oldbrick</property>
             </object>
-            <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0" />
-            <object width="0.1000000014901161" X="2.5" Y="1.07" height="0.1000000014901161" type="CustomBall" angle="0" >
-                <property key="ImageName" >brass-pin</property>
-                <property key="Mass" >0</property>
-                <property key="NoCollision" >Lever</property>
-                <property key="Radius" >0.05</property>
+            <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0"/>
+            <object width="0.1000000014901161" X="2.5" Y="1.07" height="0.1000000014901161" type="CustomBall" angle="0">
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="NoCollision">Lever</property>
+                <property key="Radius">0.05</property>
             </object>
-            <!--object width="0.687127411365509" X="1.295540467500687" Y="0.5299999999999999" height="0.1" type="RectObject" angle="0" /-->
-            <object width="0.22" X="0.1890082300884956" Y="0.7" height="0.22" type="BowlingBall" angle="0" />
-            <!--object width="0.7" X="0.35" Y="0.3" height="0.4000000000000001" type="RightRamp" angle="0" /-->
-            <object width="1.3" X="2.5" Y="1.07" height="0.1" type="RectObject" ID="Lever" angle="0" >
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >1.0</property>
-                <property key="PivotPoint" >(0,0)</property>
+            <object width="0.22" X="0.1890082300884956" Y="0.7" height="0.22" type="BowlingBall" angle="0"/>
+            <object width="1.3" X="2.5" Y="1.07" height="0.1" type="RectObject" ID="Lever" angle="0">
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">1.0</property>
+                <property key="PivotPoint">(0,0)</property>
             </object>
-            <object width="0.1" X="3.95" Y="0.6" height="1" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.1" X="3.95" Y="0.6" height="1" type="RectObject" angle="0">
+                <property key="ImageName">oldbrick</property>
             </object>
-            <object width="0.3602304756641388" X="3.711360891431623" Y="0.2766191922037579" height="0.3461564779281616" type="LeftRamp" angle="0" />
-            <object width="0.21" X="2.5" Y="1.22" height="0.21" type="VolleyBall" angle="0" />
+            <object width="0.3602304756641388" X="3.711360891431623" Y="0.2766191922037579" height="0.3461564779281616" type="LeftRamp" angle="0"/>
+            <object width="0.21" X="1.9" Y="1.22" height="0.21" type="VolleyBall" angle="0"/>
+            <object width="0.7" X="0.3956033118242597" Y="0.2441437581544003" height="0.4" type="RightRamp" angle="0"/>
+            <object width="0.65" X="1.46260195857312" Y="1.064738056395579" height="0.1" type="RectObject" angle="0">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.21" X="3.1" Y="1.22" height="0.21" type="VolleyBall" angle="0"/>
         </predefined>
     </scene>
     <goals>
-        <goal type="positionchange" >
-            <property key="anglechanged" ></property>
-            <property key="object" >thePin</property>
+        <goal type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">thePin</property>
         </goal>
     </goals>
 </tbe-level>
