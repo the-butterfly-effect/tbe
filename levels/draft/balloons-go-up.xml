@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Balloons go up!</title>
+        <title lang="nl">Ballonnen gaan omhoog!</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Topple the pin.</description>
+        <description lang="nl">Gooi de kegel om.</description>
         <date>9/17/10</date>
     </levelinfo>
     <toolbox>
@@ -28,9 +30,13 @@
             </object>
             <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">You've seen this before: a Bowling Ball and a Bowling Pin. But this time, there's a wall in-between.</property>
-                <property key="page2">I'm pretty sure that because they lack opposable thumbs, Bowling Balls cannot climb walls.</property>
+                <property key="page1_nl">Dit ziet er bekend uit: een bowlingbal en een kegel. Maar nu staat er een muur in de weg.</property>
+                <property key="page2">I'm pretty sure that lacking opposable thumbs, Bowling Balls cannot climb walls.</property>
+                <property key="page2_nl">Ik weet vrij zeker dat bowlingballen niet kunnen klimmen. Al was het maar omdat ze geen handjes hebben.</property>
                 <property key="page3">Do you know what an unstable equilibrium is?</property>
+                <property key="page3_nl">Weet jij wat een labiel evenwicht is??</property>
                 <property key="page4">... The Post-It boy</property>
+                <property key="page4_nl">... Post-It boy</property>
             </object>
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
             <object width="0.4" X="2.5" Y="0.54" height="0.88" type="RectObject" angle="0">
