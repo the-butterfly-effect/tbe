@@ -38,6 +38,18 @@ CAD applications, it may not be your cup of tea yet - but please try!
 We are writing a manual for the Level Creator in our wiki:
 https://sf.net/apps/trac/tbe/wiki/LevelCreator
 
+Alternative solutions
+If you feel you found a solution to a level that is not right, please file
+a ticket against it or mail the level mailing list. More info is availble in the 
+Help menus.
+
+Running in English, Dutch or Spanish
+We promise to make this selectable in the UI for the next milestone (ticket 83).
+However, if you need to change language, start TBE from the command line and
+type:
+   LANG="nl" ./tbe
+Of course, for English you use "en" and for spanish "es".
+
 Known bugs and issues:
   * Some images may have a 'garbage line ' on one or more borders during play.
     This is harmless but may be confusing. ticket:89
@@ -45,6 +57,8 @@ Known bugs and issues:
   * The Level Creator isn't finished, nor really polished yet.
     The manual of the Level Creator discusses the limitations, 
     tickets 132, 147, 149, 151, 171, 177, 178 and others.
+  * Do not use the Level Creator in any language other than English, as it may
+    affect how TBE is writing its XML files. Tickets 83 and 220.
 
 
 We thank our beta players for their comments on the playability of the levels.
