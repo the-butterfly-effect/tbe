@@ -67,7 +67,7 @@
     </scene>
     <goals>
         <goal type="positionchange">
-            <property key="anglechanged"></property>
+            <property key="xbelow">2.90</property>
             <property key="object">thePin</property>
         </goal>
     </goals>
