@@ -91,7 +91,7 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
 {
 	// the upward force...
-	theB2BodyPtr->ApplyForce(b2Vec2(0,0.1), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
+	theB2BodyPtr->ApplyForce(b2Vec2(0,0.12), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
 
 	// the downward force...
 	// i.e. the "drag" or "air restance"
