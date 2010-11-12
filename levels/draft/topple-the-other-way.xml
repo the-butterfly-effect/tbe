@@ -71,21 +71,22 @@
 <!--            <object X="2.65" Y="2.7" type="Weight" ID="Weight" />-->
 
 
-            <object X="3.6" Y="1.9" width="1.6" height="0.4" type="LeftRamp">
+            <object X="3.5" Y="1.9" width="1.8" height="0.4" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
             </object>
 
-            <object X="0.8" Y="1.9" width="1.6" height="0.4" type="RightRamp">
+            <object X="0.9" Y="1.9" width="1.8" height="0.4" type="RightRamp">
                 <property key="ImageName">RightRamp</property>
             </object>
 
 
-            <object X="3.45" Y="0.6" width="1.9" height="0.2" type="LeftRamp">
+            <object X="3.45" Y="0.55" width="1.9" height="0.3" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
                 <property key="Friction" >0.5</property>
             </object>
 
-            <object X="0.95" Y="0.57" width="1.9" height="0.2" type="RightRamp">
+            <object X="0.95" Y="0.55" width="1.9" height="0.3" type="RightRamp">
+
                 <property key="ImageName">RightRamp</property>
                 <property key="Friction" >0.5</property>
             </object>
