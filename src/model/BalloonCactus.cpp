@@ -301,16 +301,16 @@ void Cactus::fillShapeList(void)
 	// And add the sensor to the shapes
 	b2PolygonDef* mySensorDef = new b2PolygonDef();
 	mySensorDef->vertexCount = 10;
-	mySensorDef->vertices[0]=b2Vec2( 0.074, -0.036);
-	mySensorDef->vertices[1]=b2Vec2( 0.112,  0.012);
-	mySensorDef->vertices[2]=b2Vec2( 0.121,  0.085);
-	mySensorDef->vertices[3]=b2Vec2( 0.096,  0.144);
-	mySensorDef->vertices[4]=b2Vec2( 0.038,  0.188);
-	mySensorDef->vertices[5]=b2Vec2(-0.038,  0.188);
-	mySensorDef->vertices[6]=b2Vec2(-0.096,  0.144);
-	mySensorDef->vertices[7]=b2Vec2(-0.121,  0.085);
-	mySensorDef->vertices[8]=b2Vec2(-0.112,  0.012);
-	mySensorDef->vertices[9]=b2Vec2(-0.074, -0.036);
+	mySensorDef->vertices[0]=b2Vec2( 0.078, -0.036);
+	mySensorDef->vertices[1]=b2Vec2( 0.116,  0.012);
+	mySensorDef->vertices[2]=b2Vec2( 0.125,  0.085);
+	mySensorDef->vertices[3]=b2Vec2( 0.099,  0.147);
+	mySensorDef->vertices[4]=b2Vec2( 0.038,  0.198);
+	mySensorDef->vertices[5]=b2Vec2(-0.038,  0.198);
+	mySensorDef->vertices[6]=b2Vec2(-0.099,  0.147);
+	mySensorDef->vertices[7]=b2Vec2(-0.125,  0.085);
+	mySensorDef->vertices[8]=b2Vec2(-0.116,  0.012);
+	mySensorDef->vertices[9]=b2Vec2(-0.078, -0.036);
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);
