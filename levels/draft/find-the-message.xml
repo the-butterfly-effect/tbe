@@ -38,9 +38,9 @@
                 <property key="ImageName" >thank-you-stone</property>
             </object>
 
-	    <!--object X="0.2" Y="2.7" type="Volleyball"  /-->
-	    <!--object X="0.5" Y="2.9" type="Soccer Ball" /-->
-	    <!--object X="0.8" Y="3.5" type="Bowling Ball"/-->
+	    <!--object X="0.2" Y="2.7" type="VolleyBall"  /-->
+	    <!--object X="0.5" Y="2.9" type="SoccerBall" /-->
+	    <!--object X="0.8" Y="3.5" type="BowlingBall"/-->
 
 	    <object width="2.2" X="3.50" Y="2.5" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
@@ -60,7 +60,7 @@
             </object>
             <object width="2.0" X="2.10" Y="2.25" height="0.39" type="RectObject" ID="styro-top">
                 <property key="ImageName" >birch_bar</property>
-                <property key="Mass"      >30</property>
+                <property key="Mass"      >10</property>
             </object>
 
 	    <!-- ############ middle row ################ -->
