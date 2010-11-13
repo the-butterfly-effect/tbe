@@ -52,6 +52,19 @@ void BaseJoint::deletePhysicsObject(void)
 }
 
 
+b2Body* BaseJoint::getB2BodyPtrFor(BaseObject* anObject)
+{
+	b2Body* myReturn = anObject->theB2BodyPtr;
+	if (myReturn == NULL)
+	{
+		anObject->createPhysicsObject();
+		myReturn = anObject->theB2BodyPtr;
+		assert(myReturn != NULL);
+	}
+	return myReturn;
+}
+
+
 b2Body* BaseJoint::getGroundBodyPtr(void)
 {
 	return theGroundBodyPtr;

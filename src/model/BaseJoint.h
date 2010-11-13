@@ -81,8 +81,10 @@ public:
 
 	virtual void updateOrigCenter(void) = 0;
 
-	b2Body* getB2BodyPtrFor(BaseObject* anObject)
-	{ return anObject->theB2BodyPtr; }
+	/// @returns the b2Body* for object anObject. if anObject doesn't have
+	/// a b2Body (yet), we'll call createPhysicsObject() on the object to
+	/// have it created.
+	b2Body* getB2BodyPtrFor(BaseObject* anObject);
 
 protected:
 	/// if you have only one object, it is supposed to be static
