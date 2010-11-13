@@ -84,8 +84,8 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 				"over - and most people prefer to do that using "
 				"a Bowling Ball."),
 	"BowlingPin",
-	"(0.02,0.17)=(-0.02,0.17)=(-0.045,0.14)=(-0.04,0.065)=(0.0,0.04)"
-	"=(0.04,0.065)=(0.045,0.14);"
+	"(0.02,0.17)=(-0.02,0.17)=(-0.04,0.14)=(-0.04,0.065)"
+	"=(0.04,0.065)=(0.04,0.14);"
 	"(-0.04,0.02)=(-0.06,-0.04)=(-0.06,-0.11)=(-0.035,-0.17)"
 	"=(0.035,-0.17)=(0.06,-0.11)=(0.06,-0.04)=(0.04,0.02)",
 	0.12, 0.34, 1.5, 0.4 );
@@ -97,7 +97,7 @@ static AbstractPolyObjectFactory theSkyhookFactory(
 				"lot of weight on it!"),
 	"Skyhook",
 	"(-0.03,-0.07)=(0.01,-0.11)=(0.05,-0.11)=(0.1,-0.05)=(0.1,-0.02)"
-	"=(0.08,0.00)=(-0.02,-0.03)",
+	"=(0.08,0.00)=(-0.02,-0.03);(-0.10,0.12)",
 	0.20, 0.23, 0.0, 0.4 );
 
 static AbstractPolyObjectFactory theWeightFactory(
@@ -225,25 +225,29 @@ void PolyObject::fillShapeList(void)
 		b2PolygonDef* myPolyDef = new b2PolygonDef();
 
 		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
-		int j = 0;
+		// if we find a shape with less than three vertexes, let's ignore it
+		// this is very convenient if you need to adapt the AABB :-)
 		myPolyDef->vertexCount = myCoordList.count();
-		for (; j<myCoordList.count(); j++)
+		if (myCoordList.count()>=3)
 		{
-			assert (j < b2_maxPolygonVertices);
-			Vector myCoord;
-			bool isDone = myCoord.fromString(myCoordList.at(j));
-			assert (isDone == true);
-			UNUSED_VAR(isDone);
-			Vector myScaledCoord = myScale*myCoord;
-			myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
-		}
+			for (int j=0; j<myCoordList.count(); j++)
+			{
+				assert (j < b2_maxPolygonVertices);
+				Vector myCoord;
+				bool isDone = myCoord.fromString(myCoordList.at(j));
+				assert (isDone == true);
+				UNUSED_VAR(isDone);
+				Vector myScaledCoord = myScale*myCoord;
+				myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
+			}
 
-		// get mass:  no mass -> no density -> no motion
-		if (myMass != 0.0)
-			myPolyDef->density = myMass / getTheWidth()*getTheHeight();
-		myPolyDef->userData = this;
-		setFriction(myPolyDef);
-		theShapeList.push_back(myPolyDef);
+			// get mass:  no mass -> no density -> no motion
+			if (myMass != 0.0)
+				myPolyDef->density = myMass / getTheWidth()*getTheHeight();
+			myPolyDef->userData = this;
+			setFriction(myPolyDef);
+			theShapeList.push_back(myPolyDef);
+		}
 		++i;
 	}
 }
@@ -301,8 +305,7 @@ PolyObject::AABB::AABB(QString& aPolygonDefs) :
 	while (i!=myPolygonList.end())
 	{
 		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
-		int j = 0;
-		for (; j<myCoordList.count(); j++)
+		for (int j=0; j<myCoordList.count(); j++)
 		{
 			Vector myCoord;
 			bool isDone = myCoord.fromString(myCoordList.at(j));
