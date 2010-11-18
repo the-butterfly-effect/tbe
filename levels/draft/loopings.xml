@@ -1,0 +1,74 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Loopings</title>
+        <author>idea: Thijs van Ginneken, implementation: Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Looping Looping Looping</description>
+        <date>11/17/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Ramp /" >
+            <name lang="nl" >Helling /</name>
+            <object width="1.6" height="0.3" type="LeftRamp" >
+                <property key="ImageName" >LeftRamp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp \" >
+            <name lang="nl" >Helling \</name>
+            <object width="1.4" height="0.5" type="RightRamp" >
+                <property key="ImageName" >RightRamp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Beam" >
+            <name lang="nl" >Balk</name>
+            <object width="1.2" height="0.1" type="RectObject" >
+                <property key="Bounciness" >0.0</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >i-beam</property>
+                <property key="Resizable" >none</property>
+                <property key="Mass" >500.0</property>
+                <property key="ZValue" >3.0</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3" />
+        <predefined>
+            <object width="5" X="2.5" Y="0.05" height="0.1" type="Floor" angle="0" >
+                <property key="Friction" >0.5</property>
+            </object>
+            <object width="0.22" X="2.9" Y="2.4" height="0.22" type="PostIt" angle="0" >
+                <property key="page1" >Vrooom Vrooom Vrooom</property>
+                <property key="page2" >Vrooom Vrooom Vroooom Vrooooooom Vroooooooom</property>
+            </object>
+            <object width="0.12" X="3.584092558314906" Y="0.2788518909082161" height="0.34" type="BowlingPin" ID="BowlingPin" angle="0" />
+            <object width="1.2" X="4.4" Y="0.32" height="0.1" type="RectObject" angle="0.45" >
+                <property key="Bounciness" >0.05</property>
+                <property key="Friction" >0.5</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.1" X="4.95" Y="0.3664539396762848" height="0.5329079031944275" type="RectObject" angle="0" >
+                <property key="Bounciness" >0.05</property>
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.7" X="2.3" Y="0.2699999999999999" height="0.7" type="QuarterArc" angle="-1.57" />
+            <object width="0.7" X="1.874968186726559" Y="1.975890896802412" height="0.7" type="QuarterArc" angle="0.4126138687133789" />
+            <object width="0.7" X="1.36110272299012" Y="1.858689499154925" height="0.7" type="QuarterArc" angle="1.570799946784973" />
+            <object width="0.7" X="1.371439278597071" Y="1.173057263968488" height="0.7" type="QuarterArc" angle="3.14" />
+            <object width="0.7" X="4.340968466607491" Y="1.25192994027605" height="0.7" type="QuarterArc" angle="6.4602370262146" />
+            <object width="0.7" X="2.395326720622676" Y="0.4011667422435752" height="0.7" type="QuarterArc" angle="5.061038970947266" />
+            <object width="0.166" X="0.2478987440155797" Y="0.2528646371011913" height="0.501" type="CokeMentosBottle" angle="7.797694206237793" >
+                <property key="Thrust" >3</property>
+            </object>
+            <object width="0.7" X="4.527986245093011" Y="0.7349595839540015" height="0.7" type="QuarterArc" angle="5.179452419281006" />
+            <object width="1" X="3.151261592920354" Y="0.5134077876106196" height="0.1" type="Floor" angle="0" />
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange" >
+            <property key="object" >BowlingPin</property>
+            <property key="xbelow" >3.4</property>
+        </goal>
+    </goals>
+</tbe-level>
