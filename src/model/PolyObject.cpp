@@ -124,8 +124,19 @@ static AbstractPolyObjectFactory theRightRampFactory(
 	"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
-
-
+// the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
+// on both the inside and the outside - you can use both if you want :-)
+static AbstractPolyObjectFactory theQuarterArcFactory(
+	"QuarterArc",
+	QObject::tr("Quarter Arc"),
+	QObject::tr("This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	"QuarterArc",
+	"(0.100,-.200)=(0.200,-.200)=(0.180,-.076)=(0.085,-.107);"
+	"(0.085,-.107)=(0.180,-.076)=(0.124,0.035)=(0.043,-.024);"
+	"(0.043,-.024)=(0.124,0.035)=(0.035,0.124)=(-.024,0.043);"
+	"(-.024,0.043)=(0.035,0.124)=(-.076,0.180)=(-.107,0.085);"
+	"(-.107,0.085)=(-.076,0.180)=(-.200,0.200)=(-.200,0.100)",
+	0.4, 0.4, 0.0, 0.1 );
 
 // Constructors/Destructors
 //
