@@ -1,4 +1,4 @@
-Welcome to "The Butterfly Effect", Milestone 8.
+Welcome to "The Butterfly Effect", Milestone 8.1.
 
 This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
@@ -16,6 +16,11 @@ just (double-)click it to enjoy the game.
 
 There are 35 levels.
 All levels are playable, a few levels may need a bit more polish.
+
+Improvements in Milestone 8.1:
+    * TBE crashed for many people when the Bowling Pin was used.
+      This is a numerical stability issue and was resolved by making
+      the bowling pin slightly larger. See ticket:228.
 
 New features & highlights in Milestone 8:
     * Level Creator - see below
