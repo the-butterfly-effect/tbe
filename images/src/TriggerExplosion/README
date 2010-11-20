@@ -3,7 +3,11 @@ AUTHOR:   vlodco_zotov
 LICENSE: 
 SOURCE:   http://www.openclipart.org/detail/2028
 
-* DetonatorBox.svg
+* DetonatorBox.svg          (base image)
+* DetonatorBoxArmed.svgi    (derived)
+* DetonatorBoxActivated.svg (derived)
+* DetonatorBoxRinging.svg   (derived)
+* DetonatorBoxDone.svg      (derived)
 AUTHOR:  Klaas van Gend 
 LICENSE: PD
 Original graphics for The Butterfly Effect

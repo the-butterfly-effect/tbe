@@ -1,3 +1,4 @@
 include ../Makefile 
-SVGSRC=DetonatorBox.svg
+SVGSRC=DetonatorBoxActivated.svg;DetonatorBoxArmed.svg;DetonatorBoxDone.svg;DetonatorBoxRinging.svg
+
 
