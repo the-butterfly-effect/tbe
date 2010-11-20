@@ -52,6 +52,7 @@ HEADERS += src/tbe_global.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
     src/model/TranslationGuide.h \
+    src/model/TriggerExplosion.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
@@ -101,6 +102,7 @@ SOURCES += src/main.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
     src/model/TranslationGuide.cpp \
+    src/model/TriggerExplosion.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \

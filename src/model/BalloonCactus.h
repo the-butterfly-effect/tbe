@@ -41,7 +41,6 @@ public:
 	virtual ~Balloon();
 
 	/// returns whether the object can be resized by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
