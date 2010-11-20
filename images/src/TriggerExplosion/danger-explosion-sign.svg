@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="797.26367"
+   height="697.22968"
+   id="svg3587"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="danger-explosion-sign.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <defs
+     id="defs3589">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective3595" />
+    <inkscape:perspective
+       id="perspective3965"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.81465264"
+     inkscape:cx="397.4043"
+     inkscape:cy="348.61484"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1272"
+     inkscape:window-height="783"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata3592">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:title>Hazard Warning Sign: Explosion hazardHazard warning sign: Explosion hazard</dc:title>
+        <dc:date>November 20, 2010</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Klaas van Gend</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:description>This is of course based on the normalised signs, but was drawn in freehand - it is not a pure replica of the formal standardized sign.</dc:description>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(250.06036,-349.46163)">
+    <path
+       sodipodi:type="star"
+       style="fill:#ffff00;fill-opacity:1;stroke:#ffff00;stroke-width:50.59999847;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2813"
+       sodipodi:sides="3"
+       sodipodi:cx="-1036.7889"
+       sodipodi:cy="420.91937"
+       sodipodi:r1="431.08646"
+       sodipodi:r2="215.54323"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M -663.45712,636.4626 L -1036.7889,636.4626 L -1410.1208,636.4626 L -1223.4549,313.14776 L -1036.7889,-10.167084 L -850.12303,313.14775 L -663.45712,636.4626 z"
+       transform="translate(1185.3604,384.92871)" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:50.59999847;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3585"
+       sodipodi:sides="3"
+       sodipodi:cx="-1036.7889"
+       sodipodi:cy="420.91937"
+       sodipodi:r1="431.08646"
+       sodipodi:r2="215.54323"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M -663.45712,636.4626 L -1036.7889,636.4626 L -1410.1208,636.4626 L -1223.4549,313.14776 L -1036.7889,-10.167084 L -850.12303,313.14775 L -663.45712,636.4626 z"
+       transform="matrix(0.9315192,0,0,0.9315192,1114.3602,414.37332)" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 35.59375,670.59375 L 61.375,833.875 L 11.0625,776.15625 L 34.375,885.40625 L -14.71875,847.375 L 38.0625,973.8125 L 68.28125,974.1875 L 65.0625,909.96875 L 98.1875,938.1875 L 103.125,868.25 L 135.03125,925.9375 L 142.40625,898.9375 L 147.3125,911.1875 L 166.9375,874.375 L 165.71875,932.0625 L 213.59375,906.28125 L 184.1875,975.625 L 234.46875,976.25 L 278.65625,928.375 L 224.625,944.34375 L 311.78125,782.3125 L 218.5,858.40625 L 225.875,810.53125 L 192.71875,843.6875 L 209.90625,689.03125 L 160.8125,800.71875 L 125.21875,751.625 L 122.75,817.90625 L 35.59375,670.59375 z"
+       id="path3971" />
+  </g>
+</svg>
