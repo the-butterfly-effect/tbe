@@ -36,14 +36,11 @@ const qreal  DetonatorBox::RINGING_TIME   = 0.5;
 #define STARTDISTANCE 0.2f
 const Vector DetonatorBox::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
-// FIXME/TODO: Armed and Done are the same image...
-
 DetonatorBox::DetonatorBox()
 		:	RectObject( QObject::tr("Detonator Box"),
 				"Push the handle down to BOOM",
-				"DetonatorBoxArmed;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
-//				"Empty",
-				0.33, 0.35, 4.0, 0.0), theHandleObjectPtr(NULL)
+				"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
+				0.33, 0.35, 4.0, 0.0), theState(ARMED), theHandleObjectPtr(NULL)
 {
 }
 
@@ -53,9 +50,32 @@ DetonatorBox::~DetonatorBox()
 	theHandleObjectPtr = NULL;
 }
 
-void DetonatorBox::callbackStep (qreal aTimeStep, qreal aTotalTime)
+void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 {
-	// TODO
+	switch(theState)
+	{
+	case ARMED:
+		if (isTriggered)
+		{
+			goToState(ACTIVATED);
+			theActivationStartTime=aTotalTime;
+		}
+		break;
+	case ACTIVATED:
+		if (aTotalTime > theActivationStartTime + ACTIVATED_TIME)
+		{
+			goToState(RINGING);
+		}
+		break;
+	case RINGING:
+		if (aTotalTime > theActivationStartTime + ACTIVATED_TIME + RINGING_TIME)
+		{
+			goToState(DONE);
+		}
+		break;
+	case DONE:
+		break;
+	}
 }
 
 void DetonatorBox::createPhysicsObject(void)
@@ -75,8 +95,9 @@ void DetonatorBox::deletePhysicsObject(void)
 
 DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 {
-	// TODO
-	return ARMED;
+	DEBUG4("DetonatorBox from state %d to state %d\n", theState, aNewState);
+	theState = aNewState;
+	return theState;
 }
 
 void DetonatorBox::reset(void)
@@ -92,6 +113,8 @@ void DetonatorBox::reset(void)
 	}
 
 	isTriggered = false;
+	theActivationStartTime = 0.0f;
+	theState = ARMED;
 	theWorldPtr->registerCallback(this);
 }
 
