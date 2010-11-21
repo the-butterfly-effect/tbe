@@ -92,7 +92,9 @@ public:
 	virtual void SayGoodbye(b2Joint* joint)
 	{
 		// we *know* that all b2Joints will have UserData
-		reinterpret_cast<BaseJoint*>(joint->GetUserData())->jointWasDeleted();
+		// but e.g. DetonatorHandle does not
+		if (joint->GetUserData() != NULL)
+			reinterpret_cast<BaseJoint*>(joint->GetUserData())->jointWasDeleted();
 	}
 
 	/// not interested...

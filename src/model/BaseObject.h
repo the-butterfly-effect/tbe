@@ -385,7 +385,7 @@ public:
 	 * i.e. where the object will return to after a "reset".
 	 * @param new_var the new value of theCenter
 	 */
-	void setOrigCenter ( Position new_var );
+	virtual void setOrigCenter ( Position new_var );
 
 	/**
 	 * Set the center position of the object.
