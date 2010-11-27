@@ -55,6 +55,7 @@ const char* Property::FORCE_STRING       = "Force";
 
 const char* Property::S_LESSTHAN = "lessthan";
 const char* Property::S_MORETHAN = "morethan";
+const char* Property::S_STATE_CH = "statechanged";
 
 const char* Property::S_XCHANGED = "xchanged";
 const char* Property::S_XBELOW   = "xbelow";

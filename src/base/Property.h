@@ -244,9 +244,10 @@ public:
 	// the following strings are used by the various Goal classes:
 	//
 
-	// GoalDistance
+	// GoalDistance & GoalStateChange
 	static const char* S_LESSTHAN;
 	static const char* S_MORETHAN;
+	static const char* S_STATE_CH;
 
 	// GoalPositionChange
 	static const char* S_XCHANGED;

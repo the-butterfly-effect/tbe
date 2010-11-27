@@ -271,3 +271,114 @@ QString GoalPositionChange::goalToStringList() const
 					   .arg(myLimit);
 	return myString;
 }
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// GoalStateChange /////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+GoalStateChange::GoalStateChange()
+		: theType(NOTYPE), theBOPtr(NULL), theState(0)
+{
+	// nothing to do here
+}
+
+GoalStateChange::~GoalStateChange()
+{
+	// nothing to do here
+}
+
+bool GoalStateChange::checkForSuccess(void)
+{
+	// whine loudly in a debug build or softly in a release build
+	assert(theBOPtr != NULL);
+	if (theBOPtr == NULL)
+		return false;
+
+	// TODO/FIXME: theImageIndex isn't exactly the state, but for now it is...
+	int myState = theBOPtr->getImageIndex();
+
+	switch(theType)
+	{
+	case NOTYPE:
+		return false;
+	case STATECHANGE:
+		if (myState != theState)
+			return true;
+		break;
+	case STATEOVER:
+		if (myState > theState)
+			return true;
+		break;
+	}
+	return false;
+}
+
+bool GoalStateChange::parseProperties(World* aWPtr)
+{
+	assert(aWPtr!=NULL);
+	if (aWPtr==NULL)
+		return false;
+
+	// we expect only to have 2 properties - any other number is wrong
+	if (theProps.getPropertyCount() != 2)
+	{
+		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
+		return false;
+	}
+
+	if (theProps.doesPropertyExists(Property::S_STATE_CH))
+		theType=STATECHANGE;
+	// because we don't have a property2Int, we have to fake it:
+	float myState;
+	if (theProps.property2Float(Property::S_MORETHAN, &myState,false))
+		theType=STATEOVER;
+	theState = myState;
+	if (theType == NOTYPE)
+	{
+		DEBUG2("no valid property found\n");
+		return false;
+	}
+
+
+	// parse object
+	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
+	{
+		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
+		return false;
+	}
+	assert(theBOPtr!=NULL);
+
+	// in case of S_STATE_CH, we need to store the current state
+	if (theType==STATECHANGE)
+		theState = theBOPtr->getImageIndex();
+
+	return true;
+}
+
+QString GoalStateChange::goalToStringList() const
+{
+	QString myString;
+	switch (theType)
+	{
+	case NOTYPE:
+		myString = ";;;;";
+		break;
+	case STATECHANGE:
+		// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
+		myString = QString("%1;%2;%3;;")
+					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::STATE])
+					   .arg(theBOPtr->getID())
+					   .arg(GoalEditor::getT10nOf_change());
+		break;
+	case STATEOVER:
+		// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
+		myString = QString("%1;%2;%3;%4;")
+					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::STATE])
+					   .arg(theBOPtr->getID())
+					   .arg(">")
+					   .arg(QString::number(theState));
+		break;
+	}
+	return myString;
+}
+

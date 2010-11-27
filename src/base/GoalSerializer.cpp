@@ -57,6 +57,8 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 		myGPtr = new GoalDistance();
 	if (myObjectType=="positionchange")
 		myGPtr = new GoalPositionChange();
+	if (myObjectType=="statechange")
+		myGPtr = new GoalStateChange();
 
 	if (myGPtr==NULL)
 	{
@@ -102,8 +104,9 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 		return NULL;
 	}
 
-	if (myType ==DISTANCE)
+	switch (myType)
 	{
+	case DISTANCE:
 		myGoal = new GoalDistance();
 		if (myList.size()!=5)
 			return NULL;
@@ -115,9 +118,11 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 			myGoal->theProps.setProperty(Property::S_LESSTHAN, myList[3]);
 		myGoal->theProps.setProperty(Property::OBJECT1_STRING, myList[1]);
 		myGoal->theProps.setProperty(Property::OBJECT2_STRING, myList[4]);
-	}
-	else
-	{
+		break;
+	case POSITIONX:
+	case POSITIONY:
+	case ANGLE:
+	case ANYTHING:
 		myGoal = new GoalPositionChange();
 		myGoal->theProps.setProperty(Property::OBJECT_STRING, myList[1]);
 		if (myType==POSITIONX && myList[2]==GoalEditor::getT10nOf_change())
@@ -138,6 +143,16 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 			myGoal->theProps.setProperty(Property::S_ACHANGED, "");
 		if (myType==ANYTHING && myList[2]==GoalEditor::getT10nOf_change())
 			myGoal->theProps.setProperty(Property::S_ANYTHING, "");
+		break;
+	case STATE:
+		// TODO
+		myGoal = new GoalStateChange();
+		myGoal->theProps.setProperty(Property::OBJECT_STRING, myList[1]);
+		if (myList[2]==">")
+			myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
+		if (myList[2]==GoalEditor::getT10nOf_change())
+			myGoal->theProps.setProperty(Property::S_STATE_CH, "");
+		break;
 	}
 
 	if (myGoal->parseProperties(aWorldPtr)==true)
@@ -158,6 +173,7 @@ QStringList GoalSerializer::getColumnZero(void)
 	myVariables.insert(ANGLE,       QObject::tr("Angle"));
 	myVariables.insert(ANYTHING,    QObject::tr("X/Y/Angle"));
 	myVariables.insert(DISTANCE,    QObject::tr("Distance"));
+	myVariables.insert(STATE,       QObject::tr("Object State"));
 	return myVariables;
 }
 

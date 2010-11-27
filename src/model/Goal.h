@@ -91,7 +91,7 @@ public:
 
 	virtual bool parseProperties(World* aWorldPtr);
 
-	bool checkForSuccess(void);
+	virtual bool checkForSuccess(void);
 
 protected:
 	virtual QString goalToStringList() const;
@@ -133,7 +133,7 @@ public:
 
 	virtual bool parseProperties(World* aWorldPtr);
 
-	bool checkForSuccess(void);
+	virtual bool checkForSuccess(void);
 
 protected:
 	virtual QString goalToStringList() const;
@@ -144,6 +144,37 @@ private:
 	float theLimit;
 };
 
-// future goal classes will include isHit, and maybe things like isAlive.
+/// implemented Goal - win if the State of an Object changes
+class GoalStateChange : public Goal
+{
+public:
+	enum StateType
+	{
+		NOTYPE          = 255,
+		STATECHANGE     = 4*GoalSerializer::STATE + 1,
+		STATEOVER	    = 4*GoalSerializer::STATE + 2
+	};
+
+	/** constructor
+	  * NOTE: this class is only fully usable after parseProperties has been run
+	  */
+	GoalStateChange();
+	virtual ~GoalStateChange();
+
+	virtual const QString getGoalType(void) const
+	{	return "statechange";	};
+
+	virtual bool parseProperties(World* aWorldPtr);
+
+	virtual bool checkForSuccess(void);
+
+protected:
+	virtual QString goalToStringList() const;
+
+private:
+	StateType theType;
+	BaseObject* theBOPtr;
+	int theState;
+};
 
 #endif // GOAL_H

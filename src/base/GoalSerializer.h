@@ -89,7 +89,8 @@ public:
 		POSITIONY,
 		ANGLE,
 		ANYTHING,
-		DISTANCE
+		DISTANCE,
+		STATE
 	};
 
 	/// @returns a sparsely populated QStringList with all possible
