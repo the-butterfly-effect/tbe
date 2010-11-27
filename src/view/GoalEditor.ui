@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>A level can only be won if all goals are satisfied. If an ObjectID is red, that ID currently does not exist.</string>
+	  <string>A level can only be won if ALL goals are satisfied. If an ObjectID is red, that ID currently does not exist.</string>
      </property>
      <property name="textFormat">
       <enum>Qt::PlainText</enum>
