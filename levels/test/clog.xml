@@ -1,0 +1,41 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Clogging the pipe</title>
+        <author>Klaas</author>
+        <license>PD</license>
+        <description>test level for quarter arcs and the new state change goal.</description>
+        <date>11/30/10</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="8" height="6" />
+        <predefined>
+            <object width="0.7999999999999999" X="5.3" Y="3.6" height="0.7999999999999999" type="QuarterArc80" angle="0" />
+            <object width="0.4" X="5.1" Y="3.4" height="0.4" type="QuarterArc40" angle="0" />
+            <object width="0.8" X="5.6" Y="2.800000000000002" height="0.8" type="QuarterArc80" angle="-3.14" />
+            <object width="0.4" X="5.8" Y="3.000000000000002" height="0.4" type="QuarterArc40" angle="3.14" />
+            <object width="1.548848986625671" X="6.353940304594398" Y="4.000526879638288" height="0.1" type="Floor" angle="1.57" />
+            <object width="1.536359786987305" X="6.736637461671271" Y="3.99953733643109" height="0.1" type="Floor" angle="1.5708" />
+            <object width="0.8" X="4.5" Y="3.6" height="0.8" type="QuarterArc80" angle="1.57" />
+            <object width="0.4" X="4.699999999999999" Y="3.4" height="0.4" type="QuarterArc40" angle="1.57" />
+            <object width="3.778129816055298" X="1.910935151576994" Y="2.45" height="0.1" type="Floor" angle="0" />
+            <object width="0.4" X="6.2" Y="3" height="0.4" type="QuarterArc40" angle="4.71" />
+            <object width="0.8" X="6.4" Y="2.8" height="0.8" type="QuarterArc80" angle="4.71" />
+            <object width="0.8" X="4.2" Y="2.8" height="0.8" type="QuarterArc80" angle="4.71" />
+            <object width="0.4" X="4" Y="3" height="0.4" type="QuarterArc40" angle="-1.57" />
+            <object width="0.27" X="6.543364431486881" Y="4.583854227405248" height="0.36" type="Balloon" ID="daBalloon" angle="0" />
+            <object width="1" X="6.534616618075803" Y="4.84628862973761" height="0.1" type="Floor" angle="0" />
+            <object width="2.55" X="2.5" Y="2.850000000000001" height="0.1" type="Floor" angle="0" />
+            <object width="0.166" X="0.2697878114101703" Y="2.711826252864252" height="0.501" type="CokeMentosBottle" angle="1.456278324127197" >
+                <property key="Thrust" >5</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="statechange" >
+            <property key="object" >daBalloon</property>
+            <property key="statechanged" ></property>
+        </goal>
+    </goals>
+</tbe-level>

@@ -126,9 +126,9 @@ static AbstractPolyObjectFactory theRightRampFactory(
 
 // the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
 // on both the inside and the outside - you can use both if you want :-)
-static AbstractPolyObjectFactory theQuarterArcFactory(
-	"QuarterArc",
-	QObject::tr("Quarter Arc"),
+static AbstractPolyObjectFactory the40QuarterArcFactory(
+	"QuarterArc40",
+	QObject::tr("Quarter Arc Small"),
 	QObject::tr("This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
 	"QuarterArc",
 	"(0.100,-.200)=(0.200,-.200)=(0.180,-.076)=(0.085,-.107);"
@@ -137,6 +137,24 @@ static AbstractPolyObjectFactory theQuarterArcFactory(
 	"(-.024,0.043)=(0.035,0.124)=(-.076,0.180)=(-.107,0.085);"
 	"(-.107,0.085)=(-.076,0.180)=(-.200,0.200)=(-.200,0.100)",
 	0.4, 0.4, 0.0, 0.1 );
+
+// the Large quarter arc is based on nine similarly-sized segments, it is more-or-less smooth
+// on both the inside and the outside - you can use both if you want :-)
+static AbstractPolyObjectFactory the80QuarterArcFactory(
+	"QuarterArc80",
+	QObject::tr("Quarter Arc Large"),
+	QObject::tr("This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	"QuarterArc80",
+	"( 0.300,-0.400)=( 0.400,-0.400)=( 0.388,-0.261)=( 0.289,-0.278);"
+	"( 0.289,-0.278)=( 0.388,-0.261)=( 0.352,-0.126)=( 0.258,-0.161);"
+	"( 0.258,-0.161)=( 0.352,-0.126)=( 0.293,-0.000)=( 0.206,-0.050);"
+	"( 0.206,-0.050)=( 0.293, 0.000)=( 0.213, 0.114)=( 0.136, 0.050);"
+	"( 0.136, 0.050)=( 0.213, 0.114)=( 0.114, 0.213)=( 0.050, 0.136);"
+	"( 0.050, 0.136)=( 0.114, 0.213)=( 0.000, 0.293)=(-0.050, 0.206);"
+	"(-0.050, 0.206)=( 0.000, 0.293)=(-0.126, 0.352)=(-0.161, 0.258);"
+	"(-0.161, 0.258)=(-0.126, 0.352)=(-0.261, 0.388)=(-0.278, 0.289);"
+	"(-0.278, 0.289)=(-0.261, 0.388)=(-0.400, 0.400)=(-0.400, 0.300)",
+	0.8, 0.8, 0.0, 0.1 );
 
 // Constructors/Destructors
 //
@@ -250,6 +268,7 @@ void PolyObject::fillShapeList(void)
 				UNUSED_VAR(isDone);
 				Vector myScaledCoord = myScale*myCoord;
 				myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
+printf("scaled: %s\n", ASCII(myScaledCoord.toString()));
 			}
 
 			// get mass:  no mass -> no density -> no motion
