@@ -173,9 +173,7 @@ private:
 
 /** this class implements the Dynamite for an explosion
  *  it will be triggered by the DetonatorBox class
- *
  */
-/*
 class Dynamite : public PolyObject, public SimStepCallbackInterface
 {
 public:
@@ -191,10 +189,12 @@ public:
 	virtual void reset(void);
 
 	/// this enum defines the states of the detonator
+	/// apart from WAITING->ACTIVE, all states are time-triggered
 	enum States
 	{
 		WAITING,   // cell phone dark, nothing happening
-		RINGING,   // cell phone lighted
+		ACTIVE,    // cell phone lighted, "incoming call"
+		RINGING,   // cell phone lighted, plus radio waves
 		BOOM,	   // explosion happening
 		GONE,	   // main object gone (explosion particles may still fly)
 	};
@@ -214,15 +214,17 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
+	/// true when the cell phone has been rung
+	bool isRinging;
+
 	/// the state variable
 	States theState;
 
-	/// time that the the ringing state started
-	qreal theRingingStartTime;
+	/// time that the the active state started
+	qreal theActiveStartTime;
 
 	/// time the object should stay in RINGING state
 	const static qreal RINGING_TIME;
 };
-*/
 
 #endif // TRIGGEREXPLOSION_H

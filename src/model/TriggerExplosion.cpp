@@ -122,8 +122,8 @@ void DetonatorBox::setOrigCenter ( Position new_var )
 {
 	RectObject::setOrigCenter(new_var);
 
-	assert(theHandleObjectPtr!=NULL);
-	theHandleObjectPtr->setOrigCenter(new_var+HANDLEOFFSET);
+	if (theHandleObjectPtr!=NULL)
+		theHandleObjectPtr->setOrigCenter(new_var+HANDLEOFFSET);
 }
 
 void DetonatorBox::setTriggered(void)
@@ -218,8 +218,8 @@ void DetonatorBoxHandle::reset(void)
 // ##########################################################################
 // ##########################################################################
 
-/*
-//// the DetonatorBox class' ObjectFactory
+
+//// the Dynamite class' ObjectFactory
 class DynamiteObjectFactory : public ObjectFactory
 {
 public:
@@ -230,15 +230,14 @@ public:
 };
 static DynamiteObjectFactory theDynamiteObjectFactory;
 
+const qreal  Dynamite::RINGING_TIME   = 0.5;
 
 Dynamite::Dynamite()
 		: PolyObject(QObject::tr("Dynamite"),
 			 QObject::tr("invented by Alfred Nobel, this is a nice explosive."),
-			 "Balloon;BalloonPoof;BalloonRest;Empty",
-			 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
-			 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
-			 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
-			 0.27, 0.36, 0.1, 0.7)
+			 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
+			 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
+			 0.43, 0.32, 0.8, 0.1), isRinging(false)
 {
 }
 
@@ -248,9 +247,39 @@ Dynamite::~Dynamite()
 
 void Dynamite::callbackStep (qreal aTimeStep, qreal aTotalTime)
 {
+	switch(theState)
+	{
+	case WAITING:
+		if (isRinging)
+		{
+			goToState(ACTIVE);
+			theActiveStartTime=aTotalTime;
+		}
+		break;
+	case ACTIVE:
+		if (aTotalTime > theActiveStartTime + RINGING_TIME)
+		{
+			goToState(RINGING);
+		}
+		break;
+	case RINGING:
+		if (aTotalTime > theActiveStartTime + 2*RINGING_TIME)
+		{
+			goToState(BOOM);
+		}
+		break;
+	case BOOM:
+		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
+		{
+			goToState(GONE);
+		}
+		break;
+	case GONE:
+		break;
+	}
 }
 
-Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
+Dynamite::States Dynamite::goToState(Dynamite::States /*aNewState*/)
 {
 	return WAITING;
 }
@@ -259,4 +288,3 @@ void Dynamite::reset(void)
 {
 	PolyObject::reset();
 }
-*/

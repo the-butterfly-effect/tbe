@@ -1,0 +1,32 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <author></author>
+        <license></license>
+        <date></date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="3" height="2" />
+        <predefined>
+            <object width="1" X="2.272272594752187" Y="0.6971413994169097" height="0.1" type="Floor" angle="0" />
+            <object width="0.43" X="2.316026307509175" Y="0.9071589044440245" height="0.32" type="Dynamite" angle="0" />
+            <object width="0.1" X="2.718559766763848" Y="0.9946661807580175" height="0.5" type="DominoRed" angle="0" >
+                <property key="ImageName" >DominoRed</property>
+                <property key="Mass" >2.5</property>
+            </object>
+            <object width="0.1" X="1.825985422740525" Y="0.9917492711370263" height="0.5" type="DominoGreen" angle="0" >
+                <property key="ImageName" >DominoGreen</property>
+                <property key="Mass" >2.5</property>
+            </object>
+            <object width="0.33" X="0.7379781689115584" Y="0.2712726153979844" height="0.35" type="DetonatorBox" angle="0" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+                <property key="Mass" >4</property>
+            </object>
+            <object width="0.22" X="0.8867405352578568" Y="1.06758893854347" height="0.22" type="BowlingBall" angle="0" />
+            <object width="1" X="1.064671993255615" Y="0.05250437065880778" height="0.1" type="Floor" angle="0" />
+            <object width="0.5738735795021057" X="0.517385407142114" Y="0.2820256670857025" height="0.1" type="Floor" angle="1.57" />
+        </predefined>
+    </scene>
+    <goals/>
+</tbe-level>
