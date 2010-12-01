@@ -226,6 +226,10 @@ private:
 	/// will be set to a value while we're caching - see setupCache()
 	int  theCachingIndex;
 
+	/// keeps the last used image index - to ensure redraw on static objects
+	/// see also the advance() member code
+	int theLastImageIndex;
+
 protected:
 	/// @returns the renderer for the current image frame
 	QSvgRenderer* getRenderer(void) const;

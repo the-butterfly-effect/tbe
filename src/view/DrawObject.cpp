@@ -53,7 +53,8 @@ QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 	: theBaseObjectPtr(aBaseObjectPtr),
-	isCaching(false), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	isCaching(false), theLastImageIndex(0), theUndeleteDrawWorldPtr(NULL),
+	theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p)\n", aBaseObjectPtr);
 	if (theBaseObjectPtr!=NULL)
@@ -63,7 +64,8 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 						const QString& anImageName,
 						UNUSED_ARG DrawObject::ImageType anImageType)
-	: theBaseObjectPtr(aBaseObjectPtr), isCaching(false), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
+	: theBaseObjectPtr(aBaseObjectPtr), isCaching(false),
+	  theLastImageIndex(0), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
 	DEBUG6("DrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
 	initAttributes();
@@ -148,6 +150,11 @@ QUndoStack* DrawObject::getUndoStackPtr(void)
 void DrawObject::advance(int)
 {
 	applyPosition();
+
+	// make sure to always redraw if the image animation frame
+	// changed...
+	if (theLastImageIndex != theBaseObjectPtr->getImageIndex())
+		update(boundingRect());
 }
 
 void DrawObject::applyPosition(void)
@@ -420,11 +427,11 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
 	if (myCachedCount != 0 && isCaching==false)
 	{
-		int myIndex = theBaseObjectPtr->getImageIndex();
-		if (myIndex >= myCachedCount)
-			myIndex = 0;
-		myPainter->drawPixmap(myRect, *theCachePixmapPtrs[myIndex],
-							  theCachePixmapPtrs[myIndex]->rect());
+		theLastImageIndex = theBaseObjectPtr->getImageIndex();
+		if (theLastImageIndex >= myCachedCount)
+			theLastImageIndex = 0;
+		myPainter->drawPixmap(myRect, *theCachePixmapPtrs[theLastImageIndex],
+							  theCachePixmapPtrs[theLastImageIndex]->rect());
 		return;
 	}
 
