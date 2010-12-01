@@ -24,13 +24,13 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="4,5" height="3" />
+        <scenesize width="4.5" height="3" />
         <predefined>
-            <object width="4,5" X="2,25" Y="0,05" height="0,1" type="Floor" angle="0" >
+            <object width="4.5" X="2.25" Y="0.05" height="0.1" type="Floor" angle="0" >
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >White-to-green</property>
             </object>
-            <object width="0,22" X="1,5" Y="1,5" height="0,22" type="PostIt" angle="0" >
+            <object width="0.22" X="1.5" Y="1.5" height="0.22" type="PostIt" angle="0" >
                 <property key="page1" >Im Perfect Balance...&lt;br>&lt;br>It almost sounds like an 'Art Of Noise' album title</property>
                 <property key="page1_nl" >Im Perfecte Balans...&lt;br>&lt;br>Klinkt bijna als een albumtitel van 'Art Of Noise'</property>
                 <property key="page2" >Poor little butterfly has no clue what's hanging above its head...</property>
@@ -42,42 +42,42 @@
                 <property key="page5" >&lt;br>&lt;br>... An unhappy&lt;br>&lt;br>Post-It Boy</property>
                 <property key="page5_nl" >&lt;br>&lt;br>... Een minder vrolijke&lt;br>&lt;br>Post-It Boy</property>
             </object>
-            <object width="0,2" X="1,45" Y="1,9" height="0,23" type="Skyhook" ID="Skyhook" angle="0" >
+            <object width="0.2" X="1.45" Y="1.9" height="0.23" type="Skyhook" ID="Skyhook" angle="0" >
                 <property key="ZValue" >0.5</property>
             </object>
-            <object width="2,6" X="1,59" Y="1,95" height="0,1" type="RectObject" angle="0" >
+            <object width="2.6" X="1.59" Y="1.95" height="0.1" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.0</property>
                 <property key="Friction" >0.5</property>
                 <property key="ImageName" >i-beam</property>
                 <property key="Mass" >100</property>
             </object>
-            <object width="3,2" X="2,1" Y="0,5" height="0,1" type="RectObject" angle="0" >
+            <object width="3.2" X="2.1" Y="0.5" height="0.1" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0,15" X="3,9" Y="0,3" height="0,4" type="RectObject" angle="0" >
+            <object width="0.15" X="3.9" Y="0.3" height="0.4" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.6</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >0.3</property>
             </object>
-            <object width="0,15" X="3,88" Y="0,7" height="0,4" type="RectObject" angle="0" >
+            <object width="0.15" X="3.88" Y="0.7" height="0.4" type="RectObject" angle="0" >
                 <property key="Bounciness" >0.6</property>
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >0.3</property>
             </object>
-            <object width="0,15" X="2,5" Y="0,9399999999999999" height="0,2280269058295964" type="Butterfly" ID="Butterfly" angle="0" >
+            <object width="0.15" X="2.5" Y="0.9399999999999999" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0" >
                 <property key="Object" >Flower</property>
             </object>
-            <object width="0,5" X="4,25" Y="0,48" height="0,1" type="RectObject" angle="0" >
+            <object width="0.5" X="4.25" Y="0.48" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0,5" X="4,25" Y="0,58" height="0,1" type="RectObject" angle="0" >
+            <object width="0.5" X="4.25" Y="0.58" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >White-to-green</property>
             </object>
-            <object width="0,2" X="4,3" Y="0,775" height="0,45" type="RectObject" angle="0" >
+            <object width="0.2" X="4.3" Y="0.775" height="0.45" type="RectObject" angle="0" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object width="0,1" X="4,3" Y="0,93" height="0,1" type="Scenery" ID="Flower" angle="0" >
+            <object width="0.1" X="4.3" Y="0.93" height="0.1" type="Scenery" ID="Flower" angle="0" >
                 <property key="ImageName" >Empty</property>
             </object>
         </predefined>
