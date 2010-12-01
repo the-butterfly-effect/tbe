@@ -84,10 +84,8 @@ protected:
 	/// @returns the state after this function completes
 	virtual States goToState(States aNewState);
 
-	/// will replace the existing set of shapes by a smaller shape that
-	/// fits the BalloonRest image. Do not call from within a Box2D callback
-//	void switchToSmallShape(void);
-
+	/// call this member to signal listening devices of the trigger
+	void notifyExplosions();
 
 private:
 	/// implemented from SimStepCallbackInterface
@@ -213,9 +211,6 @@ protected:
 private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
-
-	/// true when the cell phone has been rung
-	bool isRinging;
 
 	/// the state variable
 	States theState;

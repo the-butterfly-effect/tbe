@@ -30,6 +30,9 @@ public:
 };
 static DetonatorBoxObjectFactory theDetonatorBoxObjectFactory;
 
+// FIXME: part of temporary trigger mechanism
+static bool	theGlobalTrigger = false;
+
 
 const qreal  DetonatorBox::ACTIVATED_TIME = 0.5;
 const qreal  DetonatorBox::RINGING_TIME   = 0.5;
@@ -70,6 +73,7 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	case RINGING:
 		if (aTotalTime > theActivationStartTime + ACTIVATED_TIME + RINGING_TIME)
 		{
+			notifyExplosions();
 			goToState(DONE);
 		}
 		break;
@@ -100,6 +104,12 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 	return theState;
 }
 
+void DetonatorBox::notifyExplosions(void)
+{
+	// FIXME: part of temporary trigger mechanism
+	theGlobalTrigger = true;
+}
+
 void DetonatorBox::reset(void)
 {
 	RectObject::reset();
@@ -116,6 +126,8 @@ void DetonatorBox::reset(void)
 	theActivationStartTime = 0.0f;
 	theState = ARMED;
 	theWorldPtr->registerCallback(this);
+	// FIXME: part of temporary trigger mechanism
+	theGlobalTrigger = false;
 }
 
 void DetonatorBox::setOrigCenter ( Position new_var )
@@ -230,14 +242,14 @@ public:
 };
 static DynamiteObjectFactory theDynamiteObjectFactory;
 
-const qreal  Dynamite::RINGING_TIME   = 0.5;
+const qreal  Dynamite::RINGING_TIME   = 0.3;
 
 Dynamite::Dynamite()
 		: PolyObject(QObject::tr("Dynamite"),
 			 QObject::tr("invented by Alfred Nobel, this is a nice explosive."),
 			 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
 			 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
-			 0.43, 0.32, 0.8, 0.1), isRinging(false)
+			 0.43, 0.32, 0.8, 0.1), theState(WAITING), theActiveStartTime(0.0f)
 {
 }
 
@@ -245,12 +257,12 @@ Dynamite::~Dynamite()
 {
 }
 
-void Dynamite::callbackStep (qreal aTimeStep, qreal aTotalTime)
+void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 {
 	switch(theState)
 	{
 	case WAITING:
-		if (isRinging)
+		if (theGlobalTrigger)
 		{
 			goToState(ACTIVE);
 			theActiveStartTime=aTotalTime;
@@ -269,6 +281,7 @@ void Dynamite::callbackStep (qreal aTimeStep, qreal aTotalTime)
 		}
 		break;
 	case BOOM:
+		deletePhysicsObject();
 		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
 		{
 			goToState(GONE);
@@ -279,12 +292,20 @@ void Dynamite::callbackStep (qreal aTimeStep, qreal aTotalTime)
 	}
 }
 
-Dynamite::States Dynamite::goToState(Dynamite::States /*aNewState*/)
+Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
 {
-	return WAITING;
+	DEBUG4("Dynamite from state %d to state %d\n", theState, aNewState);
+	theState = aNewState;
+	return theState;
 }
 
 void Dynamite::reset(void)
 {
-	PolyObject::reset();
+	deletePhysicsObject();
+	createPhysicsObject();
+//	PolyObject::reset();
+
+	theWorldPtr->registerCallback(this);
+	theActiveStartTime = 0.0f;
+	theState = WAITING;
 }
