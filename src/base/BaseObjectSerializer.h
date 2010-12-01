@@ -56,6 +56,14 @@ public:
 	 */
 	static BaseObject* createObjectFromDom(const QDomNode& q, bool isXYMandatory);
 
+	/** returns a string representation of the float
+	 *  - maximum 3 digits
+	 *  - always a dot as decimal separator
+	 *  @param aValue the float to convert
+	 *  @returns a QString with the string representation of aValue.
+	 */
+	QString floatToString(float aValue) const;
+
 private:
 	/// constructor only called by BaseObject
 	BaseObjectSerializer(const BaseObject* anObjectPtr);
