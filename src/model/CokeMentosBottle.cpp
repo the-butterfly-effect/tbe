@@ -251,19 +251,11 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 
 const qreal CokeSplatter::theRadius = 0.04;
 
-
 CokeSplatter::CokeSplatter()
-		: RectObject()
+		: AbstractBall("CokeSplatter","", "CokeSplatter",
+					   theRadius, 0.01,  0.0)
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
-	theProps.setProperty(Property::IMAGE_NAME_STRING, "CokeSplatter");
-	theProps.setProperty(Property::DESCRIPTION_STRING, "");
-
-	// the actual shape
-	b2CircleDef* myBubbleDef = new b2CircleDef();
-	myBubbleDef->radius = theRadius;
-	myBubbleDef->density= 0.01 / (PI * theRadius * theRadius);
-	theShapeList.push_back(myBubbleDef);
 
 	// the sensor - slightly larger
 	// (sensor is used for collision detection & getting rid of the object if needed)
@@ -272,8 +264,6 @@ CokeSplatter::CokeSplatter()
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);
-
-	setTheBounciness(0.0);
 }
 
 CokeSplatter::~CokeSplatter()

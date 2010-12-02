@@ -19,26 +19,18 @@
 #ifndef COKEMENTOSBOTTLE_H
 #define COKEMENTOSBOTTLE_H
 
+#include "AbstractBall.h"
 #include "RectObject.h"
 #include "World.h"
 
 /** this class implements the flying coke
  *  it is modelled in small bubbles, 10 grams each
  */
-class CokeSplatter : public RectObject
+class CokeSplatter : public AbstractBall
 {
 public:
 	CokeSplatter();
 	virtual ~CokeSplatter();
-
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getName ( ) const
-	{
-		//: don't translate this one - not visible to user, ever...
-		return "Coke Splatter";
-	}
-
 
 	/// returns true if the object should not surive a World::reset()
 	/// overridden from BaseObject
@@ -56,7 +48,7 @@ public:
 				qreal aVelocity, qreal aSplatterMass);
 
 	/// reset() has no effect on a CokeSplatter
-	/// overridden from RectObject
+	/// overridden from AbstractBall
 	virtual void reset(void)
 	{ ; }
 
@@ -67,10 +59,6 @@ public:
 	virtual void callBackSensor(b2ContactPoint* aCPPtr);
 
 protected:
-	/// overridden from RectObject to remove the functionality
-	virtual void adjustParameters(void)
-	{ ; }
-
 	const static qreal theRadius;
 };
 
