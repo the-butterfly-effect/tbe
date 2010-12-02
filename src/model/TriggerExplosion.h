@@ -19,6 +19,7 @@
 #ifndef TRIGGEREXPLOSION_H
 #define TRIGGEREXPLOSION_H
 
+#include "AbstractBall.h"
 #include "RectObject.h"
 #include "PolyObject.h"
 #include "World.h"
@@ -212,6 +213,9 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
+	/// creates all ExplosionSplatters
+	void explode(void);
+
 	/// the state variable
 	States theState;
 
@@ -220,6 +224,61 @@ private:
 
 	/// time the object should stay in RINGING state
 	const static qreal RINGING_TIME;
+
+	/// mass of the dynamite
+	const static qreal DYNAMITE_MASS;
 };
+
+
+/** this class implements the flying debries of the Explosion
+ *  it is modelled in small bubbles, 10 grams each
+ *  once bubbles are disappearing, we'll increase the other ones in weight
+ */
+class ExplosionSplatter : public AbstractBall
+{
+public:
+	ExplosionSplatter();
+	virtual ~ExplosionSplatter();
+
+	/// returns true if the object should not surive a World::reset()
+	/// overridden from BaseObject
+	virtual bool isTemp() const
+	{ return true; }
+
+	/** sets all parameters of the splatter, attaches to World
+	  * and creates the physical object and drawobject
+	  * @param aWorldPtr
+	  * @param aStartPos
+	  * @param aVelocity
+	  * @param aSplatterMass
+	  * @param aDynamitePtr    pointer to the parent Dynamite - for feedback
+	  */
+	void setAll(World* aWorldPtr, const Position& aStartPos,
+				qreal aVelocity, qreal aSplatterMass, Dynamite* aDynamitePtr);
+
+	/// reset() has no effect on a ExplosionSplatter
+	/// overridden from AbstractBall
+	virtual void reset(void)
+	{ ; }
+
+	/// called if Object has registered a sensor
+	/// ExplosionSplatter needs to know if it has hit another object
+	/// overridden from SensorInterface
+	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+
+	const static qreal theRadius;
+
+	/// (See Box2D manual, "groupIndex" of a shape)
+	/// a negative group index means that all shapes of that group will never
+	/// ever collide - very useful for our little ExplosionSplatters
+	const static int   COLLISION_GROUP_INDEX;
+
+	Vector theStartVelocityVector;
+
+protected:
+	Dynamite*	theDynamitePtr;
+};
+
+
 
 #endif // TRIGGEREXPLOSION_H

@@ -243,13 +243,15 @@ public:
 static DynamiteObjectFactory theDynamiteObjectFactory;
 
 const qreal  Dynamite::RINGING_TIME   = 0.3;
+const qreal  Dynamite::DYNAMITE_MASS  = 0.8;
 
 Dynamite::Dynamite()
 		: PolyObject(QObject::tr("Dynamite"),
 			 QObject::tr("invented by Alfred Nobel, this is a nice explosive."),
 			 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
 			 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
-			 0.43, 0.32, 0.8, 0.1), theState(WAITING), theActiveStartTime(0.0f)
+			 0.43, 0.32, DYNAMITE_MASS, 0.1),
+		  theState(WAITING), theActiveStartTime(0.0f)
 {
 }
 
@@ -282,13 +284,32 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 		break;
 	case BOOM:
 		deletePhysicsObject();
-		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
+		explode();
+//		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
 		{
 			goToState(GONE);
 		}
 		break;
 	case GONE:
 		break;
+	}
+}
+
+void Dynamite::explode(void)
+{
+	const int NUM_SPLATS = 12;
+	for (int i=0; i< NUM_SPLATS; i++)
+	{
+		ExplosionSplatter* mySplatter = new ExplosionSplatter();
+
+		// startpos = dynamite center + angle + distance from center
+		Position myStart = getTempCenter();
+		myStart.angle += 2*PI*(float)i/NUM_SPLATS;
+		myStart = myStart + Vector(1.3*ExplosionSplatter::theRadius,0);
+
+		// HACK HACK: A regular detonation front is close to sonic speed (1000 m/s)
+		// we're not going to go anywhere near that speed here...
+		mySplatter->setAll(theWorldPtr, myStart, 20.0, DYNAMITE_MASS/NUM_SPLATS, this);
 	}
 }
 
@@ -308,4 +329,82 @@ void Dynamite::reset(void)
 	theWorldPtr->registerCallback(this);
 	theActiveStartTime = 0.0f;
 	theState = WAITING;
+}
+
+
+// ##########################################################################
+// ##########################################################################
+// ##########################################################################
+
+const qreal ExplosionSplatter::theRadius = 0.04;
+const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
+
+// note that the mass will be redone during setAll()
+ExplosionSplatter::ExplosionSplatter()
+		: AbstractBall("ExplosionSplatter","", "ExplosionSplatter",
+					   theRadius, 0.001,  1.0)
+{
+	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
+
+	// the first shape is already set in the AbstractBall constructor
+	// we only need to set the groupIndex so the various splatters do not collide
+	theShapeList[0]->filter.groupIndex = - COLLISION_GROUP_INDEX;
+
+	// the sensor - slightly larger
+	// (sensor is used for collision detection & getting rid of the object if needed)
+	b2CircleDef* mySensorDef = new b2CircleDef();
+	mySensorDef->radius = 1.01 * theRadius;
+	mySensorDef->isSensor = true;
+	mySensorDef->userData = this;
+	theShapeList.push_back(mySensorDef);
+
+}
+
+ExplosionSplatter::~ExplosionSplatter()
+{
+	DEBUG5("ExplosionSplatter::~ExplosionSplatter()\n");
+}
+
+
+void ExplosionSplatter::callBackSensor(b2ContactPoint*)
+{
+	// oww we hit something.
+	// that may be the end for us
+	//   - depending on whether we are reversing on our path or not
+
+	// compare against theStartVelocityVector
+	b2Vec2 myVelocity = theB2BodyPtr->GetLinearVelocity();
+
+	if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
+		((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
+	{
+		theWorldPtr->removeMe(this, 0.01);
+		//theDynamitePtr->removeMe(this);
+	}
+}
+
+
+void ExplosionSplatter::setAll(World* aWorldPtr,
+						  const Position& aStartPos,
+						  qreal aVelocity,
+						  qreal aSplatterMass,
+						  Dynamite* aDynamitePtr)
+{
+	DEBUG5("ExplosionSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
+		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
+		   aVelocity, aSplatterMass);
+
+	setOrigCenter(aStartPos);
+	aWorldPtr->addObject(this);
+	createPhysicsObject();
+
+	qreal myAngle = aStartPos.angle;
+	theStartVelocityVector = Vector(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
+	theB2BodyPtr->SetLinearVelocity(theStartVelocityVector.toB2Vec2());
+
+	b2MassData myMD;
+	myMD.mass = aSplatterMass;
+	myMD.center = b2Vec2(0,0);
+	myMD.I = 0.0008 * aSplatterMass;
+	theB2BodyPtr->SetMass(&myMD);
 }

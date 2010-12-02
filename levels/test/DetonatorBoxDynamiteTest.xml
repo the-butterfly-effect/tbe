@@ -7,25 +7,43 @@
     </levelinfo>
     <toolbox/>
     <scene>
-        <scenesize width="3" height="2" />
+        <scenesize width="4" height="2.5" />
         <predefined>
-            <object width="1" X="2.272272594752187" Y="0.6971413994169097" height="0.1" type="Floor" angle="0" />
-            <object width="0.43" X="2.316026307509175" Y="0.9071589044440245" height="0.32" type="Dynamite" angle="0" />
-            <object width="0.1" X="2.718559766763848" Y="0.9946661807580175" height="0.5" type="DominoRed" angle="0" >
+            <object width="1.470" X="2.276" Y="0.697" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.430" X="2.316" Y="0.907" height="0.320" type="Dynamite" angle="0.000" />
+            <object width="0.100" X="2.720" Y="0.840" height="0.200" type="DominoRed" angle="0.000" >
                 <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.1" X="1.825985422740525" Y="0.9917492711370263" height="0.5" type="DominoGreen" angle="0" >
+            <object width="0.100" X="1.820" Y="0.890" height="0.300" type="DominoGreen" angle="0.000" >
                 <property key="ImageName" >DominoGreen</property>
                 <property key="Mass" >2.5</property>
             </object>
-            <object width="0.33" X="0.7379781689115584" Y="0.2712726153979844" height="0.35" type="DetonatorBox" angle="0" >
+            <object width="0.330" X="0.270" Y="0.270" height="0.350" type="DetonatorBox" angle="0.000" >
                 <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
                 <property key="Mass" >4</property>
             </object>
-            <object width="0.22" X="0.8867405352578568" Y="1.06758893854347" height="0.22" type="BowlingBall" angle="0" />
-            <object width="1" X="1.064671993255615" Y="0.05250437065880778" height="0.1" type="Floor" angle="0" />
-            <object width="0.5738735795021057" X="0.517385407142114" Y="0.2820256670857025" height="0.1" type="Floor" angle="1.57" />
+            <object width="0.220" X="0.445" Y="1.064" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="1.000" X="0.600" Y="0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.574" X="0.050" Y="0.280" height="0.100" type="Floor" angle="1.570" />
+            <object width="0.100" X="2.720" Y="1.040" height="0.200" type="DominoRed" angle="0.000" >
+                <property key="ImageName" >DominoRed</property>
+                <property key="Mass" >2.5</property>
+            </object>
+            <object width="0.100" X="2.720" Y="1.240" height="0.200" type="DominoRed" angle="0.000" >
+                <property key="ImageName" >DominoRed</property>
+                <property key="Mass" >2.5</property>
+            </object>
+            <object width="0.100" X="1.819" Y="1.194" height="0.300" type="DominoGreen" angle="0.000" >
+                <property key="ImageName" >DominoGreen</property>
+                <property key="Mass" >2.5</property>
+            </object>
+            <object width="0.120" X="1.635" Y="0.920" height="0.340" type="BowlingPin" angle="0.000" />
+            <object width="1.487" X="2.276" Y="0.260" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.523" X="1.576" Y="0.459" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.430" X="1.900" Y="0.470" height="0.320" type="Dynamite" angle="0.000" />
+            <object width="0.220" X="2.518" Y="0.479" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.220" X="2.910" Y="0.850" height="0.220" type="BowlingBall" angle="0.000" />
         </predefined>
     </scene>
     <goals/>
