@@ -279,18 +279,19 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	case RINGING:
 		if (aTotalTime > theActiveStartTime + 2*RINGING_TIME)
 		{
+			theBoomStartTime = aTotalTime;
 			goToState(BOOM);
 		}
 		break;
 	case BOOM:
-		deletePhysicsObject();
-		explode();
-//		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
+		manageParticles(aTotalTime-theBoomStartTime);
+		if (aTotalTime > theActiveStartTime + 3*RINGING_TIME)
 		{
 			goToState(GONE);
 		}
 		break;
 	case GONE:
+		manageParticles(aTotalTime-theBoomStartTime);
 		break;
 	}
 }
@@ -310,15 +311,57 @@ void Dynamite::explode(void)
 		// HACK HACK: A regular detonation front is close to sonic speed (1000 m/s)
 		// we're not going to go anywhere near that speed here...
 		mySplatter->setAll(theWorldPtr, myStart, 20.0, DYNAMITE_MASS/NUM_SPLATS, this);
+		theSplatterList.push_back(mySplatter);
 	}
 }
 
 Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
 {
 	DEBUG4("Dynamite from state %d to state %d\n", theState, aNewState);
+
+	if (theState == RINGING && aNewState == BOOM)
+	{
+		deletePhysicsObject();
+		explode();
+	}
+
 	theState = aNewState;
 	return theState;
 }
+
+void Dynamite::manageParticles(float aDeltaTime)
+{
+	int mySplattersLeft = theSplatterList.count();
+	if (mySplattersLeft > 0)
+	{
+		// the following was tuned for full speed with aTimeStep equals 25 frames i.e. 0.040 s.
+		//
+		// The perimeter of the detonation front is linearly increasing,
+		// (perimeter of a circle is 2*pi*radius, remember?)
+		// so the power of the explosion decays linearly.
+		//
+		// let's assume the decay is complete after 2 seconds, i.e. the mass of
+		// the total number of splatters left at that point is reduced to zero
+		const float DECAY_TIME = 1.5;
+
+		float myMassLeft = DYNAMITE_MASS*(DECAY_TIME-aDeltaTime)/DECAY_TIME;
+		if (myMassLeft < 0.0)
+		{
+			// TODO/FIXME: delete all objects correctly
+			theSplatterList.clear();
+		}
+		else
+			foreach(ExplosionSplatter* e, theSplatterList)
+				e->setMass( myMassLeft / mySplattersLeft );
+	}
+}
+
+void Dynamite::removeMe(ExplosionSplatter* aDeadSplatterPtr)
+{
+	assert(aDeadSplatterPtr != NULL);
+	theSplatterList.removeAll(aDeadSplatterPtr);
+}
+
 
 void Dynamite::reset(void)
 {
@@ -329,6 +372,8 @@ void Dynamite::reset(void)
 	theWorldPtr->registerCallback(this);
 	theActiveStartTime = 0.0f;
 	theState = WAITING;
+
+	theSplatterList.clear();
 }
 
 
@@ -341,7 +386,7 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 
 // note that the mass will be redone during setAll()
 ExplosionSplatter::ExplosionSplatter()
-		: AbstractBall("ExplosionSplatter","", "ExplosionSplatter",
+		: AbstractBall("ExplosionSplatter","", "CokeSplatter",
 					   theRadius, 0.001,  1.0)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
@@ -372,14 +417,24 @@ void ExplosionSplatter::callBackSensor(b2ContactPoint*)
 	// that may be the end for us
 	//   - depending on whether we are reversing on our path or not
 
+	// FIXME/TODO: technically speaking, we should check if we hit
+	// a static/kinetic or a dynamic object.
+	//   - In case of static/kinetic: 100% bounce
+	//   - In case of dynamic: stick to it so we can propel it properly
+	//
+	// but that's significantly more complex than this...
+	//
+	// IDEA: can we vary bounciness during collision detection for
+	// different types of objects?
+
 	// compare against theStartVelocityVector
 	b2Vec2 myVelocity = theB2BodyPtr->GetLinearVelocity();
 
 	if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
 		((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
 	{
-		theWorldPtr->removeMe(this, 0.01);
-		//theDynamitePtr->removeMe(this);
+		theDynamitePtr->removeMe(this);
+		theWorldPtr->removeMe(this, 0.05);
 	}
 }
 
@@ -402,6 +457,12 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
 	theStartVelocityVector = Vector(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
 	theB2BodyPtr->SetLinearVelocity(theStartVelocityVector.toB2Vec2());
 
+	setMass(aSplatterMass);
+	theDynamitePtr = aDynamitePtr;
+}
+
+void ExplosionSplatter::setMass( qreal aSplatterMass )
+{
 	b2MassData myMD;
 	myMD.mass = aSplatterMass;
 	myMD.center = b2Vec2(0,0);

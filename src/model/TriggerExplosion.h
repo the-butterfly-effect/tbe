@@ -25,6 +25,7 @@
 #include "World.h"
 
 class DetonatorBoxHandle;
+class ExplosionSplatter;
 
 
 /** this class implements the DetonatorBox for an explosion
@@ -203,6 +204,9 @@ public:
 	virtual int getImageIndex(void)
 	{ return theState; }
 
+	/// requests removal of a splatter from the list
+	void removeMe(ExplosionSplatter* aDeadSplatterPtr);
+
 protected:
 	/// call this function to suggest a state change to the Dynamite
 	/// @param aNewState the suggestion for a new state
@@ -216,17 +220,28 @@ private:
 	/// creates all ExplosionSplatters
 	void explode(void);
 
+	/// part of callbackStep for the BOOM and GONE states, this manages
+	/// the weights of all remaining particles
+	/// @param aTimeStep	TODO
+	void manageParticles(float aDeltaTime);
+
 	/// the state variable
 	States theState;
 
-	/// time that the the active state started
+	/// time that the the ACTIVE state started
 	qreal theActiveStartTime;
+
+	/// time that the BOOM state started
+	qreal theBoomStartTime;
 
 	/// time the object should stay in RINGING state
 	const static qreal RINGING_TIME;
 
 	/// mass of the dynamite
 	const static qreal DYNAMITE_MASS;
+
+	typedef QList<ExplosionSplatter*> SplatterList;
+	SplatterList theSplatterList;
 };
 
 
@@ -255,6 +270,11 @@ public:
 	  */
 	void setAll(World* aWorldPtr, const Position& aStartPos,
 				qreal aVelocity, qreal aSplatterMass, Dynamite* aDynamitePtr);
+
+	/** sets the splattermass to whatever value needed.
+	  * @param aSplatterMass the new mass of the splatter
+	  */
+	void setMass( qreal aSplatterMass );
 
 	/// reset() has no effect on a ExplosionSplatter
 	/// overridden from AbstractBall

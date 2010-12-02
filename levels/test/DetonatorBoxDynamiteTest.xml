@@ -41,9 +41,9 @@
             <object width="0.120" X="1.635" Y="0.920" height="0.340" type="BowlingPin" angle="0.000" />
             <object width="1.487" X="2.276" Y="0.260" height="0.100" type="Floor" angle="0.000" />
             <object width="0.523" X="1.576" Y="0.459" height="0.100" type="Floor" angle="1.571" />
-            <object width="0.430" X="1.900" Y="0.470" height="0.320" type="Dynamite" angle="0.000" />
-            <object width="0.220" X="2.518" Y="0.479" height="0.220" type="BowlingBall" angle="0.000" />
             <object width="0.220" X="2.910" Y="0.850" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.430" X="1.919" Y="0.479" height="0.320" type="Dynamite" angle="0.000" />
+            <object width="0.250" X="2.653" Y="0.468" height="0.400" type="Cactus" angle="4.744" />
         </predefined>
     </scene>
     <goals/>
