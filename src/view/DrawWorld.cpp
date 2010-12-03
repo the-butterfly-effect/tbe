@@ -399,6 +399,7 @@ void DrawWorld::resetWorld( )
 		delete theCongratDeathBoxPtr;
 		theCongratDeathBoxPtr=NULL;
 	}
+	emit theSimStateMachine->clicked_on_reset();
 }
 
 void DrawWorld::setAcceptDrops(bool isOn)
@@ -582,8 +583,8 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 
 	connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld()));
 	connect(theButtons[1], SIGNAL(clicked()), aMainWindowPtr, SLOT(on_actionOpen_level_activated()));
-	connect(theButtons[2], SIGNAL(clicked()), aMainWindowPtr, SLOT(slot_next_level()));
-
+	if (theButtons[2])
+		connect(theButtons[2], SIGNAL(clicked()), aMainWindowPtr, SLOT(slot_next_level()));
 }
 
 DrawWorld::CongratDeathMessage::~CongratDeathMessage()

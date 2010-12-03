@@ -94,6 +94,7 @@ void StartStopWatch::clicked_on_watch()
 void StartStopWatch::clicked_on_reset()
 {
 	// this should only be possible to call when the reset button is visible
+	// but it doesn't really matter - goToState will take care of that :-)
 	goToState(NOTSTARTED);
 }
 
@@ -147,9 +148,9 @@ void StartStopWatch::goToState(TheStates aNewState)
 			switch (aNewState)
 			{
 			case NOTSTARTED:	// reset button clicked
+				theState = aNewState;
 				removeResetButton();
 				resetStopwatch();
-				theState = aNewState;
 				break;
 			case STOPPED:		// no need for action
 				break;
@@ -240,10 +241,11 @@ void StartStopWatch::goToState(TheStates aNewState)
 			{
 			case NOTSTARTED:
 				// no longer show broken watch
+				theState = aNewState;
 				showWatch(false);
+				stopStopwatch();
 				resetStopwatch();
 				removeResetButton();
-				theState = aNewState;
 				break;
 			case BROKEN:
 				break;
@@ -310,14 +312,12 @@ void StartStopWatch::progressHand(void)
 
 void StartStopWatch::removeFastForwardButton(void)
 {
-	assert(theFastForwardSvgPtr != NULL);
 	delete theFastForwardSvgPtr;
 	theFastForwardSvgPtr=NULL;
 }
 
 void StartStopWatch::removeResetButton(void)
 {
-	assert(theResetSvgPtr != NULL);
 	delete theResetSvgPtr;
 	theResetSvgPtr=NULL;
 }
