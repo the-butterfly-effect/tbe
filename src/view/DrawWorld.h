@@ -223,7 +223,14 @@ private:
 	class CongratDeathMessage : QGraphicsSvgItem
 	{
 	public:
-		CongratDeathMessage(const QString& aMessage, DrawWorld* aScene, MainWindow* aMainWindowPtr);
+
+		enum MessageType
+		{
+			CONGRATS,
+			DEATH
+		};
+
+		CongratDeathMessage(MessageType aType, DrawWorld* aScene, MainWindow* aMainWindowPtr);
 		virtual ~CongratDeathMessage();
 	private:
 		// I originally also wanted to hookup onClick events, but

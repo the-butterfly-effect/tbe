@@ -339,7 +339,7 @@ void DrawWorld::on_death(void)
 	if (theCongratDeathBoxPtr!=NULL)
 		return;
 	else
-		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Death - retry?"), this, theMainWindowPtr);
+		theCongratDeathBoxPtr = new CongratDeathMessage(CongratDeathMessage::DEATH, this, theMainWindowPtr);
 
 	theSimStateMachine->goToState(StartStopWatch::BROKEN);
 }
@@ -375,7 +375,8 @@ void DrawWorld::on_winning(void)
 	if (theCongratDeathBoxPtr!=NULL)
 		return;
 	else
-		theCongratDeathBoxPtr = new CongratDeathMessage(tr("Congratulations"), this, theMainWindowPtr);
+		theCongratDeathBoxPtr = new CongratDeathMessage(
+				CongratDeathMessage::CONGRATS, this, theMainWindowPtr);
 
 	QTimer::singleShot(1500, this, SLOT(on_OneSecondAfterWinning()));
 }
@@ -528,11 +529,22 @@ void DrawWorld::clearGraphicsList(int aCount)
 }
 
 DrawWorld::CongratDeathMessage::CongratDeathMessage(
-		const QString& aMessage,
+		MessageType aType,
 		DrawWorld* aScenePtr,
 		MainWindow* aMainWindowPtr)
 		: QGraphicsSvgItem(IMAGES_DIRECTORY + "/congrat-death-border.svg"), theScenePtr(aScenePtr)
 {
+	QString myMessage;
+	switch(aType)
+	{
+		case CONGRATS:
+			myMessage = tr("Congratulations");
+			break;
+		case DEATH:
+			myMessage = tr("Death - retry?");
+			break;
+	}
+
 	// the image is put in scene coordinates
 	QRectF myImageBounds = boundingRect();
 	QRectF mySceneBounds(0,-aScenePtr->getHeight(),
@@ -544,7 +556,7 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 	setZValue(10.0);
 	aScenePtr->addItem(this);
 
-	theTextPtr = new QGraphicsSimpleTextItem(aMessage, this);
+	theTextPtr = new QGraphicsSimpleTextItem(myMessage, this);
 	QRectF myTextBounds = theTextPtr->boundingRect();
 	myResize = 0.9 * boundingRect().width() / myTextBounds.width() ;
 	theTextPtr->setBrush(Qt::white);
@@ -557,8 +569,15 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 	theButtons[0]->show();
 	theButtons[1] = new QPushButton(tr("&Choose..."), myView );
 	theButtons[1]->show();
-	theButtons[2] = new QPushButton(tr("&Next>"), myView );
-	theButtons[2]->show();
+	if (aType==CONGRATS)
+	{
+		theButtons[2] = new QPushButton(tr("&Next>"), myView );
+		theButtons[2]->show();
+	}
+	else
+	{
+		theButtons[2]=NULL;
+	}
 	moveButtons();
 
 	connect(theButtons[0], SIGNAL(clicked()), theScenePtr, SLOT(resetWorld()));
@@ -585,7 +604,8 @@ void DrawWorld::CongratDeathMessage::moveButtons()
 	theButtons[1]->move(theButtons[0]->x() + theButtons[0]->width() + 20,
 						theButtons[0]->y());
 
-	theButtons[2]->move(theButtons[1]->x() + theButtons[1]->width() + 20,
+	if (theButtons[2])
+		theButtons[2]->move(theButtons[1]->x() + theButtons[1]->width() + 20,
 						theButtons[1]->y());
 }
 
