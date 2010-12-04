@@ -268,7 +268,6 @@ void PolyObject::fillShapeList(void)
 				UNUSED_VAR(isDone);
 				Vector myScaledCoord = myScale*myCoord;
 				myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
-printf("scaled: %s\n", ASCII(myScaledCoord.toString()));
 			}
 
 			// get mass:  no mass -> no density -> no motion
