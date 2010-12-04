@@ -66,10 +66,10 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 		myMode = ROTATE;
 	else
 		myMode = NONE;
-	theAnchorList.push_back(new Anchor(myMode, Anchor::TOPRIGHT, this));
-	theAnchorList.push_back(new Anchor(myMode, Anchor::TOPLEFT, this));
-	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMLEFT, this));
-	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOMRIGHT, this));
+	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::TOPRIGHT, this));
+	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::TOPLEFT, this));
+	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMLEFT, this));
+	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMRIGHT, this));
 
 	// the DELETE button is displayed left of topleft
 	theAnchorList.push_back(new Anchor(DELETE, Anchor::TOPLEFTLEFT, this));
@@ -269,17 +269,12 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 			setCursor(Qt::SizeVerCursor);
 			theUndoRPtr = theParentPtr->createUndoResize();
 			break;
-		case TOPLEFT:
-		case TOPRIGHT:
-		case BOTTOMLEFT:
-		case BOTTOMRIGHT:
-			// TODO: add cursor ROTATE shape
-			// store this position - calculate differential angles later
-			theUndoRPtr = theParentPtr->createUndoRotate(event->scenePos());
-			break;
 		case TOPLEFTLEFT:
 			// the DELETE button
 			theParentPtr->createUndoDelete();
+			break;
+		default:
+			assert(false);
 			break;
 	}
 }
@@ -335,4 +330,80 @@ void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 	rotate((-myC.angle-theOldAngle)*180/3.14);
 	setPos(myC.x, -myC.y);
 	theOldAngle=-myC.angle;
+}
+
+
+// #########################################################################
+// #########################################################################
+// #########################################################################
+// #########################################################################
+
+RotateAnchor::RotateAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
+		: Anchor(aDirection, anIndex, aParent), theUndoRPtr(NULL)
+{
+}
+
+
+void RotateAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
+{
+	DEBUG1("RotateAnchor::mouseMoveEvent(%d)\n", event->type());
+
+	if(theUndoRPtr==NULL)
+		return;
+	theUndoRPtr->update(theIndex, event->scenePos());
+	theParentPtr->updatePosition();
+}
+
+void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+{
+	DEBUG1("RotateAnchor::mousePressEvent\n");
+
+	// only active this if there are real icons to be had
+	if (theDirection==Anchors::NONE)
+		return;
+
+	// reset cursor to hori/verti/rotate
+	// and setup the corresponding undo class
+	assert(theUndoRPtr==NULL);
+
+	// TODO: add cursor ROTATE shape
+	// store this position - calculate differential angles later
+	theUndoRPtr = theParentPtr->createUndoRotate(event->scenePos());
+}
+
+void RotateAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
+{
+	DEBUG1("RotateAnchor::mouseReleaseEvent\n");
+
+	// delete has no release event, clicking is enough.
+	// so that one is missing here...
+
+	if (theUndoRPtr==NULL)
+		return;
+
+	// are we currently in a collision?
+	// in that case, go back to last known good
+	if (theUndoRPtr->isGood()==false)
+	{
+		DEBUG4("Reverting to last known non-colliding position\n");
+		theUndoRPtr->revertToLastGood();
+	}
+
+	// there was actual resizing???
+	if (theUndoRPtr->isChanged())
+	{
+		DEBUG5("PUSHED UNDO\n");
+		theParentPtr->pushUndo(theUndoRPtr);
+		theUndoRPtr = NULL;
+	}
+	else
+	{
+		DEBUG5("CLEARED UNDO\n");
+		if (theUndoRPtr)
+		{
+			theUndoRPtr->undo();
+			delete theUndoRPtr;
+		}
+		theUndoRPtr = NULL;
+	}
 }

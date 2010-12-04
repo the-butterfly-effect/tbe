@@ -131,9 +131,9 @@ public slots:
 	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
 
 	/// slot that tells the position may have changed - called by the Anchors class.
-	void updatePosition(Position myC, qreal myW, qreal myH);
+	virtual void updatePosition(Position myC, qreal myW, qreal myH);
 
-private:
+protected:
 	Anchors* theParentPtr;
 	Anchors::AnchorType theDirection;
 	AnchorPosition theIndex;
@@ -153,6 +153,48 @@ private:
 	const Anchor& operator=(const Anchor&);
 };
 
+
+
+
+/// RotateAnchor is a single item used by the Anchors class
+class RotateAnchor : public Anchor
+{
+	Q_OBJECT
+
+public:
+	/// Constructor
+	RotateAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent);
+
+public slots:
+	/** overridden from QGraphicsItem
+	 *  if the user drags the object around, this even will be called for each pixel.
+	 *  let's actually adjust the coordinates!!!
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this Anchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this Anchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
+
+private:
+	UndoRCommand* theUndoRPtr;
+
+	// kill copy constructor & assignment operator
+	RotateAnchor(const RotateAnchor&);
+	const RotateAnchor& operator=(const RotateAnchor&);
+};
 
 
 #endif // ANCHORS_H
