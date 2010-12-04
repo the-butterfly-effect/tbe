@@ -101,22 +101,10 @@ Anchors::~Anchors()
 	theDrawObjectPtr->focusRemove(false);
 }
 
-void Anchors::createUndoDelete(void)
+BaseObject*   Anchors::getBOPtr(void) const
 {
-	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theDrawObjectPtr->getBaseObjectPtr());
-	myCommandPtr->push();
+	return theDrawObjectPtr->getBaseObjectPtr();
 }
-
-UndoRCommand* Anchors::createUndoRotate(const Vector& aHotspot)
-{
-	return new UndoRotateCommand(theDrawObjectPtr->getBaseObjectPtr(), aHotspot);
-}
-
-UndoRCommand* Anchors::createUndoResize(void)
-{
-	return new UndoResizeCommand(theDrawObjectPtr->getBaseObjectPtr());
-}
-
 
 bool Anchors::isAnchor(QGraphicsItem* anItem)
 {
@@ -262,17 +250,20 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 		case RIGHT:
 		case LEFT:
 			setCursor(Qt::SizeHorCursor);
-			theUndoRPtr = theParentPtr->createUndoResize();
+			theUndoRPtr = new UndoResizeCommand(theParentPtr->getBOPtr());
 			break;
 		case TOP:
 		case BOTTOM:
 			setCursor(Qt::SizeVerCursor);
-			theUndoRPtr = theParentPtr->createUndoResize();
+			theUndoRPtr = new UndoResizeCommand(theParentPtr->getBOPtr());
 			break;
 		case TOPLEFTLEFT:
+		{
 			// the DELETE button
-			theParentPtr->createUndoDelete();
+			UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theParentPtr->getBOPtr());
+			myCommandPtr->push();
 			break;
+		}
 		default:
 			assert(false);
 			break;
@@ -368,7 +359,8 @@ void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 
 	// TODO: add cursor ROTATE shape
 	// store this position - calculate differential angles later
-	theUndoRPtr = theParentPtr->createUndoRotate(event->scenePos());
+	theUndoRPtr = new UndoRotateCommand(theParentPtr->getBOPtr(),
+										event->scenePos());
 }
 
 void RotateAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)

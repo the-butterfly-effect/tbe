@@ -52,9 +52,7 @@ public:
 		DELETE
 	};
 
-	void          createUndoDelete(void);
-	UndoRCommand* createUndoResize(void);
-	UndoRCommand* createUndoRotate(const Vector& aHotspot);
+	BaseObject*   getBOPtr(void) const;
 
 	/// @returns true if anItem is one of the Anchors
 	bool isAnchor(QGraphicsItem* anItem);
