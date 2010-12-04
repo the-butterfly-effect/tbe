@@ -54,11 +54,14 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 void EditObjectDialog::position_valueChanged (double )
 {
 	if (theUndoPtr == NULL)
-		theUndoPtr = new UndoManualCommand(theBOPtr);
-	theUndoPtr->setNewVal(
+		theUndoPtr = UndoObjectChange::createUndoObject(
+				UndoObjectChange::DIALOG, theBOPtr, Vector(0,0));
+	theUndoPtr->update(
 			Position(ui.spinBoxX->value(),
-				ui.spinBoxY->value(),
-				ui.spinBoxAngle->value() ) );
+					 ui.spinBoxY->value(),
+					 ui.spinBoxAngle->value() ),
+			Vector(ui.spinBoxWidth->value(),
+				   ui.spinBoxHeight->value()));
 }
 
 void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
@@ -169,9 +172,5 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 
 void EditObjectDialog::widthHeight_valueChanged (double )
 {
-	if (theUndoPtr == NULL)
-		theUndoPtr = new UndoManualCommand(theBOPtr);
-	theUndoPtr->setNewVal(
-			ui.spinBoxWidth->value(),
-			ui.spinBoxHeight->value() );
+	position_valueChanged(0);
 }

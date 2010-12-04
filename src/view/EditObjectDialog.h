@@ -22,7 +22,7 @@
 #include "ui_EditObjectDialog.h"
 #include "tbe_global.h"
 #include "BaseObject.h"
-#include "UndoManualCommand.h"
+#include "UndoObjectChange.h"
 #include <QDialog>
 
 class EditObjectDialog : public QDialog
@@ -56,7 +56,7 @@ private:
 
 	BaseObject* theBOPtr;
 
-	UndoManualCommand* theUndoPtr;
+	UndoObjectChange* theUndoPtr;
 
 	// kill possibility for copy constructor&assignment operator
 	EditObjectDialog(const EditObjectDialog&);

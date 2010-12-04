@@ -248,6 +248,7 @@ protected:
 private:
 	virtual void initAttributes ( ) ;
 
+	// TODO: REMOVE ALL BELOW Undo*Commands once UndoObjectChange is complete...
 	// all below friends are needed for Undoing actions
 	friend class UndoResizeCommand;    // resize
 	friend class UndoRotateCommand;    // rotate
@@ -255,6 +256,8 @@ private:
 	friend class UndoDeleteCommand;    // delete
 	friend class UndoInsertCommand;
 	friend class UndoMoveCommand;
+
+	friend class UndoObjectChange;		// the new Undo command
 
 
 	/** this class-in-class displays the Cross over the

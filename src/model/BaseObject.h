@@ -477,6 +477,8 @@ private:
 
 	friend class ObjectFactory;
 
+	friend class UndoObjectChange;		// the new Undo command
+
 	// TODO/FIXME: this is getting ugly...
 	friend class UndoDeleteCommand;
 	friend class UndoMoveCommand;
