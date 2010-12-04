@@ -35,7 +35,7 @@ class BaseObject;
 /**
   * class UndoRCommand
   *
-  * abstract interface for UndoResizeCommand and UndoRotateCommand
+  * abstract interface for UndoResizeCommand
   */
 
 class UndoRCommand : public QUndoCommand

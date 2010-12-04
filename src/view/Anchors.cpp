@@ -21,7 +21,6 @@
 #include "DrawObject.h"
 #include "BaseObject.h"
 #include "UndoResizeCommand.h"
-#include "UndoRotateCommand.h"
 #include "UndoDeleteCommand.h"
 
 #include <QGraphicsScene>
@@ -234,7 +233,7 @@ void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 	theParentPtr->updatePosition();
 }
 
-void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* /* event */)
 {
 	DEBUG5("Anchor::mousePressEvent\n");
 
@@ -330,24 +329,29 @@ void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 // #########################################################################
 
 RotateAnchor::RotateAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
-		: Anchor(aDirection, anIndex, aParent), theUndoRPtr(NULL)
+		: Anchor(aDirection, anIndex, aParent), theUndoRotatePtr(NULL)
 {
+}
+
+float RotateAnchor::getCurrentAngle(Vector aHotspot) const
+{
+	return (aHotspot - theParentPtr->getBOPtr()->getOrigCenter().toVector()).toAngle();
 }
 
 
 void RotateAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
-	DEBUG1("RotateAnchor::mouseMoveEvent(%d)\n", event->type());
+	DEBUG5("RotateAnchor::mouseMoveEvent(%d)\n", event->type());
 
-	if(theUndoRPtr==NULL)
+	if(theUndoRotatePtr==NULL)
 		return;
-	theUndoRPtr->update(theIndex, event->scenePos());
-	theParentPtr->updatePosition();
+	theUndoRotatePtr->update(getCurrentAngle(event->scenePos())-theHotspotAngle);
+//	theParentPtr->updatePosition();
 }
 
 void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
-	DEBUG1("RotateAnchor::mousePressEvent\n");
+	DEBUG5("RotateAnchor::mousePressEvent\n");
 
 	// only active this if there are real icons to be had
 	if (theDirection==Anchors::NONE)
@@ -355,47 +359,33 @@ void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 
 	// reset cursor to hori/verti/rotate
 	// and setup the corresponding undo class
-	assert(theUndoRPtr==NULL);
+	assert(theUndoRotatePtr==NULL);
 
 	// TODO: add cursor ROTATE shape
 	// store this position - calculate differential angles later
-	theUndoRPtr = new UndoRotateCommand(theParentPtr->getBOPtr(),
-										event->scenePos());
+	theUndoRotatePtr = UndoObjectChange::createUndoObject(
+			UndoObjectChange::ROTATE, theParentPtr->getBOPtr(), event->scenePos());
+
+	theHotspotAngle = getCurrentAngle(event->scenePos());
 }
 
 void RotateAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 {
-	DEBUG1("RotateAnchor::mouseReleaseEvent\n");
+	DEBUG5("RotateAnchor::mouseReleaseEvent\n");
 
-	// delete has no release event, clicking is enough.
-	// so that one is missing here...
-
-	if (theUndoRPtr==NULL)
+	if (theUndoRotatePtr==NULL)
 		return;
 
-	// are we currently in a collision?
-	// in that case, go back to last known good
-	if (theUndoRPtr->isGood()==false)
-	{
-		DEBUG4("Reverting to last known non-colliding position\n");
-		theUndoRPtr->revertToLastGood();
-	}
-
-	// there was actual resizing???
-	if (theUndoRPtr->isChanged())
+	if (theUndoRotatePtr->pushYourself()==true)
 	{
 		DEBUG5("PUSHED UNDO\n");
-		theParentPtr->pushUndo(theUndoRPtr);
-		theUndoRPtr = NULL;
 	}
 	else
 	{
 		DEBUG5("CLEARED UNDO\n");
-		if (theUndoRPtr)
-		{
-			theUndoRPtr->undo();
-			delete theUndoRPtr;
-		}
-		theUndoRPtr = NULL;
+		theUndoRotatePtr->undo();
+		delete theUndoRotatePtr;
 	}
+	theUndoRotatePtr = NULL;
+
 }

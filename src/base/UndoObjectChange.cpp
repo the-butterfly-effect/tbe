@@ -86,7 +86,12 @@ bool UndoObjectChange::pushYourself(void)
 	}
 
 	// did we rotate?
-	// TODO
+	if (theNewCenter.angle != theOldCenter.angle)
+	{
+		myUndoString = QObject::tr("Rotate %1").arg(theBaseObjectPtr->getName());
+		goto letspush;
+	}
+
 	// did we move?
 	// TODO
 
@@ -103,10 +108,19 @@ void UndoObjectChange::redo ()
 	theBaseObjectPtr->setTheWidth(theNewSize.dx);
 	theBaseObjectPtr->setTheHeight(theNewSize.dy);
 
-	theBaseObjectPtr->setTempCenter(theNewCenter);
-	theBaseObjectPtr->setOrigCenter(theNewCenter);
+	// TODO/FIXME: This was copy/pasted from the original UndoRotateCommand
+	// but do we still need this code???
+		Position myNewPosition = theNewCenter;
+		// It is unfair: QT doesn't redraw if just the angle changed
+		// So we need to force a position change...
+		double myRandom = 0.0001 * qrand() / (double)RAND_MAX;
+		myNewPosition.x += myRandom;
+
+	theBaseObjectPtr->setTempCenter(myNewPosition);
+	theBaseObjectPtr->setOrigCenter(myNewPosition);
 
 	theBaseObjectPtr->reset();
+
 
 	requestSceneRefresh();
 
@@ -125,6 +139,12 @@ void UndoObjectChange::requestSceneRefresh(void)
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
 }
 
+
+void UndoObjectChange::update (qreal aNewAngle)
+{
+	theNewCenter.angle = aNewAngle;
+	update(theNewCenter, theNewSize);
+}
 
 void UndoObjectChange::update (const Position& aNewPos, const Vector& aNewSize)
 {

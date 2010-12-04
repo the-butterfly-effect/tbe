@@ -133,6 +133,7 @@ public:
 	  *   Will trigger update of Anchors
 	  */
 	void update(const Position& aNewPos, const Vector& aNewSize);
+	void update(qreal anAngle);
 
 	/// implemented from QUndoCommand, set the object to "new" state
 	/// this will trigger a redraw for all affected areas

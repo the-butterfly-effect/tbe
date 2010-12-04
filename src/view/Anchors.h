@@ -31,6 +31,8 @@ class Anchor;
 class QGraphicsScene;
 class QUndoCommand;
 class UndoRCommand;
+class UndoObjectChange;
+
 
 /// the Anchors class manages the resize/rotate/delete anchors around a selected DrawObject
 class Anchors : public QObject
@@ -187,7 +189,11 @@ public slots:
 	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
 
 private:
-	UndoRCommand* theUndoRPtr;
+	UndoObjectChange* theUndoRotatePtr;
+
+	float theHotspotAngle;
+
+	float getCurrentAngle(Vector aHotspot) const;
 
 	// kill copy constructor & assignment operator
 	RotateAnchor(const RotateAnchor&);

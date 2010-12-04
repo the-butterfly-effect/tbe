@@ -251,7 +251,6 @@ private:
 	// TODO: REMOVE ALL BELOW Undo*Commands once UndoObjectChange is complete...
 	// all below friends are needed for Undoing actions
 	friend class UndoResizeCommand;    // resize
-	friend class UndoRotateCommand;    // rotate
 	friend class UndoManualCommand;    // resize/rotate/move by EditObjectDialog
 	friend class UndoDeleteCommand;    // delete
 	friend class UndoInsertCommand;
