@@ -30,7 +30,7 @@
 class Anchor;
 class QGraphicsScene;
 class QUndoCommand;
-class UndoRCommand;
+class UndoResizeCommand;
 class UndoObjectChange;
 
 
@@ -143,7 +143,7 @@ protected:
 	qreal theOffset;
 	qreal theOldAngle;
 
-	UndoRCommand* theUndoRPtr;
+	UndoResizeCommand* theUndoRPtr;
 
 	int getDX();
 	int getDY();

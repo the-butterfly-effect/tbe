@@ -24,20 +24,12 @@
 #include <cassert>
 #include <cmath>
 
-UndoRCommand::UndoRCommand()
-		: QUndoCommand()
-{}
-
-UndoRCommand::~UndoRCommand()
-{}
-
 // Constructors/Destructors
 //  
 
 UndoResizeCommand::UndoResizeCommand (
 		BaseObject* aBaseObjectPtr)
-		  : UndoRCommand(),
-			theBaseObjectPtr(aBaseObjectPtr)
+		  : QUndoCommand(), theBaseObjectPtr(aBaseObjectPtr)
 {
 	assert(aBaseObjectPtr);
 	theOldCenter = theBaseObjectPtr->getOrigCenter();

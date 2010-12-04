@@ -31,33 +31,13 @@
 class DrawObject;
 class BaseObject;
 
-
-/**
-  * class UndoRCommand
-  *
-  * abstract interface for UndoResizeCommand
-  */
-
-class UndoRCommand : public QUndoCommand
-{
-public:
-	UndoRCommand ();
-	virtual ~UndoRCommand ( );
-	virtual bool isChanged(void) = 0;
-	virtual bool isGood(void) = 0;
-	virtual void revertToLastGood(void) = 0;
-	virtual void update(Anchor::AnchorPosition anIndex, const Vector& aCursorPos) = 0;
-};
-
-
-
 /**
   * class UndoResizeCommand
   *
   * undo/redo for the moving of objects
   */
 
-class UndoResizeCommand : public UndoRCommand
+class UndoResizeCommand : public QUndoCommand
 {
 public:
 
