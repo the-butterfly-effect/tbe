@@ -51,6 +51,13 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 	theBOPtr->setID(ui.lineEditID->text().trimmed());
 }
 
+void EditObjectDialog::position_editingFinished()
+{
+	if (theUndoPtr != NULL)
+		theUndoPtr->pushYourself();
+	theUndoPtr = NULL;
+}
+
 void EditObjectDialog::position_valueChanged (double )
 {
 	if (theUndoPtr == NULL)
@@ -99,11 +106,17 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 	disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
+	disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	
 	// if we just changed the base object and there's still an undo pointer
-	// around, we want to push this one to the stack...
-	if (aBaseObjectPtr!=theBOPtr && theUndoPtr!=NULL)
+	// around, it will not have any interesting changes
+	if (theUndoPtr!=NULL)
 	{
-		theUndoPtr->pushYourself();
+		delete theUndoPtr;
 		theUndoPtr = NULL;
 	}
 
@@ -160,6 +173,13 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 	connect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	connect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
+	connect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	
+	
 	if (aBaseObjectPtr==NULL)
 		setEnabled(false);
 	else
