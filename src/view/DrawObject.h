@@ -248,10 +248,8 @@ protected:
 private:
 	virtual void initAttributes ( ) ;
 
-	// TODO: REMOVE ALL BELOW Undo*Commands once UndoObjectChange is complete...
+	// TODO: REMOVE UndoMoveCommand once UndoObjectChange is complete...
 	// all below friends are needed for Undoing actions
-	friend class UndoResizeCommand;    // resize
-	friend class UndoManualCommand;    // resize/rotate/move by EditObjectDialog
 	friend class UndoDeleteCommand;    // delete
 	friend class UndoInsertCommand;
 	friend class UndoMoveCommand;

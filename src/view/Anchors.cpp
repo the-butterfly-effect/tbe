@@ -20,7 +20,6 @@
 #include "ImageStore.h"
 #include "DrawObject.h"
 #include "BaseObject.h"
-#include "UndoResizeCommand.h"
 #include "UndoDeleteCommand.h"
 
 #include <QGraphicsScene>

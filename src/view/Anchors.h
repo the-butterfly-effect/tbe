@@ -30,7 +30,6 @@
 class Anchor;
 class QGraphicsScene;
 class QUndoCommand;
-class UndoResizeCommand;
 class UndoObjectChange;
 
 
