@@ -75,7 +75,8 @@ public:
 		PROPERTY,
 		RESIZE,
 		ROTATE,
-		DIALOG
+		DIALOG,
+		ID
 	};
 
 	/** Factory Method
@@ -141,6 +142,8 @@ public:
 	/// see full-featured update, will only update a property, though
 	void update(const QString& aKey, const QString& aValue);
 
+	/// see full-featured update, will only update the ID, though
+	void update(const QString& anID);
 
 
 	/// implemented from QUndoCommand, set the object to "new" state
@@ -169,6 +172,9 @@ private:
 	Vector      theOldSize;
 	Vector      theLastGoodSize;
 	Vector      theNewSize;
+
+	QString		theOldID;
+	QString		theNewID;
 
 	bool isNowColliding;
 };

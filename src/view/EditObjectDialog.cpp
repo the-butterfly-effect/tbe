@@ -47,8 +47,12 @@ EditObjectDialog::~EditObjectDialog()
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
-	// FIXME/TODO: put this into an UNDO
-	theBOPtr->setID(ui.lineEditID->text().trimmed());
+	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(
+				UndoObjectChange::ID, theBOPtr, Vector(0,0));
+	QString myID = ui.lineEditID->text().trimmed();
+	theBOPtr->setID(myID);
+	myUndoPtr->update(myID);
+	myUndoPtr->pushYourself();
 }
 
 void EditObjectDialog::position_editingFinished()

@@ -39,6 +39,9 @@ UndoObjectChange::UndoObjectChange (BaseObject* aBaseObjectPtr)
 	
 	theOldProperties = theBaseObjectPtr->theProps;
 	theNewProperties = theOldProperties;
+
+	theOldID = theBaseObjectPtr->theID;
+	theNewID = theBaseObjectPtr->theID;
 }
 
 UndoObjectChange::~UndoObjectChange ( )
@@ -78,6 +81,13 @@ bool UndoObjectChange::pushYourself(void)
 	QString myUndoString;
 
 	// let's figure out what type of undo we are...
+
+	// did we change ID?
+	if (theNewID != theOldID)
+	{
+		myUndoString = QObject::tr("ID change on %1").arg(theBaseObjectPtr->getName());
+		goto letspush;
+	}
 
 	// did we change properties?
 	if (theNewProperties != theOldProperties)
@@ -132,6 +142,7 @@ void UndoObjectChange::redo ()
 	theBaseObjectPtr->setOrigCenter(myNewPosition);
 
 	theBaseObjectPtr->theProps = theNewProperties;
+	theBaseObjectPtr->theID    = theNewID;
 
 	theBaseObjectPtr->reset();
 
@@ -181,6 +192,11 @@ void UndoObjectChange::update(const QString& aKey, const QString& aValue)
 	theNewProperties.setProperty(aKey, aValue);
 }
 
+void UndoObjectChange::update(const QString& anID)
+{
+	theNewID = anID;
+}
+
 void UndoObjectChange::undo ()
 {
 	theBaseObjectPtr->setTheWidth(theOldSize.dx);
@@ -190,6 +206,7 @@ void UndoObjectChange::undo ()
 	theBaseObjectPtr->setOrigCenter(theOldCenter);
 
 	theBaseObjectPtr->theProps = theOldProperties;
+	theBaseObjectPtr->theID    = theOldID;
 
 	theBaseObjectPtr->reset();
 
