@@ -51,15 +51,15 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	AnchorType myMode = NONE;
 	if ( (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE) || theIsLevelEditor)
 		myMode = RESIZEHORI;
-	theAnchorList.push_back(new Anchor(myMode, Anchor::RIGHT, this));
-	theAnchorList.push_back(new Anchor(myMode, Anchor::LEFT, this));
+	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::RIGHT, this));
+	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::LEFT, this));
 
 	if ( (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE) || theIsLevelEditor)
 		myMode = RESIZEVERTI;
 	else
 		myMode = NONE;
-	theAnchorList.push_back(new Anchor(myMode, Anchor::TOP, this));
-	theAnchorList.push_back(new Anchor(myMode, Anchor::BOTTOM, this));
+	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::TOP, this));
+	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::BOTTOM, this));
 
 	if (myBOPtr->isRotatable() || theIsLevelEditor)
 		myMode = ROTATE;
@@ -140,8 +140,7 @@ const int Anchor::theIconSize = 16;
 Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
-		  theIndex(anIndex),
-		  theOldAngle(0), theUndoRPtr(NULL)
+		  theIndex(anIndex), theOldAngle(0)
 {
 	// get the QSvgRenderer for my icon
 	switch (aDirection)
@@ -226,11 +225,6 @@ int Anchor::getDY()
 void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
 	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
-
-	if(theUndoRPtr==NULL)
-		return;
-	theUndoRPtr->update(theIndex, event->scenePos());
-	theParentPtr->updatePosition();
 }
 
 void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* /* event */)
@@ -241,31 +235,11 @@ void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* /* event */)
 	if (theDirection==Anchors::NONE)
 		return;
 
-	// reset cursor to hori/verti/rotate
-	// and setup the corresponding undo class
-	assert(theUndoRPtr==NULL);
-	switch (theIndex)
+	if (theIndex == TOPLEFTLEFT)
 	{
-		case RIGHT:
-		case LEFT:
-			setCursor(Qt::SizeHorCursor);
-			theUndoRPtr = new UndoResizeCommand(theParentPtr->getBOPtr());
-			break;
-		case TOP:
-		case BOTTOM:
-			setCursor(Qt::SizeVerCursor);
-			theUndoRPtr = new UndoResizeCommand(theParentPtr->getBOPtr());
-			break;
-		case TOPLEFTLEFT:
-		{
-			// the DELETE button
-			UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theParentPtr->getBOPtr());
-			myCommandPtr->push();
-			break;
-		}
-		default:
-			assert(false);
-			break;
+		// the DELETE button
+		UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theParentPtr->getBOPtr());
+		myCommandPtr->push();
 	}
 }
 
@@ -275,35 +249,6 @@ void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 
 	// delete has no release event, clicking is enough.
 	// so that one is missing here...
-
-	if (theUndoRPtr==NULL)
-		return;
-
-	// are we currently in a collision?
-	// in that case, go back to last known good
-	if (theUndoRPtr->isGood()==false)
-	{
-		DEBUG4("Reverting to last known non-colliding position\n");
-		theUndoRPtr->revertToLastGood();
-	}
-
-	// there was actual resizing???
-	if (theUndoRPtr->isChanged())
-	{
-		DEBUG5("PUSHED UNDO\n");
-		theParentPtr->pushUndo(theUndoRPtr);
-		theUndoRPtr = NULL;
-	}
-	else
-	{
-		DEBUG5("CLEARED UNDO\n");
-		if (theUndoRPtr)
-		{
-			theUndoRPtr->undo();
-			delete theUndoRPtr;
-		}
-		theUndoRPtr = NULL;
-	}
 }
 
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
@@ -322,6 +267,112 @@ void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 	theOldAngle=-myC.angle;
 }
 
+
+// #########################################################################
+// #########################################################################
+// #########################################################################
+// #########################################################################
+
+ResizeAnchor::ResizeAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
+		: Anchor(aDirection, anIndex, aParent), theUndoResizePtr(NULL)
+{
+}
+
+void ResizeAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
+{
+	DEBUG5("ResizeAnchor::mouseMoveEvent(%d)\n", event->type());
+
+	if(theUndoResizePtr==NULL)
+		return;
+
+	QPointF aCursorPos = event->scenePos();
+	Position myOldCenter = theUndoResizePtr->getOldPosition();
+	Position myNewCenter;
+	Vector myOldSize = theUndoResizePtr->getOldSize();
+	Vector myNewSize;
+
+	// Essentially, we're going to project the current cursor position
+	// across the axis through the object center and the anchor
+	// the length of the projection is used to calculate the new
+	// width of the object.
+	// The goal is to keep the anchor at the other end of the object at the
+	// same position.
+
+	Vector myVectorToCenter = Vector(aCursorPos) - myOldCenter.toVector();
+	float myAngle = myVectorToCenter.toAngle();
+	float myAxisAngle = theIndex*PI/4 + myOldCenter.angle;
+	float myLengthAcrossAxis = myVectorToCenter.length()*cos(myAngle-myAxisAngle);
+
+	// This works - even for larger angles!
+	if (theIndex==RIGHT || theIndex==LEFT)
+	{
+		float myOldWidth = myOldSize.dx/2.0;
+		if (myLengthAcrossAxis+myOldWidth < 0.1)
+			return;
+		myNewSize = Vector(myLengthAcrossAxis+myOldWidth, myOldSize.dy);
+		if (theIndex==Anchor::RIGHT)
+			myNewCenter = myOldCenter + Vector(0.5*(myLengthAcrossAxis-myOldWidth),0);
+		if (theIndex==Anchor::LEFT)
+			myNewCenter = myOldCenter + Vector(-0.5*(myLengthAcrossAxis-myOldWidth),0);
+	}
+	if (theIndex==TOP || theIndex==BOTTOM)
+	{
+		float myOldHeight= myOldSize.dy/2.0;
+		if (myLengthAcrossAxis+myOldHeight < 0.1)
+			return;
+		myNewSize = Vector(myOldSize.dx, myLengthAcrossAxis+myOldHeight);
+		if (theIndex==Anchor::TOP)
+			myNewCenter = myOldCenter + Vector(0, 0.5*(myLengthAcrossAxis-myOldHeight));
+		if (theIndex==Anchor::BOTTOM)
+			myNewCenter = myOldCenter + Vector(0, -0.5*(myLengthAcrossAxis-myOldHeight));
+	}
+
+	theUndoResizePtr->update(myNewCenter, myNewSize);
+//	theParentPtr->updatePosition();
+}
+
+void ResizeAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+{
+	DEBUG5("ResizeAnchor::mousePressEvent\n");
+
+	// only active this if there are real icons to be had
+	if (theDirection==Anchors::NONE)
+		return;
+
+	// reset cursor to hori/verti/rotate
+	// and setup the corresponding undo class
+	assert(theUndoResizePtr==NULL);
+
+	if (theIndex==RIGHT || theIndex==LEFT)
+		setCursor(Qt::SizeHorCursor);
+	if (theIndex==TOP   || theIndex==BOTTOM)	
+		setCursor(Qt::SizeVerCursor);
+	
+	// store this position - calculate differential angles later
+	theUndoResizePtr = UndoObjectChange::createUndoObject(
+			UndoObjectChange::RESIZE, theParentPtr->getBOPtr(), event->scenePos());
+}
+
+void ResizeAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
+{
+	DEBUG5("ResizeAnchor::mouseReleaseEvent\n");
+
+	if (theUndoResizePtr==NULL)
+		return;
+
+	if (theUndoResizePtr->pushYourself()==true)
+	{
+		DEBUG5("PUSHED UNDO\n");
+	}
+	else
+	{
+		DEBUG5("CLEARED UNDO\n");
+		theUndoResizePtr->undo();
+		delete theUndoResizePtr;
+	}
+	theUndoResizePtr = NULL;
+
+}
 
 // #########################################################################
 // #########################################################################

@@ -89,6 +89,13 @@ public:
 											   BaseObject* aBOPtr,
 											   const Vector & aHotspot );
 
+
+	const Position& getOldPosition(void) const
+	{ return theOldCenter; }
+
+	const Vector&   getOldSize(void) const
+	{ return theOldSize; }
+
 	/**
 	 * @return bool
 	 */
@@ -144,7 +151,6 @@ public:
 
 	/// see full-featured update, will only update the ID, though
 	void update(const QString& anID);
-
 
 	/// implemented from QUndoCommand, set the object to "new" state
 	/// this will trigger a redraw for all affected areas

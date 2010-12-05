@@ -138,12 +138,9 @@ protected:
 	Anchors::AnchorType theDirection;
 	AnchorPosition theIndex;
 	static const int theIconSize;
-	qreal theDelta;
 
 	qreal theOffset;
 	qreal theOldAngle;
-
-	UndoResizeCommand* theUndoRPtr;
 
 	int getDX();
 	int getDY();
@@ -154,6 +151,46 @@ protected:
 };
 
 
+
+/// ResizeAnchor is a single item used by the Anchors class
+class ResizeAnchor : public Anchor
+{
+	Q_OBJECT
+
+public:
+	/// Constructor
+	ResizeAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent);
+
+public slots:
+	/** overridden from QGraphicsItem
+	 *  if the user drags the object around, this even will be called for each pixel.
+	 *  let's actually adjust the coordinates!!!
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this Anchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * event );
+
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this Anchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
+
+private:
+	UndoObjectChange* theUndoResizePtr;
+
+	// kill copy constructor & assignment operator
+	ResizeAnchor(const ResizeAnchor&);
+	const ResizeAnchor& operator=(const ResizeAnchor&);
+};
 
 
 /// RotateAnchor is a single item used by the Anchors class

@@ -33,7 +33,6 @@ HEADERS += src/tbe_global.h \
     src/base/UndoInsertCommand.h \
     src/base/UndoMoveCommand.h \
     src/base/UndoObjectChange.h \
-    src/base/UndoResizeCommand.h \
     src/model/AbstractBall.h \
     src/model/BalloonCactus.h \
     src/model/BaseJoint.h \
@@ -82,7 +81,6 @@ SOURCES += src/main.cpp \
     src/base/UndoInsertCommand.cpp \
     src/base/UndoMoveCommand.cpp \
     src/base/UndoObjectChange.cpp \
-    src/base/UndoResizeCommand.cpp \
     src/model/AbstractBall.cpp \
     src/model/BalloonCactus.cpp \
     src/model/BaseJoint.cpp \
