@@ -277,3 +277,17 @@ void PropertyList::setProperty(const QString& aKey, const float aValue)
 
 void PropertyList::setProperty(const QString& aKey, const QString& aValue)
 { theProperties[aKey] = aValue; }
+
+
+
+bool operator==(const PropertyList& p1, const PropertyList& p2)
+{
+	// thanks to QMap<> for already including operator==
+	return p1.theProperties == p2.theProperties;
+}
+
+bool operator!=(const PropertyList& p1, const PropertyList& p2)
+{
+	// thanks to QMap<> for already including operator!=
+	return p1.theProperties != p2.theProperties;
+}

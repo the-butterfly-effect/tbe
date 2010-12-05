@@ -19,6 +19,7 @@
 #include "BaseObjectSerializer.h"
 #include <QDomElement>
 
+#include <cstdio>
 
 // these are all declared in Level.cpp
 extern const char* theObjectString;

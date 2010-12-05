@@ -176,7 +176,14 @@ private:
 	PropertyMap theProperties;
 
 	PropertyMap theDefaultProperties;
+
+	friend bool operator==(const PropertyList& p1, const PropertyList& p2);
+	friend bool operator!=(const PropertyList& p1, const PropertyList& p2);
 };
+
+/// compare two propertylists
+bool operator==(const PropertyList& p1, const PropertyList& p2);
+bool operator!=(const PropertyList& p1, const PropertyList& p2);
 
 
 class Property

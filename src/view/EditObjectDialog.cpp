@@ -54,7 +54,11 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 void EditObjectDialog::position_editingFinished()
 {
 	if (theUndoPtr != NULL)
+	{
+		// just to make sure the latest change also got in...
+		position_valueChanged(0);
 		theUndoPtr->pushYourself();
+	}
 	theUndoPtr = NULL;
 }
 
@@ -89,8 +93,11 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 // I think this is due to recursive calling propertyCellChanged...
 //	ui.tableWidget->item(aRow, 0)->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
 
-	// FIXME/TODO: put this into an UNDO
+	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(
+				UndoObjectChange::PROPERTY, theBOPtr, Vector(0,0));
 	theBOPtr->theProps.setProperty(myKey, myValue);
+	myUndoPtr->update(myKey, myValue);
+	myUndoPtr->pushYourself();
 
 	// now we need to make sure everything is updated correctly...
 	theBOPtr->parseProperties();

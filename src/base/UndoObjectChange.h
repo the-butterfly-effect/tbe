@@ -40,11 +40,10 @@
   *   * position/size changes in EditObjectDialog
   *     User clicks on any of the spin controls. As long as the object
   *     remains selected, the EditObjectDialog will use a single Undo.
-  *     Upon unfocus or dialog close or any of the 3 above actions
-  *     (FIXME: ***or property change***), commit. No checks for validity
+  *     Upon unfocus of a spin control, commit. No checks for validity
   *     needed, we are in the Level Creator anyway.
   *   * property changes in EditObjectDialog (ticket:148)
-  *     After any commit of a property, commit.
+  *     After any change of a property, commit.
   */
 class UndoObjectChange : public QUndoCommand
 {
@@ -120,6 +119,8 @@ public:
 	  */
 	void revertToLastGood(void);
 
+
+
 	/** Update the Undo with new position/size data.
 	  * If in the new state the object is colliding, "last good" is
 	  * not updated.
@@ -133,7 +134,14 @@ public:
 	  *   Will trigger update of Anchors
 	  */
 	void update(const Position& aNewPos, const Vector& aNewSize);
+
+	/// see full-featured update, will only update the angle, though.
 	void update(qreal anAngle);
+
+	/// see full-featured update, will only update a property, though
+	void update(const QString& aKey, const QString& aValue);
+
+
 
 	/// implemented from QUndoCommand, set the object to "new" state
 	/// this will trigger a redraw for all affected areas
@@ -155,7 +163,8 @@ private:
 	Position	theLastGoodCenter;
 	Position	theNewCenter;
 
-	// TODO: propertylist old and new
+	PropertyList theOldProperties;
+	PropertyList theNewProperties;
 
 	Vector      theOldSize;
 	Vector      theLastGoodSize;
