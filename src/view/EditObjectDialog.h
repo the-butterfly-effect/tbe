@@ -46,8 +46,8 @@ public:
 	void readFromObject(BaseObject* aBaseObjectPtr);
 
 private slots:
-	void position_valueChanged    ( double aDouble );
-	void widthHeight_valueChanged ( double aDouble );
+	void position_editingFinished();
+	void position_valueChanged(double);
 	void propertyCellChanged ( int row, int column );
 	void lineEditID_valueChanged ( void );
 

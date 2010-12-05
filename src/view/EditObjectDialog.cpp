@@ -51,6 +51,13 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 	theBOPtr->setID(ui.lineEditID->text().trimmed());
 }
 
+void EditObjectDialog::position_editingFinished()
+{
+	if (theUndoPtr != NULL)
+		theUndoPtr->pushYourself();
+	theUndoPtr = NULL;
+}
+
 void EditObjectDialog::position_valueChanged (double )
 {
 	if (theUndoPtr == NULL)
@@ -63,6 +70,8 @@ void EditObjectDialog::position_valueChanged (double )
 			Vector(ui.spinBoxWidth->value(),
 				   ui.spinBoxHeight->value()));
 }
+
+
 
 void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 {
@@ -95,18 +104,25 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end
 	disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-	disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(widthHeight_valueChanged(double)));
-	disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(widthHeight_valueChanged(double)));
+	disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+	disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 	disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 	disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+
+	disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+
 	disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
 	// if we just changed the base object and there's still an undo pointer
-	// around, we want to push this one to the stack...
-	if (aBaseObjectPtr!=theBOPtr && theUndoPtr!=NULL)
+	// around, it will not have any interesting changes
+	if (theUndoPtr!=NULL)
 	{
-		theUndoPtr->pushYourself();
+		delete theUndoPtr;
 		theUndoPtr = NULL;
 	}
 
@@ -155,11 +171,18 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 		ui.tableWidget->resizeColumnToContents(0);
 	}
 
+	connect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+	connect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+
 	connect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
-	connect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(widthHeight_valueChanged(double)));
-	connect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(widthHeight_valueChanged(double)));
+	connect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+	connect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 	connect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
 	connect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
+
 	connect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	connect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
@@ -168,9 +191,4 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 	else
 		setEnabled(true);
 	return;
-}
-
-void EditObjectDialog::widthHeight_valueChanged (double )
-{
-	position_valueChanged(0);
 }

@@ -93,7 +93,11 @@ bool UndoObjectChange::pushYourself(void)
 	}
 
 	// did we move?
-	// TODO
+	if ((theNewCenter == theOldCenter) == false)
+	{
+		myUndoString = QObject::tr("Move %1").arg(theBaseObjectPtr->getName());
+		goto letspush;
+	}
 
 letspush:
 	setText(myUndoString);
