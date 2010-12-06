@@ -61,7 +61,7 @@ public:
 	void cancel (void);
 
 	/** if current position of inserted object is illegal, revert to
-	  * last "known good" (thanks to UndoMoveCommand).
+	  * last "known good" (thanks to UndoObjectChange).
 	  * @returns false if there is no last known good, true in all other cases
 	  * @post if false is returned, the BaseObject is deleted
 	  */

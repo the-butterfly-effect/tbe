@@ -26,7 +26,7 @@
 class BaseObject;
 class QUndoStack;
 class QUndoCommand;
-class UndoMoveCommand;
+class UndoObjectChange;
 class Anchors;
 class QSvgRenderer;
 class DrawWorld;
@@ -243,17 +243,15 @@ protected:
 	DrawWorld* theUndeleteDrawWorldPtr;
 
 	/// pointer to QUndoCommand for move
-	UndoMoveCommand* theUndoMovePtr;
+	UndoObjectChange* theUndoMovePtr;
+	QPointF theMoveHotspot;
 
 private:
 	virtual void initAttributes ( ) ;
 
-	// TODO: REMOVE UndoMoveCommand once UndoObjectChange is complete...
 	// all below friends are needed for Undoing actions
 	friend class UndoDeleteCommand;    // delete
 	friend class UndoInsertCommand;
-	friend class UndoMoveCommand;
-
 	friend class UndoObjectChange;		// the new Undo command
 
 

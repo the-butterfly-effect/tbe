@@ -30,7 +30,7 @@
 #include <QFocusEvent>
 #include <QUndoStack>
 
-#include "UndoMoveCommand.h"
+#include "UndoObjectChange.h"
 #include <cmath>
 
 static const int EXTRA_WHITESPACE = 2;
@@ -363,8 +363,14 @@ void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotsp
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
 	if (theUndoMovePtr==NULL)
 	{
-		Vector myPos(aHotspotPos);
-		theUndoMovePtr = new UndoMoveCommand(theBaseObjectPtr, 1/theScale*myPos);
+		// a HotspotPos is in item coordinates, we need scene coords
+		Vector myPos(aHotspotPos.x(), -aHotspotPos.y());
+		myPos = 1/theScale*myPos;
+		myPos = myPos.rotate(theBaseObjectPtr->getOrigCenter().angle);
+		theUndoMovePtr = UndoObjectChange::createUndoObject(
+				UndoObjectChange::MOVE,
+				theBaseObjectPtr, myPos);
+		theMoveHotspot = QPointF(myPos.dx, -myPos.dy);
 		if (theAnchorsPtr)
 		{
 			delete theAnchorsPtr;
@@ -372,14 +378,12 @@ void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotsp
 		}
 	}
 
-	checkForCollision();
-
 	// do not allow object to be moved through X and Y axes to negative coords
-	if ( (aScenePos.x()-theUndoMovePtr->getHotSpot().dx-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
-		 && (aScenePos.y()+theUndoMovePtr->getHotSpot().dy+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
+	if ( (aScenePos.x()-theMoveHotspot.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
+		 && (aScenePos.y()-theMoveHotspot.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
 	{
-		theUndoMovePtr->setNewPosition(aScenePos, (theCrossPtr==NULL) );
-		theUndoMovePtr->redo();
+printf("update(%f,%f)\n", aScenePos.x(), aScenePos.y());
+		theUndoMovePtr->update( Vector(aScenePos-theMoveHotspot) );
 	}
 }
 
@@ -391,13 +395,16 @@ void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
 	if (theUndoMovePtr == NULL)
 		return;
 
-	theUndoMovePtr->revertIfNeeded();
-
-	// is the position any different?
-	if (theUndoMovePtr->isChanged())
-		pushUndo(theUndoMovePtr);
+	if (theUndoMovePtr->pushYourself()==true)
+	{
+		DEBUG5("PUSHED UNDO\n");
+	}
 	else
+	{
+		DEBUG5("CLEARED UNDO\n");
+		theUndoMovePtr->undo();
 		delete theUndoMovePtr;
+	}
 	theUndoMovePtr = NULL;
 
 	QGraphicsItem::mouseReleaseEvent(event);

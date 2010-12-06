@@ -70,8 +70,6 @@ UndoObjectChange::createUndoObject (UndoType anUndoType,
 
 	UndoObjectChange* myPtr = new UndoObjectChange(aBOPtr);
 
-	// for anUndoType == DIALOG: nothing to do
-
 	return myPtr;
 }
 
@@ -168,6 +166,13 @@ void UndoObjectChange::requestSceneRefresh(void)
 void UndoObjectChange::update (qreal aNewAngle)
 {
 	theNewCenter.angle = aNewAngle;
+	update(theNewCenter, theNewSize);
+}
+
+void UndoObjectChange::update(const Vector& aNewPos)
+{
+	theNewCenter.x = aNewPos.dx;
+	theNewCenter.y = aNewPos.dy;
 	update(theNewCenter, theNewSize);
 }
 

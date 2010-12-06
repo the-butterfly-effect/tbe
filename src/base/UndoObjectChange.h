@@ -152,6 +152,9 @@ public:
 	/// see full-featured update, will only update the ID, though
 	void update(const QString& anID);
 
+	/// see full-featured update, will only update the Position x and y, though
+	void update(const Vector& aNewPos);
+
 	/// implemented from QUndoCommand, set the object to "new" state
 	/// this will trigger a redraw for all affected areas
 	virtual void redo ();
