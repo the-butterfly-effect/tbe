@@ -29,9 +29,8 @@
 // forward declarations
 class Anchor;
 class QGraphicsScene;
-class QUndoCommand;
 class UndoObjectChange;
-
+class DetonatorBox;
 
 /// the Anchors class manages the resize/rotate/delete anchors around a selected DrawObject
 class Anchors : public QObject
@@ -50,7 +49,7 @@ public:
 		RESIZEHORI,
 		RESIZEVERTI,
 		ROTATE,
-		DELETE
+		BUTTON
 	};
 
 	BaseObject*   getBOPtr(void) const;
@@ -69,7 +68,13 @@ public:
 	static void clearEditObjectDialogPtr(void)
 	{ delete theObjectDialogPtr; theObjectDialogPtr = NULL; }
 
+protected slots:
+	void delete_clicked();
+	void editObject_clicked();
+	void setPhoneNr_clicked();
+
 private:
+	DetonatorBox* theDetBoxPtr;
 	DrawObject* theDrawObjectPtr;
 
 	typedef QList<Anchor*> AnchorList;
@@ -100,43 +105,24 @@ public:
 		BOTTOMLEFT  = 5,
 		BOTTOM      = 6,
 		BOTTOMRIGHT = 7,
-		TOPLEFTLEFT = 8
+		BUTTONBAR   = 8
 	};
 
 	/// Constructor
 	Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent);
 
 public slots:
-	/** overridden from QGraphicsItem
-	 *  if the user drags the object around, this even will be called for each pixel.
-	 *  let's actually adjust the coordinates!!!
-	 *
-	 *  @param event the even to handle
-	 */
-	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
-
-	/** overridden from QGraphicsItem
-	 *  we want to know when the user clicks on this Anchor
-	 *
-	 *  @param event the even to handle
-	 */
-	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * event );
-
-	/** overridden from QGraphicsItem
-	 *  we want to know when the user clicks on this Anchor
-	 *
-	 *  @param event the even to handle
-	 */
-	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
-
 	/// slot that tells the position may have changed - called by the Anchors class.
 	virtual void updatePosition(Position myC, qreal myW, qreal myH);
 
 protected:
+	void scaleIcon(void);
+
 	Anchors* theParentPtr;
 	Anchors::AnchorType theDirection;
 	AnchorPosition theIndex;
 	static const int theIconSize;
+	int theButtonIndex;
 
 	qreal theOffset;
 	qreal theOldAngle;
@@ -234,6 +220,33 @@ private:
 	// kill copy constructor & assignment operator
 	RotateAnchor(const RotateAnchor&);
 	const RotateAnchor& operator=(const RotateAnchor&);
+};
+
+
+/// ButtonAnchor is a single item used by the Anchors class
+class ButtonAnchor : public Anchor
+{
+	Q_OBJECT
+
+public:
+	/// Constructor
+	ButtonAnchor(Anchors* aParent, const QString& anIconName, int aButtonIndex);
+
+signals:
+	void clicked(void);
+
+public slots:
+	/** overridden from QGraphicsItem
+	 *  we want to know when the user clicks on this ButtonAnchor
+	 *
+	 *  @param event the even to handle
+	 */
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent * event );
+
+private:
+	// kill copy constructor & assignment operator
+	ButtonAnchor(const ButtonAnchor&);
+	const ButtonAnchor& operator=(const ButtonAnchor&);
 };
 
 

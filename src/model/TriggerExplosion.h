@@ -24,6 +24,8 @@
 #include "PolyObject.h"
 #include "World.h"
 
+#include <QStringList>
+
 class DetonatorBoxHandle;
 class ExplosionSplatter;
 
@@ -61,6 +63,10 @@ public:
 	/// overridden from BaseObject to allow for the handle
 	virtual void deletePhysicsObject(void);
 
+	/// @returns a list of all phone numbers found in the scene
+	/// note that all IDs starting with a number are considered phone numbers
+	QStringList getAllPhoneNumbers(void);
+
 	/// overridden from BaseObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
 	virtual int getImageIndex(void)
@@ -76,6 +82,11 @@ public:
 	/// overridden from RectObject because this class wants to register for
 	/// callbacks and needs to reset its state machine
 	virtual void reset(void);
+
+	/// Set the phone number to dial when triggered
+	/// Technically speaking, any ID would do here...
+	/// @param aPhoneNumber string with an existing ID
+	void setPhoneNumber(const QString& aPhoneNumber);
 
 	/// called by theDetonatorBoxHandle when triggered
 	void setTriggered(void);
@@ -113,6 +124,9 @@ private:
 
 	/// pointer to the handle (separate object)
 	DetonatorBoxHandle* theHandleObjectPtr;
+
+	/// the phone number to "dial" when triggered
+	QString thePhoneNumber;
 
 private:
 	// disable copy constructor / assignment operator

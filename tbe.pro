@@ -53,6 +53,7 @@ HEADERS += src/tbe_global.h \
     src/model/World.h \
     src/view/Anchors.h \
     src/view/ChooseLevel.h \
+    src/view/ChoosePhoneNumber.h \
     src/view/DrawAbstractBall.h \
     src/view/DrawObject.h \
     src/view/DrawPolyObject.h \
@@ -100,6 +101,7 @@ SOURCES += src/main.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \
+    src/view/ChoosePhoneNumber.cpp \
     src/view/DrawAbstractBall.cpp \
     src/view/DrawObject.cpp \
     src/view/DrawPolyObject.cpp \
@@ -125,7 +127,8 @@ FORMS = src/view/MainWindow.ui \
     src/view/EditObjectDialog.ui \
     src/view/LevelInfoDialog.ui \
     src/view/GoalEditor.ui \
-    src/view/PostItEditor.ui
+    src/view/PostItEditor.ui \
+    src/view/ChoosePhoneNumber.ui
 DISTFILES = README \
     AUTHORS \
     COPYING

@@ -96,6 +96,12 @@ void DetonatorBox::deletePhysicsObject(void)
 	RectObject::deletePhysicsObject();
 }
 
+QStringList DetonatorBox::getAllPhoneNumbers(void)
+{
+	QRegExp myRX("^\\d.*");
+	assert(theWorldPtr!=NULL);
+	return theWorldPtr->getAllIDs().filter(myRX);
+}
 
 DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 {

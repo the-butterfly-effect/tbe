@@ -22,6 +22,10 @@
 #include "BaseObject.h"
 #include "UndoDeleteCommand.h"
 
+// for DetonatorBox
+#include "TriggerExplosion.h"
+#include "ChoosePhoneNumber.h"
+
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
@@ -69,22 +73,40 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMLEFT, this));
 	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMRIGHT, this));
 
-	// the DELETE button is displayed left of topleft
-	theAnchorList.push_back(new Anchor(DELETE, Anchor::TOPLEFTLEFT, this));
+	//// the Buttons are displayed left of topleft and then down
 
+	// delete button
+	ButtonAnchor* myBAPtr = new ButtonAnchor(this, "ActionDelete", 0);
+	connect(myBAPtr, SIGNAL(clicked()), this, SLOT(delete_clicked()));
+	theAnchorList.push_back(myBAPtr);
+
+	int myButtonIndex=1;
+
+	// object edit button (in level creator only)
 	if (theIsLevelEditor)
 	{
-		if (theObjectDialogPtr == NULL)
-		{
-			theObjectDialogPtr = new EditObjectDialog(myBOPtr, QApplication::activeWindow());
-			theObjectDialogPtr->show();
-		}
-		else
-		{
-			theObjectDialogPtr->readFromObject(myBOPtr);
-			theObjectDialogPtr->show();
-		}
+		myBAPtr = new ButtonAnchor(this, "IconModified", myButtonIndex++);
+		connect(myBAPtr, SIGNAL(clicked()), this, SLOT(editObject_clicked()));
+		theAnchorList.push_back(myBAPtr);
 	}
+
+	// set phone number (for DetonatorBox only)
+	// FIXME - when this list is increasing,
+	// we should move it to the BaseObject class at some point
+	theDetBoxPtr = dynamic_cast<DetonatorBox*>(myBOPtr);
+	if (theDetBoxPtr!=NULL)
+	{
+		myBAPtr = new ButtonAnchor(this, "IconSetPhone", myButtonIndex++);
+		connect(myBAPtr, SIGNAL(clicked()), this, SLOT(setPhoneNr_clicked()));
+		theAnchorList.push_back(myBAPtr);
+	}
+
+	if (theObjectDialogPtr != NULL)
+	{
+		theObjectDialogPtr->readFromObject(myBOPtr);
+		theObjectDialogPtr->show();
+	}
+
 	updatePosition();
 }
 
@@ -97,6 +119,24 @@ Anchors::~Anchors()
 		theAnchorList.pop_front();
 	}
 	theDrawObjectPtr->focusRemove(false);
+}
+
+
+void Anchors::delete_clicked()
+{
+	// the DELETE button
+	UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(getBOPtr());
+	myCommandPtr->push();
+}
+
+void Anchors::editObject_clicked()
+{
+	// the EDITOBJECT button
+	if (theObjectDialogPtr == NULL)
+	{
+		theObjectDialogPtr = new EditObjectDialog(getBOPtr(), QApplication::activeWindow());
+		theObjectDialogPtr->show();
+	}
 }
 
 BaseObject*   Anchors::getBOPtr(void) const
@@ -119,6 +159,35 @@ QGraphicsScene* Anchors::getScenePtr()
 	return theDrawObjectPtr->scene();
 }
 
+void Anchors::setPhoneNr_clicked()
+{
+	// cool, now we have to:
+	// 1) figure out all phone numbers in the scene
+	DEBUG4("void Anchors::setPhoneNr_clicked for %p()\n", theDetBoxPtr);
+	assert(theDetBoxPtr!=NULL);
+	QStringList myPhoneList = theDetBoxPtr->getAllPhoneNumbers();
+
+	// 2) display a combobox with those numbers
+	for(int i=0; i<myPhoneList.size();i++)
+	{
+		printf("phone: '%s'\n", ASCII(myPhoneList[i]));
+	}
+	QGraphicsView* myViewPtr = theDrawObjectPtr->scene()->views()[0];
+	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myViewPtr);
+	myDialogPtr->setAutoFillBackground(true);
+	QSize myDialogSize = myDialogPtr->size();
+	QSize myViewSize = myViewPtr->size();
+	myDialogPtr->move((myViewSize.width()-myDialogSize.width())/2,
+				   (myViewSize.height()-myDialogSize.height())/2);
+	myDialogPtr->show();
+	myDialogPtr->show();
+
+	// 3) once the user chooses, set that phone number
+	//
+	// the good news: 1) can be done by DetonatorBox, which we know the ptr to...
+}
+
+
 void Anchors::updatePosition()
 {
 	Position myC = theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter();
@@ -139,7 +208,7 @@ const int Anchor::theIconSize = 16;
 Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
 		: theParentPtr(aParent),
 		  theDirection(aDirection),
-		  theIndex(anIndex), theOldAngle(0)
+		  theIndex(anIndex), theButtonIndex(0), theOldAngle(0)
 {
 	// get the QSvgRenderer for my icon
 	switch (aDirection)
@@ -156,11 +225,17 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 		case Anchors::ROTATE:
 			setSharedRenderer(ImageStore::getRenderer("ActionRotate"));
 			break;
-		case Anchors::DELETE:
-			setSharedRenderer(ImageStore::getRenderer("ActionDelete"));
+		case Anchors::BUTTON:
+			// will be handled in the constructor
 			break;
 	}
 
+	if (aDirection!=Anchors::BUTTON)
+		scaleIcon();
+}
+
+void Anchor::scaleIcon()
+{
 	// calculate how to scale my icon to look like it should
 	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
 	DEBUG5("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
@@ -188,7 +263,7 @@ int Anchor::getDX()
 		case BOTTOM:
 			return 0;
 
-		case TOPLEFTLEFT:
+		case BUTTONBAR:
 		case TOPLEFT:
 		case LEFT:
 		case BOTTOMLEFT:
@@ -208,7 +283,7 @@ int Anchor::getDY()
 		case TOPRIGHT:
 		case TOP:
 		case TOPLEFT:
-		case TOPLEFTLEFT:
+		case BUTTONBAR:
 			return 1;
 
 		case BOTTOMRIGHT:
@@ -220,50 +295,31 @@ int Anchor::getDY()
 }
 
 
-
-void Anchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
-{
-	DEBUG5("Anchor::mouseMoveEvent(%d)\n", event->type());
-}
-
-void Anchor::mousePressEvent ( QGraphicsSceneMouseEvent* /* event */)
-{
-	DEBUG5("Anchor::mousePressEvent\n");
-
-	// only active this if there are real icons to be had
-	if (theDirection==Anchors::NONE)
-		return;
-
-	if (theIndex == TOPLEFTLEFT)
-	{
-		// the DELETE button
-		UndoDeleteCommand* myCommandPtr = new UndoDeleteCommand(theParentPtr->getBOPtr());
-		myCommandPtr->push();
-	}
-}
-
-void Anchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
-{
-	DEBUG5("Anchor::mouseReleaseEvent\n");
-
-	// delete has no release event, clicking is enough.
-	// so that one is missing here...
-}
-
 void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 {
 	// calculate the position of the center of the anchor
 	qreal myDX = (0.5*myW+1.5*theOffset) * static_cast<qreal>(getDX()) - theOffset;
 	qreal myDY = (0.5*myH+1.5*theOffset) * static_cast<qreal>(getDY()) + theOffset;
-	if (theIndex==Anchor::TOPLEFTLEFT)
+	if (theIndex==Anchor::BUTTONBAR)
+	{
 		myDX = myDX -2.5*theOffset;
+		myDY = myDY -2.5*theOffset*theButtonIndex;
+	}
 
-	myC = myC + Vector(myDX,myDY);
+	Position myD = myC + Vector(myDX,myDY);
 
-	// the final rotate/move
-	rotate((-myC.angle-theOldAngle)*180/3.14);
-	setPos(myC.x, -myC.y);
-	theOldAngle=-myC.angle;
+	// rotate the icon, note that rotate is incremental
+	rotate((-myD.angle-theOldAngle)*180/3.14);
+
+	// to make sure	that our buttons are inside the screen
+	if (theIndex==Anchor::BUTTONBAR && myD.x < 0.0)
+	{
+		myDX=-myDX;
+		myD = myC + Vector(myDX,myDY);
+	}
+
+	setPos(myD.x, -myD.y);
+	theOldAngle=-myD.angle;
 }
 
 
@@ -272,7 +328,8 @@ void Anchor::updatePosition(Position myC, qreal myW, qreal myH)
 // #########################################################################
 // #########################################################################
 
-ResizeAnchor::ResizeAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
+ResizeAnchor::ResizeAnchor(Anchors::AnchorType aDirection,
+						   AnchorPosition anIndex, Anchors* aParent)
 		: Anchor(aDirection, anIndex, aParent), theUndoResizePtr(NULL)
 {
 }
@@ -438,4 +495,26 @@ void RotateAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 	}
 	theUndoRotatePtr = NULL;
 
+}
+
+
+// #########################################################################
+// #########################################################################
+// #########################################################################
+// #########################################################################
+
+ButtonAnchor::ButtonAnchor(Anchors* aParent, const QString & anIconName,
+						   int aButtonIndex)
+		: Anchor(Anchors::BUTTON, Anchor::BUTTONBAR, aParent)
+
+{
+	theButtonIndex = aButtonIndex;
+	setSharedRenderer(ImageStore::getRenderer(anIconName));
+	scaleIcon();
+}
+
+void ButtonAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* /* event */)
+{
+	DEBUG5("ButtonAnchor::mousePressEvent\n");
+	emit clicked();
 }
