@@ -67,6 +67,11 @@ public:
 	/// note that all IDs starting with a number are considered phone numbers
 	QStringList getAllPhoneNumbers(void);
 
+	/// @returns the currently set phone number
+	/// this can be an empty string!
+	QString getCurrentPhoneNumber(void)
+	{ return thePhoneNumber; }
+
 	/// overridden from BaseObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
 	virtual int getImageIndex(void)
@@ -76,17 +81,18 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/// overridden from BaseObject in order to also move the handle
-	virtual void setOrigCenter ( Position new_var );
-
 	/// overridden from RectObject because this class wants to register for
 	/// callbacks and needs to reset its state machine
 	virtual void reset(void);
 
+	/// overridden from BaseObject in order to also move the handle
+	virtual void setOrigCenter ( Position new_var );
+
 	/// Set the phone number to dial when triggered
 	/// Technically speaking, any ID would do here...
 	/// @param aPhoneNumber string with an existing ID
-	void setPhoneNumber(const QString& aPhoneNumber);
+	void setPhoneNumber(const QString& aPhoneNumber)
+	{ thePhoneNumber = aPhoneNumber; }
 
 	/// called by theDetonatorBoxHandle when triggered
 	void setTriggered(void);
@@ -221,6 +227,10 @@ public:
 	/// requests removal of a splatter from the list
 	void removeMe(ExplosionSplatter* aDeadSplatterPtr);
 
+	/// called by DetonatorBox - triggers a state change from WAITING to ACTIVE
+	void trigger(void)
+	{ theTrigger = true; }
+
 protected:
 	/// call this function to suggest a state change to the Dynamite
 	/// @param aNewState the suggestion for a new state
@@ -241,6 +251,9 @@ private:
 
 	/// the state variable
 	States theState;
+
+	/// set to true when activated
+	bool theTrigger;
 
 	/// time that the the ACTIVE state started
 	qreal theActiveStartTime;

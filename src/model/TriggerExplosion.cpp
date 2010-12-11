@@ -30,9 +30,6 @@ public:
 };
 static DetonatorBoxObjectFactory theDetonatorBoxObjectFactory;
 
-// FIXME: part of temporary trigger mechanism
-static bool	theGlobalTrigger = false;
-
 
 const qreal  DetonatorBox::ACTIVATED_TIME = 0.5;
 const qreal  DetonatorBox::RINGING_TIME   = 0.5;
@@ -45,6 +42,9 @@ DetonatorBox::DetonatorBox()
 				"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
 				0.33, 0.35, 4.0, 0.0), theState(ARMED), theHandleObjectPtr(NULL)
 {
+	theProps.setDefaultPropertiesString(
+		Property::PHONENUMBER_STRING + QString(":/") );
+	theProps.property2String(Property::PHONENUMBER_STRING, &thePhoneNumber);
 }
 
 DetonatorBox::~DetonatorBox()
@@ -112,8 +112,13 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 
 void DetonatorBox::notifyExplosions(void)
 {
-	// FIXME: part of temporary trigger mechanism
-	theGlobalTrigger = true;
+	BaseObject* myObjectToSignal = theWorldPtr->findObjectByID(thePhoneNumber);
+	Dynamite* myDynamite = dynamic_cast<Dynamite*>(myObjectToSignal);
+
+	// did the user select a wrong phone number?
+	if (myDynamite == NULL)
+		return;
+	myDynamite->trigger();
 }
 
 void DetonatorBox::reset(void)
@@ -132,8 +137,6 @@ void DetonatorBox::reset(void)
 	theActivationStartTime = 0.0f;
 	theState = ARMED;
 	theWorldPtr->registerCallback(this);
-	// FIXME: part of temporary trigger mechanism
-	theGlobalTrigger = false;
 }
 
 void DetonatorBox::setOrigCenter ( Position new_var )
@@ -270,7 +273,7 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	switch(theState)
 	{
 	case WAITING:
-		if (theGlobalTrigger)
+		if (theTrigger)
 		{
 			goToState(ACTIVE);
 			theActiveStartTime=aTotalTime;
@@ -379,6 +382,7 @@ void Dynamite::reset(void)
 	theActiveStartTime = 0.0f;
 	theState = WAITING;
 
+	theTrigger = false;
 	theSplatterList.clear();
 }
 

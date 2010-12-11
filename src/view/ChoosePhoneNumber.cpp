@@ -18,12 +18,30 @@
 
 #include "ChoosePhoneNumber.h"
 #include "ui_ChoosePhoneNumber.h"
+#include "TriggerExplosion.h"
 
-ChoosePhoneNumber::ChoosePhoneNumber(QWidget *parent) :
+
+ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent) :
     QWidget(parent),
-    m_ui(new Ui::ChoosePhoneNumber)
+	m_ui(new Ui::ChoosePhoneNumber),
+	theDBPtr(aBoxPtr)
 {
     m_ui->setupUi(this);
+	assert(theDBPtr!=NULL);
+
+	// the top location gets the currently selected phone#.
+	// always insert it - even if it is an empty string!
+	QString myFirst = theDBPtr->getCurrentPhoneNumber();
+	m_ui->comboBox->insertItem(0, myFirst);
+
+	// all remaining possible phone numbers are inserted below
+	QStringList myPhoneList = theDBPtr->getAllPhoneNumbers();
+	int mySetNumber = myPhoneList.indexOf(myFirst);
+	myPhoneList.removeAt(mySetNumber);
+	m_ui->comboBox->insertItems(1, myPhoneList);
+
+	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(close()));
+	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 ChoosePhoneNumber::~ChoosePhoneNumber()
@@ -41,4 +59,24 @@ void ChoosePhoneNumber::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void ChoosePhoneNumber::on_comboBox_activated()
+{
+	// is the empty line selected?
+	QString myLine = m_ui->comboBox->currentText();
+	DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'\n", ASCII(myLine));
+	if (myLine.isEmpty())
+		return;
+
+	// if there is an empty entry in the list and it is not activated anymore,
+	// let's remove it!
+	if (m_ui->comboBox->itemText(0).isEmpty())
+		m_ui->comboBox->removeItem(0);
+
+	// let's notify the detonator box
+	assert(theDBPtr!=NULL);
+	theDBPtr->setPhoneNumber(myLine);
+
+	emit close();
 }

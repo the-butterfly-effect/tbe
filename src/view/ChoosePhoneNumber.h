@@ -21,6 +21,8 @@
 
 #include <QtGui/QWidget>
 
+class DetonatorBox;
+
 namespace Ui {
     class ChoosePhoneNumber;
 }
@@ -28,14 +30,19 @@ namespace Ui {
 class ChoosePhoneNumber : public QWidget {
     Q_OBJECT
 public:
-    ChoosePhoneNumber(QWidget *parent = 0);
+	ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent = 0);
     ~ChoosePhoneNumber();
+
+public slots:
+	/// all magic is done in this slot
+	void on_comboBox_activated();
 
 protected:
     void changeEvent(QEvent *e);
 
 private:
     Ui::ChoosePhoneNumber *m_ui;
+	DetonatorBox* theDBPtr;
 };
 
 #endif // CHOOSEPHONENUMBER_H

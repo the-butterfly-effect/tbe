@@ -94,6 +94,7 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	// FIXME - when this list is increasing,
 	// we should move it to the BaseObject class at some point
 	theDetBoxPtr = dynamic_cast<DetonatorBox*>(myBOPtr);
+	// TODO/FIXME: do not use this option in Level Creator mode!!!
 	if (theDetBoxPtr!=NULL)
 	{
 		myBAPtr = new ButtonAnchor(this, "IconSetPhone", myButtonIndex++);
@@ -161,30 +162,26 @@ QGraphicsScene* Anchors::getScenePtr()
 
 void Anchors::setPhoneNr_clicked()
 {
-	// cool, now we have to:
-	// 1) figure out all phone numbers in the scene
 	DEBUG4("void Anchors::setPhoneNr_clicked for %p()\n", theDetBoxPtr);
 	assert(theDetBoxPtr!=NULL);
-	QStringList myPhoneList = theDetBoxPtr->getAllPhoneNumbers();
 
-	// 2) display a combobox with those numbers
-	for(int i=0; i<myPhoneList.size();i++)
-	{
-		printf("phone: '%s'\n", ASCII(myPhoneList[i]));
-	}
+	// display a combobox with those numbers
 	QGraphicsView* myViewPtr = theDrawObjectPtr->scene()->views()[0];
-	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myViewPtr);
+	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(theDetBoxPtr, myViewPtr);
 	myDialogPtr->setAutoFillBackground(true);
 	QSize myDialogSize = myDialogPtr->size();
 	QSize myViewSize = myViewPtr->size();
-	myDialogPtr->move((myViewSize.width()-myDialogSize.width())/2,
-				   (myViewSize.height()-myDialogSize.height())/2);
-	myDialogPtr->show();
+	Position myC = theDrawObjectPtr->getBaseObjectPtr()->getOrigCenter();
+	QPoint myPosInView = myViewPtr->mapFromScene(myC.x,-myC.y);
+	if (myPosInView.x()+myDialogSize.width() > myViewSize.width())
+		myPosInView.setX(myViewSize.width() - 1.2*myDialogSize.width());
+	if (myPosInView.y()+myDialogSize.height() > myViewSize.height())
+		myPosInView.setY(myViewSize.height() - 1.2*myDialogSize.height());
+	myDialogPtr->move(myPosInView);
 	myDialogPtr->show();
 
-	// 3) once the user chooses, set that phone number
-	//
-	// the good news: 1) can be done by DetonatorBox, which we know the ptr to...
+	// The dialog will set the phone numbers itself, no need for us to worry
+	// it will also clean up after itself, I hope :-)
 }
 
 

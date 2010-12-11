@@ -244,6 +244,9 @@ public:
 	// used by Link
 	static const char* OVERLAP_STRING;		// % (the overlap is split between left&right)
 
+	// used by DetonatorBox
+	static const char* PHONENUMBER_STRING;  // e.g. 555-1234, used for "dial for boom"
+
 	// INTERNAL ONLY, this property indicates that
 	// this object shouldn't be serialized - it's a child object
 	static const char* ISCHILD_STRING;		// value doesn't matter, as long as it is nonempty
