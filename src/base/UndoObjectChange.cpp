@@ -20,6 +20,7 @@
 #include "DrawObject.h"
 #include "Anchors.h"
 
+#include <QGraphicsScene>
 #include <cassert>
 
 // Constructors/Destructors
@@ -36,6 +37,7 @@ UndoObjectChange::UndoObjectChange (BaseObject* aBaseObjectPtr)
 	
 	theOldSize = Vector(theBaseObjectPtr->getTheWidth(),theBaseObjectPtr->getTheHeight());
 	theLastGoodSize = theOldSize;
+	theNewSize = theOldSize;
 	
 	theOldProperties = theBaseObjectPtr->theProps;
 	theNewProperties = theOldProperties;
@@ -128,16 +130,8 @@ void UndoObjectChange::redo ()
 	theBaseObjectPtr->setTheWidth(theNewSize.dx);
 	theBaseObjectPtr->setTheHeight(theNewSize.dy);
 
-	// TODO/FIXME: This was copy/pasted from the original UndoRotateCommand
-	// but do we still need this code???
-		Position myNewPosition = theNewCenter;
-		// It is unfair: QT doesn't redraw if just the angle changed
-		// So we need to force a position change...
-		double myRandom = 0.0001 * qrand() / (double)RAND_MAX;
-		myNewPosition.x += myRandom;
-
-	theBaseObjectPtr->setTempCenter(myNewPosition);
-	theBaseObjectPtr->setOrigCenter(myNewPosition);
+	theBaseObjectPtr->setTempCenter(theNewCenter);
+	theBaseObjectPtr->setOrigCenter(theNewCenter);
 
 	theBaseObjectPtr->theProps = theNewProperties;
 	theBaseObjectPtr->theID    = theNewID;
@@ -152,20 +146,47 @@ void UndoObjectChange::redo ()
 }
 
 
-/// invalidate both the AABB of the old and new positions (including
-/// Anchors) in DrawWorld
+void inline updateMinMax(Position& aMin, Position& aMax, const Position& aNew)
+{
+	if (aNew.x < aMin.x)    aMin.x = aNew.x;
+	if (aNew.x > aMax.x)    aMax.x = aNew.x;
+	if (aNew.y < aMin.y)    aMin.y = aNew.y;
+	if (aNew.y > aMax.y)    aMax.y = aNew.y;
+}
+
+/// invalidate both the AABB of the old and new positions in DrawWorld
 void UndoObjectChange::requestSceneRefresh(void)
 {
-	// very much still TODO
+	Position myMin = theOldCenter + -1*theOldSize;
+	Position myMax = myMin;
 
-//	theBaseObjectPtr->theDrawObjectPtr->focusRemove();
+	// calculate the AABB
+	updateMinMax(myMin, myMax, theOldCenter + theOldSize);
+	updateMinMax(myMin, myMax, theNewCenter + theNewSize);
+	updateMinMax(myMin, myMax, theNewCenter + -1*theNewSize);
+
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
+	if (theBaseObjectPtr->theDrawObjectPtr->theAnchorsPtr)
+		theBaseObjectPtr->theDrawObjectPtr->theAnchorsPtr->updatePosition();
+
+#if 0
+	// draw a Rectangle around the area to update
+	static QGraphicsRectItem* myRect = NULL;
+	if (myRect != NULL)
+		delete myRect;
+	myRect = new QGraphicsRectItem(QRectF(myMin.toVector().toQPointF(), myMax.toVector().toQPointF()));
+	theBaseObjectPtr->theDrawObjectPtr->scene()->addItem(myRect);
+#endif
+
+	theBaseObjectPtr->theDrawObjectPtr->scene()->
+			update(QRectF(myMin.toVector().toQPointF(), myMax.toVector().toQPointF()));
+
 }
 
 
 void UndoObjectChange::update (qreal aNewAngle)
 {
-	theNewCenter.angle = aNewAngle;
+	theNewCenter.angle = theOldCenter.angle+aNewAngle;
 	update(theNewCenter, theNewSize);
 }
 
