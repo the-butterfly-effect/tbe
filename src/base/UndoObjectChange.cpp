@@ -130,14 +130,18 @@ void UndoObjectChange::redo ()
 	theBaseObjectPtr->setTheWidth(theNewSize.dx);
 	theBaseObjectPtr->setTheHeight(theNewSize.dy);
 
-	theBaseObjectPtr->setTempCenter(theNewCenter);
-	theBaseObjectPtr->setOrigCenter(theNewCenter);
+	// It is unfair: QT doesn't redraw if just the angle changed
+	// So we need to force a position change...
+	Position myNewPosition = theNewCenter;
+	double myRandom = 0.0001 * qrand() / (double)RAND_MAX;
+	myNewPosition.x += myRandom;
+	theBaseObjectPtr->setTempCenter(myNewPosition);
+	theBaseObjectPtr->setOrigCenter(myNewPosition);
 
 	theBaseObjectPtr->theProps = theNewProperties;
 	theBaseObjectPtr->theID    = theNewID;
 
 	theBaseObjectPtr->reset();
-
 
 	requestSceneRefresh();
 
