@@ -94,8 +94,7 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	// FIXME - when this list is increasing,
 	// we should move it to the BaseObject class at some point
 	theDetBoxPtr = dynamic_cast<DetonatorBox*>(myBOPtr);
-	// TODO/FIXME: do not use this option in Level Creator mode!!!
-	if (theDetBoxPtr!=NULL)
+	if (theDetBoxPtr!=NULL && theIsLevelEditor==false)
 	{
 		myBAPtr = new ButtonAnchor(this, "IconSetPhone", myButtonIndex++);
 		connect(myBAPtr, SIGNAL(clicked()), this, SLOT(setPhoneNr_clicked()));
@@ -465,7 +464,6 @@ void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 	// and setup the corresponding undo class
 	assert(theUndoRotatePtr==NULL);
 
-	// TODO: add cursor ROTATE shape
 	// store this position - calculate differential angles later
 	theUndoRotatePtr = UndoObjectChange::createUndoObject(
 			UndoObjectChange::ROTATE, theParentPtr->getBOPtr(), event->scenePos());

@@ -378,8 +378,12 @@ void Dynamite::manageParticles(float aDeltaTime)
 		float myMassLeft = DYNAMITE_MASS*(DECAY_TIME-aDeltaTime)/DECAY_TIME;
 		if (myMassLeft < 0.0)
 		{
-			// TODO/FIXME: delete all objects correctly
-			theSplatterList.clear();
+			while(theSplatterList.count() > 0)
+			{
+				ExplosionSplatter* myP = theSplatterList.last();
+				theSplatterList.pop_back();
+				delete myP;
+			}
 		}
 		else
 			foreach(ExplosionSplatter* e, theSplatterList)

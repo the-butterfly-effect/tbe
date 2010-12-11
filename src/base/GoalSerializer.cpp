@@ -145,7 +145,6 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 			myGoal->theProps.setProperty(Property::S_ANYTHING, "");
 		break;
 	case STATE:
-		// TODO
 		myGoal = new GoalStateChange();
 		myGoal->theProps.setProperty(Property::OBJECT_STRING, myList[1]);
 		if (myList[2]==">")
