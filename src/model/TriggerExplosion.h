@@ -69,13 +69,16 @@ public:
 
 	/// @returns the currently set phone number
 	/// this can be an empty string!
-	QString getCurrentPhoneNumber(void)
-	{ return thePhoneNumber; }
+	QString getCurrentPhoneNumber(void) const;
 
 	/// overridden from BaseObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
 	virtual int getImageIndex(void)
 	{ return theState; }
+
+	/// overridden from RectObject to make sure
+	/// we can display the phone number
+	virtual const QString getToolTip ( ) const;
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
@@ -223,6 +226,10 @@ public:
 	/// @returns: returns a numerical index similar to the state
 	virtual int getImageIndex(void)
 	{ return theState; }
+
+	/// overridden from PolyObject to make sure
+	/// we can display the phone number
+	virtual const QString getToolTip ( ) const;
 
 	/// requests removal of a splatter from the list
 	void removeMe(ExplosionSplatter* aDeadSplatterPtr);

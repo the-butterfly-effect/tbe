@@ -38,13 +38,12 @@ const Vector DetonatorBox::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
 DetonatorBox::DetonatorBox()
 		:	RectObject( QObject::tr("Detonator Box"),
-				"Push the handle down to BOOM",
+				"",
 				"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
 				0.33, 0.35, 4.0, 0.0), theState(ARMED), theHandleObjectPtr(NULL)
 {
 	theProps.setDefaultPropertiesString(
 		Property::PHONENUMBER_STRING + QString(":/") );
-	theProps.property2String(Property::PHONENUMBER_STRING, &thePhoneNumber);
 }
 
 DetonatorBox::~DetonatorBox()
@@ -103,6 +102,23 @@ QStringList DetonatorBox::getAllPhoneNumbers(void)
 	return theWorldPtr->getAllIDs().filter(myRX);
 }
 
+QString DetonatorBox::getCurrentPhoneNumber(void) const
+{
+	QString myPhoneNumber = thePhoneNumber;
+	if (myPhoneNumber.isEmpty())
+		theProps.property2String(Property::PHONENUMBER_STRING, &myPhoneNumber);
+	if (myPhoneNumber.isEmpty())
+		return QObject::tr("(empty)");
+	return myPhoneNumber;
+}
+
+
+const QString DetonatorBox::getToolTip ( ) const
+{
+	//: Translators: The %1 will be replaced by a phone number.
+	return QObject::tr("Send BOOM to %1").arg(getCurrentPhoneNumber());
+}
+
 DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 {
 	DEBUG4("DetonatorBox from state %d to state %d\n", theState, aNewState);
@@ -112,7 +128,7 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 
 void DetonatorBox::notifyExplosions(void)
 {
-	BaseObject* myObjectToSignal = theWorldPtr->findObjectByID(thePhoneNumber);
+	BaseObject* myObjectToSignal = theWorldPtr->findObjectByID(getCurrentPhoneNumber());
 	Dynamite* myDynamite = dynamic_cast<Dynamite*>(myObjectToSignal);
 
 	// did the user select a wrong phone number?
@@ -256,7 +272,7 @@ const qreal  Dynamite::DYNAMITE_MASS  = 0.8;
 
 Dynamite::Dynamite()
 		: PolyObject(QObject::tr("Dynamite"),
-			 QObject::tr("invented by Alfred Nobel, this is a nice explosive."),
+			 "",
 			 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
 			 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
 			 0.43, 0.32, DYNAMITE_MASS, 0.1),
@@ -322,6 +338,12 @@ void Dynamite::explode(void)
 		mySplatter->setAll(theWorldPtr, myStart, 20.0, DYNAMITE_MASS/NUM_SPLATS, this);
 		theSplatterList.push_back(mySplatter);
 	}
+}
+
+const QString Dynamite::getToolTip ( ) const
+{
+	//: Translators: the \n means "newline" - keep it. The %1 will be replaced by a phone number
+	return QObject::tr("Dynamite: invented by Alfred Nobel. \n Dial %1 for a nice explosion.").arg(getID());
 }
 
 Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
