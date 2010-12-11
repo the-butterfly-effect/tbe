@@ -53,7 +53,6 @@ b2Vec2 Position::toB2Vec2(void) const
 QString Position::toString(void) const
 {	return QString("(%1,%2)@%3").arg(x).arg(y).arg(angle); }
 
-
 Vector::Vector (void)
 		: dx(0), dy(0)
 {	; // nothing to do here, sorry...
@@ -169,6 +168,9 @@ b2Vec2 Vector::toB2Vec2(void) const
 
 Position Vector::toPosition(void) const
 {	return Position(dx,dy, 0); }
+
+QPointF Vector::toQPointF(void) const
+{	return QPointF(dx,-dy); }
 
 QString Vector::toString(void) const
 {	return QString("(%1,%2)").arg(dx).arg(dy); }

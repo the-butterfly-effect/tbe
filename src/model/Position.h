@@ -40,10 +40,11 @@ public:
 
 	qreal length(void);
 
+	qreal	 toAngle(void) const;
 	b2Vec2   toB2Vec2(void) const;
 	Position toPosition(void) const;
+	QPointF	 toQPointF(void) const;
 	QString  toString(void) const;
-	qreal	 toAngle(void) const;
 
 	/// @returns this vector, rotated along anAngle
 	Vector rotate(qreal anAngle) const;
