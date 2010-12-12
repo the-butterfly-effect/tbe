@@ -75,53 +75,55 @@ UndoObjectChange::createUndoObject (UndoType anUndoType,
 	return myPtr;
 }
 
-
-bool UndoObjectChange::pushYourself(void)
+bool UndoObjectChange::isChanged (void) const
 {
-	QString myUndoString;
+	return getChangeString().isEmpty() == false;
+}
 
-	// let's figure out what type of undo we are...
 
+QString UndoObjectChange::getChangeString(void) const
+{
 	// did we change ID?
 	if (theNewID != theOldID)
-	{
-		myUndoString = QObject::tr("ID change on %1").arg(theBaseObjectPtr->getName());
-		goto letspush;
-	}
+		return QObject::tr("ID change on %1").arg(theBaseObjectPtr->getName());
 
 	// did we change properties?
 	if (theNewProperties != theOldProperties)
-	{
-		myUndoString = QObject::tr("Property change on %1").arg(theBaseObjectPtr->getName());
-		goto letspush;
-	}
+		return QObject::tr("Property change on %1").arg(theBaseObjectPtr->getName());
 
 	// did we change size?
 	if ((theNewSize == theOldSize) == false)
-	{
-		myUndoString = QObject::tr("Resize %1").arg(theBaseObjectPtr->getName());
-		goto letspush;
-	}
+		return QObject::tr("Resize %1").arg(theBaseObjectPtr->getName());
 
 	// did we rotate?
 	if (theNewCenter.angle != theOldCenter.angle)
-	{
-		myUndoString = QObject::tr("Rotate %1").arg(theBaseObjectPtr->getName());
-		goto letspush;
-	}
+		return QObject::tr("Rotate %1").arg(theBaseObjectPtr->getName());
 
 	// did we move?
 	if ((theNewCenter == theOldCenter) == false)
-	{
-		myUndoString = QObject::tr("Move %1").arg(theBaseObjectPtr->getName());
-		goto letspush;
-	}
+		return QObject::tr("Move %1").arg(theBaseObjectPtr->getName());
 
-letspush:
+	return "";
+}
+
+bool UndoObjectChange::pushYourself(void)
+{
+	// are we currently good?
+	if (isNowColliding == true)
+		revertToLastGood();
+	if (isNowColliding == true)
+		return false;
+
+	// let's figure out what type of undo we are...
+	QString myUndoString = getChangeString();
+
+	// if that changestring is empty, we're unchanged...
+	if (myUndoString.isEmpty())
+		return false;
+
 	setText(myUndoString);
-	DEBUG1("UndoObjectChange::push '%s'\n", ASCII(myUndoString));
+	DEBUG3("UndoObjectChange::push '%s'\n", ASCII(myUndoString));
 	theBaseObjectPtr->theDrawObjectPtr->pushUndo(this);
-
 	return true;
 }
 
@@ -149,6 +151,11 @@ void UndoObjectChange::redo ()
 //		Anchors::getEditObjectDialogPtr()->readFromObject(theBaseObjectPtr);
 }
 
+
+void UndoObjectChange::revertToLastGood(void)
+{
+	update(theLastGoodCenter, theLastGoodSize);
+}
 
 void inline updateMinMax(Position& aMin, Position& aMax, const Position& aNew)
 {

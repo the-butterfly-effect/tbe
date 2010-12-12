@@ -128,7 +128,6 @@ public:
 	void revertToLastGood(void);
 
 
-
 	/** Update the Undo with new position/size data.
 	  * If in the new state the object is colliding, "last good" is
 	  * not updated.
@@ -167,6 +166,10 @@ protected:
 	/// invalidate both the AABB of the old and new positions (including
 	/// Anchors) in DrawWorld
 	void requestSceneRefresh(void);
+
+	/// @returns a (translated) description of the change in the object
+	///	or empty string if none...
+	QString getChangeString(void) const;
 
 private:
 	BaseObject* theBaseObjectPtr;

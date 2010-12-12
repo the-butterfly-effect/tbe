@@ -71,17 +71,13 @@ bool UndoInsertCommand::checkForValidPositionOrRevert(void)
 	bool isGood = true;
 	UndoObjectChange* myUMCPtr = theBaseObjectPtr->theDrawObjectPtr->theUndoMovePtr;
 	if (myUMCPtr->isGood()==false)
-	{  // revertIfNeeded()==true)
-
-
-		// TODO/FIXME - but I do want to checkin now...
-	assert(false);
-
-//		if (myUMCPtr->isChanged()==false)
-//		{
-//			// we're in trouble: the object never was valid - we need to cancel D&D
-//			isGood = false;
-//		}
+	{
+		myUMCPtr->revertToLastGood();
+		if (myUMCPtr->isChanged()==false)
+		{
+			// we're in trouble: the object never was valid - we need to cancel D&D
+			isGood = false;
+		}
 		// we're in good shape: even though the last position was illegal,
 		// we did have a good position in the history
 	}
