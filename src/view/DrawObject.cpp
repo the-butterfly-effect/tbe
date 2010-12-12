@@ -178,16 +178,22 @@ QRectF DrawObject::boundingRect() const
 
 bool DrawObject::checkForCollision(void)
 {
-	bool isColliding = false;
+	QList<QGraphicsItem *> myCollides;
+	int myCount = 0;
 
 	// are we in the level editor???
 	// if so: there is a "feature" to disable collision detection
 	if (theIsLevelEditor==true && theIsCollisionOn==false)
 		return false;
 
+	// collision is also automatic when we run through either the X or Y axis
+	// so, let's calculate the AABB for the transformed object
+	QRectF myOutline = mapToScene(boundingRect()).boundingRect();
+	if (myOutline.bottom() > 0.0 || myOutline.left() < 0.0)
+		goto YesCollision;
+
 	// get the list of all collisions and count non-Anchors/non-Cross items
-	QList<QGraphicsItem *> myCollides = collidingItems();
-	int myCount = 0;
+	myCollides = collidingItems();
 	for (int i=0; i< myCollides.size(); i++)
 	{
 		if (theAnchorsPtr)
@@ -199,14 +205,15 @@ bool DrawObject::checkForCollision(void)
 	}
 
 	if (myCount>=1)
-	{
-		isColliding = true;
-		if (theCrossPtr==NULL)
-			theCrossPtr = new Cross(this);
-	}
-	if (!isColliding)
-		removeCollisionCross();
-	return isColliding;
+		goto YesCollision;
+
+	removeCollisionCross();
+	return false;
+
+YesCollision:
+	if (theCrossPtr==NULL)
+		theCrossPtr = new Cross(this);
+	return true;
 }
 
 QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
@@ -378,13 +385,7 @@ void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotsp
 		}
 	}
 
-	// do not allow object to be moved through X and Y axes to negative coords
-	if ( (aScenePos.x()-theMoveHotspot.x()-theBaseObjectPtr->getTheWidth()/2.0) >= 0.0
-		 && (aScenePos.y()-theMoveHotspot.y()+theBaseObjectPtr->getTheHeight()/2.0) <= 0.0)
-	{
-printf("update(%f,%f)\n", aScenePos.x(), aScenePos.y());
-		theUndoMovePtr->update( Vector(aScenePos-theMoveHotspot) );
-	}
+	theUndoMovePtr->update( Vector(aScenePos-theMoveHotspot) );
 }
 
 void DrawObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent * event )
