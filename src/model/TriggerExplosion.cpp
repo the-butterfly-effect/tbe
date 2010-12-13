@@ -383,6 +383,7 @@ void Dynamite::manageParticles(float aDeltaTime)
 				ExplosionSplatter* myP = theSplatterList.last();
 				theSplatterList.pop_back();
 				delete myP;
+				theWorldPtr->removeObject(myP);
 			}
 		}
 		else
