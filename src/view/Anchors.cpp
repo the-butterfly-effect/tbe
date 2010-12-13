@@ -112,6 +112,7 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 
 Anchors::~Anchors()
 {
+	clearEditObjectDialogPtr();
 	while(!theAnchorList.isEmpty())
 	{
 		Anchor* myPtr = theAnchorList.first();
