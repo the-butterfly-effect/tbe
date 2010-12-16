@@ -149,11 +149,12 @@ public:
 	 */
 	virtual ~World ( );
 
-	/** adds object to the World
-	 *  if the BaseObject knows about a DrawObject,
-	 *      that one will be added to the DrawWorld as well.
+	/** Adds object to the World.
+	 *  The DrawObject associated with the BaseObject will be created and
+	 *  it will be added to the DrawWorld as well.
 	 *  @param anObjectPtr
 	 *  @return true if success - false if object already present
+	 *          (in that case we don't add again to world nor drawworld)
 	 */
 	bool addObject(BaseObject* anObjectPtr);
 

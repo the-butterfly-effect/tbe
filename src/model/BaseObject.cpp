@@ -142,7 +142,7 @@ DrawObject*  BaseObject::createDrawObject(void)
 
 	theDrawObjectPtr = new DrawObject(this, myImageName);
 
-	setDrawObjectZValue(2.0);
+	setDrawObjectZValue(2.0); // will set ZValue different if set in property
 	return theDrawObjectPtr;
 }
 
@@ -189,6 +189,7 @@ void BaseObject::deletePhysicsObject()
 	if (theB2BodyPtr!=NULL)
 		getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 	theB2BodyPtr = NULL;
+	// let's also make sure we're getting rid of the joints
 	notifyJoints(JointInterface::DELETED);
 }
 
@@ -295,9 +296,16 @@ void BaseObject::parseProperties(void)
 
 bool BaseObject::reregister(void)
 {
+	if (theDrawObjectPtr != NULL)
+	{
+		delete theDrawObjectPtr;
+		theDrawObjectPtr = NULL;
+	}
+	// the addObject also forces creation of the drawObject
+	// and adds it to the DrawWorld - if it exists.
+	// fortunately, reregister is only used when a drawworld exists :-)
 	theWorldPtr->addObject(this);
-	if (theDrawObjectPtr == NULL)
-		createDrawObject();
+	assert(theDrawObjectPtr != NULL);
 	createPhysicsObject();
 	theDrawObjectPtr->focusInEvent();
 	return true;

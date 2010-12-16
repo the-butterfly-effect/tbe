@@ -330,14 +330,13 @@ private:
 	*/
 	qreal theBounciness;
 
+protected:
 	/** true if the user can move this object
 	 *  note that this has nothing to do with MovingObject or ImmovableObject
 	 *  it has to do with the level design - as such, Level can modify this setting
 	 */
 	bool theIsMovable;
 
-	
-protected:
 	typedef QSet<JointInterface*>  JointList;
 	JointList theJointList;
 

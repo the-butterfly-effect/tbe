@@ -104,26 +104,26 @@ bool World::addObject(BaseObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG3("addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
-	if (theObjectPtrList.contains(anObjectPtr))
-		return false;
-	
-	theObjectPtrList.push_back(anObjectPtr);
+	DEBUG4("World::addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
+
+	// if it is already present, let's not insert again
+	if (theObjectPtrList.contains(anObjectPtr)==false)
+		theObjectPtrList.push_back(anObjectPtr);
 	anObjectPtr->theWorldPtr = this;
 	anObjectPtr->reset();
 	
-	addBaseObjectToDrawWorld(anObjectPtr);
+	if (theDrawWorldPtr!=NULL)
+		addBaseObjectToDrawWorld(anObjectPtr);
 	return true;
 }
 
 void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 {
-	if (theDrawWorldPtr)
-	{
-		DrawObject* myDOPtr = aBOPtr->createDrawObject();
-		if (myDOPtr!=NULL)
-			theDrawWorldPtr->addItem(myDOPtr);
-	}
+	assert(theDrawWorldPtr!=NULL);
+	DEBUG4("World::addBaseObjectToDrawWorld(%p)\n", aBOPtr);
+	DrawObject* myDOPtr = aBOPtr->createDrawObject();
+	if (myDOPtr!=NULL)
+		theDrawWorldPtr->addItem(myDOPtr);
 }
 
 void World::createScene(MainWindow* myMainPtr)
