@@ -183,6 +183,7 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox, const Position& aPos
 	setOrigCenter(aPos);
 	createPhysicsObject();
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
+	theIsMovable = false;
 }
 
 DetonatorBoxHandle::~DetonatorBoxHandle()
@@ -205,7 +206,7 @@ DrawObject*  DetonatorBoxHandle::createDrawObject(void)
 	RectObject::createDrawObject();
 	// redo the ZValue: BaseObject will set it to 2.0 (default for DrawObjects)
 	// if not in Properties, set to 1.9: the Handle draws behind the Box
-	setDrawObjectZValue(1.0);
+	setDrawObjectZValue(1.9);
 	return theDrawObjectPtr;
 }
 
@@ -323,7 +324,7 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 
 void Dynamite::explode(void)
 {
-	const int NUM_SPLATS = 12;
+	const int NUM_SPLATS = 13;
 	for (int i=0; i< NUM_SPLATS; i++)
 	{
 		ExplosionSplatter* mySplatter = new ExplosionSplatter();
