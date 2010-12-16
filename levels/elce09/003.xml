@@ -50,11 +50,13 @@
                 <property key="page1" >No butterflies here!&lt;br&gt;&lt;br&gt;</property>
                 <property key="page2" >Topple the bowling pin below.</property>
                 <property key="page3" >Hmmm... &lt;br&gt;&lt;br&gt;This reminds me of a kids' game!</property>
-                <property key="page4" >&lt;br&gt;&lt;br&gt; ... the Post-it Boy</property>
+                <property key="page4" >By the way: there are two ramps in the toolbox. Use them wisely!</property>
+                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-it Boy</property>
                 <property key="page1_nl" >Geen vlinders hiero!&lt;br&gt;&lt;br&gt;</property>
                 <property key="page2_nl" >Kegel de kegel om.</property>
                 <property key="page3_nl" >Hmmm... &lt;br&gt;&lt;br&gt;Dit doet me aan een kinderspeeltje denken!</property>
-                <property key="page4_nl" >&lt;br&gt;&lt;br&gt; ... Post-it Boy</property>
+                <property key="page4_nl" >Trouwens, er zitten twee hellingen in de gereedschapskist. Gebruik ze goed!</property>
+                <property key="page5_nl" >&lt;br&gt;&lt;br&gt; ... Post-it Boy</property>
 	    </object>
         </predefined>
     </scene>
