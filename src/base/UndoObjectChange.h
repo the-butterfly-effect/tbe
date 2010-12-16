@@ -68,26 +68,11 @@ public:
 	virtual ~UndoObjectChange ( );
 
 public:
-	// FIXME/TODO: does it actually matter?
-	enum UndoType
-	{
-		MOVE,
-		PROPERTY,
-		RESIZE,
-		ROTATE,
-		DIALOG,
-		ID
-	};
-
 	/** Factory Method
 	 * @return UndoObjectChange*
-	 * @param  anUndoType
-	 * @param  aBOPtr
-	 * @param  aHotspot
+	 * @param  aBOPtr		pointer to a base object
 	 */
-	static UndoObjectChange* createUndoObject (UndoType anUndoType,
-											   BaseObject* aBOPtr,
-											   const Vector & aHotspot );
+	static UndoObjectChange* createUndoObject (BaseObject* aBOPtr);
 
 
 	const Position& getOldPosition(void) const
@@ -104,13 +89,6 @@ public:
 	/// @returns true if the Object is currently not colliding
 	bool isGood(void) const
 	{ return isNowColliding == false; }
-
-	/** (only for mouse-based (Anchors and/or DrawObject) commands like
-	  * MOVE, RESIZE or ROTATE)
-	  * - will do all necessary calculations including hotspot accomodation
-	  * - will call update() and handle the redrawing
-	  */
-	void mouseMove(const Position& aNewMousePos);
 
 	/** commit the changes to the QUndoStack (static var in DrawObject.cpp)
 	  *  - if and only if there are changes

@@ -157,6 +157,8 @@ bool Anchors::isAnchor(QGraphicsItem* anItem)
 
 QGraphicsScene* Anchors::getScenePtr()
 {
+	assert(theDrawObjectPtr != NULL);
+	assert(theDrawObjectPtr->scene() != NULL);
 	return theDrawObjectPtr->scene();
 }
 
@@ -234,7 +236,11 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 void Anchor::scaleIcon()
 {
 	// calculate how to scale my icon to look like it should
-	QRectF mySquare=theParentPtr->getScenePtr()->views()[0]->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
+	if (theParentPtr->getScenePtr() == NULL)
+		return;
+	QGraphicsView* myViewPtr = theParentPtr->getScenePtr()->views()[0];
+	assert (myViewPtr != NULL);
+	QRectF mySquare= myViewPtr->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
 	DEBUG5("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
 	// so we now know that our image should be reduced to width&height
 	scale(mySquare.width()/boundingRect().width(),
@@ -384,7 +390,7 @@ void ResizeAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 //	theParentPtr->updatePosition();
 }
 
-void ResizeAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+void ResizeAnchor::mousePressEvent ( QGraphicsSceneMouseEvent*)
 {
 	DEBUG5("ResizeAnchor::mousePressEvent\n");
 
@@ -396,14 +402,18 @@ void ResizeAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 	// and setup the corresponding undo class
 	assert(theUndoResizePtr==NULL);
 
-	if (theIndex==RIGHT || theIndex==LEFT)
-		setCursor(Qt::SizeHorCursor);
-	if (theIndex==TOP   || theIndex==BOTTOM)	
+	// note that if an object has rotated between 45 and 135 degrees,
+	// we'd better swap the cursors or we're showing the wrong thingie...
+	float myRealAngle = theOldAngle;
+	if (theIndex==TOP || theIndex==BOTTOM)
+		myRealAngle += PI/2;
+	myRealAngle = fabsf(fmodf(myRealAngle,PI));
+	if (myRealAngle>PI/4 && myRealAngle<3*PI/4)
 		setCursor(Qt::SizeVerCursor);
+	else
+		setCursor(Qt::SizeHorCursor);
 	
-	// store this position - calculate differential angles later
-	theUndoResizePtr = UndoObjectChange::createUndoObject(
-			UndoObjectChange::RESIZE, theParentPtr->getBOPtr(), event->scenePos());
+	theUndoResizePtr = UndoObjectChange::createUndoObject(theParentPtr->getBOPtr());
 }
 
 void ResizeAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
@@ -467,8 +477,7 @@ void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 
 	// store this position - calculate differential angles later
 	theUndoRotatePtr = UndoObjectChange::createUndoObject(
-			UndoObjectChange::ROTATE, theParentPtr->getBOPtr(), event->scenePos());
-
+			theParentPtr->getBOPtr());
 	theHotspotAngle = getCurrentAngle(event->scenePos());
 }
 

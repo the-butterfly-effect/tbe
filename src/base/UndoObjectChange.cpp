@@ -63,12 +63,9 @@ UndoObjectChange::~UndoObjectChange ( )
 //  
 
 UndoObjectChange*
-UndoObjectChange::createUndoObject (UndoType anUndoType,
-									BaseObject* aBOPtr,
-									const Vector & aHotspot )
+UndoObjectChange::createUndoObject (BaseObject* aBOPtr)
 {
-	DEBUG1("UndoObjectChange::createUndoObject(%d,%p,%s)\n",
-		   anUndoType, aBOPtr, ASCII(aHotspot.toString()));
+	DEBUG1("UndoObjectChange::createUndoObject(%p)\n", aBOPtr);
 
 	UndoObjectChange* myPtr = new UndoObjectChange(aBOPtr);
 
@@ -143,6 +140,7 @@ void UndoObjectChange::redo ()
 	theBaseObjectPtr->theProps = theNewProperties;
 	theBaseObjectPtr->theID    = theNewID;
 
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->reset();
 
 	requestSceneRefresh();
@@ -245,6 +243,7 @@ void UndoObjectChange::undo ()
 	theBaseObjectPtr->theProps = theOldProperties;
 	theBaseObjectPtr->theID    = theOldID;
 
+	theBaseObjectPtr->notifyJoints(JointInterface::POSUPDATE);
 	theBaseObjectPtr->reset();
 
 	requestSceneRefresh();

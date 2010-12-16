@@ -374,9 +374,7 @@ void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotsp
 		Vector myPos(aHotspotPos.x(), -aHotspotPos.y());
 		myPos = 1/theScale*myPos;
 		myPos = myPos.rotate(theBaseObjectPtr->getOrigCenter().angle);
-		theUndoMovePtr = UndoObjectChange::createUndoObject(
-				UndoObjectChange::MOVE,
-				theBaseObjectPtr, myPos);
+		theUndoMovePtr = UndoObjectChange::createUndoObject(theBaseObjectPtr);
 		theMoveHotspot = QPointF(myPos.dx, -myPos.dy);
 		if (theAnchorsPtr)
 		{

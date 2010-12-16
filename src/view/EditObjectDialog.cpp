@@ -47,8 +47,7 @@ EditObjectDialog::~EditObjectDialog()
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
-	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(
-				UndoObjectChange::ID, theBOPtr, Vector(0,0));
+	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(theBOPtr);
 	QString myID = ui.lineEditID->text().trimmed();
 	theBOPtr->setID(myID);
 	myUndoPtr->update(myID);
@@ -69,8 +68,7 @@ void EditObjectDialog::position_editingFinished()
 void EditObjectDialog::position_valueChanged (double )
 {
 	if (theUndoPtr == NULL)
-		theUndoPtr = UndoObjectChange::createUndoObject(
-				UndoObjectChange::DIALOG, theBOPtr, Vector(0,0));
+		theUndoPtr = UndoObjectChange::createUndoObject(theBOPtr);
 	theUndoPtr->update(
 			Position(ui.spinBoxX->value(),
 					 ui.spinBoxY->value(),
@@ -97,13 +95,13 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 // I think this is due to recursive calling propertyCellChanged...
 //	ui.tableWidget->item(aRow, 0)->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
 
-	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(
-				UndoObjectChange::PROPERTY, theBOPtr, Vector(0,0));
+	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(theBOPtr);
 	theBOPtr->theProps.setProperty(myKey, myValue);
 	myUndoPtr->update(myKey, myValue);
 	myUndoPtr->pushYourself();
 
 	// now we need to make sure everything is updated correctly...
+	// Q: is this code correct???
 	theBOPtr->parseProperties();
 	theBOPtr->deregister();
 	theBOPtr->reregister();
