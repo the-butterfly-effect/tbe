@@ -100,7 +100,7 @@
   </object>
 
 
-            <object X="2.2" Y="0.27" type="Bowling Pin" ID="BowlingPin"/>
+            <object X="2.2" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
 
         </predefined>
     </scene>
