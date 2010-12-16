@@ -178,7 +178,7 @@ void DrawWorld::dragLeaveEvent ( QGraphicsSceneDragDropEvent * event )
 
 void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 {
-	DEBUG4("DrawWorld::dragMoveEvent ()\n");
+	DEBUG5("DrawWorld::dragMoveEvent ()\n");
 	if (theInsertUndoPtr==NULL)
 	{
 		DEBUG3("DrawWorld::dragMoveEvent IGNORED()\n");
