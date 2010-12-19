@@ -325,7 +325,7 @@ PolyObject::AABB::AABB(QString& aPolygonDefs) :
 
 	if (aPolygonDefs.isEmpty())
 	{
-		DEBUG4("ignoring empty polygon def\n");
+		DEBUG5("ignoring empty polygon def\n");
 		return;
 	}
 
