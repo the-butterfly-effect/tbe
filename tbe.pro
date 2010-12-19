@@ -48,6 +48,7 @@ HEADERS += src/tbe_global.h \
     src/model/PostIt.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
+    src/model/Spring.h \
     src/model/TranslationGuide.h \
     src/model/TriggerExplosion.h \
     src/model/World.h \
@@ -96,6 +97,7 @@ SOURCES += src/main.cpp \
     src/model/PostIt.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
+    src/model/Spring.cpp \
     src/model/TranslationGuide.cpp \
     src/model/TriggerExplosion.cpp \
     src/model/World.cpp \
