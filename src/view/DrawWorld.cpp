@@ -75,7 +75,6 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
 	setDrawDebug();
-	setAcceptDrops(true);
 }
 
 DrawWorld::~DrawWorld ( ) 
@@ -134,6 +133,18 @@ void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 	DEBUG4("DrawWorld::dragEnterEvent ()\n");
 	if (event->mimeData()->hasFormat(TBItem::ToolboxMimeType))
 	{
+		if (isUserInteractionAllowed == false)
+		{
+			if (true == Popup::YesNoQuestion(
+					tr("You cannot make changes now. Reset the stopwatch?"),
+					views().first()))
+			{
+				emit theSimStateMachine->clicked_on_reset();
+			}
+			event->ignore();
+			return;
+		}
+
 		QByteArray pieceData = event->mimeData()->data(TBItem::ToolboxMimeType);
 		QDataStream stream(&pieceData, QIODevice::ReadOnly);
 		QString myObjectName;
@@ -390,7 +401,6 @@ void DrawWorld::resetWorld( )
 	// and redraw
 	advance();
 	isUserInteractionAllowed = true;
-	setAcceptDrops(true);
 	if (theDrawDebug)
 		clearGraphicsList(0);
 
@@ -400,17 +410,6 @@ void DrawWorld::resetWorld( )
 		theCongratDeathBoxPtr=NULL;
 	}
 	emit theSimStateMachine->clicked_on_reset();
-}
-
-void DrawWorld::setAcceptDrops(bool isOn)
-{
-	QGraphicsView* myView = views()[0];
-	DEBUG5("DrawWorld::setAcceptDrops(%d) for view %p\n", isOn, myView);
-	if (myView != NULL)
-	{
-		myView->setAcceptDrops(isOn);
-		DEBUG5("new view drop state: %d\n", myView->acceptDrops());
-	}
 }
 
 void DrawWorld::setDrawDebug()
@@ -434,7 +433,6 @@ void DrawWorld::startTimer(void)
 	myTemp.focusRemove(true);
 	Anchors::clearEditObjectDialogPtr();
 
-	setAcceptDrops(false);
 	isUserInteractionAllowed = false;
 	DrawObject::setIsSimRunning(true);
 

@@ -202,9 +202,6 @@ private:
 
 	virtual void initAttributes ( ) ;
 
-	/// modifies the view (!) to accept drop events or not
-	void setAcceptDrops(bool isOn);
-
 	/** the state machine handling the Start/Stop/Continue/Rest buttons
 	 *  and the actual simulation timing
 	 */
