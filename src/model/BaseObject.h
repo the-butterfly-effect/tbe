@@ -71,6 +71,9 @@ public:
 	  * to annouce that its physics object(s) have been re-created.
 	  */
 	virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
+
+	/// called by World when the joint was "implicitly destructed"
+	virtual void jointWasDeleted(void) = 0;
 };
 
 

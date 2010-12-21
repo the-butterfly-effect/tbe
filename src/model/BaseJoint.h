@@ -62,10 +62,10 @@ public:
 	{ return theJointPtr!=NULL; }
 
 	/// called by World when the joint was "implicitly destructed"
-	void jointWasDeleted(void);
+	virtual void jointWasDeleted(void);
 
 	/// when this member is called, this PivotPoint will be
-	/// marked as chilld, i.e. it will not save itself
+	/// marked as child, i.e. it will not save itself
 	void markAsChild(void);
 
 	/// implemented from JointInterface

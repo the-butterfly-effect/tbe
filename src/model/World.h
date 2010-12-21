@@ -82,7 +82,6 @@ protected:
 };
 
 
-
 class DestructionListener : public b2DestructionListener
 {
 public:
@@ -94,7 +93,7 @@ public:
 		// we *know* that all b2Joints will have UserData
 		// but e.g. DetonatorHandle does not
 		if (joint->GetUserData() != NULL)
-			reinterpret_cast<BaseJoint*>(joint->GetUserData())->jointWasDeleted();
+			reinterpret_cast<JointInterface*>(joint->GetUserData())->jointWasDeleted();
 	}
 
 	/// not interested...
