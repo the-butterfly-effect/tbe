@@ -34,7 +34,7 @@ public:
 };
 static LinkObjectFactory theLinkFactory;
 
-Link::Link()
+Link::Link() : BaseJoint()
 {
 	DEBUG5("Link::Link() start\n");
 	theFirstPtr = NULL;
