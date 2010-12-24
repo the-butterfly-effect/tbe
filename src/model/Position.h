@@ -34,6 +34,9 @@ public:
 	Vector (const QPointF& aPoint);
 	Vector (const b2Vec2& aVec);
 
+	/// constructor ignores the angle from the Position
+	Vector (const Position& aPosition);
+
 	/// constructs a vector of length 1 in direction anAngle
 	Vector (qreal anAngle);
 

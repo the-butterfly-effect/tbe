@@ -64,6 +64,12 @@ Vector::Vector (qreal anAngle)
 	dy = sin(anAngle);
 }
 
+Vector::Vector (const Position& aPosition)
+		: dx(aPosition.x), dy(aPosition.y)
+{
+	// and another empty body here
+}
+
 Vector::Vector (qreal aDX, qreal aDY)
 	: dx(aDX), dy(aDY)
 {	; // nothing to do here, sorry...
