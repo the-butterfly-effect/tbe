@@ -169,8 +169,8 @@ void DrawObject::applyPosition(void)
 
 QRectF DrawObject::boundingRect() const
 {
-	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
 	qreal adjust = 0.03;
 	
     return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
@@ -224,9 +224,9 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	if (aWidth==0 || aHeight == 0)
 	{
 		float myPixPerUnit = ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
-		DEBUG5("   %f pix/m at %f x %f\n", myPixPerUnit, theBaseObjectPtr->getTheWidth(), theBaseObjectPtr->getTheHeight());
-		myWidth = theBaseObjectPtr->getTheWidth() *myPixPerUnit;
-		myHeight= theBaseObjectPtr->getTheHeight()*myPixPerUnit;
+		DEBUG5("   %f pix/m at %f x %f\n", myPixPerUnit, theBaseObjectPtr->getTempWidth(), theBaseObjectPtr->getTempHeight());
+		myWidth = theBaseObjectPtr->getTempWidth() *myPixPerUnit;
+		myHeight= theBaseObjectPtr->getTempHeight()*myPixPerUnit;
 	}
 	DEBUG5("   will do %f x %f bitmap\n", myWidth, myHeight);
 	assert(myWidth>0);
@@ -416,8 +416,8 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	if ( theDrawDebug==true && isSimRunning==true )
 		return;
 
-	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
 
 	// only when we're using the cached bitmaps, (which have a few pix whitespace)
 	// let's paint larger to offset the whitespace.
@@ -529,8 +529,8 @@ DrawObject::Cross::~Cross()
 
 void DrawObject::Cross::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-	qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-	qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 	if (theCrossRendererPtr)
 		theCrossRendererPtr->render(myPainter, myRect);

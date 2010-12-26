@@ -429,6 +429,11 @@ public:
 	qreal getTheWidth ( ) const
 		{ return theWidth; }
 
+	/// make sure to override for objects that continously change size during
+	/// the simulation
+	virtual qreal getTempWidth() const
+	{ return theWidth; }
+
 	/**
 	 * Set the value of theHeight
 	 * @param new_var the new value of theHeight
@@ -442,6 +447,11 @@ public:
 	 */
 	qreal getTheHeight ( ) const
 		{ return theHeight; }
+
+	/// make sure to override for objects that continously change size during
+	/// the simulation
+	virtual qreal getTempHeight() const
+	{ return theHeight; }
 
 	/**
 	 * Set the value of theBounciness 
