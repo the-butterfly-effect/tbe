@@ -1,3 +1,3 @@
 include ../Makefile 
-SVGSRC= Rat_Sleeping1.svg Rat_Sleeping2.svg Rat_Walking1.svg Rat_Walking2.svg Rat_Walking3.svg
+SVGSRC= Rat_Sleeping1R.svg Rat_Sleeping2R.svg Rat_Walking1R.svg Rat_Walking2R.svg Rat_Walking3R.svg
 
