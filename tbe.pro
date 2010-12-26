@@ -46,6 +46,7 @@ HEADERS += src/tbe_global.h \
     src/model/PolyObject.h \
     src/model/Position.h \
     src/model/PostIt.h \
+    src/model/RatBread.h \
     src/model/RectObject.h \
     src/model/Scenery.h \
     src/model/Spring.h \
@@ -95,6 +96,7 @@ SOURCES += src/main.cpp \
     src/model/PolyObject.cpp \
     src/model/Position.cpp \
     src/model/PostIt.cpp \
+    src/model/RatBread.cpp \
     src/model/RectObject.cpp \
     src/model/Scenery.cpp \
     src/model/Spring.cpp \
