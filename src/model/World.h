@@ -92,8 +92,10 @@ public:
 	{
 		// we *know* that all b2Joints will have UserData
 		// but e.g. DetonatorHandle does not
-		if (joint->GetUserData() != NULL)
-			reinterpret_cast<JointInterface*>(joint->GetUserData())->jointWasDeleted();
+		JointInterface* myIF = reinterpret_cast<JointInterface*>(joint->GetUserData());
+		DEBUG5("notify %p of joint destruction\n", myIF);
+		if (myIF != NULL)
+			myIF->jointWasDeleted();
 	}
 
 	/// not interested...
