@@ -31,17 +31,54 @@ public:
 static SpringObjectFactory theSpringObjectFactory;
 
 
-#define STARTDISTANCE 0.2f
-const Vector Spring::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
+// this object is a complicated one to get right, because it toys with
+// variable width and such... Complicating factor is the fact that the
+// physical object is significantly smaller than the image or the real object
+//
+// let's try to draw:
+//
+// INITIAL STATE
+//  (the DrawObject is drawn over the total outline)
+//      +-------------+-------------+
+//      |  physobject |  physobject |
+//      |   Spring    *  SpringEnd  |
+//      |             |             |
+//      +-------------+-------------+
+//
+//      |<------------------------->|
+//             getTheWidth()
+//  * = what getOrigCenter returns
+//
+//
+//
+// DURING SIMULATION
+//  (the DrawObject is drawn over the current outline)
+//      +---------+===+----------+
+//      |         |   |          |
+//      | Spring  | * |SXringEnd |
+//      |         |   |          |
+//      +---------+===+----------+
+//
+//      |<------------------------->|
+//             getTheWidth()
+//      |<---------------------->|
+//             getTempWidth()
+//  * = what getTempCenter returns
+//  X = what getOrigCenter returns - WHICH IS NOT IN THE MIDDLE ANYMORE!!!
+//      (Klaas doesn't believe that actually matters here)
+//
+// this is why adjustParameters() and createPhysicsObject()
+// have (new) implementations
+
 
 Spring::Spring()
 		:	RectObject( QObject::tr("Detonator Box"),
 				"",
 				"spring20",
-				0.33, 0.35, 4.0, 0.0), theHandleObjectPtr(NULL)
+				0.4, 0.2, 0.8, 0.0), theHandleObjectPtr(NULL)
 {
-	theProps.setDefaultPropertiesString(
-		Property::PHONENUMBER_STRING + QString(":/") );
+//	theProps.setDefaultPropertiesString(
+//		Property::PHONENUMBER_STRING + QString(":/") );
 }
 
 Spring::~Spring()
@@ -50,15 +87,48 @@ Spring::~Spring()
 	theHandleObjectPtr = NULL;
 }
 
-void Spring::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
+void Spring::adjustParameters(void)
 {
+	clearShapeList();
+	buildShapeList();
+
+	// if there already is a physicsobject, it's wrong
+	if (isPhysicsObjectCreated())
+	{
+		deletePhysicsObject();
+		createPhysicsObject();
+	}
+}
+
+void Spring::buildShapeList(void)
+{
+	DEBUG5("Spring::buildShapeList wxh=%fx%f\n", getTheWidth(),getTheHeight());
+	b2PolygonDef* boxDef = new b2PolygonDef();
+	boxDef->SetAsBox(getTheWidth()/4.0, getTheHeight()/2.0);
+
+	// get mass:  no mass -> no density -> no motion
+	float myMass;
+	if (theProps.property2Float(Property::MASS_STRING, &myMass))
+		boxDef->density = myMass / (getTheWidth()*getTheHeight()) / 2.0;
+	boxDef->userData = this;
+	setFriction(boxDef);
+	theShapeList.push_back(boxDef);
 }
 
 void Spring::createPhysicsObject(void)
 {
-	RectObject::createPhysicsObject();
+	clearShapeList();
+	buildShapeList();
+
+	RectObject::createPhysicsObject(getOrigCenter()+Vector(-0.25*getTheWidth(),0));
+
 	if (theHandleObjectPtr)
+	{
+		theHandleObjectPtr->setTheWidth(0.5*getTheWidth());
+		theHandleObjectPtr->setTheHeight(getTheHeight());
+		theHandleObjectPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
 		theHandleObjectPtr->createPhysicsObject();
+	}
 }
 
 void Spring::deletePhysicsObject(void)
@@ -68,6 +138,16 @@ void Spring::deletePhysicsObject(void)
 	RectObject::deletePhysicsObject();
 }
 
+Position Spring::getTempCenter (void) const
+{
+	// no physics object, no temp center
+	if (isPhysicsObjectCreated()==false)
+		return getOrigCenter();
+
+	Vector myP1(theB2BodyPtr->GetPosition());
+	Vector myP2(theHandleObjectPtr->theB2BodyPtr->GetPosition());
+	return Position(0.5*Vector(myP1+myP2), theB2BodyPtr->GetAngle());
+}
 
 const QString Spring::getToolTip ( ) const
 {
@@ -83,30 +163,29 @@ void Spring::reset(void)
 	// of the handle objectptr, so no need to reset it specifically here...
 	if (theHandleObjectPtr==NULL)
 	{
-		theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+HANDLEOFFSET);
+		theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
 		theWorldPtr->addObject(theHandleObjectPtr);
 	}
-
-	theWorldPtr->registerCallback(this);
 }
 
 void Spring::setOrigCenter ( Position new_var )
 {
 	RectObject::setOrigCenter(new_var);
 
+	Vector myOffset = Vector(0.25*getTheWidth(),0);
 	if (theHandleObjectPtr!=NULL)
-		theHandleObjectPtr->setOrigCenter(new_var+HANDLEOFFSET);
+		theHandleObjectPtr->setOrigCenter(new_var + myOffset);
 }
 
 // ##########################################################################
 // ##########################################################################
 // ##########################################################################
 
-SpringHandle::SpringHandle(Spring* aDBox, const Position& aPos)
+SpringHandle::SpringHandle(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight)
 		:	RectObject( QObject::tr("Spring End"),
 				"no tooltip",
 				"spring20",
-				0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
+				aWidth, aHeight, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(aPos);
 	createPhysicsObject();
@@ -149,8 +228,8 @@ void SpringHandle::createPhysicsObject(void)
 	myJointDef.collideConnected = false;
 	myJointDef.maxMotorForce = 120.0f;
 	myJointDef.motorSpeed = 2.0;
-	myJointDef.lowerTranslation = - STARTDISTANCE/2.0f;
-	myJointDef.upperTranslation = 0.0;
+	myJointDef.lowerTranslation = - getTheWidth()/2.0f;
+	myJointDef.upperTranslation = + getTheWidth()/2.0f;
 	myJointDef.enableLimit = true;
 	myJointDef.enableMotor = true;
 

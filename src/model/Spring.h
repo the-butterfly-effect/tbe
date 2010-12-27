@@ -39,7 +39,7 @@ class ExplosionSplatter;
  *  In our demo, we just hooked those wires up to a mobile phone...
  *  Suuuuure that will work ;-)
  */
-class Spring : public RectObject, public SimStepCallbackInterface
+class Spring : public RectObject
 {
 public:
 	Spring();
@@ -50,6 +50,15 @@ public:
 
 	/// overridden from BaseObject to allow for the handle
 	virtual void deletePhysicsObject(void);
+
+	/**
+	 * Get the current Position of the object.
+	 * This is the current center, i.e. where the object is now.
+	 * For Spring, this is right inbetween the centers of both physobjects
+	 *
+	 * @return the value of theCenter
+	 */
+	virtual Position getTempCenter ( ) const;
 
 	/// overridden from RectObject to make sure
 	/// we can display the phone number
@@ -66,15 +75,23 @@ public:
 	/// overridden from BaseObject in order to also move the handle
 	virtual void setOrigCenter ( Position new_var );
 
-private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+protected:
+	/// this member fixes up the physical model based on new width or height
+	/// overridden from RectObject, assuming that springs are never
+	/// extremely tall or wide
+	virtual void adjustParameters(void);
 
+	void buildShapeList(void);
+
+private:
 	/// offset of center of the handle to the center of the box
 	const static Vector HANDLEOFFSET;
 
 	/// pointer to the handle (separate object)
 	SpringHandle* theHandleObjectPtr;
+
+	/// the real value of the total spring object
+	qreal theSpringWidth;
 
 private:
 	// disable copy constructor / assignment operator
@@ -93,7 +110,7 @@ class SpringHandle : public RectObject, public SimStepCallbackInterface
 {
 private:
 	/// @param aDBox pointer to a Spring, the only object allowed to create a Handle
-	SpringHandle(Spring* aDBox, const Position& aPos);
+	SpringHandle(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
 
 public:
 	virtual ~SpringHandle();
