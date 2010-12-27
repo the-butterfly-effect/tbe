@@ -19,72 +19,119 @@
 #ifndef SPRING_H
 #define SPRING_H
 
-#include "PolyObject.h"
+#include "AbstractBall.h"
 #include "RectObject.h"
+#include "PolyObject.h"
 #include "World.h"
 
-// forward declarations
-class SpringEnd;
-class TranslationGuide;
+#include <QStringList>
 
-/** this class implements a Spring: two ends that when pushed together,
-  * will push back with a force linear to the amount of 'compression'.
-  *
-  * The two ends are modelled separately, with a prismatic joint between them.
-  * This is the main class, that contains two ends. As such, this class
-  * doesn't have a Box2D object associated to it.
-  *
-  * Note that we also have to trick DrawObject because we want a single image
-  * to span both ends and resize when the object resizes.
-  */
-class Spring : public PolyObject
+class SpringHandle;
+class ExplosionSplatter;
+
+
+/** this class implements the Spring for an explosion
+ *  it has a handle object at the top that can be pressed,
+ *  once pressed deep enough, it will send a trigger.
+ *
+ *  Note that we cheat on reality big time here. The original boxes were
+ *  noting more than a dynamo - producing enough current for a spark.
+ *  In our demo, we just hooked those wires up to a mobile phone...
+ *  Suuuuure that will work ;-)
+ */
+class Spring : public RectObject, public SimStepCallbackInterface
 {
 public:
 	Spring();
-
 	virtual ~Spring();
 
-	/// resets the object into the start position/situation
-	/// overridden from RectObject
-	virtual void reset(void);
+	/// overridden to be able to create the handle
+	virtual void createPhysicsObject(void);
 
-	DrawObject* createDrawObject(void);
-
-
-	/// overridden from RectObject to account for daughter objects
-	virtual void createPhysicsObject(Position aPosition);
-
-	/// overridden from RectObject to account for daughter objects
+	/// overridden from BaseObject to allow for the handle
 	virtual void deletePhysicsObject(void);
 
-	virtual Position getTempCenter ( ) const;
+	/// overridden from RectObject to make sure
+	/// we can display the phone number
+	virtual const QString getToolTip ( ) const;
 
-	/// overridden from BaseObject to account for daughter objects
-	qreal getTheWidth ( ) const;
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
 
-	/// overridden from RectObject to account for daughter objects
-	virtual bool isPhysicsObjectCreated(void) const
-		{ return false; }
+	/// overridden from RectObject because this class wants to register for
+	/// callbacks and needs to reset its state machine
+	virtual void reset(void);
+
+	/// overridden from BaseObject in order to also move the handle
+	virtual void setOrigCenter ( Position new_var );
 
 private:
-	void createEnds(void);
+	/// implemented from SimStepCallbackInterface
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
-	SpringEnd* the1stEnd;
-	SpringEnd* the2ndEnd;
-	TranslationGuide* theJoint;
+	/// offset of center of the handle to the center of the box
+	const static Vector HANDLEOFFSET;
+
+	/// pointer to the handle (separate object)
+	SpringHandle* theHandleObjectPtr;
+
+private:
+	// disable copy constructor / assignment operator
+	Spring(const Spring& aBORefToCopy);
+	Spring& operator = (const Spring& aBORefToCopy);
+
+	friend class SpringHandle;
 };
 
-/// SpringEnd is used by the Spring class
-class SpringEnd : public RectObject
+
+/** specific class to handle the nocollision (towards Spring itself)
+  * and no serialization
+  * (because it is part of Spring and shouldn't exist by itself)
+  */
+class SpringHandle : public RectObject, public SimStepCallbackInterface
 {
+private:
+	/// @param aDBox pointer to a Spring, the only object allowed to create a Handle
+	SpringHandle(Spring* aDBox, const Position& aPos);
+
 public:
-	SpringEnd();
+	virtual ~SpringHandle();
 
-	virtual ~SpringEnd();
+	/// overridden to allow setting a custom ZValue
+	virtual DrawObject* createDrawObject();
 
-	/// overridden from the base - this class doesn't have a drawobject
-//	virtual DrawObject* createDrawObject() {return NULL;};
+	/// overridden from BaseObject to allow for the special joints
+	void createPhysicsObject(void);
+
+	/// overridden from BaseObject to allow for the special joints
+	virtual void deletePhysicsObject(void);
+
+	qreal getDistance(void);
+
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
+
+	/// overridden from RectObject because this class wants to register for
+	/// callbacks
+	virtual void reset(void);
+
+	friend class Spring;
+
+private:
+	/// implemented from SimStepCallbackInterface
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+
+	Spring* theDBoxPtr;
+	b2PrismaticJoint* theJointPtr;
+
+private:
+	// disable copy constructor / assignment operator
+	SpringHandle(const SpringHandle& aBORefToCopy);
+	SpringHandle& operator = (const SpringHandle& aBORefToCopy);
 };
+
 
 
 #endif // SPRING_H

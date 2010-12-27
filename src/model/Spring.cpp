@@ -15,9 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-#include "Spring.h"
 
-//// this class' ObjectFactory
+#include "Spring.h"
+#include "tbe_global.h"
+
+//// the Spring class' ObjectFactory
 class SpringObjectFactory : public ObjectFactory
 {
 public:
@@ -28,143 +30,150 @@ public:
 };
 static SpringObjectFactory theSpringObjectFactory;
 
-// note that both ends are not colliding with each other:
-// that makes the minimum start size
-//
-// the default spring is lying flat:
-// +--------------+--------------+   --
-// |              |              |   ^
-// |      M       |      M       |   |  theMinSpringHeight and/or theHeight
-// |              |              |   v
-// +--------------+--------------+   --
-//        |<------------>|<----->|
-//         theMinDistance  theHalfEndSize
-//
-// |<--------------------------->|
-//         theWidth
-//
-// the default (spring20) image size also is 20x10cm
 
-const float theSpringMass = 0.3;
-const float theHalfEndSize = 0.05;
-const float theMinDistance = 2*theHalfEndSize;
-const float theMinSpringWidth  = 4*theHalfEndSize;
-const float theMinSpringHeight = 2*theHalfEndSize;
+#define STARTDISTANCE 0.2f
+const Vector Spring::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
 Spring::Spring()
-		: PolyObject(QObject::tr("Spring"),
-			 "TODO/FIXME",
-			 "spring20",
-			 "",	/* no shapes */
-			 0.20, 0.10, theSpringMass, 0.1),
-		the1stEnd(NULL), the2ndEnd(NULL)
+		:	RectObject( QObject::tr("Detonator Box"),
+				"",
+				"spring20",
+				0.33, 0.35, 4.0, 0.0), theHandleObjectPtr(NULL)
 {
+	theProps.setDefaultPropertiesString(
+		Property::PHONENUMBER_STRING + QString(":/") );
 }
 
 Spring::~Spring()
 {
-	;
+	delete theHandleObjectPtr;
+	theHandleObjectPtr = NULL;
 }
 
-
-DrawObject*  Spring::createDrawObject(void)
+void Spring::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 {
-	return BaseObject::createDrawObject();
 }
 
-void Spring::createPhysicsObject(Position /*aPosition*/)
+void Spring::createPhysicsObject(void)
 {
-	DEBUG1("Spring::createPhysicsObject()\n");
-//	PolyObject::createPhysicsObject();
-	// because we don't have any, and the SpringEnds are not
-	// connected to world, let us pass the info through
-	if (the1stEnd==NULL || the2ndEnd==NULL)
-		createEnds();
-	the1stEnd->createPhysicsObject();
-	the2ndEnd->createPhysicsObject();
+	RectObject::createPhysicsObject();
+	if (theHandleObjectPtr)
+		theHandleObjectPtr->createPhysicsObject();
 }
-
-void Spring::createEnds(void)
-{
-	if (the1stEnd==NULL)
-		the1stEnd = new SpringEnd();
-	if (the2ndEnd==NULL)
-		the2ndEnd = new SpringEnd();
-}
-
 
 void Spring::deletePhysicsObject(void)
 {
-	// because we don't have any, and the SpringEnds are not
-	// connected to world, let us pass the info through
-	PolyObject::deletePhysicsObject();
-	if (the1stEnd!=NULL)
-		the1stEnd->deletePhysicsObject();
-	if (the2ndEnd!=NULL)
-		the2ndEnd->deletePhysicsObject();
+	if(theHandleObjectPtr)
+		theHandleObjectPtr->deletePhysicsObject();
+	RectObject::deletePhysicsObject();
 }
 
-Position Spring::getTempCenter() const
+
+const QString Spring::getToolTip ( ) const
 {
-	if (the1stEnd==NULL || the2ndEnd==NULL )
-		return getOrigCenter();
-
-	Vector myV1 = the1stEnd->getTempCenter().toVector();
-	Vector myV2 = the2ndEnd->getTempCenter().toVector();
-	Vector myMiddle = myV1 + myV2;
-	myMiddle = 0.5 * myMiddle;
-
-	Vector myDiff = myV1 - myV2;
-	double myAngle = myDiff.toAngle();
-
-	return Position(myMiddle.toB2Vec2(), myAngle);
+	//: Translators: The %1 will be replaced by a phone number.
+	return QObject::tr("Send BOOM to me");
 }
-
-qreal Spring::getTheWidth ( ) const
-{
-	if (the1stEnd==NULL || the2ndEnd==NULL )
-		return BaseObject::getTheWidth();
-
-	Vector myV1 = the1stEnd->getTempCenter().toVector();
-	Vector myV2 = the2ndEnd->getTempCenter().toVector();
-
-	Vector myLength = myV1-myV2;
-	return myLength.length()+2*theHalfEndSize;
-}
-
 
 void Spring::reset(void)
 {
-	PolyObject::reset();
+	RectObject::reset();
 
-	// let's create our ends if they don't exist yet
-	// and move them to their places
-	createEnds();
-	float myEndDistance = getTheWidth()-2*theHalfEndSize;
-	the1stEnd->setOrigCenter(getOrigCenter() + -0.5*Vector(myEndDistance,0));
-	the1stEnd->setTempCenter(getOrigCenter() + -0.5*Vector(myEndDistance,0));
-	the1stEnd->setTheHeight(getTheHeight());
-	the1stEnd->reset();
-	the2ndEnd->setOrigCenter(getOrigCenter() +  0.5*Vector(myEndDistance,0));
-	the2ndEnd->setTempCenter(getOrigCenter() +  0.5*Vector(myEndDistance,0));
-	the2ndEnd->setTheHeight(getTheHeight());
-	the2ndEnd->reset();
+	// the reset will already do a delete+create
+	// of the handle objectptr, so no need to reset it specifically here...
+	if (theHandleObjectPtr==NULL)
+	{
+		theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+HANDLEOFFSET);
+		theWorldPtr->addObject(theHandleObjectPtr);
+	}
+
+	theWorldPtr->registerCallback(this);
 }
 
-
-// ###########################################################################
-// ###########################################################################
-// ###########################################################################
-
-SpringEnd::SpringEnd()
-		:	RectObject( QObject::tr("SpringEnd"),
-				"", // no tooltip
-				"", // no image
-				2*theHalfEndSize, 0.1, 0.5*theSpringMass, 0.1)
+void Spring::setOrigCenter ( Position new_var )
 {
+	RectObject::setOrigCenter(new_var);
+
+	if (theHandleObjectPtr!=NULL)
+		theHandleObjectPtr->setOrigCenter(new_var+HANDLEOFFSET);
 }
 
-SpringEnd::~SpringEnd()
+// ##########################################################################
+// ##########################################################################
+// ##########################################################################
+
+SpringHandle::SpringHandle(Spring* aDBox, const Position& aPos)
+		:	RectObject( QObject::tr("Spring End"),
+				"no tooltip",
+				"spring20",
+				0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
-	;
+	setOrigCenter(aPos);
+	createPhysicsObject();
+	theProps.setProperty(Property::ISCHILD_STRING, "yes");
+	theIsMovable = false;
+}
+
+SpringHandle::~SpringHandle()
+{
+	theWorldPtr->removeObject(this);
+}
+
+void SpringHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
+{
+	// if down, stay down and signal the box
+	if (theJointPtr->GetJointTranslation() <= theJointPtr->GetLowerLimit())
+	{
+		theJointPtr->SetMaxMotorForce(0);
+	}
+}
+
+DrawObject*  SpringHandle::createDrawObject(void)
+{
+	RectObject::createDrawObject();
+	// redo the ZValue: BaseObject will set it to 2.0 (default for DrawObjects)
+	// if not in Properties, set to 1.9: the Handle draws behind the Box
+	setDrawObjectZValue(1.9);
+	return theDrawObjectPtr;
+}
+
+void SpringHandle::createPhysicsObject(void)
+{
+	RectObject::createPhysicsObject();
+
+	// initialise the prismatic (translation) joint:
+	// note: Initialize() uses a global coordinate...
+	b2PrismaticJointDef myJointDef;
+	myJointDef.Initialize(theDBoxPtr->theB2BodyPtr, theB2BodyPtr, getOrigCenter().toB2Vec2(), Vector(0,1.0).toB2Vec2());
+	myJointDef.userData = NULL;
+	myJointDef.collideConnected = false;
+	myJointDef.maxMotorForce = 120.0f;
+	myJointDef.motorSpeed = 2.0;
+	myJointDef.lowerTranslation = - STARTDISTANCE/2.0f;
+	myJointDef.upperTranslation = 0.0;
+	myJointDef.enableLimit = true;
+	myJointDef.enableMotor = true;
+
+	assert(theJointPtr==NULL);
+	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
+}
+
+void SpringHandle::deletePhysicsObject(void)
+{
+	RectObject::deletePhysicsObject();
+	// the deletePhysics will already kill the joint, thanks to Box2D.
+	theJointPtr = NULL;
+}
+
+qreal SpringHandle::getDistance(void)
+{
+	if (theJointPtr==NULL)
+		return 0;
+	return theJointPtr->GetJointTranslation();
+}
+
+void SpringHandle::reset(void)
+{
+	RectObject::reset();
+	theWorldPtr->registerCallback(this);
 }
