@@ -395,7 +395,7 @@ public:
 	 * note: do not use this to move an object during simulation
 	 * @param new_var the new value of the center of the body
 	 */
-	void setTempCenter ( Position new_var );
+	virtual void setTempCenter ( Position new_var );
 
 	/**
 	 * Get the Position of the object.
@@ -403,7 +403,7 @@ public:
 	 * return to after a "reset". 
 	 * @return the value of theCenter
 	 */
-	Position getOrigCenter ( ) const
+	virtual Position getOrigCenter ( ) const
 		{ return theCenter; }
 
 	/**
