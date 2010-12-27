@@ -272,7 +272,7 @@ void PolyObject::fillShapeList(void)
 
 			// get mass:  no mass -> no density -> no motion
 			if (myMass != 0.0)
-				myPolyDef->density = myMass / getTheWidth()*getTheHeight();
+				myPolyDef->density = myMass / (getTheWidth()*getTheHeight());
 			myPolyDef->userData = this;
 			setFriction(myPolyDef);
 			theShapeList.push_back(myPolyDef);

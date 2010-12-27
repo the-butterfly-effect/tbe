@@ -172,7 +172,7 @@ void RectObject::adjustParameters(void)
 			// get mass:  no mass -> no density -> no motion
 			float myMass;
 			if (theProps.property2Float(Property::MASS_STRING, &myMass))
-				boxDef->density = myMass / getTheWidth()*getTheHeight();
+				boxDef->density = myMass / (getTheWidth()*getTheHeight());
 			boxDef->userData = this;
 			setFriction(boxDef);
 			theShapeList.push_back(boxDef);
