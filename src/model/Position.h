@@ -80,7 +80,7 @@ public:
 	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
 
 	Position (const QPointF& aPoint, qreal anAngle = 0.0);
-
+	Position (const Vector& aPoint, qreal anAngle = 0.0);
 	Position (const b2Vec2& aVec, qreal anAngle = 0.0);
 
 	// Public attributes

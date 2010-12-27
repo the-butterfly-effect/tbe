@@ -37,6 +37,10 @@ Position::Position (const QPointF& aPoint, qreal anAngle)
 {	; // nothing to do here, sorry...
 }
 
+Position::Position (const Vector& aPoint, qreal anAngle)
+		: x(aPoint.dx), y(aPoint.dy), angle(anAngle)
+{	; // nothing to do here, sorry...
+}
 
 Position::Position (const b2Vec2& aVec, qreal anAngle)
 		: x(aVec.x), y(aVec.y), angle(anAngle)
