@@ -75,6 +75,9 @@ public:
 	/// overridden from BaseObject in order to also move the handle
 	virtual void setOrigCenter ( Position new_var );
 
+	/// get the actual width - with compression accounted for
+	virtual qreal getTempWidth() const;
+
 protected:
 	/// this member fixes up the physical model based on new width or height
 	/// overridden from RectObject, assuming that springs are never
@@ -124,7 +127,9 @@ public:
 	/// overridden from BaseObject to allow for the special joints
 	virtual void deletePhysicsObject(void);
 
-	qreal getDistance(void);
+	/// get the actual displacement of the prismatic joint
+	/// where zero means no compression/extension
+	qreal getDistance(void) const;
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const

@@ -149,6 +149,13 @@ Position Spring::getTempCenter (void) const
 	return Position(0.5*Vector(myP1+myP2), theB2BodyPtr->GetAngle());
 }
 
+qreal Spring::getTempWidth() const
+{
+	if (theHandleObjectPtr==NULL)
+		return 0;
+	return theHandleObjectPtr->getDistance() + getTheWidth();
+}
+
 const QString Spring::getToolTip ( ) const
 {
 	//: Translators: The %1 will be replaced by a phone number.
@@ -200,20 +207,13 @@ SpringHandle::~SpringHandle()
 
 void SpringHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-	// if down, stay down and signal the box
-	if (theJointPtr->GetJointTranslation() <= theJointPtr->GetLowerLimit())
-	{
-		theJointPtr->SetMaxMotorForce(0);
-	}
+//	printf("delta: %f\n", theJointPtr->GetJointTranslation());
+//	theJointPtr->SetMaxMotorForce(0);
 }
 
 DrawObject*  SpringHandle::createDrawObject(void)
 {
-	RectObject::createDrawObject();
-	// redo the ZValue: BaseObject will set it to 2.0 (default for DrawObjects)
-	// if not in Properties, set to 1.9: the Handle draws behind the Box
-	setDrawObjectZValue(1.9);
-	return theDrawObjectPtr;
+	return NULL;
 }
 
 void SpringHandle::createPhysicsObject(void)
@@ -223,13 +223,16 @@ void SpringHandle::createPhysicsObject(void)
 	// initialise the prismatic (translation) joint:
 	// note: Initialize() uses a global coordinate...
 	b2PrismaticJointDef myJointDef;
-	myJointDef.Initialize(theDBoxPtr->theB2BodyPtr, theB2BodyPtr, getOrigCenter().toB2Vec2(), Vector(0,1.0).toB2Vec2());
+	myJointDef.Initialize(theDBoxPtr->theB2BodyPtr,
+						  theB2BodyPtr,
+						  theDBoxPtr->getOrigCenter().toB2Vec2(),
+						  Vector(1.0,0.0).toB2Vec2());
 	myJointDef.userData = NULL;
 	myJointDef.collideConnected = false;
-	myJointDef.maxMotorForce = 120.0f;
-	myJointDef.motorSpeed = 2.0;
-	myJointDef.lowerTranslation = - getTheWidth()/2.0f;
-	myJointDef.upperTranslation = + getTheWidth()/2.0f;
+	myJointDef.maxMotorForce = 1.0f;
+	myJointDef.motorSpeed = 0.0;
+	myJointDef.lowerTranslation = - getTheWidth();
+	myJointDef.upperTranslation = + getTheWidth();
 	myJointDef.enableLimit = true;
 	myJointDef.enableMotor = true;
 
@@ -244,7 +247,7 @@ void SpringHandle::deletePhysicsObject(void)
 	theJointPtr = NULL;
 }
 
-qreal SpringHandle::getDistance(void)
+qreal SpringHandle::getDistance(void) const
 {
 	if (theJointPtr==NULL)
 		return 0;
