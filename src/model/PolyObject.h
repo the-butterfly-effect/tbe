@@ -21,9 +21,6 @@
 
 #include "BaseObject.h"
 
-/// forward declarations
-struct b2PolygonDef;
-
 /**
   * class PolyObject
   *
@@ -64,6 +61,11 @@ public:
 	virtual const QString getName ( ) const
 	{	return theNameString;	}
 
+	/// child objects must specify what type of body they are
+	/// @returns b2_staticBody if this object has no mass
+	///          or b2_dynamicBody if a mass larger than 0.001 kg was set
+	virtual b2BodyType getObjectType(void) const;
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{	return theToolTipString; }
@@ -97,7 +99,8 @@ public:
 	virtual DrawObject* createDrawObject();
 
 protected:
-	virtual void setFriction(b2PolygonDef* aBoxDef);
+	/// TODO/FIXME: see same notes in RectObject...
+	virtual void setFriction(b2FixtureDef* aFixtureDef);
 
 	/** Parse the property POLYGONS_STRING into
 	 *  shapes.

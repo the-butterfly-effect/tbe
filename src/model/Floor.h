@@ -54,6 +54,10 @@ public:
 		return QObject::tr("Floor");
 	}
 
+	/// Floors are by definition static
+	virtual b2BodyType getObjectType(void) const
+	{	return b2_staticBody; }
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{

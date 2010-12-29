@@ -100,11 +100,15 @@ AbstractBall::AbstractBall (const QString& aName,
 {
 	DEBUG5("AbstractBall::AbstractBall\n");
 
-	b2CircleDef* ballDef = new b2CircleDef();
-	ballDef->radius = aRadius;
-	ballDef->density = aMass/(PI*aRadius*aRadius);
-	ballDef->userData = this;
-	theShapeList.push_back(ballDef);
+	b2CircleShape* ballShape = new b2CircleShape();
+	ballShape->m_radius = aRadius;
+
+	b2FixtureDef* ballFixDef = new b2FixtureDef();
+	ballFixDef->density = aMass/(PI*aRadius*aRadius);
+	ballFixDef->userData = this;
+	ballFixDef->shape = ballShape;
+
+	theShapeList.push_back(ballFixDef);
 
 	setTheWidth(2.0*aRadius);
 	setTheHeight(2.0*aRadius);
@@ -141,6 +145,8 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
 }
+
+#if 0
 
 // ---------------------------------------------------------------------------
 // ---------------------------------CustomBall--------------------------------
@@ -204,3 +210,5 @@ void  CustomBall::parseProperties(void)
 	setTheHeight(2.0*myRadius);
 	createPhysicsObject();
 }
+
+#endif

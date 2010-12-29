@@ -26,13 +26,15 @@
 
 const bool World::doSleep = true;
 const qreal World::theDeltaTime = 0.01;
-const unsigned int World::theIterationcount = 100;
+const unsigned int World::theVelocityIterationcount = 30;
+const unsigned int World::thePositionIterationcount = 30;
 
 
 // Constructors/Destructors
 //  
 
-World::World ( void)
+World::World ( void) : theB2World( b2Vec2(0.0f, getG()), doSleep)
+
 {
 	initAttributes();
 }
@@ -49,18 +51,7 @@ World::~World ( )
 	}
 	
 	DEBUG5("World::~World - destroy the rest \n");
-	if (theB2WorldPtr)
-	{
-		delete theB2WorldPtr;
-		theB2WorldPtr = NULL;
-		BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
-
-	}
-	if (theAABBPtr)
-	{
-		delete theAABBPtr;
-		theAABBPtr = NULL;
-	}
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(NULL);
 }
 
 //  
@@ -136,7 +127,7 @@ void World::createScene(MainWindow* myMainPtr)
 	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
 	// all shapes - useful for debugging new objects
 	// but we have to register the debug thingie first.
-	theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+	theB2World.SetDebugDraw(theDrawWorldPtr);
 
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;
@@ -184,51 +175,38 @@ void World::initAttributes( )
 	theDrawWorldPtr = NULL;
 	theTotalTime = 0.0f;
 	
-	theAABBPtr = new b2AABB();
-	theAABBPtr->lowerBound.Set(-5.0f, -50.0f);
-	theAABBPtr->upperBound.Set(100.0f, 100.0f);
-
-	// Define the gravity vector.
-	b2Vec2 myGravity(0.0f, getG());
-
-	// Construct a world object, which will hold and simulate the rigid bodies.
-	theB2WorldPtr = new b2World(*theAABBPtr, myGravity, doSleep);
-	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
-	theB2WorldPtr->SetContactListener(this);
-	theB2WorldPtr->SetDestructionListener(this);
-	theB2WorldPtr->SetContactFilter(this);
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(&theB2World);
+	theB2World.SetContactListener(this);
+	theB2World.SetDestructionListener(this);
+	theB2World.SetContactFilter(this);
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position.Set(50.01f, -1.0f);
-	b2Body* groundBody = theB2WorldPtr->CreateBody(&groundBodyDef);
-	b2PolygonDef groundShapeDef;
-	groundShapeDef.SetAsBox(50.0f, 1.0f);
-	groundShapeDef.restitution=0.0f;
-	b2Shape* myShapePtr = groundBody->CreateShape(&groundShapeDef);
-	DEBUG5("ground body: %p\n", myShapePtr);
+	b2Body* groundBodyPtr = theB2World.CreateBody(&groundBodyDef);
+	b2PolygonShape groundShape;
+	groundShape.SetAsBox(50.0f, 1.0f);
+	groundBodyPtr->CreateFixture(&groundShape, 0.0f);
 
 	// Define the zero body - only used to make DrawDebug look good :-)
-	b2BodyDef zeroBodyDef;
-	zeroBodyDef.position.Set(-0.06f, -0.06f);
-	b2Body* zeroBody = theB2WorldPtr->CreateBody(&zeroBodyDef);
-	b2PolygonDef zeroShapeDef;
-	zeroShapeDef.SetAsBox(0.05f, 0.05f);
-	zeroShapeDef.restitution=0.0f;
-	myShapePtr = zeroBody->CreateShape(&zeroShapeDef);
-	DEBUG5("zero body: %p\n", myShapePtr);
-	BaseJoint::setGroundBodyPtr(zeroBody);
+	b2BodyDef myZeroBodyDef;
+	myZeroBodyDef.type = b2_staticBody;
+	myZeroBodyDef.position.Set(-0.06f, -0.06f);
+	b2Body* myZeroBodyPtr = theB2World.CreateBody(&myZeroBodyDef);
+	b2PolygonShape myZeroShape;
+	myZeroShape.SetAsBox(0.05f, 0.05f);
+	myZeroBodyPtr->CreateFixture(&myZeroShape, 0.0f);
+	BaseJoint::setGroundBodyPtr(myZeroBodyPtr);
 
 
 	// Define the left wall body.
-	b2BodyDef leftBodyDef;
-	leftBodyDef.position.Set(-1.0f, 50.01f);
-	b2Body* leftBody = theB2WorldPtr->CreateBody(&leftBodyDef);
-	b2PolygonDef leftShapeDef;
-	leftShapeDef.SetAsBox(1.0f, 50.0f);
-	leftShapeDef.restitution=0.0f;
-	myShapePtr = leftBody->CreateShape(&leftShapeDef);
-	DEBUG5("left wall body: %p\n", myShapePtr);
+	b2BodyDef myLeftBodyDef;
+	myLeftBodyDef.type = b2_staticBody;
+	myLeftBodyDef.position.Set(-1.0f, 50.01f);
+	b2Body* myLeftBodyPtr = theB2World.CreateBody(&myLeftBodyDef);
+	b2PolygonShape myLeftShape;
+	myLeftShape.SetAsBox(1.0f, 50.0f);
+	myLeftBodyPtr->CreateFixture(&myLeftShape, 0.0f);
 }
 
 void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
@@ -287,6 +265,8 @@ void World::reset ( )
 	// took care of everything in the theToBeRemovedList
 	theToBeRemovedList.clear();
 	theTotalTime = 0;
+
+	theB2World.ClearForces();
 }
 
 
@@ -294,6 +274,8 @@ bool World::ShouldCollide(
 			b2Shape* shape1,
 			b2Shape* shape2)
 {
+// TODO/FIXME BEFORE CHECKIN
+#if 0
 	BaseObject* myObj1 = reinterpret_cast<BaseObject*>(shape1->GetUserData());
 	BaseObject* myObj2 = reinterpret_cast<BaseObject*>(shape2->GetUserData());
 
@@ -311,6 +293,7 @@ bool World::ShouldCollide(
 
 	if (theNoCollisionList.contains(myObj1, myObj2))
 		return false;
+#endif
 	return true;
 }
 
@@ -322,33 +305,35 @@ qreal World::simStep (void)
 	clearLists();
 
 	// run the simulation
-	theB2WorldPtr->Step(theDeltaTime,theIterationcount);
+	theB2World.Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
 
 	// run all the callbacks for each sensor
 	ContactPointList::iterator j = theAddedCPList.begin();
 	for (; j!=theAddedCPList.end(); ++j)
 	{
-		b2ContactPoint* myCPPtr = &(*j);
-		b2Shape* myShape1 = myCPPtr->shape1;
-		b2Shape* myShape2 = myCPPtr->shape2;
+		const b2Contact* myCPtr = *j;
+		const b2Fixture* myFixtureA = myCPtr->GetFixtureA();
+		const b2Fixture* myFixtureB = myCPtr->GetFixtureB();
 
 		// only call the sensor when just *one* of both shapes is a sensor
-		if (myShape1->IsSensor() && !myShape2->IsSensor())
+		if (myFixtureA->IsSensor() && !myFixtureB->IsSensor())
 		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myShape1->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myFixtureA->GetUserData());
 			if (myPtr!=NULL)
-				myPtr->callBackSensor(myCPPtr);
+				myPtr->callBackSensor(myCPtr);
 		}
-		if (!myShape1->IsSensor() && myShape2->IsSensor())
+		if (!myFixtureA->IsSensor() && myFixtureB->IsSensor())
 		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myShape2->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myFixtureB->GetUserData());
 			if (myPtr!=NULL)
-				myPtr->callBackSensor(myCPPtr);
+				myPtr->callBackSensor(myCPtr);
 		}
 	}
 
 	// check all contactresults if either of the objects is interested
 	// in hearing the impulses...
+// TODO/FIXME before checkin:
+#if 0
 	for (ContactResultList::iterator k = theContactResultList.begin();
 			 k!=theContactResultList.end(); ++k)
 	{
@@ -372,11 +357,13 @@ qreal World::simStep (void)
 				myBO2Ptr->reportTangentImpulse( myResPtr->tangentImpulse );
 		}
 	}
-
+#endif
 
 	// run all the callbacks per sim step
 	foreach(SimStepCallbackInterface* i, theCallbackList)
 		i->callbackStep(theDeltaTime, theTotalTime);
+
+printf("deltaT: %f, totalT: %f\n", theDeltaTime, theTotalTime);
 
 	// remove all scheduled BaseObjects from the World
 	ToRemoveList::iterator k;

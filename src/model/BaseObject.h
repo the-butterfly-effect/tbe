@@ -23,6 +23,8 @@
 #include "Position.h"
 #include "Property.h"
 
+#include "b2Body.h"
+
 #include <QObject>
 #include <QString>
 #include <QList>
@@ -34,13 +36,11 @@ class DrawObject;
 class ObjectFactory;
 class World;
 class ShapeList;
-class b2Body;
-class b2BodyDef;
-class b2ContactPoint;
-class b2ContactResult;
-class b2World;
+class b2Contact;
+class b2FixtureDef;
 class b2ShapeDef;
 class b2Shape;
+class b2World;
 class BaseObjectSerializer;
 
 //   ************************************************
@@ -85,7 +85,7 @@ public:
 
 	/// called if Object has registered a sensor share
 	/// the default is to do completely nothing - you'll have to override
-	virtual void callBackSensor(b2ContactPoint*)
+	virtual void callBackSensor(const b2Contact*)
 	{ return; }
 
 	// note: b2ContactPoint is defined in file:
@@ -147,11 +147,23 @@ public:
 
 // ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
 //
-//   In Box2D, we have Worlds, Bodies, Shapes and Joints:
+//   In Box2D, we have Worlds, Bodies, Fixtures, Shapes and Joints:
 //
 //	 * World    - the "space" all bodies live in
-//	 * Body     - the concept of an object in the world. 
-//	 *            Mass is linked to Body, no mass implied a rigid, static body
+//	 * Body     - the concept of any object in the world.
+//                there are three types of bodies:
+//                  * dynamic bodies
+//					* static bodies
+//                  * kinetic bodies (not used in TBE)
+//				  This is described through the getObjectType() member
+//                NOTE:  Box2D will automatically set mass to 1.0 if a
+//                dynamic body has zero mass
+//                NOTE2: only for static bodies, our code is allowed to do
+//                movement by hand - otherwise movement is always handled by
+//                the Box2D solver!!!
+//   * Fixture  - describes how the shapes together form a body. concepts like
+//                relative position, bounciness, friction and mass are
+//                described here
 //	 * Shape    - the shape of a body - a series of convex polygons or circles
 //	 *            It is possible to use more than one shape in a body
 //	 * Joint    - the link between two bodies, constraining relative movement
@@ -212,6 +224,12 @@ public:
 
 	void setID (const QString& anID)
 	{	theID = anID; }
+
+	/// child objects must specify what type of body they are
+	/// @returns a value from the b2BodyType enum, valid options
+	///          within TBE are b2_dynamicBody and b2_staticBody
+	///          if unsure (e.g. joints) return b2_staticBody
+	virtual b2BodyType getObjectType(void) const = 0;
 
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const = 0;
@@ -343,7 +361,7 @@ protected:
 	typedef QSet<JointInterface*>  JointList;
 	JointList theJointList;
 
-	typedef QList<b2ShapeDef*> ShapeList;
+	typedef QList<b2FixtureDef*> ShapeList;
 	ShapeList theShapeList;
 
 	friend class DrawPolyObject;

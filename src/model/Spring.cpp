@@ -207,8 +207,8 @@ SpringHandle::~SpringHandle()
 
 void SpringHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-//	printf("delta: %f\n", theJointPtr->GetJointTranslation());
-//	theJointPtr->SetMaxMotorForce(0);
+// FIXME/TODO: need ticket:243 complete before I can finish this:
+//	theJointPtr->SetMotorForce(5 * theJointPtr->GetJointTranslation());
 }
 
 DrawObject*  SpringHandle::createDrawObject(void)

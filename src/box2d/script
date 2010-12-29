@@ -1,0 +1,7 @@
+for I in `ls -1`; \
+do \
+  FULLNAME=`echo $I | sed 's|.*/||'`; \
+  echo I $I full ${FULLNAME}; \
+  cat $I | sed 's|#include <.*/\(.*\.h\)>|#include "\1"|' >../box2d/${FULLNAME}; \
+done;
+ 

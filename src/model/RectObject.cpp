@@ -165,17 +165,19 @@ void RectObject::adjustParameters(void)
 		}
 		else
 		{
-			DEBUG5("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
-			b2PolygonDef* boxDef = new b2PolygonDef();
-			boxDef->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
+			DEBUG3("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
+			b2PolygonShape* myBoxShape = new b2PolygonShape();
+			myBoxShape->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
 
-			// get mass:  no mass -> no density -> no motion
+			// get mass:  if no mass set, we'll make this a b2_staticBody
+			b2FixtureDef* myBoxDef = new b2FixtureDef();
 			float myMass;
 			if (theProps.property2Float(Property::MASS_STRING, &myMass))
-				boxDef->density = myMass / (getTheWidth()*getTheHeight());
-			boxDef->userData = this;
-			setFriction(boxDef);
-			theShapeList.push_back(boxDef);
+				myBoxDef->density = myMass / (getTheWidth()*getTheHeight());
+			myBoxDef->shape   = myBoxShape;
+			myBoxDef->userData = this;
+			setFriction(myBoxDef);
+			theShapeList.push_back(myBoxDef);
 		}
 	}
 
@@ -201,7 +203,7 @@ void RectObject::adjustTallParametersPart(void)
 	qreal myDoneHeight = 0.0;
 	for (int i=0; i<myNrOfElements; i++)
 	{
-		b2PolygonDef* boxDef = new b2PolygonDef();
+		b2PolygonShape* myBoxShape = new b2PolygonShape();
 
 		// make sure *not* to have a small last part - i.e. the last two parts
 		// average their height.
@@ -217,13 +219,15 @@ void RectObject::adjustTallParametersPart(void)
 				myElemHeight = getTheHeight()-myDoneHeight;
 			}
 		}
-		DEBUG5("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
-		boxDef->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
+		DEBUG3("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
+		myBoxShape->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
 							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
-		boxDef->density = myDensity;
-		boxDef->userData = this;
-		setFriction(boxDef);
-		theShapeList.push_back(boxDef);
+		b2FixtureDef* myBoxDef = new b2FixtureDef();
+		myBoxDef->shape   = myBoxShape;
+		myBoxDef->density = myDensity;
+		myBoxDef->userData = this;
+		setFriction(myBoxDef);
+		theShapeList.push_back(myBoxDef);
 		myDoneHeight += myElemHeight;
 	}
 }
@@ -242,7 +246,7 @@ void RectObject::adjustWideParametersPart(void)
 	qreal myDoneWidth = 0.0;
 	for (int i=0; i<myNrOfElements; i++)
 	{
-		b2PolygonDef* boxDef = new b2PolygonDef();
+		b2PolygonShape* myBoxShape = new b2PolygonShape();
 
 		// make sure *not* to have a small last part - i.e. the last two parts
 		// average their width.
@@ -258,13 +262,15 @@ void RectObject::adjustWideParametersPart(void)
 				myElemWidth = getTheWidth()-myDoneWidth;
 			}
 		}
-//		DEBUG5("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
-		boxDef->SetAsBox  	( myElemWidth/2.0, getTheHeight()/2.0,
+		DEBUG3("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
+		myBoxShape->SetAsBox( myElemWidth/2.0, getTheHeight()/2.0,
 							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
-		boxDef->density = myDensity;
-		boxDef->userData = this;
-		setFriction(boxDef);
-		theShapeList.push_back(boxDef);
+		b2FixtureDef* myBoxDef = new b2FixtureDef();
+		myBoxDef->shape   = myBoxShape;
+		myBoxDef->density = myDensity;
+		myBoxDef->userData = this;
+		setFriction(myBoxDef);
+		theShapeList.push_back(myBoxDef);
 		myDoneWidth += myElemWidth;
 	}
 
@@ -277,6 +283,14 @@ DrawObject*  RectObject::createDrawObject(void)
 	return BaseObject::createDrawObject();
 }
 
+b2BodyType RectObject::getObjectType(void) const
+{
+	float myMass;
+	theProps.property2Float(Property::MASS_STRING, &myMass);
+	if (myMass > 0.001)
+		return b2_dynamicBody;
+	return b2_staticBody;
+}
 
 void RectObject::initAttributes ( )
 {
@@ -314,7 +328,7 @@ void  RectObject::parseProperties(void)
 	adjustParameters();
 }
 
-void  RectObject::setFriction(b2PolygonDef* aBoxDef)
+void  RectObject::setFriction(b2FixtureDef* aFixtureDef)
 {
 	// only set friction if it is special
 	if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
@@ -322,7 +336,7 @@ void  RectObject::setFriction(b2PolygonDef* aBoxDef)
 
 	float myFriction = 0;
 	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
-		aBoxDef->friction = myFriction;
+		aFixtureDef->friction = myFriction;
 	else
 		assert(false);
 }

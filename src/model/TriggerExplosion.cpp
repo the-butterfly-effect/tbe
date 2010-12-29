@@ -435,12 +435,15 @@ ExplosionSplatter::ExplosionSplatter()
 
 	// the sensor - slightly larger
 	// (sensor is used for collision detection & getting rid of the object if needed)
-	b2CircleDef* mySensorDef = new b2CircleDef();
-	mySensorDef->radius = 1.01 * theRadius;
-	mySensorDef->isSensor = true;
-	mySensorDef->userData = this;
-	theShapeList.push_back(mySensorDef);
+	b2CircleShape* ballShape = new b2CircleShape();
+	ballShape->m_radius = 1.01 * theRadius;
 
+	b2FixtureDef* ballFixDef = new b2FixtureDef();
+	ballFixDef->isSensor = true;
+	ballFixDef->userData = this;
+	ballFixDef->shape = ballShape;
+
+	theShapeList.push_back(ballFixDef);
 }
 
 ExplosionSplatter::~ExplosionSplatter()
@@ -505,5 +508,5 @@ void ExplosionSplatter::setMass( qreal aSplatterMass )
 	myMD.mass = aSplatterMass;
 	myMD.center = b2Vec2(0,0);
 	myMD.I = 0.0008 * aSplatterMass;
-	theB2BodyPtr->SetMass(&myMD);
+	theB2BodyPtr->SetMassData(&myMD);
 }

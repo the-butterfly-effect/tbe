@@ -22,7 +22,7 @@
 #include "BaseObject.h"
 
 /// forward declarations
-struct b2PolygonDef;
+class b2FixtureDef;
 
 /**
   * class RectObject
@@ -68,6 +68,11 @@ public:
 		return theNameString;
 	}
 
+	/// child objects must specify what type of body they are
+	/// @returns b2_staticBody if this object has no mass
+	///          or b2_dynamicBody if a mass larger than 0.001 kg was set
+	virtual b2BodyType getObjectType(void) const;
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{
@@ -111,7 +116,9 @@ protected:
 
 	static const qreal ASPECT_RATIO;
 
-	void setFriction(b2PolygonDef* aBoxDef);
+	/// TODO/FIXME: promote this member to BaseObject???
+	/// TODO/FIXME: add documentation for this member!!!
+	void setFriction(b2FixtureDef* aFixtureDef);
 
 private:
 	/// adjustParameters for tall objects (where height/width > ASPECT_RATIO)

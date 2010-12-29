@@ -106,10 +106,9 @@ bool BaseObject::isMovable ( ) const
 
 void BaseObject::setTempCenter ( Position new_var )
 {
-	bool isDone = isPhysicsObjectCreated();
-	assert(isDone);
-	UNUSED_VAR(isDone);
-	theB2BodyPtr->SetXForm(b2Vec2(new_var.x, new_var.y), new_var.angle);
+	assert(isPhysicsObjectCreated());
+	if (theB2BodyPtr!=NULL)
+		theB2BodyPtr->SetTransform(b2Vec2(new_var.x, new_var.y), new_var.angle);
 }
 
 
@@ -127,8 +126,13 @@ void BaseObject::clearShapeList()
 {
 	while(theShapeList.isEmpty()==false)
 	{
-		b2ShapeDef* mySDPtr = theShapeList.first();
-		delete mySDPtr;
+		b2FixtureDef* myFixtureDefPtr = theShapeList.first();
+		if (myFixtureDefPtr!=NULL)
+		{
+			const b2Shape* myShapePtr = myFixtureDefPtr->shape;
+			delete myShapePtr;
+		}
+		delete myFixtureDefPtr;
 		theShapeList.pop_front();
 	}
 }
@@ -158,12 +162,16 @@ void BaseObject::createPhysicsObject(Position aPosition)
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
 	theB2BodyDefPtr->angle = aPosition.angle;
+	theB2BodyDefPtr->type  = getObjectType();
 	// do not set mass properties here - that will be done in derived classes
 	// (and as such is done already when we get here)
 	
-	// then create the body
+	// then create the body (or not)
 	if (theB2BodyPtr!=NULL)
 		deletePhysicsObject();
+	if (theShapeList.count()==0)
+		return;
+
 	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
 	assert(theB2BodyPtr != NULL);
 	
@@ -172,10 +180,10 @@ void BaseObject::createPhysicsObject(Position aPosition)
 	for (;myI != theShapeList.end(); ++myI)
 	{
 		(*myI)->restitution = theBounciness;
-		b2Shape* myPtr = theB2BodyPtr->CreateShape(*myI);
+		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
 		DEBUG5("  Shape* = %p\n", myPtr);
 	}
-	theB2BodyPtr->SetMassFromShapes();
+//	theB2BodyPtr->SetMassFromShapes();
 	DEBUG5("Object %s has mass %f kg\n", ASCII(getName()),
 		theB2BodyPtr->GetMass());
 	notifyJoints(JointInterface::CREATED);
@@ -237,13 +245,13 @@ void BaseObject::initAttributes ( )
 		Property::ZVALUE_STRING + QString(":2.0/") );
 }
 
-bool BaseObject::isSleeping() const
-{
-	if (isPhysicsObjectCreated()) 
-		return theB2BodyPtr->IsSleeping(); 
-	else 
-		return false;
-}
+//bool BaseObject::isSleeping() const
+//{
+//	if (isPhysicsObjectCreated()) 
+//		return theB2BodyPtr->IsSleeping(); 
+//	else 
+//		return false;
+//}
 
 void BaseObject::notifyJoints(JointInterface::JointStatus aStatus)
 {

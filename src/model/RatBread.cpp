@@ -20,15 +20,15 @@
 #include <QStringList>
 
 // this class' ObjectFactory
-//class RatObjectFactory : public ObjectFactory
-//{
-//public:
-//	RatObjectFactory(void)
-//	{	announceObjectType("Rat", this); }
-//	virtual BaseObject* createObject(void) const
-//	{	return fixObject(new Rat()); }
-//};
-//static RatObjectFactory theRatObjectFactory;
+class RatObjectFactory : public ObjectFactory
+{
+public:
+	RatObjectFactory(void)
+	{	announceObjectType("Rat", this); }
+	virtual BaseObject* createObject(void) const
+	{	return fixObject(new Rat()); }
+};
+static RatObjectFactory theRatObjectFactory;
 
 
 const static float theRatMass = 0.8;

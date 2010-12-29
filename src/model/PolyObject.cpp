@@ -251,14 +251,14 @@ void PolyObject::fillShapeList(void)
 	QStringList::iterator i = myPolygonList.begin();
 	while (i!=myPolygonList.end())
 	{
-		b2PolygonDef* myPolyDef = new b2PolygonDef();
+		b2PolygonShape* myPolyShape = new b2PolygonShape();
 
 		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
 		// if we find a shape with less than three vertexes, let's ignore it
 		// this is very convenient if you need to adapt the AABB :-)
-		myPolyDef->vertexCount = myCoordList.count();
 		if (myCoordList.count()>=3)
 		{
+			b2Vec2 myVertices[b2_maxPolygonVertices];
 			for (int j=0; j<myCoordList.count(); j++)
 			{
 				assert (j < b2_maxPolygonVertices);
@@ -267,18 +267,30 @@ void PolyObject::fillShapeList(void)
 				assert (isDone == true);
 				UNUSED_VAR(isDone);
 				Vector myScaledCoord = myScale*myCoord;
-				myPolyDef->vertices[j]=myScaledCoord.toB2Vec2();
+				myVertices[j]=myScaledCoord.toB2Vec2();
 			}
+			myPolyShape->Set(myVertices, myCoordList.count());
 
 			// get mass:  no mass -> no density -> no motion
+			b2FixtureDef* myFixtureDef = new b2FixtureDef();
+			myFixtureDef->shape   = myPolyShape;
 			if (myMass != 0.0)
-				myPolyDef->density = myMass / (getTheWidth()*getTheHeight());
-			myPolyDef->userData = this;
-			setFriction(myPolyDef);
-			theShapeList.push_back(myPolyDef);
+				myFixtureDef->density = myMass / (getTheWidth()*getTheHeight());
+			myFixtureDef->userData = this;
+			setFriction(myFixtureDef);
+			theShapeList.push_back(myFixtureDef);
 		}
 		++i;
 	}
+}
+
+b2BodyType PolyObject::getObjectType(void) const
+{
+	float myMass;
+	theProps.property2Float(Property::MASS_STRING, &myMass);
+	if (myMass > 0.001)
+		return b2_dynamicBody;
+	return b2_staticBody;
 }
 
 void PolyObject::parseProperties(void)
@@ -293,7 +305,7 @@ void PolyObject::parseProperties(void)
 
 }
 
-void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
+void  PolyObject::setFriction(b2FixtureDef* aFixtureDef)
 {
 	// only set friction if it is special
 	if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
@@ -301,7 +313,7 @@ void  PolyObject::setFriction(b2PolygonDef* aBoxDef)
 
 	float myFriction = 0;
 	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
-		aBoxDef->friction = myFriction;
+		aFixtureDef->friction = myFriction;
 	else
 		assert(false);
 }

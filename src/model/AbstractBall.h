@@ -55,6 +55,10 @@ public:
 	virtual const QString getName ( ) const
 	{	return theBallName;	}
 
+	/// all balls have a mass and thus are dynamic:
+	virtual b2BodyType getObjectType(void) const
+	{	return b2_dynamicBody; }
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{	return theBallTooltip; }

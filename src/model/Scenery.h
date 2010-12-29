@@ -43,6 +43,10 @@ public:
 		return QObject::tr("Scenery");
 	}
 
+	/// Scenery has no mass. But no b2Body will be created either :-)
+	virtual b2BodyType getObjectType(void) const
+	{	return b2_staticBody; }
+
 	/// returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const
 	{

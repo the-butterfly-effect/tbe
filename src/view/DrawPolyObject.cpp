@@ -70,7 +70,7 @@ QPainterPath DrawPolyObject::shape() const
 		QPolygonF myPolygon;
 
 		// only handle the true poly shapes
-		b2PolygonDef* myPoly = dynamic_cast<b2PolygonDef*>(*myI);
+		const b2PolygonShape* myPoly = dynamic_cast<const b2PolygonShape*>((*myI)->shape);
 		if (myPoly==NULL)
 		{
 			++myI;
@@ -78,13 +78,13 @@ QPainterPath DrawPolyObject::shape() const
 		}
 
 		int i;
-		for (i=0; i < myPoly->vertexCount; i++)
+		for (i=0; i < myPoly->m_vertexCount; i++)
 		{
-			b2Vec2 myVec = myPoly->vertices[i];
+			b2Vec2 myVec = myPoly->m_vertices[i];
 			myPolygon << QPointF(myVec.x*theScale, -myVec.y*theScale);
 		}
 		// and close the loop
-		b2Vec2 myVec = myPoly->vertices[0];
+		b2Vec2 myVec = myPoly->m_vertices[0];
 		myPolygon << QPointF(myVec.x*theScale, -myVec.y*theScale);
 
 		path.addPolygon ( myPolygon );

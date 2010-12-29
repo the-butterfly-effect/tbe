@@ -20,6 +20,7 @@
 #define WORLD_H
 
 #include "Box2D.h"
+#include "b2Contact.h"
 #include "tbe_global.h"
 
 #include "BaseJoint.h"
@@ -46,38 +47,23 @@ class ContactListener : public b2ContactListener
 {
 protected:
 	/// implemented from b2ContactListener: add a new contact point
-	void Add(const b2ContactPoint* point)
-	{ theAddedCPList.push_back(*point); }
-
-	/// implemented from b2ContactListener: list a persisting contact point
-	void Persist(const b2ContactPoint*)
-	{ /* no action */ }
+	void BeginContact(const b2Contact* point)
+	{ theAddedCPList.push_back(point); }
 
 	/// implemented from b2ContactListener: contact point was removed
-	void Remove(const b2ContactPoint*)
+	void EndContact(const b2Contact*)
 	{ /* no action */ }
-
-	/** implemented from b2ContactListener:
-	 *  contact point resulted in a normal or tangential impulse
-	 */
-	void Result(const b2ContactResult* result)
-	{
-		theContactResultList.push_back(*result);
-	}
 
 	/// it doesn't make sense to use any more complex storage than vector
 	/// the good news is that vector makes a copy upon insertion
 	/// - that's what we need anyway
-	typedef std::vector<b2ContactPoint> ContactPointList;
+	typedef std::vector<const b2Contact*> ContactPointList;
 	ContactPointList theAddedCPList;
-	typedef std::vector<b2ContactResult> ContactResultList;
-	ContactResultList theContactResultList;
 
 	/// erase all lists again
 	void clearLists(void)
 	{
 		theAddedCPList.clear();
-		theContactResultList.clear();
 	}
 };
 
@@ -99,7 +85,7 @@ public:
 	}
 
 	/// not interested...
-	virtual void SayGoodbye(b2Shape*) {};
+	virtual void SayGoodbye(b2Fixture*) {};
 };
 
 
@@ -189,8 +175,7 @@ public:
 	 */
 	void removeJoint(b2Joint* aJointPtr)
 	{
-		if (theB2WorldPtr!=NULL)
-			theB2WorldPtr->DestroyJoint(aJointPtr);
+		theB2World.DestroyJoint(aJointPtr);
 	}
 
 	/** removes the BaseObject pointed to from world after all simulations
@@ -311,11 +296,8 @@ private:
 	/// pointer to the associated VIEW class of World
 	DrawWorld* theDrawWorldPtr;
 
-	// The two attributes that make World tick:
-	// 
-	
-	b2World* theB2WorldPtr;
-	b2AABB*  theAABBPtr;
+	/// The attribute that makes World tick
+	b2World theB2World;
 	
 	/// Do we want to let bodies sleep?
 	static const bool doSleep;
@@ -323,9 +305,11 @@ private:
 	/// the time taking in each time step
 	static const qreal theDeltaTime;
 	
-	/// the number of iterations of Box2D per time step
-	static const unsigned int theIterationcount;
-	
+	/// the number of velocity iterations of Box2D per time step
+	static const unsigned int theVelocityIterationcount;
+	/// the number of position iterations of Box2D per time step
+	static const unsigned int thePositionIterationcount;
+
 	QString theLevelName;
 
 	qreal	theWorldWidth;

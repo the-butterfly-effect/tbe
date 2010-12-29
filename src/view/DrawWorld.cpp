@@ -506,9 +506,9 @@ void DrawWorld::DrawSegment(UNUSED_ARG const b2Vec2& p1,
 }
 /// Draw a transform. Choose your own length scale.
 /// @param xf a transform.
-void DrawWorld::DrawXForm(UNUSED_ARG const b2XForm& xf)
+void DrawWorld::DrawTransform(UNUSED_ARG const b2Transform& xf)
 {
-	DEBUG5("DrawWorld::DrawXForm\n");
+	DEBUG5("DrawWorld::DrawTransform\n");
 }
 
 void DrawWorld::addDebugDrawToList(QGraphicsItem* anItem)

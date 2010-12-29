@@ -231,10 +231,12 @@ void Balloon::switchToSmallShape(void)
 	deletePhysicsObject();
 	clearShapeList();
 
-	b2PolygonDef* myRestDef = new b2PolygonDef();
-	myRestDef->SetAsBox(0.05, 0.05);
+	b2PolygonShape* myRestShape = new b2PolygonShape();
+	myRestShape->SetAsBox(0.05, 0.05);
+	b2FixtureDef* myRestDef = new b2FixtureDef();
 	myRestDef->density= 0.001 / (0.1 * 0.1);
 	myRestDef->userData = this;
+	myRestDef->shape   = myRestShape;
 	theShapeList.push_back(myRestDef);
 
 	createPhysicsObject(myCurrentPos);

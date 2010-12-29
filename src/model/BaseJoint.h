@@ -47,6 +47,10 @@ public:
 	/// (most Joints will not have bodies)
 	virtual void deletePhysicsObject(void);
 
+	/// all joints have no mass, I'd hesitate to call them static, though...
+	virtual b2BodyType getObjectType(void) const
+	{	return b2_dynamicBody; }
+
 	/** Get the current center position of the object.
 	 *  As joints do not have a center, this one usually returns the start position.
 	 *  FIXME/TODO: This is not entirely correct as joints may actually move.
