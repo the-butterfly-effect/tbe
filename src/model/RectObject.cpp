@@ -115,7 +115,8 @@ RectObject::RectObject( const QString& aDisplayName,
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
 	setTheWidth(aWidth);
 	setTheHeight(aHeight);
-	theProps.setProperty(Property::MASS_STRING, QString::number(aMass));
+	theProps.setDefaultPropertiesString(
+		QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
 	setTheBounciness(aBounciness);
 	initAttributes();
 }
@@ -286,8 +287,7 @@ DrawObject*  RectObject::createDrawObject(void)
 b2BodyType RectObject::getObjectType(void) const
 {
 	float myMass;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
-	if (myMass > 0.001)
+	if (theProps.property2Float(Property::MASS_STRING, &myMass))
 		return b2_dynamicBody;
 	return b2_staticBody;
 }

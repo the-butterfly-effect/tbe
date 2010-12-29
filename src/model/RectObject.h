@@ -70,7 +70,7 @@ public:
 
 	/// child objects must specify what type of body they are
 	/// @returns b2_staticBody if this object has no mass
-	///          or b2_dynamicBody if a mass larger than 0.001 kg was set
+	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const;
 
 	/// returns the Tooltip of the object.

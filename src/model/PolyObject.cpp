@@ -287,8 +287,7 @@ void PolyObject::fillShapeList(void)
 b2BodyType PolyObject::getObjectType(void) const
 {
 	float myMass;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
-	if (myMass > 0.001)
+	if (theProps.property2Float(Property::MASS_STRING, &myMass))
 		return b2_dynamicBody;
 	return b2_staticBody;
 }

@@ -363,8 +363,6 @@ qreal World::simStep (void)
 	foreach(SimStepCallbackInterface* i, theCallbackList)
 		i->callbackStep(theDeltaTime, theTotalTime);
 
-printf("deltaT: %f, totalT: %f\n", theDeltaTime, theTotalTime);
-
 	// remove all scheduled BaseObjects from the World
 	ToRemoveList::iterator k;
 	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
