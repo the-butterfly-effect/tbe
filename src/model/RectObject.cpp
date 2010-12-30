@@ -186,8 +186,8 @@ void RectObject::adjustParameters(void)
 	if (isPhysicsObjectCreated())
 	{
 		deletePhysicsObject();
-		createPhysicsObject();
 	}
+	createPhysicsObject();
 }
 
 void RectObject::adjustTallParametersPart(void)
