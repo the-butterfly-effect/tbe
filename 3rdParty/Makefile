@@ -1,7 +1,7 @@
-BOX2D=Box2D_v2.0.1
+BOX2D=Box2D_v2.1.2
+SRCBOX2D=../src/box2d
 QTVERSION=qt-x11-opensource-src-4.5.3
 INSTALLJAMMER=InstallJammer-1.2.14-Linux-x86-Install
-WINBOX2D=WinBox2D
 
 MY3RDPARTYDIR=${PWD}
 MYINCDIR=${MY3RDPARTYDIR}/include
@@ -13,8 +13,7 @@ MYPLUGINSDIR=${MY3RDPARTYDIR}/plugins
 # this will allow 3 parallel build threads - works great on a Core2 Duo :-)
 FASTERMAKE=-j3
 
-# only build static box2d / use Qt from host system
-all:	${MYLIBDIR}/libbox2d.a 
+all:	 
 
 # only build (static) QT for release builds
 release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a installjammer
@@ -25,38 +24,27 @@ clean:
 	rm -rf ${QTVERSION}
 	rm -rf ${MYINCDIR}/* ${MYLIBDIR}/* ${MYBINDIR}/* ${MYPLUGINSDIR}/* ${MYMKSPECDIR}/*
 	rm -rf installjammer
-	rm -rf ${WINBOX2D} ${WINBOX2D}.zip
 
 #----------------------------- internal targets
 
-${MYLIBDIR}/libbox2d.a:
-	unzip -q ${BOX2D}.zip
-	patch --silent -p0 <box2d_compile.patch
-	patch --silent -p0 <box2d_fix_warnings.patch
-	patch --silent -p0 <box2d_increase_polygon_vertices.patch
-	cd ${BOX2D}/Box2D/Source && ${MAKE} ${FASTERMAKE} Gen/float/libbox2d.a 
-	cp ${BOX2D}/Box2D/Source/Gen/float/libbox2d.a ${MYLIBDIR}
+${BOX2D}.zip:
+	curl --remote-name http://box2d.googlecode.com/files/${BOX2D}.zip
 
-# because I don't have a shell environment on my windows box, I need to
-# simplify my directory structure :-(
-# here we create a zip archive with all flattened files
-${WINBOX2D}.zip: ${MYLIBDIR}/libbox2d.a
-	mkdir -p ${WINBOX2D}
-	find ${BOX2D}/Box2D/Source -name '*.cpp' > ${WINBOX2D}/manifest
-	find ${BOX2D}/Box2D/Source -name '*.h'  >> ${WINBOX2D}/manifest
-	echo ${BOX2D}/Box2D/Include/Box2D.h     >> ${WINBOX2D}/manifest
-	echo "SOURCES= \\" > ${WINBOX2D}/Makefile
-	for I in `cat ${WINBOX2D}/manifest`; \
+${BOX2D}:
+	unzip ${BOX2D}.zip
+
+# in order to be able to update 
+${SRCBOX2D}: ${BOX2D}.zip ${BOX2D}
+	mkdir -p ${SRCBOX2D}
+	rm -f ${BOX2D}/manifest
+	find ${BOX2D}/Box2D/Box2D -name '*.cpp' > ${BOX2D}/manifest
+	find ${BOX2D}/Box2D/Box2D -name '*.h'  >> ${BOX2D}/manifest
+	for I in `cat ${BOX2D}/manifest`; \
 		do \
 		FULLNAME=`echo $$I | sed 's|.*/||'`; \
 		#echo I $$I full $${FULLNAME}; \
-		cat $$I | sed 's|#include ".*/\(.*\.h\)"|#include "\1"|' >${WINBOX2D}/$${FULLNAME}; \
-		echo "$${FULLNAME} \\" >> ${WINBOX2D}/Makefile; \
+		cat $$I | sed 's|#include <.*/\(.*\.h\)>|#include "\1"|' >${SRCBOX2D}/$${FULLNAME}; \
 	done;
-	/bin/echo -e '\nlibbox2d.a: $$(SOURCES:.cpp=.o)\n\tar cr $$@ $$^\n\tranlib $$@' >> ${WINBOX2D}/Makefile
-	/bin/echo -e '\n%.o: %.cpp\n\tc++ -O2 -c -o $$@ $$<' >> ${WINBOX2D}/Makefile
-	zip ${WINBOX2D}.zip ${WINBOX2D}/*
-	rm -rf ${WINBOX2D}
 
 
 # QT is build statically, with as little options as reasonably possible

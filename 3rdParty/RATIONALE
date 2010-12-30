@@ -11,9 +11,15 @@ A physics library for TBE.
 Many distributions do not ship this library, and/or are 
 shipping outdated or malfunctioning versions. The Butterfly Effect 
 links statically against the library.
+Originally we built a static version of the library, nowadays we just
+take the sources from the archive and put them in src/box2d.
+The Makefile has a target to redo that directory.
 
 
 QT -        http://qt.nokia.com/
 Even though QT is shipped by many distributions, we want to
 be sure - we link against a static QT build in our release builds.
 
+
+InstallJammer  http:///www.installjammer.com/
+We use InstallJammer to build our installers.
