@@ -56,7 +56,7 @@ public:
 	/// CokeSplatter needs to know if it has hit another object
 	///  - because that implies that we should delete ourselves soon...
 	/// overridden from SensorInterface
-	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+	virtual void callBackSensor(const ContactInfo&);
 
 protected:
 	const static qreal theRadius;

@@ -277,15 +277,15 @@ Cactus::~Cactus()
 {
 }
 
-void Cactus::callBackSensor(b2ContactPoint* aPoint)
+void Cactus::callBackSensor(const ContactInfo& aPoint)
 {
 	BaseObject* myOtherObject=NULL;
 
 	// which one of the two shapes is not me?
-	if (aPoint->shape1->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape2->GetUserData());
-	if (aPoint->shape2->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape1->GetUserData());
+	if (aPoint.myFixtureA->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureB->GetUserData());
+	if (aPoint.myFixtureB->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureA->GetUserData());
 	if (myOtherObject==NULL)
 		return;
 
@@ -301,18 +301,20 @@ void Cactus::fillShapeList(void)
 	PolyObject::fillShapeList();
 
 	// And add the sensor to the shapes
-	b2PolygonDef* mySensorDef = new b2PolygonDef();
-	mySensorDef->vertexCount = 10;
-	mySensorDef->vertices[0]=b2Vec2( 0.078, -0.036);
-	mySensorDef->vertices[1]=b2Vec2( 0.116,  0.012);
-	mySensorDef->vertices[2]=b2Vec2( 0.125,  0.085);
-	mySensorDef->vertices[3]=b2Vec2( 0.099,  0.147);
-	mySensorDef->vertices[4]=b2Vec2( 0.038,  0.198);
-	mySensorDef->vertices[5]=b2Vec2(-0.038,  0.198);
-	mySensorDef->vertices[6]=b2Vec2(-0.099,  0.147);
-	mySensorDef->vertices[7]=b2Vec2(-0.125,  0.085);
-	mySensorDef->vertices[8]=b2Vec2(-0.116,  0.012);
-	mySensorDef->vertices[9]=b2Vec2(-0.078, -0.036);
+	b2PolygonShape* mySensorShape = new b2PolygonShape();
+	mySensorShape->m_vertexCount = 10;
+	mySensorShape->m_vertices[0]=b2Vec2( 0.078, -0.036);
+	mySensorShape->m_vertices[1]=b2Vec2( 0.116,  0.012);
+	mySensorShape->m_vertices[2]=b2Vec2( 0.125,  0.085);
+	mySensorShape->m_vertices[3]=b2Vec2( 0.099,  0.147);
+	mySensorShape->m_vertices[4]=b2Vec2( 0.038,  0.198);
+	mySensorShape->m_vertices[5]=b2Vec2(-0.038,  0.198);
+	mySensorShape->m_vertices[6]=b2Vec2(-0.099,  0.147);
+	mySensorShape->m_vertices[7]=b2Vec2(-0.125,  0.085);
+	mySensorShape->m_vertices[8]=b2Vec2(-0.116,  0.012);
+	mySensorShape->m_vertices[9]=b2Vec2(-0.078, -0.036);
+	b2FixtureDef* mySensorDef = new b2FixtureDef();
+	mySensorDef->shape    = mySensorShape;
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);
@@ -353,15 +355,15 @@ BedOfNails::~BedOfNails()
 {
 }
 
-void BedOfNails::callBackSensor(b2ContactPoint* aPoint)
+void BedOfNails::callBackSensor(const ContactInfo& aPoint)
 {
 	BaseObject* myOtherObject=NULL;
 
 	// which one of the two shapes is not me?
-	if (aPoint->shape1->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape2->GetUserData());
-	if (aPoint->shape2->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint->shape1->GetUserData());
+	if (aPoint.myFixtureA->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureB->GetUserData());
+	if (aPoint.myFixtureB->GetUserData()==this)
+		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureA->GetUserData());
 	if (myOtherObject==NULL)
 		return;
 
@@ -377,12 +379,14 @@ void BedOfNails::fillShapeList(void)
 	PolyObject::fillShapeList();
 
 	// And add the sensor to the shapes
-	b2PolygonDef* mySensorDef = new b2PolygonDef();
-	mySensorDef->vertexCount = 4;
-	mySensorDef->vertices[0]=b2Vec2(-0.335, -0.04);
-	mySensorDef->vertices[1]=b2Vec2( 0.335, -0.04);
-	mySensorDef->vertices[2]=b2Vec2( 0.335,  0.07);
-	mySensorDef->vertices[3]=b2Vec2(-0.335,  0.07);
+	b2PolygonShape* mySensorShape = new b2PolygonShape();
+	mySensorShape->m_vertexCount = 4;
+	mySensorShape->m_vertices[0]=b2Vec2(-0.335, -0.04);
+	mySensorShape->m_vertices[1]=b2Vec2( 0.335, -0.04);
+	mySensorShape->m_vertices[2]=b2Vec2( 0.335,  0.07);
+	mySensorShape->m_vertices[3]=b2Vec2(-0.335,  0.07);
+	b2FixtureDef* mySensorDef = new b2FixtureDef();
+	mySensorDef->shape    = mySensorShape;
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);

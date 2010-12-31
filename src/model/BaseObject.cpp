@@ -157,7 +157,7 @@ void BaseObject::createPhysicsObject(void)
 
 void BaseObject::createPhysicsObject(Position aPosition)
 {
-	printf("BaseObject::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
+	DEBUG5("BaseObject::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
 	// first fixup the bodydef with the current position
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
@@ -171,8 +171,6 @@ void BaseObject::createPhysicsObject(Position aPosition)
 		deletePhysicsObject();
 	if (theShapeList.count()==0)
 		return;
-
-printf("Really going to happen :)\n");
 
 	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
 	assert(theB2BodyPtr != NULL);

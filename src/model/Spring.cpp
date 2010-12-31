@@ -103,16 +103,19 @@ void Spring::adjustParameters(void)
 void Spring::buildShapeList(void)
 {
 	DEBUG5("Spring::buildShapeList wxh=%fx%f\n", getTheWidth(),getTheHeight());
-	b2PolygonDef* boxDef = new b2PolygonDef();
-	boxDef->SetAsBox(getTheWidth()/4.0, getTheHeight()/2.0);
+	b2PolygonShape* myBoxShape = new b2PolygonShape();
+	myBoxShape->SetAsBox(getTheWidth()/4.0, getTheHeight()/2.0);
+	b2FixtureDef* myBoxFixture = new b2FixtureDef();
 
-	// get mass:  no mass -> no density -> no motion
+	// get mass:  springs always have a mass!
 	float myMass;
 	if (theProps.property2Float(Property::MASS_STRING, &myMass))
-		boxDef->density = myMass / (getTheWidth()*getTheHeight()) / 2.0;
-	boxDef->userData = this;
-	setFriction(boxDef);
-	theShapeList.push_back(boxDef);
+		myBoxFixture->density = myMass / (getTheWidth()*getTheHeight()) / 2.0;
+	assert (myMass > 0.0);
+	myBoxFixture->shape    = myBoxShape;
+	myBoxFixture->userData = this;
+	setFriction(myBoxFixture);
+	theShapeList.push_back(myBoxFixture);
 }
 
 void Spring::createPhysicsObject(void)

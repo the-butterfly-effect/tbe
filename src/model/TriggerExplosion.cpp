@@ -435,15 +435,15 @@ ExplosionSplatter::ExplosionSplatter()
 
 	// the sensor - slightly larger
 	// (sensor is used for collision detection & getting rid of the object if needed)
-	b2CircleShape* ballShape = new b2CircleShape();
-	ballShape->m_radius = 1.01 * theRadius;
+	b2CircleShape* mySensorShape = new b2CircleShape();
+	mySensorShape->m_radius = 1.01 * theRadius;
 
-	b2FixtureDef* ballFixDef = new b2FixtureDef();
-	ballFixDef->isSensor = true;
-	ballFixDef->userData = this;
-	ballFixDef->shape = ballShape;
+	b2FixtureDef* mySensorFixDef = new b2FixtureDef();
+	mySensorFixDef->isSensor = true;
+	mySensorFixDef->userData = this;
+	mySensorFixDef->shape = mySensorShape;
 
-	theShapeList.push_back(ballFixDef);
+	theShapeList.push_back(mySensorFixDef);
 }
 
 ExplosionSplatter::~ExplosionSplatter()
@@ -452,7 +452,7 @@ ExplosionSplatter::~ExplosionSplatter()
 }
 
 
-void ExplosionSplatter::callBackSensor(b2ContactPoint*)
+void ExplosionSplatter::callBackSensor(const ContactInfo&)
 {
 	// oww we hit something.
 	// that may be the end for us

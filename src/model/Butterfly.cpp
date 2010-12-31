@@ -93,16 +93,10 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			// calculate vertical flapping impulse - rate limited
 			qreal myDY = theTargetPos.y - getTempCenter().y;
 			qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
-			qreal myYImpulse = 0.0;
-			if (myDY > 0.0)
-			{
-				myYImpulse = 0.2 * myDY - 0.1*myYd;
-			}
-			const qreal myYRate = 25.0 * theButterflyMass;
-			if (myYImpulse > myYRate)
-				myYImpulse = myYRate;
-			if (myYImpulse < -myYRate)
-				myYImpulse = -myYRate;
+			qreal myYImpulse = 2.5 * myDY - 1.94*myYd;
+
+			if (myYImpulse < 0.0)
+				myYImpulse = 0;
 
 			// maintain horizontal speed
 			// TODO/FIXME: Butterfly can only fly from left to right
@@ -113,8 +107,8 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 				myXImpulse = 0.01;
 
 			Vector myTotImpulse = aDeltaTime * Vector(myXImpulse, myYImpulse);
-
-			theB2BodyPtr->ApplyImpulse( myTotImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
+			theB2BodyPtr->ApplyLinearImpulse(
+					myTotImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
 
 			// and flap
 			if (getState()==FLAP_HALF)

@@ -318,7 +318,7 @@ public:
 	/// called if Object has registered a sensor
 	/// ExplosionSplatter needs to know if it has hit another object
 	/// overridden from SensorInterface
-	virtual void callBackSensor(b2ContactPoint* aCPPtr);
+	virtual void callBackSensor(const ContactInfo&);
 
 	const static qreal theRadius;
 

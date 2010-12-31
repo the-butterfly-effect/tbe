@@ -146,8 +146,6 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	return theDrawObjectPtr;
 }
 
-#if 0
-
 // ---------------------------------------------------------------------------
 // ---------------------------------CustomBall--------------------------------
 // ---------------------------------------------------------------------------
@@ -199,16 +197,18 @@ void  CustomBall::parseProperties(void)
 		myRadius=0.1;
 
 	deletePhysicsObject();
-	b2CircleDef* ballDef = new b2CircleDef();
-	ballDef->radius = myRadius;
-	ballDef->density = myMass/(PI*myRadius*myRadius);
-	ballDef->userData = this;
-	theShapeList.clear();
-	theShapeList.push_back(ballDef);
+
+	b2CircleShape* ballShape = new b2CircleShape();
+	ballShape->m_radius = myRadius;
+
+	b2FixtureDef* ballFixDef = new b2FixtureDef();
+	ballFixDef->density = myMass/(PI*myRadius*myRadius);
+	ballFixDef->userData = this;
+	ballFixDef->shape = ballShape;
+
+	theShapeList.push_back(ballFixDef);
 
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);
 	createPhysicsObject();
 }
-
-#endif

@@ -36,12 +36,12 @@ class DrawObject;
 class ObjectFactory;
 class World;
 class ShapeList;
-class b2Contact;
 class b2FixtureDef;
 class b2ShapeDef;
 class b2Shape;
 class b2World;
 class BaseObjectSerializer;
+class ContactInfo;
 
 //   ************************************************
 //   *                                              *
@@ -85,7 +85,7 @@ public:
 
 	/// called if Object has registered a sensor share
 	/// the default is to do completely nothing - you'll have to override
-	virtual void callBackSensor(const b2Contact*)
+	virtual void callBackSensor(const ContactInfo&)
 	{ return; }
 
 	// note: b2ContactPoint is defined in file:

@@ -308,56 +308,46 @@ qreal World::simStep (void)
 	theB2World.Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
 
 	// run all the callbacks for each sensor
-	ContactPointList::iterator j = theAddedCPList.begin();
-	for (; j!=theAddedCPList.end(); ++j)
+	foreach (ContactInfo j, theContactInfoList)
 	{
-		const b2Contact* myCPtr = *j;
-		const b2Fixture* myFixtureA = myCPtr->GetFixtureA();
-		const b2Fixture* myFixtureB = myCPtr->GetFixtureB();
-
 		// only call the sensor when just *one* of both shapes is a sensor
-		if (myFixtureA->IsSensor() && !myFixtureB->IsSensor())
+		if (j.myFixtureA->IsSensor() && !j.myFixtureB->IsSensor())
 		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myFixtureA->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(j.myFixtureA->GetUserData());
 			if (myPtr!=NULL)
-				myPtr->callBackSensor(myCPtr);
+				myPtr->callBackSensor(j);
 		}
-		if (!myFixtureA->IsSensor() && myFixtureB->IsSensor())
+		if (!j.myFixtureA->IsSensor() && j.myFixtureB->IsSensor())
 		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(myFixtureB->GetUserData());
+			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(j.myFixtureB->GetUserData());
 			if (myPtr!=NULL)
-				myPtr->callBackSensor(myCPtr);
+				myPtr->callBackSensor(j);
 		}
 	}
 
 	// check all contactresults if either of the objects is interested
 	// in hearing the impulses...
-// TODO/FIXME before checkin:
-#if 0
-	for (ContactResultList::iterator k = theContactResultList.begin();
-			 k!=theContactResultList.end(); ++k)
+	foreach(ContactInfo k, theContactInfoList)
 	{
-		b2ContactResult* myResPtr = &(*k);
-		BaseObject* myBO1Ptr = reinterpret_cast<BaseObject*>(myResPtr->shape1->GetUserData());
-		BaseObject* myBO2Ptr = reinterpret_cast<BaseObject*>(myResPtr->shape2->GetUserData());
+		BaseObject* myBO1Ptr = reinterpret_cast<BaseObject*>(k.myFixtureA->GetUserData());
+		BaseObject* myBO2Ptr = reinterpret_cast<BaseObject*>(k.myFixtureB->GetUserData());
 
 		if (myBO1Ptr!=NULL)
 		{
 			if (myBO1Ptr->isInterestedInNormalImpulse())
-				myBO1Ptr->reportNormalImpulseLength( myResPtr->normalImpulse );
+				myBO1Ptr->reportNormalImpulseLength( k.myNormalImpulse );
 			if (myBO1Ptr->isInterestedInTangentImpulse())
-				myBO1Ptr->reportTangentImpulse( myResPtr->tangentImpulse );
+				myBO1Ptr->reportTangentImpulse( k.myTangentImpulse );
 		}
 
 		if (myBO2Ptr!=NULL)
 		{
 			if (myBO2Ptr->isInterestedInNormalImpulse())
-				myBO2Ptr->reportNormalImpulseLength( myResPtr->normalImpulse );
+				myBO2Ptr->reportNormalImpulseLength( k.myNormalImpulse );
 			if (myBO2Ptr->isInterestedInTangentImpulse())
-				myBO2Ptr->reportTangentImpulse( myResPtr->tangentImpulse );
+				myBO2Ptr->reportTangentImpulse( k.myTangentImpulse );
 		}
 	}
-#endif
 
 	// run all the callbacks per sim step
 	foreach(SimStepCallbackInterface* i, theCallbackList)

@@ -53,21 +53,23 @@ CokeMentosBottle::CokeMentosBottle()
 
 	// the first one is the real bottle
 	{
-		b2PolygonDef* my8PointPinDef = new b2PolygonDef();
-		my8PointPinDef->vertexCount = 8;
-		my8PointPinDef->vertices[0].Set(-0.01 ,  0.25);
-		my8PointPinDef->vertices[1].Set(-0.083,  0.12);
-		my8PointPinDef->vertices[2].Set(-0.075, -0.234);
-		my8PointPinDef->vertices[3].Set(-0.060, -0.251);
-		my8PointPinDef->vertices[4].Set( 0.060, -0.251);
-		my8PointPinDef->vertices[5].Set( 0.075, -0.234);
-		my8PointPinDef->vertices[6].Set( 0.083,  0.12);
-		my8PointPinDef->vertices[7].Set( 0.01 ,  0.25);
+		b2PolygonShape* myBottleShape = new b2PolygonShape();
+		myBottleShape->m_vertexCount = 8;
+		myBottleShape->m_vertices[0].Set(-0.01 ,  0.25);
+		myBottleShape->m_vertices[1].Set(-0.083,  0.12);
+		myBottleShape->m_vertices[2].Set(-0.075, -0.234);
+		myBottleShape->m_vertices[3].Set(-0.060, -0.251);
+		myBottleShape->m_vertices[4].Set( 0.060, -0.251);
+		myBottleShape->m_vertices[5].Set( 0.075, -0.234);
+		myBottleShape->m_vertices[6].Set( 0.083,  0.12);
+		myBottleShape->m_vertices[7].Set( 0.01 ,  0.25);
 		// approximation of the initial mass - we'll fix it later on...
-		my8PointPinDef->density = 2.1 / (0.166*0.501);
-		my8PointPinDef->friction = 0.0;
-		my8PointPinDef->userData = this;
-		theShapeList.push_back(my8PointPinDef);
+		b2FixtureDef* myBottleFix = new b2FixtureDef();
+		myBottleFix->shape    = myBottleShape;
+		myBottleFix->density  = 2.1 / (0.166*0.501);
+		myBottleFix->friction = 0.0;
+		myBottleFix->userData = this;
+		theShapeList.push_back(myBottleFix);
 	}
 
 	setTheBounciness(0.2);
@@ -164,7 +166,7 @@ void CokeMentosBottle::updateMass(void)
 	myMass.I      = theB2BodyPtr->GetInertia();
 	myMass.mass   = theCokeAmount + theBottleMass;
 
-	theB2BodyPtr->SetMass(&myMass);
+	theB2BodyPtr->SetMassData(&myMass);
 }
 
 void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
@@ -241,7 +243,7 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	// The Thrust is actually adjustable as a property - default is 2.0 (see reset()).
 	qreal myAngle = getTempCenter().angle;
 	Vector myImpulseVector = -theThrust*Vector(-myImpulse*sin(myAngle), myImpulse*cos(myAngle));
-	theB2BodyPtr->ApplyImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
+	theB2BodyPtr->ApplyLinearImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -259,11 +261,15 @@ CokeSplatter::CokeSplatter()
 
 	// the sensor - slightly larger
 	// (sensor is used for collision detection & getting rid of the object if needed)
-	b2CircleDef* mySensorDef = new b2CircleDef();
-	mySensorDef->radius = 1.01 * theRadius;
-	mySensorDef->isSensor = true;
-	mySensorDef->userData = this;
-	theShapeList.push_back(mySensorDef);
+	b2CircleShape* mySensorShape = new b2CircleShape();
+	mySensorShape->m_radius = 1.01 * theRadius;
+
+	b2FixtureDef* mySensorFixDef = new b2FixtureDef();
+	mySensorFixDef->isSensor = true;
+	mySensorFixDef->userData = this;
+	mySensorFixDef->shape = mySensorShape;
+
+	theShapeList.push_back(mySensorFixDef);
 }
 
 CokeSplatter::~CokeSplatter()
@@ -272,7 +278,7 @@ CokeSplatter::~CokeSplatter()
 }
 
 
-void CokeSplatter::callBackSensor(b2ContactPoint*)
+void CokeSplatter::callBackSensor(const ContactInfo&)
 {
 	// oww we hit something.
 	// that's the end for us

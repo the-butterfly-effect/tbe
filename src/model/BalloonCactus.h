@@ -140,7 +140,7 @@ public:
 
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
-	void callBackSensor(b2ContactPoint* aPoint);
+	virtual void callBackSensor(const ContactInfo& aPoint);
 
 	/** Overridden from PolyObject because we also have a sensor
 	 *  here...
@@ -166,7 +166,7 @@ public:
 
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
-	void callBackSensor(b2ContactPoint* aPoint);
+	virtual void callBackSensor(const ContactInfo& aPoint);
 
 	/** Just like Cactus, we need to redefine the shapes
 	 */

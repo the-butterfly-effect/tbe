@@ -152,23 +152,23 @@ SOURCES += src/main.cpp \
     src/base/UndoInsertCommand.cpp \
     src/base/UndoObjectChange.cpp \
     src/model/AbstractBall.cpp \
-#	src/model/BalloonCactus.cpp \
+	src/model/BalloonCactus.cpp \
 	src/model/BaseJoint.cpp \
 	src/model/BaseObject.cpp \
-#    src/model/Butterfly.cpp \
-#    src/model/CokeMentosBottle.cpp \
+	src/model/Butterfly.cpp \
+	src/model/CokeMentosBottle.cpp \
 	src/model/Floor.cpp \
 	src/model/Goal.cpp \
 	src/model/Level.cpp \
-#    src/model/Link.cpp \
+	src/model/Link.cpp \
 	src/model/PivotPoint.cpp \
 	src/model/PolyObject.cpp \
 	src/model/Position.cpp \
 	src/model/PostIt.cpp \
-#    src/model/RatBread.cpp \
+	src/model/RatBread.cpp \
 	src/model/RectObject.cpp \
 	src/model/Scenery.cpp \
-#    src/model/Spring.cpp \
+	src/model/Spring.cpp \
 	src/model/TranslationGuide.cpp \
 	src/model/TriggerExplosion.cpp \
     src/model/World.cpp \
