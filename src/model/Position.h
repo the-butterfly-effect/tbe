@@ -95,6 +95,7 @@ public:
 	qreal angle;
 
 	const static qreal minimalMove;
+	const static qreal minimalRot;
 
 	b2Vec2  toB2Vec2(void) const;
 	QString toString(void) const;

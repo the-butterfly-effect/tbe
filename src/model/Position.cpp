@@ -22,8 +22,8 @@
 #include <cmath>
 #include <QStringList>
 
-const qreal Position::minimalMove = 0.005;
-
+const qreal Position::minimalMove = b2_linearSlop;
+const qreal Position::minimalRot  = b2_angularSlop;
 
 // Constructors/Destructors
 
@@ -224,7 +224,7 @@ bool operator==(const Position& p1, const Position& p2)
 		return false;
 	if (fabs(p1.y - p2.y) > Position::minimalMove)
 		return false;
-	if (fabs(p1.angle-p2.angle) > Position::minimalMove)
+	if (fabs(p1.angle-p2.angle) > Position::minimalRot)
 		return false;
 	return true;
 }
