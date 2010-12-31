@@ -166,7 +166,7 @@ void RectObject::adjustParameters(void)
 		}
 		else
 		{
-			DEBUG3("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
+			DEBUG5("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
 			b2PolygonShape* myBoxShape = new b2PolygonShape();
 			myBoxShape->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
 
@@ -220,7 +220,7 @@ void RectObject::adjustTallParametersPart(void)
 				myElemHeight = getTheHeight()-myDoneHeight;
 			}
 		}
-		DEBUG3("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
+		DEBUG5("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
 		myBoxShape->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
 							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
 		b2FixtureDef* myBoxDef = new b2FixtureDef();
@@ -263,7 +263,7 @@ void RectObject::adjustWideParametersPart(void)
 				myElemWidth = getTheWidth()-myDoneWidth;
 			}
 		}
-		DEBUG3("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
+		DEBUG5("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
 		myBoxShape->SetAsBox( myElemWidth/2.0, getTheHeight()/2.0,
 							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
 		b2FixtureDef* myBoxDef = new b2FixtureDef();
