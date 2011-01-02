@@ -237,10 +237,10 @@ public:
 	// the call back interface for b2ContactFilter && assorted stuff
 
 	/// implemented from b2ContactFilter
-	/// @returns true if shape1 and shape2 should collide
+	/// @returns true if fixture1 and fixture2 should collide
 	virtual bool ShouldCollide(
-			b2Shape* shape1,
-			b2Shape* shape2);
+			b2Fixture* aFixture1,
+			b2Fixture* aFixture2);
 
 	/** add the set of anObject1 and anObject2 to a list of objects that
 	  * cannot collide.

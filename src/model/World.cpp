@@ -271,13 +271,11 @@ void World::reset ( )
 
 
 bool World::ShouldCollide(
-			b2Shape* shape1,
-			b2Shape* shape2)
+			b2Fixture* aFixture1,
+			b2Fixture* aFixture2)
 {
-// TODO/FIXME BEFORE CHECKIN
-#if 0
-	BaseObject* myObj1 = reinterpret_cast<BaseObject*>(shape1->GetUserData());
-	BaseObject* myObj2 = reinterpret_cast<BaseObject*>(shape2->GetUserData());
+	BaseObject* myObj1 = reinterpret_cast<BaseObject*>(aFixture1->GetUserData());
+	BaseObject* myObj2 = reinterpret_cast<BaseObject*>(aFixture2->GetUserData());
 
 	if (myObj1 == NULL || myObj2 == NULL)
 		return true;
@@ -293,7 +291,6 @@ bool World::ShouldCollide(
 
 	if (theNoCollisionList.contains(myObj1, myObj2))
 		return false;
-#endif
 	return true;
 }
 
