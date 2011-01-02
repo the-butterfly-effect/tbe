@@ -133,7 +133,7 @@ void Butterfly::goToFlower(void)
 
 void Butterfly::reportNormalImpulseLength(qreal anImpulseLength)
 {
-	if(anImpulseLength<0.0003)
+	if(anImpulseLength<0.003)
 		return;
 	setState(DEAD);
 }
