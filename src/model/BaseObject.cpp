@@ -104,14 +104,6 @@ bool BaseObject::isMovable ( ) const
 		return theIsMovable;
 }
 
-void BaseObject::setTempCenter ( Position new_var )
-{
-	assert(isPhysicsObjectCreated());
-	if (theB2BodyPtr!=NULL)
-		theB2BodyPtr->SetTransform(b2Vec2(new_var.x, new_var.y), new_var.angle);
-}
-
-
 void BaseObject::ForWorldOnly::setTheB2WorldPtr(b2World* aPtr)
 {
 	theStaticB2WorldPtr = aPtr;

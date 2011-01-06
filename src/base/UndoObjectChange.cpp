@@ -134,7 +134,6 @@ void UndoObjectChange::redo ()
 	Position myNewPosition = theNewCenter;
 	double myRandom = 0.0001 * qrand() / (double)RAND_MAX;
 	myNewPosition.x += myRandom;
-	theBaseObjectPtr->setTempCenter(myNewPosition);
 	theBaseObjectPtr->setOrigCenter(myNewPosition);
 
 	theBaseObjectPtr->theProps = theNewProperties;
@@ -237,7 +236,6 @@ void UndoObjectChange::undo ()
 	theBaseObjectPtr->setTheWidth(theOldSize.dx);
 	theBaseObjectPtr->setTheHeight(theOldSize.dy);
 
-	theBaseObjectPtr->setTempCenter(theOldCenter);
 	theBaseObjectPtr->setOrigCenter(theOldCenter);
 
 	theBaseObjectPtr->theProps = theOldProperties;

@@ -408,14 +408,6 @@ public:
 	virtual void setOrigCenter ( Position new_var );
 
 	/**
-	 * Set the center position of the object.
-	 * note that this does not affect the OrigCenter position.
-	 * note: do not use this to move an object during simulation
-	 * @param new_var the new value of the center of the body
-	 */
-	virtual void setTempCenter ( Position new_var );
-
-	/**
 	 * Get the Position of the object.
 	 * This is the "original" center, i.e. where the object will
 	 * return to after a "reset". 
@@ -426,9 +418,10 @@ public:
 
 	/**
 	 * Get the current Position of the object.
-	 * This is the current center, i.e. where the object is now.
+	 * If there is an actual Physics model, it will return the position from
+	 * the physics model. If there is not, it will return getOrigCenter().
 	 *
-	 * @return the value of theCenter
+	 * @return the value of the current Center
 	 */
 	virtual Position getTempCenter ( ) const;
 
