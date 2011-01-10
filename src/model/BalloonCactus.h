@@ -45,8 +45,8 @@ public:
 	{	return NORESIZING;	}
 
 	/// overridden from PolyObject because this class wants to register for
-	/// callbacks and needs to reset its state machine
-	virtual void reset(void);
+	/// callbacks and needs to restart its state machine
+	virtual void createPhysicsObject(void);
 
 	/// this enum defines the states of the balloon
 	enum States

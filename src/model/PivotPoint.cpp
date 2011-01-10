@@ -46,11 +46,16 @@ PivotPoint::PivotPoint()
 PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
 		: BaseJoint(), theFirstPtr(aBaseObject)
 {
-	DEBUG4("PivotPoint::PivotPoint(%p, (%f,%f))\n",
+	DEBUG4("PivotPoint::PivotPoint(aBaseObject*=%p, aPos=(%f,%f))\n",
 		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
 	thePosRelativeToFirst = aRelativePosition;
 	updateOrigCenter();
 	initAttributes();
+}
+
+PivotPoint::~PivotPoint()
+{
+	DEBUG5("PivotPoint::~PivotPoint() for %p\n", this);
 }
 
 void PivotPoint::createPhysicsObject(void)

@@ -63,7 +63,7 @@ public:
 		  NOMMING2
 	};
 
-	virtual void reset(void);
+	virtual void createPhysicsObject(void);
 
 protected:
 	/// implemented from SimStepCallbackInterface

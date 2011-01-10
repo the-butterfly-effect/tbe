@@ -169,8 +169,6 @@ void Link::parseProperties(void)
 
 	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
 								  &theSecondPtr, &theSecondLocalPosPtr);
-
-	createPhysicsObject();
 }
 
 void Link::updateOrigCenter(void)

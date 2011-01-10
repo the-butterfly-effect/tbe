@@ -160,7 +160,6 @@ void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 			if (myObjectPtr != NULL)
 			{
 				myObjectPtr->setOrigCenter(Position(event->scenePos()));
-				myObjectPtr->createPhysicsObject();
 				theWorldPtr->addObject(myObjectPtr);
 
 				theInsertUndoPtr = new UndoInsertCommand(myObjectPtr);
@@ -397,18 +396,19 @@ void DrawWorld::on_winning(void)
 void DrawWorld::resetWorld( )
 {
 	DEBUG5("RESET WORLD\n");
-	theWorldPtr->reset();
+	if (theCongratDeathBoxPtr!=NULL)
+	{
+		delete theCongratDeathBoxPtr;
+		theCongratDeathBoxPtr=NULL;
+	}
+
+	theWorldPtr->deletePhysicsWorld();
 	// and redraw
 	advance();
 	isUserInteractionAllowed = true;
 	if (theDrawDebug)
 		clearGraphicsList(0);
 
-	if (theCongratDeathBoxPtr!=NULL)
-	{
-		delete theCongratDeathBoxPtr;
-		theCongratDeathBoxPtr=NULL;
-	}
 	emit theSimStateMachine->clicked_on_reset();
 }
 
@@ -436,7 +436,7 @@ void DrawWorld::startTimer(void)
 	isUserInteractionAllowed = false;
 	DrawObject::setIsSimRunning(true);
 
-
+	theWorldPtr->createPhysicsWorld();
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
 

@@ -306,25 +306,9 @@ bool BaseObject::reregister(void)
 	// fortunately, reregister is only used when a drawworld exists :-)
 	theWorldPtr->addObject(this);
 	assert(theDrawObjectPtr != NULL);
-	createPhysicsObject();
 	theDrawObjectPtr->focusInEvent();
 	return true;
 }
-
-void BaseObject::reset ( ) 
-{
-	DEBUG5("BaseObject::reset() body pos for '%s' to (%f,%f)@%f\n", 
-			ASCII(getName()), theCenter.x, theCenter.y, theCenter.angle);
-
-	if(isPhysicsObjectCreated()==false)
-		return;
-
-	// deleting and re-creating the Physics Object will
-	// force a reset of the impulses and positions
-	deletePhysicsObject();
-	createPhysicsObject();
-}
-
 
 void  BaseObject::setDrawObjectZValue(float aDefaultValue)
 {
@@ -407,7 +391,6 @@ ObjectFactory::createObject(
 		myObjectPtr->theWidth=aWidth;
 	if (anHeight!=1.0)
 		myObjectPtr->theHeight=anHeight;
-	myObjectPtr->createPhysicsObject();
 	return myObjectPtr;
 }
 

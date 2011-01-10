@@ -141,8 +141,8 @@ Rat::RatStates Rat::goToState(Rat::RatStates aNewState)
 	return theCurrentState;
 }
 
-void Rat::reset(void)
+void Rat::createPhysicsObject()
 {
-	RectObject::reset();
+	RectObject::createPhysicsObject();
 	theAllFoodIDs.clear();
 }

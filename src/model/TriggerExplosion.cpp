@@ -84,8 +84,16 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 void DetonatorBox::createPhysicsObject(void)
 {
 	RectObject::createPhysicsObject();
-	if (theHandleObjectPtr)
-		theHandleObjectPtr->createPhysicsObject();
+
+	assert(theHandleObjectPtr==NULL);
+	theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
+	theWorldPtr->addObject(theHandleObjectPtr);
+	theHandleObjectPtr->createPhysicsObject();
+
+	isTriggered = false;
+	theActivationStartTime = 0.0f;
+	theState = ARMED;
+	theWorldPtr->registerCallback(this);
 }
 
 void DetonatorBox::deletePhysicsObject(void)
@@ -137,24 +145,6 @@ void DetonatorBox::notifyExplosions(void)
 	myDynamite->trigger();
 }
 
-void DetonatorBox::reset(void)
-{
-	RectObject::reset();
-
-	// the reset will already do a delete+create
-	// of the handle objectptr, so no need to reset it specifically here...
-	if (theHandleObjectPtr==NULL)
-	{
-		theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
-		theWorldPtr->addObject(theHandleObjectPtr);
-	}
-
-	isTriggered = false;
-	theActivationStartTime = 0.0f;
-	theState = ARMED;
-	theWorldPtr->registerCallback(this);
-}
-
 void DetonatorBox::setOrigCenter ( Position new_var )
 {
 	RectObject::setOrigCenter(new_var);
@@ -181,7 +171,6 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox, const Position& aPos
 				0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(aPos);
-	createPhysicsObject();
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 	theIsMovable = false;
 }
@@ -229,6 +218,7 @@ void DetonatorBoxHandle::createPhysicsObject(void)
 
 	assert(theJointPtr==NULL);
 	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
+	theWorldPtr->registerCallback(this);
 }
 
 void DetonatorBoxHandle::deletePhysicsObject(void)
@@ -244,13 +234,6 @@ qreal DetonatorBoxHandle::getDistance(void)
 		return 0;
 	return theJointPtr->GetJointTranslation();
 }
-
-void DetonatorBoxHandle::reset(void)
-{
-	RectObject::reset();
-	theWorldPtr->registerCallback(this);
-}
-
 
 // ##########################################################################
 // ##########################################################################
@@ -400,11 +383,9 @@ void Dynamite::removeMe(ExplosionSplatter* aDeadSplatterPtr)
 }
 
 
-void Dynamite::reset(void)
+void Dynamite::createPhysicsObject(void)
 {
-	deletePhysicsObject();
-	createPhysicsObject();
-//	PolyObject::reset();
+	PolyObject::createPhysicsObject();
 
 	theWorldPtr->registerCallback(this);
 	theActiveStartTime = 0.0f;
@@ -492,7 +473,6 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
 
 	setOrigCenter(aStartPos);
 	aWorldPtr->addObject(this);
-	createPhysicsObject();
 
 	qreal myAngle = aStartPos.angle;
 	theStartVelocityVector = Vector(aVelocity * cos(myAngle), aVelocity * sin(myAngle));

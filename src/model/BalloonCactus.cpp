@@ -91,7 +91,7 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
 {
 	// the upward force...
-	theB2BodyPtr->ApplyForce(b2Vec2(0,0.12), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
+	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
 
 	// the downward force...
 	// i.e. the "drag" or "air restance"
@@ -203,17 +203,13 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 }
 
 
-void Balloon::reset(void)
+void Balloon::createPhysicsObject(void)
 {
-	PolyObject::reset();
-
-	// and go back to the first state - with the right set of shapes
 	theState = BALLOON;
 	thePoppingTimeStart = 0;
-	deletePhysicsObject();
 	clearShapeList();
 	fillShapeList();
-	createPhysicsObject();
+	PolyObject::createPhysicsObject();
 	theWorldPtr->registerCallback(this);
 }
 
@@ -239,7 +235,7 @@ void Balloon::switchToSmallShape(void)
 	myRestDef->shape   = myRestShape;
 	theShapeList.push_back(myRestDef);
 
-	createPhysicsObject(myCurrentPos);
+	PolyObject::createPhysicsObject(myCurrentPos);
 }
 
 

@@ -45,7 +45,9 @@ public:
 	Spring();
 	virtual ~Spring();
 
-	/// overridden to be able to create the handle
+	/// overridden from RectObject to be able to create the other SpringEnd
+	/// and because this class wants to register for callbacks and
+	/// needs to restart its state machine
 	virtual void createPhysicsObject(void);
 
 	/// overridden from BaseObject to allow for the handle
@@ -67,10 +69,6 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
-
-	/// overridden from RectObject because this class wants to register for
-	/// callbacks and needs to reset its state machine
-	virtual void reset(void);
 
 	/// overridden from BaseObject in order to also move the handle
 	virtual void setOrigCenter ( Position new_var );
@@ -121,7 +119,8 @@ public:
 	/// overridden to allow setting a custom ZValue
 	virtual DrawObject* createDrawObject();
 
-	/// overridden from BaseObject to allow for the special joints
+	/// overridden from RectObject to allow for the special joints
+	/// and because this class wants to register for callbacks
 	void createPhysicsObject(void);
 
 	/// overridden from BaseObject to allow for the special joints
@@ -134,10 +133,6 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
-
-	/// overridden from RectObject because this class wants to register for
-	/// callbacks
-	virtual void reset(void);
 
 	friend class Spring;
 

@@ -125,13 +125,13 @@ void Spring::createPhysicsObject(void)
 
 	RectObject::createPhysicsObject(getOrigCenter()+Vector(-0.25*getTheWidth(),0));
 
-	if (theHandleObjectPtr)
-	{
-		theHandleObjectPtr->setTheWidth(0.5*getTheWidth());
-		theHandleObjectPtr->setTheHeight(getTheHeight());
-		theHandleObjectPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
-		theHandleObjectPtr->createPhysicsObject();
-	}
+	assert(theHandleObjectPtr==NULL);
+	theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
+	theWorldPtr->addObject(theHandleObjectPtr);
+	theHandleObjectPtr->setTheWidth(0.5*getTheWidth());
+	theHandleObjectPtr->setTheHeight(getTheHeight());
+	theHandleObjectPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
+	theHandleObjectPtr->createPhysicsObject();
 }
 
 void Spring::deletePhysicsObject(void)
@@ -165,19 +165,6 @@ const QString Spring::getToolTip ( ) const
 	return QObject::tr("Send BOOM to me");
 }
 
-void Spring::reset(void)
-{
-	RectObject::reset();
-
-	// the reset will already do a delete+create
-	// of the handle objectptr, so no need to reset it specifically here...
-	if (theHandleObjectPtr==NULL)
-	{
-		theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
-		theWorldPtr->addObject(theHandleObjectPtr);
-	}
-}
-
 void Spring::setOrigCenter ( Position new_var )
 {
 	RectObject::setOrigCenter(new_var);
@@ -198,7 +185,6 @@ SpringHandle::SpringHandle(Spring* aDBox, const Position& aPos, qreal aWidth, qr
 				aWidth, aHeight, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(aPos);
-	createPhysicsObject();
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 	theIsMovable = false;
 }
@@ -241,6 +227,7 @@ void SpringHandle::createPhysicsObject(void)
 
 	assert(theJointPtr==NULL);
 	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
+	theWorldPtr->registerCallback(this);
 }
 
 void SpringHandle::deletePhysicsObject(void)
@@ -255,10 +242,4 @@ qreal SpringHandle::getDistance(void) const
 	if (theJointPtr==NULL)
 		return 0;
 	return theJointPtr->GetJointTranslation();
-}
-
-void SpringHandle::reset(void)
-{
-	RectObject::reset();
-	theWorldPtr->registerCallback(this);
 }

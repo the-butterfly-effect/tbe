@@ -173,6 +173,9 @@ public:
 	 */
 	void createScene(MainWindow* myMainPtr);
 
+	void createPhysicsWorld(void);
+	void deletePhysicsWorld(void);
+
 	/** find an object with a given ID within world
 	 *  @param anID  the ID to find for. Because not all objects have an ID,
 	 *               an empty ID will cause a NULL return.
@@ -192,7 +195,7 @@ public:
 	 */
 	void removeJoint(b2Joint* aJointPtr)
 	{
-		theB2World.DestroyJoint(aJointPtr);
+		theB2WorldPtr->DestroyJoint(aJointPtr);
 	}
 
 	/** removes the BaseObject pointed to from world after all simulations
@@ -293,9 +296,6 @@ public:
 		{ return theWorldHeight; }
 
 private:
-	virtual void initAttributes ( ) ;
-	
-private:	
 	// Private attributes
 	//
 
@@ -314,7 +314,7 @@ private:
 	DrawWorld* theDrawWorldPtr;
 
 	/// The attribute that makes World tick
-	b2World theB2World;
+	b2World* theB2WorldPtr;
 	
 	/// Do we want to let bodies sleep?
 	static const bool doSleep;

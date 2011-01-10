@@ -251,12 +251,9 @@ public:
 	 */
 	bool isSleeping() const;
 	
-	/// returns true if the object should not surive a World::reset()
+	/// returns true if the object should not survive a World::reset()
 	virtual bool isTemp() const
 	{ return false; }
-
-	/// resets the object into the start position/situation
-	virtual void reset(void);
 
 	/** removes itself from the physics model, World and DrawWorld
 	 */
@@ -333,9 +330,7 @@ private:
 	// Private attributes
 	//
 	
-	/** the position of the center of the object. Note that this attribute
-	 *  is not updated during simulations, so we don't need to reset it
-	 */
+	/// the position of the center of the object when not in simulation.
 	Position theCenter;
 	
 	/// width of the object. If object is resizable, this can be changed by user 
@@ -410,7 +405,7 @@ public:
 	/**
 	 * Get the Position of the object.
 	 * This is the "original" center, i.e. where the object will
-	 * return to after a "reset". 
+	 * be when not in simulation.
 	 * @return the value of theCenter
 	 */
 	virtual Position getOrigCenter ( ) const

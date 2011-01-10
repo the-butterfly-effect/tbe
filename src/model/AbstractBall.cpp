@@ -210,5 +210,4 @@ void  CustomBall::parseProperties(void)
 
 	setTheWidth(2.0*myRadius);
 	setTheHeight(2.0*myRadius);
-	createPhysicsObject();
 }

@@ -58,7 +58,7 @@ public:
 	  */
 	PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition);
 
-	virtual ~PivotPoint() {}
+	virtual ~PivotPoint();
 
 	/// overridden from BaseObject
 	/// (this class does not have a body, only a joint)

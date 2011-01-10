@@ -106,8 +106,14 @@ void CokeMentosBottle::callbackStep (qreal, qreal)
 	case EMPTY:
 		break;
 	}
+}
 
-
+void CokeMentosBottle::createPhysicsObject(void)
+{
+	setBottleStatus(UNTRIGGERED);
+	theProps.property2Float(Property::THRUST_STRING, &theThrust);
+	RectObject::createPhysicsObject();
+	theWorldPtr->registerCallback(this);
 }
 
 void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)
@@ -115,17 +121,6 @@ void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)
 	if (anImpulseLength > 0.6 && theBottleStatus==UNTRIGGERED)
 		setBottleStatus(TRIGGERED);
 }
-
-
-void CokeMentosBottle::reset(void)
-{
-	theWorldPtr->registerCallback(this);
-	BaseObject::reset();
-	setBottleStatus(UNTRIGGERED);
-
-	theProps.property2Float(Property::THRUST_STRING, &theThrust);
-}
-
 
 void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 {
@@ -240,7 +235,8 @@ void CokeMentosBottle::newSplatter(unsigned int aSequenceNr)
 	// and don't forget Newton's action = -reaction !!!
 	qreal myImpulse = mySplatterMass*myV;
 	// HACK HACK HACK: to improve the "feeling", we help the impulse a bit here...
-	// The Thrust is actually adjustable as a property - default is 2.0 (see reset()).
+	// The Thrust is actually adjustable as a property
+	// - default is 2.0 (see createPhysicsObject()).
 	qreal myAngle = getTempCenter().angle;
 	Vector myImpulseVector = -theThrust*Vector(-myImpulse*sin(myAngle), myImpulse*cos(myAngle));
 	theB2BodyPtr->ApplyLinearImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
@@ -301,8 +297,6 @@ void CokeSplatter::setAll(World* aWorldPtr,
 	setTheWidth(5*theRadius);
 	setTheHeight(3.5*theRadius);
 	aWorldPtr->addObject(this);
-	createPhysicsObject();
-
 
 	qreal myAngle = aStartPos.angle;
 	b2Vec2 myVelVec(aVelocity * cos(myAngle), aVelocity * sin(myAngle));

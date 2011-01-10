@@ -33,10 +33,10 @@ const unsigned int World::thePositionIterationcount = 30;
 // Constructors/Destructors
 //  
 
-World::World ( void) : theB2World( b2Vec2(0.0f, getG()), doSleep)
-
+World::World ( void) : theB2WorldPtr(NULL)
 {
-	initAttributes();
+	theDrawWorldPtr = NULL;
+	theTotalTime = 0.0f;
 }
 
 World::~World ( ) 
@@ -101,7 +101,6 @@ bool World::addObject(BaseObject* anObjectPtr)
 	if (theObjectPtrList.contains(anObjectPtr)==false)
 		theObjectPtrList.push_back(anObjectPtr);
 	anObjectPtr->theWorldPtr = this;
-	anObjectPtr->reset();
 	
 	if (theDrawWorldPtr!=NULL)
 		addBaseObjectToDrawWorld(anObjectPtr);
@@ -117,6 +116,50 @@ void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 		theDrawWorldPtr->addItem(myDOPtr);
 }
 
+void World::createPhysicsWorld()
+{
+	assert (theB2WorldPtr==NULL);
+
+	theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()), doSleep);
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
+	theB2WorldPtr->SetContactListener(this);
+	theB2WorldPtr->SetDestructionListener(this);
+	theB2WorldPtr->SetContactFilter(this);
+
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(50.01f, -1.0f);
+	b2Body* groundBodyPtr = theB2WorldPtr->CreateBody(&groundBodyDef);
+	b2PolygonShape groundShape;
+	groundShape.SetAsBox(50.0f, 1.0f);
+	groundBodyPtr->CreateFixture(&groundShape, 0.0f);
+
+	// Define the zero body - only used to make DrawDebug look good :-)
+	b2BodyDef myZeroBodyDef;
+	myZeroBodyDef.type = b2_staticBody;
+	myZeroBodyDef.position.Set(-0.06f, -0.06f);
+	b2Body* myZeroBodyPtr = theB2WorldPtr->CreateBody(&myZeroBodyDef);
+	b2PolygonShape myZeroShape;
+	myZeroShape.SetAsBox(0.05f, 0.05f);
+	myZeroBodyPtr->CreateFixture(&myZeroShape, 0.0f);
+	BaseJoint::setGroundBodyPtr(myZeroBodyPtr);
+
+
+	// Define the left wall body.
+	b2BodyDef myLeftBodyDef;
+	myLeftBodyDef.type = b2_staticBody;
+	myLeftBodyDef.position.Set(-1.0f, 50.01f);
+	b2Body* myLeftBodyPtr = theB2WorldPtr->CreateBody(&myLeftBodyDef);
+	b2PolygonShape myLeftShape;
+	myLeftShape.SetAsBox(1.0f, 50.0f);
+	myLeftBodyPtr->CreateFixture(&myLeftShape, 0.0f);
+
+	foreach(BaseObject* i, theObjectPtrList)
+	{
+		i->createPhysicsObject();
+	}
+}
+
 void World::createScene(MainWindow* myMainPtr)
 {
 	// create a DrawWorld instance, that will immediately attach itself to 
@@ -127,7 +170,8 @@ void World::createScene(MainWindow* myMainPtr)
 	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
 	// all shapes - useful for debugging new objects
 	// but we have to register the debug thingie first.
-	theB2World.SetDebugDraw(theDrawWorldPtr);
+	if (theDrawDebug)
+		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
 
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;
@@ -137,6 +181,37 @@ void World::createScene(MainWindow* myMainPtr)
 		addBaseObjectToDrawWorld(*i);
 	}
 }
+
+void World::deletePhysicsWorld()
+{
+	DEBUG4("World::deletePhysicsWorld()\n");
+
+	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
+	while (i!= theObjectPtrList.end())
+	{
+		if ((*i)->isTemp())
+		{
+			delete (*i);
+			i = theObjectPtrList.erase(i);
+		}
+		else
+		{
+			(*i)->deletePhysicsObject();
+			++i;
+		}
+	}
+
+	// emptying the theObjectPtrList automatically also
+	// took care of everything in the theToBeRemovedList
+	theToBeRemovedList.clear();
+	theTotalTime = 0;
+
+	// and delete the b2World itself...
+	delete theB2WorldPtr;
+	theB2WorldPtr = NULL;
+	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
+}
+
 
 BaseObject* World::findObjectByID(const QString& anID)
 {
@@ -170,44 +245,6 @@ QStringList World::getAllIDs(void) const
 }
 
 
-void World::initAttributes( )
-{
-	theDrawWorldPtr = NULL;
-	theTotalTime = 0.0f;
-	
-	BaseObject::ForWorldOnly::setTheB2WorldPtr(&theB2World);
-	theB2World.SetContactListener(this);
-	theB2World.SetDestructionListener(this);
-	theB2World.SetContactFilter(this);
-
-	// Define the ground body.
-	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(50.01f, -1.0f);
-	b2Body* groundBodyPtr = theB2World.CreateBody(&groundBodyDef);
-	b2PolygonShape groundShape;
-	groundShape.SetAsBox(50.0f, 1.0f);
-	groundBodyPtr->CreateFixture(&groundShape, 0.0f);
-
-	// Define the zero body - only used to make DrawDebug look good :-)
-	b2BodyDef myZeroBodyDef;
-	myZeroBodyDef.type = b2_staticBody;
-	myZeroBodyDef.position.Set(-0.06f, -0.06f);
-	b2Body* myZeroBodyPtr = theB2World.CreateBody(&myZeroBodyDef);
-	b2PolygonShape myZeroShape;
-	myZeroShape.SetAsBox(0.05f, 0.05f);
-	myZeroBodyPtr->CreateFixture(&myZeroShape, 0.0f);
-	BaseJoint::setGroundBodyPtr(myZeroBodyPtr);
-
-
-	// Define the left wall body.
-	b2BodyDef myLeftBodyDef;
-	myLeftBodyDef.type = b2_staticBody;
-	myLeftBodyDef.position.Set(-1.0f, 50.01f);
-	b2Body* myLeftBodyPtr = theB2World.CreateBody(&myLeftBodyDef);
-	b2PolygonShape myLeftShape;
-	myLeftShape.SetAsBox(1.0f, 50.0f);
-	myLeftBodyPtr->CreateFixture(&myLeftShape, 0.0f);
-}
 
 void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
 {
@@ -242,33 +279,6 @@ bool World::registerCallback(SimStepCallbackInterface* anInterface)
 }
 
 
-void World::reset ( ) 
-{
-	DEBUG5("World::reset()\n");
-
-	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
-	while (i!= theObjectPtrList.end())
-	{
-		if ((*i)->isTemp())
-		{
-			delete (*i);
-			i = theObjectPtrList.erase(i);
-		}
-		else
-		{
-			(*i)->reset();
-			++i;
-		}
-	}
-
-	// emptying the theObjectPtrList automatically also
-	// took care of everything in the theToBeRemovedList
-	theToBeRemovedList.clear();
-	theTotalTime = 0;
-
-	theB2World.ClearForces();
-}
-
 
 bool World::ShouldCollide(
 			b2Fixture* aFixture1,
@@ -302,7 +312,7 @@ qreal World::simStep (void)
 	clearLists();
 
 	// run the simulation
-	theB2World.Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
+	theB2WorldPtr->Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
 
 	// run all the callbacks for each sensor
 	foreach (ContactInfo j, theContactInfoList)

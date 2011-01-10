@@ -301,8 +301,6 @@ void PolyObject::parseProperties(void)
 
 	clearShapeList();
 	fillShapeList();
-	createPhysicsObject();
-
 }
 
 void  PolyObject::setFriction(b2FixtureDef* aFixtureDef)

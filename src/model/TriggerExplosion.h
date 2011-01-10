@@ -57,7 +57,9 @@ public:
 		DONE       // end state, handle down and cell dark...
 	};
 
-	/// overridden to be able to create the handle
+	/// overridden from RectObject to be able to create the handle and
+	/// because this class wants to register for
+	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void);
 
 	/// overridden from BaseObject to allow for the handle
@@ -83,10 +85,6 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
-
-	/// overridden from RectObject because this class wants to register for
-	/// callbacks and needs to reset its state machine
-	virtual void reset(void);
 
 	/// overridden from BaseObject in order to also move the handle
 	virtual void setOrigCenter ( Position new_var );
@@ -159,7 +157,8 @@ private:
 public:
 	virtual ~DetonatorBoxHandle();
 
-	/// overridden to allow setting a custom ZValue
+	/// overridden from RectObject to allow setting a custom ZValue
+	/// and because this class wants to register for callbacks
 	virtual DrawObject* createDrawObject();
 
 	/// overridden from BaseObject to allow for the special joints
@@ -173,10 +172,6 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
-
-	/// overridden from RectObject because this class wants to register for
-	/// callbacks
-	virtual void reset(void);
 
 	friend class DetonatorBox;
 
@@ -207,9 +202,9 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/// overridden from RectObject because this class wants to register for
-	/// callbacks and needs to reset its state machine
-	virtual void reset(void);
+	/// overridden from PolyObject because this class wants to register for
+	/// callbacks and needs to restart its state machine
+	virtual void createPhysicsObject(void);
 
 	/// this enum defines the states of the detonator
 	/// apart from WAITING->ACTIVE, all states are time-triggered
@@ -309,11 +304,6 @@ public:
 	  * @param aSplatterMass the new mass of the splatter
 	  */
 	void setMass( qreal aSplatterMass );
-
-	/// reset() has no effect on a ExplosionSplatter
-	/// overridden from AbstractBall
-	virtual void reset(void)
-	{ ; }
 
 	/// called if Object has registered a sensor
 	/// ExplosionSplatter needs to know if it has hit another object

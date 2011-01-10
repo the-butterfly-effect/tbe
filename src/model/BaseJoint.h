@@ -38,7 +38,7 @@ public:
 	BaseJoint(void);
 
 	// virtual, empty destructor
-	virtual ~BaseJoint() {}
+	virtual ~BaseJoint();
 
 	virtual DrawObject* createDrawObject();
 
@@ -74,11 +74,6 @@ public:
 
 	/// implemented from JointInterface
 	virtual	void physicsObjectStatus(JointStatus aStatus);
-
-	/// "resets the object into the start position/situation"
-	/// (overridden from BaseObject)
-	virtual void reset(void)
-	{}
 
 	/// called by the World class to set the Ground Body
 	static void setGroundBodyPtr(b2Body* aPtr);

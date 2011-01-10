@@ -29,13 +29,15 @@ BaseJoint::BaseJoint(void) : theJointPtr(NULL)
 {
 }
 
+BaseJoint::~BaseJoint()
+{
+	DEBUG5("BaseJoint::~BaseJoint() for %p\n", this);
+}
 
 
 DrawObject*  BaseJoint::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	if (isPhysicsObjectCreated()==false)
-		createPhysicsObject();
 	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty())
 		return NULL;
@@ -46,8 +48,7 @@ DrawObject*  BaseJoint::createDrawObject(void)
 
 void BaseJoint::deletePhysicsObject(void)
 {
-	if (theJointPtr)
-		getB2WorldPtr()->DestroyJoint(theJointPtr);
+	DEBUG5("BaseJoint::deletePhysicsObject(void)\n");
 	theJointPtr = NULL;
 }
 
@@ -93,14 +94,13 @@ void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 			theDrawObjectPtr->setVisible(true);
 		break;
 	case JointInterface::DELETED:
-		deletePhysicsObject();
+		DEBUG5("JointInterface::DELETED me=%p\n", this);
+		theJointPtr = NULL;
 		if (theDrawObjectPtr)
 			theDrawObjectPtr->setVisible(false);
 		break;
 	case JointInterface::POSUPDATE:
-		deletePhysicsObject();
 		updateOrigCenter();
-		createPhysicsObject();
 		break;
 	}
 }

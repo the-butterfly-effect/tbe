@@ -144,11 +144,10 @@ void Butterfly::setState(ButterflyStatus aNewStateSuggestion)
 	theButterflyState = aNewStateSuggestion;
 }
 
-void Butterfly::reset(void)
+void Butterfly::createPhysicsObject(void)
 {
 	setState(FLAP_OPEN);
 	theWorldPtr->registerCallback(this);
-	RectObject::reset();
-	
 	goToFlower();
+	RectObject::createPhysicsObject();
 }

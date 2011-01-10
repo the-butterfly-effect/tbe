@@ -47,11 +47,6 @@ public:
 	void setAll(World* aWorldPtr, const Position& aStartPos,
 				qreal aVelocity, qreal aSplatterMass);
 
-	/// reset() has no effect on a CokeSplatter
-	/// overridden from AbstractBall
-	virtual void reset(void)
-	{ ; }
-
 	/// called if Object has registered a sensor share
 	/// CokeSplatter needs to know if it has hit another object
 	///  - because that implies that we should delete ourselves soon...
@@ -113,7 +108,7 @@ public:
 	virtual void reportNormalImpulseLength(qreal anImpulseLength);
 
 	/// overridden from BaseObject because this class wants to register for callbacks
-	virtual void reset(void);
+	virtual void createPhysicsObject(void);
 
 private:
 	/// implemented from SimStepCallbackInterface

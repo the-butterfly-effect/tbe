@@ -49,7 +49,7 @@ public:
 	{	return NORESIZING;	}
 
 	/// overridden from BaseObject because this class wants to register for callbacks
-	virtual void reset(void);
+	virtual void createPhysicsObject(void);
 
 	enum ButterflyStatus
 	{
