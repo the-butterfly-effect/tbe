@@ -124,7 +124,7 @@ void MainWindow::on_actionAbout_activated()
 				"An open source game that uses realistic physics"
 				" simulations to combine lots of simple mechanical elements"
 				" to achieve a simple goal in the most complex way possible.<br><br>"
-				"(C) 2009-2010 Peter van Ginneken and Klaas van Gend<br>"
+				"(C) 2009,2010,2011 Peter van Ginneken and Klaas van Gend<br>"
 				"Licensed under GPL version 2 - <i>only</i>.<br><br>"
 				"See http://%1/ for more info on this project.")
 				.arg(QCoreApplication::instance()->organizationDomain()), this);
