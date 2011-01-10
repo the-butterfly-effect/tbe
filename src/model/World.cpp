@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009, 2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -118,7 +118,8 @@ void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 
 void World::createPhysicsWorld()
 {
-	assert (theB2WorldPtr==NULL);
+	if (theB2WorldPtr!=NULL)
+		return;
 
 	theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()), doSleep);
 	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
