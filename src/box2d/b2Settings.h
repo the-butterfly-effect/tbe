@@ -47,7 +47,7 @@ typedef float float32;
 #define b2_maxManifoldPoints	2
 
 /// The maximum number of vertices on a convex polygon.
-#define b2_maxPolygonVertices	11
+#define b2_maxPolygonVertices	13
 
 /// This is used to fatten AABBs in the dynamic tree. This allows proxies
 /// to move by a small amount without triggering a tree adjustment.
