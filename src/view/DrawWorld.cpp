@@ -425,6 +425,11 @@ void DrawWorld::setDrawDebug()
 
 void DrawWorld::startTimer(void)
 {
+	// note: this member is always called when the timer starts,
+	// so even when the timer after a stop continues...
+	// don't do anything here that will mess up a continue!
+	// (the createPhysicsWorld() will return if a world still exists)
+
 	DEBUG5("DrawWorld::startTimer(void)\n");
 
 	// TODO: upon reset, the old object gets focus again - thanks, Qt!
