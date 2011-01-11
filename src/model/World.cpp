@@ -118,6 +118,7 @@ void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
 
 void World::createPhysicsWorld()
 {
+	DEBUG3("World::createPhysicsWorld()\n");
 	if (theB2WorldPtr!=NULL)
 		return;
 
@@ -185,7 +186,7 @@ void World::createScene(MainWindow* myMainPtr)
 
 void World::deletePhysicsWorld()
 {
-	DEBUG4("World::deletePhysicsWorld()\n");
+	DEBUG3("World::deletePhysicsWorld()\n");
 
 	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
 	while (i!= theObjectPtrList.end())
