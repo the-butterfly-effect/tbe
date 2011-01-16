@@ -128,6 +128,12 @@ void World::createPhysicsWorld()
 	theB2WorldPtr->SetDestructionListener(this);
 	theB2WorldPtr->SetContactFilter(this);
 
+	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
+	// all shapes - useful for debugging new objects
+	// but we have to register the debug thingie first.
+	if (theDrawDebug)
+		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position.Set(50.01f, -1.0f);
@@ -169,12 +175,6 @@ void World::createScene(MainWindow* myMainPtr)
 	assert(theDrawWorldPtr == NULL);
 	theDrawWorldPtr = new DrawWorld(myMainPtr, this);
 	
-	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
-	// all shapes - useful for debugging new objects
-	// but we have to register the debug thingie first.
-	if (theDrawDebug)
-		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
-
 	// get all BaseObjects to register themselves in the DrawWorld
 	BaseObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
