@@ -100,18 +100,7 @@ AbstractBall::AbstractBall (const QString& aName,
 {
 	DEBUG5("AbstractBall::AbstractBall\n");
 
-	b2CircleShape* ballShape = new b2CircleShape();
-	ballShape->m_radius = aRadius;
-
-	b2FixtureDef* ballFixDef = new b2FixtureDef();
-	ballFixDef->density = aMass/(PI*aRadius*aRadius);
-	ballFixDef->userData = this;
-	ballFixDef->shape = ballShape;
-
-	theShapeList.push_back(ballFixDef);
-
-	setTheWidth(2.0*aRadius);
-	setTheHeight(2.0*aRadius);
+	createBallShapeFixture(aRadius, aMass);
 	setTheBounciness(aBounciness);
 
 	// for none of the AbstractBalls, you're supposed to change the image...
@@ -133,6 +122,23 @@ AbstractBall::~AbstractBall ( ) { }
 // Other methods
 //  
 
+void AbstractBall::createBallShapeFixture(float aRadius, float aMass)
+{
+	clearShapeList();
+	b2CircleShape* ballShape = new b2CircleShape();
+	ballShape->m_radius = aRadius;
+
+	b2FixtureDef* ballFixDef = new b2FixtureDef();
+	ballFixDef->density = aMass/(PI*aRadius*aRadius);
+	ballFixDef->userData = this;
+	ballFixDef->shape = ballShape;
+
+	theShapeList.push_back(ballFixDef);
+
+	setTheWidth(2.0*aRadius);
+	setTheHeight(2.0*aRadius);
+}
+
 DrawObject*  AbstractBall::createDrawObject(void)
 {
 	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
@@ -145,6 +151,8 @@ DrawObject*  AbstractBall::createDrawObject(void)
 	setDrawObjectZValue(3.0);
 	return theDrawObjectPtr;
 }
+
+
 
 // ---------------------------------------------------------------------------
 // ---------------------------------CustomBall--------------------------------
@@ -185,29 +193,15 @@ DrawObject* CustomBall::createDrawObject()
 
 void  CustomBall::parseProperties(void)
 {
-	AbstractBall::parseProperties();
 	DEBUG5("CustomBall::parseProperties(void)\n");
-
+	AbstractBall::parseProperties();
 
 	float myRadius;
 	float myMass;
 	theProps.property2Float(Property::RADIUS_STRING, &myRadius);
 	theProps.property2Float(Property::MASS_STRING, &myMass);
-	if (myRadius==0.0)
+	if (myRadius<=Position::minimalMove)
 		myRadius=0.1;
 
-	deletePhysicsObject();
-
-	b2CircleShape* ballShape = new b2CircleShape();
-	ballShape->m_radius = myRadius;
-
-	b2FixtureDef* ballFixDef = new b2FixtureDef();
-	ballFixDef->density = myMass/(PI*myRadius*myRadius);
-	ballFixDef->userData = this;
-	ballFixDef->shape = ballShape;
-
-	theShapeList.push_back(ballFixDef);
-
-	setTheWidth(2.0*myRadius);
-	setTheHeight(2.0*myRadius);
+	createBallShapeFixture(myRadius, myMass);
 }

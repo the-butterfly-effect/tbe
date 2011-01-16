@@ -71,6 +71,11 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
+protected:
+	/// internally used by AbstractBall and CustomBall to
+	/// actually create the b2Shape and b2FixtureDef
+	void createBallShapeFixture(float aRadius, float aMass);
+
 private:
 	QString theBallName;
 	QString theBallTooltip;
