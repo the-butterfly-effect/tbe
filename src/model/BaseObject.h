@@ -302,7 +302,11 @@ public:
 	/// @param aPosition the position of the center of the object.
 	virtual void createPhysicsObject(Position aPosition);
 
+	/// reset pointer to actual physics object, expecting
+	/// the Box2D delete world to actually get rid of them
+	/// (see World::deletePhysicsWorld())
 	virtual void deletePhysicsObject(void);
+
 	virtual bool isPhysicsObjectCreated(void) const
 		{ return theB2BodyPtr!=NULL; }
 	

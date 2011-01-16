@@ -188,6 +188,10 @@ void World::deletePhysicsWorld()
 {
 	DEBUG3("World::deletePhysicsWorld()\n");
 
+	// update our object lists and notify all objects
+	// that we're going to delete the physics parts...
+	// (note that no actual physics objects are removed
+	//   - we'll leave that to the delete b2WorldPtr below)
 	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
 	while (i!= theObjectPtrList.end())
 	{

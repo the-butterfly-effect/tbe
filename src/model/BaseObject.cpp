@@ -184,11 +184,11 @@ void BaseObject::createPhysicsObject(Position aPosition)
 void BaseObject::deletePhysicsObject()
 {
 	DEBUG5("BaseObject::deletePhysicsObject() for %p\n", this);
-	// have B2World destroy the body - that will automatically destroy
-	// the shapes
-	if (theB2BodyPtr!=NULL)
-		getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+
+	// we're only setting the pointer to zero - let's Box2D take care
+	// of actually removing everything when we do delete world...
 	theB2BodyPtr = NULL;
+
 	// let's also make sure we're getting rid of the joints
 	notifyJoints(JointInterface::DELETED);
 }
