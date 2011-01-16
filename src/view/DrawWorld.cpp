@@ -74,7 +74,6 @@ DrawWorld::DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 	// announce my UndoStack to all future DrawObjects:
 	DrawObject::setUndoStackPtr(&theUndoStack);
-	setDrawDebug();
 }
 
 DrawWorld::~DrawWorld ( ) 
@@ -412,17 +411,6 @@ void DrawWorld::resetWorld( )
 	emit theSimStateMachine->clicked_on_reset();
 }
 
-void DrawWorld::setDrawDebug()
-{
-	if (theDrawDebug)
-	{
-		SetFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
-		clearGraphicsList(0);
-	}
-	else
-		ClearFlags (e_shapeBit | e_prismaticJoint | e_revoluteJoint);
-}
-
 void DrawWorld::startTimer(void)
 {
 	// note: this member is always called when the timer starts,
@@ -442,6 +430,7 @@ void DrawWorld::startTimer(void)
 	DrawObject::setIsSimRunning(true);
 
 	theWorldPtr->createPhysicsWorld();
+	clearGraphicsList(0);
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
 

@@ -128,11 +128,17 @@ void World::createPhysicsWorld()
 	theB2WorldPtr->SetDestructionListener(this);
 	theB2WorldPtr->SetContactFilter(this);
 
-	// if theDrawDebug is true, Box2D will ask DrawWorld to draw
-	// all shapes - useful for debugging new objects
-	// but we have to register the debug thingie first.
+	// if theDrawDebug is true, we can ask Box2D to ask DrawWorld to draw
+	// all shapes - useful for debugging new objects. But we have to register
+	// the debug thingie first.
 	if (theDrawDebug)
+	{
 		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+		const uint32 myDebugFlags = b2DebugDraw::e_shapeBit |
+									b2DebugDraw::e_jointBit |
+									b2DebugDraw::e_centerOfMassBit;
+		theDrawWorldPtr->AppendFlags(myDebugFlags);
+	}
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
@@ -396,6 +402,10 @@ qreal World::simStep (void)
 	emit theDrawWorldPtr->on_winning();
 
 goals_not_met:
+	// make Box2D draw debug images if requested
+	if (theDrawDebug)
+		theB2WorldPtr->DrawDebugData();
+
 	return theDeltaTime;
 }
 

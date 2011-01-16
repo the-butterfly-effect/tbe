@@ -451,7 +451,6 @@ void MainWindow::slot_drawDebugAction_toggle(bool isChecked)
 {
 	theDrawDebug = isChecked;
 	theDrawDebugActionPtr->setChecked(theDrawDebug);
-	theScenePtr->setDrawDebug();
 }
 
 void MainWindow::slot_drawOutlineAction_toggle(bool isChecked)
