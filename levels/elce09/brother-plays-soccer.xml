@@ -21,7 +21,7 @@
 	    <object X="0.75" Y="1.05" width="0.345" height="1.9" type="Scenery">
                 <property key="ImageName" >brother-soccer</property>
             </object>
-            <object width="5.0" X="2.5" Y="0.05" type="Floor" >
+            <object width="5.0" X="2.5" Y="0.05" type="Floor" ID="thefloor">
                 <property key="Bounciness" >0.4</property>
                 <property key="Friction" >0.2</property>
                 <property key="ImageName" >White-to-green</property>
@@ -30,6 +30,7 @@
                 <property key="ImageName" >brother-soccer-leg</property>
 		<property key="PivotPoint">(0.0,0.38)</property>
 		<property key="Mass">20.0</property>
+		<property key="NoCollision">thefloor</property>
 	    </object>
 	    <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin" />
             <object width="0.4" X="4.4" Y="0.45" height="0.7" type="Scenery" >
@@ -44,11 +45,11 @@
             <object width="0.20" X="4.9" Y="0.325" height="0.55" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-		<object X="4.9" Y="0.50" width="0.1" height="0.1" type="Scenery" ID="Flower">
+		<object X="4.9" Y="0.53" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
 	    
-	    <object X="2.2" Y="0.49" type="Butterfly" ID="Butterfly">
+	    <object X="2.2" Y="0.52" type="Butterfly" ID="Butterfly">
                 <property key="Description" >Be careful not to hit it!</property>
                 <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
