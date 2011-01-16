@@ -25,8 +25,8 @@
             <object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-            <object X="2.1" Y="0.400" width="0.1" height="0.1" type="Scenery" ID="Flower">
-                <property key="ImageName" >Empty</property>
+            <object X="2.1" Y="0.48" width="0.1" height="0.1" type="Scenery" ID="Flower">
+                <property key="ImageName" >Emxpty</property>
             </object>
             <object width="1.3" X="0.85" Y="0.085" height="0.17" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
@@ -38,7 +38,7 @@
                 <property key="ImageName" >White-to-green</property>
             </object>
 			<object X="0.5" Y="0.40" type="Butterfly" ID="Butterfly">
-                <property key="Object" >Flower</property>
+                <property key="object" >Flower</property>
             </object>
             
             <object X="1.4" Y="0.29" width="0.21" height="0.21" type="PolyObject">
