@@ -66,6 +66,9 @@ protected:
 	void EndContact(const b2Contact*)
 	{ /* no action */ }
 
+
+// TODO/FIXME FAIL this doesn't work because Sensors are not handled
+// through PostSolve anymore (nor through PreSolve by the way)
 	void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
 	{ theContactInfoList.push_back(ContactInfo(
 			contact->GetFixtureA(), contact->GetFixtureB(),

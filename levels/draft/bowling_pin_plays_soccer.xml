@@ -28,7 +28,7 @@
                 <property key="ImageName" >RightRamp</property>
             </object>
             
-            <object X="3.95" Y="1.17" type="CokeMentosBottle" angle="-1.57" />
+            <object X="3.95" Y="1.19" type="CokeMentosBottle" angle="-1.57" />
             <object width="4.3" X="2.5" Y="1.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>

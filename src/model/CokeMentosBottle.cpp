@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2010  Klaas van Gend
+ * This file copyright (C) 2009,2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -40,7 +40,8 @@ static CokeMentosObjectFactory theCMBottleObjectFactory;
 
 
 const double CokeMentosBottle::theBottleMass = 0.2;
-
+static const float BOTTLEWIDTH=0.166;
+static const float BOTTLEHEIGHT=0.50;
 
 CokeMentosBottle::CokeMentosBottle()
 		: RectObject()
@@ -48,26 +49,29 @@ CokeMentosBottle::CokeMentosBottle()
 	theToolTipString = QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!");
 	theNameString = QObject::tr("Coke+Mentos Bottle");
 	theCokeAmount = 0.0;
-	setTheWidth(0.166);
-	setTheHeight(0.501);
+	setTheWidth(BOTTLEWIDTH);
+	setTheHeight(BOTTLEHEIGHT);
 
-	// the first one is the real bottle
+	// TODO/FIXME: the bottle is a polyobject, even though we derive
+	// from RectObject... I know - still need to fix that :-(
+	clearShapeList();
 	{
 		b2PolygonShape* myBottleShape = new b2PolygonShape();
 		myBottleShape->m_vertexCount = 8;
 		myBottleShape->m_vertices[0].Set(-0.01 ,  0.25);
 		myBottleShape->m_vertices[1].Set(-0.083,  0.12);
 		myBottleShape->m_vertices[2].Set(-0.075, -0.234);
-		myBottleShape->m_vertices[3].Set(-0.060, -0.251);
-		myBottleShape->m_vertices[4].Set( 0.060, -0.251);
+		myBottleShape->m_vertices[3].Set(-0.060, -0.25);
+		myBottleShape->m_vertices[4].Set( 0.060, -0.25);
 		myBottleShape->m_vertices[5].Set( 0.075, -0.234);
 		myBottleShape->m_vertices[6].Set( 0.083,  0.12);
 		myBottleShape->m_vertices[7].Set( 0.01 ,  0.25);
 		// approximation of the initial mass - we'll fix it later on...
 		b2FixtureDef* myBottleFix = new b2FixtureDef();
 		myBottleFix->shape    = myBottleShape;
-		myBottleFix->density  = 2.1 / (0.166*0.501);
+		myBottleFix->density  = (theBottleMass+1.5) / (BOTTLEWIDTH*BOTTLEHEIGHT);
 		myBottleFix->friction = 0.0;
+		myBottleFix->isSensor = false;
 		myBottleFix->userData = this;
 		theShapeList.push_back(myBottleFix);
 	}
@@ -127,7 +131,8 @@ void CokeMentosBottle::setBottleStatus(BottleStatus aNewStat)
 	switch(aNewStat)
 	{
 	case UNTRIGGERED:
-		// allow to set arbitrary illing of the bottle
+		// allow to set arbitrary 'volume' of the fluid in the bottle
+		// it doesn't afffect the size, though - magic :-D
 		theProps.property2Float(Property::MASS_STRING, &theCokeAmount);
 		updateMass();
 		theSplatterCount = 0;
@@ -255,8 +260,9 @@ CokeSplatter::CokeSplatter()
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
 
-	// the sensor - slightly larger
-	// (sensor is used for collision detection & getting rid of the object if needed)
+	// AbstractBall already sets up a circleshape with radius theRadius
+	// we now only need to add the sensor - slightly larger
+	// (sensor is used for collision detection & getting rid of the object)
 	b2CircleShape* mySensorShape = new b2CircleShape();
 	mySensorShape->m_radius = 1.01 * theRadius;
 
@@ -296,12 +302,14 @@ void CokeSplatter::setAll(World* aWorldPtr,
 	// the displayed image is larger than the actual object
 	setTheWidth(5*theRadius);
 	setTheHeight(3.5*theRadius);
-	aWorldPtr->addObject(this);
 
 	qreal myAngle = aStartPos.angle;
 	b2Vec2 myVelVec(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
 	DEBUG5("velocity: %f,%f\n", myVelVec.x, myVelVec.y);
+	createPhysicsObject();
 	theB2BodyPtr->SetLinearVelocity(myVelVec);
 
-	// FIXME: variable mass is ignored for now...
+	// FIXME: variable ASplatterMass is ignored for now...
+	// (but right now, it's constant anyway)
+	aWorldPtr->addObject(this);
 }
