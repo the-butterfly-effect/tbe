@@ -85,8 +85,10 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 		case FLAP_OPEN:
 		case FLAP_HALF:
 		{
+			// remain in either FLAP position for a while
+			// (i.e. 9 frames right now)
 			theCountdown--;
-			if (theCountdown >0)
+			if (theCountdown > 0)
 				return;
 			theCountdown=9;
 
@@ -106,9 +108,17 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			if (myXd<0.1)
 				myXImpulse = 0.01;
 
-			Vector myTotImpulse = aDeltaTime * Vector(myXImpulse, myYImpulse);
+			// the pull to the flower is done at the butterfly's center
+			// whilst the push upwards is done slightly above the center
+			// this allows the butterfly to tilt when needed, but it will
+			// correct itself later upwards again (similar to Balloon)
+			Vector myTotXImpulse = aDeltaTime * Vector(myXImpulse, 0);
+			Vector myTotYImpulse = aDeltaTime * Vector(0, myYImpulse);
 			theB2BodyPtr->ApplyLinearImpulse(
-					myTotImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
+					myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
+			Position myPoint = getTempCenter() + Vector(0,0.01);
+			theB2BodyPtr->ApplyLinearImpulse(
+					myTotYImpulse.toB2Vec2(), myPoint.toB2Vec2());
 
 			// and flap
 			if (getState()==FLAP_HALF)
@@ -133,7 +143,7 @@ void Butterfly::goToFlower(void)
 
 void Butterfly::reportNormalImpulseLength(qreal anImpulseLength)
 {
-	if(anImpulseLength<0.003)
+	if(anImpulseLength<0.008)
 		return;
 	setState(DEAD);
 }
