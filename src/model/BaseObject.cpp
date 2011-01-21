@@ -158,9 +158,7 @@ void BaseObject::createPhysicsObject(Position aPosition)
 	// do not set mass properties here - that will be done in derived classes
 	// (and as such is done already when we get here)
 	
-	// then create the body (or not)
-	if (theB2BodyPtr!=NULL)
-		deletePhysicsObject();
+	assert (theB2BodyPtr==NULL);
 	if (theShapeList.count()==0)
 		return;
 
@@ -173,7 +171,14 @@ void BaseObject::createPhysicsObject(Position aPosition)
 	{
 		(*myI)->restitution = theBounciness;
 		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
+#ifndef NDEBUG
+		b2AABB myAABB;
+		b2Transform myT;
+		myT.SetIdentity();
+		myPtr->GetShape()->ComputeAABB(&myAABB, myT);
 		DEBUG5("  Shape* = %p\n", myPtr);
+		DEBUG5("    %fx%f\n", myAABB.GetExtents().x, myAABB.GetExtents().y);
+#endif
 	}
 //	theB2BodyPtr->SetMassFromShapes();
 	DEBUG5("Object %s has mass %f kg\n", ASCII(getName()),
