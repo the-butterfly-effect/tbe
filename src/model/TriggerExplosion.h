@@ -289,6 +289,16 @@ public:
 	virtual bool isTemp() const
 	{ return true; }
 
+	/// overridden from BaseObject - we want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return true; }
+
+	/** overridden from BaseObject - if we have an impulse, we hit something
+	  * and we'd probably better disband ourselves soon...
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+
 	/** sets all parameters of the splatter, attaches to World
 	  * and creates the physical object and drawobject
 	  * @param aWorldPtr
@@ -304,11 +314,6 @@ public:
 	  * @param aSplatterMass the new mass of the splatter
 	  */
 	void setMass( qreal aSplatterMass );
-
-	/// called if Object has registered a sensor
-	/// ExplosionSplatter needs to know if it has hit another object
-	/// overridden from SensorInterface
-	virtual void callBackSensor(const ContactInfo&);
 
 	const static qreal theRadius;
 

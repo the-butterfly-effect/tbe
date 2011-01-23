@@ -413,27 +413,18 @@ ExplosionSplatter::ExplosionSplatter()
 	// the first shape is already set in the AbstractBall constructor
 	// we only need to set the groupIndex so the various splatters do not collide
 	theShapeList[0]->filter.groupIndex = - COLLISION_GROUP_INDEX;
-
-	// the sensor - slightly larger
-	// (sensor is used for collision detection & getting rid of the object if needed)
-	b2CircleShape* mySensorShape = new b2CircleShape();
-	mySensorShape->m_radius = 1.01 * theRadius;
-
-	b2FixtureDef* mySensorFixDef = new b2FixtureDef();
-	mySensorFixDef->isSensor = true;
-	mySensorFixDef->userData = this;
-	mySensorFixDef->shape = mySensorShape;
-
-	theShapeList.push_back(mySensorFixDef);
 }
 
 ExplosionSplatter::~ExplosionSplatter()
 {
 	DEBUG5("ExplosionSplatter::~ExplosionSplatter()\n");
+	// contrary to most objects, we need to take ourselves really out of the
+	// physics simulation...
+	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 }
 
 
-void ExplosionSplatter::callBackSensor(const ContactInfo&)
+void ExplosionSplatter::reportNormalImpulseLength(qreal)
 {
 	// oww we hit something.
 	// that may be the end for us
@@ -471,15 +462,16 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
 		   aVelocity, aSplatterMass);
 
+	theDynamitePtr = aDynamitePtr;
 	setOrigCenter(aStartPos);
-	aWorldPtr->addObject(this);
+	createPhysicsObject();
 
 	qreal myAngle = aStartPos.angle;
 	theStartVelocityVector = Vector(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
 	theB2BodyPtr->SetLinearVelocity(theStartVelocityVector.toB2Vec2());
-
 	setMass(aSplatterMass);
-	theDynamitePtr = aDynamitePtr;
+
+	aWorldPtr->addObject(this);
 }
 
 void ExplosionSplatter::setMass( qreal aSplatterMass )
