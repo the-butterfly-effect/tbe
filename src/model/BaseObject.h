@@ -87,22 +87,6 @@ public:
 	/// the default is to do completely nothing - you'll have to override
 	virtual void callBackSensor(const ContactInfo&)
 	{ return; }
-
-	// note: b2ContactPoint is defined in file:
-	//   3rdParty/Box2D_v2.0.1/Box2D/Source/Dynamics/Contacts/b2Contact.h like this:
-	//
-	//struct b2ContactPoint
-	//{
-	//        b2Shape* shape1;                ///< the first shape
-	//        b2Shape* shape2;                ///< the second shape
-	//        b2Vec2 position;                ///< position in world coordinates
-	//        b2Vec2 velocity;                ///< velocity of point on body2 relative to point on body1 (pre-solver)
-	//        b2Vec2 normal;                  ///< points from shape1 to shape2
-	//        float32 separation;             ///< the separation is negative when shapes are touching
-	//        float32 friction;               ///< the combined friction coefficient
-	//        float32 restitution;    ///< the combined restitution coefficient
-	//        b2ContactID id;                 ///< the contact id identifies the features in contact
-	//};
 };
 
 
@@ -302,9 +286,9 @@ public:
 	/// @param aPosition the position of the center of the object.
 	virtual void createPhysicsObject(Position aPosition);
 
-	/// reset pointer to actual physics object, expecting
-	/// the Box2D delete world to actually get rid of them
-	/// (see World::deletePhysicsWorld())
+	/// null the current Physicsobject (note that they are no longer
+	/// deleted in normal game operation - if you need that behaviour
+	/// (like e.g. CokeSplatter) you need to override that in its destructor.
 	virtual void deletePhysicsObject(void);
 
 	virtual bool isPhysicsObjectCreated(void) const
