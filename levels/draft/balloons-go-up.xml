@@ -19,7 +19,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Right Ramp">
             <name lang="nl">Helling naar Rechts</name>
-            <object width="0.7" height="0.4" type="RightRamp" angle="0"/>
+            <object width="0.6" height="0.4" type="RightRamp" angle="0"/>
         </toolboxitem>
     </toolbox>
     <scene>

@@ -104,9 +104,6 @@ private:
 private:
 	// Private things
 
-	/// used to calculate the speed of moving
-	Position thePreviousPosition;
-
 	/// the state variable
 	States theState;
 

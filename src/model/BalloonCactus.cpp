@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -61,6 +61,8 @@ Balloon::Balloon()
 					 0.27, 0.36, 0.1, 0.7)
 {
 	theState = BALLOON;
+	theB2BodyDefPtr->linearDamping  = 0.98f;
+	theB2BodyDefPtr->angularDamping = 0.4f;
 }
 
 Balloon::~Balloon()
@@ -88,31 +90,21 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	}
 }
 
-void Balloon::callbackStepBalloon(qreal aDeltaTime, qreal aTotalTime)
+void Balloon::callbackStepBalloon(qreal, qreal)
 {
 	// the upward force...
-	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
+	// the balloon weighs 100 grams, i.e. it should have a constant gravity
+	// pull of 0.981 N.
+	//
+	// Why isn't that the case?
+	// See PolyObject::fillShapeList - the density is calculated over the AABB
+	// of the balloon, not the actual surface.
+	// so Box2D thinks our Balloon is actually lighter than 100 grams...
+	//
+	// That's why a 0.7N force upwards suffices for now :-)
+	theB2BodyPtr->ApplyForce(b2Vec2(0,0.7), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
 
-	// the downward force...
-	// i.e. the "drag" or "air restance"
-	if (aDeltaTime >= aTotalTime)
-	{
-		// on the first call, set the previous position
-		thePreviousPosition = getTempCenter();
-	}
-
-	Vector mySpeedVector = (getTempCenter().toVector() - thePreviousPosition.toVector());
-	float myForce = -0.05 * (mySpeedVector.dx*mySpeedVector.dx + mySpeedVector.dy*mySpeedVector.dy)/aDeltaTime/aDeltaTime;
-
-	if (mySpeedVector.length()/aDeltaTime < 0.01)
-		myForce = 0;
-
-	Vector myForceVector = myForce * Vector(mySpeedVector.toAngle());
-	theB2BodyPtr->ApplyForce(myForceVector.toB2Vec2(), (getTempCenter()).toB2Vec2());
-//	DEBUG1("speed: %f@%f / force: %f\n", mySpeedVector.length()/aDeltaTime,
-//		   mySpeedVector.toAngle(), myForceVector.length());
-
-	thePreviousPosition = getTempCenter();
+	// damping is now handled by Box2D - linearDamping and AngularDamping...
 }
 
 void Balloon::callbackStepPopped(qreal /*aDeltaTime*/, qreal aTotalTime)
