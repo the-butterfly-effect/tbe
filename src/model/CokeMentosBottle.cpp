@@ -43,45 +43,18 @@ const double CokeMentosBottle::theBottleMass = 0.2;
 static const float BOTTLEWIDTH=0.166;
 static const float BOTTLEHEIGHT=0.50;
 
+
 CokeMentosBottle::CokeMentosBottle()
-		: RectObject()
+		: PolyObject(QObject::tr("Coke+Mentos Bottle"),
+					 QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!"),
+					 "CokeBottleNormal;CokeBottleFoaming;CokeBottleBlowing;CokeBottleEmpty",
+					 "(-0.01,0.25)=(-0.083,0.12)=(-0.075,-0.234)=(-0.060,-0.25)"
+					 "=(0.060,-0.25)=(0.075,-0.234)=(0.083,0.12)=(0.01,0.25)",
+					 BOTTLEWIDTH, BOTTLEHEIGHT, theBottleMass+1.5, 0.2)
 {
-	theToolTipString = QObject::tr("This is a prepared Coke bottle with a Mentos in it.\nLook: it blows if triggered!");
-	theNameString = QObject::tr("Coke+Mentos Bottle");
 	theCokeAmount = 0.0;
-	setTheWidth(BOTTLEWIDTH);
-	setTheHeight(BOTTLEHEIGHT);
-
-	// TODO/FIXME: the bottle is a polyobject, even though we derive
-	// from RectObject... I know - still need to fix that :-(
-	clearShapeList();
-	{
-		b2PolygonShape* myBottleShape = new b2PolygonShape();
-		myBottleShape->m_vertexCount = 8;
-		myBottleShape->m_vertices[0].Set(-0.01 ,  0.25);
-		myBottleShape->m_vertices[1].Set(-0.083,  0.12);
-		myBottleShape->m_vertices[2].Set(-0.075, -0.234);
-		myBottleShape->m_vertices[3].Set(-0.060, -0.25);
-		myBottleShape->m_vertices[4].Set( 0.060, -0.25);
-		myBottleShape->m_vertices[5].Set( 0.075, -0.234);
-		myBottleShape->m_vertices[6].Set( 0.083,  0.12);
-		myBottleShape->m_vertices[7].Set( 0.01 ,  0.25);
-		// approximation of the initial mass - we'll fix it later on...
-		b2FixtureDef* myBottleFix = new b2FixtureDef();
-		myBottleFix->shape    = myBottleShape;
-		myBottleFix->density  = (theBottleMass+1.5) / (BOTTLEWIDTH*BOTTLEHEIGHT);
-		myBottleFix->friction = 0.0;
-		myBottleFix->isSensor = false;
-		myBottleFix->userData = this;
-		theShapeList.push_back(myBottleFix);
-	}
-
-	setTheBounciness(0.2);
 	setBottleStatus(UNTRIGGERED);
-
 	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING  + QString(":CokeBottleNormal;CokeBottleFoaming;CokeBottleBlowing;CokeBottleEmpty/") +
-		Property::MASS_STRING + QString(":2.0/") +
 		Property::THRUST_STRING + QString(":2.0/") );
 }
 
@@ -116,7 +89,7 @@ void CokeMentosBottle::createPhysicsObject(void)
 {
 	setBottleStatus(UNTRIGGERED);
 	theProps.property2Float(Property::THRUST_STRING, &theThrust);
-	RectObject::createPhysicsObject();
+	PolyObject::createPhysicsObject();
 	theWorldPtr->registerCallback(this);
 }
 
@@ -256,36 +229,29 @@ const qreal CokeSplatter::theRadius = 0.04;
 
 CokeSplatter::CokeSplatter()
 		: AbstractBall("CokeSplatter","", "CokeSplatter",
-					   theRadius, 0.01,  0.0)
+					   theRadius, 0.01,  0.0), hasRequestedRemoval(false)
 {
 	DEBUG5("CokeSplatter::CokeSplatter\n");
-
-	// AbstractBall already sets up a circleshape with radius theRadius
-	// we now only need to add the sensor - slightly larger
-	// (sensor is used for collision detection & getting rid of the object)
-	b2CircleShape* mySensorShape = new b2CircleShape();
-	mySensorShape->m_radius = 1.01 * theRadius;
-
-	b2FixtureDef* mySensorFixDef = new b2FixtureDef();
-	mySensorFixDef->isSensor = true;
-	mySensorFixDef->userData = this;
-	mySensorFixDef->shape = mySensorShape;
-
-	theShapeList.push_back(mySensorFixDef);
 }
 
 CokeSplatter::~CokeSplatter()
 {
 	DEBUG5("CokeSplatter::~CokeSplatter()\n");
+	// contrary to most objects, we need to take ourselves really out of the
+	// physics simulation...
+	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 }
 
-
-void CokeSplatter::callBackSensor(const ContactInfo&)
+void CokeSplatter::reportNormalImpulseLength(qreal)
 {
 	// oww we hit something.
 	// that's the end for us
 	//   - just allow for some time to transfer the impact
-	theWorldPtr->removeMe(this, 0.1);
+	if (!hasRequestedRemoval)
+	{
+		theWorldPtr->removeMe(this, 0.1);
+		hasRequestedRemoval = true;
+	}
 }
 
 

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,11 +20,11 @@
 #define COKEMENTOSBOTTLE_H
 
 #include "AbstractBall.h"
-#include "RectObject.h"
+#include "PolyObject.h"
 #include "World.h"
 
-/** this class implements the flying coke
- *  it is modelled in small bubbles, 10 grams each
+/** This class implements the flying Coke liquid.
+ *  It is modelled in small bubbles, 10 grams each.
  */
 class CokeSplatter : public AbstractBall
 {
@@ -47,14 +47,19 @@ public:
 	void setAll(World* aWorldPtr, const Position& aStartPos,
 				qreal aVelocity, qreal aSplatterMass);
 
-	/// called if Object has registered a sensor share
-	/// CokeSplatter needs to know if it has hit another object
-	///  - because that implies that we should delete ourselves soon...
-	/// overridden from SensorInterface
-	virtual void callBackSensor(const ContactInfo&);
+	/// overridden from BaseObject - we want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return true; }
+
+	/** overridden from BaseObject - if we have an impulse, we hit something
+	  * and we'd better disband ourselves soon...
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(qreal anImpulseLength);
 
 protected:
 	const static qreal theRadius;
+	bool hasRequestedRemoval;
 };
 
 
@@ -64,10 +69,10 @@ protected:
 
 
 /** this class implements the famous coke+mentos trick:
-  * insert a mentos in a coke bottle and it will blow a
+  * insert a Mentos in a Coke bottle and it will blow a
   * huge fountain - until the bottle is empty.
   */
-class CokeMentosBottle : public RectObject, public SimStepCallbackInterface
+class CokeMentosBottle : public PolyObject, public SimStepCallbackInterface
 {
 public:
     CokeMentosBottle();
@@ -79,11 +84,6 @@ public:
 		BLOWING,
 		EMPTY
 	};
-
-	/// returns whether the object can be resized by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
 
 	/// one of the two ways to trigger the blowing:
 	void setBottleStatus(BottleStatus aNewStat);
