@@ -58,18 +58,27 @@ struct ContactInfo
 class ContactListener : public b2ContactListener
 {
 protected:
-	/// implemented from b2ContactListener: add a new contact point
-	void BeginContact(const b2Contact* )
-	{ /* no action */ }
+	/// implemented from b2ContactListener: add a new contact point,
+	/// but only if one or both are sensors...
+	/// (because PostSolve() won't see any sensors)
+	/// Called when two fixtures begin to touch.
+	virtual void BeginContact(b2Contact* aContact)
+	{
+		if (aContact->GetFixtureA()->IsSensor() ||
+			aContact->GetFixtureB()->IsSensor())
+		{
+			printf("sensorcontact!\n");
+			theContactInfoList.push_back(ContactInfo(
+			aContact->GetFixtureA(), aContact->GetFixtureB(),
+			0, 0));
+		}
+	}
 
 	/// implemented from b2ContactListener: contact point was removed
-	void EndContact(const b2Contact*)
+	virtual void EndContact(b2Contact*)
 	{ /* no action */ }
 
-
-// TODO/FIXME FAIL this doesn't work because Sensors are not handled
-// through PostSolve anymore (nor through PreSolve by the way)
-	void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+	virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
 	{ theContactInfoList.push_back(ContactInfo(
 			contact->GetFixtureA(), contact->GetFixtureB(),
 			impulse->normalImpulses[0], impulse->tangentImpulses[0])); }

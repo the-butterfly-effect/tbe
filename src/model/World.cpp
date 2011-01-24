@@ -326,24 +326,6 @@ qreal World::simStep (void)
 	// run the simulation
 	theB2WorldPtr->Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
 
-	// run all the callbacks for each sensor
-	foreach (ContactInfo j, theContactInfoList)
-	{
-		// only call the sensor when just *one* of both shapes is a sensor
-		if (j.myFixtureA->IsSensor() && !j.myFixtureB->IsSensor())
-		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(j.myFixtureA->GetUserData());
-			if (myPtr!=NULL)
-				myPtr->callBackSensor(j);
-		}
-		if (!j.myFixtureA->IsSensor() && j.myFixtureB->IsSensor())
-		{
-			SensorInterface* myPtr = reinterpret_cast<SensorInterface*>(j.myFixtureB->GetUserData());
-			if (myPtr!=NULL)
-				myPtr->callBackSensor(j);
-		}
-	}
-
 	// check all contactresults if either of the objects is interested
 	// in hearing the impulses...
 	foreach(ContactInfo k, theContactInfoList)
@@ -353,6 +335,8 @@ qreal World::simStep (void)
 
 		if (myBO1Ptr!=NULL)
 		{
+			if (k.myFixtureA->IsSensor())
+				myBO1Ptr->callBackSensor(k);
 			if (myBO1Ptr->isInterestedInNormalImpulse())
 				myBO1Ptr->reportNormalImpulseLength( k.myNormalImpulse );
 			if (myBO1Ptr->isInterestedInTangentImpulse())
@@ -361,6 +345,8 @@ qreal World::simStep (void)
 
 		if (myBO2Ptr!=NULL)
 		{
+			if (k.myFixtureB->IsSensor())
+				myBO2Ptr->callBackSensor(k);
 			if (myBO2Ptr->isInterestedInNormalImpulse())
 				myBO2Ptr->reportNormalImpulseLength( k.myNormalImpulse );
 			if (myBO2Ptr->isInterestedInTangentImpulse())
