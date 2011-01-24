@@ -88,6 +88,9 @@ public:
 	/// one of the two ways to trigger the blowing:
 	void setBottleStatus(BottleStatus aNewStat);
 
+	/// let's mis-use deletePhysicsObject to reset our object state
+	virtual void deletePhysicsObject(void);
+
 	/// @returns the current bottle state
 	BottleStatus getBottleStatus(void)
 	{ return theBottleStatus; }

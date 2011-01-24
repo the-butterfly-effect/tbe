@@ -93,6 +93,12 @@ void CokeMentosBottle::createPhysicsObject(void)
 	theWorldPtr->registerCallback(this);
 }
 
+void CokeMentosBottle::deletePhysicsObject(void)
+{
+	setBottleStatus(UNTRIGGERED);
+	PolyObject::deletePhysicsObject();
+}
+
 void CokeMentosBottle::reportNormalImpulseLength(qreal anImpulseLength)
 {
 	if (anImpulseLength > 0.6 && theBottleStatus==UNTRIGGERED)
