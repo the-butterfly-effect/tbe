@@ -48,6 +48,13 @@ public:
 	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void);
 
+	/// let's mis-use deletePhysicsObject to reset our object state
+	virtual void deletePhysicsObject(void);
+
+	/// deletePhysicsObject() doesn't really delete the physics object
+	/// anymore - but we need a true deleter here...
+	void deletePhysicsObjectForReal(void);
+
 	/// this enum defines the states of the balloon
 	enum States
 	{

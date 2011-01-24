@@ -61,7 +61,7 @@ Balloon::Balloon()
 					 0.27, 0.36, 0.1, 0.7)
 {
 	theState = BALLOON;
-	theB2BodyDefPtr->linearDamping  = 0.98f;
+	theB2BodyDefPtr->linearDamping  = 2.1f;
 	theB2BodyDefPtr->angularDamping = 0.4f;
 }
 
@@ -101,33 +101,21 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 	// of the balloon, not the actual surface.
 	// so Box2D thinks our Balloon is actually lighter than 100 grams...
 	//
-	// That's why a 0.7N force upwards suffices for now :-)
-	theB2BodyPtr->ApplyForce(b2Vec2(0,0.7), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
+	// That's why a 0.8N upwards force suffices for now :-)
+	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
 
 	// damping is now handled by Box2D - linearDamping and AngularDamping...
 }
 
-void Balloon::callbackStepPopped(qreal /*aDeltaTime*/, qreal aTotalTime)
+void Balloon::callbackStepPopped(qreal, qreal aTotalTime)
 {
-	// during the Popped state, which lasts for POPPED_TIME (only 2-3 seconds),
-	// we reduce the mass step by step
-	// once the time runs out, we switch to "GONE" state
-
 	assert(thePoppingTimeStart>0.1);
 	qreal myDelta = aTotalTime - thePoppingTimeStart - POPPING_TIME;
 	if ( myDelta >= POPPED_TIME)
 		goToState(GONE);
-	else
-	{
-//		struct b2MassData myData;
-//		myData.mass  = POPPED_MASS - POPPED_MASS/(POPPED_TIME-myDelta);
-//		myData.center= b2Vec2(0,0);
-//		myData.I     = theB2BodyPtr->GetInertia();
-//		theB2BodyPtr->SetMass(&myData);
-	}
 }
 
-void Balloon::callbackStepPopping(qreal /*aDeltaTime*/, qreal aTotalTime)
+void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 {
 	// is this the first callback in Popping state???
 	if (thePoppingTimeStart<0.0001)
@@ -137,6 +125,34 @@ void Balloon::callbackStepPopping(qreal /*aDeltaTime*/, qreal aTotalTime)
 	}
 	if (aTotalTime-thePoppingTimeStart > POPPING_TIME)
 		goToState(POPPED);
+}
+
+
+void Balloon::createPhysicsObject(void)
+{
+	theState = BALLOON;
+	thePoppingTimeStart = 0;
+	clearShapeList();
+	fillShapeList();
+	PolyObject::createPhysicsObject();
+	theWorldPtr->registerCallback(this);
+}
+
+void Balloon::deletePhysicsObject(void)
+{
+	// nothing much to do here that actually has to do with delete...
+	theState = BALLOON;
+	thePoppingTimeStart = 0;
+	clearShapeList();
+	fillShapeList();
+	
+	PolyObject::deletePhysicsObject();
+}
+
+void Balloon::deletePhysicsObjectForReal(void)
+{
+	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+	theB2BodyPtr = NULL;
 }
 
 
@@ -168,7 +184,7 @@ Balloon::States Balloon::goToState(Balloon::States aNewState)
 		if (aNewState==GONE)
 		{
 			theState=GONE;
-			deletePhysicsObject();
+			deletePhysicsObjectForReal();
 		}
 		break;
 	case GONE:
@@ -195,16 +211,6 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 }
 
 
-void Balloon::createPhysicsObject(void)
-{
-	theState = BALLOON;
-	thePoppingTimeStart = 0;
-	clearShapeList();
-	fillShapeList();
-	PolyObject::createPhysicsObject();
-	theWorldPtr->registerCallback(this);
-}
-
 void Balloon::stung(void)
 {
 	if (theState == BALLOON)
@@ -214,9 +220,10 @@ void Balloon::stung(void)
 void Balloon::switchToSmallShape(void)
 {
 	// save the current position - as it is only stored within the B2Body
+	// and we'll kill it in the next line...
 	Position myCurrentPos = getTempCenter();
 
-	deletePhysicsObject();
+	deletePhysicsObjectForReal();
 	clearShapeList();
 
 	b2PolygonShape* myRestShape = new b2PolygonShape();
