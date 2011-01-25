@@ -188,7 +188,7 @@ void BaseObject::createPhysicsObject(Position aPosition)
 
 void BaseObject::deletePhysicsObject()
 {
-	DEBUG5("BaseObject::deletePhysicsObject() for %p\n", this);
+	DEBUG1("BaseObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
 
 	// we're only setting the pointer to zero - let's Box2D take care
 	// of actually removing everything when we do delete world...
