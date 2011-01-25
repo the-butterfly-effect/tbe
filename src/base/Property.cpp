@@ -180,17 +180,21 @@ bool PropertyList::property2ObjectPlusVectorPtr(
 		Vector** aVectorPtrPtr)
 {
 	QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
-	if (myStrings.count() != 2)
+	if (myStrings.count() > 2 || myStrings.count() == 0)
 		return false;
 
-	*aBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
-	if (*aBOPtrPtr == NULL)
+	BaseObject* myBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
+	if (myBOPtrPtr == NULL)
 		return false;
 
 	Vector* myVPtr = new Vector();
-	if (myVPtr->fromString(myStrings[1]) == false)
-		return false;
+	if (myStrings.count() == 2)
+	{
+		if (myVPtr->fromString(myStrings[1]) == false)
+			return false;
+	}
 
+	*aBOPtrPtr     = myBOPtrPtr;
 	*aVectorPtrPtr = myVPtr;
 	return true;
 }
