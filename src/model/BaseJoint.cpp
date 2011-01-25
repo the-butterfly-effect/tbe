@@ -42,7 +42,7 @@ DrawObject*  BaseJoint::createDrawObject(void)
 	if (myImageName.isEmpty())
 		return NULL;
 	theDrawObjectPtr = new DrawObject(this, myImageName);
-	setDrawObjectZValue(2.0);
+	setDrawObjectZValue(5.0);
 	return theDrawObjectPtr;
 }
 
