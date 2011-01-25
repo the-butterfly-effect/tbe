@@ -4,8 +4,7 @@ CONFIG += qt \
     warn_on \
     debug
 DEFINES += QT_NO_ASCII_CAST
-INCLUDEPATH += \
-    src \
+INCLUDEPATH += src \
     src/box2d \
     src/model \
     src/view \
@@ -15,6 +14,7 @@ QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -Wextra \
     -Wpointer-arith \
     -Wlogical-op
+
 # -Wfloat-equal -Wshadow -Wcast-qual
 QMAKE_CXXFLAGS_RELEASE += -Wextra \
     -DNDEBUG
@@ -73,6 +73,7 @@ HEADERS += src/tbe_global.h \
     src/model/Butterfly.h \
     src/model/CokeMentosBottle.h \
     src/model/Floor.h \
+    src/model/Glue.h \
     src/model/Goal.h \
     src/model/Level.h \
     src/model/Link.h \
@@ -152,33 +153,34 @@ SOURCES += src/main.cpp \
     src/base/UndoInsertCommand.cpp \
     src/base/UndoObjectChange.cpp \
     src/model/AbstractBall.cpp \
-	src/model/BalloonCactus.cpp \
-	src/model/BaseJoint.cpp \
-	src/model/BaseObject.cpp \
-	src/model/Butterfly.cpp \
-	src/model/CokeMentosBottle.cpp \
-	src/model/Floor.cpp \
-	src/model/Goal.cpp \
-	src/model/Level.cpp \
-	src/model/Link.cpp \
-	src/model/PivotPoint.cpp \
-	src/model/PolyObject.cpp \
-	src/model/Position.cpp \
-	src/model/PostIt.cpp \
-	src/model/RatBread.cpp \
-	src/model/RectObject.cpp \
-	src/model/Scenery.cpp \
-	src/model/Spring.cpp \
-	src/model/TranslationGuide.cpp \
-	src/model/TriggerExplosion.cpp \
+    src/model/BalloonCactus.cpp \
+    src/model/BaseJoint.cpp \
+    src/model/BaseObject.cpp \
+    src/model/Butterfly.cpp \
+    src/model/CokeMentosBottle.cpp \
+    src/model/Floor.cpp \
+    src/model/Glue.cpp \
+    src/model/Goal.cpp \
+    src/model/Level.cpp \
+    src/model/Link.cpp \
+    src/model/PivotPoint.cpp \
+    src/model/PolyObject.cpp \
+    src/model/Position.cpp \
+    src/model/PostIt.cpp \
+    src/model/RatBread.cpp \
+    src/model/RectObject.cpp \
+    src/model/Scenery.cpp \
+    src/model/Spring.cpp \
+    src/model/TranslationGuide.cpp \
+    src/model/TriggerExplosion.cpp \
     src/model/World.cpp \
     src/view/Anchors.cpp \
     src/view/ChooseLevel.cpp \
-	src/view/ChoosePhoneNumber.cpp \
+    src/view/ChoosePhoneNumber.cpp \
     src/view/DrawAbstractBall.cpp \
     src/view/DrawObject.cpp \
-	src/view/DrawPolyObject.cpp \
-	src/view/DrawPostIt.cpp \
+    src/view/DrawPolyObject.cpp \
+    src/view/DrawPostIt.cpp \
     src/view/DrawWorld.cpp \
     src/view/EditLevelProperties.cpp \
     src/view/EditObjectDialog.cpp \
@@ -213,5 +215,3 @@ unix {
 TRANSLATIONS = i18n/tbe_nl.ts \
     i18n/tbe_es.ts
 RESOURCES += images/illustrations/tbe-icon.qrc
-
-

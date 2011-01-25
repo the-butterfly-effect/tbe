@@ -70,22 +70,21 @@
                 <property key="Friction" >0.7</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-	    <object type="PivotPoint" X="1.2" Y="0.6">
+		<object type="PivotPoint" X="1.2" Y="0.6">
 	      <property key="object1">Bar</property>
 	      <property key="object2">BrassPin</property>
-	      <property key="collide">false</property>
-	    </object>
+		  <property key="collide">false</property>
+		</object>
             <object X="0.25" Y="0.7" width="0.1" height="0.1" type="RectObject" ID="Stop">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >0.5</property>
                 <property key="Friction" >0.7</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-	    <object type="PivotPoint" X="0.25" Y="0.65">
-	      <property key="object1">Bar</property>
-	      <property key="object2">Stop</property>
-	      <property key="collide">true</property>
-	    </object>
+		<object type="Glue" X="0.25" Y="0.65" width="0.1" height="0.1">
+		  <property key="object1">Bar@(-0.75,0)</property>
+		  <property key="object2">Stop</property>
+		</object>
             <!--object X="0.4" Y="0.75" type="Volley Ball" /-->
 
             <object X="0.2" Y="0.40" width="0.2" height="0.2" type="RectObject" ID="Stop">
