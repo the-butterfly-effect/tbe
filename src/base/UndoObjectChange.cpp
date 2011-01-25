@@ -65,7 +65,7 @@ UndoObjectChange::~UndoObjectChange ( )
 UndoObjectChange*
 UndoObjectChange::createUndoObject (BaseObject* aBOPtr)
 {
-	DEBUG1("UndoObjectChange::createUndoObject(%p)\n", aBOPtr);
+	DEBUG5("UndoObjectChange::createUndoObject(%p)\n", aBOPtr);
 
 	UndoObjectChange* myPtr = new UndoObjectChange(aBOPtr);
 
