@@ -111,8 +111,12 @@ public:
  *    i.e. in the local object coordinates
  */
 Position operator+(const Position& p1, const Vector& v1);
+/// subtracts Vector from a Position
+Position operator-(const Position& p1, const Vector& v1);
 
-/// add Position+QPointF
+/// add Position and QPointF
+Position operator+(const Position& p1, const QPointF& p2);
+/// subtracts Position and QPointF
 Position operator+(const Position& p1, const QPointF& p2);
 
 /// adds a Vector to a Vector

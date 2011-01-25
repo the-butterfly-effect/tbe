@@ -192,9 +192,21 @@ Position operator+(const Position& p1, const Vector& v1)
 	return Position(p1.x +v1.dx*myCos - v1.dy*mySin, p1.y +v1.dx*mySin +v1.dy*myCos, p1.angle);
 }
 
+Position operator-(const Position& p1, const Vector& v1)
+{
+	float myCos = cos(p1.angle);
+	float mySin = sin(p1.angle);
+	return Position(p1.x -v1.dx*myCos + v1.dy*mySin, p1.y -v1.dx*mySin -v1.dy*myCos, p1.angle);
+}
+
 Position operator+(const Position& p1, const QPointF& p2)
 {
 	return Position(p1.x+p2.x(), p1.y+p2.y(), p1.angle);
+}
+
+Position operator-(const Position& p1, const QPointF& p2)
+{
+	return Position(p1.x-p2.x(), p1.y-p2.y(), p1.angle);
 }
 
 Vector operator+(const Vector& v1, const Vector& v2)
