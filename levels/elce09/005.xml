@@ -96,7 +96,11 @@
     </scene>
 	<goals>
 		<goal type="positionchange">
-		   <property key="anglechanged">ychanged</property>
+		   <property key="ybelow">1.0</property>
+		   <property key="object">Pin</property>
+		</goal>
+		<goal type="positionchange">
+		   <property key="xover">2.36</property>
 		   <property key="object">Pin</property>
 		</goal>
 	</goals>

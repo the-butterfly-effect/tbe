@@ -26,7 +26,7 @@
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
             <object X="2.1" Y="0.48" width="0.1" height="0.1" type="Scenery" ID="Flower">
-                <property key="ImageName" >Emxpty</property>
+                <property key="ImageName" >Empty</property>
             </object>
             <object width="1.3" X="0.85" Y="0.085" height="0.17" type="Floor" >
                 <property key="ImageName" >White-to-green</property>

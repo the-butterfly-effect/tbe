@@ -81,7 +81,8 @@
                 <property key="Friction" >0.7</property>
                 <property key="Bounciness" >0.0</property>
             </object>
-		<object type="Glue" X="0.25" Y="0.65" width="0.1" height="0.1">
+		<object type="Glue" X="0.25" Y="0.65" width="0.1" height="0.04">
+                <property key="ImageName" >GlueBlob</property>
 		  <property key="object1">Bar@(-0.75,0)</property>
 		  <property key="object2">Stop</property>
 		</object>
@@ -151,7 +152,7 @@
             </object>
 
 	    <!-- ===================== Pin + Goal ================= -->
-            <object X="3.4" Y="0.27" type="BowlingPin" ID="BowlingPin2"/>
+            <object X="3.89" Y="0.27" type="BowlingPin" ID="BowlingPin2"/>
             <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery" >
                 <property key="ImageName" >goal-scenery</property>
                 <property key="ZValue">4</property>

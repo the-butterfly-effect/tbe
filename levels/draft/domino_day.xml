@@ -115,6 +115,7 @@
             </object>
 	    <!-- ############################ BOTTOM DOMINO ROW ################### -->
             <object X="4.5" Y="0.2" height="0.4" type="DominoBlue" />
+            <object width="0.1" X="4.4" Y="-0.01" height="0.1" type="Floor"/>
             <object X="4.2" Y="0.2" height="0.4" type="DominoRed" />
             <object X="3.9" Y="0.2" height="0.4" type="DominoGreen" />
             <object X="3.6" Y="0.2" height="0.4" type="DominoBlue" />

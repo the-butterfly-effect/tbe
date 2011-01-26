@@ -103,9 +103,10 @@
                 <property key="object1" >Bar2</property>
                 <property key="object2" >Bar2x</property>
             </object>
-            <object width="1" X="0.45" Y="1.25" height="1" type="PivotPoint" angle="0" >
-                <property key="object1" >Bar2</property>
-                <property key="object2" >Bar2x</property>
+            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57" >
+                <property key="ImageName" >GlueBlob</property>
+                <property key="object1" >Bar2@(-0.58,0)</property>
+                <property key="object2" >Bar2x@(0.05,-0.10)</property>
             </object>
             <object width="0.22" X="0.25" Y="1.11" height="0.22" type="BowlingBall" angle="0" />
             <object width="0.2" X="0.2" Y="1.01" height="0.15" type="RightRamp" angle="0" />
@@ -119,13 +120,13 @@
                 <property key="Bounciness" >0.0</property>
                 <property key="Friction" >0.1</property>
                 <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >4</property>
+                <property key="Mass" >6</property>
             </object>
-            <object width="0.1" X="3" Y="1.18" height="0.1" type="RectObject" ID="BrassPin3" angle="0" >
+            <object width="0.1" X="3.1" Y="1.18" height="0.1" type="RectObject" ID="BrassPin3" angle="0" >
                 <property key="ImageName" >brass-pin</property>
                 <property key="ZValue" >4.5</property>
             </object>
-            <object width="1" X="3" Y="1.18" height="1" type="PivotPoint" angle="0" >
+            <object width="1" X="3.1" Y="1.18" height="1" type="PivotPoint" angle="0" >
                 <property key="object1" >Bar3</property>
                 <property key="object2" >BrassPin3</property>
             </object>
@@ -135,9 +136,10 @@
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >0.1</property>
             </object>
-            <object width="1" X="3.75" Y="1.35" height="1" type="PivotPoint" angle="0" >
-                <property key="object1" >Bar3</property>
-                <property key="object2" >Bar3x</property>
+            <object width="0.04" X="3.70" Y="1.35" height="0.1" type="Glue" angle="0" >
+                <property key="ImageName" >GlueBlob</property>
+                <property key="object1" >Bar3@(0.7,0)</property>
+                <property key="object2" >Bar3x@(-0.05,-0.10)</property>
             </object>
             <object width="1" X="3.75" Y="1.45" height="1" type="PivotPoint" angle="0" >
                 <property key="object1" >Bar3</property>
