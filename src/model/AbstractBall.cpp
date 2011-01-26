@@ -135,6 +135,11 @@ void AbstractBall::createBallShapeFixture(float aRadius, float aMass)
 
 	theShapeList.push_back(ballFixDef);
 
+	if (aMass > 0.001)
+		theB2ObjectType = b2_dynamicBody;
+	else
+		theB2ObjectType = b2_staticBody;
+
 	setTheWidth(2.0*aRadius);
 	setTheHeight(2.0*aRadius);
 }
