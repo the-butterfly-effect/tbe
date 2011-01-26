@@ -38,7 +38,7 @@ class Link : public BaseJoint
 public:
 	Link();
 
-	virtual ~Link() {}
+	virtual ~Link();
 
 	/** (overridden from BaseJoint to fixup aspect ratio and overlap)
 	  * @returns pointer to DrawObject

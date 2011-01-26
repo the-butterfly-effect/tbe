@@ -50,6 +50,11 @@ Link::Link() : BaseJoint()
 	DEBUG5("Link::Link() end\n");
 }
 
+Link::~Link ()
+{
+	DEBUG5("Link::~Link ()\n");
+}
+
 DrawObject*  Link::createDrawObject(void)
 {
 	// this temporary draw object is needed to figure out
