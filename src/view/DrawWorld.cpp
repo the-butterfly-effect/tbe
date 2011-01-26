@@ -163,8 +163,6 @@ void DrawWorld::dragEnterEvent ( QGraphicsSceneDragDropEvent * event )
 
 				theInsertUndoPtr = new UndoInsertCommand(myObjectPtr);
 
-				myObjectPtr->parseProperties();
-
 				event->accept();
 				return;
 			}
