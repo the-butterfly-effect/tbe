@@ -89,7 +89,7 @@ void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 	switch (aStatus)
 	{
 	case JointInterface::CREATED:
-		createPhysicsObject();
+		//createPhysicsObject();
 		if (theDrawObjectPtr)
 			theDrawObjectPtr->setVisible(true);
 		break;
