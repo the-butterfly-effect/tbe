@@ -16,7 +16,7 @@ FASTERMAKE=-j3
 all:	 
 
 # only build (static) QT for release builds
-release: ${MYLIBDIR}/libbox2d.a ${MYLIBDIR}/libQtCore.a installjammer
+release: ${MYLIBDIR}/libQtCore.a installjammer
 
 # clean all build artifacts
 clean:
