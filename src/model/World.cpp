@@ -33,6 +33,17 @@ const unsigned int World::thePositionIterationcount = 30;
 // Constructors/Destructors
 //  
 
+void DestructionListener::SayGoodbye(b2Joint* joint)
+{
+	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
+	// does not - but RTTI can fix that.
+	BaseJoint* myIF = dynamic_cast<BaseJoint*>(joint->GetUserData());
+	if (myIF != NULL)
+		myIF->jointWasDeleted();
+}
+
+
+
 World::World ( void) : theB2WorldPtr(NULL)
 {
 	theDrawWorldPtr = NULL;

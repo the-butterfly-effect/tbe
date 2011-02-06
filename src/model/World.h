@@ -103,15 +103,7 @@ public:
 	/// implemented from b2DestructionListener
 	/// this member is called whenever a Joint is (implicitly) destructed
 	/// let's notify the corresponding object in our World
-	virtual void SayGoodbye(b2Joint* joint)
-	{
-		// we *know* that all b2Joints will have UserData
-		// but e.g. DetonatorHandle does not
-		JointInterface* myIF = reinterpret_cast<JointInterface*>(joint->GetUserData());
-		DEBUG5("notify %p of joint destruction\n", myIF);
-		if (myIF != NULL)
-			myIF->jointWasDeleted();
-	}
+	virtual void SayGoodbye(b2Joint* joint);
 
 	/// not interested...
 	virtual void SayGoodbye(b2Fixture*) {};
