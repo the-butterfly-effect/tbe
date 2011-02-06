@@ -26,6 +26,8 @@ class b2Joint;
 struct b2TimeStep;
 class b2BlockAllocator;
 
+class BaseObject;
+
 enum b2JointType
 {
 	e_unknownJoint,
@@ -89,7 +91,7 @@ struct b2JointDef
 	b2JointType type;
 
 	/// Use this to attach application specific data to your joints.
-	void* userData;
+	BaseObject* userData;
 
 	/// The first attached body.
 	b2Body* bodyA;
@@ -132,10 +134,10 @@ public:
 	b2Joint* GetNext();
 
 	/// Get the user data pointer.
-	void* GetUserData() const;
+	BaseObject* GetUserData() const;
 
 	/// Set the user data pointer.
-	void SetUserData(void* data);
+	void SetUserData(BaseObject* data);
 
 	/// Short-cut function to determine if either body is inactive.
 	bool IsActive() const;
@@ -168,7 +170,7 @@ protected:
 	bool m_islandFlag;
 	bool m_collideConnected;
 
-	void* m_userData;
+	BaseObject* m_userData;
 
 	// Cache here per time step to reduce cache misses.
 	b2Vec2 m_localCenterA, m_localCenterB;
@@ -213,12 +215,12 @@ inline b2Joint* b2Joint::GetNext()
 	return m_next;
 }
 
-inline void* b2Joint::GetUserData() const
+inline BaseObject* b2Joint::GetUserData() const
 {
 	return m_userData;
 }
 
-inline void b2Joint::SetUserData(void* data)
+inline void b2Joint::SetUserData(BaseObject* data)
 {
 	m_userData = data;
 }
