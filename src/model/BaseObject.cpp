@@ -40,7 +40,7 @@ static b2World* theStaticB2WorldPtr = NULL;
 
 BaseObject::BaseObject ( ) 
 {
-	DEBUG6("BaseObject::BaseObject() for %p\n", this);
+	DEBUG5("BaseObject::BaseObject() for %p\n", this);
 	initAttributes();
 }
 
@@ -188,7 +188,7 @@ void BaseObject::createPhysicsObject(Position aPosition)
 
 void BaseObject::deletePhysicsObject()
 {
-	DEBUG1("BaseObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
+	DEBUG5("BaseObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
 
 	// we're only setting the pointer to zero - let's Box2D take care
 	// of actually removing everything when we do delete world...
@@ -309,6 +309,7 @@ bool BaseObject::reregister(void)
 	// the addObject also forces creation of the drawObject
 	// and adds it to the DrawWorld - if it exists.
 	// fortunately, reregister is only used when a drawworld exists :-)
+	parseProperties();
 	theWorldPtr->addObject(this);
 	assert(theDrawObjectPtr != NULL);
 	theDrawObjectPtr->focusInEvent();
