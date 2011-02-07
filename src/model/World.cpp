@@ -307,8 +307,8 @@ bool World::ShouldCollide(
 			b2Fixture* aFixture1,
 			b2Fixture* aFixture2)
 {
-	BaseObject* myObj1 = reinterpret_cast<BaseObject*>(aFixture1->GetUserData());
-	BaseObject* myObj2 = reinterpret_cast<BaseObject*>(aFixture2->GetUserData());
+	BaseObject* myObj1 = aFixture1->GetUserData();
+	BaseObject* myObj2 = aFixture2->GetUserData();
 
 	if (myObj1 == NULL || myObj2 == NULL)
 		return true;
@@ -341,8 +341,8 @@ qreal World::simStep (void)
 	// in hearing the impulses...
 	foreach(ContactInfo k, theContactInfoList)
 	{
-		BaseObject* myBO1Ptr = reinterpret_cast<BaseObject*>(k.myFixtureA->GetUserData());
-		BaseObject* myBO2Ptr = reinterpret_cast<BaseObject*>(k.myFixtureB->GetUserData());
+		BaseObject* myBO1Ptr = k.myFixtureA->GetUserData();
+		BaseObject* myBO2Ptr = k.myFixtureB->GetUserData();
 
 		if (myBO1Ptr!=NULL)
 		{

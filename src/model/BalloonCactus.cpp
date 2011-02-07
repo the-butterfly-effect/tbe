@@ -279,9 +279,9 @@ void Cactus::callBackSensor(const ContactInfo& aPoint)
 
 	// which one of the two shapes is not me?
 	if (aPoint.myFixtureA->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureB->GetUserData());
+		myOtherObject = aPoint.myFixtureB->GetUserData();
 	if (aPoint.myFixtureB->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureA->GetUserData());
+		myOtherObject = aPoint.myFixtureA->GetUserData();
 	if (myOtherObject==NULL)
 		return;
 
@@ -357,9 +357,9 @@ void BedOfNails::callBackSensor(const ContactInfo& aPoint)
 
 	// which one of the two shapes is not me?
 	if (aPoint.myFixtureA->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureB->GetUserData());
+		myOtherObject = aPoint.myFixtureB->GetUserData();
 	if (aPoint.myFixtureB->GetUserData()==this)
-		myOtherObject = reinterpret_cast<BaseObject*>(aPoint.myFixtureA->GetUserData());
+		myOtherObject = aPoint.myFixtureA->GetUserData();
 	if (myOtherObject==NULL)
 		return;
 

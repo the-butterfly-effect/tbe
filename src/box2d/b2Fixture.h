@@ -68,7 +68,7 @@ struct b2FixtureDef
 	const b2Shape* shape;
 
 	/// Use this to store application specific fixture data.
-	void* userData;
+	BaseObject* userData;
 
 	/// The friction coefficient, usually in the range [0,1].
 	float32 friction;
@@ -132,10 +132,10 @@ public:
 
 	/// Get the user data that was assigned in the fixture definition. Use this to
 	/// store your application specific data.
-	void* GetUserData() const;
+	BaseObject* GetUserData() const;
 
 	/// Set the user data. Use this to store your application specific data.
-	void SetUserData(void* data);
+	void SetUserData(BaseObject* data);
 
 	/// Test a point for containment in this fixture.
 	/// @param xf the shape world transform.
@@ -214,7 +214,7 @@ protected:
 
 	bool m_isSensor;
 
-	void* m_userData;
+	BaseObject* m_userData;
 };
 
 inline b2Shape::Type b2Fixture::GetType() const
@@ -242,12 +242,12 @@ inline const b2Filter& b2Fixture::GetFilterData() const
 	return m_filter;
 }
 
-inline void* b2Fixture::GetUserData() const
+inline BaseObject* b2Fixture::GetUserData() const
 {
 	return m_userData;
 }
 
-inline void b2Fixture::SetUserData(void* data)
+inline void b2Fixture::SetUserData(BaseObject* data)
 {
 	m_userData = data;
 }
