@@ -47,6 +47,9 @@ EditObjectDialog::~EditObjectDialog()
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
+	// note: this member also gets called whenever we change a property,
+	// I have no clue why - the good news is that pushYourself() will figure
+	// out if anything changed and not push and ID change if there is none...
 	UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(theBOPtr);
 	QString myID = ui.lineEditID->text().trimmed();
 	theBOPtr->setID(myID);
@@ -100,11 +103,8 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 	myUndoPtr->update(myKey, myValue);
 	myUndoPtr->pushYourself();
 
-	// now we need to make sure everything is updated correctly...
-	// Q: is this code correct???
+	// now we need to make sure the properties are updated...
 	theBOPtr->parseProperties();
-	theBOPtr->deregister();
-	theBOPtr->reregister();
 }
 
 
