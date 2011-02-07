@@ -258,7 +258,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 
 void DrawObject::focusInEvent (void)
 {
-	focusInEvent( new QFocusEvent(QEvent::FocusIn));
+	scene()->setFocusItem(this, Qt::OtherFocusReason);
 }
 
 
