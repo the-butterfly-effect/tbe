@@ -44,6 +44,8 @@ UndoObjectChange::UndoObjectChange (BaseObject* aBaseObjectPtr)
 
 	theOldID = theBaseObjectPtr->theID;
 	theNewID = theBaseObjectPtr->theID;
+
+	isNowColliding = false;
 }
 
 UndoObjectChange::~UndoObjectChange ( )
@@ -65,10 +67,8 @@ UndoObjectChange::~UndoObjectChange ( )
 UndoObjectChange*
 UndoObjectChange::createUndoObject (BaseObject* aBOPtr)
 {
-	DEBUG5("UndoObjectChange::createUndoObject(%p)\n", aBOPtr);
-
 	UndoObjectChange* myPtr = new UndoObjectChange(aBOPtr);
-
+	DEBUG5("UndoObjectChange::createUndoObject(BO=%p)=%p\n", aBOPtr, myPtr);
 	return myPtr;
 }
 
@@ -116,7 +116,10 @@ bool UndoObjectChange::pushYourself(void)
 
 	// if that changestring is empty, we're unchanged...
 	if (myUndoString.isEmpty())
+	{
+		DEBUG3("No change found - not pushing UndoObjectChange\n");
 		return false;
+	}
 
 	setText(myUndoString);
 	DEBUG3("UndoObjectChange::push '%s'\n", ASCII(myUndoString));
