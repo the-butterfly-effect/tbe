@@ -55,7 +55,7 @@ static SpringObjectFactory theSpringObjectFactory;
 //  (the DrawObject is drawn over the current outline)
 //      +---------+===+----------+
 //      |         |   |          |
-//      | Spring  | * |SXringEnd |
+//      | Spring  | * |SpringEnd |
 //      |         |   |          |
 //      +---------+===+----------+
 //
@@ -72,19 +72,17 @@ static SpringObjectFactory theSpringObjectFactory;
 
 
 Spring::Spring()
-		:	RectObject( QObject::tr("Detonator Box"),
-				"",
+		:	RectObject( QObject::tr("Spring"),
+				QObject::tr("Something springy."),
 				"spring20",
-				0.4, 0.2, 0.8, 0.0), theHandleObjectPtr(NULL)
+				0.4, 0.2, 0.8, 0.0), theOtherEndPtr(NULL)
 {
-//	theProps.setDefaultPropertiesString(
-//		Property::PHONENUMBER_STRING + QString(":/") );
 }
 
 Spring::~Spring()
 {
-	delete theHandleObjectPtr;
-	theHandleObjectPtr = NULL;
+	delete theOtherEndPtr;
+	theOtherEndPtr = NULL;
 }
 
 void Spring::adjustParameters(void)
@@ -118,26 +116,32 @@ void Spring::buildShapeList(void)
 	theShapeList.push_back(myBoxFixture);
 }
 
+void Spring::callbackStep (qreal aTimeStep, qreal aTotalTime)
+{
+}
+
 void Spring::createPhysicsObject(void)
 {
 	clearShapeList();
 	buildShapeList();
 
-	RectObject::createPhysicsObject(getOrigCenter()+Vector(-0.25*getTheWidth(),0));
+	RectObject::createPhysicsObject(getOrigCenter()-Vector(0.25*getTheWidth(),0));
 
-	assert(theHandleObjectPtr==NULL);
-	theHandleObjectPtr = new SpringHandle(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
-	theWorldPtr->addObject(theHandleObjectPtr);
-	theHandleObjectPtr->setTheWidth(0.5*getTheWidth());
-	theHandleObjectPtr->setTheHeight(getTheHeight());
-	theHandleObjectPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
-	theHandleObjectPtr->createPhysicsObject();
+	if (theOtherEndPtr==NULL)
+	{
+		theOtherEndPtr = new SpringEnd(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
+		theWorldPtr->addObject(theOtherEndPtr);
+	}
+	theOtherEndPtr->setTheWidth(0.5*getTheWidth());
+	theOtherEndPtr->setTheHeight(getTheHeight());
+	theOtherEndPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
+	theOtherEndPtr->createPhysicsObject();
 }
 
 void Spring::deletePhysicsObject(void)
 {
-	if(theHandleObjectPtr)
-		theHandleObjectPtr->deletePhysicsObject();
+	if(theOtherEndPtr)
+		theOtherEndPtr->deletePhysicsObject();
 	RectObject::deletePhysicsObject();
 }
 
@@ -148,15 +152,15 @@ Position Spring::getTempCenter (void) const
 		return getOrigCenter();
 
 	Vector myP1(theB2BodyPtr->GetPosition());
-	Vector myP2(theHandleObjectPtr->theB2BodyPtr->GetPosition());
+	Vector myP2(theOtherEndPtr->theB2BodyPtr->GetPosition());
 	return Position(0.5*Vector(myP1+myP2), theB2BodyPtr->GetAngle());
 }
 
 qreal Spring::getTempWidth() const
 {
-	if (theHandleObjectPtr==NULL)
-		return 0;
-	return theHandleObjectPtr->getDistance() + getTheWidth();
+	if (theOtherEndPtr==NULL)
+		return getTheWidth();
+	return theOtherEndPtr->getDistance() + getTheWidth();
 }
 
 const QString Spring::getToolTip ( ) const
@@ -170,74 +174,80 @@ void Spring::setOrigCenter ( Position new_var )
 	RectObject::setOrigCenter(new_var);
 
 	Vector myOffset = Vector(0.25*getTheWidth(),0);
-	if (theHandleObjectPtr!=NULL)
-		theHandleObjectPtr->setOrigCenter(new_var + myOffset);
+	if (theOtherEndPtr!=NULL)
+		theOtherEndPtr->setOrigCenter(new_var + myOffset);
 }
 
 // ##########################################################################
 // ##########################################################################
 // ##########################################################################
 
-SpringHandle::SpringHandle(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight)
+SpringEnd::SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight)
 		:	RectObject( QObject::tr("Spring End"),
 				"no tooltip",
 				"spring20",
-				aWidth, aHeight, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
+				aWidth, aHeight, 0.1, 0.0), theOtherEndPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(aPos);
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 	theIsMovable = false;
 }
 
-SpringHandle::~SpringHandle()
+SpringEnd::~SpringEnd()
 {
 	theWorldPtr->removeObject(this);
 }
 
-void SpringHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
+void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-// FIXME/TODO: need ticket:243 complete before I can finish this:
-//	theJointPtr->SetMotorForce(5 * theJointPtr->GetJointTranslation());
+	// TODO/FIXME: make this 'magic number' configurable
+	// and Klaas thinks this number is too big :-(
+	float myMagnification = 500.0;
+	Vector myUnitVect = myMagnification*Vector(getTempCenter().angle);
+	theOtherEndPtr->theB2BodyPtr->ApplyForce((getDistance()*myUnitVect).toB2Vec2(),
+											 theOtherEndPtr->getTempCenter().toB2Vec2());
+	theB2BodyPtr->ApplyForce(-(getDistance()*myUnitVect).toB2Vec2(),
+											 theOtherEndPtr->getTempCenter().toB2Vec2());
 }
 
-DrawObject*  SpringHandle::createDrawObject(void)
+DrawObject*  SpringEnd::createDrawObject(void)
 {
 	return NULL;
 }
 
-void SpringHandle::createPhysicsObject(void)
+void SpringEnd::createPhysicsObject(void)
 {
+	if (theB2BodyPtr!=NULL)
+		return;
 	RectObject::createPhysicsObject();
 
 	// initialise the prismatic (translation) joint:
 	// note: Initialize() uses a global coordinate...
 	b2PrismaticJointDef myJointDef;
-	myJointDef.Initialize(theDBoxPtr->theB2BodyPtr,
+	myJointDef.Initialize(theOtherEndPtr->theB2BodyPtr,
 						  theB2BodyPtr,
-						  theDBoxPtr->getOrigCenter().toB2Vec2(),
-						  Vector(1.0,0.0).toB2Vec2());
+						  theOtherEndPtr->getOrigCenter().toB2Vec2(),
+						  Vector(theOtherEndPtr->getOrigCenter().angle).toB2Vec2());
 	myJointDef.userData = NULL;
 	myJointDef.collideConnected = false;
-	myJointDef.maxMotorForce = 1.0f;
-	myJointDef.motorSpeed = 0.0;
 	myJointDef.lowerTranslation = - getTheWidth();
 	myJointDef.upperTranslation = + getTheWidth();
 	myJointDef.enableLimit = true;
-	myJointDef.enableMotor = true;
+	myJointDef.enableMotor = false;
 
 	assert(theJointPtr==NULL);
 	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
 	theWorldPtr->registerCallback(this);
 }
 
-void SpringHandle::deletePhysicsObject(void)
+void SpringEnd::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
 	// the deletePhysics will already kill the joint, thanks to Box2D.
 	theJointPtr = NULL;
 }
 
-qreal SpringHandle::getDistance(void) const
+qreal SpringEnd::getDistance(void) const
 {
 	if (theJointPtr==NULL)
 		return 0;

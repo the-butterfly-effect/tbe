@@ -26,7 +26,7 @@
 
 #include <QStringList>
 
-class SpringHandle;
+class SpringEnd;
 class ExplosionSplatter;
 
 
@@ -39,7 +39,7 @@ class ExplosionSplatter;
  *  In our demo, we just hooked those wires up to a mobile phone...
  *  Suuuuure that will work ;-)
  */
-class Spring : public RectObject
+class Spring : public RectObject, public SimStepCallbackInterface
 {
 public:
 	Spring();
@@ -85,11 +85,14 @@ protected:
 	void buildShapeList(void);
 
 private:
+	/// implemented from SimStepCallbackInterface
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+
 	/// offset of center of the handle to the center of the box
 	const static Vector HANDLEOFFSET;
 
 	/// pointer to the handle (separate object)
-	SpringHandle* theHandleObjectPtr;
+	SpringEnd* theOtherEndPtr;
 
 	/// the real value of the total spring object
 	qreal theSpringWidth;
@@ -99,7 +102,7 @@ private:
 	Spring(const Spring& aBORefToCopy);
 	Spring& operator = (const Spring& aBORefToCopy);
 
-	friend class SpringHandle;
+	friend class SpringEnd;
 };
 
 
@@ -107,14 +110,14 @@ private:
   * and no serialization
   * (because it is part of Spring and shouldn't exist by itself)
   */
-class SpringHandle : public RectObject, public SimStepCallbackInterface
+class SpringEnd : public RectObject, public SimStepCallbackInterface
 {
 private:
 	/// @param aDBox pointer to a Spring, the only object allowed to create a Handle
-	SpringHandle(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
+	SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
 
 public:
-	virtual ~SpringHandle();
+	virtual ~SpringEnd();
 
 	/// overridden to allow setting a custom ZValue
 	virtual DrawObject* createDrawObject();
@@ -140,13 +143,13 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
-	Spring* theDBoxPtr;
+	Spring* theOtherEndPtr;
 	b2PrismaticJoint* theJointPtr;
 
 private:
 	// disable copy constructor / assignment operator
-	SpringHandle(const SpringHandle& aBORefToCopy);
-	SpringHandle& operator = (const SpringHandle& aBORefToCopy);
+	SpringEnd(const SpringEnd& aBORefToCopy);
+	SpringEnd& operator = (const SpringEnd& aBORefToCopy);
 };
 
 
