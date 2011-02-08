@@ -132,7 +132,7 @@ done:
 	return isOK;
 }
 
-qreal Vector::length(void)
+qreal Vector::length(void) const
 {	return sqrt(dx*dx+dy*dy); }
 
 Vector Vector::rotate(qreal anAngle) const
@@ -184,6 +184,14 @@ QPointF Vector::toQPointF(void) const
 
 QString Vector::toString(void) const
 {	return QString("(%1,%2)").arg(dx).arg(dy); }
+
+Vector Vector::toUnitVector(void) const
+{
+	float myRecipLength = 1/length();
+	return Vector(myRecipLength*dx, myRecipLength*dy);
+}
+
+
 
 Position operator+(const Position& p1, const Vector& v1)
 {

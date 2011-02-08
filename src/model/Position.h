@@ -35,19 +35,23 @@ public:
 	Vector (const b2Vec2& aVec);
 
 	/// constructor ignores the angle from the Position
+	/// think twice before using this one - physically it makes no sense!
 	Vector (const Position& aPosition);
 
 	/// constructs a vector of length 1 in direction anAngle
 	Vector (qreal anAngle);
 
-
-	qreal length(void);
+	/// @returns the length of the Vector
+	qreal length(void) const;
 
 	qreal	 toAngle(void) const;
 	b2Vec2   toB2Vec2(void) const;
 	Position toPosition(void) const;
 	QPointF	 toQPointF(void) const;
 	QString  toString(void) const;
+
+	/// @returns a Vector in the same direction, but with length one.
+	Vector   toUnitVector(void) const;
 
 	/// @returns this vector, rotated along anAngle
 	Vector rotate(qreal anAngle) const;
