@@ -50,6 +50,8 @@ void BaseJoint::deletePhysicsObject(void)
 {
 	DEBUG5("BaseJoint::deletePhysicsObject(void)\n");
 	theJointPtr = NULL;
+	if (theDrawObjectPtr)
+		theDrawObjectPtr->setVisible(true);
 }
 
 
@@ -77,6 +79,8 @@ void BaseJoint::jointWasDeleted(void)
 	// if this member is called, the joint is already gone
 	DEBUG4("BaseJoint::jointWasDeleted(void) for %p\n", this);
 	theJointPtr = NULL;
+	if (theDrawObjectPtr)
+		theDrawObjectPtr->setVisible(false);
 }
 
 void BaseJoint::markAsChild(void)
@@ -89,15 +93,11 @@ void BaseJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 	switch (aStatus)
 	{
 	case JointInterface::CREATED:
-		//createPhysicsObject();
 		if (theDrawObjectPtr)
 			theDrawObjectPtr->setVisible(true);
 		break;
 	case JointInterface::DELETED:
-		DEBUG5("JointInterface::DELETED me=%p\n", this);
-		theJointPtr = NULL;
-		if (theDrawObjectPtr)
-			theDrawObjectPtr->setVisible(false);
+		jointWasDeleted();
 		break;
 	case JointInterface::POSUPDATE:
 		updateOrigCenter();
