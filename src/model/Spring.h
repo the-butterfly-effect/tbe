@@ -39,7 +39,7 @@ class ExplosionSplatter;
  *  In our demo, we just hooked those wires up to a mobile phone...
  *  Suuuuure that will work ;-)
  */
-class Spring : public RectObject, public SimStepCallbackInterface
+class Spring : public RectObject
 {
 public:
 	Spring();
@@ -52,6 +52,16 @@ public:
 
 	/// overridden from BaseObject to allow for the handle
 	virtual void deletePhysicsObject(void);
+
+	/// @returns Pointer to the B2Body for the relative position asked for.
+	///          Might return NULL if no body or if outside body (see warning)
+	/// @param   Relative position (to the center of the object) to look for
+	/// @warning Because the default BaseObject just returns its pointer
+	///          without any checking, don't expect this member to fail if
+	///          aRelPosition points outside the object's body.
+	/// @note    depending on the position, will either return pointer to
+	///          Spring's or to SpringEnd's b2Body
+	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition);
 
 	/**
 	 * Get the current Position of the object.
@@ -85,9 +95,6 @@ protected:
 	void buildShapeList(void);
 
 private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
-
 	/// offset of center of the handle to the center of the box
 	const static Vector HANDLEOFFSET;
 

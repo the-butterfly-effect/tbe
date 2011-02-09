@@ -64,7 +64,7 @@ void Glue::createPhysicsObject(void)
 		DEBUG4("Link: No valid first object found...\n");
 		return;
 	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr);
+	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
 	assert (myFirstB2BodyPtr);
 	theFirstPtr->addJoint(this);
 
@@ -75,7 +75,7 @@ void Glue::createPhysicsObject(void)
 		DEBUG4("Link: No valid second object found...\n");
 		return;
 	}
-	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr);
+	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
 	assert (mySecondB2BodyPtr);
 	theSecondPtr->addJoint(this);
 

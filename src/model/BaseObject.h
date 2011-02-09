@@ -314,6 +314,19 @@ public:
 	virtual int getImageIndex(void)
 	{ return 0; }
 
+public:
+	/// @returns Pointer to the B2Body for the relative position asked for.
+	///          Might return NULL if no body or if outside body (see warning)
+	/// @param   Relative position (to the center of the object) to look for
+	/// @warning Because the default BaseObject just returns its pointer
+	///          without any checking, don't expect this member to fail if
+	///          aRelPosition points outside the object's body.
+	/// @note    Overriding this member probably makes sense for composite
+	///          objects only
+	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+	{ return theB2BodyPtr; }
+
+
 private:
 	// Private attributes
 	//
@@ -369,9 +382,6 @@ protected:
 	QString theInternalName;
 
 	friend class BaseObjectSerializer;
-
-	// All Joints need access to the B2BodyPtr.
-	friend class BaseJoint;
 
 public:
 	// public attribute accessor methods

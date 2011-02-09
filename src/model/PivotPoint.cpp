@@ -74,7 +74,8 @@ void PivotPoint::createPhysicsObject(void)
 		DEBUG4("PivotPoint: No valid first object found...\n");
 		return;
 	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr);
+	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr,
+											   getOrigCenter()-theFirstPtr->getOrigCenter());
 	theFirstPtr->addJoint(this);
 	assert (myFirstB2BodyPtr);
 
@@ -86,7 +87,8 @@ void PivotPoint::createPhysicsObject(void)
 	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
 	if (theSecondPtr != NULL)
 	{
-		mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr);
+		mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr,
+											getOrigCenter()-theSecondPtr->getOrigCenter());
 		theSecondPtr->addJoint(this);
 	}
 

@@ -83,7 +83,10 @@ public:
 	/// @returns the b2Body* for object anObject. if anObject doesn't have
 	/// a b2Body (yet), we'll call createPhysicsObject() on the object to
 	/// have it created.
-	b2Body* getB2BodyPtrFor(BaseObject* anObject);
+	/// @param aRelPosition RELATIVE position on the object to find an b2Body
+	///                     for. This is relevant for composite objects.
+	b2Body* getB2BodyPtrFor(BaseObject* anObject, const Position& aRelPosition);
+//	b2Body* getB2BodyPtrFor(BaseObject* anObject);
 
 protected:
 	/// if you have only one object, it is supposed to be static

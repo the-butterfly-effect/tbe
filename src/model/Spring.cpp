@@ -116,10 +116,6 @@ void Spring::buildShapeList(void)
 	theShapeList.push_back(myBoxFixture);
 }
 
-void Spring::callbackStep (qreal aTimeStep, qreal aTotalTime)
-{
-}
-
 void Spring::createPhysicsObject(void)
 {
 	clearShapeList();
@@ -144,6 +140,17 @@ void Spring::deletePhysicsObject(void)
 		theOtherEndPtr->deletePhysicsObject();
 	RectObject::deletePhysicsObject();
 }
+
+b2Body* Spring::getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+{
+	// see explanation above, as this is only evaluated in the static case,
+	// we can keep this very simple :-)
+	if (aRelPosition.x < 0.0)
+		return theB2BodyPtr;
+	else
+		return theOtherEndPtr->theB2BodyPtr;
+}
+
 
 Position Spring::getTempCenter (void) const
 {

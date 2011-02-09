@@ -37,6 +37,11 @@ public:
 	// Public attribute accessor methods
 	//
 
+	/// @returns Pointer to the B2Body for the relative position asked for.
+	/// @note    because this object has no body, always returns NULL
+	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+	{ assert(false); return NULL; }
+
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{

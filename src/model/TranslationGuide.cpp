@@ -68,7 +68,8 @@ void TranslationGuide::createPhysicsObject(void)
 		DEBUG4("TranslationGuide: No valid object found...\n");
 		return;
 	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr);
+	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,
+											   getOrigCenter()-theObjectPtr->getOrigCenter());
 	theObjectPtr->addJoint(this);
 	assert (myFirstB2BodyPtr);
 
