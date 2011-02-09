@@ -141,7 +141,7 @@ void Spring::deletePhysicsObject(void)
 	RectObject::deletePhysicsObject();
 }
 
-b2Body* Spring::getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+b2Body* Spring::getB2BodyPtrForPosition(const Position& aRelPosition)
 {
 	// see explanation above, as this is only evaluated in the static case,
 	// we can keep this very simple :-)

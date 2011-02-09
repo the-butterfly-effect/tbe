@@ -1,0 +1,41 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title></title>
+        <author></author>
+        <license></license>
+        <description></description>
+        <date></date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="3" height="2" />
+        <predefined>
+            <object width="0.220" X="2.532" Y="1.082" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="1.251" X="0.708" Y="0.262" height="0.474" type="RightRamp" angle="0.000" />
+            <object width="0.345" X="2.827" Y="0.487" height="1.000" type="RectObject" angle="0.000" >
+                <property key="ImageName" >oldbrick</property>
+            </object>
+            <object width="0.400" X="2.540" Y="0.288" height="0.200" type="Spring" angle="-1.597" >
+                <property key="ImageName" >spring20</property>
+            </object>
+            <object width="1.000" X="1.902" Y="0.514" height="1.000" type="RectObject" angle="0.000" />
+            <object width="0.180" X="1.440" Y="0.342" height="0.157" type="RectObject" angle="0.000" />
+            <object width="0.400" X="1.16" Y="1.5" height="0.200" type="Spring" angle="-1.50" ID="bungel">
+                <property key="ImageName" >spring20</property>
+		<property key="NoCollision">lucht,gewicht</property>
+            </object>
+            <object width="0.220" X="1.12" Y="1.3" height="0.220" type="BowlingBall" angle="0.000" ID="gewicht"/>
+	<object type="PivotPoint" X="1.16" Y="1.7" width="0.1" height="0.1">
+	   <property key="ImageName" >GlueBlob</property>
+	   <property key="object">bungel</property>
+	</object>
+	<object type="PivotPoint" X="1.16" Y="1.3" width="0.1" height="0.1">
+	<property key="ImageName" >GlueBlob</property>
+	  <property key="object1">bungel</property>
+	  <property key="object2">gewicht</property>
+	</object>
+        </predefined>
+    </scene>
+    <goals/>
+</tbe-level>
