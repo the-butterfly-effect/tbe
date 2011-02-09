@@ -208,8 +208,9 @@ SpringEnd::~SpringEnd()
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
 	// TODO/FIXME: make this 'magic number' configurable
-	// and Klaas thinks this number is too big :-(
-	float myMagnification = 500.0;
+	// the below will have the bowlingball in the test level drop approx 20 cm :-)
+	// This implies the unit is [kg/(s*s)]
+	float myMagnification = 6.5*9.81/0.2;
 	Vector myUnitVect = myMagnification*Vector(getTempCenter().angle);
 	theOtherEndPtr->theB2BodyPtr->ApplyForce((getDistance()*myUnitVect).toB2Vec2(),
 											 theOtherEndPtr->getTempCenter().toB2Vec2());
@@ -238,7 +239,7 @@ void SpringEnd::createPhysicsObject(void)
 	myJointDef.userData = NULL;
 	myJointDef.collideConnected = false;
 	myJointDef.lowerTranslation = - getTheWidth();
-	myJointDef.upperTranslation = + getTheWidth();
+	myJointDef.upperTranslation = + 4*getTheWidth();
 	myJointDef.enableLimit = true;
 	myJointDef.enableMotor = false;
 
