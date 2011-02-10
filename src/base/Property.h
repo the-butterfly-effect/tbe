@@ -225,6 +225,9 @@ public:
 	// this one is unique to CustomBall
 	static const char* RADIUS_STRING;	    	// 0.0 - inf, in [m]
 
+	// this one is unique to Spring
+	static const char* SPRING_CONSTANT_STRING;	// 0.0 - inf, in [N/m] or [kg/s/s]
+
 	// these ones are used by the various joints
 	static const char* TORQUE_STRING;			// -inf - +inf in [Nm]
 	static const char* SPEED_STRING;			// -inf - +inf in either [m/s] or [rad/s]

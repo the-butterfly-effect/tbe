@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,14 +30,15 @@ class SpringEnd;
 class ExplosionSplatter;
 
 
-/** this class implements the Spring for an explosion
- *  it has a handle object at the top that can be pressed,
- *  once pressed deep enough, it will send a trigger.
+/** this class implements a Spring - a mechanical device that stores energy
  *
- *  Note that we cheat on reality big time here. The original boxes were
- *  noting more than a dynamo - producing enough current for a spark.
- *  In our demo, we just hooked those wires up to a mobile phone...
- *  Suuuuure that will work ;-)
+ *  The mechanics follow "Hooke's Law":
+ *    the force with which the spring pushes back is linearly proportional to
+ *    the distance from its equilibrium length.
+ *    F = -k*x
+ *
+ *  Where "k" is measured in [N/m] or [kg/s/s] - it is adjustable through
+ *  property "SpringConstant".
  */
 class Spring : public RectObject
 {
@@ -152,6 +153,9 @@ private:
 
 	Spring* theOtherEndPtr;
 	b2PrismaticJoint* theJointPtr;
+
+	/// 'k' from Hooke's law
+	float theSpringConstant;
 
 private:
 	// disable copy constructor / assignment operator

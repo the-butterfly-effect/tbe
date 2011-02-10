@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -77,6 +77,8 @@ Spring::Spring()
 				"spring20",
 				0.4, 0.2, 0.8, 0.0), theOtherEndPtr(NULL)
 {
+	theProps.setDefaultPropertiesString(
+		Property::SPRING_CONSTANT_STRING + QString(":320.0/") ); // 6.5kg over 0.2m @g=9.81
 }
 
 Spring::~Spring()
@@ -132,6 +134,7 @@ void Spring::createPhysicsObject(void)
 	theOtherEndPtr->setTheHeight(getTheHeight());
 	theOtherEndPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
 	theOtherEndPtr->createPhysicsObject();
+	theProps.property2Float(Property::SPRING_CONSTANT_STRING, &(theOtherEndPtr->theSpringConstant));
 }
 
 void Spring::deletePhysicsObject(void)
@@ -207,14 +210,11 @@ SpringEnd::~SpringEnd()
 
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-	// TODO/FIXME: make this 'magic number' configurable
-	// the below will have the bowlingball in the test level drop approx 20 cm :-)
-	// This implies the unit is [kg/(s*s)]
-	float myMagnification = 6.5*9.81/0.2;
-	Vector myUnitVect = myMagnification*Vector(getTempCenter().angle);
-	theOtherEndPtr->theB2BodyPtr->ApplyForce((getDistance()*myUnitVect).toB2Vec2(),
+	Vector myVector = theSpringConstant*Vector(getTempCenter().angle);
+	// don't forget: action = -reaction  -> we need equal forces on both parts...
+	theOtherEndPtr->theB2BodyPtr->ApplyForce((getDistance()*myVector).toB2Vec2(),
 											 theOtherEndPtr->getTempCenter().toB2Vec2());
-	theB2BodyPtr->ApplyForce(-(getDistance()*myUnitVect).toB2Vec2(),
+	theB2BodyPtr->ApplyForce((-getDistance()*myVector).toB2Vec2(),
 											 theOtherEndPtr->getTempCenter().toB2Vec2());
 }
 

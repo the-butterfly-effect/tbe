@@ -39,6 +39,7 @@ const char* Property::POLYGONS_STRING    = "Polygons";
 const char* Property::RADIUS_STRING      = "Radius";
 const char* Property::RESIZABLE_STRING   = "Resizable";
 const char* Property::ROTATABLE_STRING   = "Rotatable";
+const char* Property::SPRING_CONSTANT_STRING = "SpringConstant";
 const char* Property::THRUST_STRING      = "Thrust";
 const char* Property::TRANSLATIONGUIDE_STRING = "TranslationGuide";
 const char* Property::ZVALUE_STRING      = "ZValue";
