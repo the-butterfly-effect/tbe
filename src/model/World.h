@@ -24,6 +24,7 @@
 #include "tbe_global.h"
 
 #include "BaseJoint.h"
+#include "Background.h"
 
 #include <QString>
 #include <QList>
@@ -298,6 +299,12 @@ public:
 		{ return theWorldWidth; }
 	qreal getTheWorldHeight(void)
 		{ return theWorldHeight; }
+
+
+public:
+	/// this structure contains everything to draw the background in a scene
+	/// i.e. background image and/or gradient
+	Background theBackground;
 
 private:
 	// Private attributes

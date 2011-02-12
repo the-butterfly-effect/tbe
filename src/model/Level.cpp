@@ -18,6 +18,7 @@
 
 #include "Level.h"
 #include "World.h"
+#include "BackgroundSerializer.h"
 #include "BaseObjectSerializer.h"
 #include "GoalSerializer.h"
 #include "Goal.h"
@@ -42,9 +43,15 @@ static const char* theSceneString = "scene";
 	static const char* thePredefinedString = "predefined";
 		   const char* theObjectString     = "object";
 		   const char* thePropertyString   = "property";
+	const char* theBackgroundString = "background";
+		   const char* theImageString      = "image";
+		   const char* theGradientString   = "gradientstop";
+		   const char* theNameString       = "name";
+		   const char* thePositionString   = "pos";
 static const char* theToolboxString = "toolbox";
 static const char* theGoalsString = "goals";
 		   const char* theGoalString = "goal";
+
 
 const char* theWidthAttributeString     = "width";
 const char* theHeightAttributeString    = "height";
@@ -126,6 +133,7 @@ Level::load(const QString& aFileName)
 	QDomNamedNodeMap myNodeMap;
     bool isOK1, isOK2;
 	bool hasProblem = false;
+	QString myResult;
 
     qreal myWidth;
     qreal myHeight;
@@ -192,7 +200,17 @@ Level::load(const QString& aFileName)
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
 	
-	
+	myResult = BackgroundSerializer::createObjectFromDom(
+			mySceneNode.firstChildElement(theBackgroundString),
+			&(theWorldPtr->theBackground));
+	if (myResult.isEmpty() == false)
+	{
+		myErrorMessage = tr("Parsing '%1' section failed: %2")
+						 .arg(theBackgroundString)
+						 .arg(myResult);
+		goto not_good;
+	}
+
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
 	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
@@ -355,6 +373,8 @@ bool Level::save(const QString& aFileName)
 	World::BaseObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
 	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
 		addBaseObject(myPredefinedParent, *(*myI));
+	// ... add background
+	BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
 	// ... TODO: add view
 
 	// Goals

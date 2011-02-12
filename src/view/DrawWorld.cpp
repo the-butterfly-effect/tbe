@@ -237,12 +237,20 @@ void DrawWorld::drawOutlineAndBackground(void)
 	addItem(myDot);
 	drawDots();
 
-	// a blue gradient background
-	// TODO/FIXME: We're going to make this flexible later (see ticket:58)
+	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
+		theWorldPtr->theBackground.theImageName.isEmpty())
+	{
+		theWorldPtr->theBackground.theBackgroundGradient.push_back(
+				Background::GradientStop(0, 0.8, 0.8, 1.0, 1.0));
+		theWorldPtr->theBackground.theBackgroundGradient.push_back(
+				Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
+	}
+
+	// the default: a blue gradient background
 	setBackgroundBrush(Qt::blue);
 	QLinearGradient myBackground(0,0, 0,-getHeight());
-	myBackground.setColorAt(0, QColor(212,212,255,255));
-	myBackground.setColorAt(1, QColor(121,121,235,255));
+	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
+		myBackground.setColorAt(myGS.thePosition, QColor(myGS.theR*255, myGS.theG*255, myGS.theB*255, myGS.theAlpha*255));
 	setBackgroundBrush(myBackground);
 }
 

@@ -59,6 +59,8 @@ HEADERS += src/tbe_global.h \
     src/box2d/b2WorldCallbacks.h \
     src/box2d/b2World.h \
     src/box2d/Box2D.h \
+    src/base/Background.h \
+    src/base/BackgroundSerializer.h \
     src/base/BaseObjectSerializer.h \
     src/base/GoalSerializer.h \
     src/base/LocalString.h \
@@ -145,6 +147,7 @@ SOURCES += src/main.cpp \
     src/box2d/b2WeldJoint.cpp \
     src/box2d/b2WorldCallbacks.cpp \
     src/box2d/b2World.cpp \
+    src/base/BackgroundSerializer.cpp \
     src/base/BaseObjectSerializer.cpp \
     src/base/GoalSerializer.cpp \
     src/base/LocalString.cpp \
