@@ -108,7 +108,9 @@
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Friction" >0.8</property>
             </object>
-            <object X="3.9" Y="0.3" height="0.4" type="DominoGreen" />
+	    <object X="3.9" Y="0.3" height="0.4" type="DominoGreen">
+                <property key="Mass" >0.5</property>
+	    </object>
             <object X="3.6" Y="0.3" height="0.4" type="DominoBlue" />
             <object X="3.3" Y="0.3" height="0.4" type="DominoRed" />
             <object X="3.0" Y="0.3" height="0.4" type="DominoGreen" />
