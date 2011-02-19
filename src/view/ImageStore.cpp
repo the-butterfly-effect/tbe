@@ -100,12 +100,25 @@ QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
 
 	// so, it's not in our cache yet...
 	// let's try to find the file and create the pixmap...
-	QString myFullName = getFilePath(anImageName, ".png");
+	// the last entry is an empty string - that should result in us also
+	// trying the imagename without appending an extension
+	QStringList myExtensions(QString(".jpg;.jpeg;.png;").split(";"));
+	QString myFullName;
+
+	foreach(QString i, myExtensions)
+	{
+		myFullName = getFilePath(anImageName, i);
+		if (myFullName.isEmpty()==false)
+			break;
+	}
 	QPixmap* myPtr = new QPixmap(myFullName);
 	if (myPtr == NULL)
 		return NULL;
 	if (myPtr->isNull())
+	{
+		delete myPtr;
 		return NULL;
+	}
 	thePixmapMap[anImageName]=myPtr;
 	DEBUG5("my QPixmap* is %p\n", myPtr);
 	return myPtr;

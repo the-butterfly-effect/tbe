@@ -87,8 +87,20 @@ private:
 
 	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
 
+	/// contrary to what the member name says, it will return a pixmap for any
+	/// file that is of type png or jpg.
+	/// TODO/FIXME: rename this member to get rid of the png
+	/// if an image is found and it wasn't in the cache yet, it will be added
+	/// @param anImageName the file name to search for - without extension
+	/// @returns NULL if none found or a pointer to the QPixmap if found
 	QPixmap* getMePNGPixmap(QString anImageName);
 
+	/// concatenate anImageName and anExtension and check if the file exists
+	/// along any of the defined paths
+	/// @returns the full path if a matching file is found or an empty string
+	///          if not
+	/// @param anImageName file name (without extension) to search for
+	/// @param anExtension extension to add to the file name
 	QString getFilePath(const QString& anImageName, const QString& anExtension) const;
 
 	typedef QMap<QString, QSvgRenderer*> RendererMap;
