@@ -26,6 +26,7 @@
 #include "StartStopWatch.h"
 #include "UndoInsertCommand.h"
 #include "Anchors.h"
+#include "ImageStore.h"
 
 #include <QPainter>
 #include <QStyleOption>
@@ -199,6 +200,52 @@ void DrawWorld::dragMoveEvent ( QGraphicsSceneDragDropEvent * event )
 	event->accept();
 }
 
+void DrawWorld::drawBackground ( QPainter* p, const QRectF & rect )
+{
+	// we don't care about the QRectF parameter 'rect', which indicates
+	// which area needs redrawing. I'm too tired to keep that information
+	// into account right now...
+
+	// draw the background image - if we have one,
+	// then let the QGraphicsScene worry about the gradient...
+	if (theWorldPtr->theBackground.theImageName.isEmpty() == false)
+	{
+		p->save();
+		static QPixmap* myPtr = ImageStore::getPNGPixmap(theWorldPtr->theBackground.theImageName);
+
+		// if no repeat: image is drawn to fit within the world
+		float myHRepeat = getWidth();
+		float myVRepeat = getHeight();
+		if (theWorldPtr->theBackground.theImageHRepeat > 0.01)
+			myHRepeat = theWorldPtr->theBackground.theImageHRepeat;
+		if (theWorldPtr->theBackground.theImageVRepeat > 0.01)
+			myVRepeat = theWorldPtr->theBackground.theImageVRepeat;
+
+		// Calculate the scaling. The QPainter transform is set to deal in
+		// pixels as coordinates - we're going to scale that as we see fit
+		float myPixPerMeter = ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+		float myHScale = myHRepeat * myPixPerMeter / myPtr->width();
+		float myVScale = myVRepeat * myPixPerMeter / myPtr->height();
+		QTransform myTransform(myHScale,0,0,myVScale,
+					0, p->viewport().height()-getHeight()*myPixPerMeter);
+
+		// Now the transform is into action, the new unit is pixels of the
+		// image. We want to see *horizontally* repeats outside the scene
+		// but *vertically*, we stop at the top of the level
+		QRectF myScaledRect(0,0, (getWidth()/myHRepeat+1.0) * myPtr->width(),
+							getHeight()/myVRepeat * myPtr->height());
+		p->setTransform(myTransform);
+
+		// with all those calculations done, the actual draw command is
+		// almost trivial :-)
+		p->drawTiledPixmap(myScaledRect, *myPtr, QPointF());
+		p->restore();
+	}
+
+	// and allow for the drawing of the gradient
+	QGraphicsScene::drawBackground(p,rect);
+}
+
 void DrawWorld::drawDots(void)
 {
 	// make sure to never shrink smaller than the specified size
@@ -240,13 +287,12 @@ void DrawWorld::drawOutlineAndBackground(void)
 	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
 		theWorldPtr->theBackground.theImageName.isEmpty())
 	{
+		// the default if nothing else specified: a blue gradient background
 		theWorldPtr->theBackground.theBackgroundGradient.push_back(
 				Background::GradientStop(0, 0.8, 0.8, 1.0, 1.0));
 		theWorldPtr->theBackground.theBackgroundGradient.push_back(
 				Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
 	}
-
-	// the default: a blue gradient background
 	setBackgroundBrush(Qt::blue);
 	QLinearGradient myBackground(0,0, 0,-getHeight());
 	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)

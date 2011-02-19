@@ -28,8 +28,15 @@ struct Background
 {
 	/// The background image is at the back of the screen, scaled
 	/// to fit the World's coordinates.
-	/// TODO/FIXME: not implemented yet
 	QString theImageName;
+
+	/// Horizontal distance for repeat of the image ("tiling")
+	/// a value less than 0.01 means no repeat
+	float theImageHRepeat;
+
+	/// Vertical distance for repeat of the image ("tiling")
+	/// a value less than 0.01 means no repeat
+	float theImageVRepeat;
 
 	/// types of how to handle the gradient - directly "copied" from the
 	/// definitions in QGradient - please check the Qt manual for imagery :-)
@@ -63,6 +70,9 @@ struct Background
 	/// If empty list, do not display a gradient - unless also no
 	/// image name was specified, in that case use a blue gradient.
 	QList<GradientStop> theBackgroundGradient;
+
+	/// default constructor to make sure we get the repeat set correctly
+	Background() : theImageHRepeat(0.0), theImageVRepeat(0.0) {}
 };
 
 #endif // BACKGROUND_H

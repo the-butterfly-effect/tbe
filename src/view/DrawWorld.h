@@ -109,6 +109,10 @@ protected:
 	/// OVERRIDDEN from QGraphicsScene to handle drag&drop
 	virtual void dragMoveEvent ( QGraphicsSceneDragDropEvent * event );
 
+	/// OVERRIDDEN from QGraphicsScene to handle backgrounds with both a
+	/// gradient and an image - where the gradient is drawn over the image
+	void drawBackground ( QPainter * painter, const QRectF & rect );
+
 protected:
 		/// Draw a closed polygon provided in CCW order.
 		virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);

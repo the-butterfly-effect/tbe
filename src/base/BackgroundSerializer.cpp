@@ -23,12 +23,16 @@
 #include "tbe_global.h"
 #include <cstdio>
 
-// these are all declared in Level.cpp
+// this one is declared in Level.cpp
 extern const char* theBackgroundString;
-extern const char* theImageString;
-extern const char* theGradientString;
-extern const char* theNameString;
-extern const char* thePositionString;
+
+static const char* theGradientString   = "gradientstop";
+static const char* theImageString      = "image";
+static const char* theImgHRepeatString = "hrepeatdist";
+static const char* theImgVRepeatString = "vrepeatdist";
+static const char* theNameString       = "name";
+static const char* thePositionString   = "pos";
+
 
 QString
 BackgroundSerializer::createObjectFromDom(const QDomNode& q, Background* aBGPtr)
@@ -43,14 +47,19 @@ BackgroundSerializer::createObjectFromDom(const QDomNode& q, Background* aBGPtr)
 
 	if (q.hasChildNodes()==true)
 	{
-		// to parse:   <image name="texture" />
+		// to parse:   <image name="texture" hrepeatdist="0.0" vrepeatdist="1.5"/>
 		// to parse:   <gradientstop pos="0.0"> 1.0;1.0;1.0;1.0 </gradientstop>
 		QDomElement i;
 		for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
 		{
 			if (i.nodeName() == theImageString)
 			{
-				aBGPtr->theImageName = i.attributes().namedItem(theNameString).nodeValue();
+				aBGPtr->theImageName =
+					i.attributes().namedItem(theNameString).nodeValue();
+				aBGPtr->theImageHRepeat =
+					i.attributes().namedItem(theImgHRepeatString).nodeValue().toFloat();
+				aBGPtr->theImageVRepeat =
+					i.attributes().namedItem(theImgVRepeatString).nodeValue().toFloat();
 			}
 
 			if (i.nodeName() == theGradientString)
@@ -98,6 +107,8 @@ BackgroundSerializer::serialize(QDomElement* aParent, Background* aBackgroundPtr
 	{
 		QDomElement myImageName = aParent->ownerDocument().createElement(theImageString);
 		myImageName.setAttribute(theNameString, aBackgroundPtr->theImageName);
+		myImageName.setAttribute(theImgHRepeatString, floatToString(aBackgroundPtr->theImageHRepeat));
+		myImageName.setAttribute(theImgVRepeatString, floatToString(aBackgroundPtr->theImageVRepeat));
 		myBackground.appendChild(myImageName);
 	}
 
