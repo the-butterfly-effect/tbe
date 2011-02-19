@@ -6,14 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>230</width>
-    <height>228</height>
+    <width>330</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Note: changes in this dialog are not undoable!</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
@@ -23,12 +33,18 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Width</string>
+         <string>Level width:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="doubleSpinBoxWidth">
+        <property name="toolTip">
+         <string>width of the level in meters</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
         <property name="decimals">
          <number>1</number>
         </property>
@@ -49,12 +65,18 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Height</string>
+         <string>Level height:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="doubleSpinBoxHeight">
+        <property name="toolTip">
+         <string>Height of the level in meters</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
         <property name="decimals">
          <number>1</number>
         </property>
@@ -72,31 +94,115 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Background:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>(not editable yet)</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Note: changes in this dialog are not undoable!</string>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Background</string>
      </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Image name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditImageName">
+          <property name="toolTip">
+           <string>Specify the image name here. Omit the extension. Any image within the level directory or the images directory will be found.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Image repeat width</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="doubleSpinBoxHRepeat">
+          <property name="toolTip">
+           <string>The distance in which the image will repeat itself. use zero for no repeat - the image will be strechted to fit the level.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>height</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="doubleSpinBoxVRepeat">
+          <property name="toolTip">
+           <string>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be strechted to fit the level.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Gradient (in front of image):   NO EDIT YET!</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="toolTip">
+           <string>This table defines the gradient of the background. Each line is a stop. You need at least two stops.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="gradientView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>The resulting gradient is shown here</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
