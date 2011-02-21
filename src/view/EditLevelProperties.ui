@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>330</width>
-    <height>414</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -100,7 +100,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Background</string>
+      <string>Background Properties</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -138,6 +138,9 @@
           <property name="whatsThis">
            <string/>
           </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
          </widget>
         </item>
         <item>
@@ -155,6 +158,9 @@
           <property name="whatsThis">
            <string/>
           </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
          </widget>
         </item>
        </layout>
@@ -169,7 +175,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableView" name="tableView">
           <property name="toolTip">
            <string>This table defines the gradient of the background. Each line is a stop. You need at least two stops.</string>
           </property>

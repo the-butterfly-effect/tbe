@@ -20,13 +20,20 @@
 #define EDITLEVELPROPERTIES_H
 
 #include <QtGui/QDialog>
+#include <QItemDelegate>
 
 // forward declarations
 class Level;
+class Background;
+class QStandardItemModel;
+class QStandardItem;
 
 namespace Ui {
     class EditLevelProperties;
 }
+
+// this header file contains two class declarations:
+// first EditLevelProperties, then ColorPickerDelegate
 
 
 /// this class allows editing of various Level and World settings
@@ -38,14 +45,44 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+	void populateTableAndGradient(Background* aBGPtr);
+	void writeChanges(void);
 
 private slots:
 	/// overridden to actually write the results to the Level/World
 	void slot_accepted();
 
+	/// to update the gradient based on the model
+	void slot_modelItemChanged(QStandardItem* anItem);
+
 private:
 	Level* theLevelPtr;
+	QStandardItemModel* theModel;
     Ui::EditLevelProperties *m_ui;
 };
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+
+/// this is the Delegate to edit a field using a QDoubleSpinBox
+class ColorPickerDelegate : public QItemDelegate
+{
+	Q_OBJECT
+
+public:
+	ColorPickerDelegate(QObject *parent);
+
+	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+						  const QModelIndex &index) const;
+
+	void setEditorData(QWidget *editor, const QModelIndex &index) const;
+	void setModelData(QWidget *editor, QAbstractItemModel *model,
+					  const QModelIndex &index) const;
+
+	void updateEditorGeometry(QWidget *editor,
+							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+};
+
 
 #endif // EDITLEVELPROPERTIES_H
