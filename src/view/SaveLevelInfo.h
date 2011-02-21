@@ -48,7 +48,7 @@ public slots:
 
 	/// called whenever the user changes the text.
 	void fileNameChanged()
-		{ isUserOKOverwrintingFile = false; }
+		{ isUserOKOverwritingFile = false; }
 
 
 private:
@@ -67,7 +67,7 @@ private:
 
 
 	/// set to true if user answered the question whether the file should be overwritten
-	bool isUserOKOverwrintingFile;
+	bool isUserOKOverwritingFile;
 };
 
 #endif // SAVELEVELINFO_H

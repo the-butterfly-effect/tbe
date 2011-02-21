@@ -285,7 +285,7 @@ void MainWindow::on_actionSave_activated()
 	if (theLevelPtr->save(myFileInfo.absoluteFilePath())==false)
 		Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
 	else
-		ui.statusbar->showMessage(tr("File '%1' saved.").arg(myFileInfo.absoluteFilePath()),5);
+		ui.statusbar->showMessage(tr("File '%1' saved.").arg(myFileInfo.absoluteFilePath()),5000);
 }
 
 void MainWindow::on_actionSave_As_activated()
@@ -304,7 +304,7 @@ void MainWindow::on_actionSave_As_activated()
 	if (mySaveLevel.commitToLevel()==false)
 		Popup::Warning(tr("You did not fill in all fields - but level saved anyway\n"));
 
-	QFileInfo myFileInfo(mySaveLevel.getFileName());
+	QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
 
 	DEBUG5("File '%s' is readable: %d, writeable: %d\n",
 		   ASCII(myFileInfo.absoluteFilePath()),

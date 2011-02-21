@@ -24,7 +24,7 @@
 SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 	: QDialog(parent), theLevelPtr(aLevelPtr)
 {
-	isUserOKOverwrintingFile = false;
+	isUserOKOverwritingFile = false;
 
 	ui.setupUi(this);
 	ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
@@ -56,17 +56,15 @@ SaveLevelInfo::~SaveLevelInfo()
 void SaveLevelInfo::accept()
 {
 	if (performFileExists(ui.theFileNameField->text()))
+	{
+		commitToLevel();
 		QDialog::accept();
+	}
 }
 
 
 bool SaveLevelInfo::commitToLevel(void)
 {
-	if (ui.theTitleField->text().isEmpty())
-		return false;
-	if (ui.theAuthorNameField->text().isEmpty())
-		return false;
-
 	theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text();
 	theLevelPtr->theLevelDate        = ui.theDateEdit->text();
 	theLevelPtr->theLevelLicense     = ui.theLicenseField->text();
@@ -91,11 +89,15 @@ bool SaveLevelInfo::commitToLevel(void)
 
 
 
-
 	if (ui.theFileNameField->text().isEmpty())
 		return false;
 	else
 		theLevelPtr->setLevelFileName(ui.theFileNameField->text());
+
+	if (ui.theTitleField->text().isEmpty())
+		return false;
+	if (ui.theAuthorNameField->text().isEmpty())
+		return false;
 
 	return true;
 }
@@ -106,7 +108,7 @@ void SaveLevelInfo::FileDialogButton_clicked()
 	// use QFileInfo to brush up the file name
 	QFileInfo myFileInfo(ui.theFileNameField->text());
 
-	isUserOKOverwrintingFile = false;
+	isUserOKOverwritingFile = false;
 
 	QString myFileName = QFileDialog::getSaveFileName(this,
 		tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
@@ -120,7 +122,7 @@ void SaveLevelInfo::FileDialogButton_clicked()
 
 bool SaveLevelInfo::performFileExists(const QString& aFileName)
 {
-	if (isUserOKOverwrintingFile==true)
+	if (isUserOKOverwritingFile==true)
 		return true;
 
 	if (QFile::exists(aFileName))
@@ -129,7 +131,7 @@ bool SaveLevelInfo::performFileExists(const QString& aFileName)
 		if (Popup::YesNoQuestion(tr("A File with name '%1' file already exists. Overwrite?\n").arg(aFileName),
 								 this)==false)
 			return false;
-		isUserOKOverwrintingFile = true;
+		isUserOKOverwritingFile = true;
 	}
 	return true;
 }
