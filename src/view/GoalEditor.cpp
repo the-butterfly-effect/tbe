@@ -51,7 +51,7 @@ GoalEditor::GoalEditor(World* aWorldPtr, QWidget *parent) :
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
 	myConditionDelegate->setItems(QString(">;<;"+getT10nOf_change()).split(";"));
 	ui.tableView->setItemDelegateForColumn ( 2, myConditionDelegate);
-	ui.tableView->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate());
+	ui.tableView->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate(this, -10, 50));
 
 	ComboBoxDelegate* myObjectIDDelegate = new ComboBoxDelegate();
 	myObjectIDDelegate->setItems(theWorldPtr->getAllIDs());
@@ -294,8 +294,8 @@ void ComboBoxDelegate::setModelData(QWidget *anEditor, QAbstractItemModel *model
 
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
-DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(QObject *parent)
-	 : QItemDelegate(parent)
+DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(QObject *parent, float aMin, float aMax)
+	 : QItemDelegate(parent), theMax(aMax), theMin(aMin)
 {
 }
 
@@ -304,8 +304,8 @@ QWidget *DoubleSpinBoxDelegate::createEditor(QWidget *parent,
 			const QModelIndex &/* index */) const
 {
 	QDoubleSpinBox *myEditor = new QDoubleSpinBox(parent);
-	myEditor->setMinimum(-10.0);
-	myEditor->setMaximum(50.0);
+	myEditor->setMinimum(theMin);
+	myEditor->setMaximum(theMax);
 	myEditor->setDecimals(2);
 	myEditor->setSingleStep(0.1);
 	return myEditor;

@@ -122,7 +122,7 @@ class DoubleSpinBoxDelegate : public QItemDelegate
 	Q_OBJECT
 
 public:
-	DoubleSpinBoxDelegate(QObject *parent = 0);
+	DoubleSpinBoxDelegate(QObject *parent, float aMin, float aMax);
 
 	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
 						  const QModelIndex &index) const;
@@ -133,6 +133,9 @@ public:
 
 	void updateEditorGeometry(QWidget *editor,
 							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+private:
+	float theMax;
+	float theMin;
 };
 
 
