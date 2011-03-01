@@ -75,8 +75,8 @@ void PivotPoint::createPhysicsObject(void)
 		return;
 	}
 
-	Vector myRelPos = (theFirstPtr->getOrigCenter().toVector()-getOrigCenter().toVector())
-					  .rotate(theFirstPtr->getOrigCenter().angle);
+	Vector myRelPos = (getOrigCenter().toVector()-theFirstPtr->getOrigCenter().toVector())
+					  .rotate(-theFirstPtr->getOrigCenter().angle);
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, myRelPos);
 	theFirstPtr->addJoint(this);
 	assert (myFirstB2BodyPtr);
@@ -89,8 +89,8 @@ void PivotPoint::createPhysicsObject(void)
 	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
 	if (theSecondPtr != NULL)
 	{
-		Vector my2RelPos = (theSecondPtr->getOrigCenter().toVector()-getOrigCenter().toVector())
-					  .rotate(theSecondPtr->getOrigCenter().angle);
+		Vector my2RelPos = (getOrigCenter().toVector()-theSecondPtr->getOrigCenter().toVector())
+					  .rotate(-theSecondPtr->getOrigCenter().angle);
 		mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, my2RelPos);
 		theSecondPtr->addJoint(this);
 	}
