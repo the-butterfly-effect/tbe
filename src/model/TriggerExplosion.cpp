@@ -85,9 +85,11 @@ void DetonatorBox::createPhysicsObject(void)
 {
 	RectObject::createPhysicsObject();
 
-	assert(theHandleObjectPtr==NULL);
-	theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
-	theWorldPtr->addObject(theHandleObjectPtr);
+	if (theHandleObjectPtr==NULL)
+	{
+		theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
+		theWorldPtr->addObject(theHandleObjectPtr);
+	}
 	theHandleObjectPtr->createPhysicsObject();
 
 	isTriggered = false;
@@ -201,6 +203,8 @@ DrawObject*  DetonatorBoxHandle::createDrawObject(void)
 
 void DetonatorBoxHandle::createPhysicsObject(void)
 {
+	if (isPhysicsObjectCreated())
+		return;
 	RectObject::createPhysicsObject();
 
 	// initialise the prismatic (translation) joint:
