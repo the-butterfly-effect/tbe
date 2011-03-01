@@ -105,6 +105,8 @@ void Spring::buildShapeList(void)
 	DEBUG5("Spring::buildShapeList wxh=%fx%f\n", getTheWidth(),getTheHeight());
 	b2PolygonShape* myBoxShape = new b2PolygonShape();
 	myBoxShape->SetAsBox(getTheWidth()/4.0, getTheHeight()/2.0);
+//	b2CircleShape* myBoxShape = new b2CircleShape();
+//	myBoxShape->m_radius = getTheWidth()/4.0;
 	b2FixtureDef* myBoxFixture = new b2FixtureDef();
 
 	// get mass:  springs always have a mass!
@@ -128,6 +130,10 @@ void Spring::createPhysicsObject(void)
 	if (theOtherEndPtr==NULL)
 	{
 		theOtherEndPtr = new SpringEnd(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
+
+		theOtherEndPtr->theProps.setDefaultPropertiesString(
+				QString("%1:%2/").arg(Property::NOCOLLISION_STRING)
+				.arg(theProps.getPropertyNoDefault(Property::NOCOLLISION_STRING)));
 		theWorldPtr->addObject(theOtherEndPtr);
 	}
 	theOtherEndPtr->setTheWidth(0.5*getTheWidth());
@@ -146,8 +152,8 @@ void Spring::deletePhysicsObject(void)
 
 b2Body* Spring::getB2BodyPtrForPosition(const Position& aRelPosition)
 {
-	// see explanation above, as this is only evaluated in the static case,
-	// we can keep this very simple :-)
+	if (isPhysicsObjectCreated()==false)
+		createPhysicsObject();
 	if (aRelPosition.x < 0.0)
 		return theB2BodyPtr;
 	else
@@ -210,12 +216,14 @@ SpringEnd::~SpringEnd()
 
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-	Vector myVector = theSpringConstant*Vector(getTempCenter().angle);
-	// don't forget: action = -reaction  -> we need equal forces on both parts...
-	theOtherEndPtr->theB2BodyPtr->ApplyForce((getDistance()*myVector).toB2Vec2(),
-											 theOtherEndPtr->getTempCenter().toB2Vec2());
-	theB2BodyPtr->ApplyForce((-getDistance()*myVector).toB2Vec2(),
-											 theOtherEndPtr->getTempCenter().toB2Vec2());
+	float myForce = getDistance()*theSpringConstant;
+	Vector myAngle  = Vector(getTempCenter().angle);
+	Vector myFVector = getDistance()*theSpringConstant*myAngle;
+	// don't forget: action = -reaction  -> we need equal opposing forces on both end...
+	theOtherEndPtr->theB2BodyPtr->ApplyForce( myFVector.toB2Vec2(),
+											  theOtherEndPtr->theB2BodyPtr->GetPosition());
+	theB2BodyPtr->ApplyForce( (-1.0*myFVector).toB2Vec2(),
+											 theB2BodyPtr->GetPosition());
 }
 
 DrawObject*  SpringEnd::createDrawObject(void)
