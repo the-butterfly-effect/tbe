@@ -113,7 +113,7 @@ static AbstractPolyObjectFactory theLeftRampFactory(
 	QObject::tr("Left Ramp"),
 	QObject::tr("This is a ramp. The left is lower than the right, so things slide to the left."),
 	"LeftRamp",
-	"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+        "(-0.5,-0.46)=(-0.5,-0.5)=(0.13,-0.5)=(0.5,0.5)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightRampFactory(
@@ -121,7 +121,7 @@ static AbstractPolyObjectFactory theRightRampFactory(
 	QObject::tr("Right Ramp"),
 	QObject::tr("This is a ramp. The left is higher than the right, so things slide to the right."),
 	"RightRamp",
-	"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+        "(-0.5,0.5)=(-0.13,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
 // the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
