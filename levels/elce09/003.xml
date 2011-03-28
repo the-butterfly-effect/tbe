@@ -2,68 +2,68 @@
 <tbe-level>
     <levelinfo>
         <title>Marble Boulevard</title>
-        <title lang="nl">Knikkerboulevard</title>
+        <title lang="nl" >Knikkerboulevard</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Goal: Topple the pin.</description>
-        <description lang="nl">Doel: Kegel de kegel om.</description>
+        <description lang="nl" >Doel: Kegel de kegel om.</description>
         <date>10/11/09</date>
     </levelinfo>
-     <toolbox>
-        <toolboxitem count="2" name="Ramp /">
-            <name lang="nl">Helling /</name>
-            <object width="4.5" height="0.6" type="LeftRamp" angle="0">
-                <property key="Resizable" >horizontal</property>
+    <toolbox>
+        <toolboxitem count="2" name="Ramp /" >
+            <name lang="nl" >Helling /</name>
+            <object width="4.500" height="0.600" type="PolyObject" angle="0.000" >
+                <property key="Polygons" >(-2.25,-0.28)=(-2.25,-0.3)=(-1.5,-0.3)=(2.,0.15)=(2.25,0.3)</property>
+                <property key="ImageName" >LeftRamp</property>
+                <property key="Resizable" >none</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="6.9" height="5" />
         <predefined>
-            <object width="6.9" X="3.45" Y="-0.05" type="Floor" >
-	      <property key="ImageName" >used_wood_bar</property>
+            <object width="6.900" X="3.450" Y="-0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.220" X="0.300" Y="2.750" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.220" X="0.300" Y="1.100" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.220" X="2.600" Y="4.400" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.200" X="6.400" Y="0.700" height="0.150" type="LeftRamp" angle="0.000" />
+            <object width="0.120" X="6.400" Y="0.390" height="0.340" type="BowlingPin" ID="Pin" angle="0.000" />
+            <object width="5.000" X="2.600" Y="4.100" height="0.700" type="RightRamp" angle="0.000" />
+            <object width="5.000" X="2.600" Y="2.300" height="0.700" type="RightRamp" angle="0.000" />
+            <object width="4.600" X="2.400" Y="0.510" height="0.700" type="RightRamp" angle="0.000" />
+            <object width="0.400" X="6.700" Y="2.800" height="4.400" type="RectObject" angle="0.000" >
+                <property key="ImageName" >right-side-frame.003</property>
             </object>
-	    <object X="0.3" Y="2.75" type="BowlingBall" />
-            <object X="0.3" Y="1.1" type="BowlingBall" />
-            <object X="2.6" Y="4.4" type="BowlingBall" />
-	    <object width="0.2" X="6.4" Y="0.7" height="0.15" type="LeftRamp" angle="0" />
-	    <object X="6.4" Y="0.39" type="BowlingPin" ID="Pin" />
-	    <object width="5" X="2.6" Y="4.1" height="0.7" type="RightRamp" angle="0" />
-	    <object width="5" X="2.6" Y="2.3" height="0.7" type="RightRamp" angle="0" />
-	    <object width="4.6" X="2.4" Y="0.51" height="0.7" type="RightRamp" angle="0" />
-            <object width="0.4" X="6.7" Y="2.8" height="4.4" type="RectObject">
-	                    <property key="ImageName" >right-side-frame.003</property>
+            <object width="0.100" X="0.050" Y="2.500" height="5.000" type="RectObject" angle="3.141" >
+                <property key="ImageName" >right-side-frame.003</property>
             </object>
-            <object width="0.1" X="0.05" Y="2.5" height="5" type="RectObject" angle="3.1415">
-	                    <property key="ImageName" >right-side-frame.003</property>
+            <object width="0.300" X="6.400" Y="0.115" height="0.230" type="Floor" angle="0.000" />
+            <object width="1.032" X="5.016" Y="0.115" height="0.230" type="Floor" angle="0.000" />
+            <object width="0.100" X="6.850" Y="0.320" height="0.640" type="RectObject" angle="0.000" >
+                <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.2996093749999996" X="6.3998046875" Y="0.115" height="0.23" type="Floor" >
-	                    <property key="ImageName" >used_wood_bar</property>
-            </object>
-            <object width="1.03178125" X="5.015890624999999" Y="0.115" height="0.23" type="Floor" >
-	                    <property key="ImageName" >used_wood_bar</property>
-            </object>
-            <object width="0.1" X="6.85" Y="0.32" height="0.64" type="RectObject">
-	                    <property key="ImageName" >used_wood_bar</property>
-            </object>
-            <object X="6.3" Y="0.8" type="PostIt">
-                <property key="page1" >No butterflies here!&lt;br&gt;&lt;br&gt;</property>
+            <object width="0.220" X="6.300" Y="0.800" height="0.220" type="PostIt" angle="0.000" >
+                <property key="page1" >No butterflies here!&lt;br>&lt;br></property>
+                <property key="page1_nl" >Geen vlinders hiero!&lt;br>&lt;br></property>
                 <property key="page2" >Topple the bowling pin below.</property>
-                <property key="page3" >Hmmm... &lt;br&gt;&lt;br&gt;This reminds me of a kids' game!</property>
-                <property key="page4" >By the way: there are two ramps in the toolbox. Use them wisely!</property>
-                <property key="page5" >&lt;br&gt;&lt;br&gt; ... the Post-it Boy</property>
-                <property key="page1_nl" >Geen vlinders hiero!&lt;br&gt;&lt;br&gt;</property>
                 <property key="page2_nl" >Kegel de kegel om.</property>
-                <property key="page3_nl" >Hmmm... &lt;br&gt;&lt;br&gt;Dit doet me aan een kinderspeeltje denken!</property>
+                <property key="page3" >Hmmm... &lt;br>&lt;br>This reminds me of a kids' game!</property>
+                <property key="page3_nl" >Hmmm... &lt;br>&lt;br>Dit doet me aan een kinderspeeltje denken!</property>
+                <property key="page4" >By the way: there are two ramps in the toolbox. Use them wisely!</property>
                 <property key="page4_nl" >Trouwens, er zitten twee hellingen in de gereedschapskist. Gebruik ze goed!</property>
-                <property key="page5_nl" >&lt;br&gt;&lt;br&gt; ... Post-it Boy</property>
-	    </object>
+                <property key="page5" >&lt;br>&lt;br> ... the Post-it Boy</property>
+                <property key="page5_nl" >&lt;br>&lt;br> ... Post-it Boy</property>
+            </object>
         </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.67;1.00;0.50;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="anglechanged">anglechanged</property>
-		   <property key="object">Pin</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="positionchange" >
+            <property key="anglechanged" >anglechanged</property>
+            <property key="object" >Pin</property>
+        </goal>
+    </goals>
 </tbe-level>
