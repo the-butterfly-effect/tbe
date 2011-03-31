@@ -243,6 +243,10 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
+	/// deletePhysicsObject() doesn't really delete the physics object
+	/// anymore - but we need a true deleter here...
+	void deletePhysicsObjectForReal(void);
+
 	/// creates all ExplosionSplatters
 	void explode(void);
 

@@ -309,6 +309,13 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	}
 }
 
+void Dynamite::deletePhysicsObjectForReal(void)
+{
+	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+	theB2BodyPtr = NULL;
+}
+
+
 void Dynamite::explode(void)
 {
 	const int NUM_SPLATS = 13;
@@ -340,7 +347,7 @@ Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
 
 	if (theState == RINGING && aNewState == BOOM)
 	{
-		deletePhysicsObject();
+		deletePhysicsObjectForReal();
 		explode();
 	}
 
