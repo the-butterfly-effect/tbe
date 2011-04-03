@@ -18,6 +18,7 @@
 
 #include "TriggerExplosion.h"
 #include "tbe_global.h"
+#include "DrawDetonatorBox.h"
 
 //// the DetonatorBox class' ObjectFactory
 class DetonatorBoxObjectFactory : public ObjectFactory
@@ -79,6 +80,13 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	case DONE:
 		break;
 	}
+}
+
+DrawObject*  DetonatorBox::createDrawObject(void)
+{
+	assert(theDrawObjectPtr==NULL);
+	theDrawObjectPtr = new DrawDetonatorBox(this);
+	return theDrawObjectPtr;
 }
 
 void DetonatorBox::createPhysicsObject(void)

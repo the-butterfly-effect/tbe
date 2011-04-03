@@ -57,6 +57,8 @@ public:
 		DONE       // end state, handle down and cell dark...
 	};
 
+	virtual DrawObject* createDrawObject();
+
 	/// overridden from RectObject to be able to create the handle and
 	/// because this class wants to register for
 	/// callbacks and needs to restart its state machine
