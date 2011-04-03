@@ -28,7 +28,7 @@ public:
 	virtual BaseObject* createObject(void) const
 	{	return fixObject(new Rat()); }
 };
-static RatObjectFactory theRatObjectFactory;
+//static RatObjectFactory theRatObjectFactory;
 
 
 const static float theRatMass = 0.8;
