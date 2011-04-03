@@ -94,12 +94,15 @@ Anchors::Anchors(DrawObject* anObjectPtr)
 	// FIXME - when this list is increasing,
 	// we should move it to the BaseObject class at some point
 	theDetBoxPtr = dynamic_cast<DetonatorBox*>(myBOPtr);
-	if (theDetBoxPtr!=NULL && theIsLevelEditor==false)
+	if (theDetBoxPtr!=NULL && theIsLevelEditor==true)
 	{
 		myBAPtr = new ButtonAnchor(this, "IconSetPhone", myButtonIndex++);
 		connect(myBAPtr, SIGNAL(clicked()), this, SLOT(setPhoneNr_clicked()));
 		theAnchorList.push_back(myBAPtr);
 	}
+
+	// FIXME/TODO: add another one for post-it editing.
+	// and remove the double-click there.
 
 	if (theObjectDialogPtr != NULL)
 	{

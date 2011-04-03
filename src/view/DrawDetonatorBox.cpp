@@ -81,18 +81,18 @@ void DrawDetonatorBox::displayChoosePhoneNumber(void)
 	// it will also clean up after itself, I hope :-)
 }
 
-void DrawDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+void DrawDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* anEvent)
 {
-	setCursor(QCursor(Qt::PointingHandCursor));
 	isHovering=true;
 	update();
+	DrawObject::hoverEnterEvent(anEvent);
 }
 
-void DrawDetonatorBox::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+void DrawDetonatorBox::hoverLeaveEvent ( QGraphicsSceneHoverEvent* anEvent)
 {
-	unsetCursor();
 	isHovering=false;
 	update();
+	DrawObject::hoverLeaveEvent(anEvent);
 }
 
 

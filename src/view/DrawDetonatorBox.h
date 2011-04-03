@@ -57,10 +57,6 @@ public:
 	 */
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
 
-	/// overridden from DrawObject to make sure it is not selected
-	virtual void focusInEvent ( QFocusEvent* )
-		{ ; }
-
 	/// overriden from DrawObject to allow extra graphics on hovering
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 			   QWidget *widget);
