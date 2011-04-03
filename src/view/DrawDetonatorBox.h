@@ -40,10 +40,8 @@ public:
 	// Constructors/Destructors
 	//
 
-	/**
-	 * Empty Constructor
-	 */
-	DrawDetonatorBox (BaseObject* aBaseObjectPtr);
+	/// Svg/Png Constructor
+	DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
 
 	/**
 	 * Empty Destructor
@@ -54,13 +52,8 @@ public:
 	void displayChoosePhoneNumber(void);
 
 	/** overridden from QGraphicsItem
-	 * upon a double click event, let's edit the phone number
-	 */
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* );
-
-	/** overridden from QGraphicsItem
-	 * also, upon a single click event, let's choose the phone number
-	 * (or just do move if we're in level creator)
+	 * Upon a single click event, let's choose the phone number
+	 * (just move if in level creator - there's an icon for choosephonenumber)
 	 */
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
 

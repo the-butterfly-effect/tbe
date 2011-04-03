@@ -30,8 +30,8 @@
 // Constructors/Destructors
 //
 
-DrawDetonatorBox::DrawDetonatorBox (BaseObject* aBaseObjectPtr)
-	: DrawObject(aBaseObjectPtr, "DetonatorBox")
+DrawDetonatorBox::DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType)
+	: DrawObject(aBaseObjectPtr, anImageName, anImageType)
 {
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawDetonatorBox\n");
@@ -100,13 +100,6 @@ void DrawDetonatorBox::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 void DrawDetonatorBox::initAttributes ( )
 {
 
-}
-
-
-void DrawDetonatorBox::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
-{
-	DEBUG5("double click!!!\n");
-	displayChoosePhoneNumber();
 }
 
 void DrawDetonatorBox::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)

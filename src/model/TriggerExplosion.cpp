@@ -85,7 +85,11 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 DrawObject*  DetonatorBox::createDrawObject(void)
 {
 	assert(theDrawObjectPtr==NULL);
-	theDrawObjectPtr = new DrawDetonatorBox(this);
+	QString myImageName;
+	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
+		myImageName = getName();
+
+	theDrawObjectPtr = new DrawDetonatorBox(this, myImageName);
 	return theDrawObjectPtr;
 }
 
