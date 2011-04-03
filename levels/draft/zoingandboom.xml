@@ -4,10 +4,26 @@
         <title>Crossing the gaps</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description></description>
-        <date>2/24/11</date>
+        <description>Imagine the noises in this level! Topple the pin.</description>
+        <description lang="nl">Stel je de geluiding in dit level voor! Schop de pin om.</description>
+        <date>April 3rd, 2011</date>
     </levelinfo>
-    <toolbox/>
+     <toolbox>
+        <toolboxitem count="1" name="Quarter Arc">
+            <name lang="nl">Kwart ronding</name>
+            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000" />
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp /">
+            <name lang="nl">Helling /</name>
+            <object width="0.96" height="0.665" type="LeftRamp" angle="0.000" />
+                <property key="ImageName">LeftRamp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Ramp \">
+            <name lang="nl">Helling \</name>
+            <object width="0.700" height="0.527" type="RightRamp" angle="0.000" />
+        </toolboxitem>
+   </toolbox>
     <scene>
         <scenesize width="6" height="4.5" />
         <predefined>
