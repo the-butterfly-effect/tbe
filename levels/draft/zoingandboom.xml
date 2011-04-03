@@ -1,0 +1,182 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Crossing the gaps</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description></description>
+        <date>2/24/11</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="6" height="4.5" />
+        <predefined>
+            <object width="0.430" X="0.291" Y="1.326" height="0.320" type="Dynamite" ID="555-1234" angle="4.906" />
+            <object width="0.200" X="2.474" Y="4.330" height="0.230" type="Scenery" angle="0.000" >
+                <property key="ImageName" >Skyhook</property>
+            </object>
+            <object width="0.400" X="0.606" Y="3.906" height="0.400" type="QuarterArc40" angle="1.571" />
+            <object width="0.800" X="0.400" Y="4.181" height="0.800" type="QuarterArc80" angle="1.571" />
+            <object width="3.337" X="0.458" Y="2.036" height="0.100" type="Floor" angle="1.570" />
+            <object width="3.800" X="0.050" Y="1.900" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.220" X="0.284" Y="1.732" height="0.220" type="SoccerBall" angle="0.000" />
+            <object width="0.800" X="1.206" Y="4.074" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.779" X="3.795" Y="2.756" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.220" X="2.999" Y="2.939" height="0.220" type="SoccerBall" angle="0.000" />
+            <object width="0.468" X="0.265" Y="1.030" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.330" X="5.715" Y="0.197" height="0.350" type="DetonatorBox" angle="0.000" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+                <property key="PhoneNumber" >555-1234</property>
+            </object>
+            <object width="2.335" X="5.482" Y="1.247" height="0.100" type="Floor" angle="1.571" />
+            <object width="3.391" X="5.946" Y="1.762" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.220" X="1.500" Y="4.258" height="0.220" type="SoccerBall" ID="SpringBall" angle="0.000" />
+            <object width="1.000" X="2.000" Y="4.260" height="0.150" type="Spring" ID="Spring" angle="0.000" >
+                <property key="ImageName" >spring20</property>
+                <property key="NoCollision" >SpringBall;tiltedfloor</property>
+                <property key="SpringConstant" >20</property>
+            </object>
+            <object width="1.000" X="1.500" Y="4.258" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object1" >SpringBall</property>
+                <property key="object2" >Spring</property>
+            </object>
+            <object width="1.000" X="2.500" Y="4.258" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object" >Spring</property>
+            </object>
+            <object width="0.270" X="3.230" Y="2.000" height="0.360" type="Balloon" ID="Balloon1" angle="0.000" />
+            <object width="0.270" X="3.500" Y="2.000" height="0.360" type="Balloon" ID="Balloon2" angle="0.000" />
+            <object width="0.270" X="3.770" Y="2.000" height="0.360" type="Balloon" ID="Balloon3" angle="0.000" />
+            <object width="0.270" X="4.040" Y="2.000" height="0.360" type="Balloon" ID="Balloon4" angle="0.000" />
+            <object width="0.270" X="4.310" Y="2.000" height="0.360" type="Balloon" ID="Balloon5" angle="0.000" />
+            <object width="0.150" X="3.770" Y="1.400" height="0.400" type="RectObject" ID="Styro" angle="0.000" >
+                <property key="Bounciness" >0.7</property>
+                <property key="Friction" >0.02</property>
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass" >0.020</property>
+            </object>
+            <object width="0.655" X="3.500" Y="1.700" height="0.218" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon1@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.18)</property>
+            </object>
+            <object width="0.405" X="3.660" Y="1.700" height="0.135" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon2@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.18)</property>
+            </object>
+            <object width="0.275" X="3.770" Y="1.700" height="0.092" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon3@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.18)</property>
+            </object>
+            <object width="0.405" X="3.880" Y="1.700" height="0.135" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon4@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.18)</property>
+            </object>
+            <object width="0.655" X="4.040" Y="1.700" height="0.218" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >Balloon5@(0,-0.17)</property>
+                <property key="object2" >Styro@(0,0.18)</property>
+            </object>
+            <object width="0.250" X="4.720" Y="2.060" height="0.400" type="Cactus" ID="Cactus" angle="1.610" />
+            <object width="0.166" X="5.203" Y="1.988" height="0.500" type="CokeMentosBottle" angle="4.691" />
+            <object width="0.841" X="5.013" Y="1.850" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.862" X="3.969" Y="2.250" height="0.100" type="Floor" ID="vloertje" angle="0.000" />
+            <object width="0.100" X="4.860" Y="2.350" height="0.100" type="CustomBall" ID="CactusWheel1" angle="4.680" >
+                <property key="ImageName" >CactusWheel</property>
+                <property key="Mass" >0.1</property>
+                <property key="Radius" >0.05</property>
+            </object>
+            <object width="0.100" X="4.610" Y="2.350" height="0.100" type="CustomBall" ID="CactusWheel2" angle="0.000" >
+                <property key="ImageName" >CactusWheel</property>
+                <property key="Mass" >0.1</property>
+                <property key="Radius" >0.05</property>
+            </object>
+            <object width="0.330" X="4.730" Y="2.170" height="0.410" type="RectObject" ID="tuigje" angle="0.000" >
+                <property key="ImageName" >CactusBracket</property>
+                <property key="Mass" >0.1</property>
+                <property key="NoCollision" >Cactus;CactusWheel1;CactusWheel2;vloertje</property>
+                <property key="ZValue" >4.0</property>
+            </object>
+            <object width="1.000" X="4.860" Y="2.350" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object1" >CactusWheel1</property>
+                <property key="object2" >tuigje</property>
+            </object>
+            <object width="1.000" X="4.610" Y="2.350" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object1" >CactusWheel2</property>
+                <property key="object2" >tuigje</property>
+            </object>
+            <object width="1.000" X="4.860" Y="2.150" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object1" >Cactus</property>
+                <property key="object2" >tuigje</property>
+            </object>
+            <object width="1.000" X="4.610" Y="2.150" height="1.000" type="PivotPoint" angle="0.000" >
+                <property key="object1" >Cactus</property>
+                <property key="object2" >tuigje</property>
+            </object>
+            <object width="1.412" X="4.026" Y="3.163" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.220" X="1.476" Y="3.701" height="0.220" type="PostIt" angle="0.000" >
+                <property key="page1" >Lalalala Blablablabla</property>
+            </object>
+            <object width="0.220" X="3.793" Y="3.379" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.450" X="3.458" Y="3.681" height="0.180" type="RectObject" angle="0.000" >
+                <property key="Bounciness" >0.0</property>
+                <property key="Friction" >0.0</property>
+                <property key="ImageName" >hammer</property>
+                <property key="Mass" >15.0</property>
+                <property key="PivotPoint" >(0.2,0)</property>
+            </object>
+            <object width="0.756" X="3.285" Y="1.395" height="0.402" type="RectObject" angle="0.000" >
+                <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.822" X="4.071" Y="0.940" height="0.140" type="RectObject" angle="0.000" >
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >0.1</property>
+                <property key="PivotPoint" >(0,0)</property>
+            </object>
+            <object width="1.206" X="2.963" Y="2.179" height="0.100" type="Floor" angle="1.570" />
+            <object width="1.000" X="4.870" Y="1.100" height="0.140" type="RectObject" angle="0.000" >
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >3</property>
+                <property key="PivotPoint" >(0,0)</property>
+            </object>
+            <object width="0.862" X="4.281" Y="1.692" height="0.100" type="Floor" angle="0.410" />
+            <object width="5.446" X="2.808" Y="0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.220" X="4.870" Y="1.280" height="0.220" type="SoccerBall" angle="0.000" />
+            <object width="2.186" X="1.938" Y="1.904" height="0.100" type="Floor" angle="0.212" />
+            <object width="0.676" X="0.896" Y="1.364" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.430" X="1.573" Y="1.352" height="0.320" type="Dynamite" ID="555-4321" angle="0.000" />
+            <object width="0.100" X="2.330" Y="1.390" height="0.500" type="DominoRed" angle="0.000" >
+                <property key="ImageName" >DominoRed</property>
+            </object>
+            <object width="1.505" X="1.643" Y="1.083" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.330" X="0.674" Y="0.276" height="0.350" type="DetonatorBox" angle="0.000" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+                <property key="PhoneNumber" >555-4321</property>
+            </object>
+            <object width="1.728" X="1.671" Y="4.538" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.800" X="2.931" Y="4.176" height="0.800" type="QuarterArc80" angle="0.000" />
+            <object width="0.930" X="3.270" Y="1.119" height="0.919" type="QuarterArc80" angle="-3.140" />
+            <object width="0.753" X="1.969" Y="0.210" height="0.305" type="Floor" angle="0.000" />
+            <object width="0.656" X="2.573" Y="0.142" height="0.100" type="Floor" angle="6.007" />
+            <object width="0.242" X="2.989" Y="0.097" height="0.100" type="Floor" angle="-0.432" />
+            <object width="1.000" X="2.971" Y="1.041" height="0.100" type="Floor" angle="-1.546" />
+            <object width="0.120" X="1.665" Y="0.537" height="0.340" type="BowlingPin" ID="TheEndPin" angle="0.000" />
+            <object width="0.800" X="1.262" Y="0.615" height="0.827" type="QuarterArc80" angle="-3.142" />
+            <object width="0.815" X="4.054" Y="0.755" height="0.100" type="Floor" angle="0.063" />
+            <object width="0.220" X="0.943" Y="1.907" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.105" X="0.904" Y="1.706" height="0.100" type="Floor" angle="0.000" />
+        </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.00;0.00;0.50;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.42;0.42;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" >
+            <property key="object" >TheEndPin</property>
+            <property key="xchanged" ></property>
+        </goal>
+    </goals>
+</tbe-level>
