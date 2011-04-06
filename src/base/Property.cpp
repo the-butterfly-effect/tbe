@@ -108,7 +108,7 @@ bool PropertyList::property2Bool(const QString& aPropertyName,
 	bool myResult;
 
 	int myPass = 1;
-	QString myValue = getPropertyNoDefault(aPropertyName).toLower();
+	QString myValue = getPropertyNoDefault(aPropertyName).toLower().trimmed();
 	while (myPass < 3)
 	{
 		if (myValue.isEmpty() && useDefault==false)

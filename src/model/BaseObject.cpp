@@ -104,6 +104,13 @@ bool BaseObject::isMovable ( ) const
 		return theIsMovable;
 }
 
+bool BaseObject::isRotatable ( ) const
+{
+	bool myRotatableInfo = false;
+	theProps.property2Bool(Property::ROTATABLE_STRING, &myRotatableInfo);
+	return myRotatableInfo;
+}
+
 void BaseObject::ForWorldOnly::setTheB2WorldPtr(b2World* aPtr)
 {
 	theStaticB2WorldPtr = aPtr;
@@ -238,6 +245,7 @@ void BaseObject::initAttributes ( )
 		Property::BOUNCINESS_STRING + QString(":0.3/") +
 		Property::NOCOLLISION_STRING+ QString(":/") +
 		Property::PIVOTPOINT_STRING + QString(":/") +
+		Property::ROTATABLE_STRING + QString(":false/") +
 		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
 		Property::ZVALUE_STRING + QString(":2.0/") );
 }

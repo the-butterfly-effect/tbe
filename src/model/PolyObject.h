@@ -74,11 +74,6 @@ public:
 	/// partially overridden from BaseObject
 	virtual void  parseProperties(void);
 
-	/// returns true if the object can be rotated by the user
-	/// FIXME/TODO: MUST BE FLEXIBLE
-	virtual bool isRotatable ( ) const
-	{	return rotatableInfo;	}
-
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
@@ -115,8 +110,6 @@ private:
 protected:
 	QString theNameString;
 	QString theToolTipString;
-
-	bool rotatableInfo;
 
 	/// AABB calculates the Axis-Aligned Bounding Box
 	/// which we can use for scaling

@@ -222,7 +222,7 @@ public:
 	virtual bool isMovable ( ) const;
 	
 	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const = 0;
+	virtual bool isRotatable ( ) const;
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const = 0;

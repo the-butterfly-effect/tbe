@@ -179,14 +179,12 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
 		Property::MASS_STRING + ":" + QString::number(aMass) + QString("/") +
-		Property::ROTATABLE_STRING + QString(":false/") +
 		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
 		);
 
 	BaseObject::setTheWidth(aWidth);
 	BaseObject::setTheHeight(aHeight);
 	setTheBounciness(aBounciness);
-	rotatableInfo = false;	// this is the default, will be fixed in parseProperties
 
 }
 
@@ -295,10 +293,7 @@ b2BodyType PolyObject::getObjectType(void) const
 
 void PolyObject::parseProperties(void)
 {
-
 	BaseObject::parseProperties();
-	theProps.property2Bool(Property::ROTATABLE_STRING, &rotatableInfo, false);
-
 	clearShapeList();
 	fillShapeList();
 }
