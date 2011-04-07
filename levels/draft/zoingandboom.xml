@@ -40,7 +40,6 @@
             <object width="0.468" X="0.265" Y="1.030" height="0.100" type="Floor" angle="0.000" />
             <object width="0.330" X="5.715" Y="0.197" height="0.350" type="DetonatorBox" angle="0.000" >
                 <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
-                <property key="PhoneNumber" >555-1234</property>
             </object>
             <object width="2.335" X="5.482" Y="1.247" height="0.100" type="Floor" angle="1.571" />
             <object width="3.391" X="5.946" Y="1.762" height="0.100" type="Floor" angle="1.571" />
@@ -170,7 +169,6 @@
             <object width="1.505" X="1.643" Y="1.083" height="0.100" type="Floor" angle="0.000" />
             <object width="0.330" X="0.674" Y="0.276" height="0.350" type="DetonatorBox" angle="0.000" >
                 <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
-                <property key="PhoneNumber" >555-4321</property>
             </object>
             <object width="1.728" X="1.671" Y="4.538" height="0.100" type="Floor" angle="0.000" />
             <object width="0.800" X="2.931" Y="4.176" height="0.800" type="QuarterArc80" angle="0.000" />
