@@ -5,23 +5,23 @@
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>Imagine the noises in this level! Tip the pin.</description>
-        <description lang="nl">Stel je de geluiding in dit level voor! Schop de pin.</description>
+        <description lang="nl" >Stel je de geluiding in dit level voor! Schop de pin.</description>
         <date>April 3rd, 2011</date>
     </levelinfo>
-     <toolbox>
-        <toolboxitem count="1" name="Quarter Arc">
-            <name lang="nl">Kwart ronding</name>
+    <toolbox>
+        <toolboxitem count="1" name="Quarter Arc" >
+            <name lang="nl" >Kwart ronding</name>
             <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000" />
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
-            <name lang="nl">Helling /</name>
+        <toolboxitem count="1" name="Ramp /" >
+            <name lang="nl" >Helling /</name>
             <object width="0.96" height="0.665" type="LeftRamp" angle="0.000" />
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \">
-            <name lang="nl">Helling \</name>
+        <toolboxitem count="1" name="Ramp \" >
+            <name lang="nl" >Helling \</name>
             <object width="0.700" height="0.527" type="RightRamp" angle="0.000" />
         </toolboxitem>
-   </toolbox>
+    </toolbox>
     <scene>
         <scenesize width="6" height="4.5" />
         <predefined>
@@ -130,11 +130,11 @@
                 <property key="object2" >tuigje</property>
             </object>
             <object width="1.412" X="4.026" Y="3.163" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.220" X="1.476" Y="3.701" height="0.220" type="PostIt" angle="0.000" >
-                <property key="page1">Zoing Ploing Boing Woing&lt;br>Zzap Whoosh Smack Boom</property>
-                <property key="page2">Don't you love these old cartoons?</property>
-                <property key="page3">But let me give you one hint:&lt;br>&lt;br> First a Boom, then the Zoinggg.</property>
-                <property key="page4">the Post-It Boy</property>
+            <object width="0.220" X="2.486" Y="0.724" height="0.220" type="PostIt" angle="0.000" >
+                <property key="page1" >Zoing Ploing Boing Woing&lt;br>Zzap Whoosh Smack Boom</property>
+                <property key="page2" >Don't you love these old cartoons?</property>
+                <property key="page3" >But let me give you one hint:&lt;br>&lt;br> First a Boom, then the Zoinggg.</property>
+                <property key="page4" >the Post-It Boy</property>
             </object>
             <object width="0.220" X="3.793" Y="3.379" height="0.220" type="BowlingBall" angle="0.000" />
             <object width="0.450" X="3.458" Y="3.681" height="0.180" type="RectObject" angle="0.000" >
@@ -186,8 +186,8 @@
             <object width="0.105" X="0.904" Y="1.706" height="0.100" type="Floor" angle="0.000" />
         </predefined>
         <background>
-            <gradientstop pos="0.00">0.24;0.00;0.43;1.00</gradientstop>
-            <gradientstop pos="1.00">0.41;0.90;0.84;1.00</gradientstop>
+            <gradientstop pos="0.00" >0.24;0.00;0.43;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.41;0.90;0.84;1.00</gradientstop>
         </background>
     </scene>
     <goals>
