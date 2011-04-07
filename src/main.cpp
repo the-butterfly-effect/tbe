@@ -1,5 +1,5 @@
 /* The Butterfly Effect 
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2011 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,6 +19,9 @@
 
 #include "MainWindow.h"
 #include <QtGui>
+
+#include <execinfo.h>
+#include <signal.h>
 
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
@@ -139,6 +142,27 @@ static struct s_args theArgsTable[] =
 };
 
 
+static void printBacktrace(int, siginfo_t *, void *)
+{
+	void *array[100];
+	size_t size;
+	char **strings;
+	size_t i;
+
+	size = backtrace (array, 100);
+	strings = backtrace_symbols (array, size);
+
+	printf ("A SEGFAULT happened...\n");
+	printf ("Obtained %zd stack frames.\n", size);
+
+	for (i = 0; i < size; i++)
+	  printf ("%s\n", strings[i]);
+
+	free (strings);
+	_exit(1);
+}
+
+
 // -----------------------------------------------------------------------
 // ---------------------------------- main() -----------------------------
 // -----------------------------------------------------------------------
@@ -229,6 +253,14 @@ int main(int argc, char **argv)
 
 	if (isParsingSuccess==false)
 		displayHelp("");
+
+	// setup signal handler for SEGV
+	struct sigaction sa;
+	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_sigaction = printBacktrace;
+	sigaction(SIGSEGV, &sa, NULL);
+
 
 	DEBUG3("SUMMARY:\n");
 	DEBUG3("Verbosity is: %d / Fullscreen is %d\n", theVerbosity, theIsMaximized);
