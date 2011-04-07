@@ -15,6 +15,8 @@ QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -Wpointer-arith \
     -Wlogical-op
 
+QMAKE_LFLAGS += -rdynamic
+
 # -Wfloat-equal -Wshadow -Wcast-qual
 QMAKE_CXXFLAGS_RELEASE += -Wextra \
     -DNDEBUG
