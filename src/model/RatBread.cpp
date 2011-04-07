@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,6 +18,8 @@
 
 #include "RatBread.h"
 #include <QStringList>
+
+#if 0
 
 // this class' ObjectFactory
 class RatObjectFactory : public ObjectFactory
@@ -146,3 +148,4 @@ void Rat::createPhysicsObject()
 	RectObject::createPhysicsObject();
 	theAllFoodIDs.clear();
 }
+#endif
