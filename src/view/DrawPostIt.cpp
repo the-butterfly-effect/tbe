@@ -21,6 +21,7 @@
 #include "PostItEditor.h"
 
 #include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QStyleOption>
 
@@ -114,7 +115,7 @@ void DrawPostIt::initAttributes ( )
 }
 
 
-void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
+void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
 	DEBUG5("double click!!!\n");
 	if (theIsLevelEditor)
@@ -124,6 +125,7 @@ void DrawPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)
 	}
 	else
 		displayPostit();
+	event->accept();
 }
 
 void DrawPostIt::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)

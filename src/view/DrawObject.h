@@ -89,7 +89,7 @@ public:
     virtual void advance(int step);
 
 	/// covenience version without event of focusInEvent
-	virtual void focusInEvent (void);
+	virtual void setFocusToMe (void);
 
 	/** removes highlighting from this object and anchors - if needed
 	 *  @param alsoDeleteAnchors use true if also to delete Anchors, supply

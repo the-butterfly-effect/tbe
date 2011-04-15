@@ -39,7 +39,7 @@ UndoInsertCommand::UndoInsertCommand (
 
 	aBaseObjectPtr->theDrawObjectPtr->focusRemove(true);
 	Anchors::clearEditObjectDialogPtr();
-	aBaseObjectPtr->theDrawObjectPtr->focusInEvent();
+	aBaseObjectPtr->theDrawObjectPtr->setFocusToMe();
 
 }
 

@@ -256,7 +256,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 }
 
 
-void DrawObject::focusInEvent (void)
+void DrawObject::setFocusToMe (void)
 {
 	scene()->setFocusItem(this, Qt::OtherFocusReason);
 }
@@ -272,6 +272,8 @@ void DrawObject::focusInEvent ( UNUSED_ARG QFocusEvent* event )
 	}
 	theAnchorsPtr=new Anchors(this);
 	update();
+
+	QGraphicsItem::focusInEvent(event);
 }
 
 //void DrawObject::focusOutEvent ( QFocusEvent * event )
@@ -362,6 +364,9 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 	// unfortunately, the hot spot position in the event
 	// is in item coordinates, so it rotates around with the object
 	mouseMoveEvent(event->scenePos(), event->pos());
+
+	// and we're the ones responding to the event, so accept it.
+	event->accept();
 }
 
 

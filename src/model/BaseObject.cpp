@@ -320,7 +320,7 @@ bool BaseObject::reregister(void)
 	parseProperties();
 	theWorldPtr->addObject(this);
 	assert(theDrawObjectPtr != NULL);
-	theDrawObjectPtr->focusInEvent();
+	theDrawObjectPtr->setFocusToMe();
 	return true;
 }
 
