@@ -216,7 +216,6 @@ SpringEnd::~SpringEnd()
 
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {
-	float myForce = getDistance()*theSpringConstant;
 	Vector myAngle  = Vector(getTempCenter().angle);
 	Vector myFVector = getDistance()*theSpringConstant*myAngle;
 	// don't forget: action = -reaction  -> we need equal opposing forces on both end...
