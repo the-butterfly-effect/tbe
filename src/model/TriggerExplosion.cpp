@@ -121,7 +121,9 @@ QStringList DetonatorBox::getAllPhoneNumbers(void)
 {
 	QRegExp myRX("^\\d.*");
 	assert(theWorldPtr!=NULL);
-	return theWorldPtr->getAllIDs().filter(myRX);
+	QStringList myList = theWorldPtr->getAllIDs().filter(myRX);
+	myList.append(getEmptyString());
+	return myList;
 }
 
 QString DetonatorBox::getCurrentPhoneNumber(void) const
@@ -129,9 +131,14 @@ QString DetonatorBox::getCurrentPhoneNumber(void) const
 	QString myPhoneNumber = thePhoneNumber;
 	if (myPhoneNumber.isEmpty())
 		theProps.property2String(Property::PHONENUMBER_STRING, &myPhoneNumber);
-	if (myPhoneNumber.isEmpty())
-		return QObject::tr("(empty)");
+	if (myPhoneNumber.isEmpty() || myPhoneNumber.isNull())
+		myPhoneNumber = getEmptyString();
 	return myPhoneNumber;
+}
+
+QString DetonatorBox::getEmptyString() const
+{
+	return QObject::tr("(empty)");
 }
 
 

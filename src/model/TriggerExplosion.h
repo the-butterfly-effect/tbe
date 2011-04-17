@@ -24,6 +24,7 @@
 #include "PolyObject.h"
 #include "World.h"
 
+#include <QString>
 #include <QStringList>
 
 class DetonatorBoxHandle;
@@ -74,6 +75,9 @@ public:
 	/// @returns the currently set phone number
 	/// this can be an empty string!
 	QString getCurrentPhoneNumber(void) const;
+
+	/// @returns "(empty)"
+	QString getEmptyString() const;
 
 	/// overridden from BaseObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state

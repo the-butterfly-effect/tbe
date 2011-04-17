@@ -29,16 +29,16 @@ ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent) :
     m_ui->setupUi(this);
 	assert(theDBPtr!=NULL);
 
-	// the top location gets the currently selected phone#.
-	// always insert it - even if it is an empty string!
-	QString myFirst = theDBPtr->getCurrentPhoneNumber();
-	m_ui->comboBox->insertItem(0, myFirst);
-
-	// all remaining possible phone numbers are inserted below
+	// all possible phone numbers are inserted below
+	m_ui->comboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
 	QStringList myPhoneList = theDBPtr->getAllPhoneNumbers();
-	int mySetNumber = myPhoneList.indexOf(myFirst);
-	myPhoneList.removeAt(mySetNumber);
-	m_ui->comboBox->insertItems(1, myPhoneList);
+	myPhoneList.sort();
+	m_ui->comboBox->addItems(myPhoneList);
+
+	// and select the current item from the DetonatorBox
+	QString myPhoneNumber = theDBPtr->getCurrentPhoneNumber();
+	int myPhoneNrIndex = m_ui->comboBox->findText (myPhoneNumber, Qt::MatchExactly);
+	m_ui->comboBox->setCurrentIndex(myPhoneNrIndex);
 
 	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(close()));
 	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(close()));
@@ -66,13 +66,7 @@ void ChoosePhoneNumber::on_comboBox_activated()
 	// is the empty line selected?
 	QString myLine = m_ui->comboBox->currentText();
 	DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'\n", ASCII(myLine));
-	if (myLine.isEmpty())
-		return;
-
-	// if there is an empty entry in the list and it is not activated anymore,
-	// let's remove it!
-	if (m_ui->comboBox->itemText(0).isEmpty())
-		m_ui->comboBox->removeItem(0);
+	assert(myLine.isEmpty()==false);
 
 	// let's notify the detonator box
 	assert(theDBPtr!=NULL);
