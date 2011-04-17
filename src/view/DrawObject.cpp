@@ -85,7 +85,13 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 	{
 		for (int i=0; i< myImageNames.count(); i++)
 		{
-			theRenderers.push_back(ImageStore::getRenderer(myImageNames[i]));
+			QSvgRenderer* myRenderer = ImageStore::getRenderer(myImageNames[i]);
+			if (myRenderer == NULL)
+				myRenderer = ImageStore::getRenderer("Empty");
+			assert(myRenderer != NULL);
+			if (myRenderer == NULL)
+				break;
+			theRenderers.push_back(myRenderer);
 		}
 	}
 
