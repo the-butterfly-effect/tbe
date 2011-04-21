@@ -146,6 +146,7 @@ static struct s_args theArgsTable[] =
 
 static void handleSEGV(int, siginfo_t *, void *)
 {
+	fprintf(stderr, "Oh boy, a SEGV happened...\n");
 	printBacktrace();
 	_exit(1);
 }
@@ -163,7 +164,6 @@ void printBacktrace(void)
 	static const int max_frames = 63;
 	FILE* out = stderr;
 
-	fprintf(out, "Oh boy, a SEGV happened...\n");
 	fprintf(out, "Stack trace:\n");
 
 	// storage array for stack trace address data
