@@ -81,11 +81,11 @@ QPainterPath DrawPolyObject::shape() const
 		for (i=0; i < myPoly->m_vertexCount; i++)
 		{
 			b2Vec2 myVec = myPoly->m_vertices[i];
-			myPolygon << QPointF(myVec.x*theScale, -myVec.y*theScale);
+                        myPolygon << QPointF(myVec.x, -myVec.y);
 		}
 		// and close the loop
 		b2Vec2 myVec = myPoly->m_vertices[0];
-		myPolygon << QPointF(myVec.x*theScale, -myVec.y*theScale);
+                myPolygon << QPointF(myVec.x, -myVec.y);
 
 		path.addPolygon ( myPolygon );
 		++myI;

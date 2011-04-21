@@ -197,8 +197,6 @@ protected:
 
 	BaseObject* theBaseObjectPtr;
 
-	static const qreal theScale;
-	
 	// current angle of the object in radians!
 	qreal	theOldAngle;
 	
@@ -264,12 +262,8 @@ private:
 		Cross(DrawObject* aParent);
 		virtual ~Cross();
 
-		/** overriden from QGraphicsItem
-		  * we return a boundingRect far away from any other object
-		  * so there's definitely no collission with this one :-)
-		  */
-		virtual QRectF boundingRect() const
-		{ return QRectF(-10.0,-10.0, 0.1, 0.1); }
+                /// overridden to scale to parent
+                virtual QRectF boundingRect() const;
 
 		/// overriden from QGraphicsItem
 		virtual void paint(QPainter *painter,

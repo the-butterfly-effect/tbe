@@ -120,8 +120,8 @@ void DrawDetonatorBox::paint(QPainter* myPainter, const QStyleOptionGraphicsItem
 
 	if (isHovering)
 	{
-		qreal myWidth = theBaseObjectPtr->getTheWidth()*theScale;
-		qreal myHeight= theBaseObjectPtr->getTheHeight()*theScale;
+                qreal myWidth = theBaseObjectPtr->getTheWidth();
+                qreal myHeight= theBaseObjectPtr->getTheHeight();
 		QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 		QPen   myPen(Qt::NoPen);
