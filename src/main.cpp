@@ -144,6 +144,12 @@ static struct s_args theArgsTable[] =
 
 
 
+static void handleSEGV(int, siginfo_t *, void *)
+{
+	printBacktrace();
+	_exit(1);
+}
+
 /** Print a demangled stack backtrace of the caller function.
   *
   * Code 'borrowed' from https://idlebox.net/2008/0901-stacktrace-demangled/
@@ -152,7 +158,7 @@ static struct s_args theArgsTable[] =
   *    // stacktrace.h (c) 2008, Timo Bingmann from http://idlebox.net/
   *    // published under the WTFPL v2.0
   */
-static void printBacktrace(int, siginfo_t *, void *)
+void printBacktrace(void)
 {
 	static const int max_frames = 63;
 	FILE* out = stderr;
@@ -234,7 +240,6 @@ static void printBacktrace(int, siginfo_t *, void *)
 
 	free(funcname);
 	free(symbollist);
-	_exit(1);
 }
 
 
@@ -333,7 +338,7 @@ int main(int argc, char **argv)
 	struct sigaction sa;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
-	sa.sa_sigaction = printBacktrace;
+	sa.sa_sigaction = handleSEGV;
 	sigaction(SIGSEGV, &sa, NULL);
 
 

@@ -52,7 +52,9 @@ extern int theVerbosity;	// actually defined in main.cpp
 #define DEBUG4NT(format, ...)	{if (theVerbosity>=4) printf(format, ## __VA_ARGS__);}
 #define DEBUG5(format, ...)	{if (theVerbosity>=5) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 #define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#else
+// only for use during debugging - print a backtrace at current position
+extern void printBacktrace(void);
+else
 #define DEBUG1(format, ...)     { /**/ }
 #define DEBUG2(format, ...)     { /**/ }
 #define DEBUG3(format, ...)     { /**/ }
