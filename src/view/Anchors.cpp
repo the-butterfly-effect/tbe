@@ -234,6 +234,9 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 
 	if (aDirection!=Anchors::BUTTON)
 		scaleIcon();
+
+        theParentPtr->getScenePtr()->addItem(this);
+        setZValue(10.0);
 }
 
 void Anchor::scaleIcon()
@@ -246,13 +249,10 @@ void Anchor::scaleIcon()
 	QRectF mySquare= myViewPtr->mapToScene(QRect(0,0,theIconSize,theIconSize)).boundingRect();
 	DEBUG5("32 pix = %f hori / %f verti\n", mySquare.width(), mySquare.height());
 	// so we now know that our image should be reduced to width&height
-	scale(mySquare.width()/boundingRect().width(),
-		  mySquare.height()/boundingRect().height());
-
-	theParentPtr->getScenePtr()->addItem(this);
-	setZValue(10.0);
-
-	theOffset=mySquare.width()/2;
+        setTransform(
+                    QTransform::fromScale(mySquare.width()/boundingRect().width(),
+                                          mySquare.height()/boundingRect().height()));
+        theOffset=mySquare.width()/2;
 }
 
 
@@ -338,6 +338,7 @@ ResizeAnchor::ResizeAnchor(Anchors::AnchorType aDirection,
 						   AnchorPosition anIndex, Anchors* aParent)
 		: Anchor(aDirection, anIndex, aParent), theUndoResizePtr(NULL)
 {
+    DEBUG5("ResizeAnchor::ResizeAnchor(%d, %d, %p)\n", aDirection, anIndex, aParent);
 }
 
 void ResizeAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
@@ -448,6 +449,7 @@ void ResizeAnchor::mouseReleaseEvent ( QGraphicsSceneMouseEvent*)
 RotateAnchor::RotateAnchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* aParent)
 		: Anchor(aDirection, anIndex, aParent), theUndoRotatePtr(NULL)
 {
+    DEBUG5("RotateAnchor::RotateAnchor(%d, %d, %p)\n", aDirection, anIndex, aParent);
 }
 
 float RotateAnchor::getCurrentAngle(Vector aHotspot) const
@@ -468,7 +470,7 @@ void RotateAnchor::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 
 void RotateAnchor::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
-	DEBUG5("RotateAnchor::mousePressEvent\n");
+        DEBUG5("RotateAnchor::mousePressEvent %d, %d\n", theDirection, theIndex);
 
 	// only active this if there are real icons to be had
 	if (theDirection==Anchors::NONE)
