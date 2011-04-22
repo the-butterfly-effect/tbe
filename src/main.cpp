@@ -143,6 +143,7 @@ static struct s_args theArgsTable[] =
 };
 
 
+#if !defined(NDEBUG)
 
 static void handleSEGV(int, siginfo_t *, void *)
 {
@@ -242,6 +243,8 @@ void printBacktrace(void)
 	free(symbollist);
 }
 
+#endif // !defined NDEBUG
+
 
 // -----------------------------------------------------------------------
 // ---------------------------------- main() -----------------------------
@@ -334,13 +337,14 @@ int main(int argc, char **argv)
 	if (isParsingSuccess==false)
 		displayHelp("");
 
+#if !defined(NDEBUG)
 	// setup signal handler for SEGV
 	struct sigaction sa;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = handleSEGV;
 	sigaction(SIGSEGV, &sa, NULL);
-
+#endif
 
 	DEBUG3("SUMMARY:\n");
 	DEBUG3("Verbosity is: %d / Fullscreen is %d\n", theVerbosity, theIsMaximized);
