@@ -211,7 +211,7 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	ui.menuView->addAction(theDrawDebugActionPtr);
 	connect(theDrawDebugActionPtr,SIGNAL(toggled(bool)), this, SLOT(slot_drawDebugAction_toggle(bool)));
 	theDrawOutlineActionPtr = new QAction( tr("Draw PolyObject outlines"), this);
-	theDrawOutlineActionPtr->setEnabled(false);
+	theDrawOutlineActionPtr->setEnabled(true);
 	theDrawOutlineActionPtr->setCheckable(true);
 	theDrawOutlineActionPtr->setChecked(theDrawPolyOutline);
 	ui.menuView->addAction(theDrawOutlineActionPtr);
