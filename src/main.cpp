@@ -361,8 +361,6 @@ int main(int argc, char **argv)
 		DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
 	}
 
-	sleep(3);
-
 	// setup main window, shut down splash screen
 	MainWindow myMain(theIsMaximized);
 	myMain.show();
