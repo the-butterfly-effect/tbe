@@ -256,6 +256,11 @@ int main(int argc, char **argv)
 	// init Qt (graphics toolkit) - www.qtsoftware.com
 	QApplication app(argc, argv);
 
+	// init splash screen
+	QSplashScreen mySplash(QPixmap(":/title_page.png"));
+	mySplash.show();
+	app.processEvents();
+
 	// read the locale from the environment and set the language...
 	// TODO: This is fairly basic - I probably need to "borrow"
 	//       the (maybe too flexible) code from umtsmon
@@ -356,9 +361,12 @@ int main(int argc, char **argv)
 		DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
 	}
 
-	// setup main window
+	sleep(3);
+
+	// setup main window, shut down splash screen
 	MainWindow myMain(theIsMaximized);
 	myMain.show();
+	mySplash.finish(&myMain);
 
 	// run the main display loop    
 	int myReturn=app.exec();

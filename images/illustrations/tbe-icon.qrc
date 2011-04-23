@@ -1,5 +1,6 @@
 <RCC>
-  <qresource prefix="newPrefix">
-    <file>tbe-icon.png</file>
-  </qresource>
+    <qresource>
+        <file>tbe-icon.png</file>
+        <file>title_page.png</file>
+    </qresource>
 </RCC>

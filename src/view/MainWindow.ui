@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../images/illustrations/tbe-icon.qrc">
-    <normaloff>:/newPrefix/tbe-icon.png</normaloff>:/newPrefix/tbe-icon.png</iconset>
+	<normaloff>:/tbe-icon.png</normaloff>:/tbe-icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
