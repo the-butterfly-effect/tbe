@@ -28,6 +28,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QUndoStack>
+#include <QPixmap>
 
 #include "Box2D.h"
 
@@ -112,6 +113,7 @@ protected:
 	/// OVERRIDDEN from QGraphicsScene to handle backgrounds with both a
 	/// gradient and an image - where the gradient is drawn over the image
 	void drawBackground ( QPainter * painter, const QRectF & rect );
+	void drawBGImage( QPainter* p, const QRectF & rect );
 
 protected:
 		/// Draw a closed polygon provided in CCW order.
@@ -249,6 +251,9 @@ private:
 	};
 
 	CongratDeathMessage* theCongratDeathBoxPtr;
+
+	QPixmap theBackgroundPixmap;
+	void redrawBGPixmap(void);
 
 	// prevent copy constructor / assignment operator
 	DrawWorld(const DrawWorld&);
