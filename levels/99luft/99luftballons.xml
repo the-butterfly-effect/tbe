@@ -1,0 +1,97 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>99 Luftballons</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Pop all balloons. This level is based on some conversations at T-Dose 2010.
+</description>
+        <date>5/3/11</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="10" height="6" />
+        <predefined>
+            <object width="0.166" X="1.356" Y="0.941" height="0.500" type="CokeMentosBottle" angle="2.526" >
+                <property key="Thrust" >9</property>
+            </object>
+            <object width="0.250" X="1.933" Y="1.505" height="0.400" type="Cactus" angle="-0.656" />
+            <object width="0.270" X="8.214" Y="2.386" height="0.360" type="Balloon" ID="Balloon1" angle="0.000" >
+                <property key="Mass" >0.09</property>
+            </object>
+            <object width="0.270" X="8.655" Y="1.451" height="0.360" type="Balloon" ID="Balloon2" angle="0.000" >
+                <property key="Mass" >0.08</property>
+            </object>
+            <object width="0.270" X="9.466" Y="1.320" height="0.360" type="Balloon" ID="Balloon3" angle="0.000" >
+                <property key="Mass" >0.08</property>
+            </object>
+            <object width="0.270" X="5.874" Y="1.855" height="0.360" type="Balloon" ID="Balloon4" angle="0.000" >
+                <property key="Mass" >0.09</property>
+            </object>
+            <object width="0.270" X="8.976" Y="3.814" height="0.360" type="Balloon" ID="Balloon5" angle="0.000" />
+            <object width="0.270" X="9.836" Y="3.507" height="0.360" type="Balloon" ID="Balloon6" angle="0.000" >
+                <property key="Mass" >0.095</property>
+            </object>
+            <object width="0.270" X="7.927" Y="1.231" height="0.360" type="Balloon" ID="Balloon7" angle="0.000" >
+                <property key="Mass" >0.08</property>
+            </object>
+            <object width="1.894" X="1.899" Y="1.205" height="0.100" type="Floor" angle="0.763" >
+                <property key="ImageName" >99-lowerbarrelwand</property>
+                <property key="ZValue" >1.0</property>
+            </object>
+            <object width="1.950" X="1.628" Y="1.451" height="0.100" type="Floor" angle="0.763" >
+                <property key="ImageName" >99-upperbarrelwand</property>
+                <property key="ZValue" >1.0</property>
+            </object>
+            <object width="0.200" X="2.134" Y="2.106" height="0.100" type="Floor" angle="0.763" >
+                <property key="ImageName" >Empty</property>
+            </object>
+            <object width="0.842" X="0.684" Y="0.445" height="1.100" type="Floor" angle="0.763" >
+                <property key="ImageName" >Empty</property>
+            </object>
+            <object width="0.220" X="1.443" Y="2.362" height="0.220" type="PostIt" angle="0.000" />
+            <object width="1.600" X="0.800" Y="0.430" height="0.860" type="Scenery" angle="0.000" >
+                <property key="ImageName" >99-cannon-bottom</property>
+                <property key="ZValue" >10.0</property>
+            </object>
+            <object width="0.700" X="2.300" Y="1.850" height="0.700" type="Scenery" angle="0.000" >
+                <property key="ImageName" >99-cannon-top</property>
+                <property key="ZValue" >10.0</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="1.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="0.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" >
+            <property key="object" >Balloon1</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon2</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon3</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon4</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon5</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon6</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal type="statechange" >
+            <property key="object" >Balloon7</property>
+            <property key="statechanged" ></property>
+        </goal>
+    </goals>
+</tbe-level>
