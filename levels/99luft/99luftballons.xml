@@ -4,44 +4,61 @@
         <title>99 Luftballons</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>Pop all balloons. This level is based on some conversations at T-Dose 2010.
-</description>
+        <description>Pop all balloons. This level is based on some conversations at T-Dose 2010.</description>
         <date>5/3/11</date>
     </levelinfo>
-    <toolbox/>
+    <toolbox>
+        <toolboxitem count="1" name="Coke Rocket" >
+            <name lang="nl" >Cola raket</name>
+            <object type="CokeMentosBottle" >
+                <property key="Thrust" >19</property>
+                <property key="Rotatable" >true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Cactus" >
+            <name lang="nl" >Cactus</name>
+            <object width="0.19" height="0.34" type="Cactus" >
+                <property key="Rotatable" >true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
     <scene>
         <scenesize width="10" height="6" />
         <predefined>
-            <object width="0.166" X="1.356" Y="0.941" height="0.500" type="CokeMentosBottle" angle="2.526" >
-                <property key="Thrust" >9</property>
+            <object width="10.000" X="5.000" Y="-0.050" height="0.100" type="Floor" angle="0.000" >
+                <property key="ImageName" >White-to-green</property>
             </object>
-            <object width="0.250" X="1.933" Y="1.505" height="0.400" type="Cactus" angle="-0.656" />
-            <object width="0.270" X="8.214" Y="2.386" height="0.360" type="Balloon" ID="Balloon1" angle="0.000" >
+            <object width="0.270" X="5.874" Y="1.855" height="0.360" type="Balloon" ID="Balloon1" angle="0.000" >
                 <property key="Mass" >0.09</property>
             </object>
-            <object width="0.270" X="8.655" Y="1.451" height="0.360" type="Balloon" ID="Balloon2" angle="0.000" >
+            <object width="0.270" X="7.927" Y="1.231" height="0.360" type="Balloon" ID="Balloon2" angle="0.000" >
                 <property key="Mass" >0.08</property>
             </object>
-            <object width="0.270" X="9.466" Y="1.320" height="0.360" type="Balloon" ID="Balloon3" angle="0.000" >
-                <property key="Mass" >0.08</property>
-            </object>
-            <object width="0.270" X="5.874" Y="1.855" height="0.360" type="Balloon" ID="Balloon4" angle="0.000" >
+            <object width="0.270" X="8.214" Y="2.386" height="0.360" type="Balloon" ID="Balloon3" angle="0.000" >
                 <property key="Mass" >0.09</property>
+            </object>
+            <object width="0.270" X="8.655" Y="1.451" height="0.360" type="Balloon" ID="Balloon4" angle="0.000" >
+                <property key="Mass" >0.08</property>
             </object>
             <object width="0.270" X="8.976" Y="3.814" height="0.360" type="Balloon" ID="Balloon5" angle="0.000" />
-            <object width="0.270" X="9.836" Y="3.507" height="0.360" type="Balloon" ID="Balloon6" angle="0.000" >
-                <property key="Mass" >0.095</property>
-            </object>
-            <object width="0.270" X="7.927" Y="1.231" height="0.360" type="Balloon" ID="Balloon7" angle="0.000" >
+            <object width="0.270" X="9.466" Y="1.120" height="0.360" type="Balloon" ID="Balloon6" angle="0.000" >
                 <property key="Mass" >0.08</property>
+            </object>
+            <object width="0.270" X="9.836" Y="3.507" height="0.360" type="Balloon" ID="Balloon7" angle="0.000" >
+                <property key="Mass" >0.095</property>
             </object>
             <object width="1.894" X="1.899" Y="1.205" height="0.100" type="Floor" angle="0.763" >
                 <property key="ImageName" >99-lowerbarrelwand</property>
                 <property key="ZValue" >1.0</property>
             </object>
-            <object width="1.950" X="1.628" Y="1.451" height="0.100" type="Floor" angle="0.763" >
+            <object width="1.950" X="1.628" Y="1.450" height="0.100" type="Floor" angle="0.763" >
                 <property key="ImageName" >99-upperbarrelwand</property>
                 <property key="ZValue" >1.0</property>
+            </object>
+            <object width="0.100" X="1.750" Y="1.31" height="0.200" type="RectObject" angle="0.763" >
+                <property key="ImageName" >styrofoam</property>
+                <property key="Mass" >0.001</property>
+                <property key="TranslationGuide" >0.763</property>
             </object>
             <object width="0.200" X="2.134" Y="2.106" height="0.100" type="Floor" angle="0.763" >
                 <property key="ImageName" >Empty</property>
@@ -49,12 +66,23 @@
             <object width="0.842" X="0.684" Y="0.445" height="1.100" type="Floor" angle="0.763" >
                 <property key="ImageName" >Empty</property>
             </object>
-            <object width="0.220" X="1.443" Y="2.362" height="0.220" type="PostIt" angle="0.000" />
+            <object width="0.220" X="1.443" Y="2.362" height="0.220" type="PostIt" angle="0.000" >
+                <property key="page1" >99 Luftballons,&lt;br>nanana na nana naaa...</property>
+                <property key="page1_nl" >99 Luftballons,&lt;br>nanana na nana naaa...</property>
+                <property key="page2" >Oh, Nena, where did you go?&lt;br>&lt;br>You were so hot &lt;br> back in the 80s!</property>
+                <property key="page2_nl" >Oh, Nena, waar ben je toch?&lt;br>&lt;br>Je was zo knap &lt;br> ergens in de jaren 80!</property>
+                <property key="page3" >You probably guessed what needs to be done here. &lt;br>&lt;br>Rotate the cactus carefully&lt;br> - it has a rather tight fit!</property>
+                <property key="page3_nl" >Je snapt vast wel wat hier moet gebeuren. &lt;br>&lt;br>Draai de cactus voorzichtig&lt;br> - hij zit wat krap!</property>
+                <property key="page4" >&lt;br>...&lt;br>&lt;br>I've always wanted to say that!</property>
+                <property key="page4_nl" >&lt;br>...&lt;br>&lt;br>Dat wilde ik altijd nog eens zeggen!</property>
+                <property key="page5" >Post-It Boy&lt;br>&lt;br>&lt;br>(has a dirty mind)</property>
+                <property key="page5_nl" >Post-It Boy&lt;br>&lt;br>&lt;br>(met een dirty mind)</property>
+            </object>
             <object width="1.600" X="0.800" Y="0.430" height="0.860" type="Scenery" angle="0.000" >
                 <property key="ImageName" >99-cannon-bottom</property>
                 <property key="ZValue" >10.0</property>
             </object>
-            <object width="0.700" X="2.300" Y="1.850" height="0.700" type="Scenery" angle="0.000" >
+            <object width="0.600" X="2.300" Y="1.910" height="0.570" type="Scenery" angle="0.763" >
                 <property key="ImageName" >99-cannon-top</property>
                 <property key="ZValue" >10.0</property>
             </object>
