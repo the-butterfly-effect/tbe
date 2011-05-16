@@ -1,0 +1,50 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Loopings</title>
+        <author></author>
+        <license></license>
+        <description></description>
+        <date>5/10/11</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="4" height="3" />
+        <predefined>
+            <object width="0.170" X="0.370" Y="0.390" height="0.500" type="CokeMentosBottle" angle="1.570" >
+                <property key="Thrust" >5</property>
+            </object>
+            <object width="0.800" X="1.316" Y="0.403" height="0.800" type="QuarterArc80" angle="-1.571" />
+            <object width="0.400" X="1.540" Y="1.600" height="0.400" type="QuarterArc40" angle="1.570" />
+            <object width="1.000" X="0.411" Y="0.058" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.800" X="2.600" Y="1.400" height="0.800" type="QuarterArc80" angle="0.000" />
+            <object width="0.800" X="2.603" Y="0.400" height="0.800" type="QuarterArc80" angle="-1.571" />
+            <object width="0.205" X="2.956" Y="0.898" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.170" X="2.058" Y="0.260" height="0.500" type="CokeMentosBottle" angle="3.142" >
+                <property key="Thrust" >4</property>
+            </object>
+            <object width="1.148" X="1.915" Y="0.581" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.993" X="2.205" Y="0.895" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.800" X="1.912" Y="2.205" height="0.800" type="QuarterArc80" angle="0.000" />
+            <object width="1.405" X="0.711" Y="2.065" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.400" X="1.619" Y="1.912" height="0.400" type="QuarterArc40" angle="0.000" />
+            <object width="0.120" X="0.578" Y="2.292" height="0.340" type="BowlingPin" ID="kegel" angle="0.000" />
+            <object width="0.400" X="2.400" Y="1.200" height="0.400" type="QuarterArc40" angle="0.000" />
+            <object width="0.400" X="2.400" Y="0.600" height="0.400" type="QuarterArc40" angle="-1.570" />
+            <object width="0.469" X="0.246" Y="2.509" height="0.793" type="Scenery" angle="0.000" >
+                <property key="ImageName" >goal-scenery</property>
+            </object>
+            <object width="0.233" X="2.545" Y="0.895" height="0.100" type="Floor" angle="1.571" />
+        </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" >
+            <property key="object" >kegel</property>
+            <property key="xbelow" >0.3</property>
+        </goal>
+    </goals>
+</tbe-level>

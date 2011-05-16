@@ -20,17 +20,6 @@
                 <property key="ImageName" >RightRamp</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Beam" >
-            <name lang="nl" >Balk</name>
-            <object width="1.2" height="0.1" type="RectObject" >
-                <property key="Bounciness" >0.0</property>
-                <property key="Friction" >0.5</property>
-                <property key="ImageName" >i-beam</property>
-                <property key="Resizable" >none</property>
-                <property key="Mass" >500.0</property>
-                <property key="ZValue" >3.0</property>
-            </object>
-        </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="5" height="3" />
@@ -52,16 +41,16 @@
                 <property key="Bounciness" >0.05</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.7" X="2.3" Y="0.2699999999999999" height="0.7" type="QuarterArc" angle="-1.57" />
-            <object width="0.7" X="1.874968186726559" Y="1.975890896802412" height="0.7" type="QuarterArc" angle="0.4126138687133789" />
-            <object width="0.7" X="1.36110272299012" Y="1.858689499154925" height="0.7" type="QuarterArc" angle="1.570799946784973" />
-            <object width="0.7" X="1.371439278597071" Y="1.173057263968488" height="0.7" type="QuarterArc" angle="3.14" />
-            <object width="0.7" X="4.340968466607491" Y="1.25192994027605" height="0.7" type="QuarterArc" angle="6.4602370262146" />
-            <object width="0.7" X="2.395326720622676" Y="0.4011667422435752" height="0.7" type="QuarterArc" angle="5.061038970947266" />
+            <object width="0.7" X="2.3" Y="0.2699999999999999" height="0.7" type="QuarterArc80" angle="-1.57" />
+            <object width="0.7" X="1.874968186726559" Y="1.975890896802412" height="0.7" type="QuarterArc80" angle="0.4126138687133789" />
+            <object width="0.7" X="1.36110272299012" Y="1.858689499154925" height="0.7" type="QuarterArc80" angle="1.570799946784973" />
+            <object width="0.7" X="1.371439278597071" Y="1.173057263968488" height="0.7" type="QuarterArc80" angle="3.14" />
+            <object width="0.7" X="4.32" Y="1.35" height="0.7" type="QuarterArc80" angle="6.4602370262146" />
+            <object width="0.7" X="2.395326720622676" Y="0.4011667422435752" height="0.7" type="QuarterArc80" angle="5.061038970947266" />
             <object width="0.166" X="0.2478987440155797" Y="0.2528646371011913" height="0.501" type="CokeMentosBottle" angle="7.797694206237793" >
-                <property key="Thrust" >3</property>
+                <property key="Thrust" >6</property>
             </object>
-            <object width="0.7" X="4.527986245093011" Y="0.7349595839540015" height="0.7" type="QuarterArc" angle="5.179452419281006" />
+            <object width="0.7" X="4.527986245093011" Y="0.7349595839540015" height="0.7" type="QuarterArc80" angle="5.179452419281006" />
             <object width="1" X="3.151261592920354" Y="0.5134077876106196" height="0.1" type="Floor" angle="0" />
         </predefined>
     </scene>
