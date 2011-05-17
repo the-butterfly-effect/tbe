@@ -236,7 +236,11 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 		scaleIcon();
 
         theParentPtr->getScenePtr()->addItem(this);
-        setZValue(10.0);
+		// anchors always appear on top of everything
+		// and if selectable, let's make sure we actually can :-)
+		setZValue(100.0);
+		if (aDirection != Anchors::NONE)
+			setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 }
 
 void Anchor::scaleIcon()
