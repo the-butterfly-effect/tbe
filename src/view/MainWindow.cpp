@@ -195,22 +195,22 @@ void MainWindow::on_actionGo_To_Level_Editor_activated(void)
 	ui.menuView->addSeparator();
 
 	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
-	theGoalEditorActionPtr = new QAction( tr("Goal Editor ..."), this);
+	theGoalEditorActionPtr = new QAction( tr("&Goal/Fail Editor ..."), this);
 	ui.menuView->addAction(theGoalEditorActionPtr);
 	connect(theGoalEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_goalEditorAction_clicked(void)));
 
 	//: translators: the ... indicates that this opens a new dialog - keep in the translation!
-	theLevelPropertiesEditorActionPtr = new QAction( tr("Level Settings Editor ..."), this);
+	theLevelPropertiesEditorActionPtr = new QAction( tr("&Level Settings Editor ..."), this);
 	ui.menuView->addAction(theLevelPropertiesEditorActionPtr);
 	connect(theLevelPropertiesEditorActionPtr, SIGNAL(triggered(void)), this, SLOT(slot_levelPropertiesEditorAction_clicked(void)));
 
 	ui.menuView->addSeparator();
-	theDrawDebugActionPtr = new QAction( tr("Draw Box2D debug in sim"), this);
+	theDrawDebugActionPtr = new QAction( tr("Draw &Box2D debug in sim"), this);
 	theDrawDebugActionPtr->setCheckable(true);
 	theDrawDebugActionPtr->setChecked(theDrawDebug);
 	ui.menuView->addAction(theDrawDebugActionPtr);
 	connect(theDrawDebugActionPtr,SIGNAL(toggled(bool)), this, SLOT(slot_drawDebugAction_toggle(bool)));
-	theDrawOutlineActionPtr = new QAction( tr("Draw PolyObject outlines"), this);
+	theDrawOutlineActionPtr = new QAction( tr("Draw &PolyObject outlines"), this);
 	theDrawOutlineActionPtr->setEnabled(true);
 	theDrawOutlineActionPtr->setCheckable(true);
 	theDrawOutlineActionPtr->setChecked(theDrawPolyOutline);

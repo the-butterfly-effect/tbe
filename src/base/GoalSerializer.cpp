@@ -31,8 +31,7 @@ extern const char* theGoalString;
 extern const char* theTypeAttributeString;
 extern const char* thePropertyString;
 extern const char* theKeyAttributeString;
-
-
+extern const char* theIsFailAttributeString;
 
 Goal*
 GoalSerializer::createObjectFromDom(const QDomNode& q)
@@ -64,6 +63,11 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	{
 		DEBUG2("createGoalFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
 		goto not_good;
+	}
+
+	if (myNodeMap.namedItem(theIsFailAttributeString).nodeValue() == "true")
+	{
+		myGPtr->isFail = true;
 	}
 
 	if (q.hasChildNodes()==true)
@@ -188,6 +192,9 @@ bool GoalSerializer::serialize(const Goal* aGoalPtr, QDomElement& aParent)
 
 	// save Goal Type
 	myNode.setAttribute(theTypeAttributeString, aGoalPtr->getGoalType());
+
+	// save isFail
+	myNode.setAttribute(theIsFailAttributeString, aGoalPtr->isFail?"true":"false");
 
 	// save all properties (no defaults here)
 	PropertyList::PropertyMap::const_iterator i = aGoalPtr->theProps.constBegin();

@@ -56,6 +56,7 @@ const char* theYAttributeString         = "Y";
 const char* theAngleAttributeString     = "angle";
 const char* theTypeAttributeString      = "type";
 const char* theIDAttributeString        = "ID";
+const char* theIsFailAttributeString    = "isFail";
 
 // static (always accessible) data member
 // for this file only

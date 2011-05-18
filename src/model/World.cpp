@@ -389,16 +389,27 @@ qreal World::simStep (void)
 	theTotalTime += theDeltaTime;
 
 	// check if all goals are met
-	if (theGoalPtrList.count()==0)
-		goto goals_not_met;
+	bool areGoalsMet = true;
 	foreach(Goal* l, theGoalPtrList)
 	{
-		if (l->checkForSuccess()==false)
-			goto goals_not_met;
+		if (l->isFail==true)
+		{
+			// check if fail is met
+			// one fail is enough to abort
+			if (l->checkForSuccess()==true)
+				signalDeath();
+		}
+		else
+		{
+			// check if goal is met
+			// if one goal is not met, there's no win
+			if (l->checkForSuccess()==false)
+				areGoalsMet = false;
+		}
 	}
-	emit theDrawWorldPtr->on_winning();
+	if (areGoalsMet == true)
+		emit theDrawWorldPtr->on_winning();
 
-goals_not_met:
 	// make Box2D draw debug images if requested
 	if (theDrawDebug)
 		theB2WorldPtr->DrawDebugData();

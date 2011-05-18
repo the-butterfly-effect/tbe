@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,6 +24,7 @@
 #include <QItemDelegate>
 
 // forward declarations
+class Goal;
 class World;
 class QStandardItemModel;
 class QStandardItem;
@@ -50,20 +51,38 @@ protected:
 
 	/** depending on the contents of the cells,
 	  * turns cells red (if object names do not exist) or greys/ungreys cells
+	  * @param aModel  the QStandardItemModel to do this for
 	  * @param aRow to fix the coloring for.
 	  */
-	void fixupCellColoring(int aRow);
+	void fixupCellColoring(QStandardItemModel* aModel, int aRow);
 
 	void populate(void);
 
 	/** retrieves the input from the fields of row aRow and
 	  * collides them to a string - with separator aSeparator
+	  * @param aModel  the QStandardItemModel to do this for
 	  * @param aRow  row identifier
 	  * @param aSeparator character to separate the fields
 	  *                   probably only ' ' and ';' will be used
 	  * @return the concatenated string
 	  */
-	QString rowToString(int aRow, char aSeparator) const;
+	QString rowToString(const QStandardItemModel* aModel, int aRow, char aSeparator) const;
+
+	/** Sets up the tableView and corresponding QStandardItemModel
+	  * @param aModelPtrPTr double pointer to the QStandardItemModel to initialise
+	  * @param aViewPtr view to initialise and assign aModelPtrPtr to
+	  */
+	void setupViewAndModel(QTableView* aViewPtr, QStandardItemModel** aModelPtrPtr);
+
+	typedef QList<Goal*> GoalPtrList;
+	/** creates a Goal from line i in aModel and adds it to aList
+	  * @param aList     list of pointers to Goals
+	  * @param i         line number of aModel to handle
+	  * @param aModel    QSIModel to handle
+	  * @param anIsFail  true if this is a Fail, false if this is a Goal
+	  */
+	bool addNewGoalToList(GoalPtrList& aList, int i, const QStandardItemModel& aModel, bool anIsFail);
+
 
 public slots:
 	/** Overridden from QDialog to be able to save the Goals
@@ -73,14 +92,18 @@ public slots:
 	virtual void accept();
 
 private slots:
-	void on_toolButtonMinus_clicked();
-	void on_toolButtonPlus_clicked();
+	void on_toolButtonFailsMinus_clicked();
+	void on_toolButtonFailsPlus_clicked();
+
+	void on_toolButtonGoalsMinus_clicked();
+	void on_toolButtonGoalsPlus_clicked();
 
 	void slot_itemChanged(QStandardItem* anItem);
 
 private:
 	Ui::GoalEditor ui;
-	QStandardItemModel* theModel;
+	QStandardItemModel* theGoalsModelPtr;
+	QStandardItemModel* theFailsModelPtr;
 
 	World* theWorldPtr;
 };

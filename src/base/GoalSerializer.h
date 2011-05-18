@@ -38,12 +38,7 @@ class QDomNode;
 class GoalSerializer
 {
 public:
-	/** create a QDomElement of the Goal this instance
-	 *  was created by and add it to aParent
-	 *  @param aParent QDomElement pointer to add the serialized data to
-	 */
-	// void serialize(QDomElement* aParent) const;
-
+	/// always have a virtual destructor
 	virtual ~GoalSerializer() {};
 
 

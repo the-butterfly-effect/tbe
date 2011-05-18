@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2010  Klaas van Gend
+ * This file copyright (C) 2009,2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -27,7 +27,8 @@ class World;
 class BaseObject;
 
 
-/** interface for all Goal classes
+/** Interface for all Goal classes. Goal classes can either result in a
+ *  success or in a fail - in case the flag 'isFail' is set on the Goal.
  */
 class Goal
 {
@@ -38,12 +39,18 @@ public:
 	virtual const QString getGoalType(void) const = 0;
 
 	/** Pure virtual member - check if this goal is met.
-	  * Note that it is up to the class to decide if a goal is met forever or needs to be met
+	  *
+	  * @note it is up to the class to decide if a goal is met forever or needs to be met
 	  * (that makes a difference if you have more than one goal)
+	  *
+	  * @note if isFail is set, the definition of 'success' changes - it still returns true
+	  * if all conditions are met, but in that case it is a fail ;-)
 	  *
 	  * @returns true if this goal has been met
 	  */
 	virtual bool checkForSuccess(void) = 0;
+
+	bool isFail;
 
 	/** after all properties are set, call this function
 	  * to have the goal actually try to understand the

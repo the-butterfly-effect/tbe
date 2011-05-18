@@ -26,7 +26,7 @@
 
 #include <QStringList>
 
-Goal::Goal()
+Goal::Goal() : isFail(false)
 {
 	// nothing to do here
 }
