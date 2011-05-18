@@ -76,7 +76,7 @@ public:
 protected:
 	/// internally used by AbstractBall and CustomBall to
 	/// actually create the b2Shape and b2FixtureDef
-	void createBallShapeFixture(float aRadius, float aMass);
+	virtual void createBallShapeFixture(float aRadius, float aMass);
 
 private:
 	QString theBallName;

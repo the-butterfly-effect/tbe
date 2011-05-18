@@ -19,6 +19,7 @@
 #ifndef BALLOONCACTUS_H
 #define BALLOONCACTUS_H
 
+#include "AbstractBall.h"
 #include "PolyObject.h"
 #include "World.h"
 
@@ -137,11 +138,6 @@ public:
 
 	virtual ~Cactus();
 
-	/// returns whether the object can be resized by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
 	virtual void callBackSensor(const ContactInfo& aPoint);
@@ -175,6 +171,30 @@ public:
 	/** Just like Cactus, we need to redefine the shapes
 	 */
 	virtual void fillShapeList(void);
+};
+
+
+///---------------------------------------------------------------------------
+///------------------------ CircularSaw --------------------------------------
+///---------------------------------------------------------------------------
+
+/** This class implements a CircularSaw (blade).
+  */
+class CircularSaw : public AbstractBall
+{
+public:
+	CircularSaw();
+
+	virtual ~CircularSaw();
+
+	/// Overridden so we will get notified if something poppable hits our
+	/// sharp points
+	virtual void callBackSensor(const ContactInfo& aPoint);
+
+	/** Overridden from AbstractBall because we also have to define
+	 *  a sensor here...
+	 */
+	virtual void createBallShapeFixture(float aRadius, float aMass);
 };
 
 

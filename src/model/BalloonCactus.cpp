@@ -388,3 +388,67 @@ void BedOfNails::fillShapeList(void)
 	theShapeList.push_back(mySensorDef);
 }
 
+///---------------------------------------------------------------------------
+///-------------------------- CircularSaw ------------------------------------
+///---------------------------------------------------------------------------
+
+
+// this class' ObjectFactory
+class CircularSawObjectFactory : public ObjectFactory
+{
+public:
+	CircularSawObjectFactory(void)
+	{	announceObjectType("CircularSaw", this); }
+	virtual BaseObject* createObject(void) const
+	{	return fixObject(new CircularSaw()); }
+};
+static CircularSawObjectFactory theCircularSawObjectFactory;
+
+CircularSaw::CircularSaw()
+		: AbstractBall(QObject::tr("CircularSaw"),
+					 QObject::tr("a rotating disc with sharp teeth."),
+					 "CircularSaw",
+					 0.19, 0.4, 0.1)
+{
+}
+
+CircularSaw::~CircularSaw()
+{
+}
+
+void CircularSaw::callBackSensor(const ContactInfo& aPoint)
+{
+	BaseObject* myOtherObject=NULL;
+
+	// which one of the two shapes is not me?
+	if (aPoint.myFixtureA->GetUserData()==this)
+		myOtherObject = aPoint.myFixtureB->GetUserData();
+	if (aPoint.myFixtureB->GetUserData()==this)
+		myOtherObject = aPoint.myFixtureA->GetUserData();
+	if (myOtherObject==NULL)
+		return;
+
+	// is it a Balloon?
+	// then pop it!
+	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
+	if (myBalloonPtr!=NULL)
+		myBalloonPtr->stung();
+}
+
+void CircularSaw::createBallShapeFixture(float aRadius, float aMass)
+{
+	// add the original ball shape
+	AbstractBall::createBallShapeFixture(aRadius, aMass);
+
+	// and add our sensor
+	b2CircleShape* ballShape = new b2CircleShape();
+	ballShape->m_radius = aRadius+0.01;
+
+	b2FixtureDef* ballFixDef = new b2FixtureDef();
+	ballFixDef->density = 0;
+	ballFixDef->userData = this;
+	ballFixDef->shape = ballShape;
+	ballFixDef->isSensor = true;
+
+	theShapeList.push_back(ballFixDef);
+}
