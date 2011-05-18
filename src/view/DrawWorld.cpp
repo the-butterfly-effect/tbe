@@ -623,7 +623,7 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 			myMessage = tr("Congratulations");
 			break;
 		case DEATH:
-			myMessage = tr("Death - retry?");
+			myMessage = tr("Fail - retry?");
 			break;
 	}
 
