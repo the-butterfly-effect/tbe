@@ -124,6 +124,22 @@ static AbstractPolyObjectFactory theRightRampFactory(
         "(-0.5,0.5)=(-0.13,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
+static AbstractPolyObjectFactory theLeftWedgeFactory(
+	"LeftWedge",
+	QObject::tr("Left Wedge"),
+	QObject::tr("This is a wedge. The left is lower than the right, so things slide to the left."),
+	"birch-wedge-left",
+		"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+	1.0, 1.0, 0.0, 0.2 );
+
+static AbstractPolyObjectFactory theRightWedgeFactory(
+	"RightWedge",
+	QObject::tr("Right Wedge"),
+	QObject::tr("This is a wedge. The left is higher than the right, so things slide to the right."),
+	"birch-wedge-right",
+		"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+	1.0, 1.0, 0.0, 0.2 );
+
 // the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
 // on both the inside and the outside - you can use both if you want :-)
 static AbstractPolyObjectFactory the40QuarterArcFactory(
