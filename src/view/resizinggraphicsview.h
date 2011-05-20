@@ -68,22 +68,9 @@ public:
 protected:
 	virtual void resizeEvent(QResizeEvent * anEvent)
 	{
-		if (isDoNotResize==true)
-			return;
 		QGraphicsView::resizeEvent(anEvent);
-		on_timerTick();
+		emit on_timerTick();
 	}
-
-	virtual void dropEvent (QDropEvent* anEvent)
-	{ QGraphicsView::dropEvent(anEvent); isDoNotResize = false; }
-
-	// D&D of objects from the toolbox is completely handled in DrawWorld,
-	// but we need to make sure we don't resize during drag&drop
-	virtual void dragEnterEvent(QDragEnterEvent* anEvent)
-	{ isDoNotResize = true; QGraphicsView::dragEnterEvent(anEvent); }
-	virtual void dragLeaveEvent(QDragLeaveEvent* anEvent)
-	{ QGraphicsView::dragLeaveEvent(anEvent); isDoNotResize = false; }
-
 
 	/** OVERRIDDEN from QGraphicsView
 	  * remove the ability to use pageup/pagedown
@@ -102,9 +89,6 @@ protected:
 	  * @returns true if success or false if not (dnd didn't happen)
 	  */
 	bool handleDnD(BaseObject* aBOPtr);
-
-	/// boolean indicates whether we should ignore resize events
-	bool isDoNotResize;
 
 public slots:
 	void on_timerTick(void);

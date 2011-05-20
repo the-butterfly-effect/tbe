@@ -29,7 +29,7 @@
 static float thePixelsPerSceneUnitHorizontal;
 
 ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
-	: QGraphicsView(aParent), isDoNotResize(false)
+	: QGraphicsView(aParent)
 {
 	setAlignment(Qt::AlignCenter);
 
