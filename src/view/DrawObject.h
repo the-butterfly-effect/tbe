@@ -164,18 +164,6 @@ protected:
 	 */
 	virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent * event );
 
-	/** overridden from QGraphicsItem
-	 *  if this item is selectable, we want to have a pointing hand cursor
-	 */
-	void hoverEnterEvent ( QGraphicsSceneHoverEvent *)
-	{	setCursor(QCursor(Qt::PointingHandCursor));	}
-
-	/** overridden from QGraphicsItem
-	 *  if this item is selectable, we want to have a pointing hand cursor
-	 */
-	void hoverLeaveEvent ( QGraphicsSceneHoverEvent *)
-	{	unsetCursor(); }
-
 protected:
 	// Protected members
 	//

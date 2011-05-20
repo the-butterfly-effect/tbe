@@ -76,14 +76,12 @@ void DrawPostIt::displayPostit(void)
 
 void DrawPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
-	setCursor(QCursor(Qt::PointingHandCursor));
 	isHovering=true;
 	update();
 }
 
 void DrawPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
-	unsetCursor();
 	isHovering=false;
 	update();
 }

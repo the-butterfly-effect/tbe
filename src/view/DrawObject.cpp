@@ -338,7 +338,7 @@ void DrawObject::initAttributes ( )
 	if (theBaseObjectPtr->isMovable())
 	{
 		setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
-		setAcceptHoverEvents(true);
+		setCursor(QCursor(Qt::PointingHandCursor));
 	}
 
 	setToolTip(theBaseObjectPtr->getToolTip());
