@@ -148,19 +148,13 @@ protected:
 	virtual void focusInEvent ( QFocusEvent * event );
 
 	/** overridden from QGraphicsItem
-	 *  we want to know when the user deselects the object
-	 *  @param event the even to handle
-	 */
-//	virtual void focusOutEvent ( QFocusEvent * event );
-
-	/** overridden from QGraphicsItem
 	 *  if the user drags the object around, this even will be called for each pixel.
 	 *  let's actually adjust the coordinates!!!
 	 *  
 	 *  @param event the even to handle
 	 */
 	virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent * event );
-	virtual void mouseMoveEvent ( const QPointF& aPos, const QPointF& bPos = QPointF(0,0) );
+	virtual void myMouseMoveEvent ( const QPointF& aPos, const QPointF& bPos = QPointF(0,0) );
 
 	/** overridden from QGraphicsItem
 	 *  we want to know when the user *releases* the left mouse button 

@@ -265,7 +265,7 @@ void DrawObject::setFocusToMe (void)
 }
 
 
-void DrawObject::focusInEvent ( UNUSED_ARG QFocusEvent* event )
+void DrawObject::focusInEvent (QFocusEvent* event )
 {
 	DEBUG5("focusInEvent for %p with %d\n", this, event->reason());
 	if (theAnchorsPtr!=NULL)
@@ -275,7 +275,6 @@ void DrawObject::focusInEvent ( UNUSED_ARG QFocusEvent* event )
 	}
 	theAnchorsPtr=new Anchors(this);
 	update();
-
 	QGraphicsItem::focusInEvent(event);
 }
 
@@ -288,6 +287,7 @@ void DrawObject::focusInEvent ( UNUSED_ARG QFocusEvent* event )
 
 void DrawObject::focusRemove(bool alsoDeleteAnchors)
 {
+	scene()->clearFocus();
 	if (theAnchorsPtr!=NULL && alsoDeleteAnchors==true)
 	{
 		delete theAnchorsPtr;
@@ -358,14 +358,14 @@ void DrawObject::mouseMoveEvent ( QGraphicsSceneMouseEvent * event )
 
 	// unfortunately, the hot spot position in the event
 	// is in item coordinates, so it rotates around with the object
-	mouseMoveEvent(event->scenePos(), event->pos());
+		myMouseMoveEvent(event->scenePos(), event->pos());
 
 	// and we're the ones responding to the event, so accept it.
 	event->accept();
 }
 
 
-void DrawObject::mouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotspotPos)
+void DrawObject::myMouseMoveEvent (const QPointF& aScenePos, const QPointF& aHotspotPos)
 {
 	// if this is the first call to mouseMove, we need to create and initialise the undomove
 	if (theUndoMovePtr==NULL)
