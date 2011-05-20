@@ -99,7 +99,7 @@ void UndoInsertCommand::redo ()
 
 void UndoInsertCommand::setNewPosition(const Position& aNewPos)
 {
-	theBaseObjectPtr->theDrawObjectPtr->mouseMoveEvent(QPointF(aNewPos.x, aNewPos.y));
+	theBaseObjectPtr->theDrawObjectPtr->myMouseMoveEvent(QPointF(aNewPos.x, aNewPos.y));
 }
 
 void UndoInsertCommand::undo ()
