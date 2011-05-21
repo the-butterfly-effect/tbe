@@ -91,12 +91,6 @@ public:
 	/// covenience version without event of focusInEvent
 	virtual void setFocusToMe (void);
 
-	/** removes highlighting from this object and anchors - if needed
-	 *  @param alsoDeleteAnchors use true if also to delete Anchors, supply
-	 *			false if called from Anchors itself
-	 */
-	void focusRemove(bool alsoDeleteAnchors=true);
-
 	BaseObject* getBaseObjectPtr(void) const
 		{ return theBaseObjectPtr; }
 

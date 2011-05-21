@@ -37,7 +37,6 @@ UndoInsertCommand::UndoInsertCommand (
 	setText(QObject::tr("Insert %1").arg(theBaseObjectPtr->getName()));
 	DEBUG4("UndoInsertCommand()/this=%p - %s\n", this, ASCII(text()));
 
-	aBaseObjectPtr->theDrawObjectPtr->focusRemove(true);
 	Anchors::clearEditObjectDialogPtr();
 	aBaseObjectPtr->theDrawObjectPtr->setFocusToMe();
 

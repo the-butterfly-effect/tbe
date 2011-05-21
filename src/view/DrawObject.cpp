@@ -278,24 +278,6 @@ void DrawObject::focusInEvent (QFocusEvent* event )
 	QGraphicsItem::focusInEvent(event);
 }
 
-//void DrawObject::focusOutEvent ( QFocusEvent * event )
-//{
-//	DEBUG1("focusOutEvent for %p with %d\n", this, event->reason());
-//	delete theAnchorsPtr;
-//	theAnchorsPtr = NULL;
-//}
-
-void DrawObject::focusRemove(bool alsoDeleteAnchors)
-{
-	scene()->clearFocus();
-	if (theAnchorsPtr!=NULL && alsoDeleteAnchors==true)
-	{
-		delete theAnchorsPtr;
-		theAnchorsPtr=NULL;
-	}
-	update();
-}
-
 QPixmap* DrawObject::getPixmapPtr(void) const
 {
 	if (theBaseObjectPtr==NULL)

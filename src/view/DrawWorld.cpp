@@ -512,7 +512,7 @@ void DrawWorld::startTimer(void)
 	// TODO: upon reset, the old object gets focus again - thanks, Qt!
 	DrawObject myTemp(NULL);
 	setFocusItem(&myTemp);
-	myTemp.focusRemove(true);
+	clearFocus();
 	Anchors::clearEditObjectDialogPtr();
 
 	isUserInteractionAllowed = false;
