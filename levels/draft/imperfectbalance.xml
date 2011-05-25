@@ -14,9 +14,9 @@
             <name lang="nl" >Bowlingbal</name>
             <object type="BowlingBall" />
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \" >
+        <toolboxitem count="1" name="Wedge \" >
             <name lang="nl" >Helling \</name>
-            <object width="0.6" height="0.3" type="RightRamp" >
+            <object width="0.6" height="0.3" type="RightWedge" >
                 <property key="ImageName" >styrofoam-right</property>
                 <property key="Bounciness" >0.1</property>
                 <property key="Mass" >0.3</property>
@@ -42,7 +42,7 @@
                 <property key="page5" >&lt;br>&lt;br>... An unhappy&lt;br>&lt;br>Post-It Boy</property>
                 <property key="page5_nl" >&lt;br>&lt;br>... Een minder vrolijke&lt;br>&lt;br>Post-It Boy</property>
             </object>
-            <object width="0.2" X="1.45" Y="1.9" height="0.23" type="Skyhook" ID="Skyhook" angle="0" >
+            <object width="0.2" X="1.47" Y="1.9" height="0.23" type="Skyhook" ID="Skyhook" angle="0" >
                 <property key="ZValue" >0.5</property>
             </object>
             <object width="2.6" X="1.59" Y="1.95" height="0.1" type="RectObject" angle="0" >

@@ -57,7 +57,7 @@
                 <property key="Bounciness" >0.7</property>
                 <property key="Friction" >0.02</property>
                 <property key="ImageName" >styrofoam</property>
-                <property key="Mass" >0.017</property>
+                <property key="Mass" >0.028</property>
                 <property key="TranslationGuide" >1.57</property>
             </object>
             <object width="0.27" X="3.48" Y="1.84" height="0.36" type="Balloon" ID="Balloon1" angle="0.18" />
@@ -94,7 +94,7 @@
                 <property key="object1" >Balloon5@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
-            <object width="0.15" X="4.853442757758933" Y="1.50982042145777" height="1" type="RectObject" angle="0" >
+            <object width="0.15" X="4.85" Y="1.52" height="1" type="RectObject" angle="0" >
                 <property key="ImageName" >oldbrick</property>
                 <property key="ZValue" >10</property>
             </object>
