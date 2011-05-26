@@ -1,11 +1,11 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Loopings</title>
-        <author></author>
-        <license></license>
-        <description></description>
-        <date>5/10/11</date>
+        <title>Loopings II</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>You'll figure it out.</description>
+        <date>5/26/11</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="2" name="Block" >
