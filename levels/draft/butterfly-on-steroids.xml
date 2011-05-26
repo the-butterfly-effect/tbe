@@ -41,7 +41,7 @@
             <object width="4.600" X="2.300" Y="0.050" height="0.100" type="Floor" angle="0.000" >
                 <property key="Friction" >0.6</property>
             </object>
-            <object width="0.220" X="3.852" Y="2.396" height="0.220" type="PostIt" angle="0.000" >
+            <object width="0.260" X="3.02" Y="2.280" height="0.260" type="PostIt" angle="0.000" >
                 <property key="page1" >Flying from flower to flower can be hard. A real hurdle race.</property>
                 <property key="page1_nl" >Van bloem naar bloem fladderen valt niet altijd mee. Een echte hordenloop.</property>
                 <property key="page2" >Two hurdles must be overcome. And butterfly has to start everything himself. Or herself?</property>
@@ -182,7 +182,7 @@
         </background>
     </scene>
     <goals>
-        <goal type="distance" >
+        <goal isFail="false" type="distance" >
             <property key="lessthan" >0.27</property>
             <property key="object1" >Butterfly</property>
             <property key="object2" >Flower</property>

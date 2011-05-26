@@ -41,8 +41,8 @@
                 <property key="Friction" >0.5</property>
             </object>
             <object width="0.220" X="2.900" Y="2.400" height="0.220" type="PostIt" angle="0.000" >
-                <property key="page1" >"Old Faithful" is a Geyser in Yellowstone National Park, Wyoming, USA.</property>
-                <property key="page1_nl" >"Old Faithful" is een geiser in het Yellowstone National Park, Wyoming, Verenigde Staten.</property>
+                <property key="page1" >"Old Faithful" is a geyser in Yellowstone National Park, Wyoming, USA.</property>
+                <property key="page1_nl" >"Old Faithful" is een geiser in het Yellowstone National Park in de Verenigde Staten.</property>
                 <property key="page2" >It very regularly blows boiling water 40 meters up. &lt;br>For my school's science project, I decided to simulate that.</property>
                 <property key="page2_nl" >Hij spuit zeer regelmatig kokend water 40 meter omhoog. &lt;br> Voor natuurkunde wil ik dat nadoen.</property>
                 <property key="page3" >Topple the pin to the left...</property>
@@ -105,7 +105,7 @@
             </object>
             <object width="0.200" X="3.300" Y="0.650" height="0.230" type="Skyhook" angle="0.000" >
                 <property key="Bounciness" >0.05</property>
-                <property key="ZValue" >4.1</property>
+                <property key="ZValue" >20.1</property>
             </object>
             <object width="0.200" X="3.700" Y="0.650" height="0.230" type="Skyhook" angle="0.000" >
                 <property key="ZValue" >0.1</property>
@@ -115,9 +115,17 @@
             </object>
             <object width="1.400" X="0.720" Y="0.371" height="0.500" type="RightRamp" angle="0.000" />
         </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
     </scene>
     <goals>
-        <goal type="positionchange" >
+        <goal isFail="true" type="positionchange" >
+            <property key="object" >BowlingPin</property>
+            <property key="xover" >3.6</property>
+        </goal>
+        <goal isFail="false" type="positionchange" >
             <property key="object" >BowlingPin</property>
             <property key="xbelow" >3.4</property>
         </goal>
