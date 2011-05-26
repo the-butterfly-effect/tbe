@@ -1,4 +1,4 @@
-<!DOCTYPE mydocument>
+<!-- <!DOCTYPE mydocument> -->
 <tbe-level>
     <levelinfo>
         <title>Zoing and Boom</title>
@@ -151,11 +151,19 @@
                 <property key="Mass" >0.1</property>
                 <property key="PivotPoint" >(0,0)</property>
             </object>
+            <object width="0.1" X="4.071" Y="0.940" height="0.100" type="RectObject" ID="BrassPin" angle="0.000" >
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >4.5</property>
+            </object>
             <object width="1.206" X="2.963" Y="2.179" height="0.100" type="Floor" angle="1.570" />
             <object width="1.000" X="4.870" Y="1.100" height="0.140" type="RectObject" angle="0.000" >
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >3</property>
                 <property key="PivotPoint" >(0,0)</property>
+            </object>
+            <object width="0.1" X="4.870" Y="1.100" height="0.100" type="RectObject" ID="BrassPin" angle="0.000" >
+                <property key="ImageName" >brass-pin</property>
+                <property key="ZValue" >4.5</property>
             </object>
             <object width="0.862" X="4.281" Y="1.692" height="0.100" type="Floor" angle="0.410" />
             <object width="5.446" X="2.808" Y="0.050" height="0.100" type="Floor" angle="0.000" />
