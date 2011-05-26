@@ -42,10 +42,10 @@
 			<object width="0.4" X="7.4" Y="4.2" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil.klaas</property>
             </object>
-			<object X="7.3" Y="4.44" width="0.2" height="0.2" type="Scenery" ID="Flower">
+			<object X="7.3" Y="4.5" width="0.2" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
             </object>
-			<object X="4.65" Y="4.34" type="Butterfly" ID="Butterfly">
+			<object X="4.95" Y="4.34" type="Butterfly" ID="Butterfly">
                 <property key="Object" >Flower</property>
             </object>
             <object width="0.85" height="0.86" X="5.91" Y="3.73" type="RectObject">
@@ -89,27 +89,28 @@
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.2" X="4.8" Y="1.0" height="1.4" type="RectObject">
+            <object width="0.2" X="4.79" Y="1.0" height="1.4" type="RectObject">
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="5.168435573577881" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
+            <object X="5.168435573577881" Y="0.35" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Thrust" >20</property>
             </object>
-            <object X="5.337530612945557" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
+            <object X="5.337530612945557" Y="0.35" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Thrust" >20</property>
             </object>
-            <object X="4.999340057373047" Y="0.34" type="CokeMentosBottle" angle="3.1415" >
+            <object X="4.999340057373047" Y="0.35" type="CokeMentosBottle" angle="3.1415" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Thrust" >20</property>
             </object>
-            <object width="0.5" X="5.15" Y="0.83" height="0.5" type="RectObject" >
+            <object width="0.48" X="5.15" Y="0.83" height="0.5" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >0.1</property>
                 <property key="ImageName" >styrofoam</property>
-                <property key="Mass" >20</property>
+                <property key="TranslationGuide" >1.57</property>
+                <property key="Mass" >1</property>
             </object>
             <object width="1.7" X="4.1" Y="2" height="0.6" type="RightRamp" angle="0" >
                 <property key="Bounciness" >0.1</property>
