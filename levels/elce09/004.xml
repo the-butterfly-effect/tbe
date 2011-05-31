@@ -2,85 +2,89 @@
 <tbe-level>
     <levelinfo>
         <title>Balancing Coke</title>
-        <title lang="nl" >Coke in balans</title>
+        <title lang="nl">Coke in balans</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Balance your diet? Drink Coke! Goal: Topple the pins.</description>
-        <description lang="nl" >Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om.</description>
+        <description lang="nl">Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om.</description>
         <date>10/9/10</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
             <name lang="nl">Bowlingbal</name>
-            <object type="BowlingBall" />
+            <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="4.5" height="3" />
+        <scenesize width="4.5" height="3"/>
         <predefined>
-            <object width="2.2" X="1.4" Y="0.3" height="0.1" type="RectObject" ID="Bar" angle="0" >
-                <property key="Bounciness" >0.0</property>
-                <property key="Friction" >2.0</property>
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >6.0</property>
-                <property key="PivotPoint" >(0.3,-0.05)</property>
+            <object width="2.200" X="1.400" Y="0.300" height="0.100" type="RectObject" ID="Bar" angle="0.000">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">2.0</property>
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">6.0</property>
+                <property key="PivotPoint">(0.3,-0.05)</property>
             </object>
-            <object width="4.2" X="2.1" Y="0.05" height="0.1" type="Floor" angle="0" >
-                <property key="Friction" >0.6</property>
-                <property key="ImageName" >White-to-green</property>
+            <object width="4.200" X="2.100" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.6</property>
+                <property key="ImageName">White-to-green</property>
             </object>
-            <object width="0.3" X="4.34" Y="0.05" height="0.1" type="Scenery" angle="0" >
-                <property key="ImageName" >basket</property>
+            <object width="0.300" X="4.340" Y="0.050" height="0.100" type="Scenery" angle="0.000">
+                <property key="ImageName">basket</property>
             </object>
-            <object width="0.166" X="0.4" Y="0.6" height="0.501" type="CokeMentosBottle" angle="0" >
-                <property key="Friction" >2.0</property>
+            <object width="0.166" X="0.400" Y="0.600" height="0.501" type="CokeMentosBottle" angle="0.000">
+                <property key="Friction">2.0</property>
             </object>
-            <object width="0.15" X="1.7" Y="0.175" height="0.15" type="Scenery" angle="0" >
-                <property key="ImageName" >triangle</property>
+            <object width="0.150" X="1.700" Y="0.175" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">triangle</property>
             </object>
-            <object width="0.12" X="4.1" Y="0.27" height="0.34" type="BowlingPin" ID="Pin2" angle="0" />
-            <object width="0.12" X="3.9" Y="0.27" height="0.34" type="BowlingPin" ID="Pin3" angle="0" />
-            <object width="0.5659897923469543" X="1.967005123198033" Y="0.6633479848504067" height="0.32" type="RectObject" angle="0" >
-                <property key="Bounciness" >0.0</property>
-                <property key="Friction" >2.0</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.120" X="4.100" Y="0.270" height="0.340" type="BowlingPin" ID="Pin2" angle="0.000"/>
+            <object width="0.120" X="3.900" Y="0.270" height="0.340" type="BowlingPin" ID="Pin3" angle="0.000"/>
+            <object width="0.255" X="2.123" Y="0.660" height="0.327" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">2.0</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.4" X="3.8" Y="0.65" height="0.2" type="LeftRamp" angle="0" />
-            <object width="1.4" X="0.7" Y="2.95" height="0.1" type="RectObject" angle="0" >
-                <property key="Bounciness" >0.0</property>
-                <property key="ImageName" >Empty</property>
+            <object width="1.400" X="3.800" Y="0.650" height="0.200" type="LeftRamp" angle="0.000"/>
+            <object width="1.400" X="0.700" Y="2.950" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.0</property>
+                <property key="ImageName">Empty</property>
             </object>
-            <object width="0.22" X="4" Y="1.2" height="0.22" type="PostIt" angle="0" >
-                <property key="page1" >The goal here is to topple the pins below.</property>
-                <property key="page1_nl" >De bedoeling is om de kegels hieronder om te gooien.</property>
-                <property key="page2" >I'm thirsty!</property>
-                <property key="page2_nl" >Ik heb dorst!</property>
-                <property key="page3" >But that's not an ordinary cola bottle...</property>
-                <property key="page3_nl" >Da's geen gewone cola fles...</property>
-                <property key="page4" >It's a Coke-Mentos Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
-                <property key="page4_nl" >Het is een Coke-Mentos fontein, klaar om te spuiten!&lt;br>Een lichte schok is genoeg!</property>
-                <property key="page5" >Where does the cola go?</property>
-                <property key="page5_nl" >Maar waar gaat de cola heen?</property>
-                <property key="page6" >&lt;br>&lt;br> ... thirsty Post-it Boy</property>
-                <property key="page6_nl" >&lt;br>&lt;br> ... dorstige Post-it Boy</property>
+            <object width="0.220" X="4.000" Y="1.200" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">The goal here is to topple the pins below.</property>
+                <property key="page1_nl">De bedoeling is om de kegels hieronder om te gooien.</property>
+                <property key="page2">I'm thirsty!</property>
+                <property key="page2_nl">Ik heb dorst!</property>
+                <property key="page3">But that's not an ordinary cola bottle...</property>
+                <property key="page3_nl">Da's geen gewone cola fles...</property>
+                <property key="page4">It's a Coke-Mentos Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page4_nl">Het is een Coke-Mentos fontein, klaar om te spuiten!&lt;br>Een lichte schok is genoeg!</property>
+                <property key="page5">Where does the cola go?</property>
+                <property key="page5_nl">Maar waar gaat de cola heen?</property>
+                <property key="page6">&lt;br>&lt;br> ... thirsty Post-it Boy</property>
+                <property key="page6_nl">&lt;br>&lt;br> ... dorstige Post-it Boy</property>
             </object>
-            <object width="1.436047315597534" X="1.85092198252885" Y="0.78" height="0.15" type="Floor" angle="0.1549486815929413" />
-            <object width="0.5" X="2.57" Y="0.7" height="0.1" type="Floor" angle="1.57" />
-            <object width="1.9721519947052" X="3.5060759973526" Y="0.5" height="0.1" type="Floor" angle="0" />
-            <object width="0.25" X="2.75" Y="0.75" height="0.4" type="Cactus" angle="0" />
-            <object width="0.6006032228469849" X="1.43318120670581" Y="0.6073143038821638" height="0.2200606465339661" type="RectObject" angle="0" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="1.436" X="1.851" Y="0.780" height="0.150" type="Floor" angle="0.155"/>
+            <object width="0.500" X="2.570" Y="0.700" height="0.100" type="Floor" angle="1.570"/>
+            <object width="1.972" X="3.506" Y="0.500" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.250" X="2.750" Y="0.750" height="0.400" type="Cactus" angle="0.000"/>
+            <object width="1.056" X="1.661" Y="0.619" height="0.244" type="RectObject" angle="0.000">
+                <property key="ImageName">big_used_wood_bar</property>
             </object>
         </predefined>
+        <background>
+            <gradientstop pos="0.00">0.89;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.49;0.45;0.33;1.00</gradientstop>
+        </background>
     </scene>
     <goals>
-        <goal type="positionchange" >
-            <property key="anglechanged" >anglechanged</property>
-            <property key="object" >Pin2</property>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged">anglechanged</property>
+            <property key="object">Pin2</property>
         </goal>
-        <goal type="positionchange" >
-            <property key="anglechanged" >anglechanged</property>
-            <property key="object" >Pin3</property>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged">anglechanged</property>
+            <property key="object">Pin3</property>
         </goal>
     </goals>
 </tbe-level>
