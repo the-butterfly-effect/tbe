@@ -151,7 +151,7 @@
                 <property key="Mass" >0.1</property>
                 <property key="PivotPoint" >(0,0)</property>
             </object>
-            <object width="0.1" X="4.071" Y="0.940" height="0.100" type="RectObject" ID="BrassPin" angle="0.000" >
+            <object width="0.1" X="4.071" Y="0.940" height="0.100" type="Scenery" ID="BrassPin" angle="0.000" >
                 <property key="ImageName" >brass-pin</property>
                 <property key="ZValue" >4.5</property>
             </object>
@@ -161,7 +161,7 @@
                 <property key="Mass" >3</property>
                 <property key="PivotPoint" >(0,0)</property>
             </object>
-            <object width="0.1" X="4.870" Y="1.100" height="0.100" type="RectObject" ID="BrassPin" angle="0.000" >
+            <object width="0.1" X="4.870" Y="1.100" height="0.100" type="Scenery" ID="BrassPin" angle="0.000" >
                 <property key="ImageName" >brass-pin</property>
                 <property key="ZValue" >4.5</property>
             </object>
