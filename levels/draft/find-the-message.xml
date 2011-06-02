@@ -5,22 +5,29 @@
         <title lang="nl" >Zoek de boodschap...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>The large rectangular objects can move - and there's a message behind them.</description>
-        <description lang="nl" >De grote balken kunnen bewegen - en er zit een boodschap achter.</description>
-        <date>12/21/09</date>
+        <description>The large rectangular pieces of styrofoam hide a message.</description>
+        <description lang="nl" >De grote blokken piepschuim verbergen een boodschap.</description>
+        <date>12/21/09, updated 07/02/11</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Volley Ball" >
             <name lang="nl" >Volleybal</name>
             <object type="VolleyBall" />
         </toolboxitem>
-        <toolboxitem count="1" name="Football" >
-            <name lang="nl" >Voetbal</name>
-            <object type="SoccerBall" />
+        <toolboxitem count="1" name="Spring" >
+            <name lang="nl" >Veer</name>
+            <object width="0.400" X="2.399" Y="2.665" height="0.200" type="Spring" angle="0.000" />
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball" >
-            <name lang="nl" >Bowlingbal</name>
-            <object type="BowlingBall" />
+        <toolboxitem count="2" name="Wood Wedge" >
+            <name lang="nl" >Houten Wig</name>
+            <object width="0.350" height="0.350" type="RightWedge">
+                <property key="Rotatable" >true</property>
+                <property key="Mass" >1.0</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Dynamite" >
+            <name lang="nl" >Dynamiet</name>
+            <object width="0.430" X="0.346" Y="1.230" height="0.320" type="Dynamite" ID="555-9999" angle="0.000" />
         </toolboxitem>
     </toolbox>
     <scene>
@@ -69,7 +76,7 @@
                 <property key="page4_nl" >... Post-It Boy</property>
             </object>
             <object width="2.551" X="5.946" Y="1.329" height="0.100" type="Floor" angle="1.570" />
-            <object width="0.210" X="5.418" Y="2.182" height="0.210" type="VolleyBall" angle="0.000" />
+            <!--object width="0.210" X="5.418" Y="2.182" height="0.210" type="VolleyBall" angle="0.000" /-->
             <object width="0.600" X="5.570" Y="0.250" height="0.100" type="RectObject" angle="0.360" >
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >1</property>
@@ -95,14 +102,13 @@
             <object width="0.100" X="3.090" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
                 <property key="ImageName" >DominoRed</property>
             </object>
-            <object width="0.350" X="0.906" Y="2.241" height="0.350" type="RightWedge" angle="1.570" >
+            <!--object width="0.350" X="0.906" Y="2.241" height="0.350" type="RightWedge" angle="1.570" >
                 <property key="Mass" >0.5</property>
             </object>
             <object width="0.350" X="0.292" Y="1.763" height="0.350" type="RightWedge" angle="0.000" >
                 <property key="Mass" >0.5</property>
-            </object>
+            </object-->
             <object width="0.220" X="4.077" Y="1.715" height="0.220" type="SoccerBall" angle="0.000" />
-            <object width="0.430" X="0.346" Y="1.230" height="0.320" type="Dynamite" ID="555-9999" angle="0.000" />
             <object width="0.330" X="0.284" Y="0.178" height="0.350" type="DetonatorBox" angle="0.000" >
                 <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
             </object>
@@ -125,11 +131,11 @@
             <object width="1.073" X="0.543" Y="3.204" height="0.609" type="RightRamp" angle="0.000" />
             <object width="0.800" X="5.601" Y="2.954" height="0.800" type="QuarterArc80" angle="0.000" />
             <object width="1.814" X="4.314" Y="3.304" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.400" X="2.399" Y="2.665" height="0.200" type="Spring" angle="0.000" >
+            <!--object width="0.400" X="2.399" Y="2.665" height="0.200" type="Spring" angle="0.000" >
                 <property key="ImageName" >spring20</property>
-            </object>
+            </object-->
             <object width="0.400" X="1.802" Y="0.494" height="0.400" type="QuarterArc40" angle="-1.570" />
-            <object width="0.220" X="1.940" Y="0.800" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.220" X="1.940" Y="0.810" height="0.220" type="BowlingBall" angle="0.000" />
             <object width="0.156" X="2.436" Y="0.675" height="0.100" type="Floor" angle="0.000" />
             <object width="0.644" X="0.525" Y="0.353" height="0.100" type="Floor" angle="1.571" />
             <object width="0.264" X="5.550" Y="2.832" height="0.572" type="Scenery" ID="Flower" angle="0.000" >
