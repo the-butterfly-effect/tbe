@@ -24,9 +24,9 @@
             <name lang="nl">Houten balk</name>
             <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >8</property>
+                <property key="Mass" >18</property>
                 <property key="Friction" >0</property>
-                <property key="Resizable" >horizontal</property>
+                <property key="Resizable" >none</property>
                 <property key="Bounciness" >0.0</property>
             </object>
         </toolboxitem>
@@ -49,10 +49,10 @@
                 <property key="Thrust" >5</property>
                 <property key="Mass">1</property>
             </object>
-            <object width="0.1" X="4.4" Y="2.7" height="0.1" type="RectObject" >
+            <object width="0.1" X="4.4" Y="2.64" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
             </object>
-	    <object X="4.4" Y="2.87" type="BowlingBall" ID="Coconut">
+	    <object X="4.4" Y="2.8" type="BowlingBall" ID="Coconut">
                 <property key="ImageName" >coconut</property>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
@@ -62,6 +62,9 @@
             <object width="0.5" X="5.75" Y="1.5" height="2.8" type="RectObject">
                 <property key="ImageName" >oldbrick</property>
                 <property key="Bounciness" >0.1</property>
+            </object>
+	    <object X="0.17" Y="1.05" width="0.34" height="1.9" type="RectObject">
+                <property key="ImageName" >Empty</property>
             </object>
 	    <object X="0.225" Y="1.05" width="0.45" height="1.9" type="Scenery">
                 <property key="ImageName" >006-stick-figure</property>
