@@ -8,56 +8,84 @@
         <date>11/17/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Ramp /" >
-            <name lang="nl" >Helling /</name>
-            <object width="1.6" height="0.3" type="LeftRamp" >
-                <property key="ImageName" >LeftRamp</property>
+        <toolboxitem count="1" name="Coke-Mentos" >
+            <name lang="nl" >Cola+Mentos</name>
+            <object width="0.170" X="0.858" Y="2.511" height="0.500" type="CokeMentosBottle" angle="0.000" >
+                <property key="Thrust" >6</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \" >
-            <name lang="nl" >Helling \</name>
-            <object width="1.4" height="0.5" type="RightRamp" >
-                <property key="ImageName" >RightRamp</property>
-            </object>
+        <toolboxitem count="1" name="Ramp /" >
+            <name lang="nl" >Helling /</name>
+            <object width="1.910" X="2.018" Y="2.576" height="0.594" type="LeftRamp" angle="0.000" />
+        </toolboxitem>
+        <toolboxitem count="1" name="Soccer Ball" >
+            <name lang="nl" >Voetbal</name>
+            <object width="0.220" X="2.501" Y="2.864" height="0.220" type="SoccerBall" angle="0.000" />
         </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="5" height="3" />
         <predefined>
-            <object width="5" X="2.5" Y="0.05" height="0.1" type="Floor" angle="0" >
+            <object width="5.000" X="2.500" Y="0.050" height="0.100" type="Floor" angle="0.000" >
                 <property key="Friction" >0.5</property>
             </object>
-            <object width="0.22" X="2.9" Y="2.4" height="0.22" type="PostIt" angle="0" >
+            <object width="0.220" X="2.900" Y="2.400" height="0.220" type="PostIt" angle="0.000" >
                 <property key="page1" >Vrooom Vrooom Vrooom</property>
-                <property key="page2" >Vrooom Vrooom Vroooom Vrooooooom Vroooooooom</property>
+                <property key="page1_nl" >Vroem Vroem Vroem</property>
+                <property key="page2" >Wooosh Wooosh Wooosh</property>
+                <property key="page2_nl" >Psssht Psssht Psssht</property>
+                <property key="page3" >Loopings are fun!</property>
+                <property key="page3_nl" >Loopings zijn leuk!</property>
+                <property key="page4" >... Post-It boy once spoke with&lt;br>Sonic the Hedgehog!</property>
+                <property key="page4_nl" >... Post-It boy heeft een handtekening van&lt;br>Sonic the Hedgehog!</property>
             </object>
-            <object width="0.12" X="3.584092558314906" Y="0.2788518909082161" height="0.34" type="BowlingPin" ID="BowlingPin" angle="0" />
-            <object width="1.2" X="4.4" Y="0.32" height="0.1" type="RectObject" angle="0.45" >
+            <object width="0.120" X="3.100" Y="0.280" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000" >
+                <property key="Mass" >3.5</property>
+            </object>
+            <object width="1.200" X="4.400" Y="0.320" height="0.100" type="RectObject" angle="0.450" >
                 <property key="Bounciness" >0.05</property>
                 <property key="Friction" >0.5</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.1" X="4.95" Y="0.3664539396762848" height="0.5329079031944275" type="RectObject" angle="0" >
+            <object width="0.100" X="4.950" Y="0.863" height="1.525" type="RectObject" angle="0.000" >
                 <property key="Bounciness" >0.05</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.7" X="2.3" Y="0.2699999999999999" height="0.7" type="QuarterArc80" angle="-1.57" />
-            <object width="0.7" X="1.874968186726559" Y="1.975890896802412" height="0.7" type="QuarterArc80" angle="0.4126138687133789" />
-            <object width="0.7" X="1.36110272299012" Y="1.858689499154925" height="0.7" type="QuarterArc80" angle="1.570799946784973" />
-            <object width="0.7" X="1.371439278597071" Y="1.173057263968488" height="0.7" type="QuarterArc80" angle="3.14" />
-            <object width="0.7" X="4.32" Y="1.35" height="0.7" type="QuarterArc80" angle="6.4602370262146" />
-            <object width="0.7" X="2.395326720622676" Y="0.4011667422435752" height="0.7" type="QuarterArc80" angle="5.061038970947266" />
-            <object width="0.166" X="0.2478987440155797" Y="0.2528646371011913" height="0.501" type="CokeMentosBottle" angle="7.797694206237793" >
-                <property key="Thrust" >6</property>
+            <object width="0.640" X="2.300" Y="0.330" height="0.640" type="QuarterArc80" angle="-1.570" />
+            <object width="0.800" X="1.947" Y="1.980" height="0.800" type="QuarterArc80" angle="0.410" />
+            <object width="0.800" X="1.360" Y="1.860" height="0.800" type="QuarterArc80" angle="1.570" />
+            <object width="0.800" X="1.361" Y="1.120" height="0.800" type="QuarterArc80" angle="3.140" />
+            <object width="0.700" X="4.323" Y="1.317" height="0.700" type="QuarterArc80" angle="6.504" />
+            <object width="0.640" X="2.370" Y="0.420" height="0.640" type="QuarterArc80" angle="4.990" />
+            <object width="0.700" X="4.528" Y="0.735" height="0.700" type="QuarterArc80" angle="5.179" />
+            <object width="2.025" X="0.348" Y="1.785" height="0.100" type="Floor" angle="1.526" />
+            <object width="0.980" X="1.276" Y="2.204" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.800" X="0.660" Y="0.399" height="0.800" type="QuarterArc80" angle="3.136" />
+            <object width="0.800" X="1.546" Y="0.994" height="0.800" type="QuarterArc80" angle="3.543" />
+            <object width="1.477" X="3.284" Y="0.784" height="0.100" type="Floor" angle="0.003" />
+            <object width="1.000" X="4.420" Y="0.400" height="0.800" type="Scenery" angle="0.000" >
+                <property key="ImageName" >chickenwire-texture</property>
             </object>
-            <object width="0.7" X="4.527986245093011" Y="0.7349595839540015" height="0.7" type="QuarterArc80" angle="5.179452419281006" />
-            <object width="1" X="3.151261592920354" Y="0.5134077876106196" height="0.1" type="Floor" angle="0" />
+            <object width="1.165" X="4.408" Y="1.600" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.000" X="4.420" Y="1.200" height="0.800" type="Scenery" angle="0.000" >
+                <property key="ImageName" >chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="3.420" Y="0.400" height="0.800" type="Scenery" angle="0.000" >
+                <property key="ImageName" >chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="0.739" Y="1.755" height="0.100" type="Floor" angle="1.418" />
+            <object width="1.000" X="2.891" Y="1.791" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.625" X="3.647" Y="1.671" height="0.100" type="Floor" angle="-0.418" />
         </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
     </scene>
     <goals>
-        <goal type="positionchange" >
+        <goal isFail="false" type="positionchange" >
             <property key="object" >BowlingPin</property>
-            <property key="xbelow" >3.4</property>
+            <property key="xbelow" >3</property>
         </goal>
     </goals>
 </tbe-level>
