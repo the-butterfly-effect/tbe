@@ -22,7 +22,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="wood bar">
             <name lang="nl">Houten balk</name>
-            <object X="1.2" Y="0.8" width="1.5" height="0.1" type="RectObject">
+            <object X="1.2" Y="0.8" width="1.5" height="0.2" type="RectObject">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >18</property>
                 <property key="Friction" >0</property>
@@ -49,10 +49,10 @@
                 <property key="Thrust" >5</property>
                 <property key="Mass">1</property>
             </object>
-            <object width="0.1" X="4.4" Y="2.64" height="0.1" type="RectObject" >
+            <object width="0.1" X="4.4" Y="2.69" height="0.1" type="RectObject" >
                 <property key="ImageName" >Empty</property>
             </object>
-	    <object X="4.4" Y="2.8" type="BowlingBall" ID="Coconut">
+	    <object X="4.4" Y="2.85" type="BowlingBall" ID="Coconut">
                 <property key="ImageName" >coconut</property>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
