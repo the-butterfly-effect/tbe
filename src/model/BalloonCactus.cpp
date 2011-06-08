@@ -392,6 +392,8 @@ void BedOfNails::fillShapeList(void)
 ///-------------------------- CircularSaw ------------------------------------
 ///---------------------------------------------------------------------------
 
+const static double CIRCRADIUS = 0.19;
+const static double CIRCMASS   = 0.4;
 
 // this class' ObjectFactory
 class CircularSawObjectFactory : public ObjectFactory
@@ -408,8 +410,9 @@ CircularSaw::CircularSaw()
 		: AbstractBall(QObject::tr("CircularSaw"),
 					 QObject::tr("a rotating disc with sharp teeth."),
 					 "CircularSaw",
-					 0.19, 0.4, 0.1)
+					 CIRCRADIUS, CIRCMASS, 0.1)
 {
+	createBallShapeFixture(CIRCRADIUS, CIRCMASS);
 }
 
 CircularSaw::~CircularSaw()
