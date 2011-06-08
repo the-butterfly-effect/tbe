@@ -1,0 +1,84 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Poof Poof Poof</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Make all Balloons pop.</description>
+        <date>6/3/11</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="3" height="2.5" />
+        <predefined>
+            <object width="0.270" X="0.610" Y="0.394" height="0.360" type="Balloon" ID="balloon4" angle="0.000" />
+            <object width="3.000" X="1.500" Y="0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.100" X="1.120" Y="0.144" height="0.100" type="Floor" ID="block1" angle="0.000" />
+            <object width="0.100" X="1.680" Y="0.150" height="0.100" type="Floor" ID="block3" angle="0.000" />
+            <object width="0.100" X="1.400" Y="0.150" height="0.100" type="Floor" ID="block2" angle="0.000" />
+            <object width="1.181" X="2.417" Y="0.398" height="0.604" type="Floor" angle="0.000" >
+                <property key="ImageName" >big_used_wood_bar</property>
+            </object>
+            <object width="0.400" X="2.800" Y="0.906" height="0.400" type="LeftWedge" angle="0.000" />
+            <object width="0.166" X="2.727" Y="1.406" height="0.500" type="CokeMentosBottle" angle="0.000" />
+            <object width="0.270" X="1.680" Y="0.738" height="0.360" type="Balloon" ID="balloon3" angle="0.000" />
+            <object width="0.270" X="1.400" Y="0.770" height="0.360" type="Balloon" ID="balloon2" angle="0.000" />
+            <object width="0.270" X="1.120" Y="0.814" height="0.360" type="Balloon" ID="balloon1" angle="0.000" />
+            <object width="0.400" X="0.766" Y="0.791" height="0.400" type="QuarterArc40" angle="1.571" />
+            <object width="0.380" X="2.719" Y="2.252" height="0.380" type="CircularSaw" angle="0.000" />
+            <object width="0.894" X="3.054" Y="0.445" height="0.100" type="Floor" angle="1.571" />
+            <object width="0.550" X="1.120" Y="2.840" height="0.183" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >balloon1@(0,-0.17)</property>
+                <property key="object2" >block1@(0,0)</property>
+            </object>
+            <object width="0.495" X="1.400" Y="2.840" height="0.165" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >balloon2@(0,-0.17)</property>
+                <property key="object2" >block2@(0,0)</property>
+            </object>
+            <object width="0.460" X="1.680" Y="2.840" height="0.153" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >balloon3@(0,-0.17)</property>
+                <property key="object2" >block3@(0,0)</property>
+            </object>
+            <object width="0.400" X="2.799" Y="1.890" height="0.400" type="QuarterArc40" angle="-1.571" />
+            <object width="1.459" X="1.805" Y="1.408" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.800" X="0.084" Y="1.376" height="0.150" type="BedOfNails" angle="-1.571" />
+            <object width="0.800" X="0.563" Y="1.290" height="0.800" type="QuarterArc80" angle="3.142" />
+            <object width="0.270" X="0.300" Y="0.967" height="0.360" type="Balloon" ID="balloon5" angle="0.000" />
+            <object width="0.100" X="0.300" Y="0.150" height="0.100" type="Floor" ID="block5" angle="0.000" />
+            <object width="0.712" X="0.300" Y="2.840" height="0.237" type="Link" angle="0.000" >
+                <property key="ImageName" >rope</property>
+                <property key="object1" >balloon5@(0,-0.17)</property>
+                <property key="object2" >block5@(0,0)</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange" >
+            <property key="object" >balloon1</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal isFail="false" type="statechange" >
+            <property key="object" >balloon2</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal isFail="false" type="statechange" >
+            <property key="object" >balloon3</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal isFail="false" type="statechange" >
+            <property key="object" >balloon4</property>
+            <property key="statechanged" ></property>
+        </goal>
+        <goal isFail="false" type="statechange" >
+            <property key="object" >balloon5</property>
+            <property key="statechanged" ></property>
+        </goal>
+    </goals>
+</tbe-level>
