@@ -25,7 +25,7 @@
             <object width="0.270" X="1.400" Y="0.770" height="0.360" type="Balloon" ID="balloon2" angle="0.000" />
             <object width="0.270" X="1.120" Y="0.814" height="0.360" type="Balloon" ID="balloon1" angle="0.000" />
             <object width="0.400" X="0.766" Y="0.791" height="0.400" type="QuarterArc40" angle="1.571" />
-            <object width="0.380" X="2.719" Y="2.252" height="0.380" type="CircularSaw" angle="0.000" />
+            <object width="0.380" X="1.570" Y="1.132" height="0.380" type="CircularSaw" angle="0.000" />
             <object width="0.894" X="3.054" Y="0.445" height="0.100" type="Floor" angle="1.571" />
             <object width="0.550" X="1.120" Y="2.840" height="0.183" type="Link" angle="0.000" >
                 <property key="ImageName" >rope</property>
