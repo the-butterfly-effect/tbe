@@ -58,7 +58,8 @@ Balloon::Balloon()
 					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
-					 0.27, 0.36, 0.1, 0.7)
+					 0.27, 0.36, 0.1, 0.7),
+		thePoppingTimeStart(-1.0)
 {
 	theState = BALLOON;
 	theB2BodyDefPtr->linearDamping  = 2.1f;
@@ -109,7 +110,7 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 
 void Balloon::callbackStepPopped(qreal, qreal aTotalTime)
 {
-	assert(thePoppingTimeStart>0.1);
+	assert(thePoppingTimeStart>0.0);
 	qreal myDelta = aTotalTime - thePoppingTimeStart - POPPING_TIME;
 	if ( myDelta >= POPPED_TIME)
 		goToState(GONE);
@@ -118,7 +119,7 @@ void Balloon::callbackStepPopped(qreal, qreal aTotalTime)
 void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 {
 	// is this the first callback in Popping state???
-	if (thePoppingTimeStart<0.0001)
+	if (thePoppingTimeStart<0)
 	{
 		thePoppingTimeStart=aTotalTime;
 		switchToSmallShape();
@@ -131,7 +132,7 @@ void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 void Balloon::createPhysicsObject(void)
 {
 	theState = BALLOON;
-	thePoppingTimeStart = 0;
+	thePoppingTimeStart = -1.0;
 	clearShapeList();
 	fillShapeList();
 	PolyObject::createPhysicsObject();
@@ -142,7 +143,7 @@ void Balloon::deletePhysicsObject(void)
 {
 	// nothing much to do here that actually has to do with delete...
 	theState = BALLOON;
-	thePoppingTimeStart = 0;
+	thePoppingTimeStart = -1.0;
 	clearShapeList();
 	fillShapeList();
 	
