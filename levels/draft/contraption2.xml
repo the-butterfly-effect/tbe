@@ -104,7 +104,7 @@
                 <property key="object2" >Bar2x</property>
             </object>
             <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57" >
-                <property key="ImageName" >GlueBlob</property>
+                <property key="ImageName" >Empty</property>
                 <property key="object1" >Bar2@(-0.58,0)</property>
                 <property key="object2" >Bar2x@(0.05,-0.10)</property>
             </object>
@@ -137,7 +137,7 @@
                 <property key="Mass" >0.1</property>
             </object>
             <object width="0.04" X="3.70" Y="1.35" height="0.1" type="Glue" angle="0" >
-                <property key="ImageName" >GlueBlob</property>
+                <property key="ImageName" >Empty</property>
                 <property key="object1" >Bar3@(0.7,0)</property>
                 <property key="object2" >Bar3x@(-0.05,-0.10)</property>
             </object>
