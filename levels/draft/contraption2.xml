@@ -45,7 +45,7 @@
                 <property key="page3" >But a lot needs to happen before that pin moves.</property>
                 <property key="page3_nl" >Maar er moet nog een boel gebeuren voordat die kegel beweegt.</property>
                 <property key="page4" >&lt;br>&lt;br>the Post-it Boy</property>
-                <property key="page5_nl" >&lt;br>&lt;br>Post-it Boy</property>
+                <property key="page4_nl" >&lt;br>&lt;br>Post-it Boy</property>
             </object>
             <object width="0.22" X="3.45" Y="3.5" height="0.22" type="BowlingBall" angle="0" />
             <object width="2.8" X="2.2" Y="3.15" height="0.1" type="Floor" angle="0.14" >
