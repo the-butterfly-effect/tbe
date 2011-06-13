@@ -5,8 +5,8 @@
         <title lang="nl">De Afgrond deel 2</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>a bowling ball needs to cross a big gap. Let's help crossing.</description>
-        <description lang="nl">een bowlingbal moet over de afgrond. Laten we 'm eens helpen.</description>
+        <description>a bowling ball needs to cross a big gap. Let's help crossing. Both ball and Pin need to be on the right!</description>
+        <description lang="nl">een bowlingbal moet over de afgrond. Laten we 'm eens helpen. Zowel de bal als de kegel moeten rechts aankomen!</description>
         <date>March 8, 2010</date>
     </levelinfo>
     <toolbox>
