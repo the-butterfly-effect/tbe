@@ -146,14 +146,14 @@
             <object width="0.242" X="4.302" Y="1.245" height="0.100" type="Floor" angle="0.000" />
             <object width="1.176" X="3.712" Y="1.646" height="0.100" type="Floor" angle="0.658" />
             <object width="0.300" X="4.300" Y="1.997" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.220" X="4.301" Y="2.188" height="0.220" type="SoccerBall" angle="0.000" />
+            <object width="0.220" X="4.330" Y="2.190" height="0.220" type="SoccerBall" angle="0.000" />
             <object width="0.400" X="2.991" Y="1.795" height="0.400" type="QuarterArc40" angle="0.785" />
             <object width="1.216" X="3.639" Y="2.144" height="0.100" type="Floor" angle="0.652" />
             <object width="1.031" X="3.702" Y="1.912" height="0.501" type="Scenery" angle="0.660" >
                 <property key="ImageName" >chickenwire-texture</property>
             </object>
             <object width="0.739" X="4.470" Y="2.502" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.465" X="4.695" Y="2.310" height="0.100" type="Floor" angle="-0.907" />
+            <object width="0.470" X="4.700" Y="2.290" height="0.100" type="Floor" angle="-0.910" />
             <object width="0.795" X="4.401" Y="1.592" height="0.100" type="Floor" angle="1.571" />
             <object width="2.600" X="1.300" Y="0.050" height="0.100" type="Floor" angle="0.000" >
                 <property key="Friction" >0.4</property>
