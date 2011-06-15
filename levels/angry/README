@@ -17,3 +17,18 @@ author: Klaas van Gend, based on the above "Wood crate w/ writing" by J_Alves.
 file:   wooded_crate_square_2d.svg
 author: Klaas van Gend, based on the above "wooden crate" by Erulisseuiin.
 
+title:  eggs
+file:   r1024_eggs.svg
+author: r1024
+source: http://www.openclipart.org/detail/20158
+license:
+
+file: egg_1.svg
+file: egg_2.svg
+file: egg_3.svg
+author: Klaas van Gend simplified the above r1024_eggs.svg to fit one frame each.
+
+file:    yellow_bird.svg
+author:  Klaas van Gend
+source:  Original work for The Butterfly Effect
+license: Public Domain
