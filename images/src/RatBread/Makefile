@@ -1,3 +1,11 @@
-#include ../Makefile 
-#SVGSRC= Rat_Sleeping1R.svg Rat_Sleeping2R.svg Rat_Walking1R.svg Rat_Walking2R.svg Rat_Walking3R.svg
+all:
+	@touch hi
 
+clean:
+	@rm -f hi
+
+all_image:
+	@touch hi
+
+all_clean:
+	@rm -f hi
