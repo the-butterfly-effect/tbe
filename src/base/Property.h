@@ -27,6 +27,7 @@ class Vector;
 class World;
 class BaseObject;
 
+/// This class contains all properties and default properties.
 class PropertyList
 {
 public:
@@ -171,6 +172,9 @@ public:
 	/// @returns the number of properties in this class
 	int  getPropertyCount(void) const
 	{ return theProperties.count(); }
+
+	/// DEBUG FEATURE: list all properties available
+	void list(void) const;
 
 private:
 	PropertyMap theProperties;
