@@ -212,6 +212,9 @@ public:
 	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void);
 
+	/// let's mis-use deletePhysicsObject to reset our object state
+	virtual void deletePhysicsObject(void);
+
 	/// this enum defines the states of the detonator
 	/// apart from WAITING->ACTIVE, all states are time-triggered
 	enum States

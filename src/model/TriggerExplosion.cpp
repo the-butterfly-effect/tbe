@@ -328,6 +328,31 @@ void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	}
 }
 
+void Dynamite::createPhysicsObject(void)
+{
+	PolyObject::createPhysicsObject();
+
+	clearShapeList();
+	fillShapeList();
+
+	theWorldPtr->registerCallback(this);
+	theActiveStartTime = 0.0f;
+	theState = WAITING;
+
+	theTrigger = false;
+	theSplatterList.clear();
+}
+
+void Dynamite::deletePhysicsObject(void)
+{
+printf("Dynamite::deletePhysicsObject(void)\n");
+	// nothing much to do here that actually has to do with delete...
+	theState = WAITING;
+	clearShapeList();
+	fillShapeList();
+	PolyObject::deletePhysicsObject();
+}
+
 void Dynamite::deletePhysicsObjectForReal(void)
 {
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
@@ -366,8 +391,8 @@ Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
 
 	if (theState == RINGING && aNewState == BOOM)
 	{
-		deletePhysicsObjectForReal();
 		explode();
+		deletePhysicsObjectForReal();
 	}
 
 	theState = aNewState;
@@ -411,20 +436,6 @@ void Dynamite::removeMe(ExplosionSplatter* aDeadSplatterPtr)
 	assert(aDeadSplatterPtr != NULL);
 	theSplatterList.removeAll(aDeadSplatterPtr);
 }
-
-
-void Dynamite::createPhysicsObject(void)
-{
-	PolyObject::createPhysicsObject();
-
-	theWorldPtr->registerCallback(this);
-	theActiveStartTime = 0.0f;
-	theState = WAITING;
-
-	theTrigger = false;
-	theSplatterList.clear();
-}
-
 
 // ##########################################################################
 // ##########################################################################
