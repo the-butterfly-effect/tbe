@@ -195,6 +195,11 @@ public:
 	 *  a sensor here...
 	 */
 	virtual void createBallShapeFixture(float aRadius, float aMass);
+
+	virtual DrawObject* createDrawObject();
+
+	/// we need to adjust the size based on the radius
+	virtual void  parseProperties(void);
 };
 
 

@@ -413,7 +413,10 @@ CircularSaw::CircularSaw()
 					 "CircularSaw",
 					 CIRCRADIUS, CIRCMASS, 0.1)
 {
-	createBallShapeFixture(CIRCRADIUS, CIRCMASS);
+	theProps.setDefaultPropertiesString(
+		Property::IMAGE_NAME_STRING + QString(":CustomBall/") +
+		Property::RADIUS_STRING + ":" + QString::number(CIRCRADIUS) + "/" +
+		Property::MASS_STRING +":" + QString::number(CIRCMASS) + "/" );
 }
 
 CircularSaw::~CircularSaw()
@@ -439,6 +442,12 @@ void CircularSaw::callBackSensor(const ContactInfo& aPoint)
 		myBalloonPtr->stung();
 }
 
+DrawObject* CircularSaw::createDrawObject()
+{
+	parseProperties();
+	return AbstractBall::createDrawObject();
+}
+
 void CircularSaw::createBallShapeFixture(float aRadius, float aMass)
 {
 	// add the original ball shape
@@ -455,4 +464,19 @@ void CircularSaw::createBallShapeFixture(float aRadius, float aMass)
 	ballFixDef->isSensor = true;
 
 	theShapeList.push_back(ballFixDef);
+}
+
+void  CircularSaw::parseProperties(void)
+{
+	DEBUG5("CustomBall::parseProperties(void)\n");
+	AbstractBall::parseProperties();
+
+	float myRadius = CIRCRADIUS;
+	float myMass = CIRCMASS;
+	theProps.property2Float(Property::RADIUS_STRING, &myRadius);
+	theProps.property2Float(Property::MASS_STRING, &myMass);
+	if (myRadius<=Position::minimalMove)
+		myRadius=0.1;
+
+	createBallShapeFixture(myRadius, myMass);
 }
