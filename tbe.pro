@@ -12,8 +12,11 @@ INCLUDEPATH += src \
 QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
     -O0 \
     -Wextra \
-    -Wpointer-arith \
-    -Wlogical-op
+    -Wpointer-arith
+
+!macx {    
+QMAKE_CXXFLAGS_DEBUG += -Wlogical-op
+}
 
 QMAKE_LFLAGS += -rdynamic
 
