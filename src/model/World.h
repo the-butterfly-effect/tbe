@@ -68,7 +68,6 @@ protected:
 		if (aContact->GetFixtureA()->IsSensor() ||
 			aContact->GetFixtureB()->IsSensor())
 		{
-			printf("sensorcontact!\n");
 			theContactInfoList.push_back(ContactInfo(
 			aContact->GetFixtureA(), aContact->GetFixtureB(),
 			0, 0));
