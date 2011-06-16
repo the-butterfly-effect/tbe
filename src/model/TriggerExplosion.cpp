@@ -45,6 +45,7 @@ DetonatorBox::DetonatorBox()
 {
 	theProps.setDefaultPropertiesString(
 		Property::PHONENUMBER_STRING + QString(":/") );
+	thePhoneNumber = "";
 }
 
 DetonatorBox::~DetonatorBox()
@@ -122,6 +123,8 @@ QStringList DetonatorBox::getAllPhoneNumbers(void)
 	QRegExp myRX("^\\d.*");
 	assert(theWorldPtr!=NULL);
 	QStringList myList = theWorldPtr->getAllIDs().filter(myRX);
+	if (myList.contains(getCurrentPhoneNumber())==false)
+		myList.append(getCurrentPhoneNumber());
 	myList.append(getEmptyString());
 	return myList;
 }
@@ -130,7 +133,7 @@ QString DetonatorBox::getCurrentPhoneNumber(void) const
 {
 	QString myPhoneNumber = thePhoneNumber;
 	if (myPhoneNumber.isEmpty())
-		theProps.property2String(Property::PHONENUMBER_STRING, &myPhoneNumber);
+		theProps.property2String(Property::PHONENUMBER_STRING, &myPhoneNumber, true);
 	if (myPhoneNumber.isEmpty() || myPhoneNumber.isNull())
 		myPhoneNumber = getEmptyString();
 	return myPhoneNumber;
@@ -345,7 +348,6 @@ void Dynamite::createPhysicsObject(void)
 
 void Dynamite::deletePhysicsObject(void)
 {
-printf("Dynamite::deletePhysicsObject(void)\n");
 	// nothing much to do here that actually has to do with delete...
 	theState = WAITING;
 	clearShapeList();
