@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="154.41138"
+   height="205.87785"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="stick-figure-attack.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.1163422"
+     inkscape:cx="20.18882"
+     inkscape:cy="101.81622"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1241"
+     inkscape:window-height="783"
+     inkscape:window-x="1280"
+     inkscape:window-y="182" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:title>Attack!</dc:title>
+        <dc:date>16 June 2011</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Klaas van Gend</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>the-butterfly-effect.org</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-241.05681,11.199834)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="stickfigure"
+     style="display:inline"
+     transform="translate(-241.05681,11.199834)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.97504455px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 261.68023,118.68527 L 267.45182,47.131413"
+       id="path2444" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 249.85003,14.02503 L 241.55681,49.416911 L 259.92451,57.311007 L 273.62802,58.637152"
+       id="path2446"
+       sodipodi:nodetypes="cccc" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94806749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2434"
+       sodipodi:cx="273.62802"
+       sodipodi:cy="37.639847"
+       sodipodi:rx="7.9568729"
+       sodipodi:ry="13.482479"
+       d="M 281.58489,37.639847 A 7.9568729,13.482479 0 1 1 265.67115,37.639847 A 7.9568729,13.482479 0 1 1 281.58489,37.639847 z"
+       transform="matrix(1,0,0,1.112555,-5.7466305,-6.4063662)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 246.67802,194.17052 L 261.63023,117.27197"
+       id="path2404" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01529837px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+       d="M 276.93707,193.505 L 261.98486,116.60645"
+       id="path2406" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+       d="M 328.14984,24.11559 L 306.31346,48.440177 L 274.12201,58.111355"
+       id="path2408"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="opacity:1;fill:#008000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.8755556"
+       d="M 267.45846,18.644814 C 259.9275,18.644814 253.83346,23.712122 253.83346,29.957314 C 253.83346,32.451508 254.81112,34.744547 256.45846,36.613564 L 264.14596,36.613564 L 264.14596,34.269814 C 264.14596,31.688947 266.22135,29.613564 268.80221,29.613564 L 281.08346,29.613564 C 280.86171,23.528967 274.84922,18.644814 267.45846,18.644814 z"
+       id="path2410" />
+    <rect
+       style="opacity:1;fill:#008000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.8755556"
+       id="rect3187"
+       width="0"
+       height="4.9913611"
+       x="24.29129"
+       y="29.282654"
+       transform="translate(244.83692,19.970034)"
+       ry="0" />
+    <g
+       id="g3204"
+       transform="matrix(0.8831441,-0.4691016,0.4691016,0.8831441,185.78958,24.051894)">
+      <path
+         transform="translate(244.83692,19.970034)"
+         id="rect3192"
+         d="M -122.125,44.4375 L -122.125,51.40625 L -49.625,51.40625 L -44.25,48.3125 L -44.25,47.46875 L -49.5,44.4375 L -122.125,44.4375 z"
+         style="opacity:1;fill:#808000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.8755556" />
+      <rect
+         y="53.457527"
+         x="136.23698"
+         height="28.859152"
+         width="5.5661345"
+         id="rect3194"
+         style="opacity:1;fill:#808000;fill-opacity:1;stroke:#000000;stroke-width:0.75798428;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.8755556" />
+    </g>
+  </g>
+</svg>

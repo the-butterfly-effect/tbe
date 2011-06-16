@@ -29,6 +29,13 @@ file: egg_3.svg
 author: Klaas van Gend simplified the above r1024_eggs.svg to fit one frame each.
 
 file:    yellow_bird.svg
+file:    stick-figure-attack.svg
+file:    stick-figure-shoot.svg
 author:  Klaas van Gend
 source:  Original work for The Butterfly Effect
+license: Public Domain
+
+file:    dream-of-hovering.svg
+author:  Klaas van Gend
+source:  mostly original work, uses "vlodco_zotov_CELL_PHONE_MIESENS.svg" by vlodco_zotov (http://www.openclipart.org/detail/2028)
 license: Public Domain
