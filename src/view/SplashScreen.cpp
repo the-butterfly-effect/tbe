@@ -38,11 +38,10 @@ SplashScreen::SplashScreen (const QString& anSVGFileName)
 	QRectF myTextBounds = myTextPtr->boundingRect();
 	qreal myResize = 0.3 * boundingRect().width() / myTextBounds.width() ;
 	myTextPtr->setBrush(Qt::red);
-	myTextPtr->scale(myResize, myResize);
+	myTextPtr->setTransform(QTransform::fromScale(myResize, myResize),true);
 	myTextBounds = myTextPtr->mapToParent( myTextPtr->boundingRect() ).boundingRect();
 	myTextPtr->setPos( boundingRect().center().x()-myTextBounds.center().x(),
 					   boundingRect().height()-1.5*myTextBounds.height());
-
 }
 
 SplashScreen::~SplashScreen ( ) { }
