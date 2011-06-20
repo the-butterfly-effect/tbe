@@ -644,7 +644,7 @@ DrawWorld::CongratDeathMessage::CongratDeathMessage(
 	QRectF myTextBounds = theTextPtr->boundingRect();
 	myResize = 0.9 * boundingRect().width() / myTextBounds.width() ;
 	theTextPtr->setBrush(Qt::white);
-	theTextPtr->scale(myResize, myResize);
+	theTextPtr->setTransform(QTransform::fromScale(myResize, myResize),true);
 	myTextBounds = theTextPtr->mapToParent( theTextPtr->boundingRect() ).boundingRect();
 	theTextPtr->setPos(boundingRect().center() - myTextBounds.center());
 
