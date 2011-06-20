@@ -15,7 +15,7 @@
    <level> draft/balloons-go-up.xml </level>
    <level> draft/balloons-do-poof.xml </level>
    <level> elce09/004.xml </level>
-   <level> draft/coke-powered-bike.xml </level>
+   <level> draft/coke-powered-bike.v2.xml </level>
    <level> draft/styrofoam.xml </level>
    <level> jumpingjack/party-at-office.xml </level>
    <level> draft/poing-poing-poing.xml </level>
@@ -41,5 +41,5 @@
    <level> draft/loopings2.xml </level>
    <level> elce09/007.xml </level>
    <level> draft/zoingandboom.xml </level>
-   <level> draft/find-the-message.xml </level>
+   <level> draft/find-the-message.v2.xml </level>
 </tbe-levels>
