@@ -178,19 +178,10 @@ void UndoObjectChange::requestSceneRefresh(void)
 	theBaseObjectPtr->theDrawObjectPtr->applyPosition();
 	if (theBaseObjectPtr->theDrawObjectPtr->theAnchorsPtr)
 		theBaseObjectPtr->theDrawObjectPtr->theAnchorsPtr->updatePosition();
-
-#if 0
-	// draw a Rectangle around the area to update
-	static QGraphicsRectItem* myRect = NULL;
-	if (myRect != NULL)
-		delete myRect;
-	myRect = new QGraphicsRectItem(QRectF(myMin.toVector().toQPointF(), myMax.toVector().toQPointF()));
-	theBaseObjectPtr->theDrawObjectPtr->scene()->addItem(myRect);
-#endif
+	theBaseObjectPtr->theDrawObjectPtr->prepareGeometryChange();
 
 	theBaseObjectPtr->theDrawObjectPtr->scene()->
 			update(QRectF(myMin.toVector().toQPointF(), myMax.toVector().toQPointF()));
-
 }
 
 
@@ -221,6 +212,7 @@ void UndoObjectChange::update (const Position& aNewPos, const Vector& aNewSize)
 		theLastGoodCenter= theNewCenter;
 		theLastGoodSize  = theNewSize;
 	}
+	requestSceneRefresh();
 }
 
 void UndoObjectChange::update(const QString& aKey, const QString& aValue)

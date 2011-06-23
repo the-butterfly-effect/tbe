@@ -86,6 +86,14 @@ protected:
 	bool isInUse;
 
 	static ToolBox* getCurrentToolboxPtr(void);
+
+private:
+	/// kill possibility for copy constructor - do not implement
+	UndoDeleteCommand(const UndoDeleteCommand&);
+
+	/// kill possibility for assignment operator - do not implement
+	const UndoDeleteCommand& operator=(const UndoDeleteCommand&);
+
 };
 
 

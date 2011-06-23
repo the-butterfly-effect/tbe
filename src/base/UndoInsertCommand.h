@@ -73,6 +73,13 @@ public:
 	  * @param aNewPos the new position
 	  */
 	void setNewPosition(const Position& aNewPos);
+
+private:
+	/// kill possibility for copy constructor - do not implement
+	UndoInsertCommand(const UndoInsertCommand&);
+
+	/// kill possibility for assignment operator - do not implement
+	const UndoInsertCommand& operator=(const UndoInsertCommand&);
 };
 
 #endif // UNDOINSERTCOMMAND_H
