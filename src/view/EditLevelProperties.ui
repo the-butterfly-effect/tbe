@@ -114,6 +114,9 @@
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditImageName">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="toolTip">
            <string>Specify the image name here. Omit the extension. Any image within the level directory or the images directory will be found.</string>
           </property>
@@ -132,6 +135,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="doubleSpinBoxHRepeat">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="toolTip">
            <string>The distance in which the image will repeat itself. use zero for no repeat - the image will be strechted to fit the level.</string>
           </property>
@@ -152,6 +158,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="doubleSpinBoxVRepeat">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="toolTip">
            <string>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be strechted to fit the level.</string>
           </property>
@@ -168,7 +177,7 @@
       <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Gradient (in front of image):   NO EDIT YET!</string>
+         <string>Gradient (in front of image):</string>
         </property>
        </widget>
       </item>
