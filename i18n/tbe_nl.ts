@@ -64,6 +64,29 @@ Parse error at line %1, column %2:
     </message>
 </context>
 <context>
+    <name>ChoosePhoneNumber</name>
+    <message>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulier</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="22"/>
+        <source>Phone Number:</source>
+        <translation>Telefoonnummer:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="62"/>
+        <source>OK</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="69"/>
+        <source>Cancel</source>
+        <translation>Afbreken</translation>
+    </message>
+</context>
+<context>
     <name>DrawNoteIt</name>
     <message>
         <source>Finish</source>
@@ -89,17 +112,17 @@ Parse error at line %1, column %2:
         <translation type="obsolete">Je kunt nu niets wijzigen. Je moet eerst de stopwatch resetten.</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="328"/>
+        <location filename="../src/view/DrawWorld.cpp" line="139"/>
+        <location filename="../src/view/DrawWorld.cpp" line="428"/>
         <source>You cannot make changes now. Reset the stopwatch?</source>
         <translation>Je kunt nu niets wijzigen. Wil je de stopwatch resetten?</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="342"/>
         <source>Death - retry?</source>
-        <translation>Dood - opnieuw?</translation>
+        <translation type="obsolete">Dood - opnieuw?</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="367"/>
+        <location filename="../src/view/DrawWorld.cpp" line="467"/>
         <source>Framerate: %1 fps</source>
         <translatorcomment>Niet vertaald, ik weet geen beter nederlands woord.</translatorcomment>
         <translation>Framerate: %1 fps</translation>
@@ -109,25 +132,34 @@ Parse error at line %1, column %2:
         <translation type="obsolete">Dood!!!</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="378"/>
         <source>Congratulations</source>
-        <translation>Gefeliciteerd</translation>
+        <translation type="obsolete">Gefeliciteerd</translation>
     </message>
 </context>
 <context>
     <name>DrawWorld::CongratDeathMessage</name>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="556"/>
+        <location filename="../src/view/DrawWorld.cpp" line="625"/>
+        <source>Congratulations</source>
+        <translation>Gefeliciteerd</translation>
+    </message>
+    <message>
+        <location filename="../src/view/DrawWorld.cpp" line="628"/>
+        <source>Fail - retry?</source>
+        <translation>Mislukt - opnieuw?</translation>
+    </message>
+    <message>
+        <location filename="../src/view/DrawWorld.cpp" line="652"/>
         <source>&amp;Replay</source>
         <translation>&amp;Herhalen</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="558"/>
+        <location filename="../src/view/DrawWorld.cpp" line="654"/>
         <source>&amp;Choose...</source>
         <translation>&amp;Kies...</translation>
     </message>
     <message>
-        <location filename="../src/view/DrawWorld.cpp" line="560"/>
+        <location filename="../src/view/DrawWorld.cpp" line="658"/>
         <source>&amp;Next&gt;</source>
         <translation>&amp;Volgende&gt;</translation>
     </message>
@@ -140,32 +172,98 @@ Parse error at line %1, column %2:
         <translation>Dialoog</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="20"/>
+        <location filename="../src/view/EditLevelProperties.ui" line="30"/>
         <source>Level Properties</source>
         <translation>Level Eigenschappen</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="26"/>
+        <location filename="../src/view/EditLevelProperties.ui" line="36"/>
+        <source>Level width:</source>
+        <translation>Level breedte:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="43"/>
+        <source>width of the level in meters</source>
+        <translation>breedte van level in meters</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="68"/>
+        <source>Level height:</source>
+        <translation>Level hoogte:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="75"/>
+        <source>Height of the level in meters</source>
+        <translation>Hoogte van level in meters</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="103"/>
+        <source>Background Properties</source>
+        <translation>Achtergrondeigenschappen</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="111"/>
+        <source>Image name:</source>
+        <translation>Naam afbeelding:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="121"/>
+        <source>Specify the image name here. Omit the extension. Any image within the level directory or the images directory will be found.</source>
+        <translation>Geef de naam van de afbeelding. Geen extensie. Elke afbeelding in de level folder of de images folder kan worden gevonden.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="132"/>
+        <source>Image repeat width</source>
+        <translation>Herhalingsbreedte:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="142"/>
+        <source>The distance in which the image will repeat itself. use zero for no repeat - the image will be strechted to fit the level.</source>
+        <translation>Afstand waarop de afbeelding zichzelf mag herhalen. Nul betekent geen herhaling. Afbeeling wordt uitgerekt om level te passen.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="155"/>
+        <source>height</source>
+        <translation>hoogte:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="165"/>
+        <source>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be strechted to fit the level.</source>
+        <translation>Afstand waarop de afbeelding zichzelf vertikaal mag herhalen. Nul betekent geen herhaling. Afbeeling wordt uitgerekt om level te passen.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="180"/>
+        <source>Gradient (in front of image):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="189"/>
+        <source>This table defines the gradient of the background. Each line is a stop. You need at least two stops.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/EditLevelProperties.ui" line="214"/>
+        <source>The resulting gradient is shown here</source>
+        <translation>De definitieve gradient is hier te zien</translation>
+    </message>
+    <message>
         <source>Width</source>
-        <translation>Breedte</translation>
+        <translation type="obsolete">Breedte</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="52"/>
         <source>Height</source>
-        <translation>Hoogte</translation>
+        <translation type="obsolete">Hoogte</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="78"/>
         <source>Background:</source>
-        <translation>Achtergrond</translation>
+        <translation type="obsolete">Achtergrond</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="85"/>
         <source>(not editable yet)</source>
-        <translation>(nog niet te bewerken)</translation>
+        <translation type="obsolete">(nog niet te bewerken)</translation>
     </message>
     <message>
-        <location filename="../src/view/EditLevelProperties.ui" line="95"/>
+        <location filename="../src/view/EditLevelProperties.ui" line="20"/>
         <source>Note: changes in this dialog are not undoable!</source>
         <translation>N.B. wijzigingen in deze dialoog zijn onherstelbaar!</translation>
     </message>
@@ -220,12 +318,12 @@ Parse error at line %1, column %2:
         <translation>Hoogte:</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="114"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="142"/>
         <source>Basic Properties for %1</source>
         <translation>Basis Eigenschappen voor %1</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="132"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="160"/>
         <source>Value</source>
         <translation>Waarde</translation>
     </message>
@@ -233,46 +331,92 @@ Parse error at line %1, column %2:
 <context>
     <name>GoalEditor</name>
     <message>
-        <location filename="../src/view/GoalEditor.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialoog</translation>
+        <translation type="obsolete">Dialoog</translation>
+    </message>
+    <message>
+        <source>A level can only be won if all goals are satisfied. If an ObjectID is red, that ID currently does not exist.</source>
+        <translation type="obsolete">Een level kan alleen maar gewonnen worden als aan alle voorwaarden is voldaan. Als een ObjectID rood is dan bestaat die ID op dit moment niet.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/GoalEditor.ui" line="14"/>
+        <source>Goal and Fail Editor </source>
+        <translation type="unfinished">Succes- en Faalvoorwaarden</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="20"/>
-        <source>A level can only be won if all goals are satisfied. If an ObjectID is red, that ID currently does not exist.</source>
-        <translation>Een level kan alleen maar gewonnen worden als aan alle voorwaarden is voldaan. Als een ObjectID rood is dan bestaat die ID op dit moment niet.</translation>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SUCCESDOELEN&lt;/span&gt;&lt;br /&gt;Een level kan alleen worden gewonnen als &lt;span style=&quot; font-style:italic;&quot;&gt;alle&lt;/span&gt; onderstaande doelen tegelijk waar zijn.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Als een ObjectID rood is, betekent dat deze ID niet bestaat.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.ui" line="38"/>
+        <location filename="../src/view/GoalEditor.ui" line="43"/>
+        <location filename="../src/view/GoalEditor.ui" line="94"/>
         <source>+</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.ui" line="45"/>
+        <location filename="../src/view/GoalEditor.ui" line="50"/>
+        <location filename="../src/view/GoalEditor.ui" line="101"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.cpp" line="94"/>
+        <location filename="../src/view/GoalEditor.ui" line="72"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;Een level wordt onmiddellijk afgebroken als een van onderstaande voorwaarden wordt geraakt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>Not all goals are OK
 Nothing was changed yet, please fix.</source>
-        <translation>Niet aan alle voorwaarden is voldaan.
+        <translation type="obsolete">Niet aan alle voorwaarden is voldaan.
 Er is niets gewijzigd, gelieve dat aan te passen.</translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.cpp" line="168"/>
+        <location filename="../src/view/GoalEditor.cpp" line="89"/>
+        <source>Not all goals/fails were OK
+Nothing was changed yet, please fix.</source>
+        <translation>Niet alle doelen zijn correct.\nDaarom is nog niets opgeslagen, graag eerst oplossen.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/GoalEditor.cpp" line="154"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
         <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
         <translation>Weet je zeker dat je voorwaarde %1:&lt;br&gt;%2 wil verwijderen?</translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.cpp" line="181"/>
-        <location filename="../src/view/GoalEditor.cpp" line="184"/>
+        <location filename="../src/view/GoalEditor.cpp" line="173"/>
+        <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
+        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/GoalEditor.cpp" line="187"/>
+        <location filename="../src/view/GoalEditor.cpp" line="190"/>
+        <location filename="../src/view/GoalEditor.cpp" line="200"/>
+        <location filename="../src/view/GoalEditor.cpp" line="203"/>
         <source>no object</source>
         <translation>geen object</translation>
     </message>
     <message>
-        <location filename="../src/view/GoalEditor.h" line="46"/>
+        <location filename="../src/view/GoalEditor.h" line="47"/>
         <source>change</source>
         <translatorcomment>kan ook wijzigen moeten zijn</translatorcomment>
         <translation>wijzig</translation>
@@ -281,8 +425,8 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/model/Level.cpp" line="116"/>
-        <location filename="../src/model/Level.cpp" line="136"/>
+        <location filename="../src/model/Level.cpp" line="120"/>
+        <location filename="../src/model/Level.cpp" line="141"/>
         <source>Cannot read file &apos;%1&apos;</source>
         <translation>Kan bestand &apos;%1&apos; niet lezen</translation>
     </message>
@@ -291,17 +435,17 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
         <translation type="obsolete">Kan bestand %1 niet lezen</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="142"/>
+        <location filename="../src/model/Level.cpp" line="147"/>
         <source>Cannot parse file - not valid XML?</source>
         <translatorcomment>Ik ben niet heel blij met parse&gt;lezen...</translatorcomment>
         <translation>Kan bestand niet inlezen - geen geldige XML?</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="152"/>
-        <location filename="../src/model/Level.cpp" line="178"/>
-        <location filename="../src/model/Level.cpp" line="192"/>
-        <location filename="../src/model/Level.cpp" line="196"/>
-        <location filename="../src/model/Level.cpp" line="232"/>
+        <location filename="../src/model/Level.cpp" line="157"/>
+        <location filename="../src/model/Level.cpp" line="183"/>
+        <location filename="../src/model/Level.cpp" line="197"/>
+        <location filename="../src/model/Level.cpp" line="211"/>
+        <location filename="../src/model/Level.cpp" line="247"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation>Inlezen van paragraaf &apos;%1&apos; is mislukt: </translation>
     </message>
@@ -310,34 +454,39 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
         <translation type="obsolete">Lezen van paragraaf &apos;%1&apos; mislukt</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="185"/>
+        <location filename="../src/model/Level.cpp" line="190"/>
         <source>scene width or height unspecified</source>
         <translation>Breedte of hoogte scene niet opgegeven</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="210"/>
-        <location filename="../src/model/Level.cpp" line="255"/>
+        <location filename="../src/model/Level.cpp" line="205"/>
+        <source>Parsing &apos;%1&apos; section failed: %2</source>
+        <translation>Inlezen van paragraaf &apos;%1&apos; is mislukt: %2</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Level.cpp" line="225"/>
+        <location filename="../src/model/Level.cpp" line="270"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation>verwachtte sectie &lt;%1&gt;, kreeg &lt;%2&gt;</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="217"/>
-        <location filename="../src/model/Level.cpp" line="263"/>
+        <location filename="../src/model/Level.cpp" line="232"/>
+        <location filename="../src/model/Level.cpp" line="278"/>
         <source>createObjectFromDom failed</source>
         <translation>createObjectFromDom weigerde</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="236"/>
+        <location filename="../src/model/Level.cpp" line="251"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation>geen sectie &lt;%1&gt; gevonden!</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="269"/>
+        <location filename="../src/model/Level.cpp" line="284"/>
         <source>&lt;%1&gt; properties could not be parsed</source>
         <translation>eigenschappen voor &lt;%1&gt; werden niet begrepen</translation>
     </message>
     <message>
-        <location filename="../src/model/Level.cpp" line="371"/>
+        <location filename="../src/model/Level.cpp" line="388"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation>Kan bestand &apos;%1&apos; niet schrijven vanwege: %2</translation>
     </message>
@@ -427,12 +576,6 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
         <translation>Shift+Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="123"/>
-        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009-2010 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
-        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../src/view/MainWindow.cpp" line="136"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
@@ -445,25 +588,49 @@ Er is niets gewijzigd, gelieve dat aan te passen.</translation>
         <translation>Nieuw Level ...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="198"/>
         <source>Goal Editor ...</source>
         <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
-        <translation>Doel Editor ...</translation>
+        <translation type="obsolete">Doel Editor ...</translation>
+    </message>
+    <message>
+        <source>Level Settings Editor ...</source>
+        <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
+        <translation type="obsolete">Level Instellingen Editor ...</translation>
+    </message>
+    <message>
+        <source>Draw Box2D debug in sim</source>
+        <translation type="obsolete">Teken Box2D debug in sim</translation>
+    </message>
+    <message>
+        <source>Draw PolyObject outlines</source>
+        <translation type="obsolete">Teken Poly Object contouren</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="123"/>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation>&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="198"/>
+        <source>&amp;Goal/Fail Editor ...</source>
+        <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
+        <translation>&amp;Succes- en Faalvoorwaarden...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="203"/>
-        <source>Level Settings Editor ...</source>
+        <source>&amp;Level Settings Editor ...</source>
         <extracomment>translators: the ... indicates that this opens a new dialog - keep in the translation!</extracomment>
-        <translation>Level Instellingen Editor ...</translation>
+        <translation>&amp;Level Instellingen...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="208"/>
-        <source>Draw Box2D debug in sim</source>
-        <translation>Teken Box2D debug in sim</translation>
+        <source>Draw &amp;Box2D debug in sim</source>
+        <translation>Teken &amp;Box2D debug in simulatie</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="213"/>
-        <source>Draw PolyObject outlines</source>
+        <source>Draw &amp;PolyObject outlines</source>
         <translation>Teken Poly Object contouren</translation>
     </message>
     <message>
@@ -512,7 +679,7 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
         <translation type="obsolete">Volgende&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="497"/>
+        <location filename="../src/view/MainWindow.cpp" line="496"/>
         <source>WARNING: you already have a level open. Do you want to discard that?</source>
         <translation>WAARSCHUWING: je hebt al een level open. Wil je dat weggooien?</translation>
     </message>
@@ -1089,24 +1256,60 @@ p, li { white-space: pre-wrap; }
         <translation>Helling naar rechts</translation>
     </message>
     <message>
+        <location filename="../src/model/PolyObject.cpp" line="129"/>
+        <source>Left Wedge</source>
+        <translation>Linkerwig</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="130"/>
+        <source>This is a wedge. The left is lower than the right, so things slide to the left.</source>
+        <translation>Dit is een wig. De linkerkant is lager dan de rechterkant, dus alles glijdt naar links.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="137"/>
+        <source>Right Wedge</source>
+        <translation>Rechterwig</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="138"/>
+        <source>This is a wedge. The left is higher than the right, so things slide to the right.</source>
+        <translation>Dit is een wig. De linkerkant is hoger dan de rechterkant, dus alles glijdt naar rechts.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="147"/>
+        <source>Quarter Arc Small</source>
+        <translation>Kleine kwartboog</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="148"/>
+        <location filename="../src/model/PolyObject.cpp" line="162"/>
+        <source>This is a quarter arc. Or ninety degrees, or 1.57 radians if you want.</source>
+        <translation>Dit is een kwart boog. Of negentig graden, of 1.57 radialen als je dat beter bevalt.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="161"/>
+        <source>Quarter Arc Large</source>
+        <translation>Grote kwartboog</translation>
+    </message>
+    <message>
         <location filename="../src/model/Floor.h" line="54"/>
         <source>Floor</source>
         <translation>Vloer</translation>
     </message>
     <message>
-        <location filename="../src/model/Floor.h" line="60"/>
+        <location filename="../src/model/Floor.h" line="64"/>
         <source>This is a floor piece: flat and horizontal.</source>
         <translation>Dit is een stuk vloer: vlak en horizontaal.</translation>
     </message>
     <message>
-        <location filename="../src/model/CokeMentosBottle.cpp" line="48"/>
+        <location filename="../src/model/CokeMentosBottle.cpp" line="49"/>
         <source>This is a prepared Coke bottle with a Mentos in it.
 Look: it blows if triggered!</source>
         <translation>Dit is een geprepareerde fles Cola light met een Mentos erin.
 Kijk: hij zal spuiten als je &apos;m schudt.</translation>
     </message>
     <message>
-        <location filename="../src/model/CokeMentosBottle.cpp" line="49"/>
+        <location filename="../src/model/CokeMentosBottle.cpp" line="48"/>
         <source>Coke+Mentos Bottle</source>
         <translation>Fles Cola light met Mentos</translation>
     </message>
@@ -1115,12 +1318,12 @@ Kijk: hij zal spuiten als je &apos;m schudt.</translation>
         <translation type="obsolete">Post-it</translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.h" line="43"/>
+        <location filename="../src/model/PostIt.h" line="48"/>
         <source>PostIt</source>
         <translation>Post-it</translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.h" line="49"/>
+        <location filename="../src/model/PostIt.h" line="58"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
@@ -1168,13 +1371,22 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Voeg %1 toe</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoMoveCommand.cpp" line="36"/>
+        <location filename="../src/base/UndoObjectChange.cpp" line="85"/>
+        <source>ID change on %1</source>
+        <translation>ID wijziging van %1</translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoObjectChange.cpp" line="89"/>
+        <source>Property change on %1</source>
+        <translation>Eigenschap van %1 gewijzigd</translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoObjectChange.cpp" line="101"/>
         <source>Move %1</source>
         <translation>Verplaats %1</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoManualCommand.cpp" line="41"/>
-        <location filename="../src/base/UndoResizeCommand.cpp" line="48"/>
+        <location filename="../src/base/UndoObjectChange.cpp" line="93"/>
         <source>Resize %1</source>
         <translation>Pas afmetingen %1 aan</translation>
     </message>
@@ -1219,32 +1431,37 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>De beroemde plastic groene domino steen</translation>
     </message>
     <message>
-        <location filename="../src/base/GoalSerializer.cpp" line="156"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="174"/>
         <source>Position X</source>
         <translation>x positie</translation>
     </message>
     <message>
-        <location filename="../src/base/GoalSerializer.cpp" line="157"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="175"/>
         <source>Position Y</source>
         <translation>y positie</translation>
     </message>
     <message>
-        <location filename="../src/base/GoalSerializer.cpp" line="158"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="176"/>
         <source>Angle</source>
         <translation>Hoek</translation>
     </message>
     <message>
-        <location filename="../src/base/GoalSerializer.cpp" line="159"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="177"/>
         <source>X/Y/Angle</source>
         <translation>X/Y/Hoek</translation>
     </message>
     <message>
-        <location filename="../src/base/GoalSerializer.cpp" line="160"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="178"/>
         <source>Distance</source>
         <translation>Afstand</translation>
     </message>
     <message>
-        <location filename="../src/base/UndoRotateCommand.cpp" line="36"/>
+        <location filename="../src/base/GoalSerializer.cpp" line="179"/>
+        <source>Object State</source>
+        <translation>Voorwerptoestand</translation>
+    </message>
+    <message>
+        <location filename="../src/base/UndoObjectChange.cpp" line="97"/>
         <source>Rotate %1</source>
         <translation>Roteer %1</translation>
     </message>
@@ -1259,24 +1476,34 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Een helium balon. Lichter dan lucht, hij gaat omhoog.</translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="261"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="259"/>
         <source>Cactus</source>
         <translation>Cactus</translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="262"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="260"/>
         <source>Cactacea Bulbuous Stingus - a Cactus has spines!</source>
         <translation>Cactacea Bulbuous Stingus - een  cactus heeft stekels!</translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="338"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="339"/>
         <source>BedOfNails</source>
         <translation>Spijkerbed</translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="339"/>
+        <location filename="../src/model/BalloonCactus.cpp" line="340"/>
         <source>Do not touch a bed of nails - it stings!</source>
         <translation>Voorzichtig met dat spijkerbed, het prikt!</translation>
+    </message>
+    <message>
+        <location filename="../src/model/BalloonCactus.cpp" line="411"/>
+        <source>CircularSaw</source>
+        <translation>Cirkelzaag</translation>
+    </message>
+    <message>
+        <location filename="../src/model/BalloonCactus.cpp" line="412"/>
+        <source>a rotating disc with sharp teeth.</source>
+        <translation>Een draaiende schijf met scherpe tanden.</translation>
     </message>
     <message>
         <location filename="../src/model/Link.h" line="55"/>
@@ -1298,26 +1525,101 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <source>Objects are limited to only move along one axis</source>
         <translation>Objecten zijn beperkt tot beweging langs een enkele as</translation>
     </message>
+    <message>
+        <location filename="../src/model/Glue.h" line="60"/>
+        <source>Glue</source>
+        <translation>Lijm</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Glue.h" line="70"/>
+        <source>Glue links two objects immovably together.</source>
+        <translation>Lijm plakt twee voorwerpen onwrikbaar samen.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RatBread.cpp" line="44"/>
+        <source>Rat</source>
+        <translation>Rat</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RatBread.cpp" line="45"/>
+        <source>a rat is always looking for food or sleeping.</source>
+        <translation>een rat loopt altijd naar eten te zoeken of slaapt.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Spring.cpp" line="75"/>
+        <source>Spring</source>
+        <translation>Veer</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Spring.cpp" line="76"/>
+        <source>Something springy.</source>
+        <translation>Iets stuiterend.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Spring.cpp" line="185"/>
+        <source>Send BOOM to me</source>
+        <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
+        <translation>Stuur BOEM naar mij</translation>
+    </message>
+    <message>
+        <location filename="../src/model/Spring.cpp" line="202"/>
+        <source>Spring End</source>
+        <translation>Veereinde</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="41"/>
+        <source>Detonator Box</source>
+        <translation>Ontsteker</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="144"/>
+        <source>(empty)</source>
+        <translation>(leeg)</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="151"/>
+        <source>Send BOOM to %1</source>
+        <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
+        <translation>Stuur BOEM naar %1</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="192"/>
+        <source>Detonator Box Handle</source>
+        <translation>Ontstekerhandvat</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="284"/>
+        <source>Dynamite</source>
+        <translation>Dynamiet</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="387"/>
+        <source>Dynamite: invented by Alfred Nobel. 
+ Dial %1 for a nice explosion.</source>
+        <extracomment>Translators: the 
+ means &quot;newline&quot; - keep it. The %1 will be replaced by a phone number</extracomment>
+        <translation>Dynamiet is uitgevonden door Alfred Nobel.\nBel %1 voor een mooie ontploffing.</translation>
+    </message>
 </context>
 <context>
     <name>SaveLevelInfo</name>
     <message>
-        <location filename="../src/view/SaveLevelInfo.cpp" line="82"/>
+        <location filename="../src/view/SaveLevelInfo.cpp" line="80"/>
         <source>Because you changed the Level Name or Description, all translations for both will be erased for consistency...</source>
         <translation>Omdat je de Levelnaam of -omschrijving gewijzigd hebt zullen alle vertalingen voor beiden gewist worden om fouten te vermijden.</translation>
     </message>
     <message>
-        <location filename="../src/view/SaveLevelInfo.cpp" line="112"/>
+        <location filename="../src/view/SaveLevelInfo.cpp" line="114"/>
         <source>Save Level</source>
         <translation>Sla Level op</translation>
     </message>
     <message>
-        <location filename="../src/view/SaveLevelInfo.cpp" line="112"/>
+        <location filename="../src/view/SaveLevelInfo.cpp" line="114"/>
         <source>TBE levels (*.tbe *.xml)</source>
         <translation>vlindereffect levels (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/SaveLevelInfo.cpp" line="129"/>
+        <location filename="../src/view/SaveLevelInfo.cpp" line="131"/>
         <source>A File with name &apos;%1&apos; file already exists. Overwrite?
 </source>
         <translation>Een bestand genaamd &apos;%1&apos; bestaat al. Overschrijven?
@@ -1420,7 +1722,7 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
 <context>
     <name>StartStopWatch</name>
     <message>
-        <location filename="../src/view/StartStopWatch.cpp" line="111"/>
+        <location filename="../src/view/StartStopWatch.cpp" line="112"/>
         <source>Click on the stopwatch to start/stop the simulation.</source>
         <translation>Klik op de stopwatch om de simulatie te starten/stoppen.</translation>
     </message>
