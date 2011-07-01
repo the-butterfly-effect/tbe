@@ -223,7 +223,7 @@ void DrawWorld::drawBackground ( QPainter* p, const QRectF & rect )
 {
 	// commented out to save CPU power and improve framerates
 	// see https://sourceforge.net/apps/trac/tbe/ticket/278
-//	drawBGImage(p,rect);
+	drawBGImage(p,rect);
 
 	// TODO: speed up: move this one to redrawBGPixmap()
 	QGraphicsScene::drawBackground(p, rect);
