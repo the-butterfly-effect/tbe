@@ -44,6 +44,7 @@ find $2/src       >>$MANIFEST
 find $2/3rdParty  >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.png" >>$MANIFEST
 echo "$2/images/illustrations/tbe-icon.qrc" >>$MANIFEST
+echo "$2/images/illustrations/title_page.png" >>$MANIFEST
 echo "$2/images/illustrations/installer-side-image.png" >>$MANIFEST
 echo "$2/images/illustrations/installer-top-icon.png" >>$MANIFEST
 
