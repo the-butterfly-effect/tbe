@@ -225,3 +225,13 @@ unix {
 TRANSLATIONS = i18n/tbe_nl.ts \
     i18n/tbe_es.ts
 RESOURCES += images/illustrations/tbe-icon.qrc
+
+
+# In an attempt to ensure that no-one tries to build TBE with QT 4.7 or QT 4.8
+# we have added the below check to the project file.
+# This at least satisfies ticket:284 so we can release milestone:M9...
+contains(QT_MAJOR_VERSION,4) {
+  contains (QT_MINOR_VERSION,7) | contains (QT_MINOR_VERSION,8) {
+	error("TBE is known not to work with QT versions above 4.6. Please see https://sourceforge.net/apps/trac/tbe/ticket/284 .")
+  }
+}
