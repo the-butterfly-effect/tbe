@@ -277,7 +277,7 @@ public:
 };
 static DynamiteObjectFactory theDynamiteObjectFactory;
 
-const qreal  Dynamite::RINGING_TIME   = 0.3;
+const qreal  Dynamite::RINGING_TIME   = 0.2;
 const qreal  Dynamite::DYNAMITE_MASS  = 0.8;
 
 Dynamite::Dynamite()
