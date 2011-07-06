@@ -35,6 +35,9 @@
 
 static const int EXTRA_WHITESPACE = 2;
 
+const qreal DrawObject::theScale = 100.0;
+
+
 // set/get using static setter/getter in DrawObject
 // as such it is available to DrawObject and derived classes
 static QUndoStack* theUndoStackPtr = NULL;
@@ -172,9 +175,9 @@ void DrawObject::applyPosition(void)
 
 QRectF DrawObject::boundingRect() const
 {
-        qreal myWidth = theBaseObjectPtr->getTempWidth();
-        qreal myHeight= theBaseObjectPtr->getTempHeight();
-        qreal adjust = 0.00;
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
+	qreal adjust = 0.03;
 	
     return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
 }
@@ -242,7 +245,7 @@ QPixmap* DrawObject::createBitmap(int aWidth, int aHeight)
 	myPixmap->fill(QColor(Qt::transparent));
 	QPainter myPainter(myPixmap);
 //	myPainter.drawRect(0,0,myWidth+EXTRA_WHITESPACE-1,myHeight+EXTRA_WHITESPACE-1);
-        myPainter.translate((myWidth+EXTRA_WHITESPACE+0.5)/2, (myHeight+EXTRA_WHITESPACE+0.5)/2);
+	myPainter.translate((myWidth+EXTRA_WHITESPACE+1)/2, (myHeight+EXTRA_WHITESPACE+1)/2);
 
 	// let's try to do some scaling
 	float myScaleX = boundingRect().width()/myWidth;
@@ -310,6 +313,14 @@ QSvgRenderer* DrawObject::getRenderer(void) const
 
 void DrawObject::initAttributes ( )
 {
+	// the objects sizes usually are less than a meter
+	// however, that does not sit well with QPainter, which is still a
+	// bitmap-oriented class - we're discussing images of less than one-by-one pixel.
+	// that's what we need scaling for.
+	//
+	// theScale is set to 100.0 - that implies centimeters.
+	scale(1.0/theScale, 1.0/theScale);
+
 	// in radians!
 	theOldAngle=0;//aBaseObjectPtr->getOrigCenter().angle;
 
@@ -354,6 +365,7 @@ void DrawObject::myMouseMoveEvent (const QPointF& aScenePos, const QPointF& aHot
 	{
 		// a HotspotPos is in item coordinates, we need scene coords
 		Vector myPos(aHotspotPos.x(), -aHotspotPos.y());
+		myPos = 1/theScale*myPos;
 		myPos = myPos.rotate(theBaseObjectPtr->getOrigCenter().angle);
 		theUndoMovePtr = UndoObjectChange::createUndoObject(theBaseObjectPtr);
 		theMoveHotspot = QPointF(myPos.dx, -myPos.dy);
@@ -397,16 +409,16 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	if ( theDrawDebug==true && isSimRunning==true )
 		return;
 
-        qreal myWidth = theBaseObjectPtr->getTempWidth();
-        qreal myHeight= theBaseObjectPtr->getTempHeight();
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
 
 	// only when we're using the cached bitmaps, (which have a few pix whitespace)
 	// let's paint larger to offset the whitespace.
 	int myCachedCount = theCachePixmapPtrs.count();
 	if (myCachedCount != 0 && isCaching==false)
 	{
-          myWidth += static_cast<qreal>(EXTRA_WHITESPACE)/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
-          myHeight += static_cast<qreal>(EXTRA_WHITESPACE)/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	  myWidth += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
+	  myHeight += theScale*EXTRA_WHITESPACE/ResizingGraphicsView::getPixelsPerSceneUnitHorizontal();
 	}
 	
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
@@ -517,6 +529,9 @@ QRectF DrawObject::Cross::boundingRect() const
 
 void DrawObject::Cross::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QWidget *)
 {
+	qreal myWidth = theBaseObjectPtr->getTempWidth()*theScale;
+	qreal myHeight= theBaseObjectPtr->getTempHeight()*theScale;
+	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 	if (theCrossRendererPtr)
-                theCrossRendererPtr->render(myPainter, boundingRect());
+		theCrossRendererPtr->render(myPainter, myRect);
 }
