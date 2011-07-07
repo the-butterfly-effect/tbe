@@ -16,7 +16,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Ramp /">
             <name lang="nl">Helling /</name>
-            <object width="0.96" height="0.665" type="LeftRamp" angle="0.000"/>
+            <object width="0.96" height="0.71" type="LeftRamp" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
             <name lang="nl">Helling \</name>
@@ -157,18 +157,18 @@
                 <property key="ZValue">4.5</property>
             </object>
             <object width="1.206" X="2.963" Y="2.179" height="0.100" type="Floor" angle="1.570"/>
-            <object width="1.000" X="4.870" Y="1.100" height="0.140" type="RectObject" angle="0.000">
+            <object width="1.000" X="4.870" Y="1.150" height="0.140" type="RectObject" angle="0.000">
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">3</property>
                 <property key="PivotPoint">(0,0)</property>
             </object>
-            <object width="0.100" X="4.870" Y="1.100" height="0.100" type="Scenery" ID="BrassPin" angle="0.000">
+            <object width="0.100" X="4.870" Y="1.150" height="0.100" type="Scenery" ID="BrassPin" angle="0.000">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
             <object width="0.862" X="4.281" Y="1.692" height="0.100" type="Floor" angle="0.410"/>
             <object width="5.446" X="2.808" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="4.870" Y="1.280" height="0.220" type="SoccerBall" angle="0.000"/>
+            <object width="0.220" X="4.870" Y="1.330" height="0.220" type="SoccerBall" angle="0.000"/>
             <object width="2.186" X="1.938" Y="1.904" height="0.100" type="Floor" angle="0.212"/>
             <object width="0.676" X="0.896" Y="1.364" height="0.100" type="Floor" angle="1.571"/>
             <object width="0.430" X="1.573" Y="1.352" height="0.320" type="Dynamite" ID="555-4321" angle="0.000"/>
