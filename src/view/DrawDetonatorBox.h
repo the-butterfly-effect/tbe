@@ -40,8 +40,8 @@ public:
 	// Constructors/Destructors
 	//
 
-	/// Svg/Png Constructor
-	DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
+	/// Image Constructor
+	DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor

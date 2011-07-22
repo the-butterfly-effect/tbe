@@ -215,16 +215,16 @@ Anchor::Anchor(Anchors::AnchorType aDirection, AnchorPosition anIndex, Anchors* 
 	switch (aDirection)
 	{
 		case Anchors::NONE:
-			setSharedRenderer(ImageStore::getRenderer("ActionNone"));
+			setSharedRenderer(ImageRendererStore::getSvgRenderer("ActionNone"));
 			break;
 		case Anchors::RESIZEHORI:
-			setSharedRenderer(ImageStore::getRenderer("ActionResizeHori"));
+			setSharedRenderer(ImageRendererStore::getSvgRenderer("ActionResizeHori"));
 			break;
 		case Anchors::RESIZEVERTI:
-			setSharedRenderer(ImageStore::getRenderer("ActionResizeVerti"));
+			setSharedRenderer(ImageRendererStore::getSvgRenderer("ActionResizeVerti"));
 			break;
 		case Anchors::ROTATE:
-			setSharedRenderer(ImageStore::getRenderer("ActionRotate"));
+			setSharedRenderer(ImageRendererStore::getSvgRenderer("ActionRotate"));
 			break;
 		case Anchors::BUTTON:
 			// will be handled in the constructor
@@ -522,7 +522,7 @@ ButtonAnchor::ButtonAnchor(Anchors* aParent, const QString & anIconName,
 
 {
 	theButtonIndex = aButtonIndex;
-	setSharedRenderer(ImageStore::getRenderer(anIconName));
+	setSharedRenderer(ImageRendererStore::getSvgRenderer(anIconName));
 	scaleIcon();
 }
 

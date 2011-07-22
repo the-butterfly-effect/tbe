@@ -29,9 +29,8 @@
 //  
 
 DrawAbstractBall::DrawAbstractBall (BaseObject* aBaseObjectPtr,
-						const QString& anImageName,
-						DrawObject::ImageType anImageType)
-	: DrawObject(aBaseObjectPtr, anImageName, anImageType)
+						const QString& anImageName)
+	: DrawObject(aBaseObjectPtr, anImageName)
 {
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawAbstractBall\n");

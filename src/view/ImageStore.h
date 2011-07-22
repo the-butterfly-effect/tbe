@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,81 +19,125 @@
 #ifndef IMAGESTORE_H
 #define IMAGESTORE_H
 
-#include <QImage>
 #include <QIcon>
-#include <QSize>
 #include <QMap>
-#include <QSvgRenderer>
+class QPainter;
+class QPixmap;
+class QSvgRenderer;
 
-/** ImageStore is a singleton class that will load an SVG file
- *  and return the requested imageobject/render type
- *  it caches renderers to SVG images it has loaded
- *
- *  ImageStore also cares for itself to try different paths, only specify
- *  the image file name (like "ActionMove") - we'll add the .svg ourselves
- */
-class ImageStore
+/** ImageRenderer abstracts away the various renderers that QT has
+  * for types like SVG and PNG and JPG
+  */
+class ImageRenderer
 {
-	/////////////////////////////////////////////////////////////////////////////
-	// only use the interface in public, like ImageStore::getQIcon(...) !!!
-	// don't worry about the magic - this is a "Singleton".
-	/////////////////////////////////////////////////////////////////////////////
 public:
+	// no public constructors or destructors here
+	// - this class is only instantiated by ImageRendererStore
 
-	/** always accessible (singleton) function to get an Icon from an SVG
+	/** Renders the current image in this class using the given painter on the
+	 *  specified bounds within the painter. If the bounding rectangle is not
+	 *  specified the image is mapped to the whole paint device.
+	 *  @param painter
+	 *  @param bounds
+	 */
+	void render (QPainter* painter, const QRectF& bounds );
+	void render (QPainter* painter);
+
+	/// @returns the natural size of the image
+	QSize defaultSize(void);
+
+private:
+	friend class ImageRendererStore;
+
+	/** Constructor - only usable by ImageRendererStore
+	 *  @param aFullImagePath
+	 */
+	ImageRenderer(QString aFullImagePath);
+
+	/// destructor (not virtual - not called ever)
+	~ImageRenderer();
+
+	QPixmap* theBitmap;
+	QSvgRenderer* theSvg;
+
+	// just to be sure, kill copy constructor and assignment operator
+	ImageRenderer(const ImageRenderer&);
+	const ImageRenderer& operator=(const ImageRenderer&);
+};
+
+
+/** ImageRendererStore is a singleton class that you can ask for an
+ *  ImageRenderer instance based on just a filename (without path or
+ *  file name extension).
+ *
+ *  ImageRendererStore will automatically search through various paths
+ *  and try various extensions.
+ *
+ *  Currently supported are SVG, PNG and JPG images.
+ */
+class ImageRendererStore
+{
+public:
+	/** always accessible (singleton) function to get a renderer for an image
+	 *  where image is any of SVG, PNG or JPG
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @param   isNullOnNotFound  if true, will return NULL when no renderer
+	 *			  is found. Otherwise the ImageRenderer for the "NotFound"
+	 *			  image will be returned.
+	 *   @returns NULL if failed to find image and isNullOnNotFound is true,
+	 *			  otherwise always valid ImageRenderer will be returned - or
+	 *			  still NULL if even the NotFound.svg image is MIA...
+	 */
+	static ImageRenderer* getImageRenderer(const QString& anImageName,
+										   bool isNullOnNotFound = false);
+
+	/** always accessible (singleton) function to get a renderer for an image
+	 *  where image type is SVG only
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @param   isNullOnNotFound  if true, will return NULL when no renderer
+	 *			  is found. Otherwise the ImageRenderer for the "NotFound"
+	 *			  image will be returned.
+	 *   @returns NULL if failed to find image and isNullOnNotFound is true,
+	 *			  otherwise always valid ImageRenderer will be returned - or
+	 *			  still NULL if even the NotFound.svg image is MIA...
+	 */
+	static QSvgRenderer* getSvgRenderer(const QString& anImageName,
+										   bool isNullOnNotFound = false);
+
+	/** always accessible (singleton) function to get a renderer for an image
+	 *  where image type is PNG/JPG only
+	 *
+	 *  Try to avoid this member as it limits you!!!
+	 *
+	 *   @param   anImageName   file name (no search path, no extension)
+	 *   @returns NULL if failed to find image or a pointer to a valid QPixmap
+	 */
+	static QPixmap* getPixmap(const QString& anImageName);
+
+	/** always accessible (singleton) function to get an Icon from an image
 	 *   @param   anImageName   file name (no search path, no extension)
 	 *   @param   aSize         QSize of the icon
-	 *   @returns a QIcon with the image requested. if no image found, QIcon.isValid() will return false
+	 *   @returns a QIcon with the image requested. if no image found,
+	 *            QIcon will contain either the NotFound image or white field
 	 */
-	static QIcon getQIcon(const QString& anImageName, const QSize& aSize)
-		{ return me().getMeQIcon(anImageName, aSize); }
+	static QIcon getQIcon(const QString& anImageName, const QSize& aSize);
 
-	/** always accessible (singleton) function to get a SVG Renderer
-	 *   @param   anImageName   file name (no search path, no extension)
-	 *   @returns pointer to the SVGRenderer or NULL if not found
-	 */
-	static QSvgRenderer* getRenderer(const QString& anImageName)
-		{ return me().getMeRenderer(anImageName); }
-
-	/** filters through all necessary directories to find the requested PNG
-	 *   @param   anImageName   file name (no search path, no extension)
-	 *   @returns QPixmap pointer for the PNG image
-	 */
-	static QPixmap* getPNGPixmap(const QString& anImageName)
-		{ return me().getMePNGPixmap(anImageName); }
-
-	/////////////////////////////////////////////////////////////////////////////
-	// don't even *think* of using anything from below
-	/////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////
+	// this is a singleton, don't even *think* of using anything from below
+	///////////////////////////////////////////////////////////////////////////
 private:
-	static ImageStore& me();
+	static ImageRendererStore& me();
 
 	/** this is a singleton
 	 *  - don't ever try to run the constructor yourself.
-	 *  - just use the getters as specified above using ImageStore::getWhatIWant("imagename");
+	 *  - just use the getters as specified above using
+	 *    ImageRendererStore::getImageRenderer("imagename");
 	 */
-	ImageStore();
+	ImageRendererStore();
 
 	/// no need to make the destructor virtual - this class SHOULD NOT be derived from
-	~ImageStore();
-
-	/** this member will load (or return a cached) the QSvgRenderer for image "anImageName.svg"
-	 *  it will search through all paths to try to find the image
-	 *  @param anImageName - the image name (without preceding paths or the extension)
-	 *  @param returnNotFound - if image not found, return NULL or the "NotFound" image
-	 *  @returns NULL if not found or a pointer to a valid, initialised QSvgRenderer
-	 */
-	QSvgRenderer* getMeRenderer(const QString& anImageName, bool returnNotFound=false);
-
-	QIcon getMeQIcon(const QString& anImageName, const QSize& aSize);
-
-	/// contrary to what the member name says, it will return a pixmap for any
-	/// file that is of type png or jpg.
-	/// TODO/FIXME: rename this member to get rid of the png
-	/// if an image is found and it wasn't in the cache yet, it will be added
-	/// @param anImageName the file name to search for - without extension
-	/// @returns NULL if none found or a pointer to the QPixmap if found
-	QPixmap* getMePNGPixmap(QString anImageName);
+	/// also note that this destructor cannot be called.
+	~ImageRendererStore();
 
 	/// concatenate anImageName and anExtension and check if the file exists
 	/// along any of the defined paths
@@ -103,11 +147,12 @@ private:
 	/// @param anExtension extension to add to the file name
 	QString getFilePath(const QString& anImageName, const QString& anExtension) const;
 
-	typedef QMap<QString, QSvgRenderer*> RendererMap;
+	typedef QMap<QString, ImageRenderer*> RendererMap;
 	RendererMap theRendererMap;
 
-	typedef QMap<QString, QPixmap*> PixmapMap;
-	PixmapMap thePixmapMap;
+	// just to be sure, kill copy constructor and assignment operator
+	ImageRendererStore(const ImageRendererStore&);
+	const ImageRendererStore& operator=(const ImageRendererStore&);
 };
 
 #endif // IMAGESTORE_H

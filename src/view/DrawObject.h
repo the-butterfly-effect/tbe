@@ -28,8 +28,8 @@ class QUndoStack;
 class QUndoCommand;
 class UndoObjectChange;
 class Anchors;
-class QSvgRenderer;
 class DrawWorld;
+class ImageRenderer;
 
 /** class DrawObject
   *
@@ -46,16 +46,8 @@ public:
 	/// Simple Constructor
 	DrawObject (BaseObject* aBaseObjectPtr);
 
-	enum ImageType
-	{
-		IMAGE_PNG,
-		IMAGE_SVG,
-		IMAGE_ANY
-	};
-
-	/// Svg/Png Constructor
-	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
-
+	/// Image Name Constructor
+	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor
@@ -185,13 +177,8 @@ protected:
 	static Anchors* theAnchorsPtr;
 
 private:
-	/// list of pointers to renderer for SVG images (if present)
-	/// either this one or thePixmapPtr should exist
-	QList<QSvgRenderer*>   theRenderers;
-
-	/// list of pointers to pixmap for PNG images (if present)
-	/// either this one or theRenderer should exist
-	QList<QPixmap*>        thePixmapPtrs;
+	/// list of pointers to ImageRenderers
+	QList<ImageRenderer*>   theImageRenderers;
 
 	/// scaled/rendered pixmap cached for faster display
 	/// created by setupCache()
@@ -208,11 +195,7 @@ private:
 
 protected:
 	/// @returns the renderer for the current image frame
-	QSvgRenderer* getRenderer(void) const;
-	/// @returns the pixmap for the current image frame
-	QPixmap*      getPixmapPtr(void) const;
-
-
+	ImageRenderer* getRenderer(void) const;
 
 	/// pointer for undeleting this object
 	///   - only usable *after* a deregister() !!!
@@ -249,7 +232,7 @@ private:
 						   QWidget *widget);
 	private:
 		/// we only need one Cross Renderer for all DrawObjects...
-		static QSvgRenderer*	theCrossRendererPtr;
+		static ImageRenderer*	theCrossRendererPtr;
 
 		BaseObject* theBaseObjectPtr;
 

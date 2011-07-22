@@ -46,7 +46,7 @@ static bool isSimRunning = false;
 
 Anchors* DrawObject::theAnchorsPtr = NULL;
 
-QSvgRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
+ImageRenderer* DrawObject::Cross::theCrossRendererPtr = NULL;
 
 // Constructors/Destructors
 //  
@@ -62,8 +62,7 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
 }
 
 DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
-						const QString& anImageName,
-						UNUSED_ARG DrawObject::ImageType anImageType)
+						const QString& anImageName)
 	: theBaseObjectPtr(aBaseObjectPtr), isCaching(false),
 	  theLastImageIndex(0), theUndeleteDrawWorldPtr(NULL), theUndoMovePtr(NULL)
 {
@@ -71,31 +70,15 @@ DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
 	initAttributes();
 
 	QStringList myImageNames = anImageName.split(";");
-	for (int i=0; i< myImageNames.count(); i++)
+	for (int i=0; i<myImageNames.count(); i++)
 	{
-		if (anImageType==IMAGE_PNG || anImageType==IMAGE_ANY)
-		{
-			QPixmap* myPtr = ImageStore::getPNGPixmap(myImageNames[i]);
-			if (myPtr == NULL)
-				break;
-			thePixmapPtrs.push_back(myPtr);
-		}
+		ImageRenderer* myRendererPtr =
+				ImageRendererStore::getImageRenderer(myImageNames[i], true);
+		if (myRendererPtr == NULL)
+			break;
+		theImageRenderers.push_back(myRendererPtr);
 	}
-	if (thePixmapPtrs.size() == 0)
-	{
-		for (int i=0; i< myImageNames.count(); i++)
-		{
-			QSvgRenderer* myRenderer = ImageStore::getRenderer(myImageNames[i]);
-			if (myRenderer == NULL)
-				myRenderer = ImageStore::getRenderer("Empty");
-			assert(myRenderer != NULL);
-			if (myRenderer == NULL)
-				break;
-			theRenderers.push_back(myRenderer);
-		}
-	}
-
-	DEBUG6("  Total images: %d pixmap, %d svg\n", thePixmapPtrs.count(), theRenderers.count());
+	DEBUG5("  Total images: %d \n", theImageRenderers.count());
 }
 
 
@@ -135,9 +118,6 @@ float DrawObject::getUnscaledAspectRatio(void) const
 
 	if (getRenderer() != NULL)
 		mySize = getRenderer()->defaultSize();
-
-	if (getPixmapPtr() != NULL)
-		mySize = getPixmapPtr()->size();
 
 	return static_cast<float>(mySize.width())/
 			static_cast<float>(mySize.height());
@@ -281,33 +261,18 @@ void DrawObject::focusInEvent (QFocusEvent* event )
 	QGraphicsItem::focusInEvent(event);
 }
 
-QPixmap* DrawObject::getPixmapPtr(void) const
+ImageRenderer* DrawObject::getRenderer(void) const
 {
 	if (theBaseObjectPtr==NULL)
 		return NULL;
 	int myIndex = theBaseObjectPtr->getImageIndex();
 	if (isCaching)
 		myIndex = theCachingIndex;
-	if (thePixmapPtrs.count()>myIndex)
-		return thePixmapPtrs[myIndex];
+	if (theImageRenderers.count()>myIndex)
+		return theImageRenderers[myIndex];
 	else
-		if (thePixmapPtrs.count()>0)
-			return thePixmapPtrs[0];
-	return NULL;
-}
-
-QSvgRenderer* DrawObject::getRenderer(void) const
-{
-	if (theBaseObjectPtr==NULL)
-		return NULL;
-	int myIndex = theBaseObjectPtr->getImageIndex();
-	if (isCaching)
-		myIndex = theCachingIndex;
-	if (theRenderers.count()>myIndex)
-		return theRenderers[myIndex];
-	else
-		if (theRenderers.count()>0)
-			return theRenderers[0];
+		if (theImageRenderers.count()>0)
+			return theImageRenderers[0];
 	return NULL;
 }
 
@@ -424,6 +389,8 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 	QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
 
 	DEBUG6("DrawObject::paint for %p: @(%f,%f)\n", this, myWidth, myHeight);
+
+	// there is a cached image
 	if (myCachedCount != 0 && isCaching==false)
 	{
 		theLastImageIndex = theBaseObjectPtr->getImageIndex();
@@ -434,12 +401,7 @@ void DrawObject::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *, QW
 		return;
 	}
 
-	if (getPixmapPtr() != NULL)
-	{
-		myPainter->drawPixmap(myRect, *getPixmapPtr(), getPixmapPtr()->rect());
-		return;
-	}
-	
+	// there is no cached image
 	if (getRenderer() != NULL)
 	{
 		getRenderer()->render(myPainter, myRect);
@@ -469,19 +431,19 @@ void DrawObject::removeCollisionCross(void)
 
 void DrawObject::setupCache(void)
 {
-	// In most situations, we want to cache the SVG drawing into a bitmap
-	// so we save a lot of CPU performance on drawing.
+	// In most situations, we want to cache the raw Image drawing (svg but also unscaled png/jpg)
+	// into a bitmap so we save a lot of CPU performance on drawing.
 	// (derived classes can fix this - e.g. Butterfly and CokeMentosBottle)
 	// The problem is that QT does a crappy job at guessing the bitmap size
 	// so we have to calculate that ourselves...
 
-	if (getRenderer()!=NULL || getPixmapPtr()!=NULL)
+	if (getRenderer()!=NULL)
 	{
 		setCacheMode(QGraphicsItem::NoCache);
 		theCachePixmapPtrs.clear();
 		isCaching = true;
 		for(theCachingIndex=0;
-			theCachingIndex<theRenderers.count()+thePixmapPtrs.count();
+			theCachingIndex<theImageRenderers.count();
 			theCachingIndex++)
 		{
 			// let's try to use the renderer to create a cached image:
@@ -508,7 +470,7 @@ DrawObject::Cross::Cross(DrawObject* aParent)
 	DEBUG5("Cross::Cross()\n");
 	if (theCrossRendererPtr==NULL)
 	{
-		theCrossRendererPtr = ImageStore::getRenderer("BigCross");
+		theCrossRendererPtr = ImageRendererStore::getImageRenderer("BigCross");
 	}
 
 	theBaseObjectPtr = aParent->theBaseObjectPtr;

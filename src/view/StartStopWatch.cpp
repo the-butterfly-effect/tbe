@@ -30,14 +30,14 @@ StartStopWatch::StartStopWatch()
 	setBackgroundBrush(QApplication::palette().window());
 
 	// get our SVG renderers
-	theStopwatchRendererPtr = ImageStore::getRenderer("StartStopWatch");
-	theBrokenStopwatchRendererPtr = ImageStore::getRenderer("StartStopWatchBroken");
+	theStopwatchRendererPtr = ImageRendererStore::getSvgRenderer("StartStopWatch");
+	theBrokenStopwatchRendererPtr = ImageRendererStore::getSvgRenderer("StartStopWatchBroken");
 	theStopWatchSvgPtr = new QGraphicsSvgItem(NULL);
 	theStopWatchSvgPtr->setSharedRenderer(theStopwatchRendererPtr);
 	theStopWatchSvgPtr->setZValue(1.0);
 	addItem(theStopWatchSvgPtr);
 
-	QSvgRenderer* myRenderer = ImageStore::getRenderer("StartStopWatchHand");
+	QSvgRenderer* myRenderer = ImageRendererStore::getSvgRenderer("StartStopWatchHand");
 	theStopWatchHandSvgPtr = new QGraphicsSvgItem(NULL);
 	theStopWatchHandSvgPtr->setSharedRenderer(myRenderer);
 	theStopWatchHandSvgPtr->setZValue(2.0);
@@ -335,7 +335,7 @@ void StartStopWatch::showFastForwardButton(void)
 	assert(theFastForwardSvgPtr == NULL);
 
 	// and initialise the reset button
-	QSvgRenderer* myRenderer = ImageStore::getRenderer("ActionFastForward");
+	QSvgRenderer* myRenderer = ImageRendererStore::getSvgRenderer("ActionFastForward");
 	theFastForwardSvgPtr = new QGraphicsSvgItem(NULL);
 	theFastForwardSvgPtr->setSharedRenderer(myRenderer);
 	theFastForwardSvgPtr->setZValue(5.0);
@@ -348,7 +348,7 @@ void StartStopWatch::showResetButton(void)
 	assert(theResetSvgPtr == NULL);
 
 	// and initialise the reset button
-	QSvgRenderer* myRenderer = ImageStore::getRenderer("ActionUndo");
+	QSvgRenderer* myRenderer = ImageRendererStore::getSvgRenderer("ActionUndo");
 	theResetSvgPtr = new QGraphicsSvgItem(NULL);
 	theResetSvgPtr->setSharedRenderer(myRenderer);
 	theResetSvgPtr->setZValue(5.0);

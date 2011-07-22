@@ -36,11 +36,11 @@ PostItEditor::PostItEditor(BaseObject* aBaseObjectPtr, DrawPostIt* aDrawObject, 
 	connect (this, SIGNAL(accepted()), this, SLOT(slot_accepted()));
 
 	// fix up the icons for the toolbuttons
-	m_ui->toolButtonBold->setIcon(ImageStore::getQIcon("IconBold", QSize(32,32)));
-	m_ui->toolButtonItalics->setIcon(ImageStore::getQIcon("IconItalics", QSize(32,32)));
-	m_ui->toolButtonNewline->setIcon(ImageStore::getQIcon("IconNewline", QSize(32,32)));
+	m_ui->toolButtonBold->setIcon(ImageRendererStore::getQIcon("IconBold", QSize(32,32)));
+	m_ui->toolButtonItalics->setIcon(ImageRendererStore::getQIcon("IconItalics", QSize(32,32)));
+	m_ui->toolButtonNewline->setIcon(ImageRendererStore::getQIcon("IconNewline", QSize(32,32)));
 
-	theIsChangedIcon = ImageStore::getQIcon("IconModified", QSize(32,32));
+	theIsChangedIcon = ImageRendererStore::getQIcon("IconModified", QSize(32,32));
 }
 
 PostItEditor::~PostItEditor()

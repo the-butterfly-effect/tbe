@@ -44,9 +44,9 @@ public:
 	//  
 
 	/**
-	 * SVG Constructor
+	 * Image Constructor
 	 */
-	DrawAbstractBall (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
+	DrawAbstractBall (BaseObject* aBaseObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor

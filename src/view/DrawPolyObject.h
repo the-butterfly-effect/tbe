@@ -46,7 +46,7 @@ public:
 	/**
 	 * SVG Constructor
 	 */
-	DrawPolyObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
+	DrawPolyObject (BaseObject* aBaseObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor

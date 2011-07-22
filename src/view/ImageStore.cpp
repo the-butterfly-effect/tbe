@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2011 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,52 +20,42 @@
 
 #include "tbe_global.h"
 #include "ImageStore.h"
-#include "Level.h"
 
 #include <QFile>
 #include <QPainter>
 #include <QApplication>
+#include <QSvgRenderer>
+#include <QPixmap>
 
+#ifndef TESTCODE
+#include "Level.h"
 
-static ImageStore* theImageStorePtr = NULL;
+static
+#endif
+		ImageRendererStore* theImageRendererStorePtr = NULL;
 
 static const char* NOTFOUND="NotFound";
 
 
-// Constructors/Destructors
-//
-
-ImageStore::ImageStore()
+ImageRendererStore::ImageRendererStore()
 {
+	assert (theImageRendererStorePtr == NULL);
 	// nothing to do here...
 }
 
-//
-// Methods
-//
 
-
-// Accessor methods
-//
-
-ImageStore& ImageStore::me()
-{
-	if (theImageStorePtr==NULL)
-	theImageStorePtr = new ImageStore();
-	return *theImageStorePtr;
-}
-
-// Other methods
-//
-
-
-QString ImageStore::getFilePath(const QString& anImageName, const QString& anExtension) const
+QString ImageRendererStore::getFilePath(const QString& anImageName, const QString& anExtension) const
 {
 	// let's try to find the file and create the renderer...
 	QStringList mySearchPath = (BINARY_DIRECTORY+":"+IMAGES_DIRECTORY)
 							   .split(":",QString::SkipEmptyParts);
 	// add the local directory of the level file to the search path - at the beginning...
+#ifdef TESTCODE
+	mySearchPath.push_front(".");
+	mySearchPath.push_back("../../images");
+#else
 	mySearchPath.push_front(Level::getPathToLevelFile());
+#endif
 	QStringList::iterator i;
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
 	{
@@ -82,114 +72,149 @@ QString ImageStore::getFilePath(const QString& anImageName, const QString& anExt
 	return QString();
 }
 
-QPixmap* ImageStore::getMePNGPixmap(QString anImageName)
+
+ImageRenderer* ImageRendererStore::getImageRenderer(
+		const QString& anImageName,
+		bool isNullOnNotFound)
 {
-	DEBUG5("getMePNGPixmap(\"%s\")\n", ASCII(anImageName));
-	if (anImageName.isEmpty())
-		anImageName = NOTFOUND;
-
-	assert(theImageStorePtr != NULL);
-
 	// if anImageName is in store, we're done quickly :-)
-	PixmapMap::iterator mySearchResult = thePixmapMap.find(anImageName);
-	if (mySearchResult != thePixmapMap.end())
+	RendererMap::iterator mySearchResult = me().theRendererMap.find(anImageName);
+	if (mySearchResult != me().theRendererMap.end())
 	{
-		DEBUG5("found (cached) QPixmap for '%s'\n", ASCII(anImageName));
+		DEBUG5("Found cached ImageRenderer for '%s'\n", ASCII(anImageName));
 		return mySearchResult.value();
 	}
 
-	// so, it's not in our cache yet...
-	// let's try to find the file and create the pixmap...
-	// the last entry is an empty string - that should result in us also
-	// trying the imagename without appending an extension
-	QStringList myExtensions(QString(".jpg;.jpeg;.png;").split(";"));
+	// Not in the map yet?
+	// Let's attempt to find the image (svg/png/jpg/jpeg) then...
+	QStringList myExtensions(QString(".png;.svg;.jpg;.jpeg;").split(";"));
 	QString myFullName;
-
 	foreach(QString i, myExtensions)
 	{
-		myFullName = getFilePath(anImageName, i);
+		myFullName = me().getFilePath(anImageName, i);
 		if (myFullName.isEmpty()==false)
-			break;
+		{
+			ImageRenderer* myNewRendererPtr = new ImageRenderer(myFullName);
+			me().theRendererMap[anImageName] = myNewRendererPtr;
+			return myNewRendererPtr;
+		}
 	}
-	QPixmap* myPtr = new QPixmap(myFullName);
-	if (myPtr == NULL)
+
+	// if isNullOnNotFound is set, we now return NULL
+	// otherwise, we'll try to find the NotFound image and return its renderer
+	if (isNullOnNotFound)
 		return NULL;
-	if (myPtr->isNull())
-	{
-		delete myPtr;
+	if (anImageName==NOTFOUND)
 		return NULL;
-	}
-	thePixmapMap[anImageName]=myPtr;
-	DEBUG5("my QPixmap* is %p\n", myPtr);
-	return myPtr;
+	return getImageRenderer(NOTFOUND, true);
 }
 
-QIcon ImageStore::getMeQIcon(const QString& anImageName, const QSize& aSize)
+QSvgRenderer* ImageRendererStore::getSvgRenderer(const QString& anImageName,
+										   bool isNullOnNotFound)
 {
-	DEBUG5("getMeQIcon(\"%s\")\n", ASCII(anImageName));
+	ImageRenderer* myRenderer = getImageRenderer(anImageName);
+	if (myRenderer->theSvg != NULL)
+		return myRenderer->theSvg;
+	if (isNullOnNotFound)
+		return NULL;
+	else
+		return getSvgRenderer(NOTFOUND, true);
+}
+
+QPixmap* ImageRendererStore::getPixmap(const QString& anImageName)
+{
+	ImageRenderer* myRenderer = getImageRenderer(anImageName, true);
+	if (myRenderer != NULL)
+	{
+		if (myRenderer->theBitmap)
+			return myRenderer->theBitmap;
+		// Ow shit, user requests a Pixmap but we only have an SVG...
+		// Let's assume some bitmap size and add it to our renderer
+		QSize myBitmapSize(384,384);
+		QPixmap* myNewPixmapPtr = new QPixmap(
+				getQIcon(anImageName, myBitmapSize)
+				.pixmap(myBitmapSize, QIcon::Normal, QIcon::On));
+		myRenderer->theBitmap = myNewPixmapPtr;
+		return myNewPixmapPtr;
+	}
+	return NULL;
+}
+
+QIcon ImageRendererStore::getQIcon(const QString& anImageName, const QSize& aSize)
+{
 	QPixmap myPixmap(aSize);
 	myPixmap.fill(QColor(255,255,255,0));
 
-	// first try SVG
-	// if no SVG found, try PNG
-	// if no PNG found, retry the SVG but allow the "NotFound" image
-	QSvgRenderer* myRenderer = getMeRenderer(anImageName, false);
-	QPixmap* myPNG;
-	if (myRenderer == NULL)
+	ImageRenderer* myRendererPtr = getImageRenderer(anImageName, false);
+	if (myRendererPtr != NULL)
 	{
-		myPNG = getMePNGPixmap(anImageName);
-		if (myPNG==NULL)
-			myRenderer = getMeRenderer(anImageName);
-		else
-			myPixmap = *myPNG;
-	}
-
-	// no renderer found? return an empty icon...
-	if (myRenderer != NULL)
-	{
-		// cool! we have a renderer. Now let's render!
 		QPainter myPainter;
 		myPainter.begin(&myPixmap);
 		myPainter.setRenderHint(QPainter::Antialiasing);
-		myRenderer->render(&myPainter);
+		myRendererPtr->render(&myPainter);
 		myPainter.end();
 	}
-
 	QIcon myIcon(myPixmap);
 	return myIcon;
 }
 
 
-QSvgRenderer* ImageStore::getMeRenderer(const QString& anImageName, bool returnNotFound)
+
+ImageRendererStore& ImageRendererStore::me()
 {
-	if(anImageName.isEmpty())
-		return getMeRenderer(NOTFOUND);
-	assert(theImageStorePtr != NULL);
-
-	// if anImageName is in store, we're done quickly :-)
-	RendererMap::iterator mySearchResult = theRendererMap.find(anImageName);
-	if (mySearchResult != theRendererMap.end())
-	{
-		DEBUG5("found (cached) QSvgRenderer for '%s'\n", ASCII(anImageName));
-		return mySearchResult.value();
-	}
-
-	// so, it's not in our cache yet...
-	// let's try to find the file and create the renderer...
-	QString myFullName = getFilePath(anImageName, ".svg");
-	QSvgRenderer* myPtr = new QSvgRenderer(myFullName);
-	if (myPtr == NULL)
-		return NULL;
-	if (myPtr->isValid()==false)
-	{
-		if (anImageName != NOTFOUND && returnNotFound)
-			return getMeRenderer(NOTFOUND);
-		else
-			return NULL;
-	}
-	theRendererMap[anImageName]=myPtr;
-	DEBUG5("my Renderer is %p\n", myPtr);
-	return myPtr;
+	if (theImageRendererStorePtr==NULL)
+		theImageRendererStorePtr = new ImageRendererStore();
+	return *theImageRendererStorePtr;
 }
 
 
+
+//----------------------------------------------------------------------------
+
+ImageRenderer::ImageRenderer(QString aFullImagePath)
+		: theBitmap(NULL), theSvg(NULL)
+{
+	// validation of the path should have happened already at this point
+	assert(QFile::exists(aFullImagePath)!= false);
+
+	if (aFullImagePath.contains(".svg"))
+	{
+		theSvg = new QSvgRenderer(aFullImagePath);
+		assert(theSvg != NULL);
+	}
+	else
+	{
+		theBitmap = new QPixmap(aFullImagePath);
+		assert(theBitmap != NULL);
+	}
+}
+
+void ImageRenderer::render (QPainter* aPainter, const QRectF& aBounds )
+{
+	// it is possible to have both - we prefer the Svg over the Bitmap
+	if (theSvg)
+		theSvg->render(aPainter, aBounds);
+	if (theBitmap)
+		aPainter->drawPixmap(aBounds, *theBitmap, theBitmap->rect());
+}
+
+void ImageRenderer::render (QPainter* aPainter)
+{
+	// it is possible to have both - we prefer the Svg over the Bitmap
+	if (theSvg)
+		theSvg->render(aPainter);
+	if (theBitmap)
+	{
+		QRect myBounds = aPainter->viewport();
+		aPainter->drawPixmap(myBounds, *theBitmap, theBitmap->rect());
+	}
+}
+
+QSize ImageRenderer::defaultSize(void)
+{
+	if (theSvg)
+		return theSvg->defaultSize();
+	if (theBitmap)
+		return theBitmap->size();
+	return QSize(1,1);
+}

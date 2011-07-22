@@ -47,7 +47,7 @@ TBItem::TBItem(unsigned int aCount,
 	if (anIconName.isEmpty())
 		createIcon();
 	else
-		theIcon = ImageStore::getQIcon(anIconName,
+		theIcon = ImageRendererStore::getQIcon(anIconName,
 				  QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 
 	if (aName.isEmpty())
@@ -95,7 +95,7 @@ void TBItem::createIcon(void)
 	{
 		// let's hope this works.
 		// TODO: if not, we can still try the image name property...
-		theIcon = ImageStore::getQIcon(theName,
+		theIcon = ImageRendererStore::getQIcon(theName,
 					QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE));
 	}
 	setIcon(theIcon);
@@ -153,7 +153,7 @@ bool TBItem::modifyCount(int delta)
 	else
 	{
 		// replace icon by cross
-		setIcon(ImageStore::getQIcon("BigCross",
+		setIcon(ImageRendererStore::getQIcon("BigCross",
 						QSize(TOOLBOX_ICON_SIZE,TOOLBOX_ICON_SIZE)));
 		return true;
 	}

@@ -30,8 +30,8 @@
 // Constructors/Destructors
 //
 
-DrawDetonatorBox::DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType)
-	: DrawObject(aBaseObjectPtr, anImageName, anImageType)
+DrawDetonatorBox::DrawDetonatorBox (BaseObject* aBaseObjectPtr, const QString& anImageName)
+	: DrawObject(aBaseObjectPtr, anImageName)
 {
 	// everything is done in the DrawObject constructor
 	DEBUG5("DrawDetonatorBox\n");

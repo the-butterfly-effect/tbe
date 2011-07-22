@@ -171,7 +171,7 @@ void EditObjectDialog::readFromObject(BaseObject* aBaseObjectPtr)
 			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
 			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
 			if (myValue != aBaseObjectPtr->theProps.getDefaultProperty(*myI))
-				myValueItem->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
+				myValueItem->setIcon(ImageRendererStore::getQIcon("IconModified", QSize(32,32)));
 			ui.tableWidget->setItem(myRow, 0, myValueItem);
 
 			myRow++;

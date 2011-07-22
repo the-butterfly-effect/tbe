@@ -234,8 +234,6 @@ void DrawWorld::redrawBGPixmap(void)
 	//  figure out new width and height
 	QSize myVPSize = views()[0]->size();
 
-printf("DrawWorld::redrawBGPixmap(void) for size %dx%d\n", myVPSize.width(), myVPSize.height());
-
 	//	replace existing QPixmap
 	theBackgroundPixmap = QPixmap(myVPSize);
 	QPainter p(&theBackgroundPixmap);
@@ -244,7 +242,7 @@ printf("DrawWorld::redrawBGPixmap(void) for size %dx%d\n", myVPSize.width(), myV
 	// then let the QGraphicsScene worry about the gradient...
 	if (theWorldPtr->theBackground.theImageName.isEmpty() == false)
 	{
-		QPixmap* myPtr = ImageStore::getPNGPixmap(theWorldPtr->theBackground.theImageName);
+		QPixmap* myPtr = ImageRendererStore::getPixmap(theWorldPtr->theBackground.theImageName);
 		if (myPtr != NULL)
 		{
 			p.save();

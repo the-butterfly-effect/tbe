@@ -70,7 +70,7 @@ bool ResizingGraphicsView::handleDnD(BaseObject* aBOPtr)
 	myMimeDataPtr->setData(TBItem::DrawWorldMimeType, itemData);
 
 	// add an icon to the QDrag
-	QPixmap myPixmap = ImageStore::getPNGPixmap("ToRight")->scaledToWidth(32);
+	QPixmap myPixmap = ImageRendererStore::getPixmap("ToRight")->scaledToWidth(32);
 	QDrag *drag = new QDrag(this);
 	drag->setMimeData(myMimeDataPtr);
 	drag->setHotSpot(QPoint(myPixmap.width()/2, myPixmap.height()/2));
