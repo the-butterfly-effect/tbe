@@ -20,3 +20,8 @@ INCLUDEPATH += \
     ../../src/model \
     ../../src/view \
     ../../src/base
+
+# for code coverage
+QMAKE_CXXFLAGS_DEBUG += -ftest-coverage -fprofile-arcs
+QMAKE_CFLAGS_DEBUG   += -ftest-coverage -fprofile-arcs
+QMAKE_LFLAGS_DEBUG   += -fprofile-arcs

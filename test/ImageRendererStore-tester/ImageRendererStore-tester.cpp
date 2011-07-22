@@ -71,13 +71,36 @@ private slots:
 
 	void checkNotFound()
 	{
-	  // if we can access the NotFound file,
-	  // we should get a valid renderer back...
-	  ImageRenderer* myIRPtr1 = ImageRendererStore::getImageRenderer("hello-nonexisting-file", false);
-	  QVERIFY(myIRPtr1 != NULL);
-	  ImageRenderer* myIRPtr2 = ImageRendererStore::getImageRenderer("NotFound", true);
-	  QVERIFY(myIRPtr2 != NULL);
-	  QVERIFY(myIRPtr1 == myIRPtr2);
+		// if we can access the NotFound file,
+		// we should get a valid renderer back...
+		ImageRenderer* myIRPtr1 = ImageRendererStore::getImageRenderer("hello-nonexisting-file", false);
+		QVERIFY(myIRPtr1 != NULL);
+		ImageRenderer* myIRPtr2 = ImageRendererStore::getImageRenderer("NotFound", true);
+		QVERIFY(myIRPtr2 != NULL);
+		QVERIFY(myIRPtr1 == myIRPtr2);
+	}
+
+
+	void checkGetPixmap()
+	{
+		// Image
+		QPixmap* myPixmap1 = ImageRendererStore::getPixmap("hello-nonexisting-file-3");
+		QVERIFY(myPixmap1 == NULL);
+		QPixmap* myPixmap2 = ImageRendererStore::getPixmap("NotFound");
+		QVERIFY(myPixmap2 != NULL);
+	}
+
+	void checkGetQIcon()
+	{
+		// we should always get a valid QIcon - it just may be empty...
+		QIcon myIcon1 = ImageRendererStore::getQIcon("hello-nonexisting-file-4", QSize(255,255));
+		QVERIFY(myIcon1.isNull() == false);
+		QIcon myIcon2 = ImageRendererStore::getQIcon("ActionRotate", QSize(355,355));
+		QVERIFY(myIcon2.isNull() == false);
+	}
+
+	void checkGetSvgRenderer()
+	{
 	}
 
 };
