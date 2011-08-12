@@ -1,8 +1,8 @@
-Welcome to "The Butterfly Effect", Milestone 8.
+Welcome to "The Butterfly Effect", Milestone 9.
 
 This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
-notice several new levels, a much improved user interface and a level creator!
+notice several new levels and several new objects!
 
 You can download the game at its website, 
 go to          http://the-butterfly-effect.org/
@@ -14,27 +14,28 @@ to run the game.
 If you downloaded the installer, you now have an icon on your desktop: 
 just (double-)click it to enjoy the game.
 
-There are 35 levels.
+There are 40 levels.
 All levels are playable, a few levels may need a bit more polish.
 
-New features & highlights in Milestone 8:
-    * Level Creator - see below
-    * 6 new levels, 
-      introducing the following new objects:
-      - Balloon
-      - Cactus (pops Balloon)
-      - Bed of Nails (also pops Balloon)
-      - Link (to connect two objects)
-      - Translation Joint (limits movement to 1 axis, prevents rotation)
-      - the ability to put a torque and/or speed on a PivotPoint
-    * Many fixes to the usability of the user interface
-    * Partial translations into Spanish, full translation into Dutch.
+New features & highlights in Milestone 9:
+    * many new and even more repolished levels,
+    * several interesting new objects:
+      - DetonatorBox and Dynamite
+      - QuarterArc
+      - Spring
+    * many many bugfixes and level cheats were resolved
 
+Why did this release take so long?
+The last three months considerable time has been spent trying to find two GUI 
+bugs that prevent correct operation with modern QT versions. These bugs have
+not been found - we will only release staticly linked builds.
+Milestone A will see a bright and shiny new GUI, requiring at least QT 4.7.
 
 The Level Creator
-This is a new feature of TBE. You can now adapt the existing levels or create your own.
-Currently the Level Creator is still a bit rough on the edges. If you have never worked with
-CAD applications, it may not be your cup of tea yet - but please try!
+This is still a new feature of TBE. You can now adapt the existing levels or 
+create your own. Currently the Level Creator is still a bit rough on the edges.
+If you have never worked with CAD applications, it may not be your cup of 
+tea yet - but please try!
 We are writing a manual for the Level Creator in our wiki:
 https://sf.net/apps/trac/tbe/wiki/LevelCreator
 
@@ -44,7 +45,8 @@ a ticket against it or mail the level mailing list. More info is availble in the
 Help menus.
 
 Running in English, Dutch or Spanish
-We promise to make this selectable in the UI for the next milestone (ticket 83).
+We promise again to make this selectable in the UI for the next milestone 
+(see ticket:83).
 However, if you need to change language, start TBE from the command line and
 type:
    LANG="nl" ./tbe
@@ -57,12 +59,13 @@ Known bugs and issues:
   * The Level Creator isn't finished, nor really polished yet.
     The manual of the Level Creator discusses the limitations, 
     tickets 132, 147, 149, 151, 171, 177, 178 and others.
-  * Do not use the Level Creator in any language other than English, as it may
-    affect how TBE is writing its XML files. Tickets 83 and 220.
 
 
 We thank our beta players for their comments on the playability of the levels.
-Especially all attendees at T-Dose 2010, who really helped!
+Especially: * All attendees at T-Dose 2010, 
+            * Naxxatoe, 
+            * "ankouglio", "doe544", "e6222f5c" and "jillest"
+            * Margo, Bart, Jelle, Aschwin and Quinten.
 
 We would love to hear your thoughts and comments about the game!
 
