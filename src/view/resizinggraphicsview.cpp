@@ -48,7 +48,7 @@ ResizingGraphicsView::ResizingGraphicsView (QWidget* aParent)
 	setSizePolicy(vpol);
 	updatePixelsPerUnit();
 
-	setCacheMode(QGraphicsView::CacheBackground);
+//	setCacheMode(QGraphicsView::CacheBackground);
 	setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
 }
 
