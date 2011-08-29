@@ -38,9 +38,12 @@ DrawObject::DrawObject(BaseObject* aBaseObjectPtr, const QString& anImageName) :
 
 	// FIXME/TODO: Introduce multiple images handling
 	// FIXME/TODO: Introduce SVG rendering - or maybe still use QGraphicsSvgItem for that?
+	// (note: ImageRenderStore does already handle SVG if needed, but it guesses for bitmap sizes)
 	QPixmap* myPixmapPtr = ImageRendererStore::getPixmap(anImageName);
 	Q_ASSERT(myPixmapPtr!=NULL);
 	setPixmap(*myPixmapPtr);
+
+	// FIXME/TODO: set origin, scale, rotate
 }
 
 DrawObject::~DrawObject()
