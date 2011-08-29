@@ -54,12 +54,9 @@ QString ImageRendererStore::getFilePath(const QString& anImageName, const QStrin
 	QStringList mySearchPath = (BINARY_DIRECTORY+":"+IMAGES_DIRECTORY)
 							   .split(":",QString::SkipEmptyParts);
 	// add the local directory of the level file to the search path - at the beginning...
-#ifdef TESTCODE
+	// FIXME/TODO: test code here!!!
 	mySearchPath.push_front(".");
 	mySearchPath.push_back("../../images");
-#else
-	mySearchPath.push_front(Level::getPathToLevelFile());
-#endif
 	QStringList::iterator i;
 	for (i=mySearchPath.begin(); i!=mySearchPath.end(); ++i)
 	{

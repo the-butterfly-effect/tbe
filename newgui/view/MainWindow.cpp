@@ -7,7 +7,8 @@
 
 
 #include "DropDownWindow.h"
-
+#include "BaseObject.h"
+#include "DrawObject.h"
 
 class QGraphicsRectWidget : public QGraphicsWidget
 {
@@ -69,4 +70,7 @@ void MainWindow::setupView()
 	theScenePtr->addItem(theDropDown);
 	theDropDown->setup(ui->menuBar);
 
+	BaseObject* theBBPtr = new BaseObject();
+	DrawObject* theDOPtr = new DrawObject(theBBPtr, "BowlingBall");
+	theScenePtr->addItem(theDOPtr);
 }
