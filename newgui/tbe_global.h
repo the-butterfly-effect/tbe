@@ -40,20 +40,25 @@ const float SQRT2 = 1.41421356;
  * level 6 = timing info on serial port
  */
 #if !defined(NDEBUG)
-#include <stdio.h>
+#include <QDebug>
 #include <time.h>
 extern int theVerbosity;	// actually defined in main.cpp
 #define MAX_VERBOSITY 6
 // note: the below is actually GCC-specific, see "info:/gcc/Variadic Macros"
-#define DEBUG1(format, ...)	{if (theVerbosity>=1) printf("**** t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG2(format, ...)	{if (theVerbosity>=2) printf("***  t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG3(format, ...)	{if (theVerbosity>=3) printf("**   t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG4(format, ...)	{if (theVerbosity>=4) printf("*    t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG4NT(format, ...)	{if (theVerbosity>=4) printf(format, ## __VA_ARGS__);}
-#define DEBUG5(format, ...)	{if (theVerbosity>=5) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
-#define DEBUG6(format, ...)	{if (theVerbosity>=6) printf("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG1(format, ...)	{if (theVerbosity>=1) qDebug("**** t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG2(format, ...)	{if (theVerbosity>=2) qDebug("***  t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG3(format, ...)	{if (theVerbosity>=3) qDebug("**   t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG4(format, ...)	{if (theVerbosity>=4) qDebug("*    t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+//#define DEBUG4NT(format, ...)	{if (theVerbosity>=4) qDebug(format, ## __VA_ARGS__);}
+#define DEBUG5(format, ...)	{if (theVerbosity>=5) qDebug("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
+#define DEBUG6(format, ...)	{if (theVerbosity>=6) qDebug("     t=%03ld: " format, time(NULL)%1000, ## __VA_ARGS__);}
 // only for use during debugging - print a backtrace at current position
 extern void printBacktrace(void);
+#define DEBUG1ENTRY			{if (theVerbosity>=1) qDebug() << "entry: " << Q_FUNC_INFO;}
+#define DEBUG3ENTRY			{if (theVerbosity>=3) qDebug() << "entry: " << Q_FUNC_INFO;}
+#define DEBUG4ENTRY			{if (theVerbosity>=4) qDebug() << "entry: " << Q_FUNC_INFO;}
+#define DEBUG5ENTRY			{if (theVerbosity>=5) qDebug() << "entry: " << Q_FUNC_INFO;}
+#define DEBUG6ENTRY			{if (theVerbosity>=6) qDebug() << "entry: " << Q_FUNC_INFO;}
 #else
 #define DEBUG1(format, ...)     { /**/ }
 #define DEBUG2(format, ...)     { /**/ }
