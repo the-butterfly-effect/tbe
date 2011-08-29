@@ -9,19 +9,23 @@ QT       += core gui xml svg
 TARGET = tbe
 TEMPLATE = app
 
-INCLUDEPATH += . view
+INCLUDEPATH += . view model
 
 SOURCES += main.cpp\
-        view/MainWindow.cpp \
-    view/ImageStore.cpp \
-    view/resizinggraphicsview.cpp \
-    view/DropDownWindow.cpp
+	model/BaseObject.cpp \
+	view/DrawObject.cpp \
+	view/DropDownWindow.cpp \
+	view/ImageStore.cpp \
+	view/MainWindow.cpp \
+	view/resizinggraphicsview.cpp
 
-HEADERS  += view/MainWindow.h \
-    view/ImageStore.h \
-    tbe_global.h \
-    view/resizinggraphicsview.h \
-    view/DropDownWindow.h
+HEADERS  += tbe_global.h \
+	model/BaseObject.h \
+	view/DrawObject.h \
+	view/DropDownWindow.h \
+	view/ImageStore.h \
+	view/MainWindow.h \
+	view/resizinggraphicsview.h
 
 FORMS    += view/MainWindow.ui
 
