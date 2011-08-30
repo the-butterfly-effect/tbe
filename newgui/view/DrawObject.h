@@ -57,7 +57,7 @@ public:
 signals:
 
 public slots:
-
+	void rotateSomeMore(void);
 
 protected:
 	// Protected attributes

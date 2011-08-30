@@ -22,15 +22,16 @@ void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
 	theLayoutPtr->addItem(textEdit);
 	theLayoutPtr->addItem(pushButton);
 	setLayout(theLayoutPtr);
+	setZValue(1000);
 
 
 	// and the animation mumbo-jumbo
 	//
 	QState* myUpStatePtr = new QState();
-	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80, -80), QSizeF(0, 40)));
+	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80, -380), QSizeF(0, 40)));
 	theStateMachine.addState(myUpStatePtr);
 	QState* myDownStatePtr = new QState();
-	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,100), QSizeF(0,0)));
+	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,-200), QSizeF(0,0)));
 	theStateMachine.addState(myDownStatePtr);
 
 	theStateMachine.setInitialState(myUpStatePtr);

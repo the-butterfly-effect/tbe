@@ -18,7 +18,6 @@
 
 #include "DrawObject.h"
 #include "BaseObject.h"
-#include "ImageStore.h"
 
 #include "tbe_global.h"
 
@@ -38,12 +37,21 @@ DrawObject::DrawObject(BaseObject* aBaseObjectPtr, const QString& anImageName) :
 
 	// FIXME/TODO: Introduce multiple images handling
 	// FIXME/TODO: Introduce SVG rendering - or maybe still use QGraphicsSvgItem for that?
-	// (note: ImageRenderStore does already handle SVG if needed, but it guesses for bitmap sizes)
-	QPixmap* myPixmapPtr = ImageRendererStore::getPixmap(anImageName);
+	QPixmap* myPixmapPtr = new QPixmap(anImageName);
 	Q_ASSERT(myPixmapPtr!=NULL);
 	setPixmap(*myPixmapPtr);
 
-	// FIXME/TODO: set origin, scale, rotate
+	// set origin, scale, rotate
+	QTransform theTransform;
+	theTransform.scale(theBaseObjectPtr->getTheWidth()/boundingRect().width(),
+					   theBaseObjectPtr->getTheHeight()/boundingRect().height());
+	theTransform.translate(-boundingRect().width()/2.0,-boundingRect().height()/2.0);
+	setTransform(theTransform,false);
+
+	setPos(theBaseObjectPtr->getOrigCenter().toQPointF());
+
+	// TODO/FIXME: make rotation work correctly
+	setRotation(theBaseObjectPtr->getOrigCenter().angleInDegrees());
 }
 
 DrawObject::~DrawObject()
@@ -51,4 +59,8 @@ DrawObject::~DrawObject()
 	// nothing to do yet :-)
 }
 
+void DrawObject::rotateSomeMore(void)
+{
+	setRotation(5);
+}
 

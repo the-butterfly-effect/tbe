@@ -108,6 +108,9 @@ public:
 	Vector  toVector(void) const
 	{ return Vector(x,y); }
 
+	qreal angleInDegrees(void) const
+	{ return angle*180/PI; }
+
 	qreal length(void);
 };
 

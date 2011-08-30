@@ -62,8 +62,9 @@ void MainWindow::setupMenu(void)
 void MainWindow::setupView()
 {
 	assert(theScenePtr==NULL);
-	theScenePtr = new QGraphicsScene(0, 0, 300, 300);
-	theScenePtr->setBackgroundBrush(Qt::black);
+	theScenePtr = new QGraphicsScene(0, -300, 300, 300);
+	theScenePtr->setBackgroundBrush(Qt::blue);
+	theScenePtr->addRect(0,0,300,-300);
 	ui->graphicsView->setScene(theScenePtr);
 
 	DropDownWindow* theDropDown = new DropDownWindow;
@@ -71,6 +72,18 @@ void MainWindow::setupView()
 	theDropDown->setup(ui->menuBar);
 
 	BaseObject* theBBPtr = new BaseObject();
-	DrawObject* theDOPtr = new DrawObject(theBBPtr, "BowlingBall");
+	theBBPtr->setTheHeight(25);
+	theBBPtr->setTheWidth(25);
+	theBBPtr->setOrigCenter(Position(40,40,1.57));
+	DrawObject* theDOPtr = new DrawObject(theBBPtr, "../images/QuarterArc.png");
 	theScenePtr->addItem(theDOPtr);
+
+	// and prove that rotation doesn't work as it should:
+	BaseObject* theBBPtr2 = new BaseObject();
+	theBBPtr2->setTheHeight(25);
+	theBBPtr2->setTheWidth(25);
+	theBBPtr2->setOrigCenter(Position(40,40,0));
+	DrawObject* theDOPtr2 = new DrawObject(theBBPtr2, "../images/QuarterArc.png");
+	theScenePtr->addItem(theDOPtr2);
+
 }
