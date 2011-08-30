@@ -9,9 +9,10 @@ QT       += core gui xml svg
 TARGET = tbe
 TEMPLATE = app
 
-INCLUDEPATH += . view model
+INCLUDEPATH += . view model box2d
 
 include(main.pri)
+include(box2d/box2d.pri)
 include(model/model.pri)
 include(view/view.pri)
 
