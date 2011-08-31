@@ -7,10 +7,8 @@
 
 
 #include "DropDownWindow.h"
-//#include "AbstractObject.h"
-//#include "ViewObject.h"
-#include "BaseObject.h"
-#include "DrawObject.h"
+#include "AbstractObject.h"
+#include "ViewObject.h"
 
 class QGraphicsRectWidget : public QGraphicsWidget
 {

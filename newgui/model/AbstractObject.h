@@ -54,7 +54,7 @@
 //
 
 /**
-  * class BaseObject
+  * class AbstractObject
   *
   * abstract base class for everything in the simulation model
   */

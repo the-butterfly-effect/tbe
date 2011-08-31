@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "DrawObject.h"
-#include "BaseObject.h"
+#include "ViewObject.h"
+#include "AbstractObject.h"
 
 #include "tbe_global.h"
 
@@ -25,7 +25,7 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	// nothing to do yet :-)
-	Q_ASSERT(aBaseObjectPtr!=NULL);
+	Q_ASSERT(anAbstractObjectPtr!=NULL);
 }
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :

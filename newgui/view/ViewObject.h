@@ -25,7 +25,7 @@
 class AbstractObject;
 
 
-/** class DrawObject
+/** class ViewObject
   *
   * This class abstracts the actual drawing of objects
   *
