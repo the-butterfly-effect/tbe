@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef BASEOBJECT_H
-#define BASEOBJECT_H
+#ifndef ABSTRACTOBJECT_H
+#define ABSTRACTOBJECT_H
 
 #include <QtGlobal>
 #include "Position.h"
@@ -59,10 +59,10 @@
   * abstract base class for everything in the simulation model
   */
 
-class BaseObject
+class AbstractObject
 {
 public:
-    BaseObject();
+	AbstractObject();
 
 
 	/// Get the Position of the object.
@@ -133,4 +133,4 @@ private:
 
 };
 
-#endif // BASEOBJECT_H
+#endif // ABSTRACTOBJECT_H

@@ -7,6 +7,8 @@
 
 
 #include "DropDownWindow.h"
+//#include "AbstractObject.h"
+//#include "ViewObject.h"
 #include "BaseObject.h"
 #include "DrawObject.h"
 
@@ -71,19 +73,19 @@ void MainWindow::setupView()
 	theScenePtr->addItem(theDropDown);
 	theDropDown->setup(ui->menuBar);
 
-	BaseObject* theBBPtr = new BaseObject();
-	theBBPtr->setTheHeight(25);
-	theBBPtr->setTheWidth(25);
-	theBBPtr->setOrigCenter(Position(40,40,1.57));
-	DrawObject* theDOPtr = new DrawObject(theBBPtr, "../images/QuarterArc.png");
-	theScenePtr->addItem(theDOPtr);
+	AbstractObject* theAOPtr = new AbstractObject();
+	theAOPtr->setTheHeight(25);
+	theAOPtr->setTheWidth(25);
+	theAOPtr->setOrigCenter(Position(40,40,1.57));
+	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
+	theScenePtr->addItem(theVOPtr);
 
 	// and prove that rotation doesn't work as it should:
-	BaseObject* theBBPtr2 = new BaseObject();
-	theBBPtr2->setTheHeight(25);
-	theBBPtr2->setTheWidth(25);
-	theBBPtr2->setOrigCenter(Position(40,40,0));
-	DrawObject* theDOPtr2 = new DrawObject(theBBPtr2, "../images/QuarterArc.png");
-	theScenePtr->addItem(theDOPtr2);
+	AbstractObject* theAOPtr2 = new AbstractObject();
+	theAOPtr2->setTheHeight(25);
+	theAOPtr2->setTheWidth(25);
+	theAOPtr2->setOrigCenter(Position(40,40,0));
+	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
+	theScenePtr->addItem(theVOPtr2);
 
 }

@@ -21,18 +21,18 @@
 
 #include "tbe_global.h"
 
-DrawObject::DrawObject(BaseObject* aBaseObjectPtr) :
-	QGraphicsPixmapItem(NULL), theBaseObjectPtr(aBaseObjectPtr)
+ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
+	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	// nothing to do yet :-)
 	Q_ASSERT(aBaseObjectPtr!=NULL);
 }
 
-DrawObject::DrawObject(BaseObject* aBaseObjectPtr, const QString& anImageName) :
-	QGraphicsPixmapItem(NULL), theBaseObjectPtr(aBaseObjectPtr)
+ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :
+	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	DEBUG5ENTRY;
-	Q_ASSERT(aBaseObjectPtr!=NULL);
+	Q_ASSERT(anAbstractObjectPtr!=NULL);
 	Q_ASSERT(anImageName.isEmpty() == false);
 
 	// FIXME/TODO: Introduce multiple images handling
@@ -43,24 +43,19 @@ DrawObject::DrawObject(BaseObject* aBaseObjectPtr, const QString& anImageName) :
 
 	// set origin, scale, rotate
 	QTransform theTransform;
-	theTransform.scale(theBaseObjectPtr->getTheWidth()/boundingRect().width(),
-					   theBaseObjectPtr->getTheHeight()/boundingRect().height());
+	theTransform.scale(theAbstractObjectPtr->getTheWidth()/boundingRect().width(),
+					   theAbstractObjectPtr->getTheHeight()/boundingRect().height());
 	theTransform.translate(-boundingRect().width()/2.0,-boundingRect().height()/2.0);
 	setTransform(theTransform,false);
 
-	setPos(theBaseObjectPtr->getOrigCenter().toQPointF());
+	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
 
 	// TODO/FIXME: make rotation work correctly
-	setRotation(theBaseObjectPtr->getOrigCenter().angleInDegrees());
+	setRotation(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
 }
 
-DrawObject::~DrawObject()
+ViewObject::~ViewObject()
 {
 	// nothing to do yet :-)
-}
-
-void DrawObject::rotateSomeMore(void)
-{
-	setRotation(5);
 }
 
