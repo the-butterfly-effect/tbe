@@ -1,8 +1,8 @@
 
 SOURCES += \
-    model/BaseObject.cpp \
+    model/AbstractObject.cpp \
     model/Position.cpp
 
 HEADERS += \
-    model/BaseObject.h \
+    model/AbstractObject.h \
     model/Position.h
