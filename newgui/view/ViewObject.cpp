@@ -41,16 +41,16 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	Q_ASSERT(myPixmapPtr!=NULL);
 	setPixmap(*myPixmapPtr);
 
-	// set origin, scale, rotate
+	// set transformations: origin, scale, rotate
+	setTransformOriginPoint(boundingRect().width()/2.0,boundingRect().height()/2.0);
 	QTransform theTransform;
 	theTransform.scale(theAbstractObjectPtr->getTheWidth()/boundingRect().width(),
 					   theAbstractObjectPtr->getTheHeight()/boundingRect().height());
 	theTransform.translate(-boundingRect().width()/2.0,-boundingRect().height()/2.0);
 	setTransform(theTransform,false);
 
+	// and get us to the final starting position...
 	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
-
-	// TODO/FIXME: make rotation work correctly
 	setRotation(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
 }
 
