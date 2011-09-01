@@ -27,13 +27,10 @@ void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
 
 	// and the animation mumbo-jumbo
 	//
-	QState* myUpStatePtr = new QState();
+	QState* myUpStatePtr = new QState(&theStateMachine);
 	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80, -380), QSizeF(0, 40)));
-	theStateMachine.addState(myUpStatePtr);
-	QState* myDownStatePtr = new QState();
+	QState* myDownStatePtr = new QState(&theStateMachine);
 	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,-200), QSizeF(0,0)));
-	theStateMachine.addState(myDownStatePtr);
-
 	theStateMachine.setInitialState(myUpStatePtr);
 
 	// setup a custom animation
