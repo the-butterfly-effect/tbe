@@ -43,9 +43,6 @@ public slots:
 	void onFailed(void)
 	{ emit failed(); }
 
-private slots:
-	void stateEntered();
-
 private:
 	QStateMachine theSimStateMachine;
 

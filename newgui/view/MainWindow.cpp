@@ -82,6 +82,6 @@ void MainWindow::setupView()
 
 	theScenePtr->addRect(30,-50,20,20);
 
-	SimulationControls myControls;
-	myControls.setup(ui->menuBar);
+	SimulationControls* myControls = new SimulationControls;
+	myControls->setup(ui->menuBar);
 }

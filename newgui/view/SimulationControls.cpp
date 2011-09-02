@@ -78,25 +78,5 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	theFailedState ->assignProperty(myFFAction,   "enabled", true);
 	theFailedState ->assignProperty(myResetAction,"enabled", false);
 
-	// for debug purposes...
-/*	connect(&theStateMachine, SIGNAL(started()), this, SLOT(stateEntered()));
-	connect(theForwardState, SIGNAL(entered()),this,SLOT(stateEntered()));
-	connect(thePausedState, SIGNAL(entered()),this,SLOT(stateEntered()));
-	connect(theRunningState, SIGNAL(entered()),this,SLOT(stateEntered()));
-	connect(theStoppedState, SIGNAL(entered()),this,SLOT(stateEntered()));
-	connect(theFailedState, SIGNAL(entered()),this,SLOT(stateEntered()));
-*/
-	emit stateEntered();
-	QTimer::singleShot(1000, this, SLOT(stateEntered()));
 	emit theSimStateMachine.start();
-	printf("do we ever return?\n");
-	emit stateEntered();
-}
-
-
-void SimulationControls::stateEntered(void)
-{
-	printf("state XXX entered\n");
-	printf("error: %d\n", theSimStateMachine.error());
-	printf("isrun: %d\n", theSimStateMachine.isRunning());
 }
