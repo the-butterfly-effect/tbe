@@ -10,6 +10,8 @@
 #include "AbstractObject.h"
 #include "ViewObject.h"
 
+#include "SimulationControls.h"
+
 class QGraphicsRectWidget : public QGraphicsWidget
 {
 public:
@@ -72,18 +74,14 @@ void MainWindow::setupView()
 	theDropDown->setup(ui->menuBar);
 
 	AbstractObject* theAOPtr = new AbstractObject();
-	theAOPtr->setTheHeight(25);
-	theAOPtr->setTheWidth(25);
+	theAOPtr->setTheHeight(20);
+	theAOPtr->setTheWidth(20);
 	theAOPtr->setOrigCenter(Position(40,40,1.57));
 	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
 	theScenePtr->addItem(theVOPtr);
 
-	// and prove that rotation doesn't work as it should:
-	AbstractObject* theAOPtr2 = new AbstractObject();
-	theAOPtr2->setTheHeight(25);
-	theAOPtr2->setTheWidth(25);
-	theAOPtr2->setOrigCenter(Position(40,40,0));
-	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
-	theScenePtr->addItem(theVOPtr2);
+	theScenePtr->addRect(30,-50,20,20);
 
+	SimulationControls myControls;
+	myControls.setup(ui->menuBar);
 }
