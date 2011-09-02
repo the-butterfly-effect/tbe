@@ -10,7 +10,7 @@
 
 void SimState::onEntry ( QEvent * event )
 {
-	printf("state %s onEntry!\n", ASCII(theName));
+	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
 	QState::onEntry(event);
 }
 
@@ -33,14 +33,11 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	QState* theRunningState = new SimState(&theSimStateMachine, "Running");
 	QState* theStoppedState = new SimState(&theSimStateMachine, "Stopped");
 	theSimStateMachine.setInitialState(theStoppedState);
-	theSimStateMachine.setErrorState(theFailedState);
 
 	// add actions
 	QAction* myPlayAction = new QAction(thePlayIcon, "&Play", NULL);
 	QAction* myResetAction = new QAction(theResetIcon, "&Reset", NULL);
-//	myResetAction->setEnabled(false);
 	QAction* myFFAction = new QAction(theFwdIcon, "F&ast", NULL);
-//	myFFAction->setEnabled(false);
 	aMenuBarPtr->addAction(myPlayAction);
 	aMenuBarPtr->addAction(myFFAction);
 	aMenuBarPtr->addAction(myResetAction);
@@ -50,8 +47,9 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	theRunningState->addTransition(myPlayAction, SIGNAL(triggered()), thePausedState);
 	theRunningState->addTransition(myFFAction, SIGNAL(triggered()), theForwardState);
 	theRunningState->addTransition(this, SIGNAL(failed()), theFailedState);
-	thePausedState->addTransition(myPlayAction, SIGNAL(triggered()), theRunningState);
-	thePausedState->addTransition(myResetAction, SIGNAL(triggered()), theStoppedState);
+	thePausedState ->addTransition(myPlayAction, SIGNAL(triggered()), theRunningState);
+	thePausedState ->addTransition(myResetAction, SIGNAL(triggered()), theStoppedState);
+	theFailedState ->addTransition(myResetAction, SIGNAL(triggered()), theStoppedState);
 	theForwardState->addTransition(myFFAction, SIGNAL(triggered()), theRunningState);
 	theForwardState->addTransition(myPlayAction, SIGNAL(triggered()), theRunningState);
 	theForwardState->addTransition(this, SIGNAL(failed()), theFailedState);
@@ -82,6 +80,8 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	theFailedState ->assignProperty(myPlayAction, "enabled", false);
 	theFailedState ->assignProperty(myFFAction,   "enabled", true);
 	theFailedState ->assignProperty(myResetAction,"enabled", false);
+
+	// TODO: hook up states to signals for ViewWorld/World
 
 	emit theSimStateMachine.start();
 }

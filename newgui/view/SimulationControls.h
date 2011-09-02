@@ -4,13 +4,14 @@
 #include <QtGui>
 #include "tbe_global.h"
 
+/// This direct QState derivative was created to have meaningful
+/// debug messages when SimulationControls switches state
 class SimState : public QState
 {
 	Q_OBJECT
 public:
 	explicit SimState(QState* parent = 0, const QString& aStateName = "")
-		: QState(parent), theName(aStateName)
-	{ printf("state %s start!\n", ASCII(theName));	}
+		: QState(parent), theName(aStateName) {}
 
 	virtual ~SimState()
 	{}
@@ -24,6 +25,10 @@ private:
 
 
 
+/** This state machine controls how the simulation runs
+  * inputs are the QActions that it creates in the menu bar and slots on its interface
+  * outputs are the signals that it sends when states change
+  */
 class SimulationControls : public QObject
 {
     Q_OBJECT
