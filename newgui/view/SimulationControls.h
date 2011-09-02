@@ -1,11 +1,28 @@
 #ifndef SIMULATIONCONTROLS_H
 #define SIMULATIONCONTROLS_H
 
-#include <QObject>
-#include <QStateMachine>
-#include <QState>
+#include <QtGui>
+#include "tbe_global.h"
 
-class QMenuBar;
+class SimState : public QState
+{
+	Q_OBJECT
+public:
+	explicit SimState(QState* parent = 0, const QString& aStateName = "")
+		: QState(parent), theName(aStateName)
+	{ printf("state %s start!\n", ASCII(theName));	}
+
+	virtual ~SimState()
+	{}
+
+protected:
+	virtual void onEntry ( QEvent * event );
+
+private:
+	QString theName;
+};
+
+
 
 class SimulationControls : public QObject
 {
@@ -30,7 +47,13 @@ private slots:
 	void stateEntered();
 
 private:
-	QStateMachine theStateMachine;
+	QStateMachine theSimStateMachine;
+
+	QIcon thePlayIcon;
+	QIcon thePauseIcon;
+	QIcon theStopIcon;
+	QIcon theResetIcon;
+	QIcon theFwdIcon;
 };
 
 #endif // SIMULATIONCONTROLS_H
