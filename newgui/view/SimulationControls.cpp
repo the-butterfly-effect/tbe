@@ -59,22 +59,27 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	// set the start conditions for the icons for each state
 	// upon entering stopped state, FF=disable, P=play     R=disabled
 	theStoppedState->assignProperty(myPlayAction, "icon", thePlayIcon);
+	theStoppedState->assignProperty(myPlayAction, "enabled", true);
 	theStoppedState->assignProperty(myFFAction,   "enabled", false);
 	theStoppedState->assignProperty(myResetAction,"enabled", false);
 	// upon entering running state, FF=enable, P=pause     R=disabled
 	theRunningState->assignProperty(myPlayAction, "icon", thePauseIcon);
+	theRunningState->assignProperty(myPlayAction, "enabled", true);
 	theRunningState->assignProperty(myFFAction,   "enabled", true);
 	theRunningState->assignProperty(myResetAction,"enabled", false);
 	// upon entering paused  state, FF=disable, P=play     R=enabled
 	thePausedState ->assignProperty(myPlayAction, "icon", thePlayIcon);
+	thePausedState ->assignProperty(myPlayAction, "enabled", true);
 	thePausedState ->assignProperty(myFFAction,   "enabled", false);
 	thePausedState ->assignProperty(myResetAction,"enabled", true);
 	// upon entering forward state, FF=enable, P=play      R=disabled
 	theForwardState->assignProperty(myPlayAction, "icon", thePlayIcon);
+	theForwardState->assignProperty(myPlayAction, "enabled", true);
 	theForwardState->assignProperty(myFFAction,   "enabled", false);
 	theForwardState->assignProperty(myResetAction,"enabled", false);
 	// upon entering failed  state, FF=disable, P=disable, R=enabled
-	theFailedState ->assignProperty(myPlayAction, "icon", thePauseIcon);
+	theFailedState ->assignProperty(myPlayAction, "icon", theStopIcon);
+	theFailedState ->assignProperty(myPlayAction, "enabled", false);
 	theFailedState ->assignProperty(myFFAction,   "enabled", true);
 	theFailedState ->assignProperty(myResetAction,"enabled", false);
 
