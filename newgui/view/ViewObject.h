@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011 Klaas van Gend
+ * This file copyright (C) 2011 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -47,9 +47,10 @@ public:
 	AbstractObject* getAbstractObjectPtr(void) const
 		{ return theAbstractObjectPtr; }
 
-signals:
+protected:
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent* )
+	{  }
 
-public slots:
 
 protected:
 	// Protected attributes
