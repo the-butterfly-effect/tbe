@@ -118,6 +118,8 @@ void PieMenu::setup()
 											"../images/ActionRotate.svg", false, this);
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
+	ActionIcon* myDelIcon = new ActionIcon(ActionIcon::ACTION_DELETE,
+											"../images/ActionDelete.svg", true, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	DEBUG1("start\n");
