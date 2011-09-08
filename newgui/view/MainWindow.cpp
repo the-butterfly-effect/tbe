@@ -1,3 +1,21 @@
+/* The Butterfly Effect
+ * This file copyright (C) 2011 Klaas van Gend
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation
+ * applicable version is GPL version 2 only.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
@@ -11,6 +29,7 @@
 #include "ViewObject.h"
 
 #include "SimulationControls.h"
+#include "PieMenu.h"
 
 class QGraphicsRectWidget : public QGraphicsWidget
 {
@@ -74,14 +93,24 @@ void MainWindow::setupView()
 	theDropDown->setup(ui->menuBar);
 
 	AbstractObject* theAOPtr = new AbstractObject();
-	theAOPtr->setTheHeight(20);
-	theAOPtr->setTheWidth(20);
-	theAOPtr->setOrigCenter(Position(40,40,1.57));
+	theAOPtr->setTheHeight(80);
+	theAOPtr->setTheWidth(80);
+	theAOPtr->setOrigCenter(Position(60,60,1.57));
 	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
 	theScenePtr->addItem(theVOPtr);
 
-	theScenePtr->addRect(30,-50,20,20);
+	theScenePtr->addRect(20,-100,80,80);
+
+	AbstractObject* theAOPtr2 = new AbstractObject();
+	theAOPtr2->setTheHeight(80);
+	theAOPtr2->setTheWidth(80);
+	theAOPtr2->setOrigCenter(Position(230,60,0.0));
+	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
+	theScenePtr->addItem(theVOPtr2);
 
 	SimulationControls* myControls = new SimulationControls;
 	myControls->setup(ui->menuBar);
+
+	PieMenu* myMenuPtr = new PieMenu(theVOPtr2);
+	myMenuPtr->setup();
 }

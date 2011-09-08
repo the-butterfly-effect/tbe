@@ -5,7 +5,8 @@ SOURCES += \
 	view/MainWindow.cpp \
 	view/ViewObject.cpp \
 	view/resizinggraphicsview.cpp \
-    view/SimulationControls.cpp
+    view/SimulationControls.cpp \
+    view/PieMenu.cpp
 
 HEADERS  += \
 	view/DropDownWindow.h \
@@ -13,6 +14,7 @@ HEADERS  += \
 	view/MainWindow.h \
 	view/ViewObject.h \
 	view/resizinggraphicsview.h \
-    view/SimulationControls.h
+    view/SimulationControls.h \
+    view/PieMenu.h
 
 FORMS    += view/MainWindow.ui
