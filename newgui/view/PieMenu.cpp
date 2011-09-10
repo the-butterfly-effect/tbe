@@ -46,18 +46,20 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
 
-	// we want to set our coords in parent's coord system
-	const qreal theRadius = 100.0;
-	QPointF myOuterPos(theRadius*cos(anActionType*45.0/180.0*PI), -theRadius*sin(anActionType*45.0/180.0*PI));
-
-	// TODO/FIXME: still have to change the origin of the transformations
 
 	// we want to scale ourselfs so we are 2/3 of theRadius as width
 	// (or height - square!) that allows the centerpiece to be twice
 	// as big and everything just touches :-)
-	qreal myCurwidth = boundingRect().width();
-	qreal myScale = (0.667*theRadius)/myCurwidth;
-	scale (myScale,myScale);
+	const qreal theRadius = 100.0;
+	qreal myCurWidth = boundingRect().width();
+	qreal mySmallWidth = 0.5*0.667*theRadius;
+	qreal mySmallScale = 2*mySmallWidth/myCurWidth;
+	qreal myLargeWidth = 0.5*1.333*theRadius;
+	qreal myLargeScale = 2*myLargeWidth/myCurWidth;
+	QPointF myOuterPos(theRadius*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
+					   -theRadius*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
+	QPointF mySInnerPos(-mySmallWidth, 0);
+	QPointF myLInnerPos(-myLargeWidth, 0);
 
 	QState* myStartState = new NamedState(&theIconStateMachine, "Start "+aFileName);
 	QState* myOuterState = new NamedState(&theIconStateMachine, "Outer "+aFileName);
@@ -67,32 +69,45 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	theIconStateMachine.setInitialState(myStartState);
 
 	// setup the transition animation
-	QPropertyAnimation* myAnim = new QPropertyAnimation(this, "pos");
-	myAnim->setDuration(500);
-	myAnim->setEasingCurve(QEasingCurve::InOutBack);
-	QAbstractTransition* myTransPtr;
+	QPropertyAnimation* myPosAnim = new QPropertyAnimation(this, "pos");
+	myPosAnim->setDuration(500);
+	myPosAnim->setEasingCurve(QEasingCurve::InOutBack);
+
+	QPropertyAnimation* mySizAnim = new QPropertyAnimation(this, "scale");
+	mySizAnim->setDuration(500);
+	mySizAnim->setEasingCurve(QEasingCurve::InOutBack);
 
 	// where to go from start...
+	QAbstractTransition* myTransPtr;
 	if (anActionType != ACTION_MOVE)
 		myTransPtr=myStartState->addTransition(aParentPtr, SIGNAL(moveToPositions()), myOuterState);
 	else
 		myTransPtr=myStartState->addTransition(aParentPtr, SIGNAL(moveToPositions()), myInnerState);
-	myTransPtr->addAnimation(myAnim);
+	myTransPtr->addAnimation(myPosAnim);
+	myTransPtr->addAnimation(mySizAnim);
 
 	// and the other state transitions
 	myTransPtr=myOuterState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myInnerState);
-	myTransPtr->addAnimation(myAnim);
+	myTransPtr->addAnimation(myPosAnim);
+	myTransPtr->addAnimation(mySizAnim);
 	myTransPtr=myInnerState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myActivState);
-	myTransPtr->addAnimation(myAnim);
+	myTransPtr->addAnimation(myPosAnim);
+	myTransPtr->addAnimation(mySizAnim);
 	myTransPtr=myInnerState->addTransition(this, SIGNAL(moveBack()), myOuterState);
-	myTransPtr->addAnimation(myAnim);
+	myTransPtr->addAnimation(myPosAnim);
+	myTransPtr->addAnimation(mySizAnim);
 
 	connect(this, SIGNAL(clicked(ActionIcon*)), aParentPtr, SLOT(iconClicked(ActionIcon*)));
 
 	// set the positions for the various states
-	myStartState->assignProperty(this, "pos", QPoint(0,0));
+	myStartState->assignProperty(this, "pos", mySInnerPos);
+	myStartState->assignProperty(this, "scale", mySmallScale);
+
 	myOuterState->assignProperty(this, "pos", myOuterPos);
-	myInnerState->assignProperty(this, "pos", QPoint(0,0));
+	myOuterState->assignProperty(this, "scale", mySmallScale);
+
+	myInnerState->assignProperty(this, "pos", myLInnerPos);
+	myInnerState->assignProperty(this, "scale", myLargeScale);
 
 	theIconStateMachine.start();
 }
@@ -114,15 +129,19 @@ void PieMenu::setup()
 {
 	ActionIcon* myHRezIcon = new ActionIcon(ActionIcon::ACTION_HRESIZE,
 											"../images/ActionResizeHori.svg", true, this);
+	ActionIcon* myVRezIcon = new ActionIcon(ActionIcon::ACTION_VRESIZE,
+											"../images/ActionResizeVerti.svg", true, this);
 	ActionIcon* myRotIcon  = new ActionIcon(ActionIcon::ACTION_ROTATE,
 											"../images/ActionRotate.svg", false, this);
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
 	ActionIcon* myDelIcon = new ActionIcon(ActionIcon::ACTION_DELETE,
 											"../images/ActionDelete.svg", true, this);
+	ActionIcon* mySpecialIcon = new ActionIcon(ActionIcon::ACTION_EDITSPECIAL,
+											"../images/ActionDelete.svg", false, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	DEBUG1("start\n");
-	QTimer::singleShot(1, this, SLOT(startMove()));
+	QTimer::singleShot(401, this, SLOT(startMove()));
 	DEBUG1("final\n");
 }

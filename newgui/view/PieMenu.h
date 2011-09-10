@@ -22,6 +22,8 @@
 #include <QGraphicsSvgItem>
 #include <QGraphicsWidget>
 #include <QStateMachine>
+#include <QGraphicsEffect>
+
 
 // forward declarations
 class ViewObject;
@@ -55,6 +57,8 @@ class ActionIcon : public QGraphicsSvgItem
 {
 	Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
+	Q_PROPERTY(qreal scale READ scale WRITE setScale)
+	// TODO: we can always add opacity later :-)
 
 private:
 	/// this enum identifies what type of action to create. By accident,
@@ -64,11 +68,11 @@ private:
 	{
 		ACTION_HRESIZE = 0,
 		ACTION_ROTATE = 1,
-//		ACTION_VRESIZE = 2,
+		ACTION_VRESIZE = 2,
 		ACTION_MOVE = 3,
-		ACTION_DELETE = 5,
+		ACTION_DELETE = 4,
 //		ACTION_EDITPROPERTIES,
-//		ACTION_EDITSPECIAL,
+		ACTION_EDITSPECIAL = 6,
 //		ACTION_SETPHONE
 	};
 
