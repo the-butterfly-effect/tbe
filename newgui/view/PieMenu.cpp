@@ -46,18 +46,17 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
 
-
-	// we want to scale ourselfs so we are 2/3 of theRadius as width
+	// we want to scale ourselfs so we are 2/3 of myRadius as width
 	// (or height - square!) that allows the centerpiece to be twice
 	// as big and everything just touches :-)
-	const qreal theRadius = 100.0;
+	const qreal myRadius = PieMenu::theRadius;
 	qreal myCurWidth = boundingRect().width();
-	qreal mySmallWidth = 0.5*0.667*theRadius;
+	qreal mySmallWidth = 0.5*0.667*myRadius;
 	qreal mySmallScale = 2*mySmallWidth/myCurWidth;
-	qreal myLargeWidth = 0.5*1.333*theRadius;
+	qreal myLargeWidth = 0.5*1.333*myRadius;
 	qreal myLargeScale = 2*myLargeWidth/myCurWidth;
-	QPointF myOuterPos(theRadius*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
-					   -theRadius*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
+	QPointF myOuterPos(myRadius*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
+					   -myRadius*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
 	QPointF mySInnerPos(-mySmallWidth, 0);
 	QPointF myLInnerPos(-myLargeWidth, 0);
 
@@ -116,7 +115,16 @@ ActionIcon::ActionIcon(ActionType anActionType,
 PieMenu::PieMenu(ViewObject* aParentPtr)
 	: QGraphicsWidget(aParentPtr)
 {
-	// nothing to do?
+	// Let's move ourselves to a position so our children
+	// will be at the center of the real object
+	QRectF myParentsSize = aParentPtr->boundingRect();
+	moveBy(myParentsSize.width()/2,myParentsSize.height()/2-0.67*theRadius);
+
+	// Let's scale ourselves so our children will have a fixed size
+	// (otherwise, they'll inherit our parent's coordinates including the
+	// scaling)
+
+	// TODO/FIXME
 }
 
 void PieMenu::iconClicked(ActionIcon* anIconPtr)
