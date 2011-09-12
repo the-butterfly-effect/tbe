@@ -31,18 +31,6 @@
 #include "SimulationControls.h"
 #include "PieMenu.h"
 
-class QGraphicsRectWidget : public QGraphicsWidget
-{
-public:
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *,
-			   QWidget *)
-	{
-		painter->fillRect(rect(), Qt::blue);
-	}
-};
-
-
-
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -102,9 +90,9 @@ void MainWindow::setupView()
 	theScenePtr->addRect(20,-100,80,80);
 
 	AbstractObject* theAOPtr2 = new AbstractObject();
-	theAOPtr2->setTheHeight(80);
-	theAOPtr2->setTheWidth(80);
-	theAOPtr2->setOrigCenter(Position(230,60,0.0));
+	theAOPtr2->setTheHeight(180);
+	theAOPtr2->setTheWidth(180);
+	theAOPtr2->setOrigCenter(Position(230,130,0.0));
 	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
 	theScenePtr->addItem(theVOPtr2);
 
