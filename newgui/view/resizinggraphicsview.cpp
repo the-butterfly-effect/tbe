@@ -19,7 +19,8 @@
 #include "resizinggraphicsview.h"
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
-    QGraphicsView(parent)
+	QGraphicsView(parent)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	setDragMode(QGraphicsView::NoDrag);
 }
