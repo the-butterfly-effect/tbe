@@ -33,13 +33,13 @@
 
 
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-	ui(new Ui::MainWindow),
-	theScenePtr(NULL),
-	theDropDown(NULL)
+MainWindow::MainWindow(QWidget *parent)
+	: QMainWindow(parent),
+	  ui(new Ui::MainWindow),
+	  theScenePtr(NULL),
+	  theDropDown(NULL)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	setupMenu();
 	setupView();
@@ -54,7 +54,8 @@ MainWindow::~MainWindow()
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
-    switch (e->type()) {
+    switch (e->type())
+    {
     case QEvent::LanguageChange:
         ui->retranslateUi(this);
         break;
@@ -92,13 +93,10 @@ void MainWindow::setupView()
 	AbstractObject* theAOPtr2 = new AbstractObject();
 	theAOPtr2->setTheHeight(180);
 	theAOPtr2->setTheWidth(180);
-	theAOPtr2->setOrigCenter(Position(230,130,0.0));
+	theAOPtr2->setOrigCenter(Position(230,130,1.0));
 	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
 	theScenePtr->addItem(theVOPtr2);
 
 	SimulationControls* myControls = new SimulationControls;
 	myControls->setup(ui->menuBar);
-
-	PieMenu* myMenuPtr = new PieMenu(theVOPtr2);
-	myMenuPtr->setup();
 }

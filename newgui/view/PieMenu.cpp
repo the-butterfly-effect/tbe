@@ -26,6 +26,11 @@
 #include <cmath>
 #include "tbe_global.h"
 
+// this source file contains 4 classes:
+// * NamedState
+// * ActionItem
+// * PieMenu
+// * PieMenuSingleton
 
 
 void NamedState::onEntry ( QEvent * event )
@@ -35,13 +40,16 @@ void NamedState::onEntry ( QEvent * event )
 }
 
 
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
 
 
 ActionIcon::ActionIcon(ActionType anActionType,
-					   const QString & aFileName,
-					   bool isEnabled,
-					   QGraphicsWidget* aParentPtr)
-	: QGraphicsSvgItem(aFileName, aParentPtr)
+                       const QString & aFileName,
+                       bool isEnabled,
+                       QGraphicsWidget* aParentPtr)
+    : QGraphicsSvgItem(aFileName, aParentPtr)
 {
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
@@ -112,6 +120,11 @@ ActionIcon::ActionIcon(ActionType anActionType,
 }
 
 
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+
 PieMenu::PieMenu(ViewObject* aParentPtr)
 	: QGraphicsWidget(aParentPtr)
 {
@@ -120,11 +133,10 @@ PieMenu::PieMenu(ViewObject* aParentPtr)
 	QRectF myParentsSize = aParentPtr->boundingRect();
 	moveBy(myParentsSize.width()/2,myParentsSize.height()/2-0.67*theRadius);
 
-	// Let's scale ourselves so our children will have a fixed size
-	// (otherwise, they'll inherit our parent's coordinates including the
-	// scaling)
-
-	// TODO/FIXME
+    setFlags(QGraphicsItem::ItemIgnoresTransformations |
+                 QGraphicsItem::ItemIgnoresParentOpacity |
+                 QGraphicsItem::ItemDoesntPropagateOpacityToChildren |
+                 QGraphicsItem::ItemHasNoContents );
 }
 
 void PieMenu::iconClicked(ActionIcon* anIconPtr)
@@ -149,7 +161,46 @@ void PieMenu::setup()
 											"../images/ActionDelete.svg", false, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
-	DEBUG1("start\n");
-	QTimer::singleShot(401, this, SLOT(startMove()));
-	DEBUG1("final\n");
+	QTimer::singleShot(1, this, SLOT(startMove()));
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+static PieMenuSingleton* thePMSingletonPtr = NULL;
+
+PieMenuSingleton::PieMenuSingleton(void)
+	: theCurrentPieMenuPtr(NULL)
+{
+	// nothing to do
+}
+
+ViewObject* PieMenuSingleton::getPieMenuParent(void)
+{
+	if (me()->theCurrentPieMenuPtr==NULL)
+		return NULL;
+	return dynamic_cast<ViewObject*>(me()->theCurrentPieMenuPtr->parent());
+}
+
+PieMenuSingleton* PieMenuSingleton::me(void)
+{
+	if (thePMSingletonPtr==NULL)
+		thePMSingletonPtr = new PieMenuSingleton();
+	return thePMSingletonPtr;
+}
+
+void PieMenuSingleton::setPieMenuParent(ViewObject* aParent)
+{
+	DEBUG2("PieMenuSingleton::setPieMenuParent(%p)\n", aParent);
+	// one can always call delete on a nullpointer
+	delete me()->theCurrentPieMenuPtr;
+	if (aParent!=NULL)
+	{
+		me()->theCurrentPieMenuPtr = new PieMenu(aParent);
+		me()->theCurrentPieMenuPtr->setup();
+	}
+	else
+		me()->theCurrentPieMenuPtr = NULL;
+}
+

@@ -105,10 +105,7 @@ class PieMenu : public QGraphicsWidget
 	Q_OBJECT
 
 public:
-
-	PieMenu(ViewObject* aParentPtr);
-
-	void setup();
+	static const qreal theRadius = 40.0;
 
 signals:
 	void moveToPositions( void );
@@ -122,8 +119,35 @@ private slots:
 private:
 	ActionIcon* theCurrentInnerIconPtr;
 
+	PieMenu(ViewObject* aParentPtr);
+
+	void setup();
+
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( PieMenu )
+
+	friend class PieMenuSingleton;
+};
+
+
+class PieMenuSingleton
+{
+public:
+	static ViewObject* getPieMenuParent(void);
+	static void setPieMenuParent(ViewObject* aParent);
+
+	static void clearPieMenuParent(void)
+	{ setPieMenuParent(NULL); }
+
+private:
+	explicit PieMenuSingleton(void);
+
+	static PieMenuSingleton* me(void);
+
+	PieMenu* theCurrentPieMenuPtr;
+
+	// no copy constructor or assignment operators here!
+	Q_DISABLE_COPY ( PieMenuSingleton )
 };
 
 #endif // PIEMENU_H

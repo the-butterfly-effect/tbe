@@ -23,7 +23,7 @@
 
 // forward declarations
 class AbstractObject;
-
+class PieMenu;
 
 /** class ViewObject
   *
@@ -48,9 +48,12 @@ public:
 		{ return theAbstractObjectPtr; }
 
 protected:
-	virtual void mousePressEvent ( QGraphicsSceneMouseEvent* )
-	{  }
-
+    /// overridden to allow detection of mouse button presses
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* );
+    /// overridden to allow object highlighting
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
+    /// overridden to allow highlighting
+    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
 
 protected:
 	// Protected attributes
@@ -60,6 +63,9 @@ protected:
 
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( ViewObject )
+
+private:
+	void initViewObjectAttributes(void);
 };
 
 #endif // VIEWOBJECT_H

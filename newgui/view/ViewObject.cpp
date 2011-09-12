@@ -18,18 +18,22 @@
 
 #include "ViewObject.h"
 #include "AbstractObject.h"
+#include "PieMenu.h"
 
 #include "tbe_global.h"
+
+#include <QGraphicsColorizeEffect>
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	// nothing to do yet :-)
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
+	initViewObjectAttributes();
 }
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :
-	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
+		QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	DEBUG5ENTRY;
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
@@ -52,6 +56,8 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	// and get us to the final starting position...
 	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
 	setRotation(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
+
+	initViewObjectAttributes();
 }
 
 ViewObject::~ViewObject()
@@ -59,3 +65,29 @@ ViewObject::~ViewObject()
 	// nothing to do yet :-)
 }
 
+void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+{
+    // this looks great, but unfortunately it also affects all children
+    QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
+    setGraphicsEffect(myEffect);
+}
+
+
+void ViewObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+{
+    setGraphicsEffect(NULL);
+}
+
+void ViewObject::initViewObjectAttributes(void)
+{
+//    setFlags(QGraphicsItem::ItemIsMovable |
+//             QGraphicsItem::ItemIsSelectable);
+    setFlags(QGraphicsItem::ItemIsFocusable);
+    setAcceptsHoverEvents(true);
+}
+
+void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* )
+{
+    hoverLeaveEvent(NULL);
+    PieMenuSingleton::setPieMenuParent(this);
+}
