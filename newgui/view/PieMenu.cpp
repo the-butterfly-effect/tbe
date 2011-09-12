@@ -190,14 +190,14 @@ PieMenuSingleton* PieMenuSingleton::me(void)
 	return thePMSingletonPtr;
 }
 
-void PieMenuSingleton::setPieMenuParent(ViewObject* aParent)
+void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr)
 {
-	DEBUG2("PieMenuSingleton::setPieMenuParent(%p)\n", aParent);
+	DEBUG3("PieMenuSingleton::setPieMenuParent(%p)\n", aViewObjectPtr);
 	// one can always call delete on a nullpointer
 	delete me()->theCurrentPieMenuPtr;
-	if (aParent!=NULL)
+	if (aViewObjectPtr!=NULL)
 	{
-		me()->theCurrentPieMenuPtr = new PieMenu(aParent);
+		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
 		me()->theCurrentPieMenuPtr->setup();
 	}
 	else

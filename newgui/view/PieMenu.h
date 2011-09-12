@@ -100,6 +100,8 @@ private:
 };
 
 
+/// The PieMenu class plays intermediate between all ActionIcons and the
+/// ViewObject. Only PieMenuSingleton can create PieMenus.
 class PieMenu : public QGraphicsWidget
 {
 	Q_OBJECT
@@ -130,20 +132,33 @@ private:
 };
 
 
+/// This is the PieMenu chef - it's the only one who can create or delete
+/// PieMenus and will ensure there's only one (or none).
+/// @note this is a singleton and thus accessible anywhere anytime, just call
+///       as PieMenu::addPieMenuToViewObject()...
 class PieMenuSingleton
 {
 public:
+	/// @returns a pointer to the ViewObject currently owning a Pie menu
 	static ViewObject* getPieMenuParent(void);
-	static void setPieMenuParent(ViewObject* aParent);
 
-	static void clearPieMenuParent(void)
-	{ setPieMenuParent(NULL); }
+	/// Puts a PieMenu on top of the selected ViewObject.
+	/// @param aViewObjectPtr pointer to the ViewObject to stick a PieMenu
+	///        on or NULL if you don't want a PieMenu - you can also call
+	///        clearPieMenu() in that case.
+	static void addPieMenuToViewObject(ViewObject* aViewObjectPtr);
+
+	static void clearPieMenu(void)
+	{ addPieMenuToViewObject(NULL); }
 
 private:
+	/// private constructor - this is a singleton class!
 	explicit PieMenuSingleton(void);
 
+	/// @returns pointer to the existing singleton.
 	static PieMenuSingleton* me(void);
 
+	/// pointer to the currently existing PieMenu (if any)
 	PieMenu* theCurrentPieMenuPtr;
 
 	// no copy constructor or assignment operators here!

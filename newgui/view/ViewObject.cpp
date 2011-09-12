@@ -89,5 +89,5 @@ void ViewObject::initViewObjectAttributes(void)
 void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* )
 {
     hoverLeaveEvent(NULL);
-    PieMenuSingleton::setPieMenuParent(this);
+    PieMenuSingleton::addPieMenuToViewObject(this);
 }
