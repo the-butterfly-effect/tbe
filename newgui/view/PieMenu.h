@@ -121,7 +121,12 @@ private slots:
 private:
 	ActionIcon* theCurrentInnerIconPtr;
 
-	PieMenu(ViewObject* aParentPtr);
+	/// private constructor
+	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
+	/// @param aPositionInObjectCoord position of the mouse click on the
+	///        object in item coordinates
+	PieMenu(ViewObject* aParentPtr,
+			const QPointF& aPositionInObjectCoord);
 
 	void setup();
 
@@ -146,10 +151,13 @@ public:
 	/// @param aViewObjectPtr pointer to the ViewObject to stick a PieMenu
 	///        on or NULL if you don't want a PieMenu - you can also call
 	///        clearPieMenu() in that case.
-	static void addPieMenuToViewObject(ViewObject* aViewObjectPtr);
+	/// @param aPositionInObjectCoord position of the mouse click on the
+	///        object in item coordinates
+	static void addPieMenuToViewObject(ViewObject* aViewObjectPtr,
+									   const QPointF& aPositionInObjectCoord);
 
 	static void clearPieMenu(void)
-	{ addPieMenuToViewObject(NULL); }
+	{ addPieMenuToViewObject(NULL, QPointF(0,0)); }
 
 private:
 	/// private constructor - this is a singleton class!

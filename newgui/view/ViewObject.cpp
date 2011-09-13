@@ -23,6 +23,7 @@
 #include "tbe_global.h"
 
 #include <QGraphicsColorizeEffect>
+#include <QGraphicsSceneMouseEvent>
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
@@ -86,8 +87,8 @@ void ViewObject::initViewObjectAttributes(void)
     setAcceptsHoverEvents(true);
 }
 
-void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* )
+void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
     hoverLeaveEvent(NULL);
-    PieMenuSingleton::addPieMenuToViewObject(this);
+    PieMenuSingleton::addPieMenuToViewObject(this, anEvent->pos());
 }

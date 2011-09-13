@@ -49,11 +49,11 @@ public:
 
 protected:
     /// overridden to allow detection of mouse button presses
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* );
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
     /// overridden to allow object highlighting
-    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
     /// overridden to allow highlighting
-    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
+    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
 
 protected:
 	// Protected attributes
