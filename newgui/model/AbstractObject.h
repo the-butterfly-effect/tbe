@@ -21,7 +21,7 @@
 
 #include <QtGlobal>
 #include "Position.h"
-
+#include "Property.h"
 
 // ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
 //
@@ -64,6 +64,17 @@ class AbstractObject
 public:
 	AbstractObject();
 
+	enum SizeDirections
+	{
+		NORESIZING = 0,
+		HORIZONTALRESIZE = 1,
+		VERTICALRESIZE = 2,
+		TOTALRESIZE = 3
+	};
+
+	//
+	// Getters and Setters
+	// (sorted lphabetically)
 
 	/// Get the Position of the object.
 	/// This is the "original" center, i.e. where the object will
@@ -82,6 +93,12 @@ public:
 	virtual qreal getTempWidth() const
 	{ return theWidth; }
 
+	/// Get the value of theBounciness
+	/// (0.0 = stick, 1.0 = full elastic bounce)
+	/// @return the value of theBounciness
+	qreal getTheBounciness ( )
+		{ return theBounciness; }
+
 	/// Get the value of theHeight
 	/// @return the value of theHeight
 	qreal getTheHeight ( ) const
@@ -92,37 +109,53 @@ public:
 	qreal getTheWidth ( ) const
 	{ return theWidth; }
 
+	/// returns true if the object can be moved by the user
+	virtual bool isMovable ( ) const;
+
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const // TODO/FIXME = 0;
+	{	return resizableInfo;	}
+
+	/// returns true if the object can be rotated by the user
+	virtual bool isRotatable ( ) const;
+
 	/// Set the value of theCenter - this is the "original" center,
 	/// i.e. where the object will return to after a "reset".
 	/// @param new_var the new value of theCenter
 	virtual void setOrigCenter ( const Position& aNewPos )
 	{ theCenter = aNewPos; }
 
+	/// Set the value of theBounciness
+	/// (0.0 = stick, 1.0 = full elastic bounce)
+	/// @param new_var the new value of theBounciness
+	void setTheBounciness ( qreal new_var )
+	{ theBounciness = new_var; }
+
 	/// Set the value of theHeight
 	/// @param new_var the new value of theHeight
 	virtual void setTheHeight ( qreal new_var )
-		{ if (new_var>0.01) theHeight = new_var;	}
+	{ if (new_var>0.01) theHeight = new_var;	}
 
 	/// Set the value of theWidth
 	/// @param new_var the new value of theWidth
 	virtual void setTheWidth ( qreal new_var )
-		{ if (new_var>0.01) theWidth = new_var; }
+	{ if (new_var>0.01) theWidth = new_var; }
 
+
+	//
+	// other public members
+	//
+
+	/** parse all properties
+	  * NOTE: AbstractObject only understands PivotPoint and Bounciness
+	  */
+	virtual void  parseProperties(void);
 
 
 
 private:
 	// Private attributes of the Object
 	//
-
-	/// the position of the center of the object when not in simulation.
-	Position theCenter;
-
-	/// static width of the object (i.e. at rest before simulation starts)
-	qreal theWidth;
-
-	/// static height of object (i.e. at rest before simulation starts)
-	qreal theHeight;
 
 	/** indicates how object should bounce - two objects of 0.0 will stick
 	*  together, whereas two objects of 1.0 will bounce without loosing
@@ -131,6 +164,27 @@ private:
 	*/
 	qreal theBounciness;
 
+	/// the position of the center of the object when not in simulation.
+	Position theCenter;
+
+	/// static height of object (i.e. at rest before simulation starts)
+	qreal theHeight;
+
+	/** true if the user can move this object
+	 *  Note that this has nothing to do with MovingObject or ImmovableObject
+	 *  it has to do with the level design - as such, Level can modify this setting
+	 */
+	bool theIsMovable;
+
+	/// the properties of the object instance
+	PropertyList theProps;
+
+	/// static width of the object (i.e. at rest before simulation starts)
+	qreal theWidth;
+
+	// TODO/FIXME: this one wasn't present in BaseObject
+	// - but it was in RectObject...
+	SizeDirections resizableInfo;
 };
 
 #endif // ABSTRACTOBJECT_H

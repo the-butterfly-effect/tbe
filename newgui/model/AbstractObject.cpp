@@ -21,3 +21,64 @@
 AbstractObject::AbstractObject()
 {
 }
+
+
+bool AbstractObject::isMovable ( ) const
+{
+	if (theIsLevelEditor)
+		return true;
+	else
+		return theIsMovable;
+}
+
+bool AbstractObject::isRotatable ( ) const
+{
+	bool myRotatableInfo = false;
+	theProps.property2Bool(Property::ROTATABLE_STRING, &myRotatableInfo);
+	return myRotatableInfo;
+}
+
+
+void AbstractObject::parseProperties(void)
+{
+	// use the default if nothing else...
+	float myFloat;
+	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
+	setTheBounciness(myFloat);
+
+#if 0 // directly copied from BaseObject.cpp - not used for newgui yet
+	Vector myDelta;
+	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
+	{
+		PivotPoint* myPP = new PivotPoint(this, myDelta);
+		myPP->markAsChild();
+		theWorldPtr->addObject(myPP);
+	}
+	float myAngle;
+	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
+	{
+		TranslationGuide* myTJ = new TranslationGuide(this, myAngle);
+		myTJ->markAsChild();
+		theWorldPtr->addObject(myTJ);
+	}
+
+	QString myNoCollisionObjectIDs;
+	theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
+	QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
+	QStringList::iterator myI = myObjIDList.begin();
+	while (myI != myObjIDList.end())
+	{
+		BaseObject* myObjPtr = theWorldPtr->findObjectByID(*myI);
+		if (myObjPtr!=NULL)
+			theWorldPtr->addNoCollisionCombo(this, myObjPtr);
+		++myI;
+	}
+
+	// For normal situations, i.e. created by Level for World
+	// the setupCache() is run twice. But that's not a problem.
+	// For inserted objects (i.e. drag from toolbox), this is
+	// the only time setupCache is called. Let's cherish it.
+	if (theDrawObjectPtr)
+		theDrawObjectPtr->setupCache();
+#endif
+}
