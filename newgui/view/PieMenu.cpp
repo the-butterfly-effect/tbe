@@ -22,6 +22,7 @@
 #include <QPropertyAnimation>
 #include "PieMenu.h"
 #include "ViewObject.h"
+#include "AbstractObject.h"
 
 #include <cmath>
 #include "tbe_global.h"
@@ -68,6 +69,13 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	QPointF mySInnerPos(-mySmallWidth, 0);
 	QPointF myLInnerPos(-myLargeWidth, 0);
 
+	if (isEnabled==false)
+	{
+		QGraphicsColorizeEffect* myEffect = new QGraphicsColorizeEffect();
+		myEffect->setColor(Qt::darkBlue);
+		setGraphicsEffect(myEffect);
+	}
+
 	QState* myStartState = new NamedState(&theIconStateMachine, "Start "+aFileName);
 	QState* myOuterState = new NamedState(&theIconStateMachine, "Outer "+aFileName);
 	QState* myInnerState = new NamedState(&theIconStateMachine, "Inner "+aFileName);
@@ -94,7 +102,11 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	myTransPtr->addAnimation(mySizAnim);
 
 	// and the other state transitions
-	myTransPtr=myOuterState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myInnerState);
+	if (isEnabled==true)
+	{
+		myTransPtr=myOuterState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myInnerState);
+		connect(this, SIGNAL(clicked(ActionIcon*)), aParentPtr, SLOT(iconClicked(ActionIcon*)));
+	}
 	myTransPtr->addAnimation(myPosAnim);
 	myTransPtr->addAnimation(mySizAnim);
 	myTransPtr=myInnerState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myActivState);
@@ -104,7 +116,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	myTransPtr->addAnimation(myPosAnim);
 	myTransPtr->addAnimation(mySizAnim);
 
-	connect(this, SIGNAL(clicked(ActionIcon*)), aParentPtr, SLOT(iconClicked(ActionIcon*)));
 
 	// set the positions for the various states
 	myStartState->assignProperty(this, "pos", mySInnerPos);
@@ -129,6 +140,8 @@ PieMenu::PieMenu(ViewObject* aParentPtr,
 				 const QPointF& aPositionInObjectCoord)
 	: QGraphicsWidget(aParentPtr)
 {
+	theAOPtr = aParentPtr->getAbstractObjectPtr();
+
 	// Let's move ourselves to a position so the middle icon
 	// will be right under the mouse click
 	// FIXME/TODO: what if that implies the icons fall outside the view?
@@ -150,44 +163,24 @@ void PieMenu::iconClicked(ActionIcon* anIconPtr)
 
 void PieMenu::setup()
 {
-//	// the below code creates the 8 anchors around the object
-//	AnchorType myMode = NONE;
-//	if ( (myBOPtr->isResizable()&BaseObject::HORIZONTALRESIZE) || theIsLevelEditor)
-//		myMode = RESIZEHORI;
-//	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::RIGHT, this));
-//	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::LEFT, this));
 
-//	if ( (myBOPtr->isResizable()&BaseObject::VERTICALRESIZE) || theIsLevelEditor)
-//		myMode = RESIZEVERTI;
-//	else
-//		myMode = NONE;
-//	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::TOP, this));
-//	theAnchorList.push_back(new ResizeAnchor(myMode, Anchor::BOTTOM, this));
+	bool myBool = (theAOPtr->isResizable()&AbstractObject::HORIZONTALRESIZE) || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_HRESIZE,
+								"../images/ActionResizeHori.svg", myBool, this);
+	myBool = (theAOPtr->isResizable()&AbstractObject::VERTICALRESIZE) || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_VRESIZE,
+								"../images/ActionResizeVerti.svg", myBool, this);
+	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_ROTATE,
+								"../images/ActionRotate.svg", myBool, this);
 
-//	if (myBOPtr->isRotatable() || theIsLevelEditor)
-//		myMode = ROTATE;
-//	else
-//		myMode = NONE;
-//	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::TOPRIGHT, this));
-//	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::TOPLEFT, this));
-//	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMLEFT, this));
-//	theAnchorList.push_back(new RotateAnchor(myMode, Anchor::BOTTOMRIGHT, this));
-
-
-
-
-	ActionIcon* myHRezIcon = new ActionIcon(ActionIcon::ACTION_HRESIZE,
-											"../images/ActionResizeHori.svg", true, this);
-	ActionIcon* myVRezIcon = new ActionIcon(ActionIcon::ACTION_VRESIZE,
-											"../images/ActionResizeVerti.svg", true, this);
-	ActionIcon* myRotIcon  = new ActionIcon(ActionIcon::ACTION_ROTATE,
-											"../images/ActionRotate.svg", false, this);
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
 	ActionIcon* myDelIcon = new ActionIcon(ActionIcon::ACTION_DELETE,
 											"../images/ActionDelete.svg", true, this);
-	ActionIcon* mySpecialIcon = new ActionIcon(ActionIcon::ACTION_EDITSPECIAL,
-											"../images/ActionDelete.svg", false, this);
+
+//	ActionIcon* mySpecialIcon = new ActionIcon(ActionIcon::ACTION_EDITSPECIAL,
+//											"../images/ActionDelete.svg", false, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	QTimer::singleShot(1, this, SLOT(startMove()));

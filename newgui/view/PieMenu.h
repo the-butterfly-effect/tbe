@@ -27,7 +27,7 @@
 
 // forward declarations
 class ViewObject;
-
+class AbstractObject;
 
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
@@ -120,6 +120,7 @@ private slots:
 
 private:
 	ActionIcon* theCurrentInnerIconPtr;
+	AbstractObject* theAOPtr;
 
 	/// private constructor
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
