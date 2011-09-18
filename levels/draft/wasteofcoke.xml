@@ -1,0 +1,75 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>What a waste of coke!</title>
+        <author>Klaas van Gend</author>
+        <license></license>
+        <description>lalalala</description>
+        <date>18-09-11</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="7" height="4" />
+        <predefined>
+            <object width="0,800" X="0,400" Y="2,100" height="0,800" type="QuarterArc80" angle="3,140" />
+            <object width="2,069" X="3,235" Y="0,650" height="0,100" type="Floor" angle="0,000" >
+                <property key="Friction" >0.2</property>
+            </object>
+            <object width="0,166" X="2,945" Y="0,942" height="0,500" type="CokeMentosBottle" angle="0,000" />
+            <object width="0,166" X="2,794" Y="0,942" height="0,500" type="CokeMentosBottle" angle="0,000" />
+            <object width="0,166" X="2,618" Y="0,942" height="0,500" type="CokeMentosBottle" angle="0,000" />
+            <object width="0,166" X="2,468" Y="0,948" height="0,500" type="CokeMentosBottle" angle="0,000" />
+            <object width="0,400" X="1,300" Y="1,600" height="0,400" type="QuarterArc40" angle="0,000" />
+            <object width="0,300" X="0,950" Y="1,750" height="0,100" type="Floor" angle="0,000" />
+            <object width="0,800" X="1,800" Y="1,000" height="0,800" type="QuarterArc80" angle="3,140" />
+            <object width="0,400" X="3,246" Y="0,816" height="0,200" type="Spring" angle="0,000" >
+                <property key="ImageName" >spring20</property>
+            </object>
+            <object width="0,210" X="6,643" Y="2,179" height="0,210" type="VolleyBall" angle="0,000" />
+            <object width="1,934" X="5,758" Y="1,639" height="0,804" type="LeftRamp" angle="0,000" />
+            <object width="0,220" X="1,061" Y="1,940" height="0,220" type="BowlingBall" ID="bowlingball" angle="0,000" />
+            <object width="0,120" X="1,627" Y="0,182" height="0,340" type="BowlingPin" ID="pin" angle="0,000" />
+            <object width="0,430" X="5,130" Y="3,792" height="0,320" type="Dynamite" ID="555-5555" angle="0,000" />
+            <object width="0,330" X="4,389" Y="2,085" height="0,350" type="DetonatorBox" angle="0,000" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+            </object>
+            <object width="0,220" X="4,502" Y="3,730" height="0,220" type="BowlingBall" angle="0,000" />
+            <object width="1,655" X="3,823" Y="1,800" height="0,100" type="Floor" angle="0,000" />
+            <object width="0,330" X="3,849" Y="2,047" height="0,350" type="DetonatorBox" angle="0,000" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+            </object>
+            <object width="0,430" X="5,120" Y="3,310" height="0,320" type="Dynamite" ID="555-4444" angle="0,000" />
+            <object width="0,400" X="4,150" Y="2,950" height="0,400" type="QuarterArc40" angle="1,570" />
+            <object width="0,800" X="3,950" Y="3,150" height="0,800" type="QuarterArc80" angle="1,570" />
+            <object width="1,000" X="4,850" Y="3,100" height="0,100" type="Floor" angle="0,000" />
+            <object width="0,220" X="4,534" Y="3,315" height="0,220" type="BowlingBall" angle="0,000" />
+            <object width="1,000" X="4,850" Y="3,550" height="0,100" type="Floor" angle="0,000" />
+            <object width="1,000" X="5,422" Y="3,307" height="0,100" type="Floor" angle="1,571" />
+            <object width="0,220" X="4,527" Y="2,838" height="0,220" type="BowlingBall" angle="0,000" />
+            <object width="0,804" X="3,600" Y="2,348" height="0,100" type="Floor" angle="1,570" />
+            <object width="1,300" X="4,700" Y="2,400" height="0,100" type="Floor" angle="1,570" />
+            <object width="0,893" X="4,095" Y="2,299" height="0,100" type="Floor" angle="1,571" />
+            <object width="0,330" X="3,315" Y="2,053" height="0,350" type="DetonatorBox" angle="0,000" >
+                <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+            </object>
+            <object width="1,000" X="3,050" Y="2,363" height="0,100" type="Floor" angle="1,571" />
+            <object width="0,430" X="0,697" Y="2,034" height="0,320" type="Dynamite" ID="555-6666" angle="0,000" />
+            <object width="0,800" X="2,700" Y="3,150" height="0,800" type="QuarterArc80" angle="0,000" />
+            <object width="0,170" X="6,055" Y="0,102" height="0,500" type="CokeMentosBottle" angle="-1,571" />
+            <object width="4,427" X="3,934" Y="0,245" height="0,100" type="Floor" angle="0,000" />
+            <object width="1,000" X="1,350" Y="0,414" height="0,100" type="Floor" angle="0,000" />
+            <object width="1,000" X="5,588" Y="0,653" height="0,100" type="Floor" angle="0,000" />
+            <object width="0,104" X="2,353" Y="1,174" height="0,100" type="Floor" angle="0,000" />
+        </predefined>
+        <background>
+            <gradientstop pos="0,00" >0,80;0,80;1,00;1,00</gradientstop>
+            <gradientstop pos="1,00" >0,50;0,50;0,90;1,00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange" >
+            <property key="object" >pin</property>
+            <property key="xbelow" >0.4</property>
+        </goal>
+    </goals>
+</tbe-level>
