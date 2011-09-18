@@ -27,6 +27,7 @@
 #include "DropDownWindow.h"
 #include "AbstractObject.h"
 #include "ViewObject.h"
+#include "ViewWorld.h"
 
 #include "SimulationControls.h"
 #include "PieMenu.h"
@@ -72,7 +73,7 @@ void MainWindow::setupMenu(void)
 void MainWindow::setupView()
 {
 	assert(theScenePtr==NULL);
-	theScenePtr = new QGraphicsScene(0, -300, 300, 300);
+	theScenePtr = new ViewWorld(0, -300, 300, 300);
 	theScenePtr->setBackgroundBrush(Qt::blue);
 	theScenePtr->addRect(0,0,300,-300);
 	ui->graphicsView->setScene(theScenePtr);
