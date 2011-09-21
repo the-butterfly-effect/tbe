@@ -16,40 +16,29 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "AbstractUndoCommand.h"
-#include "UndoSingleton.h"
 #include "ViewObjectActionDectorator.h"
+#include "ViewObject.h"
+#include "AbstractUndoCommand.h"
 
-AbstractUndoCommand::AbstractUndoCommand(
-        ViewObject* anViewObjectPtr,
-        const QString& anUndoName,
-        QUndoCommand* parent)
-    : QUndoCommand(parent),
-      theVOPtr(anViewObjectPtr)
-{
-    // This is the undo action: %1 will contain e.g. "Move"
-    // and %2 might contain BowlingBall
-    setText(QString("%1 %2").arg(anUndoName).arg("TODO/FIXME"));
-}
+#include <QGraphicsSceneMouseEvent>
+#include <QDebug>
 
-
-
-void AbstractUndoCommand::redo()
-{
-
-}
-
-
-void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
+ViewObjectActionDecorator::ViewObjectActionDecorator(
+        ViewObject* parent,
+        const QString& aDecoratorName)
+    : QGraphicsSvgItem(aDecoratorName, parent)
 {
     qDebug() << Q_FUNC_INFO;
-    Q_ASSERT(anImageName.isEmpty()==false);
-    Q_ASSERT(theVOPtr!=NULL);
-    theVOADPtr = new ViewObjectActionDecorator(theVOPtr, anImageName);
+
+    // we need to have the same size as our parent
+    QRectF parSize = parent->boundingRect();
+    QRectF mySize = boundingRect();
+    scale(parSize.width()/mySize.width(),parSize.height()/mySize.height());
 }
 
 
-void AbstractUndoCommand::undo()
+void
+ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
-
+    theAUCPtr->mousePressEvent(event->pos());
 }

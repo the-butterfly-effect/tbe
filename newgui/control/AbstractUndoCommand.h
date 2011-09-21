@@ -24,8 +24,10 @@
 
 // forward declarations
 class ViewObject;
-class ObjectActionDecorator;
+class ViewObjectActionDecorator;
 
+/** this abstract class is the godfather of all undo classes
+  */
 class AbstractUndoCommand : public QUndoCommand
 {
 public:
@@ -38,7 +40,7 @@ public:
     void commit();
 
     /// TODO/FIXME: Implement
-//    virtual void mousePressEvent(const QPointF& anItemPos) = 0;
+    virtual void mousePressEvent(const QPointF& anItemPos) = 0;
 
     virtual void redo();
     virtual void undo();
@@ -47,7 +49,10 @@ protected:
     ViewObject* theVOPtr;
 
     /// pointer to ObjectActionDecorator for this action on theVOPtr;
-    ObjectActionDecorator* theOADPtr;
+    ViewObjectActionDecorator* theVOADPtr;
+
+    /// TODO: explain
+    void setupProxyImage(const QString& anImageName);
 
 private:
 

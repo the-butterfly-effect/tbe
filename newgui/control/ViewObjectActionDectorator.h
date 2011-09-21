@@ -16,18 +16,34 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef MOVEUNDOCOMMAND_H
-#define MOVEUNDOCOMMAND_H
+#ifndef VIEWOBJECTACTIONDECORATOR_H
+#define VIEWOBJECTACTIONDECORATOR_H
 
-#include "AbstractUndoCommand.h"
+#include <QGraphicsSvgItem>
 
-class MoveUndoCommand : public AbstractUndoCommand
+// forward declaration
+class ViewObject;
+class AbstractUndoCommand;
+class QGraphicsSceneMouseEvent;
+
+/**
+  *
+  */
+class ViewObjectActionDecorator : public QGraphicsSvgItem
 {
 public:
-    explicit MoveUndoCommand(ViewObject* anViewObjectPtr);
+    ViewObjectActionDecorator(ViewObject* parent,
+                              const QString& aDecoratorName);
 
-    virtual void mousePressEvent(const QPointF& anItemPos);
+protected:
+//    virtual void	mouseMoveEvent ( QGraphicsSceneMouseEvent* event );
 
+    /// overridden from QGraphicsSvgItem so we can send that info
+    /// on to our AbstractUndoCommand boss to act on...
+    virtual void	mousePressEvent ( QGraphicsSceneMouseEvent* event );
+
+private:
+    AbstractUndoCommand* theAUCPtr;
 };
 
-#endif // MOVEUNDOCOMMAND_H
+#endif // VIEWOBJECTACTIONDECORATOR_H

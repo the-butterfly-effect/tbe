@@ -17,7 +17,7 @@
  */
 
 #include "UndoSingleton.h"
-
+#include "MoveUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
 
@@ -25,6 +25,34 @@ UndoSingleton::UndoSingleton(void)
 {
 	// nothing to do
 }
+
+
+void UndoSingleton::clear()
+{
+	me()->theUndoStack.clear();
+}
+
+
+AbstractUndoCommand*
+UndoSingleton::createUndoCommand(ViewObject* anObject,
+								 ActionIcon::ActionType anUndoType)
+{
+	switch(anUndoType)
+	{
+	case ActionIcon::ACTION_MOVE:
+		return new MoveUndoCommand(anObject);
+		break;
+	case ActionIcon::ACTION_HRESIZE:
+	case ActionIcon::ACTION_ROTATE:
+	case ActionIcon::ACTION_VRESIZE:
+	case ActionIcon::ACTION_DELETE:
+	case ActionIcon::ACTION_EDITSPECIAL:
+		// TODO/FIXME
+		break;
+	}
+	return NULL;
+}
+
 
 UndoSingleton* UndoSingleton::me(void)
 {

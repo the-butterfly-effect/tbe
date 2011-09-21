@@ -19,9 +19,15 @@
 #include "MoveUndoCommand.h"
 
 MoveUndoCommand::MoveUndoCommand(
-        ViewObject* anViewObjectPtr,
-        QUndoCommand* parent)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), parent)
+        ViewObject* anViewObjectPtr)
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
 {
-    // setupProxyImage("ProxyMove");
+    qDebug() << Q_FUNC_INFO;
+    setupProxyImage("../images/ProxyMove.svg");
+}
+
+
+void MoveUndoCommand::mousePressEvent(const QPointF& anItemPos)
+{
+    qDebug() << Q_FUNC_INFO;
 }
