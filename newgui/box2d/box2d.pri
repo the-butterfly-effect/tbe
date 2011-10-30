@@ -37,6 +37,7 @@ HEADERS += \
     box2d/b2World.h \
     box2d/Box2D.h
 
+!{
 SOURCES += \
     box2d/b2BlockAllocator.cpp \
     box2d/b2Body.cpp \
@@ -73,3 +74,4 @@ SOURCES += \
     box2d/b2WeldJoint.cpp \
     box2d/b2WorldCallbacks.cpp \
     box2d/b2World.cpp
+}
