@@ -25,8 +25,8 @@ class ViewWorld : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    ViewWorld ( qreal x, qreal y, qreal width, qreal height, QObject * parent = 0 );
-    explicit ViewWorld(QObject *parent = 0);
+    ViewWorld ( qreal x, qreal y, qreal width, qreal height, QObject * parent = NULL );
+    explicit ViewWorld(QObject *parent = NULL);
 
     virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 

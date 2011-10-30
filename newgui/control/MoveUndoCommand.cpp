@@ -17,6 +17,10 @@
  */
 
 #include "MoveUndoCommand.h"
+#include "UndoSingleton.h"
+#include "ViewObject.h"
+#include "AbstractObject.h"
+#include <QGraphicsSceneMouseEvent>
 
 MoveUndoCommand::MoveUndoCommand(
         ViewObject* anViewObjectPtr)
@@ -24,10 +28,35 @@ MoveUndoCommand::MoveUndoCommand(
 {
     qDebug() << Q_FUNC_INFO;
     setupProxyImage("../images/ProxyMove.svg");
+
+    theOrigPos = anViewObjectPtr->getAbstractObjectPtr()->getOrigCenter();
 }
 
 
-void MoveUndoCommand::mousePressEvent(const QPointF& anItemPos)
+bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
+{
+    theNewPos = anEventPtr->scenePos();
+    theVOPtr->setPos(Position(theNewPos-theButtonDownPosition+theOrigPos).toQPointF());
+    return true;
+}
+
+bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
     qDebug() << Q_FUNC_INFO;
+    theButtonDownPosition = anEventPtr->scenePos();
+    return false;
+}
+
+bool MoveUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr)
+{
+    qDebug() << Q_FUNC_INFO;
+    // first, make sure the on-screen position is up-to-date
+    mousePressEvent(anEventPtr);
+
+    // now, it's time to finalize everything
+    // and push the Undo on the stack
+    UndoSingleton::push(this);
+
+    // we've completely handled the event, we're done
+    return true;
 }

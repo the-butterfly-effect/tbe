@@ -58,9 +58,8 @@ class ActionIcon : public QGraphicsSvgItem
 	Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(qreal scale READ scale WRITE setScale)
-	// TODO: we can always add opacity later :-)
 
-private:
+public:
 	/// this enum identifies what type of action to create. By accident,
 	/// each ActionType also corresponds to 45 degrees rotation around the
 	/// center of our pie menu
@@ -76,10 +75,16 @@ private:
 //		ACTION_SETPHONE
 	};
 
+private:
+
 	ActionIcon(ActionType anActionType,
 			   const QString & aFileName,
 			   bool  isEnabled,
 			   QGraphicsWidget* aParentPtr = NULL);
+
+	/// @returns the type of this icon
+	ActionType getActionType()
+	{ return theActionType; }
 
 protected:
 	virtual void mousePressEvent (QGraphicsSceneMouseEvent*)
@@ -92,6 +97,8 @@ signals:
 
 private:
 	QStateMachine theIconStateMachine;
+
+	ActionType theActionType;
 
 	friend class PieMenu;
 
@@ -121,6 +128,7 @@ private slots:
 private:
 	ActionIcon* theCurrentInnerIconPtr;
 	AbstractObject* theAOPtr;
+	ViewObject* theVOPtr;
 
 	/// private constructor
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on

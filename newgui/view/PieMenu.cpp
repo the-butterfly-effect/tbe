@@ -20,9 +20,11 @@
 #include <QTimer>
 #include <QSignalTransition>
 #include <QPropertyAnimation>
-#include "PieMenu.h"
-#include "ViewObject.h"
+
 #include "AbstractObject.h"
+#include "PieMenu.h"
+#include "UndoSingleton.h"
+#include "ViewObject.h"
 
 #include <cmath>
 #include "tbe_global.h"
@@ -36,8 +38,8 @@
 
 void NamedState::onEntry ( QEvent * event )
 {
-	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
-	QState::onEntry(event);
+//	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
+    QState::onEntry(event);
 }
 
 
@@ -50,7 +52,8 @@ ActionIcon::ActionIcon(ActionType anActionType,
                        const QString & aFileName,
                        bool isEnabled,
                        QGraphicsWidget* aParentPtr)
-    : QGraphicsSvgItem(aFileName, aParentPtr)
+    : QGraphicsSvgItem(aFileName, aParentPtr),
+      theActionType(anActionType)
 {
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
@@ -138,7 +141,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
 
 PieMenu::PieMenu(ViewObject* aParentPtr,
 				 const QPointF& aPositionInObjectCoord)
-	: QGraphicsWidget(aParentPtr)
+	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr)
 {
 	theAOPtr = aParentPtr->getAbstractObjectPtr();
 
@@ -158,7 +161,14 @@ PieMenu::PieMenu(ViewObject* aParentPtr,
 void PieMenu::iconClicked(ActionIcon* anIconPtr)
 {
 	emit theCurrentInnerIconPtr->moveBack();
-	theCurrentInnerIconPtr = anIconPtr;
+
+	if (theCurrentInnerIconPtr == anIconPtr)
+	{
+		UndoSingleton::createUndoCommand(theVOPtr, anIconPtr->getActionType());
+		PieMenuSingleton::clearPieMenu();
+	}
+	else
+		theCurrentInnerIconPtr = anIconPtr;
 }
 
 void PieMenu::setup()
@@ -176,9 +186,7 @@ void PieMenu::setup()
 
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
-	ActionIcon* myDelIcon = new ActionIcon(ActionIcon::ACTION_DELETE,
-											"../images/ActionDelete.svg", true, this);
-
+	new ActionIcon(ActionIcon::ACTION_DELETE, "../images/ActionDelete.svg", true, this);
 //	ActionIcon* mySpecialIcon = new ActionIcon(ActionIcon::ACTION_EDITSPECIAL,
 //											"../images/ActionDelete.svg", false, this);
 	theCurrentInnerIconPtr = myMoveIcon;

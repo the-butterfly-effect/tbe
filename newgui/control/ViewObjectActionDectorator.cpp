@@ -16,17 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "AbstractUndoCommand.h"
+#include "MoveUndoCommand.h"
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
-#include "AbstractUndoCommand.h"
 
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 
 ViewObjectActionDecorator::ViewObjectActionDecorator(
         ViewObject* parent,
-        const QString& aDecoratorName)
-    : QGraphicsSvgItem(aDecoratorName, parent)
+        const QString& aDecoratorName,
+        AbstractUndoCommand* myAbstractUndoCommandPtr)
+    : QGraphicsSvgItem(aDecoratorName, parent),
+      theAUCPtr(myAbstractUndoCommandPtr)
 {
     qDebug() << Q_FUNC_INFO;
 
@@ -34,11 +37,33 @@ ViewObjectActionDecorator::ViewObjectActionDecorator(
     QRectF parSize = parent->boundingRect();
     QRectF mySize = boundingRect();
     scale(parSize.width()/mySize.width(),parSize.height()/mySize.height());
+    setFlags(ItemIsMovable);
+}
+
+
+void
+ViewObjectActionDecorator::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
+{
+    if (theAUCPtr->mouseMoveEvent(event)==false)
+        QGraphicsSvgItem::mouseMoveEvent(event);
 }
 
 
 void
 ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
-    theAUCPtr->mousePressEvent(event->pos());
+    if (theAUCPtr->mousePressEvent(event)==false)
+        QGraphicsSvgItem::mousePressEvent(event);
+}
+
+void
+ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
+{
+    if (theAUCPtr->mouseReleaseEvent(event)==false)
+        QGraphicsSvgItem::mouseReleaseEvent(event);
+    else
+    {
+        // TODO: finish up by killing myself and propagating that
+    }
+
 }

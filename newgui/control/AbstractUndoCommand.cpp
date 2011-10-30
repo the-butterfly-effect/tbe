@@ -19,6 +19,7 @@
 #include "AbstractUndoCommand.h"
 #include "UndoSingleton.h"
 #include "ViewObjectActionDectorator.h"
+#include "ViewObject.h"
 
 AbstractUndoCommand::AbstractUndoCommand(
         ViewObject* anViewObjectPtr,
@@ -29,14 +30,16 @@ AbstractUndoCommand::AbstractUndoCommand(
 {
     // This is the undo action: %1 will contain e.g. "Move"
     // and %2 might contain BowlingBall
-    setText(QString("%1 %2").arg(anUndoName).arg("TODO/FIXME"));
+    setText( QString("%1 %2").arg(anUndoName)
+             .arg(anViewObjectPtr->getAbstractObjectPtr()->getName()) );
 }
 
 
 
 void AbstractUndoCommand::redo()
 {
-
+    qDebug() << Q_FUNC_INFO;
+    // TODO/FIXME: implement!
 }
 
 
@@ -45,11 +48,12 @@ void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
     qDebug() << Q_FUNC_INFO;
     Q_ASSERT(anImageName.isEmpty()==false);
     Q_ASSERT(theVOPtr!=NULL);
-    theVOADPtr = new ViewObjectActionDecorator(theVOPtr, anImageName);
+    theVOADPtr = new ViewObjectActionDecorator(theVOPtr, anImageName, this);
 }
 
 
 void AbstractUndoCommand::undo()
 {
-
+    qDebug() << Q_FUNC_INFO;
+    // TODO/FIXME: implement!
 }

@@ -25,6 +25,7 @@
 // forward declarations
 class ViewObject;
 class ViewObjectActionDecorator;
+class QGraphicsSceneMouseEvent;
 
 /** this abstract class is the godfather of all undo classes
   */
@@ -40,7 +41,10 @@ public:
     void commit();
 
     /// TODO/FIXME: Implement
-    virtual void mousePressEvent(const QPointF& anItemPos) = 0;
+    /// @returns true if event is handled already.
+    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) = 0;
+    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) = 0;
+    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr) = 0;
 
     virtual void redo();
     virtual void undo();

@@ -33,14 +33,22 @@ class ViewObjectActionDecorator : public QGraphicsSvgItem
 {
 public:
     ViewObjectActionDecorator(ViewObject* parent,
-                              const QString& aDecoratorName);
+                              const QString& aDecoratorName,
+                              AbstractUndoCommand* myAbstractUndoCommandPtr);
 
 protected:
-//    virtual void	mouseMoveEvent ( QGraphicsSceneMouseEvent* event );
+    /// overridden from QGraphicsSvgItem so we can send that info
+    /// on to our AbstractUndoCommand boss to act on...
+    virtual void	mouseMoveEvent ( QGraphicsSceneMouseEvent* event );
 
     /// overridden from QGraphicsSvgItem so we can send that info
     /// on to our AbstractUndoCommand boss to act on...
     virtual void	mousePressEvent ( QGraphicsSceneMouseEvent* event );
+
+    /// overridden from QGraphicsSvgItem so we can send that info
+    /// on to our AbstractUndoCommand boss to act on...
+    virtual void	mouseReleaseEvent( QGraphicsSceneMouseEvent* event );
+
 
 private:
     AbstractUndoCommand* theAUCPtr;

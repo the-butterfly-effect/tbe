@@ -20,14 +20,21 @@
 #define MOVEUNDOCOMMAND_H
 
 #include "AbstractUndoCommand.h"
+#include "Position.h"
 
 class MoveUndoCommand : public AbstractUndoCommand
 {
 public:
     explicit MoveUndoCommand(ViewObject* anViewObjectPtr);
 
-    virtual void mousePressEvent(const QPointF& anItemPos);
+    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
+    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
+    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
+private:
+    Position theButtonDownPosition;
+    Position theOrigPos;
+    Position theNewPos;
 };
 
 #endif // MOVEUNDOCOMMAND_H

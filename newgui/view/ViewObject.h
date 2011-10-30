@@ -23,7 +23,6 @@
 
 // forward declarations
 class AbstractObject;
-class PieMenu;
 
 /** class ViewObject
   *
