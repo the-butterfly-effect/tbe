@@ -76,6 +76,12 @@ public:
 	// Getters and Setters
 	// (sorted lphabetically)
 
+    /** returns the Name of the object, for users.
+     *  If a non-US locale is specified, the returned string
+     *  will already be translated
+     */
+    virtual const QString getName ( );
+
 	/// Get the Position of the object.
 	/// This is the "original" center, i.e. where the object will
 	/// be when not in simulation.

@@ -22,6 +22,12 @@ AbstractObject::AbstractObject()
 {
 }
 
+const QString AbstractObject::getName ( )
+{
+	// TODO: make abstract
+	return "AbstractObject";
+}
+
 
 bool AbstractObject::isMovable ( ) const
 {
