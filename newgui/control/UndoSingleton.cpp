@@ -21,6 +21,7 @@
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
 
+
 UndoSingleton::UndoSingleton(void)
 {
 	// nothing to do
@@ -32,11 +33,22 @@ void UndoSingleton::clear()
 	me()->theUndoStack.clear();
 }
 
+QAction* UndoSingleton::createRedoAction (QObject* parent,const QString& prefix)
+{
+	return me()->theUndoStack.createRedoAction(parent, prefix);
+}
+
+QAction* UndoSingleton::createUndoAction (QObject* parent,const QString& prefix)
+{
+	return me()->theUndoStack.createUndoAction(parent, prefix);
+}
+
 
 AbstractUndoCommand*
 UndoSingleton::createUndoCommand(ViewObject* anObject,
 								 ActionIcon::ActionType anUndoType)
 {
+	qDebug() << Q_FUNC_INFO << "action type: " << anUndoType;
 	switch(anUndoType)
 	{
 	case ActionIcon::ACTION_MOVE:
@@ -59,4 +71,18 @@ UndoSingleton* UndoSingleton::me(void)
 	if (theUndoSingletonPtr==NULL)
 		theUndoSingletonPtr = new UndoSingleton();
 	return theUndoSingletonPtr;
+}
+
+
+void UndoSingleton::push(AbstractUndoCommand* anAUCPtr)
+{
+	qDebug() << "pushed " << anAUCPtr->text();
+	me()->theUndoStack.push(anAUCPtr);
+}
+
+
+void UndoSingleton::setClean()
+{
+	qDebug() << Q_FUNC_INFO;
+	me()->theUndoStack.setClean();
 }

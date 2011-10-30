@@ -41,8 +41,17 @@ public:
 	static AbstractUndoCommand* createUndoCommand(ViewObject* anObject,
 										ActionIcon::ActionType anUndoType);
 
-	/// remove all UndoObjects from the stack
+	/// Clean up the stack (i.e. start a new level)
+	/// this removes all UndoObjects from the stack
 	static void clear();
+
+	static void push(AbstractUndoCommand* anAUCPtr);
+
+	static QAction * createRedoAction ( QObject* parent, const QString & prefix = QString() );
+	static QAction * createUndoAction ( QObject* parent, const QString & prefix = QString() );
+
+public slots:
+	static void setClean();
 
 private:
 	/// private constructor - this is a singleton class!

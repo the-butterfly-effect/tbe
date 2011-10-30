@@ -28,6 +28,7 @@
 #include "AbstractObject.h"
 #include "ViewObject.h"
 #include "ViewWorld.h"
+#include "UndoSingleton.h"
 
 #include "SimulationControls.h"
 #include "PieMenu.h"
@@ -72,6 +73,17 @@ void MainWindow::setupMenu(void)
 
 void MainWindow::setupView()
 {
+	// setup UndoGroup's QActions and add them to Edit menu
+	// note that this doesn't enable them yet, our ViewWorld handles that :-)
+	QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
+	myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
+	ui->menuEdit->addAction(myUndoActionPtr);
+	QAction* myRedoActionPtr = UndoSingleton::createRedoAction(this, tr("&Redo"));
+	QList<QKeySequence> redoShortcuts;
+	redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
+	myRedoActionPtr->setShortcuts(redoShortcuts);
+	ui->menuEdit->addAction(myRedoActionPtr);
+
 	assert(theScenePtr==NULL);
 	theScenePtr = new ViewWorld(0, -300, 300, 300);
 	theScenePtr->setBackgroundBrush(Qt::blue);
