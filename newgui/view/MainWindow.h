@@ -20,7 +20,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QStateMachine>
 
 namespace Ui {
     class MainWindow;
@@ -39,13 +38,13 @@ public:
     ~MainWindow();
 
 protected:
-    void changeEvent(QEvent *e);
+	void changeEvent(QEvent *e);
 
 	void setupMenu(void);
 	void setupView(void);
 
 private:
-    Ui::MainWindow *ui;
+	Ui::MainWindow *ui;
 
 	QGraphicsScene* theScenePtr;
 	QGraphicsRectWidget *theDropDown;
