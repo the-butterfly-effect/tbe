@@ -28,8 +28,6 @@ MoveUndoCommand::MoveUndoCommand(
 {
     qDebug() << Q_FUNC_INFO;
     setupProxyImage("../images/ProxyMove.svg");
-
-    theOrigPos = anViewObjectPtr->getAbstractObjectPtr()->getOrigCenter();
 }
 
 

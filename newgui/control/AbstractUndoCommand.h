@@ -58,8 +58,10 @@ protected:
     /// TODO: explain
     void setupProxyImage(const QString& anImageName);
 
-private:
-
+protected:
+    Position theButtonDownPosition;
+    Position theOrigPos;
+    Position theNewPos;
 };
 
 #endif // ABSTRACTUNDOCOMMAND_H

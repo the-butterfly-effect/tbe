@@ -32,9 +32,6 @@ public:
     virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
 private:
-    Position theButtonDownPosition;
-    Position theOrigPos;
-    Position theNewPos;
 };
 
 #endif // MOVEUNDOCOMMAND_H

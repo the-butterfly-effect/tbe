@@ -32,6 +32,7 @@ AbstractUndoCommand::AbstractUndoCommand(
     // and %2 might contain BowlingBall
     setText( QString("%1 %2").arg(anUndoName)
              .arg(anViewObjectPtr->getAbstractObjectPtr()->getName()) );
+    theOrigPos = anViewObjectPtr->getAbstractObjectPtr()->getOrigCenter();
 }
 
 
