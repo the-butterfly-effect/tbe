@@ -33,8 +33,10 @@ MoveUndoCommand::MoveUndoCommand(
 
 bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
-    theNewPos = anEventPtr->scenePos();
-    theViewObjPtr->setPos(Position(theNewPos-theButtonDownPosition+theOrigPos).toQPointF());
+    QPointF myMousePos = anEventPtr->scenePos();
+    theNewPos = theOrigPos.toVector() + Vector(myMousePos-theButtonDownPosition);
+    theNewPos.angle = theOrigPos.angle;
+    theViewObjPtr->setPos(theNewPos.toQPointF());
     return true;
 }
 

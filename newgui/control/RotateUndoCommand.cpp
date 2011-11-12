@@ -50,7 +50,7 @@ bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
     qDebug() << Q_FUNC_INFO;
     theButtonDownPosition = anEventPtr->scenePos();
-    theButtonDownVectorAngle = Vector(theButtonDownPosition - theOrigPos).toAngle();
+    theButtonDownVectorAngle = Vector(theButtonDownPosition - theOrigPos.toQPointF()).toAngle();
     return true;
 }
 

@@ -73,7 +73,7 @@ protected:
     void setupProxyImage(const QString& anImageName);
 
 protected:
-    Position theButtonDownPosition;
+    QPointF theButtonDownPosition;
     Position theOrigPos;
     Position theNewPos;
 

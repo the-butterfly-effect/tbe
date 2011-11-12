@@ -95,9 +95,12 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 
 void ViewObject::setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aNewHeight)
 {
+    qDebug() << Q_FUNC_INFO << QString("Position: %1").arg(aNewPosition.toString());
     prepareGeometryChange();
     theAbstractObjectPtr->setOrigCenter(aNewPosition);
     theAbstractObjectPtr->setTheWidth(aNewWidth);
     theAbstractObjectPtr->setTheHeight(aNewHeight);
+    setPos(aNewPosition.toQPointF());
+    setRotation(aNewPosition.angleInDegrees());
     update();
 }

@@ -82,6 +82,7 @@ public:
      */
     virtual const QString getName ( );
 
+	// TODO/FIXME: rename to getCenterPos()
 	/// Get the Position of the object.
 	/// This is the "original" center, i.e. where the object will
 	/// be when not in simulation.
@@ -125,6 +126,7 @@ public:
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const;
 
+	// TODO/FIXME: rename to setCenterPos()
 	/// Set the value of theCenter - this is the "original" center,
 	/// i.e. where the object will return to after a "reset".
 	/// @param new_var the new value of theCenter
