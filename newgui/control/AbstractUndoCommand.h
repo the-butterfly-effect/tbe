@@ -28,10 +28,13 @@ class ViewObjectActionDecorator;
 class QGraphicsSceneMouseEvent;
 
 /** this abstract class is the godfather of all undo classes
+  * (Delete/Insert/Move/Resize/Rotate)
   */
 class AbstractUndoCommand : public QUndoCommand
 {
 public:
+    /// Unlike QUndoCommand, we always require arguments
+    /// to the constructor.
     AbstractUndoCommand(ViewObject* anViewObjectPtr,
                         const QString& anUndoName,
                         QUndoCommand *parent = 0);
@@ -46,11 +49,18 @@ public:
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) = 0;
     virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr) = 0;
 
+    /// Called by the Undo stack after the action of this
+    /// class instance (Move/Rotate/Insert/Delete/Resize)
+    /// is firstly done OR when it needs to be redone.
     virtual void redo();
+
+    /// Called by the Undo stack to undo the action specified in
+    /// this command.
     virtual void undo();
 
 protected:
-    ViewObject* theVOPtr;
+    /// pointer to the view object
+    ViewObject* theViewObjPtr;
 
     /// pointer to ObjectActionDecorator for this action on theVOPtr;
     ViewObjectActionDecorator* theVOADPtr;
@@ -62,6 +72,14 @@ protected:
     Position theButtonDownPosition;
     Position theOrigPos;
     Position theNewPos;
+
+private:
+    /// keep private & unimplemented: no default constructor
+    AbstractUndoCommand();
+    /// keep private & unimplemented: no copy constructor
+    AbstractUndoCommand(AbstractUndoCommand&);
+    /// keep private & unimplemented: no assignment operator
+    AbstractUndoCommand& operator=(AbstractUndoCommand&);
 };
 
 #endif // ABSTRACTUNDOCOMMAND_H

@@ -22,6 +22,8 @@
 #include "AbstractUndoCommand.h"
 #include "Position.h"
 
+/// implementation of AbstractUndoCommand to handle
+/// rotation of an object by the user
 class RotateUndoCommand : public AbstractUndoCommand
 {
 public:

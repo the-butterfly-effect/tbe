@@ -26,7 +26,7 @@ AbstractUndoCommand::AbstractUndoCommand(
         const QString& anUndoName,
         QUndoCommand* parent)
     : QUndoCommand(parent),
-      theVOPtr(anViewObjectPtr)
+      theViewObjPtr(anViewObjectPtr)
 {
     // This is the undo action: %1 will contain e.g. "Move"
     // and %2 might contain BowlingBall
@@ -48,8 +48,8 @@ void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
 {
     qDebug() << Q_FUNC_INFO;
     Q_ASSERT(anImageName.isEmpty()==false);
-    Q_ASSERT(theVOPtr!=NULL);
-    theVOADPtr = new ViewObjectActionDecorator(theVOPtr, anImageName, this);
+    Q_ASSERT(theViewObjPtr!=NULL);
+    theVOADPtr = new ViewObjectActionDecorator(theViewObjPtr, anImageName, this);
 }
 
 

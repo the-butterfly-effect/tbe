@@ -22,6 +22,8 @@
 #include "AbstractUndoCommand.h"
 #include "Position.h"
 
+/// implementation of AbstractUndoCommand to handle
+/// movements of objects by the user
 class MoveUndoCommand : public AbstractUndoCommand
 {
 public:
