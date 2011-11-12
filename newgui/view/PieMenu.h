@@ -65,9 +65,9 @@ public:
 	/// center of our pie menu
 	enum ActionType
 	{
-		ACTION_HRESIZE = 0,
+// no action on position 0 yet
 		ACTION_ROTATE = 1,
-		ACTION_VRESIZE = 2,
+		ACTION_RESIZE = 2,
 		ACTION_MOVE = 3,
 		ACTION_DELETE = 4,
 //		ACTION_EDITPROPERTIES,

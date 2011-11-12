@@ -174,12 +174,12 @@ void PieMenu::iconClicked(ActionIcon* anIconPtr)
 void PieMenu::setup()
 {
 
-	bool myBool = (theAOPtr->isResizable()&AbstractObject::HORIZONTALRESIZE) || theIsLevelEditor;
-	new ActionIcon(ActionIcon::ACTION_HRESIZE,
-								"../images/ActionResizeHori.svg", myBool, this);
-	myBool = (theAOPtr->isResizable()&AbstractObject::VERTICALRESIZE) || theIsLevelEditor;
-	new ActionIcon(ActionIcon::ACTION_VRESIZE,
-								"../images/ActionResizeVerti.svg", myBool, this);
+	bool myBool = (theAOPtr->isResizable()&
+				   (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
+				   || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_RESIZE,
+								"../images/ActionResize.svg", myBool, this);
+
 	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
 								"../images/ActionRotate.svg", myBool, this);
