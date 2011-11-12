@@ -74,7 +74,7 @@ public:
 
 	//
 	// Getters and Setters
-	// (sorted lphabetically)
+	// (sorted alphabetically)
 
     /** returns the Name of the object, for users.
      *  If a non-US locale is specified, the returned string
@@ -184,6 +184,9 @@ private:
 
 	/// the properties of the object instance
 	PropertyList theProps;
+
+	// TODO/FIXME: debugging code - should go away at some point
+	friend class MainWindow;
 
 	/// static width of the object (i.e. at rest before simulation starts)
 	qreal theWidth;

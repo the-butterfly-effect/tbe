@@ -104,6 +104,7 @@ void MainWindow::setupView()
 	theScenePtr->addRect(20,-100,80,80);
 
 	AbstractObject* theAOPtr2 = new AbstractObject();
+	theAOPtr2->theProps.setProperty(Property::ROTATABLE_STRING, "true");
 	theAOPtr2->setTheHeight(180);
 	theAOPtr2->setTheWidth(180);
 	theAOPtr2->setOrigCenter(Position(230,130,1.0));
