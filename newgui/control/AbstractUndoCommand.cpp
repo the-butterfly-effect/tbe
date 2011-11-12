@@ -28,33 +28,45 @@ AbstractUndoCommand::AbstractUndoCommand(
     : QUndoCommand(parent),
       theViewObjPtr(anViewObjectPtr)
 {
+    AbstractObject* myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
+
     // This is the undo action: %1 will contain e.g. "Move"
     // and %2 might contain BowlingBall
     setText( QString("%1 %2").arg(anUndoName)
-             .arg(anViewObjectPtr->getAbstractObjectPtr()->getName()) );
-    theOrigPos = anViewObjectPtr->getAbstractObjectPtr()->getOrigCenter();
+             .arg(myObjectPtr->getName()) );
+    theOrigPos    = theNewPos    = myObjectPtr->getOrigCenter();
+    theOrigWidth  = theNewWidth  = myObjectPtr->getTheWidth();
+    theOrigHeight = theNewHeight = myObjectPtr->getTheHeight();
 }
 
 
-
-void AbstractUndoCommand::redo()
+void AbstractUndoCommand::deleteProxyImage(void)
 {
-    qDebug() << Q_FUNC_INFO;
-    // TODO/FIXME: implement!
+    Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theVOADPtr!=NULL);
+    delete theVOADPtr;
+    theVOADPtr = NULL;
+}
+
+
+void AbstractUndoCommand::redo(void)
+{
+    qDebug() << Q_FUNC_INFO << text();
+    theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
 }
 
 
 void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
 {
-    qDebug() << Q_FUNC_INFO;
     Q_ASSERT(anImageName.isEmpty()==false);
     Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theVOADPtr==NULL);
     theVOADPtr = new ViewObjectActionDecorator(theViewObjPtr, anImageName, this);
 }
 
 
-void AbstractUndoCommand::undo()
+void AbstractUndoCommand::undo(void)
 {
-    qDebug() << Q_FUNC_INFO;
-    // TODO/FIXME: implement!
+    qDebug() << Q_FUNC_INFO << text();
+    theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
 }

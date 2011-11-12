@@ -20,6 +20,7 @@
 #define VIEWOBJECT_H
 
 #include <QGraphicsPixmapItem>
+#include "Position.h"
 
 // forward declarations
 class AbstractObject;
@@ -45,6 +46,15 @@ public:
 
 	AbstractObject* getAbstractObjectPtr(void) const
 		{ return theAbstractObjectPtr; }
+
+	/// Sets new geometry for this object.
+	/// @note This member should only be called by UndoCommands
+	/// @note It will set the geometry in the AbstractObject and
+	/// then update itself.
+	/// @param aNewPosition
+	/// @param aNewWidth
+	/// @param aNewHeight
+	void setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aNewHeight);
 
 protected:
     /// overridden to allow detection of mouse button presses

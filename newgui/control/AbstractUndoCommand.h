@@ -65,13 +65,22 @@ protected:
     /// pointer to ObjectActionDecorator for this action on theVOPtr;
     ViewObjectActionDecorator* theVOADPtr;
 
-    /// TODO: explain
+    /// This member kills the ViewObjectActionDecorator
+    void deleteProxyImage(void);
+
+    /// This member sets up the ViewObjectActionDecorator, which in
+    /// turn will capture all relevant mouse movements for us.
     void setupProxyImage(const QString& anImageName);
 
 protected:
     Position theButtonDownPosition;
     Position theOrigPos;
     Position theNewPos;
+
+    qreal theOrigWidth;
+    qreal theNewWidth;
+    qreal theOrigHeight;
+    qreal theNewHeight;
 
 private:
     /// keep private & unimplemented: no default constructor

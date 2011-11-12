@@ -54,6 +54,7 @@ bool MoveUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr)
     // now, it's time to finalize everything
     // and push the Undo on the stack
     UndoSingleton::push(this);
+    deleteProxyImage();
 
     // we've completely handled the event, we're done
     return true;
