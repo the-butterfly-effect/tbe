@@ -24,7 +24,7 @@
 
 RotateUndoCommand::RotateUndoCommand(
         ViewObject* anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL)
 {
     qDebug() << Q_FUNC_INFO;
     setupProxyImage("../images/ProxyRotate.svg");
