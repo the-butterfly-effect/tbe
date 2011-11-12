@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="362"
-   height="404.85715"
+   height="362"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
@@ -35,7 +35,7 @@
        xlink:href="#linearGradient3203"
        id="linearGradient2456"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(4.9224242,0,0,4.9224242,-550.28077,-642.34035)"
+       gradientTransform="matrix(4.9224242,0,0,4.9224242,-546.83315,-666.47368)"
        x1="163.53125"
        y1="236.29134"
        x2="214.46875"
@@ -66,8 +66,8 @@
      showgrid="false"
      inkscape:window-width="875"
      inkscape:window-height="783"
-     inkscape:window-x="44"
-     inkscape:window-y="0" />
+     inkscape:window-x="1324"
+     inkscape:window-y="210" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -84,16 +84,19 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-204.71428,-168.50504)">
-    <rect
-       style="opacity:1;fill:#aaffac;fill-opacity:0.61065572;stroke:#00c311;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2383"
-       width="360"
-       height="402.85715"
-       x="205.71428"
-       y="169.50504" />
     <path
-       style="fill:url(#linearGradient2456);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823532000000001"
-       d="M 412.05309,230.67041 L 338.21673,279.89467 L 412.05309,329.11888 L 412.05309,306.04503 C 437.04014,318.05418 454.35518,343.54823 454.35518,373.11306 C 454.35518,402.81358 436.91844,428.44071 411.74543,440.33492 L 451.43249,466.79294 L 415.43727,490.78976 C 466.02004,475.78054 502.96411,429.4317 502.96411,374.65131 C 502.96411,318.62646 464.40892,271.47375 412.05309,257.58994 L 412.05309,230.67041 z M 348.83069,257.4361 C 296.07887,271.05669 257.15057,318.34875 257.15057,374.65131 C 257.15057,434.12906 300.62207,483.57983 357.90643,493.86629 L 357.90643,518.32457 L 431.74279,469.10031 L 357.90643,419.8761 L 357.90643,444.02673 C 327.65776,434.62306 305.7595,406.46509 305.7595,373.11306 C 305.7595,340.40237 326.86539,312.62753 356.21434,302.66086 L 318.52703,277.58726 L 348.83069,257.4361 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#aaffac;fill-opacity:0.61065572000000001;stroke:#aaffac;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.9057377"
+       id="path2385"
+       sodipodi:cx="191.7738"
+       sodipodi:cy="213.75238"
+       sodipodi:rx="182.29286"
+       sodipodi:ry="184.44762"
+       d="M 374.06667,213.75238 A 182.29286,184.44762 0 1 1 9.4809418,213.75238 A 182.29286,184.44762 0 1 1 374.06667,213.75238 z"
+       transform="matrix(0.9848514,0,0,0.9733461,196.84558,141.44999)" />
+    <path
+       style="fill:url(#linearGradient2456);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="M 415.50071,206.53708 L 341.66435,255.76134 L 415.50071,304.98555 L 415.50071,281.9117 C 440.48776,293.92085 457.8028,319.4149 457.8028,348.97973 C 457.8028,378.68025 440.36606,404.30738 415.19305,416.20159 L 454.88011,442.65961 L 418.88489,466.65643 C 469.46766,451.64721 506.41173,405.29837 506.41173,350.51798 C 506.41173,294.49313 467.85654,247.34042 415.50071,233.45661 L 415.50071,206.53708 z M 352.27831,233.30277 C 299.52649,246.92336 260.59819,294.21542 260.59819,350.51798 C 260.59819,409.99573 304.06969,459.4465 361.35405,469.73296 L 361.35405,494.19124 L 435.19041,444.96698 L 361.35405,395.74277 L 361.35405,419.8934 C 331.10538,410.48973 309.20712,382.33176 309.20712,348.97973 C 309.20712,316.26904 330.31301,288.4942 359.66196,278.52753 L 321.97465,253.45393 L 352.27831,233.30277 z"
        id="path2403" />
   </g>
 </svg>
