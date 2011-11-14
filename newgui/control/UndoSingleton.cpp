@@ -18,6 +18,7 @@
 
 #include "UndoSingleton.h"
 #include "RotateUndoCommand.h"
+#include "ResizeUndoCommand.h"
 #include "MoveUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
@@ -58,8 +59,9 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 	case ActionIcon::ACTION_ROTATE:
 		return new RotateUndoCommand(anObject);
 		break;
-	case ActionIcon::ACTION_HRESIZE:
-	case ActionIcon::ACTION_VRESIZE:
+	case ActionIcon::ACTION_RESIZE:
+		return new ResizeUndoCommand(anObject);
+		break;
 	case ActionIcon::ACTION_DELETE:
 	case ActionIcon::ACTION_EDITSPECIAL:
 		// TODO/FIXME
