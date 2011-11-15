@@ -45,18 +45,10 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	QPixmap* myPixmapPtr = new QPixmap(anImageName);
 	Q_ASSERT(myPixmapPtr!=NULL);
 	setPixmap(*myPixmapPtr);
+	thePixmapWidth = boundingRect().width();
+	thePixmapHeight= boundingRect().height();
 
-	// set transformations: origin, scale, rotate
-	setTransformOriginPoint(boundingRect().width()/2.0,boundingRect().height()/2.0);
-	QTransform theTransform;
-	theTransform.scale(theAbstractObjectPtr->getTheWidth()/boundingRect().width(),
-					   theAbstractObjectPtr->getTheHeight()/boundingRect().height());
-	theTransform.translate(-boundingRect().width()/2.0,-boundingRect().height()/2.0);
-	setTransform(theTransform,false);
-
-	// and get us to the final starting position...
-	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
-	setRotation(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
+	adjustObjectDrawing();
 
 	initViewObjectAttributes();
 }
@@ -64,6 +56,22 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 ViewObject::~ViewObject()
 {
 	// nothing to do yet :-)
+}
+
+
+void ViewObject::adjustObjectDrawing(void)
+{
+	prepareGeometryChange();
+	// set transformations: origin, scale, rotate
+	setTransformOriginPoint(thePixmapWidth/2.0, thePixmapHeight/2.0);
+	QTransform theTransform;
+	theTransform.scale(theAbstractObjectPtr->getTheWidth()/thePixmapWidth,
+					   theAbstractObjectPtr->getTheHeight()/thePixmapHeight);
+	theTransform.translate(-thePixmapWidth/2.0,-thePixmapHeight/2.0);
+	theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
+	setTransform(theTransform,false);
+	update();
+	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
 }
 
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
@@ -98,11 +106,8 @@ void ViewObject::setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aN
     qDebug() << Q_FUNC_INFO << QString("Pos: %1, WxH %2x%3")
                 .arg(aNewPosition.toString())
                 .arg(aNewWidth).arg(aNewHeight);
-    prepareGeometryChange();
     theAbstractObjectPtr->setOrigCenter(aNewPosition);
     theAbstractObjectPtr->setTheWidth(aNewWidth);
     theAbstractObjectPtr->setTheHeight(aNewHeight);
-    setPos(aNewPosition.toQPointF());
-    setRotation(aNewPosition.angleInDegrees());
-    update();
+    adjustObjectDrawing();
 }

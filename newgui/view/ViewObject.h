@@ -57,6 +57,10 @@ public:
 	void setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aNewHeight);
 
 protected:
+    /// based on changes in the underlying AbstractObject, adjust the image
+    /// by resizing and/or rotation. This is overkill for just moving...
+    void adjustObjectDrawing(void);
+
     /// overridden to allow detection of mouse button presses
     virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
     /// overridden to allow object highlighting
@@ -75,6 +79,9 @@ protected:
 
 private:
 	void initViewObjectAttributes(void);
+
+	qreal thePixmapWidth;
+	qreal thePixmapHeight;
 };
 
 #endif // VIEWOBJECT_H
