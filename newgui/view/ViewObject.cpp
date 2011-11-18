@@ -68,7 +68,7 @@ void ViewObject::adjustObjectDrawing(void)
 	theTransform.scale(theAbstractObjectPtr->getTheWidth()/thePixmapWidth,
 					   theAbstractObjectPtr->getTheHeight()/thePixmapHeight);
 	theTransform.translate(-thePixmapWidth/2.0,-thePixmapHeight/2.0);
-	theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angleInDegrees());
+	theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angle);
 	setTransform(theTransform,false);
 	update();
 	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
