@@ -90,7 +90,8 @@ void ViewObject::adjustObjectDrawing(void)
 	//   defined position (instead of the top-left corner)
 
     QTransform theTransform;
-     theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angle);
+     // Qt has the Y axis in opposite direction, so negate the angle...
+     theTransform.rotateRadians(-theAbstractObjectPtr->getOrigCenter().angle);
      theTransform.scale(myWidth/thePixmapWidth,
                        myHeight/thePixmapHeight);
     setTransform(theTransform,false);
@@ -100,7 +101,7 @@ void ViewObject::adjustObjectDrawing(void)
 	// object that happened around the top-left corner.
 	// So, where is the middle of our object currently?
 	// And -as always- don't forget to correct for Qt's wrong Y axis...
-	Position myMiddle = Position(0,0, theAbstractObjectPtr->getOrigCenter().angle)
+	Position myMiddle = Position(0,0, -theAbstractObjectPtr->getOrigCenter().angle)
 						+ Vector(myWidth/2, myHeight/2);
 	myMiddle.y = - myMiddle.y;
 	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF() - myMiddle.toQPointF());
