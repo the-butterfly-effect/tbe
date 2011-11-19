@@ -41,7 +41,7 @@ bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theNewPos.angle = theButtonDownVectorAngle-myNewVector.toAngle()
                       + myOrigAngle;
 
-    theViewObjPtr->setRotation(theNewPos.angleInDegrees());
+    theViewObjPtr->setNewGeometry(theNewPos);
 
     return true;
 }

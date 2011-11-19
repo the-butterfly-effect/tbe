@@ -54,7 +54,9 @@ public:
 	/// @param aNewPosition
 	/// @param aNewWidth
 	/// @param aNewHeight
-	void setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aNewHeight);
+	void setNewGeometry(Position aNewPosition,
+						qreal aNewWidth = 0.0,
+						qreal aNewHeight = 0.0);
 
 protected:
     /// based on changes in the underlying AbstractObject, adjust the image

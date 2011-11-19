@@ -61,17 +61,49 @@ ViewObject::~ViewObject()
 
 void ViewObject::adjustObjectDrawing(void)
 {
+	// FIXME/TODO: do we need these if we use setTransform?
 	prepareGeometryChange();
-	// set transformations: origin, scale, rotate
-	setTransformOriginPoint(thePixmapWidth/2.0, thePixmapHeight/2.0);
-	QTransform theTransform;
-	theTransform.scale(theAbstractObjectPtr->getTheWidth()/thePixmapWidth,
-					   theAbstractObjectPtr->getTheHeight()/thePixmapHeight);
-	theTransform.translate(-thePixmapWidth/2.0,-thePixmapHeight/2.0);
-	theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angle);
-	setTransform(theTransform,false);
-	update();
-	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF());
+	qreal myWidth  = theAbstractObjectPtr->getTheWidth();
+	qreal myHeight = theAbstractObjectPtr->getTheHeight();
+
+	// set transformations: origin, scale, translate
+
+	// Qt by default scales and rotates around (0,0),
+	// which is a corner of the object
+
+	// Problem: Qt merges transformations and handles them in the wrong order.
+	// * it first uses a rotation set with setRotate.
+	// * then it executes a transformation set with setTransform
+	//   (whatever transformation is set here)
+	// * then it executes a translation set with setPos
+	//
+	// Problem2: you cannot put a rotation and a translation and a scaling
+	// into setTransform because the three together will automagically
+	// result in an unwanted slanting of the object.
+	//
+	// Problem3: if you set a rotation and a scaling in the transform matrix
+	// it still will look like you do the rotation first and the scaling second
+	//
+	// So the end result:
+	// * we rotate and scale (in that order!) in the setTransform
+	// * then we translate in the setPos to set the the midpoint at the
+	//   defined position (instead of the top-left corner)
+
+    QTransform theTransform;
+     theTransform.rotateRadians(theAbstractObjectPtr->getOrigCenter().angle);
+     theTransform.scale(myWidth/thePixmapWidth,
+                       myHeight/thePixmapHeight);
+    setTransform(theTransform,false);
+    update();
+
+	// Now we need to calculate the translation, based on the scaled&rotated
+	// object that happened around the top-left corner.
+	// So, where is the middle of our object currently?
+	// And -as always- don't forget to correct for Qt's wrong Y axis...
+	Position myMiddle = Position(0,0, theAbstractObjectPtr->getOrigCenter().angle)
+						+ Vector(myWidth/2, myHeight/2);
+	myMiddle.y = - myMiddle.y;
+	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF() - myMiddle.toQPointF());
 }
 
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
