@@ -145,6 +145,7 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     return false;
 
 ignoreClick:
+    qDebug() << "myAxis not good - ignore click";
     theAxis = NONE;
     theButtonDownLength = 0;
     return true;
@@ -174,7 +175,7 @@ QPointF ResizeUndoCommand::toLocalPos(const QPointF& aScenePos)
     qreal mySin = sin(theOrigPos.angle);
 
     QPointF myAnswer;
-    myAnswer.setX(myRelPos.x()*myCos + myRelPos.y()*mySin);
-    myAnswer.setY(myRelPos.x()*mySin - myRelPos.y()*myCos);
+    myAnswer.setX(myRelPos.x()*myCos - myRelPos.y()*mySin);
+    myAnswer.setY(-myRelPos.x()*mySin - myRelPos.y()*myCos);
     return myAnswer;
 }
