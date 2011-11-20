@@ -68,7 +68,7 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     }
     else
     {
-        myDeltaLength = myNewMousePosLocal.x();
+        myDeltaLength = myNewMousePosLocal.x() - theButtonDownLength;
         theNewWidth = theOrigWidth + fabs(myDeltaLength);
         theNewPos = theOrigPos + Vector(myDeltaLength/2.0, 0);
     }
@@ -148,6 +148,8 @@ ignoreClick:
     qDebug() << "myAxis not good - ignore click";
     theAxis = NONE;
     theButtonDownLength = 0;
+    deleteProxyImage();
+    delete this;
     return true;
 }
 
