@@ -72,6 +72,9 @@ public:
 		TOTALRESIZE = 3
 	};
 
+	/// (static const) minimum dimension of any (part of) object.
+	static const float MINIMUM_DIMENSION;
+
 	//
 	// Getters and Setters
 	// (sorted alphabetically)
@@ -142,12 +145,12 @@ public:
 	/// Set the value of theHeight
 	/// @param new_var the new value of theHeight
 	virtual void setTheHeight ( qreal new_var )
-	{ if (new_var>0.01) theHeight = new_var;	}
+	{ if (new_var>AbstractObject::MINIMUM_DIMENSION) theHeight = new_var;	}
 
 	/// Set the value of theWidth
 	/// @param new_var the new value of theWidth
 	virtual void setTheWidth ( qreal new_var )
-	{ if (new_var>0.01) theWidth = new_var; }
+	{ if (new_var>AbstractObject::MINIMUM_DIMENSION) theWidth = new_var; }
 
 
 	//

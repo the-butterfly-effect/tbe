@@ -17,6 +17,11 @@
  */
 
 #include "AbstractObject.h"
+#include "Box2D.h"
+
+// I wonder if this should be b2_linearSlop instead of this number...
+const float AbstractObject::MINIMUM_DIMENSION = 0.03;
+
 
 AbstractObject::AbstractObject()
 {

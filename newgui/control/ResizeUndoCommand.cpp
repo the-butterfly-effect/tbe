@@ -63,13 +63,17 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     if ( theAxis&(HEIGHTBOTTOM|HEIGHTTOP))
     {
         myDeltaLength = myNewMousePosLocal.y() - theButtonDownLength;
-        theNewHeight = theOrigHeight + fabs(myDeltaLength);
+        if (myDeltaLength < -theOrigHeight+AbstractObject::MINIMUM_DIMENSION)
+            myDeltaLength = -theOrigHeight+AbstractObject::MINIMUM_DIMENSION;
+        theNewHeight = theOrigHeight + myDeltaLength;
         theNewPos = theOrigPos + Vector(0, myDeltaLength/2.0);
     }
     else
     {
         myDeltaLength = myNewMousePosLocal.x() - theButtonDownLength;
-        theNewWidth = theOrigWidth + fabs(myDeltaLength);
+        if (myDeltaLength < -theOrigWidth+AbstractObject::MINIMUM_DIMENSION)
+            myDeltaLength = -theOrigWidth+AbstractObject::MINIMUM_DIMENSION;
+        theNewWidth = theOrigWidth + myDeltaLength;
         theNewPos = theOrigPos + Vector(myDeltaLength/2.0, 0);
     }
 
