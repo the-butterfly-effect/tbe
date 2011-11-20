@@ -158,22 +158,6 @@ ignoreClick:
 }
 
 
-bool ResizeUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr)
-{
-    qDebug() << Q_FUNC_INFO;
-    // first, make sure the on-screen position is up-to-date
-    mousePressEvent(anEventPtr);
-
-    // now, it's time to finalize everything
-    // and push the Undo on the stack
-    UndoSingleton::push(this);
-    deleteProxyImage();
-
-    // we've completely handled the event, we're done
-    return true;
-}
-
-
 QPointF ResizeUndoCommand::toLocalPos(const QPointF& aScenePos)
 {
     QPointF myRelPos = aScenePos - theOrigPos.toQPointF();

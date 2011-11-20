@@ -49,6 +49,20 @@ void AbstractUndoCommand::deleteProxyImage(void)
 }
 
 
+bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
+{
+    qDebug() << Q_FUNC_INFO;
+
+    // It's time to finalize everything
+    // and push the Undo on the stack
+    UndoSingleton::push(this);
+    deleteProxyImage();
+
+    // we've completely handled the event, we're done
+    return true;
+}
+
+
 void AbstractUndoCommand::redo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
@@ -69,4 +83,5 @@ void AbstractUndoCommand::undo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
     theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
+
 }

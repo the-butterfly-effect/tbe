@@ -31,7 +31,6 @@ public:
 
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
 private:
     /// angle in radians of the button down position compared to object center

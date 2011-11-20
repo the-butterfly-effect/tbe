@@ -47,7 +47,7 @@ public:
     /// @returns true if event is handled already.
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) = 0;
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) = 0;
-    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr) = 0;
+    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)

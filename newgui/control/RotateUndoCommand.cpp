@@ -53,18 +53,3 @@ bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theButtonDownVectorAngle = Vector(theButtonDownPosition - theOrigPos.toQPointF()).toAngle();
     return true;
 }
-
-bool RotateUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr)
-{
-    qDebug() << Q_FUNC_INFO;
-    // first, make sure the on-screen position is up-to-date
-    mousePressEvent(anEventPtr);
-
-    // now, it's time to finalize everything
-    // and push the Undo on the stack
-    deleteProxyImage();
-    UndoSingleton::push(this);
-
-    // we've completely handled the event, we're done
-    return true;
-}

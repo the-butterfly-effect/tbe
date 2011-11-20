@@ -32,7 +32,6 @@ public:
 
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
     /// Calculate the local position from a scene position
     /// (but remain in scene units)
