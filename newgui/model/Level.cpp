@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -65,28 +65,28 @@ static QString theFileName;
 
 
 // Constructors/Destructors
-//  
+//
 
-Level::Level ( ) 
+Level::Level ( )
 {
 	theWorldPtr = new World();
 	theWorldPtr->theWorldWidth  = 3.0;
 	theWorldPtr->theWorldHeight = 2.0;
 }
 
-Level::~Level ( ) 
+Level::~Level ( )
 {
-	DEBUG5("World::~World - clear the ObjectPtrList \n");
+    DEBUG5("World::~World - clear the ObjectPtrList \n");
     delete theWorldPtr;
     theWorldPtr = NULL;
 }
 
-//  
+//
 // Methods
-//  
+//
 
 void
-Level::addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const
+Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
 {
 	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
 	if (myBOS!=NULL)
@@ -119,7 +119,7 @@ Level::load(const QString& aFileName)
 
 	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");
-	
+
 	QDomNode myNode, q;
 
 	// TODO: rename mySceneNode to myActiveNode
@@ -128,13 +128,13 @@ Level::load(const QString& aFileName)
 	QDomElement myElement;
 	QDomElement myDocElem;
 	QDomNamedNodeMap myNodeMap;
-    bool isOK1, isOK2;
+	bool isOK1, isOK2;
 	bool hasProblem = false;
 	QString myResult;
 
     qreal myWidth;
     qreal myHeight;
-    
+
 	QFile myFile(aFileName);
 	if (!myFile.open(QIODevice::ReadOnly))
 	{
@@ -196,7 +196,7 @@ Level::load(const QString& aFileName)
 	// TODO: implement view
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
-	
+
 	myResult = BackgroundSerializer::createObjectFromDom(
 			mySceneNode.firstChildElement(theBackgroundString),
 			&(theWorldPtr->theBackground));
@@ -216,7 +216,7 @@ Level::load(const QString& aFileName)
 		// <object type="Ramp" X="1.0" Y="0.5" width="2.0"/>
 		// of these, type, X and Y are *MANDATORY*
 		// optional are:  angle, width, height
-	
+
 		// simple sanity checks
 		if (q.nodeName() == "#comment")
 			continue;
@@ -226,7 +226,7 @@ Level::load(const QString& aFileName)
 			goto not_good;
 		}
 
-		BaseObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
+		AbstractObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
 		if (myBOPtr == NULL)
 		{
 			myErrorMessage += tr("createObjectFromDom failed");
@@ -239,10 +239,10 @@ Level::load(const QString& aFileName)
 		if (q==myNode.lastChild())
 			break;
 	}
-	
+
 	//
 	// parse the Goal section
-	// 
+	//
 	do {
 		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
 		mySceneNode=myDocElem.firstChildElement(theGoalsString);
@@ -296,7 +296,7 @@ Level::load(const QString& aFileName)
 	{
 		return "W " + myErrorMessage;
 	}
-		
+
 	// and everything went OK - we're done :-)
 	return "";
 
@@ -363,13 +363,13 @@ bool Level::save(const QString& aFileName)
 	QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
 	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
 	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
-	mySceneParent.appendChild(mySceneSizeNode);	
+	mySceneParent.appendChild(mySceneSizeNode);
 	// ... add the predefined elements
 	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
 	mySceneParent.appendChild(myPredefinedParent);
-	World::BaseObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
+	World::AbstractObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
 	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
-		addBaseObject(myPredefinedParent, *(*myI));
+		addAbstractObject(myPredefinedParent, *(*myI));
 	// ... add background
 	BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
 	// ... TODO: add view

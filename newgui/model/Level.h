@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009,2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -24,7 +24,7 @@
 #include <QList>
 #include <QDomDocument>
 #include "tbe_global.h"
-#include "BaseObject.h"
+#include "AbstractObject.h"
 #include "LocalString.h"
 
 // Forward Declarations:
@@ -36,8 +36,8 @@ class World;
   *
   * the level reads the objects from a file and creates the world containing
   * the various objects
-  * 
-  * Level inherits QObject to make i18n of error messages easier 
+  *
+  * Level inherits QObject to make i18n of error messages easier
   */
 
 class Level :  public QObject
@@ -45,9 +45,9 @@ class Level :  public QObject
 	Q_OBJECT
 
 	// Constructors/Destructors
-	//  
+	//
 public:
-	
+
 	/**
 	 * Empty Constructor
 	 */
@@ -65,23 +65,23 @@ public:
 	/// returns the Level's title
 	virtual QString getName ( ) const
 		{ return theLevelName.result(); }
-	
+
 	World* getTheWorldPtr(void)
 		{ return theWorldPtr; }
 
 	/** open file containing a level definition, parse it, build the Level
 	 *  if run into a <toolbox> section, keep a reference to that so the toolbox
 	 *  can benefit later...
-	 * 
+	 *
 	 * @param aFileName file to parse and populate Level with.
 	 * @return empty string is returned if loading was successful, otherwise
 	 *			the return will contain the i18n'ed error message
 	 */
 	QString load(const QString& aFileName);
-	
+
 	/** save the Level to a file
 	 *  the file name must be unique - overwriting is not allowed here
-	 * 
+	 *
 	 * @param aFileName file to serialize the Level/World to.
 	 * @return false if saving failed - error message will be set.
 	 */
@@ -104,9 +104,9 @@ protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
 	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
 	void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
-	void addBaseObject(QDomElement aParent, const BaseObject& anObjectRef) const;
+	void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
 
-private:	
+private:
 	World* theWorldPtr;
 
 	LocalString theLevelName;
