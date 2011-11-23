@@ -7,18 +7,25 @@ SOURCES += \
 	view/resizinggraphicsview.cpp \
     view/SimulationControls.cpp \
     view/PieMenu.cpp \
-    view/ViewWorld.cpp
+    view/ViewWorld.cpp \
+    view/GameResources.cpp
 
 HEADERS  += \
+	view/Background.h \
 	view/DropDownWindow.h \
 	view/ImageStore.h \
 	view/MainWindow.h \
-	view/ViewObject.h \
-	view/resizinggraphicsview.h \
-    view/SimulationControls.h \
     view/PieMenu.h \
-    view/ViewWorld.h
+    view/SimulationControls.h \
+	view/ViewObject.h \
+    view/ViewWorld.h \
+	view/resizinggraphicsview.h \
+    view/GameResources.h
 
-FORMS    += view/MainWindow.ui
+FORMS    += view/MainWindow.ui \
+    view/GameResources.ui
+
+
+
 
 
