@@ -14,6 +14,7 @@ INCLUDEPATH += . view model control box2d
 include(main.pri)
 include(box2d/box2d.pri)
 include(control/control.pri)
+include(loadsave/loadsave.pri)
 include(model/model.pri)
 include(view/view.pri)
 
