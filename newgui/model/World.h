@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -23,7 +23,7 @@
 #include "b2Contact.h"
 #include "tbe_global.h"
 
-#include "BaseJoint.h"
+//#include "BaseJoint.h"
 #include "Background.h"
 
 #include <QString>
@@ -137,7 +137,7 @@ private:
 /**
   * class World
   *
-  * the class holding all BaseObjects and is responsible for the simulation 
+  * the class holding all BaseObjects and is responsible for the simulation
   */
 
 class World : public ContactListener, public DestructionListener, public b2ContactFilter
@@ -145,7 +145,7 @@ class World : public ContactListener, public DestructionListener, public b2Conta
 public:
 
 	// Constructors/Destructors
-	//  
+	//
 
 	/**
 	 * Simple Constructor
@@ -164,7 +164,7 @@ public:
 	 *  @return true if success - false if object already present
 	 *          (in that case we don't add again to world nor drawworld)
 	 */
-	bool addObject(BaseObject* anObjectPtr);
+	bool addObject(AbstractObject* anObjectPtr);
 
 	/** adds an instantiated Goal to the World
 	 *  @param aGoalPtr pointer to an instantiated class with Goal interface
@@ -222,14 +222,14 @@ public:
 
 	/// keep the scene, set all objects back in original position
 	void reset (void);
-	
+
 	/// called on death of an object (possibly several times!)
 	void signalDeath(void);
 
 	/** take one step in the simulation loop
-	 *  Note that due to a limitation in OpenDE, each step is fixed time 
-	 * 
-	 * @return the time step taken in the simulation step in seconds 
+	 *  Note that due to a limitation in OpenDE, each step is fixed time
+	 *
+	 * @return the time step taken in the simulation step in seconds
 	 *         (most likely only a fraction of a second)
 	 */
 	qreal simStep (void);
@@ -289,10 +289,10 @@ public:
 	// Public attribute accessor methods
 	//
 
-	/** returns the name of the Level that created the World
+    /** returns the name of the Level that created the World
      */
     const QString& getName(void) const
-		{ return theLevelName; } 
+        { return theLevelName; }
 
 	qreal getTheWorldWidth(void)
 		{ return theWorldWidth; }
@@ -310,10 +310,10 @@ private:
 	//
 
 	typedef QList<BaseObject*> BaseObjectPtrList;
-	
-	/// the list of all objects managed by this World 
+
+	/// the list of all objects managed by this World
 	BaseObjectPtrList theObjectPtrList;
-	
+
 	typedef QMap<BaseObject*, qreal> ToRemoveList;
 	ToRemoveList theToBeRemovedList;
 
@@ -325,13 +325,13 @@ private:
 
 	/// The attribute that makes World tick
 	b2World* theB2WorldPtr;
-	
+
 	/// Do we want to let bodies sleep?
 	static const bool doSleep;
-	
+
 	/// the time taking in each time step
 	static const qreal theDeltaTime;
-	
+
 	/// the number of velocity iterations of Box2D per time step
 	static const unsigned int theVelocityIterationcount;
 	/// the number of position iterations of Box2D per time step

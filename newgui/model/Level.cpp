@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2010  Klaas van Gend
+ * This file copyright (C) 2009,2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,10 +18,10 @@
 
 #include "Level.h"
 #include "World.h"
-#include "BackgroundSerializer.h"
-#include "BaseObjectSerializer.h"
-#include "GoalSerializer.h"
-#include "Goal.h"
+//#include "BackgroundSerializer.h"
+//#include "AbstractObjectSerializer.h"
+//#include "GoalSerializer.h"
+//#include "Goal.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -85,16 +85,16 @@ Level::~Level ( )
 // Methods
 //
 
-void
-Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
-{
-	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
-	if (myBOS!=NULL)
-	{
-		myBOS->serialize(&aParent);
-		delete myBOS;
-	}
-}
+//void
+//Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
+//{
+//	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
+//	if (myBOS!=NULL)
+//	{
+//		myBOS->serialize(&aParent);
+//		delete myBOS;
+//	}
+//}
 
 QString
 Level::getPathToLevelFile(void)
@@ -197,16 +197,16 @@ Level::load(const QString& aFileName)
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
 
-	myResult = BackgroundSerializer::createObjectFromDom(
-			mySceneNode.firstChildElement(theBackgroundString),
-			&(theWorldPtr->theBackground));
-	if (myResult.isEmpty() == false)
-	{
-		myErrorMessage = tr("Parsing '%1' section failed: %2")
-						 .arg(theBackgroundString)
-						 .arg(myResult);
-		goto not_good;
-	}
+//	myResult = BackgroundSerializer::createObjectFromDom(
+//			mySceneNode.firstChildElement(theBackgroundString),
+//			&(theWorldPtr->theBackground));
+//	if (myResult.isEmpty() == false)
+//	{
+//		myErrorMessage = tr("Parsing '%1' section failed: %2")
+//						 .arg(theBackgroundString)
+//						 .arg(myResult);
+//		goto not_good;
+//	}
 
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
@@ -226,7 +226,7 @@ Level::load(const QString& aFileName)
 			goto not_good;
 		}
 
-		AbstractObject* myBOPtr = BaseObjectSerializer::createObjectFromDom(q, true);
+		AbstractObject* myBOPtr = AbstractObjectSerializer::createObjectFromDom(q, true);
 		if (myBOPtr == NULL)
 		{
 			myErrorMessage += tr("createObjectFromDom failed");
@@ -243,59 +243,59 @@ Level::load(const QString& aFileName)
 	//
 	// parse the Goal section
 	//
-	do {
-		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
-		mySceneNode=myDocElem.firstChildElement(theGoalsString);
-		if (mySceneNode.nodeName()!= theGoalsString)
-		{
-			myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
-			goto not_good;
-		}
-		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
-		{
-			// a goal entry has the following layout:
-			//	<goal type="distance" lessthan="0.3">
-			//		 <object ID="Butterfly"/>
-			//		 <object ID="Flower"/>
-			//	</goal>
-			//
-			// of these, 'type' is mandatory
-			// everything else is optional and depends on the type of goal
+//	do {
+//		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
+//		mySceneNode=myDocElem.firstChildElement(theGoalsString);
+//		if (mySceneNode.nodeName()!= theGoalsString)
+//		{
+//			myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
+//			goto not_good;
+//		}
+//		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
+//		{
+//			// a goal entry has the following layout:
+//			//	<goal type="distance" lessthan="0.3">
+//			//		 <object ID="Butterfly"/>
+//			//		 <object ID="Flower"/>
+//			//	</goal>
+//			//
+//			// of these, 'type' is mandatory
+//			// everything else is optional and depends on the type of goal
 
-			// simple sanity checks
-			if (q.nodeName() == "#comment")
-				continue;
-			if (q.nodeName() != theGoalString)
-			{
-				myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
-				hasProblem = true;
-				continue;
-			}
+//			// simple sanity checks
+//			if (q.nodeName() == "#comment")
+//				continue;
+//			if (q.nodeName() != theGoalString)
+//			{
+//				myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
+//				hasProblem = true;
+//				continue;
+//			}
 
-			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
-			if (myGPtr == NULL)
-			{
-				myErrorMessage += tr("createObjectFromDom failed");
-				hasProblem = true;
-				continue;
-			}
-			if (myGPtr->parseProperties(theWorldPtr)==false)
-			{
-				myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
-				hasProblem = true;
-				continue;
-			}
+//			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
+//			if (myGPtr == NULL)
+//			{
+//				myErrorMessage += tr("createObjectFromDom failed");
+//				hasProblem = true;
+//				continue;
+//			}
+//			if (myGPtr->parseProperties(theWorldPtr)==false)
+//			{
+//				myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
+//				hasProblem = true;
+//				continue;
+//			}
 
-			theWorldPtr->addGoal(myGPtr);
+//			theWorldPtr->addGoal(myGPtr);
 
-			if (q==myNode.lastChild())
-				break;
-		}
-	} while (false);  // i.e. always run this loop only once
-	if (hasProblem==true)
-	{
-		return "W " + myErrorMessage;
-	}
+//			if (q==myNode.lastChild())
+//				break;
+//		}
+//	} while (false);  // i.e. always run this loop only once
+//	if (hasProblem==true)
+//	{
+//		return "W " + myErrorMessage;
+//	}
 
 	// and everything went OK - we're done :-)
 	return "";
@@ -333,68 +333,68 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const L
 }
 
 
-bool Level::save(const QString& aFileName)
-{
-	DEBUG5("Level::save(%s)\n", ASCII(aFileName));
-	QDomDocument myDocument("mydocument");
-	QDomElement myRoot = myDocument.createElement(theRootNodeString);
-	myDocument.appendChild(myRoot);
+//bool Level::save(const QString& aFileName)
+//{
+//	DEBUG5("Level::save(%s)\n", ASCII(aFileName));
+//	QDomDocument myDocument("mydocument");
+//	QDomElement myRoot = myDocument.createElement(theRootNodeString);
+//	myDocument.appendChild(myRoot);
 
-	// LevelInfo
-	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
-	myRoot.appendChild(myLevelInfo);
-	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
-	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
-	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
-	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
-	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
+//	// LevelInfo
+//	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
+//	myRoot.appendChild(myLevelInfo);
+//	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
+//	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
+//	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
+//	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
+//	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
 
 
-	// Toolbox
-	if (theToolboxDomNode.isNull())
-		theToolboxDomNode = myDocument.createElement(theToolboxString);
-	QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
-	myRoot.appendChild(myToolboxCopy);
+//	// Toolbox
+//	if (theToolboxDomNode.isNull())
+//		theToolboxDomNode = myDocument.createElement(theToolboxString);
+//	QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
+//	myRoot.appendChild(myToolboxCopy);
 
-	// Scene
-	QDomElement mySceneParent = myDocument.createElement(theSceneString);
-	myRoot.appendChild(mySceneParent);
-	// ... add scenesize
-	QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
-	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
-	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
-	mySceneParent.appendChild(mySceneSizeNode);
-	// ... add the predefined elements
-	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
-	mySceneParent.appendChild(myPredefinedParent);
-	World::AbstractObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
-	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
-		addAbstractObject(myPredefinedParent, *(*myI));
-	// ... add background
-	BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
-	// ... TODO: add view
+//	// Scene
+//	QDomElement mySceneParent = myDocument.createElement(theSceneString);
+//	myRoot.appendChild(mySceneParent);
+//	// ... add scenesize
+//	QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
+//	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
+//	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
+//	mySceneParent.appendChild(mySceneSizeNode);
+//	// ... add the predefined elements
+//	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
+//	mySceneParent.appendChild(myPredefinedParent);
+//	World::AbstractObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
+//	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
+//		addAbstractObject(myPredefinedParent, *(*myI));
+//	// ... add background
+//	BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
+//	// ... TODO: add view
 
-	// Goals
-	QDomElement myGoalsParent = myDocument.createElement(theGoalsString);
-	myRoot.appendChild(myGoalsParent);
-	World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
-	for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
-		GoalSerializer::serialize(*myG, myGoalsParent);
+//	// Goals
+//	QDomElement myGoalsParent = myDocument.createElement(theGoalsString);
+//	myRoot.appendChild(myGoalsParent);
+//	World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
+//	for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
+//		GoalSerializer::serialize(*myG, myGoalsParent);
 
-	// success: we're going to write!
-	QFile myFile(aFileName);
-	if (!myFile.open(QFile::WriteOnly | QFile::Text))
-	{
-		QString myError = tr("Cannot write file '%1': %2.")
-			.arg(aFileName, myFile.errorString());
-		DEBUG1("ERROR: %s\n", ASCII(myError));
-		return false;
-	}
-	const int IndentSize = 4;
-	QTextStream myOut(&myFile);
-	myDocument.save(myOut, IndentSize);
-	return true;
-}
+//	// success: we're going to write!
+//	QFile myFile(aFileName);
+//	if (!myFile.open(QFile::WriteOnly | QFile::Text))
+//	{
+//		QString myError = tr("Cannot write file '%1': %2.")
+//			.arg(aFileName, myFile.errorString());
+//		DEBUG1("ERROR: %s\n", ASCII(myError));
+//		return false;
+//	}
+//	const int IndentSize = 4;
+//	QTextStream myOut(&myFile);
+//	myDocument.save(myOut, IndentSize);
+//	return true;
+//}
 
 void
 Level::setLevelFileName(const QString& aName)
