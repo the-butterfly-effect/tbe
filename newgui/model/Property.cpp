@@ -182,7 +182,7 @@ bool PropertyList::property2Float(const QString& aPropertyName,
 bool PropertyList::property2ObjectPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
-		BaseObject** aBOPtrPtr)
+		AbstractObject** aBOPtrPtr)
 {
 	QString myValue = getPropertyNoDefault(aPropertyName);
 	if (myValue.isEmpty())
@@ -196,14 +196,14 @@ bool PropertyList::property2ObjectPtr(
 bool PropertyList::property2ObjectPlusVectorPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
-		BaseObject** aBOPtrPtr,
+		AbstractObject** aBOPtrPtr,
 		Vector** aVectorPtrPtr)
 {
 	QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
 	if (myStrings.count() > 2 || myStrings.count() == 0)
 		return false;
 
-	BaseObject* myBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
+	AbstractObject* myBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
 	if (myBOPtrPtr == NULL)
 		return false;
 

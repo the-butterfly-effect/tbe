@@ -123,10 +123,10 @@ public:
 	bool property2Float(const QString& aPropertyName, float* aFloat, bool useDefault=true) const;
 
 	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing BaseObject instance
+	  * its value is the ID of an existing AbstractObject instance
 	  * @param aWorldPtr
 	  * @param aPropertyName (output)
-	  * @param aBOPtrPtr	 (output) upon success contains pointer to BaseObject
+	  * @param aBOPtrPtr	 (output) upon success contains pointer to AbstractObject
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
 //	bool property2ObjectPtr(World* aWorldPtr,
@@ -134,10 +134,10 @@ public:
 //							 AbstractObject** aBOPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing BaseObject instance
+	  * its value is the ID of an existing AbstractObject instance
 	  * @param aWorldPtr
 	  * @param aPropertyName
-	  * @param aBOPtrPtr	  (output) upon success contains pointer to BaseObject*
+	  * @param aBOPtrPtr	  (output) upon success contains pointer to AbstractObject*
 	  * @param aVectorPtrPtr  (output) upon success contains pointer to a Vector*
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
@@ -203,7 +203,7 @@ public:
 	//                <property key="Mass" >1</property>
 	//           </object>
 
-	// all below are used in BaseObject
+	// all below are used in AbstractObject
 	static const char* IMAGE_NAME_STRING;		// don't specify the .svg or .png
 	static const char* BOUNCINESS_STRING;		// 0.0 - inf, where 1.0=perfect bounce
 	static const char* NOCOLLISION_STRING;		// Object IDs that we do not collide with - separated by ';'
