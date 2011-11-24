@@ -19,7 +19,7 @@
 #include "Level.h"
 #include "World.h"
 //#include "BackgroundSerializer.h"
-//#include "AbstractObjectSerializer.h"
+#include "AbstractObjectSerializer.h"
 //#include "GoalSerializer.h"
 //#include "Goal.h"
 
@@ -226,13 +226,12 @@ Level::load(const QString& aFileName)
 			goto not_good;
 		}
 
-		AbstractObject* myBOPtr = AbstractObjectSerializer::createObjectFromDom(q, true);
+		AbstractObject* myBOPtr = AbstractObjectSerializer::createObjectFromDom(q, false, true);
 		if (myBOPtr == NULL)
 		{
 			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
 		}
-		myBOPtr->setIsMovable(false);
 		theWorldPtr->addObject(myBOPtr);
 		myBOPtr->parseProperties();
 

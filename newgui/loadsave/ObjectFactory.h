@@ -1,7 +1,29 @@
+/* The Butterfly Effect
+ * This file copyright (C) 2011 Klaas van Gend
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation
+ * applicable version is GPL version 2 only.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
 #ifndef OBJECTFACTORY_H
 #define OBJECTFACTORY_H
 
-//////////////////////////////////////////////////////////////////////////////
+#include "Position.h"
+#include <QList>
+
+// forward declarations
+class AbstractObject;
 
 /**
  *  class ObjectFactory
@@ -28,7 +50,7 @@ protected:
 	 * @param anHeight  height of the object in meter - default 1.0
 	 * @return a valid pointer to a newly created object or NULL if not found
 	 */
-	static BaseObject* createObject(
+	static AbstractObject* createObject(
 			const QString& aName,
 			const Position aPostion,
 			const qreal aWidth = 1.0,
@@ -37,7 +59,7 @@ protected:
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 
 	/// setup e.g. theInternalName of the object
-	BaseObject* fixObject(BaseObject*) const;
+	AbstractObject* fixObject(AbstractObject*) const;
 
 	QString getFactoryName(void) const
 	{ return theFactoryName; }
@@ -47,14 +69,13 @@ protected:
 	 *  - do not delete the contents of the list.
 	 */
 	static ObjectFactoryList* getAllFactories(void);
-	friend class ToolBox;
 
 	/** pure virtual function that creates an object of the type the factory is for
 	 *  must be implemented for each real factory.
 	 * @return pointer to a newly instantiated object
 	 */
-	virtual BaseObject* createObject(void) const = 0;
-	friend class TBItem;
+	virtual AbstractObject* createObject(void) const = 0;
+
 private:
 	QString theFactoryName;
 };

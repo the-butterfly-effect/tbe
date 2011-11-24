@@ -20,6 +20,7 @@
 #define ABSTRACTOBJECTSERIALIZER_H
 
 #include "AbstractObject.h"
+#include "ObjectFactory.h"
 
 // forward declarations:
 class QDomElement;
@@ -50,11 +51,14 @@ public:
 
 	/** create a AbstractObject from the information in the provided Dom
 	 *  @param q  the QDomNode containing the object definition
+	 *  @param isMovable  set to true if object is not to be moved by the user
 	 *  @param isXYMandatory  set to true if X="" and Y="" are mandatory for the object
 	 *  @returns  NULL if failed or a pointer to a valid AbstractObject if successful.
 	 *            Note that that AbstractObject is still on its own - not attached to a World yet.
 	 */
-	static AbstractObject* createObjectFromDom(const QDomNode& q, bool isXYMandatory);
+	static AbstractObject* createObjectFromDom(const QDomNode& q,
+											   bool isMovable,
+											   bool isXYMandatory);
 
 	/** returns a string representation of the float
 	 *  - maximum 3 digits

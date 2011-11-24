@@ -97,7 +97,9 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 
 
 AbstractObject*
-AbstractObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
+AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
+											  bool isMovable,
+											  bool isXYMandatory)
 {
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
@@ -136,6 +138,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandat
 	}
 
 	myBOPtr->setID(myNodeMap.namedItem(theIDAttributeString).nodeValue());
+	myBOPtr->theIsMovable = isMovable;
 
 	isOK1=true;
 	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
