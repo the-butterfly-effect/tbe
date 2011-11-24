@@ -26,7 +26,7 @@ class b2Joint;
 struct b2TimeStep;
 class b2BlockAllocator;
 
-class BaseObject;
+class AbstractObject;
 
 enum b2JointType
 {
@@ -38,7 +38,7 @@ enum b2JointType
 	e_mouseJoint,
 	e_gearJoint,
 	e_lineJoint,
-    e_weldJoint,
+	e_weldJoint,
 	e_frictionJoint,
 };
 
@@ -91,7 +91,7 @@ struct b2JointDef
 	b2JointType type;
 
 	/// Use this to attach application specific data to your joints.
-	BaseObject* userData;
+	AbstractObject* userData;
 
 	/// The first attached body.
 	b2Body* bodyA;
@@ -134,10 +134,10 @@ public:
 	b2Joint* GetNext();
 
 	/// Get the user data pointer.
-	BaseObject* GetUserData() const;
+	AbstractObject* GetUserData() const;
 
 	/// Set the user data pointer.
-	void SetUserData(BaseObject* data);
+	void SetUserData(AbstractObject* data);
 
 	/// Short-cut function to determine if either body is inactive.
 	bool IsActive() const;
@@ -170,7 +170,7 @@ protected:
 	bool m_islandFlag;
 	bool m_collideConnected;
 
-	BaseObject* m_userData;
+	AbstractObject* m_userData;
 
 	// Cache here per time step to reduce cache misses.
 	b2Vec2 m_localCenterA, m_localCenterB;
@@ -215,12 +215,12 @@ inline b2Joint* b2Joint::GetNext()
 	return m_next;
 }
 
-inline BaseObject* b2Joint::GetUserData() const
+inline AbstractObject* b2Joint::GetUserData() const
 {
 	return m_userData;
 }
 
-inline void b2Joint::SetUserData(BaseObject* data)
+inline void b2Joint::SetUserData(AbstractObject* data)
 {
 	m_userData = data;
 }
