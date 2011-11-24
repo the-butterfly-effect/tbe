@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "BaseObjectSerializer.h"
+#include "AbstractObjectSerializer.h"
 #include <QDomElement>
 
 #include <cstdio>
@@ -33,13 +33,13 @@ extern const char* theIDAttributeString;
 extern const char* thePropertyString;
 
 
-BaseObjectSerializer::BaseObjectSerializer(const BaseObject* anObjectPtr)
-		: theBaseObjectPtr(anObjectPtr)
+AbstractObjectSerializer::AbstractObjectSerializer(const AbstractObject* anObjectPtr)
+		: theAbstractObjectPtr(anObjectPtr)
 {
 }
 
 
-QString BaseObjectSerializer::floatToString(float aValue) const
+QString AbstractObjectSerializer::floatToString(float aValue) const
 {
 	// HACK HACK - yes, I'm aware I'm using C-style tricks here
 	// to work around the i18n issues that QT provides me with :-(
@@ -50,36 +50,36 @@ QString BaseObjectSerializer::floatToString(float aValue) const
 
 
 void
-BaseObjectSerializer::serialize(QDomElement* aParent) const
+AbstractObjectSerializer::serialize(QDomElement* aParent) const
 {
 	// do not serialize the object if it is a child.
 	// e.g. a PivotPoint created by an object as one of its properties
-	if (theBaseObjectPtr->theProps.getPropertyNoDefault(
+	if (theAbstractObjectPtr->theProps.getPropertyNoDefault(
 			Property::ISCHILD_STRING).isEmpty()==false)
 		return;
 
 	// save basic values that are part of the object
 	// TODO: only save values that are different from default
 	QDomElement myNode = aParent->ownerDocument().createElement(theObjectString);
-	myNode.setAttribute(theTypeAttributeString, theBaseObjectPtr->getInternalName());
-	myNode.setAttribute(theXAttributeString, floatToString(theBaseObjectPtr->getOrigCenter().x));
-	myNode.setAttribute(theYAttributeString, floatToString(theBaseObjectPtr->getOrigCenter().y));
-	myNode.setAttribute(theAngleAttributeString, floatToString(theBaseObjectPtr->getOrigCenter().angle));
-	myNode.setAttribute(theWidthAttributeString, floatToString(theBaseObjectPtr->getTheWidth()));
-	myNode.setAttribute(theHeightAttributeString, floatToString(theBaseObjectPtr->getTheHeight()));
-	if (theBaseObjectPtr->getID().isEmpty()==false)
-		myNode.setAttribute(theIDAttributeString, theBaseObjectPtr->getID());
+	myNode.setAttribute(theTypeAttributeString, theAbstractObjectPtr->getInternalName());
+	myNode.setAttribute(theXAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().x));
+	myNode.setAttribute(theYAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().y));
+	myNode.setAttribute(theAngleAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().angle));
+	myNode.setAttribute(theWidthAttributeString, floatToString(theAbstractObjectPtr->getTheWidth()));
+	myNode.setAttribute(theHeightAttributeString, floatToString(theAbstractObjectPtr->getTheHeight()));
+	if (theAbstractObjectPtr->getID().isEmpty()==false)
+		myNode.setAttribute(theIDAttributeString, theAbstractObjectPtr->getID());
 
 	// save properties
 	// only save properties that are non-default
-	if (theBaseObjectPtr->theProps.getPropertyCount() > 0)
+	if (theAbstractObjectPtr->theProps.getPropertyCount() > 0)
 	{
 		PropertyList::PropertyMap::const_iterator i;
-		for ( i = theBaseObjectPtr->theProps.constBegin();
-			  i!= theBaseObjectPtr->theProps.constEnd();
+		for ( i = theAbstractObjectPtr->theProps.constBegin();
+			  i!= theAbstractObjectPtr->theProps.constEnd();
 			 ++i)
 		{
-			QString myDefValue = theBaseObjectPtr->theProps.getDefaultProperty(i.key());
+			QString myDefValue = theAbstractObjectPtr->theProps.getDefaultProperty(i.key());
 			// do not save default values
 			if (myDefValue == i.value())
 				continue;
@@ -96,8 +96,8 @@ BaseObjectSerializer::serialize(QDomElement* aParent) const
 }
 
 
-BaseObject*
-BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
+AbstractObject*
+AbstractObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 {
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
@@ -128,7 +128,7 @@ BaseObjectSerializer::createObjectFromDom(const QDomNode& q, bool isXYMandatory)
 		myObjectPosition = Position(0,0,0);
 	}
 
-	BaseObject* myBOPtr = ObjectFactory::createObject( myObjectType, myObjectPosition);
+	AbstractObject* myBOPtr = ObjectFactory::createObject( myObjectType, myObjectPosition);
 	if (myBOPtr==NULL)
 	{
 		DEBUG2("createObjectFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));

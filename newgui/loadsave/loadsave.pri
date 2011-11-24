@@ -1,9 +1,17 @@
 
 SOURCES += \
-    model/Level.cpp \
-    model/LocalString.cpp 
+    loadsave/AbstractObjectSerializer.cpp \
+    loadsave/BackgroundSerializer.cpp \
+    loadsave/Level.cpp \
+    loadsave/LocalString.cpp \ 
+    loadsave/ObjectFactory.cpp
 
 HEADERS += \
-    model/Level.h \
-    model/LocalString.h 
+    loadsave/AbstractObjectSerializer.h \
+    loadsave/BackgroundSerializer.h \
+    loadsave/Level.h \
+    loadsave/LocalString.h \ 
+    loadsave/ObjectFactory.h
+
+
 
