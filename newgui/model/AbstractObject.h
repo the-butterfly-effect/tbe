@@ -246,6 +246,9 @@ public:
 	virtual void setOrigCenter ( const Position& aNewPos )
 	{ theCenter = aNewPos; }
 
+	/// static member to set the world ID where objects should be in
+	static void setTheB2WorldPtr(b2World* aPtr);
+
 	/// Set the value of theBounciness
 	/// (0.0 = stick, 1.0 = full elastic bounce)
 	/// @param new_var the new value of theBounciness
@@ -317,6 +320,11 @@ private:
 
 	/// static width of the object (i.e. at rest before simulation starts)
 	qreal theWidth;
+
+	// TODO: FIXME: rogue pointer here!!!
+public:
+	World* theWorldPtr;
+private:
 
 	// TODO/FIXME: this one wasn't present in BaseObject
 	// - but it was in RectObject...

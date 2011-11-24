@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009, 2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -17,11 +17,12 @@
  */
 
 #include "World.h"
-#include "BaseObject.h"
-#include "Goal.h"
-#include "DrawWorld.h"
-#include "DrawObject.h"
-#include "BaseJoint.h"
+#include "AbstractObject.h"
+//#include "Goal.h"
+#include "ViewWorld.h"
+#include "ViewObject.h"
+#include "AbstractJoint.h"
+#include "Box2D.h"
 
 
 const bool World::doSleep = true;
@@ -31,13 +32,13 @@ const unsigned int World::thePositionIterationcount = 30;
 
 
 // Constructors/Destructors
-//  
+//
 
 void DestructionListener::SayGoodbye(b2Joint* joint)
 {
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
 	// does not - but RTTI can fix that.
-	BaseJoint* myIF = dynamic_cast<BaseJoint*>(joint->GetUserData());
+	AbstractJoint* myIF = dynamic_cast<AbstractJoint*>(joint->GetUserData());
 	if (myIF != NULL)
 		myIF->jointWasDeleted();
 }
@@ -46,35 +47,35 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 
 World::World ( void) : theB2WorldPtr(NULL)
 {
-	theDrawWorldPtr = NULL;
+	theViewWorldPtr = NULL;
 	theTotalTime = 0.0f;
 }
 
-World::~World ( ) 
+World::~World ( )
 {
 	DEBUG5("World::~World - clear the ObjectPtrList \n");
-	
+
 	while(theObjectPtrList.isEmpty()==false)
 	{
-		BaseObject* myPtr = theObjectPtrList.first();
+		AbstractObject* myPtr = theObjectPtrList.first();
 		delete myPtr;
 		theObjectPtrList.pop_front();
 	}
-	
+
 	DEBUG5("World::~World - destroy the rest \n");
-	BaseObject::ForWorldOnly::setTheB2WorldPtr(NULL);
+	AbstractObject::setTheB2WorldPtr(NULL);
 }
 
-//  
+//
 // Methods
-//  
+//
 
 
 // Accessor methods
-//  
+//
 
 // Other methods
-//  
+//
 
 void World::addGoal(Goal* aGoalPtr)
 {
@@ -84,13 +85,13 @@ void World::addGoal(Goal* aGoalPtr)
 }
 
 
-void World::addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2)
+void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2)
 {
 	// always make sure to get the lowest pointer value in #1
 	// (this simplifies lookup)
 	if (anObject1 > anObject2)
 	{
-		BaseObject* myTemp = anObject1;
+		AbstractObject* myTemp = anObject1;
 		anObject1 = anObject2;
 		anObject2 = myTemp;
 	}
@@ -102,7 +103,7 @@ void World::addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2)
 
 
 
-bool World::addObject(BaseObject* anObjectPtr)
+bool World::addObject(AbstractObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
@@ -112,19 +113,19 @@ bool World::addObject(BaseObject* anObjectPtr)
 	if (theObjectPtrList.contains(anObjectPtr)==false)
 		theObjectPtrList.push_back(anObjectPtr);
 	anObjectPtr->theWorldPtr = this;
-	
-	if (theDrawWorldPtr!=NULL)
-		addBaseObjectToDrawWorld(anObjectPtr);
+
+	if (theViewWorldPtr!=NULL)
+		addAbstractObjectToViewWorld(anObjectPtr);
 	return true;
 }
 
-void World::addBaseObjectToDrawWorld(BaseObject* aBOPtr)
+void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 {
-	assert(theDrawWorldPtr!=NULL);
-	DEBUG4("World::addBaseObjectToDrawWorld(%p)\n", aBOPtr);
-	DrawObject* myDOPtr = aBOPtr->createDrawObject();
+	assert(theViewWorldPtr!=NULL);
+	DEBUG4("World::addAbstractObjectToViewWorld(%p)\n", aBOPtr);
+	ViewObject* myDOPtr = aBOPtr->createViewObject();
 	if (myDOPtr!=NULL)
-		theDrawWorldPtr->addItem(myDOPtr);
+		theViewWorldPtr->addItem(myDOPtr);
 }
 
 void World::createPhysicsWorld()
@@ -134,21 +135,21 @@ void World::createPhysicsWorld()
 		return;
 
 	theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()), doSleep);
-	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
+	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);
 	theB2WorldPtr->SetContactListener(this);
 	theB2WorldPtr->SetDestructionListener(this);
 	theB2WorldPtr->SetContactFilter(this);
 
-	// if theDrawDebug is true, we can ask Box2D to ask DrawWorld to draw
+	// if theDrawDebug is true, we can ask Box2D to ask ViewWorld to draw
 	// all shapes - useful for debugging new objects. But we have to register
 	// the debug thingie first.
 	if (theDrawDebug)
 	{
-		theB2WorldPtr->SetDebugDraw(theDrawWorldPtr);
+		theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
 		const uint32 myDebugFlags = b2DebugDraw::e_shapeBit |
 									b2DebugDraw::e_jointBit |
 									b2DebugDraw::e_centerOfMassBit;
-		theDrawWorldPtr->AppendFlags(myDebugFlags);
+		theViewWorldPtr->AppendFlags(myDebugFlags);
 	}
 
 	// Define the ground body.
@@ -167,7 +168,7 @@ void World::createPhysicsWorld()
 	b2PolygonShape myZeroShape;
 	myZeroShape.SetAsBox(0.05f, 0.05f);
 	myZeroBodyPtr->CreateFixture(&myZeroShape, 0.0f);
-	BaseJoint::setGroundBodyPtr(myZeroBodyPtr);
+	AbstractJoint::setGroundBodyPtr(myZeroBodyPtr);
 
 
 	// Define the left wall body.
@@ -179,7 +180,7 @@ void World::createPhysicsWorld()
 	myLeftShape.SetAsBox(1.0f, 50.0f);
 	myLeftBodyPtr->CreateFixture(&myLeftShape, 0.0f);
 
-	foreach(BaseObject* i, theObjectPtrList)
+	foreach(AbstractObject* i, theObjectPtrList)
 	{
 		i->createPhysicsObject();
 	}
@@ -187,17 +188,17 @@ void World::createPhysicsWorld()
 
 void World::createScene(MainWindow* myMainPtr)
 {
-	// create a DrawWorld instance, that will immediately attach itself to 
+	// create a ViewWorld instance, that will immediately attach itself to
 	// the graphicsView in the main window
-	assert(theDrawWorldPtr == NULL);
-	theDrawWorldPtr = new DrawWorld(myMainPtr, this);
-	
-	// get all BaseObjects to register themselves in the DrawWorld
-	BaseObjectPtrList::iterator i;
+	assert(theViewWorldPtr == NULL);
+	theViewWorldPtr = new ViewWorld(myMainPtr, this);
+
+	// get all AbstractObjects to register themselves in the ViewWorld
+	AbstractObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
 		DEBUG5("adding item %p\n",*i);
-		addBaseObjectToDrawWorld(*i);
+		addAbstractObjectToViewWorld(*i);
 	}
 }
 
@@ -205,11 +206,12 @@ void World::deletePhysicsWorld()
 {
 	DEBUG3("World::deletePhysicsWorld()\n");
 
+#if 0
 	// update our object lists and notify all objects
 	// that we're going to delete the physics parts...
 	// (note that no actual physics objects are removed
 	//   - we'll leave that to the delete b2WorldPtr below)
-	BaseObjectPtrList::iterator i=theObjectPtrList.begin();
+	AbstractObjectPtrList::iterator i=theObjectPtrList.begin();
 	while (i!= theObjectPtrList.end())
 	{
 		if ((*i)->isTemp())
@@ -223,6 +225,7 @@ void World::deletePhysicsWorld()
 			++i;
 		}
 	}
+#endif
 
 	// emptying the theObjectPtrList automatically also
 	// took care of everything in the theToBeRemovedList
@@ -232,17 +235,17 @@ void World::deletePhysicsWorld()
 	// and delete the b2World itself...
 	delete theB2WorldPtr;
 	theB2WorldPtr = NULL;
-	BaseObject::ForWorldOnly::setTheB2WorldPtr(theB2WorldPtr);
+	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);
 }
 
 
-BaseObject* World::findObjectByID(const QString& anID)
+AbstractObject* World::findObjectByID(const QString& anID)
 {
 	if (anID.isEmpty())
 		return NULL;
 
-	// iterate through all BaseObjects
-	BaseObjectPtrList::iterator i;
+	// iterate through all AbstractObjects
+	AbstractObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
 		if ((*i)->getID() == anID)
@@ -256,8 +259,8 @@ QStringList World::getAllIDs(void) const
 {
 	QStringList myIDList;
 
-	// iterate through all BaseObjects
-	BaseObjectPtrList::const_iterator i;
+	// iterate through all AbstractObjects
+	AbstractObjectPtrList::const_iterator i;
 	for (i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
 		QString myID = (*i)->getID();
@@ -269,7 +272,7 @@ QStringList World::getAllIDs(void) const
 
 
 
-void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
+void World::removeMe(AbstractObject* anObjectPtr, qreal aDeltaTime)
 {
 	// add to the list of "todo"
 	// note that this list is actually a map
@@ -279,7 +282,7 @@ void World::removeMe(BaseObject* anObjectPtr, qreal aDeltaTime)
 	theToBeRemovedList.insert(anObjectPtr, aDeltaTime);
 }
 
-bool World::removeObject(BaseObject* anObjectPtr)
+bool World::removeObject(AbstractObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
@@ -307,8 +310,8 @@ bool World::ShouldCollide(
 			b2Fixture* aFixture1,
 			b2Fixture* aFixture2)
 {
-	BaseObject* myObj1 = aFixture1->GetUserData();
-	BaseObject* myObj2 = aFixture2->GetUserData();
+	AbstractObject* myObj1 = aFixture1->GetUserData();
+	AbstractObject* myObj2 = aFixture2->GetUserData();
 
 	if (myObj1 == NULL || myObj2 == NULL)
 		return true;
@@ -317,7 +320,7 @@ bool World::ShouldCollide(
 	// (this simplifies lookup)
 	if (myObj1 > myObj2)
 	{
-		BaseObject* myTemp = myObj1;
+		AbstractObject* myTemp = myObj1;
 		myObj1 = myObj2;
 		myObj2 = myTemp;
 	}
@@ -341,8 +344,8 @@ qreal World::simStep (void)
 	// in hearing the impulses...
 	foreach(ContactInfo k, theContactInfoList)
 	{
-		BaseObject* myBO1Ptr = k.myFixtureA->GetUserData();
-		BaseObject* myBO2Ptr = k.myFixtureB->GetUserData();
+		AbstractObject* myBO1Ptr = k.myFixtureA->GetUserData();
+		AbstractObject* myBO2Ptr = k.myFixtureB->GetUserData();
 
 		if (myBO1Ptr!=NULL)
 		{
@@ -369,7 +372,7 @@ qreal World::simStep (void)
 	foreach(SimStepCallbackInterface* i, theCallbackList)
 		i->callbackStep(theDeltaTime, theTotalTime);
 
-	// remove all scheduled BaseObjects from the World
+	// remove all scheduled AbstractObjects from the World
 	ToRemoveList::iterator k;
 	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
 	{
@@ -388,6 +391,7 @@ qreal World::simStep (void)
 
 	theTotalTime += theDeltaTime;
 
+#if 0
 	// check if all goals are met
 	bool areGoalsMet = true;
 	foreach(Goal* l, theGoalPtrList)
@@ -408,19 +412,22 @@ qreal World::simStep (void)
 		}
 	}
 	if (areGoalsMet == true)
-		emit theDrawWorldPtr->on_winning();
+		emit theViewWorldPtr->on_winning();
 
 	// make Box2D draw debug images if requested
 	if (theDrawDebug)
 		theB2WorldPtr->DrawDebugData();
+#endif
 
 	return theDeltaTime;
 }
 
+#if 0
 void World::signalDeath(void)
 {
-	emit theDrawWorldPtr->on_death();
+	emit theViewWorldPtr->on_death();
 }
+#endif
 
 bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 {
