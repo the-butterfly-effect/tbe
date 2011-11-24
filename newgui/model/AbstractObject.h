@@ -23,6 +23,104 @@
 #include "Position.h"
 #include "Property.h"
 
+// Forward Declarations
+class ViewObject;
+class ObjectFactory;
+class World;
+class ShapeList;
+class b2FixtureDef;
+class b2ShapeDef;
+class b2Shape;
+class b2World;
+class AbstractObjectSerializer;
+class ContactInfo;
+
+
+//   ************************************************
+//   *                                              *
+//   * NOTE: the ObjectFactory class declaration is *
+//   *       below the BaseObject declaration       *
+//   *                                              *
+//   ************************************************
+
+/** This interface is implemented by all joints that attach to objects
+  * it is used to attach and for notification when the physics objects
+  * have been removed
+  */
+class JointInterface
+{
+public:
+	/// empty virtual destructor
+	virtual ~JointInterface() {;}
+
+	enum JointStatus
+	{
+		CREATED = 1,
+		POSUPDATE,
+		DELETED
+	};
+
+	/** called by the BaseObject(-derivate) (and/or UndoXXXCommand)
+	  * to annouce that its physics object(s) have been re-created.
+	  */
+	virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
+
+	/// called by World when the joint was "implicitly destructed"
+	virtual void jointWasDeleted(void) = 0;
+};
+
+
+class SensorInterface
+{
+public:
+	/// empty virtual destructor
+	virtual ~SensorInterface() {;}
+
+	/// called if Object has registered a sensor share
+	/// the default is to do completely nothing - you'll have to override
+	virtual void callBackSensor(const ContactInfo&)
+	{ return; }
+};
+
+
+/** Interface to indicate a BaseObject child class is interested in
+ *  information on impulses acting on its body.
+ *
+ *  Don't forget to override the isInterested*() if you want the report*() !!!
+ *
+ * I don't expect any class will inherit this class directly - BaseObject
+ * already does that. Just override what you need.
+ */
+class ImpulseInterface
+{
+public:
+	/// empty virtual destructor
+	virtual ~ImpulseInterface() {;}
+
+	/// please override and return true if you want reports on NormalImpulse
+	virtual bool isInterestedInNormalImpulse(void)
+	{ return false; }
+
+	/// please override and return true if you want reports on NormalImpulse
+	virtual bool isInterestedInTangentImpulse(void)
+	{ return false; }
+
+	/** will be called by World to report normal impulse length
+	  * note that an object resting on top of another already has a (constant)
+	  * normal impulse vector.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportNormalImpulseLength(UNUSED_ARG qreal anImpulseLength) {};
+
+	/** will be called by World to report tangential impulse length
+	  * note that an object resting on top of another has no tangential
+	  * impulse vector.
+	  * @param anImpulseLength length of the normal impulse vector
+	  */
+	virtual void reportTangentImpulse(UNUSED_ARG qreal anImpulse) {};
+};
+
+
 // ABOUT BODIES, SHAPES, JOINTS AND THE BASEOBJECT CLASS
 //
 //   In Box2D, we have Worlds, Bodies, Fixtures, Shapes and Joints:
@@ -59,7 +157,7 @@
   * abstract base class for everything in the simulation model
   */
 
-class AbstractObject
+class AbstractObject : public SensorInterface, public ImpulseInterface
 {
 public:
 	AbstractObject();
@@ -78,6 +176,14 @@ public:
 	//
 	// Getters and Setters
 	// (sorted alphabetically)
+
+	/// @returns the ID (which is used to identify objects in Goals and links)
+	const QString& getID (void) const
+	{	return theID; }
+
+	/// @returns the internal (CamelCased) object name - untranslated!
+	QString getInternalName( ) const
+	{ return theInternalName; }
 
     /** returns the Name of the object, for users.
      *  If a non-US locale is specified, the returned string
@@ -129,6 +235,10 @@ public:
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const;
 
+	/// sets the ID (which is used to identify objects in Goals and links)
+	void setID (const QString& anID)
+	{	theID = anID; }
+
 	// TODO/FIXME: rename to setCenterPos()
 	/// Set the value of theCenter - this is the "original" center,
 	/// i.e. where the object will return to after a "reset".
@@ -162,6 +272,9 @@ public:
 	  */
 	virtual void  parseProperties(void);
 
+protected:
+	/// pointer to a DrawObject that will draw this object
+	ViewObject* theViewObjectPtr;
 
 
 private:
@@ -181,6 +294,15 @@ private:
 	/// static height of object (i.e. at rest before simulation starts)
 	qreal theHeight;
 
+	/** String with this object's ID (a random, untranslated string
+	 *  used to identify individual objects in a level).
+	 *  This ID is e.g. used to link objects and set goals.
+	 */
+	QString theID;
+
+	/// the internal name (usually set by the ObjectFactory)
+	QString theInternalName;
+
 	/** true if the user can move this object
 	 *  Note that this has nothing to do with MovingObject or ImmovableObject
 	 *  it has to do with the level design - as such, Level can modify this setting
@@ -199,6 +321,11 @@ private:
 	// TODO/FIXME: this one wasn't present in BaseObject
 	// - but it was in RectObject...
 	SizeDirections resizableInfo;
+
+	// required to make sure the Serializer and the factory can touch everything
+	friend class AbstractObjectSerializer;
+	friend class ObjectFactory;
+	friend class AbstractJoint;
 };
 
 #endif // ABSTRACTOBJECT_H
