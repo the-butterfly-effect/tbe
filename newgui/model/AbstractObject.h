@@ -326,10 +326,16 @@ protected:
 
 	typedef QList<b2FixtureDef*> ShapeList;
 	/// list holding all the shapes associated with this object
-	/// @note: this list can change during the simulation, but only
-	///        if then createPhysicsObject() is called again,
-	///        as this list is then tied to the new b2Body
+	/// @note this list can change during the simulation, but only
+	///       if then createPhysicsObject() is called again,
+	///       as this list is then tied to the new b2Body
 	ShapeList theShapeList;
+
+	typedef QSet<JointInterface*>  JointList;
+	/// list holding all joints
+	/// @note during an update of the b2Body, these joints will receive
+	///       notifications (see notifyJoints()).
+	JointList theJointList;
 
 
 protected:

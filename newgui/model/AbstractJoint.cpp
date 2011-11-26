@@ -62,7 +62,7 @@ b2Body* AbstractJoint::getGroundBodyPtr(void)
 {
 	return theGroundBodyPtr;
 }
-
+#endif
 
 void AbstractJoint::jointWasDeleted(void)
 {
@@ -73,10 +73,12 @@ void AbstractJoint::jointWasDeleted(void)
 		theViewObjectPtr->setVisible(false);
 }
 
+#if 0
 void AbstractJoint::markAsChild(void)
 {
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 }
+#endif
 
 void AbstractJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 {
@@ -99,5 +101,3 @@ void AbstractJoint::setGroundBodyPtr(b2Body* aPtr)
 {
 	theGroundBodyPtr = aPtr;
 }
-
-#endif

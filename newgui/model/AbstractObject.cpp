@@ -23,6 +23,9 @@
 // I wonder if this should be b2_linearSlop instead of this number...
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
 
+// Static variables
+static b2World* theStaticB2WorldPtr = NULL;
+
 
 AbstractObject::AbstractObject()
 {
@@ -95,6 +98,12 @@ void AbstractObject::deletePhysicsObject()
 
 	// let's also make sure we're getting rid of the joints
 	notifyJoints(JointInterface::DELETED);
+}
+
+b2World* AbstractObject::getB2WorldPtr(void) const
+{
+	assert (theStaticB2WorldPtr);
+	return theStaticB2WorldPtr;
 }
 
 
@@ -190,6 +199,19 @@ void AbstractObject::parseProperties(void)
 	if (theDrawObjectPtr)
 		theDrawObjectPtr->setupCache();
 #endif
+}
+
+
+void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus) const
+{
+	foreach(JointInterface* j, theJointList)
+		j->physicsObjectStatus(aStatus);
+}
+
+
+void AbstractObject::setTheB2WorldPtr(b2World* aPtr)
+{
+	theStaticB2WorldPtr = aPtr;
 }
 
 

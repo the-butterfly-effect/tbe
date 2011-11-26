@@ -34,7 +34,6 @@ const unsigned int World::thePositionIterationcount = 30;
 // Constructors/Destructors
 //
 
-#if 0
 void DestructionListener::SayGoodbye(b2Joint* joint)
 {
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
@@ -43,7 +42,6 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 	if (myIF != NULL)
 		myIF->jointWasDeleted();
 }
-#endif
 
 
 World::World ( void) : theB2WorldPtr(NULL)
