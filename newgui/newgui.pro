@@ -9,6 +9,24 @@ QT       += core gui xml svg
 TARGET = tbe
 TEMPLATE = app
 
+####
+# the following are all settings for debugging
+# it will give more compiler warnings - which is good
+CONFIG += qt \
+    warn_on \
+    debug
+DEFINES += QT_NO_ASCII_CAST
+
+QMAKE_CXXFLAGS_DEBUG += -ggdb3 \
+    -O0 \
+    -Wextra \
+    -Wpointer-arith
+
+!macx {
+QMAKE_CXXFLAGS_DEBUG += -Wlogical-op
+}
+#### end of debugging improvements
+
 INCLUDEPATH += . view model control box2d
 
 include(main.pri)
