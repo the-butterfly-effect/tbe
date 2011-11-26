@@ -28,7 +28,7 @@
 #include <QTextStream>
 
 // Strings identifying elements/nodes in the XML file
-// (the ones without static are also used in BaseObjectSerializer.cpp)
+// (the ones without static are also used in AbstractObjectSerializer.cpp)
 //
 static const char* theRootNodeString= "tbe-level";
 static const char* theLevelInfoString = "levelinfo";
@@ -88,7 +88,7 @@ Level::~Level ( )
 //void
 //Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
 //{
-//	const BaseObjectSerializer* myBOS = anObjectRef.getSerializer();
+//	const AbstractObjectSerializer* myBOS = anObjectRef.getSerializer();
 //	if (myBOS!=NULL)
 //	{
 //		myBOS->serialize(&aParent);

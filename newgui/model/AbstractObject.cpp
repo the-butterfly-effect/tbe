@@ -18,6 +18,7 @@
 
 #include "AbstractObject.h"
 #include "Box2D.h"
+#include "ViewObject.h"
 
 // I wonder if this should be b2_linearSlop instead of this number...
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
@@ -27,12 +28,104 @@ AbstractObject::AbstractObject()
 {
 }
 
+void AbstractObject::createPhysicsObject(Position aPosition)
+{
+	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
+	// first fixup the bodydef with the current position
+	assert(theB2BodyDefPtr!=NULL);
+	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
+	theB2BodyDefPtr->angle = aPosition.angle;
+	theB2BodyDefPtr->type  = getObjectType();
+	// do not set mass properties here - that will be done in derived classes
+	// (and as such is done already when we get here)
+
+	assert (theB2BodyPtr==NULL);
+	if (theShapeList.count()==0)
+		return;
+
+	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
+	assert(theB2BodyPtr != NULL);
+
+	// then create the shapes from the shapedefs
+	ShapeList::const_iterator myI = theShapeList.begin();
+	for (;myI != theShapeList.end(); ++myI)
+	{
+		(*myI)->restitution = theBounciness;
+		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
+#ifndef NDEBUG
+		b2AABB myAABB;
+		b2Transform myT;
+		myT.SetIdentity();
+		myPtr->GetShape()->ComputeAABB(&myAABB, myT);
+		DEBUG5("  Shape* = %p\n", myPtr);
+		DEBUG5("    %fx%f\n", myAABB.GetExtents().x, myAABB.GetExtents().y);
+#endif
+	}
+	qDebug () << QString("Object %1 has mass %2 kg\n").arg(getName())
+				 .arg(theB2BodyPtr->GetMass());
+	notifyJoints(JointInterface::CREATED);
+}
+
+ViewObject*  AbstractObject::createViewObject(void)
+{
+	assert(theViewObjectPtr==NULL);
+	QString myImageName;
+	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
+		myImageName = getName();
+
+	theViewObjectPtr = new ViewObject(this, myImageName);
+
+	setViewObjectZValue(2.0); // will set ZValue different if set in property
+	return theViewObjectPtr;
+}
+
+
+void AbstractObject::deletePhysicsObject()
+{
+	DEBUG5("AbstractObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
+
+	// we're only setting the pointer to zero - let's Box2D take care
+	// of actually removing everything when we do delete world...
+	theB2BodyPtr = NULL;
+
+	// let's also make sure we're getting rid of the joints
+	notifyJoints(JointInterface::DELETED);
+}
+
+
 const QString AbstractObject::getName ( )
 {
 	// TODO: make abstract
 	return "AbstractObject";
 }
 
+void AbstractObject::initAttributes ( )
+{
+	DEBUG5("AbstractObject::initAttributes\n");
+	theB2BodyDefPtr= new b2BodyDef();
+	theB2BodyPtr=NULL;
+
+	theWidth = 1.0;
+	theHeight = 1.0;
+	theBounciness = 1.0;
+	// don't need to initialise theCenter - it has a default constructor
+
+	theViewObjectPtr = NULL;
+	theWorldPtr = NULL;
+
+	// TODO - we need to move this into Level, once Toolbox is implemented
+	theIsMovable = true;
+
+	theProps.setDefaultPropertiesString(
+		Property::IMAGE_NAME_STRING + QString(":/") +
+		Property::MASS_STRING + QString(":/") +
+		Property::BOUNCINESS_STRING + QString(":0.3/") +
+		Property::NOCOLLISION_STRING+ QString(":/") +
+		Property::PIVOTPOINT_STRING + QString(":/") +
+		Property::ROTATABLE_STRING + QString(":false/") +
+		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+		Property::ZVALUE_STRING + QString(":2.0/") );
+}
 
 bool AbstractObject::isMovable ( ) const
 {
@@ -57,7 +150,7 @@ void AbstractObject::parseProperties(void)
 	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
 	setTheBounciness(myFloat);
 
-#if 0 // directly copied from BaseObject.cpp - not used for newgui yet
+#if 0 // directly copied from AbstractObject.cpp - not used for newgui yet
 	Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
@@ -79,7 +172,7 @@ void AbstractObject::parseProperties(void)
 	QStringList::iterator myI = myObjIDList.begin();
 	while (myI != myObjIDList.end())
 	{
-		BaseObject* myObjPtr = theWorldPtr->findObjectByID(*myI);
+		AbstractObject* myObjPtr = theWorldPtr->findObjectByID(*myI);
 		if (myObjPtr!=NULL)
 			theWorldPtr->addNoCollisionCombo(this, myObjPtr);
 		++myI;
@@ -92,4 +185,13 @@ void AbstractObject::parseProperties(void)
 	if (theDrawObjectPtr)
 		theDrawObjectPtr->setupCache();
 #endif
+}
+
+
+void  AbstractObject::setViewObjectZValue(float aDefaultValue)
+{
+	assert(theViewObjectPtr != NULL);
+	// if no property with a float type found, leave aDefaultValue is unchanged
+	theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
+	theViewObjectPtr->setZValue(aDefaultValue);
 }

@@ -23,6 +23,8 @@
 #include "Position.h"
 #include "Property.h"
 
+#include "b2Body.h"
+
 // Forward Declarations
 class ViewObject;
 class ObjectFactory;
@@ -39,7 +41,7 @@ class ContactInfo;
 //   ************************************************
 //   *                                              *
 //   * NOTE: the ObjectFactory class declaration is *
-//   *       below the BaseObject declaration       *
+//   *       below the AbstractObject declaration       *
 //   *                                              *
 //   ************************************************
 
@@ -60,9 +62,10 @@ public:
 		DELETED
 	};
 
-	/** called by the BaseObject(-derivate) (and/or UndoXXXCommand)
+	/** called by the AbstractObject(-derivate) (and/or UndoXXXCommand)
 	  * to annouce that its physics object(s) have been re-created.
 	  */
+	// TODO/FIXME: rename member if possible to start with a verb
 	virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
 
 	/// called by World when the joint was "implicitly destructed"
@@ -83,12 +86,12 @@ public:
 };
 
 
-/** Interface to indicate a BaseObject child class is interested in
+/** Interface to indicate a AbstractObject child class is interested in
  *  information on impulses acting on its body.
  *
  *  Don't forget to override the isInterested*() if you want the report*() !!!
  *
- * I don't expect any class will inherit this class directly - BaseObject
+ * I don't expect any class will inherit this class directly - AbstractObject
  * already does that. Just override what you need.
  */
 class ImpulseInterface
@@ -174,7 +177,7 @@ public:
 	static const float MINIMUM_DIMENSION;
 
 	//
-	// Getters and Setters
+	// Public Getters and Setters
 	// (sorted alphabetically)
 
 	/// @returns the ID (which is used to identify objects in Goals and links)
@@ -189,7 +192,13 @@ public:
      *  If a non-US locale is specified, the returned string
      *  will already be translated
      */
-    virtual const QString getName ( );
+    virtual const QString getName ( );  // TODO/FIXME: const?
+
+	/// child objects must specify what type of body they are
+	/// @returns a value from the b2BodyType enum, valid options
+	///          within TBE are b2_dynamicBody and b2_staticBody
+	///          if unsure (e.g. joints) return b2_staticBody
+	virtual b2BodyType getObjectType(void) const = 0;
 
 	// TODO/FIXME: rename to getCenterPos()
 	/// Get the Position of the object.
@@ -212,7 +221,7 @@ public:
 	/// Get the value of theBounciness
 	/// (0.0 = stick, 1.0 = full elastic bounce)
 	/// @return the value of theBounciness
-	qreal getTheBounciness ( )
+	qreal getTheBounciness ( ) const
 		{ return theBounciness; }
 
 	/// Get the value of theHeight
@@ -270,15 +279,67 @@ public:
 	// other public members
 	//
 
+	/// create a physics object (i.e. B2Body) and add all shapes to it
+	/// if a B2Body already exists, it is deleted first.
+	/// the object will be positioned at theCenter.
+	virtual void createPhysicsObject(void);
+
+	/// create a physics object (i.e. B2Body) and add all shapes to it
+	/// if a B2Body already exists, it is deleted first.
+	/// @param aPosition the position of the center of the object.
+	virtual void createPhysicsObject(Position aPosition);
+
+	/** Creates the ViewObject, sets ZValue to 2 (or to whatever the
+	  * the ZValue property is set to) and returns a pointer to it.
+	  * @returns pointer to ViewObject
+	  */
+	virtual ViewObject* createViewObject();
+
+	/// null the current Physicsobject (note that they are no longer
+	/// deleted in normal game operation - if you need that behaviour
+	/// (like e.g. CokeSplatter) you need to override that in its destructor.
+	virtual void deletePhysicsObject(void);
+
+	virtual bool isPhysicsObjectCreated(void) const
+		{ return theB2BodyPtr!=NULL; }
+
 	/** parse all properties
 	  * NOTE: AbstractObject only understands PivotPoint and Bounciness
 	  */
 	virtual void  parseProperties(void);
 
+	/** sets the ZValue for theDrawObject to
+	 *  the value set in Property::ZVALUE_STRING or
+	 *  or (only if the above property doesn't exist) to @param aDefaultValue
+	 */
+	void setViewObjectZValue(float aDefaultValue);
+
 protected:
+
+	b2Body* theB2BodyPtr;
+	b2BodyDef* theB2BodyDefPtr;
+
 	/// pointer to a DrawObject that will draw this object
 	ViewObject* theViewObjectPtr;
 
+	typedef QList<b2FixtureDef*> ShapeList;
+	/// list holding all the shapes associated with this object
+	/// @note: this list can change during the simulation, but only
+	///        if then createPhysicsObject() is called again,
+	///        as this list is then tied to the new b2Body
+	ShapeList theShapeList;
+
+
+protected:
+	b2World* getB2WorldPtr(void) const;
+
+	virtual void initAttributes ( ) ;
+
+	/** announce to all registered joints that the physicsobject has been
+	  * created/deleted.
+	  * @param aStatus indicates if the B2Body was created or deleted
+	  */
+	virtual void notifyJoints(JointInterface::JointStatus aStatus) const;
 
 private:
 	// Private attributes of the Object
@@ -326,14 +387,22 @@ public:
 	World* theWorldPtr;
 private:
 
-	// TODO/FIXME: this one wasn't present in BaseObject
+	// TODO/FIXME: this one wasn't present in AbstractObject
 	// - but it was in RectObject...
+	// TODO/FIXME: also rename
 	SizeDirections resizableInfo;
 
 	// required to make sure the Serializer and the factory can touch everything
 	friend class AbstractObjectSerializer;
 	friend class ObjectFactory;
 	friend class AbstractJoint;
+
+
+private:
+	// disable copy constructor / assignment operator
+	AbstractObject(const AbstractObject& aBORefToCopy);
+	AbstractObject& operator = (const AbstractObject& aBORefToCopy);
+
 };
 
 #endif // ABSTRACTOBJECT_H

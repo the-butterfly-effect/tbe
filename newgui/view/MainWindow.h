@@ -25,9 +25,10 @@ namespace Ui {
     class MainWindow;
 }
 
-class QGraphicsScene;
 class QGraphicsRectWidget;
-
+class QGraphicsScene;
+class ViewWorld;
+class World;
 
 class MainWindow : public QMainWindow
 {
@@ -36,6 +37,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    /// only to be called by ViewWorld, to register itself
+    /// in the view
+    void setScene(ViewWorld* aScenePtr, const QString& aLevelName);
 
 protected:
 	void changeEvent(QEvent *e);
@@ -48,6 +53,8 @@ private:
 
 	QGraphicsScene* theScenePtr;
 	QGraphicsRectWidget *theDropDown;
+
+	World* theWorldPtr;
 };
 
 #endif // MAINWINDOW_H

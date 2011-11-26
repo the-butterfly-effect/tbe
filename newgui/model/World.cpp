@@ -34,6 +34,7 @@ const unsigned int World::thePositionIterationcount = 30;
 // Constructors/Destructors
 //
 
+#if 0
 void DestructionListener::SayGoodbye(b2Joint* joint)
 {
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
@@ -42,7 +43,7 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 	if (myIF != NULL)
 		myIF->jointWasDeleted();
 }
-
+#endif
 
 
 World::World ( void) : theB2WorldPtr(NULL)
@@ -77,14 +78,16 @@ World::~World ( )
 // Other methods
 //
 
+#if 0
 void World::addGoal(Goal* aGoalPtr)
 {
 	if (aGoalPtr == NULL)
 		return;
 	theGoalPtrList.push_back(aGoalPtr);
 }
+#endif
 
-
+#if 0
 void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2)
 {
 	// always make sure to get the lowest pointer value in #1
@@ -100,7 +103,7 @@ void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObj
 	if (theNoCollisionList.contains(anObject1, anObject2)==false)
 		theNoCollisionList.insert(anObject1, anObject2);
 }
-
+#endif
 
 
 bool World::addObject(AbstractObject* anObjectPtr)
@@ -119,6 +122,7 @@ bool World::addObject(AbstractObject* anObjectPtr)
 	return true;
 }
 
+
 void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 {
 	assert(theViewWorldPtr!=NULL);
@@ -127,6 +131,7 @@ void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 	if (myDOPtr!=NULL)
 		theViewWorldPtr->addItem(myDOPtr);
 }
+
 
 void World::createPhysicsWorld()
 {
@@ -143,6 +148,7 @@ void World::createPhysicsWorld()
 	// if theDrawDebug is true, we can ask Box2D to ask ViewWorld to draw
 	// all shapes - useful for debugging new objects. But we have to register
 	// the debug thingie first.
+#if 0
 	if (theDrawDebug)
 	{
 		theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
@@ -151,6 +157,7 @@ void World::createPhysicsWorld()
 									b2DebugDraw::e_centerOfMassBit;
 		theViewWorldPtr->AppendFlags(myDebugFlags);
 	}
+#endif
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;

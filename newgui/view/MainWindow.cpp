@@ -24,14 +24,15 @@
 #include <cassert>
 
 
-#include "DropDownWindow.h"
 #include "AbstractObject.h"
+#include "DropDownWindow.h"
+#include "PieMenu.h"
+#include "SimulationControls.h"
+#include "UndoSingleton.h"
 #include "ViewObject.h"
 #include "ViewWorld.h"
-#include "UndoSingleton.h"
+#include "World.h"
 
-#include "SimulationControls.h"
-#include "PieMenu.h"
 
 
 
@@ -67,6 +68,24 @@ void MainWindow::changeEvent(QEvent *e)
 }
 
 
+void MainWindow::setScene(ViewWorld* aScenePtr, const QString& aLevelName)
+{
+	DEBUG5("MainWindow::setScene(%p, %s)\n", aScenePtr, ASCII(aLevelName));
+	theScenePtr=aScenePtr;
+
+	ui->graphicsView->setScene(aScenePtr);
+//	aScenePtr->setSimSpeed(theSimSpeed);
+
+//	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+
+	setWindowTitle(APPNAME " - " + aLevelName);
+
+	// also set the startstopwatch view
+//	ui.StartStopView->setScene(aScenePtr->getStartStopWatchPtr());
+//	ui.StartStopView->fitInView(aScenePtr->getStartStopWatchPtr()->itemsBoundingRect(), Qt::KeepAspectRatio);
+}
+
+
 void MainWindow::setupMenu(void)
 {
 }
@@ -84,32 +103,37 @@ void MainWindow::setupView()
 	myRedoActionPtr->setShortcuts(redoShortcuts);
 	ui->menuEdit->addAction(myRedoActionPtr);
 
-	assert(theScenePtr==NULL);
-	theScenePtr = new ViewWorld(0, -300, 300, 300);
-	theScenePtr->setBackgroundBrush(Qt::blue);
-	theScenePtr->addRect(0,0,300,-300);
-	ui->graphicsView->setScene(theScenePtr);
+	theWorldPtr = new World();
+	theWorldPtr->createScene(this);
+//	assert(theScenePtr==NULL);
+//	theScenePtr = new ViewWorld(0, -300, 300, 300);
+//	theScenePtr->setBackgroundBrush(Qt::blue);
+//	theScenePtr->addRect(0,0,300,-300);
+//	ui->graphicsView->setScene(theScenePtr);
 
 	DropDownWindow* theDropDown = new DropDownWindow;
 	theScenePtr->addItem(theDropDown);
 	theDropDown->setup(ui->menuBar);
 
-	AbstractObject* theAOPtr = new AbstractObject();
-	theAOPtr->setTheHeight(80);
-	theAOPtr->setTheWidth(80);
-	theAOPtr->setOrigCenter(Position(60,60,1.57));
-	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
-	theScenePtr->addItem(theVOPtr);
+//	AbstractObject* theAOPtr = new AbstractObject();
+//	theAOPtr->theProps.setProperty(Property::ROTATABLE_STRING, "true");
+//	theAOPtr->setTheHeight(80);
+//	theAOPtr->setTheWidth(80);
+//	theAOPtr->setOrigCenter(Position(60,60, 0));
+//	theAOPtr->resizableInfo = AbstractObject::HORIZONTALRESIZE;
+//	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
+//	theScenePtr->addItem(theVOPtr);
 
 	theScenePtr->addRect(20,-100,80,80);
 
-	AbstractObject* theAOPtr2 = new AbstractObject();
-	theAOPtr2->theProps.setProperty(Property::ROTATABLE_STRING, "true");
-	theAOPtr2->setTheHeight(180);
-	theAOPtr2->setTheWidth(180);
-	theAOPtr2->setOrigCenter(Position(230,130,1.0));
-	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
-	theScenePtr->addItem(theVOPtr2);
+//	AbstractObject* theAOPtr2 = new AbstractObject();
+//	theAOPtr2->theProps.setProperty(Property::ROTATABLE_STRING, "true");
+//	theAOPtr2->setTheHeight(80);
+//	theAOPtr2->setTheWidth(180);
+//	theAOPtr2->setOrigCenter(Position(230,100, 0.1));
+//	theAOPtr2->resizableInfo = AbstractObject::TOTALRESIZE;
+//	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
+//	theScenePtr->addItem(theVOPtr2);
 
 	SimulationControls* myControls = new SimulationControls;
 	myControls->setup(ui->menuBar);

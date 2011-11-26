@@ -16,22 +16,26 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include <QGraphicsSceneMouseEvent>
-#include "ViewWorld.h"
+#include "MainWindow.h"
 #include "PieMenu.h"
+#include "ViewWorld.h"
+#include "World.h"
 
-ViewWorld::ViewWorld(QObject *parent) :
-    QGraphicsScene(parent)
+#include <QGraphicsSceneMouseEvent>
+
+ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
+	: QGraphicsScene( NULL ), theWorldPtr(aWorldPtr)
 {
+	initAttributes();
+
+	aMainWindowPtr->setScene(this, theWorldPtr->getName());
 }
 
-ViewWorld::ViewWorld ( qreal x, qreal y, qreal width, qreal height, QObject * parent)
-    : QGraphicsScene( x, y, width, height, parent)
+
+void ViewWorld::initAttributes ( )
 {
-
+	qDebug() << Q_FUNC_INFO;
 }
-
-
 
 void
 ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )

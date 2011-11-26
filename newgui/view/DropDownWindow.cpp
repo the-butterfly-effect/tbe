@@ -17,6 +17,10 @@
  */
 
 #include "DropDownWindow.h"
+#include <QGraphicsView>
+
+#include "ViewObject.h"
+#include "AbstractObject.h"
 
 DropDownWindow::DropDownWindow(QGraphicsWidget* parent) :
 	QGraphicsWidget(parent)
@@ -33,11 +37,27 @@ void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
 	myPal.setColor(QPalette::Window, Qt::darkRed);
 	setPalette(myPal);
 
-	textEdit = scene()->addWidget(new QTextEdit("hello hello"));
+	{
+	theScenePtr = new QGraphicsScene(0, -100, 100, 100);
+	theScenePtr->setBackgroundBrush(Qt::white);
+	theScenePtr->addRect(0,0,100,-100);
+
+#if 0
+	AbstractObject* theAOPtr = new AbstractObject();
+	theAOPtr->setTheHeight(45);
+	theAOPtr->setTheWidth(45);
+	theAOPtr->setOrigCenter(Position(30,30, 0));
+	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
+	theScenePtr->addItem(theVOPtr);
+#endif
+	}
+
+
+	theToolBoxView = scene()->addWidget(new QGraphicsView(theScenePtr));
 	pushButton = scene()->addWidget(new QPushButton("test"));
 
 	theLayoutPtr = new QGraphicsLinearLayout;
-	theLayoutPtr->addItem(textEdit);
+	theLayoutPtr->addItem(theToolBoxView);
 	theLayoutPtr->addItem(pushButton);
 	setLayout(theLayoutPtr);
 	setZValue(1000);
@@ -48,7 +68,7 @@ void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
 	QState* myUpStatePtr = new QState(&theStateMachine);
 	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80, -380), QSizeF(0, 40)));
 	QState* myDownStatePtr = new QState(&theStateMachine);
-	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,-200), QSizeF(0,0)));
+	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,-200), QSizeF(250,170)));
 	theStateMachine.setInitialState(myUpStatePtr);
 
 	// setup a custom animation

@@ -35,9 +35,10 @@ public slots:
 //	void showYourself(void);
 
 private:
-	QGraphicsWidget*       textEdit;
+	QGraphicsWidget*       theToolBoxView;
 	QGraphicsWidget*       pushButton;
 	QGraphicsLinearLayout* theLayoutPtr;
+	QGraphicsScene* theScenePtr;
 
 	/// used for the animation
 	QStateMachine theStateMachine;

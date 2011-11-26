@@ -21,12 +21,22 @@
 
 #include <QtGui/QGraphicsScene>
 
+class MainWindow;
+class World;
+
+/** class ViewWorld
+  * This class contains the View* objects and is the QGraphicsScene.
+  * TODO/FIXME: validate & list other jobs:
+  * //It contains the timers that run the simulation.
+  * //It also maintains the undo stack and handles drag-n-drop from the toolbox.
+  * //Lastly, it implements the debug callbacks from Box2D to draw outlines.
+  */
 class ViewWorld : public QGraphicsScene
 {
     Q_OBJECT
+
 public:
-    ViewWorld ( qreal x, qreal y, qreal width, qreal height, QObject * parent = NULL );
-    explicit ViewWorld(QObject *parent = NULL);
+    explicit ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
 
     virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 
@@ -34,6 +44,18 @@ signals:
 
 public slots:
 
+private:
+	// Private attributes
+	//
+
+	MainWindow* theMainWindowPtr;
+	World* theWorldPtr;
+
+private:
+    void initAttributes ( ) ;
+
+    // keep this one last, it kills copy constructors & assignment operators
+    Q_DISABLE_COPY ( ViewWorld );
 };
 
 #endif // VIEWWORLD_H
