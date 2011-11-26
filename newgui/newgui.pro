@@ -27,7 +27,7 @@ QMAKE_CXXFLAGS_DEBUG += -Wlogical-op
 }
 #### end of debugging improvements
 
-INCLUDEPATH += . view model control box2d
+INCLUDEPATH += . view model loadsave control box2d
 
 include(main.pri)
 include(box2d/box2d.pri)

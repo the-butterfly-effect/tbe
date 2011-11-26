@@ -1,6 +1,6 @@
 
 SOURCES += \
-    #model/AbstractBall.cpp \
+    model/CircleObjects.cpp \
     model/AbstractJoint.cpp \
     model/AbstractObject.cpp \
     model/Position.cpp \
@@ -8,7 +8,7 @@ SOURCES += \
     model/World.cpp
 
 HEADERS += \
-    #model/AbstractBall.h \
+    model/CircleObjects.h \
     model/AbstractJoint.h \
     model/AbstractObject.h \
     model/Position.h \

@@ -16,13 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "AbstractBall.h"
-#include "DrawAbstractBall.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "Property.h"
 
-/** the AbstractBall's ObjectFactory
+#include "CircleObjects.h"
+#include "ViewCircleObject.h"
+#include "Property.h"
+#include "ObjectFactory.h"
+
+/** the CircleObject's ObjectFactory
  *  note that it is slightly more complex than usual, because it is generalised
  *  to create any type of ball. Below the declaration, there will be several
  *  global instances each identifying one ball type
@@ -44,7 +46,7 @@ public:
 	{	announceObjectType(anInternalName, this); }
 
 	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new AbstractBall(theDisplayName, theTooltip, theImageName,
+	{	return fixObject(new CircleObject(theDisplayName, theTooltip, theImageName,
 								theRadius, theMass, theBounciness)); }
 private:
 		QString theDisplayName;
@@ -90,7 +92,7 @@ static BallObjectFactory theSoccerFactory("SoccerBall",
 // Constructors/Destructors
 //
 
-AbstractBall::AbstractBall (const QString& aName,
+CircleObject::CircleObject (const QString& aName,
 				  const QString& aTooltip,
 				  const QString& anImageName,
 				  qreal aRadius,
@@ -98,17 +100,17 @@ AbstractBall::AbstractBall (const QString& aName,
 				  qreal aBounciness)
 	: theBallName(aName), theBallTooltip(aTooltip), theBallImage(anImageName)
 {
-	DEBUG5("AbstractBall::AbstractBall\n");
+	DEBUG5("CircleObject::CircleObject\n");
 
 	createBallShapeFixture(aRadius, aMass);
 	setTheBounciness(aBounciness);
 
-	// for none of the AbstractBalls, you're supposed to change the image...
+	// for none of the CircleObjects, you're supposed to change the image...
 	theProps.setDefaultPropertiesString("-" + QString(Property::IMAGE_NAME_STRING) + ":/"
 				+ QString(Property::BOUNCINESS_STRING) + QString(":%1").arg(aBounciness));
 }
 
-AbstractBall::~AbstractBall ( ) { }
+CircleObject::~CircleObject ( ) { }
 
 //
 // Methods
@@ -122,7 +124,7 @@ AbstractBall::~AbstractBall ( ) { }
 // Other methods
 //
 
-void AbstractBall::createBallShapeFixture(float aRadius, float aMass)
+void CircleObject::createBallShapeFixture(float aRadius, float aMass)
 {
 	clearShapeList();
 	b2CircleShape* ballShape = new b2CircleShape();
@@ -144,7 +146,7 @@ void AbstractBall::createBallShapeFixture(float aRadius, float aMass)
 	setTheHeight(2.0*aRadius);
 }
 
-ViewObject*  AbstractBall::createViewObject(void)
+ViewObject*  CircleObject::createViewObject(void)
 {
 	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
 	if (myImageName.isEmpty()==false)
@@ -152,7 +154,7 @@ ViewObject*  AbstractBall::createViewObject(void)
 	else
 		if (theBallImage.isEmpty())
 			theBallImage = getName();
-	theViewObjectPtr = new DrawAbstractBall(this, theBallImage);
+	theViewObjectPtr = new ViewCircleObject(this, theBallImage);
 	setViewObjectZValue(3.0);
 	return theViewObjectPtr;
 }
@@ -176,7 +178,7 @@ static CustomBallObjectFactory theCustomBallObjectFactory;
 
 
 CustomBall::CustomBall (void)
-	: AbstractBall("CustomBall", "CustomBall", "", 1.0, 1.0, 0.2)
+	: CircleObject("CustomBall", "CustomBall", "", 1.0, 1.0, 0.2)
 {
 	DEBUG5("CustomBall::CustomBall\n");
 
@@ -193,13 +195,13 @@ CustomBall::~CustomBall ( )
 ViewObject* CustomBall::createViewObject()
 {
 	parseProperties();
-	return AbstractBall::createViewObject();
+	return CircleObject::createViewObject();
 }
 
 void  CustomBall::parseProperties(void)
 {
 	DEBUG5("CustomBall::parseProperties(void)\n");
-	AbstractBall::parseProperties();
+	CircleObject::parseProperties();
 
 	float myRadius;
 	float myMass;

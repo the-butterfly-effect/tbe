@@ -16,19 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef ABSTRACTBALL_H
-#define ABSTRACTBALL_H
+#ifndef CIRCLEOBJECTS_H
+#define CIRCLEOBJECTS_H
 
 #include "AbstractObject.h"
 
 /**
-  * class AbstractBall
+  * class CircleObject
   *
-  * The AbstractBall class essentially models anything resembling a circle.
+  * The CircleObject class essentially models anything resembling a circle.
   * It is used with a specialised factory to build the various types of balls
   */
 
-class AbstractBall : public AbstractObject
+class CircleObject : public AbstractObject
 {
 public:
 
@@ -36,7 +36,7 @@ public:
 	//
 
 	/// Constructor
-	AbstractBall (const QString& aName,
+	CircleObject (const QString& aName,
 				  const QString& aTooltip,
 				  const QString& anImageName,
 				  qreal aRadius,
@@ -44,7 +44,7 @@ public:
 				  qreal aBounciness);
 
 	/// virtual destructor
-	virtual ~AbstractBall ( );
+	virtual ~CircleObject ( );
 
 	// Public attribute accessor methods
 	//
@@ -74,7 +74,7 @@ public:
 	{	return NORESIZING;	}
 
 protected:
-	/// internally used by AbstractBall and CustomBall to
+	/// internally used by CircleObject and CustomBall to
 	/// actually create the b2Shape and b2FixtureDef
 	virtual void createBallShapeFixture(float aRadius, float aMass);
 
@@ -87,7 +87,7 @@ private:
 };
 
 
-class CustomBall : public AbstractBall
+class CustomBall : public CircleObject
 {
 public:
 	/// Constructor
@@ -102,4 +102,4 @@ public:
 	virtual void  parseProperties(void);
 };
 
-#endif // ABSTRACTBALL_H
+#endif // CIRCLEOBJECTS_H

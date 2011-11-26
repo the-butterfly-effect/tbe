@@ -31,6 +31,46 @@ AbstractObject::AbstractObject()
 {
 }
 
+AbstractObject::~AbstractObject ( )
+{
+	DEBUG5("AbstractObject::~AbstractObject() for %p\n", this);
+
+	// destroy the Body
+	//
+	deletePhysicsObject();
+
+	// destroy the ShapeDefs
+	//
+	clearShapeList();
+
+	// destroy the BodyDef
+	//
+	delete theB2BodyDefPtr;
+	theB2BodyDefPtr=NULL;
+
+	// delete the corresponding DrawObject
+	//
+	delete theViewObjectPtr;
+	theViewObjectPtr = NULL;
+}
+
+
+void AbstractObject::clearShapeList()
+{
+	while(theShapeList.isEmpty()==false)
+	{
+		b2FixtureDef* myFixtureDefPtr = theShapeList.first();
+		if (myFixtureDefPtr!=NULL)
+		{
+			const b2Shape* myShapePtr = myFixtureDefPtr->shape;
+			delete myShapePtr;
+		}
+		delete myFixtureDefPtr;
+		theShapeList.pop_front();
+	}
+}
+
+
 void AbstractObject::createPhysicsObject(void)
 {
 	createPhysicsObject(theCenter);

@@ -165,6 +165,8 @@ class AbstractObject : public SensorInterface, public ImpulseInterface
 public:
 	AbstractObject();
 
+	virtual ~AbstractObject();
+
 	enum SizeDirections
 	{
 		NORESIZING = 0,
@@ -321,6 +323,9 @@ protected:
 	b2Body* theB2BodyPtr;
 	b2BodyDef* theB2BodyDefPtr;
 
+	/// the properties of the object instance
+	PropertyList theProps;
+
 	/// pointer to a DrawObject that will draw this object
 	ViewObject* theViewObjectPtr;
 
@@ -339,6 +344,9 @@ protected:
 
 
 protected:
+	/// remove all shapes from the list
+	void clearShapeList();
+
 	b2World* getB2WorldPtr(void) const;
 
 	virtual void initAttributes ( ) ;
@@ -380,9 +388,6 @@ private:
 	 *  it has to do with the level design - as such, Level can modify this setting
 	 */
 	bool theIsMovable;
-
-	/// the properties of the object instance
-	PropertyList theProps;
 
 	// TODO/FIXME: debugging code - should go away at some point
 	friend class MainWindow;
