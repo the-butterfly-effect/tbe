@@ -287,13 +287,15 @@ public:
 	/// create a physics object (i.e. B2Body) and add all shapes to it
 	/// if a B2Body already exists, it is deleted first.
 	/// @param aPosition the position of the center of the object.
-	virtual void createPhysicsObject(Position aPosition);
+	virtual void createPhysicsObject(const Position& aPosition);
 
-	/** Creates the ViewObject, sets ZValue to 2 (or to whatever the
-	  * the ZValue property is set to) and returns a pointer to it.
-	  * @returns pointer to ViewObject
-	  */
-	virtual ViewObject* createViewObject();
+    /** Creates the ViewObject, finds associated images,
+      * sets ZValue and returns a pointer to it.
+      * @param   aDefaultDepth, ZValue depth in view if not set as property
+      * @returns pointer to ViewObject
+      * @note: a ZValue set in a property always overrides aDefaultDepth
+      */
+    virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
 
 	/// null the current Physicsobject (note that they are no longer
 	/// deleted in normal game operation - if you need that behaviour

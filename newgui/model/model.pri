@@ -9,6 +9,7 @@ SOURCES += \
 
 HEADERS += \
     #model/AbstractBall.h \
+    model/AbstractJoint.h \
     model/AbstractObject.h \
     model/Position.h \
     model/Property.h \

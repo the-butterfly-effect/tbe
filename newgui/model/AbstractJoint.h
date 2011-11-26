@@ -41,7 +41,10 @@ public:
 	// virtual, empty destructor
 	virtual ~AbstractJoint();
 
-	virtual ViewObject* createViewObject();
+	/// overridden to set different default ZValue
+	/// if you specify a value, will use the parent one anyway...
+	virtual ViewObject* createViewObject(void)
+	{ return AbstractObject::createViewObject(5.0);	}
 
 	/// overridden from AbstractObject
 	/// Generic implementation for all Joints - delete the joint.

@@ -28,7 +28,12 @@ AbstractObject::AbstractObject()
 {
 }
 
-void AbstractObject::createPhysicsObject(Position aPosition)
+void AbstractObject::createPhysicsObject(void)
+{
+	createPhysicsObject(theCenter);
+}
+
+void AbstractObject::createPhysicsObject(const Position& aPosition)
 {
 	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
 	// first fixup the bodydef with the current position
@@ -66,7 +71,7 @@ void AbstractObject::createPhysicsObject(Position aPosition)
 	notifyJoints(JointInterface::CREATED);
 }
 
-ViewObject*  AbstractObject::createViewObject(void)
+ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 {
 	assert(theViewObjectPtr==NULL);
 	QString myImageName;
@@ -75,7 +80,7 @@ ViewObject*  AbstractObject::createViewObject(void)
 
 	theViewObjectPtr = new ViewObject(this, myImageName);
 
-	setViewObjectZValue(2.0); // will set ZValue different if set in property
+	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
 }
 

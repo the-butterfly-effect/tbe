@@ -34,28 +34,18 @@ AbstractJoint::~AbstractJoint()
 	DEBUG5("AbstractJoint::~AbstractJoint() for %p\n", this);
 }
 
-#if 0
-
-ViewObject*  AbstractJoint::createViewObject(void)
-{
-	assert(theViewObjectPtr==NULL);
-	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
-	if (myImageName.isEmpty())
-		return NULL;
-	theViewObjectPtr = new ViewObject(this, myImageName);
-	setViewObjectZValue(5.0);
-	return theViewObjectPtr;
-}
-
 void AbstractJoint::deletePhysicsObject(void)
 {
+	// TODO/FIXME: there's logic behind this member that needs documenting
+	// because otherwise we would have left it to the deletePhysicsObject()
+	// of AbstractObject, right?
 	DEBUG5("AbstractJoint::deletePhysicsObject(void)\n");
 	theJointPtr = NULL;
 	if (theViewObjectPtr)
 		theViewObjectPtr->setVisible(true);
 }
 
-
+#if 0
 b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObject* anObject, const Position& aPosition)
 {
 	b2Body* myReturn = anObject->getB2BodyPtrForPosition(aPosition);
