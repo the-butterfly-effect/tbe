@@ -26,7 +26,7 @@ MoveUndoCommand::MoveUndoCommand(
         ViewObject* anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG3ENTRY;
     setupProxyImage("../images/ProxyMove.svg");
 }
 
@@ -42,7 +42,7 @@ bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
 bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG3ENTRY;
     theButtonDownPosition = anEventPtr->scenePos();
     return false;
 }

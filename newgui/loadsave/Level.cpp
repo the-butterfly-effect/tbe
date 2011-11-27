@@ -115,7 +115,7 @@ QString
 Level::load(const QString& aFileName)
 {
 	theFileName = aFileName;
-	DEBUG2("Level::load(%s)\n", ASCII(aFileName));
+	DEBUG2("Level::load(\"%s\")\n", ASCII(aFileName));
 
 	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");

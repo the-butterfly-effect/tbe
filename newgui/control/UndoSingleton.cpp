@@ -88,6 +88,6 @@ void UndoSingleton::push(AbstractUndoCommand* anAUCPtr)
 
 void UndoSingleton::setClean()
 {
-	qDebug() << Q_FUNC_INFO;
-	me()->theUndoStack.setClean();
+    DEBUG3ENTRY;
+    me()->theUndoStack.setClean();
 }

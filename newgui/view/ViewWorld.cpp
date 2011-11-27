@@ -34,7 +34,7 @@ ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 void ViewWorld::initAttributes ( )
 {
-	qDebug() << Q_FUNC_INFO;
+	DEBUG1ENTRY;
 }
 
 void

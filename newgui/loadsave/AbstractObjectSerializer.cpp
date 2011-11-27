@@ -108,7 +108,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 	/// simple sanity check first...
 	if (q.nodeName() != "object")
 	{
-		DEBUG2("createObjectFromDom: expected <object> but got <%s>\n", ASCII(q.nodeName()));
+		DEBUG2("createObjectFromDom: expected <object> but got <%s>", ASCII(q.nodeName()));
 		return NULL;
 	}
 
@@ -124,7 +124,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 	{
 		if (isXYMandatory)
 		{
-			DEBUG2("createObjectFromDom: '%s' has invalid X or Y\n", ASCII(myObjectType));
+			DEBUG2("createObjectFromDom: '%s' has invalid X or Y", ASCII(myObjectType));
 			return NULL;
 		}
 		myObjectPosition = Position(0,0,0);
@@ -133,7 +133,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 	AbstractObject* myBOPtr = ObjectFactory::createObject( myObjectType, myObjectPosition);
 	if (myBOPtr==NULL)
 	{
-		DEBUG2("createObjectFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
+		DEBUG2("createObjectFromDom: '%s' has problems in its factory", ASCII(myObjectType));
 		goto not_good;
 	}
 
@@ -146,7 +146,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 		myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
 	if (!isOK1)
 	{
-		DEBUG2("createObjectFromDom: '%s' has invalid %s\n", ASCII(myObjectType), theWidthAttributeString);
+		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theWidthAttributeString);
 		goto not_good;
 	}
 
@@ -156,7 +156,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 		myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
 	if (!isOK1)
 	{
-		DEBUG2("createObjectFromDom: '%s' has invalid %s\n", ASCII(myObjectType), theHeightAttributeString);
+		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theHeightAttributeString);
 		goto not_good;
 	}
 	if (q.hasChildNodes()==true)
@@ -170,12 +170,12 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 			QString myKey = i.attributes().item(0).nodeValue();
 			QString myTValue = i.text();
 
-			DEBUG5("   %s\n", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
+			qDebug() << QString("  property: '%1'='%2'").arg(myKey).arg(myTValue);
 			myBOPtr->theProps.setProperty(myKey, myTValue);
 		}
 	}
 
-	DEBUG4("createObjectFromDom for '%s' successful\n", ASCII(myObjectType));
+	DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
 	return myBOPtr;
 not_good:
 	delete myBOPtr;

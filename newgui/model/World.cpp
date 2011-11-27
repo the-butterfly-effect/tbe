@@ -52,7 +52,7 @@ World::World ( void) : theB2WorldPtr(NULL)
 
 World::~World ( )
 {
-	DEBUG5("World::~World - clear the ObjectPtrList \n");
+	DEBUG5("World::~World - clear the ObjectPtrList");
 
 	while(theObjectPtrList.isEmpty()==false)
 	{
@@ -61,7 +61,7 @@ World::~World ( )
 		theObjectPtrList.pop_front();
 	}
 
-	DEBUG5("World::~World - destroy the rest \n");
+	DEBUG5("World::~World - destroy the rest");
 	AbstractObject::setTheB2WorldPtr(NULL);
 }
 
@@ -108,7 +108,7 @@ bool World::addObject(AbstractObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG4("World::addObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
+	DEBUG4("World::addObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
 
 	// if it is already present, let's not insert again
 	if (theObjectPtrList.contains(anObjectPtr)==false)
@@ -124,7 +124,7 @@ bool World::addObject(AbstractObject* anObjectPtr)
 void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 {
 	assert(theViewWorldPtr!=NULL);
-	DEBUG4("World::addAbstractObjectToViewWorld(%p)\n", aBOPtr);
+	DEBUG4("World::addAbstractObjectToViewWorld(%p)", aBOPtr);
 	ViewObject* myDOPtr = aBOPtr->createViewObject();
 	if (myDOPtr!=NULL)
 		theViewWorldPtr->addItem(myDOPtr);
@@ -133,7 +133,7 @@ void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 
 void World::createPhysicsWorld()
 {
-	DEBUG3("World::createPhysicsWorld()\n");
+	DEBUG3("World::createPhysicsWorld()");
 	if (theB2WorldPtr!=NULL)
 		return;
 
@@ -209,7 +209,7 @@ void World::createScene(MainWindow* myMainPtr)
 
 void World::deletePhysicsWorld()
 {
-	DEBUG3("World::deletePhysicsWorld()\n");
+	DEBUG3ENTRY;
 
 #if 0
 	// update our object lists and notify all objects
@@ -291,7 +291,7 @@ bool World::removeObject(AbstractObject* anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG5("removeObject(%p = %s)\n", anObjectPtr, ASCII(anObjectPtr->getName()));
+	DEBUG5("removeObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
 	int myPos = theObjectPtrList.indexOf(anObjectPtr);
 
 	if (myPos == -1)
@@ -302,7 +302,7 @@ bool World::removeObject(AbstractObject* anObjectPtr)
 
 bool World::registerCallback(SimStepCallbackInterface* anInterface)
 {
-	DEBUG5("World::registerCallback(%p)\n", anInterface);
+	DEBUG5("World::registerCallback(%p)", anInterface);
 	if (anInterface==NULL)
 		return false;
 	theCallbackList.insert(anInterface);

@@ -51,7 +51,7 @@ void AbstractUndoCommand::deleteProxyImage(void)
 
 bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG4ENTRY;
 
     // It's time to finalize everything
     // and push the Undo on the stack

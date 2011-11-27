@@ -26,7 +26,7 @@ RotateUndoCommand::RotateUndoCommand(
         ViewObject* anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG3ENTRY;
     setupProxyImage("../images/ProxyRotate.svg");
     theNewPos = theOrigPos;
 }
@@ -48,7 +48,7 @@ bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
 bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG3ENTRY;
     theButtonDownPosition = anEventPtr->scenePos();
     theButtonDownVectorAngle = Vector(theButtonDownPosition - theOrigPos.toQPointF()).toAngle();
     return true;

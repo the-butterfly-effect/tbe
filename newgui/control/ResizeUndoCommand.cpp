@@ -29,8 +29,7 @@ ResizeUndoCommand::ResizeUndoCommand(
         ViewObject* anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Resize"), NULL)
 {
-    qDebug() << Q_FUNC_INFO;
-
+    DEBUG3ENTRY;
 
     // now it's time to figure out:
     //     are we allowed to resize horizontally
@@ -84,7 +83,7 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
 bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
-    qDebug() << Q_FUNC_INFO;
+    DEBUG3ENTRY;
 
     // we need local coordinates for this one
     // (make sure to take angle into account)

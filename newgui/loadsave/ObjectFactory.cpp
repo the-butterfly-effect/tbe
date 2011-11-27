@@ -53,7 +53,7 @@ static FactoryList* theFactoryListPtr=NULL;
 void
 ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr)
 {
-	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)\n",
+	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)",
 			ASCII(anObjectTypeName), aThisPtr);
 	if (theFactoryListPtr==NULL)
 		theFactoryListPtr = new FactoryList();

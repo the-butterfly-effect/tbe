@@ -31,8 +31,7 @@ ViewObjectActionDecorator::ViewObjectActionDecorator(
     : QGraphicsSvgItem(aDecoratorName, parent),
       theAUCPtr(myAbstractUndoCommandPtr)
 {
-    qDebug() << Q_FUNC_INFO;
-
+    DEBUG3ENTRY;
     // we need to have the same size as our parent
     QRectF parSize = parent->boundingRect();
     QRectF mySize = boundingRect();
