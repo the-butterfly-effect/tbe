@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="397.44751"
+   height="400.59583"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="PetanqueBoule.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3361">
+      <stop
+         style="stop-color:#c2c2c2;stop-opacity:1;"
+         offset="0"
+         id="stop3363" />
+      <stop
+         id="stop3367"
+         offset="0.5"
+         style="stop-color:#c2c2c2;stop-opacity:1;" />
+      <stop
+         style="stop-color:#535353;stop-opacity:1;"
+         offset="1"
+         id="stop3365" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3339">
+      <stop
+         id="stop3341"
+         offset="0"
+         style="stop-color:#c2c2c2;stop-opacity:1;" />
+      <stop
+         id="stop3343"
+         offset="1"
+         style="stop-color:#535353;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3321">
+      <stop
+         id="stop3323"
+         offset="0"
+         style="stop-color:#313131;stop-opacity:0;" />
+      <stop
+         id="stop3325"
+         offset="1"
+         style="stop-color:#313131;stop-opacity:0.8479532;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3307">
+      <stop
+         style="stop-color:#c2c2c2;stop-opacity:1;"
+         offset="0"
+         id="stop3309" />
+      <stop
+         style="stop-color:#666666;stop-opacity:1;"
+         offset="1"
+         id="stop3311" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2447"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3307"
+       id="radialGradient3315"
+       cx="342.76331"
+       cy="812.69647"
+       fx="342.76331"
+       fy="812.69647"
+       r="154.88573"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5003326,-0.313621,0.5311105,0.8473026,-260.36395,231.59446)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3321"
+       id="linearGradient3327"
+       x1="348.46069"
+       y1="886.49609"
+       x2="271.91052"
+       y2="1024.3907"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3339"
+       id="radialGradient3337"
+       cx="21.167555"
+       cy="221.8894"
+       fx="21.167555"
+       fy="221.8894"
+       r="45.938297"
+       gradientTransform="matrix(0.976876,-0.2138069,0.8242191,3.7658277,-182.39601,-639.73291)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3339"
+       id="radialGradient3351"
+       cx="-5.8278332"
+       cy="231.61389"
+       fx="-5.8278332"
+       fy="231.61389"
+       r="42.397991"
+       gradientTransform="matrix(0.9838889,-0.1787807,0.7577333,4.1700557,-175.59546,-742.19)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3361"
+       id="radialGradient3359"
+       cx="92.249664"
+       cy="248.90219"
+       fx="92.249664"
+       fy="248.90219"
+       r="151.97562"
+       gradientTransform="matrix(0.4278534,0.3263686,-1.0685862,1.4008636,298.53005,-123.95253)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3361"
+       id="radialGradient3375"
+       cx="110.31262"
+       cy="281.45587"
+       fx="110.31262"
+       fy="281.45587"
+       r="144.68503"
+       gradientTransform="matrix(0.7537921,0.440605,-0.9833356,1.6823014,279.64553,-227.97042)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4304354"
+     inkscape:cx="70.091591"
+     inkscape:cy="201.28505"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="mm"
+     inkscape:window-width="1260"
+     inkscape:window-height="782"
+     inkscape:window-x="12"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Petanque Boule</dc:title>
+        <dc:date>November 27, 2011</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Klaas van Gend</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>the-butterfly-effect.org</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:description>A simple metal-like Petanque Boule.</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(144.19557,-18.754106)">
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3315);fill-opacity:1;stroke:none;stroke-width:1.20000005000000010;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2453"
+       sodipodi:cx="305.71429"
+       sodipodi:cy="869.50507"
+       sodipodi:rx="154.28572"
+       sodipodi:ry="154.28572"
+       d="M 460.00002,869.50507 A 154.28572,154.28572 0 1 1 151.42857,869.50507 A 154.28572,154.28572 0 1 1 460.00002,869.50507 z"
+       transform="matrix(1.2830347,0,0,1.2830346,-337.71386,-898.12724)" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#linearGradient3327);fill-opacity:1;stroke:none;stroke-width:1.20000005;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3317"
+       sodipodi:cx="305.71429"
+       sodipodi:cy="869.50507"
+       sodipodi:rx="154.28572"
+       sodipodi:ry="154.28572"
+       d="M 460.00002,869.50507 A 154.28572,154.28572 0 1 1 151.42857,869.50507 A 154.28572,154.28572 0 1 1 460.00002,869.50507 z"
+       transform="matrix(1.2830347,0,0,1.2830346,-337.71386,-898.12724)" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#radialGradient3375);stroke-width:4.25196838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 69.41243,413.78407 C -17.75665,401.83769 -48.79146,349.80025 -31.09913,259.71408 C -13.40679,169.62791 75.92347,92.339927 163.09255,110.62433 C 201.00323,118.5764 232.09299,159.44187 249.24445,197.73544"
+       id="path2525"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#radialGradient3359);stroke-width:4.25196838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 43.51544,414.47985 C -25.922082,401.05514 -66.20145,342.32701 -46.54012,252.56829 C -25.81803,157.96692 66.00329,75.989504 157.66904,95.279443 C 197.53537,103.66883 230.2289,146.78167 248.26512,187.18118"
+       id="path2530"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#radialGradient3351);stroke-width:4.25196850000000026;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -70.601713,63.864388 C -21.970333,88.392633 -5.0676341,198.04174 4.6537279,242.47685 C 14.697578,288.386 13.7698,381.49618 -5.001479,405.82008"
+       id="path2532"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#radialGradient3337);stroke-width:4.25196838000000010;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -61.11744,57.722559 C -7.27955,78.651734 11.512432,196.28551 20.838398,236.36393 C 31.745938,283.23917 30.088066,385.57434 9.6358163,409.01795"
+       id="path3305"
+       sodipodi:nodetypes="csc" />
+  </g>
+</svg>
