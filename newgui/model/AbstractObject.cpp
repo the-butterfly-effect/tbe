@@ -28,6 +28,10 @@ static b2World* theStaticB2WorldPtr = NULL;
 
 
 AbstractObject::AbstractObject()
+    : 	theB2BodyPtr(NULL),
+      theB2BodyDefPtr(NULL),
+      theViewObjectPtr(NULL),
+      theWorldPtr(NULL)
 {
 }
 
