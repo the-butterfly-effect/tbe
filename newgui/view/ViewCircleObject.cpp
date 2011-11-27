@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -32,27 +32,13 @@ ViewCircleObject::ViewCircleObject (AbstractObject* aAbstractObjectPtr,
 						const QString& anImageName)
 	: ViewObject(aAbstractObjectPtr, anImageName)
 {
-	// everything is done in the DrawObject constructor
-	DEBUG5("ViewCircleObject\n");
-
-	setFlag(QGraphicsItem::ItemIsSelectable,true);
+	DEBUG4ENTRY;
 }
 
 ViewCircleObject::~ViewCircleObject ( )
 {
+	// nothing to do here...
 }
-
-//
-// Methods
-//
-
-
-// Accessor methods
-//
-
-
-// Other methods
-//
 
 
 QPainterPath ViewCircleObject::shape() const

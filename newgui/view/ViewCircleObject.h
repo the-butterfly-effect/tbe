@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2011  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,23 +22,15 @@
 #include "ViewObject.h"
 #include "CircleObjects.h"
 
-// forward declarations
-//class AbstractObject;
-
-
 /** class ViewCircleObject
   *
   * This class only overrides one concept of the regular
-  * DrawObject: it sets a round shape, which in turn reduces
-  * the bounding box (for collission detection inside QT) from
+  * ViewObject: it sets a round shape, which in turn reduces
+  * the bounding box (for collision detection inside QT) from
   * a box to a circle.
   */
-
-class ViewCircleObject : public QObject, public ViewObject
+class ViewCircleObject : public ViewObject
 {
-
-	Q_OBJECT
-
 public:
 	// Constructors/Destructors
 	//
@@ -53,7 +45,7 @@ public:
 	 */
 	virtual ~ViewCircleObject ( );
 
-	/// overriden from DrawObject
+	/// overriden from ViewObject
 	virtual QPainterPath shape() const;
 };
 
