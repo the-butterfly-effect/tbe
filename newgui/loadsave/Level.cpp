@@ -18,7 +18,7 @@
 
 #include "Level.h"
 #include "World.h"
-//#include "BackgroundSerializer.h"
+#include "BackgroundSerializer.h"
 #include "AbstractObjectSerializer.h"
 //#include "GoalSerializer.h"
 //#include "Goal.h"
@@ -197,16 +197,16 @@ Level::load(const QString& aFileName)
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theViewString);
 	myNode=mySceneNode.firstChildElement(theViewString);
 
-//	myResult = BackgroundSerializer::createObjectFromDom(
-//			mySceneNode.firstChildElement(theBackgroundString),
-//			&(theWorldPtr->theBackground));
-//	if (myResult.isEmpty() == false)
-//	{
-//		myErrorMessage = tr("Parsing '%1' section failed: %2")
-//						 .arg(theBackgroundString)
-//						 .arg(myResult);
-//		goto not_good;
-//	}
+	myResult = BackgroundSerializer::createObjectFromDom(
+			mySceneNode.firstChildElement(theBackgroundString),
+			&(theWorldPtr->theBackground));
+	if (myResult.isEmpty() == false)
+	{
+		myErrorMessage = tr("Parsing '%1' section failed: %2")
+						 .arg(theBackgroundString)
+						 .arg(myResult);
+		goto not_good;
+	}
 
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
