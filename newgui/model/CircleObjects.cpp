@@ -88,6 +88,13 @@ static BallObjectFactory theSoccerFactory("SoccerBall",
 	QObject::tr("A football (of the spherical persuasion)."),
 	"SoccerBall", 0.110, 0.430, 0.56);
 
+// there is not much of official standards for a petanque ball, but
+// thanks to http://en.wikipedia.org/wiki/Petanque we at least know:
+// diameter between 70.5 and 80mm, weight between 650 and 800 grams.
+static BallObjectFactory thePetanqueFactory("PetanqueBoule",
+	QObject::tr("Petanque Boule"),    // TODO/FIXME: there should be an accent on the e
+	QObject::tr("A petanque ball is made of metal and heavy."),
+	"PetanqueBoule", 0.038, 0.700, 0.1);
 
 // Constructors/Destructors
 //
