@@ -1,0 +1,116 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bouncing Balls</title>
+        <title lang="nl">Stuiterende ballen</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Bouncing Balls - put in basket</description>
+        <description lang="nl">Stuiterende ballen - in de mand</description>
+        <date>12/22/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Ramp \">
+            <name lang="nl">Rechtse helling</name>
+            <object width="2.0" height="0.5" type="RightRamp" angle="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4" height="3"/>
+        <predefined>
+            <object width="0.068" X="0.400" Y="2.500" height="0.068" type="TennisBall" ID="ten" angle="0.000"/>
+            <object width="0.068" X="0.500" Y="2.500" height="0.068" type="PetanqueBoule" ID="pet" angle="0.000"/>
+            <object width="0.210" X="0.700" Y="2.500" height="0.210" type="VolleyBall" ID="vol" angle="0.000"/>
+            <object width="0.220" X="1.000" Y="2.500" height="0.220" type="SoccerBall" ID="soc" angle="0.000"/>
+            <object width="0.220" X="1.300" Y="2.500" height="0.220" type="BowlingBall" ID="bow1" angle="0.000"/>
+            <object width="0.220" X="1.600" Y="2.500" height="0.220" type="BowlingBall" ID="bow2" angle="0.000"/>
+            <!--object width="4.000" X="2.000" Y="0.050" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.220" X="1.500" Y="0.500" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">Welcome back!</property>
+                <property key="page1_nl">Welkom terug!</property>
+                <property key="page2">No butterfly here...&lt;br>&lt;br>Don't worry - we haven't seen the last one yet</property>
+                <property key="page2_nl">Geen vlinder hiero...&lt;br>&lt;br>Wanhoop niet - er komen er nog meer</property>
+                <property key="page3">My mum told me to clean my room.&lt;br>&lt;br>All balls must go in the basket.</property>
+                <property key="page3_nl">Van mijn moeder moet ik m'n kamer opruimen.&lt;br>&lt;br>Alle ballen moeten in de mand.</property>
+                <property key="page4">Someone told me to drag the ramp from the toolbox into the big window.&lt;br>... after you've read my note!</property>
+                <property key="page4_nl">Iemand zei me om een helling van de gereedschapskist in het veld te slepen.&lt;br>... nadat je de post-it uit hebt!</property>
+                <property key="page5">But why do I have to clean my room every year?</property>
+                <property key="page5_nl">Maar waarom moet ik elk jaar mijn kamer opruimen?</property>
+                <property key="page6">... An unhappy&lt;br>&lt;br>&lt;br>Post-It Boy</property>
+                <property key="page6_nl">... Een niet-zo-vrolijke&lt;br>&lt;br>&lt;br>Post-It Boy</property>
+            </object>
+            <object width="0.100" X="3.150" Y="0.700" height="1.200" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.05</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.800" X="2.700" Y="0.500" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">basket</property>
+            </object>
+            <object width="0.100" X="2.250" Y="0.500" height="0.800" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.05</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object-->
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ten</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pet</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">vol</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">soc</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">bow1</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">bow2</property>
+            <property key="xover">2.25</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ten1</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ten2</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">vol</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">soc</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">bow1</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">bow2</property>
+            <property key="xbelow">3.1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ten1</property>
+            <property key="ybelow">1</property>
+        </goal>
+    </goals>
+</tbe-level>
