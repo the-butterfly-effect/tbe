@@ -16,6 +16,7 @@ HEADERS  += \
 	view/DropDownWindow.h \
 	view/ImageStore.h \
 	view/MainWindow.h \
+	view/Popup.h \
 	view/PieMenu.h \
 	view/resizinggraphicsview.h \
 	view/SimulationControls.h \
