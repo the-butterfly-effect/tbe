@@ -22,13 +22,18 @@
 
 #include "tbe_global.h"
 
+#include <QFile>
 #include <QGraphicsColorizeEffect>
 #include <QGraphicsSceneMouseEvent>
+#include <QPainter>
+#include <QPixmapCache>
+#include <QSvgRenderer>
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	// nothing to do yet :-)
+	DEBUG3ENTRY;
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
 	initViewObjectAttributes();
 }
@@ -36,15 +41,10 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :
 		QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
-	DEBUG5ENTRY;
+	DEBUG3ENTRY;
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
-	Q_ASSERT(anImageName.isEmpty() == false);
+	loadImage(anImageName);
 
-	// FIXME/TODO: Introduce multiple images handling
-	// FIXME/TODO: Introduce SVG rendering - or maybe still use QGraphicsSvgItem for that?
-	QPixmap* myPixmapPtr = new QPixmap(anImageName);
-	Q_ASSERT(myPixmapPtr!=NULL);
-	setPixmap(*myPixmapPtr);
 	thePixmapWidth = boundingRect().width();
 	thePixmapHeight= boundingRect().height();
 
@@ -127,6 +127,68 @@ void ViewObject::initViewObjectAttributes(void)
     setFlags(QGraphicsItem::ItemIsFocusable);
     setAcceptsHoverEvents(true);
 }
+
+
+bool ViewObject::loadImage(const QString& anImageName)
+{
+	Q_ASSERT(anImageName.isEmpty() == false);
+
+	QPixmap myTempPixmap = NULL;
+
+	// is the image present in the cache?
+	if (QPixmapCache::find(anImageName, myTempPixmap))
+	{
+		DEBUG4("Image '%s' found in image cache!", ASCII(anImageName));
+	}
+	else
+	{
+		// No, it isn't. Let's try to load the image.
+		QString myFullPathName;
+		// I use a do...while(true) loop here to be able to break from a loop
+		// that is run only once.
+		do
+		{
+			myFullPathName = QString("../images/%1.png").arg(anImageName);
+			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+			if (QFile::exists(myFullPathName))
+				break;
+
+			myFullPathName = QString("../images/%1.jpg").arg(anImageName);
+			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+			if (QFile::exists(myFullPathName))
+				break;
+
+			myFullPathName = QString("../images/%1.svg").arg(anImageName);
+			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+			if (QFile::exists(myFullPathName))
+			{
+				// render the SVG into the Pixmap
+				// TODO/FIXME: magic numbers (pixmap size) here
+				myTempPixmap = QPixmap(160,160);
+				myTempPixmap.fill(QColor(255,255,255,0));
+
+				QSvgRenderer myRenderer(myFullPathName);
+				QPainter myPainter;
+				myPainter.begin(&myTempPixmap);
+				myPainter.setRenderHint(QPainter::Antialiasing);
+				myRenderer.render(&myPainter);
+				myPainter.end();
+				break;
+			}
+
+			myFullPathName = "../images/BowlingBall.png";
+			DEBUG4("attempt to load '%s'", ASCII(myFullPathName));
+		} while(false);
+
+		if (myTempPixmap.isNull())
+			myTempPixmap = QPixmap(myFullPathName);
+		QPixmapCache::insert(anImageName, myTempPixmap);
+	}
+
+	setPixmap(myTempPixmap);
+	return true;
+}
+
 
 void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
