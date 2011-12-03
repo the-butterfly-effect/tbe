@@ -64,16 +64,16 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
         myDeltaLength = myNewMousePosLocal.y() - theButtonDownLength;
         if (myDeltaLength < -theOrigHeight+AbstractObject::MINIMUM_DIMENSION)
             myDeltaLength = -theOrigHeight+AbstractObject::MINIMUM_DIMENSION;
-        theNewHeight = theOrigHeight + myDeltaLength;
-        theNewPos = theOrigPos + Vector(0, myDeltaLength/2.0);
+        theNewHeight = theOrigHeight + myDeltaLength/THESCALE;
+        theNewPos = theOrigPos + Vector(0, myDeltaLength/THESCALE/2.0);
     }
     else
     {
         myDeltaLength = myNewMousePosLocal.x() - theButtonDownLength;
         if (myDeltaLength < -theOrigWidth+AbstractObject::MINIMUM_DIMENSION)
             myDeltaLength = -theOrigWidth+AbstractObject::MINIMUM_DIMENSION;
-        theNewWidth = theOrigWidth + myDeltaLength;
-        theNewPos = theOrigPos + Vector(myDeltaLength/2.0, 0);
+        theNewWidth = theOrigWidth + myDeltaLength/THESCALE;
+        theNewPos = theOrigPos + Vector(myDeltaLength/THESCALE/2.0, 0);
     }
 
     theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
@@ -91,14 +91,14 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
     // are we within 1/3 of any of the edges?
     theAxis = NONE;
-    if (fabs(theButtonDownPosition.x())>theOrigWidth/6)
+    if (fabs(theButtonDownPosition.x()/THESCALE)>theOrigWidth/6)
     {
         if(theButtonDownPosition.x()<0)
             theAxis = WIDTHLEFT;
         else
             theAxis = WIDTHRIGHT;
     }
-    if (fabs(theButtonDownPosition.y())>theOrigHeight/6)
+    if (fabs(theButtonDownPosition.y()/THESCALE)>theOrigHeight/6)
     {
         if(theButtonDownPosition.y()<0)
             theAxis |= HEIGHTBOTTOM;
