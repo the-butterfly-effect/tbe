@@ -59,9 +59,9 @@ ResizeUndoCommand::ResizeUndoCommand(
 bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
     QPointF myNewMousePosLocal = toLocalPos(anEventPtr->scenePos());
-    qDebug() << myNewMousePosLocal;
     qreal myDeltaLength; // in world coordinates
 
+    // first create local values
     Position myNewPos;
     qreal    myNewWidth = theNewWidth;
     qreal    myNewHeight= theNewHeight;
@@ -82,6 +82,8 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
             myDeltaLength = -myDeltaLength;
         myNewWidth = theOrigWidth + myDeltaLength;
     }
+
+    // only commit local values if they are larger than minimum size
     if (myNewWidth>AbstractObject::MINIMUM_DIMENSION &&
         myNewHeight>AbstractObject::MINIMUM_DIMENSION)
     {
