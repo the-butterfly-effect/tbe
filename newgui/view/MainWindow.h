@@ -25,6 +25,7 @@ namespace Ui {
     class MainWindow;
 }
 
+class Level;
 class QGraphicsRectWidget;
 class QGraphicsScene;
 class ViewWorld;
@@ -37,6 +38,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+	/// loads the level specified by the file name
+	/// @param aFileName guess what: the file name. Duh.
+	void loadLevel(const QString& aFileName);
+
+	/// deletes the existing Level instance and removes its view
+	void purgeLevel(void);
 
     /// only to be called by ViewWorld, to register itself
     /// in the view
@@ -51,7 +59,10 @@ protected:
 private:
 	Ui::MainWindow *ui;
 
-	QGraphicsScene* theScenePtr;
+	/// Pointer to the current level.
+	Level* theLevelPtr;
+
+	ViewWorld* theScenePtr;
 	QGraphicsRectWidget *theDropDown;
 
 	World* theWorldPtr;

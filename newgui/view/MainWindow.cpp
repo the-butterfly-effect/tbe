@@ -26,6 +26,8 @@
 
 #include "AbstractObject.h"
 #include "DropDownWindow.h"
+#include "Level.h"
+#include "Popup.h"
 #include "PieMenu.h"
 #include "SimulationControls.h"
 #include "UndoSingleton.h"
@@ -39,6 +41,7 @@
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent),
 	  ui(new Ui::MainWindow),
+	  theLevelPtr(NULL),
 	  theScenePtr(NULL),
 	  theDropDown(NULL)
 {
@@ -68,12 +71,65 @@ void MainWindow::changeEvent(QEvent *e)
 }
 
 
+void MainWindow::loadLevel(const QString& aFileName)
+{
+	DEBUG1ENTRY;
+	if (theLevelPtr != NULL)
+		purgeLevel();
+
+	// create level and display in main window
+	theLevelPtr = new Level();
+	QString myErrorMessage = theLevelPtr->load(aFileName);
+	if (!myErrorMessage.isEmpty())
+	{
+		QChar myFirst = myErrorMessage[0];
+		myErrorMessage = myErrorMessage.mid(1);
+		if (myFirst == 'E')
+		{
+			Popup::Critical(tr("ERROR during reading file '%1': '%2'\n")
+							.arg(aFileName).arg(myErrorMessage), this );
+			exit(1);
+		}
+		if (myFirst == 'W')
+		{
+			Popup::Warning(tr("Non-fatal problem reading file '%1': '%2'.\n"
+							  "This may affect playability, though!")
+							.arg(aFileName).arg(myErrorMessage), this );
+		}
+	}
+	theLevelPtr->getTheWorldPtr()->createScene(this);
+
+#if 0
+	ui.theToolBoxView->clear();
+
+	if (theIsLevelEditor)
+		ui.theToolBoxView->fillFromObjectFactory();
+	else
+		ui.theToolBoxView->fillFromDomNode(theLevelPtr->getToolboxDomNode());
+
+	// display the level info
+	if (!theIsLevelEditor)
+	{
+		LevelInfoDialog* myInfoDialog = new LevelInfoDialog(theLevelPtr, this);
+		myInfoDialog->setAutoFillBackground(true);
+		QSize myDialogSize = myInfoDialog->size();
+		QSize myViewSize = ui.graphicsView->size();
+		myInfoDialog->move((myViewSize.width()-myDialogSize.width())/2,
+						   (myViewSize.height()-myDialogSize.height())/2);
+		myInfoDialog->show();
+	}
+#endif
+}
+
+
 void MainWindow::setScene(ViewWorld* aScenePtr, const QString& aLevelName)
 {
-	DEBUG5("MainWindow::setScene(%p, %s)\n", aScenePtr, ASCII(aLevelName));
+	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
 	theScenePtr=aScenePtr;
 
 	ui->graphicsView->setScene(aScenePtr);
+	ui->graphicsView->fitInView(0, -aScenePtr->getHeight(),
+								aScenePtr->getWidth(), aScenePtr->getHeight());
 //	aScenePtr->setSimSpeed(theSimSpeed);
 
 //	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
@@ -86,6 +142,37 @@ void MainWindow::setScene(ViewWorld* aScenePtr, const QString& aLevelName)
 }
 
 
+void MainWindow::purgeLevel(void)
+{
+	DEBUG1ENTRY;
+	if (theLevelPtr==NULL)
+		return;
+
+	// disconnect the World
+	delete theLevelPtr;
+	theLevelPtr=NULL;
+
+	// disconnect & delete the Scene//DrawWorld
+	// keep in mind that we have a view that's not happy now!
+	ui->graphicsView->setScene(NULL);
+	QMatrix myMatrix;
+	ui->graphicsView->setMatrix(myMatrix);
+#if 0
+	if (theScenePtr != NULL)
+	{
+		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+
+		// Destroying theScene (which is a DrawWorld) will automatically
+		// destroy the associated UndoStack. The UndoStack will de-register
+		// itself with the UndoGroup - no need to do anything myself here :-)
+
+		delete theScenePtr;
+		theScenePtr=NULL;
+	}
+#endif
+}
+
+
 void MainWindow::setupMenu(void)
 {
 }
@@ -93,7 +180,8 @@ void MainWindow::setupMenu(void)
 void MainWindow::setupView()
 {
 	// setup UndoGroup's QActions and add them to Edit menu
-	// note that this doesn't enable them yet, our ViewWorld handles that :-)
+	// note that this doesn't enable them yet, our ViewWorld should handle that...
+	// TODO/FIXME: that needs work
 	QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
 	myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
 	ui->menuEdit->addAction(myUndoActionPtr);
@@ -103,15 +191,9 @@ void MainWindow::setupView()
 	myRedoActionPtr->setShortcuts(redoShortcuts);
 	ui->menuEdit->addAction(myRedoActionPtr);
 
-	theWorldPtr = new World();
-	theWorldPtr->createScene(this);
-//	assert(theScenePtr==NULL);
-//	theScenePtr = new ViewWorld(0, -300, 300, 300);
-//	theScenePtr->setBackgroundBrush(Qt::blue);
-//	theScenePtr->addRect(0,0,300,-300);
-//	ui->graphicsView->setScene(theScenePtr);
+	loadLevel("newguitest.xml");
 
-	DropDownWindow* theDropDown = new DropDownWindow;
+	DropDownWindow* theDropDown = new DropDownWindow(theScenePtr);
 	theScenePtr->addItem(theDropDown);
 	theDropDown->setup(ui->menuBar);
 
@@ -123,8 +205,6 @@ void MainWindow::setupView()
 //	theAOPtr->resizableInfo = AbstractObject::HORIZONTALRESIZE;
 //	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
 //	theScenePtr->addItem(theVOPtr);
-
-	theScenePtr->addRect(20,-100,80,80);
 
 //	AbstractObject* theAOPtr2 = new AbstractObject();
 //	theAOPtr2->theProps.setProperty(Property::ROTATABLE_STRING, "true");
