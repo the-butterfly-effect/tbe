@@ -203,7 +203,9 @@ void ViewObject::setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aN
                 .arg(aNewPosition.toString())
                 .arg(aNewWidth).arg(aNewHeight)));
     theAbstractObjectPtr->setOrigCenter(aNewPosition);
-    theAbstractObjectPtr->setTheWidth(aNewWidth);
-    theAbstractObjectPtr->setTheHeight(aNewHeight);
+    if (aNewWidth>0.0001)
+        theAbstractObjectPtr->setTheWidth(aNewWidth);
+    if (aNewHeight>0.0001)
+        theAbstractObjectPtr->setTheHeight(aNewHeight);
     adjustObjectDrawing();
 }
