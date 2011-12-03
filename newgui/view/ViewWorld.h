@@ -36,9 +36,18 @@ class ViewWorld : public QGraphicsScene
     Q_OBJECT
 
 public:
-    explicit ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
+	explicit ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
 
-    virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
+	// Public accessor methods
+	//
+
+	qreal getWidth();
+	qreal getHeight();
+
+	// QGraphicsScene events
+	//
+
+	virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 
 signals:
 

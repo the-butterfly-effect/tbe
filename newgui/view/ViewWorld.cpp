@@ -24,11 +24,43 @@
 #include <QGraphicsSceneMouseEvent>
 
 ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
-	: QGraphicsScene( NULL ), theWorldPtr(aWorldPtr)
+	: QGraphicsScene(0, -1*aWorldPtr->getTheWorldHeight(),
+					 1*aWorldPtr->getTheWorldWidth(), 1*aWorldPtr->getTheWorldHeight()),
+	  theWorldPtr(aWorldPtr)
 {
 	initAttributes();
 
 	aMainWindowPtr->setScene(this, theWorldPtr->getName());
+
+	//addRect(0, 0, getWidth(), -getHeight());
+
+	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
+		theWorldPtr->theBackground.theImageName.isEmpty())
+	{
+		// the default if nothing else specified: a blue gradient background
+		theWorldPtr->theBackground.theBackgroundGradient.push_back(
+				Background::GradientStop(0, 0.8, 0.8, 1.0, 1.0));
+		theWorldPtr->theBackground.theBackgroundGradient.push_back(
+				Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
+	}
+	setBackgroundBrush(Qt::blue);
+	QLinearGradient myBackground(0,0, 0,-getHeight());
+	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
+		myBackground.setColorAt(myGS.thePosition, QColor(myGS.theR*255, myGS.theG*255, myGS.theB*255, myGS.theAlpha*255));
+	setBackgroundBrush(myBackground);
+
+}
+
+
+qreal ViewWorld::getHeight()
+{
+	return theWorldPtr->getTheWorldHeight();
+}
+
+
+qreal ViewWorld::getWidth()
+{
+	return theWorldPtr->getTheWorldWidth();
 }
 
 
@@ -40,7 +72,24 @@ void ViewWorld::initAttributes ( )
 void
 ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
 {
-    if (itemAt(mouseEvent->scenePos())==NULL)
-        PieMenuSingleton::clearPieMenu();
-    QGraphicsScene::mousePressEvent(mouseEvent);
+    // unfortunately itemAt isn't without its failures:
+    // e.g. it doesn't really match the correct sizes of the objects
+    // that's why we need to double check with isUnderMouse...
+    //
+    // Too bad that isUnderMouse() apparently fails for child objects?
+    // At least... it doesn't work for my ActionIcons...
+    // It appears to work for DropDownWindow, though...
+    // I'm confused :-( :-( :-(
+    QGraphicsItem* myItemPtr = itemAt(mouseEvent->scenePos());
+    printf("VW::mPE: (%f, %f) = %p\n", mouseEvent->scenePos().x(),
+           mouseEvent->scenePos().y(), myItemPtr);
+
+    if (myItemPtr!=NULL)
+        if (myItemPtr->isUnderMouse())
+        {
+            QGraphicsScene::mousePressEvent(mouseEvent);
+            return;
+        }
+    // nothing clicked: clear pie menu
+    PieMenuSingleton::clearPieMenu();
 }
