@@ -26,7 +26,8 @@ AbstractUndoCommand::AbstractUndoCommand(
         const QString& anUndoName,
         QUndoCommand* parent)
     : QUndoCommand(parent),
-      theViewObjPtr(anViewObjectPtr)
+      theViewObjPtr(anViewObjectPtr),
+      theVOADPtr(NULL)
 {
     AbstractObject* myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
 
