@@ -19,12 +19,14 @@
 #include "DropDownWindow.h"
 #include <QGraphicsView>
 
+#include "ViewWorld.h"
 #include "ViewObject.h"
 #include "AbstractObject.h"
 
-DropDownWindow::DropDownWindow(QGraphicsWidget* parent) :
-	QGraphicsWidget(parent)
+DropDownWindow::DropDownWindow(ViewWorld* aViewWorldPtr) :
+	QGraphicsWidget(NULL), theViewWorldPtr(aViewWorldPtr)
 {
+	// no things needed here
 }
 
 void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
@@ -62,13 +64,17 @@ void DropDownWindow::setup(QMenuBar* aMenuBarPtr)
 	setLayout(theLayoutPtr);
 	setZValue(1000);
 
+	// FIXME/TODO: make this one more flexible!
+//	setScale(0.02);
 
 	// and the animation mumbo-jumbo
 	//
 	QState* myUpStatePtr = new QState(&theStateMachine);
-	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80, -380), QSizeF(0, 40)));
+	myUpStatePtr->assignProperty(this, "geometry", QRectF(QPointF(8.0, -248.0),
+														  QSizeF(0, 0)));
 	QState* myDownStatePtr = new QState(&theStateMachine);
-	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(80,-200), QSizeF(250,170)));
+	myDownStatePtr->assignProperty(this, "geometry", QRectF(QPointF(8.0,-100.0),
+															QSizeF(0,0)));
 	theStateMachine.setInitialState(myUpStatePtr);
 
 	// setup a custom animation

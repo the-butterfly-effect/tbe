@@ -21,10 +21,12 @@
 
 #include <QtGui>
 
+class ViewWorld;
+
 class DropDownWindow : public QGraphicsWidget
 {
 public:
-	explicit DropDownWindow(QGraphicsWidget* parent = 0);
+	explicit DropDownWindow(ViewWorld* aViewWorldPtr);
 
 	void setup(QMenuBar* aMenuBarPtr);
 
@@ -39,6 +41,8 @@ private:
 	QGraphicsWidget*       pushButton;
 	QGraphicsLinearLayout* theLayoutPtr;
 	QGraphicsScene* theScenePtr;
+
+	ViewWorld* theViewWorldPtr;
 
 	/// used for the animation
 	QStateMachine theStateMachine;

@@ -21,18 +21,20 @@
 #include "ViewWorld.h"
 #include "World.h"
 
+#include "Position.h"
+
 #include <QGraphicsSceneMouseEvent>
 
 ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
-	: QGraphicsScene(0, -1*aWorldPtr->getTheWorldHeight(),
-					 1*aWorldPtr->getTheWorldWidth(), 1*aWorldPtr->getTheWorldHeight()),
+	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
+					 THESCALE*aWorldPtr->getTheWorldWidth(), THESCALE*aWorldPtr->getTheWorldHeight()),
 	  theWorldPtr(aWorldPtr)
 {
 	initAttributes();
 
 	aMainWindowPtr->setScene(this, theWorldPtr->getName());
 
-	//addRect(0, 0, getWidth(), -getHeight());
+	addRect(0, 0, getWidth(), -getHeight());
 
 	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
 		theWorldPtr->theBackground.theImageName.isEmpty())
@@ -54,13 +56,13 @@ ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 
 qreal ViewWorld::getHeight()
 {
-	return theWorldPtr->getTheWorldHeight();
+	return THESCALE*theWorldPtr->getTheWorldHeight();
 }
 
 
 qreal ViewWorld::getWidth()
 {
-	return theWorldPtr->getTheWorldWidth();
+	return THESCALE*theWorldPtr->getTheWorldWidth();
 }
 
 

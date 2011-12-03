@@ -22,6 +22,8 @@
 #include <cmath>
 #include <QStringList>
 
+qreal THESCALE = 100;
+
 const qreal Position::minimalMove = b2_linearSlop;
 const qreal Position::minimalRot  = b2_angularSlop;
 
@@ -33,7 +35,7 @@ Position::Position (qreal anX, qreal aY, qreal anAngle)
 }
 
 Position::Position (const QPointF& aPoint, qreal anAngle)
-		: x(aPoint.x()), y(-aPoint.y()), angle(anAngle)
+		: x(aPoint.x()/THESCALE), y(-aPoint.y()/THESCALE), angle(anAngle)
 {	; // nothing to do here, sorry...
 }
 
@@ -80,7 +82,7 @@ Vector::Vector (qreal aDX, qreal aDY)
 }
 
 Vector::Vector (const QPointF& aPoint)
-		: dx(aPoint.x()), dy(-aPoint.y())
+		: dx(aPoint.x()/THESCALE), dy(-aPoint.y()/THESCALE)
 {	; // nothing to do here, sorry...
 }
 
@@ -180,7 +182,7 @@ Position Vector::toPosition(void) const
 {	return Position(dx,dy, 0); }
 
 QPointF Vector::toQPointF(void) const
-{	return QPointF(dx,-dy); }
+{	return QPointF(THESCALE*dx,-THESCALE*dy); }
 
 QString Vector::toString(void) const
 {	return QString("(%1,%2)").arg(dx).arg(dy); }
@@ -209,12 +211,12 @@ Position operator-(const Position& p1, const Vector& v1)
 
 Position operator+(const Position& p1, const QPointF& p2)
 {
-	return Position(p1.x+p2.x(), p1.y+p2.y(), p1.angle);
+	return Position(p1.x+p2.x()/THESCALE, p1.y+p2.y()/THESCALE, p1.angle);
 }
 
 Position operator-(const Position& p1, const QPointF& p2)
 {
-	return Position(p1.x-p2.x(), p1.y-p2.y(), p1.angle);
+	return Position(p1.x-p2.x()/THESCALE, p1.y-p2.y()/THESCALE, p1.angle);
 }
 
 Vector operator+(const Vector& v1, const Vector& v2)

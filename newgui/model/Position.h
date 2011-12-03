@@ -1,4 +1,4 @@
-/* The Butterfly Effect 
+/* The Butterfly Effect
  * This file copyright (C) 2009, 2010  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
@@ -24,6 +24,8 @@
 
 class b2Vec2;
 class Position;
+
+extern qreal THESCALE;
 
 class Vector
 {
@@ -69,15 +71,15 @@ public:
 
 /**
   * class Position
-  * 
+  *
   * This class abstracts the Position - x,y,angle
   */
 class Position
 {
 public:
-	
+
 	// Constructors/Destructors
-	
+
 	/**
 	 * Constructor - set x (m), y(m), angle(radial)
 	 */
@@ -88,13 +90,13 @@ public:
 	Position (const b2Vec2& aVec, qreal anAngle = 0.0);
 
 	// Public attributes
-	
+
 	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
 	qreal x;
-	
+
 	/// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
 	qreal y;
-	
+
 	/// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
 	qreal angle;
 
@@ -103,10 +105,10 @@ public:
 
 	b2Vec2  toB2Vec2(void) const;
 	QPointF toQPointF(void) const
-	{ return QPointF(x,-y); }
+	{ return QPointF(THESCALE*x,-THESCALE*y); }
 	QString toString(void) const;
 	Vector  toVector(void) const
-	{ return Vector(x,y); }
+	{ return Vector(*this); }
 
 	qreal angleInDegrees(void) const
 	{ return angle*180/PI; }

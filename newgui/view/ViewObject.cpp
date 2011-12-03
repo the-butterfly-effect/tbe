@@ -92,8 +92,8 @@ void ViewObject::adjustObjectDrawing(void)
     QTransform theTransform;
      // Qt has the Y axis in opposite direction, so negate the angle...
      theTransform.rotateRadians(-theAbstractObjectPtr->getOrigCenter().angle);
-     theTransform.scale(myWidth/thePixmapWidth,
-                       myHeight/thePixmapHeight);
+     theTransform.scale(THESCALE*myWidth/thePixmapWidth,
+                        THESCALE*myHeight/thePixmapHeight);
     setTransform(theTransform,false);
     update();
 
