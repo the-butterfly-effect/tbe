@@ -125,9 +125,9 @@ void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 {
 	assert(theViewWorldPtr!=NULL);
 	DEBUG4("World::addAbstractObjectToViewWorld(%p)", aBOPtr);
-	ViewObject* myDOPtr = aBOPtr->createViewObject();
-	if (myDOPtr!=NULL)
-		theViewWorldPtr->addItem(myDOPtr);
+	ViewObject* myVOPtr = aBOPtr->createViewObject();
+	if (myVOPtr!=NULL)
+		theViewWorldPtr->addItem(myVOPtr);
 }
 
 
