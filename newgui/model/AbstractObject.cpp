@@ -123,7 +123,7 @@ ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 	assert(theViewObjectPtr==NULL);
 	QString myImageName;
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
-		myImageName = getName();
+		myImageName = getInternalName();
 
 	theViewObjectPtr = new ViewObject(this, myImageName);
 
@@ -148,13 +148,6 @@ b2World* AbstractObject::getB2WorldPtr(void) const
 {
 	assert (theStaticB2WorldPtr);
 	return theStaticB2WorldPtr;
-}
-
-
-const QString AbstractObject::getName ( )
-{
-	// TODO: make abstract
-	return "AbstractObject";
 }
 
 void AbstractObject::initAttributes ( )

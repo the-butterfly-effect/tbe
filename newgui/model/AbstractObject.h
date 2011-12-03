@@ -194,7 +194,7 @@ public:
      *  If a non-US locale is specified, the returned string
      *  will already be translated
      */
-    virtual const QString getName ( );  // TODO/FIXME: const?
+    virtual const QString getName ( ) const = 0;
 
 	/// child objects must specify what type of body they are
 	/// @returns a value from the b2BodyType enum, valid options
