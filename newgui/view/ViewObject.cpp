@@ -196,16 +196,18 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     PieMenuSingleton::addPieMenuToViewObject(this, anEvent->pos());
 }
 
-void ViewObject::setNewGeometry(Position aNewPosition, qreal aNewWidth, qreal aNewHeight)
+void ViewObject::setNewGeometry(const Position& aNewPosition, qreal aNewWidth, qreal aNewHeight)
 {
-    DEBUG4("%s", ASCII(QString("%s Pos: %1, WxH %2x%3")
-                .arg(Q_FUNC_INFO)
+    DEBUG4("%s", ASCII(QString("setNewGeometry Pos: %1, WxH %2x%3")
                 .arg(aNewPosition.toString())
                 .arg(aNewWidth).arg(aNewHeight)));
+    theAbstractObjectPtr->setTheWidth(aNewWidth);
+    theAbstractObjectPtr->setTheHeight(aNewHeight);
+    setNewGeometry(aNewPosition);
+}
+
+void ViewObject::setNewGeometry(const Position& aNewPosition)
+{
     theAbstractObjectPtr->setOrigCenter(aNewPosition);
-    if (aNewWidth>0.0001)
-        theAbstractObjectPtr->setTheWidth(aNewWidth);
-    if (aNewHeight>0.0001)
-        theAbstractObjectPtr->setTheHeight(aNewHeight);
     adjustObjectDrawing();
 }
