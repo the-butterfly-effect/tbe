@@ -16,7 +16,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="2" height="1"/>
+        <scenesize width="4" height="3"/>
         <predefined>
             <object width="0.068" X="0.400" Y="0.500" height="0.068" type="TennisBall" ID="ten" angle="0.000"/>
             <object width="0.068" X="0.500" Y="0.500" height="0.068" type="PetanqueBoule" ID="pet" angle="0.000"/>
@@ -25,11 +25,11 @@
             <object width="0.220" X="1.300" Y="0.500" height="0.220" type="BowlingBall" ID="bow1" angle="0.000"/>
             <object width="0.220" X="1.600" Y="0.500" height="0.220" type="BowlingBall" ID="bow2" angle="0.000"/>
             <object width="0.068" X="1.600" Y="0.100" height="0.068" type="PetanqueBoule" ID="pet2" angle="3.000"/>
-            <!--object width="4.000" X="2.000" Y="0.050" height="0.100" type="RectObject" angle="0.000">
+            <object width="4.000" X="2.000" Y="0.050" height="0.100" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.220" X="1.500" Y="0.500" height="0.220" type="PostIt" angle="0.000">
+            <!--object width="0.220" X="1.500" Y="0.500" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Welcome back!</property>
                 <property key="page1_nl">Welkom terug!</property>
                 <property key="page2">No butterfly here...&lt;br>&lt;br>Don't worry - we haven't seen the last one yet</property>
@@ -42,18 +42,18 @@
                 <property key="page5_nl">Maar waarom moet ik elk jaar mijn kamer opruimen?</property>
                 <property key="page6">... An unhappy&lt;br>&lt;br>&lt;br>Post-It Boy</property>
                 <property key="page6_nl">... Een niet-zo-vrolijke&lt;br>&lt;br>&lt;br>Post-It Boy</property>
-            </object>
+            </object-->
             <object width="0.100" X="3.150" Y="0.700" height="1.200" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.05</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.800" X="2.700" Y="0.500" height="0.800" type="Scenery" angle="0.000">
+            <!--object width="0.800" X="2.700" Y="0.500" height="0.800" type="Scenery" angle="0.000">
                 <property key="ImageName">basket</property>
-            </object>
+            </object-->
             <object width="0.100" X="2.250" Y="0.500" height="0.800" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.05</property>
                 <property key="ImageName">used_wood_bar</property>
-            </object-->
+            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
