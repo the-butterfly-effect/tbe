@@ -130,6 +130,7 @@ void MainWindow::setScene(ViewWorld* aScenePtr, const QString& aLevelName)
 	ui->graphicsView->setScene(aScenePtr);
 	ui->graphicsView->fitInView(0, -aScenePtr->getHeight(),
 								aScenePtr->getWidth(), aScenePtr->getHeight());
+	ui->graphicsView->showSimControls();
 //	aScenePtr->setSimSpeed(theSimSpeed);
 
 //	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
@@ -155,6 +156,7 @@ void MainWindow::purgeLevel(void)
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
 	ui->graphicsView->setScene(NULL);
+	ui->graphicsView->hideSimControls();
 	QMatrix myMatrix;
 	ui->graphicsView->setMatrix(myMatrix);
 #if 0
@@ -191,6 +193,8 @@ void MainWindow::setupView()
 	myRedoActionPtr->setShortcuts(redoShortcuts);
 	ui->menuEdit->addAction(myRedoActionPtr);
 
+	ui->graphicsView->setup(ui->menuControls);
+
 	loadLevel("newguitest.xml");
 
 	DropDownWindow* theDropDown = new DropDownWindow(theScenePtr);
@@ -215,6 +219,4 @@ void MainWindow::setupView()
 //	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
 //	theScenePtr->addItem(theVOPtr2);
 
-	SimulationControls* myControls = new SimulationControls;
-	myControls->setup(ui->menuBar);
 }

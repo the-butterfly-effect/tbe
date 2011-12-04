@@ -22,6 +22,8 @@
 #include <QtGui>
 #include "tbe_global.h"
 
+class Overlay;
+
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
 class SimState : public QState
@@ -52,9 +54,9 @@ class SimulationControls : public QObject
     Q_OBJECT
 
 public:
-    explicit SimulationControls(QObject *parent = 0);
+	explicit SimulationControls(QObject *parent = 0);
 
-	void setup(QMenuBar* aMenuBarPtr);
+	void setup(QMenu* aMenuPtr, Overlay* anOverlayPtr);
 
 signals:
 	/// this signal is emitted when our slot onFailed is called

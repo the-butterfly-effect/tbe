@@ -18,6 +18,7 @@
 
 #include "tbe_global.h"
 #include "SimulationControls.h"
+#include "Overlay.h"
 #include "ImageStore.h"
 
 #include <QMenuBar>
@@ -34,7 +35,7 @@ void SimState::onEntry ( QEvent * event )
 
 
 SimulationControls::SimulationControls(QObject *parent) :
-    QObject(parent)
+	QObject(parent)
 {
 	thePlayIcon  = ImageRendererStore::getQIcon("ActionMenuPlay", QSize(32,32));
 	thePauseIcon = ImageRendererStore::getQIcon("ActionMenuPause", QSize(32,32));
@@ -43,7 +44,7 @@ SimulationControls::SimulationControls(QObject *parent) :
 	theFwdIcon   = ImageRendererStore::getQIcon("ActionFastForward", QSize(32,32));
 }
 
-void SimulationControls::setup(QMenuBar* aMenuBarPtr)
+void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
 {
 	QState* theFailedState  = new SimState(&theSimStateMachine, "Failed");
 	QState* theForwardState = new SimState(&theSimStateMachine, "Forward");
@@ -53,12 +54,17 @@ void SimulationControls::setup(QMenuBar* aMenuBarPtr)
 	theSimStateMachine.setInitialState(theStoppedState);
 
 	// add actions
-	QAction* myPlayAction = new QAction(thePlayIcon, "&Play", NULL);
-	QAction* myResetAction = new QAction(theResetIcon, "&Reset", NULL);
-	QAction* myFFAction = new QAction(theFwdIcon, "F&ast", NULL);
-	aMenuBarPtr->addAction(myPlayAction);
-	aMenuBarPtr->addAction(myFFAction);
-	aMenuBarPtr->addAction(myResetAction);
+	QAction* myPlayAction = new QAction(thePlayIcon, tr("&Play"), NULL);
+	QAction* myResetAction = new QAction(theResetIcon, tr("&Reset"), NULL);
+	QAction* myFFAction = new QAction(theFwdIcon, tr("F&ast"), NULL);
+
+	aMenuPtr->addAction(myPlayAction);
+	aMenuPtr->addAction(myFFAction);
+	aMenuPtr->addAction(myResetAction);
+
+	anOverlayPtr->getPlayPtr()->setDefaultAction(myPlayAction);
+	anOverlayPtr->getFFPtr()->setDefaultAction(myFFAction);
+	anOverlayPtr->getResetPtr()->setDefaultAction(myResetAction);
 
 	// add transitions here
 	theStoppedState->addTransition(myPlayAction,SIGNAL(triggered()),theRunningState);

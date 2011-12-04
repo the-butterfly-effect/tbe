@@ -20,24 +20,33 @@
 #define RESIZINGGRAPHICSVIEW_H
 
 #include <QGraphicsView>
+#include <QResizeEvent>
+
+class Overlay;
+class QMenu;
+
 
 class ResizingGraphicsView : public QGraphicsView
 {
     Q_OBJECT
 public:
     explicit ResizingGraphicsView(QWidget *parent = 0);
+    ~ResizingGraphicsView();
+
+    void setup(QMenu*);
+
+    void hideSimControls(void);
+    void showSimControls(void);
 
 protected:
-	void resizeEvent(QResizeEvent *event)
-	{
-		QGraphicsView::resizeEvent(event);
-		fitInView(sceneRect(), Qt::KeepAspectRatio);
-	}
+    virtual void resizeEvent(QResizeEvent *event);
 
 signals:
 
 public slots:
 
+private:
+    Overlay *overlay;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

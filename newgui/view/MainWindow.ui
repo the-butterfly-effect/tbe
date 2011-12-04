@@ -48,8 +48,14 @@
      <string>&amp;Edit</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuControls">
+    <property name="title">
+     <string>&amp;Controls</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuControls"/>
   </widget>
   <action name="action_Open_Level">
    <property name="text">
