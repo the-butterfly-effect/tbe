@@ -6,6 +6,7 @@ SOURCES += \
     model/Position.cpp \
     model/Property.cpp \
     model/RectObject.cpp \
+    model/Scenery.cpp \
     model/World.cpp
 
 HEADERS += \
@@ -15,5 +16,6 @@ HEADERS += \
     model/Position.h \
     model/Property.h \
     model/RectObject.h \
+    model/Scenery.h \
     model/World.h
 
