@@ -42,6 +42,14 @@ SimulationControls::SimulationControls(QObject *parent) :
 	theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
 	theResetIcon = ImageCache::getQIcon("ActionUndo", QSize(32,32));
 	theFwdIcon   = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
+
+	ImageCache::getPixmap("StatusFail",  QSize(64,64), &theFailStatusPixmap);
+	ImageCache::getPixmap("StatusFault", QSize(64,64), &theFaultStatusPixmap);
+	ImageCache::getPixmap("StatusFF",    QSize(64,64), &theFFStatusPixmap);
+	ImageCache::getPixmap("StatusPlay",  QSize(64,64), &thePlayStatusPixmap);
+	ImageCache::getPixmap("StatusPause", QSize(64,64), &thePauseStatusPixmap);
+	ImageCache::getPixmap("StatusStop",  QSize(64,64), &theStopStatusPixmap);
+
 }
 
 void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
@@ -66,6 +74,8 @@ void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
 	anOverlayPtr->getFFPtr()->setDefaultAction(myFFAction);
 	anOverlayPtr->getResetPtr()->setDefaultAction(myResetAction);
 
+	QLabel* myLabelPtr = anOverlayPtr->getStatusLabelPtr();
+
 	// add transitions here
 	theStoppedState->addTransition(myPlayAction,SIGNAL(triggered()),theRunningState);
 	theRunningState->addTransition(myPlayAction, SIGNAL(triggered()), thePausedState);
@@ -84,26 +94,31 @@ void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
 	theStoppedState->assignProperty(myPlayAction, "enabled", true);
 	theStoppedState->assignProperty(myFFAction,   "enabled", false);
 	theStoppedState->assignProperty(myResetAction,"enabled", false);
+	theStoppedState->assignProperty(myLabelPtr,   "pixmap",  theStopStatusPixmap);
 	// upon entering running state, FF=enable, P=pause     R=disabled
 	theRunningState->assignProperty(myPlayAction, "icon", thePauseIcon);
 	theRunningState->assignProperty(myPlayAction, "enabled", true);
 	theRunningState->assignProperty(myFFAction,   "enabled", true);
 	theRunningState->assignProperty(myResetAction,"enabled", false);
+	theRunningState->assignProperty(myLabelPtr,   "pixmap",  thePlayStatusPixmap);
 	// upon entering paused  state, FF=disable, P=play     R=enabled
 	thePausedState ->assignProperty(myPlayAction, "icon", thePlayIcon);
 	thePausedState ->assignProperty(myPlayAction, "enabled", true);
 	thePausedState ->assignProperty(myFFAction,   "enabled", false);
 	thePausedState ->assignProperty(myResetAction,"enabled", true);
+	thePausedState->assignProperty(myLabelPtr,   "pixmap",  thePauseStatusPixmap);
 	// upon entering forward state, FF=enable, P=play      R=disabled
 	theForwardState->assignProperty(myPlayAction, "icon", thePlayIcon);
 	theForwardState->assignProperty(myPlayAction, "enabled", true);
 	theForwardState->assignProperty(myFFAction,   "enabled", false);
 	theForwardState->assignProperty(myResetAction,"enabled", false);
+	theForwardState->assignProperty(myLabelPtr,   "pixmap",  theFFStatusPixmap);
 	// upon entering failed  state, FF=disable, P=disable, R=enabled
 	theFailedState ->assignProperty(myPlayAction, "icon", theStopIcon);
 	theFailedState ->assignProperty(myPlayAction, "enabled", false);
 	theFailedState ->assignProperty(myFFAction,   "enabled", true);
 	theFailedState ->assignProperty(myResetAction,"enabled", false);
+	theFailedState->assignProperty(myLabelPtr,   "pixmap",  theFailStatusPixmap);
 
 	// TODO: hook up states to signals for ViewWorld/World
 

@@ -7,6 +7,7 @@ namespace Ui {
     class Overlay;
 }
 
+class QLabel;
 class QToolButton;
 
 class Overlay : public QWidget
@@ -18,6 +19,7 @@ public:
     void parentResize(const QSize& aSize);
 
     QToolButton* getFFPtr();
+    QLabel*      getStatusLabelPtr();
     QToolButton* getPlayPtr();
     QToolButton* getResetPtr();
 

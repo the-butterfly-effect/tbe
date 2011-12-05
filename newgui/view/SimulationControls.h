@@ -76,6 +76,13 @@ private:
 	QIcon theStopIcon;
 	QIcon theResetIcon;
 	QIcon theFwdIcon;
+
+	QPixmap thePlayStatusPixmap;
+	QPixmap thePauseStatusPixmap;
+	QPixmap theStopStatusPixmap;
+	QPixmap theFaultStatusPixmap;
+	QPixmap theFFStatusPixmap;
+	QPixmap theFailStatusPixmap;
 };
 
 #endif // SIMULATIONCONTROLS_H

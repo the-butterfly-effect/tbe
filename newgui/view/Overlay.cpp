@@ -1,6 +1,7 @@
 #include <QPainter>
 #include <QPen>
 #include <QGridLayout>
+#include <QLabel>
 #include <QPushButton>
 #include <QDebug>
 
@@ -29,6 +30,11 @@ Overlay::~Overlay()
 QToolButton* Overlay::getFFPtr()
 {
     return ui->pauseButton;
+}
+
+QLabel* Overlay::getStatusLabelPtr()
+{
+    return ui->statusLabel;
 }
 
 QToolButton* Overlay::getPlayPtr()
