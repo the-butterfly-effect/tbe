@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QDebug>
 
+#include "ImageCache.h"
 #include "Overlay.h"
 #include "ui_Overlay.h"
 
@@ -14,8 +15,9 @@ Overlay::Overlay(QWidget *parent)
       ui(new Ui::Overlay)
 {
     ui->setupUi(this);
-    QPixmap myPixmap("/home/kaa-ching/Programming/tbe/trunk/images/icons/statusPlay.png");
-    assert(myPixmap.isNull()==false);
+
+    QPixmap myPixmap;
+    ImageCache::getPixmap("StatusPlay", QSize(64,64), &myPixmap);
     ui->statusLabel->setPixmap(myPixmap);
 }
 
@@ -43,5 +45,5 @@ void Overlay::parentResize(const QSize& aSize)
 {
     // TODO/FIXME: magic numbers here
     // I bet these have to be different for Windows and MacOSX :-(
-    move(aSize.width()-size().width()+2,-6);
+    move(aSize.width()-size().width()+6,-16);
 }

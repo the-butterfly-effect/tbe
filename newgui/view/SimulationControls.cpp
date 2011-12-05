@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "SimulationControls.h"
 #include "Overlay.h"
-#include "ImageStore.h"
+#include "ImageCache.h"
 
 #include <QMenuBar>
 #include <QPropertyAnimation>
@@ -37,11 +37,11 @@ void SimState::onEntry ( QEvent * event )
 SimulationControls::SimulationControls(QObject *parent) :
 	QObject(parent)
 {
-	thePlayIcon  = ImageRendererStore::getQIcon("ActionMenuPlay", QSize(32,32));
-	thePauseIcon = ImageRendererStore::getQIcon("ActionMenuPause", QSize(32,32));
-	theStopIcon  = ImageRendererStore::getQIcon("ActionMenuStop", QSize(32,32));
-	theResetIcon = ImageRendererStore::getQIcon("ActionUndo", QSize(32,32));
-	theFwdIcon   = ImageRendererStore::getQIcon("ActionFastForward", QSize(32,32));
+	thePlayIcon  = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
+	thePauseIcon = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
+	theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
+	theResetIcon = ImageCache::getQIcon("ActionUndo", QSize(32,32));
+	theFwdIcon   = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
 }
 
 void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)

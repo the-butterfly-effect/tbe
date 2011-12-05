@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "ViewObject.h"
 #include "AbstractObject.h"
+#include "ImageCache.h"
 #include "PieMenu.h"
+#include "ViewObject.h"
 
 #include "tbe_global.h"
 
@@ -43,7 +44,10 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 {
 	DEBUG3ENTRY;
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
-	loadImage(anImageName);
+
+	QPixmap myTempPixmap;
+	ImageCache::getPixmap(anImageName, &myTempPixmap);
+	setPixmap(myTempPixmap);
 
 	thePixmapWidth = boundingRect().width();
 	thePixmapHeight= boundingRect().height();
@@ -129,65 +133,6 @@ void ViewObject::initViewObjectAttributes(void)
 }
 
 
-bool ViewObject::loadImage(const QString& anImageName)
-{
-	Q_ASSERT(anImageName.isEmpty() == false);
-
-	QPixmap myTempPixmap = NULL;
-
-	// is the image present in the cache?
-	if (QPixmapCache::find(anImageName, myTempPixmap))
-	{
-		DEBUG4("Image '%s' found in image cache!", ASCII(anImageName));
-	}
-	else
-	{
-		// No, it isn't. Let's try to load the image.
-		QString myFullPathName;
-		// I use a do...while(true) loop here to be able to break from a loop
-		// that is run only once.
-		do
-		{
-			myFullPathName = QString("../images/%1.png").arg(anImageName);
-			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-			if (QFile::exists(myFullPathName))
-				break;
-
-			myFullPathName = QString("../images/%1.jpg").arg(anImageName);
-			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-			if (QFile::exists(myFullPathName))
-				break;
-
-			myFullPathName = QString("../images/%1.svg").arg(anImageName);
-			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-			if (QFile::exists(myFullPathName))
-			{
-				// render the SVG into the Pixmap
-				// TODO/FIXME: magic numbers (pixmap size) here
-				myTempPixmap = QPixmap(160,160);
-				myTempPixmap.fill(QColor(255,255,255,0));
-
-				QSvgRenderer myRenderer(myFullPathName);
-				QPainter myPainter;
-				myPainter.begin(&myTempPixmap);
-				myPainter.setRenderHint(QPainter::Antialiasing);
-				myRenderer.render(&myPainter);
-				myPainter.end();
-				break;
-			}
-
-			myFullPathName = "../images/BowlingBall.png";
-			DEBUG4("attempt to load '%s'", ASCII(myFullPathName));
-		} while(false);
-
-		if (myTempPixmap.isNull())
-			myTempPixmap = QPixmap(myFullPathName);
-		QPixmapCache::insert(anImageName, myTempPixmap);
-	}
-
-	setPixmap(myTempPixmap);
-	return true;
-}
 
 
 void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )

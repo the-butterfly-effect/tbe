@@ -1,7 +1,8 @@
 
 SOURCES += \
 	view/DropDownWindow.cpp \
-	view/ImageStore.cpp \
+	view/GameResources.cpp \
+	view/ImageCache.cpp \
 	view/MainWindow.cpp \
 	view/Overlay.cpp \
 	view/PieMenu.cpp \
@@ -9,13 +10,13 @@ SOURCES += \
 	view/SimulationControls.cpp \
 	view/ViewObject.cpp \
 	view/ViewCircleObject.cpp \
-	view/ViewWorld.cpp \
-	view/GameResources.cpp
+	view/ViewWorld.cpp
 
 HEADERS  += \
 	view/Background.h \
 	view/DropDownWindow.h \
-	view/ImageStore.h \
+	view/GameResources.h \
+	view/ImageCache.h \
 	view/MainWindow.h \
 	view/Overlay.h \
 	view/Popup.h \
@@ -24,13 +25,14 @@ HEADERS  += \
 	view/SimulationControls.h \
 	view/ViewCircleObject.h \
 	view/ViewObject.h \
-	view/ViewWorld.h \
-	view/GameResources.h
+	view/ViewWorld.h
 
 FORMS    += \
 	view/MainWindow.ui \
 	view/Overlay.ui \
 	view/GameResources.ui
+
+
 
 
 
