@@ -56,6 +56,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 
 	// No, it isn't. Let's try to load the image.
 	QString myFullPathName;
+	QPixmap myTempPixmap;
 	// I use a do...while(true) loop here to be able to break from a loop
 	// that is run only once.
 	do
@@ -79,12 +80,12 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 		{
 			// render the SVG into the Pixmap
 			// rely on operator= to make copy
-			*anOutputPixmapPtr = QPixmap(aSize);
-			anOutputPixmapPtr->fill(QColor(255,255,255,0));
+			myTempPixmap = QPixmap(aSize);
+			myTempPixmap.fill(QColor(255,255,255,0));
 
 			QSvgRenderer myRenderer(myFullPathName);
 			QPainter myPainter;
-			myPainter.begin(anOutputPixmapPtr);
+			myPainter.begin(&myTempPixmap);
 			myPainter.setRenderHint(QPainter::Antialiasing);
 			myRenderer.render(&myPainter);
 			myPainter.end();
@@ -96,9 +97,10 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	} while(false);
 
 	DEBUG3("  going to use: %s!", ASCII(myFullPathName));
-	if (anOutputPixmapPtr->isNull())
-		anOutputPixmapPtr = new QPixmap(myFullPathName);
-	QPixmapCache::insert(anImageBaseName, *anOutputPixmapPtr);
+	if (myTempPixmap.isNull())
+		myTempPixmap = QPixmap(myFullPathName);
+	QPixmapCache::insert(anImageBaseName, myTempPixmap);
+	*anOutputPixmapPtr = myTempPixmap;
 
 	return true;
 }
