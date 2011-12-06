@@ -50,7 +50,6 @@ ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
 		myBackground.setColorAt(myGS.thePosition, QColor(myGS.theR*255, myGS.theG*255, myGS.theB*255, myGS.theAlpha*255));
 	setBackgroundBrush(myBackground);
-
 }
 
 
@@ -74,24 +73,12 @@ void ViewWorld::initAttributes ( )
 void
 ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
 {
-    // unfortunately itemAt isn't without its failures:
-    // e.g. it doesn't really match the correct sizes of the objects
-    // that's why we need to double check with isUnderMouse...
-    //
-    // Too bad that isUnderMouse() apparently fails for child objects?
-    // At least... it doesn't work for my ActionIcons...
-    // It appears to work for DropDownWindow, though...
-    // I'm confused :-( :-( :-(
     QGraphicsItem* myItemPtr = itemAt(mouseEvent->scenePos());
-    printf("VW::mPE: (%f, %f) = %p\n", mouseEvent->scenePos().x(),
-           mouseEvent->scenePos().y(), myItemPtr);
-
     if (myItemPtr!=NULL)
-        if (myItemPtr->isUnderMouse())
-        {
-            QGraphicsScene::mousePressEvent(mouseEvent);
-            return;
-        }
+    {
+        QGraphicsScene::mousePressEvent(mouseEvent);
+        return;
+    }
     // nothing clicked: clear pie menu
     PieMenuSingleton::clearPieMenu();
 }
