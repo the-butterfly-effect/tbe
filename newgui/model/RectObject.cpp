@@ -279,10 +279,10 @@ void RectObject::adjustWideParametersPart(void)
 }
 
 
-ViewObject*  RectObject::createViewObject(void)
+ViewObject*  RectObject::createViewObject(float aDefaultDepth)
 {
 	adjustParameters();
-	return AbstractObject::createViewObject();
+	return AbstractObject::createViewObject(aDefaultDepth);
 }
 
 b2BodyType RectObject::getObjectType(void) const

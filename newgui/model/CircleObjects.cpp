@@ -153,20 +153,6 @@ void CircleObject::createBallShapeFixture(float aRadius, float aMass)
 	setTheHeight(2.0*aRadius);
 }
 
-ViewObject*  CircleObject::createViewObject(void)
-{
-	QString myImageName = theProps.getPropertyNoDefault(Property::IMAGE_NAME_STRING);
-	if (myImageName.isEmpty()==false)
-		theBallImage = myImageName;
-	else
-		if (theBallImage.isEmpty())
-			theBallImage = getName();
-	theViewObjectPtr = new ViewCircleObject(this, theBallImage);
-	setViewObjectZValue(3.0);
-	return theViewObjectPtr;
-}
-
-
 
 // ---------------------------------------------------------------------------
 // ---------------------------------CustomBall--------------------------------

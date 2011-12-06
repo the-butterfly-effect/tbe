@@ -49,8 +49,6 @@ public:
 	// Public attribute accessor methods
 	//
 
-	virtual ViewObject* createViewObject();
-
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{	return theBallName;	}

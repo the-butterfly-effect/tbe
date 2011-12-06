@@ -9,7 +9,7 @@ SOURCES += \
 	view/resizinggraphicsview.cpp \
 	view/SimulationControls.cpp \
 	view/ViewObject.cpp \
-	view/ViewCircleObject.cpp \
+#	view/ViewCircleObject.cpp \
 	view/ViewWorld.cpp
 
 HEADERS  += \
@@ -23,7 +23,7 @@ HEADERS  += \
 	view/PieMenu.h \
 	view/resizinggraphicsview.h \
 	view/SimulationControls.h \
-	view/ViewCircleObject.h \
+#	view/ViewCircleObject.h \
 	view/ViewObject.h \
 	view/ViewWorld.h
 

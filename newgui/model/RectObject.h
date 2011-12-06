@@ -100,7 +100,8 @@ public:
 	 */
 	virtual void setTheHeight ( qreal new_var );
 
-	virtual ViewObject* createViewObject();
+	/// overridden from AbstractObject: allow running adjustParameters() first
+	virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
 
 protected:
 	/// this member fixes up the physical model based on new width or height
