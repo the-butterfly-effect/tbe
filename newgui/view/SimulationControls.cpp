@@ -63,63 +63,60 @@ void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
 	theSimStateMachine.setInitialState(myStoppedState);
 
 	// add actions
-	QAction* myPlayAction = new QAction(thePlayIcon, tr("&Play"), NULL);
-	QAction* myResetAction = new QAction(theResetIcon, tr("&Reset"), NULL);
-	QAction* myFFAction = new QAction(theFwdIcon, tr("F&ast"), NULL);
+	QAction* myTopAction = new QAction(thePlayIcon, tr("&Play"), NULL);
+	QAction* myBotAction = new QAction(theFwdIcon, tr("&Fast Forward"), NULL);
 
-	aMenuPtr->addAction(myPlayAction);
-	aMenuPtr->addAction(myFFAction);
-	aMenuPtr->addAction(myResetAction);
+	aMenuPtr->addAction(myTopAction);
+	aMenuPtr->addAction(myBotAction);
 
-	anOverlayPtr->getPlayPtr()->setDefaultAction(myPlayAction);
-	anOverlayPtr->getFFPtr()->setDefaultAction(myFFAction);
-	anOverlayPtr->getResetPtr()->setDefaultAction(myResetAction);
+	anOverlayPtr->getTopPtr()->setDefaultAction(myTopAction);
+	anOverlayPtr->getBottomPtr()->setDefaultAction(myBotAction);
 
 	QLabel* myLabelPtr = anOverlayPtr->getStatusLabelPtr();
 
 	// add transitions here
-	myStoppedState->addTransition(myPlayAction,SIGNAL(triggered()),myRunningState);
-	myRunningState->addTransition(myPlayAction, SIGNAL(triggered()), myPausedState);
-	myRunningState->addTransition(myFFAction, SIGNAL(triggered()), myForwardState);
+	myStoppedState->addTransition(myTopAction, SIGNAL(triggered()), myRunningState);
+	myRunningState->addTransition(myTopAction, SIGNAL(triggered()), myPausedState);
+	myRunningState->addTransition(myBotAction, SIGNAL(triggered()), myForwardState);
 	myRunningState->addTransition(this, SIGNAL(failed()), myFailedState);
-	myPausedState ->addTransition(myPlayAction, SIGNAL(triggered()), myRunningState);
-	myPausedState ->addTransition(myResetAction, SIGNAL(triggered()), myStoppedState);
-	myFailedState ->addTransition(myResetAction, SIGNAL(triggered()), myStoppedState);
-	myForwardState->addTransition(myFFAction, SIGNAL(triggered()), myRunningState);
-	myForwardState->addTransition(myPlayAction, SIGNAL(triggered()), myRunningState);
+	myPausedState ->addTransition(myTopAction, SIGNAL(triggered()), myRunningState);
+	myPausedState ->addTransition(myBotAction, SIGNAL(triggered()), myStoppedState);
+	myFailedState ->addTransition(myBotAction, SIGNAL(triggered()), myStoppedState);
+	myForwardState->addTransition(myTopAction, SIGNAL(triggered()), myPausedState);
+	myForwardState->addTransition(myBotAction, SIGNAL(triggered()), myRunningState);
 	myForwardState->addTransition(this, SIGNAL(failed()), myFailedState);
 
 	// set the start conditions for the icons for each state
-	// upon entering stopped state, FF=disable, P=play     R=disabled
-	myStoppedState->assignProperty(myPlayAction, "icon", thePlayIcon);
-	myStoppedState->assignProperty(myPlayAction, "enabled", true);
-	myStoppedState->assignProperty(myFFAction,   "enabled", false);
-	myStoppedState->assignProperty(myResetAction,"enabled", false);
+	// upon entering stopped state, Top = Play/enabled, Bottom = FF/disable
+	myStoppedState->assignProperty(myTopAction, "icon",    thePlayIcon);
+	myStoppedState->assignProperty(myTopAction, "enabled", true);
+	myStoppedState->assignProperty(myBotAction, "icon",    theFwdIcon);
+	myStoppedState->assignProperty(myBotAction, "enabled", false);
 	myStoppedState->assignProperty(myLabelPtr,   "pixmap",  theStopStatusPixmap);
-	// upon entering running state, FF=enable, P=pause     R=disabled
-	myRunningState->assignProperty(myPlayAction, "icon", thePauseIcon);
-	myRunningState->assignProperty(myPlayAction, "enabled", true);
-	myRunningState->assignProperty(myFFAction,   "enabled", true);
-	myRunningState->assignProperty(myResetAction,"enabled", false);
-	myRunningState->assignProperty(myLabelPtr,   "pixmap",  thePlayStatusPixmap);
-	// upon entering paused  state, FF=disable, P=play     R=enabled
-	myPausedState ->assignProperty(myPlayAction, "icon", thePlayIcon);
-	myPausedState ->assignProperty(myPlayAction, "enabled", true);
-	myPausedState ->assignProperty(myFFAction,   "enabled", false);
-	myPausedState ->assignProperty(myResetAction,"enabled", true);
-	myPausedState->assignProperty(myLabelPtr,   "pixmap",  thePauseStatusPixmap);
-	// upon entering forward state, FF=enable, P=play      R=disabled
-	myForwardState->assignProperty(myPlayAction, "icon", thePlayIcon);
-	myForwardState->assignProperty(myPlayAction, "enabled", true);
-	myForwardState->assignProperty(myFFAction,   "enabled", false);
-	myForwardState->assignProperty(myResetAction,"enabled", false);
-	myForwardState->assignProperty(myLabelPtr,   "pixmap",  theFFStatusPixmap);
-	// upon entering failed  state, FF=disable, P=disable, R=enabled
-	myFailedState ->assignProperty(myPlayAction, "icon", theStopIcon);
-	myFailedState ->assignProperty(myPlayAction, "enabled", false);
-	myFailedState ->assignProperty(myFFAction,   "enabled", true);
-	myFailedState ->assignProperty(myResetAction,"enabled", false);
-	myFailedState->assignProperty(myLabelPtr,   "pixmap",  theFailStatusPixmap);
+	// upon entering running state, Top = Pause/enabled, Bottom = FF/enabled
+	myRunningState->assignProperty(myTopAction, "icon",    thePauseIcon);
+	myRunningState->assignProperty(myTopAction, "enabled", true);
+	myRunningState->assignProperty(myBotAction, "icon",    theFwdIcon);
+	myRunningState->assignProperty(myBotAction, "enabled", true);
+	myRunningState->assignProperty(myLabelPtr,  "pixmap",  thePlayStatusPixmap);
+	// upon entering paused  state, Top = Play/enabled, Bottom = Reset/enabled
+	myPausedState ->assignProperty(myTopAction, "icon",    thePlayIcon);
+	myPausedState ->assignProperty(myTopAction, "enabled", true);
+	myPausedState ->assignProperty(myBotAction, "icon",    theResetIcon);
+	myPausedState ->assignProperty(myBotAction, "enabled", true);
+	myPausedState ->assignProperty(myLabelPtr,  "pixmap",  thePauseStatusPixmap);
+	// upon entering forward state, Top = Pause/enabled, Bottom = Play/enabled
+	myForwardState->assignProperty(myTopAction, "icon",    thePauseIcon);
+	myForwardState->assignProperty(myTopAction, "enabled", true);
+	myForwardState->assignProperty(myBotAction, "icon",    thePlayIcon);
+	myForwardState->assignProperty(myBotAction, "enabled", true);
+	myForwardState->assignProperty(myLabelPtr,  "pixmap",  theFFStatusPixmap);
+	// upon entering failed  state, Top = Play/disabled, Bottom = Reset/enabled
+	myFailedState ->assignProperty(myTopAction, "icon",    thePlayIcon);
+	myFailedState ->assignProperty(myTopAction, "enabled", false);
+	myFailedState ->assignProperty(myBotAction, "icon",    theResetIcon);
+	myFailedState ->assignProperty(myBotAction, "enabled", true);
+	myFailedState ->assignProperty(myLabelPtr,  "pixmap",  theFailStatusPixmap);
 
 	// TODO: hook up states to signals for ViewWorld/World
 

@@ -99,27 +99,8 @@
         </property>
        </spacer>
       </item>
-      <item row="2" column="0">
-       <widget class="QToolButton" name="pauseButton">
-        <property name="minimumSize">
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Pause</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
-       <widget class="QToolButton" name="playButton">
+       <widget class="QToolButton" name="topButton">
         <property name="minimumSize">
          <size>
           <width>32</width>
@@ -138,7 +119,7 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QToolButton" name="resetButton">
+       <widget class="QToolButton" name="bottomButton">
         <property name="minimumSize">
          <size>
           <width>32</width>

@@ -24,6 +24,7 @@
 #include <QStateMachine>
 #include <QGraphicsEffect>
 
+#include "tbe_global.h"
 
 // forward declarations
 class ViewObject;
@@ -88,7 +89,7 @@ private:
 
 protected:
 	virtual void mousePressEvent (QGraphicsSceneMouseEvent*)
-	{ emit clicked(this);}
+	{ DEBUG1ENTRY; emit clicked(this);}
 
 signals:
 	void clicked(ActionIcon*);

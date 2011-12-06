@@ -27,9 +27,9 @@ Overlay::~Overlay()
     delete ui;
 }
 
-QToolButton* Overlay::getFFPtr()
+QToolButton* Overlay::getBottomPtr()
 {
-    return ui->pauseButton;
+    return ui->bottomButton;
 }
 
 QLabel* Overlay::getStatusLabelPtr()
@@ -37,13 +37,9 @@ QLabel* Overlay::getStatusLabelPtr()
     return ui->statusLabel;
 }
 
-QToolButton* Overlay::getPlayPtr()
+QToolButton* Overlay::getTopPtr()
 {
-    return ui->playButton;
-}
-QToolButton* Overlay::getResetPtr()
-{
-    return ui->resetButton;
+    return ui->topButton;
 }
 
 

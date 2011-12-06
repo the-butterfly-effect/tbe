@@ -18,10 +18,9 @@ public:
 
     void parentResize(const QSize& aSize);
 
-    QToolButton* getFFPtr();
+    QToolButton* getBottomPtr();
     QLabel*      getStatusLabelPtr();
-    QToolButton* getPlayPtr();
-    QToolButton* getResetPtr();
+    QToolButton* getTopPtr();
 
 protected:
 //    void paintEvent(QPaintEvent *event);

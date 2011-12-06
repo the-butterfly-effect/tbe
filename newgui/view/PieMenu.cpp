@@ -131,6 +131,8 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	myInnerState->assignProperty(this, "scale", myLargeScale);
 
 	theIconStateMachine.start();
+
+	printf("ActionIcon sceneptr: %p\n", scene());
 }
 
 
@@ -177,10 +179,12 @@ void PieMenu::setup()
 	bool myBool = (theAOPtr->isResizable()&
 				   (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
 				   || theIsLevelEditor;
+	myBool = true;
 	new ActionIcon(ActionIcon::ACTION_RESIZE,
 								"../images/ActionResize.svg", myBool, this);
 
 	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
+	myBool = true;
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
 								"../images/ActionRotate.svg", myBool, this);
 
