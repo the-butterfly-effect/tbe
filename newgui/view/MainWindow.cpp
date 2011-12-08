@@ -25,7 +25,6 @@
 
 
 #include "AbstractObject.h"
-#include "DropDownWindow.h"
 #include "Level.h"
 #include "Popup.h"
 #include "PieMenu.h"
@@ -196,10 +195,6 @@ void MainWindow::setupView()
 	ui->graphicsView->setup(ui->menuControls);
 
 	loadLevel("newguitest.xml");
-
-	DropDownWindow* theDropDown = new DropDownWindow(theScenePtr);
-	theScenePtr->addItem(theDropDown);
-	theDropDown->setup(ui->menuBar);
 
 //	AbstractObject* theAOPtr = new AbstractObject();
 //	theAOPtr->theProps.setProperty(Property::ROTATABLE_STRING, "true");

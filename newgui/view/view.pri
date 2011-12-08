@@ -1,6 +1,5 @@
 
 SOURCES += \
-	view/DropDownWindow.cpp \
 	view/GameResources.cpp \
 	view/ImageCache.cpp \
 	view/MainWindow.cpp \
@@ -14,7 +13,6 @@ SOURCES += \
 
 HEADERS  += \
 	view/Background.h \
-	view/DropDownWindow.h \
 	view/GameResources.h \
 	view/ImageCache.h \
 	view/MainWindow.h \
