@@ -17,27 +17,27 @@
  */
 
 #include "resizinggraphicsview.h"
-#include "Overlay.h"
 #include "SimulationControls.h"
+
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
 	QGraphicsView(parent)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
-	overlay = new Overlay(this);
+	theSimControlsPtr = new SimulationControls(this);
 	hideSimControls();
 
 }
 
 ResizingGraphicsView::~ResizingGraphicsView()
 {
-	delete overlay;
+	delete theSimControlsPtr;
 }
 
 void ResizingGraphicsView::hideSimControls(void)
 {
-	overlay->hide();
+	theSimControlsPtr->hide();
 }
 
 
@@ -45,17 +45,17 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 {
 	QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
-	overlay->parentResize(frameSize());
+	theSimControlsPtr->parentResize(frameSize());
+
 }
 
 void ResizingGraphicsView::setup(QMenu* anMBPtr)
 {
-	SimulationControls* myControls = new SimulationControls;
-	myControls->setup(anMBPtr, overlay);
+	theSimControlsPtr->setup(anMBPtr);
 }
 
 
 void ResizingGraphicsView::showSimControls(void)
 {
-	overlay->show();
+	theSimControlsPtr->show();
 }

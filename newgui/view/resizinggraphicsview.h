@@ -22,7 +22,7 @@
 #include <QGraphicsView>
 #include <QResizeEvent>
 
-class Overlay;
+class SimulationControls;
 class QMenu;
 
 
@@ -46,7 +46,7 @@ signals:
 public slots:
 
 private:
-    Overlay *overlay;
+    SimulationControls *theSimControlsPtr;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H
