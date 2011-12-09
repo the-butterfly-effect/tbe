@@ -35,9 +35,10 @@ void SimState::onEntry ( QEvent * event )
 
 
 SimulationControls::SimulationControls(QWidget *parent) :
-	QWidget(parent)
+    QWidget(parent),
+    ui(new Ui::SimulationControls)
 {
-	ui->setupUi(this);
+    ui->setupUi(this);
 
     QPixmap myPixmap;
     ImageCache::getPixmap("StatusPlay", QSize(64,64), &myPixmap);
@@ -67,7 +68,7 @@ void SimulationControls::parentResize(const QSize& aSize)
 {
     // TODO/FIXME: magic numbers here
     // I bet these have to be different for Windows and MacOSX :-(
-    move(aSize.width()-size().width()+6,-16);
+    move(aSize.width()-size().width()-2,-8);
 }
 
 void SimulationControls::setup(QMenu* aMenuPtr)
