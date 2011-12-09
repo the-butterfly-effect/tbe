@@ -22,7 +22,9 @@
 #include <QtGui>
 #include "tbe_global.h"
 
-class Overlay;
+namespace Ui {
+	class SimulationControls;
+}
 
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
@@ -49,14 +51,18 @@ private:
   * inputs are the QActions that it creates in the menu bar and slots on its interface
   * outputs are the signals that it sends when states change
   */
-class SimulationControls : public QObject
+class SimulationControls : public QWidget
 {
     Q_OBJECT
 
 public:
-	explicit SimulationControls(QObject *parent = 0);
+	explicit SimulationControls(QWidget *parent = 0);
 
-	void setup(QMenu* aMenuPtr, Overlay* anOverlayPtr);
+	virtual ~SimulationControls();
+
+	void setup(QMenu* aMenuPtr);
+
+	void parentResize(const QSize& aSize);
 
 signals:
 	/// this signal is emitted when our slot onFailed is called
@@ -83,6 +89,8 @@ private:
 	QPixmap theFaultStatusPixmap;
 	QPixmap theFFStatusPixmap;
 	QPixmap theFailStatusPixmap;
+
+	Ui::SimulationControls *ui;
 };
 
 #endif // SIMULATIONCONTROLS_H

@@ -18,7 +18,7 @@
 
 #include "tbe_global.h"
 #include "SimulationControls.h"
-#include "Overlay.h"
+#include "ui_SimulationControls.h"
 #include "ImageCache.h"
 
 #include <QMenuBar>
@@ -34,9 +34,15 @@ void SimState::onEntry ( QEvent * event )
 }
 
 
-SimulationControls::SimulationControls(QObject *parent) :
-	QObject(parent)
+SimulationControls::SimulationControls(QWidget *parent) :
+	QWidget(parent)
 {
+	ui->setupUi(this);
+
+    QPixmap myPixmap;
+    ImageCache::getPixmap("StatusPlay", QSize(64,64), &myPixmap);
+    ui->statusLabel->setPixmap(myPixmap);
+
 	thePlayIcon  = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
 	thePauseIcon = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
 	theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
@@ -49,10 +55,22 @@ SimulationControls::SimulationControls(QObject *parent) :
 	ImageCache::getPixmap("StatusPlay",  QSize(64,64), &thePlayStatusPixmap);
 	ImageCache::getPixmap("StatusPause", QSize(64,64), &thePauseStatusPixmap);
 	ImageCache::getPixmap("StatusStop",  QSize(64,64), &theStopStatusPixmap);
-
 }
 
-void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
+SimulationControls::~SimulationControls()
+{
+	delete ui;
+}
+
+
+void SimulationControls::parentResize(const QSize& aSize)
+{
+    // TODO/FIXME: magic numbers here
+    // I bet these have to be different for Windows and MacOSX :-(
+    move(aSize.width()-size().width()+6,-16);
+}
+
+void SimulationControls::setup(QMenu* aMenuPtr)
 {
 	//	QState* myInvalidState  = new SimState(&theSimStateMachine, "Invalid");
 	QState* myFailedState  = new SimState(&theSimStateMachine, "Failed");
@@ -69,10 +87,10 @@ void SimulationControls::setup(QMenu* aMenuPtr, Overlay* anOverlayPtr)
 	aMenuPtr->addAction(myTopAction);
 	aMenuPtr->addAction(myBotAction);
 
-	anOverlayPtr->getTopPtr()->setDefaultAction(myTopAction);
-	anOverlayPtr->getBottomPtr()->setDefaultAction(myBotAction);
+	ui->topButton->setDefaultAction(myTopAction);
+	ui->bottomButton->setDefaultAction(myBotAction);
 
-	QLabel* myLabelPtr = anOverlayPtr->getStatusLabelPtr();
+	QLabel* myLabelPtr = ui->statusLabel;
 
 	// add transitions here
 	myStoppedState->addTransition(myTopAction, SIGNAL(triggered()), myRunningState);

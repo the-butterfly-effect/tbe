@@ -3,7 +3,6 @@ SOURCES += \
 	view/GameResources.cpp \
 	view/ImageCache.cpp \
 	view/MainWindow.cpp \
-	view/Overlay.cpp \
 	view/PieMenu.cpp \
 	view/resizinggraphicsview.cpp \
 	view/SimulationControls.cpp \
@@ -16,7 +15,6 @@ HEADERS  += \
 	view/GameResources.h \
 	view/ImageCache.h \
 	view/MainWindow.h \
-	view/Overlay.h \
 	view/Popup.h \
 	view/PieMenu.h \
 	view/resizinggraphicsview.h \
@@ -27,8 +25,10 @@ HEADERS  += \
 
 FORMS    += \
 	view/MainWindow.ui \
-	view/Overlay.ui \
-	view/GameResources.ui
+	view/GameResources.ui \
+	view/SimulationControls.ui
+
+
 
 
 
