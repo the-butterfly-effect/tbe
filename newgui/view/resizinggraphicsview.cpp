@@ -16,12 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "GameResources.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
 
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
-	QGraphicsView(parent)
+	QGraphicsView(parent),
+	theGameResourcesPtr(NULL),
+	theMenuBarPtr(NULL)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -35,6 +38,28 @@ ResizingGraphicsView::~ResizingGraphicsView()
 	delete theSimControlsPtr;
 }
 
+
+void ResizingGraphicsView::clearGameResourcesDialog()
+{
+	delete theGameResourcesPtr;
+	theGameResourcesPtr = NULL;
+}
+
+void ResizingGraphicsView::createGameResourcesDialog()
+{
+	Q_ASSERT(theGameResourcesPtr == NULL);
+	Q_ASSERT(theMenuBarPtr != NULL);
+	theGameResourcesPtr = new GameResources(this);
+	theGameResourcesPtr->setup(theMenuBarPtr);
+}
+
+GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
+{
+	Q_ASSERT(theGameResourcesPtr != NULL);
+	return theGameResourcesPtr;
+}
+
+
 void ResizingGraphicsView::hideSimControls(void)
 {
 	theSimControlsPtr->hide();
@@ -46,12 +71,14 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
-
+	// TODO/FIXME: adjust position of GameResources dialog
 }
 
-void ResizingGraphicsView::setup(QMenu* anMBPtr)
+
+void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
 {
-	theSimControlsPtr->setup(anMBPtr);
+	theSimControlsPtr->setup(anMenuControlsPtr);
+	theMenuBarPtr = aMenuBarPtr;
 }
 
 

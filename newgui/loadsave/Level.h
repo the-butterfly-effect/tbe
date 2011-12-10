@@ -22,12 +22,13 @@
 #include <QObject>
 #include <QString>
 #include <QList>
-#include <QDomDocument>
+//#include <QDomDocument>
 #include "tbe_global.h"
 #include "AbstractObject.h"
 #include "LocalString.h"
 
 // Forward Declarations:
+class GameResources;
 class MainWindow;
 class World;
 
@@ -66,18 +67,19 @@ public:
 	virtual QString getName ( ) const
 		{ return theLevelName.result(); }
 
-	World* getTheWorldPtr(void)
+	World* getTheWorldPtr(void) const
 		{ return theWorldPtr; }
 
-	/** open file containing a level definition, parse it, build the Level
-	 *  if run into a <toolbox> section, keep a reference to that so the toolbox
-	 *  can benefit later...
-	 *
-	 * @param aFileName file to parse and populate Level with.
-	 * @return empty string is returned if loading was successful, otherwise
-	 *			the return will contain the i18n'ed error message
-	 */
-	QString load(const QString& aFileName);
+    /** Open file containing a level definition, parse it,
+     *  and fill the World object that was created in the constructor.
+     *  Also:
+     *
+     * @param aFileName file to parse and populate Level with.
+     * @param aLevelInfoToolbox pointer to class that will hold level info and toolbox
+     * @return empty string is returned if loading was successful, otherwise
+     *			the return will contain the i18n'ed error message
+     */
+    QString load(const QString& aFileName, GameResources* aLevelInfoToolbox);
 
 	/** save the Level to a file
 	 *  the file name must be unique - overwriting is not allowed here
@@ -91,20 +93,16 @@ public:
 	static QString getPathToLevelFile(void);
 
 	/// @returns the name of the file that describes the current level
-	static QString getLevelFileName(void);
-
-	/// @returns a reference to the QDomNode containing the toolbox description
-	const QDomNode& getToolboxDomNode(void) const
-	{ return theToolboxDomNode; }
+//	static QString getLevelFileName(void);
 
 	/// sets the name of the file that describes the current level
 	void setLevelFileName(const QString& aName);
 
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
-	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
-	void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
-	void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
+//	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
+//	void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
+//	void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
 
 private:
 	World* theWorldPtr;
@@ -115,14 +113,9 @@ private:
 	LocalString theLevelDescription;
 	QString theLevelDate;
 
-	/** populated during load(), this DomNode contains the contents for the toolbox
-	 *  if no load() has happened, this is empty.
-	 */
-	QDomNode theToolboxDomNode;
-
-	friend class SaveLevelInfo;
-	friend class LevelInfoDialog;
-	friend class EditLevelProperties;
+//	friend class SaveLevelInfo;
+//	friend class LevelInfoDialog;
+//	friend class EditLevelProperties;
 
 	// prevent copy constructor / assignment operator
 	Level(const Level&);

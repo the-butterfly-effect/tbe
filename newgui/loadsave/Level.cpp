@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "AbstractObjectSerializer.h"
+#include "BackgroundSerializer.h"
+#include "GameResources.h"
 #include "Level.h"
 #include "World.h"
-#include "BackgroundSerializer.h"
-#include "AbstractObjectSerializer.h"
 //#include "GoalSerializer.h"
 //#include "Goal.h"
 
@@ -30,7 +31,7 @@
 // Strings identifying elements/nodes in the XML file
 // (the ones without static are also used in AbstractObjectSerializer.cpp)
 //
-static const char* theRootNodeString= "tbe-level";
+//static const char* theRootNodeString= "tbe-level";
 static const char* theLevelInfoString = "levelinfo";
 	static const char* theLevelAuthorString       = "author";
 	static const char* theLevelDateString         = "date";
@@ -45,8 +46,12 @@ static const char* theSceneString = "scene";
 		   const char* thePropertyString   = "property";
 	const char* theBackgroundString = "background";
 static const char* theToolboxString = "toolbox";
-static const char* theGoalsString = "goals";
-		   const char* theGoalString = "goal";
+	static const char* theToolboxItemString = "toolboxitem";
+	static const char* theNameString = "name";
+	static const char* theCountString = "count";
+
+//static const char* theGoalsString = "goals";
+//		   const char* theGoalString = "goal";
 
 
 const char* theWidthAttributeString     = "width";
@@ -105,14 +110,14 @@ Level::getPathToLevelFile(void)
 		return QFileInfo(theFileName).absolutePath();
 }
 
-QString
-Level::getLevelFileName(void)
-{
-	return theFileName;
-}
+//QString
+//Level::getLevelFileName(void)
+//{
+//	return theFileName;
+//}
 
 QString
-Level::load(const QString& aFileName)
+Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 {
 	theFileName = aFileName;
 	DEBUG2("Level::load(\"%s\")\n", ASCII(aFileName));
@@ -129,7 +134,7 @@ Level::load(const QString& aFileName)
 	QDomElement myDocElem;
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
-	bool hasProblem = false;
+//	bool hasProblem = false;
 	QString myResult;
 
     qreal myWidth;
@@ -170,10 +175,59 @@ Level::load(const QString& aFileName)
 	theWorldPtr->theLevelName = theLevelName.result();
 
 	//
-	// save the Toolbox node for later
-	// (it is handled within ToolBox::fillFromDomNode())
+	// parse the Toolbox section
 	//
-	theToolboxDomNode = myDocElem.firstChildElement(theToolboxString).cloneNode(true);
+	aLevelInfoToolbox->setLevelPtr(this);
+	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theToolboxString);
+	myNode=myDocElem.firstChildElement(theToolboxString);
+	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
+	{
+		// a toolbox object entry has the following layout:
+		// <toolboxitem count="1" name="Ramp \" icon="RightRamp">
+		//      <name lang="nl">Helling \</name>
+		//      <object width="2" height="1" type="RightRamp" />
+		// </toolboxitem>
+
+		// note that name is optional, if no name specified, we will take the
+		// name from the object - which *might* be localized (maybe not)...
+
+		// simple sanity checks
+		if (q.nodeName() != theToolboxItemString)
+		{
+			myErrorMessage += QString("parse error: expected <%1> but got <%2>\n")
+				   .arg(theToolboxItemString).arg(q.nodeName());
+			goto not_good;
+		}
+
+		QDomNode myObjectTag = q.firstChildElement(theObjectString);
+		if (myObjectTag.isNull())
+		{
+			myErrorMessage += QString("parse error: no <%1> found\n")
+				   .arg(theObjectString);
+			goto not_good;
+		}
+
+		QDomNamedNodeMap myNodeMap = q.attributes();
+		LocalString myToolBoxGroupName;
+		myToolBoxGroupName.fillFromDOM(q, theNameString,
+							   myNodeMap.namedItem(theNameString).nodeValue());
+		bool isOK = false;
+		int myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
+		if (myCount == 0 || isOK == false)
+			myCount = 1;
+
+		for (int i=0; i< myCount; i++)
+		{
+			AbstractObject* myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
+																					true, false);
+			if (myAOPtr == NULL)
+			{
+				myErrorMessage += tr("createObjectFromDom failed");
+				goto not_good;
+			}
+			aLevelInfoToolbox->addAbstractObjectToToolbox( myToolBoxGroupName, myAOPtr);
+		}
+	}
 
 	//
 	// parse the Scene section
@@ -233,7 +287,8 @@ Level::load(const QString& aFileName)
 			goto not_good;
 		}
 		theWorldPtr->addObject(myBOPtr);
-		myBOPtr->parseProperties();
+		// TODO/FIXME: please let us not need this one here!
+//		myBOPtr->parseProperties();
 
 		if (q==myNode.lastChild())
 			break;
@@ -306,30 +361,30 @@ not_good:
 }
 
 
-void
-Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
-{
-	QDomElement myReturn = aParent.ownerDocument().createElement(anElementName);
-	QDomText myT = aParent.ownerDocument().createTextNode(aText);
-	myReturn.appendChild(myT);
-	aParent.appendChild(myReturn);
-}
+//void
+//Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
+//{
+//	QDomElement myReturn = aParent.ownerDocument().createElement(anElementName);
+//	QDomText myT = aParent.ownerDocument().createTextNode(aText);
+//	myReturn.appendChild(myT);
+//	aParent.appendChild(myReturn);
+//}
 
-void
-Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
-{
-	LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
-	while (myL != anLS.theStringList.end())
-	{
-		QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
-		QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
-		myElement.appendChild(myT);
-		if (myL.key().isEmpty() == false)
-			myElement.setAttribute("lang", myL.key());
-		aParent.appendChild(myElement);
-		++myL;
-	}
-}
+//void
+//Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
+//{
+//	LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
+//	while (myL != anLS.theStringList.end())
+//	{
+//		QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
+//		QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
+//		myElement.appendChild(myT);
+//		if (myL.key().isEmpty() == false)
+//			myElement.setAttribute("lang", myL.key());
+//		aParent.appendChild(myElement);
+//		++myL;
+//	}
+//}
 
 
 //bool Level::save(const QString& aFileName)

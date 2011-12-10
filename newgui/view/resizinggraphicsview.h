@@ -22,8 +22,10 @@
 #include <QGraphicsView>
 #include <QResizeEvent>
 
-class SimulationControls;
+class GameResources;
 class QMenu;
+class QMenuBar;
+class SimulationControls;
 
 
 class ResizingGraphicsView : public QGraphicsView
@@ -33,20 +35,31 @@ public:
     explicit ResizingGraphicsView(QWidget *parent = 0);
     ~ResizingGraphicsView();
 
-    void setup(QMenu*);
+    /// this member does initialisation beyond creation
+    /// @param
+    /// @param
+    void setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
 
     void hideSimControls(void);
     void showSimControls(void);
+
+    void clearGameResourcesDialog();
+    void createGameResourcesDialog();
+    GameResources* getGameResourcesDialogPtr() const;
 
 protected:
     virtual void resizeEvent(QResizeEvent *event);
 
 signals:
+//    void hideGameResourcesDialog();
+//    void showGameResourcesDialog();
 
 public slots:
 
 private:
-    SimulationControls *theSimControlsPtr;
+    GameResources*      theGameResourcesPtr;
+    QMenuBar*           theMenuBarPtr;
+    SimulationControls* theSimControlsPtr;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

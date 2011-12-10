@@ -12,7 +12,11 @@
     <toolbox>
         <toolboxitem count="1" name="Ramp \">
             <name lang="nl">Rechtse helling</name>
-            <object width="2.0" height="0.5" type="RightRamp" angle="0"/>
+            <object width="2.0" height="0.5" type="BowlingBall" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="3" name="Soccer Balls">
+            <name lang="nl">Voetballen</name>
+            <object width="2.0" height="0.5" type="BowlingBall" angle="0"/>
         </toolboxitem>
     </toolbox>
     <scene>

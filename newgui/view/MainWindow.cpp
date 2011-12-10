@@ -25,6 +25,7 @@
 
 
 #include "AbstractObject.h"
+#include "GameResources.h"
 #include "Level.h"
 #include "Popup.h"
 #include "PieMenu.h"
@@ -78,7 +79,8 @@ void MainWindow::loadLevel(const QString& aFileName)
 
 	// create level and display in main window
 	theLevelPtr = new Level();
-	QString myErrorMessage = theLevelPtr->load(aFileName);
+	QString myErrorMessage = theLevelPtr->load(aFileName,
+								   ui->graphicsView->getGameResourcesDialogPtr());
 	if (!myErrorMessage.isEmpty())
 	{
 		QChar myFirst = myErrorMessage[0];
@@ -192,26 +194,8 @@ void MainWindow::setupView()
 	myRedoActionPtr->setShortcuts(redoShortcuts);
 	ui->menuEdit->addAction(myRedoActionPtr);
 
-	ui->graphicsView->setup(ui->menuControls);
+	ui->graphicsView->setup(ui->menuBar, ui->menuControls);
+	ui->graphicsView->createGameResourcesDialog();
 
 	loadLevel("newguitest.xml");
-
-//	AbstractObject* theAOPtr = new AbstractObject();
-//	theAOPtr->theProps.setProperty(Property::ROTATABLE_STRING, "true");
-//	theAOPtr->setTheHeight(80);
-//	theAOPtr->setTheWidth(80);
-//	theAOPtr->setOrigCenter(Position(60,60, 0));
-//	theAOPtr->resizableInfo = AbstractObject::HORIZONTALRESIZE;
-//	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
-//	theScenePtr->addItem(theVOPtr);
-
-//	AbstractObject* theAOPtr2 = new AbstractObject();
-//	theAOPtr2->theProps.setProperty(Property::ROTATABLE_STRING, "true");
-//	theAOPtr2->setTheHeight(80);
-//	theAOPtr2->setTheWidth(180);
-//	theAOPtr2->setOrigCenter(Position(230,100, 0.1));
-//	theAOPtr2->resizableInfo = AbstractObject::TOTALRESIZE;
-//	ViewObject* theVOPtr2 = new ViewObject(theAOPtr2, "../images/QuarterArc.png");
-//	theScenePtr->addItem(theVOPtr2);
-
 }
