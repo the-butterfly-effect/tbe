@@ -1,4 +1,5 @@
 #include "GameResources.h"
+#include "Level.h"
 #include "ui_GameResources.h"
 
 #include "tbe_global.h"
@@ -73,6 +74,11 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 {
     DEBUG4ENTRY;
     theLevelPtr = aLevelPtr;
+
+    ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());
+    //: translators: please do not try to translate the <b>%1</b> part!
+    ui->theLevelAuthor->setText(tr("By: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
+    ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
 }
 
 

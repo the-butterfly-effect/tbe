@@ -30,7 +30,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="theLevelTitle">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -66,7 +66,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="theLevelTitle">
+        <widget class="QLabel" name="theLevelAuthor">
          <property name="text">
           <string>By: The Author</string>
          </property>

@@ -114,7 +114,7 @@ private:
 	QString theLevelDate;
 
 //	friend class SaveLevelInfo;
-//	friend class LevelInfoDialog;
+	friend class GameResources;
 //	friend class EditLevelProperties;
 
 	// prevent copy constructor / assignment operator
