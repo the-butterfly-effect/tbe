@@ -63,6 +63,9 @@ public:
 	bool isEmpty(void)
 	{ return theStringList.isEmpty(); }
 
+	/// returns a string will all entries
+	QString all() const;
+
 	/**
 	  *  we follow these rules:
 	  *    1) if nothing set and we find a <title> without a language - let's use it
@@ -75,6 +78,13 @@ public:
 
 	QString english() const;
 
+	bool operator== (const LocalString& anOtherOne) const
+	{ return this->english() == anOtherOne.english();	}
+
+	bool operator< (const LocalString& anOtherOne) const
+	{ return this->english() < anOtherOne.english();	}
+
+
 private:
 	QString the5Char;
 
@@ -85,7 +95,7 @@ private:
 	friend class TestLocalString;
 
 	// TODO/FIXME: This one shouldn't be necessary :-(
-	friend class Level;
+//	friend class Level;
 };
 
 #endif // LOCALSTRING_H

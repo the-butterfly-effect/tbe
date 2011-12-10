@@ -34,6 +34,20 @@ void LocalString::add(const QString& aValue, const QString& aLangCode)
 		theStringList.insert(aLangCode, aValue);
 }
 
+QString LocalString::all() const
+{
+    QString myResult = "{";
+    LocalStringList::const_iterator i = theStringList.begin();
+    while (i != theStringList.end())
+    {
+        myResult += QString("%1='%2'; ").arg(i.key()).arg(i.value());
+        i++;
+    }
+    myResult += "}; ";
+    return myResult;
+}
+
+
 void LocalString::clear()
 {
 	theStringList.clear();
