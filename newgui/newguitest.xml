@@ -16,7 +16,7 @@
         </toolboxitem>
         <toolboxitem count="3" name="Soccer Balls">
             <name lang="nl">Voetballen</name>
-            <object width="2.0" height="0.5" type="BowlingBall" angle="0"/>
+            <object width="0.5" height="0.5" type="SoccerBall" angle="0"/>
         </toolboxitem>
     </toolbox>
     <scene>

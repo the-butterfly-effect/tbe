@@ -40,6 +40,11 @@ public:
     void addAbstractObjectToToolbox(const LocalString& anObjectGroupName,
                                     AbstractObject* anAOPtr);
 
+    /// Called by the ResizingGraphicsView so we can accomodate for
+    /// the change in scale of the toolboxview.
+    /// @param aTransformMatrix the transform matrix used by the parent.
+    void parentResize(const QTransform& aTransformMatrix);
+
     // TODO/FIXME: I don't like this
     void setLevelPtr(Level* aLevelPtr);
     // TODO/FIXME: I'd much rather implement these:
@@ -48,9 +53,12 @@ public:
 
     void setup(QMenuBar* aMenuBarPtr);
 
+
+    void updateToolbox(void);
+
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog
-    void changeEvent(QEvent *e);
+    virtual void changeEvent(QEvent *e);
 
 private:
     Ui::GameResources *ui;
@@ -58,7 +66,7 @@ private:
     typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
-//    QGraphicsScene* theScenePtr;
+    QGraphicsScene* theToolboxPtr;
 
     /// pointer to Level instance, which contains level names and such
     Level* theLevelPtr;

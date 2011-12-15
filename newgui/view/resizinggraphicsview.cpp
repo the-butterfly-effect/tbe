@@ -71,7 +71,7 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
-	// TODO/FIXME: adjust position of GameResources dialog
+	theGameResourcesPtr->parentResize(transform());
 }
 
 
@@ -79,6 +79,12 @@ void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr
 {
 	theSimControlsPtr->setup(anMenuControlsPtr);
 	theMenuBarPtr = aMenuBarPtr;
+}
+
+
+void ResizingGraphicsView::showGameResourcesDialog()
+{
+	theGameResourcesPtr->updateToolbox();
 }
 
 

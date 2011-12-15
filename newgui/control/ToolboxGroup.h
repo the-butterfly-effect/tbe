@@ -33,6 +33,12 @@ public:
 
     void addObject(AbstractObject* anObjectPtr);
 
+    /// @returns a pointer to the first object in this group
+    ///          without removing it .
+    /// (compare to getObject(), that returns+removes)
+    AbstractObject* first() const
+    { return theObjectsList.first(); }
+
     // TODO: for later
 //    AbstractObject* getObject();
 //    void returnObject(AbstractObject*);

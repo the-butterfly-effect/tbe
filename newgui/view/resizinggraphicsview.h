@@ -47,12 +47,13 @@ public:
     void createGameResourcesDialog();
     GameResources* getGameResourcesDialogPtr() const;
 
+    void showGameResourcesDialog();
+
 protected:
     virtual void resizeEvent(QResizeEvent *event);
 
 signals:
 //    void hideGameResourcesDialog();
-//    void showGameResourcesDialog();
 
 public slots:
 

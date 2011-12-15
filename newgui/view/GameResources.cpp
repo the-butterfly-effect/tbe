@@ -11,7 +11,8 @@
 #include <QPropertyAnimation>
 #include <QSignalTransition>
 #include <QStateMachine>
-
+#include "ViewObject.h"
+#include "ViewWorld.h"
 
 const static int theDialogWidth  = 400;
 const static int theDialogHeight = 250;
@@ -70,6 +71,12 @@ void GameResources::changeEvent(QEvent *e)
 }
 
 
+void GameResources::parentResize(const QTransform& aTransformMatrix)
+{
+    ui->theToolView->setTransform(aTransformMatrix, false);
+}
+
+
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
     DEBUG4ENTRY;
@@ -77,7 +84,7 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 
     ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());
     //: translators: please do not try to translate the <b>%1</b> part!
-    ui->theLevelAuthor->setText(tr("By: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
+    ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
 }
 
@@ -85,25 +92,6 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 void GameResources::setup(QMenuBar* aMenuBarPtr)
 {
 	setAutoFillBackground (true);
-
-	// take all palette options from menu bar, so we match
-	// except for the background of the window :-)
-	QPalette myPal = aMenuBarPtr->palette();
-	myPal.setColor(QPalette::Window, Qt::darkRed);
-	setPalette(myPal);
-
-	{
-//	theScenePtr = new QGraphicsScene(0, -100, 100, 100);
-//	theScenePtr->setBackgroundBrush(Qt::white);
-//	theScenePtr->addRect(0,0,100,-100);
-
-//	AbstractObject* theAOPtr = new AbstractObject();
-//	theAOPtr->setTheHeight(45);
-//	theAOPtr->setTheWidth(45);
-//	theAOPtr->setOrigCenter(Position(30,30, 0));
-//	ViewObject* theVOPtr = new ViewObject(theAOPtr, "../images/QuarterArc.png");
-//	theScenePtr->addItem(theVOPtr);
-	}
 
 
 	// and the animation mumbo-jumbo
@@ -141,4 +129,25 @@ void GameResources::setup(QMenuBar* aMenuBarPtr)
 
 	// finally, let's get this baby rolling!!!
 	theStateMachine.start();
+}
+
+
+void GameResources::updateToolbox(void)
+{
+	DEBUG1ENTRY;
+
+	theToolboxPtr = new QGraphicsScene(NULL);
+	theToolboxPtr->setBackgroundBrush(Qt::blue);
+
+
+	ToolboxGroupList::iterator i = theToolboxList.begin();
+	while (i!=theToolboxList.end())
+	{
+		ViewObject* myVOPtr = i.value()->first()->createViewObject();
+		qDebug() << myVOPtr;
+		theToolboxPtr->addItem(myVOPtr);
+		i++;
+	}
+
+	ui->theToolView->setScene(theToolboxPtr);
 }

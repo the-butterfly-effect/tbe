@@ -198,4 +198,7 @@ void MainWindow::setupView()
 	ui->graphicsView->createGameResourcesDialog();
 
 	loadLevel("newguitest.xml");
+
+	ui->graphicsView->showGameResourcesDialog();
+
 }
