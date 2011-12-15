@@ -298,6 +298,7 @@ public:
       * @note: a ZValue set in a property always overrides aDefaultDepth
       */
     virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
+    void deleteViewObject();
 
 	/// null the current Physicsobject (note that they are no longer
 	/// deleted in normal game operation - if you need that behaviour

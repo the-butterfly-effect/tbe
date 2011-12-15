@@ -8,7 +8,8 @@ SOURCES += \
 	view/SimulationControls.cpp \
 	view/ViewObject.cpp \
 #	view/ViewCircleObject.cpp \
-	view/ViewWorld.cpp
+    view/ViewWorld.cpp \
+    view/ViewToolboxGroup.cpp
 
 HEADERS  += \
 	view/Background.h \
@@ -21,7 +22,8 @@ HEADERS  += \
 	view/SimulationControls.h \
 #	view/ViewCircleObject.h \
 	view/ViewObject.h \
-	view/ViewWorld.h
+	view/ViewWorld.h \
+	view/ViewToolboxGroup.h
 
 FORMS    += \
 	view/MainWindow.ui \

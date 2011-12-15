@@ -18,6 +18,10 @@
             <name lang="nl">Voetballen</name>
             <object width="0.5" height="0.5" type="SoccerBall" angle="0"/>
         </toolboxitem>
+        <toolboxitem count="2" name="Green Tennis Balls">
+            <name lang="nl">Groene tennisballen</name>
+            <object type="TennisBall" />
+        </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="4" height="3"/>

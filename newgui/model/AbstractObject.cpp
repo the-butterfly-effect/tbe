@@ -52,10 +52,7 @@ AbstractObject::~AbstractObject ( )
 	delete theB2BodyDefPtr;
 	theB2BodyDefPtr=NULL;
 
-	// delete the corresponding DrawObject
-	//
-	delete theViewObjectPtr;
-	theViewObjectPtr = NULL;
+	deleteViewObject();
 }
 
 
@@ -143,6 +140,15 @@ void AbstractObject::deletePhysicsObject()
 	// let's also make sure we're getting rid of the joints
 	notifyJoints(JointInterface::DELETED);
 }
+
+void AbstractObject::deleteViewObject(void)
+{
+	// delete the corresponding DrawObject
+	// note that delete NULL is allowed
+	delete theViewObjectPtr;
+	theViewObjectPtr = NULL;
+}
+
 
 b2World* AbstractObject::getB2WorldPtr(void) const
 {

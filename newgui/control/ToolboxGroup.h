@@ -33,6 +33,9 @@ public:
 
     void addObject(AbstractObject* anObjectPtr);
 
+    int count(void)
+    { return theObjectsList.count(); }
+
     /// @returns a pointer to the first object in this group
     ///          without removing it .
     /// (compare to getObject(), that returns+removes)
@@ -46,11 +49,13 @@ public:
     // TODO: for later
 //    ViewToolGroup* createViewToolGroup(void);
 
+    LocalString theGroupName;
+
+
 private:
     typedef QList<AbstractObject*> ObjectsList;
     ObjectsList theObjectsList;
 
-    LocalString theGroupName;
 };
 
 #endif // TOOLBOXGROUP_H

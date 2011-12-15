@@ -12,6 +12,7 @@
 #include <QSignalTransition>
 #include <QStateMachine>
 #include "ViewObject.h"
+#include "ViewToolboxGroup.h"
 #include "ViewWorld.h"
 
 const static int theDialogWidth  = 400;
@@ -140,14 +141,16 @@ void GameResources::updateToolbox(void)
 	theToolboxPtr->setBackgroundBrush(Qt::blue);
 
 
+	ui->theToolView->setScene(theToolboxPtr);
 	ToolboxGroupList::iterator i = theToolboxList.begin();
+	int dy = 0;
 	while (i!=theToolboxList.end())
 	{
-		ViewObject* myVOPtr = i.value()->first()->createViewObject();
-		qDebug() << myVOPtr;
-		theToolboxPtr->addItem(myVOPtr);
+		ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value());
+		myVTGPtr->moveBy(0,dy);
+		theToolboxPtr->addItem(myVTGPtr);
+		dy += myVTGPtr->boundingRect().height();
 		i++;
 	}
 
-	ui->theToolView->setScene(theToolboxPtr);
 }
