@@ -22,31 +22,47 @@
 #include "ViewObject.h"
 
 #include <QBrush>
+#include <QGraphicsColorizeEffect>
 
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
 	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)
 {
 	AbstractObject* myAOPtr = theTBGPtr->first();
-	int theBigWidth = (static_cast<int>(THESCALE*myAOPtr->getTheWidth()) & ~31) | 27;
-	int theBigHeight = (static_cast<int>(THESCALE*myAOPtr->getTheHeight()) & ~31) | 27;
-
-//	if (theBigWidth < THESCALE*myAOPtr->getTheWidth())
-		theBigWidth += 32;
-//	if (theBigHeight < THESCALE*myAOPtr->getTheHeight())
-		theBigHeight += 32;
+	int myObjW  = THESCALE*myAOPtr->getTheWidth();
+	theBigWidth = (static_cast<int>(myObjW) & ~31) +16+32;
+	int myObjH  = THESCALE*myAOPtr->getTheHeight();
+	theBigHeight = (static_cast<int>(myObjH) & ~31) +16+32;
 
 	setBrush(QBrush(Qt::gray));
-	setRect(0,0, theBigWidth, theBigHeight);
+	setRect(0,0, theBigWidth-5, theBigHeight-5);
 	ViewObject* myVOPtr = myAOPtr->createViewObject();
-	myVOPtr->setParentItem(this);
-	myVOPtr->moveBy(theBigWidth/2, theBigHeight/2);
+	QGraphicsPixmapItem* thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
+	thePixmapPtr->setTransform(myVOPtr->transform());
+	thePixmapPtr->moveBy((theBigWidth-myObjW)/2, (theBigHeight-myObjH)/2);
+	thePixmapPtr->setParentItem(this);
 
 	theCount.setHtml(QObject::tr("<b>%1x</b>").arg(theTBGPtr->count()));
 	theCount.setParentItem(this);
 	theCount.setZValue(5);
-	theName.setPlainText(theTBGPtr->theGroupName.result());
+	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
 	theName.setParentItem(this);
 	theName.setZValue(5);
 	theName.moveBy(theBigWidth-theName.boundingRect().width(),
 				   theBigHeight-theName.boundingRect().height());
+
+	setAcceptsHoverEvents(true);
+}
+
+
+void ViewToolboxGroup::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+{
+    // this looks great, but unfortunately it also affects all children
+    QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
+    setGraphicsEffect(myEffect);
+}
+
+
+void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+{
+    setGraphicsEffect(NULL);
 }

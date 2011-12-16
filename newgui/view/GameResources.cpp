@@ -149,7 +149,7 @@ void GameResources::updateToolbox(void)
 		ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value());
 		myVTGPtr->moveBy(0,dy);
 		theToolboxPtr->addItem(myVTGPtr);
-		dy += myVTGPtr->boundingRect().height();
+		dy += myVTGPtr->getBigHeight();
 		i++;
 	}
 

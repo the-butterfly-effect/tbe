@@ -29,13 +29,25 @@ class ViewToolboxGroup : public QGraphicsRectItem
 public:
     ViewToolboxGroup(ToolboxGroup* aTBGPtr, QGraphicsItem *parent = 0);
 
+    int getBigHeight(void)
+    { return theBigHeight; }
+
 protected:
 //    void updateCount(void);
 
+    /// overridden to allow object highlighting
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
+    /// overridden to allow highlighting
+    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
+
 private:
     ToolboxGroup* theTBGPtr;
+
+    int theBigHeight;
+    int theBigWidth;
     QGraphicsTextItem theCount;
     QGraphicsTextItem theName;
+    QGraphicsPixmapItem* thePixmapPtr;
 };
 
 #endif // VIEWTOOLBOXGROUP_H
