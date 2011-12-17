@@ -25,6 +25,7 @@
 class GameResources;
 class QMenu;
 class QMenuBar;
+class QPropertyAnimation;
 class SimulationControls;
 
 
@@ -65,6 +66,7 @@ private:
     GameResources*      theGameResourcesPtr;
     SimulationControls* theSimControlsPtr;
 
+	QPropertyAnimation* theGRAnimationPtr;
 	QAction*            theGRDownActionPtr;
 	QAction*            theGRUpActionPtr;
 };

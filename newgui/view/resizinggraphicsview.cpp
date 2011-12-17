@@ -23,7 +23,9 @@
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
 	QGraphicsView(parent),
-	theGameResourcesPtr(NULL)
+	theGameResourcesPtr(NULL),
+	theGRAnimationPtr(NULL)
+
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -35,6 +37,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
 ResizingGraphicsView::~ResizingGraphicsView()
 {
 	delete theSimControlsPtr;
+	delete theGRAnimationPtr;
 }
 
 
@@ -44,11 +47,13 @@ void ResizingGraphicsView::clearGameResourcesDialog()
 	theGameResourcesPtr = NULL;
 }
 
+
 void ResizingGraphicsView::createGameResourcesDialog()
 {
 	Q_ASSERT(theGameResourcesPtr == NULL);
 	theGameResourcesPtr = new GameResources(this);
 }
+
 
 GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 {
@@ -68,7 +73,10 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
-	theGameResourcesPtr->parentResize(transform());
+
+	// only resize GameResources if down
+	if (theGRUpActionPtr->isEnabled())
+		theGameResourcesPtr->parentResize(transform());
 }
 
 
@@ -99,36 +107,39 @@ void ResizingGraphicsView::enableGameResourcesDialog(void)
 
 void ResizingGraphicsView::showGRDialog()
 {
-	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
-	myAnimationPtr->setStartValue(QRectF(
+	delete theGRAnimationPtr;
+	theGameResourcesPtr->parentResize(transform());
+	theGRAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
+	theGRAnimationPtr->setStartValue(QRectF(
 									  QPointF((width()-theGameResourcesPtr->width())/2,
 											  -theGameResourcesPtr->height()),
 									  theGameResourcesPtr->size()));
-	myAnimationPtr->setEndValue(QRectF(
+	theGRAnimationPtr->setEndValue(QRectF(
 									QPointF((width()-theGameResourcesPtr->width())/2,
 											(height()-theGameResourcesPtr->height())/2),
 									theGameResourcesPtr->size()));
-	myAnimationPtr->setDuration(1000);
-	myAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
-	myAnimationPtr->start();
+	theGRAnimationPtr->setDuration(1000);
+	theGRAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
+	theGRAnimationPtr->start();
 	theGRDownActionPtr->setEnabled(false);
 	theGRUpActionPtr->setEnabled(true);
 }
 
 void ResizingGraphicsView::hideGRDialog()
 {
-	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
-	myAnimationPtr->setEndValue(QRectF(
+	delete theGRAnimationPtr;
+	theGRAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
+	theGRAnimationPtr->setEndValue(QRectF(
 									  QPointF((width()-theGameResourcesPtr->width())/2,
 											  -theGameResourcesPtr->height()),
 									  theGameResourcesPtr->size()));
-	myAnimationPtr->setStartValue(QRectF(
+	theGRAnimationPtr->setStartValue(QRectF(
 									QPointF((width()-theGameResourcesPtr->width())/2,
 											(height()-theGameResourcesPtr->height())/2),
 									theGameResourcesPtr->size()));
-	myAnimationPtr->setDuration(1000);
-	myAnimationPtr->setEasingCurve(QEasingCurve::OutQuad);
-	myAnimationPtr->start();
+	theGRAnimationPtr->setDuration(1000);
+	theGRAnimationPtr->setEasingCurve(QEasingCurve::OutQuad);
+	theGRAnimationPtr->start();
 	theGRDownActionPtr->setEnabled(true);
 	theGRUpActionPtr->setEnabled(false);
 }
