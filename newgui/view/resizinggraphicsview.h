@@ -47,10 +47,14 @@ public:
     void createGameResourcesDialog();
     GameResources* getGameResourcesDialogPtr() const;
 
-    void showGameResourcesDialog();
+    void enableGameResourcesDialog();
 
 protected:
     virtual void resizeEvent(QResizeEvent *event);
+
+private slots:
+    virtual void showGRDialog();
+    virtual void hideGRDialog();
 
 signals:
 //    void hideGameResourcesDialog();
@@ -59,8 +63,10 @@ public slots:
 
 private:
     GameResources*      theGameResourcesPtr;
-    QMenuBar*           theMenuBarPtr;
     SimulationControls* theSimControlsPtr;
+
+	QAction*            theGRDownActionPtr;
+	QAction*            theGRUpActionPtr;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

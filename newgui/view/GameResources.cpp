@@ -15,10 +15,6 @@
 #include "ViewToolboxGroup.h"
 #include "ViewWorld.h"
 
-const static int theDialogWidth  = 400;
-const static int theDialogHeight = 250;
-
-
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     QWidget(aRSGVPtr),
     ui(new Ui::GameResources),
@@ -28,6 +24,7 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
+    setAutoFillBackground (true);
 }
 
 
@@ -74,7 +71,14 @@ void GameResources::changeEvent(QEvent *e)
 
 void GameResources::parentResize(const QTransform& aTransformMatrix)
 {
+    // Set the transform of the toolview to be the same as the
+    // parent (i.e. resizinggraphicsview).
+    // This enforces that objects will have the same size as in the scene.
     ui->theToolView->setTransform(aTransformMatrix, false);
+
+    // And move the dialog to the center of the parent
+    QSize myParentSize = theParentPtr->size();
+    this->move( (myParentSize.width()-width())/2, (myParentSize.height()-height())/2);
 }
 
 
@@ -87,49 +91,6 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
-}
-
-
-void GameResources::setup(QMenuBar* aMenuBarPtr)
-{
-	setAutoFillBackground (true);
-
-
-	// and the animation mumbo-jumbo
-	//
-	int myBigWidth = 600; //theParentPtr->width();
-	int myBigHeight= theParentPtr->height();
-	QState* myUpStatePtr = new QState(&theStateMachine);
-	myUpStatePtr->assignProperty(this, "geometry", QRectF(
-									 QPointF((myBigWidth-theDialogWidth)/2, -248.0),
-									 QSizeF(theDialogWidth,theDialogHeight)));
-	QState* myDownStatePtr = new QState(&theStateMachine);
-	myDownStatePtr->assignProperty(this, "geometry", QRectF(
-									QPointF((myBigWidth-theDialogWidth)/2,100.0),
-									QSizeF(theDialogWidth,theDialogHeight)));
-	theStateMachine.setInitialState(myUpStatePtr);
-
-	// setup a custom animation
-	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(this, "geometry");
-	myAnimationPtr->setDuration(1000);
-	myAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
-
-	// setup a custom animation
-	QPropertyAnimation* myUpAnimationPtr = new QPropertyAnimation(this, "geometry");
-	myUpAnimationPtr->setDuration(1000);
-	myUpAnimationPtr->setEasingCurve(QEasingCurve::OutQuad);
-
-	// and trigger the state changes with the above animation
-	QAction* myDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
-	QAbstractTransition* myDownTransitionPtr = myUpStatePtr->addTransition(myDownActionPtr, SIGNAL(triggered()), myDownStatePtr);
-	myDownTransitionPtr->addAnimation(myAnimationPtr);
-
-	QAction* myUpActionPtr = aMenuBarPtr->addAction(tr("&Up"));
-	QAbstractTransition *myUpTransitionPtr = myDownStatePtr->addTransition(myUpActionPtr, SIGNAL(triggered()), myUpStatePtr);
-	myUpTransitionPtr->addAnimation(myUpAnimationPtr);
-
-	// finally, let's get this baby rolling!!!
-	theStateMachine.start();
 }
 
 
@@ -153,4 +114,9 @@ void GameResources::updateToolbox(void)
 		i++;
 	}
 
+}
+
+void GameResources::on_theOKButton_clicked()
+{
+	emit hideMe();
 }

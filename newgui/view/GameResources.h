@@ -51,14 +51,19 @@ public:
 //    void setLevelName(const LocalString& aName);
 //    void setLevelDescription(const LocalString& aDescription);
 
-    void setup(QMenuBar* aMenuBarPtr);
-
 
     void updateToolbox(void);
+
+
+signals:
+    void hideMe();
 
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog
     virtual void changeEvent(QEvent *e);
+
+private slots:
+    void on_theOKButton_clicked();
 
 private:
     Ui::GameResources *ui;
