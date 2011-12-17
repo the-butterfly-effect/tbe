@@ -29,6 +29,13 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent)
 {
 	AbstractObject* myAOPtr = theTBGPtr->first();
 	int myObjW  = THESCALE*myAOPtr->getTheWidth();
+	theEmpty.setPlainText(QObject::tr("(empty)"));
+	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
+	if (theEmpty.boundingRect().width() > myObjW)
+		myObjW = theEmpty.boundingRect().width();
+	if (theName.boundingRect().width() > myObjW)
+		myObjW = theName.boundingRect().width();
+
 	theBigWidth = (static_cast<int>(myObjW) & ~31) +16+32;
 	int myObjH  = THESCALE*myAOPtr->getTheHeight();
 	theBigHeight = (static_cast<int>(myObjH) & ~31) +16+32;
@@ -36,20 +43,28 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent)
 	setBrush(QBrush(Qt::gray));
 	setRect(0,0, theBigWidth-5, theBigHeight-5);
 	ViewObject* myVOPtr = myAOPtr->createViewObject();
-	QGraphicsPixmapItem* thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
+	thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
 	thePixmapPtr->setTransform(myVOPtr->transform());
-	thePixmapPtr->moveBy((theBigWidth-myObjW)/2, (theBigHeight-myObjH)/2);
+	myAOPtr->deleteViewObject();
+	thePixmapPtr->moveBy((theBigWidth-THESCALE*myAOPtr->getTheWidth())/2,
+						 (theBigHeight-myObjH)/2);
 	thePixmapPtr->setParentItem(this);
 
-	theCount.setHtml(QObject::tr("<b>%1x</b>").arg(theTBGPtr->count()));
+	// theCount.setText is in updateCount()
 	theCount.setParentItem(this);
 	theCount.setZValue(5);
-	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
+	// theEmpty.setText is above
+	theEmpty.setParentItem(this);
+	theEmpty.setZValue(5);
+	theEmpty.moveBy((theBigWidth-theEmpty.boundingRect().width())/2.0,
+				   (theBigHeight-theEmpty.boundingRect().height())/2.0);
+	// theName.setText is above
 	theName.setParentItem(this);
 	theName.setZValue(5);
 	theName.moveBy(theBigWidth-theName.boundingRect().width(),
 				   theBigHeight-theName.boundingRect().height());
 
+	updateCount();
 	setAcceptsHoverEvents(true);
 }
 
@@ -65,4 +80,21 @@ void ViewToolboxGroup::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
     setGraphicsEffect(NULL);
+}
+
+
+void ViewToolboxGroup::updateCount(void)
+{
+	theCount.setHtml(QString("<font size=\"+1\"><b>%1x</b></font>")
+					 .arg(theTBGPtr->count()));
+	if (theTBGPtr->count() > 0)
+	{
+		thePixmapPtr->setVisible(true);
+		theEmpty.setVisible(false);
+	}
+	else
+	{
+		thePixmapPtr->setVisible(false);
+		theEmpty.setVisible(true);
+	}
 }

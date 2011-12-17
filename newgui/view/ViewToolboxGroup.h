@@ -33,7 +33,7 @@ public:
     { return theBigHeight; }
 
 protected:
-//    void updateCount(void);
+    void updateCount(void);
 
     /// overridden to allow object highlighting
     virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
@@ -47,6 +47,7 @@ private:
     int theBigWidth;
     QGraphicsTextItem theCount;
     QGraphicsTextItem theName;
+    QGraphicsTextItem theEmpty;
     QGraphicsPixmapItem* thePixmapPtr;
 };
 
