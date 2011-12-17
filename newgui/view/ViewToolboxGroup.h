@@ -31,6 +31,8 @@ public:
 
     int getBigHeight(void)
     { return theBigHeight; }
+    int getBigWidth(void)
+    { return theBigWidth; }
 
 protected:
     void updateCount(void);
