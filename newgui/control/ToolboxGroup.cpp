@@ -44,3 +44,11 @@ void ToolboxGroup::addObject(AbstractObject* anObjectPtr)
 
     // TODO: update ViewToolGroup for value change
 }
+
+AbstractObject* ToolboxGroup::getObject(void)
+{
+    Q_ASSERT(theObjectsList.count() > 0);
+    AbstractObject* myAOPtr = theObjectsList.last();
+    theObjectsList.pop_back();
+    return myAOPtr;
+}

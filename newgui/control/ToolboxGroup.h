@@ -38,16 +38,16 @@ public:
 
     /// @returns a pointer to the first object in this group
     ///          without removing it .
-    /// (compare to getObject(), that returns+removes)
+    /// (compare to getObject(), that returns+removes the LAST one)
     AbstractObject* first() const
     { return theObjectsList.first(); }
 
-    // TODO: for later
-//    AbstractObject* getObject();
-//    void returnObject(AbstractObject*);
+    /// @returns a pointer to one of the objects that was in the group
+    ///          the object is removed from the group.
+    /// (compare to first(), which just returns a pointer to the FIRST one)
+    AbstractObject* getObject(void);
 
-    // TODO: for later
-//    ViewToolGroup* createViewToolGroup(void);
+//    void returnObject(AbstractObject*);
 
     LocalString theGroupName;
 
