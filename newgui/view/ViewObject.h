@@ -19,7 +19,7 @@
 #ifndef VIEWOBJECT_H
 #define VIEWOBJECT_H
 
-#include <QGraphicsPixmapItem>
+#include <QtGui/QGraphicsPixmapItem>
 #include "Position.h"
 
 // forward declarations

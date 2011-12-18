@@ -21,9 +21,8 @@
 #include "ui_SimulationControls.h"
 #include "ImageCache.h"
 
-#include <QMenuBar>
-#include <QPropertyAnimation>
-#include <QSignalTransition>
+#include <QtCore/QPropertyAnimation>
+#include <QtCore/QSignalTransition>
 
 #include <cstdio>
 

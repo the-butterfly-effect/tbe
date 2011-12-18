@@ -19,7 +19,7 @@
 #ifndef ABSTRACTOBJECT_H
 #define ABSTRACTOBJECT_H
 
-#include <QtGlobal>
+#include <QtCore/QtGlobal>
 #include "Position.h"
 #include "Property.h"
 

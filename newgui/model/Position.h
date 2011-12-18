@@ -20,7 +20,7 @@
 #define POSITION_H
 
 #include "tbe_global.h"
-#include <QPointF>
+#include <QtCore/QPointF>
 
 class b2Vec2;
 class Position;

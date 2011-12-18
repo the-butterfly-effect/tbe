@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * 
+ *
  * This file is "borrowed" from umtsmon
  * This file copyright (C) 2006  Klaas van Gend
  *                     (C) 2007  Christofer Wesseling, Klaas van Gend
@@ -22,15 +22,15 @@
 #ifndef POPUP_H_
 #define POPUP_H_
 
-#include <QString>
-#include <QMessageBox>
+#include <QtCore/QString>
+#include <QtGui/QMessageBox>
 
 #include "tbe_global.h"
 
 // for exit(3)
 #include <cstdlib>
 
-/** This is a class utility - it encapsulates three member functions to do 
+/** This is a class utility - it encapsulates three member functions to do
  *  quick popup dialogs
  */
 class Popup
@@ -44,37 +44,37 @@ public:
 	static inline void Critical(const QString& anErrorMessage, QWidget* currentWidget = NULL)
 	{
 		DEBUG1("*** CRITICAL ERROR: %s\n", ASCII(anErrorMessage));
-		QMessageBox::critical (currentWidget, 
+		QMessageBox::critical (currentWidget,
 				APPNAME " - critical error",
 				anErrorMessage,
-				QMessageBox::Abort |  QMessageBox::Default, 
-				Qt::NoButton, 
+				QMessageBox::Abort |  QMessageBox::Default,
+				Qt::NoButton,
 				Qt::NoButton);
-		// critical errors? we might want to explain the user on 
+		// critical errors? we might want to explain the user on
 		// how to help solve this!
 //		printAbortMessage(0);
 		// printAbortMessage doesn't exit - good!
 		// leaves us room to explain why we actually stop
 		DEBUG1("Critical Popup - application will halt\n");
-		exit(10);	
+		exit(10);
 	};
-	
+
 	/** pops up a message box with a informational message
 	 *  program execution will continue afterwards
 	 * @param aMessage: the Message
-	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow 
+	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow
 	 */
 	static inline void Info(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
 		DEBUG2("Info Message: %s\n", ASCII(aMessage));
-		QMessageBox::information (currentWidget, 
+		QMessageBox::information (currentWidget,
 				APPNAME " - informational message",
 				aMessage,
-				QMessageBox::Ok |  QMessageBox::Default, 
-				Qt::NoButton, 
+				QMessageBox::Ok |  QMessageBox::Default,
+				Qt::NoButton,
 				Qt::NoButton);
 	};
-	
+
 	/** pops up a message box with a warning message
 	 *  program execution will continue afterwards
 	 * @param aMessage: the Message
@@ -83,11 +83,11 @@ public:
 	static inline void Warning(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
 		DEBUG2("Warning Message: %s\n", ASCII(aMessage));
-		QMessageBox::warning (currentWidget, 
+		QMessageBox::warning (currentWidget,
 				APPNAME " - warning",
 				aMessage,
-				QMessageBox::Ok |  QMessageBox::Default, 
-				Qt::NoButton, 
+				QMessageBox::Ok |  QMessageBox::Default,
+				Qt::NoButton,
 				Qt::NoButton);
 	};
 
@@ -100,17 +100,17 @@ public:
 	static inline bool YesNoQuestion(const QString& aMessage, QWidget* currentWidget = NULL)
 	{
 		DEBUG2("Yes/No Question: %s\n", ASCII(aMessage));
-		if (QMessageBox::question(currentWidget, 
+		if (QMessageBox::question(currentWidget,
 				APPNAME " - question",
 				aMessage,
-				QMessageBox::Yes | QMessageBox::Default, 
-				QMessageBox::No, 
+				QMessageBox::Yes | QMessageBox::Default,
+				QMessageBox::No,
 				Qt::NoButton) == QMessageBox::Yes)
 			return true;
 		else
 			return false;
 	};
-}; 
+};
 
 
 #endif /*POPUP_H_*/

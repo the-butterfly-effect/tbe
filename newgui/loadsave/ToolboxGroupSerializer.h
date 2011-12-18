@@ -24,8 +24,7 @@
 // forward declarations:
 class QDomElement;
 class QDomNode;
-
-#include <QString>
+class QString;
 
 
 /** This Serializer cannot be created.

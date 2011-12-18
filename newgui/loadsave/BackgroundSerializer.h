@@ -25,8 +25,8 @@
 class QDomElement;
 class QDomNode;
 
-#include <QList>
-#include <QString>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 
 /** This Serializer cannot be created.

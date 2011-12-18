@@ -19,8 +19,8 @@
 #ifndef RESIZINGGRAPHICSVIEW_H
 #define RESIZINGGRAPHICSVIEW_H
 
-#include <QGraphicsView>
-#include <QResizeEvent>
+#include <QtGui/QGraphicsView>
+#include <QtGui/QResizeEvent>
 
 class GameResources;
 class QMenu;

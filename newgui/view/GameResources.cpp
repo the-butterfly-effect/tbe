@@ -22,13 +22,11 @@
 
 #include "tbe_global.h"
 
-#include <QAbstractAnimation>
-#include <QAbstractTransition>
-#include <QGraphicsView>
-#include <QMenuBar>
-#include <QPropertyAnimation>
-#include <QSignalTransition>
-#include <QStateMachine>
+#include <QtCore/QAbstractAnimation>
+#include <QtCore/QAbstractTransition>
+#include <QtGui/QGraphicsView>
+#include <QtGui/QMenuBar>
+#include <QtCore/QPropertyAnimation>
 #include "ViewObject.h"
 #include "ViewToolboxGroup.h"
 #include "ViewWorld.h"

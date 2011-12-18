@@ -19,10 +19,10 @@
 #ifndef IMAGECACHE_H
 #define IMAGECACHE_H
 
-#include <QIcon>
-#include <QPixmap>
-#include <QSize>
-#include <QString>
+#include <QtGui/QIcon>
+#include <QtGui/QPixmap>
+#include <QtCore/QSize>
+#include <QtCore/QString>
 
 /** This is a class with only static members - no need to instantiate.
   *

@@ -17,8 +17,8 @@
  */
 
 #include "BackgroundSerializer.h"
-#include <QDomElement>
-#include <QStringList>
+#include <QtXml/QDomElement>
+#include <QtCore/QStringList>
 
 #include "tbe_global.h"
 #include <cstdio>

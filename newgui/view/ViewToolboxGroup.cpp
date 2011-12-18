@@ -23,9 +23,9 @@
 #include "ViewToolboxGroup.h"
 #include "ViewObject.h"
 
-#include <QBrush>
-#include <QGraphicsColorizeEffect>
-#include <QGraphicsSceneMouseEvent>
+#include <QtGui/QBrush>
+#include <QtGui/QGraphicsColorizeEffect>
+#include <QtGui/QGraphicsSceneMouseEvent>
 
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
 	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)

@@ -19,8 +19,7 @@
 #ifndef GAMERESOURCES_H
 #define GAMERESOURCES_H
 
-#include <QStateMachine>
-#include <QWidget>
+#include <QtGui/QWidget>
 
 namespace Ui {
     class GameResources;
@@ -82,10 +81,6 @@ private:
 
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
     ResizingGraphicsView* theParentPtr;
-
-	/// used for the animation
-	QStateMachine theStateMachine;
-
 };
 
 #endif // GAMERESOURCES_H

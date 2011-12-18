@@ -19,10 +19,10 @@
 #ifndef PIEMENU_H
 #define PIEMENU_H
 
-#include <QGraphicsSvgItem>
-#include <QGraphicsWidget>
-#include <QStateMachine>
-#include <QGraphicsEffect>
+#include <QtSvg/QGraphicsSvgItem>
+#include <QtGui/QGraphicsWidget>
+#include <QtCore/QStateMachine>
+#include <QtGui/QGraphicsEffect>
 
 #include "tbe_global.h"
 

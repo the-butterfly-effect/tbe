@@ -23,7 +23,7 @@
 
 #include "Position.h"
 
-#include <QGraphicsSceneMouseEvent>
+#include <QtGui/QGraphicsSceneMouseEvent>
 
 ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),

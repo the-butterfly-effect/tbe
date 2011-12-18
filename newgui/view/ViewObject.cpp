@@ -23,12 +23,9 @@
 
 #include "tbe_global.h"
 
-#include <QFile>
-#include <QGraphicsColorizeEffect>
-#include <QGraphicsSceneMouseEvent>
-#include <QPainter>
-#include <QPixmapCache>
-#include <QSvgRenderer>
+#include <QtCore/QFile>
+#include <QtGui/QGraphicsColorizeEffect>
+#include <QtGui/QGraphicsSceneMouseEvent>
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)

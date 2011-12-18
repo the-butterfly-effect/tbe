@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include <QState>
-#include <QTimer>
-#include <QSignalTransition>
-#include <QPropertyAnimation>
+#include <QtCore/QState>
+#include <QtCore/QTimer>
+#include <QtCore/QSignalTransition>
+#include <QtCore/QPropertyAnimation>
 
 #include "AbstractObject.h"
 #include "PieMenu.h"

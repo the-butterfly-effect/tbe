@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "LocalString.h"
 
-#include <QLocale>
+#include <QtCore/QLocale>
 
 // ###################################################
 

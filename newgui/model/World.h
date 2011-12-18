@@ -26,11 +26,10 @@
 //#include "BaseJoint.h"
 #include "Background.h"
 
-#include <QString>
-#include <QList>
-#include <QMap>
-#include <QSet>
-#include <vector>
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QMap>
+#include <QtCore/QSet>
 
 // Forward Definitions:
 class AbstractObject;

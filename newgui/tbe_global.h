@@ -25,8 +25,8 @@
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""
 #endif
-#include <QtGlobal>
-#include <QString>
+#include <QtCore/QtGlobal>
+#include <QtCore/QString>
 
 const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;
@@ -40,7 +40,7 @@ const float SQRT2 = 1.41421356;
  * level 6 = timing info on serial port
  */
 #if !defined(NDEBUG)
-#include <QtDebug>
+#include <QtCore/QtDebug>
 #include <time.h>
 extern int theVerbosity;	// actually defined in main.cpp
 #define MAX_VERBOSITY 6

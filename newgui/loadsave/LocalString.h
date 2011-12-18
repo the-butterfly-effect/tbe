@@ -19,9 +19,9 @@
 #ifndef LOCALSTRING_H
 #define LOCALSTRING_H
 
-#include <QString>
-#include <QDomNode>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtXml/QDomNode>
+#include <QtCore/QMap>
 
 /// this QString-on-steroids keeps copies of all localized strings
 /// but will only return the string in the currently set locale

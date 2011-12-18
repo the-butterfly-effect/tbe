@@ -19,8 +19,8 @@
 #ifndef VIEWTOOLBOXGROUP_H
 #define VIEWTOOLBOXGROUP_H
 
-#include <QGraphicsRectItem>
-#include <QGraphicsTextItem>
+#include <QtGui/QGraphicsRectItem>
+#include <QtGui/QGraphicsTextItem>
 #include "ToolboxGroup.h"
 #include "UndoSingleton.h"
 

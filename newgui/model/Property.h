@@ -19,8 +19,8 @@
 #ifndef PROPERTY_H
 #define PROPERTY_H
 
-#include <QString>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 // forward declarations
 class Vector;

@@ -20,7 +20,7 @@
 #include "Box2D.h"
 
 #include <cmath>
-#include <QStringList>
+#include <QtCore/QStringList>
 
 qreal THESCALE = 100;
 

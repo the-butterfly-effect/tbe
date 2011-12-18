@@ -20,7 +20,7 @@
 #include "Property.h"
 #include "AbstractObject.h"
 //#include "World.h"
-#include <QStringList>
+#include <QtCore/QStringList>
 
 #include "tbe_global.h"
 
