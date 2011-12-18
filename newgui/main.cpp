@@ -151,9 +151,7 @@ static void handleSEGV(int, siginfo_t *, void *)
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+	QApplication a(argc, argv);
 
 #if !defined(NDEBUG)
 	// setup signal handler for SEGV
@@ -164,6 +162,8 @@ int main(int argc, char *argv[])
 	sigaction(SIGSEGV, &sa, NULL);
 #endif
 
+	MainWindow w;
+	w.show();
 	return a.exec();
 }
 
