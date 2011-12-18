@@ -30,6 +30,7 @@
 // Forward Declarations:
 class GameResources;
 class MainWindow;
+class ToolboxGroup;
 class World;
 
 /**
@@ -113,10 +114,14 @@ private:
 	LocalString theLevelDescription;
 	QString theLevelDate;
 
+    typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
+    ToolboxGroupList theToolboxList;
+
 //	friend class SaveLevelInfo;
-	friend class GameResources;
+    friend class GameResources;
 //	friend class EditLevelProperties;
 
+private:
 	// prevent copy constructor / assignment operator
 	Level(const Level&);
 	const Level& operator= (const Level&);

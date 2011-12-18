@@ -34,26 +34,6 @@ GameResources::~GameResources()
 }
 
 
-void GameResources::addAbstractObjectToToolbox(
-        const LocalString& anObjectGroupName,
-        AbstractObject* anAOPtr)
-{
-    DEBUG1ENTRY;
-    // is it in an existing group already?
-    // no? then create one
-    ToolboxGroupList::iterator myI = theToolboxList.find(anObjectGroupName);
-    if (myI == theToolboxList.end())
-    {
-        ToolboxGroup* myTGPtr = new ToolboxGroup(anObjectGroupName);
-        myI = theToolboxList.insert(anObjectGroupName, myTGPtr);
-    }
-
-    // and let's add the object to it
-    // it's not our responsibility to check for double entries
-    myI.value()->addObject(anAOPtr);
-}
-
-
 void GameResources::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
@@ -85,27 +65,21 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
     DEBUG4ENTRY;
+    Q_ASSERT(aLevelPtr!=NULL);
     theLevelPtr = aLevelPtr;
 
     ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
-}
-
-
-void GameResources::updateToolbox(void)
-{
-	DEBUG1ENTRY;
 
 	theToolboxPtr = new QGraphicsScene(NULL);
 	theToolboxPtr->setBackgroundBrush(Qt::blue);
-
-
 	ui->theToolView->setScene(theToolboxPtr);
-	ToolboxGroupList::iterator i = theToolboxList.begin();
+
+	Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
 	int dy = 0;
-	while (i!=theToolboxList.end())
+	while (i!=theLevelPtr->theToolboxList.end())
 	{
 		ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value());
 		myVTGPtr->moveBy(0,dy);
@@ -113,7 +87,6 @@ void GameResources::updateToolbox(void)
 		dy += myVTGPtr->getBigHeight();
 		i++;
 	}
-
 }
 
 void GameResources::on_theOKButton_clicked()

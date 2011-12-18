@@ -32,28 +32,14 @@ public:
     explicit GameResources(ResizingGraphicsView* aRSGVPtr);
     ~GameResources();
 
-    /// Adds the object pointed to, to the Toolbox.
-    /// If there is already an ToolboxGroup with the same name,
-    /// it is added to the same group, otherwise a new group is made.
-    /// @param anObjectGroupName name of the objects to group this object to.
-    /// @param anAOPtr pointer to AbstractObject to add
-    void addAbstractObjectToToolbox(const LocalString& anObjectGroupName,
-                                    AbstractObject* anAOPtr);
-
     /// Called by the ResizingGraphicsView so we can accomodate for
     /// the change in scale of the toolboxview.
     /// @param aTransformMatrix the transform matrix used by the parent.
     void parentResize(const QTransform& aTransformMatrix);
 
-    // TODO/FIXME: I don't like this
+    /// set the Level where we're going to get our info from:
+    /// i.e. level name, author but also the contents of the Toolbox view
     void setLevelPtr(Level* aLevelPtr);
-    // TODO/FIXME: I'd much rather implement these:
-//    void setLevelName(const LocalString& aName);
-//    void setLevelDescription(const LocalString& aDescription);
-
-
-    void updateToolbox(void);
-
 
 signals:
     void hideMe();
@@ -67,9 +53,6 @@ private slots:
 
 private:
     Ui::GameResources *ui;
-
-    typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
-    ToolboxGroupList theToolboxList;
 
     QGraphicsScene* theToolboxPtr;
 

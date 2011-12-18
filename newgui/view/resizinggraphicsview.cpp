@@ -58,7 +58,6 @@ void ResizingGraphicsView::createGameResourcesDialog()
 
 void ResizingGraphicsView::enableGameResourcesDialog(void)
 {
-	theGameResourcesPtr->updateToolbox();
 	theGRDownActionPtr->setEnabled(false);
 	theGRUpActionPtr->setEnabled(true);
 

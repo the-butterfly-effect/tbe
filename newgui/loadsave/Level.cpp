@@ -20,6 +20,7 @@
 #include "BackgroundSerializer.h"
 #include "GameResources.h"
 #include "Level.h"
+#include "ToolboxGroupSerializer.h"
 #include "World.h"
 //#include "GoalSerializer.h"
 //#include "Goal.h"
@@ -46,9 +47,6 @@ static const char* theSceneString = "scene";
 		   const char* thePropertyString   = "property";
 	const char* theBackgroundString = "background";
 static const char* theToolboxString = "toolbox";
-	static const char* theToolboxItemString = "toolboxitem";
-	static const char* theNameString = "name";
-	static const char* theCountString = "count";
 
 //static const char* theGoalsString = "goals";
 //		   const char* theGoalString = "goal";
@@ -177,56 +175,20 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	//
 	// parse the Toolbox section
 	//
-	aLevelInfoToolbox->setLevelPtr(this);
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theToolboxString);
 	myNode=myDocElem.firstChildElement(theToolboxString);
 	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
 	{
-		// a toolbox object entry has the following layout:
-		// <toolboxitem count="1" name="Ramp \" icon="RightRamp">
-		//      <name lang="nl">Helling \</name>
-		//      <object width="2" height="1" type="RightRamp" />
-		// </toolboxitem>
-
-		// note that name is optional, if no name specified, we will take the
-		// name from the object - which *might* be localized (maybe not)...
-
-		// simple sanity checks
-		if (q.nodeName() != theToolboxItemString)
+		// no sanity checks, leave that to the serializer
+		QString myExtraError;
+		ToolboxGroup* myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(q, &myExtraError);
+		if (myTbGPtr == NULL)
 		{
-			myErrorMessage += QString("parse error: expected <%1> but got <%2>\n")
-				   .arg(theToolboxItemString).arg(q.nodeName());
+			myErrorMessage += myExtraError;
 			goto not_good;
 		}
-
-		QDomNode myObjectTag = q.firstChildElement(theObjectString);
-		if (myObjectTag.isNull())
-		{
-			myErrorMessage += QString("parse error: no <%1> found\n")
-				   .arg(theObjectString);
-			goto not_good;
-		}
-
-		QDomNamedNodeMap myNodeMap = q.attributes();
-		LocalString myToolBoxGroupName;
-		myToolBoxGroupName.fillFromDOM(q, theNameString,
-							   myNodeMap.namedItem(theNameString).nodeValue());
-		bool isOK = false;
-		int myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
-		if (myCount == 0 || isOK == false)
-			myCount = 1;
-
-		for (int i=0; i< myCount; i++)
-		{
-			AbstractObject* myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
-																					true, false);
-			if (myAOPtr == NULL)
-			{
-				myErrorMessage += tr("createObjectFromDom failed");
-				goto not_good;
-			}
-			aLevelInfoToolbox->addAbstractObjectToToolbox( myToolBoxGroupName, myAOPtr);
-		}
+		printf("inserting %s into ToolboxList.\n", ASCII(myTbGPtr->theGroupName.result()));
+		theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
 	}
 
 	//
@@ -352,6 +314,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 //	}
 
 	// and everything went OK - we're done :-)
+	aLevelInfoToolbox->setLevelPtr(this);
 	return "";
 
 	// if goto not_good was called, we get here, too
