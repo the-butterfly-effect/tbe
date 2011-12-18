@@ -30,6 +30,7 @@ const qreal World::theDeltaTime = 0.01;
 const unsigned int World::theVelocityIterationcount = 30;
 const unsigned int World::thePositionIterationcount = 30;
 
+static World* theStaticWorldPtr = NULL;
 
 // Constructors/Destructors
 //
@@ -48,6 +49,7 @@ World::World ( void) : theB2WorldPtr(NULL)
 {
 	theViewWorldPtr = NULL;
 	theTotalTime = 0.0f;
+	theStaticWorldPtr = this;
 }
 
 World::~World ( )
@@ -63,6 +65,7 @@ World::~World ( )
 
 	DEBUG5("World::~World - destroy the rest");
 	AbstractObject::setTheB2WorldPtr(NULL);
+	theStaticWorldPtr = NULL;
 }
 
 //
@@ -72,6 +75,12 @@ World::~World ( )
 
 // Accessor methods
 //
+
+World* World::getWorldPtr()
+{
+	return theStaticWorldPtr;
+}
+
 
 // Other methods
 //

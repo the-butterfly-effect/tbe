@@ -157,6 +157,9 @@ public:
 	 */
 	virtual ~World ( );
 
+	/// returns a pointer to the current World
+	static World* getWorldPtr();
+
 	/** Adds object to the World.
 	 *  The DrawObject associated with the AbstractObject will be created and
 	 *  it will be added to the ViewWorld as well.
