@@ -117,7 +117,8 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 
 ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 {
-	assert(theViewObjectPtr==NULL);
+	if (theViewObjectPtr!=NULL)
+		return theViewObjectPtr;
 	QString myImageName;
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getInternalName();
