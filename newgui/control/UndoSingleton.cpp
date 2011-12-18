@@ -20,6 +20,7 @@
 #include "RotateUndoCommand.h"
 #include "ResizeUndoCommand.h"
 #include "MoveUndoCommand.h"
+#include "InsertUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
 
@@ -53,6 +54,9 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 	qDebug() << Q_FUNC_INFO << "action type: " << anUndoType;
 	switch(anUndoType)
 	{
+	case ActionIcon::ACTION_INSERT:
+		return new InsertUndoCommand(anObject);
+		break;
 	case ActionIcon::ACTION_MOVE:
 		return new MoveUndoCommand(anObject);
 		break;

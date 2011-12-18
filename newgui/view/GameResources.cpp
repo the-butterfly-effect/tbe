@@ -104,6 +104,7 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 		theToolboxPtr->addItem(myVTGPtr);
 		dy += myVTGPtr->getBigHeight();
 		i++;
+		connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
 	}
 }
 

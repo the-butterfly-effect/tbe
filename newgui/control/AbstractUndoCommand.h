@@ -39,6 +39,8 @@ public:
                         const QString& anUndoName,
                         QUndoCommand *parent = 0);
 
+    virtual ~AbstractUndoCommand();
+
     /// call this member to cement this action into the undo stack
     /// and redo the last action to make sure the object is correct
     void commit();

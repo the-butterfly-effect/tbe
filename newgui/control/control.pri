@@ -1,6 +1,7 @@
 
 SOURCES += \
     control/AbstractUndoCommand.cpp \
+    control/InsertUndoCommand.cpp \
     control/MoveUndoCommand.cpp \
     control/ResizeUndoCommand.cpp \
     control/RotateUndoCommand.cpp \
@@ -10,6 +11,7 @@ SOURCES += \
 
 HEADERS  += \
     control/AbstractUndoCommand.h \
+    control/InsertUndoCommand.h \
     control/MoveUndoCommand.h \
     control/ResizeUndoCommand.h \
     control/RotateUndoCommand.h \

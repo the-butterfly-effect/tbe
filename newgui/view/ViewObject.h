@@ -74,12 +74,8 @@ protected:
     /// overridden to allow detection of mouse button presses
     virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
     /// overridden to allow object highlighting
-    /// doesn't work correctly - it hovers over an area much larger
-    /// than the object
     virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
     /// overridden to allow highlighting
-    /// doesn't work correctly - it hovers over an area much larger
-    /// than the object
     virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
 
 protected:

@@ -17,12 +17,15 @@
  */
 
 #include "AbstractObject.h"
+#include "GameResources.h"
+#include "InsertUndoCommand.h"
 #include "Position.h"
 #include "ViewToolboxGroup.h"
 #include "ViewObject.h"
 
 #include <QBrush>
 #include <QGraphicsColorizeEffect>
+#include <QGraphicsSceneMouseEvent>
 
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
 	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)
@@ -69,6 +72,12 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent)
 }
 
 
+ViewToolboxGroup::~ViewToolboxGroup()
+{
+	// nothing to do?
+}
+
+
 void ViewToolboxGroup::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
     // this looks great, but unfortunately it also affects all children
@@ -82,6 +91,16 @@ void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
     setGraphicsEffect(NULL);
 }
 
+void ViewToolboxGroup::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+{
+    if (theTBGPtr->count() > 0)
+    {
+        InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
+        updateCount();
+    }
+    event->accept();
+    emit hideMe();
+}
 
 void ViewToolboxGroup::updateCount(void)
 {

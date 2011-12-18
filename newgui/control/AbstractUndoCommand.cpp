@@ -41,10 +41,22 @@ AbstractUndoCommand::AbstractUndoCommand(
 }
 
 
+AbstractUndoCommand::~AbstractUndoCommand()
+{
+    DEBUG1ENTRY;
+}
+
+
+void AbstractUndoCommand::commit(void)
+{
+    DEBUG4ENTRY;
+    UndoSingleton::push(this);
+    deleteProxyImage();
+}
+
+
 void AbstractUndoCommand::deleteProxyImage(void)
 {
-    Q_ASSERT(theViewObjPtr!=NULL);
-    Q_ASSERT(theVOADPtr!=NULL);
     delete theVOADPtr;
     theVOADPtr = NULL;
 }
@@ -52,12 +64,9 @@ void AbstractUndoCommand::deleteProxyImage(void)
 
 bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
 {
-    DEBUG4ENTRY;
-
     // It's time to finalize everything
     // and push the Undo on the stack
-    UndoSingleton::push(this);
-    deleteProxyImage();
+    commit();
 
     // we've completely handled the event, we're done
     return true;
@@ -83,6 +92,9 @@ void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
 void AbstractUndoCommand::undo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
-    theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
 
+    // in the case of InsertUndoCommand, we won't have a ViewObject left
+    // when we get here ;-)
+    if (theViewObjPtr)
+        theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
 }

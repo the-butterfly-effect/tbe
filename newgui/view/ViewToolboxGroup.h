@@ -20,14 +20,21 @@
 #define VIEWTOOLBOXGROUP_H
 
 #include <QGraphicsRectItem>
-#include "ToolboxGroup.h"
-
 #include <QGraphicsTextItem>
+#include "ToolboxGroup.h"
+#include "UndoSingleton.h"
 
-class ViewToolboxGroup : public QGraphicsRectItem
+/** This class represents the 'button' for one or more objects
+  * the user can select from the toolbox to add to the scene.
+  */
+class ViewToolboxGroup : public QObject, public QGraphicsRectItem
 {
+    Q_OBJECT
+
 public:
     ViewToolboxGroup(ToolboxGroup* aTBGPtr, QGraphicsItem *parent = 0);
+
+    virtual ~ViewToolboxGroup();
 
     int getBigHeight(void)
     { return theBigHeight; }
@@ -37,10 +44,18 @@ public:
 protected:
     void updateCount(void);
 
-    /// overridden to allow object highlighting
+    /// @note: overridden from qGraphicsRectItem to allow object highlighting
     virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
-    /// overridden to allow highlighting
+    /// @note: overridden from qGraphicsRectItem to allow highlighting
     virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
+
+    /// @note: overridden from qGraphicsRectItem to detect mouse button presses
+    /// When an object is clicked that still has objects left, insert one
+    /// into the scene (through the creation of an UndoInsert)
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
+
+signals:
+    void hideMe();
 
 private:
     ToolboxGroup* theTBGPtr;
