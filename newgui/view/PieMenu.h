@@ -36,8 +36,8 @@ class NamedState : public QState
 {
 	Q_OBJECT
 public:
-	explicit NamedState(QState* parent = 0, const QString& aStateName = "")
-		: QState(parent), theName(aStateName) {}
+	explicit NamedState(QState* aParentPtr = 0, const QString& aStateName = "")
+		: QState(aParentPtr), theName(aStateName) {}
 
 	virtual ~NamedState()
 	{}
