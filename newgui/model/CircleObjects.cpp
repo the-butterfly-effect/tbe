@@ -20,7 +20,7 @@
 #include "Box2D.h"
 
 #include "CircleObjects.h"
-#include "ViewCircleObject.h"
+//#include "ViewCircleObject.h"
 #include "Property.h"
 #include "ObjectFactory.h"
 
