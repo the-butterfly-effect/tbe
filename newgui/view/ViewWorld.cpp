@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "MainWindow.h"
 #include "PieMenu.h"
+#include "resizinggraphicsview.h"
 #include "ViewWorld.h"
 #include "World.h"
 
@@ -25,14 +25,14 @@
 
 #include <QtGui/QGraphicsSceneMouseEvent>
 
-ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
+ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
 					 THESCALE*aWorldPtr->getTheWorldWidth(), THESCALE*aWorldPtr->getTheWorldHeight()),
 	  theWorldPtr(aWorldPtr)
 {
 	initAttributes();
 
-	aMainWindowPtr->setScene(this, theWorldPtr->getName());
+	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
 
 	addRect(0, 0, getWidth(), -getHeight());
 
@@ -48,8 +48,15 @@ ViewWorld::ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr)
 	setBackgroundBrush(Qt::blue);
 	QLinearGradient myBackground(0,0, 0,-getHeight());
 	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
-		myBackground.setColorAt(myGS.thePosition, QColor(myGS.theR*255, myGS.theG*255, myGS.theB*255, myGS.theAlpha*255));
+		myBackground.setColorAt(myGS.thePosition, QColor(
+									static_cast<int>(myGS.theR*255),
+									static_cast<int>(myGS.theG*255),
+									static_cast<int>(myGS.theB*255),
+									static_cast<int>(myGS.theAlpha*255)));
 	setBackgroundBrush(myBackground);
+
+	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
+//	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 }
 
 
@@ -65,9 +72,23 @@ qreal ViewWorld::getWidth()
 }
 
 
+void ViewWorld::goFast()
+{
+	DEBUG4("void DrawWorld::goFast()\n");
+	theSimSpeed /= 4;
+}
+
+
+void ViewWorld::goSlow()
+{
+	DEBUG4("void DrawWorld::goSlow()\n");
+	theSimSpeed *= 4;
+}
+
 void ViewWorld::initAttributes ( )
 {
 	DEBUG1ENTRY;
+	theSimSpeed = 1000.0;
 }
 
 void
@@ -81,4 +102,56 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
     }
     // nothing clicked: clear pie menu
     PieMenuSingleton::clearPieMenu();
+}
+
+
+void ViewWorld::on_timerTick()
+{
+	while(theSimulationTime < QTime::currentTime())
+	{
+		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * theSimSpeed);
+	}
+	advance();
+	theFramesPerSecond++;
+}
+
+//void ViewWorld::on_framerateTimerTick()
+//{
+//	theMainWindowPtr->statusBar()->showMessage(tr("Framerate: %1 fps").arg(theFramesPerSecond), 3500);
+//	theFramesPerSecond = 0;
+//}
+
+
+void ViewWorld::startTimer(void)
+{
+	// note: this member is always called when the timer starts,
+	// so even when the timer after a stop continues...
+	// don't do anything here that will mess up a continue!
+	// (the createPhysicsWorld() will return if a world still exists)
+
+	DEBUG5ENTRY;
+
+	// TODO: upon reset, the old object gets focus again - thanks, Qt!
+//	DrawObject myTemp(NULL);
+//	setFocusItem(&myTemp);
+//	clearFocus();
+//	Anchors::clearEditObjectDialogPtr();
+
+	theWorldPtr->createPhysicsWorld();
+	theTimer.start(1000/25);
+	theSimulationTime = QTime::currentTime();
+
+//	if (theDisplayFramerate)
+//	{
+//		// update framerate every second
+//		theFramerateTimer.start(1000);
+//		theFramesPerSecond = 0;
+//	}
+}
+
+void ViewWorld::stopTimer(void)
+{
+	DEBUG5("DrawWorld::stopTimer(void)\n");
+//	theFramerateTimer.stop();
+	theTimer.stop();
 }

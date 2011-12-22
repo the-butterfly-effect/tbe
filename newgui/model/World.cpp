@@ -19,11 +19,11 @@
 #include "World.h"
 #include "AbstractObject.h"
 //#include "Goal.h"
-#include "ViewWorld.h"
+#include "resizinggraphicsview.h"
 #include "ViewObject.h"
 #include "AbstractJoint.h"
 #include "Box2D.h"
-
+#include "ViewWorld.h"
 
 const bool World::doSleep = true;
 const qreal World::theDeltaTime = 0.01;
@@ -200,12 +200,12 @@ void World::createPhysicsWorld()
 	}
 }
 
-void World::createScene(MainWindow* myMainPtr)
+void World::createScene(ResizingGraphicsView *myRSGVPtr)
 {
 	// create a ViewWorld instance, that will immediately attach itself to
 	// the graphicsView in the main window
 	assert(theViewWorldPtr == NULL);
-	theViewWorldPtr = new ViewWorld(myMainPtr, this);
+	theViewWorldPtr = new ViewWorld(myRSGVPtr, this);
 
 	// get all AbstractObjects to register themselves in the ViewWorld
 	AbstractObjectPtrList::iterator i;

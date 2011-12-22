@@ -19,7 +19,7 @@
 #include "GameResources.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
-
+#include "ViewWorld.h"
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
 	QGraphicsView(parent),
@@ -49,10 +49,55 @@ void ResizingGraphicsView::clearGameResourcesDialog()
 }
 
 
+void ResizingGraphicsView::clearViewWorld(void)
+{
+	// disconnect & delete the Scene//DrawWorld
+	// keep in mind that we have a view that's not happy now!
+	setScene(NULL);
+	hideSimControls();
+	QMatrix myMatrix;
+	setMatrix(myMatrix);
+#if 0
+	if (theScenePtr != NULL)
+	{
+		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+
+		// Destroying theScene (which is a DrawWorld) will automatically
+		// destroy the associated UndoStack. The UndoStack will de-register
+		// itself with the UndoGroup - no need to do anything myself here :-)
+
+		delete theScenePtr;
+		theScenePtr=NULL;
+	}
+#endif
+}
+
+
 void ResizingGraphicsView::createGameResourcesDialog()
 {
 	Q_ASSERT(theGameResourcesPtr == NULL);
 	theGameResourcesPtr = new GameResources(this);
+}
+
+
+void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName)
+{
+	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
+//	theScenePtr=aScenePtr;
+
+	setScene(aScenePtr);
+	fitInView(0, -aScenePtr->getHeight(),
+								aScenePtr->getWidth(), aScenePtr->getHeight());
+	showSimControls();
+//	aScenePtr->setSimSpeed(theSimSpeed);
+
+//	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+
+//	parent()->setWindowTitle(APPNAME " - " + aLevelName);
+
+	// also set the startstopwatch view
+//	ui.StartStopView->setScene(aScenePtr->getStartStopWatchPtr());
+//	ui.StartStopView->fitInView(aScenePtr->getStartStopWatchPtr()->itemsBoundingRect(), Qt::KeepAspectRatio);
 }
 
 

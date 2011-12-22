@@ -27,7 +27,7 @@ class QMenu;
 class QMenuBar;
 class QPropertyAnimation;
 class SimulationControls;
-
+class ViewWorld;
 
 class ResizingGraphicsView : public QGraphicsView
 {
@@ -35,6 +35,15 @@ class ResizingGraphicsView : public QGraphicsView
 public:
     explicit ResizingGraphicsView(QWidget *parent = 0);
     ~ResizingGraphicsView();
+
+    /// only to be called by MainWindow,
+    /// clears everything related to the ViewWorld and GameResourcesDialog
+    /// and hides the sim controls again.
+    void clearViewWorld(void);
+
+    /// only to be called by ViewWorld, to register itself
+    /// in the view
+    void setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName);
 
     /// this member does initialisation beyond creation
     /// @param

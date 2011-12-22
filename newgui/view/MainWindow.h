@@ -46,10 +46,6 @@ public:
 	/// deletes the existing Level instance and removes its view
 	void purgeLevel(void);
 
-    /// only to be called by ViewWorld, to register itself
-    /// in the view
-    void setScene(ViewWorld* aScenePtr, const QString& aLevelName);
-
 protected:
 	void changeEvent(QEvent *e);
 
@@ -62,8 +58,7 @@ private:
 	/// Pointer to the current level.
 	Level* theLevelPtr;
 
-	ViewWorld* theScenePtr;
-	QGraphicsRectWidget *theDropDown;
+//	ViewWorld* theScenePtr;
 
 	World* theWorldPtr;
 };

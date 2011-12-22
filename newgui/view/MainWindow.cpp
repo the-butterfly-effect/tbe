@@ -42,8 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent),
 	  ui(new Ui::MainWindow),
 	  theLevelPtr(NULL),
-	  theScenePtr(NULL),
-	  theDropDown(NULL)
+	  theWorldPtr(NULL)
 {
 	ui->setupUi(this);
 
@@ -98,87 +97,23 @@ void MainWindow::loadLevel(const QString& aFileName)
 							.arg(aFileName).arg(myErrorMessage), this );
 		}
 	}
-	theLevelPtr->getTheWorldPtr()->createScene(this);
-
-#if 0
-	ui.theToolBoxView->clear();
-
-	if (theIsLevelEditor)
-		ui.theToolBoxView->fillFromObjectFactory();
-	else
-		ui.theToolBoxView->fillFromDomNode(theLevelPtr->getToolboxDomNode());
-
-	// display the level info
-	if (!theIsLevelEditor)
-	{
-		LevelInfoDialog* myInfoDialog = new LevelInfoDialog(theLevelPtr, this);
-		myInfoDialog->setAutoFillBackground(true);
-		QSize myDialogSize = myInfoDialog->size();
-		QSize myViewSize = ui.graphicsView->size();
-		myInfoDialog->move((myViewSize.width()-myDialogSize.width())/2,
-						   (myViewSize.height()-myDialogSize.height())/2);
-		myInfoDialog->show();
-	}
-#endif
-}
-
-
-void MainWindow::setScene(ViewWorld* aScenePtr, const QString& aLevelName)
-{
-	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
-	theScenePtr=aScenePtr;
-
-	ui->graphicsView->setScene(aScenePtr);
-	ui->graphicsView->fitInView(0, -aScenePtr->getHeight(),
-								aScenePtr->getWidth(), aScenePtr->getHeight());
-	ui->graphicsView->showSimControls();
-//	aScenePtr->setSimSpeed(theSimSpeed);
-
-//	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
-
-	setWindowTitle(APPNAME " - " + aLevelName);
-
-	// also set the startstopwatch view
-//	ui.StartStopView->setScene(aScenePtr->getStartStopWatchPtr());
-//	ui.StartStopView->fitInView(aScenePtr->getStartStopWatchPtr()->itemsBoundingRect(), Qt::KeepAspectRatio);
+	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
 }
 
 
 void MainWindow::purgeLevel(void)
 {
 	DEBUG1ENTRY;
-	if (theLevelPtr==NULL)
-		return;
-
-	// disconnect the World
+	ui->graphicsView->clearViewWorld();
 	delete theLevelPtr;
 	theLevelPtr=NULL;
-
-	// disconnect & delete the Scene//DrawWorld
-	// keep in mind that we have a view that's not happy now!
-	ui->graphicsView->setScene(NULL);
-	ui->graphicsView->hideSimControls();
-	QMatrix myMatrix;
-	ui->graphicsView->setMatrix(myMatrix);
-#if 0
-	if (theScenePtr != NULL)
-	{
-		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
-
-		// Destroying theScene (which is a DrawWorld) will automatically
-		// destroy the associated UndoStack. The UndoStack will de-register
-		// itself with the UndoGroup - no need to do anything myself here :-)
-
-		delete theScenePtr;
-		theScenePtr=NULL;
-	}
-#endif
 }
 
 
 void MainWindow::setupMenu(void)
 {
 }
+
 
 void MainWindow::setupView()
 {

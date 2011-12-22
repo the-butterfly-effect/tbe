@@ -20,23 +20,23 @@
 #define VIEWWORLD_H
 
 #include <QtGui/QGraphicsScene>
+#include <QtCore/QTime>
+#include <QtCore/QTimer>
 
-class MainWindow;
+class ResizingGraphicsView;
 class World;
 
 /** class ViewWorld
   * This class contains the View* objects and is the QGraphicsScene.
-  * TODO/FIXME: validate & list other jobs:
-  * //It contains the timers that run the simulation.
-  * //It also maintains the undo stack and handles drag-n-drop from the toolbox.
-  * //Lastly, it implements the debug callbacks from Box2D to draw outlines.
+  * It contains the timers that run the simulation.
+  * TODO/FIXME: to be re-implemented: the debug callbacks from Box2D to draw outlines.
   */
 class ViewWorld : public QGraphicsScene
 {
     Q_OBJECT
 
 public:
-	explicit ViewWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
+	explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
 
 	// Public accessor methods
 	//
@@ -52,16 +52,51 @@ public:
 signals:
 
 public slots:
+	/// public slot: start (or continue) the simulation
+	void startTimer();
+
+	/// public slot: stop the simulation
+	void stopTimer();
+
+	/// public slot: used when clicked fastforward
+	void goFast();
+
+	/// public slot: used when clicked go slow
+	void goSlow();
+
+private slots:
+	/// called by a oneshot timer after on_winning() was called
+	//void on_OneSecondAfterWinning(void);
+
+	/// called whenever a timer tick happens
+	void on_timerTick(void);
+
+	/// called whenever the framerate timer tick happens
+	//void on_framerateTimerTick(void);
 
 private:
 	// Private attributes
 	//
 
-	MainWindow* theMainWindowPtr;
 	World* theWorldPtr;
 
+	QTimer theTimer;
+//	QTimer theFramerateTimer;
+	QTime  theSimulationTime;
+
+	/// milliseconds per time step ???
+	qreal theSimSpeed;
+
+	unsigned int theFramesPerSecond;
+
+
+
 private:
-    void initAttributes ( ) ;
+	void initAttributes ( ) ;
+
+
+
+
 
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
