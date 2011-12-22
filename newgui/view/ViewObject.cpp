@@ -46,8 +46,8 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	ImageCache::getPixmap(anImageName, &myTempPixmap);
 	setPixmap(myTempPixmap);
 
-	thePixmapWidth = boundingRect().width();
-	thePixmapHeight= boundingRect().height();
+	thePixmapWidth = QGraphicsPixmapItem::boundingRect().width();
+	thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
 
 	adjustObjectDrawing();
 
@@ -57,6 +57,7 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 ViewObject::~ViewObject()
 {
 	// nothing to do yet :-)
+	theAbstractObjectPtr = NULL;
 }
 
 
