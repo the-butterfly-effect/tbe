@@ -17,6 +17,7 @@
  */
 
 #include "GameResources.h"
+#include "Popup.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
 #include "ViewWorld.h"
@@ -77,27 +78,6 @@ void ResizingGraphicsView::createGameResourcesDialog()
 {
 	Q_ASSERT(theGameResourcesPtr == NULL);
 	theGameResourcesPtr = new GameResources(this);
-}
-
-
-void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName)
-{
-	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
-//	theScenePtr=aScenePtr;
-
-	setScene(aScenePtr);
-	fitInView(0, -aScenePtr->getHeight(),
-								aScenePtr->getWidth(), aScenePtr->getHeight());
-	showSimControls();
-//	aScenePtr->setSimSpeed(theSimSpeed);
-
-//	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
-
-//	parent()->setWindowTitle(APPNAME " - " + aLevelName);
-
-	// also set the startstopwatch view
-//	ui.StartStopView->setScene(aScenePtr->getStartStopWatchPtr());
-//	ui.StartStopView->fitInView(aScenePtr->getStartStopWatchPtr()->itemsBoundingRect(), Qt::KeepAspectRatio);
 }
 
 
@@ -171,6 +151,26 @@ void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr
 }
 
 
+void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName)
+{
+	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
+//	theScenePtr=aScenePtr;
+
+	setScene(aScenePtr);
+	fitInView(0, -aScenePtr->getHeight(),
+								aScenePtr->getWidth(), aScenePtr->getHeight());
+	showSimControls();
+//	aScenePtr->setSimSpeed(theSimSpeed);
+
+	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+
+//	parent()->setWindowTitle(APPNAME " - " + aLevelName);
+
+	// also set the startstopwatch view
+	theSimControlsPtr->hookSignalsUp(aScenePtr);
+}
+
+
 void ResizingGraphicsView::showGRDialog()
 {
 	delete theGRAnimationPtr;
@@ -195,4 +195,11 @@ void ResizingGraphicsView::showGRDialog()
 void ResizingGraphicsView::showSimControls(void)
 {
 	theSimControlsPtr->show();
+}
+
+
+void ResizingGraphicsView::slot_levelWon(void)
+{
+	Popup::Info("You won!");
+	exit (0);
 }

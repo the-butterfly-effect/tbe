@@ -348,6 +348,7 @@ bool World::ShouldCollide(
 
 qreal World::simStep (void)
 {
+	printf("World::simStep - %f\n", theDeltaTime);
 	// clear the contact point lists
 	clearLists();
 

@@ -28,10 +28,10 @@
 ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
 					 THESCALE*aWorldPtr->getTheWorldWidth(), THESCALE*aWorldPtr->getTheWorldHeight()),
-	  theWorldPtr(aWorldPtr)
+	  theWorldPtr(aWorldPtr),
+	  theSimSpeed(1000),
+	  isSimRunning(false)
 {
-	initAttributes();
-
 	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
 
 	addRect(0, 0, getWidth(), -getHeight());
@@ -55,7 +55,6 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 									static_cast<int>(myGS.theAlpha*255)));
 	setBackgroundBrush(myBackground);
 
-	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 //	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 }
 
@@ -71,25 +70,6 @@ qreal ViewWorld::getWidth()
 	return THESCALE*theWorldPtr->getTheWorldWidth();
 }
 
-
-void ViewWorld::goFast()
-{
-	DEBUG4("void DrawWorld::goFast()\n");
-	theSimSpeed /= 4;
-}
-
-
-void ViewWorld::goSlow()
-{
-	DEBUG4("void DrawWorld::goSlow()\n");
-	theSimSpeed *= 4;
-}
-
-void ViewWorld::initAttributes ( )
-{
-	DEBUG1ENTRY;
-	theSimSpeed = 1000.0;
-}
 
 void
 ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
@@ -122,14 +102,45 @@ void ViewWorld::on_timerTick()
 //}
 
 
-void ViewWorld::startTimer(void)
-{
-	// note: this member is always called when the timer starts,
-	// so even when the timer after a stop continues...
-	// don't do anything here that will mess up a continue!
-	// (the createPhysicsWorld() will return if a world still exists)
 
-	DEBUG5ENTRY;
+/// public slot: reset the scene
+void ViewWorld::slot_resetSim()
+{
+	emit theTimer.stop();
+	isSimRunning = false;
+}
+
+
+void ViewWorld::slot_signalFF()
+{
+	theSimSpeed = 250;
+	emit theTimer.start();
+}
+
+void ViewWorld::slot_signalPause()
+{
+	theSimSpeed = 0;
+	emit theTimer.stop();
+}
+
+void ViewWorld::slot_signalPlay()
+{
+	if (isSimRunning==false)
+		slot_startSim();
+	isSimRunning=true;
+	theSimSpeed = 1000;
+	emit theTimer.start();
+}
+
+void ViewWorld::slot_signalReset()
+{
+	isSimRunning=false;
+	emit theTimer.stop();
+}
+
+void ViewWorld::slot_startSim()
+{
+	DEBUG1ENTRY;
 
 	// TODO: upon reset, the old object gets focus again - thanks, Qt!
 //	DrawObject myTemp(NULL);
@@ -138,8 +149,10 @@ void ViewWorld::startTimer(void)
 //	Anchors::clearEditObjectDialogPtr();
 
 	theWorldPtr->createPhysicsWorld();
+	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
+	isSimRunning = true;
 
 //	if (theDisplayFramerate)
 //	{
@@ -147,11 +160,4 @@ void ViewWorld::startTimer(void)
 //		theFramerateTimer.start(1000);
 //		theFramesPerSecond = 0;
 //	}
-}
-
-void ViewWorld::stopTimer(void)
-{
-	DEBUG5("DrawWorld::stopTimer(void)\n");
-//	theFramerateTimer.stop();
-	theTimer.stop();
 }

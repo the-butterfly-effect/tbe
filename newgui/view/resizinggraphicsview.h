@@ -66,6 +66,8 @@ private slots:
     virtual void showGRDialog();
     virtual void hideGRDialog();
 
+    void slot_levelWon(void);
+
 signals:
 //    void hideGameResourcesDialog();
 

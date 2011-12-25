@@ -21,6 +21,7 @@
 
 #include <QtGui>
 #include "tbe_global.h"
+#include "ViewWorld.h"
 
 namespace Ui {
 	class SimulationControls;
@@ -55,6 +56,7 @@ class SimulationControls : public QWidget
 {
     Q_OBJECT
 
+
 public:
 	explicit SimulationControls(QWidget *parent = 0);
 
@@ -63,6 +65,8 @@ public:
 	void setup(QMenu* aMenuPtr);
 
 	void parentResize(const QSize& aSize);
+
+	void hookSignalsUp(ViewWorld* aViewWorld);
 
 signals:
 	/// this signal is emitted when our slot onFailed is called
@@ -89,6 +93,12 @@ private:
 	QPixmap theFaultStatusPixmap;
 	QPixmap theFFStatusPixmap;
 	QPixmap theFailStatusPixmap;
+
+	QState* theFailedState;
+	QState* theForwardState;
+	QState* thePausedState;
+	QState* theRunningState;
+	QState* theStoppedState;
 
 	Ui::SimulationControls *ui;
 };

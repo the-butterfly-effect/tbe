@@ -52,17 +52,17 @@ public:
 signals:
 
 public slots:
-	/// public slot: start (or continue) the simulation
-	void startTimer();
+	/// public slot: reset the scene
+	void slot_resetSim();
 
-	/// public slot: stop the simulation
-	void stopTimer();
+	// signals to set the game speed
+	void slot_signalFF();
+	void slot_signalPause();
+	void slot_signalPlay();
+	void slot_signalReset();
 
-	/// public slot: used when clicked fastforward
-	void goFast();
-
-	/// public slot: used when clicked go slow
-	void goSlow();
+	/// public slot: start the simulation (at speed 1)
+	void slot_startSim();
 
 private slots:
 	/// called by a oneshot timer after on_winning() was called
@@ -89,7 +89,7 @@ private:
 
 	unsigned int theFramesPerSecond;
 
-
+	bool isSimRunning;
 
 private:
 	void initAttributes ( ) ;
