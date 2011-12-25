@@ -33,6 +33,7 @@ AbstractObject::AbstractObject()
       theViewObjectPtr(NULL),
       theWorldPtr(NULL)
 {
+    initAttributes();
 }
 
 AbstractObject::~AbstractObject ( )
@@ -265,4 +266,20 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 	// if no property with a float type found, leave aDefaultValue is unchanged
 	theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
 	theViewObjectPtr->setZValue(aDefaultValue);
+}
+
+void AbstractObject::updateViewObject()
+{
+	// no need to update Scenery
+	if (theB2BodyPtr==NULL)
+	{
+		return;
+	}
+
+	assert(theViewObjectPtr != NULL);
+	if (theB2BodyPtr->IsAwake())
+	{
+		Position myPos(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
+		theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, myPos);
+	}
 }

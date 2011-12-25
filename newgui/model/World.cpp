@@ -406,6 +406,12 @@ qreal World::simStep (void)
 
 	theTotalTime += theDeltaTime;
 
+	// iterate through all known objects to update the graphics part
+	foreach(AbstractObject* i, theObjectPtrList)
+	{
+		i->updateViewObject();
+	}
+
 #if 0
 	// check if all goals are met
 	bool areGoalsMet = true;

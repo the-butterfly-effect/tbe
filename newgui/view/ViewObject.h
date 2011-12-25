@@ -59,9 +59,10 @@ public:
 						qreal aNewHeight);
 	void setNewGeometry(const Position& aNewPosition);
 
-protected:
     /// based on changes in the underlying AbstractObject, adjust the image
     /// by resizing and/or rotation. This is overkill for just moving...
+    void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter);
+protected:
     void adjustObjectDrawing(void);
 
     /// load an image (SVG/PNG/JPG) into a qpixmap and

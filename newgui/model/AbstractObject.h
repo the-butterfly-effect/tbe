@@ -300,6 +300,11 @@ public:
     virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
     void deleteViewObject();
 
+	/// updates the ViewObject to the position of the underlying b2body
+	/// (it won't update if the object is asleep)
+	/// @note this member should only be called during simulations
+	void updateViewObject();
+
 	/// null the current Physicsobject (note that they are no longer
 	/// deleted in normal game operation - if you need that behaviour
 	/// (like e.g. CokeSplatter) you need to override that in its destructor.
@@ -313,7 +318,7 @@ public:
 	  */
 	virtual void  parseProperties(void);
 
-	/** sets the ZValue for theDrawObject to
+	/** sets the ZValue for theViewObject to
 	 *  the value set in Property::ZVALUE_STRING or
 	 *  or (only if the above property doesn't exist) to @param aDefaultValue
 	 */
@@ -327,7 +332,7 @@ protected:
 	/// the properties of the object instance
 	PropertyList theProps;
 
-	/// pointer to a DrawObject that will draw this object
+	/// pointer to a ViewObject that will draw this object
 	ViewObject* theViewObjectPtr;
 
 	typedef QList<b2FixtureDef*> ShapeList;

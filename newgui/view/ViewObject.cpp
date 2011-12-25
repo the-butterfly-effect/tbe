@@ -60,13 +60,10 @@ ViewObject::~ViewObject()
 	theAbstractObjectPtr = NULL;
 }
 
-
-void ViewObject::adjustObjectDrawing(void)
+void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter)
 {
 	// FIXME/TODO: do we need these if we use setTransform?
 	prepareGeometryChange();
-	qreal myWidth  = theAbstractObjectPtr->getTheWidth();
-	qreal myHeight = theAbstractObjectPtr->getTheHeight();
 
 	// set transformations: origin, scale, translate
 
@@ -93,9 +90,9 @@ void ViewObject::adjustObjectDrawing(void)
 
     QTransform theTransform;
      // Qt has the Y axis in opposite direction, so negate the angle...
-     theTransform.rotateRadians(-theAbstractObjectPtr->getOrigCenter().angle);
-     theTransform.scale(THESCALE*myWidth/thePixmapWidth,
-                        THESCALE*myHeight/thePixmapHeight);
+     theTransform.rotateRadians(-aCenter.angle);
+     theTransform.scale(THESCALE*aWidth/thePixmapWidth,
+                        THESCALE*aHeight/thePixmapHeight);
     setTransform(theTransform,false);
     update();
 
@@ -103,10 +100,17 @@ void ViewObject::adjustObjectDrawing(void)
 	// object that happened around the top-left corner.
 	// So, where is the middle of our object currently?
 	// And -as always- don't forget to correct for Qt's wrong Y axis...
-	Position myMiddle = Position(0,0, -theAbstractObjectPtr->getOrigCenter().angle)
-						+ Vector(myWidth/2, myHeight/2);
+	Position myMiddle = Position(0,0, -aCenter.angle)
+						+ Vector(aWidth/2, aHeight/2);
 	myMiddle.y = - myMiddle.y;
-	setPos(theAbstractObjectPtr->getOrigCenter().toQPointF() - myMiddle.toQPointF());
+	setPos(aCenter.toQPointF() - myMiddle.toQPointF());
+}
+
+void ViewObject::adjustObjectDrawing(void)
+{
+	adjustObjectDrawing(theAbstractObjectPtr->getTheWidth(),
+						theAbstractObjectPtr->getTheHeight(),
+						theAbstractObjectPtr->getOrigCenter());
 }
 
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
