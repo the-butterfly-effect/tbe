@@ -249,8 +249,6 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			goto not_good;
 		}
 		theWorldPtr->addObject(myBOPtr);
-		// TODO/FIXME: please let us not need this one here!
-//		myBOPtr->parseProperties();
 
 		if (q==myNode.lastChild())
 			break;
