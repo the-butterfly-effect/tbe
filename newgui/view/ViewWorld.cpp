@@ -102,26 +102,19 @@ void ViewWorld::on_timerTick()
 //}
 
 
-
-/// public slot: reset the scene
-void ViewWorld::slot_resetSim()
-{
-	emit theTimer.stop();
-	isSimRunning = false;
-}
-
-
 void ViewWorld::slot_signalFF()
 {
 	theSimSpeed = 250;
 	emit theTimer.start();
 }
 
+
 void ViewWorld::slot_signalPause()
 {
 	theSimSpeed = 0;
 	emit theTimer.stop();
 }
+
 
 void ViewWorld::slot_signalPlay()
 {
@@ -132,11 +125,14 @@ void ViewWorld::slot_signalPlay()
 	emit theTimer.start();
 }
 
+
 void ViewWorld::slot_signalReset()
 {
 	isSimRunning=false;
 	emit theTimer.stop();
+	theWorldPtr->deletePhysicsWorld();
 }
+
 
 void ViewWorld::slot_startSim()
 {

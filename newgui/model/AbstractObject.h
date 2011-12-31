@@ -301,9 +301,9 @@ public:
     void deleteViewObject();
 
 	/// updates the ViewObject to the position of the underlying b2body
-	/// (it won't update if the object is asleep)
-	/// @note this member should only be called during simulations
-	void updateViewObject();
+	/// (it won't update if the object is asleep if sim is running)
+	/// @param isSimRunning  set to true if you want to use position/size from sim
+	void updateViewObject(bool isSimRunning) const;
 
 	/// null the current Physicsobject (note that they are no longer
 	/// deleted in normal game operation - if you need that behaviour

@@ -140,7 +140,7 @@ void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
 }
 
 
-void World::createPhysicsWorld()
+void World::createPhysicsWorld(void)
 {
 	DEBUG3("World::createPhysicsWorld()");
 	if (theB2WorldPtr!=NULL)
@@ -220,7 +220,6 @@ void World::deletePhysicsWorld()
 {
 	DEBUG3ENTRY;
 
-#if 0
 	// update our object lists and notify all objects
 	// that we're going to delete the physics parts...
 	// (note that no actual physics objects are removed
@@ -228,18 +227,17 @@ void World::deletePhysicsWorld()
 	AbstractObjectPtrList::iterator i=theObjectPtrList.begin();
 	while (i!= theObjectPtrList.end())
 	{
-		if ((*i)->isTemp())
-		{
-			delete (*i);
-			i = theObjectPtrList.erase(i);
-		}
-		else
+//		if ((*i)->isTemp())
+//		{
+//			delete (*i);
+//			i = theObjectPtrList.erase(i);
+//		}
+//		else
 		{
 			(*i)->deletePhysicsObject();
 			++i;
 		}
 	}
-#endif
 
 	// emptying the theObjectPtrList automatically also
 	// took care of everything in the theToBeRemovedList
@@ -250,6 +248,9 @@ void World::deletePhysicsWorld()
 	delete theB2WorldPtr;
 	theB2WorldPtr = NULL;
 	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);
+
+	// redraw all objects in their static position
+	updateViewWorld(false);
 }
 
 
@@ -407,10 +408,7 @@ qreal World::simStep (void)
 	theTotalTime += theDeltaTime;
 
 	// iterate through all known objects to update the graphics part
-	foreach(AbstractObject* i, theObjectPtrList)
-	{
-		i->updateViewObject();
-	}
+	updateViewWorld(true);
 
 #if 0
 	// check if all goals are met
@@ -456,4 +454,13 @@ bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 		return false;
 	theCallbackList.remove(anInterface);
 	return true;
+}
+
+
+void World::updateViewWorld(bool isSimRunning)
+{
+	foreach(AbstractObject* i, theObjectPtrList)
+	{
+		i->updateViewObject(isSimRunning);
+	}
 }

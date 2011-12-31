@@ -52,9 +52,6 @@ public:
 signals:
 
 public slots:
-	/// public slot: reset the scene
-	void slot_resetSim();
-
 	// signals to set the game speed
 	void slot_signalFF();
 	void slot_signalPause();
