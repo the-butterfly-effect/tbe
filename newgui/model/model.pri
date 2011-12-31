@@ -5,6 +5,7 @@ SOURCES += \
     model/AbstractObject.cpp \
     model/PolyObject.cpp \
     model/Position.cpp \
+    model/PostIt.cpp \
     model/Property.cpp \
     model/RectObject.cpp \
     model/Scenery.cpp \
@@ -16,6 +17,7 @@ HEADERS += \
     model/AbstractObject.h \
     model/PolyObject.h \
     model/Position.h \
+    model/PostIt.h \
     model/Property.h \
     model/RectObject.h \
     model/Scenery.h \

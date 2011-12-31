@@ -397,6 +397,7 @@ private:
 
 	// TODO/FIXME: debugging code - should go away at some point
 	friend class MainWindow;
+	friend class ViewPostIt;
 
 	/// static width of the object (i.e. at rest before simulation starts)
 	qreal theWidth;
