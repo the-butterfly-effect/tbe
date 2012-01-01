@@ -61,9 +61,10 @@ PostIt::~PostIt( )
 
 
 
-ViewObject*  PostIt::createViewObject(void)
+ViewObject*  PostIt::createViewObject(float aDefaultDepth)
 {
 	assert(theViewObjectPtr==NULL);
 	theViewObjectPtr = new ViewPostIt(this);
+	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
 }

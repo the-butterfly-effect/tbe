@@ -96,8 +96,6 @@ private:
 
 	Ui::ViewPostIt* theUIPtr;
 
-	bool isHovering;
-
 	// prevent copy constructor / assignment operator
 	ViewPostIt(const ViewPostIt&);
 	const ViewPostIt& operator= (const ViewPostIt&);

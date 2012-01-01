@@ -293,7 +293,8 @@ public:
 
     /** Creates the ViewObject, finds associated images,
       * sets ZValue and returns a pointer to it.
-      * @param   aDefaultDepth, ZValue depth in view if not set as property
+      * @param   aDefaultDepth, ZValue depth in view if not set as property,
+      *          the higher the value the more likely it is drawn on top
       * @returns pointer to ViewObject
       * @note: a ZValue set in a property always overrides aDefaultDepth
       */

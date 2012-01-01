@@ -20,24 +20,23 @@
 #include "AbstractObject.h"
 //#include "PostItEditor.h"
 
-#include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
-#include <QPainter>
-#include <QStyleOption>
+#include <QtGui/QGraphicsColorizeEffect>
+#include <QtGui/QGraphicsScene>
+#include <QtGui/QGraphicsSceneMouseEvent>
 
 // Constructors/Destructors
 //
 
 ViewPostIt::ViewPostIt (AbstractObject* aAbstractObjectPtr)
-	: ViewObject(aAbstractObjectPtr, "PostIt"), theDialogPtr(NULL)
+	: ViewObject(aAbstractObjectPtr, "PostIt"),
+	  theCurrentPage(0),
+	  theDialogPtr(NULL),
+	  theUIPtr(NULL)
 {
 	// everything is done in the ViewObject constructor
-	DEBUG5("DrawPostIt\n");
+	DEBUG1ENTRY;
 
 	setFlag(QGraphicsItem::ItemIsSelectable,true);
-	setCacheMode(QGraphicsItem::NoCache);
-	setAcceptHoverEvents(true);
-	isHovering = false;
 }
 
 ViewPostIt::~ViewPostIt ( )
@@ -76,14 +75,15 @@ void ViewPostIt::displayPostit(void)
 
 void ViewPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
-	isHovering=true;
-	update();
+    // this looks great, but unfortunately it also affects all children
+    QGraphicsColorizeEffect* myEffect = new QGraphicsColorizeEffect();
+    myEffect->setColor(QColor(192, 192, 0));
+    setGraphicsEffect(myEffect);
 }
 
 void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
-	isHovering=false;
-	update();
+    setGraphicsEffect(NULL);
 }
 
 

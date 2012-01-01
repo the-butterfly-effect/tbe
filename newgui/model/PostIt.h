@@ -70,7 +70,11 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	virtual ViewObject* createViewObject();
+	/// overridden because we have our own ViewObject that displays
+	/// the PostIt
+	/// @param   aDefaultDepth, ZValue depth in view if not set as property,
+	///          the higher the value the more likely it is drawn on top
+	virtual ViewObject* createViewObject(float aDefaultDepth = 10.0);
 
 };
 
