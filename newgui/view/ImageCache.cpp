@@ -37,7 +37,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
                            const QSize& aSize,
                            QPixmap* anOutputPixmapPtr)
 {
-    DEBUG1ENTRY;
+    DEBUG5ENTRY;
 
     Q_ASSERT(anImageBaseName.isEmpty() == false);
     if (anImageBaseName.isEmpty() == true)
@@ -65,17 +65,17 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 		// i.e. not just ../images
 
 		myFullPathName = QString("../images/%1.png").arg(anImageBaseName);
-		DEBUG3("attempt to load '%s'", ASCII(myFullPathName));
+		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
 		myFullPathName = QString("../images/%1.jpg").arg(anImageBaseName);
-		DEBUG3("attempt to load '%s'", ASCII(myFullPathName));
+		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
 		myFullPathName = QString("../images/%1.svg").arg(anImageBaseName);
-		DEBUG3("attempt to load '%s'", ASCII(myFullPathName));
+		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 		{
 			// render the SVG into the Pixmap
@@ -93,10 +93,10 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 		}
 
 		myFullPathName = "../images/NotFound.png";
-		DEBUG4("attempt to load '%s'", ASCII(myFullPathName));
+		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 	} while(false);
 
-	DEBUG3("  going to use: %s!", ASCII(myFullPathName));
+	DEBUG5("  going to use image: %s!", ASCII(myFullPathName));
 	if (myTempPixmap.isNull())
 		myTempPixmap = QPixmap(myFullPathName);
 	QPixmapCache::insert(anImageBaseName, myTempPixmap);
