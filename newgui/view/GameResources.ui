@@ -38,6 +38,9 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background: url(:/button.png);</string>
+       </property>
        <property name="text">
         <string>This is the level title</string>
        </property>
@@ -152,6 +155,9 @@ p, li { white-space: pre-wrap; }
          <height>16777215</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background: url(:/button.png)</string>
+       </property>
        <property name="text">
         <string>Reset</string>
        </property>
@@ -173,6 +179,9 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="toolTip">
         <string>Clicking on this button will make the dialog go up.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: url(:/button.png)</string>
        </property>
        <property name="text">
         <string>OK</string>

@@ -33,6 +33,9 @@ FORMS    += \
 	view/SimulationControls.ui \
 	view/ViewPostIt.ui
 
+RESOURCES += \
+    ../images/style/style-resources.qrc
+
 
 
 
