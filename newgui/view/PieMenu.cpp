@@ -42,7 +42,6 @@ void NamedState::onEntry ( QEvent * event )
     QState::onEntry(event);
 }
 
-
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -79,6 +78,8 @@ ActionIcon::ActionIcon(ActionType anActionType,
 		setGraphicsEffect(myEffect);
 	}
 
+	// no need to keep pointers around - will be cleaned up by the state
+	// machine upon destruction.
 	QState* myStartState = new NamedState(&theIconStateMachine, "Start "+aFileName);
 	QState* myOuterState = new NamedState(&theIconStateMachine, "Outer "+aFileName);
 	QState* myInnerState = new NamedState(&theIconStateMachine, "Inner "+aFileName);
