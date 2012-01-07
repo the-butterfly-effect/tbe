@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,10 @@
 
 #include "Position.h"
 
+#include <QtGui/QAction>
 #include <QtGui/QGraphicsSceneMouseEvent>
+
+#include "tbe_global.h"
 
 ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
@@ -33,6 +36,7 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	  isSimRunning(false)
 {
 	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
+	theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
 
 	addRect(0, 0, getWidth(), -getHeight());
 
@@ -55,7 +59,8 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 									static_cast<int>(myGS.theAlpha*255)));
 	setBackgroundBrush(myBackground);
 
-//	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
+	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
+	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 }
 
 
@@ -91,15 +96,17 @@ void ViewWorld::on_timerTick()
 	{
 		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * theSimSpeed);
 	}
-	advance();
+
+	// iterate through all known objects to update the graphics part
+	theWorldPtr->updateViewWorld(true);
 	theFramesPerSecond++;
 }
 
-//void ViewWorld::on_framerateTimerTick()
-//{
-//	theMainWindowPtr->statusBar()->showMessage(tr("Framerate: %1 fps").arg(theFramesPerSecond), 3500);
-//	theFramesPerSecond = 0;
-//}
+void ViewWorld::on_framerateTimerTick()
+{
+	theFrameRateViewPtr->setText(tr("%1 fps").arg(theFramesPerSecond));
+	theFramesPerSecond = 0;
+}
 
 
 void ViewWorld::slot_signalFF()
@@ -113,6 +120,7 @@ void ViewWorld::slot_signalPause()
 {
 	theSimSpeed = 0;
 	emit theTimer.stop();
+	emit theFramerateTimer.stop();
 }
 
 
@@ -122,7 +130,9 @@ void ViewWorld::slot_signalPlay()
 		slot_startSim();
 	isSimRunning=true;
 	theSimSpeed = 1000;
+	theFramesPerSecond = 0;
 	emit theTimer.start();
+	emit theFramerateTimer.start();
 }
 
 
@@ -130,30 +140,24 @@ void ViewWorld::slot_signalReset()
 {
 	isSimRunning=false;
 	emit theTimer.stop();
+	emit theFramerateTimer.stop();
 	theWorldPtr->deletePhysicsWorld();
 }
 
 
 void ViewWorld::slot_startSim()
 {
-	DEBUG1ENTRY;
-
-	// TODO: upon reset, the old object gets focus again - thanks, Qt!
-//	DrawObject myTemp(NULL);
-//	setFocusItem(&myTemp);
-//	clearFocus();
-//	Anchors::clearEditObjectDialogPtr();
-
 	theWorldPtr->createPhysicsWorld();
-	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 	theTimer.start(1000/25);
 	theSimulationTime = QTime::currentTime();
 	isSimRunning = true;
 
-//	if (theDisplayFramerate)
-//	{
-//		// update framerate every second
-//		theFramerateTimer.start(1000);
-//		theFramesPerSecond = 0;
-//	}
+	if (theDisplayFramerate)
+	{
+		// update framerate every second
+		theFramesPerSecond = 0;
+		theFramerateTimer.start(1000);
+	}
+	else
+		theFrameRateViewPtr->setText("");
 }

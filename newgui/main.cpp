@@ -47,6 +47,15 @@ bool theDrawDebug = false;
 // switching this option is possible through the theDrawOutlineActionPtr in MainWindow
 bool theDrawPolyOutline = false;
 
+// This variable defines whether TBE displays a frame refresh counter or not
+// TODO/FIXME: this should go into preferences or so at some point
+// (enabled in debug builds/disabled in release builds)
+#ifdef NDEBUG
+bool theDisplayFramerate = false;
+#else
+bool theDisplayFramerate = true;
+#endif
+
 #if !defined(NDEBUG)
 
 /** Print a demangled stack backtrace of the caller function.

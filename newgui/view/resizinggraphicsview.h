@@ -59,6 +59,9 @@ public:
 
     void enableGameResourcesDialog();
 
+    QAction* getFrameRateViewPtr()
+    { return theFrameRateViewPtr; }
+
 protected:
     virtual void resizeEvent(QResizeEvent *event);
 
@@ -80,6 +83,7 @@ private:
 	QPropertyAnimation* theGRAnimationPtr;
 	QAction*            theGRDownActionPtr;
 	QAction*            theGRUpActionPtr;
+	QAction*            theFrameRateViewPtr;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

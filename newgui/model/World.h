@@ -276,6 +276,10 @@ public:
 	  */
 	bool unregisterCallback(SimStepCallbackInterface* anInterface);
 
+	/// Redraws all objects in the World.
+	/// @param isSimRunning set to true if you want to use sim position/size
+	void updateViewWorld(bool isSimRunning);
+
 private:
 	typedef QSet<SimStepCallbackInterface*> CallbackList;
 	CallbackList theCallbackList;
@@ -284,10 +288,6 @@ private:
 	/// the actual (internal) call to add the DrawObject of a AbstractObject
 	/// to the corresponding ViewWorld
 	void addAbstractObjectToViewWorld(AbstractObject* aBOPtr);
-
-	/// Redraws all objects in the World.
-	/// @param isSimRunning set to true if you want to use sim position/size
-	void updateViewWorld(bool isSimRunning);
 
 public:
 	// Public attribute accessor methods

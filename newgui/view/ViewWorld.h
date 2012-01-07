@@ -23,6 +23,7 @@
 #include <QtCore/QTime>
 #include <QtCore/QTimer>
 
+class QAction;
 class ResizingGraphicsView;
 class World;
 
@@ -69,7 +70,7 @@ private slots:
 	void on_timerTick(void);
 
 	/// called whenever the framerate timer tick happens
-	//void on_framerateTimerTick(void);
+	void on_framerateTimerTick(void);
 
 private:
 	// Private attributes
@@ -78,7 +79,7 @@ private:
 	World* theWorldPtr;
 
 	QTimer theTimer;
-//	QTimer theFramerateTimer;
+	QTimer theFramerateTimer;
 	QTime  theSimulationTime;
 
 	/// milliseconds per time step ???
@@ -87,6 +88,8 @@ private:
 	unsigned int theFramesPerSecond;
 
 	bool isSimRunning;
+
+	QAction* theFrameRateViewPtr;
 
 private:
 	void initAttributes ( ) ;

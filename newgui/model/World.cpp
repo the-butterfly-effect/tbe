@@ -349,7 +349,6 @@ bool World::ShouldCollide(
 
 qreal World::simStep (void)
 {
-	printf("World::simStep - %f\n", theDeltaTime);
 	// clear the contact point lists
 	clearLists();
 
@@ -406,9 +405,6 @@ qreal World::simStep (void)
 	}
 
 	theTotalTime += theDeltaTime;
-
-	// iterate through all known objects to update the graphics part
-	updateViewWorld(true);
 
 #if 0
 	// check if all goals are met

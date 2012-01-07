@@ -25,7 +25,8 @@
 ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
 	QGraphicsView(parent),
 	theGameResourcesPtr(NULL),
-	theGRAnimationPtr(NULL)
+	theGRAnimationPtr(NULL),
+	theFrameRateViewPtr(NULL)
 
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
@@ -144,6 +145,9 @@ void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr
 	// hook up the buttons for the GameResources dialog
 	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
 	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
+
+	// this one displays the frame rate counter if active
+	theFrameRateViewPtr= aMenuBarPtr->addAction("");
 
 	// and set the QActions disabled for now
 	theGRDownActionPtr->setEnabled(false);

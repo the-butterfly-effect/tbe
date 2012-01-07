@@ -111,8 +111,8 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 		DEBUG5("    %fx%f\n", myAABB.GetExtents().x, myAABB.GetExtents().y);
 #endif
 	}
-	qDebug () << QString("Object %1 has mass %2 kg\n").arg(getName())
-				 .arg(theB2BodyPtr->GetMass());
+//	qDebug () << QString("Object %1 has mass %2 kg\n").arg(getName())
+//				 .arg(theB2BodyPtr->GetMass());
 	notifyJoints(JointInterface::CREATED);
 }
 
