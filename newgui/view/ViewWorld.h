@@ -53,14 +53,14 @@ public:
 signals:
 
 public slots:
-	// signals to set the game speed
+	// signals to start/stop/ffwd/reset the game
 	void slot_signalFF();
 	void slot_signalPause();
 	void slot_signalPlay();
 	void slot_signalReset();
 
-	/// public slot: start the simulation (at speed 1)
-	void slot_startSim();
+	void on_death();
+	void on_winning();
 
 private slots:
 	/// called by a oneshot timer after on_winning() was called

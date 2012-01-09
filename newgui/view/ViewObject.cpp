@@ -62,9 +62,6 @@ ViewObject::~ViewObject()
 
 void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter)
 {
-	// FIXME/TODO: do we need these if we use setTransform?
-	prepareGeometryChange();
-
 	// set transformations: origin, scale, translate
 
 	// Qt by default scales and rotates around (0,0),
@@ -88,22 +85,33 @@ void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position
 	// * then we translate in the setPos to set the the midpoint at the
 	//   defined position (instead of the top-left corner)
 
-    QTransform theTransform;
-     // Qt has the Y axis in opposite direction, so negate the angle...
-     theTransform.rotateRadians(-aCenter.angle);
-     theTransform.scale(THESCALE*aWidth/thePixmapWidth,
-                        THESCALE*aHeight/thePixmapHeight);
-    setTransform(theTransform,false);
-    update();
+    if (fabs(aWidth-theOldWidth)>0.001 || fabs(aHeight-theOldHeight)>0.001 ||
+            fabs(aCenter.angle-theOldPos.angle)>0.001)
+    {
+        QTransform theTransform;
+         // Qt has the Y axis in opposite direction, so negate the angle...
+         theTransform.rotateRadians(-aCenter.angle);
+         theTransform.scale(THESCALE*aWidth/thePixmapWidth,
+                            THESCALE*aHeight/thePixmapHeight);
+        setTransform(theTransform,false);
+        theOldWidth=aWidth;
+        theOldHeight=aHeight;
+        theOldPos.angle=aCenter.angle;
+    }
 
-	// Now we need to calculate the translation, based on the scaled&rotated
-	// object that happened around the top-left corner.
-	// So, where is the middle of our object currently?
-	// And -as always- don't forget to correct for Qt's wrong Y axis...
-	Position myMiddle = Position(0,0, -aCenter.angle)
-						+ Vector(aWidth/2, aHeight/2);
-	myMiddle.y = - myMiddle.y;
-	setPos(aCenter.toQPointF() - myMiddle.toQPointF());
+	if (aCenter!=theOldPos)
+	{
+		// Now we need to calculate the translation, based on the scaled&rotated
+		// object that happened around the top-left corner.
+		// So, where is the middle of our object currently?
+		// And -as always- don't forget to correct for Qt's wrong Y axis...
+		Position myMiddle = Position(0,0, -aCenter.angle)
+							+ Vector(aWidth/2, aHeight/2);
+		myMiddle.y = - myMiddle.y;
+		setPos(aCenter.toQPointF() - myMiddle.toQPointF());
+		theOldPos.x = aCenter.x;
+		theOldPos.y = aCenter.y;
+	}
 }
 
 void ViewObject::adjustObjectDrawing(void)

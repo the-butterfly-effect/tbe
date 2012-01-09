@@ -93,6 +93,10 @@ private:
 
 	qreal thePixmapWidth;
 	qreal thePixmapHeight;
+
+	qreal theOldWidth;
+	qreal theOldHeight;
+	Position theOldPos;
 };
 
 #endif // VIEWOBJECT_H

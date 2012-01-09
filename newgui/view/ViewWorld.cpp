@@ -92,9 +92,10 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
 
 void ViewWorld::on_timerTick()
 {
-	while(theSimulationTime < QTime::currentTime())
+	QTime myCurrentTime = QTime::currentTime();
+	while(theSimulationTime < myCurrentTime)
 	{
-		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * theSimSpeed);
+		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * 2 * theSimSpeed);
 	}
 
 	// iterate through all known objects to update the graphics part
@@ -127,30 +128,12 @@ void ViewWorld::slot_signalPause()
 void ViewWorld::slot_signalPlay()
 {
 	if (isSimRunning==false)
-		slot_startSim();
+		theWorldPtr->createPhysicsWorld();
 	isSimRunning=true;
+	theSimulationTime = QTime::currentTime();
 	theSimSpeed = 1000;
 	theFramesPerSecond = 0;
-	emit theTimer.start();
-	emit theFramerateTimer.start();
-}
-
-
-void ViewWorld::slot_signalReset()
-{
-	isSimRunning=false;
-	emit theTimer.stop();
-	emit theFramerateTimer.stop();
-	theWorldPtr->deletePhysicsWorld();
-}
-
-
-void ViewWorld::slot_startSim()
-{
-	theWorldPtr->createPhysicsWorld();
-	theTimer.start(1000/25);
-	theSimulationTime = QTime::currentTime();
-	isSimRunning = true;
+	emit theTimer.start(1000/25);
 
 	if (theDisplayFramerate)
 	{
@@ -160,4 +143,13 @@ void ViewWorld::slot_startSim()
 	}
 	else
 		theFrameRateViewPtr->setText("");
+}
+
+
+void ViewWorld::slot_signalReset()
+{
+	isSimRunning=false;
+	emit theTimer.stop();
+	emit theFramerateTimer.stop();
+	theWorldPtr->deletePhysicsWorld();
 }

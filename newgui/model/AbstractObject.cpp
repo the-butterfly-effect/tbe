@@ -270,25 +270,27 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 
 void AbstractObject::updateViewObject(bool isSimRunning) const
 {
-	// no need to update Scenery when sim is running
-	if (theB2BodyPtr==NULL && isSimRunning)
-	{
-		return;
-	}
-
-	// No sim running: adjust object drawing using static position & dimensions
+	// no b2body: no part of simulation
 	if (theB2BodyPtr==NULL)
 	{
-		theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
+		if (!isSimRunning)
+		{
+			// No sim running: adjust object drawing using static position & dimensions
+			theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
+		}
 		return;
 	}
 
-	// Sim running:
+	// Sim running: don't need to adjust objects that are static or asleep
 	assert(theViewObjectPtr != NULL);
-	if (theB2BodyPtr->IsAwake())
+	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
 	{
 		Position myPos(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 		// TODO/FIXME: using theWidth and theHeight here *must* be wrong!
 		theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, myPos);
 	}
+//	else
+//	{
+//		printf(" %s zzz\n", ASCII(getName()));
+//	}
 }
