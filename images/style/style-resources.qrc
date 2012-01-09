@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>button.png</file>
+        <file>WinFail.png</file>
+        <file>transparant.png</file>
     </qresource>
 </RCC>
