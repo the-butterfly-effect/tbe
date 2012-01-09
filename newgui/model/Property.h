@@ -129,9 +129,9 @@ public:
 	  * @param aBOPtrPtr	 (output) upon success contains pointer to AbstractObject
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
-//	bool property2ObjectPtr(World* aWorldPtr,
-//							 const QString& aPropertyName,
-//							 AbstractObject** aBOPtrPtr);
+	bool property2ObjectPtr(World* aWorldPtr,
+							 const QString& aPropertyName,
+							 AbstractObject** aBOPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value is the ID of an existing AbstractObject instance

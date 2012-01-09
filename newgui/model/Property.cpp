@@ -19,7 +19,7 @@
 #include "Position.h"
 #include "Property.h"
 #include "AbstractObject.h"
-//#include "World.h"
+#include "World.h"
 #include <QtCore/QStringList>
 
 #include "tbe_global.h"
@@ -178,7 +178,6 @@ bool PropertyList::property2Float(const QString& aPropertyName,
 }
 
 
-#if 0
 bool PropertyList::property2ObjectPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
@@ -193,6 +192,7 @@ bool PropertyList::property2ObjectPtr(
 	return true;
 }
 
+#if 0
 bool PropertyList::property2ObjectPlusVectorPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
