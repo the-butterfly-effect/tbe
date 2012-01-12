@@ -144,8 +144,10 @@ Vector operator*(const Vector& v1, const Vector& v2);
 
 /// compare two positions
 bool operator==(const Position& p1, const Position& p2);
+bool operator!=(const Position& p1, const Position& p2);
 
 /// compare two vectors
 bool operator==(const Vector& p1, const Vector& v2);
+bool operator!=(const Vector& p1, const Vector& v2);
 
 #endif // POSITION_H

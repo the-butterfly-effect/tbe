@@ -251,6 +251,10 @@ bool operator==(const Position& p1, const Position& p2)
 	return true;
 }
 
+bool operator!=(const Position& p1, const Position& p2)
+{
+	return !(p1==p2);
+}
 
 bool operator==(const Vector& v1, const Vector& v2)
 {
@@ -259,4 +263,9 @@ bool operator==(const Vector& v1, const Vector& v2)
 	if (fabs(v1.dy - v2.dy) > Position::minimalMove)
 		return false;
 	return true;
+}
+
+bool operator!=(const Vector& v1, const Vector& v2)
+{
+	return !(v1==v2);
 }
