@@ -92,6 +92,11 @@ static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
 	QObject::tr("The famous plastic green domino stone"),
 	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
+static AbstractRectObjectFactory theFloorFactory("Floor",
+	QObject::tr("Floor"),
+	QObject::tr("This is a floor piece: flat and horizontal."),
+	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
+
 
 // Constructors/Destructors
 //
