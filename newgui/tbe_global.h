@@ -81,9 +81,9 @@ extern const char* ASCII(const QString& aQString);
 /// instead of using hardcoded paths, please use the below:
 #define BINARY_DIRECTORY   (qApp->applicationDirPath())
 #define DATA_DIRECTORY     BINARY_DIRECTORY
-#define IMAGES_DIRECTORY   QString(DATA_DIRECTORY+"/images")
-#define LEVELS_DIRECTORY   QString(DATA_DIRECTORY+"/levels")
-#define I18N_DIRECTORY     QString(DATA_DIRECTORY+"/i18n")
+#define IMAGES_DIRECTORY   QString(DATA_DIRECTORY+"/../images")
+#define LEVELS_DIRECTORY   QString(DATA_DIRECTORY+"/../levels")
+#define I18N_DIRECTORY     QString(DATA_DIRECTORY+"/../i18n")
 
 /// defined in main.cpp
 extern bool theDisplayFramerate;

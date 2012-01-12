@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,17 +17,21 @@
  */
 
 #include "GameResources.h"
+#include "MainWindow.h"
 #include "Popup.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
 #include "ViewWorld.h"
+#include "WinFailDialog.h"
+#include "World.h"
 
-ResizingGraphicsView::ResizingGraphicsView(QWidget *parent) :
-	QGraphicsView(parent),
+ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
+	QGraphicsView(aParentPtr),
 	theGameResourcesPtr(NULL),
+	theMainWindowPtr(NULL),
+	theWinFailDialogPtr(NULL),
 	theGRAnimationPtr(NULL),
 	theFrameRateViewPtr(NULL)
-
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -158,20 +162,19 @@ void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr
 void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName)
 {
 	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
-//	theScenePtr=aScenePtr;
+	theScenePtr=aScenePtr;
 
 	setScene(aScenePtr);
 	fitInView(0, -aScenePtr->getHeight(),
 								aScenePtr->getWidth(), aScenePtr->getHeight());
 	showSimControls();
-//	aScenePtr->setSimSpeed(theSimSpeed);
-
-	QObject::connect(aScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
-
 //	parent()->setWindowTitle(APPNAME " - " + aLevelName);
 
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr);
+
+	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
+//	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath())), this, SLOT(slot_death());
 }
 
 
@@ -202,8 +205,66 @@ void ResizingGraphicsView::showSimControls(void)
 }
 
 
+void ResizingGraphicsView::slot_actionChooseLevel()
+{
+	emit theMainWindowPtr->on_action_Open_Level_triggered();
+	delete theWinFailDialogPtr;
+	theWinFailDialogPtr = NULL;
+}
+
+void ResizingGraphicsView::slot_actionNextLevel()
+{
+
+	delete theWinFailDialogPtr;
+	theWinFailDialogPtr = NULL;
+}
+
+void ResizingGraphicsView::slot_actionReplay()
+{
+	emit theScenePtr->slot_signalReset();
+	emit showSimControls();
+	delete theWinFailDialogPtr;
+	theWinFailDialogPtr = NULL;
+}
+
+
+void ResizingGraphicsView::slot_levelDeath(void)
+{
+	printf("\n\n******** death **********\n\n");
+	// only need to display the dialog once...
+	if (theWinFailDialogPtr!=NULL)
+		return;
+	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
+	emit theSimControlsPtr->onFailed();
+//	emit hideSimControls();
+	emit theScenePtr->slot_signalPause();
+}
+
 void ResizingGraphicsView::slot_levelWon(void)
 {
-	Popup::Info("You won!");
-	exit (0);
+	// only need to display the dialog once...
+	if (theWinFailDialogPtr!=NULL)
+		return;
+
+	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
+
+	// FIXME/TODO: must emit 'won' to simcontrols
+	// also need to update simcontrols for this!
+	emit hideSimControls();
+	theWinFailDialogPtr->show();
+	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(theWinFailDialogPtr, "geometry");
+	myAnimationPtr->setStartValue(QRectF(
+									  QPointF((width()-theWinFailDialogPtr->width())/2,
+											  -theWinFailDialogPtr->height()),
+									  theWinFailDialogPtr->size()));
+	myAnimationPtr->setEndValue(QRectF(
+									QPointF((width()-theWinFailDialogPtr->width())/2,
+											(height()-theWinFailDialogPtr->height())/2),
+									theWinFailDialogPtr->size()));
+	myAnimationPtr->setDuration(1500);
+	myAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
+	myAnimationPtr->start();
+
+	// also make the sim stop once the above animation is (almost) done...
+	QTimer::singleShot(1300, theScenePtr, SLOT(slot_signalPause()));
 }

@@ -23,17 +23,19 @@
 #include <QtGui/QResizeEvent>
 
 class GameResources;
+class MainWindow;
 class QMenu;
 class QMenuBar;
 class QPropertyAnimation;
 class SimulationControls;
 class ViewWorld;
+class WinFailDialog;
 
 class ResizingGraphicsView : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit ResizingGraphicsView(QWidget *parent = 0);
+    explicit ResizingGraphicsView(QWidget *aParentPtr = 0);
     ~ResizingGraphicsView();
 
     /// only to be called by MainWindow,
@@ -69,7 +71,12 @@ private slots:
     virtual void showGRDialog();
     virtual void hideGRDialog();
 
+    void slot_levelDeath(void);
     void slot_levelWon(void);
+
+    void slot_actionChooseLevel();
+    void slot_actionNextLevel();
+    void slot_actionReplay();
 
 signals:
 //    void hideGameResourcesDialog();
@@ -78,7 +85,10 @@ public slots:
 
 private:
     GameResources*      theGameResourcesPtr;
+    MainWindow*         theMainWindowPtr;
     SimulationControls* theSimControlsPtr;
+    ViewWorld*          theScenePtr;
+    WinFailDialog*      theWinFailDialogPtr;
 
 	QPropertyAnimation* theGRAnimationPtr;
 	QAction*            theGRDownActionPtr;

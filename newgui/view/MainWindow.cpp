@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,14 +25,10 @@
 
 
 #include "AbstractObject.h"
-#include "GameResources.h"
+#include "ChooseLevel.h"
 #include "Level.h"
 #include "Popup.h"
-#include "PieMenu.h"
-#include "SimulationControls.h"
 #include "UndoSingleton.h"
-#include "ViewObject.h"
-#include "ViewWorld.h"
 #include "World.h"
 
 
@@ -136,4 +132,15 @@ void MainWindow::setupView()
 
 	ui->graphicsView->enableGameResourcesDialog();
 
+}
+
+void MainWindow::on_action_Open_Level_triggered()
+{
+	// in ChooseLevel.ui, the dialog is made ApplicationGlobal.
+	ChooseLevel myDialog(this);
+	if (myDialog.exec()==QDialog::Rejected)
+		return;
+
+	QString myLevelName = myDialog.getCurrent();
+	loadLevel(myLevelName);
 }

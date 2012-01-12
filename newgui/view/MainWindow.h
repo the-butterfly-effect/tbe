@@ -52,6 +52,9 @@ protected:
 	void setupMenu(void);
 	void setupView(void);
 
+public slots:
+	void on_action_Open_Level_triggered();
+
 private:
 	Ui::MainWindow *ui;
 

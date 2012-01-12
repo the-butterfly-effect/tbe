@@ -42,6 +42,9 @@ public:
 	// Public accessor methods
 	//
 
+	const World* getWorldPtr() const
+	{ return theWorldPtr; }
+
 	qreal getWidth();
 	qreal getHeight();
 
@@ -59,13 +62,7 @@ public slots:
 	void slot_signalPlay();
 	void slot_signalReset();
 
-	void on_death();
-	void on_winning();
-
 private slots:
-	/// called by a oneshot timer after on_winning() was called
-	//void on_OneSecondAfterWinning(void);
-
 	/// called whenever a timer tick happens
 	void on_timerTick(void);
 
@@ -92,11 +89,7 @@ private:
 	QAction* theFrameRateViewPtr;
 
 private:
-	void initAttributes ( ) ;
-
-
-
-
+    void initAttributes ( ) ;
 
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
