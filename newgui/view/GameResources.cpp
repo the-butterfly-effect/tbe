@@ -17,6 +17,7 @@
  */
 
 #include "GameResources.h"
+#include "ImageCache.h"
 #include "Level.h"
 #include "ui_GameResources.h"
 
@@ -40,6 +41,7 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
+    ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
     setAutoFillBackground (true);
 }
 
