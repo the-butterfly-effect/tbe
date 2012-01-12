@@ -3,6 +3,7 @@ SOURCES += \
     model/CircleObjects.cpp \
     model/AbstractJoint.cpp \
     model/AbstractObject.cpp \
+    model/Goal.cpp \
     model/PolyObject.cpp \
     model/Position.cpp \
     model/PostIt.cpp \
@@ -15,6 +16,7 @@ HEADERS += \
     model/CircleObjects.h \
     model/AbstractJoint.h \
     model/AbstractObject.h \
+    model/Goal.h \
     model/PolyObject.h \
     model/Position.h \
     model/PostIt.h \

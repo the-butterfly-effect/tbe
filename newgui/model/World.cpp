@@ -18,7 +18,7 @@
 
 #include "World.h"
 #include "AbstractObject.h"
-//#include "Goal.h"
+#include "Goal.h"
 #include "resizinggraphicsview.h"
 #include "ViewObject.h"
 #include "AbstractJoint.h"
@@ -85,14 +85,12 @@ World* World::getWorldPtr()
 // Other methods
 //
 
-#if 0
 void World::addGoal(Goal* aGoalPtr)
 {
 	if (aGoalPtr == NULL)
 		return;
 	theGoalPtrList.push_back(aGoalPtr);
 }
-#endif
 
 #if 0
 void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2)
@@ -406,7 +404,6 @@ qreal World::simStep (void)
 
 	theTotalTime += theDeltaTime;
 
-#if 0
 	// check if all goals are met
 	bool areGoalsMet = true;
 	foreach(Goal* l, theGoalPtrList)
@@ -416,7 +413,7 @@ qreal World::simStep (void)
 			// check if fail is met
 			// one fail is enough to abort
 			if (l->checkForSuccess()==true)
-				signalDeath();
+				emit signalDeath();
 		}
 		else
 		{
@@ -427,8 +424,9 @@ qreal World::simStep (void)
 		}
 	}
 	if (areGoalsMet == true)
-		emit theViewWorldPtr->on_winning();
+		emit signalWon();
 
+#if 0
 	// make Box2D draw debug images if requested
 	if (theDrawDebug)
 		theB2WorldPtr->DrawDebugData();
@@ -436,13 +434,6 @@ qreal World::simStep (void)
 
 	return theDeltaTime;
 }
-
-#if 0
-void World::signalDeath(void)
-{
-	emit theViewWorldPtr->on_death();
-}
-#endif
 
 bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 {

@@ -18,6 +18,8 @@
 
 #include "tbe_global.h"
 #include "ImageCache.h"
+#include "Level.h"
+#include <QtCore/QCoreApplication>
 #include <QtCore/QFile>
 #include <QtGui/QPainter>
 #include <QtGui/QPixmapCache>
@@ -55,6 +57,13 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	}
 
 	// No, it isn't. Let's try to load the image.
+
+	// we have 3 locations to search for:
+	QStringList mySearchPath;
+	mySearchPath << IMAGES_DIRECTORY;
+	mySearchPath << ":";	// this is Qt-speak for compiled-in resources
+	mySearchPath << Level::getPathToLevelFile();
+
 	QString myFullPathName;
 	QPixmap myTempPixmap;
 	// I use a do...while(true) loop here to be able to break from a loop
@@ -63,18 +72,20 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	{
 		// TODO/FIXME: also read from the current level directory
 		// i.e. not just ../images
+		// maybe also check for :/ (i.e. the built-in resources)
+		// see above QStrlingList mySearchPath
 
-		myFullPathName = QString("../images/%1.png").arg(anImageBaseName);
+		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.png").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
-		myFullPathName = QString("../images/%1.jpg").arg(anImageBaseName);
+		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.jpg").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
-		myFullPathName = QString("../images/%1.svg").arg(anImageBaseName);
+		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.svg").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 		{
@@ -92,7 +103,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 			break;
 		}
 
-		myFullPathName = "../images/NotFound.png";
+		myFullPathName = "NotFound.png";
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 	} while(false);
 

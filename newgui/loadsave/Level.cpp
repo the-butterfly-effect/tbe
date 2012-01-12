@@ -22,8 +22,8 @@
 #include "Level.h"
 #include "ToolboxGroupSerializer.h"
 #include "World.h"
-//#include "GoalSerializer.h"
-//#include "Goal.h"
+#include "GoalSerializer.h"
+#include "Goal.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -48,8 +48,8 @@ static const char* theSceneString = "scene";
 	const char* theBackgroundString = "background";
 static const char* theToolboxString = "toolbox";
 
-//static const char* theGoalsString = "goals";
-//		   const char* theGoalString = "goal";
+static const char* theGoalsString = "goals";
+	   const char* theGoalString  = "goal";
 
 
 const char* theWidthAttributeString     = "width";
@@ -132,7 +132,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	QDomElement myDocElem;
 	QDomNamedNodeMap myNodeMap;
 	bool isOK1, isOK2;
-//	bool hasProblem = false;
+	bool hasProblem = false;
 	QString myResult;
 
     qreal myWidth;
@@ -257,59 +257,59 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	//
 	// parse the Goal section
 	//
-//	do {
-//		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
-//		mySceneNode=myDocElem.firstChildElement(theGoalsString);
-//		if (mySceneNode.nodeName()!= theGoalsString)
-//		{
-//			myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
-//			goto not_good;
-//		}
-//		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
-//		{
-//			// a goal entry has the following layout:
-//			//	<goal type="distance" lessthan="0.3">
-//			//		 <object ID="Butterfly"/>
-//			//		 <object ID="Flower"/>
-//			//	</goal>
-//			//
-//			// of these, 'type' is mandatory
-//			// everything else is optional and depends on the type of goal
+	do {
+		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
+		mySceneNode=myDocElem.firstChildElement(theGoalsString);
+		if (mySceneNode.nodeName()!= theGoalsString)
+		{
+			myErrorMessage += tr("no <%1> section found!").arg(theGoalsString);
+			goto not_good;
+		}
+		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
+		{
+			// a goal entry has the following layout:
+			//	<goal type="distance" lessthan="0.3">
+			//		 <object ID="Butterfly"/>
+			//		 <object ID="Flower"/>
+			//	</goal>
+			//
+			// of these, 'type' is mandatory
+			// everything else is optional and depends on the type of goal
 
-//			// simple sanity checks
-//			if (q.nodeName() == "#comment")
-//				continue;
-//			if (q.nodeName() != theGoalString)
-//			{
-//				myErrorMessage += tr("expected a <%1> section, got <%2>").arg(theGoalString).arg(q.nodeName());
-//				hasProblem = true;
-//				continue;
-//			}
+			// simple sanity checks
+			if (q.nodeName() == "#comment")
+				continue;
+			if (q.nodeName() != theGoalString)
+			{
+				myErrorMessage += tr("expected a <%1> section, got <%2>. ").arg(theGoalString).arg(q.nodeName());
+				hasProblem = true;
+				continue;
+			}
 
-//			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
-//			if (myGPtr == NULL)
-//			{
-//				myErrorMessage += tr("createObjectFromDom failed");
-//				hasProblem = true;
-//				continue;
-//			}
-//			if (myGPtr->parseProperties(theWorldPtr)==false)
-//			{
-//				myErrorMessage += tr("<%1> properties could not be parsed").arg(theGoalString);
-//				hasProblem = true;
-//				continue;
-//			}
+			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
+			if (myGPtr == NULL)
+			{
+				myErrorMessage += tr("createObjectFromDom failed");
+				hasProblem = true;
+				continue;
+			}
+			if (myGPtr->parseProperties(theWorldPtr)==false)
+			{
+				myErrorMessage += tr("<%1> properties could not be parsed. ").arg(theGoalString);
+				hasProblem = true;
+				continue;
+			}
 
-//			theWorldPtr->addGoal(myGPtr);
+			theWorldPtr->addGoal(myGPtr);
 
-//			if (q==myNode.lastChild())
-//				break;
-//		}
-//	} while (false);  // i.e. always run this loop only once
-//	if (hasProblem==true)
-//	{
-//		return "W " + myErrorMessage;
-//	}
+			if (q==myNode.lastChild())
+				break;
+		}
+	} while (false);  // i.e. always run this loop only once
+	if (hasProblem==true)
+	{
+		return "W " + myErrorMessage;
+	}
 
 	// and everything went OK - we're done :-)
 	aLevelInfoToolbox->setLevelPtr(this);

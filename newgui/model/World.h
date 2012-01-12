@@ -139,8 +139,10 @@ private:
   * the class holding all AbstractObjects and is responsible for the simulation
   */
 
-class World : public ContactListener, public DestructionListener, public b2ContactFilter
+class World : public QObject, public ContactListener, public DestructionListener, public b2ContactFilter
 {
+    Q_OBJECT
+
 public:
 
 	// Constructors/Destructors
@@ -225,9 +227,6 @@ public:
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 
-	/// called on death of an object (possibly several times!)
-	void signalDeath(void);
-
 	/** Take one step in the simulation loop
 	 * @note    each step has fixed time, defined in theDeltaTime.
 	 * @returns the time step taken in the simulation step in seconds
@@ -308,6 +307,10 @@ public:
 	/// this structure contains everything to draw the background in a scene
 	/// i.e. background image and/or gradient
 	Background theBackground;
+
+signals:
+	void signalWon();
+	void signalDeath();
 
 private:
 	// Private attributes
