@@ -41,7 +41,7 @@ class ContactInfo;
 //   ************************************************
 //   *                                              *
 //   * NOTE: the ObjectFactory class declaration is *
-//   *       below the AbstractObject declaration       *
+//   *       below the AbstractObject declaration   *
 //   *                                              *
 //   ************************************************
 
@@ -209,6 +209,15 @@ public:
 	/// @returns the value of theCenter
 	virtual Position getOrigCenter ( ) const
 		{ return theCenter; }
+
+	/**
+	 * Get the current Position of the object.
+	 * If there is an actual Physics model, it will return the position from
+	 * the physics model. If there is not, it will return getOrigCenter().
+	 *
+	 * @return the value of the current Center
+	 */
+	virtual Position getTempCenter ( ) const;
 
 	/// make sure to override for objects that continously change size during
 	/// the simulation

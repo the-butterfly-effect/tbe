@@ -158,6 +158,17 @@ b2World* AbstractObject::getB2WorldPtr(void) const
 	return theStaticB2WorldPtr;
 }
 
+
+Position AbstractObject::getTempCenter (void) const
+{
+	// no physics object, no temp center
+	if (isPhysicsObjectCreated()==false)
+		return getOrigCenter();
+
+	return Position(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
+}
+
+
 void AbstractObject::initAttributes ( )
 {
 	DEBUG5("AbstractObject::initAttributes\n");
