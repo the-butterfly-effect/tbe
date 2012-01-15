@@ -79,9 +79,9 @@ bool GoalEditor::addNewGoalToList(GoalPtrList& aList, int i, const QStandardItem
 {
 	QString myString = rowToString(&aModel, i, ';');
 	Goal* myGoalPtr = GoalSerializer::createObjectFromString(theWorldPtr, myString);
-	myGoalPtr->isFail = anIsFail;
 	if (myGoalPtr != NULL)
 	{
+		myGoalPtr->isFail = anIsFail;
 		aList.push_back(myGoalPtr);
 		return true;
 	}
