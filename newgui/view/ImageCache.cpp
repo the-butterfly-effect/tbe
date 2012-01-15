@@ -57,35 +57,40 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	}
 
 	// No, it isn't. Let's try to load the image.
+	QString myFullPathName;
+	QPixmap myTempPixmap;
 
 	// we have 3 locations to search for:
 	QStringList mySearchPath;
 	mySearchPath << IMAGES_DIRECTORY;
 	mySearchPath << ":";	// this is Qt-speak for compiled-in resources
 	mySearchPath << Level::getPathToLevelFile();
-
-	QString myFullPathName;
-	QPixmap myTempPixmap;
-	// I use a do...while(true) loop here to be able to break from a loop
-	// that is run only once.
-	do
+	for (int i=0; i<mySearchPath.count()+1; i++)
 	{
+		// if i equals that, we know we have exhausted our search paths
+		if (i==mySearchPath.count())
+		{
+			myFullPathName = IMAGES_DIRECTORY + "/NotFound.png";
+			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+			break;
+		}
+
 		// TODO/FIXME: also read from the current level directory
 		// i.e. not just ../images
 		// maybe also check for :/ (i.e. the built-in resources)
 		// see above QStrlingList mySearchPath
 
-		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.png").arg(anImageBaseName);
+		myFullPathName = QString(mySearchPath[i] + "/%1.png").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
-		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.jpg").arg(anImageBaseName);
+		myFullPathName = QString(mySearchPath[i] + "/%1.jpg").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 			break;
 
-		myFullPathName = QString(IMAGES_DIRECTORY + "/%1.svg").arg(anImageBaseName);
+		myFullPathName = QString(mySearchPath[i] + "/%1.svg").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
 		{
@@ -102,10 +107,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 			myPainter.end();
 			break;
 		}
-
-		myFullPathName = "NotFound.png";
-		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-	} while(false);
+	}
 
 	DEBUG5("  going to use image: %s!", ASCII(myFullPathName));
 	if (myTempPixmap.isNull())
