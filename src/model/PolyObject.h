@@ -39,12 +39,8 @@ public:
 	// Constructors/Destructors
 	//
 
-	/**
-	 * Empty Constructor
-	 */
-	PolyObject ( );
-
-	/// elaborate constructor, only used by the ConcreteRectObject thingies
+	/// elaborate constructor, only one to use
+	explicit
 	PolyObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& anImageName,
