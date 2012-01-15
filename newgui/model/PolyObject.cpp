@@ -34,9 +34,12 @@ public:
 	PolyObjectFactory(void)
 	{	announceObjectType(DEFAULT_POLYOBJECT_NAME, this); }
 	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new PolyObject()); }
+	{	return fixObject(new
+						 PolyObject(DEFAULT_POLYOBJECT_NAME, "", DEFAULT_POLYOBJECT_NAME,
+								   "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+									1.0, 1.0, 0, 0.3)); }
 };
-static PolyObjectFactory theRectObjectFactory;
+static PolyObjectFactory thePolyObjectFactory;
 
 
 /** the AbstractPolyObjectFactory
@@ -176,14 +179,6 @@ static AbstractPolyObjectFactory the80QuarterArcFactory(
 
 // Constructors/Destructors
 //
-
-PolyObject::PolyObject ( )
-{
-	DEBUG5("PolyObject::PolyObject()\n");
-	PolyObject(DEFAULT_POLYOBJECT_NAME, "", DEFAULT_POLYOBJECT_NAME,
-			   "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
-				1.0, 1.0, 0, 0.3);
-}
 
 PolyObject::PolyObject( const QString& aDisplayName,
 				const QString& aTooltip,
