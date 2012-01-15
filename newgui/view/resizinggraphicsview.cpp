@@ -36,8 +36,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
 	theSimControlsPtr = new SimulationControls(this);
-	hideSimControls();
-
 }
 
 
@@ -126,7 +124,7 @@ void ResizingGraphicsView::hideGRDialog()
 
 void ResizingGraphicsView::hideSimControls(void)
 {
-	theSimControlsPtr->hide();
+	emit theSimControlsPtr->hideYourself();
 }
 
 
@@ -201,7 +199,7 @@ void ResizingGraphicsView::showGRDialog()
 
 void ResizingGraphicsView::showSimControls(void)
 {
-	theSimControlsPtr->show();
+	emit theSimControlsPtr->showYourself();
 }
 
 
@@ -251,6 +249,9 @@ void ResizingGraphicsView::slot_levelWon(void)
 	// FIXME/TODO: must emit 'won' to simcontrols
 	// also need to update simcontrols for this!
 	emit hideSimControls();
+	theGRDownActionPtr->setEnabled(false);
+	theGRUpActionPtr->setEnabled(false);
+
 	theWinFailDialogPtr->show();
 	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(theWinFailDialogPtr, "geometry");
 	myAnimationPtr->setStartValue(QRectF(

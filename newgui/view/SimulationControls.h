@@ -78,8 +78,16 @@ public slots:
 	void onFailed(void)
 	{ emit failed(); }
 
+	/// hide (and disable) the controls
+	void hideYourself();
+	/// show (and enable) the controls
+	void showYourself();
+
 private:
 	QStateMachine theSimStateMachine;
+
+	QAction* theTopAction;
+	QAction* theBotAction;
 
 	QIcon thePlayIcon;
 	QIcon thePauseIcon;
