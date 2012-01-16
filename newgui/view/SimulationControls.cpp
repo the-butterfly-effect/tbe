@@ -21,9 +21,6 @@
 #include "ui_SimulationControls.h"
 #include "ImageCache.h"
 
-#include <QtCore/QPropertyAnimation>
-#include <QtCore/QSignalTransition>
-
 #include <cstdio>
 
 void SimState::onEntry ( QEvent * event )
