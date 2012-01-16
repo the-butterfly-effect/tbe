@@ -1,5 +1,6 @@
 
 SOURCES += \
+	view/animateddialog.cpp \
 	view/ChooseLevel.cpp \
 	view/GameResources.cpp \
 	view/GoalEditor.cpp \
@@ -11,11 +12,12 @@ SOURCES += \
 	view/ViewObject.cpp \
 #	view/ViewCircleObject.cpp \
 	view/ViewPostIt.cpp \
-    view/ViewWorld.cpp \
-    view/ViewToolboxGroup.cpp \
-    view/WinFailDialog.cpp
+	view/ViewWorld.cpp \
+	view/ViewToolboxGroup.cpp \
+	view/WinFailDialog.cpp
 
 HEADERS  += \
+	view/animateddialog.h \
 	view/Background.h \
 	view/ChooseLevel.h \
 	view/GameResources.h \
@@ -31,7 +33,7 @@ HEADERS  += \
 	view/ViewPostIt.h \
 	view/ViewWorld.h \
 	view/ViewToolboxGroup.h \
-    view/WinFailDialog.h
+	view/WinFailDialog.h
 
 FORMS    += \
 	view/ChooseLevel.ui \
