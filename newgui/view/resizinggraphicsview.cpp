@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "ChooseLevel.h"
 #include "GameResources.h"
 #include "MainWindow.h"
 #include "Popup.h"
@@ -30,7 +31,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	theGameResourcesPtr(NULL),
 	theMainWindowPtr(NULL),
 	theWinFailDialogPtr(NULL),
-	theGRAnimationPtr(NULL),
 	theFrameRateViewPtr(NULL)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
@@ -42,7 +42,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 ResizingGraphicsView::~ResizingGraphicsView()
 {
 	delete theSimControlsPtr;
-	delete theGRAnimationPtr;
 }
 
 
@@ -61,19 +60,13 @@ void ResizingGraphicsView::clearViewWorld(void)
 	hideSimControls();
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
-#if 0
+
 	if (theScenePtr != NULL)
 	{
 		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
-
-		// Destroying theScene (which is a DrawWorld) will automatically
-		// destroy the associated UndoStack. The UndoStack will de-register
-		// itself with the UndoGroup - no need to do anything myself here :-)
-
 		delete theScenePtr;
 		theScenePtr=NULL;
 	}
-#endif
 }
 
 
@@ -104,19 +97,7 @@ GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 
 void ResizingGraphicsView::hideGRDialog()
 {
-	delete theGRAnimationPtr;
-	theGRAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
-	theGRAnimationPtr->setEndValue(QRectF(
-									  QPointF((width()-theGameResourcesPtr->width())/2,
-											  -theGameResourcesPtr->height()),
-									  theGameResourcesPtr->size()));
-	theGRAnimationPtr->setStartValue(QRectF(
-									QPointF((width()-theGameResourcesPtr->width())/2,
-											(height()-theGameResourcesPtr->height())/2),
-									theGameResourcesPtr->size()));
-	theGRAnimationPtr->setDuration(1000);
-	theGRAnimationPtr->setEasingCurve(QEasingCurve::OutQuad);
-	theGRAnimationPtr->start();
+	theGameResourcesPtr->disappearAnimated();
 	theGRDownActionPtr->setEnabled(true);
 	theGRUpActionPtr->setEnabled(false);
 }
@@ -140,8 +121,9 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 }
 
 
-void ResizingGraphicsView::setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
+void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
 {
+	theMainWindowPtr = aMWPtr;
 	theSimControlsPtr->setup(anMenuControlsPtr);
 
 	// hook up the buttons for the GameResources dialog
@@ -178,20 +160,8 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 
 void ResizingGraphicsView::showGRDialog()
 {
-	delete theGRAnimationPtr;
 	theGameResourcesPtr->parentResize(transform());
-	theGRAnimationPtr = new QPropertyAnimation(theGameResourcesPtr, "geometry");
-	theGRAnimationPtr->setStartValue(QRectF(
-									  QPointF((width()-theGameResourcesPtr->width())/2,
-											  -theGameResourcesPtr->height()),
-									  theGameResourcesPtr->size()));
-	theGRAnimationPtr->setEndValue(QRectF(
-									QPointF((width()-theGameResourcesPtr->width())/2,
-											(height()-theGameResourcesPtr->height())/2),
-									theGameResourcesPtr->size()));
-	theGRAnimationPtr->setDuration(1000);
-	theGRAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
-	theGRAnimationPtr->start();
+	theGameResourcesPtr->appearAnimated();
 	theGRDownActionPtr->setEnabled(false);
 	theGRUpActionPtr->setEnabled(true);
 }
@@ -205,6 +175,7 @@ void ResizingGraphicsView::showSimControls(void)
 
 void ResizingGraphicsView::slot_actionChooseLevel()
 {
+	DEBUG3ENTRY;
 	emit theMainWindowPtr->on_action_Open_Level_triggered();
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
@@ -212,13 +183,22 @@ void ResizingGraphicsView::slot_actionChooseLevel()
 
 void ResizingGraphicsView::slot_actionNextLevel()
 {
-
+	DEBUG3ENTRY;
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
+
+	ChooseLevel myDialog(this, true);
+	QString myNextLevelName = myDialog.getCurrent();
+	DEBUG1("theMainWindowPtr=%p\n", theMainWindowPtr);
+	if (myNextLevelName.isEmpty()==false)
+		theMainWindowPtr->loadLevel(myNextLevelName);
+	else
+		emit slot_actionChooseLevel();
 }
 
 void ResizingGraphicsView::slot_actionReplay()
 {
+	DEBUG3ENTRY;
 	emit theScenePtr->slot_signalReset();
 	emit showSimControls();
 	delete theWinFailDialogPtr;
@@ -228,7 +208,6 @@ void ResizingGraphicsView::slot_actionReplay()
 
 void ResizingGraphicsView::slot_levelDeath(void)
 {
-	printf("\n\n******** death **********\n\n");
 	// only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;
@@ -252,19 +231,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 	theGRDownActionPtr->setEnabled(false);
 	theGRUpActionPtr->setEnabled(false);
 
-	theWinFailDialogPtr->show();
-	QPropertyAnimation* myAnimationPtr = new QPropertyAnimation(theWinFailDialogPtr, "geometry");
-	myAnimationPtr->setStartValue(QRectF(
-									  QPointF((width()-theWinFailDialogPtr->width())/2,
-											  -theWinFailDialogPtr->height()),
-									  theWinFailDialogPtr->size()));
-	myAnimationPtr->setEndValue(QRectF(
-									QPointF((width()-theWinFailDialogPtr->width())/2,
-											(height()-theWinFailDialogPtr->height())/2),
-									theWinFailDialogPtr->size()));
-	myAnimationPtr->setDuration(1500);
-	myAnimationPtr->setEasingCurve(QEasingCurve::OutBounce);
-	myAnimationPtr->start();
+	theWinFailDialogPtr->appearAnimated();
 
 	// also make the sim stop once the above animation is (almost) done...
 	QTimer::singleShot(1300, theScenePtr, SLOT(slot_signalPause()));

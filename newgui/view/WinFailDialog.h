@@ -19,7 +19,8 @@
 #ifndef WINFAILDIALOG_H
 #define WINFAILDIALOG_H
 
-#include "resizinggraphicsview.h"
+//#include "resizinggraphicsview.h"
+#include "animateddialog.h"
 #include <QWidget>
 
 namespace Ui {
@@ -30,7 +31,7 @@ class WinFailDialog;
   * It contains options to go to the next level, to replay or to choose a
   * specific level.
   */
-class WinFailDialog : public QWidget
+class WinFailDialog : public AnimatedDialog
 {
     Q_OBJECT
 

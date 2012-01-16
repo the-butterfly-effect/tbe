@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011  Klaas van Gend
+ * This file copyright (C) 2011,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,19 +19,13 @@
 #ifndef GAMERESOURCES_H
 #define GAMERESOURCES_H
 
-#include <QtGui/QWidget>
-
 namespace Ui {
     class GameResources;
 }
 
-class AbstractObject;
+#include "animateddialog.h"
 class Level;
 #include "LocalString.h"
-class QMenuBar;
-class QGraphicsScene;
-#include "resizinggraphicsview.h"
-#include "ToolboxGroup.h"
 class ViewWorld;
 
 
@@ -41,7 +35,7 @@ class ViewWorld;
 ///
 /// Usually this class is owned by the resizingsgraphicsview of MainWindow,
 /// which this class is drawn on top of (like an overlay).
-class GameResources : public QWidget
+class GameResources : public AnimatedDialog
 {
     Q_OBJECT
 

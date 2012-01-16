@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011  Klaas van Gend
+ * This file copyright (C) 2011,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,21 +19,14 @@
 #include "GameResources.h"
 #include "ImageCache.h"
 #include "Level.h"
-#include "ui_GameResources.h"
-
 #include "tbe_global.h"
-
-#include <QtCore/QAbstractAnimation>
-#include <QtCore/QAbstractTransition>
-#include <QtGui/QGraphicsView>
-#include <QtGui/QMenuBar>
-#include <QtCore/QPropertyAnimation>
+#include "ui_GameResources.h"
 #include "ViewObject.h"
 #include "ViewToolboxGroup.h"
 #include "ViewWorld.h"
 
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
-    QWidget(aRSGVPtr),
+    AnimatedDialog(aRSGVPtr),
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
     theViewWorldPtr(NULL),

@@ -94,15 +94,17 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+	ui->graphicsView->enableGameResourcesDialog();
 }
 
 
 void MainWindow::purgeLevel(void)
 {
 	DEBUG1ENTRY;
-	ui->graphicsView->clearViewWorld();
+	UndoSingleton::clear();
 	delete theLevelPtr;
 	theLevelPtr=NULL;
+	ui->graphicsView->clearViewWorld();
 }
 
 
@@ -125,13 +127,10 @@ void MainWindow::setupView()
 	myRedoActionPtr->setShortcuts(redoShortcuts);
 	ui->menuEdit->addAction(myRedoActionPtr);
 
-	ui->graphicsView->setup(ui->menuBar, ui->menuControls);
+	ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
 	ui->graphicsView->createGameResourcesDialog();
 
 	loadLevel("newguitest.xml");
-
-	ui->graphicsView->enableGameResourcesDialog();
-
 }
 
 void MainWindow::on_action_Open_Level_triggered()

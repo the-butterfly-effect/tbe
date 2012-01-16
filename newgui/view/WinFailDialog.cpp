@@ -23,7 +23,7 @@
 
 WinFailDialog::WinFailDialog(MessageType aType,
                              ResizingGraphicsView* aParent) :
-    QWidget(aParent),
+    AnimatedDialog(aParent),
     ui(new Ui::WinFailDialog),
     theParentPtr(aParent)
 {

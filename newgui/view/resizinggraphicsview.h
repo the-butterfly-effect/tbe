@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,7 +26,6 @@ class GameResources;
 class MainWindow;
 class QMenu;
 class QMenuBar;
-class QPropertyAnimation;
 class SimulationControls;
 class ViewWorld;
 class WinFailDialog;
@@ -47,10 +46,12 @@ public:
     /// in the view
     void setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName);
 
-    /// this member does initialisation beyond creation
-    /// @param
-    /// @param
-    void setup(QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
+    /// This member does initialisation beyond creation,
+    /// i.e. hooking up various UI elements to actions.
+    /// @param aMWPtr
+    /// @param aMenuBarPtr
+    /// @param aMenuControlsPtr
+    void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
 
     void hideSimControls(void);
     void showSimControls(void);
@@ -90,7 +91,6 @@ private:
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;
 
-	QPropertyAnimation* theGRAnimationPtr;
 	QAction*            theGRDownActionPtr;
 	QAction*            theGRUpActionPtr;
 	QAction*            theFrameRateViewPtr;
