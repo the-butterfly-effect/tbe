@@ -79,12 +79,11 @@ void ResizingGraphicsView::createGameResourcesDialog()
 
 void ResizingGraphicsView::enableGameResourcesDialog(void)
 {
-	theGRDownActionPtr->setEnabled(false);
-	theGRUpActionPtr->setEnabled(true);
-
 	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(showGRDialog()));
 	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(hideGRDialog()));
 	connect(theGameResourcesPtr, SIGNAL(hideMe()), this, SLOT(hideGRDialog()));
+
+	QTimer::singleShot(10, this, SLOT(showGRDialog()));
 }
 
 
