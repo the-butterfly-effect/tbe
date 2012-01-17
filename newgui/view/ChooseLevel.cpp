@@ -31,14 +31,14 @@ static const int  TITLE_COLUMN=1;
 static const int  FILENAME_COLUMN=2;
 
 
-ChooseLevel::ChooseLevel(QWidget *parent, bool isNoShow) :
-	QDialog(parent),
+ChooseLevel::ChooseLevel(ResizingGraphicsView *aParentPtr, bool isNoShow) :
+	AnimatedDialog(aParentPtr),
 	m_ui(new Ui::ChooseLevel)
 {
 	m_ui->setupUi(this);
 	readLevels( LEVELS_DIRECTORY + "/levels.xml" );
 	if (!isNoShow)
-		show();
+		appearAnimated();
 }
 
 ChooseLevel::~ChooseLevel()
@@ -58,6 +58,7 @@ void ChooseLevel::changeEvent(QEvent *e)
     }
 }
 
+
 QString ChooseLevel::getCurrent(void)
 {
 	QTreeWidgetItem* myItemPtr = m_ui->theTreeWidget->currentItem();
@@ -66,6 +67,18 @@ QString ChooseLevel::getCurrent(void)
 	return myItemPtr->text(FILENAME_COLUMN);
 }
 
+
+void ChooseLevel::on_pushButton_go_clicked()
+{
+	emit loadLevel(getCurrent());
+	disappearAnimated();
+}
+
+
+void ChooseLevel::on_pushButton_cancel_clicked()
+{
+	disappearAnimated();
+}
 
 
 bool ChooseLevel::readLevels(const QString& aFileName )

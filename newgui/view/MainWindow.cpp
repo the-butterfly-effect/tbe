@@ -135,11 +135,7 @@ void MainWindow::setupView()
 
 void MainWindow::on_action_Open_Level_triggered()
 {
-	// in ChooseLevel.ui, the dialog is made ApplicationGlobal.
-	ChooseLevel myDialog(this);
-	if (myDialog.exec()==QDialog::Rejected)
-		return;
-
-	QString myLevelName = myDialog.getCurrent();
-	loadLevel(myLevelName);
+	ChooseLevel* myDialogPtr = new ChooseLevel(ui->graphicsView);
+	connect(myDialogPtr, SIGNAL(loadLevel(QString)),
+			this, SLOT(loadLevel(QString)));
 }

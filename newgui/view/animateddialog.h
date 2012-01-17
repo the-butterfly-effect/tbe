@@ -33,6 +33,10 @@ class AnimatedDialog : public QWidget
 public:
     explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = NULL);
 
+    /// set the dialog to delete itself upon disappearance is complete
+    void setDeleteOnDisappear(bool isToBeDeleted)
+    { theIsToBeDeleted = isToBeDeleted; }
+
 signals:
 
 public slots:
@@ -45,6 +49,8 @@ private:
     ResizingGraphicsView* theOurParentPtr;
     QPropertyAnimation theAnimation;
     QTimer theHideTimer;
+
+    bool theIsToBeDeleted;
 };
 
 #endif // ANIMATEDDIALOG_H

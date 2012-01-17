@@ -19,33 +19,37 @@
 #ifndef ChooseLevel_H
 #define ChooseLevel_H
 
+#include "animateddialog.h"
 #include "LocalString.h"
 
 #include <QtGui/QDialog>
-
-#include <QTreeWidget>
-#include <QXmlDefaultHandler>
+#include <QtGui/QTreeWidget>
+#include <QtXml/QXmlDefaultHandler>
 
 namespace Ui {
 	class ChooseLevel;
 }
 
-class ChooseLevel : public QDialog {
+class ChooseLevel : public AnimatedDialog {
 	Q_OBJECT
 public:
-	ChooseLevel(QWidget *parent = 0, bool isNoShow=false);
+	ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow=false);
 	virtual ~ChooseLevel();
 
 	/// @returns the currently selected level, which should be the first
 	/// not-conquered level. If there is none, returns an empty string.
 	QString getCurrent(void);
 
+signals:
+	void loadLevel(const QString&);
+
 protected slots:
 	void on_theTreeWidget_itemDoubleClicked()
-	{ emit accept();}
+	{ on_pushButton_go_clicked();}
 
-signals:
-//	void accept();
+	void on_pushButton_go_clicked();
+
+	void on_pushButton_cancel_clicked();
 
 protected:
 	void changeEvent(QEvent *e);

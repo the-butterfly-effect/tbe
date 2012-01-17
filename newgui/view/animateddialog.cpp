@@ -21,7 +21,8 @@
 AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
     QWidget(aParentPtr),
     theOurParentPtr(aParentPtr),
-    theAnimation(NULL, "geometry")
+    theAnimation(NULL, "geometry"),
+    theIsToBeDeleted(false)
 {
     theHideTimer.setSingleShot(true);
     connect(&theHideTimer, SIGNAL(timeout()), this, SLOT(hide()));
@@ -60,6 +61,13 @@ void AnimatedDialog::disappearAnimated()
 	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutQuad);
 	theAnimation.start();
-	// hide slightly later than the animation ends
+
+	// are we also to delete this object after it is hidden?
+	if (theIsToBeDeleted)
+	{
+		connect(&theHideTimer, SIGNAL(timeout()), this, SLOT(deleteLater()));
+	}
+
+	// hide (and maybe delete) slightly later than the animation ends
 	theHideTimer.start(DURATION*1.05);
 }

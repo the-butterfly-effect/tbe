@@ -39,10 +39,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-	/// loads the level specified by the file name
-	/// @param aFileName guess what: the file name. Duh.
-	void loadLevel(const QString& aFileName);
-
 	/// deletes the existing Level instance and removes its view
 	void purgeLevel(void);
 
@@ -53,6 +49,10 @@ protected:
 	void setupView(void);
 
 public slots:
+	/// loads the level specified by the file name
+	/// @param aFileName guess what: the file name. Duh.
+	void loadLevel(const QString& aFileName);
+
 	void on_action_Open_Level_triggered();
 
 private:
