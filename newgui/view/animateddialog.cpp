@@ -17,6 +17,10 @@
  */
 
 #include "animateddialog.h"
+#include <QtCore/QMutex>
+
+AnimatedDialog* AnimatedDialog::theCurrentlyViewedAnimatedDialog = NULL;
+static QMutex theAnimatedDialogMutex;
 
 AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
     QWidget(aParentPtr),
@@ -32,6 +36,16 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
 void AnimatedDialog::appearAnimated()
 {
 	theHideTimer.stop();
+
+	// make the currently visible dialog go away
+	theAnimatedDialogMutex.lock();
+	AnimatedDialog* myADPtr = theCurrentlyViewedAnimatedDialog;
+	theCurrentlyViewedAnimatedDialog = this;
+	theAnimatedDialogMutex.unlock();
+	if (myADPtr!=NULL)
+		emit myADPtr->disappearAnimated();
+
+	// setup the animation to appear
 	theAnimation.setTargetObject(this);
 	theAnimation.setStartValue(QRectF(
 									  QPointF((theOurParentPtr->width() - width())/2,
@@ -48,8 +62,15 @@ void AnimatedDialog::appearAnimated()
 
 void AnimatedDialog::disappearAnimated()
 {
-	const qreal DURATION=1000;
+	// If we're still currently visible, delist ourselves.
+	// Yes, I'm aware there is a potential race condition here.
+	theAnimatedDialogMutex.lock();
+	if (theCurrentlyViewedAnimatedDialog==this)
+		theCurrentlyViewedAnimatedDialog=NULL;
+	theAnimatedDialogMutex.unlock();
 
+	// setup disappear animation
+	const qreal DURATION=1000;
 	theAnimation.setTargetObject(this);
 	theAnimation.setStartValue(QRectF(
 								   QPointF((theOurParentPtr->width()  - width())/2,

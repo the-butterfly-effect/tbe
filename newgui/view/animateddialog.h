@@ -37,10 +37,15 @@ public:
     void setDeleteOnDisappear(bool isToBeDeleted)
     { theIsToBeDeleted = isToBeDeleted; }
 
-signals:
-
 public slots:
+
+    /// Animates this 'dialog' into the screen.
+    /// Will also trigger all other dialogs to go away.
     void appearAnimated();
+
+    /// Disappear using animation.
+    /// @post Also deletes the object if member variable
+    ///       theIsToBeDeleted is true.
     void disappearAnimated();
 
 private:
@@ -51,6 +56,9 @@ private:
     QTimer theHideTimer;
 
     bool theIsToBeDeleted;
+
+    /// static pointer to currently visible
+    static AnimatedDialog* theCurrentlyViewedAnimatedDialog;
 };
 
 #endif // ANIMATEDDIALOG_H
