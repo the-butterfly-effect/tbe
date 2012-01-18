@@ -19,7 +19,7 @@
 #ifndef VIEWOBJECTACTIONDECORATOR_H
 #define VIEWOBJECTACTIONDECORATOR_H
 
-#include <QGraphicsSvgItem>
+#include <QGraphicsPixmapItem>
 
 // forward declaration
 class ViewObject;
@@ -29,12 +29,14 @@ class QGraphicsSceneMouseEvent;
 /**
   *
   */
-class ViewObjectActionDecorator : public QGraphicsSvgItem
+class ViewObjectActionDecorator : public QGraphicsPixmapItem
 {
 public:
     ViewObjectActionDecorator(ViewObject* parent,
                               const QString& aDecoratorName,
                               AbstractUndoCommand* myAbstractUndoCommandPtr);
+
+    void setCrossState(bool isCrossToBeSet);
 
 protected:
     /// overridden from QGraphicsSvgItem so we can send that info
@@ -51,7 +53,13 @@ protected:
 
 
 private:
+    void displayCross(void);
+    void displayNormal(void);
+
     AbstractUndoCommand* theAUCPtr;
+
+    QPixmap theRegularImage;
+    QPixmap theCrossImage;
 };
 
 #endif // VIEWOBJECTACTIONDECORATOR_H

@@ -38,8 +38,6 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
 	theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
 
-	addRect(0, 0, getWidth(), -getHeight());
-
 	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
 		theWorldPtr->theBackground.theImageName.isEmpty())
 	{

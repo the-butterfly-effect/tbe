@@ -22,12 +22,13 @@
 #include "AbstractObject.h"
 #include <QGraphicsSceneMouseEvent>
 
+
 MoveUndoCommand::MoveUndoCommand(
         ViewObject* anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
 {
     DEBUG3ENTRY;
-    setupProxyImage("../images/ProxyMove.svg");
+    setupProxyImage("ProxyMove");
 }
 
 
@@ -37,6 +38,7 @@ bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theNewPos = theOrigPos.toVector() + Vector(myMousePos-theButtonDownPosition);
     theNewPos.angle = theOrigPos.angle;
     theViewObjPtr->setNewGeometry(theNewPos);
+    theVOADPtr->setCrossState(isViewObjectColliding());
     return true;
 }
 

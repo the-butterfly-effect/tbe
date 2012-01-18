@@ -24,7 +24,7 @@
 
 // forward declarations
 class ViewObject;
-class ViewObjectActionDecorator;
+#include "ViewObjectActionDectorator.h"
 class QGraphicsSceneMouseEvent;
 
 /** this abstract class is the godfather of all undo classes
@@ -44,6 +44,9 @@ public:
     /// call this member to cement this action into the undo stack
     /// and redo the last action to make sure the object is correct
     void commit();
+
+    /// @returns true if the ViewObject is in collision with anything else
+    bool isViewObjectColliding(void);
 
     /// TODO/FIXME: Implement
     /// @returns true if event is handled already.

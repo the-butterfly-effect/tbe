@@ -17,6 +17,7 @@
  */
 
 #include "AbstractUndoCommand.h"
+#include "ImageCache.h"
 #include "MoveUndoCommand.h"
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
@@ -28,10 +29,15 @@ ViewObjectActionDecorator::ViewObjectActionDecorator(
         ViewObject* parent,
         const QString& aDecoratorName,
         AbstractUndoCommand* myAbstractUndoCommandPtr)
-    : QGraphicsSvgItem(aDecoratorName, parent),
+    : QGraphicsPixmapItem(parent),
       theAUCPtr(myAbstractUndoCommandPtr)
 {
     DEBUG3ENTRY;
+
+	ImageCache::getPixmap(aDecoratorName, &theRegularImage);
+	setPixmap(theRegularImage);
+	ImageCache::getPixmap("BigCross", &theCrossImage);
+
     // we need to have the same size as our parent
     QRectF parSize = parent->boundingRect();
     QRectF mySize = boundingRect();
@@ -40,11 +46,33 @@ ViewObjectActionDecorator::ViewObjectActionDecorator(
 }
 
 
+void ViewObjectActionDecorator::setCrossState(bool isCrossToBeSet)
+{
+    if (isCrossToBeSet)
+        displayCross();
+    else
+        displayNormal();
+}
+
+void ViewObjectActionDecorator::displayCross(void)
+{
+    setPixmap(theCrossImage);
+    // TODO/FIXME: emit "cross present signal"
+}
+
+
+void ViewObjectActionDecorator::displayNormal(void)
+{
+    setPixmap(theRegularImage);
+    // TODO/FIXME: emit "no cross signal"
+}
+
+
 void
 ViewObjectActionDecorator::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 {
     if (theAUCPtr->mouseMoveEvent(event)==false)
-        QGraphicsSvgItem::mouseMoveEvent(event);
+        QGraphicsPixmapItem::mouseMoveEvent(event);
 }
 
 
@@ -52,14 +80,14 @@ void
 ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
     if (theAUCPtr->mousePressEvent(event)==false)
-        QGraphicsSvgItem::mousePressEvent(event);
+        QGraphicsPixmapItem::mousePressEvent(event);
 }
 
 void
 ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
 {
     if (theAUCPtr->mouseReleaseEvent(event)==false)
-        QGraphicsSvgItem::mouseReleaseEvent(event);
+        QGraphicsPixmapItem::mouseReleaseEvent(event);
     else
     {
         // TODO: finish up by killing myself and propagating that
