@@ -36,7 +36,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(bool isMaximized, QWidget *parent = 0);
     ~MainWindow();
 
 	/// deletes the existing Level instance and removes its view

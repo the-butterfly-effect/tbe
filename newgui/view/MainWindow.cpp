@@ -34,7 +34,7 @@
 
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	: QMainWindow(parent),
 	  ui(new Ui::MainWindow),
 	  theLevelPtr(NULL),
@@ -44,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 	setupMenu();
 	setupView();
+	if (isMaximized)
+		showMaximized();
 }
 
 
@@ -130,7 +132,15 @@ void MainWindow::setupView()
 	ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
 	ui->graphicsView->createGameResourcesDialog();
 
-	loadLevel("newguitest.xml");
+	if (theStartFileName.isEmpty())
+	{
+		ChooseLevel myDialog(NULL, true);
+		QString myNextLevelName = myDialog.getCurrent();
+		if (myNextLevelName.isEmpty()==false)
+			loadLevel(myNextLevelName);
+	}
+	else
+		loadLevel(theStartFileName);
 }
 
 void MainWindow::on_action_Open_Level_triggered()
