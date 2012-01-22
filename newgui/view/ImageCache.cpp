@@ -75,11 +75,6 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 			break;
 		}
 
-		// TODO/FIXME: also read from the current level directory
-		// i.e. not just ../images
-		// maybe also check for :/ (i.e. the built-in resources)
-		// see above QStrlingList mySearchPath
-
 		myFullPathName = QString(mySearchPath[i] + "/%1.png").arg(anImageBaseName);
 		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
 		if (QFile::exists(myFullPathName))
