@@ -64,6 +64,10 @@
         <goal type="positionchange" >
             <property key="anglechanged" >anglechanged</property>
             <property key="object" >Pin</property>
+	</goal>
+	<goal type="positionchange" >
+	    <property key="xover" >6.42</property>
+	    <property key="object" >Pin</property>
         </goal>
     </goals>
 </tbe-level>
