@@ -10,6 +10,7 @@ SOURCES += \
     model/Property.cpp \
     model/RectObject.cpp \
     model/Scenery.cpp \
+    model/Spring.cpp \
     model/World.cpp
 
 HEADERS += \
@@ -23,5 +24,6 @@ HEADERS += \
     model/Property.h \
     model/RectObject.h \
     model/Scenery.h \
+    model/Spring.h \
     model/World.h
 

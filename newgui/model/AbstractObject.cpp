@@ -298,7 +298,7 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 	{
 		Position myPos(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 		// TODO/FIXME: using theWidth and theHeight here *must* be wrong!
-		theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, myPos);
+		theViewObjectPtr->adjustObjectDrawing(getTempWidth(), theHeight, myPos);
 	}
 //	else
 //	{
