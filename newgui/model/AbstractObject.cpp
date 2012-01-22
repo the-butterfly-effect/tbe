@@ -296,9 +296,8 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 	assert(theViewObjectPtr != NULL);
 	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
 	{
-		Position myPos(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 		// TODO/FIXME: using theWidth and theHeight here *must* be wrong!
-		theViewObjectPtr->adjustObjectDrawing(getTempWidth(), theHeight, myPos);
+		theViewObjectPtr->adjustObjectDrawing(getTempWidth(), theHeight, getTempCenter());
 	}
 //	else
 //	{

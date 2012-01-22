@@ -26,6 +26,12 @@
     <scene>
         <scenesize width="4" height="3"/>
         <predefined>
+            <object X="1.25" Y="0.3" width="0.400" height="0.200" type="Spring" angle="1.57" >
+                <property key="ImageName" >spring20</property>
+                <property key="Rotatable" >true</property>
+                <property key="SpringConstant" >250</property>
+            </object>
+
             <object width="0.068" X="0.400" Y="2.500" height="0.068" type="TennisBall" ID="ten" angle="0.000"/>
             <object width="0.068" X="0.500" Y="2.500" height="0.068" type="PetanqueBoule" ID="pet" angle="0.000"/>
             <object width="0.210" X="0.700" Y="2.500" height="0.210" type="VolleyBall" ID="vol" angle="0.000"/>
