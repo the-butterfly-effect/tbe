@@ -35,6 +35,11 @@ public:
     /// constructor
     ViewObjectActionDecorator();
 
+
+    /// clear the pointer to the UndoCommand
+    void clearUndoPointer()
+    {   theAUCPtr = NULL; }
+
     /// Attach as a child to the parent ViewObject
     /// @param aParentPtr  pointer to the ViewObject to become a child to
     void setViewObject(ViewObject* aParentPtr);

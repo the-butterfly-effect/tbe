@@ -46,11 +46,18 @@ AbstractUndoCommand::~AbstractUndoCommand()
 }
 
 
+void AbstractUndoCommand::clearDecoratorPointerToMe()
+{
+    theViewObjPtr->theDecorator.clearUndoPointer();
+}
+
+
 void AbstractUndoCommand::commit(void)
 {
     DEBUG4ENTRY;
     UndoSingleton::push(this);
     setDecoratorStateUndoRedo();
+    clearDecoratorPointerToMe();
 }
 
 

@@ -62,6 +62,13 @@ ViewObjectActionDecorator::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
 void
 ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
+    // if there is no undo registered, let's delegate to someone else
+    // (i.e. our parent)
+    if (theAUCPtr==NULL)
+    {
+        event->ignore();
+        return;
+    }
     if (theAUCPtr->mousePressEvent(event)==false)
         QGraphicsPixmapItem::mousePressEvent(event);
 }
@@ -84,25 +91,22 @@ void ViewObjectActionDecorator::setCrossState(CrossState aCrossState)
     switch (aCrossState)
     {
     case NONE:
-        setVisible(false);
         // TODO/FIXME: emit "cross present signal"
         break;
     case PROXY:
         setPixmap(theProxyImage);
-        setVisible(true);
         // TODO/FIXME: emit "no cross signal"
         break;
     case COMBINED:
         setPixmap(theCombinedImage);
-        setVisible(true);
         // TODO/FIXME: emit "cross present signal"
         break;
     case CROSS:
         setPixmap(theCrossImage);
-        setVisible(true);
         // TODO/FIXME: emit "cross present signal"
         break;
     }
+    setVisible(aCrossState!=NONE);
 }
 
 
@@ -126,6 +130,5 @@ ViewObjectActionDecorator::setDecoratorImage(
     myPainter.drawPixmap(theCombinedImage.rect(), theCrossImage);
     myPainter.end();
 
-    setFlags(ItemIsMovable);
     setCrossState(PROXY);
 }

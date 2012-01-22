@@ -41,6 +41,9 @@ public:
 
     virtual ~AbstractUndoCommand();
 
+    /// remove the pointer from AbstractUndoCommand to this class
+    void clearDecoratorPointerToMe();
+
     /// call this member to cement this action into the undo stack
     /// and redo the last action to make sure the object is correct
     void commit();
