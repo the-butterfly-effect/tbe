@@ -153,7 +153,6 @@ void World::createPhysicsWorld(void)
 	// if theDrawDebug is true, we can ask Box2D to ask ViewWorld to draw
 	// all shapes - useful for debugging new objects. But we have to register
 	// the debug thingie first.
-#if 0
 	if (theDrawDebug)
 	{
 		theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
@@ -162,7 +161,6 @@ void World::createPhysicsWorld(void)
 									b2DebugDraw::e_centerOfMassBit;
 		theViewWorldPtr->AppendFlags(myDebugFlags);
 	}
-#endif
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
@@ -426,11 +424,9 @@ qreal World::simStep (void)
 	if (areGoalsMet == true)
 		emit signalWon();
 
-#if 0
 	// make Box2D draw debug images if requested
 	if (theDrawDebug)
 		theB2WorldPtr->DrawDebugData();
-#endif
 
 	return theDeltaTime;
 }

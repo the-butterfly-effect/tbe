@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2009,2010,2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,6 +23,8 @@
 #include <QtCore/QTime>
 #include <QtCore/QTimer>
 
+#include "Box2D.h"
+
 class QAction;
 class ResizingGraphicsView;
 class World;
@@ -30,9 +32,9 @@ class World;
 /** class ViewWorld
   * This class contains the View* objects and is the QGraphicsScene.
   * It contains the timers that run the simulation.
-  * TODO/FIXME: to be re-implemented: the debug callbacks from Box2D to draw outlines.
+  * It also contains the debug callbacks from Box2D to draw outlines.
   */
-class ViewWorld : public QGraphicsScene
+class ViewWorld : public QGraphicsScene, public b2DebugDraw
 {
     Q_OBJECT
 
@@ -93,6 +95,31 @@ private:
 
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
+
+
+
+	// the below is for the Debug drawing of Box2D
+protected:
+	/// Draw a closed polygon provided in CCW order.
+	virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
+	/// Draw a solid closed polygon provided in CCW order.
+	virtual void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
+	/// Draw a circle.
+	virtual void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color);
+	/// Draw a solid circle.
+	virtual void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color);
+	/// Draw a line segment.
+	virtual void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color);
+	/// Draw a transform. Choose your own length scale.
+	/// @param xf a transform.
+	virtual void DrawTransform(const b2Transform& xf);
+
+	const static int theMaxNumberOfGraphicsListElements;
+	typedef QList<QGraphicsItem*> GraphicsList;
+	GraphicsList theGraphicsList;
+	void addDebugDrawToList(QGraphicsItem* anItem);
+	void clearGraphicsList(int aCount);
+
 };
 
 #endif // VIEWWORLD_H
