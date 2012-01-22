@@ -37,7 +37,7 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
 }
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :
-		QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
+	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	DEBUG3ENTRY;
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
@@ -140,6 +140,7 @@ void ViewObject::initViewObjectAttributes(void)
 //             QGraphicsItem::ItemIsSelectable);
     setFlags(QGraphicsItem::ItemIsFocusable);
     setAcceptsHoverEvents(true);
+    theDecorator.setViewObject(this);
 }
 
 

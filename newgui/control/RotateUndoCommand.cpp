@@ -27,7 +27,7 @@ RotateUndoCommand::RotateUndoCommand(
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL)
 {
     DEBUG3ENTRY;
-    setupProxyImage("ProxyRotate");
+    setDecoratorImage("ProxyRotate");
     theNewPos = theOrigPos;
 }
 
@@ -42,8 +42,7 @@ bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
                       + myOrigAngle;
 
     theViewObjPtr->setNewGeometry(theNewPos);
-    theVOADPtr->setCrossState(isViewObjectColliding());
-
+    setDecoratorStateMouseMove();
     return true;
 }
 

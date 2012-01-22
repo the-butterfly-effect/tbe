@@ -24,6 +24,7 @@
 
 // forward declarations
 class AbstractObject;
+#include "ViewObjectActionDectorator.h"
 
 /** class ViewObject
   *
@@ -84,6 +85,9 @@ protected:
 	//
 
 	AbstractObject* theAbstractObjectPtr;
+
+	friend class AbstractUndoCommand;
+	ViewObjectActionDecorator theDecorator;
 
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( ViewObject )

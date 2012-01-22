@@ -22,49 +22,32 @@
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
 
-#include <QGraphicsSceneMouseEvent>
-#include <QDebug>
+#include <QtCore/QDebug>
+#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QtGui/QPainter>
 
-ViewObjectActionDecorator::ViewObjectActionDecorator(
-        ViewObject* parent,
-        const QString& aDecoratorName,
-        AbstractUndoCommand* myAbstractUndoCommandPtr)
-    : QGraphicsPixmapItem(parent),
-      theAUCPtr(myAbstractUndoCommandPtr)
+ViewObjectActionDecorator::ViewObjectActionDecorator()
+    : QGraphicsPixmapItem(NULL),
+      theAUCPtr(NULL)
 {
     DEBUG3ENTRY;
+}
 
-	ImageCache::getPixmap(aDecoratorName, &theRegularImage);
-	setPixmap(theRegularImage);
-	ImageCache::getPixmap("BigCross", &theCrossImage);
+
+void
+ViewObjectActionDecorator::setViewObject(ViewObject* aParentPtr)
+{
+    setParentItem(aParentPtr);
+
+    ImageCache::getPixmap("BigCross", &theCrossImage);
+    setPixmap(theCrossImage);
 
     // we need to have the same size as our parent
-    QRectF parSize = parent->boundingRect();
+    QRectF parSize = aParentPtr->boundingRect();
     QRectF mySize = boundingRect();
     scale(parSize.width()/mySize.width(),parSize.height()/mySize.height());
     setFlags(ItemIsMovable);
-}
-
-
-void ViewObjectActionDecorator::setCrossState(bool isCrossToBeSet)
-{
-    if (isCrossToBeSet)
-        displayCross();
-    else
-        displayNormal();
-}
-
-void ViewObjectActionDecorator::displayCross(void)
-{
-    setPixmap(theCrossImage);
-    // TODO/FIXME: emit "cross present signal"
-}
-
-
-void ViewObjectActionDecorator::displayNormal(void)
-{
-    setPixmap(theRegularImage);
-    // TODO/FIXME: emit "no cross signal"
+    setVisible(false);
 }
 
 
@@ -93,4 +76,56 @@ ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
         // TODO: finish up by killing myself and propagating that
     }
 
+}
+
+
+void ViewObjectActionDecorator::setCrossState(CrossState aCrossState)
+{
+    switch (aCrossState)
+    {
+    case NONE:
+        setVisible(false);
+        // TODO/FIXME: emit "cross present signal"
+        break;
+    case PROXY:
+        setPixmap(theProxyImage);
+        setVisible(true);
+        // TODO/FIXME: emit "no cross signal"
+        break;
+    case COMBINED:
+        setPixmap(theCombinedImage);
+        setVisible(true);
+        // TODO/FIXME: emit "cross present signal"
+        break;
+    case CROSS:
+        setPixmap(theCrossImage);
+        setVisible(true);
+        // TODO/FIXME: emit "cross present signal"
+        break;
+    }
+}
+
+
+void
+ViewObjectActionDecorator::setDecoratorImage(
+        const QString& aDecoratorName,
+        AbstractUndoCommand* anAbstractUndoCommandPtr)
+{
+    DEBUG5ENTRY;
+    theAUCPtr = anAbstractUndoCommandPtr;
+
+	ImageCache::getPixmap(aDecoratorName, &theProxyImage);
+	setPixmap(theProxyImage);
+
+    // Paint the combined image, where the cross is drawn
+    // on top of the proxy image.
+    theCombinedImage = theProxyImage;
+    QPainter myPainter;
+    myPainter.begin(&theCombinedImage);
+    myPainter.setRenderHint(QPainter::Antialiasing);
+    myPainter.drawPixmap(theCombinedImage.rect(), theCrossImage);
+    myPainter.end();
+
+    setFlags(ItemIsMovable);
+    setCrossState(PROXY);
 }

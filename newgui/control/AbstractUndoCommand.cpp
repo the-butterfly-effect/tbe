@@ -26,8 +26,7 @@ AbstractUndoCommand::AbstractUndoCommand(
         const QString& anUndoName,
         QUndoCommand* parent)
     : QUndoCommand(parent),
-      theViewObjPtr(anViewObjectPtr),
-      theVOADPtr(NULL)
+      theViewObjPtr(anViewObjectPtr)
 {
     AbstractObject* myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
 
@@ -47,6 +46,14 @@ AbstractUndoCommand::~AbstractUndoCommand()
 }
 
 
+void AbstractUndoCommand::commit(void)
+{
+    DEBUG4ENTRY;
+    UndoSingleton::push(this);
+    setDecoratorStateUndoRedo();
+}
+
+
 bool AbstractUndoCommand::isViewObjectColliding(void)
 {
     // if theVOADPtr exists, we probably have at least one
@@ -55,26 +62,11 @@ bool AbstractUndoCommand::isViewObjectColliding(void)
     QList<QGraphicsItem*> myCollidingItems = theViewObjPtr->collidingItems ( Qt::IntersectsItemShape );
     foreach(QGraphicsItem* i, myCollidingItems)
     {
-        if (i!=theVOADPtr)
+        if (i != &(theViewObjPtr->theDecorator))
             myCollisionCount++;
     }
     return myCollisionCount>0;
  }
-
-
-void AbstractUndoCommand::commit(void)
-{
-    DEBUG4ENTRY;
-    UndoSingleton::push(this);
-    deleteProxyImage();
-}
-
-
-void AbstractUndoCommand::deleteProxyImage(void)
-{
-    delete theVOADPtr;
-    theVOADPtr = NULL;
-}
 
 
 bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
@@ -92,15 +84,33 @@ void AbstractUndoCommand::redo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
     theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
+    setDecoratorStateUndoRedo();
 }
 
 
-void AbstractUndoCommand::setupProxyImage(const QString& anImageName)
+void AbstractUndoCommand::setDecoratorStateMouseMove(void)
 {
-    Q_ASSERT(anImageName.isEmpty()==false);
+    if (isViewObjectColliding())
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
+    else
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::PROXY);
+}
+
+
+void AbstractUndoCommand::setDecoratorStateUndoRedo(void)
+{
+    if (isViewObjectColliding())
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
+    else
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::NONE);
+}
+
+
+void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
+{
     Q_ASSERT(theViewObjPtr!=NULL);
-    Q_ASSERT(theVOADPtr==NULL);
-    theVOADPtr = new ViewObjectActionDecorator(theViewObjPtr, anImageName, this);
+    theViewObjPtr->theDecorator.setDecoratorImage(anImageName, this);
+    setDecoratorStateMouseMove();
 }
 
 
@@ -112,4 +122,5 @@ void AbstractUndoCommand::undo(void)
     // when we get here ;-)
     if (theViewObjPtr)
         theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
+    setDecoratorStateUndoRedo();
 }

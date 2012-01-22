@@ -32,11 +32,30 @@ class QGraphicsSceneMouseEvent;
 class ViewObjectActionDecorator : public QGraphicsPixmapItem
 {
 public:
-    ViewObjectActionDecorator(ViewObject* parent,
-                              const QString& aDecoratorName,
-                              AbstractUndoCommand* myAbstractUndoCommandPtr);
+    /// constructor
+    ViewObjectActionDecorator();
 
-    void setCrossState(bool isCrossToBeSet);
+    /// Attach as a child to the parent ViewObject
+    /// @param aParentPtr  pointer to the ViewObject to become a child to
+    void setViewObject(ViewObject* aParentPtr);
+
+    /// Set the Decorator proxy image and set the object to call
+    /// upon mouse movements.
+    /// @param aDecoratorName the proxy image to set (no path, no extension)
+    /// @param anAbstractUndoCommandPtr  pointer to the undo class instance
+    void setDecoratorImage(const QString&       aDecoratorName,
+                           AbstractUndoCommand* anAbstractUndoCommandPtr);
+
+    enum CrossState
+    {
+        NONE,       /// no image
+        PROXY,      /// only proxy image
+        CROSS,      /// only cross
+        COMBINED,   /// proxy + cross
+    };
+
+    /// Set the Decorator to a state in the enum CrossState
+    void setCrossState(CrossState aCrossState);
 
 protected:
     /// overridden from QGraphicsSvgItem so we can send that info
@@ -53,13 +72,11 @@ protected:
 
 
 private:
-    void displayCross(void);
-    void displayNormal(void);
-
     AbstractUndoCommand* theAUCPtr;
 
-    QPixmap theRegularImage;
+    QPixmap theCombinedImage;
     QPixmap theCrossImage;
+    QPixmap theProxyImage;
 };
 
 #endif // VIEWOBJECTACTIONDECORATOR_H

@@ -44,13 +44,13 @@ ResizeUndoCommand::ResizeUndoCommand(
         Q_ASSERT(false);
         break;
     case AbstractObject::HORIZONTALRESIZE:
-        setupProxyImage("ProxyResizeHori");
+        setDecoratorImage("ProxyResizeHori");
         break;
     case AbstractObject::VERTICALRESIZE:
-        setupProxyImage("ProxyResizeVerti");
+        setDecoratorImage("ProxyResizeVerti");
         break;
     case AbstractObject::TOTALRESIZE:
-        setupProxyImage("ProxyResizeTotal");
+        setDecoratorImage("ProxyResizeTotal");
         break;
     }
 }
@@ -92,7 +92,7 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
         theNewHeight= myNewHeight;
         theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
     }
-    theVOADPtr->setCrossState(isViewObjectColliding());
+    setDecoratorStateMouseMove();
     return true;
 }
 
@@ -167,7 +167,7 @@ ignoreClick:
     qDebug() << "myAxis not good - ignore click";
     theAxis = NONE;
     theButtonDownLength = 0;
-    deleteProxyImage();
+    setDecoratorStateUndoRedo();
     delete this;
     return true;
 }

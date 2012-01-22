@@ -67,15 +67,17 @@ protected:
     /// pointer to the view object
     ViewObject* theViewObjPtr;
 
-    /// pointer to ObjectActionDecorator for this action on theVOPtr;
-    ViewObjectActionDecorator* theVOADPtr;
+    /// This member sets the Proxy image in the ViewObjectActionDecorator.
+    /// @param anImageName  theImage to use as Proxy (no path, no extension)
+    void setDecoratorImage(const QString& anImageName);
 
-    /// This member kills the ViewObjectActionDecorator
-    void deleteProxyImage(void);
+    /// Set the ViewObjectActionDecorator to either proxy+cross or just proxy,
+    /// depending on whether the ViewObject is colliding or not.
+    void setDecoratorStateMouseMove(void);
 
-    /// This member sets up the ViewObjectActionDecorator, which in
-    /// turn will capture all relevant mouse movements for us.
-    void setupProxyImage(const QString& anImageName);
+    /// Set the ViewObjectActionDecorator to either cross or just nothing,
+    /// depending on whether the ViewObject is colliding or not.
+    void setDecoratorStateUndoRedo(void);
 
 protected:
     QPointF theButtonDownPosition;
@@ -86,6 +88,9 @@ protected:
     qreal theNewWidth;
     qreal theOrigHeight;
     qreal theNewHeight;
+
+private:
+    QString theProxyImageName;
 
 private:
     /// keep private & unimplemented: no default constructor

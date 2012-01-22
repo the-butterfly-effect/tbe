@@ -28,7 +28,7 @@ MoveUndoCommand::MoveUndoCommand(
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
 {
     DEBUG3ENTRY;
-    setupProxyImage("ProxyMove");
+    setDecoratorImage("ProxyMove");
 }
 
 
@@ -38,7 +38,7 @@ bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theNewPos = theOrigPos.toVector() + Vector(myMousePos-theButtonDownPosition);
     theNewPos.angle = theOrigPos.angle;
     theViewObjPtr->setNewGeometry(theNewPos);
-    theVOADPtr->setCrossState(isViewObjectColliding());
+    setDecoratorStateMouseMove();
     return true;
 }
 
