@@ -59,10 +59,7 @@
                 <property key="ImageName" >boulder</property>
                 <property key="Bounciness" >0.1</property>
             </object>
-            <object width="0.5" X="5.75" Y="1.5" height="2.8" type="RectObject">
-                <property key="ImageName" >oldbrick</property>
-                <property key="Bounciness" >0.1</property>
-            </object>
+            <object width="0.5" X="5.75" Y="1.5" height="2.8" type="Wall"/>
 	    <object X="0.17" Y="1.05" width="0.34" height="1.9" type="RectObject">
                 <property key="ImageName" >Empty</property>
             </object>

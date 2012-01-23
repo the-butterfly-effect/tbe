@@ -53,8 +53,7 @@
                 <property key="ZValue" >0.6</property>
                 <property key="Bounciness" >0.05</property>
             </object>
-            <object width="0.2" X="0.1" Y="0.5" height="1.0" type="RectObject">
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.2" X="0.1" Y="0.5" height="1.0" type="Wall">
                 <property key="ZValue" >0.5</property>
             </object>
             <object width="0.4" X="0.25" Y="0.73" height="0.1" type="RectObject" angle="0.7">

@@ -94,20 +94,16 @@
                 <property key="object1" >Balloon5@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
-            <object width="0.15" X="4.85" Y="1.52" height="1" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.15" X="4.85" Y="1.52" height="1" type="Wall" angle="0" >
                 <property key="ZValue" >10</property>
             </object>
-            <object width="0.15" X="0.5" Y="1.65" height="1" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.15" X="0.5" Y="1.65" height="1" type="Wall" angle="0" >
                 <property key="ZValue" >10</property>
             </object>
-            <object width="0.15" X="0.03" Y="0.5" height="1" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.15" X="0.03" Y="0.5" height="1" type="Wall" angle="0" >
                 <property key="ZValue" >10</property>
             </object>
-            <object width="0.15" X="0.5" Y="2.65" height="1" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.15" X="0.5" Y="2.65" height="1" type="Wall" angle="0" >
                 <property key="ZValue" >10</property>
             </object>
             <object width="0.42" X="2.68" Y="2.29" height="0.1" type="Floor" angle="0.58" />

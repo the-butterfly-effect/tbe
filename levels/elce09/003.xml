@@ -22,7 +22,7 @@
     <scene>
         <scenesize width="6.9" height="5" />
         <predefined>
-            <object width="6.900" X="3.450" Y="-0.050" height="0.100" type="Floor" angle="0.000" />
+            <!--object width="6.900" X="3.450" Y="-0.050" height="0.100" type="Floor" angle="0.000" /-->
             <object width="0.220" X="0.300" Y="2.750" height="0.220" type="BowlingBall" angle="0.000" />
             <object width="0.220" X="0.300" Y="1.100" height="0.220" type="BowlingBall" angle="0.000" />
             <object width="0.220" X="2.600" Y="4.400" height="0.220" type="BowlingBall" angle="0.000" />

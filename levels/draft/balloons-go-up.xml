@@ -39,9 +39,7 @@
                 <property key="page4_nl">... Post-It boy</property>
             </object>
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
-            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="RectObject" angle="0">
-                <property key="ImageName">oldbrick</property>
-            </object>
+            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0" />
 	    <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0" />
             <object width="0.1" X="2.5" Y="1.07" height="0.1" type="Scenery" angle="0">
                 <property key="ImageName">brass-pin</property>

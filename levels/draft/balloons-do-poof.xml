@@ -23,9 +23,7 @@
         <scenesize width="3" height="2" />
         <predefined>
             <object width="0.12" X="2.350375162511972" Y="0.2752126157283783" height="0.34" type="BowlingPin" ID="the-left-pin" angle="0" />
-            <object width="0.1" X="0.9" Y="1.25" height="1.5" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
-            </object>
+            <object width="0.1" X="0.9" Y="1.25" height="1.5" type="Wall" angle="0" />
             <object width="3" X="1.5" Y="0.05" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -38,9 +36,7 @@
             </object>
           
             <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" angle="0" />
-            <object width="0.1" X="0.5" Y="1.05" height="1.9" type="RectObject" angle="0" >
-                <property key="ImageName" >oldbrick</property>
-            </object>
+            <object width="0.1" X="0.5" Y="1.05" height="1.9" type="Wall" angle="0" />
             <object width="0.21" X="0.7" Y="1.86" height="0.21" type="VolleyBall" angle="0" />
             <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightRamp" angle="0" >
                 <property key="Bounciness" >0.6</property>

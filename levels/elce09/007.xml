@@ -48,10 +48,8 @@
 			<object X="4.95" Y="4.34" type="Butterfly" ID="Butterfly">
                 <property key="Object" >Flower</property>
             </object>
-            <object width="0.85" height="0.86" X="5.91" Y="3.73" type="RectObject">
-                <property key="ImageName" >oldbrick</property>
+            <object width="0.85" height="0.86" X="5.91" Y="3.73" type="Wall">
                 <property key="Friction" >1</property>
-                <property key="Bounciness" >0.1</property>
             </object>
             <object width="0.35" X="6.67" Y="4.1" height="1" type="RectObject" >
                 <property key="Bounciness" >0.2</property>
@@ -82,9 +80,7 @@
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.6" X="7.55" Y="1.94" height="3.65" type="RectObject">
-                <property key="ImageName" >oldbrick</property>
-            </object>
+            <object width="0.6" X="7.55" Y="1.94" height="3.65" type="Wall"/>
             <object width="0.2" X="5.5" Y="0.9" height="1.6" type="RectObject">
                 <property key="Bounciness" >0.2</property>
                 <property key="ImageName" >used_wood_bar</property>
