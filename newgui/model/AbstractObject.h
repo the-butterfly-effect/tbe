@@ -322,7 +322,7 @@ public:
 
 	/// null the current Physicsobject (note that they are no longer
 	/// deleted in normal game operation - if you need that behaviour
-	/// (like e.g. CokeSplatter) you need to override that in its destructor.
+	/// (like e.g. ColaSplatter) you need to override that in its destructor.
 	virtual void deletePhysicsObject(void);
 
 	virtual bool isPhysicsObjectCreated(void) const

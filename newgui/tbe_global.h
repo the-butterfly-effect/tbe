@@ -58,6 +58,7 @@ extern void printBacktrace(void);
 #define DEBUG3ENTRY			{if (theVerbosity>=3) qDebug("**   t=%03ld: entry %s", time(NULL)%1000, Q_FUNC_INFO);}
 #define DEBUG4ENTRY			{if (theVerbosity>=4) qDebug("*    t=%03ld: entry %s", time(NULL)%1000, Q_FUNC_INFO);}
 #define DEBUG5ENTRY			{if (theVerbosity>=5) qDebug("     t=%03ld: entry %s", time(NULL)%1000, Q_FUNC_INFO);}
+#define DEBUG6ENTRY			{if (theVerbosity>=6) qDebug("     t=%03ld: entry %s", time(NULL)%1000, Q_FUNC_INFO);}
 #else
 #define DEBUG1(format, ...)     { /**/ }
 #define DEBUG2(format, ...)     { /**/ }

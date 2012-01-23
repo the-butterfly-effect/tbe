@@ -42,7 +42,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
     DEBUG5ENTRY;
 
     Q_ASSERT(anImageBaseName.isEmpty() == false);
-    if (anImageBaseName.isEmpty() == true)
+    if (anImageBaseName.isEmpty())
         return false;
 
 	// TODO/FIXME:

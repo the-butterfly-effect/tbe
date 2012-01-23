@@ -79,7 +79,6 @@ protected:
 private:
 	QString theBallName;
 	QString theBallTooltip;
-	QString theBallImage;
 
 	b2BodyType theB2ObjectType;
 };

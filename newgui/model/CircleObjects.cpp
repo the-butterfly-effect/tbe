@@ -105,15 +105,13 @@ CircleObject::CircleObject (const QString& aName,
 				  qreal aRadius,
 				  qreal aMass,
 				  qreal aBounciness)
-	: theBallName(aName), theBallTooltip(aTooltip), theBallImage(anImageName)
+	: theBallName(aName), theBallTooltip(aTooltip)
 {
-	DEBUG5("CircleObject::CircleObject\n");
-
+	DEBUG5ENTRY;
 	createBallShapeFixture(aRadius, aMass);
 	setTheBounciness(aBounciness);
-
-	// for none of the CircleObjects, you're supposed to change the image...
-	theProps.setDefaultPropertiesString("-" + QString(Property::IMAGE_NAME_STRING) + ":/"
+	theProps.setDefaultPropertiesString(
+				QString("%1:%2/").arg(Property::IMAGE_NAME_STRING).arg(anImageName)
 				+ QString(Property::BOUNCINESS_STRING) + QString(":%1").arg(aBounciness));
 }
 
@@ -173,7 +171,7 @@ static CustomBallObjectFactory theCustomBallObjectFactory;
 CustomBall::CustomBall (void)
 	: CircleObject("CustomBall", "CustomBall", "", 1.0, 1.0, 0.2)
 {
-	DEBUG5("CustomBall::CustomBall\n");
+	DEBUG5ENTRY;
 
 	theProps.setDefaultPropertiesString(
 			Property::IMAGE_NAME_STRING + QString(":CustomBall/") +
@@ -193,7 +191,7 @@ ViewObject* CustomBall::createViewObject()
 
 void  CustomBall::parseProperties(void)
 {
-	DEBUG5("CustomBall::parseProperties(void)\n");
+	DEBUG5ENTRY;
 	CircleObject::parseProperties();
 
 	float myRadius;

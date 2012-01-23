@@ -245,7 +245,7 @@ public:
 	static const char* VERTICAL_STRING;
 	static const char* TOTALRESIZE_STRING;
 
-	// the following is only used by CokeMentosBottle
+	// the following is only used by ColaMintBottle
 	static const char* THRUST_STRING;
 
 	// used by Link
