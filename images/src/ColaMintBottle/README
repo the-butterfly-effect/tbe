@@ -9,12 +9,17 @@ license:   CC-SA-3.0
 note:	   the image now contains named layers and invisible align marks to allow
            individual rendering of all layers whilst keeping the same scaling.
 
-filename:  coke_PET.svg
+filename:  cola_PET.svg
 author:    Klaas van Gend, based on above modified_PET.svg
 license:   CC-SA-3.0
 note:	   modified outline and colors to fit diet coke bottle better
 
-filename:  CokeBottle*.svg (*=Normal;Foaming;Blowing;Empty)
-author:    Klaas van Gend, based on above coke_PET.svg
+filename:  ColaBottle*.svg (*=Normal;Foaming;Blowing;Empty)
+author:    Klaas van Gend, based on above cola_PET.svg
 license:   CC-SA-3.0
-note:	   Derived+Simplified from coke_PET.svg: 4 images for the different stages
+note:	   Derived+Simplified from cola_PET.svg: 4 images for the different stages
+
+filename:  ColaSplatter.svg 
+author:    Klaas van Gend
+license:   Creative Commons Share Alike 3.0
+source:    original work for The Butterfly Effect
