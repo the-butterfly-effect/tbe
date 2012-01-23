@@ -13,6 +13,7 @@ SOURCES += \
     model/RectObject.cpp \
     model/Scenery.cpp \
     model/Spring.cpp \
+    model/TriggerExplosion.cpp \
     model/World.cpp
 
 HEADERS += \
@@ -29,5 +30,6 @@ HEADERS += \
     model/RectObject.h \
     model/Scenery.h \
     model/Spring.h \
+    model/TriggerExplosion.h \
     model/World.h
 

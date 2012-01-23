@@ -2,6 +2,7 @@
 SOURCES += \
 	view/animateddialog.cpp \
 	view/ChooseLevel.cpp \
+	view/ChoosePhoneNumber.cpp \
 	view/GameResources.cpp \
 	view/GoalEditor.cpp \
 	view/ImageCache.cpp \
@@ -10,7 +11,7 @@ SOURCES += \
 	view/resizinggraphicsview.cpp \
 	view/SimulationControls.cpp \
 	view/ViewObject.cpp \
-#	view/ViewCircleObject.cpp \
+	view/ViewDetonatorBox.cpp \
 	view/ViewPostIt.cpp \
 	view/ViewWorld.cpp \
 	view/ViewToolboxGroup.cpp \
@@ -20,6 +21,7 @@ HEADERS  += \
 	view/animateddialog.h \
 	view/Background.h \
 	view/ChooseLevel.h \
+	view/ChoosePhoneNumber.h \
 	view/GameResources.h \
 	view/GoalEditor.h \
 	view/ImageCache.h \
@@ -28,7 +30,7 @@ HEADERS  += \
 	view/PieMenu.h \
 	view/resizinggraphicsview.h \
 	view/SimulationControls.h \
-#	view/ViewCircleObject.h \
+	view/ViewDetonatorBox.h \
 	view/ViewObject.h \
 	view/ViewPostIt.h \
 	view/ViewWorld.h \
@@ -37,6 +39,7 @@ HEADERS  += \
 
 FORMS    += \
 	view/ChooseLevel.ui \
+	view/ChoosePhoneNumber.ui \
 	view/GameResources.ui \
 	view/GoalEditor.ui \
 	view/MainWindow.ui \
