@@ -77,6 +77,13 @@ private:
 };
 
 
+// ---------------------------------predefined rectangular objects:
+// order of the arguments below:
+//              anInternalName, (do not translate)
+//              aDisplayName,
+//              aTooltip,
+// anImageName,   aWidth,aHeight,  aMass,  aBounciness
+
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
 	QObject::tr("Domino (Red)"),
 	QObject::tr("The famous plastic red domino stone"),
@@ -121,8 +128,12 @@ RectObject::RectObject( const QString& aDisplayName,
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
 	setTheWidth(aWidth);
 	setTheHeight(aHeight);
-	theProps.setDefaultPropertiesString(
-		QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
+
+	if (aMass > 0.001)
+		theProps.setDefaultPropertiesString(
+			QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
+	else
+		theProps.removeProperty(Property::MASS_STRING);
 	setTheBounciness(aBounciness);
 	initAttributes();
 }
