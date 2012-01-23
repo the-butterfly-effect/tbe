@@ -94,7 +94,7 @@
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
             <object width="0.250" X="4.720" Y="2.060" height="0.400" type="Cactus" ID="Cactus" angle="1.610"/>
-            <object width="0.166" X="5.203" Y="1.988" height="0.500" type="CokeMentosBottle" angle="4.691"/>
+            <object width="0.166" X="5.203" Y="1.988" height="0.500" type="ColaMintBottle" angle="4.691"/>
             <object width="0.841" X="5.013" Y="1.850" height="0.100" type="Floor" angle="0.000"/>
             <object width="1.965" X="4.021" Y="2.250" height="0.100" type="Floor" ID="vloertje" angle="0.000"/>
             <object width="0.100" X="4.860" Y="2.350" height="0.100" type="CustomBall" ID="CactusWheel1" angle="4.680">

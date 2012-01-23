@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Coconut instead of Coke</title>
+        <title>Coconut instead of Cola</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Can you live from just coke? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
@@ -45,7 +45,7 @@
             <object width="0.2" X="0.4" Y="0.25" height="0.3" type="RightRamp" angle="0">
                 <property key="ImageName" >Empty</property>
             </object>
-            <object X="0.75" Y="1.37" type="CokeMentosBottle" angle="3.14" >
+            <object X="0.75" Y="1.37" type="ColaMintBottle" angle="3.14" >
                 <property key="Thrust" >5</property>
                 <property key="Mass">1</property>
             </object>
@@ -79,7 +79,7 @@
             </object>
             <object X="2.8" Y="1.4" type="PostIt">
                 <property key="page1" >This is Ruud.&lt;br&gt;&lt;br&gt;He's on a small desert island.</property>
-                <property key="page2" >A few crates of Coke washed up shore lately - so he's not thirsty.</property>
+                <property key="page2" >A few crates of Cola washed up shore lately - so he's not thirsty.</property>
                 <property key="page3" >But do you see those coconuts?</property>
                 <property key="page4" >&lt;br&gt;&lt;br&gt; ... a hungry Post-it Boy</property>
                 <property key="page1" >Dit is Ruud.&lt;br&gt;&lt;br&gt;Hij is gedumpt op een klein tropisch eiland.</property>

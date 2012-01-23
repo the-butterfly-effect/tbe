@@ -221,7 +221,7 @@
                 <property key="Bounciness" >0.05</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.166" X="4.38" Y="0.35" height="0.501" type="CokeMentosBottle" angle="3.14" >
+            <object width="0.166" X="4.38" Y="0.35" height="0.501" type="ColaMintBottle" angle="3.14" >
                 <property key="Thrust" >5</property>
             </object>
             <object width="0.4" X="4.42" Y="3.5" height="0.2" type="LeftRamp" angle="1.57" />

@@ -129,7 +129,7 @@
                 <property key="Bounciness" >0.0</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.166" X="1.050" Y="1.800" height="0.500" type="CokeMentosBottle" angle="0.000" />
+            <object width="0.166" X="1.050" Y="1.800" height="0.500" type="ColaMintBottle" angle="0.000" />
             <object width="0.100" X="1.100" Y="0.930" height="0.160" type="RectObject" angle="0.000" >
                 <property key="Bounciness" >0.1</property>
                 <property key="ImageName" >used_wood_bar</property>

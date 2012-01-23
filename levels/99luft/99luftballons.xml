@@ -8,9 +8,9 @@
         <date>5/3/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Coke Rocket" >
+        <toolboxitem count="1" name="Cola Rocket" >
             <name lang="nl" >Cola raket</name>
-            <object type="CokeMentosBottle" >
+            <object type="ColaMintBottle" >
                 <property key="Thrust" >19</property>
                 <property key="Rotatable" >true</property>
             </object>

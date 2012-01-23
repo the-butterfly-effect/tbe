@@ -5,7 +5,7 @@
         <title lang="nl">Poing Poing Poing</title>
         <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Once a Volley Ball jumps across, a Coke bottle will finish it off.</description>
+        <description>Once a Volley Ball jumps across, a Cola bottle will finish it off.</description>
         <description lang="nl">Nadat een volleybal naar de overkant is gestuiterd, maakt een colafles het af.</description>
         <date>June 6, 2010</date>
     </levelinfo>
@@ -76,7 +76,7 @@
                 <property key="Bounciness" >0.1</property>
 	    </object>
 
-            <object X="4.25" Y="1.82" type="CokeMentosBottle" angle="-1.57" />
+            <object X="4.25" Y="1.82" type="ColaMintBottle" angle="-1.57" />
             <object X="4.25" Y="1.69" height="0.12" width="0.5" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>

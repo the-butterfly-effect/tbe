@@ -87,7 +87,7 @@
                 <property key="Friction" >0.8</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.166" X="1.770" Y="0.720" height="0.500" type="CokeMentosBottle" angle="1.570" />
+            <object width="0.166" X="1.770" Y="0.720" height="0.500" type="ColaMintBottle" angle="1.570" />
             <object width="1.200" X="2.300" Y="0.600" height="0.100" type="RectObject" angle="0.000" >
                 <property key="Bounciness" >0.0</property>
                 <property key="Friction" >0.0</property>
@@ -142,7 +142,7 @@
                 <property key="object1" >Bar3</property>
                 <property key="object2" >Bar3a</property>
             </object>
-            <object width="0.166" X="0.700" Y="0.340" height="0.500" type="CokeMentosBottle" angle="3.140" >
+            <object width="0.166" X="0.700" Y="0.340" height="0.500" type="ColaMintBottle" angle="3.140" >
                 <property key="Mass" >   0.7</property>
                 <property key="Thrust" >15.0</property>
             </object>

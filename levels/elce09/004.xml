@@ -1,11 +1,11 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Balancing Coke</title>
-        <title lang="nl">Coke in balans</title>
+        <title>Balancing Cola</title>
+        <title lang="nl">Cola in balans</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Balance your diet? Drink Coke! Goal: Topple the pins.</description>
+        <description>Balance your diet? Drink Cola! Goal: Topple the pins.</description>
         <description lang="nl">Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om.</description>
         <date>10/9/10</date>
     </levelinfo>
@@ -32,7 +32,7 @@
             <object width="0.300" X="4.340" Y="0.050" height="0.100" type="Scenery" angle="0.000">
                 <property key="ImageName">basket</property>
             </object>
-            <object width="0.166" X="0.400" Y="0.600" height="0.501" type="CokeMentosBottle" angle="0.000">
+            <object width="0.166" X="0.400" Y="0.600" height="0.501" type="ColaMintBottle" angle="0.000">
                 <property key="Friction">2.0</property>
             </object>
             <object width="0.150" X="1.700" Y="0.175" height="0.150" type="Scenery" angle="0.000">
@@ -57,8 +57,8 @@
                 <property key="page2_nl">Ik heb dorst!</property>
                 <property key="page3">But that's not an ordinary cola bottle...</property>
                 <property key="page3_nl">Da's geen gewone cola fles...</property>
-                <property key="page4">It's a Coke-Mentos Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
-                <property key="page4_nl">Het is een Coke-Mentos fontein, klaar om te spuiten!&lt;br>Een lichte schok is genoeg!</property>
+                <property key="page4">It's a Cola-mint Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page4_nl">Het is een Cola-mint fontein, klaar om te spuiten!&lt;br>Een lichte schok is genoeg!</property>
                 <property key="page5">Where does the cola go?</property>
                 <property key="page5_nl">Maar waar gaat de cola heen?</property>
                 <property key="page6">&lt;br>&lt;br> ... thirsty Post-it Boy</property>

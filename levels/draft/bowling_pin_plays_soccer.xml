@@ -28,7 +28,7 @@
                 <property key="ImageName" >RightRamp</property>
             </object>
             
-            <object X="3.95" Y="1.19" type="CokeMentosBottle" angle="-1.57" />
+            <object X="3.95" Y="1.19" type="ColaMintBottle" angle="-1.57" />
             <object width="4.3" X="2.5" Y="1.05" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
@@ -73,14 +73,14 @@
                 <property key="page3">GOOOOAAAAAL !!!</property>
                 <property key="page4">Wait a minute!&lt;br&gt;That Bowling Ball won't do it...</property>
                 <property key="page5" >But that's not an ordinary cola bottle...</property>
-                <property key="page6" >It's a Coke-Mentos Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
+                <property key="page6" >It's a Cola-mint Fountain, ready to blow!&lt;br&gt;Just a light shock will start it!</property>
                 <property key="page7" >Post-it boy played the world cup soccer...&lt;br&gt;&lt;br&gt;(in a previous life)</property>
                 <property key="page1_nl">Ik lijk op m'n broer - ik speel ook voetbal!</property>
                 <property key="page2_nl">Schop die kegel de goal in!</property>
                 <property key="page3_nl">GOOOOAAAAAL !!!</property>
                 <property key="page4_nl">Hee wacht eens!&lt;br&gt;Die bowlingbal lukt het niet...</property>
                 <property key="page5_nl">Maar da's geen gewone colafles...</property>
-                <property key="page6_nl">Het is een Coke-Mentos geiser, klaar om te spuiten!&lt;br&gt;een lichte schok is genoeg!</property>
+                <property key="page6_nl">Het is een Cola-mint geiser, klaar om te spuiten!&lt;br&gt;een lichte schok is genoeg!</property>
                 <property key="page7_nl">Post-it boy heeft in de wereldcup voetbal gespeeld...&lt;br&gt;&lt;br&gt;(in een vorig leven)</property>
 	    </object>
             

@@ -27,7 +27,7 @@
             <object width="0.27" X="6.543364431486881" Y="4.583854227405248" height="0.36" type="Balloon" ID="daBalloon" angle="0" />
             <object width="1" X="6.534616618075803" Y="4.84628862973761" height="0.1" type="Floor" angle="0" />
             <object width="2.55" X="2.5" Y="2.850000000000001" height="0.1" type="Floor" angle="0" />
-            <object width="0.166" X="0.2697878114101703" Y="2.711826252864252" height="0.501" type="CokeMentosBottle" angle="1.456278324127197" >
+            <object width="0.166" X="0.2697878114101703" Y="2.711826252864252" height="0.501" type="ColaMintBottle" angle="1.456278324127197" >
                 <property key="Thrust" >5</property>
             </object>
         </predefined>

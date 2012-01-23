@@ -132,7 +132,7 @@
             <object width="0.120" X="3.150" Y="0.270" height="0.340" type="BowlingPin" ID="pin" angle="0.000" >
                 <property key="Bounciness" >0.0</property>
             </object>
-            <object width="0.166" X="2.20" Y="2.250" height="0.501" type="CokeMentosBottle" angle="4.730" />
+            <object width="0.166" X="2.20" Y="2.250" height="0.501" type="ColaMintBottle" angle="4.730" />
             <object width="0.250" X="0.510" Y="2.320" height="0.100" type="Floor" angle="0.260" />
             <object width="0.335" X="0.142" Y="1.968" height="0.316" type="Floor" angle="1.570" />
             <object width="0.250" X="0.510" Y="1.640" height="0.100" type="Floor" angle="-0.260" />

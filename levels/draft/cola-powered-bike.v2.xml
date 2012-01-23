@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Coke Powered Bike</title>
+        <title>Cola Powered Bike</title>
         <title lang="nl" >De colafiets</title>
         <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
         <license>GPLv2</license>
@@ -42,10 +42,10 @@
                 <property key="object1" >Bar</property>
                 <property key="object2" >BrassPin</property>
             </object>
-            <object width="0.166" X="0.220" Y="1.400" height="0.500" type="CokeMentosBottle" ID="LeftBottle" angle="0.000" >
+            <object width="0.166" X="0.220" Y="1.400" height="0.500" type="ColaMintBottle" ID="LeftBottle" angle="0.000" >
                 <property key="Thrust" >6</property>
             </object>
-            <object width="0.166" X="2.580" Y="1.400" height="0.500" type="CokeMentosBottle" ID="RightBottle" angle="3.140" >
+            <object width="0.166" X="2.580" Y="1.400" height="0.500" type="ColaMintBottle" ID="RightBottle" angle="3.140" >
                 <property key="Thrust" >6</property>
             </object>
             <object width="1.000" X="0.300" Y="1.450" height="1.000" type="PivotPoint" angle="0.000" >

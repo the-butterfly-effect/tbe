@@ -10,9 +10,9 @@
         <date>Feb 13, 2010</date>
     </levelinfo>
      <toolbox>
-        <toolboxitem count="1" name="Coke+Mentos Bottle">
-            <name lang="nl">Coke-Mentos fles</name>
-	    <object type="CokeMentosBottle">
+        <toolboxitem count="1" name="Cola+mint Bottle">
+            <name lang="nl">Cola-mint fles</name>
+	    <object type="ColaMintBottle">
 		    <property key="Rotatable">true</property>
 	    </object>
         </toolboxitem>
@@ -105,7 +105,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="0.25" Y="1.55" type="VolleyBall" ID="leftball"/>
-            <object X="1.64" Y="1.54" type="CokeMentosBottle" angle="-1.57">
+            <object X="1.64" Y="1.54" type="ColaMintBottle" angle="-1.57">
 		<property key="TranslationGuide">0</property>
 	    </object>
 	    <object width="1.7" height="0.1" X="0.85" Y="1.74" type="RectObject">
@@ -116,7 +116,7 @@
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="5.13" Y="1.55" type="VolleyBall" ID="rightball"/>
-            <object X="3.82" Y="1.54" type="CokeMentosBottle" angle="1.57">
+            <object X="3.82" Y="1.54" type="ColaMintBottle" angle="1.57">
 		<property key="TranslationGuide">0</property>
 	    </object>
 	    <object width="2.6" height="0.1" X="5.1" Y="1.74" type="RectObject">

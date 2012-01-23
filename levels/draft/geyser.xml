@@ -71,7 +71,7 @@
                 <property key="Friction" >0.5</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.166" X="2.660" Y="0.350" height="0.500" type="CokeMentosBottle" angle="0.000" >
+            <object width="0.166" X="2.660" Y="0.350" height="0.500" type="ColaMintBottle" angle="0.000" >
                 <property key="Thrust" >7</property>
             </object>
             <object width="0.100" X="2.800" Y="0.349" height="0.500" type="RectObject" angle="0.000" >
