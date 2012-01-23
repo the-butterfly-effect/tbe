@@ -296,11 +296,9 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 	assert(theViewObjectPtr != NULL);
 	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
 	{
-		// TODO/FIXME: using theWidth and theHeight here *must* be wrong!
-		theViewObjectPtr->adjustObjectDrawing(getTempWidth(), theHeight, getTempCenter());
+		theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
+											  getTempHeight(),
+											  getTempCenter());
 	}
-//	else
-//	{
-//		printf(" %s zzz\n", ASCII(getName()));
-//	}
+	theViewObjectPtr->setNewImageIndex(getImageIndex());
 }

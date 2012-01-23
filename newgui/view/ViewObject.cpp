@@ -43,8 +43,14 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	Q_ASSERT(anAbstractObjectPtr!=NULL);
 
 	QPixmap myTempPixmap;
-	ImageCache::getPixmap(anImageName, &myTempPixmap);
-	setPixmap(myTempPixmap);
+	QStringList myImageNames = anImageName.split(";");
+	foreach(QString i, myImageNames)
+	{
+		ImageCache::getPixmap(i, &myTempPixmap);
+		thePixmapList.push_back(myTempPixmap);
+	}
+	Q_ASSERT(thePixmapList.count() > 0);
+	setPixmap(thePixmapList[0]);
 
 	thePixmapWidth = QGraphicsPixmapItem::boundingRect().width();
 	thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
@@ -166,4 +172,12 @@ void ViewObject::setNewGeometry(const Position& aNewPosition)
 {
     theAbstractObjectPtr->setOrigCenter(aNewPosition);
     adjustObjectDrawing();
+}
+
+
+void ViewObject::setNewImageIndex(unsigned int anIndex)
+{
+    if (anIndex >= thePixmapList.count())
+        anIndex = thePixmapList.count()-1;
+    setPixmap(thePixmapList[anIndex]);
 }

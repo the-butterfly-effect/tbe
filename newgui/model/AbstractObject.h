@@ -186,6 +186,11 @@ public:
 	const QString& getID (void) const
 	{	return theID; }
 
+	/// Override this member to allow for animations.
+	/// @returns: returns a numerical index of what image to use.
+	virtual unsigned int getImageIndex(void) const
+	{ return 0; }
+
 	/// @returns the internal (CamelCased) object name - untranslated!
 	QString getInternalName( ) const
 	{ return theInternalName; }

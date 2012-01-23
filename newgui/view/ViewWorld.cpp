@@ -152,6 +152,7 @@ void ViewWorld::slot_signalReset()
 	if (theDrawDebug)
 		clearGraphicsList(0);
 	theWorldPtr->deletePhysicsWorld();
+	theWorldPtr->updateViewWorld(false);
 }
 
 
