@@ -177,7 +177,7 @@ void ViewObject::setNewGeometry(const Position& aNewPosition)
 
 void ViewObject::setNewImageIndex(unsigned int anIndex)
 {
-    if (anIndex >= thePixmapList.count())
+    if (anIndex >= static_cast<unsigned int>(thePixmapList.count()))
         anIndex = thePixmapList.count()-1;
     setPixmap(thePixmapList[anIndex]);
 }
