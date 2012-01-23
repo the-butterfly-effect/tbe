@@ -1,5 +1,6 @@
 
 SOURCES += \
+    model/BalloonCactus.cpp \
     model/CircleObjects.cpp \
     model/AbstractJoint.cpp \
     model/AbstractObject.cpp \
@@ -14,6 +15,7 @@ SOURCES += \
     model/World.cpp
 
 HEADERS += \
+    model/BalloonCactus.h \
     model/CircleObjects.h \
     model/AbstractJoint.h \
     model/AbstractObject.h \
