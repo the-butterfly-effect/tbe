@@ -34,7 +34,7 @@ static DetonatorBoxObjectFactory theDetonatorBoxObjectFactory;
 
 const qreal  DetonatorBox::ACTIVATED_TIME = 0.5;
 const qreal  DetonatorBox::RINGING_TIME   = 0.5;
-#define STARTDISTANCE 0.2f
+const qreal  STARTDISTANCE=0.2f;
 const Vector DetonatorBox::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
 DetonatorBox::DetonatorBox()
@@ -96,6 +96,9 @@ ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 
 	theViewObjectPtr = new ViewDetonatorBox(this, myImageName);
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+
+	// and make sure that the handle is drawn correctly
+	updateViewObject(false);
 	return theViewObjectPtr;
 }
 
@@ -103,11 +106,8 @@ void DetonatorBox::createPhysicsObject(void)
 {
 	RectObject::createPhysicsObject();
 
-	if (theHandleObjectPtr==NULL)
-	{
-		theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
-		theWorldPtr->addObject(theHandleObjectPtr);
-	}
+	theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
+	theWorldPtr->addObject(theHandleObjectPtr);
 	theHandleObjectPtr->createPhysicsObject();
 
 	isTriggered = false;
@@ -118,9 +118,10 @@ void DetonatorBox::createPhysicsObject(void)
 
 void DetonatorBox::deletePhysicsObject(void)
 {
-	if(theHandleObjectPtr)
-		theHandleObjectPtr->deletePhysicsObject();
 	RectObject::deletePhysicsObject();
+	// we know that World will remove the object during the deletePhysicsWorld
+	// run, so we don't do it here...
+	theHandleObjectPtr=NULL;
 }
 
 QStringList DetonatorBox::getAllPhoneNumbers(void)
@@ -174,13 +175,6 @@ void DetonatorBox::notifyExplosions(void)
 	myDynamite->trigger();
 }
 
-void DetonatorBox::setOrigCenter ( Position new_var )
-{
-	RectObject::setOrigCenter(new_var);
-
-	if (theHandleObjectPtr!=NULL)
-		theHandleObjectPtr->setOrigCenter(new_var+HANDLEOFFSET);
-}
 
 void DetonatorBox::setTriggered(void)
 {
@@ -192,8 +186,12 @@ void DetonatorBox::setTriggered(void)
 void DetonatorBox::updateViewObject(bool isSimRunning) const
 {
 	RectObject::updateViewObject(isSimRunning);
+
+	qreal myDistance = 0;
+	if (theHandleObjectPtr)
+		myDistance = theHandleObjectPtr->getDistance();
 	dynamic_cast<ViewDetonatorBox*>(theViewObjectPtr)
-			->updateHandlePosition(theHandleObjectPtr->getDistance());
+			->updateHandlePosition(STARTDISTANCE/2.0f+myDistance);
 }
 
 // ##########################################################################
@@ -212,7 +210,7 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox, const Position& aPos
 
 DetonatorBoxHandle::~DetonatorBoxHandle()
 {
-	theWorldPtr->removeObject(this);
+	theWorldPtr->unregisterCallback(this);
 }
 
 void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)

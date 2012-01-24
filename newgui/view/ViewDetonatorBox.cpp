@@ -44,8 +44,13 @@ ViewDetonatorBox::ViewDetonatorBox (AbstractObject* aAbstractObjectPtr, const QS
 	QPixmap myTempPixmap;
 	ImageCache::getPixmap("DetonatorBoxHandle", &myTempPixmap);
 	theHandle.setPixmap(myTempPixmap);
-//	theHandle.setFlag(QGraphicsItem::ItemStacksBehindParent,true);
+	theHandle.setFlag(QGraphicsItem::ItemStacksBehindParent,true);
 
+	// the handle is smaller, but we need to scale manually here...
+	qreal myScale = 889.0/1238.0;
+	theHandle.scale(myScale,myScale);
+	// this also affects the middle position of the handle
+	theHandleXOffset = (1.0-myScale)*boundingRect().width()*0.5;
 }
 
 ViewDetonatorBox::~ViewDetonatorBox ( )
@@ -81,6 +86,8 @@ void ViewDetonatorBox::displayChoosePhoneNumber(void)
 
 void ViewDetonatorBox::updateHandlePosition(qreal aDistance)
 {
-	Vector myVector(0,-aDistance);
-	theHandle.setPos(myVector.toQPointF());
+	// TODO/FIXME: magic number here - and no clue where it comes from!
+	Vector myVector(0, 7*aDistance);
+	qreal y = myVector.toQPointF().y();
+	theHandle.setPos(theHandleXOffset, y);
 }

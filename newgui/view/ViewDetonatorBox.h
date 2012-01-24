@@ -65,6 +65,7 @@ private:
 	const ViewDetonatorBox& operator= (const ViewDetonatorBox&);
 
 	QGraphicsPixmapItem theHandle;
+	qreal theHandleXOffset;
 };
 
 #endif // VIEWDETONATORBOX_H

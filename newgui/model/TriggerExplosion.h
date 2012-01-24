@@ -92,9 +92,6 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/// overridden from AbstractObject in order to also move the handle
-	virtual void setOrigCenter ( Position new_var );
-
 	/// Set the phone number to dial when triggered
 	/// Technically speaking, any ID would do here...
 	/// @param aPhoneNumber string with an existing ID
@@ -183,6 +180,11 @@ public:
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
+
+	/// @returns true if the object should not surive a World::deletePhysicsWorld()
+	/// overridden from AbstractObject
+	virtual bool isTemp() const
+	{ return true; }
 
 	friend class DetonatorBox;
 
@@ -302,7 +304,7 @@ public:
 	ExplosionSplatter();
 	virtual ~ExplosionSplatter();
 
-	/// returns true if the object should not surive a World::reset()
+	/// @returns true if the object should not surive a World::deletePhysicsWorld()
 	/// overridden from AbstractObject
 	virtual bool isTemp() const
 	{ return true; }
