@@ -223,12 +223,12 @@ void World::deletePhysicsWorld()
 	AbstractObjectPtrList::iterator i=theObjectPtrList.begin();
 	while (i!= theObjectPtrList.end())
 	{
-//		if ((*i)->isTemp())
-//		{
-//			delete (*i);
-//			i = theObjectPtrList.erase(i);
-//		}
-//		else
+		if ((*i)->isTemp())
+		{
+			delete (*i);
+			i = theObjectPtrList.erase(i);
+		}
+		else
 		{
 			(*i)->deletePhysicsObject();
 			++i;

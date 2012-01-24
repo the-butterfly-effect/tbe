@@ -250,15 +250,19 @@ public:
 	qreal getTheWidth ( ) const
 	{ return theWidth; }
 
-	/// returns true if the object can be moved by the user
+	/// @returns true if the object can be moved by the user
 	virtual bool isMovable ( ) const;
 
-	/// returns whether the object can be resized by the user
+	/// @returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const // TODO/FIXME = 0;
 	{	return resizableInfo;	}
 
-	/// returns true if the object can be rotated by the user
+	/// @returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const;
+
+    /// @returns true if the object should not survive a World::deletePhysicsWorld()
+    virtual bool isTemp() const
+    { return false; }
 
 	/// sets the ID (which is used to identify objects in Goals and links)
 	void setID (const QString& anID)
