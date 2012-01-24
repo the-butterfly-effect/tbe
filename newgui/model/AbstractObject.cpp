@@ -293,7 +293,8 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 	}
 
 	// Sim running: don't need to adjust objects that are static or asleep
-	assert(theViewObjectPtr != NULL);
+	if(theViewObjectPtr == NULL)
+		return;
 	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
 	{
 		theViewObjectPtr->adjustObjectDrawing(getTempWidth(),

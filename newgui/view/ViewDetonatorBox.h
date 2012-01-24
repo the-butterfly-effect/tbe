@@ -24,7 +24,6 @@
 // forward declarations
 class AbstractObject;
 
-
 /** class ViewDetonatorBox
   *
   * This class draws the DetonatorBox class, which has no physics representation,
@@ -57,6 +56,9 @@ public:
 	 */
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
 
+	/// TODO: document
+	void updateHandlePosition(qreal aDistance);
+
 protected:
 	/// overridden to ALWAYS allow highlighting
 //	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
@@ -64,12 +66,11 @@ protected:
 //	virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
 
 private:
-	virtual void initAttributes ( ) ;
-
 	// prevent copy constructor / assignment operator
 	ViewDetonatorBox(const ViewDetonatorBox&);
 	const ViewDetonatorBox& operator= (const ViewDetonatorBox&);
 
+	QGraphicsPixmapItem theHandle;
 };
 
 #endif // VIEWDETONATORBOX_H

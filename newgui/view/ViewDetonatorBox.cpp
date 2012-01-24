@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#include "ViewDetonatorBox.h"
 #include "AbstractObject.h"
 #include "ChoosePhoneNumber.h"
+#include "ImageCache.h"
 #include "TriggerExplosion.h"
+#include "ViewDetonatorBox.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -31,14 +32,20 @@
 //
 
 ViewDetonatorBox::ViewDetonatorBox (AbstractObject* aAbstractObjectPtr, const QString& anImageName)
-	: ViewObject(aAbstractObjectPtr, anImageName)
+	: ViewObject(aAbstractObjectPtr, anImageName),
+	  theHandle(NULL)
 {
-	// everything is done in the ViewObject constructor
-	DEBUG5("ViewDetonatorBox\n");
+	// Everything is done in the ViewObject constructor...
+	DEBUG5ENTRY;
 
-	setFlag(QGraphicsItem::ItemIsSelectable,true);
-	setCacheMode(QGraphicsItem::NoCache);
-	setAcceptHoverEvents(true);
+	// Except that fact that we have a child object...
+	// Which is controlled in parent coordinates, by the way...
+	theHandle.setParentItem(this);
+	QPixmap myTempPixmap;
+	ImageCache::getPixmap("DetonatorBoxHandle", &myTempPixmap);
+	theHandle.setPixmap(myTempPixmap);
+//	theHandle.setFlag(QGraphicsItem::ItemStacksBehindParent,true);
+
 }
 
 ViewDetonatorBox::~ViewDetonatorBox ( )
@@ -60,41 +67,15 @@ ViewDetonatorBox::~ViewDetonatorBox ( )
 void ViewDetonatorBox::displayChoosePhoneNumber(void)
 {
 	// display a combobox with those numbers
-	QGraphicsView* myViewPtr = scene()->views()[0];
+	ResizingGraphicsView* myViewPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
 	DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
+	assert (myViewPtr != NULL);
 	assert (myDetBoxPtr != NULL);
 	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, myViewPtr);
-	myDialogPtr->setAutoFillBackground(true);
-	QSize myDialogSize = myDialogPtr->size();
-	QSize myViewSize = myViewPtr->size();
-	Position myC = theAbstractObjectPtr->getOrigCenter();
-	QPoint myPosInView = myViewPtr->mapFromScene(myC.x,-myC.y);
-	if (myPosInView.x()+myDialogSize.width() > myViewSize.width())
-		myPosInView.setX(myViewSize.width() - 1.2*myDialogSize.width());
-	if (myPosInView.y()+myDialogSize.height() > myViewSize.height())
-		myPosInView.setY(myViewSize.height() - 1.2*myDialogSize.height());
-	myDialogPtr->move(myPosInView);
-	myDialogPtr->show();
+	myDialogPtr->appearAnimated();
 
 	// The dialog will set the phone numbers itself, no need for us to worry
 	// it will also clean up after itself, I hope :-)
-}
-
-//void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* anEvent)
-//{
-//	ViewObject::hoverEnterEvent(anEvent);
-//}
-
-//void ViewDetonatorBox::hoverLeaveEvent ( QGraphicsSceneHoverEvent* anEvent)
-//{
-//	ViewObject::hoverLeaveEvent(anEvent);
-//}
-
-
-
-void ViewDetonatorBox::initAttributes ( )
-{
-
 }
 
 void ViewDetonatorBox::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
@@ -109,21 +90,9 @@ void ViewDetonatorBox::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
 	}
 }
 
-//void ViewDetonatorBox::paint(QPainter* myPainter, const QStyleOptionGraphicsItem *myStyle, QWidget *myWPtr)
-//{
-//	ViewObject::paint(myPainter, myStyle, myWPtr);
 
-//	if (isHovering)
-//	{
-//		qreal myWidth = theAbstractObjectPtr->getTheWidth()*theScale;
-//		qreal myHeight= theAbstractObjectPtr->getTheHeight()*theScale;
-//		QRectF myRect(-myWidth/2.0,-myHeight/2.0,myWidth,myHeight);
-
-//		QPen   myPen(Qt::NoPen);
-//		myPainter->setPen(myPen);
-//		QColor myColor(255,255,255,155);
-//		myPainter->setBrush(myColor);
-
-//		myPainter->drawRect(myRect);
-//	}
-//}
+void ViewDetonatorBox::updateHandlePosition(qreal aDistance)
+{
+	Vector myVector(0,-aDistance);
+	theHandle.setPos(myVector.toQPointF());
+}

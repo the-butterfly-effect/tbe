@@ -41,7 +41,9 @@ DetonatorBox::DetonatorBox()
 		:	RectObject( QObject::tr("Detonator Box"),
 				"",
 				"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
-				0.33, 0.35, 4.0, 0.0), theState(ARMED), theHandleObjectPtr(NULL)
+				0.33, 0.35, 4.0, 0.0),
+		  theState(ARMED),
+		  theHandleObjectPtr(NULL)
 {
 	theProps.setDefaultPropertiesString(
 		Property::PHONENUMBER_STRING + QString(":/") );
@@ -83,14 +85,17 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	}
 }
 
-ViewObject*  DetonatorBox::createViewObject(void)
+ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 {
-	assert(theViewObjectPtr==NULL);
+	if (theViewObjectPtr!=NULL)
+		return theViewObjectPtr;
+
 	QString myImageName;
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getName();
 
 	theViewObjectPtr = new ViewDetonatorBox(this, myImageName);
+	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
 }
 
@@ -184,6 +189,13 @@ void DetonatorBox::setTriggered(void)
 }
 
 
+void DetonatorBox::updateViewObject(bool isSimRunning) const
+{
+	RectObject::updateViewObject(isSimRunning);
+	dynamic_cast<ViewDetonatorBox*>(theViewObjectPtr)
+			->updateHandlePosition(theHandleObjectPtr->getDistance());
+}
+
 // ##########################################################################
 // ##########################################################################
 // ##########################################################################
@@ -213,13 +225,9 @@ void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/
 	}
 }
 
-ViewObject*  DetonatorBoxHandle::createViewObject(void)
+ViewObject*  DetonatorBoxHandle::createViewObject(float)
 {
-	RectObject::createViewObject();
-	// redo the ZValue: AbstractObject will set it to 2.0 (default for ViewObjects)
-	// if not in Properties, set to 1.9: the Handle draws behind the Box
-	setViewObjectZValue(1.9);
-	return theViewObjectPtr;
+	return NULL;
 }
 
 void DetonatorBoxHandle::createPhysicsObject(void)

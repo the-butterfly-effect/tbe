@@ -31,7 +31,6 @@
 class DetonatorBoxHandle;
 class ExplosionSplatter;
 
-
 /** this class implements the DetonatorBox for an explosion
  *  it has a handle object at the top that can be pressed,
  *  once pressed deep enough, it will send a trigger.
@@ -59,7 +58,7 @@ public:
 		DONE       // end state, handle down and cell dark...
 	};
 
-	virtual ViewObject* createViewObject();
+	virtual ViewObject* createViewObject(float aDefaultDepth=2.0);
 
 	/// overridden from RectObject to be able to create the handle and
 	/// because this class wants to register for
@@ -104,6 +103,10 @@ public:
 
 	/// called by theDetonatorBoxHandle when triggered
 	void setTriggered(void);
+
+	/// overridden because we have also the handle to take care of...
+	virtual void updateViewObject(bool isSimRunning) const;
+
 
 protected:
 	/// call this function to suggest a state change to the DetonatorBox
@@ -164,9 +167,10 @@ private:
 public:
 	virtual ~DetonatorBoxHandle();
 
-	/// overridden from RectObject to allow setting a custom ZValue
-	/// and because this class wants to register for callbacks
-	virtual ViewObject* createViewObject();
+	/// Overridden from RectObject to allow setting a custom ZValue
+	/// and set itself as a child of the DetonatorBox.
+	/// Also because this class wants to register for callbacks...
+	virtual ViewObject* createViewObject(float aDefaultDepth);
 
 	/// overridden from AbstractObject to allow for the special joints
 	void createPhysicsObject(void);
