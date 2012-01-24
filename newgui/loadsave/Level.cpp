@@ -108,11 +108,11 @@ Level::getPathToLevelFile(void)
 		return QFileInfo(theFileName).absolutePath();
 }
 
-//QString
-//Level::getLevelFileName(void)
-//{
-//	return theFileName;
-//}
+QString
+Level::getLevelFileName(void)
+{
+	return theFileName;
+}
 
 QString
 Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)

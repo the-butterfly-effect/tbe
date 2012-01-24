@@ -18,6 +18,7 @@
 
 #include "ChooseLevel.h"
 #include "GameResources.h"
+#include "Level.h"
 #include "MainWindow.h"
 #include "Popup.h"
 #include "resizinggraphicsview.h"
@@ -222,7 +223,14 @@ void ResizingGraphicsView::slot_levelWon(void)
 	if (theWinFailDialogPtr!=NULL)
 		return;
 
-	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
+    if (theIsLevelEditor==false)
+    {
+        QString myLevelFileName = Level::getLevelFileName();
+        QSettings mySettings;
+        mySettings.setValue("completed/"+myLevelFileName, "done");
+    }
+
+    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
 
 	// FIXME/TODO: must emit 'won' to simcontrols
 	// also need to update simcontrols for this!

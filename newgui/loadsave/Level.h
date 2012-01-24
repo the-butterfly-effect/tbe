@@ -93,8 +93,9 @@ public:
 	/// @returns the path to the file that describes the current level
 	static QString getPathToLevelFile(void);
 
+	/// The File name of the Level is used in recording winning the level
 	/// @returns the name of the file that describes the current level
-//	static QString getLevelFileName(void);
+	static QString getLevelFileName(void);
 
 	/// sets the name of the file that describes the current level
 	void setLevelFileName(const QString& aName);
