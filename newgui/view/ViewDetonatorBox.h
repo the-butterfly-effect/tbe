@@ -50,12 +50,6 @@ public:
 	/// this member starts the display of the actual ChoosePhoneNumber dialog
 	void displayChoosePhoneNumber(void);
 
-	/** overridden from QGraphicsItem
-	 * Upon a single click event, let's choose the phone number
-	 * (just move if in level creator - there's an icon for choosephonenumber)
-	 */
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
-
 	/// TODO: document
 	void updateHandlePosition(qreal aDistance);
 

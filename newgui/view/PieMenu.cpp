@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,6 +23,7 @@
 
 #include "AbstractObject.h"
 #include "PieMenu.h"
+#include "TriggerExplosion.h"   // for DetonatorBox*
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 
@@ -192,8 +193,11 @@ void PieMenu::setup()
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
 	new ActionIcon(ActionIcon::ACTION_DELETE, "../images/ActionDelete.svg", true, this);
-//	ActionIcon* mySpecialIcon = new ActionIcon(ActionIcon::ACTION_EDITSPECIAL,
-//											"../images/ActionDelete.svg", false, this);
+
+
+	new ActionIcon(ActionIcon::ACTION_SETPHONE,
+				   "../images/ActionSetNumber.svg",
+				   dynamic_cast<DetonatorBox*>(theAOPtr)!=NULL, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	QTimer::singleShot(1, this, SLOT(startMove()));

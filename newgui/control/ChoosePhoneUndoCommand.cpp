@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,21 +16,24 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef MOVEUNDOCOMMAND_H
-#define MOVEUNDOCOMMAND_H
+#include "ChoosePhoneUndoCommand.h"
+#include "ViewDetonatorBox.h"
 
-#include "AbstractUndoCommand.h"
-#include "Position.h"
-
-/// Implementation of AbstractUndoCommand to handle
-/// movements of objects by the user.
-class MoveUndoCommand : public AbstractUndoCommand
+ChoosePhoneUndoCommand::ChoosePhoneUndoCommand(
+        ViewObject* anViewObjectPtr)
+    : DummyUndoCommand(anViewObjectPtr, QObject::tr("ChoosePhone"))
 {
-public:
-    explicit MoveUndoCommand(ViewObject* anViewObjectPtr);
+    DEBUG3ENTRY;
+    ViewDetonatorBox* myPtr = dynamic_cast<ViewDetonatorBox*>(theViewObjPtr);
+    if (myPtr==NULL)
+        return;
 
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
-};
+    myPtr->displayChoosePhoneNumber();
+    deleteLater();
+}
 
-#endif // MOVEUNDOCOMMAND_H
+
+ChoosePhoneUndoCommand::~ChoosePhoneUndoCommand()
+{
+    DEBUG1ENTRY;
+}

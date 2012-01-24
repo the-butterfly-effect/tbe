@@ -44,9 +44,10 @@ public:
     /// remove the pointer from AbstractUndoCommand to this class
     void clearDecoratorPointerToMe();
 
-    /// call this member to cement this action into the undo stack
-    /// and redo the last action to make sure the object is correct
-    void commit();
+    /// Call this member to cement this action into the undo stack
+    /// and redo the last action to make sure the object is correct.
+    /// @note Overridden in DummyUndoCommand.
+    virtual void commit(void);
 
     /// @returns true if the ViewObject is in collision with anything else
     bool isViewObjectColliding(void);

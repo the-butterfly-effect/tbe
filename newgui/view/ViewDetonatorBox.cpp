@@ -78,18 +78,6 @@ void ViewDetonatorBox::displayChoosePhoneNumber(void)
 	// it will also clean up after itself, I hope :-)
 }
 
-void ViewDetonatorBox::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
-{
-	// depending on whether we're level editor or not, move or display
-	if (theIsLevelEditor)
-		ViewObject::mousePressEvent(anEvent);
-	else
-	{
-		displayChoosePhoneNumber();
-		anEvent->accept();
-	}
-}
-
 
 void ViewDetonatorBox::updateHandlePosition(qreal aDistance)
 {

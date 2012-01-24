@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,21 +16,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef MOVEUNDOCOMMAND_H
-#define MOVEUNDOCOMMAND_H
+#ifndef CHOOSEPHONEUNDOCOMMAND_H
+#define CHOOSEPHONEUNDOCOMMAND_H
 
-#include "AbstractUndoCommand.h"
+#include "DummyUndoCommand.h"
 #include "Position.h"
+#include "ToolboxGroup.h"
+#include "ViewObject.h"
 
-/// Implementation of AbstractUndoCommand to handle
-/// movements of objects by the user.
-class MoveUndoCommand : public AbstractUndoCommand
+/// Implementation of DummyUndoCommand, to start the ChoosePhoneNumber
+/// 'dialog' ...
+class ChoosePhoneUndoCommand : public DummyUndoCommand
 {
 public:
-    explicit MoveUndoCommand(ViewObject* anViewObjectPtr);
+    explicit ChoosePhoneUndoCommand(ViewObject* anViewObjectPtr);
 
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
+    virtual ~ChoosePhoneUndoCommand();
 };
 
-#endif // MOVEUNDOCOMMAND_H
+#endif // CHOOSEPHONEUNDOCOMMAND_H

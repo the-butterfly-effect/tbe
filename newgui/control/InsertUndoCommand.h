@@ -61,4 +61,4 @@ private:
     static ViewObject *createAOandVO(ToolboxGroup *anToolboxGroupPtr);
 };
 
-#endif // MOVEUNDOCOMMAND_H
+#endif // INSERTUNDOCOMMAND_H
