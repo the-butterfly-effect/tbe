@@ -63,13 +63,27 @@ void AbstractUndoCommand::commit(void)
 
 bool AbstractUndoCommand::isViewObjectColliding(void)
 {
-    // if theVOADPtr exists, we probably have at least one
-    // object colliding. Let's check.
+    // We need to check whether the ViewObject or any of the child items
+    // (but not the ViewObjectAbstractDecorator) is colliding with any
+    // other object (but not the ViewObject or the VOAD).
     int myCollisionCount = 0;
+
     QList<QGraphicsItem*> myCollidingItems = theViewObjPtr->collidingItems ( Qt::IntersectsItemShape );
-    foreach(QGraphicsItem* i, myCollidingItems)
+    QList<QGraphicsItem*> myChildItems = theViewObjPtr->childItems();
+
+    // Make the CollidingItems list complete for all childs
+    foreach(QGraphicsItem* i, myChildItems)
     {
         if (i != &(theViewObjPtr->theDecorator))
+            myCollidingItems += i->collidingItems(Qt::IntersectsItemShape );
+    }
+    // Add theViewObject to the list as well
+    myChildItems += theViewObjPtr;
+
+    // Finally... Check for collisions.
+    foreach(QGraphicsItem* j, myCollidingItems)
+    {
+        if (!myChildItems.contains(j))
             myCollisionCount++;
     }
     return myCollisionCount>0;
