@@ -281,6 +281,10 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 
 void AbstractObject::updateViewObject(bool isSimRunning) const
 {
+	// no ViewObject: nothing to update ;-)
+	if(theViewObjectPtr == NULL)
+		return;
+
 	// no b2body: no part of simulation
 	if (theB2BodyPtr==NULL)
 	{
@@ -293,8 +297,6 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 	}
 
 	// Sim running: don't need to adjust objects that are static or asleep
-	if(theViewObjectPtr == NULL)
-		return;
 	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
 	{
 		theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
