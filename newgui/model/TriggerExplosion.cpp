@@ -362,6 +362,7 @@ void Dynamite::deletePhysicsObject(void)
 
 void Dynamite::deletePhysicsObjectForReal(void)
 {
+	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 	theB2BodyPtr = NULL;
 }

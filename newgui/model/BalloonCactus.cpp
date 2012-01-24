@@ -153,6 +153,7 @@ void Balloon::deletePhysicsObject(void)
 
 void Balloon::deletePhysicsObjectForReal(void)
 {
+	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 	theB2BodyPtr = NULL;
 }
