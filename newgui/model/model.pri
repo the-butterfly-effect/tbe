@@ -1,6 +1,7 @@
 
 SOURCES += \
     model/BalloonCactus.cpp \
+    model/Butterfly.cpp \
     model/CircleObjects.cpp \
     model/ColaMintBottle.cpp \
     model/AbstractJoint.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     model/BalloonCactus.h \
+    model/Butterfly.h \
     model/CircleObjects.h \
     model/ColaMintBottle.h \
     model/AbstractJoint.h \

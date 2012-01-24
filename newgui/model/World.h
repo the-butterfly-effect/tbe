@@ -227,6 +227,11 @@ public:
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 
+	/// Calling this member will start the death procedure.
+	/// @param anObject  object that died
+	void objectDied(AbstractObject* /*anObject*/)
+	{ emit signalDeath(); }
+
 	/** Take one step in the simulation loop
 	 * @note    each step has fixed time, defined in theDeltaTime.
 	 * @returns the time step taken in the simulation step in seconds
