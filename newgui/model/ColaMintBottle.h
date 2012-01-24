@@ -32,7 +32,7 @@ public:
 	ColaSplatter();
 	virtual ~ColaSplatter();
 
-	/// returns true if the object should not surive a World::reset()
+	/// @returns true if the object should not surive a World::deletePhysicsWorld()
 	/// overridden from AbstractObject
 	virtual bool isTemp() const
 	{ return true; }
