@@ -21,12 +21,12 @@
 #include "TriggerExplosion.h"
 
 
-ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent) :
-    QWidget(parent),
+ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView *aParentPtr) :
+	AnimatedDialog(aParentPtr),
 	m_ui(new Ui::ChoosePhoneNumber),
 	theDBPtr(aBoxPtr)
 {
-    m_ui->setupUi(this);
+	m_ui->setupUi(this);
 	assert(theDBPtr!=NULL);
 
 	// all possible phone numbers are inserted below
@@ -40,13 +40,13 @@ ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent) :
 	int myPhoneNrIndex = m_ui->comboBox->findText (myPhoneNumber, Qt::MatchExactly);
 	m_ui->comboBox->setCurrentIndex(myPhoneNrIndex);
 
-	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(close()));
-	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(close()));
+	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
+	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
 }
 
 ChoosePhoneNumber::~ChoosePhoneNumber()
 {
-    delete m_ui;
+	delete m_ui;
 }
 
 void ChoosePhoneNumber::changeEvent(QEvent *e)

@@ -19,7 +19,7 @@
 #ifndef CHOOSEPHONENUMBER_H
 #define CHOOSEPHONENUMBER_H
 
-#include <QtGui/QWidget>
+#include "animateddialog.h"
 
 class DetonatorBox;
 
@@ -27,10 +27,10 @@ namespace Ui {
     class ChoosePhoneNumber;
 }
 
-class ChoosePhoneNumber : public QWidget {
+class ChoosePhoneNumber : public AnimatedDialog {
     Q_OBJECT
 public:
-	ChoosePhoneNumber(DetonatorBox* aBoxPtr, QWidget *parent = 0);
+    ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView *aParentPtr = 0);
     ~ChoosePhoneNumber();
 
 public slots:
@@ -38,10 +38,10 @@ public slots:
 	void on_comboBox_activated();
 
 protected:
-    void changeEvent(QEvent *e);
+	void changeEvent(QEvent *e);
 
 private:
-    Ui::ChoosePhoneNumber *m_ui;
+	Ui::ChoosePhoneNumber *m_ui;
 	DetonatorBox* theDBPtr;
 };
 

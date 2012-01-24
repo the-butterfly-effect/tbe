@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ChoosePhoneNumber</class>
- <widget class="QWidget" name="ChoosePhoneNumber">
+ <widget class="AnimatedDialog" name="ChoosePhoneNumber">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +12,9 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -58,6 +61,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_OK">
+       <property name="styleSheet">
+        <string notr="true">background: url(:/button.png);</string>
+       </property>
        <property name="text">
         <string>OK</string>
        </property>
@@ -65,11 +71,20 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_Cancel">
+       <property name="styleSheet">
+        <string notr="true">background: url(:/button.png);</string>
+       </property>
        <property name="text">
         <string>Cancel</string>
        </property>
        <property name="autoDefault">
         <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -77,6 +92,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AnimatedDialog</class>
+   <extends>QWidget</extends>
+   <header>animateddialog.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
