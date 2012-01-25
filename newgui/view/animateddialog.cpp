@@ -28,15 +28,12 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
     theAnimation(NULL, "geometry"),
     theIsToBeDeleted(false)
 {
-    theHideTimer.setSingleShot(true);
-    connect(&theHideTimer, SIGNAL(timeout()), this, SLOT(hide()));
+    theAnimation.setTargetObject(this);
 }
 
 
 void AnimatedDialog::appearAnimated()
 {
-	theHideTimer.stop();
-
 	// make the currently visible dialog go away
 	theAnimatedDialogMutex.lock();
 	AnimatedDialog* myADPtr = theCurrentlyViewedAnimatedDialog;
@@ -46,18 +43,29 @@ void AnimatedDialog::appearAnimated()
 		emit myADPtr->disappearAnimated();
 
 	// setup the animation to appear
-	theAnimation.setTargetObject(this);
-	theAnimation.setStartValue(QRectF(
-									  QPointF((theOurParentPtr->width() - width())/2,
-											  -height()), size()));
+	const qreal DURATION=1500;
+	if (theAnimation.state()==QPropertyAnimation::Running)
+	{
+		theAnimation.stop();
+		theAnimation.setStartValue(theAnimation.currentValue());
+	}
+	else
+	{
+		theAnimation.setStartValue(QRectF(
+										  QPointF((theOurParentPtr->width() - width())/2,
+												  -height()), size()));
+	}
 	theAnimation.setEndValue(QRectF(
 									QPointF((theOurParentPtr->width()  - width())/2,
 											(theOurParentPtr->height() - height())/2),
 									size()));
-	theAnimation.setDuration(1500);
+	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutBounce);
 	theAnimation.start();
 	emit show();
+	emit startedAppear();
+	connect(   &theAnimation, SIGNAL(finished()), this, SLOT(slot_handleAppeared()));
+	disconnect(&theAnimation, SIGNAL(finished()), this, SLOT(slot_handleDisappeared()));
 }
 
 void AnimatedDialog::disappearAnimated()
@@ -71,24 +79,53 @@ void AnimatedDialog::disappearAnimated()
 
 	// setup disappear animation
 	const qreal DURATION=1000;
-	theAnimation.setTargetObject(this);
-	theAnimation.setStartValue(QRectF(
-								   QPointF((theOurParentPtr->width()  - width())/2,
-										   (theOurParentPtr->height() - height())/2),
-								   size()));
+	if (theAnimation.state()==QPropertyAnimation::Running)
+	{
+		theAnimation.stop();
+		theAnimation.setStartValue(theAnimation.currentValue());
+	}
+	else
+	{
+		theAnimation.setStartValue(QRectF(
+									   QPointF((theOurParentPtr->width()  - width())/2,
+											   (theOurParentPtr->height() - height())/2),
+									   size()));
+	}
 	theAnimation.setEndValue(QRectF(
 								 QPointF((theOurParentPtr->width() - width())/2,
 										 -height()), size()));
 	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutQuad);
 	theAnimation.start();
+	disconnect(&theAnimation, SIGNAL(finished()), this, SLOT(slot_handleAppeared()));
+	connect(   &theAnimation, SIGNAL(finished()), this, SLOT(slot_handleDisappeared()));
+}
+
+
+
+void AnimatedDialog::slot_handleAppeared()
+{
+	// signal listeners that showing is complete
+	emit appeared();
+}
+
+void AnimatedDialog::slot_handleDisappeared()
+{
+	// prevent dialog from taking resources
+	emit hide();
+	// signal listeners that we're gone
+	emit disappeared();
 
 	// are we also to delete this object after it is hidden?
 	if (theIsToBeDeleted)
 	{
-		connect(&theHideTimer, SIGNAL(timeout()), this, SLOT(deleteLater()));
+		emit deleteLater();
 	}
+}
 
-	// hide (and maybe delete) slightly later than the animation ends
-	theHideTimer.start(DURATION*1.05);
+
+void AnimatedDialog::makeAllAnimatedDialogsDisappear()
+{
+	if (theCurrentlyViewedAnimatedDialog!=NULL)
+		emit theCurrentlyViewedAnimatedDialog->disappearAnimated();
 }
