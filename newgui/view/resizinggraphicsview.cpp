@@ -37,19 +37,13 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
 	theSimControlsPtr = new SimulationControls(this);
+	theGameResourcesPtr = new GameResources(this);
 }
 
 
 ResizingGraphicsView::~ResizingGraphicsView()
 {
 	delete theSimControlsPtr;
-}
-
-
-void ResizingGraphicsView::clearGameResourcesDialog()
-{
-	delete theGameResourcesPtr;
-	theGameResourcesPtr = NULL;
 }
 
 
@@ -71,35 +65,10 @@ void ResizingGraphicsView::clearViewWorld(void)
 }
 
 
-void ResizingGraphicsView::createGameResourcesDialog()
-{
-	Q_ASSERT(theGameResourcesPtr == NULL);
-	theGameResourcesPtr = new GameResources(this);
-}
-
-
-void ResizingGraphicsView::enableGameResourcesDialog(void)
-{
-	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(showGRDialog()));
-	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(hideGRDialog()));
-	connect(theGameResourcesPtr, SIGNAL(hideMe()), this, SLOT(hideGRDialog()));
-
-	QTimer::singleShot(10, this, SLOT(showGRDialog()));
-}
-
-
 GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 {
 	Q_ASSERT(theGameResourcesPtr != NULL);
 	return theGameResourcesPtr;
-}
-
-
-void ResizingGraphicsView::hideGRDialog()
-{
-	theGameResourcesPtr->disappearAnimated();
-	theGRDownActionPtr->setEnabled(true);
-	theGRUpActionPtr->setEnabled(false);
 }
 
 
@@ -114,10 +83,7 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
-
-	// only resize GameResources if down
-	if (theGRUpActionPtr->isEnabled())
-		theGameResourcesPtr->parentResize(transform());
+	theGameResourcesPtr->parentResize(transform());
 }
 
 
@@ -126,16 +92,10 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 	theMainWindowPtr = aMWPtr;
 	theSimControlsPtr->setup(anMenuControlsPtr);
 
-	// hook up the buttons for the GameResources dialog
-	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
-	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
+	theGameResourcesPtr->setup(aMenuBarPtr);
 
 	// this one displays the frame rate counter if active
 	theFrameRateViewPtr= aMenuBarPtr->addAction("");
-
-	// and set the QActions disabled for now
-	theGRDownActionPtr->setEnabled(false);
-	theGRUpActionPtr->setEnabled(false);
 }
 
 
@@ -155,15 +115,8 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 //	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath())), this, SLOT(slot_death());
-}
 
-
-void ResizingGraphicsView::showGRDialog()
-{
-	theGameResourcesPtr->parentResize(transform());
-	theGameResourcesPtr->appearAnimated();
-	theGRDownActionPtr->setEnabled(false);
-	theGRUpActionPtr->setEnabled(true);
+	QTimer::singleShot(10, theGameResourcesPtr, SLOT(appearAnimated()));
 }
 
 
@@ -181,6 +134,7 @@ void ResizingGraphicsView::slot_actionChooseLevel()
 	theWinFailDialogPtr = NULL;
 }
 
+
 void ResizingGraphicsView::slot_actionNextLevel()
 {
 	DEBUG3ENTRY;
@@ -195,6 +149,7 @@ void ResizingGraphicsView::slot_actionNextLevel()
 	else
 		emit slot_actionChooseLevel();
 }
+
 
 void ResizingGraphicsView::slot_actionReplay()
 {
@@ -217,6 +172,7 @@ void ResizingGraphicsView::slot_levelDeath(void)
 	emit theScenePtr->slot_signalPause();
 }
 
+
 void ResizingGraphicsView::slot_levelWon(void)
 {
 	// only need to display the dialog once...
@@ -235,9 +191,6 @@ void ResizingGraphicsView::slot_levelWon(void)
 	// FIXME/TODO: must emit 'won' to simcontrols
 	// also need to update simcontrols for this!
 	emit hideSimControls();
-	theGRDownActionPtr->setEnabled(false);
-	theGRUpActionPtr->setEnabled(false);
-
 	theWinFailDialogPtr->appearAnimated();
 
 	// also make the sim stop once the above animation is (almost) done...

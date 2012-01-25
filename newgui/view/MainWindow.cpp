@@ -96,7 +96,6 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-	ui->graphicsView->enableGameResourcesDialog();
 }
 
 
@@ -130,8 +129,6 @@ void MainWindow::setupView()
 	ui->menuEdit->addAction(myRedoActionPtr);
 
 	ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
-	ui->graphicsView->createGameResourcesDialog();
-
 	if (theStartFileName.isEmpty())
 	{
 		ChooseLevel myDialog(NULL, true);

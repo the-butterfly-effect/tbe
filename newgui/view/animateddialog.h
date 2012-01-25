@@ -32,6 +32,7 @@ class AnimatedDialog : public QWidget
     Q_OBJECT
 public:
     explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = NULL);
+    ~AnimatedDialog();
 
     /// set the dialog to delete itself upon disappearance is complete
     void setDeleteOnDisappear(bool isToBeDeleted)

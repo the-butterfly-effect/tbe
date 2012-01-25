@@ -56,11 +56,9 @@ public:
     void hideSimControls(void);
     void showSimControls(void);
 
-    void clearGameResourcesDialog();
-    void createGameResourcesDialog();
+    /// @returns a pointer to the GameResourcesDialog.
+    /// @note this member is only used to hand a pointer to Level.
     GameResources* getGameResourcesDialogPtr() const;
-
-    void enableGameResourcesDialog();
 
     QAction* getFrameRateViewPtr()
     { return theFrameRateViewPtr; }
@@ -69,20 +67,12 @@ protected:
     virtual void resizeEvent(QResizeEvent *event);
 
 private slots:
-    virtual void showGRDialog();
-    virtual void hideGRDialog();
-
     void slot_levelDeath(void);
     void slot_levelWon(void);
 
     void slot_actionChooseLevel();
     void slot_actionNextLevel();
     void slot_actionReplay();
-
-signals:
-//    void hideGameResourcesDialog();
-
-public slots:
 
 private:
     GameResources*      theGameResourcesPtr;
@@ -91,9 +81,7 @@ private:
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;
 
-	QAction*            theGRDownActionPtr;
-	QAction*            theGRUpActionPtr;
-	QAction*            theFrameRateViewPtr;
+    QAction*            theFrameRateViewPtr;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

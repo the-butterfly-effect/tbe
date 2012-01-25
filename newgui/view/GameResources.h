@@ -26,6 +26,7 @@ namespace Ui {
 #include "animateddialog.h"
 class Level;
 #include "LocalString.h"
+class QAction;
 class ViewWorld;
 
 
@@ -33,7 +34,7 @@ class ViewWorld;
 /// the button for hints. It is displayed when you click on the appropriate
 /// action in the menu bar and/or at the start of a level.
 ///
-/// Usually this class is owned by the resizingsgraphicsview of MainWindow,
+/// Usually this class is owned by the ResizingsGraphicsView,
 /// which this class is drawn on top of (like an overlay).
 class GameResources : public AnimatedDialog
 {
@@ -48,12 +49,13 @@ public:
     /// @param aTransformMatrix the transform matrix used by the parent.
     void parentResize(const QTransform& aTransformMatrix);
 
-    /// set the Level where we're going to get our info from:
-    /// i.e. level name, author but also the contents of the Toolbox view
+    /// Set the Level where we're going to get our info from:
+    /// i.e. level name, author but also the contents of the Toolbox view.
     void setLevelPtr(Level* aLevelPtr);
 
-signals:
-    void hideMe();
+    /// Hooks up the two actions of the Game Resources dialog into
+    /// the menu bar.
+    void setup(QMenuBar* aMenuBarPtr);
 
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog
@@ -61,6 +63,9 @@ protected:
 
 private slots:
     void on_theOKButton_clicked();
+
+    void slot_window_appeared();
+    void slot_window_disappeared();
 
 private:
     Ui::GameResources *ui;
@@ -75,6 +80,9 @@ private:
 
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
     ResizingGraphicsView* theParentPtr;
+
+	QAction* theGRDownActionPtr;
+	QAction* theGRUpActionPtr;
 };
 
 #endif // GAMERESOURCES_H

@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "animateddialog.h"
 #include "PieMenu.h"
 #include "resizinggraphicsview.h"
 #include "ViewWorld.h"
@@ -125,6 +126,9 @@ void ViewWorld::slot_signalPause()
 
 void ViewWorld::slot_signalPlay()
 {
+	// remove any dialogs when user starts playing
+	AnimatedDialog::makeAllAnimatedDialogsDisappear();
+
 	if (isSimRunning==false)
 		theWorldPtr->createPhysicsWorld();
 	isSimRunning=true;

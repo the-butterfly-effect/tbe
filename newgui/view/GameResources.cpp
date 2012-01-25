@@ -19,6 +19,8 @@
 #include "GameResources.h"
 #include "ImageCache.h"
 #include "Level.h"
+#include <QAction>
+#include <QMenuBar>
 #include "tbe_global.h"
 #include "ui_GameResources.h"
 #include "ViewObject.h"
@@ -30,18 +32,23 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
     theViewWorldPtr(NULL),
-    theParentPtr(aRSGVPtr)
+    theParentPtr(aRSGVPtr),
+    theGRDownActionPtr(NULL),
+    theGRUpActionPtr(NULL)
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
     ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
     setAutoFillBackground (true);
+
+	connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
+	connect(this, SIGNAL(disappeared()), this, SLOT(slot_window_disappeared()));
 }
 
 
 GameResources::~GameResources()
 {
-    delete ui;
+	delete ui;
 }
 
 
@@ -57,6 +64,12 @@ void GameResources::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+
+void GameResources::on_theOKButton_clicked()
+{
+    emit disappearAnimated();
 }
 
 
@@ -101,7 +114,26 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 	}
 }
 
-void GameResources::on_theOKButton_clicked()
+
+void GameResources::setup(QMenuBar* aMenuBarPtr)
 {
-	emit hideMe();
+	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
+	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
+	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(appearAnimated()));
+	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(disappearAnimated()));
+	slot_window_disappeared();
+}
+
+
+void GameResources::slot_window_appeared()
+{
+	theGRDownActionPtr->setEnabled(false);
+	theGRUpActionPtr->setEnabled(true);
+}
+
+
+void GameResources::slot_window_disappeared()
+{
+	theGRDownActionPtr->setEnabled(true);
+	theGRUpActionPtr->setEnabled(false);
 }

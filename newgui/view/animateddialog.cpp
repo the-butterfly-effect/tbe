@@ -18,6 +18,7 @@
 
 #include "animateddialog.h"
 #include <QtCore/QMutex>
+#include "tbe_global.h"
 
 AnimatedDialog* AnimatedDialog::theCurrentlyViewedAnimatedDialog = NULL;
 static QMutex theAnimatedDialogMutex;
@@ -28,9 +29,19 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
     theAnimation(NULL, "geometry"),
     theIsToBeDeleted(false)
 {
+    DEBUG1("entry: %s = %p\n", Q_FUNC_INFO, this);
     theAnimation.setTargetObject(this);
 }
 
+AnimatedDialog::~AnimatedDialog()
+{
+	DEBUG1("exit: %s = %p\n", Q_FUNC_INFO, this);
+	// catch any dialogs that disappear unanimated
+	theAnimatedDialogMutex.lock();
+	if (theCurrentlyViewedAnimatedDialog==this)
+		theCurrentlyViewedAnimatedDialog=NULL;
+	theAnimatedDialogMutex.unlock();
+}
 
 void AnimatedDialog::appearAnimated()
 {
@@ -113,6 +124,7 @@ void AnimatedDialog::slot_handleDisappeared()
 {
 	// prevent dialog from taking resources
 	emit hide();
+
 	// signal listeners that we're gone
 	emit disappeared();
 
