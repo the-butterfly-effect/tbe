@@ -215,12 +215,14 @@ PieMenuSingleton::PieMenuSingleton(void)
 	// nothing to do
 }
 
+
 ViewObject* PieMenuSingleton::getPieMenuParent(void)
 {
 	if (me()->theCurrentPieMenuPtr==NULL)
 		return NULL;
-	return dynamic_cast<ViewObject*>(me()->theCurrentPieMenuPtr->parent());
+        return me()->theCurrentPieMenuPtr->theVOPtr;
 }
+
 
 PieMenuSingleton* PieMenuSingleton::me(void)
 {
@@ -228,6 +230,7 @@ PieMenuSingleton* PieMenuSingleton::me(void)
 		thePMSingletonPtr = new PieMenuSingleton();
 	return thePMSingletonPtr;
 }
+
 
 void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 											  const QPointF& aPositionInObjectCoord )

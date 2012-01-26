@@ -129,9 +129,12 @@ void ViewObject::adjustObjectDrawing(void)
 
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
-    // this looks great, but unfortunately it also affects all children
-    QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
-    setGraphicsEffect(myEffect);
+    // only set hover effect when no menu present
+    if (PieMenuSingleton::getPieMenuParent()!=this)
+    {
+        QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
+        setGraphicsEffect(myEffect);
+    }
 }
 
 
