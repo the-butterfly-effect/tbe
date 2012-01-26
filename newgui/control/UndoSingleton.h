@@ -45,7 +45,14 @@ public:
 	/// this removes all UndoObjects from the stack
 	static void clear();
 
+	/// Push the UndoCommand on to the UndoStack and delist it from the
+	/// currently active undo commands.
 	static void push(AbstractUndoCommand* anAUCPtr);
+
+	/// This is a notification that the UndoCommand is deleted and
+	/// no longer exists - delist it from the
+	/// currently active undo commands.
+	static void notifyGone(AbstractUndoCommand* anAUCPtr);
 
 	static QAction * createRedoAction ( QObject* parent, const QString & prefix = QString() );
 	static QAction * createUndoAction ( QObject* parent, const QString & prefix = QString() );

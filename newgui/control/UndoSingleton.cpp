@@ -24,6 +24,7 @@
 #include "ChoosePhoneUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
+static AbstractUndoCommand* theCurrentlyActiveUndoCommand = NULL;
 
 
 UndoSingleton::UndoSingleton(void)
@@ -42,6 +43,7 @@ QAction* UndoSingleton::createRedoAction (QObject* parent,const QString& prefix)
 	return me()->theUndoStack.createRedoAction(parent, prefix);
 }
 
+
 QAction* UndoSingleton::createUndoAction (QObject* parent,const QString& prefix)
 {
 	return me()->theUndoStack.createUndoAction(parent, prefix);
@@ -53,19 +55,23 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 								 ActionIcon::ActionType anUndoType)
 {
 	qDebug() << Q_FUNC_INFO << "action type: " << anUndoType;
+
+	AbstractUndoCommand* myNewCommand = NULL;
+	// return immediately for UndoActions that do not need further
+	// user interactions (i.e. those derived from Dummy).
 	switch(anUndoType)
 	{
 	case ActionIcon::ACTION_INSERT:
 		return new InsertUndoCommand(anObject);
 		break;
 	case ActionIcon::ACTION_MOVE:
-		return new MoveUndoCommand(anObject);
+		myNewCommand = new MoveUndoCommand(anObject);
 		break;
 	case ActionIcon::ACTION_ROTATE:
-		return new RotateUndoCommand(anObject);
+		myNewCommand =  new RotateUndoCommand(anObject);
 		break;
 	case ActionIcon::ACTION_RESIZE:
-		return new ResizeUndoCommand(anObject);
+		myNewCommand =  new ResizeUndoCommand(anObject);
 		break;
 	case ActionIcon::ACTION_SETPHONE:
 		return new ChoosePhoneUndoCommand(anObject);
@@ -75,7 +81,10 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 		// TODO/FIXME
 		break;
 	}
-	return NULL;
+	if (theCurrentlyActiveUndoCommand!=NULL)
+		delete theCurrentlyActiveUndoCommand;
+	theCurrentlyActiveUndoCommand = myNewCommand;
+	return myNewCommand;
 }
 
 
@@ -87,10 +96,18 @@ UndoSingleton* UndoSingleton::me(void)
 }
 
 
+void UndoSingleton::notifyGone(AbstractUndoCommand* anAUCPtr)
+{
+	if (anAUCPtr == theCurrentlyActiveUndoCommand)
+		theCurrentlyActiveUndoCommand = NULL;
+}
+
+
 void UndoSingleton::push(AbstractUndoCommand* anAUCPtr)
 {
 	qDebug() << "pushed " << anAUCPtr->text();
 	me()->theUndoStack.push(anAUCPtr);
+	notifyGone(anAUCPtr);
 }
 
 

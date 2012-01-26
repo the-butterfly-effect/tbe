@@ -43,6 +43,9 @@ AbstractUndoCommand::AbstractUndoCommand(
 AbstractUndoCommand::~AbstractUndoCommand()
 {
     DEBUG1ENTRY;
+    setDecoratorStateUndoRedo();
+    clearDecoratorPointerToMe();
+    UndoSingleton::notifyGone(this);
 }
 
 
