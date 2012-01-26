@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <cassert>
 #include "AbstractUndoCommand.h"
 #include "ImageCache.h"
 #include "MoveUndoCommand.h"
@@ -64,6 +65,7 @@ ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
     // if there is no undo registered, let's delegate to someone else
     // (i.e. our parent)
+    assert(theAUCPtr!=NULL);
     if (theAUCPtr==NULL)
     {
         event->ignore();
