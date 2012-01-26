@@ -217,15 +217,13 @@ PolyObject::~PolyObject ( )
 void PolyObject::setTheWidth ( qreal new_var )
 {
 	AbstractObject::setTheWidth(new_var);
-	clearShapeList();
-	fillShapeList();
+	parseProperties();
 }
 
 void PolyObject::setTheHeight ( qreal new_var )
 {
 	AbstractObject::setTheHeight(new_var);
-	clearShapeList();
-	fillShapeList();
+	parseProperties();
 }
 
 // Other methods
@@ -233,7 +231,7 @@ void PolyObject::setTheHeight ( qreal new_var )
 
 void PolyObject::fillShapeList(void)
 {
-	DEBUG5("void PolyObject::fillShapeList(void)\n");
+	DEBUG5ENTRY;
 
 	float myMass;
 	theProps.property2Float(Property::MASS_STRING, &myMass);
@@ -242,8 +240,7 @@ void PolyObject::fillShapeList(void)
 	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
 	QStringList myPolygonList = myPolygons.split(";",QString::SkipEmptyParts);
 
-	if (theAABB.isInitialised()==false)
-		theAABB = AABB(myPolygons);
+	assert(theAABB.isInitialised());
 	if (theAABB.isInitialised()==false)
 		return;
 	Vector myScale(getTheWidth()/theAABB.getOrigWidth(), getTheHeight()/theAABB.getOrigHeight());
@@ -296,6 +293,11 @@ b2BodyType PolyObject::getObjectType(void) const
 void PolyObject::parseProperties(void)
 {
 	AbstractObject::parseProperties();
+
+	QString myPolygons;
+	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
+	theAABB = AABB(myPolygons);
+
 	clearShapeList();
 	fillShapeList();
 }
