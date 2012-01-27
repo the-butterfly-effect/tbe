@@ -53,6 +53,14 @@ public slots:
 	/// @param aFileName guess what: the file name. Duh.
 	void loadLevel(const QString& aFileName);
 
+	// menu Help
+	void on_action_About_activated(void);
+	void on_action_Bug_Reports_activated(void);
+	void on_action_Libraries_activated(void);
+	void on_action_New_Levels_activated(void);
+	void on_action_Suggestions_activated(void);
+
+	// menu File
 	void on_action_Open_Level_triggered();
 
 private:

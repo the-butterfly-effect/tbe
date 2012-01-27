@@ -53,9 +53,27 @@
      <string>&amp;Controls</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <widget class="QMenu" name="menu_Contribute">
+     <property name="title">
+      <string>&amp;Contribute</string>
+     </property>
+     <addaction name="action_Suggestions"/>
+     <addaction name="action_Bug_Reports"/>
+     <addaction name="action_New_Levels"/>
+    </widget>
+    <addaction name="action_Libraries"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Contribute"/>
+    <addaction name="action_About"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuControls"/>
+   <addaction name="menu_Help"/>
   </widget>
   <action name="action_Open_Level">
    <property name="text">
@@ -70,6 +88,31 @@
   <action name="action_Quit">
    <property name="text">
     <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="action_Libraries">
+   <property name="text">
+    <string>Libraries...</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About...</string>
+   </property>
+  </action>
+  <action name="action_Suggestions">
+   <property name="text">
+    <string>&amp;Suggestions...</string>
+   </property>
+  </action>
+  <action name="action_Bug_Reports">
+   <property name="text">
+    <string>&amp;Bug Reports...</string>
+   </property>
+  </action>
+  <action name="action_New_Levels">
+   <property name="text">
+    <string>New Levels...</string>
    </property>
   </action>
  </widget>

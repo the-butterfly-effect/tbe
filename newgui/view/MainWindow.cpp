@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2012 Klaas van Gend
+ * This file copyright (C) 2009,2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -96,6 +96,77 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+}
+
+
+void MainWindow::on_action_About_activated()
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
+				"An open source game that uses realistic physics"
+				" simulations to combine lots of simple mechanical elements"
+				" to achieve a simple goal in the most complex way possible.<br><br>"
+				"(C) 2009,2010,2011,2012 Peter van Ginneken and Klaas van Gend<br>"
+				"Licensed under GPL version 2 - <i>only</i>.<br><br>"
+				"See http://%1/ for more info on this project.")
+				.arg(QCoreApplication::instance()->organizationDomain()), this);
+}
+
+
+void MainWindow::on_action_Bug_Reports_activated()
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect - Bug Reports</b><br><br>"
+				   "Of course, this game is not bug free yet.<br>"
+				   "If you come across anything that you think should not "
+				   "happen, please let us know. Go to our ticket website:"
+				   "<br><a href=\""
+				   "http://sourceforge.net/apps/trac/tbe/newticket\">"
+				   "http://sourceforge.net/apps/trac/tbe/newticket</a><br>"
+				   "Please tell us at least the name of the level, what you "
+				   "expected to happen and what did happen. If you want to "
+				   "learn how we fix your issue, please provide a valid "
+				   "e-mail address."
+				""), this);
+}
+
+
+void MainWindow::on_action_Libraries_activated()
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
+				"The Butterfly Effect is a proud user of the Box2D "
+				"Physics Library. Please refer to http://www.box2d.org/ ."
+				"<br>"
+				"The Butterfly Effect uses the Qt GUI toolkit. "
+				"Please refer to http://qt-project.org/ ."
+				""), this);
+}
+
+
+void MainWindow::on_action_New_Levels_activated(void)
+{
+	//: translators: <b> and <br> are statements for bold and newline, respectively
+	Popup::Info(tr("<b>The Butterfly Effect - Create New Levels</b><br><br>"
+				   "We know you can design better levels than we do!<br>"
+				   "Use the Level Creator to build your levels and please submit them to us.<br>"
+				   "Even if your level is not finished yet, don't hestitate to share it with us! "
+				   "Of course, define how you think it should work so others can join in."
+				   "<br><br>This is our level mailing list:<br>"
+				   "<a href=\"mailto:tbe-levels@lists.sf.net\">tbe-levels@lists.sf.net</a><br>"
+				   ""), this);
+}
+
+
+void MainWindow::on_action_Suggestions_activated()
+{
+	Popup::Info(tr("<b>The Butterfly Effect - Suggestions</b><br><br>"
+				   "If you have great ideas for new features in the game, "
+				   "please go to our shiny forums at: <br><a href=\""
+				   "http://sourceforge.net/projects/tbe/forums/forum/953128\">"
+				   "http://sourceforge.net/projects/tbe/forums/forum/953128</a>"
+				   "<br>to share your ideas with the world."
+				""), this);
 }
 
 
