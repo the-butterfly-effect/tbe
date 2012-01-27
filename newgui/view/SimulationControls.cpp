@@ -72,6 +72,9 @@ void SimulationControls::hideYourself()
 void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
 {
 	DEBUG1ENTRY;
+
+        emit internalReset();
+
 	// hook up states to signals for ViewWorld/World
 	connect(theFailedState, SIGNAL(entered()), aViewWorld,
 			SLOT(slot_signalPause()));
@@ -123,15 +126,20 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
 	// add transitions here
 	theStoppedState->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
+        theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 	theRunningState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
 	theRunningState->addTransition(theBotAction, SIGNAL(triggered()), theForwardState);
-	theRunningState->addTransition(this, SIGNAL(failed()), theFailedState);
-	thePausedState ->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
+        theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+        theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        thePausedState ->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
 	thePausedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
-	theFailedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
-	theForwardState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
+        thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theFailedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
+        theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theForwardState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
 	theForwardState->addTransition(theBotAction, SIGNAL(triggered()), theRunningState);
-	theForwardState->addTransition(this, SIGNAL(failed()), theFailedState);
+        theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+        theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
 	// set the start conditions for the icons for each state
 	// upon entering stopped state, Top = Play/enabled, Bottom = FF/disable

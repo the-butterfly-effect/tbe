@@ -70,13 +70,20 @@ public:
 
 signals:
 	/// this signal is emitted when our slot onFailed is called
-	void failed(void);
+        void internalFailed(void);
+
+        /// this signal is emitted when our slot onReset is called
+        void internalReset(void);
+
 
 public slots:
 	/// call this slot if the simulation has failed, the internal
 	/// state machine will go to the Failed state.
 	void onFailed(void)
-	{ emit failed(); }
+        { emit internalFailed(); }
+
+        void onReset(void)
+        { emit internalReset(); }
 
 	/// hide (and disable) the controls
 	void hideYourself();
