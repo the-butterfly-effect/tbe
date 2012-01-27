@@ -158,7 +158,7 @@ void ViewObject::initViewObjectAttributes(void)
 void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
     hoverLeaveEvent(NULL);
-    PieMenuSingleton::addPieMenuToViewObject(this, anEvent->pos());
+    PieMenuSingleton::addPieMenuToViewObject(this, anEvent->scenePos());
 }
 
 void ViewObject::setNewGeometry(const Position& aNewPosition, qreal aNewWidth, qreal aNewHeight)

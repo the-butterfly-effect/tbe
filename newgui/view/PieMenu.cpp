@@ -37,6 +37,12 @@
 // * PieMenuSingleton
 
 
+/// Distance from the pie menu center to the center of the outside icons.
+static const qreal CENTER_RADIUS = 40.0;
+
+static const qreal SMALL_ICON_HALFWIDTH = 0.5*0.667*CENTER_RADIUS;
+static const qreal LARGE_ICON_HALFWIDTH = 0.5*1.333*CENTER_RADIUS;
+
 void NamedState::onEntry ( QEvent * event )
 {
 //	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
@@ -61,14 +67,13 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	// we want to scale ourselfs so we are 2/3 of myRadius as width
 	// (or height - square!) that allows the centerpiece to be twice
 	// as big and everything just touches :-)
-	const qreal myRadius = PieMenu::theRadius;
 	qreal myCurWidth = boundingRect().width();
-	qreal mySmallWidth = 0.5*0.667*myRadius;
+	qreal mySmallWidth = SMALL_ICON_HALFWIDTH;
 	qreal mySmallScale = 2*mySmallWidth/myCurWidth;
-	qreal myLargeWidth = 0.5*1.333*myRadius;
+	qreal myLargeWidth = LARGE_ICON_HALFWIDTH;
 	qreal myLargeScale = 2*myLargeWidth/myCurWidth;
-	QPointF myOuterPos(myRadius*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
-					   -myRadius*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
+	QPointF myOuterPos(CENTER_RADIUS*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
+					   -CENTER_RADIUS*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
 	QPointF mySInnerPos(-mySmallWidth, 0);
 	QPointF myLInnerPos(-myLargeWidth, 0);
 
@@ -143,18 +148,10 @@ ActionIcon::ActionIcon(ActionType anActionType,
 /////////////////////////////////////////////////////////////////////////////
 
 
-PieMenu::PieMenu(ViewObject* aParentPtr,
-				 const QPointF& aPositionInObjectCoord)
+PieMenu::PieMenu(ViewObject* aParentPtr)
 	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr)
 {
 	theAOPtr = aParentPtr->getAbstractObjectPtr();
-
-	// Let's move ourselves to a position so the middle icon
-	// will be right under the mouse click
-	// FIXME/TODO: what if that implies the icons fall outside the view?
-	moveBy(aPositionInObjectCoord.x(),
-		   aPositionInObjectCoord.y());
-
 
     setFlags(QGraphicsItem::ItemIgnoresTransformations |
                  QGraphicsItem::ItemIgnoresParentOpacity |
@@ -208,6 +205,7 @@ void PieMenu::setup()
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 static PieMenuSingleton* thePMSingletonPtr = NULL;
+static QRectF theViewRect;
 
 PieMenuSingleton::PieMenuSingleton(void)
 	: theCurrentPieMenuPtr(NULL)
@@ -220,7 +218,7 @@ ViewObject* PieMenuSingleton::getPieMenuParent(void)
 {
 	if (me()->theCurrentPieMenuPtr==NULL)
 		return NULL;
-        return me()->theCurrentPieMenuPtr->theVOPtr;
+		return me()->theCurrentPieMenuPtr->theVOPtr;
 }
 
 
@@ -233,18 +231,46 @@ PieMenuSingleton* PieMenuSingleton::me(void)
 
 
 void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
-											  const QPointF& aPositionInObjectCoord )
+											  QPointF aPositionInSceneCoord )
 {
 	DEBUG3("PieMenuSingleton::setPieMenuParent(%p)\n", aViewObjectPtr);
 	// one can always call delete on a nullpointer
 	delete me()->theCurrentPieMenuPtr;
 	if (aViewObjectPtr!=NULL)
 	{
-		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr,
-												 aPositionInObjectCoord);
+		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
+
+		// Problem: we have a position the mouse clicked in Scene coordinates.
+		// We need to move half a radius up in order to display the center
+		// icon in the middle of the mouse click.
+		// Secondly, we need to move the pie menu in case otherwise icons
+		// would fall outside of the view.
+
+		const qreal PIE_RADIUS = SMALL_ICON_HALFWIDTH+CENTER_RADIUS;
+
+		if (aPositionInSceneCoord.x() < theViewRect.left()+PIE_RADIUS)
+			aPositionInSceneCoord.setX(theViewRect.left()+PIE_RADIUS);
+		if (aPositionInSceneCoord.x()> theViewRect.right()-PIE_RADIUS)
+			aPositionInSceneCoord.setX(theViewRect.right()-PIE_RADIUS);
+
+		if (aPositionInSceneCoord.y()<theViewRect.top()+PIE_RADIUS)
+			aPositionInSceneCoord.setY(theViewRect.top()+PIE_RADIUS);
+		if (aPositionInSceneCoord.y()>theViewRect.bottom()-PIE_RADIUS)
+			aPositionInSceneCoord.setY(theViewRect.bottom()-PIE_RADIUS);
+		else
+			aPositionInSceneCoord.setY(aPositionInSceneCoord.y()-LARGE_ICON_HALFWIDTH);
+
+		me()->theCurrentPieMenuPtr->setPos(
+					me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord));
+
 		me()->theCurrentPieMenuPtr->setup();
 	}
 	else
 		me()->theCurrentPieMenuPtr = NULL;
 }
 
+
+void PieMenuSingleton::setViewInSceneCoords(const QPolygonF& aViewRect)
+{
+	theViewRect = aViewRect.boundingRect();
+}

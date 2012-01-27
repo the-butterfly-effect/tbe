@@ -79,7 +79,7 @@ public:
 
 private:
 
-	ActionIcon(ActionType anActionType,
+	explicit ActionIcon(ActionType anActionType,
 			   const QString & aFileName,
 			   bool  isEnabled,
 			   QGraphicsWidget* aParentPtr = NULL);
@@ -115,9 +115,6 @@ class PieMenu : public QGraphicsWidget
 {
 	Q_OBJECT
 
-public:
-	static const qreal theRadius = 40.0;
-
 signals:
 	void moveToPositions( void );
 
@@ -136,8 +133,7 @@ private:
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
 	/// @param aPositionInObjectCoord position of the mouse click on the
 	///        object in item coordinates
-	PieMenu(ViewObject* aParentPtr,
-			const QPointF& aPositionInObjectCoord);
+	explicit PieMenu(ViewObject* aParentPtr);
 
 	void setup();
 
@@ -163,12 +159,19 @@ public:
 	///        on or NULL if you don't want a PieMenu - you can also call
 	///        clearPieMenu() in that case.
 	/// @param aPositionInObjectCoord position of the mouse click on the
-	///        object in item coordinates
+	///        object in *scene* coordinates
 	static void addPieMenuToViewObject(ViewObject* aViewObjectPtr,
-									   const QPointF& aPositionInObjectCoord);
+									   QPointF aPositionInSceneCoord);
 
 	static void clearPieMenu(void)
 	{ addPieMenuToViewObject(NULL, QPointF(0,0)); }
+
+
+	/// This member is called whenever the ResizingGraphicsView resizes.
+	/// It sets the view rect in scene coordinates, so we know what would move
+	/// outside the screen.
+	/// It's used to ensure that the PieMenu is shown fully.
+	static void setViewInSceneCoords(const QPolygonF& aViewRect);
 
 private:
 	/// private constructor - this is a singleton class!

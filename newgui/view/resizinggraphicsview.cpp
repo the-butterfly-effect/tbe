@@ -20,6 +20,7 @@
 #include "GameResources.h"
 #include "Level.h"
 #include "MainWindow.h"
+#include "PieMenu.h"
 #include "Popup.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
@@ -84,6 +85,7 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
 	theGameResourcesPtr->parentResize(transform());
+	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
 
