@@ -38,10 +38,15 @@
 
 
 /// Distance from the pie menu center to the center of the outside icons.
+/// Note: this is in ActionIcon units
 static const qreal CENTER_RADIUS = 40.0;
 
 static const qreal SMALL_ICON_HALFWIDTH = 0.5*0.667*CENTER_RADIUS;
-static const qreal LARGE_ICON_HALFWIDTH = 0.5*1.333*CENTER_RADIUS;
+static const qreal LARGE_ICON_HALFWIDTH = 2.0*SMALL_ICON_HALFWIDTH;
+
+/// Multiply CENTER_RADIUS with the below number to get the CENTER_RADIUS
+/// in scene coordinates
+static qreal theCenterRadiusScale = 1.0;
 
 void NamedState::onEntry ( QEvent * event )
 {
@@ -72,6 +77,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	qreal mySmallScale = 2*mySmallWidth/myCurWidth;
 	qreal myLargeWidth = LARGE_ICON_HALFWIDTH;
 	qreal myLargeScale = 2*myLargeWidth/myCurWidth;
+	theCenterRadiusScale = mySmallWidth/myCurWidth;
 	QPointF myOuterPos(CENTER_RADIUS*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
 					   -CENTER_RADIUS*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
 	QPointF mySInnerPos(-mySmallWidth, 0);
@@ -138,8 +144,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	myInnerState->assignProperty(this, "scale", myLargeScale);
 
 	theIconStateMachine.start();
-
-	printf("ActionIcon sceneptr: %p\n", scene());
 }
 
 
@@ -236,9 +240,11 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 	DEBUG3("PieMenuSingleton::setPieMenuParent(%p)\n", aViewObjectPtr);
 	// one can always call delete on a nullpointer
 	delete me()->theCurrentPieMenuPtr;
+
 	if (aViewObjectPtr!=NULL)
 	{
 		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
+		me()->theCurrentPieMenuPtr->setup();
 
 		// Problem: we have a position the mouse clicked in Scene coordinates.
 		// We need to move half a radius up in order to display the center
@@ -246,7 +252,7 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 		// Secondly, we need to move the pie menu in case otherwise icons
 		// would fall outside of the view.
 
-		const qreal PIE_RADIUS = SMALL_ICON_HALFWIDTH+CENTER_RADIUS;
+		qreal PIE_RADIUS = theCenterRadiusScale * (SMALL_ICON_HALFWIDTH+CENTER_RADIUS);
 
 		if (aPositionInSceneCoord.x() < theViewRect.left()+PIE_RADIUS)
 			aPositionInSceneCoord.setX(theViewRect.left()+PIE_RADIUS);
@@ -257,13 +263,11 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 			aPositionInSceneCoord.setY(theViewRect.top()+PIE_RADIUS);
 		if (aPositionInSceneCoord.y()>theViewRect.bottom()-PIE_RADIUS)
 			aPositionInSceneCoord.setY(theViewRect.bottom()-PIE_RADIUS);
-		else
-			aPositionInSceneCoord.setY(aPositionInSceneCoord.y()-LARGE_ICON_HALFWIDTH);
+		aPositionInSceneCoord.setY(aPositionInSceneCoord.y()- theCenterRadiusScale*LARGE_ICON_HALFWIDTH);
 
 		me()->theCurrentPieMenuPtr->setPos(
 					me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord));
 
-		me()->theCurrentPieMenuPtr->setup();
 	}
 	else
 		me()->theCurrentPieMenuPtr = NULL;
