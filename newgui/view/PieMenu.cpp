@@ -165,8 +165,8 @@ void PieMenu::iconClicked(ActionIcon* anIconPtr)
 
 	if (theCurrentInnerIconPtr == anIconPtr)
 	{
-		PieMenuSingleton::clearPieMenu();
 		UndoSingleton::createUndoCommand(theVOPtr, anIconPtr->getActionType());
+		PieMenuSingleton::clearPieMenu();
 	}
 	else
 		theCurrentInnerIconPtr = anIconPtr;

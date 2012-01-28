@@ -65,7 +65,6 @@ ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
     // if there is no undo registered, let's delegate to someone else
     // (i.e. our parent)
-    assert(theAUCPtr!=NULL);
     if (theAUCPtr==NULL)
     {
         event->ignore();
