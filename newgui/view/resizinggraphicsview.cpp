@@ -81,7 +81,8 @@ void ResizingGraphicsView::hideSimControls(void)
 
 void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 {
-	QGraphicsView::resizeEvent(event);
+	if (event!=NULL)
+		QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
 	theGameResourcesPtr->parentResize(transform());
@@ -109,6 +110,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 	setScene(aScenePtr);
 	fitInView(0, -aScenePtr->getHeight(),
 								aScenePtr->getWidth(), aScenePtr->getHeight());
+	resizeEvent(NULL);
 	showSimControls();
 //	parent()->setWindowTitle(APPNAME " - " + aLevelName);
 
