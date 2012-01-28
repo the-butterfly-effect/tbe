@@ -5,8 +5,12 @@
 	<title lang="nl">Het vlindereffect (beginnerscursus)</title>
 	<author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>First Demonstration: how does the Butterfly Effect work...&lt;br>You might want to click on the Post-it note!</description>
-	<description lang="nl">Eerste demonstratie van het vlindereffect in actie...&lt;br>Klik vooral eerst op de Post-it note!</description>
+	<description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>This level is a first demonstration.&lt;br>
+		Click play in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level. 
+		You might want to click on the Post-it note!</description>
+	<description lang="nl">Hoi!&lt;br>Welkom bij Het Vlindereffect!&lt;br>Dit level is alleen een demonstratie. &lt;br>
+		Klik op afspelen rechtsboven en zie de vlinder fladderen. Zodra hij bij de bloem is, heb je je eerste level gewonnen.
+		Je wilt misschien ook op de Post-it note klikken!</description>
 	<date>11/1/09</date>
     </levelinfo>
     <scene>
