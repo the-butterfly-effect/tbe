@@ -444,11 +444,6 @@ void CircularSaw::callBackSensor(const ContactInfo& aPoint)
 		myBalloonPtr->stung();
 }
 
-//ViewObject* CircularSaw::createViewObject()
-//{
-//	parseProperties();
-//	return AbstractBall::createViewObject();
-//}
 
 void CircularSaw::createBallShapeFixture(float aRadius, float aMass)
 {

@@ -196,8 +196,6 @@ public:
 	 */
 	virtual void createBallShapeFixture(float aRadius, float aMass);
 
-//	virtual ViewObject* createViewWorld();
-
 	/// we need to adjust the size based on the radius
 	virtual void  parseProperties(void);
 };
