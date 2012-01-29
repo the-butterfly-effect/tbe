@@ -24,7 +24,7 @@
 #include "ViewWorld.h"
 
 namespace Ui {
-	class SimulationControls;
+class SimulationControls;
 }
 
 /// This direct QState derivative was created to have meaningful
@@ -58,32 +58,32 @@ class SimulationControls : public QWidget
 
 
 public:
-	explicit SimulationControls(QWidget *parent = 0);
+    explicit SimulationControls(QWidget *parent = 0);
 
-	virtual ~SimulationControls();
+    virtual ~SimulationControls();
 
-	void setup(QMenu* aMenuPtr);
+    void setup(QMenu* aMenuPtr);
 
-	void parentResize(const QSize& aSize);
+    void parentResize(const QSize& aSize);
 
-	void hookSignalsUp(ViewWorld* aViewWorld);
+    void hookSignalsUp(ViewWorld* aViewWorld);
 
 signals:
-	/// this signal is emitted when our slot onFailed is called
-        void internalFailed(void);
+    /// this signal is emitted when our slot onFailed is called
+    void internalFailed(void);
 
-        /// this signal is emitted when our slot onReset is called
-        void internalReset(void);
+    /// this signal is emitted when our slot onReset is called
+    void internalReset(void);
 
 
 public slots:
 	/// call this slot if the simulation has failed, the internal
 	/// state machine will go to the Failed state.
 	void onFailed(void)
-        { emit internalFailed(); }
+	{ emit internalFailed(); }
 
-        void onReset(void)
-        { emit internalReset(); }
+	void onReset(void)
+	{ emit internalReset(); }
 
 	/// hide (and disable) the controls
 	void hideYourself();

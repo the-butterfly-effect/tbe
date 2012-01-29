@@ -40,24 +40,24 @@ SimulationControls::SimulationControls(QWidget *parent) :
     ImageCache::getPixmap("StatusPlay", QSize(64,64), &myPixmap);
     ui->statusLabel->setPixmap(myPixmap);
 
-	thePlayIcon  = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
-	thePauseIcon = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
-	theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
-	theResetIcon = ImageCache::getQIcon("ActionUndo", QSize(32,32));
-	theFwdIcon   = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
+    thePlayIcon  = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
+    thePauseIcon = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
+    theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
+    theResetIcon = ImageCache::getQIcon("ActionUndo", QSize(32,32));
+    theFwdIcon   = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
 
-	ImageCache::getPixmap("StatusFail",  QSize(64,64), &theFailStatusPixmap);
-	ImageCache::getPixmap("StatusFault", QSize(64,64), &theFaultStatusPixmap);
-	ImageCache::getPixmap("StatusFF",    QSize(64,64), &theFFStatusPixmap);
-	ImageCache::getPixmap("StatusPlay",  QSize(64,64), &thePlayStatusPixmap);
-	ImageCache::getPixmap("StatusPause", QSize(64,64), &thePauseStatusPixmap);
-	ImageCache::getPixmap("StatusStop",  QSize(64,64), &theStopStatusPixmap);
+    ImageCache::getPixmap("StatusFail",  QSize(64,64), &theFailStatusPixmap);
+    ImageCache::getPixmap("StatusFault", QSize(64,64), &theFaultStatusPixmap);
+    ImageCache::getPixmap("StatusFF",    QSize(64,64), &theFFStatusPixmap);
+    ImageCache::getPixmap("StatusPlay",  QSize(64,64), &thePlayStatusPixmap);
+    ImageCache::getPixmap("StatusPause", QSize(64,64), &thePauseStatusPixmap);
+    ImageCache::getPixmap("StatusStop",  QSize(64,64), &theStopStatusPixmap);
 }
 
 
 SimulationControls::~SimulationControls()
 {
-	delete ui;
+    delete ui;
 }
 
 
@@ -71,21 +71,21 @@ void SimulationControls::hideYourself()
 
 void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
 {
-	DEBUG1ENTRY;
+    DEBUG1ENTRY;
 
-        emit internalReset();
+    emit internalReset();
 
-	// hook up states to signals for ViewWorld/World
-	connect(theFailedState, SIGNAL(entered()), aViewWorld,
-			SLOT(slot_signalPause()));
-	connect(theForwardState, SIGNAL(entered()), aViewWorld,
-			SLOT(slot_signalFF()));
-	connect(thePausedState, SIGNAL(entered()), aViewWorld,
-			SLOT(slot_signalPause()));
-	connect(theRunningState, SIGNAL(entered()), aViewWorld,
-			SLOT(slot_signalPlay()));
-	connect(theStoppedState, SIGNAL(entered()), aViewWorld,
-			SLOT(slot_signalReset()));
+    // hook up states to signals for ViewWorld/World
+    connect(theFailedState, SIGNAL(entered()), aViewWorld,
+            SLOT(slot_signalPause()));
+    connect(theForwardState, SIGNAL(entered()), aViewWorld,
+            SLOT(slot_signalFF()));
+    connect(thePausedState, SIGNAL(entered()), aViewWorld,
+            SLOT(slot_signalPause()));
+    connect(theRunningState, SIGNAL(entered()), aViewWorld,
+            SLOT(slot_signalPlay()));
+    connect(theStoppedState, SIGNAL(entered()), aViewWorld,
+            SLOT(slot_signalReset()));
 }
 
 
@@ -126,20 +126,20 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
 	// add transitions here
 	theStoppedState->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
-        theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 	theRunningState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
 	theRunningState->addTransition(theBotAction, SIGNAL(triggered()), theForwardState);
-        theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-        theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-        thePausedState ->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
+	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+	theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	thePausedState ->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
 	thePausedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
-        thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-        theFailedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
-        theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-        theForwardState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
+	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theFailedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
+	theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theForwardState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
 	theForwardState->addTransition(theBotAction, SIGNAL(triggered()), theRunningState);
-        theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-        theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+	theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
 	// set the start conditions for the icons for each state
 	// upon entering stopped state, Top = Play/enabled, Bottom = FF/disable
