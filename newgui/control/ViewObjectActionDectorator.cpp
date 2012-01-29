@@ -31,7 +31,7 @@ ViewObjectActionDecorator::ViewObjectActionDecorator()
     : QGraphicsPixmapItem(NULL),
       theAUCPtr(NULL)
 {
-    DEBUG3ENTRY;
+    // nothing to do here
 }
 
 
