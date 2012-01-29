@@ -91,8 +91,6 @@ private:
 	QAction* theFrameRateViewPtr;
 
 private:
-    void initAttributes ( ) ;
-
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
 

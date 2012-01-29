@@ -18,7 +18,10 @@
 
 #include "AbstractObject.h"
 #include "Box2D.h"
+#include "PivotPoint.h"
+#include "TranslationGuide.h"
 #include "ViewObject.h"
+#include "World.h"
 
 // I wonder if this should be b2_linearSlop instead of this number...
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
@@ -28,12 +31,28 @@ static b2World* theStaticB2WorldPtr = NULL;
 
 
 AbstractObject::AbstractObject()
-    : 	theB2BodyPtr(NULL),
-      theB2BodyDefPtr(NULL),
+    : theB2BodyPtr(NULL),
       theViewObjectPtr(NULL),
+      theBounciness(0.5),
+      theHeight(1.0),
+      theWidth(1.0),
       theWorldPtr(NULL)
 {
-    initAttributes();
+	DEBUG5ENTRY;
+	theB2BodyDefPtr= new b2BodyDef();
+
+	// TODO - we need to move this into Level, once Toolbox is implemented
+	theIsMovable = true;
+
+	theProps.setDefaultPropertiesString(
+		Property::IMAGE_NAME_STRING + QString(":/") +
+		Property::MASS_STRING + QString(":/") +
+		Property::BOUNCINESS_STRING + QString(":0.3/") +
+		Property::NOCOLLISION_STRING+ QString(":/") +
+		Property::PIVOTPOINT_STRING + QString(":/") +
+		Property::ROTATABLE_STRING + QString(":false/") +
+		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+		Property::ZVALUE_STRING + QString(":2.0/") );
 }
 
 AbstractObject::~AbstractObject ( )
@@ -145,7 +164,7 @@ void AbstractObject::deletePhysicsObject()
 
 void AbstractObject::deleteViewObject(void)
 {
-	// delete the corresponding DrawObject
+	// delete the corresponding ViewObject
 	// note that delete NULL is allowed
 	delete theViewObjectPtr;
 	theViewObjectPtr = NULL;
@@ -169,34 +188,6 @@ Position AbstractObject::getTempCenter (void) const
 }
 
 
-void AbstractObject::initAttributes ( )
-{
-	DEBUG5("AbstractObject::initAttributes\n");
-	theB2BodyDefPtr= new b2BodyDef();
-	theB2BodyPtr=NULL;
-
-	theWidth = 1.0;
-	theHeight = 1.0;
-	theBounciness = 1.0;
-	// don't need to initialise theCenter - it has a default constructor
-
-	theViewObjectPtr = NULL;
-	theWorldPtr = NULL;
-
-	// TODO - we need to move this into Level, once Toolbox is implemented
-	theIsMovable = true;
-
-	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":/") +
-		Property::MASS_STRING + QString(":/") +
-		Property::BOUNCINESS_STRING + QString(":0.3/") +
-		Property::NOCOLLISION_STRING+ QString(":/") +
-		Property::PIVOTPOINT_STRING + QString(":/") +
-		Property::ROTATABLE_STRING + QString(":false/") +
-		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
-		Property::ZVALUE_STRING + QString(":2.0/") );
-}
-
 bool AbstractObject::isMovable ( ) const
 {
 	if (theIsLevelEditor)
@@ -205,11 +196,19 @@ bool AbstractObject::isMovable ( ) const
 		return theIsMovable;
 }
 
+
 bool AbstractObject::isRotatable ( ) const
 {
 	bool myRotatableInfo = false;
 	theProps.property2Bool(Property::ROTATABLE_STRING, &myRotatableInfo);
 	return myRotatableInfo;
+}
+
+
+void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus) const
+{
+	foreach(JointInterface* j, theJointList)
+		j->physicsObjectStatus(aStatus);
 }
 
 
@@ -220,7 +219,6 @@ void AbstractObject::parseProperties(void)
 	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
 	setTheBounciness(myFloat);
 
-#if 0 // directly copied from AbstractObject.cpp - not used for newgui yet
 	Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
@@ -247,21 +245,6 @@ void AbstractObject::parseProperties(void)
 			theWorldPtr->addNoCollisionCombo(this, myObjPtr);
 		++myI;
 	}
-
-	// For normal situations, i.e. created by Level for World
-	// the setupCache() is run twice. But that's not a problem.
-	// For inserted objects (i.e. drag from toolbox), this is
-	// the only time setupCache is called. Let's cherish it.
-	if (theDrawObjectPtr)
-		theDrawObjectPtr->setupCache();
-#endif
-}
-
-
-void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus) const
-{
-	foreach(JointInterface* j, theJointList)
-		j->physicsObjectStatus(aStatus);
 }
 
 

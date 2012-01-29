@@ -25,7 +25,7 @@
 /// pointer to World's groundbody.
 static b2Body* theGroundBodyPtr = NULL;
 
-AbstractJoint::AbstractJoint(void) : theJointPtr(NULL)
+AbstractJoint::AbstractJoint(void) : theJointPtr(NULL), isChild(false)
 {
 }
 
@@ -33,6 +33,16 @@ AbstractJoint::~AbstractJoint()
 {
 	DEBUG5("AbstractJoint::~AbstractJoint() for %p\n", this);
 }
+
+
+ViewObject* AbstractJoint::createViewObject(float aDefaultDepth)
+{
+	if (isChildJoint())
+		return NULL;
+	else
+		return AbstractObject::createViewObject(aDefaultDepth);
+}
+
 
 void AbstractJoint::deletePhysicsObject(void)
 {
@@ -45,7 +55,6 @@ void AbstractJoint::deletePhysicsObject(void)
 		theViewObjectPtr->setVisible(true);
 }
 
-#if 0
 b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObject* anObject, const Position& aPosition)
 {
 	b2Body* myReturn = anObject->getB2BodyPtrForPosition(aPosition);
@@ -62,7 +71,6 @@ b2Body* AbstractJoint::getGroundBodyPtr(void)
 {
 	return theGroundBodyPtr;
 }
-#endif
 
 void AbstractJoint::jointWasDeleted(void)
 {
@@ -73,12 +81,13 @@ void AbstractJoint::jointWasDeleted(void)
 		theViewObjectPtr->setVisible(false);
 }
 
-#if 0
+
 void AbstractJoint::markAsChild(void)
 {
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
+	isChild = true;
 }
-#endif
+
 
 void AbstractJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 {

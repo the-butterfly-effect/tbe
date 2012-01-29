@@ -192,11 +192,11 @@ bool PropertyList::property2ObjectPtr(
 	return true;
 }
 
-#if 0
+
 bool PropertyList::property2ObjectPlusVectorPtr(
 		World* aWPtr,
 		const QString& aPropertyName,
-		AbstractObject** aBOPtrPtr,
+		AbstractObject** anAOPtrPtr,
 		Vector** aVectorPtrPtr)
 {
 	QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
@@ -214,11 +214,11 @@ bool PropertyList::property2ObjectPlusVectorPtr(
 			return false;
 	}
 
-	*aBOPtrPtr     = myBOPtrPtr;
+	*anAOPtrPtr     = myBOPtrPtr;
 	*aVectorPtrPtr = myVPtr;
 	return true;
 }
-#endif
+
 
 bool PropertyList::property2String(const QString& aPropertyName, QString* aString, bool useDefault) const
 {

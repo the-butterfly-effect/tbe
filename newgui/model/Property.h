@@ -137,14 +137,14 @@ public:
 	  * its value is the ID of an existing AbstractObject instance
 	  * @param aWorldPtr
 	  * @param aPropertyName
-	  * @param aBOPtrPtr	  (output) upon success contains pointer to AbstractObject*
+	  * @param anAOPtrPtr	  (output) upon success contains pointer to AbstractObject*
 	  * @param aVectorPtrPtr  (output) upon success contains pointer to a Vector*
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
-//	bool property2ObjectPlusVectorPtr(World* aWorldPtr,
-//							 const QString& aPropertyName,
-//							 AbstractObject** aBOPtrPtr,
-//							 Vector** aVectorPtrPtr);
+	bool property2ObjectPlusVectorPtr(World* aWorldPtr,
+							 const QString& aPropertyName,
+							 AbstractObject** anAOPtrPtr,
+							 Vector** aVectorPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*
 	  * its value can be parsed to fit a vector (x,y)

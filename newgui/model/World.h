@@ -291,7 +291,7 @@ private:
 
 	/// the actual (internal) call to add the DrawObject of a AbstractObject
 	/// to the corresponding ViewWorld
-	void addAbstractObjectToViewWorld(AbstractObject* aBOPtr);
+	void addAbstractObjectToViewWorld(AbstractObject* anAOPtr);
 
 public:
 	// Public attribute accessor methods

@@ -41,10 +41,10 @@ public:
 	// virtual, empty destructor
 	virtual ~AbstractJoint();
 
-	/// overridden to set different default ZValue
-	/// if you specify a value, will use the parent one anyway...
-	virtual ViewObject* createViewObject(void)
-	{ return AbstractObject::createViewObject(5.0);	}
+	/// Overridden to set different default ZValue and not try to
+	/// display child joints.
+	/// @note If you specify a value, will use the parent one anyway...
+	virtual ViewObject* createViewObject(float aDefaultDepth = 5.0);
 
 	/// overridden from AbstractObject
 	/// Generic implementation for all Joints - delete the joint.
@@ -63,6 +63,10 @@ public:
 	 */
 	virtual Position getTempCenter ( ) const
 	{ return getOrigCenter(); }
+
+	/// @returns true if a child joint, created as property of another object
+	virtual bool isChildJoint(void)
+	{ return isChild; }
 
 	/// overridden from AbstractObject
 	/// @returns true if the Joint is created
@@ -99,6 +103,10 @@ protected:
 	b2Body* getGroundBodyPtr(void);
 
 	b2RevoluteJoint* theJointPtr;
+
+	/// Set to true if this joint is a child object of something else. Likely
+	/// it will be a PivotPoint or TranslationGuide that is used as a property.
+	bool isChild;
 };
 
 #endif // BASEJOINT_H

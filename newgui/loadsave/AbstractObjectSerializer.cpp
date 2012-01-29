@@ -176,7 +176,6 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 	}
 
 	DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
-	myBOPtr->parseProperties();
 	return myBOPtr;
 not_good:
 	delete myBOPtr;

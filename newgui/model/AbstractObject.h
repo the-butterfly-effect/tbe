@@ -182,6 +182,17 @@ public:
 	// Public Getters and Setters
 	// (sorted alphabetically)
 
+	/// @returns Pointer to the B2Body for the relative position asked for.
+	///          Might return NULL if no body or if outside body (see warning)
+	/// @param   Relative position (to the center of the object) to look for
+	/// @warning Because the default BaseObject just returns its pointer
+	///          without any checking, don't expect this member to fail if
+	///          aRelPosition points outside the object's body.
+	/// @note    Overriding this member probably makes sense for composite
+	///          objects only
+	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+	{ return theB2BodyPtr; }
+
 	/// @returns the ID (which is used to identify objects in Goals and links)
 	const QString& getID (void) const
 	{	return theID; }
@@ -299,6 +310,12 @@ public:
 	// other public members
 	//
 
+	/** Adds the Joint to the list.
+	 *  If this object runs createPhysObject, it will notify all Joints
+	 */
+	void addJoint(JointInterface* aJoint)
+	{	theJointList.insert(aJoint); }
+
 	/// create a physics object (i.e. B2Body) and add all shapes to it
 	/// if a B2Body already exists, it is deleted first.
 	/// the object will be positioned at theCenter.
@@ -373,8 +390,6 @@ protected:
 	void clearShapeList();
 
 	b2World* getB2WorldPtr(void) const;
-
-	virtual void initAttributes ( ) ;
 
 	/** announce to all registered joints that the physicsobject has been
 	  * created/deleted.

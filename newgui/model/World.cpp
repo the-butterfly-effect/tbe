@@ -92,7 +92,7 @@ void World::addGoal(Goal* aGoalPtr)
 	theGoalPtrList.push_back(aGoalPtr);
 }
 
-#if 0
+
 void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2)
 {
 	// always make sure to get the lowest pointer value in #1
@@ -108,7 +108,6 @@ void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObj
 	if (theNoCollisionList.contains(anObject1, anObject2)==false)
 		theNoCollisionList.insert(anObject1, anObject2);
 }
-#endif
 
 
 bool World::addObject(AbstractObject* anObjectPtr)
@@ -121,6 +120,7 @@ bool World::addObject(AbstractObject* anObjectPtr)
 	if (theObjectPtrList.contains(anObjectPtr)==false)
 		theObjectPtrList.push_back(anObjectPtr);
 	anObjectPtr->theWorldPtr = this;
+	anObjectPtr->parseProperties();
 
 	if (theViewWorldPtr!=NULL)
 		addAbstractObjectToViewWorld(anObjectPtr);
@@ -128,11 +128,11 @@ bool World::addObject(AbstractObject* anObjectPtr)
 }
 
 
-void World::addAbstractObjectToViewWorld(AbstractObject* aBOPtr)
+void World::addAbstractObjectToViewWorld(AbstractObject* anAOPtr)
 {
 	assert(theViewWorldPtr!=NULL);
-	DEBUG4("World::addAbstractObjectToViewWorld(%p)", aBOPtr);
-	ViewObject* myVOPtr = aBOPtr->createViewObject();
+	DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr);
+	ViewObject* myVOPtr = anAOPtr->createViewObject();
 	if (myVOPtr!=NULL)
 		theViewWorldPtr->addItem(myVOPtr);
 }

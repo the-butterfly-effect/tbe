@@ -48,6 +48,11 @@ public:
 	AbstractObject* getAbstractObjectPtr(void) const
 		{ return theAbstractObjectPtr; }
 
+	/// @returns Aspect ratio (width/height) of the (first) image,
+	///          before it was scaled to width and height dimensions.
+	qreal getOrigImageAspectRatio(void)
+	{ return thePixmapWidth / thePixmapWidth; }
+
 	/// Sets new geometry for this object.
 	/// @note This member should only be called by UndoCommands
 	/// @note It will set the geometry in the AbstractObject and
