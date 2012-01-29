@@ -118,7 +118,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 	theSimControlsPtr->hookSignalsUp(aScenePtr);
 
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
-//	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath())), this, SLOT(slot_death());
+	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
 
 	QTimer::singleShot(10, theGameResourcesPtr, SLOT(appearAnimated()));
 }
@@ -172,8 +172,7 @@ void ResizingGraphicsView::slot_levelDeath(void)
 		return;
 	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
 	emit theSimControlsPtr->onFailed();
-//	emit hideSimControls();
-	emit theScenePtr->slot_signalPause();
+	emit theWinFailDialogPtr->appearAnimated();
 }
 
 
@@ -195,7 +194,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 	// FIXME/TODO: must emit 'won' to simcontrols
 	// also need to update simcontrols for this!
 	emit hideSimControls();
-	theWinFailDialogPtr->appearAnimated();
+	emit theWinFailDialogPtr->appearAnimated();
 
 	// also make the sim stop once the above animation is (almost) done...
 	QTimer::singleShot(1300, theScenePtr, SLOT(slot_signalPause()));

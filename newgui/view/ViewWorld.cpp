@@ -118,7 +118,6 @@ void ViewWorld::slot_signalFF()
 
 void ViewWorld::slot_signalPause()
 {
-	theSimSpeed = 0;
 	emit theTimer.stop();
 	emit theFramerateTimer.stop();
 }
