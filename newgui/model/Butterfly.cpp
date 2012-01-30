@@ -56,8 +56,6 @@ Butterfly::Butterfly()
 	setTheWidth(0.15);
 	setTheHeight(0.15*339./223.);
 
-	adjustParameters();
-
 	setState(FLAP_OPEN);
 }
 

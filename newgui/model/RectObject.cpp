@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -121,7 +121,7 @@ RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_
 	// the Properties, do not assume too much here...
 
 	// also: keep in mind that child objects may set some things automatically
-	initAttributes();
+	initRectAttributes();
 }
 
 RectObject::RectObject( const QString& aDisplayName,
@@ -140,10 +140,12 @@ RectObject::RectObject( const QString& aDisplayName,
 	else
 		theProps.removeProperty(Property::MASS_STRING);
 	setTheBounciness(aBounciness);
-	initAttributes();
+	initRectAttributes();
 }
 
-RectObject::~RectObject ( ) { }
+RectObject::~RectObject ( )
+{
+}
 
 //
 // Methods
@@ -153,158 +155,9 @@ RectObject::~RectObject ( ) { }
 // Accessor methods
 //
 
-void RectObject::setTheWidth ( qreal new_var )
-{
-	AbstractObject::setTheWidth(new_var);
-	DEBUG5("RectObject::setTheWidth (%f)\n", getTheWidth());
-	adjustParameters();
-}
-
-void RectObject::setTheHeight ( qreal new_var )
-{
-	AbstractObject::setTheHeight(new_var);
-	DEBUG5("RectObject::setTheHeight (%f)\n", getTheHeight());
-	adjustParameters();
-}
-
 
 // Other methods
 //
-
-void RectObject::adjustParameters(void)
-{
-
-	clearShapeList();
-
-	if (getTheWidth()/getTheHeight() > ASPECT_RATIO)
-	{
-		adjustWideParametersPart();
-	}
-	else
-	{
-		if (getTheWidth()/getTheHeight() < 1/ASPECT_RATIO)
-		{
-			adjustTallParametersPart();
-		}
-		else
-		{
-			DEBUG5("RectObject::adjustParameters wxh=%fx%f\n", getTheWidth(),getTheHeight());
-			b2PolygonShape* myBoxShape = new b2PolygonShape();
-			myBoxShape->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
-
-			// get mass:  if no mass set, we'll make this a b2_staticBody
-			b2FixtureDef* myBoxDef = new b2FixtureDef();
-			float myMass;
-			if (theProps.property2Float(Property::MASS_STRING, &myMass))
-				myBoxDef->density = myMass / (getTheWidth()*getTheHeight());
-			myBoxDef->shape   = myBoxShape;
-			myBoxDef->userData = this;
-			setFriction(myBoxDef);
-			theShapeList.push_back(myBoxDef);
-		}
-	}
-
-	// if there already is a physicsobject, it's wrong
-	if (isPhysicsObjectCreated())
-	{
-		deletePhysicsObject();
-		createPhysicsObject();
-	}
-}
-
-void RectObject::adjustTallParametersPart(void)
-{
-	// we know that height/width > ASPECT_RATIO
-	// so use multiple shapes to fix that
-	int myNrOfElements = ceil(getTheHeight()/(ASPECT_RATIO*getTheWidth()));
-	// also, calculate the density correctly - each shape has same density
-	float myMass = 0.0;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
-	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
-
-	qreal myBaseElemHeight = ASPECT_RATIO*getTheWidth();
-	qreal myDoneHeight = 0.0;
-	for (int i=0; i<myNrOfElements; i++)
-	{
-		b2PolygonShape* myBoxShape = new b2PolygonShape();
-
-		// make sure *not* to have a small last part - i.e. the last two parts
-		// average their height.
-		float myElemHeight=myBaseElemHeight;
-		if (getTheHeight()-myDoneHeight < 2.0*myBaseElemHeight)
-		{
-			if (getTheHeight()-myDoneHeight > 1.0*myBaseElemHeight)
-			{
-				myElemHeight = (getTheHeight()-myDoneHeight)/2.0;
-			}
-			else
-			{
-				myElemHeight = getTheHeight()-myDoneHeight;
-			}
-		}
-		DEBUG5("elem % 2d: %fx%f\n", i, getTheWidth(), myElemHeight);
-		myBoxShape->SetAsBox  	( getTheWidth()/2.0, myElemHeight/2.0,
-							  b2Vec2(0.0, -getTheHeight()/2.0+myDoneHeight+0.5*myElemHeight), 0);
-		b2FixtureDef* myBoxDef = new b2FixtureDef();
-		myBoxDef->shape   = myBoxShape;
-		myBoxDef->density = myDensity;
-		myBoxDef->userData = this;
-		setFriction(myBoxDef);
-		theShapeList.push_back(myBoxDef);
-		myDoneHeight += myElemHeight;
-	}
-}
-
-void RectObject::adjustWideParametersPart(void)
-{
-	// we know that width/height > ASPECT_RATIO
-	// so use multiple shapes to fix that
-	int myNrOfElements = ceil(getTheWidth()/(ASPECT_RATIO*getTheHeight()));
-	// also, calculate the density correctly - each shape has same density
-	float myMass = 0.0;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
-	qreal myDensity = myMass / (getTheWidth()*getTheHeight());
-
-	qreal myBaseElemWidth = ASPECT_RATIO*getTheHeight();
-	qreal myDoneWidth = 0.0;
-	for (int i=0; i<myNrOfElements; i++)
-	{
-		b2PolygonShape* myBoxShape = new b2PolygonShape();
-
-		// make sure *not* to have a small last part - i.e. the last two parts
-		// average their width.
-		float myElemWidth=myBaseElemWidth;
-		if (getTheWidth()-myDoneWidth < 2.0*myBaseElemWidth)
-		{
-			if (getTheWidth()-myDoneWidth > 1.0*myBaseElemWidth)
-			{
-				myElemWidth = (getTheWidth()-myDoneWidth)/2.0;
-			}
-			else
-			{
-				myElemWidth = getTheWidth()-myDoneWidth;
-			}
-		}
-		DEBUG5("elem % 2d: %fx%f\n", i, myElemWidth, getTheHeight());
-		myBoxShape->SetAsBox( myElemWidth/2.0, getTheHeight()/2.0,
-							  b2Vec2(-getTheWidth()/2.0+myDoneWidth+0.5*myElemWidth, 0.0), 0);
-		b2FixtureDef* myBoxDef = new b2FixtureDef();
-		myBoxDef->shape   = myBoxShape;
-		myBoxDef->density = myDensity;
-		myBoxDef->userData = this;
-		setFriction(myBoxDef);
-		theShapeList.push_back(myBoxDef);
-		myDoneWidth += myElemWidth;
-	}
-
-}
-
-
-ViewObject*  RectObject::createViewObject(float aDefaultDepth)
-{
-	adjustParameters();
-	return AbstractObject::createViewObject(aDefaultDepth);
-}
 
 b2BodyType RectObject::getObjectType(void) const
 {
@@ -314,7 +167,7 @@ b2BodyType RectObject::getObjectType(void) const
 	return b2_staticBody;
 }
 
-void RectObject::initAttributes ( )
+void RectObject::initRectAttributes ( )
 {
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
@@ -344,7 +197,20 @@ void  RectObject::parseProperties(void)
 			resizableInfo = TOTALRESIZE;
 	}
 	theProps.property2String(Property::DESCRIPTION_STRING, &theToolTipString);
-	adjustParameters();
+
+	clearShapeList();
+	b2PolygonShape* myBoxShape = new b2PolygonShape();
+	myBoxShape->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
+
+	// get mass:  if no mass set, we'll make this a b2_staticBody
+	b2FixtureDef* myBoxDef = new b2FixtureDef();
+	float myMass;
+	if (theProps.property2Float(Property::MASS_STRING, &myMass))
+		myBoxDef->density = myMass / (getTheWidth()*getTheHeight());
+	myBoxDef->shape   = myBoxShape;
+	myBoxDef->userData = this;
+	setFriction(myBoxDef);
+	theShapeList.push_back(myBoxDef);
 }
 
 void  RectObject::setFriction(b2FixtureDef* aFixtureDef)

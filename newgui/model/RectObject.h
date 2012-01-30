@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -27,11 +27,7 @@ class b2FixtureDef;
 /**
   * class RectObject
   *
-  * This class defines a rectangular object. It can have any size - it
-  * works around the limitation of Box2D that the width/height should not be more than 10 or less than 1/10th.
-  * It can have a mass, but it doesn't need to: If it does not have a mass, it won't move in the simulation.
-  * Many things will use this class as a base - it should replace Floor and Wall for example.
-  *
+  * This class defines a rectangular object.
   *
   * Parameters that can be set through Properties are defined in Property.h
   */
@@ -59,9 +55,6 @@ public:
 	 */
 	virtual ~RectObject ( );
 
-	// Public attribute accessor methods
-	//
-
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
 	{
@@ -79,50 +72,22 @@ public:
 		return theToolTipString;
 	}
 
-	/// parse all properties
-	/// partially overridden from AbstractObject
-	virtual void  parseProperties(void);
-
 	/// @returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return resizableInfo;	}
 
-
-	/**
-	 * Set the value of theWidth
-	 * @param new_var the new value of theWidth
-	 */
-	virtual void setTheWidth ( qreal new_var );
-
-	/**
-	 * Set the value of theHeight
-	 * @param new_var the new value of theHeight
-	 */
-	virtual void setTheHeight ( qreal new_var );
-
-	/// overridden from AbstractObject: allow running adjustParameters() first
-	virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
+	/// Parse all properties.
+	/// Partially overridden from AbstractObject
+	virtual void  parseProperties(void);
 
 protected:
-	/// this member fixes up the physical model based on new width or height
-	/// do not override unless Klaas okays it
-	virtual void adjustParameters(void);
-
-	virtual void initAttributes ( );
+	virtual void initRectAttributes ( );
 
 	static const qreal ASPECT_RATIO;
 
 	/// TODO/FIXME: promote this member to AbstractObject???
 	/// TODO/FIXME: add documentation for this member!!!
 	void setFriction(b2FixtureDef* aFixtureDef);
-
-private:
-	/// adjustParameters for tall objects (where height/width > ASPECT_RATIO)
-	/// only expected to be called from adjustParameters()
-	void adjustTallParametersPart();
-	/// adjustParameters for wide objects (where width/height > ASPECT_RATIO)
-	/// only expected to be called from adjustParameters()
-	void adjustWideParametersPart();
 
 protected:
 	QString theNameString;
