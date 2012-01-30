@@ -53,7 +53,7 @@ void ResizingGraphicsView::clearViewWorld(void)
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
 	setScene(NULL);
-	hideSimControls();
+	emit theSimControlsPtr->hideYourself();
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
 
@@ -70,12 +70,6 @@ GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 {
 	Q_ASSERT(theGameResourcesPtr != NULL);
 	return theGameResourcesPtr;
-}
-
-
-void ResizingGraphicsView::hideSimControls(void)
-{
-	emit theSimControlsPtr->hideYourself();
 }
 
 
@@ -113,7 +107,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 	fitInView(0, -aScenePtr->getHeight(),
 								aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(NULL);
-	showSimControls();
+	emit theSimControlsPtr->showYourself();
 //	parent()->setWindowTitle(APPNAME " - " + aLevelName);
 
 	// also set the startstopwatch view
@@ -124,12 +118,6 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
 
 	QTimer::singleShot(10, theGameResourcesPtr, SLOT(appearAnimated()));
-}
-
-
-void ResizingGraphicsView::showSimControls(void)
-{
-	emit theSimControlsPtr->showYourself();
 }
 
 
@@ -162,7 +150,7 @@ void ResizingGraphicsView::slot_actionReplay()
 {
 	DEBUG3ENTRY;
 	emit theScenePtr->slot_signalReset();
-	emit showSimControls();
+	emit theSimControlsPtr->showYourself();
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
 }
@@ -196,7 +184,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 	// FIXME/TODO: must emit 'won' to simcontrols
 	// also need to update simcontrols for this!
-	emit hideSimControls();
+	emit theSimControlsPtr->hideYourself();
 	emit theWinFailDialogPtr->appearAnimated();
 
 	// also make the sim stop once the above animation is (almost) done...

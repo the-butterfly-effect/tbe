@@ -53,9 +53,6 @@ public:
     /// @param aMenuControlsPtr
     void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
 
-    void hideSimControls(void);
-    void showSimControls(void);
-
     /// @returns a pointer to the GameResourcesDialog.
     /// @note this member is only used to hand a pointer to Level.
     GameResources* getGameResourcesDialogPtr() const;
