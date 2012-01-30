@@ -29,7 +29,7 @@
 class InsertUndoCommand : public AbstractUndoCommand
 {
 public:
-    explicit InsertUndoCommand(ViewObject* anViewObjectPtr);
+    explicit InsertUndoCommand(ViewObject* anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
 
     /// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().
@@ -53,7 +53,7 @@ public:
     /// this command.
     virtual void undo();
 
-private:
+protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo)
     ToolboxGroup* theTBGPtr;
 

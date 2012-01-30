@@ -41,8 +41,9 @@ public:
     int getBigWidth(void)
     { return theBigWidth; }
 
-protected:
     void updateCount(void);
+
+protected:
 
     /// @note: overridden from qGraphicsRectItem to allow object highlighting
     virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );

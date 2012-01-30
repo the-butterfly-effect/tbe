@@ -25,8 +25,8 @@
 
 
 InsertUndoCommand::InsertUndoCommand(
-        ViewObject* anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Insert"), NULL),
+        ViewObject* anViewObjectPtr, QString anActionString)
+    : AbstractUndoCommand(anViewObjectPtr, anActionString, NULL),
       theTBGPtr(NULL)
 {
     DEBUG3ENTRY;

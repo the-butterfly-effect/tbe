@@ -100,6 +100,11 @@ public:
 	/// sets the name of the file that describes the current level
 	void setLevelFileName(const QString& aName);
 
+	/// @note (used by DeleteUndoCommand only)
+	/// Finds the ToolboxGroup that the object belongs to.
+	/// @param anAOPtr the object to find a TBG for.
+	static ToolboxGroup* findToolBoxGroup(AbstractObject* anAOPtr);
+
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
 //	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;

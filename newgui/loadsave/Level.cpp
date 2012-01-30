@@ -66,6 +66,7 @@ const char* theIsFailAttributeString    = "isFail";
 static QString theFileName;
 
 
+static Level* theCurrentLevelPtr = NULL;
 
 // Constructors/Destructors
 //
@@ -75,11 +76,13 @@ Level::Level ( )
 	theWorldPtr = new World();
 	theWorldPtr->theWorldWidth  = 3.0;
 	theWorldPtr->theWorldHeight = 2.0;
+
+	theCurrentLevelPtr = this;
 }
 
 Level::~Level ( )
 {
-    DEBUG5("World::~World - clear the ObjectPtrList \n");
+    assert(theCurrentLevelPtr==this);
     delete theWorldPtr;
     theWorldPtr = NULL;
 }
@@ -98,6 +101,19 @@ Level::~Level ( )
 //		delete myBOS;
 //	}
 //}
+
+
+ToolboxGroup*
+Level::findToolBoxGroup(AbstractObject* anAOPtr)
+{
+	foreach(ToolboxGroup* i, theCurrentLevelPtr->theToolboxList)
+	{
+		if (i->theInternalName == anAOPtr->getInternalName())
+			return i;
+	}
+	return NULL;
+}
+
 
 QString
 Level::getPathToLevelFile(void)

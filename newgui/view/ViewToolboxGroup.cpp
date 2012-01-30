@@ -30,6 +30,8 @@
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
 	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)
 {
+	theTBGPtr->setViewTBG(this);
+
 	AbstractObject* myAOPtr = theTBGPtr->first();
 	int myObjW  = THESCALE*myAOPtr->getTheWidth();
 	theEmpty.setPlainText(QObject::tr("(empty)"));

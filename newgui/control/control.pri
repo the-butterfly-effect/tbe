@@ -2,6 +2,7 @@
 SOURCES += \
     control/AbstractUndoCommand.cpp \
     control/ChoosePhoneUndoCommand.cpp \
+    control/DeleteUndoCommand.cpp \
     control/DummyUndoCommand.cpp \
     control/InsertUndoCommand.cpp \
     control/MoveUndoCommand.cpp \
@@ -14,6 +15,7 @@ SOURCES += \
 HEADERS  += \
     control/AbstractUndoCommand.h \
     control/ChoosePhoneUndoCommand.h \
+    control/DeleteUndoCommand.h \
     control/DummyUndoCommand.h \
     control/InsertUndoCommand.h \
     control/MoveUndoCommand.h \

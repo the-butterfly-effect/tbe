@@ -21,6 +21,7 @@
 #include "ResizeUndoCommand.h"
 #include "MoveUndoCommand.h"
 #include "InsertUndoCommand.h"
+#include "DeleteUndoCommand.h"
 #include "ChoosePhoneUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = NULL;
@@ -77,6 +78,8 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 		return new ChoosePhoneUndoCommand(anObject);
 		break;
 	case ActionIcon::ACTION_DELETE:
+		return new DeleteUndoCommand(anObject);
+		break;
 	case ActionIcon::ACTION_EDITSPECIAL:
 		// TODO/FIXME
 		break;

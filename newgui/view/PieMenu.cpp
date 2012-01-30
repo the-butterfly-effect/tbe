@@ -191,7 +191,9 @@ void PieMenu::setup()
 
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
 											"../images/ActionMove.svg", true, this);
-	new ActionIcon(ActionIcon::ACTION_DELETE, "../images/ActionDelete.svg", true, this);
+
+	myBool = (theAOPtr->isMovable());
+	new ActionIcon(ActionIcon::ACTION_DELETE, "../images/ActionDelete.svg", myBool, this);
 
 
 	new ActionIcon(ActionIcon::ACTION_SETPHONE,
