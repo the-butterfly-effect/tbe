@@ -224,6 +224,9 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 		goto not_good;
 	}
 
+	//
+	// Parse the predefined section
+	//
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
 	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
@@ -242,13 +245,13 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			goto not_good;
 		}
 
-		AbstractObject* myBOPtr = AbstractObjectSerializer::createObjectFromDom(q, false, true);
-		if (myBOPtr == NULL)
+		AbstractObject* myAOPtr = AbstractObjectSerializer::createObjectFromDom(q, false, true);
+		if (myAOPtr == NULL)
 		{
 			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
 		}
-		theWorldPtr->addObject(myBOPtr);
+		theWorldPtr->addObject(myAOPtr);
 
 		if (q==myNode.lastChild())
 			break;

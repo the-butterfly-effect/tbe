@@ -41,9 +41,6 @@ AbstractObject::AbstractObject()
 	DEBUG5ENTRY;
 	theB2BodyDefPtr= new b2BodyDef();
 
-	// TODO - we need to move this into Level, once Toolbox is implemented
-	theIsMovable = true;
-
 	theProps.setDefaultPropertiesString(
 		Property::IMAGE_NAME_STRING + QString(":/") +
 		Property::MASS_STRING + QString(":/") +
