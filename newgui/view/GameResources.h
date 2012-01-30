@@ -61,11 +61,17 @@ protected:
     /// ill-named standard Qt member to change the i18n of the dialog
     virtual void changeEvent(QEvent *e);
 
+signals:
+    /// Emitted when the player wants to restart the level.
+    void signalReloadLevel(void);
+
 private slots:
     void on_theOKButton_clicked();
+    void on_theResetButton_clicked();
 
     void slot_window_appeared();
     void slot_window_disappeared();
+
 
 private:
     Ui::GameResources *ui;

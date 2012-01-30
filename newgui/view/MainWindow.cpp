@@ -180,6 +180,17 @@ void MainWindow::purgeLevel(void)
 }
 
 
+void MainWindow::reloadLevel(void)
+{
+	DEBUG1ENTRY;
+	if (theLevelPtr==NULL)
+		return;
+	QString myLevelName = theLevelPtr->getLevelFileName();
+	purgeLevel();
+	loadLevel(myLevelName);
+}
+
+
 void MainWindow::setupMenu(void)
 {
 }

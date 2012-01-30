@@ -49,9 +49,13 @@ protected:
 	void setupView(void);
 
 public slots:
-	/// loads the level specified by the file name
+	/// Loads the level specified by the file name.
 	/// @param aFileName guess what: the file name. Duh.
 	void loadLevel(const QString& aFileName);
+
+	/// Restarts the level already active.
+	/// Because we have the filename already, no need to specify here.
+	void reloadLevel(void);
 
 	// menu Help
 	void on_action_About_activated(void);

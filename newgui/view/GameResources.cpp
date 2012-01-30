@@ -21,6 +21,7 @@
 #include "Level.h"
 #include <QAction>
 #include <QMenuBar>
+#include "Popup.h"
 #include "tbe_global.h"
 #include "ui_GameResources.h"
 #include "ViewObject.h"
@@ -70,6 +71,16 @@ void GameResources::changeEvent(QEvent *e)
 void GameResources::on_theOKButton_clicked()
 {
     emit disappearAnimated();
+}
+
+
+void GameResources::on_theResetButton_clicked()
+{
+    if (Popup::YesNoQuestion(tr("Undo all your work and go back to a clean start of this level?")))
+    {
+        emit disappearAnimated();
+        emit signalReloadLevel();
+    }
 }
 
 

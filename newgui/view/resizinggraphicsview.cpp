@@ -96,6 +96,8 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 	theSimControlsPtr->setup(anMenuControlsPtr);
 
 	theGameResourcesPtr->setup(aMenuBarPtr);
+	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
+			 theMainWindowPtr, SLOT(reloadLevel()));
 
 	// this one displays the frame rate counter if active
 	theFrameRateViewPtr= aMenuBarPtr->addAction("");
