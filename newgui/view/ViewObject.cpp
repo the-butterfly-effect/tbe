@@ -91,8 +91,9 @@ void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position
 	// * then we translate in the setPos to set the the midpoint at the
 	//   defined position (instead of the top-left corner)
 
-    if (fabs(aWidth-theOldWidth)>0.001 || fabs(aHeight-theOldHeight)>0.001 ||
-            fabs(aCenter.angle-theOldPos.angle)>0.001)
+    if ( !areQRealsTheSame(aWidth,theOldWidth) ||
+         !areQRealsTheSame(aHeight,theOldHeight) ||
+         !areQRealsTheSame(aCenter.angle,theOldPos.angle))
     {
         QTransform theTransform;
          // Qt has the Y axis in opposite direction, so negate the angle...
@@ -103,6 +104,8 @@ void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position
         theOldWidth=aWidth;
         theOldHeight=aHeight;
         theOldPos.angle=aCenter.angle;
+        // make sure to update the rest of theOldPos as well
+        theOldPos.x = -1.0;
     }
 
 	if (aCenter!=theOldPos)
