@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -13,9 +14,9 @@
    height="64"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.48.1 r9760"
    version="1.0"
-   sodipodi:docname="statusFault.svg"
+   sodipodi:docname="StatusFault.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/kaa-ching/Programming/tbe/trunk/images/icons/statusPlay.png"
    inkscape:export-xdpi="90"
@@ -74,10 +75,11 @@
      showgrid="false"
      inkscape:window-width="1272"
      inkscape:window-height="783"
-     inkscape:window-x="1280"
-     inkscape:window-y="182"
+     inkscape:window-x="2158"
+     inkscape:window-y="118"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:window-maximized="0">
     <sodipodi:guide
        orientation="0,1"
        position="19.292419,46.093863"
@@ -105,6 +107,23 @@
        height="64"
        x="0"
        y="0" />
+    <path
+       sodipodi:type="star"
+       style="fill:#00ffff;fill-opacity:1;stroke:none"
+       id="path2991"
+       sodipodi:sides="3"
+       sodipodi:cx="32.346569"
+       sodipodi:cy="9.3574009"
+       sodipodi:r1="14.354691"
+       sodipodi:r2="7.1773458"
+       sodipodi:arg1="0"
+       sodipodi:arg2="1.0471976"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 46.70126,9.3574009 -10.766018,6.2157641 -10.766018,6.215763 -1e-6,-12.4315275 1e-6,-12.4315263 10.766018,6.2157631 z"
+       inkscape:transform-center-x="-4.6087576"
+       transform="matrix(1.2842518,0,0,1.1393917,-0.68286195,12.998063)" />
     <path
        style="opacity:1;fill:#dc0000;fill-opacity:1;stroke:none;stroke-width:4.25196838000000010;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 29.34375 8.65625 L 29.34375 12.96875 L 40.625 24.25 L 29.34375 35.53125 L 29.34375 39.84375 L 31.90625 39.84375 L 44.0625 27.6875 L 56.25 39.84375 L 58.8125 39.84375 L 58.8125 35.53125 L 47.53125 24.25 L 58.8125 12.96875 L 58.8125 8.65625 L 56.25 8.65625 L 44.0625 20.8125 L 31.90625 8.65625 L 29.34375 8.65625 z "
