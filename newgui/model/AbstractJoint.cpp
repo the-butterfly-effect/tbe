@@ -106,7 +106,21 @@ void AbstractJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 	}
 }
 
+
 void AbstractJoint::setGroundBodyPtr(b2Body* aPtr)
 {
 	theGroundBodyPtr = aPtr;
+}
+
+
+void AbstractJoint::updateViewObject(bool) const
+{
+	// no ViewObject: nothing to update ;-)
+	if(theViewObjectPtr == NULL)
+		return;
+
+	theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
+									  getTempHeight(),
+									  getTempCenter());
+	theViewObjectPtr->setNewImageIndex(getImageIndex());
 }

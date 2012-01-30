@@ -269,6 +269,8 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 		return;
 
 	// no b2body: no part of simulation
+	// PROBLEM: joints also don't have a b2Body - that's why they have their own
+	// overriden version of this member...
 	if (theB2BodyPtr==NULL)
 	{
 		if (!isSimRunning)

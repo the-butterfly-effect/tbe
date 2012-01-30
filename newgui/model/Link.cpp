@@ -42,19 +42,20 @@ Link::Link(void)
       theFirstLocalPosPtr(NULL),
       theSecondLocalPosPtr(NULL)
 {
-    DEBUG5ENTRY;
-
 	theProps.setDefaultPropertiesString(
 			Property::OBJECT1_STRING + QString(":/") +
 			Property::OBJECT2_STRING + QString(":/") +
 			Property::OVERLAP_STRING + QString(":10/") +
 			"-" + Property::MASS_STRING + ":/" );
-	DEBUG5("Link::Link() end\n");
 }
 
 Link::~Link ()
 {
-	DEBUG5("Link::~Link ()\n");
+	// nothing real to do ?!?
+	theFirstPtr  = NULL;
+	theSecondPtr = NULL;
+	theFirstLocalPosPtr  = NULL;
+	theSecondLocalPosPtr = NULL;
 }
 
 ViewObject*  Link::createViewObject(float aDefaultDepth)

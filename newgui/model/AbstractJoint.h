@@ -55,15 +55,6 @@ public:
 	virtual b2BodyType getObjectType(void) const
 	{	return b2_dynamicBody; }
 
-	/** Get the current center position of the object.
-	 *  As joints do not have a center, this one usually returns the start position.
-	 *  FIXME/TODO: This is not entirely correct as joints may actually move.
-	 *
-	 * @return the value of theCenter
-	 */
-	virtual Position getTempCenter ( ) const
-	{ return getOrigCenter(); }
-
 	/// @returns true if a child joint, created as property of another object
 	virtual bool isChildJoint(void)
 	{ return isChild; }
@@ -94,7 +85,11 @@ public:
 	/// @param aRelPosition RELATIVE position on the object to find an b2Body
 	///                     for. This is relevant for composite objects.
 	b2Body* getB2BodyPtrFor(AbstractObject* anObject, const Position& aRelPosition);
-//	b2Body* getB2BodyPtrFor(AbstractObject* anObject);
+
+	/// updates the ViewObject to the position of the underlying b2body
+	/// (it won't update if the object is asleep if sim is running)
+	/// @param isSimRunning  set to true if you want to use position/size from sim
+	virtual void updateViewObject(bool isSimRunning) const;
 
 protected:
 	/// if you have only one object, it is supposed to be static
@@ -102,7 +97,7 @@ protected:
 	/// (see also setGroundBodyPtr() ).
 	b2Body* getGroundBodyPtr(void);
 
-	b2RevoluteJoint* theJointPtr;
+	b2Joint* theJointPtr;
 
 	/// Set to true if this joint is a child object of something else. Likely
 	/// it will be a PivotPoint or TranslationGuide that is used as a property.
