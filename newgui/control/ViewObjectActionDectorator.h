@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,8 +23,36 @@
 
 // forward declaration
 class ViewObject;
+class ViewObjectActionDecorator;
 class AbstractUndoCommand;
 class QGraphicsSceneMouseEvent;
+
+
+class CrossRegisterSingleton : public QObject
+{
+    Q_OBJECT
+
+public:
+    /// Only access to the actual pointer to the class,
+    /// used by ResizingGraphicsView to hook up this class to the SimControls.
+    /// @returns pointer to the instance of the singleton.
+    static CrossRegisterSingleton* me(void);
+
+    void updateCrossState(signed int anAddOrSubtract);
+
+signals:
+    /// Emitted whenever the number of crosses on the screen changes.
+    /// @param  aNumber is the number of crosses currently present on the screen.
+    void signalNumberCrossesChanged(int aNumber);
+
+private:
+    /// This is a singleton: by definition private constructor
+    CrossRegisterSingleton(void);
+
+    int theNumberOfCrosses;
+};
+
+
 
 /**
   *
@@ -35,6 +63,8 @@ public:
     /// constructor
     ViewObjectActionDecorator();
 
+    /// destructor
+    ~ViewObjectActionDecorator();
 
     /// clear the pointer to the UndoCommand
     void clearUndoPointer()
@@ -75,6 +105,8 @@ protected:
     /// on to our AbstractUndoCommand boss to act on...
     virtual void	mouseReleaseEvent( QGraphicsSceneMouseEvent* event );
 
+    int impliesCross(CrossState aState)
+    { return (aState==CROSS||aState==COMBINED)?1:0; }
 
 private:
     AbstractUndoCommand* theAUCPtr;
@@ -82,6 +114,8 @@ private:
     QPixmap theCombinedImage;
     QPixmap theCrossImage;
     QPixmap theProxyImage;
+
+    CrossState theCurrentCrossState;
 };
 
 #endif // VIEWOBJECTACTIONDECORATOR_H

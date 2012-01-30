@@ -27,11 +27,53 @@
 #include <QtGui/QGraphicsSceneMouseEvent>
 #include <QtGui/QPainter>
 
+
+
+CrossRegisterSingleton::CrossRegisterSingleton()
+    : theNumberOfCrosses(0)
+{
+    // nothing further to do...
+}
+
+
+CrossRegisterSingleton* CrossRegisterSingleton::me(void)
+{
+    static CrossRegisterSingleton* theCrossRegisterSingletonPtr = NULL;
+    if (theCrossRegisterSingletonPtr==NULL)
+        theCrossRegisterSingletonPtr = new CrossRegisterSingleton();
+    return theCrossRegisterSingletonPtr;
+}
+
+
+void CrossRegisterSingleton::updateCrossState(signed int anAddOrSubtract)
+{
+    theNumberOfCrosses += anAddOrSubtract;
+    emit signalNumberCrossesChanged(theNumberOfCrosses);
+}
+
+
+
+
+
+
+// ---------------------------------------------------------------------------
+//                         ViewObjectActionDecorator
+// ---------------------------------------------------------------------------
+
+
+
+
 ViewObjectActionDecorator::ViewObjectActionDecorator()
     : QGraphicsPixmapItem(NULL),
-      theAUCPtr(NULL)
+      theAUCPtr(NULL),
+      theCurrentCrossState(NONE)
 {
     // nothing to do here
+}
+
+ViewObjectActionDecorator::~ViewObjectActionDecorator()
+{
+    setCrossState(NONE);
 }
 
 
@@ -74,6 +116,7 @@ ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
         QGraphicsPixmapItem::mousePressEvent(event);
 }
 
+
 void
 ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
 {
@@ -89,25 +132,29 @@ ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
 
 void ViewObjectActionDecorator::setCrossState(CrossState aCrossState)
 {
+    // no need to change to the same
+    if (aCrossState==theCurrentCrossState)
+        return;
     switch (aCrossState)
     {
     case NONE:
-        // TODO/FIXME: emit "cross present signal"
         break;
     case PROXY:
         setPixmap(theProxyImage);
-        // TODO/FIXME: emit "no cross signal"
         break;
     case COMBINED:
         setPixmap(theCombinedImage);
-        // TODO/FIXME: emit "cross present signal"
         break;
     case CROSS:
         setPixmap(theCrossImage);
-        // TODO/FIXME: emit "cross present signal"
         break;
     }
     setVisible(aCrossState!=NONE);
+
+    // And tell the singleton where we are
+    CrossRegisterSingleton::me()->updateCrossState(impliesCross(aCrossState)
+                                                   -impliesCross(theCurrentCrossState));
+    theCurrentCrossState = aCrossState;
 }
 
 

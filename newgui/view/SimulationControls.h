@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -69,6 +69,9 @@ public:
     void hookSignalsUp(ViewWorld* aViewWorld);
 
 signals:
+    void internalCrossPresent(void);
+    void internalCrossGone(void);
+
     /// this signal is emitted when our slot onFailed is called
     void internalFailed(void);
 
@@ -90,30 +93,36 @@ public slots:
 	/// show (and enable) the controls
 	void showYourself();
 
+	/// Resizinggraphicsview connects CrossRegisterSingleton to this slot
+	/// and it will be called whenever the user has a cross on one of his
+	/// decorators.
+	void slotNumberOfCrossesChanged(int aNewNumber);
+
 private:
 	QStateMachine theSimStateMachine;
 
 	QAction* theTopAction;
 	QAction* theBotAction;
 
-	QIcon thePlayIcon;
-	QIcon thePauseIcon;
-	QIcon theStopIcon;
-	QIcon theResetIcon;
 	QIcon theFwdIcon;
+	QIcon thePauseIcon;
+	QIcon thePlayIcon;
+	QIcon theResetIcon;
+	QIcon theStopIcon;
 
-	QPixmap thePlayStatusPixmap;
-	QPixmap thePauseStatusPixmap;
-	QPixmap theStopStatusPixmap;
-	QPixmap theFaultStatusPixmap;
 	QPixmap theFFStatusPixmap;
 	QPixmap theFailStatusPixmap;
+	QPixmap thePauseStatusPixmap;
+	QPixmap thePlayStatusPixmap;
+	QPixmap theProblemStatusPixmap;
+	QPixmap theStopStatusPixmap;
 
-	QState* theFailedState;
-	QState* theForwardState;
-	QState* thePausedState;
-	QState* theRunningState;
-	QState* theStoppedState;
+	QState* theFailedState;		// happens upon death
+	QState* theForwardState;	// fast forward
+	QState* thePausedState;		// paused (but sim is active)
+	QState* theProblemState;	// at least one cross, user can change things
+	QState* theRunningState;	// sim is active and running
+	QState* theStoppedState;	// sim is inactive, user can change things
 
 	Ui::SimulationControls *ui;
 };

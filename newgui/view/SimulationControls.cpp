@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -40,18 +40,18 @@ SimulationControls::SimulationControls(QWidget *parent) :
     ImageCache::getPixmap("StatusPlay", QSize(64,64), &myPixmap);
     ui->statusLabel->setPixmap(myPixmap);
 
-    thePlayIcon  = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
-    thePauseIcon = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
-    theStopIcon  = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
-    theResetIcon = ImageCache::getQIcon("ActionUndo", QSize(32,32));
-    theFwdIcon   = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
+    theFwdIcon    = ImageCache::getQIcon("ActionFastForward", QSize(32,32));
+    thePauseIcon  = ImageCache::getQIcon("ActionMenuPause", QSize(32,32));
+    thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", QSize(32,32));
+    theStopIcon   = ImageCache::getQIcon("ActionMenuStop", QSize(32,32));
+    theResetIcon  = ImageCache::getQIcon("ActionUndo", QSize(32,32));
 
-    ImageCache::getPixmap("StatusFail",  QSize(64,64), &theFailStatusPixmap);
-    ImageCache::getPixmap("StatusFault", QSize(64,64), &theFaultStatusPixmap);
-    ImageCache::getPixmap("StatusFF",    QSize(64,64), &theFFStatusPixmap);
-    ImageCache::getPixmap("StatusPlay",  QSize(64,64), &thePlayStatusPixmap);
-    ImageCache::getPixmap("StatusPause", QSize(64,64), &thePauseStatusPixmap);
-    ImageCache::getPixmap("StatusStop",  QSize(64,64), &theStopStatusPixmap);
+    ImageCache::getPixmap("StatusFail",   QSize(64,64), &theFailStatusPixmap);
+    ImageCache::getPixmap("StatusFF",     QSize(64,64), &theFFStatusPixmap);
+    ImageCache::getPixmap("StatusPlay",   QSize(64,64), &thePlayStatusPixmap);
+    ImageCache::getPixmap("StatusPause",  QSize(64,64), &thePauseStatusPixmap);
+    ImageCache::getPixmap("StatusProblem",QSize(64,64), &theProblemStatusPixmap);
+    ImageCache::getPixmap("StatusStop",   QSize(64,64), &theStopStatusPixmap);
 }
 
 
@@ -76,6 +76,7 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
     emit internalReset();
 
     // hook up states to signals for ViewWorld/World
+    // note: no need to hook up theProblemState
     connect(theFailedState, SIGNAL(entered()), aViewWorld,
             SLOT(slot_signalPause()));
     connect(theForwardState, SIGNAL(entered()), aViewWorld,
@@ -98,7 +99,7 @@ void SimulationControls::parentResize(const QSize& aSize)
 
 void SimulationControls::setup(QMenu* aMenuPtr)
 {
-	//	QState* myInvalidState  = new SimState(&theSimStateMachine, "Invalid");
+	theProblemState = new SimState(&theSimStateMachine, "Problem");
 	theFailedState  = new SimState(&theSimStateMachine, "Failed");
 	theForwardState = new SimState(&theSimStateMachine, "Forward");
 	thePausedState  = new SimState(&theSimStateMachine, "Paused");
@@ -127,10 +128,12 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 	// add transitions here
 	theStoppedState->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
 	theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theStoppedState->addTransition(this, SIGNAL(internalCrossPresent()), theProblemState);
 	theRunningState->addTransition(theTopAction, SIGNAL(triggered()), thePausedState);
 	theRunningState->addTransition(theBotAction, SIGNAL(triggered()), theForwardState);
 	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
 	theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theProblemState->addTransition(this, SIGNAL(internalCrossGone()), theStoppedState);
 	thePausedState ->addTransition(theTopAction, SIGNAL(triggered()), theRunningState);
 	thePausedState ->addTransition(theBotAction, SIGNAL(triggered()), theStoppedState);
 	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
@@ -149,6 +152,13 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 	theStoppedState->assignProperty(theBotAction, "enabled",  false);
 	theStoppedState->assignProperty(theBotAction, "shortcut", myFwdKey);
 	theStoppedState->assignProperty(myLabelPtr,   "pixmap",   theStopStatusPixmap);
+	// upon entering problem state, Top = Play/disabled, Bottom = FF/disabled
+	theProblemState->assignProperty(theTopAction, "icon",     thePlayIcon);
+	theProblemState->assignProperty(theTopAction, "enabled",  false);
+	theProblemState->assignProperty(theBotAction, "icon",     theFwdIcon);
+	theProblemState->assignProperty(theBotAction, "enabled",  false);
+	theProblemState->assignProperty(theBotAction, "shortcut", myFwdKey);
+	theProblemState->assignProperty(myLabelPtr,   "pixmap",   theProblemStatusPixmap);
 	// upon entering running state, Top = Pause/enabled, Bottom = FF/enabled
 	theRunningState->assignProperty(theTopAction, "icon",     thePauseIcon);
 	theRunningState->assignProperty(theTopAction, "enabled",  true);
@@ -186,4 +196,13 @@ void SimulationControls::showYourself()
 	emit show();
 	theTopAction->setEnabled(true);
 	theBotAction->setEnabled(true);
+}
+
+
+void SimulationControls::slotNumberOfCrossesChanged(int aNewNumber)
+{
+	if (aNewNumber==0)
+		emit internalCrossGone();
+	else
+		emit internalCrossPresent();
 }

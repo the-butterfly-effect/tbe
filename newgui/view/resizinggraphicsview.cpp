@@ -24,6 +24,7 @@
 #include "Popup.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
+#include "ViewObjectActionDectorator.h"
 #include "ViewWorld.h"
 #include "WinFailDialog.h"
 #include "World.h"
@@ -88,6 +89,7 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 {
 	theMainWindowPtr = aMWPtr;
 	theSimControlsPtr->setup(anMenuControlsPtr);
+	connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), theSimControlsPtr, SLOT(slotNumberOfCrossesChanged(int)));
 
 	theGameResourcesPtr->setup(aMenuBarPtr);
 	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
