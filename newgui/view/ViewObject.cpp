@@ -145,11 +145,10 @@ void ViewObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewObject::initViewObjectAttributes(void)
 {
-//    setFlags(QGraphicsItem::ItemIsMovable |
-//             QGraphicsItem::ItemIsSelectable);
     setFlags(QGraphicsItem::ItemIsFocusable);
     setAcceptsHoverEvents(true);
     theDecorator.setViewObject(this);
+    setToolTip(theAbstractObjectPtr->getToolTip());
 }
 
 
