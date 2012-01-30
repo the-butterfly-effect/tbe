@@ -40,7 +40,7 @@ ViewObject* InsertUndoCommand::createAOandVO(ToolboxGroup* anToolboxGroupPtr)
 
     // put it in the middle of the world
     Position myPos(World::getWorldPtr()->getTheWorldWidth()/2.0,
-                   World::getWorldPtr()->getTheWorldWidth()/2.0, 0);
+                   World::getWorldPtr()->getTheWorldWidth()/2.0, myAOPtr->getOrigCenter().angle);
     myPos = myPos - Vector(myAOPtr->getTheWidth()/2.0, myAOPtr->getTheHeight()/2.0);
     myAOPtr->setOrigCenter(myPos);
 
