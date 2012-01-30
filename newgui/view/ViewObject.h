@@ -90,6 +90,9 @@ protected:
     /// overridden to allow highlighting
     virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
 
+    void realHoverEnterEvent(void);
+    void realMousePressEvent(QGraphicsSceneMouseEvent* anEvent);
+
 protected:
 	// Protected attributes
 	//

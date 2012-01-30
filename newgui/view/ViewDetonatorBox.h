@@ -55,9 +55,9 @@ public:
 
 protected:
 	/// overridden to ALWAYS allow highlighting
-//	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
-	/// overridden to ALWAYS allow highlighting
-//	virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
+	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
+	/// overridden to ALWAYS allow mouse button presses
+	virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
 
 private:
 	// prevent copy constructor / assignment operator

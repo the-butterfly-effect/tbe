@@ -84,6 +84,18 @@ void ViewDetonatorBox::displayChoosePhoneNumber(void)
 }
 
 
+void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+{
+	realHoverEnterEvent();
+}
+
+
+void ViewDetonatorBox::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
+{
+	realMousePressEvent(anEvent);
+}
+
+
 void ViewDetonatorBox::updateHandlePosition(qreal aDistance)
 {
 	// TODO/FIXME: magic number here - and no clue where it comes from!

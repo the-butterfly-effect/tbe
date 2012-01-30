@@ -134,14 +134,7 @@ void ViewObject::adjustObjectDrawing(void)
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
     if (theAbstractObjectPtr->isMovable())
-    {
-        // only set hover effect when no menu present
-        if (PieMenuSingleton::getPieMenuParent()!=this)
-        {
-            QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
-            setGraphicsEffect(myEffect);
-        }
-    }
+        realHoverEnterEvent();
 }
 
 
@@ -166,10 +159,27 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
     if (theAbstractObjectPtr->isMovable())
     {
-        hoverLeaveEvent(NULL);
-        PieMenuSingleton::addPieMenuToViewObject(this, anEvent->scenePos());
+        realMousePressEvent(anEvent);
     }
 }
+
+
+void ViewObject::realHoverEnterEvent(void)
+{
+    // only set hover effect when no menu present
+    if (PieMenuSingleton::getPieMenuParent()!=this)
+    {
+        QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
+        setGraphicsEffect(myEffect);
+    }
+}
+
+void ViewObject::realMousePressEvent(QGraphicsSceneMouseEvent* anEvent)
+{
+    hoverLeaveEvent(NULL);
+    PieMenuSingleton::addPieMenuToViewObject(this, anEvent->scenePos());
+}
+
 
 void ViewObject::setNewGeometry(const Position& aNewPosition, qreal aNewWidth, qreal aNewHeight)
 {
