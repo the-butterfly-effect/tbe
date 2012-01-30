@@ -119,6 +119,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
+	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
 
 	QTimer::singleShot(10, theGameResourcesPtr, SLOT(appearAnimated()));
 }

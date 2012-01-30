@@ -56,6 +56,7 @@ public:
 	virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 
 signals:
+	void needReset();
 
 public slots:
 	// signals to start/stop/ffwd/reset the game

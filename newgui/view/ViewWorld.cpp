@@ -18,11 +18,11 @@
 
 #include "animateddialog.h"
 #include "PieMenu.h"
+#include "Popup.h"
+#include "Position.h"
 #include "resizinggraphicsview.h"
 #include "ViewWorld.h"
 #include "World.h"
-
-#include "Position.h"
 
 #include <QtGui/QAction>
 #include <QtGui/QGraphicsSceneMouseEvent>
@@ -78,6 +78,16 @@ qreal ViewWorld::getWidth()
 void
 ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
 {
+    // If the simulation is running (or at least is not in reset mode)
+    // players cannot change anything.
+    if (isSimRunning)
+    {
+        emit slot_signalPause();
+        if (Popup::YesNoQuestion(tr("You cannot make changes now, the simulation is ongoing.\nReset the simulation?"))==true)
+            emit needReset();
+        return;
+    }
+
     QGraphicsItem* myItemPtr = itemAt(mouseEvent->scenePos());
     if (myItemPtr!=NULL)
     {
