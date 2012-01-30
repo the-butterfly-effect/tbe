@@ -144,7 +144,7 @@ void ViewWorld::slot_signalPlay()
 	theSimulationTime = QTime::currentTime();
 	theSimSpeed = 1000;
 	theFramesPerSecond = 0;
-	emit theTimer.start(1000/25);
+	emit theTimer.start(1000/50);
 
 	if (theDisplayFramerate)
 	{

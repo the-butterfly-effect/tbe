@@ -55,6 +55,7 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	thePixmapWidth = QGraphicsPixmapItem::boundingRect().width();
 	thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
 
+	setCacheMode(QGraphicsItem::DeviceCoordinateCache);
 	adjustObjectDrawing();
 
 	initViewObjectAttributes();
