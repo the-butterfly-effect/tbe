@@ -27,6 +27,11 @@ class Position;
 
 extern qreal THESCALE;
 
+
+/// Compare two QReals
+/// @returns true if they are similiar within Position::minimalMove.
+bool areQRealsTheSame(qreal anA, qreal aB);
+
 class Vector
 {
 public:

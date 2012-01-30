@@ -195,6 +195,15 @@ Vector Vector::toUnitVector(void) const
 
 
 
+
+bool areQRealsTheSame(qreal anA, qreal aB)
+{
+	return fabs(anA - aB) < Position::minimalMove;
+}
+
+
+
+
 Position operator+(const Position& p1, const Vector& v1)
 {
 	float myCos = cos(p1.angle);
@@ -242,9 +251,9 @@ Vector operator*(const Vector& v1, const Vector& v2)
 
 bool operator==(const Position& p1, const Position& p2)
 {
-	if (fabs(p1.x - p2.x) > Position::minimalMove)
+	if (!areQRealsTheSame(p1.x, p2.x))
 		return false;
-	if (fabs(p1.y - p2.y) > Position::minimalMove)
+	if (!areQRealsTheSame(p1.y, p2.y))
 		return false;
 	if (fabs(p1.angle-p2.angle) > Position::minimalRot)
 		return false;
@@ -258,9 +267,9 @@ bool operator!=(const Position& p1, const Position& p2)
 
 bool operator==(const Vector& v1, const Vector& v2)
 {
-	if (fabs(v1.dx - v2.dx) > Position::minimalMove)
+	if (!areQRealsTheSame(v1.dx, v2.dx))
 		return false;
-	if (fabs(v1.dy - v2.dy) > Position::minimalMove)
+	if (!areQRealsTheSame(v1.dy, v2.dy))
 		return false;
 	return true;
 }
