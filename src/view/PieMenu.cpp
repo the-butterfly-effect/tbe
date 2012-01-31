@@ -183,21 +183,22 @@ void PieMenu::setup()
 				   (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
 				   || theIsLevelEditor;
 	new ActionIcon(ActionIcon::ACTION_RESIZE,
-								"../images/ActionResize.svg", myBool, this);
+								"images/ActionResize.svg", myBool, this);
 
 	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
-								"../images/ActionRotate.svg", myBool, this);
+								"images/ActionRotate.svg", myBool, this);
 
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
-											"../images/ActionMove.svg", true, this);
+								"images/ActionMove.svg", true, this);
 
 	myBool = (theAOPtr->isMovable());
-	new ActionIcon(ActionIcon::ACTION_DELETE, "../images/ActionDelete.svg", myBool, this);
+	new ActionIcon(ActionIcon::ACTION_DELETE,
+				   "images/ActionDelete.svg", myBool, this);
 
 
 	new ActionIcon(ActionIcon::ACTION_SETPHONE,
-				   "../images/ActionSetNumber.svg",
+				   "images/ActionSetNumber.svg",
 				   dynamic_cast<DetonatorBox*>(theAOPtr)!=NULL, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
