@@ -1,29 +1,29 @@
 
 SOURCES += \
-    control/AbstractUndoCommand.cpp \
-    control/ChoosePhoneUndoCommand.cpp \
-    control/DeleteUndoCommand.cpp \
-    control/DummyUndoCommand.cpp \
-    control/InsertUndoCommand.cpp \
-    control/MoveUndoCommand.cpp \
-    control/ResizeUndoCommand.cpp \
-    control/RotateUndoCommand.cpp \
-    control/ToolboxGroup.cpp \
-    control/UndoSingleton.cpp \
-    control/ViewObjectActionDectorator.cpp
+    src/control/AbstractUndoCommand.cpp \
+    src/control/ChoosePhoneUndoCommand.cpp \
+    src/control/DeleteUndoCommand.cpp \
+    src/control/DummyUndoCommand.cpp \
+    src/control/InsertUndoCommand.cpp \
+    src/control/MoveUndoCommand.cpp \
+    src/control/ResizeUndoCommand.cpp \
+    src/control/RotateUndoCommand.cpp \
+    src/control/ToolboxGroup.cpp \
+    src/control/UndoSingleton.cpp \
+    src/control/ViewObjectActionDectorator.cpp
 
 HEADERS  += \
-    control/AbstractUndoCommand.h \
-    control/ChoosePhoneUndoCommand.h \
-    control/DeleteUndoCommand.h \
-    control/DummyUndoCommand.h \
-    control/InsertUndoCommand.h \
-    control/MoveUndoCommand.h \
-    control/ResizeUndoCommand.h \
-    control/RotateUndoCommand.h \
-    control/ToolboxGroup.h \
-    control/UndoSingleton.h \
-    control/ViewObjectActionDectorator.h
+    src/control/AbstractUndoCommand.h \
+    src/control/ChoosePhoneUndoCommand.h \
+    src/control/DeleteUndoCommand.h \
+    src/control/DummyUndoCommand.h \
+    src/control/InsertUndoCommand.h \
+    src/control/MoveUndoCommand.h \
+    src/control/ResizeUndoCommand.h \
+    src/control/RotateUndoCommand.h \
+    src/control/ToolboxGroup.h \
+    src/control/UndoSingleton.h \
+    src/control/ViewObjectActionDectorator.h
 
 
 

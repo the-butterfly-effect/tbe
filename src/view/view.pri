@@ -1,54 +1,54 @@
 
 SOURCES += \
-	view/animateddialog.cpp \
-	view/ChooseLevel.cpp \
-	view/ChoosePhoneNumber.cpp \
-	view/GameResources.cpp \
-	view/GoalEditor.cpp \
-	view/ImageCache.cpp \
-	view/MainWindow.cpp \
-	view/PieMenu.cpp \
-	view/resizinggraphicsview.cpp \
-	view/SimulationControls.cpp \
-	view/ViewObject.cpp \
-	view/ViewDetonatorBox.cpp \
-	view/ViewPostIt.cpp \
-	view/ViewWorld.cpp \
-	view/ViewToolboxGroup.cpp \
-	view/WinFailDialog.cpp
+	src/view/animateddialog.cpp \
+	src/view/ChooseLevel.cpp \
+	src/view/ChoosePhoneNumber.cpp \
+	src/view/GameResources.cpp \
+	src/view/GoalEditor.cpp \
+	src/view/ImageCache.cpp \
+	src/view/MainWindow.cpp \
+	src/view/PieMenu.cpp \
+	src/view/resizinggraphicsview.cpp \
+	src/view/SimulationControls.cpp \
+	src/view/ViewObject.cpp \
+	src/view/ViewDetonatorBox.cpp \
+	src/view/ViewPostIt.cpp \
+	src/view/ViewWorld.cpp \
+	src/view/ViewToolboxGroup.cpp \
+	src/view/WinFailDialog.cpp
 
 HEADERS  += \
-	view/animateddialog.h \
-	view/Background.h \
-	view/ChooseLevel.h \
-	view/ChoosePhoneNumber.h \
-	view/GameResources.h \
-	view/GoalEditor.h \
-	view/ImageCache.h \
-	view/MainWindow.h \
-	view/Popup.h \
-	view/PieMenu.h \
-	view/resizinggraphicsview.h \
-	view/SimulationControls.h \
-	view/ViewDetonatorBox.h \
-	view/ViewObject.h \
-	view/ViewPostIt.h \
-	view/ViewWorld.h \
-	view/ViewToolboxGroup.h \
-	view/WinFailDialog.h
+	src/view/animateddialog.h \
+	src/view/Background.h \
+	src/view/ChooseLevel.h \
+	src/view/ChoosePhoneNumber.h \
+	src/view/GameResources.h \
+	src/view/GoalEditor.h \
+	src/view/ImageCache.h \
+	src/view/MainWindow.h \
+	src/view/Popup.h \
+	src/view/PieMenu.h \
+	src/view/resizinggraphicsview.h \
+	src/view/SimulationControls.h \
+	src/view/ViewDetonatorBox.h \
+	src/view/ViewObject.h \
+	src/view/ViewPostIt.h \
+	src/view/ViewWorld.h \
+	src/view/ViewToolboxGroup.h \
+	src/view/WinFailDialog.h
 
 FORMS    += \
-	view/ChooseLevel.ui \
-	view/ChoosePhoneNumber.ui \
-	view/GameResources.ui \
-	view/GoalEditor.ui \
-	view/MainWindow.ui \
-	view/SimulationControls.ui \
-	view/ViewPostIt.ui \
-    view/WinFailDialog.ui
+	src/view/ChooseLevel.ui \
+	src/view/ChoosePhoneNumber.ui \
+	src/view/GameResources.ui \
+	src/view/GoalEditor.ui \
+	src/view/MainWindow.ui \
+	src/view/SimulationControls.ui \
+	src/view/ViewPostIt.ui \
+	src/view/WinFailDialog.ui
 
 RESOURCES += \
-    ../images/style/style-resources.qrc
+    images/style/style-resources.qrc
 
 
 

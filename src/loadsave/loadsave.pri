@@ -1,21 +1,21 @@
 
 SOURCES += \
-    loadsave/AbstractObjectSerializer.cpp \
-    loadsave/BackgroundSerializer.cpp \
-    loadsave/GoalSerializer.cpp \
-    loadsave/Level.cpp \
-    loadsave/LocalString.cpp \ 
-    loadsave/ObjectFactory.cpp \
-    loadsave/ToolboxGroupSerializer.cpp
+    src/loadsave/AbstractObjectSerializer.cpp \
+    src/loadsave/BackgroundSerializer.cpp \
+    src/loadsave/GoalSerializer.cpp \
+    src/loadsave/Level.cpp \
+    src/loadsave/LocalString.cpp \ 
+    src/loadsave/ObjectFactory.cpp \
+    src/loadsave/ToolboxGroupSerializer.cpp
 
 HEADERS += \
-    loadsave/AbstractObjectSerializer.h \
-    loadsave/BackgroundSerializer.h \
-    loadsave/GoalSerializer.h \
-    loadsave/Level.h \
-    loadsave/LocalString.h \ 
-    loadsave/ObjectFactory.h \
-    loadsave/ToolboxGroupSerializer.h
+    src/loadsave/AbstractObjectSerializer.h \
+    src/loadsave/BackgroundSerializer.h \
+    src/loadsave/GoalSerializer.h \
+    src/loadsave/Level.h \
+    src/loadsave/LocalString.h \ 
+    src/loadsave/ObjectFactory.h \
+    src/loadsave/ToolboxGroupSerializer.h
 
 
 

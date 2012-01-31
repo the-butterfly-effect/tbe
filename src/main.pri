@@ -1,6 +1,7 @@
 
 SOURCES += \
-    backtrace.cpp \
-    main.cpp
+    src/backtrace.cpp \
+    src/main.cpp
 
-HEADERS  += tbe_global.h
+HEADERS  += \
+    src/tbe_global.h
