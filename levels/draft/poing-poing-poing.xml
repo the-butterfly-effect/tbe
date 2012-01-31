@@ -10,9 +10,9 @@
         <date>June 6, 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="3" name="###">
-            <name lang="nl">###</name>
-            <object X="1.0" Y="2.7" type="CustomBall">
+        <toolboxitem count="3" name="Something weird">
+            <name lang="nl">Iets vreemds</name>
+            <object X="1.0" Y="2.7" width="0.14" height="0.14" type="CustomBall">
                 <property key="Radius" >0.07</property>
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName" >brass-pin</property>
