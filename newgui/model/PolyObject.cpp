@@ -195,39 +195,17 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
 		);
 
-	AbstractObject::setTheWidth(aWidth);
-	AbstractObject::setTheHeight(aHeight);
 	setTheBounciness(aBounciness);
-
+	setTheWidth(aWidth);
+	setTheHeight(aHeight);
 }
+
 
 PolyObject::~PolyObject ( )
 {
 	DEBUG5("PolyObject::~PolyObject()\n");
 }
 
-//
-// Methods
-//
-
-
-// Accessor methods
-//
-
-void PolyObject::setTheWidth ( qreal new_var )
-{
-	AbstractObject::setTheWidth(new_var);
-	parseProperties();
-}
-
-void PolyObject::setTheHeight ( qreal new_var )
-{
-	AbstractObject::setTheHeight(new_var);
-	parseProperties();
-}
-
-// Other methods
-//
 
 void PolyObject::fillShapeList(void)
 {

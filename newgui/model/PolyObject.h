@@ -74,18 +74,6 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/**
-	 * Set the value of theWidth
-	 * @param new_var the new value of theWidth
-	 */
-	virtual void setTheWidth ( qreal new_var );
-
-	/**
-	 * Set the value of theHeight
-	 * @param new_var the new value of theHeight
-	 */
-	virtual void setTheHeight ( qreal new_var );
-
 protected:
 	/// TODO/FIXME: see same notes in RectObject...
 	virtual void setFriction(b2FixtureDef* aFixtureDef);

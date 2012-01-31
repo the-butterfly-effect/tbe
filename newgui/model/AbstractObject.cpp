@@ -33,10 +33,12 @@ static b2World* theStaticB2WorldPtr = NULL;
 AbstractObject::AbstractObject()
     : theB2BodyPtr(NULL),
       theViewObjectPtr(NULL),
+      theChildPivotPointPtr(NULL),
+      theChildTranslationGuidePtr(NULL),
       theBounciness(0.5),
       theHeight(1.0),
       theWidth(1.0),
-      theWorldPtr(NULL)
+    theWorldPtr(NULL)
 {
 	DEBUG5ENTRY;
 	theB2BodyDefPtr= new b2BodyDef();
@@ -211,26 +213,40 @@ void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus) const
 
 void AbstractObject::parseProperties(void)
 {
-	// use the default if nothing else...
+	// Bounciness
 	float myFloat;
 	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
 	setTheBounciness(myFloat);
 
+	// Child Pivot Point
+	if (theChildPivotPointPtr)
+	{
+		theWorldPtr->removeObject(theChildPivotPointPtr);
+		delete theChildPivotPointPtr;
+	}
 	Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
-		PivotPoint* myPP = new PivotPoint(this, myDelta);
-		myPP->markAsChild();
-		theWorldPtr->addObject(myPP);
+		theChildPivotPointPtr = new PivotPoint(this, myDelta);
+		theChildPivotPointPtr->markAsChild();
+		theWorldPtr->addObject(theChildPivotPointPtr);
+	}
+
+	// Child Translation Guid
+	if (theChildTranslationGuidePtr)
+	{
+		theWorldPtr->removeObject(theChildTranslationGuidePtr);
+		delete theChildTranslationGuidePtr;
 	}
 	float myAngle;
 	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
 	{
-		TranslationGuide* myTJ = new TranslationGuide(this, myAngle);
-		myTJ->markAsChild();
-		theWorldPtr->addObject(myTJ);
+		theChildTranslationGuidePtr = new TranslationGuide(this, myAngle);
+		theChildTranslationGuidePtr->markAsChild();
+		theWorldPtr->addObject(theChildTranslationGuidePtr);
 	}
 
+	// NoCollision
 	QString myNoCollisionObjectIDs;
 	theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
 	QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
@@ -249,6 +265,22 @@ void AbstractObject::setTheB2WorldPtr(b2World* aPtr)
 {
 	theStaticB2WorldPtr = aPtr;
 }
+
+
+void AbstractObject::setTheHeight ( qreal new_var )
+{
+	if (new_var>AbstractObject::MINIMUM_DIMENSION)
+		theHeight = new_var;
+	parseProperties();
+}
+
+void AbstractObject::setTheWidth ( qreal new_var )
+{
+	if (new_var>AbstractObject::MINIMUM_DIMENSION)
+		theWidth = new_var;
+	parseProperties();
+}
+
 
 
 void  AbstractObject::setViewObjectZValue(float aDefaultValue)

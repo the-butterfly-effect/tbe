@@ -29,7 +29,9 @@
 class ViewObject;
 class ObjectFactory;
 class World;
+class TranslationGuide;
 class ShapeList;
+class PivotPoint;
 class b2FixtureDef;
 class b2ShapeDef;
 class b2Shape;
@@ -300,13 +302,11 @@ public:
 
 	/// Set the value of theHeight
 	/// @param new_var the new value of theHeight
-	virtual void setTheHeight ( qreal new_var )
-	{ if (new_var>AbstractObject::MINIMUM_DIMENSION) theHeight = new_var;	}
+	virtual void setTheHeight ( qreal new_var );
 
 	/// Set the value of theWidth
 	/// @param new_var the new value of theWidth
-	virtual void setTheWidth ( qreal new_var )
-	{ if (new_var>AbstractObject::MINIMUM_DIMENSION) theWidth = new_var; }
+	virtual void setTheWidth ( qreal new_var );
 
 
 	//
@@ -352,8 +352,10 @@ public:
 	virtual bool isPhysicsObjectCreated(void) const
 		{ return theB2BodyPtr!=NULL; }
 
-	/** parse all properties
-	  * NOTE: AbstractObject only understands PivotPoint and Bounciness
+	/** Parse all properties (again).
+	  * @note AbstractObject understands PivotPoint, TranslationGuides,
+	  *       NoCollision and Bounciness.
+	  * @note Any implementation of parseProperties should expect multiple calls.
 	  */
 	virtual void  parseProperties(void);
 
@@ -387,6 +389,8 @@ protected:
 	///       notifications (see notifyJoints()).
 	JointList theJointList;
 
+	PivotPoint* theChildPivotPointPtr;
+	TranslationGuide* theChildTranslationGuidePtr;
 
 protected:
 	/// remove all shapes from the list
