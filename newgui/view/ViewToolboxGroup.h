@@ -41,8 +41,6 @@ public:
     int getBigWidth(void)
     { return theBigWidth; }
 
-    void updateCount(void);
-
 protected:
 
     /// @note: overridden from qGraphicsRectItem to allow object highlighting

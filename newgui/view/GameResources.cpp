@@ -44,6 +44,7 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
 
 	connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
 	connect(this, SIGNAL(disappeared()), this, SLOT(slot_window_disappeared()));
+	connect(this, SIGNAL(startedAppear()), this, SLOT(slot_startAppearing()));
 }
 
 
@@ -70,6 +71,9 @@ void GameResources::changeEvent(QEvent *e)
 
 void GameResources::on_theOKButton_clicked()
 {
+    // update the toolbox viewing
+    slot_startAppearing();
+    // and go away
     emit disappearAnimated();
 }
 
@@ -111,6 +115,27 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 	theToolboxPtr = new QGraphicsScene(NULL);
 	theToolboxPtr->setBackgroundBrush(Qt::blue);
 	ui->theToolView->setScene(theToolboxPtr);
+}
+
+
+void GameResources::setup(QMenuBar* aMenuBarPtr)
+{
+	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
+	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
+	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(appearAnimated()));
+	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(disappearAnimated()));
+	slot_window_disappeared();
+}
+
+
+void GameResources::slot_startAppearing()
+{
+	QList<QGraphicsItem*> myList = theToolboxPtr->items();
+	foreach(QGraphicsItem* i, myList)
+	{
+		theToolboxPtr->removeItem(i);
+//		delete i;
+	}
 
 	Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
 	int dy = 0;
@@ -123,16 +148,6 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 		i++;
 		connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
 	}
-}
-
-
-void GameResources::setup(QMenuBar* aMenuBarPtr)
-{
-	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
-	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
-	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(appearAnimated()));
-	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(disappearAnimated()));
-	slot_window_disappeared();
 }
 
 

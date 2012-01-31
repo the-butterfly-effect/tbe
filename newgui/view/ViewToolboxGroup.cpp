@@ -30,46 +30,64 @@
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
 	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)
 {
-	theTBGPtr->setViewTBG(this);
+	theCount.setParentItem(this);
+	theEmpty.setParentItem(this);
+	theName.setParentItem(this);
 
-	AbstractObject* myAOPtr = theTBGPtr->first();
-	int myObjW  = THESCALE*myAOPtr->getTheWidth();
-	theEmpty.setPlainText(QObject::tr("(empty)"));
-	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
-	if (theEmpty.boundingRect().width() > myObjW)
+	int myObjW;
+	int myObjH;
+	if (theTBGPtr->count() > 0)
+	{
+		AbstractObject* myAOPtr = theTBGPtr->first();
+		myObjW  = THESCALE*myAOPtr->getTheWidth();
+		myObjH  = THESCALE*myAOPtr->getTheHeight();
+
+		ViewObject* myVOPtr = myAOPtr->createViewObject();
+		thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
+		thePixmapPtr->setTransform(myVOPtr->transform());
+		myAOPtr->deleteViewObject();
+		thePixmapPtr->setParentItem(this);
+
+		setToolTip(myAOPtr->getToolTip());
+	}
+	else
+	{
+		theEmpty.setPlainText(QObject::tr("(empty)"));
 		myObjW = theEmpty.boundingRect().width();
+		myObjH  = theEmpty.boundingRect().height();
+		theEmpty.setZValue(5);
+	}
+
+	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
 	if (theName.boundingRect().width() > myObjW)
 		myObjW = theName.boundingRect().width();
 
 	theBigWidth = (static_cast<int>(myObjW) & ~31) +16+32;
-	int myObjH  = THESCALE*myAOPtr->getTheHeight();
 	theBigHeight = (static_cast<int>(myObjH) & ~31) +16+32;
 
 	setBrush(QBrush(Qt::gray));
 	setRect(0,0, theBigWidth-5, theBigHeight-5);
-	ViewObject* myVOPtr = myAOPtr->createViewObject();
-	thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
-	thePixmapPtr->setTransform(myVOPtr->transform());
-	myAOPtr->deleteViewObject();
-	thePixmapPtr->moveBy((theBigWidth-THESCALE*myAOPtr->getTheWidth())/2,
-						 (theBigHeight-myObjH)/2);
-	thePixmapPtr->setParentItem(this);
 
-	// theCount.setText is in updateCount()
-	theCount.setParentItem(this);
-	theCount.setZValue(5);
-	// theEmpty.setText is above
-	theEmpty.setParentItem(this);
-	theEmpty.setZValue(5);
-	theEmpty.moveBy((theBigWidth-theEmpty.boundingRect().width())/2.0,
-				   (theBigHeight-theEmpty.boundingRect().height())/2.0);
-	// theName.setText is above
-	theName.setParentItem(this);
+	if (theTBGPtr->count() > 0)
+	{
+		thePixmapPtr->setPos((theBigWidth-myObjW)/2,
+							 (theBigHeight-myObjH)/2);
+	}
+	else
+	{
+		theEmpty.setPos((theBigWidth-theEmpty.boundingRect().width())/2.0,
+					   (theBigHeight-theEmpty.boundingRect().height())/2.0);
+	}
+
 	theName.setZValue(5);
-	theName.moveBy(theBigWidth-theName.boundingRect().width(),
+	theName.setPos(theBigWidth-theName.boundingRect().width(),
 				   theBigHeight-theName.boundingRect().height());
 
-	updateCount();
+
+	theCount.setHtml(QString("<font size=\"+1\"><b>%1x</b></font>")
+					 .arg(theTBGPtr->count()));
+	theCount.setZValue(5);
+
 	setAcceptsHoverEvents(true);
 }
 
@@ -82,7 +100,6 @@ ViewToolboxGroup::~ViewToolboxGroup()
 
 void ViewToolboxGroup::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
-    // this looks great, but unfortunately it also affects all children
     QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
     setGraphicsEffect(myEffect);
 }
@@ -93,29 +110,13 @@ void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
     setGraphicsEffect(NULL);
 }
 
+
 void ViewToolboxGroup::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
     if (theTBGPtr->count() > 0)
     {
         InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
-        updateCount();
     }
     event->accept();
     emit hideMe();
-}
-
-void ViewToolboxGroup::updateCount(void)
-{
-	theCount.setHtml(QString("<font size=\"+1\"><b>%1x</b></font>")
-					 .arg(theTBGPtr->count()));
-	if (theTBGPtr->count() > 0)
-	{
-		thePixmapPtr->setVisible(true);
-		theEmpty.setVisible(false);
-	}
-	else
-	{
-		thePixmapPtr->setVisible(false);
-		theEmpty.setVisible(true);
-	}
 }

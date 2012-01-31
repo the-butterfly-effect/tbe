@@ -49,17 +49,12 @@ public:
     /// (compare to first(), which just returns a pointer to the FIRST one)
     AbstractObject* getObject(void);
 
-    void setViewTBG(ViewToolboxGroup* aViewTBGPtr)
-    { theViewTBGPtr = aViewTBGPtr;}
-
     LocalString theGroupName;
     QString     theInternalName;
 
 private:
     typedef QList<AbstractObject*> ObjectsList;
     ObjectsList theObjectsList;
-
-    ViewToolboxGroup* theViewTBGPtr;
 };
 
 #endif // TOOLBOXGROUP_H

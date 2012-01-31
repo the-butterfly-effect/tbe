@@ -72,6 +72,8 @@ private slots:
     void slot_window_appeared();
     void slot_window_disappeared();
 
+    /// used to re-align all items in toolbox
+    void slot_startAppearing();
 
 private:
     Ui::GameResources *ui;

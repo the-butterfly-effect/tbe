@@ -21,7 +21,7 @@
 #include "ViewToolboxGroup.h"
 
 ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
-    : theGroupName(aGroupName), theViewTBGPtr(NULL)
+    : theGroupName(aGroupName)
 {
     // nothing to do
 }
@@ -43,9 +43,6 @@ void ToolboxGroup::addObject(AbstractObject* anObjectPtr)
     Q_ASSERT(anObjectPtr!=NULL);
     theObjectsList.push_back(anObjectPtr);
     theInternalName = anObjectPtr->getInternalName();
-
-    if (theViewTBGPtr)
-        theViewTBGPtr->updateCount();
 }
 
 AbstractObject* ToolboxGroup::getObject(void)
@@ -53,9 +50,5 @@ AbstractObject* ToolboxGroup::getObject(void)
     Q_ASSERT(theObjectsList.count() > 0);
     AbstractObject* myAOPtr = theObjectsList.last();
     theObjectsList.pop_back();
-
-    if (theViewTBGPtr)
-        theViewTBGPtr->updateCount();
-
     return myAOPtr;
 }
