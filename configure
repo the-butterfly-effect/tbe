@@ -1,5 +1,8 @@
 #!/bin/bash
 
+QUIET=--quiet
+
+
 function test_package() {
 if test -z "`which $1 2>/dev/null`";
 then
@@ -58,7 +61,7 @@ echo
 ###########################################################
 function make_3rdParty() {
 echo "Building directory 3rdParty..."
-(cd 3rdParty && make --quiet all)
+make -C 3rdParty $QUIET all
 }
 
 ###########################################################
@@ -66,7 +69,7 @@ function make_images() {
 echo "Building directory images..."
 if test -f images/Makefile;
 then
-	make --quiet -C images all;
+	make $QUIET -C images all;
 fi;
 }
 
@@ -113,7 +116,7 @@ else
 fi
 
 echo "Building Makefile..."
-qmake
+qmake tbe.pro
 
 # and give some hints on what to do next
 echo
