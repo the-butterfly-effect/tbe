@@ -101,12 +101,12 @@ static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
 	QObject::tr("Floor"),
-	QObject::tr("This is a floor piece: flat and horizontal."),
+	"",
 	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
 static AbstractRectObjectFactory theWallFactory("Wall",
 	QObject::tr("Wall"),
-	QObject::tr("This is a brick wall: don't run into it."),
+	"",
 	"oldbrick", 0.2, 1.0, 0.0, 0.05 );
 
 
