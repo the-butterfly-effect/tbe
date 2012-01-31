@@ -107,12 +107,12 @@
                 <property key="ZValue" >10</property>
             </object>
             <object width="0.42" X="2.68" Y="2.29" height="0.1" type="Floor" angle="0.58" />
-            <object width="1" X="3.88" Y="2.8" height="0.1" type="Floor" angle="0" />
+            <object width="1" X="3.88" Y="2.9" height="0.1" type="Floor" angle="0" />
             <object width="1.5" X="4.07" Y="1.4" height="0.1" type="Floor" angle="0" >
                 <property key="ZValue" >9</property>
             </object>
             <object width="0.42" X="3.2" Y="1.295" height="0.1" type="Floor" angle="0.58" />
-            <object width="1" X="3.82" Y="2.1" height="1.4" type="Scenery" angle="0" >
+            <object width="1" X="3.82" Y="2.15" height="1.5" type="Scenery" angle="0" >
                 <property key="ImageName" >chickenwire-texture</property>
                 <property key="ZValue" >10</property>
             </object>
