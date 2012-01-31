@@ -35,7 +35,7 @@
             </object>
             <object width="0.12" X="0.18" Y="0.278" height="0.34" type="BowlingPin" ID="thePin" angle="0" />
             <object width="0.4" X="1.65" Y="0.54" height="0.88" type="Wall" angle="0" />
-            <object width="1.3" X="1.65" Y="1.07" height="0.1" type="RectObject" angle="0" >
+            <object width="1.3" X="1.65" Y="1.07" height="0.1" type="RectObject" angle="0" ID="TheBar">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >1.0</property>
                 <property key="PivotPoint" >(0,0)</property>
@@ -50,12 +50,13 @@
                 <property key="Radius" >0.05</property>
                 <property key="ImageName" >brass-pin</property>
                 <property key="Mass">0</property>
+                <property key="NoCollision">TheBar</property>
             </object>
         </predefined>
     </scene>
     <goals>
         <goal type="positionchange" >
-            <property key="anglechanged" ></property>
+            <property key="xbelow" >0.17</property>
             <property key="object" >thePin</property>
         </goal>
     </goals>
