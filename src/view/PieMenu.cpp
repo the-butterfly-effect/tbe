@@ -189,10 +189,10 @@ void PieMenu::setup()
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
 								"images/ActionRotate.svg", myBool, this);
 
-	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
-								"images/ActionMove.svg", true, this);
-
 	myBool = (theAOPtr->isMovable());
+	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
+								"images/ActionMove.svg", myBool, this);
+
 	new ActionIcon(ActionIcon::ACTION_DELETE,
 				   "images/ActionDelete.svg", myBool, this);
 
