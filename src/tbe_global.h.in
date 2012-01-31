@@ -41,7 +41,7 @@ const float SQRT2 = 1.41421356;
  */
 #if !defined(NDEBUG)
 #include <QtCore/QtDebug>
-#include <time.h>
+#include <ctime>
 extern int theVerbosity;	// actually defined in main.cpp
 #define MAX_VERBOSITY 6
 // note: the below is actually GCC-specific, see "info:/gcc/Variadic Macros"
@@ -81,10 +81,11 @@ extern const char* ASCII(const QString& aQString);
 
 /// instead of using hardcoded paths, please use the below:
 #define BINARY_DIRECTORY   (qApp->applicationDirPath())
-#define DATA_DIRECTORY     BINARY_DIRECTORY
-#define IMAGES_DIRECTORY   QString(DATA_DIRECTORY+"/../images")
-#define LEVELS_DIRECTORY   QString(DATA_DIRECTORY+"/../levels")
-#define I18N_DIRECTORY     QString(DATA_DIRECTORY+"/../i18n")
+#define DATA_DIRECTORY     %%DATADIR
+#define IMAGES_DIRECTORY   QString(DATA_DIRECTORY+"/images")
+#define LEVELS_DIRECTORY   QString(DATA_DIRECTORY+"/levels")
+#define I18N_DIRECTORY     QString(DATA_DIRECTORY+"/i18n")
+
 
 /// defined in main.cpp
 extern bool theDisplayFramerate;
