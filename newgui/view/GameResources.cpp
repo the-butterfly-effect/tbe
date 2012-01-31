@@ -26,13 +26,11 @@
 #include "ui_GameResources.h"
 #include "ViewObject.h"
 #include "ViewToolboxGroup.h"
-#include "ViewWorld.h"
 
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr),
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
-    theViewWorldPtr(NULL),
     theParentPtr(aRSGVPtr),
     theGRDownActionPtr(NULL),
     theGRUpActionPtr(NULL)

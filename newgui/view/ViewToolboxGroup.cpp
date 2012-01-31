@@ -19,9 +19,11 @@
 #include "AbstractObject.h"
 #include "GameResources.h"
 #include "InsertUndoCommand.h"
+#include "Popup.h"
 #include "Position.h"
 #include "ViewToolboxGroup.h"
 #include "ViewObject.h"
+#include "ViewWorld.h"
 
 #include <QtGui/QBrush>
 #include <QtGui/QGraphicsColorizeEffect>
@@ -113,6 +115,13 @@ void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewToolboxGroup::mousePressEvent ( QGraphicsSceneMouseEvent* event)
 {
+    if (ViewWorld::getIsSimRunning()==true)
+    {
+        Popup::Info(tr("The simulation is not in rest, you cannot insert new things. Please reset the sim first!"));
+        event->ignore();
+        return;
+    }
+
     if (theTBGPtr->count() > 0)
     {
         InsertUndoCommand::createInsertUndoCommand(theTBGPtr);

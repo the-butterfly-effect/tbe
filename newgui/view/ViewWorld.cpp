@@ -29,12 +29,13 @@
 
 #include "tbe_global.h"
 
+static bool isSimRunning = false;
+
 ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
 					 THESCALE*aWorldPtr->getTheWorldWidth(), THESCALE*aWorldPtr->getTheWorldHeight()),
 	  theWorldPtr(aWorldPtr),
-	  theSimSpeed(1000),
-	  isSimRunning(false)
+	  theSimSpeed(1000)
 {
 	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
 	theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
@@ -60,16 +61,23 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 
 	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
+	isSimRunning = false;
 }
 
 
-qreal ViewWorld::getHeight()
+qreal ViewWorld::getHeight(void) const
 {
 	return THESCALE*theWorldPtr->getTheWorldHeight();
 }
 
 
-qreal ViewWorld::getWidth()
+bool ViewWorld::getIsSimRunning()
+{
+	return isSimRunning;
+}
+
+
+qreal ViewWorld::getWidth(void) const
 {
 	return THESCALE*theWorldPtr->getTheWorldWidth();
 }

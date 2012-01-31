@@ -47,8 +47,11 @@ public:
 	const World* getWorldPtr() const
 	{ return theWorldPtr; }
 
-	qreal getWidth();
-	qreal getHeight();
+	qreal getWidth(void) const;
+	qreal getHeight(void) const;
+
+	/// @returns true if the simulation is not in 'stopped' mode.
+	static bool getIsSimRunning();
 
 	// QGraphicsScene events
 	//
@@ -86,8 +89,6 @@ private:
 	qreal theSimSpeed;
 
 	unsigned int theFramesPerSecond;
-
-	bool isSimRunning;
 
 	QAction* theFrameRateViewPtr;
 

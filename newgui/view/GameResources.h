@@ -83,9 +83,6 @@ private:
     /// pointer to Level instance, which contains level names and such
     Level* theLevelPtr;
 
-    /// pointer to the ViewWorld i.e. the main scene of the game
-    ViewWorld* theViewWorldPtr;
-
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
     ResizingGraphicsView* theParentPtr;
 
