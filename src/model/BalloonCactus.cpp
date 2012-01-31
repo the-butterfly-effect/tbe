@@ -417,7 +417,7 @@ CircularSaw::CircularSaw()
 					 CIRCRADIUS, CIRCMASS, 0.1)
 {
 	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":CustomBall/") +
+		Property::IMAGE_NAME_STRING + QString(":CircularSaw/") +
 		Property::RADIUS_STRING + ":" + QString::number(CIRCRADIUS) + "/" +
 		Property::MASS_STRING +":" + QString::number(CIRCMASS) + "/" );
 }
