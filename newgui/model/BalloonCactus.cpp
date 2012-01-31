@@ -82,6 +82,7 @@ void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 		callbackStepBalloon(aDeltaTime, aTotalTime);
 		break;
 	case POPPING:
+		notifyJoints(JointInterface::DELETED);
 		callbackStepPopping(aDeltaTime, aTotalTime);
 		break;
 	case POPPED:
