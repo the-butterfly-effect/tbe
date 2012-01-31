@@ -34,8 +34,10 @@ public:
 
 	virtual ~Scenery();
 
-	// Public attribute accessor methods
-	//
+	/// Make sure there is no physics body by overriding
+	/// the creational member of AbstractObject.
+	virtual void createPhysicsObject(const Position&)
+	{ };
 
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const
@@ -64,13 +66,16 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	virtual ViewObject* createViewObject();
-
-	/// this member fixes up the physical model based on new width or height
-	/// overridden: no physical model
-	virtual void adjustParameters(void)
-	{ ; }
-
+	/** Creates the ViewObject, finds associated images,
+	  * sets ZValue and returns a pointer to it.
+	  * Overridden to set a default depth of 0.1 so it moves behind everything.
+	  * @param   aDefaultDepth, ZValue depth in view if not set as property,
+	  *          the higher the value the more likely it is drawn on top
+	  * @returns pointer to ViewObject
+	  * @note: a ZValue set in a property always overrides aDefaultDepth
+	  */
+	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1)
+	{ return RectObject::createViewObject(aDefaultDepth); }
 };
 
 #endif // Scenery_H

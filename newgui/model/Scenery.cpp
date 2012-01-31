@@ -38,11 +38,6 @@ static SceneryObjectFactory theFactory;
 
 Scenery::Scenery( ) : RectObject()
 {
-	// Note that Scenery doesn't have a physics representation
-	// it is only graphics
-
-	deletePhysicsObject();
-
 	// only keep DESCRIPTION, IMAGE_NAME and ZVALUE
 	theProps.setDefaultPropertiesString(
 		QString("-")   + Property::BOUNCINESS_STRING  +
@@ -60,13 +55,3 @@ Scenery::~Scenery( )
 	;
 }
 
-
-
-ViewObject*  Scenery::createViewObject(void)
-{
-	AbstractObject::createViewObject();
-	// redo the ZValue: AbstractObject will set it to 2.0 (default for ViewObjects)
-	// if not in Properties, set to 0.1: Scenery draws behind other objects
-	setViewObjectZValue(0.1);
-	return theViewObjectPtr;
-}
