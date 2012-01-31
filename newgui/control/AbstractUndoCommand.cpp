@@ -114,7 +114,7 @@ void AbstractUndoCommand::redo(void)
 
 void AbstractUndoCommand::setDecoratorStateMouseMove(void)
 {
-    if (isViewObjectColliding())
+    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
     else
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::PROXY);
@@ -123,7 +123,7 @@ void AbstractUndoCommand::setDecoratorStateMouseMove(void)
 
 void AbstractUndoCommand::setDecoratorStateUndoRedo(void)
 {
-    if (isViewObjectColliding())
+    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
     else
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::NONE);
