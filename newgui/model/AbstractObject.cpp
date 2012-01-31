@@ -308,8 +308,8 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
 		{
 			// No sim running: adjust object drawing using static position & dimensions
 			theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
-			theViewObjectPtr->setNewImageIndex(getImageIndex());
 		}
+		theViewObjectPtr->setNewImageIndex(getImageIndex());
 		return;
 	}
 
