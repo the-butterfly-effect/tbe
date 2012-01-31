@@ -295,9 +295,7 @@ bool GoalStateChange::checkForSuccess(void)
 		return false;
 
 	// TODO/FIXME: theImageIndex isn't exactly the state, but for now it is...
-//	int myState = theBOPtr->getImageIndex();
-	// TODO/FIXME for newgui, for now, with no state at all:
-	int myState = 0;
+	int myState = theBOPtr->getImageIndex();
 
 	switch(theType)
 	{
