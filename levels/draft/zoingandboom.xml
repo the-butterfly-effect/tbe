@@ -172,7 +172,7 @@
             <object width="2.186" X="1.938" Y="1.904" height="0.100" type="Floor" angle="0.212"/>
             <object width="0.676" X="0.896" Y="1.364" height="0.100" type="Floor" angle="1.571"/>
             <object width="0.430" X="1.573" Y="1.352" height="0.320" type="Dynamite" ID="555-4321" angle="0.000"/>
-            <object width="0.100" X="2.330" Y="1.390" height="0.500" type="DominoRed" angle="0.000">
+            <object width="0.100" X="2.390" Y="1.390" height="0.500" type="DominoRed" angle="0.000">
                 <property key="ImageName">DominoRed</property>
             </object>
             <object width="1.505" X="1.643" Y="1.083" height="0.100" type="Floor" angle="0.000"/>
