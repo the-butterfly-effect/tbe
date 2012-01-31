@@ -107,8 +107,14 @@ bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
 void AbstractUndoCommand::redo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
-    theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
-    setDecoratorStateUndoRedo();
+
+    // in the case of DeleteUndoCommand, we won't have a ViewObject left
+    // when we get here ;-)
+    if (theViewObjPtr)
+    {
+        theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
+        setDecoratorStateUndoRedo();
+    }
 }
 
 
@@ -145,6 +151,8 @@ void AbstractUndoCommand::undo(void)
     // in the case of InsertUndoCommand, we won't have a ViewObject left
     // when we get here ;-)
     if (theViewObjPtr)
+    {
         theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
-    setDecoratorStateUndoRedo();
+        setDecoratorStateUndoRedo();
+    }
 }

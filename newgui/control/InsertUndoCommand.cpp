@@ -62,6 +62,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
                                       (UndoSingleton::createUndoCommand(
                                          myVOPtr,
                                          ActionIcon::ACTION_INSERT));
+    myVOPtr->setVisible(true);
     myInsertPtr->theTBGPtr = anToolboxGroup;
     myInsertPtr->commit();
     return true;
@@ -74,6 +75,12 @@ void InsertUndoCommand::redo(void)
 
     if (theViewObjPtr==NULL)
         theViewObjPtr = createAOandVO(theTBGPtr);
+    else
+    {
+         if (theViewObjPtr->isVisible()==false)
+             theViewObjPtr = createAOandVO(theTBGPtr);
+         theViewObjPtr->setVisible(true);
+    }
     Q_ASSERT(theViewObjPtr!=NULL);
 
     // the ViewObject already exists when we get here,
@@ -94,7 +101,7 @@ void InsertUndoCommand::undo(void)
     // remove from the world and viewworld
     bool myResult = World::getWorldPtr()->removeObject(myAOPtr);
     Q_ASSERT(myResult==true);
-    theViewObjPtr->scene()->removeItem(theViewObjPtr);
+    theViewObjPtr->setVisible(false);
 
     // return to the toolbox
     theTBGPtr->addObject(myAOPtr);

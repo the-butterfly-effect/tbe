@@ -47,7 +47,6 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent)
 		ViewObject* myVOPtr = myAOPtr->createViewObject();
 		thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
 		thePixmapPtr->setTransform(myVOPtr->transform());
-		myAOPtr->deleteViewObject();
 		thePixmapPtr->setParentItem(this);
 
 		setToolTip(myAOPtr->getToolTip());
