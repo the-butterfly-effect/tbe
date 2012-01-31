@@ -147,8 +147,8 @@ void CircleObject::createBallShapeFixture(float aRadius, float aMass)
 	else
 		theB2ObjectType = b2_staticBody;
 
-	setTheWidth(2.0*aRadius);
-	setTheHeight(2.0*aRadius);
+	setTheWidth(2.0*aRadius, false);
+	setTheHeight(2.0*aRadius, false);
 }
 
 

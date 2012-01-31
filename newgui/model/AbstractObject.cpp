@@ -267,18 +267,20 @@ void AbstractObject::setTheB2WorldPtr(b2World* aPtr)
 }
 
 
-void AbstractObject::setTheHeight ( qreal new_var )
+void AbstractObject::setTheHeight ( qreal new_var, bool mustRunParseProperties )
 {
 	if (new_var>AbstractObject::MINIMUM_DIMENSION)
 		theHeight = new_var;
-	parseProperties();
+	if (mustRunParseProperties)
+		parseProperties();
 }
 
-void AbstractObject::setTheWidth ( qreal new_var )
+void AbstractObject::setTheWidth ( qreal new_var, bool mustRunParseProperties )
 {
 	if (new_var>AbstractObject::MINIMUM_DIMENSION)
 		theWidth = new_var;
-	parseProperties();
+	if (mustRunParseProperties)
+		parseProperties();
 }
 
 

@@ -196,8 +196,8 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		);
 
 	setTheBounciness(aBounciness);
-	setTheWidth(aWidth);
-	setTheHeight(aHeight);
+	setTheWidth(aWidth, false);
+	setTheHeight(aHeight, true);
 }
 
 

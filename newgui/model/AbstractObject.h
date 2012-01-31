@@ -302,11 +302,11 @@ public:
 
 	/// Set the value of theHeight
 	/// @param new_var the new value of theHeight
-	virtual void setTheHeight ( qreal new_var );
+	virtual void setTheHeight ( qreal new_var, bool mustRunParseProperties = true );
 
 	/// Set the value of theWidth
 	/// @param new_var the new value of theWidth
-	virtual void setTheWidth ( qreal new_var );
+	virtual void setTheWidth ( qreal new_var, bool mustRunParseProperties = true );
 
 
 	//
