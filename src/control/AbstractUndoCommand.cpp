@@ -26,7 +26,8 @@ AbstractUndoCommand::AbstractUndoCommand(
         const QString& anUndoName,
         QUndoCommand* parent)
     : QUndoCommand(parent),
-      theViewObjPtr(anViewObjectPtr)
+      theViewObjPtr(anViewObjectPtr),
+      handleDecoratorOnDestructionBool(true)
 {
     AbstractObject* myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
 
@@ -43,8 +44,11 @@ AbstractUndoCommand::AbstractUndoCommand(
 AbstractUndoCommand::~AbstractUndoCommand()
 {
     DEBUG1ENTRY;
-    setDecoratorStateUndoRedo();
-    clearDecoratorPointerToMe();
+    if (handleDecoratorOnDestructionBool)
+    {
+        setDecoratorStateUndoRedo();
+        clearDecoratorPointerToMe();
+    }
     UndoSingleton::notifyGone(this);
 }
 

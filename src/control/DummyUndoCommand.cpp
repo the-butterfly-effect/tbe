@@ -24,6 +24,7 @@ DummyUndoCommand::DummyUndoCommand(
     : AbstractUndoCommand(anViewObjectPtr, anUndoName)
 {
     DEBUG3ENTRY;
+    handleDecoratorOnDestructionBool = false;
 }
 
 

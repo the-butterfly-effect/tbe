@@ -93,6 +93,11 @@ protected:
     qreal theOrigHeight;
     qreal theNewHeight;
 
+    /// Set to true in constructor of AbstractUndoCommand.
+    /// Set to false in constructor of DummyUndoCommand.
+    /// Used in destructor of AbstractUndoCommand.
+    bool  handleDecoratorOnDestructionBool;
+
 private:
     QString theProxyImageName;
 
