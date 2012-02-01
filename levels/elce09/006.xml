@@ -4,7 +4,7 @@
         <title>Coconut instead of Cola</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Can you live from just coke? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
+        <description>Can you live from just cola? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
         <description lang="nl">Kun je leven op alleen cola? Dan nemen we er toch een kokosnootje bij! Doel: schiet de kokosnoot uit de boom.</description>
         <date>10/11/09</date>
     </levelinfo>
@@ -12,7 +12,7 @@
         <toolboxitem count="2" name="Cola Crate">
             <name lang="nl">Cola krat</name>
             <object width="0.85" height="0.6" type="RectObject">
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
                 <property key="Mass" >18</property>
                 <property key="Friction" >1</property>
                 <property key="Resizable" >none</property>

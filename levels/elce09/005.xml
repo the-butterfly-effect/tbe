@@ -58,27 +58,27 @@
             <object width="0.85" X="0.425" Y="0.40" height="0.6" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >1</property>
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
             </object>
             <object width="0.85" X="0.445" Y="1.00" height="0.6" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >1</property>
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
             </object>
             <object width="0.85" X="1.3" Y="0.40" height="0.6" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >1</property>
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
             </object>
             <object width="0.85" X="1.3" Y="1.00" height="0.6" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >1</property>
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
             </object>
             <object width="0.85" X="1.32" Y="1.60" height="0.6" type="RectObject" >
                 <property key="Bounciness" >0.1</property>
                 <property key="Friction" >1</property>
-                <property key="ImageName" >coke-crate</property>
+                <property key="ImageName" >cola-crate</property>
             </object>
             <object X="2.8" Y="1.4" type="PostIt">
                 <property key="page1" >Those pins always long for company.</property>
