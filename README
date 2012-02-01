@@ -1,8 +1,8 @@
-Welcome to "The Butterfly Effect", Milestone 9.
+Welcome to "The Butterfly Effect", Milestone A.
 
 This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
-notice several new levels and several new objects!
+notice a shiny new user interface - but the same levels and objects.
 
 You can download the game at its website, 
 go to          http://the-butterfly-effect.org/
@@ -17,27 +17,19 @@ just (double-)click it to enjoy the game.
 There are 40 levels.
 All levels are playable, a few levels may need a bit more polish.
 
-New features & highlights in Milestone 9:
-    * many new and even more repolished levels,
-    * several interesting new objects:
-      - DetonatorBox and Dynamite
-      - QuarterArc
-      - Spring
-    * many many bugfixes and level cheats were resolved
+New features & highlights in Milestone A:
+    * a shiny new GUI, which should also work with touchscreens and touchpads
+    * several animations, making it more into a game
+    * 50 frames per second on some machines
+    * many playability fixes in levels
 
 Why did this release take so long?
-The last three months considerable time has been spent trying to find two GUI 
-bugs that prevent correct operation with modern QT versions. These bugs have
-not been found - we will only release staticly linked builds.
-Milestone A will see a bright and shiny new GUI, requiring at least QT 4.7.
+Rewriting the UI took a lot of time, as it is not an easy thing to do when you are this far into development.
+If you don't believe: ask the KDE and Gnome teams!
 
 The Level Creator
-This is still a new feature of TBE. You can now adapt the existing levels or 
-create your own. Currently the Level Creator is still a bit rough on the edges.
-If you have never worked with CAD applications, it may not be your cup of 
-tea yet - but please try!
-We are writing a manual for the Level Creator in our wiki:
-https://sf.net/apps/trac/tbe/wiki/LevelCreator
+Unfortunately, in order to bring you the new player GUI we've decided to skip the Level Creator for now.
+It will be back soon!
 
 Alternative solutions
 If you feel you found a solution to a level that is not right, please file
@@ -53,19 +45,16 @@ type:
 Of course, for English you use "en" and for spanish "es".
 
 Known bugs and issues:
-  * Some images may have a 'garbage line ' on one or more borders during play.
-    This is harmless but may be confusing. ticket:89
   * The installers do not install into the "start menu", ticket:97
-  * The Level Creator isn't finished, nor really polished yet.
-    The manual of the Level Creator discusses the limitations, 
-    tickets 132, 147, 149, 151, 171, 177, 178 and others.
+  * No Level Creator
 
 
 We thank our beta players for their comments on the playability of the levels.
-Especially: * All attendees at T-Dose 2010, 
+Especially: * All attendees at ELCE 2009 and T-Dose 2010, 
             * Naxxatoe, 
-            * "ankouglio", "doe544", "e6222f5c" and "jillest"
+            * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", "eyerouge", "linuxalien", "pabs3"
             * Margo, Bart, Jelle, Aschwin and Quinten.
+            * Suzanne and Rutger
 
 We would love to hear your thoughts and comments about the game!
 
