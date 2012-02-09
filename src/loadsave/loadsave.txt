@@ -1,0 +1,25 @@
+# This file is included by the CMakeLists.txt file one level higher
+# and contains all source files for this loadsave directory.
+
+
+SET(loadsave_SOURCES 
+    loadsave/AbstractObjectSerializer.cpp 
+    loadsave/BackgroundSerializer.cpp 
+    loadsave/GoalSerializer.cpp 
+    loadsave/Level.cpp 
+    loadsave/LocalString.cpp  
+    loadsave/ObjectFactory.cpp 
+    loadsave/ToolboxGroupSerializer.cpp
+)
+
+SET(loadsave_HEADERS
+    loadsave/AbstractObjectSerializer.h 
+    loadsave/BackgroundSerializer.h 
+    loadsave/GoalSerializer.h 
+    loadsave/Level.h 
+    loadsave/LocalString.h  
+    loadsave/ObjectFactory.h 
+    loadsave/ToolboxGroupSerializer.h
+)
+
+
