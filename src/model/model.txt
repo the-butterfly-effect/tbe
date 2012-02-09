@@ -25,7 +25,7 @@ SET(model_SOURCES
     model/World.cpp
 )
 
-SET(model_SOURCES 
+SET(model_HEADERS
     model/AbstractJoint.h 
     model/AbstractObject.h 
     model/BalloonCactus.h 

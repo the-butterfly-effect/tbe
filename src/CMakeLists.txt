@@ -24,6 +24,7 @@ include_directories(
     model
     view
     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
 )
 
@@ -36,12 +37,13 @@ set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
 
 # all Qt-specifics
 find_package(Qt4 REQUIRED)
-INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
-QT4_WRAP_CPP(tbe_HEADERS_MOC ${tbe_SOURCES})
+#QT4_WRAP_CPP(tbe_HEADERS_MOC ${tbe_SOURCES})
+qt4_automoc(tbe_SOURCES)
 QT4_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
 #QT4_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_USE_QTXML TRUE)
 SET(QT_USE_QTSVG TRUE)
@@ -52,5 +54,6 @@ ADD_EXECUTABLE(tbe
     ${tbe_FORMS_HEADERS}
 )
 
+INCLUDE(${QT_USE_FILE})
 TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES})
 
