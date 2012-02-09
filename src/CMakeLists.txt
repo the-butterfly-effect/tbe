@@ -12,6 +12,7 @@ SET (main_HEADERS
     tbe_global.h
 )
 
+SUBDIRS(box2d)
 INCLUDE(control/control.txt)
 INCLUDE(loadsave/loadsave.txt)
 INCLUDE(model/model.txt)
@@ -55,5 +56,5 @@ ADD_EXECUTABLE(tbe
 )
 
 INCLUDE(${QT_USE_FILE})
-TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES})
+TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} box2d)
 
