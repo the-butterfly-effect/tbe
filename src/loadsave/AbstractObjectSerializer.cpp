@@ -17,7 +17,7 @@
  */
 
 #include "AbstractObjectSerializer.h"
-#include <QDomElement>
+#include <QtXml/QDomElement>
 
 #include <cstdio>
 

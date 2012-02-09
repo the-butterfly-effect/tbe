@@ -1,3 +1,5 @@
+# This file is used by CMake to generate the static box2d library.
+
 SET(box2d_SOURCES 
     b2BlockAllocator.cpp 
     b2Body.cpp 
