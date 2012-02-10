@@ -25,6 +25,6 @@ SET(control_HEADERS
     control/ResizeUndoCommand.h 
     control/RotateUndoCommand.h 
     control/ToolboxGroup.h 
-    control/UndoSingleton.h 
+#    control/UndoSingleton.h 
     control/ViewObjectActionDectorator.h
 )
