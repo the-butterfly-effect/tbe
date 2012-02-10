@@ -1,6 +1,5 @@
 # This is my first attempt to use CMake for TBE...
 
-
 cmake_minimum_required (VERSION 2.8.6)
 project (tbe)
 
@@ -27,6 +26,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
+    .
 )
 
 
@@ -56,3 +56,4 @@ ADD_EXECUTABLE(tbe
 INCLUDE(${QT_USE_FILE})
 TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} box2d)
 
+INSTALL(TARGETS tbe DESTINATION bin)
