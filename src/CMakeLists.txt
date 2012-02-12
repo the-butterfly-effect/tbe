@@ -1,7 +1,10 @@
-# This is my first attempt to use CMake for TBE...
+# Let's use CMake with TBE...
+
+# TODO: strip binary?
+# TODO: add start menu icon to RPM/DEB installers
 
 cmake_minimum_required (VERSION 2.8.6)
-project (tbe)
+project (The_Butterfly_Effect)
 
 SET(main_SOURCES
     backtrace.cpp
@@ -42,6 +45,7 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 QT4_WRAP_CPP(tbe_HEADERS_MOC ${control_HEADERS} ${view_HEADERS} model/World.h loadsave/Level.h)
 QT4_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
+QT4_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_USE_QTXML TRUE)
@@ -51,6 +55,7 @@ ADD_EXECUTABLE(tbe
     ${tbe_SOURCES}
     ${tbe_HEADERS_MOC}
     ${tbe_FORMS_HEADERS}
+    ${tbe_RESOURCES_RCC}
 )
 
 INCLUDE(${QT_USE_FILE})
