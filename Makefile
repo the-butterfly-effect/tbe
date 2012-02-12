@@ -11,7 +11,7 @@ all:
 	cd ${BUILDDIR} && make DESTDIR=.. install
 
 clean:
-	cd ${BUILDDIR} && make
+	cd ${BUILDDIR} && make clean
 
 distclean:
 	rm -rf ${BUILDDIR}
