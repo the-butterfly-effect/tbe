@@ -39,7 +39,7 @@ bool theIsCollisionOn = false;
 
 // this variable defines whether we are showing Box2D debugging info or not
 // switching this option is possible through the theDrawDebugActionPtr in MainWindow
-bool theDrawDebug = true;
+bool theDrawDebug = false;
 
 // this variable defines whether DrawPolyOutline draws the polygons
 // over the image
