@@ -31,6 +31,7 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
 {
     DEBUG1("entry: %s = %p\n", Q_FUNC_INFO, this);
     theAnimation.setTargetObject(this);
+    this->hide();
 }
 
 AnimatedDialog::~AnimatedDialog()

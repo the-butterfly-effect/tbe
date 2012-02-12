@@ -100,17 +100,19 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 }
 
 
-void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName)
+void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
+                                        const QString& aLevelName)
 {
-	DEBUG3("MainWindow::setScene(%p, \"%s\")", aScenePtr, ASCII(aLevelName));
+        DEBUG3("MainWindow::setViewWorld(%p, \"%s\")", aScenePtr,
+               ASCII(aLevelName));
 	theScenePtr=aScenePtr;
 
 	setScene(aScenePtr);
-	fitInView(0, -aScenePtr->getHeight(),
-								aScenePtr->getWidth(), aScenePtr->getHeight());
+        fitInView(0, -aScenePtr->getHeight(),
+                  aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(NULL);
 	emit theSimControlsPtr->showYourself();
-//	parent()->setWindowTitle(APPNAME " - " + aLevelName);
+        theMainWindowPtr->setWindowTitle(APPNAME " - " + aLevelName);
 
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr);
@@ -119,7 +121,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr, const QString& aLe
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
 	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
 
-	QTimer::singleShot(10, theGameResourcesPtr, SLOT(appearAnimated()));
+        QTimer::singleShot(400, theGameResourcesPtr, SLOT(appearAnimated()));
 }
 
 
