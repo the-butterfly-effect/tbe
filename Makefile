@@ -19,3 +19,6 @@ distclean:
 lang:
 	 lupdate -recursive src -ts i18n/tbe_*.ts
 	 lrelease -compress i18n/*.ts 
+
+package:
+	cd ${BUILDDIR} && make package
