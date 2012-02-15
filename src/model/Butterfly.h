@@ -60,12 +60,12 @@ public:
 	};
 
 	/// @returns the state of the butterfly state machine
-	ButterflyStatus getState(void)
+        ButterflyStatus getState(void) const
 	{	return theButterflyState; }
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-	virtual int getImageIndex(void)
+        virtual unsigned int getImageIndex(void) const
 	{ return getState(); }
 
 	/** sets up the Butterfly to fly to a Flower
