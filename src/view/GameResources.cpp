@@ -32,17 +32,16 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
     theParentPtr(aRSGVPtr),
-    theGRDownActionPtr(NULL),
-    theGRUpActionPtr(NULL)
+    theToolboxControls(aRSGVPtr)
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
     ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
     setAutoFillBackground (true);
 
-	connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
-	connect(this, SIGNAL(disappeared()), this, SLOT(slot_window_disappeared()));
-	connect(this, SIGNAL(startedAppear()), this, SLOT(slot_startAppearing()));
+    connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
+    connect(this, SIGNAL(disappeared()), this, SLOT(slot_window_disappeared()));
+    connect(this, SIGNAL(startedAppear()), this, SLOT(slot_startAppearing()));
 }
 
 
@@ -96,6 +95,8 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
     // And move the dialog to the center of the parent
     QSize myParentSize = theParentPtr->size();
     this->move( (myParentSize.width()-width())/2, (myParentSize.height()-height())/2);
+
+    theToolboxControls.parentResize(myParentSize);
 }
 
 
@@ -110,19 +111,16 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
 
-	theToolboxPtr = new QGraphicsScene(NULL);
-	theToolboxPtr->setBackgroundBrush(Qt::blue);
-	ui->theToolView->setScene(theToolboxPtr);
+    theToolboxPtr = new QGraphicsScene(NULL);
+    theToolboxPtr->setBackgroundBrush(Qt::blue);
+    ui->theToolView->setScene(theToolboxPtr);
 }
 
 
-void GameResources::setup(QMenuBar* aMenuBarPtr)
+void GameResources::setup(QMenuBar*)
 {
-	theGRDownActionPtr = aMenuBarPtr->addAction(tr("&Down"));
-	theGRUpActionPtr   = aMenuBarPtr->addAction(tr("&Up"));
-	connect(theGRDownActionPtr, SIGNAL(triggered()), this, SLOT(appearAnimated()));
-	connect(theGRUpActionPtr, SIGNAL(triggered()), this, SLOT(disappearAnimated()));
-	slot_window_disappeared();
+    theToolboxControls.setup(this);
+    slot_window_disappeared();
 }
 
 
@@ -151,13 +149,11 @@ void GameResources::slot_startAppearing()
 
 void GameResources::slot_window_appeared()
 {
-	theGRDownActionPtr->setEnabled(false);
-	theGRUpActionPtr->setEnabled(true);
+        theToolboxControls.setUpEnabled();
 }
 
 
 void GameResources::slot_window_disappeared()
 {
-	theGRDownActionPtr->setEnabled(true);
-	theGRUpActionPtr->setEnabled(false);
+        theToolboxControls.setDownEnabled();
 }

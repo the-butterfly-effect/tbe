@@ -28,7 +28,7 @@ class Level;
 #include "LocalString.h"
 class QAction;
 class ViewWorld;
-
+#include "ToolboxUpDownControls.h"
 
 /// This class holds the toolbox, the game info and (in the future)
 /// the button for hints. It is displayed when you click on the appropriate
@@ -86,8 +86,7 @@ private:
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
     ResizingGraphicsView* theParentPtr;
 
-	QAction* theGRDownActionPtr;
-	QAction* theGRUpActionPtr;
+    ToolboxUpDownControls theToolboxControls;
 };
 
 #endif // GAMERESOURCES_H

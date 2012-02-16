@@ -13,6 +13,7 @@ SET(view_SOURCES
 	view/PieMenu.cpp 
 	view/resizinggraphicsview.cpp 
 	view/SimulationControls.cpp 
+	view/ToolboxUpDownControls.cpp
 	view/ViewObject.cpp 
 	view/ViewDetonatorBox.cpp 
 	view/ViewPostIt.cpp 
@@ -34,6 +35,7 @@ SET(view_HEADERS
 	view/PieMenu.h 
 	view/resizinggraphicsview.h 
 	view/SimulationControls.h 
+	view/ToolboxUpDownControls.h
 	view/ViewDetonatorBox.h 
 	view/ViewObject.h 
 	view/ViewPostIt.h 
@@ -49,6 +51,7 @@ SET(view_UIFORMS
 	view/GoalEditor.ui 
 	view/MainWindow.ui 
 	view/SimulationControls.ui 
+	view/ToolboxUpDownControls.ui
 	view/ViewPostIt.ui 
 	view/WinFailDialog.ui
 )
