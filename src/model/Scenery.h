@@ -27,7 +27,7 @@
  *
  *  Scenerys do not have a body or shape in simulation
  */
-class Scenery : public RectObject
+class Scenery : public AbstractObject
 {
 public:
 	Scenery();
@@ -75,7 +75,7 @@ public:
 	  * @note: a ZValue set in a property always overrides aDefaultDepth
 	  */
 	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1)
-	{ return RectObject::createViewObject(aDefaultDepth); }
+	{ return AbstractObject::createViewObject(aDefaultDepth); }
 };
 
 #endif // Scenery_H

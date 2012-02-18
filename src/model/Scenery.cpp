@@ -36,7 +36,7 @@ static SceneryObjectFactory theFactory;
 
 
 
-Scenery::Scenery( ) : RectObject()
+Scenery::Scenery( ) : AbstractObject()
 {
 	// only keep DESCRIPTION, IMAGE_NAME and ZVALUE
 	theProps.setDefaultPropertiesString(
