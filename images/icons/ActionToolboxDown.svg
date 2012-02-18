@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.48.2 r9819"
    version="1.0"
-   sodipodi:docname="ActionToolboxUp.svg"
+   sodipodi:docname="ActionToolboxDown.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
@@ -406,7 +406,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="18.485555"
-     inkscape:cx="17.716536"
+     inkscape:cx="10.224199"
      inkscape:cy="17.716536"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -425,7 +425,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -443,13 +443,8 @@
        rx="2.8772519"
        ry="0" />
     <path
-       style="fill:#000080;fill-opacity:1;fill-rule:evenodd;stroke:none"
-       d="m 22.132099,11.357855 -8.768963,0.01878 c -2.077861,-0.01327 -2.44369,1.723463 -3.297892,2.998825 -0.829236,0.0063 -1.0008032,-0.0062 -1.8300429,0 l 0,1.804934 L 0,16.152215 l 0,5.443008 8.8452159,0 0,-2.406581 3.0500741,0 0,2.406581 12.200293,0 0,-2.406581 3.050069,0 0,2.406581 8.2352,0 0,-5.414806 -7.625181,0 0,-1.804939 -2.44005,0 c -0.598679,-1.291473 -1.830066,-3.012093 -3.183522,-3.017625 z m -8.111288,1.99295 7.41549,0.07521 1.963483,1.673324 -11.304335,0.01878 1.925362,-1.767332 z m 10.703855,6.420678 c -0.01445,0 -0.02856,0.01397 -0.02856,0.02818 l 0,4.775558 c 0,0.01426 0.01415,0.02818 0.02856,0.02818 l 1.782378,0 c 0.01445,0 0.02857,-0.01392 0.02857,-0.02818 l 0,-4.775558 c 0,-0.01425 -0.01416,-0.02818 -0.02857,-0.02818 l -1.782378,0 z m -15.2694373,0.01882 0,4.81316 1.8300463,0 0,-4.81316 -1.8300463,0 z m -8.54020445,3.008223 0,12.634545 33.85582075,0 0,-12.634545 -7.625193,0 0,2.406581 -3.050069,0 0,-2.406581 -12.200293,0 0,2.406581 -3.0500741,0 0,-2.406581 -7.93019165,0 z"
-       id="rect3007"
-       inkscape:connector-curvature="0" />
-    <path
        style="fill:#ff0000;fill-opacity:0.59919027;stroke:none"
-       d="m 33.661417,0.47334287 -31.8897638,0 L 17.716535,34.959728 33.661417,0.47334287 z"
+       d="M 19.371716,2.3951372 2.0907208,19.607717 34.664733,34.877217 19.371716,2.3951372 z"
        id="path2383"
        sodipodi:nodetypes="cccc"
        inkscape:connector-curvature="0" />
