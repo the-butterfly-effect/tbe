@@ -30,8 +30,11 @@ ToolboxUpDownControls::ToolboxUpDownControls(ResizingGraphicsView *aParent) :
     ui->setupUi(this);
 
     QPixmap myPixmap;
-    ImageCache::getPixmap("ToolboxUpDownBackground", size(), &myPixmap);
+    ImageCache::getPixmap("ToolboxBackground", size(), &myPixmap);
     this->setPixmap(myPixmap);
+
+    ui->toolButton->setAutoFillBackground(false);
+    ui->toolButton->setBackgroundRole(QPalette::NoRole);
 
     theDownActionPtr = new QAction(ImageCache::getQIcon("ActionToolboxDown", QSize(32,32)), "&Down", this);
     theUpActionPtr   = new QAction(ImageCache::getQIcon("ActionToolboxUp",   QSize(32,32)), "&Up", this);
@@ -47,7 +50,7 @@ ToolboxUpDownControls::~ToolboxUpDownControls()
 void ToolboxUpDownControls::parentResize(const QSize& aSize)
 {
     // make sure we stay in the top-middle of the view
-    move( (aSize.width()-size().width())/2, 0);
+    move( aSize.width()-size().width(), aSize.height()-size().height());
 }
 
 void ToolboxUpDownControls::setDownEnabled()
@@ -62,7 +65,7 @@ void ToolboxUpDownControls::setUpEnabled()
 
 void ToolboxUpDownControls::setup(GameResources* anGRPtr)
 {
-    connect(theDownActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(appearAnimated()));
-    connect(theUpActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(disappearAnimated()));
-    setUpEnabled();
+    connect(theDownActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(disappearAnimated()));
+    connect(theUpActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(appearAnimated()));
+    setDownEnabled();
 }

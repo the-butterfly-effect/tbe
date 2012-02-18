@@ -23,11 +23,13 @@
 AnimatedDialog* AnimatedDialog::theCurrentlyViewedAnimatedDialog = NULL;
 static QMutex theAnimatedDialogMutex;
 
-AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr) :
+AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr,
+                               AppearanceDirection anAppearDirection) :
     QWidget(aParentPtr),
     theOurParentPtr(aParentPtr),
     theAnimation(NULL, "geometry"),
-    theIsToBeDeleted(false)
+    theIsToBeDeleted(false),
+    theAppearanceDirection(anAppearDirection)
 {
     DEBUG1("entry: %s = %p\n", Q_FUNC_INFO, this);
     theAnimation.setTargetObject(this);
@@ -63,14 +65,11 @@ void AnimatedDialog::appearAnimated()
 	}
 	else
 	{
-		theAnimation.setStartValue(QRectF(
-										  QPointF((theOurParentPtr->width() - width())/2,
-												  -height()), size()));
+		theAnimation.setStartValue(
+					QRectF(getOutsidePoint(theAppearanceDirection), size()));
 	}
-	theAnimation.setEndValue(QRectF(
-									QPointF((theOurParentPtr->width()  - width())/2,
-											(theOurParentPtr->height() - height())/2),
-									size()));
+	theAnimation.setEndValue(
+				QRectF(getOutsidePoint(MIDPOINT), size()));
 	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutBounce);
 	theAnimation.start();
@@ -98,14 +97,11 @@ void AnimatedDialog::disappearAnimated()
 	}
 	else
 	{
-		theAnimation.setStartValue(QRectF(
-									   QPointF((theOurParentPtr->width()  - width())/2,
-											   (theOurParentPtr->height() - height())/2),
-									   size()));
+		theAnimation.setStartValue(
+					QRectF(getOutsidePoint(MIDPOINT), size()));
 	}
-	theAnimation.setEndValue(QRectF(
-								 QPointF((theOurParentPtr->width() - width())/2,
-										 -height()), size()));
+	theAnimation.setEndValue(
+				QRectF(getOutsidePoint(theAppearanceDirection), size()));
 	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutQuad);
 	theAnimation.start();
@@ -113,6 +109,26 @@ void AnimatedDialog::disappearAnimated()
 	connect(   &theAnimation, SIGNAL(finished()), this, SLOT(slot_handleDisappeared()));
 }
 
+
+QPointF AnimatedDialog::getOutsidePoint(AnimatedDialog::AppearanceDirection anAppearDirection) const
+{
+	switch(anAppearDirection)
+	{
+	case MIDPOINT:
+		return QPointF((theOurParentPtr->width()  - width())/2,
+					   (theOurParentPtr->height() - height())/2);
+		break;
+	case FROM_TOP:
+		return QPointF((theOurParentPtr->width() - width())/2,
+					   -height());
+		break;
+	case FROM_BOTTOMRIGHT:
+		return QPointF(theOurParentPtr->width() + width()/2,
+					   theOurParentPtr->height()+height());
+		break;
+	}
+	return QPointF(0,0);
+}
 
 
 void AnimatedDialog::slot_handleAppeared()

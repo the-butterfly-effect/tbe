@@ -31,7 +31,18 @@ class AnimatedDialog : public QWidget
 {
     Q_OBJECT
 public:
-    explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = NULL);
+    enum AppearanceDirection
+    {
+        FROM_TOP,
+        FROM_BOTTOMRIGHT,
+        MIDPOINT
+    };
+
+    /// Constructor.
+    /// @param anAppearDirection Defines where the origin of the inflying
+    ///                          dialog is.
+    explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = NULL,
+                            AppearanceDirection anAppearDirection=FROM_TOP);
     ~AnimatedDialog();
 
     /// set the dialog to delete itself upon disappearance is complete
@@ -80,6 +91,10 @@ private slots:
     void slot_handleDisappeared(void);
 
 private:
+    /// Returns the top-left point of the dialog as a starting point for the
+    /// appearance animation (which is also the end point of the disappear).
+    QPointF getOutsidePoint(AppearanceDirection anAppearDirection) const;
+
     /// Private pointer to our parent - which should at least be a QWidget
     /// but preferable a resizinggraphicsview...
     ResizingGraphicsView* theOurParentPtr;
@@ -89,6 +104,9 @@ private:
 
     /// static pointer to currently visible
     static AnimatedDialog* theCurrentlyViewedAnimatedDialog;
+
+    /// Where does the dialog fly in from / fly out to
+    AppearanceDirection theAppearanceDirection;
 };
 
 #endif // ANIMATEDDIALOG_H

@@ -28,7 +28,7 @@
 #include "ViewToolboxGroup.h"
 
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
-    AnimatedDialog(aRSGVPtr),
+    AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
     theParentPtr(aRSGVPtr),
@@ -37,6 +37,7 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     DEBUG1ENTRY;
     ui->setupUi(this);
     ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
+    ui->theOKButton->setIcon(ImageCache::getQIcon("ActionToolboxDown",   QSize(32,32)));
     setAutoFillBackground (true);
 
     connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
@@ -149,11 +150,11 @@ void GameResources::slot_startAppearing()
 
 void GameResources::slot_window_appeared()
 {
-        theToolboxControls.setUpEnabled();
+		theToolboxControls.setDownEnabled();
 }
 
 
 void GameResources::slot_window_disappeared()
 {
-        theToolboxControls.setDownEnabled();
+		theToolboxControls.setUpEnabled();
 }
