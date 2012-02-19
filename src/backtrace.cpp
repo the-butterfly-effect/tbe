@@ -16,14 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+
+#if defined(Q_WS_X11) && !defined(NDEBUG)
+
 #include <execinfo.h>
 #include <csignal>
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
 #include <cxxabi.h>
-
-#if !defined(NDEBUG)
 
 /** Print a demangled stack backtrace of the caller function.
   *
@@ -134,4 +135,10 @@ void setupBacktrace(void)
 	sigaction(SIGSEGV, &sa, NULL);
 }
 
-#endif // !defined NDEBUG
+#else
+void setupBacktrace(void)
+{
+    ; // nothing to do here :-)
+}
+
+#endif // defined Q_WS_X11 && !defined NDEBUG
