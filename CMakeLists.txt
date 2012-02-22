@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 2.8.6)
 #project (The Butterfly Effect)
 
+
+
 add_subdirectory(src)
 
 install(DIRECTORY levels 
@@ -27,6 +29,10 @@ install(DIRECTORY i18n
 	PATTERN ".svn" EXCLUDE
 )
 
+install(FILES COPYING README AUTHORS
+	DESTINATION .
+)
+
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Butterfly Effect is a computer physics puzzle game.")
 SET(CPACK_PACKAGE_NAME "TheButterflyEffect")
 SET(CPACK_PACKAGE_VENDOR "www.the-butterfly-effect.org")
@@ -36,7 +42,7 @@ SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README")
 SET(CPACK_PACKAGE_VERSION_MAJOR "milestone")
 SET(CPACK_PACKAGE_VERSION_MINOR "MA")
 SET(CPACK_PACKAGE_VERSION_PATCH "rc1")
-SET(CPACK_PACKAGE_INSTALL_DIRECTORY "TBE-${CMake_VERSION_MAJOR}-${CMake_VERSION_MINOR}")
+#SET(CPACK_PACKAGE_INSTALL_DIRECTORY "TBE-${CPACK_PACKAGE_VERSION_MAJOR}-${CPACK_PACKAGE_VERSION_MINOR}")
 
 set(CPACK_SOURCE_GENERATOR TGZ)
 set(CPACK_SOURCE_IGNORE_FILES /.svn/;*~;/build/;usr)
@@ -46,13 +52,16 @@ IF(WIN32 AND NOT UNIX)
  # There is a bug in NSI that does not handle full unix paths properly. Make
  # sure there is at least one set of four (4) backslashes.
  SET(CPACK_GENERATOR "NSIS")
- SET(CPACK_PACKAGE_ICON "${CMake_SOURCE_DIR}/Utilities/Release\\\\InstallIcon.bmp")
- SET(CPACK_NSIS_INSTALLED_ICON_NAME "tbe.exe")
+ SET(CPACK_PACKAGE_INSTALL_DIRECTORY "TheButterflyEffect")
+ SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/images/illustrations\\\\installer-top-icon.bmp")
+ SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}\\\\COPYING")
+ SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}\\\\README")
+ SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\tbe.exe")
  SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The Butterfly Effect")
  SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_CONTACT "info@the-butterfly-effect.org")
- SET(CPACK_NSIS_MODIFY_PATH ON)
+ SET(CPACK_NSIS_MODIFY_PATH OFF)
 ELSE(WIN32 AND NOT UNIX)
  # for UNIX (including Linux)
  SET(CPACK_GENERATOR "STGZ" "DEB" "TGZ" "RPM")
