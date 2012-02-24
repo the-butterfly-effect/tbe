@@ -1,0 +1,12 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/DetonatorBoxActivated.svg
+        ${SRCDIRNAME}/DetonatorBoxDone.svg
+        ${SRCDIRNAME}/DetonatorBoxRinging.svg
+        ${SRCDIRNAME}/DetonatorBoxHandle.svg
+        ${SRCDIRNAME}/Dynamite.svg
+        ${SRCDIRNAME}/DynamiteActive.svg
+        ${SRCDIRNAME}/DynamiteRinging.svg
+        ${SRCDIRNAME}/DynamiteBoom.svg
+        DESTINATION images
+)

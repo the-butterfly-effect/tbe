@@ -1,0 +1,6 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/LeftRamp.svg
+        ${SRCDIRNAME}/RightRamp.svg
+        DESTINATION images
+)

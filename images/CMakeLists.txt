@@ -17,3 +17,9 @@ foreach(f ${READMEfiles})
    set(READMEtotal ${READMEtotal} "******* " ${f} " ******\n" ${READMEf} "\n")
 endforeach(f)
 file(WRITE README.image.origins.txt ${READMEtotal})
+
+include("src/CMakeLists.txt")
+#include("illustrations/illustrations.txt")
+include("icons/CMakeLists.txt")
+include("textures/CMakeLists.txt")
+

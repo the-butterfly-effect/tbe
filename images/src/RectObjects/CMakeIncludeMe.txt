@@ -1,0 +1,11 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/basket.svg
+        ${SRCDIRNAME}/brass-pin.svg
+        ${SRCDIRNAME}/cola-crate.svg
+        ${SRCDIRNAME}/goal-scenery.svg
+        ${SRCDIRNAME}/i-beam.svg
+        ${SRCDIRNAME}/Anonymous_daffodil.klaas.svg
+        ${SRCDIRNAME}/spring20.svg
+        DESTINATION images
+)

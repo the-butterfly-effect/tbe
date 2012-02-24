@@ -1,0 +1,10 @@
+# this file is meant to be included by the parent CMakeFiles.txt
+install(FILES
+	${SRCDIRNAME}/Balloon.svg
+	${SRCDIRNAME}/BalloonPoof.svg
+	${SRCDIRNAME}/BalloonRest.svg
+	${SRCDIRNAME}/BedOfNails.svg
+	${SRCDIRNAME}/Cactus.svg
+	${SRCDIRNAME}/CircularSaw.svg
+        DESTINATION images
+)

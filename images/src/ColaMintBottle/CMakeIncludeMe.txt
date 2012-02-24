@@ -1,0 +1,9 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/ColaBottleBlowing.svg
+        ${SRCDIRNAME}/ColaBottleEmpty.svg
+        ${SRCDIRNAME}/ColaBottleFoaming.svg
+        ${SRCDIRNAME}/ColaBottleNormal.svg
+        ${SRCDIRNAME}/ColaSplatter.svg
+        DESTINATION images
+)

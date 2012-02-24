@@ -1,0 +1,7 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/ButterflyHalfOpen.svg
+        ${SRCDIRNAME}/ButterflyOpen.svg
+        ${SRCDIRNAME}/ButterflyStill.svg
+        DESTINATION images
+)

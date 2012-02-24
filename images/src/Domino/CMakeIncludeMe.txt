@@ -1,0 +1,7 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/DominoRed.svg
+        ${SRCDIRNAME}/DominoGreen.svg
+        ${SRCDIRNAME}/DominoBlue.svg
+        DESTINATION images
+)

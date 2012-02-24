@@ -1,0 +1,8 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/TennisBall.png 
+	${SRCDIRNAME}/VolleyBall.svg 
+	${SRCDIRNAME}/SoccerBall.png 
+	${SRCDIRNAME}/PetanqueBoule.svg
+        DESTINATION images
+)

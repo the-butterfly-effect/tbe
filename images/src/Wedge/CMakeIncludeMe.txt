@@ -1,0 +1,8 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/birch-wedge-left.png
+        ${SRCDIRNAME}/birch-wedge-right.png
+        ${SRCDIRNAME}/styrofoam-left.png
+        ${SRCDIRNAME}/styrofoam-right.png
+        DESTINATION images
+)

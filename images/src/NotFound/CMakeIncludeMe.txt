@@ -1,0 +1,12 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/BigCross.svg
+        ${SRCDIRNAME}/CustomBall.svg
+        ${SRCDIRNAME}/NotFound.svg
+        ${SRCDIRNAME}/NotFound.png
+        ${SRCDIRNAME}/PolyObject.svg
+        ${SRCDIRNAME}/RectObject.svg
+        ${SRCDIRNAME}/Scenery.svg
+        ${SRCDIRNAME}/Empty.svg
+        DESTINATION images
+)
