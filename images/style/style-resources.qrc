@@ -3,5 +3,6 @@
         <file>button.png</file>
         <file>WinFail.png</file>
         <file>transparant.png</file>
+        <file>tbe-icon.ico</file>
     </qresource>
 </RCC>
