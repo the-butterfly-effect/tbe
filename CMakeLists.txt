@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8.6)
 #project (The Butterfly Effect)
 
 
-
+add_subdirectory(images)
 add_subdirectory(src)
 
 install(DIRECTORY levels 
@@ -49,6 +49,7 @@ set(CPACK_SOURCE_IGNORE_FILES /.svn/;*~;/build/;usr)
 SET(CPACK_SOURCE_STRIP_FILES "")
 
 IF(WIN32 AND NOT UNIX)
+ #TARGET_LINK_LIBRARIES(${PROGNAME} ${QT_LIBRARIES})
  # There is a bug in NSI that does not handle full unix paths properly. Make
  # sure there is at least one set of four (4) backslashes.
  SET(CPACK_GENERATOR "NSIS")
@@ -57,11 +58,12 @@ IF(WIN32 AND NOT UNIX)
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}\\\\COPYING")
  SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}\\\\README")
  SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\tbe.exe")
- SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The Butterfly Effect")
+ SET(CPACK_NSIS_DISPLAY_NAME "The Butterfly Effect")
  SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_NSIS_MODIFY_PATH OFF)
+ SET(CPACK_NSIS_MUI_FINISHPAGE_RUN "tbe.exe")
 ELSE(WIN32 AND NOT UNIX)
  # for UNIX (including Linux)
  SET(CPACK_GENERATOR "STGZ" "DEB" "TGZ" "RPM")
