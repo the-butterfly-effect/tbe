@@ -4,28 +4,11 @@ cmake_minimum_required (VERSION 2.8.6)
 
 add_subdirectory(images)
 add_subdirectory(src)
+add_subdirectory(i18n)
+
 
 install(DIRECTORY levels 
 	DESTINATION .
-	PATTERN ".svn" EXCLUDE
-)
-
-install(DIRECTORY images 
-	DESTINATION .
-	FILES_MATCHING PATTERN "*.jpg"
-	PATTERN "*.png"
-	PATTERN "*.svg"
-	PATTERN ".svn" EXCLUDE
-	PATTERN "src" EXCLUDE
-	PATTERN "textures" EXCLUDE
-	PATTERN "icons" EXCLUDE
-	PATTERN "illustrations" EXCLUDE
-	PATTERN "style" EXCLUDE
-	)
-
-install(DIRECTORY i18n
-	DESTINATION .
-	FILES_MATCHING PATTERN "*.qm"
 	PATTERN ".svn" EXCLUDE
 )
 
