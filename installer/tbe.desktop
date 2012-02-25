@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=The Butterfly Effect
+Comment=Physics Puzzle Game
+Exec=/opt/TheButterflyEffect/bin/tbe
+Icon=/opt/TheButterflyEffect/TheButterflyEffect.png
+Terminal=0
+Type=Application
+Encoding=UTF-8
+Categories=Game
