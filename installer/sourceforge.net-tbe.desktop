@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=The Butterfly Effect
 Comment=Physics Puzzle Game
-Exec=%TBE%/tbe
-Icon=%TBE%/TheButterflyEffect.png
+Exec=%TBE%/bin/tbe
+Icon=%TBE%/images/TheButterflyEffect-icon.png
 Terminal=0
 Type=Application
 Encoding=UTF-8

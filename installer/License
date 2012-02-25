@@ -1,0 +1,17 @@
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+The Butterfly Effect Physics Puzzle Game, (C) 2009-2012 TBE Team.
+
+The source code is released under the GNU GPL version 2 only.
+The image and level files may have other licenses - often more liberal than the
+source code, e.g. PD, MIT or BSD. See the corresponding README files.
+
+
+If you answer yes twice, this self-extracting installer will install into a
+subdirectory of the current working directory. If you want to add icons to
+your start menu, please run the 'install_icons.sh' script.
+
+Enjoy the game!
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

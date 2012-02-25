@@ -3,8 +3,10 @@
 # find the directory this script resides in - should be
 # the same location the .desktop file and the .png file are
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-sed -i 's"%TBE%"$DIR"g' sf-tbe.desktop
+ICON=sourceforge.net-tbe.desktop
+sed -i "s:%TBE%:$DIR:g" $DIR/$ICON
 
 # and let's install a menu item and a desktop item
-xdg-desktop-menu install $DIR/sourceforge.net-tbe.desktop
-xdg-desktop-icon install $DIR/sourceforge.net-tbe.desktop
+echo "installing icons in Start Menu and Desktop..."
+xdg-desktop-menu install $DIR/$ICON
+xdg-desktop-icon install $DIR/$ICON
