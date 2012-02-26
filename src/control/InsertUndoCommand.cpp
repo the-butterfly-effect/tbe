@@ -101,6 +101,8 @@ void InsertUndoCommand::undo(void)
     // remove from the world and viewworld
     bool myResult = World::getWorldPtr()->removeObject(myAOPtr);
     Q_ASSERT(myResult==true);
+    /* and remove compiler warning: */ (void)myResult;
+
     theViewObjPtr->setVisible(false);
 
     // return to the toolbox
