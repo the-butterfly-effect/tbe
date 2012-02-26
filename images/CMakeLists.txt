@@ -4,7 +4,7 @@
 #  * concatenate all README files to a single file that contains info 
 #    on all files in the images directory
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.6)
 
 set(READMEtotal "This file lists the orgins of all files in this directory.\n" 
   "It is generated during build from all READMEs in various directories.\n"
@@ -17,6 +17,9 @@ foreach(f ${READMEfiles})
    set(READMEtotal ${READMEtotal} "******* " ${f} " ******\n" ${READMEf} "\n")
 endforeach(f)
 file(WRITE README.image.origins.txt ${READMEtotal})
+install(FILES README.image.origins.txt
+	DESTINATION images
+)
 
 include("src/CMakeLists.txt")
 #include("illustrations/illustrations.txt")
