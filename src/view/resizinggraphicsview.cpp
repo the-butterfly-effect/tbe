@@ -174,7 +174,7 @@ void ResizingGraphicsView::slot_levelDeath(void)
 
 void ResizingGraphicsView::slot_levelWon(void)
 {
-	// only need to display the dialog once...
+	// Only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;
 
@@ -186,12 +186,9 @@ void ResizingGraphicsView::slot_levelWon(void)
     }
 
     theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
-
-	// FIXME/TODO: must emit 'won' to simcontrols
-	// also need to update simcontrols for this!
 	emit theSimControlsPtr->hideYourself();
 	emit theWinFailDialogPtr->appearAnimated();
 
-	// also make the sim stop once the above animation is (almost) done...
+	// Make the sim stop once the above animation is (almost) done...
 	QTimer::singleShot(1300, theScenePtr, SLOT(slot_signalPause()));
 }
