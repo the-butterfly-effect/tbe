@@ -76,13 +76,6 @@ public:
 protected:
     void adjustObjectDrawing(void);
 
-    /// load an image (SVG/PNG/JPG) into a qpixmap and
-    /// attach it to this object
-    /// @param anImageName name of the image to load (without path or extension)
-    /// @returns true if loading was successful
-    /// @note if not successful, display a placeholder image
-    bool loadImage(const QString& anImageName);
-
     /// overridden to allow detection of mouse button presses
     virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
     /// overridden to allow object highlighting
