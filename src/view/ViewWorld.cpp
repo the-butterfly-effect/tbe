@@ -145,6 +145,7 @@ void ViewWorld::slot_signalPlay()
 {
 	// remove any dialogs when user starts playing
 	AnimatedDialog::makeAllAnimatedDialogsDisappear();
+	PieMenuSingleton::clearPieMenu();
 
 	if (isSimRunning==false)
 		theWorldPtr->createPhysicsWorld();
