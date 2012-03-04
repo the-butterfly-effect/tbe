@@ -155,6 +155,7 @@ void ResizingGraphicsView::slot_actionReplay()
 {
 	DEBUG3ENTRY;
 	emit theScenePtr->slot_signalReset();
+	emit theSimControlsPtr->onReset();
 	emit theSimControlsPtr->showYourself();
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
