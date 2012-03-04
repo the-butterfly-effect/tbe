@@ -203,7 +203,6 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			myErrorMessage += myExtraError;
 			goto not_good;
 		}
-		printf("inserting %s into ToolboxList.\n", ASCII(myTbGPtr->theGroupName.result()));
 		theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
 	}
 
