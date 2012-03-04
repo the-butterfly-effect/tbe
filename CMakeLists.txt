@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8.6)
 #project (The Butterfly Effect)
 
 
-add_subdirectory(images)
+add_subdirectory(img)
 add_subdirectory(src)
 add_subdirectory(i18n)
 
@@ -34,7 +34,7 @@ IF(WIN32 AND NOT UNIX)
  # sure there is at least one set of four (4) backslashes.
  SET(CPACK_GENERATOR "NSIS")
  SET(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
- SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/images/illustrations\\\\installer-top-icon.bmp")
+ SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/img/illustrations\\\\installer-top-icon.bmp")
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}\\\\COPYING")
  SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}\\\\README")
  SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\tbe.exe")
@@ -49,7 +49,7 @@ ENDIF(WIN32 AND NOT UNIX)
 if (UNIX)
  SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_STRIP_FILES "tbe")
- install(FILES images/illustrations/tbe-icon.png DESTINATION images RENAME TheButterflyEffect-icon.png)
+ install(FILES img/illustrations/tbe-icon.png DESTINATION images RENAME TheButterflyEffect-icon.png)
  install(FILES installer/install_icons.sh DESTINATION . 
          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  install(FILES installer/uninstall_icons.sh DESTINATION . 

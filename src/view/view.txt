@@ -57,7 +57,7 @@ SET(view_UIFORMS
 )
 
 SET(view_RESOURCES
-    ../images/style/style-resources.qrc
+    ../img/style/style-resources.qrc
 )
 
 
