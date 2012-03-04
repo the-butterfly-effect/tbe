@@ -19,7 +19,7 @@
 #ifndef PIEMENU_H
 #define PIEMENU_H
 
-#include <QtSvg/QGraphicsSvgItem>
+#include <QtGui/QGraphicsItem>
 #include <QtGui/QGraphicsWidget>
 #include <QtCore/QStateMachine>
 #include <QtGui/QGraphicsEffect>
@@ -54,7 +54,7 @@ private:
 /** this class handles the icon, its movement and its actions as part of
   * the pie menu mechanism
   */
-class ActionIcon : public QGraphicsSvgItem
+class ActionIcon : public QObject, QGraphicsPixmapItem
 {
 	Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)

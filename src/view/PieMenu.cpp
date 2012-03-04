@@ -22,6 +22,7 @@
 #include <QtCore/QPropertyAnimation>
 
 #include "AbstractObject.h"
+#include "ImageCache.h"
 #include "PieMenu.h"
 #include "TriggerExplosion.h"   // for DetonatorBox*
 #include "UndoSingleton.h"
@@ -63,11 +64,15 @@ ActionIcon::ActionIcon(ActionType anActionType,
                        const QString & aFileName,
                        bool isEnabled,
                        QGraphicsWidget* aParentPtr)
-    : QGraphicsSvgItem(aFileName, aParentPtr),
+    : QGraphicsPixmapItem(aFileName, aParentPtr),
       theActionType(anActionType)
 {
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
+
+	QPixmap myTempPixmap;
+	ImageCache::getPixmap(aFileName, &myTempPixmap);
+	setPixmap(myTempPixmap);
 
 	// we want to scale ourselfs so we are 2/3 of myRadius as width
 	// (or height - square!) that allows the centerpiece to be twice
@@ -183,22 +188,22 @@ void PieMenu::setup()
 				   (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
 				   || theIsLevelEditor;
 	new ActionIcon(ActionIcon::ACTION_RESIZE,
-								"images/ActionResize.svg", myBool, this);
+								"ActionResize", myBool, this);
 
 	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
-								"images/ActionRotate.svg", myBool, this);
+								"ActionRotate", myBool, this);
 
 	myBool = (theAOPtr->isMovable());
 	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
-								"images/ActionMove.svg", myBool, this);
+								"ActionMove", myBool, this);
 
 	new ActionIcon(ActionIcon::ACTION_DELETE,
-				   "images/ActionDelete.svg", myBool, this);
+				   "ActionDelete", myBool, this);
 
 
 	new ActionIcon(ActionIcon::ACTION_SETPHONE,
-				   "images/ActionSetNumber.svg",
+				   "ActionSetNumber",
 				   dynamic_cast<DetonatorBox*>(theAOPtr)!=NULL, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 

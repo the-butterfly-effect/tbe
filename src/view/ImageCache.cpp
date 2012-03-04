@@ -49,6 +49,10 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	// prefix size to pixmapname for cache
 
 
+	// only names, no paths, no extensions
+	Q_ASSERT(anImageBaseName.contains(".")==false);
+	Q_ASSERT(anImageBaseName.contains("/")==false);
+
 	// is the image present in the cache?
 	if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
 	{
