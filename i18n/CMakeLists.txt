@@ -11,6 +11,7 @@ set(TSfiles
 qt4_create_translation(QMfiles ${TSfiles})
 
 add_custom_target (translations DEPENDS ${QMfiles})
+add_dependencies(tbe translations)
 
 install(FILES ${QMfiles}
 	DESTINATION i18n
