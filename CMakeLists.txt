@@ -28,6 +28,7 @@ SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README")
 set(CPACK_SOURCE_GENERATOR TGZ)
 set(CPACK_SOURCE_IGNORE_FILES /.svn/;*~;/build/;usr)
 set(CPACK_SOURCE_STRIP_FILES "")
+set(CPACK_STRIP_FILES ON)
 
 IF(WIN32 AND NOT UNIX)
  # There is a bug in NSI that does not handle full unix paths properly. Make

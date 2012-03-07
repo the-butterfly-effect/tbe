@@ -71,4 +71,19 @@ ADD_EXECUTABLE(tbe
 INCLUDE(${QT_USE_FILE})
 TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} box2d)
 
+# Supply the DLL files on Windows - no static linking :-(
+# Technically speaking, this is a hack. But who cares?
+if(WIN32)
+  set(QTMYLIB "C:/QtSDK/Desktop/Qt/4.8.0/mingw/bin/")
+  INSTALL(FILES
+          ${QTMYLIB}/mingwm10.dll
+          ${QTMYLIB}/libgcc_s_dw2-1.dll
+          ${QTMYLIB}/QtCore4.dll
+          ${QTMYLIB}/QtGui4.dll
+          ${QTMYLIB}/QtSvg4.dll
+          ${QTMYLIB}/QtXml4.dll
+          DESTINATION bin
+  )
+endif(WIN32)
+
 INSTALL(TARGETS tbe DESTINATION bin)
