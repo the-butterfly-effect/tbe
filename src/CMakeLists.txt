@@ -37,10 +37,13 @@ if (MINGW)
                      COMMAND windres.exe -I${CMAKE_SOURCE_DIR}
                      -i${CMAKE_SOURCE_DIR}/installer/NSIS/tberc.rc
                      -o${CMAKE_CURRENT_BINARY_DIR}/tberc.o )
+ set(rc_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/tberc.o)
+else (MINGW)
+ set(rc_SOURCES)
 endif (MINGW)
 
 SET(tbe_SOURCES ${control_SOURCES} ${loadsave_SOURCES} ${main_SOURCES} ${model_SOURCES} ${view_SOURCES}
-                ${CMAKE_CURRENT_BINARY_DIR}/tberc.o)
+                ${rc_SOURCES})
 SET(tbe_HEADERS ${control_HEADERS} ${loadsave_HEADERS} ${main_HEADERS} ${model_HEADERS} ${view_HEADERS})
 SET(tbe_UIFORMS ${control_UIFORMS} ${loadsave_UIFORMS} ${main_UIFORMS} ${model_UIFORMS} ${view_UIFORMS})
 
