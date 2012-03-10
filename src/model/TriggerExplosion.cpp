@@ -52,8 +52,7 @@ DetonatorBox::DetonatorBox()
 
 DetonatorBox::~DetonatorBox()
 {
-	delete theHandleObjectPtr;
-	theHandleObjectPtr = NULL;
+	deletePhysicsObject();
 }
 
 void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
