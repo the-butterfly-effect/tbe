@@ -1,9 +1,5 @@
 # Let's use CMake with TBE...
-
-# TODO: strip binary?
-# TODO: add start menu icon to RPM/DEB installers
-
-cmake_minimum_required (VERSION 2.8.6)
+cmake_minimum_required (VERSION 2.8.7)
 project (The_Butterfly_Effect)
 
 SET(main_SOURCES
@@ -73,7 +69,7 @@ TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} box2d)
 
 # Supply the DLL files on Windows - no static linking :-(
 # Technically speaking, this is a hack. But who cares?
-if(WIN32)
+if(MINGW)
   set(QTMYLIB "C:/QtSDK/Desktop/Qt/4.8.0/mingw/bin/")
   INSTALL(FILES
           ${QTMYLIB}/mingwm10.dll
@@ -84,6 +80,6 @@ if(WIN32)
           ${QTMYLIB}/QtXml4.dll
           DESTINATION bin
   )
-endif(WIN32)
+endif(MINGW)
 
 INSTALL(TARGETS tbe DESTINATION bin)
