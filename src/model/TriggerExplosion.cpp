@@ -453,7 +453,7 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 
 // note that the mass will be redone during setAll()
 ExplosionSplatter::ExplosionSplatter()
-		: CircleObject("ExplosionSplatter","", "CokeSplatter",
+		: CircleObject("ExplosionSplatter","", "ColaSplatter",
 					   theRadius, 0.001,  1.0)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
