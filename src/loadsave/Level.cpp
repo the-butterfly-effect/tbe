@@ -77,12 +77,15 @@ Level::Level ( )
 	theWorldPtr->theWorldWidth  = 3.0;
 	theWorldPtr->theWorldHeight = 2.0;
 
+	assert(theCurrentLevelPtr==NULL);
 	theCurrentLevelPtr = this;
 }
 
 Level::~Level ( )
 {
+    DEBUG1ENTRY;
     assert(theCurrentLevelPtr==this);
+    theCurrentLevelPtr=NULL;
     delete theWorldPtr;
     theWorldPtr = NULL;
 }
