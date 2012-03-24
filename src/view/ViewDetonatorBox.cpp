@@ -92,7 +92,8 @@ void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewDetonatorBox::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
-	realMousePressEvent(anEvent);
+    theClickedScenePos = anEvent->scenePos();
+    QTimer::singleShot(thePieMenuDelay, this, SLOT(realMousePressEvent()));
 }
 
 

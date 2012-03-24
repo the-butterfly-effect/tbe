@@ -66,9 +66,9 @@ void ViewPostIt::displayPostit(void)
 	theCurrentPage = 0;
 	nextClicked();
 
-	QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
+        connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
 				  this, SLOT(nextClicked()));
-	QObject::connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
+        connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
 				  theDialogPtr, SLOT(reject()));
 	theDialogPtr->exec();
 	}

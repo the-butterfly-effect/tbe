@@ -33,7 +33,7 @@ class AbstractObject;
   * and cannot be moved *BUT* can be clicked to reveal "hints"...
   */
 
-class ViewPostIt : public QObject, public ViewObject
+class ViewPostIt : public ViewObject
 {
 
 	Q_OBJECT

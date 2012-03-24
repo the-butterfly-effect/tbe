@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,17 +18,20 @@
 
 #include "AbstractObject.h"
 #include "ImageCache.h"
+#include "MoveUndoCommand.h"
 #include "PieMenu.h"
+#include "UndoSingleton.h"
 #include "ViewObject.h"
 
 #include "tbe_global.h"
 
 #include <QtCore/QFile>
+#include <QtCore/QTimer>
 #include <QtGui/QGraphicsColorizeEffect>
 #include <QtGui/QGraphicsSceneMouseEvent>
 
 ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
-	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
+        QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
 {
 	// nothing to do yet :-)
 	DEBUG3ENTRY;
@@ -149,17 +152,47 @@ void ViewObject::initViewObjectAttributes(void)
     setAcceptsHoverEvents(true);
     theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
+    theMUCPtr = NULL;
 }
 
 
+void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent )
+{
+    // overridden only to keep our administration accurate
+    // - see mousePressEvent() for more info
+    if (theMUCPtr==NULL)
+    {
+        theMUCPtr=UndoSingleton::createUndoCommand(this,
+                                                   ActionIcon::ACTION_MOVE);
+        theMUCPtr->mousePressEvent(anEvent);
+    }
+    theMUCPtr->mouseMoveEvent(anEvent);
+}
 
 
 void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
+    // There's two things here:
+    // 1) we want to add a delay of 150ms where the user can start dragging
+    //    the object where we won't put up a pie menu
+    // 2) we only want to initiate a pie menu when the object is allowed to
+    //    move
+    theMUCPtr = NULL;
     if (theAbstractObjectPtr->isMovable())
     {
-        realMousePressEvent(anEvent);
+        theClickedScenePos = anEvent->scenePos();
+        QTimer::singleShot(thePieMenuDelay,
+                           this,
+                           SLOT(realMousePressEvent()));
     }
+}
+
+
+void ViewObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent* anEvent )
+{
+    if (theMUCPtr!=NULL)
+        theMUCPtr->mouseReleaseEvent(anEvent);
+    theMUCPtr=NULL;
 }
 
 
@@ -173,10 +206,13 @@ void ViewObject::realHoverEnterEvent(void)
     }
 }
 
-void ViewObject::realMousePressEvent(QGraphicsSceneMouseEvent* anEvent)
+void ViewObject::realMousePressEvent(void)
 {
-    hoverLeaveEvent(NULL);
-    PieMenuSingleton::addPieMenuToViewObject(this, anEvent->scenePos());
+    if (theMUCPtr==NULL)
+    {
+        hoverLeaveEvent(NULL);
+        PieMenuSingleton::addPieMenuToViewObject(this, theClickedScenePos);
+    }
 }
 
 

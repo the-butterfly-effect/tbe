@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,11 +19,13 @@
 #ifndef VIEWOBJECT_H
 #define VIEWOBJECT_H
 
+#include <QtCore/QObject>
 #include <QtGui/QGraphicsPixmapItem>
 #include "Position.h"
 
 // forward declarations
 class AbstractObject;
+class AbstractUndoCommand;
 #include "ViewObjectActionDectorator.h"
 
 /** class ViewObject
@@ -31,8 +33,10 @@ class AbstractObject;
   * This class abstracts the actual drawing of objects
   *
   */
-class ViewObject : public QGraphicsPixmapItem
+class ViewObject : public QObject, public QGraphicsPixmapItem
 {
+    Q_OBJECT;
+
 public:
 	/// simple constructor
 	explicit ViewObject(AbstractObject* anAbstractObjectPtr);
@@ -76,15 +80,22 @@ public:
 protected:
     void adjustObjectDrawing(void);
 
-    /// overridden to allow detection of mouse button presses
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
+
+    /// overridden to allow detection of mouse button presses & moves
+    virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent );
+    /// overridden to allow detection of mouse button presses & moves
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* anEvent);
+    /// overridden to allow detection of mouse button presses & moves
+    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
+
     /// overridden to allow object highlighting
     virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
     /// overridden to allow highlighting
     virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
 
     void realHoverEnterEvent(void);
-    void realMousePressEvent(QGraphicsSceneMouseEvent* anEvent);
+protected slots:
+    void realMousePressEvent(void);
 
 protected:
 	// Protected attributes
@@ -100,6 +111,10 @@ protected:
 
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( ViewObject )
+
+        AbstractUndoCommand* theMUCPtr;
+        QPointF theClickedScenePos;
+        const static int thePieMenuDelay = 150;
 
 private:
 	void initViewObjectAttributes(void);

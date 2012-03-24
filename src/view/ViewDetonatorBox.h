@@ -30,7 +30,7 @@ class AbstractObject;
   * and cannot be moved *BUT* can be clicked to reveal "hints"...
   */
 
-class ViewDetonatorBox : public QObject, public ViewObject
+class ViewDetonatorBox : public ViewObject
 {
 
 	Q_OBJECT
