@@ -162,6 +162,7 @@ void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent )
     // - see mousePressEvent() for more info
     if (theMUCPtr==NULL)
     {
+        hoverLeaveEvent(NULL);
         theMUCPtr=UndoSingleton::createUndoCommand(this,
                                                    ActionIcon::ACTION_MOVE);
         theMUCPtr->mousePressEvent(anEvent);
