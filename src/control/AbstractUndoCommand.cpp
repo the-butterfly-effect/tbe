@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -63,6 +63,7 @@ void AbstractUndoCommand::commit(void)
 {
     DEBUG4ENTRY;
     UndoSingleton::push(this);
+    resetDecoratorPosition();
     setDecoratorStateUndoRedo();
     clearDecoratorPointerToMe();
 }
@@ -122,21 +123,10 @@ void AbstractUndoCommand::redo(void)
 }
 
 
-void AbstractUndoCommand::setDecoratorStateMouseMove(void)
+void AbstractUndoCommand::resetDecoratorPosition()
 {
-    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
-        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
-    else
-        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::PROXY);
-}
-
-
-void AbstractUndoCommand::setDecoratorStateUndoRedo(void)
-{
-    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
-        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
-    else
-        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::NONE);
+    Q_ASSERT(theViewObjPtr!=NULL);
+    theViewObjPtr->theDecorator.setPos( QPointF(0,0) );
 }
 
 
@@ -145,6 +135,44 @@ void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
     Q_ASSERT(theViewObjPtr!=NULL);
     theViewObjPtr->theDecorator.setDecoratorImage(anImageName, this);
     setDecoratorStateMouseMove();
+}
+
+
+void AbstractUndoCommand::setDecoratorPosition(Vector aScenePos)
+{
+    Q_ASSERT(theViewObjPtr!=NULL);
+    theViewObjPtr->theDecorator.setPos( theViewObjPtr->mapFromScene(aScenePos.toQPointF())
+                                        - theViewObjPtr->boundingRect().center() );
+}
+
+
+bool AbstractUndoCommand::setDecoratorStateMouseMove(void)
+{
+    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
+    {
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
+        return true;
+    }
+    else
+    {
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::PROXY);
+        return false;
+    }
+}
+
+
+bool AbstractUndoCommand::setDecoratorStateUndoRedo(void)
+{
+    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
+    {
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
+        return true;
+    }
+    else
+    {
+        theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::NONE);
+        return false;
+    }
 }
 
 

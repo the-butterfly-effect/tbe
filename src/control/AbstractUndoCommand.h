@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011, 2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -75,13 +75,22 @@ protected:
     /// @param anImageName  theImage to use as Proxy (no path, no extension)
     void setDecoratorImage(const QString& anImageName);
 
+    /// Reset the DecoratorPosition to align with the ViewObject.
+    void resetDecoratorPosition();
+
+    /// Put the Decorator on a certain position, unrelated to the ViewObject.
+    /// This isused by the Move Undo.
+    void setDecoratorPosition(Vector aPosition);
+
     /// Set the ViewObjectActionDecorator to either proxy+cross or just proxy,
     /// depending on whether the ViewObject is colliding or not.
-    void setDecoratorStateMouseMove(void);
+    /// @returns true if colliding, false if not
+    bool setDecoratorStateMouseMove(void);
 
     /// Set the ViewObjectActionDecorator to either cross or just nothing,
     /// depending on whether the ViewObject is colliding or not.
-    void setDecoratorStateUndoRedo(void);
+    /// @returns true if colliding, false if not
+    bool setDecoratorStateUndoRedo(void);
 
 protected:
     QPointF theButtonDownPosition;

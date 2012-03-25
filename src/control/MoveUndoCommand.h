@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -31,6 +31,10 @@ public:
 
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
+    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
+
+private:
+    Position theLastKnownGood;
 };
 
 #endif // MOVEUNDOCOMMAND_H

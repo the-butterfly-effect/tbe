@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,7 +38,21 @@ bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theNewPos = theOrigPos.toVector() + Vector(myMousePos-theButtonDownPosition);
     theNewPos.angle = theOrigPos.angle;
     theViewObjPtr->setNewGeometry(theNewPos);
-    setDecoratorStateMouseMove();
+    if (setDecoratorStateMouseMove()==true)
+    {
+        if (theLastKnownGood.isValid())
+        {
+            // if we get here, we can leave the object object at its location
+            // and only move the decorator around
+            theViewObjPtr->setNewGeometry(theLastKnownGood);
+            setDecoratorPosition(theNewPos.toVector());
+        }
+    }
+    else
+    {
+        theLastKnownGood = theNewPos;
+        resetDecoratorPosition();
+    }
     return true;
 }
 
@@ -47,4 +61,15 @@ bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     DEBUG3ENTRY;
     theButtonDownPosition = anEventPtr->scenePos();
     return false;
+}
+
+
+bool MoveUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr)
+{
+    if (theLastKnownGood!=theNewPos)
+    {
+        if (theLastKnownGood.isValid())
+            theNewPos = theLastKnownGood;
+    }
+    return AbstractUndoCommand::mouseReleaseEvent(anEventPtr);
 }
