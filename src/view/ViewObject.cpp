@@ -158,16 +158,21 @@ void ViewObject::initViewObjectAttributes(void)
 
 void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
-    // overridden only to keep our administration accurate
-    // - see mousePressEvent() for more info
-    if (theMUCPtr==NULL)
+    // Overridden so we can actually start a move immediately without
+    // having to go through the pie menu.
+    // Don't allow moving if a pie menu is already visible on this object...
+    if (theMUCPtr==NULL
+            && theAbstractObjectPtr->isMovable()
+            && PieMenuSingleton::getPieMenuParent()!=this)
     {
         hoverLeaveEvent(NULL);
+        PieMenuSingleton::clearPieMenu();
         theMUCPtr=UndoSingleton::createUndoCommand(this,
                                                    ActionIcon::ACTION_MOVE);
         theMUCPtr->mousePressEvent(anEvent);
     }
-    theMUCPtr->mouseMoveEvent(anEvent);
+    if (theMUCPtr)
+        theMUCPtr->mouseMoveEvent(anEvent);
 }
 
 
@@ -178,7 +183,7 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     //    the object where we won't put up a pie menu
     // 2) we only want to initiate a pie menu when the object is allowed to
     //    move
-    theMUCPtr = NULL;
+    assert (theMUCPtr == NULL);
     if (theAbstractObjectPtr->isMovable())
     {
         theClickedScenePos = anEvent->scenePos();
