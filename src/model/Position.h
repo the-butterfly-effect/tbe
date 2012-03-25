@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009, 2010  Klaas van Gend
+ * This file copyright (C) 2009,2010,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,6 +20,8 @@
 #define POSITION_H
 
 #include "tbe_global.h"
+#include <cassert>
+#include <cmath>
 #include <QtCore/QPointF>
 
 class b2Vec2;
@@ -88,7 +90,7 @@ public:
 	/**
 	 * Constructor - set x (m), y(m), angle(radial)
 	 */
-	Position (qreal anX=0.0, qreal aY=0.0, qreal anAngle=0.0);
+        Position (qreal anX=NAN, qreal aY=NAN, qreal anAngle=0.0);
 
 	Position (const QPointF& aPoint, qreal anAngle = 0.0);
 	Position (const Vector& aPoint, qreal anAngle = 0.0);
@@ -108,12 +110,16 @@ public:
 	const static qreal minimalMove;
 	const static qreal minimalRot;
 
+        /// @returns true if Position exists, or false if used uninitialised
+        bool isValid() const
+        { return (isnan(x)==0 && isnan(y)==0); }
+
 	b2Vec2  toB2Vec2(void) const;
 	QPointF toQPointF(void) const
-	{ return QPointF(THESCALE*x,-THESCALE*y); }
+        {   assert(isValid()); return QPointF(THESCALE*x,-THESCALE*y); }
 	QString toString(void) const;
 	Vector  toVector(void) const
-	{ return Vector(*this); }
+        { assert(isValid()); return Vector(*this); }
 
 	qreal angleInDegrees(void) const
 	{ return angle*180/PI; }
