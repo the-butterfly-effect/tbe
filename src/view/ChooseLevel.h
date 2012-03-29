@@ -36,9 +36,8 @@ public:
 	ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow=false);
 	virtual ~ChooseLevel();
 
-	/// @returns the currently selected level, which should be the first
-	/// not-conquered level. If there is none, returns an empty string.
-	QString getCurrent(void);
+        /// TODO: document
+        static QString getNextLevelName(void);
 
 signals:
 	void loadLevel(const QString&);
@@ -53,6 +52,10 @@ protected slots:
 
 protected:
 	void changeEvent(QEvent *e);
+
+        /// @returns the currently selected level, which should be the first
+        /// not-conquered level. If there is none, returns an empty string.
+        QString getCurrent(void);
 
 private:
 	Ui::ChooseLevel *m_ui;

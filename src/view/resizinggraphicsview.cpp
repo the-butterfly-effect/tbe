@@ -141,8 +141,7 @@ void ResizingGraphicsView::slot_actionNextLevel()
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
 
-	ChooseLevel myDialog(this, true);
-	QString myNextLevelName = myDialog.getCurrent();
+        QString myNextLevelName = ChooseLevel::getNextLevelName();
 	DEBUG1("theMainWindowPtr=%p\n", theMainWindowPtr);
 	if (myNextLevelName.isEmpty()==false)
 		theMainWindowPtr->loadLevel(myNextLevelName);

@@ -68,6 +68,19 @@ QString ChooseLevel::getCurrent(void)
 }
 
 
+QString ChooseLevel::getNextLevelName(void)
+{
+    ChooseLevel myDialog(NULL, true);
+    QString myNextLevelName = myDialog.getCurrent();
+    if (myNextLevelName.isEmpty()==false)
+        return myNextLevelName;
+
+    // TODO/FIXME: fix this - we better always return a name here!
+    return NULL;
+}
+
+
+
 void ChooseLevel::on_pushButton_go_clicked()
 {
 	emit loadLevel(getCurrent());

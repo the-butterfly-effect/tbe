@@ -198,33 +198,27 @@ void MainWindow::setupMenu(void)
 
 void MainWindow::setupView()
 {
-	// setup UndoGroup's QActions and add them to Edit menu
-	// note that this doesn't enable them yet, our ViewWorld should handle that...
-	// TODO/FIXME: that needs work
-	QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
-	myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
-	ui->menuEdit->addAction(myUndoActionPtr);
-	QAction* myRedoActionPtr = UndoSingleton::createRedoAction(this, tr("&Redo"));
-	QList<QKeySequence> redoShortcuts;
-	redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
-	myRedoActionPtr->setShortcuts(redoShortcuts);
-	ui->menuEdit->addAction(myRedoActionPtr);
+    // setup UndoGroup's QActions and add them to Edit menu
+    // note that this doesn't enable them yet, our ViewWorld should handle that...
+    // TODO/FIXME: that needs work
+    QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
+    myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
+    ui->menuEdit->addAction(myUndoActionPtr);
+    QAction* myRedoActionPtr = UndoSingleton::createRedoAction(this, tr("&Redo"));
+    QList<QKeySequence> redoShortcuts;
+    redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
+    myRedoActionPtr->setShortcuts(redoShortcuts);
+    ui->menuEdit->addAction(myRedoActionPtr);
 
-	ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
-	if (theStartFileName.isEmpty())
-	{
-		ChooseLevel myDialog(NULL, true);
-		QString myNextLevelName = myDialog.getCurrent();
-		if (myNextLevelName.isEmpty()==false)
-			loadLevel(myNextLevelName);
-	}
-	else
-		loadLevel(theStartFileName);
+    ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
+    if (theStartFileName.isEmpty())
+        theStartFileName = ChooseLevel::getNextLevelName();
+    loadLevel(theStartFileName);
 }
 
 void MainWindow::on_action_Open_Level_triggered()
 {
-	ChooseLevel* myDialogPtr = new ChooseLevel(ui->graphicsView);
-	connect(myDialogPtr, SIGNAL(loadLevel(QString)),
-			this, SLOT(loadLevel(QString)));
+    ChooseLevel* myDialogPtr = new ChooseLevel(ui->graphicsView);
+    connect(myDialogPtr, SIGNAL(loadLevel(QString)),
+                    this, SLOT(loadLevel(QString)));
 }
