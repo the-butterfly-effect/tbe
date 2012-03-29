@@ -105,13 +105,15 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 		QTreeWidgetItemIterator it(m_ui->theTreeWidget);
 		while( *it )
 		{
-			if ( (*it)->text(NR_COLUMN) != tr("done"))
-			{
-				m_ui->theTreeWidget->setCurrentItem(*it);
-				(*it)->setSelected(true);
-				break;
-			}
-			++it;
+                    QString myLineStatus = (*it)->text(NR_COLUMN);
+                    printf("mylinestatus: '%s'\n", ASCII(myLineStatus));
+                    if ( myLineStatus.contains(QRegExp("[0-9]")) )
+                    {
+                        m_ui->theTreeWidget->setCurrentItem(*it);
+                        (*it)->setSelected(true);
+                        break;
+                    }
+                    ++it;
 		}
 		return true;
 	}
@@ -158,8 +160,16 @@ bool ChooseLevel::LevelList::endElement(const QString & /* namespaceURI */,
 			item->setToolTip(TITLE_COLUMN, myParser.theDescription.result());
 
 		QSettings mySettings;
-		if (mySettings.value("completed/"+currentText).isValid())
-			item->setText(NR_COLUMN, tr("done"));
+                QString myLevelStatus = mySettings.value("completed/"+currentText).toString();
+                if (myLevelStatus.isEmpty()==false)
+                {
+                    if (myLevelStatus=="done")
+                        item->setText(NR_COLUMN, tr("done"));
+                    else if (myLevelStatus=="skipped")
+                        item->setText(NR_COLUMN, tr("skipped"));
+                    else
+                        item->setText(NR_COLUMN, tr("???"));
+                }
 	}
 RETURN:
 	currentText.clear();
