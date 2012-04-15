@@ -68,6 +68,24 @@ void GameResources::changeEvent(QEvent *e)
 }
 
 
+void GameResources::deleteTheToolbox()
+{
+    if (theToolboxPtr==NULL)
+        return;
+
+    // theToolboxPtr (which is of type QVBoxLayout)
+    // doesn't delete its contents on deletion, we need to do that.
+    while (theToolboxItemList.count() > 0)
+    {
+        ViewToolboxGroup* i = theToolboxItemList.last();
+        delete i;
+        theToolboxItemList.pop_back();
+    }
+    delete theToolboxPtr;
+    theToolboxPtr = NULL;
+}
+
+
 void GameResources::on_theOKButton_clicked()
 {
     // update the toolbox viewing
@@ -101,23 +119,6 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
     theToolboxControls.parentResize(myParentSize);
 }
 
-
-void GameResources::deleteTheToolbox()
-{
-    if (theToolboxPtr==NULL)
-        return;
-
-    // theToolboxPtr (which is of type QVBoxLayout)
-    // doesn't delete its contents on deletion, we need to do that.
-    while (theToolboxItemList.count() > 0)
-    {
-        ViewToolboxGroup* i = theToolboxItemList.last();
-        delete i;
-        theToolboxItemList.pop_back();
-    }
-    delete theToolboxPtr;
-    theToolboxPtr = NULL;
-}
 
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
