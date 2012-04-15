@@ -42,8 +42,9 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup* aTBGPtr, GameResources* aGRPtr,
         //   2) THESCALE converts meters to pixels, part 1
         //   3) Transform matrix, which scales the viewimage, i.e. meters to pixels, part 2
 
+        theOriginalM11 = aGRPtr->theTransformMatrix.m11();
         theIconSize.setWidth(( myAOPtr->getTheWidth()* (float)THESCALE *
-                           aGRPtr->theTransformMatrix.m11()));
+                           theOriginalM11));
         theIconSize.setHeight(( myAOPtr->getTheHeight()* (float)THESCALE *
                            aGRPtr->theTransformMatrix.m22()));
 
@@ -54,7 +55,7 @@ ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup* aTBGPtr, GameResources* aGRPtr,
     theVBoxLayout.addWidget(&theCountLabel);
     theVBoxLayout.addWidget(&theDescriptionLabel);
 
-    updateCount();
+    updateCount(aGRPtr->theTransformMatrix);
     connect (this, SIGNAL(clicked()), this, SLOT(onClicked()));
 }
 
@@ -75,7 +76,7 @@ void ViewToolboxGroup::onClicked ( void )
 }
 
 
-void ViewToolboxGroup::updateCount()
+void ViewToolboxGroup::updateCount(const QTransform& aTransformMatrix)
 {
     theCountLabel.setText(QString("<b>%1x</b>").arg(theTBGPtr->count()));
     theCountLabel.setAlignment(Qt::AlignTop | Qt::AlignLeft);
@@ -86,7 +87,8 @@ void ViewToolboxGroup::updateCount()
     if (theTBGPtr->count() > 0)
     {
         setIcon(theIcon);
-        setIconSize(theIconSize);
+        myIconSize = aTransformMatrix.m11()/theOriginalM11*theIconSize;
+        setIconSize(myIconSize);
         setText("");
     }
     else

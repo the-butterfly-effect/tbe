@@ -36,7 +36,7 @@ public:
                      GameResources* aGRPtr,
                      QWidget* aParentPtr=0);
 
-    void updateCount();
+    void updateCount(const QTransform& aTransformMatrix);
 
 //    virtual QSize minimumSizeHint () const
 //    { return theMinSize; }
@@ -57,6 +57,7 @@ private:
 
     QIcon theIcon;
     QSize theIconSize;
+    qreal theOriginalM11;
     QSize theMinSize;
 
     int max2(int a, int b)

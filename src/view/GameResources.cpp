@@ -147,11 +147,12 @@ void GameResources::slot_startAppearing()
     if (theToolboxPtr!=NULL)
     {
         foreach(ViewToolboxGroup* i, theToolboxItemList)
-            i->updateCount();
+            i->updateCount(theTransformMatrix);
     }
     else
     {
         theToolboxPtr = new QVBoxLayout(ui->theToolView);
+        theToolboxPtr->setSizeConstraint(QLayout::SetMinimumSize);
         Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
         while (i!=theLevelPtr->theToolboxList.end())
         {
