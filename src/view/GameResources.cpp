@@ -102,6 +102,23 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
 }
 
 
+void GameResources::deleteTheToolbox()
+{
+    if (theToolboxPtr==NULL)
+        return;
+
+    // theToolboxPtr (which is of type QVBoxLayout)
+    // doesn't delete its contents on deletion, we need to do that.
+    while (theToolboxItemList.count() > 0)
+    {
+        ViewToolboxGroup* i = theToolboxItemList.last();
+        delete i;
+        theToolboxItemList.pop_back();
+    }
+    delete theToolboxPtr;
+    theToolboxPtr = NULL;
+}
+
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
     DEBUG4ENTRY;
@@ -112,6 +129,8 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
+
+    deleteTheToolbox();
 }
 
 

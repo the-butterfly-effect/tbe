@@ -68,6 +68,10 @@ signals:
     void signalReloadLevel(void);
 
 private slots:
+    /// Clear all entries from the toolbox.
+    /// (called from setLevelPtr)
+    void deleteTheToolbox();
+
     void on_theOKButton_clicked();
     void on_theResetButton_clicked();
 
