@@ -25,99 +25,45 @@
 #include "ViewObject.h"
 #include "ViewWorld.h"
 
-#include <QtGui/QBrush>
-#include <QtGui/QGraphicsColorizeEffect>
-#include <QtGui/QGraphicsSceneMouseEvent>
 
-ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup *aTBGPtr, QGraphicsItem *parent) :
-	QGraphicsRectItem(parent), theTBGPtr(aTBGPtr)
+ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup* aTBGPtr, GameResources* aGRPtr, QWidget* aParentPtr)
+    : QPushButton(aParentPtr),
+      theTBGPtr(aTBGPtr), theVBoxLayout(this)
 {
-	theCount.setParentItem(this);
-	theEmpty.setParentItem(this);
-	theName.setParentItem(this);
+    Q_ASSERT(aTBGPtr!=NULL);
 
-	int myObjW;
-	int myObjH;
-	if (theTBGPtr->count() > 0)
-	{
-		AbstractObject* myAOPtr = theTBGPtr->first();
-		myObjW  = THESCALE*myAOPtr->getTheWidth();
-		myObjH  = THESCALE*myAOPtr->getTheHeight();
+    if (theTBGPtr->count() > 0)
+    {
+        AbstractObject* myAOPtr = theTBGPtr->first();
+        ViewObject* myVOPtr = myAOPtr->createViewObject();
 
-		ViewObject* myVOPtr = myAOPtr->createViewObject();
-		thePixmapPtr = new QGraphicsPixmapItem(myVOPtr->pixmap());
-		thePixmapPtr->setTransform(myVOPtr->transform());
-		thePixmapPtr->setParentItem(this);
+        // We have a few different measures:
+        //   1) Planned object width in meters
+        //   2) THESCALE converts meters to pixels, part 1
+        //   3) Transform matrix, which scales the viewimage, i.e. meters to pixels, part 2
 
-		setToolTip(myAOPtr->getToolTip());
-	}
-	else
-	{
-		theEmpty.setPlainText(QObject::tr("(empty)"));
-		myObjW = theEmpty.boundingRect().width();
-		myObjH  = theEmpty.boundingRect().height();
-		theEmpty.setZValue(5);
-	}
+        theIconSize.setWidth(( myAOPtr->getTheWidth()* (float)THESCALE *
+                           aGRPtr->theTransformMatrix.m11()));
+        theIconSize.setHeight(( myAOPtr->getTheHeight()* (float)THESCALE *
+                           aGRPtr->theTransformMatrix.m22()));
 
-	theName.setPlainText(theTBGPtr->theGroupName.result() + " ");
-	if (theName.boundingRect().width() > myObjW)
-		myObjW = theName.boundingRect().width();
+        QPixmap myPixmap = myVOPtr->pixmap();
+        theIcon = myPixmap.scaled(theIconSize);
+    }
 
-	theBigWidth = (static_cast<int>(myObjW) & ~31) +16+32;
-	theBigHeight = (static_cast<int>(myObjH) & ~31) +16+32;
+    theVBoxLayout.addWidget(&theCountLabel);
+    theVBoxLayout.addWidget(&theDescriptionLabel);
 
-	setBrush(QBrush(Qt::gray));
-	setRect(0,0, theBigWidth-5, theBigHeight-5);
-
-	if (theTBGPtr->count() > 0)
-	{
-		thePixmapPtr->setPos((theBigWidth-myObjW)/2,
-							 (theBigHeight-myObjH)/2);
-	}
-	else
-	{
-		theEmpty.setPos((theBigWidth-theEmpty.boundingRect().width())/2.0,
-					   (theBigHeight-theEmpty.boundingRect().height())/2.0);
-	}
-
-	theName.setZValue(5);
-	theName.setPos(theBigWidth-theName.boundingRect().width(),
-				   theBigHeight-theName.boundingRect().height());
-
-
-	theCount.setHtml(QString("<font size=\"+1\"><b>%1x</b></font>")
-					 .arg(theTBGPtr->count()));
-	theCount.setZValue(5);
-
-	setAcceptsHoverEvents(true);
+    updateCount();
+    connect (this, SIGNAL(clicked()), this, SLOT(onClicked()));
 }
 
 
-ViewToolboxGroup::~ViewToolboxGroup()
-{
-	// nothing to do?
-}
-
-
-void ViewToolboxGroup::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
-{
-    QGraphicsEffect* myEffect = new QGraphicsColorizeEffect();
-    setGraphicsEffect(myEffect);
-}
-
-
-void ViewToolboxGroup::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
-{
-    setGraphicsEffect(NULL);
-}
-
-
-void ViewToolboxGroup::mousePressEvent ( QGraphicsSceneMouseEvent* event)
+void ViewToolboxGroup::onClicked ( void )
 {
     if (ViewWorld::getIsSimRunning()==true)
     {
         Popup::Info(tr("The simulation is not in rest, you cannot insert new things. Please reset the sim first!"));
-        event->ignore();
         return;
     }
 
@@ -125,6 +71,38 @@ void ViewToolboxGroup::mousePressEvent ( QGraphicsSceneMouseEvent* event)
     {
         InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
     }
-    event->accept();
     emit hideMe();
 }
+
+
+void ViewToolboxGroup::updateCount()
+{
+    theCountLabel.setText(QString("<b>%1x</b>").arg(theTBGPtr->count()));
+    theCountLabel.setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    theDescriptionLabel.setText(theTBGPtr->theGroupName.result());
+    theDescriptionLabel.setAlignment(Qt::AlignBottom | Qt::AlignRight);
+
+    QSize myIconSize = theIconSize;
+    if (theTBGPtr->count() > 0)
+    {
+        setIcon(theIcon);
+        setIconSize(theIconSize);
+        setText("");
+    }
+    else
+    {
+        setIcon(QIcon());
+        setText(tr("(empty)"));
+        myIconSize = QSize(40,20);
+    }
+
+
+    int myMinWidth = max2(theCountLabel.minimumSizeHint().width() +
+                          theDescriptionLabel.minimumSizeHint().width(),
+                          myIconSize.width());
+    int myMinHeight= theCountLabel.minimumSizeHint().height() +
+                          myIconSize.height();
+    theMinSize = QSize(myMinWidth, myMinHeight);
+    setMinimumSize(theMinSize);
+}
+

@@ -27,6 +27,8 @@ namespace Ui {
 class Level;
 #include "LocalString.h"
 class QAction;
+class QVBoxLayout;
+class ViewToolboxGroup;
 class ViewWorld;
 #include "ToolboxUpDownControls.h"
 
@@ -78,7 +80,9 @@ private slots:
 private:
     Ui::GameResources *ui;
 
-    QGraphicsScene* theToolboxPtr;
+    QVBoxLayout* theToolboxPtr;
+    typedef QList<ViewToolboxGroup*> ToolboxItemList;
+    ToolboxItemList theToolboxItemList;
 
     /// pointer to Level instance, which contains level names and such
     Level* theLevelPtr;
@@ -87,6 +91,9 @@ private:
     ResizingGraphicsView* theParentPtr;
 
     ToolboxUpDownControls theToolboxControls;
+
+public:
+    QTransform theTransformMatrix;
 };
 
 #endif // GAMERESOURCES_H

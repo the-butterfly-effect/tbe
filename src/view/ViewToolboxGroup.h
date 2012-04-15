@@ -19,52 +19,48 @@
 #ifndef VIEWTOOLBOXGROUP_H
 #define VIEWTOOLBOXGROUP_H
 
-#include <QtGui/QGraphicsRectItem>
-#include <QtGui/QGraphicsTextItem>
+#include <QtGui/QtGui>
 #include "ToolboxGroup.h"
-#include "UndoSingleton.h"
+
+class GameResources;
 
 /** This class represents the 'button' for one or more objects
   * the user can select from the toolbox to add to the scene.
   */
-class ViewToolboxGroup : public QObject, public QGraphicsRectItem
+class ViewToolboxGroup : public QPushButton
 {
     Q_OBJECT
 
 public:
-    ViewToolboxGroup(ToolboxGroup* aTBGPtr, QGraphicsItem *parent = 0);
+    ViewToolboxGroup(ToolboxGroup* aTBGPtr,
+                     GameResources* aGRPtr,
+                     QWidget* aParentPtr=0);
 
-    virtual ~ViewToolboxGroup();
+    void updateCount();
 
-    int getBigHeight(void)
-    { return theBigHeight; }
-    int getBigWidth(void)
-    { return theBigWidth; }
-
-protected:
-
-    /// @note: overridden from qGraphicsRectItem to allow object highlighting
-    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
-    /// @note: overridden from qGraphicsRectItem to allow highlighting
-    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
-
-    /// @note: overridden from qGraphicsRectItem to detect mouse button presses
-    /// When an object is clicked that still has objects left, insert one
-    /// into the scene (through the creation of an UndoInsert)
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
+//    virtual QSize minimumSizeHint () const
+//    { return theMinSize; }
+//    virtual QSize sizeHint () const
+//    { return theMinSize; }
 
 signals:
     void hideMe();
 
+private slots:
+    void onClicked ( void );
+
 private:
     ToolboxGroup* theTBGPtr;
+    QLabel theCountLabel;
+    QLabel theDescriptionLabel;
+    QVBoxLayout theVBoxLayout;
 
-    int theBigHeight;
-    int theBigWidth;
-    QGraphicsTextItem theCount;
-    QGraphicsTextItem theName;
-    QGraphicsTextItem theEmpty;
-    QGraphicsPixmapItem* thePixmapPtr;
+    QIcon theIcon;
+    QSize theIconSize;
+    QSize theMinSize;
+
+    int max2(int a, int b)
+    { return (a >= b) ? a : b; }
 };
 
 #endif // VIEWTOOLBOXGROUP_H

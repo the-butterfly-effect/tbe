@@ -30,6 +30,7 @@
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),
     ui(new Ui::GameResources),
+    theToolboxPtr(NULL),
     theLevelPtr(NULL),
     theParentPtr(aRSGVPtr),
     theToolboxControls(aRSGVPtr)
@@ -70,7 +71,7 @@ void GameResources::changeEvent(QEvent *e)
 void GameResources::on_theOKButton_clicked()
 {
     // update the toolbox viewing
-    slot_startAppearing();
+ //   slot_startAppearing();
     // and go away
     emit disappearAnimated();
 }
@@ -91,7 +92,7 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
     // Set the transform of the toolview to be the same as the
     // parent (i.e. resizinggraphicsview).
     // This enforces that objects will have the same size as in the scene.
-    ui->theToolView->setTransform(aTransformMatrix, false);
+    theTransformMatrix = aTransformMatrix;
 
     // And move the dialog to the center of the parent
     QSize myParentSize = theParentPtr->size();
@@ -111,10 +112,6 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
-
-    theToolboxPtr = new QGraphicsScene(NULL);
-    theToolboxPtr->setBackgroundBrush(Qt::blue);
-    ui->theToolView->setScene(theToolboxPtr);
 }
 
 
@@ -127,30 +124,31 @@ void GameResources::setup(QMenuBar*)
 
 void GameResources::slot_startAppearing()
 {
-	QList<QGraphicsItem*> myList = theToolboxPtr->items();
-	foreach(QGraphicsItem* i, myList)
-	{
-		theToolboxPtr->removeItem(i);
-//		delete i;
-	}
-
-	Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
-	int dy = 0;
-	while (i!=theLevelPtr->theToolboxList.end())
-	{
-		ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value());
-		myVTGPtr->moveBy(0,dy);
-		theToolboxPtr->addItem(myVTGPtr);
-		dy += myVTGPtr->getBigHeight();
-		i++;
-		connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
-	}
+    if (theToolboxPtr!=NULL)
+    {
+        foreach(ViewToolboxGroup* i, theToolboxItemList)
+            i->updateCount();
+    }
+    else
+    {
+        theToolboxPtr = new QVBoxLayout(ui->theToolView);
+        Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
+        while (i!=theLevelPtr->theToolboxList.end())
+        {
+            ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value(), this);
+            theToolboxPtr->addWidget(myVTGPtr);
+            theToolboxItemList.push_back(myVTGPtr);
+            i++;
+            connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
+        }
+        theToolboxPtr->addStretch(1);
+    }
 }
 
 
 void GameResources::slot_window_appeared()
 {
-		theToolboxControls.setDownEnabled();
+    theToolboxControls.setDownEnabled();
 }
 
 
