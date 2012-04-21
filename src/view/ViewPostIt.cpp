@@ -17,8 +17,10 @@
  */
 
 #include "ViewPostIt.h"
-#include "AbstractObject.h"
 //#include "PostItEditor.h"
+#include "ImageCache.h"
+#include "animateddialog.h"
+#include "AbstractObject.h"
 
 #include <QtGui/QGraphicsColorizeEffect>
 #include <QtGui/QGraphicsScene>
@@ -33,16 +35,16 @@ ViewPostIt::ViewPostIt (AbstractObject* aAbstractObjectPtr)
 	  theDialogPtr(NULL),
 	  theUIPtr(NULL)
 {
-	// everything is done in the ViewObject constructor
-	DEBUG1ENTRY;
+    // everything is done in the ViewObject constructor
+    DEBUG1ENTRY;
 
-	setFlag(QGraphicsItem::ItemIsSelectable,true);
+    setFlag(QGraphicsItem::ItemIsSelectable,true);
 }
 
 ViewPostIt::~ViewPostIt ( )
 {
-	if (theDialogPtr)
-		delete theDialogPtr;
+    if (theDialogPtr)
+        delete theDialogPtr;
 }
 
 //
@@ -59,19 +61,19 @@ ViewPostIt::~ViewPostIt ( )
 
 void ViewPostIt::displayPostit(void)
 {
-	theDialogPtr = new QDialog;
-	theUIPtr = new Ui::ViewPostIt();
-	theUIPtr->setupUi(theDialogPtr);
+    theDialogPtr = new AnimatedDialog( dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]));
+    theUIPtr = new Ui::ViewPostIt();
+    theUIPtr->setupUi(theDialogPtr);
 
-	theCurrentPage = 0;
-	nextClicked();
+    theCurrentPage = 0;
+    nextClicked();
 
-        connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
-				  this, SLOT(nextClicked()));
-        connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
-				  theDialogPtr, SLOT(reject()));
-	theDialogPtr->exec();
-	}
+    connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
+            this, SLOT(nextClicked()));
+    connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
+            theDialogPtr, SLOT(disappearAnimated()));
+    emit theDialogPtr->appearAnimated();
+}
 
 void ViewPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
@@ -90,20 +92,20 @@ void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 
 QString ViewPostIt::getPageString(unsigned int aPage)
 {
-	QString myPageNr = "page"+QString::number(aPage);
+    QString myPageNr = "page"+QString::number(aPage);
 
-	// get the default/original string (English) in 'page1'
-	// this will be returned if none of the below exist
-	QString myPageString = theAbstractObjectPtr->theProps.getPropertyNoDefault(myPageNr);
+    // get the default/original string (English) in 'page1'
+    // this will be returned if none of the below exist
+    QString myPageString = theAbstractObjectPtr->theProps.getPropertyNoDefault(myPageNr);
 
-	// then look for 'page1_nl', then for 'page1_nl_NL'
-	// if the second one exists, it overrides an existing first one
-	QString myLocName = QLocale::system().name();
-	myPageNr += "_" + myLocName.mid(0,2);
-	theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
-	myPageNr += "_" + myLocName.mid(3,2);
-	theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
-	return myPageString;
+    // then look for 'page1_nl', then for 'page1_nl_NL'
+    // if the second one exists, it overrides an existing first one
+    QString myLocName = QLocale::system().name();
+    myPageNr += "_" + myLocName.mid(0,2);
+    theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
+    myPageNr += "_" + myLocName.mid(3,2);
+    theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
+    return myPageString;
 }
 
 
@@ -115,43 +117,43 @@ void ViewPostIt::initAttributes ( )
 
 void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
-	DEBUG5("double click!!!\n");
+    DEBUG5("double click!!!\n");
 //	if (theIsLevelEditor)
 //	{
 //		QDialog* myEditorPtr = new PostItEditor(theAbstractObjectPtr, this);
 //		myEditorPtr->exec();
 //	}
 //	else
-		displayPostit();
-	event->accept();
+    displayPostit();
+    event->accept();
 }
 
 void ViewPostIt::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
 {
-	// depending on whether we're level editor or not, move or display
-	if (theIsLevelEditor)
-		ViewObject::mousePressEvent(anEvent);
-	else
-		mouseDoubleClickEvent(anEvent);
+    // depending on whether we're level editor or not, move or display
+    if (theIsLevelEditor)
+        ViewObject::mousePressEvent(anEvent);
+    else
+        mouseDoubleClickEvent(anEvent);
 }
 
 void ViewPostIt::nextClicked()
 {
-	theCurrentPage++;
-	QString myPageString = getPageString(theCurrentPage);
+    theCurrentPage++;
+    QString myPageString = getPageString(theCurrentPage);
 
-	// no page? that means the user has hit the finish button
-	if (myPageString.isEmpty())
-	{
-		theDialogPtr->accept();
-		return;
-	}
+    // no page? that means the user has hit the finish button
+    if (myPageString.isEmpty())
+    {
+        emit theDialogPtr->disappearAnimated();
+        return;
+    }
 
-	theUIPtr->theLabel->setText("<b>"+myPageString+"</b>");
-	theUIPtr->theLabel->setAlignment(Qt::AlignCenter);
-	theUIPtr->theLabel->setWordWrap(true);
+    theUIPtr->theLabel->setText("<b>"+myPageString+"</b>");
+    theUIPtr->theLabel->setAlignment(Qt::AlignCenter);
+    theUIPtr->theLabel->setWordWrap(true);
 
-	// if there is no next page, replace button text with "Finish"
-	if (getPageString(theCurrentPage+1).isEmpty())
-		theUIPtr->pushButton_Next->setText(tr("Finish"));
+    // if there is no next page, replace button text with "Finish"
+    if (getPageString(theCurrentPage+1).isEmpty())
+        theUIPtr->pushButton_Next->setText(tr("Finish"));
 }

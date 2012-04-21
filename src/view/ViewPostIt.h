@@ -92,7 +92,7 @@ private:
 
 	unsigned int theCurrentPage;
 
-	QDialog*	theDialogPtr;
+        AnimatedDialog*	theDialogPtr;
 
 	Ui::ViewPostIt* theUIPtr;
 

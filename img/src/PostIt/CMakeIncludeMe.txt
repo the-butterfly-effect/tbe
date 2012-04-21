@@ -1,5 +1,6 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
         ${SRCDIRNAME}/PostIt.svg
+        ${SRCDIRNAME}/PostItBackground.svg
         DESTINATION images
 )
