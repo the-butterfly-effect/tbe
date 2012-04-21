@@ -1,7 +1,3 @@
-# Let's use CMake with TBE...
-cmake_minimum_required (VERSION 2.8.6)
-project (The_Butterfly_Effect)
-
 SET(main_SOURCES
     backtrace.cpp
     main.cpp

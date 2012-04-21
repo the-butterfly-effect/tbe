@@ -4,8 +4,6 @@
 #  * concatenate all README files to a single file that contains info 
 #    on all files in the images directory
 
-cmake_minimum_required(VERSION 2.8.6)
-
 set(READMEtotal "This file lists the orgins of all files in this directory.\n" 
   "It is generated during build from all READMEs in various directories.\n"
   "Note that several files mentioned could be missing here if you are\n"
