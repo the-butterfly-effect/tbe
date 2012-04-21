@@ -61,9 +61,17 @@ ViewPostIt::~ViewPostIt ( )
 
 void ViewPostIt::displayPostit(void)
 {
-    theDialogPtr = new AnimatedDialog( dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]));
     theUIPtr = new Ui::ViewPostIt();
-    theUIPtr->setupUi(theDialogPtr);
+    QLabel* myUIWidgetPtr = new QLabel();
+    theUIPtr->setupUi(myUIWidgetPtr);
+    theDialogPtr = new AnimatedDialog( dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]));
+    theDialogPtr->resize(240,240);
+
+    QPixmap myPixmap;
+    ImageCache::getPixmap("PostItBackground", QSize(240,240), &myPixmap);
+    Q_ASSERT(myPixmap.isNull()==false);
+    myUIWidgetPtr->setPixmap(myPixmap);
+    myUIWidgetPtr->setParent(theDialogPtr);
 
     theCurrentPage = 0;
     nextClicked();

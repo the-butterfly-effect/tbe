@@ -24,6 +24,7 @@
 #include "ui_ViewPostIt.h"
 
 // forward declarations
+class AnimatedDialog;
 class AbstractObject;
 
 
