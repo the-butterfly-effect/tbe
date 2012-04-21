@@ -27,7 +27,6 @@ namespace Ui {
 class Level;
 #include "LocalString.h"
 class QAction;
-class QVBoxLayout;
 class ViewToolboxGroup;
 class ViewWorld;
 #include "ToolboxUpDownControls.h"
@@ -84,7 +83,6 @@ private slots:
 private:
     Ui::GameResources *ui;
 
-    QVBoxLayout* theToolboxPtr;
     typedef QList<ViewToolboxGroup*> ToolboxItemList;
     ToolboxItemList theToolboxItemList;
 

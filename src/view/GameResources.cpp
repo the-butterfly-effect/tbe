@@ -30,7 +30,6 @@
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),
     ui(new Ui::GameResources),
-    theToolboxPtr(NULL),
     theLevelPtr(NULL),
     theParentPtr(aRSGVPtr),
     theToolboxControls(aRSGVPtr)
@@ -70,9 +69,6 @@ void GameResources::changeEvent(QEvent *e)
 
 void GameResources::deleteTheToolbox()
 {
-    if (theToolboxPtr==NULL)
-        return;
-
     // theToolboxPtr (which is of type QVBoxLayout)
     // doesn't delete its contents on deletion, we need to do that.
     while (theToolboxItemList.count() > 0)
@@ -80,9 +76,8 @@ void GameResources::deleteTheToolbox()
         ViewToolboxGroup* i = theToolboxItemList.last();
         delete i;
         theToolboxItemList.pop_back();
+        ui->theToolBoxPtr->removeWidget(i);
     }
-    delete theToolboxPtr;
-    theToolboxPtr = NULL;
 }
 
 
@@ -111,8 +106,7 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
     // parent (i.e. resizinggraphicsview).
     // This enforces that objects will have the same size as in the scene.
     theTransformMatrix = aTransformMatrix;
-    if (theToolboxPtr)
-        slot_startAppearing();
+    slot_startAppearing();
 
     // And move the dialog to the center of the parent
     QSize myParentSize = theParentPtr->size();
@@ -146,25 +140,15 @@ void GameResources::setup(QMenuBar*)
 
 void GameResources::slot_startAppearing()
 {
-    if (theToolboxPtr!=NULL)
+    deleteTheToolbox();
+    Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
+    while (i!=theLevelPtr->theToolboxList.end())
     {
-        foreach(ViewToolboxGroup* i, theToolboxItemList)
-            i->updateCount(theTransformMatrix);
-    }
-    else
-    {
-        theToolboxPtr = new QVBoxLayout(ui->theToolView);
-        theToolboxPtr->setSizeConstraint(QLayout::SetMinimumSize);
-        Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
-        while (i!=theLevelPtr->theToolboxList.end())
-        {
-            ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value(), this);
-            theToolboxPtr->addWidget(myVTGPtr);
-            theToolboxItemList.push_back(myVTGPtr);
-            i++;
-            connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
-        }
-        theToolboxPtr->addStretch(1);
+        ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value(), this);
+        ui->theToolBoxPtr->addWidget(myVTGPtr);
+        theToolboxItemList.push_back(myVTGPtr);
+        i++;
+        connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
     }
 }
 
