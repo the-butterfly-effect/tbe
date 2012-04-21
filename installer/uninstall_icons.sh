@@ -2,7 +2,7 @@
 
 # find the directory this script resides in - should be
 # the same location the .desktop file and the .png file are
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$( cd "$( dirname "$0" )" && pwd )"
 ICON=sourceforge.net-tbe.desktop
 
 # this statement should not have any effect:
