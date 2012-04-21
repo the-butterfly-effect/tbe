@@ -33,7 +33,7 @@
                 <property key="page4_nl">&lt;br>&lt;br>Post-it Boy&lt;br>&lt;br>(lid van de dierenbescherming)</property>
             </object>
             <object width="0.2212238609790802" X="6.802119700801657" Y="0.3333304077386856" height="0.4064355790615082" type="RectObject" angle="0" >
-                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+                <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
             <object width="0.2" X="6.76" Y="0.4" height="0.2" type="Scenery" ID="Flower" angle="0" >
                 <property key="ImageName" >Empty</property>
