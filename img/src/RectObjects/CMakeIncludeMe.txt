@@ -5,7 +5,7 @@ install(FILES
         ${SRCDIRNAME}/cola-crate.svg
         ${SRCDIRNAME}/goal-scenery.svg
         ${SRCDIRNAME}/i-beam.svg
-        ${SRCDIRNAME}/Anonymous_daffodil.klaas.svg
+        ${SRCDIRNAME}/Anonymous_daffodil_klaas.svg
         ${SRCDIRNAME}/spring20.svg
         DESTINATION images
 )
