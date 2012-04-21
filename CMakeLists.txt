@@ -67,7 +67,7 @@ if (UNIX AND NOT "$ENV{RPM}")
  # we use a special License file for the self-extracting archive
  # so we can display both license info *and* give a few instructions
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installer/License")
-ENDIF(UNIX AND NOT RPM)
+ENDIF(UNIX AND NOT "$ENV{RPM}")
 
 if(UNIX AND "$ENV{RPM}")
  # DEB and RPM install in /opt/TheButterflyEffect/*
