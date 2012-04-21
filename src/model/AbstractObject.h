@@ -402,7 +402,7 @@ protected:
 	  * created/deleted.
 	  * @param aStatus indicates if the B2Body was created or deleted
 	  */
-	virtual void notifyJoints(JointInterface::JointStatus aStatus) const;
+        virtual void notifyJoints(JointInterface::JointStatus aStatus);
 
 private:
 	// Private attributes of the Object

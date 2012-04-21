@@ -159,6 +159,8 @@ void AbstractObject::deletePhysicsObject()
 
 	// let's also make sure we're getting rid of the joints
 	notifyJoints(JointInterface::DELETED);
+
+        theJointList.clear();
 }
 
 void AbstractObject::deleteViewObject(void)
@@ -204,10 +206,12 @@ bool AbstractObject::isRotatable ( ) const
 }
 
 
-void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus) const
+void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus)
 {
 	foreach(JointInterface* j, theJointList)
-		j->physicsObjectStatus(aStatus);
+                j->physicsObjectStatus(aStatus);
+        if (aStatus==JointInterface::DELETED)
+            theJointList.clear();
 }
 
 
