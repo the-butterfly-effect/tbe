@@ -1,3 +1,3 @@
 #!/bin/sh
-/opt/TheButterflyEffect/install_icons.sh
+/opt/thebutterflyeffect/install_icons.sh
 

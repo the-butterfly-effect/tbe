@@ -1,3 +1,3 @@
 #!/bin/sh
-/opt/TheButterflyEffect/uninstall_icons.sh
+/opt/thebutterflyeffect/uninstall_icons.sh
 
