@@ -43,7 +43,7 @@
             </object>
 	    
             <object width="0.20" X="4.9" Y="0.325" height="0.55" type="RectObject" >
-                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+                <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
 		<object X="4.9" Y="0.53" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>

@@ -18,12 +18,16 @@
             <name lang="nl">Bowlingbal</name>
             <object type="BowlingBall" />
         </toolboxitem>
+        <toolboxitem count="0" name="LeftRamp">
+            <name lang="nl">Bowlingbal</name>
+            <object type="LeftRamp" />
+        </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="2.3" height="1.7" />
         <predefined>
             <object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject" >
-                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+                <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
             <object X="2.1" Y="0.48" width="0.1" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>

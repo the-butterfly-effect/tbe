@@ -19,7 +19,7 @@
         <scenesize width="2.3" height="1.7" />
         <predefined>
             <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
-                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+                <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
             <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName" >Empty</property>
