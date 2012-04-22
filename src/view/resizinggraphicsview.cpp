@@ -135,7 +135,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
 	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
 
-        QTimer::singleShot(400, theGameResourcesPtr, SLOT(appearAnimated()));
+	QTimer::singleShot(200, theGameResourcesPtr, SLOT(appearAnimated()));
 }
 
 
@@ -203,5 +203,5 @@ void ResizingGraphicsView::slot_levelWon(void)
 	emit theWinFailDialogPtr->appearAnimated();
 
 	// Make the sim stop once the above animation is (almost) done...
-	QTimer::singleShot(1300, theScenePtr, SLOT(slot_signalPause()));
+	QTimer::singleShot(3000, theScenePtr, SLOT(slot_signalPause()));
 }
