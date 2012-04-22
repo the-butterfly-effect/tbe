@@ -1,25 +1,37 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>ring the bell</title>
+        <title>Ring the Bell</title>
+        <title lang="nl">Laat de bel maar luiden</title>
         <author>Klaas van Gend</author>
         <license>PD</license>
-        <description>Ring the bell.</description>
-        <date>4/22/12</date>
+        <description>It's coffee time. Ring the bell.</description>
+        <description>Tijd voor koffie. Laat de bel luiden.</description>
+        <date>22 April 2012</date>
     </levelinfo>
-    <toolbox/>
+    <toolbox>
+        <toolboxitem count="2" name="Quarter Arc">
+            <name lang="nl">Kwart ronding</name>
+            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000" ID="Hint2">
+	      <property key="Rotatable"> true </property>
+	    </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Wooden Beam">
+            <name lang="nl">Houten Balk</name>
+            <object width="2.000" height="0.100" type="RectObject" angle="0.000" ID="Hint1">
+                <property key="ImageName" >birch_bar</property>
+                <property key="Mass" >0.5</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
     <scene>
         <scenesize width="6.5" height="4" />
         <predefined>
             <object width="0.200" X="0.100" Y="2.000" height="4.000" type="RectObject" angle="0.000" >
                 <property key="ImageName" >oldbrick</property>
             </object>
-            <object width="2.000" X="2.000" Y="0.050" height="0.100" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
-            </object>
             <object width="1.400" X="0.710" Y="3.950" height="0.100" type="Floor" angle="0.000" />
             <object width="0.800" X="0.500" Y="3.600" height="0.800" type="QuarterArc80" angle="1.570" />
-            <object width="0.800" X="0.600" Y="0.400" height="0.800" type="QuarterArc80" angle="-3.140" />
             <object width="2.039" X="4.066" Y="0.693" height="0.100" type="Floor" angle="0.000" />
             <object width="0.170" X="3.105" Y="0.982" height="0.500" type="ColaMintBottle" angle="3.142" >
                 <property key="Thrust" > 4.0 </property>
@@ -30,7 +42,6 @@
                 <property key="PivotPoint" >(0.0, 0.27)</property>
             </object>
             <object width="0.220" X="5.656" Y="1.449" height="0.220" type="SoccerBall" angle="0.000" />
-            <object width="0.800" X="5.492" Y="1.048" height="0.800" type="QuarterArc80" angle="-1.571" />
             <object width="0.749" X="3.366" Y="0.352" height="0.100" type="Floor" angle="1.056" />
             <object width="0.744" X="3.837" Y="0.354" height="0.100" type="Floor" angle="-1.056" />
             <object width="0.754" X="4.364" Y="0.350" height="0.100" type="Floor" angle="1.056" />
@@ -87,4 +98,9 @@
             <property key="xover" >1.32</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" toolbox="Hint1" width="2.000" X="2.000" Y="0.050" height="0.100" angle="0.000" />
+        <hint number="2" toolbox="Hint2" width="0.800" X="0.600" Y="0.400" height="0.800" angle="-3.140" />
+        <hint number="3" toolbox="Hint2" width="0.800" X="5.492" Y="1.048" height="0.800" angle="-1.571" />
+    </hints>
 </tbe-level>
