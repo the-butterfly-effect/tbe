@@ -165,6 +165,23 @@ void MainWindow::on_action_New_Levels_activated(void)
 }
 
 
+void MainWindow::on_actionO_pen_File_activated(void)
+{
+    QString myFileName = QFileDialog::getOpenFileName(this,
+                                                      tr("Open level"), ".", tr("TBE levels (*.xml)"));
+    if (myFileName.isEmpty())
+        return;
+    loadLevel(myFileName);
+}
+
+
+void MainWindow::on_action_Quit_activated(void)
+{
+    if (Popup::YesNoQuestion("really?", this))
+        QApplication::exit(0);
+}
+
+
 void MainWindow::on_action_Suggestions_activated()
 {
 	Popup::Info(tr("<b>The Butterfly Effect - Suggestions</b><br><br>"

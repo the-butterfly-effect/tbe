@@ -64,6 +64,8 @@ public slots:
 	void on_action_Bug_Reports_activated(void);
 	void on_action_Libraries_activated(void);
 	void on_action_New_Levels_activated(void);
+	void on_actionO_pen_File_activated(void);
+	void on_action_Quit_activated(void);
 	void on_action_Suggestions_activated(void);
 
 	// menu File
