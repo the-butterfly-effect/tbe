@@ -119,7 +119,6 @@ bool ChooseLevel::readLevels(const QString& aFileName )
 		while( *it )
 		{
                     QString myLineStatus = (*it)->text(NR_COLUMN);
-                    printf("mylinestatus: '%s'\n", ASCII(myLineStatus));
                     if ( myLineStatus.contains(QRegExp("[0-9]")) )
                     {
                         m_ui->theTreeWidget->setCurrentItem(*it);
