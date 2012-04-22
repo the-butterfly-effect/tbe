@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "AbstractObject.h"
 #include "animateddialog.h"
 #include "PieMenu.h"
 #include "Popup.h"
 #include "Position.h"
 #include "resizinggraphicsview.h"
+#include "ViewObject.h"
 #include "ViewWorld.h"
 #include "World.h"
 
@@ -96,11 +98,14 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
         return;
     }
 
-    QGraphicsItem* myItemPtr = itemAt(mouseEvent->scenePos());
+    ViewObject* myItemPtr = dynamic_cast<ViewObject*>(itemAt(mouseEvent->scenePos()));
     if (myItemPtr!=NULL)
     {
-        QGraphicsScene::mousePressEvent(mouseEvent);
-        return;
+        if (myItemPtr->getAbstractObjectPtr()->isMovable())
+        {
+            QGraphicsScene::mousePressEvent(mouseEvent);
+            return;
+        }
     }
     // nothing clicked: clear pie menu
     PieMenuSingleton::clearPieMenu();
