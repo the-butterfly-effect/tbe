@@ -23,7 +23,6 @@
 #include "AbstractObject.h"
 
 #include <QtGui/QGraphicsColorizeEffect>
-#include <QtGui/QGraphicsScene>
 #include <QtGui/QGraphicsSceneMouseEvent>
 
 // Constructors/Destructors
@@ -64,7 +63,7 @@ void ViewPostIt::displayPostit(void)
     theUIPtr = new Ui::ViewPostIt();
     QLabel* myUIWidgetPtr = new QLabel();
     theUIPtr->setupUi(myUIWidgetPtr);
-    theDialogPtr = new AnimatedDialog( dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]));
+    theDialogPtr = new AnimatedDialog(ResizingGraphicsView::me());
     theDialogPtr->resize(240,240);
 
     QPixmap myPixmap;

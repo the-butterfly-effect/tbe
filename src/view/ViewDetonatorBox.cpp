@@ -72,11 +72,9 @@ ViewDetonatorBox::~ViewDetonatorBox ( )
 void ViewDetonatorBox::displayChoosePhoneNumber(void)
 {
 	// display a combobox with those numbers
-	ResizingGraphicsView* myViewPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
 	DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
-	assert (myViewPtr != NULL);
 	assert (myDetBoxPtr != NULL);
-	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, myViewPtr);
+	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, ResizingGraphicsView::me());
 	myDialogPtr->appearAnimated();
 
 	// The dialog will set the phone numbers itself, no need for us to worry
