@@ -42,6 +42,9 @@ public:
     /// and hides the sim controls again.
     void clearViewWorld(void);
 
+    /// used by various components to get to the RSGView
+    static ResizingGraphicsView* me(void);
+
     /// only to be called by ViewWorld, to register itself
     /// in the view
     void setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName);

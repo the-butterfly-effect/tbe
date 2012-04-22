@@ -29,6 +29,10 @@
 #include "WinFailDialog.h"
 #include "World.h"
 
+
+static ResizingGraphicsView* theRSGVPtr = NULL;
+
+
 ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	QGraphicsView(aParentPtr),
 	theGameResourcesPtr(NULL),
@@ -41,12 +45,14 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
         setFrameStyle(QFrame::Plain + QFrame::NoFrame);
 	theSimControlsPtr = new SimulationControls(this);
 	theGameResourcesPtr = new GameResources(this);
+	theRSGVPtr = this;
 }
 
 
 ResizingGraphicsView::~ResizingGraphicsView()
 {
 	delete theSimControlsPtr;
+	theRSGVPtr = NULL;
 }
 
 
@@ -72,6 +78,13 @@ GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 {
 	Q_ASSERT(theGameResourcesPtr != NULL);
 	return theGameResourcesPtr;
+}
+
+
+ResizingGraphicsView* ResizingGraphicsView::me(void)
+{
+	Q_ASSERT(theRSGVPtr!=NULL);
+	return theRSGVPtr;
 }
 
 

@@ -106,7 +106,9 @@ void GameResources::parentResize(const QTransform& aTransformMatrix)
     // parent (i.e. resizinggraphicsview).
     // This enforces that objects will have the same size as in the scene.
     theTransformMatrix = aTransformMatrix;
-    slot_startAppearing();
+
+    if (theLevelPtr)
+        slot_startAppearing();
 
     // And move the dialog to the center of the parent
     QSize myParentSize = theParentPtr->size();

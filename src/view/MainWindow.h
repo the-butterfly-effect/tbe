@@ -53,6 +53,8 @@ public slots:
 	/// @param aFileName guess what: the file name. Duh.
 	void loadLevel(const QString& aFileName);
 
+	void loadLevelDelayed(void);
+
 	/// Restarts the level already active.
 	/// Because we have the filename already, no need to specify here.
 	void reloadLevel(void);
@@ -72,8 +74,6 @@ private:
 
 	/// Pointer to the current level.
 	Level* theLevelPtr;
-
-//	ViewWorld* theScenePtr;
 
 	World* theWorldPtr;
 };

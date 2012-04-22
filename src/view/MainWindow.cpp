@@ -99,6 +99,13 @@ void MainWindow::loadLevel(const QString& aFileName)
 }
 
 
+void MainWindow::loadLevelDelayed()
+{
+	DEBUG1ENTRY;
+	loadLevel(theStartFileName);
+}
+
+
 void MainWindow::on_action_About_activated()
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
@@ -213,7 +220,8 @@ void MainWindow::setupView()
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
     if (theStartFileName.isEmpty())
         theStartFileName = ChooseLevel::getNextLevelName();
-    loadLevel(theStartFileName);
+
+    QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 }
 
 void MainWindow::on_action_Open_Level_triggered()

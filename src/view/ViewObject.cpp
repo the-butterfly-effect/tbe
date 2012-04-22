@@ -20,6 +20,8 @@
 #include "ImageCache.h"
 #include "MoveUndoCommand.h"
 #include "PieMenu.h"
+#include "Position.h"
+#include "resizinggraphicsview.h"
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 
@@ -47,9 +49,14 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 
 	QPixmap myTempPixmap;
 	QStringList myImageNames = anImageName.split(";");
+
+	QTransform theRGVTransform = ResizingGraphicsView::me()->transform();
+
+	QSize mySize((float)THESCALE*theRGVTransform.m11()*anAbstractObjectPtr->getTheWidth(),
+				 (float)THESCALE*theRGVTransform.m22()*anAbstractObjectPtr->getTheHeight());
 	foreach(QString i, myImageNames)
 	{
-		ImageCache::getPixmap(i, &myTempPixmap);
+		ImageCache::getPixmap(i, mySize, &myTempPixmap);
 		thePixmapList.push_back(myTempPixmap);
 	}
 	Q_ASSERT(thePixmapList.count() > 0);
