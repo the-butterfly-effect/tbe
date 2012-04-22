@@ -163,7 +163,7 @@ bool AbstractUndoCommand::setDecoratorStateMouseMove(void)
 
 bool AbstractUndoCommand::setDecoratorStateUndoRedo(void)
 {
-    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
+    if ((isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0) && theViewObjPtr->isVisible()==true)
     {
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
         return true;
