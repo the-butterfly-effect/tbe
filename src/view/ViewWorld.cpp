@@ -97,18 +97,9 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
             emit needReset();
         return;
     }
-
-    ViewObject* myItemPtr = dynamic_cast<ViewObject*>(itemAt(mouseEvent->scenePos()));
-    if (myItemPtr!=NULL)
-    {
-        if (myItemPtr->getAbstractObjectPtr()->isMovable())
-        {
-            QGraphicsScene::mousePressEvent(mouseEvent);
-            return;
-        }
-    }
-    // nothing clicked: clear pie menu
-    PieMenuSingleton::clearPieMenu();
+    PieMenuSingleton::startClickCheck();
+    QGraphicsScene::mousePressEvent(mouseEvent);
+    PieMenuSingleton::endClickCheck();
 }
 
 

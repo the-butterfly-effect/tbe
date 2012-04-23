@@ -24,6 +24,7 @@
 #include "AbstractObject.h"
 #include "ImageCache.h"
 #include "PieMenu.h"
+#include "resizinggraphicsview.h"
 #include "TriggerExplosion.h"   // for DetonatorBox*
 #include "UndoSingleton.h"
 #include "ViewObject.h"
@@ -40,14 +41,11 @@
 
 /// Distance from the pie menu center to the center of the outside icons.
 /// Note: this is in ActionIcon units
-static const qreal CENTER_RADIUS = 40.0;
+static const qreal CENTER_RADIUS = 20.0;
+static const qreal OUTER_DISTANCE = 2*CENTER_RADIUS*1.36;
+static const qreal TOTAL_RADIUS = OUTER_DISTANCE + 0.5 * CENTER_RADIUS;
 
-static const qreal SMALL_ICON_HALFWIDTH = 0.5*0.667*CENTER_RADIUS;
-static const qreal LARGE_ICON_HALFWIDTH = 2.0*SMALL_ICON_HALFWIDTH;
-
-/// Multiply CENTER_RADIUS with the below number to get the CENTER_RADIUS
-/// in scene coordinates
-static qreal theCenterRadiusScale = 1.0;
+static qreal theActionIconScaling = 1.0;
 
 void NamedState::onEntry ( QEvent * event )
 {
@@ -71,22 +69,17 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	Q_ASSERT(aParentPtr!=NULL);
 
 	QPixmap myTempPixmap;
-	ImageCache::getPixmap(aFileName, &myTempPixmap);
+	ImageCache::getPixmap(aFileName, QSize(2*CENTER_RADIUS,2*CENTER_RADIUS), &myTempPixmap);
 	setPixmap(myTempPixmap);
 
-	// we want to scale ourselfs so we are 2/3 of myRadius as width
-	// (or height - square!) that allows the centerpiece to be twice
-	// as big and everything just touches :-)
-	qreal myCurWidth = boundingRect().width();
-	qreal mySmallWidth = SMALL_ICON_HALFWIDTH;
-	qreal mySmallScale = 2*mySmallWidth/myCurWidth;
-	qreal myLargeWidth = LARGE_ICON_HALFWIDTH;
-	qreal myLargeScale = 2*myLargeWidth/myCurWidth;
-	theCenterRadiusScale = mySmallWidth/myCurWidth;
-	QPointF myOuterPos(CENTER_RADIUS*cos(anActionType*45.0/180.0*PI) - mySmallWidth,
-					   -CENTER_RADIUS*sin(anActionType*45.0/180.0*PI) + mySmallWidth);
-	QPointF mySInnerPos(-mySmallWidth, 0);
-	QPointF myLInnerPos(-myLargeWidth, 0);
+	QPointF myOuterPos(OUTER_DISTANCE*cos(anActionType*45.0/180.0*PI) -CENTER_RADIUS,
+					   -OUTER_DISTANCE*sin(anActionType*45.0/180.0*PI) - CENTER_RADIUS);
+	QPointF mySInnerPos(-CENTER_RADIUS, -CENTER_RADIUS);
+	QPointF myLInnerPos(-CENTER_RADIUS,-CENTER_RADIUS);
+
+	// Quite a convoluted way to figure out the scaling transformation that the QGraphicsWidget parent of ours does
+	// TODO/FIXME: I have no clue where that 0.5 comes from, but it appears to work reasonably well...
+	theActionIconScaling = 0.5*mapFromScene(QRectF(0,0,CENTER_RADIUS,CENTER_RADIUS)).boundingRect().width() / CENTER_RADIUS;
 
 	if (isEnabled==false)
 	{
@@ -109,10 +102,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	myPosAnim->setDuration(500);
 	myPosAnim->setEasingCurve(QEasingCurve::InOutBack);
 
-	QPropertyAnimation* mySizAnim = new QPropertyAnimation(this, "scale");
-	mySizAnim->setDuration(500);
-	mySizAnim->setEasingCurve(QEasingCurve::InOutBack);
-
 	// where to go from start...
 	QAbstractTransition* myTransPtr;
 	if (anActionType != ACTION_MOVE)
@@ -120,7 +109,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	else
 		myTransPtr=myStartState->addTransition(aParentPtr, SIGNAL(moveToPositions()), myInnerState);
 	myTransPtr->addAnimation(myPosAnim);
-	myTransPtr->addAnimation(mySizAnim);
 
 	// and the other state transitions
 	if (isEnabled==true)
@@ -129,24 +117,18 @@ ActionIcon::ActionIcon(ActionType anActionType,
 		connect(this, SIGNAL(clicked(ActionIcon*)), aParentPtr, SLOT(iconClicked(ActionIcon*)));
 	}
 	myTransPtr->addAnimation(myPosAnim);
-	myTransPtr->addAnimation(mySizAnim);
 	myTransPtr=myInnerState->addTransition(this, SIGNAL(clicked(ActionIcon*)), myActivState);
 	myTransPtr->addAnimation(myPosAnim);
-	myTransPtr->addAnimation(mySizAnim);
 	myTransPtr=myInnerState->addTransition(this, SIGNAL(moveBack()), myOuterState);
 	myTransPtr->addAnimation(myPosAnim);
-	myTransPtr->addAnimation(mySizAnim);
 
 
 	// set the positions for the various states
 	myStartState->assignProperty(this, "pos", mySInnerPos);
-	myStartState->assignProperty(this, "scale", mySmallScale);
 
 	myOuterState->assignProperty(this, "pos", myOuterPos);
-	myOuterState->assignProperty(this, "scale", mySmallScale);
 
 	myInnerState->assignProperty(this, "pos", myLInnerPos);
-	myInnerState->assignProperty(this, "scale", myLargeScale);
 
 	theIconStateMachine.start();
 }
@@ -158,7 +140,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
 
 
 PieMenu::PieMenu(ViewObject* aParentPtr)
-	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr)
+	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr), wasIconClicked(false)
 {
 	theAOPtr = aParentPtr->getAbstractObjectPtr();
 
@@ -170,6 +152,7 @@ PieMenu::PieMenu(ViewObject* aParentPtr)
 
 void PieMenu::iconClicked(ActionIcon* anIconPtr)
 {
+	wasIconClicked = true;
 	emit theCurrentInnerIconPtr->moveBack();
 
 	if (theCurrentInnerIconPtr == anIconPtr)
@@ -252,13 +235,9 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
 		me()->theCurrentPieMenuPtr->setup();
 
-		// Problem: we have a position the mouse clicked in Scene coordinates.
-		// We need to move half a radius up in order to display the center
-		// icon in the middle of the mouse click.
-		// Secondly, we need to move the pie menu in case otherwise icons
+		// We need to move the pie menu if otherwise icons
 		// would fall outside of the view.
-
-		qreal PIE_RADIUS = theCenterRadiusScale * (SMALL_ICON_HALFWIDTH+CENTER_RADIUS);
+		qreal PIE_RADIUS = TOTAL_RADIUS/theActionIconScaling;
 
 		if (aPositionInSceneCoord.x() < theViewRect.left()+PIE_RADIUS)
 			aPositionInSceneCoord.setX(theViewRect.left()+PIE_RADIUS);
@@ -269,11 +248,8 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 			aPositionInSceneCoord.setY(theViewRect.top()+PIE_RADIUS);
 		if (aPositionInSceneCoord.y()>theViewRect.bottom()-PIE_RADIUS)
 			aPositionInSceneCoord.setY(theViewRect.bottom()-PIE_RADIUS);
-		aPositionInSceneCoord.setY(aPositionInSceneCoord.y()- theCenterRadiusScale*LARGE_ICON_HALFWIDTH);
 
-		me()->theCurrentPieMenuPtr->setPos(
-					me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord));
-
+		me()->theCurrentPieMenuPtr->setPos(me()->theCurrentPieMenuPtr->mapToParent(me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord)));
 	}
 	else
 		me()->theCurrentPieMenuPtr = NULL;
@@ -284,3 +260,20 @@ void PieMenuSingleton::setViewInSceneCoords(const QPolygonF& aViewRect)
 {
 	theViewRect = aViewRect.boundingRect();
 }
+
+
+void PieMenuSingleton::startClickCheck()
+{
+	if (me()->theCurrentPieMenuPtr!=NULL)
+		me()->theCurrentPieMenuPtr->wasIconClicked = false;
+}
+
+void PieMenuSingleton::endClickCheck()
+{
+	if (me()->theCurrentPieMenuPtr!=NULL)
+	{
+		if (me()->theCurrentPieMenuPtr->wasIconClicked == false)
+			clearPieMenu();
+	}
+}
+

@@ -58,7 +58,6 @@ class ActionIcon : public QObject, QGraphicsPixmapItem
 {
 	Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
-	Q_PROPERTY(qreal scale READ scale WRITE setScale)
 
 public:
 	/// this enum identifies what type of action to create. By accident,
@@ -71,7 +70,7 @@ public:
 		ACTION_RESIZE = 2,
 		ACTION_MOVE = 3,
 		ACTION_DELETE = 4,
-//		ACTION_EDITPROPERTIES,
+//		ACTION_EDITPROPERTIES = 5,
 		ACTION_EDITSPECIAL = 6,
 		ACTION_SETPHONE = 7,
 		ACTION_INSERT = 32,
@@ -129,6 +128,10 @@ private:
 	AbstractObject* theAOPtr;
 	ViewObject* theVOPtr;
 
+	/// Set to true by iconClicked, monitored by
+	/// PieMenuSingleton::startClickCheck() and endClickCheck()
+	bool wasIconClicked;
+
 	/// private constructor
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
 	/// @param aPositionInObjectCoord position of the mouse click on the
@@ -166,6 +169,13 @@ public:
 	static void clearPieMenu(void)
 	{ addPieMenuToViewObject(NULL, QPointF(0,0)); }
 
+	/// Sets up all state to check if an ActionIcon will be clicked.
+	/// - see ViewWorld::mousePressEvent()
+	static void startClickCheck();
+	/// Checks the state to see if an ActionIcon was clicked
+	/// and clears the pie menu if something else was clicked.
+	/// - see ViewWorld::mousePressEvent()
+	static void endClickCheck();
 
 	/// This member is called whenever the ResizingGraphicsView resizes.
 	/// It sets the view rect in scene coordinates, so we know what would move
