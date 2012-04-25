@@ -1,0 +1,109 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>hole-in-one</title>
+        <author>Klaas van Gend</author>
+        <license>pD</license>
+        <description>After the ball is putted, make it appear on the surface again.
+</description>
+        <date>4/25/12</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="6.5" height="4" />
+        <predefined>
+            <object width="2.461" X="6.450" Y="1.230" height="0.100" type="Floor" angle="-1.571" >
+                <property key="NoCollision" >top-lever</property>
+            </object>
+            <object width="0.170" X="6.310" Y="0.244" height="0.500" type="CokeMentosBottle" angle="3.142" />
+            <object width="0.186" X="6.150" Y="0.427" height="0.100" type="Floor" angle="1.570" />
+            <object width="1.590" X="6.150" Y="1.595" height="0.100" type="Floor" ID="vertibar" angle="1.571" >
+                <property key="NoCollision" >top-lever</property>
+            </object>
+            <object width="0.600" X="6.090" Y="2.460" height="0.100" type="RectObject" ID="top-lever" angle="0.590" >
+                <property key="Mass" >1</property>
+                <property key="NoCollision" >verti-bar</property>
+                <property key="PivotPoint" >(0,0)</property>
+                <property key="ZValue" >5.0</property>
+            </object>
+            <object width="6.124" X="3.121" Y="2.741" height="0.100" type="Floor" angle="0.000" >
+                <property key="NoCollision" >top-lever</property>
+            </object>
+            <object width="1.000" X="5.174" Y="3.077" height="0.538" type="RightRamp" angle="0.000" />
+            <object width="0.068" X="5.378" Y="3.050" height="0.068" type="TennisBall" ID="theball" angle="0.000" >
+                <property key="Mass" >1</property>
+            </object>
+            <object width="0.170" X="5.259" Y="2.335" height="0.500" type="CokeMentosBottle" angle="-1.571" />
+            <object width="0.448" X="5.934" Y="2.207" height="0.100" type="Floor" angle="0.286" />
+            <object width="1.000" X="6.183" Y="3.142" height="0.100" type="Floor" angle="-1.139" />
+            <object width="0.100" X="5.580" Y="2.514" height="0.260" type="RectObject" ID="reversehammer1" angle="0.000" >
+                <property key="Mass" >2</property>
+                <property key="PivotPoint" >(0,-0.05)</property>
+            </object>
+            <object width="2.535" X="4.229" Y="2.189" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.230" X="4.400" Y="1.690" height="0.120" type="RectObject" angle="6.050" >
+                <property key="Mass" >2.0</property>
+                <property key="PivotPoint" >(-0.1,0.0)</property>
+            </object>
+            <object width="0.220" X="4.579" Y="2.356" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="1.988" X="2.745" Y="1.850" height="0.100" type="Floor" angle="0.000" />
+            <object width="2.026" X="2.767" Y="1.299" height="0.100" type="Floor" angle="-0.040" />
+            <object width="1.529" X="3.000" Y="0.730" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.634" X="2.423" Y="2.288" height="0.780" type="RightWedge" angle="0.000" />
+            <object width="0.400" X="2.716" Y="0.886" height="0.200" type="Spring" angle="0.000" >
+                <property key="ImageName" >spring20</property>
+            </object>
+            <object width="0.250" X="0.564" Y="0.205" height="0.400" type="Cactus" angle="0.000" />
+            <object width="0.270" X="0.823" Y="0.359" height="0.360" type="Balloon" angle="0.000" />
+            <object width="0.250" X="1.074" Y="0.209" height="0.400" type="Cactus" angle="0.000" />
+            <object width="0.270" X="1.333" Y="0.363" height="0.360" type="Balloon" angle="0.000" />
+            <object width="0.270" X="0.305" Y="0.363" height="0.360" type="Balloon" angle="0.000" />
+            <object width="0.170" X="4.969" Y="0.694" height="0.500" type="CokeMentosBottle" angle="3.142" >
+                <property key="Thrust" >5</property>
+            </object>
+            <object width="0.500" X="5.967" Y="0.615" height="0.120" type="RectObject" angle="0.197" >
+                <property key="Mass" >1</property>
+                <property key="PivotPoint" >(0,0)</property>
+            </object>
+            <object width="0.120" X="4.970" Y="1.420" height="0.120" type="RectObject" ID="blocker2" angle="0.000" />
+            <object width="0.800" X="1.372" Y="1.682" height="0.800" type="QuarterArc80" angle="3.140" />
+            <object width="0.170" X="4.950" Y="0.400" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.230" X="4.400" Y="1.130" height="0.100" type="RectObject" angle="6.050" >
+                <property key="Mass" >1</property>
+                <property key="PivotPoint" >(-0.05,0)</property>
+            </object>
+            <object width="0.400" X="2.311" Y="0.986" height="0.400" type="QuarterArc40" angle="0.000" />
+            <object width="0.368" X="5.770" Y="1.328" height="0.383" type="LeftRamp" angle="0.000" />
+            <object width="0.550" X="5.320" Y="1.000" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.100" X="5.100" Y="1.240" height="0.300" type="RectObject" ID="reversehammer2" angle="0.000" >
+                <property key="Mass" >0.2</property>
+                <property key="NoCollision" >reversehammer2w;blocker2</property>
+                <property key="PivotPoint" >(0,0)</property>
+            </object>
+            <object width="0.100" X="5.100" Y="1.340" height="0.100" type="RectObject" ID="reversehammer2w" angle="0.000" >
+                <property key="Mass" >3</property>
+                <property key="NoCollision" >reversehammer2</property>
+                <property key="PivotPoint" >(0,-0.1)</property>
+            </object>
+            <object width="0.100" X="5.080" Y="1.340" height="0.100" type="Link" angle="0.000" >
+                <property key="object1" >reversehammer2@(-0.04,0.1)</property>
+                <property key="object2" >reversehammer2w@(-0.04,0.0)</property>
+            </object>
+            <object width="0.100" X="5.120" Y="1.340" height="0.100" type="Link" angle="0.000" >
+                <property key="object1" >reversehammer2@(0.04,0.1)</property>
+                <property key="object2" >reversehammer2w@(0.04,0.0)</property>
+            </object>
+            <object width="0.446" X="5.487" Y="1.854" height="0.487" type="RightRamp" angle="0.000" />
+        </predefined>
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange" >
+            <property key="object" >theball</property>
+            <property key="xbelow" >0.2</property>
+        </goal>
+    </goals>
+</tbe-level>
