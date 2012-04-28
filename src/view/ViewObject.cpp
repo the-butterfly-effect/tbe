@@ -66,9 +66,8 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 	thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
 
 	setCacheMode(QGraphicsItem::DeviceCoordinateCache);
-	adjustObjectDrawing();
-
 	initViewObjectAttributes();
+        adjustObjectDrawing();
 }
 
 ViewObject::~ViewObject()
@@ -160,6 +159,8 @@ void ViewObject::initViewObjectAttributes(void)
     theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
     theMUCPtr = NULL;
+    theOldWidth = 0.0;
+    theOldHeight= 0.0;
 }
 
 
