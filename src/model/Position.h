@@ -59,7 +59,7 @@ public:
 	QPointF	 toQPointF(void) const;
 	QString  toString(void) const;
 
-	/// @returns a Vector in the same direction, but with length one.
+        /// @returns a Vector in the same direction, but with length one.
 	Vector   toUnitVector(void) const;
 
 	/// @returns this vector, rotated along anAngle
@@ -114,7 +114,7 @@ public:
         bool isValid() const
         { return (isnan(x)==0 && isnan(y)==0); }
 
-	b2Vec2  toB2Vec2(void) const;
+        b2Vec2  toB2Vec2(void) const;
 	QPointF toQPointF(void) const
         {   assert(isValid()); return QPointF(THESCALE*x,-THESCALE*y); }
 	QString toString(void) const;
@@ -160,5 +160,9 @@ bool operator!=(const Position& p1, const Position& p2);
 /// compare two vectors
 bool operator==(const Vector& p1, const Vector& v2);
 bool operator!=(const Vector& p1, const Vector& v2);
+
+/// send to debug directly
+QDebug operator<<(QDebug dbg, const Position& p);
+QDebug operator<<(QDebug dbg, const Vector& v);
 
 #endif // POSITION_H

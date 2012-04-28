@@ -282,3 +282,15 @@ bool operator!=(const Vector& v1, const Vector& v2)
 {
     return !(v1==v2);
 }
+
+QDebug operator<<(QDebug dbg, const Position& p)
+{
+    dbg.nospace() << p.toString();
+    return dbg.space();
+}
+
+QDebug operator<<(QDebug dbg, const Vector& v)
+{
+    dbg.nospace() << v.toString();
+    return dbg.space();
+}
