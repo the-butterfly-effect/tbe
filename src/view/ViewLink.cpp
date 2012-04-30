@@ -59,4 +59,5 @@ void ViewLink::setEndpoints(const Vector& aFirstPoint,
 
     theLinePtr->setLine(QLineF(aFirstPoint.toQPointF(),
                                aSecondPoint.toQPointF()));
+    theLinePtr->setVisible(isVisible());
 }
