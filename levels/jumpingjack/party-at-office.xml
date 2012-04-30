@@ -110,12 +110,12 @@
                 <property key="Mass" >20</property>
             </object>
             <object width="0.133" X="2.910" Y="0.940" height="0.044" type="Link" angle="0.000" >
-                <property key="ImageName" >rope_rot</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >rope2@(0.00,-0.08)</property>
                 <property key="object2" >Weight@(0.0,0.15)</property>
             </object>
             <object width="0.297" X="2.800" Y="0.940" height="0.099" type="Link" angle="0.000" >
-                <property key="ImageName" >rope_rot</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >rope1@(0.00,-0.23)</property>
                 <property key="object2" >rope2@(0.0,0.08)</property>
             </object>

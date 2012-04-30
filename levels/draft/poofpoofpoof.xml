@@ -47,17 +47,17 @@
             <object width="0.400" X="0.866" Y="0.791" height="0.400" type="QuarterArc40" angle="1.571" />
             <object width="0.900" X="3.450" Y="0.450" height="0.100" type="Floor" angle="1.570" />
             <object width="0.598" X="1.169" Y="0.499" height="0.199" type="Link" angle="0.000" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >balloon1@(0,-0.17)</property>
                 <property key="object2" >block1@(0,0)</property>
             </object>
             <object width="0.598" X="1.500" Y="2.840" height="0.199" type="Link" angle="0.000" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >balloon2@(0,-0.17)</property>
                 <property key="object2" >block2@(0,0)</property>
             </object>
             <object width="0.598" X="1.780" Y="2.840" height="0.199" type="Link" angle="0.000" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >balloon3@(0,-0.17)</property>
                 <property key="object2" >block3@(0,0)</property>
             </object>
@@ -68,7 +68,7 @@
             <object width="0.270" X="0.345" Y="0.967" height="0.360" type="Balloon" ID="balloon5" angle="0.000" />
             <object width="0.100" X="0.345" Y="0.150" height="0.100" type="Floor" ID="block5" angle="0.000" />
             <object width="0.712" X="0.345" Y="2.840" height="0.237" type="Link" angle="0.000" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#E0E000</property>
                 <property key="object1" >balloon5@(0,-0.17)</property>
                 <property key="object2" >block5@(0,0)</property>
             </object>

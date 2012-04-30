@@ -58,6 +58,7 @@ private:
         const ViewLink& operator= (const ViewLink&);
 
         QGraphicsLineItem* theLinePtr;
+        QString theImageName;
 };
 
 #endif // VIEWLINK_H

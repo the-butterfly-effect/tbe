@@ -88,12 +88,10 @@
             <object width="0.100" X="5.080" Y="1.340" height="0.100" type="Link" angle="0.000" >
                 <property key="object1" >reversehammer2@(-0.04,0.1)</property>
                 <property key="object2" >reversehammer2w@(-0.04,0.0)</property>
-                <property key="ImageName" >Empty</property>
             </object>
             <object width="0.100" X="5.120" Y="1.340" height="0.100" type="Link" angle="0.000" >
                 <property key="object1" >reversehammer2@(0.04,0.1)</property>
                 <property key="object2" >reversehammer2w@(0.04,0.0)</property>
-                <property key="ImageName" >Empty</property>
             </object>
             <object width="0.650" X="5.487" Y="1.854" height="0.487" type="RightRamp" angle="0.000" />
         </predefined>

@@ -69,27 +69,27 @@
                 <property key="Mass">0.020</property>
             </object>
             <object width="0.655" X="3.500" Y="1.700" height="0.218" type="Link" angle="0.000">
-                <property key="ImageName">rope</property>
+                <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon1@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
             <object width="0.405" X="3.660" Y="1.700" height="0.135" type="Link" angle="0.000">
-                <property key="ImageName">rope</property>
+                <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon2@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
             <object width="0.275" X="3.770" Y="1.700" height="0.092" type="Link" angle="0.000">
-                <property key="ImageName">rope</property>
+                <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon3@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
             <object width="0.405" X="3.880" Y="1.700" height="0.135" type="Link" angle="0.000">
-                <property key="ImageName">rope</property>
+                <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon4@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
             <object width="0.655" X="4.040" Y="1.700" height="0.218" type="Link" angle="0.000">
-                <property key="ImageName">rope</property>
+                <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon5@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
