@@ -59,14 +59,15 @@ public slots:
 	/// Because we have the filename already, no need to specify here.
 	void reloadLevel(void);
 
-	// menu Help
-	void on_action_About_activated(void);
-	void on_action_Bug_Reports_activated(void);
-	void on_action_Libraries_activated(void);
-	void on_action_New_Levels_activated(void);
-	void on_actionO_pen_File_activated(void);
-	void on_action_Quit_activated(void);
-	void on_action_Suggestions_activated(void);
+        // menu Help
+        void on_action_About_activated(void);
+        void on_action_Bug_Reports_activated(void);
+        void on_action_Keyboard_Shortcuts_activated(void);
+        void on_action_Libraries_activated(void);
+        void on_action_New_Levels_activated(void);
+        void on_actionO_pen_File_activated(void);
+        void on_action_Quit_activated(void);
+        void on_action_Suggestions_activated(void);
 
 	// menu File
 	void on_action_Open_Level_triggered();

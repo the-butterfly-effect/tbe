@@ -138,6 +138,23 @@ void MainWindow::on_action_Bug_Reports_activated()
 }
 
 
+void MainWindow::on_action_Keyboard_Shortcuts_activated()
+{
+    //: translators: <b> and <br> are statements for bold and newline, respectively, please make sure to
+    //: please make sure to match the statements in this dialog with your shortcuts
+    Popup::Info(tr("<b>The Butterfly Effect - Keyboard shortcuts</b><br><br>"
+                   "The following keys can be used to accelerate actions you'd have to do with the mouse otherwise"
+                   "<table cellpadding=\"5\">"
+                   "<tr><th align=\"left\">Key</th><th align=\"left\">Function </th></tr> "
+                   "<tr><td>Space</td><td>start / stop simulation </td></tr> "
+                   "<tr><td>f</td><td>(during simulation) fast forward / slowd down </td></tr> "
+                   "<tr><td>t</td><td>show /hide toolbox </td></tr> "
+                   "<tr><td>Ctrl-Z</td><td> undo last action </td></tr> "
+                   "<tr><td>Ctrl-Y</td><td> redo last action </td></tr> "
+                   "</table>"), this);
+}
+
+
 void MainWindow::on_action_Libraries_activated()
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
@@ -224,7 +241,6 @@ void MainWindow::setupView()
 {
     // setup UndoGroup's QActions and add them to Edit menu
     // note that this doesn't enable them yet, our ViewWorld should handle that...
-    // TODO/FIXME: that needs work
     QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
     myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
     ui->menuEdit->addAction(myUndoActionPtr);

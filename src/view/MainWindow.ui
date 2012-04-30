@@ -34,7 +34,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -70,6 +70,7 @@
      <addaction name="action_New_Levels"/>
     </widget>
     <addaction name="action_Libraries"/>
+    <addaction name="action_Keyboard_Shortcuts"/>
     <addaction name="separator"/>
     <addaction name="menu_Contribute"/>
     <addaction name="action_About"/>
@@ -97,6 +98,11 @@
   <action name="action_Libraries">
    <property name="text">
     <string>Libraries...</string>
+   </property>
+  </action>
+  <action name="action_Keyboard_Shortcuts">
+   <property name="text">
+    <string>&amp;Keyboard Shortcuts...</string>
    </property>
   </action>
   <action name="action_About">
