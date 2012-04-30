@@ -55,11 +55,17 @@ void ToolboxUpDownControls::parentResize(const QSize& aSize)
 
 void ToolboxUpDownControls::setDownEnabled()
 {
+    theUpActionPtr->setShortcut(QKeySequence());
+    //: translators: 't' is for 'toolbox'.
+    theDownActionPtr->setShortcut(QKeySequence(tr("t")));
     ui->toolButton->setDefaultAction(theDownActionPtr);
 }
 
 void ToolboxUpDownControls::setUpEnabled()
 {
+    theDownActionPtr->setShortcut(QKeySequence());
+    //: translators: 't' is for 'toolbox'.
+    theUpActionPtr->setShortcut(QKeySequence(tr("t")));
     ui->toolButton->setDefaultAction(theUpActionPtr);
 }
 
