@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -81,11 +81,16 @@ public:
 	/// implemented from BaseJoint
 	virtual void updateOrigCenter(void);
 
+        /// updates the ViewLink to still have its line between the underlying b2bodys
+        /// (it won't update if the object is asleep if sim is running)
+        /// @param isSimRunning  set to true if you want to use position/size from sim
+        virtual void updateViewObject(bool isSimRunning) const;
+
 private:
 	AbstractObject* theFirstPtr;
 	AbstractObject* theSecondPtr;
 	Vector*     theFirstLocalPosPtr;
-	Vector*     theSecondLocalPosPtr;
+        Vector*     theSecondLocalPosPtr;
 
 };
 

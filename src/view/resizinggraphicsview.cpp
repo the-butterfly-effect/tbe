@@ -43,7 +43,8 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
         setFrameStyle(QFrame::Plain + QFrame::NoFrame);
-	theSimControlsPtr = new SimulationControls(this);
+        setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+        theSimControlsPtr = new SimulationControls(this);
 	theGameResourcesPtr = new GameResources(this);
 	theRSGVPtr = this;
 }

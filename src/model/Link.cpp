@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2012  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "Link.h"
 #include "ObjectFactory.h"
-#include "ViewObject.h"
+#include "ViewLink.h"
 
 #include "Box2D.h"
 #include <cassert>
@@ -28,10 +28,10 @@
 class LinkObjectFactory : public ObjectFactory
 {
 public:
-	LinkObjectFactory(void)
-	{	announceObjectType("Link", this); }
-	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new Link()); }
+    LinkObjectFactory(void)
+    {	announceObjectType("Link", this); }
+    virtual AbstractObject* createObject(void) const
+    {	return fixObject(new Link()); }
 };
 static LinkObjectFactory theLinkFactory;
 
@@ -42,143 +42,139 @@ Link::Link(void)
       theFirstLocalPosPtr(NULL),
       theSecondLocalPosPtr(NULL)
 {
-	theProps.setDefaultPropertiesString(
-			Property::OBJECT1_STRING + QString(":/") +
-			Property::OBJECT2_STRING + QString(":/") +
-			Property::OVERLAP_STRING + QString(":10/") +
-			"-" + Property::MASS_STRING + ":/" );
+    theProps.setDefaultPropertiesString(
+                Property::OBJECT1_STRING + QString(":/") +
+                Property::OBJECT2_STRING + QString(":/") +
+                Property::OVERLAP_STRING + QString(":10/") +
+                "-" + Property::MASS_STRING + ":/" );
 }
 
 Link::~Link ()
 {
-	// nothing real to do ?!?
-	theFirstPtr  = NULL;
-	theSecondPtr = NULL;
-	theFirstLocalPosPtr  = NULL;
-	theSecondLocalPosPtr = NULL;
+    // nothing real to do ?!?
+    theFirstPtr  = NULL;
+    theSecondPtr = NULL;
+
+    delete theFirstLocalPosPtr;
+    theFirstLocalPosPtr  = NULL;
+    delete theSecondLocalPosPtr;
+    theSecondLocalPosPtr = NULL;
 }
 
 ViewObject*  Link::createViewObject(float aDefaultDepth)
 {
-	// this temporary draw object is needed to figure out
-	// the dimensions of the image we are drawing,
-	// so we can keep the aspect ratio correct.
-	ViewObject* myTempViewObject = AbstractJoint::createViewObject(aDefaultDepth);
-	if(myTempViewObject==NULL)
-		return NULL;
-	float myAspectRatio = myTempViewObject->getOrigImageAspectRatio();
-	delete myTempViewObject;
-	theViewObjectPtr = NULL;
-
-	// this happens if e.g. we are in level editor mode
-	if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
-		theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
-	{
-		if (myAspectRatio > 1.0)
-		{
-			setTheWidth(myAspectRatio);
-			setTheHeight(1.0);
-		}
-		else
-		{
-			setTheWidth(1.0);
-			setTheHeight(myAspectRatio);
-		}
-		return AbstractObject::createViewObject(aDefaultDepth);
-	}
-
-
-	// we set the longest value to be the width and the shortest to be the
-	// height, i.e. FOR NOW, we assume all images to be horizontal...
-	Vector myV1 = (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toVector();
-	Vector myV2 = (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toVector();
-	Vector myDiff = myV2 - myV1;
-
-	float myOverlap = 10;
-	theProps.property2Float(Property::OVERLAP_STRING, &myOverlap);
-	float myAdjustedWidth = myDiff.length()*(1.0+myOverlap/100.0);
-	float myAdjustedHeight= myAdjustedWidth/myAspectRatio;
-
-	setTheWidth(myAdjustedWidth);
-	setTheHeight(myAdjustedHeight);
-
-	return AbstractObject::createViewObject(aDefaultDepth);
+    if (theViewObjectPtr!=NULL)
+        return theViewObjectPtr;
+    QString myImageName;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
+        myImageName = getInternalName();
+    theViewObjectPtr = new ViewLink(this, myImageName);
+    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    return theViewObjectPtr;
 }
 
 
 void Link::createPhysicsObject(void)
 {
-	if (theWorldPtr==NULL)
-		return;
+    if (theWorldPtr==NULL)
+        return;
 
-	assert(theFirstPtr!=NULL);
-	assert(theFirstLocalPosPtr!=NULL);
-	if (theFirstPtr==NULL)
-	{
-		DEBUG4("Link: No valid first object found...\n");
-		return;
-	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
-	assert (myFirstB2BodyPtr);
-	theFirstPtr->addJoint(this);
+    assert(theFirstPtr!=NULL);
+    assert(theFirstLocalPosPtr!=NULL);
+    if (theFirstPtr==NULL)
+    {
+        DEBUG4("Link: No valid first object found...\n");
+        return;
+    }
+    b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
+    assert (myFirstB2BodyPtr);
+    theFirstPtr->addJoint(this);
 
-	assert(theSecondPtr!=NULL);
-	assert(theSecondLocalPosPtr!=NULL);
-	if (theSecondPtr==NULL)
-	{
-		DEBUG4("Link: No valid second object found...\n");
-		return;
-	}
-	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
-	assert (mySecondB2BodyPtr);
-	theSecondPtr->addJoint(this);
+    assert(theSecondPtr!=NULL);
+    assert(theSecondLocalPosPtr!=NULL);
+    if (theSecondPtr==NULL)
+    {
+        DEBUG4("Link: No valid second object found...\n");
+        return;
+    }
+    b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
+    assert (mySecondB2BodyPtr);
+    theSecondPtr->addJoint(this);
 
-	// *** initialise Box2D's distance joint:
-	// note: Initialize() uses a global coordinate...
-	b2DistanceJointDef myJointDef;
+    // *** initialise Box2D's distance joint:
+    // note: Initialize() uses a global coordinate...
+    b2DistanceJointDef myJointDef;
 
-	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
-						  (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toB2Vec2(),
-						  (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toB2Vec2());
-	myJointDef.userData = this;
-	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
+                          (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toB2Vec2(),
+                          (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toB2Vec2());
+    myJointDef.userData = this;
+    theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 Position Link::getTempCenter() const
 {
-	if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
-		theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
-		return getOrigCenter();
+    if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
+            theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
+        return getOrigCenter();
 
-	Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
-	Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
-	Vector myMiddle = myV1 + myV2;
-	myMiddle = 0.5 * myMiddle;
+    Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
+    Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
+    Vector myMiddle = myV1 + myV2;
+    myMiddle = 0.5 * myMiddle;
 
-	Vector myDiff = myV1 - myV2;
-	double myAngle = myDiff.toAngle();
+    Vector myDiff = myV1 - myV2;
+    double myAngle = myDiff.toAngle();
 
-	return Position(myMiddle.toB2Vec2(), myAngle);
+    return Position(myMiddle.toB2Vec2(), myAngle);
 }
 
 
 void Link::parseProperties(void)
 {
-	AbstractObject::parseProperties();
-	if (theWorldPtr==NULL)
-		return;
+    AbstractObject::parseProperties();
+    if (theWorldPtr==NULL)
+        return;
 
-	// *** parse object1 & object2
-	// NOTE: if we used the constructor with baseobject, (i.e. properties
-	// aren't read yet) this will still work because propertyToObjectPtr
-	// only modifies theFirstPtr/theSecondPtr if successful
-	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
-								  &theFirstPtr, &theFirstLocalPosPtr);
+    // *** parse object1 & object2
+    // NOTE: if we used the constructor with baseobject, (i.e. properties
+    // aren't read yet) this will still work because propertyToObjectPtr
+    // only modifies theFirstPtr/theSecondPtr if successful
+    theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
+                                          &theFirstPtr, &theFirstLocalPosPtr);
 
-	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
-								  &theSecondPtr, &theSecondLocalPosPtr);
+    theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
+                                          &theSecondPtr, &theSecondLocalPosPtr);
 }
+
 
 void Link::updateOrigCenter(void)
 {
+}
+
+
+
+void Link::updateViewObject(bool isSimRunning) const
+{
+    // no ViewObject: nothing to update ;-)
+    if(theViewObjectPtr == NULL)
+        return;
+
+    // no b2body: no part of simulation
+    // PROBLEM: joints also don't have a b2Body - that's why they have their own
+    // overriden version of this member...
+    if (theFirstPtr==NULL || theSecondPtr==NULL)
+    {
+        // problem
+        DEBUG1("Link::updateViewObject()  while first or second is zero\n");
+        assert(false);
+    }
+
+    // Sim running: don't need to adjust objects that are static or asleep
+    ViewLink* theVLPtr = dynamic_cast<ViewLink*>(theViewObjectPtr);
+    assert(theVLPtr!=NULL);
+
+    Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
+    Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
+    theVLPtr->setEndpoints(myV1, myV2);
 }

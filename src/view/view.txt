@@ -16,6 +16,7 @@ SET(view_SOURCES
 	view/ToolboxUpDownControls.cpp
 	view/ViewObject.cpp 
 	view/ViewDetonatorBox.cpp 
+	view/ViewLink.cpp
 	view/ViewPostIt.cpp 
 	view/ViewWorld.cpp 
 	view/ViewToolboxGroup.cpp 
@@ -37,6 +38,7 @@ SET(view_HEADERS
 	view/SimulationControls.h 
 	view/ToolboxUpDownControls.h
 	view/ViewDetonatorBox.h 
+	view/ViewLink.h
 	view/ViewObject.h 
 	view/ViewPostIt.h 
 	view/ViewWorld.h 

@@ -122,19 +122,22 @@ bool World::addObject(AbstractObject* anObjectPtr)
 	anObjectPtr->theWorldPtr = this;
 	anObjectPtr->parseProperties();
 
-	if (theViewWorldPtr!=NULL)
-		addAbstractObjectToViewWorld(anObjectPtr);
+        if (theViewWorldPtr!=NULL)
+                addAbstractObjectToViewWorld(anObjectPtr);
 	return true;
 }
 
 
 void World::addAbstractObjectToViewWorld(AbstractObject* anAOPtr)
 {
-	assert(theViewWorldPtr!=NULL);
-	DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr);
-	ViewObject* myVOPtr = anAOPtr->createViewObject();
-	if (myVOPtr!=NULL)
-		theViewWorldPtr->addItem(myVOPtr);
+    assert(theViewWorldPtr!=NULL);
+    DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr);
+    ViewObject* myVOPtr = anAOPtr->createViewObject();
+    if (myVOPtr!=NULL)
+    {
+        theViewWorldPtr->addItem(myVOPtr);
+        anAOPtr->updateViewObject(false);
+    }
 }
 
 
