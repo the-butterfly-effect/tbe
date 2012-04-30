@@ -144,10 +144,12 @@ void MainWindow::on_action_Keyboard_Shortcuts_activated()
     //: please make sure to match the statements in this dialog with your shortcuts
     Popup::Info(tr("<b>The Butterfly Effect - Keyboard shortcuts</b><br><br>"
                    "The following keys can be used to accelerate actions you'd have to do with the mouse otherwise"
-                   "<table cellpadding=\"5\">"
+                   "<table cellpadding=\"4\">"
                    "<tr><th align=\"left\">Key</th><th align=\"left\">Function </th></tr> "
                    "<tr><td>Space</td><td>start / stop simulation </td></tr> "
                    "<tr><td>f</td><td>(during simulation) fast forward / slowd down </td></tr> "
+                   "<tr><td>shift+f</td><td>(during simulation) really fast forward </td></tr> "
+                   "<tr><td>r</td><td>reset the simulation </td></tr> "
                    "<tr><td>t</td><td>show /hide toolbox </td></tr> "
                    "<tr><td>Ctrl-Z</td><td> undo last action </td></tr> "
                    "<tr><td>Ctrl-Y</td><td> redo last action </td></tr> "

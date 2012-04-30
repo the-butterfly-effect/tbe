@@ -31,19 +31,22 @@ class SimulationControls;
 /// debug messages when SimulationControls switches state
 class SimState : public QState
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit SimState(QState* parent = 0, const QString& aStateName = "")
-		: QState(parent), theName(aStateName) {}
+    explicit SimState(QState* parent = 0, const QString& aStateName = "")
+        : QState(parent), isActive(false), theName(aStateName) {}
 
-	virtual ~SimState()
-	{}
+    virtual ~SimState()
+    {}
+
+    bool isActive;
 
 protected:
-	virtual void onEntry ( QEvent * event );
+    virtual void onEntry ( QEvent * event );
+    virtual void onExit  ( QEvent * event );
 
 private:
-	QString theName;
+    QString theName;
 };
 
 
@@ -69,6 +72,9 @@ public:
     void hookSignalsUp(ViewWorld* aViewWorld);
 
 signals:
+    /// emitted to go to really fast forward
+    void go_quadspeed();
+
     void internalCrossPresent(void);
     void internalCrossGone(void);
 
@@ -80,51 +86,55 @@ signals:
 
 
 public slots:
-	/// call this slot if the simulation has failed, the internal
-	/// state machine will go to the Failed state.
-	void onFailed(void)
-	{ emit internalFailed(); }
+    /// call this slot if the simulation has failed, the internal
+    /// state machine will go to the Failed state.
+    void onFailed(void)
+    { emit internalFailed(); }
 
-	void onReset(void)
-	{ emit internalReset(); }
+    void onReset(void)
+    { emit internalReset(); }
 
-	/// hide (and disable) the controls
-	void hideYourself();
-	/// show (and enable) the controls
-	void showYourself();
+    /// hide (and disable) the controls
+    void hideYourself();
+    /// show (and enable) the controls
+    void showYourself();
 
-	/// Resizinggraphicsview connects CrossRegisterSingleton to this slot
-	/// and it will be called whenever the user has a cross on one of his
-	/// decorators.
-	void slotNumberOfCrossesChanged(int aNewNumber);
+    /// Resizinggraphicsview connects CrossRegisterSingleton to this slot
+    /// and it will be called whenever the user has a cross on one of his
+    /// decorators.
+    void slotNumberOfCrossesChanged(int aNewNumber);
+
+private slots:
+    void slot_4SpeedForward(void);
 
 private:
-	QStateMachine theSimStateMachine;
+    QStateMachine theSimStateMachine;
 
-	QAction* theTopAction;
-	QAction* theBotAction;
+    QAction* theTopAction;
+    QAction* theBotAction;
+    QAction* the4FAction;
 
-	QIcon theFwdIcon;
-	QIcon thePauseIcon;
-	QIcon thePlayIcon;
-	QIcon theResetIcon;
-	QIcon theStopIcon;
+    QIcon theFwdIcon;
+    QIcon thePauseIcon;
+    QIcon thePlayIcon;
+    QIcon theResetIcon;
+    QIcon theStopIcon;
 
-	QPixmap theFFStatusPixmap;
-	QPixmap theFailStatusPixmap;
-	QPixmap thePauseStatusPixmap;
-	QPixmap thePlayStatusPixmap;
-	QPixmap theProblemStatusPixmap;
-	QPixmap theStopStatusPixmap;
+    QPixmap theFFStatusPixmap;
+    QPixmap theFailStatusPixmap;
+    QPixmap thePauseStatusPixmap;
+    QPixmap thePlayStatusPixmap;
+    QPixmap theProblemStatusPixmap;
+    QPixmap theStopStatusPixmap;
 
-	QState* theFailedState;		// happens upon death
-	QState* theForwardState;	// fast forward
-	QState* thePausedState;		// paused (but sim is active)
-	QState* theProblemState;	// at least one cross, user can change things
-	QState* theRunningState;	// sim is active and running
-	QState* theStoppedState;	// sim is inactive, user can change things
+    SimState* theFailedState;		// happens upon death
+    SimState* theForwardState;	// fast forward
+    SimState* thePausedState;		// paused (but sim is active)
+    SimState* theProblemState;	// at least one cross, user can change things
+    SimState* theRunningState;	// sim is active and running
+    SimState* theStoppedState;	// sim is inactive, user can change things
 
-	Ui::SimulationControls *ui;
+    Ui::SimulationControls *ui;
 };
 
 #endif // SIMULATIONCONTROLS_H

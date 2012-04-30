@@ -62,11 +62,12 @@ signals:
 	void needReset();
 
 public slots:
-	// signals to start/stop/ffwd/reset the game
-	void slot_signalFF();
-	void slot_signalPause();
-	void slot_signalPlay();
-	void slot_signalReset();
+        // signals to start/stop/ffwd/reset the game
+        void slot_signal4F();
+        void slot_signalFF();
+        void slot_signalPause();
+        void slot_signalPlay();
+        void slot_signalReset();
 
 private slots:
 	/// called whenever a timer tick happens
@@ -85,7 +86,8 @@ private:
 	QTimer theFramerateTimer;
 	QTime  theSimulationTime;
 
-	/// milliseconds per time step ???
+        /// current number of milliseconds per time step
+        /// (note that TBE is configured to run at "half of reality" speed)
 	qreal theSimSpeed;
 
 	unsigned int theFramesPerSecond;

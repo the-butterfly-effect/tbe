@@ -125,8 +125,15 @@ void ViewWorld::on_framerateTimerTick()
 
 void ViewWorld::slot_signalFF()
 {
-	theSimSpeed = 250;
-	emit theTimer.start();
+    theSimSpeed = 250;
+    emit theTimer.start();
+}
+
+
+void ViewWorld::slot_signal4F()
+{
+    theSimSpeed = 60;
+    emit theTimer.start();
 }
 
 

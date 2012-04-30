@@ -27,6 +27,13 @@ void SimState::onEntry ( QEvent * event )
 {
 	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
 	QState::onEntry(event);
+        isActive = true;
+}
+
+void SimState::onExit ( QEvent * event )
+{
+        QState::onExit(event);
+        isActive = false;
 }
 
 
@@ -87,6 +94,9 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
             SLOT(slot_signalPlay()));
     connect(theStoppedState, SIGNAL(entered()), aViewWorld,
             SLOT(slot_signalReset()));
+
+    connect(this, SIGNAL(go_quadspeed()), aViewWorld,
+            SLOT(slot_signal4F()));
 }
 
 
@@ -116,6 +126,15 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 	QKeySequence myFwdKey(tr("f"));
 	//: translators: 'r' is for reset - make sure it fits your "&Reset"
 	QKeySequence myResetKey(tr("r"));
+
+        //: translators: really-fast-forward is only available as a key shortcut
+        //: it should be shift-<normal fast-forward>...
+        QKeySequence my4FwdKey(tr("Shift+f"));
+        the4FAction = new QAction(NULL);
+        the4FAction->setShortcut(my4FwdKey);
+        //Qt::ApplicationShortcut
+        this->addAction(the4FAction);
+        connect(the4FAction, SIGNAL(triggered()), this, SLOT(slot_4SpeedForward()));
 
 	aMenuPtr->addAction(theTopAction);
 	aMenuPtr->addAction(theBotAction);
@@ -205,4 +224,15 @@ void SimulationControls::slotNumberOfCrossesChanged(int aNewNumber)
 		emit internalCrossGone();
 	else
 		emit internalCrossPresent();
+}
+
+void SimulationControls::slot_4SpeedForward(void)
+{
+    // if in play mode, fake going to fast forward
+    // but secretly emit a second signal to go a lot faster
+    if (theRunningState->isActive==true)
+    {
+        emit theBotAction->trigger();
+        emit go_quadspeed();
+    }
 }
