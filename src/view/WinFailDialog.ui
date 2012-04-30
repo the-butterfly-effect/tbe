@@ -115,7 +115,7 @@
            <string notr="true">background: url(:/button.png);</string>
           </property>
           <property name="text">
-           <string>Replay</string>
+           <string>&amp;Replay</string>
           </property>
          </widget>
         </item>
@@ -138,17 +138,20 @@
            <string notr="true">background: url(:/button.png);</string>
           </property>
           <property name="text">
-           <string>Choose...</string>
+           <string>&amp;Choose...</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="nextButton">
+          <property name="toolTip">
+           <string>Go to next level</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">background: url(:/button.png);</string>
           </property>
           <property name="text">
-           <string>Next&gt;</string>
+           <string>&amp;Next&gt;</string>
           </property>
          </widget>
         </item>
@@ -175,6 +178,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AnimatedDialog</class>
+   <extends>QWidget</extends>
+   <header>animateddialog.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
