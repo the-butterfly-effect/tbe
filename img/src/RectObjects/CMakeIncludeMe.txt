@@ -4,6 +4,7 @@ install(FILES
         ${SRCDIRNAME}/brass-pin.svg
         ${SRCDIRNAME}/cola-crate.svg
         ${SRCDIRNAME}/goal-scenery.svg
+        ${SRCDIRNAME}/hammer.svg
         ${SRCDIRNAME}/i-beam.svg
         ${SRCDIRNAME}/Anonymous_daffodil_klaas.svg
         ${SRCDIRNAME}/spring20.svg
