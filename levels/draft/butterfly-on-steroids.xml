@@ -1,4 +1,4 @@
-<!DOCTYPE mydocument>
+<!-- <!DOCTYPE mydocument> -->
 <tbe-level>
     <levelinfo>
         <title>Butterfly on steroids</title>
@@ -68,7 +68,7 @@
                 <property key="object" >Flower</property>
             </object>
             <object width="0.350" X="4.300" Y="1.300" height="0.800" type="RectObject" angle="0.000" >
-                <property key="ImageName" >Anonymous_daffodil.klaas</property>
+                <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
             <object width="0.200" X="4.200" Y="1.770" height="0.200" type="Scenery" ID="Flower" angle="0.000" >
                 <property key="ImageName" >Empty</property>
