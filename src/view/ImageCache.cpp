@@ -57,6 +57,11 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
 	{
 		DEBUG4("Image '%s' found in image cache!", ASCII(anImageBaseName));
+		// is the image the right size?
+		if (anOutputPixmapPtr->size()!=aSize && aSize!=theDefaultSize)
+		{
+			*anOutputPixmapPtr = anOutputPixmapPtr->scaled(aSize, Qt::IgnoreAspectRatio);
+		}
 		return true;
 	}
 

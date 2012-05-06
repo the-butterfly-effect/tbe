@@ -41,9 +41,12 @@
 
 /// Distance from the pie menu center to the center of the outside icons.
 /// Note: this is in ActionIcon units
-static const qreal CENTER_RADIUS = 20.0;
-static const qreal OUTER_DISTANCE = 2*CENTER_RADIUS*1.36;
-static const qreal TOTAL_RADIUS = OUTER_DISTANCE + 0.5 * CENTER_RADIUS;
+static const qreal CENTER_RADIUS = 24.0;
+/// When the small outside and center radius circles touch, the proportion
+/// between the two is: (1-sin(22.5))/sin(22.5) = 1.613
+static const qreal SMALL_RADIUS = CENTER_RADIUS/1.613;
+static const qreal OUTER_DISTANCE = CENTER_RADIUS+SMALL_RADIUS;
+static const qreal TOTAL_RADIUS = OUTER_DISTANCE + SMALL_RADIUS;
 
 static qreal theActionIconScaling = 1.0;
 
@@ -68,13 +71,16 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	// we *must* have a parent (PieMenu!)
 	Q_ASSERT(aParentPtr!=NULL);
 
-	QPixmap myTempPixmap;
-	ImageCache::getPixmap(aFileName, QSize(2*CENTER_RADIUS,2*CENTER_RADIUS), &myTempPixmap);
-	setPixmap(myTempPixmap);
+	ImageCache::getPixmap(aFileName, QSize(2*CENTER_RADIUS,2*CENTER_RADIUS), &theCenterPixmap);
+	ImageCache::getPixmap(aFileName, QSize(2*SMALL_RADIUS,2*SMALL_RADIUS), &theSmallPixmap);
 
-	QPointF myOuterPos(OUTER_DISTANCE*cos(anActionType*45.0/180.0*PI) -CENTER_RADIUS,
-					   -OUTER_DISTANCE*sin(anActionType*45.0/180.0*PI) - CENTER_RADIUS);
-	QPointF mySInnerPos(-CENTER_RADIUS, -CENTER_RADIUS);
+	printf("center: %d\n", theCenterPixmap.height());
+	printf("small:  %d\n", theSmallPixmap.height());
+
+
+	QPointF myOuterPos(OUTER_DISTANCE*cos(anActionType*45.0/180.0*PI) -SMALL_RADIUS,
+					   -OUTER_DISTANCE*sin(anActionType*45.0/180.0*PI) - SMALL_RADIUS);
+	QPointF mySInnerPos(-SMALL_RADIUS, -SMALL_RADIUS);
 	QPointF myLInnerPos(-CENTER_RADIUS,-CENTER_RADIUS);
 
 	// Quite a convoluted way to figure out the scaling transformation that the QGraphicsWidget parent of ours does
@@ -125,10 +131,13 @@ ActionIcon::ActionIcon(ActionType anActionType,
 
 	// set the positions for the various states
 	myStartState->assignProperty(this, "pos", mySInnerPos);
+	myStartState->assignProperty(this, "pixmap", theSmallPixmap);
 
 	myOuterState->assignProperty(this, "pos", myOuterPos);
+	myOuterState->assignProperty(this, "pixmap", theSmallPixmap);
 
 	myInnerState->assignProperty(this, "pos", myLInnerPos);
+	myInnerState->assignProperty(this, "pixmap", theCenterPixmap);
 
 	theIconStateMachine.start();
 }

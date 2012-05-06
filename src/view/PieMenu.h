@@ -58,6 +58,7 @@ class ActionIcon : public QObject, QGraphicsPixmapItem
 {
 	Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
+	Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap)
 
 public:
 	/// this enum identifies what type of action to create. By accident,
@@ -102,6 +103,9 @@ private:
 	ActionType theActionType;
 
 	friend class PieMenu;
+
+	QPixmap theSmallPixmap;
+	QPixmap theCenterPixmap;
 
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( ActionIcon )
