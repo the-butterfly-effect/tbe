@@ -106,5 +106,6 @@ void ViewToolboxGroup::updateCount(const QTransform& aTransformMatrix)
                           myIconSize.height();
     theMinSize = QSize(myMinWidth, myMinHeight);
     setMinimumSize(theMinSize);
+    setMaximumWidth(myMinWidth+32);
 }
 
