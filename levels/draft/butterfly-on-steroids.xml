@@ -183,7 +183,7 @@
     </scene>
     <goals>
         <goal isFail="false" type="distance" >
-            <property key="lessthan" >0.27</property>
+            <property key="lessthan" >0.35</property>
             <property key="object1" >Butterfly</property>
             <property key="object2" >Flower</property>
         </goal>

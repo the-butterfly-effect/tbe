@@ -18,7 +18,7 @@
 	</toolboxitem>
    </toolbox>
     <scene>
-        <scenesize width="2.3" height="1.7" />
+        <scenesize width="2.3" height="2.0" />
         <predefined>
             <object width="2.3" X="1.15" Y="0.05" height="0.1" type="Floor" angle="0" >
                 <property key="ImageName" >White-to-green</property>
