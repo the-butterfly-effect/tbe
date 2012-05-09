@@ -43,8 +43,10 @@
                 <property key="ZValue" >0.1</property>
             </object>
             <object width="4.852" X="3.511" Y="2.500" height="0.100" type="Floor" angle="0.000" />
+            <object width="2.000" X="4.570" Y="2.490" height="0.080" type="Floor" angle="-0.010" />
             <object width="0.658" X="0.365" Y="2.537" height="0.100" type="Floor" angle="0.000" />
             <object width="4.952" X="3.094" Y="2.000" height="0.100" type="Floor" angle="0.000" />
+            <object width="2.000" X="4.570" Y="1.990" height="0.080" type="Floor" angle="-0.01" />
             <object width="2.000" X="2.100" Y="2.250" height="0.380" type="RectObject" ID="styro-top" angle="0.000" >
                 <property key="ImageName" >styrofoam</property>
                 <property key="Mass" >1.5</property>
@@ -52,6 +54,7 @@
             </object>
             <object width="1.715" X="0.945" Y="1.500" height="0.100" type="Floor" angle="0.000" />
             <object width="3.507" X="3.455" Y="1.500" height="0.100" type="Floor" angle="0.000" />
+            <object width="2.000" X="4.300" Y="1.490" height="0.080" type="Floor" angle="-0.01" />
             <object width="2.000" X="2.100" Y="1.750" height="0.380" type="RectObject" ID="styro-mid" angle="0.000" >
                 <property key="Friction" >0.1</property>
                 <property key="ImageName" >styrofoam</property>
