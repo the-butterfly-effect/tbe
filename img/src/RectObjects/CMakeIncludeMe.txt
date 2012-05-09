@@ -7,6 +7,7 @@ install(FILES
         ${SRCDIRNAME}/hammer.svg
         ${SRCDIRNAME}/i-beam.svg
         ${SRCDIRNAME}/Anonymous_daffodil_klaas.svg
+	${SRCDIRNAME}/rg1024_Grass_texture.svg
         ${SRCDIRNAME}/spring20.svg
         DESTINATION images
 )
