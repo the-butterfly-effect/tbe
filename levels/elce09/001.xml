@@ -18,6 +18,10 @@
     <scene>
         <scenesize width="2.3" height="1.7" />
         <predefined>
+            <object width="1.200" X="1.700" Y="1.400" height="0.6" type="Scenery" angle="0.000" >
+                <property key="ImageName" >the-sun</property>
+            </object>
+
             <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
                 <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
@@ -30,6 +34,23 @@
             <object width="2.3" X="1.15" Y="0.05" type="Floor" >
                 <property key="ImageName" >White-to-green</property>
             </object>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
+                <property key="ImageName" >rg1024_Grass_texture</property>
+                <property key="ZValue" >20.0</property>
+            </object>
+            <object width="0.800" X="1.000" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
+                <property key="ImageName" >rg1024_Grass_texture</property>
+                <property key="ZValue" >20.0</property>
+            </object>
+            <object width="0.800" X="1.700" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
+                <property key="ImageName" >rg1024_Grass_texture</property>
+                <property key="ZValue" >20.0</property>
+            </object>
+            <object width="0.800" X="2.000" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
+                <property key="ImageName" >rg1024_Grass_texture</property>
+                <property key="ZValue" >20.0</property>
+            </object>
+	    
 			<object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
 				<property key="Description" >This is the butterfly.</property>
                 <property key="object" >Flower</property>
