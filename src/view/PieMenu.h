@@ -136,11 +136,15 @@ private:
 	/// PieMenuSingleton::startClickCheck() and endClickCheck()
 	bool wasIconClicked;
 
+	qreal theVOsOriginalZValue;
+
 	/// private constructor
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
 	/// @param aPositionInObjectCoord position of the mouse click on the
 	///        object in item coordinates
 	explicit PieMenu(ViewObject* aParentPtr);
+
+	virtual ~PieMenu();
 
 	void setup();
 

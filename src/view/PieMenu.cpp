@@ -157,7 +157,16 @@ PieMenu::PieMenu(ViewObject* aParentPtr)
                  QGraphicsItem::ItemIgnoresParentOpacity |
                  QGraphicsItem::ItemDoesntPropagateOpacityToChildren |
                  QGraphicsItem::ItemHasNoContents );
+    theVOsOriginalZValue = theVOPtr->zValue();
+    theVOPtr->setZValue(1000);
 }
+
+PieMenu::~PieMenu()
+{
+    if (theVOPtr)
+        theVOPtr->setZValue(theVOsOriginalZValue);
+}
+
 
 void PieMenu::iconClicked(ActionIcon* anIconPtr)
 {
