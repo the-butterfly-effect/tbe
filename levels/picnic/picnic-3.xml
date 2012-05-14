@@ -39,7 +39,13 @@
             <!--object width="0.170" X="6.300" Y="0.250" height="0.500" type="ColaMintBottle" angle="3.142" >
                 <property key="Thrust" > 8.0 </property>
             </object-->
-	      
+	    
+	    <object width="1.8" X="4.7" Y="2.95" height="1.0" type="Scenery" angle="0">
+                <property key="ImageName" >monkey</property>
+                <property key="ZValue" >1.0</property>
+	    </object>
+            <object width="0.220" X="4.080" Y="2.900" height="0.100" type="Floor" angle="1.570" />
+            <object width="0.260" X="3.940" Y="2.980" height="0.100" type="Floor" angle="0.570" />
             <object width="0.100" X="5.260" Y="0.590" height="0.080" type="RectObject" angle="-0.04" ID="leftplatform">
                 <property key="Mass" >0.1</property>
                 <property key="ImageName" >birch_bar</property>
@@ -74,7 +80,9 @@
             </object>
             <object width="0.170" X="4.259" Y="2.335" height="0.500" type="ColaMintBottle" angle="-1.571" />
             <object width="0.448" X="4.934" Y="2.207" height="0.100" type="Floor" angle="0.286" />
-            <object width="1.000" X="5.183" Y="3.142" height="0.100" type="Floor" angle="-1.139" />
+            <object width="1.000" X="5.183" Y="3.142" height="0.100" type="Floor" angle="-1.139" >
+                <property key="ImageName" >birch_bar</property>
+	    </object>
             <object width="0.260" X="4.580" Y="2.514" height="0.100" type="RectObject" ID="reversehammer1" angle="-1.571" >
                 <property key="ImageName" >hammer</property>
                 <property key="Mass" >2</property>
