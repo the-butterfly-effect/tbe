@@ -14,8 +14,8 @@
             <object width="1.000" X="0.502" Y="0.047" height="0.100" type="Floor" angle="0.000" />
             <object width="5.000" X="3.500" Y="0.050" height="0.100" type="Floor" angle="0.000" />
             <object width="1.000" X="6.500" Y="0.050" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.100" X="1.850" Y="0.950" height="1.700" type="DominoBlue" ID="leftpole" angle="0.000" >
-                <property key="ImageName" >DominoBlue</property>
+            <object width="0.100" X="1.850" Y="1.000" height="1.800" type="DominoBlue" ID="leftpole" angle="0.000" >
+                <property key="ImageName" >picnic-0-pole</property>
             </object>
 	    
             <object width="0.200" X="2.200" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="leftrope1" >
@@ -31,8 +31,8 @@
                 <property key="Mass" >0.01</property>
             </object>
 
-            <object width="0.100" X="3.350" Y="0.950" height="1.700" type="DominoBlue" ID="centerpole" angle="0.000" >
-                <property key="ImageName" >DominoBlue</property>
+            <object width="0.100" X="3.350" Y="1.000" height="1.800" type="DominoBlue" ID="centerpole" angle="0.000" >
+                <property key="ImageName" >picnic-0-pole</property>
             </object>
 	    
             <object width="0.200" X="3.700" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="rightrope1" >
@@ -48,21 +48,16 @@
                 <property key="Mass" >0.01</property>
             </object>
 	    
-            <object width="0.100" X="4.850" Y="0.950" height="1.700" type="DominoBlue" ID="rightpole" angle="0.000" >
-                <property key="ImageName" >DominoBlue</property>
+            <object width="0.100" X="4.850" Y="1.000" height="1.800" type="DominoBlue" ID="rightpole" angle="0.000" >
+                <property key="ImageName" >picnic-0-pole</property>
             </object>
 
-            <object width="1.200" X="5.910" Y="1.470" height="3.000" type="Scenery" angle="0.000" />
+            <object width="1.200" X="5.900" Y="1.600" height="3.000" type="Scenery" angle="0.000" />
             <object width="1.400" X="0.700" Y="1.500" height="2.800" type="Scenery" angle="0.000" />
             <object width="0.068" X="3.928" Y="0.129" height="0.068" type="TennisBall" angle="0.000" />
             <object width="0.220" X="3.876" Y="2.547" height="0.220" type="BowlingBall" angle="0.000" />
 	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
-		    <property key="object1" >leftpole@(0.00,0.85)</property>
-		    <property key="object2" >centerpole@(0.0,0.85)</property>
-		    <property key="ImageName">#000000</property>
-	    </object>
-	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
-		    <property key="object1" >rightpole@(0.00,0.85)</property>
+		    <property key="object1" >rightpole@(0.00,0.80)</property>
 		    <property key="object2" >rightrope3@(0.10,0.0)</property>
 		    <property key="ImageName">#000000</property>
 	    </object>
@@ -78,18 +73,12 @@
 	    </object>
 	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
 		    <property key="object1" >rightrope1@(-0.10,0.0)</property>
-		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="object2" >centerpole@(0.0,0.80)</property>
 		    <property key="ImageName">#000000</property>
 	    </object>
 
 	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
-		    <property key="object1" >leftpole@(0.00,0.85)</property>
-		    <property key="object2" >centerpole@(0.0,0.85)</property>
-		    <property key="ImageName">#000000</property>
-	    </object>
-	    
-	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
-		    <property key="object1" >leftpole@(0.00,0.85)</property>
+		    <property key="object1" >leftpole@(0.00,0.80)</property>
 		    <property key="object2" >leftrope1@(-0.10,0.0)</property>
 		    <property key="ImageName">#000000</property>
 	    </object>
@@ -105,7 +94,7 @@
 	    </object>
 	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
 		    <property key="object1" >leftrope3@(0.10,0.0)</property>
-		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="object2" >centerpole@(0.0,0.80)</property>
 		    <property key="ImageName">#000000</property>
 	    </object>
 	    
