@@ -1,0 +1,145 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Tent</title>
+        <author>Klaas van Gend</author>
+        <license>Public Domain</license>
+        <description>Hah! They have decided it's time to put up the tent. I don't agree - let's tear down the poles!</description>
+        <date>5/15/12</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="7" height="4" />
+        <predefined>
+            <object width="1.000" X="0.502" Y="0.047" height="0.100" type="Floor" angle="0.000" />
+            <object width="5.000" X="3.500" Y="0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.000" X="6.500" Y="0.050" height="0.100" type="Floor" angle="0.000" />
+            <object width="0.100" X="1.850" Y="0.950" height="1.700" type="DominoBlue" ID="leftpole" angle="0.000" >
+                <property key="ImageName" >DominoBlue</property>
+            </object>
+	    
+            <object width="0.200" X="2.200" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="leftrope1" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+            <object width="0.200" X="2.600" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="leftrope2" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+            <object width="0.200" X="3.000" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="leftrope3" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+
+            <object width="0.100" X="3.350" Y="0.950" height="1.700" type="DominoBlue" ID="centerpole" angle="0.000" >
+                <property key="ImageName" >DominoBlue</property>
+            </object>
+	    
+            <object width="0.200" X="3.700" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="rightrope1" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+            <object width="0.200" X="4.100" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="rightrope2" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+            <object width="0.200" X="4.500" Y="1.800" height="0.100" type="RectObject" angle="0.000" ID="rightrope3" >
+                <property key="ImageName" >DominoBlue</property>
+                <property key="Mass" >0.01</property>
+            </object>
+	    
+            <object width="0.100" X="4.850" Y="0.950" height="1.700" type="DominoBlue" ID="rightpole" angle="0.000" >
+                <property key="ImageName" >DominoBlue</property>
+            </object>
+
+            <object width="1.200" X="5.910" Y="1.470" height="3.000" type="Scenery" angle="0.000" />
+            <object width="1.400" X="0.700" Y="1.500" height="2.800" type="Scenery" angle="0.000" />
+            <object width="0.068" X="3.928" Y="0.129" height="0.068" type="TennisBall" angle="0.000" />
+            <object width="0.220" X="3.876" Y="2.547" height="0.220" type="BowlingBall" angle="0.000" />
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftpole@(0.00,0.85)</property>
+		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >rightpole@(0.00,0.85)</property>
+		    <property key="object2" >rightrope3@(0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >rightrope2@(0.10,0.0)</property>
+		    <property key="object2" >rightrope3@(-0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >rightrope1@(0.10,0.0)</property>
+		    <property key="object2" >rightrope2@(-0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >rightrope1@(-0.10,0.0)</property>
+		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftpole@(0.00,0.85)</property>
+		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftpole@(0.00,0.85)</property>
+		    <property key="object2" >leftrope1@(-0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftrope1@(0.10,0.0)</property>
+		    <property key="object2" >leftrope2@(-0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftrope2@(0.10,0.0)</property>
+		    <property key="object2" >leftrope3@(-0.10,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftrope3@(0.10,0.0)</property>
+		    <property key="object2" >centerpole@(0.0,0.85)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    
+	    <object width="0.100" X="0.500" Y="0.150" height="0.100" type="Floor" angle="0.000" ID="leftpin" />
+            <object width="0.100" X="5.500" Y="0.150" height="0.100" type="Floor" angle="0.000" ID="rightpin" />
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >rightpole@(0.00,0.85)</property>
+		    <property key="object2" >rightpin@(0.0,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftpole@(0.00,0.85)</property>
+		    <property key="object2" >leftpin@(0.0,0.0)</property>
+		    <property key="ImageName">#000000</property>
+	    </object>
+        </predefined>
+
+        <background>
+            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange" >
+            <property key="object" >centerpole</property>
+            <property key="ybelow" >0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange" >
+            <property key="object" >leftpole</property>
+            <property key="ybelow" >0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange" >
+            <property key="object" >rightpole</property>
+            <property key="ybelow" >0.4</property>
+        </goal>
+    </goals>
+</tbe-level>
