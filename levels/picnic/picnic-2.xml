@@ -56,22 +56,22 @@
 	    
 	    <object width="0.2" X="0.4" Y="1.3" height="0.10" type="Floor" ID="Shoulder" angle="0" />
             <object width="0.340" X="0.180" Y="0.720" height="0.100" type="RectObject" ID="LeftArmEnd" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >picnic-2-left-underarm</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="PetanqueBoule" ID="LeftBoule" angle="0.000" />
 
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000" >
                 <property key="object1" >Shoulder@(-0.05,0.0)</property>
-                <property key="object2" >LeftArmEnd@(-0.10,0.0)</property>
+                <property key="object2" >LeftArmEnd@(-0.10,0.05)</property>
             </object>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000" >
 	        <property key="ImageName">#000000</property>
                 <property key="object1" >Shoulder@( 0.05,0.0)</property>
-                <property key="object2" >LeftArmEnd@(0.0,0.0)</property>
+                <property key="object2" >LeftArmEnd@(0.0,0.05)</property>
             </object>
             <object width="0.10" X="0.250" Y="0.820" height="0.100" type="RectObject" ID="LeftArmTop" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+                <property key="ImageName" >Empty</property>
                 <property key="Mass" >2.5</property>
             </object>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000" >
