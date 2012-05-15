@@ -125,9 +125,18 @@
 		    <property key="object2" >rightpin@(0.0,0.0)</property>
 		    <property key="ImageName">#008000</property>
 	    </object>
+            <object width="0.200" X="1.520" Y="0.800" height="0.100" type="RectObject" angle="1.220" ID="leftleftrope" >
+                <property key="ImageName" >picnic-0-rope</property>
+                <property key="Mass" >0.01</property>
+            </object>
+	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
+		    <property key="object1" >leftleftrope@(-0.10,0.00)</property>
+		    <property key="object2" >leftpin@(0.0,0.0)</property>
+		    <property key="ImageName">#008000</property>
+	    </object>
 	    <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000" >
 		    <property key="object1" >leftpole@(0.00,0.85)</property>
-		    <property key="object2" >leftpin@(0.0,0.0)</property>
+		    <property key="object2" >leftleftrope@(0.10,0.0)</property>
 		    <property key="ImageName">#008000</property>
 	    </object>
             <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
@@ -164,7 +173,7 @@
         </goal>
         <goal isFail="false" type="positionchange" >
             <property key="object" >leftpole</property>
-            <property key="ybelow" >0.5</property>
+            <property key="ybelow" >0.6</property>
         </goal>
         <goal isFail="false" type="positionchange" >
             <property key="object" >rightpole</property>
