@@ -30,7 +30,7 @@ int theVerbosity = 4;
 
 // this variable defines whether we are playing or a level editor
 // switching to LevelEditor is possible through the "Edit" menu.
-bool theIsLevelEditor = true;
+bool theIsLevelEditor = false;
 
 // this variable defines whether in the level editor we are expecting collision
 // detection to work or not - you want this on to align certain things

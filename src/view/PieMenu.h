@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2012 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,6 +23,7 @@
 #include <QtGui/QGraphicsWidget>
 #include <QtCore/QStateMachine>
 #include <QtGui/QGraphicsEffect>
+
 
 #include "tbe_global.h"
 
