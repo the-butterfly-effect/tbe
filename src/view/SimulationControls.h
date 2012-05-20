@@ -55,7 +55,7 @@ private:
   * inputs are the QActions that it creates in the menu bar and slots on its interface
   * outputs are the signals that it sends when states change
   */
-class SimulationControls : public QWidget
+class SimulationControls : public QLabel
 {
     Q_OBJECT
 

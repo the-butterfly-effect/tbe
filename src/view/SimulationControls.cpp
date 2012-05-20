@@ -38,10 +38,14 @@ void SimState::onExit ( QEvent * event )
 
 
 SimulationControls::SimulationControls(QWidget *parent) :
-    QWidget(parent),
+    QLabel(parent),
     ui(new Ui::SimulationControls)
 {
     ui->setupUi(this);
+
+    QPixmap myPixmap;
+    ImageCache::getPixmap("SimControlsBackground", size(), &myPixmap);
+    this->setPixmap(myPixmap);
 
     const QSize myIconSize(36,36);
     theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
