@@ -110,29 +110,31 @@ private slots:
 private:
     QStateMachine theSimStateMachine;
 
-    QAction* theTopAction;
-    QAction* theBotAction;
-    QAction* the4FAction;
+    QAction* theForwardAction;
+    QAction* thePlayAction;
+    QAction* thePauseAction;
+    QAction* theResetAction;
+    QAction* the4FAction;   // hack for really fast forward
 
-    QIcon theFwdIcon;
+    QIcon theForwardIcon;
     QIcon thePauseIcon;
     QIcon thePlayIcon;
     QIcon theResetIcon;
-    QIcon theStopIcon;
 
-    QPixmap theFFStatusPixmap;
-    QPixmap theFailStatusPixmap;
-    QPixmap thePauseStatusPixmap;
-    QPixmap thePlayStatusPixmap;
+    QPixmap theForwardStatusPixmap;
+    QPixmap theFailedStatusPixmap;
+    QPixmap thePausedStatusPixmap;
     QPixmap theProblemStatusPixmap;
-    QPixmap theStopStatusPixmap;
+    QPixmap theRunningStatusPixmap;
+    QPixmap theStoppedStatusPixmap;
 
-    SimState* theFailedState;		// happens upon death
-    SimState* theForwardState;	// fast forward
-    SimState* thePausedState;		// paused (but sim is active)
-    SimState* theProblemState;	// at least one cross, user can change things
-    SimState* theRunningState;	// sim is active and running
-    SimState* theStoppedState;	// sim is inactive, user can change things
+    SimState* theFailedState;   // happens upon death
+    SimState* theForwardState;  // fast forward
+    SimState* thePausedState;   // paused (but sim is active)
+    SimState* theProblemState;  // at least one cross, user can change things
+    SimState* theRunningState;  // sim is active and running
+    SimState* theStoppedState;  // sim is inactive, user can change things
+    SimState* theHiddenState;   // UI is hidden, user cannot do anything
 
     Ui::SimulationControls *ui;
 };
