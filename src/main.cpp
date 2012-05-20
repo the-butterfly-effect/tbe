@@ -30,7 +30,7 @@ int theVerbosity = 4;
 
 // this variable defines whether we are playing or a level editor
 // switching to LevelEditor is possible through the "Edit" menu.
-bool theIsLevelEditor = false;
+bool theIsLevelEditor = true;
 
 // this variable defines whether in the level editor we are expecting collision
 // detection to work or not - you want this on to align certain things
@@ -45,6 +45,11 @@ bool theDrawDebug = false;
 // over the image
 // switching this option is possible through the theDrawOutlineActionPtr in MainWindow
 bool theDrawPolyOutline = false;
+
+// True if application is supposed to only load a level, apply hints (or not) and
+// run it automatically - returning a value depending on success.
+// Used for automated regression tests.
+bool theIsTesting = false;
 
 // This variable defines whether TBE displays a frame refresh counter or not
 // TODO/FIXME: this should go into preferences or so at some point
