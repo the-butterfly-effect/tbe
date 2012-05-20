@@ -24,6 +24,7 @@ install(FILES
 	icons/ProxyResizeTotal.svg
 	icons/ProxyResizeVerti.svg
 	icons/ProxyRotate.svg
+	icons/SimControlsBackground.svg
 	icons/StatusFail.svg
 	icons/StatusFF.svg
 	icons/StatusPause.svg
