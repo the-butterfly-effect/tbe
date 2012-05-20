@@ -174,6 +174,18 @@ void ResizingGraphicsView::slot_actionReplay()
 	theWinFailDialogPtr = NULL;
 }
 
+void ResizingGraphicsView::slot_actionSkipLevel()
+{
+    DEBUG1ENTRY;
+    if (theIsLevelEditor==false)
+    {
+        QString myLevelFileName = Level::getLevelFileName();
+        QSettings mySettings;
+        mySettings.setValue("completed/"+myLevelFileName, "skipped");
+    }
+    slot_actionNextLevel();
+}
+
 
 void ResizingGraphicsView::slot_levelDeath(void)
 {

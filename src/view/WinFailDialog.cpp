@@ -37,18 +37,20 @@ WinFailDialog::WinFailDialog(MessageType aType,
 			//: make sure the translated text fits - the rest won't be shown
 			myMessage = tr("Congratulations");
 			ui->nextButton->setEnabled(true);
+                        ui->skipButton->setVisible(false);
 			break;
 		case DEATH:
 			//: make sure the translated text fits - the rest won't be shown
 			myMessage = tr("Fail - retry?");
 			ui->nextButton->setEnabled(false);
-			ui->replayButton->setText(tr("Retry"));
+                        ui->replayButton->setText(tr("&Retry"));
 			break;
 	}
 	ui->label->setText(myMessage);
-	connect(ui->replayButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionReplay()));
 	connect(ui->chooseButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionChooseLevel()));
 	connect(ui->nextButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionNextLevel()));
+        connect(ui->replayButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionReplay()));
+        connect(ui->skipButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionSkipLevel()));
 }
 
 WinFailDialog::~WinFailDialog()

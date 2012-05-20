@@ -73,6 +73,7 @@ private slots:
     void slot_actionChooseLevel();
     void slot_actionNextLevel();
     void slot_actionReplay();
+    void slot_actionSkipLevel();
 
 private:
     GameResources*      theGameResourcesPtr;
