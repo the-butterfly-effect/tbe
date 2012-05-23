@@ -67,6 +67,7 @@ public slots:
         void on_action_New_Levels_activated(void);
         void on_actionO_pen_File_activated(void);
         void on_action_Quit_activated(void);
+        void on_action_Skip_Level_activated(void);
         void on_action_Suggestions_activated(void);
 
 	// menu File

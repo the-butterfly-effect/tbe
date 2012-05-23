@@ -133,9 +133,9 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
 }
 
 
-void GameResources::setup(QMenuBar*)
+void GameResources::setup(QMenu* aMenuPtr)
 {
-    theToolboxControls.setup(this);
+    theToolboxControls.setup(this, aMenuPtr);
     slot_window_disappeared();
 }
 

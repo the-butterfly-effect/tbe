@@ -106,7 +106,7 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 	theSimControlsPtr->setup(anMenuControlsPtr);
 	connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), theSimControlsPtr, SLOT(slotNumberOfCrossesChanged(int)));
 
-	theGameResourcesPtr->setup(aMenuBarPtr);
+        theGameResourcesPtr->setup(anMenuControlsPtr);
 	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
 			 theMainWindowPtr, SLOT(reloadLevel()));
 

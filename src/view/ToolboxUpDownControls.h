@@ -45,7 +45,7 @@ public:
     void setDownEnabled();
     void setUpEnabled();
 
-    void setup(GameResources* anGRPtr);
+    void setup(GameResources* anGRPtr, QMenu* aMenuPtr);
 
 private:
     Ui::ToolboxUpDownControls *ui;

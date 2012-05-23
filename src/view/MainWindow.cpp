@@ -196,8 +196,14 @@ void MainWindow::on_actionO_pen_File_activated(void)
 
 void MainWindow::on_action_Quit_activated(void)
 {
-    if (Popup::YesNoQuestion("really?", this))
+    if (Popup::YesNoQuestion(tr("really?"), this))
         QApplication::exit(0);
+}
+
+void MainWindow::on_action_Skip_Level_activated(void)
+{
+    if (Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
+        ui->graphicsView->slot_actionSkipLevel();
 }
 
 

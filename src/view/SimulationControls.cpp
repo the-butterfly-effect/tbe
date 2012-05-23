@@ -124,22 +124,18 @@ void SimulationControls::setup(QMenu* aMenuPtr)
         theForwardAction->setShortcut(QKeySequence(tr("f")));
 
         // add actions and their quick keys
-        thePauseAction = new QAction(thePauseIcon, tr("&Pause"), NULL);
-        //: translators: TODO: I want to use Space here, too but for now 'p' is for pause
-        thePauseAction->setShortcut(QKeySequence(tr("p")));
+        thePauseAction = new QAction(thePauseIcon, tr("P&ause"), NULL);
 
         // add actions and their quick keys
-        thePlayAction = new QAction(thePlayIcon, tr("Play"), NULL);
-	//: translators: space is for start/pause the sim - no need to translate
-        thePlayAction->setShortcut(QKeySequence(tr("Space")));
+        thePlayAction = new QAction(thePlayIcon, tr("&Play"), NULL);
 
         // add actions and their quick keys
         theResetAction = new QAction(theResetIcon, tr("&Reset"), NULL);
         //: translators: 'r' is for reset
         theResetAction->setShortcut(QKeySequence(tr("r")));
 
-//	QKeySequence myFwdKey(tr("f"));
-//	QKeySequence myResetKey(tr("r"));
+        QKeySequence mySpaceKey(tr("Space"));
+        QKeySequence myEmptyKey(tr(""));
 
         //: translators: really-fast-forward is only available as a key shortcut
         //: it should be shift-<normal fast-forward>...
@@ -153,6 +149,7 @@ void SimulationControls::setup(QMenu* aMenuPtr)
         aMenuPtr->addAction(thePauseAction);
         aMenuPtr->addAction(thePlayAction);
         aMenuPtr->addAction(theResetAction);
+        aMenuPtr->addAction(theForwardAction);
 
         ui->buttonForward->setDefaultAction(theForwardAction);
         ui->buttonPause->setDefaultAction(thePauseAction);
@@ -163,34 +160,36 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
 	// add transitions here
         theStoppedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
-//	theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 	theStoppedState->addTransition(this, SIGNAL(internalCrossPresent()), theProblemState);
         theStoppedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
         theRunningState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
         theRunningState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
 	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-//	theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
         theRunningState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
         theProblemState->addTransition(this, SIGNAL(internalCrossGone()), theStoppedState);
         theProblemState->addTransition(this, SIGNAL(hide()), theHiddenState);
+        theProblemState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
         thePausedState ->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
         thePausedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-//	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
         thePausedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
         theHiddenState ->addTransition(this, SIGNAL(show()), theStoppedState);
+        theHiddenState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
         theFailedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-//	theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
         theFailedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
         theForwardState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
         theForwardState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
         theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-//	theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+        theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
         theForwardState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
 
@@ -200,36 +199,50 @@ void SimulationControls::setup(QMenu* aMenuPtr)
         theStoppedState->assignProperty(thePlayAction,   "enabled", true);
         theStoppedState->assignProperty(theResetAction,  "enabled", false);
         theStoppedState->assignProperty(myLabelPtr,      "pixmap",  theStoppedStatusPixmap);
-        // upon entering running state, Top = Pause/enabled, Bottom = FF/enabled
+        theStoppedState->assignProperty(thePlayAction,   "shortcut", mySpaceKey);
+        theStoppedState->assignProperty(thePauseAction,  "shortcut", myEmptyKey);
+        // entering running state
         theRunningState->assignProperty(theForwardAction,"enabled", true);
         theRunningState->assignProperty(thePauseAction,  "enabled", true);
         theRunningState->assignProperty(thePlayAction,   "enabled", false);
         theRunningState->assignProperty(theResetAction,  "enabled", false);
         theRunningState->assignProperty(myLabelPtr,      "pixmap",  theRunningStatusPixmap);
-        // upon entering problem state, Top = Play/disabled, Bottom = FF/disabled
+        theRunningState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
+        theRunningState->assignProperty(thePauseAction,  "shortcut", mySpaceKey);
+        // entering problem state
         theProblemState->assignProperty(theForwardAction,"enabled", false);
         theProblemState->assignProperty(thePauseAction,  "enabled", false);
         theProblemState->assignProperty(thePlayAction,   "enabled", false);
         theProblemState->assignProperty(theResetAction,  "enabled", false);
         theProblemState->assignProperty(myLabelPtr,      "pixmap",  theProblemStatusPixmap);
-        // upon entering paused  state, Top = Play/enabled, Bottom = Reset/enabled
+        theProblemState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
+        theProblemState->assignProperty(thePauseAction,  "shortcut", myEmptyKey);
+        // entering paused state
         thePausedState->assignProperty(theForwardAction,"enabled", false);
         thePausedState->assignProperty(thePauseAction,  "enabled", false);
         thePausedState->assignProperty(thePlayAction,   "enabled", true);
         thePausedState->assignProperty(theResetAction,  "enabled", true);
         thePausedState->assignProperty(myLabelPtr,      "pixmap",  thePausedStatusPixmap);
-	// upon entering forward state, Top = Pause/enabled, Bottom = Play/enabled
+        thePausedState->assignProperty(thePlayAction,   "shortcut", mySpaceKey);
+        thePausedState->assignProperty(thePauseAction,  "shortcut", myEmptyKey);
+        // entering hiden state
+        // (none of the UI thingies matter)
+        // entering forward state
         theForwardState->assignProperty(theForwardAction,"enabled", false);
         theForwardState->assignProperty(thePauseAction,  "enabled", true);
         theForwardState->assignProperty(thePlayAction,   "enabled", true);
         theForwardState->assignProperty(theResetAction,  "enabled", false);
         theForwardState->assignProperty(myLabelPtr,      "pixmap",  theForwardStatusPixmap);
-	// upon entering failed  state, Top = Play/disabled, Bottom = Reset/enabled
+        theForwardState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
+        theForwardState->assignProperty(thePauseAction,  "shortcut", mySpaceKey);
+        // entering failed state
         theFailedState->assignProperty(theForwardAction,"enabled", false);
         theFailedState->assignProperty(thePauseAction,  "enabled", false);
         theFailedState->assignProperty(thePlayAction,   "enabled", false);
         theFailedState->assignProperty(theResetAction,  "enabled", true);
         theFailedState->assignProperty(myLabelPtr,      "pixmap",  theFailedStatusPixmap);
+        theFailedState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
+        theFailedState->assignProperty(thePauseAction,  "shortcut", myEmptyKey);
 
 	emit theSimStateMachine.start();
 }

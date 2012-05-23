@@ -36,8 +36,8 @@ ToolboxUpDownControls::ToolboxUpDownControls(ResizingGraphicsView *aParent) :
     ui->toolButton->setAutoFillBackground(false);
     ui->toolButton->setBackgroundRole(QPalette::NoRole);
 
-    theDownActionPtr = new QAction(ImageCache::getQIcon("ActionToolboxDown", QSize(32,32)), "&Down", this);
-    theUpActionPtr   = new QAction(ImageCache::getQIcon("ActionToolboxUp",   QSize(32,32)), "&Up", this);
+    theDownActionPtr = new QAction(ImageCache::getQIcon("ActionToolboxDown", QSize(32,32)), "Toolbox &Down", this);
+    theUpActionPtr   = new QAction(ImageCache::getQIcon("ActionToolboxUp",   QSize(32,32)), "Toolbox &Up", this);
 }
 
 
@@ -56,21 +56,27 @@ void ToolboxUpDownControls::parentResize(const QSize& aSize)
 void ToolboxUpDownControls::setDownEnabled()
 {
     theUpActionPtr->setShortcut(QKeySequence());
+    theUpActionPtr->setEnabled(false);
     //: translators: 't' is for 'toolbox'.
     theDownActionPtr->setShortcut(QKeySequence(tr("t")));
+    theDownActionPtr->setEnabled(true);
     ui->toolButton->setDefaultAction(theDownActionPtr);
 }
 
 void ToolboxUpDownControls::setUpEnabled()
 {
     theDownActionPtr->setShortcut(QKeySequence());
+    theDownActionPtr->setEnabled(false);
     //: translators: 't' is for 'toolbox'.
     theUpActionPtr->setShortcut(QKeySequence(tr("t")));
+    theUpActionPtr->setEnabled(true);
     ui->toolButton->setDefaultAction(theUpActionPtr);
 }
 
-void ToolboxUpDownControls::setup(GameResources* anGRPtr)
+void ToolboxUpDownControls::setup(GameResources* anGRPtr, QMenu* aMenuPtr)
 {
+    aMenuPtr->addAction(theDownActionPtr);
+    aMenuPtr->addAction(theUpActionPtr);
     connect(theDownActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(disappearAnimated()));
     connect(theUpActionPtr, SIGNAL(triggered()), anGRPtr, SLOT(appearAnimated()));
     setDownEnabled();

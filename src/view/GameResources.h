@@ -56,7 +56,7 @@ public:
 
     /// Hooks up the two actions of the Game Resources dialog into
     /// the menu bar.
-    void setup(QMenuBar* aMenuBarPtr);
+    void setup(QMenu* aMenuPtr);
 
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog

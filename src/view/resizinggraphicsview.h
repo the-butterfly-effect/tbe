@@ -73,6 +73,8 @@ private slots:
     void slot_actionChooseLevel();
     void slot_actionNextLevel();
     void slot_actionReplay();
+
+public slots:
     void slot_actionSkipLevel();
 
 private:
