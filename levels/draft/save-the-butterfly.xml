@@ -5,8 +5,8 @@
         <title lang="nl" >Red de vlinder!</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>save the butterfly, topple the pin.</description>
-        <description lang="nl" >red de vlinder, kegel de kegel.</description>
+        <description>save the butterfly, put pin in chest.</description>
+        <description lang="nl" >red de vlinder, kegel in de kist.</description>
         <date>10/11/10</date>
     </levelinfo>
     <toolbox>
@@ -22,20 +22,33 @@
     <scene>
         <scenesize width="7" height="4" />
         <predefined>
+            <object width="0.7" X="6.940" Y="0.45" height="0.1" type="Floor" angle="1.571" >
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.5" X="6.160" Y="0.35" height="0.1" type="Floor" angle="1.571" >
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.7" X="6.810" Y="1.08" height="0.1" type="Floor" angle="2.000" >
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.800" X="6.600" Y="0.740" height="1.360" type="Scenery" angle="0.000">
+                <property key="ImageName">toychest</property>
+                <property key="ZValue">10</property>
+            </object>
             <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostIt" angle="0" >
                 <property key="page1">Have you seen the movie "UP"?&lt;br&gt;&lt;br&gt;Unfortunately, I don't have that many balloons.</property>
                 <property key="page2">I don't think it's not fair: butterflies can fly by themselves.</property>
-		<property key="page3">Our goal is to keep them alive. And topple the pin.</property>
+		<property key="page3">Our goal is to keep the butterfly alive. And put the pin in the chest.</property>
                 <property key="page4">&lt;br&gt;&lt;br&gt;the Post-it Boy&lt;br&gt;&lt;br&gt;saves the animals...</property>
 		<property key="page1_nl">Heb je de film "UP" gezien?&lt;br>&lt;br>Jammer genoeg heb ik niet zoveel ballonnen.</property>
                 <property key="page2_nl">Het is niet eerlijk: vlinders kunnen zelf vliegen.</property>
-                <property key="page3_nl">Ons doel is om de vlinder in leven te houden. En de kegel om te kegelen...</property>
+                <property key="page3_nl">Ons doel is om de vlinder in leven te houden. En de kegel in de kist te gooien...</property>
                 <property key="page4_nl">&lt;br>&lt;br>Post-it Boy&lt;br>&lt;br>(lid van de dierenbescherming)</property>
             </object>
-            <object width="0.2212238609790802" X="6.802119700801657" Y="0.3333304077386856" height="0.4064355790615082" type="RectObject" angle="0" >
+            <object width="0.2212238609790802" X="5.800" Y="0.3000" height="0.4064355790615082" type="RectObject" angle="0" >
                 <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
-            <object width="0.2" X="6.76" Y="0.4" height="0.2" type="Scenery" ID="Flower" angle="0" >
+            <object width="0.2" X="5.76" Y="0.4" height="0.2" type="Scenery" ID="Flower" angle="0" >
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="3.125626087188721" X="5.43718695640564" Y="0.05000000074505806" height="0.1" type="Floor" angle="0" >
@@ -57,7 +70,7 @@
                 <property key="Bounciness" >0.7</property>
                 <property key="Friction" >0.02</property>
                 <property key="ImageName" >styrofoam</property>
-                <property key="Mass" >0.028</property>
+                <property key="Mass" >0.026</property>
                 <property key="TranslationGuide" >1.57</property>
             </object>
             <object width="0.27" X="3.48" Y="1.84" height="0.36" type="Balloon" ID="Balloon1" angle="0.18" />
@@ -65,32 +78,32 @@
             <object width="0.27" X="3.94" Y="2.04" height="0.36" type="Balloon" ID="Balloon3" angle="0" />
             <object width="0.27" X="4.12" Y="1.84" height="0.36" type="Balloon" ID="Balloon4" angle="-0.18" />
             <object width="0.27" X="3.8" Y="1.68" height="0.36" type="Balloon" ID="Balloon5" angle="0" />
-            <object width="2.6" X="5.2" Y="0.74" height="0.1" type="Floor" angle="0" />
+            <object width="2.3" X="5.05" Y="0.74" height="0.1" type="Floor" angle="0" />
             <object width="1.6" X="5.7" Y="1.2" height="0.1" type="Floor" angle="0" />
             <object width="0.12" X="5.81" Y="0.9600000000000001" height="0.34" type="BowlingPin" ID="thePin" angle="0" />
             <object width="0.6925209164619446" X="2.18" Y="2.180000000000001" height="0.1" type="Floor" angle="0" />
             <object width="1.116423487663269" X="2.74" Y="2.84" height="0.3721411526203156" type="Link" angle="0" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#FF4040</property>
                 <property key="object1" >Balloon1@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
             <object width="1.296180963516235" X="2.74" Y="2.84" height="0.4320603311061859" type="Link" angle="0" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#FFA040</property>
                 <property key="object1" >Balloon2@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
             <object width="1.296180963516235" X="2.74" Y="2.84" height="0.4320603311061859" type="Link" angle="0" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#40FF40</property>
                 <property key="object1" >Balloon3@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
             <object width="1.116423487663269" X="2.74" Y="2.84" height="0.3721411526203156" type="Link" angle="0" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#4040FF</property>
                 <property key="object1" >Balloon4@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
             <object width="0.890999972820282" X="2.74" Y="2.84" height="0.296999990940094" type="Link" angle="0" >
-                <property key="ImageName" >rope</property>
+                <property key="ImageName" >#FFFF00</property>
                 <property key="object1" >Balloon5@(0,-0.17)</property>
                 <property key="object2" >Styro@(0,0.25)</property>
             </object>
@@ -106,7 +119,7 @@
             <object width="0.15" X="0.5" Y="2.65" height="1" type="Wall" angle="0" >
                 <property key="ZValue" >10</property>
             </object>
-            <object width="0.42" X="2.68" Y="2.29" height="0.1" type="Floor" angle="0.58" />
+            <object width="0.42" X="2.69" Y="2.29" height="0.1" type="Floor" angle="0.50" />
             <object width="1" X="3.88" Y="2.9" height="0.1" type="Floor" angle="0" />
             <object width="1.5" X="4.07" Y="1.4" height="0.1" type="Floor" angle="0" >
                 <property key="ZValue" >9</property>
@@ -122,7 +135,7 @@
     </scene>
     <goals>
         <goal type="positionchange" >
-            <property key="anglechanged" ></property>
+            <property key="xover" >6.23</property>
             <property key="object" >thePin</property>
         </goal>
     </goals>
