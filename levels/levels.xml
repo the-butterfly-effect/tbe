@@ -6,8 +6,10 @@
    <level> draft/jumping_around.xml </level>
    <level> draft/house_of_cards.xml </level>
    <level> elce09/003.xml </level>
+   <level> picnic/picnic-0.xml </level>
    <level> elce09/brother-plays-soccer.xml </level>
    <level> draft/bowling_pin_plays_soccer.xml </level>
+   <level> picnic/picnic-1.xml </level>
    <level> draft/jumping_around-2.xml </level>
    <level> draft/turn-it-around.xml </level>
    <level> draft/contraption1.xml </level>
@@ -32,6 +34,7 @@
    <level> draft/bridge-2.xml </level>
    <level> draft/imperfectbalance.xml </level>
    <level> draft/bridge-3.xml </level>
+   <level> picnic/picnic-3.xml </level>
    <level> draft/save-the-butterfly.xml</level>
    <level> draft/domino_day.xml </level>
    <level> draft/geyser.xml </level>

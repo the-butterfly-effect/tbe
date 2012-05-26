@@ -2,9 +2,11 @@
 <tbe-level>
     <levelinfo>
         <title>Tent</title>
+        <title lang="nl">Tent</title>
         <author>Klaas van Gend</author>
         <license>Public Domain</license>
         <description>Hah! They have decided it's time to put up the tent. I don't agree - let's tear down the poles!</description>
+        <description lang="nl">Hah! Ad en Lies denken even snel een tentje op te zetten. Mooi niet! gooi de tentstokken om!</description>
         <date>5/15/12</date>
     </levelinfo>
     <toolbox>
