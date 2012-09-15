@@ -114,7 +114,7 @@ protected:
 
         AbstractUndoCommand* theMUCPtr;
         QPointF theClickedScenePos;
-        const static int thePieMenuDelay = 150;
+        const static int thePieMenuDelay = 225;
 
 private:
 	void initViewObjectAttributes(void);
