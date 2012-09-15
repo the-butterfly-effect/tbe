@@ -166,7 +166,8 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
         theRunningState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
         theRunningState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
-	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+        theRunningState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
+        theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
         theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
         theRunningState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
@@ -205,7 +206,7 @@ void SimulationControls::setup(QMenu* aMenuPtr)
         theRunningState->assignProperty(theForwardAction,"enabled", true);
         theRunningState->assignProperty(thePauseAction,  "enabled", true);
         theRunningState->assignProperty(thePlayAction,   "enabled", false);
-        theRunningState->assignProperty(theResetAction,  "enabled", false);
+        theRunningState->assignProperty(theResetAction,  "enabled", true);
         theRunningState->assignProperty(myLabelPtr,      "pixmap",  theRunningStatusPixmap);
         theRunningState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
         theRunningState->assignProperty(thePauseAction,  "shortcut", mySpaceKey);
