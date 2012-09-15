@@ -136,11 +136,10 @@
             <object width="0.120" X="3.150" Y="0.270" height="0.340" type="BowlingPin" ID="pin" angle="0.000" >
                 <property key="Bounciness" >0.0</property>
             </object>
+	    <object width="0.400" X="0.430" Y="2.270" height="0.500" type="QuarterArc40" angle="1.570"/>
             <object width="0.166" X="2.20" Y="2.250" height="0.501" type="ColaMintBottle" angle="4.730" />
-            <object width="0.250" X="0.510" Y="2.320" height="0.100" type="Floor" angle="0.260" />
             <object width="0.335" X="0.142" Y="1.968" height="0.316" type="Floor" angle="1.570" />
             <object width="0.250" X="0.510" Y="1.640" height="0.100" type="Floor" angle="-0.260" />
-            <object width="0.250" X="0.320" Y="2.210" height="0.100" type="Floor" angle="0.790" />
             <object width="0.250" X="0.330" Y="1.760" height="0.100" type="Floor" angle="-0.790" />
             <object width="1.942" X="1.570" Y="1.610" height="0.100" type="Floor" angle="0.000" />
             <object width="0.220" X="0.641" Y="1.307" height="0.220" type="BowlingBall" angle="0.000" />
@@ -187,7 +186,7 @@
             <object width="0.520" X="1.868" Y="1.190" height="0.100" type="Floor" angle="0.100" >
                 <property key="ZValue" >1.0</property>
             </object>
-            <object width="0.800" X="1.860" Y="2.080" height="0.150" type="BedOfNails" angle="-3.140" />
+            <object width="0.800" X="1.860" Y="2.090" height="0.150" type="BedOfNails" angle="-3.140" />
             <object width="0.250" X="0.129" Y="2.342" height="0.400" type="Cactus" angle="0.000" />
         </predefined>
         <background>
