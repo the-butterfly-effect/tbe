@@ -191,7 +191,10 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     //    the object where we won't put up a pie menu
     // 2) we only want to initiate a pie menu when the object is allowed to
     //    move
-    assert (theMUCPtr == NULL);
+    // 3) if you hit the right mousebutton during a drag (yes, people do that)
+    //    you get an extra mousePressEvent...
+    if (theMUCPtr != NULL)
+        return;
     if (theAbstractObjectPtr->isMovable())
     {
         theClickedScenePos = anEvent->scenePos();
