@@ -61,6 +61,19 @@
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer_2X">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>5</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QToolButton" name="buttonPause">
        <property name="minimumSize">
         <size>
