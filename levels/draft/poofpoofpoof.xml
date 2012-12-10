@@ -50,6 +50,7 @@
                 <property key="ImageName" >#E0E000</property>
                 <property key="object1" >balloon1@(0,-0.17)</property>
                 <property key="object2" >block1@(0,0)</property>
+                <property key="ZValue" >0.5</property>
             </object>
             <object width="0.598" X="1.500" Y="2.840" height="0.199" type="Link" angle="0.000" >
                 <property key="ImageName" >#E0E000</property>
