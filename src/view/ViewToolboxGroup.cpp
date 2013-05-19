@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2013 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,40 +22,17 @@
 #include "Popup.h"
 #include "Position.h"
 #include "ViewToolboxGroup.h"
-#include "ViewObject.h"
 #include "ViewWorld.h"
 
 
 ViewToolboxGroup::ViewToolboxGroup(ToolboxGroup* aTBGPtr, GameResources* aGRPtr, QWidget* aParentPtr)
     : QPushButton(aParentPtr),
-      theTBGPtr(aTBGPtr), theVBoxLayout(this)
+      theTBGPtr(aTBGPtr), theIcon(aTBGPtr, aGRPtr, this)
 {
     Q_ASSERT(aTBGPtr!=NULL);
 
-    if (theTBGPtr->count() > 0)
-    {
-        AbstractObject* myAOPtr = theTBGPtr->first();
-        ViewObject* myVOPtr = myAOPtr->createViewObject();
 
-        // We have a few different measures:
-        //   1) Planned object width in meters
-        //   2) THESCALE converts meters to pixels, part 1
-        //   3) Transform matrix, which scales the viewimage, i.e. meters to pixels, part 2
-
-        theOriginalM11 = aGRPtr->theTransformMatrix.m11();
-        theIconSize.setWidth(( myAOPtr->getTheWidth()* (float)THESCALE *
-                           theOriginalM11));
-        theIconSize.setHeight(( myAOPtr->getTheHeight()* (float)THESCALE *
-                           aGRPtr->theTransformMatrix.m22()));
-
-        QPixmap myPixmap = myVOPtr->pixmap();
-        theIcon = myPixmap.scaled(theIconSize);
-    }
-
-    theVBoxLayout.addWidget(&theCountLabel);
-    theVBoxLayout.addWidget(&theDescriptionLabel);
-
-    updateCount(aGRPtr->theTransformMatrix);
+    updateCount();
     connect (this, SIGNAL(clicked()), this, SLOT(onClicked()));
 }
 
@@ -76,36 +53,22 @@ void ViewToolboxGroup::onClicked ( void )
 }
 
 
-void ViewToolboxGroup::updateCount(const QTransform& aTransformMatrix)
+void ViewToolboxGroup::updateCount(void)
 {
-    theCountLabel.setText(QString("<b>%1x</b>").arg(theTBGPtr->count()));
-    theCountLabel.setAlignment(Qt::AlignTop | Qt::AlignLeft);
-    theDescriptionLabel.setText(theTBGPtr->theGroupName.result());
-    theDescriptionLabel.setAlignment(Qt::AlignBottom | Qt::AlignRight);
-
-    QSize myIconSize = theIconSize;
     if (theTBGPtr->count() > 0)
     {
-        setIcon(theIcon);
-        myIconSize = aTransformMatrix.m11()/theOriginalM11*theIconSize;
-        setIconSize(myIconSize);
-        setText("");
+        theIcon.updateCount();
+        setIcon(QPixmap::grabWidget(&theIcon));
+        setIconSize(theIcon.getSize());
+        setText(tr("%1x %2")
+                .arg(theTBGPtr->count())
+                .arg(theTBGPtr->theGroupName.result()));
     }
     else
     {
         setIcon(QIcon());
         setText(tr("(empty)"));
-        myIconSize = QSize(40,20);
+        setIconSize(QSize(40,20));
     }
-
-
-    int myMinWidth = max2(theCountLabel.minimumSizeHint().width() +
-                          theDescriptionLabel.minimumSizeHint().width(),
-                          myIconSize.width());
-    int myMinHeight= theCountLabel.minimumSizeHint().height() +
-                          myIconSize.height();
-    theMinSize = QSize(myMinWidth, myMinHeight);
-    setMinimumSize(theMinSize);
-    setMaximumWidth(myMinWidth+32);
 }
 

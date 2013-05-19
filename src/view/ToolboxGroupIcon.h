@@ -16,41 +16,45 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef VIEWTOOLBOXGROUP_H
-#define VIEWTOOLBOXGROUP_H
+#ifndef ToolboxGroupIcon_H
+#define ToolboxGroupIcon_H
 
 #include <QtGui/QtGui>
-#include "ToolboxGroupIcon.h"
+#include "ToolboxGroup.h"
 
 class GameResources;
 
 /** This class represents the 'button' for one or more objects
   * the user can select from the toolbox to add to the scene.
   */
-class ViewToolboxGroup : public QPushButton
+class ToolboxGroupIcon : public QWidget
 {
     Q_OBJECT
 
 public:
-    ViewToolboxGroup(ToolboxGroup* aTBGPtr,
+    ToolboxGroupIcon(ToolboxGroup* aTBGPtr,
                      GameResources* aGRPtr,
                      QWidget* aParentPtr=0);
 
     void updateCount(void);
 
-signals:
-    void hideMe();
+    /// overridden in order to actually paint something
+    virtual void paintEvent ( QPaintEvent *  );
 
-private slots:
-    void onClicked ( void );
+    QSize getSize(void)
+    { return theIconSize; }
 
 private:
     ToolboxGroup* theTBGPtr;
+    QTransform theTransformMatrix;
 
-    ToolboxGroupIcon theIcon;
+    QPixmap thePixmap;
+    QSize theIconSize;
+    qreal theOriginalM11;
+    QSize theMinSize;
 
     int max2(int a, int b)
     { return (a >= b) ? a : b; }
 };
 
-#endif // VIEWTOOLBOXGROUP_H
+#endif // ToolboxGroupIcon_H

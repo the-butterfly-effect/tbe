@@ -13,6 +13,7 @@ SET(view_SOURCES
 	view/PieMenu.cpp 
 	view/resizinggraphicsview.cpp 
 	view/SimulationControls.cpp 
+	view/ToolboxGroupIcon.cpp 
 	view/ToolboxUpDownControls.cpp
 	view/ViewObject.cpp 
 	view/ViewDetonatorBox.cpp 
@@ -36,6 +37,7 @@ SET(view_HEADERS
 	view/PieMenu.h 
 	view/resizinggraphicsview.h 
 	view/SimulationControls.h 
+	view/ToolboxGroupIcon.h 
 	view/ToolboxUpDownControls.h
 	view/ViewDetonatorBox.h 
 	view/ViewLink.h
