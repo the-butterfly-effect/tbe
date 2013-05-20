@@ -112,7 +112,7 @@ public:
 
         /// @returns true if Position exists, or false if used uninitialised
         bool isValid() const
-        { return (isnan(x)==0 && isnan(y)==0); }
+        { return (std::isnan(x)==0 && std::isnan(y)==0); }
 
         b2Vec2  toB2Vec2(void) const;
 	QPointF toQPointF(void) const
