@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2013  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,15 +38,14 @@ const qreal  STARTDISTANCE=0.2f;
 const Vector DetonatorBox::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
 DetonatorBox::DetonatorBox()
-		:	RectObject( QObject::tr("Detonator Box"),
-				"",
-				"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
-				0.33, 0.35, 4.0, 0.0),
-		  theState(ARMED),
-		  theHandleObjectPtr(NULL)
+	:	RectObject( QObject::tr("Detonator Box"),
+					"",
+					"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
+					0.33, 0.35, 4.0, 0.0),
+	  theState(ARMED), theHandle(this)
 {
 	theProps.setDefaultPropertiesString(
-		Property::PHONENUMBER_STRING + QString(":/") );
+				Property::PHONENUMBER_STRING + QString(":/") );
 	thePhoneNumber = "";
 }
 
@@ -104,10 +103,7 @@ ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 void DetonatorBox::createPhysicsObject(void)
 {
 	RectObject::createPhysicsObject();
-
-	theHandleObjectPtr = new DetonatorBoxHandle(this, getOrigCenter()+HANDLEOFFSET);
-	theWorldPtr->addObject(theHandleObjectPtr);
-	theHandleObjectPtr->createPhysicsObject();
+	theHandle.createPhysicsObject();
 
 	isTriggered = false;
 	theActivationStartTime = 0.0f;
@@ -118,9 +114,7 @@ void DetonatorBox::createPhysicsObject(void)
 void DetonatorBox::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
-	// we know that World will remove the object during the deletePhysicsWorld
-	// run, so we don't do it here...
-	theHandleObjectPtr=NULL;
+	theHandle.deletePhysicsObject();
 }
 
 QStringList DetonatorBox::getAllPhoneNumbers(void)
@@ -156,6 +150,12 @@ const QString DetonatorBox::getToolTip ( ) const
 	return QObject::tr("Send BOOM to %1").arg(getCurrentPhoneNumber());
 }
 
+qreal DetonatorBox::getZValue(void)
+{
+	return theViewObjectPtr->zValue();
+}
+
+
 DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 {
 	DEBUG4("DetonatorBox from state %d to state %d\n", theState, aNewState);
@@ -175,35 +175,30 @@ void DetonatorBox::notifyExplosions(void)
 }
 
 
+void DetonatorBox::registerChildObjects (void)
+{
+	theHandle.setOrigCenter(getOrigCenter()+HANDLEOFFSET);
+	theWorldPtr->addObject(&theHandle);
+}
+
+
 void DetonatorBox::setTriggered(void)
 {
 	// let's just be nice asynchronously
 	isTriggered = true;
 }
 
+// ##########################################################################
+// ##########################################################################
+// ##########################################################################
 
-void DetonatorBox::updateViewObject(bool isSimRunning) const
+DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
+	:	RectObject( QObject::tr("Detonator Box Handle"),
+					"Push Here To BOOM",
+					"DetonatorBoxHandle",
+					0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
-	RectObject::updateViewObject(isSimRunning);
-
-	qreal myDistance = 0;
-	if (theHandleObjectPtr)
-		myDistance = theHandleObjectPtr->getDistance();
-	dynamic_cast<ViewDetonatorBox*>(theViewObjectPtr)
-			->updateHandlePosition(STARTDISTANCE/2.0f+myDistance);
-}
-
-// ##########################################################################
-// ##########################################################################
-// ##########################################################################
-
-DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox, const Position& aPos)
-		:	RectObject( QObject::tr("Detonator Box Handle"),
-				"Push Here To BOOM",
-				"DetonatorBoxHandle",
-				0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
-{
-	setOrigCenter(aPos);
+	setOrigCenter(Position(0,0));
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 }
 
@@ -222,9 +217,11 @@ void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/
 	}
 }
 
-ViewObject*  DetonatorBoxHandle::createViewObject(float)
+ViewObject*  DetonatorBoxHandle::createViewObject(float aZ)
 {
-	return NULL;
+	RectObject::createViewObject(aZ);
+	setViewObjectZValue(theDBoxPtr->getZValue()/1.1);
+	return theViewObjectPtr;
 }
 
 void DetonatorBoxHandle::createPhysicsObject(void)
@@ -285,12 +282,12 @@ const qreal  Dynamite::RINGING_TIME   = 0.2;
 const qreal  Dynamite::DYNAMITE_MASS  = 0.8;
 
 Dynamite::Dynamite()
-		: PolyObject(QObject::tr("Dynamite"),
-			 "",
-			 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
-			 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
-			 0.43, 0.32, DYNAMITE_MASS, 0.1),
-		  theState(WAITING), theActiveStartTime(0.0f)
+	: PolyObject(QObject::tr("Dynamite"),
+				 "",
+				 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
+				 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
+				 0.43, 0.32, DYNAMITE_MASS, 0.1),
+	  theState(WAITING), theActiveStartTime(0.0f)
 {
 }
 
@@ -453,8 +450,8 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 
 // note that the mass will be redone during setAll()
 ExplosionSplatter::ExplosionSplatter()
-		: CircleObject("ExplosionSplatter","", "ColaSplatter",
-					   theRadius, 0.001,  1.0)
+	: CircleObject("ExplosionSplatter","", "ColaSplatter",
+				   theRadius, 0.001,  1.0)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
 
@@ -492,7 +489,7 @@ void ExplosionSplatter::reportNormalImpulseLength(qreal)
 	b2Vec2 myVelocity = theB2BodyPtr->GetLinearVelocity();
 
 	if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
-		((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
+			((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
 	{
 		theDynamitePtr->removeMe(this);
 		theWorldPtr->removeMe(this, 0.05);
@@ -501,10 +498,10 @@ void ExplosionSplatter::reportNormalImpulseLength(qreal)
 
 
 void ExplosionSplatter::setAll(World* aWorldPtr,
-						  const Position& aStartPos,
-						  qreal aVelocity,
-						  qreal aSplatterMass,
-						  Dynamite* aDynamitePtr)
+							   const Position& aStartPos,
+							   qreal aVelocity,
+							   qreal aSplatterMass,
+							   Dynamite* aDynamitePtr)
 {
 	DEBUG5("ExplosionSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,

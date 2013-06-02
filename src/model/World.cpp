@@ -112,19 +112,20 @@ void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObj
 
 bool World::addObject(AbstractObject* anObjectPtr)
 {
-	if (anObjectPtr == NULL)
-		return false;
-	DEBUG4("World::addObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
+    if (anObjectPtr == NULL)
+        return false;
+    DEBUG4("World::addObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
 
-	// if it is already present, let's not insert again
-	if (theObjectPtrList.contains(anObjectPtr)==false)
-		theObjectPtrList.push_back(anObjectPtr);
-	anObjectPtr->theWorldPtr = this;
-	anObjectPtr->parseProperties();
+    // if it is already present, let's not insert again
+    if (theObjectPtrList.contains(anObjectPtr)==false)
+        theObjectPtrList.push_back(anObjectPtr);
+    anObjectPtr->theWorldPtr = this;
+    anObjectPtr->parseProperties();
+    anObjectPtr->registerChildObjects();
 
         if (theViewWorldPtr!=NULL)
                 addAbstractObjectToViewWorld(anObjectPtr);
-	return true;
+    return true;
 }
 
 

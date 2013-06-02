@@ -50,9 +50,6 @@ public:
 	/// this member starts the display of the actual ChoosePhoneNumber dialog
 	void displayChoosePhoneNumber(void);
 
-	/// TODO: document
-	void updateHandlePosition(qreal aDistance);
-
 protected:
 	/// overridden to ALWAYS allow highlighting
 	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
@@ -63,9 +60,6 @@ private:
 	// prevent copy constructor / assignment operator
 	ViewDetonatorBox(const ViewDetonatorBox&);
 	const ViewDetonatorBox& operator= (const ViewDetonatorBox&);
-
-	QGraphicsPixmapItem theHandle;
-	qreal theHandleXOffset;
 };
 
 #endif // VIEWDETONATORBOX_H

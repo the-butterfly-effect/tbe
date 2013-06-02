@@ -32,25 +32,10 @@
 //
 
 ViewDetonatorBox::ViewDetonatorBox (AbstractObject* aAbstractObjectPtr, const QString& anImageName)
-	: ViewObject(aAbstractObjectPtr, anImageName),
-	  theHandle(NULL)
+	: ViewObject(aAbstractObjectPtr, anImageName)
 {
 	// Everything is done in the ViewObject constructor...
 	DEBUG5ENTRY;
-
-	// Except that fact that we have a child object...
-	// Which is controlled in parent coordinates, by the way...
-	theHandle.setParentItem(this);
-	QPixmap myTempPixmap;
-	ImageCache::getPixmap("DetonatorBoxHandle", &myTempPixmap);
-	theHandle.setPixmap(myTempPixmap);
-	theHandle.setFlag(QGraphicsItem::ItemStacksBehindParent,true);
-
-	// the handle is smaller, but we need to scale manually here...
-	qreal myScale = 889.0/1238.0;
-	theHandle.scale(myScale,myScale);
-	// this also affects the middle position of the handle
-	theHandleXOffset = (1.0-myScale)*boundingRect().width()*0.5;
 }
 
 ViewDetonatorBox::~ViewDetonatorBox ( )
@@ -90,15 +75,6 @@ void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewDetonatorBox::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
-    theClickedScenePos = anEvent->scenePos();
-    QTimer::singleShot(thePieMenuDelay, this, SLOT(realMousePressEvent()));
-}
-
-
-void ViewDetonatorBox::updateHandlePosition(qreal aDistance)
-{
-	// TODO/FIXME: magic number here - and no clue where it comes from!
-	Vector myVector(0, 7*aDistance);
-	qreal y = myVector.toQPointF().y();
-	theHandle.setPos(theHandleXOffset, y);
+	theClickedScenePos = anEvent->scenePos();
+	QTimer::singleShot(thePieMenuDelay, this, SLOT(realMousePressEvent()));
 }

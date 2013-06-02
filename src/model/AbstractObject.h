@@ -359,6 +359,11 @@ public:
 	  */
 	virtual void  parseProperties(void);
 
+	/** Called from World upon registration, allows to register
+	  * child objects.
+	  */
+	virtual void registerChildObjects (void) {};
+
 	/** sets the ZValue for theViewObject to
 	 *  the value set in Property::ZVALUE_STRING or
 	 *  or (only if the above property doesn't exist) to @param aDefaultValue

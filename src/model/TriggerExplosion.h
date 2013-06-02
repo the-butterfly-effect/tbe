@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2013  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,8 +28,61 @@
 #include <QString>
 #include <QStringList>
 
-class DetonatorBoxHandle;
+class DetonatorBox;
 class ExplosionSplatter;
+
+
+
+/** specific class to handle the nocollision (towards DetonatorBox itself)
+  * and no serialization
+  * This class only exists as a child object of DetonatorBox.
+  */
+class DetonatorBoxHandle : public RectObject, public SimStepCallbackInterface
+{
+private:
+	/// @param aDBox pointer to a DetonatorBox, the only object allowed to create a Handle
+	DetonatorBoxHandle(DetonatorBox* aDBox);
+	DetonatorBoxHandle() = delete;
+
+public:
+	virtual ~DetonatorBoxHandle();
+
+	/// Overridden from RectObject to allow setting a custom ZValue
+	virtual ViewObject* createViewObject(float aDefaultDepth);
+
+	/// overridden from AbstractObject to allow for the special joints
+	void createPhysicsObject(void);
+
+	/// overridden from AbstractObject to allow for the special joints
+	virtual void deletePhysicsObject(void);
+
+	qreal getDistance(void);
+
+	/// returns whether the object can be resized by the user
+	virtual SizeDirections isResizable ( ) const
+	{	return NORESIZING;	}
+
+	/// @returns true if the object should not surive a World::deletePhysicsWorld()
+	/// overridden from AbstractObject
+	virtual bool isTemp() const
+	{ return true; }
+
+	friend class DetonatorBox;
+
+private:
+	/// implemented from SimStepCallbackInterface
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+
+	DetonatorBox* theDBoxPtr;
+	b2PrismaticJoint* theJointPtr;
+
+private:
+	// disable copy constructor / assignment operator
+	DetonatorBoxHandle(const DetonatorBoxHandle& aBORefToCopy) = delete;
+	DetonatorBoxHandle& operator = (const DetonatorBoxHandle& aBORefToCopy) = delete;
+};
+
+
 
 /** this class implements the DetonatorBox for an explosion
  *  it has a handle object at the top that can be pressed,
@@ -52,9 +105,9 @@ public:
 		ARMED,	   // handle up, cell display dark
 		ACTIVATED, // handle down, cell display lighting up
 		RINGING,   // radio waves visible, display lighted. at the beginning
-				   // of this state we actually signal all bombs
-				   // We might want to turn this into multiple states
-				   // (for animation) later
+		// of this state we actually signal all bombs
+		// We might want to turn this into multiple states
+		// (for animation) later
 		DONE       // end state, handle down and cell dark...
 	};
 
@@ -88,9 +141,16 @@ public:
 	/// we can display the phone number
 	virtual const QString getToolTip ( ) const;
 
+	/// (used by the Handle) returns the ZValue of the DBox,
+	/// so the handle can display itself below
+	qreal getZValue(void);
+
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
+
+	/// setup the Handle
+	virtual void registerChildObjects (void);
 
 	/// Set the phone number to dial when triggered
 	/// Technically speaking, any ID would do here...
@@ -100,10 +160,6 @@ public:
 
 	/// called by theDetonatorBoxHandle when triggered
 	void setTriggered(void);
-
-	/// overridden because we have also the handle to take care of...
-	virtual void updateViewObject(bool isSimRunning) const;
-
 
 protected:
 	/// call this function to suggest a state change to the DetonatorBox
@@ -137,7 +193,7 @@ private:
 	const static Vector HANDLEOFFSET;
 
 	/// pointer to the handle (separate object)
-	DetonatorBoxHandle* theHandleObjectPtr;
+	DetonatorBoxHandle theHandle;
 
 	/// the phone number to "dial" when triggered
 	QString thePhoneNumber;
@@ -148,57 +204,6 @@ private:
 	DetonatorBox& operator = (const DetonatorBox& aBORefToCopy);
 
 	friend class DetonatorBoxHandle;
-};
-
-
-/** specific class to handle the nocollision (towards DetonatorBox itself)
-  * and no serialization
-  * (because it is part of DetonatorBox and shouldn't exist by itself)
-  */
-class DetonatorBoxHandle : public RectObject, public SimStepCallbackInterface
-{
-private:
-	/// @param aDBox pointer to a DetonatorBox, the only object allowed to create a Handle
-	DetonatorBoxHandle(DetonatorBox* aDBox, const Position& aPos);
-
-public:
-	virtual ~DetonatorBoxHandle();
-
-	/// Overridden from RectObject to allow setting a custom ZValue
-	/// and set itself as a child of the DetonatorBox.
-	/// Also because this class wants to register for callbacks...
-	virtual ViewObject* createViewObject(float aDefaultDepth);
-
-	/// overridden from AbstractObject to allow for the special joints
-	void createPhysicsObject(void);
-
-	/// overridden from AbstractObject to allow for the special joints
-	virtual void deletePhysicsObject(void);
-
-	qreal getDistance(void);
-
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
-	/// @returns true if the object should not surive a World::deletePhysicsWorld()
-	/// overridden from AbstractObject
-	virtual bool isTemp() const
-	{ return true; }
-
-	friend class DetonatorBox;
-
-private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
-
-	DetonatorBox* theDBoxPtr;
-	b2PrismaticJoint* theJointPtr;
-
-private:
-	// disable copy constructor / assignment operator
-	DetonatorBoxHandle(const DetonatorBoxHandle& aBORefToCopy);
-	DetonatorBoxHandle& operator = (const DetonatorBoxHandle& aBORefToCopy);
 };
 
 
