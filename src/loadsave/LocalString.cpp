@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2013 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -75,6 +75,22 @@ LocalString::fillFromDOM(
 		myE = myE.nextSiblingElement(aTagString);
 	}
 }
+
+void LocalString::serializeTo(QDomElement& aParentElement) const
+{
+    QDomDocument myDomDocument = aParentElement.ownerDocument();
+    for(auto i : theStringList.toStdMap())
+    {
+        if (i.first.isEmpty())
+            continue;
+        QDomElement myStringNode = myDomDocument.createElement("name");
+        QDomText myStringValue = myDomDocument.createTextNode(i.second);
+        myStringNode.setAttribute("lang", i.first);
+        myStringNode.appendChild(myStringValue);
+        aParentElement.appendChild(myStringNode);
+    }
+}
+
 
 QString LocalString::result() const
 {
