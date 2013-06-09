@@ -143,13 +143,11 @@ void GameResources::setup(QMenu* aMenuPtr)
 void GameResources::slot_startAppearing()
 {
     deleteTheToolbox();
-    Level::ToolboxGroupList::iterator i = theLevelPtr->theToolboxList.begin();
-    while (i!=theLevelPtr->theToolboxList.end())
+    for (auto i : theLevelPtr->theToolboxList)
     {
-        ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i.value(), this);
+        ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i, this);
         ui->theToolBoxPtr->addWidget(myVTGPtr);
         theToolboxItemList.push_back(myVTGPtr);
-        i++;
         connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
     }
 }
