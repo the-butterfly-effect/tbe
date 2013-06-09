@@ -95,8 +95,14 @@ not_good:
 }
 
 
-void
-ToolboxGroupSerializer::serialize(QDomElement* , ToolboxGroup* )
+QDomElement ToolboxGroupSerializer::serialize(QDomDocument& aDomDocument, ToolboxGroup* aToolboxGroupPtr)
 {
-	// not implemented yet
+    QDomElement myToolboxNode = aDomDocument.createElement(theToolboxItemString);
+    myToolboxNode.setAttribute(theCountString, aToolboxGroupPtr->count());
+    myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName.english());
+
+    aToolboxGroupPtr->theGroupName.serializeTo(myToolboxNode);
+    aToolboxGroupPtr->first()->getSerializer()->serialize(&myToolboxNode);
+
+    return myToolboxNode;
 }

@@ -388,10 +388,13 @@ bool Level::save(const QString& aFileName)
 
 
     // Toolbox
-//    if (theToolboxDomNode.isNull())
-//        theToolboxDomNode = myDocument.createElement(theToolboxString);
-//    QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
-//    myRoot.appendChild(myToolboxCopy);
+    QDomElement myToolboxDomNode = myDocument.createElement(theToolboxString);
+    myRoot.appendChild(myToolboxDomNode);
+    // ... and add the various groups
+    for (auto myI : theToolboxList)
+    {
+        myToolboxDomNode.appendChild(ToolboxGroupSerializer::serialize(myDocument, myI));
+    }
 
     // Scene
     QDomElement mySceneParent = myDocument.createElement(theSceneString);
