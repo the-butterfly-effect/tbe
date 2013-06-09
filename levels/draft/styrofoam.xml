@@ -3,14 +3,21 @@
     <levelinfo>
         <title>Football in Styrofoam...</title>
         <title lang="nl" >Voetbal in piepschuim...</title>
+        <title lang="de" >Ein Fussball ins Styropor...</title>
+        <title lang="fr" >Un ballon de football dans styromousse...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The soccer ball must kick the pin. But there's something missing.</description>
+        <description lang="nl">De voetbal moet de kegel omknallen. Maar er ontbreekt iets.</description>
+        <description lang="de">Der Ball musst den Bowling Pin umwerfen. Aber etwas fehlt.</description>
+        <description lang="fr">Le ballon de football doit botter le pin. Mais il ya quelque chose qui manque.</description>
         <date>12/20/09</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="2" name="Styrofoam Block" >
             <name lang="nl" >Blok piepschuim</name>
+            <name lang="de" >Block aus Styropor</name>
+            <name lang="fr" >un bloc de styromousse</name>
             <object width="1.0" height="0.5" type="RectObject" >
                 <property key="ImageName" >styrofoam</property>
                 <property key="Bounciness" >0.6</property>
