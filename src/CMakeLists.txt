@@ -39,7 +39,7 @@ SET(tbe_SOURCES ${control_SOURCES} ${loadsave_SOURCES} ${main_SOURCES} ${model_S
 SET(tbe_HEADERS ${control_HEADERS} ${loadsave_HEADERS} ${main_HEADERS} ${model_HEADERS} ${view_HEADERS})
 SET(tbe_UIFORMS ${control_UIFORMS} ${loadsave_UIFORMS} ${main_UIFORMS} ${model_UIFORMS} ${view_UIFORMS})
 
-set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -Wpointer-arith -DQT_NO_ASCII_CAST")
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g -Wall -Wextra -Wpointer-arith -DQT_NO_ASCII_CAST -std=gnu++0x")
 
 # all Qt-specifics
 find_package(Qt4 REQUIRED)

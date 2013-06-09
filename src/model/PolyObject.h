@@ -114,7 +114,7 @@ protected:
 		float theOrigWidth;
 		float theOrigHeight;
 
-		static const float UNDEFINED = 99999.0f;
+        static constexpr float UNDEFINED = 99999.0f;
 	};
 
 	AABB theAABB;
