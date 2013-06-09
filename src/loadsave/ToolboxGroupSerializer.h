@@ -49,12 +49,12 @@ public:
 	static ToolboxGroup* createObjectFromDom(const QDomNode& q, QString* anOutputErrorMsg);
 
 private:
-	/// constructor only called by ToolboxGroup
-	ToolboxGroupSerializer(const ToolboxGroup* anObjectPtr);
-	/// Neutralize copy constructor and assignment operator
-	ToolboxGroupSerializer(ToolboxGroupSerializer&);
-	/// Neutralize copy constructor and assignment operator
-	ToolboxGroupSerializer& operator=(const ToolboxGroupSerializer&);
+    /// constructor only called by ToolboxGroup
+    ToolboxGroupSerializer(const ToolboxGroup* anObjectPtr);
+    /// Neutralize copy constructor and assignment operator
+    ToolboxGroupSerializer(ToolboxGroupSerializer&) = delete;
+    /// Neutralize copy constructor and assignment operator
+    ToolboxGroupSerializer& operator=(const ToolboxGroupSerializer&) = delete;
 };
 
 #endif // TOOLBOXGROUPSERIALIZER_H
