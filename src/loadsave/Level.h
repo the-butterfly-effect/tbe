@@ -128,9 +128,9 @@ private:
 //	friend class EditLevelProperties;
 
 private:
-	// prevent copy constructor / assignment operator
-	Level(const Level&);
-	const Level& operator= (const Level&);
+    // prevent copy constructor / assignment operator
+    Level(const Level&) = delete;
+    const Level& operator= (const Level&) = delete;
 };
 
 #endif // LEVEL_H
