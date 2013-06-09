@@ -17,7 +17,7 @@
         <toolboxitem count="2" name="Styrofoam Block" >
             <name lang="nl" >Blok piepschuim</name>
             <name lang="de" >Block aus Styropor</name>
-            <name lang="fr" >un bloc de styromousse</name>
+            <name lang="fr" >Bloc de styromousse</name>
             <object width="1.0" height="0.5" type="RectObject" >
                 <property key="ImageName" >styrofoam</property>
                 <property key="Bounciness" >0.6</property>
