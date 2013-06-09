@@ -42,7 +42,6 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 {
 	ui->setupUi(this);
 
-	setupMenu();
 	setupView();
 	if (isMaximized)
 		showMaximized();
@@ -108,33 +107,33 @@ void MainWindow::loadLevelDelayed()
 
 void MainWindow::on_action_About_activated()
 {
-	//: translators: <b> and <br> are statements for bold and newline, respectively
-	Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
-				"An open source game that uses realistic physics"
-				" simulations to combine lots of simple mechanical elements"
-				" to achieve a simple goal in the most complex way possible.<br><br>"
-				"(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend<br>"
-				"Licensed under GPL version 2 - <i>only</i>.<br><br>"
-				"See http://%1/ for more info on this project.")
-				.arg(QCoreApplication::instance()->organizationDomain()), this);
+    //: translators: <b> and <br> are statements for bold and newline, respectively
+    Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
+                   "An open source game that uses realistic physics"
+                   " simulations to combine lots of simple mechanical elements"
+                   " to achieve a simple goal in the most complex way possible.<br><br>"
+                   "(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend<br>"
+                   "Licensed under GPL version 2 - <i>only</i>.<br><br>"
+                   "See http://%1/ for more info on this project.")
+                .arg(QCoreApplication::instance()->organizationDomain()), this);
 }
 
 
 void MainWindow::on_action_Bug_Reports_activated()
 {
-	//: translators: <b> and <br> are statements for bold and newline, respectively
-	Popup::Info(tr("<b>The Butterfly Effect - Bug Reports</b><br><br>"
-				   "Of course, this game is not bug free yet.<br>"
-				   "If you come across anything that you think should not "
-				   "happen, please let us know. Go to our ticket website:"
-				   "<br><a href=\""
-				   "http://sourceforge.net/apps/trac/tbe/newticket\">"
-				   "http://sourceforge.net/apps/trac/tbe/newticket</a><br>"
-				   "Please tell us at least the name of the level, what you "
-				   "expected to happen and what did happen. If you want to "
-				   "learn how we fix your issue, please provide a valid "
-				   "e-mail address."
-				""), this);
+    //: translators: <b> and <br> are statements for bold and newline, respectively
+    Popup::Info(tr("<b>The Butterfly Effect - Bug Reports</b><br><br>"
+                   "Of course, this game is not bug free yet.<br>"
+                   "If you come across anything that you think should not "
+                   "happen, please let us know. Go to our ticket website:"
+                   "<br><a href=\""
+                   "http://sourceforge.net/apps/trac/tbe/newticket\">"
+                   "http://sourceforge.net/apps/trac/tbe/newticket</a><br>"
+                   "Please tell us at least the name of the level, what you "
+                   "expected to happen and what did happen. If you want to "
+                   "learn how we fix your issue, please provide a valid "
+                   "e-mail address."
+                   ""), this);
 }
 
 
@@ -170,7 +169,12 @@ void MainWindow::on_action_Libraries_activated()
 }
 
 
-void MainWindow::on_action_New_Levels_activated(void)
+void MainWindow::on_action_New_activated(void)
+{
+}
+
+
+void MainWindow::on_action_New_Level_Ideas_activated(void)
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Create New Levels</b><br><br>"
@@ -184,7 +188,15 @@ void MainWindow::on_action_New_Levels_activated(void)
 }
 
 
-void MainWindow::on_actionO_pen_File_activated(void)
+void MainWindow::on_action_Open_Level_triggered()
+{
+    ChooseLevel* myDialogPtr = new ChooseLevel(ui->graphicsView);
+    connect(myDialogPtr, SIGNAL(loadLevel(QString)),
+            this, SLOT(loadLevel(QString)));
+}
+
+
+void MainWindow::on_action_Open_File_activated(void)
 {
     QString myFileName = QFileDialog::getOpenFileName(this,
                                                       tr("Open level"), ".", tr("TBE levels (*.xml)"));
@@ -199,6 +211,17 @@ void MainWindow::on_action_Quit_activated(void)
     if (Popup::YesNoQuestion(tr("really?"), this))
         QApplication::exit(0);
 }
+
+
+void MainWindow::on_action_Save_activated(void)
+{
+}
+
+
+void MainWindow::on_action_Save_As_activated(void)
+{
+}
+
 
 void MainWindow::on_action_Skip_Level_activated(void)
 {
@@ -219,6 +242,29 @@ void MainWindow::on_action_Suggestions_activated()
 }
 
 
+void MainWindow::on_action_Switch_to_Level_Editor_activated()
+{
+    // add "New", "Save" and "Save as" items to File menu
+    typedef QList<QAction*> ActionList;
+    ActionList myList = ui->menuFile->actions();
+    for (auto i : myList)
+    {
+        if (!i->isVisible())
+        {
+            i->setVisible(true);
+            i->setEnabled(true);
+        }
+        if (i->data()=="Switch")
+        {
+            i->setVisible(false);
+            i->setEnabled(false);
+        }
+    }
+    // add new top menu "Insert" and add all objects into it
+    // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
+    // add new top menu "Editors" and add some dialogs to it
+}
+
 void MainWindow::purgeLevel(void)
 {
 	DEBUG1ENTRY;
@@ -237,11 +283,6 @@ void MainWindow::reloadLevel(void)
 	QString myLevelName = theLevelPtr->getLevelFileName();
 	purgeLevel();
 	loadLevel(myLevelName);
-}
-
-
-void MainWindow::setupMenu(void)
-{
 }
 
 
@@ -265,9 +306,3 @@ void MainWindow::setupView()
     QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 }
 
-void MainWindow::on_action_Open_Level_triggered()
-{
-    ChooseLevel* myDialogPtr = new ChooseLevel(ui->graphicsView);
-    connect(myDialogPtr, SIGNAL(loadLevel(QString)),
-                    this, SLOT(loadLevel(QString)));
-}

@@ -43,8 +43,13 @@
     </property>
     <addaction name="separator"/>
     <addaction name="action_Open_Level"/>
-    <addaction name="actionO_pen_File"/>
+    <addaction name="action_Open_File"/>
     <addaction name="action_Skip_Level"/>
+    <addaction name="separator"/>
+    <addaction name="action_Switch_to_Level_Editor"/>
+    <addaction name="action_New"/>
+    <addaction name="action_Save"/>
+    <addaction name="action_Save_As"/>
     <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
@@ -68,7 +73,7 @@
      </property>
      <addaction name="action_Suggestions"/>
      <addaction name="action_Bug_Reports"/>
-     <addaction name="action_New_Levels"/>
+     <addaction name="action_New_Level_Ideas"/>
     </widget>
     <addaction name="action_Libraries"/>
     <addaction name="action_Keyboard_Shortcuts"/>
@@ -86,7 +91,7 @@
     <string>&amp;Open Level...</string>
    </property>
   </action>
-  <action name="actionO_pen_File">
+  <action name="action_Open_File">
    <property name="text">
     <string>O&amp;pen File...</string>
    </property>
@@ -126,9 +131,53 @@
     <string>&amp;Bug Reports...</string>
    </property>
   </action>
-  <action name="action_New_Levels">
+  <action name="action_New_Level_Ideas">
    <property name="text">
-    <string>New Levels...</string>
+    <string>New Level Ideas...</string>
+   </property>
+  </action>
+  <action name="action_Switch_to_Level_Editor">
+   <property name="text">
+    <string>&amp;Switch to Level Editor</string>
+   </property>
+   <property name="data">
+    <string>Switch</string>
+   </property>
+  </action>
+  <action name="action_Save">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save current level under its current name</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action_Save_As">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save level under a new name</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action_New">
+   <property name="text">
+    <string>New Level...</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
  </widget>
