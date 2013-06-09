@@ -3,61 +3,64 @@
 
 
 SET(view_SOURCES 
-	view/animateddialog.cpp 
-	view/ChooseLevel.cpp 
-	view/ChoosePhoneNumber.cpp 
-	view/GameResources.cpp 
-	view/GoalEditor.cpp 
-	view/ImageCache.cpp 
-	view/MainWindow.cpp 
-	view/PieMenu.cpp 
-	view/resizinggraphicsview.cpp 
-	view/SimulationControls.cpp 
-	view/ToolboxGroupIcon.cpp 
-	view/ToolboxUpDownControls.cpp
-	view/ViewObject.cpp 
-	view/ViewDetonatorBox.cpp 
-	view/ViewLink.cpp
-	view/ViewPostIt.cpp 
-	view/ViewWorld.cpp 
-	view/ViewToolboxGroup.cpp 
-	view/WinFailDialog.cpp
+    view/animateddialog.cpp
+    view/ChooseLevel.cpp
+    view/ChoosePhoneNumber.cpp
+    view/GameResources.cpp
+    view/GoalEditor.cpp
+    view/ImageCache.cpp
+    view/MainWindow.cpp
+    view/PieMenu.cpp
+    view/resizinggraphicsview.cpp
+    view/SaveLevelInfo.cpp
+    view/SimulationControls.cpp
+    view/ToolboxGroupIcon.cpp
+    view/ToolboxUpDownControls.cpp
+    view/ViewObject.cpp
+    view/ViewDetonatorBox.cpp
+    view/ViewLink.cpp
+    view/ViewPostIt.cpp
+    view/ViewWorld.cpp
+    view/ViewToolboxGroup.cpp
+    view/WinFailDialog.cpp
 )
 
 SET(view_HEADERS 
-	view/animateddialog.h 
-	view/Background.h 
-	view/ChooseLevel.h 
-	view/ChoosePhoneNumber.h 
-	view/GameResources.h 
-	view/GoalEditor.h 
-	view/ImageCache.h 
-	view/MainWindow.h 
-	view/Popup.h 
-	view/PieMenu.h 
-	view/resizinggraphicsview.h 
-	view/SimulationControls.h 
-	view/ToolboxGroupIcon.h 
-	view/ToolboxUpDownControls.h
-	view/ViewDetonatorBox.h 
-	view/ViewLink.h
-	view/ViewObject.h 
-	view/ViewPostIt.h 
-	view/ViewWorld.h 
-	view/ViewToolboxGroup.h 
-	view/WinFailDialog.h
+    view/animateddialog.h
+    view/Background.h
+    view/ChooseLevel.h
+    view/ChoosePhoneNumber.h
+    view/GameResources.h
+    view/GoalEditor.h
+    view/ImageCache.h
+    view/MainWindow.h
+    view/Popup.h
+    view/PieMenu.h
+    view/resizinggraphicsview.h
+    view/SaveLevelInfo.h
+    view/SimulationControls.h
+    view/ToolboxGroupIcon.h
+    view/ToolboxUpDownControls.h
+    view/ViewDetonatorBox.h
+    view/ViewLink.h
+    view/ViewObject.h
+    view/ViewPostIt.h
+    view/ViewWorld.h
+    view/ViewToolboxGroup.h
+    view/WinFailDialog.h
 )
 
 SET(view_UIFORMS
-	view/ChooseLevel.ui 
-	view/ChoosePhoneNumber.ui 
-	view/GameResources.ui 
-	view/GoalEditor.ui 
-	view/MainWindow.ui 
-	view/SimulationControls.ui 
-	view/ToolboxUpDownControls.ui
-	view/ViewPostIt.ui 
-	view/WinFailDialog.ui
+    view/ChooseLevel.ui
+    view/ChoosePhoneNumber.ui
+    view/GameResources.ui
+    view/GoalEditor.ui
+    view/MainWindow.ui
+    view/SaveLevelInfo.ui
+    view/SimulationControls.ui
+    view/ToolboxUpDownControls.ui
+    view/ViewPostIt.ui
+    view/WinFailDialog.ui
 )
 
 SET(view_RESOURCES

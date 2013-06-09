@@ -228,7 +228,11 @@ public:
 	virtual Position getOrigCenter ( ) const
 		{ return theCenter; }
 
-	/**
+    /// @returns a pointer to a serializer for this object.
+    /// This member is used during saving...
+    const AbstractObjectSerializer* getSerializer(void) const;
+
+    /**
 	 * Get the current Position of the object.
 	 * If there is an actual Physics model, it will return the position from
 	 * the physics model. If there is not, it will return getOrigCenter().

@@ -28,6 +28,7 @@
 #include "ChooseLevel.h"
 #include "Level.h"
 #include "Popup.h"
+#include "SaveLevelInfo.h"
 #include "UndoSingleton.h"
 #include "World.h"
 
@@ -215,11 +216,42 @@ void MainWindow::on_action_Quit_activated(void)
 
 void MainWindow::on_action_Save_activated(void)
 {
+    DEBUG1ENTRY;
+    if (theLevelPtr==NULL)
+        return;
+
+    QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
+    if (theLevelPtr->save(myFileInfo.absoluteFilePath())==false)
+        Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
+    else
+        DEBUG2("File '%s' saved.",myFileInfo.absoluteFilePath().toAscii().constData());
 }
 
 
 void MainWindow::on_action_Save_As_activated(void)
 {
+    DEBUG1ENTRY;
+    assert(theLevelPtr);
+    if (theLevelPtr==NULL)
+        return;
+
+    SaveLevelInfo mySaveLevel(theLevelPtr,this);
+    int myReturnCode = mySaveLevel.exec();
+    if (myReturnCode == QDialog::Rejected)
+        return;
+
+    // for now we ignore the return code...
+    if (mySaveLevel.commitToLevel()==false)
+        Popup::Warning(tr("You did not fill in all fields - but level saved anyway\n"));
+
+    QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
+
+    DEBUG5("File '%s' is readable: %d, writeable: %d\n",
+           ASCII(myFileInfo.absoluteFilePath()),
+           myFileInfo.isReadable(), myFileInfo.isWritable());
+
+    on_action_Save_activated();
+
 }
 
 

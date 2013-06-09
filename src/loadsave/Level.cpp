@@ -32,7 +32,7 @@
 // Strings identifying elements/nodes in the XML file
 // (the ones without static are also used in AbstractObjectSerializer.cpp)
 //
-//static const char* theRootNodeString= "tbe-level";
+static const char* theRootNodeString= "tbe-level";
 static const char* theLevelInfoString = "levelinfo";
 	static const char* theLevelAuthorString       = "author";
 	static const char* theLevelDateString         = "date";
@@ -93,17 +93,6 @@ Level::~Level ( )
 //
 // Methods
 //
-
-//void
-//Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
-//{
-//	const AbstractObjectSerializer* myBOS = anObjectRef.getSerializer();
-//	if (myBOS!=NULL)
-//	{
-//		myBOS->serialize(&aParent);
-//		delete myBOS;
-//	}
-//}
 
 
 ToolboxGroup*
@@ -343,94 +332,107 @@ not_good:
 }
 
 
-//void
-//Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
-//{
-//	QDomElement myReturn = aParent.ownerDocument().createElement(anElementName);
-//	QDomText myT = aParent.ownerDocument().createTextNode(aText);
-//	myReturn.appendChild(myT);
-//	aParent.appendChild(myReturn);
-//}
-
-//void
-//Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
-//{
-//	LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
-//	while (myL != anLS.theStringList.end())
-//	{
-//		QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
-//		QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
-//		myElement.appendChild(myT);
-//		if (myL.key().isEmpty() == false)
-//			myElement.setAttribute("lang", myL.key());
-//		aParent.appendChild(myElement);
-//		++myL;
-//	}
-//}
+void
+Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
+{
+    const AbstractObjectSerializer* myBOS = anObjectRef.getSerializer();
+    if (myBOS!=NULL)
+    {
+        myBOS->serialize(&aParent);
+        delete myBOS;
+    }
+}
 
 
-//bool Level::save(const QString& aFileName)
-//{
-//	DEBUG5("Level::save(%s)\n", ASCII(aFileName));
-//	QDomDocument myDocument("mydocument");
-//	QDomElement myRoot = myDocument.createElement(theRootNodeString);
-//	myDocument.appendChild(myRoot);
+void
+Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
+{
+    QDomElement myReturn = aParent.ownerDocument().createElement(anElementName);
+    QDomText myT = aParent.ownerDocument().createTextNode(aText);
+    myReturn.appendChild(myT);
+    aParent.appendChild(myReturn);
+}
 
-//	// LevelInfo
-//	QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
-//	myRoot.appendChild(myLevelInfo);
-//	addTextElement(myLevelInfo, theLevelNameString, theLevelName);
-//	addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
-//	addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
-//	addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
-//	addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
+void
+Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
+{
+    LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
+    while (myL != anLS.theStringList.end())
+    {
+        QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
+        QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
+        myElement.appendChild(myT);
+        if (myL.key().isEmpty() == false)
+            myElement.setAttribute("lang", myL.key());
+        aParent.appendChild(myElement);
+        ++myL;
+    }
+}
 
 
-//	// Toolbox
-//	if (theToolboxDomNode.isNull())
-//		theToolboxDomNode = myDocument.createElement(theToolboxString);
-//	QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
-//	myRoot.appendChild(myToolboxCopy);
+bool Level::save(const QString& aFileName)
+{
+    DEBUG5("Level::save(%s)\n", ASCII(aFileName));
+    QDomDocument myDocument("mydocument");
+    QDomElement myRoot = myDocument.createElement(theRootNodeString);
+    myDocument.appendChild(myRoot);
 
-//	// Scene
-//	QDomElement mySceneParent = myDocument.createElement(theSceneString);
-//	myRoot.appendChild(mySceneParent);
-//	// ... add scenesize
-//	QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
-//	mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
-//	mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
-//	mySceneParent.appendChild(mySceneSizeNode);
-//	// ... add the predefined elements
-//	QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
-//	mySceneParent.appendChild(myPredefinedParent);
-//	World::AbstractObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
-//	for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
-//		addAbstractObject(myPredefinedParent, *(*myI));
-//	// ... add background
-//	BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
-//	// ... TODO: add view
+    // LevelInfo
+    QDomElement myLevelInfo = myDocument.createElement(theLevelInfoString);
+    myRoot.appendChild(myLevelInfo);
+    addTextElement(myLevelInfo, theLevelNameString, theLevelName);
+    addTextElement(myLevelInfo, theLevelAuthorString, theLevelAuthor);
+    addTextElement(myLevelInfo, theLevelLicenseString, theLevelLicense);
+    addTextElement(myLevelInfo, theLevelDescriptionString, theLevelDescription);
+    addTextElement(myLevelInfo, theLevelDateString, theLevelDate);
 
-//	// Goals
-//	QDomElement myGoalsParent = myDocument.createElement(theGoalsString);
-//	myRoot.appendChild(myGoalsParent);
-//	World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
-//	for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
-//		GoalSerializer::serialize(*myG, myGoalsParent);
 
-//	// success: we're going to write!
-//	QFile myFile(aFileName);
-//	if (!myFile.open(QFile::WriteOnly | QFile::Text))
-//	{
-//		QString myError = tr("Cannot write file '%1': %2.")
-//			.arg(aFileName, myFile.errorString());
-//		DEBUG1("ERROR: %s\n", ASCII(myError));
-//		return false;
-//	}
-//	const int IndentSize = 4;
-//	QTextStream myOut(&myFile);
-//	myDocument.save(myOut, IndentSize);
-//	return true;
-//}
+    // Toolbox
+//    if (theToolboxDomNode.isNull())
+//        theToolboxDomNode = myDocument.createElement(theToolboxString);
+//    QDomNode myToolboxCopy = theToolboxDomNode.cloneNode(true);
+//    myRoot.appendChild(myToolboxCopy);
+
+    // Scene
+    QDomElement mySceneParent = myDocument.createElement(theSceneString);
+    myRoot.appendChild(mySceneParent);
+    // ... add scenesize
+    QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
+    mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
+    mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
+    mySceneParent.appendChild(mySceneSizeNode);
+    // ... add the predefined elements
+    QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);
+    mySceneParent.appendChild(myPredefinedParent);
+    World::AbstractObjectPtrList::iterator myI = theWorldPtr->theObjectPtrList.begin();
+    for (; myI != theWorldPtr->theObjectPtrList.end(); ++myI)
+        addAbstractObject(myPredefinedParent, *(*myI));
+    // ... add background
+    BackgroundSerializer::serialize(&mySceneParent, &(theWorldPtr->theBackground));
+    // ... TODO: add view
+
+    // Goals
+    QDomElement myGoalsParent = myDocument.createElement(theGoalsString);
+    myRoot.appendChild(myGoalsParent);
+    World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
+    for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
+        GoalSerializer::serialize(*myG, myGoalsParent);
+
+    // success: we're going to write!
+    QFile myFile(aFileName);
+    if (!myFile.open(QFile::WriteOnly | QFile::Text))
+    {
+        QString myError = tr("Cannot write file '%1': %2.")
+            .arg(aFileName, myFile.errorString());
+        DEBUG1("ERROR: %s\n", ASCII(myError));
+        return false;
+    }
+    const int IndentSize = 4;
+    QTextStream myOut(&myFile);
+    myDocument.save(myOut, IndentSize);
+    return true;
+}
+
 
 void
 Level::setLevelFileName(const QString& aName)

@@ -107,9 +107,9 @@ public:
 
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
-//	void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
-//	void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
-//	void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
+    void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
+    void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
+    void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
 
 private:
 	World* theWorldPtr;
@@ -123,7 +123,7 @@ private:
     typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
-//	friend class SaveLevelInfo;
+    friend class SaveLevelInfo;
     friend class GameResources;
 //	friend class EditLevelProperties;
 

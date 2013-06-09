@@ -17,6 +17,7 @@
  */
 
 #include "AbstractObject.h"
+#include "AbstractObjectSerializer.h"
 #include "Box2D.h"
 #include "PivotPoint.h"
 #include "TranslationGuide.h"
@@ -176,6 +177,12 @@ b2World* AbstractObject::getB2WorldPtr(void) const
 {
 	assert (theStaticB2WorldPtr);
 	return theStaticB2WorldPtr;
+}
+
+
+const AbstractObjectSerializer* AbstractObject::getSerializer(void) const
+{
+    return new AbstractObjectSerializer(this);
 }
 
 
