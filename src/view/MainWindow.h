@@ -86,7 +86,6 @@ public slots:
     /// Because we have the filename already, no need to specify here.
     void reloadLevel(void);
 
-
     // menu Help
     void on_action_About_activated(void);
     void on_action_Bug_Reports_activated(void);
@@ -110,6 +109,7 @@ public slots:
 
     // menu Editors (Level Creator)
     void on_goalEditorAction_clicked(void);
+    void on_levelPropertiesEditorAction_clicked(void);
 
 private:
     Ui::MainWindow *ui;

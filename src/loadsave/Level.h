@@ -125,7 +125,7 @@ private:
 
     friend class SaveLevelInfo;
     friend class GameResources;
-//	friend class EditLevelProperties;
+    friend class EditLevelProperties;
 
 private:
     // prevent copy constructor / assignment operator

@@ -26,6 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
+#include "EditLevelProperties.h"
 #include "GoalEditor.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
@@ -310,9 +311,12 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), NULL);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
-    QAction* myGoalActionPtr = new QAction(tr("Goal Editor..."), NULL);
+    QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), NULL);
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
+    QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), NULL);
+    connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
+    myEditorsMenuPtr->addAction(myLevPropActionPtr);
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
 }
 
@@ -330,6 +334,18 @@ void MainWindow::on_insert(const QString& anObjectName)
     DEBUG1ENTRY;
     InsertUndoCommand::createInsertUndoCommand(
                 ObjectFactory::createObject(anObjectName, Position(1,1)));
+}
+
+
+void MainWindow::on_levelPropertiesEditorAction_clicked(void)
+{
+    // this dialog is modal, i.e. user has to click OK/Cancel
+    EditLevelProperties* myEditorPtr = new EditLevelProperties(theLevelPtr, this);
+    connect(myEditorPtr, SIGNAL(requestRedraw()), this, SLOT(redraw()));
+    myEditorPtr->show();
+    // I don't care about the return.
+    // If it was OK, the dialog already 'fixed' everything.
+    myEditorPtr->exec();
 }
 
 

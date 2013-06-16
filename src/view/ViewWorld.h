@@ -69,6 +69,8 @@ public slots:
         void slot_signalPlay();
         void slot_signalReset();
 
+        void setupBackground(void);
+
 private slots:
 	/// called whenever a timer tick happens
 	void on_timerTick(void);

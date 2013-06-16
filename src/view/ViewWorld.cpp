@@ -42,26 +42,9 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
 	theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
 
-	if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
-		theWorldPtr->theBackground.theImageName.isEmpty())
-	{
-		// the default if nothing else specified: a blue gradient background
-		theWorldPtr->theBackground.theBackgroundGradient.push_back(
-				Background::GradientStop(0, 0.8, 0.8, 1.0, 1.0));
-		theWorldPtr->theBackground.theBackgroundGradient.push_back(
-				Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
-	}
-	setBackgroundBrush(Qt::blue);
-	QLinearGradient myBackground(0,0, 0,-getHeight());
-	foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
-		myBackground.setColorAt(myGS.thePosition, QColor(
-									static_cast<int>(myGS.theR*255),
-									static_cast<int>(myGS.theG*255),
-									static_cast<int>(myGS.theB*255),
-									static_cast<int>(myGS.theAlpha*255)));
-	setBackgroundBrush(myBackground);
+    setupBackground();
 
-	connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
+    connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
 	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
 	isSimRunning = false;
 }
@@ -122,6 +105,27 @@ void ViewWorld::on_framerateTimerTick()
 	theFramesPerSecond = 0;
 }
 
+void ViewWorld::setupBackground(void)
+{
+    if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
+        theWorldPtr->theBackground.theImageName.isEmpty())
+    {
+        // the default if nothing else specified: a blue gradient background
+        theWorldPtr->theBackground.theBackgroundGradient.push_back(
+                Background::GradientStop(0, 0.8, 0.8, 1.0, 1.0));
+        theWorldPtr->theBackground.theBackgroundGradient.push_back(
+                Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
+    }
+    setBackgroundBrush(Qt::blue);
+    QLinearGradient myBackground(0,0, 0,-getHeight());
+    foreach(Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
+        myBackground.setColorAt(myGS.thePosition, QColor(
+                                    static_cast<int>(myGS.theR*255),
+                                    static_cast<int>(myGS.theG*255),
+                                    static_cast<int>(myGS.theB*255),
+                                    static_cast<int>(myGS.theAlpha*255)));
+    setBackgroundBrush(myBackground);
+}
 
 void ViewWorld::slot_signalFF()
 {
