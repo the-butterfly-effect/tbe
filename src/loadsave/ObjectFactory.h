@@ -78,6 +78,8 @@ protected:
 
 private:
 	QString theFactoryName;
+
+    friend class MainWindow;
 };
 
 #endif // OBJECTFACTORY_H

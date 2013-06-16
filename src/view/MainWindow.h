@@ -20,6 +20,7 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
+#include <QtGui/QAction>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,32 @@ class QGraphicsRectWidget;
 class QGraphicsScene;
 class ViewWorld;
 class World;
+
+
+/** local class, specifically meant to have menu items that can report
+  * their name to our MainWindow
+  */
+class InsertMenuQAction : public QAction
+{
+    Q_OBJECT
+public:
+    InsertMenuQAction( const QString & text, QObject * parent )
+        : QAction (text, parent)
+    {
+        connect (this, SIGNAL(triggered()), this, SLOT(sendTriggerName()));
+    }
+
+public slots:
+    /// will be connected
+    void sendTriggerName() {
+        emit triggeredName(text());
+    }
+
+signals:
+    void triggeredName(const QString& aName);
+};
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -77,6 +104,9 @@ public slots:
     void on_action_Save_activated(void);
     void on_action_Save_As_activated(void);
     void on_action_Switch_to_Level_Editor_activated();
+
+    // menu Insert (Level Creator)
+    void on_insert(const QString &anObjectName);
 
 private:
     Ui::MainWindow *ui;

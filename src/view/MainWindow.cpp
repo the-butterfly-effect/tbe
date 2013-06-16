@@ -27,12 +27,11 @@
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
 #include "Level.h"
+#include "ObjectFactory.h"
 #include "Popup.h"
 #include "SaveLevelInfo.h"
 #include "UndoSingleton.h"
 #include "World.h"
-
-
 
 
 MainWindow::MainWindow(bool isMaximized, QWidget *parent)
@@ -293,9 +292,22 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
         }
     }
     // add new top menu "Insert" and add all objects into it
+    ObjectFactory::ObjectFactoryList* myOFListPtr = ObjectFactory::getAllFactories();
+    for (auto i : *myOFListPtr)
+    {
+        InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), NULL);
+        connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
+        ui->menu_Insert->addAction(myTempActionPtr);
+    }
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
     // add new top menu "Editors" and add some dialogs to it
 }
+
+void MainWindow::on_insert(const QString& anObjectName)
+{
+    printf("INSERT: %s\n", ASCII(anObjectName));
+}
+
 
 void MainWindow::purgeLevel(void)
 {

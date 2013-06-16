@@ -81,8 +81,20 @@
     <addaction name="menu_Contribute"/>
     <addaction name="action_About"/>
    </widget>
+   <widget class="QMenu" name="menu_Insert">
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>&amp;Insert</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menu_Insert"/>
    <addaction name="menuControls"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -140,7 +152,7 @@
    <property name="text">
     <string>&amp;Switch to Level Editor</string>
    </property>
-   <property name="data">
+   <property name="data" stdset="0">
     <string>Switch</string>
    </property>
   </action>
