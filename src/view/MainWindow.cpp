@@ -343,7 +343,6 @@ void MainWindow::on_levelPropertiesEditorAction_clicked(void)
 {
     // this dialog is modal, i.e. user has to click OK/Cancel
     EditLevelProperties* myEditorPtr = new EditLevelProperties(theLevelPtr, this);
-    connect(myEditorPtr, SIGNAL(requestRedraw()), this, SLOT(redraw()));
     myEditorPtr->show();
     // I don't care about the return.
     // If it was OK, the dialog already 'fixed' everything.

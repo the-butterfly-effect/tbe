@@ -23,6 +23,7 @@
 #include "World.h"
 #include "ViewWorld.h"
 #include "GoalEditor.h"    // contains DoubleSpinBoxDelegate
+#include "resizinggraphicsview.h"
 #include <QStandardItem>
 #include <QTableView>
 #include <QColorDialog>
@@ -107,7 +108,6 @@ void EditLevelProperties::slot_accepted()
 {
 	// pass the values
 	writeChanges();
-    emit requestRedraw();
 
 	// and force the redraw...
     ViewWorld* myPtr = theLevelPtr->theWorldPtr->theViewWorldPtr;
@@ -124,7 +124,11 @@ void EditLevelProperties::slot_modelItemChanged(QStandardItem* /*anItem*/)
     // and force the redraw...
     ViewWorld* myPtr = theLevelPtr->theWorldPtr->theViewWorldPtr;
     if (myPtr)
+    {
         emit myPtr->setupBackground();
+        emit myPtr->on_sizeAdjust();
+        ResizingGraphicsView::me()->resizeEvent(NULL);
+    }
     populateTableAndGradient(&(theLevelPtr->theWorldPtr->theBackground));
 }
 

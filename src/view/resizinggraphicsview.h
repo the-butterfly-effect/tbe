@@ -63,7 +63,7 @@ public:
     QAction* getFrameRateViewPtr()
     { return theFrameRateViewPtr; }
 
-protected:
+//protected:
     virtual void resizeEvent(QResizeEvent *event);
 
 private slots:

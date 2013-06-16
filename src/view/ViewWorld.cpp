@@ -105,6 +105,13 @@ void ViewWorld::on_framerateTimerTick()
 	theFramesPerSecond = 0;
 }
 
+
+void ViewWorld::on_sizeAdjust(void)
+{
+    setSceneRect(0, -getHeight(), getWidth(), getHeight());
+}
+
+
 void ViewWorld::setupBackground(void)
 {
     if (theWorldPtr->theBackground.theBackgroundGradient.count()==0 &&
