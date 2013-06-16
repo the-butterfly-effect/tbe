@@ -26,6 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
+#include "InsertUndoCommand.h"
 #include "Level.h"
 #include "ObjectFactory.h"
 #include "Popup.h"
@@ -295,17 +296,21 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     ObjectFactory::ObjectFactoryList* myOFListPtr = ObjectFactory::getAllFactories();
     for (auto i : *myOFListPtr)
     {
+        // TODO: remove the Link-derived ones from the list
+        // TODO: add icons to the action
         InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), NULL);
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
         ui->menu_Insert->addAction(myTempActionPtr);
     }
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
-    // add new top menu "Editors" and add some dialogs to it
+    // add new top menu "Editors" and add some of the original dialogs to it
 }
 
 void MainWindow::on_insert(const QString& anObjectName)
 {
-    printf("INSERT: %s\n", ASCII(anObjectName));
+    DEBUG1ENTRY;
+    InsertUndoCommand::createInsertUndoCommand(
+                ObjectFactory::createObject(anObjectName, Position(1,1)));
 }
 
 
