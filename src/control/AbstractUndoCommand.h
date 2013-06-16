@@ -68,9 +68,6 @@ public:
     virtual void undo();
 
 protected:
-    /// pointer to the view object
-    ViewObject* theViewObjPtr;
-
     /// This member sets the Proxy image in the ViewObjectActionDecorator.
     /// @param anImageName  theImage to use as Proxy (no path, no extension)
     void setDecoratorImage(const QString& anImageName);
@@ -93,6 +90,9 @@ protected:
     bool setDecoratorStateUndoRedo(void);
 
 protected:
+    /// pointer to the view object
+    ViewObject* theViewObjPtr;
+
     QPointF theButtonDownPosition;
     Position theOrigPos;
     Position theNewPos;
