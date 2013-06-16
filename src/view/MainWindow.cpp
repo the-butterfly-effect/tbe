@@ -292,7 +292,10 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
             i->setEnabled(false);
         }
     }
-    // add new top menu "Insert" and add all objects into it
+    // add new drop-down menu "Insert" (and put it before the "Controls" menu)
+    QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), NULL);
+    ui->menuBar->insertMenu(ui->menuControls->menuAction(), myInsertMenuPtr);
+    // add all objects into it
     ObjectFactory::ObjectFactoryList* myOFListPtr = ObjectFactory::getAllFactories();
     for (auto i : *myOFListPtr)
     {
@@ -300,10 +303,13 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
         // TODO: add icons to the action
         InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), NULL);
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
-        ui->menu_Insert->addAction(myTempActionPtr);
+        myInsertMenuPtr->addAction(myTempActionPtr);
     }
+    // add new top menu "Editors"
+    QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), NULL);
+    ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
+    // TODO: add some of the original dialogs to it
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
-    // add new top menu "Editors" and add some of the original dialogs to it
 }
 
 void MainWindow::on_insert(const QString& anObjectName)
