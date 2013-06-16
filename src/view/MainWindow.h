@@ -108,6 +108,9 @@ public slots:
     // menu Insert (Level Creator)
     void on_insert(const QString &anObjectName);
 
+    // menu Editors (Level Creator)
+    void on_goalEditorAction_clicked(void);
+
 private:
     Ui::MainWindow *ui;
 

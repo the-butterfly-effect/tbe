@@ -26,6 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
+#include "GoalEditor.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
 #include "ObjectFactory.h"
@@ -309,8 +310,20 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), NULL);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
+    QAction* myGoalActionPtr = new QAction(tr("Goal Editor..."), NULL);
+    connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
+    myEditorsMenuPtr->addAction(myGoalActionPtr);
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
 }
+
+
+void MainWindow::on_goalEditorAction_clicked(void)
+{
+    // the Goals dialog is modeless, i.e. it can stay floating around
+    GoalEditor* myGoalEditorPtr = new GoalEditor(theLevelPtr->getTheWorldPtr(), this);
+    myGoalEditorPtr->show();
+}
+
 
 void MainWindow::on_insert(const QString& anObjectName)
 {
@@ -360,4 +373,3 @@ void MainWindow::setupView()
 
     QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 }
-
