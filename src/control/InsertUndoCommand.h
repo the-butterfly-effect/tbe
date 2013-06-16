@@ -31,12 +31,17 @@ class InsertUndoCommand : public AbstractUndoCommand
 public:
     explicit InsertUndoCommand(ViewObject* anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
 
+    /// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
+    /// and handles everything - including the commit().
+    /// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
+    /// @returns true if successful (which is always)
+    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr);
+
     /// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().
     /// @param anToolboxGroup       pointer to the toolboxgroup to take the object from
     /// @returns true if successful (which is always)
-    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroup);
-
+    static bool createInsertUndoCommand(AbstractObject* anAOPtr);
 
     /// mandatory, but we don't care - not used
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) { return false; }
@@ -55,10 +60,16 @@ public:
 
 protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo)
+    /// @note: is NULL in the case of a insert from menu in level creator
     ToolboxGroup* theTBGPtr;
 
     /// TODO: document
-    static ViewObject *createAOandVO(ToolboxGroup *anToolboxGroupPtr);
+    static ViewObject *createVOfromAO(AbstractObject *anAOPtr);
+
+    /// TODO: document
+    static InsertUndoCommand* createInsertUndoCommandIntern(
+            AbstractObject* anAOPtr);
+
 };
 
 #endif // INSERTUNDOCOMMAND_H

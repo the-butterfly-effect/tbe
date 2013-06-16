@@ -33,29 +33,49 @@ InsertUndoCommand::InsertUndoCommand(
 }
 
 
-ViewObject* InsertUndoCommand::createAOandVO(ToolboxGroup* anToolboxGroupPtr)
+ViewObject* InsertUndoCommand::createVOfromAO(AbstractObject* anAOPtr)
 {
-    // get an object to work with
-    AbstractObject* myAOPtr = anToolboxGroupPtr->getObject();
-
-    // put it in the middle of the world
+    // put our shiny new object in the middle of the world
     Position myPos(World::getWorldPtr()->getTheWorldWidth()/2.0,
-                   World::getWorldPtr()->getTheWorldWidth()/2.0, myAOPtr->getOrigCenter().angle);
-    myPos = myPos - Vector(myAOPtr->getTheWidth()/2.0, myAOPtr->getTheHeight()/2.0);
-    myAOPtr->setOrigCenter(myPos);
+                   World::getWorldPtr()->getTheWorldWidth()/2.0, anAOPtr->getOrigCenter().angle);
+    myPos = myPos - Vector(anAOPtr->getTheWidth()/2.0, anAOPtr->getTheHeight()/2.0);
+    anAOPtr->setOrigCenter(myPos);
 
     // and create its ViewObject pointer
-    ViewObject* myVOPtr = myAOPtr->createViewObject();
+    ViewObject* myVOPtr = anAOPtr->createViewObject();
     return myVOPtr;
 }
 
 
 bool InsertUndoCommand::createInsertUndoCommand(
-        ToolboxGroup* anToolboxGroup)
+        ToolboxGroup* anToolboxGroupPtr)
+{
+    qDebug() << Q_FUNC_INFO;
+    // extract the AbstractObject from the toolbox
+    AbstractObject* myAOPtr = anToolboxGroupPtr->getObject();
+    Q_ASSERT(myVOPtr!=NULL);
+
+    InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
+    myInsertPtr->theTBGPtr = anToolboxGroupPtr;
+    myInsertPtr->commit();
+    return true;
+}
+
+bool InsertUndoCommand::createInsertUndoCommand(AbstractObject* anAOPtr)
+{
+    qDebug() << Q_FUNC_INFO;
+    InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(anAOPtr);
+    myInsertPtr->theTBGPtr = NULL;
+    myInsertPtr->commit();
+    return true;
+}
+
+InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
+        AbstractObject* anAOPtr)
 {
     qDebug() << Q_FUNC_INFO;
     // extract the AbstractObject and the ViewObject
-    ViewObject* myVOPtr = createAOandVO(anToolboxGroup);
+    ViewObject* myVOPtr = createVOfromAO(anAOPtr);
     Q_ASSERT(myVOPtr!=NULL);
 
     InsertUndoCommand* myInsertPtr = reinterpret_cast<InsertUndoCommand*>
@@ -63,9 +83,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
                                          myVOPtr,
                                          ActionIcon::ACTION_INSERT));
     myVOPtr->setVisible(true);
-    myInsertPtr->theTBGPtr = anToolboxGroup;
-    myInsertPtr->commit();
-    return true;
+    return myInsertPtr;
 }
 
 
@@ -73,13 +91,23 @@ void InsertUndoCommand::redo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
 
-    if (theViewObjPtr==NULL)
-        theViewObjPtr = createAOandVO(theTBGPtr);
+    if (theTBGPtr)
+    {
+        // Insert based on toolbox
+        if (theViewObjPtr==NULL)
+            theViewObjPtr = createVOfromAO(theTBGPtr->getObject());
+        else
+        {
+             if (theViewObjPtr->isVisible()==false)
+                 theViewObjPtr = createVOfromAO(theTBGPtr->getObject());;
+             theViewObjPtr->setVisible(true);
+        }
+    }
     else
     {
-         if (theViewObjPtr->isVisible()==false)
-             theViewObjPtr = createAOandVO(theTBGPtr);
-         theViewObjPtr->setVisible(true);
+        // Insert based on Level Creator menu
+        if (theViewObjPtr->isVisible()==false)
+            theViewObjPtr->setVisible(true);
     }
     Q_ASSERT(theViewObjPtr!=NULL);
 
@@ -105,8 +133,15 @@ void InsertUndoCommand::undo(void)
 
     theViewObjPtr->setVisible(false);
 
-    // return to the toolbox
-    theTBGPtr->addObject(myAOPtr);
+    if (theTBGPtr)
+    {
+        // return to the toolbox
+        theTBGPtr->addObject(myAOPtr);
+    }
+    else
+    {
+        // not created from toolbox, nothing to do...
+    }
 
     AbstractUndoCommand::undo();
 }
