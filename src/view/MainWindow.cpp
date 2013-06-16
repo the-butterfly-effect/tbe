@@ -317,6 +317,8 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), NULL);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
+    // Enable level editor mode
+    theIsLevelEditor = true;
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
 }
 
