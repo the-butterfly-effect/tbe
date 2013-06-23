@@ -154,7 +154,7 @@ void Link::updateOrigCenter(void)
 
 
 
-void Link::updateViewObject(bool isSimRunning) const
+void Link::updateViewObject(bool ) const
 {
     // no ViewObject: nothing to update ;-)
     if(theViewObjectPtr == NULL)
