@@ -25,7 +25,7 @@
 #include "ViewObject.h"
 
 
-ToolboxGroupIcon::ToolboxGroupIcon(ToolboxGroup* aTBGPtr, GameResources* aGRPtr, QWidget* aParentPtr)
+ToolboxGroupIcon::ToolboxGroupIcon(ToolboxGroup* aTBGPtr, GameResources* aGRPtr, QWidget*)
     : QWidget(NULL),
       theTBGPtr(aTBGPtr)
 {
