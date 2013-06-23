@@ -1,6 +1,7 @@
 SET(main_SOURCES
     backtrace.cpp
     main.cpp
+    tbe_global.h
 )
 SET (main_HEADERS
     tbe_global.h
