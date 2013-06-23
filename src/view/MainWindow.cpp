@@ -48,6 +48,8 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	setupView();
 	if (isMaximized)
 		showMaximized();
+	if (theIsLevelEditor)
+		on_action_Switch_to_Level_Editor_activated();
 }
 
 
