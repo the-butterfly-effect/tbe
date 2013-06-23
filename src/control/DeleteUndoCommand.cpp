@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include "tbe_global.h"
 #include "AbstractObject.h"
 #include "DeleteUndoCommand.h"
 #include "Level.h"
@@ -33,7 +34,10 @@ DeleteUndoCommand::DeleteUndoCommand(
     // The list of toolboxes is kept in Level as a QMap.
     // so we need to ask Level...
     theTBGPtr = Level::findToolBoxGroup(theViewObjPtr->getAbstractObjectPtr());
-    assert(theTBGPtr!=NULL);
+
+    // you can always delete (and undelete) objects in Level Creator mode
+    if (theIsLevelEditor==false)
+        assert(theTBGPtr!=NULL);
     commit();
 }
 
