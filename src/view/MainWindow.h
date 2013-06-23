@@ -110,6 +110,7 @@ public slots:
     // menu Editors (Level Creator)
     void on_goalEditorAction_clicked(void);
     void on_levelPropertiesEditorAction_clicked(void);
+    void on_objectEditorAction_clicked(void);
 
 private:
     Ui::MainWindow *ui;

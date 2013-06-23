@@ -106,15 +106,12 @@ protected:
 	typedef QList<QPixmap> ImageList;
 	ImageList thePixmapList;
 
-	friend class AbstractUndoCommand;
 	ViewObjectActionDecorator theDecorator;
 
-	// no copy constructor or assignment operators here!
-	Q_DISABLE_COPY ( ViewObject )
-
-        AbstractUndoCommand* theMUCPtr;
-        QPointF theClickedScenePos;
-        const static int thePieMenuDelay = 225;
+    friend class AbstractUndoCommand;
+    AbstractUndoCommand* theMUCPtr;
+    QPointF theClickedScenePos;
+    const static int thePieMenuDelay = 225;
 
 private:
 	void initViewObjectAttributes(void);
@@ -125,6 +122,9 @@ private:
 	qreal theOldWidth;
 	qreal theOldHeight;
 	Position theOldPos;
+
+    // no copy constructor or assignment operators here!
+    Q_DISABLE_COPY ( ViewObject )
 };
 
 #endif // VIEWOBJECT_H

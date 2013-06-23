@@ -43,13 +43,13 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	  theLevelPtr(NULL),
 	  theWorldPtr(NULL)
 {
-	ui->setupUi(this);
+    ui->setupUi(this);
 
-	setupView();
-	if (isMaximized)
-		showMaximized();
-	if (theIsLevelEditor)
-		on_action_Switch_to_Level_Editor_activated();
+    setupView();
+    if (isMaximized)
+        showMaximized();
+    if (theIsLevelEditor)
+        on_action_Switch_to_Level_Editor_activated();
 }
 
 
@@ -319,6 +319,9 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), NULL);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
+    QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), NULL);
+    connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
+    myEditorsMenuPtr->addAction(myEditObjectActionPtr);
     // Enable level editor mode
     theIsLevelEditor = true;
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
@@ -351,6 +354,11 @@ void MainWindow::on_levelPropertiesEditorAction_clicked(void)
     myEditorPtr->exec();
 }
 
+
+void MainWindow::on_objectEditorAction_clicked(void)
+{
+    emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(NULL);
+}
 
 void MainWindow::purgeLevel(void)
 {

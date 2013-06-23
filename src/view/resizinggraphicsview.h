@@ -22,6 +22,8 @@
 #include <QtGui/QGraphicsView>
 #include <QtGui/QResizeEvent>
 
+class AbstractObject;
+class EditObjectDialog;
 class GameResources;
 class MainWindow;
 class QMenu;
@@ -76,10 +78,13 @@ private slots:
 
 public slots:
     void slot_actionSkipLevel();
+    void slot_showEditObjectDialog(AbstractObject *anAOPtr);
+    void slot_editObjectDialog_destroyed(void);
 
 private:
     GameResources*      theGameResourcesPtr;
     MainWindow*         theMainWindowPtr;
+    EditObjectDialog*   theObjectEditorPtr;
     SimulationControls* theSimControlsPtr;
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;

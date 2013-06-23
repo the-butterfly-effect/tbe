@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2012 Klaas van Gend
+ * This file copyright (C) 2011,2012,2013 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,6 +17,7 @@
  */
 
 #include "ChooseLevel.h"
+#include "EditObjectDialog.h"
 #include "GameResources.h"
 #include "Level.h"
 #include "MainWindow.h"
@@ -25,6 +26,7 @@
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
 #include "ViewObjectActionDectorator.h"
+#include "ViewObject.h"
 #include "ViewWorld.h"
 #include "WinFailDialog.h"
 #include "World.h"
@@ -34,11 +36,12 @@ static ResizingGraphicsView* theRSGVPtr = NULL;
 
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
-	QGraphicsView(aParentPtr),
-	theGameResourcesPtr(NULL),
-	theMainWindowPtr(NULL),
-	theWinFailDialogPtr(NULL),
-	theFrameRateViewPtr(NULL)
+    QGraphicsView(aParentPtr),
+    theGameResourcesPtr(NULL),
+    theMainWindowPtr(NULL),
+    theObjectEditorPtr(NULL),
+    theWinFailDialogPtr(NULL),
+    theFrameRateViewPtr(NULL)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -187,6 +190,13 @@ void ResizingGraphicsView::slot_actionSkipLevel()
 }
 
 
+void ResizingGraphicsView::slot_editObjectDialog_destroyed(void)
+{
+    DEBUG3ENTRY;
+    theObjectEditorPtr = NULL;
+}
+
+
 void ResizingGraphicsView::slot_levelDeath(void)
 {
 	// only need to display the dialog once...
@@ -217,4 +227,14 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 	// Make the sim stop once the above animation is (almost) done...
 	QTimer::singleShot(3000, theScenePtr, SLOT(slot_signalPause()));
+}
+
+
+void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObject* anAOPtr)
+{
+    if (theObjectEditorPtr!=NULL)
+        delete theObjectEditorPtr;
+    theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
+    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(on_objectEditor_destroyed()));
+    theObjectEditorPtr->show();
 }

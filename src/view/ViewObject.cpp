@@ -195,6 +195,9 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     //    you get an extra mousePressEvent...
     if (theMUCPtr != NULL)
         return;
+    if (theIsLevelEditor)
+        emit dynamic_cast<ResizingGraphicsView*>(scene()->views()[0])->
+                slot_showEditObjectDialog(getAbstractObjectPtr());
     if (theAbstractObjectPtr->isMovable())
     {
         theClickedScenePos = anEvent->scenePos();

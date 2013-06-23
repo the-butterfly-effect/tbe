@@ -7,6 +7,7 @@ SET(view_SOURCES
     view/ChooseLevel.cpp
     view/ChoosePhoneNumber.cpp
     view/EditLevelProperties.cpp
+    view/EditObjectDialog.cpp
     view/GameResources.cpp
     view/GoalEditor.cpp
     view/ImageCache.cpp
@@ -32,6 +33,7 @@ SET(view_HEADERS
     view/ChooseLevel.h
     view/ChoosePhoneNumber.h
     view/EditLevelProperties.h
+    view/EditObjectDialog.h
     view/GameResources.h
     view/GoalEditor.h
     view/ImageCache.h
@@ -56,6 +58,7 @@ SET(view_UIFORMS
     view/ChooseLevel.ui
     view/ChoosePhoneNumber.ui
     view/EditLevelProperties.ui
+    view/EditObjectDialog.ui
     view/GameResources.ui
     view/GoalEditor.ui
     view/MainWindow.ui
