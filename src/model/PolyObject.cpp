@@ -255,6 +255,8 @@ void PolyObject::fillShapeList(void)
 			setFriction(myFixtureDef);
 			theShapeList.push_back(myFixtureDef);
 		}
+        else
+            delete myPolyShape;
 		++i;
 	}
 }
