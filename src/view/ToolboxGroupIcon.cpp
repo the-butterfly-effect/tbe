@@ -31,12 +31,12 @@ ToolboxGroupIcon::ToolboxGroupIcon(ToolboxGroup* aTBGPtr, GameResources* aGRPtr,
 {
     Q_ASSERT(aTBGPtr!=NULL);
 
+    theOriginalM11 = aGRPtr->theTransformMatrix.m11();
     if (theTBGPtr->count() > 0)
     {
         AbstractObject* myAOPtr = theTBGPtr->first();
         ViewObject* myVOPtr = myAOPtr->createViewObject();
 
-        theOriginalM11 = aGRPtr->theTransformMatrix.m11();
         theIconSize.setWidth(( myAOPtr->getTheWidth()* (float)THESCALE *
                            theOriginalM11));
         theIconSize.setHeight(( myAOPtr->getTheHeight()* (float)THESCALE *
