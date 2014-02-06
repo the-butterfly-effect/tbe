@@ -198,10 +198,13 @@ void Spring::setOrigCenter ( Position new_var )
 // ##########################################################################
 
 SpringEnd::SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight)
-		:	RectObject( QObject::tr("Spring End"),
-				"no tooltip",
-				"spring20",
-				aWidth, aHeight, 0.1, 0.0), theOtherEndPtr(aDBox), theJointPtr(NULL)
+    :	RectObject( QObject::tr("Spring End"),
+                    "no tooltip",
+                    "spring20",
+                    aWidth, aHeight, 0.1, 0.0),
+      theOtherEndPtr(aDBox),
+      theJointPtr(NULL),
+      theSpringConstant(1.0f)
 {
 	setOrigCenter(aPos);
 	theProps.setProperty(Property::ISCHILD_STRING, "yes");
