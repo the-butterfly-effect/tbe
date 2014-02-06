@@ -296,6 +296,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
             i->setEnabled(false);
         }
     }
+
     // add new drop-down menu "Insert" (and put it before the "Controls" menu)
     QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), NULL);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myInsertMenuPtr);
@@ -309,6 +310,9 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
         myInsertMenuPtr->addAction(myTempActionPtr);
     }
+    delete myOFListPtr;
+    myOFListPtr = NULL;
+
     // add new top menu "Editors"
     QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), NULL);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
