@@ -73,10 +73,12 @@ static SpringObjectFactory theSpringObjectFactory;
 
 
 Spring::Spring()
-		:	RectObject( QObject::tr("Spring"),
-				QObject::tr("Something springy."),
-				"spring20",
-				0.4, 0.2, 0.8, 0.0), theOtherEndPtr(NULL)
+    :	RectObject( QObject::tr("Spring"),
+                    QObject::tr("Something springy."),
+                    "spring20",
+                    0.4, 0.2, 0.8, 0.0),
+      theOtherEndPtr(NULL),
+      theSpringWidth(1.0f)
 {
 	theProps.setDefaultPropertiesString(
 		Property::SPRING_CONSTANT_STRING + QString(":320.0/") ); // 6.5kg over 0.2m @g=9.81
