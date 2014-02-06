@@ -211,7 +211,11 @@ bool PropertyList::property2ObjectPlusVectorPtr(
 	if (myStrings.count() == 2)
 	{
 		if (myVPtr->fromString(myStrings[1]) == false)
-			return false;
+        {
+            delete myVPtr;
+            myVPtr = NULL;
+            myBOPtrPtr = NULL;
+        }
 	}
 
 	*anAOPtrPtr     = myBOPtrPtr;
