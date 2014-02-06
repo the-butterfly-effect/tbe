@@ -102,7 +102,11 @@ QDomElement ToolboxGroupSerializer::serialize(QDomDocument& aDomDocument, Toolbo
     myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName.english());
 
     aToolboxGroupPtr->theGroupName.serializeTo(myToolboxNode);
-    aToolboxGroupPtr->first()->getSerializer()->serialize(&myToolboxNode);
+    {
+        const AbstractObjectSerializer* myAOSerializerPtr = aToolboxGroupPtr->first()->getSerializer();
+        myAOSerializerPtr->serialize(&myToolboxNode);
+        delete myAOSerializerPtr;
+    }
 
     return myToolboxNode;
 }
