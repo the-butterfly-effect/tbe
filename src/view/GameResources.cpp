@@ -74,9 +74,9 @@ void GameResources::deleteTheToolbox()
     while (theToolboxItemList.count() > 0)
     {
         ViewToolboxGroup* i = theToolboxItemList.last();
-        delete i;
         theToolboxItemList.pop_back();
         ui->theToolBoxPtr->removeWidget(i);
+        delete i;
     }
 }
 
