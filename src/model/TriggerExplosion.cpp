@@ -38,11 +38,14 @@ const qreal  STARTDISTANCE=0.2f;
 const Vector DetonatorBox::HANDLEOFFSET   = Vector(0,STARTDISTANCE);
 
 DetonatorBox::DetonatorBox()
-	:	RectObject( QObject::tr("Detonator Box"),
-					"",
-					"DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
-					0.33, 0.35, 4.0, 0.0),
-	  theState(ARMED), theHandle(this)
+    :	RectObject( QObject::tr("Detonator Box"),
+                    "",
+                    "DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone",
+                    0.33, 0.35, 4.0, 0.0),
+      theState(ARMED),
+      isTriggered(false),
+      theActivationStartTime(999.f),
+      theHandle(this)
 {
 	theProps.setDefaultPropertiesString(
 				Property::PHONENUMBER_STRING + QString(":/") );
@@ -287,7 +290,10 @@ Dynamite::Dynamite()
 				 "Dynamite;DynamiteActive;DynamiteRinging;DynamiteBoom;Empty",
 				 "(-0.215,-0.16)=(0.215,-0.16)=(0.215,0.02)=(-0.15,0.16)=(-0.215,0.16)",
 				 0.43, 0.32, DYNAMITE_MASS, 0.1),
-	  theState(WAITING), theActiveStartTime(0.0f)
+      theState(WAITING),
+      theTrigger(false),
+      theActiveStartTime(0.0f),
+      theBoomStartTime(999.f)
 {
 }
 
@@ -450,8 +456,9 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 
 // note that the mass will be redone during setAll()
 ExplosionSplatter::ExplosionSplatter()
-	: CircleObject("ExplosionSplatter","", "ColaSplatter",
-				   theRadius, 0.001,  1.0)
+    : CircleObject("ExplosionSplatter","", "ColaSplatter",
+                   theRadius, 0.001,  1.0),
+      theDynamitePtr(NULL)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
 
