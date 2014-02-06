@@ -42,7 +42,7 @@ Goal::~Goal()
 //////////////////////////////////////////////////////////////////////////////
 
 GoalDistance::GoalDistance()
-		: theType(NOTYPE), theFirstPtr(NULL), theSecondPtr(NULL)
+        : theType(NOTYPE), theLimit(0.0f), theFirstPtr(NULL), theSecondPtr(NULL)
 {
 	// nothing to do here
 }
