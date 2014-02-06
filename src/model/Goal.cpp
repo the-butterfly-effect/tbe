@@ -138,7 +138,7 @@ QString GoalDistance::goalToStringList() const
 //////////////////////////////////////////////////////////////////////////////
 
 GoalPositionChange::GoalPositionChange()
-		: theType(NOTYPE), theBOPtr(NULL)
+        : theType(NOTYPE), theBOPtr(NULL), theLimit(0.0f)
 {
 	// nothing to do here
 }
