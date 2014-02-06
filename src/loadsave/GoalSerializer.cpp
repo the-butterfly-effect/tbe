@@ -111,18 +111,18 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 	switch (myType)
 	{
 	case DISTANCE:
-		myGoal = new GoalDistance();
-		if (myList.size()!=5)
-			return NULL;
-		if (myList[2]!=">" && myList[2]!="<")
-			return NULL;
-		if (myList[2]==">")
-			myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
-		if (myList[2]=="<")
-			myGoal->theProps.setProperty(Property::S_LESSTHAN, myList[3]);
-		myGoal->theProps.setProperty(Property::OBJECT1_STRING, myList[1]);
-		myGoal->theProps.setProperty(Property::OBJECT2_STRING, myList[4]);
-		break;
+        if (myList.size()!=5)
+            return NULL;
+        if (myList[2]!=">" && myList[2]!="<")
+            return NULL;
+        myGoal = new GoalDistance();
+        if (myList[2]==">")
+            myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
+        if (myList[2]=="<")
+            myGoal->theProps.setProperty(Property::S_LESSTHAN, myList[3]);
+        myGoal->theProps.setProperty(Property::OBJECT1_STRING, myList[1]);
+        myGoal->theProps.setProperty(Property::OBJECT2_STRING, myList[4]);
+        break;
 	case POSITIONX:
 	case POSITIONY:
 	case ANGLE:
