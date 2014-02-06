@@ -37,7 +37,9 @@ static TranslationGuideObjectFactory theRFactory;
 
 
 TranslationGuide::TranslationGuide()
-		: AbstractJoint(), theObjectPtr(NULL)
+    : AbstractJoint(),
+      theObjectPtr(NULL),
+      theDirection(0.f)
 {
 	DEBUG5ENTRY;
 	initTG_Attributes ();
