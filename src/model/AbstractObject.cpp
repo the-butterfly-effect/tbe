@@ -38,8 +38,10 @@ AbstractObject::AbstractObject()
       theChildTranslationGuidePtr(NULL),
       theBounciness(0.5),
       theHeight(1.0),
+      theIsMovable(false),
       theWidth(1.0),
-    theWorldPtr(NULL)
+      theWorldPtr(NULL),
+      resizableInfo(SizeDirections::NORESIZING)
 {
 	DEBUG5ENTRY;
 	theB2BodyDefPtr= new b2BodyDef();
