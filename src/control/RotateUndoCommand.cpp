@@ -24,7 +24,8 @@
 
 RotateUndoCommand::RotateUndoCommand(
         ViewObject* anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL)
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL),
+      theButtonDownVectorAngle(999.f)
 {
     DEBUG3ENTRY;
     setDecoratorImage("ProxyRotate");
