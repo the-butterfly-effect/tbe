@@ -72,8 +72,17 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 
 ViewObject::~ViewObject()
 {
-	// nothing to do yet :-)
 	theAbstractObjectPtr = NULL;
+    // Make sure to disable the EditObjectDialog
+    // TODO: doesn't work like this - the InsertUndo keeps the VO around
+    // i.e. we need an 'update' member in this ViewObject that takes the
+    // visibility into account
+    if (theIsLevelEditor)
+    {
+        ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
+        if (myRSGVPtr)
+            emit myRSGVPtr->slot_showEditObjectDialog(NULL);
+    }
 }
 
 void ViewObject::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter)
@@ -196,8 +205,11 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     if (theMUCPtr != NULL)
         return;
     if (theIsLevelEditor)
-        emit dynamic_cast<ResizingGraphicsView*>(scene()->views()[0])->
-                slot_showEditObjectDialog(getAbstractObjectPtr());
+    {
+        ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
+        if (myRSGVPtr)
+            emit myRSGVPtr->slot_showEditObjectDialog(getAbstractObjectPtr());
+    }
     if (theAbstractObjectPtr->isMovable())
     {
         theClickedScenePos = anEvent->scenePos();
