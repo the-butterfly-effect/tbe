@@ -54,7 +54,7 @@ ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anIma
 
 	QSize mySize((float)THESCALE*theRGVTransform.m11()*anAbstractObjectPtr->getTheWidth(),
 				 (float)THESCALE*theRGVTransform.m22()*anAbstractObjectPtr->getTheHeight());
-	foreach(QString i, myImageNames)
+    for(auto i : myImageNames)
 	{
 		ImageCache::getPixmap(i, mySize, &myTempPixmap);
 		thePixmapList.push_back(myTempPixmap);
