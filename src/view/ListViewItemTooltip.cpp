@@ -19,6 +19,9 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->labelObjectImage->setPixmap(myVOPtr->pixmap());
     ui->labelName->setText(theTBGPtr->theGroupName.result());
 
+    ui->labelCount->setText(tr("%1x").arg(theTBGPtr->count()));
+    ui->labelDescription->setText(myAOPtr->getToolTip());
+
     // make it appear(animated)
     theYCoord = 50;
 
