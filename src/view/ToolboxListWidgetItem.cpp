@@ -58,9 +58,13 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 }
 
 
-void ToolboxListWidgetItem::slotSelected(QListWidgetItem*)
+void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
 {
-    // when we're called, we already know it's about us :-)
+    // I'd hoped that when we're called, we already knew it would be about us
+    // Alas, it isn't so :-(
+    if (who != this)
+        return;
+
     if (theTBGPtr->count()!=0)
     {
         ListViewItemTooltip* myNewTooltip =
@@ -72,7 +76,13 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem*)
 void ToolboxListWidgetItem::slotUpdateCount(void)
 {
     if (theTBGPtr->count()==0)
+    {
         setIcon(QIcon());
+        setText("");
+    }
     else
+    {
         setIcon(theRealPixmap);
+        setText(theTBGPtr->theGroupName.result());
+    }
 }
