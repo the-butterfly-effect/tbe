@@ -21,6 +21,7 @@
 
 #include <QtGui/QMainWindow>
 #include <QtGui/QAction>
+#include <QtGui/QListWidget>
 
 namespace Ui {
 class MainWindow;
@@ -86,6 +87,10 @@ public slots:
     /// Because we have the filename already, no need to specify here.
     void reloadLevel(void);
 
+private slots:
+    /// display a tooltip for an item in the ToolBox
+    void slotToolboxItemselected(QListWidgetItem* current);
+
     // menu Help
     void on_action_About_activated(void);
     void on_action_Bug_Reports_activated(void);
@@ -99,7 +104,9 @@ public slots:
     // menu File
     void on_action_New_activated(void);
     void on_action_Open_File_activated(void);
+public slots:
     void on_action_Open_Level_triggered();
+private slots:
     void on_action_Save_activated(void);
     void on_action_Save_As_activated(void);
     void on_action_Switch_to_Level_Editor_activated();

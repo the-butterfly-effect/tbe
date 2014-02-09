@@ -11,8 +11,6 @@ install(FILES
 	icons/ActionResize.svg
 	icons/ActionRotate.svg
 	icons/ActionSetNumber.svg
-	icons/ActionToolboxDown.svg
-	icons/ActionToolboxUp.svg
 	icons/ActionUndo.svg
 	icons/IconBold.svg
 	icons/IconItalics.svg
@@ -31,7 +29,6 @@ install(FILES
 	icons/StatusPlay.svg
 	icons/StatusProblem.svg
 	icons/StatusStop.svg
-	icons/ToolboxBackground.svg
 
 	DESTINATION images
 )

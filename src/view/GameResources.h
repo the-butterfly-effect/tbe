@@ -27,9 +27,7 @@ namespace Ui {
 class Level;
 #include "LocalString.h"
 class QAction;
-class ViewToolboxGroup;
 class ViewWorld;
-#include "ToolboxUpDownControls.h"
 
 /// This class holds the toolbox, the game info and (in the future)
 /// the button for hints. It is displayed when you click on the appropriate
@@ -44,11 +42,6 @@ class GameResources : public AnimatedDialog
 public:
     explicit GameResources(ResizingGraphicsView* aRSGVPtr);
     ~GameResources();
-
-    /// Called by the ResizingGraphicsView so we can accomodate for
-    /// the change in scale of the toolboxview.
-    /// @param aTransformMatrix the transform matrix used by the parent.
-    void parentResize(const QTransform& aTransformMatrix);
 
     /// Set the Level where we're going to get our info from:
     /// i.e. level name, author but also the contents of the Toolbox view.
@@ -67,24 +60,11 @@ signals:
     void signalReloadLevel(void);
 
 private slots:
-    /// Clear all entries from the toolbox.
-    /// (called from setLevelPtr)
-    void deleteTheToolbox();
-
     void on_theOKButton_clicked();
     void on_theResetButton_clicked();
 
-    void slot_window_appeared();
-    void slot_window_disappeared();
-
-    /// used to re-align all items in toolbox
-    void slot_startAppearing();
-
 private:
     Ui::GameResources *ui;
-
-    typedef QList<ViewToolboxGroup*> ToolboxItemList;
-    ToolboxItemList theToolboxItemList;
 
     /// pointer to Level instance, which contains level names and such
     Level* theLevelPtr;
@@ -92,10 +72,7 @@ private:
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
     ResizingGraphicsView* theParentPtr;
 
-    ToolboxUpDownControls theToolboxControls;
-
 public:
-    QTransform theTransformMatrix;
 };
 
 #endif // GAMERESOURCES_H

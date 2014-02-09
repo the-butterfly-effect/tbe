@@ -64,29 +64,6 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QScrollArea" name="theToolView">
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-           <property name="minimumSize">
-            <size>
-             <width>150</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="horizontalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-           </property>
-           <widget class="QWidget" name="scrollAreaWidgetContents">
-             <layout class="QVBoxLayout" name="theToolBoxPtr">
-             </layout>
-           </widget>
-      </widget>
-     </item>
-     <item>
       <widget class="QTextEdit" name="theInfoBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">

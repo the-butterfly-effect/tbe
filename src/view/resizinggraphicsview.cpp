@@ -98,7 +98,6 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 		QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
-	theGameResourcesPtr->parentResize(transform());
 	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
@@ -109,7 +108,6 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 	theSimControlsPtr->setup(anMenuControlsPtr);
 	connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), theSimControlsPtr, SLOT(slotNumberOfCrossesChanged(int)));
 
-        theGameResourcesPtr->setup(anMenuControlsPtr);
 	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
 			 theMainWindowPtr, SLOT(reloadLevel()));
 

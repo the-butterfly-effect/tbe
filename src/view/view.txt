@@ -17,14 +17,11 @@ SET(view_SOURCES
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
     view/SimulationControls.cpp
-    view/ToolboxGroupIcon.cpp
-    view/ToolboxUpDownControls.cpp
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
     view/ViewLink.cpp
     view/ViewPostIt.cpp
     view/ViewWorld.cpp
-    view/ViewToolboxGroup.cpp
     view/WinFailDialog.cpp
 )
 
@@ -45,14 +42,11 @@ SET(view_HEADERS
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
     view/SimulationControls.h
-    view/ToolboxGroupIcon.h
-    view/ToolboxUpDownControls.h
     view/ViewDetonatorBox.h
     view/ViewLink.h
     view/ViewObject.h
     view/ViewPostIt.h
     view/ViewWorld.h
-    view/ViewToolboxGroup.h
     view/WinFailDialog.h
 )
 
@@ -67,7 +61,6 @@ SET(view_UIFORMS
     view/MainWindow.ui
     view/SaveLevelInfo.ui
     view/SimulationControls.ui
-    view/ToolboxUpDownControls.ui
     view/ViewPostIt.ui
     view/WinFailDialog.ui
 )

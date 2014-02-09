@@ -31,18 +31,12 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
-    theParentPtr(aRSGVPtr),
-    theToolboxControls(aRSGVPtr)
+    theParentPtr(aRSGVPtr)
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
     ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
-    ui->theOKButton->setIcon(ImageCache::getQIcon("ActionToolboxDown",   QSize(32,32)));
     setAutoFillBackground (true);
-
-    connect(this, SIGNAL(appeared()), this, SLOT(slot_window_appeared()));
-    connect(this, SIGNAL(disappeared()), this, SLOT(slot_window_disappeared()));
-    connect(this, SIGNAL(startedAppear()), this, SLOT(slot_startAppearing()));
 }
 
 
@@ -67,20 +61,6 @@ void GameResources::changeEvent(QEvent *e)
 }
 
 
-void GameResources::deleteTheToolbox()
-{
-    // theToolboxPtr (which is of type QVBoxLayout)
-    // doesn't delete its contents on deletion, we need to do that.
-    while (theToolboxItemList.count() > 0)
-    {
-        ViewToolboxGroup* i = theToolboxItemList.last();
-        theToolboxItemList.pop_back();
-        ui->theToolBoxPtr->removeWidget(i);
-        delete i;
-    }
-}
-
-
 void GameResources::on_theOKButton_clicked()
 {
     // update the toolbox viewing
@@ -100,24 +80,6 @@ void GameResources::on_theResetButton_clicked()
 }
 
 
-void GameResources::parentResize(const QTransform& aTransformMatrix)
-{
-    // Set the transform of the toolview to be the same as the
-    // parent (i.e. resizinggraphicsview).
-    // This enforces that objects will have the same size as in the scene.
-    theTransformMatrix = aTransformMatrix;
-
-    if (theLevelPtr)
-        slot_startAppearing();
-
-    // And move the dialog to the center of the parent
-    QSize myParentSize = theParentPtr->size();
-    this->move( (myParentSize.width()-width())/2, (myParentSize.height()-height())/2);
-
-    theToolboxControls.parentResize(myParentSize);
-}
-
-
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
     DEBUG4ENTRY;
@@ -128,38 +90,4 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
-
-    deleteTheToolbox();
-}
-
-
-void GameResources::setup(QMenu* aMenuPtr)
-{
-    theToolboxControls.setup(this, aMenuPtr);
-    slot_window_disappeared();
-}
-
-
-void GameResources::slot_startAppearing()
-{
-    deleteTheToolbox();
-    for (auto i : theLevelPtr->theToolboxList)
-    {
-        ViewToolboxGroup* myVTGPtr = new ViewToolboxGroup(i, this);
-        ui->theToolBoxPtr->addWidget(myVTGPtr);
-        theToolboxItemList.push_back(myVTGPtr);
-        connect (myVTGPtr, SIGNAL(hideMe()), this, SLOT(on_theOKButton_clicked()));
-    }
-}
-
-
-void GameResources::slot_window_appeared()
-{
-    theToolboxControls.setDownEnabled();
-}
-
-
-void GameResources::slot_window_disappeared()
-{
-		theToolboxControls.setUpEnabled();
 }
