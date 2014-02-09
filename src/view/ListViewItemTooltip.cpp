@@ -12,6 +12,8 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     theTBGPtr(aTBGPtr)
 {
     ui->setupUi(this);
+    assert(aTBGPtr);
+    assert(aParent);
 
     // set the description and help
     ui->labelName->setText(theTBGPtr->theGroupName.result());
@@ -60,7 +62,8 @@ void ListViewItemTooltip::on_buttonRemove_clicked()
 
 void ListViewItemTooltip::on_buttonObjectImage_clicked()
 {
-    // TODO: make appear underneath where one clicked the button...
+    // TODO: make the newly inserted object appear underneath where one
+    // clicked the button...
     InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
     emit disappearAnimated();
 }

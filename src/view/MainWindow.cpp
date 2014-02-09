@@ -35,6 +35,7 @@
 #include "ObjectFactory.h"
 #include "Popup.h"
 #include "SaveLevelInfo.h"
+#include "ToolboxListWidgetItem.h"
 #include "UndoSingleton.h"
 #include "World.h"
 
@@ -102,23 +103,8 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-
     for (auto i : theLevelPtr->theToolboxList)
-    {
-        AbstractObject* myAOPtr = i->first();
-        ViewObject* myVOPtr = myAOPtr->createViewObject();
-
-        QListWidgetItem* myListItem = new QListWidgetItem(ui->listWidget);
-        myListItem->setIcon(myVOPtr->pixmap());
-        myListItem->setText(i->theGroupName.result());
-        myListItem->setTextAlignment(Qt::AlignHCenter);
-        myListItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-        myListItem->setData(Qt::UserRole, QVariant::fromValue(i));
-        connect(ui->listWidget,
-                SIGNAL(itemClicked(QListWidgetItem*)),
-                this, SLOT(slotToolboxItemselected(QListWidgetItem*)));
-    }
-
+        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
 
 
@@ -422,13 +408,4 @@ void MainWindow::setupView()
         theStartFileName = ChooseLevel::getNextLevelName();
 
     QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
-}
-
-
-void MainWindow::slotToolboxItemselected(QListWidgetItem* current)
-{
-    ListViewItemTooltip* myNewTooltip =
-            new ListViewItemTooltip(current->data(Qt::UserRole).value<ToolboxGroup*>(),
-                                    ui->graphicsView);
-    emit myNewTooltip->appearAnimated();
 }

@@ -88,9 +88,6 @@ public slots:
     void reloadLevel(void);
 
 private slots:
-    /// display a tooltip for an item in the ToolBox
-    void slotToolboxItemselected(QListWidgetItem* current);
-
     // menu Help
     void on_action_About_activated(void);
     void on_action_Bug_Reports_activated(void);

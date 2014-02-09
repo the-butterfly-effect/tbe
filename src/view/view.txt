@@ -17,6 +17,7 @@ SET(view_SOURCES
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
     view/SimulationControls.cpp
+    view/ToolboxListWidgetItem.cpp
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
     view/ViewLink.cpp
@@ -42,6 +43,7 @@ SET(view_HEADERS
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
     view/SimulationControls.h
+    view/ToolboxListWidgetItem.h
     view/ViewDetonatorBox.h
     view/ViewLink.h
     view/ViewObject.h

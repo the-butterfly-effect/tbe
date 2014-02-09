@@ -446,7 +446,6 @@ private:
 	bool theIsMovable;
 
     // TODO/FIXME: debugging code - should go away at some point
-    friend class MainWindow;
     friend class ViewPostIt;
     friend class EditObjectDialog;
 
