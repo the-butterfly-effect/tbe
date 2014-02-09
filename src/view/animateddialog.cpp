@@ -26,6 +26,7 @@ static QMutex theAnimatedDialogMutex;
 AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr,
                                AppearanceDirection anAppearDirection) :
     QWidget(aParentPtr),
+    theYCoord(-1),
     theOurParentPtr(aParentPtr),
     theAnimation(NULL, "geometry"),
     theIsToBeDeleted(false),
@@ -65,13 +66,23 @@ void AnimatedDialog::appearAnimated()
 	}
 	else
 	{
-		theAnimation.setStartValue(
-					QRectF(getOutsidePoint(theAppearanceDirection), size()));
+        theAnimation.setStartValue(QRectF(getOutsidePoint(), size()));
 	}
-	theAnimation.setEndValue(
-				QRectF(getOutsidePoint(MIDPOINT), size()));
-	theAnimation.setDuration(DURATION);
-	theAnimation.setEasingCurve(QEasingCurve::OutBounce);
+
+    theAnimation.setEndValue(QRectF(getInsidePoint(), size()));
+    switch(theAppearanceDirection)
+    {
+    case FROM_TOP:
+    case FROM_BOTTOMRIGHT:
+    default:
+        theAnimation.setDuration(DURATION);
+        theAnimation.setEasingCurve(QEasingCurve::OutBounce);
+        break;
+    case TOOLTIP:
+        theAnimation.setDuration(DURATION/4);
+        theAnimation.setEasingCurve(QEasingCurve::InQuad);
+        break;
+    }
 	theAnimation.start();
 	emit show();
 	emit startedAppear();
@@ -97,11 +108,9 @@ void AnimatedDialog::disappearAnimated()
 	}
 	else
 	{
-		theAnimation.setStartValue(
-					QRectF(getOutsidePoint(MIDPOINT), size()));
+        theAnimation.setStartValue(QRectF(getInsidePoint(), size()));
 	}
-	theAnimation.setEndValue(
-				QRectF(getOutsidePoint(theAppearanceDirection), size()));
+    theAnimation.setEndValue(QRectF(getOutsidePoint(), size()));
 	theAnimation.setDuration(DURATION);
 	theAnimation.setEasingCurve(QEasingCurve::OutQuad);
 	theAnimation.start();
@@ -110,14 +119,27 @@ void AnimatedDialog::disappearAnimated()
 }
 
 
-QPointF AnimatedDialog::getOutsidePoint(AnimatedDialog::AppearanceDirection anAppearDirection) const
+QPointF AnimatedDialog::getInsidePoint() const
 {
-	switch(anAppearDirection)
+    switch(theAppearanceDirection)
+    {
+    case FROM_TOP:
+    case FROM_BOTTOMRIGHT:
+        return QPointF((theOurParentPtr->width()  - width())/2,
+                       (theOurParentPtr->height() - height())/2);
+        break;
+    case TOOLTIP:
+        return QPointF(theOurParentPtr->width() - width(),
+                       theYCoord);
+        break;
+    }
+    return QPointF(0,0);
+}
+
+QPointF AnimatedDialog::getOutsidePoint() const
+{
+    switch(theAppearanceDirection)
 	{
-	case MIDPOINT:
-		return QPointF((theOurParentPtr->width()  - width())/2,
-					   (theOurParentPtr->height() - height())/2);
-		break;
 	case FROM_TOP:
 		return QPointF((theOurParentPtr->width() - width())/2,
 					   -height());
@@ -126,8 +148,12 @@ QPointF AnimatedDialog::getOutsidePoint(AnimatedDialog::AppearanceDirection anAp
 		return QPointF(theOurParentPtr->width() + width()/2,
 					   theOurParentPtr->height()+height());
 		break;
-	}
-	return QPointF(0,0);
+    case TOOLTIP:
+        return QPointF(theOurParentPtr->width(),
+                       theYCoord);
+        break;
+    }
+    return QPointF(0,0);
 }
 
 

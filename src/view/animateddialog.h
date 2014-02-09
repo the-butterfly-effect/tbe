@@ -35,7 +35,7 @@ public:
     {
         FROM_TOP,
         FROM_BOTTOMRIGHT,
-        MIDPOINT
+        TOOLTIP
     };
 
     /// Constructor.
@@ -90,10 +90,19 @@ private slots:
     /// emitting the disappeared() signal.
     void slot_handleDisappeared(void);
 
+protected:
+    /// the Y coordinate where this dialog is to end.
+    /// -1 means not set i.e. center of screen
+    int theYCoord;
+
 private:
     /// Returns the top-left point of the dialog as a starting point for the
     /// appearance animation (which is also the end point of the disappear).
-    QPointF getOutsidePoint(AppearanceDirection anAppearDirection) const;
+    QPointF getOutsidePoint() const;
+
+    /// Returns the top-left point of the dialog as a end point for the
+    /// appearance animation (which is also the starting point of the disappear).
+    QPointF getInsidePoint() const;
 
     /// Private pointer to our parent - which should at least be a QWidget
     /// but preferable a resizinggraphicsview...
