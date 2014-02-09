@@ -31,7 +31,7 @@ QPoint EditObjectDialog::thePosition = QPoint(0,0);
 EditObjectDialog::EditObjectDialog(AbstractObject* aAbstractObjectPtr, QWidget *aParent)
         : QDialog(aParent, Qt::Tool), theAOPtr(NULL)
 {
-    DEBUG4("EditObjectDialog::EditObjectDialog\n");
+    DEBUG1ENTRY;
     ui.setupUi(this);
 
     readFromObject(aAbstractObjectPtr);
@@ -46,9 +46,18 @@ EditObjectDialog::EditObjectDialog(AbstractObject* aAbstractObjectPtr, QWidget *
 EditObjectDialog::~EditObjectDialog()
 {
 	thePosition = pos();
-    // TODO: if there are still unsaved changes (i.e. an existing Undo class),
+    // If there are still unsaved changes (i.e. an existing Undo class),
     // we need to forget or commit it now...
+    if (getUndoPtr())
+        getUndoPtr()->commit();
 }
+
+
+AbstractUndoCommand* EditObjectDialog::getUndoPtr(void)
+{
+    return theAOPtr->theViewObjectPtr->theMUCPtr;
+}
+
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {

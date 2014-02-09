@@ -109,6 +109,7 @@ protected:
 	ViewObjectActionDecorator theDecorator;
 
     friend class AbstractUndoCommand;
+    friend class EditObjectDialog;
     AbstractUndoCommand* theMUCPtr;
     QPointF theClickedScenePos;
     const static int thePieMenuDelay = 225;
