@@ -30,15 +30,30 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     theTBGPtr(aTBGPtr),
     theRSGVPtr(aRSGVPtr)
 {
+    theTBGPtr->setItemPtr(this);
     AbstractObject* myAOPtr = theTBGPtr->first();
     ViewObject* myVOPtr = myAOPtr->createViewObject();
 
-    setIcon(myVOPtr->pixmap());
+    QSize myPixmapSize;
+    float myObjectAspectRatio = myAOPtr->getTheWidth() / myAOPtr->getTheHeight();
+    if (myObjectAspectRatio > 0.)
+    {
+        myPixmapSize.setWidth(theIconSize);
+        myPixmapSize.setHeight(theIconSize/myObjectAspectRatio);
+    }
+    else
+    {
+        myPixmapSize.setWidth(theIconSize/myObjectAspectRatio);
+        myPixmapSize.setHeight(theIconSize);
+    }
+    theRealPixmap = myVOPtr->pixmap().scaled(myPixmapSize);
+    slotUpdateCount();
     setText(theTBGPtr->theGroupName.result());
-    setTextAlignment(Qt::AlignHCenter);
+    setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
     setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+    setSizeHint(QSize(theIconSize+10, theRealPixmap.height()+24));
 
-    connect(parent, SIGNAL(itemActivated(QListWidgetItem*)),
+    connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
             this, SLOT(slotSelected(QListWidgetItem*)));
 }
 
@@ -46,7 +61,18 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 void ToolboxListWidgetItem::slotSelected(QListWidgetItem*)
 {
     // when we're called, we already know it's about us :-)
-    ListViewItemTooltip* myNewTooltip =
+    if (theTBGPtr->count()!=0)
+    {
+        ListViewItemTooltip* myNewTooltip =
             new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
-    emit myNewTooltip->appearAnimated();
+        emit myNewTooltip->appearAnimated();
+    }
+}
+
+void ToolboxListWidgetItem::slotUpdateCount(void)
+{
+    if (theTBGPtr->count()==0)
+        setIcon(QIcon());
+    else
+        setIcon(theRealPixmap);
 }

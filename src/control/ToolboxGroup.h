@@ -25,7 +25,7 @@ class AbstractObject;
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 class ViewToolboxGroup;
-
+class ToolboxListWidgetItem;
 
 /// This class holds a series of objects for the Toolbox
 class ToolboxGroup
@@ -50,12 +50,15 @@ public:
     /// (compare to first(), which just returns a pointer to the FIRST one)
     AbstractObject* getObject(void);
 
+    void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
+
     LocalString theGroupName;
     QString     theInternalName;
 
 private:
     typedef QList<AbstractObject*> ObjectsList;
     ObjectsList theObjectsList;
+    ToolboxListWidgetItem* theWidgetItemPtr;
 };
 
 #endif // TOOLBOXGROUP_H

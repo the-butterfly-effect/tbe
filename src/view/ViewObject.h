@@ -54,8 +54,8 @@ public:
 
 	/// @returns Aspect ratio (width/height) of the (first) image,
 	///          before it was scaled to width and height dimensions.
-	qreal getOrigImageAspectRatio(void)
-	{ return thePixmapWidth / thePixmapWidth; }
+//	qreal getOrigImageAspectRatio(void)
+//    { return thePixmapWidth / thePixmapHeight; }
 
 	/// Sets new geometry for this object.
 	/// @note This member should only be called by UndoCommands

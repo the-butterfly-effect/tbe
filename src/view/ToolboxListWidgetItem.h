@@ -38,11 +38,14 @@ signals:
 
 public slots:
     void slotSelected(QListWidgetItem*);
+    void slotUpdateCount(void);
 
 private:
     ToolboxGroup* theTBGPtr;
     ResizingGraphicsView* theRSGVPtr;
-    
+    QPixmap theRealPixmap;
+
+    const int theIconSize = 80;
 };
 
 #endif // TOOLBOXLISTWIDGETITEM_H

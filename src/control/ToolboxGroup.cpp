@@ -18,9 +18,11 @@
 
 #include "AbstractObject.h"
 #include "ToolboxGroup.h"
+#include "ToolboxListWidgetItem.h"
 
 ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
-    : theGroupName(aGroupName)
+    : theGroupName(aGroupName),
+      theWidgetItemPtr(NULL)
 {
     // nothing to do
 }
@@ -42,12 +44,24 @@ void ToolboxGroup::addObject(AbstractObject* anObjectPtr)
     Q_ASSERT(anObjectPtr!=NULL);
     theObjectsList.push_back(anObjectPtr);
     theInternalName = anObjectPtr->getInternalName();
+
+    if (theWidgetItemPtr)
+        emit theWidgetItemPtr->slotUpdateCount();
 }
+
 
 AbstractObject* ToolboxGroup::getObject(void)
 {
     Q_ASSERT(theObjectsList.count() > 0);
     AbstractObject* myAOPtr = theObjectsList.last();
     theObjectsList.pop_back();
+    if (theWidgetItemPtr)
+        emit theWidgetItemPtr->slotUpdateCount();
     return myAOPtr;
+}
+
+
+void ToolboxGroup::setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr)
+{
+    theWidgetItemPtr = aWidgetItemPtr;
 }
