@@ -22,7 +22,6 @@
 #include <QtCore>
 #include <QtGui>
 #include <QListWidgetItem>
-#include <cassert>
 
 
 #include "AbstractObject.h"
@@ -240,7 +239,7 @@ void MainWindow::on_action_Save_activated(void)
 void MainWindow::on_action_Save_As_activated(void)
 {
     DEBUG1ENTRY;
-    assert(theLevelPtr);
+    Q_ASSERT(theLevelPtr);
     if (theLevelPtr==NULL)
         return;
 

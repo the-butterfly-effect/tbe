@@ -21,8 +21,6 @@
 #include "ToolboxListWidgetItem.h"
 #include "ViewObject.h"
 
-#include <cstdio>
-
 ToolboxListWidgetItem::ToolboxListWidgetItem(
         ResizingGraphicsView *aRSGVPtr,
         ToolboxGroup* aTBGPtr,
@@ -48,7 +46,6 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 void ToolboxListWidgetItem::slotSelected(QListWidgetItem*)
 {
     // when we're called, we already know it's about us :-)
-    printf("void MainWindow::slotToolboxItemselected(%p)\n", this);
     ListViewItemTooltip* myNewTooltip =
             new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
     emit myNewTooltip->appearAnimated();

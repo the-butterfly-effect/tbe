@@ -30,8 +30,8 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     theTBGPtr(aTBGPtr)
 {
     ui->setupUi(this);
-    assert(aTBGPtr);
-    assert(aParent);
+    Q_ASSERT(aTBGPtr);
+    Q_ASSERT(aParent);
 
     // set the description and help
     ui->labelName->setText(theTBGPtr->theGroupName.result());
