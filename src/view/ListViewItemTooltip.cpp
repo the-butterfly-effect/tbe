@@ -1,16 +1,23 @@
-#include "ListViewItemTooltip.h"
+#include "AbstractObject.h"
 #include "ImageCache.h"
-#include "MainWindow.h"
 #include "ListViewItemTooltip.h"
+#include "MainWindow.h"
+#include "ViewObject.h"
 #include "ui_ListViewItemTooltip.h"
 
-ListViewItemTooltip::ListViewItemTooltip(ResizingGraphicsView* aParent) :
+ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
+                                         ResizingGraphicsView* aParent) :
     AnimatedDialog(aParent, AnimatedDialog::TOOLTIP),
-    ui(new Ui::ListViewItemTooltip)
+    ui(new Ui::ListViewItemTooltip),
+    theTBGPtr(aTBGPtr)
 {
     ui->setupUi(this);
 
     // set the image, description and help
+    AbstractObject* myAOPtr = theTBGPtr->first();
+    ViewObject* myVOPtr = myAOPtr->createViewObject();
+    ui->labelObjectImage->setPixmap(myVOPtr->pixmap());
+    ui->labelName->setText(theTBGPtr->theGroupName.result());
 
     // make it appear(animated)
     theYCoord = 50;

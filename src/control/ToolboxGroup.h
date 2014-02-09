@@ -23,6 +23,7 @@ class AbstractObject;
 #include "LocalString.h"
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QVariant>
 class ViewToolboxGroup;
 
 
@@ -30,6 +31,9 @@ class ViewToolboxGroup;
 class ToolboxGroup
 {
 public:
+    /// TODO: figure out consequences, I need a default constructor for now...
+    ToolboxGroup() {}
+
     explicit ToolboxGroup(const LocalString& aGroupName);
     ~ToolboxGroup();
 
@@ -56,5 +60,8 @@ private:
     typedef QList<AbstractObject*> ObjectsList;
     ObjectsList theObjectsList;
 };
+
+// I need this class to be passable as a custom QVariant in the Toolbox
+Q_DECLARE_METATYPE(ToolboxGroup*)
 
 #endif // TOOLBOXGROUP_H
