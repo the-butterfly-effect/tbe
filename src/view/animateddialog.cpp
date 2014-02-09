@@ -59,6 +59,7 @@ void AnimatedDialog::appearAnimated()
 
 	// setup the animation to appear
 	const qreal DURATION=1500;
+    emit show();
 	if (theAnimation.state()==QPropertyAnimation::Running)
 	{
 		theAnimation.stop();
@@ -84,7 +85,6 @@ void AnimatedDialog::appearAnimated()
         break;
     }
 	theAnimation.start();
-	emit show();
 	emit startedAppear();
 	connect(   &theAnimation, SIGNAL(finished()), this, SLOT(slot_handleAppeared()));
 	disconnect(&theAnimation, SIGNAL(finished()), this, SLOT(slot_handleDisappeared()));
@@ -111,7 +111,15 @@ void AnimatedDialog::disappearAnimated()
         theAnimation.setStartValue(QRectF(getInsidePoint(), size()));
 	}
     theAnimation.setEndValue(QRectF(getOutsidePoint(), size()));
-	theAnimation.setDuration(DURATION);
+    switch(theAppearanceDirection)
+    {
+    default:
+        theAnimation.setDuration(DURATION);
+        break;
+    case TOOLTIP:
+        theAnimation.setDuration(DURATION/4);
+        break;
+    }
 	theAnimation.setEasingCurve(QEasingCurve::OutQuad);
 	theAnimation.start();
 	disconnect(&theAnimation, SIGNAL(finished()), this, SLOT(slot_handleAppeared()));
