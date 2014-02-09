@@ -19,9 +19,7 @@
 #ifndef WINFAILDIALOG_H
 #define WINFAILDIALOG_H
 
-//#include "resizinggraphicsview.h"
 #include "animateddialog.h"
-#include <QWidget>
 
 namespace Ui {
 class WinFailDialog;
