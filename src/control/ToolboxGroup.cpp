@@ -18,7 +18,6 @@
 
 #include "AbstractObject.h"
 #include "ToolboxGroup.h"
-#include "ViewToolboxGroup.h"
 
 ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
     : theGroupName(aGroupName)

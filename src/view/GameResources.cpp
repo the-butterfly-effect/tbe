@@ -25,7 +25,6 @@
 #include "tbe_global.h"
 #include "ui_GameResources.h"
 #include "ViewObject.h"
-#include "ViewToolboxGroup.h"
 
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),

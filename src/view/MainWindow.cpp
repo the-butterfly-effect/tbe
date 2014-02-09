@@ -35,7 +35,6 @@
 #include "ObjectFactory.h"
 #include "Popup.h"
 #include "SaveLevelInfo.h"
-#include "ViewToolboxGroup.h"
 #include "UndoSingleton.h"
 #include "World.h"
 
