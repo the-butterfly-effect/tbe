@@ -22,6 +22,7 @@ public:
     
 public slots:
     void on_buttonRemove_clicked();
+    void on_buttonObjectImage_clicked();
 
 private:
     Ui::ListViewItemTooltip *ui;

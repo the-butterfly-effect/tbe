@@ -1,4 +1,5 @@
 #include "AbstractObject.h"
+#include "InsertUndoCommand.h"
 #include "ListViewItemTooltip.h"
 #include "Position.h"
 #include "ViewObject.h"
@@ -21,7 +22,6 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     // set the image
     ViewObject* myVOPtr = myAOPtr->createViewObject();
     QPixmap myPixmap = myVOPtr->pixmap();
-    ui->labelObjectImage->setPixmap(myPixmap);
 
     // scale the image, map dimensions from scene to view
     // first: get pixels of image per scene (in "qt meters", i.e. model meters*THESCALE)
@@ -31,9 +31,11 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
 
     qreal myBitmapConvertedWidth  = myPixmap.width() / myPixelsPerSceneQtMeter * mySceneQtMeterPerViewPortPixel;
     qreal myBitmapConvertedHeight = myPixmap.height() / myPixelsPerSceneQtMeter * mySceneQtMeterPerViewPortPixel;
-    ui->labelObjectImage->setMinimumSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
-    ui->labelObjectImage->setMaximumSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
-    ui->labelObjectImage->setScaledContents(true);
+    QSize myConvertedSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
+    ui->buttonObjectImage->setMinimumSize(myConvertedSize);
+    ui->buttonObjectImage->setMaximumSize(myConvertedSize);
+    ui->buttonObjectImage->setIcon(myPixmap.scaled(myConvertedSize, Qt::IgnoreAspectRatio));
+    ui->buttonObjectImage->setIconSize(myConvertedSize);
 
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
@@ -52,4 +54,13 @@ void ListViewItemTooltip::on_buttonRemove_clicked()
 {
     setDeleteOnDisappear(true);
     disappearAnimated();
+}
+
+
+
+void ListViewItemTooltip::on_buttonObjectImage_clicked()
+{
+    // TODO: make appear underneath where one clicked the button...
+    InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
+    emit disappearAnimated();
 }
