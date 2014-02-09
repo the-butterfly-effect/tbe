@@ -24,7 +24,8 @@ ListViewItemTooltip::~ListViewItemTooltip()
 }
 
 
-void ListViewItemTooltip::slotRemoveTooltip()
+void ListViewItemTooltip::on_buttonRemove_clicked()
 {
-    deleteLater();
+    setDeleteOnDisappear(true);
+    disappearAnimated();
 }

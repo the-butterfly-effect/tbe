@@ -18,7 +18,7 @@ public:
     ~ListViewItemTooltip();
     
 public slots:
-    void slotRemoveTooltip();
+    void on_buttonRemove_clicked();
 
 private:
     Ui::ListViewItemTooltip *ui;
