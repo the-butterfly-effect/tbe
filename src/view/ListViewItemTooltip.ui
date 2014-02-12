@@ -139,7 +139,7 @@
        <item row="0" column="1">
         <widget class="QLabel" name="labelName">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -147,7 +147,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>10</height>
+           <height>0</height>
           </size>
          </property>
          <property name="font">
@@ -164,35 +164,23 @@
        <item row="1" column="1">
         <widget class="QLabel" name="labelDescription">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>10</height>
-          </size>
-         </property>
          <property name="text">
-          <string>Een fietswiel zonder fiets rolt aardig vanzelf...</string>
+          <string>...</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="labelCount">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>20</width>
-           <height>10</height>
-          </size>
          </property>
          <property name="maximumSize">
           <size>
