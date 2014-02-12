@@ -36,14 +36,14 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 
     QSize myPixmapSize;
     float myObjectAspectRatio = myAOPtr->getTheWidth() / myAOPtr->getTheHeight();
-    if (myObjectAspectRatio > 0.)
+    if (myObjectAspectRatio > 1.0)
     {
         myPixmapSize.setWidth(theIconSize);
         myPixmapSize.setHeight(theIconSize/myObjectAspectRatio);
     }
     else
     {
-        myPixmapSize.setWidth(theIconSize/myObjectAspectRatio);
+        myPixmapSize.setWidth(theIconSize*myObjectAspectRatio);
         myPixmapSize.setHeight(theIconSize);
     }
     theRealPixmap = myVOPtr->pixmap().scaled(myPixmapSize);
