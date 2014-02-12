@@ -101,7 +101,9 @@ void MainWindow::loadLevel(const QString& aFileName)
 							.arg(aFileName).arg(myErrorMessage), this );
 		}
 	}
-	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+
+    ui->listWidget->clear();
+    theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
     for (auto i : theLevelPtr->theToolboxList)
         new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
