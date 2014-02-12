@@ -44,13 +44,8 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     QPixmap myPixmap = myVOPtr->pixmap();
 
     // scale the image, map dimensions from scene to view
-    // first: get pixels of image per scene (in "qt meters", i.e. model meters*THESCALE)
-    qreal myPixelsPerSceneQtMeter = myPixmap.width() / (myAOPtr->getTheWidth()*THESCALE);
-    // secondly, get pixels in viewport per scene meter
-    qreal mySceneQtMeterPerViewPortPixel = aParent->transform().m11();
-
-    qreal myBitmapConvertedWidth  = myPixmap.width() / myPixelsPerSceneQtMeter * mySceneQtMeterPerViewPortPixel;
-    qreal myBitmapConvertedHeight = myPixmap.height() / myPixelsPerSceneQtMeter * mySceneQtMeterPerViewPortPixel;
+    qreal myBitmapConvertedWidth  = myAOPtr->getTheWidth() * THESCALE * aParent->transform().m11();
+    qreal myBitmapConvertedHeight = myAOPtr->getTheHeight() * THESCALE * aParent->transform().m22();
     QSize myConvertedSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
     ui->buttonObjectImage->setMinimumSize(myConvertedSize);
     ui->buttonObjectImage->setMaximumSize(myConvertedSize);
