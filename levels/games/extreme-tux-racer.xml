@@ -27,10 +27,7 @@
                 <property key="ImageName">goal-scenery</property>
                 <property key="ZValue">4</property>
             </object>
-            <object width="0.400" X="6.304" Y="0.530" height="0.200" type="Spring" angle="5.745">
-                <property key="ImageName">spring20</property>
-            </object>
-            <object width="6.000" X="6.000" Y="0.050" height="0.100" type="Floor" angle="0.000">
+            <object width="5.000" X="6.500" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.600" X="1.169" Y="3.481" height="0.250" type="RectObject" ID="penguin" angle="0.000">
@@ -44,27 +41,55 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.430" X="0.217" Y="3.513" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
-            <object width="1.000" X="6.296" Y="0.300" height="0.100" type="Floor" angle="-0.487">
+            <object width="1.000" X="6.196" Y="0.300" height="0.100" type="Floor" angle="-0.487">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.000" X="6.201" Y="1.696" height="1.000" type="RectObject" angle="0.000"/>
-            <object width="0.446" X="4.595" Y="0.994" height="0.100" type="Floor" angle="0.000">
+            <object width="1.000" X="5.289" Y="0.780" height="0.100" type="RectObject" ID="Bar" angle="-0.487">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.0</property>
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">0.1</property>
+            </object>
+            <object width="0.100" X="5.648" Y="0.464" height="0.100" type="RectObject" angle="0.000">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.100" X="5.224" Y="0.782" height="0.100" type="RectObject" ID="BrassPin" angle="0.000">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="1.000" X="5.224" Y="0.782" height="1.000" type="PivotPoint" angle="0.000">
+                <property key="object1">Bar</property>
+                <property key="object2">BrassPin</property>
+            </object>
+            <object width="0.446" X="6.500" Y="0.411" height="0.100" type="Floor" ID="SpringMount" angle="1.100">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.000" X="4.650" Y="1.215" height="0.100" type="Floor" angle="-0.487">
+            <object width="0.650" X="6.110" Y="0.595" height="0.290" type="Spring" ID="Spring" angle="-0.487">
+                <property key="ImageName">spring20</property>
+            </object>
+            <object width="0.050" X="6.450" Y="0.405" height="0.050" type="Glue" angle="0.000">
+                <property key="ImageName">brass-pin</property>
+                <property key="object1">SpringMount</property>
+                <property key="object2">Spring</property>
+            </object>
+            <object width="1.000" X="4.425" Y="1.352" height="0.100" type="Floor" angle="-0.487">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.220" X="4.745" Y="1.362" height="0.220" type="SoccerBall" angle="0.000"/>
-            <object width="0.300" X="1.34" Y="3.76" height="0.300" type="Balloon" angle="0.000">
+            <object width="0.220" X="4.209" Y="1.650" height="0.220" type="SoccerBall" angle="0.000"/>
+            <object width="0.300" X="1.340" Y="3.760" height="0.300" type="Balloon" angle="0.000">
                 <property key="ImageName">zzz;Empty;Empty;Empty</property>
                 <property key="Mass">2</property>
                 <property key="Polygons">(-0.1,0.1)=(-0.1,-0.1)=(0.1,-0.1)=(0.1,0.1)</property>
             </object>
-            <object width="0.330" X="3.733" Y="0.275" height="0.350" type="DetonatorBox" angle="0.000">
+            <object width="0.220" X="4.000" Y="0.850" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.800" X="4.325" Y="0.687" height="0.100" type="Floor" angle="0.000">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.330" X="3.8" Y="0.175" height="0.350" type="DetonatorBox" angle="0.000">
                 <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
                 <property key="PhoneNumber">555-0000</property>
             </object>
-            <object width="0.220" X="3.666" Y="1.866" height="0.220" type="BowlingBall" angle="0.000"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
