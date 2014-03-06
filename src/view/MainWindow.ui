@@ -138,6 +138,9 @@
    <property name="text">
     <string>O&amp;pen File...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="action_Skip_Level">
    <property name="text">
@@ -197,6 +200,9 @@
    <property name="toolTip">
     <string>Save current level under its current name</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
    <property name="visible">
     <bool>false</bool>
    </property>
@@ -218,6 +224,9 @@
   <action name="action_New">
    <property name="text">
     <string>New Level...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
    <property name="visible">
     <bool>false</bool>
