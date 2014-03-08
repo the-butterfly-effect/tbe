@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../img/style/style-resources.qrc">
+   <iconset resource="../../imagery/style/style-resources.qrc">
     <normaloff>:/tbe-icon.ico</normaloff>:/tbe-icon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -242,7 +242,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../img/style/style-resources.qrc"/>
+  <include location="../../imagery/style/style-resources.qrc"/>
  </resources>
  <connections/>
 </ui>
