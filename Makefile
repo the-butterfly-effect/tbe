@@ -11,7 +11,7 @@ all:
 	cd ${BUILDDIR} && make DESTDIR=.. install
 
 clean:
-	cd ${BUILDDIR} && make clean
+	rm -rf ${BUILDDIR} 
 
 distclean:
 	rm -rf ${BUILDDIR} usr CPack* CMakeFiles cmake_install.cmake CMakeCache.txt CMakeLists.txt.user
