@@ -29,7 +29,7 @@ class TranslationGuideObjectFactory : public ObjectFactory
 public:
 	TranslationGuideObjectFactory(void)
 	{	announceObjectType("TranslationGuide", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new TranslationGuide()); }
 };
 static TranslationGuideObjectFactory theRFactory;
@@ -45,11 +45,11 @@ TranslationGuide::TranslationGuide()
 	initTG_Attributes ();
 }
 
-TranslationGuide::TranslationGuide(AbstractObject* anAbstractObject, qreal aDirection)
+TranslationGuide::TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection)
 		: AbstractJoint(), theObjectPtr(anAbstractObject)
 {
 	DEBUG4("TranslationGuide::TranslationGuide(%p, %f)\n",
-		   anAbstractObject, aDirection);
+           anAbstractObject.get(), aDirection);
 	theDirection = aDirection;
 	updateOrigCenter();
 	initTG_Attributes();
@@ -63,10 +63,10 @@ void TranslationGuide::createPhysicsObject(void)
 	// *** parse object
 	// NOTE: if we used the constructor with AbstractObject, this will still work
 	// because propertyToObjectPtr only modifies theFirstPtr if successful
-	theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theObjectPtr);
-	if (theObjectPtr==NULL)
-		theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING, &theObjectPtr);
-	if (theObjectPtr==NULL)
+    theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    if (theObjectPtr==nullptr)
+        theObjectPtr=theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+    if (theObjectPtr==nullptr)
 	{
 		DEBUG4("TranslationGuide: No valid object found...\n");
 		return;
@@ -84,7 +84,7 @@ void TranslationGuide::createPhysicsObject(void)
 	// note: Initialize() uses a global coordinate...
 	b2PrismaticJointDef myJointDef;
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2(), Vector(theDirection).toB2Vec2());
-	myJointDef.userData = this;
+    myJointDef.userData = this;
 	myJointDef.collideConnected = areObjectsColliding;
 
 	// set motor speed and/or torque

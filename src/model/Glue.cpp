@@ -30,7 +30,7 @@ class GlueObjectFactory : public ObjectFactory
 public:
 	GlueObjectFactory(void)
 	{	announceObjectType("Glue", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new Glue()); }
 };
 static GlueObjectFactory theGlueFactory;
@@ -86,7 +86,7 @@ void Glue::createPhysicsObject(void)
 	// *** initialise Box2D's revolute joint (from AbstractJoint):
 	b2RevoluteJointDef myRevJointDef;
 	myRevJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, (myCenter-myHalfWidth).toB2Vec2());
-	myRevJointDef.userData = this;
+    myRevJointDef.userData = this;
 	myRevJointDef.collideConnected = true;
 	theJointPtr = static_cast<b2RevoluteJoint*>(getB2WorldPtr()->CreateJoint(&myRevJointDef));
 
@@ -95,7 +95,7 @@ void Glue::createPhysicsObject(void)
 	myDisJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
 						  (myCenter+myHalfWidth).toB2Vec2(),
 						  (myCenter+myHalfWidth).toB2Vec2());
-	myDisJointDef.userData = this;
+    myDisJointDef.userData = this;
 	myDisJointDef.collideConnected = true;
 	theLinkPtr = static_cast<b2DistanceJoint*>(getB2WorldPtr()->CreateJoint(&myDisJointDef));
 }
@@ -126,10 +126,12 @@ void Glue::parseProperties(void)
 	// NOTE: if we used the constructor with AbstractObject, (i.e. properties
 	// aren't read yet) this will still work because propertyToObjectPtr
 	// only modifies theFirstPtr/theSecondPtr if successful
-	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
-								  &theFirstPtr, &theFirstLocalPosPtr);
-	theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
-								  &theSecondPtr, &theSecondLocalPosPtr);
+    theFirstPtr =  theProps.property2ObjectPlusVectorPtr(theWorldPtr,
+                                    Property::OBJECT1_STRING,
+                                    &theFirstLocalPosPtr);
+    theSecondPtr = theProps.property2ObjectPlusVectorPtr(theWorldPtr,
+                                    Property::OBJECT2_STRING,
+                                    &theSecondLocalPosPtr);
 }
 
 void Glue::updateOrigCenter(void)

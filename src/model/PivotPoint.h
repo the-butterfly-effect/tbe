@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,8 +20,7 @@
 #define PIVOTPOINT_H
 
 #include "AbstractJoint.h"
-
-
+#include "PivotPointPtr.h"
 
 /// This class implements rotational joints - between objects or between one
 /// object and "the world". 
@@ -56,7 +55,7 @@ public:
 	  * @param aRelativePosition the (relative!) position of this pivot point
 	  *                          relative to the center of the AbstractObject
 	  */
-	PivotPoint(AbstractObject* aAbstractObject, const Vector& aRelativePosition);
+	PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativePosition);
 
 	virtual ~PivotPoint();
 
@@ -100,8 +99,8 @@ protected:
 private:
 	void initPivotAttributes ( );
 
-	AbstractObject* theFirstPtr;
-	AbstractObject* theSecondPtr;
+	AbstractObjectPtr theFirstPtr;
+	AbstractObjectPtr theSecondPtr;
 
 	/** use property 'collide' to set this.
 	  * true means that objects can collide - useful for true hinges
@@ -110,5 +109,6 @@ private:
 
 	Vector thePosRelativeToFirst;
 };
+
 
 #endif // PIVOTPOINT_H

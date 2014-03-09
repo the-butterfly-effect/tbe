@@ -68,7 +68,7 @@ ViewObject*  Link::createViewObject(float aDefaultDepth)
     QString myImageName;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
         myImageName = getInternalName();
-    theViewObjectPtr = new ViewLink(this, myImageName);
+    theViewObjectPtr = new ViewLink(getThisPtr(), myImageName);
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     return theViewObjectPtr;
 }
@@ -140,11 +140,13 @@ void Link::parseProperties(void)
     // NOTE: if we used the constructor with baseobject, (i.e. properties
     // aren't read yet) this will still work because propertyToObjectPtr
     // only modifies theFirstPtr/theSecondPtr if successful
-    theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT1_STRING,
-                                          &theFirstPtr, &theFirstLocalPosPtr);
+    theFirstPtr = theProps.property2ObjectPlusVectorPtr(theWorldPtr,
+                                                        Property::OBJECT1_STRING,
+                                                        &theFirstLocalPosPtr);
 
-    theProps.property2ObjectPlusVectorPtr(theWorldPtr, Property::OBJECT2_STRING,
-                                          &theSecondPtr, &theSecondLocalPosPtr);
+    theSecondPtr = theProps.property2ObjectPlusVectorPtr(theWorldPtr,
+                                                         Property::OBJECT2_STRING,
+                                                         &theSecondLocalPosPtr);
 }
 
 

@@ -30,16 +30,14 @@ ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
 
 ToolboxGroup::~ToolboxGroup()
 {
-    foreach(AbstractObject* i, theObjectsList)
-    {
-        delete i;
-    }
+    // as theObjectsList contains smart pointers,
+    // no need to do explicit destruction anymore
 }
 
 
 
 
-void ToolboxGroup::addObject(AbstractObject* anObjectPtr)
+void ToolboxGroup::addObject(AbstractObjectPtr anObjectPtr)
 {
     Q_ASSERT(anObjectPtr!=NULL);
     theObjectsList.push_back(anObjectPtr);
@@ -50,10 +48,10 @@ void ToolboxGroup::addObject(AbstractObject* anObjectPtr)
 }
 
 
-AbstractObject* ToolboxGroup::getObject(void)
+AbstractObjectPtr ToolboxGroup::getObject(void)
 {
     Q_ASSERT(theObjectsList.count() > 0);
-    AbstractObject* myAOPtr = theObjectsList.last();
+    AbstractObjectPtr myAOPtr = theObjectsList.last();
     theObjectsList.pop_back();
     if (theWidgetItemPtr)
         emit theWidgetItemPtr->slotUpdateCount();

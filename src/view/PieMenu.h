@@ -26,10 +26,10 @@
 
 
 #include "tbe_global.h"
+#include "AbstractObjectPtr.h"
 
 // forward declarations
 class ViewObject;
-class AbstractObject;
 
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
@@ -130,7 +130,7 @@ private slots:
 
 private:
 	ActionIcon* theCurrentInnerIconPtr;
-	AbstractObject* theAOPtr;
+	AbstractObjectPtr theAOPtr;
 	ViewObject* theVOPtr;
 
 	/// Set to true by iconClicked, monitored by

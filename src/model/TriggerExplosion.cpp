@@ -26,7 +26,7 @@ class DetonatorBoxObjectFactory : public ObjectFactory
 public:
 	DetonatorBoxObjectFactory(void)
 	{	announceObjectType("DetonatorBox", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new DetonatorBox()); }
 };
 static DetonatorBoxObjectFactory theDetonatorBoxObjectFactory;
@@ -45,11 +45,12 @@ DetonatorBox::DetonatorBox()
       theState(ARMED),
       isTriggered(false),
       theActivationStartTime(999.f),
-      theHandle(this)
+      theHandle(nullptr)
 {
 	theProps.setDefaultPropertiesString(
 				Property::PHONENUMBER_STRING + QString(":/") );
 	thePhoneNumber = "";
+    theHandle = ObjectFactory::createChildObject<DetonatorBoxHandle>(this);
 }
 
 DetonatorBox::~DetonatorBox()
@@ -95,7 +96,7 @@ ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getName();
 
-	theViewObjectPtr = new ViewDetonatorBox(this, myImageName);
+    theViewObjectPtr = new ViewDetonatorBox(getThisPtr(), myImageName);
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 
 	// and make sure that the handle is drawn correctly
@@ -106,7 +107,7 @@ ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 void DetonatorBox::createPhysicsObject(void)
 {
 	RectObject::createPhysicsObject();
-	theHandle.createPhysicsObject();
+    theHandle->createPhysicsObject();
 
 	isTriggered = false;
 	theActivationStartTime = 0.0f;
@@ -117,7 +118,7 @@ void DetonatorBox::createPhysicsObject(void)
 void DetonatorBox::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
-	theHandle.deletePhysicsObject();
+    theHandle->deletePhysicsObject();
 }
 
 QStringList DetonatorBox::getAllPhoneNumbers(void)
@@ -168,8 +169,8 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 
 void DetonatorBox::notifyExplosions(void)
 {
-	AbstractObject* myObjectToSignal = theWorldPtr->findObjectByID(getCurrentPhoneNumber());
-	Dynamite* myDynamite = dynamic_cast<Dynamite*>(myObjectToSignal);
+    AbstractObjectPtr myObjectToSignal = theWorldPtr->findObjectByID(getCurrentPhoneNumber());
+    Dynamite* myDynamite = dynamic_cast<Dynamite*>(myObjectToSignal.get());
 
 	// did the user select a wrong phone number?
 	if (myDynamite == NULL)
@@ -180,8 +181,8 @@ void DetonatorBox::notifyExplosions(void)
 
 void DetonatorBox::registerChildObjects (void)
 {
-	theHandle.setOrigCenter(getOrigCenter()+HANDLEOFFSET);
-	theWorldPtr->addObject(&theHandle);
+    theHandle->setOrigCenter(getOrigCenter()+HANDLEOFFSET);
+    theWorldPtr->addObject(theHandle);
 }
 
 
@@ -276,7 +277,7 @@ class DynamiteObjectFactory : public ObjectFactory
 public:
 	DynamiteObjectFactory(void)
 	{	announceObjectType("Dynamite", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new Dynamite()); }
 };
 static DynamiteObjectFactory theDynamiteObjectFactory;
@@ -375,7 +376,8 @@ void Dynamite::explode(void)
 	const int NUM_SPLATS = 13;
 	for (int i=0; i< NUM_SPLATS; i++)
 	{
-		ExplosionSplatter* mySplatter = new ExplosionSplatter();
+        std::shared_ptr<ExplosionSplatter> mySplatterPtr =
+                ObjectFactory::createChildObject<ExplosionSplatter>();
 
 		// startpos = dynamite center + angle + distance from center
 		Position myStart = getTempCenter();
@@ -384,8 +386,8 @@ void Dynamite::explode(void)
 
 		// HACK HACK: A regular detonation front is close to sonic speed (1000 m/s)
 		// we're not going to go anywhere near that speed here...
-		mySplatter->setAll(theWorldPtr, myStart, 20.0, DYNAMITE_MASS/NUM_SPLATS, this);
-		theSplatterList.push_back(mySplatter);
+        mySplatterPtr->setAll(theWorldPtr, myStart, 20.0, DYNAMITE_MASS/NUM_SPLATS, this);
+        theSplatterList.push_back(mySplatterPtr);
 	}
 }
 
@@ -429,19 +431,22 @@ void Dynamite::manageParticles(float aDeltaTime)
 		{
 			while(theSplatterList.count() > 0)
 			{
-				ExplosionSplatter* myP = theSplatterList.last();
+                AbstractObjectPtr myP = theSplatterList.last();
 				theSplatterList.pop_back();
 				theWorldPtr->removeObject(myP);
-                delete myP;
             }
 		}
 		else
-			foreach(ExplosionSplatter* e, theSplatterList)
-				e->setMass( myMassLeft / mySplattersLeft );
+            foreach(AbstractObjectPtr e, theSplatterList)
+            {
+                ExplosionSplatter* p = dynamic_cast<ExplosionSplatter*>(e.get());
+                assert(p);
+                p->setMass( myMassLeft / mySplattersLeft );
+            }
 	}
 }
 
-void Dynamite::removeMe(ExplosionSplatter* aDeadSplatterPtr)
+void Dynamite::removeMe(AbstractObjectPtr aDeadSplatterPtr)
 {
 	assert(aDeadSplatterPtr != NULL);
 	theSplatterList.removeAll(aDeadSplatterPtr);
@@ -498,24 +503,24 @@ void ExplosionSplatter::reportNormalImpulseLength(qreal)
 	if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
 			((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
 	{
-		theDynamitePtr->removeMe(this);
-		theWorldPtr->removeMe(this, 0.05);
+        theDynamitePtr->removeMe(getThisPtr());
+        theWorldPtr->removeMe(getThisPtr(), 0.05);
 	}
 }
 
 
 void ExplosionSplatter::setAll(World* aWorldPtr,
-							   const Position& aStartPos,
-							   qreal aVelocity,
-							   qreal aSplatterMass,
-							   Dynamite* aDynamitePtr)
+                               const Position& aStartPos,
+                               qreal aVelocity,
+                               qreal aSplatterMass,
+                               Dynamite* aDynamitePtr)
 {
 	DEBUG5("ExplosionSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
 		   aVelocity, aSplatterMass);
 
-	theDynamitePtr = aDynamitePtr;
-	setOrigCenter(aStartPos);
+    theDynamitePtr = aDynamitePtr;
+    setOrigCenter(aStartPos);
 	createPhysicsObject();
 
 	qreal myAngle = aStartPos.angle;
@@ -523,7 +528,7 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
 	theB2BodyPtr->SetLinearVelocity(theStartVelocityVector.toB2Vec2());
 	setMass(aSplatterMass);
 
-	aWorldPtr->addObject(this);
+    aWorldPtr->addObject(getThisPtr());
 }
 
 void ExplosionSplatter::setMass( qreal aSplatterMass )

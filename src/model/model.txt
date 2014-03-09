@@ -28,7 +28,8 @@ SET(model_SOURCES
 SET(model_HEADERS
     model/AbstractJoint.h 
     model/AbstractObject.h 
-    model/BalloonCactus.h 
+    model/AbstractObjectPtr.h
+    model/BalloonCactus.h
     model/Butterfly.h 
     model/CircleObjects.h 
     model/ColaMintBottle.h 
@@ -36,7 +37,8 @@ SET(model_HEADERS
     model/Goal.h 
     model/Link.h 
     model/PivotPoint.h 
-    model/PolyObject.h 
+    model/PivotPointPtr.h
+    model/PolyObject.h
     model/Position.h 
     model/PostIt.h 
     model/Property.h 
@@ -44,6 +46,7 @@ SET(model_HEADERS
     model/Scenery.h 
     model/Spring.h 
     model/TranslationGuide.h 
-    model/TriggerExplosion.h 
+    model/TranslationGuidePtr.h
+    model/TriggerExplosion.h
     model/World.h
 )

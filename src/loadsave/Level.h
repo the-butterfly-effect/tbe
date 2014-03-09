@@ -103,7 +103,7 @@ public:
 	/// @note (used by DeleteUndoCommand only)
 	/// Finds the ToolboxGroup that the object belongs to.
 	/// @param anAOPtr the object to find a TBG for.
-	static ToolboxGroup* findToolBoxGroup(AbstractObject* anAOPtr);
+    static ToolboxGroup* findToolBoxGroup(AbstractObjectPtr anAOPtr);
 
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here

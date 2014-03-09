@@ -28,7 +28,7 @@
 // Constructors/Destructors
 //
 
-ViewPostIt::ViewPostIt (AbstractObject* aAbstractObjectPtr)
+ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr)
 	: ViewObject(aAbstractObjectPtr, "PostIt"),
 	  theCurrentPage(0),
 	  theDialogPtr(NULL),

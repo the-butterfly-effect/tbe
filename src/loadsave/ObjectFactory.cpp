@@ -61,7 +61,7 @@ ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory
 	aThisPtr->theFactoryName = anObjectTypeName;
 }
 
-AbstractObject*
+AbstractObjectPtr
 ObjectFactory::createObject(
 		const QString& aName,
 		const Position aPosition,
@@ -69,14 +69,17 @@ ObjectFactory::createObject(
 		const qreal anHeight)
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
-	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p\n", ASCII(aName), myFactoryPtr);
+    DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p\n", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == NULL)
 	{
 		DEBUG1("There is no factory for Object type %s\n", ASCII(aName));
 		return NULL;
 	}
-	AbstractObject* myObjectPtr = myFactoryPtr->createObject();
-	DEBUG5("  object created = %p, i18n name = '%s'\n", myObjectPtr, ASCII(myObjectPtr->getName()));
+    AbstractObject* myObjectPtr = myFactoryPtr->createObject();
+    assert (myObjectPtr!=nullptr);
+    AbstractObjectPtr mySharedOPtr = AbstractObjectPtr(myObjectPtr);
+    myObjectPtr->theThisPtr = mySharedOPtr;
+    DEBUG5("  object created = %p, i18n name = '%s'\n", myObjectPtr, ASCII(myObjectPtr->getName()));
 	assert (aName.contains(" ")==false);
 	myObjectPtr->theInternalName = aName;
 	myObjectPtr->theCenter=aPosition;
@@ -84,14 +87,15 @@ ObjectFactory::createObject(
 		myObjectPtr->theWidth=aWidth;
 	if (anHeight!=1.0)
 		myObjectPtr->theHeight=anHeight;
-	return myObjectPtr;
+    // finally, get rid of the actual pointer and return the shared_ptr
+    return mySharedOPtr;
 }
 
 
-AbstractObject* ObjectFactory::fixObject(AbstractObject* anObject) const
+AbstractObject* ObjectFactory::fixObject(AbstractObject *anObjectPtr) const
 {
-	anObject->theInternalName = theFactoryName;
-	return anObject;
+    anObjectPtr->theInternalName = theFactoryName;
+    return anObjectPtr;
 }
 
 ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)

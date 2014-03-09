@@ -96,7 +96,7 @@ Level::~Level ( )
 
 
 ToolboxGroup*
-Level::findToolBoxGroup(AbstractObject* anAOPtr)
+Level::findToolBoxGroup(AbstractObjectPtr anAOPtr)
 {
 	foreach(ToolboxGroup* i, theCurrentLevelPtr->theToolboxList)
 	{
@@ -236,6 +236,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	//
 	myErrorMessage = tr("Parsing '%1' section failed: ").arg(thePredefinedString);
 	myNode = mySceneNode.firstChildElement(thePredefinedString);
+
 	for (q=myNode.firstChild(); !q.isNull(); q=q.nextSibling())
 	{
 		// an object entry has the following layout:
@@ -252,13 +253,15 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			goto not_good;
 		}
 
-		AbstractObject* myAOPtr = AbstractObjectSerializer::createObjectFromDom(q, false, true);
-		if (myAOPtr == NULL)
+        AbstractObjectPtr myAOPtr = AbstractObjectSerializer::createObjectFromDom(q, false, true);
+        if (myAOPtr == nullptr)
 		{
 			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
 		}
-		theWorldPtr->addObject(myAOPtr);
+        printf("baa\n");
+        theWorldPtr->addObject(myAOPtr);
+        printf("boo\n");
 
 		if (q==myNode.lastChild())
 			break;

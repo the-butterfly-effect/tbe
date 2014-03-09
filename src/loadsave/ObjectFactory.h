@@ -19,11 +19,9 @@
 #ifndef OBJECTFACTORY_H
 #define OBJECTFACTORY_H
 
+#include "AbstractObjectPtr.h"
 #include "Position.h"
 #include <QList>
-
-// forward declarations
-class AbstractObject;
 
 /**
  *  class ObjectFactory
@@ -42,15 +40,33 @@ public:
 
 	typedef QList<const ObjectFactory*> ObjectFactoryList;
 
+    /// static factory method member, to be used by all classes that have childs for
+    /// which there is no ObjectFactory - like DetonatorBoxHandle and SpringEnd
+    /// Usage: std::shared_ptr<ChildObjectName> ChildPtr = createChildObject<ChildObjectName)(constructor arguments);
+    /// but instead of the std::shared<CON>, you can also use the superclass shared ptr: AbstractObjectPtr
+    /// @param _Tp  is ChildObjectName - class name of the child object
+    /// @param __args  are the arguments to be forwarded to the constructor of the child object
+    /// @returns a shared pointer
+    template<typename _Tp, typename... _Args>
+      static std::shared_ptr<_Tp>
+      createChildObject(_Args&&... __args)
+      {
+        std::shared_ptr<_Tp> p = std::make_shared<_Tp>(std::forward<_Args>(__args)...);
+        p->theThisPtr = p;
+        return p;
+      }
+
+
 protected:
 	/** create the object aName and return a pointer to it
 	 * @param aName
 	 * @param aPostion
 	 * @param aWidth    width of the object in meter - default 1.0
 	 * @param anHeight  height of the object in meter - default 1.0
-	 * @return a valid pointer to a newly created object or NULL if not found
+     * @returns a valid shared_ptr to a newly created AbstractObject
+     *          or nullptr if anything went wrong
 	 */
-	static AbstractObject* createObject(
+    static AbstractObjectPtr createObject(
 			const QString& aName,
 			const Position aPostion,
 			const qreal aWidth = 1.0,
@@ -59,7 +75,7 @@ protected:
 	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 
 	/// setup e.g. theInternalName of the object
-	AbstractObject* fixObject(AbstractObject*) const;
+    AbstractObject* fixObject(AbstractObject*anObjectPtr) const;
 
 	QString getFactoryName(void) const
 	{ return theFactoryName; }
@@ -74,7 +90,7 @@ protected:
 	 *  must be implemented for each real factory.
 	 * @return pointer to a newly instantiated object
 	 */
-	virtual AbstractObject* createObject(void) const = 0;
+    virtual AbstractObject* createObject(void) const = 0;
 
 private:
 	QString theFactoryName;

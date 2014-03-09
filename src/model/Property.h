@@ -19,13 +19,14 @@
 #ifndef PROPERTY_H
 #define PROPERTY_H
 
+#include "AbstractObjectPtr.h"
+
 #include <QtCore/QString>
 #include <QtCore/QMap>
 
 // forward declarations
 class Vector;
 class World;
-class AbstractObject;
 
 /// This class contains all properties and default properties.
 class PropertyList
@@ -122,28 +123,24 @@ public:
 	  */
 	bool property2Float(const QString& aPropertyName, float* aFloat, bool useDefault=true) const;
 
-	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing AbstractObject instance
+    /** returns an AnbstractObjectPtr if property aPropertyName exists *and*
+      * there exists an AbstractObject by the ID of the value of aPropertyName
 	  * @param aWorldPtr
-	  * @param aPropertyName (output)
-	  * @param aBOPtrPtr	 (output) upon success contains pointer to AbstractObject
-	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
+      * @param aPropertyName
+      * @returns valid pointer if success or nullptr if not
 	  */
-	bool property2ObjectPtr(World* aWorldPtr,
-							 const QString& aPropertyName,
-							 AbstractObject** aBOPtrPtr);
+    AbstractObjectPtr property2ObjectPtr(World* aWorldPtr,
+                             const QString& aPropertyName);
 
-	/** returns true if property aPropertyName exists *and*
-	  * its value is the ID of an existing AbstractObject instance
-	  * @param aWorldPtr
+    /** returns an AnbstractObjectPtr if property aPropertyName exists *and*
+      * there exists an AbstractObject by the ID of the value of aPropertyName
+      * @param aWorldPtr
 	  * @param aPropertyName
-	  * @param anAOPtrPtr	  (output) upon success contains pointer to AbstractObject*
 	  * @param aVectorPtrPtr  (output) upon success contains pointer to a Vector*
 	  * @returns true if success. if no success, value of aBOPtrPtr is undefined
 	  */
-	bool property2ObjectPlusVectorPtr(World* aWorldPtr,
+    AbstractObjectPtr property2ObjectPlusVectorPtr(World* aWorldPtr,
 							 const QString& aPropertyName,
-							 AbstractObject** anAOPtrPtr,
 							 Vector** aVectorPtrPtr);
 
 	/** returns true if property aPropertyName exists *and*

@@ -36,7 +36,7 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     // set the description and help
     ui->labelName->setText(theTBGPtr->theGroupName.result());
     ui->labelCount->setText(tr("%1x").arg(theTBGPtr->count()));
-    AbstractObject* myAOPtr = theTBGPtr->first();
+    AbstractObjectPtr myAOPtr = theTBGPtr->first();
     ui->labelDescription->setText(myAOPtr->getToolTip());
 
     // set the image

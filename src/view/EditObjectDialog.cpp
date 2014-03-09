@@ -28,7 +28,7 @@
 
 QPoint EditObjectDialog::thePosition = QPoint(0,0);
 
-EditObjectDialog::EditObjectDialog(AbstractObject* aAbstractObjectPtr, QWidget *aParent)
+EditObjectDialog::EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *aParent)
         : QDialog(aParent, Qt::Tool), theAOPtr(NULL)
 {
     DEBUG1ENTRY;
@@ -129,7 +129,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 }
 
 
-void EditObjectDialog::readFromObject(AbstractObject* aAbstractObjectPtr)
+void EditObjectDialog::readFromObject(AbstractObjectPtr aAbstractObjectPtr)
 {
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end

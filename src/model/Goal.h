@@ -106,8 +106,8 @@ protected:
 private:
 	DistanceType theType;
 	float theLimit;
-	AbstractObject* theFirstPtr;
-	AbstractObject* theSecondPtr;
+	AbstractObjectPtr theFirstPtr;
+	AbstractObjectPtr theSecondPtr;
 
 	friend class GoalSerializer;
 };
@@ -147,7 +147,7 @@ protected:
 
 private:
 	PositionType theType;
-	AbstractObject* theBOPtr;
+	AbstractObjectPtr theBOPtr;
 	float theLimit;
 };
 
@@ -180,7 +180,7 @@ protected:
 
 private:
 	StateType theType;
-	AbstractObject* theBOPtr;
+	AbstractObjectPtr theBOPtr;
 	int theState;
 };
 

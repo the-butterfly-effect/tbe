@@ -26,7 +26,7 @@ class SpringObjectFactory : public ObjectFactory
 public:
 	SpringObjectFactory(void)
 	{	announceObjectType("Spring", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new Spring()); }
 };
 static SpringObjectFactory theSpringObjectFactory;
@@ -86,8 +86,8 @@ Spring::Spring()
 
 Spring::~Spring()
 {
-	delete theOtherEndPtr;
-	theOtherEndPtr = NULL;
+    deletePhysicsObject();
+    theOtherEndPtr = nullptr;
 }
 
 void Spring::adjustParameters(void)
@@ -116,7 +116,7 @@ void Spring::buildShapeList(void)
 		myBoxFixture->density = myMass / (getTheWidth()*getTheHeight()) / 2.0;
 	assert (myMass > 0.0);
 	myBoxFixture->shape    = myBoxShape;
-	myBoxFixture->userData = this;
+    myBoxFixture->userData = this;
 	setFriction(myBoxFixture);
 	theShapeList.push_back(myBoxFixture);
 }
@@ -128,20 +128,23 @@ void Spring::createPhysicsObject(void)
 
 	RectObject::createPhysicsObject(getOrigCenter()-Vector(0.25*getTheWidth(),0));
 
-	if (theOtherEndPtr==NULL)
+    SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
+    if (myOtherEndPtr==NULL)
 	{
-		theOtherEndPtr = new SpringEnd(this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
-
-		theOtherEndPtr->theProps.setDefaultPropertiesString(
+        theOtherEndPtr = ObjectFactory::createChildObject<SpringEnd>
+                (this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
+        myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
+        assert(myOtherEndPtr!=nullptr);
+        myOtherEndPtr->theProps.setDefaultPropertiesString(
 				QString("%1:%2/").arg(Property::NOCOLLISION_STRING)
 				.arg(theProps.getPropertyNoDefault(Property::NOCOLLISION_STRING)));
 		theWorldPtr->addObject(theOtherEndPtr);
 	}
-	theOtherEndPtr->setTheWidth(0.5*getTheWidth());
-	theOtherEndPtr->setTheHeight(getTheHeight());
-	theOtherEndPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
-	theOtherEndPtr->createPhysicsObject();
-	theProps.property2Float(Property::SPRING_CONSTANT_STRING, &(theOtherEndPtr->theSpringConstant));
+    myOtherEndPtr->setTheWidth(0.5*getTheWidth());
+    myOtherEndPtr->setTheHeight(getTheHeight());
+    myOtherEndPtr->setOrigCenter(getOrigCenter()+Vector(0.25*getTheWidth(),0));
+    myOtherEndPtr->createPhysicsObject();
+    theProps.property2Float(Property::SPRING_CONSTANT_STRING, &(myOtherEndPtr->theSpringConstant));
 }
 
 void Spring::deletePhysicsObject(void)
@@ -158,7 +161,13 @@ b2Body* Spring::getB2BodyPtrForPosition(const Position& aRelPosition)
 	if (aRelPosition.x < 0.0)
 		return theB2BodyPtr;
 	else
-		return theOtherEndPtr->theB2BodyPtr;
+    {
+        SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
+        if (myOtherEndPtr)
+            return myOtherEndPtr->theB2BodyPtr;
+        else
+            return nullptr;
+    }
 }
 
 
@@ -168,8 +177,11 @@ Position Spring::getTempCenter (void) const
 	if (isPhysicsObjectCreated()==false)
 		return getOrigCenter();
 
-	Vector myP1(theB2BodyPtr->GetPosition());
-	Vector myP2(theOtherEndPtr->theB2BodyPtr->GetPosition());
+    Vector myP1(theB2BodyPtr->GetPosition());
+
+    SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
+    assert(myOtherEndPtr);
+    Vector myP2(myOtherEndPtr->theB2BodyPtr->GetPosition());
 	return Position(0.5*Vector(myP1+myP2), theB2BodyPtr->GetAngle());
 }
 
@@ -177,7 +189,9 @@ qreal Spring::getTempWidth() const
 {
 	if (theOtherEndPtr==NULL)
 		return getTheWidth();
-	return theOtherEndPtr->getDistance() + getTheWidth();
+    SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
+    assert(myOtherEndPtr);
+    return myOtherEndPtr->getDistance() + getTheWidth();
 }
 
 const QString Spring::getToolTip ( ) const
@@ -214,7 +228,6 @@ SpringEnd::SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aH
 
 SpringEnd::~SpringEnd()
 {
-	theWorldPtr->removeObject(this);
 }
 
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)

@@ -55,7 +55,7 @@ void AbstractJoint::deletePhysicsObject(void)
 		theViewObjectPtr->setVisible(true);
 }
 
-b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObject* anObject, const Position& aPosition)
+b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObjectPtr anObject, const Position& aPosition)
 {
 	b2Body* myReturn = anObject->getB2BodyPtrForPosition(aPosition);
 	if (myReturn == NULL)

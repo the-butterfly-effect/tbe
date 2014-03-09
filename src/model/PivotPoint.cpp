@@ -29,7 +29,7 @@ class PivotPointObjectFactory : public ObjectFactory
 public:
 	PivotPointObjectFactory(void)
 	{	announceObjectType("PivotPoint", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new PivotPoint()); }
 };
 static PivotPointObjectFactory theRFactory;
@@ -44,11 +44,11 @@ PivotPoint::PivotPoint()
 	initPivotAttributes ();
 }
 
-PivotPoint::PivotPoint(AbstractObject* aAbstractObject, const Vector& aRelativePosition)
+PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativePosition)
 		: AbstractJoint(), theFirstPtr(aAbstractObject)
 {
-	DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))\n",
-		   aAbstractObject, aRelativePosition.dx, aRelativePosition.dy);
+    DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))\n",
+           aAbstractObject.get(), aRelativePosition.dx, aRelativePosition.dy);
 	thePosRelativeToFirst = aRelativePosition;
 	updateOrigCenter();
 	initPivotAttributes();
@@ -67,10 +67,10 @@ void PivotPoint::createPhysicsObject(void)
 	// *** parse object/object1
 	// NOTE: if we used the constructor with baseobject, this will still work
 	// because propertyToObjectPtr only modifies theFirstPtr if successful
-	theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING, &theFirstPtr);
-	if (theFirstPtr==NULL)
-		theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING, &theFirstPtr);
-	if (theFirstPtr==NULL)
+    theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+    if (theFirstPtr==nullptr)
+        theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    if (theFirstPtr==nullptr)
 	{
 		DEBUG4("PivotPoint: No valid first object found...\n");
 		return;
@@ -83,12 +83,12 @@ void PivotPoint::createPhysicsObject(void)
 	assert (myFirstB2BodyPtr);
 
 	// *** parse (optional) object2
-	theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT2_STRING, &theSecondPtr);
+    theSecondPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT2_STRING);
 
 	// if there is no object2, use the ground body.
 	// available as theGroundBodyPtr...
 	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
-	if (theSecondPtr != NULL)
+    if (theSecondPtr != nullptr)
 	{
 		Vector my2RelPos = (getOrigCenter().toVector()-theSecondPtr->getOrigCenter().toVector())
 					  .rotate(-theSecondPtr->getOrigCenter().angle);
@@ -100,7 +100,7 @@ void PivotPoint::createPhysicsObject(void)
 	// note: Initialize() uses a global coordinate...
 	b2RevoluteJointDef myJointDef;
 	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
-	myJointDef.userData = this;
+    myJointDef.userData = this;
 	myJointDef.collideConnected = areObjectsColliding;
 
 	// set motor speed and/or torque

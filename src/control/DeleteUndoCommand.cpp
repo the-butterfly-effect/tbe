@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <QGraphicsScene>
+
 #include "tbe_global.h"
 #include "AbstractObject.h"
 #include "DeleteUndoCommand.h"
 #include "Level.h"
-#include <QGraphicsScene>
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 #include "World.h"

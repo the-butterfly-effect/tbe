@@ -19,7 +19,7 @@
 #ifndef TOOLBOXGROUP_H
 #define TOOLBOXGROUP_H
 
-class AbstractObject;
+#include "AbstractObject.h"
 #include "LocalString.h"
 #include <QtCore/QList>
 #include <QtCore/QString>
@@ -34,7 +34,7 @@ public:
     explicit ToolboxGroup(const LocalString& aGroupName);
     ~ToolboxGroup();
 
-    void addObject(AbstractObject* anObjectPtr);
+    void addObject(AbstractObjectPtr anObjectPtr);
 
     int count(void)
     { return theObjectsList.count(); }
@@ -42,13 +42,13 @@ public:
     /// @returns a pointer to the first object in this group
     ///          without removing it .
     /// (compare to getObject(), that returns+removes the LAST one)
-    AbstractObject* first() const
+    AbstractObjectPtr first() const
     { return theObjectsList.first(); }
 
     /// @returns a pointer to one of the objects that was in the group
     ///          the object is removed from the group.
     /// (compare to first(), which just returns a pointer to the FIRST one)
-    AbstractObject* getObject(void);
+    AbstractObjectPtr getObject(void);
 
     void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
 
@@ -56,7 +56,7 @@ public:
     QString     theInternalName;
 
 private:
-    typedef QList<AbstractObject*> ObjectsList;
+    typedef QList<AbstractObjectPtr> ObjectsList;
     ObjectsList theObjectsList;
     ToolboxListWidgetItem* theWidgetItemPtr;
 };

@@ -28,7 +28,7 @@
 // Constructors/Destructors
 //
 
-ViewLink::ViewLink (AbstractObject* aAbstractObjectPtr, const QString& anImageName)
+ViewLink::ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName)
     : ViewObject(aAbstractObjectPtr, "Empty"), theImageName(anImageName)
 {
     // Everything is done in the ViewObject constructor...

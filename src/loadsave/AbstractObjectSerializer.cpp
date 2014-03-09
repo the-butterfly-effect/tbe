@@ -33,7 +33,7 @@ extern const char* theIDAttributeString;
 extern const char* thePropertyString;
 
 
-AbstractObjectSerializer::AbstractObjectSerializer(const AbstractObject* anObjectPtr)
+AbstractObjectSerializer::AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr)
 		: theAbstractObjectPtr(anObjectPtr)
 {
 }
@@ -96,8 +96,7 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 }
 
 
-AbstractObject*
-AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
+AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 											  bool isMovable,
 											  bool isXYMandatory)
 {
@@ -130,20 +129,20 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 		myObjectPosition = Position(0,0,0);
 	}
 
-	AbstractObject* myBOPtr = ObjectFactory::createObject( myObjectType, myObjectPosition);
-	if (myBOPtr==NULL)
+    AbstractObjectPtr myAOPtr = ObjectFactory::createObject(myObjectType, myObjectPosition);
+    if (myAOPtr==nullptr)
 	{
 		DEBUG2("createObjectFromDom: '%s' has problems in its factory", ASCII(myObjectType));
 		goto not_good;
 	}
 
-	myBOPtr->setID(myNodeMap.namedItem(theIDAttributeString).nodeValue());
-	myBOPtr->theIsMovable = isMovable;
+    myAOPtr->setID(myNodeMap.namedItem(theIDAttributeString).nodeValue());
+    myAOPtr->theIsMovable = isMovable;
 
 	isOK1=true;
 	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
-		myBOPtr->setTheWidth(myValue.toDouble(&isOK1));
+        myAOPtr->setTheWidth(myValue.toDouble(&isOK1));
 	if (!isOK1)
 	{
 		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theWidthAttributeString);
@@ -153,7 +152,7 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 	isOK1=true;
 	myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
 	if (myValue.isEmpty()==false)
-		myBOPtr->setTheHeight(myValue.toDouble(&isOK1));
+        myAOPtr->setTheHeight(myValue.toDouble(&isOK1));
 	if (!isOK1)
 	{
 		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theHeightAttributeString);
@@ -171,13 +170,13 @@ AbstractObjectSerializer::createObjectFromDom(const QDomNode& q,
 			QString myTValue = i.text();
 
 			qDebug() << QString("  property: '%1'='%2'").arg(myKey).arg(myTValue);
-			myBOPtr->theProps.setProperty(myKey, myTValue);
+            myAOPtr->theProps.setProperty(myKey, myTValue);
 		}
 	}
 
 	DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
-	return myBOPtr;
+    return myAOPtr;
 not_good:
-	delete myBOPtr;
-	return NULL;
+    // myAOPtr is a shared_ptr - will take care of its own destruction if needed
+    return nullptr;
 }

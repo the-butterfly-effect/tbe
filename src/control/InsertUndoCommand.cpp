@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <QGraphicsScene>
+
 #include "AbstractObject.h"
 #include "InsertUndoCommand.h"
-#include <QGraphicsScene>
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 #include "World.h"
@@ -33,7 +34,7 @@ InsertUndoCommand::InsertUndoCommand(
 }
 
 
-ViewObject* InsertUndoCommand::createVOfromAO(AbstractObject* anAOPtr)
+ViewObject* InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
 {
     // put our shiny new object in the middle of the world
     Position myPos(World::getWorldPtr()->getTheWorldWidth()/2.0,
@@ -52,7 +53,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
 {
     qDebug() << Q_FUNC_INFO;
     // extract the AbstractObject from the toolbox
-    AbstractObject* myAOPtr = anToolboxGroupPtr->getObject();
+    AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
     Q_ASSERT(myVOPtr!=NULL);
 
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
@@ -61,7 +62,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
     return true;
 }
 
-bool InsertUndoCommand::createInsertUndoCommand(AbstractObject* anAOPtr)
+bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 {
     qDebug() << Q_FUNC_INFO;
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(anAOPtr);
@@ -71,7 +72,7 @@ bool InsertUndoCommand::createInsertUndoCommand(AbstractObject* anAOPtr)
 }
 
 InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
-        AbstractObject* anAOPtr)
+        AbstractObjectPtr anAOPtr)
 {
     qDebug() << Q_FUNC_INFO;
     // extract the AbstractObject and the ViewObject
@@ -124,7 +125,7 @@ void InsertUndoCommand::undo(void)
 {
     qDebug() << Q_FUNC_INFO << text();
 
-    AbstractObject* myAOPtr = theViewObjPtr->getAbstractObjectPtr();
+    AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
 
     // remove from the world and viewworld
     bool myResult = World::getWorldPtr()->removeObject(myAOPtr);

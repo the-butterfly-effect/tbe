@@ -84,7 +84,7 @@ public:
 	/// have it created.
 	/// @param aRelPosition RELATIVE position on the object to find an b2Body
 	///                     for. This is relevant for composite objects.
-	b2Body* getB2BodyPtrFor(AbstractObject* anObject, const Position& aRelPosition);
+	b2Body* getB2BodyPtrFor(AbstractObjectPtr anObject, const Position& aRelPosition);
 
 	/// updates the ViewObject to the position of the underlying b2body
 	/// (it won't update if the object is asleep if sim is running)

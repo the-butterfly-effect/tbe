@@ -38,7 +38,7 @@ public:
     Q_OBJECT
 
 public:
-    EditObjectDialog(AbstractObject *aAbstractObjectPtr, QWidget *parent = 0);
+    EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *parent = 0);
     virtual ~EditObjectDialog();
 
 public slots:
@@ -51,7 +51,7 @@ public slots:
       *                       values
       * @returns true if successful - which should be always
       */
-    void readFromObject(AbstractObject* aAbstractObjectPtr);
+    void readFromObject(AbstractObjectPtr aAbstractObjectPtr);
 
 private slots:
     void position_editingFinished();
@@ -62,7 +62,7 @@ private slots:
 private:
     Ui::EditObjectDialog ui;
 
-    AbstractObject* theAOPtr;
+    AbstractObjectPtr theAOPtr;
 
     /// @returns pointer to the *Abstract* UndoCommand
     AbstractUndoCommand* getUndoPtr(void);

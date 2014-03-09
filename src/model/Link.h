@@ -87,8 +87,8 @@ public:
         virtual void updateViewObject(bool isSimRunning) const;
 
 private:
-	AbstractObject* theFirstPtr;
-	AbstractObject* theSecondPtr;
+	AbstractObjectPtr theFirstPtr;
+	AbstractObjectPtr theSecondPtr;
 	Vector*     theFirstLocalPosPtr;
         Vector*     theSecondLocalPosPtr;
 

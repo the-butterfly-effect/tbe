@@ -41,7 +41,7 @@ public:
     /// and handles everything - including the commit().
     /// @param anToolboxGroup       pointer to the toolboxgroup to take the object from
     /// @returns true if successful (which is always)
-    static bool createInsertUndoCommand(AbstractObject* anAOPtr);
+    static bool createInsertUndoCommand(AbstractObjectPtr anAOPtr);
 
     /// mandatory, but we don't care - not used
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) { return false; }
@@ -64,11 +64,11 @@ protected:
     ToolboxGroup* theTBGPtr;
 
     /// TODO: document
-    static ViewObject *createVOfromAO(AbstractObject *anAOPtr);
+    static ViewObject *createVOfromAO(AbstractObjectPtr anAOPtr);
 
     /// TODO: document
     static InsertUndoCommand* createInsertUndoCommandIntern(
-            AbstractObject* anAOPtr);
+            AbstractObjectPtr anAOPtr);
 
 };
 

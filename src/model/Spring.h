@@ -25,7 +25,10 @@
 #include <QStringList>
 
 class SpringEnd;
+typedef std::shared_ptr<SpringEnd> SpringEndPtr;
+
 class ExplosionSplatter;
+typedef std::shared_ptr<ExplosionSplatter> ExplosionSplatterPtr;
 
 
 /** this class implements a Spring - a mechanical device that stores energy
@@ -94,14 +97,14 @@ protected:
 	void buildShapeList(void);
 
 private:
-	/// offset of center of the handle to the center of the box
-	const static Vector HANDLEOFFSET;
+    /// offset of center of the handle to the center of the box
+    const static Vector HANDLEOFFSET;
 
-	/// pointer to the handle (separate object)
-	SpringEnd* theOtherEndPtr;
+    /// pointer to the handle (separate object)
+    AbstractObjectPtr theOtherEndPtr;
 
-	/// the real value of the total spring object
-	qreal theSpringWidth;
+    /// the real value of the total spring object
+    qreal theSpringWidth;
 
 private:
 	// disable copy constructor / assignment operator
@@ -118,12 +121,10 @@ private:
   */
 class SpringEnd : public RectObject, public SimStepCallbackInterface
 {
-private:
-	/// @param aDBox pointer to a Spring, the only object allowed to create a Handle
-	SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
-
 public:
-	virtual ~SpringEnd();
+    /// @param Spring pointer to a Spring, the only object allowed to create a SpringEnd
+    SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
+    virtual ~SpringEnd();
 
 	/// overridden to allow setting a custom ZValue
 	virtual ViewObject* createViewObject(float aDefaultDepth);
@@ -152,14 +153,14 @@ public:
 	friend class Spring;
 
 private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+    /// implemented from SimStepCallbackInterface
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
-	Spring* theOtherEndPtr;
-	b2PrismaticJoint* theJointPtr;
+    Spring* theOtherEndPtr;
+    b2PrismaticJoint* theJointPtr;
 
-	/// 'k' from Hooke's law
-	float theSpringConstant;
+    /// 'k' from Hooke's law
+    float theSpringConstant;
 
 private:
 	// disable copy constructor / assignment operator

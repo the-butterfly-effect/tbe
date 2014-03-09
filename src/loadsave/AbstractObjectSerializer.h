@@ -56,7 +56,7 @@ public:
 	 *  @returns  NULL if failed or a pointer to a valid AbstractObject if successful.
 	 *            Note that that AbstractObject is still on its own - not attached to a World yet.
 	 */
-	static AbstractObject* createObjectFromDom(const QDomNode& q,
+    static AbstractObjectPtr createObjectFromDom(const QDomNode& q,
 											   bool isMovable,
 											   bool isXYMandatory);
 
@@ -70,14 +70,14 @@ public:
 
 private:
 	/// constructor only called by AbstractObject
-	AbstractObjectSerializer(const AbstractObject* anObjectPtr);
+    AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr);
 
 	friend class AbstractObject;
 
-	const AbstractObject* theAbstractObjectPtr;
+    const AbstractObjectPtr theAbstractObjectPtr;
 
 	/// implementation of ObjectFactory - not needed in AbstractObjectSerializer...
-	virtual AbstractObject* createObject(void) const { return NULL; }
+    virtual AbstractObject* createObject(void) const { return NULL; }
 
 	/// Neutralize copy constructor and assignment operator
 	AbstractObjectSerializer(AbstractObjectSerializer&);

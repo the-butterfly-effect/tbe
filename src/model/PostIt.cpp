@@ -28,7 +28,7 @@ class PostItObjectFactory : public ObjectFactory
 public:
 	PostItObjectFactory(void)
 	{	announceObjectType("PostIt", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new PostIt()); }
 };
 static PostItObjectFactory theFactory;
@@ -64,7 +64,7 @@ PostIt::~PostIt( )
 ViewObject*  PostIt::createViewObject(float aDefaultDepth)
 {
 	assert(theViewObjectPtr==NULL);
-	theViewObjectPtr = new ViewPostIt(this);
+    theViewObjectPtr = new ViewPostIt(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
 }

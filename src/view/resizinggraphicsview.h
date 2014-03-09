@@ -22,7 +22,7 @@
 #include <QtGui/QGraphicsView>
 #include <QtGui/QResizeEvent>
 
-class AbstractObject;
+#include "AbstractObjectPtr.h"
 class EditObjectDialog;
 class GameResources;
 class MainWindow;
@@ -78,7 +78,7 @@ private slots:
 
 public slots:
     void slot_actionSkipLevel();
-    void slot_showEditObjectDialog(AbstractObject *anAOPtr);
+    void slot_showEditObjectDialog(AbstractObjectPtr anAOPtr);
     void slot_editObjectDialog_destroyed(void);
 
 private:

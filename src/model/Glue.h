@@ -83,8 +83,8 @@ public:
 	virtual void updateOrigCenter(void);
 
 private:
-	AbstractObject* theFirstPtr;
-	AbstractObject* theSecondPtr;
+	AbstractObjectPtr theFirstPtr;
+	AbstractObjectPtr theSecondPtr;
 	Vector*     theFirstLocalPosPtr;
 	Vector*     theSecondLocalPosPtr;
 

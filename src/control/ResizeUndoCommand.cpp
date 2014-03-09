@@ -16,14 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <QGraphicsSceneMouseEvent>
+#include <cmath>
+
 #include "ResizeUndoCommand.h"
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 #include "AbstractObject.h"
-
-#include <QGraphicsSceneMouseEvent>
-#include <cmath>
-
 
 ResizeUndoCommand::ResizeUndoCommand(
         ViewObject* anViewObjectPtr)

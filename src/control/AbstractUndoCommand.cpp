@@ -29,7 +29,7 @@ AbstractUndoCommand::AbstractUndoCommand(
       theViewObjPtr(anViewObjectPtr),
       handleDecoratorOnDestructionBool(true)
 {
-    AbstractObject* myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
+    AbstractObjectPtr myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
 
     // This is the undo action: %1 will contain e.g. "Move"
     // and %2 might contain BowlingBall

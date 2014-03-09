@@ -32,20 +32,20 @@
 #include <QtGui/QGraphicsColorizeEffect>
 #include <QtGui/QGraphicsSceneMouseEvent>
 
-ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr) :
-        QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
+ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
+    : QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
-	// nothing to do yet :-)
-	DEBUG3ENTRY;
-	Q_ASSERT(anAbstractObjectPtr!=NULL);
-	initViewObjectAttributes();
+    // nothing to do yet :-)
+    DEBUG3ENTRY;
+    Q_ASSERT(anAbstractObjectPtr!=nullptr);
+    initViewObjectAttributes();
 }
 
-ViewObject::ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName) :
-	QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr)
+ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName) :
+    QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
 	DEBUG3ENTRY;
-	Q_ASSERT(anAbstractObjectPtr!=NULL);
+    Q_ASSERT(anAbstractObjectPtr!=nullptr);
 
 	QPixmap myTempPixmap;
 	QStringList myImageNames = anImageName.split(";");

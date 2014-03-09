@@ -40,7 +40,7 @@ public:
 	//
 
 	/// Image Constructor
-        explicit ViewLink (AbstractObject* aAbstractObjectPtr, const QString& anImageName);
+        explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor

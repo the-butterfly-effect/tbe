@@ -105,12 +105,14 @@ bool GoalDistance::parseProperties(World* aWPtr)
 
 
 	// parse object1 and object2
-	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT1_STRING, &theFirstPtr)==false)
+    theFirstPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT1_STRING);
+    if (theFirstPtr==nullptr)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT1_STRING);
 		return false;
 	}
-	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT2_STRING, &theSecondPtr)==false)
+    theSecondPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT2_STRING);
+    if (theSecondPtr==nullptr)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT2_STRING);
 		return false;
@@ -237,7 +239,8 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	}
 
 	// parse object
-	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
+    theBOPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING);
+    if (theBOPtr==nullptr)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
 		return false;
@@ -341,12 +344,12 @@ bool GoalStateChange::parseProperties(World* aWPtr)
 
 
 	// parse object
-	if (theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING, &theBOPtr)==false)
+    theBOPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING);
+    if (theBOPtr==nullptr)
 	{
 		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
 		return false;
 	}
-	assert(theBOPtr!=NULL);
 
 	// in case of S_STATE_CH, we need to store the current state
 	if (theType==STATECHANGE)

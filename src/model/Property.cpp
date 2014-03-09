@@ -178,49 +178,43 @@ bool PropertyList::property2Float(const QString& aPropertyName,
 }
 
 
-bool PropertyList::property2ObjectPtr(
-		World* aWPtr,
-		const QString& aPropertyName,
-		AbstractObject** aBOPtrPtr)
+AbstractObjectPtr PropertyList::property2ObjectPtr(
+        World* aWPtr,
+        const QString& aPropertyName)
 {
-	QString myValue = getPropertyNoDefault(aPropertyName);
-	if (myValue.isEmpty())
-		return false;
-	*aBOPtrPtr = aWPtr->findObjectByID(myValue);
-	if (*aBOPtrPtr == NULL)
-		return false;
-	return true;
+    QString myValue = getPropertyNoDefault(aPropertyName);
+    if (myValue.isEmpty())
+        return nullptr;
+    return aWPtr->findObjectByID(myValue);
 }
 
 
-bool PropertyList::property2ObjectPlusVectorPtr(
-		World* aWPtr,
-		const QString& aPropertyName,
-		AbstractObject** anAOPtrPtr,
-		Vector** aVectorPtrPtr)
+AbstractObjectPtr PropertyList::property2ObjectPlusVectorPtr(
+        World* aWPtr,
+        const QString& aPropertyName,
+        Vector** aVectorPtrPtr)
 {
-	QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
-	if (myStrings.count() > 2 || myStrings.count() == 0)
-		return false;
+    QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
+    if (myStrings.count() > 2 || myStrings.count() == 0)
+        return nullptr;
 
-	AbstractObject* myBOPtrPtr = aWPtr->findObjectByID(myStrings[0]);
-	if (myBOPtrPtr == NULL)
-		return false;
+    AbstractObjectPtr myAOPtr = aWPtr->findObjectByID(myStrings[0]);
+    if (myAOPtr == nullptr)
+        return nullptr;
 
-	Vector* myVPtr = new Vector();
-	if (myStrings.count() == 2)
-	{
-		if (myVPtr->fromString(myStrings[1]) == false)
+    Vector* myVPtr = new Vector();
+    if (myStrings.count() == 2)
+    {
+        if (myVPtr->fromString(myStrings[1]) == false)
         {
             delete myVPtr;
-            myVPtr = NULL;
-            myBOPtrPtr = NULL;
+            myVPtr = nullptr;
+            myAOPtr = nullptr;
         }
-	}
+    }
 
-	*anAOPtrPtr     = myBOPtrPtr;
-	*aVectorPtrPtr = myVPtr;
-	return true;
+    *aVectorPtrPtr = myVPtr;
+    return myAOPtr;
 }
 
 

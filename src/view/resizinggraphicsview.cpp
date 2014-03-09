@@ -228,7 +228,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 }
 
 
-void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObject* anAOPtr)
+void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObjectPtr anAOPtr)
 {
     if (theObjectEditorPtr!=NULL)
         delete theObjectEditorPtr;

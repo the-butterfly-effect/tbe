@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011 Klaas van Gend
+ * This file copyright (C) 2009,2011,2014 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,8 +20,10 @@
 #define ABSTRACTOBJECT_H
 
 #include <QtCore/QtGlobal>
+#include "PivotPointPtr.h"
 #include "Position.h"
 #include "Property.h"
+#include "TranslationGuidePtr.h"
 
 #include "b2Body.h"
 
@@ -29,9 +31,7 @@
 class ViewObject;
 class ObjectFactory;
 class World;
-class TranslationGuide;
 class ShapeList;
-class PivotPoint;
 class b2FixtureDef;
 class b2ShapeDef;
 class b2Shape;
@@ -156,6 +156,8 @@ public:
 //	Upon undelete, body and shape are re-created based on the defs
 //
 
+#include "AbstractObjectPtr.h"
+
 /**
   * class AbstractObject
   *
@@ -266,6 +268,9 @@ public:
 	/// @return the value of theWidth
 	qreal getTheWidth ( ) const
 	{ return theWidth; }
+
+    AbstractObjectPtr getThisPtr() const
+    { return AbstractObjectPtr(theThisPtr); }
 
 	/// @returns the Tooltip of the object.
 	virtual const QString getToolTip ( ) const = 0;
@@ -398,8 +403,8 @@ protected:
 	///       notifications (see notifyJoints()).
 	JointList theJointList;
 
-	PivotPoint* theChildPivotPointPtr;
-	TranslationGuide* theChildTranslationGuidePtr;
+    PivotPointPtr theChildPivotPointPtr;
+    TranslationGuidePtr theChildTranslationGuidePtr;
 
 protected:
 	/// remove all shapes from the list
@@ -473,6 +478,7 @@ private:
 	AbstractObject(const AbstractObject& aBORefToCopy);
 	AbstractObject& operator = (const AbstractObject& aBORefToCopy);
 
+    AbstractObjectWeakPtr theThisPtr;
 };
 
 #endif // ABSTRACTOBJECT_H

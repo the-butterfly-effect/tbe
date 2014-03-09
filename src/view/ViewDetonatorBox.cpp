@@ -31,7 +31,7 @@
 // Constructors/Destructors
 //
 
-ViewDetonatorBox::ViewDetonatorBox (AbstractObject* aAbstractObjectPtr, const QString& anImageName)
+ViewDetonatorBox::ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName)
 	: ViewObject(aAbstractObjectPtr, anImageName)
 {
 	// Everything is done in the ViewObject constructor...
@@ -57,7 +57,7 @@ ViewDetonatorBox::~ViewDetonatorBox ( )
 void ViewDetonatorBox::displayChoosePhoneNumber(void)
 {
 	// display a combobox with those numbers
-	DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
+    DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
 	assert (myDetBoxPtr != NULL);
 	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, ResizingGraphicsView::me());
 	myDialogPtr->appearAnimated();

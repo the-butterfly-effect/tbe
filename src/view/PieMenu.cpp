@@ -205,7 +205,7 @@ void PieMenu::setup()
 
 	new ActionIcon(ActionIcon::ACTION_SETPHONE,
 				   "ActionSetNumber",
-				   dynamic_cast<DetonatorBox*>(theAOPtr)!=NULL, this);
+                   dynamic_cast<DetonatorBox*>(theAOPtr.get())!=NULL, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	QTimer::singleShot(1, this, SLOT(startMove()));

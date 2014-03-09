@@ -33,7 +33,7 @@ class ColaMintObjectFactory : public ObjectFactory
 public:
 	ColaMintObjectFactory(void)
 	{	announceObjectType("ColaMintBottle", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new ColaMintBottle()); }
 };
 static ColaMintObjectFactory theCMBottleObjectFactory;
@@ -171,7 +171,8 @@ void ColaMintBottle::newSplatter(unsigned int aSequenceNr)
 	// TODO/FIXME: there is a discontinuity in h' - that can be fixed by calculating
 	// the point where the extension of h' goes through (150,0) -> for later :-)
 
-	ColaSplatter* mySplatter = new ColaSplatter();
+    std::shared_ptr<ColaSplatter> mySplatterPtr =
+            ObjectFactory::createChildObject<ColaSplatter>();
 
 	// Start position for the splatter is above the opening:
 	// i.e. (0, +0.59*object height). The magic number 0.59 is "slightly more than 1/2"...
@@ -199,7 +200,8 @@ void ColaMintBottle::newSplatter(unsigned int aSequenceNr)
 	// (otherwise, the cola bottle would blow as high on the moon as on earth)
 	qreal myV = sqrt(2.0 * 9.81 * myH);
 	const qreal mySplatterMass = 0.015;
-	mySplatter->setAll(theWorldPtr, myStartPos, myV, mySplatterMass);
+    mySplatterPtr->setAll(theWorldPtr, myStartPos, myV, mySplatterMass);
+    theWorldPtr->addObject(mySplatterPtr);
 
 	theColaAmount -= mySplatterMass;
 	updateMass();
@@ -255,7 +257,7 @@ void ColaSplatter::reportNormalImpulseLength(qreal)
 	//   - just allow for some time to transfer the impact
 	if (!hasRequestedRemoval)
 	{
-		theWorldPtr->removeMe(this, 0.1);
+        theWorldPtr->removeMe(getThisPtr(), 0.1);
 		hasRequestedRemoval = true;
 	}
 }
@@ -280,8 +282,6 @@ void ColaSplatter::setAll(World* aWorldPtr,
 	DEBUG5("velocity: %f,%f\n", myVelVec.x, myVelVec.y);
 	createPhysicsObject();
 	theB2BodyPtr->SetLinearVelocity(myVelVec);
-
-	// FIXME: variable ASplatterMass is ignored for now...
-	// (but right now, it's constant anyway)
-	aWorldPtr->addObject(this);
+    // FIXME: variable ASplatterMass is ignored for now...
+    // (but right now, it's constant anyway)
 }

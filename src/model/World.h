@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,16 +23,17 @@
 #include "b2Contact.h"
 #include "tbe_global.h"
 
+#include  "AbstractObject.h"
 //#include "BaseJoint.h"
 #include "Background.h"
 
 #include <QtCore/QString>
 #include <QtCore/QList>
-#include <QtCore/QMap>
 #include <QtCore/QSet>
 
+#include <unordered_map>
+
 // Forward Definitions:
-class AbstractObject;
 class Goal;
 class ResizingGraphicsView;
 class ViewWorld;
@@ -168,7 +169,7 @@ public:
 	 *  @return true if success - false if object already present
 	 *          (in that case we don't add again to world nor drawworld)
 	 */
-	bool addObject(AbstractObject* anObjectPtr);
+    bool addObject(AbstractObjectPtr anObjectPtr);
 
 	/** adds an instantiated Goal to the World
 	 *  @param aGoalPtr pointer to an instantiated class with Goal interface
@@ -189,7 +190,7 @@ public:
 	 *               an empty ID will cause a NULL return.
 	 *  @returns NULL if not found or a pointer if found.
 	 */
-	AbstractObject* findObjectByID(const QString& anID);
+    AbstractObjectPtr findObjectByID(const QString& anID);
 
 	/** @returns a list with all object IDs present in the World
 	  * this list can be empty
@@ -213,7 +214,7 @@ public:
 	  * @param anObjectPtr
 	  * @param aDeltaTime   time (in seconds) the object still has to live
 	  */
-	void removeMe(AbstractObject* anObjectPtr, qreal aDeltaTime);
+    void removeMe(AbstractObjectPtr anObjectPtr, qreal aDeltaTime);
 
 	/** removes the AbstractObject pointed to by anObjectPtr from the World.
 	 *  This means that the caller is now responsible for the pointer
@@ -222,14 +223,14 @@ public:
 	 *  @param anObjectPtr pointer to object to be removed
 	 *  @return true if success - false if object was not found
 	 */
-	bool removeObject(AbstractObject* anObjectPtr);
+    bool removeObject(AbstractObjectPtr anObjectPtr);
 
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 
 	/// Calling this member will start the death procedure.
 	/// @param anObject  object that died
-	void objectDied(AbstractObject* /*anObject*/)
+    void objectDied(AbstractObjectPtr /*anObject*/)
 	{ emit signalDeath(); }
 
 	/** Take one step in the simulation loop
@@ -253,16 +254,18 @@ public:
 			b2Fixture* aFixture1,
 			b2Fixture* aFixture2);
 
-	/** add the set of anObject1 and anObject2 to a list of objects that
+    /** add the set of anObjectPtr1 and anObjectPtr2 to a list of objects that
 	  * cannot collide.
-	  * @param anObject1	pointer to an object
-	  * @param anObject2	pointer to a second object
+      * @param anObjectPtr1	AbstractObjectPtr to an object
+      * @param anObjectPtr2	AbstractObjectPtr to a second object
 	  */
-	void addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2);
+    void addNoCollisionCombo(AbstractObjectPtr anObjectPtr1, AbstractObjectPtr anObjectPtr2);
 
 private:
-	typedef QMultiHash<AbstractObject*, AbstractObject*> NoCollisionList;
+    typedef std::unordered_multimap<AbstractObjectPtr, AbstractObjectPtr> NoCollisionList;
 	NoCollisionList theNoCollisionList;
+
+    bool findNoCollisionCombo(AbstractObject* anObjectPtr1, AbstractObject* anObjectPtr2);
 
 public:
 	//////////////////////////////////////////////////////////////////////////
@@ -291,7 +294,7 @@ private:
 
 	/// the actual (internal) call to add the DrawObject of a AbstractObject
 	/// to the corresponding ViewWorld
-	void addAbstractObjectToViewWorld(AbstractObject* anAOPtr);
+    void addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr);
 
 public:
 	// Public attribute accessor methods
@@ -318,16 +321,16 @@ signals:
 	void signalDeath();
 
 private:
-	// Private attributes
-	//
+    // Private attributes
+    //
 
-	typedef QList<AbstractObject*> AbstractObjectPtrList;
+    typedef QList<AbstractObjectPtr> AbstractObjectPtrList;
 
-	/// the list of all objects managed by this World
-	AbstractObjectPtrList theObjectPtrList;
+    /// the list of all objects managed by this World
+    AbstractObjectPtrList theObjectPtrList;
 
-	typedef QMap<AbstractObject*, qreal> ToRemoveList;
-	ToRemoveList theToBeRemovedList;
+    typedef QMap<AbstractObjectPtr, qreal> ToRemoveList;
+    ToRemoveList theToBeRemovedList;
 
 	typedef QList<Goal*> GoalPtrList;
 	GoalPtrList theGoalPtrList;

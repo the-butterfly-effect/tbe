@@ -31,7 +31,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     theRSGVPtr(aRSGVPtr)
 {
     theTBGPtr->setItemPtr(this);
-    AbstractObject* myAOPtr = theTBGPtr->first();
+    AbstractObjectPtr myAOPtr = theTBGPtr->first();
     ViewObject* myVOPtr = myAOPtr->createViewObject();
 
     QSize myPixmapSize;

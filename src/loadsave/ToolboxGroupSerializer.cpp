@@ -76,7 +76,7 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 				   .arg(theObjectString);
 			goto not_good;
 		}
-		AbstractObject* myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
+        AbstractObjectPtr myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
 																				true, false);
 		if (myAOPtr == NULL)
 		{

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@
 #define TRANSLATIONGUIDE_H
 
 #include "AbstractJoint.h"
-
+#include "TranslationGuidePtr.h"
 
 /// This class implements translational joints - for now only between one
 /// object and "the world". 
@@ -51,7 +51,7 @@ public:
 	  * @param aAbstractObject
 	  * @param aDirection	 the allowed direction of translation
 	  */
-	TranslationGuide(AbstractObject* anAbstractObject, qreal aDirection);
+	TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection);
 
 	virtual ~TranslationGuide() {}
 
@@ -91,7 +91,7 @@ protected:
 private:
 	void initTG_Attributes ( );
 
-	AbstractObject* theObjectPtr;
+	AbstractObjectPtr theObjectPtr;
 
 	/** use property 'collide' to set this.
 	  * true means that objects can collide

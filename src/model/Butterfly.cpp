@@ -28,7 +28,7 @@ class ButterflyObjectFactory : public ObjectFactory
 public:
 	ButterflyObjectFactory(void)
 	{	announceObjectType("Butterfly", this); }
-	virtual AbstractObject* createObject(void) const
+    virtual AbstractObject* createObject(void) const
 	{	return fixObject(new Butterfly()); }
 };
 static ButterflyObjectFactory theButterflyObjectFactory;
@@ -79,7 +79,7 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			// FIXME: it would be nice if the butterfly would land on its back
 			// This should be doable by moving the center of the mass to the back.
 
-			theWorldPtr->objectDied(this);
+            theWorldPtr->objectDied(getThisPtr());
 			break;
 		case FLAP_OPEN:
 		case FLAP_HALF:
@@ -132,8 +132,8 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 
 void Butterfly::goToFlower(void)
 {
-	AbstractObject* myFlowerPtr;
-	if (theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING, &myFlowerPtr)==false)
+    AbstractObjectPtr myFlowerPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    if (myFlowerPtr==nullptr)
 		theTargetPos = getOrigCenter();
 	else
 		theTargetPos = myFlowerPtr->getOrigCenter();

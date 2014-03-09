@@ -24,6 +24,8 @@
 #include "ViewObject.h"
 #include "World.h"
 
+#include <QStringList>
+
 // I wonder if this should be b2_linearSlop instead of this number...
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
 
@@ -43,7 +45,8 @@ AbstractObject::AbstractObject()
       theWorldPtr(NULL),
       resizableInfo(SizeDirections::NORESIZING)
 {
-	DEBUG5ENTRY;
+    theThisPtr = AbstractObjectPtr(nullptr);
+    DEBUG5ENTRY;
 	theB2BodyDefPtr= new b2BodyDef();
 
 	theProps.setDefaultPropertiesString(
@@ -59,7 +62,7 @@ AbstractObject::AbstractObject()
 
 AbstractObject::~AbstractObject ( )
 {
-	DEBUG5("AbstractObject::~AbstractObject() for %p\n", this);
+    DEBUG5("AbstractObject::~AbstractObject() for %p '%s'\n", this, ASCII(getID()));
 
 	// destroy the Body
 	//
@@ -145,7 +148,7 @@ ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getInternalName();
 
-	theViewObjectPtr = new ViewObject(this, myImageName);
+    theViewObjectPtr = new ViewObject(getThisPtr(), myImageName);
 
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
@@ -154,16 +157,16 @@ ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 
 void AbstractObject::deletePhysicsObject()
 {
-	DEBUG5("AbstractObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
+    DEBUG5("AbstractObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
 
-	// we're only setting the pointer to zero - let's Box2D take care
-	// of actually removing everything when we do delete world...
-	theB2BodyPtr = NULL;
+    // we're only setting the pointer to zero - let's Box2D take care
+    // of actually removing everything when we do delete world...
+    theB2BodyPtr = NULL;
 
-	// let's also make sure we're getting rid of the joints
-	notifyJoints(JointInterface::DELETED);
+    // let's also make sure we're getting rid of the joints
+    notifyJoints(JointInterface::DELETED);
 
-        theJointList.clear();
+    theJointList.clear();
 }
 
 void AbstractObject::deleteViewObject(void)
@@ -184,7 +187,7 @@ b2World* AbstractObject::getB2WorldPtr(void) const
 
 const AbstractObjectSerializer* AbstractObject::getSerializer(void) const
 {
-    return new AbstractObjectSerializer(this);
+    return new AbstractObjectSerializer(getThisPtr());
 }
 
 
@@ -232,15 +235,14 @@ void AbstractObject::parseProperties(void)
 	setTheBounciness(myFloat);
 
 	// Child Pivot Point
-	if (theChildPivotPointPtr)
-	{
-		theWorldPtr->removeObject(theChildPivotPointPtr);
-		delete theChildPivotPointPtr;
-	}
-	Vector myDelta;
+    if (theChildPivotPointPtr)
+    {
+        theWorldPtr->removeObject(theChildPivotPointPtr);
+    }
+    Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
-		theChildPivotPointPtr = new PivotPoint(this, myDelta);
+        theChildPivotPointPtr = std::make_shared<PivotPoint>(getThisPtr(), myDelta);
 		theChildPivotPointPtr->markAsChild();
 		theWorldPtr->addObject(theChildPivotPointPtr);
 	}
@@ -249,13 +251,12 @@ void AbstractObject::parseProperties(void)
 	if (theChildTranslationGuidePtr)
 	{
 		theWorldPtr->removeObject(theChildTranslationGuidePtr);
-		delete theChildTranslationGuidePtr;
 	}
 	float myAngle;
 	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
 	{
-		theChildTranslationGuidePtr = new TranslationGuide(this, myAngle);
-		theChildTranslationGuidePtr->markAsChild();
+        theChildTranslationGuidePtr = std::make_shared<TranslationGuide>(getThisPtr(), myAngle);
+        theChildTranslationGuidePtr->markAsChild();
 		theWorldPtr->addObject(theChildTranslationGuidePtr);
 	}
 
@@ -266,9 +267,9 @@ void AbstractObject::parseProperties(void)
 	QStringList::iterator myI = myObjIDList.begin();
 	while (myI != myObjIDList.end())
 	{
-		AbstractObject* myObjPtr = theWorldPtr->findObjectByID(*myI);
-		if (myObjPtr!=NULL)
-			theWorldPtr->addNoCollisionCombo(this, myObjPtr);
+        AbstractObjectPtr myObjPtr = theWorldPtr->findObjectByID(*myI);
+        if (myObjPtr!=nullptr)
+            theWorldPtr->addNoCollisionCombo(getThisPtr(), myObjPtr);
 		++myI;
 	}
 }

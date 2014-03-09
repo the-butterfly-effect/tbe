@@ -37,8 +37,7 @@ public:
 	virtual bool isTemp() const
 	{ return true; }
 
-	/** sets all parameters of the splatter, attaches to World
-	  * and creates the physical object and drawobject
+    /** sets all parameters of the splatter
 	  * @param aWorldPtr
 	  * @param aStartPos
 	  * @param aVelocity

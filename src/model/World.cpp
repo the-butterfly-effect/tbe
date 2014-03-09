@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009, 2011  Klaas van Gend
+ * This file copyright (C) 2009, 2011,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -39,7 +39,7 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 {
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
 	// does not - but RTTI can fix that.
-	AbstractJoint* myIF = dynamic_cast<AbstractJoint*>(joint->GetUserData());
+    AbstractJoint* myIF = dynamic_cast<AbstractJoint*>(joint->GetUserData());
 	if (myIF != NULL)
 		myIF->jointWasDeleted();
 }
@@ -54,16 +54,7 @@ World::World ( void) : theB2WorldPtr(NULL)
 
 World::~World ( )
 {
-	DEBUG5("World::~World - clear the ObjectPtrList");
-
-	while(theObjectPtrList.isEmpty()==false)
-	{
-		AbstractObject* myPtr = theObjectPtrList.first();
-		delete myPtr;
-		theObjectPtrList.pop_front();
-	}
-
-	DEBUG5("World::~World - destroy the rest");
+    DEBUG5("World::~World");
 	AbstractObject::setTheB2WorldPtr(NULL);
 	theStaticWorldPtr = NULL;
 }
@@ -93,46 +84,44 @@ void World::addGoal(Goal* aGoalPtr)
 }
 
 
-void World::addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2)
+void World::addNoCollisionCombo(AbstractObjectPtr anObjectPtr1, AbstractObjectPtr anObjectPtr2)
 {
 	// always make sure to get the lowest pointer value in #1
 	// (this simplifies lookup)
-	if (anObject1 > anObject2)
-	{
-		AbstractObject* myTemp = anObject1;
-		anObject1 = anObject2;
-		anObject2 = myTemp;
-	}
+    if (anObjectPtr1.get() > anObjectPtr2.get())
+        std::swap(anObjectPtr1, anObjectPtr2);
 
 	// only insert when not combo is not present yet
-	if (theNoCollisionList.contains(anObject1, anObject2)==false)
-		theNoCollisionList.insert(anObject1, anObject2);
+    if (!findNoCollisionCombo(anObjectPtr1.get(), anObjectPtr2.get()))
+        theNoCollisionList.insert(NoCollisionList::value_type(anObjectPtr1, anObjectPtr2));
 }
 
 
-bool World::addObject(AbstractObject* anObjectPtr)
+bool World::addObject(AbstractObjectPtr anObjectPtr)
 {
-    if (anObjectPtr == NULL)
+    if (anObjectPtr == nullptr)
         return false;
-    DEBUG4("World::addObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
+    DEBUG4("World::addObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
 
     // if it is already present, let's not insert again
     if (theObjectPtrList.contains(anObjectPtr)==false)
+    {
         theObjectPtrList.push_back(anObjectPtr);
+    }
     anObjectPtr->theWorldPtr = this;
     anObjectPtr->parseProperties();
     anObjectPtr->registerChildObjects();
 
-        if (theViewWorldPtr!=NULL)
-                addAbstractObjectToViewWorld(anObjectPtr);
+    if (theViewWorldPtr!=NULL)
+        addAbstractObjectToViewWorld(anObjectPtr);
     return true;
 }
 
 
-void World::addAbstractObjectToViewWorld(AbstractObject* anAOPtr)
+void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 {
     assert(theViewWorldPtr!=NULL);
-    DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr);
+    DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
     ViewObject* myVOPtr = anAOPtr->createViewObject();
     if (myVOPtr!=NULL)
     {
@@ -194,7 +183,7 @@ void World::createPhysicsWorld(void)
 	myLeftShape.SetAsBox(1.0f, 50.0f);
 	myLeftBodyPtr->CreateFixture(&myLeftShape, 0.0f);
 
-	foreach(AbstractObject* i, theObjectPtrList)
+    foreach(AbstractObjectPtr i, theObjectPtrList)
 	{
 		i->createPhysicsObject();
 	}
@@ -211,7 +200,7 @@ void World::createScene(ResizingGraphicsView *myRSGVPtr)
 	AbstractObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
-		DEBUG5("adding item %p\n",*i);
+        DEBUG5("adding item %p\n", (*i).get());
 		addAbstractObjectToViewWorld(*i);
 	}
 }
@@ -229,8 +218,7 @@ void World::deletePhysicsWorld()
 	{
 		if ((*i)->isTemp())
 		{
-			delete (*i);
-			i = theObjectPtrList.erase(i);
+            i = theObjectPtrList.erase(i);
 		}
 		else
 		{
@@ -241,8 +229,8 @@ void World::deletePhysicsWorld()
 
 	// emptying the theObjectPtrList automatically also
 	// took care of everything in the theToBeRemovedList
-	theToBeRemovedList.clear();
-	theTotalTime = 0;
+    theToBeRemovedList.clear();
+    theTotalTime = 0;
 
 	// and delete the b2World itself...
 	delete theB2WorldPtr;
@@ -254,20 +242,36 @@ void World::deletePhysicsWorld()
 }
 
 
-AbstractObject* World::findObjectByID(const QString& anID)
+bool World::findNoCollisionCombo(AbstractObject *anObjectPtr1, AbstractObject *anObjectPtr2)
+{
+    // always make sure to get the lowest pointer value in #1
+    // (this simplifies lookup)
+    if (anObjectPtr1 > anObjectPtr2)
+        std::swap(anObjectPtr1, anObjectPtr2);
+
+    for (auto i : theNoCollisionList)
+    {
+        if (i.first.get()==anObjectPtr1 && i.second.get()==anObjectPtr2)
+            return true;
+    }
+    return false;
+}
+
+
+AbstractObjectPtr World::findObjectByID(const QString& anID)
 {
 	if (anID.isEmpty())
-		return NULL;
+        return nullptr;
 
 	// iterate through all AbstractObjects
 	AbstractObjectPtrList::iterator i;
-	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
+    for(auto i : theObjectPtrList)
 	{
-		if ((*i)->getID() == anID)
-			return (*i);
+        if (i->getID() == anID)
+            return i;
 	}
 
-	return NULL;
+    return nullptr;
 }
 
 QStringList World::getAllIDs(void) const
@@ -287,25 +291,25 @@ QStringList World::getAllIDs(void) const
 
 
 
-void World::removeMe(AbstractObject* anObjectPtr, qreal aDeltaTime)
+void World::removeMe(AbstractObjectPtr anObjectPtr, qreal aDeltaTime)
 {
 	// add to the list of "todo"
 	// note that this list is actually a map
 	//   - we won't allow double insertions of the same object
-	if (theToBeRemovedList.contains(anObjectPtr))
-		return;
-	theToBeRemovedList.insert(anObjectPtr, aDeltaTime);
+    if (theToBeRemovedList.contains(anObjectPtr))
+        return;
+    theToBeRemovedList.insert(anObjectPtr, aDeltaTime);
 }
 
-bool World::removeObject(AbstractObject* anObjectPtr)
+bool World::removeObject(AbstractObjectPtr anObjectPtr)
 {
 	if (anObjectPtr == NULL)
 		return false;
-	DEBUG5("removeObject(%p = %s)", anObjectPtr, ASCII(anObjectPtr->getName()));
+    DEBUG5("removeObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
 	int myPos = theObjectPtrList.indexOf(anObjectPtr);
 
 	if (myPos == -1)
-		return false;
+        return false;
 	theObjectPtrList.removeAt(myPos);
 	return true;
 }
@@ -325,8 +329,8 @@ bool World::ShouldCollide(
 			b2Fixture* aFixture1,
 			b2Fixture* aFixture2)
 {
-	AbstractObject* myObj1 = aFixture1->GetUserData();
-	AbstractObject* myObj2 = aFixture2->GetUserData();
+    AbstractObject* myObj1 = aFixture1->GetUserData();
+    AbstractObject* myObj2 = aFixture2->GetUserData();
 
 	if (myObj1 == NULL || myObj2 == NULL)
 		return true;
@@ -335,12 +339,12 @@ bool World::ShouldCollide(
 	// (this simplifies lookup)
 	if (myObj1 > myObj2)
 	{
-		AbstractObject* myTemp = myObj1;
+        AbstractObject* myTemp = myObj1;
 		myObj1 = myObj2;
 		myObj2 = myTemp;
 	}
 
-	if (theNoCollisionList.contains(myObj1, myObj2))
+    if (findNoCollisionCombo(myObj1, myObj2))
 		return false;
 	return true;
 }
@@ -359,8 +363,8 @@ qreal World::simStep (void)
 	// in hearing the impulses...
 	foreach(ContactInfo k, theContactInfoList)
 	{
-		AbstractObject* myBO1Ptr = k.myFixtureA->GetUserData();
-		AbstractObject* myBO2Ptr = k.myFixtureB->GetUserData();
+        AbstractObject* myBO1Ptr = k.myFixtureA->GetUserData();
+        AbstractObject* myBO2Ptr = k.myFixtureB->GetUserData();
 
 		if (myBO1Ptr!=NULL)
 		{
@@ -389,13 +393,12 @@ qreal World::simStep (void)
 
 	// remove all scheduled AbstractObjects from the World
 	ToRemoveList::iterator k;
-	for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
+    for (k=theToBeRemovedList.begin(); k!=theToBeRemovedList.end(); )
 	{
 		k.value() -= theDeltaTime;
 		if (k.value() <= 0.0)
 		{
 			removeObject(k.key());
-			delete k.key();
 			k = theToBeRemovedList.erase(k);
 		}
 		else
@@ -446,7 +449,7 @@ bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 
 void World::updateViewWorld(bool isSimRunning)
 {
-	foreach(AbstractObject* i, theObjectPtrList)
+    foreach(AbstractObjectPtr i, theObjectPtrList)
 	{
 		i->updateViewObject(isSimRunning);
 	}

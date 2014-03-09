@@ -40,7 +40,7 @@ public:
 	//
 
 	/// Image Constructor
-	ViewDetonatorBox (AbstractObject* aAbstractObjectPtr, const QString& anImageName);
+	ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor

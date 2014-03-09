@@ -24,7 +24,7 @@
 #include "Position.h"
 
 // forward declarations
-class AbstractObject;
+#include "AbstractObject.h"
 class AbstractUndoCommand;
 #include "ViewObjectActionDectorator.h"
 
@@ -39,18 +39,18 @@ class ViewObject : public QObject, public QGraphicsPixmapItem
 
 public:
 	/// simple constructor
-	explicit ViewObject(AbstractObject* anAbstractObjectPtr);
+    explicit ViewObject(AbstractObjectPtr anAbstractObjectPtr);
 
 	/// image name constructor
-	ViewObject(AbstractObject* anAbstractObjectPtr, const QString& anImageName);
+    ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName);
 
 	/**
 	 * Empty Destructor
 	 */
 	virtual ~ViewObject ( );
 
-	AbstractObject* getAbstractObjectPtr(void) const
-		{ return theAbstractObjectPtr; }
+    AbstractObjectPtr getAbstractObjectPtr(void) const
+    { return theAbstractObjectPtr->getThisPtr(); }
 
 	/// @returns Aspect ratio (width/height) of the (first) image,
 	///          before it was scaled to width and height dimensions.
@@ -101,7 +101,10 @@ protected:
 	// Protected attributes
 	//
 
-	AbstractObject* theAbstractObjectPtr;
+    /// because of the symbiosis between AbstractObject and ViewObject,
+    /// we're not storing the shared_ptr, but the real pointer
+    /// (otherwise, no AbstractObject would ever be cleaned away)
+    AbstractObject* theAbstractObjectPtr;
 
 	typedef QList<QPixmap> ImageList;
 	ImageList thePixmapList;

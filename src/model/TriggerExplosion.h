@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2013  Klaas van Gend
+ * This file copyright (C) 2010,2013,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,9 +29,10 @@
 #include <QStringList>
 
 class DetonatorBox;
+
 class ExplosionSplatter;
 
-
+class Dynamite;
 
 /** specific class to handle the nocollision (towards DetonatorBox itself)
   * and no serialization
@@ -40,12 +41,13 @@ class ExplosionSplatter;
 class DetonatorBoxHandle : public RectObject, public SimStepCallbackInterface
 {
 private:
-	/// @param aDBox pointer to a DetonatorBox, the only object allowed to create a Handle
-	DetonatorBoxHandle(DetonatorBox* aDBox);
 	DetonatorBoxHandle() = delete;
 
 public:
-	virtual ~DetonatorBoxHandle();
+    /// @param aDBox pointer to a DetonatorBox, the only object allowed to create a Handle
+    /// (note that creation is nowadays offloaded to std::make_shared)
+    DetonatorBoxHandle(DetonatorBox* aDBox);
+    virtual ~DetonatorBoxHandle();
 
 	/// Overridden from RectObject to allow setting a custom ZValue
 	virtual ViewObject* createViewObject(float aDefaultDepth);
@@ -73,7 +75,7 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
 
-	DetonatorBox* theDBoxPtr;
+    DetonatorBox* theDBoxPtr;
 	b2PrismaticJoint* theJointPtr;
 
 private:
@@ -193,7 +195,7 @@ private:
 	const static Vector HANDLEOFFSET;
 
 	/// pointer to the handle (separate object)
-	DetonatorBoxHandle theHandle;
+    AbstractObjectPtr theHandle;
 
 	/// the phone number to "dial" when triggered
 	QString thePhoneNumber;
@@ -248,7 +250,7 @@ public:
 	virtual const QString getToolTip ( ) const;
 
 	/// requests removal of a splatter from the list
-	void removeMe(ExplosionSplatter* aDeadSplatterPtr);
+    void removeMe(AbstractObjectPtr aDeadSplatterPtr);
 
 	/// called by DetonatorBox - triggers a state change from WAITING to ACTIVE
 	void trigger(void)
@@ -294,7 +296,7 @@ private:
 	/// mass of the dynamite
 	const static qreal DYNAMITE_MASS;
 
-	typedef QList<ExplosionSplatter*> SplatterList;
+    typedef QList<AbstractObjectPtr> SplatterList;
 	SplatterList theSplatterList;
 };
 
@@ -332,8 +334,8 @@ public:
 	  * @param aSplatterMass
 	  * @param aDynamitePtr    pointer to the parent Dynamite - for feedback
 	  */
-	void setAll(World* aWorldPtr, const Position& aStartPos,
-				qreal aVelocity, qreal aSplatterMass, Dynamite* aDynamitePtr);
+    void setAll(World* aWorldPtr, const Position& aStartPos,
+                qreal aVelocity, qreal aSplatterMass, Dynamite *aDynamitePtr);
 
 	/** sets the splattermass to whatever value needed.
 	  * @param aSplatterMass the new mass of the splatter
@@ -350,7 +352,7 @@ public:
 	Vector theStartVelocityVector;
 
 protected:
-	Dynamite*	theDynamitePtr;
+    Dynamite*	theDynamitePtr;
 };
 
 
