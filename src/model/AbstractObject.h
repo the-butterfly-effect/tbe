@@ -27,6 +27,8 @@
 
 #include "b2Body.h"
 
+#include <set>
+
 // Forward Declarations
 class ViewObject;
 class ObjectFactory;
@@ -54,25 +56,27 @@ class ContactInfo;
 class JointInterface
 {
 public:
-	/// empty virtual destructor
-	virtual ~JointInterface() {;}
+    /// empty virtual destructor
+    virtual ~JointInterface() {;}
 
-	enum JointStatus
-	{
-		CREATED = 1,
-		POSUPDATE,
-		DELETED
-	};
+    enum JointStatus
+    {
+        CREATED = 1,
+        POSUPDATE,
+        DELETED
+    };
 
-	/** called by the AbstractObject(-derivate) (and/or UndoXXXCommand)
-	  * to annouce that its physics object(s) have been re-created.
-	  */
-	// TODO/FIXME: rename member if possible to start with a verb
-	virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
+    /** called by the AbstractObject(-derivate) (and/or UndoXXXCommand)
+      * to annouce that its physics object(s) have been re-created.
+      */
+    // TODO/FIXME: rename member if possible to start with a verb
+    virtual	void physicsObjectStatus(JointStatus aStatus) = 0;
 
-	/// called by World when the joint was "implicitly destructed"
-	virtual void jointWasDeleted(void) = 0;
+    /// called by World when the joint was "implicitly destructed"
+    virtual void jointWasDeleted(void) = 0;
 };
+
+typedef std::shared_ptr<JointInterface> JointInterfacePtr;
 
 
 class SensorInterface
@@ -325,8 +329,8 @@ public:
 	/** Adds the Joint to the list.
 	 *  If this object runs createPhysObject, it will notify all Joints
 	 */
-	void addJoint(JointInterface* aJoint)
-	{	theJointList.insert(aJoint); }
+    void addJoint(JointInterfacePtr aJointPtr)
+    {	theJointList.insert(aJointPtr); }
 
 	/// create a physics object (i.e. B2Body) and add all shapes to it
 	/// if a B2Body already exists, it is deleted first.
@@ -397,7 +401,7 @@ protected:
 	///       as this list is then tied to the new b2Body
 	ShapeList theShapeList;
 
-	typedef QSet<JointInterface*>  JointList;
+    typedef std::set<JointInterfacePtr>  JointList;
 	/// list holding all joints
 	/// @note during an update of the b2Body, these joints will receive
 	///       notifications (see notifyJoints()).

@@ -88,7 +88,7 @@ void Link::createPhysicsObject(void)
     }
     b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
     assert (myFirstB2BodyPtr);
-    theFirstPtr->addJoint(this);
+    theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
     assert(theSecondPtr!=NULL);
     assert(theSecondLocalPosPtr!=NULL);
@@ -99,7 +99,7 @@ void Link::createPhysicsObject(void)
     }
     b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
     assert (mySecondB2BodyPtr);
-    theSecondPtr->addJoint(this);
+    theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
     // *** initialise Box2D's distance joint:
     // note: Initialize() uses a global coordinate...

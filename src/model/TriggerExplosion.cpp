@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2013  Klaas van Gend
+ * This file copyright (C) 2010,2013,2014  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,6 +19,8 @@
 #include "TriggerExplosion.h"
 #include "tbe_global.h"
 #include "ViewDetonatorBox.h"
+
+#include <cassert>
 
 //// the DetonatorBox class' ObjectFactory
 class DetonatorBoxObjectFactory : public ObjectFactory
@@ -50,7 +52,6 @@ DetonatorBox::DetonatorBox()
 	theProps.setDefaultPropertiesString(
 				Property::PHONENUMBER_STRING + QString(":/") );
 	thePhoneNumber = "";
-    theHandle = ObjectFactory::createChildObject<DetonatorBoxHandle>(this);
 }
 
 DetonatorBox::~DetonatorBox()
@@ -89,7 +90,7 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 
 ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 {
-	if (theViewObjectPtr!=NULL)
+    if (theViewObjectPtr!=NULL)
 		return theViewObjectPtr;
 
 	QString myImageName;
@@ -98,9 +99,8 @@ ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 
     theViewObjectPtr = new ViewDetonatorBox(getThisPtr(), myImageName);
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
-
-	// and make sure that the handle is drawn correctly
 	updateViewObject(false);
+
 	return theViewObjectPtr;
 }
 
@@ -179,18 +179,41 @@ void DetonatorBox::notifyExplosions(void)
 }
 
 
-void DetonatorBox::registerChildObjects (void)
+void  DetonatorBox::registerChildObjects(void)
 {
-    theHandle->setOrigCenter(getOrigCenter()+HANDLEOFFSET);
+    theHandle = ObjectFactory::createChildObject<DetonatorBoxHandle>(this);
+    assert(theWorldPtr);
     theWorldPtr->addObject(theHandle);
+    setOrigCenter(getOrigCenter());
+    theWorldPtr->addNoCollisionCombo(getThisPtr(),theHandle);
 }
 
+void DetonatorBox::setOrigCenter ( const Position& aNewPos )
+{
+    RectObject::setOrigCenter(aNewPos);
+
+    if (theHandle)
+    {
+        theHandle->setOrigCenter(getOrigCenter()+1.4*HANDLEOFFSET);
+        theHandle->updateViewObject(false);
+    }
+}
 
 void DetonatorBox::setTriggered(void)
 {
 	// let's just be nice asynchronously
 	isTriggered = true;
 }
+
+
+void DetonatorBox::updateViewObject(bool isSimRunning) const
+{
+    RectObject::updateViewObject(isSimRunning);
+    if (!isSimRunning)
+        if (theHandle)
+            theHandle->updateViewObject(false);
+}
+
 
 // ##########################################################################
 // ##########################################################################
@@ -200,15 +223,14 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
 	:	RectObject( QObject::tr("Detonator Box Handle"),
 					"Push Here To BOOM",
 					"DetonatorBoxHandle",
-					0.25, 0.26, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
+                    0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(Position(0,0));
-	theProps.setProperty(Property::ISCHILD_STRING, "yes");
 }
 
 DetonatorBoxHandle::~DetonatorBoxHandle()
 {
-	theWorldPtr->unregisterCallback(this);
+//	theWorldPtr->unregisterCallback(this);
 }
 
 void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)

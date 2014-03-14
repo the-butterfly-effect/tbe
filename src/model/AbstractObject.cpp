@@ -220,12 +220,11 @@ bool AbstractObject::isRotatable ( ) const
 
 void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus)
 {
-	foreach(JointInterface* j, theJointList)
+    foreach(JointInterfacePtr j, theJointList)
                 j->physicsObjectStatus(aStatus);
         if (aStatus==JointInterface::DELETED)
             theJointList.clear();
 }
-
 
 void AbstractObject::parseProperties(void)
 {
@@ -242,7 +241,7 @@ void AbstractObject::parseProperties(void)
     Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
-        theChildPivotPointPtr = std::make_shared<PivotPoint>(getThisPtr(), myDelta);
+        theChildPivotPointPtr = ObjectFactory::createChildObject<PivotPoint>(getThisPtr(), myDelta);
 		theChildPivotPointPtr->markAsChild();
 		theWorldPtr->addObject(theChildPivotPointPtr);
 	}
@@ -255,7 +254,7 @@ void AbstractObject::parseProperties(void)
 	float myAngle;
 	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
 	{
-        theChildTranslationGuidePtr = std::make_shared<TranslationGuide>(getThisPtr(), myAngle);
+        theChildTranslationGuidePtr = ObjectFactory::createChildObject<TranslationGuide>(getThisPtr(), myAngle);
         theChildTranslationGuidePtr->markAsChild();
 		theWorldPtr->addObject(theChildTranslationGuidePtr);
 	}

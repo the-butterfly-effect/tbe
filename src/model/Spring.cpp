@@ -200,13 +200,14 @@ const QString Spring::getToolTip ( ) const
 	return QObject::tr("Send BOOM to me");
 }
 
-void Spring::setOrigCenter ( Position new_var )
+void Spring::setOrigCenter ( const Position& aNewPos )
 {
-	RectObject::setOrigCenter(new_var);
+    RectObject::setOrigCenter(aNewPos);
+    printf("setOrigCenter\n");
 
 	Vector myOffset = Vector(0.25*getTheWidth(),0);
 	if (theOtherEndPtr!=NULL)
-		theOtherEndPtr->setOrigCenter(new_var + myOffset);
+        theOtherEndPtr->setOrigCenter(aNewPos + myOffset);
 }
 
 // ##########################################################################

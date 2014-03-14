@@ -67,7 +67,7 @@ void Glue::createPhysicsObject(void)
 	}
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
 	assert (myFirstB2BodyPtr);
-	theFirstPtr->addJoint(this);
+    theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
 	assert(theSecondPtr!=NULL);
 	assert(theSecondLocalPosPtr!=NULL);
@@ -78,7 +78,7 @@ void Glue::createPhysicsObject(void)
 	}
 	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
 	assert (mySecondB2BodyPtr);
-	theSecondPtr->addJoint(this);
+    theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
 	Position myCenter = getTempCenter();
 	Vector   myHalfWidth(getTheWidth()/2.0, 0);

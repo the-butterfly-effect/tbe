@@ -50,7 +50,7 @@ void AbstractJoint::deletePhysicsObject(void)
 	// because otherwise we would have left it to the deletePhysicsObject()
 	// of AbstractObject, right?
 	DEBUG5("AbstractJoint::deletePhysicsObject(void)\n");
-	theJointPtr = NULL;
+    theJointPtr = nullptr;
 	if (theViewObjectPtr)
 		theViewObjectPtr->setVisible(true);
 }

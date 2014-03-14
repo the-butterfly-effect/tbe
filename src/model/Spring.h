@@ -82,8 +82,8 @@ public:
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}
 
-	/// overridden from AbstractObject in order to also move the handle
-	virtual void setOrigCenter ( Position new_var );
+    /// overridden from AbstractObject in order to also move the SpringEnd
+    virtual void setOrigCenter ( const Position& aNewPos ) override;
 
 	/// get the actual width - with compression accounted for
 	virtual qreal getTempWidth() const;

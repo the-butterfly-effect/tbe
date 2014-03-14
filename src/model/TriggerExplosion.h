@@ -47,33 +47,28 @@ public:
     /// @param aDBox pointer to a DetonatorBox, the only object allowed to create a Handle
     /// (note that creation is nowadays offloaded to std::make_shared)
     DetonatorBoxHandle(DetonatorBox* aDBox);
-    virtual ~DetonatorBoxHandle();
+    virtual ~DetonatorBoxHandle() override;
 
 	/// Overridden from RectObject to allow setting a custom ZValue
-	virtual ViewObject* createViewObject(float aDefaultDepth);
+    virtual ViewObject* createViewObject(float aDefaultDepth) override;
 
 	/// overridden from AbstractObject to allow for the special joints
-	void createPhysicsObject(void);
+    virtual void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject to allow for the special joints
-	virtual void deletePhysicsObject(void);
+    virtual void deletePhysicsObject(void) override;
 
 	qreal getDistance(void);
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+    virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
-
-	/// @returns true if the object should not surive a World::deletePhysicsWorld()
-	/// overridden from AbstractObject
-	virtual bool isTemp() const
-	{ return true; }
 
 	friend class DetonatorBox;
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
     DetonatorBox* theDBoxPtr;
 	b2PrismaticJoint* theJointPtr;
@@ -99,7 +94,7 @@ class DetonatorBox : public RectObject, public SimStepCallbackInterface
 {
 public:
 	DetonatorBox();
-	virtual ~DetonatorBox();
+    virtual ~DetonatorBox() override;
 
 	/// this enum defines the states of the detonator
 	enum States
@@ -113,19 +108,19 @@ public:
 		DONE       // end state, handle down and cell dark...
 	};
 
-	virtual ViewObject* createViewObject(float aDefaultDepth=2.0);
+    virtual ViewObject* createViewObject(float aDefaultDepth=2.0) override;
 
 	/// overridden from RectObject to be able to create the handle and
 	/// because this class wants to register for
 	/// callbacks and needs to restart its state machine
-	virtual void createPhysicsObject(void);
+    virtual void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject to allow for the handle
-	virtual void deletePhysicsObject(void);
+    virtual void deletePhysicsObject(void) override;
 
 	/// @returns a list of all phone numbers found in the scene
 	/// note that all IDs starting with a number are considered phone numbers
-	QStringList getAllPhoneNumbers(void);
+    QStringList getAllPhoneNumbers(void);
 
 	/// @returns the currently set phone number
 	/// this can be an empty string!
@@ -136,25 +131,28 @@ public:
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const
+    virtual unsigned int getImageIndex(void) const override
 	{ return theState; }
 
 	/// overridden from RectObject to make sure
 	/// we can display the phone number
-	virtual const QString getToolTip ( ) const;
+    virtual const QString getToolTip ( ) const override;
 
 	/// (used by the Handle) returns the ZValue of the DBox,
 	/// so the handle can display itself below
 	qreal getZValue(void);
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+    virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
-	/// setup the Handle
-	virtual void registerChildObjects (void);
+    /// overridden from AbstractObject in order to create the handle
+    virtual void registerChildObjects (void) override;
 
-	/// Set the phone number to dial when triggered
+    /// overridden from AbstractObject in order to also move the handle
+    virtual void setOrigCenter ( const Position& aNewPos ) override;
+
+    /// Set the phone number to dial when triggered
 	/// Technically speaking, any ID would do here...
 	/// @param aPhoneNumber string with an existing ID
 	void setPhoneNumber(const QString& aPhoneNumber)
@@ -163,18 +161,21 @@ public:
 	/// called by theDetonatorBoxHandle when triggered
 	void setTriggered(void);
 
+    /// overridden to also trigger updates to the handle if sim is not running
+    virtual void updateViewObject(bool isSimRunning) const override;
+
 protected:
 	/// call this function to suggest a state change to the DetonatorBox
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
-	virtual States goToState(States aNewState);
+    States goToState(States aNewState);
 
 	/// call this member to signal listening devices of the trigger
 	void notifyExplosions();
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 	/// the state variable
 	States theState;
@@ -205,7 +206,7 @@ private:
 	DetonatorBox(const DetonatorBox& aBORefToCopy);
 	DetonatorBox& operator = (const DetonatorBox& aBORefToCopy);
 
-	friend class DetonatorBoxHandle;
+    friend class DetonatorBoxHandle;
 };
 
 

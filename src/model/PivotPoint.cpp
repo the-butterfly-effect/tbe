@@ -61,15 +61,17 @@ PivotPoint::~PivotPoint()
 
 void PivotPoint::createPhysicsObject(void)
 {
-	if (theWorldPtr==NULL)
+    assert(theWorldPtr!=nullptr);
+    if (theWorldPtr==nullptr)
 		return;
 
-	// *** parse object/object1
-	// NOTE: if we used the constructor with baseobject, this will still work
-	// because propertyToObjectPtr only modifies theFirstPtr if successful
-    theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+    // *** parse object/object1 - if we didn't get theFirstPtr from the constructor
     if (theFirstPtr==nullptr)
-        theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    {
+        theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+        if (theFirstPtr==nullptr)
+            theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    }
     if (theFirstPtr==nullptr)
 	{
 		DEBUG4("PivotPoint: No valid first object found...\n");
@@ -79,7 +81,7 @@ void PivotPoint::createPhysicsObject(void)
 	Vector myRelPos = (getOrigCenter().toVector()-theFirstPtr->getOrigCenter().toVector())
 					  .rotate(-theFirstPtr->getOrigCenter().angle);
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, myRelPos);
-	theFirstPtr->addJoint(this);
+    theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 	assert (myFirstB2BodyPtr);
 
 	// *** parse (optional) object2
@@ -93,7 +95,7 @@ void PivotPoint::createPhysicsObject(void)
 		Vector my2RelPos = (getOrigCenter().toVector()-theSecondPtr->getOrigCenter().toVector())
 					  .rotate(-theSecondPtr->getOrigCenter().angle);
 		mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, my2RelPos);
-		theSecondPtr->addJoint(this);
+        theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 	}
 
 	// *** initialise Box2D's joint:

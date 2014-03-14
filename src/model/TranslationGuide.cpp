@@ -60,12 +60,13 @@ void TranslationGuide::createPhysicsObject(void)
 	if (theWorldPtr==NULL)
 		return;
 
-	// *** parse object
-	// NOTE: if we used the constructor with AbstractObject, this will still work
-	// because propertyToObjectPtr only modifies theFirstPtr if successful
-    theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    // *** parse object/object1 - if we didn't get theFirstPtr from the constructor
     if (theObjectPtr==nullptr)
-        theObjectPtr=theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+    {
+        theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
+        if (theObjectPtr==nullptr)
+            theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
+    }
     if (theObjectPtr==nullptr)
 	{
 		DEBUG4("TranslationGuide: No valid object found...\n");
@@ -73,7 +74,7 @@ void TranslationGuide::createPhysicsObject(void)
 	}
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,
 											   getOrigCenter()-theObjectPtr->getOrigCenter());
-	theObjectPtr->addJoint(this);
+    theObjectPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 	assert (myFirstB2BodyPtr);
 
 	// Contrary to PivotPoint, there is no object2, so use the ground body.

@@ -82,7 +82,7 @@ protected:
 	/// going from popped to balloon isn't supported (just like real life)
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
-	virtual States goToState(States aNewState);
+    States goToState(States aNewState);
 
 	/// will replace the existing set of shapes by a smaller shape that
 	/// fits the BalloonRest image. Do not call from within a Box2D callback

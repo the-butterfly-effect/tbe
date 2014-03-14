@@ -45,16 +45,16 @@ public:
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~ViewDetonatorBox ( );
+    virtual ~ViewDetonatorBox ( ) override;
 
 	/// this member starts the display of the actual ChoosePhoneNumber dialog
 	void displayChoosePhoneNumber(void);
 
 protected:
 	/// overridden to ALWAYS allow highlighting
-	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event ) override;
 	/// overridden to ALWAYS allow mouse button presses
-	virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event);
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event) override;
 
 private:
 	// prevent copy constructor / assignment operator
