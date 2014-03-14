@@ -34,7 +34,7 @@ public:
     enum AppearanceDirection
     {
         FROM_TOP,
-        FROM_BOTTOMRIGHT,
+        FROM_TOPRIGHT,
         TOOLTIP
     };
 

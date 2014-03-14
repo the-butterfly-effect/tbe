@@ -4,5 +4,6 @@
         <file>WinFail.png</file>
         <file>transparant.png</file>
         <file>tbe-icon.ico</file>
+        <file>GameResources.png</file>
     </qresource>
 </RCC>

@@ -74,7 +74,7 @@ void AnimatedDialog::appearAnimated()
     switch(theAppearanceDirection)
     {
     case FROM_TOP:
-    case FROM_BOTTOMRIGHT:
+    case FROM_TOPRIGHT:
     default:
         theAnimation.setDuration(DURATION);
         theAnimation.setEasingCurve(QEasingCurve::OutBounce);
@@ -132,7 +132,7 @@ QPointF AnimatedDialog::getInsidePoint() const
     switch(theAppearanceDirection)
     {
     case FROM_TOP:
-    case FROM_BOTTOMRIGHT:
+    case FROM_TOPRIGHT:
         return QPointF((theOurParentPtr->width()  - width())/2,
                        (theOurParentPtr->height() - height())/2);
         break;
@@ -152,9 +152,9 @@ QPointF AnimatedDialog::getOutsidePoint() const
 		return QPointF((theOurParentPtr->width() - width())/2,
 					   -height());
 		break;
-	case FROM_BOTTOMRIGHT:
+    case FROM_TOPRIGHT:
 		return QPointF(theOurParentPtr->width() + width()/2,
-					   theOurParentPtr->height()+height());
+                       -height());
 		break;
     case TOOLTIP:
         return QPointF(theOurParentPtr->width(),

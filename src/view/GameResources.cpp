@@ -27,7 +27,7 @@
 #include "ViewObject.h"
 
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
-    AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_BOTTOMRIGHT),
+    AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_TOPRIGHT),
     ui(new Ui::GameResources),
     theLevelPtr(NULL),
     theParentPtr(aRSGVPtr)
