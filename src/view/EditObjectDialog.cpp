@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2013 Klaas van Gend
+ * This file copyright (C) 2010,2013,2014 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,17 +19,13 @@
 #include "EditObjectDialog.h"
 #include "ViewObject.h"
 #include "ImageCache.h"
-//#include "MoveUndoCommand.h"
-//#include "PropChangeUndoCommand.h"
-//#include "ResizeUndoCommand.h"
-//#include "RotateUndoCommand.h"
 
 #include <QCloseEvent>
 
 QPoint EditObjectDialog::thePosition = QPoint(0,0);
 
 EditObjectDialog::EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *aParent)
-        : QDialog(aParent, Qt::Tool), theAOPtr(NULL)
+        : QDialog(aParent, Qt::Tool)
 {
     DEBUG1ENTRY;
     ui.setupUi(this);
@@ -55,7 +51,11 @@ EditObjectDialog::~EditObjectDialog()
 
 AbstractUndoCommand* EditObjectDialog::getUndoPtr(void)
 {
-    return theAOPtr->theViewObjectPtr->theMUCPtr;
+    AbstractObject* myRealPtr = getAORealPtr();
+    if (myRealPtr)
+        return myRealPtr->theViewObjectPtr->theMUCPtr;
+    else
+        return nullptr;
 }
 
 
@@ -108,7 +108,8 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 	QString myValue = ui.tableWidget->item(aRow, aColumn)->text().trimmed();
 	// is the value changed?
 	QString myPropValue;
-    theAOPtr->theProps.property2String(myKey, &myPropValue);
+    if (!theAOPtr.expired())
+        getAORealPtr()->theProps.property2String(myKey, &myPropValue);
 	if (myValue == myPropValue)
 		return;
 	// so, yes it changed.
@@ -125,11 +126,12 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 */
 
 	// now we need to make sure the properties are updated...
-    theAOPtr->parseProperties();
+    if (!theAOPtr.expired())
+        getAORealPtr()->parseProperties();
 }
 
 
-void EditObjectDialog::readFromObject(AbstractObjectPtr aAbstractObjectPtr)
+void EditObjectDialog::readFromObject(AbstractObjectPtr anAbstractObjectPtr)
 {
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end
@@ -156,21 +158,22 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr aAbstractObjectPtr)
 		theUndoPtr = NULL;
 	}
 */
-    theAOPtr = aAbstractObjectPtr;
-    if (aAbstractObjectPtr!=NULL)
-	{
-        ui.lineEditID->setText(aAbstractObjectPtr->getID());
-        ui.groupBox->setTitle(tr("Basic Properties for %1").arg(aAbstractObjectPtr->getName()));
+    theAOPtr = anAbstractObjectPtr;
+    if (!theAOPtr.expired())
+    {
+        AbstractObject* myAORealPtr = anAbstractObjectPtr.get();
+        ui.lineEditID->setText(myAORealPtr->getID());
+        ui.groupBox->setTitle(tr("Basic Properties for %1").arg(myAORealPtr->getName()));
 
 		//  TODO: QLabel *labelUnique;
 
-        ui.spinBoxX     -> setValue(aAbstractObjectPtr->getOrigCenter().x);
-        ui.spinBoxY     -> setValue(aAbstractObjectPtr->getOrigCenter().y);
-        ui.spinBoxAngle -> setValue(aAbstractObjectPtr->getOrigCenter().angle);
-        ui.spinBoxWidth -> setValue(aAbstractObjectPtr->getTheWidth());
-        ui.spinBoxHeight-> setValue(aAbstractObjectPtr->getTheHeight());
+        ui.spinBoxX     -> setValue(myAORealPtr->getOrigCenter().x);
+        ui.spinBoxY     -> setValue(myAORealPtr->getOrigCenter().y);
+        ui.spinBoxAngle -> setValue(myAORealPtr->getOrigCenter().angle);
+        ui.spinBoxWidth -> setValue(myAORealPtr->getTheWidth());
+        ui.spinBoxHeight-> setValue(myAORealPtr->getTheHeight());
 
-        QStringList myAllPropertiesList = aAbstractObjectPtr->theProps.getDefaultPropertyList();
+        QStringList myAllPropertiesList = myAORealPtr->theProps.getDefaultPropertyList();
 		QStringList::iterator myI= myAllPropertiesList.begin();
 
 		ui.tableWidget->clear();
@@ -186,12 +189,12 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr aAbstractObjectPtr)
 		{
 			QString myKey = *myI;
 			QString myValue;
-            aAbstractObjectPtr->theProps.property2String(*myI, &myValue);
+            myAORealPtr->theProps.property2String(*myI, &myValue);
 			QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
 			ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
 			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
 			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
-            if (myValue != aAbstractObjectPtr->theProps.getDefaultProperty(*myI))
+            if (myValue != myAORealPtr->theProps.getDefaultProperty(*myI))
                 myValueItem->setIcon(ImageCache::getQIcon("IconModified", QSize(32,32)));
 			ui.tableWidget->setItem(myRow, 0, myValueItem);
 
@@ -216,7 +219,7 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr aAbstractObjectPtr)
 	connect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	connect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
-    if (aAbstractObjectPtr==NULL)
+    if (theAOPtr.expired())
 		setEnabled(false);
 	else
 		setEnabled(true);

@@ -46,12 +46,12 @@ public slots:
       * pointed to.
       * NOTE: the pointer is cached - if the user changes something,
       * this will be written back into the object.
-      * @param aAbstractObjectPtr pointer to AbstractObject to read all data
+      * @param anAbstractObjectPtr pointer to AbstractObject to read all data
       *                       from, or a NULL pointer to grey out all
       *                       values
       * @returns true if successful - which should be always
       */
-    void readFromObject(AbstractObjectPtr aAbstractObjectPtr);
+    void readFromObject(AbstractObjectPtr anAbstractObjectPtr);
 
 private slots:
     void position_editingFinished();
@@ -62,7 +62,17 @@ private slots:
 private:
     Ui::EditObjectDialog ui;
 
-    AbstractObjectPtr theAOPtr;
+    AbstractObjectWeakPtr theAOPtr;
+
+    /// use whenever you need something from the real object instead of the
+    /// std::weak_ptr.
+    AbstractObject* getAORealPtr(void)
+    {
+        if (theAOPtr.expired())
+            return nullptr;
+        else
+            return AbstractObjectPtr(theAOPtr).get();
+    }
 
     /// @returns pointer to the *Abstract* UndoCommand
     AbstractUndoCommand* getUndoPtr(void);
