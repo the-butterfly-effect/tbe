@@ -11,9 +11,23 @@
         <date>March 16, 2014</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="6" name="Quarter Arc">
-            <name lang="nl">Kwart bocht</name>
-            <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="0.000"/>
+        <toolboxitem count="1" name="Quarter Arc">
+            <name lang="nl">Kwart bocht nr 1</name>
+            <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="0.000">
+			  <property key="Rotatable"> true </property>
+		    </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Quarter Arc #2">
+            <name lang="nl">Kwart bocht nr 2</name>
+            <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="1.571">
+			  <property key="Rotatable"> true </property>
+		    </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Quarter Arc #3">
+            <name lang="nl">Kwart bocht nr 3</name>
+            <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="3.141">
+			  <property key="Rotatable"> true </property>
+		    </object>
         </toolboxitem>
     </toolbox>
     <scene>
