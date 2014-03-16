@@ -1,0 +1,43 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Loopings</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Looping in Looping </description>
+        <date>March 16, 2014</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Tux kart">
+            <name lang="nl">Tux kart</name>
+            <object width="0.170" X="0.858" Y="2.511" height="0.500" type="ColaMintBottle" angle="-1.570">
+                <property key="ImageName">tuxkart</property>
+                <property key="Thrust">6</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7" height="4"/>
+        <predefined>
+            <object width="7.216" X="3.608" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.5</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+			<object width="0.166" X="6.767" Y="0.254" height="0.500" type="ColaMintBottle" angle="-1.571">
+                <property key="ImageName">tuxkart</property>
+                <property key="Thrust">6</property>
+            </object>
+            <object width="0.800" X="4.016" Y="3.130" height="0.800" type="QuarterArc80" angle="0.000"/>
+            <object width="0.800" X="0.813" Y="2.556" height="0.800" type="QuarterArc80" angle="1.571"/>
+            <object width="0.800" X="0.855" Y="0.932" height="0.800" type="QuarterArc80" angle="3.141"/>
+            <object width="0.800" X="3.016" Y="3.130" height="0.800" type="QuarterArc80" angle="0.000"/>
+            <object width="0.800" X="1.813" Y="2.556" height="0.800" type="QuarterArc80" angle="1.571"/>
+            <object width="0.800" X="1.855" Y="0.932" height="0.800" type="QuarterArc80" angle="3.141"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals/>
+</tbe-level>
