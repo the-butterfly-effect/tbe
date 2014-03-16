@@ -9,6 +9,10 @@
         <date>March 6, 2014</date>
     </levelinfo>
     <toolbox>
+        <toolboxitem count="1" name="Dynamite">
+            <name lang="nl">Dynamiet</name>
+            <object width="0.430" X="0.217" Y="3.513" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
+        </toolboxitem>
         <toolboxitem count="1" name="Soccerball">
             <name lang="nl">Voetbal</name>
             <object width="0.220" X="0.000" Y="0.000" height="0.220" type="SoccerBall" angle="0.000"/>
@@ -35,12 +39,11 @@
                 <property key="Mass">1.5</property>
             </object>
             <object width="1.000" X="8.800" Y="0.604" height="0.100" type="Floor" angle="4.966">
-                <property key="ImageName">used_wood_bar</property>
+                <property key="ImageName">Empty</property>
             </object>
             <object width="1.500" X="0.750" Y="3.300" height="0.100" type="Floor" angle="0.000">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.430" X="0.217" Y="3.513" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
             <object width="1.000" X="6.196" Y="0.300" height="0.100" type="Floor" angle="-0.487">
                 <property key="ImageName">used_wood_bar</property>
             </object>
@@ -76,7 +79,6 @@
             <object width="1.000" X="4.403" Y="1.315" height="0.100" type="Floor" angle="-0.406">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.220" X="4.076" Y="1.680" height="0.220" type="SoccerBall" angle="0.000"/>
             <object width="0.300" X="1.340" Y="3.760" height="0.300" type="Balloon" angle="0.000">
                 <property key="ImageName">zzz;Empty;Empty;Empty</property>
                 <property key="Mass">2</property>
@@ -90,14 +92,14 @@
                 <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
                 <property key="PhoneNumber">555-0000</property>
             </object>
-            <object width="1.000" X="3.46" Y="1.599" height="0.100" type="Floor" angle="-0.147">
+            <object width="1.000" X="3.460" Y="1.599" height="0.100" type="Floor" angle="-0.147">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.092" X="0.602" Y="3.907" height="1.126" type="Scenery" angle="0.000">
+            <object width="0.060" X="0.780" Y="3.907" height="1.126" type="Scenery" angle="0.000">
                 <property key="ImageName">pole</property>
                 <property key="ZValue">0.8</property>
             </object>
-            <object width="0.786" X="1.000" Y="3.907" height="1.126" type="Scenery" angle="0.000">
+            <object width="0.700" X="1.150" Y="3.907" height="1.126" type="Scenery" angle="0.000">
                 <property key="ImageName">start-banner</property>
                 <property key="ZValue">4.5</property>
             </object>
@@ -116,6 +118,13 @@
             <object width="1.295" X="4.155" Y="1.360" height="0.500" type="Scenery" angle="0.000">
                 <property key="ImageName">used_wood_triangle</property>
             </object>
+            <object width="3.500" X="1.750" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="3.300" X="0.050" Y="1.650" height="0.100" type="Floor" angle="1.571">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.800" X="0.400" Y="2.935" height="0.800" type="QuarterArc80" angle="1.571"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
