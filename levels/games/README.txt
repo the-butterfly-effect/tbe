@@ -12,3 +12,13 @@ monster truck.svg
   
 tuxkart.svg
   modification of monster truck.svg by Klaas van Gend, march 2014.
+
+Milkman666_Cone.svg_1.svg
+  originally drawn by Milkman666 and published on openclipart.org:
+  https://openclipart.org/detail/10911/cone.svg-by-milkman666-10911 
+
+stk-logo.png
+  supertuxkart logo taken from http://stkaddons.net/
+  presumed to be under a suitably free license
+
+
