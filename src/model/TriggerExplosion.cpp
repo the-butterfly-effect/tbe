@@ -226,8 +226,7 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
                     0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {
 	setOrigCenter(Position(0,0));
-    theProps.setDefaultPropertiesString(
-                Property::ISCHILD_STRING + QString(":yes/") );
+    theProps.setProperty(Property::ISCHILD_STRING, "yes");
 }
 
 DetonatorBoxHandle::~DetonatorBoxHandle()

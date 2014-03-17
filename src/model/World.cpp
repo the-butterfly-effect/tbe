@@ -55,6 +55,8 @@ World::World ( void) : theB2WorldPtr(NULL)
 World::~World ( )
 {
     DEBUG5("World::~World");
+    theObjectPtrList.clear();
+    theToBeRemovedList.clear();
 	AbstractObject::setTheB2WorldPtr(NULL);
 	theStaticWorldPtr = NULL;
 }
