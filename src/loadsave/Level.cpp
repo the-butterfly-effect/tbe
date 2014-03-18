@@ -259,9 +259,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			myErrorMessage += tr("createObjectFromDom failed");
 			goto not_good;
 		}
-        printf("baa\n");
         theWorldPtr->addObject(myAOPtr);
-        printf("boo\n");
 
 		if (q==myNode.lastChild())
 			break;
