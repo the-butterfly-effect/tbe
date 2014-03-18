@@ -53,17 +53,17 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	Q_ASSERT(anImageBaseName.contains(".")==false);
 	Q_ASSERT(anImageBaseName.contains("/")==false);
 
-	// is the image present in the cache?
-	if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
-	{
-		DEBUG4("Image '%s' found in image cache!", ASCII(anImageBaseName));
-		// is the image the right size?
-		if (anOutputPixmapPtr->size()!=aSize && aSize!=theDefaultSize)
-		{
-			*anOutputPixmapPtr = anOutputPixmapPtr->scaled(aSize, Qt::IgnoreAspectRatio);
-		}
-		return true;
-	}
+//	// is the image present in the cache?
+//	if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
+//	{
+//		DEBUG4("Image '%s' found in image cache!", ASCII(anImageBaseName));
+//		// is the image the right size?
+//		if (anOutputPixmapPtr->size()!=aSize && aSize!=theDefaultSize)
+//		{
+//			*anOutputPixmapPtr = anOutputPixmapPtr->scaled(aSize, Qt::IgnoreAspectRatio);
+//		}
+//		return true;
+//	}
 
 	// No, it isn't. Let's try to load the image.
 	QString myFullPathName;
@@ -116,7 +116,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 	DEBUG4("  going to use image: %s!", ASCII(myFullPathName));
 	if (myTempPixmap.isNull())
 		myTempPixmap = QPixmap(myFullPathName);
-	QPixmapCache::insert(anImageBaseName, myTempPixmap);
+//	QPixmapCache::insert(anImageBaseName, myTempPixmap);
 	*anOutputPixmapPtr = myTempPixmap;
 
 	return true;
