@@ -32,14 +32,14 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr,
     theIsToBeDeleted(false),
     theAppearanceDirection(anAppearDirection)
 {
-    DEBUG1("entry: %s = %p\n", Q_FUNC_INFO, this);
+    DEBUG5("entry: %s = %p\n", Q_FUNC_INFO, this);
     theAnimation.setTargetObject(this);
     this->hide();
 }
 
 AnimatedDialog::~AnimatedDialog()
 {
-	DEBUG1("exit: %s = %p\n", Q_FUNC_INFO, this);
+    DEBUG5("exit: %s = %p\n", Q_FUNC_INFO, this);
 	// catch any dialogs that disappear unanimated
 	theAnimatedDialogMutex.lock();
 	if (theCurrentlyViewedAnimatedDialog==this)
