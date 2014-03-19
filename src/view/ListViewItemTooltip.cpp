@@ -41,21 +41,24 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
 
     // set the image
     ViewObject* myVOPtr = myAOPtr->createViewObject();
-    QPixmap myPixmap = myVOPtr->pixmap();
 
-    // scale the image, map dimensions from scene to view
+    // scale & rotate the image, map dimensions from scene to view
     qreal myBitmapConvertedWidth  = myAOPtr->getTheWidth() * THESCALE * aParent->transform().m11();
     qreal myBitmapConvertedHeight = myAOPtr->getTheHeight() * THESCALE * aParent->transform().m22();
-    QSize myConvertedSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
-    ui->buttonObjectImage->setMinimumSize(myConvertedSize);
-    ui->buttonObjectImage->setMaximumSize(myConvertedSize);
-    ui->buttonObjectImage->setIcon(myPixmap.scaled(myConvertedSize, Qt::IgnoreAspectRatio));
-    ui->buttonObjectImage->setIconSize(myConvertedSize);
+    QSize myPixmapRegularSize(myBitmapConvertedWidth, myBitmapConvertedHeight);
+    QPixmap myPixmap = myVOPtr->pixmap().scaled(myPixmapRegularSize, Qt::IgnoreAspectRatio);
+    QTransform myTransform;
+    myTransform.rotateRadians(-myAOPtr->getTempCenter().angle);
+    QPixmap myFinalPixmap = myPixmap.transformed(myTransform);
+
+    ui->buttonObjectImage->setMinimumSize(myFinalPixmap.size());
+    ui->buttonObjectImage->setMaximumSize(myFinalPixmap.size());
+    ui->buttonObjectImage->setIcon(myFinalPixmap);
+    ui->buttonObjectImage->setIconSize(myFinalPixmap.size());
 
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
     theYCoord = 50;
-
 }
 
 
