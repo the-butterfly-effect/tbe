@@ -4,7 +4,11 @@
         <title>Extreme Tux Racer</title>
         <author>Klaas van Gend</author>
         <license>PD</license>
-        <description>Make Tux descent the ski slope.</description>
+        <description>Make Tux descent the ski slope.&lt;br>&lt;br>
+		             This level was inspired by the open source Extreme Tux Racer, 
+					 where Tux has to race down slopes 
+		&lt;a href="http://sourceforge.net/projects/extremetuxracer/">http://sourceforge.net/projects/extremetuxracer/&lt;/a> 
+		</description>
         <description lang="nl">Laat Tux langs de helling omlaagglijden.</description>
         <date>March 6, 2014</date>
     </levelinfo>
@@ -125,6 +129,9 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.800" X="0.400" Y="2.935" height="0.800" type="QuarterArc80" angle="1.571"/>
+            <object width="3.200" X="1.752" Y="0.850" height="1.600" type="Scenery" angle="0.000">
+                <property key="ImageName">extreme-tux-racer</property>
+            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
