@@ -374,11 +374,11 @@ void Dynamite::createPhysicsObject(void)
 	theState = WAITING;
 
 	theTrigger = false;
-	theSplatterList.clear();
 }
 
 void Dynamite::deletePhysicsObject(void)
 {
+	theSplatterList.clear();
 	// nothing much to do here that actually has to do with delete...
 	theState = WAITING;
 	clearShapeList();
