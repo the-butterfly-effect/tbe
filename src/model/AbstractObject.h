@@ -25,7 +25,7 @@
 #include "Property.h"
 #include "TranslationGuidePtr.h"
 
-#include "b2Body.h"
+#include "Box2D.h"
 
 #include <set>
 

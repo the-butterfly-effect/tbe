@@ -25,7 +25,6 @@
 #include "Box2D.h"
 #include "ViewWorld.h"
 
-const bool World::doSleep = true;
 const qreal World::theDeltaTime = 0.01;
 const unsigned int World::theVelocityIterationcount = 30;
 const unsigned int World::thePositionIterationcount = 30;
@@ -39,7 +38,7 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 {
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
 	// does not - but RTTI can fix that.
-    AbstractJoint* myIF = dynamic_cast<AbstractJoint*>(joint->GetUserData());
+    AbstractJoint* myIF = joint->GetUserData();
 	if (myIF != NULL)
 		myIF->jointWasDeleted();
 }
@@ -139,7 +138,7 @@ void World::createPhysicsWorld(void)
 	if (theB2WorldPtr!=NULL)
 		return;
 
-	theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()), doSleep);
+    theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()));
 	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);
 	theB2WorldPtr->SetContactListener(this);
 	theB2WorldPtr->SetDestructionListener(this);
@@ -148,14 +147,14 @@ void World::createPhysicsWorld(void)
 	// if theDrawDebug is true, we can ask Box2D to ask ViewWorld to draw
 	// all shapes - useful for debugging new objects. But we have to register
 	// the debug thingie first.
-	if (theDrawDebug)
-	{
-		theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
-		const uint32 myDebugFlags = b2DebugDraw::e_shapeBit |
-									b2DebugDraw::e_jointBit |
-									b2DebugDraw::e_centerOfMassBit;
-		theViewWorldPtr->AppendFlags(myDebugFlags);
-	}
+//	if (theDrawDebug)
+//	{
+//		theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
+//		const uint32 myDebugFlags = b2DebugDraw::e_shapeBit |
+//									b2DebugDraw::e_jointBit |
+//									b2DebugDraw::e_centerOfMassBit;
+//		theViewWorldPtr->AppendFlags(myDebugFlags);
+//	}
 
 	// Define the ground body.
 	b2BodyDef groundBodyDef;

@@ -20,7 +20,6 @@
 #define WORLD_H
 
 #include "Box2D.h"
-#include "b2Contact.h"
 #include "tbe_global.h"
 
 #include  "AbstractObject.h"
@@ -340,9 +339,6 @@ private:
 
 	/// The attribute that makes World tick
 	b2World* theB2WorldPtr;
-
-	/// Do we want to let bodies sleep?
-	static const bool doSleep;
 
 	/// the time taking in each time step
 	static const qreal theDeltaTime;

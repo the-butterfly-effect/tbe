@@ -130,7 +130,7 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 		b2AABB myAABB;
 		b2Transform myT;
 		myT.SetIdentity();
-		myPtr->GetShape()->ComputeAABB(&myAABB, myT);
+        myPtr->GetShape()->ComputeAABB(&myAABB, myT, 0);
 		DEBUG5("  Shape* = %p\n", myPtr);
 		DEBUG5("    %fx%f\n", myAABB.GetExtents().x, myAABB.GetExtents().y);
 #endif

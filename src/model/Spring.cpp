@@ -237,9 +237,11 @@ void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 	Vector myFVector = getDistance()*theSpringConstant*myAngle;
 	// don't forget: action = -reaction  -> we need equal opposing forces on both end...
 	theOtherEndPtr->theB2BodyPtr->ApplyForce( myFVector.toB2Vec2(),
-											  theOtherEndPtr->theB2BodyPtr->GetPosition());
+                                              theOtherEndPtr->theB2BodyPtr->GetPosition(),
+                                              true);
 	theB2BodyPtr->ApplyForce( (-1.0*myFVector).toB2Vec2(),
-											 theB2BodyPtr->GetPosition());
+                              theB2BodyPtr->GetPosition(),
+                              true);
 }
 
 ViewObject*  SpringEnd::createViewObject(float)

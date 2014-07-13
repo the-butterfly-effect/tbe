@@ -105,7 +105,7 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 	// so Box2D thinks our Balloon is actually lighter than 100 grams...
 	//
 	// That's why a 0.8N upwards force suffices for now :-)
-	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2());
+    theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2(), true);
 
 	// damping is now handled by Box2D - linearDamping and AngularDamping...
 }
@@ -301,20 +301,21 @@ void Cactus::fillShapeList(void)
 	PolyObject::fillShapeList();
 
 	// And add the sensor to the shapes
-	b2PolygonShape* mySensorShape = new b2PolygonShape();
-	mySensorShape->m_vertexCount = 10;
-	mySensorShape->m_vertices[0]=b2Vec2( 0.078, -0.036);
-	mySensorShape->m_vertices[1]=b2Vec2( 0.116,  0.012);
-	mySensorShape->m_vertices[2]=b2Vec2( 0.125,  0.085);
-	mySensorShape->m_vertices[3]=b2Vec2( 0.099,  0.147);
-	mySensorShape->m_vertices[4]=b2Vec2( 0.038,  0.2);
-	mySensorShape->m_vertices[5]=b2Vec2(-0.038,  0.2);
-	mySensorShape->m_vertices[6]=b2Vec2(-0.099,  0.147);
-	mySensorShape->m_vertices[7]=b2Vec2(-0.125,  0.085);
-	mySensorShape->m_vertices[8]=b2Vec2(-0.116,  0.012);
-	mySensorShape->m_vertices[9]=b2Vec2(-0.078, -0.036);
-	b2FixtureDef* mySensorDef = new b2FixtureDef();
-	mySensorDef->shape    = mySensorShape;
+    b2Vec2 mySensorShapeV[10];
+    mySensorShapeV[0].Set( 0.078, -0.036);
+    mySensorShapeV[1].Set( 0.116,  0.012);
+    mySensorShapeV[2].Set( 0.125,  0.085);
+    mySensorShapeV[3].Set( 0.099,  0.147);
+    mySensorShapeV[4].Set( 0.038,  0.2);
+    mySensorShapeV[5].Set(-0.038,  0.2);
+    mySensorShapeV[6].Set(-0.099,  0.147);
+    mySensorShapeV[7].Set(-0.125,  0.085);
+    mySensorShapeV[8].Set(-0.116,  0.012);
+    mySensorShapeV[9].Set(-0.078, -0.036);
+    b2PolygonShape* mySensorShapePtr = new b2PolygonShape();
+    mySensorShapePtr->Set(mySensorShapeV, 10);
+    b2FixtureDef* mySensorDef = new b2FixtureDef();
+    mySensorDef->shape    = mySensorShapePtr;
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);
@@ -379,14 +380,15 @@ void BedOfNails::fillShapeList(void)
 	PolyObject::fillShapeList();
 
 	// And add the sensor to the shapes
-	b2PolygonShape* mySensorShape = new b2PolygonShape();
-	mySensorShape->m_vertexCount = 4;
-	mySensorShape->m_vertices[0]=b2Vec2(-0.335, -0.04);
-	mySensorShape->m_vertices[1]=b2Vec2( 0.335, -0.04);
-	mySensorShape->m_vertices[2]=b2Vec2( 0.335,  0.07);
-	mySensorShape->m_vertices[3]=b2Vec2(-0.335,  0.07);
+    b2PolygonShape* mySensorShapePtr = new b2PolygonShape();
+    b2Vec2 mySensorShapeV[4];
+    mySensorShapeV[0].Set(-0.335, -0.04);
+    mySensorShapeV[1].Set( 0.335, -0.04);
+    mySensorShapeV[2].Set( 0.335,  0.07);
+    mySensorShapeV[3].Set(-0.335,  0.07);
+    mySensorShapePtr->Set(mySensorShapeV, 4);
 	b2FixtureDef* mySensorDef = new b2FixtureDef();
-	mySensorDef->shape    = mySensorShape;
+    mySensorDef->shape    = mySensorShapePtr;
 	mySensorDef->isSensor = true;
 	mySensorDef->userData = this;
 	theShapeList.push_back(mySensorDef);

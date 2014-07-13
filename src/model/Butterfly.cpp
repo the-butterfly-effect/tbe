@@ -114,10 +114,10 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			Vector myTotXImpulse = aDeltaTime * Vector(myXImpulse, 0);
 			Vector myTotYImpulse = aDeltaTime * Vector(0, myYImpulse);
 			theB2BodyPtr->ApplyLinearImpulse(
-					myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2());
+                    myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 			Position myPoint = getTempCenter() + Vector(0,0.01);
 			theB2BodyPtr->ApplyLinearImpulse(
-					myTotYImpulse.toB2Vec2(), myPoint.toB2Vec2());
+                    myTotYImpulse.toB2Vec2(), myPoint.toB2Vec2(), true);
 
 			// and flap
 			if (getState()==FLAP_HALF)

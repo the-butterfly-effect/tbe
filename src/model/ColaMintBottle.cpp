@@ -225,7 +225,7 @@ void ColaMintBottle::newSplatter(unsigned int aSequenceNr)
 	// - default is 2.0 (see createPhysicsObject()).
 	qreal myAngle = getTempCenter().angle;
 	Vector myImpulseVector = -theThrust*Vector(-myImpulse*sin(myAngle), myImpulse*cos(myAngle));
-	theB2BodyPtr->ApplyLinearImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2());
+    theB2BodyPtr->ApplyLinearImpulse(myImpulseVector.toB2Vec2(), myStartPos.toB2Vec2(), true);
 }
 
 //////////////////////////////////////////////////////////////////////////////
