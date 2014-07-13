@@ -54,8 +54,8 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 {
 	// do not serialize the object if it is a child.
 	// e.g. a PivotPoint created by an object as one of its properties
-	if (theAbstractObjectPtr->theProps.getPropertyNoDefault(
-			Property::ISCHILD_STRING).isEmpty()==false)
+    if (!theAbstractObjectPtr->theProps.getPropertyNoDefault(
+            Property::ISCHILD_STRING).isEmpty())
 		return;
 
 	// save basic values that are part of the object
