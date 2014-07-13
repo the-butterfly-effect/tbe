@@ -34,7 +34,7 @@ class World;
   * It contains the timers that run the simulation.
   * It also contains the debug callbacks from Box2D to draw outlines.
   */
-class ViewWorld : public QGraphicsScene, public b2DebugDraw
+class ViewWorld : public QGraphicsScene, public b2Draw
 {
     Q_OBJECT
 
@@ -100,8 +100,6 @@ private:
 private:
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
-
-
 
 	// the below is for the Debug drawing of Box2D
 protected:
