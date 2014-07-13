@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.5)
 
 set(BOX2D_Collision_SRCS
 	Collision/b2BroadPhase.cpp
@@ -151,7 +151,7 @@ include_directories( ../ )
 # endif()
 
 # if(BOX2D_BUILD_STATIC)
-	add_library(Box2D STATIC
+	add_library(Box2D
 		${BOX2D_General_HDRS}
 		${BOX2D_Joints_SRCS}
 		${BOX2D_Joints_HDRS}
@@ -168,10 +168,10 @@ include_directories( ../ )
 		${BOX2D_Rope_SRCS}
 		${BOX2D_Rope_HDRS}
 	)
-# 	set_target_properties(Box2D PROPERTIES
-# 		CLEAN_DIRECT_OUTPUT 1
-# 		VERSION ${BOX2D_VERSION}
-# 	)
+	set_target_properties(Box2D PROPERTIES
+		CLEAN_DIRECT_OUTPUT 1
+		VERSION 2.3.1
+	)
 # endif()
 
 # # These are used to create visual studio folders.

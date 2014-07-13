@@ -7,14 +7,14 @@ SET (main_HEADERS
     tbe_global.h
 )
 
-SUBDIRS(box2d)
+SUBDIRS(Box2D)
 INCLUDE(control/control.txt)
 INCLUDE(loadsave/loadsave.txt)
 INCLUDE(model/model.txt)
 INCLUDE(view/view.txt)
 
 include_directories(
-    box2d
+    Box2D
     control
     loadsave
     model
@@ -62,7 +62,7 @@ ADD_EXECUTABLE(tbe
 )
 
 INCLUDE(${QT_USE_FILE})
-TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} box2d)
+TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} Box2D)
 
 # Supply the DLL files on Windows - no static linking :-(
 # Technically speaking, this is a hack. But who cares?
