@@ -24,7 +24,7 @@
 #include <cmath>
 #include <QtCore/QPointF>
 
-class b2Vec2;
+struct b2Vec2;
 class Position;
 
 extern qreal THESCALE;

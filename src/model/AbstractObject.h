@@ -34,12 +34,12 @@ class ViewObject;
 class ObjectFactory;
 class World;
 class ShapeList;
-class b2FixtureDef;
+struct b2FixtureDef;
 class b2ShapeDef;
 class b2Shape;
 class b2World;
 class AbstractObjectSerializer;
-class ContactInfo;
+struct ContactInfo;
 
 
 //   ************************************************

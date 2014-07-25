@@ -93,7 +93,7 @@ public:
 	/// virtual destructor
 	virtual ~CustomBall ( );
 
-	virtual ViewObject* createViewObject();
+	virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
 
 	/// we need to parse the Radius - duh
 	virtual void  parseProperties(void);
