@@ -169,7 +169,7 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 			QString myKey = i.attributes().item(0).nodeValue();
 			QString myTValue = i.text();
 
-			qDebug() << QString("  property: '%1'='%2'").arg(myKey).arg(myTValue);
+            DEBUG5("   %s\n", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
             myAOPtr->theProps.setProperty(myKey, myTValue);
 		}
 	}
