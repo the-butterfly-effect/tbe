@@ -229,7 +229,7 @@ void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus)
 void AbstractObject::parseProperties(void)
 {
 	// Bounciness
-	float myFloat;
+	float myFloat = 0.5;
 	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
 	setTheBounciness(myFloat);
 
