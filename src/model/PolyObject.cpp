@@ -187,7 +187,7 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
 	: theNameString(aDisplayName), theToolTipString(aTooltip)
 {
-	DEBUG5("PolyObject::PolyObject(%s, %f, %f)\n", ASCII(aDisplayName), aWidth, aHeight);
+	DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
@@ -203,7 +203,7 @@ PolyObject::PolyObject( const QString& aDisplayName,
 
 PolyObject::~PolyObject ( )
 {
-	DEBUG5("PolyObject::~PolyObject()\n");
+    DEBUG5("PolyObject::~PolyObject()");
 }
 
 
@@ -306,7 +306,7 @@ PolyObject::AABB::AABB(void) :
 PolyObject::AABB::AABB(QString& aPolygonDefs) :
 		theOrigWidth(UNDEFINED), theOrigHeight(UNDEFINED)
 {
-	DEBUG5("PolyObject::AABB::AABB(%s)\n", ASCII(aPolygonDefs));
+	DEBUG5("PolyObject::AABB::AABB(%s)", ASCII(aPolygonDefs));
 	float myMinX = 0.0f;
 	float myMaxX = 0.0f;
 	float myMinY = 0.0f;
@@ -314,7 +314,7 @@ PolyObject::AABB::AABB(QString& aPolygonDefs) :
 
 	if (aPolygonDefs.isEmpty())
 	{
-		DEBUG5("ignoring empty polygon def\n");
+        DEBUG5("ignoring empty polygon def");
 		return;
 	}
 
@@ -347,7 +347,7 @@ PolyObject::AABB::AABB(QString& aPolygonDefs) :
 
 	theOrigWidth  = myMaxX - myMinX;
 	theOrigHeight = myMaxY - myMinY;
-	DEBUG5("  AABB for this PolyObject: %fx%f\n", theOrigWidth, theOrigHeight);
+	DEBUG5("  AABB for this PolyObject: %fx%f", theOrigWidth, theOrigHeight);
 }
 
 float PolyObject::AABB::getOrigWidth()
