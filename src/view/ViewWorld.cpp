@@ -39,32 +39,32 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	  theWorldPtr(aWorldPtr),
 	  theSimSpeed(1000)
 {
-	aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
-	theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
+    aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
+    theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
 
     setupBackground();
 
     connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
-	connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
-	isSimRunning = false;
+    connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
+    isSimRunning = false;
 }
 
 
 qreal ViewWorld::getHeight(void) const
 {
-	return THESCALE*theWorldPtr->getTheWorldHeight();
+    return THESCALE*theWorldPtr->getTheWorldHeight();
 }
 
 
 bool ViewWorld::getIsSimRunning()
 {
-	return isSimRunning;
+    return isSimRunning;
 }
 
 
 qreal ViewWorld::getWidth(void) const
 {
-	return THESCALE*theWorldPtr->getTheWorldWidth();
+    return THESCALE*theWorldPtr->getTheWorldWidth();
 }
 
 
@@ -88,15 +88,16 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
 
 void ViewWorld::on_timerTick()
 {
-	QTime myCurrentTime = QTime::currentTime();
-	while(theSimulationTime < myCurrentTime)
-	{
-		theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * 2 * theSimSpeed);
-	}
+    QTime myCurrentTime = QTime::currentTime();
+    // whatever happens, draw every 25 frames
+    for(int i=0; i<25 && theSimulationTime < myCurrentTime; i++)
+    {
+        theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * 2 * theSimSpeed);
+    }
 
-	// iterate through all known objects to update the graphics part
-	theWorldPtr->updateViewWorld(true);
-	theFramesPerSecond++;
+    // iterate through all known objects to update the graphics part
+    theWorldPtr->updateViewWorld(true);
+    theFramesPerSecond++;
 }
 
 void ViewWorld::on_framerateTimerTick()
@@ -240,7 +241,7 @@ void ViewWorld::DrawSolidCircle(const b2Vec2& center, float32 radius,
 	QPointF myPosQ = myPos.toQPointF();
 
 	addDebugDrawToList(addEllipse(myPosQ.x(),myPosQ.y(),
-								  2.0*THESCALE*radius,2.0*THESCALE*radius, pen, brush));
+                           2.0*THESCALE*radius,2.0*THESCALE*radius, pen, brush));
 }
 
 // Draw a line segment.
