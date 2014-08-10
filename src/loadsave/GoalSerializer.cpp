@@ -42,7 +42,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	/// simple sanity check first...
 	if (q.nodeName() != theGoalString)
 	{
-		DEBUG2("createGoalFromDom: expected <%s> but got <%s>\n", ASCII(theGoalString), ASCII(q.nodeName()));
+		DEBUG2("createGoalFromDom: expected <%s> but got <%s>", ASCII(theGoalString), ASCII(q.nodeName()));
 		return NULL;
 	}
 
@@ -61,7 +61,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 
 	if (myGPtr==NULL)
 	{
-		DEBUG2("createGoalFromDom: '%s' has problems in its factory\n", ASCII(myObjectType));
+		DEBUG2("createGoalFromDom: '%s' has problems in its factory", ASCII(myObjectType));
 		goto not_good;
 	}
 
@@ -80,7 +80,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 				goto not_good;
 			QString myKey = i.attributes().item(0).nodeValue();
 			QString myValue = i.text();
-			DEBUG5("   %s\n", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myValue)));
+			DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myValue)));
 			myGPtr->theProps.setProperty(myKey, myValue);
 		}
 	}
@@ -104,7 +104,7 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 	int myType = getColumnZero().indexOf(myList[0]);
 	if (myType==-1)
 	{
-		DEBUG2("Problem: Goal type not recognized\n");
+		DEBUG2("Problem: Goal type not recognized");
 		return NULL;
 	}
 
