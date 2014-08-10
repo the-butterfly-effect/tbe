@@ -71,7 +71,6 @@ void ResizingGraphicsView::clearViewWorld(void)
 
 	if (theScenePtr != NULL)
 	{
-		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
 		delete theScenePtr;
 		theScenePtr=NULL;
 	}
@@ -127,13 +126,12 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
         fitInView(0, -aScenePtr->getHeight(),
                   aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(NULL);
-	emit theSimControlsPtr->showYourself();
+    emit theSimControlsPtr->showYourself();
         theMainWindowPtr->setWindowTitle(APPNAME " - " + aLevelName);
 
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr);
 
-	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
 	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
 
@@ -233,6 +231,6 @@ void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObjectPtr anAOPtr)
     if (theObjectEditorPtr!=NULL)
         delete theObjectEditorPtr;
     theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
-    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(on_objectEditor_destroyed()));
+    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(slot_editObjectDialog_destroyed()));
     theObjectEditorPtr->show();
 }
