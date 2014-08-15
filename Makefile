@@ -7,8 +7,12 @@ BUILDDIR=build
 all:
 	mkdir -p ${BUILDDIR}
 	cd ${BUILDDIR} && cmake ..
-	cd ${BUILDDIR} && make
+	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
+
+slow:
+	cd ${BUILDDIR} && make
+	cp ${BUILDDIR}/src/tbe usr/local/bin
 
 clean:
 	rm -rf ${BUILDDIR} 
