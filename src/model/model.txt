@@ -5,7 +5,8 @@
 SET(model_SOURCES 
     model/AbstractJoint.cpp 
     model/AbstractObject.cpp 
-    model/BalloonCactus.cpp 
+    model/AbstractObjectPtr.h
+    model/BalloonCactus.cpp
     model/Butterfly.cpp 
     model/CircleObjects.cpp 
     model/ColaMintBottle.cpp 
