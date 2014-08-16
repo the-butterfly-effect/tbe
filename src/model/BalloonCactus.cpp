@@ -74,7 +74,7 @@ Balloon::~Balloon()
 
 void Balloon::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
-	DEBUG6("Balloon receives callback\n");
+	DEBUG6("Balloon receives callback");
 
 	switch(theState)
 	{
@@ -105,7 +105,7 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 	// so Box2D thinks our Balloon is actually lighter than 100 grams...
 	//
 	// That's why a 0.8N upwards force suffices for now :-)
-    theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2(), true);
+	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2(), true);
 
 	// damping is now handled by Box2D - linearDamping and AngularDamping...
 }
@@ -162,7 +162,7 @@ void Balloon::deletePhysicsObjectForReal(void)
 
 Balloon::States Balloon::goToState(Balloon::States aNewState)
 {
-	DEBUG5("Balloon change state request from %d to %d.\n", theState, aNewState);
+	DEBUG5("Balloon change state request from %d to %d.", theState, aNewState);
 
 	switch (theState)
 	{
@@ -298,9 +298,9 @@ void Cactus::callBackSensor(const ContactInfo& aPoint)
 
 void Cactus::fillShapeList(void)
 {
-	PolyObject::fillShapeList();
+    PolyObject::fillShapeList();
 
-	// And add the sensor to the shapes
+    // And add the sensor to the shapes
     b2Vec2 mySensorShapeV[10];
     mySensorShapeV[0].Set( 0.078, -0.036);
     mySensorShapeV[1].Set( 0.116,  0.012);
@@ -316,9 +316,9 @@ void Cactus::fillShapeList(void)
     mySensorShapePtr->Set(mySensorShapeV, 10);
     b2FixtureDef* mySensorDef = new b2FixtureDef();
     mySensorDef->shape    = mySensorShapePtr;
-	mySensorDef->isSensor = true;
-	mySensorDef->userData = this;
-	theShapeList.push_back(mySensorDef);
+    mySensorDef->isSensor = true;
+    mySensorDef->userData = this;
+    theShapeList.push_back(mySensorDef);
 }
 
 
