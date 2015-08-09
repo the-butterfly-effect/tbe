@@ -334,6 +334,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     myEditorsMenuPtr->addAction(myEditObjectActionPtr);
     // Enable level editor mode
     theIsLevelEditor = true;
+    ui->action_Switch_to_Level_Editor->setEnabled(false);
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
 }
 
