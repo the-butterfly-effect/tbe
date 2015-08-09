@@ -2,6 +2,7 @@
 working up to Milestone A.
 
 | ALERT: This git repo is currently deemed unstable    |
+|------------------------------------------------------|
 | Please do not use unless you know what you're doing  |
 
 This is a fully playable game of alpha quality, well on its way to a shiny
