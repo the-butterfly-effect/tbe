@@ -9,6 +9,7 @@ all:
 	cd ${BUILDDIR} && cmake ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
+	ln -s usr/local/bin/tbe .
 
 slow:
 	cd ${BUILDDIR} && make
