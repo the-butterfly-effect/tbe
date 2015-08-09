@@ -139,7 +139,7 @@
            <bool>false</bool>
           </property>
           <property name="toolTip">
-           <string>The distance in which the image will repeat itself. use zero for no repeat - the image will be strechted to fit the level.</string>
+           <string>The distance in which the image will repeat itself. use zero for no repeat - the image will be stretched to fit the level.</string>
           </property>
           <property name="whatsThis">
            <string/>
@@ -162,7 +162,7 @@
            <bool>false</bool>
           </property>
           <property name="toolTip">
-           <string>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be strechted to fit the level.</string>
+           <string>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be stretched to fit the level.</string>
           </property>
           <property name="whatsThis">
            <string/>

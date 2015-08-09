@@ -21,6 +21,7 @@
 #include <QtCore/QTranslator>
 #include <QtGui/QApplication>
 #include <QtGui/QSplashScreen>
+#include <QLibraryInfo>
 #include "tbe_global.h"
 #include "tbe_paths.h"
 
@@ -71,7 +72,7 @@ QString theStartFileName;
 
 static bool displayHelp(QString /*anArgument*/ )
 {
-	printf(APPNAME " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
+	printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
 	printf(" --help              gives this help text\n");
 	printf(" -h                  gives this help text\n");
 	printf(" --level-creator     start in level creator mode\n");
@@ -167,9 +168,13 @@ int main(int argc, char *argv[])
 	translator.load(I18N_DIRECTORY + "/tbe_" + locale);
 	app.installTranslator(&translator);
 
+	QTranslator qtTranslator;
+	qtTranslator.load("qt_" + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	app.installTranslator(&qtTranslator);
+
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
-	QCoreApplication::setApplicationName("The Butterfly Effect");
+	QCoreApplication::setApplicationName(APPNAME);
 
 	QStringList myCmdLineList = app.arguments();
 

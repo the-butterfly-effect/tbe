@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string notr="true">Basics for %1</string>
+      <string>Basics for: %1</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>

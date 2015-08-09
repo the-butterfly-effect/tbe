@@ -77,7 +77,7 @@ void EditLevelProperties::populateTableAndGradient(Background* aBGPtr)
 {
 	theModel->clear();
 	//: translators: keep the semicolons - they separate the column descriptions
-	theModel->setHorizontalHeaderLabels(QString("VPos;Color;Transparancy").split(";"));
+	theModel->setHorizontalHeaderLabels(QString(tr("VPos;Color;Transparency")).split(";"));
 	m_ui->tableView->horizontalHeader()->setStretchLastSection (true);
 	m_ui->tableView->setModel(theModel);
 	m_ui->tableView->setColumnWidth(1, 40);

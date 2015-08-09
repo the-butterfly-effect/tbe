@@ -128,7 +128,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
                   aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(NULL);
     emit theSimControlsPtr->showYourself();
-        theMainWindowPtr->setWindowTitle(APPNAME " - " + aLevelName);
+        theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr);

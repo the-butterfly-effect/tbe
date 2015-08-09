@@ -21,7 +21,7 @@
 
 ChoosePhoneUndoCommand::ChoosePhoneUndoCommand(
         ViewObject* anViewObjectPtr)
-    : DummyUndoCommand(anViewObjectPtr, QObject::tr("ChoosePhone"))
+    : DummyUndoCommand(anViewObjectPtr, tr("ChoosePhone"))
 {
     DEBUG3ENTRY;
     ViewDetonatorBox* myPtr = dynamic_cast<ViewDetonatorBox*>(theViewObjPtr);

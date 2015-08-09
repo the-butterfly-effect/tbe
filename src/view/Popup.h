@@ -45,7 +45,7 @@ public:
 	{
 		DEBUG1("*** CRITICAL ERROR: %s\n", ASCII(anErrorMessage));
 		QMessageBox::critical (currentWidget,
-				APPNAME " - critical error",
+				APPNAME + " - " + QObject::tr("critical error"),
 				anErrorMessage,
 				QMessageBox::Abort |  QMessageBox::Default,
 				Qt::NoButton,
@@ -68,7 +68,7 @@ public:
 	{
 		DEBUG2("Info Message: %s\n", ASCII(aMessage));
 		QMessageBox::information (currentWidget,
-				APPNAME " - informational message",
+				APPNAME + " - " + QObject::tr("informational message"),
 				aMessage,
 				QMessageBox::Ok |  QMessageBox::Default,
 				Qt::NoButton,
@@ -84,7 +84,7 @@ public:
 	{
 		DEBUG2("Warning Message: %s\n", ASCII(aMessage));
 		QMessageBox::warning (currentWidget,
-				APPNAME " - warning",
+				APPNAME + " - " + QObject::tr("warning"),
 				aMessage,
 				QMessageBox::Ok |  QMessageBox::Default,
 				Qt::NoButton,
@@ -101,7 +101,7 @@ public:
 	{
 		DEBUG2("Yes/No Question: %s\n", ASCII(aMessage));
 		if (QMessageBox::question(currentWidget,
-				APPNAME " - question",
+				APPNAME + " - " + QObject::tr("question"),
 				aMessage,
 				QMessageBox::Yes | QMessageBox::Default,
 				QMessageBox::No,

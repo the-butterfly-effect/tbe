@@ -19,7 +19,7 @@
 #ifndef TBE_GLOBAL
 #define TBE_GLOBAL
 
-#define APPNAME "The Butterfly Effect"
+#define APPNAME QObject::tr("The Butterfly Effect")
 #define APPRELEASE "MilestoneA"
 /* for your special versioning needs, normally empty */
 #ifndef APPFLAVOUR

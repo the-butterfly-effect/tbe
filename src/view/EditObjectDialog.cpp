@@ -163,7 +163,7 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr anAbstractObjectPtr)
     {
         AbstractObject* myAORealPtr = anAbstractObjectPtr.get();
         ui.lineEditID->setText(myAORealPtr->getID());
-        ui.groupBox->setTitle(tr("Basic Properties for %1").arg(myAORealPtr->getName()));
+        ui.groupBox->setTitle(tr("Basic Properties for '%1'").arg(myAORealPtr->getName()));
 
 		//  TODO: QLabel *labelUnique;
 
