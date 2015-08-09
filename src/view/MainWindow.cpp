@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011,2012,2013,2014 Klaas van Gend
+ * This file copyright (C) 2009,2011,2012,2013,2014,2015 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -123,7 +123,7 @@ void MainWindow::on_action_About_activated()
                    "An open source game that uses realistic physics"
                    " simulations to combine lots of simple mechanical elements"
                    " to achieve a simple goal in the most complex way possible.<br><br>"
-                   "(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend<br>"
+                   "(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend<br>"
                    "Licensed under GPL version 2 - <i>only</i>.<br><br>"
                    "See http://%1/ for more info on this project.")
                 .arg(QCoreApplication::instance()->organizationDomain()), this);
@@ -138,9 +138,9 @@ void MainWindow::on_action_Bug_Reports_activated()
                    "If you come across anything that you think should not "
                    "happen, please let us know. Go to our ticket website:"
                    "<br><a href=\""
-                   "http://sourceforge.net/apps/trac/tbe/newticket\">"
-                   "http://sourceforge.net/apps/trac/tbe/newticket</a><br>"
-                   "Please tell us at least the name of the level, what you "
+                   "https://github.com/kaa-ching/tbe/issues">"
+                   "https://github.com/kaa-ching/tbe/issues</a><br>"
+                   "Please tell us at least the <i>name</i> of the level, what you "
                    "expected to happen and what did happen. If you want to "
                    "learn how we fix your issue, please provide a valid "
                    "e-mail address."

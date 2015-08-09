@@ -1,4 +1,4 @@
-Welcome to "The Butterfly Effect", working up to Milestone A.
+#Welcome to "The Butterfly Effect", working up to Milestone A.
 
 **************************************
 *
@@ -24,42 +24,43 @@ just (double-)click it to enjoy the game.
 There are 40 levels.
 All levels are playable, a few levels may need a bit more polish.
 
-New features & highlights in Milestone A:
+###New features & highlights in Milestone A:
     * a shiny new GUI, which should also work with touchscreens and touchpads
     * several animations, making it more into a game
     * 50 frames per second on some machines
     * many playability fixes in levels
+    * levels are automatically tested to ensure they work across platforms
 
-Why did this release take so long?
-Rewriting the UI took a lot of time, as it is not an easy thing to do when you are this far into development.
+###Why did this release take so long?
+Rewriting the UI took a lot of time, as it is not an easy thing to do when you
+are this far into development.
 If you don't believe: ask the KDE and Gnome teams!
+We have tried several UI approaches, but every time playtesting showed that
+our ideas were nonintuitive to players. At some point we just ran out of ideas!
 
-The Level Creator
-Unfortunately, in order to bring you the new player GUI we've decided to skip the Level Creator for now.
-It will be back soon!
+###The Level Creator
+Unfortunately, in order to bring you the new player GUI we've decided to skip
+the Level Creator for now. It will be back soon(ish)!
 
-Alternative solutions
+###Alternative solutions
 If you feel you found a solution to a level that is not right, please file
-a ticket against it or mail the level mailing list. More info is availble in the 
-Help menus.
+a ticket against it. More info is availble in the Help menus.
 
-Running in English, Dutch or Spanish
-We promise again to make this selectable in the UI for the next milestone 
-(see ticket:83).
-However, if you need to change language, start TBE from the command line and
+###Running in English, Dutch, Spanish, Russian, Malay
+If you want to change language, start TBE from the command line and
 type:
    LANG="nl" ./tbe
 Of course, for English you use "en" and for spanish "es".
 
-Known bugs and issues:
-  * The installers do not install into the "start menu", ticket:97
+###Known bugs and issues:
   * No Level Creator
 
 
 We thank our beta players for their comments on the playability of the levels.
 Especially: * All attendees at ELCE 2009 and T-Dose 2010, 
             * Naxxatoe, 
-            * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", "eyerouge", "linuxalien", "pabs3"
+            * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", 
+              "eyerouge", "linuxalien", "pabs3"
             * Margo, Bart, Jelle, Aschwin and Quinten.
             * Suzanne and Rutger
 
