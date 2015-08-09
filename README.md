@@ -1,13 +1,10 @@
-#Welcome to "The Butterfly Effect", working up to Milestone A.
+#Welcome to "The Butterfly Effect"
+working up to Milestone A.
 
-**************************************
-*
-* ALERT: This git repo is currently deemed unstable
-* Please do not use unless you know what you're doing
-*
-**************************************
+| ALERT: This git repo is currently deemed unstable    |
+| Please do not use unless you know what you're doing  |
 
-This is a fully playable game of beta quality, well on its way to a shiny
+This is a fully playable game of alpha quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
 notice a shiny new user interface - but the same levels and objects.
 
@@ -30,6 +27,7 @@ All levels are playable, a few levels may need a bit more polish.
     * 50 frames per second on some machines
     * many playability fixes in levels
     * levels are automatically tested to ensure they work across platforms
+    * development moved from Sourceforge to Github
 
 ###Why did this release take so long?
 Rewriting the UI took a lot of time, as it is not an easy thing to do when you
@@ -54,15 +52,18 @@ Of course, for English you use "en" and for spanish "es".
 
 ###Known bugs and issues:
   * No Level Creator
+  * Pareon Verify lists various bugs that cause random crashes
+  * Levels do not behave the same on all platforms
 
 
 We thank our beta players for their comments on the playability of the levels.
-Especially: * All attendees at ELCE 2009 and T-Dose 2010, 
-            * Naxxatoe, 
-            * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", 
-              "eyerouge", "linuxalien", "pabs3"
-            * Margo, Bart, Jelle, Aschwin and Quinten.
-            * Suzanne and Rutger
+Especially:
+ * All attendees at ELCE 2009 and T-Dose 2010, 
+ * Naxxatoe, 
+ * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", 
+   "eyerouge", "linuxalien", "pabs3"
+ * Margo, Bart, Jelle, Aschwin and Quinten.
+ * Suzanne, Rutger and Julia
 
 We would love to hear your thoughts and comments about the game!
 
