@@ -22,6 +22,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QSplashScreen>
 #include "tbe_global.h"
+#include "tbe_paths.h"
 
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)

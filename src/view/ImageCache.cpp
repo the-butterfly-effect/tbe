@@ -17,6 +17,7 @@
  */
 
 #include "tbe_global.h"
+#include "tbe_paths.h"
 #include "ImageCache.h"
 #include "Level.h"
 #include <QtCore/QCoreApplication>

@@ -79,12 +79,6 @@ extern void printBacktrace(void);
 extern const char* ASCII(const QString& aQString);
 
 
-/// instead of using hardcoded paths, please use the below:
-#define BINARY_DIRECTORY   (qApp->applicationDirPath())
-#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../images")
-#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../levels")
-#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../i18n")
-
 /// defined in main.cpp
 extern bool theDisplayFramerate;
 extern bool theDrawDebug;

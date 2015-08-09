@@ -19,7 +19,7 @@
 #include "ChooseLevel.h"
 #include "Popup.h"
 #include "ui_ChooseLevel.h"
-#include "tbe_global.h"
+#include "tbe_paths.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtXml/QXmlSimpleReader>
