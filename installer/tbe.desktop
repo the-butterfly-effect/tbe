@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=The Butterfly Effect
+GenericName=Physics game
+Comment=Physics-based puzzle game
+Exec=tbe
+Icon=tbe
+Type=Application
+Categories=Game;LogicGame;
+
+
+# Translations
+Comment[ru]=Игра-головоломка, основанная на физике
+GenericName[ru]=Физическая игра
+Name[ru]=Эффект бабочки
+Icon[ru]=tbe
+Comment[uk]=Гра-головоломка, заснована на фізиці
+GenericName[uk]=Фізична гра
+Name[uk]=Ефект метелика
+Icon[uk]=tbe
+Comment[ms]=Permainan teka-teki berasaskan-fizik
+GenericName[ms]=Permainan fizik
+Name[ms]=Kesan Rama-Rama
+Icon[ms]=tbe
+Icon[nl]=tbe
+Icon[es]=tbe
