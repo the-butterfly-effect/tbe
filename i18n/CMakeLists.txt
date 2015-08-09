@@ -6,6 +6,9 @@ add_definitions(${QT_DEFINITIONS})
 set(TSfiles
 	tbe_nl.ts
 	tbe_es.ts
+	tbe_ru.ts
+	tbe_ms.ts
+	tbe_uk.ts
 )
 qt4_create_translation(QMfiles ${TSfiles})
 
