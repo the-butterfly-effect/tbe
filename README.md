@@ -4,6 +4,7 @@ working up to Milestone A.
 | ALERT: This git repo is currently deemed unstable    |
 |------------------------------------------------------|
 | Please do not use unless you know what you're doing  |
+| We will update this message once quality improves    |
 
 This is a fully playable game of alpha quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
@@ -23,17 +24,18 @@ There are 40 levels.
 All levels are playable, a few levels may need a bit more polish.
 
 ###New features & highlights in Milestone A:
-    * a shiny new GUI, which should also work with touchscreens and touchpads
-    * several animations, making it more into a game
-    * 50 frames per second on some machines
-    * many playability fixes in levels
-    * levels are automatically tested to ensure they work across platforms
-    * development moved from Sourceforge to Github
+ * a shiny new GUI, which should also work with touchscreens and touchpads
+ * several animations, making it more into a game
+ * 50 frames per second on some machines
+ * many playability fixes in levels
+ * levels are automatically tested to ensure they work across platforms
+ * development moved from Sourceforge to Github
 
 ###Why did this release take so long?
 Rewriting the UI took a lot of time, as it is not an easy thing to do when you
 are this far into development.
 If you don't believe: ask the KDE and Gnome teams!
+
 We have tried several UI approaches, but every time playtesting showed that
 our ideas were nonintuitive to players. At some point we just ran out of ideas!
 
@@ -42,13 +44,14 @@ Unfortunately, in order to bring you the new player GUI we've decided to skip
 the Level Creator for now. It will be back soon(ish)!
 
 ###Alternative solutions
-If you feel you found a solution to a level that is not right, please file
-a ticket against it. More info is availble in the Help menus.
+If you feel you found a solution to a level that is not right, please post an
+issue on github: https://github.com/kaa-ching/tbe/issues. 
+More info is also availble in the TBE Help menus.
 
 ###Running in English, Dutch, Spanish, Russian, Malay
 If you want to change language, start TBE from the command line and
 type:
-   LANG="nl" ./tbe
+> `LANG="nl" ./tbe`
 Of course, for English you use "en" and for spanish "es".
 
 ###Known bugs and issues:
@@ -75,4 +78,5 @@ Don't be shy - post your thoughts in the TBE Open Discussion forum
 Regards,
 
 Peter van Ginneken, Klaas van Gend
+
 and everyone who contributed to TBE
