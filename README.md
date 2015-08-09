@@ -52,6 +52,7 @@ More info is also availble in the TBE Help menus.
 If you want to change language, start TBE from the command line and
 type:
 > `LANG="nl" ./tbe`
+
 Of course, for English you use "en" and for spanish "es".
 
 ###Known bugs and issues:
