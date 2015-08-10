@@ -73,11 +73,6 @@ public:
 	{	return QObject::tr("PivotPoint");	}
 
 	/// overridden from AbstractObject
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{	return QObject::tr("Objects rotate around this point"); }
-
-	/// overridden from AbstractObject
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}

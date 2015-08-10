@@ -49,7 +49,7 @@ PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativ
 {
     DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))\n",
            aAbstractObject.get(), aRelativePosition.dx, aRelativePosition.dy);
-	thePosRelativeToFirst = aRelativePosition;
+    thePosRelativeToFirst = aRelativePosition;
 	updateOrigCenter();
 	initPivotAttributes();
 }
@@ -124,7 +124,8 @@ void PivotPoint::initPivotAttributes ( )
 	theSecondPtr = NULL;
 	areObjectsColliding=false;
 
-	theProps.setDefaultPropertiesString(
+    theToolTip = QObject::tr("Objects rotate around this point");
+    theProps.setDefaultPropertiesString(
 		Property::OBJECT1_STRING + QString(":/") +
 		Property::OBJECT2_STRING + QString(":/") +
 		Property::SPEED_STRING + QString(":/") +

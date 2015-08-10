@@ -66,12 +66,6 @@ public:
 	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const;
 
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{
-		return theToolTipString;
-	}
-
 	/// @returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return resizableInfo;	}
@@ -91,8 +85,6 @@ protected:
 
 protected:
 	QString theNameString;
-	QString theToolTipString;
-
 	SizeDirections resizableInfo;
 };
 

@@ -194,12 +194,6 @@ qreal Spring::getTempWidth() const
     return myOtherEndPtr->getDistance() + getTheWidth();
 }
 
-const QString Spring::getToolTip ( ) const
-{
-	//: Translators: The %1 will be replaced by a phone number.
-	return QObject::tr("Send BOOM to me");
-}
-
 void Spring::setOrigCenter ( const Position& aNewPos )
 {
     RectObject::setOrigCenter(aNewPos);

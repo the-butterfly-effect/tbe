@@ -277,7 +277,7 @@ public:
     { return AbstractObjectPtr(theThisPtr); }
 
 	/// @returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const = 0;
+    virtual const QString getToolTip ( ) const;
 
 	/// @returns true if the object can be moved by the user
 	virtual bool isMovable ( ) const;
@@ -387,6 +387,9 @@ protected:
 
 	b2Body* theB2BodyPtr;
 	b2BodyDef* theB2BodyDefPtr;
+
+    /// store a tooltip string
+    QString theToolTip;
 
 	/// the properties of the object instance
 	PropertyList theProps;

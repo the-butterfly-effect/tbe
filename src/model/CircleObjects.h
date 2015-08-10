@@ -59,10 +59,6 @@ public:
 	virtual b2BodyType getObjectType(void) const
 	{	return theB2ObjectType; }
 
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{	return theBallTooltip; }
-
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const
 	{	return false;	}
@@ -78,7 +74,6 @@ protected:
 
 private:
 	QString theBallName;
-	QString theBallTooltip;
 
 	b2BodyType theB2ObjectType;
 };

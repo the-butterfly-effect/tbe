@@ -60,11 +60,6 @@ public:
 	virtual Position getTempCenter ( ) const;
 
 	/// overridden from AbstractObject
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{	return QObject::tr("Glue links two objects immovably together."); }
-
-	/// overridden from AbstractObject
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}

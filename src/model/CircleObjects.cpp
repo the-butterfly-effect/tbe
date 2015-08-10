@@ -105,11 +105,12 @@ CircleObject::CircleObject (const QString& aName,
 				  qreal aRadius,
 				  qreal aMass,
 				  qreal aBounciness)
-	: theBallName(aName), theBallTooltip(aTooltip)
+    : theBallName(aName)
 {
 	DEBUG5ENTRY;
 	createBallShapeFixture(aRadius, aMass);
 	setTheBounciness(aBounciness);
+    theToolTip =  aTooltip;
 	theProps.setDefaultPropertiesString(
 				QString("%1:%2/").arg(Property::IMAGE_NAME_STRING).arg(anImageName)
 				+ QString(Property::BOUNCINESS_STRING) + QString(":%1").arg(aBounciness));

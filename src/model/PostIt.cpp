@@ -49,6 +49,9 @@ PostIt::PostIt( )
 	theProps.setDefaultPropertiesString(
 			QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
 			"-" + Property::MASS_STRING + QString(":/") );
+    theToolTip = QObject::tr("Someone left notes all over the place.\n"
+                             "You know, those yellow 3x3 inch pieces of paper.\n"
+                             "You might want to read them - it may help!");
 
 	DEBUG5("PostIt::PostIt done\n");
 }

@@ -62,10 +62,6 @@ public:
 	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const;
 
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{	return theToolTipString; }
-
 	/// parse all properties
 	/// partially overridden from AbstractObject
 	virtual void  parseProperties(void);
@@ -90,7 +86,6 @@ private:
 
 protected:
 	QString theNameString;
-	QString theToolTipString;
 
 	/// AABB calculates the Axis-Aligned Bounding Box
 	/// which we can use for scaling

@@ -50,7 +50,7 @@ public:
 	{	return b2_staticBody; }
 
 	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
+    virtual const QString getToolTip ( ) const override
 	{
 		// no tooltip, no i18n
 		return "";

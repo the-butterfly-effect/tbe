@@ -38,11 +38,6 @@ public:
 	virtual const QString getName ( ) const
 	{	return QObject::tr("Butterfly"); }
 
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getToolTip ( ) const
-	{	return QObject::tr("Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers."); }
-
 	/// returns whether the object can be resized by the user
 	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
 	virtual SizeDirections isResizable ( ) const

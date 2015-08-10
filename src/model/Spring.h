@@ -74,10 +74,6 @@ public:
 	 */
 	virtual Position getTempCenter ( ) const;
 
-	/// overridden from RectObject to make sure
-	/// we can display the phone number
-	virtual const QString getToolTip ( ) const;
-
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const
 	{	return NORESIZING;	}

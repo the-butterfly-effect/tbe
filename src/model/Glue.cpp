@@ -44,7 +44,8 @@ Glue::Glue() : AbstractJoint()
 	theSecondLocalPosPtr = NULL;
 	theLinkPtr = NULL;
 
-	theProps.setDefaultPropertiesString(
+    theToolTip = QObject::tr("Glue links two objects immovably together.");
+    theProps.setDefaultPropertiesString(
 			Property::OBJECT1_STRING + QString(":/") +
 			Property::OBJECT2_STRING + QString(":/") +
 			"-" + Property::MASS_STRING + ":/" );

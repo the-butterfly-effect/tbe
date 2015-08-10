@@ -42,6 +42,7 @@ Link::Link(void)
       theFirstLocalPosPtr(NULL),
       theSecondLocalPosPtr(NULL)
 {
+    theToolTip=QObject::tr("A Link is a massless, bodyless connection between two objects.");
     theProps.setDefaultPropertiesString(
                 Property::OBJECT1_STRING + QString(":/") +
                 Property::OBJECT2_STRING + QString(":/") +

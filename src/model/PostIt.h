@@ -52,14 +52,6 @@ public:
 	virtual b2BodyType getObjectType(void) const
 	{	return b2_staticBody; }
 
-	/// returns the Tooltip of the object.
-	virtual const QString getToolTip ( ) const
-	{
-		return QObject::tr("Someone left notes all over the place.\n"
-						   "You know, those yellow 3x3 inch pieces of paper.\n"
-						   "You might want to read them - it may help!");
-	}
-
 	/// returns true if the object can be rotated by the user
 	/// PostIts cannot be adjusted by the player
 	virtual bool isRotatable ( ) const

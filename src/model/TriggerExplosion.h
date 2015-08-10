@@ -248,7 +248,7 @@ public:
 
 	/// overridden from PolyObject to make sure
 	/// we can display the phone number
-	virtual const QString getToolTip ( ) const;
+    virtual const QString getToolTip ( ) const override;
 
 	/// requests removal of a splatter from the list
     void removeMe(AbstractObjectPtr aDeadSplatterPtr);

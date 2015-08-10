@@ -185,9 +185,10 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				const QString& aImageName,
 				const QString& anOutline,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
-	: theNameString(aDisplayName), theToolTipString(aTooltip)
+    : theNameString(aDisplayName)
 {
 	DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
+    theToolTip = aTooltip;
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +

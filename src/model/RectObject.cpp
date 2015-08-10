@@ -57,13 +57,13 @@ public:
 		qreal aHeight,
 		qreal aMass,
 		qreal aBounciness)
-			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
-			  theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
+            : theDisplayName(aDisplayName),	theTooltip(aTooltip),
+              theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
 			  theMass(aMass), theBounciness(aBounciness)
 	{	announceObjectType(anInternalName, this); }
 
 	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new RectObject(theDisplayName, theTooltip,
+    {	return fixObject(new RectObject(theDisplayName, theTooltip,
 										theImageName, theWidth, theHeight,
 										theMass, theBounciness)); }
 private:
@@ -128,10 +128,11 @@ RectObject::RectObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& aImageName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
-	: theNameString(aDisplayName), theToolTipString(aTooltip)
+    : theNameString(aDisplayName)
 {
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
-	setTheWidth(aWidth);
+    theToolTip = aTooltip;
+    setTheWidth(aWidth);
 	setTheHeight(aHeight);
 
 	if (aMass > 0.001)
@@ -196,7 +197,6 @@ void  RectObject::parseProperties(void)
 		if (myString == Property::TOTALRESIZE_STRING)
 			resizableInfo = TOTALRESIZE;
 	}
-	theProps.property2String(Property::DESCRIPTION_STRING, &theToolTipString);
 
 	clearShapeList();
 	b2PolygonShape* myBoxShape = new b2PolygonShape();

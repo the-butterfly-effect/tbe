@@ -106,7 +106,8 @@ void TranslationGuide::initTG_Attributes ( )
 {
 	areObjectsColliding=false;
 
-	theProps.setDefaultPropertiesString(
+    theToolTip = QObject::tr("Objects are limited to only move along one axis");
+    theProps.setDefaultPropertiesString(
 		Property::OBJECT_STRING + QString(":/") +
 		Property::SPEED_STRING + QString(":/") +
 		Property::FORCE_STRING + QString(":/") +
