@@ -9,14 +9,14 @@ all:
 	cd ${BUILDDIR} && cmake ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
-	ln -s usr/local/bin/tbe .
+	ln -sf usr/local/bin/tbe .
 
 slow:
 	cd ${BUILDDIR} && make
 	cp ${BUILDDIR}/src/tbe usr/local/bin
 
 clean:
-	rm -rf ${BUILDDIR} 
+	rm -rf ${BUILDDIR} ./tbe
 
 distclean:
 	rm -rf ${BUILDDIR} usr CPack* CMakeFiles cmake_install.cmake CMakeCache.txt CMakeLists.txt.user
