@@ -138,7 +138,7 @@ void MainWindow::on_action_Bug_Reports_activated()
                    "If you come across anything that you think should not "
                    "happen, please let us know. Go to our ticket website:"
                    "<br><a href=\""
-                   "https://github.com/kaa-ching/tbe/issues">"
+                   "https://github.com/kaa-ching/tbe/issues\">"
                    "https://github.com/kaa-ching/tbe/issues</a><br>"
                    "Please tell us at least the <i>name</i> of the level, what you "
                    "expected to happen and what did happen. If you want to "
