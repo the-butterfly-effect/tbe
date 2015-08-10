@@ -7,12 +7,13 @@ add_subdirectory(src)
 add_subdirectory(i18n)
 
 
-install(DIRECTORY levels 
+install(DIRECTORY levels
 	DESTINATION .
 	PATTERN ".svn" EXCLUDE
+	PATTERN "test" EXCLUDE
 )
 
-install(FILES COPYING README AUTHORS
+install(FILES COPYING AUTHORS
 	DESTINATION .
 )
 
@@ -23,7 +24,7 @@ SET(CPACK_PACKAGE_VENDOR "www.the-butterfly-effect.org")
 SET(CPACK_PACKAGE_VERSION_MAJOR "0")
 SET(CPACK_PACKAGE_VERSION_MINOR "milestoneA")
 SET(CPACK_PACKAGE_VERSION_PATCH "rc2-1")
-SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README")
+SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 
 set(CPACK_SOURCE_GENERATOR TGZ)
 set(CPACK_SOURCE_IGNORE_FILES /.svn/;*~;/build/;usr)
@@ -51,11 +52,11 @@ if (UNIX)
  SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_STRIP_FILES "tbe")
  install(FILES imagery/illustrations/tbe-icon.png DESTINATION images RENAME TheButterflyEffect-icon.png)
- install(FILES installer/install_icons.sh DESTINATION . 
+ install(FILES installer/install_icons.sh DESTINATION .
          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
- install(FILES installer/uninstall_icons.sh DESTINATION . 
+ install(FILES installer/uninstall_icons.sh DESTINATION .
          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
- install(FILES installer/sourceforge.net-tbe.desktop DESTINATION . 
+ install(FILES installer/sourceforge.net-tbe.desktop DESTINATION .
          PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 endif (UNIX)
 
