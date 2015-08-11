@@ -64,7 +64,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(bool isMaximized, QWidget *parent = 0);
+    explicit MainWindow(bool isMaximized, bool isToRunRegression, QWidget *parent = 0);
     ~MainWindow();
 
     /// deletes the existing Level instance and removes its view
@@ -86,6 +86,11 @@ public slots:
     /// Restarts the level already active.
     /// Because we have the filename already, no need to specify here.
     void reloadLevel(void);
+
+    /// Starts the automated regression tests
+    /// TODO: for now contains the entire event state machine for tests
+    /// @note: can only be started if theRegressionRun is true
+    void startRegressionRun(void);
 
 private slots:
     // menu Help
@@ -123,6 +128,8 @@ private:
     Level* theLevelPtr;
 
     World* theWorldPtr;
+
+    bool theRegressionRun;
 };
 
 #endif // MAINWINDOW_H

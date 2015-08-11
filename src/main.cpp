@@ -80,6 +80,8 @@ static bool displayHelp(QString /*anArgument*/ )
 #if !defined(NDEBUG)
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
+    printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
+    printf("                     (comma-separated list, time is level runtime in seconds)\n");
 #endif
 	printf(" --windowed          display in a window (default is fullscreen)\n");
 	printf(" -W                  display in a window (default is fullscreen)\n");
@@ -117,6 +119,13 @@ static bool setWindowed( QString /*anArgument*/ )
 	return true;
 }
 
+static bool theIsRunAsRegression = false;
+static bool runRegression( QString aListOfLevels )
+{
+    theStartFileName=aListOfLevels;
+    theIsRunAsRegression = true;
+    return true;
+}
 
 // this struct is used to list all long and short arguments
 // it also contains a function pointer to a static function below
@@ -136,7 +145,8 @@ static struct s_args theArgsTable[] =
 	{ "help",          "h", false, displayHelp, },
 	{ "level-creator", "L", false, goLevelCreator, },
 #if !defined(NDEBUG)
-	{ "verbosity",     "v", true,  setVerbosity, },
+    { "regression",    "",  true,  runRegression, },
+    { "verbosity",     "v", true,  setVerbosity, },
 #endif
 	{ "windowed",      "W", false, setWindowed, },
 //	keep this one last:
@@ -251,7 +261,14 @@ int main(int argc, char *argv[])
 
 	DEBUG3("SUMMARY:\n");
 	DEBUG3("Verbosity is: %d / Fullscreen is %d\n", theVerbosity, theIsMaximized);
-	DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
+    if (theIsRunAsRegression)
+    {
+        DEBUG3("Regression levels: '%s'\n", ASCII(theStartFileName));
+    }
+    else
+    {
+        DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
+    }
 
 	// which settings file is used can be confusing to the user...
 	{
@@ -260,7 +277,7 @@ int main(int argc, char *argv[])
 	}
 
 	// setup main window, shut down splash screen
-	MainWindow myMain(theIsMaximized);
+    MainWindow myMain(theIsMaximized, theIsRunAsRegression);
 	myMain.show();
 	mySplash.finish(&myMain);
 

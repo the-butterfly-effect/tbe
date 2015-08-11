@@ -12,13 +12,13 @@
     <toolbox>
         <toolboxitem count="2" name="Quarter Arc">
             <name lang="nl">Kwart ronding</name>
-            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000" ID="Hint2">
+            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000">
 	      <property key="Rotatable"> true </property>
 	    </object>
         </toolboxitem>
         <toolboxitem count="1" name="Wooden Beam">
             <name lang="nl">Houten Balk</name>
-            <object width="2.000" height="0.100" type="RectObject" angle="0.000" ID="Hint1">
+            <object width="2.000" height="0.100" type="RectObject" angle="0.000">
                 <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >0.5</property>
             </object>
@@ -99,8 +99,8 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" toolbox="Hint1" width="2.000" X="2.000" Y="0.050" height="0.100" angle="0.000" />
-        <hint number="2" toolbox="Hint2" width="0.800" X="0.600" Y="0.400" height="0.800" angle="-3.140" />
-        <hint number="3" toolbox="Hint2" width="0.800" X="5.492" Y="1.048" height="0.800" angle="-1.571" />
+        <hint number="1" object="Wooden Beam" width="2.000" X="2.000" Y="0.050" height="0.100" angle="0.000" />
+        <hint number="2" object="Quarter Arc" width="0.800" X="0.600" Y="0.400" height="0.800" angle="-3.140" />
+        <hint number="3" object="Quarter Arc" width="0.800" X="5.492" Y="1.048" height="0.800" angle="-1.571" />
     </hints>
 </tbe-level>
