@@ -7,6 +7,10 @@
 #
 # Klaas van Gend, 2008
 
+printf "Updating all i18n files"
+lupdate-qt4 -I ../src/* -ts *.ts
+
+printf "\n\n"
 printf "\n   translation file  %%ready   (unfinished/(total-obsolete))\n"
 printf '=============================================================\n'
 for I in `ls -1 *.ts`; 

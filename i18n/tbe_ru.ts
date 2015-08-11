@@ -669,16 +669,26 @@ This may affect playability, though!</source>
 Хотя это может повлять на пригодность для игры!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="122"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции, комбинируя множество простых механических элементов для достижения простой цели в самом запутанном из возможных способов.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
+        <translation type="obsolete">&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции, комбинируя множество простых механических элементов для достижения простой цели в самом запутанном из возможных способов.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="obsolete">&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере название уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="122"/>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="unfinished">&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции, комбинируя множество простых механических элементов для достижения простой цели в самом запутанном из возможных способов.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте. {2009,2010,2011,2012,2013,2015 ?} {2 ?} {1/?}</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="136"/>
-        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере название уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="155"/>
@@ -889,7 +899,7 @@ This may affect playability, though!</source>
         <translation>Бабочка</translation>
     </message>
     <message>
-        <location filename="../src/model/Butterfly.h" line="44"/>
+        <location filename="../src/model/Butterfly.cpp" line="45"/>
         <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
         <translation>Бабочка (Flappus Chaoticus Fragilius) - всегда в поисках цветов.</translation>
     </message>
@@ -961,7 +971,7 @@ Look: it blows if triggered!</source>
         <translation>Клей</translation>
     </message>
     <message>
-        <location filename="../src/model/Glue.h" line="65"/>
+        <location filename="../src/model/Glue.cpp" line="47"/>
         <source>Glue links two objects immovably together.</source>
         <translation>Клей неподвижно связывает вместе два объекта.</translation>
     </message>
@@ -971,7 +981,7 @@ Look: it blows if triggered!</source>
         <translation>Связать</translation>
     </message>
     <message>
-        <location filename="../src/model/Link.h" line="65"/>
+        <location filename="../src/model/Link.cpp" line="45"/>
         <source>A Link is a massless, bodyless connection between two objects.</source>
         <translation>Связь - это безмассовое, бестелесное соединение между двумя объектами.</translation>
     </message>
@@ -981,7 +991,7 @@ Look: it blows if triggered!</source>
         <translation>Точка опоры</translation>
     </message>
     <message>
-        <location filename="../src/model/PivotPoint.h" line="78"/>
+        <location filename="../src/model/PivotPoint.cpp" line="127"/>
         <source>Objects rotate around this point</source>
         <translation>Объекты вращаются вокруг этой точки</translation>
     </message>
@@ -1077,7 +1087,7 @@ Look: it blows if triggered!</source>
         <translation>Сообщение на стикере</translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.h" line="58"/>
+        <location filename="../src/model/PostIt.cpp" line="52"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
@@ -1141,13 +1151,12 @@ You might want to read them - it may help!</source>
         <translation>Что-то пружинистое.</translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="200"/>
         <source>Send BOOM to me</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation>Отправьте внезапный успех в делах мне</translation>
+        <translation type="obsolete">Отправьте внезапный успех в делах мне</translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="218"/>
+        <location filename="../src/model/Spring.cpp" line="212"/>
         <source>Spring End</source>
         <translation>Конец пружины</translation>
     </message>
@@ -1157,7 +1166,7 @@ You might want to read them - it may help!</source>
         <translation>Руководство о переводах</translation>
     </message>
     <message>
-        <location filename="../src/model/TranslationGuide.h" line="70"/>
+        <location filename="../src/model/TranslationGuide.cpp" line="109"/>
         <source>Objects are limited to only move along one axis</source>
         <translation>Объекты ограничены только перемещением вдоль одной оси</translation>
     </message>
@@ -1197,7 +1206,6 @@ You might want to read them - it may help!</source>
 Наберите номер %1 для красивого взрыва.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="176"/>
         <location filename="../src/tbe_global.h" line="22"/>
         <source>The Butterfly Effect</source>
         <translation>Эффект бабочки</translation>

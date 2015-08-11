@@ -662,16 +662,26 @@ This may affect playability, though!</source>
 Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="122"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;. {2009,2010,2011,2012,2013 ?} {2 ?} {1/?}</translation>
+        <translation type="obsolete">&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;. {2009,2010,2011,2012,2013 ?} {2 ?} {1/?}</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="obsolete">&lt;b&gt;The Butterfly Effect - Foutrapportage&lt;/b&gt;&lt;br&gt;&lt;br&gt;Natuurlijk is dit spel niet foutvrij.&lt;br&gt;Als je iets tegenkomt dat je denkt dat niet zo hoort, laat het ons graag weten. Ga naar onze rapportagepagina op :&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Vertel ons tenminste de naam van het probleemlevel, wat je verwachtte dat zou gebeuren en wat er daadwerkelijk gebeurde. Als je wilt weten hoe we je probleem aanpakken dan moet je ook een geldig e-mailadres invullen.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="122"/>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="unfinished">&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;. {2009,2010,2011,2012,2013 ?} {2 ?} {1/?} {2009,2010,2011,2012,2013,2015 ?} {2 ?} {1/?}</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="136"/>
-        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;The Butterfly Effect - Foutrapportage&lt;/b&gt;&lt;br&gt;&lt;br&gt;Natuurlijk is dit spel niet foutvrij.&lt;br&gt;Als je iets tegenkomt dat je denkt dat niet zo hoort, laat het ons graag weten. Ga naar onze rapportagepagina op :&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Vertel ons tenminste de naam van het probleemlevel, wat je verwachtte dat zou gebeuren en wat er daadwerkelijk gebeurde. Als je wilt weten hoe we je probleem aanpakken dan moet je ook een geldig e-mailadres invullen.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="155"/>
@@ -882,7 +892,7 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
         <translation>Vlinder</translation>
     </message>
     <message>
-        <location filename="../src/model/Butterfly.h" line="44"/>
+        <location filename="../src/model/Butterfly.cpp" line="45"/>
         <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
         <translation>Vlinder (Flappus Chaoticus Kapottus Snellus) - altijd op zoek naar bloemen.</translation>
     </message>
@@ -953,7 +963,7 @@ Look: it blows if triggered!</source>
         <translation>Lijm</translation>
     </message>
     <message>
-        <location filename="../src/model/Glue.h" line="65"/>
+        <location filename="../src/model/Glue.cpp" line="47"/>
         <source>Glue links two objects immovably together.</source>
         <translation>Lijm plakt twee voorwerpen onwrikbaar samen.</translation>
     </message>
@@ -963,7 +973,7 @@ Look: it blows if triggered!</source>
         <translation>Koppeling</translation>
     </message>
     <message>
-        <location filename="../src/model/Link.h" line="65"/>
+        <location filename="../src/model/Link.cpp" line="45"/>
         <source>A Link is a massless, bodyless connection between two objects.</source>
         <translation>Een koppeling is een verbinding tussen twee objecten zonder massa of volume.</translation>
     </message>
@@ -973,7 +983,7 @@ Look: it blows if triggered!</source>
         <translation>Schanier</translation>
     </message>
     <message>
-        <location filename="../src/model/PivotPoint.h" line="78"/>
+        <location filename="../src/model/PivotPoint.cpp" line="127"/>
         <source>Objects rotate around this point</source>
         <translation>Objecten draaien om dit punt</translation>
     </message>
@@ -1069,7 +1079,7 @@ Look: it blows if triggered!</source>
         <translation>Post-it</translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.h" line="58"/>
+        <location filename="../src/model/PostIt.cpp" line="52"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
@@ -1133,13 +1143,12 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Iets stuiterend.</translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="200"/>
         <source>Send BOOM to me</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation>Stuur BOEM naar mij</translation>
+        <translation type="obsolete">Stuur BOEM naar mij</translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="218"/>
+        <location filename="../src/model/Spring.cpp" line="212"/>
         <source>Spring End</source>
         <translation>Veereinde</translation>
     </message>
@@ -1149,7 +1158,7 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Translatiegeleider</translation>
     </message>
     <message>
-        <location filename="../src/model/TranslationGuide.h" line="70"/>
+        <location filename="../src/model/TranslationGuide.cpp" line="109"/>
         <source>Objects are limited to only move along one axis</source>
         <translation>Objecten zijn beperkt tot beweging langs een enkele as</translation>
     </message>
@@ -1188,7 +1197,6 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
         <translation>Dynamiet is uitgevonden door Alfred Nobel.\nBel %1 voor een mooie ontploffing.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="176"/>
         <location filename="../src/tbe_global.h" line="22"/>
         <source>The Butterfly Effect</source>
         <translation type="unfinished"></translation>

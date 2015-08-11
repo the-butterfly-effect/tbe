@@ -647,13 +647,13 @@ This may affect playability, though!</source>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="122"/>
-        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
+        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="136"/>
-        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
+        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -865,7 +865,7 @@ This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Butterfly.h" line="44"/>
+        <location filename="../src/model/Butterfly.cpp" line="45"/>
         <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -936,7 +936,7 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Glue.h" line="65"/>
+        <location filename="../src/model/Glue.cpp" line="47"/>
         <source>Glue links two objects immovably together.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -946,7 +946,7 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Link.h" line="65"/>
+        <location filename="../src/model/Link.cpp" line="45"/>
         <source>A Link is a massless, bodyless connection between two objects.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -956,7 +956,7 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PivotPoint.h" line="78"/>
+        <location filename="../src/model/PivotPoint.cpp" line="127"/>
         <source>Objects rotate around this point</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1052,7 +1052,7 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.h" line="58"/>
+        <location filename="../src/model/PostIt.cpp" line="52"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
@@ -1114,13 +1114,7 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="200"/>
-        <source>Send BOOM to me</source>
-        <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Spring.cpp" line="218"/>
+        <location filename="../src/model/Spring.cpp" line="212"/>
         <source>Spring End</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1130,7 +1124,7 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/TranslationGuide.h" line="70"/>
+        <location filename="../src/model/TranslationGuide.cpp" line="109"/>
         <source>Objects are limited to only move along one axis</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1169,7 +1163,6 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="176"/>
         <location filename="../src/tbe_global.h" line="22"/>
         <source>The Butterfly Effect</source>
         <translation type="unfinished"></translation>
