@@ -16,10 +16,10 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/local/bin
 
 clean:
-	rm -rf ${BUILDDIR} ./tbe
+	rm -rf ${BUILDDIR} ./tbe usr
 
 distclean:
-	rm -rf ${BUILDDIR} usr CPack* CMakeFiles cmake_install.cmake CMakeCache.txt CMakeLists.txt.user
+	rm -rf ${BUILDDIR} usr CPack* CMakeFiles cmake_install.cmake CMakeCache.txt CMakeLists.txt.user ./tbe
 	find . -name '*~' -exec rm {} \;
 
 package:
