@@ -21,6 +21,7 @@
 
 #include "AbstractObjectPtr.h"
 #include "Position.h"
+#include <QObject>
 #include <QList>
 
 /**
@@ -30,13 +31,15 @@
  *  There should be a static instance in each Object's cpp file.
  *  At system start it will announce the type to Level and do the real Object creation.
  */
-class ObjectFactory
+class ObjectFactory : public QObject
 {
+    Q_OBJECT
+
 	// there's nothing public here - nobody should call anything in this class
 	// directly.
 public:
 	/// empty virtual destructor
-	virtual ~ObjectFactory() {;}
+    virtual ~ObjectFactory() {;}
 
 	typedef QList<const ObjectFactory*> ObjectFactoryList;
 

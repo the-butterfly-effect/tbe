@@ -48,7 +48,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra -Wpointer-arith -DQT_NO
 find_package(Qt4 REQUIRED)
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
-QT4_WRAP_CPP(tbe_HEADERS_MOC ${control_HEADERS} ${view_HEADERS} model/World.h loadsave/Level.h)
+QT4_WRAP_CPP(tbe_HEADERS_MOC ${control_HEADERS} ${view_HEADERS} ${model_HEADERS} ${loadsave_HEADERS})
 QT4_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
 QT4_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})

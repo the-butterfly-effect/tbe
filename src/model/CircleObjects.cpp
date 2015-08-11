@@ -22,53 +22,18 @@
 #include "CircleObjects.h"
 //#include "ViewCircleObject.h"
 #include "Property.h"
-#include "ObjectFactory.h"
-
-/** the CircleObject's ObjectFactory
- *  note that it is slightly more complex than usual, because it is generalised
- *  to create any type of ball. Below the declaration, there will be several
- *  global instances each identifying one ball type
- */
-class BallObjectFactory : public ObjectFactory
-{
-public:
-	BallObjectFactory(
-		const QString& anInternalName,
-		const QString& aDisplayName,
-		const QString& aTooltip,
-		const QString& anImageName,
-		qreal aRadius,
-		qreal aMass,
-		qreal aBounciness)
-			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
-			  theImageName(anImageName), theRadius(aRadius),
-			  theMass(aMass), theBounciness(aBounciness)
-	{	announceObjectType(anInternalName, this); }
-
-	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new CircleObject(theDisplayName, theTooltip, theImageName,
-								theRadius, theMass, theBounciness)); }
-private:
-		QString theDisplayName;
-		QString theTooltip;
-		QString theImageName;
-		qreal theRadius;
-		qreal theMass;
-		qreal theBounciness;
-};
-
 
 // we are lazy and do not model the holes in the ball, nor do we attempt to model
 // the non-uniform weight distribution in the ball - we assume it to be uniform
 static BallObjectFactory theBBFactory("BowlingBall",
-	QObject::tr("Bowling Ball"),
-	QObject::tr("Your average bowling ball - heavy, round and willing to roll"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Bowling Ball"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Your average bowling ball - heavy, round and willing to roll"),
 	"BowlingBall", 0.11, 6.0, 0.1 );
 
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theVBFactory("VolleyBall",
-	QObject::tr("Volley Ball"),
-	QObject::tr("A volley ball - you know: light, soft and fairly bouncy."),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Volley Ball"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "A volley ball - you know: light, soft and fairly bouncy."),
 	"VolleyBall", 0.105, 0.280, 0.65);
 
 
@@ -76,24 +41,24 @@ static BallObjectFactory theVBFactory("VolleyBall",
 // thanks to http://en.wikipedia.org/wiki/Tennis_ball
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theTBFactory("TennisBall",
-	QObject::tr("Tennis Ball"),
-	QObject::tr("A tennis ball is small, fuzzy and known for turning heads."),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Tennis Ball"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "A tennis ball is small, fuzzy and known for turning heads."),
 	"TennisBall", 0.034, 0.058, 0.56);
 
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
 // thanks to http://en.wikipedia.org/wiki/Football_(ball)
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static BallObjectFactory theSoccerFactory("SoccerBall",
-	QObject::tr("Soccer Ball"),
-	QObject::tr("A football (of the spherical persuasion)."),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Soccer Ball"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "A football (of the spherical persuasion)."),
 	"SoccerBall", 0.110, 0.430, 0.56);
 
 // there is not much of official standards for a petanque ball, but
 // thanks to http://en.wikipedia.org/wiki/Petanque we at least know:
 // diameter between 70.5 and 80mm, weight between 650 and 800 grams.
 static BallObjectFactory thePetanqueFactory("PetanqueBoule",
-	QObject::tr("Petanque Boule"),    // TODO/FIXME: there should be an accent on the e
-	QObject::tr("A petanque ball is made of metal and heavy."),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "Pétanque Boule"),
+    QT_TRANSLATE_NOOP("BallObjectFactory", "A pétanque ball is made of metal and heavy."),
 	"PetanqueBoule", 0.038, 0.700, 0.1);
 
 // Constructors/Destructors

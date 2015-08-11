@@ -20,6 +20,7 @@
 #define CIRCLEOBJECTS_H
 
 #include "AbstractObject.h"
+#include <QObject>
 
 /**
   * class CircleObject
@@ -93,5 +94,44 @@ public:
 	/// we need to parse the Radius - duh
 	virtual void  parseProperties(void);
 };
+
+
+#include "ObjectFactory.h"
+
+/** the CircleObject's ObjectFactory
+ *  note that it is slightly more complex than usual, because it is generalised
+ *  to create any type of ball. Below the declaration, there will be several
+ *  global instances each identifying one ball type
+ */
+class BallObjectFactory : public ObjectFactory
+{
+    Q_OBJECT
+
+public:
+    BallObjectFactory(
+        const QString& anInternalName,
+        const char*  aDisplayName,
+        const char*  aTooltip,
+        const QString& anImageName,
+        qreal aRadius,
+        qreal aMass,
+        qreal aBounciness)
+            : theDisplayName(aDisplayName),	theTooltip(aTooltip),
+              theImageName(anImageName), theRadius(aRadius),
+              theMass(aMass), theBounciness(aBounciness)
+    {	announceObjectType(anInternalName, this); }
+
+    virtual AbstractObject* createObject(void) const
+    {	return fixObject(new CircleObject(tr(theDisplayName), tr(theTooltip), theImageName,
+                                theRadius, theMass, theBounciness)); }
+private:
+        const char* theDisplayName;
+        const char* theTooltip;
+        QString theImageName;
+        qreal theRadius;
+        qreal theMass;
+        qreal theBounciness;
+};
+
 
 #endif // CIRCLEOBJECTS_H
