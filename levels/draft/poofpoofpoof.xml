@@ -23,7 +23,7 @@
             <object type="BowlingBall" />
         </toolboxitem>
         <toolboxitem count="1" name="Cactus" >
-            <name lang="nl" >Bowlingbal</name>
+            <name lang="nl" >Cactus</name>
             <object type="Cactus" />
         </toolboxitem>
     </toolbox>

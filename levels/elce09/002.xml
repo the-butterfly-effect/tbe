@@ -19,7 +19,7 @@
             <object type="BowlingBall" />
         </toolboxitem>
         <toolboxitem count="0" name="LeftRamp">
-            <name lang="nl">Bowlingbal</name>
+            <name lang="nl">Helling naar links</name>
             <object type="LeftRamp" />
         </toolboxitem>
     </toolbox>

@@ -1,8 +1,8 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Jumping Around Part II</title>
-        <title lang="nl" >Rondspringen deel II</title>
+        <title>Jumping Around II</title>
+        <title lang="nl" >Rondspringen II</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The soccer ball cannot cross a big gap by itself.</description>

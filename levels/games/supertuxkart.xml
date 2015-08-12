@@ -11,7 +11,7 @@
         <date>March 16, 2014</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Quarter Arc">
+        <toolboxitem count="1" name="Quarter Arc #1">
             <name lang="nl">Kwart bocht nr 1</name>
             <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="0.000">
 			  <property key="Rotatable"> true </property>

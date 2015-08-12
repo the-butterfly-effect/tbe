@@ -16,7 +16,7 @@
                 <property key="Mass" >4</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Wood Bar" >
+        <toolboxitem count="1" name="Wooden bar" >
             <name lang="nl" >Houten balk</name>
             <object width="0.4" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>

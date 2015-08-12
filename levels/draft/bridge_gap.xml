@@ -1,8 +1,8 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Bridge the Gap</title>
-        <title lang="nl">De Afgrond</title>
+        <title>Bridge the Gap I</title>
+        <title lang="nl">De Afgrond I</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>a football needs to cross a big gap. Let's help crossing.</description>

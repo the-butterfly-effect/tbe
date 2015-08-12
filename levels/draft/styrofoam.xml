@@ -98,12 +98,12 @@
                 <property key="page2" >Use a proper football this time!</property>
                 <property key="page2_nl" >Met een echte voetbal deze keer!</property>
                 <property key="page3" >(Or a "soccer" ball for you Americans)</property>
-                <property key="page3_nl" >Maar ontbreekt er niet nog wat?</property>
                 <property key="page4" >Looks like there's something missing...</property>
-                <property key="page4_nl" >TIP: plaats het eerst op de ondergrond,&lt;br>pas dan hoogte aan,&lt;br>en dan de breedte...</property>
+                <property key="page4_nl" >Maar ontbreekt er niet nog wat?</property>
                 <property key="page5" >Hint: first put it on the floor,&lt;br>then adjust height,&lt;br>then the width...</property>
-                <property key="page5_nl" >Post-It boy &lt;br>speelt graag met piepschuim ... &lt;br>&lt;br>... als ontbijt!</property>
+                <property key="page5_nl" >TIP: plaats het eerst op de ondergrond,&lt;br>pas dan hoogte aan,&lt;br>en dan de breedte...</property>
                 <property key="page6" >Post-It boy &lt;br>likes playing with styrofoam ... &lt;br>&lt;br>... for breakfast!</property>
+                <property key="page6_nl" >Post-It boy &lt;br>speelt graag met piepschuim ... &lt;br>&lt;br>... als ontbijt!</property>
             </object>
         </predefined>
         <background>

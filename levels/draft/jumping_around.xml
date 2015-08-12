@@ -1,8 +1,8 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Jumping Around</title>
-        <title lang="nl">Rondspringen</title>
+        <title>Jumping Around I</title>
+        <title lang="nl">Rondspringen I</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>a bowling ball needs to cross a big gap. Or does he?</description>
