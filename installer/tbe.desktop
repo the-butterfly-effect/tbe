@@ -9,10 +9,24 @@ Categories=Game;LogicGame;
 
 
 # Translations
+Comment[be]=Гульня-галаваломка, заснаваная на фізіцы
+GenericName[be]=Гульня, заснаваная на фізіцы
+Name[be]=Эфект матылька
+Icon[be]=tbe
 Comment[ru]=Игра-головоломка, основанная на физике
 GenericName[ru]=Физическая игра
 Name[ru]=Эффект бабочки
 Icon[ru]=tbe
+Comment[is]=Eðlisfræðilegur þrautaleikur
+GenericName[is]=Eðlisfræðileikur
+Name[is]=Fiðrildaáhrifin
+Icon[is]=tbe
+Comment[sv]=Fysikbaserat problemlösarspel
+GenericName[sv]=Fysikspel
+Name[sv]=The Butterfly Effect
+Icon[sv]=tbe
+Name[lt]=Drugelio Efektas
+Icon[es]=tbe
 Comment[uk]=Гра-головоломка, заснована на фізиці
 GenericName[uk]=Фізична гра
 Name[uk]=Ефект метелика
@@ -21,5 +35,5 @@ Comment[ms]=Permainan teka-teki berasaskan-fizik
 GenericName[ms]=Permainan fizik
 Name[ms]=Kesan Rama-Rama
 Icon[ms]=tbe
+Name[nl]=Vlindereffect
 Icon[nl]=tbe
-Icon[es]=tbe
