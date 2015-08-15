@@ -54,7 +54,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
     qDebug() << Q_FUNC_INFO;
     // extract the AbstractObject from the toolbox
     AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
-    Q_ASSERT(myVOPtr!=NULL);
+	Q_ASSERT(myAOPtr!=NULL);
 
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
     myInsertPtr->theTBGPtr = anToolboxGroupPtr;

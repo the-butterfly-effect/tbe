@@ -3,10 +3,12 @@
 #
 
 BUILDDIR=build
+# if you want to build Release, just call "make BUILDTYPE=Release all"
+BUILDTYPE=Debug
 
 all:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake ..
+	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
 	ln -sf usr/local/bin/tbe .
