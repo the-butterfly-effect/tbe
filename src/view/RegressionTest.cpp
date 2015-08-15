@@ -137,8 +137,18 @@ void RegressionTest::slotRegressionProgress(void)
 		myNextState= STARTLEVELTOFAIL;
 		break;
 	case STARTLEVELTOWIN: // Start Level, expect success
-		// TODO: implement
+	{
+		QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
+		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+		myNextDelay= myLevelDurationSeconds*1000;
+		theIsWon = false;
+		theIsFail = false;
+		// Registering for success event (and fail event!) was already done in resizinggraphicsview
+		myNextState = LEVELWON;
 		break;
+	}
 	case LEVELWON: // Check for success
 		theRegressionTimer.stop();
 		// TODO: implement
