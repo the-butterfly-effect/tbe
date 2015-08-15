@@ -21,7 +21,6 @@
 #include "Box2D.h"
 #include "ViewObject.h"
 #include "Property.h"
-#include "ObjectFactory.h"
 
 static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
 
@@ -40,41 +39,6 @@ public:
 static RectObjectFactory theRectObjectFactory;
 
 
-/** the AbstractRectObjectFactory
- *  note that it is slightly more complex than usual, because it is generalised
- *  to create any type of rectobject. Below the declaration, there will be several
- *  global instances each identifying one rectobject type
- */
-class AbstractRectObjectFactory : public ObjectFactory
-{
-public:
-	AbstractRectObjectFactory(
-		const QString& anInternalName,
-		const QString& aDisplayName,
-		const QString& aTooltip,
-		const QString& anImageName,
-		qreal aWidth,
-		qreal aHeight,
-		qreal aMass,
-		qreal aBounciness)
-            : theDisplayName(aDisplayName),	theTooltip(aTooltip),
-              theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
-			  theMass(aMass), theBounciness(aBounciness)
-	{	announceObjectType(anInternalName, this); }
-
-	virtual AbstractObject* createObject(void) const
-    {	return fixObject(new RectObject(theDisplayName, theTooltip,
-										theImageName, theWidth, theHeight,
-										theMass, theBounciness)); }
-private:
-		QString theDisplayName;
-		QString theTooltip;
-		QString theImageName;
-		qreal theWidth;
-		qreal theHeight;
-		qreal theMass;
-		qreal theBounciness;
-};
 
 
 // ---------------------------------predefined rectangular objects:
@@ -85,27 +49,27 @@ private:
 // anImageName,   aWidth,aHeight,  aMass,  aBounciness
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
-	QObject::tr("Domino (Red)"),
-	QObject::tr("The famous plastic red domino stone"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "Domino (Red)"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "The famous plastic red domino stone"),
 	"DominoRed", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
-	QObject::tr("Domino (Blue)"),
-	QObject::tr("The famous plastic blue domino stone"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "Domino (Blue)"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "The famous plastic blue domino stone"),
 	"DominoBlue", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
-	QObject::tr("Domino (Green)"),
-	QObject::tr("The famous plastic green domino stone"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "Domino (Green)"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "The famous plastic green domino stone"),
 	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
-	QObject::tr("Floor"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "Floor"),
 	"",
 	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
 static AbstractRectObjectFactory theWallFactory("Wall",
-	QObject::tr("Wall"),
+	QT_TRANSLATE_NOOP(AbstractRectObjectFactory, "Wall"),
 	"",
 	"oldbrick", 0.2, 1.0, 0.0, 0.05 );
 

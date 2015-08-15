@@ -20,6 +20,7 @@
 #define RECTOBJECT_H
 
 #include "AbstractObject.h"
+#include "ObjectFactory.h"
 
 /// forward declarations
 class b2FixtureDef;
@@ -86,6 +87,44 @@ protected:
 protected:
 	QString theNameString;
 	SizeDirections resizableInfo;
+};
+
+
+/** the AbstractRectObjectFactory
+ *  note that it is slightly more complex than usual, because it is generalised
+ *  to create any type of rectobject. Below the declaration, there will be several
+ *  global instances each identifying one rectobject type
+ */
+class AbstractRectObjectFactory : public ObjectFactory
+{
+	Q_OBJECT
+public:
+	AbstractRectObjectFactory(
+		const QString& anInternalName,
+		const char*    aDisplayName,
+		const char*    aTooltip,
+		const QString& anImageName,
+		qreal aWidth,
+		qreal aHeight,
+		qreal aMass,
+		qreal aBounciness)
+			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
+			  theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
+			  theMass(aMass), theBounciness(aBounciness)
+	{	announceObjectType(anInternalName, this); }
+
+	virtual AbstractObject* createObject(void) const
+	{	return fixObject(new RectObject(tr(theDisplayName), tr(theTooltip),
+										theImageName, theWidth, theHeight,
+										theMass, theBounciness)); }
+private:
+		const char* theDisplayName;
+		const char* theTooltip;
+		QString theImageName;
+		qreal theWidth;
+		qreal theHeight;
+		qreal theMass;
+		qreal theBounciness;
 };
 
 #endif // RECTOBJECT_H

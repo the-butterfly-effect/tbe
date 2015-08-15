@@ -20,7 +20,7 @@
 #define POLYOBJECT_H
 
 #include "AbstractObject.h"
-
+#include "ObjectFactory.h"
 /**
   * class PolyObject
   *
@@ -113,6 +113,49 @@ protected:
 	};
 
 	AABB theAABB;
+};
+
+
+
+/** the AbstractPolyObjectFactory
+ *  Note that it is slightly more complex than usual, because it is generalised
+ *  to create any type of PolyObject. Below the declaration, there will be several
+ *  global instances each identifying one rectobject type
+ */
+class AbstractPolyObjectFactory : public ObjectFactory
+{
+	Q_OBJECT
+public:
+	AbstractPolyObjectFactory(
+		const QString& anInternalName,
+		const char*    aDisplayName,
+		const char*    aTooltip,
+		const QString& anImageName,
+		const QString& anOutline,
+		qreal aWidth,
+		qreal aHeight,
+		qreal aMass,
+		qreal aBounciness)
+			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
+			  theImageName(anImageName), theOutline(anOutline),
+			  theWidth(aWidth), theHeight(aHeight),
+			  theMass(aMass), theBounciness(aBounciness)
+	{	announceObjectType(anInternalName, this); }
+
+	virtual AbstractObject* createObject(void) const
+	{	return fixObject(new PolyObject(tr(theDisplayName), tr(theTooltip),
+										theImageName, theOutline,
+										theWidth, theHeight, theMass,
+										theBounciness)); }
+private:
+		const char* theDisplayName;
+		const char* theTooltip;
+		QString theImageName;
+		QString theOutline;
+		qreal theWidth;
+		qreal theHeight;
+		qreal theMass;
+		qreal theBounciness;
 };
 
 #endif // POLYOBJECT_H
