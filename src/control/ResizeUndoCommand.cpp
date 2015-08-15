@@ -35,8 +35,7 @@ ResizeUndoCommand::ResizeUndoCommand(
     //     are we allowed to resize horizontally
     //     or vertically, or both???
     theResizingOptions = anViewObjectPtr->getAbstractObjectPtr()->isResizable();
-    theResizingOptions = AbstractObject::TOTALRESIZE;
-    qDebug() << QString("resizing options: %1").arg(theResizingOptions);
+	//theResizingOptions = AbstractObject::TOTALRESIZE;
     switch (theResizingOptions)
     {
     case AbstractObject::NORESIZING:
@@ -123,7 +122,6 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     }
 
     // if myAxis is empty, we're definitely not ok, let's ignore the click.
-    qDebug() << QString("myAxis before filter: %1").arg(theAxis);
     if (theAxis == NONE)
         goto ignoreClick;
 
@@ -160,11 +158,9 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     }
 
     // if we got here, myAxis only has one bit set.
-    qDebug() << QString("myAxis after filter: %1").arg(theAxis);
     return false;
 
 ignoreClick:
-    qDebug() << "myAxis not good - ignore click";
     theAxis = NONE;
     theButtonDownLength = 0;
     setDecoratorStateUndoRedo();

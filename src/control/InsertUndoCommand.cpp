@@ -51,8 +51,8 @@ ViewObject* InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
 bool InsertUndoCommand::createInsertUndoCommand(
         ToolboxGroup* anToolboxGroupPtr)
 {
-    qDebug() << Q_FUNC_INFO;
-    // extract the AbstractObject from the toolbox
+	DEBUG3ENTRY;
+	// extract the AbstractObject from the toolbox
     AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
 	Q_ASSERT(myAOPtr!=NULL);
 
@@ -64,7 +64,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
 
 bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 {
-    qDebug() << Q_FUNC_INFO;
+	DEBUG3ENTRY
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(anAOPtr);
     myInsertPtr->theTBGPtr = NULL;
     myInsertPtr->commit();
@@ -74,7 +74,7 @@ bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
         AbstractObjectPtr anAOPtr)
 {
-    qDebug() << Q_FUNC_INFO;
+	DEBUG3ENTRY
     // extract the AbstractObject and the ViewObject
     ViewObject* myVOPtr = createVOfromAO(anAOPtr);
     Q_ASSERT(myVOPtr!=NULL);
@@ -90,7 +90,7 @@ InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
 
 void InsertUndoCommand::redo(void)
 {
-    qDebug() << Q_FUNC_INFO << text();
+	DEBUG3("InsertUndoCommand::redo for '%s'", ASCII(text()));
 
     if (theTBGPtr)
     {
@@ -123,7 +123,7 @@ void InsertUndoCommand::redo(void)
 
 void InsertUndoCommand::undo(void)
 {
-    qDebug() << Q_FUNC_INFO << text();
+	DEBUG3("InsertUndoCommand::undo for '%s'", ASCII(text()));
 
     AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
 

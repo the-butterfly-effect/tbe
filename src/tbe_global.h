@@ -64,9 +64,14 @@ extern void printBacktrace(void);
 #define DEBUG2(format, ...)     { /**/ }
 #define DEBUG3(format, ...)     { /**/ }
 #define DEBUG4(format, ...)     { /**/ }
-#define DEBUG4NT(format, ...)     { /**/ }
+#define DEBUG4NT(format, ...)   { /**/ }
 #define DEBUG5(format, ...)     { /**/ }
 #define DEBUG6(format, ...)     { /**/ }
+#define DEBUG1ENTRY			    { /**/ }
+#define DEBUG3ENTRY			    { /**/ }
+#define DEBUG4ENTRY			    { /**/ }
+#define DEBUG5ENTRY			    { /**/ }
+#define DEBUG6ENTRY			    { /**/ }
 #endif
 
 

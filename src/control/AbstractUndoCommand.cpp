@@ -111,7 +111,7 @@ bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
 
 void AbstractUndoCommand::redo(void)
 {
-    qDebug() << Q_FUNC_INFO << text();
+	DEBUG3("AbstractUndoCommand::redo for '%s'", ASCII(text()));
 
     // in the case of DeleteUndoCommand, we won't have a ViewObject left
     // when we get here ;-)
@@ -178,7 +178,7 @@ bool AbstractUndoCommand::setDecoratorStateUndoRedo(void)
 
 void AbstractUndoCommand::undo(void)
 {
-    qDebug() << Q_FUNC_INFO << text();
+	DEBUG3("AbstractUndoCommand::undo for '%s'", ASCII(text()));
 
     // in the case of InsertUndoCommand, we won't have a ViewObject left
     // when we get here ;-)

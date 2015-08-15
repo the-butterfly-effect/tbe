@@ -55,7 +55,7 @@ AbstractUndoCommand*
 UndoSingleton::createUndoCommand(ViewObject* anObject,
 								 ActionIcon::ActionType anUndoType)
 {
-	qDebug() << Q_FUNC_INFO << "action type: " << anUndoType;
+	DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);
 
 	AbstractUndoCommand* myNewCommand = NULL;
 	// return immediately for UndoActions that do not need further
@@ -108,7 +108,7 @@ void UndoSingleton::notifyGone(AbstractUndoCommand* anAUCPtr)
 
 void UndoSingleton::push(AbstractUndoCommand* anAUCPtr)
 {
-	qDebug() << "pushed " << anAUCPtr->text();
+	DEBUG3("UndoSingleton::push for '%s'", ASCII(anAUCPtr->text()));
 	me()->theUndoStack.push(anAUCPtr);
 	notifyGone(anAUCPtr);
 }
