@@ -23,6 +23,7 @@
 #include "MainWindow.h"
 #include "PieMenu.h"
 #include "Popup.h"
+#include "RegressionTest.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
 #include "ViewObjectActionDectorator.h"
@@ -136,6 +137,12 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
 	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
+
+	if (theIsRunAsRegression)
+	{
+		connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), theMainWindowPtr->theRegressionTest, SLOT(slot_Won()));
+		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr, SLOT(slot_Fail()));
+	}
 
 	QTimer::singleShot(200, theGameResourcesPtr, SLOT(appearAnimated()));
 }

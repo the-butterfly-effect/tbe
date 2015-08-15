@@ -31,6 +31,21 @@ class RegressionTest : public QObject
 {
 	Q_OBJECT
 public:
+
+	enum States
+	{
+		START = 0,
+		LOADLEVEL,
+		STARTLEVELTOFAIL,
+		LEVELFAILED,
+		RESETLEVEL,
+		ADDHINTS,
+		STARTLEVELTOWIN,
+		LEVELWON,
+		NEXTLEVEL,
+	};
+
+
 	explicit RegressionTest(MainWindow *parent = 0);
 
 	/// Starts the automated regression tests
@@ -41,16 +56,21 @@ public:
 signals:
 
 public slots:
+	void slot_Won();
+	void slot_Fail();
 
 private slots:
 	///
 	void slotRegressionProgress(void);
 
 private:
+
+	bool theIsWon;
+	bool theIsFail;
 	int theLevelIndex;
 	QStringList theLevels;
 	MainWindow* theMainWindowPtr;
-	int theState;
+	States theState;
 	QTimer theRegressionTimer;
 };
 
