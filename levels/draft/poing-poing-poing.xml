@@ -3,7 +3,7 @@
     <levelinfo>
         <title>Poing Poing Poing</title>
         <title lang="nl">Poing Poing Poing</title>
-        <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
+        <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Once a Volley Ball jumps across, a Cola bottle will finish it off.</description>
         <description lang="nl">Nadat een volleybal naar de overkant is gestuiterd, maakt een colafles het af.</description>

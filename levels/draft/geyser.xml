@@ -3,7 +3,7 @@
     <levelinfo>
         <title>Geyser</title>
         <title lang="nl" >Geiser</title>
-        <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
+        <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
         <description>A volley ball must topple a pin from the other end.</description>
         <description lang="nl" >Een volleybal hoort de kegel de andere kant op te kegelen.</description>

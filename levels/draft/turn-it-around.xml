@@ -3,7 +3,7 @@
     <levelinfo>
         <title>Turn it around</title>
         <title lang="nl" >Draai de lat</title>
-        <author>idea: Peter van Ginneken, implementation: Klaas van Gend</author>
+        <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
         <description>A ball on a bar. Turn it around. Topple the pin.</description>
         <description lang="nl" >Een bal op een lat. Draai de lat. Kegel de kegel.</description>
