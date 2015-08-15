@@ -23,6 +23,8 @@
 #include "AbstractJoint.h"
 #include "Position.h"
 
+#include <QObject>
+
 // forward declarations
 class b2DistanceJoint;
 

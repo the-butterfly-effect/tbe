@@ -23,6 +23,8 @@
 #include "AbstractJoint.h"
 #include "Position.h"
 
+#include <QObject>
+
 /// The Link class is a joint, it links two objects (bodies) together
 /// whilst keeping the connection points at a constant distance
 ///

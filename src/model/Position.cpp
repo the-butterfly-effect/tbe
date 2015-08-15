@@ -283,6 +283,7 @@ bool operator!=(const Vector& v1, const Vector& v2)
     return !(v1==v2);
 }
 
+#ifdef QT_DEBUG
 QDebug operator<<(QDebug dbg, const Position& p)
 {
     dbg.nospace() << p.toString();
@@ -294,3 +295,4 @@ QDebug operator<<(QDebug dbg, const Vector& v)
     dbg.nospace() << v.toString();
     return dbg.space();
 }
+#endif
