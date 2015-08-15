@@ -19,11 +19,13 @@
 #include "AbstractObjectSerializer.h"
 #include "BackgroundSerializer.h"
 #include "GameResources.h"
+#include "Goal.h"
+#include "GoalSerializer.h"
+#include "Hint.h"
+#include "HintSerializer.h"
 #include "Level.h"
 #include "ToolboxGroupSerializer.h"
 #include "World.h"
-#include "GoalSerializer.h"
-#include "Goal.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -268,7 +270,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	}
 
 	//
-	// parse the Goal section
+	// parse the Goals section
 	//
 	do {
 		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theGoalsString);
@@ -314,6 +316,61 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			}
 
 			theWorldPtr->addGoal(myGPtr);
+
+			if (q==myNode.lastChild())
+				break;
+		}
+	} while (false);  // i.e. always run this loop only once
+	if (hasProblem==true)
+	{
+		return "W " + myErrorMessage;
+	}
+
+	//
+	// parse the Hints section
+	//
+	do {
+		myErrorMessage = tr("Parsing '%1' section failed: ").arg(theHintsString);
+		mySceneNode=myDocElem.firstChildElement(theHintsString);
+		if (mySceneNode.nodeName()!= theHintsString)
+		{
+			// hints are not mandatory
+			break; // exit the do-while loop
+		}
+		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
+		{
+			// a hints section has the following layout:
+			//	    <hints>
+			//         <hint number="1" object="Ramp \" X="1.100" Y="1.200"/>
+			//         <hint number="2" object="Quarter Arc" X="0.600" Y="0.400" angle="-3.140" />
+			//		</hints>
+			//
+			// Of the arguments, 'number' and 'object' are mandatory
+			// * object must be a name that is present in the Toolbox section
+			// * numbers start at 1 and increment monotonously - 1,2,4 is not allowed.
+			// * everything else is optional and depends on what is customized
+			// * (not all objects allow rotation or resizing, we should check for that!)
+
+			// simple sanity checks
+			if (q.nodeName() == "#comment")
+				continue;
+			if (q.nodeName() != theHintString)
+			{
+				myErrorMessage += tr("expected a <%1> section, got <%2>. ").arg(theHintString).arg(q.nodeName());
+				hasProblem = true;
+				continue;
+			}
+
+			Hint* myHPtr = HintSerializer::createObjectFromDom(q);
+			if (myHPtr == NULL)
+			{
+				myErrorMessage += tr("createObjectFromDom failed");
+				hasProblem = true;
+				continue;
+			}
+
+			// FIXME TODO: add hint to level
+//			theWorldPtr->addGoal(myGPtr);
 
 			if (q==myNode.lastChild())
 				break;

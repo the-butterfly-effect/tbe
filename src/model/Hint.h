@@ -38,6 +38,8 @@ public:
 	virtual ~Hint();
 
 protected:
+	int     theHintIndex;
+	QString theObjectName;
 	PropertyList theParams;
 	friend class HintSerializer;
 };

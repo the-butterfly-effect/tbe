@@ -45,42 +45,46 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 		return NULL;
 	}
 
-	// the nodemap contains all the parameters, or not...
+	Hint* myHPtr = new Hint();
+
+	// the nodemap contains all the attributes...
 	myNodeMap = q.attributes();
 
-	QString myObjectType = myNodeMap.namedItem(theTypeAttributeString).nodeValue();
-
-	Hint* myGPtr = new Hint();
-
-	if (myGPtr==NULL)
+	for (unsigned int i=0; i< myNodeMap.length(); i++)
 	{
-		DEBUG2("createHintFromDom: '%s' has problems in its factory", ASCII(myObjectType));
+		QString myAName  = myNodeMap.item(i).nodeName();
+		QString myAValue = myNodeMap.item(i).nodeValue();
+		DEBUG3("hint attribute: name %s", ASCII(myAName));
+		DEBUG3("hint attribute: value %s\n", ASCII(myAValue));
+
+		if (myAName == "number")
+		{
+			myHPtr->theHintIndex=myAValue.toInt();
+			continue;
+		}
+		if (myAName == "object")
+		{
+			myHPtr->theObjectName=myAValue;
+			continue;
+		}
+		myHPtr->theParams.setProperty(myAName, myAValue);
+	}
+
+	// sanity checks:
+	if (myHPtr->theHintIndex==0 || myHPtr->theObjectName=="-")
+	{
+		DEBUG2("Hint parsing failed: mandatory field(s) missing");
+		goto not_good;
+	}
+	if (myHPtr->theParams.getPropertyCount()==0)
+	{
+		DEBUG2("Hint parsing failed: no parameter fields, that's just wrong");
 		goto not_good;
 	}
 
-//	if (myNodeMap.namedItem(theIsFailAttributeString).nodeValue() == "true")
-//	{
-//		myGPtr->isFail = true;
-//	}
-
-	if (q.hasChildNodes()==true)
-	{
-		// to parse:   <property key="lessthan">0.3</property>
-		QDomElement i;
-		for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
-		{
-			if (i.nodeName() != thePropertyString)
-				goto not_good;
-			QString myKey = i.attributes().item(0).nodeValue();
-			QString myValue = i.text();
-			DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myValue)));
-//			myGPtr->theProps.setProperty(myKey, myValue);
-		}
-	}
-
-	DEBUG4("createHintFromDom for '%s' successful\n", ASCII(myObjectType));
-	return myGPtr;
+	DEBUG4("createHintFromDom %d for '%s' successful\n", myHPtr->theHintIndex, ASCII(myHPtr->theObjectName));
+	return myHPtr;
 not_good:
-	delete myGPtr;
+	delete myHPtr;
 	return NULL;
 }

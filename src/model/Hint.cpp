@@ -25,7 +25,7 @@
 
 #include <QStringList>
 
-Hint::Hint()
+Hint::Hint() : theHintIndex(0), theObjectName("-")
 {
 	// nothing to do here
 }
