@@ -126,7 +126,7 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 	{
 		(*myI)->restitution = theBounciness;
 		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
-#ifndef NDEBUG
+#ifdef QT_DEBUG
 		b2AABB myAABB;
 		b2Transform myT;
 		myT.SetIdentity();

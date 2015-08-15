@@ -17,7 +17,7 @@
  */
 
 
-#if defined(Q_WS_X11) && !defined(NDEBUG)
+#if defined(Q_WS_X11) && defined(QT_DEBUG)
 
 #include <execinfo.h>
 #include <csignal>
@@ -141,4 +141,4 @@ void setupBacktrace(void)
     ; // nothing to do here :-)
 }
 
-#endif // defined Q_WS_X11 && !defined NDEBUG
+#endif // defined Q_WS_X11 && defined QT_DEBUG

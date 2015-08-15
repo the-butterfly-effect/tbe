@@ -39,7 +39,7 @@ const float SQRT2 = 1.41421356;
  * level 5 = all debugging, including entry of functions under scrutiny
  * level 6 = timing info on serial port
  */
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
 #include <QtCore/QtDebug>
 #include <ctime>
 extern int theVerbosity;	// actually defined in main.cpp

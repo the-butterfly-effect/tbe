@@ -17,8 +17,7 @@ Source0:        %{name}-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
 Source1:        %{name}-i18n-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
-Patch0:         tbe-0.9-mga-fix-ndebug.patch
-Patch1:         tbe-0.9-mga-datadir.patch
+Patch0:         tbe-0.9-mga-datadir.patch
 BuildRequires:  imagemagick
 BuildRequires:  cmake
 BuildRequires:  qt4-devel
@@ -34,7 +33,6 @@ most complex way possible.
 %setup -q -n %{name}-%{version}-%{rev}
 tar -xf %{SOURCE1}
 %patch0 -p1
-%patch1 -p1
 
 %build
 pushd i18n
@@ -43,7 +41,8 @@ popd
 # Use dummy installation directory to prevent heavy patching
 # of the bad make install instructions
 %cmake -DCMAKE_INSTALL_PREFIX=/tmp \
-       -DBUILD_SHARED_LIBS=OFF
+       -DBUILD_SHARED_LIBS=OFF \
+       -DCMAKE_BUILD_TYPE=Release
 %make
 
 %install

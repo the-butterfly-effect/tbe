@@ -57,7 +57,7 @@ bool theIsTesting = false;
 // This variable defines whether TBE displays a frame refresh counter or not
 // TODO/FIXME: this should go into preferences or so at some point
 // (enabled in debug builds/disabled in release builds)
-#ifdef NDEBUG
+#ifdef QT_NO_DEBUG
 bool theDisplayFramerate = false;
 #else
 bool theDisplayFramerate = true;
@@ -78,7 +78,7 @@ static bool displayHelp(QString /*anArgument*/ )
 	printf(" -h                  gives this help text\n");
 	printf(" --level-creator     start in level creator mode\n");
 	printf(" -L                  start in level creator mode\n");
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
@@ -96,7 +96,7 @@ static bool goLevelCreator( QString /*anArgument*/ )
 	return true;
 }
 
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
 static bool setVerbosity(QString anArgument)
 {
 	// the argument should be a number. Let's parse.
@@ -145,7 +145,7 @@ static struct s_args theArgsTable[] =
 // keep sorted alphabetically, please
 	{ "help",          "h", false, displayHelp, },
 	{ "level-creator", "L", false, goLevelCreator, },
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
     { "regression",    "",  true,  runRegression, },
     { "verbosity",     "v", true,  setVerbosity, },
 #endif
@@ -156,7 +156,7 @@ static struct s_args theArgsTable[] =
 
 
 
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
  extern void setupBacktrace(void);
 #endif
 
@@ -257,7 +257,7 @@ int main(int argc, char *argv[])
 	if (isParsingSuccess==false)
 		displayHelp("");
 
-#if !defined(NDEBUG)
+#ifdef QT_DEBUG
 	setupBacktrace();
 #endif
 
