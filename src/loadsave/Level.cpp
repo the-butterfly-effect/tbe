@@ -51,6 +51,8 @@ static const char* theToolboxString = "toolbox";
 static const char* theGoalsString = "goals";
 	   const char* theGoalString  = "goal";
 
+static const char* theHintsString = "hints";
+	   const char* theHintString  = "hint";
 
 const char* theWidthAttributeString     = "width";
 const char* theHeightAttributeString    = "height";

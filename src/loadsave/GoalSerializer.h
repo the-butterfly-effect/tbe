@@ -98,9 +98,9 @@ private:
 	//GoalSerializer(const Goal* anObjectPtr);
 
 	/// Neutralize copy constructor and assignment operator
-	GoalSerializer(GoalSerializer&);
+	GoalSerializer(GoalSerializer&) = delete;
 	/// Neutralize copy constructor and assignment operator
-	GoalSerializer& operator=(const GoalSerializer&);
+	GoalSerializer& operator=(const GoalSerializer&) = delete;
 };
 
 #endif // GOALSERIALIZER_H

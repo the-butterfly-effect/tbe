@@ -12,6 +12,7 @@ SET(model_SOURCES
     model/ColaMintBottle.cpp 
     model/Glue.cpp 
     model/Goal.cpp 
+    model/Hint.cpp 
     model/Link.cpp 
     model/PivotPoint.cpp 
     model/PolyObject.cpp 
@@ -36,6 +37,7 @@ SET(model_HEADERS
     model/ColaMintBottle.h 
     model/Glue.h 
     model/Goal.h 
+    model/Hint.h 
     model/Link.h 
     model/PivotPoint.h 
     model/PivotPointPtr.h

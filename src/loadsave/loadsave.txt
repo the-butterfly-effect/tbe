@@ -6,6 +6,7 @@ SET(loadsave_SOURCES
     loadsave/AbstractObjectSerializer.cpp 
     loadsave/BackgroundSerializer.cpp 
     loadsave/GoalSerializer.cpp 
+    loadsave/HintSerializer.cpp 
     loadsave/Level.cpp 
     loadsave/LocalString.cpp  
     loadsave/ObjectFactory.cpp 
@@ -16,6 +17,7 @@ SET(loadsave_HEADERS
     loadsave/AbstractObjectSerializer.h 
     loadsave/BackgroundSerializer.h 
     loadsave/GoalSerializer.h 
+    loadsave/HintSerializer.h 
     loadsave/Level.h 
     loadsave/LocalString.h  
     loadsave/ObjectFactory.h 
