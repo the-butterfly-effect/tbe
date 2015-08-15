@@ -32,6 +32,7 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 {
 	theLevels = theStartFileName.split(",");
 	DEBUG1("levels: %s", ASCII(theStartFileName));
+	connect(&theRegressionTimer, SIGNAL(timeout()), this, SLOT(slotRegressionProgress()));
 }
 
 void RegressionTest::startRegressionRun(void)
@@ -41,17 +42,21 @@ void RegressionTest::startRegressionRun(void)
 		return;
 	theLevelIndex = 0;
 	theState = LOADLEVEL;
-	theRegressionTimer.singleShot(200, this, SLOT(slotRegressionProgress()));
+	theRegressionTimer.start(200);
 }
 
 void RegressionTest::slot_Fail()
 {
+	DEBUG1("AUTOMATED TESTING, slot_Fail--------------------------");
+	Q_ASSERT(theIsFail==false);
 	theIsFail = true;
 	slotRegressionProgress();
 }
 
 void RegressionTest::slot_Won()
 {
+	DEBUG1("AUTOMATED TESTING, slot_Won--------------------------");
+	Q_ASSERT(!theIsWon);
 	theIsWon = true;
 	slotRegressionProgress();
 }
@@ -94,9 +99,27 @@ void RegressionTest::slotRegressionProgress(void)
 	case LEVELFAILED: // Check for "not success" (i.e. death or timeout)
 		theRegressionTimer.stop();
 		Q_ASSERT(theIsWon==false);
-		myNextDelay= 400;
-		myNextState= RESETLEVEL;
+		myNextDelay= 800;
+		if (theIsFail)
+			myNextState= RESETLEVEL;
+		else
+			myNextState= STOPANDRESETLEVEL;
 		break;
+	case STOPANDRESETLEVEL: // Reset after timeout
+	{
+		QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
+		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+		// FIXME: This is not i18n proof: We're just pressing Alt-R here...
+		QKeyEvent* myEvent3Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent3Ptr);
+		QKeyEvent* myEvent4Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::NoModifier);
+		QCoreApplication::postEvent (theMainWindowPtr, myEvent4Ptr);
+		myNextDelay= 800;
+		myNextState= ADDHINTS;
+		break;
+	}
 	case RESETLEVEL: // Reset
 	{
 		// FIXME: This is not i18n proof: We're just pressing Alt-R here...
@@ -105,11 +128,13 @@ void RegressionTest::slotRegressionProgress(void)
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::AltModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
 		myNextDelay= 800;
-		myNextState= STARTLEVELTOFAIL;
+		myNextState= ADDHINTS;
 		break;
 	}
 	case ADDHINTS: // Setup all hints
 		// TODO: implement
+		myNextDelay= 1;
+		myNextState= STARTLEVELTOFAIL;
 		break;
 	case STARTLEVELTOWIN: // Start Level, expect success
 		// TODO: implement
@@ -130,5 +155,5 @@ void RegressionTest::slotRegressionProgress(void)
 	Q_ASSERT(myNextState != START);
 	theState = myNextState;
 	Q_ASSERT(myNextDelay!=0);
-	theRegressionTimer.singleShot(myNextDelay, this, SLOT(slotRegressionProgress()));
+	theRegressionTimer.start(myNextDelay);
 }

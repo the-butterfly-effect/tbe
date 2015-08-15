@@ -141,7 +141,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	if (theIsRunAsRegression)
 	{
 		connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), theMainWindowPtr->theRegressionTest, SLOT(slot_Won()));
-		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr, SLOT(slot_Fail()));
+		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest, SLOT(slot_Fail()));
 	}
 
 	QTimer::singleShot(200, theGameResourcesPtr, SLOT(appearAnimated()));
