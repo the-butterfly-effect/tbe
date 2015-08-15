@@ -85,6 +85,7 @@ extern bool theDrawDebug;
 extern bool theDrawPolyOutline;
 extern bool theIsCollisionOn;
 extern bool theIsLevelEditor;
+extern bool theIsRunAsRegression;
 extern bool theTBECaching;
 extern QString theStartFileName;
 

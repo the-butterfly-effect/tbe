@@ -23,7 +23,6 @@
 #include <QtGui>
 #include <QListWidgetItem>
 
-
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
 #include "EditLevelProperties.h"
@@ -33,18 +32,19 @@
 #include "ListViewItemTooltip.h"
 #include "ObjectFactory.h"
 #include "Popup.h"
+#include "RegressionTest.h"
 #include "SaveLevelInfo.h"
 #include "ToolboxListWidgetItem.h"
 #include "UndoSingleton.h"
 #include "World.h"
 
 
-MainWindow::MainWindow(bool isMaximized, bool isToRunRegression, QWidget *parent)
+MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	: QMainWindow(parent),
+	  theRegressionTest(nullptr),
 	  ui(new Ui::MainWindow),
-	  theLevelPtr(NULL),
-      theWorldPtr(NULL),
-      theRegressionRun(isToRunRegression)
+	  theLevelPtr(nullptr),
+	  theWorldPtr(nullptr)
 {
     ui->setupUi(this);
 
@@ -409,68 +409,13 @@ void MainWindow::setupView()
     if (theStartFileName.isEmpty())
         theStartFileName = ChooseLevel::getNextLevelName();
 
-    if (theRegressionRun)
+	if (theIsRunAsRegression)
     {
-        QTimer::singleShot(200, this, SLOT(startRegressionRun()));
+		Q_ASSERT(theRegressionTest==NULL);
+		theRegressionTest = new RegressionTest(this);
+		theRegressionTest->startRegressionRun();
     }
     else
         QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 }
 
-void MainWindow::startRegressionRun(void)
-{
-#ifndef NDEBUG // This functionality is only compiled into debug builds
-    Q_ASSERT(theRegressionRun==true);
-    static QStringList myLevels = theStartFileName.split(",");
-    static int myIndex = 0;
-    static int myState = 0;
-
-    int myNextDelay = 0;
-
-    QStringList myLevelParams = myLevels[myIndex].split(':');
-    QString myLevelName = myLevelParams[0];
-    int myLevelDurationSeconds = myLevelParams[1].toInt();
-
-    DEBUG1("AUTOMATED TESTING, STATE %d--------------------------", myState);
-    switch (myState)
-    {
-    case 0: // Load Level
-        DEBUG1("AUTOMATED TESTING OF LEVEL %s", ASCII(myLevelName));
-        loadLevel(myLevelName);
-        myNextDelay= 1500;
-        break;
-    case 1: // Start Level, expect failure by registering for event (or timeout, or both)
-    {
-        QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (this, myEvent1Ptr);
-        QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (this, myEvent2Ptr);
-        myNextDelay= myLevelDurationSeconds*1000;
-
-        // Todo: register for fail event
-        break;
-    }
-    case 2: // Check for fail
-        // Todo: unregister for timeout
-        // TODO: implement
-        break;
-    case 3: // Reset
-        // TODO: implement
-        break;
-    case 4: // Setup all hints
-        // TODO: implement
-        break;
-    case 5: // Start Level, expect success by registering for event
-        // TODO: implement
-        break;
-    case 6: // Check for success
-        // TODO: implement
-        break;
-    case 7: // Continue with next item in test
-        // TODO: implement
-        break;
-    }
-    myState++;
-    QTimer::singleShot(myNextDelay, this, SLOT(startRegressionRun()));
-#endif // ndef NDEBUG
-}

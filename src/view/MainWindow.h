@@ -22,6 +22,7 @@
 #include <QtGui/QMainWindow>
 #include <QtGui/QAction>
 #include <QtGui/QListWidget>
+#include <QtCore/QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,7 @@ class MainWindow;
 class Level;
 class QGraphicsRectWidget;
 class QGraphicsScene;
+class RegressionTest;
 class ViewWorld;
 class World;
 
@@ -64,11 +66,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(bool isMaximized, bool isToRunRegression, QWidget *parent = 0);
+	explicit MainWindow(bool isMaximized, QWidget *parent = 0);
     ~MainWindow();
 
     /// deletes the existing Level instance and removes its view
     void purgeLevel(void);
+
+	RegressionTest* theRegressionTest;
 
 protected:
     void changeEvent(QEvent *e);
@@ -86,11 +90,6 @@ public slots:
     /// Restarts the level already active.
     /// Because we have the filename already, no need to specify here.
     void reloadLevel(void);
-
-    /// Starts the automated regression tests
-    /// TODO: for now contains the entire event state machine for tests
-    /// @note: can only be started if theRegressionRun is true
-    void startRegressionRun(void);
 
 private slots:
     // menu Help
@@ -129,7 +128,6 @@ private:
 
     World* theWorldPtr;
 
-    bool theRegressionRun;
 };
 
 #endif // MAINWINDOW_H

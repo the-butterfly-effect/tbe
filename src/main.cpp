@@ -120,7 +120,7 @@ static bool setWindowed( QString /*anArgument*/ )
 	return true;
 }
 
-static bool theIsRunAsRegression = false;
+bool theIsRunAsRegression = false;
 static bool runRegression( QString aListOfLevels )
 {
     theStartFileName=aListOfLevels;
@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
 	}
 
 	// setup main window, shut down splash screen
-    MainWindow myMain(theIsMaximized, theIsRunAsRegression);
+	MainWindow myMain(theIsMaximized);
 	myMain.show();
 	mySplash.finish(&myMain);
 
