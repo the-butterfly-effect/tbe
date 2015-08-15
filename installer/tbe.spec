@@ -1,5 +1,5 @@
 # Increase mainrel when increasing the rev number
-%define rev     r2084
+%define rev     git41a1e39
 %define mainrel 1
 # Increase snaprel when rebuilding with the same rev number
 %define snaprel 1
@@ -12,21 +12,17 @@ Release:        %mkrel %{mainrel}.%{rev}.%{snaprel}
 Summary:        The Butterfly Effect is a physics-based puzzle game
 Group:          Games/Puzzles
 License:        GPLv2
-URL:            https://sourceforge.net/projects/tbe
-Source0:        %{name}-%{version}+%{rev}.tar.xz
+URL:            https://github.com/kaa-ching/tbe
+Source0:        %{name}-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
-Source1:        %{name}-i18n-%{version}+%{rev}.tar.gz
+Source1:        %{name}-i18n-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
-Source2:        %{name}.desktop
-Patch0:         tbe-r2084-mga-fix-cxxflags.patch
-Patch1:         tbe-r2084-mga-fix-ndebug.patch
-Patch2:         tbe-r2084-mga-datadir.patch
-Patch3:         tbe-r2084-mga-revert-wrong-commit-r2076.patch
-Patch4:         tbe-r2084-mga-fix-switch-to-level-editor.patch
-Patch5:         tbe-r2084-mga-fix-translation.patch
+Patch0:         tbe-0.9-mga-fix-ndebug.patch
+Patch1:         tbe-0.9-mga-datadir.patch
 BuildRequires:  imagemagick
 BuildRequires:  cmake
 BuildRequires:  qt4-devel
+BuildRequires:  gettext
 Provides:       thebutterflyeffect = %{version}-%{release}
 
 %description
@@ -35,11 +31,15 @@ lots of simple mechanical elements to achieve a simple goal in the
 most complex way possible.
 
 %prep
-%setup -q -n %{name}-%{version}+%{rev}
+%setup -q -n %{name}-%{version}-%{rev}
 tar -xf %{SOURCE1}
-%apply_patches
+%patch0 -p1
+%patch1 -p1
 
 %build
+pushd i18n
+./%{name}_levels_i18n.sh
+popd
 # Use dummy installation directory to prevent heavy patching
 # of the bad make install instructions
 %cmake -DCMAKE_INSTALL_PREFIX=/tmp \
@@ -58,16 +58,18 @@ popd
 rm -rf %{buildroot}/tmp
 
 pushd imagery/illustrations
-mkdir -p %{buildroot}%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/{128x128,64x64,48x48,32x32,16x16}/apps
 convert -scale 16x16 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 convert -scale 32x32 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 convert -scale 48x48 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+convert -scale 64x64 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/64x64/apps/%{name}.png
+convert -scale 128x128 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/128x128/apps/%{name}.png
 popd
 
-install -D -m644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -D -m644 installer/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
-%doc AUTHORS DESCRIPTION README installer/License
+%doc AUTHORS DESCRIPTION README.md installer/License
 %{_datadir}/applications/%{name}.desktop
 %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
