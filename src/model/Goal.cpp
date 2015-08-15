@@ -267,7 +267,6 @@ QString GoalPositionChange::goalToStringList() const
 
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is not present here)
 	QString myString = QString("%1;%2;%3;%4;")
-					   //: translators: %1 can be X, Y, Angle or X/Y/Angle
 					   .arg(GoalSerializer::getColumnZero()[theType/4])
 					   .arg(theBOPtr->getID())
 					   .arg(myCondition)

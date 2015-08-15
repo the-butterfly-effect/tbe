@@ -28,6 +28,7 @@
 /// 'dialog' ...
 class ChoosePhoneUndoCommand : public DummyUndoCommand
 {
+	Q_OBJECT
 public:
     explicit ChoosePhoneUndoCommand(ViewObject* anViewObjectPtr);
 
