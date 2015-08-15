@@ -32,7 +32,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="58"/>
         <source>Cancel</source>
-        <translation>Отменить</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="81"/>
@@ -51,12 +51,12 @@ Cannot read the level descriptions in &apos;%1&apos;:
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="179"/>
         <source>done</source>
-        <translation>завершено</translation>
+        <translation>завершён</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="181"/>
         <source>skipped</source>
-        <translation>пропущено</translation>
+        <translation>пропущен</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="183"/>
@@ -83,7 +83,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="25"/>
         <source>Phone Number:</source>
-        <translation>Номер телефона:</translation>
+        <translation>№ телефона:</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="68"/>
@@ -93,7 +93,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="78"/>
         <source>Cancel</source>
-        <translation>Отменить</translation>
+        <translation>Отмена</translation>
     </message>
 </context>
 <context>
@@ -102,6 +102,59 @@ Parse error at line %1, column %2:
         <location filename="../src/control/ChoosePhoneUndoCommand.cpp" line="24"/>
         <source>ChoosePhone</source>
         <translation>Выберите телефон</translation>
+    </message>
+</context>
+<context>
+    <name>CircleObjectFactory</name>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="29"/>
+        <source>Bowling Ball</source>
+        <translation type="unfinished">Шар для боулинга</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="30"/>
+        <source>Your average bowling ball - heavy, round and willing to roll</source>
+        <translation type="unfinished">Ваш средний шар для боулинга - тяжёлый, круглый и готовый катиться</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="35"/>
+        <source>Volley Ball</source>
+        <translation type="unfinished">Мяч для волейбола</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="36"/>
+        <source>A volley ball - you know: light, soft and fairly bouncy.</source>
+        <translation type="unfinished">Мяч для волейбола - вы знаете: лёгкий, мягкий и довольно упругий.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="44"/>
+        <source>Tennis Ball</source>
+        <translation type="unfinished">Мяч для тенниса</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="45"/>
+        <source>A tennis ball is small, fuzzy and known for turning heads.</source>
+        <translation type="unfinished">Мяч для тенниса маленький, нечёткий и известен изменением курса.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="52"/>
+        <source>Soccer Ball</source>
+        <translation type="unfinished">Мяч для футбола</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="53"/>
+        <source>A football (of the spherical persuasion).</source>
+        <translation type="unfinished">Футбол (сферического толка).</translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="60"/>
+        <source>PÃ©tanque Boule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="61"/>
+        <source>A pÃ©tanque ball is made of metal and heavy.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -114,7 +167,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="20"/>
         <source>Note: changes in this dialog are not undoable!</source>
-        <translation>Примечание: изменения в этом диалоге не невыполнимы!</translation>
+        <translation>Примечание: изменения в этом диалоге неотменяемые!</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="30"/>
@@ -159,7 +212,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="132"/>
         <source>Image repeat width</source>
-        <translation>Ширина дублирования изображения</translation>
+        <translation>Ширина повторения изображения</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="142"/>
@@ -169,7 +222,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="155"/>
         <source>height</source>
-        <translation>высота</translation>
+        <translation>Высота</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="165"/>
@@ -238,7 +291,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="139"/>
         <source>Radians</source>
-        <translation>Радианы</translation>
+        <translation>радиан</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="150"/>
@@ -266,7 +319,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/GameResources.ui" line="14"/>
         <source>Toolbox</source>
-        <translation>Палитра компонентов</translation>
+        <translation>Панель компонентов</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="66"/>
@@ -320,7 +373,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../src/view/GameResources.cpp" line="90"/>
         <source>Level by: &lt;b&gt;%1&lt;/b&gt;</source>
         <extracomment>translators: please do not try to translate the &lt;b&gt;%1&lt;/b&gt; part!</extracomment>
-        <translation>Уровень: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Уровень от: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -374,7 +427,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../src/view/GoalEditor.cpp" line="89"/>
         <source>Not all goals/fails were OK
 Nothing was changed yet, please fix.</source>
-        <translation>Не все цели/поражения были в порядке
+        <translation>Не все цели/поражения в порядке
 Ещё ничего не изменилось, пожалуйста, исправьте.</translation>
     </message>
     <message>
@@ -398,9 +451,15 @@ Nothing was changed yet, please fix.</source>
         <translation>нет объекта</translation>
     </message>
     <message>
+        <location filename="../src/view/GoalEditor.cpp" line="271"/>
+        <source>Variable;Object;Cond.;Value;Object2</source>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
+        <translation>Переменная;Объект;Услов.;Значение;Объект2</translation>
+    </message>
+    <message>
         <location filename="../src/view/GoalEditor.h" line="47"/>
         <source>change</source>
-        <translation>изменить</translation>
+        <translation>менять</translation>
     </message>
 </context>
 <context>
@@ -429,7 +488,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="213"/>
         <source>scene width or height unspecified</source>
-        <translation>ширина или высота сцены не определены</translation>
+        <translation>Ширина или высота сцены не определены</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="228"/>
@@ -439,23 +498,23 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="252"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
-        <translation>ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;</translation>
+        <translation>Ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="259"/>
         <location filename="../src/loadsave/Level.cpp" line="303"/>
         <source>createObjectFromDom failed</source>
-        <translation>Не удалось создать объект из дома </translation>
+        <translation>Не удалось создать объект, неудача в функции createObjectFromDom</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="276"/>
         <source>no &lt;%1&gt; section found!</source>
-        <translation>не найдена секция &lt;%1&gt;!</translation>
+        <translation>Не найдена секция &lt;%1&gt;!</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="295"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
-        <translation>ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;. </translation>
+        <translation>Ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;. </translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="309"/>
@@ -465,7 +524,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="429"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
-        <translation>Не удается записать файл &apos;%1&apos;: %2.</translation>
+        <translation>Не удаётся записать файл &apos;%1&apos;: %2.</translation>
     </message>
 </context>
 <context>
@@ -473,7 +532,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation>Подсказка палитры компонентов</translation>
+        <translation>Подсказка панели компонентов</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="32"/>
@@ -526,8 +585,8 @@ Nothing was changed yet, please fix.</source>
     <name>MainWindow</name>
     <message>
         <location filename="../src/view/MainWindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation>Главное окно</translation>
+        <source>The Butterfly Effect</source>
+        <translation>Эффект бабочки</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="85"/>
@@ -617,7 +676,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="190"/>
         <source>Switch</source>
-        <translation>Переключатель</translation>
+        <translation>Переключить</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="198"/>
@@ -655,118 +714,108 @@ Nothing was changed yet, please fix.</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="93"/>
+        <location filename="../src/view/MainWindow.cpp" line="94"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation>Ошибка при чтении файла &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="99"/>
+        <location filename="../src/view/MainWindow.cpp" line="100"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation>Некритичная проблема чтения файла &apos;%1&apos;: &apos;%2&apos;.
 Хотя это может повлять на пригодность для игры!</translation>
     </message>
     <message>
-        <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
-        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="obsolete">&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции, комбинируя множество простых механических элементов для достижения простой цели в самом запутанном из возможных способов.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Please tell us at least the name of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
-        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="obsolete">&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;http://sourceforge.net/apps/trac/tbe/newticket&quot;&gt;http://sourceforge.net/apps/trac/tbe/newticket&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере название уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="122"/>
+        <location filename="../src/view/MainWindow.cpp" line="123"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="unfinished">&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции, комбинируя множество простых механических элементов для достижения простой цели в самом запутанном из возможных способов.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте. {2009,2010,2011,2012,2013,2015 ?} {2 ?} {1/?}</translation>
+        <translation>&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции. Путём комбинирования в сложную систему множества элементарных механических элементов и обычных объектов, ставится простая цель, которую необходимо достигнуть.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="136"/>
+        <location filename="../src/view/MainWindow.cpp" line="137"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере &lt;i&gt;название&lt;/i&gt; уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="155"/>
+        <location filename="../src/view/MainWindow.cpp" line="156"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;show /hide toolbox &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
-        <translation>&lt;b&gt;Эффект бабочки - Горячие клавиши&lt;/b&gt;&lt;br&gt;&lt;br&gt;Следующие клавиши могут быть использованы для ускорения действий, которые вы бы делали с помощью мыши&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Клавиша&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Функция &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Пробел&lt;/td&gt;&lt;td&gt;начать/остановить симуляцию&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(при симуляции) ускорить вперёд/замедлить назад &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(при симуляции) действительно ускорить вперёд &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;сбросить симуляцию &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;показать/скрыть палитру компонентов &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; отменить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; повторить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
+        <translation>&lt;b&gt;Эффект бабочки - Горячие клавиши&lt;/b&gt;&lt;br&gt;&lt;br&gt;Следующие клавиши могут быть использованы для ускорения действий, которые вы бы делали с помощью мыши&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Клавиша&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Функция &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Пробел&lt;/td&gt;&lt;td&gt;начать/остановить симуляцию&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(при симуляции) ускорить вперёд/замедлить назад &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(при симуляции) действительно ускорить вперёд &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;сбросить симуляцию &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;показать/скрыть панель компонентов &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; отменить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; повторить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="173"/>
+        <location filename="../src/view/MainWindow.cpp" line="174"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Библиотеки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Эффект бабочки является гордостью пользователей библиотеки физики Box2D. Пожалуйста, посетите http://www.box2d.org/ .&lt;br&gt;Эффект бабочки использует инструментарий Qt GUI. Пожалуйста, посетите  http://qt-project.org/ .</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="191"/>
+        <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Эффект бабочки - Создание новых уровней&lt;/b&gt;&lt;br&gt;&lt;br&gt;Мы знаем, вы можете создать ещё лучше уровни, чем мы!&lt;br&gt;Используйте создатель уровней чтобы построить свои уровни и, пожалуйста, отправьте их нам.&lt;br&gt;Даже если ваш уровень ещё не закончен, не колеблитесь чтобы поделиться им с нами! Конечно, определите, как вы полагаете он должен работать, чтобы другие могли присоединиться.&lt;br&gt;&lt;br&gt;Это наш список рассылки для уровней:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Эффект бабочки - Создание новых уровней&lt;/b&gt;&lt;br&gt;&lt;br&gt;Мы знаем, что вы можете создать ещё лучше уровни, чем мы!&lt;br&gt;Используйте редактор уровней чтобы построить свои уровни и, пожалуйста, отправьте их нам.&lt;br&gt;Даже если ваш уровень ещё не закончен, не колеблитесь чтобы поделиться им с нами! Конечно, определите, как вы полагаете он должен работать, чтобы другие могли присоединиться.&lt;br&gt;&lt;br&gt;Это наш список рассылки для уровней:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>Open level</source>
         <translation>Открыть уровень</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>TBE levels (*.xml)</source>
         <translation>Уровни TBE (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="222"/>
+        <location filename="../src/view/MainWindow.cpp" line="223"/>
         <source>really?</source>
-        <translation>уверены?</translation>
+        <translation>Вы уверены?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="235"/>
+        <location filename="../src/view/MainWindow.cpp" line="236"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Файл &apos;%1&apos; не может быть сохранён.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="255"/>
+        <location filename="../src/view/MainWindow.cpp" line="256"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Вы не заполнили все поля, но в любом случае уровень был сохранён
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="270"/>
+        <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation>Отметить этот уровень &apos;пропущенным&apos; и продолжить со следующего уровня?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="277"/>
+        <location filename="../src/view/MainWindow.cpp" line="278"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;Эффект бабочки - Предложения&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если у вас есть великолепные идеи для новых возможностей в игре, пожалуйста, перейдите на наши форумы: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;чтобы поделиться своими идеями с миром.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="307"/>
+        <location filename="../src/view/MainWindow.cpp" line="308"/>
         <source>&amp;Insert</source>
         <translation>&amp;Вставка</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="323"/>
+        <location filename="../src/view/MainWindow.cpp" line="324"/>
         <source>&amp;Editors</source>
         <translation>&amp;Редакторы</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="326"/>
+        <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Goal Editor...</source>
         <translation>Редактор &amp;целей...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="329"/>
+        <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Level Properties...</source>
         <translation>&amp;Свойства уровня...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="332"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Object Editor...</source>
         <translation>Р&amp;едактор объекта...</translation>
     </message>
@@ -861,7 +910,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="57"/>
         <source>a Helium Balloon. Lighter than air, it moves up.</source>
-        <translation>гелевый воздушный шар. Он легче воздуха, это поднимает его.</translation>
+        <translation>Гелевый воздушный шар. Он легче воздуха, это поднимает его.</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="262"/>
@@ -891,7 +940,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="417"/>
         <source>a rotating disc with sharp teeth.</source>
-        <translation>вращающийся диск с острыми зубцами.</translation>
+        <translation>Вращающийся диск с острыми зубцами.</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.h" line="39"/>
@@ -904,65 +953,55 @@ This may affect playability, though!</source>
         <translation>Бабочка (Flappus Chaoticus Fragilius) - всегда в поисках цветов.</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="64"/>
         <source>Bowling Ball</source>
-        <translation>Шар для боулинга</translation>
+        <translation type="obsolete">Шар для боулинга</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="65"/>
         <source>Your average bowling ball - heavy, round and willing to roll</source>
-        <translation>Ваш средний шар для боулинга - тяжёлый, круглый и готовый катиться</translation>
+        <translation type="obsolete">Ваш средний шар для боулинга - тяжёлый, круглый и готовый катиться</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="70"/>
         <source>Volley Ball</source>
-        <translation>Мяч для волейбола</translation>
+        <translation type="obsolete">Мяч для волейбола</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="71"/>
         <source>A volley ball - you know: light, soft and fairly bouncy.</source>
-        <translation>Мяч для волейбола - вы знаете: лёгкий, мягкий и довольно упругий.</translation>
+        <translation type="obsolete">Мяч для волейбола - вы знаете: лёгкий, мягкий и довольно упругий.</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="79"/>
         <source>Tennis Ball</source>
-        <translation>Мяч для тенниса</translation>
+        <translation type="obsolete">Мяч для тенниса</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="80"/>
         <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation>Мяч для тенниса маленький, нечёткий и известен изменением курса.</translation>
+        <translation type="obsolete">Мяч для тенниса маленький, нечёткий и известен изменением курса.</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="87"/>
         <source>Soccer Ball</source>
-        <translation>Мяч для футбола</translation>
+        <translation type="obsolete">Мяч для футбола</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="88"/>
         <source>A football (of the spherical persuasion).</source>
-        <translation>Футбол (сферического толка).</translation>
+        <translation type="obsolete">Футбол (сферического толка).</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="95"/>
         <source>Petanque Boule</source>
-        <translation>Петанк буль</translation>
+        <translation type="obsolete">Петанк буль</translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="96"/>
         <source>A petanque ball is made of metal and heavy.</source>
-        <translation>Мяч для петанк буля сделан из металла и тяжёлый.</translation>
+        <translation type="obsolete">Мяч для петанк буля сделан из металла и тяжёлый.</translation>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="49"/>
         <source>Cola+Mint Bottle</source>
-        <translation>Бутылка Кола+Мята</translation>
+        <translation>Бутылка с кока-колой и мятой</translation>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="50"/>
         <source>This is a prepared cola bottle with a mint in it.
 Look: it blows if triggered!</source>
-        <translation>Это готовая бутылка с колой и мятой в ней.
+        <translation>Это готовая бутылка с кока-колой и мятой в ней.
 Посмотрите: она раздувается, если приведена в движение!</translation>
     </message>
     <message>
@@ -996,90 +1035,72 @@ Look: it blows if triggered!</source>
         <translation>Объекты вращаются вокруг этой точки</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="87"/>
         <source>Bowling Pin</source>
-        <translation>Кегль для боулинга</translation>
+        <translation type="obsolete">Кегль для боулинга</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="88"/>
         <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
-        <translation>Кегли для боулинга предназначены для сбивания, и большинство людей предпочитают делать это с помощью шара для боулинга.</translation>
+        <translation type="obsolete">Кегли для боулинга предназначены для сбивания, и большинство людей предпочитают делать это с помощью шара для боулинга.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="100"/>
         <source>Skyhook</source>
-        <translation>Высотный экспериментальный аэростат</translation>
+        <translation type="obsolete">Аэро-крючок</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="101"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation>Высотный экспериментальный аэростат просто висит в воздухе. И вы можете повесить много веса на него!</translation>
+        <translation type="obsolete">Аэро-крючок просто висит в воздухе. И вы можете повесить много веса на него!</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="110"/>
         <source>Weight</source>
-        <translation>Вес</translation>
+        <translation type="obsolete">Вес</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="111"/>
         <source>A serious mass. As heavy as it looks!</source>
-        <translation>Нешуточная масса. Также тяжело, как она и выглядит!</translation>
+        <translation type="obsolete">Нешуточная масса. Также тяжело, как она и выглядит!</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="118"/>
         <source>Left Ramp</source>
-        <translation>Левый уклон</translation>
+        <translation type="obsolete">Левый уклон</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="119"/>
         <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
-        <translation>Это уклон. Слева ниже, чем справа, поэтому вещи скользят налево.</translation>
+        <translation type="obsolete">Это уклон. Слева ниже, чем справа, поэтому вещи скользят налево.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="126"/>
         <source>Right Ramp</source>
-        <translation>Правый уклон</translation>
+        <translation type="obsolete">Правый уклон</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="127"/>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation>Это уклон. Слева выше, чем справа, поэтому вещи скользят направо.</translation>
+        <translation type="obsolete">Это уклон. Слева выше, чем справа, поэтому вещи скользят направо.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="134"/>
         <source>Left Wedge</source>
-        <translation>Левый клин</translation>
+        <translation type="obsolete">Левый клин</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="135"/>
         <source>This is a wedge. The left is lower than the right, so things slide to the left.</source>
-        <translation>Это клин. Слева ниже, чем справа, поэтому вещи скользят налево.</translation>
+        <translation type="obsolete">Это клин. Слева ниже, чем справа, поэтому вещи скользят налево.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="142"/>
         <source>Right Wedge</source>
-        <translation>Правый клин</translation>
+        <translation type="obsolete">Правый клин</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="143"/>
         <source>This is a wedge. The left is higher than the right, so things slide to the right.</source>
-        <translation>Это клин. Слева выше, чем справа, поэтому вещи скользят направо.</translation>
+        <translation type="obsolete">Это клин. Слева выше, чем справа, поэтому вещи скользят направо.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="152"/>
         <source>Quarter Arc Small</source>
-        <translation>Малая четверть дуги</translation>
+        <translation type="obsolete">Малая четверть дуги</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="153"/>
-        <location filename="../src/model/PolyObject.cpp" line="167"/>
         <source>This is a quarter arc. Or ninety degrees, or 1.57 radians if you want.</source>
-        <translation>Это четверть дуги. Или девяносто градусов, или 1.57 радиан.</translation>
+        <translation type="obsolete">Это четверть дуги. Или девяносто градусов, или 1.57 радиан.</translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="166"/>
         <source>Quarter Arc Large</source>
-        <translation>Большая четверть дуги</translation>
+        <translation type="obsolete">Большая четверть дуги</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.h" line="48"/>
@@ -1092,7 +1113,7 @@ Look: it blows if triggered!</source>
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
         <translation>Кто-то оставил стикеры повсюду.
-Вы знаете эти жёлтые 7x7 сантиметров бумажки.
+Вы знаете эти жёлтые 8x8 сантиметров бумажки.
 Вы можете читать их - это может помочь!</translation>
     </message>
     <message>
@@ -1153,7 +1174,7 @@ You might want to read them - it may help!</source>
     <message>
         <source>Send BOOM to me</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation type="obsolete">Отправьте внезапный успех в делах мне</translation>
+        <translation type="obsolete">Отправьте БУУМ мне</translation>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="212"/>
@@ -1184,12 +1205,17 @@ You might want to read them - it may help!</source>
         <location filename="../src/model/TriggerExplosion.cpp" line="154"/>
         <source>Send BOOM to %1</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation>Отправьте внезапный успех в делах мне %1</translation>
+        <translation>Отправьте БУУМ мне %1</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="223"/>
         <source>Detonator Box Handle</source>
         <translation>Обработчик коробки с детонатором</translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="224"/>
+        <source>Push Here To BOOM</source>
+        <translation>Нажмите здесь для БУУМ</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="312"/>
@@ -1236,7 +1262,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="14"/>
         <source>Save Level - Information</source>
-        <translation>Сохранить уровень - Информация</translation>
+        <translation>Сохранить уровень - информация</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="22"/>
@@ -1251,7 +1277,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="48"/>
         <source>Level information - Use English Only</source>
-        <translation>Информация об уровне - Используйте только английский</translation>
+        <translation>Информация об уровне (используйте только английский)</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="54"/>
@@ -1286,7 +1312,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="80"/>
         <source>Because you changed the Level Name or Description, all translations for both will be erased for consistency...</source>
-        <translation>Так как вы изменили название уровня или описание, то все переводы для того и другого будут стёрты для согласованности...</translation>
+        <translation>Так как вы изменили название уровня или описание, то все переводы для того или другого будут стёрты для согласованности...</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="114"/>
@@ -1326,7 +1352,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="110"/>
         <source>Play</source>
-        <translation>Воспроизвести</translation>
+        <translation>Играть</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="129"/>
@@ -1347,7 +1373,7 @@ You might want to read them - it may help!</source>
         <location filename="../src/view/SimulationControls.cpp" line="124"/>
         <source>f</source>
         <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
-        <translation>к</translation>
+        <translation>f</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="127"/>
@@ -1402,7 +1428,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/ViewPostIt.cpp" line="165"/>
         <source>Finish</source>
-        <translation>Закончить</translation>
+        <translation>Готово</translation>
     </message>
 </context>
 <context>
@@ -1477,15 +1503,15 @@ Reset the simulation?</source>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
-        <source>Congratulations</source>
+        <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
-        <translation>Поздравляем</translation>
+        <translation>Поздравляем!</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="44"/>
         <source>Fail - retry?</source>
         <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
-        <translation>Неудача - повторить?</translation>
+        <translation>Крах. Повторить?</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="46"/>

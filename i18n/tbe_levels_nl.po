@@ -1,0 +1,1528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# AlexL <loginov.alex.valer@gmail.com>, 2015
+# Klaas van Gend <klaas@opentux.nl>, 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: thebutterflyeffect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-07 23:03+0300\n"
+"PO-Revision-Date: 2015-08-07 20:07+0000\n"
+"Last-Translator: AlexL <loginov.alex.valer@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/Magic/thebutterflyeffect/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: tbe_levels:1
+msgid " :-( "
+msgstr " :-( "
+
+#: tbe_levels:2
+msgid "10kg Weight"
+msgstr "10kg gewicht"
+
+#: tbe_levels:3
+msgid "1/4 Arc"
+msgstr "1/4 bocht"
+
+#: tbe_levels:4
+msgid "99 Luftballons"
+msgstr "99 Luftballons"
+
+#: tbe_levels:5
+msgid "99 Luftballons,<br>nanana na nana naaa..."
+msgstr "99 Luftballons,<br>nanana na nana naaa..."
+
+#: tbe_levels:6
+msgid ""
+"A balancing beam threatens to kill a butterfly. But that's not all that "
+"needs fixing."
+msgstr "Een vallende balk bedreigt een vlinder. Maar dat is niet het enige dat moet worden opgelost."
+
+#: tbe_levels:7
+msgid "A ball on a bar. Turn it around. Topple the pin."
+msgstr "Een bal op een lat. Draai de lat. Kegel de kegel."
+
+#: tbe_levels:8
+msgid ""
+"a bowling ball needs to cross a big gap. Let's help crossing. Both ball and "
+"Pin need to be on the right!"
+msgstr "een bowlingbal moet over de afgrond. Laten we 'm eens helpen. Zowel de bal als de kegel moeten rechts aankomen!"
+
+#: tbe_levels:9
+msgid "a bowling ball needs to cross a big gap. Or does he?"
+msgstr "een bowlingbal wil over een afgrond. Toch?"
+
+#: tbe_levels:10
+msgid "A few crates of Cola washed up shore lately - so he's not thirsty."
+msgstr "Gelukkig zijn er wat kratten cola aangespoeld - dorstig is 'ie niet."
+
+#: tbe_levels:11
+msgid "a football needs to cross a big gap. Let's help crossing."
+msgstr "een voetbal wil over de afgrond. Laten we 'm eens helpen."
+
+#: tbe_levels:12
+msgid "All need popping..."
+msgstr ""
+
+#: tbe_levels:13
+msgid "And a balloon that wants to go up."
+msgstr "En een ballon die omhoog wil."
+
+#: tbe_levels:14
+msgid "And again my best invention yet: the skyhook."
+msgstr "En wederom mijn geweldige hemelhaakjes."
+
+#: tbe_levels:15
+msgid "And enjoy your first large Rube Goldberg-ish contraption."
+msgstr "En geniet van je eerste grote \"Rube Goldberg\" mechaniek."
+
+#: tbe_levels:16
+msgid "And you can hang a lot of weight on it, too!"
+msgstr "En je kunt er nog een hoop gewicht aan hangen, ook!"
+
+#: tbe_levels:17
+msgid "Another Butterfly and Flower - with a styrofoam wall inbetween."
+msgstr "Weer een vlinder plus bloem - met een piepschuim muur ertussen."
+
+#: tbe_levels:18
+msgid "Another contraption for the creative mind."
+msgstr "Nog een geniale machine voor de creatievelingen."
+
+#: tbe_levels:19
+msgid "Another game from my childhood."
+msgstr ">Nog een spelletje uit mijn vroege jeugd."
+
+#: tbe_levels:20
+msgid "Another pin needs kicking!"
+msgstr "Nog een kegel moet om!"
+
+#: tbe_levels:21
+msgid "... An unhappy<br><br><br>Post-It Boy"
+msgstr "... Een niet-zo-vrolijke<br><br><br>Post-It Boy"
+
+#: tbe_levels:22
+msgid "As you can guess, I only want maximum score..."
+msgstr "Zoals je vast al geraden hebt, wil ik alleen een maximale score..."
+
+#: tbe_levels:23
+msgid "As you know,<br>those are not too sturdy."
+msgstr "Zoals je weet,<br>zijn deze niet zo stevig."
+
+#: tbe_levels:24
+msgid "a tennis ball needs to cross a big gap. Let's help crossing."
+msgstr "een tennisbal moet over de afgrond. Laten we 'm eens helpen."
+
+#: tbe_levels:25
+msgid "A volley ball must topple a pin from the other end."
+msgstr "Een volleybal hoort de kegel de andere kant op te kegelen."
+
+#: tbe_levels:26
+msgid "A weight on a chain, hanging on... air?"
+msgstr "Een gewicht aan de ketting, hangend aan... lucht?"
+
+#: tbe_levels:27
+msgid "Balance your diet? Drink Cola! Goal: Topple the pins."
+msgstr "Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om."
+
+#: tbe_levels:28
+msgid "Balancing Cola"
+msgstr "Cola in balans"
+
+#: tbe_levels:29
+msgid "Balloon"
+msgstr "Ballon"
+
+#: tbe_levels:30
+msgid "Balloons do Poof"
+msgstr "Ballonnen doen Poef"
+
+#: tbe_levels:31
+msgid "Balloons go up!"
+msgstr "Ballonnen gaan omhoog!"
+
+#: tbe_levels:32
+msgid "Beam"
+msgstr "Balk"
+
+#: tbe_levels:33
+msgid "Bed of Nails"
+msgstr "Spijkerbed"
+
+#: tbe_levels:34
+msgid "Blast it! They stole my dynamite!!!"
+msgstr "Duizend bommen en granaten! Ze hebben m'n dynamiet gestolen!!!"
+
+#: tbe_levels:35
+msgid "Block"
+msgstr "Piepschuim blok"
+
+#: tbe_levels:36
+msgid "Blow da Bottle"
+msgstr "Laat de fles knallen"
+
+#: tbe_levels:37
+msgid "Both pins have to go down."
+msgstr "Oja, beide kegels moeten naar beneden."
+
+#: tbe_levels:38
+msgid "Boulder"
+msgstr "Steen"
+
+#: tbe_levels:39
+msgid "Bouncing Balls"
+msgstr "Stuiterende ballen"
+
+#: tbe_levels:40
+msgid "Bowling Ball"
+msgstr "Bowlingbal"
+
+#: tbe_levels:41
+msgid "Bowling Ball vs Bowling Pin.<br><br>Who will win?"
+msgstr "Bowlingbal tegen Kegel.<br><br>Wie zal winnen?"
+
+#: tbe_levels:42
+msgid "Bowling Pin"
+msgstr "Kegel"
+
+#: tbe_levels:43
+msgid "Bowling Pin plays soccer..."
+msgstr "Kegel speelt voetbal..."
+
+#: tbe_levels:44
+msgid "<br><br>a busy Post-It Boy"
+msgstr "een drukke Post-It Boy"
+
+#: tbe_levels:45
+msgid "<br><br> ... a hungry Post-it Boy"
+msgstr "<br><br> ... een hongerige Post-it Boy"
+
+#: tbe_levels:46
+msgid "<br><br> ... a lazy Post-It boy"
+msgstr "<br><br> ... een luie Post-It boy"
+
+#: tbe_levels:47
+msgid "<br> <br> ... and he likes crashing bridges even more!"
+msgstr "<br> <br> ... Maar instortende bruggen zijn nog leuker!"
+
+#: tbe_levels:48
+msgid "<br><br>... An unhappy<br><br>Post-It Boy"
+msgstr "... Een minder vrolijke<br><br>Post-It Boy"
+
+#: tbe_levels:49
+msgid "<br><br><br><br>...me"
+msgstr "<br><br><br><br>...ikke"
+
+#: tbe_levels:50
+msgid "<br>...<br><br>I've always wanted to say that!"
+msgstr "<br>...<br><br>Dat wilde ik altijd nog eens zeggen!"
+
+#: tbe_levels:51
+msgid "<br><br><br>...Post-it boy<br>(male, I think)"
+msgstr "...Post-it boy<br>(mannelijk)"
+
+#: tbe_levels:52
+msgid "<br><br>Post-It Boy<br><br> ... is brief for once"
+msgstr "<br><br>Post-It Boy<br><br> ... houdt 't een keer kort"
+
+#: tbe_levels:53
+msgid "<br><br>Post-It Boy<br><br> ... thinks of an ancient steam engine"
+msgstr "<br><br>Post-It Boy<br><br> ... denkt oude stoommachine"
+
+#: tbe_levels:54
+msgid "<br><br> ... the Post-it Boy"
+msgstr "<br><br> ... Post-it Boy"
+
+#: tbe_levels:55
+msgid "<br><br>the Post-it Boy"
+msgstr "<br><br>Post-it Boy"
+
+#: tbe_levels:56
+msgid "<br><br> ... the Post-It boy"
+msgstr "<br><br> ... the Post-It boy"
+
+#: tbe_levels:57
+msgid "<br> <br> the Post-It Boy "
+msgstr "... Een niet-zo-vrolijke<br><br><br>Post-It Boy "
+
+#: tbe_levels:58
+msgid ""
+"<br><br> ... the Post-It boy<br><br> ... almost done with his home work!"
+msgstr "<br><br> ... Post-It boy<br><br> ... bijna klaar met z'n huiswerk!"
+
+#: tbe_levels:59
+msgid ""
+"<br> <br> the Post-It Boy <br> <br> <i>(insert joke about bridge here)</i> "
+msgstr "<br> <br> de Post-It Boy <br> <br> <br> <i>(hier grap over bruggen)</i> "
+
+#: tbe_levels:60
+msgid "<br> <br> the Post-It Boy <br> <br> is on it again "
+msgstr "<br> <br> de Post-It Boy <br> <br> <br> blijft bezig "
+
+#: tbe_levels:61
+msgid "<br> <br> the Post-It Boy <br> <br> likes building bridges "
+msgstr "<br> <br> de Post-It Boy <br> <br> <br> houdt van bruggen bouwen "
+
+#: tbe_levels:62
+msgid "<br><br>the Post-it Boy<br><br>saves the animals..."
+msgstr "<br><br>Post-it Boy<br><br>(lid van de dierenbescherming)"
+
+#: tbe_levels:63
+msgid "<br><br> ... thirsty Post-it Boy"
+msgstr "<br><br> ... dorstige Post-it Boy"
+
+#: tbe_levels:64
+msgid "Bridge the Gap I"
+msgstr "De Afgrond 1"
+
+#: tbe_levels:65
+msgid "Bridge the Gap II"
+msgstr "De Afgrond deel 2"
+
+#: tbe_levels:66
+msgid "Bridge the Gap III"
+msgstr "De Afgrond deel 3"
+
+#: tbe_levels:67
+msgid "<br> was signed:<br><br>the Post-It boy<br>(in a destructive mood)"
+msgstr "<br> getekend:<br><br>Post-It boy<br>(in een destructieve stemming)"
+
+#: tbe_levels:68
+msgid "...<br>was signed:<br>the Post-it Boy"
+msgstr "...<br>getekend:<br>Post-it Boy"
+
+#: tbe_levels:69
+msgid "But a lot needs to happen before that pin moves."
+msgstr "Maar er moet nog een boel gebeuren voordat die kegel beweegt."
+
+#: tbe_levels:70
+msgid "But do you see those coconuts?"
+msgstr "Maar zie je die kokosnoten hangen?"
+
+#: tbe_levels:71
+msgid "But fear not! There's always a true mechanical solution."
+msgstr "Maar wees niet bevreesd: Er is altijd een mechanische oplossing."
+
+#: tbe_levels:72
+msgid "But he has no friends, only a bowling pin."
+msgstr "Maar hij heeft geen vriendjes, alleen een kegel."
+
+#: tbe_levels:73
+msgid "But I'm not so sure about that volley ball."
+msgstr "Maar ik ben niet zo gek op die volleybal."
+
+#: tbe_levels:74
+msgid "But I've said enough...<br><br> Good luck!"
+msgstr "Maar ik heb genoeg gezegd...<br><br> Veel success!"
+
+#: tbe_levels:75
+msgid "But let me give you one hint:<br><br> First a Boom, then the Zoinggg."
+msgstr ""
+
+#: tbe_levels:76
+msgid "Butterfly on steroids"
+msgstr "Vlinder op speed"
+
+#: tbe_levels:77
+msgid "But that ball has a jumpy friend!"
+msgstr "Maar die bal heeft nog een springerig vriendje!"
+
+#: tbe_levels:78
+msgid "But that's not an ordinary cola bottle..."
+msgstr "Da's geen gewone cola fles..."
+
+#: tbe_levels:79
+msgid "But there are no scissors here to pop the balloon with!"
+msgstr "Maar er is hier geen schaarm om de ballon mee te laten klappen!"
+
+#: tbe_levels:80
+msgid "But there's some styrofoam blocks in the way..."
+msgstr "Maar er staan wat blokken piepschuim in de weg..."
+
+#: tbe_levels:81
+msgid "But use only two different methods!"
+msgstr ""
+
+#: tbe_levels:82
+msgid "But why do I have to clean my room every year?"
+msgstr "Maar waarom moet ik elk jaar mijn kamer opruimen?"
+
+#: tbe_levels:83
+msgid ""
+"But why not reverse the trick? You can select what phone number to call!"
+msgstr "Maar waarom geen koekje van eigen deeg? Je kunt 't telefoonnummer van de ontsteker aanpassen!"
+
+#: tbe_levels:84
+msgid "By the way: it is possible with only one pin!"
+msgstr "PS: Het is mogelijk met slechts een punaises!"
+
+#: tbe_levels:85
+msgid "By the way: there are two ramps in the toolbox. Use them wisely!"
+msgstr "Trouwens, er zitten twee hellingen in de gereedschapskist. Gebruik ze goed!"
+
+#: tbe_levels:86
+msgid ""
+"By the way: you may sometimes have more in your toolbox than you need..."
+msgstr "Overigens: soms heb je meer in je gereedschapskist dan je nodig hebt..."
+
+#: tbe_levels:87
+msgid "Cactus"
+msgstr "Cactus"
+
+#: tbe_levels:88
+msgid ""
+"Can you live from just cola? Let's have some coconuts! Goal: shoot the "
+"coconut from the tree."
+msgstr "Kun je leven op alleen cola? Dan nemen we er toch een kokosnootje bij! Doel: schiet de kokosnoot uit de boom."
+
+#: tbe_levels:89
+msgid "Clogging the pipe"
+msgstr ""
+
+#: tbe_levels:90
+msgid "Coconut instead of Cola"
+msgstr ""
+
+#: tbe_levels:91
+msgid "Cola bottle"
+msgstr "Colafles"
+
+#: tbe_levels:92
+msgid "Cola Crate"
+msgstr "Cola krat"
+
+#: tbe_levels:93
+msgid "Cola-mint"
+msgstr "Cola+mint"
+
+#: tbe_levels:94
+msgid "Cola+mint"
+msgstr "mint-Cola"
+
+#: tbe_levels:95
+msgid "Cola+mint Bottle"
+msgstr "Cola-mint fles"
+
+#: tbe_levels:96
+msgid "Cola Powered Bike"
+msgstr "De colafiets"
+
+#: tbe_levels:97
+msgid "Cola Rocket"
+msgstr "Cola raket"
+
+#: tbe_levels:98
+msgid "Contraption 1"
+msgstr "Geniale inval 1"
+
+#: tbe_levels:99
+msgid "Contraption 2"
+msgstr "Geniale inval 2"
+
+#: tbe_levels:100
+msgid "Detonator Box"
+msgstr "Ontsteker"
+
+#: tbe_levels:101
+msgid "Dial B for Boom"
+msgstr "Kies B voor Boem"
+
+#: tbe_levels:102
+msgid "Dial the right number!"
+msgstr "Zorg dat het juiste nummer gedraaid wordt!"
+
+#: tbe_levels:103
+msgid "Domino"
+msgstr "Domino"
+
+#: tbe_levels:104
+msgid "Domino Day"
+msgstr "Domino Day"
+
+#: tbe_levels:105
+msgid "Don't tell anyone about it, I still need to file a patent!"
+msgstr "(Niet verder vertellen, ik moet 't patent nog steeds aanvragen)"
+
+#: tbe_levels:106
+msgid "Don't worry."
+msgstr "Maak je niet ongerust."
+
+#: tbe_levels:107
+msgid "Don't you love these old cartoons?"
+msgstr ""
+
+#: tbe_levels:108
+msgid "Double Action"
+msgstr "Dubbele actie"
+
+#: tbe_levels:109
+msgid "Do you know what an unstable equilibrium is?"
+msgstr "Weet jij wat een labiel evenwicht is?"
+
+#: tbe_levels:110
+msgid "Dynamite"
+msgstr "Dynamiet"
+
+#: tbe_levels:111
+msgid "Extreme Tux Racer"
+msgstr ""
+
+#: tbe_levels:112
+msgid "feeling a winner already...<br><br>the Post-it Boy"
+msgstr "nu al een winnaar...<br><br>Post-it Boy"
+
+#: tbe_levels:113
+msgid "Find the Message..."
+msgstr "Zoek de boodschap..."
+
+#: tbe_levels:114
+msgid "Five Balloons"
+msgstr ""
+
+#: tbe_levels:115
+msgid "float balloon, float"
+msgstr "stijg op ballon, stijg op"
+
+#: tbe_levels:116
+msgid "Floor"
+msgstr "Vloer"
+
+#: tbe_levels:117
+msgid "Flying from flower to flower can be hard. A real hurdle race."
+msgstr "Van bloem naar bloem fladderen valt niet altijd mee. Een echte hordenloop."
+
+#: tbe_levels:118
+msgid "Football in Styrofoam..."
+msgstr "Voetbal in piepschuim..."
+
+#: tbe_levels:119
+msgid "Geyser"
+msgstr "Geiser"
+
+#: tbe_levels:120
+msgid "Goal: join all bowling pins together."
+msgstr "Doel: breng alle kegels samen."
+
+#: tbe_levels:121
+msgid "Goal: Topple the pin."
+msgstr "Doel: Kegel de kegel om."
+
+#: tbe_levels:122
+msgid "GOOOOAAAAAL !!!"
+msgstr "GOOOOAAAAAL !!!"
+
+#: tbe_levels:123
+msgid ""
+"Hah! They have decided it's time to put up the tent. I don't agree - let's "
+"tear down the poles!"
+msgstr "Hah! Ad en Lies denken even snel een tentje op te zetten. Mooi niet! gooi de tentstokken om!"
+
+#: tbe_levels:124
+msgid "Hammer"
+msgstr "Hamer"
+
+#: tbe_levels:125
+msgid "Have you read 'Foucault's Pendulum'?"
+msgstr "Heb je toevallig 'De slinger van Foucault' gelezen?"
+
+#: tbe_levels:126
+msgid ""
+"Have you seen the movie \"UP\"?<br><br>Unfortunately, I don't have that many"
+" balloons."
+msgstr "Heb je de film \"UP\" gezien?<br><br>Jammer genoeg heb ik niet zoveel ballonnen."
+
+#: tbe_levels:127
+msgid ""
+"Hello!<br>Welcome to The Butterfly Effect!<br><br>This level is a first "
+"demonstration.Click PLAY in the top-right and watch the butterfly fly. When "
+"it is at the flower, you've won your first level.<br><br>You might want to "
+"click on the Post-it note!"
+msgstr "Hoi!<br>Welkom bij Het Vlindereffect!<br><br>Dit level is alleen een demonstratie.Klik AFSPELEN rechtsboven en zie de vlinder fladderen. Zodra hij bij de bloem is, heb je je eerste level gewonnen.<br><br>Je wilt misschien ook op de Post-it note klikken!"
+
+#: tbe_levels:128
+msgid "He want to shoot the pin into the goal."
+msgstr "Hij wil die kegel de goal inschieten."
+
+#: tbe_levels:129
+msgid ""
+"Hint: first put it on the floor,<br>then adjust height,<br>then the width..."
+msgstr "TIP: plaats het eerst op de ondergrond,<br>pas dan hoogte aan,<br>en dan de breedte..."
+
+#: tbe_levels:130
+msgid "Hmmm... <br><br>This reminds me of a kids' game!"
+msgstr "Hmmm... <br><br>Dit doet me aan een kinderspeeltje denken!"
+
+#: tbe_levels:131
+msgid "Hmmm... You see that hole?<br>Behind the volley ball!"
+msgstr "Hmmm... Zie je die kuil?<br>Achter de volleybal!"
+
+#: tbe_levels:132
+msgid "Hole-in-One"
+msgstr "Hole-in-one"
+
+#: tbe_levels:133
+msgid "How do YOU demolish a house of cards?"
+msgstr "Hoe sloop JIJ een kaartenhuis?"
+
+#: tbe_levels:134
+msgid "I agree that the best way to do it, is with scissors."
+msgstr "Ik ben het er mee eens: de schaar is de beste manier om het te doen."
+
+#: tbe_levels:135
+msgid "I also have a Bowling Ball that wants to cross."
+msgstr "Nu wil een bowlingbal eroverheen."
+
+#: tbe_levels:136
+msgid "I don't think it's not fair: butterflies can fly by themselves."
+msgstr "Het is niet eerlijk: vlinders kunnen zelf vliegen."
+
+#: tbe_levels:137
+msgid "I don't think the Bowling Ball can reach the pin..."
+msgstr "Ik denk niet dat de bal de kegel een haar kan krenken..."
+
+#: tbe_levels:138
+msgid ""
+"If you click the pause button, the simulation will stop.<br>There's also a "
+"green 'reset' button now. <br> <br> During the simulation, there's also a "
+"'fast forward'."
+msgstr "Als je op de pauze knop drukt, dan stopt alles weer.<br>Er komt dan ook een groene 'reset' pijl bij. <br><br>Tijdens de simulatie is er ook nog een 'snel vooruitspoelen' knop."
+
+#: tbe_levels:139
+msgid "I hate Angry Birds!"
+msgstr "Ik haat die Angry Birds!"
+
+#: tbe_levels:140
+msgid "Imagine the noises in this level! Tip the pin."
+msgstr "Stel je de geluiding in dit level voor! Schop de pin."
+
+#: tbe_levels:141
+msgid "I'm like my brother - I play soccer, too!"
+msgstr "Ik lijk op m'n broer - ik speel ook voetbal!"
+
+#: tbe_levels:142
+msgid "Im Perfect Balance"
+msgstr "Im Perfecte Balans"
+
+#: tbe_levels:143
+msgid ""
+"Im Perfect Balance...<br><br>It almost sounds like an 'Art Of Noise' album "
+"title"
+msgstr "Im Perfecte Balans...<br><br>Klinkt bijna als een albumtitel van 'Art Of Noise'"
+
+#: tbe_levels:144
+msgid ""
+"I'm pretty sure that Bowling Balls cannot climb walls - they don't have "
+"hands, do they?"
+msgstr "Ik weet vrij zeker dat bowlingballen niet kunnen klimmen. Al was het maar omdat ze geen handjes hebben."
+
+#: tbe_levels:145
+msgid "I'm sure it needs help to cross over to the pin."
+msgstr "Die gaat zeker hulp nodig hebben!"
+
+#: tbe_levels:146
+msgid ""
+"I'm sure the balloon has something to do with the solution to this level!"
+msgstr "Ik weet zeker dat de ballon iets met de oplossing te maken heeft!"
+
+#: tbe_levels:147
+msgid "I'm thirsty!"
+msgstr "Ik heb dorst!"
+
+#: tbe_levels:148
+msgid "I'm too lazy for my old bike."
+msgstr "Te lui voor m'n ouwe fiets."
+
+#: tbe_levels:149
+msgid ""
+"<i>Once this Post-It is gone,</i><br><br>click the play button top-right "
+"<br>to make it happen!"
+msgstr "<i>Als deze Post-It zo verdwenen is,</i><br>klik dan op de afspeelknop rechtsboven om te starten."
+
+#: tbe_levels:150
+msgid "I still have other ideas that need balloons..."
+msgstr "En ik heb nog wat andere plannetjes met ballonnen..."
+
+#: tbe_levels:151
+msgid "It falls down, blows ...<br><br>and doesn't do anything useful"
+msgstr "Hij valt en spuit... <br><br>en doet niks"
+
+#: tbe_levels:152
+msgid "I think something's cooking here..."
+msgstr ""
+
+#: tbe_levels:153
+msgid ""
+"I thought of using helium, but Mythbusters explained that won't work..."
+msgstr "Ik heb nagedacht over helium, maar volgens Mythbusters werkt dat niet..."
+
+#: tbe_levels:154
+msgid ""
+"It's a Cola-mint Fountain, ready to blow!<br>Just a light shock will start "
+"it!"
+msgstr "Het is een Cola-mint fontein, klaar om te spuiten!<br>Een lichte schok is genoeg!"
+
+#: tbe_levels:155
+msgid "It's almost time<br>for goodbyes"
+msgstr "Het is bijna tijd om afscheid te nemen"
+
+#: tbe_levels:156
+msgid "It's always the blokes lifting the girls!"
+msgstr "Het zijn altijd de heren die de dames tillen!"
+
+#: tbe_levels:157
+msgid "It's a tennis ball this time that wants to cross."
+msgstr "Dit keer wil er een tennisbal overheen."
+
+#: tbe_levels:158
+msgid "It's coffee time. Ring the bell."
+msgstr "Tijd voor koffie. Laat de bel luiden."
+
+#: tbe_levels:159
+msgid "It's party time at the office!<br><br>Jumping Jack has his birthday!!!"
+msgstr "Het is tijd voor een feestje op kantoor!<br><br>Houten Klaas is jarig!!!"
+
+#: tbe_levels:160
+msgid ""
+"It very regularly blows boiling water 40 meters up. <br>For my school's "
+"science project, I decided to simulate that."
+msgstr "Hij spuit zeer regelmatig kokend water 40 meter omhoog. <br> Voor natuurkunde wil ik dat nadoen."
+
+#: tbe_levels:161
+msgid "It wants to go to the flower..."
+msgstr "Die wil naar de bloem..."
+
+#: tbe_levels:162
+msgid "I've grown too large for my bike, too."
+msgstr "En ik ben ook wat te groot geworden."
+
+#: tbe_levels:163
+msgid ""
+"I want to be a balloon <br> ... <br> and be the first to set foot on Alpha "
+"Centauri!"
+msgstr "Ik wil ook een ballon zijn <br> ... <br> en de eerste zijn die voet zet op Alpha Centauri!"
+
+#: tbe_levels:164
+msgid ""
+"(Jack usually doesn't get much attention, he's already happy that we thought"
+" of him)"
+msgstr "(Klaas krijgt meestal niet zo veel aandacht, hij is allang blij dat we aan hem hebben gedacht.)"
+
+#: tbe_levels:165
+msgid "Jumping Around I"
+msgstr "Rondspringen I"
+
+#: tbe_levels:166
+msgid "Jumping Around II"
+msgstr "Rondspringen II"
+
+#: tbe_levels:167
+msgid "Jumping Jack celebrates a party at the office. Isn't that fun?"
+msgstr "Houten Klaas viert een feestje op kantoor. Leuk toch?"
+
+#: tbe_levels:168
+msgid "Just hook it up in the air<br>and it stays there."
+msgstr "Hang 't in de lucht <br> en het blijft hangen."
+
+#: tbe_levels:169
+msgid "Kick that pin in the goal!"
+msgstr "Schop die kegel de goal in!"
+
+#: tbe_levels:170
+msgid "Kick the pin."
+msgstr "Schop de kegel."
+
+#: tbe_levels:171
+msgid "lalalala"
+msgstr "lalalala"
+
+#: tbe_levels:172
+msgid "Large Domino"
+msgstr "Grote dominosteen"
+
+#: tbe_levels:173
+msgid "LeftRamp"
+msgstr "Helling naar links"
+
+#: tbe_levels:174
+msgid "Let's join the lonely one above with his friends below."
+msgstr "Laten we 'm eens bij zijn vriendjes beneden brengen."
+
+#: tbe_levels:175
+msgid "Let's present the gift to him, shall we?"
+msgstr "Laten we hem zijn cadeautje maar geven."
+
+#: tbe_levels:176
+msgid "Let's spare the balloon, there's a pin that needs kicking."
+msgstr "Laten we de ballon proberen te redden, er moet nog een kegel om."
+
+#: tbe_levels:177
+msgid "Level with a small user interaction: a volleyball is in the way... "
+msgstr "Dit level vereist enige speler-actie: er ligt een volleybal in de weg... "
+
+#: tbe_levels:178
+msgid "Levers, Dominoes, Bowling Pins. This one is complex."
+msgstr "Hefbomen, dominostenen, kegels. Deze is moeilijk."
+
+#: tbe_levels:179
+msgid ""
+"Like a 'Sword of Damocles'. <br><br>Would it also loose appetite if it knew?"
+msgstr "Als een 'Zwaard van Damokles'. <br><br>Zou 'ie ook ineens geen eetlust meer hebben?"
+
+#: tbe_levels:180
+msgid "Look, another gap."
+msgstr "Kijk, nog zo'n afgrond!"
+
+#: tbe_levels:181
+msgid "Look at Steam Machine"
+msgstr ""
+
+#: tbe_levels:182
+msgid "Look... <br><br>I made an engine to power my bike."
+msgstr "Kijk...<br><br>Ik heb een motor voor m'n fietsje gemaakt."
+
+#: tbe_levels:183
+msgid "Look for the last message"
+msgstr "Zoek een laatste bericht"
+
+#: tbe_levels:184
+msgid "Look: it's that butterfly and flower again."
+msgstr "Kijk nou: vlinder en bloempje zijn terug."
+
+#: tbe_levels:185
+msgid "Looks like there's something missing..."
+msgstr "Maar ontbreekt er niet nog wat?"
+
+#: tbe_levels:186
+msgid ""
+"Look, that's a skyhook.<br><br>A pretty nifty invention, if I may say so."
+msgstr "Kijk, dat is nou een hemelhaakje.<br><br>Een slimme uitvinding, al zeg ik 't zelf..."
+
+#: tbe_levels:187
+msgid "Look: two pins need kicking."
+msgstr "Kijk: daar staan twee kegels."
+
+#: tbe_levels:188
+msgid ""
+"Looping in Looping in looping... <br>Poor Tux is late for his race. <br>Get "
+"him to the cone fast!<br><br>This level is 'inspired' by SuperTuxKart, the "
+"famous open source kart game featuring all open sourcemascots to race in "
+"beautifully designed tracks.<a "
+"href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a>"
+" "
+msgstr ""
+
+#: tbe_levels:189
+msgid "Looping Looping Looping"
+msgstr "Looping Looping Looping"
+
+#: tbe_levels:190
+msgid "Loopings"
+msgstr "Loopings"
+
+#: tbe_levels:191
+msgid "Loopings are fun!"
+msgstr "Loopings zijn leuk!"
+
+#: tbe_levels:192
+msgid "Loopings I"
+msgstr "Loopings I"
+
+#: tbe_levels:193
+msgid "Loopings II"
+msgstr "Loopings II"
+
+#: tbe_levels:194
+msgid "Make all Balloons pop."
+msgstr ""
+
+#: tbe_levels:195
+msgid "Make three birds and three eggs do poof."
+msgstr "Laat drie vogeltjes en drie eitjes in rook opgaan."
+
+#: tbe_levels:196
+msgid ""
+"Make Tux descent the ski slope.<br><br>This level was inspired by the open "
+"source Extreme Tux Racer,where Tux has to race down slopes<a "
+"href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
+msgstr ""
+
+#: tbe_levels:197
+msgid "Marble"
+msgstr "Knikker"
+
+#: tbe_levels:198
+msgid "Marble Boulevard"
+msgstr "Knikkerboulevard"
+
+#: tbe_levels:199
+msgid "Medium Domino"
+msgstr "Middel dominosteen"
+
+#: tbe_levels:200
+msgid ""
+"Mini Golf<br>After the ball is eaten by the monkey, make it come out of the "
+"monkey's rear end into the chest."
+msgstr "Mini Golf<br>Nadat de bal door de aap is opgegeten, zorg dat de bal via de achterkant van de aap in de schatkist terecht komt."
+
+#: tbe_levels:201
+msgid "My brother likes soccer"
+msgstr "Mijn broer houdt van voetbal"
+
+#: tbe_levels:202
+msgid ""
+"My mum told me to clean my room.<br><br>All balls must go in the basket."
+msgstr "Van mijn moeder moet ik m'n kamer opruimen.<br><br>Alle ballen moeten in de mand."
+
+#: tbe_levels:203
+msgid "No butterflies here!<br><br>"
+msgstr "Geen vlinders hiero!<br><br>"
+
+#: tbe_levels:204
+msgid ""
+"No butterfly here...<br><br>Don't worry - we haven't seen the last one yet"
+msgstr "Geen vlinder hiero...<br><br>Wanhoop niet - er komen er nog meer"
+
+#: tbe_levels:205
+msgid "Not affiliated with the yearly event."
+msgstr "Niet gelieerd aan de jaarlijkse show."
+
+#: tbe_levels:206
+msgid ""
+"Note:<br>If the game runs, a green fast forward button appears in the top-"
+"right corner.<br><br>That will speed up the simulation."
+msgstr "PS:<br>Als het spel loopt, verschijnt er een groene doorspoelknop rechtsboven.<br><br>Deze maakt de simulatie sneller."
+
+#: tbe_levels:207
+msgid "Notice a new trick: rotate."
+msgstr "Attentie! Je hebt hier een nieuwe truuk nodig: draaien."
+
+#: tbe_levels:208
+msgid ""
+"Oh, Nena, where did you go?<br><br>You were so hot <br> back in the 80s!"
+msgstr "Oh, Nena, waar ben je toch?<br><br>Je was zo knap <br> ergens in de jaren 80!"
+
+#: tbe_levels:209
+msgid "\"Old Faithful\" is a geyser in Yellowstone National Park, Wyoming, USA."
+msgstr "\"Old Faithful\" is een geiser in het Yellowstone National Park in de Verenigde Staten."
+
+#: tbe_levels:210
+msgid "Once a Volley Ball jumps across, a Cola bottle will finish it off."
+msgstr "Nadat een volleybal naar de overkant is gestuiterd, maakt een colafles het af."
+
+#: tbe_levels:211
+msgid "One ball jumps across the barrier."
+msgstr "Een bal springt over de hindernis."
+
+#: tbe_levels:212
+msgid "One Hundred, please!"
+msgstr "Honderd, graag!"
+
+#: tbe_levels:213
+msgid "(Or a \"soccer\" ball for you Americans)"
+msgstr ""
+
+#: tbe_levels:214
+msgid "Or do they fly to the stars?"
+msgstr "Of vliegen ze door naar de sterren?"
+
+#: tbe_levels:215
+msgid "Or was it \"Keep it Simple, stupid\"?"
+msgstr ""
+
+#: tbe_levels:216
+msgid "Our goal is to keep the butterfly alive. And put the pin in the chest."
+msgstr "Ons doel is om de vlinder in leven te houden. En de kegel in de kist te gooien..."
+
+#: tbe_levels:217
+msgid "Our little Butterfly...<br><br>Another day, another flower..."
+msgstr "Aggut, ons vlindertje...<br><br>Een nieuwe dag, een nieuwe bloem..."
+
+#: tbe_levels:218
+msgid "Party at the office"
+msgstr ">Feestje op kantoor"
+
+#: tbe_levels:219
+msgid "Petanque"
+msgstr "Petanque"
+
+#: tbe_levels:220
+msgid "Pigs on top!"
+msgstr "Varkens go go go!"
+
+#: tbe_levels:221
+msgid "Pin rack"
+msgstr "Spijkerraam"
+
+#: tbe_levels:222
+msgid "Pin topples to green in two moves."
+msgstr "Kegel valt naar groen in twee zetten."
+
+#: tbe_levels:223
+msgid "PivotPoint test Level..."
+msgstr ""
+
+#: tbe_levels:224
+msgid "Please make the butterfly happy!<br><br>That's the least we can do."
+msgstr "Maak alsjeblieft de vlinder blij!<br><br>Dat is wel het minste wat we kunnen doen."
+
+#: tbe_levels:225
+msgid "Poing Poing Poing"
+msgstr "Poing Poing Poing"
+
+#: tbe_levels:226
+msgid ""
+"Poing Poing Poing <br> <br> ... a world-famous song of the <i>Rotterdam "
+"Termination Source</i>"
+msgstr "Poing Poing Poing <br> <br> ... de wereldberoemde hit van <i>Rotterdam Termination Source</i>"
+
+#: tbe_levels:227
+msgid "PolyObject test Level..."
+msgstr ""
+
+#: tbe_levels:228
+msgid "Poof Poof Poof"
+msgstr ""
+
+#: tbe_levels:229
+msgid "Poor little butterfly has no clue what's hanging above its head..."
+msgstr "Dat arme vlindertje heeft geen idee wat er boven z'n hoofd hangt..."
+
+#: tbe_levels:230
+msgid ""
+"Pop all balloons. This level is based on some conversations at T-Dose 2010."
+msgstr ""
+
+#: tbe_levels:231
+msgid "Pop the balloon."
+msgstr "Laat de balloon knappen."
+
+#: tbe_levels:232
+msgid "Post-It Boy<br><br><br>(has a dirty mind)"
+msgstr "Post-It Boy<br><br><br>(met een dirty mind)"
+
+#: tbe_levels:233
+msgid ""
+"Post-It boy <br>likes playing with styrofoam ... <br><br>... for breakfast!"
+msgstr "Post-It boy <br>speelt graag met piepschuim ... <br><br>... als ontbijt!"
+
+#: tbe_levels:234
+msgid "Post-It Boy likes to \"Make it Complex, Comrade\""
+msgstr ""
+
+#: tbe_levels:235
+msgid "... Post-It boy once spoke with<br>Sonic the Hedgehog!"
+msgstr "... Post-It boy heeft een handtekening van<br>Sonic the Hedgehog!"
+
+#: tbe_levels:236
+msgid "Post-it boy played the world cup soccer...<br><br>(in a previous life)"
+msgstr "Post-it boy heeft in de wereldcup voetbal gespeeld...<br><br>(in een vorig leven)"
+
+#: tbe_levels:237
+msgid "PS: Those dominos are quite big, aren't they?"
+msgstr "PS: Vind je die dominostenen ook niet wat groot?"
+
+#: tbe_levels:238
+msgid "Put the styrofoam ramp in place..."
+msgstr "Plaats je piepschuim helling..."
+
+#: tbe_levels:239
+msgid "Quarter Arc"
+msgstr "Kwart ronding"
+
+#: tbe_levels:240
+msgid "Quarter Arc #1"
+msgstr "Kwart bocht nr 1"
+
+#: tbe_levels:241
+msgid "Quarter Arc #2"
+msgstr "Kwart bocht nr 2"
+
+#: tbe_levels:242
+msgid "Quarter Arc #3"
+msgstr "Kwart bocht nr 3"
+
+#: tbe_levels:243
+msgid "Ramp /"
+msgstr "Helling /"
+
+#: tbe_levels:244
+msgid "Ramp \\"
+msgstr "Helling \\"
+
+#: tbe_levels:245
+msgid "Remember this gap?"
+msgstr "Kun je je die afgrond nog herinneren?"
+
+#: tbe_levels:246
+msgid "Return of the Post-It Pig"
+msgstr "Het Post-It Varkentje keert terug"
+
+#: tbe_levels:247
+msgid "Right Ramp"
+msgstr "Helling naar Rechts"
+
+#: tbe_levels:248
+msgid "Ring the Bell"
+msgstr "Laat de bel maar luiden"
+
+#: tbe_levels:249
+msgid "Save the butterfly!"
+msgstr "Red de vlinder!"
+
+#: tbe_levels:250
+msgid "save the butterfly, put pin in chest."
+msgstr "red de vlinder, kegel in de kist."
+
+#: tbe_levels:251
+msgid "Saw Blade"
+msgstr "Cirkelzaagblad"
+
+#: tbe_levels:252
+msgid "Score 100 points by putting the Tennis ball into the right slot."
+msgstr "Scoor 100 punten door de tennisbal in het juiste vakje te laten vallen."
+
+#: tbe_levels:253
+msgid "Sir Alfred Hitchcock made a good movie about a devious phone call."
+msgstr "Sir Alfred Hitchcock heeft een goeie film gemaakt over een duivels telefoongesprek."
+
+#: tbe_levels:254
+msgid "Skyhook"
+msgstr "Hemelhaakje"
+
+#: tbe_levels:255
+msgid "Small Domino"
+msgstr "Kleine dominosteen"
+
+#: tbe_levels:256
+msgid "Soccerball"
+msgstr "Voetbal"
+
+#: tbe_levels:257
+msgid "Soccer Ball"
+msgstr "Voetbal"
+
+#: tbe_levels:258
+msgid ""
+"Soccer Balls are a little bouncy, but sometimes \"a little\" is not enough."
+msgstr "Voetballen stuiteren een beetje. Soms is \"een beetje\" een beetje te weinig."
+
+#: tbe_levels:259
+msgid ""
+"Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly."
+msgstr "Voetbal gaat over scoren. Schop die kegel de goal in, maar raak de vlinder niet."
+
+#: tbe_levels:260
+msgid ""
+"Someone told me to drag the ramp from the toolbox into the big "
+"window.<br>... after you've read my note!"
+msgstr "Iemand zei me om een helling van de gereedschapskist in het veld te slepen.<br>... nadat je de post-it uit hebt!"
+
+#: tbe_levels:261
+msgid "Something is manufactured here."
+msgstr "Er wordt hier iets gemaakt."
+
+#: tbe_levels:262
+msgid "Something weird"
+msgstr "Iets vreemds"
+
+#: tbe_levels:263
+msgid ""
+"Sometimes, it's a team effort. One does the work; the other reaps the "
+"benefit."
+msgstr "Soms is het er een voor het team: de ene doet het werk, de andere doet maar weinig."
+
+#: tbe_levels:264
+msgid "Sounds like a junk, does it?"
+msgstr "Klinkt als een junk, toch?"
+
+#: tbe_levels:265
+msgid "Spare the Balloon"
+msgstr "Redt de ballon"
+
+#: tbe_levels:266
+msgid "Spring"
+msgstr "Springveer"
+
+#: tbe_levels:267
+msgid "Springboard"
+msgstr "Springplank"
+
+#: tbe_levels:268
+msgid "(Ssst... I'm playing chess)"
+msgstr "(Sssht... Ben aan 't schaken)"
+
+#: tbe_levels:269
+msgid "Steam Machine"
+msgstr ""
+
+#: tbe_levels:270
+msgid "Stop"
+msgstr "Stop"
+
+#: tbe_levels:271
+msgid "Styrofoam"
+msgstr "Piepschuim"
+
+#: tbe_levels:272
+msgid "Styrofoam Block"
+msgstr "Blok piepschuim"
+
+#: tbe_levels:273
+msgid "Tennis Ball"
+msgstr "Tennisbal"
+
+#: tbe_levels:274
+msgid "Tent"
+msgstr "Tent"
+
+#: tbe_levels:275
+msgid "test level for quarter arcs and the new state change goal."
+msgstr ""
+
+#: tbe_levels:276
+msgid "That poor balloon is on its way to its doom"
+msgstr "Die arme ballon is op weg naar z'n einde"
+
+#: tbe_levels:277
+msgid ""
+"That's also true for circus acts. They all train, but some fly more than "
+"others."
+msgstr "Dat is ook zo bij het circus: alle acrobaten trainen, maar sommigen vliegen meer dan anderen."
+
+#: tbe_levels:278
+msgid "That's half of the problem you need to fix here..."
+msgstr "Maar dat is maar de helft van het probleem dat je moet oplossen..."
+
+#: tbe_levels:279
+msgid "The Birds Strike Back!"
+msgstr "De vogels slaan terug!"
+
+#: tbe_levels:280
+msgid "The Bowling Ball cannot kick the Bowling Pin in the goal."
+msgstr "De bowlingbal kan de kegel niet in de goal schoppen."
+
+#: tbe_levels:281
+msgid "The Butterfly Effect 101"
+msgstr "Het vlindereffect (beginnerscursus)"
+
+#: tbe_levels:282
+msgid "The Butterfly effect 102"
+msgstr "Het vlindereffect (vervolgcursus)"
+
+#: tbe_levels:283
+msgid "The Factory"
+msgstr "de fabriek"
+
+#: tbe_levels:284
+msgid "The final killer challenge..."
+msgstr "De laatste, slopende uitdaging..."
+
+#: tbe_levels:285
+msgid "The goal here is to topple the pins below."
+msgstr "De bedoeling is om de kegels hieronder om te gooien."
+
+#: tbe_levels:286
+msgid ""
+"The good news: they cannot lift a bowlingball, and a volley ball is too "
+"light to set off the detonator..."
+msgstr "Het goede nieuws: ze kunnen geen bowlingballen tillen en een volleybal is te licht voor de ontsteker..."
+
+#: tbe_levels:287
+msgid "The House of Cards"
+msgstr "Het Kaartenhuis"
+
+#: tbe_levels:288
+msgid "The large rectangular pieces of styrofoam hide a message."
+msgstr "De grote blokken piepschuim verbergen een boodschap."
+
+#: tbe_levels:289
+msgid ""
+"The Pigs were right - you should be allowed to borrow an egg if you are "
+"starving."
+msgstr "De varkens hadden het bij het rechte eind - je mag best een eitje lenen als je honger hebt."
+
+#: tbe_levels:290
+msgid "... the Post-it Boy"
+msgstr "... Post-it Boy"
+
+#: tbe_levels:291
+msgid "... the Post-It Boy"
+msgstr "... Post-It Boy"
+
+#: tbe_levels:292
+msgid "the Post-It Boy"
+msgstr "de Post-It Boy"
+
+#: tbe_levels:293
+msgid "... The Post-It boy"
+msgstr "... de Post-It boy"
+
+#: tbe_levels:294
+msgid "The Post-It Pig"
+msgstr "Het Post-It Varkentje"
+
+#: tbe_levels:295
+msgid "There are two ways to pop a balloon."
+msgstr "Er zijn twee manieren om een ballon te laten klappen."
+
+#: tbe_levels:296
+msgid "There's cola,<br>and there's even a gift!"
+msgstr "Er is cola,<br>en er is zelfs een cadeautje!"
+
+#: tbe_levels:297
+msgid ""
+"The second level in the game, and the first level you actually have to put "
+"something into the scene.<br>Don't forget to read the Post-it note!"
+msgstr "Het tweede level in het spel, maar het eerste level waar je daadwerkelijk iets in dewereld moet plaatsen.<br>Vergeet niet om de Post-it note te lezen!"
+
+#: tbe_levels:298
+msgid "The soccer ball cannot cross a big gap by itself."
+msgstr "Een voetbal kan niet alleen over een afgrond."
+
+#: tbe_levels:299
+msgid "The soccer ball must kick the pin. But there's something missing."
+msgstr "De voetbal moet de kegel omknallen. Maar er ontbreekt iets."
+
+#: tbe_levels:300
+msgid ""
+"They are Angry Birds for what? Just a few eggs? Kill one bird and four eggs "
+"with one stone (dynamite)."
+msgstr "Hoezo Angry Birds? Om maar een paar eieren? Sla vier eieren in een klap dynamiet - en dat gele beest erbij."
+
+#: tbe_levels:301
+msgid "This is a factory."
+msgstr ""
+
+#: tbe_levels:302
+msgid "This is a house of cards."
+msgstr "Een kaartenhuis."
+
+#: tbe_levels:303
+msgid "This is just a level to prove PivotPoint correct operation."
+msgstr ""
+
+#: tbe_levels:304
+msgid ""
+"This is just a level to prove PivotPoint correct operation. In this case, "
+"from the toolbox."
+msgstr ""
+
+#: tbe_levels:305
+msgid ""
+"This is just a level to prove PivotPoint correct operation. In this case, "
+"there is a hinge."
+msgstr ""
+
+#: tbe_levels:306
+msgid ""
+"This is just a level to prove PolyObject correct operation. It will only "
+"make sense if you enable debug drawing."
+msgstr ""
+
+#: tbe_levels:307
+msgid "This is my brother.<br><br>He is of the sporty type."
+msgstr "Dit is mijn broer.<br><br>Hij is duidelijk sportiever dan ik."
+
+#: tbe_levels:308
+msgid "This is not as complicated as it looks. It almost works!"
+msgstr "Dit ziet er ingewikkelder uit dan het is. Het werkt al bijna!"
+
+#: tbe_levels:309
+msgid "This is not a stable equilibrium, any excitation will make it move."
+msgstr "Dit is geen stabiel evenwicht, elke aanraking start de beweging."
+
+#: tbe_levels:310
+msgid "This is Ruud.<br><br>He's on a small desert island."
+msgstr "Dit is Ruud.<br><br>Hij is gedumpt op een klein tropisch eiland."
+
+#: tbe_levels:311
+msgid ""
+"This is the second level to prove PivotPoint correct operation.This level "
+"shows the famous line of metal balls. Lifting one and letting it goshould "
+"result in all balls staying stationary and the last ball moving up.NOTE THAT"
+" TBE DOESN'T BEHAVE LIKE THAT !!!"
+msgstr ""
+
+#: tbe_levels:312
+msgid "This mechanism appears more complex than it actually is."
+msgstr "Dit mechaniek lijkt op het eerste gezicht ingewikkelder dan het echt is."
+
+#: tbe_levels:313
+msgid "Those pins always long for company."
+msgstr "Die kegels verlangen altijd naar gezelschap."
+
+#: tbe_levels:314
+msgid "Today, everyone wins if the pin topples into the goal."
+msgstr "Vandaag wint het hele team als de kegel in de goal terecht komt."
+
+#: tbe_levels:315
+msgid "Topple pin to the right.<br>No: Left!<br>OK, OK, to the right."
+msgstr "Kegel naar rechts.<br>Nee: naar links!<br>Okee, okee - toch naar rechts."
+
+#: tbe_levels:316
+msgid "Topple the bowling pin below."
+msgstr "Kegel de kegel om."
+
+#: tbe_levels:317
+msgid "Topple the other way"
+msgstr "Naar de andere kant"
+
+#: tbe_levels:318
+msgid "Topple the pin."
+msgstr "Gooi de kegel om."
+
+#: tbe_levels:319
+msgid "Topple the pin to the left..."
+msgstr "Kegel de kegel naar links..."
+
+#: tbe_levels:320
+msgid ""
+"Toss both balls (\"boules\") so they end up very close to \"le but\" - just "
+"like \"la vraie Pétanque\"."
+msgstr "Gooi beide ballen (\"boules\") tot heel dicht bij \"le but\" - net zoals bij \"la vraie Pétanque\"."
+
+#: tbe_levels:321
+msgid "Transfer energy from Steam Engine to Bowling Pin"
+msgstr ""
+
+#: tbe_levels:322
+msgid "Turn it around"
+msgstr "Draai de lat"
+
+#: tbe_levels:323
+msgid "Two bowling balls, the wrong ball kicks the pin."
+msgstr "Twee bowlingballen, maar de verkeerde raakt de kegel eerst."
+
+#: tbe_levels:324
+msgid ""
+"Two hurdles must be overcome. And butterfly has to start everything himself."
+" Or herself?"
+msgstr "De vlinder moet twee hordes nemen. En hij moet alles zelf starten. Hmmm. Hij of zij?"
+
+#: tbe_levels:325
+msgid "Two things need to happen at once... Goal: Butterfly to Flower."
+msgstr "Twee dingen tegelijkertijd... Het doel: Vlinder naar bloem."
+
+#: tbe_levels:326
+msgid "Use a proper football this time!"
+msgstr "Met een echte voetbal deze keer!"
+
+#: tbe_levels:327
+msgid "Vengence will be ours!"
+msgstr "Wraak!"
+
+#: tbe_levels:328
+msgid "Volley Ball"
+msgstr "Volleybal"
+
+#: tbe_levels:329
+msgid "Volley balls can do that, too.<br><br>Wanna bet?"
+msgstr "Maar volleyballen kunnen dat ook.<br><br>Wedden?"
+
+#: tbe_levels:330
+msgid "Vrooom Vrooom Vrooom"
+msgstr "Vroem Vroem Vroem"
+
+#: tbe_levels:331
+msgid "Wait a minute!<br>That Bowling Ball won't do it..."
+msgstr "Hee wacht eens!<br>Die bowlingbal lukt het niet..."
+
+#: tbe_levels:332
+msgid "... waiting for breakfast"
+msgstr ""
+
+#: tbe_levels:333
+msgid "... Was signed:<br><br>the Post-It Boy"
+msgstr "... Getekend:<br><br>Post-It Boy"
+
+#: tbe_levels:334
+msgid "Wedge /"
+msgstr "Wig /"
+
+#: tbe_levels:335
+msgid "Wedge \\"
+msgstr "Wig \\"
+
+#: tbe_levels:336
+msgid "Welcome back!"
+msgstr "Welkom terug!"
+
+#: tbe_levels:337
+msgid "What a waste of cola!"
+msgstr ""
+
+#: tbe_levels:338
+msgid "Where do Balloons go?<br>They can't keep going up forever!"
+msgstr "Waar gaan ballonnen heen?<br>Ze kunnen niet eeuwig opstijgen!"
+
+#: tbe_levels:339
+msgid "Where does the cola go?"
+msgstr "Maar waar gaat de cola heen?"
+
+#: tbe_levels:340
+msgid "Why is that butterfly there?"
+msgstr "Maar wat doet die vlinder daar?"
+
+#: tbe_levels:341
+msgid "Wood bar"
+msgstr "Houten balk"
+
+#: tbe_levels:342
+msgid "Wooden Beam"
+msgstr "Houten Balk"
+
+#: tbe_levels:343
+msgid "Wood Wedge"
+msgstr "Houten Wig"
+
+#: tbe_levels:344
+msgid "Wooosh Wooosh Wooosh"
+msgstr "Psssht Psssht Psssht"
+
+#: tbe_levels:345
+msgid "Wow, that's a huge gap for a Soccer Ball."
+msgstr "Wauwie, dat is een flinke afgrond voor een voetballetje."
+
+#: tbe_levels:346
+msgid "You'll figure it out."
+msgstr ""
+
+#: tbe_levels:347
+msgid ""
+"You probably guessed what needs to be done here. <br><br>Rotate the cactus "
+"carefully<br> - it has a rather tight fit!"
+msgstr "Je snapt vast wel wat hier moet gebeuren. <br><br>Draai de cactus voorzichtig<br> - hij zit wat krap!"
+
+#: tbe_levels:348
+msgid "Your job:<br>tear it down!"
+msgstr "Jouw taak:<br>slopen!"
+
+#: tbe_levels:349
+msgid ""
+"You see that bowling ball at the top-right? <br><br>It wants to topple the "
+"pin next to it."
+msgstr "Zie je die bowling bal rechtsboven?<br><br>Hij wil de kegel ernaast omhebben."
+
+#: tbe_levels:350
+msgid "You see that butterfly?"
+msgstr "Zie je die vlinder?"
+
+#: tbe_levels:351
+msgid ""
+"You've seen this before: a Bowling Ball and a Bowling Pin. But this time, "
+"there's a wall in-between."
+msgstr "Dit ziet er bekend uit: een bowlingbal en een kegel. Maar nu staat er een muur in de weg."
+
+#: tbe_levels:352
+msgid "Zoing and Boom"
+msgstr "Zoing en Boem"
+
+#: tbe_levels:353
+msgid "Zoing Ploing Boing Woing<br>Zzap Whoosh Smack Boom"
+msgstr ""

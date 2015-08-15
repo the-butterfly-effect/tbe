@@ -1,0 +1,1527 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Arve Eriksson <031299870@telia.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: thebutterflyeffect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-07 23:03+0300\n"
+"PO-Revision-Date: 2015-08-10 03:52+0000\n"
+"Last-Translator: Arve Eriksson <031299870@telia.com>\n"
+"Language-Team: Swedish (http://www.transifex.com/Magic/thebutterflyeffect/language/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: tbe_levels:1
+msgid " :-( "
+msgstr " :-( "
+
+#: tbe_levels:2
+msgid "10kg Weight"
+msgstr "10kg vikt"
+
+#: tbe_levels:3
+msgid "1/4 Arc"
+msgstr "1/4-cirkel"
+
+#: tbe_levels:4
+msgid "99 Luftballons"
+msgstr "99 luftballonger"
+
+#: tbe_levels:5
+msgid "99 Luftballons,<br>nanana na nana naaa..."
+msgstr "99 Luftballons,<br>nanana na nana naaa..."
+
+#: tbe_levels:6
+msgid ""
+"A balancing beam threatens to kill a butterfly. But that's not all that "
+"needs fixing."
+msgstr "En balanserande balk kan krossa en fjäril. Men det är inte allt som behöver åtgärdas."
+
+#: tbe_levels:7
+msgid "A ball on a bar. Turn it around. Topple the pin."
+msgstr "En boll på en stång. Vänd den. Fäll käglan."
+
+#: tbe_levels:8
+msgid ""
+"a bowling ball needs to cross a big gap. Let's help crossing. Both ball and "
+"Pin need to be on the right!"
+msgstr "ett bowlingklot måste korsa en bred klyfta. Vi ska hjälpa till med det. Både klotet och käglan måste vara till höger!"
+
+#: tbe_levels:9
+msgid "a bowling ball needs to cross a big gap. Or does he?"
+msgstr "ett bowlingklot måste korsa en bred klyfta. Men gör han verkligen det?"
+
+#: tbe_levels:10
+msgid "A few crates of Cola washed up shore lately - so he's not thirsty."
+msgstr "Några lådor med Coca-Cola flöt iland nyligen - så han är inte törstig."
+
+#: tbe_levels:11
+msgid "a football needs to cross a big gap. Let's help crossing."
+msgstr "en fotboll måste korsa en bred klyfta. Vi ska hjälpa till."
+
+#: tbe_levels:12
+msgid "All need popping..."
+msgstr "Alla måste smällas..."
+
+#: tbe_levels:13
+msgid "And a balloon that wants to go up."
+msgstr "Och en ballong som vill upp."
+
+#: tbe_levels:14
+msgid "And again my best invention yet: the skyhook."
+msgstr "Och återigen min bästa uppfinning: kroken."
+
+#: tbe_levels:15
+msgid "And enjoy your first large Rube Goldberg-ish contraption."
+msgstr "Och njut av din första stora Rube Goldberg-inspirerade skapelse."
+
+#: tbe_levels:16
+msgid "And you can hang a lot of weight on it, too!"
+msgstr "Och du kan hänga en massa vikt från den!"
+
+#: tbe_levels:17
+msgid "Another Butterfly and Flower - with a styrofoam wall inbetween."
+msgstr "En annan fjäril och blomma - med en frigolitvägg imellan."
+
+#: tbe_levels:18
+msgid "Another contraption for the creative mind."
+msgstr "En annan skapelse för de nyfikna."
+
+#: tbe_levels:19
+msgid "Another game from my childhood."
+msgstr "Ett annat spel från min barndom."
+
+#: tbe_levels:20
+msgid "Another pin needs kicking!"
+msgstr "En annan kägla behöver sparkas till!"
+
+#: tbe_levels:21
+msgid "... An unhappy<br><br><br>Post-It Boy"
+msgstr "... En olycklig<br><br><br>Klisterlappskillen"
+
+#: tbe_levels:22
+msgid "As you can guess, I only want maximum score..."
+msgstr "Uppenbarligen vill jag bara ha högst poäng..."
+
+#: tbe_levels:23
+msgid "As you know,<br>those are not too sturdy."
+msgstr "Som du vet<br>är de inte särskilt stadiga."
+
+#: tbe_levels:24
+msgid "a tennis ball needs to cross a big gap. Let's help crossing."
+msgstr "en tennisboll behöver korsa en bred klyfta. Vi ska hjälpa till."
+
+#: tbe_levels:25
+msgid "A volley ball must topple a pin from the other end."
+msgstr "En volleyboll måste fälla en kägla från andra hållet."
+
+#: tbe_levels:26
+msgid "A weight on a chain, hanging on... air?"
+msgstr ""
+
+#: tbe_levels:27
+msgid "Balance your diet? Drink Cola! Goal: Topple the pins."
+msgstr ""
+
+#: tbe_levels:28
+msgid "Balancing Cola"
+msgstr ""
+
+#: tbe_levels:29
+msgid "Balloon"
+msgstr ""
+
+#: tbe_levels:30
+msgid "Balloons do Poof"
+msgstr ""
+
+#: tbe_levels:31
+msgid "Balloons go up!"
+msgstr ""
+
+#: tbe_levels:32
+msgid "Beam"
+msgstr ""
+
+#: tbe_levels:33
+msgid "Bed of Nails"
+msgstr ""
+
+#: tbe_levels:34
+msgid "Blast it! They stole my dynamite!!!"
+msgstr ""
+
+#: tbe_levels:35
+msgid "Block"
+msgstr ""
+
+#: tbe_levels:36
+msgid "Blow da Bottle"
+msgstr ""
+
+#: tbe_levels:37
+msgid "Both pins have to go down."
+msgstr ""
+
+#: tbe_levels:38
+msgid "Boulder"
+msgstr ""
+
+#: tbe_levels:39
+msgid "Bouncing Balls"
+msgstr ""
+
+#: tbe_levels:40
+msgid "Bowling Ball"
+msgstr ""
+
+#: tbe_levels:41
+msgid "Bowling Ball vs Bowling Pin.<br><br>Who will win?"
+msgstr ""
+
+#: tbe_levels:42
+msgid "Bowling Pin"
+msgstr ""
+
+#: tbe_levels:43
+msgid "Bowling Pin plays soccer..."
+msgstr ""
+
+#: tbe_levels:44
+msgid "<br><br>a busy Post-It Boy"
+msgstr ""
+
+#: tbe_levels:45
+msgid "<br><br> ... a hungry Post-it Boy"
+msgstr ""
+
+#: tbe_levels:46
+msgid "<br><br> ... a lazy Post-It boy"
+msgstr ""
+
+#: tbe_levels:47
+msgid "<br> <br> ... and he likes crashing bridges even more!"
+msgstr ""
+
+#: tbe_levels:48
+msgid "<br><br>... An unhappy<br><br>Post-It Boy"
+msgstr ""
+
+#: tbe_levels:49
+msgid "<br><br><br><br>...me"
+msgstr ""
+
+#: tbe_levels:50
+msgid "<br>...<br><br>I've always wanted to say that!"
+msgstr ""
+
+#: tbe_levels:51
+msgid "<br><br><br>...Post-it boy<br>(male, I think)"
+msgstr ""
+
+#: tbe_levels:52
+msgid "<br><br>Post-It Boy<br><br> ... is brief for once"
+msgstr ""
+
+#: tbe_levels:53
+msgid "<br><br>Post-It Boy<br><br> ... thinks of an ancient steam engine"
+msgstr ""
+
+#: tbe_levels:54
+msgid "<br><br> ... the Post-it Boy"
+msgstr ""
+
+#: tbe_levels:55
+msgid "<br><br>the Post-it Boy"
+msgstr ""
+
+#: tbe_levels:56
+msgid "<br><br> ... the Post-It boy"
+msgstr ""
+
+#: tbe_levels:57
+msgid "<br> <br> the Post-It Boy "
+msgstr ""
+
+#: tbe_levels:58
+msgid ""
+"<br><br> ... the Post-It boy<br><br> ... almost done with his home work!"
+msgstr ""
+
+#: tbe_levels:59
+msgid ""
+"<br> <br> the Post-It Boy <br> <br> <i>(insert joke about bridge here)</i> "
+msgstr ""
+
+#: tbe_levels:60
+msgid "<br> <br> the Post-It Boy <br> <br> is on it again "
+msgstr ""
+
+#: tbe_levels:61
+msgid "<br> <br> the Post-It Boy <br> <br> likes building bridges "
+msgstr ""
+
+#: tbe_levels:62
+msgid "<br><br>the Post-it Boy<br><br>saves the animals..."
+msgstr ""
+
+#: tbe_levels:63
+msgid "<br><br> ... thirsty Post-it Boy"
+msgstr ""
+
+#: tbe_levels:64
+msgid "Bridge the Gap I"
+msgstr ""
+
+#: tbe_levels:65
+msgid "Bridge the Gap II"
+msgstr ""
+
+#: tbe_levels:66
+msgid "Bridge the Gap III"
+msgstr ""
+
+#: tbe_levels:67
+msgid "<br> was signed:<br><br>the Post-It boy<br>(in a destructive mood)"
+msgstr ""
+
+#: tbe_levels:68
+msgid "...<br>was signed:<br>the Post-it Boy"
+msgstr ""
+
+#: tbe_levels:69
+msgid "But a lot needs to happen before that pin moves."
+msgstr ""
+
+#: tbe_levels:70
+msgid "But do you see those coconuts?"
+msgstr ""
+
+#: tbe_levels:71
+msgid "But fear not! There's always a true mechanical solution."
+msgstr ""
+
+#: tbe_levels:72
+msgid "But he has no friends, only a bowling pin."
+msgstr ""
+
+#: tbe_levels:73
+msgid "But I'm not so sure about that volley ball."
+msgstr ""
+
+#: tbe_levels:74
+msgid "But I've said enough...<br><br> Good luck!"
+msgstr ""
+
+#: tbe_levels:75
+msgid "But let me give you one hint:<br><br> First a Boom, then the Zoinggg."
+msgstr ""
+
+#: tbe_levels:76
+msgid "Butterfly on steroids"
+msgstr ""
+
+#: tbe_levels:77
+msgid "But that ball has a jumpy friend!"
+msgstr ""
+
+#: tbe_levels:78
+msgid "But that's not an ordinary cola bottle..."
+msgstr ""
+
+#: tbe_levels:79
+msgid "But there are no scissors here to pop the balloon with!"
+msgstr ""
+
+#: tbe_levels:80
+msgid "But there's some styrofoam blocks in the way..."
+msgstr ""
+
+#: tbe_levels:81
+msgid "But use only two different methods!"
+msgstr ""
+
+#: tbe_levels:82
+msgid "But why do I have to clean my room every year?"
+msgstr ""
+
+#: tbe_levels:83
+msgid ""
+"But why not reverse the trick? You can select what phone number to call!"
+msgstr ""
+
+#: tbe_levels:84
+msgid "By the way: it is possible with only one pin!"
+msgstr ""
+
+#: tbe_levels:85
+msgid "By the way: there are two ramps in the toolbox. Use them wisely!"
+msgstr ""
+
+#: tbe_levels:86
+msgid ""
+"By the way: you may sometimes have more in your toolbox than you need..."
+msgstr ""
+
+#: tbe_levels:87
+msgid "Cactus"
+msgstr ""
+
+#: tbe_levels:88
+msgid ""
+"Can you live from just cola? Let's have some coconuts! Goal: shoot the "
+"coconut from the tree."
+msgstr ""
+
+#: tbe_levels:89
+msgid "Clogging the pipe"
+msgstr ""
+
+#: tbe_levels:90
+msgid "Coconut instead of Cola"
+msgstr ""
+
+#: tbe_levels:91
+msgid "Cola bottle"
+msgstr ""
+
+#: tbe_levels:92
+msgid "Cola Crate"
+msgstr ""
+
+#: tbe_levels:93
+msgid "Cola-mint"
+msgstr ""
+
+#: tbe_levels:94
+msgid "Cola+mint"
+msgstr ""
+
+#: tbe_levels:95
+msgid "Cola+mint Bottle"
+msgstr ""
+
+#: tbe_levels:96
+msgid "Cola Powered Bike"
+msgstr ""
+
+#: tbe_levels:97
+msgid "Cola Rocket"
+msgstr ""
+
+#: tbe_levels:98
+msgid "Contraption 1"
+msgstr ""
+
+#: tbe_levels:99
+msgid "Contraption 2"
+msgstr ""
+
+#: tbe_levels:100
+msgid "Detonator Box"
+msgstr ""
+
+#: tbe_levels:101
+msgid "Dial B for Boom"
+msgstr ""
+
+#: tbe_levels:102
+msgid "Dial the right number!"
+msgstr ""
+
+#: tbe_levels:103
+msgid "Domino"
+msgstr ""
+
+#: tbe_levels:104
+msgid "Domino Day"
+msgstr ""
+
+#: tbe_levels:105
+msgid "Don't tell anyone about it, I still need to file a patent!"
+msgstr ""
+
+#: tbe_levels:106
+msgid "Don't worry."
+msgstr ""
+
+#: tbe_levels:107
+msgid "Don't you love these old cartoons?"
+msgstr ""
+
+#: tbe_levels:108
+msgid "Double Action"
+msgstr ""
+
+#: tbe_levels:109
+msgid "Do you know what an unstable equilibrium is?"
+msgstr ""
+
+#: tbe_levels:110
+msgid "Dynamite"
+msgstr ""
+
+#: tbe_levels:111
+msgid "Extreme Tux Racer"
+msgstr ""
+
+#: tbe_levels:112
+msgid "feeling a winner already...<br><br>the Post-it Boy"
+msgstr ""
+
+#: tbe_levels:113
+msgid "Find the Message..."
+msgstr ""
+
+#: tbe_levels:114
+msgid "Five Balloons"
+msgstr ""
+
+#: tbe_levels:115
+msgid "float balloon, float"
+msgstr ""
+
+#: tbe_levels:116
+msgid "Floor"
+msgstr ""
+
+#: tbe_levels:117
+msgid "Flying from flower to flower can be hard. A real hurdle race."
+msgstr ""
+
+#: tbe_levels:118
+msgid "Football in Styrofoam..."
+msgstr ""
+
+#: tbe_levels:119
+msgid "Geyser"
+msgstr ""
+
+#: tbe_levels:120
+msgid "Goal: join all bowling pins together."
+msgstr ""
+
+#: tbe_levels:121
+msgid "Goal: Topple the pin."
+msgstr ""
+
+#: tbe_levels:122
+msgid "GOOOOAAAAAL !!!"
+msgstr ""
+
+#: tbe_levels:123
+msgid ""
+"Hah! They have decided it's time to put up the tent. I don't agree - let's "
+"tear down the poles!"
+msgstr ""
+
+#: tbe_levels:124
+msgid "Hammer"
+msgstr ""
+
+#: tbe_levels:125
+msgid "Have you read 'Foucault's Pendulum'?"
+msgstr ""
+
+#: tbe_levels:126
+msgid ""
+"Have you seen the movie \"UP\"?<br><br>Unfortunately, I don't have that many"
+" balloons."
+msgstr ""
+
+#: tbe_levels:127
+msgid ""
+"Hello!<br>Welcome to The Butterfly Effect!<br><br>This level is a first "
+"demonstration.Click PLAY in the top-right and watch the butterfly fly. When "
+"it is at the flower, you've won your first level.<br><br>You might want to "
+"click on the Post-it note!"
+msgstr ""
+
+#: tbe_levels:128
+msgid "He want to shoot the pin into the goal."
+msgstr ""
+
+#: tbe_levels:129
+msgid ""
+"Hint: first put it on the floor,<br>then adjust height,<br>then the width..."
+msgstr ""
+
+#: tbe_levels:130
+msgid "Hmmm... <br><br>This reminds me of a kids' game!"
+msgstr ""
+
+#: tbe_levels:131
+msgid "Hmmm... You see that hole?<br>Behind the volley ball!"
+msgstr ""
+
+#: tbe_levels:132
+msgid "Hole-in-One"
+msgstr ""
+
+#: tbe_levels:133
+msgid "How do YOU demolish a house of cards?"
+msgstr ""
+
+#: tbe_levels:134
+msgid "I agree that the best way to do it, is with scissors."
+msgstr ""
+
+#: tbe_levels:135
+msgid "I also have a Bowling Ball that wants to cross."
+msgstr ""
+
+#: tbe_levels:136
+msgid "I don't think it's not fair: butterflies can fly by themselves."
+msgstr ""
+
+#: tbe_levels:137
+msgid "I don't think the Bowling Ball can reach the pin..."
+msgstr ""
+
+#: tbe_levels:138
+msgid ""
+"If you click the pause button, the simulation will stop.<br>There's also a "
+"green 'reset' button now. <br> <br> During the simulation, there's also a "
+"'fast forward'."
+msgstr ""
+
+#: tbe_levels:139
+msgid "I hate Angry Birds!"
+msgstr ""
+
+#: tbe_levels:140
+msgid "Imagine the noises in this level! Tip the pin."
+msgstr ""
+
+#: tbe_levels:141
+msgid "I'm like my brother - I play soccer, too!"
+msgstr ""
+
+#: tbe_levels:142
+msgid "Im Perfect Balance"
+msgstr ""
+
+#: tbe_levels:143
+msgid ""
+"Im Perfect Balance...<br><br>It almost sounds like an 'Art Of Noise' album "
+"title"
+msgstr ""
+
+#: tbe_levels:144
+msgid ""
+"I'm pretty sure that Bowling Balls cannot climb walls - they don't have "
+"hands, do they?"
+msgstr ""
+
+#: tbe_levels:145
+msgid "I'm sure it needs help to cross over to the pin."
+msgstr ""
+
+#: tbe_levels:146
+msgid ""
+"I'm sure the balloon has something to do with the solution to this level!"
+msgstr ""
+
+#: tbe_levels:147
+msgid "I'm thirsty!"
+msgstr ""
+
+#: tbe_levels:148
+msgid "I'm too lazy for my old bike."
+msgstr ""
+
+#: tbe_levels:149
+msgid ""
+"<i>Once this Post-It is gone,</i><br><br>click the play button top-right "
+"<br>to make it happen!"
+msgstr ""
+
+#: tbe_levels:150
+msgid "I still have other ideas that need balloons..."
+msgstr ""
+
+#: tbe_levels:151
+msgid "It falls down, blows ...<br><br>and doesn't do anything useful"
+msgstr ""
+
+#: tbe_levels:152
+msgid "I think something's cooking here..."
+msgstr ""
+
+#: tbe_levels:153
+msgid ""
+"I thought of using helium, but Mythbusters explained that won't work..."
+msgstr ""
+
+#: tbe_levels:154
+msgid ""
+"It's a Cola-mint Fountain, ready to blow!<br>Just a light shock will start "
+"it!"
+msgstr ""
+
+#: tbe_levels:155
+msgid "It's almost time<br>for goodbyes"
+msgstr ""
+
+#: tbe_levels:156
+msgid "It's always the blokes lifting the girls!"
+msgstr ""
+
+#: tbe_levels:157
+msgid "It's a tennis ball this time that wants to cross."
+msgstr ""
+
+#: tbe_levels:158
+msgid "It's coffee time. Ring the bell."
+msgstr ""
+
+#: tbe_levels:159
+msgid "It's party time at the office!<br><br>Jumping Jack has his birthday!!!"
+msgstr ""
+
+#: tbe_levels:160
+msgid ""
+"It very regularly blows boiling water 40 meters up. <br>For my school's "
+"science project, I decided to simulate that."
+msgstr ""
+
+#: tbe_levels:161
+msgid "It wants to go to the flower..."
+msgstr ""
+
+#: tbe_levels:162
+msgid "I've grown too large for my bike, too."
+msgstr ""
+
+#: tbe_levels:163
+msgid ""
+"I want to be a balloon <br> ... <br> and be the first to set foot on Alpha "
+"Centauri!"
+msgstr ""
+
+#: tbe_levels:164
+msgid ""
+"(Jack usually doesn't get much attention, he's already happy that we thought"
+" of him)"
+msgstr ""
+
+#: tbe_levels:165
+msgid "Jumping Around I"
+msgstr ""
+
+#: tbe_levels:166
+msgid "Jumping Around II"
+msgstr ""
+
+#: tbe_levels:167
+msgid "Jumping Jack celebrates a party at the office. Isn't that fun?"
+msgstr ""
+
+#: tbe_levels:168
+msgid "Just hook it up in the air<br>and it stays there."
+msgstr ""
+
+#: tbe_levels:169
+msgid "Kick that pin in the goal!"
+msgstr ""
+
+#: tbe_levels:170
+msgid "Kick the pin."
+msgstr ""
+
+#: tbe_levels:171
+msgid "lalalala"
+msgstr ""
+
+#: tbe_levels:172
+msgid "Large Domino"
+msgstr ""
+
+#: tbe_levels:173
+msgid "LeftRamp"
+msgstr ""
+
+#: tbe_levels:174
+msgid "Let's join the lonely one above with his friends below."
+msgstr ""
+
+#: tbe_levels:175
+msgid "Let's present the gift to him, shall we?"
+msgstr ""
+
+#: tbe_levels:176
+msgid "Let's spare the balloon, there's a pin that needs kicking."
+msgstr ""
+
+#: tbe_levels:177
+msgid "Level with a small user interaction: a volleyball is in the way... "
+msgstr ""
+
+#: tbe_levels:178
+msgid "Levers, Dominoes, Bowling Pins. This one is complex."
+msgstr ""
+
+#: tbe_levels:179
+msgid ""
+"Like a 'Sword of Damocles'. <br><br>Would it also loose appetite if it knew?"
+msgstr ""
+
+#: tbe_levels:180
+msgid "Look, another gap."
+msgstr ""
+
+#: tbe_levels:181
+msgid "Look at Steam Machine"
+msgstr ""
+
+#: tbe_levels:182
+msgid "Look... <br><br>I made an engine to power my bike."
+msgstr ""
+
+#: tbe_levels:183
+msgid "Look for the last message"
+msgstr ""
+
+#: tbe_levels:184
+msgid "Look: it's that butterfly and flower again."
+msgstr ""
+
+#: tbe_levels:185
+msgid "Looks like there's something missing..."
+msgstr ""
+
+#: tbe_levels:186
+msgid ""
+"Look, that's a skyhook.<br><br>A pretty nifty invention, if I may say so."
+msgstr ""
+
+#: tbe_levels:187
+msgid "Look: two pins need kicking."
+msgstr ""
+
+#: tbe_levels:188
+msgid ""
+"Looping in Looping in looping... <br>Poor Tux is late for his race. <br>Get "
+"him to the cone fast!<br><br>This level is 'inspired' by SuperTuxKart, the "
+"famous open source kart game featuring all open sourcemascots to race in "
+"beautifully designed tracks.<a "
+"href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a>"
+" "
+msgstr ""
+
+#: tbe_levels:189
+msgid "Looping Looping Looping"
+msgstr ""
+
+#: tbe_levels:190
+msgid "Loopings"
+msgstr ""
+
+#: tbe_levels:191
+msgid "Loopings are fun!"
+msgstr ""
+
+#: tbe_levels:192
+msgid "Loopings I"
+msgstr ""
+
+#: tbe_levels:193
+msgid "Loopings II"
+msgstr ""
+
+#: tbe_levels:194
+msgid "Make all Balloons pop."
+msgstr ""
+
+#: tbe_levels:195
+msgid "Make three birds and three eggs do poof."
+msgstr ""
+
+#: tbe_levels:196
+msgid ""
+"Make Tux descent the ski slope.<br><br>This level was inspired by the open "
+"source Extreme Tux Racer,where Tux has to race down slopes<a "
+"href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
+msgstr ""
+
+#: tbe_levels:197
+msgid "Marble"
+msgstr ""
+
+#: tbe_levels:198
+msgid "Marble Boulevard"
+msgstr ""
+
+#: tbe_levels:199
+msgid "Medium Domino"
+msgstr ""
+
+#: tbe_levels:200
+msgid ""
+"Mini Golf<br>After the ball is eaten by the monkey, make it come out of the "
+"monkey's rear end into the chest."
+msgstr ""
+
+#: tbe_levels:201
+msgid "My brother likes soccer"
+msgstr ""
+
+#: tbe_levels:202
+msgid ""
+"My mum told me to clean my room.<br><br>All balls must go in the basket."
+msgstr ""
+
+#: tbe_levels:203
+msgid "No butterflies here!<br><br>"
+msgstr ""
+
+#: tbe_levels:204
+msgid ""
+"No butterfly here...<br><br>Don't worry - we haven't seen the last one yet"
+msgstr ""
+
+#: tbe_levels:205
+msgid "Not affiliated with the yearly event."
+msgstr ""
+
+#: tbe_levels:206
+msgid ""
+"Note:<br>If the game runs, a green fast forward button appears in the top-"
+"right corner.<br><br>That will speed up the simulation."
+msgstr ""
+
+#: tbe_levels:207
+msgid "Notice a new trick: rotate."
+msgstr ""
+
+#: tbe_levels:208
+msgid ""
+"Oh, Nena, where did you go?<br><br>You were so hot <br> back in the 80s!"
+msgstr ""
+
+#: tbe_levels:209
+msgid "\"Old Faithful\" is a geyser in Yellowstone National Park, Wyoming, USA."
+msgstr ""
+
+#: tbe_levels:210
+msgid "Once a Volley Ball jumps across, a Cola bottle will finish it off."
+msgstr ""
+
+#: tbe_levels:211
+msgid "One ball jumps across the barrier."
+msgstr ""
+
+#: tbe_levels:212
+msgid "One Hundred, please!"
+msgstr ""
+
+#: tbe_levels:213
+msgid "(Or a \"soccer\" ball for you Americans)"
+msgstr ""
+
+#: tbe_levels:214
+msgid "Or do they fly to the stars?"
+msgstr ""
+
+#: tbe_levels:215
+msgid "Or was it \"Keep it Simple, stupid\"?"
+msgstr ""
+
+#: tbe_levels:216
+msgid "Our goal is to keep the butterfly alive. And put the pin in the chest."
+msgstr ""
+
+#: tbe_levels:217
+msgid "Our little Butterfly...<br><br>Another day, another flower..."
+msgstr ""
+
+#: tbe_levels:218
+msgid "Party at the office"
+msgstr ""
+
+#: tbe_levels:219
+msgid "Petanque"
+msgstr ""
+
+#: tbe_levels:220
+msgid "Pigs on top!"
+msgstr ""
+
+#: tbe_levels:221
+msgid "Pin rack"
+msgstr ""
+
+#: tbe_levels:222
+msgid "Pin topples to green in two moves."
+msgstr ""
+
+#: tbe_levels:223
+msgid "PivotPoint test Level..."
+msgstr ""
+
+#: tbe_levels:224
+msgid "Please make the butterfly happy!<br><br>That's the least we can do."
+msgstr ""
+
+#: tbe_levels:225
+msgid "Poing Poing Poing"
+msgstr ""
+
+#: tbe_levels:226
+msgid ""
+"Poing Poing Poing <br> <br> ... a world-famous song of the <i>Rotterdam "
+"Termination Source</i>"
+msgstr ""
+
+#: tbe_levels:227
+msgid "PolyObject test Level..."
+msgstr ""
+
+#: tbe_levels:228
+msgid "Poof Poof Poof"
+msgstr ""
+
+#: tbe_levels:229
+msgid "Poor little butterfly has no clue what's hanging above its head..."
+msgstr ""
+
+#: tbe_levels:230
+msgid ""
+"Pop all balloons. This level is based on some conversations at T-Dose 2010."
+msgstr ""
+
+#: tbe_levels:231
+msgid "Pop the balloon."
+msgstr ""
+
+#: tbe_levels:232
+msgid "Post-It Boy<br><br><br>(has a dirty mind)"
+msgstr ""
+
+#: tbe_levels:233
+msgid ""
+"Post-It boy <br>likes playing with styrofoam ... <br><br>... for breakfast!"
+msgstr ""
+
+#: tbe_levels:234
+msgid "Post-It Boy likes to \"Make it Complex, Comrade\""
+msgstr ""
+
+#: tbe_levels:235
+msgid "... Post-It boy once spoke with<br>Sonic the Hedgehog!"
+msgstr ""
+
+#: tbe_levels:236
+msgid "Post-it boy played the world cup soccer...<br><br>(in a previous life)"
+msgstr ""
+
+#: tbe_levels:237
+msgid "PS: Those dominos are quite big, aren't they?"
+msgstr ""
+
+#: tbe_levels:238
+msgid "Put the styrofoam ramp in place..."
+msgstr ""
+
+#: tbe_levels:239
+msgid "Quarter Arc"
+msgstr ""
+
+#: tbe_levels:240
+msgid "Quarter Arc #1"
+msgstr ""
+
+#: tbe_levels:241
+msgid "Quarter Arc #2"
+msgstr ""
+
+#: tbe_levels:242
+msgid "Quarter Arc #3"
+msgstr ""
+
+#: tbe_levels:243
+msgid "Ramp /"
+msgstr ""
+
+#: tbe_levels:244
+msgid "Ramp \\"
+msgstr ""
+
+#: tbe_levels:245
+msgid "Remember this gap?"
+msgstr ""
+
+#: tbe_levels:246
+msgid "Return of the Post-It Pig"
+msgstr ""
+
+#: tbe_levels:247
+msgid "Right Ramp"
+msgstr ""
+
+#: tbe_levels:248
+msgid "Ring the Bell"
+msgstr ""
+
+#: tbe_levels:249
+msgid "Save the butterfly!"
+msgstr ""
+
+#: tbe_levels:250
+msgid "save the butterfly, put pin in chest."
+msgstr ""
+
+#: tbe_levels:251
+msgid "Saw Blade"
+msgstr ""
+
+#: tbe_levels:252
+msgid "Score 100 points by putting the Tennis ball into the right slot."
+msgstr ""
+
+#: tbe_levels:253
+msgid "Sir Alfred Hitchcock made a good movie about a devious phone call."
+msgstr ""
+
+#: tbe_levels:254
+msgid "Skyhook"
+msgstr ""
+
+#: tbe_levels:255
+msgid "Small Domino"
+msgstr ""
+
+#: tbe_levels:256
+msgid "Soccerball"
+msgstr ""
+
+#: tbe_levels:257
+msgid "Soccer Ball"
+msgstr ""
+
+#: tbe_levels:258
+msgid ""
+"Soccer Balls are a little bouncy, but sometimes \"a little\" is not enough."
+msgstr ""
+
+#: tbe_levels:259
+msgid ""
+"Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly."
+msgstr ""
+
+#: tbe_levels:260
+msgid ""
+"Someone told me to drag the ramp from the toolbox into the big "
+"window.<br>... after you've read my note!"
+msgstr ""
+
+#: tbe_levels:261
+msgid "Something is manufactured here."
+msgstr ""
+
+#: tbe_levels:262
+msgid "Something weird"
+msgstr ""
+
+#: tbe_levels:263
+msgid ""
+"Sometimes, it's a team effort. One does the work; the other reaps the "
+"benefit."
+msgstr ""
+
+#: tbe_levels:264
+msgid "Sounds like a junk, does it?"
+msgstr ""
+
+#: tbe_levels:265
+msgid "Spare the Balloon"
+msgstr ""
+
+#: tbe_levels:266
+msgid "Spring"
+msgstr ""
+
+#: tbe_levels:267
+msgid "Springboard"
+msgstr ""
+
+#: tbe_levels:268
+msgid "(Ssst... I'm playing chess)"
+msgstr ""
+
+#: tbe_levels:269
+msgid "Steam Machine"
+msgstr ""
+
+#: tbe_levels:270
+msgid "Stop"
+msgstr ""
+
+#: tbe_levels:271
+msgid "Styrofoam"
+msgstr ""
+
+#: tbe_levels:272
+msgid "Styrofoam Block"
+msgstr ""
+
+#: tbe_levels:273
+msgid "Tennis Ball"
+msgstr ""
+
+#: tbe_levels:274
+msgid "Tent"
+msgstr ""
+
+#: tbe_levels:275
+msgid "test level for quarter arcs and the new state change goal."
+msgstr ""
+
+#: tbe_levels:276
+msgid "That poor balloon is on its way to its doom"
+msgstr ""
+
+#: tbe_levels:277
+msgid ""
+"That's also true for circus acts. They all train, but some fly more than "
+"others."
+msgstr ""
+
+#: tbe_levels:278
+msgid "That's half of the problem you need to fix here..."
+msgstr ""
+
+#: tbe_levels:279
+msgid "The Birds Strike Back!"
+msgstr ""
+
+#: tbe_levels:280
+msgid "The Bowling Ball cannot kick the Bowling Pin in the goal."
+msgstr ""
+
+#: tbe_levels:281
+msgid "The Butterfly Effect 101"
+msgstr ""
+
+#: tbe_levels:282
+msgid "The Butterfly effect 102"
+msgstr ""
+
+#: tbe_levels:283
+msgid "The Factory"
+msgstr ""
+
+#: tbe_levels:284
+msgid "The final killer challenge..."
+msgstr ""
+
+#: tbe_levels:285
+msgid "The goal here is to topple the pins below."
+msgstr ""
+
+#: tbe_levels:286
+msgid ""
+"The good news: they cannot lift a bowlingball, and a volley ball is too "
+"light to set off the detonator..."
+msgstr ""
+
+#: tbe_levels:287
+msgid "The House of Cards"
+msgstr ""
+
+#: tbe_levels:288
+msgid "The large rectangular pieces of styrofoam hide a message."
+msgstr ""
+
+#: tbe_levels:289
+msgid ""
+"The Pigs were right - you should be allowed to borrow an egg if you are "
+"starving."
+msgstr ""
+
+#: tbe_levels:290
+msgid "... the Post-it Boy"
+msgstr ""
+
+#: tbe_levels:291
+msgid "... the Post-It Boy"
+msgstr ""
+
+#: tbe_levels:292
+msgid "the Post-It Boy"
+msgstr ""
+
+#: tbe_levels:293
+msgid "... The Post-It boy"
+msgstr ""
+
+#: tbe_levels:294
+msgid "The Post-It Pig"
+msgstr ""
+
+#: tbe_levels:295
+msgid "There are two ways to pop a balloon."
+msgstr ""
+
+#: tbe_levels:296
+msgid "There's cola,<br>and there's even a gift!"
+msgstr ""
+
+#: tbe_levels:297
+msgid ""
+"The second level in the game, and the first level you actually have to put "
+"something into the scene.<br>Don't forget to read the Post-it note!"
+msgstr ""
+
+#: tbe_levels:298
+msgid "The soccer ball cannot cross a big gap by itself."
+msgstr ""
+
+#: tbe_levels:299
+msgid "The soccer ball must kick the pin. But there's something missing."
+msgstr ""
+
+#: tbe_levels:300
+msgid ""
+"They are Angry Birds for what? Just a few eggs? Kill one bird and four eggs "
+"with one stone (dynamite)."
+msgstr ""
+
+#: tbe_levels:301
+msgid "This is a factory."
+msgstr ""
+
+#: tbe_levels:302
+msgid "This is a house of cards."
+msgstr ""
+
+#: tbe_levels:303
+msgid "This is just a level to prove PivotPoint correct operation."
+msgstr ""
+
+#: tbe_levels:304
+msgid ""
+"This is just a level to prove PivotPoint correct operation. In this case, "
+"from the toolbox."
+msgstr ""
+
+#: tbe_levels:305
+msgid ""
+"This is just a level to prove PivotPoint correct operation. In this case, "
+"there is a hinge."
+msgstr ""
+
+#: tbe_levels:306
+msgid ""
+"This is just a level to prove PolyObject correct operation. It will only "
+"make sense if you enable debug drawing."
+msgstr ""
+
+#: tbe_levels:307
+msgid "This is my brother.<br><br>He is of the sporty type."
+msgstr ""
+
+#: tbe_levels:308
+msgid "This is not as complicated as it looks. It almost works!"
+msgstr ""
+
+#: tbe_levels:309
+msgid "This is not a stable equilibrium, any excitation will make it move."
+msgstr ""
+
+#: tbe_levels:310
+msgid "This is Ruud.<br><br>He's on a small desert island."
+msgstr ""
+
+#: tbe_levels:311
+msgid ""
+"This is the second level to prove PivotPoint correct operation.This level "
+"shows the famous line of metal balls. Lifting one and letting it goshould "
+"result in all balls staying stationary and the last ball moving up.NOTE THAT"
+" TBE DOESN'T BEHAVE LIKE THAT !!!"
+msgstr ""
+
+#: tbe_levels:312
+msgid "This mechanism appears more complex than it actually is."
+msgstr ""
+
+#: tbe_levels:313
+msgid "Those pins always long for company."
+msgstr ""
+
+#: tbe_levels:314
+msgid "Today, everyone wins if the pin topples into the goal."
+msgstr ""
+
+#: tbe_levels:315
+msgid "Topple pin to the right.<br>No: Left!<br>OK, OK, to the right."
+msgstr ""
+
+#: tbe_levels:316
+msgid "Topple the bowling pin below."
+msgstr ""
+
+#: tbe_levels:317
+msgid "Topple the other way"
+msgstr ""
+
+#: tbe_levels:318
+msgid "Topple the pin."
+msgstr ""
+
+#: tbe_levels:319
+msgid "Topple the pin to the left..."
+msgstr ""
+
+#: tbe_levels:320
+msgid ""
+"Toss both balls (\"boules\") so they end up very close to \"le but\" - just "
+"like \"la vraie Pétanque\"."
+msgstr ""
+
+#: tbe_levels:321
+msgid "Transfer energy from Steam Engine to Bowling Pin"
+msgstr ""
+
+#: tbe_levels:322
+msgid "Turn it around"
+msgstr ""
+
+#: tbe_levels:323
+msgid "Two bowling balls, the wrong ball kicks the pin."
+msgstr ""
+
+#: tbe_levels:324
+msgid ""
+"Two hurdles must be overcome. And butterfly has to start everything himself."
+" Or herself?"
+msgstr ""
+
+#: tbe_levels:325
+msgid "Two things need to happen at once... Goal: Butterfly to Flower."
+msgstr ""
+
+#: tbe_levels:326
+msgid "Use a proper football this time!"
+msgstr ""
+
+#: tbe_levels:327
+msgid "Vengence will be ours!"
+msgstr ""
+
+#: tbe_levels:328
+msgid "Volley Ball"
+msgstr ""
+
+#: tbe_levels:329
+msgid "Volley balls can do that, too.<br><br>Wanna bet?"
+msgstr ""
+
+#: tbe_levels:330
+msgid "Vrooom Vrooom Vrooom"
+msgstr ""
+
+#: tbe_levels:331
+msgid "Wait a minute!<br>That Bowling Ball won't do it..."
+msgstr ""
+
+#: tbe_levels:332
+msgid "... waiting for breakfast"
+msgstr ""
+
+#: tbe_levels:333
+msgid "... Was signed:<br><br>the Post-It Boy"
+msgstr ""
+
+#: tbe_levels:334
+msgid "Wedge /"
+msgstr ""
+
+#: tbe_levels:335
+msgid "Wedge \\"
+msgstr ""
+
+#: tbe_levels:336
+msgid "Welcome back!"
+msgstr ""
+
+#: tbe_levels:337
+msgid "What a waste of cola!"
+msgstr ""
+
+#: tbe_levels:338
+msgid "Where do Balloons go?<br>They can't keep going up forever!"
+msgstr ""
+
+#: tbe_levels:339
+msgid "Where does the cola go?"
+msgstr ""
+
+#: tbe_levels:340
+msgid "Why is that butterfly there?"
+msgstr ""
+
+#: tbe_levels:341
+msgid "Wood bar"
+msgstr ""
+
+#: tbe_levels:342
+msgid "Wooden Beam"
+msgstr ""
+
+#: tbe_levels:343
+msgid "Wood Wedge"
+msgstr ""
+
+#: tbe_levels:344
+msgid "Wooosh Wooosh Wooosh"
+msgstr ""
+
+#: tbe_levels:345
+msgid "Wow, that's a huge gap for a Soccer Ball."
+msgstr ""
+
+#: tbe_levels:346
+msgid "You'll figure it out."
+msgstr ""
+
+#: tbe_levels:347
+msgid ""
+"You probably guessed what needs to be done here. <br><br>Rotate the cactus "
+"carefully<br> - it has a rather tight fit!"
+msgstr ""
+
+#: tbe_levels:348
+msgid "Your job:<br>tear it down!"
+msgstr ""
+
+#: tbe_levels:349
+msgid ""
+"You see that bowling ball at the top-right? <br><br>It wants to topple the "
+"pin next to it."
+msgstr ""
+
+#: tbe_levels:350
+msgid "You see that butterfly?"
+msgstr ""
+
+#: tbe_levels:351
+msgid ""
+"You've seen this before: a Bowling Ball and a Bowling Pin. But this time, "
+"there's a wall in-between."
+msgstr ""
+
+#: tbe_levels:352
+msgid "Zoing and Boom"
+msgstr ""
+
+#: tbe_levels:353
+msgid "Zoing Ploing Boing Woing<br>Zzap Whoosh Smack Boom"
+msgstr ""

@@ -9,6 +9,9 @@ set(TSfiles
 	tbe_ru.ts
 	tbe_ms.ts
 	tbe_uk.ts
+	tbe_lt.ts
+	tbe_be.ts
+	tbe_sv.ts
 )
 qt4_create_translation(QMfiles ${TSfiles})
 

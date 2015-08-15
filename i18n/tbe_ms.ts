@@ -105,6 +105,59 @@ Ralat hurai pada baris %1, lajur %2:
     </message>
 </context>
 <context>
+    <name>CircleObjectFactory</name>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="29"/>
+        <source>Bowling Ball</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="30"/>
+        <source>Your average bowling ball - heavy, round and willing to roll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="35"/>
+        <source>Volley Ball</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="36"/>
+        <source>A volley ball - you know: light, soft and fairly bouncy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="44"/>
+        <source>Tennis Ball</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="45"/>
+        <source>A tennis ball is small, fuzzy and known for turning heads.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="52"/>
+        <source>Soccer Ball</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="53"/>
+        <source>A football (of the spherical persuasion).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="60"/>
+        <source>PÃ©tanque Boule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="61"/>
+        <source>A pÃ©tanque ball is made of metal and heavy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditLevelProperties</name>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="14"/>
@@ -388,6 +441,12 @@ Nothing was changed yet, please fix.</source>
         <translation>tiada objek</translation>
     </message>
     <message>
+        <location filename="../src/view/GoalEditor.cpp" line="271"/>
+        <source>Variable;Object;Cond.;Value;Object2</source>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/view/GoalEditor.h" line="47"/>
         <source>change</source>
         <translation>ubah</translation>
@@ -516,8 +575,8 @@ Nothing was changed yet, please fix.</source>
     <name>MainWindow</name>
     <message>
         <location filename="../src/view/MainWindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation>TetingkapUtama</translation>
+        <source>The Butterfly Effect</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="85"/>
@@ -645,105 +704,105 @@ Nothing was changed yet, please fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="93"/>
+        <location filename="../src/view/MainWindow.cpp" line="94"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="99"/>
+        <location filename="../src/view/MainWindow.cpp" line="100"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="122"/>
+        <location filename="../src/view/MainWindow.cpp" line="123"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="136"/>
+        <location filename="../src/view/MainWindow.cpp" line="137"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="155"/>
+        <location filename="../src/view/MainWindow.cpp" line="156"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;show /hide toolbox &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="173"/>
+        <location filename="../src/view/MainWindow.cpp" line="174"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="191"/>
+        <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>Open level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>TBE levels (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="222"/>
+        <location filename="../src/view/MainWindow.cpp" line="223"/>
         <source>really?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="235"/>
+        <location filename="../src/view/MainWindow.cpp" line="236"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="255"/>
+        <location filename="../src/view/MainWindow.cpp" line="256"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="270"/>
+        <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="277"/>
+        <location filename="../src/view/MainWindow.cpp" line="278"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="307"/>
+        <location filename="../src/view/MainWindow.cpp" line="308"/>
         <source>&amp;Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="323"/>
+        <location filename="../src/view/MainWindow.cpp" line="324"/>
         <source>&amp;Editors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="326"/>
+        <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Goal Editor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="329"/>
+        <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Level Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="332"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Object Editor...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -881,56 +940,6 @@ This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="64"/>
-        <source>Bowling Ball</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="65"/>
-        <source>Your average bowling ball - heavy, round and willing to roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="70"/>
-        <source>Volley Ball</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="71"/>
-        <source>A volley ball - you know: light, soft and fairly bouncy.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="79"/>
-        <source>Tennis Ball</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="80"/>
-        <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="87"/>
-        <source>Soccer Ball</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="88"/>
-        <source>A football (of the spherical persuasion).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="95"/>
-        <source>Petanque Boule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="96"/>
-        <source>A petanque ball is made of metal and heavy.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="49"/>
         <source>Cola+Mint Bottle</source>
         <translation type="unfinished"></translation>
@@ -969,92 +978,6 @@ Look: it blows if triggered!</source>
     <message>
         <location filename="../src/model/PivotPoint.cpp" line="127"/>
         <source>Objects rotate around this point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="87"/>
-        <source>Bowling Pin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="88"/>
-        <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="100"/>
-        <source>Skyhook</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="101"/>
-        <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="110"/>
-        <source>Weight</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="111"/>
-        <source>A serious mass. As heavy as it looks!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="118"/>
-        <source>Left Ramp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="119"/>
-        <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="126"/>
-        <source>Right Ramp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="127"/>
-        <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="134"/>
-        <source>Left Wedge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="135"/>
-        <source>This is a wedge. The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="142"/>
-        <source>Right Wedge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="143"/>
-        <source>This is a wedge. The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="152"/>
-        <source>Quarter Arc Small</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="153"/>
-        <location filename="../src/model/PolyObject.cpp" line="167"/>
-        <source>This is a quarter arc. Or ninety degrees, or 1.57 radians if you want.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/PolyObject.cpp" line="166"/>
-        <source>Quarter Arc Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1158,6 +1081,11 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="223"/>
         <source>Detonator Box Handle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="224"/>
+        <source>Push Here To BOOM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1443,7 +1371,7 @@ Reset the simulation?</source>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
-        <source>Congratulations</source>
+        <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
         <translation type="unfinished"></translation>
     </message>

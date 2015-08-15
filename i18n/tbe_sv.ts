@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<TS version="2.0" language="sv">
 <context>
     <name>ChooseLevel</name>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="14"/>
         <source>Choose your game!</source>
-        <translation>Виберіть гру!</translation>
+        <translation>Välj ditt spel!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="23"/>
@@ -14,10 +14,9 @@
 
 Double-click for the post-it notes for help.
 </source>
-        <translation>Будь ласка, оберіть рівень, в який
-Ви волієте грати.
+        <translation>Välj vilken nivå du vill spela.
 
-Двічі клацніть на стікерах для допомоги.
+Dubbelklicka för hjälpsamma klisterlappar.
 </translation>
     </message>
     <message>
@@ -28,36 +27,36 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="45"/>
         <source>Level Title</source>
-        <translation>Назва рівню</translation>
+        <translation>Nivåns titel</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="58"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="81"/>
         <source>Go!</source>
-        <translation>Вперед!</translation>
+        <translation>Kör!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="108"/>
         <source>Level parser:
 Cannot read the level descriptions in &apos;%1&apos;:
 %2.</source>
-        <translation>Аналізатор рівню:
-Не вдається прочитати опис рівню у &apos;%1&apos;:
+        <translation>Nivåtolk:
+Kan inte läsa nivåbeskrivningarna i &apos;%1&apos;:
 %2.</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="179"/>
         <source>done</source>
-        <translation>завершено</translation>
+        <translation>klar</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="181"/>
         <source>skipped</source>
-        <translation>пропущено</translation>
+        <translation>hoppade över</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="183"/>
@@ -69,8 +68,8 @@ Cannot read the level descriptions in &apos;%1&apos;:
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation>Перелік рівню:
-Синтаксична помилка у рядку %1, стовпчику %2:
+        <translation>LevelList:
+Tolkningsfel vid rad %1, kolumn %2:
 %3</translation>
     </message>
 </context>
@@ -79,22 +78,22 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="14"/>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="25"/>
         <source>Phone Number:</source>
-        <translation>№ телефону:</translation>
+        <translation>Telefonnummer:</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="68"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="78"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Avbryt</translation>
     </message>
 </context>
 <context>
@@ -102,7 +101,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/control/ChoosePhoneUndoCommand.cpp" line="24"/>
         <source>ChoosePhone</source>
-        <translation>Оберіть телефон</translation>
+        <translation>VäljTelefon</translation>
     </message>
 </context>
 <context>
@@ -110,42 +109,42 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="29"/>
         <source>Bowling Ball</source>
-        <translation type="unfinished">Куля для боулінгу</translation>
+        <translation type="unfinished">Bowlingklot</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
         <source>Your average bowling ball - heavy, round and willing to roll</source>
-        <translation type="unfinished">Ваша середня куля для боулінгу - важка, кругла й готова покотитися</translation>
+        <translation type="unfinished">Ett helt vanligt bowlingklot - tungt, runt, och redo att rulla</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="35"/>
         <source>Volley Ball</source>
-        <translation type="unfinished">М’яч для волейболу</translation>
+        <translation type="unfinished">Volleyboll</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
         <source>A volley ball - you know: light, soft and fairly bouncy.</source>
-        <translation type="unfinished">М’яч для волейболу - Ви знаєте: легкий, м’який та досить пружний.</translation>
+        <translation type="unfinished">En volleyboll - du vet: lätt, mjuk och studsar hyfsat.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="44"/>
         <source>Tennis Ball</source>
-        <translation type="unfinished">М’яч для тенісу</translation>
+        <translation type="unfinished">Tennisboll</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="45"/>
         <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation type="unfinished">М’яч для тенісу маленький, нечіткий та відомий зміною напрямку.</translation>
+        <translation type="unfinished">En tennisboll är liten, fjunig och är känd för att få folk att vända sig om.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="52"/>
         <source>Soccer Ball</source>
-        <translation type="unfinished">М’яч для футболу</translation>
+        <translation type="unfinished">Fotboll</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="53"/>
         <source>A football (of the spherical persuasion).</source>
-        <translation type="unfinished">Футбол (сферичного спрямування).</translation>
+        <translation type="unfinished">En fotboll (en sfärisk variant).</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
@@ -163,93 +162,93 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Діялоґ</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="20"/>
         <source>Note: changes in this dialog are not undoable!</source>
-        <translation>Нотатка: зміни у цьому діялозі скасувати не можна!</translation>
+        <translation>Obs: ändringar i den här dialogen kan inte ångras!</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="30"/>
         <source>Level Properties</source>
-        <translation>Властивості рівню</translation>
+        <translation>Nivåegenskaper</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="36"/>
         <source>Level width:</source>
-        <translation>Ширина рівню:</translation>
+        <translation>Nivåns bredd:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="43"/>
         <source>width of the level in meters</source>
-        <translation>Ширина рівню у метрах</translation>
+        <translation>nivåns bredd i meter</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="68"/>
         <source>Level height:</source>
-        <translation>Висота рівню:</translation>
+        <translation>Nivåns höjd:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="75"/>
         <source>Height of the level in meters</source>
-        <translation>Висота рівню у метрах</translation>
+        <translation>Nivåns höjd i meter</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="103"/>
         <source>Background Properties</source>
-        <translation>Властивості тла</translation>
+        <translation>Bakgrundsegenskaper</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="111"/>
         <source>Image name:</source>
-        <translation>Ім’я зображення:</translation>
+        <translation>Bildnamn:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="121"/>
         <source>Specify the image name here. Omit the extension. Any image within the level directory or the images directory will be found.</source>
-        <translation>Вкажіть ім’я зображення тут. Опустіть розширення. Буде знайдено будь-яке зображення у каталозі рівнів або директорії зображень.</translation>
+        <translation>Ange bildnamn här. Utelämna filändelsen. Alla möjliga bilder i nivåkatalogen eller bildkatalogen kommer hittas.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="132"/>
         <source>Image repeat width</source>
-        <translation>Ширина дублювання зображення</translation>
+        <translation>Bildupprepningsbredd</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="142"/>
         <source>The distance in which the image will repeat itself. use zero for no repeat - the image will be stretched to fit the level.</source>
-        <translation>Відстань, на якій буде повторюватися зображення. Використовуйте нуль для неповторення - зображення буде розтягнуто щоб заповнити рівень.</translation>
+        <translation>Avståndet över vilket bilden kommer upprepa sig själv. använd noll för inten upprepning - bilden kommer sträckas ut för att passa nivån.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="155"/>
         <source>height</source>
-        <translation>висота</translation>
+        <translation>höjd</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="165"/>
         <source>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be stretched to fit the level.</source>
-        <translation>Відстань, на якій вертикально буде повторюватися зображення. Використовуйте нуль для неповторення - зображення буде розтягнуто щоб заповнити рівень.</translation>
+        <translation>Avståndet över vilket bilden kommer upprepa sig själv vertikalt. använd noll för ingen upprepning - bilden kommer sträckas ut för att passa nivån.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="180"/>
         <source>Gradient (in front of image):</source>
-        <translation>Градієнт (у передній частині зображення):</translation>
+        <translation>Toning (framför bild):</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="189"/>
         <source>This table defines the gradient of the background. Each line is a stop. You need at least two stops.</source>
-        <translation>Ця таблиця визначає градієнт тла. Кожен рядок є зупинкою. Вам потрібно принаймні дві зупинки.</translation>
+        <translation>Den här tabellen definierar övertoningen för bakgrunden. Varje rad är ett stopp. Du behöver minst två stopp.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="214"/>
         <source>The resulting gradient is shown here</source>
-        <translation>Підсумковий градієнт показано тут</translation>
+        <translation>Den resulterande toningen visas här</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.cpp" line="80"/>
         <source>VPos;Color;Transparency</source>
         <extracomment>translators: keep the semicolons - they separate the column descriptions</extracomment>
-        <translation>Позиція;Колір;Прозорість</translation>
+        <translation>VPos;Färg;Genomskinlighet</translation>
     </message>
 </context>
 <context>
@@ -257,22 +256,22 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="14"/>
         <source>Edit Object</source>
-        <translation>Редагувати об’єкт</translation>
+        <translation>Redigera objekt</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="26"/>
         <source>Basics for: %1</source>
-        <translation>Основи для: %1</translation>
+        <translation>Bas för: %1</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="34"/>
         <source>Object ID:</source>
-        <translation>Код об’єкту:</translation>
+        <translation>Objekt-ID:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="80"/>
         <source>Center coord: (</source>
-        <translation>Центр координат: (</translation>
+        <translation>Centerkoord.: (</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="94"/>
@@ -287,32 +286,32 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="119"/>
         <source>Angle:</source>
-        <translation>Кут:</translation>
+        <translation>Vinkel:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="139"/>
         <source>Radians</source>
-        <translation>радіан</translation>
+        <translation>Radianer</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="150"/>
         <source>Width:</source>
-        <translation>Ширина:</translation>
+        <translation>Bredd:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="164"/>
         <source>   Height:</source>
-        <translation>Висота:</translation>
+        <translation>Höjd:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="166"/>
         <source>Basic Properties for &apos;%1&apos;</source>
-        <translation>Базові властивості для &apos;%1&apos;</translation>
+        <translation>Grundläggande egenskaper för &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="184"/>
         <source>Value</source>
-        <translation>Значення</translation>
+        <translation>Värde</translation>
     </message>
 </context>
 <context>
@@ -320,17 +319,17 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/GameResources.ui" line="14"/>
         <source>Toolbox</source>
-        <translation>Палітра компонентів</translation>
+        <translation>Verktygslåda</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="66"/>
         <source>This is the level title</source>
-        <translation>Це назва рівню</translation>
+        <translation>Detta är nivåns titel</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="108"/>
         <source>This box describes your task.</source>
-        <translation>Це поле дає опис Вашого завдання.</translation>
+        <translation>Den här rutan beskriver din uppgift.</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="117"/>
@@ -348,33 +347,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GameResources.ui" line="156"/>
         <source>By: The Author</source>
-        <translation>Автор</translation>
+        <translation>Av: Upphovsman</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="191"/>
         <source>Reset</source>
-        <translation>Скинути</translation>
+        <translation>Nollställ</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="210"/>
         <source>Clicking on this button will make the dialog go up.</source>
-        <translation>При натисканні на цю кнопку діялоґ підніметься вгору.</translation>
+        <translation>Om du klickar på den här knappen kommer dialogen gå upp.</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="216"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.cpp" line="74"/>
         <source>Undo all your work and go back to a clean start of this level?</source>
-        <translation>Скасувати усю Вашу роботу та повернутися до чистого початку цього рівню?</translation>
+        <translation>Kasta allt ditt arbete och återgå till en ren början av nivån?</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.cpp" line="90"/>
         <source>Level by: &lt;b&gt;%1&lt;/b&gt;</source>
         <extracomment>translators: please do not try to translate the &lt;b&gt;%1&lt;/b&gt; part!</extracomment>
-        <translation>Рівень від: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Nivå av: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -382,7 +381,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GoalEditor.ui" line="14"/>
         <source>Goal and Fail Editor </source>
-        <translation>Редактор цілей і поразок</translation>
+        <translation>Mål- och misslyckande-editor</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="20"/>
@@ -396,9 +395,8 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ЦІЛІ&lt;/span&gt;&lt;br /&gt;Рівень може бути виграний лише якщо &lt;span style=&quot; font-style:italic;&quot;&gt;усі&lt;/span&gt; цілі досягнуті.&lt;/p
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Якщо код об’єкту червоний, то цього коду на дану мить не існує.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;MÅL&lt;/span&gt;&lt;br /&gt;En nivå kan bara vinnas om &lt;span style=&quot; font-style:italic;&quot;&gt;alla&lt;/span&gt; mål möts.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Om ett Objekt-ID är rött, finns för närvarande inte det ID:t.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="43"/>
@@ -419,31 +417,30 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation> &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;НЕВДАЧІ&lt;/span&gt;&lt;br /&gt;Рівень може бути виграний лише якщо &lt;span style=&quot; font-style:italic;&quot;&gt;ніколи&lt;/span&gt; не зустрінеться будь-яка з умов поразок.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;MISSLYCKANDE&lt;/span&gt;&lt;br /&gt;En nivå kan bara vinnas om &lt;span style=&quot; font-style:italic;&quot;&gt;inget&lt;/span&gt; av villkoren för misslyckande möts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="89"/>
         <source>Not all goals/fails were OK
 Nothing was changed yet, please fix.</source>
-        <translation>Не усі цілі/поразки були у порядку
-Ще нічого не змінилося, будь ласка, виправте.</translation>
+        <translation>Inte alla mål/misslyckanden var bra
+Inget har ändrats, åtgärda.</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="154"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
         <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
-        <translation>Ви впевнені, що бажаєте вилучити ціль %1:&lt;br&gt;%2</translation>
+        <translation>Är du säker på att du vill ta bort målet %1:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="173"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
         <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
-        <translation>Ви впевнені, що бажаєте вилучити невдачу %1:&lt;br&gt;%2</translation>
+        <translation>Är du säker på att du vill ta bort misslyckande %1:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="187"/>
@@ -451,18 +448,18 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/view/GoalEditor.cpp" line="200"/>
         <location filename="../src/view/GoalEditor.cpp" line="203"/>
         <source>no object</source>
-        <translation>немає об’єкту</translation>
+        <translation>inget objekt</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="271"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
         <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
-        <translation>Змінна;Об’єкт;Умов.;Значення;Об’єкт2</translation>
+        <translation>Variabel;Objekt;Villk.;Värde;Objekt2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.h" line="47"/>
         <source>change</source>
-        <translation>змінити</translation>
+        <translation>ändra</translation>
     </message>
 </context>
 <context>
@@ -471,12 +468,12 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/loadsave/Level.cpp" line="131"/>
         <location filename="../src/loadsave/Level.cpp" line="152"/>
         <source>Cannot read file &apos;%1&apos;</source>
-        <translation>Не вдалося прочитати файл &apos;%1&apos;</translation>
+        <translation>Kan inte läsa filen &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="158"/>
         <source>Cannot parse file - not valid XML?</source>
-        <translation>Не вдалося розібрати файл - некоректний XML?</translation>
+        <translation>Kan inte tolka filen - inte giltig XML?</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="168"/>
@@ -486,48 +483,48 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/loadsave/Level.cpp" line="237"/>
         <location filename="../src/loadsave/Level.cpp" line="272"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
-        <translation>Розбір секції &apos;%1&apos; невдалий:</translation>
+        <translation>Tolkning av avsnittet &apos;%1&apos; misslyckades:</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="213"/>
         <source>scene width or height unspecified</source>
-        <translation>ширина або висота сцени не визначені</translation>
+        <translation>scenens bredd eller höjd inte angivet</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="228"/>
         <source>Parsing &apos;%1&apos; section failed: %2</source>
-        <translation>Розбір секції &apos;%1&apos; невдалий: %2</translation>
+        <translation>Tolkning av avsnittet &apos;%1&apos; misslyckades: %2</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="252"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
-        <translation>очікувалася секція &lt;%1&gt;, отримана &lt;%2&gt;</translation>
+        <translation>ett &lt;%1&gt;-avsnitt förväntades, fick &lt;%2&gt;</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="259"/>
         <location filename="../src/loadsave/Level.cpp" line="303"/>
         <source>createObjectFromDom failed</source>
-        <translation>Не вдалося створити об’єкт, невдача у функції createObjectFromDom</translation>
+        <translation>createObjectFromDom misslyckades</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="276"/>
         <source>no &lt;%1&gt; section found!</source>
-        <translation>не знайдена секція &lt;%1&gt;!</translation>
+        <translation>inget &lt;%1&gt;-avsnitt hittades!</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="295"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
-        <translation>очікувалася секція &lt;%1&gt;, отримана &lt;%2&gt;.</translation>
+        <translation>ett &lt;%1&gt;-avsnitt förväntades, fick &lt;%2&gt;.</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="309"/>
         <source>&lt;%1&gt; properties could not be parsed. </source>
-        <translation>Властивості &lt;%1&gt; не можуть бути розібрані.</translation>
+        <translation>&lt;%1&gt; egenskaper kunde inte tolkas.</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="429"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
-        <translation>Не вдається записати файл &apos;%1&apos;: %2.</translation>
+        <translation>Kan inte skriva filen &apos;%1&apos;: %2.</translation>
     </message>
 </context>
 <context>
@@ -535,7 +532,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation>Підказка палітри компонентів</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="32"/>
@@ -566,7 +563,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="160"/>
         <source>Wheel</source>
-        <translation>Колесо</translation>
+        <translation>Hjul</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="198"/>
@@ -589,42 +586,42 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="14"/>
         <source>The Butterfly Effect</source>
-        <translation>Ефект метелика</translation>
+        <translation>The Butterfly Effect</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="85"/>
         <source>&amp;File</source>
-        <translation>&amp;Файл</translation>
+        <translation>&amp;Fil</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="101"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Змінити</translation>
+        <translation>R&amp;edigera</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="106"/>
         <source>&amp;Controls</source>
-        <translation>&amp;Керування</translation>
+        <translation>&amp;Kontroller</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="111"/>
         <source>&amp;Help</source>
-        <translation>&amp;Довідка</translation>
+        <translation>&amp;Hjälp</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="115"/>
         <source>&amp;Contribute</source>
-        <translation>&amp;Внести внесок</translation>
+        <translation>&amp;Bidra</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="134"/>
         <source>&amp;Open Level...</source>
-        <translation>&amp;Відкрити рівень...</translation>
+        <translation>&amp;Öppna nivå...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="139"/>
         <source>O&amp;pen File...</source>
-        <translation>Ві&amp;дкрити файл...</translation>
+        <translation>Ö&amp;ppna fil...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="142"/>
@@ -634,62 +631,62 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="147"/>
         <source>S&amp;kip Level</source>
-        <translation>&amp;Пропустити рівень</translation>
+        <translation>Hoppa ö&amp;ver nivå</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="152"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Вийти</translation>
+        <translation>&amp;Avsluta</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="157"/>
         <source>Libraries...</source>
-        <translation>Бібліотеки...</translation>
+        <translation>Bibliotek...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="162"/>
         <source>&amp;Keyboard Shortcuts...</source>
-        <translation>&amp;Гарячі клавіші...</translation>
+        <translation>&amp;Snabbkommandon...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="167"/>
         <source>&amp;About...</source>
-        <translation>&amp;Про програму...</translation>
+        <translation>&amp;Om...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="172"/>
         <source>&amp;Suggestions...</source>
-        <translation>&amp;Пропозиції...</translation>
+        <translation>&amp;Förslag...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="177"/>
         <source>&amp;Bug Reports...</source>
-        <translation>&amp;Повідомити про ваду...</translation>
+        <translation>Fe&amp;lrapporter...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="182"/>
         <source>New Level Ideas...</source>
-        <translation>Ідеї нових рівнів...</translation>
+        <translation>Nya nivåförslag...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="187"/>
         <source>&amp;Switch to Level Editor</source>
-        <translation>П&amp;еремикнутися на редактор рівнів</translation>
+        <translation>Vä&amp;xla till nivåeditor</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="190"/>
         <source>Switch</source>
-        <translation>Перемикач</translation>
+        <translation>Växla</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="198"/>
         <source>&amp;Save</source>
-        <translation>&amp;Зберегти</translation>
+        <translation>&amp;Spara</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="201"/>
         <source>Save current level under its current name</source>
-        <translation>Зберегти поточний рівень, використовуючи поточну назву</translation>
+        <translation>Spara aktuell nivå under aktuellt namn</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="204"/>
@@ -699,17 +696,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="215"/>
         <source>Save &amp;As...</source>
-        <translation>Зберегти &amp;як...</translation>
+        <translation>Spara so&amp;m...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="218"/>
         <source>Save level under a new name</source>
-        <translation>Зберегти рівень, використовуючи нову назву</translation>
+        <translation>Spara nivå under nytt namn</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="226"/>
         <source>New Level...</source>
-        <translation>Новий рівень...</translation>
+        <translation>Ny nivå...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="229"/>
@@ -720,114 +717,112 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/view/MainWindow.cpp" line="94"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
-        <translation>ПОМИЛКА при читанні файлу &apos;%1&apos;: &apos;%2&apos;
+        <translation>FEL vid läsning av filen &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="100"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
-        <translation>Нефатальна проблема читання файлу &apos;%1&apos;: &apos;%2&apos;.
-Хоч це може вплинути на придатність для гри!</translation>
+        <translation>Icke-kritiskt problem vid läsning av filen &apos;%1&apos;: &apos;%2&apos;.
+Detta kan ändå påverka spelupplevelsen!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="123"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Ефект метелика&lt;/b&gt;&lt;br&gt;&lt;br&gt;Гра з відкритим джерельним кодом, яка використовує реалістичні фізичні симуляції. Шляхом комбінування у складну систему багатьох елементарних механічних елементів та звичайних об’єктів, ставиться проста мета, яку необхідно досягнути.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken і Klaas van Gend&lt;br&gt;Ліцензовано під GPL версії 2 - &lt;i&gt;лише&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Дивіться http://%1/ для докладнішої інформації про цей проєкт.</translation>
+        <translation>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ett spel som använder öppen källkod där realistiska fysiksimuleringar används för att kombinera flera enkla mekaniska element för att uppnå ett enkelt mål på det mest komplicerade sätt.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken och Klass van Gend&lt;br&gt;Licensieras under GPL version 2 - &lt;i&gt;endast&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Se http://%1/ för mer information om projektet.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="137"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Ефект метелика - Повідомлення про вади&lt;/b&gt;&lt;br&gt;&lt;br&gt;Звичайно, ця гра ще не без помилок.&lt;br&gt;Якщо Ви зіштовхнетеся з чимось, що на Вашу думку не має відбуватися, то, будь ласка, дайте нам знати. Перейдіть на наш сайт:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Будь ласка, повідомте нам принаймні &lt;i&gt;назву&lt;/i&gt; рівню, що Ви очікували щоб відбулося, й що на справді відбулося. Якщо Ви волієте дізнатися, як ми виправимо Вашу ваду, то, будь ласка, вкажіть Вашу діючу адресу електронної пошти.</translation>
+        <translation>&lt;b&gt;The Butterfly Effect - Felrapporter&lt;/b&gt;&lt;br&gt;&lt;br&gt;Det här spelet är givetvis inte felfritt än.&lt;br&gt;Om du hittar något som du tror inte ska händra, hör av dig till oss. Gå till vår felspårningsplats:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Berätta helst &lt;i&gt;vilken&lt;/i&gt; nivå det rör sig om, vad du förväntade dig skulle hända och vad som faktiskt hände. Om du vill veta mer om hur vi åtgärdar ditt problem, uppge en giltig e-postadress.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="156"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;show /hide toolbox &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
-        <translation> &lt;b&gt;Ефект метелика - Гарячі клавіші&lt;/b&gt;&lt;br&gt;&lt;br&gt;Наступні клавіші можуть бути використані для пришвидшення дій, які Ви б робили за допомогою миші&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Клавіша&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Функція &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Пробіл&lt;/td&gt;&lt;td&gt;почати/зупинити симуляцію&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(при симуляції) пришвидшити вперед/уповільнити назад &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(при симуляції) справді пришвидшити вперед &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;скинути симуляцію &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;показати/приховати палітру компонентів &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; скасувати останню дію &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; повторити останню дію &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;
-</translation>
+        <translation>&lt;b&gt;The Butterfly Effect - Snabbkommandon&lt;/b&gt;&lt;br&gt;&lt;br&gt;Följande tangenter kan användas för att snabbare utföra åtgärder du annars skulle behöva använda musen till&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Tangent&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Funktion &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Blanksteg&lt;/td&gt;&lt;td&gt;starta / stoppa simulering &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(vid simulering) snabbare / långsammare &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;skift+f&lt;/td&gt;&lt;7d(vid simulering) mycket snabbare &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;nollställ simuleringen &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;t&lt;/td&gt;&lt;td&gt;visa/dölj verktygslådan &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; ångra senaste åtgärd &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; upprepa senaste åtgärd &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="174"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Ефект метелика - Бібліотеки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ефект метелика є гордістю користувачів бібліотеки фізики Box2D. Будь ласка, відвідайте http://www.box2d.org/ .&lt;br&gt;Ефект метелика використовує інструментарій Qt GUI. Будь ласка, відвідайте http://qt-project.org/ .</translation>
+        <translation>&lt;b&gt;The Butterfly Effect - Bibliotek&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect är en stolt användare av fysikbiblioteket Box2D. Läs mer på http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect använder gränssnittsverktyget Qt. Läs mer på http://qt-project.org/ .</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation> &lt;b&gt;Ефект метелика - Створення нових рівнів&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ми знаємо, Ви можете створити ще ліпше рівні, ніж ми!&lt;br&gt;Використовуйте створювач рівнів щоб побудувати свої рівні й, будь ласка, відправте їх нам.&lt;br&gt;Навіть якщо Ваш рівень ще не закінчений, не вагайтеся щоб поділитися ним з нами! Звичайно, визначте, як Ви вважаєте він повинен працювати, щоб інші могли приєднатися.&lt;br&gt;&lt;br&gt;Це наш перелік розсилки для рівнів:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;
-</translation>
+        <translation>&lt;b&gt;The Butterfly Effect - Skapa nya nivåer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vi vet att du kan designa bättre nivåer än vi!&lt;br&gt;Använd nivåskaparen för att bygga dina nivåer, och skicka sedan gärna in dem till oss.&lt;br&gt;Även om din nivå inte är färdig, tveka inte att dela med dig! Du bör så klart också definiera hur du tycker att den ska fungera så att andra kan hjälpa till.&lt;br&gt;&lt;br&gt;Detta är vår sändlista för nivåer:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>Open level</source>
-        <translation>Відкрити рівень</translation>
+        <translation>Öppna nivå</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>TBE levels (*.xml)</source>
-        <translation>Рівні TBE (*.xml)</translation>
+        <translation>TBE-nivåer (*.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="223"/>
         <source>really?</source>
-        <translation>впевнені?</translation>
+        <translation>verkligen?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="236"/>
         <source>File &apos;%1&apos; could not be saved.</source>
-        <translation>Файл &apos;%1&apos; не може бути збережений.</translation>
+        <translation>Filen &apos;%1&apos; kunde inte sparas.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="256"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
-        <translation>Вы не заповнили усі поля, але у будь-якому випадку рівень був збережений
+        <translation>Du fyllde inte i alla fält - men nivån sparades ändå
 </translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
-        <translation>Позначити цей рівень &apos;пропущеним&apos; й продовжити з наступного рівню?</translation>
+        <translation>Märk den här nivån som &apos;överhoppad&apos; och fortsätt med nästa nivå?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="278"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
-        <translation>&lt;b&gt;Ефект метелика - Пропозиції&lt;/b&gt;&lt;br&gt;&lt;br&gt;Якщо в Вас є чудові ідеї для нових можливостей у грі, будь-ласка, перейдіть на наші форуми: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;щоб поділитися своїми ідеями зі світом.</translation>
+        <translation>&lt;b&gt;The Butterfly Effect - Förslag&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om du har några goda idéer för nya funktioner i spelet, besök vårt forum på: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;för att dela med dig av dina idéer.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="308"/>
         <source>&amp;Insert</source>
-        <translation>&amp;Вставка</translation>
+        <translation>&amp;Infoga</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="324"/>
         <source>&amp;Editors</source>
-        <translation>&amp;Редактори</translation>
+        <translation>&amp;Editorer</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Goal Editor...</source>
-        <translation>Редактор &amp;цілей...</translation>
+        <translation>&amp;Måleditor...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Level Properties...</source>
-        <translation>&amp;Властивості рівню...</translation>
+        <translation>&amp;Nivåegenskaper...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Object Editor...</source>
-        <translation>Р&amp;едактор об’єкту...</translation>
+        <translation>&amp;Objekteditor...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="399"/>
         <source>&amp;Undo</source>
-        <translation>&amp;Скасувати</translation>
+        <translation>&amp;Ångra</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="400"/>
@@ -837,7 +832,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="402"/>
         <source>&amp;Redo</source>
-        <translation>По&amp;вернути</translation>
+        <translation>Upp&amp;repa</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="404"/>
@@ -847,7 +842,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="404"/>
         <source>Shift+Ctrl+Z</source>
-        <translation>Shift+Ctrl+Z</translation>
+        <translation>Skift+Ctrl+Z</translation>
     </message>
 </context>
 <context>
@@ -855,377 +850,377 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/control/DeleteUndoCommand.cpp" line="32"/>
         <source>Remove</source>
-        <translation>Вилучити</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../src/control/InsertUndoCommand.h" line="32"/>
         <source>Insert</source>
-        <translation>Вставити</translation>
+        <translation>Infoga</translation>
     </message>
     <message>
         <location filename="../src/control/MoveUndoCommand.cpp" line="29"/>
         <source>Move</source>
-        <translation>Перемістити</translation>
+        <translation>Flytta</translation>
     </message>
     <message>
         <location filename="../src/control/ResizeUndoCommand.cpp" line="29"/>
         <source>Resize</source>
-        <translation>Змінити розмір</translation>
+        <translation>Ändra storlek</translation>
     </message>
     <message>
         <location filename="../src/control/RotateUndoCommand.cpp" line="27"/>
         <source>Rotate</source>
-        <translation>Повернути</translation>
+        <translation>Rotera</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="174"/>
         <source>Position X</source>
-        <translation>Координата X</translation>
+        <translation>Position X</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="175"/>
         <source>Position Y</source>
-        <translation>Координата Y</translation>
+        <translation>Position Y</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="176"/>
         <source>Angle</source>
-        <translation>Кут</translation>
+        <translation>Vinkel</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="177"/>
         <source>X/Y/Angle</source>
-        <translation>X/Y/Кут</translation>
+        <translation>X/Y/Vinkel</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="178"/>
         <source>Distance</source>
-        <translation>Відстань</translation>
+        <translation>Avstånd</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="179"/>
         <source>Object State</source>
-        <translation>Стан об’єкту</translation>
+        <translation>Objektets tillstånd</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="56"/>
         <source>Balloon</source>
-        <translation>Повітряна куля</translation>
+        <translation>Ballong</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="57"/>
         <source>a Helium Balloon. Lighter than air, it moves up.</source>
-        <translation>гелієва повітряна куля. Вона легша від повітря, це піднімає її.</translation>
+        <translation>en heliumballong. Lättare än lyft; rör sig uppåt.</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="262"/>
         <source>Cactus</source>
-        <translation>Кактус</translation>
+        <translation>Kaktus</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="263"/>
         <source>Cactacea Bulbuous Stingus - a Cactus has spines!</source>
-        <translation>actacea Bulbuous Stingus - Кактус має шипи!</translation>
+        <translation>Cactacea Bulbuous Stingus - en kaktus har taggar!</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="343"/>
         <source>BedOfNails</source>
-        <translation>Ліжко із цвяхів</translation>
+        <translation>Spikmadrass</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="344"/>
         <source>Do not touch a bed of nails - it stings!</source>
-        <translation>Не чіпайте ліжко із цвяхів - воно колюче!</translation>
+        <translation>Rör inte spikmadrassen - den sticks!</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="416"/>
         <source>CircularSaw</source>
-        <translation>Циркулярка</translation>
+        <translation>Cirkelsåg</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="417"/>
         <source>a rotating disc with sharp teeth.</source>
-        <translation>диск з гострими зубчиками що обертається.</translation>
+        <translation>en roterande skiva med vassa tänder.</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.h" line="39"/>
         <source>Butterfly</source>
-        <translation>Метелик</translation>
+        <translation>Fjäril</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.cpp" line="45"/>
         <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
-        <translation>Метелик (Flappus Chaoticus Fragilius) - завжди у пошуках квітів.</translation>
+        <translation>Fjäril (Flappus Chaoticus Fragilius) - alltid på jakt efter blommor.</translation>
     </message>
     <message>
         <source>Bowling Ball</source>
-        <translation type="obsolete">Куля для боулінгу</translation>
+        <translation type="obsolete">Bowlingklot</translation>
     </message>
     <message>
         <source>Your average bowling ball - heavy, round and willing to roll</source>
-        <translation type="obsolete">Ваша середня куля для боулінгу - важка, кругла й готова покотитися</translation>
+        <translation type="obsolete">Ett helt vanligt bowlingklot - tungt, runt, och redo att rulla</translation>
     </message>
     <message>
         <source>Volley Ball</source>
-        <translation type="obsolete">М’яч для волейболу</translation>
+        <translation type="obsolete">Volleyboll</translation>
     </message>
     <message>
         <source>A volley ball - you know: light, soft and fairly bouncy.</source>
-        <translation type="obsolete">М’яч для волейболу - Ви знаєте: легкий, м’який та досить пружний.</translation>
+        <translation type="obsolete">En volleyboll - du vet: lätt, mjuk och studsar hyfsat.</translation>
     </message>
     <message>
         <source>Tennis Ball</source>
-        <translation type="obsolete">М’яч для тенісу</translation>
+        <translation type="obsolete">Tennisboll</translation>
     </message>
     <message>
         <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation type="obsolete">М’яч для тенісу маленький, нечіткий та відомий зміною напрямку.</translation>
+        <translation type="obsolete">En tennisboll är liten, fjunig och är känd för att få folk att vända sig om.</translation>
     </message>
     <message>
         <source>Soccer Ball</source>
-        <translation type="obsolete">М’яч для футболу</translation>
+        <translation type="obsolete">Fotboll</translation>
     </message>
     <message>
         <source>A football (of the spherical persuasion).</source>
-        <translation type="obsolete">Футбол (сферичного спрямування).</translation>
+        <translation type="obsolete">En fotboll (en sfärisk variant).</translation>
     </message>
     <message>
         <source>Petanque Boule</source>
-        <translation type="obsolete">Петанк буль</translation>
+        <translation type="obsolete">Petanque-boule</translation>
     </message>
     <message>
         <source>A petanque ball is made of metal and heavy.</source>
-        <translation type="obsolete">М’яч для петанк булю зроблений з металу та тяжкий.</translation>
+        <translation type="obsolete">En petanque-boule är gjord av metall och är tung.</translation>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="49"/>
         <source>Cola+Mint Bottle</source>
-        <translation>Пляшка Кола+М’ята</translation>
+        <translation>Cola+Mint-flaska</translation>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="50"/>
         <source>This is a prepared cola bottle with a mint in it.
 Look: it blows if triggered!</source>
-        <translation>Це готова пляшка з колою і м’ятою у ній.
-Подивіться: вона раздувається, якщо приведена у рух!</translation>
+        <translation>Detta är en preparerad coca-cola-flaska med en mintpastill i.
+Titta: den exploderar när den utlöses!</translation>
     </message>
     <message>
         <location filename="../src/model/Glue.h" line="55"/>
         <source>Glue</source>
-        <translation>Клей</translation>
+        <translation>Lim</translation>
     </message>
     <message>
         <location filename="../src/model/Glue.cpp" line="47"/>
         <source>Glue links two objects immovably together.</source>
-        <translation>Клей нерухомо зв’язує разом два об’єкти.</translation>
+        <translation>Lim kopplar samman två objekt hårt.</translation>
     </message>
     <message>
         <location filename="../src/model/Link.h" line="55"/>
         <source>Link</source>
-        <translation>Зв’язати</translation>
+        <translation>Länk</translation>
     </message>
     <message>
         <location filename="../src/model/Link.cpp" line="45"/>
         <source>A Link is a massless, bodyless connection between two objects.</source>
-        <translation>Зв’язок - це безмасове, безтілесне з’єднання між двома об’єктами.</translation>
+        <translation>En länk är en viktlös okroppslig koppling mellan två objekt.</translation>
     </message>
     <message>
         <location filename="../src/model/PivotPoint.h" line="73"/>
         <source>PivotPoint</source>
-        <translation>Точка опори</translation>
+        <translation>Mittpunkt</translation>
     </message>
     <message>
         <location filename="../src/model/PivotPoint.cpp" line="127"/>
         <source>Objects rotate around this point</source>
-        <translation>Об’єкти обертаються навколо цієї точки</translation>
+        <translation>Objekt roterar runt den här punkten</translation>
     </message>
     <message>
         <source>Bowling Pin</source>
-        <translation type="obsolete">Кегль для боулінгу</translation>
+        <translation type="obsolete">Bowlingkägla</translation>
     </message>
     <message>
         <source>Bowling pins are meant to be run over - and most people prefer to do that using a Bowling Ball.</source>
-        <translation type="obsolete">Кеглі для боулінгу призначені для збивання, й більшість людей полюбляють робити це за допомогою кулі для боулінгу.</translation>
+        <translation type="obsolete">Bowlingkäglor är avsedda att göras ner - och de flesta föredrar att använda ett bowlingklot för det ändamålet.</translation>
     </message>
     <message>
         <source>Skyhook</source>
-        <translation type="obsolete">Аеро-гачок</translation>
+        <translation type="obsolete">Krok</translation>
     </message>
     <message>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation type="obsolete">Аеро-гачок просто висить у повітрі. Й Ви можете почепити багато ваги на нього!</translation>
+        <translation type="obsolete">En krok bara hänger i luften. Och du kan hänga stora vikter från den!</translation>
     </message>
     <message>
         <source>Weight</source>
-        <translation type="obsolete">Вага</translation>
+        <translation type="obsolete">Vikt</translation>
     </message>
     <message>
         <source>A serious mass. As heavy as it looks!</source>
-        <translation type="obsolete">Нежартівлива маса. Також важко, як вона й виглядає!</translation>
+        <translation type="obsolete">En rejäl tyngd. Så tung som den ser ut!</translation>
     </message>
     <message>
         <source>Left Ramp</source>
-        <translation type="obsolete">Лівий ухил</translation>
+        <translation type="obsolete">Vänster ramp</translation>
     </message>
     <message>
         <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
-        <translation type="obsolete">Це ухил. Ліворуч нижче, ніж праворуч, тому речі ковзають наліво.</translation>
+        <translation type="obsolete">Det här är en ramp. Den vänstra kanten är lägre än den högra, så saker glider åt vänster.</translation>
     </message>
     <message>
         <source>Right Ramp</source>
-        <translation type="obsolete">Правий ухил</translation>
+        <translation type="obsolete">Höger ramp</translation>
     </message>
     <message>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation type="obsolete">Це ухил. Ліворуч вище, ніж праворуч, тому речі ковзають направо.</translation>
+        <translation type="obsolete">Det här är en ramp. Den vänstra kanten är högre än den högra, så saker glider åt höger.</translation>
     </message>
     <message>
         <source>Left Wedge</source>
-        <translation type="obsolete">Лівий клин</translation>
+        <translation type="obsolete">Vänster kil</translation>
     </message>
     <message>
         <source>This is a wedge. The left is lower than the right, so things slide to the left.</source>
-        <translation type="obsolete">Це клин. Ліворуч нижче, ніж праворуч, тому речі ковзають наліво.</translation>
+        <translation type="obsolete">Det här är en kil. Den vänstra kanten är lägre än den högra, så saker glider åt vänster.</translation>
     </message>
     <message>
         <source>Right Wedge</source>
-        <translation type="obsolete">Правий клин</translation>
+        <translation type="obsolete">Höger kil</translation>
     </message>
     <message>
         <source>This is a wedge. The left is higher than the right, so things slide to the right.</source>
-        <translation type="obsolete">Це клин. Ліворуч вище, ніж праворуч, тому речі ковзають направо.</translation>
+        <translation type="obsolete">Det här är en kil. Den vänstra kanten är högre än den högra, så saker glider åt höger.</translation>
     </message>
     <message>
         <source>Quarter Arc Small</source>
-        <translation type="obsolete">Мала чверть дуги</translation>
+        <translation type="obsolete">Kvartscirkel liten</translation>
     </message>
     <message>
         <source>This is a quarter arc. Or ninety degrees, or 1.57 radians if you want.</source>
-        <translation type="obsolete">Це чверть дуги. Або дев’яносто градусів, або 1.57 радіан.</translation>
+        <translation type="obsolete">Det här är en kvartscirkel. Ellet nitton grader, eller 1,57 radianer om du så önskar.</translation>
     </message>
     <message>
         <source>Quarter Arc Large</source>
-        <translation type="obsolete">Велика чверть дуги</translation>
+        <translation type="obsolete">Kvartscirkel stor</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.h" line="48"/>
         <source>PostIt</source>
-        <translation>Повідомлення на стікері</translation>
+        <translation>Klisterlapp</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="52"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3x3 inch pieces of paper.
 You might want to read them - it may help!</source>
-        <translation>Хтось залишив стікери скрізь.
-Ви знаєте ці жовті 8x8 сантиметрів папірці.
-Ви можете читати їх - це може допомогти!</translation>
+        <translation>Någon lämnade anteckningar överallt.
+Du vet, gula små pappersbitar. 3x3
+Du ska kanske läsa dem - de kan innehålla tips!</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="88"/>
         <source>Domino (Red)</source>
-        <translation>Доміно (червоне)</translation>
+        <translation>Domino (röd)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="89"/>
         <source>The famous plastic red domino stone</source>
-        <translation>Знамените пластикове червоне доміно-кості</translation>
+        <translation>Den berömda röda dominostenen av plast</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="93"/>
         <source>Domino (Blue)</source>
-        <translation>Доміно (синє)</translation>
+        <translation>Domino (blå)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="94"/>
         <source>The famous plastic blue domino stone</source>
-        <translation>Знамените пластикове синє доміно-кості</translation>
+        <translation>Den berömda blåa dominostenen av plast</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="98"/>
         <source>Domino (Green)</source>
-        <translation>Доміно (Зелене)</translation>
+        <translation>Domino (grön)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="99"/>
         <source>The famous plastic green domino stone</source>
-        <translation>Знамените пластикове зелене доміно-кості</translation>
+        <translation>Den berömda gröna dominostenen av plast</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="103"/>
         <source>Floor</source>
-        <translation>Підлога</translation>
+        <translation>Golv</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="108"/>
         <source>Wall</source>
-        <translation>Стіна</translation>
+        <translation>Vägg</translation>
     </message>
     <message>
         <location filename="../src/model/Scenery.h" line="45"/>
         <source>Scenery</source>
-        <translation>Декорація</translation>
+        <translation>Omgivning</translation>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="76"/>
         <source>Spring</source>
-        <translation>Пружина</translation>
+        <translation>Fjäder</translation>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="77"/>
         <source>Something springy.</source>
-        <translation>Щось пружне.</translation>
+        <translation>Något som fjädrar.</translation>
     </message>
     <message>
         <source>Send BOOM to me</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation type="obsolete">Відправте БУУМ мені</translation>
+        <translation type="obsolete">Skicka BOOM till mig</translation>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="212"/>
         <source>Spring End</source>
-        <translation>Кінець пружини</translation>
+        <translation>Fjädring slut</translation>
     </message>
     <message>
         <location filename="../src/model/TranslationGuide.h" line="65"/>
         <source>TranslationGuide</source>
-        <translation>Посібник про переклади</translation>
+        <translation>Översättningsguide</translation>
     </message>
     <message>
         <location filename="../src/model/TranslationGuide.cpp" line="109"/>
         <source>Objects are limited to only move along one axis</source>
-        <translation>Об’єкти обмежені лише переміщенням уздовж однієї осі</translation>
+        <translation>Objekt är begränsade till att bara röra sig på en axel</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="43"/>
         <source>Detonator Box</source>
-        <translation>Коробка з детонатором</translation>
+        <translation>Detonatorlåda</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="147"/>
         <source>(empty)</source>
-        <translation>(порожньо)</translation>
+        <translation>(tom)</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="154"/>
         <source>Send BOOM to %1</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation>Відправте БУУМ мені %1</translation>
+        <translation>Skicka BOOM till %1</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="223"/>
         <source>Detonator Box Handle</source>
-        <translation>Обробник коробки з детонатором</translation>
+        <translation>Detonatorlådans handtag</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="224"/>
         <source>Push Here To BOOM</source>
-        <translation>Натисніть тут для БУУМ</translation>
+        <translation>Tryck här för BOOM</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="312"/>
         <source>Dynamite</source>
-        <translation>Динаміт</translation>
+        <translation>Dynamit</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="420"/>
@@ -1233,33 +1228,33 @@ You might want to read them - it may help!</source>
  Dial %1 for a nice explosion.</source>
         <extracomment>Translators: the 
  means &quot;newline&quot; - keep it. The %1 will be replaced by a phone number</extracomment>
-        <translation>Динаміт: винайдений Альфредом Нобелем.
-Наберіть номер %1 для гарного вибуху.</translation>
+        <translation>Dynamit: uppfanns av Alfred Nobel.
+Ratta in %1 för en härlig explosion.</translation>
     </message>
     <message>
         <location filename="../src/tbe_global.h" line="22"/>
         <source>The Butterfly Effect</source>
-        <translation>Ефект метелика</translation>
+        <translation>The Butterfly Effect</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="48"/>
         <source>critical error</source>
-        <translation>критична помилка</translation>
+        <translation>kritiskt fel</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="71"/>
         <source>informational message</source>
-        <translation>інформаційне повідомлення</translation>
+        <translation>informationsmeddelande</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="87"/>
         <source>warning</source>
-        <translation>попередження</translation>
+        <translation>varning</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="104"/>
         <source>question</source>
-        <translation>питання</translation>
+        <translation>fråga</translation>
     </message>
 </context>
 <context>
@@ -1267,12 +1262,12 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="14"/>
         <source>Save Level - Information</source>
-        <translation>Зберегти рівень - Інформація</translation>
+        <translation>Spara nivå - Information</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="22"/>
         <source>File name to save to:</source>
-        <translation>Ім’я файлу для збереження:</translation>
+        <translation>Filnamn att spara till:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="39"/>
@@ -1282,22 +1277,22 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="48"/>
         <source>Level information - Use English Only</source>
-        <translation>Інформація про рівень - Використовуйте лише англійську</translation>
+        <translation>Nivåinformation - Använd endast engelska</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="54"/>
         <source>Title:</source>
-        <translation>Назва:</translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="71"/>
         <source>Author Name:</source>
-        <translation>Ім’я автора:</translation>
+        <translation>Upphovsman:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="88"/>
         <source>License:</source>
-        <translation>Ліцензія:</translation>
+        <translation>Licens:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="95"/>
@@ -1307,33 +1302,33 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="102"/>
         <source>Date:</source>
-        <translation>Дата:</translation>
+        <translation>Datum:</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="115"/>
         <source>Level Description (summary, make sure to use Post-it notes for real hints):</source>
-        <translation>Опис рівню (резюме, намагайтеся використовувати повідомлення на стікерах для реальних підказок):</translation>
+        <translation>Nivåbeskrivning (sammanfattning, se till att använda Klisterlappar för riktiga tips):</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="80"/>
         <source>Because you changed the Level Name or Description, all translations for both will be erased for consistency...</source>
-        <translation>Оскільки Ви змінили назву рівню або опис, то усі переклади для того та іншого будуть стерті для погодження...</translation>
+        <translation>Eftersom du ändrade nivåns namn eller beskrivning kommer alla översättningar för båda att tas bort för att ha konsekvent text...</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="114"/>
         <source>Save Level</source>
-        <translation>Зберегти рівень</translation>
+        <translation>Spara nivå</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="114"/>
         <source>TBE levels (*.tbe *.xml)</source>
-        <translation>Рівні TBE (*.tbe *.xml)</translation>
+        <translation>TBE-nivåer (*.tbe *.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="131"/>
         <source>A File with name &apos;%1&apos; file already exists. Overwrite?
 </source>
-        <translation>Файл з іменем &apos;%1&apos; вже існує. Перезаписати?
+        <translation>En fil med namnet &apos;%1&apos; fil finns redan. Skriv över?
 </translation>
     </message>
 </context>
@@ -1342,37 +1337,37 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="26"/>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="59"/>
         <source>Reset</source>
-        <translation>Скинути</translation>
+        <translation>Nollställ</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="91"/>
         <source>Pause</source>
-        <translation>Призупинити</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="110"/>
         <source>Play</source>
-        <translation>Відтворити</translation>
+        <translation>Spela</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="129"/>
         <source>FF</source>
-        <translation>FF</translation>
+        <translation>Snabbare</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="168"/>
         <source>TextLabel</source>
-        <translation>Текстова мітка</translation>
+        <translation>Textetikett</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="122"/>
         <source>&amp;Forward</source>
-        <translation>&amp;Вперед</translation>
+        <translation>&amp;Framåt</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="124"/>
@@ -1383,17 +1378,17 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="127"/>
         <source>P&amp;ause</source>
-        <translation>&amp;Призупинити</translation>
+        <translation>P&amp;aus</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="130"/>
         <source>&amp;Play</source>
-        <translation>&amp;Грати</translation>
+        <translation>S&amp;pela</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="133"/>
         <source>&amp;Reset</source>
-        <translation>&amp;Скинути</translation>
+        <translation>N&amp;ollställ</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="135"/>
@@ -1404,13 +1399,13 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="137"/>
         <source>Space</source>
-        <translation>Пробіл</translation>
+        <translation>Blanksteg</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="142"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation>Shift+f</translation>
+        <translation>Skift+f</translation>
     </message>
 </context>
 <context>
@@ -1418,22 +1413,22 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/ViewPostIt.ui" line="26"/>
         <source>Post-It viewer</source>
-        <translation>Переглядач повідомлень на стікерах</translation>
+        <translation>Klisterlappsvisare</translation>
     </message>
     <message>
         <location filename="../src/view/ViewPostIt.ui" line="112"/>
         <source>Next&gt;</source>
-        <translation>Далі&gt;</translation>
+        <translation>Nästa &gt;</translation>
     </message>
     <message>
         <location filename="../src/view/ViewPostIt.ui" line="122"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../src/view/ViewPostIt.cpp" line="165"/>
         <source>Finish</source>
-        <translation>Закінчити</translation>
+        <translation>Avsluta</translation>
     </message>
 </context>
 <context>
@@ -1441,7 +1436,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/ViewToolboxGroup.cpp" line="44"/>
         <source>The simulation is not in rest, you cannot insert new things. Please reset the sim first!</source>
-        <translation>Симуляція не у простої, Ви не можете вставляти нові речі. Будь ласка, спочатку скиньте симуляцію!</translation>
+        <translation>Simuleringen vilar inte, du kan inte infoga nya saker. Nollställ simuleringen först!</translation>
     </message>
     <message>
         <location filename="../src/view/ViewToolboxGroup.cpp" line="63"/>
@@ -1451,7 +1446,7 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/ViewToolboxGroup.cpp" line="70"/>
         <source>(empty)</source>
-        <translation>(порожньо)</translation>
+        <translation>(tom)</translation>
     </message>
 </context>
 <context>
@@ -1460,13 +1455,13 @@ You might want to read them - it may help!</source>
         <location filename="../src/view/ViewWorld.cpp" line="79"/>
         <source>You cannot make changes now, the simulation is ongoing.
 Reset the simulation?</source>
-        <translation>Ви зараз не можете вносити зміни, оскільки симуляція виконується.
-Скинути симуляцію?</translation>
+        <translation>Du kan inte ändra något nu, simuleringen körs.
+Nollställ simulering?</translation>
     </message>
     <message>
         <location filename="../src/view/ViewWorld.cpp" line="105"/>
         <source>%1 fps</source>
-        <translation>%1 кадр/с</translation>
+        <translation>%1 fps</translation>
     </message>
 </context>
 <context>
@@ -1474,54 +1469,54 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="14"/>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="75"/>
         <source>TextLabel</source>
-        <translation>Текстова мітка</translation>
+        <translation>Textetikett</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="118"/>
         <source>&amp;Replay</source>
-        <translation>&amp;Переграти</translation>
+        <translation>&amp;Repris</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="128"/>
         <source>&amp;Skip</source>
-        <translation>&amp;Пропустити</translation>
+        <translation>&amp;Hoppa över</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="151"/>
         <source>&amp;Choose...</source>
-        <translation>&amp;Вибрати...</translation>
+        <translation>&amp;Välj....</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="158"/>
         <source>Go to next level</source>
-        <translation>Перейти на наступний рівень</translation>
+        <translation>Gå till nästa nivå</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="164"/>
         <source>&amp;Next&gt;</source>
-        <translation>&amp;Наступний&gt;</translation>
+        <translation>&amp;Nästa &gt;</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
         <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
-        <translation>Поздоровляємо!</translation>
+        <translation>Grattis!</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="44"/>
         <source>Fail - retry?</source>
         <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
-        <translation>Крах - повторити?</translation>
+        <translation>Försök igen?</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="46"/>
         <source>&amp;Retry</source>
-        <translation>&amp;Повторити</translation>
+        <translation>Fö&amp;rsök igen</translation>
     </message>
 </context>
 </TS>
