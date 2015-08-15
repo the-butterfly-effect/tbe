@@ -118,4 +118,7 @@
             <property key="ybelow">1</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="Ramp \" X="1.100" Y="1.200"/>
+    </hints>
 </tbe-level>
