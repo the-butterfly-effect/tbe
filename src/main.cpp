@@ -22,6 +22,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QSplashScreen>
 #include <QLibraryInfo>
+#include <QtCore/QTextCodec>
 #include "tbe_global.h"
 #include "tbe_paths.h"
 
@@ -165,14 +166,15 @@ int main(int argc, char *argv[])
 	// init Qt (graphics toolkit) - www.qtsoftware.com
 	QApplication app(argc, argv);
 
-	// init splash screen
+	// init splash screen, do it as early in program start as possible
 	QSplashScreen mySplash(QPixmap(":/title_page.png"));
 	mySplash.show();
 	app.processEvents();
 
+	QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+	QTextCodec::setCodecForCStrings(codec);
+
 	// read the locale from the environment and set the language...
-	// TODO: This is fairly basic - I probably need to "borrow"
-	//       the (maybe too flexible) code from umtsmon
 	QString locale = QLocale::system().name();
 	QTranslator translator;
 	translator.load(I18N_DIRECTORY + "/tbe_" + locale);
