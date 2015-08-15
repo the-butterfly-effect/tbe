@@ -35,7 +35,7 @@ WinFailDialog::WinFailDialog(MessageType aType,
 	{
 		case CONGRATS:
 			//: make sure the translated text fits - the rest won't be shown
-			myMessage = tr("Congratulations");
+			myMessage = tr("Congratulations!");
 			ui->nextButton->setEnabled(true);
                         ui->skipButton->setVisible(false);
 			break;

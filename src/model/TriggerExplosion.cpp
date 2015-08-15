@@ -221,7 +221,7 @@ void DetonatorBox::updateViewObject(bool isSimRunning) const
 
 DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
 	:	RectObject( QObject::tr("Detonator Box Handle"),
-					"Push Here To BOOM",
+					QObject::tr("Push Here To BOOM"),
 					"DetonatorBoxHandle",
                     0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
 {

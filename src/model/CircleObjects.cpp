@@ -25,40 +25,40 @@
 
 // we are lazy and do not model the holes in the ball, nor do we attempt to model
 // the non-uniform weight distribution in the ball - we assume it to be uniform
-static BallObjectFactory theBBFactory("BowlingBall",
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Bowling Ball"),
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Your average bowling ball - heavy, round and willing to roll"),
+static CircleObjectFactory theBBFactory("BowlingBall",
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Bowling Ball"),
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Your average bowling ball - heavy, round and willing to roll"),
 	"BowlingBall", 0.11, 6.0, 0.1 );
 
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theVBFactory("VolleyBall",
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Volley Ball"),
-    QT_TRANSLATE_NOOP("BallObjectFactory", "A volley ball - you know: light, soft and fairly bouncy."),
+static CircleObjectFactory theVBFactory("VolleyBall",
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Volley Ball"),
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "A volley ball - you know: light, soft and fairly bouncy."),
 	"VolleyBall", 0.105, 0.280, 0.65);
 
 
 // the official standards say that a tennis ball dropped from 100 inch should bounce 53-58 inch.
 // thanks to http://en.wikipedia.org/wiki/Tennis_ball
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theTBFactory("TennisBall",
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Tennis Ball"),
-    QT_TRANSLATE_NOOP("BallObjectFactory", "A tennis ball is small, fuzzy and known for turning heads."),
+static CircleObjectFactory theTBFactory("TennisBall",
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Tennis Ball"),
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "A tennis ball is small, fuzzy and known for turning heads."),
 	"TennisBall", 0.034, 0.058, 0.56);
 
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
 // thanks to http://en.wikipedia.org/wiki/Football_(ball)
 // we are lazy and do not model the air, we assume it to be uniform in mass
-static BallObjectFactory theSoccerFactory("SoccerBall",
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Soccer Ball"),
-    QT_TRANSLATE_NOOP("BallObjectFactory", "A football (of the spherical persuasion)."),
+static CircleObjectFactory theSoccerFactory("SoccerBall",
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Soccer Ball"),
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "A football (of the spherical persuasion)."),
 	"SoccerBall", 0.110, 0.430, 0.56);
 
 // there is not much of official standards for a petanque ball, but
 // thanks to http://en.wikipedia.org/wiki/Petanque we at least know:
 // diameter between 70.5 and 80mm, weight between 650 and 800 grams.
-static BallObjectFactory thePetanqueFactory("PetanqueBoule",
-    QT_TRANSLATE_NOOP("BallObjectFactory", "Pétanque Boule"),
-    QT_TRANSLATE_NOOP("BallObjectFactory", "A pétanque ball is made of metal and heavy."),
+static CircleObjectFactory thePetanqueFactory("PetanqueBoule",
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "Pétanque Boule"),
+    QT_TRANSLATE_NOOP("CircleObjectFactory", "A pétanque ball is made of metal and heavy."),
 	"PetanqueBoule", 0.038, 0.700, 0.1);
 
 // Constructors/Destructors
@@ -123,15 +123,15 @@ void CircleObject::createBallShapeFixture(float aRadius, float aMass)
 // ---------------------------------------------------------------------------
 
 //// this class' ObjectFactory
-class CustomBallObjectFactory : public ObjectFactory
+class CustomCircleObjectFactory : public ObjectFactory
 {
 public:
-	CustomBallObjectFactory(void)
+    CustomCircleObjectFactory(void)
 	{	announceObjectType("CustomBall", this); }
 	virtual AbstractObject* createObject(void) const
 	{	return fixObject(new CustomBall()); }
 };
-static CustomBallObjectFactory theCustomBallObjectFactory;
+static CustomCircleObjectFactory theCustomCircleObjectFactory;
 
 
 CustomBall::CustomBall (void)

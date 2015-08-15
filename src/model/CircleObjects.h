@@ -103,12 +103,12 @@ public:
  *  to create any type of ball. Below the declaration, there will be several
  *  global instances each identifying one ball type
  */
-class BallObjectFactory : public ObjectFactory
+class CircleObjectFactory : public ObjectFactory
 {
     Q_OBJECT
 
 public:
-    BallObjectFactory(
+    CircleObjectFactory(
         const QString& anInternalName,
         const char*  aDisplayName,
         const char*  aTooltip,

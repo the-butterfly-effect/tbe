@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>The Butterfly Effect</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../imagery/style/style-resources.qrc">

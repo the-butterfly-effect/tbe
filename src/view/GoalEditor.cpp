@@ -268,7 +268,7 @@ void GoalEditor::setupViewAndModel(QTableView* aViewPtr, QStandardItemModel** aM
 
 	// TODO/FIXME: why don't the headers below work???
 	//: translators: Cond. is short for Condition - otherwise it doesn't fit
-	(*aModelPtrPtr)->setHorizontalHeaderLabels(QString("Variable;Object;Cond.;Value;Object2").split(";"));
+	(*aModelPtrPtr)->setHorizontalHeaderLabels(QString(tr("Variable;Object;Cond.;Value;Object2")).split(";"));
 
 	aViewPtr->setModel((*aModelPtrPtr));
 	// setup the various delegates for the different columns
