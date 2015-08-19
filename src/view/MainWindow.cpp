@@ -161,7 +161,6 @@ void MainWindow::on_action_Keyboard_Shortcuts_activated()
                    "<tr><td>f</td><td>(during simulation) fast forward / slow down </td></tr> "
                    "<tr><td>shift+f</td><td>(during simulation) really fast forward </td></tr> "
                    "<tr><td>r</td><td>reset the simulation </td></tr> "
-                   "<tr><td>t</td><td>show /hide toolbox </td></tr> "
                    "<tr><td>Ctrl-Z</td><td> undo last action </td></tr> "
                    "<tr><td>Ctrl-Y</td><td> redo last action </td></tr> "
                    "</table>"), this);
