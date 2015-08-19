@@ -68,6 +68,8 @@ private:
 
 	bool theIsWon;
 	bool theIsFail;
+	bool theWantWonFail;	/// true if slot_Won or slot_Fail should work...
+
 	int theLevelIndex;
 	QStringList theLevels;
 	MainWindow* theMainWindowPtr;

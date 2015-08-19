@@ -22,6 +22,16 @@
 #include <QEvent>
 #include <QKeyEvent>
 
+#if 1
+/// for use with automated testing within Valgrid or Pareon Verify
+const qreal theTestMultiplier = 3.0;
+const qreal theTestAddition   = 0.2;
+#else
+/// for use without any tools
+const qreal theTestMultiplier = 1.0;
+const qreal theTestAddition   = 0.0;
+#endif
+
 RegressionTest::RegressionTest(MainWindow *parent) :
 	QObject(parent),
 	theIsWon(false),
@@ -48,17 +58,23 @@ void RegressionTest::startRegressionRun(void)
 void RegressionTest::slot_Fail()
 {
 	DEBUG1("AUTOMATED TESTING, slot_Fail--------------------------");
-	Q_ASSERT(theIsFail==false);
 	theIsFail = true;
-	slotRegressionProgress();
+	if (theWantWonFail)
+	{
+		theWantWonFail = false;
+		slotRegressionProgress();
+	}
 }
 
 void RegressionTest::slot_Won()
 {
 	DEBUG1("AUTOMATED TESTING, slot_Won--------------------------");
-	Q_ASSERT(!theIsWon);
 	theIsWon = true;
-	slotRegressionProgress();
+	if (theWantWonFail)
+	{
+		theWantWonFail = false;
+		slotRegressionProgress();
+	}
 }
 
 void RegressionTest::slotRegressionProgress(void)
@@ -92,11 +108,13 @@ void RegressionTest::slotRegressionProgress(void)
 		myNextDelay= myLevelDurationSeconds*1000;
 		theIsWon = false;
 		theIsFail = false;
+		theWantWonFail = true;
 		// Registering for fail event (and success event!) was already done in resizinggraphicsview
 		myNextState = LEVELFAILED;
 		break;
 	}
 	case LEVELFAILED: // Check for "not success" (i.e. death or timeout)
+		theWantWonFail = false;
 		theRegressionTimer.stop();
 		Q_ASSERT(theIsWon==false);
 		myNextDelay= 800;
@@ -107,6 +125,7 @@ void RegressionTest::slotRegressionProgress(void)
 		break;
 	case STOPANDRESETLEVEL: // Reset after timeout
 	{
+		theWantWonFail = false;
 		QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
@@ -138,6 +157,7 @@ void RegressionTest::slotRegressionProgress(void)
 		break;
 	case STARTLEVELTOWIN: // Start Level, expect success
 	{
+		theWantWonFail = true;
 		QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
@@ -150,10 +170,12 @@ void RegressionTest::slotRegressionProgress(void)
 		break;
 	}
 	case LEVELWON: // Check for success
+		theWantWonFail = false;
 		theRegressionTimer.stop();
 		// TODO: implement
 		break;
 	case NEXTLEVEL: // Continue with next item in test
+		theWantWonFail = false;
 		// TODO: implement
 		break;
 	default:
@@ -165,5 +187,5 @@ void RegressionTest::slotRegressionProgress(void)
 	Q_ASSERT(myNextState != START);
 	theState = myNextState;
 	Q_ASSERT(myNextDelay!=0);
-	theRegressionTimer.start(myNextDelay);
+	theRegressionTimer.start(myNextDelay*theTestMultiplier+theTestAddition);
 }
