@@ -187,7 +187,7 @@ void PolyObject::fillShapeList(void)
 	QStringList::iterator i = myPolygonList.begin();
 	while (i!=myPolygonList.end())
 	{
-		b2PolygonShape* myPolyShape = new b2PolygonShape();
+		b2PolygonShape* myPolyShape = new b2PolygonShape;
 
 		QStringList myCoordList = (*i).split("=",QString::SkipEmptyParts);
 		// if we find a shape with less than three vertexes, let's ignore it
