@@ -158,16 +158,14 @@ qreal Vector::toAngle(void) const
 
 	qreal myAngle = atanf(fabs(dy / dx));
 
-	if (dx > 0)
+	if (dx > 0.0)
 	{
-		if (dy > 0)
-			myAngle = myAngle;
-		else
+		if (dy < 0.0)
 			myAngle = 2*PI - myAngle;
 	}
 	else
 	{
-		if (dy > 0)
+		if (dy > 0.0)
 			myAngle = PI - myAngle;
 		else
 			myAngle = PI + myAngle;
