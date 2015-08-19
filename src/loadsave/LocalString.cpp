@@ -97,8 +97,8 @@ QString LocalString::result() const
 	QString myReturn;
 	QString myLang;
 
-	LocalStringList::const_iterator i = theStringList.begin();
-	while (i != theStringList.end())
+	LocalStringList::const_iterator i = theStringList.constBegin();
+	while (i != theStringList.constEnd())
 	{
 		QString aLangCode = i.key();
 		QString aValue = i.value();
