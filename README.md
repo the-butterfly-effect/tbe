@@ -20,7 +20,7 @@ to run the game.
 If you downloaded the installer, you now have an icon on your desktop: 
 just (double-)click it to enjoy the game.
 
-There are 40 levels.
+There are 45 levels.
 All levels are playable, a few levels may need a bit more polish.
 
 ###New features & highlights in Milestone A:
