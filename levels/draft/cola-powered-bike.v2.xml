@@ -5,8 +5,7 @@
         <title lang="nl" >De colafiets</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>.</description>
-        <description lang="nl" >.</description>
+        <description>Transfer energy from Steam Engine to Bowling Pin</description>
         <date>29 may 2010</date>
     </levelinfo>
     <toolbox>

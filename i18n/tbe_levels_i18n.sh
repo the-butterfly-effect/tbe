@@ -95,6 +95,7 @@ function create_pot_file {
   sed -i 's|</description>|_N|g' tmp/tmp.h
   sed -i 's|</property>|_N|g' tmp/tmp.h
   sed -i 's|<property key="page.*">|N_|g' tmp/tmp.h
+  sed -i 's|<property key="Description">|N_|g' tmp/tmp.h
   # we need all strings, which were marked with N_, but we don't need empty for translation strings (they were marked N__N)
   cat tmp/tmp.h|grep 'N_'|grep -v 'N__N' >> tmp/tmp0.h
   # change symbol \ on double symbol \ else POT file will have wrong format
@@ -152,6 +153,13 @@ function get_orig_str_name {
   cat orig_str_name_full.tmp|sed "s|$marker0.*name=\"||g"|sed "s|\".*||g" > orig_str_name.tmp
 }
 
+function get_orig_str_Description {
+  # create file orig_str_Description_full.tmp, which content all strings with marker $marker0
+  cat "$fname".tmp|grep "$marker0" > orig_str_Description_full.tmp
+  # create file orig_str_Description.tmp, which content all original for translation strings
+  cat orig_str_Description_full.tmp|sed "s|$marker0>||g"|sed "s|</property>||g" > orig_str_Description.tmp
+}
+
 function put_tr_str {
   # translate $orig_str in $tr_str
   get_tr_str
@@ -184,14 +192,46 @@ function put_tr_str_name {
       # find full string (which content $orig_str) from file orig_str_name_full.tmp
       cat orig_str_name_full.tmp|grep "\"$orig_str\""|while read full_str
       do
-        # change full string on full string with EOL and add translated string
-        sed -i "s|$full_str|$full_str\n<name lang=\"$language\">$tr_str</name>|g" "$fname".tmp
+        # if we put $tr_str in file already, then we should do nothing again
+        put_tr_str=`cat "$fname".tmp|grep "$tr_str"`
+        if [ "$put_tr_str" = "" ]
+        then
+           # change full string on full string with EOL and add translated string
+           sed -i "s|$full_str|$full_str\n<name lang=\"$language\">$tr_str</name>|g" "$fname".tmp
+        fi
       done
     fi
   done
   # we used files orig_str_name.tmp, orig_str_name_full.tmp and should delete them
   rm -f orig_str_name.tmp
   rm -f orig_str_name_full.tmp
+}
+
+function put_tr_str_Description {
+  # file orig_str_Description.tmp can content more than one string for translation
+  cat orig_str_Description.tmp|while read orig_str
+  do
+    # translate $orig_str in $tr_str
+    get_tr_str
+    # we don't want big size of ready XML file, so we put there only translated strings
+    if [ ! "$tr_str" = "$orig_str" ]
+    then
+      # find full string (which content $orig_str) from file orig_str_Description_full.tmp
+      cat orig_str_Description_full.tmp|grep "$orig_str"|while read full_str
+      do
+        # if we put $tr_str in file already, then we should do nothing again
+        put_tr_str=`cat "$fname".tmp|grep "$tr_str"`
+        if [ "$put_tr_str" = "" ]
+        then
+           # change full string on full string with EOL and add translated string
+           sed -i "s|$full_str|$full_str\n$marker0 lang=\"$language\">$tr_str$marker1|g" "$fname".tmp
+        fi
+      done
+    fi
+  done
+  # we used files orig_str_Description.tmp, orig_str_Description_full.tmp and should delete them
+  rm -f orig_str_Description.tmp
+  rm -f orig_str_Description_full.tmp
 }
 
 function parsing {
@@ -222,6 +262,11 @@ function parsing {
         marker1="</description>"
         get_orig_str
         put_tr_str
+
+        marker0="<property key=\"Description\""
+        marker1="</property>"
+        get_orig_str_Description
+        put_tr_str_Description
 
         marker0="<property key=\"page1\""
         marker1="</property>"

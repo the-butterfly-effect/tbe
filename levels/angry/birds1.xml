@@ -85,29 +85,29 @@
             <object width="0.270" X="7.695" Y="0.303" height="0.360" type="Balloon" ID="egg1" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.4</property>
-		<property key="Description"> This is an egg. Rather easy to break, I'd say...</property>
+		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
             </object>
             <object width="0.270" X="7.970" Y="0.303" height="0.360" type="Balloon" ID="egg2" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.4</property>
-		<property key="Description"> This is an egg. Rather easy to break, I'd say...</property>
+		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
             </object>
             <object width="0.270" X="8.254" Y="0.303" height="0.360" type="Balloon" ID="egg3" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.4</property>
-		<property key="Description"> This is an egg. Rather easy to break, I'd say...</property>
+		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
             </object>
             <object width="0.270" X="8.539" Y="0.303" height="0.360" type="Balloon" ID="egg4" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.4</property>
-		<property key="Description"> This is an egg. Rather easy to break, I'd say...</property>
+		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
             </object>
             <object width="4.036" X="2.610" Y="4.549" height="1.000" type="RightRamp" angle="0.000" />
             <object width="3.874" X="2.489" Y="1.431" height="1.000" type="LeftRamp" angle="0.000" />
             <object width="0.600" X="7.908" Y="2.661" height="0.600" type="Balloon" ID="Mr.A.Bird" angle="0.000" >
                 <property key="ImageName" >yellow_bird;BalloonPoof;Empty;Empty</property>
                 <property key="Mass" >6</property>
-		<property key="Description"> Looks like a bird. And he's angry.</property>
+		<property key="Description">Looks like a bird. And he's angry.</property>
             </object>
             <object width="0.440" X="1.289" Y="2.976" height="0.440" type="PostIt" angle="0.000" >
                 <property key="page1" >I hate Angry Birds!</property>
