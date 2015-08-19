@@ -1,11 +1,12 @@
-#i18n handling for The Butterfly Effect
+# i18n handling for The Butterfly Effect
+# Note that the actual translations are handled through transifex
 
 find_package(Qt4 REQUIRED)
 add_definitions(${QT_DEFINITIONS})
 
+# note that tbe_en.ts is missing here, english is the default.
 set(TSfiles
 	tbe_be.ts
-	tbe_en.ts
 	tbe_es.ts
 	tbe_lt.ts
 	tbe_ms.ts
