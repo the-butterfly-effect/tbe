@@ -1,5 +1,5 @@
 # Increase mainrel when increasing the rev number
-%define rev     git41a1e39
+%define rev     git8b8c580
 %define mainrel 1
 # Increase snaprel when rebuilding with the same rev number
 %define snaprel 1
@@ -16,9 +16,9 @@ URL:            https://github.com/kaa-ching/tbe
 Source0:        %{name}-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
 Source1:        %{name}-i18n-%{version}-%{rev}.tar.gz
-# https://www.transifex.com/projects/p/thebutterflyeffect
 Patch0:         tbe-0.9-mga-datadir.patch
-BuildRequires:  imagemagick
+Patch1:         tbe-0.9-mga-documentation.patch
+Patch2:         tbe-0.9-mga-fix-level-translation.patch
 BuildRequires:  cmake
 BuildRequires:  qt4-devel
 BuildRequires:  gettext
@@ -33,6 +33,8 @@ most complex way possible.
 %setup -q -n %{name}-%{version}-%{rev}
 tar -xf %{SOURCE1}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 pushd i18n
@@ -56,14 +58,8 @@ install -D -m755 bin/%{name} %{buildroot}%{_gamesbindir}/%{name}
 popd
 rm -rf %{buildroot}/tmp
 
-pushd imagery/illustrations
-mkdir -p %{buildroot}%{_iconsdir}/hicolor/{128x128,64x64,48x48,32x32,16x16}/apps
-convert -scale 16x16 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
-convert -scale 32x32 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-convert -scale 48x48 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
-convert -scale 64x64 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/64x64/apps/%{name}.png
-convert -scale 128x128 %{name}-icon.ico %{buildroot}%{_iconsdir}/hicolor/128x128/apps/%{name}.png
-popd
+mkdir -p %{buildroot}%{_iconsdir}
+cp -af installer/icons/* %{buildroot}%{_iconsdir}
 
 install -D -m644 installer/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
