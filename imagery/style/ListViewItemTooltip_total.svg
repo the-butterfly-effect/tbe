@@ -17,7 +17,10 @@
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="ListViewItemTooltip_total.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   version="1.0">
+   version="1.0"
+   inkscape:export-filename="/home/klaas/Programming/tbe-github/imagery/style/ListViewItemTooltip.png"
+   inkscape:export-xdpi="166.30542"
+   inkscape:export-ydpi="166.30542">
   <defs
      id="defs4">
     <linearGradient
@@ -468,9 +471,9 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="723"
+     inkscape:window-height="720"
      inkscape:window-x="-4"
-     inkscape:window-y="-6"
+     inkscape:window-y="-4"
      showguides="true"
      inkscape:guide-bbox="true"
      fit-margin-top="0"
@@ -507,7 +510,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
         <dc:date>May 6, 2010</dc:date>
         <dc:creator>
           <cc:Agent>
