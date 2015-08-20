@@ -50,7 +50,7 @@ ENDIF(WIN32 AND NOT UNIX)
 if (UNIX)
  SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_STRIP_FILES "tbe")
- install(FILES imagery/illustrations/tbe-icon.png DESTINATION images RENAME TheButterflyEffect-icon.png)
+ install(FILES imagery/illustrations/tbe-icon.ico DESTINATION images RENAME TheButterflyEffect-icon.ico)
  install(FILES installer/install_icons.sh DESTINATION .
          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  install(FILES installer/uninstall_icons.sh DESTINATION .
