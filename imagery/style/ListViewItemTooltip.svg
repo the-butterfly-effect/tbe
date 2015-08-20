@@ -15,7 +15,7 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="ListViewItemTooltip_total.svg"
+   sodipodi:docname="ListViewItemTooltip.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    inkscape:export-filename="/home/klaas/Programming/tbe-github/imagery/style/ListViewItemTooltip.png"
@@ -37,11 +37,11 @@
     <linearGradient
        id="linearGradient3161">
       <stop
-         style="stop-color:#919191;stop-opacity:0.7647059;"
+         style="stop-color:#919191;stop-opacity:0.88235295;"
          offset="0"
          id="stop3163" />
       <stop
-         style="stop-color:#f2f2f2;stop-opacity:0.7647059;"
+         style="stop-color:#f2f2f2;stop-opacity:0.88235295;"
          offset="1"
          id="stop3165" />
     </linearGradient>
@@ -464,9 +464,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.7476923"
-     inkscape:cx="162.5"
-     inkscape:cy="56.911779"
+     inkscape:zoom="2.7045852"
+     inkscape:cx="162.50181"
+     inkscape:cy="57.093749"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
