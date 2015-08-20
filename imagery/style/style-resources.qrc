@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>button.png</file>
         <file>WinFail.png</file>
+        <file>IconDelete.png</file>
         <file>ListViewItemTooltip.png</file>
         <file>transparant.png</file>
         <file>tbe-icon.ico</file>
