@@ -44,8 +44,8 @@ static PolyObjectFactory thePolyObjectFactory;
 
 static AbstractPolyObjectFactory theBowlingPinFactory(
 	"BowlingPin",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Bowling Pin"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Bowling pins are meant to be run "
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling Pin"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling pins are meant to be run "
 				"over - and most people prefer to do that using "
 				"a Bowling Ball."),
 	"BowlingPin",
@@ -57,8 +57,8 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 
 static AbstractPolyObjectFactory theSkyhookFactory(
 	"Skyhook",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Skyhook"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "A skyhook just hangs in the air. And you can hang a "
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Skyhook"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A skyhook just hangs in the air. And you can hang a "
 				"lot of weight on it!"),
 	"Skyhook",
 	"(-0.03,-0.07)=(0.01,-0.11)=(0.05,-0.11)=(0.1,-0.05)=(0.1,-0.02)"
@@ -67,40 +67,40 @@ static AbstractPolyObjectFactory theSkyhookFactory(
 
 static AbstractPolyObjectFactory theWeightFactory(
 	"Weight",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Weight"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "A serious mass. As heavy as it looks!"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Weight"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A serious mass. As heavy as it looks!"),
 	"Weight",
 	"(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)",
 	0.40, 0.40, 10.0, 0.3 );
 
 static AbstractPolyObjectFactory theLeftRampFactory(
 	"LeftRamp",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Left Ramp"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a ramp. The left is lower than the right, so things slide to the left."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Ramp"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a ramp. The left is lower than the right, so things slide to the left."),
 	"LeftRamp",
 		"(-0.5,-0.46)=(-0.5,-0.5)=(0.13,-0.5)=(0.5,0.5)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightRampFactory(
 	"RightRamp",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Right Ramp"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a ramp. The left is higher than the right, so things slide to the right."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Ramp"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a ramp. The left is higher than the right, so things slide to the right."),
 	"RightRamp",
 		"(-0.5,0.5)=(-0.13,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theLeftWedgeFactory(
 	"LeftWedge",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Left Wedge"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a wedge. The left is lower than the right, so things slide to the left."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is lower than the right, so things slide to the left."),
 	"birch-wedge-left",
 		"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightWedgeFactory(
 	"RightWedge",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Right Wedge"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a wedge. The left is higher than the right, so things slide to the right."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is higher than the right, so things slide to the right."),
 	"birch-wedge-right",
 		"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
@@ -109,8 +109,8 @@ static AbstractPolyObjectFactory theRightWedgeFactory(
 // on both the inside and the outside - you can use both if you want :-)
 static AbstractPolyObjectFactory the40QuarterArcFactory(
 	"QuarterArc40",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Quarter Arc Small"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Small"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
 	"QuarterArc",
 	"(0.100,-.200)=(0.200,-.200)=(0.180,-.076)=(0.085,-.107);"
 	"(0.085,-.107)=(0.180,-.076)=(0.124,0.035)=(0.043,-.024);"
@@ -123,8 +123,8 @@ static AbstractPolyObjectFactory the40QuarterArcFactory(
 // on both the inside and the outside - you can use both if you want :-)
 static AbstractPolyObjectFactory the80QuarterArcFactory(
 	"QuarterArc80",
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "Quarter Arc Large"),
-	QT_TRANSLATE_NOOP(AbstractPolyObjectFactory, "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Large"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
 	"QuarterArc80",
 	"( 0.300,-0.400)=( 0.400,-0.400)=( 0.388,-0.261)=( 0.289,-0.278);"
 	"( 0.289,-0.278)=( 0.388,-0.261)=( 0.352,-0.126)=( 0.258,-0.161);"
