@@ -73,6 +73,7 @@
             <object width="1.300" X="0.842" Y="1.000" height="1.300" type="RightWedge" ID="stick-figure" angle="0.236" >
                 <property key="Friction" >1</property>
                 <property key="ImageName" >stick-figure-shoot</property>
+                <property key="Description" >En garde! (That's French)</property>
                 <property key="Mass" >4</property>
             </object>
             <object width="0.270" X="7.970" Y="0.303" height="0.360" type="Balloon" ID="egg2" angle="0.000" >

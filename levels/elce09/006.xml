@@ -54,6 +54,7 @@
             </object>
 	    <object X="4.4" Y="2.85" type="BowlingBall" ID="Coconut">
                 <property key="ImageName" >coconut</property>
+                <property key="Description">Hey, I'm a coconut!</property>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>

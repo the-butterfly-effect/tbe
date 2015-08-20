@@ -40,6 +40,7 @@
             <object width="0.400" X="6.300" Y="0.402" height="0.750" type="ColaMintBottle" ID="kart" angle="-1.571">
                 <property key="ImageName">tuxkart</property>
                 <property key="Thrust">9</property>
+                <property key="Description">Vroom</property>
             </object>
             <object width="1.200" X="0.600" Y="0.600" height="1.200" type="QuarterArc80" angle="3.141"/>
             <object width="1.800" X="0.075" Y="2.000" height="0.150" type="Floor" angle="1.571">
@@ -77,7 +78,9 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.200" X="2.235" Y="1.871" height="0.340" type="BowlingPin" ID="cone" angle="0.000">
-                <property key="ImageName">Milkman666_Cone.svg_1</property>
+                <property key="ImageName">Milkman666_Cone_svg_1</property>
+                <property key="Description">This cone begs to be run over!</property>
+                <property key="ZValue">0.5</property>
             </object>
             <object width="0.060" X="5.530" Y="0.700" height="1.126" type="Scenery" angle="0.000">
                 <property key="ImageName">pole</property>

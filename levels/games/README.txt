@@ -13,7 +13,7 @@ monster truck.svg
 tuxkart.svg
   modification of monster truck.svg by Klaas van Gend, march 2014.
 
-Milkman666_Cone.svg_1.svg
+Milkman666_Cone_svg_1.svg
   originally drawn by Milkman666 and published on openclipart.org:
   https://openclipart.org/detail/10911/cone.svg-by-milkman666-10911 
 

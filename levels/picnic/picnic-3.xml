@@ -12,23 +12,27 @@
     <toolbox>
         <toolboxitem count="1" name="Spring">
             <name lang="nl">Springveer</name>
-            <object width="0.400" X="2.216" Y="0.886" height="0.200" type="Spring" angle="0.000" >
+            <object width="2.400" X="2.216" Y="0.886" height="0.200" type="Spring" angle="0.000" >
                 <property key="ImageName" >spring20</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Cola bottle">
             <name lang="nl">Colafles</name>
-            <object width="0.170" X="5.300" Y="0.250" height="0.500" type="ColaMintBottle" angle="3.142" >
+            <object width="0.170" X="5.300" Y="0.250" height="1.200" type="ColaMintBottle" angle="3.142" >
                 <property key="Thrust" > 8.0 </property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Stop">
             <name lang="nl">Stop</name>
-	    <object width="0.200" X="3.850" Y="0.500" height="0.200" type="Floor" angle="0.000" />
+	    <object width="0.200" X="3.850" Y="0.500" height="0.200" type="Floor" angle="0.000">
+                <property key="Description" > This is a really long string to see how it fits in the dialog... </property>
+            </object>
         </toolboxitem>
         <toolboxitem count="1" name="Soccer Ball">
             <name lang="nl">voetbal</name>
-            <object X="0.550" Y="0.960"  type="SoccerBall" angle="0.000" />
+            <object X="0.550" Y="0.960"  type="SoccerBall" angle="0.000" >
+                <property key="Description" > Short! </property>
+            </object>
         </toolboxitem>
     </toolbox>
     <scene>
