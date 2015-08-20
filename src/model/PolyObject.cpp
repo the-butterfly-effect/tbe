@@ -46,7 +46,7 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 	"BowlingPin",
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling Pin"),
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling pins are meant to be run "
-				"over - and most people prefer to do that using "
+				"over - most\npeople prefer to do that using "
 				"a Bowling Ball."),
 	"BowlingPin",
 	"(0.02,0.17)=(-0.02,0.17)=(-0.045,0.14)=(-0.04,0.065)=(0.0,0.04)"
