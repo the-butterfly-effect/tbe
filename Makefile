@@ -6,7 +6,9 @@ BUILDDIR=build
 # if you want to build Release, just call "make BUILDTYPE=Release all"
 BUILDTYPE=Debug
 
-all:
+all: usr/local/bin/tbe
+
+usr/local/bin/tbe: ${BUILDDIR}/src/tbe
 	mkdir -p ${BUILDDIR}
 	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} ..
 	cd ${BUILDDIR} && make -j 6
@@ -16,6 +18,9 @@ all:
 slow:
 	cd ${BUILDDIR} && make
 	cp ${BUILDDIR}/src/tbe usr/local/bin
+
+regression: usr/local/bin/tbe
+	./tbe --regression levels/draft/save-the-butterfly.xml:28,levels/draft/bouncing_balls.xml:10;levels/picnic/picnic-1.xml:10
 
 clean:
 	rm -rf ${BUILDDIR} ./tbe usr

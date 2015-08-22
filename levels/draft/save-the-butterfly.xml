@@ -12,7 +12,7 @@
     <toolbox>
         <toolboxitem count="1" name="Right Ramp" >
             <name lang="nl" >Helling \</name>
-            <object width="0.9" height="0.5" type="RightRamp" angle="0" />
+            <object width="0.9" height="0.5" type="RightRamp" />
         </toolboxitem>
         <toolboxitem count="2" name="Cactus" >
             <name lang="nl" >Cactus</name>
@@ -139,4 +139,8 @@
             <property key="object" >thePin</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="Cactus" X="2.300" Y="2.45" />
+        <hint number="2" object="RightRamp" X="1.20" Y="2.7" />
+    </hints>
 </tbe-level>
