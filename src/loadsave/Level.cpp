@@ -92,6 +92,13 @@ Level::~Level ( )
     theCurrentLevelPtr=NULL;
     delete theWorldPtr;
     theWorldPtr = NULL;
+
+	while(theHintPtrList.size())
+	{
+		auto i = theHintPtrList.back();
+		theHintPtrList.pop_back();;
+		delete i;
+	}
 }
 
 //
@@ -118,6 +125,14 @@ Level::getPathToLevelFile(void)
 		return ".";
 	else
 		return QFileInfo(theFileName).absolutePath();
+}
+
+Hint *Level::getHint(int anIndex)
+{
+	if (anIndex >= theHintPtrList.size())
+		return nullptr;
+	else
+		return theHintPtrList.at(anIndex);
 }
 
 QString
@@ -369,8 +384,8 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 				continue;
 			}
 
-			// FIXME TODO: add hint to level
-//			theWorldPtr->addGoal(myGPtr);
+			// add hint to level
+			addHint(myHPtr);
 
 			if (q==myNode.lastChild())
 				break;
@@ -400,7 +415,13 @@ Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef)
     {
         myBOS->serialize(&aParent);
         delete myBOS;
-    }
+	}
+}
+
+void Level::addHint(Hint *aHintPtr)
+{
+	Q_ASSERT(aHintPtr);
+	theHintPtrList.push_back(aHintPtr);
 }
 
 

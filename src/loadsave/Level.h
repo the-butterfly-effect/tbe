@@ -29,6 +29,7 @@
 
 // Forward Declarations:
 class GameResources;
+class Hint;
 class MainWindow;
 class ToolboxGroup;
 class World;
@@ -93,6 +94,11 @@ public:
 	/// @returns the path to the file that describes the current level
 	static QString getPathToLevelFile(void);
 
+	/// @returns a pointer to the Hint at index or nullptr if there are no
+	///          more hints.
+	/// @note that the hint does not change owners: still belongs to the Level
+	Hint* getHint(int anIndex);
+
 	/// The File name of the Level is used in recording winning the level
 	/// @returns the name of the file that describes the current level
 	static QString getLevelFileName(void);
@@ -110,6 +116,7 @@ protected:
     void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
     void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
     void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
+	void addHint(Hint* aHintPtr);
 
 private:
 	World* theWorldPtr;
@@ -122,6 +129,9 @@ private:
 
     typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
+
+	typedef QList<Hint*>  HintList;
+	HintList theHintPtrList;
 
     friend class SaveLevelInfo;
     friend class GameResources;
