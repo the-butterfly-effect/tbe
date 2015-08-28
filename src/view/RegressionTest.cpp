@@ -22,7 +22,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 
-#if 1
+#if 0
 /// for use with automated testing within Valgrid or Pareon Verify
 const qreal theTestMultiplier = 3.0;
 const qreal theTestAddition   = 0.2;
