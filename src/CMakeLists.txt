@@ -77,8 +77,8 @@ if(MINGW)
           ${QTMYLIB}/QtGui4.dll
           ${QTMYLIB}/QtSvg4.dll
           ${QTMYLIB}/QtXml4.dll
-          DESTINATION bin
+          DESTINATION ${TBE_BIN_DIR}
   )
 endif(MINGW)
 
-INSTALL(TARGETS tbe DESTINATION bin)
+INSTALL(TARGETS tbe DESTINATION ${TBE_BIN_DIR})

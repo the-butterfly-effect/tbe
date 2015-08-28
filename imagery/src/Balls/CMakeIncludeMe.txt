@@ -4,5 +4,5 @@ install(FILES
 	${SRCDIRNAME}/VolleyBall.svg 
 	${SRCDIRNAME}/SoccerBall.png 
 	${SRCDIRNAME}/PetanqueBoule.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

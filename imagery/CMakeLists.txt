@@ -1,6 +1,6 @@
-# this CMakeLists.txt file handles the images directory:
-#  * make sure all files are put into the 'images' directory itself
-#    (because TBE is lazy and only looks in the ../images/ directory)
+# this CMakeLists.txt file handles the imagery directory:
+#  * make sure all files are put into the ${TBE_IMAGES_DIR} directory itself
+#    (because TBE is lazy and only looks in that directory)
 #  * concatenate all README files to a single file that contains info 
 #    on all files in the images directory
 
@@ -16,7 +16,7 @@ foreach(f ${READMEfiles})
 endforeach(f)
 file(WRITE README.image.origins.txt ${READMEtotal})
 install(FILES README.image.origins.txt
-	DESTINATION images
+	DESTINATION ${TBE_DOC_DIR}
 )
 
 include("src/CMakeLists.txt")

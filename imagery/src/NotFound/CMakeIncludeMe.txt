@@ -8,5 +8,5 @@ install(FILES
         ${SRCDIRNAME}/RectObject.svg
         ${SRCDIRNAME}/Scenery.svg
         ${SRCDIRNAME}/Empty.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

@@ -2,5 +2,5 @@
 install(FILES
         ${SRCDIRNAME}/LeftRamp.svg
         ${SRCDIRNAME}/RightRamp.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

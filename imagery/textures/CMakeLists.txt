@@ -6,5 +6,5 @@ install(FILES
 	textures/birch_bar.png
 	textures/oldbrick.png
 	textures/styrofoam.png
-	DESTINATION images
+	DESTINATION ${TBE_IMAGES_DIR}
 )

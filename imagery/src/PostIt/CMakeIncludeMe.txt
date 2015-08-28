@@ -2,5 +2,5 @@
 install(FILES
         ${SRCDIRNAME}/PostIt.svg
         ${SRCDIRNAME}/PostItBackground.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

@@ -3,5 +3,5 @@ install(FILES
         ${SRCDIRNAME}/ButterflyHalfOpen.svg
         ${SRCDIRNAME}/ButterflyOpen.svg
         ${SRCDIRNAME}/ButterflyStill.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

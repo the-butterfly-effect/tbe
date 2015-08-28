@@ -5,5 +5,5 @@ install(FILES
         ${SRCDIRNAME}/ColaBottleFoaming.svg
         ${SRCDIRNAME}/ColaBottleNormal.svg
         ${SRCDIRNAME}/ColaSplatter.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

@@ -3,5 +3,5 @@ install(FILES
         ${SRCDIRNAME}/DominoRed.svg
         ${SRCDIRNAME}/DominoGreen.svg
         ${SRCDIRNAME}/DominoBlue.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

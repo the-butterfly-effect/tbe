@@ -8,5 +8,5 @@ install(FILES
         ${SRCDIRNAME}/DynamiteActive.svg
         ${SRCDIRNAME}/DynamiteRinging.svg
         ${SRCDIRNAME}/DynamiteBoom.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

@@ -30,5 +30,5 @@ install(FILES
 	icons/StatusProblem.svg
 	icons/StatusStop.svg
 
-	DESTINATION images
+	DESTINATION ${TBE_IMAGES_DIR}
 )

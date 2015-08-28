@@ -10,5 +10,5 @@ install(FILES
 	${SRCDIRNAME}/rg1024_Grass_texture.svg
         ${SRCDIRNAME}/spring20.svg
         ${SRCDIRNAME}/the-sun.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

@@ -6,5 +6,5 @@ install(FILES
 	${SRCDIRNAME}/BedOfNails.svg
 	${SRCDIRNAME}/Cactus.svg
 	${SRCDIRNAME}/CircularSaw.svg
-        DESTINATION images
+        DESTINATION ${TBE_IMAGES_DIR}
 )

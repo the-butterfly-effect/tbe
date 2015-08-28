@@ -19,10 +19,10 @@
 #ifndef TBE_PATHS
 #define TBE_PATHS
 
-/// instead of using hardcoded paths, please use the below:
+// instead of using hardcoded paths, please use the below:
 #define BINARY_DIRECTORY   (qApp->applicationDirPath())
-#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../images")
-#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../levels")
-#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../i18n")
+#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/tbe/images")
+#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/tbe/levels")
+#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../share/tbe/i18n")
 
 #endif // def TBE_PATHS

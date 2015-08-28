@@ -1,19 +1,27 @@
 cmake_minimum_required (VERSION 2.8.5)
 project (thebutterflyeffect)
 
+set(CMAKE_INSTALL_PREFIX /usr/share)
+set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/../games)
+set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/tbe/levels)
+set(TBE_IMAGES_DIR  ${CMAKE_INSTALL_PREFIX}/tbe/images)
+set(TBE_I18N_DIR    ${CMAKE_INSTALL_PREFIX}/tbe/i18n)
+set(TBE_DOC_DIR     ${CMAKE_INSTALL_PREFIX}/doc/tbe)
+set(TBE_DESKTOP_DIR ${CMAKE_INSTALL_PREFIX}/applications)
+set(TBE_ICON_DIR    ${CMAKE_INSTALL_PREFIX}/icons)
 
 add_subdirectory(imagery)
 add_subdirectory(src)
 add_subdirectory(i18n)
 
-
+# use .. because TBE_LEVELS_DIR already ends in 'levels'
 install(DIRECTORY levels
-	DESTINATION .
+	DESTINATION ${TBE_LEVELS_DIR}/..
 	PATTERN "test" EXCLUDE
 )
 
 install(FILES COPYING AUTHORS
-	DESTINATION .
+	DESTINATION ${TBE_DOC_DIR}
 )
 
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION")
@@ -50,13 +58,13 @@ ENDIF(WIN32 AND NOT UNIX)
 if (UNIX)
  SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_STRIP_FILES "tbe")
- install(FILES imagery/illustrations/tbe-icon.ico DESTINATION images RENAME TheButterflyEffect-icon.ico)
- install(FILES installer/install_icons.sh DESTINATION .
-         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
- install(FILES installer/uninstall_icons.sh DESTINATION .
-         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
- install(FILES installer/sourceforge.net-tbe.desktop DESTINATION .
-         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+#  install(FILES imagery/illustrations/tbe-icon.ico DESTINATION images RENAME TheButterflyEffect-icon.ico)
+#  install(FILES installer/install_icons.sh DESTINATION .
+#          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+#  install(FILES installer/uninstall_icons.sh DESTINATION .
+#          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+#  install(FILES installer/sourceforge.net-tbe.desktop DESTINATION .
+#          PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 endif (UNIX)
 
 
