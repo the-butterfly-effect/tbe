@@ -388,7 +388,7 @@ function get_tr_str {
     sed -i 's|\\"|"|g' "$po_file".tmp
     # we use temporary patterns xxx for <, yyy for >, uuu for double symbol \, kkk for >http,
     # so we change PO file and use modified PO file instead
-    cat "$po_file".tmp|sed 's|<br>|xxxbryyy|g'|sed 's|</br>|xxx/bryyy|g'|sed 's|<i>|xxxiyyy|g'|sed 's|</i>|xxx/iyyy|g'|sed 's|\\\\|uuu|g'|sed 's|<a|xxxa|g'|sed 's|</a>|xxx/ayyy|g'|sed 's|>http|kkk|g' > "$po_file".tmp0
+    cat "$po_file".tmp|sed 's|<br>|xxxbryyy|g'|sed 's|</br>|xxx/bryyy|g'|sed 's|<i>|xxxiyyy|g'|sed 's|</i>|xxx/iyyy|g'|sed 's|\\|uuu|g'|sed 's|<a|xxxa|g'|sed 's|</a>|xxx/ayyy|g'|sed 's|>http|kkk|g' > "$po_file".tmp0
     cp -f "$po_file".tmp0 "$po_file".tmp
     rm -f "$po_file".tmp0
     if [ ! -f "$po_file".tmp ]

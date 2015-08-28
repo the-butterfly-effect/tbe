@@ -8,6 +8,7 @@ add_definitions(${QT_DEFINITIONS})
 set(TSfiles
 	tbe_be.ts
 	tbe_es.ts
+	tbe_is.ts
 	tbe_lt.ts
 	tbe_ms.ts
 	tbe_nl.ts
@@ -21,5 +22,5 @@ add_custom_target (translations DEPENDS ${QMfiles})
 add_dependencies(tbe translations)
 
 install(FILES ${QMfiles}
-	DESTINATION ${TBE_I18N_DIR}
+	DESTINATION i18n
 )
