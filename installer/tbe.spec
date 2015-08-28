@@ -1,5 +1,5 @@
 # Increase mainrel when increasing the rev number
-%define rev     git8b8c580
+%define rev     git0de2b0f
 %define mainrel 1
 # Increase snaprel when rebuilding with the same rev number
 %define snaprel 1
@@ -17,8 +17,9 @@ Source0:        %{name}-%{version}-%{rev}.tar.gz
 # https://www.transifex.com/projects/p/thebutterflyeffect
 Source1:        %{name}-i18n-%{version}-%{rev}.tar.gz
 Patch0:         tbe-0.9-mga-datadir.patch
-Patch1:         tbe-0.9-mga-documentation.patch
-Patch2:         tbe-0.9-mga-fix-level-translation.patch
+Patch1:         tbe-0.9-mga-desktop-file.patch
+Patch2:         tbe-0.9-mga-two-lines.patch
+Patch3:         tbe-0.9-mga-full-author-name.patch
 BuildRequires:  cmake
 BuildRequires:  qt4-devel
 BuildRequires:  gettext
@@ -35,6 +36,7 @@ tar -xf %{SOURCE1}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 pushd i18n
@@ -53,13 +55,13 @@ popd
 
 pushd %{buildroot}/tmp
 install -d %{buildroot}%{_gamesdatadir}/%{name}
-cp -a i18n images levels %{buildroot}%{_gamesdatadir}/%{name}
+cp -a i18n images levels %{buildroot}%{_gamesdatadir}/%{name}/
 install -D -m755 bin/%{name} %{buildroot}%{_gamesbindir}/%{name}
 popd
 rm -rf %{buildroot}/tmp
 
 mkdir -p %{buildroot}%{_iconsdir}
-cp -af installer/icons/* %{buildroot}%{_iconsdir}
+cp -af installer/icons/* %{buildroot}%{_iconsdir}/
 
 install -D -m644 installer/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
