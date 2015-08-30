@@ -22,5 +22,5 @@ add_custom_target (translations DEPENDS ${QMfiles})
 add_dependencies(tbe translations)
 
 install(FILES ${QMfiles}
-	DESTINATION i18n
+	DESTINATION ${TBE_I18N_DIR}
 )
