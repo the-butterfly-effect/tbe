@@ -1,6 +1,7 @@
 # this file is meant to be included by the parent CMakeFiles.txt
 install(FILES
 	icons/ActionDelete.svg
+	icons/ActionMenuEject.svg
 	icons/ActionFastForward.svg
 	icons/ActionMenuPause.svg
 	icons/ActionMenuPlay.svg

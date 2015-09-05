@@ -27,6 +27,9 @@ namespace Ui {
 class SimulationControls;
 }
 
+// forward declarations:
+class MainWindow;
+
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
 class SimState : public QState
@@ -69,7 +72,7 @@ public:
 
     void parentResize(const QSize& aSize);
 
-    void hookSignalsUp(ViewWorld* aViewWorld);
+	void hookSignalsUp(ViewWorld* aViewWorld, MainWindow* aMainWindowPtr);
 
 signals:
     /// emitted to go to really fast forward
@@ -110,13 +113,15 @@ private slots:
 private:
     QStateMachine theSimStateMachine;
 
-    QAction* theForwardAction;
+	QAction* theEjectAction;
+	QAction* theForwardAction;
     QAction* thePlayAction;
     QAction* thePauseAction;
     QAction* theResetAction;
     QAction* the4FAction;   // hack for really fast forward
 
-    QIcon theForwardIcon;
+	QIcon theEjectIcon;
+	QIcon theForwardIcon;
     QIcon thePauseIcon;
     QIcon thePlayIcon;
     QIcon theResetIcon;

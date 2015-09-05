@@ -132,7 +132,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
         theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
 	// also set the startstopwatch view
-	theSimControlsPtr->hookSignalsUp(aScenePtr);
+	theSimControlsPtr->hookSignalsUp(aScenePtr, theMainWindowPtr);
 
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));

@@ -20,6 +20,7 @@
 #include "SimulationControls.h"
 #include "ui_SimulationControls.h"
 #include "ImageCache.h"
+#include "MainWindow.h"
 
 #include <cstdio>
 
@@ -48,12 +49,13 @@ SimulationControls::SimulationControls(QWidget *parent) :
 //	ui->statusFrame->(myPixmap);
 
     const QSize myIconSize(36,36);
-    theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
+	theEjectIcon  = ImageCache::getQIcon("ActionMenuEject", myIconSize);
+	theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
     thePauseIcon  = ImageCache::getQIcon("ActionMenuPause", myIconSize);
     thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", myIconSize);
     theResetIcon  = ImageCache::getQIcon("ActionUndo", myIconSize);
 
-    ImageCache::getPixmap("StatusFail",   QSize(64,64), &theFailedStatusPixmap);
+	ImageCache::getPixmap("StatusFail",   QSize(64,64), &theFailedStatusPixmap);
     ImageCache::getPixmap("StatusFF",     QSize(64,64), &theForwardStatusPixmap);
     ImageCache::getPixmap("StatusPlay",   QSize(64,64), &theRunningStatusPixmap);
     ImageCache::getPixmap("StatusPause",  QSize(64,64), &thePausedStatusPixmap);
@@ -76,7 +78,7 @@ void SimulationControls::hideYourself()
 }
 
 
-void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
+void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld, MainWindow *aMainWindowPtr)
 {
     DEBUG1ENTRY;
 
@@ -97,6 +99,7 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
 
     connect(this, SIGNAL(go_quadspeed()), aViewWorld,
             SLOT(slot_signal4F()));
+	connect(theEjectAction, SIGNAL(triggered()), aMainWindowPtr, SLOT(on_action_Open_Level_triggered()));
 }
 
 
@@ -118,7 +121,12 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theStoppedState = new SimState(&theSimStateMachine, "Stopped");
     theSimStateMachine.setInitialState(theStoppedState);
 
-    // add actions and their quick keys
+	// add actions and their quick keys
+	theEjectAction = new QAction(theEjectIcon, tr("&Open"), NULL);
+	//: translators: 'o' is for open
+	theEjectAction->setShortcut(QKeySequence(tr("o")));
+
+	// add actions and their quick keys
     theForwardAction = new QAction(theForwardIcon, tr("&Forward"), NULL);
     //: translators: 'f' is for (fast) forward
     theForwardAction->setShortcut(QKeySequence(tr("f")));
@@ -150,8 +158,10 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     aMenuPtr->addAction(thePlayAction);
     aMenuPtr->addAction(theResetAction);
     aMenuPtr->addAction(theForwardAction);
+	aMenuPtr->addAction(theEjectAction);
 
-    ui->buttonForward->setDefaultAction(theForwardAction);
+	ui->buttonEject->setDefaultAction(theEjectAction);
+	ui->buttonForward->setDefaultAction(theForwardAction);
     ui->buttonPause->setDefaultAction(thePauseAction);
     ui->buttonPlay->setDefaultAction(thePlayAction);
     ui->buttonReset->setDefaultAction(theResetAction);
@@ -167,7 +177,8 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theRunningState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     theRunningState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
     theRunningState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-    theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+	theRunningState->addTransition(theEjectAction, SIGNAL(triggered()), thePausedState);
+	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
     theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     theRunningState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
@@ -177,19 +188,20 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
     thePausedState ->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
     thePausedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-    thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     thePausedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
     theHiddenState ->addTransition(this, SIGNAL(show()), theStoppedState);
     theHiddenState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     theFailedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-    theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
+	theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     theFailedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
     theForwardState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     theForwardState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
-    theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+	theForwardState->addTransition(theEjectAction, SIGNAL(triggered()), theStoppedState);
+	theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
     theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     theForwardState->addTransition(this, SIGNAL(hide()), theHiddenState);
 

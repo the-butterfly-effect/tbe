@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>183</width>
+    <width>226</width>
     <height>118</height>
    </rect>
   </property>
@@ -51,7 +51,7 @@
     <widget class="QFrame" name="buttonFrame">
      <property name="styleSheet">
       <string notr="true">QFrame {
-     background: url(:/SimulationControlsButtonFrame.png);
+     background: url(:/SimulationControlsButtonFrame.png) top center no-repeat;
 }
 
 QToolButton {
@@ -83,6 +83,36 @@ QToolButton:pressed {
       <property name="bottomMargin">
        <number>4</number>
       </property>
+      <item>
+       <widget class="QToolButton" name="buttonEject">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolButton {
+     border-image: url(:/SimulationButtonNormal.png); 
+     background: url(:/transparant.png);
+ }
+
+QToolButton:pressed {
+     border-image: url(:/SimulationButtonInverted.png); 
+ }
+</string>
+        </property>
+        <property name="text">
+         <string>Eject</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QToolButton" name="buttonReset">
         <property name="minimumSize">
@@ -124,9 +154,12 @@ QToolButton:pressed {
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::MinimumExpanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
+          <width>6</width>
           <height>0</height>
          </size>
         </property>
