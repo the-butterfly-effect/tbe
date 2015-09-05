@@ -43,9 +43,9 @@ SimulationControls::SimulationControls(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap myPixmap;
-    ImageCache::getPixmap("SimControlsBackground", size(), &myPixmap);
-    this->setPixmap(myPixmap);
+//  QPixmap myPixmap;
+//	ImageCache::getPixmap("SimulationControlsLabelFrame", size(), &myPixmap);
+//	ui->statusFrame->(myPixmap);
 
     const QSize myIconSize(36,36);
     theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
@@ -104,7 +104,7 @@ void SimulationControls::parentResize(const QSize& aSize)
 {
     // TODO/FIXME: magic numbers here
     // I bet these have to be different for Windows and MacOSX :-(
-    move(aSize.width()-size().width()-2,-8);
+	move(aSize.width()-size().width(),0);
 }
 
 void SimulationControls::setup(QMenu* aMenuPtr)
@@ -156,7 +156,7 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     ui->buttonPlay->setDefaultAction(thePlayAction);
     ui->buttonReset->setDefaultAction(theResetAction);
 
-    QLabel* myLabelPtr = ui->statusLabel;
+	QLabel* myLabelPtr = ui->statusLabel;
 
     // add transitions here
     theStoppedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);

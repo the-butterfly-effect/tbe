@@ -5,6 +5,8 @@
         <file>GameResources.png</file>
         <file>IconDelete.png</file>
         <file>ListViewItemTooltip.png</file>
+	<file>SimulationControlsButtonFrame.png</file>
+	<file>SimulationControlsLabelFrame.png</file>
         <file>tbe-icon.ico</file>
         <file>transparant.png</file>
         <file>WinFail.png</file>
