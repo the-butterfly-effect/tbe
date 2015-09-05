@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>181</width>
+    <width>183</width>
     <height>118</height>
    </rect>
   </property>
@@ -50,7 +50,19 @@
    <item>
     <widget class="QFrame" name="buttonFrame">
      <property name="styleSheet">
-      <string notr="true">background: url(:/SimulationControlsButtonFrame.png);</string>
+      <string notr="true">QFrame {
+     background: url(:/SimulationControlsButtonFrame.png);
+}
+
+QToolButton {
+     border-image: url(:/SimulationButtonNormal.png); 
+     background: url(:/transparant.png);
+ }
+
+QToolButton:pressed {
+     border-image: url(:/SimulationButtonInverted.png); 
+ }
+</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
@@ -86,7 +98,15 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background: url(:/transparant.png);s</string>
+         <string notr="true">QToolButton {
+     border-image: url(:/SimulationButtonNormal.png); 
+     background: url(:/transparant.png);
+ }
+
+QToolButton:pressed {
+     border-image: url(:/SimulationButtonInverted.png); 
+ }
+</string>
         </property>
         <property name="text">
          <string>Reset</string>
@@ -126,9 +146,6 @@
           <height>40</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background: url(:/transparant.png);</string>
-        </property>
         <property name="text">
          <string>Pause</string>
         </property>
@@ -148,9 +165,6 @@
           <height>40</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background: url(:/transparant.png);</string>
-        </property>
         <property name="text">
          <string>Play</string>
         </property>
@@ -169,9 +183,6 @@
           <width>40</width>
           <height>40</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: url(:/transparant.png);</string>
         </property>
         <property name="text">
          <string>FF</string>
