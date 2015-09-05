@@ -125,11 +125,11 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	theScenePtr=aScenePtr;
 
 	setScene(aScenePtr);
-        fitInView(0, -aScenePtr->getHeight(),
-                  aScenePtr->getWidth(), aScenePtr->getHeight());
+	fitInView(0, -aScenePtr->getHeight(),
+			  aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(NULL);
-    emit theSimControlsPtr->showYourself();
-        theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
+	emit theSimControlsPtr->showYourself();
+	theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr, theMainWindowPtr);
@@ -226,8 +226,7 @@ void ResizingGraphicsView::slot_levelWon(void)
         mySettings.setValue("completed/"+myLevelFileName, "done");
     }
 
-    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
-	emit theSimControlsPtr->hideYourself();
+	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
 	emit theWinFailDialogPtr->appearAnimated();
 
 	// Make the sim stop once the above animation is (almost) done...
