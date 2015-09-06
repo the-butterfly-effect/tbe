@@ -68,6 +68,13 @@ static AbstractRectObjectFactory theFloorFactory("Floor",
 	"",
 	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
+// see http://www.saginawpipe.com/steel_i_beams.htm
+// a 4"x4" beam weighs 13 pounds per feet, i.e. a 1.4m beam weighs 27kg.
+static AbstractRectObjectFactory theSteelHBeamFactory("IBeam",
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Steel I-Beam"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "An I Beam is named after the shape of its cross-section.\n It's heavy, don't drop one on your foot."),
+	"i-beam", 1.4, 0.1, 27.0, 0.0 );
+
 static AbstractRectObjectFactory theWallFactory("Wall",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wall"),
 	"",
