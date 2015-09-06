@@ -33,14 +33,14 @@
     <scene>
         <scenesize width="7" height="4"/>
         <predefined>
-            <object width="6.400" X="4.400" Y="0.075" height="0.150" type="Floor" ID="kart" angle="0.000">
+            <object width="6.400" X="4.400" Y="0.075" height="0.150" type="Floor" angle="0.000">
                 <property key="Friction">0.5</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.400" X="6.300" Y="0.402" height="0.750" type="ColaMintBottle" ID="kart" angle="-1.571">
                 <property key="ImageName">tuxkart</property>
                 <property key="Thrust">9</property>
-                <property key="Description">Vroom</property>
+                <property key="Description">Vroom Vroom Vroom!</property>
             </object>
             <object width="1.200" X="0.600" Y="0.600" height="1.200" type="QuarterArc80" angle="3.141"/>
             <object width="1.800" X="0.075" Y="2.000" height="0.150" type="Floor" angle="1.571">
