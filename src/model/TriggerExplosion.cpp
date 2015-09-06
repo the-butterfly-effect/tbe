@@ -162,7 +162,7 @@ qreal DetonatorBox::getZValue(void)
 
 DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 {
-	DEBUG4("DetonatorBox from state %d to state %d\n", theState, aNewState);
+	DEBUG4("DetonatorBox from state %d to state %d", theState, aNewState);
 	theState = aNewState;
 	return theState;
 }
@@ -422,7 +422,7 @@ const QString Dynamite::getToolTip ( ) const
 
 Dynamite::States Dynamite::goToState(Dynamite::States aNewState)
 {
-	DEBUG4("Dynamite from state %d to state %d\n", theState, aNewState);
+	DEBUG4("Dynamite from state %d to state %d", theState, aNewState);
 
 	if (theState == RINGING && aNewState == BOOM)
 	{
@@ -488,7 +488,7 @@ ExplosionSplatter::ExplosionSplatter()
                    theRadius, 0.001,  1.0),
       theDynamitePtr(NULL)
 {
-	DEBUG5("ExplosionSplatter::ExplosionSplatter\n");
+	DEBUG5("ExplosionSplatter::ExplosionSplatter");
 
 	// the first shape is already set in the AbstractBall constructor
 	// we only need to set the groupIndex so the various splatters do not collide
@@ -497,7 +497,7 @@ ExplosionSplatter::ExplosionSplatter()
 
 ExplosionSplatter::~ExplosionSplatter()
 {
-	DEBUG5("ExplosionSplatter::~ExplosionSplatter()\n");
+	DEBUG5("ExplosionSplatter::~ExplosionSplatter()");
 	// contrary to most objects, we need to take ourselves really out of the
 	// physics simulation...
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
@@ -538,7 +538,7 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
                                qreal aSplatterMass,
                                Dynamite* aDynamitePtr)
 {
-	DEBUG5("ExplosionSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
+	DEBUG5("ExplosionSplatter::setAll(%p, (%f,%f,%f), %f, %f)",
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
 		   aVelocity, aSplatterMass);
 

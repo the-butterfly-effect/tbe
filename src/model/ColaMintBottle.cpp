@@ -268,7 +268,7 @@ void ColaSplatter::setAll(World* aWorldPtr,
 						  qreal aVelocity,
 						  UNUSED_ARG qreal aSplatterMass)
 {
-	DEBUG5("ColaSplatter::setAll(%p, (%f,%f,%f), %f, %f)\n",
+	DEBUG5("ColaSplatter::setAll(%p, (%f,%f,%f), %f, %f)",
 		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
 		   aVelocity, aSplatterMass);
 
@@ -279,7 +279,7 @@ void ColaSplatter::setAll(World* aWorldPtr,
 
 	qreal myAngle = aStartPos.angle;
 	b2Vec2 myVelVec(aVelocity * cos(myAngle), aVelocity * sin(myAngle));
-	DEBUG5("velocity: %f,%f\n", myVelVec.x, myVelVec.y);
+	DEBUG5("velocity: %f,%f", myVelVec.x, myVelVec.y);
 	createPhysicsObject();
 	theB2BodyPtr->SetLinearVelocity(myVelVec);
     // FIXME: variable ASplatterMass is ignored for now...

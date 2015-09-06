@@ -62,7 +62,7 @@ AbstractObject::AbstractObject()
 
 AbstractObject::~AbstractObject ( )
 {
-    DEBUG5("AbstractObject::~AbstractObject() for %p '%s'\n", this, ASCII(getID()));
+	DEBUG5("AbstractObject::~AbstractObject() for %p '%s'", this, ASCII(getID()));
 
 	// destroy the Body
 	//
@@ -104,7 +104,7 @@ void AbstractObject::createPhysicsObject(void)
 
 void AbstractObject::createPhysicsObject(const Position& aPosition)
 {
-	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
+	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
 	// first fixup the bodydef with the current position
 	assert(theB2BodyDefPtr!=NULL);
 	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
@@ -131,12 +131,10 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 		b2Transform myT;
 		myT.SetIdentity();
         myPtr->GetShape()->ComputeAABB(&myAABB, myT, 0);
-		DEBUG5("  Shape* = %p\n", myPtr);
-		DEBUG5("    %fx%f\n", myAABB.GetExtents().x, myAABB.GetExtents().y);
+		DEBUG5("  Shape* = %p", myPtr);
+		DEBUG5("    %fx%f", myAABB.GetExtents().x, myAABB.GetExtents().y);
 #endif
 	}
-//	qDebug () << QString("Object %1 has mass %2 kg\n").arg(getName())
-//				 .arg(theB2BodyPtr->GetMass());
 	notifyJoints(JointInterface::CREATED);
 }
 
@@ -157,7 +155,7 @@ ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 
 void AbstractObject::deletePhysicsObject()
 {
-    DEBUG5("AbstractObject::deletePhysicsObject() for %p %s\n", this, ASCII(getID()));
+	DEBUG5("AbstractObject::deletePhysicsObject() for %p %s", this, ASCII(getID()));
 
     // we're only setting the pointer to zero - let's Box2D take care
     // of actually removing everything when we do delete world...

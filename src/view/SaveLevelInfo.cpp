@@ -38,7 +38,7 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 		ui.theDateEdit->setDate(myDate);
 	else
 	{
-		DEBUG5("SaveLevelInfo::SaveLevelInfo - Date '%s' is not understood, setting to current date\n",
+		DEBUG5("SaveLevelInfo::SaveLevelInfo - Date '%s' is not understood, setting to current date",
 			   ASCII(theLevelPtr->theLevelDate));
 		ui.theDateEdit->setDate(QDate::currentDate());
 	}
@@ -127,7 +127,7 @@ bool SaveLevelInfo::performFileExists(const QString& aFileName)
 
 	if (QFile::exists(aFileName))
 	{
-		DEBUG5("File '%s' already exists!\n", ASCII(aFileName) );
+		DEBUG5("File '%s' already exists!", ASCII(aFileName) );
 		if (Popup::YesNoQuestion(tr("A File with name '%1' file already exists. Overwrite?\n").arg(aFileName),
 								 this)==false)
 			return false;

@@ -32,12 +32,12 @@ const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;
 
 /* Debug verbosity
- * level 1 = very little information, autodetect KILLING
- * level 2 = level 1 + autodetect GOOD/BAD + some general messages on behaviour
- * level 3 = level 2 + autodetect INFO
- * level 4 = level 3 + AT commands and answers
- * level 5 = all debugging, including entry of functions under scrutiny
- * level 6 = timing info on serial port
+ * level 1 = ERROR major errors only
+ * level 2 = WARN recoverable errors and warnings
+ * level 3 = INFO informational messages
+ * level 4 = (default) messages about (unusual) code flow
+ * level 5 = DEBUG all debugging, including entry/exit of functions under scrutiny
+ * level 6 = debugging info that will affect game timing - should never be enabled
  */
 #ifdef QT_DEBUG
 #include <QtCore/QtDebug>

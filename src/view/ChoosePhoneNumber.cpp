@@ -65,7 +65,7 @@ void ChoosePhoneNumber::on_comboBox_activated()
 {
 	// is the empty line selected?
 	QString myLine = m_ui->comboBox->currentText();
-	DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'\n", ASCII(myLine));
+	DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'", ASCII(myLine));
 	assert(myLine.isEmpty()==false);
 
 	// let's notify the detonator box

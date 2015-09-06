@@ -53,7 +53,7 @@ PostIt::PostIt( )
                              "You know, those yellow 3x3 inch pieces of paper.\n"
                              "You might want to read them - it may help!");
 
-	DEBUG5("PostIt::PostIt done\n");
+	DEBUG5("PostIt::PostIt done");
 }
 
 

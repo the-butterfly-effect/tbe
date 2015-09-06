@@ -145,7 +145,7 @@ QString
 Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 {
 	theFileName = aFileName;
-	DEBUG2("Level::load(\"%s\")\n", ASCII(aFileName));
+	DEBUG2("Level::load(\"%s\")", ASCII(aFileName));
 
 	QString myErrorMessage = tr("Cannot read file '%1'").arg(aFileName);
 	QDomDocument myDocument("mydocument");
@@ -194,9 +194,9 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 	theLevelDate       = myNode.firstChildElement(theLevelDateString).text();
 	theLevelDescription.fillFromDOM(myNode, theLevelDescriptionString);
 
-	DEBUG5("level name:    '%s'\n", ASCII(theLevelName.result()));
-	DEBUG5("level author:  '%s'\n", ASCII(theLevelAuthor));
-	DEBUG5("level license: '%s'\n", ASCII(theLevelLicense));
+	DEBUG5("level name:    '%s'", ASCII(theLevelName.result()));
+	DEBUG5("level author:  '%s'", ASCII(theLevelAuthor));
+	DEBUG5("level license: '%s'", ASCII(theLevelLicense));
 	theWorldPtr->theLevelName = theLevelName.result();
 
 	//
@@ -453,7 +453,7 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const L
 
 bool Level::save(const QString& aFileName)
 {
-    DEBUG5("Level::save(%s)\n", ASCII(aFileName));
+	DEBUG5("Level::save(%s)", ASCII(aFileName));
     QDomDocument myDocument("mydocument");
     QDomElement myRoot = myDocument.createElement(theRootNodeString);
     myDocument.appendChild(myRoot);
@@ -508,7 +508,7 @@ bool Level::save(const QString& aFileName)
     {
         QString myError = tr("Cannot write file '%1': %2.")
             .arg(aFileName, myFile.errorString());
-        DEBUG1("ERROR: %s\n", ASCII(myError));
+		DEBUG1("ERROR: %s", ASCII(myError));
         return false;
     }
     const int IndentSize = 4;

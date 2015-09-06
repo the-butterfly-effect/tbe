@@ -52,7 +52,7 @@ static qreal theActionIconScaling = 1.0;
 
 void NamedState::onEntry ( QEvent * event )
 {
-//	DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
+//	DEBUG4("SimulationControls-SimState %s onEntry!", ASCII(theName));
     QState::onEntry(event);
 }
 
@@ -244,7 +244,7 @@ PieMenuSingleton* PieMenuSingleton::me(void)
 void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 											  QPointF aPositionInSceneCoord )
 {
-	DEBUG3("PieMenuSingleton::setPieMenuParent(%p)\n", aViewObjectPtr);
+	DEBUG5("PieMenuSingleton::setPieMenuParent(%p)", aViewObjectPtr);
 	// one can always call delete on a nullpointer
 	delete me()->theCurrentPieMenuPtr;
 

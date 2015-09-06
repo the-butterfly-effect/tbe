@@ -84,7 +84,7 @@ void Link::createPhysicsObject(void)
     assert(theFirstLocalPosPtr!=NULL);
     if (theFirstPtr==NULL)
     {
-        DEBUG4("Link: No valid first object found...\n");
+		DEBUG4("Link: No valid first object found...");
         return;
     }
     b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
@@ -95,7 +95,7 @@ void Link::createPhysicsObject(void)
     assert(theSecondLocalPosPtr!=NULL);
     if (theSecondPtr==NULL)
     {
-        DEBUG4("Link: No valid second object found...\n");
+		DEBUG4("Link: No valid second object found...");
         return;
     }
     b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
@@ -169,7 +169,7 @@ void Link::updateViewObject(bool ) const
     if (theFirstPtr==NULL || theSecondPtr==NULL)
     {
         // problem
-        DEBUG1("Link::updateViewObject()  while first or second is zero\n");
+		DEBUG1("Link::updateViewObject()  while first or second is zero");
         assert(false);
     }
 

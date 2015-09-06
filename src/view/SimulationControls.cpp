@@ -26,7 +26,7 @@
 
 void SimState::onEntry ( QEvent * event )
 {
-    DEBUG4("SimulationControls-SimState %s onEntry!\n", ASCII(theName));
+	DEBUG4("SimulationControls-SimState %s onEntry!", ASCII(theName));
     QState::onEntry(event);
     isActive = true;
 }

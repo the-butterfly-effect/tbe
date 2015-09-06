@@ -29,7 +29,11 @@
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
 // note that levels 5 and 6 affect playing
+#ifdef QT_NO_DEBUG
+int theVerbosity = 2;
+#else
 int theVerbosity = 4;
+#endif
 
 // this variable defines whether we are playing or a level editor
 // switching to LevelEditor is possible through the "Edit" menu.
@@ -107,7 +111,7 @@ static bool setVerbosity(QString anArgument)
 		return false;
 	}
 	theVerbosity = myNumber;
-	DEBUG2("set verbosity level to %d\n", theVerbosity);
+	DEBUG2("set verbosity level to %d", theVerbosity);
 	return true;
 }
 #endif
@@ -178,7 +182,7 @@ int main(int argc, char *argv[])
 
 	//** read the locale from the environment and set the output language
 	QString myLocale = QLocale::system().name();
-	DEBUG4("Loading translator for locale %s", ASCII(myLocale));
+	DEBUG4("Loading translator for locale '%s'", ASCII(myLocale));
 	// for strings from TBE
 	QTranslator myTranslator;
 	myTranslator.load(I18N_DIRECTORY + "/tbe_" + myLocale);
@@ -266,19 +270,19 @@ int main(int argc, char *argv[])
 	setupBacktrace();
 #endif
 
-	DEBUG3("SUMMARY:\n");
-	DEBUG3("Verbosity is: %d / Fullscreen is %d\n", theVerbosity, theIsMaximized);
+	DEBUG3("SUMMARY:");
+	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
     if (theIsRunAsRegression)
     {
-        DEBUG3("Regression levels: '%s'\n", ASCII(theStartFileName));
+		DEBUG3("  Regression levels: '%s'", ASCII(theStartFileName));
     }
     else
     {
-        DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
+		DEBUG3("  Start file name is: '%s'", ASCII(theStartFileName));
     }
 
 	QSettings mySettings;
-	DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
+	DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
 
 	//** setup main window, shut down splash screen
 	MainWindow myMain(theIsMaximized);

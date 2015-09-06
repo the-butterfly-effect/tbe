@@ -130,7 +130,7 @@ bool Vector::fromString(QString aString)
 
 done:
 	if (isOK==false)
-		DEBUG4("Vector.fromString(%s) failed!\n", ASCII(aString));
+		DEBUG4("Vector.fromString(%s) failed!", ASCII(aString));
 	return isOK;
 }
 

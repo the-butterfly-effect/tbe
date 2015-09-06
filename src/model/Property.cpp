@@ -102,13 +102,13 @@ QStringList PropertyList::getDefaultPropertyList(void) const
 
 void PropertyList::list(void) const
 {
-	DEBUG1("DEBUGGING: Requested listing of properties for object\n");
+	DEBUG5("DEBUGGING: Requested listing of properties for object");
 	PropertyMap::const_iterator myI = theProperties.begin();
 	while (myI != theProperties.end())
 	{
 		char myBuffer[256];
 		strncpy (myBuffer, ASCII(myI.key()), 255);
-		DEBUG1("  '%s' = '%s'\n", myBuffer, ASCII(myI.value()));
+		DEBUG5("  '%s' = '%s'", myBuffer, ASCII(myI.value()));
 		++myI;
 	}
 }

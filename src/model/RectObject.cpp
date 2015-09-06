@@ -79,7 +79,7 @@ static AbstractRectObjectFactory theWallFactory("Wall",
 
 RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME)
 {
-	DEBUG5("RectObject::RectObject\n");
+	DEBUG5("RectObject::RectObject");
 
 	// because this object is very flexible and many parameters can be set through
 	// the Properties, do not assume too much here...

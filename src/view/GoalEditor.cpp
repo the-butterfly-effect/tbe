@@ -297,7 +297,7 @@ void GoalEditor::slot_itemChanged(QStandardItem* anItem)
 	// the X/Y/Angle cell only accepts 'change' as field 2
 	if (myModelPtr->item(myRow,0)->text()==GoalSerializer::getColumnZero()[GoalSerializer::ANYTHING])
 	{
-		DEBUG2("Goal/Fail type Position X/Y/Angle + '>' or '<' cannot exist -> fixing...\n");
+		DEBUG2("Goal/Fail type Position X/Y/Angle + '>' or '<' cannot exist -> fixing...");
 		myModelPtr->item(myRow,2)->setText(getT10nOf_change());
 	}
 
@@ -305,7 +305,7 @@ void GoalEditor::slot_itemChanged(QStandardItem* anItem)
 	if (myModelPtr->item(myRow,0)->text()==GoalSerializer::getColumnZero()[GoalSerializer::DISTANCE]
 		&& myModelPtr->item(myRow,2)->text()==getT10nOf_change())
 	{
-		DEBUG2("Goal/Fail type Distance + 'change' cannot exist -> fixing...\n");
+		DEBUG2("Goal/Fail type Distance + 'change' cannot exist -> fixing...");
 		myModelPtr->item(myRow,2)->setText(">");
 	}
 

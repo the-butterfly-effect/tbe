@@ -37,7 +37,7 @@ static GlueObjectFactory theGlueFactory;
 
 Glue::Glue() : AbstractJoint()
 {
-	DEBUG5("Glue::Glue() start\n");
+	DEBUG5("Glue::Glue() start");
 	theFirstPtr = NULL;
 	theSecondPtr = NULL;
 	theFirstLocalPosPtr = NULL;
@@ -49,13 +49,13 @@ Glue::Glue() : AbstractJoint()
 			Property::OBJECT1_STRING + QString(":/") +
 			Property::OBJECT2_STRING + QString(":/") +
 			"-" + Property::MASS_STRING + ":/" );
-	DEBUG5("Glue::Glue() end\n");
+	DEBUG5("Glue::Glue() end");
 }
 
 
 void Glue::createPhysicsObject(void)
 {
-	DEBUG5("Glue::createPhysicsObject() for %s, type %d\n", ASCII(getName()), getObjectType());
+	DEBUG5("Glue::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
 	if (theWorldPtr==NULL)
 		return;
 
@@ -63,7 +63,7 @@ void Glue::createPhysicsObject(void)
 	assert(theFirstLocalPosPtr!=NULL);
 	if (theFirstPtr==NULL)
 	{
-		DEBUG4("Link: No valid first object found...\n");
+		DEBUG4("Link: No valid first object found...");
 		return;
 	}
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
@@ -74,7 +74,7 @@ void Glue::createPhysicsObject(void)
 	assert(theSecondLocalPosPtr!=NULL);
 	if (theSecondPtr==NULL)
 	{
-		DEBUG4("Link: No valid second object found...\n");
+		DEBUG4("Link: No valid second object found...");
 		return;
 	}
 	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());

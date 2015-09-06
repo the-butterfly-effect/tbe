@@ -256,7 +256,7 @@ void MainWindow::on_action_Save_As_activated(void)
 
     QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
 
-    DEBUG5("File '%s' is readable: %d, writeable: %d\n",
+	DEBUG5("File '%s' is readable: %d, writeable: %d",
            ASCII(myFileInfo.absoluteFilePath()),
            myFileInfo.isReadable(), myFileInfo.isWritable());
 

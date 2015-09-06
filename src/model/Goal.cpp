@@ -88,7 +88,7 @@ bool GoalDistance::parseProperties(World* aWPtr)
 	// but we expect only to have 3 properties - any other number is wrong
 	if (theProps.getPropertyCount() != 3)
 	{
-		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
+		DEBUG2("wrong number of properties at beginning of parseProperties - not good");
 		return false;
 	}
 
@@ -99,7 +99,7 @@ bool GoalDistance::parseProperties(World* aWPtr)
 		theType=MORETHAN;
 	if (theType == NOTYPE)
 	{
-		DEBUG2("no valid property found\n");
+		DEBUG2("no valid property found");
 		return false;
 	}
 
@@ -108,13 +108,13 @@ bool GoalDistance::parseProperties(World* aWPtr)
     theFirstPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT1_STRING);
     if (theFirstPtr==nullptr)
 	{
-		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT1_STRING);
+		DEBUG2("%s is not an existing, valid object", Property::OBJECT1_STRING);
 		return false;
 	}
     theSecondPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT2_STRING);
     if (theSecondPtr==nullptr)
 	{
-		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT2_STRING);
+		DEBUG2("%s is not an existing, valid object", Property::OBJECT2_STRING);
 		return false;
 	}
 
@@ -210,7 +210,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 	// but we expect only to have 2 properties - any other number is wrong
 	if (theProps.getPropertyCount() != 2)
 	{
-		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
+		DEBUG2("wrong number of properties at beginning of parseProperties - not good");
 		return false;
 	}
 
@@ -234,7 +234,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
 		theType=ANYTHINGCHANGED;
 	if (theType == NOTYPE)
 	{
-		DEBUG2("no valid property found\n");
+		DEBUG2("no valid property found");
 		return false;
 	}
 
@@ -242,7 +242,7 @@ bool GoalPositionChange::parseProperties(World* aWPtr)
     theBOPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING);
     if (theBOPtr==nullptr)
 	{
-		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
+		DEBUG2("%s is not an existing, valid object", Property::OBJECT_STRING);
 		return false;
 	}
 	return true;
@@ -324,7 +324,7 @@ bool GoalStateChange::parseProperties(World* aWPtr)
 	// we expect only to have 2 properties - any other number is wrong
 	if (theProps.getPropertyCount() != 2)
 	{
-		DEBUG2("wrong number of properties at beginning of parseProperties - not good\n");
+		DEBUG2("wrong number of properties at beginning of parseProperties - not good");
 		return false;
 	}
 
@@ -337,7 +337,7 @@ bool GoalStateChange::parseProperties(World* aWPtr)
 	theState = myState;
 	if (theType == NOTYPE)
 	{
-		DEBUG2("no valid property found\n");
+		DEBUG2("no valid property found");
 		return false;
 	}
 
@@ -346,7 +346,7 @@ bool GoalStateChange::parseProperties(World* aWPtr)
     theBOPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING);
     if (theBOPtr==nullptr)
 	{
-		DEBUG2("%s is not an existing, valid object\n", Property::OBJECT_STRING);
+		DEBUG2("%s is not an existing, valid object", Property::OBJECT_STRING);
 		return false;
 	}
 

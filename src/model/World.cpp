@@ -102,7 +102,7 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
 {
     if (anObjectPtr == nullptr)
         return false;
-    DEBUG4("World::addObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
+	DEBUG5("World::addObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
 
     // if it is already present, let's not insert again
     if (theObjectPtrList.contains(anObjectPtr)==false)
@@ -122,7 +122,7 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
 void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 {
     assert(theViewWorldPtr!=NULL);
-    DEBUG4("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
+	DEBUG5("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
     ViewObject* myVOPtr = anAOPtr->createViewObject();
     if (myVOPtr!=NULL)
     {
@@ -201,7 +201,7 @@ void World::createScene(ResizingGraphicsView *myRSGVPtr)
 	AbstractObjectPtrList::iterator i;
 	for(i=theObjectPtrList.begin(); i!=theObjectPtrList.end(); ++i)
 	{
-        DEBUG5("adding item %p\n", (*i).get());
+		DEBUG5("adding item %p", (*i).get());
 		addAbstractObjectToViewWorld(*i);
 	}
 }

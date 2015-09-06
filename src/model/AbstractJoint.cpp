@@ -31,7 +31,7 @@ AbstractJoint::AbstractJoint(void) : theJointPtr(NULL), isChild(false)
 
 AbstractJoint::~AbstractJoint()
 {
-	DEBUG5("AbstractJoint::~AbstractJoint() for %p\n", this);
+	DEBUG5("AbstractJoint::~AbstractJoint() for %p", this);
 }
 
 
@@ -49,7 +49,7 @@ void AbstractJoint::deletePhysicsObject(void)
 	// TODO/FIXME: there's logic behind this member that needs documenting
 	// because otherwise we would have left it to the deletePhysicsObject()
 	// of AbstractObject, right?
-	DEBUG5("AbstractJoint::deletePhysicsObject(void)\n");
+	DEBUG5("AbstractJoint::deletePhysicsObject(void)");
     theJointPtr = nullptr;
 	if (theViewObjectPtr)
 		theViewObjectPtr->setVisible(true);
@@ -75,7 +75,7 @@ b2Body* AbstractJoint::getGroundBodyPtr(void)
 void AbstractJoint::jointWasDeleted(void)
 {
 	// if this member is called, the joint is already gone
-	DEBUG4("AbstractJoint::jointWasDeleted(void) for %p\n", this);
+	DEBUG4("AbstractJoint::jointWasDeleted(void) for %p", this);
 	theJointPtr = NULL;
 	if (theViewObjectPtr)
 		theViewObjectPtr->setVisible(false);

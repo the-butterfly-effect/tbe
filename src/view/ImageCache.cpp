@@ -114,7 +114,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 		}
 	}
 
-	DEBUG4("  going to use image: %s!", ASCII(myFullPathName));
+	DEBUG5("  going to use image: %s!", ASCII(myFullPathName));
 	if (myTempPixmap.isNull())
 		myTempPixmap = QPixmap(myFullPathName);
 //	QPixmapCache::insert(anImageBaseName, myTempPixmap);

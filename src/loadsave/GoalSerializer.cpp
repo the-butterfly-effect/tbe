@@ -85,7 +85,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 		}
 	}
 
-	DEBUG4("createGoalFromDom for '%s' successful\n", ASCII(myObjectType));
+	DEBUG5("createGoalFromDom for '%s' successful", ASCII(myObjectType));
 	return myGPtr;
 not_good:
 	delete myGPtr;

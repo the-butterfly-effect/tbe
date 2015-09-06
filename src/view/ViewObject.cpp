@@ -36,7 +36,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
     : QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
     // nothing to do yet :-)
-    DEBUG3ENTRY;
+	DEBUG5ENTRY;
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
     initViewObjectAttributes();
 }
@@ -44,7 +44,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
 ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName) :
     QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
-	DEBUG3ENTRY;
+	DEBUG5ENTRY;
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
 
 	QPixmap myTempPixmap;

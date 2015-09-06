@@ -46,7 +46,7 @@ Scenery::Scenery( ) : AbstractObject()
 		QString(":/-") + Property::RESIZABLE_STRING   +
 		QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
 
-	DEBUG5("Scenery::Scenery done\n");
+	DEBUG5("Scenery::Scenery done");
 }
 
 

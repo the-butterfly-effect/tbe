@@ -68,7 +68,7 @@ Butterfly::~Butterfly()
 
 void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 {
-	DEBUG6("Butterfly receives callback\n");
+	DEBUG6("Butterfly receives callback");
 
 	switch(getState())
 	{

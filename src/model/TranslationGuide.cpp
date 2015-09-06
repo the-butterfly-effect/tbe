@@ -48,7 +48,7 @@ TranslationGuide::TranslationGuide()
 TranslationGuide::TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection)
 		: AbstractJoint(), theObjectPtr(anAbstractObject)
 {
-	DEBUG4("TranslationGuide::TranslationGuide(%p, %f)\n",
+	DEBUG5("TranslationGuide::TranslationGuide(%p, %f)",
            anAbstractObject.get(), aDirection);
 	theDirection = aDirection;
 	updateOrigCenter();
@@ -69,7 +69,7 @@ void TranslationGuide::createPhysicsObject(void)
     }
     if (theObjectPtr==nullptr)
 	{
-		DEBUG4("TranslationGuide: No valid object found...\n");
+		DEBUG2("TranslationGuide: No valid object found...");
 		return;
 	}
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,

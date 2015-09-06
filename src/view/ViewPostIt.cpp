@@ -35,7 +35,7 @@ ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr)
 	  theUIPtr(NULL)
 {
     // everything is done in the ViewObject constructor
-    DEBUG1ENTRY;
+	DEBUG5ENTRY;
 
     setFlag(QGraphicsItem::ItemIsSelectable,true);
 }
@@ -124,7 +124,7 @@ void ViewPostIt::initAttributes ( )
 
 void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
-    DEBUG5("double click!!!\n");
+	DEBUG5("double click!!!");
 //	if (theIsLevelEditor)
 //	{
 //		QDialog* myEditorPtr = new PostItEditor(theAbstractObjectPtr, this);

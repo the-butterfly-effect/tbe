@@ -40,14 +40,14 @@ PivotPoint::PivotPoint()
 		: AbstractJoint(), theFirstPtr(NULL)
 
 {
-	DEBUG5("PivotPoint::PivotPoint\n");
+	DEBUG5("PivotPoint::PivotPoint");
 	initPivotAttributes ();
 }
 
 PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativePosition)
 		: AbstractJoint(), theFirstPtr(aAbstractObject)
 {
-    DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))\n",
+	DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))",
            aAbstractObject.get(), aRelativePosition.dx, aRelativePosition.dy);
     thePosRelativeToFirst = aRelativePosition;
 	updateOrigCenter();
@@ -56,7 +56,7 @@ PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativ
 
 PivotPoint::~PivotPoint()
 {
-	DEBUG5("PivotPoint::~PivotPoint() for %p\n", this);
+	DEBUG5("PivotPoint::~PivotPoint() for %p", this);
 }
 
 void PivotPoint::createPhysicsObject(void)
@@ -74,7 +74,7 @@ void PivotPoint::createPhysicsObject(void)
     }
     if (theFirstPtr==nullptr)
 	{
-		DEBUG4("PivotPoint: No valid first object found...\n");
+		DEBUG4("PivotPoint: No valid first object found...");
 		return;
 	}
 

@@ -81,7 +81,7 @@ void GameResources::on_theResetButton_clicked()
 
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
-    DEBUG4ENTRY;
+	DEBUG5ENTRY;
     Q_ASSERT(aLevelPtr!=NULL);
     theLevelPtr = aLevelPtr;
 

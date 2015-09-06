@@ -83,7 +83,7 @@ BackgroundSerializer::createObjectFromDom(const QDomNode& q, Background* aBGPtr)
 		}
 	}
 
-	DEBUG4("createObjectFromDom for background successful\n");
+	DEBUG4("createObjectFromDom for background successful");
 	return "";
 }
 

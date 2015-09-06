@@ -105,7 +105,7 @@ void Spring::adjustParameters(void)
 
 void Spring::buildShapeList(void)
 {
-	DEBUG5("Spring::buildShapeList wxh=%fx%f\n", getTheWidth(),getTheHeight());
+	DEBUG5("Spring::buildShapeList wxh=%fx%f", getTheWidth(),getTheHeight());
 	b2PolygonShape* myBoxShape = new b2PolygonShape();
 	myBoxShape->SetAsBox(getTheWidth()/4.0, getTheHeight()/2.0);
 	b2FixtureDef* myBoxFixture = new b2FixtureDef();

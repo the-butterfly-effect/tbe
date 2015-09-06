@@ -54,8 +54,8 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 	{
 		QString myAName  = myNodeMap.item(i).nodeName();
 		QString myAValue = myNodeMap.item(i).nodeValue();
-		DEBUG3("hint attribute: name %s", ASCII(myAName));
-		DEBUG3("hint attribute: value %s\n", ASCII(myAValue));
+		DEBUG5("  hint attribute: name %s", ASCII(myAName));
+		DEBUG5("  hint attribute: value %s", ASCII(myAValue));
 
 		if (myAName == "number")
 		{
@@ -82,7 +82,7 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 		goto not_good;
 	}
 
-	DEBUG4("createHintFromDom %d for '%s' successful\n", myHPtr->theHintIndex, ASCII(myHPtr->theObjectName));
+	DEBUG4("createHintFromDom %d for '%s' successful", myHPtr->theHintIndex, ASCII(myHPtr->theObjectName));
 	return myHPtr;
 not_good:
 	delete myHPtr;

@@ -202,7 +202,7 @@ const int ViewWorld::theMaxNumberOfGraphicsListElements = 200;
 // Draw a closed polygon provided in CCW order.
 void ViewWorld::DrawPolygon(UNUSED_ARG const b2Vec2* vertices, UNUSED_ARG int32 vertexCount, UNUSED_ARG const b2Color& color)
 {
-	DEBUG5("ViewWorld::DrawPolygon\n");
+	DEBUG5ENTRY;
 }
 
 // Draw a solid closed polygon provided in CCW order.
@@ -226,7 +226,7 @@ void ViewWorld::DrawCircle(UNUSED_ARG const b2Vec2& center,
 						   UNUSED_ARG float32 radius,
 						   UNUSED_ARG const b2Color& color)
 {
-	DEBUG5("ViewWorld::DrawCircle\n");
+	DEBUG5ENTRY;
 }
 
 // Draw a solid circle.
@@ -261,7 +261,7 @@ void ViewWorld::DrawSegment(UNUSED_ARG const b2Vec2& p1,
 // Draw a transform. Choose your own length scale.
 void ViewWorld::DrawTransform(UNUSED_ARG const b2Transform& xf)
 {
-	DEBUG5("ViewWorld::DrawTransform\n");
+	DEBUG5ENTRY;
 }
 
 void ViewWorld::addDebugDrawToList(QGraphicsItem* anItem)

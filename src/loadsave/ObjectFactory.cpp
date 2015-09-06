@@ -69,17 +69,17 @@ ObjectFactory::createObject(
 		const qreal anHeight)
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
-    DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p\n", ASCII(aName), myFactoryPtr);
+	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == NULL)
 	{
-		DEBUG1("There is no factory for Object type %s\n", ASCII(aName));
+		DEBUG1("There is no factory for Object type %s", ASCII(aName));
 		return NULL;
 	}
     AbstractObject* myObjectPtr = myFactoryPtr->createObject();
     assert (myObjectPtr!=nullptr);
     AbstractObjectPtr mySharedOPtr = AbstractObjectPtr(myObjectPtr);
     myObjectPtr->theThisPtr = mySharedOPtr;
-    DEBUG5("  object created = %p, i18n name = '%s'\n", myObjectPtr, ASCII(myObjectPtr->getName()));
+	DEBUG5("  object created = %p, i18n name = '%s'", myObjectPtr, ASCII(myObjectPtr->getName()));
 	assert (aName.contains(" ")==false);
 	myObjectPtr->theInternalName = aName;
 	myObjectPtr->theCenter=aPosition;
