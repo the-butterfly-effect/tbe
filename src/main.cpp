@@ -29,10 +29,10 @@
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
 // note that levels 5 and 6 affect playing
-#ifdef QT_NO_DEBUG
-int theVerbosity = 2;
-#else
+#ifdef QT_DEBUG
 int theVerbosity = 4;
+#else
+int theVerbosity = 2;
 #endif
 
 // this variable defines whether we are playing or a level editor
@@ -61,10 +61,10 @@ bool theIsTesting = false;
 // This variable defines whether TBE displays a frame refresh counter or not
 // TODO/FIXME: this should go into preferences or so at some point
 // (enabled in debug builds/disabled in release builds)
-#ifdef QT_NO_DEBUG
-bool theDisplayFramerate = false;
-#else
+#ifdef QT_DEBUG
 bool theDisplayFramerate = true;
+#else
+bool theDisplayFramerate = false;
 #endif
 
 QString theStartFileName;
