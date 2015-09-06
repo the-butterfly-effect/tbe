@@ -14,6 +14,7 @@ install(FILES
 	icons/ActionSetNumber.svg
 	icons/ActionUndo.svg
 	icons/IconBold.svg
+	icons/IconInfo.svg
 	icons/IconItalics.svg
 	icons/IconModified.svg
 	icons/IconNewline.svg

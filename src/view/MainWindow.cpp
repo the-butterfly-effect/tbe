@@ -412,6 +412,10 @@ void MainWindow::setupView()
 	ui->toolButton_chooseLevel->setIcon(myEjectIcon);
 	connect(ui->toolButton_chooseLevel, SIGNAL(clicked(bool)),
 			this, SLOT(on_action_Open_Level_triggered()));
+	QIcon myInfoIcon  = ImageCache::getQIcon("IconInfo", QSize(16,16));
+	ui->toolButton_infoLevel->setIcon(myInfoIcon);
+	connect(ui->toolButton_infoLevel, SIGNAL(clicked(bool)),
+			ui->graphicsView, SLOT(slot_showGameResourcesDialog()));
 
 	// File Menu: disable level editor in release builds
 	// FIXME TODO: temporary fix!!!

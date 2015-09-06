@@ -144,7 +144,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest, SLOT(slot_Fail()));
 	}
 
-	QTimer::singleShot(200, theGameResourcesPtr, SLOT(appearAnimated()));
+	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
 }
 
 
@@ -194,10 +194,10 @@ void ResizingGraphicsView::slot_actionSkipLevel()
 }
 
 
-void ResizingGraphicsView::slot_editObjectDialog_destroyed(void)
+void ResizingGraphicsView::slot_editObjectDialog_destroyed()
 {
     DEBUG3ENTRY;
-    theObjectEditorPtr = NULL;
+	theObjectEditorPtr = NULL;
 }
 
 
@@ -240,4 +240,10 @@ void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObjectPtr anAOPtr)
     theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
     connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(on_objectEditor_destroyed()));
     theObjectEditorPtr->show();
+}
+
+
+void ResizingGraphicsView::slot_showGameResourcesDialog()
+{
+	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
 }
