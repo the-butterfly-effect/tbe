@@ -18,10 +18,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Wooden Beam">
             <name lang="nl">Houten Balk</name>
-            <object width="2.000" height="0.100" type="RectObject" angle="0.000">
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >0.5</property>
-            </object>
+            <object width="2.000" height="0.100" type="BirchBar" angle="0.000" />
         </toolboxitem>
     </toolbox>
     <scene>

@@ -69,9 +69,8 @@
                 <property key="Mass" >3</property>
             </object>
             <object width="4.000" X="8.000" Y="0.050" height="0.100" type="Floor" angle="0.000" />
-            <object width="2.500" X="7.892" Y="2.196" height="0.200" type="RectObject" angle="0.101" >
+            <object width="2.500" X="7.892" Y="2.196" height="0.200" type="BirchBar" angle="0.101" >
                 <property key="Friction" >1</property>
-                <property key="ImageName" >birch_bar</property>
                 <property key="Mass" >1</property>
             </object>
             <object width="1.000" X="8.650" Y="2.380" height="1.000" type="RightWedge" angle="-2.268" >

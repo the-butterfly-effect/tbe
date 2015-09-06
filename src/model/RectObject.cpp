@@ -48,6 +48,12 @@ static RectObjectFactory theRectObjectFactory;
 //              aTooltip,
 // anImageName,   aWidth,aHeight,  aMass,  aBounciness
 
+// birch wood: 600 kg/m^3, i.e. a beam of 10cm x 10cm x 1.2m equals 7.2kg
+static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wooden Bar"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Birch is a type of wood.\nBirch wood beams move and float."),
+	"birch_bar", 1.0, 0.1, 7.2, 0.15 );
+
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic red domino stone"),
@@ -65,7 +71,7 @@ static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Floor"),
-	"",
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "It doesn't move."),
 	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
 // see http://www.saginawpipe.com/steel_i_beams.htm

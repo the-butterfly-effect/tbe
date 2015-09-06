@@ -124,41 +124,30 @@
                 <property key="PhoneNumber" >555-4321</property>
             </object>
             <object width="0.210" X="9.900" Y="2.689" height="0.210" type="VolleyBall" angle="0.000" />
-            <object width="2.940" X="8.270" Y="2.300" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >10</property>
-            </object>
-            <object width="0.400" X="7.001" Y="2.660" height="0.500" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >3</property>
-            </object>
-            <object width="0.120" X="6.820" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="2.940" X="8.270" Y="2.300" height="0.200" type="BirchBar" angle="0.000" />
+            <object width="0.400" X="7.001" Y="2.660" height="0.500" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.120" X="7.000" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.120" X="6.820" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.120" X="7.180" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.120" X="7.000" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
+                <property key="Mass" >1</property>
+            </object>
+            <object width="0.120" X="7.180" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
             <object width="0.430" X="0.267" Y="0.207" height="0.320" type="Dynamite" ID="555-4321" angle="0.000" />
-            <object width="0.400" X="8.900" Y="2.660" height="0.500" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.400" X="8.900" Y="2.660" height="0.500" type="BirchBar" angle="0.000">
                 <property key="Mass" >3</property>
             </object>
-            <object width="0.120" X="8.720" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.120" X="8.720" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.120" X="8.900" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.120" X="8.900" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
-            <object width="0.120" X="9.070" Y="3.020" height="0.200" type="RectObject" angle="0.000" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.120" X="9.070" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass" >1</property>
             </object>
             <object width="0.170" X="1.750" Y="1.781" height="0.500" type="ColaMintBottle" angle="0.000" >

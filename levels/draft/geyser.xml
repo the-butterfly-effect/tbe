@@ -22,14 +22,12 @@
                 <property key="ImageName" >RightRamp</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Beam" >
+        <toolboxitem count="1" name="Steel I-Beam" >
             <name lang="nl" >Balk</name>
-            <object width="1.2" height="0.1" type="RectObject" >
+            <object width="1.2" height="0.1" type="IBeam" >
                 <property key="Bounciness" >0.0</property>
                 <property key="Friction" >0.5</property>
-                <property key="ImageName" >i-beam</property>
                 <property key="Resizable" >none</property>
-                <property key="Mass" >500.0</property>
                 <property key="ZValue" >3.0</property>
             </object>
         </toolboxitem>

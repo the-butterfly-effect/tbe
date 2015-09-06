@@ -22,9 +22,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Wooden bar">
             <name lang="nl">Houten balk</name>
-            <object X="1.2" Y="0.8" width="1.5" height="0.2" type="RectObject">
-                <property key="ImageName" >birch_bar</property>
-                <property key="Mass" >18</property>
+            <object X="1.2" Y="0.8" width="1.5" height="0.2" type="BirchBar">
                 <property key="Friction" >0</property>
                 <property key="Resizable" >none</property>
                 <property key="Bounciness" >0.0</property>

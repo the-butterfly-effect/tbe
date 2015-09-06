@@ -18,7 +18,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Wooden bar" >
             <name lang="nl" >Houten balk</name>
-            <object width="0.4" height="0.1" type="RectObject" >
+            <object width="0.4" height="0.1" type="Floor" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Rotatable" >true</property>
             </object>
