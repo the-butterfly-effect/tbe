@@ -163,33 +163,38 @@ static struct s_args theArgsTable[] =
 
 int main(int argc, char *argv[])
 {
-	// init Qt (graphics toolkit) - www.qtsoftware.com
+	//** init Qt (graphics toolkit) - www.qtsoftware.com
 	QApplication app(argc, argv);
 
-	// init splash screen, do it as early in program start as possible
+	//** init splash screen, do it as early in program start as possible
 	QSplashScreen mySplash(QPixmap(":/title_page.png"));
 	mySplash.show();
 	app.processEvents();
 
-	QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-	QTextCodec::setCodecForCStrings(codec);
+	//** Strings in source code or XML are UTF-8, make sure Qt understands
+	QTextCodec *myCodec = QTextCodec::codecForName("UTF-8");
+	QTextCodec::setCodecForCStrings(myCodec);
+	QTextCodec::setCodecForLocale(myCodec);
 
-	// read the locale from the environment and set the language...
-	QString locale = QLocale::system().name();
-	QTranslator translator;
-	translator.load(I18N_DIRECTORY + "/tbe_" + locale);
-	app.installTranslator(&translator);
-
+	//** read the locale from the environment and set the output language
+	QString myLocale = QLocale::system().name();
+	DEBUG4("Loading translator for locale %s", ASCII(myLocale));
+	// for strings from TBE
+	QTranslator myTranslator;
+	myTranslator.load(I18N_DIRECTORY + "/tbe_" + myLocale);
+	app.installTranslator(&myTranslator);
+	// for strings from Qt itself
 	QTranslator qtTranslator;
-	qtTranslator.load("qt_" + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	app.installTranslator(&qtTranslator);
 
+	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
 	QCoreApplication::setApplicationName(APPNAME);
 
+	//** parse the command line arguments
 	QStringList myCmdLineList = app.arguments();
-
 	bool isParsingSuccess=true;
 	// we can skip argument zero - that's the tbe executable itself
 	for (int i=1; i<myCmdLineList.size() && isParsingSuccess; i++)
@@ -272,22 +277,18 @@ int main(int argc, char *argv[])
         DEBUG3("Start file name is: '%s'\n", ASCII(theStartFileName));
     }
 
-	// which settings file is used can be confusing to the user...
-	{
-		QSettings mySettings;
-		DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
-	}
+	QSettings mySettings;
+	DEBUG3("using settings from: \"%s\"\n", ASCII(mySettings.fileName()));
 
-	// setup main window, shut down splash screen
+	//** setup main window, shut down splash screen
 	MainWindow myMain(theIsMaximized);
 	myMain.show();
 	mySplash.finish(&myMain);
 
-	// run the main display loop
-	int myReturn=app.exec();
-
-	return myReturn;
+	//** run the main display loop until oblivion
+	return app.exec();
 }
+
 
 const char* ASCII(const QString& aQString)
 {
