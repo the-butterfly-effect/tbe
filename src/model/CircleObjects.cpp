@@ -57,8 +57,8 @@ static CircleObjectFactory theSoccerFactory("SoccerBall",
 // thanks to http://en.wikipedia.org/wiki/Petanque we at least know:
 // diameter between 70.5 and 80mm, weight between 650 and 800 grams.
 static CircleObjectFactory thePetanqueFactory("PetanqueBoule",
-    QT_TRANSLATE_NOOP("CircleObjectFactory", "Pétanque Boule"),
-    QT_TRANSLATE_NOOP("CircleObjectFactory", "A pétanque ball is made of metal and heavy."),
+    QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "Pétanque Boule"),
+    QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "A pétanque ball is made of metal and heavy."),
 	"PetanqueBoule", 0.038, 0.700, 0.1);
 
 // Constructors/Destructors
