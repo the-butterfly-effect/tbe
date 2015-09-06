@@ -72,7 +72,7 @@ public:
 
     void parentResize(const QSize& aSize);
 
-	void hookSignalsUp(ViewWorld* aViewWorld, MainWindow* aMainWindowPtr);
+	void hookSignalsUp(ViewWorld* aViewWorld);
 
 signals:
     /// emitted to go to really fast forward
@@ -113,14 +113,12 @@ private slots:
 private:
     QStateMachine theSimStateMachine;
 
-	QAction* theEjectAction;
 	QAction* theForwardAction;
     QAction* thePlayAction;
     QAction* thePauseAction;
     QAction* theResetAction;
     QAction* the4FAction;   // hack for really fast forward
 
-	QIcon theEjectIcon;
 	QIcon theForwardIcon;
     QIcon thePauseIcon;
     QIcon thePlayIcon;

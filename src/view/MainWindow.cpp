@@ -27,6 +27,7 @@
 #include "ChooseLevel.h"
 #include "EditLevelProperties.h"
 #include "GoalEditor.h"
+#include "ImageCache.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
 #include "ListViewItemTooltip.h"
@@ -336,9 +337,12 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     theIsLevelEditor = true;
     ui->action_Switch_to_Level_Editor->setEnabled(false);
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
+	ui->action_Open_File->setEnabled(true);
+	ui->action_Open_File->setVisible(true);
 }
 
-
+// FIXME/TODO: hopefully temporary
+#ifdef QT_DEBUG
 void MainWindow::on_goalEditorAction_clicked(void)
 {
     // the Goals dialog is modeless, i.e. it can stay floating around
@@ -346,14 +350,12 @@ void MainWindow::on_goalEditorAction_clicked(void)
     myGoalEditorPtr->show();
 }
 
-
 void MainWindow::on_insert(const QString& anObjectName)
 {
     DEBUG1ENTRY;
     InsertUndoCommand::createInsertUndoCommand(
                 ObjectFactory::createObject(anObjectName, Position(1,1)));
 }
-
 
 void MainWindow::on_levelPropertiesEditorAction_clicked(void)
 {
@@ -370,6 +372,7 @@ void MainWindow::on_objectEditorAction_clicked(void)
 {
     emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(NULL);
 }
+#endif
 
 void MainWindow::purgeLevel(void)
 {
@@ -403,6 +406,20 @@ void MainWindow::setupView()
     redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
     myRedoActionPtr->setShortcuts(redoShortcuts);
     ui->menuEdit->addAction(myRedoActionPtr);
+
+	// set up the actions for the two buttons below the toolbox
+	QIcon myEjectIcon  = ImageCache::getQIcon("ActionMenuEject", QSize(16,16));
+	ui->toolButton_chooseLevel->setIcon(myEjectIcon);
+	connect(ui->toolButton_chooseLevel, SIGNAL(clicked(bool)),
+			this, SLOT(on_action_Open_Level_triggered()));
+
+	// File Menu: disable level editor in release builds
+	// FIXME TODO: temporary fix!!!
+#ifdef QT_DEBUG
+#else
+	ui->action_Switch_to_Level_Editor->setEnabled(false);
+	ui->action_Switch_to_Level_Editor->setVisible(false);
+#endif
 
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
     if (theStartFileName.isEmpty())

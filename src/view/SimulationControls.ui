@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>226</width>
+    <width>188</width>
     <height>118</height>
    </rect>
   </property>
@@ -51,17 +51,8 @@
     <widget class="QFrame" name="buttonFrame">
      <property name="styleSheet">
       <string notr="true">QFrame {
-     background: url(:/SimulationControlsButtonFrame.png) top center no-repeat;
+     background: url(:/SimulationControlsButtonFrame.png) top left no-repeat;
 }
-
-QToolButton {
-     border-image: url(:/SimulationButtonNormal.png); 
-     background: url(:/transparant.png);
- }
-
-QToolButton:pressed {
-     border-image: url(:/SimulationButtonInverted.png); 
- }
 </string>
      </property>
      <property name="lineWidth">
@@ -75,7 +66,7 @@ QToolButton:pressed {
        <number>6</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="rightMargin">
        <number>4</number>
@@ -83,36 +74,6 @@ QToolButton:pressed {
       <property name="bottomMargin">
        <number>4</number>
       </property>
-      <item>
-       <widget class="QToolButton" name="buttonEject">
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton {
-     border-image: url(:/SimulationButtonNormal.png); 
-     background: url(:/transparant.png);
- }
-
-QToolButton:pressed {
-     border-image: url(:/SimulationButtonInverted.png); 
- }
-</string>
-        </property>
-        <property name="text">
-         <string>Eject</string>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="QToolButton" name="buttonReset">
         <property name="minimumSize">
@@ -126,17 +87,6 @@ QToolButton:pressed {
           <width>40</width>
           <height>40</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton {
-     border-image: url(:/SimulationButtonNormal.png); 
-     background: url(:/transparant.png);
- }
-
-QToolButton:pressed {
-     border-image: url(:/SimulationButtonInverted.png); 
- }
-</string>
         </property>
         <property name="text">
          <string>Reset</string>
@@ -159,7 +109,7 @@ QToolButton:pressed {
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>6</width>
+          <width>2</width>
           <height>0</height>
          </size>
         </property>
