@@ -135,7 +135,7 @@ static CustomCircleObjectFactory theCustomCircleObjectFactory;
 
 
 CustomBall::CustomBall (void)
-	: CircleObject("CustomBall", "CustomBall", "", 1.0, 1.0, 0.2)
+	: CircleObject("CustomBall", "", "", 1.0, 1.0, 0.2)
 {
 	DEBUG5ENTRY;
 
