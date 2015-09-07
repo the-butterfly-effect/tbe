@@ -69,7 +69,10 @@ void ViewDetonatorBox::displayChoosePhoneNumber(void)
 
 void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
+	// always execute Hover - even if object is not movable.
 	realHoverEnterEvent();
+	// update the tooltip because it might have been changed
+	setToolTip(theAbstractObjectPtr->getToolTip());
 }
 
 
