@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 2.8.5)
 project (thebutterflyeffect)
 
+option(WITH_DOCS "build package with(out) documentation")
+
 set(CMAKE_INSTALL_PREFIX /usr/share)
 set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/../games)
 set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/tbe/levels)
@@ -20,9 +22,11 @@ install(DIRECTORY levels
 	PATTERN "test" EXCLUDE
 )
 
-install(FILES COPYING AUTHORS
-	DESTINATION ${TBE_DOC_DIR}
-)
+if (WITH_DOCS)
+  install(FILES COPYING AUTHORS README.md
+	  DESTINATION ${TBE_DOC_DIR}
+  )
+ENDIF(WITH_DOCS)
 
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Butterfly Effect is a computer physics puzzle game.")

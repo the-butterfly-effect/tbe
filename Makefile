@@ -5,6 +5,8 @@
 BUILDDIR=build
 # if you want to build Release, just call "make BUILDTYPE=Release all"
 BUILDTYPE=Debug
+# if you want to build without docs, just call "make WITH_DOCS=off all"
+WITH_DOCS=on
 
 all: usr/games/tbe
 
@@ -12,7 +14,7 @@ usr/games/tbe: ${BUILDDIR}/src/tbe
 
 ${BUILDDIR}/src/tbe:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} ..
+	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} -DWITH_DOCS=${WITH_DOCS} ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
 	ln -sf usr/games/tbe .
