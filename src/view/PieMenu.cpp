@@ -74,10 +74,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 	ImageCache::getPixmap(aFileName, QSize(2*CENTER_RADIUS,2*CENTER_RADIUS), &theCenterPixmap);
 	ImageCache::getPixmap(aFileName, QSize(2*SMALL_RADIUS,2*SMALL_RADIUS), &theSmallPixmap);
 
-	printf("center: %d\n", theCenterPixmap.height());
-	printf("small:  %d\n", theSmallPixmap.height());
-
-
 	QPointF myOuterPos(OUTER_DISTANCE*cos(anActionType*45.0/180.0*PI) -SMALL_RADIUS,
 					   -OUTER_DISTANCE*sin(anActionType*45.0/180.0*PI) - SMALL_RADIUS);
 	QPointF mySInnerPos(-SMALL_RADIUS, -SMALL_RADIUS);

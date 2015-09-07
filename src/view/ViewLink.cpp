@@ -52,7 +52,6 @@ void ViewLink::setEndpoints(const Vector& aFirstPoint,
 
         theLinePtr = new QGraphicsLineItem(NULL);
         QPen pen;
-        printf("theImageName: %s\n", ASCII(theImageName));
         if (theImageName=="" || theImageName=="Empty" || theImageName=="Link")
             pen = QPen(QColor("transparent"), 2, Qt::NoPen);
         else
