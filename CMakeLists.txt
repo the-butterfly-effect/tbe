@@ -58,13 +58,8 @@ ENDIF(WIN32 AND NOT UNIX)
 if (UNIX)
  SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_STRIP_FILES "tbe")
-#  install(FILES imagery/illustrations/tbe-icon.ico DESTINATION images RENAME TheButterflyEffect-icon.ico)
-#  install(FILES installer/install_icons.sh DESTINATION .
-#          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
-#  install(FILES installer/uninstall_icons.sh DESTINATION .
-#          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
-#  install(FILES installer/sourceforge.net-tbe.desktop DESTINATION .
-#          PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+ install(DIRECTORY installer/icons/hicolor DESTINATION ${TBE_ICON_DIR} )
+ install(FILES installer/tbe.desktop DESTINATION ${TBE_DESKTOP_DIR} )
 endif (UNIX)
 
 
