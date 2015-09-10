@@ -42,6 +42,7 @@ ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView
 
 	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
 	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
+	this->adjustSize();
 }
 
 ChoosePhoneNumber::~ChoosePhoneNumber()
