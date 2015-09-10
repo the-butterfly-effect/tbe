@@ -12,7 +12,7 @@ set(READMEtotal "This file lists the orgins of all files in this directory.\n"
 file(GLOB_RECURSE READMEfiles "README")
 foreach(f ${READMEfiles})
    file(READ ${f} READMEf)
-   set(READMEtotal ${READMEtotal} "******* " ${f} " ******\n" ${READMEf} "\n")
+   set(READMEtotal ${READMEtotal} ${READMEf} "\n")
 endforeach(f)
 file(WRITE README.image.origins.txt ${READMEtotal})
 
