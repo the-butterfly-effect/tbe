@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>110</height>
+    <width>241</width>
+    <height>105</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -44,7 +44,13 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: url(:/ChoosePhoneNumber.png);</string>
+      <string notr="true">QFrame#frame {
+  border-image: url(:/ChoosePhoneNumber.png) 1 32 1 25;
+            border-top: 1px transparent;
+            border-right: 32px transparent;
+            border-bottom: 1px transparent;
+            border-left: 20px transparent;
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -59,11 +65,14 @@
       <property name="spacing">
        <number>4</number>
       </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
       <property name="topMargin">
        <number>16</number>
       </property>
       <property name="rightMargin">
-       <number>17</number>
+       <number>0</number>
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
