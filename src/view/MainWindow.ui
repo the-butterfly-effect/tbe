@@ -104,6 +104,9 @@ QToolButton:pressed {
             <height>40</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>Shows the level information again</string>
+          </property>
           <property name="text">
            <string>Info</string>
           </property>
@@ -122,6 +125,9 @@ QToolButton:pressed {
             <width>40</width>
             <height>40</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Choose a different level to play</string>
           </property>
           <property name="text">
            <string>Eject</string>
