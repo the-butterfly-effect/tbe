@@ -195,8 +195,8 @@ void MainWindow::on_action_New_Level_Ideas_activated(void)
 				   "Use the Level Creator to build your levels and please submit them to us.<br>"
 				   "Even if your level is not finished yet, don't hesitate to share it with us! "
 				   "Of course, define how you think it should work so others can join in."
-				   "<br><br>This is our level mailing list:<br>"
-				   "<a href=\"mailto:tbe-levels@lists.sf.net\">tbe-levels@lists.sf.net</a><br>"
+				   "<br><br>Please file a ticket on github with your idea:<br>"
+				   "<a href=\"https://github.com/kaa-ching/tbe/issues\">https://github.com/kaa-ching/tbe/issues</a><br>"
 				   ""), this);
 }
 
