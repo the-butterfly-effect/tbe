@@ -5,6 +5,9 @@ If you downloaded an installer and executed it, being able to read
 this file already suggests you're done - the installer did its work.
 
 This file explains step-by-step how to build TBE from the source archive.
+For now, this only discusses how to build for Linux platforms.
+Building for other platforms should be documented here:
+https://github.com/kaa-ching/tbe/wiki/HowToMakeARelease
 
 1)
 Make sure that you have all tools & libraries installed that you need.
@@ -23,8 +26,7 @@ requires building QT first - you'll now also need:
   * wget
 However, doing a static build is beyond the scope of this document, 
 please refer to the TBE wiki:
-https://sourceforge.net/apps/trac/tbe/wiki/HowToMakeARelease
-
+https://github.com/kaa-ching/tbe/wiki/HowToMakeARelease
 
 2)
 As a *NORMAL* user, build the main project. 
@@ -32,16 +34,14 @@ If you have cmake installed, this should be as easy as just run make in this
 directory:
     make
 That make will in turn call cmake and build everything for you.
-It will also immediately install the game in the local directory.
+It will also immediately install the game in the local directory and install
+a link to the binary `tbe` in the project root.
 
 3)
-If you want to run TBE in another language (note: only Dutch 'nl' and Spanish
-'es' are supported right now) you need to do the following:
-    make lang
-This will update the translation files, so TBE can use them.
+There is no action three :-)
 
-4)
-There is no action four :-)
+You can now start the game by typing:  ./tbe
+
 Enjoy!
 
 
