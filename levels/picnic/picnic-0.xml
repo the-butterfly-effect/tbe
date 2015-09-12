@@ -18,7 +18,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
 	  <name lang="nl">bowling bal</name>
-            <object width="0.220" X="3.876" Y="2.547" height="0.220" type="BowlingBall" angle="0.000" />
+            <object width="0.220" height="0.220" type="BowlingBall" angle="0.000" />
         </toolboxitem>
         <toolboxitem count="3" name="Cactus">
 	  <name lang="nl">Cactus</name>
@@ -185,4 +185,8 @@
             <property key="ybelow" >0.5</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="6.3" Y="2.5" />
+        <hint number="2" object="QuarterArc80" X="6.200" Y="0.700" angle="-1.6" />
+    </hints>
 </tbe-level>

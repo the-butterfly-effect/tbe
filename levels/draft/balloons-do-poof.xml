@@ -84,4 +84,7 @@
             <property key="object" >the-left-pin</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="0.7" Y="1.5" />
+    </hints>
 </tbe-level>

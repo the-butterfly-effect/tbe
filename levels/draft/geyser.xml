@@ -14,12 +14,14 @@
             <name lang="nl" >Helling /</name>
             <object width="1.6" height="0.3" type="LeftRamp" >
                 <property key="ImageName" >LeftRamp</property>
+                <property key="Bounciness" >0.0</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \" >
             <name lang="nl" >Helling \</name>
             <object width="1.4" height="0.5" type="RightRamp" >
                 <property key="ImageName" >RightRamp</property>
+                <property key="Bounciness" >0.0</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Steel I-Beam" >
@@ -128,4 +130,9 @@
             <property key="xbelow" >3.4</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="IBeam" X="3.650" Y="0.9" />
+        <hint number="2" object="LeftRamp" X="1.05" Y="2.7" />
+        <hint number="3" object="RightRamp" X=".7" Y="1.12" />
+    </hints>
 </tbe-level>
