@@ -12,7 +12,7 @@
     <toolbox>
         <toolboxitem count="1" name="Spring" >
             <name lang="nl" >Veer</name>
-            <object width="0.400" height="0.200" type="Spring" angle="1.57" >
+            <object width="0.400" height="0.250" type="Spring" >
                 <property key="ImageName" >spring20</property>
                 <property key="Rotatable" >true</property>
                 <property key="SpringConstant" >250</property>
@@ -29,7 +29,7 @@
             <object width="0.100" X="1.050" Y="1.200" height="2.300" type="RectObject" angle="0.000" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.600" X="0.300" Y="2.640" height="0.400" type="RightRamp" angle="0.000" />
+            <object width="0.600" X="0.300" Y="2.660" height="0.400" type="RightRamp" angle="0.000" />
             <object width="0.220" X="2.000" Y="0.500" height="0.220" type="PostIt" angle="0.000" >
                 <property key="page1" >Soccer Balls are a little bouncy, but sometimes "a little" is not enough.</property>
                 <property key="page1_nl" >Voetballen stuiteren een beetje. Soms is "een beetje" een beetje te weinig.</property>
@@ -86,4 +86,7 @@
             <property key="xover" >4.3</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="Spring" X="2.64" Y="0.32" angle="1.57"/>
+    </hints>
 </tbe-level>

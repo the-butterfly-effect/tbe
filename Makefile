@@ -26,6 +26,7 @@ slow:
 regression: usr/games/tbe
 	./tbe --regression levels/draft/bouncing_balls.xml:10, \
 	      --regression levels/draft/geyser.xml:16, \
+	      --regression levels/draft/jumping_around-2.xml:10, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
 	      --regression levels/angry/birds1.xml:10, \
 	      --regression levels/picnic/picnic-0.xml:13, \
