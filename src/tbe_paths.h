@@ -21,8 +21,8 @@
 
 // instead of using hardcoded paths, please use the below:
 #define BINARY_DIRECTORY   (qApp->applicationDirPath())
-#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/tbe/images")
-#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/tbe/levels")
-#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../share/tbe/i18n")
+#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/games/tbe/images")
+#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/games/tbe/levels")
+#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../share/games/tbe/i18n")
 
 #endif // def TBE_PATHS
