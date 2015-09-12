@@ -9,8 +9,8 @@
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="48"/>
-        <source>Bowling pins are meant to be run over -
-and most people prefer to do that using a Bowling Ball.</source>
+        <source>Bowling pins are meant to be run over - most
+people prefer to do that using a Bowling Ball.</source>
         <translation>Кегли для боулинга предназначены для сбивания, и большинство
 людей предпочитают делать это с помощью шара для боулинга.</translation>
     </message>
@@ -94,42 +94,71 @@ and most people prefer to do that using a Bowling Ball.</source>
 <context>
     <name>AbstractRectObjectFactory</name>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="52"/>
+        <location filename="../src/model/RectObject.cpp" line="53"/>
+        <source>Wooden Bar</source>
+        <translation>Деревянный брус</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="54"/>
+        <source>Birch is a type of wood.
+Birch wood beams move and float.</source>
+        <translation>Берёза - это тип древесины.
+Берёзовая древесина перемещается и плавает.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="58"/>
         <source>Domino (Red)</source>
         <translation>Домино (красное)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="53"/>
+        <location filename="../src/model/RectObject.cpp" line="59"/>
         <source>The famous plastic red domino stone</source>
         <translation>Знаменитое пластиковое красное домино-кости</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="57"/>
+        <location filename="../src/model/RectObject.cpp" line="63"/>
         <source>Domino (Blue)</source>
         <translation>Домино (синее)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="58"/>
+        <location filename="../src/model/RectObject.cpp" line="64"/>
         <source>The famous plastic blue domino stone</source>
         <translation>Знаменитое пластиковое синее домино-кости</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="62"/>
+        <location filename="../src/model/RectObject.cpp" line="68"/>
         <source>Domino (Green)</source>
         <translation>Домино (зелёное)</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="63"/>
+        <location filename="../src/model/RectObject.cpp" line="69"/>
         <source>The famous plastic green domino stone</source>
         <translation>Знаменитое пластиковое зелёное домино-кости</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="67"/>
+        <location filename="../src/model/RectObject.cpp" line="73"/>
         <source>Floor</source>
         <translation>Пол</translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="72"/>
+        <location filename="../src/model/RectObject.cpp" line="74"/>
+        <source>It doesn&apos;t move.</source>
+        <translation>Это не перемещается.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="80"/>
+        <source>Steel I-Beam</source>
+        <translation>Стальная балка</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="81"/>
+        <source>An I Beam is named after the shape of its cross-section.
+ It&apos;s heavy, don&apos;t drop one on your foot.</source>
+        <translation>Стальная балка имеет форму буквы Н.
+Она тяжёлая, не подставляйте под неё ногу.</translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="85"/>
         <source>Wall</source>
         <translation>Стена</translation>
     </message>
@@ -142,7 +171,12 @@ and most people prefer to do that using a Bowling Ball.</source>
         <translation>Выберите игру!</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.ui" line="23"/>
+        <location filename="../src/view/ChooseLevel.ui" line="103"/>
+        <source>Choose your next level</source>
+        <translation>Выберите следующий уровень</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ChooseLevel.ui" line="128"/>
         <source>Please select the level you want to play.
 
 Double-click for the post-it notes for help.
@@ -153,22 +187,22 @@ Double-click for the post-it notes for help.
 </translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.ui" line="40"/>
+        <location filename="../src/view/ChooseLevel.ui" line="148"/>
         <source>#</source>
         <translation>№</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.ui" line="45"/>
+        <location filename="../src/view/ChooseLevel.ui" line="153"/>
         <source>Level Title</source>
         <translation>Название уровня</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.ui" line="58"/>
+        <location filename="../src/view/ChooseLevel.ui" line="166"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.ui" line="81"/>
+        <location filename="../src/view/ChooseLevel.ui" line="189"/>
         <source>Go!</source>
         <translation>Вперёд!</translation>
     </message>
@@ -214,17 +248,22 @@ Parse error at line %1, column %2:
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="25"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="90"/>
+        <source>Select phone to dial</source>
+        <translation>Выберите телефон для дозвона</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="139"/>
         <source>Phone Number:</source>
         <translation>№ телефона:</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="68"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="186"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="78"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="196"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
@@ -598,67 +637,67 @@ Nothing was changed yet, please fix.</source>
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="135"/>
-        <location filename="../src/loadsave/Level.cpp" line="156"/>
+        <location filename="../src/loadsave/Level.cpp" line="150"/>
+        <location filename="../src/loadsave/Level.cpp" line="171"/>
         <source>Cannot read file &apos;%1&apos;</source>
         <translation>Не удалось прочитать файл &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="162"/>
+        <location filename="../src/loadsave/Level.cpp" line="177"/>
         <source>Cannot parse file - not valid XML?</source>
         <translation>Не удалось разобрать файл - некорректный XML?</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="172"/>
-        <location filename="../src/loadsave/Level.cpp" line="190"/>
-        <location filename="../src/loadsave/Level.cpp" line="210"/>
-        <location filename="../src/loadsave/Level.cpp" line="224"/>
-        <location filename="../src/loadsave/Level.cpp" line="241"/>
-        <location filename="../src/loadsave/Level.cpp" line="276"/>
-        <location filename="../src/loadsave/Level.cpp" line="333"/>
+        <location filename="../src/loadsave/Level.cpp" line="187"/>
+        <location filename="../src/loadsave/Level.cpp" line="205"/>
+        <location filename="../src/loadsave/Level.cpp" line="225"/>
+        <location filename="../src/loadsave/Level.cpp" line="239"/>
+        <location filename="../src/loadsave/Level.cpp" line="256"/>
+        <location filename="../src/loadsave/Level.cpp" line="291"/>
+        <location filename="../src/loadsave/Level.cpp" line="348"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation>Разбор секции &apos;%1&apos; неудачен: </translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="217"/>
+        <location filename="../src/loadsave/Level.cpp" line="232"/>
         <source>scene width or height unspecified</source>
         <translation>Ширина или высота сцены не определены</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="232"/>
+        <location filename="../src/loadsave/Level.cpp" line="247"/>
         <source>Parsing &apos;%1&apos; section failed: %2</source>
         <translation>Разбор секции &apos;%1&apos; неудачен: %2</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="256"/>
+        <location filename="../src/loadsave/Level.cpp" line="271"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation>Ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="263"/>
-        <location filename="../src/loadsave/Level.cpp" line="307"/>
-        <location filename="../src/loadsave/Level.cpp" line="367"/>
+        <location filename="../src/loadsave/Level.cpp" line="278"/>
+        <location filename="../src/loadsave/Level.cpp" line="322"/>
+        <location filename="../src/loadsave/Level.cpp" line="382"/>
         <source>createObjectFromDom failed</source>
         <translation>Не удалось создать объект, неудача в функции createObjectFromDom</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="280"/>
+        <location filename="../src/loadsave/Level.cpp" line="295"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation>Не найдена секция &lt;%1&gt;!</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="299"/>
-        <location filename="../src/loadsave/Level.cpp" line="359"/>
+        <location filename="../src/loadsave/Level.cpp" line="314"/>
+        <location filename="../src/loadsave/Level.cpp" line="374"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
         <translation>Ожидалась секция &lt;%1&gt;, получена &lt;%2&gt;. </translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="313"/>
+        <location filename="../src/loadsave/Level.cpp" line="328"/>
         <source>&lt;%1&gt; properties could not be parsed. </source>
         <translation>Свойства &lt;%1&gt; не могут быть разобраны.</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="488"/>
+        <location filename="../src/loadsave/Level.cpp" line="509"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation>Не удаётся записать файл &apos;%1&apos;: %2.</translation>
     </message>
@@ -671,18 +710,25 @@ Nothing was changed yet, please fix.</source>
         <translation>Подсказка панели компонентов</translation>
     </message>
     <message>
-        <location filename="../src/view/ListViewItemTooltip.ui" line="211"/>
+        <location filename="../src/view/ListViewItemTooltip.ui" line="144"/>
+        <source>Esc</source>
+        <comment>Probably 'Esc' for any language</comment>
+        <extracomment>escape should close the listviewtooltip</extracomment>
+        <translation>Esc</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ListViewItemTooltip.ui" line="236"/>
         <source>This is a dummy string to test the widget size</source>
         <translation>Это фиктивная строка чтобы протестировать размер виджета</translation>
     </message>
     <message>
-        <location filename="../src/view/ListViewItemTooltip.ui" line="125"/>
-        <location filename="../src/view/ListViewItemTooltip.ui" line="233"/>
+        <location filename="../src/view/ListViewItemTooltip.ui" line="131"/>
+        <location filename="../src/view/ListViewItemTooltip.ui" line="261"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../src/view/ListViewItemTooltip.ui" line="178"/>
+        <location filename="../src/view/ListViewItemTooltip.ui" line="200"/>
         <source>1x</source>
         <translation>1x</translation>
     </message>
@@ -700,258 +746,268 @@ Nothing was changed yet, please fix.</source>
         <translation>Эффект бабочки</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="85"/>
+        <location filename="../src/view/MainWindow.ui" line="154"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="101"/>
+        <location filename="../src/view/MainWindow.ui" line="170"/>
         <source>&amp;Edit</source>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="106"/>
+        <location filename="../src/view/MainWindow.ui" line="175"/>
         <source>&amp;Controls</source>
         <translation>&amp;Управление</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="111"/>
+        <location filename="../src/view/MainWindow.ui" line="180"/>
         <source>&amp;Help</source>
         <translation>&amp;Справка</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="115"/>
+        <location filename="../src/view/MainWindow.ui" line="184"/>
         <source>&amp;Contribute</source>
         <translation>&amp;Внести вклад</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="134"/>
+        <location filename="../src/view/MainWindow.ui" line="203"/>
         <source>&amp;Open Level...</source>
         <translation>&amp;Открыть уровень...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="139"/>
+        <location filename="../src/view/MainWindow.ui" line="214"/>
         <source>O&amp;pen File...</source>
         <translation>О&amp;ткрыть файл...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="142"/>
+        <location filename="../src/view/MainWindow.ui" line="206"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="147"/>
+        <location filename="../src/view/MainWindow.ui" line="108"/>
+        <source>Info</source>
+        <translation>Информация</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="127"/>
+        <source>Eject</source>
+        <translation>Извлечь</translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="222"/>
         <source>S&amp;kip Level</source>
         <translation>&amp;Пропустить уровень</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="152"/>
+        <location filename="../src/view/MainWindow.ui" line="227"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="157"/>
+        <location filename="../src/view/MainWindow.ui" line="232"/>
         <source>Libraries...</source>
         <translation>Библиотеки...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="162"/>
+        <location filename="../src/view/MainWindow.ui" line="237"/>
         <source>&amp;Keyboard Shortcuts...</source>
         <translation>&amp;Горячие клавиши...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="167"/>
+        <location filename="../src/view/MainWindow.ui" line="242"/>
         <source>&amp;About...</source>
         <translation>&amp;О программе...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="172"/>
+        <location filename="../src/view/MainWindow.ui" line="247"/>
         <source>&amp;Suggestions...</source>
         <translation>&amp;Предложения...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="177"/>
+        <location filename="../src/view/MainWindow.ui" line="252"/>
         <source>&amp;Bug Reports...</source>
         <translation>&amp;Сообщить об ошибке...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="182"/>
+        <location filename="../src/view/MainWindow.ui" line="257"/>
         <source>New Level Ideas...</source>
         <translation>Идеи новых уровней...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="187"/>
+        <location filename="../src/view/MainWindow.ui" line="262"/>
         <source>&amp;Switch to Level Editor</source>
         <translation>П&amp;ереключиться на редактор уровней</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="190"/>
+        <location filename="../src/view/MainWindow.ui" line="265"/>
         <source>Switch</source>
         <translation>Переключить</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="198"/>
+        <location filename="../src/view/MainWindow.ui" line="273"/>
         <source>&amp;Save</source>
         <translation>&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="201"/>
+        <location filename="../src/view/MainWindow.ui" line="276"/>
         <source>Save current level under its current name</source>
         <translation>Сохранить текущий уровень, используя текущее название</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="204"/>
+        <location filename="../src/view/MainWindow.ui" line="279"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="215"/>
+        <location filename="../src/view/MainWindow.ui" line="290"/>
         <source>Save &amp;As...</source>
         <translation>Сохранить &amp;как...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="218"/>
+        <location filename="../src/view/MainWindow.ui" line="293"/>
         <source>Save level under a new name</source>
         <translation>Сохранить уровень, используя новое название</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="226"/>
+        <location filename="../src/view/MainWindow.ui" line="301"/>
         <source>New Level...</source>
         <translation>Новый уровень...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="229"/>
+        <location filename="../src/view/MainWindow.ui" line="304"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="94"/>
+        <location filename="../src/view/MainWindow.cpp" line="95"/>
         <source>ERROR during reading file '%1': '%2'
 </source>
         <translation>Ошибка при чтении файла &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="100"/>
+        <location filename="../src/view/MainWindow.cpp" line="101"/>
         <source>Non-fatal problem reading file '%1': '%2'.
 This may affect playability, though!</source>
         <translation>Некритичная проблема чтения файла &apos;%1&apos;: &apos;%2&apos;.
 Хотя это может повлять на пригодность для игры!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="123"/>
+        <location filename="../src/view/MainWindow.cpp" line="124"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции. Путём комбинирования в сложную систему множества элементарных механических элементов и обычных объектов, ставится простая цель, которую необходимо достигнуть.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="137"/>
+        <location filename="../src/view/MainWindow.cpp" line="138"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере &lt;i&gt;название&lt;/i&gt; уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="156"/>
+        <location filename="../src/view/MainWindow.cpp" line="157"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Горячие клавиши&lt;/b&gt;&lt;br&gt;&lt;br&gt;Следующие клавиши могут быть использованы для ускорения действий, которые вы бы делали с помощью мыши&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Клавиша&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Функция &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Пробел&lt;/td&gt;&lt;td&gt;начать/остановить симуляцию&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(при симуляции) ускорить вперёд/замедлить назад &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(при симуляции) действительно ускорить вперёд &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;сбросить симуляцию &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; отменить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; повторить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="173"/>
+        <location filename="../src/view/MainWindow.cpp" line="174"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Библиотеки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Эффект бабочки является гордостью пользователей библиотеки физики Box2D. Пожалуйста, посетите http://www.box2d.org/ .&lt;br&gt;Эффект бабочки использует инструментарий Qt GUI. Пожалуйста, посетите  http://qt-project.org/ .</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="191"/>
+        <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Создание новых уровней&lt;/b&gt;&lt;br&gt;&lt;br&gt;Мы знаем, что вы можете создать ещё лучше уровни, чем мы!&lt;br&gt;Используйте редактор уровней чтобы построить свои уровни и, пожалуйста, отправьте их нам.&lt;br&gt;Даже если ваш уровень ещё не закончен, не колеблитесь чтобы поделиться им с нами! Конечно, определите, как вы полагаете он должен работать, чтобы другие могли присоединиться.&lt;br&gt;&lt;br&gt;Это наш список рассылки для уровней:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>Open level</source>
         <translation>Открыть уровень</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="213"/>
+        <location filename="../src/view/MainWindow.cpp" line="214"/>
         <source>TBE levels (*.xml)</source>
         <translation>Уровни TBE (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="222"/>
+        <location filename="../src/view/MainWindow.cpp" line="223"/>
         <source>really?</source>
         <translation>Вы уверены?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="235"/>
+        <location filename="../src/view/MainWindow.cpp" line="236"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Файл &apos;%1&apos; не может быть сохранён.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="255"/>
+        <location filename="../src/view/MainWindow.cpp" line="256"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Вы не заполнили все поля, но в любом случае уровень был сохранён
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="270"/>
+        <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation>Отметить этот уровень &apos;пропущенным&apos; и продолжить со следующего уровня?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="277"/>
+        <location filename="../src/view/MainWindow.cpp" line="278"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;Эффект бабочки - Предложения&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если у вас есть великолепные идеи для новых возможностей в игре, пожалуйста, перейдите на наши форумы: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;чтобы поделиться своими идеями с миром.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="307"/>
+        <location filename="../src/view/MainWindow.cpp" line="308"/>
         <source>&amp;Insert</source>
         <translation>&amp;Вставка</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="323"/>
+        <location filename="../src/view/MainWindow.cpp" line="324"/>
         <source>&amp;Editors</source>
         <translation>&amp;Редакторы</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="326"/>
+        <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Goal Editor...</source>
         <translation>Редактор &amp;целей...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="329"/>
+        <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Level Properties...</source>
         <translation>&amp;Свойства уровня...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="332"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Object Editor...</source>
         <translation>Р&amp;едактор объекта...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="398"/>
+        <location filename="../src/view/MainWindow.cpp" line="401"/>
         <source>&amp;Undo</source>
         <translation>&amp;Отменить</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="399"/>
+        <location filename="../src/view/MainWindow.cpp" line="402"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="401"/>
+        <location filename="../src/view/MainWindow.cpp" line="404"/>
         <source>&amp;Redo</source>
         <translation>Ве&amp;рнуть</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="403"/>
+        <location filename="../src/view/MainWindow.cpp" line="406"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="403"/>
+        <location filename="../src/view/MainWindow.cpp" line="406"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Shift+Ctrl+Z</translation>
     </message>
@@ -1293,74 +1349,69 @@ You might want to read them - it may help!</source>
 <context>
     <name>SimulationControls</name>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="26"/>
+        <location filename="../src/view/SimulationControls.ui" line="32"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="59"/>
+        <location filename="../src/view/SimulationControls.ui" line="92"/>
         <source>Reset</source>
         <translation>Сброс</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="91"/>
+        <location filename="../src/view/SimulationControls.ui" line="133"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="110"/>
+        <location filename="../src/view/SimulationControls.ui" line="152"/>
         <source>Play</source>
         <translation>Играть</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="129"/>
+        <location filename="../src/view/SimulationControls.ui" line="171"/>
         <source>FF</source>
         <translation>FF</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.ui" line="168"/>
-        <source>TextLabel</source>
-        <translation>Текстовая метка</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="122"/>
+        <location filename="../src/view/SimulationControls.cpp" line="123"/>
         <source>&amp;Forward</source>
         <translation>&amp;Вперёд</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="124"/>
+        <location filename="../src/view/SimulationControls.cpp" line="125"/>
         <source>f</source>
         <extracomment>translators: 'f' is for (fast) forward</extracomment>
         <translation>f</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="127"/>
+        <location filename="../src/view/SimulationControls.cpp" line="128"/>
         <source>P&amp;ause</source>
         <translation>&amp;Пауза</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="130"/>
+        <location filename="../src/view/SimulationControls.cpp" line="131"/>
         <source>&amp;Play</source>
         <translation>&amp;Играть</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="133"/>
+        <location filename="../src/view/SimulationControls.cpp" line="134"/>
         <source>&amp;Reset</source>
         <translation>&amp;Сброс</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="135"/>
+        <location filename="../src/view/SimulationControls.cpp" line="136"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
         <translation>r</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="137"/>
+        <location filename="../src/view/SimulationControls.cpp" line="138"/>
         <source>Space</source>
         <translation>Пробел</translation>
     </message>
     <message>
-        <location filename="../src/view/SimulationControls.cpp" line="142"/>
+        <location filename="../src/view/SimulationControls.cpp" line="143"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
         <translation>Shift+f</translation>
