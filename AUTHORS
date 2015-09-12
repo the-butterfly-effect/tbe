@@ -2,7 +2,7 @@ The Butterfly Effect
 ====================
 
 Project Management:
-* lspace@users.sf.net   - Peter van Ginneken
+* lspacenl@gmail.com   - Peter van Ginneken
 
 Development:
 * klaas@opentux.nl - Klaas van Gend
@@ -18,4 +18,12 @@ Levels:
 * most levels were implemented by Klaas van Gend
   - but many contain ideas coined by others - thank you!
   - almost all levels have seen playtesting by a lot of volunteers - thank you!
+
+Internationalization or "i18n":
+* The original English and Dutch texts by Peter and Klaas
+* Translation to other languages is now done through "Transifex".
+  This project was started and managed by Alexey Loginov. See
+  https://www.transifex.com/Magic/thebutterflyeffect/
+
+
 
