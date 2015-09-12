@@ -76,6 +76,9 @@ private:
 	MainWindow* theMainWindowPtr;
 	States theState;
 	QTimer theRegressionTimer;
+
+	/// will contain the names of the various regression states
+	QStringList theStateNames;
 };
 
 #endif // REGRESSIONTEST_H

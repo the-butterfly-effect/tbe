@@ -86,6 +86,7 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 		myTbGPtr->addObject(myAOPtr);
 	}
 
+	DEBUG4("createTBGFromDom for '%s' successful", ASCII(myTbGPtr->theInternalName));
 	return myTbGPtr;
 
 not_good:

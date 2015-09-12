@@ -397,6 +397,7 @@ void MainWindow::reloadLevel(void)
 
 bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
 {
+	DEBUG1ENTRY;
 	Hint* myHintPtr = theLevelPtr->getHint(aHintNumber);
 	if (myHintPtr==nullptr)
 		return false;

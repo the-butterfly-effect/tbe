@@ -44,6 +44,18 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 	theLevels = theStartFileName.split(",");
 	DEBUG1("levels: %s", ASCII(theStartFileName));
 	connect(&theRegressionTimer, SIGNAL(timeout()), this, SLOT(slotRegressionProgress()));
+
+	// set up the state names. Note: you should keep the numbers from low to high...
+	theStateNames.insert(START,             "Start");
+	theStateNames.insert(LOADLEVEL,         "Load Level");
+	theStateNames.insert(STARTLEVELTOFAIL,  "Start Level to Fail");
+	theStateNames.insert(LEVELFAILED,       "Level Failed (expected)");
+	theStateNames.insert(STOPANDRESETLEVEL, "Stop and Reset Level");
+	theStateNames.insert(RESETLEVEL,        "Reset Level");
+	theStateNames.insert(ADDHINTS,          "Add All Hints");
+	theStateNames.insert(STARTLEVELTOWIN,   "Start Level to Win");
+	theStateNames.insert(LEVELWON,          "Level Won (expected)");
+	theStateNames.insert(NEXTLEVEL,         "Next Level");
 }
 
 void RegressionTest::startRegressionRun(void)
@@ -87,7 +99,8 @@ void RegressionTest::slotRegressionProgress(void)
 	int myLevelDurationSeconds = myLevelParams[1].toInt();
 	States myNextState = START;
 
-	DEBUG1("AUTOMATED TESTING, LEVEL %d STATE %d--------------------------", theLevelIndex, theState);
+	DEBUG1("AUTOMATED TESTING, LEVEL %d STATE %d '%s'--------------------------",
+		   theLevelIndex, theState, ASCII(theStateNames[theState]));
 	switch (theState)
 	{
 	case START:
@@ -152,11 +165,13 @@ void RegressionTest::slotRegressionProgress(void)
 	}
 	case ADDHINTS: // Setup all hints
 	{
-		for(int i=0; i<100; i++)
+		int i=0;
+		for(; i<100; i++)
 		{
 			if (!theMainWindowPtr->slot_insertHint(i))
 				break;
 		}
+		DEBUG2("Added %d hints", i);
 		myNextDelay= 800;
 		myNextState= STARTLEVELTOWIN;
 		break;

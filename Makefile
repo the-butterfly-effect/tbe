@@ -24,7 +24,7 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/save-the-butterfly.xml:28,levels/draft/bouncing_balls.xml:10,levels/picnic/picnic-1.xml:10
+	./tbe --regression levels/draft/save-the-butterfly.xml:28,levels/draft/bouncing_balls.xml:10,levels/picnic/picnic-1.xml:13
 
 clean:
 	rm -rf ${BUILDDIR} ./tbe usr

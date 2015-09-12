@@ -30,7 +30,7 @@
             <object width="1.400" X="0.710" Y="3.950" height="0.100" type="Floor" angle="0.000" />
             <object width="0.800" X="0.500" Y="3.600" height="0.800" type="QuarterArc80" angle="1.570" />
             <object width="2.039" X="4.066" Y="0.693" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.170" X="3.105" Y="0.982" height="0.500" type="ColaMintBottle" angle="3.142" >
+            <object width="0.170" X="3.105" Y="0.982" height="0.500" type="ColaMintBottle" angle="0.0" >
                 <property key="Thrust" > 4.0 </property>
             </object>
             <object width="0.500" X="1.320" Y="3.580" height="0.600" type="RectObject" ID="Bell" angle="0.000" >
@@ -83,6 +83,13 @@
             <object width="3.333" X="4.834" Y="3.301" height="1.398" type="Scenery" angle="0.000" >
                 <property key="ImageName" >the-sun</property>
             </object>
+            <object X="2.5" Y="0.6" width="0.14" height="0.14" type="CustomBall">
+                <property key="Radius" >0.07</property>
+                <property key="Bounciness">0.7</property>
+                <property key="ImageName" >brass-pin</property>
+                <property key="Mass">0</property>
+            </object>
+
         </predefined>
         <background>
             <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
@@ -96,8 +103,8 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="Wooden Beam" X="2.000" Y="0.050" />
-        <hint number="2" object="Quarter Arc" X="0.600" Y="0.400" angle="-3.140" />
-        <hint number="3" object="Quarter Arc" X="5.492" Y="1.048" angle="-1.571" />
+        <hint number="1" object="BirchBar" X="2.100" Y="0.050" />
+        <hint number="2" object="QuarterArc80" X="0.601" Y="0.400" angle="-3.140" />
+        <hint number="3" object="QuarterArc80" X="5.492" Y="1.048" angle="-1.571" />
     </hints>
 </tbe-level>
