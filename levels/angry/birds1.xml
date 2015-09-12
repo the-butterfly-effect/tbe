@@ -149,4 +149,9 @@
             <property key="statechanged" ></property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="4.15" Y="2.0" />
+        <hint number="2" object="DetonatorBox" X="0.2" Y="0.2" />
+        <hint number="3" object="Dynamite" X="7.8" Y="0.65" />
+    </hints>
 </tbe-level>
