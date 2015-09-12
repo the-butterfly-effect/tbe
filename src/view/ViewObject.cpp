@@ -151,8 +151,15 @@ void ViewObject::adjustObjectDrawing(void)
 
 void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 {
-    if (theAbstractObjectPtr->isMovable())
-        realHoverEnterEvent();
+	// only in debugging mode, also put coordinates in tooltip...
+	if (theDrawDebug)
+		setToolTip(theAbstractObjectPtr->getOrigCenter().toString()
+				   + ", " +
+				   QString("%1x%2").arg(theAbstractObjectPtr->getTheWidth()).arg(theAbstractObjectPtr->getTheHeight())
+				   + " : " +
+				   theAbstractObjectPtr->getToolTip());
+	if (theAbstractObjectPtr->isMovable())
+		realHoverEnterEvent();
 }
 
 
