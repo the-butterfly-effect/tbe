@@ -128,9 +128,9 @@ static bool setWindowed( QString /*anArgument*/ )
 bool theIsRunAsRegression = false;
 static bool runRegression( QString aListOfLevels )
 {
-    theStartFileName=aListOfLevels;
-    theIsRunAsRegression = true;
-    return true;
+	theStartFileName += aListOfLevels;
+	theIsRunAsRegression = true;
+	return true;
 }
 
 // this struct is used to list all long and short arguments
