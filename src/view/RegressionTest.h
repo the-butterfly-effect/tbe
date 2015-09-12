@@ -70,6 +70,7 @@ private:
 	bool theIsFail;
 	bool theWantWonFail;	/// true if slot_Won or slot_Fail should work...
 
+	int theHintIndex;	/// integer hinting at what the last applied hint is. -1 means no hint yet.
 	int theLevelIndex;
 	QStringList theLevels;
 	MainWindow* theMainWindowPtr;

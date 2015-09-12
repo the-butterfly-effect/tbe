@@ -27,6 +27,7 @@
 #include "ChooseLevel.h"
 #include "EditLevelProperties.h"
 #include "GoalEditor.h"
+#include "Hint.h"
 #include "ImageCache.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
@@ -391,7 +392,44 @@ void MainWindow::reloadLevel(void)
 		return;
 	QString myLevelName = theLevelPtr->getLevelFileName();
 	purgeLevel();
-    loadLevel(myLevelName);
+	loadLevel(myLevelName);
+}
+
+bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
+{
+	Hint* myHintPtr = theLevelPtr->getHint(aHintNumber);
+	if (myHintPtr==nullptr)
+		return false;
+
+	// If we get here, the hint exists.
+	// Because we only care about regression right now, we don't need to worry
+	// that the object has been inserted before, that the hint has been used
+	// before, etc...
+
+	// Find the right ToolboxGroup.
+	// We need to work with the internal name - the other name might be translated...
+	ToolboxGroup* myTBGPtr = nullptr;
+	for(int i=0; i < ui->listWidget->count(); i++)
+	{
+		ToolboxListWidgetItem* myItemPtr = dynamic_cast<ToolboxListWidgetItem*>(ui->listWidget->item(i));
+		ToolboxGroup* myGPtr = myItemPtr->getToolboxGroupPtr();
+		if (myGPtr->theInternalName == myHintPtr->getHintInternalName())
+		{
+			myTBGPtr = myGPtr;
+			break;
+		}
+	}
+	if (myTBGPtr == nullptr)
+		return false;
+	printf("Found: TBG=%s\n", ASCII(myTBGPtr->theInternalName));
+
+	// OK, we found the TBG to take the object from.
+	// Create the InsertUndoCommand
+	InsertUndoCommand::createInsertUndoCommand(myTBGPtr, myHintPtr);
+
+
+	// successfully done
+	return true;
 }
 
 void MainWindow::setupView()

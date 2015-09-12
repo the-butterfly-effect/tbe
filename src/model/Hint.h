@@ -37,6 +37,20 @@ public:
 	Hint();
 	virtual ~Hint();
 
+	const QString& getHintInternalName() const
+	{ return theObjectName; }
+
+	static const char* WIDTH_STRING;
+	static const char* HEIGHT_STRING;
+	static const char* ANGLE_STRING;
+	static const char* XPOS_STRING;
+	static const char* YPOS_STRING;
+
+	/// only updates aFloat if the property aString exists
+	/// @returns - true if property does not exist or if it was correctly read
+	///          - false if property parsing went wrong (e.g. X="lala" cannot be a float)
+	bool updateFromHint(qreal &aFloat, const char* aString);
+
 protected:
 	int     theHintIndex;
 	QString theObjectName;

@@ -36,6 +36,7 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 	QObject(parent),
 	theIsWon(false),
 	theIsFail(false),
+	theHintIndex(-1),
 	theLevelIndex(0),
 	theMainWindowPtr(parent),
 	theState(RegressionTest::START)
@@ -81,7 +82,6 @@ void RegressionTest::slotRegressionProgress(void)
 {
 
 	int myNextDelay = 0;
-
 	QStringList myLevelParams = theLevels[theLevelIndex].split(':');
 	QString myLevelName = myLevelParams[0];
 	int myLevelDurationSeconds = myLevelParams[1].toInt();
@@ -151,10 +151,16 @@ void RegressionTest::slotRegressionProgress(void)
 		break;
 	}
 	case ADDHINTS: // Setup all hints
-		// TODO: implement
-		myNextDelay= 1;
-		myNextState= STARTLEVELTOFAIL;
+	{
+		for(int i=0; i<100; i++)
+		{
+			if (!theMainWindowPtr->slot_insertHint(i))
+				break;
+		}
+		myNextDelay= 800;
+		myNextState= STARTLEVELTOWIN;
 		break;
+	}
 	case STARTLEVELTOWIN: // Start Level, expect success
 	{
 		theWantWonFail = true;
@@ -172,11 +178,18 @@ void RegressionTest::slotRegressionProgress(void)
 	case LEVELWON: // Check for success
 		theWantWonFail = false;
 		theRegressionTimer.stop();
-		// TODO: implement
+		Q_ASSERT(theIsWon==true);
+		myNextState = NEXTLEVEL;
+		myNextDelay= 4000;
 		break;
 	case NEXTLEVEL: // Continue with next item in test
 		theWantWonFail = false;
-		// TODO: implement
+		theLevelIndex++;
+		// are we done?
+		if (theLevelIndex >= theLevels.count())
+			exit(0);
+		myNextState = LOADLEVEL;
+		myNextDelay= 1;
 		break;
 	default:
 		// if we get here, something went terribly wrong...

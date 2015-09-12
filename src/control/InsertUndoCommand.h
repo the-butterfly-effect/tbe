@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2014 Klaas van Gend
+ * This file copyright (C) 2011,2014,2015 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,6 +24,9 @@
 #include "ToolboxGroup.h"
 #include "ViewObject.h"
 
+// forward declarations
+class Hint;
+
 /// implementation of AbstractUndoCommand to handle
 /// insertion of objects
 class InsertUndoCommand : public AbstractUndoCommand
@@ -37,26 +40,33 @@ public:
     /// @returns true if successful (which is always)
     static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr);
 
-    /// This static member creates an InsertUndoCommand from an AbstractObjectPtr
+	/// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
+	/// and a Hint pointer and handles everything - including the commit().
+	/// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
+	/// @param aHint                pointer to a Hint to take object position and size from
+	/// @returns true if successful (which is always)
+	static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr, Hint* aHintPtr);
+
+	/// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().
     /// @param anToolboxGroup       pointer to the toolboxgroup to take the object from
     /// @returns true if successful (which is always)
     static bool createInsertUndoCommand(AbstractObjectPtr anAOPtr);
 
     /// mandatory, but we don't care - not used
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) { return false; }
+	virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
     /// mandatory, but we don't care - not used
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent*) { return false; }
+	virtual bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; }
 
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
     /// is firstly done OR when it needs to be redone.
-    virtual void redo();
+	virtual void redo() override;
 
     /// Called by the Undo stack to undo the action specified in
     /// this command.
-    virtual void undo();
+	virtual void undo() override;
 
 protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo)

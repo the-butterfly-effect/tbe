@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2013,2014 Klaas van Gend
+ * This file copyright (C) 2011,2013,2014,2015 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -92,7 +92,15 @@ public slots:
     void reloadLevel(void);
 
 private slots:
-    // menu Help
+	/// Inserts one of the hints from the level into the Scene.
+	/// @note: for now, this is an internal function, usable by the
+	///        regression system only. To make it work for users, we need
+	///        a lot more 'weird' handling, like applying a hint for an object
+	///        that is already in the scene (i.e. not insert but move)
+	/// @note: internally uses the InsertUndoCommand mechanism
+	bool slot_insertHint(unsigned int aHintNumber) const;
+
+	// menu Help
     void on_action_About_activated(void);
     void on_action_Bug_Reports_activated(void);
     void on_action_Keyboard_Shortcuts_activated(void);
@@ -130,6 +138,7 @@ private:
 
     World* theWorldPtr;
 
+	friend class RegressionTest;
 };
 
 #endif // MAINWINDOW_H

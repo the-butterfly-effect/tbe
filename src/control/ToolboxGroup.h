@@ -24,7 +24,6 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
-class ViewToolboxGroup;
 class ToolboxListWidgetItem;
 
 /// This class holds a series of objects for the Toolbox

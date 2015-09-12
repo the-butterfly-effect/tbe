@@ -34,6 +34,10 @@ public:
                                    ToolboxGroup* aTBGPtr,
                                    QListWidget *parent = 0);
 
+	/// @returns a pointer to the ToolboxGroup
+	ToolboxGroup* getToolboxGroupPtr()
+	{ return theTBGPtr;	}
+
 signals:
 
 public slots:
