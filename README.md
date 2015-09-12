@@ -1,10 +1,5 @@
 #Welcome to "The Butterfly Effect"
-working up to Milestone A.
-
-| ALERT: This git repo is currently deemed unstable    |
-|------------------------------------------------------|
-| Please do not use unless you know what you're doing  |
-| We will update this message once quality improves    |
+working up to Milestone A (also known as the '0.9.2' release)
 
 This is a fully playable game of alpha quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
@@ -53,7 +48,7 @@ If you want to change language, start TBE from the command line and
 type:
 > `LANG="nl" ./tbe`
 
-Of course, for English you use "en" and for spanish "es".
+Of course, for English you use "en", for spanish "es" and for Russian "ru".
 
 ###Known bugs and issues:
   * No Level Creator
