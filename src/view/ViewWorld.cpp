@@ -46,7 +46,12 @@ ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 
     connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
     connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
-    isSimRunning = false;
+	isSimRunning = false;
+}
+
+ViewWorld::~ViewWorld()
+{
+	DEBUG3ENTRY;
 }
 
 

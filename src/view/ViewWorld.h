@@ -41,6 +41,8 @@ class ViewWorld : public QGraphicsScene, public b2Draw
 public:
 	explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
 
+	~ViewWorld();
+
 	// Public accessor methods
 	//
 

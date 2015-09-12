@@ -24,7 +24,7 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/bouncing_balls.xml:10,levels/draft/geyser.xml:16,levels/draft/save-the-butterfly.xml:28,levels/picnic/picnic-0.xml:13,levels/picnic/picnic-1.xml:13,level/draft/butterfly-on-steroids.xml:150
+	./tbe --regression levels/draft/bouncing_balls.xml:10,levels/draft/geyser.xml:16,levels/draft/save-the-butterfly.xml:28,levels/picnic/picnic-0.xml:13,levels/picnic/picnic-1.xml:13,levels/draft/butterfly-on-steroids.xml:75
 
 # levels currently known to fail regression:
 # TODO: must be fixed before release!!!

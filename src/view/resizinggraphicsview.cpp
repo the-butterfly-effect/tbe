@@ -63,12 +63,16 @@ ResizingGraphicsView::~ResizingGraphicsView()
 
 void ResizingGraphicsView::clearViewWorld(void)
 {
+	DEBUG3ENTRY;
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
 	setScene(NULL);
 	emit theSimControlsPtr->hideYourself();
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
+
+	delete theWinFailDialogPtr;
+	theWinFailDialogPtr = NULL;
 
 	if (theScenePtr != NULL)
 	{
@@ -120,7 +124,7 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
                                         const QString& aLevelName)
 {
-        DEBUG3("MainWindow::setViewWorld(%p, \"%s\")", aScenePtr,
+	DEBUG1("MainWindow::setViewWorld(%p, \"%s\")", aScenePtr,
                ASCII(aLevelName));
 	theScenePtr=aScenePtr;
 
@@ -151,9 +155,9 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 void ResizingGraphicsView::slot_actionChooseLevel()
 {
 	DEBUG3ENTRY;
-	emit theMainWindowPtr->on_action_Open_Level_triggered();
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
+	emit theMainWindowPtr->on_action_Open_Level_triggered();
 }
 
 
@@ -162,7 +166,6 @@ void ResizingGraphicsView::slot_actionNextLevel()
 	DEBUG3ENTRY;
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = NULL;
-
 	QString myNextLevelName = ChooseLevel::getNextLevelName();
 	if (myNextLevelName.isEmpty()==false)
 		theMainWindowPtr->loadLevel(myNextLevelName);
@@ -174,16 +177,16 @@ void ResizingGraphicsView::slot_actionNextLevel()
 void ResizingGraphicsView::slot_actionReplay()
 {
 	DEBUG3ENTRY;
+	delete theWinFailDialogPtr;
+	theWinFailDialogPtr = NULL;
 	emit theScenePtr->slot_signalReset();
 	emit theSimControlsPtr->onReset();
 	emit theSimControlsPtr->showYourself();
-	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = NULL;
 }
 
 void ResizingGraphicsView::slot_actionSkipLevel()
 {
-    DEBUG1ENTRY;
+	DEBUG3ENTRY;
     if (theIsLevelEditor==false)
     {
         QString myLevelFileName = Level::getLevelFileName();
@@ -203,6 +206,7 @@ void ResizingGraphicsView::slot_editObjectDialog_destroyed()
 
 void ResizingGraphicsView::slot_levelDeath(void)
 {
+	DEBUG3ENTRY;
 	// only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;
@@ -214,6 +218,7 @@ void ResizingGraphicsView::slot_levelDeath(void)
 
 void ResizingGraphicsView::slot_levelWon(void)
 {
+	DEBUG3ENTRY;
 	// Only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;

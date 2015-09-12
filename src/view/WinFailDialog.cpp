@@ -49,8 +49,8 @@ WinFailDialog::WinFailDialog(MessageType aType,
 	ui->label->setText(myMessage);
 	connect(ui->chooseButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionChooseLevel()));
 	connect(ui->nextButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionNextLevel()));
-        connect(ui->replayButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionReplay()));
-        connect(ui->skipButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionSkipLevel()));
+	connect(ui->replayButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionReplay()));
+	connect(ui->skipButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionSkipLevel()));
 }
 
 WinFailDialog::~WinFailDialog()

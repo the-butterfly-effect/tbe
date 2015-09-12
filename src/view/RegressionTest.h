@@ -21,11 +21,11 @@
 
 #include "tbe_global.h"
 
-#include <MainWindow.h>
-
 #include <QObject>
 #include <QStringList>
 #include <QTimer>
+
+class MainWindow;
 
 class RegressionTest : public QObject
 {
@@ -44,6 +44,7 @@ public:
 		STARTLEVELTOWIN,
 		LEVELWON,
 		NEXTLEVEL,
+		REGRESSIONTESTDONE,
 	};
 
 

@@ -18,9 +18,17 @@
 
 #include "RegressionTest.h"
 
+// quite a bit of includes - we're friends of most of them and need
+// to grab inside their innards :-(
+#include <MainWindow.h>
+#include "ui_MainWindow.h"
+#include <resizinggraphicsview.h>
+#include <WinFailDialog.h>
+
 #include <QCoreApplication>
 #include <QEvent>
 #include <QKeyEvent>
+
 
 #if 0
 /// for use with automated testing within Valgrid or Pareon Verify
@@ -56,6 +64,7 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 	theStateNames.insert(STARTLEVELTOWIN,   "Start Level to Win");
 	theStateNames.insert(LEVELWON,          "Level Won (expected)");
 	theStateNames.insert(NEXTLEVEL,         "Next Level");
+	theStateNames.insert(REGRESSIONTESTDONE,"Regression Successful");
 }
 
 void RegressionTest::startRegressionRun(void)
@@ -70,7 +79,7 @@ void RegressionTest::startRegressionRun(void)
 
 void RegressionTest::slot_Fail()
 {
-	DEBUG1("AUTOMATED TESTING, slot_Fail--------------------------");
+	DEBUG1("AUTOMATED TESTING, slot_Fail---");
 	theIsFail = true;
 	if (theWantWonFail)
 	{
@@ -81,7 +90,7 @@ void RegressionTest::slot_Fail()
 
 void RegressionTest::slot_Won()
 {
-	DEBUG1("AUTOMATED TESTING, slot_Won--------------------------");
+	DEBUG1("AUTOMATED TESTING, slot_Won---");
 	theIsWon = true;
 	if (theWantWonFail)
 	{
@@ -98,7 +107,6 @@ void RegressionTest::slotRegressionProgress(void)
 	QString myLevelName = myLevelParams[0];
 	int myLevelDurationSeconds = myLevelParams[1].toInt();
 	States myNextState = START;
-
 	DEBUG1("AUTOMATED TESTING, LEVEL %d STATE %d '%s'--------------------------",
 		   theLevelIndex, theState, ASCII(theStateNames[theState]));
 	switch (theState)
@@ -143,7 +151,7 @@ void RegressionTest::slotRegressionProgress(void)
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
-		// FIXME: This is not i18n proof: We're just pressing Alt-R here...
+		// FIXME: This is not i18n proof: We're just pressing 'R' (for 'replay') here...
 		QKeyEvent* myEvent3Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent3Ptr);
 		QKeyEvent* myEvent4Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::NoModifier);
@@ -199,12 +207,23 @@ void RegressionTest::slotRegressionProgress(void)
 		break;
 	case NEXTLEVEL: // Continue with next item in test
 		theWantWonFail = false;
-		theLevelIndex++;
 		// are we done?
-		if (theLevelIndex >= theLevels.count())
-			exit(0);
-		myNextState = LOADLEVEL;
+		if (theLevelIndex >= theLevels.count()-1)
+			myNextState = REGRESSIONTESTDONE;
+		else
+		{
+			myNextState = LOADLEVEL;
+			theLevelIndex++;
+		}
 		myNextDelay= 1;
+		break;
+	case REGRESSIONTESTDONE:
+		DEBUG1("###########################################################");
+		DEBUG1("REGRESSION TEST SUCCESS");
+		DEBUG1("                 \\o/");
+		emit qApp->quit();
+		myNextState = REGRESSIONTESTDONE;
+		myNextDelay= 4000;
 		break;
 	default:
 		// if we get here, something went terribly wrong...
