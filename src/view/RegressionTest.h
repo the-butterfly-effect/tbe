@@ -26,6 +26,7 @@
 #include <QTimer>
 
 class MainWindow;
+class QProgressDialog;
 
 class RegressionTest : public QObject
 {
@@ -60,6 +61,7 @@ signals:
 public slots:
 	void slot_Won();
 	void slot_Fail();
+	void slot_Cancel();
 
 private slots:
 	///
@@ -80,6 +82,8 @@ private:
 
 	/// will contain the names of the various regression states
 	QStringList theStateNames;
+
+	QProgressDialog* theProgressPtr;
 };
 
 #endif // REGRESSIONTEST_H

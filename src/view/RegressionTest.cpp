@@ -28,7 +28,7 @@
 #include <QCoreApplication>
 #include <QEvent>
 #include <QKeyEvent>
-
+#include <QProgressDialog>
 
 #if 0
 /// for use with automated testing within Valgrid or Pareon Verify
@@ -65,6 +65,14 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 	theStateNames.insert(LEVELWON,          "Level Won (expected)");
 	theStateNames.insert(NEXTLEVEL,         "Next Level");
 	theStateNames.insert(REGRESSIONTESTDONE,"Regression Successful");
+
+	theProgressPtr = new QProgressDialog("<br><b>Regression testing in progress</b>"
+										 "<br><br>Please do not touch any keys.<br>"
+										 "Please keep the main window activated.<br>",
+										 "Cancel all tests", 0, 2*theLevels.count(),
+										 theMainWindowPtr);
+	connect (theProgressPtr, SIGNAL(canceled()), this, SLOT(slot_Cancel()));
+	theProgressPtr->show();
 }
 
 void RegressionTest::startRegressionRun(void)
@@ -75,6 +83,12 @@ void RegressionTest::startRegressionRun(void)
 	theLevelIndex = 0;
 	theState = LOADLEVEL;
 	theRegressionTimer.start(200);
+}
+
+void RegressionTest::slot_Cancel()
+{
+	DEBUG1("User requested cancel");
+	exit(1);
 }
 
 void RegressionTest::slot_Fail()
@@ -117,6 +131,7 @@ void RegressionTest::slotRegressionProgress(void)
 	case LOADLEVEL: // Load Level
 		DEBUG1("AUTOMATED TESTING OF LEVEL %s", ASCII(myLevelName));
 		theMainWindowPtr->loadLevel(myLevelName);
+		theProgressPtr->setValue(theLevelIndex*2);
 		myNextDelay= 1500;
 		myNextState = STARTLEVELTOFAIL;
 		break;
@@ -151,7 +166,8 @@ void RegressionTest::slotRegressionProgress(void)
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
-		// FIXME: This is not i18n proof: We're just pressing 'R' (for 'replay') here...
+		// This is not i18n proof: We're just pressing 'R' (for 'replay') here...
+		// It was 'fixed' by ensuring that regression runs in english only.
 		QKeyEvent* myEvent3Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::NoModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent3Ptr);
 		QKeyEvent* myEvent4Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::NoModifier);
@@ -162,7 +178,8 @@ void RegressionTest::slotRegressionProgress(void)
 	}
 	case RESETLEVEL: // Reset
 	{
-		// FIXME: This is not i18n proof: We're just pressing Alt-R here...
+		// This is not i18n proof: We're just pressing Alt-R (for reset) here...
+		// It was 'fixed' by ensuring that regression runs in english only.
 		QKeyEvent* myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::AltModifier);
 		QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
 		QKeyEvent* myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::AltModifier);
@@ -180,6 +197,7 @@ void RegressionTest::slotRegressionProgress(void)
 				break;
 		}
 		DEBUG2("Added %d hints", i);
+		theProgressPtr->setValue(theLevelIndex*2+1);
 		myNextDelay= 800;
 		myNextState= STARTLEVELTOWIN;
 		break;
@@ -228,7 +246,7 @@ void RegressionTest::slotRegressionProgress(void)
 	default:
 		// if we get here, something went terribly wrong...
 		DEBUG1("Hit catch-all state - something went wrong");
-		exit (5);
+		exit(5);
 		break;
 	}
 	Q_ASSERT(myNextState != START);
