@@ -182,16 +182,19 @@ int main(int argc, char *argv[])
 	QTextCodec::setCodecForLocale(myCodec);
 
 	//** read the locale from the environment and set the output language
-	QString myLocale = QLocale::system().name();
-	DEBUG4("Loading translator for locale '%s'", ASCII(myLocale));
-	// for strings from TBE
-	QTranslator myTranslator;
-	myTranslator.load(I18N_DIRECTORY + "/tbe_" + myLocale);
-	app.installTranslator(&myTranslator);
-	// for strings from Qt itself
-	QTranslator qtTranslator;
-	qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-	app.installTranslator(&qtTranslator);
+	if (!theIsRunAsRegression)
+	{
+		QString myLocale = QLocale::system().name();
+		DEBUG4("Loading translator for locale '%s'", ASCII(myLocale));
+		// for strings from TBE
+		QTranslator myTranslator;
+		myTranslator.load(I18N_DIRECTORY + "/tbe_" + myLocale);
+		app.installTranslator(&myTranslator);
+		// for strings from Qt itself
+		QTranslator qtTranslator;
+		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+		app.installTranslator(&qtTranslator);
+	}
 
 	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
