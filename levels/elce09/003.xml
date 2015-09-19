@@ -71,7 +71,7 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="PolyObject" X="4.26" Y="3.06" />
+        <hint number="1" object="PolyObject" X="4.25" Y="3.06" />
         <hint number="2" object="PolyObject" X="4.24" Y="1.28" />
     </hints>
 </tbe-level>

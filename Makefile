@@ -30,7 +30,7 @@ regression: usr/games/tbe
 	      --regression levels/draft/save-the-butterfly.xml:28, \
 	      --regression levels/angry/birds1.xml:10, \
 	      --regression levels/elce09/002.xml:30, \
-	      --regression levels/elce09/003.xml:35, \
+	      --regression levels/elce09/003.xml:40, \
 	      --regression levels/elce09/004.xml:15, \
 	      --regression levels/elce09/006.xml:8, \
 	      --regression levels/picnic/picnic-0.xml:13, \
