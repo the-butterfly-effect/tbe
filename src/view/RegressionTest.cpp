@@ -117,6 +117,11 @@ void RegressionTest::slotRegressionProgress(void)
 {
 
 	int myNextDelay = 0;
+	if(!theLevels[theLevelIndex].contains(':'))
+	{
+		DEBUG1("ERROR: forgot the :<time> after level name!");
+		exit(1);
+	}
 	QStringList myLevelParams = theLevels[theLevelIndex].split(':');
 	QString myLevelName = myLevelParams[0];
 	int myLevelDurationSeconds = myLevelParams[1].toInt();
