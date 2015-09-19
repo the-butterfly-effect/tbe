@@ -13,14 +13,14 @@ LIBS += -lbox2d \
 SOURCES += ../src/TestFramework.cpp \
     ../src/TestChapter.cpp \
     LocalString-tester-main.cpp \
-    ../../src/base/LocalString.cpp
+    ../../src/loadsave/LocalString.cpp
 HEADERS += ../src/TestFramework.h \
     ../src/TestChapter.h \
     ../../src/tbe_global.h \
-    ../../src/base/LocalString.h
+    ../../src/loadsave/LocalString.h
 INCLUDEPATH += ../src \
     ../../3rdParty/Box2D_v2.0.1/Box2D/Include/ \
     ../../src \
     ../../src/model \
     ../../src/view \
-    ../../src/base
+    ../../src/loadsave
