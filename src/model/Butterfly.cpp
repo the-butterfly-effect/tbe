@@ -86,16 +86,16 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 		case FLAP_HALF:
 		{
 			// remain in either FLAP position for a while
-			// (i.e. 9 frames right now)
+			// (i.e. 25 frames right now)
 			theCountdown--;
 			if (theCountdown > 0)
 				return;
-			theCountdown=9;
+			theCountdown=25;
 
 			// calculate vertical flapping impulse - rate limited
 			qreal myDY = theTargetPos.y - getTempCenter().y;
 			qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
-			qreal myYImpulse = 2.5 * myDY - 1.94*myYd;
+			qreal myYImpulse = 4 * myDY - 4.8*myYd;
 
 			if (myYImpulse < 0.0)
 				myYImpulse = 0;
@@ -106,7 +106,7 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 			qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
 			qreal myXImpulse = 0;
 			if (myXd<0.1)
-				myXImpulse = 0.01;
+				myXImpulse = 0.025;
 
 			// the pull to the flower is done at the butterfly's center
 			// whilst the push upwards is done slightly above the center

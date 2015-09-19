@@ -75,7 +75,7 @@ void ColaMintBottle::callbackStep (qreal, qreal)
 	case BLOWING:
 		// this is just a rate limiter
 		theCountdown--;
-		if (((theCountdown%3)==0))
+		if (((theCountdown%7)==0))
 		{
 			newSplatter(theSplatterCount++);
 		}

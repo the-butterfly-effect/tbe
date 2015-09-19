@@ -25,9 +25,9 @@
 #include "Box2D.h"
 #include "ViewWorld.h"
 
-const qreal World::theDeltaTime = 0.01;
-const unsigned int World::theVelocityIterationcount = 30;
-const unsigned int World::thePositionIterationcount = 30;
+const qreal World::theDeltaTime = 0.004;
+const unsigned int World::theVelocityIterationcount = 40;
+const unsigned int World::thePositionIterationcount = 40;
 
 static World* theStaticWorldPtr = NULL;
 
