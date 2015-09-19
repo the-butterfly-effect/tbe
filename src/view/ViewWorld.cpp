@@ -107,7 +107,7 @@ void ViewWorld::on_timerTick()
 
 void ViewWorld::on_framerateTimerTick()
 {
-	theFrameRateViewPtr->setText(tr("%1 fps").arg(theFramesPerSecond));
+	theFrameRateViewPtr->setText(tr("%1 fps / %2 s").arg(theFramesPerSecond).arg(theSimulationTime.second()));
 	theFramesPerSecond = 0;
 }
 
