@@ -12,6 +12,12 @@ set(TBE_DOC_DIR     ${CMAKE_INSTALL_PREFIX}/share/doc/tbe)
 set(TBE_DESKTOP_DIR ${CMAKE_INSTALL_PREFIX}/share/applications)
 set(TBE_ICON_DIR    ${CMAKE_INSTALL_PREFIX}/share/icons)
 
+# for internal Qt-related debugging sessions
+#set(QT_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../qt-4.x-src-verify/install")
+#set(QT_QMAKE_EXECUTABLE ${QT_ROOT_DIR}/bin/qmake)
+
+
+
 add_subdirectory(imagery)
 add_subdirectory(src)
 add_subdirectory(i18n)
