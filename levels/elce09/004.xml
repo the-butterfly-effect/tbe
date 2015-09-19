@@ -87,4 +87,7 @@
             <property key="object">Pin3</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="2.38" Y="0.65" />
+    </hints>
 </tbe-level>

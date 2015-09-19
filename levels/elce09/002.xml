@@ -86,4 +86,7 @@
 		   <property key="object2">Flower</property>
 		</goal>
 	</goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="0.4" Y="1.05" />
+    </hints>
 </tbe-level>

@@ -5,13 +5,12 @@
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Can you live from just cola? Let's have some coconuts! Goal: shoot the coconut from the tree.</description>
-        <description lang="nl">Kun je leven op alleen cola? Dan nemen we er toch een kokosnootje bij! Doel: schiet de kokosnoot uit de boom.</description>
         <date>10/11/09</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="2" name="Cola Crate">
-            <name lang="nl">Cola krat</name>
             <object width="0.85" height="0.6" type="RectObject">
+	      <property key="Description">This is how you properly buy cola:&lt;br&gt;a dozen bottles of that precious brown liquid at a time!</property>
                 <property key="ImageName" >cola-crate</property>
                 <property key="Mass" >18</property>
                 <property key="Friction" >1</property>
@@ -21,7 +20,6 @@
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Wooden bar">
-            <name lang="nl">Houten balk</name>
             <object X="1.2" Y="0.8" width="1.5" height="0.2" type="BirchBar">
                 <property key="Friction" >0</property>
                 <property key="Resizable" >none</property>
@@ -94,4 +92,8 @@
 		   <property key="object">Coconut</property>
 		</goal>
 	</goals>
+    <hints>
+        <hint number="1" object="RectObject" X="1.66" Y="0.41" />
+        <hint number="2" object="BirchBar" X="1.0" Y="0.9" />
+    </hints>
 </tbe-level>
