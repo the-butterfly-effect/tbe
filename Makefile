@@ -24,7 +24,8 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/bouncing_balls.xml:10, \
+	./tbe --regression levels/draft/ballons-do-poof.xml:10 \
+	      --regression levels/draft/bouncing_balls.xml:10, \
 	      --regression levels/draft/geyser.xml:16, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
@@ -40,7 +41,7 @@ regression: usr/games/tbe
 # levels currently known to fail regression:
 # TODO: must be fixed before release!!!
 failregression: usr/games/tbe
-	./tbe --regression levels/draft/ballons-do-poof.xml:10
+	# zoing-and-boom
 
 clean:
 	rm -rf ${BUILDDIR} ./tbe usr

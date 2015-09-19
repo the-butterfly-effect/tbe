@@ -92,22 +92,22 @@ public:
 	// the following two members are part of the normal impulse reporting
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void)
+	virtual bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
 	/** overridden from AbstractObject - we want to receive
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+	virtual void reportNormalImpulseLength(qreal anImpulseLength) override;
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	virtual void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepPopped  (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepPopped  (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
 
 private:
 	// Private things

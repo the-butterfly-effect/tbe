@@ -104,10 +104,10 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 	// of the balloon, not the actual surface.
 	// so Box2D thinks our Balloon is actually lighter than 100 grams...
 	//
-	// That's why a 0.8N upwards force suffices for now :-)
+	// That's why a 0.8N upwards force suffices :-)
 	theB2BodyPtr->ApplyForce(b2Vec2(0,0.8), (getTempCenter()+Vector(0,0.1)).toB2Vec2(), true);
 
-	// damping is now handled by Box2D - linearDamping and AngularDamping...
+	// damping is handled by Box2D - linearDamping and AngularDamping...
 }
 
 void Balloon::callbackStepPopped(qreal, qreal aTotalTime)
@@ -210,7 +210,7 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 {
 	// also pop the balloon if it is maltreated
 	// WARNING: Magic number here!!!
-	if (anImpulseLength > 2.2 && theState==BALLOON)
+	if (anImpulseLength > 2.1 && theState==BALLOON)
 		goToState(POPPING);
 }
 

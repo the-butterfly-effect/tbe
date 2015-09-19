@@ -2,32 +2,27 @@
 <tbe-level>
     <levelinfo>
         <title>Balloons do Poof</title>
-        <title lang="nl">Ballonnen doen Poef</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>There are two ways to pop a balloon.</description>
-        <description lang="nl">Er zijn twee manieren om een ballon te laten klappen.</description>
         <date>10/6/10</date>
     </levelinfo>
      <toolbox>
         <toolboxitem count="1" name="Cactus">
-            <name lang="nl">Cactus</name>
             <object type="Cactus" />
         </toolboxitem>
         <toolboxitem count="1" name="Bowling Ball">
-            <name lang="nl">Bowlingbal</name>
             <object type="BowlingBall" />
         </toolboxitem>
    </toolbox>
     <scene>
         <scenesize width="3" height="2" />
         <predefined>
-            <object width="0.12" X="2.350375162511972" Y="0.2752126157283783" height="0.34" type="BowlingPin" ID="the-left-pin" angle="0" />
             <object width="0.1" X="0.9" Y="1.25" height="1.5" type="Wall" angle="0" />
             <object width="3" X="1.5" Y="0.05" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.2" X="0.95" Y="0.15" height="0.1" type="RectObject" angle="0" >
+            <object width="0.2" X="0.96" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
             </object>
 	    <object width="0.70" X="0.80" Y="0.30" height="0.60" type="Scenery" >
@@ -48,6 +43,7 @@
                 <property key="Bounciness" >0.3</property>
                 <property key="ImageName" >Empty</property>
             </object>
+            <object width="0.12" X="2.350375162511972" Y="0.2752126157283783" height="0.34" type="BowlingPin" ID="the-left-pin" angle="0" />
             <object width="0.12" X="2.500249973691478" Y="0.2815407482722643" height="0.34" type="BowlingPin" ID="the-right-pin" angle="0" />
             <object width="1.6" X="1.75" Y="0.5499999999999999" height="0.11" type="RectObject" angle="0" >
                 <property key="ImageName" >used_wood_bar</property>
@@ -67,21 +63,17 @@
                 <property key="page2" >And a balloon that wants to go up.</property>
                 <property key="page3" >I'm sure the balloon has something to do with the solution to this level!</property>
                 <property key="page4" >...&lt;br>was signed:&lt;br>the Post-it Boy</property>
-                <property key="page1_nl" >Kijk: daar staan twee kegels.</property>
-                <property key="page2_nl" >En een ballon die omhoog wil.</property>
-                <property key="page3_nl" >Ik weet zeker dat de ballon iets met de oplossing te maken heeft!</property>
-                <property key="page4_nl" >...&lt;br>getekend:&lt;br>Post-it Boy</property>
             </object>
         </predefined>
     </scene>
     <goals>
         <goal type="positionchange" >
             <property key="object" >the-right-pin</property>
-            <property key="xover" >2.8</property>
+            <property key="xover" >2.75</property>
         </goal>
         <goal type="positionchange" >
-            <property key="anglechanged" ></property>
             <property key="object" >the-left-pin</property>
+            <property key="xover" >2.6</property>
         </goal>
     </goals>
     <hints>
