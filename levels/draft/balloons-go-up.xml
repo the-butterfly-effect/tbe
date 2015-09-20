@@ -12,10 +12,7 @@
     <toolbox>
         <toolboxitem count="1" name="Floor">
             <name lang="nl">Vloer</name>
-            <object width="0.65" height="0.1" type="RectObject" angle="0">
-                <property key="ImageName">used_wood_bar</property>
-                <property key="Resizable">none</property>
-            </object>
+            <object width="0.65" height="0.1" type="Floor" angle="0" />
         </toolboxitem>
         <toolboxitem count="1" name="Right Ramp">
             <name lang="nl">Helling naar Rechts</name>
