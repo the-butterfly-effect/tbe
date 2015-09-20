@@ -71,6 +71,8 @@ RegressionTest::RegressionTest(MainWindow *parent) :
 										 "Please keep the main window activated.<br>",
 										 "Cancel all tests", 0, 2*theLevels.count(),
 										 theMainWindowPtr);
+	theProgressPtr->setAutoClose(false);
+	theProgressPtr->setAutoReset(false);
 	connect (theProgressPtr, SIGNAL(canceled()), this, SLOT(slot_Cancel()));
 	theProgressPtr->show();
 }
@@ -124,7 +126,9 @@ void RegressionTest::slotRegressionProgress(void)
 	}
 	QStringList myLevelParams = theLevels[theLevelIndex].split(':');
 	QString myLevelName = myLevelParams[0];
-	int myLevelDurationSeconds = myLevelParams[1].toInt();
+	bool isOK=false;
+	int myLevelDurationSeconds = myLevelParams[1].toInt(&isOK);
+	Q_ASSERT(isOK);
 	States myNextState = START;
 	DEBUG1("AUTOMATED TESTING, LEVEL %d STATE %d '%s'--------------------------",
 		   theLevelIndex, theState, ASCII(theStateNames[theState]));
@@ -232,13 +236,17 @@ void RegressionTest::slotRegressionProgress(void)
 		theWantWonFail = false;
 		// are we done?
 		if (theLevelIndex >= theLevels.count()-1)
+		{
 			myNextState = REGRESSIONTESTDONE;
+			theProgressPtr->setValue(theLevelIndex*2+2);
+			theProgressPtr->setLabelText("Success!");
+		}
 		else
 		{
 			myNextState = LOADLEVEL;
 			theLevelIndex++;
 		}
-		myNextDelay= 1;
+		myNextDelay= 1000;
 		break;
 	case REGRESSIONTESTDONE:
 		DEBUG1("###########################################################");
