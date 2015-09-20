@@ -60,6 +60,12 @@ public:
 
 	virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 
+	/// Constant defining the goal FPS (frames per second)
+	/// @note: This does not say that the game achieves this number.
+	///        It however, will mean that the game will *attempt* not to render
+	///        more frames than this per second. No guarantees.
+	static const int MAX_FPS;
+
 signals:
 	void needReset();
 
@@ -90,9 +96,10 @@ private:
 	QTimer theTimer;
 	QTimer theFramerateTimer;
 	QTime  theSimulationTime;
+	QTime  theGameStopwatch;
 
-        /// current number of milliseconds per time step
-        /// (note that TBE is configured to run at "half of reality" speed)
+	/// current number of milliseconds per time step
+	/// (note that TBE is configured to run at "half of reality" speed)
 	qreal theSimSpeed;
 
 	unsigned int theFramesPerSecond;

@@ -33,6 +33,8 @@
 
 static bool isSimRunning = false;
 
+const int ViewWorld::MAX_FPS = 60;
+
 ViewWorld::ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr)
 	: QGraphicsScene(0, -THESCALE*aWorldPtr->getTheWorldHeight(),
 					 THESCALE*aWorldPtr->getTheWorldWidth(), THESCALE*aWorldPtr->getTheWorldHeight()),
@@ -107,7 +109,7 @@ void ViewWorld::on_timerTick()
 
 void ViewWorld::on_framerateTimerTick()
 {
-	theFrameRateViewPtr->setText(tr("%1 fps / %2 s").arg(theFramesPerSecond).arg(theSimulationTime.second()));
+	theFrameRateViewPtr->setText(tr("    %1 fps; %2 s").arg(theFramesPerSecond).arg(theGameStopwatch.elapsed()/1000));
 	theFramesPerSecond = 0;
 }
 
@@ -173,13 +175,14 @@ void ViewWorld::slot_signalPlay()
 	theSimulationTime = QTime::currentTime();
 	theSimSpeed = 1000;
 	theFramesPerSecond = 0;
-	emit theTimer.start(1000/50);
+	emit theTimer.start(1000/MAX_FPS);
 
 	if (theDisplayFramerate)
 	{
 		// update framerate every second
 		theFramesPerSecond = 0;
 		theFramerateTimer.start(1000);
+		theGameStopwatch.start();
 	}
 	else
 		theFrameRateViewPtr->setText("");
