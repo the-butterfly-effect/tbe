@@ -95,10 +95,10 @@ void RegressionTest::slot_Cancel()
 
 void RegressionTest::slot_Fail()
 {
-	DEBUG1("AUTOMATED TESTING, slot_Fail---");
 	theIsFail = true;
 	if (theWantWonFail)
 	{
+		DEBUG1("AUTOMATED TESTING, slot_Fail");
 		theWantWonFail = false;
 		slotRegressionProgress();
 	}
@@ -106,10 +106,10 @@ void RegressionTest::slot_Fail()
 
 void RegressionTest::slot_Won()
 {
-	DEBUG1("AUTOMATED TESTING, slot_Won---");
 	theIsWon = true;
 	if (theWantWonFail)
 	{
+		DEBUG1("AUTOMATED TESTING, slot_Won");
 		theWantWonFail = false;
 		slotRegressionProgress();
 	}

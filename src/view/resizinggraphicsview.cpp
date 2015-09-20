@@ -206,10 +206,10 @@ void ResizingGraphicsView::slot_editObjectDialog_destroyed()
 
 void ResizingGraphicsView::slot_levelDeath(void)
 {
-	DEBUG3ENTRY;
 	// only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;
+	DEBUG3ENTRY;
 	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
 	emit theSimControlsPtr->onFailed();
 	emit theWinFailDialogPtr->appearAnimated();
@@ -218,10 +218,10 @@ void ResizingGraphicsView::slot_levelDeath(void)
 
 void ResizingGraphicsView::slot_levelWon(void)
 {
-	DEBUG3ENTRY;
 	// Only need to display the dialog once...
 	if (theWinFailDialogPtr!=NULL)
 		return;
+	DEBUG3ENTRY;
 
     if (theIsLevelEditor==false)
     {
