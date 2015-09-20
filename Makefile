@@ -25,9 +25,14 @@ slow:
 
 regression: usr/games/tbe
 	./tbe --regression levels/draft/balloons-do-poof.xml:10, \
+	      --regression levels/draft/balloons-go-up.xml:10, \
 	      --regression levels/draft/bouncing_balls.xml:10, \
+	      --regression levels/draft/butterfly-on-steroids.xml:75, \
+	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
 	      --regression levels/draft/geyser.xml:16, \
+	      --regression levels/draft/house_of_cards.xml:20, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
+	      --regression levels/draft/poing-poing-poing.xml:15, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
 	      --regression levels/angry/birds1.xml:10, \
 	      --regression levels/elce09/002.xml:30, \
@@ -35,13 +40,14 @@ regression: usr/games/tbe
 	      --regression levels/elce09/004.xml:15, \
 	      --regression levels/elce09/006.xml:8, \
 	      --regression levels/picnic/picnic-0.xml:13, \
-	      --regression levels/picnic/picnic-1.xml:13, \
-	      --regression levels/draft/butterfly-on-steroids.xml:75
+	      --regression levels/picnic/picnic-1.xml:13
 
 # levels currently known to fail regression:
-# TODO: must be fixed before release!!!
+# TODO: must be fixed before Milestone B release, see issue #34!!!
 failregression: usr/games/tbe
 	# zoing-and-boom
+	# picnic-3
+	# springboard
 
 clean:
 	rm -rf ${BUILDDIR} ./tbe usr
