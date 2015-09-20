@@ -70,40 +70,31 @@
                 <property key="page5" >... the Post-It Boy</property>
             </object>
             <object width="2.551" X="5.946" Y="1.329" height="0.100" type="Floor" angle="1.570" />
-            <object width="0.600" X="5.570" Y="0.250" height="0.100" type="RectObject" angle="0.360" >
-                <property key="ImageName" >birch_bar</property>
+            <object width="0.600" X="5.570" Y="0.250" height="0.100" type="BirchBar" angle="0.360" >
                 <property key="Mass" >1</property>
                 <property key="PivotPoint" >(0.01,0)</property>
             </object>
             <object width="0.620" X="5.400" Y="0.730" height="0.100" type="Floor" angle="-1.090" />
             <object width="0.200" X="5.190" Y="0.180" height="0.100" type="Floor" angle="1.570" />
             <object width="0.100" X="5.260" Y="0.530" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
                 <property key="Mass" >1.0</property>
             </object>
             <object width="0.740" X="5.550" Y="0.800" height="0.100" type="Floor" angle="1.570" />
             <object width="0.220" X="0.153" Y="3.673" height="0.220" type="BowlingBall" angle="0.000" />
-            <object width="0.100" X="4.410" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
-            <object width="0.100" X="3.970" Y="0.350" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
-            <object width="0.100" X="3.530" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
-            <object width="0.100" X="3.090" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
+            <object width="0.100" X="4.410" Y="0.360" height="0.500" type="DominoRed" angle="0.000" />
+            <object width="0.100" X="3.970" Y="0.350" height="0.500" type="DominoRed" angle="0.000" />
+            <object width="0.100" X="3.530" Y="0.360" height="0.500" type="DominoRed" angle="0.000" />
+            <object width="0.100" X="3.090" Y="0.360" height="0.500" type="DominoRed" angle="0.000" />
             <object width="0.220" X="4.077" Y="1.715" height="0.220" type="SoccerBall" angle="0.000" />
             <object width="0.330" X="0.284" Y="0.178" height="0.350" type="DetonatorBox" angle="0.000" >
                 <property key="ImageName" >DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
             </object>
-            <object width="0.220" X="0.630" Y="0.790" height="0.220" type="BowlingBall" angle="-0.020" />
+            <object width="0.220" X="0.630" Y="0.790" height="0.220" type="CustomBall">
+	      <property key="Mass">25</property>
+              <property key="ImageName" >BowlingBall</property>
+	    </object>
             <object width="0.400" X="5.400" Y="1.340" height="0.400" type="QuarterArc40" angle="0.000" />
-            <object width="0.100" X="4.850" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
+            <object width="0.100" X="4.850" Y="0.360" height="0.500" type="DominoRed" angle="0.000" />
             <object width="0.735" X="1.302" Y="0.492" height="0.100" type="Floor" angle="5.869" />
             <object width="0.166" X="1.538" Y="0.554" height="0.500" type="ColaMintBottle" angle="10.603" />
             <object width="0.270" X="2.418" Y="0.428" height="0.360" type="Balloon" angle="0.000" >
@@ -111,9 +102,7 @@
             </object>
             <object width="0.494" X="0.754" Y="0.627" height="0.100" type="Floor" angle="0.000" />
             <object width="0.387" X="2.301" Y="0.821" height="0.100" type="Floor" angle="5.277" />
-            <object width="0.100" X="2.650" Y="0.360" height="0.500" type="DominoRed" angle="0.000" >
-                <property key="ImageName" >DominoRed</property>
-            </object>
+            <object width="0.100" X="2.650" Y="0.360" height="0.500" type="DominoRed" angle="0.000" />
             <object width="0.800" X="3.011" Y="2.952" height="0.800" type="QuarterArc80" angle="1.571" />
             <object width="1.073" X="0.543" Y="3.204" height="0.609" type="RightRamp" angle="0.000" />
             <object width="0.800" X="5.601" Y="2.954" height="0.800" type="QuarterArc80" angle="0.000" />
