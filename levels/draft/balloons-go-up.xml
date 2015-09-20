@@ -65,4 +65,8 @@
             <property key="object">thePin</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="RightRamp" X="0.33" Y="0.32"/>
+        <hint number="2" object="Floor" X="1.3" Y="0.56"/>
+    </hints>
 </tbe-level>

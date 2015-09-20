@@ -169,4 +169,8 @@
             <property key="xbelow" >3.16</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="SoccerBall" X="2.6" Y="2.200"/>
+        <hint number="2" object="SoccerBall" X="0.23" Y="2.200"/>
+    </hints>
 </tbe-level>

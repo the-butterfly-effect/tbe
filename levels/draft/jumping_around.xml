@@ -18,7 +18,7 @@
     <scene>
         <scenesize width="5" height="3" />
         <predefined>
-            <object X="0.2" Y="2.85" type="BowlingBall" />
+            <object X="0.2" Y="2.85" type="BowlingBall" ID="the Ball" />
             <object width="0.9" X="1.1" Y="2.4" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
@@ -36,14 +36,18 @@
                 <property key="page2" >I don't think the Bowling Ball can reach the pin...</property>
                 <property key="page3" >But that ball has a jumpy friend!</property>
                 <property key="page4" >the Post-It Boy</property>
-                <property key="page1_nl" >Bowlingbal tegen Kegel.&lt;br&gt;&lt;br&gt;Wie zal winnen?</property>
-                <property key="page2_nl" >Ik denk niet dat de bal de kegel een haar kan krenken...</property>
-                <property key="page3_nl" >Maar die bal heeft nog een springerig vriendje!</property>
-                <property key="page4_nl" >de Post-It Boy</property>
 	    </object>
             
 
-            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="RectObject" >
+            <object width="4.0" X="2.0" Y="0.05" height="0.1" type="RectObject" >
+                <property key="ImageName" >used_wood_bar</property>
+                <property key="Bounciness" >0.1</property>
+	    </object>
+            <object X="4.15" Y="0.05" width="0.3" height="0.1" type="Scenery" >
+                <property key="ImageName" >basket</property>
+            </object>
+
+            <object width="0.6" X="4.6" Y="0.05" height="0.1" type="RectObject" >
                 <property key="ImageName" >used_wood_bar</property>
                 <property key="Bounciness" >0.1</property>
 	    </object>
@@ -59,24 +63,29 @@
             <object X="4.35" Y="0.44" height="0.78" width="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-	    <object X="4.65" Y="0.45" width="0.5" height="0.9" type="Scenery" >
-                <property key="ImageName" >basket</property>
-            </object>
             <object X="4.95" Y="0.65" height="1.3" width="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
+            </object>
+            <object width="0.600" X="4.700" Y="0.575" height="0.950" type="Scenery" angle="0.000">
+                <property key="ImageName">toychest</property>
+		<property key="ZValue">12</property>
             </object>
 
             <object X="4.1" Y="1.07" type="BowlingPin" ID="the Pin" />
         </predefined>
     </scene>
     <goals>
-	<goal type="positionchange">
+	<goal isFail="false" type="positionchange">
 	    <property key="ybelow">0.5</property>
 	    <property key="object">the Pin</property>
 	</goal>
-	<goal type="positionchange">
+	<goal isFail="false" type="positionchange">
 	    <property key="xover">4.3</property>
 	    <property key="object">the Pin</property>
 	</goal>
+        <goal isFail="true" type="positionchange" >
+            <property key="ybelow" >0.18</property>
+            <property key="object" >the Ball</property>
+        </goal>
     </goals>
 </tbe-level>

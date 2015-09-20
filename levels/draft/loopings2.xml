@@ -61,9 +61,10 @@
             <object width="1.834" X="3.078" Y="0.057" height="0.100" type="Floor" angle="0.000" />
             <object width="1.783" X="3.766" Y="1.471" height="0.100" type="Floor" angle="1.571" />
             <object width="1.558" X="3.436" Y="1.518" height="0.100" type="Floor" angle="1.571" />
-            <object width="2.800" X="1.690" Y="2.650" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.000" X="0.790" Y="2.650" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.800" X="2.190" Y="2.630" height="0.100" type="Floor" angle="0.000" />
             <object width="0.400" X="1.795" Y="1.002" height="0.357" type="QuarterArc40" angle="1.571" />
-            <object width="0.400" X="3.280" Y="2.500" height="0.400" type="QuarterArc40" angle="0.000" />
+            <object width="0.400" X="3.280" Y="2.470" height="0.400" type="QuarterArc40" angle="0.000" />
             <object width="0.220" X="0.310" Y="2.850" height="0.220" type="SoccerBall" angle="0.000" />
             <object width="0.280" X="0.140" Y="2.341" height="0.280" type="LeftWedge" angle="-3.140" >
                 <property key="Mass" >0.2</property>

@@ -63,12 +63,8 @@
                 <property key="page2">Volley balls can do that, too.&lt;br&gt;&lt;br&gt;Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>
                 <property key="page4">&lt;br&gt; &lt;br&gt; the Post-It Boy </property>
-                <property key="page5">By the way: it is possible with only one pin!</property>
-                <property key="page1_nl">Poing Poing Poing &lt;br&gt; &lt;br&gt; ... de wereldberoemde hit van &lt;i&gt;Rotterdam Termination Source&lt;/i&gt;</property>
-                <property key="page2_nl">Maar volleyballen kunnen dat ook.&lt;br&gt;&lt;br&gt;Wedden?</property>
-                <property key="page3_nl">Oja, beide kegels moeten naar beneden. </property>
-                <property key="page4_nl">&lt;br&gt; &lt;br&gt;Post-It Boy </property>
-                <property key="page5_nl">PS: Het is mogelijk met slechts een punaises!</property>
+                <property key="page5">By the way: it is possible with only one of those weird thingies!</property>
+                <property key="page6">And you already realized that the weird thingies can adjust the trajectories of both the ball and the bottle, right?</property>
 	    </object>
 
             <object width="5.0" X="2.5" Y="0.05" height="0.1" type="RectObject" >
@@ -76,11 +72,11 @@
                 <property key="Bounciness" >0.1</property>
 	    </object>
 
-            <object X="4.25" Y="1.82" type="ColaMintBottle" angle="-1.57" />
-            <object X="4.25" Y="1.69" height="0.12" width="0.5" type="RectObject">
+            <object X="4.25" Y="1.77" type="ColaMintBottle" angle="-1.57" />
+            <object X="4.25" Y="1.64" height="0.12" width="0.5" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="4.55" Y="1.6" height="0.1" width="0.2" type="RectObject">
+            <object X="4.53" Y="1.6" height="0.1" width="0.1" type="RectObject">
                 <property key="ImageName" >used_wood_bar</property>
             </object>
             <object X="4.6" Y="1.82" type="BowlingPin" ID="RightPin" />
@@ -119,4 +115,9 @@
 	    <property key="object">RightPin</property>
 	</goal>
     </goals>
+    <hints>
+        <hint number="1" object="CustomBall" X="2.467" Y="1.76"/>
+        <hint number="2" object="CustomBall" X="3.541" Y="2.04"/>
+        <hint number="3" object="CustomBall" X="3.112" Y="1.41"/>
+    </hints>
 </tbe-level>

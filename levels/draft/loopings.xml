@@ -51,12 +51,12 @@
                 <property key="Bounciness" >0.05</property>
                 <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object width="0.640" X="2.300" Y="0.330" height="0.640" type="QuarterArc80" angle="-1.570" />
+            <object width="0.640" X="2.280" Y="0.330" height="0.640" type="QuarterArc80" angle="-1.570" />
             <object width="0.800" X="1.947" Y="1.980" height="0.800" type="QuarterArc80" angle="0.410" />
             <object width="0.800" X="1.360" Y="1.860" height="0.800" type="QuarterArc80" angle="1.570" />
             <object width="0.800" X="1.361" Y="1.120" height="0.800" type="QuarterArc80" angle="3.140" />
             <object width="0.700" X="4.323" Y="1.317" height="0.700" type="QuarterArc80" angle="6.504" />
-            <object width="0.640" X="2.370" Y="0.420" height="0.640" type="QuarterArc80" angle="4.990" />
+            <object width="0.640" X="2.340" Y="0.420" height="0.640" type="QuarterArc80" angle="4.990" />
             <object width="0.700" X="4.528" Y="0.735" height="0.700" type="QuarterArc80" angle="5.179" />
             <object width="2.025" X="0.348" Y="1.785" height="0.100" type="Floor" angle="1.526" />
             <object width="0.980" X="1.276" Y="2.204" height="0.100" type="Floor" angle="0.000" />
@@ -76,7 +76,7 @@
             <object width="1.000" X="0.739" Y="1.755" height="0.100" type="Floor" angle="1.418" />
             <object width="1.000" X="2.891" Y="1.791" height="0.100" type="Floor" angle="0.000" />
             <object width="0.625" X="3.647" Y="1.671" height="0.100" type="Floor" angle="-0.418" />
-            <object width="0.800" X="3.736" Y="0.739" height="0.800" type="QuarterArc80" angle="-1.571" />
+            <object width="0.800" X="3.72" Y="0.739" height="0.800" type="QuarterArc80" angle="-1.571" />
         </predefined>
         <background>
             <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>

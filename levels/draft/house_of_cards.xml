@@ -172,4 +172,8 @@
 		   <property key="object">firstfloor</property>
 		</goal>
 	</goals>
+    <hints>
+        <hint number="1" object="BowlingBall" X="15.200" Y="2.100"/>
+        <hint number="2" object="LeftRamp" X="13.000" Y="1.200"/>
+    </hints>
 </tbe-level>

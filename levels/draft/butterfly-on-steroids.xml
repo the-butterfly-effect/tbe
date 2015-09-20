@@ -43,11 +43,8 @@
             </object>
             <object width="0.260" X="3.02" Y="2.280" height="0.260" type="PostIt" angle="0.000" >
                 <property key="page1" >Flying from flower to flower can be hard. A real hurdle race.</property>
-                <property key="page1_nl" >Van bloem naar bloem fladderen valt niet altijd mee. Een echte hordenloop.</property>
                 <property key="page2" >Two hurdles must be overcome. And butterfly has to start everything himself. Or herself?</property>
-                <property key="page2_nl" >De vlinder moet twee hordes nemen. En hij moet alles zelf starten. Hmmm. Hij of zij?</property>
                 <property key="page3" >&lt;br>&lt;br>&lt;br>...Post-it boy&lt;br>(male, I think)</property>
-                <property key="page3_nl" >&lt;br>&lt;br>&lt;br>...Post-it boy&lt;br>(mannelijk)</property>
             </object>
             <object width="0.100" X="1.250" Y="0.800" height="0.100" type="RectObject" ID="BrassPin" angle="0.000" >
                 <property key="ImageName" >brass-pin</property>
@@ -63,14 +60,14 @@
                 <property key="object1" >Bar</property>
                 <property key="object2" >BrassPin</property>
             </object>
-            <object width="0.150" X="0.950" Y="1.570" height="0.228" type="Butterfly" ID="Butterfly" angle="0.000" >
+            <object width="0.150" X="0.950" Y="1.60" height="0.228" type="Butterfly" ID="Butterfly" angle="0.000" >
                 <property key="Mass" >0.015</property>
                 <property key="object" >Flower</property>
             </object>
             <object width="0.350" X="4.300" Y="1.300" height="0.800" type="RectObject" angle="0.000" >
                 <property key="ImageName" >Anonymous_daffodil_klaas</property>
             </object>
-            <object width="0.200" X="4.200" Y="1.770" height="0.200" type="Scenery" ID="Flower" angle="0.000" >
+            <object width="0.200" X="4.200" Y="1.80" height="0.200" type="Scenery" ID="Flower" angle="0.000" >
                 <property key="ImageName" >Empty</property>
             </object>
             <object width="0.500" X="4.250" Y="0.525" height="0.950" type="RectObject" angle="0.000" >
@@ -183,7 +180,7 @@
     </scene>
     <goals>
         <goal isFail="false" type="distance" >
-            <property key="lessthan" >0.35</property>
+            <property key="lessthan" >0.4</property>
             <property key="object1" >Butterfly</property>
             <property key="object2" >Flower</property>
         </goal>
