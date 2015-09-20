@@ -21,7 +21,7 @@ All levels are playable, a few levels may need a bit more polish.
 ###New features & highlights in Milestone A:
  * a shiny new GUI, which should also work with touchscreens and touchpads
  * several animations, making it more into a game
- * 50 frames per second on some machines
+ * 50 frames per second on many machines
  * many playability fixes in levels
  * levels are automatically tested to ensure they work across platforms
  * development moved from Sourceforge to Github
@@ -62,8 +62,9 @@ Especially:
  * Naxxatoe, 
  * "ankouglio", "doe544", "e6222f5c", "jillest", "desmoinn", 
    "eyerouge", "linuxalien", "pabs3"
- * Margo, Bart, Jelle, Aschwin and Quinten.
+ * Margo, Bart, Jelle, Thijs, Aschwin and Quinten.
  * Suzanne, Rutger and Julia
+ * Alexl a.k.a. glixx
 
 We would love to hear your thoughts and comments about the game!
 
