@@ -179,6 +179,35 @@
        id="linearGradient3026"
        xlink:href="#linearGradient3166-1"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3166-3"
+       id="linearGradient3172-5"
+       x1="-263.35715"
+       y1="296.64789"
+       x2="140.5"
+       y2="296.64789"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3166-3">
+      <stop
+         style="stop-color:#007a00;stop-opacity:1;"
+         offset="0"
+         id="stop3168-36" />
+      <stop
+         style="stop-color:#00d400;stop-opacity:1;"
+         offset="1"
+         id="stop3170-7" />
+    </linearGradient>
+    <linearGradient
+       y2="296.64789"
+       x2="140.5"
+       y1="296.64789"
+       x1="-263.35715"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3032"
+       xlink:href="#linearGradient3166-3"
+       inkscape:collect="always" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -250,7 +279,7 @@
        sodipodi:cy="296.64789"
        sodipodi:rx="201.42857"
        sodipodi:ry="32.857143"
-       d="m 140,296.64789 a 201.42857,32.857143 0 1 1 -402.85714,0 201.42857,32.857143 0 1 1 402.85714,0 z"
+       d="m 140,296.64789 c 0,18.1465 -90.18264,32.85714 -201.42857,32.85714 -111.24593,0 -201.42857,-14.71064 -201.42857,-32.85714 0,-18.1465 90.18264,-32.85715 201.42857,-32.85715 C 49.81736,263.79074 140,278.50139 140,296.64789 z"
        transform="matrix(-0.46690918,0.60053062,-0.54025561,-0.43889235,619.10142,439.48856)" />
     <path
        sodipodi:type="arc"
@@ -262,6 +291,16 @@
        sodipodi:ry="32.857143"
        d="m 140,296.64789 c 0,18.1465 -90.18264,32.85714 -201.42857,32.85714 -111.24593,0 -201.42857,-14.71064 -201.42857,-32.85714 0,-18.1465 90.18264,-32.85715 201.42857,-32.85715 C 49.81736,263.79074 140,278.50139 140,296.64789 z"
        transform="matrix(-0.6860799,-0.4288203,0.3935656,-0.6296751,376.51677,610.97493)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#linearGradient3032);fill-opacity:1;stroke:#000000;stroke-width:1.17931747;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2385-0"
+       sodipodi:cx="-61.42857"
+       sodipodi:cy="296.64789"
+       sodipodi:rx="201.42857"
+       sodipodi:ry="32.857143"
+       d="m 140,296.64789 a 201.42857,32.857143 0 1 1 -402.85714,0 201.42857,32.857143 0 1 1 402.85714,0 z"
+       transform="matrix(0,-0.58173346,0.7425528,0,184.81524,234.44034)" />
     <path
        sodipodi:type="arc"
        style="fill:url(#linearGradient3184);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
