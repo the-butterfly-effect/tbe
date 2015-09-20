@@ -2,11 +2,9 @@
 <tbe-level>
     <levelinfo>
         <title>Ring the Bell</title>
-        <title lang="nl">Laat de bel maar luiden</title>
         <author>Klaas van Gend</author>
         <license>PD</license>
         <description>It's coffee time. Ring the bell.</description>
-        <description lang="nl">Tijd voor koffie. Laat de bel luiden.</description>
         <date>22 April 2012</date>
     </levelinfo>
     <toolbox>
