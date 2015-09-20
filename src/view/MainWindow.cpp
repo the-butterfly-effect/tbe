@@ -465,8 +465,6 @@ void MainWindow::setupView()
 #endif
 
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
-    if (theStartFileName.isEmpty())
-        theStartFileName = ChooseLevel::getNextLevelName();
 
 	if (theIsRunAsRegression)
     {
@@ -475,6 +473,14 @@ void MainWindow::setupView()
 		theRegressionTest->startRegressionRun();
     }
     else
-        QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
+	{
+		if (theStartFileName.isEmpty())
+			theStartFileName = ChooseLevel::getNextLevelName();
+		// if all levels have been played, this remains empty
+		if (theStartFileName.isEmpty())
+			QTimer::singleShot(200, this, SLOT(on_action_Open_Level_triggered()));
+		else
+			QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
+	}
 }
 
