@@ -52,6 +52,8 @@ Butterfly::Butterfly()
 
 	// butterflies don't bounce *ever*
 	setTheBounciness(0.0);
+	theB2BodyDefPtr->angularDamping = 0.8f;
+
 
 	// the SVG is 223x339 "pixels"
 	setTheWidth(0.15);
