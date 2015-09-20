@@ -28,21 +28,24 @@
    <level> angry/birds1.xml </level>
    <level> angry/birds2.xml </level>
    <level> draft/dialbforboom.xml </level>
-   <level> draft/springboard.xml </level>
+   <!--level> draft/springboard.xml </level-->
    <level> draft/spare-the-balloon.xml </level>
    <level> draft/float-balloon-float.xml </level>
    <level> draft/bridge-2.xml </level>
+   <level> games/extreme-tux-racer.xml </level>
+   <level> games/supertuxkart.xml </level>
    <level> draft/imperfectbalance.xml </level>
    <level> draft/bridge-3.xml </level>
-   <level> picnic/picnic-3.xml </level>
+   <!--level> picnic/picnic-3.xml </level-->
    <level> draft/save-the-butterfly.xml</level>
    <level> draft/domino_day.xml </level>
    <level> draft/geyser.xml </level>
    <level> draft/butterfly-on-steroids.xml </level>
    <level> elce09/006.xml </level>
    <level> draft/contraption2.xml </level>
+   <level> picnic/picnic-2.xml </level>
    <level> draft/loopings2.xml </level>
    <level> elce09/007.xml </level>
-   <level> draft/zoingandboom.xml </level>
+   <!--level> draft/zoingandboom.xml </level-->
    <level> draft/find-the-message.v2.xml </level>
 </tbe-levels>
