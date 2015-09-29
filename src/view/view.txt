@@ -13,8 +13,9 @@ SET(view_SOURCES
     view/ImageCache.cpp
     view/ListViewItemTooltip.cpp
     view/MainWindow.cpp
+    view/Popup.h
     view/PieMenu.cpp
-	view/RegressionTest.cpp
+    view/RegressionTest.cpp
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
     view/SimulationControls.cpp
@@ -41,7 +42,7 @@ SET(view_HEADERS
     view/MainWindow.h
     view/Popup.h
     view/PieMenu.h
-	view/RegressionTest.h
+    view/RegressionTest.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
     view/SimulationControls.h
