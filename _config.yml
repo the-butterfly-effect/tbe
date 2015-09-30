@@ -1,0 +1,4 @@
+# Site settings
+title: The Butterfly Effect 
+slogan: Physics Game like "The Incredible Machine"
+exclude: [README.md, TODO.md]
