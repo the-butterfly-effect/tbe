@@ -40,7 +40,7 @@ bool TestChapter::check(bool aCondition, const QString& aMessage, bool abortIfWr
 	if (aCondition)
 	{
 		QString myTotalLine ="* \033[1m\033[32mOK\033[m  : " + aMessage;
-		printf (ASCII(myTotalLine));
+		printf ("%s", ASCII(myTotalLine));
 		theNumberOfOKs++;
 	}
 	else

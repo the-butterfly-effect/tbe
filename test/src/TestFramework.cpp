@@ -31,6 +31,7 @@ const char* ASCII(const QString& aQString)
 TestFramework::TestFramework(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
+	a.processEvents();
 }
 
 
