@@ -1,0 +1,93 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+<levelinfo>
+<title>The Butterfly effect 102</title>
+<title lang="ru">Эффект бабочки (для продвинутых)</title>
+<title lang="nl">Het vlindereffect (vervolgcursus)</title>
+<author>Klaas van Gend</author>
+<license>GPLv2</license>
+<description>Level with a small user interaction: a volleyball is in the way... </description>
+<description lang="ru">Уровень с небольшим участием пользователя: волейбольный мяч на пути...</description>
+<description lang="nl">Dit level vereist enige speler-actie: er ligt een volleybal in de weg... </description>
+<date>10/10/09</date>
+</levelinfo>
+<toolbox>
+<toolboxitem count="9" name="Bowling Pin">
+<name lang="ru">Кегль для боулинга</name>
+<name lang="nl">Kegel</name>
+<object type="BowlingPin" /></toolboxitem>
+<toolboxitem count="1" name="Bowling Ball">
+<name lang="ru">Шар для боулинга</name>
+<name lang="nl">Bowlingbal</name>
+<object type="BowlingBall" /></toolboxitem>
+<toolboxitem count="0" name="LeftRamp">
+<name lang="ru">Левый уклон</name>
+<name lang="nl">Helling naar links</name>
+<object type="LeftRamp" /></toolboxitem>
+</toolbox>
+<scene>
+<scenesize width="2.3" height="1.7" />
+<predefined>
+<object width="0.20" X="2.1" Y="0.275" height="0.45" type="RectObject">
+<property key="ImageName">Anonymous_daffodil_klaas</property>
+</object>
+<object X="2.1" Y="0.48" width="0.1" height="0.1" type="Scenery" ID="Flower">
+<property key="ImageName">Empty</property>
+</object>
+<object width="1.3" X="0.85" Y="0.085" height="0.17" type="Floor">
+<property key="ImageName">White-to-green</property>
+</object>
+<object width="0.5" X="1.75" Y="0.075" height="0.15" type="Scenery">
+<property key="ImageName">basket</property>
+</object>
+<object width="0.3" X="2.15" Y="0.085" height="0.17" type="Floor">
+<property key="ImageName">White-to-green</property>
+</object>
+<object X="0.5" Y="0.40" type="Butterfly" ID="Butterfly">
+<property key="object">Flower</property>
+</object>
+<object X="1.4" Y="0.29" width="0.21" height="0.21" type="PolyObject">
+<property key="Polygons">(0.105,0.000)=(0.065,0.082)=(-0.023,0.102)=(-0.095,0.046)=(-0.095,-0.046)=(-0.023,-0.102)=(0.065,-0.082)</property>
+<property key="Mass">0.2</property>
+<property key="Bounciness">0.75</property>
+<property key="ImageName">VolleyBall</property>
+</object>
+<object width="0.9" X="0.4" Y="0.85" height="0.1" type="RectObject" angle="-0.45">
+<property key="ImageName">used_wood_bar</property>
+<property key="ZValue">0.6</property>
+<property key="Bounciness">0.05</property>
+</object>
+<object width="0.2" X="0.1" Y="0.5" height="1.0" type="Wall">
+<property key="ZValue">0.5</property>
+</object>
+<object width="0.4" X="0.25" Y="0.73" height="0.1" type="RectObject" angle="0.7">
+<property key="ImageName">used_wood_bar</property>
+<property key="ZValue">0.4</property>
+</object>
+<object X="1.1" Y="1.0" type="PostIt">
+<property key="page1">Our little Butterfly...&lt;br&gt;&lt;br&gt;Another day, another flower...</property>
+<property key="page1_ru">Наша маленькая бабочка...&lt;br&gt;&lt;br&gt;Другой день, другой цветок...</property>
+<property key="page1_nl">Aggut, ons vlindertje...&lt;br&gt;&lt;br&gt;Een nieuwe dag, een nieuwe bloem...</property>
+<property key="page2">But I'm not so sure about that volley ball.</property>
+<property key="page2_ru">Но я не слишком люблю играть в волейбол.</property>
+<property key="page2_nl">Maar ik ben niet zo gek op die volleybal.</property>
+<property key="page3">Hmmm... You see that hole?&lt;br&gt;Behind the volley ball!</property>
+<property key="page3_ru">Хм... Вы видите лунку?&lt;br&gt;Позади волейбольного мяча!</property>
+<property key="page3_nl">Hmmm... Zie je die kuil?&lt;br&gt;Achter de volleybal!</property>
+<property key="page4">... Was signed:&lt;br&gt;&lt;br&gt;the Post-It Boy</property>
+<property key="page4_ru">... Стоит подпись:&lt;br&gt;&lt;br&gt;малыш</property>
+<property key="page4_nl">... Getekend:&lt;br&gt;&lt;br&gt;Post-It Boy</property>
+<property key="page5">Note:&lt;br&gt;If the game runs, a green fast forward button appears in the top-right corner.&lt;br&gt;&lt;br&gt;That will speed up the simulation.</property>
+<property key="page5_ru">Примечание:&lt;br&gt;Если игра запущена, то зелёная кнопка ускорения вперёд активируется в верхнем правом углу.&lt;br&gt;&lt;br&gt;Она ускорит симуляцию.</property>
+<property key="page5_nl">PS:&lt;br&gt;Als het spel loopt, verschijnt er een groene doorspoelknop rechtsboven.&lt;br&gt;&lt;br&gt;Deze maakt de simulatie sneller.</property>
+</object>
+</predefined>
+</scene>
+<goals>
+<goal type="distance">
+<property key="lessthan">0.27</property>
+<property key="object1">Butterfly</property>
+<property key="object2">Flower</property>
+</goal>
+</goals>
+</tbe-level>

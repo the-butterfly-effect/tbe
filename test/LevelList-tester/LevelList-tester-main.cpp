@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 {
 	QCoreApplication a(argc, argv);
 
-	LevelList myList("./levels.xml");
+	LevelList myList("./", "levels.xml");
 
 	return 0;
 }
