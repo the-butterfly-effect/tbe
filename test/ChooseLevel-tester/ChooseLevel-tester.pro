@@ -10,9 +10,11 @@ TEMPLATE = app
 SOURCES += ChooseLevel-tester-main.cpp \
     ../../src/view/animateddialog.cpp \
     ../../src/view/ChooseLevel.cpp \
+    ../../src/loadsave/LevelList.cpp \
     ../../src/loadsave/LocalString.cpp
 HEADERS += ../../src/view/ChooseLevel.h \
     ../../src/tbe_global.h \
+    ../../src/loadsave/LevelList.h \
     ../../src/loadsave/LocalString.h \
     ../../src/view/animateddialog.h
 FORMS += ../../src/view/ChooseLevel.ui

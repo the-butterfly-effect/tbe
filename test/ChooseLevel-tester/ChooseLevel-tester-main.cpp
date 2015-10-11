@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 
-	ChooseLevel myMain(nullptr, true, "./levels.xml");
+	ChooseLevel myMain(nullptr, true, "./", "levels.xml");
 
 	return 0;
 }
