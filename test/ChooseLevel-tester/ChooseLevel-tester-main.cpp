@@ -33,12 +33,7 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 
-	ChooseLevel myMain;
-
-	if (myMain.exec() == QDialog::Accepted)
-		printf("user selected: '%s'\n", ASCII(myMain.getCurrent()));
-	else
-		printf("user clicked cancel\n");
+	ChooseLevel myMain(nullptr, true, "./levels.xml");
 
 	return 0;
 }

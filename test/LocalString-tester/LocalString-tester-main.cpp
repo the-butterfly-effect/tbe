@@ -64,12 +64,38 @@ bool TestLocalString::runTests(void)
 	return true;
 }
 
+class TestWithChooseLevel : public TestChapter
+{
+public:
+	TestWithChooseLevel() : TestChapter("Test LocalString class in combination with ChooseLevel")	{}
+	virtual bool runTests();
+};
+
+bool TestWithChooseLevel::runTests(void)
+{
+	// setup the string for mining...
+	LocalString myLS;
+	myLS.add("one","");
+	myLS.add("een", "nl");
+	myLS.add("uno", "it");
+	myLS.add("eins", "de");
+	myLS.add("un", "fr");
+	myLS.add("eene", "ru");
+	
+	
+
+
+	return true;
+}
+
+
 
 int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
 	myFramework.add( new TestLocalString );
+	myFramework.add( new TestWithChooseLevel );
 
 	myFramework.run();
 
