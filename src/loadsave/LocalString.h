@@ -36,7 +36,7 @@ public:
       *  @param aValue   string to be copied if one of the above rules matches
       *  @param aLangCode  the locale code - either empty, or "nl" or "nl_BE" format
       */
-    void add(const QString& aValue, const QString& aLangCode);
+	void add(QString aValue, QString aLangCode);
 
     /** read within the DomNode Dom to find all tags with a lang="lang"
       * and find the string which fits the current locale best
@@ -71,13 +71,17 @@ public:
     /// returns a string will all entries
     QString all() const;
 
-    /**
+	/** @returns the localized version, based on a5Char
+	  * @param a5Char  a string identifying the language, e.g. en_US
       *  we follow these rules:
       *    1) if nothing set and we find a <title> without a language - let's use it
       *    2) if we find a title with the corresponding language - let's use it instead of rule 1
       *    3) if we find a title with a full corresponding "language_country", let's use that one instead of 1 or 2
       */
-    QString result() const;
+	QString result(const QString& a5Char) const;
+
+	/// same as result(system default);
+	QString result() const;
 
     void clear();
 
@@ -91,8 +95,6 @@ public:
 
 
 private:
-    QString the5Char;
-
     /// contains all strings read
     typedef QMap<QString,QString> LocalStringList;
     LocalStringList theStringList;

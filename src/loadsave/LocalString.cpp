@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2013 Klaas van Gend
+ * This file copyright (C) 2010,2013,2015 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,11 +25,9 @@
 
 LocalString::LocalString(void)
 {
-	QLocale mySysLocale = QLocale::system();
-	the5Char = mySysLocale.name();
 }
 
-void LocalString::add(const QString& aValue, const QString& aLangCode)
+void LocalString::add(QString aValue, QString aLangCode)
 {
 		theStringList.insert(aLangCode, aValue);
 }
@@ -67,11 +65,11 @@ LocalString::fillFromDOM(
 		const QString& aTagString,
 		const QString& aDefault)
 {
-	theStringList.insert("", aDefault);
+	add (aDefault, "");
 	QDomElement myE = aNode.firstChildElement(aTagString);
 	while (myE.isNull()==false)
 	{
-		theStringList.insert(myE.attribute("lang",""), myE.text());
+		add (myE.text(), myE.attribute("lang",""));
 		myE = myE.nextSiblingElement(aTagString);
 	}
 }
@@ -91,8 +89,12 @@ void LocalString::serializeTo(QDomElement& aParentElement) const
     }
 }
 
-
 QString LocalString::result() const
+{
+	return result(QLocale::system().name());
+}
+
+QString LocalString::result(const QString& a5Char) const
 {
 	QString myReturn;
 	QString myLang;
@@ -100,8 +102,8 @@ QString LocalString::result() const
 	LocalStringList::const_iterator i = theStringList.constBegin();
 	while (i != theStringList.constEnd())
 	{
-		QString aLangCode = i.key();
-		QString aValue = i.value();
+		QString myLangCode = i.key();
+		QString myValue = i.value();
 
 		// we follow these rules:
 		// 1) if nothing set and we find a <title> without a language - let's
@@ -112,28 +114,29 @@ QString LocalString::result() const
 		//    let's use that one instead of 1 or 2
 
 		// rule 1
-		if (aLangCode.isEmpty() && myLang.isEmpty())
-			myReturn = aValue;
+		if (myLangCode.isEmpty() && myLang.isEmpty())
+			myReturn = myValue;
 
 		// rule 2
-		if (myLang.size()<3 && aLangCode.left(2) == the5Char.left(2))
+		if (myLang.size()<3 && myLangCode.left(2) == a5Char.left(2))
 		{
 			// but not if we already have "nl", are looking for "nl_NL" and we now get "nl_BE"
-			if ( !(aLangCode.size()==5 && myLang.size()==2) )
+			if ( !(myLangCode.size()==5 && myLang.size()==2) )
 			{
-				myReturn = aValue;
-				myLang = aLangCode.left(2);
+				myReturn = myValue;
+				myLang = myLangCode.left(2);
 			}
 		}
 
 		// rule 3
-		if (myLang.size()<3 && aLangCode == the5Char)
+		if (myLang.size()<3 && myLangCode == a5Char)
 		{
-			myReturn = aValue;
-			myLang = aLangCode;
+			myReturn = myValue;
+			myLang = myLangCode;
 		}
 
 		++i;
 	}
+
 	return myReturn;
 }
