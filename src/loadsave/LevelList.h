@@ -33,7 +33,7 @@ public:
 		enum Status
 		{ FRESH, SKIPPED, COMPLETED };
 
-		Status		theStatus;
+		enum Status	theStatus;
 		QString     theFileName;
 		LocalString theTitle;
 		LocalString theDescription;
@@ -49,16 +49,18 @@ public:
 	/// @note: if aName doesn't exit, return value will be an empty struct
 	LevelMetaInfo getLevelMetaInfo(QString aName);
 
-	/// @returns full path for the first level in the list
-	/// @note: if there is no level in the list, return value will be empty
+	/// @returns Full path for the first level in the list.
+	/// @note    If there is no level in the list, return value will be empty.
+	/// @note    As a side-effect, will reload all Skipped/Completed statuses.
 	QString getFirstLevel();
 
 	/// @returns full path for the next level in the list
 	/// @note: if aName doesn't exit, return value will be empty
 	QString getNextLevel(QString aName);
 
-	/// @returns first non-skipped non-completed level - as a full path
-	/// @note: if there are no such levels left, returns empty
+	/// @returns First non-skipped non-completed level - as a full path.
+	/// @note    If there are no such levels left, returns empty.
+	/// @note    As a side-effect, will reload all Skipped/Completed statuses.
 	QString getNextToPlayLevel();
 
 private:
@@ -74,6 +76,9 @@ private:
 
 	/// implemented from QXmlDefaultHandler
 	bool fatalError(const QXmlParseException &exception) override;
+
+	/// Update all level statuses for new Skipped or Completed info.
+	void updateSkippedCompleted();
 
 private:
 	int		theNr;

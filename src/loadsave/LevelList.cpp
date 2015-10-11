@@ -57,6 +57,7 @@ LevelList::LevelList(const QString& aBaseDir, const QString &aFileName)
 		printf("FOUTEBOEL\n");
 		exit(684);
 	}
+	updateSkippedCompleted();
 }
 
 int LevelList::findNameInList(const QString &aName)
@@ -77,7 +78,10 @@ QString LevelList::getFirstLevel()
 	if (theMetaList.isEmpty())
 		return "";
 	else
+	{
+		updateSkippedCompleted();
 		return theMetaList.first().theFileName;
+	}
 }
 
 LevelList::LevelMetaInfo LevelList::getLevelMetaInfo(QString aName)
@@ -104,7 +108,15 @@ QString LevelList::getNextLevel(QString aName)
 
 QString LevelList::getNextToPlayLevel()
 {
-
+	// reload all completed/skipped entries
+	updateSkippedCompleted();
+	// find first level that is not complete or skipped
+	for (int i=0; i< theMetaList.size(); i++)
+	{
+		if (theMetaList.at(i).theStatus == LevelMetaInfo::FRESH)
+			return theMetaList.at(i).theFileName;
+	}
+	return "";
 }
 
 
@@ -138,17 +150,6 @@ bool LevelList::endElement(const QString & /* namespaceURI */,
 		if (myParser.theDescription.isEmpty()==false)
 			myLevelInfo.theDescription = myParser.theDescription;
 
-		QSettings mySettings;
-		QString myLevelStatus = mySettings.value("completed/"+currentText).toString();
-		if (myLevelStatus.isEmpty()==false)
-		{
-			if (myLevelStatus=="done")
-				myLevelInfo.theStatus = LevelMetaInfo::COMPLETED;
-			else if (myLevelStatus=="skipped")
-				myLevelInfo.theStatus = LevelMetaInfo::SKIPPED;
-			else
-				myLevelInfo.theStatus = LevelMetaInfo::FRESH;
-		}
 		theMetaList.push_back(myLevelInfo);
 	}
 RETURN:
@@ -168,6 +169,22 @@ bool LevelList::fatalError(const QXmlParseException &exception)
 }
 
 
+void LevelList::updateSkippedCompleted()
+{
+	QSettings mySettings;
+	for (int i=0; i< theMetaList.size(); i++)
+	{
+		QString myLevelStatus = mySettings.value("completed/"+theMetaList.at(i).theFileName).toString();
+		theMetaList[i].theStatus = LevelMetaInfo::FRESH;
+		if (myLevelStatus.isEmpty()==false)
+		{
+			if (myLevelStatus=="done")
+				theMetaList[i].theStatus = LevelMetaInfo::COMPLETED;
+			else if (myLevelStatus=="skipped")
+				theMetaList[i].theStatus = LevelMetaInfo::SKIPPED;
+		}
+	}
+}
 
 // ###################################################
 

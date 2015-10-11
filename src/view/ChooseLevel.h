@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009  Klaas van Gend
+ * This file copyright (C) 2009,2015  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,7 +20,9 @@
 #define ChooseLevel_H
 
 #include "animateddialog.h"
-#include "LocalString.h"
+#include "LevelList.h"
+
+#include "tbe_paths.h"
 
 #include <QtGui/QDialog>
 #include <QtGui/QTreeWidget>
@@ -33,11 +35,17 @@ namespace Ui {
 class ChooseLevel : public AnimatedDialog {
 	Q_OBJECT
 public:
-	ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow=false);
+	/// @param aParentPtr
+	/// @param isNoShow
+	/// @param aDirectory (only used for testing)
+	/// @param aFileName  (only used for testing)
+	ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow=false,
+				const QString &aDirectory = LEVELS_DIRECTORY, const QString &aFileName = "levels.xml");
 	virtual ~ChooseLevel();
 
-        /// TODO: document
-        static QString getNextLevelName(void);
+	/// TODO: move to (singleton version of) LevelList
+	/// @returns The name of the next level to play, or "" if no more levels.
+	static QString getNextLevelName(void);
 
 signals:
 	void loadLevel(const QString&);
@@ -51,79 +59,19 @@ protected slots:
 	void on_pushButton_cancel_clicked();
 
 protected:
-	void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
-        /// @returns the currently selected level, which should be the first
-        /// not-conquered level. If there is none, returns an empty string.
-        QString getCurrent(void);
+	/// @returns the currently selected level, which should be the first
+	/// not-conquered level. If there is none, returns an empty string.
+	QString getCurrent(void);
+
+	/// (Re-)fills the treewidget with current info from theLLPtr
+	void fillTreeWidget();
 
 private:
 	Ui::ChooseLevel *m_ui;
 
-	bool readLevels(const QString& aFileName);
-
-
-	/// this class is used by ChooseLevel to build the TreeView
-	class LevelList : public QXmlDefaultHandler
-	{
-	public:
-		/// constructor - Note that the file name is specified on a different call
-		LevelList(QTreeWidget* aListWidget);
-
-		/// implemented from QXmlDefaultHandler
-		bool endElement(const QString &namespaceURI, const QString &localName,
-						const QString &qName);
-		/// implemented from QXmlDefaultHandler
-		bool characters(const QString &aStr)
-		{ currentText += aStr; return true; }
-
-		/// implemented from QXmlDefaultHandler
-		bool fatalError(const QXmlParseException &exception);
-		QString errorString() const
-		{ return errorStr; }
-
-	private:
-		int		theNr;
-		QTreeWidget* theTreeWidget;
-		QString currentText;
-		QString errorStr;
-	}; // end-of-LevelList
-
-
-	/** this class is used after the above LevelList class to quickly retrieve
-	  * title and description from a level (in the right locale)
-	  */
-	class FastLevelParser : public QXmlDefaultHandler
-	{
-	public:
-		/// empty constructor - Note that the file name is specified on a different call
-		FastLevelParser(void) {};
-
-		/// implemented from QXmlDefaultHandler
-		virtual bool endElement(const QString &namespaceURI, const QString &localName,
-						const QString &qName);
-
-		/// implemented from QXmlDefaultHandler
-		virtual bool characters(const QString &aStr)
-		{ currentText += aStr; return true; }
-
-
-		virtual bool startElement(const QString &namespaceURI, const QString &localName,
-					   const QString &qName, const QXmlAttributes &attributes);
-
-		QString errorString() const
-		{ return errorStr; }
-
-		LocalString theTitle;
-		LocalString theDescription;
-
-		QXmlAttributes theAttrs;
-
-	private:
-		QString currentText;
-		QString errorStr;
-
-	}; // end-of FastLevelParser
+	static std::shared_ptr<LevelList> theLLPtr;
 };
 
 #endif // ChooseLevel_H
