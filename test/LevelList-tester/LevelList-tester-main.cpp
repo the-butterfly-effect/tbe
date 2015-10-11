@@ -20,6 +20,7 @@
 #include "TestChapter.h"
 
 #include <QCoreApplication>
+#include <QLocale>
 
 #include "LevelList.h"
 #include "tbe_global.h"
@@ -56,11 +57,15 @@ bool TestLevelList1::runTests(void)
 	check( myName3 != myName2,                   "Check2 third level name is correct\n");
 	QString myName4 = myList.getNextLevel(myName3);
 	check( myName4 == "", "Check there is no fourth name\n");
-	
+
 	LevelList::LevelMetaInfo myMeta1 = myList.getLevelMetaInfo(myName1);
 	check (myMeta1.theFileName == myName1, "Check1 LMI filename for first level is correct\n");
 	check (myMeta1.theFileName != myName2, "Check2 LMI filename for first level is correct\n");
-	
+
+	check (myMeta1.theTitle.english() == "The Butterfly Effect 101", "Check for basic English name of title level1");
+	check (myMeta1.theTitle.result("nl_NL") == "Het vlindereffect (beginnerscursus)", "Check for dutch translation of title level1");
+	check (myMeta1.theDescription.result("de_AT") == "Deutsche Beschreibung", "Check Austrian German translation of description level1");
+
 	return true;
 }
 
@@ -73,11 +78,11 @@ int main(int argc, char *argv[])
 	myFramework.add( new TestLevelList1("./") );
 	
 	// test with more complicated relative path
-//	myFramework.add( new TestLevelList1("../LevelList-tester/") );
+	myFramework.add( new TestLevelList1("../LevelList-tester/") );
 
 	// test with absolute path
 	char buf[256];
-//	myFramework.add( new TestLevelList1(getcwd(buf, 255)));
+	myFramework.add( new TestLevelList1(getcwd(buf, 255)));
 	
 	myFramework.run();
 
