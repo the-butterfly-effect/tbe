@@ -8,6 +8,7 @@ SET(loadsave_SOURCES
     loadsave/GoalSerializer.cpp 
     loadsave/HintSerializer.cpp 
     loadsave/Level.cpp 
+    loadsave/LevelList.cpp 
     loadsave/LocalString.cpp  
     loadsave/ObjectFactory.cpp 
     loadsave/ToolboxGroupSerializer.cpp
@@ -19,6 +20,7 @@ SET(loadsave_HEADERS
     loadsave/GoalSerializer.h 
     loadsave/HintSerializer.h 
     loadsave/Level.h 
+    loadsave/LevelList.h 
     loadsave/LocalString.h  
     loadsave/ObjectFactory.h 
     loadsave/ToolboxGroupSerializer.h
