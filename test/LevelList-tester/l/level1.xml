@@ -4,11 +4,13 @@
 <title>The Butterfly Effect 101</title>
 <title lang="ru">Эффект бабочки (для начинающих)</title>
 <title lang="nl">Het vlindereffect (beginnerscursus)</title>
+<title lang="de">Der Schmetterlingseffekt (Anfängerskurs)</title>
 <author>Klaas van Gend</author>
 <license>GPLv2</license>
 <description>Hello!&lt;br&gt;Welcome to The Butterfly Effect!&lt;br&gt;&lt;br&gt;This level is a first demonstration.Click PLAY in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level.&lt;br&gt;&lt;br&gt;You might want to click on the Post-it note!</description>
 <description lang="ru">Привет!&lt;br&gt;Добро пожаловать в Эффект бабочки!&lt;br&gt;&lt;br&gt;Этот уровень является первой демонстрацией. Нажмите кнопку игры в правом верхнем углу и наблюдайте за полётом бабочки. Когда она долетит до цветка, то вы выиграете первый уровень.&lt;br&gt;&lt;br&gt;Вы можете щёлкать на заметках-стикерах с сообщениями!</description>
 <description lang="nl">Hoi!&lt;br&gt;Welkom bij Het Vlindereffect!&lt;br&gt;&lt;br&gt;Dit level is alleen een demonstratie.Klik AFSPELEN rechtsboven en zie de vlinder fladderen. Zodra hij bij de bloem is, heb je je eerste level gewonnen.&lt;br&gt;&lt;br&gt;Je wilt misschien ook op de Post-it note klikken!</description>
+<description lang="de">Deutsches Beschreibung</title>
 <date>11/1/09</date>
 </levelinfo>
 <scene>
