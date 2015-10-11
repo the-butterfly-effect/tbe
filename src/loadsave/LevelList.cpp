@@ -25,47 +25,89 @@
 // TODO: get rid of!
 #include "Popup.h"
 
-LevelList::LevelList(const QString& aFileName )
+LevelList::LevelList(const QString& aBaseDir, const QString &aFileName)
+		: theBaseLevelsDir(aBaseDir)
 {
-	DEBUG1ENTRY;
+	DEBUG5ENTRY;
 	theNr = 0;
 	currentText.clear();
+
+	if (!theBaseLevelsDir.endsWith("/"))
+		theBaseLevelsDir+="/";
 
 	QXmlSimpleReader reader;
 	reader.setContentHandler(this);
 	reader.setErrorHandler(this);
 
-	QFile file(aFileName);
+	QFile file(theBaseLevelsDir + aFileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 	{
 		// TODO: MOVE THIS AWAY
 		// note that critical won't return...
 		Popup::Critical(QObject::tr("Level parser:\n"
 						"Cannot read the level descriptions in '%1':\n%2.")
-						.arg(aFileName).arg(file.errorString()));
+						.arg(theBaseLevelsDir+aFileName).arg(file.errorString()));
 		exit(3);
 	}
 
-//	QXmlInputSource xmlInputSource(&file);
-//	if (reader.parse(xmlInputSource))
-//	{
-//		// find the first item that not has "done" in the NR_COLUMN field
-//		QTreeWidgetItemIterator it(m_ui->theTreeWidget);
-//		while( *it )
-//		{
-//			QString myLineStatus = (*it)->text(NR_COLUMN);
-//			if ( myLineStatus.contains(QRegExp("[0-9]")) )
-//			{
-//				m_ui->theTreeWidget->setCurrentItem(*it);
-//				(*it)->setSelected(true);
-//				break;
-//			}
-//			++it;
-//		}
-//		return true;
-//	}
-//	return false;
+	QXmlInputSource xmlInputSource(&file);
+	if (!reader.parse(xmlInputSource))
+	{
+		// TODO: fouteboel
+		printf("FOUTEBOEL\n");
+		exit(684);
+	}
 }
+
+int LevelList::findNameInList(const QString &aName)
+{
+	if (theMetaList.isEmpty())
+		return -1;
+	for (int i=0; i< theMetaList.size(); i++)
+	{
+		if (theMetaList.at(i).theFileName == aName)
+			return i;
+	}
+	return -1;
+}
+
+
+QString LevelList::getFirstLevel()
+{
+	if (theMetaList.isEmpty())
+		return "";
+	else
+		return theMetaList.first().theFileName;
+}
+
+LevelList::LevelMetaInfo LevelList::getLevelMetaInfo(QString aName)
+{
+	int i = findNameInList(aName);
+	if (i==-1)
+	{
+		// empty LMI
+		LevelMetaInfo myLMI;
+		return myLMI;
+	}
+	return theMetaList.at(i);
+}
+
+QString LevelList::getNextLevel(QString aName)
+{
+	int i = findNameInList(aName);
+	if (i==-1)
+		return "";
+	if (i+1 == theMetaList.size())
+		return "";
+	return theMetaList.at(i+1).theFileName;
+}
+
+QString LevelList::getNextToPlayLevel()
+{
+
+}
+
+
 
 bool LevelList::endElement(const QString & /* namespaceURI */,
 							  const QString & /* localName */,
@@ -75,7 +117,7 @@ bool LevelList::endElement(const QString & /* namespaceURI */,
 	if (qName == "level")
 	{
 		// remove any starting/trailing whitespace and add the path name
-		currentText = LEVELS_DIRECTORY + "/" + currentText.trimmed();
+		currentText = theBaseLevelsDir + currentText.trimmed();
 
 		LevelMetaInfo myLevelInfo;
 		myLevelInfo.theFileName = currentText;
@@ -107,6 +149,7 @@ bool LevelList::endElement(const QString & /* namespaceURI */,
 			else
 				myLevelInfo.theStatus = LevelMetaInfo::FRESH;
 		}
+		theMetaList.push_back(myLevelInfo);
 	}
 RETURN:
 	currentText.clear();
@@ -121,8 +164,9 @@ bool LevelList::fatalError(const QXmlParseException &exception)
 					.arg(exception.lineNumber())
 					.arg(exception.columnNumber())
 					.arg(exception.message()));
-	return false;
+				return false;
 }
+
 
 
 // ###################################################
@@ -131,7 +175,7 @@ bool LevelList::FastLevelParser::endElement(const QString & /* namespaceURI */,
 											const QString & /* localName */,
 											const QString &qName)
 {
-	DEBUG1ENTRY;
+	DEBUG5ENTRY;
 	if (qName == "title")
 		theTitle.add(currentText.trimmed(), theAttrs.value("lang"));
 
@@ -142,9 +186,6 @@ bool LevelList::FastLevelParser::endElement(const QString & /* namespaceURI */,
 	if (qName == "levelinfo")
 		return false;
 
-	printf("'%s': ", ASCII(theTitle.all()));
-	printf("'%s'\n", ASCII(theDescription.all()));
-
 	currentText = "";
 	return true;
 }
@@ -153,7 +194,7 @@ bool LevelList::FastLevelParser::endElement(const QString & /* namespaceURI */,
 bool LevelList::FastLevelParser::startElement(const QString &, const QString &,
 					   const QString &qName, const QXmlAttributes &attributes)
 {
-	DEBUG1ENTRY;
+	DEBUG5ENTRY;
 	// this potentially is an expensive copy operation, let's reduce it...
 	if (qName == "title" || qName == "description")
 	{

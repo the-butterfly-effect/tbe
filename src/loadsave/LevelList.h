@@ -24,51 +24,71 @@
 #include <QtXml/QXmlDefaultHandler>
 
 /// this class contains a list of all levels
-class LevelList : private QXmlDefaultHandler
+class LevelList : protected QXmlDefaultHandler
 {
 public:
-	/// constructor
-	LevelList(const QString &aFileName);
-
-	QString errorString() const
-	{ return errorStr; }
-
-private:
-	friend class QXmlSimpleReader;
-	/// implemented from QXmlDefaultHandler
-	bool endElement(const QString &namespaceURI, const QString &localName,
-					const QString &qName);
-	/// implemented from QXmlDefaultHandler
-	bool characters(const QString &aStr)
-	{ currentText += aStr; return true; }
-
-	/// implemented from QXmlDefaultHandler
-	bool fatalError(const QXmlParseException &exception);
-
-private:
-	int		theNr;
-	QString currentText;
-	QString errorStr;
-
 	/// Describes the meta-info for a level in the game
 	struct LevelMetaInfo
 	{
 		enum Status
-		{
-			FRESH,
-			SKIPPED,
-			COMPLETED
-		};
+		{ FRESH, SKIPPED, COMPLETED };
 
 		Status		theStatus;
 		QString     theFileName;
 		LocalString theTitle;
 		LocalString theDescription;
+
 	};
+
+	/// Constructor, will open levels description file 'aFileName' in aBaseDir.
+	/// @param aBaseDir   Base directory to find aFileName in, also base for all level file name
+	/// @param aFileName  Name of the 'levels.xml' file - usually just that.
+	LevelList(const QString& aBaseDir, const QString &aFileName);
+
+	/// @returns a COPY of the meta info for level aName (full path!)
+	/// @note: if aName doesn't exit, return value will be an empty struct
+	LevelMetaInfo getLevelMetaInfo(QString aName);
+
+	/// @returns full path for the first level in the list
+	/// @note: if there is no level in the list, return value will be empty
+	QString getFirstLevel();
+
+	/// @returns full path for the next level in the list
+	/// @note: if aName doesn't exit, return value will be empty
+	QString getNextLevel(QString aName);
+
+	/// @returns first non-skipped non-completed level - as a full path
+	/// @note: if there are no such levels left, returns empty
+	QString getNextToPlayLevel();
+
+private:
+	// to make sure the below overrides are not accessible
+	friend class QXmlSimpleReader;
+	
+	/// implemented from QXmlDefaultHandler
+	bool endElement(const QString &namespaceURI, const QString &localName,
+					const QString &qName) override;
+	/// implemented from QXmlDefaultHandler
+	bool characters(const QString &aStr) override
+	{ currentText += aStr; return true; }
+
+	/// implemented from QXmlDefaultHandler
+	bool fatalError(const QXmlParseException &exception) override;
+
+private:
+	int		theNr;
+	QString currentText;
+	QString errorStr;
+	
+	/// contains the base paths for the levels.xml and the levels
+	QString theBaseLevelsDir;
 
 	typedef QList<LevelMetaInfo> MetaInfoList;
 	MetaInfoList theMetaList;
 
+	/// Finds aName in theMetaList.
+	/// @returns the index to the element containing aName, or -1 if not found
+	int findNameInList(const QString& aName);
 
 	/** this class is used after the above LevelList class to quickly retrieve
 	  * title and description from a level (in the right locale)
@@ -81,15 +101,15 @@ private:
 
 		/// implemented from QXmlDefaultHandler
 		virtual bool endElement(const QString &namespaceURI, const QString &localName,
-						const QString &qName);
+						const QString &qName) override;
 
 		/// implemented from QXmlDefaultHandler
-		virtual bool characters(const QString &aStr)
+		virtual bool characters(const QString &aStr) override
 		{ currentText += aStr; return true; }
 
 
 		virtual bool startElement(const QString &namespaceURI, const QString &localName,
-					   const QString &qName, const QXmlAttributes &attributes);
+					   const QString &qName, const QXmlAttributes &attributes) override;
 
 		QString errorString() const
 		{ return errorStr; }
