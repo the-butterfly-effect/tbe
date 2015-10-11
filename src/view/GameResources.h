@@ -53,7 +53,7 @@ public:
 
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog
-    virtual void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
 signals:
     /// Emitted when the player wants to restart the level.

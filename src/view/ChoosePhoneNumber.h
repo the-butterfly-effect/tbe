@@ -38,7 +38,7 @@ public slots:
 	void on_comboBox_activated();
 
 protected:
-	void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
 private:
 	Ui::ChoosePhoneNumber *m_ui;

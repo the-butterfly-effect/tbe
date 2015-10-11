@@ -75,7 +75,7 @@ public:
 	RegressionTest* theRegressionTest;
 
 protected:
-    void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
     void setupMenu(void);
     void setupView(void);

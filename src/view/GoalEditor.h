@@ -47,7 +47,7 @@ public:
 	{ return tr("change"); }
 
 protected:
-    void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
 	/** depending on the contents of the cells,
 	  * turns cells red (if object names do not exist) or greys/ungreys cells

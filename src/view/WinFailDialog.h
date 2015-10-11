@@ -44,7 +44,7 @@ public:
     ~WinFailDialog();
 
 protected:
-    void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 
 private:
     Ui::WinFailDialog *ui;

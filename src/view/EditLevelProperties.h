@@ -44,7 +44,7 @@ public:
     ~EditLevelProperties();
 
 protected:
-    void changeEvent(QEvent *e);
+	virtual void changeEvent(QEvent *e) override;
 	void populateTableAndGradient(Background* aBGPtr);
 	void writeChanges(void);
 
