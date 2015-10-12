@@ -47,6 +47,7 @@ static const char* theSceneString = "scene";
 	static const char* thePredefinedString = "predefined";
 		   const char* theObjectString     = "object";
 		   const char* thePropertyString   = "property";
+		   const char* theToolTipString    = "tooltip";
 	const char* theBackgroundString = "background";
 static const char* theToolboxString = "toolbox";
 

@@ -20,6 +20,7 @@
 #define ABSTRACTOBJECT_H
 
 #include <QtCore/QtGlobal>
+#include "LocalString.h"
 #include "PivotPointPtr.h"
 #include "Position.h"
 #include "Property.h"
@@ -389,7 +390,7 @@ protected:
 	b2BodyDef* theB2BodyDefPtr;
 
     /// store a tooltip string
-    QString theToolTip;
+	LocalString theToolTip;
 
 	/// the properties of the object instance
 	PropertyList theProps;

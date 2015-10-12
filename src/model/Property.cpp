@@ -27,7 +27,6 @@
 // these are the identifiers of the properties in the XML file
 // do not translate - ever!
 const char* Property::BOUNCINESS_STRING  = "Bounciness";
-const char* Property::DESCRIPTION_STRING = "Description";
 const char* Property::FRICTION_STRING    = "Friction";
 const char* Property::IMAGE_NAME_STRING  = "ImageName";
 const char* Property::MASS_STRING        = "Mass";

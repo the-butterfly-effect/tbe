@@ -31,7 +31,7 @@ extern const char* theAngleAttributeString;
 extern const char* theTypeAttributeString;
 extern const char* theIDAttributeString;
 extern const char* thePropertyString;
-
+extern const char* theToolTipString;
 
 AbstractObjectSerializer::AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr)
 		: theAbstractObjectPtr(anObjectPtr)
@@ -164,13 +164,24 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 		QDomElement i;
 		for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
 		{
-			if (i.nodeName() != thePropertyString)
-				goto not_good;
 			QString myKey = i.attributes().item(0).nodeValue();
 			QString myTValue = i.text();
-
-            DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
-            myAOPtr->theProps.setProperty(myKey, myTValue);
+			if (i.nodeName() == thePropertyString)
+			{
+				DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
+				// make sure there's no 'Description' - that's now outlawed
+				Q_ASSERT(myKey != "Description");
+				myAOPtr->theProps.setProperty(myKey, myTValue);
+				continue;
+			}
+			if (i.nodeName() == theToolTipString)
+			{
+				DEBUG5("   %s", ASCII(QString("tooltip: '%1'='%2'").arg(myKey).arg(myTValue)));
+				myAOPtr->theToolTip.add(myTValue, myKey);
+				continue;
+			}
+			// if we get here, nodeName is not something we know about
+			goto not_good;
 		}
 	}
 

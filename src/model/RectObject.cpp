@@ -149,8 +149,7 @@ void RectObject::initRectAttributes ( )
 {
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
-		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" +
-		Property::DESCRIPTION_STRING + QString(":/") );
+		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" );
 	resizableInfo = NORESIZING;
 }
 

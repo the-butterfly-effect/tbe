@@ -25,6 +25,7 @@
 #include "World.h"
 
 #include <QStringList>
+#include <cassert>
 
 // I wonder if this should be b2_linearSlop instead of this number...
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
@@ -201,11 +202,11 @@ Position AbstractObject::getTempCenter (void) const
 
 const QString AbstractObject::getToolTip() const
 {
-    // if there's a property "Description", use that
-    // otherwise check if theToolTip is usable
-    QString myToolTip = theToolTip;
-    theProps.property2String(Property::DESCRIPTION_STRING, &myToolTip, false);
-    return myToolTip;
+	// originally we had the concept of a 'Description' property.
+	// however, that is not translatable.
+	assert (!theProps.doesPropertyExists("Description"));
+	printf("tooltip: %s\n", ASCII(theToolTip.all()));
+	return theToolTip.result();
 }
 
 

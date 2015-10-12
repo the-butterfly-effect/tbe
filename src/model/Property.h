@@ -218,7 +218,6 @@ public:
 	static const char* ROTATABLE_STRING;		// "true" or "false"
 	static const char* MASS_STRING;	    		// 0.0 - inf, in [kg]
 	static const char* FRICTION_STRING; 		// 0.0 - 1.0, where 0=frictionless and 1=no slip
-	static const char* DESCRIPTION_STRING;		// tooltip  FIXME/TODO: i18n on this
 
 	// this one is unique to PolyObject
 	static const char* POLYGONS_STRING;			// set(s) of coordinates

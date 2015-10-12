@@ -27,6 +27,11 @@ LocalString::LocalString(void)
 {
 }
 
+LocalString::LocalString(const QString& aString)
+{
+	add(aString, "");
+}
+
 void LocalString::add(QString aValue, QString aLangCode)
 {
 		theStringList.insert(aLangCode, aValue);

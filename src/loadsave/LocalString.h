@@ -28,9 +28,13 @@
 class LocalString
 {
 public:
-    LocalString();
+	// default constructor
+	explicit LocalString();
 
-    /** adds string aValue and its locale to the list
+	// copy constructor
+	LocalString(const QString& aString);
+
+	/** adds string aValue and its locale to the list
       *
       *  Note: you'll probably use multiple calls to check() if you are using the SAX model
       *  @param aValue   string to be copied if one of the above rules matches
