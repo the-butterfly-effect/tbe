@@ -265,6 +265,6 @@ void RegressionTest::slotRegressionProgress(void)
 	Q_ASSERT(myNextState != START);
 	theState = myNextState;
 	Q_ASSERT(myNextDelay!=0);
-	DEBUG1("start timer for %1 msec!\n",myNextDelay*theTestMultiplier+theTestAddition);
+	DEBUG1("start timer for %3.3f sec!\n",(myNextDelay*theTestMultiplier+theTestAddition)/1000.);
 	theRegressionTimer.start(myNextDelay*theTestMultiplier+theTestAddition);
 }
