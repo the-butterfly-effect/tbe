@@ -47,7 +47,7 @@
             </object>
             <object X="1.86" Y="1.4" type="VolleyBall" />
 	    <object X="2.34" Y="1.47" type="BowlingPin" ID="Pin">
-                <property key="Description">A Lonely Bowling Pin...</property>
+                <tooltip>A Lonely Bowling Pin...</tooltip>
             </object>
             <object X="2.45" Y="0.30" type="BowlingPin" />
             <object X="2.55" Y="0.50" type="BowlingPin" />

@@ -73,39 +73,39 @@
             <object width="1.300" X="0.842" Y="1.000" height="1.300" type="RightWedge" ID="stick-figure" angle="0.236" >
                 <property key="Friction" >1</property>
                 <property key="ImageName" >stick-figure-shoot</property>
-                <property key="Description" >En garde! (That's French)</property>
+                <tooltip>En garde! (That's French)</tooltip>
                 <property key="Mass" >4</property>
             </object>
             <object width="0.270" X="7.970" Y="0.303" height="0.360" type="Balloon" ID="egg2" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
-		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
+		<tooltip>This is an egg. Rather easy to break, I'd say...</tooltip>
                 <property key="Mass" >0.2</property>
             </object>
             <object width="0.270" X="8.254" Y="0.303" height="0.360" type="Balloon" ID="egg3" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.2</property>
-		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
+		<tooltip>This is an egg. Rather easy to break, I'd say...</tooltip>
             </object>
             <object width="0.270" X="7.630" Y="0.303" height="0.360" type="Balloon" ID="egg4" angle="0.000" >
                 <property key="ImageName" >egg_1;egg_2;egg_3;Empty</property>
                 <property key="Mass" >0.2</property>
-		<property key="Description">This is an egg. Rather easy to break, I'd say...</property>
+		<tooltip>This is an egg. Rather easy to break, I'd say...</tooltip>
             </object>
             <object width="3.874" X="2.374" Y="0.687" height="1.000" type="LeftRamp" angle="0.000" />
             <object width="0.600" X="7.511" Y="2.691" height="0.600" type="Balloon" ID="Mr.A.Bird" angle="0.000" >
                 <property key="ImageName" >yellow_bird;BalloonPoof;Empty;Empty</property>
-		<property key="Description">Looks like a bird. And he's angry.</property>
+		<tooltip>Looks like a bird. And he's angry.</tooltip>
                 <property key="Mass" >1</property>
             </object>
             <object width="0.600" X="8.111" Y="2.691" height="0.600" type="Balloon" ID="Mr.T.Bird" angle="0.000" >
                 <property key="ImageName" >yellow_bird;BalloonPoof;Empty;Empty</property>
                 <property key="Mass" >1</property>
-		<property key="Description">Looks like a bird. And he's angry.</property>
+		<tooltip>Looks like a bird. And he's angry.</tooltip>
             </object>
             <object width="0.600" X="9.400" Y="2.690" height="0.600" type="Balloon" ID="Mr.Big.Bird" angle="0.000" >
                 <property key="ImageName" >yellow_bird;BalloonPoof;Empty;Empty</property>
                 <property key="Mass" >1</property>
-		<property key="Description">Looks like a bird. And he's angry.</property>
+		<tooltip>Looks like a bird. And he's angry.</tooltip>
             </object>
             <object width="0.440" X="3.584" Y="0.399" height="0.440" type="PostIt" angle="0.000" >
                 <property key="page1" >Blast it! They stole my dynamite!!!</property>

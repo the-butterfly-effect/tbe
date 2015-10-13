@@ -50,7 +50,7 @@
             </object>
 	    
 	    <object X="2.2" Y="0.52" type="Butterfly" ID="Butterfly">
-                <property key="Description" >Be careful not to hit it!</property>
+                <tooltip>Be careful not to hit it!</tooltip>
                 <property key="Object" >Flower</property>
                 <property key="Mass" >0.01</property>
             </object>
