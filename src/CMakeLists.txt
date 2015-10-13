@@ -69,10 +69,11 @@ TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} Box2D)
 # Supply the DLL files on Windows - no static linking :-(
 # Technically speaking, this is a hack. But who cares?
 if(MINGW)
-  set(QTMYLIB "C:/QtSDK/Desktop/Qt/4.8.0/mingw/bin/")
+  set(QTMYLIB "C:/Qt/4.8.6/bin/")
   INSTALL(FILES
-          ${QTMYLIB}/mingwm10.dll
           ${QTMYLIB}/libgcc_s_dw2-1.dll
+          ${QTMYLIB}/libstdc++-6.dll
+          ${QTMYLIB}/libwinpthread-1.dll
           ${QTMYLIB}/QtCore4.dll
           ${QTMYLIB}/QtGui4.dll
           ${QTMYLIB}/QtSvg4.dll
