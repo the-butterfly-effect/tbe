@@ -10,7 +10,7 @@
      <toolbox>
         <toolboxitem count="2" name="Cola Crate">
             <object width="0.85" height="0.6" type="RectObject">
-	      <property key="Description">This is how you properly buy cola:&lt;br&gt;a dozen bottles of that precious brown liquid at a time!</property>
+	      <tooltip>This is how you properly buy cola:&lt;br&gt;a dozen bottles of that precious brown liquid at a time!</tooltip>
                 <property key="ImageName" >cola-crate</property>
                 <property key="Mass" >18</property>
                 <property key="Friction" >1</property>
@@ -50,7 +50,7 @@
             </object>
 	    <object X="4.4" Y="2.85" type="BowlingBall" ID="Coconut">
                 <property key="ImageName" >coconut</property>
-                <property key="Description">Hey, I'm a coconut!</property>
+                <tooltip>Hey, I'm a coconut!</tooltip>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0" >
                 <property key="ImageName" >boulder</property>

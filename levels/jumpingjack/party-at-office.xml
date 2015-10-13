@@ -147,7 +147,7 @@
             <object width="0.120" X="2.121" Y="0.726" height="0.340" type="BowlingPin" ID="top pin" angle="0.000" />
             <object width="0.200" X="0.874" Y="1.323" height="0.200" type="RectObject" ID="gift" angle="0.000" >
                 <property key="ImageName" >elkbuntu_Blue_gift_with_golden_ribbon</property>
-                <property key="Description" >Send the gift to the Jumping Jack!</property>
+                <tooltip>Send the gift to the Jumping Jack!</tooltip>
                 <property key="Mass" >0.1</property>
             </object>
             <object width="0.393" X="0.575" Y="1.103" height="0.100" type="Floor" angle="0.366" />

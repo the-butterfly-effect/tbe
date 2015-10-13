@@ -39,7 +39,7 @@
             </object>
             <object width="0.100" X="1.850" Y="1.000" height="1.800" type="DominoBlue" ID="leftpole" angle="0.000" >
                 <property key="ImageName" >picnic-0-pole</property>
-                <property key="Description" >tent poles are usually made from something...</property>
+                <tooltip>tent poles are usually made from something...</tooltip>
             </object>
             <object width="0.200" X="2.200" Y="1.790" height="0.100" type="RectObject" angle="0.000" ID="leftrope1" >
                 <property key="ImageName" >picnic-0-rope</property>
@@ -56,7 +56,7 @@
 
             <object width="0.100" X="3.350" Y="1.000" height="1.800" type="DominoBlue" ID="centerpole" angle="0.000" >
                 <property key="ImageName" >picnic-0-pole</property>
-                <property key="Description" >I don't know... this middle pole is kept up by two ropes?</property>
+                <tooltip>I don't know... this middle pole is kept up by two ropes?</tooltip>
             </object>
 	    
             <object width="0.200" X="3.700" Y="1.790" height="0.100" type="RectObject" angle="0.000" ID="rightrope1" >
@@ -74,7 +74,7 @@
 	    
             <object width="0.100" X="4.850" Y="1.000" height="1.800" type="DominoBlue" ID="rightpole" angle="0.000" >
                 <property key="ImageName" >picnic-0-pole</property>
-                <property key="Description" >Why would anyone want to be in a tent?</property>
+                <tooltip>Why would anyone want to be in a tent?</tooltip>
             </object>
 
             <object width="1.400" X="0.700" Y="1.500" height="2.800" type="Scenery" angle="0.000" >

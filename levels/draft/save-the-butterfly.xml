@@ -55,7 +55,7 @@
                 <property key="ImageName" >White-to-green</property>
             </object>
             <object width="0.15" X="3.958200313402838" Y="0.2940220136943474" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0" >
-                <property key="Description" >This is the butterfly.</property>
+                <tooltip>This is the butterfly.</tooltip>
                 <property key="object" >Flower</property>
             </object>
             <object width="0.22" X="0.8054592312308121" Y="3.401516555575522" height="0.22" type="BowlingBall" angle="0" />
