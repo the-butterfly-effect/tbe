@@ -3,7 +3,12 @@ project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
 
-set(CMAKE_INSTALL_PREFIX /usr)
+if (PACK)
+   set(CMAKE_INSTALL_PREFIX /usr)
+else (PACK)
+   set(CMAKE_INSTALL_PREFIX ".")
+endif (PACK)
+
 set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/games)
 set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/levels)
 set(TBE_IMAGES_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/images)
@@ -47,20 +52,21 @@ set(CPACK_SOURCE_STRIP_FILES "")
 set(CPACK_STRIP_FILES ON)
 
 IF(WIN32 AND NOT UNIX)
- # There is a bug in NSI that does not handle full unix paths properly. Make
+ # There is a bug in NSIS that does not handle full unix paths properly. Make
  # sure there is at least one set of four (4) backslashes.
  SET(CPACK_GENERATOR "NSIS")
  SET(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
  SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/imagery/illustrations\\\\installer-top-icon.bmp")
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}\\\\COPYING")
  SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}\\\\README.md")
- SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\tbe.exe")
+ SET(CPACK_NSIS_INSTALLED_ICON_NAME "games\\\\tbe.exe")
+ SET(CPACK_NSIS_EXECUTABLES_DIRECTORY "games")
  SET(CPACK_NSIS_DISPLAY_NAME "The Butterfly Effect")
  SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.the-butterfly-effect.org")
  SET(CPACK_NSIS_CONTACT "info@the-butterfly-effect.org")
  SET(CPACK_NSIS_MODIFY_PATH OFF)
- SET(CPACK_NSIS_MUI_FINISHPAGE_RUN "tbe.exe")
+ #SET(CPACK_NSIS_MUI_FINISHPAGE_RUN "tbe.exe")
 ENDIF(WIN32 AND NOT UNIX)
 
 if (UNIX)
@@ -89,7 +95,10 @@ set(CPACK_RPM_PACKAGE_REQUIRES "libqt4-x11 >= 4.7.0")
 #set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/postinst;${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/prerm;" )
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt4-svg (>=4.7), libqtgui4 (>=4.7), libqt4-xml (>=4.7), libqtcore4 (>=4.7)")
 set(CPACK_DEBIAN_PACKAGE_SECTION "games")
-set(CPACK_SET_DESTDIR "ON")
+
+if (UNIX)
+  set(CPACK_SET_DESTDIR "ON")
+endif (UNIX)
 
 SET(CPACK_PACKAGE_EXECUTABLES "tbe" "tbe.exe")
 INCLUDE(CPack)
