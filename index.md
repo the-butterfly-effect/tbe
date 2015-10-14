@@ -44,6 +44,9 @@ is rich in features:
 <img src="images/lvl-games-extreme-tux-racer.png" width="240" height="156"></td><td>
 <img src="images/lvl-picnic-picnic-1.png" width="240" height="156">
 </td></tr>
+</table>
+
+(the screenshots are clickable)
 
 ## Download & Install <a id="Downloads"></a>
 
