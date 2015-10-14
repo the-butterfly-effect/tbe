@@ -3,6 +3,9 @@ title: Introduction
 layout: page
 ---
 
+![Welcome to The Butterfly Effect](images/web-title-page.png)
+
+
 The Butterfly Effect is a free and open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.
 
 This is a fully playable game of alpha quality, well on its way to a shiny 1.0 release. For anyone who has played earlier versions of the game, you'll notice a shiny new user interface - but the same levels and objects.
