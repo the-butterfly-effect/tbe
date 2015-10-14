@@ -158,8 +158,8 @@
             </object>
         </predefined>
         <background>
-            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
-            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+            <gradientstop pos="0.00" >1.00;1.00;0.80;1.00</gradientstop>
+            <gradientstop pos="1.00" >0.50;0.90;0.70;1.00</gradientstop>
         </background>
     </scene>
     <goals>
