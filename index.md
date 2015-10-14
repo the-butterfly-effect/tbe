@@ -15,7 +15,7 @@ This is a fully playable game of alpha quality, well on its way to a shiny 1.0
 release. For anyone who has played earlier versions of the game, you'll notice 
 a sparkling new user interface - but the same levels and objects.
 
-### Features <a id="Features"></a>
+## Features <a id="Features"></a>
 
 _The Butterfly Effect_ has been over five years in the making. 
 That means that even though the game has been designed by hobbyists, the game
@@ -24,13 +24,17 @@ is rich in features:
    springs, dynamite
  * Many different types of puzzles
  * Works on Linux and Windows
- * Playable in English, Russian, Dutch, Spanish and Malay, but not all 
-   languages are 100% yet
+ * Playable in English, Russian, Dutch, Swedish, Spanish German, Malay, and several other languages.
+   Note that not all languages are 100% [yet](#HelpTranslating)
  * Using vector graphics - all images always rendered at the highest quality
  * There are 45 levels. All levels are playable, but a few levels may need a 
    bit more polish.
 
-### Download & Install <a id="Downloads"></a>
+## Screenshots
+
+TODO
+
+## Download & Install <a id="Downloads"></a>
 
 We are working on getting packages for major Linux-distributions as well as
 a Windows-installer.
@@ -98,7 +102,7 @@ will also show an `uninstall` icon if you ever want to remove the game again.
 
 
 
-### Open Source <a id="OpenSource"></a>
+## Open Source <a id="OpenSource"></a>
 
 This game is released under the **GPLv2** license.
 That _The Butterfly Effect_ is open source, means that you can build the game yourself, look how we did it and modify the code or the levels.
@@ -123,7 +127,7 @@ To be honest, we also use a few commercial services, including:
  * **Pareon Verify**
  * **Transifex**
 
-#### Help out with translations
+#### Help out with translations <a id="HelpTranslating"></a>
 
 We use the [Transifex](https://www.transifex.com/) project to translate the
 user interface. You can sign up and get started at the
@@ -146,6 +150,7 @@ your own levels!
 
 If you are a C++ programmer, we'd love to hear from you - there's always more
 things that can be coded!
+
 Create a login on the [GitHub website](https://github.com/kaa-ching/tbe), clone
 the repo and start hacking. We love patches and pull requests!
 
@@ -153,4 +158,5 @@ the repo and start hacking. We love patches and pull requests!
 
 Oh boy. Does TBE still contain bugs?
 Please log in to GitHub 
-and [file an issue](https://github.com/kaa-ching/tbe/issues)!
+and [file an issue](https://github.com/kaa-ching/tbe/issues)
+or contact lead developer [kaa-ching][https://github.com/kaa-ching] by e-mail.
