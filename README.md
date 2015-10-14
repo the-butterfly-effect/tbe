@@ -9,3 +9,5 @@ you can create your own development environment.
  
 1. ruby-devel: `apt-get install ruby-dev` or `yum install ruby-devel`
 2. github-pages gem (implies the jekyll gem): `gem install --user-install github-pages`
+
+Note: the above doesn't work for Ubuntu 14.04: it comes with a too old version of ruby.

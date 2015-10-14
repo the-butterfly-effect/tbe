@@ -3,5 +3,5 @@ Here's the list:
  - [ ] Add some color
  - [ ] Add copyright and credits in footer
  - [ ] Add links to downloads
- - [ ] More text
- - [ ] Screenshots!
+ - [X] More text
+ - [X] Screenshots!
