@@ -7,35 +7,50 @@ layout: page
  * [Features](#Features) * [Downloads](#Downloads) * [Open Source](#OpenSource) * 
 
 
-The Butterfly Effect is a free and open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.
+The Butterfly Effect is a free and open source game that uses realistic physics
+simulations to combine lots of simple mechanical elements to achieve a simple 
+goal in the most complex way possible.
 
-This is a fully playable game of alpha quality, well on its way to a shiny 1.0 release. For anyone who has played earlier versions of the game, you'll notice a shiny new user interface - but the same levels and objects.
+This is a fully playable game of alpha quality, well on its way to a shiny 1.0 
+release. For anyone who has played earlier versions of the game, you'll notice 
+a sparkling new user interface - but the same levels and objects.
 
 ### Features <a id="Features"></a>
 
 _The Butterfly Effect_ has been over five years in the making. 
-That means that even though the game has been designed by hobbyists, the game is rich in features:
- * Many different objects: cola bottles, balloons, butterflies, domino stones, springs, dynamite
+That means that even though the game has been designed by hobbyists, the game
+is rich in features:
+ * Many different objects: cola bottles, balloons, butterflies, domino stones, 
+   springs, dynamite
  * Many different types of puzzles
  * Works on Linux and Windows
- * Playable in English, Russian, Dutch, Spanish and Malay, but not all languages are 100% yet
+ * Playable in English, Russian, Dutch, Spanish and Malay, but not all 
+   languages are 100% yet
  * Using vector graphics - all images always rendered at the highest quality
- * There are 45 levels. All levels are playable, but a few levels may need a bit more polish.
+ * There are 45 levels. All levels are playable, but a few levels may need a 
+   bit more polish.
 
 ### Download & Install <a id="Downloads"></a>
 
-We are working on getting packages for major Linux-distributions as well as a Windows-installer.
+We are working on getting packages for major Linux-distributions as well as
+a Windows-installer.
 
-Operating System | MD5SUM | Download
----------------- | ------ | --------
-Debian / Ubuntu  |  TBD   |  TBD.deb
-Fedora / CentOS  |  TBD   |  TBD.rpm
-Opensuse         |  TBD   |  TBD.rpm
-Mageia Linux     |   n/a  | part of distribution
-Other Linux      |  TBD   |  TBD.sh (self extracting archive)
-Windows          |  TBD   |  TBD.exe
+Operating System       | MD5SUM | Download
+---------------------- | ------ | --------
+Debian / Ubuntu / Mint |  TBD   |  TBD.deb
+Fedora / CentOS        |  TBD   |  TBD.rpm
+Opensuse               |  TBD   |  TBD.rpm
+Mageia Linux           |  n/a   |  part of Mageia
+Other Linux            |  TBD   |  TBD.sh (self extracting archive)
+Windows                |  TBD   |  TBD.exe
+
+_if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to contact the developers_
 
 ### Installation instructions
+
+#### Mageia
+
+Thanks to our developer @glixx, TBE is available directly from within Mageia!
 
 #### RPM-based distributions
 
@@ -55,10 +70,21 @@ depends on the version of Linux you are using:
 
 Of course, you can also use graphical package managers.
 
+The game should add itself to your start menu automatically.
 
 #### DEB-based distributions
 
-TODO
+Every DEB-based distribution, like _Debian_, _Ubuntu_ and _Linux Mint_ allow
+to use the `dpkg` command to install the _.deb_ file. However, that will likely
+not work because dpkg is not really good at dependencies.
+
+There are essentially three options:
+ * use graphical tools like synaptic
+ * use a command line tool called `gdebi`:
+   `sudo apt-get update`
+   `sudo apt-get install gdebi`
+   `sudo gdebi thebutterflyeffect.deb`
+ * use the self-extracting archive below.
 
 #### Self-extracting archive
 
@@ -66,7 +92,10 @@ TODO
 
 #### Windows
 
-TODO
+Download the installer, double click the installer and follow the steps.
+The game will be installed and is available in the start menu. The start menu
+will also show an `uninstall` icon if you ever want to remove the game again.
+
 
 
 ### Open Source <a id="OpenSource"></a>
@@ -85,15 +114,43 @@ projects, including:
  * **NSIS** the Nullsoft Installer is a program to build Windows installer tools
  * **Inkscape** is a program to draw vector graphics
  * **Openclipart.org** is a website to share clipart graphics
+ * **git** is a tool for source code management.
+   It is the backbone of [GitHub](github.com)
+ 
+To be honest, we also use a few commercial services, including:
+ * **GitHub**
+ * **Coverity**
+ * **Pareon Verify**
+ * **Transifex**
 
 #### Help out with translations
 
-TODO, we use Transifex
+We use the [Transifex](https://www.transifex.com/) project to translate the
+user interface. You can sign up and get started at the
+[thebutterflyeffect](https://www.transifex.com/Magic/thebutterflyeffect/) page.
+
+TODO: describe how to translate the levels, which are not in Transifex.
 
 #### Help out with new or improved levels
 
+If you have ideas for levels, we'd love to hear from you!
+
+Probably the easiest way to let us know about your ideas, is to create a login
+on the [GitHub website](https://github.com/kaa-ching/tbe) and create an issue
+for TBE. We'll work with you to make your ideas happen.
+
+Note that _Milestone B_ will feature a level editor again, so you can design
+your own levels!
+
 #### Add more code
+
+If you are a C++ programmer, we'd love to hear from you - there's always more
+things that can be coded!
+Create a login on the [GitHub website](https://github.com/kaa-ching/tbe), clone
+the repo and start hacking. We love patches and pull requests!
 
 #### Found any bugs?
 
-
+Oh boy. Does TBE still contain bugs?
+Please log in to GitHub 
+and [file an issue](https://github.com/kaa-ching/tbe/issues)!
