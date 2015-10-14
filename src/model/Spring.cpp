@@ -197,7 +197,6 @@ qreal Spring::getTempWidth() const
 void Spring::setOrigCenter ( const Position& aNewPos )
 {
     RectObject::setOrigCenter(aNewPos);
-    printf("setOrigCenter\n");
 
 	Vector myOffset = Vector(0.25*getTheWidth(),0);
 	if (theOtherEndPtr!=NULL)

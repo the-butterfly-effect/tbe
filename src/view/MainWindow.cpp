@@ -422,7 +422,6 @@ bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
 	}
 	if (myTBGPtr == nullptr)
 		return false;
-	printf("Found: TBG=%s\n", ASCII(myTBGPtr->theInternalName));
 
 	// OK, we found the TBG to take the object from.
 	// Create the InsertUndoCommand
