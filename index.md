@@ -4,15 +4,15 @@ layout: page
 
 ![Welcome to The Butterfly Effect](images/web-title_page.png)
 
- * [Features](#Features) * [Downloads](#Downloads) * [Open Source](#OpenSource) * 
+ \* [Features](#Features) \* [Downloads](#Downloads) \* [Open Source](#OpenSource) \*
 
 
 The Butterfly Effect is a free and open source game that uses realistic physics
-simulations to combine lots of simple mechanical elements to achieve a simple 
+simulations to combine lots of simple mechanical elements to achieve a simple
 goal in the most complex way possible.
 
-This is a fully playable game of alpha quality, well on its way to a shiny 1.0 
-release. For anyone who has played earlier versions of the game, you'll notice 
+This is a fully playable game of alpha quality, well on its way to a shiny 1.0
+release. For anyone who has played earlier versions of the game, you'll notice
 a sparkling new user interface - but the same levels and objects.
 
 ## Features <a id="Features"></a>
@@ -20,11 +20,12 @@ a sparkling new user interface - but the same levels and objects.
 _The Butterfly Effect_ has been over five years in the making. 
 That means that even though the game has been designed by hobbyists, the game
 is rich in features:
- * Many different objects: cola bottles, balloons, butterflies, domino stones, 
+ * Many different objects: cola bottles, balloons, butterflies, domino stones,
    springs, dynamite
  * Many different types of puzzles
  * Works on Linux and Windows
- * Playable in English, Russian, Dutch, Swedish, Spanish German, Malay, and several other languages.
+ * Playable in English, Russian, Dutch, Swedish, Spanish German, Malay, and
+   several other languages.
    Note that not all languages are 100% [yet](#HelpTranslating)
  * Using vector graphics - all images always rendered at the highest quality
  * There are 45 levels. All levels are playable, but a few levels may need a 
@@ -48,13 +49,15 @@ Mageia Linux           |  n/a   |  part of Mageia
 Other Linux            |  TBD   |  TBD.sh (self extracting archive)
 Windows                |  TBD   |  TBD.exe
 
-_if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to contact the developers_
+_if you are a packager and want to add TBE to a distribution or build for_
+_another platform, do not hesitate to [contact the developers](#BugsFeedback)_
 
 ### Installation instructions
 
 #### Mageia
 
-Thanks to our developer @glixx, TBE is available directly from within Mageia!
+Thanks to packager/developer _AlexL_, TBE is available directly from
+within Mageia!
 
 #### RPM-based distributions
 
@@ -105,27 +108,33 @@ will also show an `uninstall` icon if you ever want to remove the game again.
 ## Open Source <a id="OpenSource"></a>
 
 This game is released under the **GPLv2** license.
-That _The Butterfly Effect_ is open source, means that you can build the game yourself, look how we did it and modify the code or the levels.
-We'd love for you to submit your changes back to us - we love feedback and will try to incorporate your changes into the next version of the game.
+That _The Butterfly Effect_ is open source, means that you can build the game
+yourself, look how we did it and modify the code or the levels.
+We'd love for you to submit your changes back to us - we love
+[feedback](#BugsFeedback) and will try to incorporate your changes into the
+next version of the game.
 
-That's what open source is about: as a community we try to make the best game possible!
+That's what open source is about: as a community we try to make the best game
+possible!
 
 The Butterfly Effect also wouldn't have been possible without other open source
 projects, including:
- * **Qt** library for the graphical user interface
- * **Box2D** library for physics simulations
- * **CMake/CPack** tools for configuring and building applications
- * **NSIS** the Nullsoft Installer is a program to build Windows installer tools
- * **Inkscape** is a program to draw vector graphics
- * **Openclipart.org** is a website to share clipart graphics
- * **git** is a tool for source code management.
+ * [**Qt**](http://www.qt.io/) library for the graphical user interface
+ * [**Box2D**](http://box2d.org/) library for physics simulations
+ * [**CMake/CPack**](https://cmake.org) tools for configuring and building
+   applications
+ * [**NSIS**](nsis.sf.net) the Nullsoft Installer is a program to build
+   Windows installer tools
+ * [**Inkscape**](https://inkscape.org/en/) is a program to draw vector graphics
+ * [**Openclipart.org**](Openclipart.org) is a website to share clipart graphics
+ * [**git**](https://git-scm.com/) is a tool for source code management.
    It is the backbone of [GitHub](github.com)
  
-To be honest, we also use a few commercial services, including:
- * **GitHub**
- * **Coverity**
- * **Pareon Verify**
- * **Transifex**
+To be honest, we also use a few commercial offerings, including:
+ * [**GitHub**](github.com)
+ * [**Coverity**](https://scan.coverity.com/)
+ * [**Pareon Verify**](https://pareonverify.com)
+ * [**Transifex**](https://www.transifex.com/)
 
 #### Help out with translations <a id="HelpTranslating"></a>
 
@@ -154,9 +163,10 @@ things that can be coded!
 Create a login on the [GitHub website](https://github.com/kaa-ching/tbe), clone
 the repo and start hacking. We love patches and pull requests!
 
-#### Found any bugs?
+#### Found any bugs? Or you have feedback? <a id="BugsFeedback"></a>
 
 Oh boy. Does TBE still contain bugs?
+
 Please log in to GitHub 
 and [file an issue](https://github.com/kaa-ching/tbe/issues)
-or contact lead developer [kaa-ching][https://github.com/kaa-ching] by e-mail.
+or contact lead developer [kaa-ching](https://github.com/kaa-ching) by e-mail.
