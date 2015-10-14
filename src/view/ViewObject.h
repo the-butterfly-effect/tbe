@@ -52,6 +52,9 @@ public:
     AbstractObjectPtr getAbstractObjectPtr(void) const
     { return theAbstractObjectPtr->getThisPtr(); }
 
+	const QString& getBaseImageName() const
+	{ return theBaseImageName; }
+
 	/// @returns Aspect ratio (width/height) of the (first) image,
 	///          before it was scaled to width and height dimensions.
 //	qreal getOrigImageAspectRatio(void)
@@ -120,6 +123,7 @@ protected:
 private:
 	void initViewObjectAttributes(void);
 
+	QString theBaseImageName;
 	qreal thePixmapWidth;
 	qreal thePixmapHeight;
 

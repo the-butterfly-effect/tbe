@@ -17,6 +17,7 @@
  */
 
 #include "AbstractObject.h"
+#include "ImageCache.h"
 #include "ListViewItemTooltip.h"
 #include "ToolboxListWidgetItem.h"
 #include "ViewObject.h"
@@ -38,15 +39,15 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     float myObjectAspectRatio = myAOPtr->getTheWidth() / myAOPtr->getTheHeight();
     if (myObjectAspectRatio > 1.0)
     {
-        myPixmapSize.setWidth(theIconSize);
-        myPixmapSize.setHeight(theIconSize/myObjectAspectRatio);
+		myPixmapSize.setWidth(theIconSize);
+		myPixmapSize.setHeight(theIconSize/myObjectAspectRatio);
     }
     else
     {
-        myPixmapSize.setWidth(theIconSize*myObjectAspectRatio);
-        myPixmapSize.setHeight(theIconSize);
+		myPixmapSize.setWidth(theIconSize*myObjectAspectRatio);
+		myPixmapSize.setHeight(theIconSize);
     }
-    theRealPixmap = myVOPtr->pixmap().scaled(myPixmapSize);
+	ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
     slotUpdateCount();
     setText(theTBGPtr->theGroupName.result());
     setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
