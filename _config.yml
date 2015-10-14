@@ -1,4 +1,5 @@
 # Site settings
 title: The Butterfly Effect 
-slogan: Physics Game like "The Incredible Machine"
+slogan: Physics Puzzle Game like 'The Incredible Machine'
 exclude: [README.md, TODO.md]
+baseurl: "/tbe/"
