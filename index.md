@@ -88,14 +88,17 @@ not work because dpkg is not really good at dependencies.
 There are essentially three options:
  * use graphical tools like synaptic
  * use a command line tool called `gdebi`:
-   `sudo apt-get update`
-   `sudo apt-get install gdebi`
-   `sudo gdebi thebutterflyeffect.deb`
+   * `sudo apt-get update`
+   * `sudo apt-get install gdebi`
+   * `sudo gdebi thebutterflyeffect.deb`
  * use the self-extracting archive below.
 
 #### Self-extracting archive
 
-TODO
+TODO:
+ * discuss dependencies
+ * discuss executable rights
+ * discuss where to install
 
 #### Windows
 
@@ -131,10 +134,13 @@ projects, including:
    It is the backbone of [GitHub](github.com)
  
 To be honest, we also use a few commercial offerings, including:
- * [**GitHub**](github.com)
- * [**Coverity**](https://scan.coverity.com/)
- * [**Pareon Verify**](https://pareonverify.com)
- * [**Transifex**](https://www.transifex.com/)
+ * [**GitHub**](github.com) a website that hosts source code and websites
+ * [**Coverity**](https://scan.coverity.com/) a tool to find software bugs
+   through _static analysis_
+ * [**Pareon Verify**](https://pareonverify.com) a tool to find software bugs
+   though _dynamic analysis_
+ * [**Transifex**](https://www.transifex.com/) a website to help translating of
+   software
 
 #### Help out with translations <a id="HelpTranslating"></a>
 
