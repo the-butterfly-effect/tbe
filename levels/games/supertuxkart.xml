@@ -4,7 +4,7 @@
         <title>Loopings</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-		<description>Looping in Looping in looping... &lt;br>Poor Tux is late for his race. &lt;br>Get him to the cone fast!
+        <description>Looping in Looping in looping... &lt;br>Poor Tux is late for his race. &lt;br>Get him to the cone fast!
 		&lt;br>&lt;br>This level is 'inspired' by SuperTuxKart, the famous open source kart game featuring all open source
 		mascots to race in beautifully designed tracks. 
 		  &lt;a href="http://supertuxkart.sourceforge.net/">http://supertuxkart.sourceforge.net/&lt;/a> </description>
@@ -12,22 +12,19 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Quarter Arc #1">
-            <name lang="nl">Kwart bocht nr 1</name>
             <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="0.000">
-			  <property key="Rotatable"> true </property>
-		    </object>
+                <property key="Rotatable"> true </property>
+            </object>
         </toolboxitem>
         <toolboxitem count="1" name="Quarter Arc #2">
-            <name lang="nl">Kwart bocht nr 2</name>
             <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="1.571">
-			  <property key="Rotatable"> true </property>
-		    </object>
+                <property key="Rotatable"> true </property>
+            </object>
         </toolboxitem>
         <toolboxitem count="1" name="Quarter Arc #3">
-            <name lang="nl">Kwart bocht nr 3</name>
             <object width="0.800" X="0.000" Y="0.000" height="0.800" type="QuarterArc80" angle="3.141">
-			  <property key="Rotatable"> true </property>
-		    </object>
+                <property key="Rotatable"> true </property>
+            </object>
         </toolboxitem>
     </toolbox>
     <scene>
@@ -102,7 +99,7 @@
     </scene>
     <goals>
         <goal isFail="false" type="positionchange">
-            <property key="anglechanged"></property>
+            <property key="anglechanged"/>
             <property key="object">cone</property>
         </goal>
     </goals>

@@ -2,7 +2,6 @@
 <tbe-level>
     <levelinfo>
         <title>Zoing and Boom</title>
-        <title lang="nl">Zoing en Boem</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>Imagine the noises in this level! Tip the pin.</description>
@@ -197,13 +196,13 @@
     <goals>
         <goal isFail="false" type="positionchange">
             <property key="object">TheEndPin</property>
-            <property key="xchanged"></property>
+            <property key="xchanged"/>
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="QuarterArc80" X="5.15" Y="2.82" />
-        <hint number="2" object="LeftRamp" X="4.94" Y="0.47" />
-        <hint number="3" object="RightRamp" X="0.88" Y="2.44" />
-	<!-- todo: phone number hints -->
+        <hint X="5.15" Y="2.82" number="1" object="QuarterArc80"/>
+        <hint X="4.94" Y="0.47" number="2" object="LeftRamp"/>
+        <hint X="0.88" Y="2.44" number="3" object="RightRamp"/>
+        <!-- todo: phone number hints -->
     </hints>
 </tbe-level>

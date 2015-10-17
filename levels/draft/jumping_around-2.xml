@@ -2,91 +2,83 @@
 <tbe-level>
     <levelinfo>
         <title>Jumping Around II</title>
-        <title lang="nl" >Rondspringen II</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The soccer ball cannot cross a big gap by itself.</description>
-        <description lang="nl" >Een voetbal kan niet alleen over een afgrond.</description>
         <date>May 18, 2011</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Spring" >
-            <name lang="nl" >Veer</name>
-            <object width="0.400" height="0.250" type="Spring" >
-                <property key="ImageName" >spring20</property>
-                <property key="Rotatable" >true</property>
-                <property key="SpringConstant" >250</property>
+        <toolboxitem count="1" name="Spring">
+            <object width="0.400" height="0.250" type="Spring">
+                <property key="ImageName">spring20</property>
+                <property key="Rotatable">true</property>
+                <property key="SpringConstant">250</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5" height="3" />
+        <scenesize width="5" height="3"/>
         <predefined>
-            <object width="0.900" X="1.100" Y="2.400" height="0.100" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.900" X="1.100" Y="2.400" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="1.050" Y="1.200" height="2.300" type="RectObject" angle="0.000" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.100" X="1.050" Y="1.200" height="2.300" type="RectObject" angle="0.000">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.600" X="0.300" Y="2.660" height="0.400" type="RightRamp" angle="0.000" />
-            <object width="0.220" X="2.000" Y="0.500" height="0.220" type="PostIt" angle="0.000" >
-                <property key="page1" >Soccer Balls are a little bouncy, but sometimes "a little" is not enough.</property>
-                <property key="page1_nl" >Voetballen stuiteren een beetje. Soms is "een beetje" een beetje te weinig.</property>
-                <property key="page2" >I thought of using helium, but Mythbusters explained that won't work...</property>
-                <property key="page2_nl" >Ik heb nagedacht over helium, maar volgens Mythbusters werkt dat niet...</property>
-                <property key="page3" >But fear not! There's always a true mechanical solution.</property>
-                <property key="page3_nl" >Maar wees niet bevreesd: Er is altijd een mechanische oplossing.</property>
-                <property key="page4" >Notice a new trick: rotate.</property>
-                <property key="page4_nl" >Attentie! Je hebt hier een nieuwe truuk nodig: draaien.</property>
-                <property key="page5" >the Post-It Boy</property>
-                <property key="page5_nl" >de Post-It Boy</property>
+            <object width="0.600" X="0.300" Y="2.660" height="0.400" type="RightRamp" angle="0.000"/>
+            <object width="0.220" X="2.000" Y="0.500" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">Soccer Balls are a little bouncy, but sometimes "a little" is not enough.</property>
+                <property key="page2">I thought of using helium, but Mythbusters explained that won't work...</property>
+                <property key="page3">But fear not! There's always a true mechanical solution.</property>
+                <property key="page4">Notice a new trick: rotate.</property>
+                <property key="page5">the Post-It Boy</property>
             </object>
-            <object width="4.400" X="2.200" Y="0.050" height="0.100" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="4.400" X="2.200" Y="0.050" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.200" X="4.387" Y="1.828" height="0.100" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="1.200" X="4.387" Y="1.828" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.600" X="4.091" Y="0.987" height="0.100" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.1</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.600" X="4.091" Y="0.987" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.350" Y="0.541" height="0.981" type="RectObject" angle="0.000" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.100" X="4.350" Y="0.541" height="0.981" type="RectObject" angle="0.000">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.500" X="4.650" Y="0.450" height="0.900" type="Scenery" angle="0.000" >
-                <property key="ImageName" >basket</property>
+            <object width="0.500" X="4.650" Y="0.450" height="0.900" type="Scenery" angle="0.000">
+                <property key="ImageName">basket</property>
             </object>
-            <object width="0.100" X="4.950" Y="0.934" height="1.868" type="RectObject" angle="0.000" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.100" X="4.950" Y="0.934" height="1.868" type="RectObject" angle="0.000">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.120" X="4.354" Y="1.220" height="0.340" type="BowlingPin" ID="the Pin" angle="0.000" />
-            <object width="0.220" X="0.221" Y="2.868" height="0.220" type="SoccerBall" angle="0.000" >
-                <property key="Mass" >1</property>
+            <object width="0.120" X="4.354" Y="1.220" height="0.340" type="BowlingPin" ID="the Pin" angle="0.000"/>
+            <object width="0.220" X="0.221" Y="2.868" height="0.220" type="SoccerBall" angle="0.000">
+                <property key="Mass">1</property>
             </object>
-            <object width="1.425" X="1.797" Y="0.150" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.910" X="1.550" Y="0.250" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.460" X="1.310" Y="0.350" height="0.100" type="Floor" angle="0.000" />
+            <object width="1.425" X="1.797" Y="0.150" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.910" X="1.550" Y="0.250" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.460" X="1.310" Y="0.350" height="0.100" type="Floor" angle="0.000"/>
         </predefined>
         <background>
-            <gradientstop pos="0.00" >0.80;0.80;1.00;1.00</gradientstop>
-            <gradientstop pos="1.00" >0.50;0.50;0.90;1.00</gradientstop>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
         </background>
     </scene>
     <goals>
-        <goal isFail="false" type="positionchange" >
-            <property key="object" >the Pin</property>
-            <property key="ybelow" >0.5</property>
+        <goal isFail="false" type="positionchange">
+            <property key="object">the Pin</property>
+            <property key="ybelow">0.5</property>
         </goal>
-        <goal isFail="false" type="positionchange" >
-            <property key="object" >the Pin</property>
-            <property key="xover" >4.3</property>
+        <goal isFail="false" type="positionchange">
+            <property key="object">the Pin</property>
+            <property key="xover">4.3</property>
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="Spring" X="2.64" Y="0.32" angle="1.57"/>
+        <hint X="2.64" Y="0.32" number="1" angle="1.57" object="Spring"/>
     </hints>
 </tbe-level>

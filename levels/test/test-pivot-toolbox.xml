@@ -7,75 +7,65 @@
         <description>This is just a level to prove PivotPoint correct operation. In this case, from the toolbox.</description>
         <date>Jan 8, 2010</date>
     </levelinfo>
-     <toolbox>
-        <toolboxitem count="1" name="Hammer" icon="hammer">
-	    <object type="RectObject" width="0.45" height="0.18">
+    <toolbox>
+        <toolboxitem count="1" icon="hammer" name="Hammer">
+            <object width="0.45" height="0.18" type="RectObject">
                 <property key="ImageName">hammer</property>
                 <property key="Mass">4.0</property>
                 <property key="Bounciness">0.0</property>
                 <property key="PivotPoint">(0.2,0)</property>
-	    </object>
+            </object>
         </toolboxitem>
-   </toolbox>
+    </toolbox>
     <scene>
-        <scenesize width="5.5" height="4" />
+        <scenesize width="5.5" height="4"/>
         <predefined>
-	    <object type="RectObject" width="0.45" height="0.18" X="1.0" Y="3.0">
+            <object width="0.45" X="1.0" Y="3.0" height="0.18" type="RectObject">
                 <property key="ImageName">hammer</property>
                 <property key="Mass">4.0</property>
                 <property key="Bounciness">0.0</property>
                 <property key="PivotPoint">(0.20,0)</property>
-	    </object>
-
-<object width="5.5" X="2.75" Y="0.05" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
             </object>
-
-            <object width="2.0" height="0.4" X="0.95" Y="1.35" type="RightRamp">
+            <object width="5.5" X="2.75" Y="0.05" type="Floor">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="2.0" X="0.95" Y="1.35" height="0.4" type="RightRamp">
                 <property key="ImageName">RightRamp</property>
             </object>
-
-            <object width="2.0" height="0.2" X="1.0" Y="1.00" type="RectObject" ID="horibar">
+            <object width="2.0" X="1.0" Y="1.00" height="0.2" type="RectObject" ID="horibar">
                 <property key="ImageName">birch_bar</property>
                 <property key="Bounciness">0.1</property>
             </object>
-            
-            <object width="0.2" height="1.0" X="2.1" Y="1.60" type="RectObject" ID="vertibar">
+            <object width="0.2" X="2.1" Y="1.60" height="1.0" type="RectObject" ID="vertibar">
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Mass">2.0</property>
                 <property key="Bounciness">0.5</property>
             </object>
-            
-	    <object type="PivotPoint" X="2.0" Y="1.1">
-		<property key="object1">horibar</property>
-		<property key="object2">vertibar</property>
-		<property key="collide">true</property>
-	    </object>
-
-
-            <object width="2.0" height="0.2" X="1.4" Y="0.70" type="RectObject" ID="horibar2">
+            <object X="2.0" Y="1.1" type="PivotPoint">
+                <property key="object1">horibar</property>
+                <property key="object2">vertibar</property>
+                <property key="collide">true</property>
+            </object>
+            <object width="2.0" X="1.4" Y="0.70" height="0.2" type="RectObject" ID="horibar2">
                 <property key="ImageName">birch_bar</property>
                 <property key="Bounciness">0.1</property>
             </object>
-            
-            <object width="0.2" height="1.0" X="2.5" Y="1.30" type="RectObject" ID="vertibar2">
+            <object width="0.2" X="2.5" Y="1.30" height="1.0" type="RectObject" ID="vertibar2">
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Mass">2.0</property>
                 <property key="Bounciness">0.5</property>
             </object>
-            
-	    <object type="PivotPoint" X="2.4" Y="0.8">
-		<property key="object1">horibar2</property>
-		<property key="object2">vertibar2</property>
-		<property key="collide">false</property>
-	    </object>
-
+            <object X="2.4" Y="0.8" type="PivotPoint">
+                <property key="object1">horibar2</property>
+                <property key="object2">vertibar2</property>
+                <property key="collide">false</property>
+            </object>
         </predefined>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="anglechanged"></property>
-		   <property key="object">horibar</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="positionchange">
+            <property key="anglechanged"/>
+            <property key="object">horibar</property>
+        </goal>
+    </goals>
 </tbe-level>

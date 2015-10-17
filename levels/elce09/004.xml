@@ -2,16 +2,13 @@
 <tbe-level>
     <levelinfo>
         <title>Balancing Cola</title>
-        <title lang="nl">Cola in balans</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Balance your diet? Drink Cola! Goal: Topple the pins.</description>
-        <description lang="nl">Een evenwichtig dieet begint met cola. Het doel: kegel de kegels om.</description>
         <date>10/9/10</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
-            <name lang="nl">Bowlingbal</name>
             <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>
@@ -52,17 +49,11 @@
             </object>
             <object width="0.220" X="4.000" Y="1.200" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">The goal here is to topple the pins below.</property>
-                <property key="page1_nl">De bedoeling is om de kegels hieronder om te gooien.</property>
                 <property key="page2">I'm thirsty!</property>
-                <property key="page2_nl">Ik heb dorst!</property>
                 <property key="page3">But that's not an ordinary cola bottle...</property>
-                <property key="page3_nl">Da's geen gewone cola fles...</property>
                 <property key="page4">It's a Cola-mint Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
-                <property key="page4_nl">Het is een Cola-mint fontein, klaar om te spuiten!&lt;br>Een lichte schok is genoeg!</property>
                 <property key="page5">Where does the cola go?</property>
-                <property key="page5_nl">Maar waar gaat de cola heen?</property>
                 <property key="page6">&lt;br>&lt;br> ... thirsty Post-it Boy</property>
-                <property key="page6_nl">&lt;br>&lt;br> ... dorstige Post-it Boy</property>
             </object>
             <object width="1.436" X="1.851" Y="0.780" height="0.150" type="Floor" angle="0.155"/>
             <object width="0.500" X="2.570" Y="0.700" height="0.100" type="Floor" angle="1.570"/>
@@ -88,6 +79,6 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="BowlingBall" X="2.38" Y="0.65" />
+        <hint X="2.38" Y="0.65" number="1" object="BowlingBall"/>
     </hints>
 </tbe-level>

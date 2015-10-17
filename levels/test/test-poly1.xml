@@ -7,41 +7,37 @@
         <description>This is just a level to prove PolyObject correct operation. It will only make sense if you enable debug drawing.</description>
         <date>Feb 12, 2010</date>
     </levelinfo>
-     <toolbox>
+    <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
-	    <object type="Bowling Ball"/>
+            <object type="Bowling Ball"/>
         </toolboxitem>
-   </toolbox>
+    </toolbox>
     <scene>
-        <scenesize width="5.5" height="4" />
+        <scenesize width="5.5" height="4"/>
         <predefined>
-            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="5.5" X="2.75" Y="0.05" type="Floor">
+                <property key="ImageName">used_wood_bar</property>
                 <property key="Bounciness">0.1</property>
             </object>
-            
-            <object width="2.0" height="1.0" X="3.75" Y="2.0" type="PolyObject" ID="Triangle">
+            <object width="2.0" X="3.75" Y="2.0" height="1.0" type="PolyObject" ID="Triangle">
                 <property key="ImageName">Empty</property>
                 <property key="Bounciness">0.1</property>
-		<property key="Mass">2.0</property>
-		<property key="Polygons">(-1,0.4)=(0.1,-0.4)=(1,0.6)</property>
+                <property key="Mass">2.0</property>
+                <property key="Polygons">(-1,0.4)=(0.1,-0.4)=(1,0.6)</property>
             </object>
-            
-            <object width="1.0" height="1.0" X="1.2" Y="2.0" type="PolyObject" ID="Dual Block">
+            <object width="1.0" X="1.2" Y="2.0" height="1.0" type="PolyObject" ID="Dual Block">
                 <property key="ImageName">Empty</property>
                 <property key="Bounciness">0.1</property>
-		<property key="Mass">2.0</property>
-		<property key="Polygons">(-0.5,0.5)=(-0.5,-0.5)=(-0.4,-0.5)=(-0.4,0.5);(0.4,0.5)=(0.4,-0.5)=(0.5,-0.5)=(0.5,0.5)</property>
+                <property key="Mass">2.0</property>
+                <property key="Polygons">(-0.5,0.5)=(-0.5,-0.5)=(-0.4,-0.5)=(-0.4,0.5);(0.4,0.5)=(0.4,-0.5)=(0.5,-0.5)=(0.5,0.5)</property>
             </object>
-
-	    <object X="3.65" Y="0.3" type="BowlingPin2" ID="pin"/>
-
-</predefined>
+            <object X="3.65" Y="0.3" type="BowlingPin2" ID="pin"/>
+        </predefined>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="xbelow">1.0</property>
-		   <property key="object">pin</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="positionchange">
+            <property key="xbelow">1.0</property>
+            <property key="object">pin</property>
+        </goal>
+    </goals>
 </tbe-level>

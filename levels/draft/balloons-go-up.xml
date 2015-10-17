@@ -2,20 +2,16 @@
 <tbe-level>
     <levelinfo>
         <title>Balloons go up!</title>
-        <title lang="nl">Ballonnen gaan omhoog!</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Topple the pin.</description>
-        <description lang="nl">Gooi de kegel om.</description>
         <date>9/17/10</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Floor">
-            <name lang="nl">Vloer</name>
-            <object width="0.65" height="0.1" type="Floor" angle="0" />
+            <object width="0.65" height="0.1" type="Floor" angle="0"/>
         </toolboxitem>
         <toolboxitem count="1" name="Right Ramp">
-            <name lang="nl">Helling naar Rechts</name>
             <object width="0.6" height="0.4" type="RightRamp" angle="0"/>
         </toolboxitem>
     </toolbox>
@@ -27,17 +23,13 @@
             </object>
             <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">You've seen this before: a Bowling Ball and a Bowling Pin. But this time, there's a wall in-between.</property>
-                <property key="page1_nl">Dit ziet er bekend uit: een bowlingbal en een kegel. Maar nu staat er een muur in de weg.</property>
                 <property key="page2">I'm pretty sure that Bowling Balls cannot climb walls - they don't have hands, do they?</property>
-                <property key="page2_nl">Ik weet vrij zeker dat bowlingballen niet kunnen klimmen. Al was het maar omdat ze geen handjes hebben.</property>
                 <property key="page3">Do you know what an unstable equilibrium is?</property>
-                <property key="page3_nl">Weet jij wat een labiel evenwicht is?</property>
                 <property key="page4">... The Post-It boy</property>
-                <property key="page4_nl">... Post-It boy</property>
             </object>
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
-            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0" />
-	    <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0" />
+            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0"/>
+            <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0"/>
             <object width="0.1" X="2.5" Y="1.07" height="0.1" type="Scenery" angle="0">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">5.5</property>
@@ -63,7 +55,7 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="RightRamp" X="0.33" Y="0.32"/>
-        <hint number="2" object="Floor" X="1.3" Y="0.56"/>
+        <hint X="0.33" Y="0.32" number="1" object="RightRamp"/>
+        <hint X="1.3" Y="0.56" number="2" object="Floor"/>
     </hints>
 </tbe-level>

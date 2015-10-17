@@ -2,122 +2,108 @@
 <tbe-level>
     <levelinfo>
         <title>Poing Poing Poing</title>
-        <title lang="nl">Poing Poing Poing</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Once a Volley Ball jumps across, a Cola bottle will finish it off.</description>
-        <description lang="nl">Nadat een volleybal naar de overkant is gestuiterd, maakt een colafles het af.</description>
         <date>June 6, 2010</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="3" name="Something weird">
-            <name lang="nl">Iets vreemds</name>
-            <object X="1.0" Y="2.7" width="0.14" height="0.14" type="CustomBall">
-                <property key="Radius" >0.07</property>
+            <object width="0.14" X="1.0" Y="2.7" height="0.14" type="CustomBall">
+                <property key="Radius">0.07</property>
                 <property key="Bounciness">0.7</property>
-                <property key="ImageName" >brass-pin</property>
+                <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5" height="3" />
+        <scenesize width="5" height="3"/>
         <predefined>
-        
-        
-	    <object X="0.25" Y="2.7" width="0.45" height="0.18" type="RectObject" >
+            <object width="0.45" X="0.25" Y="2.7" height="0.18" type="RectObject">
                 <property key="ImageName">hammer</property>
                 <property key="Mass">80.0</property>
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="PivotPoint">(0.2,0)</property>
-	    </object>
+            </object>
             <object X="0.5" Y="2.35" type="VolleyBall" ID="Ball"/>
-            <object width="1.1" X="0.6" Y="2.15" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-
-
-            <object X="0.7" Y="1.67" type="BowlingPin" ID="LeftPin" />
-            <object X="0.8" Y="0.8" height="1.4" width="0.4" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.0</property>
+            <object width="1.1" X="0.6" Y="2.15" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
             </object>
-	    <object X="0.35" Y="0.75" width="0.5" height="1.3" type="Scenery" >
-                <property key="ImageName" >basket</property>
+            <object X="0.7" Y="1.67" type="BowlingPin" ID="LeftPin"/>
+            <object width="0.4" X="0.8" Y="0.8" height="1.4" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.0</property>
             </object>
-            <object X="0.05" Y="1.1" height="2.2" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.5" X="0.35" Y="0.75" height="1.3" type="Scenery">
+                <property key="ImageName">basket</property>
             </object>
-            <object X="1.1" Y="2.0" height="0.3" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.1" X="0.05" Y="1.1" height="2.2" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-
-            <object X="0.2" Y="1.8" height="0.7" width="0.1" type="RectObject" angle="-0.4">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.1" X="1.1" Y="2.0" height="0.3" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-
+            <object width="0.1" X="0.2" Y="1.8" height="0.7" type="RectObject" angle="-0.4">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
             <object X="2" Y="0.5" type="PostIt">
-                <property key="page1">Poing Poing Poing &lt;br&gt; &lt;br&gt; ... a world-famous song of the &lt;i&gt;Rotterdam Termination Source&lt;/i&gt;</property>
-                <property key="page2">Volley balls can do that, too.&lt;br&gt;&lt;br&gt;Wanna bet?</property>
+                <property key="page1">Poing Poing Poing &lt;br> &lt;br> ... a world-famous song of the &lt;i>Rotterdam Termination Source&lt;/i></property>
+                <property key="page2">Volley balls can do that, too.&lt;br>&lt;br>Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>
-                <property key="page4">&lt;br&gt; &lt;br&gt; the Post-It Boy </property>
+                <property key="page4">&lt;br> &lt;br> the Post-It Boy </property>
                 <property key="page5">By the way: it is possible with only one of those weird thingies!</property>
                 <property key="page6">And you already realized that the weird thingies can adjust the trajectories of both the ball and the bottle, right?</property>
-	    </object>
-
-            <object width="5.0" X="2.5" Y="0.05" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-
-            <object X="4.25" Y="1.77" type="ColaMintBottle" angle="-1.57" />
-            <object X="4.25" Y="1.64" height="0.12" width="0.5" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
             </object>
-            <object X="4.53" Y="1.6" height="0.1" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="5.0" X="2.5" Y="0.05" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
             </object>
-            <object X="4.6" Y="1.82" type="BowlingPin" ID="RightPin" />
-            <object X="4.8" Y="1.9" height="0.1" width="0.2" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object X="4.25" Y="1.77" type="ColaMintBottle" angle="-1.57"/>
+            <object width="0.5" X="4.25" Y="1.64" height="0.12" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-
-            <object X="2.9" Y="0.98" height="0.1" width="3.2" type="RectObject" angle="-0.25">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.1" X="4.53" Y="1.6" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="4.6" Y="1.82" type="BowlingPin" ID="RightPin"/>
+            <object width="0.2" X="4.8" Y="1.9" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="3.2" X="2.9" Y="0.98" height="0.1" type="RectObject" angle="-0.25">
+                <property key="ImageName">used_wood_bar</property>
                 <property key="Bounciness">0.05</property>
             </object>
-
-            <object X="4.45" Y="0.35" height="0.6" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.1" X="4.45" Y="0.35" height="0.6" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-	    <object X="4.70" Y="0.35" width="0.4" height="0.5" type="Scenery" >
-                <property key="ImageName" >basket</property>
+            <object width="0.4" X="4.70" Y="0.35" height="0.5" type="Scenery">
+                <property key="ImageName">basket</property>
             </object>
-            <object X="4.95" Y="1.15" height="2.3" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.1" X="4.95" Y="1.15" height="2.3" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-
         </predefined>
     </scene>
     <goals>
-	<goal type="positionchange">
-	    <property key="ybelow">0.5</property>
-	    <property key="object">LeftPin</property>
-	</goal>
-	<goal type="positionchange">
-	    <property key="xbelow">0.5</property>
-	    <property key="object">LeftPin</property>
-	</goal>
-	<goal type="positionchange">
-	    <property key="ybelow">0.5</property>
-	    <property key="object">RightPin</property>
-	</goal>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">LeftPin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xbelow">0.5</property>
+            <property key="object">LeftPin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">RightPin</property>
+        </goal>
     </goals>
     <hints>
-        <hint number="1" object="CustomBall" X="2.467" Y="1.76"/>
-        <hint number="2" object="CustomBall" X="3.541" Y="2.04"/>
-        <hint number="3" object="CustomBall" X="3.112" Y="1.41"/>
+        <hint X="2.467" Y="1.76" number="1" object="CustomBall"/>
+        <hint X="3.541" Y="2.04" number="2" object="CustomBall"/>
+        <hint X="3.112" Y="1.41" number="3" object="CustomBall"/>
     </hints>
 </tbe-level>

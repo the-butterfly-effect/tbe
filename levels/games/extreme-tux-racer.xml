@@ -9,16 +9,13 @@
 					 where Tux has to race down slopes 
 		&lt;a href="http://sourceforge.net/projects/extremetuxracer/">http://sourceforge.net/projects/extremetuxracer/&lt;/a> 
 		</description>
-        <description lang="nl">Laat Tux langs de helling omlaagglijden.</description>
         <date>March 6, 2014</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Dynamite">
-            <name lang="nl">Dynamiet</name>
             <object width="0.430" X="0.217" Y="3.513" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Soccerball">
-            <name lang="nl">Voetbal</name>
             <object width="0.220" X="0.000" Y="0.000" height="0.220" type="SoccerBall" angle="0.000"/>
         </toolboxitem>
     </toolbox>

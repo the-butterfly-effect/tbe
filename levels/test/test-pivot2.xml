@@ -12,66 +12,63 @@
 	</description>
         <date>Jan 16, 2010</date>
     </levelinfo>
-     <toolbox>
+    <toolbox>
         <toolboxitem count="1" name="Bowling Ball">
-	    <object type="BowlingBall"/>
+            <object type="BowlingBall"/>
         </toolboxitem>
-   </toolbox>
+    </toolbox>
     <scene>
-        <scenesize width="5.5" height="4" />
+        <scenesize width="5.5" height="4"/>
         <predefined>
-            <object width="5.5" X="2.75" Y="0.05" type="Floor" >
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="5.5" X="2.75" Y="0.05" type="Floor">
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            
-	    <object type="BowlingBall" X="0.1" Y="0.92" angle="-0.35">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-
-	    <object type="BowlingBall" X="1.0" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="1.22" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="1.44" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="1.66" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="1.88" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="2.10" Y="0.8">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    <object type="BowlingBall" X="2.32" Y="0.8" ID="thelast">
-                <property key="ImageName" >metalball</property>
-	        <property key="PivotPoint">(0.0,2.0)</property>
-		<property key="Friction">0</property>
-	    </object>
-	    
-</predefined>
+            <object X="0.1" Y="0.92" type="BowlingBall" angle="-0.35">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="1.0" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="1.22" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="1.44" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="1.66" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="1.88" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="2.10" Y="0.8" type="BowlingBall">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+            <object X="2.32" Y="0.8" type="BowlingBall" ID="thelast">
+                <property key="ImageName">metalball</property>
+                <property key="PivotPoint">(0.0,2.0)</property>
+                <property key="Friction">0</property>
+            </object>
+        </predefined>
     </scene>
-	<goals>
-		<goal type="positionchange">
-		   <property key="xover">2.5</property>
-		   <property key="object">thelast</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="positionchange">
+            <property key="xover">2.5</property>
+            <property key="object">thelast</property>
+        </goal>
+    </goals>
 </tbe-level>

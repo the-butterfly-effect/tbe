@@ -2,20 +2,15 @@
 <tbe-level>
     <levelinfo>
         <title>Bouncing Balls</title>
-        <title lang="nl">Stuiterende ballen</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The second level in the game, and the first level you actually have to put something into the scene.&lt;br>
 		Don't forget to read the Post-it note!
 	</description>
-        <description lang="nl">Het tweede level in het spel, maar het eerste level waar je daadwerkelijk iets in de
-			wereld moet plaatsen.&lt;br>Vergeet niet om de Post-it note te lezen!
-	</description>
         <date>12/22/09</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Ramp \">
-            <name lang="nl">Rechtse helling</name>
             <object width="2.000" X="0.000" Y="0.000" height="0.500" type="RightRamp" angle="0.000"/>
         </toolboxitem>
     </toolbox>
@@ -34,17 +29,11 @@
             </object>
             <object width="0.220" X="1.500" Y="0.500" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Welcome back!</property>
-                <property key="page1_nl">Welkom terug!</property>
                 <property key="page2">No butterfly here...&lt;br>&lt;br>Don't worry - we haven't seen the last one yet</property>
-                <property key="page2_nl">Geen vlinder hiero...&lt;br>&lt;br>Wanhoop niet - er komen er nog meer</property>
                 <property key="page3">My mum told me to clean my room.&lt;br>&lt;br>All balls must go in the basket.</property>
-                <property key="page3_nl">Van mijn moeder moet ik m'n kamer opruimen.&lt;br>&lt;br>Alle ballen moeten in de mand.</property>
                 <property key="page4">Someone told me to drag the ramp from the toolbox into the big window.&lt;br>... after you've read my note!</property>
-                <property key="page4_nl">Iemand zei me om een helling van de gereedschapskist in het veld te slepen.&lt;br>... nadat je de post-it uit hebt!</property>
                 <property key="page5">But why do I have to clean my room every year?</property>
-                <property key="page5_nl">Maar waarom moet ik elk jaar mijn kamer opruimen?</property>
                 <property key="page6">... An unhappy&lt;br>&lt;br>&lt;br>Post-It Boy</property>
-                <property key="page6_nl">... Een niet-zo-vrolijke&lt;br>&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object width="0.100" X="3.150" Y="0.700" height="1.200" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.05</property>
@@ -119,6 +108,6 @@
         </goal>
     </goals>
     <hints>
-        <hint number="1" object="RightRamp" X="1.100" Y="1.200"/>
+        <hint X="1.100" Y="1.200" number="1" object="RightRamp"/>
     </hints>
 </tbe-level>

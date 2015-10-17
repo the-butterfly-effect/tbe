@@ -2,99 +2,85 @@
 <tbe-level>
     <levelinfo>
         <title>Bridge the Gap II</title>
-        <title lang="nl">De Afgrond deel 2</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>a bowling ball needs to cross a big gap. Let's help crossing. Both ball and Pin need to be on the right!</description>
-        <description lang="nl">een bowlingbal moet over de afgrond. Laten we 'm eens helpen. Zowel de bal als de kegel moeten rechts aankomen!</description>
         <date>March 8, 2010</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Skyhook">
-            <name lang="nl">Hemelhaakje</name>
             <object type="Skyhook" ID="Skyhook">
-                <property key="ZValue" >0.2</property>
+                <property key="ZValue">0.2</property>
             </object>
         </toolboxitem>
         <toolboxitem count="3" name="Steel I-Beam">
-            <name lang="nl">Balk</name>
             <object width="1.2" height="0.1" type="IBeam">
-                <property key="Friction" >0.1</property>
-                <property key="Resizable" >none</property>
+                <property key="Friction">0.1</property>
+                <property key="Resizable">none</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5" height="3" />
+        <scenesize width="5" height="3"/>
         <predefined>
-            <object width="0.9" X="0.7" Y="2.15" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-            <object X="0.75" Y="1.1" height="2.0" width="1.0" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.0</property>
+            <object width="0.9" X="0.7" Y="2.15" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
             </object>
-
-	    <object X="0.25" Y="2.7" width="0.45" height="0.18" type="RectObject" >
+            <object width="1.0" X="0.75" Y="1.1" height="2.0" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object width="0.45" X="0.25" Y="2.7" height="0.18" type="RectObject">
                 <property key="ImageName">hammer</property>
                 <property key="Mass">80.0</property>
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="PivotPoint">(0.2,0)</property>
-	    </object>
+            </object>
             <object X="0.5" Y="2.35" type="BowlingBall" ID="Ball"/>
-
             <object X="2" Y="0.5" type="PostIt">
-                <property key="page1" >Remember this gap?</property>
-                <property key="page2" >I also have a Bowling Ball that wants to cross.</property>
-                <property key="page3" >&lt;br&gt; &lt;br&gt; the Post-It Boy &lt;br&gt; &lt;br&gt; likes building bridges </property>
-                <property key="page4" >&lt;br&gt; &lt;br&gt; ... and he likes crashing bridges even more!</property>
-                <property key="page1_nl">Kun je je die afgrond nog herinneren?</property>
-                <property key="page2_nl">Nu wil een bowlingbal eroverheen.</property>
-                <property key="page3_nl">&lt;br&gt; &lt;br&gt; de Post-It Boy &lt;br&gt; &lt;br&gt; &lt;br&gt; houdt van bruggen bouwen </property>
-                <property key="page4_nl">&lt;br&gt; &lt;br&gt; ... Maar instortende bruggen zijn nog leuker!</property>
-	    </object>
-
-            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-
-            <object width="1.2" X="4.4" Y="2.35" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-            <object width="0.6" X="4.1" Y="1.77" height="0.1" type="RectObject" >
-                <property key="ImageName" >used_wood_bar</property>
-                <property key="Bounciness" >0.1</property>
-	    </object>
-	    
-            <object X="4.35" Y="0.90" height="1.70" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+                <property key="page1">Remember this gap?</property>
+                <property key="page2">I also have a Bowling Ball that wants to cross.</property>
+                <property key="page3">&lt;br> &lt;br> the Post-It Boy &lt;br> &lt;br> likes building bridges </property>
+                <property key="page4">&lt;br> &lt;br> ... and he likes crashing bridges even more!</property>
             </object>
-	    <object X="4.65" Y="0.45" width="0.5" height="0.9" type="Scenery" >
-                <property key="ImageName" >basket</property>
+            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
             </object>
-            <object X="4.95" Y="1.15" height="2.3" width="0.1" type="RectObject">
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="1.2" X="4.4" Y="2.35" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
             </object>
-
-            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin" />
+            <object width="0.6" X="4.1" Y="1.77" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.1" X="4.35" Y="0.90" height="1.70" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.5" X="4.65" Y="0.45" height="0.9" type="Scenery">
+                <property key="ImageName">basket</property>
+            </object>
+            <object width="0.1" X="4.95" Y="1.15" height="2.3" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin"/>
         </predefined>
     </scene>
     <goals>
-	<goal type="positionchange">
-	    <property key="ybelow">0.5</property>
-	    <property key="object">the Pin</property>
-	</goal>
-	<goal type="positionchange">
-	    <property key="xover">4.3</property>
-	    <property key="object">the Pin</property>
-	</goal>
-	<goal type="positionchange">
-	    <property key="xover">4.3</property>
-	    <property key="object">Ball</property>
-	</goal>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.3</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.3</property>
+            <property key="object">Ball</property>
+        </goal>
     </goals>
 </tbe-level>

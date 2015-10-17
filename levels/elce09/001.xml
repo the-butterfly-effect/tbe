@@ -1,82 +1,69 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-	<title>The Butterfly Effect 101</title>
-	<title lang="nl">Het vlindereffect (beginnerscursus)</title>
-	<author>Klaas van Gend</author>
+        <title>The Butterfly Effect 101</title>
+        <author>Klaas van Gend</author>
         <license>GPLv2</license>
-	<description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>&lt;br>This level is a first demonstration.
+        <description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>&lt;br>This level is a first demonstration.
 		Click PLAY in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level. 
 		&lt;br>&lt;br>
 		You might want to click on the Post-it note!</description>
-	<description lang="nl">Hoi!&lt;br>Welkom bij Het Vlindereffect!&lt;br>&lt;br>Dit level is alleen een demonstratie.
-		Klik AFSPELEN rechtsboven en zie de vlinder fladderen. Zodra hij bij de bloem is, heb je je eerste level gewonnen.
-		&lt;br>&lt;br>
-		Je wilt misschien ook op de Post-it note klikken!</description>
-	<date>11/1/09</date>
+        <date>11/1/09</date>
     </levelinfo>
     <scene>
-        <scenesize width="2.3" height="1.7" />
+        <scenesize width="2.3" height="1.7"/>
         <predefined>
-            <object width="1.200" X="1.700" Y="1.400" height="0.6" type="Scenery" angle="0.000" >
-                <property key="ImageName" >the-sun</property>
+            <object width="1.200" X="1.700" Y="1.400" height="0.6" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
             </object>
-
-            <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject" >
-                <property key="ImageName" >Anonymous_daffodil_klaas</property>
+            <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject">
+                <property key="ImageName">Anonymous_daffodil_klaas</property>
             </object>
-            <object X="1.95" Y="0.63" width="0.2" height="0.2" type="Scenery" ID="Flower">
-                <property key="ImageName" >Empty</property>
+            <object width="0.2" X="1.95" Y="0.63" height="0.2" type="Scenery" ID="Flower">
+                <property key="ImageName">Empty</property>
             </object>
-            <object width="0.4" X="0.55" Y="0.65" height="0.4" type="Scenery" >
-                <property key="ImageName" >dream-of-flowers</property>
+            <object width="0.4" X="0.55" Y="0.65" height="0.4" type="Scenery">
+                <property key="ImageName">dream-of-flowers</property>
             </object>
-            <object width="2.3" X="1.15" Y="0.05" type="Floor" >
-                <property key="ImageName" >White-to-green</property>
+            <object width="2.3" X="1.15" Y="0.05" type="Floor">
+                <property key="ImageName">White-to-green</property>
             </object>
-            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
-                <property key="ImageName" >rg1024_Grass_texture</property>
-                <property key="ZValue" >20.0</property>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
             </object>
-            <object width="0.800" X="1.000" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
-                <property key="ImageName" >rg1024_Grass_texture</property>
-                <property key="ZValue" >20.0</property>
+            <object width="0.800" X="1.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
             </object>
-            <object width="0.800" X="1.700" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
-                <property key="ImageName" >rg1024_Grass_texture</property>
-                <property key="ZValue" >20.0</property>
+            <object width="0.800" X="1.700" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
             </object>
-            <object width="0.800" X="2.000" Y="0.090" height="0.180" type="Scenery" angle="0.000" >
-                <property key="ImageName" >rg1024_Grass_texture</property>
-                <property key="ZValue" >20.0</property>
+            <object width="0.800" X="2.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
             </object>
-	    
-			<object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
-				<tooltip>This is the butterfly.</tooltip>
-                <property key="object" >Flower</property>
+            <object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
+                <tooltip>This is the butterfly.</tooltip>
+                <property key="object">Flower</property>
             </object>
             <object X="1.1" Y="1.5" type="PostIt">
-                <property key="page1" >You see that butterfly?</property>
-                <property key="page2" >It wants to go to the flower...</property>
-                <property key="page3" >&lt;i&gt;Once this Post-It is gone,&lt;/i&gt;&lt;br&gt;&lt;br&gt;click the play button top-right &lt;br&gt;to make it happen!</property>
-                <property key="page4" >If you click the pause button, the simulation will stop.&lt;br&gt;There's also a green 'reset' button now. &lt;br&gt; &lt;br&gt; During the simulation, there's also a 'fast forward'.</property>
-                <property key="page5" >But I've said enough...&lt;br&gt;&lt;br&gt;   Good luck!</property>
-                <property key="page6" >... The Post-It boy</property>
-                <property key="page1_nl" >Zie je die vlinder?</property>
-                <property key="page2_nl" >Die wil naar de bloem...</property>
-                <property key="page3_nl" >&lt;i&gt;Als deze Post-It zo verdwenen is,&lt;/i&gt;&lt;br&gt;klik dan op de afspeelknop rechtsboven om te starten.</property>
-                <property key="page4_nl" >Als je op de pauze knop drukt, dan stopt alles weer.&lt;br&gt;Er komt dan ook een groene 'reset' pijl bij. &lt;br&gt;&lt;br&gt;Tijdens de simulatie is er ook nog een 'snel vooruitspoelen' knop.</property>
-                <property key="page5_nl" >Maar ik heb genoeg gezegd...&lt;br&gt;&lt;br&gt;Veel success!</property>
-                <property key="page6_nl" >... de Post-It boy</property>
-	    </object>
+                <property key="page1">You see that butterfly?</property>
+                <property key="page2">It wants to go to the flower...</property>
+                <property key="page3">&lt;i>Once this Post-It is gone,&lt;/i>&lt;br>&lt;br>click the play button top-right &lt;br>to make it happen!</property>
+                <property key="page4">If you click the pause button, the simulation will stop.&lt;br>There's also a green 'reset' button now. &lt;br> &lt;br> During the simulation, there's also a 'fast forward'.</property>
+                <property key="page5">But I've said enough...&lt;br>&lt;br>   Good luck!</property>
+                <property key="page6">... The Post-It boy</property>
+            </object>
         </predefined>
     </scene>
     <toolbox/>
-	<goals>
-		<goal type="distance">
-		   <property key="lessthan">0.27</property>
-		   <property key="object1">Butterfly</property>
-		   <property key="object2">Flower</property>
-		</goal>
-	</goals>
+    <goals>
+        <goal type="distance">
+            <property key="lessthan">0.27</property>
+            <property key="object1">Butterfly</property>
+            <property key="object2">Flower</property>
+        </goal>
+    </goals>
 </tbe-level>

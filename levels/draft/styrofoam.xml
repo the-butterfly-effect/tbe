@@ -2,119 +2,105 @@
 <tbe-level>
     <levelinfo>
         <title>Football in Styrofoam...</title>
-        <title lang="nl" >Voetbal in piepschuim...</title>
-        <title lang="de" >Ein Fussball ins Styropor...</title>
-        <title lang="fr" >Un ballon de football dans styromousse...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>The soccer ball must kick the pin. But there's something missing.</description>
-        <description lang="nl">De voetbal moet de kegel omknallen. Maar er ontbreekt iets.</description>
-        <description lang="de">Der Ball musst den Bowling Pin umwerfen. Aber etwas fehlt.</description>
-        <description lang="fr">Le ballon de football doit botter le pin. Mais il ya quelque chose qui manque.</description>
         <date>12/20/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Styrofoam Block" >
-            <name lang="nl" >Blok piepschuim</name>
-            <name lang="de" >Block aus Styropor</name>
-            <name lang="fr" >Bloc de styromousse</name>
-            <object width="1.0" height="0.5" type="RectObject" >
-                <property key="ImageName" >styrofoam</property>
-                <property key="Bounciness" >0.6</property>
-                <property key="Resizable" >totalresize</property>
-                <property key="Mass" >1.0</property>
+        <toolboxitem count="2" name="Styrofoam Block">
+            <object width="1.0" height="0.5" type="RectObject">
+                <property key="ImageName">styrofoam</property>
+                <property key="Bounciness">0.6</property>
+                <property key="Resizable">totalresize</property>
+                <property key="Mass">1.0</property>
             </object>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="4.5" height="3" />
+        <scenesize width="4.5" height="3"/>
         <predefined>
-            <object width="0.100" X="0.050" Y="1.450" height="2.700" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.05</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.100" X="0.050" Y="1.450" height="2.700" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.05</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.450" Y="1.450" height="2.700" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.05</property>
-                <property key="ImageName" >used_wood_bar</property>
+            <object width="0.100" X="4.450" Y="1.450" height="2.700" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.05</property>
+                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.220" X="0.400" Y="2.700" height="0.220" type="SoccerBall" angle="0.000" />
-            <object width="2.000" X="3.400" Y="2.650" height="0.100" type="Floor" angle="0.000" />
-            <object width="2.000" X="3.400" Y="2.350" height="0.500" type="RightRamp" angle="3.140" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-right</property>
+            <object width="0.220" X="0.400" Y="2.700" height="0.220" type="SoccerBall" angle="0.000"/>
+            <object width="2.000" X="3.400" Y="2.650" height="0.100" type="Floor" angle="0.000"/>
+            <object width="2.000" X="3.400" Y="2.350" height="0.500" type="RightRamp" angle="3.140">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-right</property>
             </object>
-            <object width="3.800" X="2.000" Y="2.050" height="0.500" type="RightRamp" angle="0.000" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-right</property>
+            <object width="3.800" X="2.000" Y="2.050" height="0.500" type="RightRamp" angle="0.000">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-right</property>
             </object>
-            <object width="3.800" X="2.000" Y="1.750" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.600" X="4.100" Y="1.500" height="0.400" type="LeftWedge" angle="0.000" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-left</property>
-                <property key="Mass" >0.6</property>
+            <object width="3.800" X="2.000" Y="1.750" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.600" X="4.100" Y="1.500" height="0.400" type="LeftWedge" angle="0.000">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Mass">0.6</property>
             </object>
-            <object width="1.000" X="3.900" Y="1.150" height="0.300" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam</property>
+            <object width="1.000" X="3.900" Y="1.150" height="0.300" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam</property>
             </object>
-            <object width="3.800" X="2.500" Y="0.950" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.400" X="0.800" Y="1.150" height="0.250" type="LeftWedge" angle="0.000" >
-                <property key="Bounciness" >0.5</property>
-                <property key="ImageName" >styrofoam-left</property>
-                <property key="Mass" >0.9</property>
+            <object width="3.800" X="2.500" Y="0.950" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.400" X="0.800" Y="1.150" height="0.250" type="LeftWedge" angle="0.000">
+                <property key="Bounciness">0.5</property>
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Mass">0.9</property>
             </object>
-            <object width="0.400" X="0.300" Y="1.550" height="0.300" type="LeftRamp" angle="3.140" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-left</property>
+            <object width="0.400" X="0.300" Y="1.550" height="0.300" type="LeftRamp" angle="3.140">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-left</property>
             </object>
-            <object width="0.600" X="0.400" Y="0.700" height="0.400" type="RightWedge" angle="0.000" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-right</property>
-                <property key="Mass" >0.6</property>
+            <object width="0.600" X="0.400" Y="0.700" height="0.400" type="RightWedge" angle="0.000">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Mass">0.6</property>
             </object>
-            <object width="1.000" X="0.600" Y="0.250" height="0.300" type="RectObject" angle="0.000" >
-                <property key="Bounciness" >0.5</property>
-                <property key="ImageName" >styrofoam</property>
+            <object width="1.000" X="0.600" Y="0.250" height="0.300" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.5</property>
+                <property key="ImageName">styrofoam</property>
             </object>
-            <object width="0.400" X="3.400" Y="0.250" height="0.250" type="RightWedge" angle="0.000" >
-                <property key="Bounciness" >0.6</property>
-                <property key="ImageName" >styrofoam-right</property>
-                <property key="Mass" >0.9</property>
+            <object width="0.400" X="3.400" Y="0.250" height="0.250" type="RightWedge" angle="0.000">
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Mass">0.9</property>
             </object>
-            <object width="0.120" X="3.900" Y="0.260" height="0.340" type="BowlingPin" ID="thepin" angle="0.000" >
-                <property key="Mass" >0.5</property>
+            <object width="0.120" X="3.900" Y="0.260" height="0.340" type="BowlingPin" ID="thepin" angle="0.000">
+                <property key="Mass">0.5</property>
             </object>
-            <object width="0.400" X="4.170" Y="0.450" height="0.700" type="Scenery" angle="0.000" >
-                <property key="ImageName" >goal-scenery</property>
-                <property key="ZValue" >4</property>
+            <object width="0.400" X="4.170" Y="0.450" height="0.700" type="Scenery" angle="0.000">
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">4</property>
             </object>
-            <object width="0.150" X="4.300" Y="0.450" height="0.700" type="RightRamp" angle="3.140" >
-                <property key="ImageName" >Empty</property>
+            <object width="0.150" X="4.300" Y="0.450" height="0.700" type="RightRamp" angle="3.140">
+                <property key="ImageName">Empty</property>
             </object>
-            <object width="4.500" X="2.250" Y="0.050" height="0.100" type="Floor" angle="0.000" />
-            <object width="0.220" X="3.600" Y="0.700" height="0.220" type="PostIt" angle="0.000" >
-                <property key="page1" >Another pin needs kicking!</property>
-                <property key="page1_nl" >Nog een kegel moet om!</property>
-                <property key="page2" >Use a proper football this time!</property>
-                <property key="page2_nl" >Met een echte voetbal deze keer!</property>
-                <property key="page3" >(Or a "soccer" ball for you Americans)</property>
-                <property key="page4" >Looks like there's something missing...</property>
-                <property key="page4_nl" >Maar ontbreekt er niet nog wat?</property>
-                <property key="page5" >Hint: first put it on the floor,&lt;br>then adjust height,&lt;br>then the width...</property>
-                <property key="page5_nl" >TIP: plaats het eerst op de ondergrond,&lt;br>pas dan hoogte aan,&lt;br>en dan de breedte...</property>
-                <property key="page6" >Post-It boy &lt;br>likes playing with styrofoam ... &lt;br>&lt;br>... for breakfast!</property>
-                <property key="page6_nl" >Post-It boy &lt;br>speelt graag met piepschuim ... &lt;br>&lt;br>... als ontbijt!</property>
+            <object width="4.500" X="2.250" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.220" X="3.600" Y="0.700" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">Another pin needs kicking!</property>
+                <property key="page2">Use a proper football this time!</property>
+                <property key="page3">(Or a "soccer" ball for you Americans)</property>
+                <property key="page4">Looks like there's something missing...</property>
+                <property key="page5">Hint: first put it on the floor,&lt;br>then adjust height,&lt;br>then the width...</property>
+                <property key="page6">Post-It boy &lt;br>likes playing with styrofoam ... &lt;br>&lt;br>... for breakfast!</property>
             </object>
         </predefined>
         <background>
-            <gradientstop pos="0.00" >0.33;0.00;0.50;1.00</gradientstop>
-            <gradientstop pos="1.00" >0.74;0.22;1.00;1.00</gradientstop>
+            <gradientstop pos="0.00">0.33;0.00;0.50;1.00</gradientstop>
+            <gradientstop pos="1.00">0.74;0.22;1.00;1.00</gradientstop>
         </background>
     </scene>
     <goals>
-        <goal type="positionchange" >
-            <property key="object" >thepin</property>
-            <property key="xover" >4.0</property>
+        <goal type="positionchange">
+            <property key="object">thepin</property>
+            <property key="xover">4.0</property>
         </goal>
     </goals>
 </tbe-level>
