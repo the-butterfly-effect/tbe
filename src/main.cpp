@@ -81,9 +81,9 @@ static bool displayHelp(QString /*anArgument*/ )
 	printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
 	printf(" --help              gives this help text\n");
 	printf(" -h                  gives this help text\n");
+#ifdef QT_DEBUG
 	printf(" --level-creator     start in level creator mode\n");
 	printf(" -L                  start in level creator mode\n");
-#ifdef QT_DEBUG
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
@@ -149,9 +149,9 @@ static struct s_args theArgsTable[] =
 {
 // keep sorted alphabetically, please
 	{ "help",          "h", false, displayHelp, },
-	{ "level-creator", "L", false, goLevelCreator, },
 #ifdef QT_DEBUG
-    { "regression",    "",  true,  runRegression, },
+	{ "level-creator", "L", false, goLevelCreator, },
+	{ "regression",    "",  true,  runRegression, },
     { "verbosity",     "v", true,  setVerbosity, },
 #endif
 	{ "windowed",      "W", false, setWindowed, },
@@ -180,21 +180,6 @@ int main(int argc, char *argv[])
 	QTextCodec *myCodec = QTextCodec::codecForName("UTF-8");
 	QTextCodec::setCodecForCStrings(myCodec);
 	QTextCodec::setCodecForLocale(myCodec);
-
-	//** read the locale from the environment and set the output language
-	if (!theIsRunAsRegression)
-	{
-		QString myLocale = QLocale::system().name();
-		DEBUG4("Loading translator for locale '%s'", ASCII(myLocale));
-		// for strings from TBE
-		QTranslator myTranslator;
-		myTranslator.load(I18N_DIRECTORY + "/tbe_" + myLocale);
-		app.installTranslator(&myTranslator);
-		// for strings from Qt itself
-		QTranslator qtTranslator;
-		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-		app.installTranslator(&qtTranslator);
-	}
 
 	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
@@ -273,6 +258,45 @@ int main(int argc, char *argv[])
 #ifdef QT_DEBUG
 	setupBacktrace();
 #endif
+
+	//** read the locale from the environment and set the output language
+	if (theIsRunAsRegression)
+	{
+		DEBUG1("Regression: not loading any translators!");
+	}
+	else
+	{
+		QString myLocale = QLocale::system().name();
+		DEBUG3("Loading translator for locale '%s'", ASCII(myLocale));
+		// for strings from TBE
+		static QTranslator myTranslator; // must be static to survive scoping
+		QString myLocation = I18N_DIRECTORY + "/tbe_" + myLocale;
+		DEBUG3("Attemp1: load from %s", ASCII(myLocation));
+		if (myTranslator.load(myLocation))
+		{
+			DEBUG3("   ... success");
+		}
+		else
+		{
+			myLocation = "../build/i18n/tbe_" + myLocale;
+			DEBUG3("Attemp2: load from %s", ASCII(myLocation));
+			if (myTranslator.load(myLocation))
+			{
+				DEBUG3("   ... success");
+			}
+			else
+			{
+				DEBUG2("PROBLEM: no translator for %s loaded", ASCII(myLocale));
+			}
+		}
+		if (myTranslator.isEmpty())
+			DEBUG1("PROBLEM: translator is empty");
+		app.installTranslator(&myTranslator);
+		// for strings from Qt itself
+		QTranslator qtTranslator;
+		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+		app.installTranslator(&qtTranslator);
+	}
 
 	DEBUG3("SUMMARY:");
 	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
