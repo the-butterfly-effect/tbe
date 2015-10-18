@@ -39,6 +39,7 @@
             </object>
             <object width="0.5" X="0.35" Y="0.75" height="1.3" type="Scenery">
                 <property key="ImageName">basket</property>
+                <property key="ZValue">0.2</property>
             </object>
             <object width="0.1" X="0.05" Y="1.1" height="2.2" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
@@ -81,6 +82,7 @@
             </object>
             <object width="0.4" X="4.70" Y="0.35" height="0.5" type="Scenery">
                 <property key="ImageName">basket</property>
+                <property key="ZValue">0.2</property>
             </object>
             <object width="0.1" X="4.95" Y="1.15" height="2.3" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
