@@ -1,4 +1,13 @@
-The Butterfly Effect
+Running The Butterfly Effect
+============================
+
+Windows:
+--------
+* start `tbe.exe` in the Start Menu.
+
+
+Linux:
+------
 
 The application can be run from the command line:
     ./tbe
@@ -14,8 +23,6 @@ you can force this by typing this:
 At the moment, TBE accepts the following command line arguments:
   --help              gives this help text
   -h                  gives this help text
-  --level-creator     start in level creator mode
-  -L                  start in level creator mode
   --verbosity <lvl>   set verbosity, 1=little, 6=max 
   -v <lvl>            set verbosity
   --windowed          display in a window (default is fullscreen)

@@ -1,7 +1,7 @@
 #Welcome to "The Butterfly Effect"
-working up to Milestone A (also known as the '0.9.2' release)
+This is Milestone A (also known as the '0.9.2' release)
 
-This is a fully playable game of alpha quality, well on its way to a shiny
+This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
 notice a shiny new user interface - but the same levels and objects.
 
@@ -21,8 +21,9 @@ All levels are playable, a few levels may need a bit more polish.
 ###New features & highlights in Milestone A:
  * a shiny new GUI, which should also work with touchscreens and touchpads
  * several animations, making it more into a game
- * 50 frames per second on many machines
+ * 60 frames per second on many machines
  * many playability fixes in levels
+ * simulation accuracy fixes, so sims run the same across platforms
  * levels are automatically tested to ensure they work across platforms
  * development moved from Sourceforge to Github
 
