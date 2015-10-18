@@ -92,6 +92,9 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 		}
 	}
 
+	// Save *custom* tooltips and all it translations
+	// FIXME: TODO
+
 	aParent->appendChild(myNode);
 }
 
