@@ -4,9 +4,9 @@ project (thebutterflyeffect)
 option(WITH_DOCS "build package with(out) documentation")
 
 if (PACK)
-   set(CMAKE_INSTALL_PREFIX /usr)
-else (PACK)
    set(CMAKE_INSTALL_PREFIX ".")
+else (PACK)
+   set(CMAKE_INSTALL_PREFIX /usr)
 endif (PACK)
 
 set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/games)

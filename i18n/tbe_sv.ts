@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="sv">
 <defaultcodec>UTF-8</defaultcodec>
 <context>
     <name>AbstractPolyObjectFactory</name>
@@ -96,13 +98,13 @@ föredrar att använda ett bowlingklot för det ändamålet.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="53"/>
         <source>Wooden Bar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="54"/>
         <source>Birch is a type of wood.
 Birch wood beams move and float.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="58"/>
@@ -142,18 +144,18 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="74"/>
         <source>It doesn&apos;t move.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
         <source>Steel I-Beam</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="81"/>
         <source>An I Beam is named after the shape of its cross-section.
  It&apos;s heavy, don&apos;t drop one on your foot.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="85"/>
@@ -171,7 +173,7 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="103"/>
         <source>Choose your next level</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="128"/>
@@ -205,35 +207,32 @@ Dubbelklicka för hjälpsamma klisterlappar.
         <translation>Kör!</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="108"/>
         <source>Level parser:
-Cannot read the level descriptions in '%1':
+Cannot read the level descriptions in &apos;%1&apos;:
 %2.</source>
-        <translation>Nivåtolk:
+        <translation type="obsolete">Nivåtolk:
 Kan inte läsa nivåbeskrivningarna i &apos;%1&apos;:
 %2.</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="179"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="88"/>
         <source>done</source>
         <translation>klar</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="181"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="91"/>
         <source>skipped</source>
         <translation>hoppade över</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="183"/>
         <source>???</source>
-        <translation>???</translation>
+        <translation type="obsolete">???</translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="193"/>
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation>LevelList:
+        <translation type="obsolete">LevelList:
 Tolkningsfel vid rad %1, kolumn %2:
 %3</translation>
     </message>
@@ -241,27 +240,27 @@ Tolkningsfel vid rad %1, kolumn %2:
 <context>
     <name>ChoosePhoneNumber</name>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="14"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="20"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="90"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="117"/>
         <source>Select phone to dial</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="139"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="169"/>
         <source>Phone Number:</source>
         <translation>Telefonnummer:</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="186"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="216"/>
         <source>OK</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="196"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="226"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
@@ -506,7 +505,7 @@ Tolkningsfel vid rad %1, kolumn %2:
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -558,7 +557,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -585,7 +584,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -603,13 +602,13 @@ Inget har ändrats, åtgärda.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="154"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
+        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
         <translation>Är du säker på att du vill ta bort målet %1:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="173"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
+        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
         <translation>Är du säker på att du vill ta bort misslyckande %1:&lt;br&gt;%2</translation>
     </message>
     <message>
@@ -623,7 +622,7 @@ Inget har ändrats, åtgärda.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="271"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
-        <extracomment>translators: Cond. is short for Condition - otherwise it doesn't fit</extracomment>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
         <translation>Variabel;Objekt;Villk.;Värde;Objekt2</translation>
     </message>
     <message>
@@ -635,67 +634,67 @@ Inget har ändrats, åtgärda.</translation>
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="150"/>
-        <location filename="../src/loadsave/Level.cpp" line="171"/>
+        <location filename="../src/loadsave/Level.cpp" line="151"/>
+        <location filename="../src/loadsave/Level.cpp" line="172"/>
         <source>Cannot read file &apos;%1&apos;</source>
         <translation>Kan inte läsa filen &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="177"/>
+        <location filename="../src/loadsave/Level.cpp" line="178"/>
         <source>Cannot parse file - not valid XML?</source>
         <translation>Kan inte tolka filen - inte giltig XML?</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="187"/>
-        <location filename="../src/loadsave/Level.cpp" line="205"/>
-        <location filename="../src/loadsave/Level.cpp" line="225"/>
-        <location filename="../src/loadsave/Level.cpp" line="239"/>
-        <location filename="../src/loadsave/Level.cpp" line="256"/>
-        <location filename="../src/loadsave/Level.cpp" line="291"/>
-        <location filename="../src/loadsave/Level.cpp" line="348"/>
+        <location filename="../src/loadsave/Level.cpp" line="188"/>
+        <location filename="../src/loadsave/Level.cpp" line="206"/>
+        <location filename="../src/loadsave/Level.cpp" line="226"/>
+        <location filename="../src/loadsave/Level.cpp" line="240"/>
+        <location filename="../src/loadsave/Level.cpp" line="257"/>
+        <location filename="../src/loadsave/Level.cpp" line="292"/>
+        <location filename="../src/loadsave/Level.cpp" line="349"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation>Tolkning av avsnittet &apos;%1&apos; misslyckades:</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="232"/>
+        <location filename="../src/loadsave/Level.cpp" line="233"/>
         <source>scene width or height unspecified</source>
         <translation>scenens bredd eller höjd inte angivet</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="247"/>
+        <location filename="../src/loadsave/Level.cpp" line="248"/>
         <source>Parsing &apos;%1&apos; section failed: %2</source>
         <translation>Tolkning av avsnittet &apos;%1&apos; misslyckades: %2</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="271"/>
+        <location filename="../src/loadsave/Level.cpp" line="272"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation>ett &lt;%1&gt;-avsnitt förväntades, fick &lt;%2&gt;</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="278"/>
-        <location filename="../src/loadsave/Level.cpp" line="322"/>
-        <location filename="../src/loadsave/Level.cpp" line="382"/>
+        <location filename="../src/loadsave/Level.cpp" line="279"/>
+        <location filename="../src/loadsave/Level.cpp" line="323"/>
+        <location filename="../src/loadsave/Level.cpp" line="383"/>
         <source>createObjectFromDom failed</source>
         <translation>createObjectFromDom misslyckades</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="295"/>
+        <location filename="../src/loadsave/Level.cpp" line="296"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation>inget &lt;%1&gt;-avsnitt hittades!</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="314"/>
-        <location filename="../src/loadsave/Level.cpp" line="374"/>
+        <location filename="../src/loadsave/Level.cpp" line="315"/>
+        <location filename="../src/loadsave/Level.cpp" line="375"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
         <translation>ett &lt;%1&gt;-avsnitt förväntades, fick &lt;%2&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="328"/>
+        <location filename="../src/loadsave/Level.cpp" line="329"/>
         <source>&lt;%1&gt; properties could not be parsed. </source>
         <translation>&lt;%1&gt; egenskaper kunde inte tolkas.</translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="509"/>
+        <location filename="../src/loadsave/Level.cpp" line="510"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation>Kan inte skriva filen &apos;%1&apos;: %2.</translation>
     </message>
@@ -705,19 +704,19 @@ Inget har ändrats, åtgärda.</translation>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="144"/>
         <source>Esc</source>
-        <comment>Probably 'Esc' for any language</comment>
+        <comment>Probably &apos;Esc&apos; for any language</comment>
         <extracomment>escape should close the listviewtooltip</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="236"/>
         <source>This is a dummy string to test the widget size</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="131"/>
@@ -744,268 +743,288 @@ Inget har ändrats, åtgärda.</translation>
         <translation>The Butterfly Effect</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="154"/>
+        <location filename="../src/view/MainWindow.ui" line="160"/>
         <source>&amp;File</source>
         <translation>&amp;Fil</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="170"/>
+        <location filename="../src/view/MainWindow.ui" line="176"/>
         <source>&amp;Edit</source>
         <translation>R&amp;edigera</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="175"/>
+        <location filename="../src/view/MainWindow.ui" line="181"/>
         <source>&amp;Controls</source>
         <translation>&amp;Kontroller</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="180"/>
+        <location filename="../src/view/MainWindow.ui" line="186"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjälp</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="184"/>
+        <location filename="../src/view/MainWindow.ui" line="190"/>
         <source>&amp;Contribute</source>
         <translation>&amp;Bidra</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="203"/>
+        <location filename="../src/view/MainWindow.ui" line="209"/>
         <source>&amp;Open Level...</source>
         <translation>&amp;Öppna nivå...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="214"/>
+        <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>O&amp;pen File...</source>
         <translation>Ö&amp;ppna fil...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="206"/>
+        <location filename="../src/view/MainWindow.ui" line="212"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="108"/>
+        <source>Shows the level information again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="111"/>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="127"/>
+        <location filename="../src/view/MainWindow.ui" line="130"/>
+        <source>Choose a different level to play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="133"/>
         <source>Eject</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="222"/>
+        <location filename="../src/view/MainWindow.ui" line="228"/>
         <source>S&amp;kip Level</source>
         <translation>Hoppa ö&amp;ver nivå</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="227"/>
+        <location filename="../src/view/MainWindow.ui" line="233"/>
         <source>&amp;Quit</source>
         <translation>&amp;Avsluta</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="232"/>
+        <location filename="../src/view/MainWindow.ui" line="238"/>
         <source>Libraries...</source>
         <translation>Bibliotek...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="237"/>
+        <location filename="../src/view/MainWindow.ui" line="243"/>
         <source>&amp;Keyboard Shortcuts...</source>
         <translation>&amp;Snabbkommandon...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="242"/>
+        <location filename="../src/view/MainWindow.ui" line="248"/>
         <source>&amp;About...</source>
         <translation>&amp;Om...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="247"/>
+        <location filename="../src/view/MainWindow.ui" line="253"/>
         <source>&amp;Suggestions...</source>
         <translation>&amp;Förslag...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="252"/>
+        <location filename="../src/view/MainWindow.ui" line="258"/>
         <source>&amp;Bug Reports...</source>
         <translation>Fe&amp;lrapporter...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="257"/>
+        <location filename="../src/view/MainWindow.ui" line="263"/>
         <source>New Level Ideas...</source>
         <translation>Nya nivåförslag...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="262"/>
+        <location filename="../src/view/MainWindow.ui" line="268"/>
         <source>&amp;Switch to Level Editor</source>
         <translation>Vä&amp;xla till nivåeditor</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="265"/>
+        <location filename="../src/view/MainWindow.ui" line="271"/>
         <source>Switch</source>
         <translation>Växla</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="273"/>
+        <location filename="../src/view/MainWindow.ui" line="279"/>
         <source>&amp;Save</source>
         <translation>&amp;Spara</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="276"/>
+        <location filename="../src/view/MainWindow.ui" line="282"/>
         <source>Save current level under its current name</source>
         <translation>Spara aktuell nivå under aktuellt namn</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="279"/>
+        <location filename="../src/view/MainWindow.ui" line="285"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="290"/>
+        <location filename="../src/view/MainWindow.ui" line="296"/>
         <source>Save &amp;As...</source>
         <translation>Spara so&amp;m...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="293"/>
+        <location filename="../src/view/MainWindow.ui" line="299"/>
         <source>Save level under a new name</source>
         <translation>Spara nivå under nytt namn</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="301"/>
+        <location filename="../src/view/MainWindow.ui" line="307"/>
         <source>New Level...</source>
         <translation>Ny nivå...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="304"/>
+        <location filename="../src/view/MainWindow.ui" line="310"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="95"/>
-        <source>ERROR during reading file '%1': '%2'
+        <location filename="../src/view/MainWindow.cpp" line="98"/>
+        <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation>FEL vid läsning av filen &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="101"/>
-        <source>Non-fatal problem reading file '%1': '%2'.
+        <location filename="../src/view/MainWindow.cpp" line="104"/>
+        <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation>Icke-kritiskt problem vid läsning av filen &apos;%1&apos;: &apos;%2&apos;.
 Detta kan ändå påverka spelupplevelsen!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="124"/>
+        <location filename="../src/view/MainWindow.cpp" line="127"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ett spel som använder öppen källkod där realistiska fysiksimuleringar används för att kombinera flera enkla mekaniska element för att uppnå ett enkelt mål på det mest komplicerade sätt.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken och Klass van Gend&lt;br&gt;Licensieras under GPL version 2 - &lt;i&gt;endast&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Se http://%1/ för mer information om projektet.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="138"/>
+        <location filename="../src/view/MainWindow.cpp" line="141"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect - Felrapporter&lt;/b&gt;&lt;br&gt;&lt;br&gt;Det här spelet är givetvis inte felfritt än.&lt;br&gt;Om du hittar något som du tror inte ska händra, hör av dig till oss. Gå till vår felspårningsplats:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Berätta helst &lt;i&gt;vilken&lt;/i&gt; nivå det rör sig om, vad du förväntade dig skulle hända och vad som faktiskt hände. Om du vill veta mer om hur vi åtgärdar ditt problem, uppge en giltig e-postadress.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="157"/>
+        <location filename="../src/view/MainWindow.cpp" line="160"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect - Snabbkommandon&lt;/b&gt;&lt;br&gt;&lt;br&gt;Följande tangenter kan användas för att snabbare utföra åtgärder du annars skulle behöva använda musen till&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Tangent&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Funktion &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Blanksteg&lt;/td&gt;&lt;td&gt;starta / stoppa simulering &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(vid simulering) snabbare / långsammare &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;skift+f&lt;/td&gt;&lt;7d(vid simulering) mycket snabbare &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;nollställ simuleringen &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; ångra senaste åtgärd &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; upprepa senaste åtgärd &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="174"/>
+        <location filename="../src/view/MainWindow.cpp" line="177"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect - Bibliotek&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect är en stolt användare av fysikbiblioteket Box2D. Läs mer på http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect använder gränssnittsverktyget Qt. Läs mer på http://qt-project.org/ .</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;The Butterfly Effect - Skapa nya nivåer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vi vet att du kan designa bättre nivåer än vi!&lt;br&gt;Använd nivåskaparen för att bygga dina nivåer, och skicka sedan gärna in dem till oss.&lt;br&gt;Även om din nivå inte är färdig, tveka inte att dela med dig! Du bör så klart också definiera hur du tycker att den ska fungera så att andra kan hjälpa till.&lt;br&gt;&lt;br&gt;Detta är vår sändlista för nivåer:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;The Butterfly Effect - Skapa nya nivåer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vi vet att du kan designa bättre nivåer än vi!&lt;br&gt;Använd nivåskaparen för att bygga dina nivåer, och skicka sedan gärna in dem till oss.&lt;br&gt;Även om din nivå inte är färdig, tveka inte att dela med dig! Du bör så klart också definiera hur du tycker att den ska fungera så att andra kan hjälpa till.&lt;br&gt;&lt;br&gt;Detta är vår sändlista för nivåer:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="59"/>
+        <source>Hello World</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="195"/>
+        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
+        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="217"/>
         <source>Open level</source>
         <translation>Öppna nivå</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="217"/>
         <source>TBE levels (*.xml)</source>
         <translation>TBE-nivåer (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="223"/>
+        <location filename="../src/view/MainWindow.cpp" line="226"/>
         <source>really?</source>
         <translation>verkligen?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="236"/>
+        <location filename="../src/view/MainWindow.cpp" line="239"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Filen &apos;%1&apos; kunde inte sparas.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="256"/>
+        <location filename="../src/view/MainWindow.cpp" line="259"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Du fyllde inte i alla fält - men nivån sparades ändå
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="271"/>
+        <location filename="../src/view/MainWindow.cpp" line="274"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation>Märk den här nivån som &apos;överhoppad&apos; och fortsätt med nästa nivå?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="278"/>
+        <location filename="../src/view/MainWindow.cpp" line="281"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;The Butterfly Effect - Förslag&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om du har några goda idéer för nya funktioner i spelet, besök vårt forum på: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;för att dela med dig av dina idéer.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="308"/>
+        <location filename="../src/view/MainWindow.cpp" line="311"/>
         <source>&amp;Insert</source>
         <translation>&amp;Infoga</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="324"/>
+        <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Editors</source>
         <translation>&amp;Editorer</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="327"/>
+        <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Goal Editor...</source>
         <translation>&amp;Måleditor...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="330"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Level Properties...</source>
         <translation>&amp;Nivåegenskaper...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="333"/>
+        <location filename="../src/view/MainWindow.cpp" line="336"/>
         <source>&amp;Object Editor...</source>
         <translation>&amp;Objekteditor...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="401"/>
+        <location filename="../src/view/MainWindow.cpp" line="441"/>
         <source>&amp;Undo</source>
         <translation>&amp;Ångra</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="402"/>
+        <location filename="../src/view/MainWindow.cpp" line="442"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="404"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>&amp;Redo</source>
         <translation>Upp&amp;repa</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="406"/>
+        <location filename="../src/view/MainWindow.cpp" line="446"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="406"/>
+        <location filename="../src/view/MainWindow.cpp" line="446"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Skift+Ctrl+Z</translation>
     </message>
@@ -1018,7 +1037,7 @@ Detta kan ändå påverka spelupplevelsen!</translation>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../src/control/InsertUndoCommand.h" line="32"/>
+        <location filename="../src/control/InsertUndoCommand.h" line="35"/>
         <source>Insert</source>
         <translation>Infoga</translation>
     </message>
@@ -1189,7 +1208,7 @@ Du ska kanske läsa dem - de kan innehålla tips!</translation>
         <translation>Något som fjädrar.</translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="212"/>
+        <location filename="../src/model/Spring.cpp" line="211"/>
         <source>Spring End</source>
         <translation>Fjädring slut</translation>
     </message>
@@ -1268,6 +1287,24 @@ Ratta in %1 för en härlig explosion.</translation>
         <source>question</source>
         <translation>fråga</translation>
     </message>
+    <message>
+        <location filename="../src/loadsave/LevelList.cpp" line="47"/>
+        <source>Level parser:
+Cannot read the level descriptions in &apos;%1&apos;:
+%2.</source>
+        <translation type="unfinished">Nivåtolk:
+Kan inte läsa nivåbeskrivningarna i &apos;%1&apos;:
+%2.</translation>
+    </message>
+    <message>
+        <location filename="../src/loadsave/LevelList.cpp" line="164"/>
+        <source>LevelList:
+Parse error at line %1, column %2:
+%3</source>
+        <translation type="unfinished">LevelList:
+Tolkningsfel vid rad %1, kolumn %2:
+%3</translation>
+    </message>
 </context>
 <context>
     <name>SaveLevelInfo</name>
@@ -1338,7 +1375,7 @@ Ratta in %1 för en härlig explosion.</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="131"/>
-        <source>A File with name '%1' file already exists. Overwrite?
+        <source>A File with name &apos;%1&apos; file already exists. Overwrite?
 </source>
         <translation>En fil med namnet &apos;%1&apos; fil finns redan. Skriv över?
 </translation>
@@ -1379,7 +1416,7 @@ Ratta in %1 för en härlig explosion.</translation>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="125"/>
         <source>f</source>
-        <extracomment>translators: 'f' is for (fast) forward</extracomment>
+        <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
         <translation>f</translation>
     </message>
     <message>
@@ -1400,7 +1437,7 @@ Ratta in %1 för en härlig explosion.</translation>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="136"/>
         <source>r</source>
-        <extracomment>translators: 'r' is for reset</extracomment>
+        <extracomment>translators: &apos;r&apos; is for reset</extracomment>
         <translation>r</translation>
     </message>
     <message>
@@ -1441,16 +1478,20 @@ Ratta in %1 för en härlig explosion.</translation>
 <context>
     <name>ViewWorld</name>
     <message>
-        <location filename="../src/view/ViewWorld.cpp" line="79"/>
+        <location filename="../src/view/ViewWorld.cpp" line="86"/>
         <source>You cannot make changes now, the simulation is ongoing.
 Reset the simulation?</source>
         <translation>Du kan inte ändra något nu, simuleringen körs.
 Nollställ simulering?</translation>
     </message>
     <message>
-        <location filename="../src/view/ViewWorld.cpp" line="105"/>
+        <location filename="../src/view/ViewWorld.cpp" line="112"/>
+        <source>    %1 fps; %2 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>%1 fps</source>
-        <translation>%1 fps</translation>
+        <translation type="obsolete">%1 fps</translation>
     </message>
 </context>
 <context>
@@ -1493,13 +1534,13 @@ Nollställ simulering?</translation>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
         <source>Congratulations!</source>
-        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
         <translation>Grattis!</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="44"/>
         <source>Fail - retry?</source>
-        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
         <translation>Försök igen?</translation>
     </message>
     <message>

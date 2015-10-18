@@ -203,59 +203,40 @@ Double-click for the post-it notes for help.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="108"/>
-        <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
-%2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="179"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="88"/>
         <source>done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="181"/>
+        <location filename="../src/view/ChooseLevel.cpp" line="91"/>
         <source>skipped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="183"/>
-        <source>???</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/ChooseLevel.cpp" line="193"/>
-        <source>LevelList:
-Parse error at line %1, column %2:
-%3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ChoosePhoneNumber</name>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="14"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="20"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="90"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="117"/>
         <source>Select phone to dial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="139"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="169"/>
         <source>Phone Number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="186"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="216"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ChoosePhoneNumber.ui" line="196"/>
+        <location filename="../src/view/ChoosePhoneNumber.ui" line="226"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -615,67 +596,67 @@ Nothing was changed yet, please fix.</source>
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="150"/>
-        <location filename="../src/loadsave/Level.cpp" line="171"/>
+        <location filename="../src/loadsave/Level.cpp" line="151"/>
+        <location filename="../src/loadsave/Level.cpp" line="172"/>
         <source>Cannot read file &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="177"/>
+        <location filename="../src/loadsave/Level.cpp" line="178"/>
         <source>Cannot parse file - not valid XML?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="187"/>
-        <location filename="../src/loadsave/Level.cpp" line="205"/>
-        <location filename="../src/loadsave/Level.cpp" line="225"/>
-        <location filename="../src/loadsave/Level.cpp" line="239"/>
-        <location filename="../src/loadsave/Level.cpp" line="256"/>
-        <location filename="../src/loadsave/Level.cpp" line="291"/>
-        <location filename="../src/loadsave/Level.cpp" line="348"/>
+        <location filename="../src/loadsave/Level.cpp" line="188"/>
+        <location filename="../src/loadsave/Level.cpp" line="206"/>
+        <location filename="../src/loadsave/Level.cpp" line="226"/>
+        <location filename="../src/loadsave/Level.cpp" line="240"/>
+        <location filename="../src/loadsave/Level.cpp" line="257"/>
+        <location filename="../src/loadsave/Level.cpp" line="292"/>
+        <location filename="../src/loadsave/Level.cpp" line="349"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="232"/>
+        <location filename="../src/loadsave/Level.cpp" line="233"/>
         <source>scene width or height unspecified</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="247"/>
+        <location filename="../src/loadsave/Level.cpp" line="248"/>
         <source>Parsing &apos;%1&apos; section failed: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="271"/>
+        <location filename="../src/loadsave/Level.cpp" line="272"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="278"/>
-        <location filename="../src/loadsave/Level.cpp" line="322"/>
-        <location filename="../src/loadsave/Level.cpp" line="382"/>
+        <location filename="../src/loadsave/Level.cpp" line="279"/>
+        <location filename="../src/loadsave/Level.cpp" line="323"/>
+        <location filename="../src/loadsave/Level.cpp" line="383"/>
         <source>createObjectFromDom failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="295"/>
+        <location filename="../src/loadsave/Level.cpp" line="296"/>
         <source>no &lt;%1&gt; section found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="314"/>
-        <location filename="../src/loadsave/Level.cpp" line="374"/>
+        <location filename="../src/loadsave/Level.cpp" line="315"/>
+        <location filename="../src/loadsave/Level.cpp" line="375"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="328"/>
+        <location filename="../src/loadsave/Level.cpp" line="329"/>
         <source>&lt;%1&gt; properties could not be parsed. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/loadsave/Level.cpp" line="509"/>
+        <location filename="../src/loadsave/Level.cpp" line="510"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -724,265 +705,280 @@ Nothing was changed yet, please fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="154"/>
+        <location filename="../src/view/MainWindow.ui" line="160"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="170"/>
+        <location filename="../src/view/MainWindow.ui" line="176"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="175"/>
+        <location filename="../src/view/MainWindow.ui" line="181"/>
         <source>&amp;Controls</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="180"/>
+        <location filename="../src/view/MainWindow.ui" line="186"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="184"/>
+        <location filename="../src/view/MainWindow.ui" line="190"/>
         <source>&amp;Contribute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="203"/>
+        <location filename="../src/view/MainWindow.ui" line="209"/>
         <source>&amp;Open Level...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="214"/>
+        <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>O&amp;pen File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="206"/>
+        <location filename="../src/view/MainWindow.ui" line="212"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="108"/>
+        <source>Shows the level information again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="111"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="127"/>
+        <location filename="../src/view/MainWindow.ui" line="130"/>
+        <source>Choose a different level to play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.ui" line="133"/>
         <source>Eject</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="222"/>
+        <location filename="../src/view/MainWindow.ui" line="228"/>
         <source>S&amp;kip Level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="227"/>
+        <location filename="../src/view/MainWindow.ui" line="233"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="232"/>
+        <location filename="../src/view/MainWindow.ui" line="238"/>
         <source>Libraries...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="237"/>
+        <location filename="../src/view/MainWindow.ui" line="243"/>
         <source>&amp;Keyboard Shortcuts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="242"/>
+        <location filename="../src/view/MainWindow.ui" line="248"/>
         <source>&amp;About...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="247"/>
+        <location filename="../src/view/MainWindow.ui" line="253"/>
         <source>&amp;Suggestions...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="252"/>
+        <location filename="../src/view/MainWindow.ui" line="258"/>
         <source>&amp;Bug Reports...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="257"/>
+        <location filename="../src/view/MainWindow.ui" line="263"/>
         <source>New Level Ideas...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="262"/>
+        <location filename="../src/view/MainWindow.ui" line="268"/>
         <source>&amp;Switch to Level Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="265"/>
+        <location filename="../src/view/MainWindow.ui" line="271"/>
         <source>Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="273"/>
+        <location filename="../src/view/MainWindow.ui" line="279"/>
         <source>&amp;Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="276"/>
+        <location filename="../src/view/MainWindow.ui" line="282"/>
         <source>Save current level under its current name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="279"/>
+        <location filename="../src/view/MainWindow.ui" line="285"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="290"/>
+        <location filename="../src/view/MainWindow.ui" line="296"/>
         <source>Save &amp;As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="293"/>
+        <location filename="../src/view/MainWindow.ui" line="299"/>
         <source>Save level under a new name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="301"/>
+        <location filename="../src/view/MainWindow.ui" line="307"/>
         <source>New Level...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="304"/>
+        <location filename="../src/view/MainWindow.ui" line="310"/>
         <source>Ctrl+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="95"/>
+        <location filename="../src/view/MainWindow.cpp" line="59"/>
+        <source>Hello World</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="98"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="101"/>
+        <location filename="../src/view/MainWindow.cpp" line="104"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="124"/>
+        <location filename="../src/view/MainWindow.cpp" line="127"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="138"/>
+        <location filename="../src/view/MainWindow.cpp" line="141"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="157"/>
+        <location filename="../src/view/MainWindow.cpp" line="160"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="174"/>
+        <location filename="../src/view/MainWindow.cpp" line="177"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="192"/>
-        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
+        <location filename="../src/view/MainWindow.cpp" line="195"/>
+        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="217"/>
         <source>Open level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="217"/>
         <source>TBE levels (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="223"/>
+        <location filename="../src/view/MainWindow.cpp" line="226"/>
         <source>really?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="236"/>
+        <location filename="../src/view/MainWindow.cpp" line="239"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="256"/>
+        <location filename="../src/view/MainWindow.cpp" line="259"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="271"/>
+        <location filename="../src/view/MainWindow.cpp" line="274"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="278"/>
+        <location filename="../src/view/MainWindow.cpp" line="281"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="308"/>
+        <location filename="../src/view/MainWindow.cpp" line="311"/>
         <source>&amp;Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="324"/>
+        <location filename="../src/view/MainWindow.cpp" line="327"/>
         <source>&amp;Editors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="327"/>
+        <location filename="../src/view/MainWindow.cpp" line="330"/>
         <source>&amp;Goal Editor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="330"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>&amp;Level Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="333"/>
+        <location filename="../src/view/MainWindow.cpp" line="336"/>
         <source>&amp;Object Editor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="401"/>
+        <location filename="../src/view/MainWindow.cpp" line="441"/>
         <source>&amp;Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="402"/>
+        <location filename="../src/view/MainWindow.cpp" line="442"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="404"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>&amp;Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="406"/>
+        <location filename="../src/view/MainWindow.cpp" line="446"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="406"/>
+        <location filename="../src/view/MainWindow.cpp" line="446"/>
         <source>Shift+Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
@@ -995,7 +991,7 @@ This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/control/InsertUndoCommand.h" line="32"/>
+        <location filename="../src/control/InsertUndoCommand.h" line="35"/>
         <source>Insert</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1163,7 +1159,7 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="212"/>
+        <location filename="../src/model/Spring.cpp" line="211"/>
         <source>Spring End</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1239,6 +1235,20 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/view/Popup.h" line="104"/>
         <source>question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/loadsave/LevelList.cpp" line="47"/>
+        <source>Level parser:
+Cannot read the level descriptions in &apos;%1&apos;:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/loadsave/LevelList.cpp" line="164"/>
+        <source>LevelList:
+Parse error at line %1, column %2:
+%3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1413,14 +1423,14 @@ You might want to read them - it may help!</source>
 <context>
     <name>ViewWorld</name>
     <message>
-        <location filename="../src/view/ViewWorld.cpp" line="79"/>
+        <location filename="../src/view/ViewWorld.cpp" line="86"/>
         <source>You cannot make changes now, the simulation is ongoing.
 Reset the simulation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/ViewWorld.cpp" line="105"/>
-        <source>%1 fps</source>
+        <location filename="../src/view/ViewWorld.cpp" line="112"/>
+        <source>    %1 fps; %2 s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

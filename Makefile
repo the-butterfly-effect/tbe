@@ -57,9 +57,9 @@ distclean:
 	find . -name '*~' -exec rm {} \;
 
 package:
-	# build STGZ and TGZ
-	cd ${BUILDDIR} && cmake ..
+	mkdir -p ${BUILDDIR}
+	cd ${BUILDDIR} && cmake -DPACK=1 ..
 	cd ${BUILDDIR} && make package
-	cd ${BUILDDIR} && RPM=1 cmake ..
+	cd ${BUILDDIR} && cmake -DRPM=1 -DPACK=1 ..
 	cd ${BUILDDIR} && make package
 
