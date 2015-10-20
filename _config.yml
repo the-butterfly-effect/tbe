@@ -1,5 +1,13 @@
 # Site settings
 title: The Butterfly Effect 
 slogan: Physics Puzzle Game like 'The Incredible Machine'
+description: The Butterfly Effect is a free and open source physics puzzle game.
+# Jekyll settings
 exclude: [README.md, TODO.md]
 baseurl: "/tbe/"
+# Conversion
+markdown: kramdown
+# Markdown processor
+kramdown:
+  auto_ids: yes
+  input: GFM
