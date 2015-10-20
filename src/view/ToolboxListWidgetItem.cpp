@@ -52,7 +52,6 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     setText(theTBGPtr->theGroupName.result());
     setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
     setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-    setSizeHint(QSize(theIconSize+10, theRealPixmap.height()+24));
 
     connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
             this, SLOT(slotSelected(QListWidgetItem*)));
