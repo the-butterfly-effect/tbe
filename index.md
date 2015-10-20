@@ -22,14 +22,14 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
 <div class="row">
     <div class="col-md-offset-1 col-md-8">
         <div class="row">
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-angry-birds2.png"><img src="images/lvl-angry-birds2.png" class="img-responsive" /></a>
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-draft-dialbforboom.png"><img src="images/lvl-draft-dialbforboom.png" class="img-responsive" /></a>
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-draft-find-the-message.png"><img src="images/lvl-draft-find-the-message.png" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-angry-birds2.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-angry-birds2.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-draft-dialbforboom.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-draft-dialbforboom.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-draft-find-the-message.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-draft-find-the-message.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
         </div><!-- /.row -->
         <div class="row">
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-draft-save-the-butterfly.png"><img src="images/lvl-draft-save-the-butterfly.png" class="img-responsive" /></a>
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-games-extreme-tux-racer.png"><img src="images/lvl-games-extreme-tux-racer.png" class="img-responsive" /></a>
-            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="images/lvl-picnic-picnic-1.png"><img src="images/lvl-picnic-picnic-1.png" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-draft-save-the-butterfly.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-draft-save-the-butterfly.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-games-extreme-tux-racer.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-games-extreme-tux-racer.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
+            <a class="col-sm-4" data-toggle="lightbox" data-gallery="screenshots" href="{{ "images/lvl-picnic-picnic-1.png" | prepend: site.baseurl }}"><img src="{{ "images/lvl-picnic-picnic-1.png" | prepend: site.baseurl }}" class="img-responsive" /></a>
         </div><!-- /.row -->
     </div><!-- /.col-md-off-set-1 col-md-8 -->
 </div>
