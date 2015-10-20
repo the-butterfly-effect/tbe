@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
+    {% include head.html %}
+    <body>
 
-  {% include head.html %}
+        {% include header.html %}
 
-  <body>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#screenshots">Screenshots</a></li>
+                <li><a href="/#download">Download</a></li>
+                <li><a href="/install.html">Install</a></li>
+                <li><a href="/#open-source">Open Source</a></li>
+            </ul>
+        </nav>
 
-    {% include header.html %}
+        <div class="container" role="main"><!-- main content and sidebar -->
+            <div class="col-sm-8"><!-- main content -->
+                {{ content }}
+            </div><!-- /.col-sm-8 -->
+            <div class="col-sm-3"><!-- sidebar -->
+                {% include sidebar.html %}
+            </div><!-- /.col-sm-3 -->
+        </div><!-- /.container -->
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-     </div>
-    </div>
+        {% include footer.html %}
 
-    {% include footer.html %}
-
-  </body>
-
+    </body>
 </html>
