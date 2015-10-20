@@ -293,7 +293,7 @@ int main(int argc, char *argv[])
 			DEBUG1("PROBLEM: translator is empty");
 		app.installTranslator(&myTranslator);
 		// for strings from Qt itself
-		QTranslator qtTranslator;
+		static QTranslator qtTranslator;
 		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 		app.installTranslator(&qtTranslator);
 	}
