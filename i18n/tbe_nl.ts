@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.0">
 <defaultcodec>UTF-8</defaultcodec>
 <context>
     <name>AbstractPolyObjectFactory</name>
@@ -24,7 +22,7 @@ mensen doen dat het liefst met een Bowlingbal.</translation>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="61"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation>De luchhaak hangt daar maar rond in de lucht. Kan nog best veel gewicht hebben!</translation>
+        <translation>De hemelhaak hangt daar maar rond in de lucht. Kan nog best veel gewicht hebben!</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="70"/>
@@ -98,13 +96,14 @@ mensen doen dat het liefst met een Bowlingbal.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="53"/>
         <source>Wooden Bar</source>
-        <translation></translation>
+        <translation>Houten balk</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="54"/>
         <source>Birch is a type of wood.
 Birch wood beams move and float.</source>
-        <translation></translation>
+        <translation>Berken is een soort hout.
+Berkenhouten balken bewegen en drijven.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="58"/>
@@ -144,23 +143,24 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="74"/>
         <source>It doesn&apos;t move.</source>
-        <translation></translation>
+        <translation>Het beweegt niet.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
         <source>Steel I-Beam</source>
-        <translation></translation>
+        <translation>Stalen I-balk</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="81"/>
         <source>An I Beam is named after the shape of its cross-section.
  It&apos;s heavy, don&apos;t drop one on your foot.</source>
-        <translation></translation>
+        <translation>Een I-Profielbalk is genaamd naar de vorm van de doorsnede.
+Zo&apos;n balk is zwaar, laat &apos;m niet op je voet vallen.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="85"/>
         <source>Wall</source>
-        <translation></translation>
+        <translation>Muur</translation>
     </message>
 </context>
 <context>
@@ -173,7 +173,7 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="103"/>
         <source>Choose your next level</source>
-        <translation></translation>
+        <translation>Kies je volgende level</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="128"/>
@@ -207,14 +207,6 @@ Klik op de post-it briefjes voor hulp.
         <translation>Hoppa!</translation>
     </message>
     <message>
-        <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
-%2.</source>
-        <translation type="obsolete">Level parser:
-Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege:
-&apos;%2&apos;.</translation>
-    </message>
-    <message>
         <location filename="../src/view/ChooseLevel.cpp" line="88"/>
         <source>done</source>
         <translation>gereed</translation>
@@ -222,19 +214,7 @@ Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege:
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="91"/>
         <source>skipped</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>???</source>
-        <translation type="obsolete">???</translation>
-    </message>
-    <message>
-        <source>LevelList:
-Parse error at line %1, column %2:
-%3</source>
-        <translation type="obsolete">LevelList:
-Inleesfout in regel %1, kolom %2:
-%3</translation>
+        <translation>overgeslagen</translation>
     </message>
 </context>
 <context>
@@ -247,7 +227,7 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="117"/>
         <source>Select phone to dial</source>
-        <translation></translation>
+        <translation>Kies telefoonnumer om te bellen</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="169"/>
@@ -270,7 +250,7 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/control/ChoosePhoneUndoCommand.cpp" line="24"/>
         <source>ChoosePhone</source>
-        <translation type="unfinished"></translation>
+        <translation>KiesTelefoon</translation>
     </message>
 </context>
 <context>
@@ -318,12 +298,12 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
         <source>Pétanque Boule</source>
-        <translation type="unfinished"></translation>
+        <translation>Petanquebal</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="61"/>
         <source>A pétanque ball is made of metal and heavy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een pétanquebal (Jeu-de-boules-bal) is gemaakt van metaal en zwaar.</translation>
     </message>
 </context>
 <context>
@@ -401,12 +381,12 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="180"/>
         <source>Gradient (in front of image):</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleurenoverloop (voor de afbeelding)</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="189"/>
         <source>This table defines the gradient of the background. Each line is a stop. You need at least two stops.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze tabel beschrijft de kleuroverloop van de achtergrond. Elke regel is een stop. Je hebt tenminste twee stops nodig.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="214"/>
@@ -417,7 +397,7 @@ Inleesfout in regel %1, kolom %2:
         <location filename="../src/view/EditLevelProperties.cpp" line="80"/>
         <source>VPos;Color;Transparency</source>
         <extracomment>translators: keep the semicolons - they separate the column descriptions</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>VPos;Kleur;Transparantie</translation>
     </message>
 </context>
 <context>
@@ -430,7 +410,7 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="26"/>
         <source>Basics for: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Basiseigenschappen voor: %1</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="34"/>
@@ -505,9 +485,9 @@ Inleesfout in regel %1, kolom %2:
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="156"/>
@@ -546,14 +526,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GoalEditor.ui" line="14"/>
         <source>Goal and Fail Editor </source>
-        <translation type="unfinished"></translation>
+        <translation>Doel- en Faal-editor</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="20"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -580,7 +560,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -598,13 +578,13 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="154"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Weet je zeker dat je voorwaarde %1:&lt;br&gt;%2 wil verwijderen</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="173"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Weet je zeker dat je faalpunt %1:&lt;br&gt;%2 wilt verwijderen</translation>
     </message>
     <message>
@@ -618,8 +598,8 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="271"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
-        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn't fit</extracomment>
+        <translation>Variabele;Object;Conditie;Waarde;Object2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.h" line="47"/>
@@ -700,19 +680,19 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>GereedschapskistTooltip</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="144"/>
         <source>Esc</source>
-        <comment>Probably &apos;Esc&apos; for any language</comment>
+        <comment>Probably 'Esc' for any language</comment>
         <extracomment>escape should close the listviewtooltip</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Esc</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="236"/>
         <source>This is a dummy string to test the widget size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een halfwat onzinstring om de breedte van een widget te testen</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="131"/>
@@ -746,12 +726,12 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="176"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished">Be&amp;werken</translation>
+        <translation>&amp;Bewerken</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="181"/>
         <source>&amp;Controls</source>
-        <translation>Be&amp;sturen</translation>
+        <translation>&amp;Besturing</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="186"/>
@@ -766,12 +746,12 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="209"/>
         <source>&amp;Open Level...</source>
-        <translation>&amp;Open level...</translation>
+        <translation>&amp;Open Level...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>O&amp;pen File...</source>
-        <translation>O&amp;pen bestand...</translation>
+        <translation>O&amp;pen Bestand...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="212"/>
@@ -781,7 +761,7 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="108"/>
         <source>Shows the level information again</source>
-        <translation>Toont de level info opnieuw</translation>
+        <translation>Laat level informatie opnieuw zien</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="111"/>
@@ -801,12 +781,12 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="228"/>
         <source>S&amp;kip Level</source>
-        <translation type="unfinished">Level O&amp;verslaan</translation>
+        <translation>Level O&amp;verslaan</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="233"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished">&amp;stop</translation>
+        <translation>stop &amp;q</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="238"/>
@@ -816,7 +796,7 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="243"/>
         <source>&amp;Keyboard Shortcuts...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sneltoetsen...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="248"/>
@@ -836,27 +816,27 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="263"/>
         <source>New Level Ideas...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ideeën voor nieuwe levels...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="268"/>
         <source>&amp;Switch to Level Editor</source>
-        <translation>S&amp;chakel over naar level editor</translation>
+        <translation>&amp;Naar Level Editor</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="271"/>
         <source>Switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Overschakelen</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="279"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Op&amp;slaan</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="282"/>
         <source>Save current level under its current name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla het huidige level op met de huidige naam</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="285"/>
@@ -866,17 +846,17 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
     <message>
         <location filename="../src/view/MainWindow.ui" line="296"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla o&amp;p...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="299"/>
         <source>Save level under a new name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla het level onder een nieuwe naam op</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="307"/>
         <source>New Level...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw level...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="310"/>
@@ -884,143 +864,133 @@ Daarom is nog niets opgeslagen, graag eerst oplossen.</translation>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="98"/>
-        <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
+        <location filename="../src/view/MainWindow.cpp" line="96"/>
+        <source>ERROR during reading file '%1': '%2'
 </source>
         <translation>FOUT bij het lezen van bestand &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="104"/>
-        <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
+        <location filename="../src/view/MainWindow.cpp" line="102"/>
+        <source>Non-fatal problem reading file '%1': '%2'.
 This may affect playability, though!</source>
         <translation>Er is een niet-fatale fout opgetreden bij het lezen van bestand &apos;%1&apos;: &apos;%2&apos;.
 Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="127"/>
+        <location filename="../src/view/MainWindow.cpp" line="125"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Het vlindereffect&lt;/b&gt;&lt;br&gt;&lt;br&gt;Een open source game met realistische simulatie. Het doel is om veel simpele mechanische elementen te combineren om simpele doelen op de moeilijkste manier te bereiken.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken en Klaas van Gend&lt;br&gt;Gelicenseerd onder GPL versie 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="141"/>
+        <location filename="../src/view/MainWindow.cpp" line="139"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect - Foutrapportage&lt;/b&gt;&lt;br&gt;&lt;br&gt;Natuurlijk is dit spel niet foutvrij.&lt;br&gt;Als je iets tegenkomt dat je denkt dat niet zo hoort, laat het ons graag weten. Ga naar onze rapportagepagina op :&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Vertel ons tenminste &lt;i&gt;de naam&lt;/i&gt; van het probleemlevel, wat je verwachtte dat zou gebeuren en wat er daadwerkelijk gebeurde. Als je wilt weten hoe we je probleem aanpakken dan moet je ook een geldig e-mailadres invullen.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="160"/>
+        <location filename="../src/view/MainWindow.cpp" line="158"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;The Butterfly Effect - sneltoetsen&lt;/b&gt;&lt;br&gt;&lt;br&gt;De volgende toetscombinaties kunnen gebruikt worden om zonder muis snel acties te doen&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Toets&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Actie &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Spatie&lt;/td&gt;&lt;td&gt;start / stop simulatie &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(tijdens simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(tijdens simulatie) heel erg snel &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset de simulatie &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo laatste actie &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; doe laatste actie opnieuw&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="177"/>
+        <location filename="../src/view/MainWindow.cpp" line="175"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;The Butterfly Effect - Bibliotheken&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is een trotse gebruiker van de Box2D Mechanicabibliotheek. Voor meer informatie, kijk op http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect gebruikt de Qt GUI toolkit. Kijk op http://qt-project.org/ .</translation>
     </message>
     <message>
-        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
-        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="obsolete">&lt;b&gt;The Butterfly Effect - Creeer nieuwe levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We weten dat jij beter levels kunt ontwerpen dan wij!&lt;br&gt;Gebruik de level schepper om jouw levels te bouwen en dien ze aub in bij ons.&lt;br&gt;Ook als jouw level nog niet klaar is, twijfel dan niet en deel het met ons! Geef natuurlijk wel even jouw gedachten mee over hoe het afgemaakt zou moeten worden zodat anderen kunnen helpen om het af te ronden.&lt;br&gt;&lt;br&gt;Onze level mailing lijst vind je hier:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="59"/>
-        <source>Hello World</source>
-        <translation>Hallo Wereld</translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="195"/>
+        <location filename="../src/view/MainWindow.cpp" line="193"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Het vlindereffect - Maak nieuwe levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We weten dat jij betere levels kan maken dan wij!&lt;br&gt;Gebruik de Level Editor om je eigen levels te maken en stuur ze naar ons op.&lt;br&gt;Zelfs als je level niet af is, twijfel niet en stuur &apos;t in! Vergeet dan natuurlijk niet om te beschrijven hoe het level zou moeten werken, zodat anderen ook mee kunnen werken.&lt;br&gt;&lt;br&gt;Creëer een issue op github met jouw idee:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>Open level</source>
         <translation>Open level</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>TBE levels (*.xml)</source>
         <translation>Vlindereffect levels (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="226"/>
+        <location filename="../src/view/MainWindow.cpp" line="224"/>
         <source>really?</source>
-        <translation type="unfinished"></translation>
+        <translation>echt waar?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="239"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Bestand &apos;%1&apos; kon niet opgeslagen worden.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="259"/>
+        <location filename="../src/view/MainWindow.cpp" line="257"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Je hebt nog niet alle velden ingevuld - maar het level wordt toch opgeslagen
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="274"/>
+        <location filename="../src/view/MainWindow.cpp" line="272"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer dit level als &apos;overgeslagen&apos; en ga door met het volgende?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="281"/>
+        <location filename="../src/view/MainWindow.cpp" line="279"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;The Butterfly Effect - Suggesties&lt;/b&gt;&lt;br&gt;&lt;br&gt;Heb je goede ideeen voor nieuwe functies? Ga dan naar onze forums op: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;en deel je ideeen met de wereld.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="311"/>
+        <location filename="../src/view/MainWindow.cpp" line="309"/>
         <source>&amp;Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Invoegen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="327"/>
+        <location filename="../src/view/MainWindow.cpp" line="325"/>
         <source>&amp;Editors</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Editors</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="330"/>
+        <location filename="../src/view/MainWindow.cpp" line="328"/>
         <source>&amp;Goal Editor...</source>
         <translation>&amp;Doel editor...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="333"/>
+        <location filename="../src/view/MainWindow.cpp" line="331"/>
         <source>&amp;Level Properties...</source>
         <translation>&amp;Level Eigenschappen...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="336"/>
+        <location filename="../src/view/MainWindow.cpp" line="334"/>
         <source>&amp;Object Editor...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Voorwerp Editor...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="441"/>
+        <location filename="../src/view/MainWindow.cpp" line="439"/>
         <source>&amp;Undo</source>
         <translation>&amp;Ongedaan maken</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="442"/>
+        <location filename="../src/view/MainWindow.cpp" line="440"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="444"/>
+        <location filename="../src/view/MainWindow.cpp" line="442"/>
         <source>&amp;Redo</source>
         <translation>Opnieuw uitvoe&amp;ren</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl-Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Shift+Ctrl+Z</translation>
     </message>
@@ -1030,22 +1000,22 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     <message>
         <location filename="../src/control/DeleteUndoCommand.cpp" line="32"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../src/control/InsertUndoCommand.h" line="35"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Invoegen</translation>
     </message>
     <message>
         <location filename="../src/control/MoveUndoCommand.cpp" line="29"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatsen</translation>
     </message>
     <message>
         <location filename="../src/control/ResizeUndoCommand.cpp" line="29"/>
         <source>Resize</source>
-        <translation type="unfinished"></translation>
+        <translation>Afmetingen Aanpassen</translation>
     </message>
     <message>
         <location filename="../src/control/RotateUndoCommand.cpp" line="27"/>
@@ -1141,7 +1111,8 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
         <location filename="../src/model/ColaMintBottle.cpp" line="50"/>
         <source>This is a prepared cola bottle with a mint in it.
 Look: it blows if triggered!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een gepropareerde colafles met een pepermuntje erin.
+Kijk nou: hij gaat spuiten als je &apos;m schopt!</translation>
     </message>
     <message>
         <location filename="../src/model/Glue.h" line="57"/>
@@ -1241,7 +1212,7 @@ Misschien wil je ze lezen - het zou kunnen helpen!</translation>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="224"/>
         <source>Push Here To BOOM</source>
-        <translation type="unfinished"></translation>
+        <translation>Druk hier voor BOEM</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="312"/>
@@ -1265,29 +1236,29 @@ Bel %1 voor een mooie ontploffing.</translation>
     <message>
         <location filename="../src/view/Popup.h" line="48"/>
         <source>critical error</source>
-        <translation type="unfinished"></translation>
+        <translation>kritieke fout</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="71"/>
         <source>informational message</source>
-        <translation type="unfinished"></translation>
+        <translation>informatiebericht</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="87"/>
         <source>warning</source>
-        <translation type="unfinished"></translation>
+        <translation>waarschuwing</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="104"/>
         <source>question</source>
-        <translation type="unfinished"></translation>
+        <translation>vraag</translation>
     </message>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="47"/>
         <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
+Cannot read the level descriptions in '%1':
 %2.</source>
-        <translation type="unfinished">Level parser:
+        <translation>Level parser:
 Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege:
 &apos;%2&apos;.</translation>
     </message>
@@ -1296,7 +1267,7 @@ Kan Level beschrijving in &apos;%1&apos; niet lezen vanwege:
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation type="unfinished">LevelList:
+        <translation>LevelList:
 Inleesfout in regel %1, kolom %2:
 %3</translation>
     </message>
@@ -1370,7 +1341,7 @@ Inleesfout in regel %1, kolom %2:
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="131"/>
-        <source>A File with name &apos;%1&apos; file already exists. Overwrite?
+        <source>A File with name '%1' file already exists. Overwrite?
 </source>
         <translation>Een bestand genaamd &apos;%1&apos; bestaat al. Overschrijven?
 </translation>
@@ -1391,38 +1362,38 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/view/SimulationControls.ui" line="133"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pauze</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="152"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelen</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.ui" line="171"/>
         <source>FF</source>
-        <translation type="unfinished"></translation>
+        <translation>FF</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="123"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Versneld</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="125"/>
         <source>f</source>
-        <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
+        <extracomment>translators: 'f' is for (fast) forward</extracomment>
         <translation>f</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="128"/>
         <source>P&amp;ause</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;auze</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="131"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Afspelen</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="134"/>
@@ -1432,13 +1403,13 @@ Inleesfout in regel %1, kolom %2:
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="136"/>
         <source>r</source>
-        <extracomment>translators: &apos;r&apos; is for reset</extracomment>
+        <extracomment>translators: 'r' is for reset</extracomment>
         <translation>r</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="138"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Spatie</translation>
     </message>
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="143"/>
@@ -1476,12 +1447,13 @@ Inleesfout in regel %1, kolom %2:
         <location filename="../src/view/ViewWorld.cpp" line="86"/>
         <source>You cannot make changes now, the simulation is ongoing.
 Reset the simulation?</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kunt geen wijzigingen maken als de simulatie bezig is.
+Stoppen en terugdraaien?</translation>
     </message>
     <message>
         <location filename="../src/view/ViewWorld.cpp" line="112"/>
         <source>    %1 fps; %2 s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 fps, %2s</translation>
     </message>
 </context>
 <context>
@@ -1494,7 +1466,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="75"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstlabel</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="118"/>
@@ -1504,7 +1476,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="128"/>
         <source>&amp;Skip</source>
-        <translation>&amp;Overslaan</translation>
+        <translation>O&amp;verslaan</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="151"/>
@@ -1514,7 +1486,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="158"/>
         <source>Go to next level</source>
-        <translation>&amp;Volgende&gt;</translation>
+        <translation>Ga naar het volgende level</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="164"/>
@@ -1524,19 +1496,19 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
         <source>Congratulations!</source>
-        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Gefeliciteerd!</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="44"/>
         <source>Fail - retry?</source>
-        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Mislukt - opnieuw?</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="46"/>
         <source>&amp;Retry</source>
-        <translation>Opnieu&amp;w</translation>
+        <translation>Ove&amp;rnieuw</translation>
     </message>
 </context>
 </TS>
