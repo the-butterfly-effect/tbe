@@ -13,7 +13,7 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
  * Many different objects: cola bottles, balloons, butterflies, domino stones, springs, dynamite
  * Many different types of puzzles
  * Works on Linux and Windows
- * Playable in English, Russian, Dutch, Swedish, Spanish German, Malay, and several other languages. Note that not all languages are 100% [yet](#HelpTranslating)
+ * Playable in English, Russian, Dutch, Swedish, Spanish, German, Malay, and several other languages. Note that not all languages are 100% [yet](#HelpTranslating)
  * Using vector graphics - all images always rendered at the highest quality
  * There are 45 levels. All levels are playable, but a few levels may need a bit more polish.
 
@@ -38,7 +38,7 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
 
 ## Download
 
-We are working on getting packages for major Linux-distributions as well as a Windows-installer.
+We are working on getting packages for major Linux-distributions as well as a Windows-installer and maybe even a MacOSX package.
 
 | Operating System       | MD5SUM | Download |
 |:-----------------------|:------:|:--------:|
@@ -78,7 +78,7 @@ To be honest, we also use a few commercial offerings, including:
 
 We use the [Transifex](https://www.transifex.com/) project to translate the user interface. You can sign up and get started at the [thebutterflyeffect](https://www.transifex.com/Magic/thebutterflyeffect/) page.
 
-TODO: describe how to translate the levels, which are not in Transifex.
+Note that levels and the UI have different translation mechanisms, but both are handled through Transifex.
 
 #### Help out with new or improved levels
 
