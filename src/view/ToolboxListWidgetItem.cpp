@@ -50,7 +50,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 	ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
     slotUpdateCount();
     setText(theTBGPtr->theGroupName.result());
-    setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	setTextAlignment(Qt::AlignLeft | Qt::AlignTop);
     setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
     connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
