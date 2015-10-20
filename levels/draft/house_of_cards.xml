@@ -26,8 +26,7 @@
                 <property key="page1">This is a house of cards.</property>
                 <property key="page2">As you know,&lt;br>those are not too sturdy.</property>
                 <property key="page3">Your job:&lt;br>tear it down!</property>
-                <property key="page4">&lt;br> was signed:&lt;br>&lt;br>the Post-It boy
-                          &lt;br>(in a destructive mood)</property>
+                <property key="page4">&lt;br> was signed:&lt;br>&lt;br>the Post-It boy&lt;br>(in a destructive mood)</property>
             </object>
             <object width="0.1" X="1.5" Y="1.5" height="3.0" type="RectObject" angle="2.97">
                 <property key="Rotatable">true</property>

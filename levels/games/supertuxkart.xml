@@ -4,10 +4,7 @@
         <title>Loopings</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>Looping in Looping in looping... &lt;br>Poor Tux is late for his race. &lt;br>Get him to the cone fast!
-		&lt;br>&lt;br>This level is 'inspired' by SuperTuxKart, the famous open source kart game featuring all open source
-		mascots to race in beautifully designed tracks. 
-		  &lt;a href="http://supertuxkart.sourceforge.net/">http://supertuxkart.sourceforge.net/&lt;/a> </description>
+        <description>Looping in Looping in looping... &lt;br>Poor Tux is late for his race. &lt;br>Get him to the cone fast!&lt;br>&lt;br>This level is 'inspired' by SuperTuxKart, the famous open source kart game featuring all open source mascots to race in beautifully designed tracks.&lt;a href="http://supertuxkart.sourceforge.net/">http://supertuxkart.sourceforge.net/&lt;/a> </description>
         <date>March 16, 2014</date>
     </levelinfo>
     <toolbox>

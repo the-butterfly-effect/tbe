@@ -4,10 +4,7 @@
         <title>The Butterfly Effect 101</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>&lt;br>This level is a first demonstration.
-		Click PLAY in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level. 
-		&lt;br>&lt;br>
-		You might want to click on the Post-it note!</description>
+        <description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>&lt;br>This level is a first demonstration. Click PLAY in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level.&lt;br>&lt;br>You might want to click on the Post-it note!</description>
         <date>11/1/09</date>
     </levelinfo>
     <scene>
@@ -53,7 +50,7 @@
                 <property key="page2">It wants to go to the flower...</property>
                 <property key="page3">&lt;i>Once this Post-It is gone,&lt;/i>&lt;br>&lt;br>click the play button top-right &lt;br>to make it happen!</property>
                 <property key="page4">If you click the pause button, the simulation will stop.&lt;br>There's also a green 'reset' button now. &lt;br> &lt;br> During the simulation, there's also a 'fast forward'.</property>
-                <property key="page5">But I've said enough...&lt;br>&lt;br>   Good luck!</property>
+                <property key="page5">But I've said enough...&lt;br>&lt;br> Good luck!</property>
                 <property key="page6">... The Post-It boy</property>
             </object>
         </predefined>

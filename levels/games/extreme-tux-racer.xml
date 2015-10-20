@@ -4,11 +4,7 @@
         <title>Extreme Tux Racer</title>
         <author>Klaas van Gend</author>
         <license>PD</license>
-        <description>Make Tux descent the ski slope.&lt;br>&lt;br>
-		             This level was inspired by the open source Extreme Tux Racer, 
-					 where Tux has to race down slopes 
-		&lt;a href="http://sourceforge.net/projects/extremetuxracer/">http://sourceforge.net/projects/extremetuxracer/&lt;/a> 
-		</description>
+        <description>Make Tux descent the ski slope.&lt;br>&lt;br>This level was inspired by the open source Extreme Tux Racer, where Tux has to race down slopes&lt;a href="http://sourceforge.net/projects/extremetuxracer/">http://sourceforge.net/projects/extremetuxracer/&lt;/a></description>
         <date>March 6, 2014</date>
     </levelinfo>
     <toolbox>
