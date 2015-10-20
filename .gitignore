@@ -1,6 +1,7 @@
 # jekyll
 _site
 .sass-cache
+.jekyll-metadata
 # swap files
 *.swp
 *~
