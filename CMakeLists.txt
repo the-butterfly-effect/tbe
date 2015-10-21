@@ -77,20 +77,20 @@ if (UNIX)
 endif (UNIX)
 
 
-if (UNIX AND NOT "$ENV{RPM}")
+if (UNIX AND NOT "${RPM}")
  # for UNIX (including Linux), no path included
  SET(CPACK_GENERATOR "STGZ" "TGZ")
  set(CPACK_PACKAGING_INSTALL_PREFIX "/")
  # we use a special License file for the self-extracting archive
  # so we can display both license info *and* give a few instructions
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installer/License")
-ENDIF(UNIX AND NOT "$ENV{RPM}")
+ENDIF(UNIX AND NOT "${RPM}")
 
-if(UNIX AND "$ENV{RPM}")
+if(UNIX AND ${RPM})
  # DEB and RPM install in /opt/TheButterflyEffect/*
  SET(CPACK_GENERATOR "DEB" "RPM")
  set(CPACK_PACKAGING_INSTALL_PREFIX "/")
-endif(UNIX AND "$ENV{RPM}")
+endif(UNIX AND ${RPM})
 set(CPACK_RPM_PACKAGE_REQUIRES "libqt4-x11 >= 4.7.0")
 #set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/postinst;${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/prerm;" )
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt4-svg (>=4.7), libqtgui4 (>=4.7), libqt4-xml (>=4.7), libqtcore4 (>=4.7)")
