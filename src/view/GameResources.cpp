@@ -88,5 +88,6 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
+    ui->theInfoBox->clear();
     ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
 }
