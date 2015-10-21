@@ -42,11 +42,11 @@ We are working on getting packages for major Linux-distributions as well as a Wi
 
 | Operating System       |         MD5SUM                   | Download | Notes |
 |:-----------------------|:--------------------------------:|:--------:|:------|
-| Debian / Ubuntu / Mint | 03321e74d977fd1380061586274f36f0 |  [thebutterflyeffect.deb](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.deb) | Ubuntu 14.04 or newer |
-| Fedora / CentOS        | 3816a165fcbfbf47b60d48119f631ad0 |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | |
-| Opensuse               | 3816a165fcbfbf47b60d48119f631ad0 |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | Validated to work on Opensuse 13.2 |
+| Debian / Ubuntu / Mint | 03321e74d977fd1380061586274f36f0 |  [tbe.deb](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.deb) | Ubuntu 14.04 or newer |
+| Fedora / CentOS        | 3816a165fcbfbf47b60d48119f631ad0 |  [tbe.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | |
+| Opensuse               | 3816a165fcbfbf47b60d48119f631ad0 |  [tbe.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | Validated to work on Opensuse 13.2 |
 | Mageia Linux           |  n/a   |  part of Mageia | |
-| Other Linux            | 4a78b1cec89891d0a9c774e338939185 |  [thebutterflyeffect.sh](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
+| Other Linux            | 4a78b1cec89891d0a9c774e338939185 |  [tbe.sh](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
 | Windows 7 or newer     |  TBD   |  TBD.exe | Windows 7 or newer |
 | MacOS X version TBD    |  TBD   |  Bundle |  |
 
