@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
 <defaultcodec>UTF-8</defaultcodec>
 <context>
     <name>AbstractPolyObjectFactory</name>
@@ -209,14 +207,6 @@ Double-click for the post-it notes for help.
         <translation>Вперёд!</translation>
     </message>
     <message>
-        <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
-%2.</source>
-        <translation type="obsolete">Анализатор уровня:
-Не удаётся прочитать описание уровня в &apos;%1&apos;:
-%2.</translation>
-    </message>
-    <message>
         <location filename="../src/view/ChooseLevel.cpp" line="88"/>
         <source>done</source>
         <translation>завершён</translation>
@@ -225,18 +215,6 @@ Cannot read the level descriptions in &apos;%1&apos;:
         <location filename="../src/view/ChooseLevel.cpp" line="91"/>
         <source>skipped</source>
         <translation>пропущен</translation>
-    </message>
-    <message>
-        <source>???</source>
-        <translation type="obsolete">???</translation>
-    </message>
-    <message>
-        <source>LevelList:
-Parse error at line %1, column %2:
-%3</source>
-        <translation type="obsolete">Список уровня:
-Синтаксическая ошибка в строке %1, столбце %2:
-%3</translation>
     </message>
 </context>
 <context>
@@ -507,7 +485,7 @@ Parse error at line %1, column %2:
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -559,7 +537,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -586,7 +564,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -604,13 +582,13 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="154"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Вы уверены, что хотите удалить цель %1:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="173"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Вы уверены, что хотите удалить неудачу %1:&lt;br&gt;%2</translation>
     </message>
     <message>
@@ -624,7 +602,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="271"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
-        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn't fit</extracomment>
         <translation>Переменная;Объект;Услов.;Значение;Объект2</translation>
     </message>
     <message>
@@ -711,7 +689,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="144"/>
         <source>Esc</source>
-        <comment>Probably &apos;Esc&apos; for any language</comment>
+        <comment>Probably 'Esc' for any language</comment>
         <extracomment>escape should close the listviewtooltip</extracomment>
         <translation>Esc</translation>
     </message>
@@ -787,7 +765,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="108"/>
         <source>Shows the level information again</source>
-        <translation type="unfinished"></translation>
+        <translation>Снова показать информацию об уровне</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="111"/>
@@ -797,7 +775,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="130"/>
         <source>Choose a different level to play</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать для игры другой уровень</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="133"/>
@@ -890,143 +868,133 @@ Nothing was changed yet, please fix.</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="98"/>
-        <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
+        <location filename="../src/view/MainWindow.cpp" line="96"/>
+        <source>ERROR during reading file '%1': '%2'
 </source>
         <translation>Ошибка при чтении файла &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="104"/>
-        <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
+        <location filename="../src/view/MainWindow.cpp" line="102"/>
+        <source>Non-fatal problem reading file '%1': '%2'.
 This may affect playability, though!</source>
         <translation>Некритичная проблема чтения файла &apos;%1&apos;: &apos;%2&apos;.
 Хотя это может повлять на пригодность для игры!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="127"/>
+        <location filename="../src/view/MainWindow.cpp" line="125"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Игра с открытым исходным кодом, которая использует реалистичные физические симуляции. Путём комбинирования в сложную систему множества элементарных механических элементов и обычных объектов, ставится простая цель, которую необходимо достигнуть.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken и Klaas van Gend&lt;br&gt;Лицензировано под GPL версии 2 - &lt;i&gt;только&lt;/i&gt;.&lt;br&gt;&lt;br&gt;Смотрите http://%1/ для более подробной информации об этом проекте.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="141"/>
+        <location filename="../src/view/MainWindow.cpp" line="139"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Сообщения об ошибках&lt;/b&gt;&lt;br&gt;&lt;br&gt;Конечно, эта игра ещё не без ошибок.&lt;br&gt;Если вы столкнётесь с чем-то, что по вашему мнению не должно происходить, то, пожалуйста, дайте нам знать. Перейдите на наш сайт:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Пожалуйста, сообщите нам по крайней мере &lt;i&gt;название&lt;/i&gt; уровня, что вы ожидали чтобы произошло, и что на самом деле произошло. Если вы хотите узнать, как мы исправим вашу ошибку, то, пожалуйста, укажите ваш действующий адрес электронной почты.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="160"/>
+        <location filename="../src/view/MainWindow.cpp" line="158"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Горячие клавиши&lt;/b&gt;&lt;br&gt;&lt;br&gt;Следующие клавиши могут быть использованы для ускорения действий, которые вы бы делали с помощью мыши&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Клавиша&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Функция &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Пробел&lt;/td&gt;&lt;td&gt;начать/остановить симуляцию&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(при симуляции) ускорить вперёд/замедлить назад &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(при симуляции) действительно ускорить вперёд &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;сбросить симуляцию &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; отменить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; повторить последнее действие &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="177"/>
+        <location filename="../src/view/MainWindow.cpp" line="175"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Эффект бабочки - Библиотеки&lt;/b&gt;&lt;br&gt;&lt;br&gt;Эффект бабочки является гордостью пользователей библиотеки физики Box2D. Пожалуйста, посетите http://www.box2d.org/ .&lt;br&gt;Эффект бабочки использует инструментарий Qt GUI. Пожалуйста, посетите  http://qt-project.org/ .</translation>
     </message>
     <message>
-        <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;This is our level mailing list:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</source>
-        <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="obsolete">&lt;b&gt;Эффект бабочки - Создание новых уровней&lt;/b&gt;&lt;br&gt;&lt;br&gt;Мы знаем, что вы можете создать ещё лучше уровни, чем мы!&lt;br&gt;Используйте редактор уровней чтобы построить свои уровни и, пожалуйста, отправьте их нам.&lt;br&gt;Даже если ваш уровень ещё не закончен, не колеблитесь чтобы поделиться им с нами! Конечно, определите, как вы полагаете он должен работать, чтобы другие могли присоединиться.&lt;br&gt;&lt;br&gt;Это наш список рассылки для уровней:&lt;br&gt;&lt;a href=&quot;mailto:tbe-levels@lists.sf.net&quot;&gt;tbe-levels@lists.sf.net&lt;/a&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="59"/>
-        <source>Hello World</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="195"/>
+        <location filename="../src/view/MainWindow.cpp" line="193"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Эффект бабочки - Создание новых уровней&lt;/b&gt;&lt;br&gt;&lt;br&gt;Мы знаем, что вы можете создать ещё лучше уровни, чем мы!&lt;br&gt;Используйте редактор уровней чтобы построить свои уровни и, пожалуйста, отправьте их нам.&lt;br&gt;Даже если ваш уровень ещё не закончен, не колеблитесь чтобы поделиться им с нами! Конечно, определите, как вы полагаете он должен работать, чтобы другие могли присоединиться.&lt;br&gt;&lt;br&gt;Пожалуйста, откройте вопрос на github с вашей идеей:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>Open level</source>
         <translation>Открыть уровень</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>TBE levels (*.xml)</source>
         <translation>Уровни TBE (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="226"/>
+        <location filename="../src/view/MainWindow.cpp" line="224"/>
         <source>really?</source>
         <translation>Вы уверены?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="239"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Файл &apos;%1&apos; не может быть сохранён.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="259"/>
+        <location filename="../src/view/MainWindow.cpp" line="257"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Вы не заполнили все поля, но в любом случае уровень был сохранён
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="274"/>
+        <location filename="../src/view/MainWindow.cpp" line="272"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation>Отметить этот уровень &apos;пропущенным&apos; и продолжить со следующего уровня?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="281"/>
+        <location filename="../src/view/MainWindow.cpp" line="279"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;Эффект бабочки - Предложения&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если у вас есть великолепные идеи для новых возможностей в игре, пожалуйста, перейдите на наши форумы: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;чтобы поделиться своими идеями с миром.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="311"/>
+        <location filename="../src/view/MainWindow.cpp" line="309"/>
         <source>&amp;Insert</source>
         <translation>&amp;Вставка</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="327"/>
+        <location filename="../src/view/MainWindow.cpp" line="325"/>
         <source>&amp;Editors</source>
         <translation>&amp;Редакторы</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="330"/>
+        <location filename="../src/view/MainWindow.cpp" line="328"/>
         <source>&amp;Goal Editor...</source>
         <translation>Редактор &amp;целей...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="333"/>
+        <location filename="../src/view/MainWindow.cpp" line="331"/>
         <source>&amp;Level Properties...</source>
         <translation>&amp;Свойства уровня...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="336"/>
+        <location filename="../src/view/MainWindow.cpp" line="334"/>
         <source>&amp;Object Editor...</source>
         <translation>Р&amp;едактор объекта...</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="441"/>
+        <location filename="../src/view/MainWindow.cpp" line="439"/>
         <source>&amp;Undo</source>
         <translation>&amp;Отменить</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="442"/>
+        <location filename="../src/view/MainWindow.cpp" line="440"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="444"/>
+        <location filename="../src/view/MainWindow.cpp" line="442"/>
         <source>&amp;Redo</source>
         <translation>Ве&amp;рнуть</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Shift+Ctrl+Z</translation>
     </message>
@@ -1292,9 +1260,9 @@ You might want to read them - it may help!</source>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="47"/>
         <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
+Cannot read the level descriptions in '%1':
 %2.</source>
-        <translation type="unfinished">Анализатор уровня:
+        <translation>Анализатор уровня:
 Не удаётся прочитать описание уровня в &apos;%1&apos;:
 %2.</translation>
     </message>
@@ -1303,7 +1271,7 @@ Cannot read the level descriptions in &apos;%1&apos;:
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation type="unfinished">Список уровня:
+        <translation>Список уровня:
 Синтаксическая ошибка в строке %1, столбце %2:
 %3</translation>
     </message>
@@ -1377,7 +1345,7 @@ Parse error at line %1, column %2:
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="131"/>
-        <source>A File with name &apos;%1&apos; file already exists. Overwrite?
+        <source>A File with name '%1' file already exists. Overwrite?
 </source>
         <translation>Файл с именем &apos;%1&apos; уже существует.  Перезаписать?
 </translation>
@@ -1418,7 +1386,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="125"/>
         <source>f</source>
-        <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
+        <extracomment>translators: 'f' is for (fast) forward</extracomment>
         <translation>f</translation>
     </message>
     <message>
@@ -1439,7 +1407,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/view/SimulationControls.cpp" line="136"/>
         <source>r</source>
-        <extracomment>translators: &apos;r&apos; is for reset</extracomment>
+        <extracomment>translators: 'r' is for reset</extracomment>
         <translation>r</translation>
     </message>
     <message>
@@ -1489,11 +1457,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/ViewWorld.cpp" line="112"/>
         <source>    %1 fps; %2 s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 fps</source>
-        <translation type="obsolete">%1 кадр/с</translation>
+        <translation>%1 кадр/с; %2 с</translation>
     </message>
 </context>
 <context>
@@ -1536,13 +1500,13 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="38"/>
         <source>Congratulations!</source>
-        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Поздравляем!</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="44"/>
         <source>Fail - retry?</source>
-        <extracomment>make sure the translated text fits - the rest won&apos;t be shown</extracomment>
+        <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Крах. Повторить?</translation>
     </message>
     <message>

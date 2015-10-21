@@ -850,135 +850,130 @@ Nothing was changed yet, please fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="59"/>
-        <source>Hello World</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/MainWindow.cpp" line="98"/>
+        <location filename="../src/view/MainWindow.cpp" line="96"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="104"/>
+        <location filename="../src/view/MainWindow.cpp" line="102"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="127"/>
+        <location filename="../src/view/MainWindow.cpp" line="125"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend&lt;br&gt;Licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;&lt;br&gt;See http://%1/ for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="141"/>
+        <location filename="../src/view/MainWindow.cpp" line="139"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="160"/>
+        <location filename="../src/view/MainWindow.cpp" line="158"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="177"/>
+        <location filename="../src/view/MainWindow.cpp" line="175"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to http://www.box2d.org/ .&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to http://qt-project.org/ .</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="195"/>
+        <location filename="../src/view/MainWindow.cpp" line="193"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/kaa-ching/tbe/issues&quot;&gt;https://github.com/kaa-ching/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>Open level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="217"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>TBE levels (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="226"/>
+        <location filename="../src/view/MainWindow.cpp" line="224"/>
         <source>really?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="239"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="259"/>
+        <location filename="../src/view/MainWindow.cpp" line="257"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="274"/>
+        <location filename="../src/view/MainWindow.cpp" line="272"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="281"/>
+        <location filename="../src/view/MainWindow.cpp" line="279"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="311"/>
+        <location filename="../src/view/MainWindow.cpp" line="309"/>
         <source>&amp;Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="327"/>
+        <location filename="../src/view/MainWindow.cpp" line="325"/>
         <source>&amp;Editors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="330"/>
+        <location filename="../src/view/MainWindow.cpp" line="328"/>
         <source>&amp;Goal Editor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="333"/>
+        <location filename="../src/view/MainWindow.cpp" line="331"/>
         <source>&amp;Level Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="336"/>
+        <location filename="../src/view/MainWindow.cpp" line="334"/>
         <source>&amp;Object Editor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="441"/>
+        <location filename="../src/view/MainWindow.cpp" line="439"/>
         <source>&amp;Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="442"/>
+        <location filename="../src/view/MainWindow.cpp" line="440"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="444"/>
+        <location filename="../src/view/MainWindow.cpp" line="442"/>
         <source>&amp;Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="446"/>
+        <location filename="../src/view/MainWindow.cpp" line="444"/>
         <source>Shift+Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>

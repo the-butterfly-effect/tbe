@@ -7,7 +7,10 @@ add_definitions(${QT_DEFINITIONS})
 # note that tbe_en.ts is missing here, english is the default.
 set(TSfiles
 	tbe_be.ts
+	tbe_de.ts
 	tbe_es.ts
+	tbe_fr.ts
+	tbe_gl.ts
 	tbe_is.ts
 	tbe_lt.ts
 	tbe_ms.ts

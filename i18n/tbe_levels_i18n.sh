@@ -13,63 +13,12 @@ function prepare_for_parsing {
   # find all XML files except of levels.xml
   for fname in `find "$lev_dir"_ -name "*.xml"|grep -v "levels.xml"`
   do
-    # we don't need more than one space
-    cat "$fname"|tr -s [:blank:] ' ' > "$fname".tmp
-    # we don't need tabs in the start of string
-    sed -i 's/^[ \t]*//' "$fname".tmp
-    # we don't need tabs in the end of string
-    sed -i 's/[ \t]*$//' "$fname".tmp
-    # delete all EOL
-    cat "$fname".tmp|tr -d '\n' > "$fname".tmp0
-    rm -f "$fname".tmp
-    # restore all EOL
-    sed -i 's|<title|\n<title|g' "$fname".tmp0
-    sed -i 's|</title>|</title>\n|g' "$fname".tmp0
-    sed -i 's|<description|\n<description|g' "$fname".tmp0
-    sed -i 's|</description>|</description>\n|g' "$fname".tmp0
-    sed -i 's|<property|\n<property|g' "$fname".tmp0
-    sed -i 's|</property>|</property>\n|g' "$fname".tmp0
-    sed -i 's|<levelinfo|\n<levelinfo|g' "$fname".tmp0
-    sed -i 's|</levelinfo>|</levelinfo>\n|g' "$fname".tmp0
-    sed -i 's|<author|\n<author|g' "$fname".tmp0
-    sed -i 's|</author>|</author>\n|g' "$fname".tmp0
-    sed -i 's|<date|\n<date|g' "$fname".tmp0
-    sed -i 's|</date>|</date>\n|g' "$fname".tmp0
-    sed -i 's|<license|\n<license|g' "$fname".tmp0
-    sed -i 's|</license>|</license>\n|g' "$fname".tmp0
-    sed -i 's|<object|\n<object|g' "$fname".tmp0
-    sed -i 's|</object>|</object>\n|g' "$fname".tmp0
-    sed -i 's|<predefined|\n<predefined|g' "$fname".tmp0
-    sed -i 's|</predefined>|</predefined>\n|g' "$fname".tmp0
-    sed -i 's|<scene|\n<scene|g' "$fname".tmp0
-    sed -i 's|</scene>|</scene>\n|g' "$fname".tmp0
-    sed -i 's|<goal|\n<goal|g' "$fname".tmp0
-    sed -i 's|</goal>|</goal>\n|g' "$fname".tmp0
-    sed -i 's|<goals|\n<goals|g' "$fname".tmp0
-    sed -i 's|</goals>|</goals>\n|g' "$fname".tmp0
-    sed -i 's|<tbe-level|\n<tbe-level|g' "$fname".tmp0
-    sed -i 's|</tbe-level>|</tbe-level>\n|g' "$fname".tmp0
-    sed -i 's|<toolbox|\n<toolbox|g' "$fname".tmp0
-    sed -i 's|</toolbox>|</toolbox>\n|g' "$fname".tmp0
-    sed -i 's|<toolboxitem|\n<toolboxitem|g' "$fname".tmp0
-    sed -i 's|</toolboxitem>|</toolboxitem>\n|g' "$fname".tmp0
-    sed -i 's|<gradientstop|\n<gradientstop|g' "$fname".tmp0
-    sed -i 's|</gradientstop>|</gradientstop>\n|g' "$fname".tmp0
-    sed -i 's|<!--|\n<!--|g' "$fname".tmp0
-    # delete translated names
-    sed -i 's|<name lang=.*</name>||g' "$fname".tmp0
-    # delete all translated strings
-    cat "$fname".tmp0|grep -v "_nl"|grep -v "lang=\"nl\""|grep -v "lang=\"de\""|grep -v "lang=\"fr\"" > "$fname".tmp1
-    rm -f "$fname".tmp0
-    # delete all empty strings
-    sed -i '/^$/d' "$fname".tmp1
     # we don't need symbol >, which written with br
-    sed -i 's|br>|br\&gt;|g' "$fname".tmp1
+    sed -i 's|br>|br\&gt;|g' "$fname"
     # we don't need symbol >, which written with a
-    sed -i 's|a>|a\&gt;|g' "$fname".tmp1
-    # we don't need space before symbol >
-    sed -i 's|" >|">|g' "$fname".tmp1
-    mv -f "$fname".tmp1 "$fname"
+    sed -i 's|a>|a\&gt;|g' "$fname"
+    # we don't need symbol >, which written with i
+    sed -i 's|i>|i\&gt;|g' "$fname"
   done
   echo "Done"
 }
@@ -95,7 +44,9 @@ function create_pot_file {
   sed -i 's|</description>|_N|g' tmp/tmp.h
   sed -i 's|</property>|_N|g' tmp/tmp.h
   sed -i 's|<property key="page.*">|N_|g' tmp/tmp.h
-  sed -i 's|<property key="Description">|N_|g' tmp/tmp.h
+  sed -i 's|<tooltip>|N_|g' tmp/tmp.h
+  sed -i 's|</tooltip>|_N|g' tmp/tmp.h
+  sed -i 's|<object.*>N_|N_|g' tmp/tmp.h
   # we need all strings, which were marked with N_, but we don't need empty for translation strings (they were marked N__N)
   cat tmp/tmp.h|grep 'N_'|grep -v 'N__N' >> tmp/tmp0.h
   # change symbol \ on double symbol \ else POT file will have wrong format
@@ -153,11 +104,11 @@ function get_orig_str_name {
   cat orig_str_name_full.tmp|sed "s|$marker0.*name=\"||g"|sed "s|\".*||g" > orig_str_name.tmp
 }
 
-function get_orig_str_Description {
-  # create file orig_str_Description_full.tmp, which content all strings with marker $marker0
-  cat "$fname".tmp|grep "$marker0" > orig_str_Description_full.tmp
-  # create file orig_str_Description.tmp, which content all original for translation strings
-  cat orig_str_Description_full.tmp|sed "s|$marker0>||g"|sed "s|</property>||g" > orig_str_Description.tmp
+function get_orig_str_tooltip {
+  # create file orig_str_tooltip_full.tmp, which content all strings with marker $marker0
+  cat "$fname".tmp|grep "$marker0" > orig_str_tooltip_full.tmp
+  # create file orig_str_tooltip.tmp, which content all original for translation strings
+  cat orig_str_tooltip_full.tmp|sed "s|$marker0>||g"|sed "s|$marker1||g" > orig_str_tooltip.tmp
 }
 
 function put_tr_str {
@@ -207,31 +158,30 @@ function put_tr_str_name {
   rm -f orig_str_name_full.tmp
 }
 
-function put_tr_str_Description {
-  # file orig_str_Description.tmp can content more than one string for translation
-  cat orig_str_Description.tmp|while read orig_str
+function put_tr_str_tooltip {
+  # file orig_str_tooltip.tmp can content more than one string for translation
+  cat orig_str_tooltip.tmp|while read orig_str
   do
     # translate $orig_str in $tr_str
     get_tr_str
     # we don't want big size of ready XML file, so we put there only translated strings
     if [ ! "$tr_str" = "$orig_str" ]
     then
-      # find full string (which content $orig_str) from file orig_str_Description_full.tmp
-      cat orig_str_Description_full.tmp|grep "$orig_str"|while read full_str
+      # find full string (which content $orig_str) from file orig_str_tooltip_full.tmp
+      cat orig_str_tooltip_full.tmp|grep "$orig_str"|while read full_str
       do
         # if we put $tr_str in file already, then we should do nothing again
         put_tr_str=`cat "$fname".tmp|grep "$tr_str"`
         if [ "$put_tr_str" = "" ]
         then
-           # change full string on full string with EOL and add translated string
-           sed -i "s|$full_str|$full_str\n$marker0 lang=\"$language\">$tr_str$marker1|g" "$fname".tmp
+           sed -i "s|$marker0>$orig_str$marker1|$marker0>$orig_str$marker1\n$marker0 lang=\"$language\">$tr_str$marker1|g" "$fname".tmp
         fi
       done
     fi
   done
-  # we used files orig_str_Description.tmp, orig_str_Description_full.tmp and should delete them
-  rm -f orig_str_Description.tmp
-  rm -f orig_str_Description_full.tmp
+  # we used files orig_str_tooltip.tmp, orig_str_tooltip_full.tmp and should delete them
+  rm -f orig_str_tooltip.tmp
+  rm -f orig_str_tooltip_full.tmp
 }
 
 function parsing {
@@ -263,10 +213,10 @@ function parsing {
         get_orig_str
         put_tr_str
 
-        marker0="<property key=\"Description\""
-        marker1="</property>"
-        get_orig_str_Description
-        put_tr_str_Description
+        marker0="<tooltip"
+        marker1="</tooltip>"
+        get_orig_str_tooltip
+        put_tr_str_tooltip
 
         marker0="<property key=\"page1\""
         marker1="</property>"

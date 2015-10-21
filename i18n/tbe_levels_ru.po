@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thebutterflyeffect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-10 14:53+0300\n"
-"PO-Revision-Date: 2015-09-10 12:30+0000\n"
+"POT-Creation-Date: 2015-10-20 22:27+0300\n"
+"PO-Revision-Date: 2015-10-20 19:35+0000\n"
 "Last-Translator: AlexL <loginov.alex.valer@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/Magic/thebutterflyeffect/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -87,1497 +87,1515 @@ msgid "And enjoy your first large Rube Goldberg-ish contraption."
 msgstr "И наслаждайтесь вашей первой крупной заумной машиной Руба Голдберга."
 
 #: tbe_levels:17
+msgid ""
+"And you already realized that the weird thingies can adjust the trajectories"
+" of both the ball and the bottle, right?"
+msgstr "Вы уже поняли, что странные вещи могут регулировать траектории как мяча, так и бутылки, верно?"
+
+#: tbe_levels:18
 msgid "And you can hang a lot of weight on it, too!"
 msgstr "И вы можете также повесить на него много веса!"
 
-#: tbe_levels:18
+#: tbe_levels:19
 msgid "Another Butterfly and Flower - with a styrofoam wall inbetween."
 msgstr "Ещё одна бабочка и цветок со стеной из пенопласта между ними."
 
-#: tbe_levels:19
+#: tbe_levels:20
 msgid "Another contraption for the creative mind."
 msgstr "Другое хитроумное изобретение для творческого ума."
 
-#: tbe_levels:20
+#: tbe_levels:21
 msgid "Another game from my childhood."
 msgstr "Ещё одна игра из моего детства."
 
-#: tbe_levels:21
+#: tbe_levels:22
 msgid "Another pin needs kicking!"
 msgstr "Ещё один кегль, который нужно сбить!"
 
-#: tbe_levels:22
+#: tbe_levels:23
 msgid "... An unhappy<br><br><br>Post-It Boy"
 msgstr "...Совсем не весело<br><br><br>малыш"
 
-#: tbe_levels:23
+#: tbe_levels:24
 msgid "As you can guess, I only want maximum score..."
 msgstr "Как вы уже, наверное, догадались, я просто хочу максимальное количество очков..."
 
-#: tbe_levels:24
+#: tbe_levels:25
 msgid "As you know,<br>those are not too sturdy."
 msgstr "Как вы знаете,<br>он не слишком устойчив."
 
-#: tbe_levels:25
+#: tbe_levels:26
 msgid "a tennis ball needs to cross a big gap. Let's help crossing."
 msgstr "Мячу для тенниса нужно пересечь большую пропасть. Давайте поможем ему в этом."
 
-#: tbe_levels:26
+#: tbe_levels:27
 msgid "A volley ball must topple a pin from the other end."
 msgstr "Необходимо волейбольным мячом сбить кегль на другом конце."
 
-#: tbe_levels:27
+#: tbe_levels:28
 msgid "A weight on a chain, hanging on... air?"
 msgstr "Вес на цепочке висит на... воздухе?"
 
-#: tbe_levels:28
+#: tbe_levels:29
 msgid "Balance your diet? Drink Cola! Goal: Topple the pins."
 msgstr "Балансируете свой рацион? Пейте кока-колу! Цель: сбить кегли."
 
-#: tbe_levels:29
+#: tbe_levels:30
 msgid "Balancing Cola"
 msgstr "Балансирование кока-колы"
 
-#: tbe_levels:30
+#: tbe_levels:31
 msgid "Balloon"
 msgstr "Воздушный шар"
 
-#: tbe_levels:31
+#: tbe_levels:32
 msgid "Balloons do Poof"
 msgstr "Воздушные шары лопаются"
 
-#: tbe_levels:32
+#: tbe_levels:33
 msgid "Balloons go up!"
 msgstr "Воздушные шары поднимаются вверх!"
 
-#: tbe_levels:33
+#: tbe_levels:34
 msgid "Balls will roll to the left and speed up along the way."
 msgstr "Мячи, шары будут катиться влево и ускоряться по пути."
 
-#: tbe_levels:34
+#: tbe_levels:35
 msgid "Be careful not to hit it!"
 msgstr "Будьте осторожны чтобы не задеть её!"
 
-#: tbe_levels:35
+#: tbe_levels:36
 msgid "Bed of Nails"
 msgstr "Кровать из гвоздей"
 
-#: tbe_levels:36
+#: tbe_levels:37
 msgid "Blast it! They stole my dynamite!!!"
 msgstr "Тысячи бомб и снарядов! Они украли мой динамит!!!"
 
-#: tbe_levels:37
+#: tbe_levels:38
 msgid "Block"
 msgstr "Блок"
 
-#: tbe_levels:38
+#: tbe_levels:39
 msgid "Blow da Bottle"
 msgstr "Бутылка и удары"
 
-#: tbe_levels:39
+#: tbe_levels:40
 msgid "Both pins have to go down."
 msgstr "Оба кегля должны упасть вниз."
 
-#: tbe_levels:40
+#: tbe_levels:41
 msgid "Boulder"
 msgstr "Валун"
 
-#: tbe_levels:41
+#: tbe_levels:42
 msgid "Bouncing Balls"
 msgstr "Прыгающие шары"
 
-#: tbe_levels:42
+#: tbe_levels:43
 msgid "Bowling Ball"
 msgstr "Шар для боулинга"
 
-#: tbe_levels:43
+#: tbe_levels:44
 msgid "Bowling Ball vs Bowling Pin.<br><br>Who will win?"
 msgstr "Шар для боулинга против кегля для боулинга.<br><br>Кто победит?"
 
-#: tbe_levels:44
+#: tbe_levels:45
 msgid "Bowling Pin"
 msgstr "Кегль для боулинга"
 
-#: tbe_levels:45
+#: tbe_levels:46
 msgid "Bowling Pin plays soccer..."
 msgstr "Кегль для боулинга играет в футбол..."
 
-#: tbe_levels:46
+#: tbe_levels:47
 msgid "<br><br>a busy Post-It Boy"
 msgstr "<br><br>занятый малыш"
 
-#: tbe_levels:47
+#: tbe_levels:48
 msgid "<br><br> ... a hungry Post-it Boy"
 msgstr "<br><br>...малыш голоден"
 
-#: tbe_levels:48
+#: tbe_levels:49
 msgid "<br><br> ... a lazy Post-It boy"
 msgstr "<br><br>...ленивый малыш"
 
-#: tbe_levels:49
+#: tbe_levels:50
 msgid "<br> <br> ... and he likes crashing bridges even more!"
 msgstr "<br> <br>...но мосты разрушаются, ещё больше удовольствия!"
 
-#: tbe_levels:50
+#: tbe_levels:51
 msgid "<br><br>... An unhappy<br><br>Post-It Boy"
 msgstr "<br><br>...Совсем не весело<br><br>малыш"
 
-#: tbe_levels:51
+#: tbe_levels:52
 msgid "<br><br><br><br>...me"
 msgstr "<br><br><br><br>...я"
 
-#: tbe_levels:52
+#: tbe_levels:53
 msgid "<br>...<br><br>I've always wanted to say that!"
 msgstr "<br>...<br><br>Я всегда хотел сказать это!"
 
-#: tbe_levels:53
+#: tbe_levels:54
 msgid "<br><br><br>...Post-it boy<br>(male, I think)"
 msgstr "<br><br><br>...Малыш<br>(ты же мальчиш?)"
 
-#: tbe_levels:54
+#: tbe_levels:55
 msgid "<br><br>Post-It Boy<br><br> ... is brief for once"
 msgstr "<br><br>Малыш<br><br>...кратко на этот раз"
 
-#: tbe_levels:55
+#: tbe_levels:56
 msgid "<br><br>Post-It Boy<br><br> ... thinks of an ancient steam engine"
 msgstr "<br><br>Малыш<br><br>...думает о древнем паровом двигателе"
 
-#: tbe_levels:56
+#: tbe_levels:57
 msgid "<br><br> ... the Post-it Boy"
 msgstr "<br><br>...малыш"
 
-#: tbe_levels:57
+#: tbe_levels:58
 msgid "<br><br>the Post-it Boy"
 msgstr "<br><br>малыш"
 
-#: tbe_levels:58
+#: tbe_levels:59
 msgid "<br><br> ... the Post-It boy"
 msgstr "<br><br>...малыш"
 
-#: tbe_levels:59
+#: tbe_levels:60
 msgid "<br> <br> the Post-It Boy "
 msgstr "<br><br>малыш"
 
-#: tbe_levels:60
+#: tbe_levels:61
 msgid ""
 "<br><br> ... the Post-It boy<br><br> ... almost done with his home work!"
 msgstr "<br><br>...Малыш<br><br>...почти сделал свою домашнюю работу!"
 
-#: tbe_levels:61
+#: tbe_levels:62
 msgid ""
 "<br> <br> the Post-It Boy <br> <br> <i>(insert joke about bridge here)</i> "
 msgstr "<br><br>Малыш<br> <br> <i>(малыш мостит мосты)</i>"
 
-#: tbe_levels:62
+#: tbe_levels:63
 msgid "<br> <br> the Post-It Boy <br> <br> is on it again "
 msgstr "<br><br>Малыш<br><br>снова занят"
 
-#: tbe_levels:63
+#: tbe_levels:64
 msgid "<br> <br> the Post-It Boy <br> <br> likes building bridges "
 msgstr "<br><br>Малыш<br><br>любит строить мосты"
 
-#: tbe_levels:64
+#: tbe_levels:65
 msgid "<br><br>the Post-it Boy<br><br>saves the animals..."
 msgstr "<br><br>Малыш<br><br>охраняет животных..."
 
-#: tbe_levels:65
+#: tbe_levels:66
 msgid "<br><br> ... thirsty Post-it Boy"
 msgstr "<br><br>...у малыша жажда"
 
-#: tbe_levels:66
+#: tbe_levels:67
 msgid "Bridge the Gap I"
 msgstr "Мост через пропасть I"
 
-#: tbe_levels:67
+#: tbe_levels:68
 msgid "Bridge the Gap II"
 msgstr "Мост через пропасть II"
 
-#: tbe_levels:68
+#: tbe_levels:69
 msgid "Bridge the Gap III"
 msgstr "Мост через пропасть III"
 
-#: tbe_levels:69
+#: tbe_levels:70
 msgid "<br> was signed:<br><br>the Post-It boy<br>(in a destructive mood)"
 msgstr "<br>стоит подпись:<br><br>малыш<br>(не в настроении)"
 
-#: tbe_levels:70
+#: tbe_levels:71
 msgid "...<br>was signed:<br>the Post-it Boy"
 msgstr "...<br>стоит подпись:<br>малыш"
 
-#: tbe_levels:71
+#: tbe_levels:72
 msgid "But a lot needs to happen before that pin moves."
 msgstr "Но многое должно произойти, прежде чем кегль переместится."
 
-#: tbe_levels:72
+#: tbe_levels:73
 msgid "But do you see those coconuts?"
 msgstr "Но вы видите эти кокосовые орехи?"
 
-#: tbe_levels:73
+#: tbe_levels:74
 msgid "But fear not! There's always a true mechanical solution."
 msgstr "Но не расстраивайтесь! Существует всегда верное механическое решение."
 
-#: tbe_levels:74
+#: tbe_levels:75
 msgid "But he has no friends, only a bowling pin."
 msgstr "Но у него нет подмоги, есть только кегль для боулинга."
 
-#: tbe_levels:75
+#: tbe_levels:76
 msgid "But I'm not so sure about that volley ball."
 msgstr "Но я не слишком люблю играть в волейбол."
 
-#: tbe_levels:76
+#: tbe_levels:77
 msgid "But I've said enough...<br><br> Good luck!"
 msgstr "Я уже достаточно сказал...<br><br>Удачи!"
 
-#: tbe_levels:77
+#: tbe_levels:78
 msgid "But let me give you one hint:<br><br> First a Boom, then the Zoinggg."
 msgstr "Но позвольте мне дать вам один совет:<br><br>сначала БУУМ, а затем БУУ-БУХ."
 
-#: tbe_levels:78
+#: tbe_levels:79
 msgid "Butterfly on steroids"
 msgstr "Скоростная бабочка"
 
-#: tbe_levels:79
+#: tbe_levels:80
 msgid "But that ball has a jumpy friend!"
 msgstr "Но у шара есть скачущий друг!"
 
-#: tbe_levels:80
+#: tbe_levels:81
 msgid "But that's not an ordinary cola bottle..."
 msgstr "Но это не обычная бутылка кока-колы..."
 
-#: tbe_levels:81
+#: tbe_levels:82
 msgid "But there are no scissors here to pop the balloon with!"
 msgstr "Но здесь нет ножниц чтобы ими лопнуть воздушный шар!"
 
-#: tbe_levels:82
+#: tbe_levels:83
 msgid "But there's some styrofoam blocks in the way..."
 msgstr "Но на пути есть несколько блоков из пенопласта..."
 
-#: tbe_levels:83
+#: tbe_levels:84
 msgid "But use only two different methods!"
 msgstr "Но используйте только два разных метода!"
 
-#: tbe_levels:84
+#: tbe_levels:85
 msgid "But why do I have to clean my room every year?"
 msgstr "Скажите мне, почему я обязан каждый год прибираться в своей комнате?"
 
-#: tbe_levels:85
+#: tbe_levels:86
 msgid ""
 "But why not reverse the trick? You can select what phone number to call!"
 msgstr "Но почему бы не ответить им их же монетой? Вы можете набрать номер дозвона."
 
-#: tbe_levels:86
-msgid "By the way: it is possible with only one pin!"
-msgstr "Между прочим, это возможно только с одним кеглем!"
-
 #: tbe_levels:87
+msgid "By the way: it is possible with only one of those weird thingies!"
+msgstr "Между прочим, это возможно только с одной из этих странных вещей!"
+
+#: tbe_levels:88
 msgid "By the way: there are two ramps in the toolbox. Use them wisely!"
 msgstr "Между прочим, в панели компонентов есть два уклона. Используйте их с умом!"
 
-#: tbe_levels:88
+#: tbe_levels:89
 msgid ""
 "By the way: you may sometimes have more in your toolbox than you need..."
 msgstr "Между прочим, иногда в панели компонентов вам доступно чего-то в большем количестве, чем оно вам нужно..."
 
-#: tbe_levels:89
+#: tbe_levels:90
 msgid "Cactus"
 msgstr "Кактус"
 
-#: tbe_levels:90
+#: tbe_levels:91
 msgid ""
 "Can you live from just cola? Let's have some coconuts! Goal: shoot the "
 "coconut from the tree."
 msgstr "Можете ли вы прожить только лишь с кока-колой? Давайте достанем кокосовые орехи! Цель: сбить кокосовый орех с дерева."
 
-#: tbe_levels:91
+#: tbe_levels:92
 msgid "Clogging the pipe"
 msgstr "Засорение трубы"
 
-#: tbe_levels:92
+#: tbe_levels:93
 msgid "Coconut instead of Cola"
 msgstr "Кокосовый орех вместо кока-колы"
 
-#: tbe_levels:93
+#: tbe_levels:94
 msgid "Cola bottle"
 msgstr "Бутылка кока-колы"
 
-#: tbe_levels:94
+#: tbe_levels:95
 msgid "Cola Crate"
 msgstr "Ящик с кока-колой"
 
-#: tbe_levels:95
+#: tbe_levels:96
 msgid "Cola-mint"
 msgstr "Кока-кола с мятой"
 
-#: tbe_levels:96
+#: tbe_levels:97
 msgid "Cola+mint"
 msgstr "Кока-кола с мятой"
 
-#: tbe_levels:97
+#: tbe_levels:98
 msgid "Cola+mint Bottle"
 msgstr "Бутылка с кока-колой и мятой"
 
-#: tbe_levels:98
+#: tbe_levels:99
 msgid "Cola Powered Bike"
 msgstr "Кока-кола придаёт энергию велосипеду"
 
-#: tbe_levels:99
+#: tbe_levels:100
 msgid "Cola Rocket"
 msgstr "Ракета из кока-колы"
 
-#: tbe_levels:100
+#: tbe_levels:101
 msgid "Contraption 1"
 msgstr "Хитроумное изобретение 1"
 
-#: tbe_levels:101
+#: tbe_levels:102
 msgid "Contraption 2"
 msgstr "Хитроумное изобретение 2"
 
-#: tbe_levels:102
+#: tbe_levels:103
 msgid "Detonator Box"
 msgstr "Коробка с детонатором"
 
-#: tbe_levels:103
+#: tbe_levels:104
 msgid "Dial B for Boom"
 msgstr "Позвоните для взрыва"
 
-#: tbe_levels:104
+#: tbe_levels:105
 msgid "Dial the right number!"
 msgstr "Позвоните на правильный номер!"
 
-#: tbe_levels:105
+#: tbe_levels:106
 msgid "Domino"
 msgstr "Домино"
 
-#: tbe_levels:106
+#: tbe_levels:107
 msgid "Domino Day"
 msgstr "День домино"
 
-#: tbe_levels:107
+#: tbe_levels:108
 msgid "Don't tell anyone about it, I still need to file a patent!"
 msgstr "Не говорите никому об этом, мне ещё нужно подавать заявку на патент!"
 
-#: tbe_levels:108
+#: tbe_levels:109
 msgid "Don't worry."
 msgstr "Не волнуйтесь."
 
-#: tbe_levels:109
+#: tbe_levels:110
 msgid "Don't you love these old cartoons?"
 msgstr "Разве вы не любите старые мультфильмы?"
 
-#: tbe_levels:110
+#: tbe_levels:111
 msgid "Double Action"
 msgstr "Двойное действие"
 
-#: tbe_levels:111
+#: tbe_levels:112
 msgid "Do you know what an unstable equilibrium is?"
 msgstr "Вы знаете, что это неустойчивое равновесие?"
 
-#: tbe_levels:112
+#: tbe_levels:113
 msgid "Dynamite"
 msgstr "Динамит"
 
-#: tbe_levels:113
+#: tbe_levels:114
 msgid "En garde! (That's French)"
 msgstr "Где гвардейцы, там победа!"
 
-#: tbe_levels:114
+#: tbe_levels:115
 msgid "Extreme Tux Racer"
 msgstr "Экстремальный гонщик Тукс"
 
-#: tbe_levels:115
+#: tbe_levels:116
 msgid "feeling a winner already...<br><br>the Post-it Boy"
 msgstr "Уже чувствуется победитель...<br><br>малыш"
 
-#: tbe_levels:116
+#: tbe_levels:117
 msgid "Find the Message..."
 msgstr "Найдите сообщение..."
 
-#: tbe_levels:117
+#: tbe_levels:118
 msgid "Five Balloons"
 msgstr "Пять воздушных шаров"
 
-#: tbe_levels:118
+#: tbe_levels:119
 msgid "float balloon, float"
 msgstr "Вознесись воздушный шар, вознесись"
 
-#: tbe_levels:119
+#: tbe_levels:120
 msgid "Floor"
 msgstr "Пол"
 
-#: tbe_levels:120
+#: tbe_levels:121
 msgid "Flying from flower to flower can be hard. A real hurdle race."
 msgstr "Полёт с цветка на цветок может быть трудным. Это самое настоящее состязание с полосой препятствий."
 
-#: tbe_levels:121
+#: tbe_levels:122
 msgid "Football in Styrofoam..."
 msgstr "Футбол в пенопласт..."
 
-#: tbe_levels:122
+#: tbe_levels:123
 msgid "Geyser"
 msgstr "Гейзер"
 
-#: tbe_levels:123
+#: tbe_levels:124
 msgid "Goal: join all bowling pins together."
 msgstr "Цель: объединить все кегли для боулинга вместе."
 
-#: tbe_levels:124
+#: tbe_levels:125
 msgid "Goal: Topple the pin."
 msgstr "Цель: опрокинуть кегль."
 
-#: tbe_levels:125
+#: tbe_levels:126
 msgid "GOOOOAAAAAL !!!"
 msgstr "ГОООООООООЛ!!!"
 
-#: tbe_levels:126
+#: tbe_levels:127
 msgid ""
 "Hah! They have decided it's time to put up the tent. I don't agree - let's "
 "tear down the poles!"
 msgstr "Они решили, что пора поставить палатку. Ни за что! Давайте снесём столбы!"
 
-#: tbe_levels:127
+#: tbe_levels:128
 msgid "Hammer"
 msgstr "Молоток"
 
-#: tbe_levels:128
+#: tbe_levels:129
 msgid "Have you read 'Foucault's Pendulum'?"
 msgstr "Приходилось ли вам читать о маятнике Фуко?"
 
-#: tbe_levels:129
+#: tbe_levels:130
 msgid ""
 "Have you seen the movie \"UP\"?<br><br>Unfortunately, I don't have that many"
 " balloons."
 msgstr "Вы смотрели мультфильм \"Винни-Пух и день забот\"?<br><br>К сожалению, у меня не так уж много воздушных шаров."
 
-#: tbe_levels:130
+#: tbe_levels:131
 msgid ""
 "Hello!<br>Welcome to The Butterfly Effect!<br><br>This level is a first "
-"demonstration.Click PLAY in the top-right and watch the butterfly fly. When "
-"it is at the flower, you've won your first level.<br><br>You might want to "
+"demonstration. Click PLAY in the top-right and watch the butterfly fly. When"
+" it is at the flower, you've won your first level.<br><br>You might want to "
 "click on the Post-it note!"
 msgstr "Привет!<br>Добро пожаловать в Эффект бабочки!<br><br>Этот уровень является первой демонстрацией. Нажмите кнопку игры в правом верхнем углу и наблюдайте за полётом бабочки. Когда она долетит до цветка, то вы выиграете первый уровень.<br><br>Вы можете щёлкать на заметках-стикерах с сообщениями!"
 
-#: tbe_levels:131
+#: tbe_levels:132
 msgid "He want to shoot the pin into the goal."
 msgstr "Он хочет попасть кеглем в ворота."
 
-#: tbe_levels:132
+#: tbe_levels:133
 msgid "Hey, I'm a coconut!"
 msgstr "Я кокосовый орех!"
 
-#: tbe_levels:133
+#: tbe_levels:134
 msgid ""
 "Hint: first put it on the floor,<br>then adjust height,<br>then the width..."
 msgstr "Подсказка: сначала положите его на пол,<br>затем отрегулируйте высоту, <br> затем ширину..."
 
-#: tbe_levels:134
+#: tbe_levels:135
 msgid "Hmmm... <br><br>This reminds me of a kids' game!"
 msgstr "Хм...<br><br>Это напоминает мне о детской игре!"
 
-#: tbe_levels:135
+#: tbe_levels:136
 msgid "Hmmm... You see that hole?<br>Behind the volley ball!"
 msgstr "Хм... Вы видите лунку?<br>Позади волейбольного мяча!"
 
-#: tbe_levels:136
+#: tbe_levels:137
 msgid "Hole-in-One"
 msgstr "В лунку с первого раза"
 
-#: tbe_levels:137
+#: tbe_levels:138
 msgid "How do YOU demolish a house of cards?"
 msgstr "Как вы разрушите карточный домик?"
 
-#: tbe_levels:138
+#: tbe_levels:139
 msgid "I agree that the best way to do it, is with scissors."
 msgstr "Я согласен, что лучший способ сделать это - это способ с ножницами."
 
-#: tbe_levels:139
+#: tbe_levels:140
 msgid "I also have a Bowling Ball that wants to cross."
 msgstr "У меня также есть шар для боулинга, которому нужно перебраться на ту сторону."
 
-#: tbe_levels:140
+#: tbe_levels:141
 msgid "I don't know... this middle pole is kept up by two ropes?"
 msgstr "Это средний столбик, поддерживаемый двумя верёвками."
 
-#: tbe_levels:141
+#: tbe_levels:142
 msgid "I don't think it's not fair: butterflies can fly by themselves."
 msgstr "Я не думаю, что это несправедливо: бабочки могут летать сами по себе."
 
-#: tbe_levels:142
+#: tbe_levels:143
 msgid "I don't think the Bowling Ball can reach the pin..."
 msgstr "Я не думаю, что шар для боулинга может достигнуть кегля..."
 
-#: tbe_levels:143
+#: tbe_levels:144
+msgid ""
+"I don't want to hurry you, but find it before the Butterfly meets her final "
+"flower."
+msgstr "Я не хочу вас торопить, но откройте его до того, как бабочка долетит до своего конечного цветка."
+
+#: tbe_levels:145
 msgid ""
 "If you click the pause button, the simulation will stop.<br>There's also a "
 "green 'reset' button now. <br> <br> During the simulation, there's also a "
 "'fast forward'."
 msgstr "Если вы нажмёте на кнопку паузы, то симуляция остановится.<br>Также есть зелёная кнопка сброса.<br><br>При симуляции активна также кнопка ускорения вперёд."
 
-#: tbe_levels:144
+#: tbe_levels:146
 msgid "I hate Angry Birds!"
 msgstr "Мне не нравятся разгневанные птицы!"
 
-#: tbe_levels:145
+#: tbe_levels:147
 msgid "Imagine the noises in this level! Tip the pin."
 msgstr "Вы только представьте себе шумы в этом уровне! Ударьте по кеглю."
 
-#: tbe_levels:146
+#: tbe_levels:148
 msgid "I'm like my brother - I play soccer, too!"
 msgstr "Я, как и мой брат, тоже играю в футбол!"
 
-#: tbe_levels:147
+#: tbe_levels:149
 msgid "Im Perfect Balance"
 msgstr "Я - идеальный баланс"
 
-#: tbe_levels:148
+#: tbe_levels:150
 msgid ""
 "Im Perfect Balance...<br><br>It almost sounds like an 'Art Of Noise' album "
 "title"
 msgstr "Я - идеальный баланс..<br><br>Это звучит почти как название альбома 'Искусство шумов'"
 
-#: tbe_levels:149
+#: tbe_levels:151
 msgid ""
 "I'm pretty sure that Bowling Balls cannot climb walls - they don't have "
 "hands, do they?"
 msgstr "Я уверен, что шары для боулинга не могут лазить по стенам, у них нет рук, не так ли?"
 
-#: tbe_levels:150
+#: tbe_levels:152
 msgid "I'm sure it needs help to cross over to the pin."
 msgstr "Я уверен, что нужна помощь, чтобы добраться до кегля."
 
-#: tbe_levels:151
+#: tbe_levels:153
 msgid ""
 "I'm sure the balloon has something to do with the solution to this level!"
 msgstr "Я уверен, что шар должен что-то сделать чтобы решить этот уровень!"
 
-#: tbe_levels:152
+#: tbe_levels:154
 msgid "I'm thirsty!"
 msgstr "Я хочу пить!"
 
-#: tbe_levels:153
+#: tbe_levels:155
 msgid "I'm too lazy for my old bike."
 msgstr "Я слишком ленив для моего старого велосипеда."
 
-#: tbe_levels:154
+#: tbe_levels:156
 msgid ""
 "<i>Once this Post-It is gone,</i><br><br>click the play button top-right "
 "<br>to make it happen!"
 msgstr "<i>Как только это сообщение пропадёт,</i><br><br>нажмите кнопку игры справа вверху<br>чтобы это произошло!"
 
-#: tbe_levels:155
+#: tbe_levels:157
 msgid "I still have other ideas that need balloons..."
 msgstr "У меня всё ещё есть другие идеи, которым нужны воздушные шары..."
 
-#: tbe_levels:156
+#: tbe_levels:158
 msgid "It falls down, blows ...<br><br>and doesn't do anything useful"
 msgstr "Что-то падает, что-то взрывается...<br><br>и не делает ничего полезного"
 
-#: tbe_levels:157
+#: tbe_levels:159
 msgid "I think something's cooking here..."
 msgstr "Мне кажется тут что-то готовится..."
 
-#: tbe_levels:158
+#: tbe_levels:160
 msgid ""
 "I thought of using helium, but Mythbusters explained that won't work..."
 msgstr "Я думал использовать гелий, но Разрушители мифов пояснили, что он не будет работать..."
 
-#: tbe_levels:159
+#: tbe_levels:161
 msgid ""
 "It's a Cola-mint Fountain, ready to blow!<br>Just a light shock will start "
 "it!"
 msgstr "Это фонтан из кока-колы с мятой, готовый взорваться!<br>Любая лёгкая встряска запустит его!"
 
-#: tbe_levels:160
+#: tbe_levels:162
 msgid "It's almost time<br>for goodbyes"
 msgstr "Почти что настало время<br>сказать до свидания"
 
-#: tbe_levels:161
+#: tbe_levels:163
 msgid "It's always the blokes lifting the girls!"
 msgstr "Всегда мальчики поднимают девочек!"
 
-#: tbe_levels:162
+#: tbe_levels:164
 msgid "It's a tennis ball this time that wants to cross."
 msgstr "На этот раз это теннисный мяч, которому нужно перебраться на ту сторону."
 
-#: tbe_levels:163
+#: tbe_levels:165
 msgid "It's coffee time. Ring the bell."
 msgstr "Настало время для кофе. Позвоните в звонок."
 
-#: tbe_levels:164
+#: tbe_levels:166
 msgid "It's party time at the office!<br><br>Jumping Jack has his birthday!!!"
 msgstr "Настало время вечеринки в офисе!<br><br>У прыгающего Джека день рождения!"
 
-#: tbe_levels:165
+#: tbe_levels:167
 msgid ""
 "It very regularly blows boiling water 40 meters up. <br>For my school's "
 "science project, I decided to simulate that."
 msgstr "Он очень регулярно поднимает горячую воду вверх на 40 метров.<br>Было решено симулировать это для научного проекта моей школы."
 
-#: tbe_levels:166
+#: tbe_levels:168
 msgid "It wants to go to the flower..."
 msgstr "Она хочет попасть к цветку..."
 
-#: tbe_levels:167
+#: tbe_levels:169
 msgid "I've grown too large for my bike, too."
 msgstr "Я также вырос слишком большим для своего велосипеда."
 
-#: tbe_levels:168
+#: tbe_levels:170
 msgid ""
 "I want to be a balloon <br> ... <br> and be the first to set foot on Alpha "
 "Centauri!"
 msgstr "Я хочу быть воздушным шаром<br> ... <br>и быть первым, кто ступит на Альфа Центавра!"
 
-#: tbe_levels:169
+#: tbe_levels:171
 msgid ""
 "(Jack usually doesn't get much attention, he's already happy that we thought"
 " of him)"
 msgstr "(Джек обычно не получает много внимания, он уже рад, что мы подумали о нём)"
 
-#: tbe_levels:170
+#: tbe_levels:172
 msgid "Jumping Around I"
 msgstr "Попрыгунчик I"
 
-#: tbe_levels:171
+#: tbe_levels:173
 msgid "Jumping Around II"
 msgstr "Попрыгунчик II"
 
-#: tbe_levels:172
+#: tbe_levels:174
 msgid "Jumping Jack celebrates a party at the office. Isn't that fun?"
 msgstr "Джек-попрыгунчик празднует вечеринку в офисе. Разве это не весело?"
 
-#: tbe_levels:173
+#: tbe_levels:175
 msgid "Just hook it up in the air<br>and it stays there."
 msgstr "Просто висит в воздухе<br>и остаётся там."
 
-#: tbe_levels:174
+#: tbe_levels:176
 msgid "Kick that pin in the goal!"
 msgstr "Попадите кеглем в ворота."
 
-#: tbe_levels:175
+#: tbe_levels:177
 msgid "Kick the pin."
 msgstr "Ударьте кегль."
 
-#: tbe_levels:176
+#: tbe_levels:178
 msgid "lalalala"
 msgstr "ля-ля-ля"
 
-#: tbe_levels:177
+#: tbe_levels:179
 msgid "Large Domino"
 msgstr "Большое домино"
 
-#: tbe_levels:178
+#: tbe_levels:180
 msgid "LeftRamp"
 msgstr "Левый уклон"
 
-#: tbe_levels:179
+#: tbe_levels:181
 msgid "Let's join the lonely one above with his friends below."
 msgstr "Давайте присоединим одинокого товарища сверху к его друзьям снизу."
 
-#: tbe_levels:180
+#: tbe_levels:182
 msgid "Let's present the gift to him, shall we?"
 msgstr "Давайте подарим ему подарок, не так ли?"
 
-#: tbe_levels:181
+#: tbe_levels:183
 msgid "Let's spare the balloon, there's a pin that needs kicking."
 msgstr "Давайте пожалеем воздушный шар; есть кегль, который надо сбить."
 
-#: tbe_levels:182
+#: tbe_levels:184
 msgid "Level with a small user interaction: a volleyball is in the way... "
 msgstr "Уровень с небольшим участием пользователя: волейбольный мяч на пути..."
 
-#: tbe_levels:183
+#: tbe_levels:185
 msgid "Levers, Dominoes, Bowling Pins. This one is complex."
 msgstr "Рычаги, домино, кегли для боулинга. Всё это в комплексе."
 
-#: tbe_levels:184
+#: tbe_levels:186
 msgid ""
 "Like a 'Sword of Damocles'. <br><br>Would it also loose appetite if it knew?"
 msgstr "Как Дамоклов меч. <br><br>Разве аппетит внезапно потерялся бы, если бы знать о нависшей постоянной угрозе при видимом благополучии?"
 
-#: tbe_levels:185
+#: tbe_levels:187
 msgid "Look, another gap."
 msgstr "Посмотрите, ещё одна пропасть."
 
-#: tbe_levels:186
+#: tbe_levels:188
 msgid "Look at Steam Machine"
 msgstr "Посмотрите на паровую машину"
 
-#: tbe_levels:187
+#: tbe_levels:189
 msgid "Look... <br><br>I made an engine to power my bike."
 msgstr "Посмотрите...<br><br>Я сделал двигатель для питания моего велосипеда."
 
-#: tbe_levels:188
+#: tbe_levels:190
 msgid "Look for the last message"
 msgstr "Посмотрите на последнее сообщение"
 
-#: tbe_levels:189
+#: tbe_levels:191
 msgid "Look: it's that butterfly and flower again."
 msgstr "Посмотрите: это снова та же бабочка и цветок."
 
-#: tbe_levels:190
+#: tbe_levels:192
 msgid "Looks like a bird. And he's angry."
 msgstr "Выглядит как птица. И она сердитая."
 
-#: tbe_levels:191
+#: tbe_levels:193
 msgid "Looks like there's something missing..."
 msgstr "Похоже, чего-то не хватает..."
 
-#: tbe_levels:192
+#: tbe_levels:194
 msgid ""
 "Look, that's a skyhook.<br><br>A pretty nifty invention, if I may say so."
 msgstr "Посмотрите, это аэро-крючок.<br><br>Довольно изящное изобретение, если можно так сказать."
 
-#: tbe_levels:193
+#: tbe_levels:195
 msgid "Look: two pins need kicking."
 msgstr "Посмотрите: нужно сбить 2 кегля."
 
-#: tbe_levels:194
+#: tbe_levels:196
 msgid ""
 "Looping in Looping in looping... <br>Poor Tux is late for his race. <br>Get "
 "him to the cone fast!<br><br>This level is 'inspired' by SuperTuxKart, the "
-"famous open source kart game featuring all open sourcemascots to race in "
+"famous open source kart game featuring all open source mascots to race in "
 "beautifully designed tracks.<a "
 "href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a>"
 " "
 msgstr "Петля в петле в петле...<br>Бедный Тукс опаздывает на свою гонку.<br>Помогите ему ускориться!<br><br>Этот уровень создан по мотивам SuperTuxKart, известной игры в гонки по красивым дорожкам. <a href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a> "
 
-#: tbe_levels:195
+#: tbe_levels:197
 msgid "Looping Looping Looping"
 msgstr "Петля, петля, петля"
 
-#: tbe_levels:196
+#: tbe_levels:198
 msgid "Loopings"
 msgstr "Петли"
 
-#: tbe_levels:197
+#: tbe_levels:199
 msgid "Loopings are fun!"
 msgstr "Петли - это чудесно!"
 
-#: tbe_levels:198
+#: tbe_levels:200
 msgid "Loopings I"
 msgstr "Петли I"
 
-#: tbe_levels:199
+#: tbe_levels:201
 msgid "Loopings II"
 msgstr "Петли II"
 
-#: tbe_levels:200
+#: tbe_levels:202
 msgid "Make all Balloons pop."
 msgstr "Полопайте все шары."
 
-#: tbe_levels:201
+#: tbe_levels:203
 msgid "Make three birds and three eggs do poof."
 msgstr "Устраните трёх птиц и разбейте три яйца."
 
-#: tbe_levels:202
+#: tbe_levels:204
 msgid ""
 "Make Tux descent the ski slope.<br><br>This level was inspired by the open "
-"source Extreme Tux Racer,where Tux has to race down slopes<a "
+"source Extreme Tux Racer, where Tux has to race down slopes<a "
 "href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
 msgstr "Помогите Туксу спуститься по горнолыжному склону.<br><br>Этот уровень был сделан по мотивам игры \"Тукс - экстремальный гонщик\", где Тукс спускается по горнолыжным склонам <a href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
 
-#: tbe_levels:203
+#: tbe_levels:205
 msgid "Marble"
 msgstr "Мрамор"
 
-#: tbe_levels:204
+#: tbe_levels:206
 msgid "Marble Boulevard"
 msgstr "Мраморный бульвар"
 
-#: tbe_levels:205
+#: tbe_levels:207
 msgid "Medium Domino"
 msgstr "Среднее домино"
 
-#: tbe_levels:206
+#: tbe_levels:208
 msgid ""
 "Mini Golf<br>After the ball is eaten by the monkey, make it come out of the "
 "monkey's rear end into the chest."
 msgstr "Минигольф<br>После того, как мяч был съеден обезьяной, помогите ему попасть из задней части обезьяны в ящик."
 
-#: tbe_levels:207
+#: tbe_levels:209
 msgid "My brother likes soccer"
 msgstr "Мой брат обожает футбол"
 
-#: tbe_levels:208
+#: tbe_levels:210
 msgid ""
 "My mum told me to clean my room.<br><br>All balls must go in the basket."
 msgstr "Моя мама наказала мне прибраться в моей комнате.<br><br>Все шары и мячи, кроме воздушного шара,  должны быть убраны в корзину."
 
-#: tbe_levels:209
+#: tbe_levels:211
 msgid "No butterflies here!<br><br>"
 msgstr "Здесь нет бабочек!<br><br>"
 
-#: tbe_levels:210
+#: tbe_levels:212
 msgid ""
 "No butterfly here...<br><br>Don't worry - we haven't seen the last one yet"
 msgstr "Здесь нет бабочки!<br><br>Не волнуйтесь - вы видели её ещё не в последний раз."
 
-#: tbe_levels:211
+#: tbe_levels:213
 msgid "Not affiliated with the yearly event."
 msgstr "Не связан с ежегодным событием."
 
-#: tbe_levels:212
+#: tbe_levels:214
 msgid ""
 "Note:<br>If the game runs, a green fast forward button appears in the top-"
 "right corner.<br><br>That will speed up the simulation."
 msgstr "Примечание:<br>Если игра запущена, то зелёная кнопка ускорения вперёд активируется в верхнем правом углу.<br><br>Она ускорит симуляцию."
 
-#: tbe_levels:213
+#: tbe_levels:215
 msgid "Notice a new trick: rotate."
 msgstr "Обратите внимание на новую хитрость: поворот."
 
-#: tbe_levels:214
+#: tbe_levels:216
 msgid ""
 "Oh, Nena, where did you go?<br><br>You were so hot <br> back in the 80s!"
 msgstr "О, Нена, куда же вы пропали?<br><br>Вы были очень зажигательной<br>в 80-х!"
 
-#: tbe_levels:215
+#: tbe_levels:217
 msgid "\"Old Faithful\" is a geyser in Yellowstone National Park, Wyoming, USA."
 msgstr "\"Старый служака\" - это гейзер в национальным Йеллоустонском парке, штат Вайоминг, США."
 
-#: tbe_levels:216
+#: tbe_levels:218
 msgid "Once a Volley Ball jumps across, a Cola bottle will finish it off."
 msgstr "Как только волейбольный мяч перескочит, бутылка кока-колы доделает это."
 
-#: tbe_levels:217
+#: tbe_levels:219
 msgid "One ball jumps across the barrier."
 msgstr "Один мяч перескакивает через барьер - трамплин."
 
-#: tbe_levels:218
+#: tbe_levels:220
 msgid "One Hundred, please!"
 msgstr "Сто, пожалуйста!"
 
-#: tbe_levels:219
+#: tbe_levels:221
 msgid "(Or a \"soccer\" ball for you Americans)"
 msgstr "(Или футбольный мяч для американцев)"
 
-#: tbe_levels:220
+#: tbe_levels:222
 msgid "Or do they fly to the stars?"
 msgstr "Или они летят к звёздам?"
 
-#: tbe_levels:221
+#: tbe_levels:223
 msgid "Or was it \"Keep it Simple, stupid\"?"
 msgstr "Или это было \"Сохраните это простым, глупыш\"?"
 
-#: tbe_levels:222
+#: tbe_levels:224
 msgid "Our goal is to keep the butterfly alive. And put the pin in the chest."
 msgstr "Цель - сохранить бабочку в живых. И положить кегль на бок в ящик."
 
-#: tbe_levels:223
+#: tbe_levels:225
 msgid "Our little Butterfly...<br><br>Another day, another flower..."
 msgstr "Наша маленькая бабочка...<br><br>Другой день, другой цветок..."
 
-#: tbe_levels:224
+#: tbe_levels:226
 msgid "Party at the office"
 msgstr "Вечеринка в офисе"
 
-#: tbe_levels:225
-msgid "Petanque"
+#: tbe_levels:227
+msgid "Pétanque"
 msgstr "Петанк"
 
-#: tbe_levels:226
+#: tbe_levels:228
 msgid "Pigs on top!"
 msgstr "Хрюндель в топе!"
 
-#: tbe_levels:227
+#: tbe_levels:229
 msgid "Pin rack"
 msgstr "Попадите в нужную ячейку"
 
-#: tbe_levels:228
+#: tbe_levels:230
 msgid "Pin topples to green in two moves."
 msgstr "Кегль опрокидывается на зелёный участок в два хода."
 
-#: tbe_levels:229
+#: tbe_levels:231
 msgid "PivotPoint test Level..."
 msgstr "Уровень для тестирования точки опоры..."
 
-#: tbe_levels:230
+#: tbe_levels:232
 msgid "Please make the butterfly happy!<br><br>That's the least we can do."
 msgstr "Пожалуйста сделайте бабочку счастливой!<br><br>Это меньшее, что вы можете сделать."
 
-#: tbe_levels:231
+#: tbe_levels:233
 msgid "Poing Poing Poing"
 msgstr "Poing Poing Poing"
 
-#: tbe_levels:232
+#: tbe_levels:234
 msgid ""
 "Poing Poing Poing <br> <br> ... a world-famous song of the <i>Rotterdam "
 "Termination Source</i>"
 msgstr "Poing<br><br>- это известная во всём мире песня группы <i>Rotterdam Termination Source</i>"
 
-#: tbe_levels:233
+#: tbe_levels:235
 msgid "PolyObject test Level..."
 msgstr "Уровень для тестирования PolyObject..."
 
-#: tbe_levels:234
+#: tbe_levels:236
 msgid "Poof Poof Poof"
 msgstr "Пуф-пуф-пуф"
 
-#: tbe_levels:235
+#: tbe_levels:237
 msgid "Poor little butterfly has no clue what's hanging above its head..."
 msgstr "Бедная маленькая бабочка не имеет понятия, что надвисло над её головой..."
 
-#: tbe_levels:236
+#: tbe_levels:238
 msgid ""
 "Pop all balloons. This level is based on some conversations at T-Dose 2010."
 msgstr "Полопайте все воздушные шары. Этот уровень основан на некоторых разговорах, имевших место в 2010-ом году в T-Dose."
 
-#: tbe_levels:237
+#: tbe_levels:239
 msgid "Pop the balloon."
 msgstr "Лопните воздушный шар."
 
-#: tbe_levels:238
+#: tbe_levels:240
 msgid "Post-It Boy<br><br><br>(has a dirty mind)"
 msgstr "Малыш<br><br><br>(сам себе на уме)"
 
-#: tbe_levels:239
+#: tbe_levels:241
 msgid ""
 "Post-It boy <br>likes playing with styrofoam ... <br><br>... for breakfast!"
 msgstr "Малыш<br>любит играть с пенопластом...<br><br>...за завтраком!"
 
-#: tbe_levels:240
+#: tbe_levels:242
 msgid "Post-It Boy likes to \"Make it Complex, Comrade\""
 msgstr "Малышу нравится \"Сделайте это комплексно, товарищ\""
 
-#: tbe_levels:241
+#: tbe_levels:243
 msgid "... Post-It boy once spoke with<br>Sonic the Hedgehog!"
 msgstr "...Малыш только что говорил с<br>ежом Соником!"
 
-#: tbe_levels:242
+#: tbe_levels:244
 msgid "Post-it boy played the world cup soccer...<br><br>(in a previous life)"
 msgstr "Малыш играл в кубок мира по футболу...<br><br>(не преукрашивает ли?)"
 
-#: tbe_levels:243
+#: tbe_levels:245
 msgid "PS: Those dominos are quite big, aren't they?"
 msgstr "Замечание: Эти домино довольно большие, не так ли?"
 
-#: tbe_levels:244
+#: tbe_levels:246
 msgid "Put the styrofoam ramp in place..."
 msgstr "Положите уклон из пенопласта на место..."
 
-#: tbe_levels:245
+#: tbe_levels:247
 msgid "Quarter Arc"
 msgstr "Четверть дуги"
 
-#: tbe_levels:246
+#: tbe_levels:248
 msgid "Quarter Arc #1"
 msgstr "Четверть дуги №1"
 
-#: tbe_levels:247
+#: tbe_levels:249
 msgid "Quarter Arc #2"
 msgstr "Четверть дуги №2"
 
-#: tbe_levels:248
+#: tbe_levels:250
 msgid "Quarter Arc #3"
 msgstr "Четверть дуги №3"
 
-#: tbe_levels:249
+#: tbe_levels:251
 msgid "Ramp /"
 msgstr "Уклон /"
 
-#: tbe_levels:250
+#: tbe_levels:252
 msgid "Ramp \\"
 msgstr "Уклон \\"
 
-#: tbe_levels:251
+#: tbe_levels:253
 msgid "Remember this gap?"
 msgstr "Помните эту пропасть?"
 
-#: tbe_levels:252
+#: tbe_levels:254
 msgid "Return of the Post-It Pig"
 msgstr "Хрюндель вернулся"
 
-#: tbe_levels:253
+#: tbe_levels:255
 msgid "Right Ramp"
 msgstr "Правый уклон"
 
-#: tbe_levels:254
+#: tbe_levels:256
 msgid "Ring the Bell"
 msgstr "Позвоните в звонок"
 
-#: tbe_levels:255
+#: tbe_levels:257
 msgid "Save the butterfly!"
 msgstr "Оберегайте бабочку!"
 
-#: tbe_levels:256
+#: tbe_levels:258
 msgid "save the butterfly, put pin in chest."
 msgstr "Сохраните бабочку, положив кегль на бок."
 
-#: tbe_levels:257
+#: tbe_levels:259
 msgid "Saw Blade"
 msgstr "Циркулярка"
 
-#: tbe_levels:258
+#: tbe_levels:260
 msgid "Score 100 points by putting the Tennis ball into the right slot."
 msgstr "Заработайте 100 баллов, положив теннисный мяч в крайний правый слот."
 
-#: tbe_levels:259
+#: tbe_levels:261
 msgid "Send the gift to the Jumping Jack!"
 msgstr "Отправьте подарок Джеку-попрыгунчику!"
 
-#: tbe_levels:260
+#: tbe_levels:262
 msgid "Sir Alfred Hitchcock made a good movie about a devious phone call."
 msgstr "Сэр Альфред Хичкок сделал хороший фильм о коварном телефонном звонке."
 
-#: tbe_levels:261
+#: tbe_levels:263
 msgid "Skyhook"
 msgstr "Аэро-крючок"
 
-#: tbe_levels:262
+#: tbe_levels:264
 msgid "Small Domino"
 msgstr "Маленькое домино"
 
-#: tbe_levels:263
+#: tbe_levels:265
 msgid "Soccerball"
 msgstr "Мяч для футбола"
 
-#: tbe_levels:264
+#: tbe_levels:266
 msgid "Soccer Ball"
 msgstr "Мяч для футбола"
 
-#: tbe_levels:265
+#: tbe_levels:267
 msgid ""
 "Soccer Balls are a little bouncy, but sometimes \"a little\" is not enough."
 msgstr "Футбольные мячи немного оживленные, но иногда этого \"немного\" не достаточно."
 
-#: tbe_levels:266
+#: tbe_levels:268
 msgid ""
 "Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly."
 msgstr "Футболист думает о победе. Ударьте кеглем в ворота, не попав в бабочку."
 
-#: tbe_levels:267
+#: tbe_levels:269
 msgid ""
 "Someone told me to drag the ramp from the toolbox into the big "
 "window.<br>... after you've read my note!"
 msgstr "Кто-то подсказал мне перетащить уклон из панели компонентов в большое окно сцены. <br>...после того как вы прочитали мою записку!"
 
-#: tbe_levels:268
+#: tbe_levels:270
 msgid "Something is manufactured here."
 msgstr "Здесь что-то производится."
 
-#: tbe_levels:269
+#: tbe_levels:271
 msgid "Something weird"
 msgstr "Что-то странное"
 
-#: tbe_levels:270
+#: tbe_levels:272
 msgid ""
 "Sometimes, it's a team effort. One does the work; the other reaps the "
 "benefit."
 msgstr "Иногда усилие должно быть коллективным. Один делает работу; другой имеет выгоду."
 
-#: tbe_levels:271
+#: tbe_levels:273
 msgid "Sounds like a junk, does it?"
 msgstr "Звучит как безделушки, не так ли?"
 
-#: tbe_levels:272
+#: tbe_levels:274
 msgid "Spare the Balloon"
 msgstr "Сберегите воздушный шар"
 
-#: tbe_levels:273
+#: tbe_levels:275
 msgid "Spring"
 msgstr "Пружина"
 
-#: tbe_levels:274
+#: tbe_levels:276
 msgid "Springboard"
 msgstr "Трамплин"
 
-#: tbe_levels:275
+#: tbe_levels:277
 msgid "(Ssst... I'm playing chess)"
 msgstr "(Тихо... Я играю в шахматы)"
 
-#: tbe_levels:276
+#: tbe_levels:278
 msgid "Steam Machine"
 msgstr "Паровая машина"
 
-#: tbe_levels:277
+#: tbe_levels:279
 msgid "Steel I-Beam"
 msgstr "Стальная балка"
 
-#: tbe_levels:278
+#: tbe_levels:280
 msgid "Stop"
 msgstr "Стоп"
 
-#: tbe_levels:279
+#: tbe_levels:281
 msgid "Styrofoam"
 msgstr "Пенопласт"
 
-#: tbe_levels:280
+#: tbe_levels:282
 msgid "Styrofoam Block"
 msgstr "Блок из пенопласта"
 
-#: tbe_levels:281
+#: tbe_levels:283
 msgid "Tennis Ball"
 msgstr "Мяч для тенниса"
 
-#: tbe_levels:282
+#: tbe_levels:284
 msgid "Tent"
 msgstr "Палатка"
 
-#: tbe_levels:283
+#: tbe_levels:285
 msgid "tent poles are usually made from something..."
 msgstr "Столбы для палаток, как правило, сделаны из чего-то..."
 
-#: tbe_levels:284
+#: tbe_levels:286
 msgid "test level for quarter arcs and the new state change goal."
 msgstr "Уровень для тестирования четвертей дуг и изменения нового состояния цели."
 
-#: tbe_levels:285
+#: tbe_levels:287
 msgid "That poor balloon is on its way to its doom"
 msgstr "Бедный шар находится на пути к своей гибели"
 
-#: tbe_levels:286
+#: tbe_levels:288
 msgid ""
 "That's also true for circus acts. They all train, but some fly more than "
 "others."
 msgstr "Это также верно для цирковых номеров. Они все тренированные акробаты, но некоторые летают лучше, чем другие."
 
-#: tbe_levels:287
+#: tbe_levels:289
 msgid "That's half of the problem you need to fix here..."
 msgstr "Это половина проблемы, которую вам необходимо исправить здесь..."
 
-#: tbe_levels:288
+#: tbe_levels:290
 msgid "The Birds Strike Back!"
 msgstr "Ответный удар по птицам!"
 
-#: tbe_levels:289
+#: tbe_levels:291
 msgid "The Bowling Ball cannot kick the Bowling Pin in the goal."
 msgstr "Шар для боулинга не может толкнуть кегль для боулинга в ворота."
 
-#: tbe_levels:290
+#: tbe_levels:292
 msgid "The Butterfly Effect 101"
 msgstr "Эффект бабочки (для начинающих)"
 
-#: tbe_levels:291
+#: tbe_levels:293
 msgid "The Butterfly effect 102"
 msgstr "Эффект бабочки (для продвинутых)"
 
-#: tbe_levels:292
+#: tbe_levels:294
 msgid "The Factory"
 msgstr "Завод"
 
-#: tbe_levels:293
+#: tbe_levels:295
 msgid "The final killer challenge..."
 msgstr "Важное изнурительное испытание..."
 
-#: tbe_levels:294
+#: tbe_levels:296
 msgid "The goal here is to topple the pins below."
 msgstr "Целью здесь является необходимость опрокинуть кегли ниже."
 
-#: tbe_levels:295
+#: tbe_levels:297
 msgid ""
 "The good news: they cannot lift a bowlingball, and a volley ball is too "
 "light to set off the detonator..."
 msgstr "Хорошие новости: они не могут поднять шар для боулинга, а волейбольный мяч слишком лёгкий, чтобы сработал детонатор..."
 
-#: tbe_levels:296
+#: tbe_levels:298
 msgid "The House of Cards"
 msgstr "Карточный домик"
 
-#: tbe_levels:297
+#: tbe_levels:299
 msgid "The large rectangular pieces of styrofoam hide a message."
 msgstr "Большие прямоугольные куски пенопласта скрывают сообщение."
 
-#: tbe_levels:298
+#: tbe_levels:300
 msgid ""
 "The Pigs were right - you should be allowed to borrow an egg if you are "
 "starving."
 msgstr "Хрюндель был прав - вам должно быть разрешено брать яйцо, если вы голодны."
 
-#: tbe_levels:299
+#: tbe_levels:301
 msgid "... the Post-it Boy"
 msgstr "...малыш"
 
-#: tbe_levels:300
+#: tbe_levels:302
 msgid "... the Post-It Boy"
 msgstr "...малыш"
 
-#: tbe_levels:301
+#: tbe_levels:303
 msgid "the Post-It Boy"
 msgstr "малыш"
 
-#: tbe_levels:302
+#: tbe_levels:304
 msgid "... The Post-It boy"
 msgstr "...малыш"
 
-#: tbe_levels:303
+#: tbe_levels:305
 msgid "The Post-It Pig"
 msgstr "Хрюндель"
 
-#: tbe_levels:304
+#: tbe_levels:306
 msgid "There are two ways to pop a balloon."
 msgstr "Есть два способа как лопнуть воздушный шар."
 
-#: tbe_levels:305
+#: tbe_levels:307
 msgid "There's cola,<br>and there's even a gift!"
 msgstr "Кока-кола<br>и даже подарок!"
 
-#: tbe_levels:306
+#: tbe_levels:308
 msgid ""
 "The second level in the game, and the first level you actually have to put "
 "something into the scene.<br>Don't forget to read the Post-it note!"
 msgstr "Это второй уровень в игре, но первый уровень, в котором вам необходимо что-то положить на сцену.<br>Не забывайте читать сообщения на стикерах!"
 
-#: tbe_levels:307
+#: tbe_levels:309
 msgid "The soccer ball cannot cross a big gap by itself."
 msgstr "Футбольный мяч не может пересечь большую пропасть сам по себе."
 
-#: tbe_levels:308
+#: tbe_levels:310
 msgid "The soccer ball must kick the pin. But there's something missing."
 msgstr "Футбольный мяч должен толкнуть кегль. Но чего-то не хватает."
 
-#: tbe_levels:309
+#: tbe_levels:311
 msgid ""
 "They are Angry Birds for what? Just a few eggs? Kill one bird and four eggs "
 "with one stone (dynamite)."
 msgstr "Из-за чего птицы разгневались? Из-за нескольких яиц? Сбейте одну птицу и разбейте четыре яйца одним выстрелом, используя динамит."
 
-#: tbe_levels:310
+#: tbe_levels:312
 msgid "This cone begs to be run over!"
 msgstr "Этот конус очень хочет быть сбитым!"
 
-#: tbe_levels:311
+#: tbe_levels:313
 msgid "This is a factory."
 msgstr "Это завод."
 
-#: tbe_levels:312
+#: tbe_levels:314
 msgid "This is a house of cards."
 msgstr "Это карточный домик."
 
-#: tbe_levels:313
+#: tbe_levels:315
 msgid "This is an egg. Rather easy to break, I'd say..."
 msgstr "Это яйцо. Его довольно легко разбить..."
 
-#: tbe_levels:314
+#: tbe_levels:316
+msgid ""
+"This is how you properly buy cola:<br>a dozen bottles of that precious brown"
+" liquid at a time!"
+msgstr "Как вам правильно покупать кока-колу:<br>дюжину бутылок этой драгоценной коричневой жидкости за раз!"
+
+#: tbe_levels:317
 msgid "This is just a level to prove PivotPoint correct operation."
 msgstr "Это просто уровень, предоставляющий корректную операцию точки опоры."
 
-#: tbe_levels:315
+#: tbe_levels:318
 msgid ""
 "This is just a level to prove PivotPoint correct operation. In this case, "
 "from the toolbox."
 msgstr "Это просто уровень, предоставляющий корректную операцию точки опоры. В этом случае из панели компонентов."
 
-#: tbe_levels:316
+#: tbe_levels:319
 msgid ""
 "This is just a level to prove PivotPoint correct operation. In this case, "
 "there is a hinge."
 msgstr "Это просто уровень, предоставляющий корректную операцию точки опоры. В этом случае есть петля."
 
-#: tbe_levels:317
+#: tbe_levels:320
 msgid ""
 "This is just a level to prove PolyObject correct operation. It will only "
 "make sense if you enable debug drawing."
 msgstr "Это просто уровень, предоставляющий корректную операцию PolyObject. Это будет иметь смысл только, если вы включите отладку рисования."
 
-#: tbe_levels:318
+#: tbe_levels:321
 msgid "This is my brother.<br><br>He is of the sporty type."
 msgstr "Это мой брат.<br><br>Он заядлый спортсмен."
 
-#: tbe_levels:319
+#: tbe_levels:322
 msgid "This is not as complicated as it looks. It almost works!"
 msgstr "Это не так сложно, как кажется. Это почти работает!"
 
-#: tbe_levels:320
+#: tbe_levels:323
 msgid "This is not a stable equilibrium, any excitation will make it move."
 msgstr "Это нестабильное равновесие, любое прикосновение приводит к движению."
 
-#: tbe_levels:321
+#: tbe_levels:324
 msgid "This is Ruud.<br><br>He's on a small desert island."
 msgstr "Это Робинзон.<br><br>Он оказался на небольшом необитаемом острове."
 
-#: tbe_levels:322
+#: tbe_levels:325
 msgid "This is the butterfly."
 msgstr "Это бабочка."
 
-#: tbe_levels:323
+#: tbe_levels:326
 msgid ""
-"This is the second level to prove PivotPoint correct operation.This level "
-"shows the famous line of metal balls. Lifting one and letting it goshould "
-"result in all balls staying stationary and the last ball moving up.NOTE THAT"
-" TBE DOESN'T BEHAVE LIKE THAT !!!"
+"This is the second level to prove PivotPoint correct operation. This level "
+"shows the famous line of metal balls. Lifting one and letting it go should "
+"result in all balls staying stationary and the last ball moving up. NOTE "
+"THAT TBE DOESN'T BEHAVE LIKE THAT !!!"
 msgstr "Это второй уровень чтобы доказать правильную работу точки опоры. Этот уровень показывает известную линию металлических шаров. Подъём одного и позволение ему двигаться должно привести к тому, что все шары остаются неподвижными, а последний мяч движется вверх. ОБРАТИТЕ ВНИМАНИЕ, ЧТО TBE ТАК СЕБЯ НЕ ВЕДЁТ!!!"
 
-#: tbe_levels:324
+#: tbe_levels:327
 msgid "This mechanism appears more complex than it actually is."
 msgstr "Этот механизм кажется более сложным, чем это есть на самом деле."
 
-#: tbe_levels:325
+#: tbe_levels:328
 msgid "Those pins always long for company."
 msgstr "Эти кегли всегда длинные для компании."
 
-#: tbe_levels:326
+#: tbe_levels:329
 msgid "Today, everyone wins if the pin topples into the goal."
 msgstr "Сегодня каждый выигрывает, если кегль опрокидывается в ворота."
 
-#: tbe_levels:327
+#: tbe_levels:330
 msgid "Topple pin to the right.<br>No: Left!<br>OK, OK, to the right."
 msgstr "Опрокиньте кегль направо.<br>Не налево!<br>Хорошо, хорошо, направо."
 
-#: tbe_levels:328
+#: tbe_levels:331
 msgid "Topple the bowling pin below."
 msgstr "Опрокиньте кегль для боулинга вниз."
 
-#: tbe_levels:329
+#: tbe_levels:332
 msgid "Topple the other way"
 msgstr "Опрокиньте на другую сторону"
 
-#: tbe_levels:330
+#: tbe_levels:333
 msgid "Topple the pin."
 msgstr "Опрокиньте кегль."
 
-#: tbe_levels:331
+#: tbe_levels:334
 msgid "Topple the pin to the left..."
 msgstr "Опрокиньте кегль налево..."
 
-#: tbe_levels:332
+#: tbe_levels:335
 msgid ""
 "Toss both balls (\"boules\") so they end up very close to \"le but\" - just "
 "like \"la vraie Pétanque\"."
 msgstr "Бросьте оба шара (боулы) так, чтобы  в итоге они были бы очень близки к реальному петанку."
 
-#: tbe_levels:333
+#: tbe_levels:336
 msgid "Transfer energy from Steam Engine to Bowling Pin"
 msgstr "Передача энергии от парового двигателя кеглю для боулинга"
 
-#: tbe_levels:334
+#: tbe_levels:337
 msgid "Turn it around"
 msgstr "Поверните кругом другой стороной"
 
-#: tbe_levels:335
+#: tbe_levels:338
 msgid "Two bowling balls, the wrong ball kicks the pin."
 msgstr "Два шара для боулинга, но не тот шар ударяет кегль."
 
-#: tbe_levels:336
+#: tbe_levels:339
 msgid ""
 "Two hurdles must be overcome. And butterfly has to start everything himself."
 " Or herself?"
 msgstr "Два препятствия должны быть преодолены. И бабочка должна начать всё сама."
 
-#: tbe_levels:337
+#: tbe_levels:340
 msgid "Two things need to happen at once... Goal: Butterfly to Flower."
 msgstr "Две вещи должны произойти разом... Цель: бабочка на цветке."
 
-#: tbe_levels:338
+#: tbe_levels:341
 msgid "Use a proper football this time!"
 msgstr "Используйте реальный футбол на этот раз!"
 
-#: tbe_levels:339
+#: tbe_levels:342
 msgid "Vengence will be ours!"
 msgstr "Ответный ход, возьмём реванш!"
 
-#: tbe_levels:340
+#: tbe_levels:343
 msgid "Volley Ball"
 msgstr "Мяч для волейбола"
 
-#: tbe_levels:341
+#: tbe_levels:344
 msgid "Volley balls can do that, too.<br><br>Wanna bet?"
 msgstr "Волейбольные мячи также могут сделать это.<br><br>Хотите пари?"
 
-#: tbe_levels:342
+#: tbe_levels:345
 msgid "Vroom Vroom Vroom!"
 msgstr "Врум, врум, врум!"
 
-#: tbe_levels:343
+#: tbe_levels:346
 msgid "Vrooom Vrooom Vrooom"
 msgstr "Врум Врум Врум"
 
-#: tbe_levels:344
+#: tbe_levels:347
 msgid "Wait a minute!<br>That Bowling Ball won't do it..."
 msgstr "Подождите минутку! <br>Этот шар для боулинга не сделает это..."
 
-#: tbe_levels:345
+#: tbe_levels:348
 msgid "... waiting for breakfast"
 msgstr "...в ожидании завтрака"
 
-#: tbe_levels:346
+#: tbe_levels:349
 msgid "... Was signed:<br><br>the Post-It Boy"
 msgstr "... Стоит подпись:<br><br>малыш"
 
-#: tbe_levels:347
+#: tbe_levels:350
 msgid "Wedge /"
 msgstr "Клин /"
 
-#: tbe_levels:348
+#: tbe_levels:351
 msgid "Wedge \\"
 msgstr "Клин \\"
 
-#: tbe_levels:349
+#: tbe_levels:352
 msgid "Welcome back!"
 msgstr "С возвращением!"
 
-#: tbe_levels:350
+#: tbe_levels:353
 msgid "What a waste of cola!"
 msgstr "Какой ущерб от кока-колы!"
 
-#: tbe_levels:351
+#: tbe_levels:354
 msgid "Where do Balloons go?<br>They can't keep going up forever!"
 msgstr "Куда летят воздушные шары?<br>Они не могут следовать куда-то вечно!"
 
-#: tbe_levels:352
+#: tbe_levels:355
 msgid "Where does the cola go?"
 msgstr "Куда девается кока-кола?"
 
-#: tbe_levels:353
+#: tbe_levels:356
 msgid "Why is that butterfly there?"
 msgstr "Зачем там бабочка?"
 
-#: tbe_levels:354
+#: tbe_levels:357
 msgid "Why would anyone want to be in a tent?"
 msgstr "Почему кто-то хочет быть в палатке?"
 
-#: tbe_levels:355
+#: tbe_levels:358
 msgid "Wooden bar"
 msgstr "Деревянный брус"
 
-#: tbe_levels:356
+#: tbe_levels:359
 msgid "Wooden Beam"
 msgstr "Деревянная балка"
 
-#: tbe_levels:357
+#: tbe_levels:360
 msgid "Wood Wedge"
 msgstr "Деревянный клин"
 
-#: tbe_levels:358
+#: tbe_levels:361
 msgid "Wooosh Wooosh Wooosh"
 msgstr "Парам-пам-пам"
 
-#: tbe_levels:359
+#: tbe_levels:362
 msgid "Wow, that's a huge gap for a Soccer Ball."
 msgstr "Ничего себе, это огромная пропасть для футбольного мяча."
 
-#: tbe_levels:360
+#: tbe_levels:363
 msgid "You'll figure it out."
 msgstr "Вы разберётесь в этом."
 
-#: tbe_levels:361
+#: tbe_levels:364
 msgid ""
 "You probably guessed what needs to be done here. <br><br>Rotate the cactus "
 "carefully<br> - it has a rather tight fit!"
 msgstr "Вы, наверное, догадались, что нужно здесь сделать.<br><br>Поверните осторожно кактус<br>- он посажен довольно плотно!"
 
-#: tbe_levels:362
+#: tbe_levels:365
 msgid "Your job:<br>tear it down!"
 msgstr "Ваша задача:<br>снести его!"
 
-#: tbe_levels:363
+#: tbe_levels:366
 msgid ""
 "You see that bowling ball at the top-right? <br><br>It wants to topple the "
 "pin next to it."
 msgstr "Вы видите шар для боулинга справа вверху?<br><br>Он хочет опрокинуть кегль рядом с ним."
 
-#: tbe_levels:364
+#: tbe_levels:367
 msgid "You see that butterfly?"
 msgstr "Вы видите бабочку?"
 
-#: tbe_levels:365
+#: tbe_levels:368
 msgid ""
 "You've seen this before: a Bowling Ball and a Bowling Pin. But this time, "
 "there's a wall in-between."
 msgstr "Вы видели это раньше: шар для боулинга и кегль для боулинга. Но на этот раз есть стена между ними."
 
-#: tbe_levels:366
+#: tbe_levels:369
 msgid "Zoing and Boom"
 msgstr "БУУМ и БУУ-БУХ"
 
-#: tbe_levels:367
+#: tbe_levels:370
 msgid "Zoing Ploing Boing Woing<br>Zzap Whoosh Smack Boom"
 msgstr "Трам-тарарам<br>Бабах, бубух, дудух"
