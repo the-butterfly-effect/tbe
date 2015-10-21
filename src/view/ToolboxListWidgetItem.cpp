@@ -48,10 +48,11 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 		myPixmapSize.setHeight(theIconSize);
     }
 	ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
-    slotUpdateCount();
-    setText(theTBGPtr->theGroupName.result());
-	setTextAlignment(Qt::AlignLeft | Qt::AlignTop);
-    setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	slotUpdateCount();
+	setText(theTBGPtr->theGroupName.result());
+	setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	setSizeHint(QSize(90,150));
 
     connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
             this, SLOT(slotSelected(QListWidgetItem*)));
