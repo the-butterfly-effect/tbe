@@ -40,14 +40,15 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
 
 We are working on getting packages for major Linux-distributions as well as a Windows-installer and maybe even a MacOSX package.
 
-| Operating System       | MD5SUM | Download | Notes |
-|:-----------------------|:------:|:--------:|:------|
-| Debian / Ubuntu / Mint |  TBD   |  [thebutterflyeffect.deb](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.deb) | Ubuntu 14.04 or newer |
-| Fedora / CentOS        |  TBD   |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | |
-| Opensuse               |  TBD   |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | Validated to work on Opensuse 13.2 |
+| Operating System       |         MD5SUM                   | Download | Notes |
+|:-----------------------|:--------------------------------:|:--------:|:------|
+| Debian / Ubuntu / Mint | 03321e74d977fd1380061586274f36f0 |  [thebutterflyeffect.deb](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.deb) | Ubuntu 14.04 or newer |
+| Fedora / CentOS        | 3816a165fcbfbf47b60d48119f631ad0 |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | |
+| Opensuse               | 3816a165fcbfbf47b60d48119f631ad0 |  [thebutterflyeffect.rpm](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.rpm) | Validated to work on Opensuse 13.2 |
 | Mageia Linux           |  n/a   |  part of Mageia | |
-| Other Linux            |  TBD   |  [thebutterflyeffect.sh](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.sh) (self extracting archive) | make sure to install Qt4 4.7+ |
-| Windows                |  TBD   |  TBD.exe | Windows 7 or newer |
+| Other Linux            | 4a78b1cec89891d0a9c774e338939185 |  [thebutterflyeffect.sh](https://github.com/kaa-ching/tbe/releases/download/untagged-1c9762fc41c82662ef2a/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
+| Windows 7 or newer     |  TBD   |  TBD.exe | Windows 7 or newer |
+| MacOS X version TBD    |  TBD   |  Bundle |  |
 
 _if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to [contact the developers](#BugsFeedback)_
 
