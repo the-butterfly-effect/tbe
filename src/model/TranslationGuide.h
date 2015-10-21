@@ -40,7 +40,6 @@
 ///        <property key="Speed">1.0</property>
 ///        <property key="Force">5.0</property>
 ///    </object>
-/// See also http://sourceforge.net/apps/trac/tbe/wiki/TranslationGuide
 class TranslationGuide : public AbstractJoint
 {
 public:

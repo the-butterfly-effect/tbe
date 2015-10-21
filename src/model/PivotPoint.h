@@ -43,7 +43,6 @@
 ///       <property key="object2">Handle</property>
 ///       <property key="collide">false</property>
 ///    </object>
-/// See also http://sourceforge.net/apps/trac/tbe/wiki/PivotPoint
 class PivotPoint : public AbstractJoint
 {
 public:
