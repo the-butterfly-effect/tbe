@@ -941,8 +941,8 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="279"/>
-        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
-        <translation>&lt;b&gt;The Butterfly Effect - Suggesties&lt;/b&gt;&lt;br&gt;&lt;br&gt;Heb je goede ideeen voor nieuwe functies? Ga dan naar onze forums op: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;en deel je ideeen met de wereld.</translation>
+        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
+        <translation>&lt;b&gt;The Butterfly Effect - Suggesties&lt;/b&gt;&lt;br&gt;&lt;br&gt;Heb je goede ideeen voor nieuwe functies? Ga dan naar onze forums op: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;en deel je ideeen met de wereld.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="309"/>

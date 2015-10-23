@@ -278,7 +278,7 @@ void MainWindow::on_action_Suggestions_activated()
 {
 	Popup::Info(tr("<b>The Butterfly Effect - Suggestions</b><br><br>"
 				   "If you have great ideas for new features in the game, "
-				   "please check our website on how to submit ideas: <br><a href=\""
+				   "please go to our shiny forums at: <br><a href=\""
 				   "http://the-butterfly-effect.org/\">"
 				   "http://the-butterfly-effect.org/</a>"
 				   "<br>to share your ideas with the world."

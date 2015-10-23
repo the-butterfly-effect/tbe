@@ -928,8 +928,8 @@ Aunque puede afectar la partida, Ouch!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="279"/>
-        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
-        <translation>&lt;b&gt;The Butterfly Effect - Sugerencias&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si tenés grandes ideas para nuevas prestaciones en el juego, por favor participá en nuestro foro en: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;para compartir tus ideas con el mundo.</translation>
+        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
+        <translation>&lt;b&gt;The Butterfly Effect - Sugerencias&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si tenés grandes ideas para nuevas prestaciones en el juego, por favor participá en nuestro foro en: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;para compartir tus ideas con el mundo.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="309"/>

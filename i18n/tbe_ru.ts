@@ -945,8 +945,8 @@ This may affect playability, though!</source>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="279"/>
-        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
-        <translation>&lt;b&gt;Эффект бабочки - Предложения&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если у вас есть великолепные идеи для новых возможностей в игре, пожалуйста, перейдите на наши форумы: &lt;br&gt;&lt;a href=&quot;http://sourceforge.net/projects/tbe/forums/forum/953128&quot;&gt;http://sourceforge.net/projects/tbe/forums/forum/953128&lt;/a&gt;&lt;br&gt;чтобы поделиться своими идеями с миром.</translation>
+        <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
+        <translation>&lt;b&gt;Эффект бабочки - Предложения&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если у вас есть великолепные идеи для новых возможностей в игре, пожалуйста, перейдите на наши форумы: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;чтобы поделиться своими идеями с миром.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="309"/>
