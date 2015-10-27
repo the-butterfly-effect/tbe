@@ -24,7 +24,7 @@
 
 // forward declarations
 class Level;
-class Background;
+struct Background;
 class QStandardItemModel;
 class QStandardItem;
 
