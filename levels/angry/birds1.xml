@@ -96,7 +96,6 @@
                 <property key="Mass">0.4</property>
                 <tooltip>This is an egg. Rather easy to break, I'd say...</tooltip>
             </object>
-            <object width="4.036" X="2.610" Y="4.549" height="1.000" type="RightRamp" angle="0.000"/>
             <object width="3.874" X="2.489" Y="1.431" height="1.000" type="LeftRamp" angle="0.000"/>
             <object width="0.600" X="7.908" Y="2.661" height="0.600" type="Balloon" ID="Mr.A.Bird" angle="0.000">
                 <property key="ImageName">yellow_bird;BalloonPoof;Empty;Empty</property>
