@@ -109,7 +109,12 @@ void ViewWorld::on_timerTick()
 
 void ViewWorld::on_framerateTimerTick()
 {
+// Updating the framerate on MacOSX results in no fps on screen, yet we get
+// "QMenu: No OSMenuRef created for popup menu" warnings on the console.
+// That's why we do not even try to put it on screen on Mac.
+#ifndef Q_WS_MAC
 	theFrameRateViewPtr->setText(tr("    %1 fps; %2 s").arg(theFramesPerSecond).arg(theGameStopwatch.elapsed()/1000));
+#endif
 	theFramesPerSecond = 0;
 }
 
