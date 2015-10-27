@@ -23,7 +23,7 @@
 #include "ObjectFactory.h"
 
 /// forward declarations
-class b2FixtureDef;
+struct b2FixtureDef;
 
 /**
   * class RectObject

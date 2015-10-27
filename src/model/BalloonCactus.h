@@ -42,15 +42,15 @@ public:
 	virtual ~Balloon();
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+	virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
 	/// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// deletePhysicsObject() doesn't really delete the physics object
 	/// anymore - but we need a true deleter here...
@@ -70,11 +70,11 @@ public:
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const
+	virtual unsigned int getImageIndex(void) const override
 	{ return theState; }
 
 	/// overridden to make sure joints are not re-created outside BALLOON state
-	virtual void notifyJoints(JointInterface::JointStatus aStatus);
+	virtual void notifyJoints(JointInterface::JointStatus aStatus) override;
 
 protected:
 	/// call this function to suggest a state change to the Balloon

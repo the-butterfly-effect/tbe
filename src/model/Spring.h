@@ -50,10 +50,10 @@ public:
 	/// overridden from RectObject to be able to create the other SpringEnd
 	/// and because this class wants to register for callbacks and
 	/// needs to restart its state machine
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject to allow for the handle
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// @returns Pointer to the B2Body for the relative position asked for.
 	///          Might return NULL if no body or if outside body (see warning)
@@ -63,7 +63,7 @@ public:
 	///          aRelPosition points outside the object's body.
 	/// @note    depending on the position, will either return pointer to
 	///          Spring's or to SpringEnd's b2Body
-	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition);
+	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition) override;
 
 	/**
 	 * Get the current Position of the object.
@@ -72,23 +72,23 @@ public:
 	 *
 	 * @return the value of theCenter
 	 */
-	virtual Position getTempCenter ( ) const;
+	virtual Position getTempCenter ( ) const override;
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+	virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
     /// overridden from AbstractObject in order to also move the SpringEnd
     virtual void setOrigCenter ( const Position& aNewPos ) override;
 
 	/// get the actual width - with compression accounted for
-	virtual qreal getTempWidth() const;
+	virtual qreal getTempWidth() const override;
 
 protected:
 	/// this member fixes up the physical model based on new width or height
 	/// overridden from RectObject, assuming that springs are never
 	/// extremely tall or wide
-	virtual void adjustParameters(void);
+	void adjustParameters(void);
 
 	void buildShapeList(void);
 

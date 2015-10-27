@@ -220,15 +220,15 @@ public:
 	virtual ~Dynamite();
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+	virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
 	/// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// this enum defines the states of the detonator
 	/// apart from WAITING->ACTIVE, all states are time-triggered
@@ -243,7 +243,7 @@ public:
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const
+	virtual unsigned int getImageIndex(void) const override
 	{ return theState; }
 
 	/// overridden from PolyObject to make sure
@@ -265,7 +265,7 @@ protected:
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 	/// deletePhysicsObject() doesn't really delete the physics object
 	/// anymore - but we need a true deleter here...

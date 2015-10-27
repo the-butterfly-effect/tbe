@@ -89,7 +89,7 @@ public slots:
 	  * when the user closes the dialog and prevent the
 	  * dialog from closing when the Goals cannot be saved due to errors.
 	  */
-	virtual void accept();
+	virtual void accept() override;
 
 private slots:
 	void on_toolButtonFailsMinus_clicked();

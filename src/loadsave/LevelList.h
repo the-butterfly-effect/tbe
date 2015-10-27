@@ -116,7 +116,7 @@ private:
 		virtual bool startElement(const QString &namespaceURI, const QString &localName,
 					   const QString &qName, const QXmlAttributes &attributes) override;
 
-		QString errorString() const
+		virtual QString errorString() const override
 		{ return errorStr; }
 
 		LocalString theTitle;

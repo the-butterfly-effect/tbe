@@ -36,17 +36,17 @@ public:
 
 	/// Make sure there is no physics body by overriding
 	/// the creational member of AbstractObject.
-	virtual void createPhysicsObject(const Position&)
+	virtual void createPhysicsObject(const Position&) override
 	{ };
 
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{
 		return QObject::tr("Scenery");
 	}
 
 	/// Scenery has no mass. But no b2Body will be created either :-)
-	virtual b2BodyType getObjectType(void) const
+	virtual b2BodyType getObjectType(void) const override
 	{	return b2_staticBody; }
 
 	/// returns the Tooltip of the object.
@@ -58,12 +58,12 @@ public:
 
 	/// returns true if the object can be rotated by the user
 	/// Scenerys cannot be adjusted by the player
-	virtual bool isRotatable ( ) const
+	virtual bool isRotatable ( ) const override
 	{	return false; }
 
 	/// returns whether the object can be resized by the user
 	/// Scenerys cannot be adjusted by the player
-	virtual SizeDirections isResizable ( ) const
+	virtual SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
 	/** Creates the ViewObject, finds associated images,
@@ -74,7 +74,7 @@ public:
 	  * @returns pointer to ViewObject
 	  * @note: a ZValue set in a property always overrides aDefaultDepth
 	  */
-	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1)
+	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1) override
 	{ return AbstractObject::createViewObject(aDefaultDepth); }
 };
 
