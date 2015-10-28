@@ -3,6 +3,8 @@ project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
 
+set (CMAKE_INSTALL_PREFIX "/usr")
+
 set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/games)
 set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/levels)
 set(TBE_IMAGES_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/images)
