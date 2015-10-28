@@ -21,7 +21,7 @@ If, however, RPM detects that there are missing dependencies (i.e. the game need
 
  * Opensuse: use `zypper` to install the opensuse RPM, the zypper tool itself will figure out missing dependencies and will download & install them:
 ```
-    sudo zypper thebutterflyeffect.opensuse.rpm
+    sudo zypper install thebutterflyeffect.opensuse.rpm
 ```
 
 Of course, you can also use graphical package managers.

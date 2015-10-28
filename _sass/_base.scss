@@ -38,6 +38,16 @@ ul, ol, dl, figure,
 
 
 /**
+ * Adjust `margin-top` of h2 to increase white space above headers
+ */
+h2
+%vertical-rhythm {
+    margin-top: $spacing-unit * 10;
+}
+
+
+
+/**
  * Images
  */
 img {
