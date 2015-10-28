@@ -5,9 +5,12 @@ title: Installation instructions
 
 ## Mageia
 
-Thanks to packager/developer _AlexL_, TBE is available directly from within Mageia!
+Thanks to packager/developer _AlexL_, TBE will be available directly from within Mageia 6!
+You can use the graphical `rpmdrake` tool or use the command line `urpmi` tool to install the package.
 
 ## RPM-based distributions
+
+<p class="bg-warning">As of mid-october, we only supply the RPM for Opensuse 13.2 as one of the developers works on Opensuse. We will update this page once other packages catch up after the final release.</p>
 
 Every RPM-based distribution allows to use the `rpm` command to install the RPM package like this (make sure to supply the correct file name):
 ```
@@ -16,8 +19,10 @@ Every RPM-based distribution allows to use the `rpm` command to install the RPM 
 
 If, however, RPM detects that there are missing dependencies (i.e. the game needs other libraries or packages that are not yet installed), the resolution depends on the version of Linux you are using:
 
- * Fedora / CentOS: use `yum` to install, the yum tool itself will figure out missing dependencies and install them.
- * Opensuse: use `zypper` to install, the zypper tool itself will figure out missing dependencies and will download & install them:
+ * Opensuse: use `zypper` to install the opensuse RPM, the zypper tool itself will figure out missing dependencies and will download & install them:
+```
+    sudo zypper thebutterflyeffect.opensuse.rpm
+```
 
 Of course, you can also use graphical package managers.
 
@@ -49,4 +54,7 @@ There are essentially three options:
 Download the installer, double click the installer and follow the steps.
 The game will be installed and is available in the start menu. The start menu will also show an `uninstall` icon if you ever want to remove the game again.
 
+## MacOSX
+
+For now, please compile the game yourself. We plan to have packaging done before Christmas 2015.
 
