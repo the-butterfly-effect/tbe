@@ -58,8 +58,8 @@ distclean:
 
 package:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake -DPACK=1 ..
+	cd ${BUILDDIR} && cmake -DBUILDTYPE=Release ..
 	cd ${BUILDDIR} && make package
-	cd ${BUILDDIR} && cmake -DRPM=1 -DPACK=1 ..
+	cd ${BUILDDIR} && cmake -DRPM=1 -DBUILDTYPE=Release ..
 	cd ${BUILDDIR} && make package
 

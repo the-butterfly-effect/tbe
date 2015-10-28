@@ -18,7 +18,7 @@ These include:
   * cmake
   * patch
 Depending on whether you have these:
-  * libqt4        (which must be QT version 4.4 or up !!!)
+  * libqt4        (which must be QT version 4.6 or up !!!)
   * libqt4-devel
 if you do not, you'll need to build the static version, which in turn
 requires building QT first - you'll now also need:

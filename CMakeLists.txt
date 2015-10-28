@@ -3,12 +3,6 @@ project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
 
-if (PACK)
-   set(CMAKE_INSTALL_PREFIX ".")
-else (PACK)
-   set(CMAKE_INSTALL_PREFIX /usr)
-endif (PACK)
-
 set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/games)
 set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/levels)
 set(TBE_IMAGES_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/images)
@@ -59,7 +53,7 @@ IF(WIN32 AND NOT UNIX)
  SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/imagery/illustrations\\\\installer-top-icon.bmp")
  SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}\\\\COPYING")
  SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}\\\\README.md")
- SET(CPACK_NSIS_INSTALLED_ICON_NAME "games\\\\tbe.exe")
+ SET(CPACK_NSIS_INSTALLED_ICON_NAME "usr\\\\games/tbe.exe")
  SET(CPACK_NSIS_EXECUTABLES_DIRECTORY "games")
  SET(CPACK_NSIS_DISPLAY_NAME "The Butterfly Effect")
  SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.the-butterfly-effect.org")
@@ -76,6 +70,12 @@ if (UNIX)
  install(FILES installer/tbe.desktop DESTINATION ${TBE_DESKTOP_DIR} )
 endif (UNIX)
 
+if (APPLE)
+  #SET(CPACK_BUNDLE_NAME "TheButterflyEffect") # provides the bundle name (displayed in the finder underneath the bundle icon).
+  #SET(CPACK_BUNDLE_ICON "") # provides the bundle icon (displayed in the /Applications folder, on the dock, etc).
+  #SET(CPACK_BUNDLE_PLIST "") # path to a file that will become the bundle plist.
+  #SET(CPACK_BUNDLE_STARTUP_COMMAND "") #
+endif (APPLE)
 
 if (UNIX AND NOT "${RPM}")
  # for UNIX (including Linux), no path included
