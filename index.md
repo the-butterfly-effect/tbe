@@ -42,12 +42,12 @@ We are working on getting packages for major Linux-distributions as well as a Wi
 
 | Operating System       |         MD5SUM                   | Download | Notes |
 |:-----------------------|:--------------------------------:|:--------:|:------|
-| Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb]() | Validated to work on Ubuntu 14.04 |
+| Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.ubuntu1404.deb) | Validated to work on Ubuntu 14.04 |
 | Fedora / CentOS        | n/a | n/a | need packagers to catch up |
-| Opensuse               | a477..50c3 |  [tbe.rpm]() | Validated to work on Opensuse 13.2 |
+| Opensuse               | a477..50c3 |  [tbe.rpm](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.opensuse132.rpm) | Validated to work on Opensuse 13.2 |
 | Mageia Linux           |  n/a   | n/a | Will be part of Mageia 6 |
-| Other Linux            | f523..be6b |  [tbe.sh]() | Self-extracting archive, make sure to install Qt4 4.7+ |
-| Windows 7 or newer     | fe00..11dd |  [tbe.exe]() | Windows 7 or newer |
+| Other Linux            | f523..be6b |  [tbe.sh](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
+| Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
 | MacOS X version TBD    |  TBD   |  Bundle | to be announced later |
 
 _if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to [contact the developers](#BugsFeedback)_
