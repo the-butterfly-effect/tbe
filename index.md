@@ -50,7 +50,7 @@ If you need them, please refer to our [installation instructions](install).
 | Mageia Linux           |  n/a       | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop) | Mageia 5 |
 | Other Linux            | f523..be6b |  [tbe.sh](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
 | Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
-| MacOS X version TBD    |  TBD       |   Bundle                   | to be announced later |
+| MacOS X                |  TBD       |   Bundle announced later | [Build from source](https://github.com/kaa-ching/tbe/wiki/MacOSXBuild) works |
 
 
 _if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to [contact the developers](#BugsFeedback)_
