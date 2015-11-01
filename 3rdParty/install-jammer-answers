@@ -1,9 +1,0 @@
-CreateDesktopShortcut: No
-CreateQuickLaunchShortcut: No
-InstallDir: ./installjammer
-InstallMode: Standard
-InstallType: Typical
-LaunchApplication: No
-ProgramFolderName: InstallJammer
-SelectedComponents: Default Component
-ViewReadme: No
