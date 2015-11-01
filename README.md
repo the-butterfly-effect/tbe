@@ -1,5 +1,8 @@
 #Welcome to "The Butterfly Effect"
-This is Milestone A (also known as the '0.9.2' release)
+We are working on Milestone B (also known as the '0.9.3' release)
+
+If you want to know the current status, please look at
+https://github.com/kaa-ching/tbe/milestones/Milestone%20B
 
 This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
@@ -8,8 +11,8 @@ notice a shiny new user interface - but the same levels and objects.
 You can download the game at its website, 
 go to          http://the-butterfly-effect.org/
 
-If you downloaded the source archive - please refer to the file INSTALLING
-to learn how to turn the sources into a working game and RUNNING on how
+If you downloaded the source archive - please refer to the file INSTALLING.md
+to learn how to turn the sources into a working game and RUNNING.md on how
 to run the game.
 
 If you downloaded the installer, you now have an icon on your desktop: 
@@ -18,26 +21,14 @@ just (double-)click it to enjoy the game.
 There are 45 levels.
 All levels are playable, a few levels may need a bit more polish.
 
-###New features & highlights in Milestone A:
- * a shiny new GUI, which should also work with touchscreens and touchpads
+###New features & highlights in Milestone B:
  * several animations, making it more into a game
- * 60 frames per second on many machines
  * many playability fixes in levels
- * simulation accuracy fixes, so sims run the same across platforms
- * levels are automatically tested to ensure they work across platforms
- * development moved from Sourceforge to Github
-
-###Why did this release take so long?
-Rewriting the UI took a lot of time, as it is not an easy thing to do when you
-are this far into development.
-If you don't believe: ask the KDE and Gnome teams!
-
-We have tried several UI approaches, but every time playtesting showed that
-our ideas were nonintuitive to players. At some point we just ran out of ideas!
+ * make internationalization work more seamless
+ * new objects?
 
 ###The Level Creator
-Unfortunately, in order to bring you the new player GUI we've decided to skip
-the Level Creator for now. It will be back soon(ish)!
+The Level Creator should be workable again once Milestone B is released!
 
 ###Alternative solutions
 If you feel you found a solution to a level that is not right, please post an
