@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010  Klaas van Gend
+ * This file copyright (C) 2010,2015  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,7 +20,8 @@
 #include "TestChapter.h"
 #include "tbe_global.h"
 
-#include "BaseObject.h"
+#include "AbstractObject.h"
+#include "ObjectFactory.h"
 #include "World.h"
 
 #include <QStringList>
@@ -31,67 +32,70 @@
 // note that levels 5 and 6 affect playing
 int theVerbosity = 6;
 
-class BaseObjectForTesting : public BaseObject
+class AbstractObjectForTesting : public AbstractObject
 {
 public:
-	BaseObjectForTesting ()
+	AbstractObjectForTesting ()
 	{ theProps.setDefaultPropertiesString("TestProperty1:one/TestProperty2:/Mass:6.84/Bounciness:2.0/"); }
 
-	virtual const QString getName      () const {return "BaseObjectForTesting";}
+	virtual const QString getName      () const {return "AbstractObjectForTesting";}
+	virtual b2BodyType getObjectType   () const {return b2_staticBody;}
 	virtual const QString getToolTip   () const {return "lala";}
 	virtual bool isRotatable           () const {return false;}
 	virtual SizeDirections isResizable () const {return NORESIZING;}
 
-	friend class TestBaseObjectInit;
-	friend class TestBaseObjectParse;
+	friend class TestAbstractObjectInit;
+	friend class TestAbstractObjectParse;
 };
 
+static JointInterface::JointStatus theLastStatus;
 
 class BOFTJoint : public JointInterface
 {
 public:
-	JointStatus theLastStatus;
 	virtual	void physicsObjectStatus(JointStatus aStatus)
 	{ theLastStatus = aStatus; }
+	virtual void jointWasDeleted(void)
+	{ ; }
 };
 
 
-class BaseObjectForTesting2 : public BaseObjectForTesting
+class AbstractObjectForTesting2 : public AbstractObjectForTesting
 {
 public:
-	BaseObjectForTesting2 ()
+	AbstractObjectForTesting2 ()
 	{ theProps.setDefaultPropertiesString("/-Mass:"); }
 
-	virtual const QString getName      () const {return "BaseObjectForTesting2";}
+	virtual const QString getName      () const {return "AbstractObjectForTesting2";}
 
-	friend class TestBaseObjectParse;
+	friend class TestAbstractObjectParse;
 };
 
 
-class TestBaseObjectInit : public TestChapter
+class TestAbstractObjectInit : public TestChapter
 {
 public:
-	TestBaseObjectInit() : TestChapter("Test BaseObject class - init")	{}
+	TestAbstractObjectInit() : TestChapter("Test AbstractObject class - init")	{}
 	virtual bool runTests();
 };
-class TestBaseObjectParse : public TestChapter
+class TestAbstractObjectParse : public TestChapter
 {
 public:
-	TestBaseObjectParse() : TestChapter("Test BaseObject class - parseProperties")	{}
+	TestAbstractObjectParse() : TestChapter("Test AbstractObject class - parseProperties")	{}
 	virtual bool runTests();
 };
 
-bool TestBaseObjectInit::runTests(void)
+bool TestAbstractObjectInit::runTests(void)
 {
 	World* myWorldPtr = new World;
 		check(myWorldPtr->theB2WorldPtr->GetBodyCount() == 1, "No custom bodies registered yet\n");
 
 	// we're going to follow the init in DrawWorld::dragEnterEvent here:
-	BaseObjectForTesting myBO;
+	AbstractObjectForTesting myBO;
 		check(myBO.getB2WorldPtr() == myWorldPtr->theB2WorldPtr, "B2WorldPtr is set correctly\n");
 		check(myWorldPtr->theB2WorldPtr->GetBodyCount() == 1, "No new bodies registered\n");
 		check(myBO.theB2BodyDefPtr!=NULL, "B2BodyDef is created\n");
-		check(myWorldPtr->theObjectPtrList.count() == 0, "creating BaseObject doesn't add it to World\n");
+		check(myWorldPtr->theObjectPtrList.count() == 0, "creating AbstractObject doesn't add it to World\n");
 
 	myBO.setOrigCenter(Position(3.42, 6.84, 1.57));
 		check(myBO.getOrigCenter() == Position(3.42,6.84,1.57), "Position is reported correctly\n");
@@ -100,11 +104,9 @@ bool TestBaseObjectInit::runTests(void)
 		check(myBO.getTempCenter() == Position(3.42,6.84,1.57), "Position is reported correctly\n");
 
 	testmsg("First createPhysicsObject\n");
-	// because there is no refcounting, if the joint doesn't outlive
-	// the BO, the app will crash. That's why we have to accept some
-	// memory leakage here... (okok, I could have written a destructor)
-	BOFTJoint* myJointPtr = new BOFTJoint();
-	myJointPtr->theLastStatus = static_cast<JointInterface::JointStatus>(0);
+
+	JointInterfacePtr myJointPtr = ObjectFactory::createChildObject<BOFTJoint>();
+	theLastStatus = static_cast<JointInterface::JointStatus>(0);
 	myBO.addJoint(myJointPtr);
 	myBO.createPhysicsObject();
 		check(myBO.theB2BodyPtr != NULL, "A Physics object now exists\n");
@@ -112,14 +114,14 @@ bool TestBaseObjectInit::runTests(void)
 		 // however, once a physicsobject has been created, temp reports the position from the phys object
 		 // which should be the same - within rounding
 		check(myBO.getTempCenter().toString() == "(3.42,6.84)@1.57", "Position is reported correctly\n");
-		check(myWorldPtr->theObjectPtrList.count() == 0, "create Physics body doesn't add BaseObject to World\n");
-		check(myJointPtr->theLastStatus == JointInterface::CREATED, "joint notification of creation was done\n");
+		check(myWorldPtr->theObjectPtrList.count() == 0, "create Physics body doesn't add AbstractObject to World\n");
+		check(theLastStatus == JointInterface::CREATED, "joint notification of creation was done\n");
 		b2Body* myBodyPtr = myBO.theB2BodyPtr;
 	testmsg("First deletePhysicsObject\n");
 	myBO.deletePhysicsObject();
 		check(myBO.theB2BodyPtr == NULL, "Pointer to Physics object now NULL\n");
 		check(myWorldPtr->theB2WorldPtr->GetBodyCount() == 1, "b2Body gone from World\n");
-		check(myJointPtr->theLastStatus == JointInterface::DELETED, "joint notification of deletion was done\n");
+		check(theLastStatus == JointInterface::DELETED, "joint notification of deletion was done\n");
 
 	// let's redo physics object creation - the old one should be deleted and the
 	// new one should have taken the place, everywhere
@@ -140,21 +142,21 @@ bool TestBaseObjectInit::runTests(void)
 }
 
 
-bool TestBaseObjectParse::runTests(void)
+bool TestAbstractObjectParse::runTests(void)
 {
-	BaseObjectForTesting  myBO1;
-	BaseObjectForTesting2 myBO2;
+	AbstractObjectForTesting  myBO1;
+	AbstractObjectForTesting2 myBO2;
 
 	// check default property behavior
 
 	check(myBO1.theProps.getDefaultProperty(Property::ZVALUE_STRING)=="2.0",
-		  "Default property from BaseObject is present\n");
+		  "Default property from AbstractObject is present\n");
 	check(myBO1.theProps.getDefaultProperty(Property::IMAGE_NAME_STRING)=="",
-		  "Default property from BaseObject is empty\n");
+		  "Default property from AbstractObject is empty\n");
 	check(myBO1.theProps.getDefaultProperty("DoesNotExist").isNull(),
-		  "Nonexistant default property from BaseObject is null\n");
+		  "Nonexistant default property from AbstractObject is null\n");
 	check(myBO1.theProps.getDefaultProperty(Property::BOUNCINESS_STRING)=="2.0",
-		  "Default property from BaseObjectTester is present\n");
+		  "Default property from AbstractObjectTester is present\n");
 	check(myBO1.theProps.getDefaultProperty(Property::MASS_STRING)=="6.84",
 		  "Default Mass property is set in first one\n");
 	check(myBO2.theProps.getDefaultProperty(Property::MASS_STRING)=="",
@@ -178,8 +180,8 @@ int main(int argc, char *argv[])
 {
 	TestFramework myFramework(argc, argv);
 
-	myFramework.add( new TestBaseObjectInit );
-	myFramework.add( new TestBaseObjectParse);
+	myFramework.add( new TestAbstractObjectInit );
+	myFramework.add( new TestAbstractObjectParse);
 
 	myFramework.run();
 
