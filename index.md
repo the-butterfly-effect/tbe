@@ -47,6 +47,7 @@ If you need them, please refer to our [installation instructions](install).
 | Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.ubuntu1404.deb) | Validated to work on Ubuntu 14.04 |
 | Fedora                 | n/a        | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop)  | Fedora 21 and 22 |
 | Opensuse               | a477..50c3 |  [tbe.rpm](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.opensuse132.rpm) | Validated to work on Opensuse 13.2 |
+| Arch Linux             |  n/a       |  n/a | if you want TBE in Arch, please [vote](https://aur.archlinux.org/packages/tbe/) |
 | Mageia Linux           |  n/a       | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop) | Mageia 5 |
 | Other Linux            | f523..be6b |  [tbe.sh](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
 | Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
