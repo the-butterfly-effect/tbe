@@ -62,6 +62,8 @@ public:
 		DEAD
 	};
 
+	static const int FramesPerState[];
+
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
 	virtual unsigned int getImageIndex(void) const override

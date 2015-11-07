@@ -35,6 +35,9 @@ public:
 static PingusObjectFactory thePingusObjectFactory;
 
 
+
+const int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 1};
+
 Pingus::Pingus()
 		: PolyObject(QObject::tr("Pingus"),
 					 QObject::tr("the famous penguin. He walks and believes in you. Keep him alive!"),
