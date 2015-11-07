@@ -99,11 +99,21 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
+	void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
+
 private:
 	// Private things
 
 	/// the state variable
 	States theState;
+
+	/// Within a state, there are several animation frames, this is the index into the list
+	int theAnimationFrameIndex;
+
+	/// we need to keep track whether the splatting is done
+	qreal theSplattingTimeStart;
 };
 
 
