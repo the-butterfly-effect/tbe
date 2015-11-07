@@ -14,6 +14,7 @@ SET(model_SOURCES
     model/Goal.cpp 
     model/Hint.cpp 
     model/Link.cpp 
+    model/Pingus.cpp 
     model/PivotPoint.cpp 
     model/PolyObject.cpp 
     model/Position.cpp 
@@ -39,6 +40,7 @@ SET(model_HEADERS
     model/Goal.h 
     model/Hint.h 
     model/Link.h 
+    model/Pingus.h 
     model/PivotPoint.h 
     model/PivotPointPtr.h
     model/PolyObject.h
