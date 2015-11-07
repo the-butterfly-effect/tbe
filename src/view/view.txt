@@ -23,6 +23,7 @@ SET(view_SOURCES
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
     view/ViewLink.cpp
+    view/ViewPingus.cpp
     view/ViewPostIt.cpp
     view/ViewWorld.cpp
     view/WinFailDialog.cpp
@@ -50,6 +51,7 @@ SET(view_HEADERS
     view/ViewDetonatorBox.h
     view/ViewLink.h
     view/ViewObject.h
+    view/ViewPingus.h
     view/ViewPostIt.h
     view/ViewWorld.h
     view/WinFailDialog.h

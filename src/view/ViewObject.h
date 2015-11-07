@@ -75,7 +75,7 @@ public:
     /// Sets the image to be displayed to the image pointed to by anIndex.
     /// @note Supposed to be only used by AbstractObject::updateViewObject().
     /// @note New images are only loaded upon creation of the object.
-    void setNewImageIndex(unsigned int anIndex);
+	virtual void setNewImageIndex(unsigned int anIndex);
 
     /// based on changes in the underlying AbstractObject, adjust the image
     /// by resizing and/or rotation. This is overkill for just moving...
