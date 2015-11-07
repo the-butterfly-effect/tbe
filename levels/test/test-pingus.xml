@@ -1,0 +1,29 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Test Pingus</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>TEST LEVEL TO VALIDATE OPERATION OF PINGUS.</description>
+        <date>10/11/09</date>
+    </levelinfo>
+    <toolbox />
+    <scene>
+        <scenesize width="7" height="5"/>
+        <predefined>
+            <object width="5.000" X="2.500" Y="2.000" height="0.500" type="RightRamp" angle="0.000"/>
+            <object width="0.120" X="0.2" Y="2.8" height="0.340" type="Pingus" angle="0.000" ID="pingus1"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.67;1.00;0.50;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="xover">7.0</property>
+            <property key="object">pingus1</property>
+        </goal>
+    </goals>
+    <hints />
+</tbe-level>
