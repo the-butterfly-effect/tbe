@@ -26,8 +26,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.7167969"
-     inkscape:cx="256"
-     inkscape:cy="96.000198"
+     inkscape:cx="255.99991"
+     inkscape:cy="88.000232"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,14 +56,12 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-162.72952,-111.86749)">
-    <g
-       id="g4038"
-       transform="translate(1.5e-4,-36.931816)">
-      <image
-         width="256"
-         height="32"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAgCAYAAAD9qabkAAAABHNCSVQICAgIfAhkiAAAD/hJREFU
+     transform="translate(-162.72961,-103.86753)">
+    <image
+       y="167.86763"
+       x="162.72971"
+       id="image3079"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAgCAYAAAD9qabkAAAABHNCSVQICAgIfAhkiAAAD/hJREFU
 eJztnC104lrXx3+86xEHd+KCPNelLjiQPI46xlHJdb1uxk1lr+u4GdfKXse44opMHThwRAaXOI7b
 rzhJGj5K29t2mPUs/mux+Ehy9td/7/OVAEccccQRRxxxxBFHHHHEEUccccQRRxxxxBFVBEEgQRCI
 1loAAUQpJUEQyKF1O+KIj8ah+R8EgYRhKEqpXy8/F1IKLT4XzvgVShw6AIUOvu+XPngv+YVt76Di
@@ -138,13 +136,13 @@ MkarDDxF7cv+P3mQrwhGuR7IdHlu1fclkNuBkE4AS+2v/Sup8j0UGgpMk1rzx7s8j37EYXHI+P9q
 HPGbQ257QjoHT1M7e3oKByDfA3F/mdam1nx753vEEUf8D+P/AR1B5zMqGlkMAAAAAElFTkSuQmCC
 
 "
-         id="image3079"
-         x="162.72946"
-         y="212.79941" />
-      <image
-         width="512"
-         height="32"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAAgCAYAAABkS8DlAAAABHNCSVQICAgIfAhkiAAAE2tJREFU
+       height="32"
+       width="256" />
+    <image
+       y="263.86792"
+       x="162.72961"
+       id="image3203"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAAgCAYAAABkS8DlAAAABHNCSVQICAgIfAhkiAAAE2tJREFU
 eJztnX90VOWZxz93OiRvkgm5IZEMNOoEYgmKED2uBk+6pi3aaNmaak+XrtBNK6u2q23+sC7tUg9l
 3ZZaepbjYbfaYs1ZPKdBcJtSSqct2tDSOFiqSYUyaCCXEsmNJmQCk+QODLn7x52ZzGR+5XdA3s85
 nBPu3Huf99659z7P832e9w5IJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolE
@@ -234,13 +232,13 @@ JpgFR+wXGhhBIvZTyfCTaV8iudSYzibQkff/ivWbUiYAd2e/FhuE5M6LGcNIlSPGVqL3QLiIK4G8
 ri+PTEUFYptwRwZBI+ynOwdDzWtNBEnfA5JuGvTIEgwCzDfST4MdbRPkPKczaZkiahZI2n08uLaW
 b35z5p+N/w/kIpMS+BSTlwAAAABJRU5ErkJggg==
 "
-         id="image3203"
-         x="162.72937"
-         y="244.7995" />
-      <image
-         width="256"
-         height="64"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAABACAYAAAD1Xam+AAAABHNCSVQICAgIfAhkiAAAIABJREFU
+       height="32"
+       width="512" />
+    <image
+       y="103.86753"
+       x="162.72966"
+       id="image3265"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAABACAYAAAD1Xam+AAAABHNCSVQICAgIfAhkiAAAIABJREFU
 eJztnT1wI9eV739wvSpdONFtJ+quDeyuDXaamwiYxGg70HY52MUoMejEhF9gYx2IlBPNKJHoSJQT
 DZ1oCAUyV8EKo0SkEgnrYAo7wROgZAAlZsvBVu8GWw0l7nZiXL/A/YLGbTZAgF9oUM+r+VeNZgR+
 3K9zzzn3fJZeKvEUT/EUX1N847o/+PiWk7yTkLyTkDy+5SRFTuop/v/H0/P/n4FrMYDPnq8kQRBk
@@ -420,13 +418,11 @@ gkO/yj/v92a+Z7J3+u9XCt7/PG6/sZOUGWKHcx2qrBiBCU61UMYDs0JICIHrSKRhISYBXtWiafkI
 XYvRSAXC9k+KLUzzv7dl0g8V/akNxnUEO1WVkp6QYHtsv3h1W8eVqgI/xVM8xf8s/D8cQ2psq1C4
 wQAAAABJRU5ErkJggg==
 "
-         id="image3265"
-         x="162.72942"
-         y="148.7993" />
-    </g>
+       height="64"
+       width="256" />
     <image
-       y="239.86778"
-       x="162.72952"
+       y="199.86774"
+       x="162.72961"
        id="image4141"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAA+9JREFU
 WIXtk09oFFccxz8vO7u+nSQ6u6UmE9zDUE2Yi7ASxEyLxVAorYeCl1J67kVFeiiePNqeCr3oQai0
@@ -451,8 +447,8 @@ Ua/XCYIA328ghKBWq+G6FXy/gaZp31vW6FsnT77X7q73F59I05oMYfpKAAAAAElFTkSuQmCC
        height="32"
        width="31.41625" />
     <image
-       y="271.86789"
-       x="162.72952"
+       y="231.86783"
+       x="162.72961"
        id="image4265"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAA2xJREFU
 WIXtk8FLI3cUxz+TzMTfJGOdMaYm2kWmhbKhlSW2Bw2e0v9AaHuwtz16ll487qUei3so9NCLFHrY
@@ -477,17 +473,17 @@ ae7efReAq6vneN7kPxYH+AvDJXQUbU7tvAAAAABJRU5ErkJggg==
     <text
        xml:space="preserve"
        style="font-size:13.84135532px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="218.97145"
-       y="272.77588"
+       x="218.9715"
+       y="234.77588"
        id="text4268"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4270"
-         x="218.97145"
-         y="272.77588">source images from</tspan><tspan
+         x="218.9715"
+         y="234.77588">source images from</tspan><tspan
          sodipodi:role="line"
-         x="218.97145"
-         y="290.07758"
+         x="218.9715"
+         y="252.07758"
          id="tspan4272">https://github.com/Pingus/pingus/tree/master/data/images/pingus/player0</tspan></text>
   </g>
 </svg>
