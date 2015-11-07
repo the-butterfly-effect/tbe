@@ -57,7 +57,7 @@ public:
 	/// child objects must specify what type of body they are
 	/// @returns b2_staticBody if this object has no mass
 	///          or b2_dynamicBody if its mass is larger than 0.001 kg
-	virtual b2BodyType getObjectType(void) const
+	virtual b2BodyType getObjectType(void) const override
 	{	return theB2ObjectType; }
 
 	/// returns true if the object can be rotated by the user
