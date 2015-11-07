@@ -21,7 +21,7 @@
 
 #include "Box2D.h"
 #include "tbe_global.h"
-#include "BaseObject.h"
+#include "AbstractObject.h"
 
 class DrawWorld;
 
@@ -48,26 +48,26 @@ public:
 	virtual ~World ( );
 
 	/** adds object to the World
-	 *  if the BaseObject knows about a DrawObject,
+	 *  if the AbstractObject knows about a DrawObject,
 	 *      that one will be added to the DrawWorld as well.
 	 *  @param anObjectPtr
 	 *  @return true if success - false if object already present
 	 */
-	bool addObject(BaseObject* anObjectPtr);
+	bool addObject(AbstractObject* anObjectPtr);
 
 	/** add the set of anObject1 and anObject2 to a list of objects that
 	  * cannot collide.
 	  * @param anObject1	pointer to an object
 	  * @param anObject2	pointer to a second object
 	  */
-	void addNoCollisionCombo(BaseObject* anObject1, BaseObject* anObject2);
+	void addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2);
 
 	/** find an object with a given ID within world
 	 *  @param anID  the ID to find for. Because not all objects have an ID,
 	 *               an empty ID will cause a NULL return.
 	 *  @returns NULL if not found or a pointer if found.
 	 */
-	BaseObject* findObjectByID(const QString& anID);
+	AbstractObject* findObjectByID(const QString& anID);
 
 	virtual qreal getG(void) { return -9.81; }
 
@@ -81,38 +81,38 @@ public:
 			theB2WorldPtr->DestroyJoint(aJointPtr);
 	}
 
-	/** removes the BaseObject pointed to from world after all simulations
+	/** removes the AbstractObject pointed to from world after all simulations
 	  * have run for another aDeltaTime seconds
 	  * removal will be done after everything has simulated.
 	  * World will take care of everything
 	  * @param anObjectPtr
 	  * @param aDeltaTime   time (in seconds) the object still has to live
 	  */
-	void removeMe(BaseObject* anObjectPtr, qreal aDeltaTime);
+	void removeMe(AbstractObject* anObjectPtr, qreal aDeltaTime);
 
-	/** removes the BaseObject pointed to by anObjectPtr from the World.
+	/** removes the AbstractObject pointed to by anObjectPtr from the World.
 	 *  This means that the caller is now responsible for the pointer
-	 *   - World doesn't destroy the BaseObject !!!
+	 *   - World doesn't destroy the AbstractObject !!!
 	 *  It does not remove the DrawObject from the DrawWorld, though!
 	 *  @param anObjectPtr pointer to object to be removed
 	 *  @return true if success - false if object was not found
 	 */
-	bool removeObject(BaseObject* anObjectPtr);
+	bool removeObject(AbstractObject* anObjectPtr);
 
 	/// keep the scene, set all objects back in original position
 	void reset (void);
 
 public:
-	void addBaseObjectToDrawWorld(BaseObject* aBOPtr);
+	void addAbstractObjectToDrawWorld(AbstractObject* aBOPtr);
 	void initAttributes ( ) ;
 
-	typedef QList<BaseObject*> BaseObjectPtrList;
+	typedef QList<AbstractObject*> AbstractObjectPtrList;
 	DrawWorld* theDrawWorldPtr;
 
 	/// the list of all objects managed by this World
-	BaseObjectPtrList theObjectPtrList;
+	AbstractObjectPtrList theObjectPtrList;
 
-	typedef QMap<BaseObject*, qreal> ToRemoveList;
+	typedef QMap<AbstractObject*, qreal> ToRemoveList;
 	ToRemoveList theToBeRemovedList;
 
 	b2World* theB2WorldPtr;
