@@ -13,6 +13,7 @@ Graphics:
 * many graphics were borrowed or adapted from the web.
   In all directories that contain graphics,  there should be a README listing the origins.
   Note that many images are sourced from openclipart.org and are under a PD license.
+  Some images (e.g. Pingus) are under a GPLv3+ license.
 
 Levels:
 * most levels were implemented by Klaas van Gend
