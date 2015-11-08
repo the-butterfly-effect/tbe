@@ -9,10 +9,14 @@
     </levelinfo>
     <toolbox />
     <scene>
-        <scenesize width="7" height="5"/>
+        <scenesize width="6" height="3.5"/>
         <predefined>
-            <object width="5.000" X="2.500" Y="2.000" height="0.500" type="RightRamp" angle="0.000"/>
-            <object width="0.120" X="0.2" Y="2.8" height="0.340" type="Pingus" angle="0.000" ID="pingus1"/>
+            <object width="5.000" X="2.500" Y="2.000" height="0.200" type="RightRamp" angle="0.000"/>
+            <object width="5.000" X="3.500" Y="1.000" height="0.200" type="LeftRamp" angle="0.000"/>
+            <object width="0.100" X="6.050" Y="1.000" height="1.000" type="Floor" angle="0.000"/>
+            <object width="0.320" X="0.2" Y="2.8" height="0.320" type="Pingus" angle="0.000" ID="pingus1"/>
+            <object width="0.320" X="0.2" Y="0.3" height="0.320" type="Pingus" angle="0.000" ID="pingus2"/>
+            <!--object width="0.320" X="0.6" Y="2.8" height="0.320" type="TennisBall" angle="0.000" /-->
             <object width="0.270" X="7.8" Y="0.300" height="0.360" type="Balloon" angle="0.000"/>
         </predefined>
         <background>

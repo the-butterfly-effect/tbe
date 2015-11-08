@@ -38,8 +38,8 @@ static PingusObjectFactory thePingusObjectFactory;
 static const qreal PINGUS_RADIUS  = 0.16; // m
 static const qreal PINGUS_MASS    = 1.50; // kg
 static const qreal SPLATTING_TIME = 0.16; // seconds
-static const qreal WALKING_SPEED  = 0.30; // m/s
-static const int WALKINGSEQS_PER_SECOND = 1; // one sequence per second for now
+static const qreal WALKING_SPEED  = 0.50; // m/s
+static const int WALKINGSEQS_PER_SECOND = 2; // two sequences per ###
 
 const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 1};
 
@@ -48,7 +48,7 @@ Pingus::Pingus()
 		: CircleObject(QObject::tr("Pingus"),
 					 QObject::tr("the famous penguin. He walks and believes in you. Keep him alive!"),
 					 "",
-					 PINGUS_RADIUS, PINGUS_MASS, 0.4 )
+					 PINGUS_RADIUS, PINGUS_MASS, 0.2 )
 {
 	theState = WALKINGRIGHT;
 	theSplattingTimeStart = -1.0;
@@ -90,16 +90,30 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 }
 
 
-void Pingus::callbackStepSliding(qreal, qreal aTotalTime)
+void Pingus::callbackStepSliding(qreal aTimeStep, qreal aTotalTime)
 {
 	// * check for the horizontal speed
 	//   - if the speed is below walking, switch to walking
 	// * if we have a sufficient vertical component, we're falling
+	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
+//	qreal myXImpulse = 0;
+	printf("sliding speed: %f\n", myXd);
+	if (fabs(myXd) < WALKING_SPEED)
+	{
+		goToState(WALKINGLEFT);
+		callbackStepWalking(aTimeStep, aTotalTime);
+		return;
+	}
+	if (myXd > 0 && theState==SLIDELEFT)
+		goToState(SLIDERIGHT);
+	if (myXd < 0 && theState==SLIDERIGHT)
+		goToState(SLIDELEFT);
 }
 
 
 void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 {
+	DEBUG1ENTRY;
 	// is this the first callback in Splatting state???
 	if (theSplattingTimeStart<0)
 	{
@@ -120,8 +134,9 @@ void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 }
 
 
-void Pingus::callbackStepWalking(qreal, qreal aTotalTime)
+void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 {
+	DEBUG1ENTRY;
 	// * check for the horizontal speed and adjust it if needed
 	//   by applying a force
 	//   - if the force becomes too big, turn around
@@ -130,15 +145,25 @@ void Pingus::callbackStepWalking(qreal, qreal aTotalTime)
 	// * set theAnimationFrameIndex to the horizontal position
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
 	qreal myXImpulse = 0;
-	if (myXd < WALKING_SPEED)
+	if (fabs(myXd) < WALKING_SPEED)
 		myXImpulse = 0.025;
+	if (fabs(myXd) > WALKING_SPEED)
+	{
+		goToState(SLIDELEFT);
+		callbackStepSliding(aTimeStep, aTotalTime);
+		return;
+	}
 
-	// in WALKING_SPEED [m/s], we have WALKINGSEQS_PER_SECOND*Pingus::FramesPerState[WALKINGLEFT] animation frames to draw
-	// i.e. first modulo by WALKING SPEED/WALKINGSEQS_PER_SECOND and normalize to 0-1, then divide by number of frames
-	qreal temp = fmodf(theB2BodyPtr->GetPosition().x, (WALKING_SPEED)) / WALKING_SPEED;
-	printf("temp: %f  ", temp);
+	if (myXd > 0 && theState==WALKINGLEFT)
+		goToState(WALKINGRIGHT);
+	if (myXd < 0 && theState==WALKINGRIGHT)
+		goToState(WALKINGLEFT);
+
+	// in WALKING_SPEED [m/s], we have Pingus::FramesPerState[WALKINGLEFT] animation frames to draw
+	qreal temp = fmodf(theB2BodyPtr->GetPosition().x, WALKING_SPEED/WALKINGSEQS_PER_SECOND);
+	temp /= WALKING_SPEED/WALKINGSEQS_PER_SECOND;
 	theAnimationFrameIndex = temp * static_cast<qreal>(Pingus::FramesPerState[WALKINGLEFT]);
-	printf("theAnimationFrameIndex: %d\n", theAnimationFrameIndex);
+	DEBUG1ENTRY;
 }
 
 
@@ -195,14 +220,18 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 		switch (theState)
 		{
 		case WALKINGLEFT:
+			theState = aNewState;
 			break;
 		case WALKINGRIGHT:
+			theState = aNewState;
 			break;
 		case FALLING:
 			break;
 		case SLIDELEFT:
+			theState = aNewState;
 			break;
 		case SLIDERIGHT:
+			theState = aNewState;
 			break;
 		case SPLATTING:
 			break;
