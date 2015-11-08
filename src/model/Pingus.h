@@ -101,6 +101,7 @@ private:
 	/// implemented from SimStepCallbackInterface
 	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
+	void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
@@ -116,6 +117,8 @@ private:
 
 	/// we need to keep track whether the splatting is done
 	qreal theSplattingTimeStart;
+	/// we need to keep track whether the splatting is done
+	qreal theFallingTimeStart;
 };
 
 

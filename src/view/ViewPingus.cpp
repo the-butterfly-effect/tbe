@@ -44,7 +44,7 @@ ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr)
 	thePixmapHeight= 32;
 
 	thePixmapList.clear();
-	for(unsigned int i=0; i < Pingus::DEAD; i++)
+	for(unsigned int i=0; i <= Pingus::DEAD; i++)
 	{
 		theIndexInImageList[i]=thePixmapList.size();
 		for (unsigned int j=0; j< Pingus::FramesPerState[i]; j++)
@@ -68,7 +68,7 @@ ViewPingus::~ViewPingus ( )
 void ViewPingus::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position &aCenter)
 {
 	// override angle so penguin remains 'upright'
-	Position myCenter(aCenter.x, aCenter.y, 0.1);
+	Position myCenter(aCenter.x, aCenter.y, 0.01);
 	ViewObject::adjustObjectDrawing(aWidth, aHeight, myCenter);
 }
 
