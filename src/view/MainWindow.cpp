@@ -128,7 +128,7 @@ void MainWindow::on_action_About_activated()
                    " to achieve a simple goal in the most complex way possible.<br><br>"
                    "(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend<br>"
                    "Licensed under GPL version 2 - <i>only</i>.<br><br>"
-                   "See http://%1/ for more info on this project.")
+				   "See <a href=\"http://%1/\">http://%1/</a> for more info on this project.")
                 .arg(QCoreApplication::instance()->organizationDomain()), this);
 }
 
@@ -174,10 +174,10 @@ void MainWindow::on_action_Libraries_activated()
 	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
 				"The Butterfly Effect is a proud user of the Box2D "
-				"Physics Library. Please refer to http://www.box2d.org/ ."
+				"Physics Library. Please refer to <a href=\"http://www.box2d.org/\">http://www.box2d.org/</a>."
 				"<br>"
 				"The Butterfly Effect uses the Qt GUI toolkit. "
-				"Please refer to http://qt-project.org/ ."
+				"Please refer to <a href=\"http://qt-project.org/\">http://qt-project.org/</a>."
 				""), this);
 }
 
