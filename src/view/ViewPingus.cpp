@@ -21,6 +21,7 @@
 #include "ImageCache.h"
 #include "TriggerExplosion.h"
 #include "ViewPingus.h"
+#include "Pingus.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -36,18 +37,45 @@ ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr)
 {
 	// Override everything from the ViewObject constructor because we are special, baby
 	DEBUG5ENTRY;
+	QPixmap myTempPixmap;
+	ImageCache::getPixmap("pingus", QSize(512,224), &myTempPixmap);
+
+	thePixmapWidth = 32;
+	thePixmapHeight= 32;
+
+	thePixmapList.clear();
+	for(unsigned int i=0; i < Pingus::DEAD; i++)
+	{
+		theIndexInImageList[i]=thePixmapList.size();
+		for (unsigned int j=0; j< Pingus::FramesPerState[i]; j++)
+		{
+			QPixmap mySmallPixmap = myTempPixmap.copy(j*thePixmapWidth,
+													  i*thePixmapHeight,
+													  thePixmapWidth,
+													  thePixmapHeight);
+			thePixmapList.push_back(mySmallPixmap);
+		}
+	}
+	setPixmap(thePixmapList[0]);
 }
+
 
 ViewPingus::~ViewPingus ( )
 {
 }
 
-void ViewPingus::setNewAnimationState(unsigned int anIndex)
-{
 
+void ViewPingus::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position &aCenter)
+{
+	// override angle so penguin remains 'upright'
+	Position myCenter(aCenter.x, aCenter.y, 0.1);
+	ViewObject::adjustObjectDrawing(aWidth, aHeight, myCenter);
 }
 
-void ViewPingus::setNewImageIndex(unsigned int anIndex)
-{
 
+void ViewPingus::setNewAnimationFrame(unsigned int aState, unsigned int aFrameIndex)
+{
+	Q_ASSERT(aState <= Pingus::DEAD);
+	Q_ASSERT(aFrameIndex < Pingus::FramesPerState[aState]);
+	setPixmap(thePixmapList[theIndexInImageList[aState]+aFrameIndex]);
 }

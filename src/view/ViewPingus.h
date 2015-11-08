@@ -19,6 +19,7 @@
 #ifndef VIEWPINGUS_H
 #define VIEWPINGUS_H
 
+#include "Pingus.h"
 #include "ViewObject.h"
 
 // forward declarations
@@ -50,17 +51,27 @@ public:
 	/// Sets the image to be displayed to the image pointed to by anIndex.
 	/// @note Supposed to be only used by Pingus object
 	/// @note New images are only loaded upon creation of the object.
-	virtual void setNewImageIndex(unsigned int anIndex) override;
+	virtual void setNewImageIndex(unsigned int) override
+	{ }
 
 	/// Sets the state of the pingus (walking left/right, etc).
-	/// Obviously works together with setNewImageIndex to find the exact
-	/// frame to display.
-	void setNewAnimationState(unsigned int anIndex);
+	/// Replaces setNewImageIndex that cannot work for Pingus.
+	/// @param
+	/// @param
+	void setNewAnimationFrame(unsigned int aState, unsigned int aFrameIndex);
+
+	/// overriden from ViewObject because we want to keep the pingus upright
+	virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight,
+									 const Position& aCenter) override;
 
 private:
 	// prevent copy constructor / assignment operator
 	ViewPingus(const ViewPingus&);
 	const ViewPingus& operator= (const ViewPingus&);
+
+	QPixmap theBigBitmap;
+
+	int theIndexInImageList[Pingus::DEAD];
 };
 
 #endif // VIEWPINGUS_H

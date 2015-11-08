@@ -47,28 +47,31 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anI
 	DEBUG5ENTRY;
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
 
-	QPixmap myTempPixmap;
-	QStringList myImageNames = anImageName.split(";");
-
-	QTransform theRGVTransform = ResizingGraphicsView::me()->transform();
-
-	QSize mySize((float)THESCALE*theRGVTransform.m11()*anAbstractObjectPtr->getTheWidth(),
-				 (float)THESCALE*theRGVTransform.m22()*anAbstractObjectPtr->getTheHeight());
-	theBaseImageName = myImageNames[0];
-    for(auto i : myImageNames)
+	if (!anImageName.isEmpty())
 	{
-		ImageCache::getPixmap(i, mySize, &myTempPixmap);
-		thePixmapList.push_back(myTempPixmap);
-	}
-	Q_ASSERT(thePixmapList.count() > 0);
-	setPixmap(thePixmapList[0]);
+		QPixmap myTempPixmap;
+		QStringList myImageNames = anImageName.split(";");
 
-	thePixmapWidth = QGraphicsPixmapItem::boundingRect().width();
-	thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
+		QTransform theRGVTransform = ResizingGraphicsView::me()->transform();
+
+		QSize mySize((float)THESCALE*theRGVTransform.m11()*anAbstractObjectPtr->getTheWidth(),
+					 (float)THESCALE*theRGVTransform.m22()*anAbstractObjectPtr->getTheHeight());
+		theBaseImageName = myImageNames[0];
+		for(auto i : myImageNames)
+		{
+			ImageCache::getPixmap(i, mySize, &myTempPixmap);
+			thePixmapList.push_back(myTempPixmap);
+		}
+		Q_ASSERT(thePixmapList.count() > 0);
+		setPixmap(thePixmapList[0]);
+
+		thePixmapWidth = QGraphicsPixmapItem::boundingRect().width();
+		thePixmapHeight= QGraphicsPixmapItem::boundingRect().height();
+	}
 
 	setCacheMode(QGraphicsItem::DeviceCoordinateCache);
 	initViewObjectAttributes();
-        adjustObjectDrawing();
+	adjustObjectDrawing();
 }
 
 ViewObject::~ViewObject()

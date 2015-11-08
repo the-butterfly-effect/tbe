@@ -79,7 +79,7 @@ public:
 
     /// based on changes in the underlying AbstractObject, adjust the image
     /// by resizing and/or rotation. This is overkill for just moving...
-    void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter);
+	virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter);
 protected:
     void adjustObjectDrawing(void);
 
@@ -120,12 +120,13 @@ protected:
     QPointF theClickedScenePos;
     const static int thePieMenuDelay = 225;
 
+	qreal thePixmapWidth;
+	qreal thePixmapHeight;
+
 private:
 	void initViewObjectAttributes(void);
 
 	QString theBaseImageName;
-	qreal thePixmapWidth;
-	qreal thePixmapHeight;
 
 	qreal theOldWidth;
 	qreal theOldHeight;

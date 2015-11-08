@@ -19,7 +19,7 @@
 #ifndef PINGUS_H
 #define PINGUS_H
 
-#include "PolyObject.h"
+#include "CircleObjects.h"
 #include "World.h"
 
 
@@ -27,12 +27,14 @@
   * game 'Pingus'. We're borrowing this nice penguin to make a
   * few nice puzzle levels that have a familiar feeling.
   */
-class Pingus : public PolyObject, public SimStepCallbackInterface
+class Pingus : public CircleObject, public SimStepCallbackInterface
 {
 public:
 	Pingus();
 
 	virtual ~Pingus();
+
+	virtual ViewObject*  createViewObject(float aDefaultDepth) override;
 
 	/// returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const override
@@ -59,10 +61,10 @@ public:
 		SLIDELEFT,
 		SLIDERIGHT,
 		SPLATTING,
-		DEAD
+		DEAD	// keep this one last!
 	};
 
-	static const int FramesPerState[];
+	static const unsigned int FramesPerState[];
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state

@@ -21,7 +21,7 @@
 #include "Box2D.h"
 #include "ObjectFactory.h"
 #include "Property.h"
-
+#include "ViewPingus.h"
 
 //// this class' ObjectFactory
 class PingusObjectFactory : public ObjectFactory
@@ -35,22 +35,20 @@ public:
 static PingusObjectFactory thePingusObjectFactory;
 
 
+static const qreal PINGUS_RADIUS  = 0.16; // m
+static const qreal PINGUS_MASS    = 1.50; // kg
 static const qreal SPLATTING_TIME = 0.16; // seconds
 static const qreal WALKING_SPEED  = 0.30; // m/s
 static const int WALKINGSEQS_PER_SECOND = 1; // one sequence per second for now
 
-const int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 1};
+const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 1};
 
 
 Pingus::Pingus()
-		: PolyObject(QObject::tr("Pingus"),
+		: CircleObject(QObject::tr("Pingus"),
 					 QObject::tr("the famous penguin. He walks and believes in you. Keep him alive!"),
-					 "Pingus",
-					 "(0.02,0.17)=(-0.02,0.17)=(-0.045,0.14)=(-0.04,0.065)=(0.0,0.04)"
-					 "=(0.04,0.065)=(0.045,0.14);"
-					 "(-0.04,0.02)=(-0.06,-0.04)=(-0.06,-0.11)=(-0.035,-0.17)"
-					 "=(0.035,-0.17)=(0.06,-0.11)=(0.06,-0.04)=(0.04,0.02)",
-					 0.12, 0.34, 1.5, 0.4 )
+					 "",
+					 PINGUS_RADIUS, PINGUS_MASS, 0.4 )
 {
 	theState = WALKINGRIGHT;
 	theSplattingTimeStart = -1.0;
@@ -65,6 +63,8 @@ Pingus::~Pingus()
 void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
 	DEBUG6("Pingus receives callback");
+	if (isPhysicsObjectCreated()==false)
+		return;
 
 	switch(theState)
 	{
@@ -85,6 +85,8 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 		// nothing to do
 		break;
 	}
+
+	static_cast<ViewPingus*>(theViewObjectPtr)->setNewAnimationFrame(theState, theAnimationFrameIndex);
 }
 
 
@@ -134,7 +136,9 @@ void Pingus::callbackStepWalking(qreal, qreal aTotalTime)
 	// in WALKING_SPEED [m/s], we have WALKINGSEQS_PER_SECOND*Pingus::FramesPerState[WALKINGLEFT] animation frames to draw
 	// i.e. first modulo by WALKING SPEED/WALKINGSEQS_PER_SECOND and normalize to 0-1, then divide by number of frames
 	qreal temp = fmodf(theB2BodyPtr->GetPosition().x, (WALKING_SPEED)) / WALKING_SPEED;
-	theAnimationFrameIndex = temp / static_cast<qreal>(Pingus::FramesPerState[WALKINGLEFT]);
+	printf("temp: %f  ", temp);
+	theAnimationFrameIndex = temp * static_cast<qreal>(Pingus::FramesPerState[WALKINGLEFT]);
+	printf("theAnimationFrameIndex: %d\n", theAnimationFrameIndex);
 }
 
 
@@ -142,11 +146,20 @@ void Pingus::createPhysicsObject(void)
 {
 	theState = WALKINGRIGHT;
 	theSplattingTimeStart = -1.0;
-	clearShapeList();
-	fillShapeList();
-	PolyObject::createPhysicsObject();
+	createBallShapeFixture(PINGUS_RADIUS, PINGUS_MASS);
+	CircleObject::createPhysicsObject();
 	theWorldPtr->registerCallback(this);
 }
+
+
+ViewObject*  Pingus::createViewObject(float aDefaultDepth)
+{
+	assert(theViewObjectPtr==NULL);
+	theViewObjectPtr = new ViewPingus(getThisPtr());
+	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+	return theViewObjectPtr;
+}
+
 
 void Pingus::deletePhysicsObject(void)
 {
@@ -154,9 +167,8 @@ void Pingus::deletePhysicsObject(void)
 	theState = WALKINGRIGHT;
 	theSplattingTimeStart = -1.0;
 	clearShapeList();
-	fillShapeList();
 
-	PolyObject::deletePhysicsObject();
+	CircleObject::deletePhysicsObject();
 }
 
 void Pingus::deletePhysicsObjectForReal(void)
@@ -232,5 +244,5 @@ void Pingus::switchToSmallShape(void)
 	myRestDef->shape   = myRestShape;
 	theShapeList.push_back(myRestDef);
 
-	PolyObject::createPhysicsObject(myCurrentPos);
+	CircleObject::createPhysicsObject(myCurrentPos);
 }
