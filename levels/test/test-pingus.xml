@@ -13,6 +13,7 @@
         <predefined>
             <object width="5.000" X="2.500" Y="2.000" height="0.500" type="RightRamp" angle="0.000"/>
             <object width="0.120" X="0.2" Y="2.8" height="0.340" type="Pingus" angle="0.000" ID="pingus1"/>
+            <object width="0.270" X="7.8" Y="0.300" height="0.360" type="Balloon" angle="0.000"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.67;1.00;0.50;1.00</gradientstop>
