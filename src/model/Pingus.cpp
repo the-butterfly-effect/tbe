@@ -116,20 +116,24 @@ void Pingus::callbackStepSliding(qreal aTimeStep, qreal aTotalTime)
 	//   - if the speed is below walking, switch to walking
 	// * if we have a sufficient vertical component, we're falling
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-//	qreal myXImpulse = 0;
-	//printf("sliding speed: %f\n", myXd);
 	if (fabs(myXd) < WALKING_SPEED)
 	{
 		goToState(WALKINGLEFT);
 		callbackStepWalking(aTimeStep, aTotalTime);
 		return;
 	}
-	if (myXd > 0 && theState==SLIDELEFT)
+	if (myXd > 0.0 && theState==SLIDELEFT)
 		goToState(SLIDERIGHT);
-	if (myXd < 0 && theState==SLIDERIGHT)
+	if (myXd < 0.0 && theState==SLIDERIGHT)
 		goToState(SLIDELEFT);
 
-	// TODO: Add a bit of friction
+	// Add a bit of friction
+	qreal myXImpulse = 0.0;
+	if (fabs(myXd) > WALKING_SPEED)
+		myXImpulse = -copysign(0.8, myXd);
+	Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0.0);
+	theB2BodyPtr->ApplyLinearImpulse(
+			myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 }
 
 
@@ -162,9 +166,6 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 	// * if we have a sufficient vertical component, we're falling
 	// * set theAnimationFrameIndex to the horizontal position
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-	qreal myXImpulse = 0;
-	if (fabs(myXd) < WALKING_SPEED)
-		myXImpulse = 0.025;
 	if (fabs(myXd) > WALKING_SPEED)
 	{
 		goToState(SLIDELEFT);
@@ -177,7 +178,13 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 	if (myXd < 0 && theState==WALKINGRIGHT)
 		goToState(WALKINGLEFT);
 
-	// TODO: Add the horizontal walking force
+	// Add the horizontal walking force
+	qreal myXImpulse = 0;
+	if (fabs(myXd) < WALKING_SPEED)
+		myXImpulse = copysign(5.0*(WALKING_SPEED-fabs(myXd))/WALKING_SPEED, myXd);
+	Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0);
+	theB2BodyPtr->ApplyLinearImpulse(
+			myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 
 	// in WALKING_SPEED [m/s], we have Pingus::FramesPerState[WALKINGLEFT] animation frames to draw
 	qreal temp = fmodf(theB2BodyPtr->GetPosition().x, WALKING_SPEED/WALKINGSEQS_PER_SECOND);
