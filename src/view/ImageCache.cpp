@@ -38,7 +38,8 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 
 bool ImageCache::getPixmap(const QString& anImageBaseName,
                            const QSize& aSize,
-                           QPixmap* anOutputPixmapPtr)
+						   QPixmap* anOutputPixmapPtr,
+						   QPainter::RenderHint aHint)
 {
     DEBUG5ENTRY;
 
@@ -107,7 +108,7 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
 			QSvgRenderer myRenderer(myFullPathName);
 			QPainter myPainter;
 			myPainter.begin(&myTempPixmap);
-			myPainter.setRenderHint(QPainter::Antialiasing);
+			myPainter.setRenderHint(aHint);
 			myRenderer.render(&myPainter);
 			myPainter.end();
 			break;

@@ -20,6 +20,7 @@
 #define IMAGECACHE_H
 
 #include <QtGui/QIcon>
+#include <QtGui/QPainter>
 #include <QtGui/QPixmap>
 #include <QtCore/QSize>
 #include <QtCore/QString>
@@ -42,9 +43,11 @@ public:
     /// @param anImageBaseName
     /// @param aSize
     /// @param anOutputPixmap
+	/// @param aHint     (default set to QPainter::Antialiasing)
     static bool getPixmap(const QString& anImageBaseName,
                           const QSize& aSize,
-                          QPixmap* anOutputPixmap);
+						  QPixmap* anOutputPixmap,
+						  QPainter::RenderHint aHint = QPainter::Antialiasing);
 
 
     /** always accessible (singleton) function to get an Icon from an image

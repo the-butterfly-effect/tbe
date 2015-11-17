@@ -38,7 +38,8 @@ ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr)
 	// Override everything from the ViewObject constructor because we are special, baby
 	DEBUG5ENTRY;
 	QPixmap myTempPixmap;
-	ImageCache::getPixmap("pingus", QSize(512,224), &myTempPixmap);
+	// don't want the image to be antialiased
+	ImageCache::getPixmap("pingus", QSize(512,224), &myTempPixmap, QPainter::NonCosmeticDefaultPen);
 
 	thePixmapWidth = 32;
 	thePixmapHeight= 32;
