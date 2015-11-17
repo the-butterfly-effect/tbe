@@ -47,7 +47,7 @@ public slots:
       * NOTE: the pointer is cached - if the user changes something,
       * this will be written back into the object.
       * @param anAbstractObjectPtr pointer to AbstractObject to read all data
-      *                       from, or a NULL pointer to grey out all
+      *                       from, or a nullptr pointer to grey out all
       *                       values
       * @returns true if successful - which should be always
       */

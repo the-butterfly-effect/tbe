@@ -75,20 +75,20 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 void EditObjectDialog::position_editingFinished()
 {
 /*
-	if (theUndoPtr != NULL)
+	if (theUndoPtr != nullptr)
 	{
 		// just to make sure the latest change also got in...
 		position_valueChanged(0);
 		theUndoPtr->pushYourself();
 	}
-	theUndoPtr = NULL;
+	theUndoPtr = nullptr;
 */
 }
 
 void EditObjectDialog::position_valueChanged (double )
 {
 /*
-    if (theUndoPtr == NULL)
+    if (theUndoPtr == nullptr)
         theUndoPtr = MoveUndoCommand::createUndoObject(theAOPtr);
 	theUndoPtr->update(
 			Position(ui.spinBoxX->value(),
@@ -152,10 +152,10 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr anAbstractObjectPtr)
 
 	// if we just changed the base object and there's still an undo pointer
 	// around, it will not have any interesting changes
-/*	if (theUndoPtr!=NULL)
+/*	if (theUndoPtr!=nullptr)
 	{
 		delete theUndoPtr;
-		theUndoPtr = NULL;
+		theUndoPtr = nullptr;
 	}
 */
     theAOPtr = anAbstractObjectPtr;

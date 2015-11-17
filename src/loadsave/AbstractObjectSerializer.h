@@ -53,7 +53,7 @@ public:
 	 *  @param q  the QDomNode containing the object definition
 	 *  @param isMovable  set to true if object is not to be moved by the user
 	 *  @param isXYMandatory  set to true if X="" and Y="" are mandatory for the object
-	 *  @returns  NULL if failed or a pointer to a valid AbstractObject if successful.
+	 *  @returns  nullptr if failed or a pointer to a valid AbstractObject if successful.
 	 *            Note that that AbstractObject is still on its own - not attached to a World yet.
 	 */
     static AbstractObjectPtr createObjectFromDom(const QDomNode& q,
@@ -77,7 +77,7 @@ private:
     const AbstractObjectPtr theAbstractObjectPtr;
 
 	/// implementation of ObjectFactory - not needed in AbstractObjectSerializer...
-    virtual AbstractObject* createObject(void) const { return NULL; }
+    virtual AbstractObject* createObject(void) const { return nullptr; }
 
 	/// Neutralize copy constructor and assignment operator
 	AbstractObjectSerializer(AbstractObjectSerializer&);

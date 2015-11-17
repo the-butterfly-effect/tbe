@@ -33,7 +33,7 @@
 #include <QtGui/QGraphicsSceneMouseEvent>
 
 ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
-    : QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
+    : QGraphicsPixmapItem(nullptr), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
     // nothing to do yet :-)
 	DEBUG5ENTRY;
@@ -42,7 +42,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
 }
 
 ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName) :
-    QGraphicsPixmapItem(NULL), theAbstractObjectPtr(anAbstractObjectPtr.get())
+    QGraphicsPixmapItem(nullptr), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
 	DEBUG5ENTRY;
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
@@ -76,7 +76,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anI
 
 ViewObject::~ViewObject()
 {
-	theAbstractObjectPtr = NULL;
+	theAbstractObjectPtr = nullptr;
     // Make sure to disable the EditObjectDialog
     // TODO: doesn't work like this - the InsertUndo keeps the VO around
     // i.e. we need an 'update' member in this ViewObject that takes the
@@ -85,7 +85,7 @@ ViewObject::~ViewObject()
     {
         ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
         if (myRSGVPtr)
-            emit myRSGVPtr->slot_showEditObjectDialog(NULL);
+            emit myRSGVPtr->slot_showEditObjectDialog(nullptr);
     }
 }
 
@@ -169,7 +169,7 @@ void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
-    setGraphicsEffect(NULL);
+    setGraphicsEffect(nullptr);
 }
 
 void ViewObject::initViewObjectAttributes(void)
@@ -178,7 +178,7 @@ void ViewObject::initViewObjectAttributes(void)
     setAcceptsHoverEvents(true);
     theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
-    theMUCPtr = NULL;
+    theMUCPtr = nullptr;
     theOldWidth = 0.0;
     theOldHeight= 0.0;
 }
@@ -189,11 +189,11 @@ void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent )
     // Overridden so we can actually start a move immediately without
     // having to go through the pie menu.
     // Don't allow moving if a pie menu is already visible on this object...
-    if (theMUCPtr==NULL
+    if (theMUCPtr==nullptr
             && theAbstractObjectPtr->isMovable()
             && PieMenuSingleton::getPieMenuParent()!=this)
     {
-        hoverLeaveEvent(NULL);
+        hoverLeaveEvent(nullptr);
         PieMenuSingleton::clearPieMenu();
         theMUCPtr=UndoSingleton::createUndoCommand(this,
                                                    ActionIcon::ACTION_MOVE);
@@ -213,7 +213,7 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     //    move
     // 3) if you hit the right mousebutton during a drag (yes, people do that)
     //    you get an extra mousePressEvent...
-    if (theMUCPtr != NULL)
+    if (theMUCPtr != nullptr)
         return;
     if (theIsLevelEditor)
     {
@@ -233,9 +233,9 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
 
 void ViewObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent* anEvent )
 {
-    if (theMUCPtr!=NULL)
+    if (theMUCPtr!=nullptr)
         theMUCPtr->mouseReleaseEvent(anEvent);
-    theMUCPtr=NULL;
+    theMUCPtr=nullptr;
 }
 
 
@@ -251,9 +251,9 @@ void ViewObject::realHoverEnterEvent(void)
 
 void ViewObject::realMousePressEvent(void)
 {
-    if (theMUCPtr==NULL)
+    if (theMUCPtr==nullptr)
     {
-        hoverLeaveEvent(NULL);
+        hoverLeaveEvent(nullptr);
         PieMenuSingleton::addPieMenuToViewObject(this, theClickedScenePos);
     }
 }

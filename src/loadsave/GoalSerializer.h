@@ -44,7 +44,7 @@ public:
 
 	/** create a Goal from the information in the provided Dom
 	 *  @param q  the QDomNode containing the goal definition
-	 *  @returns  NULL if failed or a pointer to a valid Goal if successful.
+	 *  @returns  nullptr if failed or a pointer to a valid Goal if successful.
 	 *            Note that that Goal is still on its own - not attached to a World yet.
 	 */
 	static Goal* createObjectFromDom(const QDomNode& q);
@@ -54,7 +54,7 @@ public:
 	  *    Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	  * @param    aWorldPtr pointer to the World instance, used to check ObjectIDs
 	  * @param    aString the string to parse into a Goal
-	  * @returns  NULL if failed or a pointer to a valid Goal if successful.
+	  * @returns  nullptr if failed or a pointer to a valid Goal if successful.
 	  *           Note that that Goal is still on its own - not attached to a World yet.
 	  */
 	static Goal* createObjectFromString(World* aWorldPtr, const QString& aString);

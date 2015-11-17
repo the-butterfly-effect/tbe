@@ -33,7 +33,7 @@ ViewLink::ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImage
 {
     // Everything is done in the ViewObject constructor...
     DEBUG1ENTRY;
-    theLinePtr = NULL;
+    theLinePtr = nullptr;
 }
 
 ViewLink::~ViewLink ( )
@@ -45,12 +45,12 @@ ViewLink::~ViewLink ( )
 void ViewLink::setEndpoints(const Vector& aFirstPoint,
                             const Vector& aSecondPoint)
 {
-    if (theLinePtr==NULL)
+    if (theLinePtr==nullptr)
     {
         // We expect the ImageName to contain the color information.
         // If no image name, invisible line
 
-        theLinePtr = new QGraphicsLineItem(NULL);
+        theLinePtr = new QGraphicsLineItem(nullptr);
         QPen pen;
         if (theImageName=="" || theImageName=="Empty" || theImageName=="Link")
             pen = QPen(QColor("transparent"), 2, Qt::NoPen);

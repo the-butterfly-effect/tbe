@@ -38,8 +38,8 @@ CrossRegisterSingleton::CrossRegisterSingleton()
 
 CrossRegisterSingleton* CrossRegisterSingleton::me(void)
 {
-    static CrossRegisterSingleton* theCrossRegisterSingletonPtr = NULL;
-    if (theCrossRegisterSingletonPtr==NULL)
+    static CrossRegisterSingleton* theCrossRegisterSingletonPtr = nullptr;
+    if (theCrossRegisterSingletonPtr==nullptr)
         theCrossRegisterSingletonPtr = new CrossRegisterSingleton();
     return theCrossRegisterSingletonPtr;
 }
@@ -64,8 +64,8 @@ void CrossRegisterSingleton::updateCrossState(signed int anAddOrSubtract)
 
 
 ViewObjectActionDecorator::ViewObjectActionDecorator()
-    : QGraphicsPixmapItem(NULL),
-      theAUCPtr(NULL),
+    : QGraphicsPixmapItem(nullptr),
+      theAUCPtr(nullptr),
       theCurrentCrossState(NONE)
 {
     // nothing to do here
@@ -107,7 +107,7 @@ ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
 {
     // if there is no undo registered, let's delegate to someone else
     // (i.e. our parent)
-    if (theAUCPtr==NULL)
+    if (theAUCPtr==nullptr)
     {
         event->ignore();
         return;

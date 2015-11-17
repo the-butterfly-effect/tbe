@@ -43,7 +43,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	if (q.nodeName() != theGoalString)
 	{
 		DEBUG2("createGoalFromDom: expected <%s> but got <%s>", ASCII(theGoalString), ASCII(q.nodeName()));
-		return NULL;
+		return nullptr;
 	}
 
 	// the nodemap contains all the parameters, or not...
@@ -51,7 +51,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 
 	QString myObjectType = myNodeMap.namedItem(theTypeAttributeString).nodeValue();
 
-	Goal* myGPtr = NULL;
+	Goal* myGPtr = nullptr;
 	if (myObjectType=="distance")
 		myGPtr = new GoalDistance();
 	if (myObjectType=="positionchange")
@@ -59,7 +59,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	if (myObjectType=="statechange")
 		myGPtr = new GoalStateChange();
 
-	if (myGPtr==NULL)
+	if (myGPtr==nullptr)
 	{
 		DEBUG2("createGoalFromDom: '%s' has problems in its factory", ASCII(myObjectType));
 		goto not_good;
@@ -89,32 +89,32 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 	return myGPtr;
 not_good:
 	delete myGPtr;
-	return NULL;
+	return nullptr;
 }
 
 Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aString)
 {
-	Goal* myGoal = NULL;
+	Goal* myGoal = nullptr;
 
 	// Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	QStringList myList = aString.split(";");
 
 	if (myList.size()<3)
-		return NULL;
+		return nullptr;
 	int myType = getColumnZero().indexOf(myList[0]);
 	if (myType==-1)
 	{
 		DEBUG2("Problem: Goal type not recognized");
-		return NULL;
+		return nullptr;
 	}
 
 	switch (myType)
 	{
 	case DISTANCE:
         if (myList.size()!=5)
-            return NULL;
+            return nullptr;
         if (myList[2]!=">" && myList[2]!="<")
-            return NULL;
+            return nullptr;
         myGoal = new GoalDistance();
         if (myList[2]==">")
             myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
@@ -161,7 +161,7 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 	if (myGoal->parseProperties(aWorldPtr)==true)
 		return myGoal;
 	delete myGoal;
-	return NULL;
+	return nullptr;
 }
 
 

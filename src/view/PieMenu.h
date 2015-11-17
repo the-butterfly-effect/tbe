@@ -83,7 +83,7 @@ private:
 	explicit ActionIcon(ActionType anActionType,
 			   const QString & aFileName,
 			   bool  isEnabled,
-			   QGraphicsWidget* aParentPtr = NULL);
+			   QGraphicsWidget* aParentPtr = nullptr);
 
 	/// @returns the type of this icon
 	ActionType getActionType()
@@ -168,7 +168,7 @@ public:
 
 	/// Puts a PieMenu on top of the selected ViewObject.
 	/// @param aViewObjectPtr pointer to the ViewObject to stick a PieMenu
-	///        on or NULL if you don't want a PieMenu - you can also call
+	///        on or nullptr if you don't want a PieMenu - you can also call
 	///        clearPieMenu() in that case.
 	/// @param aPositionInObjectCoord position of the mouse click on the
 	///        object in *scene* coordinates
@@ -176,7 +176,7 @@ public:
 									   QPointF aPositionInSceneCoord);
 
 	static void clearPieMenu(void)
-	{ addPieMenuToViewObject(NULL, QPointF(0,0)); }
+	{ addPieMenuToViewObject(nullptr, QPointF(0,0)); }
 
 	/// Sets up all state to check if an ActionIcon will be clicked.
 	/// - see ViewWorld::mousePressEvent()

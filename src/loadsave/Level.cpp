@@ -71,7 +71,7 @@ const char* theIsFailAttributeString    = "isFail";
 static QString theFileName;
 
 
-static Level* theCurrentLevelPtr = NULL;
+static Level* theCurrentLevelPtr = nullptr;
 
 // Constructors/Destructors
 //
@@ -82,7 +82,7 @@ Level::Level ( )
 	theWorldPtr->theWorldWidth  = 3.0;
 	theWorldPtr->theWorldHeight = 2.0;
 
-	assert(theCurrentLevelPtr==NULL);
+	assert(theCurrentLevelPtr==nullptr);
 	theCurrentLevelPtr = this;
 }
 
@@ -90,9 +90,9 @@ Level::~Level ( )
 {
     DEBUG1ENTRY;
     assert(theCurrentLevelPtr==this);
-    theCurrentLevelPtr=NULL;
+    theCurrentLevelPtr=nullptr;
     delete theWorldPtr;
-    theWorldPtr = NULL;
+    theWorldPtr = nullptr;
 
 	while(theHintPtrList.size())
 	{
@@ -115,7 +115,7 @@ Level::findToolBoxGroup(AbstractObjectPtr anAOPtr)
 		if (i->theInternalName == anAOPtr->getInternalName())
 			return i;
 	}
-	return NULL;
+	return nullptr;
 }
 
 
@@ -210,7 +210,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 		// no sanity checks, leave that to the serializer
 		QString myExtraError;
 		ToolboxGroup* myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(q, &myExtraError);
-		if (myTbGPtr == NULL)
+		if (myTbGPtr == nullptr)
 		{
 			myErrorMessage += myExtraError;
 			goto not_good;
@@ -318,7 +318,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			}
 
 			Goal* myGPtr = GoalSerializer::createObjectFromDom(q);
-			if (myGPtr == NULL)
+			if (myGPtr == nullptr)
 			{
 				myErrorMessage += tr("createObjectFromDom failed");
 				hasProblem = true;
@@ -378,7 +378,7 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 			}
 
 			Hint* myHPtr = HintSerializer::createObjectFromDom(q);
-			if (myHPtr == NULL)
+			if (myHPtr == nullptr)
 			{
 				myErrorMessage += tr("createObjectFromDom failed");
 				hasProblem = true;
@@ -412,7 +412,7 @@ void
 Level::addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const
 {
     const AbstractObjectSerializer* myBOS = anObjectRef.getSerializer();
-    if (myBOS!=NULL)
+    if (myBOS!=nullptr)
     {
         myBOS->serialize(&aParent);
         delete myBOS;

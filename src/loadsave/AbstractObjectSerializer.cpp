@@ -111,7 +111,7 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 	if (q.nodeName() != "object")
 	{
 		DEBUG2("createObjectFromDom: expected <object> but got <%s>", ASCII(q.nodeName()));
-		return NULL;
+		return nullptr;
 	}
 
 	// the nodemap contains all the parameters, or not...
@@ -127,7 +127,7 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 		if (isXYMandatory)
 		{
 			DEBUG2("createObjectFromDom: '%s' has invalid X or Y", ASCII(myObjectType));
-			return NULL;
+			return nullptr;
 		}
 		myObjectPosition = Position(0,0,0);
 	}

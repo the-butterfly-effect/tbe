@@ -38,7 +38,7 @@ DeleteUndoCommand::DeleteUndoCommand(
 
     // you can always delete (and undelete) objects in Level Creator mode
     if (theIsLevelEditor==false)
-        assert(theTBGPtr!=NULL);
+        assert(theTBGPtr!=nullptr);
     commit();
 }
 

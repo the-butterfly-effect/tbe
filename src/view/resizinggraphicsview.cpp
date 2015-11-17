@@ -33,16 +33,16 @@
 #include "World.h"
 
 
-static ResizingGraphicsView* theRSGVPtr = NULL;
+static ResizingGraphicsView* theRSGVPtr = nullptr;
 
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     QGraphicsView(aParentPtr),
-    theGameResourcesPtr(NULL),
-    theMainWindowPtr(NULL),
-    theObjectEditorPtr(NULL),
-    theWinFailDialogPtr(NULL),
-    theFrameRateViewPtr(NULL)
+    theGameResourcesPtr(nullptr),
+    theMainWindowPtr(nullptr),
+    theObjectEditorPtr(nullptr),
+    theWinFailDialogPtr(nullptr),
+    theFrameRateViewPtr(nullptr)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -57,7 +57,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 ResizingGraphicsView::~ResizingGraphicsView()
 {
 	delete theSimControlsPtr;
-	theRSGVPtr = NULL;
+	theRSGVPtr = nullptr;
 }
 
 
@@ -66,40 +66,40 @@ void ResizingGraphicsView::clearViewWorld(void)
 	DEBUG3ENTRY;
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
-	setScene(NULL);
+	setScene(nullptr);
 	emit theSimControlsPtr->hideYourself();
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
 
 	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = NULL;
+	theWinFailDialogPtr = nullptr;
 
-	if (theScenePtr != NULL)
+	if (theScenePtr != nullptr)
 	{
 		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
 		delete theScenePtr;
-		theScenePtr=NULL;
+		theScenePtr=nullptr;
 	}
 }
 
 
 GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
 {
-	Q_ASSERT(theGameResourcesPtr != NULL);
+	Q_ASSERT(theGameResourcesPtr != nullptr);
 	return theGameResourcesPtr;
 }
 
 
 ResizingGraphicsView* ResizingGraphicsView::me(void)
 {
-	Q_ASSERT(theRSGVPtr!=NULL);
+	Q_ASSERT(theRSGVPtr!=nullptr);
 	return theRSGVPtr;
 }
 
 
 void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 {
-	if (event!=NULL)
+	if (event!=nullptr)
 		QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	theSimControlsPtr->parentResize(frameSize());
@@ -131,7 +131,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	setScene(aScenePtr);
 	fitInView(0, -aScenePtr->getHeight(),
 			  aScenePtr->getWidth(), aScenePtr->getHeight());
-	resizeEvent(NULL);
+	resizeEvent(nullptr);
 	emit theSimControlsPtr->showYourself();
 	theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
@@ -156,7 +156,7 @@ void ResizingGraphicsView::slot_actionChooseLevel()
 {
 	DEBUG3ENTRY;
 	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = NULL;
+	theWinFailDialogPtr = nullptr;
 	emit theMainWindowPtr->on_action_Open_Level_triggered();
 }
 
@@ -165,7 +165,7 @@ void ResizingGraphicsView::slot_actionNextLevel()
 {
 	DEBUG3ENTRY;
 	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = NULL;
+	theWinFailDialogPtr = nullptr;
 	QString myNextLevelName = ChooseLevel::getNextLevelName();
 	if (myNextLevelName.isEmpty()==false)
 		theMainWindowPtr->loadLevel(myNextLevelName);
@@ -178,7 +178,7 @@ void ResizingGraphicsView::slot_actionReplay()
 {
 	DEBUG3ENTRY;
 	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = NULL;
+	theWinFailDialogPtr = nullptr;
 	emit theScenePtr->slot_signalReset();
 	emit theSimControlsPtr->onReset();
 	emit theSimControlsPtr->showYourself();
@@ -200,14 +200,14 @@ void ResizingGraphicsView::slot_actionSkipLevel()
 void ResizingGraphicsView::slot_editObjectDialog_destroyed()
 {
     DEBUG3ENTRY;
-	theObjectEditorPtr = NULL;
+	theObjectEditorPtr = nullptr;
 }
 
 
 void ResizingGraphicsView::slot_levelDeath(void)
 {
 	// only need to display the dialog once...
-	if (theWinFailDialogPtr!=NULL)
+	if (theWinFailDialogPtr!=nullptr)
 		return;
 	DEBUG3ENTRY;
 	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
@@ -219,7 +219,7 @@ void ResizingGraphicsView::slot_levelDeath(void)
 void ResizingGraphicsView::slot_levelWon(void)
 {
 	// Only need to display the dialog once...
-	if (theWinFailDialogPtr!=NULL)
+	if (theWinFailDialogPtr!=nullptr)
 		return;
 	DEBUG3ENTRY;
 
@@ -240,7 +240,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObjectPtr anAOPtr)
 {
-    if (theObjectEditorPtr!=NULL)
+    if (theObjectEditorPtr!=nullptr)
         delete theObjectEditorPtr;
     theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
     connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(on_objectEditor_destroyed()));

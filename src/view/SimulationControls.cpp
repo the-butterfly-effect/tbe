@@ -120,18 +120,18 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theSimStateMachine.setInitialState(theStoppedState);
 
 	// add actions and their quick keys
-    theForwardAction = new QAction(theForwardIcon, tr("&Forward"), NULL);
+    theForwardAction = new QAction(theForwardIcon, tr("&Forward"), nullptr);
     //: translators: 'f' is for (fast) forward
     theForwardAction->setShortcut(QKeySequence(tr("f")));
 
     // add actions and their quick keys
-    thePauseAction = new QAction(thePauseIcon, tr("P&ause"), NULL);
+    thePauseAction = new QAction(thePauseIcon, tr("P&ause"), nullptr);
 
     // add actions and their quick keys
-    thePlayAction = new QAction(thePlayIcon, tr("&Play"), NULL);
+    thePlayAction = new QAction(thePlayIcon, tr("&Play"), nullptr);
 
     // add actions and their quick keys
-    theResetAction = new QAction(theResetIcon, tr("&Reset"), NULL);
+    theResetAction = new QAction(theResetIcon, tr("&Reset"), nullptr);
     //: translators: 'r' is for reset
     theResetAction->setShortcut(QKeySequence(tr("r")));
 
@@ -141,7 +141,7 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     //: translators: really-fast-forward is only available as a key shortcut
     //: it should be shift-<normal fast-forward>...
     QKeySequence my4FwdKey(tr("Shift+f"));
-    the4FAction = new QAction(NULL);
+    the4FAction = new QAction(nullptr);
     the4FAction->setShortcut(my4FwdKey);
     //Qt::ApplicationShortcu
     this->addAction(the4FAction);

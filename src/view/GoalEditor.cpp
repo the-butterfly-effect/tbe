@@ -79,7 +79,7 @@ bool GoalEditor::addNewGoalToList(GoalPtrList& aList, int i, const QStandardItem
 {
 	QString myString = rowToString(&aModel, i, ';');
 	Goal* myGoalPtr = GoalSerializer::createObjectFromString(theWorldPtr, myString);
-	if (myGoalPtr != NULL)
+	if (myGoalPtr != nullptr)
 	{
 		myGoalPtr->isFail = anIsFail;
 		aList.push_back(myGoalPtr);
@@ -105,11 +105,11 @@ void GoalEditor::changeEvent(QEvent *e)
 void GoalEditor::fixupCellColoring(QStandardItemModel* aModel, int aRow)
 {
 	// highlight cells as red if object name doesn't exist
-	if (theWorldPtr->findObjectByID(aModel->item(aRow, 1)->text())==NULL)
+	if (theWorldPtr->findObjectByID(aModel->item(aRow, 1)->text())==nullptr)
 		aModel->item(aRow, 1)->setForeground(QBrush(Qt::red));
 	else
 		aModel->item(aRow, 1)->setForeground(QBrush(Qt::black));
-	if (theWorldPtr->findObjectByID(aModel->item(aRow, 4)->text())==NULL)
+	if (theWorldPtr->findObjectByID(aModel->item(aRow, 4)->text())==nullptr)
 		aModel->item(aRow, 4)->setForeground(Qt::red);
 	else
 		aModel->item(aRow, 4)->setForeground(Qt::black);
@@ -208,7 +208,7 @@ void GoalEditor::on_toolButtonFailsPlus_clicked()
 
 void GoalEditor::populate(void)
 {
-	assert(theWorldPtr!=NULL);
+	assert(theWorldPtr!=nullptr);
 
 	theGoalsModelPtr->clear();
 	theFailsModelPtr->clear();

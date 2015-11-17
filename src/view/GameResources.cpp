@@ -29,7 +29,7 @@
 GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_TOPRIGHT),
     ui(new Ui::GameResources),
-    theLevelPtr(NULL),
+    theLevelPtr(nullptr),
     theParentPtr(aRSGVPtr)
 {
     DEBUG1ENTRY;
@@ -82,7 +82,7 @@ void GameResources::on_theResetButton_clicked()
 void GameResources::setLevelPtr(Level* aLevelPtr)
 {
 	DEBUG5ENTRY;
-    Q_ASSERT(aLevelPtr!=NULL);
+    Q_ASSERT(aLevelPtr!=nullptr);
     theLevelPtr = aLevelPtr;
 
     ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());

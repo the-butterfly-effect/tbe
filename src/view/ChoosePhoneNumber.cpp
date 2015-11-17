@@ -27,7 +27,7 @@ ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView
 	theDBPtr(aBoxPtr)
 {
 	m_ui->setupUi(this);
-	assert(theDBPtr!=NULL);
+	assert(theDBPtr!=nullptr);
 
 	// all possible phone numbers are inserted below
 	m_ui->comboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
@@ -70,7 +70,7 @@ void ChoosePhoneNumber::on_comboBox_activated()
 	assert(myLine.isEmpty()==false);
 
 	// let's notify the detonator box
-	assert(theDBPtr!=NULL);
+	assert(theDBPtr!=nullptr);
 	theDBPtr->setPhoneNumber(myLine);
 
 	emit close();

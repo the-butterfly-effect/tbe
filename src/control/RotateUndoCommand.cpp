@@ -24,7 +24,7 @@
 
 RotateUndoCommand::RotateUndoCommand(
         ViewObject* anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), NULL),
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), nullptr),
       theButtonDownVectorAngle(999.f)
 {
     DEBUG3ENTRY;

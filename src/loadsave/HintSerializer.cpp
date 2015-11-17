@@ -42,7 +42,7 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 	if (q.nodeName() != theHintString)
 	{
 		DEBUG2("createHintFromDom: expected <%s> but got <%s>", ASCII(theHintString), ASCII(q.nodeName()));
-		return NULL;
+		return nullptr;
 	}
 
 	Hint* myHPtr = new Hint();
@@ -86,5 +86,5 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 	return myHPtr;
 not_good:
 	delete myHPtr;
-	return NULL;
+	return nullptr;
 }

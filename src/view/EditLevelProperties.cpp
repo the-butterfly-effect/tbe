@@ -99,7 +99,7 @@ void EditLevelProperties::populateTableAndGradient(Background* aBGPtr)
 		myRowList.push_back(myAlphaPtr);
 		theModel->appendRow(myRowList);
 	}
-	QGraphicsScene* myScenePtr = new QGraphicsScene(NULL);
+	QGraphicsScene* myScenePtr = new QGraphicsScene(nullptr);
 	myScenePtr->setBackgroundBrush(myBackground);
 	m_ui->gradientView->setScene(myScenePtr);
 }
@@ -127,7 +127,7 @@ void EditLevelProperties::slot_modelItemChanged(QStandardItem* /*anItem*/)
     {
         emit myPtr->setupBackground();
         emit myPtr->on_sizeAdjust();
-        ResizingGraphicsView::me()->resizeEvent(NULL);
+        ResizingGraphicsView::me()->resizeEvent(nullptr);
     }
     populateTableAndGradient(&(theLevelPtr->theWorldPtr->theBackground));
 }

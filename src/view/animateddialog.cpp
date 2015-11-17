@@ -20,7 +20,7 @@
 #include <QtCore/QMutex>
 #include "tbe_global.h"
 
-AnimatedDialog* AnimatedDialog::theCurrentlyViewedAnimatedDialog = NULL;
+AnimatedDialog* AnimatedDialog::theCurrentlyViewedAnimatedDialog = nullptr;
 static QMutex theAnimatedDialogMutex;
 
 AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr,
@@ -28,7 +28,7 @@ AnimatedDialog::AnimatedDialog(ResizingGraphicsView* aParentPtr,
     QWidget(aParentPtr),
     theYCoord(-1),
     theOurParentPtr(aParentPtr),
-    theAnimation(NULL, "geometry"),
+    theAnimation(nullptr, "geometry"),
     theIsToBeDeleted(false),
     theAppearanceDirection(anAppearDirection)
 {
@@ -42,7 +42,7 @@ AnimatedDialog::~AnimatedDialog()
 	// catch any dialogs that disappear unanimated
 	theAnimatedDialogMutex.lock();
 	if (theCurrentlyViewedAnimatedDialog==this)
-		theCurrentlyViewedAnimatedDialog=NULL;
+		theCurrentlyViewedAnimatedDialog=nullptr;
 	theAnimatedDialogMutex.unlock();
 }
 
@@ -53,7 +53,7 @@ void AnimatedDialog::appearAnimated()
 	AnimatedDialog* myADPtr = theCurrentlyViewedAnimatedDialog;
 	theCurrentlyViewedAnimatedDialog = this;
 	theAnimatedDialogMutex.unlock();
-	if (myADPtr!=NULL)
+	if (myADPtr!=nullptr)
 		emit myADPtr->disappearAnimated();
 
 	// setup the animation to appear
@@ -95,7 +95,7 @@ void AnimatedDialog::disappearAnimated()
 	// Yes, I'm aware there is a potential race condition here.
 	theAnimatedDialogMutex.lock();
 	if (theCurrentlyViewedAnimatedDialog==this)
-		theCurrentlyViewedAnimatedDialog=NULL;
+		theCurrentlyViewedAnimatedDialog=nullptr;
 	theAnimatedDialogMutex.unlock();
 
 	// setup disappear animation
@@ -188,6 +188,6 @@ void AnimatedDialog::slot_handleDisappeared()
 
 void AnimatedDialog::makeAllAnimatedDialogsDisappear()
 {
-	if (theCurrentlyViewedAnimatedDialog!=NULL)
+	if (theCurrentlyViewedAnimatedDialog!=nullptr)
 		emit theCurrentlyViewedAnimatedDialog->disappearAnimated();
 }

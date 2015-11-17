@@ -24,8 +24,8 @@
 #include "DeleteUndoCommand.h"
 #include "ChoosePhoneUndoCommand.h"
 
-static UndoSingleton* theUndoSingletonPtr = NULL;
-static AbstractUndoCommand* theCurrentlyActiveUndoCommand = NULL;
+static UndoSingleton* theUndoSingletonPtr = nullptr;
+static AbstractUndoCommand* theCurrentlyActiveUndoCommand = nullptr;
 
 
 UndoSingleton::UndoSingleton(void)
@@ -57,7 +57,7 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 {
 	DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);
 
-	AbstractUndoCommand* myNewCommand = NULL;
+	AbstractUndoCommand* myNewCommand = nullptr;
 	// return immediately for UndoActions that do not need further
 	// user interactions (i.e. those derived from Dummy).
 	switch(anUndoType)
@@ -84,7 +84,7 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 		// TODO/FIXME
 		break;
 	}
-	if (theCurrentlyActiveUndoCommand!=NULL)
+	if (theCurrentlyActiveUndoCommand!=nullptr)
 		delete theCurrentlyActiveUndoCommand;
 	theCurrentlyActiveUndoCommand = myNewCommand;
 	return myNewCommand;
@@ -93,7 +93,7 @@ UndoSingleton::createUndoCommand(ViewObject* anObject,
 
 UndoSingleton* UndoSingleton::me(void)
 {
-	if (theUndoSingletonPtr==NULL)
+	if (theUndoSingletonPtr==nullptr)
 		theUndoSingletonPtr = new UndoSingleton();
 	return theUndoSingletonPtr;
 }
@@ -102,7 +102,7 @@ UndoSingleton* UndoSingleton::me(void)
 void UndoSingleton::notifyGone(AbstractUndoCommand* anAUCPtr)
 {
 	if (anAUCPtr == theCurrentlyActiveUndoCommand)
-		theCurrentlyActiveUndoCommand = NULL;
+		theCurrentlyActiveUndoCommand = nullptr;
 }
 
 

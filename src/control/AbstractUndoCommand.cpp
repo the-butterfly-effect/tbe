@@ -125,14 +125,14 @@ void AbstractUndoCommand::redo(void)
 
 void AbstractUndoCommand::resetDecoratorPosition()
 {
-    Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theViewObjPtr!=nullptr);
     theViewObjPtr->theDecorator.setPos( QPointF(0,0) );
 }
 
 
 void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
 {
-    Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theViewObjPtr!=nullptr);
     theViewObjPtr->theDecorator.setDecoratorImage(anImageName, this);
     setDecoratorStateMouseMove();
 }
@@ -140,7 +140,7 @@ void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
 
 void AbstractUndoCommand::setDecoratorPosition(Vector aScenePos)
 {
-    Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theViewObjPtr!=nullptr);
     theViewObjPtr->theDecorator.setPos( theViewObjPtr->mapFromScene(aScenePos.toQPointF())
                                         - theViewObjPtr->boundingRect().center() );
 }

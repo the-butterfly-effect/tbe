@@ -106,7 +106,7 @@ QString ChooseLevel::getCurrent(void)
 {
 	DEBUG1ENTRY;
 	QTreeWidgetItem* myItemPtr = m_ui->theTreeWidget->currentItem();
-	if (myItemPtr==NULL)
+	if (myItemPtr==nullptr)
 		return "";
 	return myItemPtr->text(FILENAME_COLUMN);
 }

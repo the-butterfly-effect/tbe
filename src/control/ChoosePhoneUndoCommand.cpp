@@ -25,7 +25,7 @@ ChoosePhoneUndoCommand::ChoosePhoneUndoCommand(
 {
     DEBUG3ENTRY;
     ViewDetonatorBox* myPtr = dynamic_cast<ViewDetonatorBox*>(theViewObjPtr);
-    if (myPtr==NULL)
+    if (myPtr==nullptr)
         return;
 
     myPtr->displayChoosePhoneNumber();

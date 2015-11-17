@@ -80,7 +80,7 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::loadLevel(const QString& aFileName)
 {
 	DEBUG1ENTRY;
-	if (theLevelPtr != NULL)
+	if (theLevelPtr != nullptr)
 		purgeLevel();
 
 	// create level and display in main window
@@ -229,7 +229,7 @@ void MainWindow::on_action_Quit_activated(void)
 void MainWindow::on_action_Save_activated(void)
 {
     DEBUG1ENTRY;
-    if (theLevelPtr==NULL)
+    if (theLevelPtr==nullptr)
         return;
 
     QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
@@ -244,7 +244,7 @@ void MainWindow::on_action_Save_As_activated(void)
 {
     DEBUG1ENTRY;
     Q_ASSERT(theLevelPtr);
-    if (theLevelPtr==NULL)
+    if (theLevelPtr==nullptr)
         return;
 
     SaveLevelInfo mySaveLevel(theLevelPtr,this);
@@ -306,7 +306,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     }
 
     // add new drop-down menu "Insert" (and put it before the "Controls" menu)
-    QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), NULL);
+    QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), nullptr);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myInsertMenuPtr);
     // add all objects into it
     ObjectFactory::ObjectFactoryList* myOFListPtr = ObjectFactory::getAllFactories();
@@ -314,24 +314,24 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
     {
         // TODO: remove the Link-derived ones from the list
         // TODO: add icons to the action
-        InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), NULL);
+        InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), nullptr);
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
         myInsertMenuPtr->addAction(myTempActionPtr);
     }
     delete myOFListPtr;
-    myOFListPtr = NULL;
+    myOFListPtr = nullptr;
 
     // add new top menu "Editors"
-    QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), NULL);
+    QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), nullptr);
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
-    QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), NULL);
+    QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
-    QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), NULL);
+    QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), nullptr);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
-    QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), NULL);
+    QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), nullptr);
     connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myEditObjectActionPtr);
     // Enable level editor mode
@@ -371,7 +371,7 @@ void MainWindow::on_levelPropertiesEditorAction_clicked(void)
 
 void MainWindow::on_objectEditorAction_clicked(void)
 {
-    emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(NULL);
+    emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(nullptr);
 }
 #endif
 
@@ -380,7 +380,7 @@ void MainWindow::purgeLevel(void)
 	DEBUG1ENTRY;
 	UndoSingleton::clear();
 	delete theLevelPtr;
-	theLevelPtr=NULL;
+	theLevelPtr=nullptr;
 	ui->graphicsView->clearViewWorld();
 }
 
@@ -388,7 +388,7 @@ void MainWindow::purgeLevel(void)
 void MainWindow::reloadLevel(void)
 {
 	DEBUG1ENTRY;
-	if (theLevelPtr==NULL)
+	if (theLevelPtr==nullptr)
 		return;
 	QString myLevelName = theLevelPtr->getLevelFileName();
 	purgeLevel();
@@ -467,7 +467,7 @@ void MainWindow::setupView()
 
 	if (theIsRunAsRegression)
     {
-		Q_ASSERT(theRegressionTest==NULL);
+		Q_ASSERT(theRegressionTest==nullptr);
 		theRegressionTest = new RegressionTest(this);
 		theRegressionTest->startRegressionRun();
     }

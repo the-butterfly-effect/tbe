@@ -47,7 +47,7 @@ private:
 	typedef QMap<QString, ObjectFactory*> TheMap;
 	TheMap theMap;
 };
-static FactoryList* theFactoryListPtr=NULL;
+static FactoryList* theFactoryListPtr=nullptr;
 
 
 void
@@ -55,7 +55,7 @@ ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory
 {
 	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)",
 			ASCII(anObjectTypeName), aThisPtr);
-	if (theFactoryListPtr==NULL)
+	if (theFactoryListPtr==nullptr)
 		theFactoryListPtr = new FactoryList();
 	theFactoryListPtr->insert(anObjectTypeName,aThisPtr);
 	aThisPtr->theFactoryName = anObjectTypeName;
@@ -70,10 +70,10 @@ ObjectFactory::createObject(
 {
 	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
 	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p", ASCII(aName), myFactoryPtr);
-	if (myFactoryPtr == NULL)
+	if (myFactoryPtr == nullptr)
 	{
 		DEBUG1("There is no factory for Object type %s", ASCII(aName));
-		return NULL;
+		return nullptr;
 	}
     AbstractObject* myObjectPtr = myFactoryPtr->createObject();
     assert (myObjectPtr!=nullptr);
@@ -100,7 +100,7 @@ AbstractObject* ObjectFactory::fixObject(AbstractObject *anObjectPtr) const
 
 ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
 {
-	if (theFactoryListPtr==NULL)
-		return NULL;
+	if (theFactoryListPtr==nullptr)
+		return nullptr;
 	return theFactoryListPtr->getAllFactories();
 }

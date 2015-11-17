@@ -41,7 +41,7 @@ public:
     /// Constructor.
     /// @param anAppearDirection Defines where the origin of the inflying
     ///                          dialog is.
-    explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = NULL,
+    explicit AnimatedDialog(ResizingGraphicsView* aParentPtr = nullptr,
                             AppearanceDirection anAppearDirection=FROM_TOP);
     ~AnimatedDialog();
 

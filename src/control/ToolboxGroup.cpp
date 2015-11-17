@@ -22,7 +22,7 @@
 
 ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
     : theGroupName(aGroupName),
-      theWidgetItemPtr(NULL)
+      theWidgetItemPtr(nullptr)
 {
     // nothing to do
 }
@@ -39,7 +39,7 @@ ToolboxGroup::~ToolboxGroup()
 
 void ToolboxGroup::addObject(AbstractObjectPtr anObjectPtr)
 {
-    Q_ASSERT(anObjectPtr!=NULL);
+    Q_ASSERT(anObjectPtr!=nullptr);
     theObjectsList.push_back(anObjectPtr);
     theInternalName = anObjectPtr->getInternalName();
 

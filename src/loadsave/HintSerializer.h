@@ -44,7 +44,7 @@ public:
 
 	/** create a Hint from the information in the provided Dom
 	 *  @param q  the QDomNode containing the Hint definition
-	 *  @returns  NULL if failed or a pointer to a valid Hint if successful.
+	 *  @returns  nullptr if failed or a pointer to a valid Hint if successful.
 	 *            Note that that Hint is still on its own - not attached to a Level yet.
 	 */
 	static Hint* createObjectFromDom(const QDomNode& q);

@@ -51,21 +51,21 @@ public:
 	//
 
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	const QString getName ( ) const override
 	{	return theBallName;	}
 
 	/// child objects must specify what type of body they are
 	/// @returns b2_staticBody if this object has no mass
 	///          or b2_dynamicBody if its mass is larger than 0.001 kg
-	virtual b2BodyType getObjectType(void) const override
+	b2BodyType getObjectType(void) const override
 	{	return theB2ObjectType; }
 
 	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
+	bool isRotatable ( ) const override
 	{	return false;	}
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
+	SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
 protected:

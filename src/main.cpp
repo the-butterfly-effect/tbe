@@ -156,7 +156,7 @@ static struct s_args theArgsTable[] =
 #endif
 	{ "windowed",      "W", false, setWindowed, },
 //	keep this one last:
-	{ "\0", "\0", false, NULL, },
+	{ "\0", "\0", false, nullptr, },
 };
 
 
@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
 			// is it matching with short or long?
 			int j=0;
 			bool isMatch=false;
-			while(theArgsTable[j].theFunctionPtr != NULL)
+			while(theArgsTable[j].theFunctionPtr != nullptr)
 			{
 				if (myExp[0] == theArgsTable[j].theFullCommand
 					|| myExp[0] == theArgsTable[j].theShortCommand)

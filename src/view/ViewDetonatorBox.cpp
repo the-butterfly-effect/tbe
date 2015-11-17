@@ -58,7 +58,7 @@ void ViewDetonatorBox::displayChoosePhoneNumber(void)
 {
 	// display a combobox with those numbers
     DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
-	assert (myDetBoxPtr != NULL);
+	assert (myDetBoxPtr != nullptr);
 	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, ResizingGraphicsView::me());
 	myDialogPtr->appearAnimated();
 

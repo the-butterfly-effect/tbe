@@ -69,7 +69,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
       theActionType(anActionType)
 {
 	// we *must* have a parent (PieMenu!)
-	Q_ASSERT(aParentPtr!=NULL);
+	Q_ASSERT(aParentPtr!=nullptr);
 
 	ImageCache::getPixmap(aFileName, QSize(2*CENTER_RADIUS,2*CENTER_RADIUS), &theCenterPixmap);
 	ImageCache::getPixmap(aFileName, QSize(2*SMALL_RADIUS,2*SMALL_RADIUS), &theSmallPixmap);
@@ -201,7 +201,7 @@ void PieMenu::setup()
 
 	new ActionIcon(ActionIcon::ACTION_SETPHONE,
 				   "ActionSetNumber",
-                   dynamic_cast<DetonatorBox*>(theAOPtr.get())!=NULL, this);
+                   dynamic_cast<DetonatorBox*>(theAOPtr.get())!=nullptr, this);
 	theCurrentInnerIconPtr = myMoveIcon;
 
 	QTimer::singleShot(1, this, SLOT(startMove()));
@@ -211,11 +211,11 @@ void PieMenu::setup()
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
-static PieMenuSingleton* thePMSingletonPtr = NULL;
+static PieMenuSingleton* thePMSingletonPtr = nullptr;
 static QRectF theViewRect;
 
 PieMenuSingleton::PieMenuSingleton(void)
-	: theCurrentPieMenuPtr(NULL)
+	: theCurrentPieMenuPtr(nullptr)
 {
 	// nothing to do
 }
@@ -223,15 +223,15 @@ PieMenuSingleton::PieMenuSingleton(void)
 
 ViewObject* PieMenuSingleton::getPieMenuParent(void)
 {
-	if (me()->theCurrentPieMenuPtr==NULL)
-		return NULL;
+	if (me()->theCurrentPieMenuPtr==nullptr)
+		return nullptr;
 		return me()->theCurrentPieMenuPtr->theVOPtr;
 }
 
 
 PieMenuSingleton* PieMenuSingleton::me(void)
 {
-	if (thePMSingletonPtr==NULL)
+	if (thePMSingletonPtr==nullptr)
 		thePMSingletonPtr = new PieMenuSingleton();
 	return thePMSingletonPtr;
 }
@@ -244,7 +244,7 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 	// one can always call delete on a nullpointer
 	delete me()->theCurrentPieMenuPtr;
 
-	if (aViewObjectPtr!=NULL)
+	if (aViewObjectPtr!=nullptr)
 	{
 		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
 		me()->theCurrentPieMenuPtr->setup();
@@ -266,7 +266,7 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 		me()->theCurrentPieMenuPtr->setPos(me()->theCurrentPieMenuPtr->mapToParent(me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord)));
 	}
 	else
-		me()->theCurrentPieMenuPtr = NULL;
+		me()->theCurrentPieMenuPtr = nullptr;
 }
 
 
@@ -278,13 +278,13 @@ void PieMenuSingleton::setViewInSceneCoords(const QPolygonF& aViewRect)
 
 void PieMenuSingleton::startClickCheck()
 {
-	if (me()->theCurrentPieMenuPtr!=NULL)
+	if (me()->theCurrentPieMenuPtr!=nullptr)
 		me()->theCurrentPieMenuPtr->wasIconClicked = false;
 }
 
 void PieMenuSingleton::endClickCheck()
 {
-	if (me()->theCurrentPieMenuPtr!=NULL)
+	if (me()->theCurrentPieMenuPtr!=nullptr)
 	{
 		if (me()->theCurrentPieMenuPtr->wasIconClicked == false)
 			clearPieMenu();

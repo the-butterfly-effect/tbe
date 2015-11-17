@@ -31,8 +31,8 @@
 ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr)
 	: ViewObject(aAbstractObjectPtr, "PostIt"),
 	  theCurrentPage(0),
-	  theDialogPtr(NULL),
-	  theUIPtr(NULL)
+	  theDialogPtr(nullptr),
+	  theUIPtr(nullptr)
 {
     // everything is done in the ViewObject constructor
 	DEBUG5ENTRY;
@@ -92,7 +92,7 @@ void ViewPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
 
 void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 {
-    setGraphicsEffect(NULL);
+    setGraphicsEffect(nullptr);
 }
 
 

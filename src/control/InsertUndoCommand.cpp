@@ -28,8 +28,8 @@
 
 InsertUndoCommand::InsertUndoCommand(
         ViewObject* anViewObjectPtr, QString anActionString)
-    : AbstractUndoCommand(anViewObjectPtr, anActionString, NULL),
-      theTBGPtr(NULL)
+    : AbstractUndoCommand(anViewObjectPtr, anActionString, nullptr),
+      theTBGPtr(nullptr)
 {
     DEBUG3ENTRY;
 }
@@ -57,7 +57,7 @@ bool InsertUndoCommand::createInsertUndoCommand(
 	DEBUG3ENTRY;
 	// extract the AbstractObject from the toolbox
     AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
-	Q_ASSERT(myAOPtr!=NULL);
+	Q_ASSERT(myAOPtr!=nullptr);
 
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
     myInsertPtr->theTBGPtr = anToolboxGroupPtr;
@@ -72,7 +72,7 @@ bool InsertUndoCommand::createInsertUndoCommand(ToolboxGroup *anToolboxGroupPtr,
 	DEBUG3ENTRY;
 	// extract the AbstractObject from the toolbox
 	AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
-	Q_ASSERT(myAOPtr!=NULL);
+	Q_ASSERT(myAOPtr!=nullptr);
 
 	InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
 
@@ -96,7 +96,7 @@ bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 {
 	DEBUG3ENTRY
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(anAOPtr);
-    myInsertPtr->theTBGPtr = NULL;
+    myInsertPtr->theTBGPtr = nullptr;
     myInsertPtr->commit();
     return true;
 }
@@ -107,7 +107,7 @@ InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
 	DEBUG3ENTRY
     // extract the AbstractObject and the ViewObject
     ViewObject* myVOPtr = createVOfromAO(anAOPtr);
-    Q_ASSERT(myVOPtr!=NULL);
+    Q_ASSERT(myVOPtr!=nullptr);
 
     InsertUndoCommand* myInsertPtr = reinterpret_cast<InsertUndoCommand*>
                                       (UndoSingleton::createUndoCommand(
@@ -125,7 +125,7 @@ void InsertUndoCommand::redo(void)
     if (theTBGPtr)
     {
         // Insert based on toolbox
-        if (theViewObjPtr==NULL)
+        if (theViewObjPtr==nullptr)
             theViewObjPtr = createVOfromAO(theTBGPtr->getObject());
         else
         {
@@ -140,7 +140,7 @@ void InsertUndoCommand::redo(void)
         if (theViewObjPtr->isVisible()==false)
             theViewObjPtr->setVisible(true);
     }
-    Q_ASSERT(theViewObjPtr!=NULL);
+    Q_ASSERT(theViewObjPtr!=nullptr);
 
     // the ViewObject already exists when we get here,
     // but World should always check if it needs to be added...

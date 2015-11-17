@@ -70,7 +70,7 @@ public:
 
 protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo)
-    /// @note: is NULL in the case of a insert from menu in level creator
+    /// @note: is nullptr in the case of a insert from menu in level creator
     ToolboxGroup* theTBGPtr;
 
     /// TODO: document

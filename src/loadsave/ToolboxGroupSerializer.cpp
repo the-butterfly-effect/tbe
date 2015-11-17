@@ -40,7 +40,7 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 	int              myCount = 0;
 	QString          myErrorMessage;
 	QDomNamedNodeMap myNodeMap = aBaseDomNode.attributes();
-	ToolboxGroup*    myTbGPtr = NULL;
+	ToolboxGroup*    myTbGPtr = nullptr;
 	LocalString      myToolBoxGroupName;
 
 	// a toolbox object entry has the following layout:
@@ -78,7 +78,7 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 		}
         AbstractObjectPtr myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
 																				true, false);
-		if (myAOPtr == NULL)
+		if (myAOPtr == nullptr)
 		{
 			myErrorMessage = "createObjectFromDom failed";
 			goto not_good;
@@ -92,7 +92,7 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 not_good:
 	*anOutputErrorMsg = myErrorMessage;
 	delete myTbGPtr;
-	return NULL;
+	return nullptr;
 }
 
 

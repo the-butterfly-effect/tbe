@@ -26,7 +26,7 @@
 
 MoveUndoCommand::MoveUndoCommand(
         ViewObject* anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), NULL)
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), nullptr)
 {
     DEBUG3ENTRY;
     setDecoratorImage("ProxyMove");

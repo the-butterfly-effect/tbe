@@ -41,7 +41,7 @@ public:
 	 * @param aMessage: the Message
 	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow
 	 */
-	static inline void Critical(const QString& anErrorMessage, QWidget* currentWidget = NULL)
+	static inline void Critical(const QString& anErrorMessage, QWidget* currentWidget = nullptr)
 	{
 		DEBUG1("*** CRITICAL ERROR: %s\n", ASCII(anErrorMessage));
 		QMessageBox::critical (currentWidget,
@@ -64,7 +64,7 @@ public:
 	 * @param aMessage: the Message
 	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow
 	 */
-	static inline void Info(const QString& aMessage, QWidget* currentWidget = NULL)
+	static inline void Info(const QString& aMessage, QWidget* currentWidget = nullptr)
 	{
 		DEBUG2("Info Message: %s\n", ASCII(aMessage));
 		QMessageBox::information (currentWidget,
@@ -80,7 +80,7 @@ public:
 	 * @param aMessage: the Message
 	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow
 	 */
-	static inline void Warning(const QString& aMessage, QWidget* currentWidget = NULL)
+	static inline void Warning(const QString& aMessage, QWidget* currentWidget = nullptr)
 	{
 		DEBUG2("Warning Message: %s\n", ASCII(aMessage));
 		QMessageBox::warning (currentWidget,
@@ -97,7 +97,7 @@ public:
 	 * @param currentWidget: the Widget below the Message - if Popup should appear in front of another form than the mainWindow
 	 * @returns true if clicked Yes, false if no or 'escape'
 	 */
-	static inline bool YesNoQuestion(const QString& aMessage, QWidget* currentWidget = NULL)
+	static inline bool YesNoQuestion(const QString& aMessage, QWidget* currentWidget = nullptr)
 	{
 		DEBUG2("Yes/No Question: %s\n", ASCII(aMessage));
 		if (QMessageBox::question(currentWidget,
