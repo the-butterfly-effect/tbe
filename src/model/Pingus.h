@@ -23,9 +23,12 @@
 #include "World.h"
 
 
-/** This class implements a Pingus, the small penguin from the
-  * game 'Pingus'. We're borrowing this nice penguin to make a
-  * few nice puzzle levels that have a familiar feeling.
+/** This class implements a Pingus, the small penguin from the game 'Pingus'.
+  * We're borrowing this nice penguin to make a few nice puzzle levels that
+  * have a familiar feeling. See http://pingus.seul.org/ .
+  *
+  * Contrary to 'popular belief', Pingus is not PolyObject, but a CircleObject.
+  * There are special testing levels available in the testing/Pingus directory.
   */
 class Pingus : public CircleObject, public SimStepCallbackInterface
 {
@@ -36,23 +39,23 @@ public:
 
 	virtual ViewObject*  createViewObject(float aDefaultDepth) override;
 
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const override
+	/// @returns whether the object can be resized by the user: no it cannot.
+	SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
-	/// overridden from PolyObject because this class wants to register for
-	/// callbacks and needs to restart its state machine
-	virtual void createPhysicsObject(void) override;
+	/// Overridden from CircleObject because this class wants to register for
+	/// callbacks and needs to restart its state machine.
+	void createPhysicsObject(void) override;
 
-	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void) override;
+	/// Let's mis-use deletePhysicsObject to reset our object state.
+	void deletePhysicsObject(void) override;
 
-	/// deletePhysicsObject() doesn't really delete the physics object
+	/// DeletePhysicsObject() doesn't really delete the physics object
 	/// anymore - but we need a true deleter here...
 	void deletePhysicsObjectForReal(void);
 
-	/// This enum defines the states of the Pingus
-	/// It's (not by accident) the same as the row number in the image
+	/// This enum defines the states of the Pingus.
+	/// It's (not by accident) the same as the row number in the image.
 	enum States
 	{
 		WALKINGLEFT = 0,
@@ -66,40 +69,40 @@ public:
 
 	static const unsigned int FramesPerState[];
 
-	/// overridden from AbstractObject to allow representation of the states
+	/// Overridden from AbstractObject to allow representation of the states.
 	/// @returns: returns a numerical index similar to the state
 	virtual unsigned int getImageIndex(void) const override
 	{ return theState; }
 
-protected:
-	/// call this function to suggest a state change to the Pingus
-	/// note that the Pingus can decide not to follow your state change,
-	/// going from popped to Pingus isn't supported (just like real life)
+private:
+	/// Call this function to suggest a state change to the Pingus.
+	/// @note this member can decide not to follow your state change,
+	///       going from dead to Pingus isn't supported (just like real life).
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
     States goToState(States aNewState);
 
-	/// will replace the existing set of shapes by a smaller shape that
+	/// Will replace the existing set of shapes by a smaller shape that
 	/// fits the Splatting and Dead images.
-	/// Do not call from within a Box2D callback
+	/// Do not call from within a Box2D callback.
 	void switchToSmallShape(void);
 
 public:
 	// the following two members are part of the normal impulse reporting
 
-	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void) override
+	/// Overridden from AbstractObject - we want reports on NormalImpulse
+	bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
-	/** overridden from AbstractObject - we want to receive
+	/** Overridden from AbstractObject - we want to receive
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength) override;
+	void reportNormalImpulseLength(qreal anImpulseLength) override;
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
+	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 	void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
@@ -109,15 +112,16 @@ private:
 private:
 	// Private things
 
-	/// the state variable
+	/// The state variable
 	States theState;
 
-	/// Within a state, there are several animation frames, this is the index into the list
+	/// Within a state, there are several animation frames,
+	/// this is the index into the list.
 	int theAnimationFrameIndex;
 
-	/// we need to keep track whether the splatting is done
+	/// We need to keep track whether the splatting is done.
 	qreal theSplattingTimeStart;
-	/// we need to keep track whether the splatting is done
+	/// We need to keep track of falling start for the animation.
 	qreal theFallingTimeStart;
 };
 
