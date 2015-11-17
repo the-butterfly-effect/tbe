@@ -14,7 +14,7 @@ usr/games/tbe: ${BUILDDIR}/src/tbe
 
 ${BUILDDIR}/src/tbe:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} -DWITH_DOCS=${WITH_DOCS} ..
+	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} -DWITH_DOCS=${WITH_DOCS} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
 	ln -sf usr/games/tbe .
