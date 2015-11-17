@@ -29,8 +29,8 @@ class PivotPointObjectFactory : public ObjectFactory
 public:
 	PivotPointObjectFactory(void)
 	{	announceObjectType("PivotPoint", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new PivotPoint()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new PivotPoint()); }
 };
 static PivotPointObjectFactory theRFactory;
 

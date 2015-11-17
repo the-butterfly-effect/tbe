@@ -30,7 +30,7 @@ class LinkObjectFactory : public ObjectFactory
 public:
     LinkObjectFactory(void)
     {	announceObjectType("Link", this); }
-    virtual AbstractObject* createObject(void) const
+    AbstractObject* createObject(void) const override
     {	return fixObject(new Link()); }
 };
 static LinkObjectFactory theLinkFactory;

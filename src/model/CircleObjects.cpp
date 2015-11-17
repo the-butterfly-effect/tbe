@@ -128,7 +128,7 @@ class CustomCircleObjectFactory : public ObjectFactory
 public:
     CustomCircleObjectFactory(void)
 	{	announceObjectType("CustomBall", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new CustomBall()); }
 };
 static CustomCircleObjectFactory theCustomCircleObjectFactory;

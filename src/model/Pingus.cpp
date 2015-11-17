@@ -29,7 +29,7 @@ class PingusObjectFactory : public ObjectFactory
 public:
 	PingusObjectFactory(void)
 	{	announceObjectType("Pingus", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new Pingus()); }
 };
 static PingusObjectFactory thePingusObjectFactory;

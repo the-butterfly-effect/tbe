@@ -33,7 +33,7 @@ class PolyObjectFactory : public ObjectFactory
 public:
 	PolyObjectFactory(void)
 	{	announceObjectType(DEFAULT_POLYOBJECT_NAME, this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new
 						 PolyObject(DEFAULT_POLYOBJECT_NAME, "", DEFAULT_POLYOBJECT_NAME,
 								   "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",

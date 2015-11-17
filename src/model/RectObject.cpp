@@ -33,7 +33,7 @@ class RectObjectFactory : public ObjectFactory
 public:
 	RectObjectFactory(void)
 	{	announceObjectType(DEFAULT_RECTOBJECT_NAME, this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new RectObject()); }
 };
 static RectObjectFactory theRectObjectFactory;

@@ -29,7 +29,7 @@ class SceneryObjectFactory : public ObjectFactory
 public:
 	SceneryObjectFactory(void)
 	{	announceObjectType("Scenery", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new Scenery()); }
 };
 static SceneryObjectFactory theFactory;

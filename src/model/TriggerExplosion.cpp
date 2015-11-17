@@ -28,8 +28,8 @@ class DetonatorBoxObjectFactory : public ObjectFactory
 public:
 	DetonatorBoxObjectFactory(void)
 	{	announceObjectType("DetonatorBox", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new DetonatorBox()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new DetonatorBox()); }
 };
 static DetonatorBoxObjectFactory theDetonatorBoxObjectFactory;
 
@@ -300,7 +300,7 @@ class DynamiteObjectFactory : public ObjectFactory
 public:
 	DynamiteObjectFactory(void)
 	{	announceObjectType("Dynamite", this); }
-    virtual AbstractObject* createObject(void) const
+    AbstractObject* createObject(void) const override
 	{	return fixObject(new Dynamite()); }
 };
 static DynamiteObjectFactory theDynamiteObjectFactory;

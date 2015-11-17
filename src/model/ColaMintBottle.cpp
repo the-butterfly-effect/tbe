@@ -33,8 +33,8 @@ class ColaMintObjectFactory : public ObjectFactory
 public:
 	ColaMintObjectFactory(void)
 	{	announceObjectType("ColaMintBottle", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new ColaMintBottle()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new ColaMintBottle()); }
 };
 static ColaMintObjectFactory theCMBottleObjectFactory;
 

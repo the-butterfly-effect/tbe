@@ -28,8 +28,8 @@ class ButterflyObjectFactory : public ObjectFactory
 public:
 	ButterflyObjectFactory(void)
 	{	announceObjectType("Butterfly", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new Butterfly()); }
+    AbstractObject* createObject(void) const override 
+    {	return fixObject(new Butterfly()); }
 };
 static ButterflyObjectFactory theButterflyObjectFactory;
 

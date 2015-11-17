@@ -28,8 +28,8 @@ class PostItObjectFactory : public ObjectFactory
 public:
 	PostItObjectFactory(void)
 	{	announceObjectType("PostIt", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new PostIt()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new PostIt()); }
 };
 static PostItObjectFactory theFactory;
 

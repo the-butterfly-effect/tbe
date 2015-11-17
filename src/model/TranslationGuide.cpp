@@ -29,8 +29,8 @@ class TranslationGuideObjectFactory : public ObjectFactory
 public:
 	TranslationGuideObjectFactory(void)
 	{	announceObjectType("TranslationGuide", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new TranslationGuide()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new TranslationGuide()); }
 };
 static TranslationGuideObjectFactory theRFactory;
 

@@ -30,8 +30,8 @@ class GlueObjectFactory : public ObjectFactory
 public:
 	GlueObjectFactory(void)
 	{	announceObjectType("Glue", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new Glue()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new Glue()); }
 };
 static GlueObjectFactory theGlueFactory;
 

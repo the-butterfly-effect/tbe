@@ -26,8 +26,8 @@ class SpringObjectFactory : public ObjectFactory
 public:
 	SpringObjectFactory(void)
 	{	announceObjectType("Spring", this); }
-    virtual AbstractObject* createObject(void) const
-	{	return fixObject(new Spring()); }
+    AbstractObject* createObject(void) const override
+    {	return fixObject(new Spring()); }
 };
 static SpringObjectFactory theSpringObjectFactory;
 

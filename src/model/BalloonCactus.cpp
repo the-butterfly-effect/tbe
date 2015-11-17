@@ -41,7 +41,7 @@ class BalloonObjectFactory : public ObjectFactory
 public:
 	BalloonObjectFactory(void)
 	{	announceObjectType("Balloon", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new Balloon()); }
 };
 static BalloonObjectFactory theBalloonObjectFactory;
@@ -253,7 +253,7 @@ class CactusObjectFactory : public ObjectFactory
 public:
 	CactusObjectFactory(void)
 	{	announceObjectType("Cactus", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new Cactus()); }
 };
 static CactusObjectFactory theCactusObjectFactory;
@@ -333,7 +333,7 @@ class BedOfNailsObjectFactory : public ObjectFactory
 public:
 	BedOfNailsObjectFactory(void)
 	{	announceObjectType("BedOfNails", this); }
-	virtual AbstractObject* createObject(void) const
+	AbstractObject* createObject(void) const override
 	{	return fixObject(new BedOfNails()); }
 };
 static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
@@ -407,8 +407,8 @@ class CircularSawObjectFactory : public ObjectFactory
 public:
 	CircularSawObjectFactory(void)
 	{	announceObjectType("CircularSaw", this); }
-	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new CircularSaw()); }
+	AbstractObject* createObject(void) const
+	override {	return fixObject(new CircularSaw()); }
 };
 static CircularSawObjectFactory theCircularSawObjectFactory;
 
