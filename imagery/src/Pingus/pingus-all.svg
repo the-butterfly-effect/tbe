@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="pingus.svg">
+   sodipodi:docname="pingus.svg"
+   inkscape:export-filename="/home/klaas/Programming/tbe-github/imagery/src/Pingus/pingus.png"
+   inkscape:export-xdpi="89.980003"
+   inkscape:export-ydpi="89.980003">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -48,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -111,23 +114,5 @@
            x="218.9715"
            sodipodi:role="line">https://github.com/Pingus/pingus/tree/master/data/images/pingus/player0</tspan></text>
     </g>
-    <rect
-       style="fill:#ffff00;fill-opacity:0.48958333;stroke:none"
-       id="rect3000"
-       width="32"
-       height="32"
-       x="162.72966"
-       y="292.10007" />
-    <text
-       xml:space="preserve"
-       style="font-size:9.67154598px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="165.65189"
-       y="317.26175"
-       id="text3012"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3014"
-         x="165.65189"
-         y="317.26175">DEAD</tspan></text>
   </g>
 </svg>

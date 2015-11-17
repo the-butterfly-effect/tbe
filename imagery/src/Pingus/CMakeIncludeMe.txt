@@ -1,5 +1,5 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
-        ${SRCDIRNAME}/pingus.svg
+        ${SRCDIRNAME}/pingus.png
         DESTINATION ${TBE_IMAGES_DIR}
 )
