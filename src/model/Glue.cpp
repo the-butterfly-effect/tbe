@@ -38,11 +38,11 @@ static GlueObjectFactory theGlueFactory;
 Glue::Glue() : AbstractJoint()
 {
 	DEBUG5("Glue::Glue() start");
-	theFirstPtr = NULL;
-	theSecondPtr = NULL;
-	theFirstLocalPosPtr = NULL;
-	theSecondLocalPosPtr = NULL;
-	theLinkPtr = NULL;
+	theFirstPtr = nullptr;
+	theSecondPtr = nullptr;
+	theFirstLocalPosPtr = nullptr;
+	theSecondLocalPosPtr = nullptr;
+	theLinkPtr = nullptr;
 
     theToolTip = QObject::tr("Glue links two objects immovably together.");
     theProps.setDefaultPropertiesString(
@@ -56,12 +56,12 @@ Glue::Glue() : AbstractJoint()
 void Glue::createPhysicsObject(void)
 {
 	DEBUG5("Glue::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
-	if (theWorldPtr==NULL)
+	if (theWorldPtr==nullptr)
 		return;
 
-	assert(theFirstPtr!=NULL);
-	assert(theFirstLocalPosPtr!=NULL);
-	if (theFirstPtr==NULL)
+	assert(theFirstPtr!=nullptr);
+	assert(theFirstLocalPosPtr!=nullptr);
+	if (theFirstPtr==nullptr)
 	{
 		DEBUG4("Link: No valid first object found...");
 		return;
@@ -70,9 +70,9 @@ void Glue::createPhysicsObject(void)
 	assert (myFirstB2BodyPtr);
     theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
-	assert(theSecondPtr!=NULL);
-	assert(theSecondLocalPosPtr!=NULL);
-	if (theSecondPtr==NULL)
+	assert(theSecondPtr!=nullptr);
+	assert(theSecondLocalPosPtr!=nullptr);
+	if (theSecondPtr==nullptr)
 	{
 		DEBUG4("Link: No valid second object found...");
 		return;
@@ -103,8 +103,8 @@ void Glue::createPhysicsObject(void)
 
 Position Glue::getTempCenter() const
 {
-	if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
-		theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
+	if (theFirstPtr==nullptr || theFirstLocalPosPtr==nullptr ||
+		theSecondPtr==nullptr || theSecondLocalPosPtr==nullptr)
 		return getOrigCenter();
 
 	Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();

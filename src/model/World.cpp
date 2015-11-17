@@ -29,7 +29,7 @@ const qreal World::theDeltaTime = 0.004;
 const unsigned int World::theVelocityIterationcount = 40;
 const unsigned int World::thePositionIterationcount = 40;
 
-static World* theStaticWorldPtr = NULL;
+static World* theStaticWorldPtr = nullptr;
 
 // Constructors/Destructors
 //
@@ -39,14 +39,14 @@ void DestructionListener::SayGoodbye(b2Joint* joint)
 	// we *know* that all b2Joints will have UserData but e.g. DetonatorHandle
 	// does not - but RTTI can fix that.
     AbstractJoint* myIF = joint->GetUserData();
-	if (myIF != NULL)
+	if (myIF != nullptr)
 		myIF->jointWasDeleted();
 }
 
 
-World::World ( void) : theB2WorldPtr(NULL)
+World::World ( void) : theB2WorldPtr(nullptr)
 {
-	theViewWorldPtr = NULL;
+	theViewWorldPtr = nullptr;
 	theTotalTime = 0.0f;
 	theStaticWorldPtr = this;
 }
@@ -56,8 +56,8 @@ World::~World ( )
 	DEBUG3ENTRY;
 	theObjectPtrList.clear();
 	theToBeRemovedList.clear();
-	AbstractObject::setTheB2WorldPtr(NULL);
-	theStaticWorldPtr = NULL;
+	AbstractObject::setTheB2WorldPtr(nullptr);
+	theStaticWorldPtr = nullptr;
 }
 
 //
@@ -79,7 +79,7 @@ World* World::getWorldPtr()
 
 void World::addGoal(Goal* aGoalPtr)
 {
-	if (aGoalPtr == NULL)
+	if (aGoalPtr == nullptr)
 		return;
 	theGoalPtrList.push_back(aGoalPtr);
 }
@@ -113,7 +113,7 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
     anObjectPtr->parseProperties();
     anObjectPtr->registerChildObjects();
 
-    if (theViewWorldPtr!=NULL)
+    if (theViewWorldPtr!=nullptr)
         addAbstractObjectToViewWorld(anObjectPtr);
     return true;
 }
@@ -121,10 +121,10 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
 
 void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 {
-    assert(theViewWorldPtr!=NULL);
+    assert(theViewWorldPtr!=nullptr);
 	DEBUG5("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
     ViewObject* myVOPtr = anAOPtr->createViewObject();
-    if (myVOPtr!=NULL)
+    if (myVOPtr!=nullptr)
     {
         theViewWorldPtr->addItem(myVOPtr);
         anAOPtr->updateViewObject(false);
@@ -135,7 +135,7 @@ void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 void World::createPhysicsWorld(void)
 {
 	DEBUG3("World::createPhysicsWorld()");
-	if (theB2WorldPtr!=NULL)
+	if (theB2WorldPtr!=nullptr)
 		return;
 
     theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()));
@@ -194,7 +194,7 @@ void World::createScene(ResizingGraphicsView *myRSGVPtr)
 {
 	// create a ViewWorld instance, that will immediately attach itself to
 	// the graphicsView in the main window
-	assert(theViewWorldPtr == NULL);
+	assert(theViewWorldPtr == nullptr);
 	theViewWorldPtr = new ViewWorld(myRSGVPtr, this);
 
 	// get all AbstractObjects to register themselves in the ViewWorld
@@ -235,7 +235,7 @@ void World::deletePhysicsWorld()
 
 	// and delete the b2World itself...
 	delete theB2WorldPtr;
-	theB2WorldPtr = NULL;
+	theB2WorldPtr = nullptr;
 	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);
 
 	// redraw all objects in their static position
@@ -304,7 +304,7 @@ void World::removeMe(AbstractObjectPtr anObjectPtr, qreal aDeltaTime)
 
 bool World::removeObject(AbstractObjectPtr anObjectPtr)
 {
-	if (anObjectPtr == NULL)
+	if (anObjectPtr == nullptr)
 		return false;
     DEBUG5("removeObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
 	int myPos = theObjectPtrList.indexOf(anObjectPtr);
@@ -318,7 +318,7 @@ bool World::removeObject(AbstractObjectPtr anObjectPtr)
 bool World::registerCallback(SimStepCallbackInterface* anInterface)
 {
 	DEBUG5("World::registerCallback(%p)", anInterface);
-	if (anInterface==NULL)
+	if (anInterface==nullptr)
 		return false;
 	theCallbackList.insert(anInterface);
 	return true;
@@ -333,7 +333,7 @@ bool World::ShouldCollide(
     AbstractObject* myObj1 = aFixture1->GetUserData();
     AbstractObject* myObj2 = aFixture2->GetUserData();
 
-	if (myObj1 == NULL || myObj2 == NULL)
+	if (myObj1 == nullptr || myObj2 == nullptr)
 		return true;
 
 	// always make sure to get the lowest pointer value in #1
@@ -367,7 +367,7 @@ qreal World::simStep (void)
         AbstractObject* myBO1Ptr = k.myFixtureA->GetUserData();
         AbstractObject* myBO2Ptr = k.myFixtureB->GetUserData();
 
-		if (myBO1Ptr!=NULL)
+		if (myBO1Ptr!=nullptr)
 		{
 			if (k.myFixtureA->IsSensor())
 				myBO1Ptr->callBackSensor(k);
@@ -377,7 +377,7 @@ qreal World::simStep (void)
 				myBO1Ptr->reportTangentImpulse( k.myTangentImpulse );
 		}
 
-		if (myBO2Ptr!=NULL)
+		if (myBO2Ptr!=nullptr)
 		{
 			if (k.myFixtureB->IsSensor())
 				myBO2Ptr->callBackSensor(k);
@@ -441,7 +441,7 @@ qreal World::simStep (void)
 
 bool World::unregisterCallback(SimStepCallbackInterface* anInterface)
 {
-	if (anInterface==NULL)
+	if (anInterface==nullptr)
 		return false;
 	theCallbackList.remove(anInterface);
 	return true;

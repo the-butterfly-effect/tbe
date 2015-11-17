@@ -186,8 +186,8 @@ public:
 
 	/** find an object with a given ID within world
 	 *  @param anID  the ID to find for. Because not all objects have an ID,
-	 *               an empty ID will cause a NULL return.
-	 *  @returns NULL if not found or a pointer if found.
+	 *               an empty ID will cause a nullptr return.
+	 *  @returns nullptr if not found or a pointer if found.
 	 */
     AbstractObjectPtr findObjectByID(const QString& anID);
 
@@ -272,13 +272,13 @@ public:
 
 	/** register a SimStepCallbackInterface
 	  * @param anInterface - interface to register for callbacks every time step
-	  * @returns true if registering successful, false if not (already registered? NULL?)
+	  * @returns true if registering successful, false if not (already registered? nullptr?)
 	  */
 	bool registerCallback(SimStepCallbackInterface* anInterface);
 
 	/** unregister a SimStepCallbackInterface
 	  * @param anInterface - interface to register for callbacks every time step
-	  * @returns true if unregistering successful, false if not (not registered? NULL?)
+	  * @returns true if unregistering successful, false if not (not registered? nullptr?)
 	  */
 	bool unregisterCallback(SimStepCallbackInterface* anInterface);
 

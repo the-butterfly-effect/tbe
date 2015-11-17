@@ -37,10 +37,10 @@ static LinkObjectFactory theLinkFactory;
 
 Link::Link(void)
     : AbstractJoint(),
-      theFirstPtr(NULL),
-      theSecondPtr(NULL),
-      theFirstLocalPosPtr(NULL),
-      theSecondLocalPosPtr(NULL)
+      theFirstPtr(nullptr),
+      theSecondPtr(nullptr),
+      theFirstLocalPosPtr(nullptr),
+      theSecondLocalPosPtr(nullptr)
 {
     theToolTip=QObject::tr("A Link is a massless, bodyless connection between two objects.");
     theProps.setDefaultPropertiesString(
@@ -53,18 +53,18 @@ Link::Link(void)
 Link::~Link ()
 {
     // nothing real to do ?!?
-    theFirstPtr  = NULL;
-    theSecondPtr = NULL;
+    theFirstPtr  = nullptr;
+    theSecondPtr = nullptr;
 
     delete theFirstLocalPosPtr;
-    theFirstLocalPosPtr  = NULL;
+    theFirstLocalPosPtr  = nullptr;
     delete theSecondLocalPosPtr;
-    theSecondLocalPosPtr = NULL;
+    theSecondLocalPosPtr = nullptr;
 }
 
 ViewObject*  Link::createViewObject(float aDefaultDepth)
 {
-    if (theViewObjectPtr!=NULL)
+    if (theViewObjectPtr!=nullptr)
         return theViewObjectPtr;
     QString myImageName;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
@@ -77,12 +77,12 @@ ViewObject*  Link::createViewObject(float aDefaultDepth)
 
 void Link::createPhysicsObject(void)
 {
-    if (theWorldPtr==NULL)
+    if (theWorldPtr==nullptr)
         return;
 
-    assert(theFirstPtr!=NULL);
-    assert(theFirstLocalPosPtr!=NULL);
-    if (theFirstPtr==NULL)
+    assert(theFirstPtr!=nullptr);
+    assert(theFirstLocalPosPtr!=nullptr);
+    if (theFirstPtr==nullptr)
     {
 		DEBUG4("Link: No valid first object found...");
         return;
@@ -91,9 +91,9 @@ void Link::createPhysicsObject(void)
     assert (myFirstB2BodyPtr);
     theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
-    assert(theSecondPtr!=NULL);
-    assert(theSecondLocalPosPtr!=NULL);
-    if (theSecondPtr==NULL)
+    assert(theSecondPtr!=nullptr);
+    assert(theSecondLocalPosPtr!=nullptr);
+    if (theSecondPtr==nullptr)
     {
 		DEBUG4("Link: No valid second object found...");
         return;
@@ -115,8 +115,8 @@ void Link::createPhysicsObject(void)
 
 Position Link::getTempCenter() const
 {
-    if (theFirstPtr==NULL || theFirstLocalPosPtr==NULL ||
-            theSecondPtr==NULL || theSecondLocalPosPtr==NULL)
+    if (theFirstPtr==nullptr || theFirstLocalPosPtr==nullptr ||
+            theSecondPtr==nullptr || theSecondLocalPosPtr==nullptr)
         return getOrigCenter();
 
     Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
@@ -134,7 +134,7 @@ Position Link::getTempCenter() const
 void Link::parseProperties(void)
 {
     AbstractObject::parseProperties();
-    if (theWorldPtr==NULL)
+    if (theWorldPtr==nullptr)
         return;
 
     // *** parse object1 & object2
@@ -160,13 +160,13 @@ void Link::updateOrigCenter(void)
 void Link::updateViewObject(bool ) const
 {
     // no ViewObject: nothing to update ;-)
-    if(theViewObjectPtr == NULL)
+    if(theViewObjectPtr == nullptr)
         return;
 
     // no b2body: no part of simulation
     // PROBLEM: joints also don't have a b2Body - that's why they have their own
     // overriden version of this member...
-    if (theFirstPtr==NULL || theSecondPtr==NULL)
+    if (theFirstPtr==nullptr || theSecondPtr==nullptr)
     {
         // problem
 		DEBUG1("Link::updateViewObject()  while first or second is zero");
@@ -175,7 +175,7 @@ void Link::updateViewObject(bool ) const
 
     // Sim running: don't need to adjust objects that are static or asleep
     ViewLink* theVLPtr = dynamic_cast<ViewLink*>(theViewObjectPtr);
-    assert(theVLPtr!=NULL);
+    assert(theVLPtr!=nullptr);
 
     Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
     Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();

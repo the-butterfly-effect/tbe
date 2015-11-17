@@ -38,9 +38,9 @@ public:
 	//
 
 	/// @returns Pointer to the B2Body for the relative position asked for.
-	/// @note    because this object has no body, always returns NULL
+	/// @note    because this object has no body, always returns nullptr
 //	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
-//	{ assert(false); return NULL; }
+//	{ assert(false); return nullptr; }
 
 	/// returns the Name of the object.
 	virtual const QString getName ( ) const

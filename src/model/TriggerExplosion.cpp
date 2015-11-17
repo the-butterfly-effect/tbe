@@ -90,7 +90,7 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 
 ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
 {
-    if (theViewObjectPtr!=NULL)
+    if (theViewObjectPtr!=nullptr)
 		return theViewObjectPtr;
 
 	QString myImageName;
@@ -124,7 +124,7 @@ void DetonatorBox::deletePhysicsObject(void)
 QStringList DetonatorBox::getAllPhoneNumbers(void)
 {
 	QRegExp myRX("^\\d.*");
-	assert(theWorldPtr!=NULL);
+	assert(theWorldPtr!=nullptr);
 	QStringList myList = theWorldPtr->getAllIDs().filter(myRX);
 	if (myList.contains(getCurrentPhoneNumber())==false)
 		myList.append(getCurrentPhoneNumber());
@@ -173,7 +173,7 @@ void DetonatorBox::notifyExplosions(void)
     Dynamite* myDynamite = dynamic_cast<Dynamite*>(myObjectToSignal.get());
 
 	// did the user select a wrong phone number?
-	if (myDynamite == NULL)
+	if (myDynamite == nullptr)
 		return;
 	myDynamite->trigger();
 }
@@ -223,7 +223,7 @@ DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
 	:	RectObject( QObject::tr("Detonator Box Handle"),
 					QObject::tr("Push Here To BOOM"),
 					"DetonatorBoxHandle",
-                    0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(NULL)
+                    0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(nullptr)
 {
 	setOrigCenter(Position(0,0));
     theProps.setProperty(Property::ISCHILD_STRING, "yes");
@@ -261,7 +261,7 @@ void DetonatorBoxHandle::createPhysicsObject(void)
 	// note: Initialize() uses a global coordinate...
 	b2PrismaticJointDef myJointDef;
 	myJointDef.Initialize(theDBoxPtr->theB2BodyPtr, theB2BodyPtr, getOrigCenter().toB2Vec2(), Vector(0,1.0).toB2Vec2());
-	myJointDef.userData = NULL;
+	myJointDef.userData = nullptr;
 	myJointDef.collideConnected = false;
 	myJointDef.maxMotorForce = 120.0f;
 	myJointDef.motorSpeed = 2.0;
@@ -270,7 +270,7 @@ void DetonatorBoxHandle::createPhysicsObject(void)
 	myJointDef.enableLimit = true;
 	myJointDef.enableMotor = true;
 
-	assert(theJointPtr==NULL);
+	assert(theJointPtr==nullptr);
 	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
 	theWorldPtr->registerCallback(this);
 }
@@ -279,12 +279,12 @@ void DetonatorBoxHandle::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
 	// the deletePhysics will already kill the joint, thanks to Box2D.
-	theJointPtr = NULL;
+	theJointPtr = nullptr;
 }
 
 qreal DetonatorBoxHandle::getDistance(void)
 {
-	if (theJointPtr==NULL)
+	if (theJointPtr==nullptr)
 		return 0;
 	return theJointPtr->GetJointTranslation();
 }
@@ -390,7 +390,7 @@ void Dynamite::deletePhysicsObjectForReal(void)
 {
 	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
-	theB2BodyPtr = NULL;
+	theB2BodyPtr = nullptr;
 }
 
 
@@ -471,7 +471,7 @@ void Dynamite::manageParticles(float aDeltaTime)
 
 void Dynamite::removeMe(AbstractObjectPtr aDeadSplatterPtr)
 {
-	assert(aDeadSplatterPtr != NULL);
+	assert(aDeadSplatterPtr != nullptr);
 	theSplatterList.removeAll(aDeadSplatterPtr);
 }
 
@@ -486,7 +486,7 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 ExplosionSplatter::ExplosionSplatter()
     : CircleObject("ExplosionSplatter","", "ColaSplatter",
                    theRadius, 0.001,  1.0),
-      theDynamitePtr(NULL)
+      theDynamitePtr(nullptr)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter");
 

@@ -62,7 +62,7 @@ public:
 	/// overridden from AbstractObject
 	/// @returns true if the Joint is created
 	virtual bool isPhysicsObjectCreated(void) const
-	{ return theJointPtr!=NULL; }
+	{ return theJointPtr!=nullptr; }
 
 	/// called by World when the joint was "implicitly destructed"
 	virtual void jointWasDeleted(void);

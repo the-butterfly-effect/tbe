@@ -38,7 +38,7 @@ static TranslationGuideObjectFactory theRFactory;
 
 TranslationGuide::TranslationGuide()
     : AbstractJoint(),
-      theObjectPtr(NULL),
+      theObjectPtr(nullptr),
       theDirection(0.f)
 {
 	DEBUG5ENTRY;
@@ -57,7 +57,7 @@ TranslationGuide::TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDi
 
 void TranslationGuide::createPhysicsObject(void)
 {
-	if (theWorldPtr==NULL)
+	if (theWorldPtr==nullptr)
 		return;
 
     // *** parse object/object1 - if we didn't get theFirstPtr from the constructor

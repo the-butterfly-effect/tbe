@@ -42,7 +42,7 @@ Goal::~Goal()
 //////////////////////////////////////////////////////////////////////////////
 
 GoalDistance::GoalDistance()
-        : theType(NOTYPE), theLimit(0.0f), theFirstPtr(NULL), theSecondPtr(NULL)
+        : theType(NOTYPE), theLimit(0.0f), theFirstPtr(nullptr), theSecondPtr(nullptr)
 {
 	// nothing to do here
 }
@@ -55,9 +55,9 @@ GoalDistance::~GoalDistance()
 bool GoalDistance::checkForSuccess(void)
 {
 	// whine loudly in a debug build or softly in a release build
-	assert(theFirstPtr != NULL);
-	assert(theSecondPtr != NULL);
-	if (theFirstPtr == NULL || theSecondPtr == NULL)
+	assert(theFirstPtr != nullptr);
+	assert(theSecondPtr != nullptr);
+	if (theFirstPtr == nullptr || theSecondPtr == nullptr)
 		return false;
 
 	Vector myDistanceVector = (theFirstPtr->getTempCenter().toVector())
@@ -80,8 +80,8 @@ bool GoalDistance::checkForSuccess(void)
 
 bool GoalDistance::parseProperties(World* aWPtr)
 {
-	assert(aWPtr!=NULL);
-	if (aWPtr==NULL)
+	assert(aWPtr!=nullptr);
+	if (aWPtr==nullptr)
 		return false;
 
 	// there are 4 types of properties: ("lessthan" OR "morethan") AND "object1" AND "object2"
@@ -140,7 +140,7 @@ QString GoalDistance::goalToStringList() const
 //////////////////////////////////////////////////////////////////////////////
 
 GoalPositionChange::GoalPositionChange()
-        : theType(NOTYPE), theBOPtr(NULL), theLimit(0.0f)
+        : theType(NOTYPE), theBOPtr(nullptr), theLimit(0.0f)
 {
 	// nothing to do here
 }
@@ -153,8 +153,8 @@ GoalPositionChange::~GoalPositionChange()
 bool GoalPositionChange::checkForSuccess(void)
 {
 	// whine loudly in a debug build or softly in a release build
-	assert(theBOPtr != NULL);
-	if (theBOPtr == NULL)
+	assert(theBOPtr != nullptr);
+	if (theBOPtr == nullptr)
 		return false;
 
 	Position myNewPos = theBOPtr->getTempCenter();
@@ -202,8 +202,8 @@ bool GoalPositionChange::checkForSuccess(void)
 
 bool GoalPositionChange::parseProperties(World* aWPtr)
 {
-	assert(aWPtr!=NULL);
-	if (aWPtr==NULL)
+	assert(aWPtr!=nullptr);
+	if (aWPtr==nullptr)
 		return false;
 
 	// there are 5 types of properties: (xchanged/ychanged/anglechanged/anythingchanged AND object)
@@ -279,7 +279,7 @@ QString GoalPositionChange::goalToStringList() const
 //////////////////////////////////////////////////////////////////////////////
 
 GoalStateChange::GoalStateChange()
-		: theType(NOTYPE), theBOPtr(NULL), theState(0)
+		: theType(NOTYPE), theBOPtr(nullptr), theState(0)
 {
 	// nothing to do here
 }
@@ -292,8 +292,8 @@ GoalStateChange::~GoalStateChange()
 bool GoalStateChange::checkForSuccess(void)
 {
 	// whine loudly in a debug build or softly in a release build
-	assert(theBOPtr != NULL);
-	if (theBOPtr == NULL)
+	assert(theBOPtr != nullptr);
+	if (theBOPtr == nullptr)
 		return false;
 
 	// TODO/FIXME: theImageIndex isn't exactly the state, but for now it is...
@@ -317,8 +317,8 @@ bool GoalStateChange::checkForSuccess(void)
 
 bool GoalStateChange::parseProperties(World* aWPtr)
 {
-	assert(aWPtr!=NULL);
-	if (aWPtr==NULL)
+	assert(aWPtr!=nullptr);
+	if (aWPtr==nullptr)
 		return false;
 
 	// we expect only to have 2 properties - any other number is wrong

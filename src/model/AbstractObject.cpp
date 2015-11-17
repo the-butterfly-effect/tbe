@@ -31,19 +31,19 @@
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
 
 // Static variables
-static b2World* theStaticB2WorldPtr = NULL;
+static b2World* theStaticB2WorldPtr = nullptr;
 
 
 AbstractObject::AbstractObject()
-    : theB2BodyPtr(NULL),
-      theViewObjectPtr(NULL),
-      theChildPivotPointPtr(NULL),
-      theChildTranslationGuidePtr(NULL),
+    : theB2BodyPtr(nullptr),
+      theViewObjectPtr(nullptr),
+      theChildPivotPointPtr(nullptr),
+      theChildTranslationGuidePtr(nullptr),
       theBounciness(0.5),
       theHeight(1.0),
       theIsMovable(false),
       theWidth(1.0),
-      theWorldPtr(NULL),
+      theWorldPtr(nullptr),
       resizableInfo(SizeDirections::NORESIZING)
 {
     theThisPtr = AbstractObjectPtr(nullptr);
@@ -76,7 +76,7 @@ AbstractObject::~AbstractObject ( )
 	// destroy the BodyDef
 	//
 	delete theB2BodyDefPtr;
-	theB2BodyDefPtr=NULL;
+	theB2BodyDefPtr=nullptr;
 
 	deleteViewObject();
 }
@@ -87,7 +87,7 @@ void AbstractObject::clearShapeList()
 	while(theShapeList.isEmpty()==false)
 	{
 		b2FixtureDef* myFixtureDefPtr = theShapeList.first();
-		if (myFixtureDefPtr!=NULL)
+		if (myFixtureDefPtr!=nullptr)
 		{
 			const b2Shape* myShapePtr = myFixtureDefPtr->shape;
 			delete myShapePtr;
@@ -107,19 +107,19 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 {
 	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
 	// first fixup the bodydef with the current position
-	assert(theB2BodyDefPtr!=NULL);
+	assert(theB2BodyDefPtr!=nullptr);
 	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
 	theB2BodyDefPtr->angle = aPosition.angle;
 	theB2BodyDefPtr->type  = getObjectType();
 	// do not set mass properties here - that will be done in derived classes
 	// (and as such is done already when we get here)
 
-	assert (theB2BodyPtr==NULL);
+	assert (theB2BodyPtr==nullptr);
 	if (theShapeList.count()==0)
 		return;
 
 	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
-	assert(theB2BodyPtr != NULL);
+	assert(theB2BodyPtr != nullptr);
 
 	// then create the shapes from the shapedefs
 	ShapeList::const_iterator myI = theShapeList.begin();
@@ -141,7 +141,7 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 
 ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
 {
-	if (theViewObjectPtr!=NULL)
+	if (theViewObjectPtr!=nullptr)
 		return theViewObjectPtr;
 	QString myImageName;
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
@@ -160,7 +160,7 @@ void AbstractObject::deletePhysicsObject()
 
     // we're only setting the pointer to zero - let's Box2D take care
     // of actually removing everything when we do delete world...
-    theB2BodyPtr = NULL;
+    theB2BodyPtr = nullptr;
 
     // let's also make sure we're getting rid of the joints
     notifyJoints(JointInterface::DELETED);
@@ -171,9 +171,9 @@ void AbstractObject::deletePhysicsObject()
 void AbstractObject::deleteViewObject(void)
 {
 	// delete the corresponding ViewObject
-	// note that delete NULL is allowed
+	// note that delete nullptr is allowed
 	delete theViewObjectPtr;
-	theViewObjectPtr = NULL;
+	theViewObjectPtr = nullptr;
 }
 
 
@@ -308,7 +308,7 @@ void AbstractObject::setTheWidth ( qreal new_var, bool mustRunParseProperties )
 
 void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 {
-	assert(theViewObjectPtr != NULL);
+	assert(theViewObjectPtr != nullptr);
 	// if no property with a float type found, leave aDefaultValue is unchanged
 	theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
 	theViewObjectPtr->setZValue(aDefaultValue);
@@ -317,13 +317,13 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 void AbstractObject::updateViewObject(bool isSimRunning) const
 {
 	// no ViewObject: nothing to update ;-)
-	if(theViewObjectPtr == NULL)
+	if(theViewObjectPtr == nullptr)
 		return;
 
 	// no b2body: no part of simulation
 	// PROBLEM: joints also don't have a b2Body - that's why they have their own
 	// overriden version of this member...
-	if (theB2BodyPtr==NULL)
+	if (theB2BodyPtr==nullptr)
 	{
 		if (!isSimRunning)
 		{

@@ -37,7 +37,7 @@ static PivotPointObjectFactory theRFactory;
 
 
 PivotPoint::PivotPoint()
-		: AbstractJoint(), theFirstPtr(NULL)
+		: AbstractJoint(), theFirstPtr(nullptr)
 
 {
 	DEBUG5("PivotPoint::PivotPoint");
@@ -121,7 +121,7 @@ void PivotPoint::createPhysicsObject(void)
 
 void PivotPoint::initPivotAttributes ( )
 {
-	theSecondPtr = NULL;
+	theSecondPtr = nullptr;
 	areObjectsColliding=false;
 
     theToolTip = QObject::tr("Objects rotate around this point");

@@ -156,7 +156,7 @@ void Balloon::deletePhysicsObjectForReal(void)
 {
 	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
-	theB2BodyPtr = NULL;
+	theB2BodyPtr = nullptr;
 }
 
 
@@ -279,20 +279,20 @@ Cactus::~Cactus()
 
 void Cactus::callBackSensor(const ContactInfo& aPoint)
 {
-	AbstractObject* myOtherObject=NULL;
+	AbstractObject* myOtherObject=nullptr;
 
 	// which one of the two shapes is not me?
 	if (aPoint.myFixtureA->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureB->GetUserData();
 	if (aPoint.myFixtureB->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureA->GetUserData();
-	if (myOtherObject==NULL)
+	if (myOtherObject==nullptr)
 		return;
 
 	// is it a Balloon?
 	// then pop it!
 	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=NULL)
+	if (myBalloonPtr!=nullptr)
 		myBalloonPtr->stung();
 }
 
@@ -358,20 +358,20 @@ BedOfNails::~BedOfNails()
 
 void BedOfNails::callBackSensor(const ContactInfo& aPoint)
 {
-	AbstractObject* myOtherObject=NULL;
+	AbstractObject* myOtherObject=nullptr;
 
 	// which one of the two shapes is not me?
 	if (aPoint.myFixtureA->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureB->GetUserData();
 	if (aPoint.myFixtureB->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureA->GetUserData();
-	if (myOtherObject==NULL)
+	if (myOtherObject==nullptr)
 		return;
 
 	// is it a Balloon?
 	// then pop it!
 	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=NULL)
+	if (myBalloonPtr!=nullptr)
 		myBalloonPtr->stung();
 }
 
@@ -430,20 +430,20 @@ CircularSaw::~CircularSaw()
 
 void CircularSaw::callBackSensor(const ContactInfo& aPoint)
 {
-	AbstractObject* myOtherObject=NULL;
+	AbstractObject* myOtherObject=nullptr;
 
 	// which one of the two shapes is not me?
 	if (aPoint.myFixtureA->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureB->GetUserData();
 	if (aPoint.myFixtureB->GetUserData()==this)
 		myOtherObject = aPoint.myFixtureA->GetUserData();
-	if (myOtherObject==NULL)
+	if (myOtherObject==nullptr)
 		return;
 
 	// is it a Balloon?
 	// then pop it!
 	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=NULL)
+	if (myBalloonPtr!=nullptr)
 		myBalloonPtr->stung();
 }
 

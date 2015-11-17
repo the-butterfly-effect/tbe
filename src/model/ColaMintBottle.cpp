@@ -137,7 +137,7 @@ void ColaMintBottle::updateMass(void)
 		theColaAmount = 0.0;
 		setBottleStatus(EMPTY);
 	}
-	if (theB2BodyPtr==NULL)
+	if (theB2BodyPtr==nullptr)
 		return;
 
 	b2MassData myMass;

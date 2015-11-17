@@ -23,9 +23,9 @@
 #include <cassert>
 
 /// pointer to World's groundbody.
-static b2Body* theGroundBodyPtr = NULL;
+static b2Body* theGroundBodyPtr = nullptr;
 
-AbstractJoint::AbstractJoint(void) : theJointPtr(NULL), isChild(false)
+AbstractJoint::AbstractJoint(void) : theJointPtr(nullptr), isChild(false)
 {
 }
 
@@ -38,7 +38,7 @@ AbstractJoint::~AbstractJoint()
 ViewObject* AbstractJoint::createViewObject(float aDefaultDepth)
 {
 	if (isChildJoint())
-		return NULL;
+		return nullptr;
 	else
 		return AbstractObject::createViewObject(aDefaultDepth);
 }
@@ -58,7 +58,7 @@ void AbstractJoint::deletePhysicsObject(void)
 b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObjectPtr anObject, const Position& aPosition)
 {
 	b2Body* myReturn = anObject->getB2BodyPtrForPosition(aPosition);
-	if (myReturn == NULL)
+	if (myReturn == nullptr)
 	{
 		anObject->createPhysicsObject();
 		myReturn = anObject->getB2BodyPtrForPosition(aPosition);
@@ -76,7 +76,7 @@ void AbstractJoint::jointWasDeleted(void)
 {
 	// if this member is called, the joint is already gone
 	DEBUG4("AbstractJoint::jointWasDeleted(void) for %p", this);
-	theJointPtr = NULL;
+	theJointPtr = nullptr;
 	if (theViewObjectPtr)
 		theViewObjectPtr->setVisible(false);
 }
@@ -116,7 +116,7 @@ void AbstractJoint::setGroundBodyPtr(b2Body* aPtr)
 void AbstractJoint::updateViewObject(bool) const
 {
 	// no ViewObject: nothing to update ;-)
-	if(theViewObjectPtr == NULL)
+	if(theViewObjectPtr == nullptr)
 		return;
 
 	theViewObjectPtr->adjustObjectDrawing(getTempWidth(),

@@ -192,7 +192,7 @@ public:
 	// (sorted alphabetically)
 
 	/// @returns Pointer to the B2Body for the relative position asked for.
-	///          Might return NULL if no body or if outside body (see warning)
+	///          Might return nullptr if no body or if outside body (see warning)
 	/// @param   Relative position (to the center of the object) to look for
 	/// @warning Because the default BaseObject just returns its pointer
 	///          without any checking, don't expect this member to fail if
@@ -364,7 +364,7 @@ public:
 	virtual void deletePhysicsObject(void);
 
 	virtual bool isPhysicsObjectCreated(void) const
-		{ return theB2BodyPtr!=NULL; }
+		{ return theB2BodyPtr!=nullptr; }
 
 	/** Parse all properties (again).
 	  * @note AbstractObject understands PivotPoint, TranslationGuides,

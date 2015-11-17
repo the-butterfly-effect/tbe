@@ -206,7 +206,7 @@ void Pingus::createPhysicsObject(void)
 
 ViewObject*  Pingus::createViewObject(float aDefaultDepth)
 {
-	assert(theViewObjectPtr==NULL);
+	assert(theViewObjectPtr==nullptr);
 	theViewObjectPtr = new ViewPingus(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
@@ -229,7 +229,7 @@ void Pingus::deletePhysicsObjectForReal(void)
 {
 	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
-	theB2BodyPtr = NULL;
+	theB2BodyPtr = nullptr;
 }
 
 

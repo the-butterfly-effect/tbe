@@ -60,7 +60,7 @@ public:
 
     /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
     virtual ViewObject* createViewObject(float)
-    { return NULL; }
+    { return nullptr; }
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)

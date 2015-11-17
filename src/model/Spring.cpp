@@ -77,7 +77,7 @@ Spring::Spring()
                     QObject::tr("Something springy."),
                     "spring20",
                     0.4, 0.2, 0.8, 0.0),
-      theOtherEndPtr(NULL),
+      theOtherEndPtr(nullptr),
       theSpringWidth(1.0f)
 {
 	theProps.setDefaultPropertiesString(
@@ -129,7 +129,7 @@ void Spring::createPhysicsObject(void)
 	RectObject::createPhysicsObject(getOrigCenter()-Vector(0.25*getTheWidth(),0));
 
     SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
-    if (myOtherEndPtr==NULL)
+    if (myOtherEndPtr==nullptr)
 	{
         theOtherEndPtr = ObjectFactory::createChildObject<SpringEnd>
                 (this, getOrigCenter()+0.25*getTheWidth(), getTheWidth()/2.0, getTheHeight());
@@ -187,7 +187,7 @@ Position Spring::getTempCenter (void) const
 
 qreal Spring::getTempWidth() const
 {
-	if (theOtherEndPtr==NULL)
+	if (theOtherEndPtr==nullptr)
 		return getTheWidth();
     SpringEnd* myOtherEndPtr = dynamic_cast<SpringEnd*>(theOtherEndPtr.get());
     assert(myOtherEndPtr);
@@ -199,7 +199,7 @@ void Spring::setOrigCenter ( const Position& aNewPos )
     RectObject::setOrigCenter(aNewPos);
 
 	Vector myOffset = Vector(0.25*getTheWidth(),0);
-	if (theOtherEndPtr!=NULL)
+	if (theOtherEndPtr!=nullptr)
         theOtherEndPtr->setOrigCenter(aNewPos + myOffset);
 }
 
@@ -213,7 +213,7 @@ SpringEnd::SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aH
                     "spring20",
                     aWidth, aHeight, 0.1, 0.0),
       theOtherEndPtr(aDBox),
-      theJointPtr(NULL),
+      theJointPtr(nullptr),
       theSpringConstant(1.0f)
 {
 	setOrigCenter(aPos);
@@ -239,12 +239,12 @@ void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 
 ViewObject*  SpringEnd::createViewObject(float)
 {
-	return NULL;
+	return nullptr;
 }
 
 void SpringEnd::createPhysicsObject(void)
 {
-	if (theB2BodyPtr!=NULL)
+	if (theB2BodyPtr!=nullptr)
 		return;
 	RectObject::createPhysicsObject();
 
@@ -255,14 +255,14 @@ void SpringEnd::createPhysicsObject(void)
 						  theB2BodyPtr,
 						  theOtherEndPtr->getOrigCenter().toB2Vec2(),
 						  Vector(theOtherEndPtr->getOrigCenter().angle).toB2Vec2());
-	myJointDef.userData = NULL;
+	myJointDef.userData = nullptr;
 	myJointDef.collideConnected = false;
 	myJointDef.lowerTranslation = - getTheWidth();
 	myJointDef.upperTranslation = + 4*getTheWidth();
 	myJointDef.enableLimit = true;
 	myJointDef.enableMotor = false;
 
-	assert(theJointPtr==NULL);
+	assert(theJointPtr==nullptr);
 	theJointPtr = reinterpret_cast<b2PrismaticJoint*>(getB2WorldPtr()->CreateJoint(&myJointDef));
 	theWorldPtr->registerCallback(this);
 }
@@ -271,12 +271,12 @@ void SpringEnd::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
 	// the deletePhysics will already kill the joint, thanks to Box2D.
-	theJointPtr = NULL;
+	theJointPtr = nullptr;
 }
 
 qreal SpringEnd::getDistance(void) const
 {
-	if (theJointPtr==NULL)
+	if (theJointPtr==nullptr)
 		return 0;
 	return theJointPtr->GetJointTranslation();
 }
