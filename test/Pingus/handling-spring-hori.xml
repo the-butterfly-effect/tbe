@@ -4,7 +4,7 @@
         <title>Test Pingus with Springs</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>TEST LEVEL TO VALIDATE OPERATION OF PINGUS: jumping on a spring and being deflected by a spring&lt;br&gt;&lt;br&gt;Top one splashes,&lt;br&gt;middle one is saved by spring,&lt;br&gt;bottom one is deflected by spring and wall equally.</description>
+        <description>TEST LEVEL TO VALIDATE OPERATION OF PINGUS: being deflected by a horizontal spring&lt;br&gt;&lt;br&gt;Top one splashes,&lt;br&gt;middle one is saved by spring,&lt;br&gt;bottom one is deflected by spring and wall equally.</description>
         <date>Nov 17, 2015</date>
     </levelinfo>
     <toolbox />
