@@ -64,8 +64,8 @@ public:
 		SLIDELEFT,
 		SLIDERIGHT,
 		SPLATTING,
-		// WAITING,
-		// SOARING,
+		WAITING,
+		// SOARING, would be neat if ever we have time to add parachuting
 		DEAD	// keep this one last!
 	};
 
@@ -109,6 +109,7 @@ private:
 	void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
+	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
 
 private:
@@ -125,6 +126,9 @@ private:
 	qreal theSplattingTimeStart;
 	/// We need to keep track of falling start for the animation.
 	qreal theFallingTimeStart;
+	/// We need to keep track of waiting start for the animation
+	/// *and* for doing checks whether walking is possible again.
+	qreal theWaitingTimeStart;
 };
 
 

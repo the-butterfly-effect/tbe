@@ -43,7 +43,7 @@ static const qreal SPLATTING_TIME = 0.32; // seconds, twice the FALLING_TIME
 static const qreal WALKING_SPEED  = 0.50; // m/s
 static const qreal WALKINGSEQS_PER_SECOND = 1.5; // 1.5 sequences per horizontal distance of [walking speed*1second]
 
-const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 1};
+const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 1};
 
 
 Pingus::Pingus()
@@ -85,6 +85,9 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 		break;
 	case SPLATTING:
 		callbackStepSplatting(aDeltaTime, aTotalTime);
+		break;
+	case WAITING:
+		callbackStepWaiting(aDeltaTime, aTotalTime);
 		break;
 	case DEAD:
 		// nothing to do
@@ -196,6 +199,11 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 }
 
 
+void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
+{
+}
+
+
 void Pingus::createPhysicsObject(void)
 {
 	theState = FALLING;
@@ -278,6 +286,9 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			{
 				/* do nothing */;
 			}
+			break;
+		case WAITING:
+			// nothing to be done here...
 			break;
 		case DEAD:
 			// nothing to be done here...
