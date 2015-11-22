@@ -64,6 +64,8 @@ public:
 		SLIDELEFT,
 		SLIDERIGHT,
 		SPLATTING,
+		// WAITING,
+		// SOARING,
 		DEAD	// keep this one last!
 	};
 

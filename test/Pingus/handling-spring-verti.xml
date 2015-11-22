@@ -12,7 +12,7 @@
         <scenesize width="7" height="3.5"/>
         <predefined>
 			<object width="3.000" X="1.500" Y="2.400" height="1.000" type="RightRamp" angle="0.000"/>
-			<object width="0.400" X="4.65" Y="0.20" height="0.400" type="Spring" angle="1.571">
+			<object width="0.400" X="4.60" Y="0.20" height="0.400" type="Spring" angle="1.571">
                 <property key="SpringConstant">750</property>
             </object>
             <object width="0.320" X="0.2" Y="3.3" height="0.320" type="Pingus" angle="0.000" ID="pingus0"/>

@@ -69,8 +69,8 @@ ViewPingus::~ViewPingus ( )
 void ViewPingus::adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position &aCenter)
 {
 	// override angle so penguin remains 'upright'
-	Position myCenter(aCenter.x, aCenter.y, 0.01);
-	ViewObject::adjustObjectDrawing(aWidth, aHeight, myCenter);
+	Position myCenter(aCenter.x, aCenter.y+0.02, 0.01);
+	ViewObject::adjustObjectDrawing(aWidth+0.04, aHeight+0.04, myCenter);
 }
 
 

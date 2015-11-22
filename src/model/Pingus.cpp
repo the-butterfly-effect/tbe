@@ -36,7 +36,7 @@ static PingusObjectFactory thePingusObjectFactory;
 
 
 static const qreal FALLING_TIME   = 0.16; // seconds
-static const qreal PINGUS_RADIUS  = 0.16; // m
+static const qreal PINGUS_RADIUS  = 0.14; // m
 static const qreal PINGUS_MASS    = 1.50; // kg
 static const qreal SPLATTING_IMPULSE = 7.0; // ###
 static const qreal SPLATTING_TIME = 0.32; // seconds, twice the FALLING_TIME
@@ -178,7 +178,10 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 	if (myXd < 0 && theState==WALKINGRIGHT)
 		goToState(WALKINGLEFT);
 
-	// Add the horizontal walking force
+	// Add the horizontal walking force.
+	// Note that this is just the P-action of a PID-controller, so there's
+	// guaranteed no overshoot as myXd will never reach the WALKING_SPEED.
+	// With the current settings it remains 0.0003 m/s below it.
 	qreal myXImpulse = 0;
 	if (fabs(myXd) < WALKING_SPEED)
 		myXImpulse = copysign(5.0*(WALKING_SPEED-fabs(myXd))/WALKING_SPEED, myXd);
