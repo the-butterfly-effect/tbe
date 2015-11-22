@@ -112,6 +112,15 @@ private:
 	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
 
+	void resetParameters()
+	{
+		theState = FALLING;
+		theAnimationFrameIndex = 0;
+		theFallingTimeStart   = -1.0;
+		theSplattingTimeStart = -1.0;
+		theWaitingTimeStart   = -1.0;
+	}
+
 private:
 	// Private things
 
@@ -120,7 +129,7 @@ private:
 
 	/// Within a state, there are several animation frames,
 	/// this is the index into the list.
-	int theAnimationFrameIndex;
+	unsigned int theAnimationFrameIndex;
 
 	/// We need to keep track whether the splatting is done.
 	qreal theSplattingTimeStart;

@@ -39,7 +39,9 @@ static const qreal FALLING_TIME   = 0.16; // seconds
 static const qreal PINGUS_RADIUS  = 0.14; // m
 static const qreal PINGUS_MASS    = 1.50; // kg
 static const qreal SPLATTING_IMPULSE = 7.0; // ###
-static const qreal SPLATTING_TIME = 0.32; // seconds, twice the FALLING_TIME
+static const qreal SPLATTING_SPF  = 0.02; // seconds per frame
+static const qreal WAITING_SPF    = 0.06; // second per frame
+static const qreal WAITING_SPEED  = 0.002; // m/s  (i.e. 2 mm/s)
 static const qreal WALKING_SPEED  = 0.50; // m/s
 static const qreal WALKINGSEQS_PER_SECOND = 1.5; // 1.5 sequences per horizontal distance of [walking speed*1second]
 
@@ -48,14 +50,11 @@ const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 1};
 
 Pingus::Pingus()
 		: CircleObject(QObject::tr("Pingus"),
-					 QObject::tr("the famous penguin. He walks and believes in you. Keep him alive!"),
+					 QObject::tr("The famous penguin. He walks and believes in your guidance. Keep him alive!"),
 					 "",
 					 PINGUS_RADIUS, PINGUS_MASS, 0.0 )
 {
-	theState = FALLING;
-	theAnimationFrameIndex = 0;
-	theFallingTimeStart = -1.0;
-	theSplattingTimeStart = -1.0;
+	resetParameters();
 }
 
 
@@ -121,8 +120,17 @@ void Pingus::callbackStepSliding(qreal aTimeStep, qreal aTotalTime)
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
 	if (fabs(myXd) < WALKING_SPEED)
 	{
-		goToState(WALKINGLEFT);
+		if (myXd < 0)
+			goToState(WALKINGLEFT);
+		else
+			goToState(WALKINGRIGHT);
 		callbackStepWalking(aTimeStep, aTotalTime);
+		return;
+	}
+	if (fabs(myXd) < WAITING_SPEED)
+	{
+		goToState(WAITING);
+		callbackStepWaiting(aTimeStep, aTotalTime);
 		return;
 	}
 	if (myXd > 0.0 && theState==SLIDELEFT)
@@ -152,11 +160,53 @@ void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 	// calculate the frame to display
 	// the splatting sequence has 16 images, let's take 0.32s to display them
 	// (at 60fps, that means approx 2 displayframes for each animation frame)
-	theAnimationFrameIndex = (Pingus::FramesPerState[SPLATTING] * (aTotalTime-theSplattingTimeStart) / SPLATTING_TIME);
+	// calculate the frame to display
+	theAnimationFrameIndex = (aTotalTime-theSplattingTimeStart) / SPLATTING_SPF;
 
 	// are we done?
-	if (aTotalTime-theSplattingTimeStart > SPLATTING_TIME)
+	if (theAnimationFrameIndex >= Pingus::FramesPerState[SPLATTING])
+	{
+		theAnimationFrameIndex = 0;
 		goToState(DEAD);
+	}
+}
+
+
+void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
+{
+	// is this the first callback in Waiting state???
+	if (theWaitingTimeStart<0)
+		theWaitingTimeStart=aTotalTime;
+
+	// calculate the frame to display
+	theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
+	theAnimationFrameIndex %= Pingus::FramesPerState[WAITING];
+
+	// if we're moving, we're no longer waiting
+	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
+	if (fabs(myXd) > WAITING_SPEED)
+	{
+		if (myXd > 0)
+			goToState(WALKINGRIGHT);
+		else
+			goToState(WALKINGLEFT);
+		callbackStepWalking(aTimeStep, aTotalTime);
+		return;
+	}
+	// if the Penguin is watching right, let's nudge him and see if it makes hime move
+	if (theAnimationFrameIndex == 3)
+	{
+		Vector myTotXImpulse = aTimeStep * Vector(5, 0);
+		theB2BodyPtr->ApplyLinearImpulse(
+				myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
+	}
+	// if the Penguin is watching left, let's nudge him and see if it makes hime move
+	if (theAnimationFrameIndex == 0)
+	{
+		Vector myTotXImpulse = aTimeStep * Vector(-5, 0);
+		theB2BodyPtr->ApplyLinearImpulse(
+				myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
+	}
 }
 
 
@@ -171,8 +221,17 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
 	if (fabs(myXd) > WALKING_SPEED)
 	{
-		goToState(SLIDELEFT);
+		if (myXd > 0)
+			goToState(SLIDERIGHT);
+		else
+			goToState(SLIDELEFT);
 		callbackStepSliding(aTimeStep, aTotalTime);
+		return;
+	}
+	if (fabs(myXd) < WAITING_SPEED)
+	{
+		goToState(WAITING);
+		callbackStepWaiting(aTimeStep, aTotalTime);
 		return;
 	}
 
@@ -199,16 +258,9 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 }
 
 
-void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
-{
-}
-
-
 void Pingus::createPhysicsObject(void)
 {
-	theState = FALLING;
-	theFallingTimeStart = -1.0;
-	theSplattingTimeStart = -1.0;
+	resetParameters();
 	createBallShapeFixture(PINGUS_RADIUS, PINGUS_MASS);
 	CircleObject::createPhysicsObject();
 	theWorldPtr->registerCallback(this);
@@ -227,10 +279,7 @@ ViewObject*  Pingus::createViewObject(float aDefaultDepth)
 void Pingus::deletePhysicsObject(void)
 {
 	// nothing much to do here that actually has to do with delete...
-	theState = FALLING;
-	theAnimationFrameIndex=0;
-	theFallingTimeStart = -1.0;
-	theSplattingTimeStart = -1.0;
+	resetParameters();
 	clearShapeList();
 
 	CircleObject::deletePhysicsObject();
@@ -288,6 +337,7 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			}
 			break;
 		case WAITING:
+			theState = aNewState;
 			// nothing to be done here...
 			break;
 		case DEAD:
