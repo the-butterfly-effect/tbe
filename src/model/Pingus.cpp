@@ -27,9 +27,9 @@
 class PingusObjectFactory : public ObjectFactory
 {
 public:
-	PingusObjectFactory(void)
+	PingusObjectFactory()
 	{	announceObjectType("Pingus", this); }
-	AbstractObject* createObject(void) const override
+	AbstractObject* createObject() const override
 	{	return fixObject(new Pingus()); }
 };
 static PingusObjectFactory thePingusObjectFactory;
@@ -68,6 +68,60 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	DEBUG6("Pingus receives callback");
 	if (isPhysicsObjectCreated()==false)
 		return;
+
+	// based on X velocity, determine the right state
+	States myNewXSuggestion = WAITING;
+	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
+	if (fabs(myXd) > WAITING_SPEED)
+	{
+		if (fabs(myXd) > WALKING_SPEED)
+		{
+			if (myXd > 0)
+				myNewXSuggestion = SLIDERIGHT;
+			else
+				myNewXSuggestion = SLIDELEFT;
+		}
+		else
+		{
+			if (myXd > 0)
+				myNewXSuggestion = WALKINGRIGHT;
+			else
+				myNewXSuggestion = WALKINGLEFT;
+		}
+	}
+
+	// based on Y velocity, determine the right state
+	// if we're falling *and* there's no LastNormalImpulse
+	// *and* there's still a Yd, we're still falling
+	// if we're not falling and there's a too big Yd, we start falling
+	qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
+
+//	printf("Pingus %p velocity x/y: %f/%f  /// xg: %d  li: %f\n", this, myXd, myYd,
+//		   myNewXSuggestion, theLastNormalImpulseReported);
+
+	// do we need to switch state?
+	switch(theState)
+	{
+	case WALKINGLEFT:
+	case WALKINGRIGHT:
+	case SLIDELEFT:
+	case SLIDERIGHT:
+	case WAITING:
+		if (myYd > 0.1*WALKING_SPEED || (myYd < -0.4*fabs(myXd) && fabs(myYd)>WAITING_SPEED))
+			goToState(FALLING);
+		else
+			if (myNewXSuggestion != theState)
+				goToState(myNewXSuggestion);
+		break;
+	case FALLING:
+		if (theLastNormalImpulseReported > 0.02 || fabs(myYd) < WAITING_SPEED)
+			goToState(myNewXSuggestion);
+		break;
+	case SPLATTING:
+	case DEAD:
+		// X velocities are not going to affect us, nothing to do
+		break;
+	}
 
 	switch(theState)
 	{
@@ -112,36 +166,13 @@ void Pingus::callbackStepFalling(qreal, qreal aTotalTime)
 }
 
 
-void Pingus::callbackStepSliding(qreal aTimeStep, qreal aTotalTime)
+void Pingus::callbackStepSliding(qreal aTimeStep, qreal)
 {
-	// * check for the horizontal speed
-	//   - if the speed is below walking, switch to walking
-	// * if we have a sufficient vertical component, we're falling
+	// Add a bit of friction against the velocity vector
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-	if (fabs(myXd) < WALKING_SPEED)
-	{
-		if (myXd < 0)
-			goToState(WALKINGLEFT);
-		else
-			goToState(WALKINGRIGHT);
-		callbackStepWalking(aTimeStep, aTotalTime);
-		return;
-	}
-	if (fabs(myXd) < WAITING_SPEED)
-	{
-		goToState(WAITING);
-		callbackStepWaiting(aTimeStep, aTotalTime);
-		return;
-	}
-	if (myXd > 0.0 && theState==SLIDELEFT)
-		goToState(SLIDERIGHT);
-	if (myXd < 0.0 && theState==SLIDERIGHT)
-		goToState(SLIDELEFT);
+	Q_ASSERT (fabs(myXd) > WALKING_SPEED);
 
-	// Add a bit of friction
-	qreal myXImpulse = 0.0;
-	if (fabs(myXd) > WALKING_SPEED)
-		myXImpulse = -copysign(0.8, myXd);
+	qreal myXImpulse = -copysign(0.8, myXd);
 	Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0.0);
 	theB2BodyPtr->ApplyLinearImpulse(
 			myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
@@ -182,17 +213,6 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 	theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
 	theAnimationFrameIndex %= Pingus::FramesPerState[WAITING];
 
-	// if we're moving, we're no longer waiting
-	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-	if (fabs(myXd) > WAITING_SPEED)
-	{
-		if (myXd > 0)
-			goToState(WALKINGRIGHT);
-		else
-			goToState(WALKINGLEFT);
-		callbackStepWalking(aTimeStep, aTotalTime);
-		return;
-	}
 	// if the Penguin is watching right, let's nudge him and see if it makes hime move
 	if (theAnimationFrameIndex == 3)
 	{
@@ -210,7 +230,7 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 }
 
 
-void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
+void Pingus::callbackStepWalking(qreal aTimeStep, qreal)
 {
 	// * check for the horizontal speed and adjust it if needed
 	//   by applying a force
@@ -219,34 +239,13 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 	// * if we have a sufficient vertical component, we're falling
 	// * set theAnimationFrameIndex to the horizontal position
 	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-	if (fabs(myXd) > WALKING_SPEED)
-	{
-		if (myXd > 0)
-			goToState(SLIDERIGHT);
-		else
-			goToState(SLIDELEFT);
-		callbackStepSliding(aTimeStep, aTotalTime);
-		return;
-	}
-	if (fabs(myXd) < WAITING_SPEED)
-	{
-		goToState(WAITING);
-		callbackStepWaiting(aTimeStep, aTotalTime);
-		return;
-	}
-
-	if (myXd > 0 && theState==WALKINGLEFT)
-		goToState(WALKINGRIGHT);
-	if (myXd < 0 && theState==WALKINGRIGHT)
-		goToState(WALKINGLEFT);
+	Q_ASSERT (fabs(myXd) < WALKING_SPEED);
 
 	// Add the horizontal walking force.
 	// Note that this is just the P-action of a PID-controller, so there's
 	// guaranteed no overshoot as myXd will never reach the WALKING_SPEED.
 	// With the current settings it remains 0.0003 m/s below it.
-	qreal myXImpulse = 0;
-	if (fabs(myXd) < WALKING_SPEED)
-		myXImpulse = copysign(5.0*(WALKING_SPEED-fabs(myXd))/WALKING_SPEED, myXd);
+	qreal myXImpulse = copysign(5.0*(WALKING_SPEED-fabs(myXd))/WALKING_SPEED, myXd);
 	Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0);
 	theB2BodyPtr->ApplyLinearImpulse(
 			myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
@@ -258,7 +257,7 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal aTotalTime)
 }
 
 
-void Pingus::createPhysicsObject(void)
+void Pingus::createPhysicsObject()
 {
 	resetParameters();
 	createBallShapeFixture(PINGUS_RADIUS, PINGUS_MASS);
@@ -276,7 +275,7 @@ ViewObject*  Pingus::createViewObject(float aDefaultDepth)
 }
 
 
-void Pingus::deletePhysicsObject(void)
+void Pingus::deletePhysicsObject()
 {
 	// nothing much to do here that actually has to do with delete...
 	resetParameters();
@@ -285,7 +284,7 @@ void Pingus::deletePhysicsObject(void)
 	CircleObject::deletePhysicsObject();
 }
 
-void Pingus::deletePhysicsObjectForReal(void)
+void Pingus::deletePhysicsObjectForReal()
 {
 	updateViewObject(false);
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
@@ -295,7 +294,7 @@ void Pingus::deletePhysicsObjectForReal(void)
 
 Pingus::States Pingus::goToState(Pingus::States aNewState)
 {
-	DEBUG5("Pingus change state request from %d to %d.", theState, aNewState);
+	DEBUG1("Pingus change state request from %d to %d.", theState, aNewState);
 
 	// if we're not yet splatting or dead, we're splatting!
 	if (aNewState == SPLATTING)
@@ -309,19 +308,13 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 		switch (theState)
 		{
 		case WALKINGLEFT:
-			theState = aNewState;
-			break;
 		case WALKINGRIGHT:
+		case SLIDELEFT:
+		case SLIDERIGHT:
 			theState = aNewState;
 			break;
 		case FALLING:
 			theFallingTimeStart = -1.0;
-			theState = aNewState;
-			break;
-		case SLIDELEFT:
-			theState = aNewState;
-			break;
-		case SLIDERIGHT:
 			theState = aNewState;
 			break;
 		case SPLATTING:
@@ -337,8 +330,8 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			}
 			break;
 		case WAITING:
+			theWaitingTimeStart = -1.0;
 			theState = aNewState;
-			// nothing to be done here...
 			break;
 		case DEAD:
 			// nothing to be done here...
@@ -357,38 +350,44 @@ void Pingus::reportNormalImpulseLength(qreal anImpulseLength)
 	// pop the Pingus if it is maltreated
 	// switch between falling and walking/sliding where appropriate
 //	printf("anImpulseLength: %f\n", anImpulseLength);
-
 	if (anImpulseLength>SPLATTING_IMPULSE)
 	{
 		goToState(SPLATTING);
 		return;
 	}
-	if (anImpulseLength>0.01 && anImpulseLength<0.1)
-	{
-		if (theState==FALLING)
-			goToState(WALKINGLEFT);
-		return;
-	}
-	goToState(FALLING);
+
+	theLastNormalImpulseReported = anImpulseLength;
+	// When Walking/Sliding/Waiting, we expect an impulselength of approx 0.05-0.06
 }
 
 
-void Pingus::switchToSmallShape(void)
+void Pingus::resetParameters()
 {
-//	// save the current position - as it is only stored within the B2Body
-//	// and we'll kill it in the next line...
-//	Position myCurrentPos = getTempCenter();
+	theState = FALLING;
+	theAnimationFrameIndex = 0;
+	theFallingTimeStart   = -1.0;
+	theSplattingTimeStart = -1.0;
+	theWaitingTimeStart   = -1.0;
+	theLastNormalImpulseReported = 0.0;
+}
 
-//	deletePhysicsObjectForReal();
-//	clearShapeList();
 
-//	b2PolygonShape* myRestShape = new b2PolygonShape();
-//	myRestShape->SetAsBox(0.05, 0.05);
-//	b2FixtureDef* myRestDef = new b2FixtureDef();
-//	myRestDef->density= 0.001 / (0.1 * 0.1);
-//	myRestDef->userData = this;
-//	myRestDef->shape   = myRestShape;
-//	theShapeList.push_back(myRestDef);
+void Pingus::switchToSmallShape()
+{
+	// save the current position - as it is only stored within the B2Body
+	// and we'll kill it in the next line...
+	Position myCurrentPos = getTempCenter();
 
-//	CircleObject::createPhysicsObject(myCurrentPos);
+	deletePhysicsObjectForReal();
+	clearShapeList();
+
+	b2PolygonShape* myRestShape = new b2PolygonShape();
+	myRestShape->SetAsBox(0.05, 0.05);
+	b2FixtureDef* myRestDef = new b2FixtureDef();
+	myRestDef->density= 0.001 / (0.1 * 0.1);
+	myRestDef->userData = this;
+	myRestDef->shape   = myRestShape;
+	theShapeList.push_back(myRestDef);
+
+	CircleObject::createPhysicsObject(myCurrentPos);
 }

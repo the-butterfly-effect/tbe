@@ -45,14 +45,14 @@ public:
 
 	/// Overridden from CircleObject because this class wants to register for
 	/// callbacks and needs to restart its state machine.
-	void createPhysicsObject(void) override;
+	void createPhysicsObject() override;
 
 	/// Let's mis-use deletePhysicsObject to reset our object state.
-	void deletePhysicsObject(void) override;
+	void deletePhysicsObject() override;
 
 	/// DeletePhysicsObject() doesn't really delete the physics object
 	/// anymore - but we need a true deleter here...
-	void deletePhysicsObjectForReal(void);
+	void deletePhysicsObjectForReal();
 
 	/// This enum defines the states of the Pingus.
 	/// It's (not by accident) the same as the row number in the image.
@@ -73,7 +73,7 @@ public:
 
 	/// Overridden from AbstractObject to allow representation of the states.
 	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const override
+	virtual unsigned int getImageIndex() const override
 	{ return theState; }
 
 private:
@@ -87,13 +87,13 @@ private:
 	/// Will replace the existing set of shapes by a smaller shape that
 	/// fits the Splatting and Dead images.
 	/// Do not call from within a Box2D callback.
-	void switchToSmallShape(void);
+	void switchToSmallShape();
 
 public:
 	// the following two members are part of the normal impulse reporting
 
 	/// Overridden from AbstractObject - we want reports on NormalImpulse
-	bool isInterestedInNormalImpulse(void) override
+	bool isInterestedInNormalImpulse() override
 	{ return true; }
 
 	/** Overridden from AbstractObject - we want to receive
@@ -112,14 +112,8 @@ private:
 	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
 	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
 
-	void resetParameters()
-	{
-		theState = FALLING;
-		theAnimationFrameIndex = 0;
-		theFallingTimeStart   = -1.0;
-		theSplattingTimeStart = -1.0;
-		theWaitingTimeStart   = -1.0;
-	}
+	/// Internal function to set all parameters to initial values (again)
+	void resetParameters();
 
 private:
 	// Private things
@@ -138,6 +132,10 @@ private:
 	/// We need to keep track of waiting start for the animation
 	/// *and* for doing checks whether walking is possible again.
 	qreal theWaitingTimeStart;
+
+	/// Keep the last normal impulse length reported, for determining
+	/// whether we are falling (very low impulse) or not.
+	qreal theLastNormalImpulseReported;
 };
 
 
