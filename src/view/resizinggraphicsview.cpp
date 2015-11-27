@@ -73,13 +73,8 @@ void ResizingGraphicsView::clearViewWorld(void)
 
 	delete theWinFailDialogPtr;
 	theWinFailDialogPtr = nullptr;
-
-	if (theScenePtr != nullptr)
-	{
-		QObject::disconnect(theScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
-		delete theScenePtr;
-		theScenePtr=nullptr;
-	}
+	delete theScenePtr;
+	theScenePtr = nullptr;
 }
 
 
