@@ -76,7 +76,7 @@ void ResizingGraphicsView::clearViewWorld(void)
 
 	if (theScenePtr != nullptr)
 	{
-		QObject::disconnect(theScenePtr, SIGNAL(levelWon()), this, SLOT(slot_levelWon()));
+		QObject::disconnect(theScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
 		delete theScenePtr;
 		theScenePtr=nullptr;
 	}
