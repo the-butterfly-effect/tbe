@@ -71,7 +71,7 @@ private:
 
 	QPixmap theBigBitmap;
 
-	int theIndexInImageList[Pingus::DEAD];
+	int theIndexInImageList[Pingus::DEAD+1];
 };
 
 #endif // VIEWPINGUS_H
