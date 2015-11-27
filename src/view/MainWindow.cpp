@@ -342,8 +342,6 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
 	ui->action_Open_File->setVisible(true);
 }
 
-// FIXME/TODO: hopefully temporary
-#ifdef QT_DEBUG
 void MainWindow::on_goalEditorAction_clicked(void)
 {
     // the Goals dialog is modeless, i.e. it can stay floating around
@@ -373,7 +371,7 @@ void MainWindow::on_objectEditorAction_clicked(void)
 {
     emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(nullptr);
 }
-#endif
+
 
 void MainWindow::purgeLevel(void)
 {
@@ -454,14 +452,6 @@ void MainWindow::setupView()
 	ui->toolButton_infoLevel->setIcon(myInfoIcon);
 	connect(ui->toolButton_infoLevel, SIGNAL(clicked(bool)),
 			ui->graphicsView, SLOT(slot_showGameResourcesDialog()));
-
-	// File Menu: disable level editor in release builds
-	// FIXME TODO: temporary fix!!!
-#ifdef QT_DEBUG
-#else
-	ui->action_Switch_to_Level_Editor->setEnabled(false);
-	ui->action_Switch_to_Level_Editor->setVisible(false);
-#endif
 
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
 

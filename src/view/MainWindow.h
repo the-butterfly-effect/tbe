@@ -120,7 +120,6 @@ private slots:
     void on_action_Save_As_activated(void);
     void on_action_Switch_to_Level_Editor_activated();
 
-#ifdef QT_DEBUG
     // menu Insert (Level Creator)
     void on_insert(const QString &anObjectName);
 
@@ -128,7 +127,6 @@ private slots:
     void on_goalEditorAction_clicked(void);
     void on_levelPropertiesEditorAction_clicked(void);
     void on_objectEditorAction_clicked(void);
-#endif
 
 private:
     Ui::MainWindow *ui;

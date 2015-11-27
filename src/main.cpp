@@ -81,14 +81,12 @@ static bool displayHelp(QString /*anArgument*/ )
 	printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
 	printf(" --help              gives this help text\n");
 	printf(" -h                  gives this help text\n");
-#ifdef QT_DEBUG
 	printf(" --level-creator     start in level creator mode\n");
 	printf(" -L                  start in level creator mode\n");
 	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
 	printf(" -v <lvl>            set verbosity\n");
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
     printf("                     (comma-separated list, time is level runtime in seconds)\n");
-#endif
 	printf(" --windowed          display in a window (default is fullscreen)\n");
 	printf(" -W                  display in a window (default is fullscreen)\n");
 	printf("\n");
@@ -101,7 +99,6 @@ static bool goLevelCreator( QString /*anArgument*/ )
 	return true;
 }
 
-#ifdef QT_DEBUG
 static bool setVerbosity(QString anArgument)
 {
 	// the argument should be a number. Let's parse.
@@ -115,7 +112,6 @@ static bool setVerbosity(QString anArgument)
 	DEBUG2("set verbosity level to %d", theVerbosity);
 	return true;
 }
-#endif
 
 // local variable
 static bool theIsMaximized = true;
@@ -149,11 +145,9 @@ static struct s_args theArgsTable[] =
 {
 // keep sorted alphabetically, please
 	{ "help",          "h", false, displayHelp, },
-#ifdef QT_DEBUG
 	{ "level-creator", "L", false, goLevelCreator, },
 	{ "regression",    "",  true,  runRegression, },
     { "verbosity",     "v", true,  setVerbosity, },
-#endif
 	{ "windowed",      "W", false, setWindowed, },
 //	keep this one last:
 	{ "\0", "\0", false, nullptr, },
