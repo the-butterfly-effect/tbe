@@ -37,36 +37,16 @@
             <object X="7.900" Y="3.000" type="SoccerBall" angle="0.000"/>
             <object X="7.900" Y="4.500" type="PetanqueBoule" angle="0.000"/>
 
-            <!--object X="7.95" Y="0.48" type="BowlingBall"/>
-            <object X="8.3"  Y="0.49" type="BowlingBall"/>
-            <object X="8.65" Y="4.4"  type="PetanqueBoule"/>
-            <object X="9.0"  Y="4.5"  type="PetanqueBoule"/>
+            <object X="7.96" Y="0.44" type="BowlingBall"/>
+            <object X="8.31" Y="0.49" type="BowlingBall"/>
+            <object X="8.66" Y="4.4"  type="PetanqueBoule"/>
+            <object X="9.01" Y="4.5"  type="PetanqueBoule"/>
 
-			<object X="7.95" Y="0.16" type="Pingus" angle="0.000" ID="pingus6"/>
-            <object X="8.3"  Y="0.16" type="Pingus" angle="0.000" ID="pingus7"/>
-            <object X="8.65" Y="0.16" type="Pingus" angle="0.000" ID="pingus8"/>
-            <object X="9.0"  Y="0.16" type="Pingus" angle="0.000" ID="pingus9"/>
+            <object X="7.95" Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus6"/>
+            <object X="8.3"  Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus7"/>
+            <object X="8.65" Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus8"/>
+            <object X="9.0"  Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus9"/>
             <object width="1.600" X="8.45" Y="-0.05" height="0.100" type="Floor" ID="floor" angle="0.000"/>
-            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57">
-                <property key="ImageName">Empty</property>
-                <property key="object1">pingus6@(0,0)</property>
-                <property key="object2">floor@(0,0)</property>
-            </object>
-            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57">
-                <property key="ImageName">Empty</property>
-                <property key="object1">pingus7@(0,0)</property>
-                <property key="object2">floor@(0,0)</property>
-            </object>
-            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57">
-                <property key="ImageName">Empty</property>
-                <property key="object1">pingus8@(0,0)</property>
-                <property key="object2">floor@(0,0)</property>
-            </object>
-            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57">
-                <property key="ImageName">Empty</property>
-                <property key="object1">pingus9@(0,0)</property>
-                <property key="object2">floor@(0,0)</property>
-            </object-->
 
         </predefined>
         <background>

@@ -96,9 +96,6 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	// if we're not falling and there's a too big Yd, we start falling
 	qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
 
-//	printf("Pingus %p velocity x/y: %f/%f  /// xg: %d  li: %f\n", this, myXd, myYd,
-//		   myNewXSuggestion, theLastNormalImpulseReported);
-
 	// do we need to switch state?
 	switch(theState)
 	{
@@ -147,7 +144,7 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 		break;
 	}
 
-	static_cast<ViewPingus*>(theViewObjectPtr)->setNewAnimationFrame(theState, theAnimationFrameIndex);
+	updateViewPingus();
 }
 
 
@@ -205,22 +202,17 @@ void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 
 void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 {
-	// is this the first callback in Waiting state???
-	if (theWaitingTimeStart<0)
-		theWaitingTimeStart=aTotalTime;
+	// First calculate the new animation frame
+	callbackStepWaitingAnimation(aTimeStep, aTotalTime);
 
-	// calculate the frame to display
-	theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
-	theAnimationFrameIndex %= Pingus::FramesPerState[WAITING];
-
-	// if the Penguin is watching right, let's nudge him and see if it makes hime move
+	// If the Penguin is watching right, let's nudge him and see if it makes hime move
 	if (theAnimationFrameIndex == 3)
 	{
 		Vector myTotXImpulse = aTimeStep * Vector(5, 0);
 		theB2BodyPtr->ApplyLinearImpulse(
 				myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 	}
-	// if the Penguin is watching left, let's nudge him and see if it makes hime move
+	// If the Penguin is watching left, let's nudge him and see if it makes hime move
 	if (theAnimationFrameIndex == 0)
 	{
 		Vector myTotXImpulse = aTimeStep * Vector(-5, 0);
@@ -230,26 +222,33 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 }
 
 
+void Pingus::callbackStepWaitingAnimation(qreal, qreal aTotalTime)
+{
+	// is this the first callback in Waiting state???
+	if (theWaitingTimeStart<0)
+		theWaitingTimeStart=aTotalTime;
+
+	// calculate the frame to display
+	theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
+	theAnimationFrameIndex %= Pingus::FramesPerState[WAITING];
+}
+
+
 void Pingus::callbackStepWalking(qreal aTimeStep, qreal)
 {
 	// * check for the horizontal speed and adjust it if needed
 	//   by applying a force
-	//   - if the force becomes too big, turn around
-	//   - if the force is sufficiently negative, switch to sliding
-	// * if we have a sufficient vertical component, we're falling
-	// * set theAnimationFrameIndex to the horizontal position
-	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
-	Q_ASSERT (fabs(myXd) < WALKING_SPEED);
-
-	// Add the horizontal walking force.
 	// Note that this is just the P-action of a PID-controller, so there's
 	// guaranteed no overshoot as myXd will never reach the WALKING_SPEED.
 	// With the current settings it remains 0.0003 m/s below it.
+	qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
+	Q_ASSERT (fabs(myXd) < WALKING_SPEED);
 	qreal myXImpulse = copysign(5.0*(WALKING_SPEED-fabs(myXd))/WALKING_SPEED, myXd);
 	Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0);
 	theB2BodyPtr->ApplyLinearImpulse(
 			myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 
+	// * set theAnimationFrameIndex to the horizontal position
 	// in WALKING_SPEED [m/s], we have Pingus::FramesPerState[WALKINGLEFT] animation frames to draw
 	qreal temp = fmodf(theB2BodyPtr->GetPosition().x, WALKING_SPEED/WALKINGSEQS_PER_SECOND);
 	temp /= WALKING_SPEED/WALKINGSEQS_PER_SECOND;
@@ -271,6 +270,7 @@ ViewObject*  Pingus::createViewObject(float aDefaultDepth)
 	assert(theViewObjectPtr==nullptr);
 	theViewObjectPtr = new ViewPingus(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+	updateViewPingus();
 	return theViewObjectPtr;
 }
 
@@ -294,7 +294,7 @@ void Pingus::deletePhysicsObjectForReal()
 
 Pingus::States Pingus::goToState(Pingus::States aNewState)
 {
-	DEBUG1("Pingus change state request from %d to %d.", theState, aNewState);
+	DEBUG4("Pingus change state request from %d to %d.", theState, aNewState);
 
 	// if we're not yet splatting or dead, we're splatting!
 	if (aNewState == SPLATTING)
@@ -338,8 +338,7 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			break;
 		}
 	}
-	DEBUG1("Switched Pingus %p to state %d", this, theState);
-	// TODO: update the ViewPingus object for the new state
+	DEBUG5("Switched Pingus %p to state %d", this, theState);
 	theAnimationFrameIndex = 0;
 	return theState;
 }
@@ -349,7 +348,6 @@ void Pingus::reportNormalImpulseLength(qreal anImpulseLength)
 {
 	// pop the Pingus if it is maltreated
 	// switch between falling and walking/sliding where appropriate
-//	printf("anImpulseLength: %f\n", anImpulseLength);
 	if (anImpulseLength>SPLATTING_IMPULSE)
 	{
 		goToState(SPLATTING);
@@ -369,6 +367,7 @@ void Pingus::resetParameters()
 	theSplattingTimeStart = -1.0;
 	theWaitingTimeStart   = -1.0;
 	theLastNormalImpulseReported = 0.0;
+	updateViewPingus();
 }
 
 
@@ -390,4 +389,58 @@ void Pingus::switchToSmallShape()
 	theShapeList.push_back(myRestDef);
 
 	CircleObject::createPhysicsObject(myCurrentPos);
+}
+
+
+void Pingus::updateViewPingus()
+{
+	// We know for sure that for the Pingus, this will be a ViewPingus,
+	// so no need to use RTTI's dynamic_cast<ViewPingus*> here...
+	ViewPingus* theVPPtr = static_cast<ViewPingus*>(theViewObjectPtr);
+	if (theVPPtr)
+		theVPPtr->setNewAnimationFrame(theState, theAnimationFrameIndex);
+}
+
+///---------------------------------------------------------------------------
+///------------------------- WaitingPingus -----------------------------------
+///---------------------------------------------------------------------------
+
+//// this class' ObjectFactory
+class WaitingPingusObjectFactory : public ObjectFactory
+{
+public:
+	WaitingPingusObjectFactory()
+	{	announceObjectType("WaitingPingus", this); }
+	AbstractObject* createObject() const override
+	{	return fixObject(new WaitingPingus()); }
+};
+static WaitingPingusObjectFactory theWaitingPingusObjectFactory;
+
+
+WaitingPingus::WaitingPingus()
+		: Pingus()
+{
+	resetParameters();
+}
+
+
+WaitingPingus::~WaitingPingus()
+{
+}
+
+
+void WaitingPingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
+{
+	// WaitingPingus: only calculate the new animation frame
+	callbackStepWaitingAnimation(aTimeStep, aTotalTime);
+}
+
+
+void WaitingPingus::resetParameters()
+{
+	Pingus::resetParameters();
+	theState = WAITING;
+	// resetParameters already calls updateViewPingus(), but we change the
+	// starting state, so we need to call it again...
+	updateViewPingus();
 }

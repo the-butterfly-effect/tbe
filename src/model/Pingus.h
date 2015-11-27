@@ -29,6 +29,9 @@
   *
   * Contrary to 'popular belief', Pingus is not PolyObject, but a CircleObject.
   * There are special testing levels available in the testing/Pingus directory.
+  *
+  * This Pingus starts in the mode "Falling".
+  * There are also specialized Pingus classes, see below.
   */
 class Pingus : public CircleObject, public SimStepCallbackInterface
 {
@@ -102,21 +105,26 @@ public:
 	  */
 	void reportNormalImpulseLength(qreal anImpulseLength) override;
 
-private:
+protected:
 	/// implemented from SimStepCallbackInterface
 	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
+
+	// specialized partial callbacks
+	virtual void callbackStepWaitingAnimation(qreal aTimeStep, qreal aTotalTime);
 
 	/// Internal function to set all parameters to initial values (again)
-	void resetParameters();
+	virtual void resetParameters();
 
-private:
-	// Private things
+	/// Update the animation frame of the ViewPingus
+	void updateViewPingus();
+
+	// "Private" things
 
 	/// The state variable
 	States theState;
@@ -136,6 +144,29 @@ private:
 	/// Keep the last normal impulse length reported, for determining
 	/// whether we are falling (very low impulse) or not.
 	qreal theLastNormalImpulseReported;
+};
+
+
+///---------------------------------------------------------------------------
+///------------------------- WaitingPingus -----------------------------------
+///---------------------------------------------------------------------------
+
+
+/// The WaitingPingus acts like a normal Pingus, except that he starts out
+/// as a stationary waiting Pingus, he's not trying to get moving, you need
+/// to "help" him. If he ever gets stuck (e.g. wedgedagainst the bottom of a
+/// ramp) he's probably going to wait again.
+class WaitingPingus : public Pingus
+{
+public:
+	WaitingPingus();
+
+	virtual ~WaitingPingus();
+
+protected:
+	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime) override;
+
+	void resetParameters() override;
 };
 
 
