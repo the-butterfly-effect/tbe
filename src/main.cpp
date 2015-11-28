@@ -79,6 +79,7 @@ QString theStartFileName;
 static bool displayHelp(QString /*anArgument*/ )
 {
 	printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
+	printf(" --draw-debug        debug draw (draw outlines on physical boundaries of all objects)");
 	printf(" --help              gives this help text\n");
 	printf(" -h                  gives this help text\n");
 	printf(" --level-creator     start in level creator mode\n");
@@ -96,6 +97,12 @@ static bool displayHelp(QString /*anArgument*/ )
 static bool goLevelCreator( QString /*anArgument*/ )
 {
 	theIsLevelEditor = true;
+	return true;
+}
+
+static bool setDrawDebug(QString /*anArgument*/ )
+{
+	theDrawDebug = true;
 	return true;
 }
 
@@ -144,6 +151,7 @@ struct s_args
 static struct s_args theArgsTable[] =
 {
 // keep sorted alphabetically, please
+	{ "draw-debug",    "",  false, setDrawDebug, },
 	{ "help",          "h", false, displayHelp, },
 	{ "level-creator", "L", false, goLevelCreator, },
 	{ "regression",    "",  true,  runRegression, },
