@@ -267,7 +267,8 @@ void Pingus::createPhysicsObject()
 
 ViewObject*  Pingus::createViewObject(float aDefaultDepth)
 {
-	assert(theViewObjectPtr==nullptr);
+	if (nullptr != theViewObjectPtr)
+		return theViewObjectPtr;
 	theViewObjectPtr = new ViewPingus(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	updateViewPingus();
