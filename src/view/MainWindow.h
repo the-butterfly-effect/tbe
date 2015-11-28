@@ -70,26 +70,26 @@ public:
     ~MainWindow();
 
     /// deletes the existing Level instance and removes its view
-    void purgeLevel(void);
+	void purgeLevel();
 
 	RegressionTest* theRegressionTest;
 
 protected:
 	virtual void changeEvent(QEvent *e) override;
 
-    void setupMenu(void);
-    void setupView(void);
+	void setupMenu();
+	void setupView();
 
 public slots:
     /// Loads the level specified by the file name.
     /// @param aFileName guess what: the file name. Duh.
     void loadLevel(const QString& aFileName);
 
-    void loadLevelDelayed(void);
+	void loadLevelDelayed();
 
     /// Restarts the level already active.
     /// Because we have the filename already, no need to specify here.
-    void reloadLevel(void);
+	void reloadLevel();
 
 private slots:
 	/// Inserts one of the hints from the level into the Scene.
@@ -101,32 +101,32 @@ private slots:
 	bool slot_insertHint(unsigned int aHintNumber) const;
 
 	// menu Help
-    void on_action_About_activated(void);
-    void on_action_Bug_Reports_activated(void);
-    void on_action_Keyboard_Shortcuts_activated(void);
-    void on_action_Libraries_activated(void);
-    void on_action_New_Level_Ideas_activated(void);
-    void on_action_Quit_activated(void);
-    void on_action_Skip_Level_activated(void);
-    void on_action_Suggestions_activated(void);
+	void on_action_About_activated();
+	void on_action_Bug_Reports_activated();
+	void on_action_Keyboard_Shortcuts_activated();
+	void on_action_Libraries_activated();
+	void on_action_New_Level_Ideas_activated();
+	void on_action_Quit_activated();
+	void on_action_Skip_Level_activated();
+	void on_action_Suggestions_activated();
 
     // menu File
-    void on_action_New_activated(void);
-    void on_action_Open_File_activated(void);
+	void on_action_New_activated();
+	void on_action_Open_File_activated();
 public slots:
     void on_action_Open_Level_triggered();
 private slots:
-    void on_action_Save_activated(void);
-    void on_action_Save_As_activated(void);
+	void on_action_Save_activated();
+	void on_action_Save_As_activated();
     void on_action_Switch_to_Level_Editor_activated();
 
     // menu Insert (Level Creator)
     void on_insert(const QString &anObjectName);
 
     // menu Editors (Level Creator)
-    void on_goalEditorAction_clicked(void);
-    void on_levelPropertiesEditorAction_clicked(void);
-    void on_objectEditorAction_clicked(void);
+	void on_goalEditorAction_clicked();
+	void on_levelPropertiesEditorAction_clicked();
+	void on_objectEditorAction_clicked();
 
 private:
     Ui::MainWindow *ui;

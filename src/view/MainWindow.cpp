@@ -182,12 +182,35 @@ void MainWindow::on_action_Libraries_activated()
 }
 
 
-void MainWindow::on_action_New_activated(void)
+void MainWindow::on_action_New_activated()
 {
+	if (nullptr!=theLevelPtr)
+	{
+		// there's a level already here???
+		// TODO: are there any unsaved changes (we currently cannot check for
+		//       that - see issue #56 for that)
+		if (!Popup::YesNoQuestion(tr("Do you really want to discard the "
+									 "current level and start a new one?"),
+								  this))
+			return;
+		purgeLevel();
+	}
+
+	theLevelPtr = new Level();
+	theStartFileName.clear();
+	ui->listWidget->clear();
+
+	// pop-up the modal LevelProperties dialog
+	on_levelPropertiesEditorAction_clicked();
+
+	// repopulate the scene and toolbox
+	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+	for (auto i : theLevelPtr->theToolboxList)
+		new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
 
 
-void MainWindow::on_action_New_Level_Ideas_activated(void)
+void MainWindow::on_action_New_Level_Ideas_activated()
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Create New Levels</b><br><br>"
@@ -209,7 +232,7 @@ void MainWindow::on_action_Open_Level_triggered()
 }
 
 
-void MainWindow::on_action_Open_File_activated(void)
+void MainWindow::on_action_Open_File_activated()
 {
     QString myFileName = QFileDialog::getOpenFileName(this,
                                                       tr("Open level"), ".", tr("TBE levels (*.xml)"));
@@ -219,35 +242,40 @@ void MainWindow::on_action_Open_File_activated(void)
 }
 
 
-void MainWindow::on_action_Quit_activated(void)
+void MainWindow::on_action_Quit_activated()
 {
     if (Popup::YesNoQuestion(tr("really?"), this))
         QApplication::exit(0);
 }
 
 
-void MainWindow::on_action_Save_activated(void)
+void MainWindow::on_action_Save_activated()
 {
     DEBUG1ENTRY;
-    if (theLevelPtr==nullptr)
+	if (nullptr == theLevelPtr)
         return;
 
+	if (theLevelPtr->getLevelFileName().isEmpty())
+	{
+		Popup::Warning(tr("Level has no name - could not be saved. Please use \"Save As...\""));
+		return;
+	}
     QFileInfo myFileInfo(theLevelPtr->getLevelFileName());
-    if (theLevelPtr->save(myFileInfo.absoluteFilePath())==false)
+	if (false==theLevelPtr->save(myFileInfo.absoluteFilePath()))
         Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
     else
         DEBUG2("File '%s' saved.",myFileInfo.absoluteFilePath().toAscii().constData());
 }
 
 
-void MainWindow::on_action_Save_As_activated(void)
+void MainWindow::on_action_Save_As_activated()
 {
     DEBUG1ENTRY;
     Q_ASSERT(theLevelPtr);
-    if (theLevelPtr==nullptr)
+	if (nullptr == theLevelPtr)
         return;
 
-    SaveLevelInfo mySaveLevel(theLevelPtr,this);
+	SaveLevelInfo mySaveLevel(theLevelPtr, this);
     int myReturnCode = mySaveLevel.exec();
     if (myReturnCode == QDialog::Rejected)
         return;
@@ -267,7 +295,7 @@ void MainWindow::on_action_Save_As_activated(void)
 }
 
 
-void MainWindow::on_action_Skip_Level_activated(void)
+void MainWindow::on_action_Skip_Level_activated()
 {
     if (Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
         ui->graphicsView->slot_actionSkipLevel();
@@ -342,7 +370,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_activated()
 	ui->action_Open_File->setVisible(true);
 }
 
-void MainWindow::on_goalEditorAction_clicked(void)
+void MainWindow::on_goalEditorAction_clicked()
 {
     // the Goals dialog is modeless, i.e. it can stay floating around
     GoalEditor* myGoalEditorPtr = new GoalEditor(theLevelPtr->getTheWorldPtr(), this);
@@ -356,7 +384,7 @@ void MainWindow::on_insert(const QString& anObjectName)
                 ObjectFactory::createObject(anObjectName, Position(1,1)));
 }
 
-void MainWindow::on_levelPropertiesEditorAction_clicked(void)
+void MainWindow::on_levelPropertiesEditorAction_clicked()
 {
     // this dialog is modal, i.e. user has to click OK/Cancel
     EditLevelProperties* myEditorPtr = new EditLevelProperties(theLevelPtr, this);
@@ -367,13 +395,13 @@ void MainWindow::on_levelPropertiesEditorAction_clicked(void)
 }
 
 
-void MainWindow::on_objectEditorAction_clicked(void)
+void MainWindow::on_objectEditorAction_clicked()
 {
     emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(nullptr);
 }
 
 
-void MainWindow::purgeLevel(void)
+void MainWindow::purgeLevel()
 {
 	DEBUG1ENTRY;
 	UndoSingleton::clear();
@@ -383,7 +411,7 @@ void MainWindow::purgeLevel(void)
 }
 
 
-void MainWindow::reloadLevel(void)
+void MainWindow::reloadLevel()
 {
 	DEBUG1ENTRY;
 	if (theLevelPtr==nullptr)
