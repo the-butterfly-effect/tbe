@@ -83,9 +83,12 @@ ViewObject::~ViewObject()
     // visibility into account
     if (theIsLevelEditor)
     {
-        ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
-        if (myRSGVPtr)
-            emit myRSGVPtr->slot_showEditObjectDialog(nullptr);
+		if (scene()->views().size()>0)
+		{
+			ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
+			if (nullptr != myRSGVPtr)
+				emit myRSGVPtr->slot_showEditObjectDialog(nullptr);
+		}
     }
 }
 
