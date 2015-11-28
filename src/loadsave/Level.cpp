@@ -78,6 +78,7 @@ static Level* theCurrentLevelPtr = nullptr;
 
 Level::Level ( )
 {
+	theFileName = "";
 	theWorldPtr = new World();
 	theWorldPtr->theWorldWidth  = 3.0;
 	theWorldPtr->theWorldHeight = 2.0;
@@ -128,6 +129,7 @@ Level::getPathToLevelFile(void)
 		return QFileInfo(theFileName).absolutePath();
 }
 
+
 Hint *Level::getHint(int anIndex)
 {
 	if (anIndex >= theHintPtrList.size())
@@ -136,11 +138,13 @@ Hint *Level::getHint(int anIndex)
 		return theHintPtrList.at(anIndex);
 }
 
+
 QString
-Level::getLevelFileName(void)
+Level::getLevelFileName()
 {
 	return theFileName;
 }
+
 
 QString
 Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
