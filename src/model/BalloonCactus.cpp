@@ -210,7 +210,7 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 {
 	// also pop the balloon if it is maltreated
 	// WARNING: Magic number here!!!
-	if (anImpulseLength > 2.1 && theState==BALLOON)
+	if (anImpulseLength > 1.8 && theState==BALLOON)
 		goToState(POPPING);
 }
 

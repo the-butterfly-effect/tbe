@@ -22,14 +22,19 @@
             <object width="3" X="1.5" Y="0.05" height="0.1" type="RectObject" angle="0">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.2" X="0.96" Y="0.15" height="0.1" type="RectObject" angle="0">
+            <object width="0.1" X="0.65" Y="0.05" height="0.1" type="RectObject" angle="0" ID="block">
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.70" X="0.80" Y="0.30" height="0.60" type="Scenery">
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">10</property>
             </object>
-            <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" angle="0"/>
+            <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" ID="balloon" angle="0"/>
+            <object width="0.1" X="0.7" Y="0.15" height="0.199" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon@(0,-0.17)</property>
+                <property key="object2">block@(0,0.03)</property>
+            </object>
             <object width="0.1" X="0.5" Y="1.05" height="1.9" type="Wall" angle="0"/>
             <object width="0.21" X="0.7" Y="1.86" height="0.21" type="VolleyBall" angle="0"/>
             <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightRamp" angle="0">
@@ -52,6 +57,9 @@
             <object width="0.3200000000000001" X="2.800000000000004" Y="0.4" height="0.6" type="Scenery" angle="0">
                 <property key="ImageName">goal-scenery</property>
                 <property key="ZValue">10</property>
+            </object>
+            <object width="0.24" X="2.76" Y="0.65" height="0.1" type="Floor" angle="-0.05">
+                <property key="ImageName">Empty</property>
             </object>
             <object width="0.25" X="2.290144957414487" Y="0.8026012603048934" height="0.4" type="Cactus" angle="0"/>
             <object width="0.2499999999999999" X="1.483432302040413" Y="0.8488243365579708" height="0.5" type="Scenery" angle="0">

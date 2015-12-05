@@ -34,10 +34,7 @@
                 <property key="ImageName">wood_crate_2d</property>
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="7.060" Y="0.270" height="0.360" type="RectObject" angle="0.000">
-                <property key="ImageName">used_wood_bar</property>
-                <property key="Mass">50</property>
-            </object>
+            <object width="0.800" X="7.060" Y="0.270" height="0.360" type="Floor" angle="0.000"/>
             <object width="0.800" X="7.080" Y="2.040" height="0.300" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_2d</property>
                 <property key="Mass">1</property>
