@@ -65,7 +65,16 @@
             <object width="2.0" X="1.1" Y="1.75" height="1.4" type="Scenery">
                 <property key="ImageName">Empty</property>
             </object>
-            <object width="2.000" X="1.1" Y="0.625" height="1.25" type="Scenery" angle="0.000">
+            <object width="1.000" X="0.6" Y="0.325" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="1.6" Y="0.325" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="0.6" Y="0.975" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="1.6" Y="0.975" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
             </object>
             <object X="3.6" Y="0.7" type="PostIt">
