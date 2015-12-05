@@ -76,7 +76,7 @@
                 <property key="ImageName">picnic-1-background</property>
                 <property key="ZValue">0.5</property>
             </object>
-            <object width="3.333" X="4.834" Y="3.301" height="1.398" type="Scenery" angle="0.000">
+            <object width="6.4" X="5.2" Y="3.1" height="2.5" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
             </object>
             <object width="0.14" X="2.5" Y="0.6" height="0.14" type="CustomBall">

@@ -18,7 +18,7 @@
     <scene>
         <scenesize width="9" height="5"/>
         <predefined>
-            <object width="3.000" X="7.500" Y="4.250" height="1.500" type="Scenery" angle="0.000">
+            <object width="6.000" X="8.000" Y="1.400" height="2.200" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
             </object>
             <object width="6.940" X="4.481" Y="1.687" height="0.100" type="Floor" angle="-0.487">
