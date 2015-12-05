@@ -9,7 +9,7 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Floor">
-            <object width="0.53" height="0.1" type="Floor" angle="0"/>
+            <object width="0.60" height="0.1" type="Floor" angle="0"/>
         </toolboxitem>
         <toolboxitem count="1" name="Right Ramp">
             <object width="0.6" height="0.3" type="RightRamp" angle="0"/>
@@ -134,8 +134,6 @@
             <object width="0.400" X="0.430" Y="2.270" height="0.500" type="QuarterArc40" angle="1.570"/>
             <object width="0.166" X="2.20" Y="2.250" height="0.501" type="ColaMintBottle" angle="4.730"/>
             <object width="0.335" X="0.142" Y="1.968" height="0.316" type="Floor" angle="1.570"/>
-            <object width="0.250" X="0.510" Y="1.640" height="0.100" type="Floor" angle="-0.260"/>
-            <object width="0.250" X="0.330" Y="1.760" height="0.100" type="Floor" angle="-0.790"/>
             <object width="1.942" X="1.570" Y="1.610" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.220" X="0.641" Y="1.307" height="0.220" type="BowlingBall" angle="0.000"/>
             <object width="0.270" X="1.297" Y="1.840" height="0.360" type="Balloon" ID="balloon" angle="0.000"/>
@@ -179,6 +177,7 @@
             </object>
             <object width="0.800" X="1.860" Y="2.090" height="0.150" type="BedOfNails" angle="-3.140"/>
             <object width="0.250" X="0.129" Y="2.342" height="0.400" type="Cactus" angle="0.000"/>
+			<object width="0.400" X="0.400" Y="1.770" height="0.400" type="QuarterArc40" angle="3.142"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
@@ -186,8 +185,8 @@
         </background>
     </scene>
     <hints>
-        <hint X="1.150" Y="2.100" number="2" object="Floor"/>
-        <hint X="0.430" Y="0.470" number="1" object="RightRamp"/>
+        <hint X="1.110" Y="2.100" number="2" object="Floor"/>
+        <hint X="0.430" Y="0.370" number="1" object="RightRamp"/>
 	</hints>
 
     <goals>
