@@ -4,7 +4,7 @@
         <title>Tent</title>
         <author>Klaas van Gend</author>
         <license>Public Domain</license>
-        <description>Hah! They have decided it's time to put up the tent. I don't agree - let's tear down the poles!</description>
+        <description>Hah! Ad and Lies want to put up the tent.&lt;br&gt;&lt;br&gt;Let's make a joke and tear down the tent poles!</description>
         <date>5/15/12</date>
     </levelinfo>
     <toolbox>
@@ -152,6 +152,15 @@
             <object width="0.800" X="6.700" Y="0.090" height="0.180" type="Scenery" angle="0.000">
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">20.0</property>
+            </object>
+            <object X="4" Y="2.0" type="PostIt">
+                <property key="page1">Meet Ad and Lies.&lt;br&gt;&lt;br&gt;They really like camping.</property>
+                <property key="page2">Unfortunately, they always get confused when they want to put up their tent.</property>
+                <property key="page3">They got the tent poles up already, but are now looking confused at the canvas.</property>
+                <property key="page4">While they're not looking, let's kick over their tent poles.</property>
+                <property key="page5">Heh. Heh. Heh.</property>
+                <property key="page6">I made a new feature in the game: that Quarter Arc can be rotated.&lt;br&gt;&lt;br&gt;I suggest you try it!</property>
+                <property key="page7">the Post-It Boy</property>
             </object>
         </predefined>
         <background>
