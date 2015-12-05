@@ -18,7 +18,7 @@
     <scene>
         <scenesize width="4.4" height="2.8"/>
         <predefined>
-            <object width="4.400" X="2.200" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
+            <object width="4.400" X="2.200" Y="0.040" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.450" X="2.910" Y="2.030" height="0.930" type="Scenery" angle="0.000">
                 <property key="ImageName">jj-body</property>
                 <property key="ZValue">12.0</property>
@@ -185,6 +185,11 @@
             <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
         </background>
     </scene>
+    <hints>
+        <hint X="1.150" Y="2.100" number="2" object="Floor"/>
+        <hint X="0.430" Y="0.470" number="1" object="RightRamp"/>
+	</hints>
+
     <goals>
         <goal isFail="false" type="positionchange">
             <property key="object">gift</property>

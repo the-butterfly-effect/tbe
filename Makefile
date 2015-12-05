@@ -39,6 +39,7 @@ regression: usr/games/tbe
 	      --regression levels/elce09/003.xml:40, \
 	      --regression levels/elce09/004.xml:15, \
 	      --regression levels/elce09/006.xml:8, \
+	      --regression levels/jumpingjack/party-at-office.xml:30, \
 	      --regression levels/picnic/picnic-0.xml:13, \
 	      --regression levels/picnic/picnic-1.xml:13, \
 	      --regression=levels/picnic/picnic-3.xml:70
