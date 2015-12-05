@@ -13,17 +13,17 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5" height="3"/>
+        <scenesize width="5" height="3.1"/>
         <predefined>
-            <object X="0.2" Y="2.85" type="BowlingBall" ID="the Ball"/>
-            <object width="0.9" X="1.1" Y="2.4" height="0.1" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
+            <object X="0.12" Y="2.93" type="BowlingBall" ID="the Ball"/>
+            <object width="0.9" X="1.1" Y="2.4" height="0.1" type="Floor">
                 <property key="Bounciness">0.1</property>
+				<property key="Friction">1.0</property>
             </object>
             <object width="0.1" X="1.05" Y="1.2" height="2.3" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.6" X="0.3" Y="2.64" height="0.4" type="RightRamp">
+            <object width="0.6" X="0.3" Y="2.64" height="0.35" type="RightRamp">
                 <property key="ImageName">RightRamp</property>
             </object>
             <object X="2" Y="0.5" type="PostIt">
@@ -39,8 +39,10 @@
             <object width="0.3" X="4.15" Y="0.05" height="0.1" type="Scenery">
                 <property key="ImageName">basket</property>
             </object>
-            <object width="0.6" X="4.6" Y="0.05" height="0.1" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
+            <object width="0.6" X="4.6" Y="0.05" height="0.1" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.9" X="3.55" Y="0.15" height="0.1" type="Floor" angle="0.3">
                 <property key="Bounciness">0.1</property>
             </object>
             <object width="1.2" X="4.4" Y="1.35" height="0.1" type="RectObject">
