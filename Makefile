@@ -40,7 +40,8 @@ regression: usr/games/tbe
 	      --regression levels/elce09/004.xml:15, \
 	      --regression levels/elce09/006.xml:8, \
 	      --regression levels/picnic/picnic-0.xml:13, \
-	      --regression levels/picnic/picnic-1.xml:13
+	      --regression levels/picnic/picnic-1.xml:13, \
+	      --regression=levels/picnic/picnic-3.xml:70
 
 # levels currently known to fail regression:
 # TODO: must be fixed before Milestone B release, see issue #34!!!

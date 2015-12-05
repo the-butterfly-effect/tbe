@@ -36,7 +36,7 @@
    <level> games/supertuxkart.xml </level>
    <level> draft/imperfectbalance.xml </level>
    <level> draft/bridge-3.xml </level>
-   <!--level> picnic/picnic-3.xml </level-->
+   <level> picnic/picnic-3.xml </level>
    <level> draft/save-the-butterfly.xml</level>
    <level> draft/domino_day.xml </level>
    <level> draft/geyser.xml </level>
