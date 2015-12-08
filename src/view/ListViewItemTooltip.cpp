@@ -17,6 +17,7 @@
  */
 
 #include "AbstractObject.h"
+#include "TriggerExplosion.h"	// for the DetonatorBox* type
 #include "ImageCache.h"
 #include "InsertUndoCommand.h"
 #include "ListViewItemTooltip.h"
@@ -60,36 +61,21 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
 	// set the icons for what is possible with the item
 	myAOPtr->parseProperties();
 	printf("Is Resizable: %d\n", myAOPtr->isResizable());
-	if (myAOPtr->isResizable() & AbstractObject::HORIZONTALRESIZE)
-		addActionIcon("ActionResizeHori", tr("Resize the object horizontally"));
-	if (myAOPtr->isResizable() & AbstractObject::VERTICALRESIZE)
-		addActionIcon("ActionResizeVerti", tr("Resize the object vertically"));
 
-/*	if (myAOPtr->isResizable()&AbstractObject::VERTICALRESIZE)
+	if (myAOPtr->isResizable() & (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
+		addActionIcon("ActionResize", tr("Resize the object in all directions"));
+	else
+	{
+		if (myAOPtr->isResizable() & AbstractObject::HORIZONTALRESIZE)
+			addActionIcon("ActionResizeHori", tr("Resize the object horizontally"));
+		if (myAOPtr->isResizable() & AbstractObject::VERTICALRESIZE)
+			addActionIcon("ActionResizeVerti", tr("Resize the object vertically"));
+	}
+	if (myAOPtr->isRotatable())
+		addActionIcon("ActionRotate", tr("Rotate the object"));
+	if (dynamic_cast<DetonatorBox*>(myAOPtr.get())!=nullptr)
+		addActionIcon("ActionSetNumber", tr("You can set the phone number"));
 
-
-				   || theIsLevelEditor;
-	new ActionIcon(ActionIcon::ACTION_RESIZE,
-								"ActionResize", myBool, this);
-
-	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
-	new ActionIcon(ActionIcon::ACTION_ROTATE,
-								"ActionRotate", myBool, this);
-
-	myBool = (theAOPtr->isMovable());
-	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
-								"ActionMove", myBool, this);
-
-	new ActionIcon(ActionIcon::ACTION_DELETE,
-				   "ActionDelete", myBool, this);
-
-
-	new ActionIcon(ActionIcon::ACTION_SETPHONE,
-				   "ActionSetNumber",
-				   dynamic_cast<DetonatorBox*>(theAOPtr.get())!=nullptr, this);
-	theCurrentInnerIconPtr = myMoveIcon;
-
-*/
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
     theYCoord = 50;
