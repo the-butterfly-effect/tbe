@@ -75,7 +75,7 @@ public:
 	virtual Position getTempCenter ( ) const override;
 
 	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const override
+	SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
     /// overridden from AbstractObject in order to also move the SpringEnd
@@ -135,10 +135,6 @@ public:
 	/// get the actual displacement of the prismatic joint
 	/// where zero means no compression/extension
 	qreal getDistance(void) const;
-
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
 
 	/// updates the ViewObject to the position of the underlying b2body
 	/// OVERRIDDEN from AbstractObject to not draw this object

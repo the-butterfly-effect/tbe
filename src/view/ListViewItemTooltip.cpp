@@ -17,6 +17,7 @@
  */
 
 #include "AbstractObject.h"
+#include "ImageCache.h"
 #include "InsertUndoCommand.h"
 #include "ListViewItemTooltip.h"
 #include "Position.h"
@@ -56,6 +57,39 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->buttonObjectImage->setIcon(myFinalPixmap);
     ui->buttonObjectImage->setIconSize(myFinalPixmap.size());
 
+	// set the icons for what is possible with the item
+	myAOPtr->parseProperties();
+	printf("Is Resizable: %d\n", myAOPtr->isResizable());
+	if (myAOPtr->isResizable() & AbstractObject::HORIZONTALRESIZE)
+		addActionIcon("ActionResizeHori", tr("Resize the object horizontally"));
+	if (myAOPtr->isResizable() & AbstractObject::VERTICALRESIZE)
+		addActionIcon("ActionResizeVerti", tr("Resize the object vertically"));
+
+/*	if (myAOPtr->isResizable()&AbstractObject::VERTICALRESIZE)
+
+
+				   || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_RESIZE,
+								"ActionResize", myBool, this);
+
+	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
+	new ActionIcon(ActionIcon::ACTION_ROTATE,
+								"ActionRotate", myBool, this);
+
+	myBool = (theAOPtr->isMovable());
+	ActionIcon* myMoveIcon = new ActionIcon(ActionIcon::ACTION_MOVE,
+								"ActionMove", myBool, this);
+
+	new ActionIcon(ActionIcon::ACTION_DELETE,
+				   "ActionDelete", myBool, this);
+
+
+	new ActionIcon(ActionIcon::ACTION_SETPHONE,
+				   "ActionSetNumber",
+				   dynamic_cast<DetonatorBox*>(theAOPtr.get())!=nullptr, this);
+	theCurrentInnerIconPtr = myMoveIcon;
+
+*/
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
     theYCoord = 50;
@@ -65,6 +99,19 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
 ListViewItemTooltip::~ListViewItemTooltip()
 {
 
+}
+
+
+void ListViewItemTooltip::addActionIcon(const QString& anIconName, const QString& aToolTip)
+{
+	QLabel* myLabelPtr = new QLabel();
+	QPixmap myPixmapPtr;
+	ImageCache::getPixmap(anIconName, QSize(32,32), &myPixmapPtr);
+	myLabelPtr->setPixmap(myPixmapPtr);
+//	myLabelPtr->setMaximumSize(QSize(32,32));
+	myLabelPtr->setStyleSheet("border-image: url(:/transparant.png);");
+	myLabelPtr->setToolTip(aToolTip);
+	ui->optionsLayout->addWidget(myLabelPtr);
 }
 
 

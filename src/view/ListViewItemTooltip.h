@@ -43,7 +43,10 @@ public slots:
     void on_buttonObjectImage_clicked();
 
 private:
-    Ui::ListViewItemTooltip *ui;
+	/// TODO
+	void addActionIcon(const QString& anIconName, const QString &aToolTip);
+
+	Ui::ListViewItemTooltip *ui;
     ToolboxGroup* theTBGPtr;
 };
 

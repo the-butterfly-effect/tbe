@@ -67,10 +67,6 @@ public:
 	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const;
 
-	/// @returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return resizableInfo;	}
-
 	/// Parse all properties.
 	/// Partially overridden from AbstractObject
 	virtual void  parseProperties(void);
@@ -86,7 +82,6 @@ protected:
 
 protected:
 	QString theNameString;
-	SizeDirections resizableInfo;
 };
 
 

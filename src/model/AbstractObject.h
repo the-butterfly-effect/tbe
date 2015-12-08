@@ -285,7 +285,7 @@ public:
 
 	/// @returns whether the object can be resized by the user
 	virtual SizeDirections isResizable ( ) const // TODO/FIXME = 0;
-	{	return resizableInfo;	}
+	{	return theResizableInfo;	}
 
 	/// @returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const;
@@ -468,12 +468,11 @@ private:
 	// TODO: FIXME: rogue pointer here!!!
 public:
 	World* theWorldPtr;
-private:
 
-	// TODO/FIXME: this one wasn't present in AbstractObject
-	// - but it was in RectObject...
-	// TODO/FIXME: also rename
-	SizeDirections resizableInfo;
+protected:
+	// stores whether the object can be resized
+	// (currently otheResizableInfots are)
+	SizeDirections theResizableInfo;
 
 	// required to make sure the Serializer and the factory can touch everything
 	friend class AbstractObjectSerializer;

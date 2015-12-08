@@ -150,7 +150,7 @@ void RectObject::initRectAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
 		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" );
-	resizableInfo = NORESIZING;
+	theResizableInfo = NORESIZING;
 }
 
 
@@ -165,13 +165,13 @@ void  RectObject::parseProperties(void)
 	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
 	{
 		// we do not check for none, that's the default
-		resizableInfo = NORESIZING;
+		theResizableInfo = NORESIZING;
 		if (myString == Property::HORIZONTAL_STRING)
-			resizableInfo = HORIZONTALRESIZE;
+			theResizableInfo = HORIZONTALRESIZE;
 		if (myString == Property::VERTICAL_STRING)
-			resizableInfo = VERTICALRESIZE;
+			theResizableInfo = VERTICALRESIZE;
 		if (myString == Property::TOTALRESIZE_STRING)
-			resizableInfo = TOTALRESIZE;
+			theResizableInfo = TOTALRESIZE;
 	}
 
 	clearShapeList();

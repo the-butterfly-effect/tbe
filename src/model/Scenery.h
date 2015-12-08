@@ -61,11 +61,6 @@ public:
 	virtual bool isRotatable ( ) const override
 	{	return false; }
 
-	/// returns whether the object can be resized by the user
-	/// Scenerys cannot be adjusted by the player
-	virtual SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
 	/** Creates the ViewObject, finds associated images,
 	  * sets ZValue and returns a pointer to it.
 	  * Overridden to set a default depth of 0.1 so it moves behind everything.

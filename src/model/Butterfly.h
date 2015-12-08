@@ -38,11 +38,6 @@ public:
 	virtual const QString getName ( ) const
 	{	return QObject::tr("Butterfly"); }
 
-	/// returns whether the object can be resized by the user
-	/// FIXME: overridden from RectObject, whereas we should *use* rectobject
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
 	/// overridden from AbstractObject because this class wants to register for callbacks
 	virtual void createPhysicsObject(void);
 

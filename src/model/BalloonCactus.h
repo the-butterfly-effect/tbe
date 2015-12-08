@@ -41,10 +41,6 @@ public:
 
 	virtual ~Balloon();
 
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
 	/// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void) override;

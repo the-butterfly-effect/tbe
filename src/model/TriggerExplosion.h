@@ -61,7 +61,7 @@ public:
 	qreal getDistance(void);
 
 	/// returns whether the object can be resized by the user
-    virtual SizeDirections isResizable ( ) const override
+	SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
 	friend class DetonatorBox;
@@ -143,7 +143,7 @@ public:
 	qreal getZValue(void);
 
 	/// returns whether the object can be resized by the user
-    virtual SizeDirections isResizable ( ) const override
+	SizeDirections isResizable ( ) const override
 	{	return NORESIZING;	}
 
     /// overridden from AbstractObject in order to create the handle
@@ -218,10 +218,6 @@ class Dynamite : public PolyObject, public SimStepCallbackInterface
 public:
 	Dynamite();
 	virtual ~Dynamite();
-
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
 
 	/// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine

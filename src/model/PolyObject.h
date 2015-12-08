@@ -66,10 +66,6 @@ public:
 	/// partially overridden from AbstractObject
 	virtual void  parseProperties(void);
 
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
 protected:
 	/// TODO/FIXME: see same notes in RectObject...
 	virtual void setFriction(b2FixtureDef* aFixtureDef);

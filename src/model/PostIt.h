@@ -57,11 +57,6 @@ public:
 	virtual bool isRotatable ( ) const
 	{	return false; }
 
-	/// returns whether the object can be resized by the user
-	/// PostIts cannot be adjusted by the player
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
 	/// overridden because we have our own ViewObject that displays
 	/// the PostIt
 	/// @param   aDefaultDepth, ZValue depth in view if not set as property,

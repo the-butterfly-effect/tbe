@@ -10,6 +10,8 @@ install(FILES
 	icons/ActionNone.svg
 	icons/ActionResizeRotate.svg
 	icons/ActionResize.svg
+	icons/ActionResizeHori.svg
+	icons/ActionResizeVerti.svg
 	icons/ActionRotate.svg
 	icons/ActionSetNumber.svg
 	icons/ActionUndo.svg

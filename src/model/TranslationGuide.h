@@ -64,11 +64,6 @@ public:
 	{	return QObject::tr("TranslationGuide");	}
 
 	/// overridden from AbstractObject
-	/// returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const
-	{	return NORESIZING;	}
-
-	/// overridden from AbstractObject
 	/// returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const
 	{	return false;	}

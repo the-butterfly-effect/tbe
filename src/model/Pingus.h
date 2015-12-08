@@ -42,10 +42,6 @@ public:
 
 	virtual ViewObject*  createViewObject(float aDefaultDepth) override;
 
-	/// @returns whether the object can be resized by the user: no it cannot.
-	SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
 	/// Overridden from CircleObject because this class wants to register for
 	/// callbacks and needs to restart its state machine.
 	void createPhysicsObject() override;

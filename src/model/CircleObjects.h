@@ -64,10 +64,6 @@ public:
 	bool isRotatable ( ) const override
 	{	return false;	}
 
-	/// returns whether the object can be resized by the user
-	SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
 protected:
 	/// internally used by CircleObject and CustomBall to
 	/// actually create the b2Shape and b2FixtureDef
