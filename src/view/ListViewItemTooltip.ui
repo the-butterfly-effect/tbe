@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>329</width>
-    <height>147</height>
+    <height>150</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -160,6 +160,28 @@
               <property name="spacing">
                <number>2</number>
               </property>
+              <item>
+               <widget class="QLabel" name="spacer">
+                <property name="minimumSize">
+                 <size>
+                  <width>20</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border-image: url(:/transparant.png);</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>
