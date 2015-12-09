@@ -10,6 +10,7 @@
     <toolbox>
         <toolboxitem count="2" name="Styrofoam Block">
             <object width="1.0" height="0.5" type="RectObject">
+                <tooltip>Resizable styrofoam blocks... What an invention!</tooltip>
                 <property key="ImageName">styrofoam</property>
                 <property key="Bounciness">0.6</property>
                 <property key="Resizable">totalresize</property>
