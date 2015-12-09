@@ -8,9 +8,8 @@
         <date>5/26/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Block">
-            <object width="0.280" height="0.200" type="RectObject" angle="0.000">
-                <property key="ImageName">birch_bar</property>
+        <toolboxitem count="2" name="Birch Block">
+            <object width="0.280" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass">0.2</property>
             </object>
         </toolboxitem>

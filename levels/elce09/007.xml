@@ -16,6 +16,7 @@
         </toolboxitem>
         <toolboxitem count="1" name="Styrofoam">
             <object width="0.25" height="0.8" type="RectObject">
+                <tooltip>Styrofoam is light and durable.</tooltip>
                 <property key="Friction">0.3</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>

@@ -16,7 +16,8 @@
         </toolboxitem>
         <toolboxitem count="1" icon="styrofoam" name="Styrofoam">
             <object width="0.25" height="0.8" type="RectObject">
-                <property key="Friction">0.3</property>
+                 <tooltip>Why would you need a styrofoam block?</tooltip>
+               <property key="Friction">0.3</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
@@ -24,6 +25,7 @@
         </toolboxitem>
         <toolboxitem count="10" icon="boulder" name="Boulder">
             <object width="0.1" X="2.7" Y="0.15" height="0.1" type="RectObject" angle="0">
+                <tooltip>Not an impressive piece of stone.</tooltip>
                 <property key="ImageName">boulder</property>
                 <property key="Bounciness">0.1</property>
                 <property key="Mass">0.2</property>
