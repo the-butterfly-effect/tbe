@@ -43,8 +43,7 @@ AbstractObject::AbstractObject()
       theHeight(1.0),
       theIsMovable(false),
       theWidth(1.0),
-      theWorldPtr(nullptr),
-	  theResizableInfo(SizeDirections::NORESIZING)
+      theWorldPtr(nullptr)
 {
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;

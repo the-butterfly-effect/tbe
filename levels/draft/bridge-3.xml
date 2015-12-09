@@ -20,12 +20,8 @@
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Hammer">
-            <object width="0.45" height="0.18" type="RectObject">
-                <property key="ImageName">hammer</property>
-                <property key="Mass">15.0</property>
-                <property key="Bounciness">0.0</property>
-                <property key="Friction">0.0</property>
-                <property key="PivotPoint">(0.2,0)</property>
+			<object type="Hammer">
+                <property key="Mass">20.0</property>
             </object>
         </toolboxitem>
     </toolbox>
@@ -67,7 +63,12 @@
             <object width="0.1" X="4.95" Y="1.15" height="2.3" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin"/>
+            <object width="0.1" X="3.87" Y="1.82" height="0.1" type="RectObject" angle="0.79">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="4.25" Y="1.99" type="BowlingPin" ID="the Pin">
+                <property key="Mass">0.8</property>
+			</object>
         </predefined>
     </scene>
     <goals>
@@ -76,7 +77,7 @@
             <property key="object">the Pin</property>
         </goal>
         <goal type="positionchange">
-            <property key="xover">4.3</property>
+            <property key="xover">4.35</property>
             <property key="object">the Pin</property>
         </goal>
         <goal type="positionchange">

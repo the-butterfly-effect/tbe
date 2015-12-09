@@ -20,12 +20,8 @@
     <scene>
         <scenesize width="5" height="3"/>
         <predefined>
-            <object width="0.45" X="0.25" Y="2.7" height="0.18" type="RectObject">
-                <property key="ImageName">hammer</property>
+            <object X="0.25" Y="2.7" type="Hammer">
                 <property key="Mass">80.0</property>
-                <property key="Bounciness">0.0</property>
-                <property key="Friction">0.0</property>
-                <property key="PivotPoint">(0.2,0)</property>
             </object>
             <object X="0.5" Y="2.35" type="VolleyBall" ID="Ball"/>
             <object width="1.1" X="0.6" Y="2.15" height="0.1" type="RectObject">

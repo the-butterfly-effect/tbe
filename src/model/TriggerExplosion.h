@@ -60,10 +60,6 @@ public:
 
 	qreal getDistance(void);
 
-	/// returns whether the object can be resized by the user
-	SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
 	friend class DetonatorBox;
 
 private:
@@ -141,10 +137,6 @@ public:
 	/// (used by the Handle) returns the ZValue of the DBox,
 	/// so the handle can display itself below
 	qreal getZValue(void);
-
-	/// returns whether the object can be resized by the user
-	SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
 
     /// overridden from AbstractObject in order to create the handle
     virtual void registerChildObjects (void) override;

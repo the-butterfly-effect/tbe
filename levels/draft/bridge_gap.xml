@@ -31,12 +31,8 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Bounciness">0.0</property>
             </object>
-            <object width="0.45" X="0.25" Y="2.7" height="0.18" type="RectObject">
-                <property key="ImageName">hammer</property>
+            <object X="0.25" Y="2.7" type="Hammer">
                 <property key="Mass">80.0</property>
-                <property key="Bounciness">0.0</property>
-                <property key="Friction">0.0</property>
-                <property key="PivotPoint">(0.2,0)</property>
             </object>
             <object X="0.5" Y="2.35" type="SoccerBall" ID="Ball"/>
             <object X="2" Y="0.5" type="PostIt">

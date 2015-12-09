@@ -58,10 +58,6 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->buttonObjectImage->setIcon(myFinalPixmap);
     ui->buttonObjectImage->setIconSize(myFinalPixmap.size());
 
-	// set the icons for what is possible with the item
-	myAOPtr->parseProperties();
-	printf("Is Resizable: %d\n", myAOPtr->isResizable());
-
 	if (myAOPtr->isResizable() & (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
 		addActionIcon("ActionResize", tr("Resize the object in all directions"));
 	else
@@ -92,9 +88,8 @@ void ListViewItemTooltip::addActionIcon(const QString& anIconName, const QString
 {
 	QLabel* myLabelPtr = new QLabel();
 	QPixmap myPixmapPtr;
-	ImageCache::getPixmap(anIconName, QSize(32,32), &myPixmapPtr);
+	ImageCache::getPixmap(anIconName, QSize(24,24), &myPixmapPtr);
 	myLabelPtr->setPixmap(myPixmapPtr);
-//	myLabelPtr->setMaximumSize(QSize(32,32));
 	myLabelPtr->setStyleSheet("border-image: url(:/transparant.png);");
 	myLabelPtr->setToolTip(aToolTip);
 	ui->optionsLayout->addWidget(myLabelPtr);

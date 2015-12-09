@@ -74,10 +74,6 @@ public:
 	 */
 	virtual Position getTempCenter ( ) const override;
 
-	/// returns whether the object can be resized by the user
-	SizeDirections isResizable ( ) const override
-	{	return NORESIZING;	}
-
     /// overridden from AbstractObject in order to also move the SpringEnd
     virtual void setOrigCenter ( const Position& aNewPos ) override;
 

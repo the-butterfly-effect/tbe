@@ -86,11 +86,18 @@ static AbstractRectObjectFactory theWallFactory("Wall",
 	"",
 	"oldbrick", 0.2, 1.0, 0.0, 0.05 );
 
+// Note that this hammer is kind-of heavy, a normal hammer would be around 400 grams, only
+static AbstractRectObjectFactory theHammerFactory("Hammer",
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Hammer"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A hammer usually has a hickory handle and a steel head."),
+	"hammer", 0.45,0.18, 2.0, 0.0,
+	"Friction:0.0/PivotPoint:(0.2,0)/");
 
 // Constructors/Destructors
 //
 
-RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME)
+RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME),
+	theResizableInfo(SizeDirections::NORESIZING)
 {
 	DEBUG5("RectObject::RectObject");
 
@@ -101,16 +108,21 @@ RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_
 	initRectAttributes();
 }
 
-RectObject::RectObject( const QString& aDisplayName,
+RectObject::RectObject(const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& aImageName,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
-    : theNameString(aDisplayName)
+				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+				const char *aPropertiesText)
+	: theNameString(aDisplayName),
+	  theResizableInfo(SizeDirections::NORESIZING)
 {
 	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
     theToolTip = aTooltip;
     setTheWidth(aWidth);
 	setTheHeight(aHeight);
+
+	if (aPropertiesText != nullptr)
+		theProps.setDefaultPropertiesString(aPropertiesText);
 
 	if (aMass > 0.001)
 		theProps.setDefaultPropertiesString(
@@ -154,13 +166,8 @@ void RectObject::initRectAttributes ( )
 }
 
 
-void  RectObject::parseProperties(void)
+AbstractObject::SizeDirections RectObject::isResizable ( )
 {
-	// first parse everything that AbstractObject already knows about
-	AbstractObject::parseProperties();
-
-	theProps.property2String(Property::OBJECT_NAME_STRING,&theNameString);
-
 	QString myString;
 	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
 	{
@@ -173,6 +180,18 @@ void  RectObject::parseProperties(void)
 		if (myString == Property::TOTALRESIZE_STRING)
 			theResizableInfo = TOTALRESIZE;
 	}
+	return theResizableInfo;
+}
+
+void  RectObject::parseProperties(void)
+{
+	// first parse everything that AbstractObject already knows about
+	AbstractObject::parseProperties();
+
+	theProps.property2String(Property::OBJECT_NAME_STRING,&theNameString);
+
+	// force parsing of resize info
+	isResizable();
 
 	clearShapeList();
 	b2PolygonShape* myBoxShape = new b2PolygonShape();

@@ -284,8 +284,9 @@ public:
 	virtual bool isMovable ( ) const;
 
 	/// @returns whether the object can be resized by the user
-	virtual SizeDirections isResizable ( ) const // TODO/FIXME = 0;
-	{	return theResizableInfo;	}
+	/// @note this member is not const as overrides may choose to adjust internal state
+	virtual SizeDirections isResizable ( )
+	{	return NORESIZING; }
 
 	/// @returns true if the object can be rotated by the user
 	virtual bool isRotatable ( ) const;
@@ -371,7 +372,7 @@ public:
 	  *       NoCollision and Bounciness.
 	  * @note Any implementation of parseProperties should expect multiple calls.
 	  */
-	virtual void  parseProperties(void);
+	virtual void  parseProperties();
 
 	/** Called from World upon registration, allows to register
 	  * child objects.
@@ -470,10 +471,6 @@ public:
 	World* theWorldPtr;
 
 protected:
-	// stores whether the object can be resized
-	// (currently otheResizableInfots are)
-	SizeDirections theResizableInfo;
-
 	// required to make sure the Serializer and the factory can touch everything
 	friend class AbstractObjectSerializer;
 	friend class ObjectFactory;

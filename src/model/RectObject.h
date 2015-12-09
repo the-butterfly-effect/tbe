@@ -46,10 +46,12 @@ public:
 	RectObject ( );
 
 	/// elaborate constructor, only used by the ConcreteRectObject thingies
+	/// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
 	RectObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& aImageName,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness);
+				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+				const char* aPropertiesText = nullptr);
 
 	/**
 	 * Empty Destructor
@@ -67,6 +69,9 @@ public:
 	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const;
 
+	/// @returns whether the object can be resized by the user
+	AbstractObject::SizeDirections isResizable ( ) override;
+
 	/// Parse all properties.
 	/// Partially overridden from AbstractObject
 	virtual void  parseProperties(void);
@@ -82,6 +87,9 @@ protected:
 
 protected:
 	QString theNameString;
+
+	/// Stores whether the object can be resized
+	AbstractObject::SizeDirections theResizableInfo;
 };
 
 
@@ -94,6 +102,7 @@ class AbstractRectObjectFactory : public ObjectFactory
 {
 	Q_OBJECT
 public:
+	/// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
 	AbstractRectObjectFactory(
 		const QString& anInternalName,
 		const char*    aDisplayName,
@@ -102,16 +111,17 @@ public:
 		qreal aWidth,
 		qreal aHeight,
 		qreal aMass,
-		qreal aBounciness)
+		qreal aBounciness,
+		const char* aPropertiesText = nullptr)
 			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
 			  theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
-			  theMass(aMass), theBounciness(aBounciness)
+			  theMass(aMass), theBounciness(aBounciness), theProperties(aPropertiesText)
 	{	announceObjectType(anInternalName, this); }
 
 	virtual AbstractObject* createObject(void) const
 	{	return fixObject(new RectObject(tr(theDisplayName), tr(theTooltip),
 										theImageName, theWidth, theHeight,
-										theMass, theBounciness)); }
+										theMass, theBounciness, theProperties)); }
 private:
 		const char* theDisplayName;
 		const char* theTooltip;
@@ -120,6 +130,7 @@ private:
 		qreal theHeight;
 		qreal theMass;
 		qreal theBounciness;
+		const char* theProperties;
 };
 
 #endif // RECTOBJECT_H
