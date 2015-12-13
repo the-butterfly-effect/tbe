@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Test Pingus with Springs</title>
+        <title>Test Pingus with Squashing, Waiting and Sleeping</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>TEST LEVEL TO VALIDATE OPERATION OF PINGUS: various Pingus torturing approaches&lt;br&gt;&lt;br&gt;Some pingus "squash" on impact, some don't.</description>
@@ -42,10 +42,10 @@
             <object X="8.66" Y="4.4"  type="PetanqueBoule"/>
             <object X="9.01" Y="4.5"  type="PetanqueBoule"/>
 
-            <object X="7.95" Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus6"/>
-            <object X="8.3"  Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus7"/>
-            <object X="8.65" Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus8"/>
-            <object X="9.0"  Y="0.16" type="WaitingPingus" angle="0.000" ID="pingus9"/>
+            <object X="7.95" Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus6"/>
+            <object X="8.3"  Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus7"/>
+            <object X="8.65" Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus8"/>
+            <object X="9.0"  Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus9"/>
             <object width="1.600" X="8.45" Y="-0.05" height="0.100" type="Floor" ID="floor" angle="0.000"/>
 
         </predefined>

@@ -64,7 +64,10 @@ public:
 		SLIDERIGHT,
 		SPLATTING,
 		WAITING,
-		// SOARING, would be neat if ever we have time to add parachuting
+        EXITINGLEFT,    // exit-ing, not exciting
+        EXITINGRIGHT,
+        DIDEXIT,        // end state after EXITING* is complete
+        SLEEPING,
 		DEAD	// keep this one last!
 	};
 
@@ -105,14 +108,11 @@ protected:
 	/// implemented from SimStepCallbackInterface
 	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	virtual void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
 	virtual void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime); // also handles Exiting state
+    virtual void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime); // also handles Sleeping state
 	virtual void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
-
-	// specialized partial callbacks
-	virtual void callbackStepWaitingAnimation(qreal aTimeStep, qreal aTotalTime);
 
 	/// Internal function to set all parameters to initial values (again)
 	virtual void resetParameters();
@@ -144,24 +144,22 @@ protected:
 
 
 ///---------------------------------------------------------------------------
-///------------------------- WaitingPingus -----------------------------------
+///------------------------- SleepingPingus -----------------------------------
 ///---------------------------------------------------------------------------
 
 
-/// The WaitingPingus acts like a normal Pingus, except that he starts out
-/// as a stationary waiting Pingus, he's not trying to get moving, you need
-/// to "help" him. If he ever gets stuck (e.g. wedgedagainst the bottom of a
-/// ramp) he's probably going to wait again.
-class WaitingPingus : public Pingus
+/// The SleepingPingus acts like a normal Pingus, except that he starts out
+/// as a sleeping Pingus, he's not trying to get moving, you need to "help"
+/// him. If he ever gets stuck (e.g. wedgedagainst the bottom of a ramp)
+/// he's probably going to wait and stay awake, though.
+class SleepingPingus : public Pingus
 {
 public:
-	WaitingPingus();
+    SleepingPingus();
 
-	virtual ~WaitingPingus();
+    virtual ~SleepingPingus();
 
 protected:
-	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime) override;
-
 	void resetParameters() override;
 };
 
