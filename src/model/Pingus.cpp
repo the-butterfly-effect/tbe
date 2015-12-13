@@ -190,7 +190,6 @@ void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 	if (theSplattingTimeStart<0)
 	{
 		theSplattingTimeStart=aTotalTime;
-		switchToSmallShape();
 	}
 
 	// calculate the frame to display
@@ -394,24 +393,24 @@ void Pingus::resetParameters()
 }
 
 
-void Pingus::switchToSmallShape()
+void Pingus::startYourExit()
 {
-	// save the current position - as it is only stored within the B2Body
-	// and we'll kill it in the next line...
-	Position myCurrentPos = getTempCenter();
-
-	deletePhysicsObjectForReal();
-	clearShapeList();
-
-	b2PolygonShape* myRestShape = new b2PolygonShape();
-	myRestShape->SetAsBox(0.05, 0.05);
-	b2FixtureDef* myRestDef = new b2FixtureDef();
-	myRestDef->density= 0.001 / (0.1 * 0.1);
-	myRestDef->userData = this;
-	myRestDef->shape   = myRestShape;
-	theShapeList.push_back(myRestDef);
-
-	CircleObject::createPhysicsObject(myCurrentPos);
+    switch(theState)
+    {
+    case WALKINGLEFT:
+    case SLIDELEFT:
+        goToState(EXITINGLEFT);
+        break;
+    case EXITINGLEFT:
+    case EXITINGRIGHT:
+    case DIDEXIT:
+    case DEAD:
+        // do not do anything
+        break;
+    default:
+        goToState(EXITINGRIGHT);
+        break;
+    }
 }
 
 
@@ -426,7 +425,7 @@ void Pingus::updateViewPingus()
 
 
 ///---------------------------------------------------------------------------
-///------------------------- SleepingPingus -----------------------------------
+///------------------------- SleepingPingus ----------------------------------
 ///---------------------------------------------------------------------------
 
 //// this class' ObjectFactory
@@ -460,4 +459,63 @@ void SleepingPingus::resetParameters()
 	// resetParameters already calls updateViewPingus(), but we change the
 	// starting state, so we need to call it again...
 	updateViewPingus();
+}
+
+
+///---------------------------------------------------------------------------
+///---------------------------- PingusExit -----------------------------------
+///---------------------------------------------------------------------------
+
+//// this class' ObjectFactory
+class PingusExitObjectFactory : public ObjectFactory
+{
+public:
+    PingusExitObjectFactory()
+    {	announceObjectType("PingusExit", this); }
+    AbstractObject* createObject() const override
+    {	return fixObject(new PingusExit()); }
+};
+static PingusExitObjectFactory thePingusExitObjectFactory;
+
+
+PingusExit::PingusExit()
+{
+    // We are just a sensor
+    b2PolygonShape* mySensorShapePtr = new b2PolygonShape();
+    b2Vec2 mySensorShapeV[4];
+    mySensorShapeV[0].Set(-0.05, -0.05);
+    mySensorShapeV[1].Set( 0.05, -0.05);
+    mySensorShapeV[2].Set( 0.05,  0.05);
+    mySensorShapeV[3].Set(-0.05,  0.05);
+    mySensorShapePtr->Set(mySensorShapeV, 4);
+    b2FixtureDef* mySensorDef = new b2FixtureDef();
+    mySensorDef->shape    = mySensorShapePtr;
+    mySensorDef->isSensor = true;
+    mySensorDef->userData = this;
+    theShapeList.push_back(mySensorDef);
+}
+
+
+PingusExit::~PingusExit()
+{
+}
+
+
+void PingusExit::callBackSensor(const ContactInfo &aPoint)
+{
+    AbstractObject* myOtherObject=nullptr;
+
+    // which one of the two shapes is not me?
+    if (aPoint.myFixtureA->GetUserData()==this)
+        myOtherObject = aPoint.myFixtureB->GetUserData();
+    if (aPoint.myFixtureB->GetUserData()==this)
+        myOtherObject = aPoint.myFixtureA->GetUserData();
+    if (nullptr==myOtherObject)
+        return;
+
+    // is it a Pingus?
+    // then tell it to exit!
+    Pingus* myPingusPtr = dynamic_cast<Pingus*>(myOtherObject);
+    if (nullptr != myPingusPtr)
+        myPingusPtr->startYourExit();
 }

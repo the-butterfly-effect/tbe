@@ -78,7 +78,7 @@ protected:
 	/// going from popped to balloon isn't supported (just like real life)
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
-    States goToState(States aNewState);
+	States goToState(States aNewState);
 
 	/// will replace the existing set of shapes by a smaller shape that
 	/// fits the BalloonRest image. Do not call from within a Box2D callback
@@ -136,12 +136,12 @@ public:
 
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
-	virtual void callBackSensor(const ContactInfo& aPoint);
+	void callBackSensor(const ContactInfo& aPoint) override;
 
 	/** Overridden from PolyObject because we also have a sensor
 	 *  here...
 	 */
-	virtual void fillShapeList(void);
+	void fillShapeList(void) override;
 };
 
 
@@ -162,11 +162,11 @@ public:
 
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
-	virtual void callBackSensor(const ContactInfo& aPoint);
+	void callBackSensor(const ContactInfo& aPoint) override;
 
 	/** Just like Cactus, we need to redefine the shapes
 	 */
-	virtual void fillShapeList(void);
+	void fillShapeList(void) override;
 };
 
 
@@ -185,15 +185,15 @@ public:
 
 	/// Overridden so we will get notified if something poppable hits our
 	/// sharp points
-	virtual void callBackSensor(const ContactInfo& aPoint);
+	void callBackSensor(const ContactInfo& aPoint) override;
 
 	/** Overridden from AbstractBall because we also have to define
 	 *  a sensor here...
 	 */
-	virtual void createBallShapeFixture(float aRadius, float aMass);
+	void createBallShapeFixture(float aRadius, float aMass) override;
 
 	/// we need to adjust the size based on the radius
-	virtual void  parseProperties(void);
+	void  parseProperties(void) override;
 };
 
 

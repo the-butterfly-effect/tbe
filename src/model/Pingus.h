@@ -78,6 +78,11 @@ public:
 	virtual unsigned int getImageIndex() const override
 	{ return theState; }
 
+    /// Called by PingusExit class when touching a Pingus, denotes that
+    /// the Pingus should start (or continue - it could be triggered multiple)
+    /// to leave the world happily.
+    void startYourExit();
+
 private:
 	/// Call this function to suggest a state change to the Pingus.
 	/// @note this member can decide not to follow your state change,
@@ -85,11 +90,6 @@ private:
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
     States goToState(States aNewState);
-
-	/// Will replace the existing set of shapes by a smaller shape that
-	/// fits the Splatting and Dead images.
-	/// Do not call from within a Box2D callback.
-	void switchToSmallShape();
 
 public:
 	// the following two members are part of the normal impulse reporting
@@ -163,5 +163,34 @@ protected:
 	void resetParameters() override;
 };
 
+
+///---------------------------------------------------------------------------
+///------------------------- PingusExit --------------------------------------
+///---------------------------------------------------------------------------
+
+/** This class implements the exit for a Pingus, i.e. his home.
+  * Upon touching a Pingus, it will notify the Pingus to exit
+  */
+class PingusExit : public AbstractObject
+{
+public:
+    PingusExit();
+
+    virtual ~PingusExit();
+
+    /// Overridden so we can figure out if we're hit by a Pingus
+    void callBackSensor(const ContactInfo& aPoint) override;
+    /// returns the Name of the object.
+
+    // PingusExit doesn't have a user visible name
+    const QString getName ( ) const override
+    {	return "";	}
+
+    /// child objects must specify what type of body they are
+    /// @returns b2_staticBody if this object has no mass
+    ///          or b2_dynamicBody if its mass is larger than 0.001 kg
+    b2BodyType getObjectType(void) const override
+    {	return b2_staticBody; }
+};
 
 #endif // PINGUS_H
