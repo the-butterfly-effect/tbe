@@ -23,6 +23,41 @@
                 <property key="Friction">0.2</property>
                 <property key="ImageName">White-to-green</property>
             </object>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.100" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.800" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.500" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.900" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="5.300" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="6.4" X="4.6" Y="1.75" height="3.7" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
             <object width="0.15" X="0.50" Y="0.65" height="0.84" type="RectObject" angle="-0.8">
                 <property key="ImageName">brother-soccer-leg</property>
                 <property key="PivotPoint">(0.0,0.38)</property>
