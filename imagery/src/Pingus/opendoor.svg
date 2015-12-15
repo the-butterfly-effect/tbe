@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3672"
+   sodipodi:docname="opendoor.svg"
+   viewBox="0 0 237.15206 410.62519"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs3674">
+    <filter
+       id="filter35100"
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur35102"
+         stdDeviation="68.821455"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter35088"
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur35090"
+         stdDeviation="32.547985"
+         inkscape:collect="always" />
+    </filter>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3030">
+      <rect
+         style="fill:#808000;fill-opacity:1;stroke:none"
+         id="rect3032"
+         width="67.690155"
+         height="53.668621"
+         x="-153.75334"
+         y="137.31432"
+         rx="0.0043323771"
+         ry="0.014358228" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3034">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         id="rect3036"
+         width="3039.4023"
+         height="2707.749"
+         x="15860.664"
+         y="9519.4131"
+         rx="0.05733547"
+         ry="0.18275073" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-4"
+     pagecolor="#ffffff"
+     inkscape:window-height="1028"
+     inkscape:window-maximized="1"
+     inkscape:zoom="2.0682477"
+     inkscape:window-x="1916"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="118.83693"
+     inkscape:cy="203.92848"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-224.12492,-349.81813)">
+    <rect
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       x="228.22968"
+       y="352.20776"
+       inkscape:export-xdpi="72"
+       width="228.4772"
+       height="238.45715"
+       ry="0.014358228"
+       rx="0.0043323771"
+       inkscape:export-ydpi="72"
+       style="opacity:0.62000002;fill:#aaeeff"
+       id="rect35068" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="72"
+       transform="matrix(0.0755619,0,0,0.07856728,-968.41406,-201.79488)"
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       inkscape:export-ydpi="72"
+       d="m 16000,9833.7 c 0,0 150,-129.87 475.01,-162.34 325.01,-32.469 350.01,10.823 500.01,86.583 150,75.76 400.01,216.46 512.51,216.46 112.5,0 775.02,-227.28 775.02,-227.28 0,0 162.5,-75.76 237.51,-64.937 75.002,10.823 237.5,0 237.5,0 l 12.501,2467.6 -2887.6,10.823 25.001,-2305.3 112.5,-21.646 z"
+       style="fill:#00ff00;stroke:#000000;stroke-width:0.93050998px;filter:url(#filter35100)"
+       id="path35066"
+       clip-path="url(#clipPath3034)" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="72"
+       transform="matrix(-0.07981838,0,0,0.07981838,1726.3658,-291.34396)"
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       inkscape:export-ydpi="72"
+       d="m 18650,8536.1 c -287.5,-137.5 -225,-187.5 -350,-100 -125,87.5 -287.5,237.5 -325,112.5 -37.5,-125 -187.5,-100 -275,-12.5 -87.5,87.5 -200,162.5 -125,300 75,137.5 -12.5,225 200,187.5 212.5,-37.5 250,-25 262.5,50 12.5,75 50,162.5 187.5,150 137.5,-12.5 162.5,-87.5 212.5,-112.5 50,-25 125,25 125,25 l 137.5,87.5 v -587.5 l -50,-100 z"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1px;filter:url(#filter35088)"
+       id="path35070" />
+    <rect
+       x="229.78131"
+       y="355.47452"
+       inkscape:export-xdpi="72"
+       width="225.83928"
+       height="399.31241"
+       ry="0.014358228"
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       inkscape:export-ydpi="72"
+       rx="0.0043323771"
+       style="opacity:0.84030002;fill:none;stroke:#000000;stroke-width:11.31278992"
+       id="rect9433" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:export-ydpi="72"
+       d="m 455.67784,355.47452 v 399.45941 l -81.97118,-99.91385 0.5186,-213.16426 81.4583,-86.3813 z m -11.40916,33.84282 -59.88706,59.42644 -0.38221,143.38627 60.266,44.70479 V 389.3206 z"
+       style="fill:#784421;stroke:#000000;stroke-width:0.96704268"
+       id="path9475" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="72"
+       inkscape:export-filename="/home/vlad/Pictures/Анастасія/викройка2-72.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-ydpi="72"
+       d="m 382.17574,592.31462 0.38874,-144.36629 60.90466,-58.42519 v 247.49791 l -61.29095,-44.70316 z"
+       style="opacity:0.62000002;fill:#55ddff;stroke:#000000;stroke-width:0.69807392"
+       id="path9475-9" />
+  </g>
+  <metadata
+     id="metadata25">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Sign &quot;Push the door&quot;</dc:title>
+        <dc:date>2010-05-27T12:43:16</dc:date>
+        <dc:description>The simple &quot;Push the door&quot; sign</dc:description>
+        <dc:source>https://openclipart.org/detail/63307/sign-push-the-door-by-dbdeveloper</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>dbdeveloper</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>door</rdf:li>
+            <rdf:li>push</rdf:li>
+            <rdf:li>sign</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

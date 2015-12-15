@@ -1,5 +1,11 @@
 filename:  pingus.png
-authori(s): Alan Tennent, Craig Timpany, Erik Søe Sørensen, Ingo Ruhnke, Jarno Elonen, Joel Fauche, Mark Collinson, Michael Mestre, Stefan Stiasny, Tom Flavel
+author(s): Alan Tennent, Craig Timpany, Erik Søe Sørensen, Ingo Ruhnke, Jarno Elonen, Joel Fauche, Mark Collinson, Michael Mestre, Stefan Stiasny, Tom Flavel
 license:   GPLv3 or later 
 source:    Created from various files at https://github.com/Pingus/pingus/tree/master/data/images/pingus/player0" 
+
+filename: opendoor.svg
+author:   'dbdeveloper'
+license:  Public Domain
+source:   modified version of push.svg at https://openclipart.org/detail/63307/sign-push-the-door
+
 

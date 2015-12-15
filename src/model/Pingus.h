@@ -64,7 +64,10 @@ public:
 		SLIDERIGHT,
 		SPLATTING,
 		WAITING,
-		// SOARING, would be neat if ever we have time to add parachuting
+        EXITINGLEFT,    // exit-ing, not exciting
+        EXITINGRIGHT,
+        DIDEXIT,        // end state after EXITING* is complete
+        SLEEPING,
 		DEAD	// keep this one last!
 	};
 
@@ -75,6 +78,11 @@ public:
 	virtual unsigned int getImageIndex() const override
 	{ return theState; }
 
+    /// Called by PingusExit class when touching a Pingus, denotes that
+    /// the Pingus should start (or continue - it could be triggered multiple)
+    /// to leave the world happily.
+    void startYourExit();
+
 private:
 	/// Call this function to suggest a state change to the Pingus.
 	/// @note this member can decide not to follow your state change,
@@ -82,11 +90,6 @@ private:
 	/// @param aNewState the suggestion for a new state
 	/// @returns the state after this function completes
     States goToState(States aNewState);
-
-	/// Will replace the existing set of shapes by a smaller shape that
-	/// fits the Splatting and Dead images.
-	/// Do not call from within a Box2D callback.
-	void switchToSmallShape();
 
 public:
 	// the following two members are part of the normal impulse reporting
@@ -105,14 +108,11 @@ protected:
 	/// implemented from SimStepCallbackInterface
 	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	virtual void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStepFalling (qreal aTimeStep, qreal aTotalTime);
 	virtual void callbackStepSliding (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime);
-	virtual void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStepSplatting (qreal aTimeStep, qreal aTotalTime); // also handles Exiting state
+    virtual void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime); // also handles Sleeping state
 	virtual void callbackStepWalking (qreal aTimeStep, qreal aTotalTime);
-
-	// specialized partial callbacks
-	virtual void callbackStepWaitingAnimation(qreal aTimeStep, qreal aTotalTime);
 
 	/// Internal function to set all parameters to initial values (again)
 	virtual void resetParameters();
@@ -144,26 +144,53 @@ protected:
 
 
 ///---------------------------------------------------------------------------
-///------------------------- WaitingPingus -----------------------------------
+///------------------------- SleepingPingus -----------------------------------
 ///---------------------------------------------------------------------------
 
 
-/// The WaitingPingus acts like a normal Pingus, except that he starts out
-/// as a stationary waiting Pingus, he's not trying to get moving, you need
-/// to "help" him. If he ever gets stuck (e.g. wedgedagainst the bottom of a
-/// ramp) he's probably going to wait again.
-class WaitingPingus : public Pingus
+/// The SleepingPingus acts like a normal Pingus, except that he starts out
+/// as a sleeping Pingus, he's not trying to get moving, you need to "help"
+/// him. If he ever gets stuck (e.g. wedgedagainst the bottom of a ramp)
+/// he's probably going to wait and stay awake, though.
+class SleepingPingus : public Pingus
 {
 public:
-	WaitingPingus();
+    SleepingPingus();
 
-	virtual ~WaitingPingus();
+    virtual ~SleepingPingus();
 
 protected:
-	void callbackStepWaiting (qreal aTimeStep, qreal aTotalTime) override;
-
 	void resetParameters() override;
 };
 
+
+///---------------------------------------------------------------------------
+///------------------------- PingusExit --------------------------------------
+///---------------------------------------------------------------------------
+
+/** This class implements the exit for a Pingus, i.e. his home.
+  * Upon touching a Pingus, it will notify the Pingus to exit
+  */
+class PingusExit : public AbstractObject
+{
+public:
+    PingusExit();
+
+    virtual ~PingusExit();
+
+    /// Overridden so we can figure out if we're hit by a Pingus
+    void callBackSensor(const ContactInfo& aPoint) override;
+    /// returns the Name of the object.
+
+    // PingusExit doesn't have a user visible name
+    const QString getName ( ) const override
+    {	return "";	}
+
+    /// child objects must specify what type of body they are
+    /// @returns b2_staticBody if this object has no mass
+    ///          or b2_dynamicBody if its mass is larger than 0.001 kg
+    b2BodyType getObjectType(void) const override
+    {	return b2_staticBody; }
+};
 
 #endif // PINGUS_H

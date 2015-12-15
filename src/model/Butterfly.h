@@ -50,12 +50,12 @@ public:
 	};
 
 	/// @returns the state of the butterfly state machine
-        ButterflyStatus getState(void) const
+	ButterflyStatus getState(void) const
 	{	return theButterflyState; }
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-        virtual unsigned int getImageIndex(void) const
+	unsigned int getImageIndex(void) const override
 	{ return getState(); }
 
 	/** sets up the Butterfly to fly to a Flower
@@ -68,14 +68,14 @@ public:
 	// the following two members are part of the normal impulse reporting
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void)
+	bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
 	/** overridden from AbstractObject - we want to receive
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+	void reportNormalImpulseLength(qreal anImpulseLength) override;
 
 protected:
 	/// suggest a new state of the butterfly state machine
@@ -83,7 +83,7 @@ protected:
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 private:
 	// Private things

@@ -59,7 +59,7 @@ public:
 	virtual ~RectObject ( );
 
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{
 		return theNameString;
 	}
@@ -67,14 +67,14 @@ public:
 	/// child objects must specify what type of body they are
 	/// @returns b2_staticBody if this object has no mass
 	///          or b2_dynamicBody if the property mass was set
-	virtual b2BodyType getObjectType(void) const;
+	virtual b2BodyType getObjectType(void) const override;
 
 	/// @returns whether the object can be resized by the user
 	AbstractObject::SizeDirections isResizable ( ) override;
 
 	/// Parse all properties.
 	/// Partially overridden from AbstractObject
-	virtual void  parseProperties(void);
+	virtual void  parseProperties(void) override;
 
 protected:
 	virtual void initRectAttributes ( );

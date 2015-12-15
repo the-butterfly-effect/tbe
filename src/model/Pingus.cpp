@@ -45,7 +45,7 @@ static const qreal WAITING_SPEED  = 0.002; // m/s  (i.e. 2 mm/s)
 static const qreal WALKING_SPEED  = 0.50; // m/s
 static const qreal WALKINGSEQS_PER_SECOND = 1.5; // 1.5 sequences per horizontal distance of [walking speed*1second]
 
-const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 1};
+const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 9, 9, 1, 5, 1};
 
 
 Pingus::Pingus()
@@ -99,12 +99,13 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	// do we need to switch state?
 	switch(theState)
 	{
-	case WALKINGLEFT:
+    case WALKINGLEFT:
 	case WALKINGRIGHT:
 	case SLIDELEFT:
 	case SLIDERIGHT:
 	case WAITING:
-		if (myYd > 0.1*WALKING_SPEED || (myYd < -0.4*fabs(myXd) && fabs(myYd)>WAITING_SPEED))
+    case SLEEPING:
+        if (myYd > 0.1*WALKING_SPEED || (myYd < -0.4*fabs(myXd) && fabs(myYd)>WAITING_SPEED))
 			goToState(FALLING);
 		else
 			if (myNewXSuggestion != theState)
@@ -115,7 +116,10 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 			goToState(myNewXSuggestion);
 		break;
 	case SPLATTING:
-	case DEAD:
+    case EXITINGLEFT:
+    case EXITINGRIGHT:
+    case DIDEXIT:
+    case DEAD:
 		// X velocities are not going to affect us, nothing to do
 		break;
 	}
@@ -133,13 +137,17 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	case SLIDERIGHT:
 		callbackStepSliding(aDeltaTime, aTotalTime);
 		break;
-	case SPLATTING:
+    case EXITINGLEFT:
+    case EXITINGRIGHT:
+    case SPLATTING:
 		callbackStepSplatting(aDeltaTime, aTotalTime);
 		break;
 	case WAITING:
+    case SLEEPING:
 		callbackStepWaiting(aDeltaTime, aTotalTime);
 		break;
-	case DEAD:
+    case DIDEXIT:
+    case DEAD:
 		// nothing to do
 		break;
 	}
@@ -178,32 +186,48 @@ void Pingus::callbackStepSliding(qreal aTimeStep, qreal)
 
 void Pingus::callbackStepSplatting(qreal, qreal aTotalTime)
 {
-	// is this the first callback in Splatting state???
+    // is this the first callback in Splatting/Exiting state???
 	if (theSplattingTimeStart<0)
 	{
 		theSplattingTimeStart=aTotalTime;
-		switchToSmallShape();
 	}
 
 	// calculate the frame to display
-	// the splatting sequence has 16 images, let's take 0.32s to display them
-	// (at 60fps, that means approx 2 displayframes for each animation frame)
-	// calculate the frame to display
+    // the splatting sequence has 16 images, the exiting sequences have 9
+    // we display at 0.06 seconds per frame, calculate the frame to display
 	theAnimationFrameIndex = (aTotalTime-theSplattingTimeStart) / SPLATTING_SPF;
 
 	// are we done?
-	if (theAnimationFrameIndex >= Pingus::FramesPerState[SPLATTING])
+    if (theAnimationFrameIndex >= Pingus::FramesPerState[theState])
 	{
 		theAnimationFrameIndex = 0;
-		goToState(DEAD);
+        if (theState==SPLATTING)
+            goToState(DEAD);
+        else
+            goToState(DIDEXIT);
 	}
 }
 
 
+// used for Waiting and Sleeping
 void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 {
-	// First calculate the new animation frame
-	callbackStepWaitingAnimation(aTimeStep, aTotalTime);
+    // First calculate the new animation frame
+
+    // is this the first callback in Waiting state???
+    if (theWaitingTimeStart<0)
+        theWaitingTimeStart=aTotalTime;
+
+    // calculate the frame to display
+    theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
+    // vary horizontally/vertically in case multiple pingus wait or sleep together
+    theAnimationFrameIndex += theB2BodyPtr->GetPosition().x*91.;
+    theAnimationFrameIndex += theB2BodyPtr->GetPosition().y*91.;
+    theAnimationFrameIndex %= Pingus::FramesPerState[theState];
+
+    // if we're sleeping, we're done now
+    if (SLEEPING==theState)
+        return;
 
 	// If the Penguin is watching right, let's nudge him and see if it makes hime move
 	if (theAnimationFrameIndex == 3)
@@ -219,18 +243,6 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
 		theB2BodyPtr->ApplyLinearImpulse(
 				myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
 	}
-}
-
-
-void Pingus::callbackStepWaitingAnimation(qreal, qreal aTotalTime)
-{
-	// is this the first callback in Waiting state???
-	if (theWaitingTimeStart<0)
-		theWaitingTimeStart=aTotalTime;
-
-	// calculate the frame to display
-	theAnimationFrameIndex = (aTotalTime-theWaitingTimeStart) / WAITING_SPF;
-	theAnimationFrameIndex %= Pingus::FramesPerState[WAITING];
 }
 
 
@@ -295,7 +307,7 @@ void Pingus::deletePhysicsObjectForReal()
 
 Pingus::States Pingus::goToState(Pingus::States aNewState)
 {
-	DEBUG4("Pingus change state request from %d to %d.", theState, aNewState);
+    Pingus::States myOldState = theState;
 
 	// if we're not yet splatting or dead, we're splatting!
 	if (aNewState == SPLATTING)
@@ -318,28 +330,37 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			theFallingTimeStart = -1.0;
 			theState = aNewState;
 			break;
-		case SPLATTING:
+        case EXITINGLEFT:
+        case EXITINGRIGHT:
+        case SPLATTING:
 			// it should not be possible to get out of splatting, other than dead
-			if (aNewState==DEAD)
+            if (DEAD==aNewState)
 			{
 				theState=DEAD;
 				deletePhysicsObjectForReal();
 			}
-			else
+            if (DIDEXIT==aNewState)
 			{
-				/* do nothing */;
-			}
+                theState=DIDEXIT;
+                deletePhysicsObjectForReal();
+            }
 			break;
 		case WAITING:
-			theWaitingTimeStart = -1.0;
-			theState = aNewState;
+        case SLEEPING:
+            // prevent switching between waiting and sleeping
+            if (WAITING!=aNewState && SLEEPING !=aNewState)
+            {
+                theWaitingTimeStart = -1.0;
+                theState = aNewState;
+            }
 			break;
 		case DEAD:
+        case DIDEXIT:
 			// nothing to be done here...
 			break;
 		}
 	}
-	DEBUG5("Switched Pingus %p to state %d", this, theState);
+    DEBUG4("Pingus change state request from %d to %d %s.", myOldState, aNewState, (theState==myOldState)?"DENIED":"approved");
 	theAnimationFrameIndex = 0;
 	return theState;
 }
@@ -372,24 +393,24 @@ void Pingus::resetParameters()
 }
 
 
-void Pingus::switchToSmallShape()
+void Pingus::startYourExit()
 {
-	// save the current position - as it is only stored within the B2Body
-	// and we'll kill it in the next line...
-	Position myCurrentPos = getTempCenter();
-
-	deletePhysicsObjectForReal();
-	clearShapeList();
-
-	b2PolygonShape* myRestShape = new b2PolygonShape();
-	myRestShape->SetAsBox(0.05, 0.05);
-	b2FixtureDef* myRestDef = new b2FixtureDef();
-	myRestDef->density= 0.001 / (0.1 * 0.1);
-	myRestDef->userData = this;
-	myRestDef->shape   = myRestShape;
-	theShapeList.push_back(myRestDef);
-
-	CircleObject::createPhysicsObject(myCurrentPos);
+    switch(theState)
+    {
+    case WALKINGLEFT:
+    case SLIDELEFT:
+        goToState(EXITINGLEFT);
+        break;
+    case EXITINGLEFT:
+    case EXITINGRIGHT:
+    case DIDEXIT:
+    case DEAD:
+        // do not do anything
+        break;
+    default:
+        goToState(EXITINGRIGHT);
+        break;
+    }
 }
 
 
@@ -402,46 +423,99 @@ void Pingus::updateViewPingus()
 		theVPPtr->setNewAnimationFrame(theState, theAnimationFrameIndex);
 }
 
+
 ///---------------------------------------------------------------------------
-///------------------------- WaitingPingus -----------------------------------
+///------------------------- SleepingPingus ----------------------------------
 ///---------------------------------------------------------------------------
 
 //// this class' ObjectFactory
-class WaitingPingusObjectFactory : public ObjectFactory
+class SleepingPingusObjectFactory : public ObjectFactory
 {
 public:
-	WaitingPingusObjectFactory()
-	{	announceObjectType("WaitingPingus", this); }
+    SleepingPingusObjectFactory()
+    {	announceObjectType("SleepingPingus", this); }
 	AbstractObject* createObject() const override
-	{	return fixObject(new WaitingPingus()); }
+    {	return fixObject(new SleepingPingus()); }
 };
-static WaitingPingusObjectFactory theWaitingPingusObjectFactory;
+static SleepingPingusObjectFactory theSleepingPingusObjectFactory;
 
 
-WaitingPingus::WaitingPingus()
+SleepingPingus::SleepingPingus()
 		: Pingus()
 {
 	resetParameters();
 }
 
 
-WaitingPingus::~WaitingPingus()
+SleepingPingus::~SleepingPingus()
 {
 }
 
 
-void WaitingPingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
-{
-	// WaitingPingus: only calculate the new animation frame
-	callbackStepWaitingAnimation(aTimeStep, aTotalTime);
-}
-
-
-void WaitingPingus::resetParameters()
+void SleepingPingus::resetParameters()
 {
 	Pingus::resetParameters();
-	theState = WAITING;
+    theState = SLEEPING;
 	// resetParameters already calls updateViewPingus(), but we change the
 	// starting state, so we need to call it again...
 	updateViewPingus();
+}
+
+
+///---------------------------------------------------------------------------
+///---------------------------- PingusExit -----------------------------------
+///---------------------------------------------------------------------------
+
+//// this class' ObjectFactory
+class PingusExitObjectFactory : public ObjectFactory
+{
+public:
+    PingusExitObjectFactory()
+    {	announceObjectType("PingusExit", this); }
+    AbstractObject* createObject() const override
+    {	return fixObject(new PingusExit()); }
+};
+static PingusExitObjectFactory thePingusExitObjectFactory;
+
+
+PingusExit::PingusExit()
+{
+    // We are just a sensor
+    b2PolygonShape* mySensorShapePtr = new b2PolygonShape();
+    b2Vec2 mySensorShapeV[4];
+    mySensorShapeV[0].Set(-0.05, -0.05);
+    mySensorShapeV[1].Set( 0.05, -0.05);
+    mySensorShapeV[2].Set( 0.05,  0.05);
+    mySensorShapeV[3].Set(-0.05,  0.05);
+    mySensorShapePtr->Set(mySensorShapeV, 4);
+    b2FixtureDef* mySensorDef = new b2FixtureDef();
+    mySensorDef->shape    = mySensorShapePtr;
+    mySensorDef->isSensor = true;
+    mySensorDef->userData = this;
+    theShapeList.push_back(mySensorDef);
+}
+
+
+PingusExit::~PingusExit()
+{
+}
+
+
+void PingusExit::callBackSensor(const ContactInfo &aPoint)
+{
+    AbstractObject* myOtherObject=nullptr;
+
+    // which one of the two shapes is not me?
+    if (aPoint.myFixtureA->GetUserData()==this)
+        myOtherObject = aPoint.myFixtureB->GetUserData();
+    if (aPoint.myFixtureB->GetUserData()==this)
+        myOtherObject = aPoint.myFixtureA->GetUserData();
+    if (nullptr==myOtherObject)
+        return;
+
+    // is it a Pingus?
+    // then tell it to exit!
+    Pingus* myPingusPtr = dynamic_cast<Pingus*>(myOtherObject);
+    if (nullptr != myPingusPtr)
+        myPingusPtr->startYourExit();
 }
