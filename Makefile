@@ -24,9 +24,9 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/balloons-do-poof.xml:10, \
-	      --regression levels/draft/balloons-go-up.xml:10, \
-	      --regression levels/draft/bouncing_balls.xml:10, \
+	./tbe --regression levels/draft/balloons-do-poof.xml:5, \
+	      --regression levels/draft/balloons-go-up.xml:9, \
+	      --regression levels/draft/bouncing_balls.xml:6, \
 	      --regression levels/draft/butterfly-on-steroids.xml:75, \
 	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
 	      --regression levels/draft/geyser.xml:16, \
