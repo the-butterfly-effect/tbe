@@ -116,9 +116,13 @@ RectObject::RectObject(const QString& aDisplayName,
 	: theNameString(aDisplayName),
 	  theResizableInfo(SizeDirections::NORESIZING)
 {
-	theProps.setProperty(Property::IMAGE_NAME_STRING, aImageName);
-    theToolTip = aTooltip;
-    setTheWidth(aWidth);
+	// This is the enhanced constructor for RectObjects.
+	// When called, the ImageName is the default for that type of RectObject.
+	// So we set it as a default property (which means it is not saved).
+	Q_ASSERT(aDisplayName!=DEFAULT_RECTOBJECT_NAME);
+	theProps.setDefaultPropertiesString(QString("%1:%2/").arg(Property::IMAGE_NAME_STRING).arg(aImageName));
+	theToolTip = aTooltip;
+	setTheWidth(aWidth);
 	setTheHeight(aHeight);
 
 	if (aPropertiesText != nullptr)
