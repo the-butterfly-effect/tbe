@@ -55,9 +55,25 @@
         </background>
     </scene>
     <goals>
-        <goal type="positionchange">
-            <property key="xover">7.0</property>
+        <goal isFail="false" type="statechange">
+            <property key="object">pingus0</property>
+			<property key="morethan">10</property>
+        </goal>
+        <goal isFail="false" type="statechange">
             <property key="object">pingus1</property>
+			<property key="morethan">10</property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">pingus2</property>
+			<property key="morethan">10</property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">pingus7</property>
+			<property key="morethan">10</property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">pingus9</property>
+			<property key="morethan">10</property>
         </goal>
     </goals>
     <hints />

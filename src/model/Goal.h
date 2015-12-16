@@ -184,4 +184,30 @@ private:
 	int theState;
 };
 
+
+/// implemented Goal - win if a number of Pingus survived by escaping
+class GoalEscapedPingusCounter : public Goal
+{
+public:
+	/** constructor
+	  * NOTE: this class is only fully usable after parseProperties has been run
+	  */
+	GoalEscapedPingusCounter();
+	virtual ~GoalEscapedPingusCounter();
+
+	virtual const QString getGoalType(void) const
+	{	return "exitedPingusCounter";	};
+
+	virtual bool parseProperties(World* aWorldPtr);
+
+	virtual bool checkForSuccess(void);
+
+protected:
+	virtual QString goalToStringList() const;
+
+private:
+	float theLimit;
+};
+
+
 #endif // GOAL_H

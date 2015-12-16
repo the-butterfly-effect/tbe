@@ -83,6 +83,11 @@ public:
     /// to leave the world happily.
     void startYourExit();
 
+	/// called by GoalEscapedPingusCounter
+	/// @returns the number of Pingus that have started exiting the world
+	static int getEscapedPingusCount()
+	{ return theEscapedCount; }
+
 private:
 	/// Call this function to suggest a state change to the Pingus.
 	/// @note this member can decide not to follow your state change,
@@ -140,6 +145,8 @@ protected:
 	/// Keep the last normal impulse length reported, for determining
 	/// whether we are falling (very low impulse) or not.
 	qreal theLastNormalImpulseReported;
+
+	static int theEscapedCount;
 };
 
 

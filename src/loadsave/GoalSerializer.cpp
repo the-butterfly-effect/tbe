@@ -58,6 +58,8 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 		myGPtr = new GoalPositionChange();
 	if (myObjectType=="statechange")
 		myGPtr = new GoalStateChange();
+	if (myObjectType=="escapedpingus")
+		myGPtr = new GoalEscapedPingusCounter();
 
 	if (myGPtr==nullptr)
 	{
@@ -156,6 +158,10 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 		if (myList[2]==GoalEditor::getT10nOf_change())
 			myGoal->theProps.setProperty(Property::S_STATE_CH, "");
 		break;
+	case ESCPINGUS:
+		myGoal = new GoalEscapedPingusCounter();
+		myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
+		break;
 	}
 
 	if (myGoal->parseProperties(aWorldPtr)==true)
@@ -177,6 +183,7 @@ QStringList GoalSerializer::getColumnZero(void)
 	myVariables.insert(ANYTHING,    QObject::tr("X/Y/Angle"));
 	myVariables.insert(DISTANCE,    QObject::tr("Distance"));
 	myVariables.insert(STATE,       QObject::tr("Object State"));
+	myVariables.insert(ESCPINGUS,   QObject::tr("Escaped Pingus"));
 	return myVariables;
 }
 

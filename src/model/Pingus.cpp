@@ -46,7 +46,7 @@ static const qreal WALKING_SPEED  = 0.50; // m/s
 static const qreal WALKINGSEQS_PER_SECOND = 1.5; // 1.5 sequences per horizontal distance of [walking speed*1second]
 
 const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 9, 9, 1, 5, 1};
-
+int Pingus::theEscapedCount = 0;
 
 Pingus::Pingus()
 		: CircleObject(QObject::tr("Pingus"),
@@ -342,6 +342,7 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
             if (DIDEXIT==aNewState)
 			{
                 theState=DIDEXIT;
+				theEscapedCount++;
                 deletePhysicsObjectForReal();
             }
 			break;
@@ -389,6 +390,7 @@ void Pingus::resetParameters()
 	theSplattingTimeStart = -1.0;
 	theWaitingTimeStart   = -1.0;
 	theLastNormalImpulseReported = 0.0;
+	theEscapedCount = 0;
 	updateViewPingus();
 }
 

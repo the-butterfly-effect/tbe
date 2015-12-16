@@ -49,7 +49,8 @@ public:
 	 */
 	static Goal* createObjectFromDom(const QDomNode& q);
 
-	/** create a Goal from the information provided in the aString.
+	/** Create a Goal from the information provided in the aString.
+	  * This member is used by the GoalEditor to fill the Goals from the array.
 	  * format of the aString is:
 	  *    Variable;ObjectID;Condition;Value;ObjectID2  (ObjectID2 is optional)
 	  * @param    aWorldPtr pointer to the World instance, used to check ObjectIDs
@@ -75,17 +76,21 @@ public:
 	static QStringList goalToStringList(const Goal* aGoalPtr);
 
 
-	/// the Goal Types indicate the type of goal. 0-3 (POSITIONX-ANYTHING) are
-	/// subtypes of GoalPositionChange, 4 (DISTANCE) is a GoalDistance
+	/// the Goal Types indicate the type of goal.
+	/// 0-3 (POSITIONX-ANYTHING) are subtypes of GoalPositionChange,
+	/// 4 (DISTANCE) is a GoalDistance
+	/// 5 (STATE) is a GoalStateChange
+	/// 6 (ESCPINGUS) is a GoalEscapedPingusCounter
 	/// don't change existing numbers, quite some code depends on the order
 	enum GoalTypes
 	{
-		POSITIONX,
+		POSITIONX = 0,
 		POSITIONY,
 		ANGLE,
 		ANYTHING,
-		DISTANCE,
-		STATE
+		DISTANCE = 4,
+		STATE = 5,
+		ESCPINGUS = 6,
 	};
 
 	/// @returns a sparsely populated QStringList with all possible
