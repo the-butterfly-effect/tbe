@@ -46,7 +46,7 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-    ViewPostIt (AbstractObjectPtr anAbstractObjectPtr);
+    explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr);
 
 	/**
 	 * Empty Destructor

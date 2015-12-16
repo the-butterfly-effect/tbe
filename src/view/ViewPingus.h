@@ -41,7 +41,7 @@ public:
 	//
 
 	/// Image Constructor
-	ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
+	explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
 
 	/**
 	 * Empty Destructor
