@@ -33,13 +33,12 @@ public:
 
 	virtual ~Butterfly();
 
-	/// returns the Name of the object.
-	/// overridden from parent
-	virtual const QString getName ( ) const
+	/// @returns the Name of the object.
+	const QString getName ( ) const override
 	{	return QObject::tr("Butterfly"); }
 
 	/// overridden from AbstractObject because this class wants to register for callbacks
-	virtual void createPhysicsObject(void);
+	void createPhysicsObject(void) override;
 
 	enum ButterflyStatus
 	{
