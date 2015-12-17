@@ -43,6 +43,7 @@ public:
 	GoalEditor(World* aWorldPtr, QWidget *parent = 0);
     ~GoalEditor();
 
+	/// @returns the translation of "change"
 	static QString getT10nOf_change(void)
 	{ return tr("change"); }
 

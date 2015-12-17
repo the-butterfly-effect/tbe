@@ -19,6 +19,7 @@
 #include "tbe_global.h"
 #include "AbstractObject.h"
 #include "Goal.h"
+#include "Pingus.h"
 #include "Position.h"
 #include "Property.h"
 #include "World.h"
@@ -335,7 +336,7 @@ bool GoalStateChange::parseProperties(World* aWPtr)
 	if (theProps.property2Float(Property::S_MORETHAN, &myState,false))
 		theType=STATEOVER;
 	theState = myState;
-	if (theType == NOTYPE)
+	if (NOTYPE == theType)
 	{
 		DEBUG2("no valid property found");
 		return false;
@@ -344,14 +345,14 @@ bool GoalStateChange::parseProperties(World* aWPtr)
 
 	// parse object
     theBOPtr = theProps.property2ObjectPtr(aWPtr, Property::OBJECT_STRING);
-    if (theBOPtr==nullptr)
+	if (nullptr == theBOPtr)
 	{
 		DEBUG2("%s is not an existing, valid object", Property::OBJECT_STRING);
 		return false;
 	}
 
 	// in case of S_STATE_CH, we need to store the current state
-	if (theType==STATECHANGE)
+	if (STATECHANGE==theType)
 		// TODO/FIXME for newgui, for now, with no state at all:
 //		theState = theBOPtr->getImageIndex();
 		theState = 0;
@@ -385,3 +386,55 @@ QString GoalStateChange::goalToStringList() const
 	return myString;
 }
 
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////// GoalExitedPingusCounter /////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+GoalEscapedPingusCounter::GoalEscapedPingusCounter()
+		: theLimit(0)
+{
+	// nothing to do here
+}
+
+GoalEscapedPingusCounter::~GoalEscapedPingusCounter()
+{
+	// nothing to do here
+}
+
+bool GoalEscapedPingusCounter::checkForSuccess(void)
+{
+	if (Pingus::getEscapedPingusCount() > theLimit-0.01)
+		return true;
+	else
+		return false;
+}
+
+bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
+{
+	assert(aWPtr!=nullptr);
+	if (nullptr==aWPtr)
+		return false;
+
+	// we expect only to have 1 properties - any other number is wrong
+	if (theProps.getPropertyCount() != 1)
+	{
+		DEBUG2("GoalEscapedPingusCounter::parseProperties() got %d properties (>1), not good", theProps.getPropertyCount());
+		return false;
+	}
+	theProps.list();
+	if (!theProps.doesPropertyExists(Property::S_MORETHAN))
+		return false;
+	theProps.property2Float(Property::S_MORETHAN, &theLimit, false);
+	return true;
+}
+
+QString GoalEscapedPingusCounter::goalToStringList() const
+{
+	QString myString;
+		myString = QString("%1;;%2;%3;")
+					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::ESCPINGUS])
+					   .arg(">")
+					   .arg(QString::number(theLimit));
+	return myString;
+}

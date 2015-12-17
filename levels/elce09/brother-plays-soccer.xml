@@ -57,6 +57,7 @@
             </object>
             <object width="6.4" X="4.6" Y="1.75" height="3.7" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
+                <property key="ZValue">0.1</property>
             </object>
             <object width="0.15" X="0.50" Y="0.65" height="0.84" type="RectObject" angle="-0.8">
                 <property key="ImageName">brother-soccer-leg</property>

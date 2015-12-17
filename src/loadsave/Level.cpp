@@ -303,10 +303,11 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 		for (q=mySceneNode.firstChild(); !q.isNull(); q=q.nextSibling())
 		{
 			// a goal entry has the following layout:
-			//	<goal type="distance" lessthan="0.3">
-			//		 <object ID="Butterfly"/>
-			//		 <object ID="Flower"/>
-			//	</goal>
+			// <goal type="distance">
+			//   <property key="lessthan">0.27</property>
+			//   <property key="object1">Butterfly</property>
+			//   <property key="object2">Flower</property>
+			// </goal>
 			//
 			// of these, 'type' is mandatory
 			// everything else is optional and depends on the type of goal
