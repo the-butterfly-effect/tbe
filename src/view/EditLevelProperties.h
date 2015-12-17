@@ -74,7 +74,7 @@ class ColorPickerDelegate : public QItemDelegate
 	Q_OBJECT
 
 public:
-	ColorPickerDelegate(QObject *parent);
+	explicit ColorPickerDelegate(QObject *parent);
 
 	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
 						  const QModelIndex &index) const;

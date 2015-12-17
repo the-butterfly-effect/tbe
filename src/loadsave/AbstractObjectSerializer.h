@@ -70,7 +70,7 @@ public:
 
 private:
 	/// constructor only called by AbstractObject
-    AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr);
+    explicit AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr);
 
 	friend class AbstractObject;
 

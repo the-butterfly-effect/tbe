@@ -92,7 +92,7 @@ protected:
 
 		/// constructor
 		/// @param myPolygons string with the polygons definiton
-		AABB(QString& myPolygons);
+		explicit AABB(QString& myPolygons);
 
 		/// @returns the width of the unscaled object
 		float getOrigWidth();
