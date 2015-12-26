@@ -12,7 +12,9 @@
             <object width="0.430" X="7.960" Y="1.128" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Cola+mint">
-            <object width="0.166" X="1.119" Y="5.837" height="0.500" type="ColaMintBottle" angle="1.774"/>
+            <object width="0.166" X="1.119" Y="5.837" height="0.500" type="ColaMintBottle" angle="1.774">
+                <property key="Thrust">9</property>
+            </object>
         </toolboxitem>
     </toolbox>
     <scene>
@@ -137,9 +139,6 @@
             </object>
             <object width="0.120" X="9.070" Y="3.020" height="0.200" type="BirchBar" angle="0.000">
                 <property key="Mass">1</property>
-            </object>
-            <object width="0.170" X="1.750" Y="1.781" height="0.500" type="ColaMintBottle" angle="0.000">
-                <property key="Thrust">9</property>
             </object>
             <object width="1.700" X="0.882" Y="2.221" height="1.700" type="Scenery" angle="0.000">
                 <property key="ImageName">dream-of-hovering</property>
