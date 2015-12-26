@@ -14,7 +14,7 @@ Like Pingus, if a penguin reaches the exit, he'll happily jump in, escaping the 
 
 We borrowed all images from Pingus as well. This is why the penguin looks pixelated, whereas the other objects in TBE should be rendered to match the resolution of your screen.
 
-![Pingus waiting](/tbe/images/2015-12-26-pingus-waiter.png)
+![Pingus waiting](/tbe/images/2015-12-26-pingus-waiter.png) ![Pingus waiting](/tbe/images/2015-12-26-pingus-waiter.png) ![Pingus waiting](/tbe/images/2015-12-26-pingus-waiter.png) 
 
 Because TBE has a different approach to game play, a few things didn't make it:
 
