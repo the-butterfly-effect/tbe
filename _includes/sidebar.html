@@ -1,3 +1,9 @@
 <h4>Next milestone</h4>
 <a href="https://github.com/kaa-ching/tbe/milestones/Milestone%20A">Milestone A</a>
-{{ site.github.milestones.1.open_issues }}
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
