@@ -96,6 +96,9 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	// if we're not falling and there's a too big Yd, we start falling
 	qreal myYd = theB2BodyPtr->GetLinearVelocity().y;
 
+
+//printf("Pingus %p myXd:%f myYd:%f normalimpulse: %f, state %d\n",
+//	   this, myXd, myYd, theLastNormalImpulseReported, theState);
 	// do we need to switch state?
 	switch(theState)
 	{
@@ -105,11 +108,10 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	case SLIDERIGHT:
 	case WAITING:
     case SLEEPING:
-        if (myYd > 0.1*WALKING_SPEED || (myYd < -0.4*fabs(myXd) && fabs(myYd)>WAITING_SPEED))
+		if (theLastNormalImpulseReported < 0.02)
 			goToState(FALLING);
 		else
-			if (myNewXSuggestion != theState)
-				goToState(myNewXSuggestion);
+			goToState(myNewXSuggestion); // nothing happens when going to same state
 		break;
 	case FALLING:
 		if (theLastNormalImpulseReported > 0.02 || fabs(myYd) < WAITING_SPEED)
@@ -153,6 +155,8 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 	}
 
 	updateViewPingus();
+	// decay last reported impulses
+	theLastNormalImpulseReported /= 2.0;
 }
 
 
@@ -307,7 +311,11 @@ void Pingus::deletePhysicsObjectForReal()
 
 Pingus::States Pingus::goToState(Pingus::States aNewState)
 {
-    Pingus::States myOldState = theState;
+	// do not go from state A to state A
+	if (aNewState == theState)
+		return theState;
+
+	Pingus::States myOldState = theState;
 
 	// if we're not yet splatting or dead, we're splatting!
 	if (aNewState == SPLATTING)
@@ -361,7 +369,8 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			break;
 		}
 	}
-    DEBUG4("Pingus change state request from %d to %d %s.", myOldState, aNewState, (theState==myOldState)?"DENIED":"approved");
+	DEBUG4("Pingus %p change state request from %d to %d %s.",
+		   this, myOldState, aNewState, (theState==myOldState)?"DENIED":"approved");
 	theAnimationFrameIndex = 0;
 	return theState;
 }
@@ -374,10 +383,10 @@ void Pingus::reportNormalImpulseLength(qreal anImpulseLength)
 	if (anImpulseLength>SPLATTING_IMPULSE)
 	{
 		goToState(SPLATTING);
-		return;
 	}
 
-	theLastNormalImpulseReported = anImpulseLength;
+	if (anImpulseLength > theLastNormalImpulseReported)
+		theLastNormalImpulseReported = anImpulseLength;
 	// When Walking/Sliding/Waiting, we expect an impulselength of approx 0.05-0.06
 }
 

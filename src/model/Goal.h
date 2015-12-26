@@ -196,7 +196,7 @@ public:
 	virtual ~GoalEscapedPingusCounter();
 
 	virtual const QString getGoalType(void) const
-	{	return "exitedPingusCounter";	};
+	{	return "escapedPingusCount";	};
 
 	virtual bool parseProperties(World* aWorldPtr);
 

@@ -58,7 +58,7 @@ GoalSerializer::createObjectFromDom(const QDomNode& q)
 		myGPtr = new GoalPositionChange();
 	if (myObjectType=="statechange")
 		myGPtr = new GoalStateChange();
-	if (myObjectType=="escapedpingus")
+	if (myObjectType=="escapedPingusCount")
 		myGPtr = new GoalEscapedPingusCounter();
 
 	if (myGPtr==nullptr)
