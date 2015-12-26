@@ -414,7 +414,10 @@ bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
 {
 	assert(aWPtr!=nullptr);
 	if (nullptr==aWPtr)
+	{
+		DEBUG2("GoalEscapedPingusCounter::parseProperties() aWPtr doesn't exist?");
 		return false;
+	}
 
 	// we expect only to have 1 properties - any other number is wrong
 	if (theProps.getPropertyCount() != 1)
@@ -424,7 +427,10 @@ bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
 	}
 	theProps.list();
 	if (!theProps.doesPropertyExists(Property::S_MORETHAN))
+	{
+		DEBUG2("GoalEscapedPingusCounter::parseProperties() didn't get MORETHAN property");
 		return false;
+	}
 	theProps.property2Float(Property::S_MORETHAN, &theLimit, false);
 	return true;
 }

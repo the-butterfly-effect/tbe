@@ -44,8 +44,8 @@
         </background>
     </scene>
     <goals>
-        <goal isFail="false" type="exitedPingusCounter">
-            <property key="atleast">7.0</property>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="morethan">7.0</property>
         </goal>
     </goals>
     <hints/>
