@@ -1,6 +1,7 @@
 ---
 layout: post
 author: Klaas van Gend
+tags: features, new object
 ---
 
 As an hommage to the open source game [Pingus](http://pingus.seul.org/), we have added the penguin of the game to TBE. So we now have a small penguin (or groups of penguins) that can walk around in levels. We have limited features compared to the original Pingus, though:

@@ -1,5 +1,7 @@
 ---
 layout: post
+author: Klaas van Gend
+tags: release, features, milestones
 ---
 
 Hi!
