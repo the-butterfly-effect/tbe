@@ -5,12 +5,11 @@ title: Installation instructions
 
 ## Mageia
 
-Thanks to packager/developer _AlexL_, TBE will be available directly from within Mageia 6!
-You can use the graphical `rpmdrake` tool or use the command line `urpmi` tool to install the package.
+Thanks to packager/developer _AlexL_, TBE will be available directly from within Mageia 6! You can use the graphical `rpmdrake` tool or use the command line `urpmi` tool to install the package.
 
 ## RPM-based distributions
 
-<p class="bg-warning">As of mid-october, we only supply the RPM for Opensuse 13.2 as one of the developers works on Opensuse. We will update this page once other packages catch up after the final release.</p>
+<p class="text-warning">As of mid-october 2015, we only supply the RPM for Opensuse 13.2 as one of the developers works on Opensuse. We will update this page once other packages catch up after the final release.</p>
 
 Every RPM-based distribution allows to use the `rpm` command to install the RPM package like this (make sure to supply the correct file name):
 ```
@@ -43,16 +42,11 @@ There are essentially three options:
 
 ## Self-extracting archive
 
-<p class="bg-warning">This is currently being worked on.</p>
-
- - [ ] discuss dependencies
- - [ ] discuss executable rights
- - [ ] discuss where to install
+<p class="text-warning">[This is currently being worked on.](https://github.com/kaa-ching/tbe/issues/59)</p>
 
 ## Windows
 
-Download the installer, double click the installer and follow the steps.
-The game will be installed and is available in the start menu. The start menu will also show an `uninstall` icon if you ever want to remove the game again.
+Download the installer, double click the installer and follow the steps. The game will be installed and is available in the start menu. The start menu will also show an `uninstall` icon if you ever want to remove the game again.
 
 ## MacOSX
 
