@@ -78,7 +78,7 @@ ViewObjectActionDecorator::~ViewObjectActionDecorator()
 
 
 void
-ViewObjectActionDecorator::setViewObject(ViewObject* aParentPtr)
+ViewObjectActionDecorator::setViewObject(ViewObjectPtr aParentPtr)
 {
     setParentItem(aParentPtr);
 

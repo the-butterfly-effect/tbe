@@ -25,13 +25,13 @@
 #include "Position.h"
 #include "Property.h"
 #include "TranslationGuidePtr.h"
+#include "ViewObjectPtr.h"
 
 #include "Box2D.h"
 
 #include <set>
 
 // Forward Declarations
-class ViewObject;
 class ObjectFactory;
 class World;
 class ShapeList;
@@ -351,7 +351,7 @@ public:
       * @returns pointer to ViewObject
       * @note: a ZValue set in a property always overrides aDefaultDepth
       */
-    virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
+	virtual ViewObjectPtr createViewObject(float aDefaultDepth = 2.0);
     void deleteViewObject();
 
 	/// updates the ViewObject to the position of the underlying b2body
@@ -397,7 +397,7 @@ protected:
 	PropertyList theProps;
 
 	/// pointer to a ViewObject that will draw this object
-	ViewObject* theViewObjectPtr;
+	ViewObjectPtr theViewObjectPtr;
 
 	typedef QList<b2FixtureDef*> ShapeList;
 	/// list holding all the shapes associated with this object

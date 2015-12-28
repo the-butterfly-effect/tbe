@@ -38,7 +38,7 @@ public:
 	/// @note The newly created command is not put on the stack yet.
 	///       If you want it to, call commit() on the Command.
 	///       The object is now owned by the ViewObject anObject.
-	static AbstractUndoCommand* createUndoCommand(ViewObject* anObject,
+	static AbstractUndoCommand* createUndoCommand(ViewObjectPtr anObject,
 										ActionIcon::ActionType anUndoType);
 
 	/// Clean up the stack (i.e. start a new level)

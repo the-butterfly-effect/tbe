@@ -64,7 +64,7 @@ PostIt::~PostIt( )
 
 
 
-ViewObject*  PostIt::createViewObject(float aDefaultDepth)
+ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 {
 	if (nullptr!=theViewObjectPtr)
 		return theViewObjectPtr;

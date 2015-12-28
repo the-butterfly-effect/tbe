@@ -33,7 +33,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 {
     theTBGPtr->setItemPtr(this);
     AbstractObjectPtr myAOPtr = theTBGPtr->first();
-    ViewObject* myVOPtr = myAOPtr->createViewObject();
+    ViewObjectPtr myVOPtr = myAOPtr->createViewObject();
 
     QSize myPixmapSize;
     float myObjectAspectRatio = myAOPtr->getTheWidth() / myAOPtr->getTheHeight();

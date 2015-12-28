@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2015 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,25 +16,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#ifndef ROTATEUNDOCOMMAND_H
-#define ROTATEUNDOCOMMAND_H
 
-#include "AbstractUndoCommand.h"
-#include "Position.h"
+#ifndef VIEWOBJECTPTR_H
+#define VIEWOBJECTPTR_H
 
-/// implementation of AbstractUndoCommand to handle
-/// rotation of an object by the user
-class RotateUndoCommand : public AbstractUndoCommand
-{
-public:
-    explicit RotateUndoCommand(ViewObjectPtr anViewObjectPtr);
+/// For making object lifetime code simpler, for ViewObject
+/// we're going to use the QPointer type of Qt.
+/// it will result NULL if the ViewObject we're pointing to, has been removed
+#include <QtCore/QPointer>
+class ViewObject;
+typedef QPointer<ViewObject> ViewObjectPtr;
 
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
-
-private:
-    /// angle in radians of the button down position compared to object center
-    qreal theButtonDownVectorAngle;
-};
-
-#endif // ROTATEUNDOCOMMAND_H
+#endif // VIEWOBJECTPTR_H

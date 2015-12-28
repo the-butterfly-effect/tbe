@@ -28,7 +28,7 @@
 class ResizeUndoCommand : public AbstractUndoCommand
 {
 public:
-    explicit ResizeUndoCommand(ViewObject* anViewObjectPtr);
+    explicit ResizeUndoCommand(ViewObjectPtr anViewObjectPtr);
 
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);

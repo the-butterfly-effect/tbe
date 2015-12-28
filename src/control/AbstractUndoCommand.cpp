@@ -22,11 +22,11 @@
 #include "ViewObject.h"
 
 AbstractUndoCommand::AbstractUndoCommand(
-        ViewObject* anViewObjectPtr,
+        ViewObjectPtr aViewObjectPtr,
         const QString& anUndoName,
         QUndoCommand* parent)
     : QUndoCommand(parent),
-      theViewObjPtr(anViewObjectPtr),
+      theViewObjPtr(aViewObjectPtr),
       handleDecoratorOnDestructionBool(true)
 {
     AbstractObjectPtr myObjectPtr = theViewObjPtr->getAbstractObjectPtr();

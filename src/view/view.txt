@@ -51,6 +51,7 @@ SET(view_HEADERS
     view/ViewDetonatorBox.h
     view/ViewLink.h
     view/ViewObject.h
+    view/ViewObjectPtr.h
     view/ViewPingus.h
     view/ViewPostIt.h
     view/ViewWorld.h

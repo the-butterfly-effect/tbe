@@ -131,7 +131,7 @@ private slots:
 private:
 	ActionIcon* theCurrentInnerIconPtr;
 	AbstractObjectPtr theAOPtr;
-	ViewObject* theVOPtr;
+	ViewObjectPtr theVOPtr;
 
 	/// Set to true by iconClicked, monitored by
 	/// PieMenuSingleton::startClickCheck() and endClickCheck()
@@ -143,7 +143,7 @@ private:
 	/// @param aParentPtr pointer to the ViewObject to stick a PieMenu on
 	/// @param aPositionInObjectCoord position of the mouse click on the
 	///        object in item coordinates
-	explicit PieMenu(ViewObject* aParentPtr);
+	explicit PieMenu(ViewObjectPtr aParentPtr);
 
 	virtual ~PieMenu();
 
@@ -164,7 +164,7 @@ class PieMenuSingleton
 {
 public:
 	/// @returns a pointer to the ViewObject currently owning a Pie menu
-	static ViewObject* getPieMenuParent(void);
+	static ViewObjectPtr getPieMenuParent(void);
 
 	/// Puts a PieMenu on top of the selected ViewObject.
 	/// @param aViewObjectPtr pointer to the ViewObject to stick a PieMenu
@@ -172,7 +172,7 @@ public:
 	///        clearPieMenu() in that case.
 	/// @param aPositionInObjectCoord position of the mouse click on the
 	///        object in *scene* coordinates
-	static void addPieMenuToViewObject(ViewObject* aViewObjectPtr,
+	static void addPieMenuToViewObject(ViewObjectPtr aViewObjectPtr,
 									   QPointF aPositionInSceneCoord);
 
 	static void clearPieMenu(void)
@@ -200,7 +200,7 @@ private:
 	static PieMenuSingleton* me(void);
 
 	/// pointer to the currently existing PieMenu (if any)
-	PieMenu* theCurrentPieMenuPtr;
+	QPointer<PieMenu> theCurrentPieMenuPtr;
 
 	// no copy constructor or assignment operators here!
 	Q_DISABLE_COPY ( PieMenuSingleton )

@@ -42,7 +42,7 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->labelDescription->setText(myAOPtr->getToolTip());
 
     // set the image
-    ViewObject* myVOPtr = myAOPtr->createViewObject();
+    ViewObjectPtr myVOPtr = myAOPtr->createViewObject();
 
     // scale & rotate the image, map dimensions from scene to view
     qreal myBitmapConvertedWidth  = myAOPtr->getTheWidth() * THESCALE * aParent->transform().m11();

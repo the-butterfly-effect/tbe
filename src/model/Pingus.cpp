@@ -281,7 +281,7 @@ void Pingus::createPhysicsObject()
 }
 
 
-ViewObject*  Pingus::createViewObject(float aDefaultDepth)
+ViewObjectPtr  Pingus::createViewObject(float aDefaultDepth)
 {
 	if (nullptr != theViewObjectPtr)
 		return theViewObjectPtr;
@@ -429,8 +429,8 @@ void Pingus::updateViewPingus()
 {
 	// We know for sure that for the Pingus, this will be a ViewPingus,
 	// so no need to use RTTI's dynamic_cast<ViewPingus*> here...
-	ViewPingus* theVPPtr = static_cast<ViewPingus*>(theViewObjectPtr);
-	if (theVPPtr)
+	ViewPingus* theVPPtr = static_cast<ViewPingus*>(theViewObjectPtr.data());
+	if (nullptr != theVPPtr)
 		theVPPtr->setNewAnimationFrame(theState, theAnimationFrameIndex);
 }
 

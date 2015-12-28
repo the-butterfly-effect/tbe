@@ -45,7 +45,7 @@ public:
 	/** (overridden from AbstractJoint to fixup aspect ratio and overlap)
 	  * @returns pointer to AbstractObject
 	  */
-	virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
+	ViewObjectPtr createViewObject(float aDefaultDepth = 2.0) override;
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)

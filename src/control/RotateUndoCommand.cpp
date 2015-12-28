@@ -23,7 +23,7 @@
 #include <QGraphicsSceneMouseEvent>
 
 RotateUndoCommand::RotateUndoCommand(
-        ViewObject* anViewObjectPtr)
+        ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), nullptr),
       theButtonDownVectorAngle(999.f)
 {

@@ -19,10 +19,10 @@
 #ifndef VIEWOBJECTACTIONDECORATOR_H
 #define VIEWOBJECTACTIONDECORATOR_H
 
+#include "ViewObjectPtr.h"
 #include <QGraphicsPixmapItem>
 
 // forward declaration
-class ViewObject;
 class ViewObjectActionDecorator;
 class AbstractUndoCommand;
 class QGraphicsSceneMouseEvent;
@@ -72,7 +72,7 @@ public:
 
     /// Attach as a child to the parent ViewObject
     /// @param aParentPtr  pointer to the ViewObject to become a child to
-    void setViewObject(ViewObject* aParentPtr);
+    void setViewObject(ViewObjectPtr aParentPtr);
 
     /// Set the Decorator proxy image and set the object to call
     /// upon mouse movements.

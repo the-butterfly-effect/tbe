@@ -35,7 +35,7 @@ class AbstractUndoCommand : public QUndoCommand
 public:
     /// Unlike QUndoCommand, we always require arguments
     /// to the constructor.
-    AbstractUndoCommand(ViewObject* anViewObjectPtr,
+    AbstractUndoCommand(ViewObjectPtr anViewObjectPtr,
                         const QString& anUndoName,
                         QUndoCommand *parent = 0);
 
@@ -91,7 +91,7 @@ protected:
 
 protected:
     /// pointer to the view object
-    ViewObject* theViewObjPtr;
+    ViewObjectPtr theViewObjPtr;
 
     QPointF theButtonDownPosition;
     Position theOrigPos;

@@ -25,7 +25,7 @@
 
 
 MoveUndoCommand::MoveUndoCommand(
-        ViewObject* anViewObjectPtr)
+        ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), nullptr)
 {
     DEBUG3ENTRY;

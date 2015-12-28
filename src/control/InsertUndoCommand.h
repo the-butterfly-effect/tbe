@@ -32,7 +32,7 @@ class Hint;
 class InsertUndoCommand : public AbstractUndoCommand
 {
 public:
-    explicit InsertUndoCommand(ViewObject* anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
+    explicit InsertUndoCommand(ViewObjectPtr anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
 
     /// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
     /// and handles everything - including the commit().
@@ -74,7 +74,7 @@ protected:
     ToolboxGroup* theTBGPtr;
 
     /// TODO: document
-    static ViewObject *createVOfromAO(AbstractObjectPtr anAOPtr);
+	static ViewObjectPtr createVOfromAO(AbstractObjectPtr anAOPtr);
 
     /// TODO: document
     static InsertUndoCommand* createInsertUndoCommandIntern(

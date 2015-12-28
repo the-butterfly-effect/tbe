@@ -27,7 +27,7 @@
 class MoveUndoCommand : public AbstractUndoCommand
 {
 public:
-    explicit MoveUndoCommand(ViewObject* anViewObjectPtr);
+    explicit MoveUndoCommand(ViewObjectPtr anViewObjectPtr);
 
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);

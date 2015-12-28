@@ -44,7 +44,7 @@ public:
 	/// Overridden to set different default ZValue and not try to
 	/// display child joints.
 	/// @note If you specify a value, will use the parent one anyway...
-	virtual ViewObject* createViewObject(float aDefaultDepth = 5.0);
+	ViewObjectPtr createViewObject(float aDefaultDepth = 5.0) override;
 
 	/// overridden from AbstractObject
 	/// Generic implementation for all Joints - delete the joint.

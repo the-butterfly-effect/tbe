@@ -59,8 +59,8 @@ public:
 	virtual ~PivotPoint();
 
     /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
-    virtual ViewObject* createViewObject(float)
-    { return nullptr; }
+	ViewObjectPtr createViewObject(float) override
+	{ return ViewObjectPtr(nullptr); }
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)

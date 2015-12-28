@@ -20,6 +20,7 @@
 #include <QtCore/QTimer>
 #include <QtCore/QSignalTransition>
 #include <QtCore/QPropertyAnimation>
+#include <QtGui/QApplication>
 
 #include "AbstractObject.h"
 #include "ImageCache.h"
@@ -144,7 +145,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
 /////////////////////////////////////////////////////////////////////////////
 
 
-PieMenu::PieMenu(ViewObject* aParentPtr)
+PieMenu::PieMenu(ViewObjectPtr aParentPtr)
 	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr), wasIconClicked(false)
 {
 	theAOPtr = aParentPtr->getAbstractObjectPtr();
@@ -159,7 +160,7 @@ PieMenu::PieMenu(ViewObject* aParentPtr)
 
 PieMenu::~PieMenu()
 {
-    if (theVOPtr)
+	if (!theVOPtr.isNull())
         theVOPtr->setZValue(theVOsOriginalZValue);
 }
 
@@ -221,11 +222,11 @@ PieMenuSingleton::PieMenuSingleton(void)
 }
 
 
-ViewObject* PieMenuSingleton::getPieMenuParent(void)
+ViewObjectPtr PieMenuSingleton::getPieMenuParent(void)
 {
 	if (me()->theCurrentPieMenuPtr==nullptr)
 		return nullptr;
-		return me()->theCurrentPieMenuPtr->theVOPtr;
+	return me()->theCurrentPieMenuPtr->theVOPtr;
 }
 
 
@@ -237,14 +238,16 @@ PieMenuSingleton* PieMenuSingleton::me(void)
 }
 
 
-void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
+void PieMenuSingleton::addPieMenuToViewObject(ViewObjectPtr aViewObjectPtr,
 											  QPointF aPositionInSceneCoord )
 {
-	DEBUG5("PieMenuSingleton::setPieMenuParent(%p)", aViewObjectPtr);
-	// one can always call delete on a nullpointer
-	delete me()->theCurrentPieMenuPtr;
+	DEBUG5("PieMenuSingleton::setPieMenuParent(%p)", aViewObjectPtr.data());
 
-	if (aViewObjectPtr!=nullptr)
+	// we call delete on a QPointer<>
+	delete me()->theCurrentPieMenuPtr;
+	QApplication::processEvents();
+
+	if (nullptr != aViewObjectPtr)
 	{
 		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
 		me()->theCurrentPieMenuPtr->setup();
@@ -265,8 +268,6 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObject* aViewObjectPtr,
 
 		me()->theCurrentPieMenuPtr->setPos(me()->theCurrentPieMenuPtr->mapToParent(me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord)));
 	}
-	else
-		me()->theCurrentPieMenuPtr = nullptr;
 }
 
 

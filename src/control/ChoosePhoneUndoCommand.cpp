@@ -20,16 +20,20 @@
 #include "ViewDetonatorBox.h"
 
 ChoosePhoneUndoCommand::ChoosePhoneUndoCommand(
-        ViewObject* anViewObjectPtr)
+        ViewObjectPtr anViewObjectPtr)
     : DummyUndoCommand(anViewObjectPtr, tr("ChoosePhone"))
 {
-    DEBUG3ENTRY;
-    ViewDetonatorBox* myPtr = dynamic_cast<ViewDetonatorBox*>(theViewObjPtr);
-    if (myPtr==nullptr)
-        return;
+	DEBUG3ENTRY;
+	// we need to work around the QPointer<ViewObject> here...
+	ViewObject* myVOPtr = theViewObjPtr;
+	if (nullptr==myVOPtr)
+		return;
+	ViewDetonatorBox* myPtr = dynamic_cast<ViewDetonatorBox*>(myVOPtr);
+	if (nullptr==myPtr)
+		return;
 
-    myPtr->displayChoosePhoneNumber();
-    deleteLater();
+	myPtr->displayChoosePhoneNumber();
+	deleteLater();
 }
 
 

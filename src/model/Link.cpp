@@ -62,7 +62,7 @@ Link::~Link ()
     theSecondLocalPosPtr = nullptr;
 }
 
-ViewObject*  Link::createViewObject(float aDefaultDepth)
+ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
 {
     if (theViewObjectPtr!=nullptr)
         return theViewObjectPtr;
@@ -174,7 +174,9 @@ void Link::updateViewObject(bool ) const
     }
 
     // Sim running: don't need to adjust objects that are static or asleep
-    ViewLink* theVLPtr = dynamic_cast<ViewLink*>(theViewObjectPtr);
+	ViewObject* myVOPtr = theViewObjectPtr;
+	assert(myVOPtr!=nullptr);
+	ViewLink* theVLPtr = dynamic_cast<ViewLink*>(myVOPtr);
     assert(theVLPtr!=nullptr);
 
     Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();

@@ -52,7 +52,7 @@ QAction* UndoSingleton::createUndoAction (QObject* parent,const QString& prefix)
 
 
 AbstractUndoCommand*
-UndoSingleton::createUndoCommand(ViewObject* anObject,
+UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
 								 ActionIcon::ActionType anUndoType)
 {
 	DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);

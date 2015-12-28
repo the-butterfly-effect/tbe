@@ -34,7 +34,7 @@ class DummyUndoCommand : public QObject, public AbstractUndoCommand
     Q_OBJECT;
 
 public:
-    DummyUndoCommand(ViewObject* anViewObjectPtr,
+    DummyUndoCommand(ViewObjectPtr anViewObjectPtr,
                      const QString& anUndoName);
 
     /// Overridden to just make sure not to push anything.

@@ -27,7 +27,7 @@
 
 
 InsertUndoCommand::InsertUndoCommand(
-        ViewObject* anViewObjectPtr, QString anActionString)
+        ViewObjectPtr anViewObjectPtr, QString anActionString)
     : AbstractUndoCommand(anViewObjectPtr, anActionString, nullptr),
       theTBGPtr(nullptr)
 {
@@ -35,7 +35,7 @@ InsertUndoCommand::InsertUndoCommand(
 }
 
 
-ViewObject* InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
+ViewObjectPtr InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
 {
     // put our shiny new object in the middle of the world
     Position myPos(World::getWorldPtr()->getTheWorldWidth()/2.0,
@@ -44,7 +44,7 @@ ViewObject* InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
     anAOPtr->setOrigCenter(myPos);
 
     // and create its ViewObject pointer
-    ViewObject* myVOPtr = anAOPtr->createViewObject();
+    ViewObjectPtr myVOPtr = anAOPtr->createViewObject();
     return myVOPtr;
 }
 
@@ -106,7 +106,7 @@ InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
 {
 	DEBUG3ENTRY
     // extract the AbstractObject and the ViewObject
-    ViewObject* myVOPtr = createVOfromAO(anAOPtr);
+    ViewObjectPtr myVOPtr = createVOfromAO(anAOPtr);
     Q_ASSERT(myVOPtr!=nullptr);
 
     InsertUndoCommand* myInsertPtr = reinterpret_cast<InsertUndoCommand*>

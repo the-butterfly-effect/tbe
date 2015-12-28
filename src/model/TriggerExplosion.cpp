@@ -88,7 +88,7 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	}
 }
 
-ViewObject*  DetonatorBox::createViewObject(float aDefaultDepth)
+ViewObjectPtr  DetonatorBox::createViewObject(float aDefaultDepth)
 {
     if (theViewObjectPtr!=nullptr)
 		return theViewObjectPtr;
@@ -244,7 +244,7 @@ void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/
 	}
 }
 
-ViewObject*  DetonatorBoxHandle::createViewObject(float aZ)
+ViewObjectPtr  DetonatorBoxHandle::createViewObject(float aZ)
 {
 	RectObject::createViewObject(aZ);
 	setViewObjectZValue(theDBoxPtr->getZValue()/1.1);

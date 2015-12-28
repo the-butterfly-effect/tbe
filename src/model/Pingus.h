@@ -40,7 +40,7 @@ public:
 
 	virtual ~Pingus();
 
-	virtual ViewObject*  createViewObject(float aDefaultDepth) override;
+	ViewObjectPtr  createViewObject(float aDefaultDepth) override;
 
 	/// Overridden from CircleObject because this class wants to register for
 	/// callbacks and needs to restart its state machine.

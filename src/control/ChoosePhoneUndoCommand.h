@@ -30,7 +30,7 @@ class ChoosePhoneUndoCommand : public DummyUndoCommand
 {
 	Q_OBJECT
 public:
-    explicit ChoosePhoneUndoCommand(ViewObject* anViewObjectPtr);
+    explicit ChoosePhoneUndoCommand(ViewObjectPtr anViewObjectPtr);
 
     virtual ~ChoosePhoneUndoCommand();
 };

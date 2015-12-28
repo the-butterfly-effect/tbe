@@ -237,11 +237,6 @@ void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
                               true);
 }
 
-ViewObject*  SpringEnd::createViewObject(float)
-{
-	return nullptr;
-}
-
 void SpringEnd::createPhysicsObject(void)
 {
 	if (theB2BodyPtr!=nullptr)

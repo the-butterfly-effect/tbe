@@ -61,7 +61,7 @@ public:
 	/// the PostIt
 	/// @param   aDefaultDepth, ZValue depth in view if not set as property,
 	///          the higher the value the more likely it is drawn on top
-	virtual ViewObject* createViewObject(float aDefaultDepth = 10.0);
+	ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
 
 };
 

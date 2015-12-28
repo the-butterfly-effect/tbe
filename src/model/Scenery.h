@@ -69,7 +69,7 @@ public:
 	  * @returns pointer to ViewObject
 	  * @note: a ZValue set in a property always overrides aDefaultDepth
 	  */
-	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1) override
+	ViewObjectPtr createViewObject(float aDefaultDepth = 0.1) override
 	{ return AbstractObject::createViewObject(aDefaultDepth); }
 };
 

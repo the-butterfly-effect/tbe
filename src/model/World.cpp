@@ -123,8 +123,8 @@ void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 {
     assert(theViewWorldPtr!=nullptr);
 	DEBUG5("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
-    ViewObject* myVOPtr = anAOPtr->createViewObject();
-    if (myVOPtr!=nullptr)
+	ViewObjectPtr myVOPtr = anAOPtr->createViewObject();
+	if (nullptr != myVOPtr)
     {
         theViewWorldPtr->addItem(myVOPtr);
         anAOPtr->updateViewObject(false);

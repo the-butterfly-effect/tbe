@@ -138,7 +138,7 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 	notifyJoints(JointInterface::CREATED);
 }
 
-ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
+ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 {
 	if (theViewObjectPtr!=nullptr)
 		return theViewObjectPtr;

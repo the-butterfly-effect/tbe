@@ -50,7 +50,7 @@ public:
     virtual ~DetonatorBoxHandle() override;
 
 	/// Overridden from RectObject to allow setting a custom ZValue
-    virtual ViewObject* createViewObject(float aDefaultDepth) override;
+	ViewObjectPtr createViewObject(float aDefaultDepth) override;
 
 	/// overridden from AbstractObject to allow for the special joints
     virtual void createPhysicsObject(void) override;
@@ -104,7 +104,7 @@ public:
 		DONE       // end state, handle down and cell dark...
 	};
 
-    virtual ViewObject* createViewObject(float aDefaultDepth=2.0) override;
+	ViewObjectPtr createViewObject(float aDefaultDepth=2.0) override;
 
 	/// overridden from RectObject to be able to create the handle and
 	/// because this class wants to register for

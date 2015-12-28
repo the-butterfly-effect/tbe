@@ -31,7 +31,7 @@
 class DeleteUndoCommand : public InsertUndoCommand
 {
 public:
-    explicit DeleteUndoCommand(ViewObject* anViewObjectPtr);
+    explicit DeleteUndoCommand(ViewObjectPtr anViewObjectPtr);
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)

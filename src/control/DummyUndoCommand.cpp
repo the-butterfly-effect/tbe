@@ -19,7 +19,7 @@
 #include "DummyUndoCommand.h"
 
 DummyUndoCommand::DummyUndoCommand(
-        ViewObject* anViewObjectPtr,
+        ViewObjectPtr anViewObjectPtr,
         const QString& anUndoName)
     : AbstractUndoCommand(anViewObjectPtr, anUndoName)
 {

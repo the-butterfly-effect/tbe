@@ -28,7 +28,7 @@
 
 
 DeleteUndoCommand::DeleteUndoCommand(
-        ViewObject* anViewObjectPtr)
+        ViewObjectPtr anViewObjectPtr)
     : InsertUndoCommand(anViewObjectPtr, QObject::tr("Remove"))
 {
     DEBUG3ENTRY;

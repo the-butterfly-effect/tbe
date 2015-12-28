@@ -20,6 +20,7 @@
 #define SPRING_H
 
 #include "RectObject.h"
+#include "ViewObject.h"
 #include "World.h"
 
 #include <QStringList>
@@ -119,7 +120,8 @@ public:
     virtual ~SpringEnd();
 
 	/// overridden to allow setting a custom ZValue
-	virtual ViewObject* createViewObject(float aDefaultDepth);
+	ViewObjectPtr createViewObject(float) override
+	{ return ViewObjectPtr(nullptr); }
 
 	/// overridden from RectObject to allow for the special joints
 	/// and because this class wants to register for callbacks

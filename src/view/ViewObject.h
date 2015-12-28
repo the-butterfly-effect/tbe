@@ -21,6 +21,7 @@
 
 #include <QtCore/QObject>
 #include <QtGui/QGraphicsPixmapItem>
+#include <QtCore/QPointer>
 #include "Position.h"
 
 // forward declarations
@@ -135,5 +136,7 @@ private:
     // no copy constructor or assignment operators here!
     Q_DISABLE_COPY ( ViewObject )
 };
+
+#include "ViewObjectPtr.h"
 
 #endif // VIEWOBJECT_H
