@@ -48,7 +48,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpointer-arith -DQT_NO_AS
 find_package(Qt4 REQUIRED)
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
-QT4_WRAP_CPP(tbe_HEADERS_MOC ${control_HEADERS} ${view_HEADERS} ${model_HEADERS} ${loadsave_HEADERS})
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+# do no longer automatically moc all header files:
+#QT4_WRAP_CPP(tbe_HEADERS ${control_HEADERS} ${view_HEADERS} ${model_HEADERS} ${loadsave_HEADERS})
+
 QT4_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
 QT4_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -58,7 +62,7 @@ SET(QT_USE_QTSVG TRUE)
 
 ADD_EXECUTABLE(tbe 
     ${tbe_SOURCES}
-    ${tbe_HEADERS_MOC}
+    ${tbe_HEADERS}
     ${tbe_FORMS_HEADERS}
     ${tbe_RESOURCES_RCC}
 )
