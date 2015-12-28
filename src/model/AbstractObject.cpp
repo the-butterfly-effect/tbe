@@ -125,7 +125,10 @@ void AbstractObject::createPhysicsObject(const Position& aPosition)
 	for (;myI != theShapeList.end(); ++myI)
 	{
 		(*myI)->restitution = theBounciness;
-		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
+#ifdef QT_DEBUG
+        b2Fixture* myPtr =
+#endif
+                theB2BodyPtr->CreateFixture(*myI);
 #ifdef QT_DEBUG
 		b2AABB myAABB;
 		b2Transform myT;

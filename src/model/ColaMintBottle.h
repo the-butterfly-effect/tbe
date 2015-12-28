@@ -43,7 +43,7 @@ public:
 	  * @param aVelocity
 	  * @param aSplatterMass
 	  */
-	void setAll(World* aWorldPtr, const Position& aStartPos,
+    void setAll(const Position& aStartPos,
 				qreal aVelocity, qreal aSplatterMass);
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse

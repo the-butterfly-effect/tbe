@@ -200,7 +200,7 @@ void ColaMintBottle::newSplatter(unsigned int aSequenceNr)
 	// (otherwise, the cola bottle would blow as high on the moon as on earth)
 	qreal myV = sqrt(2.0 * 9.81 * myH);
 	const qreal mySplatterMass = 0.015;
-    mySplatterPtr->setAll(theWorldPtr, myStartPos, myV, mySplatterMass);
+    mySplatterPtr->setAll(myStartPos, myV, mySplatterMass);
     theWorldPtr->addObject(mySplatterPtr);
 
 	theColaAmount -= mySplatterMass;
@@ -263,13 +263,12 @@ void ColaSplatter::reportNormalImpulseLength(qreal)
 }
 
 
-void ColaSplatter::setAll(World* aWorldPtr,
-						  const Position& aStartPos,
+void ColaSplatter::setAll(const Position& aStartPos,
 						  qreal aVelocity,
 						  UNUSED_ARG qreal aSplatterMass)
 {
-	DEBUG5("ColaSplatter::setAll(%p, (%f,%f,%f), %f, %f)",
-		   aWorldPtr, aStartPos.x, aStartPos.y, aStartPos.angle,
+    DEBUG5("ColaSplatter::setAll((%f,%f,%f), %f, %f)",
+           aStartPos.x, aStartPos.y, aStartPos.angle,
 		   aVelocity, aSplatterMass);
 
 	setOrigCenter(aStartPos);
