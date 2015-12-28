@@ -20,9 +20,10 @@
 #define TBE_PATHS
 
 // instead of using hardcoded paths, please use the below:
+// (note: the TBE_ variables are passed from CMAKE through -D options to the compiler)
 #define BINARY_DIRECTORY   (qApp->applicationDirPath())
-#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/games/tbe/images")
-#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../share/games/tbe/levels")
-#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../share/games/tbe/i18n")
+#define IMAGES_DIRECTORY   QString(BINARY_DIRECTORY+"/../" + TBE_IMAGES_DIR)
+#define LEVELS_DIRECTORY   QString(BINARY_DIRECTORY+"/../" + TBE_LEVELS_DIR)
+#define I18N_DIRECTORY     QString(BINARY_DIRECTORY+"/../" + TBE_I18N_DIR)
 
 #endif // def TBE_PATHS
