@@ -43,18 +43,18 @@ public:
 //	{ assert(false); return nullptr; }
 
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{
 		return QObject::tr("PostIt");
 	}
 
 	/// Post-its have no mass. But no b2Body will be created either :-)
-	virtual b2BodyType getObjectType(void) const
+	virtual b2BodyType getObjectType(void) const override
 	{	return b2_staticBody; }
 
 	/// returns true if the object can be rotated by the user
 	/// PostIts cannot be adjusted by the player
-	virtual bool isRotatable ( ) const
+	virtual bool isRotatable ( ) const override
 	{	return false; }
 
 	/// overridden because we have our own ViewObject that displays

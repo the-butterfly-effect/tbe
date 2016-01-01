@@ -88,7 +88,7 @@ public:
 	ViewObjectPtr createViewObject(float aDefaultDepth = 2.0) override;
 
 	/// we need to parse the Radius - duh
-	virtual void  parseProperties(void);
+	virtual void  parseProperties(void) override;
 };
 
 
