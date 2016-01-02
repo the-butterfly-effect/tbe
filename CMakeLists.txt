@@ -26,6 +26,7 @@ else (WIN32 OR APPLE)
     set(TBE_DOC_DIR     ${CMAKE_INSTALL_PREFIX}/share/doc/tbe)
     set(TBE_DESKTOP_DIR ${CMAKE_INSTALL_PREFIX}/share/applications)
     set(TBE_ICON_DIR    ${CMAKE_INSTALL_PREFIX}/share/icons)
+    set(TBE_TARGET_PREFIX "../")
 endif (WIN32 OR APPLE)
 
 add_definitions(-DTBE_BIN_DIR="${TBE_TARGET_PREFIX}/${TBE_BIN_DIR}"
