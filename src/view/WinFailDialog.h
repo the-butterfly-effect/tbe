@@ -41,10 +41,10 @@ public:
 	};
 
     explicit WinFailDialog(MessageType aType, ResizingGraphicsView* aParent = 0);
-    ~WinFailDialog();
+    virtual ~WinFailDialog();
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
+    void changeEvent(QEvent *e) override;
 
 private:
     Ui::WinFailDialog *ui;
