@@ -64,24 +64,24 @@ public:
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{	return QObject::tr("PivotPoint");	}
 
 	/// overridden from AbstractObject
 	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
+	virtual bool isRotatable ( ) const override
 	{	return false;	}
 
 	/// overridden from AbstractObject
 	/// parses all properties that PivotPoint understands
-	virtual void  parseProperties(void);
+	virtual void  parseProperties(void) override;
 
 	/// implemented from AbstractJoint
-	virtual void updateOrigCenter(void);
+	virtual void updateOrigCenter(void) override;
 
 protected:
 

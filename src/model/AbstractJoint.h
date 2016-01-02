@@ -49,10 +49,10 @@ public:
 	/// overridden from AbstractObject
 	/// Generic implementation for all Joints - delete the joint.
 	/// (most Joints will not have bodies)
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// all joints have no mass, I'd hesitate to call them static, though...
-	virtual b2BodyType getObjectType(void) const
+	virtual b2BodyType getObjectType(void) const override
 	{	return b2_dynamicBody; }
 
 	/// @returns true if a child joint, created as property of another object
@@ -61,18 +61,18 @@ public:
 
 	/// overridden from AbstractObject
 	/// @returns true if the Joint is created
-	virtual bool isPhysicsObjectCreated(void) const
+	virtual bool isPhysicsObjectCreated(void) const override
 	{ return theJointPtr!=nullptr; }
 
 	/// called by World when the joint was "implicitly destructed"
-	virtual void jointWasDeleted(void);
+	virtual void jointWasDeleted(void) override;
 
 	/// when this member is called, this PivotPoint will be
 	/// marked as child, i.e. it will not save itself
 	void markAsChild(void);
 
 	/// implemented from JointInterface
-	virtual	void physicsObjectStatus(JointStatus aStatus);
+	virtual	void physicsObjectStatus(JointStatus aStatus) override;
 
 	/// called by the World class to set the Ground Body
 	static void setGroundBodyPtr(b2Body* aPtr);
@@ -89,7 +89,7 @@ public:
 	/// updates the ViewObject to the position of the underlying b2body
 	/// (it won't update if the object is asleep if sim is running)
 	/// @param isSimRunning  set to true if you want to use position/size from sim
-	virtual void updateViewObject(bool isSimRunning) const;
+	virtual void updateViewObject(bool isSimRunning) const override;
 
 protected:
 	/// if you have only one object, it is supposed to be static
