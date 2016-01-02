@@ -49,34 +49,34 @@ public:
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{	return QObject::tr("Link");	}
 
 	/** Get the current center position of the object.
 	 * @return the value of theCenter
 	 */
-	virtual Position getTempCenter ( ) const;
+	virtual Position getTempCenter ( ) const override;
 
 	/// overridden from AbstractObject
 	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
+	virtual bool isRotatable ( ) const override
 	{	return false;	}
 
 	/// overridden from AbstractObject
 	/// parses all properties that Link understands
-	virtual void  parseProperties(void);
+	virtual void  parseProperties(void) override;
 
 	/// implemented from BaseJoint
-	virtual void updateOrigCenter(void);
+	virtual void updateOrigCenter(void) override;
 
         /// updates the ViewLink to still have its line between the underlying b2bodys
         /// (it won't update if the object is asleep if sim is running)
         /// @param isSimRunning  set to true if you want to use position/size from sim
-        virtual void updateViewObject(bool isSimRunning) const;
+        virtual void updateViewObject(bool isSimRunning) const override;
 
 private:
 	AbstractObjectPtr theFirstPtr;

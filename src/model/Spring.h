@@ -125,10 +125,10 @@ public:
 
 	/// overridden from RectObject to allow for the special joints
 	/// and because this class wants to register for callbacks
-	void createPhysicsObject();
+	void createPhysicsObject() override;
 
 	/// overridden from AbstractObject to allow for the special joints
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// get the actual displacement of the prismatic joint
 	/// where zero means no compression/extension
@@ -136,7 +136,7 @@ public:
 
 	/// updates the ViewObject to the position of the underlying b2body
 	/// OVERRIDDEN from AbstractObject to not draw this object
-	virtual void updateViewObject(bool) const
+	virtual void updateViewObject(bool) const override
 	{ ; }
 
 
@@ -144,7 +144,7 @@ public:
 
 private:
     /// implemented from SimStepCallbackInterface
-    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
     Spring* theOtherEndPtr;
     b2PrismaticJoint* theJointPtr;
