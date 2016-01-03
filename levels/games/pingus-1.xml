@@ -1,0 +1,165 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Pingus</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>TODO</description>
+        <date>January 3, 2016</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2" name="Heavy Crate">
+            <object width="0.600" X="0.000" Y="0.000" height="0.300" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_flat</property>
+                <property key="Mass">50</property>
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2" name="Left Ramp">
+            <object width="1.000" X="0.000" Y="0.000" height="0.500" type="LeftRamp" angle="0.000">
+                <property key="Rotatable"> false </property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Right Ramp">
+            <object width="1.000" X="0.000" Y="0.000" height="0.542" type="RightRamp" angle="0.000">
+                <property key="Rotatable"> false </property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7" height="4"/>
+        <predefined>
+            <object width="7.000" X="3.500" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.5</property>
+            </object>
+            <object width="4.376" X="5.092" Y="3.650" height="0.100" type="Floor" angle="0.020"/>
+            <object width="0.280" X="3.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="3.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="4.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="4.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="5.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="5.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="6.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="0.280" X="6.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
+            <object width="4.768" X="2.399" Y="2.648" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="2.898" Y="2.991" height="0.542" type="RightRamp" angle="0.000"/>
+            <object width="2.825" X="4.679" Y="2.059" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="5.752" Y="2.390" height="0.500" type="LeftRamp" angle="0.000"/>
+            <object width="1.000" X="2.775" Y="1.711" height="0.500" type="LeftRamp" angle="0.000"/>
+            <object width="0.600" X="2.199" Y="3.700" height="0.600" type="CustomBall" ID="Wheel5" angle="0.000">
+                <property key="ImageName">steam-wheel</property>
+                <property key="Mass">3.0</property>
+                <property key="Radius">0.3</property>
+            </object>
+            <object width="1.000" X="2.199" Y="3.700" height="1.000" type="PivotPoint" angle="0.000">
+                <property key="Speed">-4.0</property>
+                <property key="object">Wheel5</property>
+            </object>
+            <object width="0.400" X="2.188" Y="3.100" height="0.200" type="RectObject" ID="Piston" angle="0.000">
+                <property key="Bounciness">0</property>
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">4.0</property>
+                <property key="TranslationGuide">1.571</property>
+            </object>
+            <object width="1.000" X="0.000" Y="0.000" height="1.000" type="Link" angle="0.000">
+                <property key="ImageName">driver-1m</property>
+                <property key="ZValue">5</property>
+                <property key="object1">Piston@(0,0)</property>
+                <property key="object2">Wheel5@(-0.25,0)</property>
+            </object>
+            <object width="4.754" X="2.377" Y="0.895" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.600" X="0.800" Y="3.700" height="0.600" type="CustomBall" ID="Wheel1" angle="0.000">
+                <property key="ImageName">steam-wheel</property>
+                <property key="Mass">3.0</property>
+                <property key="Radius">0.3</property>
+            </object>
+            <object width="1.000" X="0.800" Y="3.700" height="1.000" type="PivotPoint" angle="0.000">
+                <property key="Speed">-7.0</property>
+                <property key="object">Wheel1</property>
+            </object>
+            <object width="0.400" X="0.800" Y="1.315" height="0.200" type="RectObject" ID="Piston1" angle="0.000">
+                <property key="Bounciness">0</property>
+                <property key="ImageName">birch_bar</property>
+                <property key="Mass">4.0</property>
+                <property key="TranslationGuide">1.571</property>
+            </object>
+            <object width="1.000" X="0.000" Y="0.000" height="1.000" type="Link" angle="0.000">
+                <property key="ImageName">driver-1m</property>
+                <property key="ZValue">5</property>
+                <property key="object1">Piston1@(0,0)</property>
+                <property key="object2">Wheel1@(-0.25,0)</property>
+            </object>
+            <object width="1.642" X="1.562" Y="2.035" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.070" X="6.326" Y="1.994" height="3.800" type="Scenery" angle="-0.010">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">4.0</property>
+            </object>
+            <object width="0.070" X="3.683" Y="2.000" height="3.800" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">4.0</property>
+            </object>
+            <object width="0.070" X="4.616" Y="2.000" height="3.800" type="Scenery" angle="0.010">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">4.0</property>
+            </object>
+            <object width="0.070" X="1.166" Y="1.500" height="2.800" type="Scenery" angle="-0.040">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">4.0</property>
+            </object>
+            <object width="0.070" X="1.900" Y="1.500" height="2.800" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">4.0</property>
+            </object>
+            <object width="0.240" X="1.900" Y="0.888" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="1.900" Y="2.031" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="1.900" Y="2.650" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.600" X="5.890" Y="0.454" height="0.600" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_square</property>
+                <property key="Mass">50</property>
+                <property key="Rotatable">true</property>
+            </object>
+            <object width="0.600" X="5.136" Y="0.271" height="0.300" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_flat</property>
+                <property key="Mass">50</property>
+                <property key="Rotatable">true</property>
+            </object>
+            <object width="0.600" X="1.408" Y="1.360" height="0.300" type="RectObject" angle="1.571">
+                <property key="ImageName">wood_crate_flat</property>
+                <property key="Mass">50</property>
+                <property key="Rotatable">true</property>
+            </object>
+            <object width="0.477" X="2.233" Y="0.468" height="0.703" type="Scenery" angle="0.000">
+                <property key="ImageName">opendoor</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="0.100" X="2.233" Y="0.250" height="0.100" type="PingusExit" angle="0.000">
+                <property key="ImageName">Empty</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="morethan">8.0</property>
+        </goal>
+    </goals>
+    <hints>
+            <hint X="2.898" Y="2.991" number="1" object="RightRamp" angle="0.000"/>
+            <hint X="5.752" Y="2.390" number="2" object="LeftRamp" angle="0.000"/>
+            <hint X="2.775" Y="1.711" number="3" object="LeftRamp" angle="0.000"/>
+            <hint X="1.408" Y="1.360" number="4" object="RectObject" angle="1.571"/>
+            <hint X="5.136" Y="0.271" number="5" object="RectObject" angle="0.000"/>
+    </hints>
+</tbe-level>
