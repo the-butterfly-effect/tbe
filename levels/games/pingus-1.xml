@@ -4,7 +4,7 @@
         <title>Pingus</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>TODO: * make pingus invisible at top, * add more scaffolding-mounts, * add something sensible to pistons</description>
+        <description>TODO: * make pingus invisible at top, * add more scaffolding-mounts, * add something sensible to pistons, * add more descriptions</description>
         <date>January 3, 2016</date>
     </levelinfo>
     <toolbox>
