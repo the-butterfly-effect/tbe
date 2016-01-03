@@ -4,7 +4,7 @@
         <title>Pingus</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
-        <description>TODO</description>
+        <description>TODO: * make pingus invisible at top, * add more scaffolding-mounts, * add something sensible to pistons</description>
         <date>January 3, 2016</date>
     </levelinfo>
     <toolbox>
@@ -42,10 +42,7 @@
             <object width="0.280" X="6.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
             <object width="0.280" X="6.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
             <object width="4.768" X="2.399" Y="2.648" height="0.100" type="Floor" angle="0.000"/>
-            <object width="1.000" X="2.898" Y="2.991" height="0.542" type="RightRamp" angle="0.000"/>
             <object width="2.825" X="4.679" Y="2.059" height="0.100" type="Floor" angle="0.000"/>
-            <object width="1.000" X="5.752" Y="2.390" height="0.500" type="LeftRamp" angle="0.000"/>
-            <object width="1.000" X="2.775" Y="1.711" height="0.500" type="LeftRamp" angle="0.000"/>
             <object width="0.600" X="2.199" Y="3.700" height="0.600" type="CustomBall" ID="Wheel5" angle="0.000">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Mass">3.0</property>
@@ -122,18 +119,8 @@
                 <property key="ImageName">scaffolding-mount</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="0.600" X="5.890" Y="0.454" height="0.600" type="RectObject" angle="0.000">
+            <object width="0.600" X="5.890" Y="0.4" height="0.600" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_square</property>
-                <property key="Mass">50</property>
-                <property key="Rotatable">true</property>
-            </object>
-            <object width="0.600" X="5.136" Y="0.271" height="0.300" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_flat</property>
-                <property key="Mass">50</property>
-                <property key="Rotatable">true</property>
-            </object>
-            <object width="0.600" X="1.408" Y="1.360" height="0.300" type="RectObject" angle="1.571">
-                <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">50</property>
                 <property key="Rotatable">true</property>
             </object>
