@@ -35,3 +35,8 @@ wood_crate_flat.svg
 
 wood_crate_square.svg
    AUTHOR: Klaas van Gend, based on "wooden crate" by Erulisseuiin as found in the 'levels/angry' directory.
+
+clouds.svg
+   originally drawn by mokush and published on openclipart.org:
+   https://openclipart.org/detail/25281/cute-cartoon-clouds-with-stars
+   adjusted to match the Pingus levels by Klaas van Gend

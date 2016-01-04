@@ -27,7 +27,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="7" height="4"/>
+        <scenesize width="7" height="4.1"/>
         <predefined>
             <object width="7.000" X="3.500" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="Friction">0.5</property>
@@ -42,7 +42,7 @@
             <object width="0.280" X="6.100" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
             <object width="0.280" X="6.600" Y="3.880" height="0.280" type="Pingus" angle="0.000"/>
             <object width="4.768" X="2.399" Y="2.648" height="0.100" type="Floor" angle="0.000"/>
-            <object width="2.825" X="4.679" Y="2.059" height="0.100" type="Floor" angle="0.000"/>
+            <object width="3.259" X="4.896" Y="2.059" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.600" X="2.199" Y="3.700" height="0.600" type="CustomBall" ID="Wheel5" angle="0.000">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Mass">3.0</property>
@@ -87,15 +87,19 @@
                 <property key="object2">Wheel1@(-0.25,0)</property>
             </object>
             <object width="1.642" X="1.562" Y="2.035" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.070" X="6.326" Y="1.994" height="3.800" type="Scenery" angle="-0.010">
+            <object width="0.070" X="6.326" Y="1.494" height="2.800" type="Scenery" angle="-0.010">
                 <property key="ImageName">scaffolding-vertical-tube</property>
                 <property key="ZValue">4.0</property>
             </object>
-            <object width="0.070" X="3.683" Y="2.000" height="3.800" type="Scenery" angle="0.000">
+            <object width="0.070" X="3.683" Y="1.655" height="3.111" type="Scenery" angle="0.000">
                 <property key="ImageName">scaffolding-vertical-tube</property>
                 <property key="ZValue">4.0</property>
             </object>
-            <object width="0.070" X="4.616" Y="2.000" height="3.800" type="Scenery" angle="0.010">
+            <object width="0.070" X="4.147" Y="1.414" height="2.654" type="Scenery" angle="-0.456">
+                <property key="ImageName">scaffolding-vertical-tube</property>
+                <property key="ZValue">5.0</property>
+            </object>
+            <object width="0.070" X="4.621" Y="1.477" height="2.753" type="Scenery" angle="0.010">
                 <property key="ImageName">scaffolding-vertical-tube</property>
                 <property key="ZValue">4.0</property>
             </object>
@@ -119,17 +123,103 @@
                 <property key="ImageName">scaffolding-mount</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="0.600" X="5.890" Y="0.4" height="0.600" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_square</property>
-                <property key="Mass">50</property>
-                <property key="Rotatable">true</property>
+            <object width="0.240" X="1.900" Y="0.888" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
             </object>
-            <object width="0.477" X="2.233" Y="0.468" height="0.703" type="Scenery" angle="0.000">
+            <object width="0.240" X="1.135" Y="0.894" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="3.674" Y="0.888" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="3.678" Y="2.049" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="4.613" Y="0.893" height="0.074" type="Scenery" angle="-0.070">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="4.596" Y="2.648" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="6.321" Y="2.061" height="0.074" type="Scenery" angle="0.060">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="3.673" Y="2.642" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="4.605" Y="2.054" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="1.180" Y="2.024" height="0.074" type="Scenery" angle="-0.040">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="1.202" Y="2.648" height="0.074" type="Scenery" angle="-0.060">
+                <property key="ImageName">scaffolding-mount</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="4.61" Y="2.35" height="0.074" type="Scenery" angle="-0.456">
+                <property key="ImageName">scaffolding-clamp</property>
+                <property key="ZValue">5.5</property>
+            </object>
+            <object width="0.240" X="4.61" Y="2.35" height="0.074" type="Scenery" angle="0.010">
+                <property key="ImageName">scaffolding-clamp</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.240" X="3.67" Y="0.46" height="0.074" type="Scenery" angle="-0.456">
+                <property key="ImageName">scaffolding-clamp</property>
+                <property key="ZValue">5.5</property>
+            </object>
+            <object width="0.240" X="3.67" Y="0.46" height="0.074" type="Scenery" angle="0.000">
+                <property key="ImageName">scaffolding-clamp</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="0.600" X="5.890" Y="0.400" height="0.600" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_square</property>
+            </object>
+            <object width="0.600" X="0.890" Y="0.400" height="0.600" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_square</property>
+            </object>
+            <object width="0.600" X="1.410" Y="3.002" height="0.600" type="RectObject" angle="0.000">
+                <property key="ImageName">wood_crate_square</property>
+            </object>
+            <object width="0.477" X="2.221" Y="0.456" height="0.703" type="Scenery" angle="0.000">
                 <property key="ImageName">opendoor</property>
                 <property key="ZValue">0.5</property>
             </object>
             <object width="0.100" X="2.233" Y="0.250" height="0.100" type="PingusExit" angle="0.000">
                 <property key="ImageName">Empty</property>
+            </object>
+            <object width="3.580" X="1.537" Y="3.950" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="3.580" X="4.300" Y="3.950" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">6.5</property>
+            </object>
+            <object width="3.580" X="6.737" Y="3.950" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">6.5</property>
+            </object>
+            <object width="0.698" X="2.708" Y="3.483" height="0.147" type="Scenery" angle="0.000">
+                <property key="ImageName">cloud-door</property>
+                <property key="ZValue">7.0</property>
+            </object>
+            <object width="0.220" X="3.902" Y="1.843" height="0.220" type="PostIt" angle="0.000">
+				<property key="page1">Oh no!&lt;br>&lt;br>It's raining penguins.</property>
+                <property key="page2">Wait a minute... Don't they look just like the penguins from Pingus?</property>
+                <property key="page3">Let's bring them home safely!</property>
+                <property key="page4">... The Post-It boy</property>
             </object>
         </predefined>
         <background>
