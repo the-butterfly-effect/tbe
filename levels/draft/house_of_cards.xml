@@ -11,12 +11,11 @@
         <toolboxitem count="1" name="Marble">
             <object type="BowlingBall">
                 <property key="ImageName">SABROG_Glass_Blue_Ball</property>
+				<tooltip>Small glass marble. Will it be enough?</tooltip>
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp /">
-            <object width="5.0" height="1.3" type="LeftRamp" angle="0">
-                <property key="ImageName">LeftRamp</property>
-            </object>
+            <object width="5.0" height="1.3" type="LeftRamp" angle="0" />
         </toolboxitem>
     </toolbox>
     <scene>
