@@ -19,10 +19,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QMainWindow>
-#include <QtGui/QAction>
-#include <QtGui/QListWidget>
-#include <QtCore/QTimer>
+#include <QMainWindow>
+#include <QAction>
+#include <QListWidget>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;

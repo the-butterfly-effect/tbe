@@ -21,8 +21,8 @@
 #include "GoalEditor.h"
 #include "GoalSerializer.h"
 #include "World.h"
-#include <QtXml/QDomElement>
-#include <QtCore/QStringList>
+#include <QDomElement>
+#include <QStringList>
 #include <cassert>
 
 

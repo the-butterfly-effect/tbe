@@ -19,7 +19,7 @@
 #ifndef EDITLEVELPROPERTIES_H
 #define EDITLEVELPROPERTIES_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include <QItemDelegate>
 
 // forward declarations

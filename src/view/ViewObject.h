@@ -19,9 +19,9 @@
 #ifndef VIEWOBJECT_H
 #define VIEWOBJECT_H
 
-#include <QtCore/QObject>
-#include <QtGui/QGraphicsPixmapItem>
-#include <QtCore/QPointer>
+#include <QObject>
+#include <QGraphicsPixmapItem>
+#include <QPointer>
 #include "Position.h"
 
 // forward declarations

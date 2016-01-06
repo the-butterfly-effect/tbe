@@ -20,11 +20,11 @@
 #include "tbe_paths.h"
 #include "ImageCache.h"
 #include "Level.h"
-#include <QtCore/QCoreApplication>
-#include <QtCore/QFile>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmapCache>
-#include <QtSvg/QSvgRenderer>
+#include <QCoreApplication>
+#include <QFile>
+#include <QPainter>
+#include <QPixmapCache>
+#include <QSvgRenderer>
 
 //
 QSize ImageCache::theDefaultSize(160,160);

@@ -22,6 +22,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <QListWidgetItem>
+#include <QFileDialog>
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
@@ -264,7 +265,7 @@ void MainWindow::on_action_Save_activated()
 	if (false==theLevelPtr->save(myFileInfo.absoluteFilePath()))
         Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
     else
-        DEBUG2("File '%s' saved.",myFileInfo.absoluteFilePath().toAscii().constData());
+		DEBUG2("File '%s' saved.",ASCII(myFileInfo.absoluteFilePath()));
 }
 
 

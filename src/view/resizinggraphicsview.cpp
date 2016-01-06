@@ -32,6 +32,8 @@
 #include "WinFailDialog.h"
 #include "World.h"
 
+#include <QMenuBar>
+#include <QSettings>
 
 static ResizingGraphicsView* theRSGVPtr = nullptr;
 

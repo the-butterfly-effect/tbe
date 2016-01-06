@@ -19,8 +19,8 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 /// information on the background of the world/scene
 /// will be used by DrawWorld, of course

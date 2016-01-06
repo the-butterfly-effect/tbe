@@ -16,11 +16,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include <QtCore/QState>
-#include <QtCore/QTimer>
-#include <QtCore/QSignalTransition>
-#include <QtCore/QPropertyAnimation>
-#include <QtGui/QApplication>
+#include <QState>
+#include <QTimer>
+#include <QSignalTransition>
+#include <QPropertyAnimation>
+#include <QApplication>
 
 #include "AbstractObject.h"
 #include "ImageCache.h"

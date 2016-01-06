@@ -27,10 +27,10 @@
 
 #include "tbe_global.h"
 
-#include <QtCore/QFile>
-#include <QtCore/QTimer>
-#include <QtGui/QGraphicsColorizeEffect>
-#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QFile>
+#include <QTimer>
+#include <QGraphicsColorizeEffect>
+#include <QGraphicsSceneMouseEvent>
 
 ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
     : QGraphicsPixmapItem(nullptr), theAbstractObjectPtr(anAbstractObjectPtr.get())
@@ -178,7 +178,7 @@ void ViewObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 void ViewObject::initViewObjectAttributes(void)
 {
     setFlags(QGraphicsItem::ItemIsFocusable);
-    setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
     theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
     theMUCPtr = nullptr;

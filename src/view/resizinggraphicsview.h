@@ -19,8 +19,8 @@
 #ifndef RESIZINGGRAPHICSVIEW_H
 #define RESIZINGGRAPHICSVIEW_H
 
-#include <QtGui/QGraphicsView>
-#include <QtGui/QResizeEvent>
+#include <QGraphicsView>
+#include <QResizeEvent>
 
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
