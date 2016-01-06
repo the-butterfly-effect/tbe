@@ -40,7 +40,7 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
 
 We have packages of the latest version available for the following Linux distributions and Windows:
 
-If you need them, please refer to our [installation instructions](install).
+If you need them, please refer to our [installation instructions](install). If you want to know what's most popular, please take a look at our [download statistics](http://www.somsubhra.com/github-release-stats/?username=kaa-ching&repository=tbe).
 
 | Operating System       | MD5SUM     | &nbsp;Download files&nbsp; | Notes |
 |:-----------------------|:----------:|:--------------------------:|:------|
