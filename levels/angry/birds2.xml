@@ -4,7 +4,7 @@
         <title>The Birds Strike Back!</title>
         <author>Klaas van Gend</author>
         <license/>
-        <description>Make three birds and three eggs do poof.</description>
+        <description>Keep Mr. Stick Figure safe, kill three birds and break three eggs.</description>
         <date>6/15/11</date>
     </levelinfo>
     <toolbox>
@@ -89,7 +89,7 @@
             <object width="3.874" X="2.374" Y="0.687" height="1.000" type="LeftRamp" angle="0.000"/>
             <object width="0.600" X="7.511" Y="2.691" height="0.600" type="Balloon" ID="Mr.A.Bird" angle="0.000">
                 <property key="ImageName">yellow_bird;BalloonPoof;Empty;Empty</property>
-                <tooltip>Looks like a bird. And he's angry.</tooltip>
+                <tooltip>This bird looks angry. It it rather frail, however.</tooltip>
                 <property key="Mass">1</property>
             </object>
             <object width="0.600" X="8.111" Y="2.691" height="0.600" type="Balloon" ID="Mr.T.Bird" angle="0.000">

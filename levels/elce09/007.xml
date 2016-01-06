@@ -4,7 +4,7 @@
         <title>Double Action</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Two things need to happen at once... Goal: Butterfly to Flower.</description>
+        <description>Help the butterfly reach the flower.</description>
         <date>10/13/09</date>
     </levelinfo>
     <toolbox>
