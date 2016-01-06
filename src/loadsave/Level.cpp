@@ -66,6 +66,9 @@ const char* theTypeAttributeString      = "type";
 const char* theIDAttributeString        = "ID";
 const char* theIsFailAttributeString    = "isFail";
 
+const char* theNumberString = "number";
+
+
 // static (always accessible) data member
 // for this file only
 static QString theFileName;
@@ -507,6 +510,12 @@ bool Level::save(const QString& aFileName)
     World::GoalPtrList::iterator myG = theWorldPtr->theGoalPtrList.begin();
     for (; myG != theWorldPtr->theGoalPtrList.end(); ++myG)
         GoalSerializer::serialize(*myG, myGoalsParent);
+
+	// Hints
+	QDomElement myHintsParent = myDocument.createElement(theHintsString);
+	myRoot.appendChild(myHintsParent);
+	for (auto &i: theHintPtrList)
+		HintSerializer::serialize(i, myHintsParent);
 
     // success: we're going to write!
     QFile myFile(aFileName);

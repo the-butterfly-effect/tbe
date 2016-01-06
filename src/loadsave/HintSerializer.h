@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2015  Klaas van Gend
+ * This file copyright (C) 2015,2016  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -49,9 +49,15 @@ public:
 	 */
 	static Hint* createObjectFromDom(const QDomNode& q);
 
+	/** create a QDomElement of Hint aHintPtr and add it to aParent
+	  * @param aHintPtr pointer to the hint to serialize (=save)
+	  * @param aParent QDomElement pointer to add the serialized data to
+	  * @returns true if successful
+	  */
+	static bool serialize(const Hint* aHintPtr, QDomElement& aParent);
+
 private:
-	/// constructor only called by Hint
-	// (not implemented yet)
+	/// constructor, never called
 	//HintSerializer(const Hint* anObjectPtr);
 
 	/// Neutralize copy constructor and assignment operator

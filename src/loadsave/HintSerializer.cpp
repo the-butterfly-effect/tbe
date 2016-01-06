@@ -26,16 +26,21 @@
 
 
 // these are all declared in Level.cpp
+extern const char* theAngleAttributeString;
 extern const char* theHintString;
-extern const char* theTypeAttributeString;
-extern const char* thePropertyString;
-extern const char* theKeyAttributeString;
 extern const char* theIsFailAttributeString;
+extern const char* theKeyAttributeString;
+extern const char* theNumberString;
+extern const char* theObjectString;
+extern const char* thePropertyString;
+extern const char* theTypeAttributeString;
+extern const char* theXAttributeString;
+extern const char* theYAttributeString;
+
 
 Hint*
 HintSerializer::createObjectFromDom(const QDomNode& q)
 {
-	QDomNamedNodeMap myNodeMap;
 	QString myValue;
 
 	/// simple sanity check first...
@@ -48,7 +53,7 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 	Hint* myHPtr = new Hint();
 
 	// the nodemap contains all the attributes...
-	myNodeMap = q.attributes();
+	QDomNamedNodeMap myNodeMap = q.attributes();
 
 	for (unsigned int i=0; i< myNodeMap.length(); i++)
 	{
@@ -57,12 +62,12 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 		DEBUG5("  hint attribute: name %s", ASCII(myAName));
 		DEBUG5("  hint attribute: value %s", ASCII(myAValue));
 
-		if (myAName == "number")
+		if (theNumberString == myAName)
 		{
 			myHPtr->theHintIndex=myAValue.toInt();
 			continue;
 		}
-		if (myAName == "object")
+		if (theObjectString == myAName)
 		{
 			myHPtr->theObjectName=myAValue;
 			continue;
@@ -87,4 +92,28 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 not_good:
 	delete myHPtr;
 	return nullptr;
+}
+
+
+bool HintSerializer::serialize(const Hint* aHintPtr, QDomElement& aParent)
+{
+	QDomElement myHintElement = aParent.ownerDocument().createElement(theHintString);
+
+	// <hint X="0.7" Y="1.5" number="1" object="BowlingBall"/>
+
+	// number and object are mandatory
+	myHintElement.setAttribute(theNumberString, aHintPtr->theHintIndex);
+	myHintElement.setAttribute(theObjectString, aHintPtr->theObjectName);
+
+	// The rest are properties. We only save actually existing properties
+	PropertyList::PropertyMap::const_iterator i;
+	for ( i = aHintPtr->theParams.constBegin();
+		  i!= aHintPtr->theParams.constEnd();
+		 ++i)
+	{
+		myHintElement.setAttribute(i.key(), i.value());
+	}
+
+	aParent.appendChild(myHintElement);
+	return true;
 }
