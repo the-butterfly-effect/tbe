@@ -4,7 +4,7 @@
         <title>Topple the other way</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Two bowling balls, the wrong ball kicks the pin.</description>
+        <description>Push the bowling pin towards the green floor.</description>
         <date>03/20/10</date>
     </levelinfo>
     <toolbox>

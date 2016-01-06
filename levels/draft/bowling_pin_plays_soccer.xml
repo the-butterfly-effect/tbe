@@ -4,7 +4,7 @@
         <title>Bowling Pin plays soccer...</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>The Bowling Ball cannot kick the Bowling Pin in the goal.</description>
+        <description>Kick the bowling pin into the goal.</description>
         <date>12/17/09</date>
     </levelinfo>
     <toolbox>

@@ -4,7 +4,7 @@
         <title>Turn it around</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>A ball on a bar. Turn it around. Topple the pin.</description>
+        <description>Topple the pin towards the green floor.</description>
         <date>04/17/10</date>
     </levelinfo>
     <toolbox>

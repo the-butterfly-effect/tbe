@@ -4,7 +4,7 @@
         <title>Cola Powered Bike</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Transfer energy from Steam Engine to Bowling Pin</description>
+        <description>Topple the bowling pin.</description>
         <date>29 may 2010</date>
     </levelinfo>
     <toolbox>

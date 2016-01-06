@@ -4,7 +4,7 @@
         <title>The Butterfly Effect 101</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Hello!&lt;br>Welcome to The Butterfly Effect!&lt;br>&lt;br>This level is a first demonstration. Click PLAY in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level.&lt;br>&lt;br>You might want to click on the Post-it note!</description>
+        <description>Hello!&lt;br&gt;Welcome to The Butterfly Effect!&lt;br&gt;&lt;br&gt;This level is a first demonstration. Click “Play” in the top-right and watch the butterfly fly. When it is at the flower, you've won your first level.&lt;br&gt;&lt;br&gt;You might want to click on the Post-it note!</description>
         <date>11/1/09</date>
     </levelinfo>
     <scene>

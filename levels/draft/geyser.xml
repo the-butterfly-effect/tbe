@@ -4,7 +4,7 @@
         <title>Geyser</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>A volley ball must topple a pin from the other end.</description>
+        <description>Topple the bowling pin from the right.</description>
         <date>4/17/10</date>
     </levelinfo>
     <toolbox>

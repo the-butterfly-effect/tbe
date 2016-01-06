@@ -4,7 +4,7 @@
         <title>Contraption 2</title>
         <author>Klaas van Gend, Peter van Ginneken</author>
         <license>GPLv2</license>
-        <description>Levers, Dominoes, Bowling Pins. This one is complex.</description>
+        <description>Topple the bowling pin.</description>
         <date>06/04/10</date>
     </levelinfo>
     <toolbox>

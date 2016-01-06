@@ -4,7 +4,7 @@
         <title>Bouncing Balls</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>The second level in the game, and the first level you actually have to put something into the scene.&lt;br>Don't forget to read the Post-it note!</description>
+        <description>The second level in the game, and the first level you actually have to put something into the scene. The goal it to put all balls into the chest.&lt;br&gt;Don't forget to read the Post-it note!</description>
         <date>12/22/09</date>
     </levelinfo>
     <toolbox>
