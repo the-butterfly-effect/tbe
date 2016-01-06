@@ -4,7 +4,6 @@ slogan: Physics Puzzle Game like 'The Incredible Machine'
 description: The Butterfly Effect is a free and open source physics puzzle game.
 # Jekyll settings
 exclude: [README.md, TODO.md]
-baseurl: ""
 permalink: /blog/:year/:month/:day/:title/
 # Front Matter
 defaults:
