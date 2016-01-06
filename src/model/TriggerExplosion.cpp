@@ -128,7 +128,8 @@ QStringList DetonatorBox::getAllPhoneNumbers(void)
 	QStringList myList = theWorldPtr->getAllIDs().filter(myRX);
 	if (myList.contains(getCurrentPhoneNumber())==false)
 		myList.append(getCurrentPhoneNumber());
-	myList.append(getEmptyString());
+	if (!myList.contains(getEmptyString()))
+			myList.append(getEmptyString());
 	return myList;
 }
 

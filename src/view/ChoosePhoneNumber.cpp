@@ -33,6 +33,7 @@ ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView
 	m_ui->comboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
 	QStringList myPhoneList = theDBPtr->getAllPhoneNumbers();
 	myPhoneList.sort();
+	m_ui->comboBox->clear();
 	m_ui->comboBox->addItems(myPhoneList);
 
 	// and select the current item from the DetonatorBox
