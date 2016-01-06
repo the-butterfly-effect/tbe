@@ -390,8 +390,10 @@ protected:
 	b2Body* theB2BodyPtr;
 	b2BodyDef* theB2BodyDefPtr;
 
-    /// store a tooltip string
+	/// store a tooltip string
 	LocalString theToolTip;
+	/// is the tooltip a custom one (i.e. do we need to save it?)
+	bool hasCustomToolTip;
 
 	/// the properties of the object instance
 	PropertyList theProps;

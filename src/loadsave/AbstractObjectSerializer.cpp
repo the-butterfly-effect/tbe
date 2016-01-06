@@ -92,8 +92,16 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 		}
 	}
 
-	// Save *custom* tooltips and all it translations
-	// FIXME: TODO
+	// Save *custom* tooltips only, not the default ones
+	// TODO: Note: not saving other languages as that will soon be removed anyway
+	if (theAbstractObjectPtr->hasCustomToolTip)
+	{
+		QString myTooltipTextString = theAbstractObjectPtr->theToolTip.english();
+		QDomElement myTooltip = aParent->ownerDocument().createElement(theToolTipString);
+		QDomText myTooltipText= aParent->ownerDocument().createTextNode(myTooltipTextString);
+		myTooltip.appendChild(myTooltipText);
+		myNode.appendChild(myTooltip);
+	}
 
 	aParent->appendChild(myNode);
 }
@@ -181,6 +189,7 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 			{
 				DEBUG5("   %s", ASCII(QString("tooltip: '%1'='%2'").arg(myKey).arg(myTValue)));
 				myAOPtr->theToolTip.add(myTValue, myKey);
+				myAOPtr->hasCustomToolTip = true;
 				continue;
 			}
 			// if we get here, nodeName is not something we know about

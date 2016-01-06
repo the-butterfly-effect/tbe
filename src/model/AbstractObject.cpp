@@ -43,7 +43,8 @@ AbstractObject::AbstractObject()
       theHeight(1.0),
       theIsMovable(false),
       theWidth(1.0),
-      theWorldPtr(nullptr)
+      theWorldPtr(nullptr),
+      hasCustomToolTip(false)
 {
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;
