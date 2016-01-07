@@ -100,7 +100,7 @@
             <object width="0.600" X="7.908" Y="2.661" height="0.600" type="Balloon" ID="Mr.A.Bird" angle="0.000">
                 <property key="ImageName">yellow_bird;BalloonPoof;Empty;Empty</property>
                 <property key="Mass">6</property>
-                <tooltip>This bird looks angry. It it rather frail, however.</tooltip>
+                <tooltip>This bird looks angry. It is rather frail, however.</tooltip>
             </object>
             <object width="0.440" X="1.289" Y="2.976" height="0.440" type="PostIt" angle="0.000">
                 <property key="page1">I hate Angry Birds!</property>
