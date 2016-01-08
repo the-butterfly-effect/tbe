@@ -18,8 +18,11 @@ These include:
   * cmake
   * patch
 Depending on whether you have these:
-  * libqt4        (which must be QT version 4.6 or up !!!)
-  * libqt4-devel
+  * libqt5        (which must be QT version 5.2 or up !!!)
+  * libqt5-devel
+  * libqt5xml5
+  * libqt5svg5
+  * libqt5svg5-dev
 if you do not, you'll need to build the static version, which in turn
 requires building QT first - you'll now also need:
   * a lot of X11 development libraries
