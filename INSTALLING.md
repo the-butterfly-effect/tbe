@@ -23,6 +23,8 @@ Depending on whether you have these:
   * libqt5xml5
   * libqt5svg5
   * libqt5svg5-dev
+  * qttools5-dev
+  * qttools5-dev-tools
 if you do not, you'll need to build the static version, which in turn
 requires building QT first - you'll now also need:
   * a lot of X11 development libraries

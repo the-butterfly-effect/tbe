@@ -9,7 +9,7 @@
 
 printf "Updating all i18n files\n"
 
-lupdate_cmd=`which lupdate-qt4`
+lupdate_cmd=`which lupdate-qt5`
 if [ -z "$lupdate_cmd" ]
 then
    lupdate_cmd=`which lupdate`
