@@ -25,6 +25,17 @@
     <scene>
         <scenesize width="4.4" height="3"/>
         <predefined>
+            <object width="1.300" X="4.500" Y="2.650" height="0.300" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="1.300" X="3.400" Y="2.700" height="0.300" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.6</property>
+            </object>
+            <object width="5.000" X="2.700" Y="0.30" height="1.500" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
             <object width="1.200" X="0.780" Y="0.320" height="0.100" type="RectObject" angle="-0.450">
                 <property key="Bounciness">0.05</property>
                 <property key="Friction">0.5</property>
