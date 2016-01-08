@@ -220,6 +220,14 @@
                 <property key="Bounciness">0.05</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
+            <object width="3.000" X="1.700" Y="3.500" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="3.000" X="4.500" Y="3.550" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
         </predefined>
     </scene>
     <goals>
