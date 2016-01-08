@@ -25,6 +25,10 @@
             <object width="0.200" X="0.102" Y="1.394" height="1.012" type="Wall" angle="0.000"/>
             <object X="0.529" Y="1.449" type="Hammer"/>
             <object X="1.030" Y="1.218" type="BowlingPin" ID="pin" angle="-4.719"/>
+            <object width="0.34" X="0.37" Y="1.72" height="0.36" type="Scenery">
+                <property key="ImageName">SpidersWeb</property>
+                <property key="ZValue">0.5</property>
+            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.43;0.40;0.27;1.00</gradientstop>
@@ -37,4 +41,13 @@
             <property key="ybelow">0.5</property>
         </goal>
     </goals>
+	<hints>
+		<hint X="1.15" Y="1.07" number="1" object="BirchBar"/>
+		<hint X="0.95" Y="0.93" number="2" object="PetanqueBoule"/>
+		<hint X="2.38" Y="0.93" number="3" object="PetanqueBoule"/>
+		<hint X="2.04" Y="0.93" number="4" object="PetanqueBoule"/>
+		<hint X="1.70" Y="0.93" number="5" object="PetanqueBoule"/>
+		<hint X="1.36" Y="0.93" number="6" object="PetanqueBoule"/>
+		<hint X="1.15" Y="0.93" number="7" object="PetanqueBoule"/>
+	</hints>
 </tbe-level>

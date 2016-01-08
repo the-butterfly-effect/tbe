@@ -59,4 +59,11 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
+	<hints>
+		<hint X="2.70" Y="2.47" number="1" object="IBeam"/>
+		<hint X="2.75" Y="2.69" number="2" object="IBeam"/>
+		<hint X="5.24" Y="2.68" number="3" object="IBeam"/>
+		<hint X="2.59" Y="2.80" number="4" object="IBeam"/>
+		<hint X="4.02" Y="2.80" number="5" object="IBeam"/>
+	</hints>
 </tbe-level>

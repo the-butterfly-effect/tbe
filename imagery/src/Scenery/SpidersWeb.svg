@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   viewBox="0 0 570.25393 622.80806"
+   sodipodi:version="0.32"
+   version="1.0"
+   sodipodi:docname="SpidersWeb.svg"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs50">
+    <linearGradient
+       id="linearGradient3891">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3893" />
+      <stop
+         style="stop-color:#9fe3e5;stop-opacity:1;"
+         offset="1"
+         id="stop3895" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3891"
+       id="radialGradient3897"
+       cx="347.73499"
+       cy="440.29501"
+       fx="347.73499"
+       fy="440.29501"
+       r="289.95706"
+       gradientTransform="matrix(1,0,0,1.0897374,0,-39.510941)"
+       gradientUnits="userSpaceOnUse" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3901">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#008080;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect3903"
+         width="625.44458"
+         height="665.79584"
+         x="67.08979"
+         y="132.37941"
+         rx="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     pagecolor="#6a3800"
+     inkscape:zoom="0.64434165"
+     inkscape:pageshadow="2"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="322.85052"
+     inkscape:cy="357.63569"
+     inkscape:window-width="1366"
+     inkscape:pageopacity="0"
+     inkscape:window-height="720"
+     inkscape:document-units="px"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-67.08979,-132.37943)">
+    <path
+       id="path2856"
+       style="fill:none;stroke:url(#radialGradient3897);stroke-width:2.56410003"
+       d="m 222.35,583.3 -54.56,-49.6 -24.8,-104.87 0,-67.32 10.98515,-41.09717 C 171.44613,302.27728 198.74925,252.18729 222.35,214.13 l 67.32,-36.85 89.99,-21.26 68.73,2.13 74.4,16.3 31.12,46.26 M 271.65,531.16 225.9,497.56 c -17.17406,-10.79819 -23.57626,-48.52601 -34.72,-74.4 l 14.88,-55.27 -1.14032,-34.58561 C 236.29151,309.83086 243.46656,280.30813 262.74,253.81 l 50.31,-34.72 c 42.55762,-3.11307 70.12471,-16.21982 103.52517,-25.43766 l 24.37311,11.33657 61.29172,4.18109 29.32,38.45 m -221.34,239.31 -25.51,-28.34 -22.68,-49.6 2.84,-34.72 8.85172,-20.5503 L 295.34,290.65 334.31,263.02 c 24.17161,-1.67905 51.34165,-10.85417 78.86329,-20.90828 L 429.26,249.56 l 40.39,14.17 19.66,29.16 m -19.54,19.84 -19.26,-15.7 -29.76,-15.59 -10.05499,-6.65594 L 346.35,288.53 319.43,311.2 295.97109,360.09313 296.75,378.52 l 1.42,27.63 12.75,37.56 18.43,24.09 M 451.78,332.85 c -9.49,-5.99 -4.67,-2.04 -16.15,-11.02 L 415.79,311.2 406.43845,306.59172 360.53,312.62 l -21.26,16.3 -18.6336,37.41188 1.6236,15.72812 0.71,19.84 9.21,27.63 14.31,17.57 m 45.5,-47.55 -2.51,-3.51 -7.51,-4.13 2,-4.13 2.63,-5.01 3.13,-3.01 2.63,-3.76 5.89,-1.75 4.51,0.37 2.88,-0.12 4.63,2.45 m -23.79,27.99 -4.01,-4.51 -6.39,-7.39 -0.38,-6.02 3.14,-7.26 4.88,-5.64 c 0,0 4.26,-6.76 4.89,-6.39 0.62,0.38 8.89,-0.87 8.89,-0.87 l 6.39,0.75 5.89,0.63 4.82,4.17 m -33.51,38.66 -6.51,-5.51 -10.02,-11.52 0.5,-10.02 0.13343,-5.60703 L 379.09,367.48 l 6.51,-5.51 11.02,-2 9.02,0.5 7.02,2.5 6.3,4.56 m 16.78,-16.05 -9.05,-11.05 -16.54,-0.5 -6.10281,-7.61125 L 369.07,330.91 357.54,347.94 345.60703,374.90719 339,382.51 l 2.01,16.54 6.51,23.05 10.52,13.52 m 11.53,-12.02 -8.02,-10.02 -6.01,-17.04 0,-12.02 -0.59125,-8.5664 15.12125,-15.9836 11.02,-6.01 15.03,-2.01 11.53,-1.5 11.02,4.01 6.54,6.03 M 553.33,127.12 398.727,389.96996 636.41,133.64 M 424.66821,124.40031 399.13,389.53 458.29484,123.90031 M 126.2175,127.89492 399.69698,389.98497 264.41,125.6 M 59.06,355.46 400.13,389.53 57.433748,291.93649 M 61.74,603.76 399.63,389.53 58.465155,445.41742 m 341.873855,-56.56641 -336.572012,365.46"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+       clip-path="url(#clipPath3901)" />
+  </g>
+  <metadata
+     id="metadata48">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>ragno with a half web</dc:title>
+        <dc:date>2006-12-17T17:26:37</dc:date>
+        <dc:description />
+        <dc:source>https://openclipart.org/detail/2122/ragno-with-a-half-web-by-nayrhcrel</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>nayrhcrel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>animal</rdf:li>
+            <rdf:li>beam</rdf:li>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>cobweb</rdf:li>
+            <rdf:li>remix</rdf:li>
+            <rdf:li>spider</rdf:li>
+            <rdf:li>spider web</rdf:li>
+            <rdf:li>web</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
