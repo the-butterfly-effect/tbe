@@ -38,7 +38,7 @@ More info is also availble in the TBE Help menus.
 ###Running in English, Dutch, Spanish, Russian, Malay
 If you want to change language, start TBE from the command line and
 type:
-> `LANG="nl" ./tbe`
+> `LANGUAGE="nl" ./tbe`
 
 Of course, for English you use "en", for spanish "es" and for Russian "ru".
 
