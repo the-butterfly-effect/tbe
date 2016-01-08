@@ -1,0 +1,51 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Magic Steel</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Throw the cactus from the platform.</description>
+        <date>06.01.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="6" name="Steel I-Beam">
+            <object width="1.400" X="0.000" Y="0.000" height="0.100" type="IBeam" angle="0.000">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4.5" height="5"/>
+        <predefined>
+            <object width="0.250" X="3.919" Y="3.103" height="0.400" type="Cactus" ID="cactus" angle="0.000"/>
+            <object width="0.220" X="3.696" Y="4.580" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="1.000" X="1.088" Y="2.991" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.400" X="0.384" Y="3.164" height="0.400" type="QuarterArc40" angle="-3.192"/>
+            <object width="1.340" X="3.917" Y="2.851" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.400" X="3.719" Y="4.254" height="0.400" type="QuarterArc40" angle="-1.548"/>
+            <object width="1.000" X="12.499" Y="5.478" height="0.100" type="Floor" angle="-1.579"/>
+            <object width="3.961" X="2.537" Y="3.444" height="0.100" type="Floor" angle="-0.037"/>
+            <object width="2.969" X="2.032" Y="4.089" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.107" X="0.234" Y="4.156" height="1.543" type="Wall" angle="0.000"/>
+            <object width="0.251" X="0.676" Y="3.803" height="0.441" type="Wall" angle="0.000"/>
+            <object width="0.784" X="4.190" Y="1.401" height="2.784" type="Wall" angle="0.000"/>
+            <object width="0.810" X="0.713" Y="1.468" height="2.918" type="Wall" angle="0.000"/>
+            <object width="0.200" X="4.410" Y="3.932" height="1.000" type="Wall" angle="0.000"/>
+            <object width="0.220" X="1.033" Y="3.795" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">These I-beams have truly remarkable properties.</property>
+                <property key="page2">They have an incredible stability under extreme conditions.</property>
+                <property key="page3">Sorry. that's all I can tell you.&lt;br&gt;— Post-it boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.46;0.46;0.46;1.00</gradientstop>
+            <gradientstop pos="1.00">0.51;0.45;0.23;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">cactus</property>
+            <property key="ybelow">1</property>
+        </goal>
+    </goals>
+</tbe-level>

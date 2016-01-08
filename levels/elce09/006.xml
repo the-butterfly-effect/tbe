@@ -30,6 +30,9 @@
     <scene>
         <scenesize width="6.0" height="4"/>
         <predefined>
+            <object width="7.000" X="5.000" Y="3.50" height="2.500" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
             <object width="2.8" X="4.4" Y="2.1" height="4.2" type="Scenery">
                 <property key="ImageName">palmtree</property>
             </object>

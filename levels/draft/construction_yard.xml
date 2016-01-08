@@ -1,0 +1,69 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Construction Yard</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Pop both ballons.</description>
+        <date>06.01.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="7" name="Steel I-Beam">
+            <object width="1.400" X="0.000" Y="0.000" height="0.100" type="IBeam" angle="0.000">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6.8" height="4"/>
+        <predefined>
+            <object width="1.484" X="2.283" Y="2.350" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="5.491" Y="2.578" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.380" X="1.399" Y="3.799" height="0.380" type="CircularSaw" angle="0.000"/>
+            <object width="0.113" X="1.144" Y="3.695" height="0.404" type="Wall" angle="0.000"/>
+            <object width="0.400" X="1.311" Y="3.296" height="0.400" type="QuarterArc40" angle="3.177"/>
+            <object width="0.200" X="2.933" Y="1.491" height="1.612" type="Wall" angle="0.000"/>
+            <object width="4.710" X="2.821" Y="0.083" height="0.100" type="Floor" angle="-0.019"/>
+            <object width="0.200" X="5.088" Y="1.749" height="1.542" type="Wall" angle="0.000"/>
+            <object width="0.270" X="0.342" Y="0.967" height="0.360" type="Balloon" ID="left_balloon" angle="0.000"/>
+            <object width="0.927" X="6.207" Y="0.886" height="0.875" type="QuarterArc40" angle="-1.547"/>
+            <object width="0.200" X="6.499" Y="2.225" height="1.724" type="Wall" angle="0.000"/>
+            <object width="0.400" X="0.260" Y="0.285" height="0.400" type="QuarterArc40" angle="-3.150"/>
+            <object width="0.270" X="6.629" Y="0.226" height="0.360" type="Balloon" ID="right_balloon" angle="0.000"/>
+            <object width="0.088" X="0.118" Y="0.998" height="1.000" type="Wall" angle="0.000"/>
+            <object width="1.000" X="0.668" Y="1.209" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.537" X="6.574" Y="0.481" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.166" X="1.238" Y="1.773" height="0.100" type="Floor" angle="0.949"/>
+            <object width="1.000" X="6.904" Y="3.147" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="2.329" Y="1.741" height="0.100" type="Floor" angle="3.142"/>
+            <object width="0.400" X="2.596" Y="1.992" height="0.400" type="Weight" angle="0.000"/>
+            <object width="1.000" X="0.567" Y="2.007" height="1.000" type="LeftRamp" angle="0.000"/>
+            <object width="1.000" X="0.563" Y="3.008" height="1.000" type="RightRamp" angle="0.000"/>
+            <object width="1.000" X="2.329" Y="1.175" height="1.000" type="LeftRamp" angle="0.000"/>
+            <object width="0.748" X="5.574" Y="2.145" height="0.739" type="LeftRamp" angle="0.000"/>
+            <object width="1.000" X="0.575" Y="3.569" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.400" X="7.043" Y="0.325" height="0.400" type="QuarterArc40" angle="0.000"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.82;0.82;0.82;1.00</gradientstop>
+            <gradientstop pos="1.00">0.38;0.38;0.69;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">left_balloon</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">right_balloon</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+	<hints>
+		<hint X="2.70" Y="2.47" number="1" object="IBeam"/>
+		<hint X="2.75" Y="2.69" number="2" object="IBeam"/>
+		<hint X="5.24" Y="2.68" number="3" object="IBeam"/>
+		<hint X="2.59" Y="2.80" number="4" object="IBeam"/>
+		<hint X="4.02" Y="2.80" number="5" object="IBeam"/>
+	</hints>
+</tbe-level>

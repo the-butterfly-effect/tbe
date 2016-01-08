@@ -21,22 +21,8 @@ stk-logo.png
   supertuxkart logo taken from http://stkaddons.net/
   presumed to be under a suitably free license
 
-
-scaffolding-mount.svg
-scaffolding-vertical-tube.svg
 * steam-wheel.svg
    AUTHOR: Klaas van Gend
    License: PD
    Original graphics for The Butterfly Effect
    The images marked with an asterisk are uploaded to www.openclipart.org
-
-wood_crate_flat.svg
-   AUTHOR: Klaas van Gend, based on "Wood crate w/ writing" by J_Alves as found in the 'levels/angry' directory.
-
-wood_crate_square.svg
-   AUTHOR: Klaas van Gend, based on "wooden crate" by Erulisseuiin as found in the 'levels/angry' directory.
-
-clouds.svg
-   originally drawn by mokush and published on openclipart.org:
-   https://openclipart.org/detail/25281/cute-cartoon-clouds-with-stars
-   adjusted to match the Pingus levels by Klaas van Gend

@@ -29,8 +29,10 @@ regression: usr/games/tbe
 	      --regression levels/draft/bouncing_balls.xml:6, \
 	      --regression levels/draft/butterfly-on-steroids.xml:75, \
 	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
+              --regression=levels/draft/construction_yard.xml:26, \
 	      --regression levels/draft/geyser.xml:16, \
 	      --regression levels/draft/house_of_cards.xml:20, \
+	      --regression=levels/draft/in_the_attic.xml:17, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
 	      --regression levels/draft/poing-poing-poing.xml:15, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
