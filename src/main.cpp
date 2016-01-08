@@ -17,12 +17,12 @@
  */
 
 #include "MainWindow.h"
-#include <QtCore/QSettings>
-#include <QtCore/QTranslator>
-#include <QtGui/QApplication>
-#include <QtGui/QSplashScreen>
+#include <QSettings>
+#include <QTranslator>
+#include <QApplication>
+#include <QSplashScreen>
 #include <QLibraryInfo>
-#include <QtCore/QTextCodec>
+#include <QTextCodec>
 #include "tbe_global.h"
 #include "tbe_paths.h"
 
@@ -180,7 +180,8 @@ int main(int argc, char *argv[])
 
 	//** Strings in source code or XML are UTF-8, make sure Qt understands
 	QTextCodec *myCodec = QTextCodec::codecForName("UTF-8");
-	QTextCodec::setCodecForCStrings(myCodec);
+// ###TODO FIGURE OUT IF NEEDED:
+//	QTextCodec::setCodecForCStrings(myCodec);
 	QTextCodec::setCodecForLocale(myCodec);
 
 	//** set the names to our website
@@ -327,6 +328,6 @@ int main(int argc, char *argv[])
 const char* ASCII(const QString& aQString)
 {
 		static char myString[256];
-		strncpy(myString, aQString.toAscii().constData(), 255);
+		strncpy(myString, aQString.toLatin1().constData(), 255);
 		return myString;
 }
