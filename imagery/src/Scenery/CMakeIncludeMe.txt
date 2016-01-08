@@ -1,5 +1,10 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
+        ${SRCDIRNAME}/scaffolding-clamp.svg
+        ${SRCDIRNAME}/scaffolding-mount.svg
+        ${SRCDIRNAME}/scaffolding-vertical-tube.svg
         ${SRCDIRNAME}/SpidersWeb.svg
+        ${SRCDIRNAME}/wood_crate_flat.svg
+        ${SRCDIRNAME}/wood_crate_square.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )
