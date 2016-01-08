@@ -101,24 +101,24 @@ private slots:
 	bool slot_insertHint(unsigned int aHintNumber) const;
 
 	// menu Help
-	void on_action_About_activated();
-	void on_action_Bug_Reports_activated();
-	void on_action_Keyboard_Shortcuts_activated();
-	void on_action_Libraries_activated();
-	void on_action_New_Level_Ideas_activated();
-	void on_action_Quit_activated();
-	void on_action_Skip_Level_activated();
-	void on_action_Suggestions_activated();
+	void on_action_About_triggered();
+	void on_action_Bug_Reports_triggered();
+	void on_action_Keyboard_Shortcuts_triggered();
+	void on_action_Libraries_triggered();
+	void on_action_New_Level_Ideas_triggered();
+	void on_action_Quit_triggered();
+	void on_action_Skip_Level_triggered();
+	void on_action_Suggestions_triggered();
 
     // menu File
-	void on_action_New_activated();
-	void on_action_Open_File_activated();
+	void on_action_New_triggered();
+	void on_action_Open_File_triggered();
 public slots:
     void on_action_Open_Level_triggered();
 private slots:
-	void on_action_Save_activated();
-	void on_action_Save_As_activated();
-    void on_action_Switch_to_Level_Editor_activated();
+	void on_action_Save_triggered();
+	void on_action_Save_As_triggered();
+    void on_action_Switch_to_Level_Editor_triggered();
 
     // menu Insert (Level Creator)
     void on_insert(const QString &anObjectName);
