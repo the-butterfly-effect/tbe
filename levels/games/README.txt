@@ -26,8 +26,3 @@ stk-logo.png
    License: PD
    Original graphics for The Butterfly Effect
    The images marked with an asterisk are uploaded to www.openclipart.org
-
-clouds.svg
-   originally drawn by mokush and published on openclipart.org:
-   https://openclipart.org/detail/25281/cute-cartoon-clouds-with-stars
-   adjusted to match the Pingus levels by Klaas van Gend
