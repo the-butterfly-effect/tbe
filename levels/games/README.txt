@@ -21,9 +21,6 @@ stk-logo.png
   supertuxkart logo taken from http://stkaddons.net/
   presumed to be under a suitably free license
 
-
-scaffolding-mount.svg
-scaffolding-vertical-tube.svg
 * steam-wheel.svg
    AUTHOR: Klaas van Gend
    License: PD
