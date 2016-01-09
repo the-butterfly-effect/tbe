@@ -221,7 +221,9 @@ void ResizingGraphicsView::slot_levelWon(void)
 		return;
 	DEBUG3ENTRY;
 
-    if (theIsLevelEditor==false)
+    // Anti-cheat:
+    // Don't label the level as complete when we're in level editor mode
+    if (!theIsLevelEditor)
     {
         QString myLevelFileName = Level::getLevelFileName();
         QSettings mySettings;
