@@ -135,9 +135,10 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	// also set the startstopwatch view
 	theSimControlsPtr->hookSignalsUp(aScenePtr);
 
-	connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
-	connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
-	connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
+    connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
+    connect(aScenePtr, SIGNAL(needPause()), theSimControlsPtr, SLOT(onPause()));
 
 	if (theIsRunAsRegression)
 	{

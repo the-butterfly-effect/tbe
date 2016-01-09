@@ -82,7 +82,7 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
 {
     DEBUG1ENTRY;
 
-    emit internalReset();
+    emit theResetAction->trigger();
 
     // hook up states to signals for ViewWorld/World
     // note: no need to hook up theProblemState
@@ -157,7 +157,6 @@ void SimulationControls::setup(QMenu* aMenuPtr)
 
     // add transitions here
     theStoppedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
-    theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     theStoppedState->addTransition(this, SIGNAL(internalCrossPresent()), theProblemState);
 
     theRunningState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
@@ -165,31 +164,25 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theRunningState->addTransition(the4FAction, SIGNAL(triggered()), the4FState);
     theRunningState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
     theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-    theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     theProblemState->addTransition(this, SIGNAL(internalCrossGone()), theStoppedState);
-    theProblemState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     thePausedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
     thePausedState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     theFailedState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-    theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     theForwardState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     theForwardState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
     theForwardState->addTransition(the4FAction, SIGNAL(triggered()), the4FState);
     theForwardState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
     theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-    theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     the4FState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     the4FState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
     the4FState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
     the4FState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
     the4FState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
-    the4FState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     // set the start conditions for the icons for each state
     theStoppedState->assignProperty(theForwardAction,"enabled", false);

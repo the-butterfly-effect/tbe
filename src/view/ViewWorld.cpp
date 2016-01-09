@@ -82,7 +82,8 @@ ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent* mouseEvent )
     // players cannot change anything.
     if (isSimRunning)
     {
-        emit slot_signalPause();
+        // we go at least to pause mode now - update the simcontrols
+        emit needPause();
         if (Popup::YesNoQuestion(tr("You cannot make changes now, the simulation is ongoing.\nReset the simulation?"))==true)
             emit needReset();
         return;

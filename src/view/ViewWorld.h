@@ -39,53 +39,54 @@ class ViewWorld : public QGraphicsScene, public b2Draw
     Q_OBJECT
 
 public:
-	explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
+    explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
 
-	~ViewWorld();
+    virtual ~ViewWorld();
 
-	// Public accessor methods
-	//
+    // Public accessor methods
+    //
 
-	const World* getWorldPtr() const
-	{ return theWorldPtr; }
+    const World* getWorldPtr() const
+    { return theWorldPtr; }
 
-	qreal getWidth(void) const;
-	qreal getHeight(void) const;
+    qreal getWidth(void) const;
+    qreal getHeight(void) const;
 
-	/// @returns true if the simulation is not in 'stopped' mode.
-	static bool getIsSimRunning();
+    /// @returns true if the simulation is not in 'stopped' mode.
+    static bool getIsSimRunning();
 
-	// QGraphicsScene events
-	//
+    // QGraphicsScene events
+    //
 
-	virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
+    void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent ) override;
 
-	/// Constant defining the goal FPS (frames per second)
-	/// @note: This does not say that the game achieves this number.
-	///        It however, will mean that the game will *attempt* not to render
-	///        more frames than this per second. No guarantees.
-	static const int MAX_FPS;
+    /// Constant defining the goal FPS (frames per second)
+    /// @note: This does not say that the game achieves this number.
+    ///        It however, will mean that the game will *attempt* not to render
+    ///        more frames than this per second. No guarantees.
+    static const int MAX_FPS;
 
 signals:
-	void needReset();
+    void needReset();
+    void needPause();
 
 public slots:
-        // signals to start/stop/ffwd/reset the game
-        void slot_signal4F();
-        void slot_signalFF();
-        void slot_signalPause();
-        void slot_signalPlay();
-        void slot_signalReset();
+    // signals to start/stop/ffwd/reset the game
+    void slot_signal4F();
+    void slot_signalFF();
+    void slot_signalPause();
+    void slot_signalPlay();
+    void slot_signalReset();
 
-        void on_sizeAdjust(void);
-        void setupBackground(void);
+    void on_sizeAdjust(void);
+    void setupBackground(void);
 
 private slots:
-	/// called whenever a timer tick happens
-	void on_timerTick(void);
+    /// called whenever a timer tick happens
+    void on_timerTick(void);
 
-	/// called whenever the framerate timer tick happens
-	void on_framerateTimerTick(void);
+    /// called whenever the framerate timer tick happens
+    void on_framerateTimerTick(void);
 
 private:
 	// Private attributes

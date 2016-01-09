@@ -89,9 +89,6 @@ signals:
     /// this signal is emitted when our slot onFailed is called
     void internalFailed(void);
 
-    /// this signal is emitted when our slot onReset is called
-    void internalReset(void);
-
 
 public slots:
     /// call this slot if the simulation has failed, the internal
@@ -99,8 +96,11 @@ public slots:
     void onFailed(void)
     { emit internalFailed(); }
 
+    void onPause(void)
+    { emit thePauseAction->trigger(); }
+
     void onReset(void)
-    { emit internalReset(); }
+    { emit theResetAction->trigger(); }
 
     /// hide (and disable) the controls
     void hideYourself();
