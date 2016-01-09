@@ -35,7 +35,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5.6" height="3.1"/>
+        <scenesize width="5.6" height="3.2"/>
         <predefined>
             <object width="2.678" X="1.645" Y="0.052" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.166" X="0.217" Y="0.252" height="0.500" type="ColaMintBottle" angle="0.000"/>
@@ -127,5 +127,14 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+	<hints>
+		<hint X="2.77" Y="2.38" number="1" object="PetanqueBoule"/>
+		<hint X="3.18" Y="2.38" number="2" object="PetanqueBoule"/>
+		<hint X="4.36" Y="2.41" number="3" object="BedOfNails" angle="-2.70"/>
+		<hint X="3.09" Y="2.48" number="4" object="BirchBar"/>
+		<hint X="1.49" Y="0.65" number="5" object="Floor"/>
+		<hint X="3.54" Y="0.39" number="6" object="QuarterArc80" angle="-1.49"/>
+		<!--hint X="4.87" Y="0.80" number="7" object="Floor" angle="-0.62"/-->
+		<!--hint X="1.39" Y="1.08" number="8" object="Floor"/-->
+	</hints>
 </tbe-level>

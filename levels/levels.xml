@@ -31,6 +31,7 @@
    <level> angry/birds2.xml </level>
    <level> draft/dialbforboom.xml </level>
    <!--level> draft/springboard.xml </level-->
+   <level> draft/magic_steel.xml </level>
    <level> draft/spare-the-balloon.xml </level>
    <level> draft/float-balloon-float.xml </level>
    <level> draft/bridge-2.xml </level>
@@ -47,6 +48,7 @@
    <level> draft/butterfly-on-steroids.xml </level>
    <level> elce09/006.xml </level>
    <level> draft/contraption2.xml </level>
+   <level> draft/balloon_blues.xml </level>
    <level> picnic/picnic-2.xml </level>
    <level> draft/loopings2.xml </level>
    <level> elce09/007.xml </level>
