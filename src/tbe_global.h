@@ -25,8 +25,8 @@
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""
 #endif
-#include <QtCore/QtGlobal>
-#include <QtCore/QString>
+#include <QtGlobal>
+#include <QString>
 
 const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;

@@ -20,7 +20,7 @@
 #define ABSTRACTUNDOCOMMAND_H
 
 #include "Position.h"
-#include <QtGui/QUndoCommand>
+#include <QUndoCommand>
 
 // forward declarations
 class ViewObject;

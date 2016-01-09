@@ -1,7 +1,7 @@
 # i18n handling for The Butterfly Effect
 # Note that the actual translations are handled through transifex
 
-find_package(Qt4 REQUIRED)
+find_package(Qt5LinguistTools REQUIRED)
 add_definitions(${QT_DEFINITIONS})
 
 # note that tbe_en.ts is missing here, english is the default.
@@ -19,7 +19,7 @@ set(TSfiles
 	tbe_sv.ts
 	tbe_uk.ts
 )
-qt4_create_translation(QMfiles ${TSfiles})
+qt5_create_translation(QMfiles ${TSfiles})
 
 add_custom_target (translations DEPENDS ${QMfiles})
 add_dependencies(tbe translations)

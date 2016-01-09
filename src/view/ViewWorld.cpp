@@ -26,8 +26,8 @@
 #include "ViewWorld.h"
 #include "World.h"
 
-#include <QtGui/QAction>
-#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QAction>
+#include <QGraphicsSceneMouseEvent>
 
 #include "tbe_global.h"
 

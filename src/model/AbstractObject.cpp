@@ -36,15 +36,15 @@ static b2World* theStaticB2WorldPtr = nullptr;
 
 AbstractObject::AbstractObject()
     : theB2BodyPtr(nullptr),
-      theViewObjectPtr(nullptr),
+	  hasCustomToolTip(false),
+	  theViewObjectPtr(nullptr),
       theChildPivotPointPtr(nullptr),
       theChildTranslationGuidePtr(nullptr),
-      theBounciness(0.5),
+	  theBounciness(0.5),
       theHeight(1.0),
-      theIsMovable(false),
-      theWidth(1.0),
-      theWorldPtr(nullptr),
-      hasCustomToolTip(false)
+	  theIsMovable(false),
+	  theWidth(1.0),
+	  theWorldPtr(nullptr)
 {
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;

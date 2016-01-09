@@ -134,9 +134,9 @@ ELSE(WIN32 OR APPLE)
         SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installer/License")
     endif("${RPM}")
 
-    set(CPACK_RPM_PACKAGE_REQUIRES "libqt4-x11 >= 4.7.0")
+    set(CPACK_RPM_PACKAGE_REQUIRES "libqt5-x11 >= 5.2.0")
     #set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/postinst;${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/prerm;" )
-    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt4-svg (>=4.7), libqtgui4 (>=4.7), libqt4-xml (>=4.7), libqtcore4 (>=4.7)")
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt5-svg (>=5.2), libqtgui5 (>=5.2), libqt5-xml (>=5.2), libqtcore5 (>=5.2)")
     set(CPACK_DEBIAN_PACKAGE_SECTION "games")
 
     set(CPACK_SET_DESTDIR "ON")

@@ -22,8 +22,8 @@
 #ifndef POPUP_H_
 #define POPUP_H_
 
-#include <QtCore/QString>
-#include <QtGui/QMessageBox>
+#include <QString>
+#include <QMessageBox>
 
 #include "tbe_global.h"
 

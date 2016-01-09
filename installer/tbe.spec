@@ -8,7 +8,7 @@ URL:            http://kaa-ching.github.io/tbe
 # https://github.com/kaa-ching/tbe/archive/v%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  qt4-devel
+BuildRequires:  qt5-devel
 BuildRequires:  gettext
 Provides:       thebutterflyeffect = %{version}-%{release}
 

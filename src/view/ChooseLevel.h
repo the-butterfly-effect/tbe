@@ -24,9 +24,9 @@
 
 #include "tbe_paths.h"
 
-#include <QtGui/QDialog>
-#include <QtGui/QTreeWidget>
-#include <QtXml/QXmlDefaultHandler>
+#include <QDialog>
+#include <QTreeWidget>
+#include <QXmlDefaultHandler>
 
 namespace Ui {
 	class ChooseLevel;

@@ -26,9 +26,9 @@
 //#include "BaseJoint.h"
 #include "Background.h"
 
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include <QString>
+#include <QList>
+#include <QSet>
 
 #include <unordered_map>
 

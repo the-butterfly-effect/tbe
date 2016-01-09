@@ -22,8 +22,8 @@
 #include "animateddialog.h"
 #include "AbstractObject.h"
 
-#include <QtGui/QGraphicsColorizeEffect>
-#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QGraphicsColorizeEffect>
+#include <QGraphicsSceneMouseEvent>
 
 // Constructors/Destructors
 //

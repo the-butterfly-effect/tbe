@@ -19,9 +19,9 @@
 #ifndef ANIMATEDDIALOG_H
 #define ANIMATEDDIALOG_H
 
-#include <QtCore/QPropertyAnimation>
-#include <QtCore/QTimer>
-#include <QtGui/QWidget>
+#include <QPropertyAnimation>
+#include <QTimer>
+#include <QWidget>
 #include "resizinggraphicsview.h"
 
 /** This class is the base of all dialogs that appear _within_ the

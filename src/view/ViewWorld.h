@@ -19,9 +19,9 @@
 #ifndef VIEWWORLD_H
 #define VIEWWORLD_H
 
-#include <QtGui/QGraphicsScene>
-#include <QtCore/QTime>
-#include <QtCore/QTimer>
+#include <QGraphicsScene>
+#include <QTime>
+#include <QTimer>
 
 #include "Box2D.h"
 

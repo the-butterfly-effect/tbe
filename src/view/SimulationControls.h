@@ -19,7 +19,12 @@
 #ifndef SIMULATIONCONTROLS_H
 #define SIMULATIONCONTROLS_H
 
-#include <QtGui>
+#include <QLabel>
+#include <QState>
+#include <QMenu>
+#include <QIcon>
+#include <QStateMachine>
+#include <QAction>
 #include "tbe_global.h"
 #include "ViewWorld.h"
 

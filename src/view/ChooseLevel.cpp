@@ -21,10 +21,10 @@
 #include "ui_ChooseLevel.h"
 #include "tbe_paths.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtXml/QXmlSimpleReader>
-#include <QtCore/QSettings>
-#include <QtGui/QTreeWidgetItemIterator>
+#include <QCoreApplication>
+#include <QXmlSimpleReader>
+#include <QSettings>
+#include <QTreeWidgetItemIterator>
 
 static const int  NR_COLUMN=0;
 static const int  TITLE_COLUMN=1;

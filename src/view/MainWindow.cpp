@@ -22,6 +22,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <QListWidgetItem>
+#include <QFileDialog>
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
@@ -54,7 +55,7 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
     if (isMaximized)
         showMaximized();
     if (theIsLevelEditor)
-        on_action_Switch_to_Level_Editor_activated();
+        on_action_Switch_to_Level_Editor_triggered();
 }
 
 
@@ -119,7 +120,7 @@ void MainWindow::loadLevelDelayed()
 }
 
 
-void MainWindow::on_action_About_activated()
+void MainWindow::on_action_About_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively
     Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
@@ -133,7 +134,7 @@ void MainWindow::on_action_About_activated()
 }
 
 
-void MainWindow::on_action_Bug_Reports_activated()
+void MainWindow::on_action_Bug_Reports_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively
     Popup::Info(tr("<b>The Butterfly Effect - Bug Reports</b><br><br>"
@@ -151,7 +152,7 @@ void MainWindow::on_action_Bug_Reports_activated()
 }
 
 
-void MainWindow::on_action_Keyboard_Shortcuts_activated()
+void MainWindow::on_action_Keyboard_Shortcuts_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively, please make sure to
     //: please make sure to match the statements in this dialog with your shortcuts
@@ -169,7 +170,7 @@ void MainWindow::on_action_Keyboard_Shortcuts_activated()
 }
 
 
-void MainWindow::on_action_Libraries_activated()
+void MainWindow::on_action_Libraries_triggered()
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Libraries</b><br><br>"
@@ -182,7 +183,7 @@ void MainWindow::on_action_Libraries_activated()
 }
 
 
-void MainWindow::on_action_New_activated()
+void MainWindow::on_action_New_triggered()
 {
 	if (nullptr!=theLevelPtr)
 	{
@@ -210,7 +211,7 @@ void MainWindow::on_action_New_activated()
 }
 
 
-void MainWindow::on_action_New_Level_Ideas_activated()
+void MainWindow::on_action_New_Level_Ideas_triggered()
 {
 	//: translators: <b> and <br> are statements for bold and newline, respectively
 	Popup::Info(tr("<b>The Butterfly Effect - Create New Levels</b><br><br>"
@@ -232,7 +233,7 @@ void MainWindow::on_action_Open_Level_triggered()
 }
 
 
-void MainWindow::on_action_Open_File_activated()
+void MainWindow::on_action_Open_File_triggered()
 {
     QString myFileName = QFileDialog::getOpenFileName(this,
                                                       tr("Open level"), ".", tr("TBE levels (*.xml)"));
@@ -242,14 +243,14 @@ void MainWindow::on_action_Open_File_activated()
 }
 
 
-void MainWindow::on_action_Quit_activated()
+void MainWindow::on_action_Quit_triggered()
 {
     if (Popup::YesNoQuestion(tr("really?"), this))
         QApplication::exit(0);
 }
 
 
-void MainWindow::on_action_Save_activated()
+void MainWindow::on_action_Save_triggered()
 {
     DEBUG1ENTRY;
 	if (nullptr == theLevelPtr)
@@ -264,11 +265,11 @@ void MainWindow::on_action_Save_activated()
 	if (false==theLevelPtr->save(myFileInfo.absoluteFilePath()))
         Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
     else
-        DEBUG2("File '%s' saved.",myFileInfo.absoluteFilePath().toAscii().constData());
+		DEBUG2("File '%s' saved.",ASCII(myFileInfo.absoluteFilePath()));
 }
 
 
-void MainWindow::on_action_Save_As_activated()
+void MainWindow::on_action_Save_As_triggered()
 {
     DEBUG1ENTRY;
     Q_ASSERT(theLevelPtr);
@@ -290,19 +291,19 @@ void MainWindow::on_action_Save_As_activated()
            ASCII(myFileInfo.absoluteFilePath()),
            myFileInfo.isReadable(), myFileInfo.isWritable());
 
-    on_action_Save_activated();
+    on_action_Save_triggered();
 
 }
 
 
-void MainWindow::on_action_Skip_Level_activated()
+void MainWindow::on_action_Skip_Level_triggered()
 {
     if (Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
         ui->graphicsView->slot_actionSkipLevel();
 }
 
 
-void MainWindow::on_action_Suggestions_activated()
+void MainWindow::on_action_Suggestions_triggered()
 {
 	Popup::Info(tr("<b>The Butterfly Effect - Suggestions</b><br><br>"
 				   "If you have great ideas for new features in the game, "
@@ -314,7 +315,7 @@ void MainWindow::on_action_Suggestions_activated()
 }
 
 
-void MainWindow::on_action_Switch_to_Level_Editor_activated()
+void MainWindow::on_action_Switch_to_Level_Editor_triggered()
 {
     // add "New", "Save" and "Save as" items to File menu
     typedef QList<QAction*> ActionList;

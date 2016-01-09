@@ -55,7 +55,7 @@ HintSerializer::createObjectFromDom(const QDomNode& q)
 	// the nodemap contains all the attributes...
 	QDomNamedNodeMap myNodeMap = q.attributes();
 
-	for (unsigned int i=0; i< myNodeMap.length(); i++)
+	for (int i=0; i< myNodeMap.length(); i++)
 	{
 		QString myAName  = myNodeMap.item(i).nodeName();
 		QString myAValue = myNodeMap.item(i).nodeValue();
