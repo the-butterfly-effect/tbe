@@ -85,14 +85,18 @@ extern void printBacktrace(void);
 extern const char* ASCII(const QString& aQString);
 
 
-/// defined in main.cpp
-extern bool theDisplayFramerate;
-extern bool theDrawDebug;
-extern bool theDrawPolyOutline;
-extern bool theIsCollisionOn;
-extern bool theIsLevelEditor;
-extern bool theIsRunAsRegression;
-extern bool theTBECaching;
+// Global variables, defined in main.cpp
+#include <atomic>
+// technically, all of them need to be atomic because we might be
+// accessing/updating them from different threads.
+// This prevents potential data races.
+extern std::atomic<bool> theDisplayFramerate;
+extern std::atomic<bool> theDrawDebug;
+extern std::atomic<bool> theDrawPolyOutline;
+extern std::atomic<bool> theIsCollisionOn;
+extern std::atomic<bool> theIsLevelEditor;
+extern std::atomic<bool> theIsRunAsRegression;
+extern std::atomic<bool> theTBECaching;
 extern QString theStartFileName;
 
 #endif // TBE_GLOBAL

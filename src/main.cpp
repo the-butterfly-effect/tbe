@@ -37,35 +37,35 @@ int theVerbosity = 2;
 
 // this variable defines whether we are playing or a level editor
 // switching to LevelEditor is possible through the "Edit" menu.
-bool theIsLevelEditor = false;
+std::atomic<bool> theIsLevelEditor(false);
 
 // this variable defines whether in the level editor we are expecting collision
 // detection to work or not - you want this on to align certain things
 // TODO/FIXME: this should go into preferences or so at some point
-bool theIsCollisionOn = false;
+std::atomic<bool> theIsCollisionOn(false);
 
 // this variable defines whether we are showing Box2D debugging info or not
 // switching this option is possible through the theDrawDebugActionPtr in MainWindow
 // NOTE: enabling this variable will also add position information to tooltips
-bool theDrawDebug = false;
+std::atomic<bool> theDrawDebug(false);
 
 // this variable defines whether DrawPolyOutline draws the polygons
 // over the image
 // switching this option is possible through the theDrawOutlineActionPtr in MainWindow
-bool theDrawPolyOutline = false;
+std::atomic<bool> theDrawPolyOutline(false);
 
 // True if application is supposed to only load a level, apply hints (or not) and
 // run it automatically - returning a value depending on success.
 // Used for automated regression tests.
-bool theIsTesting = false;
+std::atomic<bool> theIsTesting(false);
 
 // This variable defines whether TBE displays a frame refresh counter or not
 // TODO/FIXME: this should go into preferences or so at some point
 // (enabled in debug builds/disabled in release builds)
 #ifdef QT_DEBUG
-bool theDisplayFramerate = true;
+std::atomic<bool> theDisplayFramerate(true);
 #else
-bool theDisplayFramerate = false;
+std::atomic<bool> theDisplayFramerate(false);
 #endif
 
 QString theStartFileName;
@@ -128,7 +128,7 @@ static bool setWindowed( QString /*anArgument*/ )
 	return true;
 }
 
-bool theIsRunAsRegression = false;
+std::atomic<bool> theIsRunAsRegression(false);
 static bool runRegression( QString aListOfLevels )
 {
 	theStartFileName += aListOfLevels;
