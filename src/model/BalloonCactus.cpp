@@ -30,6 +30,8 @@
 //    * BedOfNails
 //
 
+constexpr qreal TIMER_NOT_IN_USE=-1.0;
+
 ///---------------------------------------------------------------------------
 ///------------------------ Balloon ------------------------------------------
 ///---------------------------------------------------------------------------
@@ -60,7 +62,7 @@ Balloon::Balloon()
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
 					 "=(0.13,0.015)=(0.11,0.11)=(0.07,0.16)=(0.01,0.18)",
 					 0.27, 0.36, 0.1, 0.7),
-		thePoppingTimeStart(-1.0)
+          thePoppingTimeStart(TIMER_NOT_IN_USE)
 {
 	theState = BALLOON;
 	theB2BodyDefPtr->linearDamping  = 2.1f;
@@ -112,10 +114,10 @@ void Balloon::callbackStepBalloon(qreal, qreal)
 
 void Balloon::callbackStepPopped(qreal, qreal aTotalTime)
 {
-	assert(thePoppingTimeStart>0.0);
-	qreal myDelta = aTotalTime - thePoppingTimeStart - POPPING_TIME;
-	if ( myDelta >= POPPED_TIME)
-		goToState(GONE);
+    assert(thePoppingTimeStart>TIMER_NOT_IN_USE);
+    qreal myDelta = aTotalTime - thePoppingTimeStart - POPPING_TIME;
+    if ( myDelta >= POPPED_TIME)
+        goToState(GONE);
 }
 
 void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
@@ -134,7 +136,7 @@ void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 void Balloon::createPhysicsObject(void)
 {
 	theState = BALLOON;
-	thePoppingTimeStart = -1.0;
+    thePoppingTimeStart = TIMER_NOT_IN_USE;
 	clearShapeList();
 	fillShapeList();
 	PolyObject::createPhysicsObject();
@@ -145,7 +147,7 @@ void Balloon::deletePhysicsObject(void)
 {
 	// nothing much to do here that actually has to do with delete...
 	theState = BALLOON;
-	thePoppingTimeStart = -1.0;
+    thePoppingTimeStart = TIMER_NOT_IN_USE;
 	clearShapeList();
 	fillShapeList();
 
