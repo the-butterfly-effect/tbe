@@ -24,7 +24,7 @@
 #include "ViewObject.h"
 
 #include <QtCore/QDebug>
-#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneMouseEvent>
 #include <QtGui/QPainter>
 
 
@@ -88,7 +88,7 @@ ViewObjectActionDecorator::setViewObject(ViewObjectPtr aParentPtr)
     // we need to have the same size as our parent
     QRectF parSize = aParentPtr->boundingRect();
     QRectF mySize = boundingRect();
-    scale(parSize.width()/mySize.width(),parSize.height()/mySize.height());
+    setTransform(QTransform::fromScale(parSize.width()/mySize.width(),parSize.height()/mySize.height()), true);
     setFlags(ItemIsMovable);
     setVisible(false);
 }
