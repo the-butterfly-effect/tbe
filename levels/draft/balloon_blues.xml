@@ -35,7 +35,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="5.6" height="3"/>
+        <scenesize width="5.6" height="3.1"/>
         <predefined>
             <object width="2.678" X="1.645" Y="0.052" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.166" X="0.217" Y="0.252" height="0.500" type="ColaMintBottle" angle="0.000"/>

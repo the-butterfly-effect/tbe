@@ -148,7 +148,7 @@ void AbstractUndoCommand::setDecoratorPosition(Vector aScenePos)
 
 bool AbstractUndoCommand::setDecoratorStateMouseMove(void)
 {
-    if (isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0)
+    if (isViewObjectColliding()) // && theIsCollisionOn)
     {
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
         return true;

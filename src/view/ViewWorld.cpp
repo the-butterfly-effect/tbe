@@ -146,6 +146,12 @@ void ViewWorld::setupBackground(void)
                                     static_cast<int>(myGS.theB*255),
                                     static_cast<int>(myGS.theAlpha*255)));
     setBackgroundBrush(myBackground);
+
+    // Set a very light 1-pixel pen line on the left and bottom borders.
+    // This will prevent the player to move objects outside the borders.
+    QPen myPen(QColor(255,255,255,1), 0);
+    addLine(0,0, 0, -4*getHeight(), myPen);
+    addLine(0,0, 4*getWidth(), 0, myPen);
 }
 
 void ViewWorld::slot_signalFF()
