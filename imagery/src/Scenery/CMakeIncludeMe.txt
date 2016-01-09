@@ -6,6 +6,7 @@ install(FILES
         ${SRCDIRNAME}/scaffolding-mount.svg
         ${SRCDIRNAME}/scaffolding-vertical-tube.svg
         ${SRCDIRNAME}/SpidersWeb.svg
+        ${SRCDIRNAME}/toychest.svg
         ${SRCDIRNAME}/wood_crate_flat.svg
         ${SRCDIRNAME}/wood_crate_square.svg
         DESTINATION ${TBE_IMAGES_DIR}
