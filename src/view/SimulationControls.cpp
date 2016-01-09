@@ -71,13 +71,6 @@ SimulationControls::~SimulationControls()
 }
 
 
-void SimulationControls::hideYourself()
-{
-    // todo: remove entirely
-    emit hide();
-}
-
-
 void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
 {
     DEBUG1ENTRY;
@@ -244,11 +237,6 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theFailedState->assignProperty(thePauseAction,  "shortcut", myEmptyKey);
 
     emit theSimStateMachine.start();
-}
-
-void SimulationControls::showYourself()
-{
-    emit show();
 }
 
 

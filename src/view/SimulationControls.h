@@ -102,11 +102,6 @@ public slots:
     void onReset(void)
     { emit theResetAction->trigger(); }
 
-    /// hide (and disable) the controls
-    void hideYourself();
-    /// show (and enable) the controls
-    void showYourself();
-
     /// Resizinggraphicsview connects CrossRegisterSingleton to this slot
     /// and it will be called whenever the user has a cross on one of his
     /// decorators.

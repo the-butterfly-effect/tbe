@@ -69,7 +69,6 @@ void ResizingGraphicsView::clearViewWorld(void)
 	// disconnect & delete the Scene//DrawWorld
 	// keep in mind that we have a view that's not happy now!
 	setScene(nullptr);
-	emit theSimControlsPtr->hideYourself();
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
 
@@ -129,7 +128,6 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	fitInView(0, -aScenePtr->getHeight(),
 			  aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(nullptr);
-	emit theSimControlsPtr->showYourself();
 	theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
 	// also set the startstopwatch view
@@ -179,7 +177,6 @@ void ResizingGraphicsView::slot_actionReplay()
 	theWinFailDialogPtr = nullptr;
 	emit theScenePtr->slot_signalReset();
 	emit theSimControlsPtr->onReset();
-	emit theSimControlsPtr->showYourself();
 }
 
 void ResizingGraphicsView::slot_actionSkipLevel()
