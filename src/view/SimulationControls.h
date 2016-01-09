@@ -112,23 +112,21 @@ public slots:
     /// decorators.
     void slotNumberOfCrossesChanged(int aNewNumber);
 
-private slots:
-    void slot_4SpeedForward(void);
-
 private:
     QStateMachine theSimStateMachine;
 
-	QAction* theForwardAction;
+    QAction* theForwardAction;
     QAction* thePlayAction;
     QAction* thePauseAction;
     QAction* theResetAction;
     QAction* the4FAction;   // hack for really fast forward
 
-	QIcon theForwardIcon;
+    QIcon theForwardIcon;
     QIcon thePauseIcon;
     QIcon thePlayIcon;
     QIcon theResetIcon;
 
+    QPixmap the4FStatusPixmap;
     QPixmap theForwardStatusPixmap;
     QPixmap theFailedStatusPixmap;
     QPixmap thePausedStatusPixmap;
@@ -136,13 +134,13 @@ private:
     QPixmap theRunningStatusPixmap;
     QPixmap theStoppedStatusPixmap;
 
+    SimState* the4FState;       // really fast forward
     SimState* theFailedState;   // happens upon death
     SimState* theForwardState;  // fast forward
     SimState* thePausedState;   // paused (but sim is active)
     SimState* theProblemState;  // at least one cross, user can change things
     SimState* theRunningState;  // sim is active and running
     SimState* theStoppedState;  // sim is inactive, user can change things
-    SimState* theHiddenState;   // UI is hidden, user cannot do anything
 
     Ui::SimulationControls *ui;
 };

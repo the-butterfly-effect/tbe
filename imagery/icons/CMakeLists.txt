@@ -31,6 +31,7 @@ install(FILES
 	icons/StatusPause.svg
 	icons/StatusPlay.svg
 	icons/StatusProblem.svg
+	icons/Status4F.svg
 	icons/StatusStop.svg
 
 	DESTINATION ${TBE_IMAGES_DIR}

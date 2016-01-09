@@ -60,6 +60,7 @@ SimulationControls::SimulationControls(QWidget *parent) :
     ImageCache::getPixmap("StatusPause",  QSize(64,64), &thePausedStatusPixmap);
     ImageCache::getPixmap("StatusProblem",QSize(64,64), &theProblemStatusPixmap);
     ImageCache::getPixmap("StatusStop",   QSize(64,64), &theStoppedStatusPixmap);
+    ImageCache::getPixmap("Status4F",     QSize(64,64), &the4FStatusPixmap);
     ui->statusLabel->setPixmap(theStoppedStatusPixmap);
 }
 
@@ -95,24 +96,21 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
             SLOT(slot_signalPlay()));
     connect(theStoppedState, SIGNAL(entered()), aViewWorld,
             SLOT(slot_signalReset()));
-
-    connect(this, SIGNAL(go_quadspeed()), aViewWorld,
+    connect(the4FState, SIGNAL(entered()), aViewWorld,
             SLOT(slot_signal4F()));
 }
 
 
 void SimulationControls::parentResize(const QSize& aSize)
 {
-    // TODO/FIXME: magic numbers here
-    // I bet these have to be different for Windows and MacOSX :-(
 	move(aSize.width()-size().width(),0);
 }
 
 void SimulationControls::setup(QMenu* aMenuPtr)
 {
+    the4FState      = new SimState(&theSimStateMachine, "4F");
     theFailedState  = new SimState(&theSimStateMachine, "Failed");
     theForwardState = new SimState(&theSimStateMachine, "Forward");
-    theHiddenState  = new SimState(&theSimStateMachine, "Hidden");
     thePausedState  = new SimState(&theSimStateMachine, "Paused");
     theProblemState = new SimState(&theSimStateMachine, "Problem");
     theRunningState = new SimState(&theSimStateMachine, "Running");
@@ -143,9 +141,7 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     QKeySequence my4FwdKey(tr("Shift+f"));
     the4FAction = new QAction(nullptr);
     the4FAction->setShortcut(my4FwdKey);
-    //Qt::ApplicationShortcu
     this->addAction(the4FAction);
-    connect(the4FAction, SIGNAL(triggered()), this, SLOT(slot_4SpeedForward()));
 
     aMenuPtr->addAction(thePauseAction);
     aMenuPtr->addAction(thePlayAction);
@@ -163,37 +159,37 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theStoppedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
     theStoppedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
     theStoppedState->addTransition(this, SIGNAL(internalCrossPresent()), theProblemState);
-    theStoppedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
     theRunningState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     theRunningState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
+    theRunningState->addTransition(the4FAction, SIGNAL(triggered()), the4FState);
     theRunningState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-	theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+    theRunningState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
     theRunningState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-    theRunningState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
     theProblemState->addTransition(this, SIGNAL(internalCrossGone()), theStoppedState);
-    theProblemState->addTransition(this, SIGNAL(hide()), theHiddenState);
     theProblemState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
-    thePausedState ->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
-    thePausedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
+    thePausedState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
+    thePausedState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
 	thePausedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-    thePausedState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
-    theHiddenState ->addTransition(this, SIGNAL(show()), theStoppedState);
-    theHiddenState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-
-    theFailedState ->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
-	theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-    theFailedState->addTransition(this, SIGNAL(hide()), theHiddenState);
+    theFailedState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
+    theFailedState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     theForwardState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
     theForwardState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
-	theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+    theForwardState->addTransition(the4FAction, SIGNAL(triggered()), the4FState);
+    theForwardState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
+    theForwardState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
     theForwardState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
-    theForwardState->addTransition(this, SIGNAL(hide()), theHiddenState);
 
+    the4FState->addTransition(thePauseAction, SIGNAL(triggered()), thePausedState);
+    the4FState->addTransition(thePlayAction, SIGNAL(triggered()), theRunningState);
+    the4FState->addTransition(theForwardAction, SIGNAL(triggered()), theForwardState);
+    the4FState->addTransition(theResetAction, SIGNAL(triggered()), theStoppedState);
+    the4FState->addTransition(this, SIGNAL(internalFailed()), theFailedState);
+    the4FState->addTransition(this, SIGNAL(internalReset()), theStoppedState);
 
     // set the start conditions for the icons for each state
     theStoppedState->assignProperty(theForwardAction,"enabled", false);
@@ -233,10 +229,18 @@ void SimulationControls::setup(QMenu* aMenuPtr)
     theForwardState->assignProperty(theForwardAction,"enabled", false);
     theForwardState->assignProperty(thePauseAction,  "enabled", true);
     theForwardState->assignProperty(thePlayAction,   "enabled", true);
-    theForwardState->assignProperty(theResetAction,  "enabled", false);
+    theForwardState->assignProperty(theResetAction,  "enabled", true);
     theForwardState->assignProperty(myLabelPtr,      "pixmap",  theForwardStatusPixmap);
     theForwardState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
     theForwardState->assignProperty(thePauseAction,  "shortcut", mySpaceKey);
+    // entering really fast forward state
+    the4FState->assignProperty(theForwardAction,"enabled", true);
+    the4FState->assignProperty(thePauseAction,  "enabled", true);
+    the4FState->assignProperty(thePlayAction,   "enabled", true);
+    the4FState->assignProperty(theResetAction,  "enabled", true);
+    the4FState->assignProperty(myLabelPtr,      "pixmap",  the4FStatusPixmap);
+    the4FState->assignProperty(thePlayAction,   "shortcut", myEmptyKey);
+    the4FState->assignProperty(thePauseAction,  "shortcut", mySpaceKey);
     // entering failed state
     theFailedState->assignProperty(theForwardAction,"enabled", false);
     theFailedState->assignProperty(thePauseAction,  "enabled", false);
@@ -261,15 +265,4 @@ void SimulationControls::slotNumberOfCrossesChanged(int aNewNumber)
         emit internalCrossGone();
     else
         emit internalCrossPresent();
-}
-
-void SimulationControls::slot_4SpeedForward(void)
-{
-    // if in play mode, fake going to fast forward
-    // but secretly emit a second signal to go a lot faster
-    if (theRunningState->isActive==true)
-    {
-        emit theForwardAction->trigger();
-        emit go_quadspeed();
-    }
 }
