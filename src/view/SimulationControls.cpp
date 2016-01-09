@@ -21,6 +21,7 @@
 #include "ui_SimulationControls.h"
 #include "ImageCache.h"
 #include "MainWindow.h"
+#include "resizinggraphicsview.h"
 
 #include <cstdio>
 
@@ -44,12 +45,8 @@ SimulationControls::SimulationControls(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//  QPixmap myPixmap;
-//	ImageCache::getPixmap("SimulationControlsLabelFrame", size(), &myPixmap);
-//	ui->statusFrame->(myPixmap);
-
-	const QSize myIconSize(16,16);
-	theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
+    const QSize myIconSize(16,16);
+    theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
     thePauseIcon  = ImageCache::getQIcon("ActionMenuPause", myIconSize);
     thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", myIconSize);
     theResetIcon  = ImageCache::getQIcon("ActionUndo", myIconSize);
@@ -71,7 +68,7 @@ SimulationControls::~SimulationControls()
 }
 
 
-void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
+void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld, ResizingGraphicsView* aRGVPtr)
 {
     DEBUG1ENTRY;
 
@@ -91,6 +88,8 @@ void SimulationControls::hookSignalsUp(ViewWorld* aViewWorld)
             SLOT(slot_signalReset()));
     connect(the4FState, SIGNAL(entered()), aViewWorld,
             SLOT(slot_signal4F()));
+    connect(theResetAction, SIGNAL(triggered()), aRGVPtr,
+            SLOT(slot_clearWinFailDialogPtr()));
 }
 
 

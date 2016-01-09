@@ -77,7 +77,7 @@ public:
 
     void parentResize(const QSize& aSize);
 
-	void hookSignalsUp(ViewWorld* aViewWorld);
+    void hookSignalsUp(ViewWorld* aViewWorld, ResizingGraphicsView *aRGVPtr);
 
 signals:
     /// emitted to go to really fast forward
@@ -89,6 +89,7 @@ signals:
     /// this signal is emitted when our slot onFailed is called
     void internalFailed(void);
 
+    void reset(void);
 
 public slots:
     /// call this slot if the simulation has failed, the internal

@@ -78,6 +78,7 @@ private slots:
 
 public slots:
     void slot_actionSkipLevel();
+    void slot_clearWinFailDialogPtr();
     void slot_showEditObjectDialog(AbstractObjectPtr anAOPtr);
 	void slot_editObjectDialog_destroyed();
 	void slot_showGameResourcesDialog();

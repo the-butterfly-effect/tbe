@@ -72,9 +72,8 @@ void ResizingGraphicsView::clearViewWorld(void)
 	QMatrix myMatrix;
 	setMatrix(myMatrix);
 
-	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = nullptr;
-	delete theScenePtr;
+    slot_clearWinFailDialogPtr();
+    delete theScenePtr;
 	theScenePtr = nullptr;
 }
 
@@ -131,7 +130,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
 
 	// also set the startstopwatch view
-	theSimControlsPtr->hookSignalsUp(aScenePtr);
+    theSimControlsPtr->hookSignalsUp(aScenePtr, this);
 
     connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
     connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
@@ -151,17 +150,15 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 void ResizingGraphicsView::slot_actionChooseLevel()
 {
 	DEBUG3ENTRY;
-	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = nullptr;
-	emit theMainWindowPtr->on_action_Open_Level_triggered();
+    slot_clearWinFailDialogPtr();
+    emit theMainWindowPtr->on_action_Open_Level_triggered();
 }
 
 
 void ResizingGraphicsView::slot_actionNextLevel()
 {
 	DEBUG3ENTRY;
-	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = nullptr;
+    slot_clearWinFailDialogPtr();
 	QString myNextLevelName = ChooseLevel::getNextLevelName();
 	if (myNextLevelName.isEmpty()==false)
 		theMainWindowPtr->loadLevel(myNextLevelName);
@@ -170,13 +167,18 @@ void ResizingGraphicsView::slot_actionNextLevel()
 }
 
 
+void ResizingGraphicsView::slot_clearWinFailDialogPtr()
+{
+    delete theWinFailDialogPtr;
+    theWinFailDialogPtr = nullptr;
+}
+
+
 void ResizingGraphicsView::slot_actionReplay()
 {
 	DEBUG3ENTRY;
-	delete theWinFailDialogPtr;
-	theWinFailDialogPtr = nullptr;
-	emit theScenePtr->slot_signalReset();
-	emit theSimControlsPtr->onReset();
+    slot_clearWinFailDialogPtr();
+    emit theSimControlsPtr->onReset();
 }
 
 void ResizingGraphicsView::slot_actionSkipLevel()
