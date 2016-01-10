@@ -62,15 +62,18 @@
             <object width="0.160" X="3.458" Y="0.943" height="0.400" type="DominoBlue" angle="0.000">
                 <property key="ImageName">milk</property>
                 <property key="Mass">1.5</property>
+		<tooltip>Got Milk?</tooltip>
             </object>
             <object width="0.160" X="3.858" Y="0.943" height="0.400" type="DominoBlue" angle="0.000">
                 <property key="ImageName">milk</property>
                 <property key="Mass">1.5</property>
+		<tooltip>Got Milk?</tooltip>
             </object>
             <object width="0.160" X="4.258" Y="0.943" height="0.400" type="PolyObject" angle="0.000">
                 <property key="ImageName">milk</property>
                 <property key="Mass">2.0</property>
                 <property key="Polygons">(0.04,-0.2)=(0.08,-0.15)=(0.08,0.2)=(-0.08,0.2)=(-0.08,-0.15)=(-0.04,-0.2)</property>
+		<tooltip>Got Milk?</tooltip>
             </object>
             <object width="1.590" X="4.015" Y="1.254" height="2.542" type="Scenery" angle="0.000">
                 <property key="ImageName">picnic-1-background</property>
