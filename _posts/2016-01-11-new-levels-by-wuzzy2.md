@@ -18,3 +18,8 @@ The third level is considerably harder. It is called "Balloon Blues". There are 
 There are two more levels that we're going to keep as a secret. (Not that it is a real secret - the sources are on github after all). Both are nicely complex levels that will take some time to figure out. To be honest - I still haven't found the solution to the last level!
 
 Again, thanks to Wuzzy2 for contributing these great levels!
+
+In addition to these five levels, Wuzzy has also filed about three dozen issues by now. Most of them were real issues, varying from wrong object descriptions to complex bugs.
+I spent significant time over the last week to satisfy all his remarks. But TBE will be a better game because of Wuzzy2!
+
+Wuzzy for president!
