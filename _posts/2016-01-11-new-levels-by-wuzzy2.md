@@ -10,7 +10,7 @@ The first level we are going to show is "in the attic", a relatively straightfor
 ![New Level "In the Attic"](/images/2016-01-11-in_the_attic.png)
 
 The second level is "Construction Yard", where you have seven steel I-Beams to pop two balloons. I'm sure that everyone will immediately see the circular saw blade in the top-left... That has something to do with the solution.
-![New Level "Construction Yard"](/images/2016-01-11-constructin-yard.png)
+![New Level "Construction Yard"](/images/2016-01-11-construction-yard.png)
 
 The third level is considerably harder. It is called "Balloon Blues". There are loads of objects in the toolbox that you can use to pop all the balloons. However, it takes quite a while to figure out all mechanisms to pop all balloons!
 ![New Level "Balloon Blues"](/images/2016-01-11-balloon_blues.png)
