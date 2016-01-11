@@ -19,7 +19,7 @@ There are two more levels that we're going to keep as a secret. (Not that it is 
 
 Again, thanks to Wuzzy2 for contributing these great levels!
 
-In addition to these five levels, Wuzzy has also filed about three dozen issues by now. Most of them were real issues, varying from wrong object descriptions to complex bugs.
+In addition to these five levels, Wuzzy has also filed about two dozen issues by now. Most of them were real issues, varying from wrong object descriptions to complex bugs.
 I spent significant time over the last week to satisfy all his remarks. But TBE will be a better game because of Wuzzy2!
 
 Wuzzy for president!
