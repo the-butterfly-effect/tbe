@@ -41,6 +41,10 @@ public:
 
     bool init();
 
+    const char* getText(const char* aStringToTranslate);
+
+    bool setLanguage(const QString &myLocale);
+
 private:
     /// private constructor: we're a singleton after all
     Translator();
@@ -59,5 +63,6 @@ private:
 }; // end-of-namespace Singleton
 
 #define TheTranslator Singleton::Translator::me()
+#define TheGetText(A) Singleton::Translator::me().getText(A)
 
 #endif // TRANSLATOR_H

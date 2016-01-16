@@ -25,7 +25,6 @@
 #include "tbe_global.h"
 #include "test.h"
 #include "Translator.h"
-#include <libintl.h>
 #include <clocale>
 #include <iostream>
 
@@ -320,17 +319,13 @@ int main(int argc, char *argv[])
 	Test myTest;
 
 	// The big question: how many of the below switch to dutch i18n?
-	printf("lala: %s\n", gettext("A ball on a bar. Turn it around. Topple the pin."));
-	printf("bindtextdomain=%s\n", bindtextdomain("tbe_levels", get_current_dir_name()));
-	textdomain( "tbe_levels");
-	printf("lala: %s\n", gettext("A ball on a bar. Turn it around. Topple the pin."));
+    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
 	printf("setlocale=%s\n", setlocale(LC_ALL, "POSIX"));
-	printf("lala: %s\n", gettext("A ball on a bar. Turn it around. Topple the pin."));
+    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
 	printf("setlocale=%s\n", setlocale(LC_MESSAGES, "nl_NL.utf8"));
-	printf("lala: %s\n", gettext("A ball on a bar. Turn it around. Topple the pin."));
+    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
 	printf("setlocale=%s\n", setlocale(LC_ALL, ""));
-	putenv(strdup("LANGUAGE=nl_NL.utf8"));
-	printf("lala: %s\n", gettext("A ball on a bar. Turn it around. Topple the pin."));
+    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
 
 	return 0;
 }

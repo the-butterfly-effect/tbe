@@ -19,8 +19,12 @@
 #include "tbe_global.h"
 #include "Translator.h"
 
-#include "QLibraryInfo"
-#include "QCoreApplication"
+#include <QLibraryInfo>
+#include <QCoreApplication>
+
+#include <libintl.h>
+#include <clocale>
+#include <unistd.h>
 
 Singleton::Translator::Translator()
 {
@@ -28,21 +32,26 @@ Singleton::Translator::Translator()
 }
 
 
-Singleton::Translator &Singleton::Translator::me()
+const char *Singleton::Translator::getText(const char *aStringToTranslate)
 {
-    // This is enough for a singleton in C++11 and beyond
-    // (per C++11 standard, paragraph 6.7 [stmt.dcl] line 4)
-    static Translator mySingleton;
-    return mySingleton;
+    return gettext(aStringToTranslate);
 }
+
 
 bool Singleton::Translator::init()
 {
+    DEBUG1ENTRY;
     //** Strings in source code or XML are UTF-8, make sure Qt understands
     theTextCodecPtr = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(theTextCodecPtr);
 
-    QString myLocale = QLocale::system().name();
+    // retrieve the locale and set it
+    return setLanguage(QLocale::system().name());
+}
+
+bool Singleton::Translator::setLanguage(const QString& myLocale)
+{
+    DEBUG1ENTRY;
     DEBUG3("Loading translator for locale '%s'", ASCII(myLocale));
 
     // for strings from TBE
@@ -72,6 +81,23 @@ bool Singleton::Translator::init()
     theQtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QCoreApplication::instance()->installTranslator(&theQtTranslator);
 
+    // for gettext:
+    bindtextdomain("tbe_levels", get_current_dir_name());
+    textdomain( "tbe_levels");
+
+    // because putenv 'eats' the memory, strdup myBuffer before putenv'ing it
+    char myBuffer[255];
+    snprintf(myBuffer, 254, "LANGUAGE=%s", ASCII(myLocale));
+    putenv(strdup(myBuffer));
 
     return true;
+}
+
+
+Singleton::Translator &Singleton::Translator::me()
+{
+    // This is enough for a singleton in C++11 and beyond
+    // (per C++11 standard, paragraph 6.7 [stmt.dcl] line 4)
+    static Translator mySingleton;
+    return mySingleton;
 }
