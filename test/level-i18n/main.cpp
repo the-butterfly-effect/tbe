@@ -318,14 +318,17 @@ int main(int argc, char *argv[])
 
 	Test myTest;
 
-	// The big question: how many of the below switch to dutch i18n?
     printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-	printf("setlocale=%s\n", setlocale(LC_ALL, "POSIX"));
+    TheTranslator.setLanguage("en_US");
     printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-	printf("setlocale=%s\n", setlocale(LC_MESSAGES, "nl_NL.utf8"));
+    TheTranslator.setLanguage("C");
     printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-	printf("setlocale=%s\n", setlocale(LC_ALL, ""));
+    TheTranslator.setLanguage("de_DE");
     printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+    TheTranslator.setLanguage("nl_NL");
+    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+
+    myTest.print();
 
 	return 0;
 }

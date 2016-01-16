@@ -36,14 +36,32 @@ namespace Singleton
 class Translator
 {
 public:
-    /// Singleton: call this member to
+    /// Singleton: call this member to get a reference to the real instance.
     static Translator& me();
 
-    bool init();
+    //------------------------------
+    /// Retrieves a list of possible language settings
+    //QStringList getLanguageList();
 
+    /// Use to get the current translation for a level XML string.
+    /// @param aStringToTranslate string to translate
+    /// @returns translated string according to the currently set locale if possible
     const char* getText(const char* aStringToTranslate);
 
-    bool setLanguage(const QString &myLocale);
+    /// Use to get the current translation for a level XML string.
+    /// @param aStringToTranslate string to translate
+    /// @returns translated string according to the currently set locale if possible
+    const QString getText(const QString& aStringToTranslate);
+
+    /// Called at application startup to initialise the locales.
+    bool init();
+
+    /// Can be called at any time to switch the language.
+    /// (is called automatically by init())
+    /// @param aLocale string of the format like "nl_BE",
+    ///                 where the lower case indicates the primary language and
+    ///                 the uppercase denotes the local variant.
+    bool setLanguage(const QString& aLocale);
 
 private:
     /// private constructor: we're a singleton after all

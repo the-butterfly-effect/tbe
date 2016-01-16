@@ -37,6 +37,11 @@ const char *Singleton::Translator::getText(const char *aStringToTranslate)
     return gettext(aStringToTranslate);
 }
 
+const QString Singleton::Translator::getText(const QString &aStringToTranslate)
+{
+    return gettext(ASCII(aStringToTranslate));
+}
+
 
 bool Singleton::Translator::init()
 {
@@ -49,13 +54,13 @@ bool Singleton::Translator::init()
     return setLanguage(QLocale::system().name());
 }
 
-bool Singleton::Translator::setLanguage(const QString& myLocale)
+bool Singleton::Translator::setLanguage(const QString& aLocale)
 {
     DEBUG1ENTRY;
-    DEBUG3("Loading translator for locale '%s'", ASCII(myLocale));
+    DEBUG3("Loading translator for locale '%s'", ASCII(aLocale));
 
     // for strings from TBE
-    QString myLocation = "tbe_" + myLocale;
+    QString myLocation = "tbe_" + aLocale;
     DEBUG3("Attemp1: load from %s", ASCII(myLocation));
     if (theTbeQtTranslator.load(myLocation))
     {
@@ -63,7 +68,7 @@ bool Singleton::Translator::setLanguage(const QString& myLocale)
     }
     else
     {
-        myLocation = "./tbe_" + myLocale;
+        myLocation = "./tbe_" + aLocale;
         DEBUG3("Attemp2: load from %s", ASCII(myLocation));
         if (theTbeQtTranslator.load(myLocation))
         {
@@ -71,14 +76,14 @@ bool Singleton::Translator::setLanguage(const QString& myLocale)
         }
         else
         {
-            DEBUG2("PROBLEM: no translator for %s loaded", ASCII(myLocale));
+            DEBUG2("PROBLEM: no translator for %s loaded", ASCII(aLocale));
         }
     }
     if (theTbeQtTranslator.isEmpty())
         DEBUG1("PROBLEM: translator is empty");
     QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
     // for strings from Qt itself
-    theQtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QCoreApplication::instance()->installTranslator(&theQtTranslator);
 
     // for gettext:
@@ -87,7 +92,7 @@ bool Singleton::Translator::setLanguage(const QString& myLocale)
 
     // because putenv 'eats' the memory, strdup myBuffer before putenv'ing it
     char myBuffer[255];
-    snprintf(myBuffer, 254, "LANGUAGE=%s", ASCII(myLocale));
+    snprintf(myBuffer, 254, "LANGUAGE=%s", ASCII(aLocale));
     putenv(strdup(myBuffer));
 
     return true;

@@ -7,4 +7,6 @@ class Test : public QObject
 public:
 	Test();
 	virtual ~Test() {}
+
+    void print();
 };
