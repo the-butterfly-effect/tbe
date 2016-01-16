@@ -41,7 +41,7 @@ public:
 
     //------------------------------
     /// Retrieves a list of possible language settings
-    //QStringList getLanguageList();
+    QStringList getLanguageList();
 
     /// Use to get the current translation for a level XML string.
     /// @param aStringToTranslate string to translate
@@ -61,7 +61,8 @@ public:
     /// @param aLocale string of the format like "nl_BE",
     ///                 where the lower case indicates the primary language and
     ///                 the uppercase denotes the local variant.
-    bool setLanguage(const QString& aLocale);
+    ///                 (longer string will be cut off)
+    bool setLanguage(QString aLocale);
 
 private:
     /// private constructor: we're a singleton after all
@@ -76,6 +77,9 @@ private:
     QTranslator theTbeQtTranslator;
     /// QTranslator for the Qt internal strings
     QTranslator theQtTranslator;
+
+    /// Path to directory that contains find the TBE translations.
+    QString theBaseTbeQtLocation;
 };
 
 }; // end-of-namespace Singleton

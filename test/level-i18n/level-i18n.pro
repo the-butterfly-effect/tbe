@@ -11,7 +11,7 @@ QT       -= gui
 QMAKE_CXXFLAGS += --std=gnu++0x
 
 TARGET = level-i18n
-CONFIG   += console #debug
+CONFIG   += console debug
 CONFIG   -= app_bundle
 
 TEMPLATE = app

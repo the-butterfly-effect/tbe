@@ -20,6 +20,7 @@
 #include "Translator.h"
 
 #include <QLibraryInfo>
+#include <QDir>
 #include <QCoreApplication>
 
 #include <libintl.h>
@@ -29,6 +30,32 @@
 Singleton::Translator::Translator()
 {
     // nothing to do?
+}
+
+
+QStringList Singleton::Translator::getLanguageList()
+{
+    QDir myDir = QDir(theBaseTbeQtLocation);
+    QStringList myRawList = myDir.entryList(QStringList("tbe_*.qm"), QDir::Readable|QDir::Files);
+
+    // for each of the entries found, strip off the filename stuff
+    QStringList myFinalList;
+    for(auto& i : myRawList)
+    {
+        char my5char[6];
+        int c=0;
+        for(; c<5; c++)
+        {
+            if ('.' == i.at(c+4))
+                break;
+            my5char[c]=i.at(c+4).toLatin1();
+        }
+        my5char[c]='\0';
+        QLocale myLocale (my5char);
+        QString myLocaleName = QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(myLocale.language()));
+        myFinalList.append(myLocaleName);
+    }
+    return myFinalList;
 }
 
 
@@ -51,15 +78,20 @@ bool Singleton::Translator::init()
     QTextCodec::setCodecForLocale(theTextCodecPtr);
 
     // retrieve the locale and set it
-    return setLanguage(QLocale::system().name());
+    QString myCurrentLocaleName = QLocale::system().name();
+    DEBUG1("going to set locale '%s'", ASCII(myCurrentLocaleName));
+    return setLanguage(myCurrentLocaleName);
 }
 
-bool Singleton::Translator::setLanguage(const QString& aLocale)
+bool Singleton::Translator::setLanguage(QString aLocale)
 {
     DEBUG1ENTRY;
+    // **** Only use the part up to the first space
+    aLocale = aLocale.section(' ', 0);
     DEBUG3("Loading translator for locale '%s'", ASCII(aLocale));
 
-    // for strings from TBE
+    // *** For strings from TBE
+    theBaseTbeQtLocation = "";
     QString myLocation = "tbe_" + aLocale;
     DEBUG3("Attemp1: load from %s", ASCII(myLocation));
     if (theTbeQtTranslator.load(myLocation))
@@ -68,6 +100,7 @@ bool Singleton::Translator::setLanguage(const QString& aLocale)
     }
     else
     {
+        theBaseTbeQtLocation = "./";
         myLocation = "./tbe_" + aLocale;
         DEBUG3("Attemp2: load from %s", ASCII(myLocation));
         if (theTbeQtTranslator.load(myLocation))
@@ -80,16 +113,25 @@ bool Singleton::Translator::setLanguage(const QString& aLocale)
         }
     }
     if (theTbeQtTranslator.isEmpty())
-        DEBUG1("PROBLEM: translator is empty");
-    QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
-    // for strings from Qt itself
-    theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    QCoreApplication::instance()->installTranslator(&theQtTranslator);
+    {
+        DEBUG1("PROBLEM: translator for TBE is empty");
+    }
+    else
+        QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
 
-    // for gettext:
+    // *** For strings from Qt itself
+    printf("qt locales: %s\n", ASCII(QLibraryInfo::location(QLibraryInfo::TranslationsPath)));
+    theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    if (theQtTranslator.isEmpty())
+    {
+        DEBUG1("PROBLEM: translator for Qt itself is empty");
+    }
+    else
+        QCoreApplication::instance()->installTranslator(&theQtTranslator);
+
+    // *** For strings from our XML Levels (gettext):
     bindtextdomain("tbe_levels", get_current_dir_name());
     textdomain( "tbe_levels");
-
     // because putenv 'eats' the memory, strdup myBuffer before putenv'ing it
     char myBuffer[255];
     snprintf(myBuffer, 254, "LANGUAGE=%s", ASCII(aLocale));

@@ -318,19 +318,26 @@ int main(int argc, char *argv[])
 
 	Test myTest;
 
-    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-    TheTranslator.setLanguage("en_US");
-    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-    TheTranslator.setLanguage("C");
-    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-    TheTranslator.setLanguage("de_DE");
-    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-    TheTranslator.setLanguage("nl_NL");
-    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+//    TheTranslator.setLanguage("en_US");
+//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+//    TheTranslator.setLanguage("C");
+//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+//    TheTranslator.setLanguage("de_DE");
+//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
+//    TheTranslator.setLanguage("nl_NL");
+//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
 
+    TheTranslator.setLanguage(("nl_NL"));
     myTest.print();
 
-	return 0;
+    QStringList myAvailables = TheTranslator.getLanguageList();
+    for (auto&i : myAvailables)
+        printf("available: '%s'\n", ASCII(i));
+
+    TheTranslator.setLanguage(myAvailables[8]);
+    myTest.print();
+    return 0;
 }
 
 
