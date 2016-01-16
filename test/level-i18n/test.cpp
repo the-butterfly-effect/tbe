@@ -1,4 +1,4 @@
-
+//#include "Translator.h"
 #include "tbe_global.h"
 #include "test.h"
 

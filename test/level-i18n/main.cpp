@@ -20,15 +20,11 @@
 /// See explanation for this project at the end of main()
 ///
 
-#include <QtCore/QSettings>
-#include <QtCore/QTranslator>
-#include <QtCore/QCoreApplication>
-#include <QLibraryInfo>
-#include <QtCore/QTextCodec>
-#include <QtCore/QStringList>
-#include <QtCore/QLocale>
+#include <QSettings>
+#include <QCoreApplication>
 #include "tbe_global.h"
 #include "test.h"
+#include "Translator.h"
 #include <libintl.h>
 #include <clocale>
 #include <iostream>
@@ -177,11 +173,6 @@ int main(int argc, char *argv[])
 	//** init Qt (graphics toolkit) - www.qtsoftware.com
 	QCoreApplication app(argc, argv);
 
-	//** Strings in source code or XML are UTF-8, make sure Qt understands
-	QTextCodec *myCodec = QTextCodec::codecForName("UTF-8");
-	QTextCodec::setCodecForCStrings(myCodec);
-	QTextCodec::setCodecForLocale(myCodec);
-
 	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
@@ -263,37 +254,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		QString myLocale = QLocale::system().name();
-		DEBUG3("Loading translator for locale '%s'", ASCII(myLocale));
-		// for strings from TBE
-		static QTranslator myTranslator; // must be static to survive scoping
-		QString myLocation = "tbe_" + myLocale;
-		DEBUG3("Attemp1: load from %s", ASCII(myLocation));
-		if (myTranslator.load(myLocation))
-		{
-			DEBUG3("   ... success");
-		}
-		else
-		{
-			myLocation = "./tbe_" + myLocale;
-			DEBUG3("Attemp2: load from %s", ASCII(myLocation));
-			if (myTranslator.load(myLocation))
-			{
-				DEBUG3("   ... success");
-			}
-			else
-			{
-				DEBUG2("PROBLEM: no translator for %s loaded", ASCII(myLocale));
-			}
-		}
-		if (myTranslator.isEmpty())
-			DEBUG1("PROBLEM: translator is empty");
-		app.installTranslator(&myTranslator);
-		// for strings from Qt itself
-		static QTranslator qtTranslator;
-		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-		app.installTranslator(&qtTranslator);
-	}
+        TheTranslator.init();
+    }
 
 	DEBUG3("SUMMARY:");
 	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
@@ -377,6 +339,6 @@ int main(int argc, char *argv[])
 const char* ASCII(const QString& aQString)
 {
 		static char myString[256];
-		strncpy(myString, aQString.toAscii().constData(), 255);
+        strncpy(myString, aQString.toLatin1().constData(), 255);
 		return myString;
 }

@@ -18,10 +18,12 @@ TEMPLATE = app
 
 QT   += xml
 
-SOURCES += main.cpp test.cpp
+SOURCES += main.cpp test.cpp \
+    Translator.cpp
 
 HEADERS += \
 	tbe_global.h \
-	test.h
+	test.h \
+    Translator.h
 
  TRANSLATIONS = tbe_nl.ts
