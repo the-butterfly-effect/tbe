@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/tbe_global.h" line="22"/>
         <source>The Butterfly Effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Het vlindereffect</translation>
     </message>
 </context>
 <context>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../src/test.cpp" line="13"/>
         <source>Hello, world: it&apos;s time to rock!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hallo, wereld: Het is tijd om eens flink uit te pakken!</translation>
     </message>
 </context>
 </TS>
