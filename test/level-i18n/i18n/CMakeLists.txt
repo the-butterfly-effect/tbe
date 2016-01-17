@@ -17,3 +17,13 @@ add_dependencies(tbe translations)
 install(FILES ${QMfiles}
 	DESTINATION ${TBE_I18N_DIR}
 )
+
+# handling the pot file with all level translations
+find_package(Gettext)
+#GETTEXT_PROCESS_POT_FILE(tbe_levels.pot INSTALL_DESTINATION ${TBE_I18N_DIR}
+#	LANGUAGES de nl)
+
+file(GLOB _po_files *.po)
+message(STATUS "my po files are in" ${_po_files})
+GETTEXT_PROCESS_PO_FILES(nl ALL INSTALL_DESTINATION ${TBE_I18N_DIR} ${_po_files})
+GETTEXT_PROCESS_PO_FILES(nl ALL INSTALL_DESTINATION ${TBE_I18N_DIR} ${_po_files})
