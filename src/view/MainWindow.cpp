@@ -123,14 +123,14 @@ void MainWindow::loadLevelDelayed()
 void MainWindow::on_action_About_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively
-    Popup::Info(tr("<b>The Butterfly Effect</b><br><br>"
+    Popup::Info(tr("<b>The Butterfly Effect</b><br>version: %2<br>"
                    "An open source game that uses realistic physics"
                    " simulations to combine lots of simple mechanical elements"
                    " to achieve a simple goal in the most complex way possible.<br><br>"
-                   "(C) 2009,2010,2011,2012,2013,2015 Peter van Ginneken and Klaas van Gend<br>"
-                   "Licensed under GPL version 2 - <i>only</i>.<br><br>"
+                   "(C) 2009,2010,2011,2012,2013,2015,2016 Klaas van Gend and many others<br><br>"
+                   "Code licensed under GPL version 2 - <i>only</i>.<br>Levels and graphics may have different open/free licenses.<br><br>"
 				   "See <a href=\"http://%1/\">http://%1/</a> for more info on this project.")
-                .arg(QCoreApplication::instance()->organizationDomain()), this);
+                .arg(QCoreApplication::instance()->organizationDomain()).arg(APPRELEASE), this);
 }
 
 

@@ -20,7 +20,9 @@
 #define TBE_GLOBAL
 
 #define APPNAME QObject::tr("The Butterfly Effect")
-#define APPRELEASE "MilestoneA"
+// note: the below CPACK_PACKAGE* variables are passed by cmake,
+// see http://bast.fr/talks/cmake/kung-fu/#24
+#define APPRELEASE "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}"
 /* for your special versioning needs, normally empty */
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""

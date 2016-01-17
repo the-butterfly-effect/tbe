@@ -1,12 +1,10 @@
 SET(main_SOURCES
     backtrace.cpp
     main.cpp
-    tbe_global.h
-    tbe_paths.h
 )
 SET (main_HEADERS
-    tbe_global.h
-    tbe_paths.h
+    tbe_global.h.in
+    tbe_paths.h.in
 )
 
 SUBDIRS(Box2D)
@@ -22,6 +20,7 @@ include_directories(
     model
     view
     ${CMAKE_SOURCE_DIR}
+    ${PROJECT_BINARY_DIR}
     ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
     .
