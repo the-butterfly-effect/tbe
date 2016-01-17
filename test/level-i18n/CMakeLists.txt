@@ -5,14 +5,14 @@ project (thebutterflyeffect)
 #
 # Linux variants only.
 
-set (CMAKE_INSTALL_PREFIX "/usr")
-set(TBE_BIN_DIR     ${CMAKE_INSTALL_PREFIX}/games)
-set(TBE_LEVELS_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/levels)
-set(TBE_IMAGES_DIR  ${CMAKE_INSTALL_PREFIX}/share/games/tbe/images)
-set(TBE_I18N_DIR    ${CMAKE_INSTALL_PREFIX}/share/games/tbe/i18n)
-set(TBE_DOC_DIR     ${CMAKE_INSTALL_PREFIX}/share/doc/tbe)
-set(TBE_DESKTOP_DIR ${CMAKE_INSTALL_PREFIX}/share/applications)
-set(TBE_ICON_DIR    ${CMAKE_INSTALL_PREFIX}/share/icons)
+set (CMAKE_INSTALL_PREFIX "usr")
+set(TBE_BIN_DIR     games)
+set(TBE_LEVELS_DIR  share/games/tbe/levels)
+set(TBE_IMAGES_DIR  share/games/tbe/images)
+set(TBE_I18N_DIR    share/games/tbe/i18n)
+set(TBE_DOC_DIR     share/doc/tbe)
+set(TBE_DESKTOP_DIR share/applications)
+set(TBE_ICON_DIR    share/icons)
 set(TBE_TARGET_PREFIX "../")
 
 add_definitions(-DTBE_BIN_DIR="${TBE_TARGET_PREFIX}/${TBE_BIN_DIR}"
@@ -53,8 +53,6 @@ set(CPACK_STRIP_FILES ON)
 ###
 SET(CPACK_PACKAGE_CONTACT "info@the-butterfly-effect.org")
 SET(CPACK_STRIP_FILES "tbe")
-install(DIRECTORY installer/icons/hicolor DESTINATION ${TBE_ICON_DIR} )
-install(FILES installer/tbe.desktop DESTINATION ${TBE_DESKTOP_DIR} )
 
 # TGZ and SH packagers
 # for UNIX (including Linux), no path included
