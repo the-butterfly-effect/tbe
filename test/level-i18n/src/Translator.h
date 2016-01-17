@@ -27,7 +27,8 @@
 namespace Singleton
 {
 
-/// Singleton class to govern handing out translated strings
+/// Singleton class to govern handing out translated strings and switching
+/// of languages.
 ///
 /// In addition to handling the setting up of Qt's i18n mechanism,
 /// this class also handles translating of strings from the level XML
@@ -58,24 +59,43 @@ public:
 
     /// Can be called at any time to switch the language.
     /// (is called automatically by init())
-    /// @param aLocale string of the format like "nl_BE",
+    /// @param aLocale String of the format like "nl_BE",
     ///                 where the lower case indicates the primary language and
     ///                 the uppercase denotes the local variant.
     ///                 (longer string will be cut off)
-    bool setLanguage(QString aLocale);
+    /// @returns True when it was possible to load a translator for aLocale.
+    bool setLanguage(const QString& aLocale);
 
 private:
-    /// private constructor: we're a singleton after all
+    /// Private constructor: we're a singleton after all.
     Translator();
 
-    // no need for virtual destructor, probably no need for destructor at all
+    // No need for virtual destructor, probably no need for destructor at all.
     //~Translator();
 
+    /// No copy constructor.
+    Translator(const Translator&) = delete;
+    /// No assignment operator.
+    const Translator& operator= (const Translator&) = delete;
 
+    /// Attempts to load a <aPath>/tbe_<aLocale>.qm file.
+    /// When successful, also sets variable theBaseTbeQtLocation.
+    /// @param aPath
+    /// @param aLocale
+    /// @returns true when successful, false when not.
+    bool attemptTbeQtTranslatorLoad(const QString& aPath,
+                                    const QString& aLocale);
+
+    /// Set the language for gettext messages to aLocale.
+    void setLanguageGettext(const QString &aLocale);
+    /// Set the language for the Qt library messages to aLocale.
+    bool setLanguageQtIself(const QString& aLocale);
+
+    /// QTextCodec pointer for handling all input (set to UTF-8 by init()).
     QTextCodec* theTextCodecPtr;
-    /// QTranslator for all TBE C++ code strings
+    /// QTranslator for all TBE C++ code strings.
     QTranslator theTbeQtTranslator;
-    /// QTranslator for the Qt internal strings
+    /// QTranslator for the Qt internal strings.
     QTranslator theQtTranslator;
 
     /// Path to directory that contains find the TBE translations.
@@ -84,7 +104,9 @@ private:
 
 }; // end-of-namespace Singleton
 
+/// Convenience function macro to call members of TheTranslator singleton
 #define TheTranslator Singleton::Translator::me()
+/// Convenience function macro to call TheTranslator::getText()
 #define TheGetText(A) Singleton::Translator::me().getText(A)
 
 #endif // TRANSLATOR_H

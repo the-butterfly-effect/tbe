@@ -267,76 +267,41 @@ int main(int argc, char *argv[])
 		DEBUG3("  Start file name is: '%s'", ASCII(theStartFileName));
     }
 
-	// This is the output of the application on my laptop running Ubuntu 14.10:
-	// (when run with various environment options):
+    //------------------------------------------------------------------------
+    //
+    //
+    //    klaas@x230:~/Programming/tbe-github/test/level-i18n/build$ usr/games/tbe --v 1
+    //    **** t=778: entry bool Singleton::Translator::init()
+    //    **** t=778: going to set locale 'en_US'
+    //    **** t=778: NOTE: translator for TBE is empty
+    //    ** no language set: In the Attic
+    //    myMsg: 'Hello, world: it's time to rock!'
+    //    ** hardcoded to nl_NL: Op zolder
+    //    myMsg: 'Hallo, wereld: Het is tijd om eens flink uit te pakken!'
+    //    ** When iterating over all available languages:
+    //      available: 'de_DE = German'
+    //      chosen from available: Auf irgendwo
+    //    myMsg: 'Gutenmorgen Welt, wach mal auf!'
+    //      available: 'nl_NL = Dutch'
+    //      chosen from available: Op zolder
+    //    myMsg: 'Hallo, wereld: Het is tijd om eens flink uit te pakken!'
 
-	// klaas@x230:~/Programming/tbe-github/test/level-i18n$ ./level-i18n
-	// myMsg: 'Hello, world: it's time to rock!'
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// bindtextdomain=/home/klaas/Programming/tbe-github/test/level-i18n
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=C
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=nl_NL.utf8
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=en_US.UTF-8
-	// lala: Een bal op een lat. Draai de lat. Kegel de kegel.
+    printf("** no language set: %s\n", TheGetText("In the Attic"));
+    Test myTest;
 
-	// klaas@x230:~/Programming/tbe-github/test/level-i18n$ LANGUAGE="nl_NL.utf8" ./level-i18n
-	// myMsg: 'Hello, world: it's time to rock!'
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// bindtextdomain=/home/klaas/Programming/tbe-github/test/level-i18n
-	// lala: Een bal op een lat. Draai de lat. Kegel de kegel.
-	// setlocale=C
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=nl_NL.utf8
-	// lala: Een bal op een lat. Draai de lat. Kegel de kegel.
-	// setlocale=en_US.UTF-8
-	// lala: Een bal op een lat. Draai de lat. Kegel de kegel.
-
-	// klaas@x230:~/Programming/tbe-github/test/level-i18n$ LANG="nl_NL.utf8" ./level-i18n
-	// myMsg: 'Hallo wereld! Het is tijd voor actie!'
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// bindtextdomain=/home/klaas/Programming/tbe-github/test/level-i18n
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=C
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=nl_NL.utf8
-	// lala: A ball on a bar. Turn it around. Topple the pin.
-	// setlocale=LC_CTYPE=nl_NL.utf8;LC_NUMERIC=en_US.UTF-8;LC_TIME=en_US.UTF-8;LC_COLLATE=nl_NL.utf8;LC_MONETARY=en_US.UTF-8;LC_MESSAGES=nl_NL.utf8;LC_PAPER=en_US.UTF-8;LC_NAME=en_US.UTF-8;LC_ADDRESS=en_US.UTF-8;LC_TELEPHONE=en_US.UTF-8;LC_MEASUREMENT=en_US.UTF-8;LC_IDENTIFICATION=en_US.UTF-8
-	// lala: Een bal op een lat. Draai de lat. Kegel de kegel.
-
-	// My conclusions:
-	// 1) it appears that setlocale() doesn't work as advertised, no clue why
-	// 2) only the putenv() actively helps to set i18n here
-	// 3) the i18n mechanisms of Qt and gettext are entirely separate,
-	//    Qt uses LANG="", gettext uses LANGUAGE=""...
-	// 4) if we stick to LANG="", I can use setlocale and some string tricks
-	//    to get the the string I need to putenv() and everyone is happy.
-	//
-	// Now only need to check behavior on a different Linux, Windows and MacOSX
-
-	Test myTest;
-
-//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-//    TheTranslator.setLanguage("en_US");
-//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-//    TheTranslator.setLanguage("C");
-//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-//    TheTranslator.setLanguage("de_DE");
-//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-//    TheTranslator.setLanguage("nl_NL");
-//    printf("lala: %s\n", TheGetText("A ball on a bar. Turn it around. Topple the pin."));
-
-    TheTranslator.setLanguage(("nl_NL"));
+	TheTranslator.setLanguage(("nl_NL"));
+    printf("** hardcoded to nl_NL: %s\n", TheGetText("In the Attic"));
     myTest.print();
 
+    printf("** When iterating over all available languages:\n");
     QStringList myAvailables = TheTranslator.getLanguageList();
     for (auto&i : myAvailables)
-        printf("available: '%s'\n", ASCII(i));
-
-    TheTranslator.setLanguage(myAvailables[8]);
-    myTest.print();
+    {
+        printf("  available: '%s'\n", ASCII(i));
+        TheTranslator.setLanguage(i);
+        printf("  chosen from available: %s\n", TheGetText("In the Attic"));
+        myTest.print();
+    }
     return 0;
 }
 

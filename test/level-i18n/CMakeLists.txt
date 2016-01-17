@@ -13,7 +13,7 @@ set(TBE_I18N_DIR    share/games/tbe/i18n)
 set(TBE_DOC_DIR     share/doc/tbe)
 set(TBE_DESKTOP_DIR share/applications)
 set(TBE_ICON_DIR    share/icons)
-set(TBE_TARGET_PREFIX "../")
+#set(TBE_TARGET_PREFIX "../")
 
 add_definitions(-DTBE_BIN_DIR="${TBE_TARGET_PREFIX}/${TBE_BIN_DIR}"
                 -DTBE_LEVELS_DIR="${TBE_TARGET_PREFIX}/${TBE_LEVELS_DIR}"
