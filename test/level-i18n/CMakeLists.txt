@@ -15,11 +15,10 @@ set(TBE_DESKTOP_DIR share/applications)
 set(TBE_ICON_DIR    share/icons)
 #set(TBE_TARGET_PREFIX "../")
 
-add_definitions(-DTBE_BIN_DIR="${TBE_TARGET_PREFIX}/${TBE_BIN_DIR}"
-                -DTBE_LEVELS_DIR="${TBE_TARGET_PREFIX}/${TBE_LEVELS_DIR}"
-                -DTBE_IMAGES_DIR="${TBE_TARGET_PREFIX}/${TBE_IMAGES_DIR}"
-                -DTBE_I18N_DIR="${TBE_TARGET_PREFIX}/${TBE_I18N_DIR}"
-                -DTBE_DOC_DIR="${TBE_TARGET_PREFIX}/${TBE_DOC_DIR}")
+configure_file(
+    ${PROJECT_SOURCE_DIR}/src/tbe_paths.h.in
+    ${PROJECT_BINARY_DIR}/tbe_paths.h
+    )
 
 # for internal Qt-related debugging sessions
 #set(QT_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../qt-4.x-src-verify/install")
@@ -42,6 +41,11 @@ SET(CPACK_PACKAGE_VERSION_MAJOR "0")
 SET(CPACK_PACKAGE_VERSION_MINOR "9.3")
 SET(CPACK_PACKAGE_VERSION_PATCH "1")
 SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+
+configure_file(
+    ${PROJECT_SOURCE_DIR}/src/tbe_global.h.in
+    ${PROJECT_BINARY_DIR}/tbe_global.h
+    )
 
 set(CPACK_SOURCE_GENERATOR TGZ)
 set(CPACK_SOURCE_IGNORE_FILES /.git/.gitignore/;*~;/build/;usr)
