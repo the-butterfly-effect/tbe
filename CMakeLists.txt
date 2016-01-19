@@ -15,7 +15,7 @@ if (WIN32 OR APPLE)
     set(TBE_DOC_DIR     doc)
     set(TBE_DESKTOP_DIR applications)
     set(TBE_ICON_DIR    icons)
-    set(TBE_TARGET_PREFIX ${CMAKE_INSTALL_PREFIX})
+    set(TBE_TARGET_PREFIX "./")
 else (WIN32 OR APPLE)
     # i.e. Linux variants
     set (CMAKE_INSTALL_PREFIX "/usr")
@@ -96,15 +96,16 @@ IF(WIN32 OR APPLE)
 
         # Supply the DLL files on Windows - no static linking :-(
         # Technically speaking, this is a hack. But who cares?
-        set(QTMYLIB "C:/Qt/4.8.6/bin/")
+        set(QTMYLIB "C:/Qt/5.5/mingw492_32/bin/")
         INSTALL(FILES
             ${QTMYLIB}/libgcc_s_dw2-1.dll
             ${QTMYLIB}/libstdc++-6.dll
             ${QTMYLIB}/libwinpthread-1.dll
-            ${QTMYLIB}/QtCore4.dll
-            ${QTMYLIB}/QtGui4.dll
-            ${QTMYLIB}/QtSvg4.dll
-            ${QTMYLIB}/QtXml4.dll
+            ${QTMYLIB}/Qt5Core.dll
+            ${QTMYLIB}/Qt5Widgets.dll
+            ${QTMYLIB}/Qt5Gui.dll
+            ${QTMYLIB}/Qt5Svg.dll
+            ${QTMYLIB}/Qt5Xml.dll
             DESTINATION ${TBE_BIN_DIR}
         )
     endif(WIN32)
