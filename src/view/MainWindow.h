@@ -19,9 +19,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include <QAction>
 #include <QListWidget>
+#include <QMainWindow>
 #include <QTimer>
 
 namespace Ui {
@@ -31,13 +31,15 @@ class MainWindow;
 class Level;
 class QGraphicsRectWidget;
 class QGraphicsScene;
+class QToolbar;
 class RegressionTest;
 class ViewWorld;
 class World;
 
 
-/** local class, specifically meant to have menu items that can report
-  * their name to our MainWindow
+/** Local class, specifically meant to have menu items in the "Insert" menu
+  * (i.e. our game's objects) that can report their object name to our
+  * MainWindow.
   */
 class InsertMenuQAction : public QAction
 {
@@ -116,17 +118,18 @@ private slots:
 public slots:
     void on_action_Open_Level_triggered();
 private slots:
-	void on_action_Save_triggered();
-	void on_action_Save_As_triggered();
+    void on_action_Reload_triggered();
+    void on_action_Save_triggered();
+    void on_action_Save_As_triggered();
     void on_action_Switch_to_Level_Editor_triggered();
 
     // menu Insert (Level Creator)
     void on_insert(const QString &anObjectName);
 
     // menu Editors (Level Creator)
-	void on_goalEditorAction_clicked();
-	void on_levelPropertiesEditorAction_clicked();
-	void on_objectEditorAction_clicked();
+    void on_goalEditorAction_clicked();
+    void on_levelPropertiesEditorAction_clicked();
+    void on_objectEditorAction_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -136,7 +139,9 @@ private:
 
     World* theWorldPtr;
 
-	friend class RegressionTest;
+    QToolBar* theLevelEditorToolbarPtr;
+
+    friend class RegressionTest;
 };
 
 #endif // MAINWINDOW_H

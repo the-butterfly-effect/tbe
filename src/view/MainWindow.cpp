@@ -23,10 +23,12 @@
 #include <QtGui>
 #include <QListWidgetItem>
 #include <QFileDialog>
+#include <QToolBar>
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
 #include "EditLevelProperties.h"
+#include "EditObjectDialog.h"
 #include "GoalEditor.h"
 #include "Hint.h"
 #include "ImageCache.h"
@@ -250,6 +252,22 @@ void MainWindow::on_action_Quit_triggered()
 }
 
 
+void MainWindow::on_action_Reload_triggered()
+{
+    // This option ("reload from disk") is only available in the level editor.
+    if (!UndoSingleton::isClean())
+        if (!Popup::YesNoQuestion(tr("You have unsaved changes,\n"
+                                     "really reload Level from disk?"), this))
+            return;
+    if (theLevelPtr->getLevelFileName().isEmpty())
+    {
+        Popup::Warning(tr("Level has no name - could not be reloaded. Please use \"Save As...\""));
+        return;
+    }
+    loadLevel(theLevelPtr->getLevelFileName());
+}
+
+
 void MainWindow::on_action_Save_triggered()
 {
     DEBUG1ENTRY;
@@ -266,6 +284,7 @@ void MainWindow::on_action_Save_triggered()
         Popup::Warning(tr("File '%1' could not be saved.").arg(myFileInfo.absoluteFilePath()));
     else
 		DEBUG2("File '%s' saved.",ASCII(myFileInfo.absoluteFilePath()));
+    UndoSingleton::setClean();
 }
 
 
@@ -292,7 +311,6 @@ void MainWindow::on_action_Save_As_triggered()
            myFileInfo.isReadable(), myFileInfo.isWritable());
 
     on_action_Save_triggered();
-
 }
 
 
@@ -317,6 +335,8 @@ void MainWindow::on_action_Suggestions_triggered()
 
 void MainWindow::on_action_Switch_to_Level_Editor_triggered()
 {
+    theLevelEditorToolbarPtr = addToolBar(tr("LevelEditor"));
+
     // add "New", "Save" and "Save as" items to File menu
     typedef QList<QAction*> ActionList;
     ActionList myList = ui->menuFile->actions();
@@ -333,6 +353,12 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
             i->setEnabled(false);
         }
     }
+    theLevelEditorToolbarPtr->addAction(ui->action_Open_File);
+    theLevelEditorToolbarPtr->addAction(ui->action_Save);
+    theLevelEditorToolbarPtr->addAction(ui->action_Save_As);
+    theLevelEditorToolbarPtr->addSeparator();
+    theLevelEditorToolbarPtr->addActions(ui->menuEdit->actions());
+    theLevelEditorToolbarPtr->addSeparator();
 
     // add new drop-down menu "Insert" (and put it before the "Controls" menu)
     QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), nullptr);
@@ -355,20 +381,24 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
     QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
+    myGoalActionPtr->setIcon(QIcon::fromTheme("bookmarks"));
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
     QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), nullptr);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
+    myLevPropActionPtr->setIcon(QIcon::fromTheme("tools-wizard"));
     QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), nullptr);
     connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myEditObjectActionPtr);
+    theLevelEditorToolbarPtr->addActions(myEditorsMenuPtr->actions());
+
     // Enable level editor mode
     theIsLevelEditor = true;
     ui->action_Switch_to_Level_Editor->setEnabled(false);
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
-	ui->action_Open_File->setEnabled(true);
-	ui->action_Open_File->setVisible(true);
+    ui->action_Open_File->setEnabled(true);
+    ui->action_Open_File->setVisible(true);
 }
 
 void MainWindow::on_goalEditorAction_clicked()
@@ -464,9 +494,11 @@ void MainWindow::setupView()
     // setup UndoGroup's QActions and add them to Edit menu
     // note that this doesn't enable them yet, our ViewWorld should handle that...
     QAction* myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
+    myUndoActionPtr->setIcon(QIcon::fromTheme("edit-undo"));
     myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
     ui->menuEdit->addAction(myUndoActionPtr);
     QAction* myRedoActionPtr = UndoSingleton::createRedoAction(this, tr("&Redo"));
+    myRedoActionPtr->setIcon(QIcon::fromTheme("edit-redo"));
     QList<QKeySequence> redoShortcuts;
     redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
     myRedoActionPtr->setShortcuts(redoShortcuts);
