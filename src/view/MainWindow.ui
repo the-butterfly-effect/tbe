@@ -48,7 +48,7 @@ QToolButton:pressed {
       <item>
        <widget class="QListWidget" name="listWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -104,7 +104,7 @@ QToolButton:pressed {
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="theInfoEjectLayout">
         <item>
          <widget class="QToolButton" name="toolButton_infoLevel">
           <property name="minimumSize">
@@ -214,6 +214,9 @@ QToolButton:pressed {
    <addaction name="menu_Help"/>
   </widget>
   <action name="action_Open_Level">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>&amp;Open Level...</string>
    </property>
@@ -238,6 +241,9 @@ QToolButton:pressed {
    </property>
   </action>
   <action name="action_Quit">
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
    <property name="text">
     <string>&amp;Quit</string>
    </property>
@@ -253,6 +259,9 @@ QToolButton:pressed {
    </property>
   </action>
   <action name="action_About">
+   <property name="icon">
+    <iconset theme="help-about"/>
+   </property>
    <property name="text">
     <string>&amp;About...</string>
    </property>
