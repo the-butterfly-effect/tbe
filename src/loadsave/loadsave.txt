@@ -12,6 +12,7 @@ SET(loadsave_SOURCES
     loadsave/LocalString.cpp  
     loadsave/ObjectFactory.cpp 
     loadsave/ToolboxGroupSerializer.cpp
+    loadsave/Translator.cpp
 )
 
 SET(loadsave_HEADERS
@@ -24,6 +25,7 @@ SET(loadsave_HEADERS
     loadsave/LocalString.h  
     loadsave/ObjectFactory.h 
     loadsave/ToolboxGroupSerializer.h
+    loadsave/Translator.h
 )
 
 

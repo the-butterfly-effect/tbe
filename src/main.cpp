@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011  Klaas van Gend
+ * This file copyright (C) 2009,2011,2016  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,15 +16,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "MainWindow.h"
-#include <QSettings>
-#include <QTranslator>
-#include <QApplication>
-#include <QSplashScreen>
-#include <QLibraryInfo>
-#include <QTextCodec>
 #include "tbe_global.h"
 #include "tbe_paths.h"
+#include "MainWindow.h"
+#include "Translator.h"
+#include <QSettings>
+#include <QApplication>
+#include <QSplashScreen>
 
 // the verbosity for all logging - by default defined at 4
 // accepted values are 0 (no logging) - 6 (most logging)
@@ -178,12 +176,6 @@ int main(int argc, char *argv[])
 	mySplash.show();
 	app.processEvents();
 
-	//** Strings in source code or XML are UTF-8, make sure Qt understands
-	QTextCodec *myCodec = QTextCodec::codecForName("UTF-8");
-// ###TODO FIGURE OUT IF NEEDED:
-//	QTextCodec::setCodecForCStrings(myCodec);
-	QTextCodec::setCodecForLocale(myCodec);
-
 	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
@@ -268,38 +260,7 @@ int main(int argc, char *argv[])
 		DEBUG1("Regression: not loading any translators!");
 	}
 	else
-	{
-		QString myLocale = QLocale::system().name();
-		DEBUG3("Loading translator for locale '%s'", ASCII(myLocale));
-		// for strings from TBE
-		static QTranslator myTranslator; // must be static to survive scoping
-		QString myLocation = I18N_DIRECTORY + "/tbe_" + myLocale;
-		DEBUG3("Attemp1: load from %s", ASCII(myLocation));
-		if (myTranslator.load(myLocation))
-		{
-			DEBUG3("   ... success");
-		}
-		else
-		{
-			myLocation = "../build/i18n/tbe_" + myLocale;
-			DEBUG3("Attemp2: load from %s", ASCII(myLocation));
-			if (myTranslator.load(myLocation))
-			{
-				DEBUG3("   ... success");
-			}
-			else
-			{
-				DEBUG2("PROBLEM: no translator for %s loaded", ASCII(myLocale));
-			}
-		}
-		if (myTranslator.isEmpty())
-			DEBUG1("PROBLEM: translator is empty");
-		app.installTranslator(&myTranslator);
-		// for strings from Qt itself
-		static QTranslator qtTranslator;
-		qtTranslator.load("qt_" + myLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-		app.installTranslator(&qtTranslator);
-	}
+        TheTranslator.init();
 
 	DEBUG3("SUMMARY:");
 	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
@@ -327,7 +288,7 @@ int main(int argc, char *argv[])
 
 const char* ASCII(const QString& aQString)
 {
-		static char myString[256];
-		strncpy(myString, aQString.toLatin1().constData(), 255);
-		return myString;
+    static char myString[256];
+    strncpy(myString, aQString.toLatin1().constData(), 255);
+    return myString;
 }

@@ -3,7 +3,6 @@ project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
 
-SET(TBE_INCLUDE_LIBINTL "")
 if (WIN32 OR APPLE)
     # Win and Mac both have a rather flat directory layout.
     # At least on Win, the CMAKE_INSTALL_PREFIX is the location inside
@@ -16,7 +15,6 @@ if (WIN32 OR APPLE)
         set(TBE_DESKTOP_DIR applications)
         set(TBE_ICON_DIR    icons)
         set(TBE_TARGET_PREFIX "./")
-        SET(TBE_INCLUDE_LIBINTL "#include \"libintl/libintl.h\"")
     endif (WIN32)
     if (APPLE)
         set(TBE_TOPLEVEL_DIR tbe.app/Contents)
