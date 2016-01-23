@@ -24,7 +24,7 @@
 #include <QDir>
 #include <QCoreApplication>
 
-#include <libintl.h>
+#include "../../src/libintl/libintl.h"
 #include <clocale>
 #include <unistd.h>
 

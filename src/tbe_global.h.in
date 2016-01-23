@@ -30,6 +30,10 @@
 #include <QtGlobal>
 #include <QString>
 
+// When compiling on Win32, there will be a line below telling the compiler
+// to include libintl from our tree.
+${TBE_INCLUDE_LIBINTL}
+
 const float PI    = 3.14159265;
 const float SQRT2 = 1.41421356;
 

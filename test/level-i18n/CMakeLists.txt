@@ -70,5 +70,24 @@ set(CPACK_DEBIAN_PACKAGE_SECTION "games")
 
 set(CPACK_SET_DESTDIR "ON")
 
+if(WIN32)
+    # Supply the DLL files on Windows - no static linking :-(
+    # Technically speaking, this is a hack. But who cares?
+    set(QTMYLIB "C:/Qt/5.5/mingw492_32/bin/")
+    INSTALL(FILES
+        ${QTMYLIB}/libgcc_s_dw2-1.dll
+        ${QTMYLIB}/libstdc++-6.dll
+        ${QTMYLIB}/libwinpthread-1.dll
+        ${QTMYLIB}/Qt5Core.dll
+        ${QTMYLIB}/Qt5Widgets.dll
+        ${QTMYLIB}/Qt5Gui.dll
+        ${QTMYLIB}/Qt5Svg.dll
+        ${QTMYLIB}/Qt5Xml.dll
+        ${CMAKE_SOURCE_DIR}/../../src/libintl/libiconv2.dll
+        ${CMAKE_SOURCE_DIR}/../../src/libintl/libintl3.dll
+        DESTINATION ${TBE_BIN_DIR}
+    )
+ENDIF(WIN32)
+
 SET(CPACK_PACKAGE_EXECUTABLES "tbe" "tbe.exe")
 INCLUDE(CPack)

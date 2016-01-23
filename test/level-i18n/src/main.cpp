@@ -302,6 +302,8 @@ int main(int argc, char *argv[])
         printf("  chosen from available: %s\n", TheGetText("In the Attic"));
         myTest.print();
     }
+
+    sleep(10);
     return 0;
 }
 
