@@ -36,8 +36,9 @@ UndoSingleton::UndoSingleton(void)
 
 void UndoSingleton::clear()
 {
-	me()->theUndoStack.clear();
+    me()->theUndoStack.clear();
 }
+
 
 QAction* UndoSingleton::createRedoAction (QObject* parent,const QString& prefix)
 {
@@ -88,6 +89,13 @@ UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
 		delete theCurrentlyActiveUndoCommand;
 	theCurrentlyActiveUndoCommand = myNewCommand;
 	return myNewCommand;
+}
+
+
+bool UndoSingleton::isClean()
+{
+    DEBUG3ENTRY;
+    return me()->theUndoStack.isClean();
 }
 
 

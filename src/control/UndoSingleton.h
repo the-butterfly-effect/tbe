@@ -45,6 +45,10 @@ public:
 	/// this removes all UndoObjects from the stack
 	static void clear();
 
+    /// @returns true if the undo stack is in a clean state, i.e. there are
+    ///          no changes since the last save.
+    static bool isClean();
+
 	/// Push the UndoCommand on to the UndoStack and delist it from the
 	/// currently active undo commands.
 	static void push(AbstractUndoCommand* anAUCPtr);
