@@ -131,6 +131,14 @@ private slots:
     void on_levelPropertiesEditorAction_clicked();
     void on_objectEditorAction_clicked();
 
+    // menu Edit (Level Creator)
+    void on_action_Clone_triggered();
+    void on_action_DrawDebug_toggled(bool aNewState);
+//    void on_action_CollisionOff_toggled(bool aNewState);
+//    void on_action_CollisionOn_toggled(bool aNewState);
+    void on_action_CollisionOff_triggered();
+    void on_action_CollisionOn_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -140,6 +148,9 @@ private:
     World* theWorldPtr;
 
     QToolBar* theLevelEditorToolbarPtr;
+
+    QAction* theCollisionOffActionPtr;
+    QAction* theCollisionOnActionPtr;
 
     friend class RegressionTest;
 };

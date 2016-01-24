@@ -154,6 +154,34 @@ void MainWindow::on_action_Bug_Reports_triggered()
 }
 
 
+void MainWindow::on_action_Clone_triggered()
+{
+
+}
+
+
+void MainWindow::on_action_CollisionOff_triggered()
+{
+    theIsCollisionOn = false;
+    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
+    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
+}
+
+
+void MainWindow::on_action_CollisionOn_triggered()
+{
+    theIsCollisionOn = true;
+    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
+    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
+}
+
+
+void MainWindow::on_action_DrawDebug_toggled(bool aNewState)
+{
+    theDrawDebug = aNewState;
+}
+
+
 void MainWindow::on_action_Keyboard_Shortcuts_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively, please make sure to
@@ -357,6 +385,30 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     theLevelEditorToolbarPtr->addAction(ui->action_Save);
     theLevelEditorToolbarPtr->addAction(ui->action_Save_As);
     theLevelEditorToolbarPtr->addSeparator();
+
+    // add new items to top menu "Edit"
+    QAction* myCloneActionPtr = new QAction(tr("&Clone object"), nullptr);
+    QIcon myTmpIcon  = ImageCache::getQIcon("ActionClone", QSize(64,64));
+    myCloneActionPtr->setIcon(myTmpIcon);
+    myCloneActionPtr->setEnabled(false);
+    ui->menuEdit->addSeparator();
+    ui->menuEdit->addAction(myCloneActionPtr);
+    connect (myCloneActionPtr, SIGNAL(triggered()), this, SLOT(on_action_Clone_triggered()));
+    theCollisionOffActionPtr = new QAction(tr("&Collision OK"), nullptr);
+    myTmpIcon  = ImageCache::getQIcon("ActionCollisionOK", QSize(64,64));
+    theCollisionOffActionPtr->setIcon(myTmpIcon);
+    theCollisionOffActionPtr->setCheckable(true);
+    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
+    ui->menuEdit->addSeparator();
+    ui->menuEdit->addAction(theCollisionOffActionPtr);
+    connect (theCollisionOffActionPtr, SIGNAL(triggered()), this, SLOT(on_action_CollisionOff_triggered()));
+    theCollisionOnActionPtr = new QAction(tr("&Prevent Collision"), nullptr);
+    myTmpIcon  = ImageCache::getQIcon("ActionCollisionWrong", QSize(64,64));
+    theCollisionOnActionPtr->setIcon(myTmpIcon);
+    theCollisionOnActionPtr->setCheckable(true);
+    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
+    ui->menuEdit->addAction(theCollisionOnActionPtr);
+    connect (theCollisionOnActionPtr, SIGNAL(triggered()), this, SLOT(on_action_CollisionOn_triggered()));
     theLevelEditorToolbarPtr->addActions(ui->menuEdit->actions());
     theLevelEditorToolbarPtr->addSeparator();
 
@@ -377,21 +429,41 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     myOFListPtr = nullptr;
 
     // add new top menu "Editors"
-    QMenu* myEditorsMenuPtr = new QMenu(tr("&Editors"), nullptr);
-    ui->menuBar->insertMenu(ui->menuControls->menuAction(), myEditorsMenuPtr);
+    QMenu* myEditorsMenuPtr = new QMenu(tr("E&ditors"), nullptr);
+    ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
     QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
     myGoalActionPtr->setIcon(QIcon::fromTheme("bookmarks"));
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
-    QAction* myLevPropActionPtr = new QAction(tr("&Level Properties..."), nullptr);
+    QAction* myLevPropActionPtr = new QAction(tr("&Size && Background Editor..."), nullptr);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
     myLevPropActionPtr->setIcon(QIcon::fromTheme("tools-wizard"));
+    QAction* myLevNameActionPtr = new QAction(tr("&Name && Description Editor..."), nullptr);
+    myLevNameActionPtr->setEnabled(false);
+    myLevNameActionPtr->setIcon(QIcon::fromTheme("accessories-text-editor"));
+    connect (myLevNameActionPtr, SIGNAL(triggered()), this, SLOT(on_levelNameEditorAction_clicked()));
+    myEditorsMenuPtr->addAction(myLevNameActionPtr);
+    myEditorsMenuPtr->addSeparator();
     QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), nullptr);
     connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myEditObjectActionPtr);
     theLevelEditorToolbarPtr->addActions(myEditorsMenuPtr->actions());
+    theLevelEditorToolbarPtr->addSeparator();
+
+    // add new top menu "View"
+    QMenu* myViewMenuPtr = new QMenu(tr("&View"), nullptr);
+    ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myViewMenuPtr);
+    QAction* myDrawDebugActionPtr = new QAction(tr("&DrawDebug"), nullptr);
+    myTmpIcon  = ImageCache::getQIcon("ActionDrawDebug", QSize(64,64));
+    myDrawDebugActionPtr->setCheckable(true);
+    myDrawDebugActionPtr->setChecked(theDrawDebug);
+    myDrawDebugActionPtr->setIcon(myTmpIcon);
+    connect (myDrawDebugActionPtr, SIGNAL(toggled(bool)), this, SLOT(on_action_DrawDebug_toggled(bool)));
+    myViewMenuPtr->addAction(myDrawDebugActionPtr);
+    theLevelEditorToolbarPtr->addActions(myViewMenuPtr->actions());
+    theLevelEditorToolbarPtr->addSeparator();
 
     // Enable level editor mode
     theIsLevelEditor = true;
@@ -399,6 +471,11 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
     ui->action_Open_File->setEnabled(true);
     ui->action_Open_File->setVisible(true);
+
+    // More toolbuttons:
+    // toolbutton for cloning an object
+    // add radiotoolbutton to set whether the level developer is allowed to move things on top of each other
+    // add button to enable 'debug drawing'
 }
 
 void MainWindow::on_goalEditorAction_clicked()

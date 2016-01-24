@@ -1,6 +1,8 @@
 # this file is meant to be included by the parent CMakeFiles.txt
 install(FILES
 	icons/ActionClone.svg
+ 	icons/ActionCollisionOK.svg
+	icons/ActionCollisionWrong.svg
 	icons/ActionDelete.svg
 	icons/ActionMenuEject.svg
 	icons/ActionFastForward.svg
@@ -9,8 +11,6 @@ install(FILES
 	icons/ActionMenuStop.svg
 	icons/ActionMove.svg
 	icons/ActionNone.svg
- 	icons/ActionOverlapOK.svg
-	icons/ActionOverlapWrong.svg
 	icons/ActionResizeRotate.svg
 	icons/ActionResize.svg
 	icons/ActionResizeHori.svg

@@ -300,7 +300,9 @@ QToolButton:pressed {
   </action>
   <action name="action_Switch_to_Level_Editor">
    <property name="icon">
-    <iconset theme="configure"/>
+    <iconset theme="configure">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Switch to Level Editor</string>
@@ -386,6 +388,47 @@ QToolButton:pressed {
    </property>
    <property name="visible">
     <bool>false</bool>
+   </property>
+  </action>
+  <action name="action_Goal_Editor">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="bookmarks">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Goal Editor...</string>
+   </property>
+  </action>
+  <action name="action_Size_Backgrounds">
+   <property name="icon">
+    <iconset theme="tools-wizard">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Size &amp;&amp; Backgrounds...</string>
+   </property>
+  </action>
+  <action name="action_Object_Editor">
+   <property name="text">
+    <string>&amp;Object Editor...</string>
+   </property>
+  </action>
+  <action name="action_Name_Description">
+   <property name="icon">
+    <iconset theme="accessories-text-editor">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Name &amp;&amp; Description...</string>
+   </property>
+   <property name="toolTip">
+    <string>Name &amp; Description Editor</string>
    </property>
   </action>
  </widget>

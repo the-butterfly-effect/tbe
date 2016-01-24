@@ -71,6 +71,10 @@ void AbstractUndoCommand::commit(void)
 
 bool AbstractUndoCommand::isViewObjectColliding(void)
 {
+    // never report collisions if (level editor and collisions are disabled)
+    if (!theIsCollisionOn && theIsLevelEditor)
+        return false;
+
     // We need to check whether the ViewObject or any of the child items
     // (but not the ViewObjectAbstractDecorator) is colliding with any
     // other object (but not the ViewObject or the VOAD).

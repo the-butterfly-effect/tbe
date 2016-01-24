@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="ActionOverlapOK.svg">
+   sodipodi:docname="ActionClone.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1306558"
-     inkscape:cx="-52.847394"
-     inkscape:cy="139.93886"
+     inkscape:zoom="1.5941176"
+     inkscape:cx="170"
+     inkscape:cy="170"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,13 +57,13 @@
      id="layer1"
      transform="translate(-57.132084,-70.800171)">
     <path
-       style="fill:#803300;fill-opacity:1;stroke:none"
+       style="fill:#800080;fill-opacity:1;stroke:none"
        d="m 154.35152,76.800171 c -17.13648,0 -31.0405,13.904021 -31.0405,31.040499 0,9.93083 4.68208,18.75681 11.94068,24.43613 l -72.119616,0 0,26.91938 62.054576,0 0,62.97919 -41.44897,71.77619 33.68224,19.44324 36.93159,-63.95663 36.93158,63.95663 33.65583,-19.44324 -41.42256,-71.72336 0,-63.03202 62.05458,0 0,-26.91938 -72.11962,0 c 7.25355,-5.67958 11.91427,-14.50934 11.91427,-24.43613 0,-17.136478 -13.87761,-31.040499 -31.01408,-31.040499 z"
        id="path2984"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       style="fill:none;fill-opacity:1;stroke:#800080;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 299.91264,166.20554 c -17.13648,0 -31.0405,13.90402 -31.0405,31.04049 0,9.93083 4.68209,18.75682 11.94069,24.43614 l -72.11962,0 0,26.91938 62.05457,0 0,62.97918 -41.44897,71.7762 33.68224,19.44324 36.93159,-63.95663 36.93159,63.95663 33.65582,-19.44324 -41.42255,-71.72336 0,-63.03202 62.05458,0 0,-26.91938 -72.11963,0 c 7.25356,-5.67958 11.91427,-14.50934 11.91427,-24.43614 0,-17.13647 -13.8776,-31.04049 -31.01408,-31.04049 z"
        id="path2984-9" />
     <g
