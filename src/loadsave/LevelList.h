@@ -19,9 +19,8 @@
 #ifndef LevelList_H
 #define LevelList_H
 
-#include "LocalString.h"
-#include <QtCore/QCoreApplication>
-#include <QtXml/QXmlDefaultHandler>
+#include <QCoreApplication>
+#include <QXmlDefaultHandler>
 
 /// this class contains a list of all levels
 class LevelList : protected QXmlDefaultHandler
@@ -30,14 +29,13 @@ public:
 	/// Describes the meta-info for a level in the game
 	struct LevelMetaInfo
 	{
-		enum Status
-		{ FRESH, SKIPPED, COMPLETED };
+        enum Status
+        { FRESH, SKIPPED, COMPLETED };
 
-		enum Status	theStatus;
-		QString     theFileName;
-		LocalString theTitle;
-		LocalString theDescription;
-
+        enum Status	theStatus;
+        QString     theFileName;
+        QString     theTitle;       // translatable
+        QString     theDescription; // translatable
 	};
 
 	/// Constructor, will open levels description file 'aFileName' in aBaseDir.
@@ -119,8 +117,8 @@ private:
 		virtual QString errorString() const override
 		{ return errorStr; }
 
-		LocalString theTitle;
-		LocalString theDescription;
+        QString theTitle; // translatable
+        QString theDescription; // translatable
 
 		QXmlAttributes theAttrs;
 

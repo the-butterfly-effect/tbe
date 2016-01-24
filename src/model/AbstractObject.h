@@ -19,8 +19,7 @@
 #ifndef ABSTRACTOBJECT_H
 #define ABSTRACTOBJECT_H
 
-#include <QtCore/QtGlobal>
-#include "LocalString.h"
+#include <QtGlobal>
 #include "PivotPointPtr.h"
 #include "Position.h"
 #include "Property.h"
@@ -391,7 +390,7 @@ protected:
 	b2BodyDef* theB2BodyDefPtr;
 
 	/// store a tooltip string
-	LocalString theToolTip;
+    QString theToolTip;
 	/// is the tooltip a custom one (i.e. do we need to save it?)
 	bool hasCustomToolTip;
 

@@ -208,7 +208,7 @@ const QString AbstractObject::getToolTip() const
 	// originally we had the concept of a 'Description' property.
 	// however, that is not translatable.
 	assert (!theProps.doesPropertyExists("Description"));
-	return theToolTip.result();
+    return theToolTip;
 }
 
 

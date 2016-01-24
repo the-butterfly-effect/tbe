@@ -18,6 +18,7 @@
 
 #include "ChooseLevel.h"
 #include "Popup.h"
+#include "Translator.h"
 #include "ui_ChooseLevel.h"
 #include "tbe_paths.h"
 
@@ -80,8 +81,8 @@ void ChooseLevel::fillTreeWidget()
 		QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->theTreeWidget);
 		LevelList::LevelMetaInfo myMeta =theLLPtr->getLevelMetaInfo(myNextName);
 		item->setText(FILENAME_COLUMN, myMeta.theFileName);
-		item->setText(TITLE_COLUMN, myMeta.theTitle.result());
-		item->setToolTip(TITLE_COLUMN, myMeta.theDescription.result());
+        item->setText(TITLE_COLUMN, TheGetText(myMeta.theTitle));
+        item->setToolTip(TITLE_COLUMN, TheGetText(myMeta.theDescription));
 		switch(myMeta.theStatus)
 		{
 		case LevelList::LevelMetaInfo::COMPLETED:

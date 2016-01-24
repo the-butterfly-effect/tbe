@@ -20,17 +20,16 @@
 #define TOOLBOXGROUP_H
 
 #include "AbstractObject.h"
-#include "LocalString.h"
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QVariant>
+#include <QList>
+#include <QString>
+#include <QVariant>
 class ToolboxListWidgetItem;
 
 /// This class holds a series of objects for the Toolbox
 class ToolboxGroup
 {
 public:
-    explicit ToolboxGroup(const LocalString& aGroupName);
+    explicit ToolboxGroup(const QString& aGroupName);
     ~ToolboxGroup();
 
     void addObject(AbstractObjectPtr anObjectPtr);
@@ -51,8 +50,8 @@ public:
 
     void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
 
-    LocalString theGroupName;
-    QString     theInternalName;
+    QString     theGroupName;    // translatable
+    QString     theInternalName; // not translatable
 
 private:
     typedef QList<AbstractObjectPtr> ObjectsList;

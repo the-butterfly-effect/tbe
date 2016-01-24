@@ -194,10 +194,10 @@ bool LevelList::FastLevelParser::endElement(const QString & /* namespaceURI */,
 {
 	DEBUG5ENTRY;
 	if (qName == "title")
-		theTitle.add(currentText.trimmed(), theAttrs.value("lang"));
+        theTitle = currentText.trimmed();
 
 	if (qName == "description")
-		theDescription.add(currentText.trimmed(), theAttrs.value("lang"));
+        theDescription = currentText.trimmed();
 
 	// no need to parse everything beyond the levelinfo
 	if (qName == "levelinfo")

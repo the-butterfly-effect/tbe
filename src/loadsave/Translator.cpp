@@ -67,11 +67,15 @@ QStringList Singleton::Translator::getLanguageList()
 
 const char *Singleton::Translator::getText(const char *aStringToTranslate)
 {
+    if (aStringToTranslate[0]=='\0')
+        return "";
     return gettext(aStringToTranslate);
 }
 
 const QString Singleton::Translator::getText(const QString &aStringToTranslate)
 {
+    if (aStringToTranslate.isEmpty())
+        return "";
     return gettext(ASCII(aStringToTranslate));
 }
 

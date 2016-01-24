@@ -93,10 +93,9 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 	}
 
 	// Save *custom* tooltips only, not the default ones
-	// TODO: Note: not saving other languages as that will soon be removed anyway
 	if (theAbstractObjectPtr->hasCustomToolTip)
 	{
-		QString myTooltipTextString = theAbstractObjectPtr->theToolTip.english();
+        QString myTooltipTextString = theAbstractObjectPtr->theToolTip;
 		QDomElement myTooltip = aParent->ownerDocument().createElement(theToolTipString);
 		QDomText myTooltipText= aParent->ownerDocument().createTextNode(myTooltipTextString);
 		myTooltip.appendChild(myTooltipText);
@@ -111,93 +110,93 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode& 
 											  bool isMovable,
 											  bool isXYMandatory)
 {
-	QDomNamedNodeMap myNodeMap;
-	bool isOK1, isOK2;
-	QString myValue;
+    QDomNamedNodeMap myNodeMap;
+    bool isOK1, isOK2;
+    QString myValue;
 
-	/// simple sanity check first...
-	if (q.nodeName() != "object")
-	{
-		DEBUG2("createObjectFromDom: expected <object> but got <%s>", ASCII(q.nodeName()));
-		return nullptr;
-	}
+    /// simple sanity check first...
+    if (q.nodeName() != "object")
+    {
+        DEBUG2("createObjectFromDom: expected <object> but got <%s>", ASCII(q.nodeName()));
+        return nullptr;
+    }
 
-	// the nodemap contains all the parameters, or not...
-	myNodeMap = q.attributes();
+    // the nodemap contains all the parameters, or not...
+    myNodeMap = q.attributes();
 
-	QString myObjectType = myNodeMap.namedItem(theTypeAttributeString).nodeValue();
-	Position myObjectPosition(
-			myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
-			myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
-			myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble());
-	if (!isOK1 || !isOK2)
-	{
-		if (isXYMandatory)
-		{
-			DEBUG2("createObjectFromDom: '%s' has invalid X or Y", ASCII(myObjectType));
-			return nullptr;
-		}
-		myObjectPosition = Position(0,0,0);
-	}
+    QString myObjectType = myNodeMap.namedItem(theTypeAttributeString).nodeValue();
+    Position myObjectPosition(
+                myNodeMap.namedItem(theXAttributeString).nodeValue().toDouble(&isOK1),
+                myNodeMap.namedItem(theYAttributeString).nodeValue().toDouble(&isOK2),
+                myNodeMap.namedItem(theAngleAttributeString).nodeValue().toDouble());
+    if (!isOK1 || !isOK2)
+    {
+        if (isXYMandatory)
+        {
+            DEBUG2("createObjectFromDom: '%s' has invalid X or Y", ASCII(myObjectType));
+            return nullptr;
+        }
+        myObjectPosition = Position(0,0,0);
+    }
 
     AbstractObjectPtr myAOPtr = ObjectFactory::createObject(myObjectType, myObjectPosition);
     if (myAOPtr==nullptr)
-	{
-		DEBUG2("createObjectFromDom: '%s' has problems in its factory", ASCII(myObjectType));
-		goto not_good;
-	}
+    {
+        DEBUG2("createObjectFromDom: '%s' has problems in its factory", ASCII(myObjectType));
+        goto not_good;
+    }
 
     myAOPtr->setID(myNodeMap.namedItem(theIDAttributeString).nodeValue());
     myAOPtr->theIsMovable = isMovable;
 
-	isOK1=true;
-	myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
-	if (myValue.isEmpty()==false)
+    isOK1=true;
+    myValue = myNodeMap.namedItem(theWidthAttributeString).nodeValue();
+    if (myValue.isEmpty()==false)
         myAOPtr->setTheWidth(myValue.toDouble(&isOK1));
-	if (!isOK1)
-	{
-		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theWidthAttributeString);
-		goto not_good;
-	}
+    if (!isOK1)
+    {
+        DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theWidthAttributeString);
+        goto not_good;
+    }
 
-	isOK1=true;
-	myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
-	if (myValue.isEmpty()==false)
+    isOK1=true;
+    myValue = myNodeMap.namedItem(theHeightAttributeString).nodeValue();
+    if (myValue.isEmpty()==false)
         myAOPtr->setTheHeight(myValue.toDouble(&isOK1));
-	if (!isOK1)
-	{
-		DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theHeightAttributeString);
-		goto not_good;
-	}
-	if (q.hasChildNodes()==true)
-	{
-		// to parse:   <property key="texture">used_wood_bar</property>
-		QDomElement i;
-		for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
-		{
-			QString myKey = i.attributes().item(0).nodeValue();
-			QString myTValue = i.text();
-			if (i.nodeName() == thePropertyString)
-			{
-				DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
-				// make sure there's no 'Description' - that's now outlawed
-				Q_ASSERT(myKey != "Description");
-				myAOPtr->theProps.setProperty(myKey, myTValue);
-				continue;
-			}
-			if (i.nodeName() == theToolTipString)
-			{
-				DEBUG5("   %s", ASCII(QString("tooltip: '%1'='%2'").arg(myKey).arg(myTValue)));
-				myAOPtr->theToolTip.add(myTValue, myKey);
-				myAOPtr->hasCustomToolTip = true;
-				continue;
-			}
-			// if we get here, nodeName is not something we know about
-			goto not_good;
-		}
-	}
+    if (!isOK1)
+    {
+        DEBUG2("createObjectFromDom: '%s' has invalid %s", ASCII(myObjectType), theHeightAttributeString);
+        goto not_good;
+    }
+    if (q.hasChildNodes()==true)
+    {
+        // to parse:   <property key="texture">used_wood_bar</property>
+        QDomElement i;
+        for (i=q.firstChildElement(); !i.isNull(); i=i.nextSiblingElement())
+        {
+            QString myKey = i.attributes().item(0).nodeValue();
+            QString myTValue = i.text();
+            if (i.nodeName() == thePropertyString)
+            {
+                DEBUG5("   %s", ASCII(QString("property: '%1'='%2'").arg(myKey).arg(myTValue)));
+                // make sure there's no 'Description' - that's now outlawed
+                Q_ASSERT(myKey != "Description");
+                myAOPtr->theProps.setProperty(myKey, myTValue);
+                continue;
+            }
+            if (i.nodeName() == theToolTipString)
+            {
+                DEBUG5("   %s", ASCII(QString("tooltip: '%1'").arg(myTValue)));
+                myAOPtr->theToolTip = myTValue;
+                myAOPtr->hasCustomToolTip = true;
+                continue;
+            }
+            // if we get here, nodeName is not something we know about
+            goto not_good;
+        }
+    }
 
-	DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
+    DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
     return myAOPtr;
 not_good:
     // myAOPtr is a shared_ptr - will take care of its own destruction if needed

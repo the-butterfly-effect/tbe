@@ -23,6 +23,7 @@
 #include <QMenuBar>
 #include "Popup.h"
 #include "tbe_global.h"
+#include "Translator.h"
 #include "ui_GameResources.h"
 #include "ViewObject.h"
 
@@ -85,9 +86,9 @@ void GameResources::setLevelPtr(Level* aLevelPtr)
     Q_ASSERT(aLevelPtr!=nullptr);
     theLevelPtr = aLevelPtr;
 
-    ui->theLevelTitle->setText(theLevelPtr->theLevelName.result());
+    ui->theLevelTitle->setText(TheGetText(theLevelPtr->theLevelName));
     //: translators: please do not try to translate the <b>%1</b> part!
     ui->theLevelAuthor->setText(tr("Level by: <b>%1</b>").arg(theLevelPtr->theLevelAuthor));
     ui->theInfoBox->clear();
-    ui->theInfoBox->setText(aLevelPtr->theLevelDescription.result());
+    ui->theInfoBox->setText(TheGetText(aLevelPtr->theLevelDescription));
 }

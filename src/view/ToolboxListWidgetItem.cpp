@@ -20,6 +20,7 @@
 #include "ImageCache.h"
 #include "ListViewItemTooltip.h"
 #include "ToolboxListWidgetItem.h"
+#include "Translator.h"
 #include "ViewObject.h"
 
 ToolboxListWidgetItem::ToolboxListWidgetItem(
@@ -49,7 +50,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     }
 	ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
 	slotUpdateCount();
-	setText(theTBGPtr->theGroupName.result());
+    setText(TheGetText(theTBGPtr->theGroupName));
 	setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
 	setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	setSizeHint(QSize(90,150));
@@ -84,6 +85,6 @@ void ToolboxListWidgetItem::slotUpdateCount(void)
     else
     {
         setIcon(theRealPixmap);
-        setText(theTBGPtr->theGroupName.result());
+        setText(TheGetText(theTBGPtr->theGroupName));
     }
 }

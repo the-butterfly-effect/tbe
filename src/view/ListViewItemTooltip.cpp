@@ -22,6 +22,7 @@
 #include "InsertUndoCommand.h"
 #include "ListViewItemTooltip.h"
 #include "Position.h"
+#include "Translator.h"
 #include "ViewObject.h"
 #include "ui_ListViewItemTooltip.h"
 
@@ -36,7 +37,7 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     Q_ASSERT(aParent);
 
     // set the description and help
-    ui->labelName->setText(theTBGPtr->theGroupName.result());
+    ui->labelName->setText(TheGetText(theTBGPtr->theGroupName));
     ui->labelCount->setText(tr("%1x").arg(theTBGPtr->count()));
     AbstractObjectPtr myAOPtr = theTBGPtr->first();
     ui->labelDescription->setText(myAOPtr->getToolTip());

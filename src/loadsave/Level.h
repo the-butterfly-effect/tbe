@@ -22,10 +22,9 @@
 #include <QObject>
 #include <QString>
 #include <QList>
-//#include <QDomDocument>
+#include <QDomElement>
 #include "tbe_global.h"
 #include "AbstractObject.h"
-#include "LocalString.h"
 
 // Forward Declarations:
 class GameResources;
@@ -65,9 +64,9 @@ public:
 	// Public accessor methods
 	//
 
-	/// returns the Level's title
+    /// @returns the Level's title (NOT translated).
 	virtual QString getName ( ) const
-		{ return theLevelName.result(); }
+        { return theLevelName; }
 
 	World* getTheWorldPtr(void) const
 		{ return theWorldPtr; }
@@ -114,20 +113,19 @@ public:
 protected:
 	// TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
     void addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const;
-    void addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const;
     void addAbstractObject(QDomElement aParent, const AbstractObject& anObjectRef) const;
 	void addHint(Hint* aHintPtr);
 
 private:
 	World* theWorldPtr;
 
-	LocalString theLevelName;
+    QString theLevelName; // translatable
 	QString theLevelAuthor;
 	QString theLevelLicense;
-	LocalString theLevelDescription;
+    QString theLevelDescription; // translatable
 	QString theLevelDate;
 
-    typedef QMap<LocalString, ToolboxGroup*> ToolboxGroupList;
+    typedef QMap<QString, ToolboxGroup*> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
 	typedef QList<Hint*>  HintList;

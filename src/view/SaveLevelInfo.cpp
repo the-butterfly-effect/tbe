@@ -29,9 +29,9 @@ SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
 	ui.setupUi(this);
 	ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
 	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
-	ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription.english());
+    ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
 	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
-	ui.theTitleField           ->setText(theLevelPtr->theLevelName.english());
+    ui.theTitleField           ->setText(theLevelPtr->theLevelName);
 
 	QDate myDate = QDate::fromString(theLevelPtr->theLevelDate);
 	if (myDate.isValid())
@@ -65,29 +65,11 @@ void SaveLevelInfo::accept()
 
 bool SaveLevelInfo::commitToLevel(void)
 {
-	theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text();
-	theLevelPtr->theLevelDate        = ui.theDateEdit->text();
-	theLevelPtr->theLevelLicense     = ui.theLicenseField->text();
-
-	if (theLevelPtr->theLevelDescription.english() != ui.theLevelDescriptionField->toPlainText() ||
-		theLevelPtr->theLevelName.english() != ui.theTitleField->text())
-	{
-		// HACK HACK HACK
-		//
-		// If we get here, either the Description or the Name changed
-		// we might want to warn the user that changing Description or Name invalidates
-		// all other languages for that field - they will be removed.
-		Popup::Info(tr("Because you changed the Level Name or Description,"
-					   " all translations for both will be erased for consistency..."));
-
-		theLevelPtr->theLevelDescription.clear();
-		theLevelPtr->theLevelName.clear();
-
-		theLevelPtr->theLevelDescription.add(ui.theLevelDescriptionField->toPlainText(), "");
-		theLevelPtr->theLevelName.add(ui.theTitleField->text(), "");
-	}
-
-
+    theLevelPtr->theLevelAuthor      = ui.theAuthorNameField->text().trimmed();
+    theLevelPtr->theLevelDate        = ui.theDateEdit->text().trimmed();
+    theLevelPtr->theLevelLicense     = ui.theLicenseField->text().trimmed();
+    theLevelPtr->theLevelDescription = ui.theLevelDescriptionField->toPlainText().trimmed();
+    theLevelPtr->theLevelName        = ui.theTitleField->text().trimmed();
 
 	if (ui.theFileNameField->text().isEmpty())
 		return false;

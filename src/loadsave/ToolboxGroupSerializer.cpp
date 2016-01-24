@@ -22,7 +22,6 @@
 #include <QtCore/QStringList>
 
 #include "tbe_global.h"
-#include <cstdio>
 
 // these are declared in Level.cpp
 extern const char* theToolboxGroupString;
@@ -41,11 +40,10 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 	QString          myErrorMessage;
 	QDomNamedNodeMap myNodeMap = aBaseDomNode.attributes();
 	ToolboxGroup*    myTbGPtr = nullptr;
-	LocalString      myToolBoxGroupName;
+    QString          myToolBoxGroupName; // translatable
 
 	// a toolbox object entry has the following layout:
 	// <toolboxitem count="1" name="Ramp \" icon="RightRamp">
-	//      <name lang="nl">Helling \</name>
 	//      <object width="2" height="1" type="RightRamp" />
 	// </toolboxitem>
 
@@ -60,12 +58,11 @@ ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
 		goto not_good;
 	}
 
-	myToolBoxGroupName.fillFromDOM(aBaseDomNode, theNameString,
-						   myNodeMap.namedItem(theNameString).nodeValue());
-	myTbGPtr = new ToolboxGroup(myToolBoxGroupName);
-	myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
-	if (myCount == 0 || isOK == false)
-		myCount = 1;
+    myToolBoxGroupName =  myNodeMap.namedItem(theNameString).nodeValue();
+    myTbGPtr = new ToolboxGroup(myToolBoxGroupName);
+    myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
+    if (myCount == 0 || isOK == false)
+        myCount = 1;
 
 	for (int i=0; i< myCount; i++)
 	{
@@ -98,16 +95,14 @@ not_good:
 
 QDomElement ToolboxGroupSerializer::serialize(QDomDocument& aDomDocument, ToolboxGroup* aToolboxGroupPtr)
 {
+    // write the properties of the toolboxgroup itself
     QDomElement myToolboxNode = aDomDocument.createElement(theToolboxItemString);
     myToolboxNode.setAttribute(theCountString, aToolboxGroupPtr->count());
-    myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName.english());
-
-    aToolboxGroupPtr->theGroupName.serializeTo(myToolboxNode);
-    {
-        const AbstractObjectSerializer* myAOSerializerPtr = aToolboxGroupPtr->first()->getSerializer();
-        myAOSerializerPtr->serialize(&myToolboxNode);
-        delete myAOSerializerPtr;
-    }
+    myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName);
+    // write the properties of (one of the) object(s) in the toolboxgroup
+    const AbstractObjectSerializer* myAOSerializerPtr = aToolboxGroupPtr->first()->getSerializer();
+    myAOSerializerPtr->serialize(&myToolboxNode);
+    delete myAOSerializerPtr;
 
     return myToolboxNode;
 }

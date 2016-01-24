@@ -21,6 +21,7 @@
 #include "ImageCache.h"
 #include "animateddialog.h"
 #include "AbstractObject.h"
+#include "Translator.h"
 
 #include <QGraphicsColorizeEffect>
 #include <QGraphicsSceneMouseEvent>
@@ -100,19 +101,7 @@ void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 QString ViewPostIt::getPageString(unsigned int aPage)
 {
     QString myPageNr = "page"+QString::number(aPage);
-
-    // get the default/original string (English) in 'page1'
-    // this will be returned if none of the below exist
-    QString myPageString = theAbstractObjectPtr->theProps.getPropertyNoDefault(myPageNr);
-
-    // then look for 'page1_nl', then for 'page1_nl_NL'
-    // if the second one exists, it overrides an existing first one
-    QString myLocName = QLocale::system().name();
-    myPageNr += "_" + myLocName.mid(0,2);
-    theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
-    myPageNr += "_" + myLocName.mid(3,2);
-    theAbstractObjectPtr->theProps.property2String(myPageNr, &myPageString,false);
-    return myPageString;
+    return theAbstractObjectPtr->theProps.getPropertyNoDefault(myPageNr);
 }
 
 
@@ -156,7 +145,7 @@ void ViewPostIt::nextClicked()
         return;
     }
 
-    theUIPtr->theLabel->setText("<b>"+myPageString+"</b>");
+    theUIPtr->theLabel->setText("<b>"+TheGetText(myPageString)+"</b>");
     theUIPtr->theLabel->setAlignment(Qt::AlignCenter);
     theUIPtr->theLabel->setWordWrap(true);
 

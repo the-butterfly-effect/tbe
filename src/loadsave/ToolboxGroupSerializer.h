@@ -22,6 +22,7 @@
 #include "ToolboxGroup.h"
 
 // forward declarations:
+class QDomDocument;
 class QDomElement;
 class QDomNode;
 class QString;

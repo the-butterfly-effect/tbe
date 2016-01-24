@@ -189,23 +189,23 @@ Level::load(const QString& aFileName, GameResources* aLevelInfoToolbox)
 
 	myDocElem = myDocument.documentElement();
 
-	//
-	// parse the Level Info section
-	//
-	myErrorMessage = tr("Parsing '%1' section failed: ").arg(theLevelInfoString);
-	myNode=myDocElem.firstChildElement(theLevelInfoString);
-	if (myNode.isNull())
-		goto not_good;
-	theLevelName       .fillFromDOM(myNode,theLevelNameString);
-	theLevelAuthor     = myNode.firstChildElement(theLevelAuthorString).text();
-	theLevelLicense    = myNode.firstChildElement(theLevelLicenseString).text();
-	theLevelDate       = myNode.firstChildElement(theLevelDateString).text();
-	theLevelDescription.fillFromDOM(myNode, theLevelDescriptionString);
+    //
+    // parse the Level Info section
+    //
+    myErrorMessage = tr("Parsing '%1' section failed: ").arg(theLevelInfoString);
+    myNode=myDocElem.firstChildElement(theLevelInfoString);
+    if (myNode.isNull())
+        goto not_good;
+    theLevelName       = myNode.firstChildElement(theLevelNameString).text();
+    theLevelAuthor     = myNode.firstChildElement(theLevelAuthorString).text();
+    theLevelLicense    = myNode.firstChildElement(theLevelLicenseString).text();
+    theLevelDate       = myNode.firstChildElement(theLevelDateString).text();
+    theLevelDescription= myNode.firstChildElement(theLevelDescriptionString).text();
 
-	DEBUG5("level name:    '%s'", ASCII(theLevelName.result()));
+    DEBUG5("level name:    '%s'", ASCII(theLevelName));
 	DEBUG5("level author:  '%s'", ASCII(theLevelAuthor));
 	DEBUG5("level license: '%s'", ASCII(theLevelLicense));
-	theWorldPtr->theLevelName = theLevelName.result();
+    theWorldPtr->theLevelName = theLevelName;
 
 	//
 	// parse the Toolbox section
@@ -433,7 +433,6 @@ void Level::addHint(Hint *aHintPtr)
 	theHintPtrList.push_back(aHintPtr);
 }
 
-
 void
 Level::addTextElement(QDomElement aParent, const QString& anElementName, const QString& aText) const
 {
@@ -441,22 +440,6 @@ Level::addTextElement(QDomElement aParent, const QString& anElementName, const Q
     QDomText myT = aParent.ownerDocument().createTextNode(aText);
     myReturn.appendChild(myT);
     aParent.appendChild(myReturn);
-}
-
-void
-Level::addTextElement(QDomElement aParent, const QString& anElementName, const LocalString& anLS) const
-{
-    LocalString::LocalStringList::const_iterator myL = anLS.theStringList.begin();
-    while (myL != anLS.theStringList.end())
-    {
-        QDomElement myElement = aParent.ownerDocument().createElement(anElementName);
-        QDomText myT = aParent.ownerDocument().createTextNode(myL.value());
-        myElement.appendChild(myT);
-        if (myL.key().isEmpty() == false)
-            myElement.setAttribute("lang", myL.key());
-        aParent.appendChild(myElement);
-        ++myL;
-    }
 }
 
 

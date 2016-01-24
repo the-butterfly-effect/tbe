@@ -25,7 +25,6 @@ namespace Ui {
 
 #include "animateddialog.h"
 class Level;
-#include "LocalString.h"
 class QAction;
 class ViewWorld;
 
