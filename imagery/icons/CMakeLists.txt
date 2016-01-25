@@ -4,6 +4,7 @@ install(FILES
  	icons/ActionCollisionOK.svg
 	icons/ActionCollisionWrong.svg
 	icons/ActionDelete.svg
+	icons/ActionDrawDebug.svg
 	icons/ActionMenuEject.svg
 	icons/ActionFastForward.svg
 	icons/ActionMenuPause.svg
