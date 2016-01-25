@@ -79,7 +79,7 @@ public:
 protected:
 	virtual void changeEvent(QEvent *e) override;
 
-	void setupMenu();
+    /// Adds dynamic menus, i.e. 'Edit' and 'Languages'.
 	void setupView();
 
 public slots:
@@ -138,6 +138,9 @@ private slots:
 //    void on_action_CollisionOn_toggled(bool aNewState);
     void on_action_CollisionOff_triggered();
     void on_action_CollisionOn_triggered();
+
+    // menu Languages
+    void on_switchLanguage(QString);
 
 private:
     Ui::MainWindow *ui;

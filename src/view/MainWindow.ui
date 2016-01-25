@@ -209,9 +209,15 @@ QToolButton:pressed {
     <addaction name="menu_Contribute"/>
     <addaction name="action_About"/>
    </widget>
+   <widget class="QMenu" name="menuLanguages">
+    <property name="title">
+     <string>&amp;Languages</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuControls"/>
+   <addaction name="menuLanguages"/>
    <addaction name="menu_Help"/>
   </widget>
   <action name="action_Open_Level">

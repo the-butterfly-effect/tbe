@@ -35,7 +35,8 @@
 
 Singleton::Translator::Translator()
 {
-    // nothing to do?
+    // just to make sure we have a backup...
+    theBaseTbeQtLocation = I18N_DIRECTORY + "/";
 }
 
 

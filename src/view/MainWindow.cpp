@@ -40,6 +40,7 @@
 #include "RegressionTest.h"
 #include "SaveLevelInfo.h"
 #include "ToolboxListWidgetItem.h"
+#include "Translator.h"
 #include "UndoSingleton.h"
 #include "World.h"
 
@@ -52,12 +53,11 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	  theWorldPtr(nullptr)
 {
     ui->setupUi(this);
-
     setupView();
-    if (isMaximized)
-        showMaximized();
     if (theIsLevelEditor)
         on_action_Switch_to_Level_Editor_triggered();
+    if (isMaximized)
+        showMaximized();
 }
 
 
@@ -509,6 +509,24 @@ void MainWindow::on_objectEditorAction_clicked()
 }
 
 
+void MainWindow::on_switchLanguage(QString aNewLanguage)
+{
+    QString myReloadString = UndoSingleton::isClean() ? "" :
+                                 tr("\nYou have unsaved undo actions.\n"
+                                    "You lose your actions when switching languages.\n\n");
+    //: translators: the %1 contains the language string, the %2 may contain a message about unsaved actions.
+    if (!Popup::YesNoQuestion(tr("You requested a switch to language:\n%1\n"
+                                 "Be careful: not all languages are 100% complete.\n"
+                                 "%2Are you sure?")
+                              .arg(aNewLanguage).arg(myReloadString), this))
+            return;
+    TheTranslator.setLanguage(aNewLanguage);
+    // As the user selected "OK", let's prevent Reload from throwing another dialog.
+    UndoSingleton::setClean();
+    emit on_action_Reload_triggered();
+}
+
+
 void MainWindow::purgeLevel()
 {
 	DEBUG1ENTRY;
@@ -590,6 +608,16 @@ void MainWindow::setupView()
 	ui->toolButton_infoLevel->setIcon(myInfoIcon);
 	connect(ui->toolButton_infoLevel, SIGNAL(clicked(bool)),
 			ui->graphicsView, SLOT(slot_showGameResourcesDialog()));
+
+    // set up the languages menu, so the user can switch languages
+    QStringList myLanguageList = TheTranslator.getLanguageList();
+    for (auto l : myLanguageList)
+    {
+        InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(l, nullptr);
+        connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_switchLanguage(QString)));
+        ui->menuLanguages->addAction(myTempActionPtr);
+    }
+
 
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
 
