@@ -29,7 +29,7 @@
 InsertUndoCommand::InsertUndoCommand(
         ViewObjectPtr anViewObjectPtr, QString anActionString)
     : AbstractUndoCommand(anViewObjectPtr, anActionString, nullptr),
-      theTBGPtr(nullptr)
+      theTBGPtr(nullptr), theAOPtr(nullptr)
 {
     DEBUG3ENTRY;
 }
@@ -97,6 +97,7 @@ bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 	DEBUG3ENTRY
     InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(anAOPtr);
     myInsertPtr->theTBGPtr = nullptr;
+    myInsertPtr->theAOPtr  = anAOPtr;
     myInsertPtr->commit();
     return true;
 }
@@ -104,15 +105,15 @@ bool InsertUndoCommand::createInsertUndoCommand(AbstractObjectPtr anAOPtr)
 InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
         AbstractObjectPtr anAOPtr)
 {
-	DEBUG3ENTRY
+    DEBUG3ENTRY;
     // extract the AbstractObject and the ViewObject
     ViewObjectPtr myVOPtr = createVOfromAO(anAOPtr);
     Q_ASSERT(myVOPtr!=nullptr);
 
     InsertUndoCommand* myInsertPtr = reinterpret_cast<InsertUndoCommand*>
-                                      (UndoSingleton::createUndoCommand(
-                                         myVOPtr,
-                                         ActionIcon::ACTION_INSERT));
+            (UndoSingleton::createUndoCommand(
+                 myVOPtr,
+                 ActionIcon::ACTION_INSERT));
     myVOPtr->setVisible(true);
     return myInsertPtr;
 }
@@ -120,27 +121,22 @@ InsertUndoCommand* InsertUndoCommand::createInsertUndoCommandIntern(
 
 void InsertUndoCommand::redo(void)
 {
-	DEBUG3("InsertUndoCommand::redo for '%s'", ASCII(text()));
+    DEBUG3("InsertUndoCommand::redo for '%s'", ASCII(text()));
 
     if (theTBGPtr)
     {
         // Insert based on toolbox
         if (theViewObjPtr==nullptr)
             theViewObjPtr = createVOfromAO(theTBGPtr->getObject());
-        else
-        {
-             if (theViewObjPtr->isVisible()==false)
-                 theViewObjPtr = createVOfromAO(theTBGPtr->getObject());;
-             theViewObjPtr->setVisible(true);
-        }
     }
     else
     {
-        // Insert based on Level Creator menu
-        if (theViewObjPtr->isVisible()==false)
-            theViewObjPtr->setVisible(true);
+        // In the case of insert in the LevelCreator, we kept a pointer to
+        // the AbstractObject. That's why it didn't get deleted and the
+        // ViewObject thus is still around, too... yay!
     }
     Q_ASSERT(theViewObjPtr!=nullptr);
+    theViewObjPtr->setVisible(true);
 
     // the ViewObject already exists when we get here,
     // but World should always check if it needs to be added...

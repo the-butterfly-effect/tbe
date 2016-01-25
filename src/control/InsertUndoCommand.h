@@ -69,9 +69,14 @@ public:
 	virtual void undo() override;
 
 protected:
-    /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo)
-    /// @note: is nullptr in the case of a insert from menu in level creator
+    /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo).
+    /// @note: is nullptr in the case of a insert from menu in level creator.
     ToolboxGroup* theTBGPtr;
+
+    /// Pointer to the AbstractObject in case there is no ToolboxGroup, i.e.
+    /// when inserting/cloning new objects in the Level Creator.
+    /// @note: should only be non-null when theTBGPtr is null.
+    AbstractObjectPtr theAOPtr;
 
     /// TODO: document
 	static ViewObjectPtr createVOfromAO(AbstractObjectPtr anAOPtr);
