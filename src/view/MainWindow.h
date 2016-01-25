@@ -133,9 +133,8 @@ private slots:
 
     // menu Edit (Level Creator)
     void on_action_Clone_triggered();
-    void on_action_DrawDebug_toggled(bool aNewState);
-//    void on_action_CollisionOff_toggled(bool aNewState);
-//    void on_action_CollisionOn_toggled(bool aNewState);
+    void on_action_DrawDebug_triggered();
+    void on_action_DrawNormal_triggered();
     void on_action_CollisionOff_triggered();
     void on_action_CollisionOn_triggered();
 
@@ -154,6 +153,9 @@ private:
 
     QAction* theCollisionOffActionPtr;
     QAction* theCollisionOnActionPtr;
+
+    QAction* theDrawDebugActionPtr;
+    QAction* theDrawNormalActionPtr;
 
     friend class RegressionTest;
 };

@@ -176,9 +176,19 @@ void MainWindow::on_action_CollisionOn_triggered()
 }
 
 
-void MainWindow::on_action_DrawDebug_toggled(bool aNewState)
+void MainWindow::on_action_DrawDebug_triggered()
 {
-    theDrawDebug = aNewState;
+    theDrawDebug = true;
+    theDrawDebugActionPtr->setChecked(theDrawDebug);
+    theDrawNormalActionPtr->setChecked(!theDrawDebug);
+}
+
+
+void MainWindow::on_action_DrawNormal_triggered()
+{
+    theDrawDebug = false;
+    theDrawDebugActionPtr->setChecked(theDrawDebug);
+    theDrawNormalActionPtr->setChecked(!theDrawDebug);
 }
 
 
@@ -455,13 +465,20 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     // add new top menu "View"
     QMenu* myViewMenuPtr = new QMenu(tr("&View"), nullptr);
     ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myViewMenuPtr);
-    QAction* myDrawDebugActionPtr = new QAction(tr("&DrawDebug"), nullptr);
+    theDrawDebugActionPtr = new QAction(tr("&Draw Debug"), nullptr);
     myTmpIcon  = ImageCache::getQIcon("ActionDrawDebug", QSize(64,64));
-    myDrawDebugActionPtr->setCheckable(true);
-    myDrawDebugActionPtr->setChecked(theDrawDebug);
-    myDrawDebugActionPtr->setIcon(myTmpIcon);
-    connect (myDrawDebugActionPtr, SIGNAL(toggled(bool)), this, SLOT(on_action_DrawDebug_toggled(bool)));
-    myViewMenuPtr->addAction(myDrawDebugActionPtr);
+    theDrawDebugActionPtr->setCheckable(true);
+    theDrawDebugActionPtr->setChecked(theDrawDebug);
+    theDrawDebugActionPtr->setIcon(myTmpIcon);
+    connect (theDrawDebugActionPtr, SIGNAL(triggered()), this, SLOT(on_action_DrawDebug_triggered()));
+    myViewMenuPtr->addAction(theDrawDebugActionPtr);
+    theDrawNormalActionPtr = new QAction(tr("&Draw Normal"), nullptr);
+    myTmpIcon  = ImageCache::getQIcon("ActionDrawNormal", QSize(64,64));
+    theDrawNormalActionPtr->setCheckable(true);
+    theDrawNormalActionPtr->setChecked(!theDrawDebug);
+    theDrawNormalActionPtr->setIcon(myTmpIcon);
+    connect (theDrawNormalActionPtr, SIGNAL(triggered()), this, SLOT(on_action_DrawNormal_triggered()));
+    myViewMenuPtr->addAction(theDrawNormalActionPtr);
     theLevelEditorToolbarPtr->addActions(myViewMenuPtr->actions());
     theLevelEditorToolbarPtr->addSeparator();
 
