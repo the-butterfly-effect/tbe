@@ -20,7 +20,7 @@ then
    exit 1
 fi
 
-$lupdate_cmd -codecfortr utf8 -I ../src/* -ts *.ts
+$lupdate_cmd -I ../src/* -ts *.ts
 
 printf "\n\n"
 printf "\n   translation file  %%ready   (unfinished/(total-obsolete))\n"
