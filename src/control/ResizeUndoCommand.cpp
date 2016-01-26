@@ -34,7 +34,7 @@ ResizeUndoCommand::ResizeUndoCommand(
     // now it's time to figure out:
     //     are we allowed to resize horizontally
     //     or vertically, or both???
-	if (theIsLevelEditor)
+    if (theIsLevelCreator)
 		theResizingOptions = AbstractObject::TOTALRESIZE;
 	else
 		theResizingOptions = anViewObjectPtr->getAbstractObjectPtr()->isResizable();

@@ -72,7 +72,7 @@ void AbstractUndoCommand::commit(void)
 bool AbstractUndoCommand::isViewObjectColliding(void)
 {
     // never report collisions if (level editor and collisions are disabled)
-    if (!theIsCollisionOn && theIsLevelEditor)
+    if (!theIsCollisionOn && theIsLevelCreator)
         return false;
 
     // We need to check whether the ViewObject or any of the child items

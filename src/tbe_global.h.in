@@ -96,7 +96,7 @@ extern std::atomic<bool> theDisplayFramerate;
 extern std::atomic<bool> theDrawDebug;
 extern std::atomic<bool> theDrawPolyOutline;
 extern std::atomic<bool> theIsCollisionOn;
-extern std::atomic<bool> theIsLevelEditor;
+extern std::atomic<bool> theIsLevelCreator;
 extern std::atomic<bool> theIsRunAsRegression;
 extern std::atomic<bool> theTBECaching;
 extern QString theStartFileName;

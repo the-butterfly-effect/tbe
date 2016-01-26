@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011,2012,2013,2014,2015 Klaas van Gend
+ * This file copyright (C) 2009,2011,2012,2013,2014,2015,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,19 +23,16 @@
 #include <QtGui>
 #include <QListWidgetItem>
 #include <QFileDialog>
-#include <QToolBar>
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
-#include "EditLevelProperties.h"
-#include "EditObjectDialog.h"
-#include "GoalEditor.h"
 #include "Hint.h"
 #include "ImageCache.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
+#include "LevelCreator.h"
 #include "ListViewItemTooltip.h"
-#include "ObjectFactory.h"
+//#include "ObjectFactory.h"
 #include "Popup.h"
 #include "RegressionTest.h"
 #include "SaveLevelInfo.h"
@@ -48,13 +45,14 @@
 MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 	: QMainWindow(parent),
 	  theRegressionTest(nullptr),
+      theLevelCreator(nullptr),
 	  ui(new Ui::MainWindow),
 	  theLevelPtr(nullptr),
 	  theWorldPtr(nullptr)
 {
     ui->setupUi(this);
     setupView();
-    if (theIsLevelEditor)
+    if (theIsLevelCreator)
         on_action_Switch_to_Level_Editor_triggered();
     if (isMaximized)
         showMaximized();
@@ -154,42 +152,6 @@ void MainWindow::on_action_Bug_Reports_triggered()
 }
 
 
-void MainWindow::on_action_Clone_triggered()
-{
-
-}
-
-
-void MainWindow::on_action_CollisionOff_triggered()
-{
-    theIsCollisionOn = false;
-    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
-    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
-}
-
-
-void MainWindow::on_action_CollisionOn_triggered()
-{
-    theIsCollisionOn = true;
-    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
-    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
-}
-
-
-void MainWindow::on_action_DrawDebug_triggered()
-{
-    theDrawDebug = true;
-    theDrawDebugActionPtr->setChecked(theDrawDebug);
-    theDrawNormalActionPtr->setChecked(!theDrawDebug);
-}
-
-
-void MainWindow::on_action_DrawNormal_triggered()
-{
-    theDrawDebug = false;
-    theDrawDebugActionPtr->setChecked(theDrawDebug);
-    theDrawNormalActionPtr->setChecked(!theDrawDebug);
-}
 
 
 void MainWindow::on_action_Keyboard_Shortcuts_triggered()
@@ -242,7 +204,7 @@ void MainWindow::on_action_New_triggered()
 	ui->listWidget->clear();
 
 	// pop-up the modal LevelProperties dialog
-	on_levelPropertiesEditorAction_clicked();
+    emit theLevelCreator->on_levelPropertiesEditorAction_clicked();
 
 	// repopulate the scene and toolbox
 	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
@@ -373,156 +335,9 @@ void MainWindow::on_action_Suggestions_triggered()
 
 void MainWindow::on_action_Switch_to_Level_Editor_triggered()
 {
-    theLevelEditorToolbarPtr = addToolBar(tr("LevelEditor"));
-
-    // add "New", "Save" and "Save as" items to File menu
-    typedef QList<QAction*> ActionList;
-    ActionList myList = ui->menuFile->actions();
-    for (auto i : myList)
-    {
-        if (!i->isVisible())
-        {
-            i->setVisible(true);
-            i->setEnabled(true);
-        }
-        if (i->data()=="Switch")
-        {
-            i->setVisible(false);
-            i->setEnabled(false);
-        }
-    }
-    theLevelEditorToolbarPtr->addAction(ui->action_Open_File);
-    theLevelEditorToolbarPtr->addAction(ui->action_Save);
-    theLevelEditorToolbarPtr->addAction(ui->action_Save_As);
-    theLevelEditorToolbarPtr->addSeparator();
-
-    // add new items to top menu "Edit"
-    QAction* myCloneActionPtr = new QAction(tr("&Clone object"), nullptr);
-    QIcon myTmpIcon  = ImageCache::getQIcon("ActionClone", QSize(64,64));
-    myCloneActionPtr->setIcon(myTmpIcon);
-    myCloneActionPtr->setEnabled(false);
-    ui->menuEdit->addSeparator();
-    ui->menuEdit->addAction(myCloneActionPtr);
-    connect (myCloneActionPtr, SIGNAL(triggered()), this, SLOT(on_action_Clone_triggered()));
-    theCollisionOffActionPtr = new QAction(tr("&Collision OK"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionCollisionOK", QSize(64,64));
-    theCollisionOffActionPtr->setIcon(myTmpIcon);
-    theCollisionOffActionPtr->setCheckable(true);
-    theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
-    ui->menuEdit->addSeparator();
-    ui->menuEdit->addAction(theCollisionOffActionPtr);
-    connect (theCollisionOffActionPtr, SIGNAL(triggered()), this, SLOT(on_action_CollisionOff_triggered()));
-    theCollisionOnActionPtr = new QAction(tr("&Prevent Collision"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionCollisionWrong", QSize(64,64));
-    theCollisionOnActionPtr->setIcon(myTmpIcon);
-    theCollisionOnActionPtr->setCheckable(true);
-    theCollisionOnActionPtr->setChecked(theIsCollisionOn);
-    ui->menuEdit->addAction(theCollisionOnActionPtr);
-    connect (theCollisionOnActionPtr, SIGNAL(triggered()), this, SLOT(on_action_CollisionOn_triggered()));
-    theLevelEditorToolbarPtr->addActions(ui->menuEdit->actions());
-    theLevelEditorToolbarPtr->addSeparator();
-
-    // add new drop-down menu "Insert" (and put it before the "Controls" menu)
-    QMenu* myInsertMenuPtr = new QMenu(tr("&Insert"), nullptr);
-    ui->menuBar->insertMenu(ui->menuControls->menuAction(), myInsertMenuPtr);
-    // add all objects into it
-    ObjectFactory::ObjectFactoryList* myOFListPtr = ObjectFactory::getAllFactories();
-    for (auto i : *myOFListPtr)
-    {
-        // TODO: remove the Link-derived ones from the list
-        // TODO: add icons to the action
-        InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), nullptr);
-        connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
-        myInsertMenuPtr->addAction(myTempActionPtr);
-    }
-    delete myOFListPtr;
-    myOFListPtr = nullptr;
-
-    // add new top menu "Editors"
-    QMenu* myEditorsMenuPtr = new QMenu(tr("E&ditors"), nullptr);
-    ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myEditorsMenuPtr);
-    // TODO: add some of the original dialogs to it
-    QAction* myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
-    myGoalActionPtr->setIcon(QIcon::fromTheme("bookmarks"));
-    connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
-    myEditorsMenuPtr->addAction(myGoalActionPtr);
-    QAction* myLevPropActionPtr = new QAction(tr("&Size && Background Editor..."), nullptr);
-    connect (myLevPropActionPtr, SIGNAL(triggered()), this, SLOT(on_levelPropertiesEditorAction_clicked()));
-    myEditorsMenuPtr->addAction(myLevPropActionPtr);
-    myLevPropActionPtr->setIcon(QIcon::fromTheme("tools-wizard"));
-    QAction* myLevNameActionPtr = new QAction(tr("&Name && Description Editor..."), nullptr);
-    myLevNameActionPtr->setEnabled(false);
-    myLevNameActionPtr->setIcon(QIcon::fromTheme("accessories-text-editor"));
-    connect (myLevNameActionPtr, SIGNAL(triggered()), this, SLOT(on_levelNameEditorAction_clicked()));
-    myEditorsMenuPtr->addAction(myLevNameActionPtr);
-    myEditorsMenuPtr->addSeparator();
-    QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), nullptr);
-    connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
-    myEditorsMenuPtr->addAction(myEditObjectActionPtr);
-    theLevelEditorToolbarPtr->addActions(myEditorsMenuPtr->actions());
-    theLevelEditorToolbarPtr->addSeparator();
-
-    // add new top menu "View"
-    QMenu* myViewMenuPtr = new QMenu(tr("&View"), nullptr);
-    ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myViewMenuPtr);
-    theDrawDebugActionPtr = new QAction(tr("&Draw Debug"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionDrawDebug", QSize(64,64));
-    theDrawDebugActionPtr->setCheckable(true);
-    theDrawDebugActionPtr->setChecked(theDrawDebug);
-    theDrawDebugActionPtr->setIcon(myTmpIcon);
-    connect (theDrawDebugActionPtr, SIGNAL(triggered()), this, SLOT(on_action_DrawDebug_triggered()));
-    myViewMenuPtr->addAction(theDrawDebugActionPtr);
-    theDrawNormalActionPtr = new QAction(tr("&Draw Normal"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionDrawNormal", QSize(64,64));
-    theDrawNormalActionPtr->setCheckable(true);
-    theDrawNormalActionPtr->setChecked(!theDrawDebug);
-    theDrawNormalActionPtr->setIcon(myTmpIcon);
-    connect (theDrawNormalActionPtr, SIGNAL(triggered()), this, SLOT(on_action_DrawNormal_triggered()));
-    myViewMenuPtr->addAction(theDrawNormalActionPtr);
-    theLevelEditorToolbarPtr->addActions(myViewMenuPtr->actions());
-    theLevelEditorToolbarPtr->addSeparator();
-
-    // Enable level editor mode
-    theIsLevelEditor = true;
-    ui->action_Switch_to_Level_Editor->setEnabled(false);
-    // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
-    ui->action_Open_File->setEnabled(true);
-    ui->action_Open_File->setVisible(true);
-
-    // More toolbuttons:
-    // toolbutton for cloning an object
-    // add radiotoolbutton to set whether the level developer is allowed to move things on top of each other
-    // add button to enable 'debug drawing'
-}
-
-void MainWindow::on_goalEditorAction_clicked()
-{
-    // the Goals dialog is modeless, i.e. it can stay floating around
-    GoalEditor* myGoalEditorPtr = new GoalEditor(theLevelPtr->getTheWorldPtr(), this);
-    myGoalEditorPtr->show();
-}
-
-void MainWindow::on_insert(const QString& anObjectName)
-{
-    DEBUG1ENTRY;
-    InsertUndoCommand::createInsertUndoCommand(
-                ObjectFactory::createObject(anObjectName, Position(1,1)));
-}
-
-void MainWindow::on_levelPropertiesEditorAction_clicked()
-{
-    // this dialog is modal, i.e. user has to click OK/Cancel
-    EditLevelProperties* myEditorPtr = new EditLevelProperties(theLevelPtr, this);
-    myEditorPtr->show();
-    // I don't care about the return.
-    // If it was OK, the dialog already 'fixed' everything.
-    myEditorPtr->exec();
-}
-
-
-void MainWindow::on_objectEditorAction_clicked()
-{
-    emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(nullptr);
+    // everything is in the constructor of LevelCreator now...
+    Q_ASSERT(nullptr == theLevelCreator);
+    theLevelCreator = new LevelCreator(this);
 }
 
 

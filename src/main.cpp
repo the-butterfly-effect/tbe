@@ -33,9 +33,10 @@ int theVerbosity = 4;
 int theVerbosity = 2;
 #endif
 
-// this variable defines whether we are playing or a level editor
-// switching to LevelEditor is possible through the "Edit" menu.
-std::atomic<bool> theIsLevelEditor(false);
+// This variable defines whether we are playing or the level creator is on
+// switching to LevelCreator is possible through the "File" menu
+// or from the command line.
+std::atomic<bool> theIsLevelCreator(false);
 
 // this variable defines whether in the level editor we are expecting collision
 // detection to work or not - you want this on to align certain things
@@ -93,7 +94,7 @@ static bool displayHelp(QString /*anArgument*/ )
 
 static bool goLevelCreator( QString /*anArgument*/ )
 {
-	theIsLevelEditor = true;
+    theIsLevelCreator = true;
 	return true;
 }
 

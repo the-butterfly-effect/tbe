@@ -114,7 +114,7 @@ void ViewPostIt::initAttributes ( )
 void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
 	DEBUG5("double click!!!");
-//	if (theIsLevelEditor)
+//	if (theIsLevelCreator)
 //	{
 //		QDialog* myEditorPtr = new PostItEditor(theAbstractObjectPtr, this);
 //		myEditorPtr->exec();
@@ -127,7 +127,7 @@ void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 void ViewPostIt::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
 {
     // depending on whether we're level editor or not, move or display
-    if (theIsLevelEditor)
+    if (theIsLevelCreator)
         ViewObject::mousePressEvent(anEvent);
     else
         mouseDoubleClickEvent(anEvent);

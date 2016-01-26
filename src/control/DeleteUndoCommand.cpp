@@ -37,7 +37,7 @@ DeleteUndoCommand::DeleteUndoCommand(
     theTBGPtr = Level::findToolBoxGroup(theViewObjPtr->getAbstractObjectPtr());
 
     // you can always delete (and undelete) objects in Level Creator mode
-    if (theIsLevelEditor==false)
+    if (theIsLevelCreator==false)
         assert(theTBGPtr!=nullptr);
     commit();
 }

@@ -29,13 +29,13 @@ class MainWindow;
 }
 
 class Level;
+class LevelCreator;
 class QGraphicsRectWidget;
 class QGraphicsScene;
 class QToolbar;
 class RegressionTest;
 class ViewWorld;
 class World;
-
 
 /** Local class, specifically meant to have menu items in the "Insert" menu
   * (i.e. our game's objects) that can report their object name to our
@@ -74,7 +74,8 @@ public:
     /// deletes the existing Level instance and removes its view
 	void purgeLevel();
 
-	RegressionTest* theRegressionTest;
+    RegressionTest* theRegressionTest;
+    LevelCreator*    theLevelCreator;
 
 protected:
 	virtual void changeEvent(QEvent *e) override;
@@ -102,7 +103,7 @@ private slots:
 	/// @note: internally uses the InsertUndoCommand mechanism
 	bool slot_insertHint(unsigned int aHintNumber) const;
 
-	// menu Help
+    // menu Help
 	void on_action_About_triggered();
 	void on_action_Bug_Reports_triggered();
 	void on_action_Keyboard_Shortcuts_triggered();
@@ -123,21 +124,6 @@ private slots:
     void on_action_Save_As_triggered();
     void on_action_Switch_to_Level_Editor_triggered();
 
-    // menu Insert (Level Creator)
-    void on_insert(const QString &anObjectName);
-
-    // menu Editors (Level Creator)
-    void on_goalEditorAction_clicked();
-    void on_levelPropertiesEditorAction_clicked();
-    void on_objectEditorAction_clicked();
-
-    // menu Edit (Level Creator)
-    void on_action_Clone_triggered();
-    void on_action_DrawDebug_triggered();
-    void on_action_DrawNormal_triggered();
-    void on_action_CollisionOff_triggered();
-    void on_action_CollisionOn_triggered();
-
     // menu Languages
     void on_switchLanguage(QString);
 
@@ -149,14 +135,7 @@ private:
 
     World* theWorldPtr;
 
-    QToolBar* theLevelEditorToolbarPtr;
-
-    QAction* theCollisionOffActionPtr;
-    QAction* theCollisionOnActionPtr;
-
-    QAction* theDrawDebugActionPtr;
-    QAction* theDrawNormalActionPtr;
-
+    friend class LevelCreator;
     friend class RegressionTest;
 };
 

@@ -184,11 +184,11 @@ void PieMenu::setup()
 
 	bool myBool = (theAOPtr->isResizable()&
 				   (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
-				   || theIsLevelEditor;
+                   || theIsLevelCreator;
 	new ActionIcon(ActionIcon::ACTION_RESIZE,
 								"ActionResize", myBool, this);
 
-	myBool = (theAOPtr->isRotatable()) || theIsLevelEditor;
+    myBool = (theAOPtr->isRotatable()) || theIsLevelCreator;
 	new ActionIcon(ActionIcon::ACTION_ROTATE,
 								"ActionRotate", myBool, this);
 

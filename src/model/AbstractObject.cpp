@@ -214,7 +214,7 @@ const QString AbstractObject::getToolTip() const
 
 bool AbstractObject::isMovable ( ) const
 {
-	if (theIsLevelEditor)
+    if (theIsLevelCreator)
 		return true;
 	else
 		return theIsMovable;

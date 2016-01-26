@@ -98,7 +98,7 @@ protected:
 private:
 	QString theFactoryName;
 
-    friend class MainWindow;
+    friend class LevelCreator;
 };
 
 #endif // OBJECTFACTORY_H

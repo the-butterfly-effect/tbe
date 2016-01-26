@@ -81,7 +81,7 @@ ViewObject::~ViewObject()
     // TODO: doesn't work like this - the InsertUndo keeps the VO around
     // i.e. we need an 'update' member in this ViewObject that takes the
     // visibility into account
-    if (theIsLevelEditor)
+    if (theIsLevelCreator)
     {
 		if (scene()->views().size()>0)
 		{
@@ -218,7 +218,7 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     //    you get an extra mousePressEvent...
     if (theMUCPtr != nullptr)
         return;
-    if (theIsLevelEditor)
+    if (theIsLevelCreator)
     {
         ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
         if (myRSGVPtr)

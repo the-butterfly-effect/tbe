@@ -185,7 +185,7 @@ void ResizingGraphicsView::slot_actionReplay()
 void ResizingGraphicsView::slot_actionSkipLevel()
 {
 	DEBUG3ENTRY;
-    if (theIsLevelEditor==false)
+    if (theIsLevelCreator==false)
     {
         QString myLevelFileName = Level::getLevelFileName();
         QSettings mySettings;
@@ -223,7 +223,7 @@ void ResizingGraphicsView::slot_levelWon(void)
 
     // Anti-cheat:
     // Don't label the level as complete when we're in level editor mode
-    if (!theIsLevelEditor)
+    if (!theIsLevelCreator)
     {
         QString myLevelFileName = Level::getLevelFileName();
         QSettings mySettings;

@@ -63,7 +63,7 @@ public:
 
 	/** overridden from QGraphicsItem
 	 * also, upon a single click event, let's show the text of the note-its
-	 * (or just do move if we're in leveleditor)
+     * (or just do move if we're in the level creator)
 	 */
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
 
