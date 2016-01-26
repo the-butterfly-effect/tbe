@@ -26,6 +26,7 @@
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
 #include "SimulationControls.h"
+#include "Translator.h"
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
 #include "ViewWorld.h"
@@ -127,7 +128,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	fitInView(0, -aScenePtr->getHeight(),
 			  aScenePtr->getWidth(), aScenePtr->getHeight());
 	resizeEvent(nullptr);
-	theMainWindowPtr->setWindowTitle(APPNAME + " - " + aLevelName);
+	theMainWindowPtr->setWindowTitle(APPNAME + " - " + TheGetText(aLevelName));
 
 	// also set the startstopwatch view
     theSimControlsPtr->hookSignalsUp(aScenePtr, this);
