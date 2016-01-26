@@ -238,12 +238,13 @@ void ResizingGraphicsView::slot_levelWon(void)
 }
 
 
-void ResizingGraphicsView::slot_showEditObjectDialog(AbstractObjectPtr anAOPtr)
+void ResizingGraphicsView::slot_updateObjectDialog(AbstractObjectPtr anAOPtr)
 {
+    theSelectedAOWeakPtr = anAOPtr;
     if (theObjectEditorPtr!=nullptr)
         delete theObjectEditorPtr;
     theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
-    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(on_objectEditor_destroyed()));
+    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(slot_editObjectDialog_destroyed()));
     theObjectEditorPtr->show();
 }
 

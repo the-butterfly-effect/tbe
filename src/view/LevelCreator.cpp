@@ -59,7 +59,6 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     QAction* myCloneActionPtr = new QAction(tr("&Clone object"), nullptr);
     QIcon myTmpIcon  = ImageCache::getQIcon("ActionClone", QSize(64,64));
     myCloneActionPtr->setIcon(myTmpIcon);
-    myCloneActionPtr->setEnabled(false);
     ui->menuEdit->addSeparator();
     ui->menuEdit->addAction(myCloneActionPtr);
     connect (myCloneActionPtr, SIGNAL(triggered()), this, SLOT(on_action_Clone_triggered()));
@@ -144,20 +143,29 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     // Enable level editor mode
     theIsLevelCreator = true;
     ui->action_Switch_to_Level_Editor->setEnabled(false);
-    // TODO: it would be marvellous to have Cut/Copy/Paste in the Edit menu!
     ui->action_Open_File->setEnabled(true);
     ui->action_Open_File->setVisible(true);
-
-    // More toolbuttons:
-    // toolbutton for cloning an object
-    // add radiotoolbutton to set whether the level developer is allowed to move things on top of each other
-    // add button to enable 'debug drawing'
 }
 
 
 void LevelCreator::on_action_Clone_triggered()
 {
-
+    DEBUG1ENTRY;
+    // yay, we need to be careful here - theSelectedAOWeakPtr can have expired
+    try {
+        AbstractObjectPtr myAOPtr(ui->graphicsView->theSelectedAOWeakPtr);
+        if (nullptr == myAOPtr)
+            return;
+        Vector myDelta(0.5*myAOPtr->getTheWidth(), -0.5*myAOPtr->getTheHeight());
+        AbstractObjectPtr myClonePtr = ObjectFactory::cloneObject(myAOPtr);
+        myClonePtr->setOrigCenter(myAOPtr->getOrigCenter()+myDelta);
+        InsertUndoCommand::createInsertUndoCommand(myClonePtr);
+    }
+    catch (std::bad_weak_ptr)
+    {
+        DEBUG1("ERROR: on_action_Clone_triggered() for outdated object...");
+        return;
+    }
 }
 
 
@@ -221,7 +229,9 @@ void LevelCreator::on_levelPropertiesEditorAction_clicked()
 
 void LevelCreator::on_objectEditorAction_clicked()
 {
-    emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_showEditObjectDialog(nullptr);
+    // TODO: this cannot be true: first of all, can cause a nullptr dereference,
+    // secondly, how can you enable an objectcreator by passing a nullptr???
+    //emit dynamic_cast<ResizingGraphicsView*>(ui->graphicsView)->slot_updateObjectDialog(nullptr);
 }
 
 

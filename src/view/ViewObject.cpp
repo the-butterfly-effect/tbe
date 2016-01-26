@@ -87,7 +87,7 @@ ViewObject::~ViewObject()
 		{
 			ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
 			if (nullptr != myRSGVPtr)
-				emit myRSGVPtr->slot_showEditObjectDialog(nullptr);
+                emit myRSGVPtr->slot_updateObjectDialog(nullptr);
 		}
     }
 }
@@ -222,7 +222,7 @@ void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
     {
         ResizingGraphicsView* myRSGVPtr = dynamic_cast<ResizingGraphicsView*>(scene()->views()[0]);
         if (myRSGVPtr)
-            emit myRSGVPtr->slot_showEditObjectDialog(getAbstractObjectPtr());
+            emit myRSGVPtr->slot_updateObjectDialog(getAbstractObjectPtr());
     }
     if (theAbstractObjectPtr->isMovable())
     {
