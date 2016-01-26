@@ -72,7 +72,7 @@ ObjectFactory::createObject(
 	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p", ASCII(aName), myFactoryPtr);
 	if (myFactoryPtr == nullptr)
 	{
-		DEBUG1("There is no factory for Object type %s", ASCII(aName));
+		DEBUG1("There is no factory for Object type '%s'", ASCII(aName));
 		return nullptr;
 	}
     AbstractObject* myObjectPtr = myFactoryPtr->createObject();
@@ -89,6 +89,26 @@ ObjectFactory::createObject(
 		myObjectPtr->theHeight=anHeight;
     // finally, get rid of the actual pointer and return the shared_ptr
     return mySharedOPtr;
+}
+
+AbstractObjectPtr
+ObjectFactory::cloneObject(const AbstractObjectPtr anOriginalPtr)
+{
+    // *** use our factory to create a similar object
+    AbstractObjectPtr myClonePtr = createObject(
+                anOriginalPtr->getInternalName(),
+                anOriginalPtr->theCenter,
+                anOriginalPtr->theWidth,
+                anOriginalPtr->theHeight);
+    // *** copy all Properties that make sense
+    myClonePtr->theProps = anOriginalPtr->theProps;
+
+    // *** copy everything else
+    myClonePtr->theToolTip = anOriginalPtr->theToolTip;
+    myClonePtr->hasCustomToolTip = anOriginalPtr->hasCustomToolTip;
+
+    // *** we're done
+    return myClonePtr;
 }
 
 

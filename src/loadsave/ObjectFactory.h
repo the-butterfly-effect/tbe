@@ -75,7 +75,11 @@ protected:
 			const qreal aWidth = 1.0,
 			const qreal anHeight = 1.0);
 
-	static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
+    /// clone anObject, i.e. create another object with similar properties
+    /// @note: property ID is TODO
+    static AbstractObjectPtr cloneObject(const AbstractObjectPtr anOriginalPtr);
+
+    static void announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr);
 
 	/// setup e.g. theInternalName of the object
     AbstractObject* fixObject(AbstractObject*anObjectPtr) const;

@@ -75,6 +75,14 @@ const char* Property::COLLIDE_STRING = "collide";
 const char* Property::ISCHILD_STRING = "__isChild";
 
 
+PropertyList::PropertyList(const PropertyList &anOriginal)
+    : theProperties(anOriginal.theProperties),
+      theDefaultProperties(anOriginal.theDefaultProperties)
+
+{
+    // nothing to do...
+}
+
 
 void PropertyList::clear (void)
 {
@@ -259,6 +267,7 @@ bool PropertyList::property2Vector(const QString& aPropertyName, Vector* aPositi
 
 	return false;
 }
+
 
 void PropertyList::setDefaultPropertiesString(const QString& aSeparableString)
 {

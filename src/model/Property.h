@@ -32,6 +32,12 @@ class World;
 class PropertyList
 {
 public:
+    /// default constructor
+    explicit PropertyList() { };
+
+    /// copy constructor
+    explicit PropertyList(const PropertyList& anOriginal);
+
 	/// empty virtual destructor
 	virtual ~PropertyList() {;}
 
