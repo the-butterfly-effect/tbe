@@ -57,7 +57,7 @@ void AnimatedDialog::appearAnimated()
 		emit myADPtr->disappearAnimated();
 
 	// setup the animation to appear
-	const qreal DURATION=1500;
+	const qreal DURATION=800;
     emit show();
 	if (theAnimation.state()==QPropertyAnimation::Running)
 	{
@@ -76,7 +76,7 @@ void AnimatedDialog::appearAnimated()
     case FROM_TOPRIGHT:
     default:
         theAnimation.setDuration(DURATION);
-        theAnimation.setEasingCurve(QEasingCurve::OutBounce);
+        theAnimation.setEasingCurve(QEasingCurve::OutQuad);
         break;
     case TOOLTIP:
         theAnimation.setDuration(DURATION/4);
