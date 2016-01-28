@@ -40,6 +40,13 @@ Singleton::Translator::Translator()
 }
 
 
+QString Singleton::Translator::getCurrentLanguage()
+{
+    auto myLocale = QLocale::system();
+    return QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(myLocale.language()));
+}
+
+
 QStringList Singleton::Translator::getLanguageList()
 {
     QDir myDir = QDir(theBaseTbeQtLocation);
@@ -62,6 +69,8 @@ QStringList Singleton::Translator::getLanguageList()
         QString myLocaleName = QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(myLocale.language()));
         myFinalList.append(myLocaleName);
     }
+    myFinalList.append("en_US = English");
+    myFinalList.sort();
     return myFinalList;
 }
 

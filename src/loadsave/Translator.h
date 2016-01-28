@@ -41,17 +41,25 @@ public:
     static Translator& me();
 
     //------------------------------
-    /// Retrieves a list of possible language settings
+
+    /// Returns the currently selected language, using the same syntax as
+    /// getLanguageList():   "en_US = English"
+    QString getCurrentLanguage();
+
+    /// Retrieves a list of possible language settings, including en_US.
+    /// Every string in this list looks like: "nl_NL = dutch"
     QStringList getLanguageList();
 
     /// Use to get the current translation for a level XML string.
     /// @param aStringToTranslate string to translate
     /// @returns translated string according to the currently set locale if possible
+    /// @note please refer to the convenience macro TheGetText() below
     const char* getText(const char* aStringToTranslate);
 
     /// Use to get the current translation for a level XML string.
     /// @param aStringToTranslate string to translate
     /// @returns translated string according to the currently set locale if possible
+    /// @note please refer to the convenience macro TheGetText() below
     const QString getText(const QString& aStringToTranslate);
 
     /// Called at application startup to initialise the locales.
