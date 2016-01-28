@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thebutterflyeffect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-20 22:27+0300\n"
-"PO-Revision-Date: 2016-01-11 17:21+0000\n"
+"POT-Creation-Date: 2016-01-25 13:25+0100\n"
+"PO-Revision-Date: 2016-01-26 00:02+0000\n"
 "Last-Translator: Wuzzy <almikes@aol.com>\n"
 "Language-Team: German (http://www.transifex.com/Magic/thebutterflyeffect/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -40,416 +40,412 @@ msgid "99 Luftballons,<br>nanana na nana naaa..."
 msgstr "99 Luftballons,<br>nanana-na-nana-naaa …"
 
 #: tbe_levels:6
-msgid ""
-"A balancing beam threatens to kill a butterfly. But that's not all that "
-"needs fixing."
-msgstr "Ein balancierender Träger droht, einen Schmetterling zu töten. Aber das ist nicht alles, was repariert werden muss."
-
-#: tbe_levels:7
-msgid "A ball on a bar. Turn it around. Topple the pin."
-msgstr "Ein Ball auf einem Balken. Drehen Sie ihn um. Werfen Sie den Pin um."
-
-#: tbe_levels:8
-msgid ""
-"a bowling ball needs to cross a big gap. Let's help crossing. Both ball and "
-"Pin need to be on the right!"
-msgstr "Eine Bowlingkugel muss eine große Lücke überqueren. Lass uns ihm beim überqueren helfen. Beide, Ball und Pin, müssen auf die rechte Seite!"
-
-#: tbe_levels:9
-msgid "a bowling ball needs to cross a big gap. Or does he?"
-msgstr "Ein Bowlingkugel muss eine große Lücke überschreiten. Schafft er es?"
-
-#: tbe_levels:10
 msgid "A few crates of Cola washed up shore lately - so he's not thirsty."
 msgstr "Ein paar Colakisten wurden neulich angeschwemmt – also ist er nicht durstig."
 
-#: tbe_levels:11
-msgid "a football needs to cross a big gap. Let's help crossing."
-msgstr "Ein Fußball muss eine große Lücke überqueren. Lassen Sie uns ihm helfen."
-
-#: tbe_levels:12
+#: tbe_levels:7
 msgid "All need popping..."
 msgstr "Alle müssen platzen …"
 
-#: tbe_levels:13
+#: tbe_levels:8
 msgid "A Lonely Bowling Pin..."
 msgstr "Ein einsamer Bowling-Pin …"
 
-#: tbe_levels:14
+#: tbe_levels:9
 msgid "And a balloon that wants to go up."
 msgstr "Und ein Ballon, der nach oben steigen möchte."
 
-#: tbe_levels:15
+#: tbe_levels:10
 msgid "And again my best invention yet: the skyhook."
 msgstr "Und wieder meine bisher beste Erfindung: Der Himmelshaken."
 
-#: tbe_levels:16
+#: tbe_levels:11
 msgid "And enjoy your first large Rube Goldberg-ish contraption."
 msgstr "Und genießen Sie Ihre erste große Rube-Goldberg-artige Apparatur."
 
-#: tbe_levels:17
+#: tbe_levels:12
 msgid ""
 "And you already realized that the weird thingies can adjust the trajectories"
 " of both the ball and the bottle, right?"
-msgstr "Und du hast bereits bemerkt, dass diese komischen Dinger die Flugbahn von beidem, dem Ball und der Flasche, verändern können, richtig?"
+msgstr "Und haben Sie schon gemerkt, dass diese seltsamen Dinger die Flugbahnen von sowohl dem Ball als auch der Flasche umlenken?"
 
-#: tbe_levels:18
+#: tbe_levels:13
 msgid "And you can hang a lot of weight on it, too!"
 msgstr "Und Sie können auch viel Gewicht daran aufhängen."
 
-#: tbe_levels:19
-msgid "Another Butterfly and Flower - with a styrofoam wall inbetween."
-msgstr "Noch ein Schmetterling und eine Blume – mit einer Styroporwand dazwischen."
-
-#: tbe_levels:20
+#: tbe_levels:14
 msgid "Another contraption for the creative mind."
 msgstr "Noch eine verrückte Maschine für die Kreativen."
 
-#: tbe_levels:21
+#: tbe_levels:15
 msgid "Another game from my childhood."
 msgstr "Ein weiteres Spiel aus meiner Kindheit."
 
-#: tbe_levels:22
+#: tbe_levels:16
 msgid "Another pin needs kicking!"
 msgstr "Ein weiterer Pin muss gekickt werden!"
 
-#: tbe_levels:23
+#: tbe_levels:17
 msgid "... An unhappy<br><br><br>Post-It Boy"
 msgstr "… Ein unglücklicher<br><br><br>Notizschreiber"
 
-#: tbe_levels:24
+#: tbe_levels:18
 msgid "As you can guess, I only want maximum score..."
 msgstr "Wie Sie wohl vermutet haben, möchte ich nur die höchste Punkzahl."
 
-#: tbe_levels:25
+#: tbe_levels:19
 msgid "As you know,<br>those are not too sturdy."
 msgstr "Wie Sie wissen,<br>sind diese nicht sehr robust."
 
-#: tbe_levels:26
-msgid "a tennis ball needs to cross a big gap. Let's help crossing."
-msgstr "Ein Tennisball muss eine große Lücke überqueren. Helfen wir ihm!"
-
-#: tbe_levels:27
-msgid "A volley ball must topple a pin from the other end."
-msgstr "Ein Volleyball muss einen Pin am anderen Ende umwerfen."
-
-#: tbe_levels:28
-msgid "A weight on a chain, hanging on... air?"
-msgstr "Ein Gewicht an einer Kette, dass an der … Luft hängt?"
-
-#: tbe_levels:29
-msgid "Balance your diet? Drink Cola! Goal: Topple the pins."
-msgstr "Ausgewogen ernährt? Trinken Sie Cola! Ziel: Werfen Sie die Pins um."
-
-#: tbe_levels:30
+#: tbe_levels:20
 msgid "Balancing Cola"
 msgstr "Ausgewogene Cola"
 
-#: tbe_levels:31
+#: tbe_levels:21
 msgid "Balloon"
 msgstr "Ballon"
 
-#: tbe_levels:32
+#: tbe_levels:22
+msgid "Balloon Blues"
+msgstr "Ballon-Blues"
+
+#: tbe_levels:23
 msgid "Balloons do Poof"
 msgstr "Ballons machen „Puff!“"
 
-#: tbe_levels:33
+#: tbe_levels:24
 msgid "Balloons go up!"
 msgstr "Ballons steigen hoch!"
 
-#: tbe_levels:34
+#: tbe_levels:25
 msgid "Balls will roll to the left and speed up along the way."
 msgstr "Bälle werden nach links rollen und auf dem Weg immer schneller."
 
-#: tbe_levels:35
+#: tbe_levels:26
 msgid "Be careful not to hit it!"
 msgstr "Seien Sie vorsichtig, ihn nicht zu treffen!"
 
-#: tbe_levels:36
+#: tbe_levels:27
+msgid "Bed of nails"
+msgstr "Nagelbrett"
+
+#: tbe_levels:28
 msgid "Bed of Nails"
 msgstr "Nagelbrett"
 
-#: tbe_levels:37
+#: tbe_levels:29
+msgid "Birch bar"
+msgstr "Birkenholzbalken"
+
+#: tbe_levels:30
+msgid "Birch block"
+msgstr "Birkenholzblock"
+
+#: tbe_levels:31
+msgid "Birch Block"
+msgstr "Birkenholzblock"
+
+#: tbe_levels:32
 msgid "Blast it! They stole my dynamite!!!"
 msgstr "Verdammt! Sie haben mein Dynamit gestohlen!"
 
-#: tbe_levels:38
-msgid "Block"
-msgstr "Block"
-
-#: tbe_levels:39
+#: tbe_levels:33
 msgid "Blow da Bottle"
 msgstr "Der Umsturz"
 
-#: tbe_levels:40
+#: tbe_levels:34
+msgid "Blow up the dynamite and pop the balloon."
+msgstr "Jagen Sie das Dynamit in die Luft und lassen Sie den Ballon platzen."
+
+#: tbe_levels:35
 msgid "Both pins have to go down."
 msgstr "Beide Pins müssen hinunterfallen."
 
-#: tbe_levels:41
+#: tbe_levels:36
 msgid "Boulder"
 msgstr "Stein"
 
-#: tbe_levels:42
+#: tbe_levels:37
 msgid "Bouncing Balls"
 msgstr "Springende Bälle"
 
-#: tbe_levels:43
+#: tbe_levels:38
 msgid "Bowling Ball"
 msgstr "Bowlingkugel"
 
-#: tbe_levels:44
+#: tbe_levels:39
 msgid "Bowling Ball vs Bowling Pin.<br><br>Who will win?"
 msgstr "Bowlingkugel gegen Bowling-Pin.<br><br>Wer wird gewinnen?"
 
-#: tbe_levels:45
+#: tbe_levels:40
 msgid "Bowling Pin"
 msgstr "Bowling-Pin"
 
-#: tbe_levels:46
+#: tbe_levels:41
 msgid "Bowling Pin plays soccer..."
 msgstr "Bowling-Pin spielt Fußball …"
 
-#: tbe_levels:47
+#: tbe_levels:42
 msgid "<br><br>a busy Post-It Boy"
 msgstr "<br><br>ein beschäftigter Notizschreiber"
 
-#: tbe_levels:48
+#: tbe_levels:43
 msgid "<br><br> ... a hungry Post-it Boy"
 msgstr "<br><br> … ein hungriger Notizschreiber"
 
-#: tbe_levels:49
+#: tbe_levels:44
 msgid "<br><br> ... a lazy Post-It boy"
 msgstr "<br><br> … ein fauler Notizschreiber"
 
-#: tbe_levels:50
+#: tbe_levels:45
 msgid "<br> <br> ... and he likes crashing bridges even more!"
 msgstr "<br><br> … und er mag es noch mehr, Brücken zum Einsturz zu bringen!"
 
-#: tbe_levels:51
+#: tbe_levels:46
 msgid "<br><br>... An unhappy<br><br>Post-It Boy"
 msgstr "<br><br>… Ein unglücklicher<br><br>Notizschreiber"
 
-#: tbe_levels:52
+#: tbe_levels:47
 msgid "<br><br><br><br>...me"
 msgstr "<br><br><br><br>… ich"
 
-#: tbe_levels:53
+#: tbe_levels:48
 msgid "<br>...<br><br>I've always wanted to say that!"
 msgstr "<br>...<br><br>Ich wollte dies schon immer sagen!"
 
-#: tbe_levels:54
+#: tbe_levels:49
 msgid "<br><br><br>...Post-it boy<br>(male, I think)"
 msgstr "<br><br><br>… Notizschreiber<br>(männlich, denke ich)"
 
-#: tbe_levels:55
+#: tbe_levels:50
 msgid "<br><br>Post-It Boy<br><br> ... is brief for once"
 msgstr "<br><br>Der Notizschreiber<br><br> … fässt sich mal kurz"
 
-#: tbe_levels:56
+#: tbe_levels:51
 msgid "<br><br>Post-It Boy<br><br> ... thinks of an ancient steam engine"
-msgstr "<br><br>Der Notizschreiber<br><br> … denkt an eine altertümliche Dampfmaschine"
+msgstr "<br>Der Notizschreiber<br><br> … denkt an eine altertümliche Dampfmaschine"
 
-#: tbe_levels:57
+#: tbe_levels:52
 msgid "<br><br> ... the Post-it Boy"
 msgstr "<br><br> … der Notizschreiber"
 
-#: tbe_levels:58
+#: tbe_levels:53
 msgid "<br><br>the Post-it Boy"
 msgstr "<br><br>der Notizschreiber"
 
-#: tbe_levels:59
+#: tbe_levels:54
 msgid "<br><br> ... the Post-It boy"
 msgstr "<br><br> … der Notizschreiber"
 
-#: tbe_levels:60
+#: tbe_levels:55
 msgid "<br> <br> the Post-It Boy "
 msgstr "<br> <br> der Notizschreiber"
 
-#: tbe_levels:61
+#: tbe_levels:56
 msgid ""
 "<br><br> ... the Post-It boy<br><br> ... almost done with his home work!"
 msgstr "<br><br> … der Notizschreiber<br><br> … fast fertig mit seiner Hausarbeit!"
 
-#: tbe_levels:62
+#: tbe_levels:57
 msgid ""
 "<br> <br> the Post-It Boy <br> <br> <i>(insert joke about bridge here)</i> "
 msgstr "<br> <br> der Notizschreiber <br> <br> <i>(Witz über Brücken hier einfügen)</i>"
 
-#: tbe_levels:63
+#: tbe_levels:58
 msgid "<br> <br> the Post-It Boy <br> <br> is on it again "
 msgstr "<br> <br> the Notizschreiber <br> <br> ist wieder da"
 
-#: tbe_levels:64
+#: tbe_levels:59
 msgid "<br> <br> the Post-It Boy <br> <br> likes building bridges "
 msgstr "<br><br> der Notizschreiber <br><br> mag es, Brücken zu bauen"
 
-#: tbe_levels:65
+#: tbe_levels:60
 msgid "<br><br>the Post-it Boy<br><br>saves the animals..."
 msgstr "<br><br>der Notizschreiber<br><br>rettet die Tiere …"
 
-#: tbe_levels:66
+#: tbe_levels:61
 msgid "<br><br> ... thirsty Post-it Boy"
 msgstr "<br><br> … durstiger Notizschreiber"
 
-#: tbe_levels:67
+#: tbe_levels:62
 msgid "Bridge the Gap I"
 msgstr "Überbrückung I"
 
-#: tbe_levels:68
+#: tbe_levels:63
 msgid "Bridge the Gap II"
 msgstr "Überbrückung II"
 
-#: tbe_levels:69
+#: tbe_levels:64
 msgid "Bridge the Gap III"
 msgstr "Überbrückung III"
 
-#: tbe_levels:70
+#: tbe_levels:65
 msgid "<br> was signed:<br><br>the Post-It boy<br>(in a destructive mood)"
 msgstr "<br>gezeichnet:<br><br>der Notizschreiber<br>(in einer destruktiven Stimmung)"
 
-#: tbe_levels:71
+#: tbe_levels:66
 msgid "...<br>was signed:<br>the Post-it Boy"
 msgstr "…<br>gezeichnet:<br>der Notizschreiber"
 
-#: tbe_levels:72
+#: tbe_levels:67
 msgid "But a lot needs to happen before that pin moves."
 msgstr "Aber es muss viel passieren, bevor sich der Pin bewegt."
 
-#: tbe_levels:73
+#: tbe_levels:68
 msgid "But do you see those coconuts?"
 msgstr "Aber sehen Sie diese Kokosnüsse?"
 
-#: tbe_levels:74
+#: tbe_levels:69
 msgid "But fear not! There's always a true mechanical solution."
 msgstr "Aber keine Angst! Es gibt immer eine mechanische Lösung."
 
-#: tbe_levels:75
+#: tbe_levels:70
 msgid "But he has no friends, only a bowling pin."
 msgstr "Aber er hat keine Freunde, nur einen Bowling-Pin."
 
-#: tbe_levels:76
+#: tbe_levels:71
 msgid "But I'm not so sure about that volley ball."
 msgstr "Jedoch bin ich mir bezüglich des Volleyballs nicht so sicher."
 
-#: tbe_levels:77
+#: tbe_levels:72
 msgid "But I've said enough...<br><br> Good luck!"
 msgstr "Aber ich habe genug gesagt …<br><br>Viel Glück!"
 
-#: tbe_levels:78
+#: tbe_levels:73
 msgid "But let me give you one hint:<br><br> First a Boom, then the Zoinggg."
 msgstr "Aber lassen Sie mich einen Hinweis geben:<br><br> Zuerst ein Bumm und dann das Zoing."
 
-#: tbe_levels:79
+#: tbe_levels:74
+msgid "Butterflies of Doom"
+msgstr "Schmetterlinge des Unheils"
+
+#: tbe_levels:75
+msgid "Butterfly"
+msgstr "Schmetterling"
+
+#: tbe_levels:76
 msgid "Butterfly on steroids"
 msgstr "Schmetterling auf Steroide"
 
-#: tbe_levels:80
+#: tbe_levels:77
 msgid "But that ball has a jumpy friend!"
 msgstr "Jedoch hat die Kugel einen springenden Freund!"
 
-#: tbe_levels:81
+#: tbe_levels:78
 msgid "But that's not an ordinary cola bottle..."
 msgstr "Aber dies ist keine gewöhnliche Colaflasche …"
 
-#: tbe_levels:82
+#: tbe_levels:79
 msgid "But there are no scissors here to pop the balloon with!"
 msgstr "Aber hier gibt es keine Schere, um den Ballon zum Platzen zu bringen."
 
-#: tbe_levels:83
+#: tbe_levels:80
 msgid "But there's some styrofoam blocks in the way..."
 msgstr "Jedoch sind einige Styroporblöcke im Weg …"
 
-#: tbe_levels:84
+#: tbe_levels:81
 msgid "But use only two different methods!"
 msgstr "Verwenden Sie aber nur zwei verschiedene Methoden!"
 
-#: tbe_levels:85
+#: tbe_levels:82
 msgid "But why do I have to clean my room every year?"
 msgstr "Aber warum muss ich jedes Jahr mein Zimmer aufräumen?"
 
-#: tbe_levels:86
+#: tbe_levels:83
 msgid ""
 "But why not reverse the trick? You can select what phone number to call!"
 msgstr "Aber warum den Trick nicht umkehren? Sie können die Telefonnummer auswählen, welche angerufen werden soll!"
 
-#: tbe_levels:87
+#: tbe_levels:84
 msgid "By the way: it is possible with only one of those weird thingies!"
 msgstr "Nebenbei: Es ist auch mit nur einem dieser komischen Dinger möglich!"
 
-#: tbe_levels:88
+#: tbe_levels:85
 msgid "By the way: there are two ramps in the toolbox. Use them wisely!"
 msgstr "Nebenbei: Es befinden sich zwei Rampen im Werkzeugkasten. Setzen Sie diese klug ein!"
 
-#: tbe_levels:89
+#: tbe_levels:86
 msgid ""
 "By the way: you may sometimes have more in your toolbox than you need..."
 msgstr "Nebenbei: Sie haben möglicherweise mehr Sachen im Werkzeugkasten, als Sie benötigen."
 
-#: tbe_levels:90
+#: tbe_levels:87
 msgid "Cactus"
 msgstr "Kaktus"
 
-#: tbe_levels:91
-msgid ""
-"Can you live from just cola? Let's have some coconuts! Goal: shoot the "
-"coconut from the tree."
-msgstr "Kann man nur von Cola leben? Lassen Sie uns ein paar Kokosnüsse probieren. Ziel: Schießen Sie die Kokosnuss vom Baum."
-
-#: tbe_levels:92
+#: tbe_levels:88
 msgid "Clogging the pipe"
 msgstr "Rohrverstopfung"
 
-#: tbe_levels:93
+#: tbe_levels:89
 msgid "Coconut instead of Cola"
 msgstr "Kokosnuss statt Cola"
 
-#: tbe_levels:94
+#: tbe_levels:90
 msgid "Cola bottle"
 msgstr "Colaflasche"
 
-#: tbe_levels:95
+#: tbe_levels:91
 msgid "Cola Crate"
 msgstr "Colakiste"
 
-#: tbe_levels:96
+#: tbe_levels:92
 msgid "Cola-mint"
 msgstr "Cola-Minze"
 
-#: tbe_levels:97
+#: tbe_levels:93
 msgid "Cola+mint"
 msgstr "Cola+Pfefferminze"
 
-#: tbe_levels:98
+#: tbe_levels:94
 msgid "Cola+mint Bottle"
 msgstr "Cola-Pfefferminz-Flasche"
 
-#: tbe_levels:99
+#: tbe_levels:95
 msgid "Cola Powered Bike"
 msgstr "Cola-getriebenes Fahrrad"
 
-#: tbe_levels:100
+#: tbe_levels:96
 msgid "Cola Rocket"
 msgstr "Cola-Rakete"
 
-#: tbe_levels:101
+#: tbe_levels:97
+msgid "Construction Yard"
+msgstr "Baustelle"
+
+#: tbe_levels:98
 msgid "Contraption 1"
 msgstr "Verrückte Maschine 1"
 
-#: tbe_levels:102
+#: tbe_levels:99
 msgid "Contraption 2"
 msgstr "Verrückte Maschine 2"
 
-#: tbe_levels:103
+#: tbe_levels:100
+msgid "Deliver the birthday present to Jumping Jack."
+msgstr "Liefern Sie das Geburtstagsgeschenk an den Wackelpeter."
+
+#: tbe_levels:101
+msgid "Demolish the house of cards."
+msgstr "Demolieren Sie das Kartenhaus."
+
+#: tbe_levels:102
 msgid "Detonator Box"
 msgstr "Explosionskasten"
 
-#: tbe_levels:104
+#: tbe_levels:103
 msgid "Dial B for Boom"
 msgstr "Wählen Sie B für Bumm"
 
-#: tbe_levels:105
+#: tbe_levels:104
 msgid "Dial the right number!"
 msgstr "Wählen Sie die richtige Nummer!"
+
+#: tbe_levels:105
+msgid ""
+"Did you know there was so much technology underneath a hole?<br><br><br>... "
+"the Post-It Boy"
+msgstr "Wussten Sie, dass sich unter einem Loch so viel Technologie befindet?<br><br><br>… der Notizschreiber"
 
 #: tbe_levels:106
 msgid "Domino"
@@ -480,934 +476,1079 @@ msgid "Do you know what an unstable equilibrium is?"
 msgstr "Wissen Sie, was ein instabiles Gleichgewicht ist?"
 
 #: tbe_levels:113
+msgid ""
+"Drop the left pin into the left pit, and the right pin into the right pit."
+msgstr "Lassen Sie den linken Pin in die linke Grube, und den rechten Pin in die rechte Grube fallen."
+
+#: tbe_levels:114
 msgid "Dynamite"
 msgstr "Dynamit"
 
-#: tbe_levels:114
+#: tbe_levels:115
 msgid "En garde! (That's French)"
 msgstr "En garde! (Das ist französisch)"
 
-#: tbe_levels:115
+#: tbe_levels:116
 msgid "Extreme Tux Racer"
 msgstr "Extreme Tux Racer"
 
-#: tbe_levels:116
+#: tbe_levels:117
 msgid "feeling a winner already...<br><br>the Post-it Boy"
 msgstr "Ich fühle mich jetzt schon wie ein Sieger … <br><br>der Notizschreiber"
 
-#: tbe_levels:117
+#: tbe_levels:118
 msgid "Find the Message..."
 msgstr "Finden Sie die Nachricht …"
 
-#: tbe_levels:118
+#: tbe_levels:119
 msgid "Five Balloons"
 msgstr "Fünf Ballons"
 
-#: tbe_levels:119
+#: tbe_levels:120
 msgid "float balloon, float"
 msgstr "Schweb, Ballon, schweb!"
 
-#: tbe_levels:120
+#: tbe_levels:121
 msgid "Floor"
 msgstr "Boden"
 
-#: tbe_levels:121
+#: tbe_levels:122
 msgid "Flying from flower to flower can be hard. A real hurdle race."
 msgstr "Von Blume zu Blume fliegen kann sehr schwer sein. Ein echter Hürdenlauf."
 
-#: tbe_levels:122
+#: tbe_levels:123
 msgid "Football in Styrofoam..."
 msgstr "Ein Fußball ins Styropor …"
 
-#: tbe_levels:123
+#: tbe_levels:124
 msgid "Geyser"
 msgstr "Geysir"
 
-#: tbe_levels:124
-msgid "Goal: join all bowling pins together."
-msgstr "Ziel: Bringen Sie alle Bowling-Pins zusammen."
-
 #: tbe_levels:125
-msgid "Goal: Topple the pin."
-msgstr "Ziel: Schmeißen Sie den Pin um."
-
-#: tbe_levels:126
 msgid "GOOOOAAAAAL !!!"
 msgstr "TOOOOOORRRR !!!"
 
-#: tbe_levels:127
-msgid ""
-"Hah! They have decided it's time to put up the tent. I don't agree - let's "
-"tear down the poles!"
-msgstr "Hah! Sie haben sich entschlossen, dass es Zeit ist, das Zelt aufzubauen. Ich seh das nicht so – lassen Sie uns die Stangen umwerfen!"
+#: tbe_levels:126
+msgid "Got Milk?"
+msgstr "Milch macht’s!"
 
-#: tbe_levels:128
+#: tbe_levels:127
 msgid "Hammer"
 msgstr "Hammer"
 
-#: tbe_levels:129
+#: tbe_levels:128
 msgid "Have you read 'Foucault's Pendulum'?"
 msgstr "Haben Sie „Das Foucaultsche Pendel” gelesen?"
 
-#: tbe_levels:130
+#: tbe_levels:129
 msgid ""
 "Have you seen the movie \"UP\"?<br><br>Unfortunately, I don't have that many"
 " balloons."
 msgstr "Haben Sie den Film „Oben“ gesehen?<br><br>Leider habe ich nicht so viele Ballons."
 
+#: tbe_levels:130
+msgid "Heavy Crate"
+msgstr "Schwere Kiste"
+
 #: tbe_levels:131
 msgid ""
-"Hello!<br>Welcome to The Butterfly Effect!<br><br>This level is a first "
-"demonstration. Click PLAY in the top-right and watch the butterfly fly. When"
-" it is at the flower, you've won your first level.<br><br>You might want to "
-"click on the Post-it note!"
-msgstr "Hallo!<br>Willkommen bei „Der Schmetterlingseffekt“!<br><br>Dieser Level ist eine erste Demonstration. Klicken Sie auf „Abspielen“ auf der oberen rechten Seite und schauen Sie sich den fliegenden Schmetterling an. Sobald dieser die Blume erreicht hat, haben Sie Ihr erstes Level gewonnen.<br><br>Sie möchten vielleicht auch auf den Klebezettel klicken!"
+"He found a penguin willing to play goal keeper.<br><br>The penguin is a "
+"little short, though.<br><br>But still my bro can practice aiming high."
+msgstr "Er fand einen Pinguin, der gerne den Torwart spielt.<br>Der Pinguin ist nur etwas klein.<br>Aber mein Bruder kann mit etwas Übung höher zielen."
 
 #: tbe_levels:132
+msgid "Heh. Heh. Heh."
+msgstr "Hehehe."
+
+#: tbe_levels:133
+msgid ""
+"Hello!<br>Welcome to The Butterfly Effect!<br><br>This level is a first "
+"demonstration. Click “Play” in the top-right and watch the butterfly fly. "
+"When it is at the flower, you've won your first level.<br><br>You might want"
+" to click on the Post-it note!"
+msgstr "Hallo!<br>Willkommen bei „Der Schmetterlingseffekt“!<br><br>Dieser Level ist eine erste Demonstration. Klicken Sie auf „Abspielen“ auf der oberen rechten Seite und schauen Sie sich den fliegenden Schmetterling an. Sobald dieser die Blume erreicht hat, haben Sie Ihr erstes Level gewonnen.<br><br>Sie möchten vielleicht auch auf den Klebezettel klicken!"
+
+#: tbe_levels:134
+msgid "Help the butterfly reach the flower."
+msgstr "Helfen Sie dem Schmetterling, die Blume zu erreichen."
+
+#: tbe_levels:135
+msgid "Help the butterfly reach the flower unscratched."
+msgstr "Helfen Sie dem Schmetterling, die Blume unversehrt zu erreichen."
+
+#: tbe_levels:136
+msgid "Help Tux the racing penguin get to the cone fast!"
+msgstr "Helfen Sie Tux dem Pinguin, den Leitkegel schnell zu erreichen!"
+
+#: tbe_levels:137
 msgid "He want to shoot the pin into the goal."
 msgstr "Er möche den Pin in das Tor schießen."
 
-#: tbe_levels:133
+#: tbe_levels:138
 msgid "Hey, I'm a coconut!"
 msgstr "He, ich bin eine Kokosnuss!"
 
-#: tbe_levels:134
+#: tbe_levels:139
 msgid ""
 "Hint: first put it on the floor,<br>then adjust height,<br>then the width..."
 msgstr "Tipp: Legen Sie ihn zuerst auf den Boden,<br>dann passen Sie danach die Höhe an,<br>dann die Breite."
 
-#: tbe_levels:135
+#: tbe_levels:140
+msgid ""
+"His aim is best if the ball is in the front of his face...<br><br>(if my "
+"calculations are correct)<br><br> ... Post-It boy"
+msgstr "Er zielt am Besten, wenn der Ball vor seinem Gesicht ist …<br><br>(falls meine Berechnungen stimmen sollten)<br><br> … der Notizschreiber"
+
+#: tbe_levels:141
 msgid "Hmmm... <br><br>This reminds me of a kids' game!"
 msgstr "Hmmm … <br><br>Das erinnert mich an ein Kinderspiel!"
 
-#: tbe_levels:136
+#: tbe_levels:142
 msgid "Hmmm... You see that hole?<br>Behind the volley ball!"
-msgstr "Hmmm … Sehen Sie du das Loch?<br>Hinter dem Volleyball!"
+msgstr "Hmmm … Sehen Sie das Loch?<br>Hinter dem Volleyball!"
 
-#: tbe_levels:137
+#: tbe_levels:143
 msgid "Hole-in-One"
 msgstr "Hole-in-One"
 
-#: tbe_levels:138
-msgid "How do YOU demolish a house of cards?"
-msgstr "Wie zerstören SIE ein Kartenhaus?"
-
-#: tbe_levels:139
+#: tbe_levels:144
 msgid "I agree that the best way to do it, is with scissors."
 msgstr "Ich stimme zu, dass es am Besten mit einer Schere geht."
 
-#: tbe_levels:140
+#: tbe_levels:145
 msgid "I also have a Bowling Ball that wants to cross."
 msgstr "Ich habe auch eine Bowlingkugel, die rübermöchte."
 
-#: tbe_levels:141
+#: tbe_levels:146
 msgid "I don't know... this middle pole is kept up by two ropes?"
 msgstr "Ich weiß nicht … diese mittlere Stange wird von zwei Seilen festgehalten?"
 
-#: tbe_levels:142
+#: tbe_levels:147
 msgid "I don't think it's not fair: butterflies can fly by themselves."
 msgstr "Ich finde das nicht fair: Schmetterlinge können von alleine fliegen."
 
-#: tbe_levels:143
+#: tbe_levels:148
 msgid "I don't think the Bowling Ball can reach the pin..."
 msgstr "Ich glaube nicht, dass die Bowlingkugel den Pin erreichen kann."
 
-#: tbe_levels:144
+#: tbe_levels:149
 msgid ""
 "I don't want to hurry you, but find it before the Butterfly meets her final "
 "flower."
 msgstr "Ich möchte Sie nicht hetzen, aber finden Sie es heraus, bevor der Schmetterling die letzte Blume erreicht."
 
-#: tbe_levels:145
+#: tbe_levels:150
 msgid ""
 "If you click the pause button, the simulation will stop.<br>There's also a "
 "green 'reset' button now. <br> <br> During the simulation, there's also a "
 "'fast forward'."
 msgstr "Wenn Sie den Pause-Knopf drücken, wird die Simulation angehalten.<br>Es gibt jetzt auch einen grünen „Zurücksetzen“-Knopf.<br> <br>Während der Simulation gibt es auch einen „Vorspulen“-Knopf."
 
-#: tbe_levels:146
+#: tbe_levels:151
 msgid "I hate Angry Birds!"
 msgstr "Ich hasse Angry Birds!"
 
-#: tbe_levels:147
-msgid "Imagine the noises in this level! Tip the pin."
-msgstr "Stellen Sie sich den Krach in diesem Level vor! Werfen Sie den Pin um."
+#: tbe_levels:152
+msgid "I like Minigolf."
+msgstr "Ich mag Minigolf."
 
-#: tbe_levels:148
+#: tbe_levels:153
+msgid ""
+"I made a new feature in the game: that Quarter Arc can be rotated.<br><br>I "
+"suggest you try it!"
+msgstr "Ich habe eine neue Funktion fürs Spiel eingeführt: Dieser Viertelbogen kann rotiert werden.<br><br>Ich schlage vor, dass Sie es ausprobieren!"
+
+#: tbe_levels:154
 msgid "I'm like my brother - I play soccer, too!"
 msgstr "Ich bin wie mein Bruder – Ich spiele auch Fußball!"
 
-#: tbe_levels:149
+#: tbe_levels:155
 msgid "Im Perfect Balance"
 msgstr "Unperfektbalance"
 
-#: tbe_levels:150
+#: tbe_levels:156
 msgid ""
 "Im Perfect Balance...<br><br>It almost sounds like an 'Art Of Noise' album "
 "title"
 msgstr "Unperfektbalance … <br><br>Das hört sich fast wie Neue Deutsche Welle an."
 
-#: tbe_levels:151
+#: tbe_levels:157
 msgid ""
 "I'm pretty sure that Bowling Balls cannot climb walls - they don't have "
 "hands, do they?"
 msgstr "Ich bin mir ziemlich sicher, dass Bowlingkugeln keine Wände hochklettern können – sie haben keine Hände, oder?"
 
-#: tbe_levels:152
+#: tbe_levels:158
 msgid "I'm sure it needs help to cross over to the pin."
 msgstr "Ich bin mir sicher, dass er Hilfe braucht, um zu dem Pin zu kommen."
 
-#: tbe_levels:153
+#: tbe_levels:159
 msgid ""
 "I'm sure the balloon has something to do with the solution to this level!"
 msgstr "Ich bin mir sicher, dass der Ballon etwas mit der Lösung des Levels zu tun hat!"
 
-#: tbe_levels:154
+#: tbe_levels:160
 msgid "I'm thirsty!"
 msgstr "Ich bin durstig!"
 
-#: tbe_levels:155
+#: tbe_levels:161
 msgid "I'm too lazy for my old bike."
 msgstr "Ich bin zu faul für mein altes Fahrrad."
 
-#: tbe_levels:156
+#: tbe_levels:162
+msgid "In the Attic"
+msgstr "Auf dem Dachboden"
+
+#: tbe_levels:163
+msgid "Into the monkey's mouth, and out from the ... ahum."
+msgstr "Herein in des Affen Rachen und hinaus aus dem … ähem."
+
+#: tbe_levels:164
 msgid ""
 "<i>Once this Post-It is gone,</i><br><br>click the play button top-right "
 "<br>to make it happen!"
-msgstr "<i>Sobald dieser Klebezettel verschwunden ist,</i><br><br>klicken Sie auf den Abspielen-Knopf oben rechts,<br>um es geschehen zu machen!"
+msgstr "<i>Sobald dieser Klebezettel verschwunden ist,</i> klicken Sie auf den Abspielen-Knopf oben rechts, um es geschehen zu machen!"
 
-#: tbe_levels:157
+#: tbe_levels:165
 msgid "I still have other ideas that need balloons..."
 msgstr "Ich habe noch andere Ideen, wofür man Ballons benötigt …"
 
-#: tbe_levels:158
+#: tbe_levels:166
 msgid "It falls down, blows ...<br><br>and doesn't do anything useful"
 msgstr "Es fällt herunter, explodiert … <br><br>und macht nichts nützliches."
 
-#: tbe_levels:159
+#: tbe_levels:167
 msgid "I think something's cooking here..."
 msgstr "Ich glaub, hier kocht jemand …"
 
-#: tbe_levels:160
+#: tbe_levels:168
 msgid ""
 "I thought of using helium, but Mythbusters explained that won't work..."
 msgstr "Ich dachte an die Verwendung von Helium, aber Mythbusters erklärte, dass dies nicht funktionieren würde …"
 
-#: tbe_levels:161
+#: tbe_levels:169
 msgid ""
 "It's a Cola-mint Fountain, ready to blow!<br>Just a light shock will start "
 "it!"
 msgstr "Es ist eine Cola-Pfefferminz-Fontäne, bereit zum Abfeuern!<br>Eine kleine Erschütterung genügt, um sie auszulösen!"
 
-#: tbe_levels:162
+#: tbe_levels:170
 msgid "It's almost time<br>for goodbyes"
 msgstr "Es ist fast Zeit,<br>Abschied zu nehmen."
 
-#: tbe_levels:163
+#: tbe_levels:171
 msgid "It's always the blokes lifting the girls!"
 msgstr "Es ist immer das Gleiche: Die Kerle heben die Mädchen hoch!"
 
-#: tbe_levels:164
+#: tbe_levels:172
 msgid "It's a tennis ball this time that wants to cross."
 msgstr "Dieses Mal ist es ein Tennisball, der hinüber möchte."
 
-#: tbe_levels:165
+#: tbe_levels:173
 msgid "It's coffee time. Ring the bell."
 msgstr "Es ist Kaffeezeit. Läuten Sie die Glocke."
 
-#: tbe_levels:166
-msgid "It's party time at the office!<br><br>Jumping Jack has his birthday!!!"
-msgstr "Im Büro steigt gleich die Party!<br><br>Der Wackelpeter feiert sein Geburtstag!"
+#: tbe_levels:174
+msgid "It's fun because all holes are different."
+msgstr "Das macht Spaß, weil alle Löcher änders sind."
 
-#: tbe_levels:167
+#: tbe_levels:175
+msgid "It's party time at the office!<br><br>Jumping Jack has his birthday!!!"
+msgstr "Im Büro steigt gleich die Party!<br><br>Der Wackelpeter feiert seinen Geburtstag!"
+
+#: tbe_levels:176
+msgid "It's shiny and it hangs in the sky."
+msgstr "Es glänzt und hängt in der Luft."
+
+#: tbe_levels:177
 msgid ""
 "It very regularly blows boiling water 40 meters up. <br>For my school's "
 "science project, I decided to simulate that."
 msgstr "Es stößt sehr zuverlässig Wasser 40 Meter nach oben.<br>Für mein Schulwissenschaftsprojekt entschied ich mich, das zu simulieren."
 
-#: tbe_levels:168
+#: tbe_levels:178
 msgid "It wants to go to the flower..."
 msgstr "Er möchte zu den Blumen fliegen …"
 
-#: tbe_levels:169
+#: tbe_levels:179
 msgid "I've grown too large for my bike, too."
 msgstr "Ich bin auch zu groß für mein Fahrrad geworden."
 
-#: tbe_levels:170
+#: tbe_levels:180
 msgid ""
 "I want to be a balloon <br> ... <br> and be the first to set foot on Alpha "
 "Centauri!"
 msgstr "Ich möchte ein Ballon sein <br> … <br> und der erste, der seinen Fuß auf Alpha Centauri setzt!"
 
-#: tbe_levels:171
+#: tbe_levels:181
 msgid ""
 "(Jack usually doesn't get much attention, he's already happy that we thought"
 " of him)"
 msgstr "(Wackelpeter erhält normalerweiße nicht viel Aufmerksamkeit. Er ist schon glücklich, weil wir an ihn gedacht haben)"
 
-#: tbe_levels:172
+#: tbe_levels:182
+msgid "Join all bowling pins together."
+msgstr "Bringen Sie alle Bowling-Pins zusammen."
+
+#: tbe_levels:183
 msgid "Jumping Around I"
 msgstr "Herumhüpfen I"
 
-#: tbe_levels:173
+#: tbe_levels:184
 msgid "Jumping Around II"
 msgstr "Herumhüpfen II"
 
-#: tbe_levels:174
-msgid "Jumping Jack celebrates a party at the office. Isn't that fun?"
-msgstr "Der Wackelpeter feiert eine Party im Büro. Bedeutet das nicht Spaß?"
-
-#: tbe_levels:175
+#: tbe_levels:185
 msgid "Just hook it up in the air<br>and it stays there."
 msgstr "Befestigen Sie es einfach in der Luft,<br>und da bleibt es."
 
-#: tbe_levels:176
+#: tbe_levels:186
+msgid "Keep Mr. Stick Figure safe, kill three birds and break three eggs."
+msgstr "Beschützen Sie Herrn Strichmännchen, töten Sie drei Vögel und zerbrechen Sie drei Eier."
+
+#: tbe_levels:187
 msgid "Kick that pin in the goal!"
 msgstr "Kicken Sie den Pin in das Tor!"
 
-#: tbe_levels:177
-msgid "Kick the pin."
-msgstr "Kicken Sie den Pin."
+#: tbe_levels:188
+msgid "Kick the bowling pin into the goal."
+msgstr "Kicken Sie den Bowling-Pin in das Tor."
 
-#: tbe_levels:178
-msgid "lalalala"
-msgstr "Lalalala!"
+#: tbe_levels:189
+msgid "Kick the pin in the goal, but do not hit the butterfly."
+msgstr "Kicken Sie den Pin in das Tor, aber treffen Sie nicht den Schmetterling."
 
-#: tbe_levels:179
+#: tbe_levels:190
+msgid ""
+"Kick the soccer ball over the penguin and topple the bowling pin into the "
+"goal."
+msgstr "Kicken Sie den Fußball über den Pinguin und stoßen Sie den Bowling-Pin in das Tor."
+
+#: tbe_levels:191
+msgid "Kill the angry-looking bird and break four eggs!"
+msgstr "Töten Sie den wütend dreinblickenden Vogel und zerbrechen Sie vier Eier!"
+
+#: tbe_levels:192
 msgid "Large Domino"
 msgstr "Großer Dominostein"
 
-#: tbe_levels:180
+#: tbe_levels:193
+msgid "Left ramp"
+msgstr "Linke Rampe"
+
+#: tbe_levels:194
+msgid "Left Ramp"
+msgstr "Linke Rampe"
+
+#: tbe_levels:195
 msgid "LeftRamp"
 msgstr "Linke Rampe"
 
-#: tbe_levels:181
+#: tbe_levels:196
+msgid "Let's bring them home safely!"
+msgstr "Lassen wir sie sicher nach Hause bringen!"
+
+#: tbe_levels:197
 msgid "Let's join the lonely one above with his friends below."
 msgstr "Lassen Sie uns den Einsamen, oben, mit seinen Freunden, unten, zusammenbringen."
 
-#: tbe_levels:182
+#: tbe_levels:198
 msgid "Let's present the gift to him, shall we?"
 msgstr "Lassen Sie uns ihm das Geschenk überreichen!"
 
-#: tbe_levels:183
+#: tbe_levels:199
 msgid "Let's spare the balloon, there's a pin that needs kicking."
 msgstr "Wir sollten den Ballon verschonen, es gibt einen Pin, der gekickt werden muss."
 
-#: tbe_levels:184
-msgid "Level with a small user interaction: a volleyball is in the way... "
-msgstr "Level mit einer kleinen Nutzerinteraktion: Ein Volleyball ist im Weg …"
+#: tbe_levels:200
+msgid "Let the butterfly fly to the flower, but don't hurt it!"
+msgstr "Lassen Sie den Schmetterling zur Blume fliegen, aber verletzen Sie ihn nicht!"
 
-#: tbe_levels:185
-msgid "Levers, Dominoes, Bowling Pins. This one is complex."
-msgstr "Hebel, Dominosteine, Bowling-Pins. Dieser Level ist komplex."
-
-#: tbe_levels:186
+#: tbe_levels:201
 msgid ""
 "Like a 'Sword of Damocles'. <br><br>Would it also loose appetite if it knew?"
 msgstr "Wie ein Damoklesschwert.<br><br>Würde er seinen Appetit verlieren, wenn er Bescheid wüsste?"
 
-#: tbe_levels:187
+#: tbe_levels:202
+msgid "Long left wedge"
+msgstr "Langer linker Keil"
+
+#: tbe_levels:203
 msgid "Look, another gap."
 msgstr "Sehen Sie, eine weitere Lücke."
 
-#: tbe_levels:188
-msgid "Look at Steam Machine"
-msgstr "Begutachtung der Dampfmaschine"
-
-#: tbe_levels:189
+#: tbe_levels:204
 msgid "Look... <br><br>I made an engine to power my bike."
 msgstr "Sehen Sie:<br><br>Ich hab einen Motor gebaut, um mein Fahrrad anzutreiben."
 
-#: tbe_levels:190
+#: tbe_levels:205
 msgid "Look for the last message"
 msgstr "Enthüllung der letzten Nachricht"
 
-#: tbe_levels:191
+#: tbe_levels:206
 msgid "Look: it's that butterfly and flower again."
 msgstr "Da ist wieder der Schmetterling und die Blume."
 
-#: tbe_levels:192
-msgid "Looks like a bird. And he's angry."
-msgstr "Sieht wie ein Vogel aus. Und er ist wütend."
-
-#: tbe_levels:193
+#: tbe_levels:207
 msgid "Looks like there's something missing..."
 msgstr "Sieht aus, als ob etwas fehlt …"
 
-#: tbe_levels:194
+#: tbe_levels:208
 msgid ""
 "Look, that's a skyhook.<br><br>A pretty nifty invention, if I may say so."
 msgstr "Sehen Sie, da ist ein Himmelshaken.<br><br>Eine ziemlich clevere Erfindung, wenn ich das so sagen darf."
 
-#: tbe_levels:195
+#: tbe_levels:209
 msgid "Look: two pins need kicking."
 msgstr "Zwei Pins müssen gekickt werden."
 
-#: tbe_levels:196
-msgid ""
-"Looping in Looping in looping... <br>Poor Tux is late for his race. <br>Get "
-"him to the cone fast!<br><br>This level is 'inspired' by SuperTuxKart, the "
-"famous open source kart game featuring all open source mascots to race in "
-"beautifully designed tracks.<a "
-"href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a>"
-" "
-msgstr "Looping im Looping im Looping … <br>Armer Tux kommt zu spät zum Wettrennen.<br>Bringen Sie ihn schnell zum Kegel!<br><br>Dieses Level ist „inspiriert“ von SuperTuxKart, das bekannte Open-Source-Kart Spiel mit allen Open-Source-Maskottchen in wunderschön entworfen Strecken. <a href=\"http://supertuxkart.sourceforge.net/\">http://supertuxkart.sourceforge.net/</a>"
-
-#: tbe_levels:197
-msgid "Looping Looping Looping"
-msgstr "Looping, Looping, Looping"
-
-#: tbe_levels:198
+#: tbe_levels:210
 msgid "Loopings"
 msgstr "Loopings"
 
-#: tbe_levels:199
+#: tbe_levels:211
 msgid "Loopings are fun!"
 msgstr "Loopings machen Spaß!"
 
-#: tbe_levels:200
+#: tbe_levels:212
 msgid "Loopings I"
 msgstr "Loopings I"
 
-#: tbe_levels:201
+#: tbe_levels:213
 msgid "Loopings II"
 msgstr "Loopings II"
 
-#: tbe_levels:202
-msgid "Make all Balloons pop."
+#: tbe_levels:214
+msgid "Magic Steel"
+msgstr "Magischer Stahl"
+
+#: tbe_levels:215
+msgid "Make all balloons pop."
 msgstr "Bringen Sie alle Ballons zum Platzen."
 
-#: tbe_levels:203
-msgid "Make three birds and three eggs do poof."
-msgstr "Lassen Sie drei Vögel und drei Eier „Puff!“ machen."
+#: tbe_levels:216
+msgid "Make Tux the penguin descent the ski slope."
+msgstr "Bringen Sie Tux den Pinguin dazu, die Skipiste hinunterzuschlittern."
 
-#: tbe_levels:204
-msgid ""
-"Make Tux descent the ski slope.<br><br>This level was inspired by the open "
-"source Extreme Tux Racer, where Tux has to race down slopes<a "
-"href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
-msgstr "Lassen Sie Tux die Skipiste herunterrutschen.<br><br>Dieses Level wurde inspiriert durch das Open-Source-Spiel Extreme Tux Racer, in dem Tux Skipisten herunterfahren muss. <a href=\"http://sourceforge.net/projects/extremetuxracer/\">http://sourceforge.net/projects/extremetuxracer/</a>"
-
-#: tbe_levels:205
+#: tbe_levels:217
 msgid "Marble"
 msgstr "Murmel"
 
-#: tbe_levels:206
+#: tbe_levels:218
 msgid "Marble Boulevard"
 msgstr "Murmelpromenade"
 
-#: tbe_levels:207
+#: tbe_levels:219
 msgid "Medium Domino"
 msgstr "mittelgroßer Dominostein"
 
-#: tbe_levels:208
-msgid ""
-"Mini Golf<br>After the ball is eaten by the monkey, make it come out of the "
-"monkey's rear end into the chest."
-msgstr "Minigolf:<br>Nachdem der Ball vom Affen verschlungen wird, sorgen Sie dafür, dass er am Ende in der Truhe hinter dem Affen landet."
+#: tbe_levels:220
+msgid "Meet Ad and Lies.<br><br>They really like camping."
+msgstr "Darf ich vorstellen? Werbung und Lügen.<br><br>Sie campen sehr gerne."
 
-#: tbe_levels:209
+#: tbe_levels:221
+msgid "Move the bowling pin to the floor below."
+msgstr "Bewegen Sie den Bowling-Pin zur unteren Etage."
+
+#: tbe_levels:222
+msgid "Mr. A Bird looks angry. He is rather frail, however."
+msgstr "Herr W. Vogel sieht wütend aus. Er ist jedoch ziemlich zerbrechlich."
+
+#: tbe_levels:223
+msgid "Mr. Big Bird looks angry. He is rather frail, however."
+msgstr "Herr Groß Vogel sieht wütend aus. Er ist jedoch ziemlich zerbrechlich."
+
+#: tbe_levels:224
+msgid "Mr. T Bird looks angry. He is rather frail, however."
+msgstr "Herr T. Vogel sieht wütend aus. Er ist jedoch ziemlich zerbrechlich."
+
+#: tbe_levels:225
 msgid "My brother likes soccer"
 msgstr "Mein Bruder mag Fußball"
 
-#: tbe_levels:210
+#: tbe_levels:226
+msgid "My dear bro.<br><br>Still playing soccer."
+msgstr "Ja ja, mein Bruder.<br><br>Er spielt immer noch Fußball."
+
+#: tbe_levels:227
 msgid ""
 "My mum told me to clean my room.<br><br>All balls must go in the basket."
 msgstr "Meine Mutter hat mir gesagt, ich soll mein Zimmer aufräumen.<br><br>Alle Bälle müssen in den Korb."
 
-#: tbe_levels:211
+#: tbe_levels:228
 msgid "No butterflies here!<br><br>"
 msgstr "Hier gibt es keine Schmetterlinge!<br><br>"
 
-#: tbe_levels:212
+#: tbe_levels:229
 msgid ""
 "No butterfly here...<br><br>Don't worry - we haven't seen the last one yet"
 msgstr "Hier gibt es keinen Schmetterling … <br><br>Keine Sorge – wir haben bis jetzt nicht den Letzten gesehen."
 
-#: tbe_levels:213
-msgid "Not affiliated with the yearly event."
-msgstr "Dies hat nichts mit dem jährlichen Ereignis zu tun."
+#: tbe_levels:230
+msgid "Not an impressive piece of stone."
+msgstr "Kein sehr beeindruckender Stein."
 
-#: tbe_levels:214
+#: tbe_levels:231
 msgid ""
 "Note:<br>If the game runs, a green fast forward button appears in the top-"
 "right corner.<br><br>That will speed up the simulation."
 msgstr "Hinweis:<br>Wenn das Spiel läuft, erscheint ein grüner „Vorspulen“-Knopf in der oberen rechten Ecke.<br><br>Dieser wird die Simulation beschleunigen."
 
-#: tbe_levels:215
+#: tbe_levels:232
 msgid "Notice a new trick: rotate."
 msgstr "Beachten Sie einen neuen Trick: rotieren."
 
-#: tbe_levels:216
+#: tbe_levels:233
 msgid ""
 "Oh, Nena, where did you go?<br><br>You were so hot <br> back in the 80s!"
 msgstr "Oh, Nena, wohin bist du nur gegangen<br><br>Du warst du heiß,<br>damals, in den 80ern!"
 
-#: tbe_levels:217
+#: tbe_levels:234
+msgid "Oh no!<br><br>It's raining penguins."
+msgstr "Oh nein!<br><br>Es regnet Pinguine!"
+
+#: tbe_levels:235
 msgid "\"Old Faithful\" is a geyser in Yellowstone National Park, Wyoming, USA."
 msgstr "„Old Faithful“ ist ein Geysir im Yellowstone-Nationalpark, Wyoming, USA."
 
-#: tbe_levels:218
-msgid "Once a Volley Ball jumps across, a Cola bottle will finish it off."
-msgstr "Sobald ein Volleyball hinüberspringt, wird eine Cola-Flasche es beenden."
-
-#: tbe_levels:219
-msgid "One ball jumps across the barrier."
-msgstr "Ein Ball springt über die Barriere."
-
-#: tbe_levels:220
+#: tbe_levels:236
 msgid "One Hundred, please!"
 msgstr "Einhundert bitte!"
 
-#: tbe_levels:221
+#: tbe_levels:237
 msgid "(Or a \"soccer\" ball for you Americans)"
 msgstr "(oder ein „soccer ball“ für euch Amerikaner)"
 
-#: tbe_levels:222
+#: tbe_levels:238
 msgid "Or do they fly to the stars?"
 msgstr "Oder fliegen sie zu den Sternen?"
 
-#: tbe_levels:223
+#: tbe_levels:239
 msgid "Or was it \"Keep it Simple, stupid\"?"
 msgstr "Oder war es „Halte es einfach, Dummkopf“?"
 
-#: tbe_levels:224
+#: tbe_levels:240
 msgid "Our goal is to keep the butterfly alive. And put the pin in the chest."
 msgstr "Unser Ziel ist es, den Schmetterling am Leben zu lassen. Und den Pin in die Truhe zu befördern."
 
-#: tbe_levels:225
+#: tbe_levels:241
 msgid "Our little Butterfly...<br><br>Another day, another flower..."
 msgstr "Unser kleiner Schmetterling …<br><br>Ein anderer Tag, eine andere Blume."
 
-#: tbe_levels:226
+#: tbe_levels:242
 msgid "Party at the office"
 msgstr "Party im Büro"
 
-#: tbe_levels:227
+#: tbe_levels:243
 msgid "Pétanque"
 msgstr "Pétanque"
 
-#: tbe_levels:228
+#: tbe_levels:244
+msgid "Pétanque ball"
+msgstr "Pétanque-Kugel"
+
+#: tbe_levels:245
 msgid "Pigs on top!"
 msgstr "Schweine an der Spitze!"
 
-#: tbe_levels:229
+#: tbe_levels:246
+msgid "Pingus"
+msgstr "Pingus"
+
+#: tbe_levels:247
 msgid "Pin rack"
 msgstr "Pinregal"
 
-#: tbe_levels:230
+#: tbe_levels:248
 msgid "Pin topples to green in two moves."
 msgstr "Pin fällt aufs Grün in zwei Zügen."
 
-#: tbe_levels:231
+#: tbe_levels:249
 msgid "PivotPoint test Level..."
 msgstr "PivotPoint-Testlevel …"
 
-#: tbe_levels:232
+#: tbe_levels:250
+msgid "... Please dear bro, keep my penguin alive!"
+msgstr "… Bitte, lieber Bruder, lass meinen Pinguin am Leben!"
+
+#: tbe_levels:251
 msgid "Please make the butterfly happy!<br><br>That's the least we can do."
 msgstr "Bitte machen Sie den Schmetterling glücklich!<br><br>Das ist das Geringste, was wir tun können."
 
-#: tbe_levels:233
+#: tbe_levels:252
 msgid "Poing Poing Poing"
 msgstr "Poing Poing Poing "
 
-#: tbe_levels:234
+#: tbe_levels:253
 msgid ""
 "Poing Poing Poing <br> <br> ... a world-famous song of the <i>Rotterdam "
 "Termination Source</i>"
 msgstr "Poing Poing Poing <br> <br> … ein weltbekanntes Lied von der <i>Rotterdam Termination Source</i>"
 
-#: tbe_levels:235
+#: tbe_levels:254
 msgid "PolyObject test Level..."
 msgstr "PolyObject-Testlevel …"
 
-#: tbe_levels:236
+#: tbe_levels:255
 msgid "Poof Poof Poof"
 msgstr "Puff, puff, puff"
 
-#: tbe_levels:237
+#: tbe_levels:256
 msgid "Poor little butterfly has no clue what's hanging above its head..."
 msgstr "Armer kleiner Schmetterling hat keine Ahnung, was über seinem Kopf hängt …"
 
-#: tbe_levels:238
-msgid ""
-"Pop all balloons. This level is based on some conversations at T-Dose 2010."
-msgstr "Lassen Sie alle Ballons platzen. Diese Level basiert auf ein paar Unterhaltungen von T-Dose 2010."
+#: tbe_levels:257
+msgid "Pop all balloons."
+msgstr "Bringen Sie alle Ballons zum Platzen."
 
-#: tbe_levels:239
+#: tbe_levels:258
+msgid "Pop both ballons."
+msgstr "Bringen Sie beide Ballons zum Platzen."
+
+#: tbe_levels:259
 msgid "Pop the balloon."
 msgstr "Lassen Sie den Ballon platzen."
 
-#: tbe_levels:240
+#: tbe_levels:260
 msgid "Post-It Boy<br><br><br>(has a dirty mind)"
 msgstr "Notizschreiber<br><br><br>(hat versaute Gedanken)"
 
-#: tbe_levels:241
+#: tbe_levels:261
 msgid ""
 "Post-It boy <br>likes playing with styrofoam ... <br><br>... for breakfast!"
 msgstr "Notizschreiber <br>mag das Spielen mit Styropor … <br><br>… zum Frühstück!"
 
-#: tbe_levels:242
+#: tbe_levels:262
 msgid "Post-It Boy likes to \"Make it Complex, Comrade\""
 msgstr "Der Notizschreiber mag „Mach es kompliziert, Kamerad“"
 
-#: tbe_levels:243
+#: tbe_levels:263
 msgid "... Post-It boy once spoke with<br>Sonic the Hedgehog!"
 msgstr "… der Notizschreiber, der einmal mit<br>Sonic the Hedgehog<br>gesprochen hat!"
 
-#: tbe_levels:244
+#: tbe_levels:264
 msgid "Post-it boy played the world cup soccer...<br><br>(in a previous life)"
-msgstr "Der Notizschreiber spielte bei der Fußballweltmeisterschaft …<br><br>(in einem vorherigen Leben)"
+msgstr "Der Notizschreiber spielte bei der Fußball-<br>weltmeisterschaft … (in einem vorherigen Leben)"
 
-#: tbe_levels:245
+#: tbe_levels:265
 msgid "PS: Those dominos are quite big, aren't they?"
 msgstr "PS: Diese Dominos sind ziemlich groß, oder etwa nicht?"
 
-#: tbe_levels:246
+#: tbe_levels:266
+msgid "Push both bowling pins towards the styrofoam pyramid."
+msgstr "Schubsen Sie beide Bowling-Pins zur Styroporpyramide."
+
+#: tbe_levels:267
+msgid "Push the bowling pin into the goal."
+msgstr "Stoßen Sie den Bowling-Pin in das Tor."
+
+#: tbe_levels:268
+msgid "Push the bowling pins into the goal."
+msgstr "Stroßen Sie die Bowling-Pins in das Tor."
+
+#: tbe_levels:269
+msgid "Push the bowling pin towards the green floor."
+msgstr "Stoßen Sie den Bowling-Pin zum grünen Fußboden."
+
+#: tbe_levels:270
+msgid "Push the bowling pin towards the left."
+msgstr "Kippen Sie den Bowling-Pin nach links um."
+
+#: tbe_levels:271
+msgid "Put the Pétanque ball into the chest."
+msgstr "Befördern Sie die Pétanque-Kugel in die Truhe."
+
+#: tbe_levels:272
+msgid "Put the pin into the chest."
+msgstr "Befördern Sie den Pin in die Truhe."
+
+#: tbe_levels:273
+msgid "Put the pin onto the grass."
+msgstr "Bringen sie den Pin auf das Gras."
+
+#: tbe_levels:274
 msgid "Put the styrofoam ramp in place..."
 msgstr "Setzen Sie die Rampe aus Styropor an die Stelle …"
 
-#: tbe_levels:247
+#: tbe_levels:275
+msgid "Quarter arc"
+msgstr "Viertelbogen"
+
+#: tbe_levels:276
 msgid "Quarter Arc"
 msgstr "Viertelbogen"
 
-#: tbe_levels:248
+#: tbe_levels:277
 msgid "Quarter Arc #1"
 msgstr "Viertelbogen #1"
 
-#: tbe_levels:249
+#: tbe_levels:278
 msgid "Quarter Arc #2"
 msgstr "Viertelbogen #2"
 
-#: tbe_levels:250
+#: tbe_levels:279
 msgid "Quarter Arc #3"
 msgstr "Viertelbogen #3"
 
-#: tbe_levels:251
+#: tbe_levels:280
 msgid "Ramp /"
 msgstr "Rampe /"
 
-#: tbe_levels:252
+#: tbe_levels:281
 msgid "Ramp \\"
 msgstr "Rampe \\"
 
-#: tbe_levels:253
+#: tbe_levels:282
 msgid "Remember this gap?"
 msgstr "Erinnersn Sie sich an diesen Abgrund?"
 
-#: tbe_levels:254
+#: tbe_levels:283
+msgid "Resizable styrofoam blocks... What an invention!"
+msgstr "Skalierbare Styroporblöcke … was für eine Erfindung!"
+
+#: tbe_levels:284
 msgid "Return of the Post-It Pig"
 msgstr "Rückkehr des Notizschweins"
 
-#: tbe_levels:255
+#: tbe_levels:285
+msgid ""
+"Reveal the message hidden by the large rectangular pieces of styrofoam "
+"before the butterfly reaches the flower."
+msgstr "Decken Sie die von den großen Styroporblöcken verborgene Botschaft auf, bevor der Schmetterling die Blume erreicht."
+
+#: tbe_levels:286
+msgid "Right ramp"
+msgstr "Rechte Rampe"
+
+#: tbe_levels:287
 msgid "Right Ramp"
 msgstr "Rechte Rampe"
 
-#: tbe_levels:256
+#: tbe_levels:288
+msgid "Right wedge"
+msgstr "Rechter Keil"
+
+#: tbe_levels:289
 msgid "Ring the Bell"
 msgstr "Glockenläuten"
 
-#: tbe_levels:257
+#: tbe_levels:290
+msgid "Save the balloon from popping and kick the pin into the goal."
+msgstr "Lassen Sie den Ballon auf keinen Fall platzen und kicken Sie den Pin in das Tor."
+
+#: tbe_levels:291
 msgid "Save the butterfly!"
 msgstr "Rette den Schmetterling!"
 
-#: tbe_levels:258
-msgid "save the butterfly, put pin in chest."
-msgstr "Retten Sie den Schmetterling, befördern Sie den Pin in die Truhe."
+#: tbe_levels:292
+msgid "Save the butterfly, and put the bowling pin into the chest."
+msgstr "Retten Sie den Schmetterling und befördern Sie den Bowling-Pin in die Truhe."
 
-#: tbe_levels:259
+#: tbe_levels:293
 msgid "Saw Blade"
 msgstr "Sägeblatt"
 
-#: tbe_levels:260
-msgid "Score 100 points by putting the Tennis ball into the right slot."
+#: tbe_levels:294
+msgid "Score 100 points by putting the tennis ball into the right slot."
 msgstr "Holen Sie sich 100 Punkte, indem Sie den Tennisball in das richtige Fach befördern."
 
-#: tbe_levels:261
+#: tbe_levels:295
 msgid "Send the gift to the Jumping Jack!"
 msgstr "Bringen Sie das Geschenk zum Wackelpeter!"
 
-#: tbe_levels:262
+#: tbe_levels:296
+msgid "Shoot a coconut from the palm."
+msgstr "Schießen sie eine Kokosnuss von der Palme."
+
+#: tbe_levels:297
+msgid "Short left wedge"
+msgstr "Kurzer linker Keil"
+
+#: tbe_levels:298
 msgid "Sir Alfred Hitchcock made a good movie about a devious phone call."
 msgstr "Sir Alfred Hitchcock machte einen guten Film über einen bösartigen Anruf."
 
-#: tbe_levels:263
+#: tbe_levels:299
 msgid "Skyhook"
 msgstr "Himmelshaken"
 
-#: tbe_levels:264
+#: tbe_levels:300
 msgid "Small Domino"
 msgstr "Kleiner Dominostein"
 
-#: tbe_levels:265
+#: tbe_levels:301
+msgid "Small glass marble. Will it be enough?"
+msgstr "Kleine Glaskugel. Ob sie ausreicht?"
+
+#: tbe_levels:302
+msgid "Small quarter arc"
+msgstr "Kleiner Viertelbogen"
+
+#: tbe_levels:303
 msgid "Soccerball"
 msgstr "Fußball"
 
-#: tbe_levels:266
+#: tbe_levels:304
 msgid "Soccer Ball"
 msgstr "Fußball"
 
-#: tbe_levels:267
+#: tbe_levels:305
 msgid ""
 "Soccer Balls are a little bouncy, but sometimes \"a little\" is not enough."
 msgstr "Fußbälle hüpfen ein wenig, aber manchmal ist „ein wenig“ nicht genug."
 
-#: tbe_levels:268
-msgid ""
-"Soccer is about scoring. Kick the pin in the goal, do not hit the butterfly."
-msgstr "Beim Fußball geht es um Tore. Kicken Sie den Pin in das Tor und treffen Sie dabei nicht den Schmetterling."
-
-#: tbe_levels:269
+#: tbe_levels:306
 msgid ""
 "Someone told me to drag the ramp from the toolbox into the big "
 "window.<br>... after you've read my note!"
 msgstr "Jemand hat mir gesagt, dass ich die Rampe aus dem Werkzeugkasten in das große Fenster ziehen soll.<br>… nachdem Sie meine Notiz gelesen haben!"
 
-#: tbe_levels:270
-msgid "Something is manufactured here."
-msgstr "Hier wird etwas hergestellt."
-
-#: tbe_levels:271
+#: tbe_levels:307
 msgid "Something weird"
 msgstr "Etwas Seltsames"
 
-#: tbe_levels:272
+#: tbe_levels:308
 msgid ""
 "Sometimes, it's a team effort. One does the work; the other reaps the "
 "benefit."
 msgstr "Manchmal ist es Teamarbeit: Einer macht die Arbeit, der andere fährt die Ernte ein."
 
-#: tbe_levels:273
+#: tbe_levels:309
+msgid "Sorry. that's all I can tell you.<br>— Post-it boy"
+msgstr "Tut mir Leid, das ist alles, was ich Ihnen verraten kann.<br>der Notizschreiber"
+
+#: tbe_levels:310
 msgid "Sounds like a junk, does it?"
 msgstr "Hört sich wie Müll an, nicht wahr?"
 
-#: tbe_levels:274
+#: tbe_levels:311
 msgid "Spare the Balloon"
 msgstr "Verschont den Ballon"
 
-#: tbe_levels:275
+#: tbe_levels:312
 msgid "Spring"
 msgstr "Feder"
 
-#: tbe_levels:276
+#: tbe_levels:313
 msgid "Springboard"
 msgstr "Sprungbrett"
 
-#: tbe_levels:277
+#: tbe_levels:314
 msgid "(Ssst... I'm playing chess)"
 msgstr "(Pssst … Ich spiele Schach)"
 
-#: tbe_levels:278
+#: tbe_levels:315
 msgid "Steam Machine"
 msgstr "Dampfmaschine"
 
-#: tbe_levels:279
+#: tbe_levels:316
 msgid "Steel I-Beam"
 msgstr "Stahl-Doppel-T-Träger"
 
-#: tbe_levels:280
+#: tbe_levels:317
 msgid "Stop"
 msgstr "Stopp"
 
-#: tbe_levels:281
+#: tbe_levels:318
 msgid "Styrofoam"
 msgstr "Styropor"
 
-#: tbe_levels:282
+#: tbe_levels:319
 msgid "Styrofoam Block"
 msgstr "Styroporblock"
 
-#: tbe_levels:283
+#: tbe_levels:320
+msgid "Styrofoam is light and durable."
+msgstr "Styropor ist leicht und widerstandsfähig."
+
+#: tbe_levels:321
+msgid "Tear down the tent poles!"
+msgstr "Reißen Sie die Zeltstangen nieder!"
+
+#: tbe_levels:322
 msgid "Tennis Ball"
 msgstr "Tennisball"
 
-#: tbe_levels:284
+#: tbe_levels:323
 msgid "Tent"
 msgstr "Zelt"
 
-#: tbe_levels:285
+#: tbe_levels:324
 msgid "tent poles are usually made from something..."
 msgstr "Zeltstangen bestehen üblicherweise aus etwas."
 
-#: tbe_levels:286
+#: tbe_levels:325
 msgid "test level for quarter arcs and the new state change goal."
 msgstr "Testlevel für Viertelbögen und das neue Zustandsänderungsziel."
 
-#: tbe_levels:287
+#: tbe_levels:326
 msgid "That poor balloon is on its way to its doom"
 msgstr "Der arme Ballon ist auf dem Weg zu seinen Untergang."
 
-#: tbe_levels:288
+#: tbe_levels:327
 msgid ""
 "That's also true for circus acts. They all train, but some fly more than "
 "others."
 msgstr "Das ist auch für Zirkusvorstellungen so. Sie trainieren alle, aber einige fliegen weiter als andere."
 
-#: tbe_levels:289
+#: tbe_levels:328
 msgid "That's half of the problem you need to fix here..."
 msgstr "Das ist die Hälfte des Problems, das Sie hier beheben müssen …"
 
-#: tbe_levels:290
+#: tbe_levels:329
 msgid "The Birds Strike Back!"
 msgstr "Die Vögel schlagen zurück!"
 
-#: tbe_levels:291
-msgid "The Bowling Ball cannot kick the Bowling Pin in the goal."
-msgstr "Die Bowlingkugel kann den Bowling-Pin nicht in das Ziel schießen."
-
-#: tbe_levels:292
+#: tbe_levels:330
 msgid "The Butterfly Effect 101"
 msgstr "Der Schmetterlingseffekt für Anfänger"
 
-#: tbe_levels:293
+#: tbe_levels:331
 msgid "The Butterfly effect 102"
 msgstr "Der Schmetterlingseffekt für Fortgeschrittene"
 
-#: tbe_levels:294
+#: tbe_levels:332
 msgid "The Factory"
 msgstr "Die Fabrik"
 
-#: tbe_levels:295
+#: tbe_levels:333
 msgid "The final killer challenge..."
 msgstr "Die letzte große Herausfordrung!"
 
-#: tbe_levels:296
+#: tbe_levels:334
 msgid "The goal here is to topple the pins below."
 msgstr "Hier ist das Ziel, die Pins unten umzuwerfen."
 
-#: tbe_levels:297
+#: tbe_levels:335
 msgid ""
 "The good news: they cannot lift a bowlingball, and a volley ball is too "
 "light to set off the detonator..."
 msgstr "Die gute Nachricht: Sie können keine Bowlingkugel anheben, und ein Volleyball ist zu leicht, um den Sprengzünder auszulösen …"
 
-#: tbe_levels:298
+#: tbe_levels:336
 msgid "The House of Cards"
 msgstr "Das Kartenhaus"
 
-#: tbe_levels:299
-msgid "The large rectangular pieces of styrofoam hide a message."
-msgstr "Die großen rechteckigen Styroporstücke verbergen eine Nachricht."
-
-#: tbe_levels:300
+#: tbe_levels:337
 msgid ""
 "The Pigs were right - you should be allowed to borrow an egg if you are "
 "starving."
 msgstr "Die Schweine hatten recht – es sollte erlaubt sein, sich ein Ei zu borgen, wenn man am Verhungern ist."
 
-#: tbe_levels:301
+#: tbe_levels:338
 msgid "... the Post-it Boy"
 msgstr "… der Notizschreiber"
 
-#: tbe_levels:302
+#: tbe_levels:339
 msgid "... the Post-It Boy"
 msgstr "… der Notizschreiber"
 
-#: tbe_levels:303
+#: tbe_levels:340
 msgid "the Post-It Boy"
 msgstr "der Notizschreiber"
 
-#: tbe_levels:304
+#: tbe_levels:341
 msgid "... The Post-It boy"
 msgstr "… der Notizschreiber"
 
-#: tbe_levels:305
+#: tbe_levels:342
 msgid "The Post-It Pig"
 msgstr "Das Notizschwein"
 
-#: tbe_levels:306
-msgid "There are two ways to pop a balloon."
-msgstr "Es gibt zwei Wege, einen Ballon zum Platzen zu bringen."
-
-#: tbe_levels:307
+#: tbe_levels:343
 msgid "There's cola,<br>and there's even a gift!"
 msgstr "Es gibt Cola<br>und sogar ein Geschenk!"
 
-#: tbe_levels:308
+#: tbe_levels:344
 msgid ""
 "The second level in the game, and the first level you actually have to put "
-"something into the scene.<br>Don't forget to read the Post-it note!"
-msgstr "Das zweite Level im Spiel und das erste Level, in dem Sie etwas in die Szene platzieren müssen.<br>Vergessen Sie nicht, den Klebezettel zu lesen!"
+"something into the scene. The goal it to put all balls into the "
+"chest.<br>Don't forget to read the Post-it note!"
+msgstr "Der zweite Level im Spiel und das erste Level, in dem Sie etwas in die Szene platzieren müssen. Das Ziel ist es, alle Bälle in die Truhe zu befördern.<br>Vergessen Sie nicht, den Klebezettel zu lesen!"
 
-#: tbe_levels:309
-msgid "The soccer ball cannot cross a big gap by itself."
-msgstr "Der Fußball kann eine große Lücke nicht von alleine überqueren."
+#: tbe_levels:345
+msgid "These I-beams have truly remarkable properties."
+msgstr "Diese Doppel-T-Träger haben wahrlich bemerkenswerte Eigenschaften."
 
-#: tbe_levels:310
-msgid "The soccer ball must kick the pin. But there's something missing."
-msgstr "Der Fußball muss den Bowling-Pin umwerfen. Aber etwas fehlt."
-
-#: tbe_levels:311
+#: tbe_levels:346
 msgid ""
-"They are Angry Birds for what? Just a few eggs? Kill one bird and four eggs "
-"with one stone (dynamite)."
-msgstr "Warum sind diese Vögel nur so wütend? Nur wegen ein paar Eiern? Töten Sie einen Vogel und vier Eier mit einem Stein (Dynamit)."
+"They got the tent poles up already, but are now looking confused at the "
+"canvas."
+msgstr "Sie haben die Zeltstangen bereits aufgebaut, aber jetzt sehen sie sich das Zelttuch verwirrt an."
 
-#: tbe_levels:312
+#: tbe_levels:347
+msgid "They have an incredible stability under extreme conditions."
+msgstr "Sie sind unglaublich stabil unter extremen Bedingungen."
+
+#: tbe_levels:348
+msgid "This bird looks angry. It is rather frail, however."
+msgstr "Dieser Vogel sieht wütend aus. Er ist allerdings ziemlich zerbrechlich."
+
+#: tbe_levels:349
 msgid "This cone begs to be run over!"
 msgstr "Diese Kegel bettelt danach, umgeworfen zu werden."
 
-#: tbe_levels:313
+#: tbe_levels:350
 msgid "This is a factory."
 msgstr "Dies ist eine Fabrik."
 
-#: tbe_levels:314
+#: tbe_levels:351
 msgid "This is a house of cards."
 msgstr "Dies ist ein Kartenhaus."
 
-#: tbe_levels:315
+#: tbe_levels:352
 msgid "This is an egg. Rather easy to break, I'd say..."
 msgstr "Dies ist ein Ei. Ziemlich einfach zu zerbrechen, würde ich sagen …"
 
-#: tbe_levels:316
+#: tbe_levels:353
 msgid ""
 "This is how you properly buy cola:<br>a dozen bottles of that precious brown"
 " liquid at a time!"
 msgstr "So kauft man Cola richtig:<br>Ein Dutzend Flaschen dieser kostbaren braunen Flüssigkeit auf einmal."
 
-#: tbe_levels:317
+#: tbe_levels:354
 msgid "This is just a level to prove PivotPoint correct operation."
 msgstr "Dies ist nur ein Level, um den korrekten Betrieb von PivotPoint-Elementen zu beweisen."
 
-#: tbe_levels:318
+#: tbe_levels:355
 msgid ""
 "This is just a level to prove PivotPoint correct operation. In this case, "
 "from the toolbox."
 msgstr "Dies ist nur ein Level, um den korrekten Betrieb von PivotPoint-Elementen zu beweisen. Diesmal aus dem Werkzeugkasten."
 
-#: tbe_levels:319
+#: tbe_levels:356
 msgid ""
 "This is just a level to prove PivotPoint correct operation. In this case, "
 "there is a hinge."
 msgstr "Dies ist nur ein Level, um den korrekten Betrieb von PivotPoint-Elementen zu beweisen. Diesmal gibt es ein Gelenk."
 
-#: tbe_levels:320
+#: tbe_levels:357
 msgid ""
 "This is just a level to prove PolyObject correct operation. It will only "
 "make sense if you enable debug drawing."
 msgstr "Dies ist nur ein Level, um den korrekten Betrieb von PolyObject-Elementen zu beweisen. Das wird nur einen Sinn ergeben, wenn Sie „debug drawing“ aktivieren."
 
-#: tbe_levels:321
+#: tbe_levels:358
 msgid "This is my brother.<br><br>He is of the sporty type."
 msgstr "Dies ist mein Bruder.<br><br>Er ist ein sportlicher Typ."
 
-#: tbe_levels:322
+#: tbe_levels:359
 msgid "This is not as complicated as it looks. It almost works!"
 msgstr "Dies ist nicht so kompliziert wie es ausschaut. Es funktioniert!"
 
-#: tbe_levels:323
+#: tbe_levels:360
 msgid "This is not a stable equilibrium, any excitation will make it move."
 msgstr "Dies ist kein stabiles Gleichgewicht, jede Kraftauswirkung bringt es in Bewegung."
 
-#: tbe_levels:324
+#: tbe_levels:361
 msgid "This is Ruud.<br><br>He's on a small desert island."
 msgstr "Dies ist Ruud.<br><br>Er lebt auf einer kleinen Wüsteninsel."
 
-#: tbe_levels:325
+#: tbe_levels:362
 msgid "This is the butterfly."
 msgstr "Das ist der Schmetterling."
 
-#: tbe_levels:326
+#: tbe_levels:363
 msgid ""
 "This is the second level to prove PivotPoint correct operation. This level "
 "shows the famous line of metal balls. Lifting one and letting it go should "
@@ -1415,188 +1556,234 @@ msgid ""
 "THAT TBE DOESN'T BEHAVE LIKE THAT !!!"
 msgstr "Dies ist das zweite Level, um das korrekte Verhalten von PivotPoint-Elementen zu beweisen. Dieses Level zeigt die berühmte Linie von Metallbällen. Wenn einer gehoben und dann losgelassen wird, sollten alle Bälle stehen bleiben, außer der Letzte, der sich nach oben bewegt. BEACHTEN SIE, DASS SICH DSE NICHT SO VERHÄLT!"
 
-#: tbe_levels:327
-msgid "This mechanism appears more complex than it actually is."
-msgstr "Dieser Mechanismus erscheint komplexer als er in Wirklichkeit ist."
-
-#: tbe_levels:328
+#: tbe_levels:364
 msgid "Those pins always long for company."
 msgstr "Diese Pins lechzen stets nach Begleitung."
 
-#: tbe_levels:329
+#: tbe_levels:365
+msgid "Throw the bowling ball and the bowling pin into the hole on the right."
+msgstr "Werfen Sie die Bowlingkugel und den Bowling-Pin in das Loch rechts."
+
+#: tbe_levels:366
+msgid "Throw the cactus from the platform."
+msgstr "Werfen Sie den Kaktus von der Plattform."
+
+#: tbe_levels:367
+msgid "Throw the football and the bowling pin into the brown hole."
+msgstr "Werfen Sie den Fußball und den Bowling-Pin in das braune Loch."
+
+#: tbe_levels:368
+msgid "Throw the tennis ball and the bowling pin into the brown hole."
+msgstr "Werfen Sie den Tennisball und den Bowling-Pin in das braune Loch."
+
+#: tbe_levels:369
 msgid "Today, everyone wins if the pin topples into the goal."
 msgstr "Heute gewinnt jeder, wenn der Pin in das Tor fällt."
 
-#: tbe_levels:330
+#: tbe_levels:370
+msgid ""
+"TODO: * make pingus invisible at top, * add more scaffolding-mounts, * add "
+"something sensible to pistons, * add more descriptions"
+msgstr "Zu erledigen: * Pingus oben unsichtbar machen, * Weitere Gerüststangen hinzufügen * Etwas sinnvolles an den Kolben hinzufügen * Mehr Beschreibungen hinzufügen"
+
+#: tbe_levels:371
 msgid "Topple pin to the right.<br>No: Left!<br>OK, OK, to the right."
 msgstr "Werfen Sie den Pin in die rechte Richtung um.<br>Nein: Links!<br>OK, OK, auf die rechte Seite."
 
-#: tbe_levels:331
+#: tbe_levels:372
+msgid "Topple the bowling pin."
+msgstr "Stoßen Sie den Bowling-Pin um."
+
+#: tbe_levels:373
 msgid "Topple the bowling pin below."
 msgstr "Schmeißen Sie den unten stehenden Bowling-Pin um."
 
-#: tbe_levels:332
+#: tbe_levels:374
+msgid "Topple the bowling pin from the right."
+msgstr "Stoßen Sie den Bowling-Pin von rechts um."
+
+#: tbe_levels:375
+msgid "Topple the bowling pin so it falls into the brown pit."
+msgstr "Stoßen Sie den Bowling-Pin um, damit er in die braune Grube fällt."
+
+#: tbe_levels:376
 msgid "Topple the other way"
 msgstr "Andersherum umwerfen"
 
-#: tbe_levels:333
+#: tbe_levels:377
 msgid "Topple the pin."
 msgstr "Schmeißen Sie den Pin um."
 
-#: tbe_levels:334
+#: tbe_levels:378
+msgid "Topple the pins!"
+msgstr "Stoßen Sie die Pins um!"
+
+#: tbe_levels:379
 msgid "Topple the pin to the left..."
 msgstr "Kippen Sie den Pin nach links um …"
 
-#: tbe_levels:335
+#: tbe_levels:380
+msgid "Topple the pin towards the green floor."
+msgstr "Stoßen Sie den Pin zum grünen Fußboden um."
+
+#: tbe_levels:381
 msgid ""
-"Toss both balls (\"boules\") so they end up very close to \"le but\" - just "
-"like \"la vraie Pétanque\"."
-msgstr "Werfen Sie beide Bälle („boules“), damit sie sehr an „le but“ gelangen – genau wie bei „la vraie Pétanque“."
+"Toss both Pétanque balls so they end up very close to the tennis ball."
+msgstr "Werfen Sie beide Pétanque-Kugeln, damit sie sehr nahe am Tennisball landen."
 
-#: tbe_levels:336
-msgid "Transfer energy from Steam Engine to Bowling Pin"
-msgstr "Leiten Sie die Energie der Dampfmaschine zum Bowlin-Pin weiter"
-
-#: tbe_levels:337
+#: tbe_levels:382
 msgid "Turn it around"
 msgstr "Umdrehen"
 
-#: tbe_levels:338
-msgid "Two bowling balls, the wrong ball kicks the pin."
-msgstr "Zwei Bowlingkugeln, die falsche Kugel kickt den Pin."
-
-#: tbe_levels:339
+#: tbe_levels:383
 msgid ""
 "Two hurdles must be overcome. And butterfly has to start everything himself."
 " Or herself?"
 msgstr "Zwei Hürden müssen genommen werden. Und der Schmetterling muss alles selber machen."
 
-#: tbe_levels:340
-msgid "Two things need to happen at once... Goal: Butterfly to Flower."
-msgstr "Zwei Sachen müssen gleichzeitig geschehen … Ziel: Schmetterling soll zur Blume."
+#: tbe_levels:384
+msgid ""
+"Unfortunately, they always get confused when they want to put up their tent."
+msgstr "Leider sind sie immer verwirrt, wenn sie ihr Zelt aufbauen wollen."
 
-#: tbe_levels:341
+#: tbe_levels:385
 msgid "Use a proper football this time!"
 msgstr "Verwenden Sie diesmal einen richtigen Fußball!"
 
-#: tbe_levels:342
+#: tbe_levels:386
 msgid "Vengence will be ours!"
 msgstr "Die Rache ist unser!"
 
-#: tbe_levels:343
+#: tbe_levels:387
+msgid "Very small quarter arc"
+msgstr "Sehr kleiner Viertelbogen"
+
+#: tbe_levels:388
 msgid "Volley Ball"
 msgstr "Volleyball"
 
-#: tbe_levels:344
+#: tbe_levels:389
 msgid "Volley balls can do that, too.<br><br>Wanna bet?"
 msgstr "Volleybälle können dies auch tun.<br><br>Wollen wir wetten?"
 
-#: tbe_levels:345
+#: tbe_levels:390
 msgid "Vroom Vroom Vroom!"
 msgstr "Wrumm, wrumm, wrumm!"
 
-#: tbe_levels:346
+#: tbe_levels:391
 msgid "Vrooom Vrooom Vrooom"
 msgstr "Wrumm, wrumm, wrumm"
 
-#: tbe_levels:347
+#: tbe_levels:392
 msgid "Wait a minute!<br>That Bowling Ball won't do it..."
 msgstr "Warten Sie eine Minute!<br>Die Bowlingkugel wird's nicht bringen …"
 
-#: tbe_levels:348
+#: tbe_levels:393
+msgid "Wait a minute... Don't they look just like the penguins from Pingus?"
+msgstr "Moment mal … Sehen sie nicht aus wie die Pinguine aus Pingus?"
+
+#: tbe_levels:394
 msgid "... waiting for breakfast"
 msgstr "… warte auf Frühstück"
 
-#: tbe_levels:349
+#: tbe_levels:395
 msgid "... Was signed:<br><br>the Post-It Boy"
 msgstr "… gezeichnet <br><br>der Notizschreiber"
 
-#: tbe_levels:350
+#: tbe_levels:396
 msgid "Wedge /"
 msgstr "Keil /"
 
-#: tbe_levels:351
+#: tbe_levels:397
 msgid "Wedge \\"
 msgstr "Keil \\"
 
-#: tbe_levels:352
+#: tbe_levels:398
 msgid "Welcome back!"
 msgstr "Willkommen zurück!"
 
-#: tbe_levels:353
+#: tbe_levels:399
 msgid "What a waste of cola!"
 msgstr "Was für eine Verschwendung von Cola!"
 
-#: tbe_levels:354
+#: tbe_levels:400
 msgid "Where do Balloons go?<br>They can't keep going up forever!"
 msgstr "Wohin fliegen Ballons?<br>Sie können nicht für immer nach oben steigen!"
 
-#: tbe_levels:355
+#: tbe_levels:401
 msgid "Where does the cola go?"
 msgstr "Wo geht die Cola hin?"
 
-#: tbe_levels:356
+#: tbe_levels:402
+msgid "While they're not looking, let's kick over their tent poles."
+msgstr "Solange sie nicht hingucken, lassen Sie uns ihre Zeltstangen umstoßen."
+
+#: tbe_levels:403
 msgid "Why is that butterfly there?"
 msgstr "Warum ist dieser Schmetterling hier?"
 
-#: tbe_levels:357
+#: tbe_levels:404
 msgid "Why would anyone want to be in a tent?"
 msgstr "Warum möchte jeder in einem Zelt sein?"
 
-#: tbe_levels:358
+#: tbe_levels:405
+msgid "Why would you need a styrofoam block?"
+msgstr "Wozu könnte man bloß einen Styroporblock gebrauchen?"
+
+#: tbe_levels:406
 msgid "Wooden bar"
 msgstr "Holzbalken"
 
-#: tbe_levels:359
+#: tbe_levels:407
 msgid "Wooden Beam"
 msgstr "Holzträger"
 
-#: tbe_levels:360
+#: tbe_levels:408
+msgid "Wooden block"
+msgstr "Holzblock"
+
+#: tbe_levels:409
 msgid "Wood Wedge"
 msgstr "Holzkeil"
 
-#: tbe_levels:361
+#: tbe_levels:410
 msgid "Wooosh Wooosh Wooosh"
 msgstr "Wusch, wusch, wusch"
 
-#: tbe_levels:362
+#: tbe_levels:411
 msgid "Wow, that's a huge gap for a Soccer Ball."
 msgstr "Oha, das ist eine große Lücke für einen Fußball."
 
-#: tbe_levels:363
-msgid "You'll figure it out."
-msgstr "Sie werden es schon herausfinden."
-
-#: tbe_levels:364
+#: tbe_levels:412
 msgid ""
 "You probably guessed what needs to be done here. <br><br>Rotate the cactus "
 "carefully<br> - it has a rather tight fit!"
 msgstr "Sie haben sich vielleicht schon gedacht, was hier getan werden muss.<br><br>Drehen Sie den Kaktus vorsichtig.<br>Es wird eng!"
 
-#: tbe_levels:365
+#: tbe_levels:413
 msgid "Your job:<br>tear it down!"
 msgstr "Ihre Aufgabe:<br>Zerstören Sie es!"
 
-#: tbe_levels:366
+#: tbe_levels:414
 msgid ""
 "You see that bowling ball at the top-right? <br><br>It wants to topple the "
 "pin next to it."
-msgstr "Sehen Sie diese Bowlingkugel oben rechts?<br><br>Er möchte den Pin neben ihn umstoßen."
+msgstr "Sehen Sie diese Bowlingkugel oben rechts?<br><br>Sie möchte den Pin neben ihr umstoßen."
 
-#: tbe_levels:367
+#: tbe_levels:415
 msgid "You see that butterfly?"
 msgstr "Sehen Sie den Schmetterling?"
 
-#: tbe_levels:368
+#: tbe_levels:416
 msgid ""
 "You've seen this before: a Bowling Ball and a Bowling Pin. But this time, "
 "there's a wall in-between."
-msgstr "Sie haben dies schon vorher gesehen: eine Bowlingkugel und ein Bowling-Pin. Aber diesmal ist eine Mauer dazwischen."
+msgstr "Das haben Sie schon vorher gesehen: eine Bowlingkugel und ein Bowling-Pin. Aber diesmal ist eine Mauer dazwischen."
 
-#: tbe_levels:369
+#: tbe_levels:417
 msgid "Zoing and Boom"
 msgstr "Zoing und Bumm"
 
-#: tbe_levels:370
+#: tbe_levels:418
 msgid "Zoing Ploing Boing Woing<br>Zzap Whoosh Smack Boom"
 msgstr "Zoing, ploing, boing, woing<br>Zapp, wusch, krach, bumm"
