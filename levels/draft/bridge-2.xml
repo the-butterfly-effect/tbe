@@ -31,7 +31,7 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Bounciness">0.0</property>
             </object>
-            <object X="0.25" Y="2.7" type="RectObject">
+            <object X="0.25" Y="2.7" type="Hammer">
                 <property key="Mass">80.0</property>
             </object>
             <object X="0.5" Y="2.35" type="BowlingBall" ID="Ball"/>
