@@ -86,7 +86,7 @@ const QString Singleton::Translator::getText(const QString &aStringToTranslate)
 {
     if (aStringToTranslate.isEmpty())
         return "";
-    return gettext(ASCII(aStringToTranslate));
+    return gettext(aStringToTranslate.toUtf8().constData());
 }
 
 
