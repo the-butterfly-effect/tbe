@@ -426,12 +426,12 @@ bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
 		return false;
 	}
 	theProps.list();
-	if (!theProps.doesPropertyExists(Property::S_MORETHAN))
+    if (!theProps.doesPropertyExists(Property::S_EQUALMORE))
 	{
-		DEBUG2("GoalEscapedPingusCounter::parseProperties() didn't get MORETHAN property");
+        DEBUG2("GoalEscapedPingusCounter::parseProperties() didn't get EQUALMORE property");
 		return false;
 	}
-	theProps.property2Float(Property::S_MORETHAN, &theLimit, false);
+    theProps.property2Float(Property::S_EQUALMORE, &theLimit, false);
 	return true;
 }
 
@@ -440,7 +440,7 @@ QString GoalEscapedPingusCounter::goalToStringList() const
 	QString myString;
 		myString = QString("%1;;%2;%3;")
 					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::ESCPINGUS])
-					   .arg(">")
+                       .arg(">=")
 					   .arg(QString::number(theLimit));
 	return myString;
 }

@@ -118,7 +118,7 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
         if (myList[2]!=">" && myList[2]!="<")
             return nullptr;
         myGoal = new GoalDistance();
-        if (myList[2]==">")
+        if (myList[2]==">" || myList[2]==">=")
             myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
         if (myList[2]=="<")
             myGoal->theProps.setProperty(Property::S_LESSTHAN, myList[3]);
@@ -133,14 +133,14 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 		myGoal->theProps.setProperty(Property::OBJECT_STRING, myList[1]);
 		if (myType==POSITIONX && myList[2]==GoalEditor::getT10nOf_change())
 			myGoal->theProps.setProperty(Property::S_XCHANGED, "");
-		if (myType==POSITIONX && myList[2]==">")
+        if (myType==POSITIONX && (myList[2]==">" || myList[2]==">="))
 			myGoal->theProps.setProperty(Property::S_XOVER, myList[3]);
 		if (myType==POSITIONX && myList[2]=="<")
 			myGoal->theProps.setProperty(Property::S_XBELOW, myList[3]);
 
 		if (myType==POSITIONY && myList[2]==GoalEditor::getT10nOf_change())
 			myGoal->theProps.setProperty(Property::S_YCHANGED, "");
-		if (myType==POSITIONY && myList[2]==">")
+        if (myType==POSITIONY && (myList[2]==">" || myList[2]==">="))
 			myGoal->theProps.setProperty(Property::S_YOVER, myList[3]);
 		if (myType==POSITIONY && myList[2]=="<")
 			myGoal->theProps.setProperty(Property::S_YBELOW, myList[3]);
@@ -160,7 +160,7 @@ Goal* GoalSerializer::createObjectFromString(World* aWorldPtr, const QString& aS
 		break;
 	case ESCPINGUS:
 		myGoal = new GoalEscapedPingusCounter();
-		myGoal->theProps.setProperty(Property::S_MORETHAN, myList[3]);
+        myGoal->theProps.setProperty(Property::S_EQUALMORE, myList[3]);
 		break;
 	}
 

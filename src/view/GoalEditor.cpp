@@ -277,7 +277,7 @@ void GoalEditor::setupViewAndModel(QTableView* aViewPtr, QStandardItemModel** aM
 	aViewPtr->setItemDelegateForColumn ( 0, myVariableDelegate);
 
 	ComboBoxDelegate* myConditionDelegate = new ComboBoxDelegate();
-	myConditionDelegate->setItems(QString(">;<;"+getT10nOf_change()).split(";"));
+    myConditionDelegate->setItems(QString(">;<;>=;"+getT10nOf_change()).split(";"));
 	aViewPtr->setItemDelegateForColumn ( 2, myConditionDelegate);
 	aViewPtr->setItemDelegateForColumn ( 3, new DoubleSpinBoxDelegate(this, -10, 50));
 

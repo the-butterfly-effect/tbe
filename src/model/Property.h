@@ -266,7 +266,8 @@ public:
 	// GoalDistance & GoalStateChange
 	static const char* S_LESSTHAN;
 	static const char* S_MORETHAN;
-	static const char* S_STATE_CH;
+    static const char* S_EQUALMORE;
+    static const char* S_STATE_CH;
 
 	// GoalPositionChange
 	static const char* S_XCHANGED;
