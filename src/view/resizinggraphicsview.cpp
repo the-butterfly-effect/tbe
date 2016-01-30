@@ -79,9 +79,11 @@ void ResizingGraphicsView::clearViewWorld(void)
 }
 
 
-GameResources* ResizingGraphicsView::getGameResourcesDialogPtr() const
+GameResources* ResizingGraphicsView::getGameResourcesDialogPtr()
 {
 	Q_ASSERT(theGameResourcesPtr != nullptr);
+    delete 	theGameResourcesPtr;
+    theGameResourcesPtr = new GameResources(this);
 	return theGameResourcesPtr;
 }
 

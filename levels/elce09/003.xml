@@ -24,7 +24,7 @@
             <object width="0.220" X="0.300" Y="2.750" height="0.220" type="BowlingBall" angle="0.000"/>
             <object width="0.220" X="0.300" Y="1.100" height="0.220" type="BowlingBall" angle="0.000"/>
             <object width="0.220" X="2.600" Y="4.400" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object width="0.200" X="6.400" Y="0.700" height="0.150" type="LeftRamp" angle="0.000"/>
+            <object width="0.200" X="6.400" Y="0.620" height="0.150" type="LeftRamp" angle="0.000"/>
             <object width="0.120" X="6.400" Y="0.390" height="0.340" type="BowlingPin" ID="Pin" angle="0.000"/>
             <object width="5.000" X="2.600" Y="4.100" height="0.700" type="RightRamp" angle="0.000"/>
             <object width="5.000" X="2.600" Y="2.300" height="0.700" type="RightRamp" angle="0.000"/>

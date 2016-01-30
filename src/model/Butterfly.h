@@ -33,7 +33,10 @@ public:
 
 	virtual ~Butterfly();
 
-	/// @returns the Name of the object.
+    /// overridden because a Balloon can 'die' through external reasons
+    void causeWounded(WhyWounded aReason) override;
+
+    /// @returns the Name of the object.
 	const QString getName ( ) const override
 	{	return QObject::tr("Butterfly"); }
 

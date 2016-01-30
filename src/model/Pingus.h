@@ -40,7 +40,10 @@ public:
 
 	virtual ~Pingus();
 
-	ViewObjectPtr  createViewObject(float aDefaultDepth) override;
+    /// overridden because a Pingus can 'die' through external reasons
+    void causeWounded(WhyWounded aReason) override;
+
+    ViewObjectPtr  createViewObject(float aDefaultDepth) override;
 
 	/// Overridden from CircleObject because this class wants to register for
 	/// callbacks and needs to restart its state machine.
@@ -83,7 +86,13 @@ public:
     /// to leave the world happily.
     void startYourExit();
 
-	/// called by GoalEscapedPingusCounter
+    /// called by GoalEscapedPingusCounter
+    /// @returns the number of (still) alive Pingus
+    /// @note escaped pingus are still considered 'alive', just not on this world
+    static int getAlivePingusCount()
+    { return theAliveCount; }
+
+    /// called by GoalEscapedPingusCounter
 	/// @returns the number of Pingus that have started exiting the world
 	static int getEscapedPingusCount()
 	{ return theEscapedCount; }
@@ -108,6 +117,9 @@ public:
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
 	void reportNormalImpulseLength(qreal anImpulseLength) override;
+
+    /// called by World at the start of every simulation
+    static void resetPingusCount();
 
 protected:
 	/// implemented from SimStepCallbackInterface
@@ -147,6 +159,7 @@ protected:
 	qreal theLastNormalImpulseReported;
 
 	static int theEscapedCount;
+    static int theAliveCount;
 };
 
 

@@ -133,6 +133,13 @@ void Butterfly::callbackStep (qreal aDeltaTime, qreal)
 }
 
 
+void Butterfly::causeWounded(AbstractObject::WhyWounded /*noparam*/)
+{
+    // essentially, a butterfly is very weak and cannot resist anything...
+    setState(DEAD);
+}
+
+
 void Butterfly::goToFlower(void)
 {
     AbstractObjectPtr myFlowerPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);

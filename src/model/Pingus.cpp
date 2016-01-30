@@ -47,12 +47,13 @@ static const qreal WALKINGSEQS_PER_SECOND = 1.5; // 1.5 sequences per horizontal
 
 const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 9, 9, 1, 5, 1};
 int Pingus::theEscapedCount = 0;
+int Pingus::theAliveCount = 0;
 
 Pingus::Pingus()
 		: CircleObject(QObject::tr("Pingus"),
 					 QObject::tr("The famous penguin. He walks and believes in your guidance. Keep him alive!"),
 					 "",
-					 PINGUS_RADIUS, PINGUS_MASS, 0.0 )
+                     PINGUS_RADIUS, PINGUS_MASS, 0.0 )
 {
 	resetParameters();
 }
@@ -272,12 +273,31 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal)
 }
 
 
+void Pingus::causeWounded(AbstractObject::WhyWounded aReason)
+{
+    switch(aReason)
+    {
+    case NOTHING:
+    case STINGING:
+    case WET:
+        // do nothing: no issue
+        break;
+    case SLICING:
+    case POISON:
+    case HEAT:
+        goToState(SPLATTING);
+        break;
+    }
+}
+
+
 void Pingus::createPhysicsObject()
 {
 	resetParameters();
 	createBallShapeFixture(PINGUS_RADIUS, PINGUS_MASS);
 	CircleObject::createPhysicsObject();
 	theWorldPtr->registerCallback(this);
+    theAliveCount++;
 }
 
 
@@ -345,7 +365,8 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
             if (DEAD==aNewState)
 			{
 				theState=DEAD;
-				deletePhysicsObjectForReal();
+                theAliveCount--;
+                deletePhysicsObjectForReal();
 			}
             if (DIDEXIT==aNewState)
 			{
@@ -387,7 +408,7 @@ void Pingus::reportNormalImpulseLength(qreal anImpulseLength)
 
 	if (anImpulseLength > theLastNormalImpulseReported)
 		theLastNormalImpulseReported = anImpulseLength;
-	// When Walking/Sliding/Waiting, we expect an impulselength of approx 0.05-0.06
+    // When Walking/Sliding/Waiting, we expect an impulselength of approx 0.05-0.06
 }
 
 
@@ -399,8 +420,14 @@ void Pingus::resetParameters()
 	theSplattingTimeStart = -1.0;
 	theWaitingTimeStart   = -1.0;
 	theLastNormalImpulseReported = 0.0;
-	theEscapedCount = 0;
 	updateViewPingus();
+}
+
+
+void Pingus::resetPingusCount()
+{
+    theAliveCount = 0;
+    theEscapedCount = 0;
 }
 
 

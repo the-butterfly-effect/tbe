@@ -23,6 +23,7 @@
 #include "ViewObject.h"
 #include "AbstractJoint.h"
 #include "Box2D.h"
+#include "Pingus.h"
 #include "ViewWorld.h"
 
 const qreal World::theDeltaTime = 0.004;
@@ -137,6 +138,8 @@ void World::createPhysicsWorld(void)
 	DEBUG3("World::createPhysicsWorld()");
 	if (theB2WorldPtr!=nullptr)
 		return;
+
+    Pingus::resetPingusCount();
 
     theB2WorldPtr = new	b2World( b2Vec2(0.0f, getG()));
 	AbstractObject::setTheB2WorldPtr(theB2WorldPtr);

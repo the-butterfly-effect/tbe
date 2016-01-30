@@ -78,7 +78,12 @@ AbstractObject::~AbstractObject ( )
 	delete theB2BodyDefPtr;
 	theB2BodyDefPtr=nullptr;
 
-	deleteViewObject();
+    deleteViewObject();
+}
+
+void AbstractObject::causeWounded(AbstractObject::WhyWounded)
+{
+  // nothing to do, 'normal' objects cannot 'die'
 }
 
 

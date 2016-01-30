@@ -41,6 +41,9 @@ public:
 
 	virtual ~Balloon();
 
+    /// overridden because a Balloon can 'die' through external reasons
+    void causeWounded(WhyWounded aReason) override;
+
 	/// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void) override;
@@ -60,9 +63,6 @@ public:
 		POPPED,
 		GONE
 	};
-
-	/// called by a Cactus or BedOfNails if the balloon is hit
-	void stung(void);
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state

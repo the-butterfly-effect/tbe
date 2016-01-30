@@ -190,6 +190,28 @@ public:
 	// Public Getters and Setters
 	// (sorted alphabetically)
 
+    /// If e.g. a Sawblade touches a Penguin, it will have to tell the penguin
+    /// that it should die. Use the causeWounded member to 'inflict' the damage.
+    /// The WhyWounded enum tells why one would die. E.g., a bowlingball doesn't
+    /// die from a slicing wound ;-)
+    enum WhyWounded
+    {
+        NOTHING = 0,
+        POISON,
+        SLICING,
+        STINGING,
+        HEAT,
+        WET         // not implemented, but image coke on dynamite
+    };
+
+    /// If e.g. a Sawblade touches a Penguin, it will have to tell the penguin
+    /// that it should die. Use the causeWounded member to 'inflict' the damage.
+    /// @param aReason tells why one would die. E.g., a bowlingball doesn't
+    ///                die from a slicing wound ;-)
+    /// @note that by default, objects do not respond to this member, you have to
+    ///       override it.
+    virtual void causeWounded(WhyWounded aReason);
+
 	/// @returns Pointer to the B2Body for the relative position asked for.
 	///          Might return nullptr if no body or if outside body (see warning)
 	/// @param   Relative position (to the center of the object) to look for

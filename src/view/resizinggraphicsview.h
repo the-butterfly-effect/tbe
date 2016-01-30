@@ -60,7 +60,7 @@ public:
 
     /// @returns a pointer to the GameResourcesDialog.
     /// @note this member is only used to hand a pointer to Level.
-    GameResources* getGameResourcesDialogPtr() const;
+    GameResources* getGameResourcesDialogPtr();
 
     QAction* getFrameRateViewPtr()
     { return theFrameRateViewPtr; }

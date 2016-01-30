@@ -24,10 +24,10 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/balloons-do-poof.xml:5, \
+	./tbe --regression levels/draft/balloons-do-poof.xml:6, \
 	      --regression levels/draft/balloons-go-up.xml:9, \
 	      --regression levels/draft/bouncing_balls.xml:6, \
-	      --regression levels/draft/butterfly-on-steroids.xml:75, \
+	      --regression levels/draft/butterfly-on-steroids.xml:65, \
 	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
               --regression=levels/draft/construction_yard.xml:26, \
               --regression levels/draft/contraption1.xml:36, \
@@ -35,7 +35,6 @@ regression: usr/games/tbe
 	      --regression levels/draft/house_of_cards.xml:20, \
 	      --regression=levels/draft/in_the_attic.xml:17, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
-	      --regression levels/draft/poing-poing-poing.xml:15, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
 	      --regression levels/angry/birds1.xml:10, \
 	      --regression levels/elce09/002.xml:30, \

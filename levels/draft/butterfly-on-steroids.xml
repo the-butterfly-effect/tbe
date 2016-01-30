@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE mydocument> -->
+<!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
         <title>Butterfly on steroids</title>
@@ -8,166 +8,166 @@
         <date>13 May 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="3" name="Bowling Ball">
-            <object type="BowlingBall"/>
+        <toolboxitem name="Bowling Ball" count="3">
+            <object height="0.220" type="BowlingBall" X="0.000" width="0.220" Y="0.000" angle="0.000"/>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="4.6" height="3"/>
+        <scenesize height="3" width="4.6"/>
         <predefined>
-            <object width="2.000" X="1.550" Y="0.900" height="0.700" type="Scenery" angle="0.000">
+            <object height="0.700" type="Scenery" X="1.550" width="2.000" Y="0.900" angle="0.000">
                 <property key="Friction">0.6</property>
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">15</property>
             </object>
-            <object width="2.000" X="3.550" Y="0.900" height="0.700" type="Scenery" angle="0.000">
+            <object height="0.700" type="Scenery" X="3.550" width="2.000" Y="0.900" angle="0.000">
                 <property key="Friction">0.6</property>
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">15</property>
             </object>
-            <object width="2.000" X="1.550" Y="1.600" height="0.700" type="Scenery" angle="0.000">
+            <object height="0.700" type="Scenery" X="1.550" width="2.000" Y="1.600" angle="0.000">
                 <property key="Friction">0.6</property>
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">15</property>
             </object>
-            <object width="2.000" X="3.550" Y="1.600" height="0.700" type="Scenery" angle="0.000">
+            <object height="0.700" type="Scenery" X="3.550" width="2.000" Y="1.600" angle="0.000">
                 <property key="Friction">0.6</property>
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">15</property>
             </object>
-            <object width="4.600" X="2.300" Y="0.050" height="0.100" type="Floor" angle="0.000">
+            <object height="0.100" type="Floor" X="2.300" width="4.600" Y="0.050" angle="0.000">
                 <property key="Friction">0.6</property>
             </object>
-            <object width="0.260" X="3.02" Y="2.280" height="0.260" type="PostIt" angle="0.000">
+            <object height="0.260" type="PostIt" X="3.020" width="0.260" Y="2.280" angle="0.000">
                 <property key="page1">Flying from flower to flower can be hard. A real hurdle race.</property>
                 <property key="page2">Two hurdles must be overcome. And butterfly has to start everything himself. Or herself?</property>
                 <property key="page3">&lt;br>&lt;br>&lt;br>...Post-it boy&lt;br>(male, I think)</property>
             </object>
-            <object width="0.100" X="1.250" Y="0.800" height="0.100" type="RectObject" ID="BrassPin" angle="0.000">
+            <object height="0.100" ID="BrassPin" type="RectObject" X="1.250" width="0.100" Y="0.800" angle="0.000">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="0.100" X="1.250" Y="1.000" height="1.000" type="RectObject" ID="Bar" angle="0.000">
+            <object height="1.000" ID="Bar" type="RectObject" X="1.250" width="0.100" Y="1.000" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">5.0</property>
             </object>
-            <object width="1.000" X="1.250" Y="0.800" height="1.000" type="PivotPoint" angle="0.000">
+            <object height="1.000" type="PivotPoint" X="1.250" width="1.000" Y="0.800" angle="0.000">
                 <property key="object1">Bar</property>
                 <property key="object2">BrassPin</property>
             </object>
-            <object width="0.150" X="0.950" Y="1.60" height="0.228" type="Butterfly" ID="Butterfly" angle="0.000">
+            <object height="0.228" ID="Butterfly" type="Butterfly" X="0.950" width="0.150" Y="1.600" angle="0.000">
                 <property key="Mass">0.015</property>
                 <property key="object">Flower</property>
             </object>
-            <object width="0.350" X="4.300" Y="1.300" height="0.800" type="RectObject" angle="0.000">
+            <object height="0.800" type="RectObject" X="4.300" width="0.350" Y="1.300" angle="0.000">
                 <property key="ImageName">Anonymous_daffodil_klaas</property>
             </object>
-            <object width="0.200" X="4.200" Y="1.80" height="0.200" type="Scenery" ID="Flower" angle="0.000">
+            <object height="0.200" ID="Flower" type="Scenery" X="4.200" width="0.200" Y="1.800" angle="0.000">
                 <property key="ImageName">Empty</property>
             </object>
-            <object width="0.500" X="4.250" Y="0.525" height="0.950" type="RectObject" angle="0.000">
+            <object height="0.950" type="RectObject" X="4.250" width="0.500" Y="0.525" angle="0.000">
                 <property key="Bounciness">0.1</property>
                 <property key="Friction">1</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.050" Y="1.150" height="0.300" type="RectObject" angle="0.000">
+            <object height="0.300" type="RectObject" X="4.050" width="0.100" Y="1.150" angle="0.000">
                 <property key="Bounciness">0.1</property>
                 <property key="Friction">0.8</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.550" Y="1.150" height="2.300" type="RectObject" angle="0.000">
+            <object height="2.300" type="RectObject" X="4.550" width="0.100" Y="1.150" angle="0.000">
                 <property key="Friction">0.8</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.166" X="1.770" Y="0.720" height="0.500" type="ColaMintBottle" angle="1.570"/>
-            <object width="1.200" X="2.300" Y="0.600" height="0.100" type="RectObject" angle="0.000">
+            <object height="0.500" type="ColaMintBottle" X="1.770" width="0.166" Y="0.720" angle="1.570"/>
+            <object height="0.100" type="RectObject" X="2.300" width="1.200" Y="0.600" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.700" X="2.800" Y="1.000" height="0.100" type="RectObject" angle="0.000">
+            <object height="0.100" type="RectObject" X="2.800" width="1.700" Y="1.000" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.200" X="3.650" Y="1.000" height="0.100" type="RectObject" angle="0.000">
+            <object height="0.100" type="RectObject" X="3.650" width="0.200" Y="1.000" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.8</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="3.050" Y="0.450" height="0.100" type="RectObject" ID="BrassPin2" angle="0.000">
+            <object height="0.100" ID="BrassPin2" type="RectObject" X="3.050" width="0.100" Y="0.450" angle="0.000">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="0.100" X="3.050" Y="0.500" height="0.700" type="RectObject" ID="Bar2" angle="0.000">
+            <object height="0.700" ID="Bar2" type="RectObject" X="3.050" width="0.100" Y="0.500" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">15.0</property>
             </object>
-            <object width="1.000" X="3.050" Y="0.450" height="1.000" type="PivotPoint" angle="0.000">
+            <object height="1.000" type="PivotPoint" X="3.050" width="1.000" Y="0.450" angle="0.000">
                 <property key="object1">Bar2</property>
                 <property key="object2">BrassPin2</property>
             </object>
-            <object width="0.100" X="2.800" Y="2.150" height="0.100" type="RectObject" ID="BrassPin3" angle="0.000">
+            <object height="0.100" ID="BrassPin3" type="RectObject" X="2.800" width="0.100" Y="2.150" angle="0.000">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="2.500" X="1.600" Y="2.150" height="0.100" type="RectObject" ID="Bar3" angle="0.000">
+            <object height="0.100" ID="Bar3" type="RectObject" X="1.600" width="2.500" Y="2.150" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.5</property>
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">1.0</property>
             </object>
-            <object width="1.000" X="2.800" Y="2.150" height="1.000" type="PivotPoint" angle="0.000">
+            <object height="1.000" type="PivotPoint" X="2.800" width="1.000" Y="2.150" angle="0.000">
                 <property key="object1">Bar3</property>
                 <property key="object2">BrassPin3</property>
             </object>
-            <object width="0.100" X="0.400" Y="2.250" height="0.100" type="RectObject" ID="Bar3a" angle="0.000">
+            <object height="0.100" ID="Bar3a" type="RectObject" X="0.400" width="0.100" Y="2.250" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.5</property>
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">1.0</property>
             </object>
-            <object width="1.000" X="0.400" Y="2.200" height="1.000" type="PivotPoint" angle="0.000">
+            <object height="1.000" type="PivotPoint" X="0.400" width="1.000" Y="2.200" angle="0.000">
                 <property key="collide">true</property>
                 <property key="object1">Bar3</property>
                 <property key="object2">Bar3a</property>
             </object>
-            <object width="0.166" X="0.700" Y="0.340" height="0.500" type="ColaMintBottle" angle="3.140">
+            <object height="0.500" type="ColaMintBottle" X="0.700" width="0.166" Y="0.340" angle="3.140">
                 <property key="Mass">   0.7</property>
                 <property key="Thrust">15.0</property>
             </object>
-            <object width="0.200" X="0.500" Y="1.010" height="1.820" type="RectObject" angle="0.000">
+            <object height="1.820" type="RectObject" X="0.500" width="0.200" Y="1.010" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.0</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="0.540" Y="1.910" height="0.100" type="RectObject" angle="0.000">
+            <object height="0.100" type="RectObject" X="0.540" width="0.100" Y="1.910" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.4</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.180" X="0.350" Y="2.480" height="0.250" type="Skyhook" angle="0.000"/>
-            <object width="0.100" X="0.850" Y="1.200" height="1.500" type="RectObject" angle="0.000">
+            <object height="0.250" type="Skyhook" X="0.350" width="0.180" Y="2.480" angle="0.000"/>
+            <object height="1.500" type="RectObject" X="0.850" width="0.100" Y="1.200" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.4</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.150" X="3.700" Y="1.450" height="0.800" type="RectObject" angle="0.000">
+            <object height="0.800" type="RectObject" X="3.700" width="0.150" Y="1.450" angle="0.000">
                 <property key="Bounciness">0.2</property>
                 <property key="Friction">0.1</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
             </object>
-            <object width="1.000" angle="3.635" height="0.800" X="3.906" Y="2.206" type="QuarterArc80"/>
-            <object width="1.000" angle="0.35" height="0.608" X="2.845" Y="2.414" type="QuarterArc80"/>
-            <object width="0.400" angle="3.142" height="0.400" X="0.197" Y="2.015" type="QuarterArc40"/>
-            <object width="0.400" angle="1.571" height="0.400" X="3.807" Y="0.297" type="QuarterArc40"/>
-            <object width="1.000" angle="3.426" height="0.719" X="1.835" Y="2.700" type="QuarterArc80"/>
-            <object width="1.000" angle="0.344" height="0.800" X="0.793" Y="3.088" type="QuarterArc80"/>
+            <object height="0.800" type="QuarterArc80" X="3.906" width="1.000" Y="2.206" angle="3.635"/>
+            <object height="0.608" type="QuarterArc80" X="2.845" width="1.000" Y="2.414" angle="0.350"/>
+            <object height="0.400" type="QuarterArc40" X="0.197" width="0.400" Y="2.015" angle="3.142"/>
+            <object height="0.400" type="QuarterArc40" X="3.807" width="0.400" Y="0.297" angle="1.571"/>
+            <object height="0.719" type="QuarterArc80" X="1.952" width="1.000" Y="2.712" angle="3.426"/>
+            <object height="0.800" type="QuarterArc80" X="0.915" width="1.000" Y="3.074" angle="0.344"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.00;0.67;0.00;1.00</gradientstop>
@@ -183,8 +183,8 @@
         </goal>
     </goals>
     <hints>
-        <hint X="2.88" Y="0.24" number="1" object="BowlingBall"/>
-        <hint X="2.7" Y="2.5" number="2" object="BowlingBall"/>
-        <hint X="0.23" Y="2.15" number="3" object="BowlingBall"/>
+        <hint number="1" object="BowlingBall" X="2.88" Y="0.24"/>
+        <hint number="2" object="BowlingBall" X="2.7" Y="2.4"/>
+        <hint number="3" object="BowlingBall" X="0.23" Y="2.15"/>
     </hints>
 </tbe-level>

@@ -133,6 +133,14 @@ void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 }
 
 
+void Balloon::causeWounded(WhyWounded aReason)
+{
+    if (aReason == HEAT || aReason == STINGING)
+        if (theState == BALLOON)
+            goToState(POPPING);
+}
+
+
 void Balloon::createPhysicsObject(void)
 {
 	theState = BALLOON;
@@ -217,12 +225,6 @@ void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
 }
 
 
-void Balloon::stung(void)
-{
-	if (theState == BALLOON)
-		goToState(POPPING);
-}
-
 void Balloon::switchToSmallShape(void)
 {
 	// save the current position - as it is only stored within the B2Body
@@ -291,11 +293,8 @@ void Cactus::callBackSensor(const ContactInfo& aPoint)
 	if (myOtherObject==nullptr)
 		return;
 
-	// is it a Balloon?
-	// then pop it!
-	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=nullptr)
-		myBalloonPtr->stung();
+    // try to sting it!
+    myOtherObject->causeWounded(AbstractObject::STINGING);
 }
 
 void Cactus::fillShapeList(void)
@@ -370,11 +369,8 @@ void BedOfNails::callBackSensor(const ContactInfo& aPoint)
 	if (myOtherObject==nullptr)
 		return;
 
-	// is it a Balloon?
-	// then pop it!
-	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=nullptr)
-		myBalloonPtr->stung();
+    // try to sting it!
+    myOtherObject->causeWounded(AbstractObject::STINGING);
 }
 
 void BedOfNails::fillShapeList(void)
@@ -442,11 +438,8 @@ void CircularSaw::callBackSensor(const ContactInfo& aPoint)
 	if (myOtherObject==nullptr)
 		return;
 
-	// is it a Balloon?
-	// then pop it!
-	Balloon* myBalloonPtr = dynamic_cast<Balloon*>(myOtherObject);
-	if (myBalloonPtr!=nullptr)
-		myBalloonPtr->stung();
+    // try to sting it!
+    myOtherObject->causeWounded(AbstractObject::SLICING);
 }
 
 

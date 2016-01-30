@@ -124,6 +124,6 @@
     <hints>
         <hint X="3.650" Y="0.9" number="1" object="IBeam"/>
         <hint X="1.05" Y="2.7" number="2" object="LeftRamp"/>
-        <hint X=".7" Y="1.12" number="3" object="RightRamp"/>
+        <hint X="0.72" Y="1.12" number="3" object="RightRamp"/>
     </hints>
 </tbe-level>

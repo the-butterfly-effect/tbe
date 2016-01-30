@@ -404,15 +404,21 @@ GoalEscapedPingusCounter::~GoalEscapedPingusCounter()
 
 bool GoalEscapedPingusCounter::checkForSuccess(void)
 {
-	if (Pingus::getEscapedPingusCount() > theLimit-0.01)
+    if (isFail==false && Pingus::getEscapedPingusCount() > theLimit-0.01)
 		return true;
-	else
-		return false;
+    if (isFail==true && Pingus::getAlivePingusCount() < theLimit-0.01)
+        return true;
+    return false;
 }
 
 bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
 {
 	assert(aWPtr!=nullptr);
+
+    const char* myCompare = Property::S_EQUALMORE;
+    if (isFail)
+        myCompare = Property::S_LESSTHAN;
+
 	if (nullptr==aWPtr)
 	{
 		DEBUG2("GoalEscapedPingusCounter::parseProperties() aWPtr doesn't exist?");
@@ -420,27 +426,32 @@ bool GoalEscapedPingusCounter::parseProperties(World* aWPtr)
 	}
 
 	// we expect only to have 1 properties - any other number is wrong
-	if (theProps.getPropertyCount() != 1)
+    if (theProps.getPropertyCount() != 1)
 	{
 		DEBUG2("GoalEscapedPingusCounter::parseProperties() got %d properties (>1), not good", theProps.getPropertyCount());
 		return false;
 	}
 	theProps.list();
-    if (!theProps.doesPropertyExists(Property::S_EQUALMORE))
+    if (!theProps.doesPropertyExists(myCompare))
 	{
-        DEBUG2("GoalEscapedPingusCounter::parseProperties() didn't get EQUALMORE property");
+        DEBUG2("GoalEscapedPingusCounter::parseProperties() didn't get %s property", myCompare);
 		return false;
 	}
-    theProps.property2Float(Property::S_EQUALMORE, &theLimit, false);
+    theProps.property2Float(myCompare, &theLimit, false);
 	return true;
 }
 
 QString GoalEscapedPingusCounter::goalToStringList() const
 {
-	QString myString;
-		myString = QString("%1;;%2;%3;")
-					   .arg(GoalSerializer::getColumnZero()[GoalSerializer::ESCPINGUS])
-                       .arg(">=")
-					   .arg(QString::number(theLimit));
-	return myString;
+    QString myString;
+    const char* myCompare;
+    if (isFail)
+        myCompare = "<";
+    else
+        myCompare = ">=";
+    myString = QString("%1;;%2;%3;")
+            .arg(GoalSerializer::getColumnZero()[GoalSerializer::ESCPINGUS])
+            .arg(myCompare)
+            .arg(QString::number(theLimit));
+    return myString;
 }

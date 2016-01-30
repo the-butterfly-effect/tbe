@@ -78,7 +78,7 @@ static AbstractPolyObjectFactory theLeftRampFactory(
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Ramp"),
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a ramp. The left is lower than the right, so things slide to the left."),
 	"LeftRamp",
-		"(-0.5,-0.46)=(-0.5,-0.5)=(0.13,-0.5)=(0.5,0.5)",
+        "(-0.5,-0.46)=(-0.5,-0.5)=(-0.3,-0.5)=(0.4,0.2)=(0.5,0.4)=(0.5,0.5)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightRampFactory(
@@ -86,7 +86,7 @@ static AbstractPolyObjectFactory theRightRampFactory(
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Ramp"),
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a ramp. The left is higher than the right, so things slide to the right."),
 	"RightRamp",
-		"(-0.5,0.5)=(-0.13,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+        "(-0.5,0.5)=(-0.5,0.4)=(-0.4,0.2)=(0.3,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
 	1.0, 1.0, 0.0, 0.2 );
 
 static AbstractPolyObjectFactory theLeftWedgeFactory(
