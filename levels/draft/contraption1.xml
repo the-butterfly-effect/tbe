@@ -135,6 +135,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object X="4.20" Y="2.00" type="VolleyBall"/>
+            <object X="1.509" Y="1.612" width="1.000" angle="0.000" type="Floor" height="0.100"/>
         </predefined>
         <background>
             <image vrepeatdist="0.00" hrepeatdist="0.00" name="backdrop_scaffolding"/>
