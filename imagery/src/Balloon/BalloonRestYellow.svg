@@ -53,13 +53,13 @@
 			<stop stop-color="#fff" stop-opacity="0" offset="1"/>
 		</linearGradient>
 		<linearGradient id="d">
-			<stop stop-color="#00575f" stop-opacity="0" offset="0"/>
-			<stop stop-color="#0062ff" stop-opacity="0" offset=".5"/>
-			<stop stop-color="#002859" offset="1"/>
+			<stop stop-color="#5a5f00" stop-opacity="0" offset="0"/>
+			<stop stop-color="#ffde00" stop-opacity="0" offset=".5"/>
+			<stop stop-color="#cf9800" offset="1"/>
 		</linearGradient>
 		<linearGradient id="b">
-			<stop stop-color="#34abff" offset="0"/>
-			<stop stop-color="#0057ff" offset="1"/>
+			<stop stop-color="#ffff34" offset="0"/>
+			<stop stop-color="#ffc200" offset="1"/>
 		</linearGradient>
 		<radialGradient id="k" xlink:href="#a" gradientUnits="userSpaceOnUse" cy="1031.8" cx="269.79" gradientTransform="matrix(1.3464 .024973 .020477 .48218 -100.96 226.79)" r="32.826"/>
 		<linearGradient id="o" y2="958.59" xlink:href="#b" gradientUnits="userSpaceOnUse" x2="302.31" gradientTransform="matrix(1.2011 .20841 -.14024 .80821 41.782 -61.424)" y1="900.84" x1="309.16"/>
