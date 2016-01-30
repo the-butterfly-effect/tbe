@@ -3,6 +3,10 @@ install(FILES
 	${SRCDIRNAME}/Balloon.svg
 	${SRCDIRNAME}/BalloonPoof.svg
 	${SRCDIRNAME}/BalloonRest.svg
+	${SRCDIRNAME}/BalloonRed.svg
+	${SRCDIRNAME}/BalloonRestRed.svg
+	${SRCDIRNAME}/BalloonYellow.svg
+	${SRCDIRNAME}/BalloonRestYellow.svg
 	${SRCDIRNAME}/BedOfNails.svg
 	${SRCDIRNAME}/Cactus.svg
 	${SRCDIRNAME}/CircularSaw.svg
