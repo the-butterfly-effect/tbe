@@ -1,0 +1,197 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Domino Chest</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Put the red dominoes into the chest.</description>
+        <date>1/28/16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Attached bar" count="2">
+            <object angle="0.000" type="BirchBar" X="0.000" height="0.100" Y="0.000" width="0.678">
+                <property key="PivotPoint">(0,0)</property>
+                <property key="Rotatable">true</property>
+                <tooltip>This wooden bar has been attached to the wall and will.&lt;br>when pushed. rotate around its own axis.</tooltip>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Cola+mint bottle" count="2">
+            <object angle="0.000" type="ColaMintBottle" X="0.000" height="0.500" Y="0.000" width="0.166">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Left wedge" count="1">
+            <object angle="0.000" type="LeftWedge" X="1.266" height="0.288" Y="4.582" width="0.656"/>
+        </toolboxitem>
+        <toolboxitem name="Right wedge" count="1">
+            <object angle="0.000" type="RightWedge" X="0.718" height="0.311" Y="5.103" width="1.061"/>
+        </toolboxitem>
+        <toolboxitem name="Soccer ball" count="1">
+            <object angle="0.000" type="SoccerBall" X="0.000" height="0.220" Y="0.000" width="0.220"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="5.5" width="8.6"/>
+        <predefined>
+            <object angle="0.000" type="DominoBlue" X="1.661" height="0.500" Y="4.687" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="3.039" height="0.500" Y="4.686" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="2.718" height="0.500" Y="4.687" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="2.352" height="0.500" Y="4.687" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="2.007" height="0.500" Y="4.687" width="0.100"/>
+            <object angle="0.000" type="Floor" X="1.910" height="0.100" Y="4.385" width="2.858"/>
+            <object angle="-1.570" type="BirchBar" X="3.462" height="0.100" Y="4.621" width="0.698">
+                <property key="PivotPoint">(0.33,0)</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="3.462" height="0.090" Y="4.291" width="0.090">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="7.816" height="1.998" Y="1.004" width="1.448">
+                <property key="ImageName">toychest</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object angle="0.000" type="Floor" X="5.753" height="0.100" Y="4.336" width="2.381"/>
+            <object angle="0.000" type="DominoBlue" X="4.638" height="0.500" Y="4.638" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="6.494" height="0.500" Y="4.638" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="6.122" height="0.500" Y="4.638" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="5.727" height="0.500" Y="4.638" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="5.373" height="0.500" Y="4.638" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="5.000" height="0.500" Y="4.643" width="0.100"/>
+            <object angle="0.000" type="DominoRed" X="6.855" height="0.500" Y="4.638" width="0.100" ID="goaldomino1">
+                <property key="Mass">1</property>
+            </object>
+            <object angle="0.000" type="Floor" X="2.839" height="0.100" Y="3.246" width="2.267"/>
+            <object angle="0.000" type="DominoGreen" X="3.220" height="0.500" Y="3.549" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="2.880" height="0.500" Y="3.548" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="2.561" height="0.500" Y="3.548" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="2.212" height="0.500" Y="3.554" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="1.893" height="0.500" Y="3.549" width="0.100"/>
+            <object angle="-1.570" type="BirchBar" X="1.583" height="0.100" Y="3.576" width="0.698">
+                <property key="PivotPoint">(0.33,0)</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="1.583" height="0.090" Y="3.246" width="0.090">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0.000" type="BirchBar" X="0.584" height="0.100" Y="3.240" width="0.734">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="0.584" height="0.090" Y="3.240" width="0.090">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0.000" type="Floor" X="2.390" height="0.100" Y="2.292" width="2.580"/>
+            <object angle="0.000" type="DominoBlue" X="2.129" height="0.500" Y="2.599" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="3.233" height="0.500" Y="2.594" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="2.871" height="0.500" Y="2.600" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="2.492" height="0.500" Y="2.594" width="0.100"/>
+            <object angle="0.000" type="DominoRed" X="3.608" height="0.500" Y="2.594" width="0.100" ID="goaldomino2">
+                <property key="Mass">1</property>
+            </object>
+            <object angle="0.000" type="Floor" X="3.565" height="0.100" Y="0.992" width="7.014"/>
+            <object angle="-5.437" type="Floor" X="4.358" height="0.100" Y="1.851" width="0.681"/>
+            <object angle="-0.726" type="Floor" X="4.067" height="0.100" Y="1.725" width="0.157"/>
+            <object angle="0.000" type="Floor" X="6.278" height="0.100" Y="3.079" width="1.437"/>
+            <object angle="0.000" type="Floor" X="6.025" height="0.100" Y="2.346" width="1.944"/>
+            <object angle="0.000" type="DominoRed" X="6.893" height="0.500" Y="3.381" width="0.100" ID="goaldomino3">
+                <property key="Mass">1</property>
+            </object>
+            <object angle="0.000" type="DominoRed" X="6.904" height="0.500" Y="2.648" width="0.100" ID="goaldomino4">
+                <property key="Mass">1</property>
+            </object>
+            <object angle="0.000" type="DominoBlue" X="5.178" height="0.500" Y="2.653" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="6.569" height="0.500" Y="2.648" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="6.251" height="0.500" Y="2.648" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="5.906" height="0.500" Y="2.648" width="0.100"/>
+            <object angle="0.000" type="DominoBlue" X="5.528" height="0.500" Y="2.648" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="5.668" height="0.500" Y="3.381" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="6.585" height="0.500" Y="3.386" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="6.294" height="0.500" Y="3.381" width="0.100"/>
+            <object angle="0.000" type="DominoGreen" X="5.970" height="0.500" Y="3.381" width="0.100"/>
+            <object angle="-1.573" type="QuarterArc40" X="0.848" height="0.483" Y="2.144" width="0.495"/>
+            <object angle="0.000" type="Wall" X="0.120" height="4.393" Y="3.242" width="0.130"/>
+            <object angle="9.099" type="Floor" X="5.186" height="0.100" Y="3.497" width="0.782"/>
+            <object angle="-0.019" type="Wall" X="7.890" height="2.704" Y="3.616" width="0.200"/>
+            <object angle="4.707" type="Floor" X="1.044" height="0.100" Y="2.544" width="0.295"/>
+            <object angle="0.000" type="Wall" X="0.524" height="0.674" Y="3.998" width="0.099"/>
+            <object angle="0.000" type="Floor" X="0.239" height="0.100" Y="3.122" width="0.098"/>
+            <object angle="0.000" type="Wall" X="0.648" height="0.478" Y="1.657" width="0.099"/>
+            <object angle="0.000" type="BirchBar" X="4.930" height="0.100" Y="3.989" width="0.627">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="4.930" height="0.090" Y="3.989" width="0.090">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0.000" type="VolleyBall" X="4.930" height="0.210" Y="4.159" width="0.210"/>
+            <object angle="0.000" type="Floor" X="6.951" height="0.100" Y="1.224" width="0.110"/>
+            <object height="0.918" X="7.124" angle="0.000" type="Wall" width="0.069" Y="0.463">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="1.123" X="8.198" angle="0.475" type="Wall" width="0.182" Y="1.511">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="0.058" X="7.751" angle="0.000" type="Floor" width="1.202" Y="0.040">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="0.903" X="8.371" angle="0.000" type="Wall" width="0.075" Y="0.461">
+                <property key="ImageName">Empty</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">1.00;0.80;0.82;1.00</gradientstop>
+            <gradientstop pos="1.00">0.90;0.50;0.53;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino1</property>
+            <property key="ybelow">0.9</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino2</property>
+            <property key="ybelow">0.9</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino4</property>
+            <property key="ybelow">0.9</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino4</property>
+            <property key="ybelow">0.9</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino1</property>
+            <property key="xover">7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino2</property>
+            <property key="xover">7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino3</property>
+            <property key="xover">7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino4</property>
+            <property key="xover">7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino1</property>
+            <property key="xbelow">8.5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino2</property>
+            <property key="xbelow">8.5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino3</property>
+            <property key="xbelow">8.5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">goaldomino4</property>
+            <property key="xbelow">8.5</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

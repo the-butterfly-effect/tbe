@@ -1,0 +1,122 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Hat-trick</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Shoot three soccer balls into the goal.</description>
+        <date>1/30/16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Cola+mint bottle">
+            <object Y="0.347" X="0.357" width="0.166" type="ColaMintBottle" height="0.500" angle="1.570"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Floor">
+            <object Y="0.000" X="0.000" width="1.000" type="Floor" height="0.100" angle="0.000">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Left ramp">
+            <object Y="0.000" X="0.000" width="1.874" type="LeftRamp" height="0.272" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="4" name="Right ramp">
+            <object Y="0.000" X="0.000" width="1.361" type="RightRamp" height="0.250" angle="0.000"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="9.5" height="5"/>
+        <predefined>
+            <object Y="0.849" X="8.978" width="0.768" type="Scenery" height="1.517" angle="0.000">
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.786" X="9.248" width="0.045" type="Wall" height="1.501" angle="0.141">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object Y="1.550" X="8.877" width="0.045" type="Wall" height="0.544" angle="1.449">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object Y="0.117" X="8.158" width="2.574" type="Floor" height="0.121" angle="-0.053">
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="4.212" X="6.431" width="0.220" type="SoccerBall" ID="ball1" height="0.220" angle="0.000"/>
+            <object Y="0.372" X="0.802" width="0.220" type="SoccerBall" ID="ball2" height="0.220" angle="0.000"/>
+            <object Y="3.501" X="1.366" width="0.220" type="SoccerBall" ID="ball3" height="0.220" angle="0.000"/>
+            <object Y="1.990" X="4.735" width="0.094" type="BirchBar" height="1.130" angle="6.282"/>
+            <object Y="0.083" X="6.692" width="3.859" type="Floor" height="0.100" angle="0.000"/>
+            <object Y="0.150" X="2.430" width="4.845" type="Floor" height="0.224" angle="0.000"/>
+            <object Y="3.405" X="3.950" width="1.199" type="Floor" height="0.100" angle="0.000"/>
+            <object Y="3.282" X="4.935" width="1.874" type="LeftRamp" height="0.186" angle="0.000"/>
+            <object Y="3.696" X="4.257" width="0.166" type="ColaMintBottle" height="0.500" angle="0.114"/>
+            <object Y="3.498" X="4.464" width="0.076" type="PetanqueBoule" height="0.076" angle="0.000"/>
+            <object Y="3.499" X="3.552" width="0.076" type="PetanqueBoule" height="0.076" angle="0.000"/>
+            <object Y="3.060" X="2.470" width="1.776" type="Floor" height="0.100" angle="0.000"/>
+            <object Y="3.361" X="3.125" width="0.100" type="DominoGreen" height="0.500" angle="0.000"/>
+            <object Y="3.362" X="2.429" width="0.100" type="DominoGreen" height="0.500" angle="0.000"/>
+            <object Y="3.362" X="2.780" width="0.100" type="DominoGreen" height="0.500" angle="0.000"/>
+            <object Y="3.362" X="2.095" width="0.100" type="DominoGreen" height="0.500" angle="0.000"/>
+            <object Y="3.362" X="1.733" width="0.100" type="DominoGreen" height="0.500" angle="0.000"/>
+            <object Y="3.341" X="1.359" width="0.223" type="Floor" height="0.100" angle="0.000"/>
+            <object Y="3.287" X="0.871" width="0.736" type="LeftRamp" height="0.153" angle="0.000"/>
+            <object Y="2.454" X="2.051" width="2.580" type="LeftRamp" height="0.234" angle="0.000"/>
+            <object Y="3.248" X="3.765" width="0.283" type="Floor" height="0.100" angle="-1.567"/>
+            <object Y="2.043" X="0.056" width="0.081" type="Wall" height="3.573" angle="0.000"/>
+            <object Y="2.803" X="3.309" width="0.407" type="Floor" height="0.100" angle="-1.567"/>
+            <object Y="1.441" X="3.885" width="1.572" type="LeftRamp" height="0.153" angle="0.000"/>
+            <object Y="1.594" X="3.056" width="0.072" type="Wall" height="0.468" angle="0.000"/>
+            <object Y="0.144" X="6.582" width="0.697" type="Floor" height="0.213" angle="0.000"/>
+            <object Y="0.661" X="0.607" width="0.400" type="QuarterArc40" height="0.400" angle="1.594"/>
+            <object Y="2.410" X="5.776" width="1.022" type="LeftRamp" height="0.612" angle="0.000"/>
+            <object Y="2.056" X="8.826" width="0.220" type="PostIt" height="0.220" angle="0.000">
+                <property key="ZValue">1</property>
+                <property key="page1">This looks like a very unusal way to play soccer. But yet it is not very different from it.</property>
+                <property key="page2">Unlike my brother I think soccer is kind of boring: It just goes back and forth all the time.</property>
+                <property key="page3">Wake me up when all 3 soccer balls are in the goal.</property>
+                <property key="page4">—The Post-it boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.15;0.53;0.14;1.00</gradientstop>
+            <gradientstop pos="1.00">0.36;0.58;0.38;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball1</property>
+            <property key="xover">8.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball2</property>
+            <property key="xover">8.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball3</property>
+            <property key="xover">8.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball1</property>
+            <property key="xbelow">9.3000000000000007</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball2</property>
+            <property key="xbelow">9.3000000000000007</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball3</property>
+            <property key="xbelow">9.3000000000000007</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball1</property>
+            <property key="ybelow">1.62</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball2</property>
+            <property key="ybelow">1.62</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">ball3</property>
+            <property key="ybelow">1.62</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
