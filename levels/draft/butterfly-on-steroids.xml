@@ -162,12 +162,12 @@
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
             </object>
-            <object width="1.000" X="3.906" Y="2.206" height="0.800" type="QuarterArc80" angle="3.635"/>
-            <object width="1.000" X="2.786" Y="2.492" height="0.800" type="QuarterArc80" angle="0.429"/>
-            <object width="0.400" X="0.197" Y="2.015" height="0.400" type="QuarterArc40" angle="3.142"/>
-            <object width="0.400" X="3.807" Y="0.297" height="0.400" type="QuarterArc40" angle="1.571"/>
-            <object width="1.000" X="1.640" Y="2.803" height="0.800" type="QuarterArc80" angle="3.426"/>
-            <object width="1.000" X="0.614" Y="3.163" height="0.800" type="QuarterArc80" angle="0.344"/>
+            <object width="1.000" angle="3.635" height="0.800" X="3.906" Y="2.206" type="QuarterArc80"/>
+            <object width="1.000" angle="0.35" height="0.608" X="2.845" Y="2.414" type="QuarterArc80"/>
+            <object width="0.400" angle="3.142" height="0.400" X="0.197" Y="2.015" type="QuarterArc40"/>
+            <object width="0.400" angle="1.571" height="0.400" X="3.807" Y="0.297" type="QuarterArc40"/>
+            <object width="1.000" angle="3.426" height="0.719" X="1.835" Y="2.700" type="QuarterArc80"/>
+            <object width="1.000" angle="0.344" height="0.800" X="0.793" Y="3.088" type="QuarterArc80"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.00;0.67;0.00;1.00</gradientstop>
