@@ -8,7 +8,7 @@
         <date>04/23/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Wedge \">
+        <toolboxitem count="2" name="Wedge \">
             <object width="0.4" X="0.30" Y="0.35" height="0.3" type="RightWedge">
                 <property key="Bounciness">0.3</property>
                 <property key="Mass">2.0</property>
@@ -29,9 +29,8 @@
             <object X="3.5" Y="1.0" type="PostIt">
                 <property key="page1">Don't worry.</property>
                 <property key="page2">This is not as complicated as it looks. It almost works!</property>
-                <property key="page3">Put the styrofoam ramp in place...</property>
-                <property key="page4">And enjoy your first large Rube Goldberg-ish contraption.</property>
-                <property key="page5">&lt;br>&lt;br>the Post-it Boy</property>
+                <property key="page3">Put the wedges in place, and enjoy your first large Rube Goldberg-ish contraption.</property>
+                <property key="page4">&lt;br>&lt;br>the Post-it Boy</property>
             </object>
             <object X="4.3" Y="3.3" type="BowlingBall"/>
             <object width="4.0" X="2.6" Y="2.8" height="0.6" type="LeftRamp">
@@ -122,10 +121,6 @@
             </object>
             <object width="0.8" X="2.17" Y="1.96" height="0.15" type="BedOfNails" angle="-1.57"/>
             <!-- ===================== 'inner slakkenhuis' ================= -->
-            <object width="0.4" X="2.3" Y="0.85" height="0.4" type="RightRamp">
-                <property key="ImageName">styrofoam-right</property>
-                <property key="Bounciness">0.1</property>
-            </object>
             <object X="3.7" Y="0.84" type="BowlingPin" ID="BowlingPin2"/>
             <object width="0.1" X="4.15" Y="1.20" height="1.2" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>
@@ -154,4 +149,8 @@
             <property key="object">BowlingPin2</property>
         </goal>
     </goals>
+    <hints>
+		<hint X="0.31" Y="0.45" number="1" object="RightWedge"/>
+        <hint X="2.31" Y="0.86" number="2" object="RightWedge"/>
+    </hints>
 </tbe-level>
