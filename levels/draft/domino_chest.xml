@@ -111,8 +111,6 @@
             <object angle="-1.573" type="QuarterArc40" X="0.848" height="0.483" Y="2.144" width="0.495"/>
             <object angle="0.000" type="Wall" X="0.120" height="4.393" Y="3.242" width="0.130"/>
             <object angle="9.099" type="Floor" X="5.186" height="0.100" Y="3.497" width="0.782"/>
-            <object angle="0.000" type="Wall" X="8.510" height="0.903" Y="0.461" width="0.200"/>
-            <object angle="0.000" type="Wall" X="6.999" height="0.924" Y="0.472" width="0.200"/>
             <object angle="-0.019" type="Wall" X="7.890" height="2.704" Y="3.616" width="0.200"/>
             <object angle="4.707" type="Floor" X="1.044" height="0.100" Y="2.544" width="0.295"/>
             <object angle="0.000" type="Wall" X="0.524" height="0.674" Y="3.998" width="0.099"/>
@@ -127,6 +125,18 @@
             </object>
             <object angle="0.000" type="VolleyBall" X="4.930" height="0.210" Y="4.159" width="0.210"/>
             <object angle="0.000" type="Floor" X="6.951" height="0.100" Y="1.224" width="0.110"/>
+            <object height="0.918" X="7.124" angle="0.000" type="Wall" width="0.069" Y="0.463">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="1.123" X="8.198" angle="0.475" type="Wall" width="0.182" Y="1.511">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="0.058" X="7.751" angle="0.000" type="Floor" width="1.202" Y="0.040">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object height="0.903" X="8.371" angle="0.000" type="Wall" width="0.075" Y="0.461">
+                <property key="ImageName">Empty</property>
+            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">1.00;0.80;0.82;1.00</gradientstop>
