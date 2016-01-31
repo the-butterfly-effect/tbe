@@ -42,7 +42,7 @@ Singleton::Translator::Translator()
 
 QString Singleton::Translator::getCurrentLanguage()
 {
-    auto myLocale = QLocale::system();
+    QLocale myLocale(theCurrentLanguageString);
     return QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(myLocale.language()));
 }
 
@@ -153,6 +153,7 @@ bool Singleton::Translator::setLanguage(const QString& aLocale)
     // *** For strings from our XML Levels (gettext):
     // ***
     setLanguageGettext(myLocale);
+    theCurrentLanguageString = myLocale;
 
     // We're going through all the motions, but the only thing that we count
     // is whether the UI got translated...

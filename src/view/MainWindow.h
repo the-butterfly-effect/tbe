@@ -128,6 +128,10 @@ private slots:
     void on_switchLanguage(QString);
 
 private:
+    /// set a checkmark in front of the appropriate language in the menu
+    void setLanguageCheckmark();
+
+private:
     Ui::MainWindow *ui;
 
     /// Pointer to the current level.
