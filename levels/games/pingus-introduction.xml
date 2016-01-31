@@ -65,7 +65,7 @@
     </scene>
     <goals>
         <goal type="escapedPingusCount" isFail="false">
-            <property key="morethan">5</property>
+            <property key="equalmore">5</property>
         </goal>
     </goals>
     <hints/>
