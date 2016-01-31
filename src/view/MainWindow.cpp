@@ -353,6 +353,7 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
                               .arg(aNewLanguage).arg(myReloadString), this))
             return;
     TheTranslator.setLanguage(aNewLanguage);
+    QApplication::processEvents();
 
     // As the user selected "OK", let's prevent Reload from throwing another dialog.
     UndoSingleton::setClean();
