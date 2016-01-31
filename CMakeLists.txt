@@ -15,8 +15,8 @@ if (WIN32 OR APPLE)
         set(TBE_DESKTOP_DIR applications)
         set(TBE_ICON_DIR    icons)
         set(TBE_TARGET_PREFIX "./")
-    endif (WIN32)
-    if (APPLE)
+#    endif ()
+    else (APPLE)
         set(TBE_TOPLEVEL_DIR tbe.app/Contents)
         set(TBE_RESOURCES_DIR ${TBE_TOPLEVEL_DIR}/Resources)
         set(TBE_LEVELS_DIR  ${TBE_RESOURCES_DIR}/levels)
@@ -26,10 +26,10 @@ if (WIN32 OR APPLE)
         set(TBE_DESKTOP_DIR ${TBE_RESOURCES_DIR}/applications)
         set(TBE_ICON_DIR    ${TBE_RESOURCES_DIR}/icons)
         set(TBE_TARGET_PREFIX "../../../")
-    endif (APPLE)
+    endif ()
     set(CMAKE_INSTALL_PREFIX installprefix)
     set(TBE_BIN_DIR     ".")
-else (WIN32 OR APPLE)
+else ()
     # i.e. Linux variants
     set (CMAKE_INSTALL_PREFIX "/usr")
     set(TBE_BIN_DIR     games)
@@ -40,7 +40,7 @@ else (WIN32 OR APPLE)
     set(TBE_DESKTOP_DIR share/applications)
     set(TBE_ICON_DIR    share/icons)
     set(TBE_TARGET_PREFIX "../")
-endif (WIN32 OR APPLE)
+endif ()
 
 configure_file(
     ${PROJECT_SOURCE_DIR}/src/tbe_paths.h.in
@@ -57,14 +57,14 @@ add_subdirectory(i18n)
 
 # use .. because TBE_LEVELS_DIR already ends in 'levels'
 install(DIRECTORY levels
-        DESTINATION ${TBE_LEVELS_DIR}/..
-        PATTERN "test" EXCLUDE
+    DESTINATION ${TBE_LEVELS_DIR}/..
+    PATTERN "test" EXCLUDE
 )
 
 if (WITH_DOCS)
-  install(FILES COPYING AUTHORS README.md
-	  DESTINATION ${TBE_DOC_DIR}
-  )
+    install(FILES COPYING AUTHORS README.md
+            DESTINATION ${TBE_DOC_DIR}
+    )
 ENDIF(WITH_DOCS)
 
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION")
@@ -123,15 +123,15 @@ IF(WIN32 OR APPLE)
             ${CMAKE_SOURCE_DIR}/src/libintl/libintl3.dll
             DESTINATION ${TBE_BIN_DIR}
         )
-    endif(WIN32)
+    endif()
     if (APPLE)
         set_target_properties(tbe PROPERTIES MACOSX_BUNDLE true)
         set(CPACK_GENERATOR tgz)
         set_source_files_properties(${CMAKE_INSTALL_PREFIX} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
         # set(CPACK_SET_DESTDIR "ON")
-    endif (APPLE)
+    endif ()
 
-ELSE(WIN32 OR APPLE)
+ELSE()
     ###
     ### below, you'll find all packaging info specific to Linux.
     ###
@@ -161,7 +161,7 @@ ELSE(WIN32 OR APPLE)
 
     set(CPACK_SET_DESTDIR "ON")
 
-ENDIF(WIN32 OR APPLE)
+ENDIF()
 
 SET(CPACK_PACKAGE_EXECUTABLES "tbe" "tbe.exe")
 INCLUDE(CPack)

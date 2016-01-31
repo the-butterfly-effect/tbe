@@ -24,20 +24,18 @@ include_directories(
     ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
     .
-if (APPLE)
     /opt/local/include
-endif (APPLE)
 )
 
 if (MINGW)
- add_custom_command( OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/tberc.o
+    add_custom_command( OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/tberc.o
                      COMMAND windres.exe -I${CMAKE_SOURCE_DIR}
                      -i${CMAKE_SOURCE_DIR}/installer/NSIS/tberc.rc
                      -o${CMAKE_CURRENT_BINARY_DIR}/tberc.o )
- set(rc_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/tberc.o)
-else (MINGW)
- set(rc_SOURCES)
-endif (MINGW)
+    set(rc_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/tberc.o)
+else ()
+    set(rc_SOURCES)
+endif ()
 
 SET(tbe_SOURCES ${control_SOURCES} ${loadsave_SOURCES} ${main_SOURCES} ${model_SOURCES} ${view_SOURCES}
                 ${rc_SOURCES})
@@ -74,11 +72,11 @@ ADD_EXECUTABLE(tbe
 
 #INCLUDE(${QT_USE_FILE})
 #TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} Box2D)
-TARGET_LINK_LIBRARIES(tbe Qt5::Widgets Qt5::Core Qt5::Xml Qt5::Svg Box2D)
+TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
 
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)
-ENDIF (WIN32)
+ENDIF ()
 
 if (APPLE)
     # Detect if the "port" command is valid on this system; if so, return full path
@@ -102,20 +100,15 @@ if (APPLE)
         PATHS /usr/lib /usr/local/lib ${MACPORTS_PREFIX}/lib
     )
     IF(LIBINTL_LIBRARIES)
-      SET(LIBINTL_FOUND TRUE)
-    ELSE(LIBINTL_LIBRARIES)
-      SET(LIBINTL_FOUND FALSE)
-    ENDIF(LIBINTL_LIBRARIES)
-    MESSAGE("-- Detected LIBINTL: ${LIBINTL_FOUND}")
-    MESSAGE("-- Detected LIBINTL: ${LIBINTL_LIBRARIES}")
-
-endif (APPLE)
+        SET(LIBINTL_FOUND TRUE)
+    ELSE()
+        SET(LIBINTL_FOUND FALSE)
+    ENDIF()
+    MESSAGE("-- Detected LIBINTL: ${LIBINTL_FOUND} ${LIBINTL_LIBRARIES}")
+endif ()
 
 IF (APPLE)
-TARGET_LINK_LIBRARIES(tbe
-  ${LIBINTL_LIBRARIES}
-)
-MESSAGE("-- Detected LIBINTL: ${LIBINTL_LIBRARIES}")
-ENDIF (APPLE)
+    TARGET_LINK_LIBRARIES(tbe ${LIBINTL_LIBRARIES})
+ENDIF ()
  
 INSTALL(TARGETS tbe DESTINATION ${TBE_BIN_DIR})
