@@ -55,6 +55,8 @@
                 <property key="ImageName">basket</property>
                 <property key="ZValue">1</property>
             </object>
+            <object Y="0.156" X="4.605" type="PetanqueBoule" height="0.076" angle="0.000" width="0.076"/>
+            <object Y="0.228" X="6.007" type="BowlingBall" height="0.220" angle="0.000" width="0.220"/>
             <object Y="0.387" X="6.007" type="Scenery" height="0.542" angle="0.000" width="1.221">
                 <property key="ImageName">basket</property>
                 <property key="ZValue">1</property>
