@@ -33,6 +33,7 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     QObject(aParent), theMWPtr(aParent), ui(aParent->ui)
 {
     theLevelCreatorToolbarPtr = theMWPtr->addToolBar(tr("LevelCreator"));
+    theLevelCreatorToolbarPtr->setMovable(false);
 
     // add "New", "Save" and "Save as" items to File menu
     typedef QList<QAction*> ActionList;
