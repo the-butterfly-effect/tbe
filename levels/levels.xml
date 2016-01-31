@@ -22,7 +22,6 @@
    <level> draft/styrofoam.xml </level>
    <level> jumpingjack/party-at-office.xml </level>
    <level> draft/in_the_attic.xml </level>
-   <level> draft/poing-poing-poing.xml </level>
    <level> draft/poofpoofpoof.xml </level>
    <level> elce09/005.xml </level>
    <level> draft/loopings.xml </level>
@@ -30,8 +29,8 @@
    <level> angry/birds1.xml </level>
    <level> angry/birds2.xml </level>
    <level> draft/dialbforboom.xml </level>
-   <!--level> draft/springboard.xml </level-->
    <level> draft/magic_steel.xml </level>
+   <level> draft/sorting-1.xml </level>
    <level> draft/spare-the-balloon.xml </level>
    <level> draft/float-balloon-float.xml </level>
    <level> draft/bridge-2.xml </level>
