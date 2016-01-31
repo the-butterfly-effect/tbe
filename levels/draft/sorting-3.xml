@@ -1,0 +1,216 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Sorting 3</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Throw the bowling balls into the left pit, the soccer balls into the middle pit and the volleyballs into the right pit.</description>
+        <date>1/31/16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Floor" count="1">
+            <object angle="0.000" type="Floor" X="0.000" height="0.100" Y="0.000" width="1.000">
+                <property key="Resizable">horizontal</property>
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Wall" count="3">
+            <object angle="0.000" type="Wall" X="0.000" height="1.000" Y="0.000" width="0.200">
+                <property key="Resizable">vertical</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="5" width="7.7"/>
+        <predefined>
+            <object angle="0.000" type="BowlingBall" X="2.781" ID="bb1" height="0.220" Y="4.549" width="0.220"/>
+            <object angle="0.000" type="BowlingBall" X="4.450" ID="bb2" height="0.220" Y="4.622" width="0.220"/>
+            <object angle="0.000" type="BowlingBall" X="1.093" ID="bb3" height="0.220" Y="4.476" width="0.220"/>
+            <object angle="0.000" type="BowlingBall" X="6.329" ID="bb4" height="0.220" Y="4.700" width="0.220"/>
+            <object angle="0.000" type="LeftRamp" X="3.996" height="0.321" Y="4.478" width="7.100"/>
+            <object angle="0.000" type="Wall" X="0.113" height="1.229" Y="4.375" width="0.200"/>
+            <object angle="0.000" type="Wall" X="0.548" height="1.060" Y="3.782" width="0.200"/>
+            <object angle="0.000" type="Wall" X="3.572" height="0.710" Y="0.475" width="0.200"/>
+            <object angle="0.000" type="Wall" X="4.635" height="0.710" Y="0.474" width="0.200"/>
+            <object angle="0.000" type="Wall" X="6.706" height="4.399" Y="2.314" width="0.200"/>
+            <object angle="0.000" type="Floor" X="3.412" height="0.100" Y="0.068" width="6.809"/>
+            <object angle="0.000" type="Scenery" X="3.040" height="0.542" Y="0.386" width="0.876">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Wall" X="2.499" height="0.699" Y="0.469" width="0.200"/>
+            <object angle="0.000" type="VolleyBall" X="0.573" ID="vb1" height="0.210" Y="4.462" width="0.210"/>
+            <object angle="0.000" type="VolleyBall" X="3.896" ID="vb2" height="0.210" Y="4.592" width="0.210"/>
+            <object angle="0.000" type="VolleyBall" X="5.692" ID="vb3" height="0.210" Y="4.672" width="0.210"/>
+            <object angle="0.000" type="VolleyBall" X="2.224" ID="vb4" height="0.210" Y="4.516" width="0.210"/>
+            <object angle="0.000" type="SoccerBall" X="1.647" ID="sb1" height="0.220" Y="4.501" width="0.220"/>
+            <object angle="0.000" type="SoccerBall" X="5.029" ID="sb2" height="0.220" Y="4.652" width="0.220"/>
+            <object angle="0.000" type="SoccerBall" X="3.341" ID="sb3" height="0.220" Y="4.581" width="0.220"/>
+            <object angle="0.000" type="SoccerBall" X="7.025" ID="sb4" height="0.220" Y="4.732" width="0.220"/>
+            <object angle="0.000" type="Scenery" X="5.171" height="0.542" Y="0.391" width="0.876">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="4.113" height="0.542" Y="0.386" width="0.876">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Wall" X="5.708" height="0.710" Y="0.475" width="0.200"/>
+            <object angle="0.000" X="5" Y="3" type="PostIt">
+                <property key="ZValue">1</property>
+                <property key="page1">Balls sorted by elasticity:&lt;br&gt;1: Volleyball&lt;br&gt;2: Soccer ball&lt;br&gt;3: Bowling ball</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">1.00;0.84;0.55;1.00</gradientstop>
+            <gradientstop pos="1.00">1.00;0.93;0.55;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb1</property>
+            <property key="xover">2.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb1</property>
+            <property key="xbelow">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb1</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb2</property>
+            <property key="xover">2.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb2</property>
+            <property key="xbelow">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb2</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb3</property>
+            <property key="xover">2.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb3</property>
+            <property key="xbelow">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb3</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb4</property>
+            <property key="xover">2.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb4</property>
+            <property key="xbelow">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb4</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb1</property>
+            <property key="xover">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb1</property>
+            <property key="xbelow">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb1</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb2</property>
+            <property key="xover">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb2</property>
+            <property key="xbelow">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb2</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb3</property>
+            <property key="xover">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb3</property>
+            <property key="xbelow">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb3</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb4</property>
+            <property key="xover">3.57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb4</property>
+            <property key="xbelow">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">sb4</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb1</property>
+            <property key="xover">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb1</property>
+            <property key="xbelow">5.71</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb1</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb2</property>
+            <property key="xover">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb2</property>
+            <property key="xbelow">5.71</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb2</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb3</property>
+            <property key="xover">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb3</property>
+            <property key="xbelow">5.71</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb3</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb4</property>
+            <property key="xover">4.63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb4</property>
+            <property key="xbelow">5.71</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">vb4</property>
+            <property key="ybelow">0.68</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

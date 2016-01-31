@@ -353,11 +353,28 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
                               .arg(aNewLanguage).arg(myReloadString), this))
             return;
     TheTranslator.setLanguage(aNewLanguage);
+    QApplication::processEvents();
+
     // As the user selected "OK", let's prevent Reload from throwing another dialog.
     UndoSingleton::setClean();
     emit on_action_Reload_triggered();
+    setLanguageCheckmark();
 }
 
+void MainWindow::setLanguageCheckmark()
+{
+    // remove all checks
+    // and set the active language to checked
+    QString myCurrentLanguage = TheTranslator.getCurrentLanguage();
+    for(auto i : ui->menuLanguages->actions())
+    {
+        i->setCheckable(true);
+        if (i->text()==myCurrentLanguage)
+            i->setChecked(true);
+        else
+            i->setChecked(false);
+    }
+}
 
 void MainWindow::purgeLevel()
 {
@@ -449,6 +466,7 @@ void MainWindow::setupView()
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_switchLanguage(QString)));
         ui->menuLanguages->addAction(myTempActionPtr);
     }
+    setLanguageCheckmark();
 
 
     ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);

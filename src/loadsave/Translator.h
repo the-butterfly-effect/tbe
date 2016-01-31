@@ -108,6 +108,10 @@ private:
 
     /// Path to directory that contains find the TBE translations.
     QString theBaseTbeQtLocation;
+
+    /// String of the current language setting
+    /// e.g. "nl_NL" for dutch. In some special cases, this string is empty.
+    QString theCurrentLanguageString;
 };
 
 }; // end-of-namespace Singleton
