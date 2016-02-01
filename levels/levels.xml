@@ -16,6 +16,7 @@
    <level> draft/turn-it-around.xml </level>
    <level> draft/contraption1.xml </level>
    <level> draft/bridge_gap.xml </level>
+   <level> draft/steam-machine.xml </level>
    <level> draft/balloons-go-up.xml </level>
    <level> draft/balloons-do-poof.xml </level>
    <level> elce09/004.xml </level>
@@ -66,4 +67,5 @@
     draft/sorting-2.xml
     draft/sorting-3.xml
     draft/sorting-4.xml
+    draft/sorting-5.xml
 -->
