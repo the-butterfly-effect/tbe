@@ -474,8 +474,8 @@ bool Level::save(const QString& aFileName)
     myRoot.appendChild(mySceneParent);
     // ... add scenesize
     QDomElement mySceneSizeNode = myDocument.createElement(theSceneSizeString);
-    mySceneSizeNode.setAttribute(theWidthAttributeString, theWorldPtr->theWorldWidth);
-    mySceneSizeNode.setAttribute(theHeightAttributeString, theWorldPtr->theWorldHeight);
+    mySceneSizeNode.setAttribute(theWidthAttributeString, QString::number(theWorldPtr->theWorldWidth));
+    mySceneSizeNode.setAttribute(theHeightAttributeString, QString::number(theWorldPtr->theWorldHeight));
     mySceneParent.appendChild(mySceneSizeNode);
     // ... add the predefined elements
     QDomElement myPredefinedParent = myDocument.createElement(thePredefinedString);

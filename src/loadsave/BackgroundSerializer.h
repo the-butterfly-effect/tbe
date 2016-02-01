@@ -50,14 +50,6 @@ public:
 	 */
 	static QString createObjectFromDom(const QDomNode& q, Background* aBGPtr);
 
-	/** returns a string representation of the float
-	 *  - maximum 2 digits
-	 *  - always a dot as decimal separator
-	 *  @param aValue the float to convert
-	 *  @returns a QString with the string representation of aValue.
-	 */
-	static QString floatToString(float aValue);
-
 private:
 	/// constructor only called by Background
 	BackgroundSerializer(const Background* anObjectPtr);
