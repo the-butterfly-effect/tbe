@@ -88,16 +88,6 @@ BackgroundSerializer::createObjectFromDom(const QDomNode& q, Background* aBGPtr)
 }
 
 
-QString BackgroundSerializer::floatToString(float aValue)
-{
-	// HACK HACK - yes, I'm aware I'm using C-style tricks here
-	// to work around the i18n issues that QT provides me with :-(
-	char myString[56];
-	snprintf(myString,50, "%2.2f", aValue);
-	return QString(myString);
-}
-
-
 void
 BackgroundSerializer::serialize(QDomElement* aParent, Background* aBackgroundPtr)
 {
@@ -107,8 +97,8 @@ BackgroundSerializer::serialize(QDomElement* aParent, Background* aBackgroundPtr
 	{
 		QDomElement myImageName = aParent->ownerDocument().createElement(theImageString);
 		myImageName.setAttribute(theNameString, aBackgroundPtr->theImageName);
-		myImageName.setAttribute(theImgHRepeatString, floatToString(aBackgroundPtr->theImageHRepeat));
-		myImageName.setAttribute(theImgVRepeatString, floatToString(aBackgroundPtr->theImageVRepeat));
+		myImageName.setAttribute(theImgHRepeatString, QString::number(aBackgroundPtr->theImageHRepeat));
+		myImageName.setAttribute(theImgVRepeatString, QString::number(aBackgroundPtr->theImageVRepeat));
 		myBackground.appendChild(myImageName);
 	}
 
@@ -118,13 +108,13 @@ BackgroundSerializer::serialize(QDomElement* aParent, Background* aBackgroundPtr
 		foreach(Background::GradientStop myGS, aBackgroundPtr->theBackgroundGradient)
 		{
 			QString myGradientValue = QString("%1;%2;%3;%4")
-									  .arg(floatToString(myGS.theR))
-									  .arg(floatToString(myGS.theG))
-									  .arg(floatToString(myGS.theB))
-									  .arg(floatToString(myGS.theAlpha));
+									  .arg(QString::number(myGS.theR))
+									  .arg(QString::number(myGS.theG))
+									  .arg(QString::number(myGS.theB))
+									  .arg(QString::number(myGS.theAlpha));
 
 			QDomElement myGradient = aParent->ownerDocument().createElement(theGradientString);
-			myGradient.setAttribute(thePositionString, floatToString(myGS.thePosition));
+			myGradient.setAttribute(thePositionString, QString::number(myGS.thePosition));
 			QDomText myT = aParent->ownerDocument().createTextNode(myGradientValue);
 			myGradient.appendChild(myT);
 			myBackground.appendChild(myGradient);

@@ -97,7 +97,7 @@ QDomElement ToolboxGroupSerializer::serialize(QDomDocument& aDomDocument, Toolbo
 {
     // write the properties of the toolboxgroup itself
     QDomElement myToolboxNode = aDomDocument.createElement(theToolboxItemString);
-    myToolboxNode.setAttribute(theCountString, aToolboxGroupPtr->count());
+    myToolboxNode.setAttribute(theCountString, QString::number(aToolboxGroupPtr->count()));
     myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName);
     // write the properties of (one of the) object(s) in the toolboxgroup
     const AbstractObjectSerializer* myAOSerializerPtr = aToolboxGroupPtr->first()->getSerializer();

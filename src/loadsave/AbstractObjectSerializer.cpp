@@ -39,16 +39,6 @@ AbstractObjectSerializer::AbstractObjectSerializer(const AbstractObjectPtr anObj
 }
 
 
-QString AbstractObjectSerializer::floatToString(float aValue) const
-{
-	// HACK HACK - yes, I'm aware I'm using C-style tricks here
-	// to work around the i18n issues that QT provides me with :-(
-	char myString[256];
-	snprintf(myString,200, "%-2.3f", aValue);
-	return QString(myString);
-}
-
-
 void
 AbstractObjectSerializer::serialize(QDomElement* aParent) const
 {
@@ -62,11 +52,11 @@ AbstractObjectSerializer::serialize(QDomElement* aParent) const
 	// TODO: only save values that are different from default
 	QDomElement myNode = aParent->ownerDocument().createElement(theObjectString);
 	myNode.setAttribute(theTypeAttributeString, theAbstractObjectPtr->getInternalName());
-	myNode.setAttribute(theXAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().x));
-	myNode.setAttribute(theYAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().y));
-	myNode.setAttribute(theAngleAttributeString, floatToString(theAbstractObjectPtr->getOrigCenter().angle));
-	myNode.setAttribute(theWidthAttributeString, floatToString(theAbstractObjectPtr->getTheWidth()));
-	myNode.setAttribute(theHeightAttributeString, floatToString(theAbstractObjectPtr->getTheHeight()));
+	myNode.setAttribute(theXAttributeString, QString::number(theAbstractObjectPtr->getOrigCenter().x));
+	myNode.setAttribute(theYAttributeString, QString::number(theAbstractObjectPtr->getOrigCenter().y));
+	myNode.setAttribute(theAngleAttributeString, QString::number(theAbstractObjectPtr->getOrigCenter().angle));
+	myNode.setAttribute(theWidthAttributeString, QString::number(theAbstractObjectPtr->getTheWidth()));
+	myNode.setAttribute(theHeightAttributeString, QString::number(theAbstractObjectPtr->getTheHeight()));
 	if (theAbstractObjectPtr->getID().isEmpty()==false)
 		myNode.setAttribute(theIDAttributeString, theAbstractObjectPtr->getID());
 
