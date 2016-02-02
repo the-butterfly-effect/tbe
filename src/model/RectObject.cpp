@@ -56,17 +56,17 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic red domino stone."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous red plastic domino stone."),
 	"DominoRed", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Blue)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic blue domino stone."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous blue plastic domino stone."),
 	"DominoBlue", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Green)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic green domino stone."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous green plastic domino stone."),
 	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
