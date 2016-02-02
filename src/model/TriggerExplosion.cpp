@@ -151,8 +151,15 @@ QString DetonatorBox::getEmptyString() const
 
 const QString DetonatorBox::getToolTip ( ) const
 {
-	//: Translators: The %1 will be replaced by a phone number.
-	return QObject::tr("Send BOOM to %1").arg(getCurrentPhoneNumber());
+	QString part1 = QObject::tr("This is a detonator box attached to a cell phone\nto trigger a dynamite remotely by pushing the handle.\n");
+	QString part2;
+	if (getCurrentPhoneNumber() == getEmptyString())
+		part2 = QObject::tr("This one doesn't make any calls,\nchoose a phone number with the pie menu!");
+	else
+		//: Translators: The %1 will be replaced by a phone number.
+		part2 = QObject::tr("This one calls %1.").arg(getCurrentPhoneNumber());
+	QString ret = part1 + part2;
+	return ret;
 }
 
 qreal DetonatorBox::getZValue(void)
@@ -222,7 +229,7 @@ void DetonatorBox::updateViewObject(bool isSimRunning) const
 
 DetonatorBoxHandle::DetonatorBoxHandle(DetonatorBox* aDBox)
 	:	RectObject( QObject::tr("Detonator Box Handle"),
-					QObject::tr("Push Here To BOOM"),
+					QObject::tr("This is the handle of a detonator box.\nThrow a heavy object on it to push it."),
 					"DetonatorBoxHandle",
                     0.25, 0.20, 0.1, 0.0), theDBoxPtr(aDBox), theJointPtr(nullptr)
 {
@@ -417,8 +424,13 @@ void Dynamite::explode(void)
 
 const QString Dynamite::getToolTip ( ) const
 {
-	//: Translators: the \n means "newline" - keep it. The %1 will be replaced by a phone number
-	return QObject::tr("Dynamite: invented by Alfred Nobel. \n Dial %1 for a nice explosion.").arg(getID());
+	if(getID().isNull() || getID().isEmpty()) {
+		//: Translators: “\n” means “newline”, keep it.
+		return QObject::tr("It's dynamite attached to a cell phone.\nThis cell phone doesn't take any calls, however.");
+	} else {
+		//: Translators: “\n” means “newline”, keep it. “%1” will be replaced by the phone number
+		return QObject::tr("It's dynamite attached to a cell phone, ready to be\nremotely triggered by a detonator box.\nDial %1 to make the dynamite go boom.").arg(getID());
+	}
 }
 
 Dynamite::States Dynamite::goToState(Dynamite::States aNewState)

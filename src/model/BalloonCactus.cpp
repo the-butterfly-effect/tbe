@@ -56,7 +56,7 @@ const qreal Balloon::POPPED_TIME  = 2.0;
 
 Balloon::Balloon()
 		: PolyObject(QObject::tr("Balloon"),
-					 QObject::tr("a Helium Balloon. Lighter than air, it moves up."),
+					 QObject::tr("A helium balloon. Lighter than air, it moves up.\nIt will pop when it hits sharp objects or gets squashed."),
 					 "Balloon;BalloonPoof;BalloonRest;Empty",
 					 "(-0.018,0.18)=(-0.07,0.16)=(-0.12,0.1)=(-0.13,0.017)=(-0.1,-0.08)"
 					 "=(-0.03,-0.16)=(0.006,-0.17)=(0.039,-0.16)=(0.10,-0.08)"
@@ -264,7 +264,7 @@ static CactusObjectFactory theCactusObjectFactory;
 
 
 Cactus::Cactus() : PolyObject(QObject::tr("Cactus"),
-							  QObject::tr("Cactacea Bulbuous Stingus - a Cactus has spines!"),
+							  QObject::tr("Cactus (Cactacea Bulbuous Stingus):\nA cactus has sharp spines."),
 							  "Cactus",
 							  // first the pot:
 							  "(-0.105,-0.038)=(-0.05,-0.2)=(0.05,-0.2)=(0.105,-0.038);"
@@ -342,7 +342,7 @@ static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
 
 BedOfNails::BedOfNails()
 		: PolyObject(QObject::tr("BedOfNails"),
-					 QObject::tr("Do not touch a bed of nails - it stings!"),
+					 QObject::tr("A wooden board attached to the scene.\nIt has many sharp nails on one side."),
 					 "BedOfNails",
 					 // first the bar:
 					 "(-0.4,-0.075)=(0.4,-0.075)=(0.4,0.006)=(-0.4,0.006);"
@@ -412,7 +412,7 @@ static CircularSawObjectFactory theCircularSawObjectFactory;
 
 CircularSaw::CircularSaw()
 		: CircleObject(QObject::tr("CircularSaw"),
-					 QObject::tr("a rotating disc with sharp teeth."),
+					 QObject::tr("A rotating disc with sharp teeth."),
 					 "CircularSaw",
 					 CIRCRADIUS, CIRCMASS, 0.1)
 {

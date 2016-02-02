@@ -56,40 +56,40 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic red domino stone"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic red domino stone."),
 	"DominoRed", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Blue)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic blue domino stone"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic blue domino stone."),
 	"DominoBlue", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Green)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic green domino stone"),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic green domino stone."),
 	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Floor"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "It doesn't move."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "This is the floor. It is attached to the scene\nand can't be moved, penetrated or destroyed."),
 	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
 // see http://www.saginawpipe.com/steel_i_beams.htm
 // a 4"x4" beam weighs 13 pounds per feet, i.e. a 1.4m beam weighs 27kg.
 static AbstractRectObjectFactory theSteelHBeamFactory("IBeam",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Steel I-Beam"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "An I Beam is named after the shape of its cross-section.\n It's heavy, don't drop one on your foot."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "This is a steel I-beam. Steel I-beams are large and heavy\nand useful to build bridges and other constructions."),
 	"i-beam", 1.4, 0.1, 27.0, 0.0 );
 
 static AbstractRectObjectFactory theWallFactory("Wall",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wall"),
-	"",
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "This is a brick wall. It is attached to the scene\nand can't be moved, penetrated or destroyed."),
 	"oldbrick", 0.2, 1.0, 0.0, 0.05 );
 
 // Note that this hammer is kind-of heavy, a normal hammer would be around 400 grams, only
 static AbstractRectObjectFactory theHammerFactory("Hammer",
 	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Hammer"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A hammer usually has a hickory handle and a steel head."),
+	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "This is a hammer which has been attached\nto the scene at the end of its handle.\nThe hammer can be used to apply a force\nto some of the heavier objects."),
 	"hammer", 0.45,0.18, 2.0, 0.0,
 	"Friction:0.0/PivotPoint:(0.2,0)/");
 
