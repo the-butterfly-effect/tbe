@@ -46,8 +46,7 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">3</property>
             </object>
-            <object angle="0.000" type="Scenery" X="7.816" height="1.998" Y="1.004" width="1.448">
-                <property key="ImageName">toychest</property>
+            <object angle="0.000" type="ToyChest" X="7.816" height="1.998" Y="1.004" width="1.448">
                 <property key="ZValue">4</property>
             </object>
             <object angle="0.000" type="Floor" X="5.753" height="0.100" Y="4.336" width="2.381"/>
@@ -125,18 +124,6 @@
             </object>
             <object angle="0.000" type="VolleyBall" X="4.930" height="0.210" Y="4.159" width="0.210"/>
             <object angle="0.000" type="Floor" X="6.951" height="0.100" Y="1.224" width="0.110"/>
-            <object height="0.918" X="7.124" angle="0.000" type="Wall" width="0.069" Y="0.463">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object height="1.123" X="8.198" angle="0.475" type="Wall" width="0.182" Y="1.511">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object height="0.058" X="7.751" angle="0.000" type="Floor" width="1.202" Y="0.040">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object height="0.903" X="8.371" angle="0.000" type="Wall" width="0.075" Y="0.461">
-                <property key="ImageName">Empty</property>
-            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">1.00;0.80;0.82;1.00</gradientstop>

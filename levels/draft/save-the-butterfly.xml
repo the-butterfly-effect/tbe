@@ -18,17 +18,7 @@
     <scene>
         <scenesize width="7" height="4"/>
         <predefined>
-            <object width="0.7" X="6.940" Y="0.45" height="0.1" type="Floor" angle="1.571">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object width="0.5" X="6.160" Y="0.35" height="0.1" type="Floor" angle="1.571">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object width="0.7" X="6.810" Y="1.08" height="0.1" type="Floor" angle="2.000">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object width="0.800" X="6.600" Y="0.740" height="1.360" type="Scenery" angle="0.000">
-                <property key="ImageName">toychest</property>
+            <object width="0.800" X="6.610" Y="0.780" height="1.360" type="ToyChest" angle="0.000">
                 <property key="ZValue">10</property>
             </object>
             <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostIt" angle="0">

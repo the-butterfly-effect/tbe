@@ -95,7 +95,7 @@ static AbstractPolyObjectFactory theLeftWedgeFactory(
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is lower than the right, so things slide to the left."),
 	"birch-wedge-left",
 		"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
-	1.0, 1.0, 0.0, 0.2 );
+    1.0, 1.0, 2.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightWedgeFactory(
 	"RightWedge",
@@ -103,7 +103,7 @@ static AbstractPolyObjectFactory theRightWedgeFactory(
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is higher than the right, so things slide to the right."),
 	"birch-wedge-right",
 		"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
-	1.0, 1.0, 0.0, 0.2 );
+    1.0, 1.0, 2.0, 0.2 );
 
 // the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
 // on both the inside and the outside - you can use both if you want :-)
@@ -136,6 +136,19 @@ static AbstractPolyObjectFactory the80QuarterArcFactory(
 	"(-0.161, 0.258)=(-0.126, 0.352)=(-0.261, 0.388)=(-0.278, 0.289);"
 	"(-0.278, 0.289)=(-0.261, 0.388)=(-0.400, 0.400)=(-0.400, 0.300)",
 	0.8, 0.8, 0.0, 0.1 );
+
+
+static AbstractPolyObjectFactory theToyChestFactory(
+    "ToyChest",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Toy Chest"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Most people use a chest to keep things."),
+    "toychest",
+        "(-0.47,-0.82)=(-0.4,-0.82)=(-0.4,-0.10)=(-0.47,-0.08);"
+        "(0.3,-0.82)=(0.4,-0.82)=(0.4,-0.08)=(0.3,-0.10);"
+        "(0.4,-0.08)=(0.45,0.0)=(0.45,0.18)=(0.38,0.45)=(0.2,0.75)=(0.12,0.80)=(0.04,0.82);"
+        "(-0.4,-0.82)=(0.3,-0.82)=(0.3,-0.73)=(-0.4,-0.73)",
+    1.0, 1.7, 20.0, 0.05 );
+
 
 // Constructors/Destructors
 //

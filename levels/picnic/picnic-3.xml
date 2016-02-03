@@ -191,15 +191,8 @@
                 <property key="object1">Styro3</property>
                 <property key="object2">Styro</property>
             </object>
-            <object width="1.000" X="6.000" Y="2.300" height="1.700" type="Scenery" angle="0.000">
-                <property key="ImageName">toychest</property>
-            </object>
-            <object width="1.700" X="6.450" Y="2.300" height="0.100" type="RectObject" angle="1.571">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object width="1.000" X="6.000" Y="1.500" height="0.100" type="RectObject" angle="0">
-                <property key="ImageName">Empty</property>
-            </object>
+            <object width="1.000" X="6.020" Y="2.300" height="1.700" type="ToyChest" angle="0.000"/>
+            <object width="1.000" X="6.000" Y="1.400" height="0.100" type="Floor" angle="0.000"/>
             <object X="4.8" Y="3.3" type="PostIt">
                 <property key="page1">I like Minigolf.</property>
                 <property key="page2">It's fun because all holes are different.</property>
