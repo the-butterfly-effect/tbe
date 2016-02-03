@@ -73,7 +73,7 @@
             <object type="Floor" X="3.018" Y="2.924" width="0.586" height="0.100" angle="0.000"/>
             <object type="PostIt" X="3.101" Y="2.717" width="0.220" height="0.220" angle="0.000">
                 <property key="ZValue">1</property>
-                <property key="page1">Do you see the weird pin from which the weight is hanging?</property>
+                <property key="page1">Do you see the weird peg from which the weight is hanging?</property>
                 <property key="page2">It lies in a guide rail, it can move freely left and right.</property>
                 <property key="page3">But why would anyone need a hanging weight here, anyways?</property>
                 <property key="page4">—Post-it boy</property>
