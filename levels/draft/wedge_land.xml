@@ -1,0 +1,126 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Wedge Land</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Roll the soccer balls into the brown pit and the volleyball into the chest.</description>
+        <date>04.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Left wedge" count="2">
+            <object type="LeftWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
+                <property key="Resizable">totalresize</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Right wedge" count="3">
+            <object type="RightWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
+                <property key="Resizable">totalresize</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="10.7" height="5.5"/>
+        <predefined>
+            <object type="Wall" angle="0" width="0.2" height="1" X="1.60388" Y="0.626753"/>
+            <object type="Wall" angle="0" width="0.2" height="1" X="0.395685" Y="0.626753"/>
+            <object type="Floor" angle="0" width="1" height="0.1" X="0.998921" Y="0.175998"/>
+            <object type="Floor" angle="0" width="7.82416" height="0.1" X="5.6192" Y="1.07675"/>
+            <object type="Floor" angle="0" width="1.7913" height="0.1" X="2.57581" Y="1.63231"/>
+            <object type="Floor" angle="0" width="1.90615" height="0.1" X="5.77778" Y="2.27956"/>
+            <object type="Floor" angle="0" width="0.735707" height="0.310356" X="3.83657" Y="1.73749"/>
+            <object type="Floor" angle="0" width="0.63754" height="0.1" X="4.51449" Y="1.84266"/>
+            <object type="Floor" angle="0" width="0.6548" height="0.1" X="5.9342" Y="1.83943"/>
+            <object type="Floor" angle="0" width="0.606257" height="0.310356" X="6.56796" Y="1.73425"/>
+            <object type="Floor" angle="0" width="3.16073" height="0.1" X="1.88511" Y="2.27416"/>
+            <object type="ToyChest" angle="0" width="1" height="1.7" X="10.0539" Y="0.96607"/>
+            <object type="Floor" angle="0" width="0.606257" height="0.310356" X="4.52431" Y="2.38474"/>
+            <object type="Floor" angle="0" width="0.804747" height="0.310356" X="5.20928" Y="1.28222"/>
+            <object type="Floor" angle="0" width="2.67422" height="0.1" X="8.20982" Y="1.62638"/>
+            <object type="Floor" angle="0" width="1.02985" height="0.1" X="10.0245" Y="0.0643474"/>
+            <object type="Wall" angle="0" width="0.2" height="1" X="9.42967" Y="0.511866"/>
+            <object ID="IWantToGoRight1" type="Pingus" angle="0" width="0.28" height="0.28" X="6.53314" Y="2.01368"/>
+            <object type="Floor" angle="0" width="3.07443" height="0.1" X="4.14348" Y="3.03306"/>
+            <object type="Floor" angle="-1.57" width="0.373561" height="0.310356" X="10.6566" Y="0.199315"/>
+            <object type="Floor" angle="0" width="3.29018" height="0.1" X="5.11516" Y="3.83646"/>
+            <object type="Floor" angle="0" width="1.35706" height="0.1" X="6.97924" Y="3.03387"/>
+            <object ID="IWantToGoRight3" type="Pingus" angle="0" width="0.28" height="0.28" X="3.8155" Y="3.2114"/>
+            <object ID="PitBall2" type="SoccerBall" angle="0" width="0.22" height="0.22" X="7.49599" Y="3.50893"/>
+            <object ID="IWantToGoRight2" type="Pingus" angle="0" width="0.28" height="0.28" X="5.90858" Y="4.01665"/>
+            <object ID="ChestBall" type="VolleyBall" angle="0" width="0.21" height="0.21" X="4.22159" Y="3.99721"/>
+            <object ID="PitBall1" type="SoccerBall" angle="0" width="0.22" height="0.22" X="4.22522" Y="3.19825"/>
+            <object type="LeftWedge" angle="0" width="0.68069" height="0.69795" X="9.20739" Y="2.02724"/>
+            <object type="Floor" angle="0" width="0.925563" height="0.1" X="8.0925" Y="2.28306"/>
+            <object type="RightWedge" angle="0" width="0.64617" height="0.300971" X="5.93662" Y="1.27909"/>
+            <object type="Scenery" angle="0" width="1.01194" height="0.701451" X="0.998717" Y="0.574777">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object type="Scenery" angle="0" width="1.10748" height="0.534263" X="1.02857" Y="4.86792">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object type="Scenery" angle="0" width="1.66278" height="0.534263" X="9.00282" Y="4.92165">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.937255;0.701961;0.427451;1</gradientstop>
+            <gradientstop pos="0.25">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="0.75">0.494118;0.494118;0.894118;1</gradientstop>
+            <gradientstop pos="1">0.403922;0.403922;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall1</property>
+            <property key="xover">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall1</property>
+            <property key="xbelow">1.6</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall1</property>
+            <property key="yover">0.18</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall1</property>
+            <property key="ybelow">1.7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall2</property>
+            <property key="xover">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall2</property>
+            <property key="xbelow">1.6</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall2</property>
+            <property key="yover">0.18</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">PitBall2</property>
+            <property key="ybelow">1.7</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ChestBall</property>
+            <property key="xover">9.43</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ChestBall</property>
+            <property key="xbelow">10.5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ChestBall</property>
+            <property key="yover">0.06</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ChestBall</property>
+            <property key="ybelow">0.5</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
