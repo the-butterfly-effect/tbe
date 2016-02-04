@@ -1,0 +1,52 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Whee!</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Help the little pinguin reach the exit.</description>
+        <date>04.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Left ramp" count="2">
+            <object width="2.89" Y="0" angle="0" type="LeftRamp" X="0" height="0.85">
+                <property key="Resizable">totalresize</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Right ramp" count="1">
+            <object width="2.85" Y="0" angle="0" type="RightRamp" X="0" height="0.88">
+                <property key="Resizable">totalresize</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7.5" height="4"/>
+        <predefined>
+            <object width="1.91585" Y="3.2089" angle="0" type="Floor" X="6.13485" height="0.1"/>
+            <object width="3.27292" Y="3.23587" angle="0" type="Floor" X="2.15102" height="0.1"/>
+            <object width="1.78749" Y="2.30814" angle="0" type="Floor" X="1.39968" height="0.1"/>
+            <object width="3.2233" Y="2.25421" angle="0" type="Floor" X="5.48328" height="0.1"/>
+            <object width="6.589" Y="0.248813" angle="0" type="Floor" X="3.79935" height="0.1"/>
+            <object width="0.341963" Y="0.555016" angle="0" type="PingusExit" X="5.78909" height="0.514563">
+                <property key="ImageName">opendoor</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object width="1.86192" Y="1.3966" angle="0" type="Floor" X="6.16181" height="0.1"/>
+            <object width="3.21467" Y="1.38905" angle="0" type="Floor" X="2.11435" height="0.1"/>
+            <object width="0.28" Y="3.38319" angle="0" type="Pingus" X="6.50401" height="0.28"/>
+            <object width="0.492988" Y="0.400917" angle="0" type="Floor" X="1.52913" height="0.207875"/>
+            <object width="0.2" Y="0.996224" angle="0" type="Wall" X="5.33366" height="0.693635"/>
+            <object width="0.169363" Y="3.36128" angle="0" type="Floor" X="7.00943" height="0.207875"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.733333;0.988235;1;1</gradientstop>
+            <gradientstop pos="1">0.305882;0.811765;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="equalmore">1</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
