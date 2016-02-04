@@ -4,5 +4,7 @@ install(FILES
         ${SRCDIRNAME}/birch-wedge-right.png
         ${SRCDIRNAME}/styrofoam-left.png
         ${SRCDIRNAME}/styrofoam-right.png
+        ${SRCDIRNAME}/usedwood-wedge-left.png
+        ${SRCDIRNAME}/usedwood-wedge-right.png
         DESTINATION ${TBE_IMAGES_DIR}
 )
