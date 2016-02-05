@@ -91,19 +91,35 @@ static AbstractPolyObjectFactory theRightRampFactory(
 
 static AbstractPolyObjectFactory theLeftWedgeFactory(
 	"LeftWedge",
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Wedge"),
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is lower than the right, so things slide to the left."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Birch Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a movable birch wedge.\nThe left is lower than the right, so things slide to the left."),
 	"birch-wedge-left",
 		"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
     1.0, 1.0, 2.0, 0.2 );
 
 static AbstractPolyObjectFactory theRightWedgeFactory(
 	"RightWedge",
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Wedge"),
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a wedge. The left is higher than the right, so things slide to the right."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Birch Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a movable birch wedge.\nThe left is higher than the right, so things slide to the right."),
 	"birch-wedge-right",
 		"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 2.0, 0.2 );
+
+static AbstractPolyObjectFactory theLeftFixedWedgeFactory(
+	"LeftFixedWedge",
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Fixed Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is an immovable wedge.\nThe left is lower than the right, so things slide to the left."),
+	"usedwood-wedge-left",
+		"(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+    1.0, 1.0, 0.0, 0.1 );
+
+static AbstractPolyObjectFactory theRightFixedWedgeFactory(
+	"RightFixedWedge",
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Fixed Wedge"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is an immovable wedge.\nThe left is higher than the right, so things slide to the right."),
+	"usedwood-wedge-right",
+		"(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+    1.0, 1.0, 0.0, 0.1 );
 
 // the quarter arc is based on five similarly-sized segments, it is more-or-less smooth
 // on both the inside and the outside - you can use both if you want :-)
