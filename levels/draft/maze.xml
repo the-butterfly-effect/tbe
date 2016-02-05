@@ -8,11 +8,11 @@
         <date>29.01.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Left Ramp">
-            <object angle="0.000" type="LeftRamp" X="0.000" height="0.250" width="0.250" Y="0.000"/>
+        <toolboxitem count="2" name="Left Wedge">
+            <object angle="0.000" type="LeftFixedWedge" X="0.000" height="0.250" width="0.250" Y="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right Ramp">
-            <object angle="0.000" type="RightRamp" X="3.768" height="0.250" width="0.250" Y="3.207"/>
+        <toolboxitem count="1" name="Right Wedge">
+            <object angle="0.000" type="RightFixedWedge" X="3.768" height="0.250" width="0.250" Y="3.207"/>
         </toolboxitem>
     </toolbox>
     <scene>
