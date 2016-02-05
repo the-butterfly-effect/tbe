@@ -33,9 +33,7 @@
                 <property key="page5">But why do I have to clean my room every year?</property>
                 <property key="page6">... An unhappy&lt;br>&lt;br>&lt;br>Post-It Boy</property>
             </object>
-            <object width="1.000" X="2.700" Y="0.950" height="1.700" type="ToyChest" angle="0.000">
-				<property key="PivotPoint">(0,0)</property>
-			</object>
+            <object width="1.000" X="2.700" Y="0.950" height="1.700" type="ToyChest" angle="0.000"/>
             <object width="0.270" X="3.653" Y="0.400" height="0.360" type="Balloon" angle="0.000"/>
         </predefined>
         <background>
