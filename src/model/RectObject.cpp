@@ -96,8 +96,7 @@ static AbstractRectObjectFactory theHammerFactory("Hammer",
 // Constructors/Destructors
 //
 
-RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME),
-	theResizableInfo(SizeDirections::NORESIZING)
+RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME)
 {
 	DEBUG5("RectObject::RectObject");
 
@@ -113,8 +112,7 @@ RectObject::RectObject(const QString& aDisplayName,
 				const QString& aImageName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
 				const char *aPropertiesText)
-	: theNameString(aDisplayName),
-	  theResizableInfo(SizeDirections::NORESIZING)
+    : theNameString(aDisplayName)
 {
 	// This is the enhanced constructor for RectObjects.
 	// When called, the ImageName is the default for that type of RectObject.
@@ -166,26 +164,8 @@ void RectObject::initRectAttributes ( )
 	theProps.setDefaultPropertiesString(
 		Property::FRICTION_STRING    + QString(":/") +
 		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" );
-	theResizableInfo = NORESIZING;
 }
 
-
-AbstractObject::SizeDirections RectObject::isResizable ( )
-{
-	QString myString;
-	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
-	{
-		// we do not check for none, that's the default
-		theResizableInfo = NORESIZING;
-		if (myString == Property::HORIZONTAL_STRING)
-			theResizableInfo = HORIZONTALRESIZE;
-		if (myString == Property::VERTICAL_STRING)
-			theResizableInfo = VERTICALRESIZE;
-		if (myString == Property::TOTALRESIZE_STRING)
-			theResizableInfo = TOTALRESIZE;
-	}
-	return theResizableInfo;
-}
 
 void  RectObject::parseProperties(void)
 {
@@ -193,9 +173,6 @@ void  RectObject::parseProperties(void)
 	AbstractObject::parseProperties();
 
 	theProps.property2String(Property::OBJECT_NAME_STRING,&theNameString);
-
-	// force parsing of resize info
-	isResizable();
 
 	clearShapeList();
 	b2PolygonShape* myBoxShape = new b2PolygonShape();

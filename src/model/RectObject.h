@@ -69,9 +69,6 @@ public:
 	///          or b2_dynamicBody if the property mass was set
 	virtual b2BodyType getObjectType(void) const override;
 
-	/// @returns whether the object can be resized by the user
-	AbstractObject::SizeDirections isResizable ( ) override;
-
 	/// Parse all properties.
 	/// Partially overridden from AbstractObject
 	virtual void  parseProperties(void) override;
@@ -87,9 +84,6 @@ protected:
 
 protected:
 	QString theNameString;
-
-	/// Stores whether the object can be resized
-	AbstractObject::SizeDirections theResizableInfo;
 };
 
 

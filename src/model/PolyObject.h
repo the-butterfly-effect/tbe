@@ -60,7 +60,7 @@ public:
 	/// child objects must specify what type of body they are
 	/// @returns b2_staticBody if this object has no mass
 	///          or b2_dynamicBody if the property mass was set
-	virtual b2BodyType getObjectType(void) const;
+    b2BodyType getObjectType() const override;
 
 	/// parse all properties
 	/// partially overridden from AbstractObject

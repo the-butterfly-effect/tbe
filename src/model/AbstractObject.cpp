@@ -217,6 +217,24 @@ const QString AbstractObject::getToolTip() const
 }
 
 
+AbstractObject::SizeDirections AbstractObject::isResizable ( )
+{
+    QString myString;
+    SizeDirections myResizeInfo = NORESIZING;
+    if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
+    {
+        // We do not need to check for none, that's the default.
+        if (myString == Property::HORIZONTAL_STRING)
+            myResizeInfo = HORIZONTALRESIZE;
+        if (myString == Property::VERTICAL_STRING)
+            myResizeInfo = VERTICALRESIZE;
+        if (myString == Property::TOTALRESIZE_STRING)
+            myResizeInfo = TOTALRESIZE;
+    }
+    return myResizeInfo;
+}
+
+
 bool AbstractObject::isMovable ( ) const
 {
     if (theIsLevelCreator)
@@ -287,6 +305,9 @@ void AbstractObject::parseProperties(void)
             theWorldPtr->addNoCollisionCombo(getThisPtr(), myObjPtr);
 		++myI;
 	}
+
+    // force parsing of resize info
+    isResizable();
 }
 
 
