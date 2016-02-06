@@ -9,196 +9,213 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1" name="Quarter Arc">
-            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000"/>
+            <object Y="0" type="QuarterArc80" width="0.8" angle="0" X="0" height="0.8"/>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp /">
-            <object width="0.96" height="0.71" type="LeftRamp" angle="0.000"/>
+            <object Y="0" type="LeftRamp" width="0.96" angle="0" X="0" height="0.71"/>
         </toolboxitem>
         <toolboxitem count="1" name="Ramp \">
-            <object width="0.700" height="0.527" type="RightRamp" angle="0.000"/>
+            <object Y="0" type="RightRamp" width="0.7" angle="0" X="0" height="0.527"/>
         </toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="6" height="4.5"/>
         <predefined>
-            <object width="0.430" X="0.291" Y="1.326" height="0.320" type="Dynamite" ID="555-1234" angle="4.906"/>
-            <object width="0.200" X="2.474" Y="4.330" height="0.230" type="Scenery" angle="0.000">
+            <object Y="1.326" type="Dynamite" width="0.43" angle="4.906" ID="555-1234" X="0.291" height="0.32"/>
+            <object Y="4.33" type="Scenery" width="0.2" angle="0" X="2.474" height="0.23">
                 <property key="ImageName">Skyhook</property>
             </object>
-            <object width="0.400" X="0.606" Y="3.906" height="0.400" type="QuarterArc40" angle="1.571"/>
-            <object width="0.800" X="0.400" Y="4.181" height="0.800" type="QuarterArc80" angle="1.571"/>
-            <object width="3.337" X="0.459" Y="2.036" height="0.100" type="Floor" ID="rechtervertikaal" angle="1.570"/>
-            <object width="3.800" X="0.050" Y="1.900" height="0.100" type="Floor" ID="linkervertikaal" angle="1.571"/>
-            <object width="0.220" X="0.284" Y="1.732" height="0.220" type="SoccerBall" angle="0.000"/>
-            <object width="0.800" X="1.210" Y="4.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="1.779" X="3.795" Y="2.756" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="2.999" Y="2.939" height="0.220" type="SoccerBall" angle="0.000"/>
-            <object width="0.468" X="0.265" Y="1.030" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.330" X="5.715" Y="0.197" height="0.350" type="DetonatorBox" angle="0.000">
-                <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
-            </object>
-            <object width="2.335" X="5.482" Y="1.247" height="0.100" type="Floor" angle="1.571"/>
-            <object width="3.391" X="5.946" Y="1.762" height="0.100" type="Floor" angle="1.571"/>
-            <object width="0.220" X="1.500" Y="4.258" height="0.220" type="SoccerBall" ID="SpringBall" angle="0.000"/>
-            <object width="1.000" X="2.000" Y="4.260" height="0.150" type="Spring" ID="Spring" angle="0.000">
-                <property key="ImageName">spring20</property>
+            <object Y="3.906" type="QuarterArc40" width="0.4" angle="1.571" X="0.606" height="0.4"/>
+            <object Y="4.181" type="QuarterArc80" width="0.8" angle="1.571" X="0.4" height="0.8"/>
+            <object Y="2.036" type="Floor" width="3.337" angle="1.57" ID="rechtervertikaal" X="0.459" height="0.1"/>
+            <object Y="1.9" type="Floor" width="3.8" angle="1.571" ID="linkervertikaal" X="0.05" height="0.1"/>
+            <object Y="1.732" type="SoccerBall" width="0.22" angle="0" X="0.284" height="0.22"/>
+            <object Y="4.05" type="Floor" width="0.8" angle="0" X="1.21" height="0.1"/>
+            <object Y="2.756" type="Floor" width="1.779" angle="0" X="3.795" height="0.1"/>
+            <object Y="2.939" type="SoccerBall" width="0.22" angle="0" X="2.999" height="0.22"/>
+            <object Y="1.03" type="Floor" width="0.468" angle="0" X="0.265" height="0.1"/>
+            <object Y="0.197" type="DetonatorBox" width="0.33" angle="0" X="5.715" height="0.35"/>
+            <object Y="1.247" type="Floor" width="2.335" angle="1.571" X="5.482" height="0.1"/>
+            <object Y="1.762" type="Floor" width="3.391" angle="1.571" X="5.946" height="0.1"/>
+            <object Y="4.258" type="SoccerBall" width="0.22" angle="0" X="1.2" height="0.22"/>
+            <object Y="4.258" type="SoccerBall" width="0.22" angle="0" ID="SpringBall" X="1.5" height="0.22"/>
+            <object Y="4.26" type="Spring" width="1" angle="0" ID="Spring" X="2" height="0.15">
                 <property key="NoCollision">SpringBall;tiltedfloor</property>
                 <property key="SpringConstant">20</property>
             </object>
-            <object width="1.000" X="1.500" Y="4.258" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="4.258" type="PivotPoint" width="1" angle="0" X="1.5" height="1">
                 <property key="object1">SpringBall</property>
                 <property key="object2">Spring</property>
             </object>
-            <object width="1.000" X="2.500" Y="4.258" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="4.258" type="PivotPoint" width="1" angle="0" X="2.5" height="1">
                 <property key="object">Spring</property>
             </object>
-            <object width="0.270" X="3.230" Y="2.000" height="0.360" type="Balloon" ID="Balloon1" angle="0.000"/>
-            <object width="0.270" X="3.500" Y="2.000" height="0.360" type="Balloon" ID="Balloon2" angle="0.000"/>
-            <object width="0.270" X="3.770" Y="2.000" height="0.360" type="Balloon" ID="Balloon3" angle="0.000"/>
-            <object width="0.270" X="4.040" Y="2.000" height="0.360" type="Balloon" ID="Balloon4" angle="0.000"/>
-            <object width="0.270" X="4.310" Y="2.000" height="0.360" type="Balloon" ID="Balloon5" angle="0.000"/>
-            <object width="0.150" X="3.770" Y="1.400" height="0.400" type="RectObject" ID="Styro" angle="0.000">
+            <object Y="2" type="Balloon" width="0.27" angle="0" ID="Balloon1" X="3.23" height="0.36"/>
+            <object Y="2" type="Balloon" width="0.27" angle="0" ID="Balloon2" X="3.5" height="0.36"/>
+            <object Y="2" type="Balloon" width="0.27" angle="0" ID="Balloon3" X="3.77" height="0.36"/>
+            <object Y="2" type="Balloon" width="0.27" angle="0" ID="Balloon4" X="4.04" height="0.36"/>
+            <object Y="2" type="Balloon" width="0.27" angle="0" ID="Balloon5" X="4.31" height="0.36"/>
+            <object Y="1.4" type="RectObject" width="0.15" angle="0" ID="Styro" X="3.77" height="0.4">
                 <property key="Bounciness">0.7</property>
                 <property key="Friction">0.02</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.020</property>
             </object>
-            <object width="0.655" X="3.500" Y="1.700" height="0.218" type="Link" angle="0.000">
+            <object Y="1.7" type="Link" width="0.655" angle="0" X="3.5" height="0.218">
                 <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon1@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
-            <object width="0.405" X="3.660" Y="1.700" height="0.135" type="Link" angle="0.000">
+            <object Y="1.7" type="Link" width="0.405" angle="0" X="3.66" height="0.135">
                 <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon2@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
-            <object width="0.275" X="3.770" Y="1.700" height="0.092" type="Link" angle="0.000">
+            <object Y="1.7" type="Link" width="0.275" angle="0" X="3.77" height="0.092">
                 <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon3@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
-            <object width="0.405" X="3.880" Y="1.700" height="0.135" type="Link" angle="0.000">
+            <object Y="1.7" type="Link" width="0.405" angle="0" X="3.88" height="0.135">
                 <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon4@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
-            <object width="0.655" X="4.040" Y="1.700" height="0.218" type="Link" angle="0.000">
+            <object Y="1.7" type="Link" width="0.655" angle="0" X="4.04" height="0.218">
                 <property key="ImageName">#8080FF</property>
                 <property key="object1">Balloon5@(0,-0.17)</property>
                 <property key="object2">Styro@(0,0.18)</property>
             </object>
-            <object width="0.250" X="4.720" Y="2.060" height="0.400" type="Cactus" ID="Cactus" angle="1.610"/>
-            <object width="0.166" X="5.203" Y="1.988" height="0.500" type="ColaMintBottle" angle="4.691"/>
-            <object width="0.841" X="5.013" Y="1.850" height="0.100" type="Floor" angle="0.000"/>
-            <object width="1.965" X="4.021" Y="2.250" height="0.100" type="Floor" ID="vloertje" angle="0.000"/>
-            <object width="0.100" X="4.860" Y="2.350" height="0.100" type="CustomBall" ID="CactusWheel1" angle="4.680">
+            <object Y="2.06" type="Cactus" width="0.25" angle="1.61" ID="Cactus" X="4.72" height="0.4"/>
+            <object Y="1.988" type="ColaMintBottle" width="0.166" angle="4.691" X="5.203" height="0.5"/>
+            <object Y="1.85" type="Floor" width="0.841" angle="0" X="5.013" height="0.1"/>
+            <object Y="2.25" type="Floor" width="1.965" angle="0" ID="vloertje" X="4.021" height="0.1"/>
+            <object Y="2.35" type="CustomBall" width="0.1" angle="4.68" ID="CactusWheel1" X="4.86" height="0.1">
                 <property key="ImageName">CactusWheel</property>
                 <property key="Mass">0.1</property>
                 <property key="Radius">0.05</property>
             </object>
-            <object width="0.100" X="4.610" Y="2.350" height="0.100" type="CustomBall" ID="CactusWheel2" angle="0.000">
+            <object Y="2.35" type="CustomBall" width="0.1" angle="0" ID="CactusWheel2" X="4.61" height="0.1">
                 <property key="ImageName">CactusWheel</property>
                 <property key="Mass">0.1</property>
                 <property key="Radius">0.05</property>
             </object>
-            <object width="0.330" X="4.730" Y="2.170" height="0.410" type="RectObject" ID="tuigje" angle="0.000">
+            <object Y="2.17" type="RectObject" width="0.33" angle="0" ID="tuigje" X="4.73" height="0.41">
                 <property key="ImageName">CactusBracket</property>
                 <property key="Mass">0.1</property>
                 <property key="NoCollision">Cactus;CactusWheel1;CactusWheel2;vloertje</property>
                 <property key="ZValue">4.0</property>
             </object>
-            <object width="1.000" X="4.860" Y="2.350" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="2.35" type="PivotPoint" width="1" angle="0" X="4.86" height="1">
                 <property key="object1">CactusWheel1</property>
                 <property key="object2">tuigje</property>
             </object>
-            <object width="1.000" X="4.610" Y="2.350" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="2.35" type="PivotPoint" width="1" angle="0" X="4.61" height="1">
                 <property key="object1">CactusWheel2</property>
                 <property key="object2">tuigje</property>
             </object>
-            <object width="1.000" X="4.860" Y="2.150" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="2.15" type="PivotPoint" width="1" angle="0" X="4.86" height="1">
                 <property key="object1">Cactus</property>
                 <property key="object2">tuigje</property>
             </object>
-            <object width="1.000" X="4.610" Y="2.150" height="1.000" type="PivotPoint" angle="0.000">
+            <object Y="2.15" type="PivotPoint" width="1" angle="0" X="4.61" height="1">
                 <property key="object1">Cactus</property>
                 <property key="object2">tuigje</property>
             </object>
-            <object width="1.412" X="4.026" Y="3.163" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="2.486" Y="0.724" height="0.220" type="PostIt" angle="0.000">
+            <object Y="3.163" type="Floor" width="1.66672" angle="0" X="3.89864" height="0.1"/>
+            <object Y="0.724" type="PostIt" width="0.22" angle="0" X="2.486" height="0.22">
                 <property key="page1">Zoing Ploing Boing Woing&lt;br>Zzap Whoosh Smack Boom</property>
                 <property key="page2">Don't you love these old cartoons?</property>
                 <property key="page3">But let me give you one hint:&lt;br>&lt;br> First a Boom, then the Zoinggg.</property>
                 <property key="page4">the Post-It Boy</property>
             </object>
-            <object width="0.220" X="3.793" Y="3.379" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object X="3.458" Y="3.681" type="Hammer" angle="0.000">
+            <object Y="3.379" type="BowlingBall" width="0.22" angle="0" X="3.793" height="0.22"/>
+            <object Y="3.681" type="Hammer" width="0.45" angle="0" X="3.458" height="0.18">
                 <property key="Mass">15.0</property>
             </object>
-            <object width="0.756" X="3.285" Y="1.395" height="0.402" type="RectObject" angle="0.000">
+            <object Y="1.395" type="RectObject" width="0.756" angle="0" X="3.285" height="0.402">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.822" X="4.071" Y="0.940" height="0.140" type="RectObject" angle="0.000">
+            <object Y="0.94" type="RectObject" width="0.822" angle="0" X="4.071" height="0.14">
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">0.1</property>
                 <property key="PivotPoint">(0,0)</property>
             </object>
-            <object width="0.100" X="4.071" Y="0.940" height="0.100" type="Scenery" ID="BrassPin" angle="0.000">
+            <object Y="0.94" type="Scenery" width="0.1" angle="0" ID="BrassPin" X="4.071" height="0.1">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="1.206" X="2.963" Y="2.179" height="0.100" type="Floor" angle="1.570"/>
-            <object width="1.000" X="4.870" Y="1.150" height="0.140" type="RectObject" angle="0.000">
+            <object Y="2.179" type="Floor" width="1.206" angle="1.57" X="2.963" height="0.1"/>
+            <object Y="1.15" type="RectObject" width="1" angle="0" X="4.87" height="0.14">
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">3</property>
                 <property key="PivotPoint">(0,0)</property>
             </object>
-            <object width="0.100" X="4.870" Y="1.150" height="0.100" type="Scenery" ID="BrassPin" angle="0.000">
+            <object Y="1.15" type="Scenery" width="0.1" angle="0" ID="BrassPin" X="4.87" height="0.1">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="0.862" X="4.281" Y="1.692" height="0.100" type="Floor" angle="0.410"/>
-            <object width="5.446" X="2.808" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="4.870" Y="1.330" height="0.220" type="SoccerBall" angle="0.000"/>
-            <object width="2.186" X="1.938" Y="1.904" height="0.100" type="Floor" angle="0.212"/>
-            <object width="0.676" X="0.896" Y="1.364" height="0.100" type="Floor" angle="1.571"/>
-            <object width="0.430" X="1.573" Y="1.352" height="0.320" type="Dynamite" ID="555-4321" angle="0.000"/>
-            <object width="0.100" X="2.390" Y="1.390" height="0.500" type="DominoRed" angle="0.000">
-                <property key="ImageName">DominoRed</property>
+            <object Y="1.692" type="Floor" width="0.862" angle="0.41" X="4.281" height="0.1"/>
+            <object Y="0.05" type="Floor" width="5.446" angle="0" X="2.808" height="0.1"/>
+            <object Y="1.33" type="SoccerBall" width="0.22" angle="0" X="4.87" height="0.22"/>
+            <object Y="1.904" type="Floor" width="2.186" angle="0.212" X="1.938" height="0.1"/>
+            <object Y="1.364" type="Floor" width="0.676" angle="1.571" X="0.896" height="0.1"/>
+            <object Y="1.352" type="Dynamite" width="0.43" angle="0" ID="555-4321" X="1.573" height="0.32"/>
+            <object Y="1.39" type="DominoRed" width="0.1" angle="0" X="2.39" height="0.5"/>
+            <object Y="1.083" type="Floor" width="1.505" angle="0" X="1.643" height="0.1"/>
+            <object Y="0.276" type="DetonatorBox" width="0.33" angle="0" X="0.674" height="0.35"/>
+            <object Y="4.538" type="Floor" width="1.728" angle="0" X="1.671" height="0.1"/>
+            <object Y="4.176" type="QuarterArc80" width="0.8" angle="0" X="2.931" height="0.8"/>
+            <object Y="1.119" type="QuarterArc80" width="0.93" angle="-3.14" X="3.27" height="0.919"/>
+            <object Y="0.21" type="Floor" width="0.753" angle="0" X="1.969" height="0.305"/>
+            <object Y="0.142" type="Floor" width="0.656" angle="6.007" X="2.573" height="0.1"/>
+            <object Y="0.097" type="Floor" width="0.242" angle="-0.432" X="2.989" height="0.1"/>
+            <object Y="1.041" type="Floor" width="1" angle="-1.546" X="2.971" height="0.1"/>
+            <object Y="0.537" type="BowlingPin" width="0.12" angle="0" ID="TheEndPin" X="1.665" height="0.34"/>
+            <object Y="0.615" type="QuarterArc80" width="0.8" angle="-3.142" X="1.262" height="0.827"/>
+            <object Y="0.755" type="Floor" width="0.815" angle="0.063" X="4.054" height="0.1"/>
+            <object Y="1.907" type="BowlingBall" width="0.22" angle="0" X="0.943" height="0.22"/>
+            <object Y="1.706" type="Floor" width="0.105" angle="0" X="0.904" height="0.1"/>
+            <object Y="2.598" type="QuarterArc40" width="0.4" angle="0" X="4.816" height="0.4"/>
+            <object Y="1.57547" type="CustomBall" width="0.14" angle="0" X="2.22642" height="0.14">
+                <property key="Bounciness">0.7</property>
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.07</property>
             </object>
-            <object width="1.505" X="1.643" Y="1.083" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.330" X="0.674" Y="0.276" height="0.350" type="DetonatorBox" angle="0.000">
-                <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+            <object Y="1.77547" type="CustomBall" width="0.14" angle="0" X="2.22642" height="0.14">
+                <property key="Bounciness">0.7</property>
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.07</property>
             </object>
-            <object width="1.728" X="1.671" Y="4.538" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.800" X="2.931" Y="4.176" height="0.800" type="QuarterArc80" angle="0.000"/>
-            <object width="0.930" X="3.270" Y="1.119" height="0.919" type="QuarterArc80" angle="-3.140"/>
-            <object width="0.753" X="1.969" Y="0.210" height="0.305" type="Floor" angle="0.000"/>
-            <object width="0.656" X="2.573" Y="0.142" height="0.100" type="Floor" angle="6.007"/>
-            <object width="0.242" X="2.989" Y="0.097" height="0.100" type="Floor" angle="-0.432"/>
-            <object width="1.000" X="2.971" Y="1.041" height="0.100" type="Floor" angle="-1.546"/>
-            <object width="0.120" X="1.665" Y="0.537" height="0.340" type="BowlingPin" ID="TheEndPin" angle="0.000"/>
-            <object width="0.800" X="1.262" Y="0.615" height="0.827" type="QuarterArc80" angle="-3.142"/>
-            <object width="0.815" X="4.054" Y="0.755" height="0.100" type="Floor" angle="0.063"/>
-            <object width="0.220" X="0.943" Y="1.907" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object width="0.105" X="0.904" Y="1.706" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.400" X="4.816" Y="2.598" height="0.400" type="QuarterArc40" angle="0.000"/>
+            <object Y="0.60217" type="CustomBall" width="0.14" angle="0" X="2.84509" height="0.14">
+                <property key="Bounciness">0.7</property>
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.07</property>
+            </object>
+            <object Y="1.57151" type="CustomBall" width="0.14" angle="0" X="2.68943" height="0.14">
+                <property key="Bounciness">0.7</property>
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.07</property>
+            </object>
         </predefined>
         <background>
-            <gradientstop pos="0.00">0.24;0.00;0.43;1.00</gradientstop>
-            <gradientstop pos="1.00">0.41;0.90;0.84;1.00</gradientstop>
+            <gradientstop pos="0">0.24;0;0.43;1</gradientstop>
+            <gradientstop pos="1">0.41;0.9;0.84;1</gradientstop>
         </background>
     </scene>
     <goals>
         <goal isFail="false" type="positionchange">
             <property key="object">TheEndPin</property>
-            <property key="xchanged"/>
+            <property key="xchanged"></property>
         </goal>
     </goals>
     <hints>
-        <hint X="5.15" Y="2.82" number="1" object="QuarterArc80"/>
-        <hint X="4.94" Y="0.47" number="2" object="LeftRamp"/>
-        <hint X="0.88" Y="2.44" number="3" object="RightRamp"/>
-        <!-- todo: phone number hints -->
+        <hint Y="2.82" number="1" object="QuarterArc80" X="5.15"/>
+        <hint Y="0.47" number="2" object="LeftRamp" X="4.94"/>
+        <hint Y="2.44" number="3" object="RightRamp" X="0.88"/>
     </hints>
 </tbe-level>
