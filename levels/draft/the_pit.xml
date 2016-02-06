@@ -1,0 +1,320 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>The Pit</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Put all 5 tennis balls into the chest.</description>
+        <date>05.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Attached bar (long)">
+            <object angle="-1.57" Y="0" type="BirchBar" width="2.19345" X="0" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+                <tooltip>This wooden bar has been attached to the wall and will,&lt;br>when pushed, rotate around its own axis.</tooltip>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="4" name="Attached bar (short)">
+            <object angle="-1.57" Y="0" type="BirchBar" width="1.05327" X="0" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+                <tooltip>This wooden bar has been attached to the wall and will,&lt;br>when pushed, rotate around its own axis.</tooltip>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Cola+mint bottle">
+            <object angle="-3.16517" Y="0" type="ColaMintBottle" width="0.166" X="0" height="0.5"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Left fixed wedge (large)">
+            <object angle="0" Y="4.52859" type="LeftFixedWedge" width="1.00755" X="12.061" height="0.546925"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Left fixed wedge (medium)">
+            <object angle="0" Y="0.632157" type="LeftFixedWedge" width="0.879181" X="12.5858" height="0.350593"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Left fixed wedge (small)">
+            <object angle="0" Y="1.21144" type="LeftFixedWedge" width="0.660195" X="12.6138" height="0.26753"/>
+        </toolboxitem>
+        <toolboxitem count="4" name="Quarter arc">
+            <object angle="0" Y="0" type="QuarterArc40" width="0.664119" X="0" height="0.664119">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Right fixed wedge (large)">
+            <object angle="0" Y="0.188241" type="RightFixedWedge" width="1.0151" X="12.6553" height="0.290184"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Right fixed wedge (medium)">
+            <object angle="0" Y="0.645094" type="RightFixedWedge" width="0.773462" X="11.2433" height="0.20712"/>
+        </toolboxitem>
+        <toolboxitem count="3" name="Right fixed wedge (small)">
+            <object angle="0" Y="0" type="RightFixedWedge" width="0.56" X="0" height="0.09"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Right ramp">
+            <object angle="0" Y="3.03507" type="RightRamp" width="0.592233" X="10.9488" height="0.577131"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Wall">
+            <object angle="0" Y="4.26429" type="Wall" width="0.2" X="10.5694" height="1">
+                <property key="Resizable">vertical</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="9" height="7"/>
+        <predefined>
+            <object angle="0" Y="0.0643474" type="Floor" width="8.22654" X="4.6548" height="0.1"/>
+            <object angle="0" Y="1.82001" type="Floor" width="1.40777" X="3.46548" height="0.349191"/>
+            <object angle="0" Y="5.27042" type="Dynamite" width="0.43" X="5.4344" ID="555-0001" height="0.32"/>
+            <object angle="0" Y="4.65877" type="Dynamite" width="0.43" X="5.42685" ID="555-0002" height="0.32"/>
+            <object angle="0" Y="2.63515" type="DetonatorBox" width="0.33" X="2.698" height="0.35">
+                <property key="PhoneNumber">555-0001</property>
+            </object>
+            <object angle="0" Y="1.01918" type="DetonatorBox" width="0.33" X="8.28592" height="0.35">
+                <property key="PhoneNumber">555-0002</property>
+            </object>
+            <object angle="0" Y="0.789267" type="Floor" width="3.31068" X="6.85599" height="0.1"/>
+            <object angle="0" Y="0.842125" type="Floor" width="0.614887" X="4.67746" height="0.1"/>
+            <object angle="0" Y="1.24919" type="Wall" width="0.2" X="4.2657" height="0.916936"/>
+            <object angle="0" Y="1.24541" type="Wall" width="0.2" X="5.08878" height="0.909386"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="1.43867" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="1.79358" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="2.14094" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="2.5034" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="2.88096" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoGreen" width="0.1" X="5.8335" height="0.5"/>
+            <object angle="0" Y="1.42665" type="Wall" width="0.2" X="8.61521" height="1.39266"/>
+            <object angle="0" Y="2.23951" type="BowlingBall" width="0.22" X="8.64297" height="0.22"/>
+            <object angle="0" Y="1.37826" type="Floor" width="1.84574" X="6.12352" height="0.1"/>
+            <object angle="0" Y="3.83549" type="Wall" width="0.2" X="8.32826" height="2.90292"/>
+            <object angle="0" Y="2.8425" type="Wall" width="0.2" X="2.98954" height="0.750809"/>
+            <object angle="0" Y="2.82741" type="Wall" width="0.2" X="4.26569" height="0.796117"/>
+            <object angle="0" Y="2.16359" type="Floor" width="1.2945" X="5.64402" height="0.1"/>
+            <object angle="0" Y="3.28118" type="Floor" width="2.33658" X="6.36894" height="0.1"/>
+            <object angle="0" Y="5.54758" type="QuarterArc40" width="0.4" X="4.15815" height="0.4"/>
+            <object angle="0" Y="2.40524" type="Floor" width="0.939591" X="2.41586" height="0.1"/>
+            <object angle="0" Y="5.48717" type="QuarterArc40" width="0.4" X="8.22071" height="0.4"/>
+            <object angle="0" Y="3.1528" type="Floor" width="1.18878" X="1.95146" height="0.1"/>
+            <object angle="0" Y="2.00054" type="Wall" width="0.2" X="0.829879" height="1.04532"/>
+            <object angle="0" Y="1.70227" type="Wall" width="0.426537" X="0.316397" height="3.37864"/>
+            <object angle="0" Y="4.10048" type="Floor" width="0.984899" X="1.50216" height="0.198167"/>
+            <object angle="0" Y="4.0514" type="Floor" width="2.36678" X="3.18231" height="0.1"/>
+            <object angle="0" Y="2.77454" type="Wall" width="0.2" X="5.09633" height="1.11326"/>
+            <object angle="0" Y="2.29197" type="Floor" width="1.27184" X="3.72977" height="0.1"/>
+            <object angle="0" Y="3.1679" type="Floor" width="1.06796" X="3.62783" height="0.1"/>
+            <object angle="0" Y="5.15429" type="BowlingBall" width="0.22" X="2.4585" height="0.22"/>
+            <object angle="0" Y="3.39444" type="Floor" width="0.433657" X="1.44553" height="0.115102"/>
+            <object angle="0" Y="4.20784" type="VolleyBall" width="0.21" X="2.73535" height="0.21"/>
+            <object angle="0" Y="5.47859" type="Floor" width="2.178" X="1.32848" height="0.1"/>
+            <object angle="0" Y="5.64512" type="SoccerBall" width="0.22" X="1.68072" height="0.22"/>
+            <object angle="0" Y="5.93851" type="LeftFixedWedge" width="2.26106" X="6.4671" height="0.282632"/>
+            <object angle="0" Y="5.32001" type="Floor" width="1.89105" X="3.17098" height="0.1"/>
+            <object angle="0" Y="5.70513" type="Floor" width="0.705502" X="3.60518" height="0.1"/>
+            <object angle="0" Y="5.41748" type="RightFixedWedge" width="0.131607" X="2.48004" height="0.101402"/>
+            <object angle="0" Y="4.78317" type="Wall" width="0.109385" X="4.311" height="1.11327"/>
+            <object angle="0" Y="4.82163" type="BirchBar" width="0.864078" X="3.76752" ID="pingubar_h" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0" Y="4.82163" type="Scenery" width="0.08" X="3.76752" height="0.08">
+                <property key="ImageName">brass-pin</property>
+            </object>
+            <object angle="-1.57" Y="4.48527" type="RectObject" width="0.758533" X="3.28156" ID="pingubar_v" height="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object angle="-1.57" Y="0" type="Glue" width="0.04" X="0" height="0.1">
+                <property key="ImageName">GlueBlob</property>
+                <property key="object1">pingubar_h@(-0.390,0.34)</property>
+                <property key="object2">pingubar_v</property>
+            </object>
+            <object angle="0" Y="4.24835" type="Pingus" width="0.28" X="3.64425" height="0.28"/>
+            <object angle="0" Y="5.47034" type="Wall" width="0.2" X="6.54617" height="0.20712"/>
+            <object angle="0" Y="4.89266" type="Wall" width="0.2" X="5.06613" height="1.0151"/>
+            <object angle="0" Y="5.63716" type="Floor" width="2.66128" X="6.68986" height="0.1"/>
+            <object angle="-4.71474" Y="5.60043" type="QuarterArc40" width="0.4" X="5.16246" height="0.4"/>
+            <object angle="0" Y="6.12889" type="TennisBall" width="0.068" X="8.67367" ID="tb1" height="0.068"/>
+            <object angle="-1.57" Y="2.59977" type="BirchBar" width="0.713142" X="5.81429" ID="tb4bar" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0" Y="2.59977" type="Scenery" width="0.08" X="5.81429" height="0.08">
+                <property key="ImageName">brass-pin</property>
+            </object>
+            <object angle="-1.57" Y="1.49804" type="BirchBar" width="0.713142" X="1.68896" ID="dominobar_left" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0" Y="1.49804" type="Scenery" width="0.08" X="1.68896" height="0.08">
+                <property key="ImageName">brass-pin</property>
+            </object>
+            <object angle="0" Y="0.834573" type="Floor" width="2.63107" X="2.84628" height="0.1"/>
+            <object angle="-3.1415" Y="1.07931" type="QuarterArc40" width="0.784938" X="1.13121" height="0.777389"/>
+            <object angle="0" Y="5.23317" type="RectObject" width="1.26429" X="6.32362" height="0.243474">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object angle="0" Y="4.60641" type="RectObject" width="1.24919" X="6.33872" height="0.213269">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object angle="0" Y="5.05571" type="Floor" width="1.23409" X="7.06364" height="0.1"/>
+            <object angle="0" Y="5.05571" type="Floor" width="0.75081" X="5.54585" height="0.1"/>
+            <object angle="0" Y="5.40397" type="TennisBall" width="0.068" X="6.16665" ID="tb2" height="0.068"/>
+            <object angle="0" Y="5.47033" type="Wall" width="0.2" X="5.82125" height="0.222222"/>
+            <object angle="0" Y="5.15079" type="PetanqueBoule" width="0.076" X="7.47657" height="0.076"/>
+            <object angle="0" Y="4.43652" type="Floor" width="0.75081" X="5.54585" height="0.1"/>
+            <object angle="0" Y="4.43652" type="Floor" width="1.08306" X="6.98058" height="0.1"/>
+            <object angle="0" Y="4.85491" type="Wall" width="0.2" X="5.8137" height="0.275081"/>
+            <object angle="0" Y="4.86246" type="Wall" width="0.2" X="6.54617" height="0.275081"/>
+            <object angle="0" Y="1.73316" type="Floor" width="0.788566" X="5.89699" height="0.1"/>
+            <object angle="0" Y="0.370281" type="DominoGreen" width="0.1" X="5.47858" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoGreen" width="0.1" X="5.12368" height="0.5"/>
+            <object angle="0" Y="6.16664" type="TennisBall" width="0.068" X="0.306884" ID="tb3" height="0.068"/>
+            <object angle="0" Y="0.37028" type="DominoGreen" width="0.1" X="4.75367" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoGreen" width="0.1" X="4.39876" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoRed" width="0.1" X="3.28118" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoRed" width="0.1" X="3.65119" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoRed" width="0.1" X="4.00609" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoRed" width="0.1" X="6.55086" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoRed" width="0.1" X="6.19595" height="0.5"/>
+            <object angle="0" Y="0.385383" type="DominoBlue" width="0.1" X="7.29088" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="7.676" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="8.0158" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="8.34806" height="0.5"/>
+            <object angle="0" Y="0.37028" type="DominoBlue" width="0.1" X="8.68786" height="0.5"/>
+            <object angle="0" Y="0.377832" type="DominoRed" width="0.1" X="6.93598" height="0.5"/>
+            <object angle="0" Y="2.25349" type="TennisBall" width="0.068" X="5.91584" ID="tb4" height="0.068"/>
+            <object angle="0" Y="5.94137" type="Floor" width="1.11327" X="8.1494" height="0.288781"/>
+            <object angle="0" Y="2.88779" type="TennisBall" width="0.068" X="3.45414" ID="tb5" height="0.068"/>
+            <object angle="-1.57389" Y="2.71604" type="BirchBar" width="0.660447" X="3.30323" ID="tb5bar" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0" Y="2.71604" type="Scenery" width="0.08" X="3.30323" height="0.08">
+                <property key="ImageName">brass-pin</property>
+            </object>
+            <object angle="-1.57389" Y="1.29261" type="BirchBar" width="0.57736" X="3.79394" ID="dominobar_right" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object angle="0" Y="1.29261" type="Scenery" width="0.08" X="3.79394" height="0.08">
+                <property key="ImageName">brass-pin</property>
+            </object>
+            <object angle="-0.97614" Y="6.20719" type="Hammer" X="1.36777" />
+            <object angle="0" Y="1.32686" type="ToyChest" width="0.954694" X="7.54908" height="0.984898"/>
+            <object angle="0" Y="4.46063" type="Wall" width="0.109385" X="0.171307" height="2.13268"/>
+            <object angle="0" Y="4.98614" type="Floor" width="2.71413" X="1.80637" height="0.1"/>
+            <object angle="0" Y="5.07605" type="Wall" width="0.0867314" X="4.08662" height="0.373246"/>
+            <object angle="-4.68904" Y="5.12554" type="ColaMintBottle" width="0.166" X="0.579162" height="0.5"/>
+            <object angle="0" Y="4.05285" type="Wall" width="0.109385" X="0.473355" height="1.25674"/>
+            <object angle="0" Y="3.56691" type="BowlingBall" width="0.22" X="1.51298" height="0.22"/>
+            <object angle="0" Y="0" type="Link" width="1" X="0" height="1">
+                <property key="ImageName">#FFFF00</property>
+                <property key="object1">dominobar_left@(-0.3,0)</property>
+                <property key="object2">tb4bar@(-0.3,0)</property>
+            </object>
+            <object angle="0" Y="0" type="Link" width="1" X="0" height="1">
+                <property key="ImageName">#FF0000</property>
+                <property key="object1">dominobar_right@(0.25,0)</property>
+                <property key="object2">tb5bar@(0.3,0)</property>
+            </object>
+            <object angle="0" Y="2.79628" type="Floor" width="0.305287" X="3.56958" height="0.1"/>
+            <object angle="0" Y="2.40291" type="RightFixedWedge" width="0.713053" X="3.78857" height="0.116505"/>
+            <object angle="0" Y="2.81446" type="Wall" width="0.109385" X="2.00626" height="0.531819"/>
+            <object angle="0" Y="3.58091" type="Scenery" width="0.622438" X="4.67961" height="0.826321">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0" Y="2.75459" type="Scenery" width="0.622438" X="4.67961" height="0.826321">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0" Y="3.29773" type="Wall" width="0.403883" X="8.02082" height="0.864081"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.11">0.482353;0.364706;0.231373;1</gradientstop>
+            <gradientstop pos="0.13">0.87451;0.690196;0.282353;1</gradientstop>
+            <gradientstop pos="1">0.407843;0.815686;0.823529;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb1</property>
+            <property key="xover">7.1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb1</property>
+            <property key="xbelow">7.91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb1</property>
+            <property key="yover">0.79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb1</property>
+            <property key="ybelow">1.3</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb2</property>
+            <property key="xover">7.1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb2</property>
+            <property key="xbelow">7.91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb2</property>
+            <property key="yover">0.79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb2</property>
+            <property key="ybelow">1.3</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb3</property>
+            <property key="xover">7.1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb3</property>
+            <property key="xbelow">7.91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb3</property>
+            <property key="yover">0.79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb3</property>
+            <property key="ybelow">1.3</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb4</property>
+            <property key="xover">7.1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb4</property>
+            <property key="xbelow">7.91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb4</property>
+            <property key="yover">0.79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb4</property>
+            <property key="ybelow">1.3</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb5</property>
+            <property key="xover">7.1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb5</property>
+            <property key="xbelow">7.91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb5</property>
+            <property key="yover">0.79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">tb5</property>
+            <property key="ybelow">1.3</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
