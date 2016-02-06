@@ -19,14 +19,14 @@
         <toolboxitem count="1" name="Left ramp">
             <object width="1.000" X="0.756" Y="1.984" height="1.000" type="LeftRamp" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Long left wedge">
-            <object width="0.575" X="2.063" Y="1.475" height="0.186" type="LeftWedge" angle="0.000"/>
+        <toolboxitem count="1" name="Long left fixed wedge">
+            <object width="0.575" X="2.063" Y="1.475" height="0.186" type="LeftFixedWedge" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right wedge">
-            <object width="0.653" X="0.303" Y="1.380" height="0.696" type="RightWedge" angle="0.000"/>
+        <toolboxitem count="1" name="Right fixed wedge">
+            <object width="0.653" X="0.303" Y="1.380" height="0.696" type="RightFixedWedge" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Short left wedge">
-            <object width="0.286" X="5.412" Y="0.341" height="0.311" type="LeftWedge" angle="0.000"/>
+        <toolboxitem count="1" name="Short left fixed wedge">
+            <object width="0.286" X="5.412" Y="0.341" height="0.311" type="LeftFixedWedge" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Small quarter arc">
             <object width="0.461" X="1.080" Y="0.736" height="0.404" type="QuarterArc80">

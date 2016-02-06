@@ -20,11 +20,11 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Left wedge" count="1">
-            <object angle="0.000" type="LeftWedge" X="1.266" height="0.288" Y="4.582" width="0.656"/>
+        <toolboxitem name="Left fixed wedge" count="1">
+            <object angle="0.000" type="LeftFixedWedge" X="1.266" height="0.288" Y="4.582" width="0.656"/>
         </toolboxitem>
-        <toolboxitem name="Right wedge" count="1">
-            <object angle="0.000" type="RightWedge" X="0.718" height="0.311" Y="5.103" width="1.061"/>
+        <toolboxitem name="Right fixed wedge" count="1">
+            <object angle="0.000" type="RightFixedWedge" X="0.718" height="0.311" Y="5.103" width="1.061"/>
         </toolboxitem>
         <toolboxitem name="Soccer ball" count="1">
             <object angle="0.000" type="SoccerBall" X="0.000" height="0.220" Y="0.000" width="0.220"/>
