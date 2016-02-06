@@ -37,7 +37,8 @@
             </object>
             <object width="0.1" X="0.5" Y="1.05" height="1.9" type="Wall" angle="0"/>
             <object width="0.21" X="0.7" Y="1.86" height="0.21" type="VolleyBall" angle="0"/>
-            <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightRamp" angle="0">
+            <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightWedge" angle="0">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Mass">0.2</property>

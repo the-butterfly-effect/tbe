@@ -8,13 +8,13 @@
         <date>04.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Left wedge" count="2">
-            <object type="LeftWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
+        <toolboxitem name="Left fixed wedge" count="2">
+            <object type="LeftFixedWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Right wedge" count="3">
-            <object type="RightWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
+        <toolboxitem name="Right fixed wedge" count="3">
+            <object type="RightFixedWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
@@ -49,9 +49,9 @@
             <object ID="IWantToGoRight2" type="Pingus" angle="0" width="0.28" height="0.28" X="5.90858" Y="4.01665"/>
             <object ID="ChestBall" type="VolleyBall" angle="0" width="0.21" height="0.21" X="4.22159" Y="3.99721"/>
             <object ID="PitBall1" type="SoccerBall" angle="0" width="0.22" height="0.22" X="4.22522" Y="3.19825"/>
-            <object type="LeftWedge" angle="0" width="0.68069" height="0.69795" X="9.20739" Y="2.02724"/>
+            <object type="LeftFixedWedge" angle="0" width="0.68069" height="0.69795" X="9.20739" Y="2.02724"/>
             <object type="Floor" angle="0" width="0.925563" height="0.1" X="8.0925" Y="2.28306"/>
-            <object type="RightWedge" angle="0" width="0.64617" height="0.300971" X="5.93662" Y="1.27909"/>
+            <object type="RightFixedWedge" angle="0" width="0.64617" height="0.300971" X="5.93662" Y="1.27909"/>
             <object type="Scenery" angle="0" width="1.01194" height="0.701451" X="0.998717" Y="0.574777">
                 <property key="ImageName">basket</property>
                 <property key="ZValue">1</property>

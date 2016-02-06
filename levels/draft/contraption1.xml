@@ -8,7 +8,7 @@
         <date>04/23/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Wedge \">
+        <toolboxitem count="2" name="Right birch wedge">
             <object width="0.4" X="0.30" Y="0.35" height="0.3" type="RightWedge">
                 <property key="Bounciness">0.3</property>
                 <property key="Mass">2.0</property>
@@ -115,7 +115,8 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object width="0.3" X="4.45" Y="2.1" height="0.6" type="RightRamp" angle="3.14">
+            <object width="0.3" X="4.45" Y="2.1" height="0.6" type="RightFixedWedge" angle="3.14">
+                <tooltip>This styrofoam wedge has been glued to the wall.</tooltip>
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Bounciness">0.1</property>
             </object>

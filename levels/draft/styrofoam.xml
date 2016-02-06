@@ -21,54 +21,61 @@
     <scene>
         <scenesize width="4.5" height="3"/>
         <predefined>
-            <object width="0.100" X="0.050" Y="1.450" height="2.700" type="RectObject" angle="0.000">
+            <object width="0.100" X="0.050" Y="1.450" height="2.700" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.450" Y="1.450" height="2.700" type="RectObject" angle="0.000">
+            <object width="0.100" X="4.450" Y="1.450" height="2.700" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.220" X="0.400" Y="2.700" height="0.220" type="SoccerBall" angle="0.000"/>
             <object width="2.000" X="3.400" Y="2.650" height="0.100" type="Floor" angle="0.000"/>
-            <object width="2.000" X="3.400" Y="2.350" height="0.500" type="RightRamp" angle="3.140">
+            <object width="2.000" X="3.400" Y="2.350" height="0.500" type="RightFixedWedge" angle="3.140">
+                <tooltip>This styrofoam wedge has been glued to the wall.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-right</property>
             </object>
-            <object width="3.800" X="2.000" Y="2.050" height="0.500" type="RightRamp" angle="0.000">
+            <object width="3.800" X="2.000" Y="2.050" height="0.500" type="RightFixedWedge" angle="0.000">
+                <tooltip>This styrofoam wedge has been glued to the wall.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-right</property>
             </object>
             <object width="3.800" X="2.000" Y="1.750" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.600" X="4.100" Y="1.500" height="0.400" type="LeftWedge" angle="0.000">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Mass">0.6</property>
             </object>
             <object width="1.000" X="3.900" Y="1.150" height="0.300" type="RectObject" angle="0.000">
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam</property>
             </object>
             <object width="3.800" X="2.500" Y="0.950" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.400" X="0.800" Y="1.150" height="0.250" type="LeftWedge" angle="0.000">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.5</property>
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Mass">0.9</property>
             </object>
-            <object width="0.400" X="0.300" Y="1.550" height="0.300" type="LeftRamp" angle="3.140">
+            <object width="0.400" X="0.300" Y="1.550" height="0.300" type="LeftFixedWedge" angle="3.140">
+                <tooltip>This styrofoam wedge has been glued to the wall.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-left</property>
             </object>
             <object width="0.600" X="0.400" Y="0.700" height="0.400" type="RightWedge" angle="0.000">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Mass">0.6</property>
             </object>
             <object width="1.000" X="0.600" Y="0.250" height="0.300" type="RectObject" angle="0.000">
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
                 <property key="Bounciness">0.5</property>
                 <property key="ImageName">styrofoam</property>
             </object>
             <object width="0.400" X="3.400" Y="0.250" height="0.250" type="RightWedge" angle="0.000">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.6</property>
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Mass">0.9</property>
@@ -80,7 +87,7 @@
                 <property key="ImageName">goal-scenery</property>
                 <property key="ZValue">4</property>
             </object>
-            <object width="0.150" X="4.300" Y="0.450" height="0.700" type="RightRamp" angle="3.140">
+            <object width="0.150" X="4.300" Y="0.450" height="0.700" type="RightFixedWedge" angle="3.140">
                 <property key="ImageName">Empty</property>
             </object>
             <object width="4.500" X="2.250" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
