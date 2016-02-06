@@ -74,11 +74,14 @@ void ChooseLevel::fillTreeWidget()
 {
 	m_ui->theTreeWidget->clear();
 	bool isFirst = true;
+	bool hasSkipped = false;
 	QString myNextName = theLLPtr->getFirstLevel();
 	int myNr = 0;
+	QTreeWidgetItem* item;
+	QTreeWidgetItem* firstSkipped;
 	do {
 		++myNr;
-		QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->theTreeWidget);
+		item = new QTreeWidgetItem(m_ui->theTreeWidget);
 		LevelList::LevelMetaInfo myMeta =theLLPtr->getLevelMetaInfo(myNextName);
 		item->setText(FILENAME_COLUMN, myMeta.theFileName);
         item->setText(TITLE_COLUMN, TheGetText(myMeta.theTitle));
@@ -90,6 +93,11 @@ void ChooseLevel::fillTreeWidget()
 			break;
 		case LevelList::LevelMetaInfo::SKIPPED:
 			item->setText(NR_COLUMN, tr("skipped"));
+			if (!hasSkipped)
+			{
+				hasSkipped = true;
+				firstSkipped = item;
+			}
 			break;
 		default:
 			item->setText(NR_COLUMN, QString::number(myNr));
@@ -101,6 +109,16 @@ void ChooseLevel::fillTreeWidget()
 
 		myNextName = theLLPtr->getNextLevel(myNextName);
 	} while (!myNextName.isEmpty() );
+	/* No item has been selected (happens when all levels done/skipped)  */
+	if (isFirst)
+	{
+		/* Player has some skipped levels remaining: Select first skipped level */
+		if (hasSkipped)
+			m_ui->theTreeWidget->setCurrentItem(firstSkipped);
+		/* Player has finished all levels: Select last level */
+		else
+			m_ui->theTreeWidget->setCurrentItem(item);
+	}
 }
 
 QString ChooseLevel::getCurrent(void)
