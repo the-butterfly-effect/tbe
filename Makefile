@@ -36,7 +36,7 @@ regression: usr/games/tbe
 	      --regression=levels/draft/in_the_attic.xml:17, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
-	      --regression levels/angry/birds1.xml:10, \
+	      --regression levels/angry/birds1.xml:13, \
 	      --regression levels/elce09/002.xml:30, \
 	      --regression levels/elce09/003.xml:40, \
 	      --regression levels/elce09/004.xml:15, \

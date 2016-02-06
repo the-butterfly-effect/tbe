@@ -111,7 +111,7 @@
             <object width="1.988" X="1.745" Y="1.850" height="0.100" type="Floor" angle="0.000"/>
             <object width="1.600" X="2.000" Y="1.330" height="0.100" type="Floor" angle="-0.100"/>
             <object width="1.529" X="2.000" Y="0.730" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.634" X="1.423" Y="2.288" height="0.780" type="RightWedge" angle="0.000"/>
+            <object width="0.634" X="1.423" Y="2.288" height="0.780" type="RightFixedWedge" angle="0.000"/>
             <object width="0.400" X="3.950" Y="0.700" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.400" X="3.650" Y="0.600" height="0.100" type="Floor" angle="0.005"/>
             <object width="0.400" X="3.350" Y="0.500" height="0.100" type="Floor" angle="0.005"/>
