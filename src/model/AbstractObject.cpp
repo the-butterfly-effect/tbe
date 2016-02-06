@@ -275,9 +275,12 @@ void AbstractObject::parseProperties(void)
     Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
 	{
-        theChildPivotPointPtr = ObjectFactory::createChildObject<PivotPoint>(getThisPtr(), myDelta);
-		theChildPivotPointPtr->markAsChild();
-		theWorldPtr->addObject(theChildPivotPointPtr);
+        if (theWorldPtr)
+        {
+            theChildPivotPointPtr = ObjectFactory::createChildObject<PivotPoint>(getThisPtr(), myDelta);
+            theChildPivotPointPtr->markAsChild();
+            theWorldPtr->addObject(theChildPivotPointPtr);
+        }
 	}
 
 	// Child Translation Guid
