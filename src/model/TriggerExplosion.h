@@ -300,7 +300,7 @@ public:
 	ExplosionSplatter();
 	virtual ~ExplosionSplatter();
 
-	/// @returns true if the object should not surive a World::deletePhysicsWorld()
+    /// @returns true if the object should not surive a World::deletePhysicsWorld()
 	/// overridden from AbstractObject
 	virtual bool isTemp() const
 	{ return true; }
@@ -327,12 +327,12 @@ public:
     void setAll(World* aWorldPtr, const Position& aStartPos,
                 qreal aVelocity, qreal aSplatterMass, Dynamite *aDynamitePtr);
 
-	/** sets the splattermass to whatever value needed.
-	  * @param aSplatterMass the new mass of the splatter
-	  */
-	void setMass( qreal aSplatterMass );
+    /** sets the splattermass to whatever value needed.
+      * @param aSplatterMass the new mass of the splatter
+      */
+    void setMass( qreal aSplatterMass );
 
-	const static qreal theRadius;
+    const static qreal theRadius;
 
 	/// (See Box2D manual, "groupIndex" of a shape)
 	/// a negative group index means that all shapes of that group will never
@@ -343,6 +343,9 @@ public:
 
 protected:
     Dynamite*	theDynamitePtr;
+
+    /// Counts the number of bounces.
+    int         theBounceCounter;
 };
 
 

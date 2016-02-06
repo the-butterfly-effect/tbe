@@ -205,7 +205,8 @@ public:
         SLICING,
         STINGING,
         HEAT,
-        WET         // not implemented, but image coke on dynamite
+        WET,         // not implemented, but image coke on dynamite
+        EXPLOSION
     };
 
     /// If e.g. a Sawblade touches a Penguin, it will have to tell the penguin

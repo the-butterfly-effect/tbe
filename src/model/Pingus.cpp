@@ -280,6 +280,7 @@ void Pingus::causeWounded(AbstractObject::WhyWounded aReason)
     case NOTHING:
     case STINGING:
     case WET:
+    case EXPLOSION: // (penguin will already die from the impact if too close)
         // do nothing: no issue
         break;
     case SLICING:

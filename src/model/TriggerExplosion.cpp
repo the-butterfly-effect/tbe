@@ -465,7 +465,11 @@ void Dynamite::manageParticles(float aDeltaTime)
             {
                 ExplosionSplatter* p = dynamic_cast<ExplosionSplatter*>(e.get());
                 assert(p);
-                p->setMass( myMassLeft / mySplattersLeft );
+                qreal myDistance = (getTempCenter()-p->getTempCenter()).length();
+                if (myDistance > 1.0)
+                    p->setMass( myMassLeft / mySplattersLeft / myDistance);
+                else
+                    p->setMass( myMassLeft / mySplattersLeft );
             }
 	}
 }
@@ -487,7 +491,7 @@ const int   ExplosionSplatter::COLLISION_GROUP_INDEX = 3;
 ExplosionSplatter::ExplosionSplatter()
     : CircleObject("ExplosionSplatter","", "ColaSplatter",
                    theRadius, 0.001,  1.0),
-      theDynamitePtr(nullptr)
+      theDynamitePtr(nullptr), theBounceCounter(0)
 {
 	DEBUG5("ExplosionSplatter::ExplosionSplatter");
 
@@ -501,7 +505,7 @@ ExplosionSplatter::~ExplosionSplatter()
 	DEBUG5("ExplosionSplatter::~ExplosionSplatter()");
 	// contrary to most objects, we need to take ourselves really out of the
 	// physics simulation...
-	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
+    getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 }
 
 
@@ -522,15 +526,27 @@ void ExplosionSplatter::reportNormalImpulseLength(qreal,
 	// IDEA: can we vary bounciness during collision detection for
 	// different types of objects?
 
-	// compare against theStartVelocityVector
-	b2Vec2 myVelocity = theB2BodyPtr->GetLinearVelocity();
+    theBounceCounter++;
 
-	if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
-			((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
-	{
-        theDynamitePtr->removeMe(getThisPtr());
-        theWorldPtr->removeMe(getThisPtr(), 0.05);
-	}
+    // If we hit a weak object, let's mention that to the object
+    if (nullptr != anOtherObjectPtr)
+    {
+       qreal theDistanceFromDynamite = (theDynamitePtr->getTempCenter()-getTempCenter()).length();
+       if (theDistanceFromDynamite < 2.0)
+            anOtherObjectPtr->causeWounded(EXPLOSION);
+    }
+
+    // compare against theStartVelocityVector
+	b2Vec2 myVelocity = theB2BodyPtr->GetLinearVelocity();
+    if (theBounceCounter > 20)
+        goto deleteMe;
+    if (((myVelocity.x>=0) != (theStartVelocityVector.dx>=0)) &&
+            ((myVelocity.y>=0) != (theStartVelocityVector.dy>=0)))
+        goto deleteMe;
+    return;
+deleteMe:
+    theDynamitePtr->removeMe(getThisPtr());
+    theWorldPtr->removeMe(getThisPtr(), 0.05);
 }
 
 
@@ -554,6 +570,7 @@ void ExplosionSplatter::setAll(World* aWorldPtr,
 	setMass(aSplatterMass);
 
     aWorldPtr->addObject(getThisPtr());
+    theBounceCounter = 0;
 }
 
 void ExplosionSplatter::setMass( qreal aSplatterMass )

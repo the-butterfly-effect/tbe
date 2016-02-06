@@ -135,7 +135,7 @@ void Balloon::callbackStepPopping(qreal, qreal aTotalTime)
 
 void Balloon::causeWounded(WhyWounded aReason)
 {
-    if (aReason == HEAT || aReason == STINGING || aReason==SLICING)
+    if (aReason == HEAT || aReason == STINGING || aReason==SLICING || aReason==EXPLOSION)
         if (theState == BALLOON)
             goToState(POPPING);
 }
