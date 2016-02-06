@@ -59,19 +59,19 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->buttonObjectImage->setIcon(myFinalPixmap);
     ui->buttonObjectImage->setIconSize(myFinalPixmap.size());
 
-	if (myAOPtr->isResizable() & (AbstractObject::HORIZONTALRESIZE|AbstractObject::VERTICALRESIZE))
-		addActionIcon("ActionResize", tr("Resize the object in all directions"));
+	if (myAOPtr->isResizable() & (AbstractObject::HORIZONTALRESIZE&AbstractObject::VERTICALRESIZE))
+		addActionIcon("ActionResize", tr("You can resize the object in all directions."));
 	else
 	{
 		if (myAOPtr->isResizable() & AbstractObject::HORIZONTALRESIZE)
-			addActionIcon("ActionResizeHori", tr("Resize the object horizontally"));
+			addActionIcon("ActionResizeHori", tr("You can resize the object horizontally."));
 		if (myAOPtr->isResizable() & AbstractObject::VERTICALRESIZE)
-			addActionIcon("ActionResizeVerti", tr("Resize the object vertically"));
+			addActionIcon("ActionResizeVerti", tr("You can resize the object vertically."));
 	}
 	if (myAOPtr->isRotatable())
-		addActionIcon("ActionRotate", tr("Rotate the object"));
+		addActionIcon("ActionRotate", tr("You can rotate the object."));
 	if (dynamic_cast<DetonatorBox*>(myAOPtr.get())!=nullptr)
-		addActionIcon("ActionSetNumber", tr("You can set the phone number"));
+		addActionIcon("ActionSetNumber", tr("You can set the phone number."));
 
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
