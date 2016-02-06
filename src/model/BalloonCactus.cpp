@@ -216,7 +216,7 @@ void Balloon::notifyJoints(JointInterface::JointStatus aStatus)
 }
 
 
-void Balloon::reportNormalImpulseLength(qreal anImpulseLength)
+void Balloon::reportNormalImpulseLength(qreal anImpulseLength, AbstractObject*)
 {
 	// also pop the balloon if it is maltreated
 	// WARNING: Magic number here!!!

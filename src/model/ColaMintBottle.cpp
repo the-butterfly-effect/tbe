@@ -99,7 +99,8 @@ void ColaMintBottle::deletePhysicsObject(void)
 	PolyObject::deletePhysicsObject();
 }
 
-void ColaMintBottle::reportNormalImpulseLength(qreal anImpulseLength)
+void ColaMintBottle::reportNormalImpulseLength(qreal anImpulseLength,
+                                               AbstractObject *)
 {
 	if (anImpulseLength > 0.6 && theBottleStatus==UNTRIGGERED)
 		setBottleStatus(TRIGGERED);
@@ -250,7 +251,7 @@ ColaSplatter::~ColaSplatter()
 	getB2WorldPtr()->DestroyBody(theB2BodyPtr);
 }
 
-void ColaSplatter::reportNormalImpulseLength(qreal)
+void ColaSplatter::reportNormalImpulseLength(qreal, AbstractObject *)
 {
 	// oww we hit something.
 	// that's the end for us

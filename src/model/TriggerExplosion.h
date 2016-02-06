@@ -313,7 +313,8 @@ public:
 	  * and we'd probably better disband ourselves soon...
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+    void reportNormalImpulseLength(qreal anImpulseLength,
+                                   AbstractObject* anOtherObjectPtr) override;
 
 	/** sets all parameters of the splatter, attaches to World
 	  * and creates the physical object and drawobject

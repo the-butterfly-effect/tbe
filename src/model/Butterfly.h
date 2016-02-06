@@ -77,7 +77,8 @@ public:
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	void reportNormalImpulseLength(qreal anImpulseLength) override;
+    void reportNormalImpulseLength(qreal anImpulseLength,
+                                   AbstractObject* anOtherObjectPtr) override;
 
 protected:
 	/// suggest a new state of the butterfly state machine

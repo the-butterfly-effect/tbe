@@ -95,7 +95,8 @@ public:
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength) override;
+    virtual void reportNormalImpulseLength(qreal anImpulseLength,
+                                           AbstractObject* anOtherObjectPtr) override;
 
 private:
 	/// implemented from SimStepCallbackInterface

@@ -505,7 +505,8 @@ ExplosionSplatter::~ExplosionSplatter()
 }
 
 
-void ExplosionSplatter::reportNormalImpulseLength(qreal)
+void ExplosionSplatter::reportNormalImpulseLength(qreal,
+                                                  AbstractObject* anOtherObjectPtr)
 {
 	// oww we hit something.
 	// that may be the end for us

@@ -118,15 +118,19 @@ public:
 	  * note that an object resting on top of another already has a (constant)
 	  * normal impulse vector.
 	  * @param anImpulseLength length of the normal impulse vector
+	  * @param anOtherObjectPtr pointer to the other object (may be nullptr?)
 	  */
-	virtual void reportNormalImpulseLength(UNUSED_ARG qreal anImpulseLength) {};
+	virtual void reportNormalImpulseLength(UNUSED_ARG qreal anImpulseLength,
+                                           UNUSED_ARG AbstractObject* anOtherObjectPtr) {};
 
 	/** will be called by World to report tangential impulse length
 	  * note that an object resting on top of another has no tangential
 	  * impulse vector.
 	  * @param anImpulseLength length of the normal impulse vector
+	  * @param anOtherObjectPtr pointer to the other object (may be nullptr?)
 	  */
-	virtual void reportTangentImpulse(UNUSED_ARG qreal anImpulse) {};
+	virtual void reportTangentImpulse(UNUSED_ARG qreal anImpulseLength,
+                                      UNUSED_ARG AbstractObject* anOtherObjectPtr) {};
 };
 
 

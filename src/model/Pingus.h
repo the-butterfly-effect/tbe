@@ -116,7 +116,8 @@ public:
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	void reportNormalImpulseLength(qreal anImpulseLength) override;
+    void reportNormalImpulseLength(qreal anImpulseLength,
+                                   AbstractObject* anOtherObjectPtr) override;
 
     /// called by World at the start of every simulation
     static void resetPingusCount();

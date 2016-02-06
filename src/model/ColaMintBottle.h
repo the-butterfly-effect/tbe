@@ -54,7 +54,8 @@ public:
 	  * and we'd better disband ourselves soon...
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+    void reportNormalImpulseLength(qreal anImpulseLength,
+                                   AbstractObject* anOtherObjectPtr) override;
 
 protected:
 	const static qreal theRadius;
@@ -107,7 +108,8 @@ public:
 	  * reports on the normal impulse.
 	  * @param anImpulseLength length of the normal impulse vector
 	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength);
+    void reportNormalImpulseLength(qreal anImpulseLength,
+                                   AbstractObject* anOtherObjectPtr) override;
 
 	/// overridden from AbstractObject because this class wants to register for callbacks
 	virtual void createPhysicsObject(void);

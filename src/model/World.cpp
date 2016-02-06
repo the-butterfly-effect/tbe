@@ -363,37 +363,37 @@ qreal World::simStep (void)
 	// run the simulation
 	theB2WorldPtr->Step(theDeltaTime,theVelocityIterationcount, thePositionIterationcount);
 
-	// check all contactresults if either of the objects is interested
-	// in hearing the impulses...
-	foreach(ContactInfo k, theContactInfoList)
-	{
+    // check all contactresults if either of the objects is interested
+    // in hearing the impulses...
+    foreach(ContactInfo k, theContactInfoList)
+    {
         AbstractObject* myBO1Ptr = k.myFixtureA->GetUserData();
         AbstractObject* myBO2Ptr = k.myFixtureB->GetUserData();
 
-		if (myBO1Ptr!=nullptr)
-		{
-			if (k.myFixtureA->IsSensor())
-				myBO1Ptr->callBackSensor(k);
-			if (myBO1Ptr->isInterestedInNormalImpulse())
-				myBO1Ptr->reportNormalImpulseLength( k.myNormalImpulse );
-			if (myBO1Ptr->isInterestedInTangentImpulse())
-				myBO1Ptr->reportTangentImpulse( k.myTangentImpulse );
-		}
+        if (myBO1Ptr!=nullptr)
+        {
+            if (k.myFixtureA->IsSensor())
+                myBO1Ptr->callBackSensor(k);
+            if (myBO1Ptr->isInterestedInNormalImpulse())
+                myBO1Ptr->reportNormalImpulseLength( k.myNormalImpulse, myBO2Ptr );
+            if (myBO1Ptr->isInterestedInTangentImpulse())
+                myBO1Ptr->reportTangentImpulse( k.myTangentImpulse, myBO2Ptr );
+        }
 
-		if (myBO2Ptr!=nullptr)
-		{
-			if (k.myFixtureB->IsSensor())
-				myBO2Ptr->callBackSensor(k);
-			if (myBO2Ptr->isInterestedInNormalImpulse())
-				myBO2Ptr->reportNormalImpulseLength( k.myNormalImpulse );
-			if (myBO2Ptr->isInterestedInTangentImpulse())
-				myBO2Ptr->reportTangentImpulse( k.myTangentImpulse );
-		}
-	}
+        if (myBO2Ptr!=nullptr)
+        {
+            if (k.myFixtureB->IsSensor())
+                myBO2Ptr->callBackSensor(k);
+            if (myBO2Ptr->isInterestedInNormalImpulse())
+                myBO2Ptr->reportNormalImpulseLength( k.myNormalImpulse, myBO1Ptr );
+            if (myBO2Ptr->isInterestedInTangentImpulse())
+                myBO2Ptr->reportTangentImpulse( k.myTangentImpulse, myBO1Ptr );
+        }
+    }
 
-	// run all the callbacks per sim step
-	foreach(SimStepCallbackInterface* i, theCallbackList)
-		i->callbackStep(theDeltaTime, theTotalTime);
+    // run all the callbacks per sim step
+    foreach(SimStepCallbackInterface* i, theCallbackList)
+        i->callbackStep(theDeltaTime, theTotalTime);
 
 	// remove all scheduled AbstractObjects from the World
 	ToRemoveList::iterator k;

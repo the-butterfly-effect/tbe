@@ -150,7 +150,8 @@ void Butterfly::goToFlower(void)
 }
 
 
-void Butterfly::reportNormalImpulseLength(qreal anImpulseLength)
+void Butterfly::reportNormalImpulseLength(qreal anImpulseLength,
+                                          AbstractObject *)
 {
 	if(anImpulseLength<0.008)
 		return;

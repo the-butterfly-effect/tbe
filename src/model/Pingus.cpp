@@ -397,7 +397,7 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 }
 
 
-void Pingus::reportNormalImpulseLength(qreal anImpulseLength)
+void Pingus::reportNormalImpulseLength(qreal anImpulseLength, AbstractObject *)
 {
 	// pop the Pingus if it is maltreated
 	// switch between falling and walking/sliding where appropriate
