@@ -59,13 +59,15 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     ui->buttonObjectImage->setIcon(myFinalPixmap);
     ui->buttonObjectImage->setIconSize(myFinalPixmap.size());
 
-	if (myAOPtr->isResizable() & (AbstractObject::HORIZONTALRESIZE&AbstractObject::VERTICALRESIZE))
+    AbstractObject::SizeDirections isResizable = myAOPtr->isResizable();
+    if ((isResizable&AbstractObject::HORIZONTALRESIZE) &&
+         (isResizable&AbstractObject::VERTICALRESIZE))
 		addActionIcon("ActionResize", tr("You can resize the object in all directions."));
 	else
 	{
-		if (myAOPtr->isResizable() & AbstractObject::HORIZONTALRESIZE)
+        if (isResizable&AbstractObject::HORIZONTALRESIZE)
 			addActionIcon("ActionResizeHori", tr("You can resize the object horizontally."));
-		if (myAOPtr->isResizable() & AbstractObject::VERTICALRESIZE)
+        if (isResizable&AbstractObject::VERTICALRESIZE)
 			addActionIcon("ActionResizeVerti", tr("You can resize the object vertically."));
 	}
 	if (myAOPtr->isRotatable())
