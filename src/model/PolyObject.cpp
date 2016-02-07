@@ -165,6 +165,18 @@ static AbstractPolyObjectFactory theToyChestFactory(
         "(-0.4,-0.82)=(0.3,-0.82)=(0.3,-0.73)=(-0.4,-0.73)",
     1.0, 1.7, 0.0, 0.05 );
 
+static AbstractPolyObjectFactory theCardboardBoxFactory(
+    "CardboardBox",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Cardboard Box"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Cardboard boxes are used to carry small and light things around."),
+    "CardboardBox",
+        "(-0.40,-0.4)=(-0.35,-0.4)=(-0.35,0.40)=(-0.40,0.40);"
+	"(0.35,-0.4)=(0.4,-0.4)=(0.4,0.40)=(0.35,0.40);"
+	"(-0.35,-0.4)=(-0.35,-0.35)=(0.35,-0.35)=(0.35,-0.4)",
+    0.9, 0.78809, 0.5, 0.06 );
+
+
+
 
 // Constructors/Destructors
 //
