@@ -23,10 +23,10 @@ filenames: oldbrick.png
 derived from the above textures from Samurai Squirrel.
 
 
-filename   birch_bar.png
-author:    Klaas van Gend (photo)
-license:   PD (public domain)
-source:    n/a - original work for The Butterfly Effect
+filename   birch_bar.svg
+author:    rdevries, modified by Wuzzy
+license:   WTFPL
+source:    https://openclipart.org/detail/162781/wooden-plank-light
 
 
 filenames: chickenwire-texture.svg
