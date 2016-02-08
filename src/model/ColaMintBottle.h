@@ -34,7 +34,7 @@ public:
 
 	/// @returns true if the object should not surive a World::deletePhysicsWorld()
 	/// overridden from AbstractObject
-	virtual bool isTemp() const
+	virtual bool isTemp() const override
 	{ return true; }
 
     /** sets all parameters of the splatter
@@ -47,7 +47,7 @@ public:
 				qreal aVelocity, qreal aSplatterMass);
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void)
+	virtual bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
 	/** overridden from AbstractObject - if we have an impulse, we hit something
@@ -89,7 +89,7 @@ public:
 	void setBottleStatus(BottleStatus aNewStat);
 
 	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void);
+	virtual void deletePhysicsObject(void) override;
 
 	/// @returns the current bottle state
 	BottleStatus getBottleStatus(void)
@@ -97,11 +97,11 @@ public:
 
 	/// overridden from AbstractObject to allow representation of the states
 	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const
+	virtual unsigned int getImageIndex(void) const override
 	{ return theBottleStatus; }
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void)
+	virtual bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
 	/** overridden from AbstractObject - we want to receive
@@ -112,11 +112,11 @@ public:
                                    AbstractObject* anOtherObjectPtr) override;
 
 	/// overridden from AbstractObject because this class wants to register for callbacks
-	virtual void createPhysicsObject(void);
+	virtual void createPhysicsObject(void) override;
 
 private:
 	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime);
+	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 	/** generate a new Cola splatter
 	 *  @param aSequenceNr the sequence number of the splatter
