@@ -54,7 +54,7 @@ public:
 	//
 
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+	virtual const QString getName ( ) const override
 	{	return theNameString;	}
 
 	/// child objects must specify what type of body they are
@@ -64,7 +64,7 @@ public:
 
 	/// parse all properties
 	/// partially overridden from AbstractObject
-	virtual void  parseProperties(void);
+	virtual void  parseProperties(void) override;
 
 protected:
 	/// TODO/FIXME: see same notes in RectObject...

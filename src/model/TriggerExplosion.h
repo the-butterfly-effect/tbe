@@ -302,11 +302,11 @@ public:
 
     /// @returns true if the object should not surive a World::deletePhysicsWorld()
 	/// overridden from AbstractObject
-	virtual bool isTemp() const
+	virtual bool isTemp() const override
 	{ return true; }
 
 	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void)
+	virtual bool isInterestedInNormalImpulse(void) override
 	{ return true; }
 
 	/** overridden from AbstractObject - if we have an impulse, we hit something
