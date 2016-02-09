@@ -1,0 +1,100 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Controlled Detonation</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Detonate all the dynamite.</description>
+        <date>09.02.16</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="8.1" height="5"/>
+        <predefined>
+            <object Y="0.287783" angle="0" width="0.33" X="7.76273" type="DetonatorBox" height="0.35"/>
+            <object Y="0.374084" angle="0" width="0.33" X="1.39811" type="DetonatorBox" height="0.35"/>
+            <object Y="2.52619" angle="0" width="0.33" X="7.68182" type="DetonatorBox" height="0.35"/>
+            <object Y="2.57473" angle="0" width="0.33" X="3.70663" type="DetonatorBox" height="0.35"/>
+            <object Y="3.75058" angle="0" width="0.33" X="1.4089" type="DetonatorBox" height="0.35"/>
+            <object Y="1.03212" angle="0" width="0.33" X="3.63651" type="DetonatorBox" height="0.35"/>
+            <object ID="555-0001" Y="4.43979" angle="0" width="0.43" X="0.479714" type="Dynamite" height="0.32"/>
+            <object ID="555-0002" Y="2.85403" angle="0" width="0.43" X="0.512077" type="Dynamite" height="0.32"/>
+            <object ID="555-0003" Y="1.10645" angle="0" width="0.43" X="0.463533" type="Dynamite" height="0.32"/>
+            <object ID="555-0004" Y="4.58003" angle="0" width="0.43" X="5.51208" type="Dynamite" height="0.32"/>
+            <object ID="555-0005" Y="3.20462" angle="0" width="0.43" X="4.75156" type="Dynamite" height="0.32"/>
+            <object ID="555-0006" Y="1.72673" angle="0" width="0.43" X="4.68684" type="Dynamite" height="0.32"/>
+            <object Y="4.22616" angle="0" width="1.10787" X="0.669364" type="Floor" height="0.1"/>
+            <object Y="3.52498" angle="0" width="0.660194" X="1.40021" type="Floor" height="0.1"/>
+            <object Y="3.78157" angle="0" width="8.45955" X="3.54153" type="Scenery" height="3.95577">
+                <property key="ImageName">the-sun</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="1.13592" angle="0" width="1.80367" X="2.49515" type="LeftRamp" height="0.681769"/>
+            <object Y="3.53344" angle="0" width="1.63646" X="2.43311" type="RightRamp" height="0.665588"/>
+            <object Y="4.38731" angle="0" width="0.22" X="1.18342" type="BowlingBall" height="0.22"/>
+            <object Y="2.34913" angle="0" width="2.25674" X="4.57713" type="Floor" height="0.1"/>
+            <object Y="2.6404" angle="0" width="1.11866" X="0.653182" type="Floor" height="0.1"/>
+            <object Y="2.34682" angle="0" width="1.74973" X="2.09601" type="RightRamp" height="0.665588"/>
+            <object Y="1.93921" angle="0" width="0.687163" X="3.33387" type="Floor" height="0.1"/>
+            <object Y="0.892827" angle="0" width="1.09169" X="0.628911" type="Floor" height="0.1"/>
+            <object Y="0.143096" angle="0" width="1" X="1.40291" type="Floor" height="0.1"/>
+            <object Y="0.806526" angle="0" width="0.670982" X="3.6548" type="Floor" height="0.1"/>
+            <object Y="1.51311" angle="0" width="1.75512" X="4.76321" type="Floor" height="0.1"/>
+            <object Y="1.20874" angle="0" width="1.87918" X="6.63215" type="RightRamp" height="0.665588"/>
+            <object Y="0.0621902" angle="0" width="0.838188" X="7.71898" type="Floor" height="0.1"/>
+            <object Y="2.14725" angle="0" width="1.50162" X="6.57282" type="LeftRamp" height="0.406688"/>
+            <object Y="1.95539" angle="0" width="0.789644" X="4.81446" type="Floor" height="0.1"/>
+            <object Y="2.99099" angle="0" width="1.75512" X="5.32956" type="Floor" height="0.1"/>
+            <object Y="2.80154" angle="0" width="0.22" X="1.01621" type="BowlingBall" height="0.22"/>
+            <object Y="1.63649" angle="0" width="0.22" X="3.06045" type="BowlingBall" height="0.22"/>
+            <object Y="4.361" angle="0" width="2.05178" X="6.06042" type="Floor" height="0.1"/>
+            <object Y="3.15214" angle="0" width="0.22" X="5.12085" type="BowlingBall" height="0.22"/>
+            <object Y="4.52754" angle="0" width="0.22" X="5.90833" type="BowlingBall" height="0.22"/>
+            <object Y="4.20021" angle="0" width="0.4" X="7.28544" type="QuarterArc40" height="0.4"/>
+            <object Y="2.2952" angle="0" width="0.714131" X="7.72168" type="Floor" height="0.1"/>
+            <object Y="4.39396" angle="0" width="0.8" X="7.50076" type="QuarterArc80" height="0.8"/>
+            <object Y="2.14995" angle="0" width="0.0975189" X="4.79914" type="Wall" height="0.29342"/>
+            <object Y="0.615426" angle="0" width="0.2" X="8.04887" type="Wall" height="1"/>
+            <object Y="1.13376" angle="0" width="0.22" X="5.31931" type="PostIt" height="0.22">
+                <property key="ZValue">1</property>
+                <property key="page1">What a wonderful day! It's the perfect weather for explosions.</property>
+                <property key="page2">You have probably noticed your toolbox is empty this time. Don't worry.</property>
+                <property key="page3">Remember you can choose the phone number the detonator boxes are calling.</property>
+                <property key="page4">Find the right combination and blow everything up.&lt;br>—Post-it boy</property>
+            </object>
+            <object Y="4.90922" angle="0" width="0.2" X="5.13662" type="Wall" height="1"/>
+            <object Y="3.3747" angle="0" width="0.102913" X="7.43975" type="Wall" height="1.25351"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">1;0.839216;0.537255;1</gradientstop>
+            <gradientstop pos="1">1;0.619608;0.184314;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0001</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0002</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0003</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0004</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0005</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0006</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
