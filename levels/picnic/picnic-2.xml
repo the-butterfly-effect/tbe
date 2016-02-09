@@ -33,7 +33,7 @@
                 <property key="Mass">0.5</property>
                 <property key="PivotPoint">(0,0)</property>
             </object>
-            <object width="0.100" X="4.951" Y="0.892" height="0.250" type="RectObject" ID="RightArmEnd" angle="-0.290">
+            <object width="0.250" X="4.951" Y="0.892" height="0.100" type="RectObject" ID="RightArmEnd" angle="1.280">
                 <property key="ImageName">birch_bar</property>
                 <property key="Mass">0.5</property>
                 <property key="NoCollision">RightArm</property>
