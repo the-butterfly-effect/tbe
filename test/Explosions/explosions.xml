@@ -1,0 +1,72 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Testing explosions with dynamite and balloons</title>
+        <author>Klaas</author>
+        <license></license>
+        <description>For testing explosions with and without sending termination to balloons.&lt;br&gt;One yellow and two blue balloons should survive</description>
+        <date>2/6/16</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize height="5" width="9"/>
+        <predefined>
+            <object angle="0" type="DetonatorBox" X="0.2" Y="0.18" height="0.35" width="0.33">
+                <property key="PhoneNumber">555-1111</property>
+            </object>
+            <object angle="0" type="DetonatorBox" X="0.55" Y="0.18" height="0.35" width="0.33">
+                <property key="PhoneNumber">555-2222</property>
+            </object>
+            <object angle="0" type="DetonatorBox" X="0.9" Y="0.18" height="0.35" width="0.33">
+                <property key="PhoneNumber">555-3333</property>
+            </object>
+            <object angle="0" type="BowlingBall" X="0.2" Y="1.2" height="0.22" width="0.22"/>
+            <object angle="0" type="BowlingBall" X="0.55" Y="1.2" height="0.22" width="0.22"/>
+            <object angle="0" type="BowlingBall" X="0.9" Y="1.2" height="0.22" width="0.22"/>
+            <object angle="1.57" type="Floor" X="1.2" Y="2.2" height="0.1" width="1.9"/>
+            <object angle="0" type="Floor" X="4.87642" Y="1.3" height="0.1" width="7.3129"/>
+            <object angle="0" type="Floor" X="4.30645" Y="1.9" height="0.1" width="6.18711"/>
+            <object angle="0" type="Floor" X="4.28679" Y="2.5" height="0.1" width="6.22642"/>
+            <object angle="0" type="Floor" X="4.39858" Y="3.1" height="0.1" width="6.29717"/>
+            <object angle="0" type="Balloon" X="2.5" ID="balloon3" Y="2.84893" height="0.36" width="0.27">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object angle="0" type="Balloon" X="3.5" ID="balloon2" Y="2.25082" height="0.36" width="0.27">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object angle="0" type="Balloon" X="4.5" ID="balloon1" Y="1.64704" height="0.36" width="0.27"/>
+            <object angle="0" type="Balloon" X="3" ID="balloon33" Y="2.84893" height="0.36" width="0.27">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object angle="0" type="Balloon" X="4.0" ID="balloon22" Y="2.25082" height="0.36" width="0.27">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object angle="0" type="Balloon" X="5" ID="balloon11" Y="1.64704" height="0.36" width="0.27"/>
+            <object angle="0" type="Dynamite" X="1.6" ID="555-3333" Y="2.89346" height="0.32" width="0.43"/>
+            <object angle="0" type="Dynamite" X="1.6" ID="555-2222" Y="2.27082" height="0.32" width="0.43"/>
+            <object angle="0" type="Dynamite" X="1.6" ID="555-1111" Y="1.64189" height="0.32" width="0.43"/>
+            <object angle="1.57" type="Floor" X="7.51671" Y="3.38646" height="0.1" width="0.664103"/>
+            <object angle="1.47895" type="Floor" X="8.5742" Y="2.48232" height="0.1" width="2.39063"/>
+            <object angle="0" type="Floor" X="8.10771" Y="3.68428" height="0.1" width="1.21226"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.498039;0.498039;0.898039;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon1</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon2</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon3</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
