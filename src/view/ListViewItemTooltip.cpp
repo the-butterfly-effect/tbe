@@ -22,15 +22,16 @@
 #include "InsertUndoCommand.h"
 #include "ListViewItemTooltip.h"
 #include "Position.h"
+#include "resizinggraphicsview.h"
 #include "Translator.h"
 #include "ViewObject.h"
 #include "ui_ListViewItemTooltip.h"
 
-ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
+ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr, int aVPos,
                                          ResizingGraphicsView* aParent) :
     AnimatedDialog(aParent, AnimatedDialog::TOOLTIP),
     ui(new Ui::ListViewItemTooltip),
-    theTBGPtr(aTBGPtr)
+    theTBGPtr(aTBGPtr), thRSGVPtr(aParent)
 {
     ui->setupUi(this);
     Q_ASSERT(aTBGPtr);
@@ -39,7 +40,7 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
     // set the description and help
     ui->labelName->setText(TheGetText(theTBGPtr->theGroupName));
     ui->labelCount->setText(tr("%1x").arg(theTBGPtr->count()));
-    AbstractObjectPtr myAOPtr = theTBGPtr->first();
+    AbstractObjectPtr myAOPtr = theTBGPtr->last();
     ui->labelDescription->setText(myAOPtr->getToolTip());
 
     // set the image
@@ -77,7 +78,7 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
 
     // make it appear at the right height (next to the object that is clicked)
     // TODO: hardcoded Y coordinate for now...
-    theYCoord = 50;
+    theYCoord = aVPos;
 }
 
 
@@ -111,6 +112,8 @@ void ListViewItemTooltip::on_buttonObjectImage_clicked()
 {
     // TODO: make the newly inserted object appear underneath where one
     // clicked the button...
-    InsertUndoCommand::createInsertUndoCommand(theTBGPtr);
+    AbstractObjectPtr myAOPtr = theTBGPtr->last();
+    Position mySpot(thRSGVPtr->mapToScene(x(),y()+50), myAOPtr->getTempCenter().angle );
+    InsertUndoCommand::createInsertUndoCommand(theTBGPtr, mySpot);
     emit disappearAnimated();
 }

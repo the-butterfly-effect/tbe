@@ -39,7 +39,9 @@ public:
     /// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
     /// @param aHint                (optional) pointer to a Hint to take object position and size from
     /// @returns true if successful (which is always)
-    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr, Hint* aHintPtr = nullptr);
+    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr,
+                                        Position aPosition = Position(),
+                                        Hint* aHintPtr = nullptr);
 
 	/// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().

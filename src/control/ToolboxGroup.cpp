@@ -49,11 +49,10 @@ void ToolboxGroup::addObject(AbstractObjectPtr anObjectPtr)
 }
 
 
-AbstractObjectPtr ToolboxGroup::getObject(void)
+AbstractObjectPtr ToolboxGroup::popObject(void)
 {
     Q_ASSERT(theObjectsList.count() > 0);
-    AbstractObjectPtr myAOPtr = theObjectsList.last();
-    theObjectsList.pop_back();
+    AbstractObjectPtr myAOPtr = theObjectsList.takeLast();
     if (theWidgetItemPtr)
         emit theWidgetItemPtr->slotUpdateCount();
     return myAOPtr;

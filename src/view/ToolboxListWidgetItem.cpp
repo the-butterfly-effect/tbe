@@ -33,7 +33,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     theRSGVPtr(aRSGVPtr)
 {
     theTBGPtr->setItemPtr(this);
-    AbstractObjectPtr myAOPtr = theTBGPtr->first();
+    AbstractObjectPtr myAOPtr = theTBGPtr->last();
     ViewObjectPtr myVOPtr = myAOPtr->createViewObject();
 
     QSize myPixmapSize;
@@ -53,7 +53,7 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     setText(TheGetText(theTBGPtr->theGroupName));
 	setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
 	setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	setSizeHint(QSize(90,150));
+    setSizeHint(QSize(90,150));
 
     connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
             this, SLOT(slotSelected(QListWidgetItem*)));
@@ -67,10 +67,12 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
     if (who != this)
         return;
 
+    QRect myBoundingRectInViewPort = listWidget()->visualItemRect(this);
+
     if (theTBGPtr->count()!=0)
     {
         ListViewItemTooltip* myNewTooltip =
-            new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
+            new ListViewItemTooltip(theTBGPtr, myBoundingRectInViewPort.top(), theRSGVPtr);
         emit myNewTooltip->appearAnimated();
     }
 }
@@ -79,12 +81,15 @@ void ToolboxListWidgetItem::slotUpdateCount(void)
 {
     if (theTBGPtr->count()==0)
     {
-        setIcon(QIcon());
-        setText("");
+        QPixmap myEmptyPixmap = QPixmap(theIconSize, theIconSize);
+        myEmptyPixmap.fill();
+        setIcon(myEmptyPixmap);
+        setText(tr("(empty)"));
     }
     else
     {
         setIcon(theRealPixmap);
         setText(TheGetText(theTBGPtr->theGroupName));
     }
+    listWidget()->update();
 }

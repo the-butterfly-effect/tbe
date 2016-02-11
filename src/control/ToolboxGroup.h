@@ -39,14 +39,13 @@ public:
 
     /// @returns a pointer to the first object in this group
     ///          without removing it .
-    /// (compare to getObject(), that returns+removes the LAST one)
-    AbstractObjectPtr first() const
-    { return theObjectsList.first(); }
+    /// (compare to popObject(), that removes the LAST one)
+    AbstractObjectPtr last() const
+    { return theObjectsList.last(); }
 
-    /// @returns a pointer to one of the objects that was in the group
-    ///          the object is removed from the group.
-    /// (compare to first(), which just returns a pointer to the FIRST one)
-    AbstractObjectPtr getObject(void);
+    /// Removes the last object from the group.
+    /// @note: you already used last() to retrieve its pointer
+    AbstractObjectPtr popObject(void);
 
     void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
 

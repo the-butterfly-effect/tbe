@@ -426,7 +426,7 @@ bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
 
 	// OK, we found the TBG to take the object from.
 	// Create the InsertUndoCommand
-	InsertUndoCommand::createInsertUndoCommand(myTBGPtr, myHintPtr);
+    InsertUndoCommand::createInsertUndoCommand(myTBGPtr, Position(), myHintPtr);
 
 
 	// successfully done

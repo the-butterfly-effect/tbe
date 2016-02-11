@@ -33,8 +33,13 @@ class ListViewItemTooltip : public AnimatedDialog
     Q_OBJECT
     
 public:
+    /// explicit constructor
+    /// @param aTBGPtr
+    /// @param aVPos    vertical position in pixels to align top of tooltip to
+    /// @param parent   resizinggraphicsview*
     explicit ListViewItemTooltip(
             ToolboxGroup* aTBGPtr,
+            int aVPos,
             ResizingGraphicsView* parent = 0);
     ~ListViewItemTooltip();
     
@@ -48,6 +53,8 @@ private:
 
 	Ui::ListViewItemTooltip *ui;
     ToolboxGroup* theTBGPtr;
+
+    ResizingGraphicsView* thRSGVPtr;
 };
 
 #endif // LISTVIEWITEMTOOLTIP_H
