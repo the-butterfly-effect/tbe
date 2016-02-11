@@ -113,7 +113,7 @@ void InsertUndoCommand::redo(void)
         if (theViewObjPtr==nullptr)
             theViewObjPtr = createVOfromAO(theTBGPtr->getObject());
         else
-            /* TODO: decrement the toolbox anyway */;
+            /* TODO: decrement the toolbox - only if we really are a redo */;
     }
     else
     {
