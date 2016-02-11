@@ -35,17 +35,11 @@ public:
     explicit InsertUndoCommand(ViewObjectPtr anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
 
     /// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
-    /// and handles everything - including the commit().
+    /// and an optional Hint pointer and handles everything - including the commit().
     /// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
+    /// @param aHint                (optional) pointer to a Hint to take object position and size from
     /// @returns true if successful (which is always)
-    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr);
-
-	/// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
-	/// and a Hint pointer and handles everything - including the commit().
-	/// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
-	/// @param aHint                pointer to a Hint to take object position and size from
-	/// @returns true if successful (which is always)
-	static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr, Hint* aHintPtr);
+    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr, Hint* aHintPtr = nullptr);
 
 	/// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().

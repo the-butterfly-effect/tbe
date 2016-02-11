@@ -49,26 +49,8 @@ ViewObjectPtr InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
 }
 
 
-bool InsertUndoCommand::createInsertUndoCommand(
-        ToolboxGroup* anToolboxGroupPtr)
-{
-	// WARNING:  this is code duplication
-	//           see createInsertUndoCommand(toolboxgroup + hint) above!
-	DEBUG3ENTRY;
-	// extract the AbstractObject from the toolbox
-    AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
-	Q_ASSERT(myAOPtr!=nullptr);
-
-    InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
-    myInsertPtr->theTBGPtr = anToolboxGroupPtr;
-    myInsertPtr->commit();
-	return true;
-}
-
 bool InsertUndoCommand::createInsertUndoCommand(ToolboxGroup *anToolboxGroupPtr, Hint *aHintPtr)
 {
-	// WARNING:  this is code duplication
-	//           see createInsertUndoCommand(just a toolboxgroup) above!
 	DEBUG3ENTRY;
 	// extract the AbstractObject from the toolbox
 	AbstractObjectPtr myAOPtr = anToolboxGroupPtr->getObject();
@@ -76,16 +58,18 @@ bool InsertUndoCommand::createInsertUndoCommand(ToolboxGroup *anToolboxGroupPtr,
 
 	InsertUndoCommand* myInsertPtr = createInsertUndoCommandIntern(myAOPtr);
 
-	// Get position, size and rotation UPDATES from Hint
-	// Note that the original object from the TBG already has some of this,
-	// we only override when needed...
-	aHintPtr->updateFromHint(myInsertPtr->theNewWidth,     Hint::WIDTH_STRING);
-	aHintPtr->updateFromHint(myInsertPtr->theNewHeight,    Hint::HEIGHT_STRING);
-	aHintPtr->updateFromHint(myInsertPtr->theNewPos.x,     Hint::XPOS_STRING);
-	aHintPtr->updateFromHint(myInsertPtr->theNewPos.y,     Hint::YPOS_STRING);
-	aHintPtr->updateFromHint(myInsertPtr->theNewPos.angle, Hint::ANGLE_STRING);
-
-	// TODO later: get extra info from Hint (phone numbers, etc)
+    if (nullptr != aHintPtr)
+    {
+        // Get position, size and rotation UPDATES from Hint
+        // Note that the original object from the TBG already has some of this,
+        // we only override when needed...
+        aHintPtr->updateFromHint(myInsertPtr->theNewWidth,     Hint::WIDTH_STRING);
+        aHintPtr->updateFromHint(myInsertPtr->theNewHeight,    Hint::HEIGHT_STRING);
+        aHintPtr->updateFromHint(myInsertPtr->theNewPos.x,     Hint::XPOS_STRING);
+        aHintPtr->updateFromHint(myInsertPtr->theNewPos.y,     Hint::YPOS_STRING);
+        aHintPtr->updateFromHint(myInsertPtr->theNewPos.angle, Hint::ANGLE_STRING);
+        // TODO later: get extra info from Hint (phone numbers, etc)
+    }
 
 	myInsertPtr->theTBGPtr = anToolboxGroupPtr;
 	myInsertPtr->commit();
@@ -128,6 +112,8 @@ void InsertUndoCommand::redo(void)
         // Insert based on toolbox
         if (theViewObjPtr==nullptr)
             theViewObjPtr = createVOfromAO(theTBGPtr->getObject());
+        else
+            /* TODO: decrement the toolbox anyway */;
     }
     else
     {
