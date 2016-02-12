@@ -110,9 +110,8 @@ void ListViewItemTooltip::on_buttonRemove_clicked()
 
 void ListViewItemTooltip::on_buttonObjectImage_clicked()
 {
-    // TODO: make the newly inserted object appear underneath where one
-    // clicked the button...
     AbstractObjectPtr myAOPtr = theTBGPtr->last();
+    // TODO: FIXME: MAGIC NUMBER BELOW - GUARANTEED TO BREAK ON HIGH-RES SCREENS
     Position mySpot(thRSGVPtr->mapToScene(x(),y()+50), myAOPtr->getTempCenter().angle );
     InsertUndoCommand::createInsertUndoCommand(theTBGPtr, mySpot);
     emit disappearAnimated();
