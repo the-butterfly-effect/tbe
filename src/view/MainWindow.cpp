@@ -351,14 +351,17 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
                                  "Be careful: not all languages are 100% complete.\n"
                                  "%2Are you sure?")
                               .arg(aNewLanguage).arg(myReloadString), this))
-            return;
+    {
+        setLanguageCheckmark();
+        return;
+    }
     TheTranslator.setLanguage(aNewLanguage);
+    setLanguageCheckmark();
     QApplication::processEvents();
 
     // As the user selected "OK", let's prevent Reload from throwing another dialog.
     UndoSingleton::setClean();
     emit on_action_Reload_triggered();
-    setLanguageCheckmark();
 }
 
 void MainWindow::setLanguageCheckmark()
