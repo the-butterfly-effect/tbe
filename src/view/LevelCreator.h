@@ -20,7 +20,10 @@
 #define LEVELCREATOR_H
 
 #include <QObject>
+#include "AbstractObjectPtr.h"
 #include "MainWindow.h"
+
+class EditObjectDialog;
 
 /// class handling
 class LevelCreator : public QObject
@@ -49,6 +52,8 @@ public slots:
     void on_action_CollisionOff_triggered();
     void on_action_CollisionOn_triggered();
 
+    void slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr);
+
 private:
     MainWindow* theMWPtr;
     Ui::MainWindow *ui;
@@ -61,6 +66,7 @@ private:
     QAction* theDrawDebugActionPtr;
     QAction* theDrawNormalActionPtr;
 
+    EditObjectDialog* theEditObjectDialogPtr;
 };
 
 #endif // LEVELCREATOR_H

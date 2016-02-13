@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2013,2014 Klaas van Gend
+ * This file copyright (C) 2010,2013,2014,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,30 +22,15 @@
 
 #include <QCloseEvent>
 
-QPoint EditObjectDialog::thePosition = QPoint(0,0);
-
-EditObjectDialog::EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *aParent)
+EditObjectDialog::EditObjectDialog(QWidget *aParent)
         : QDialog(aParent, Qt::Tool)
 {
     DEBUG1ENTRY;
     ui.setupUi(this);
-
-    readFromObject(aAbstractObjectPtr);
-
-    // upon the very very first init of this dialog, let Qt place the dialog
-    // that will at least ensure that the dialog is overlapping the main window.
-    // after that, we're in charge!
-    if (thePosition != QPoint(0,0))
-        move(thePosition);
 }
 
 EditObjectDialog::~EditObjectDialog()
 {
-	thePosition = pos();
-    // If there are still unsaved changes (i.e. an existing Undo class),
-    // we need to forget or commit it now...
-    if (getUndoPtr())
-        getUndoPtr()->commit();
 }
 
 
@@ -131,7 +116,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 }
 
 
-void EditObjectDialog::readFromObject(AbstractObjectPtr anAbstractObjectPtr)
+void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr)
 {
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end
@@ -150,14 +135,6 @@ void EditObjectDialog::readFromObject(AbstractObjectPtr anAbstractObjectPtr)
 	disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
 	disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
-	// if we just changed the base object and there's still an undo pointer
-	// around, it will not have any interesting changes
-/*	if (theUndoPtr!=nullptr)
-	{
-		delete theUndoPtr;
-		theUndoPtr = nullptr;
-	}
-*/
     theAOPtr = anAbstractObjectPtr;
     if (!theAOPtr.expired())
     {

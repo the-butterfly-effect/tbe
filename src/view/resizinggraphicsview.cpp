@@ -20,6 +20,7 @@
 #include "EditObjectDialog.h"
 #include "GameResources.h"
 #include "Level.h"
+#include "LevelCreator.h"
 #include "MainWindow.h"
 #include "PieMenu.h"
 #include "Popup.h"
@@ -243,11 +244,9 @@ void ResizingGraphicsView::slot_levelWon(void)
 void ResizingGraphicsView::slot_updateObjectDialog(AbstractObjectPtr anAOPtr)
 {
     theSelectedAOWeakPtr = anAOPtr;
-    if (theObjectEditorPtr!=nullptr)
-        delete theObjectEditorPtr;
-    theObjectEditorPtr = new EditObjectDialog(anAOPtr, this);
-    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(slot_editObjectDialog_destroyed()));
-    theObjectEditorPtr->show();
+    emit theMainWindowPtr->theLevelCreator->slot_updateEditObjectDialog(anAOPtr);
+//    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(slot_editObjectDialog_destroyed()));
+//    theObjectEditorPtr->show();
 }
 
 

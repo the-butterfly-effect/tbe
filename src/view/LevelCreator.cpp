@@ -28,6 +28,7 @@
 #include "ObjectFactory.h"
 
 #include <QToolBar>
+#include <QTabWidget>
 
 LevelCreator::LevelCreator(MainWindow *aParent) :
     QObject(aParent), theMWPtr(aParent), ui(aParent->ui)
@@ -146,6 +147,19 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     ui->action_Switch_to_Level_Editor->setEnabled(false);
     ui->action_Open_File->setEnabled(true);
     ui->action_Open_File->setVisible(true);
+
+    // Add EditObject pane to the UI
+    auto myToolboxPtr = ui->listWidget;
+    ui->verticalLayout->removeWidget(myToolboxPtr);
+    auto myButtonsPtr = ui->theInfoEjectLayout;
+    ui->verticalLayout->removeItem(myButtonsPtr);
+    QTabWidget* myTabWidgetPtr = new QTabWidget();
+    theEditObjectDialogPtr = new EditObjectDialog();
+    myTabWidgetPtr->addTab(theEditObjectDialogPtr, tr("Object Properties"));
+    myTabWidgetPtr->addTab(myToolboxPtr, tr("Toolbox"));
+    ui->verticalLayout->addWidget(myTabWidgetPtr);
+    ui->verticalLayout->addItem(myButtonsPtr);
+    myTabWidgetPtr->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 }
 
 
@@ -236,3 +250,7 @@ void LevelCreator::on_objectEditorAction_clicked()
 }
 
 
+void LevelCreator::slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr)
+{
+    emit theEditObjectDialogPtr->updateAbstractObjectPtr(anAOPtr);
+}

@@ -38,7 +38,7 @@ public:
     Q_OBJECT
 
 public:
-    EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *parent = 0);
+    EditObjectDialog(QWidget *parent = 0);
     virtual ~EditObjectDialog();
 
 public slots:
@@ -49,9 +49,8 @@ public slots:
       * @param anAbstractObjectPtr pointer to AbstractObject to read all data
       *                       from, or a nullptr pointer to grey out all
       *                       values
-      * @returns true if successful - which should be always
       */
-    void readFromObject(AbstractObjectPtr anAbstractObjectPtr);
+    void updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr);
 
 private slots:
     void position_editingFinished();
@@ -80,9 +79,6 @@ private:
     // kill possibility for copy constructor&assignment operator
     EditObjectDialog(const EditObjectDialog&) = delete;
     const EditObjectDialog& operator=(const EditObjectDialog&) = delete;
-
-    // persistant position of the dialog
-    static QPoint thePosition;
 };
 
 #endif // EDITOBJECTDIALOG_H
