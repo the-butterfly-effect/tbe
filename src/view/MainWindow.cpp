@@ -39,6 +39,7 @@
 #include "ToolboxListWidgetItem.h"
 #include "Translator.h"
 #include "UndoSingleton.h"
+#include "ViewWorld.h"
 #include "World.h"
 
 
@@ -106,10 +107,7 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 
-    ui->listWidget->clear();
-    theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-    for (auto i : theLevelPtr->theToolboxList)
-        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
+    repopulateSceneAndToolbox();
 }
 
 
@@ -206,10 +204,7 @@ void MainWindow::on_action_New_triggered()
 	// pop-up the modal LevelProperties dialog
     emit theLevelCreator->on_levelPropertiesEditorAction_clicked();
 
-	// repopulate the scene and toolbox
-	theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-	for (auto i : theLevelPtr->theToolboxList)
-		new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
+    repopulateSceneAndToolbox();
 }
 
 
@@ -363,6 +358,18 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
     UndoSingleton::setClean();
     emit on_action_Reload_triggered();
 }
+
+
+void MainWindow::repopulateSceneAndToolbox()
+{
+    ViewWorld* myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+    for (auto i : theLevelPtr->theToolboxList)
+        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
+    if (theIsLevelCreator)
+    connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
+            theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+}
+
 
 void MainWindow::setLanguageCheckmark()
 {

@@ -129,6 +129,9 @@ void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
     {
         theViewWorldPtr->addItem(myVOPtr);
         anAOPtr->updateViewObject(false);
+        connect(myVOPtr, SIGNAL(updateEditObjectDialog(AbstractObjectPtr)),
+                theViewWorldPtr, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+        // TODO: connect(myVOPtr, SIGNAL(destroyed()), ### );
     }
 }
 
@@ -193,7 +196,7 @@ void World::createPhysicsWorld(void)
 	}
 }
 
-void World::createScene(ResizingGraphicsView *myRSGVPtr)
+ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
 {
 	// create a ViewWorld instance, that will immediately attach itself to
 	// the graphicsView in the main window
@@ -207,6 +210,7 @@ void World::createScene(ResizingGraphicsView *myRSGVPtr)
 		DEBUG5("adding item %p", (*i).get());
 		addAbstractObjectToViewWorld(*i);
 	}
+    return theViewWorldPtr;
 }
 
 void World::deletePhysicsWorld()

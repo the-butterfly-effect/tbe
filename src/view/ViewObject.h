@@ -81,9 +81,16 @@ public:
     /// based on changes in the underlying AbstractObject, adjust the image
     /// by resizing and/or rotation. This is overkill for just moving...
 	virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter);
+
+signals:
+    /// SIGNAL
+    /// Emitted whenever properties of the object change.
+    /// Used by the Level creator to adjust the EditObjectDialog.
+    /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
+    void updateEditObjectDialog(AbstractObjectPtr anAOPtr);
+
 protected:
     void adjustObjectDrawing(void);
-
 
     /// overridden to allow detection of mouse button presses & moves
     virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent );

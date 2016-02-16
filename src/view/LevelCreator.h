@@ -67,6 +67,7 @@ private:
     QAction* theDrawNormalActionPtr;
 
     EditObjectDialog* theEditObjectDialogPtr;
+    AbstractObjectWeakPtr theSelectedAOWeakPtr;
 };
 
 #endif // LEVELCREATOR_H

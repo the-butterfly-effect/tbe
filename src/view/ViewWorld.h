@@ -24,6 +24,7 @@
 #include <QTimer>
 
 #include "Box2D.h"
+#include "AbstractObjectPtr.h"
 
 class QAction;
 class ResizingGraphicsView;
@@ -70,6 +71,12 @@ signals:
     void needReset();
     void needPause();
 
+    /// any ViewObject that has changes to mention to EditObjectDialog will
+    /// emit a signal that is sent here.
+    /// ViewWorld will re-emit a signal for it.
+    /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
+    void signal_updateEditObjectDialog(AbstractObjectPtr anAOPtr);
+
 public slots:
     // signals to start/stop/ffwd/reset the game
     void slot_signal4F();
@@ -80,6 +87,13 @@ public slots:
 
     void on_sizeAdjust(void);
     void setupBackground(void);
+
+    /// any ViewObject that has changes to mention to EditObjectDialog will
+    /// emit a signal that is sent here.
+    /// ViewWorld will immediately re-emit a signal for it.
+    /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
+    void slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr)
+    { emit signal_updateEditObjectDialog(anAOPtr); }
 
 private slots:
     /// called whenever a timer tick happens

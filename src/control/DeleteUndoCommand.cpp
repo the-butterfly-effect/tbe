@@ -34,11 +34,12 @@ DeleteUndoCommand::DeleteUndoCommand(
     DEBUG3ENTRY;
     // The list of toolboxes is kept in Level as a QMap.
     // so we need to ask Level...
-    theTBGPtr = Level::findToolBoxGroup(theViewObjPtr->getAbstractObjectPtr());
+    theAOPtr = theViewObjPtr->getAbstractObjectPtr();
+    theTBGPtr = Level::findToolBoxGroup(theAOPtr);
 
-    // you can always delete (and undelete) objects in Level Creator mode
-    if (theIsLevelCreator==false)
-        assert(theTBGPtr!=nullptr);
+    // only either TBGPtr or AOPtr can be non-null
+    if (nullptr!=theTBGPtr)
+        theAOPtr = nullptr;
     commit();
 }
 

@@ -198,13 +198,6 @@ void ResizingGraphicsView::slot_actionSkipLevel()
 }
 
 
-void ResizingGraphicsView::slot_editObjectDialog_destroyed()
-{
-    DEBUG3ENTRY;
-	theObjectEditorPtr = nullptr;
-}
-
-
 void ResizingGraphicsView::slot_levelDeath(void)
 {
 	// only need to display the dialog once...
@@ -238,15 +231,6 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 	// Make the sim stop once the above animation is (almost) done...
 	QTimer::singleShot(3000, theScenePtr, SLOT(slot_signalPause()));
-}
-
-
-void ResizingGraphicsView::slot_updateObjectDialog(AbstractObjectPtr anAOPtr)
-{
-    theSelectedAOWeakPtr = anAOPtr;
-    emit theMainWindowPtr->theLevelCreator->slot_updateEditObjectDialog(anAOPtr);
-//    connect(theObjectEditorPtr, SIGNAL(destroyed()), this, SLOT(slot_editObjectDialog_destroyed()));
-//    theObjectEditorPtr->show();
 }
 
 

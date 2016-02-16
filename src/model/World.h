@@ -179,7 +179,7 @@ public:
 	 *  sets itself up as the GraphicsScene
 	 *  it will add all known AbstractObjects to the Scene
 	 */
-	void createScene(ResizingGraphicsView* myRSGVPtr);
+    ViewWorld* createScene(ResizingGraphicsView* myRSGVPtr);
 
 	void createPhysicsWorld(void);
 	void deletePhysicsWorld(void);

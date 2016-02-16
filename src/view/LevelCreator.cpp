@@ -168,7 +168,7 @@ void LevelCreator::on_action_Clone_triggered()
     DEBUG1ENTRY;
     // yay, we need to be careful here - theSelectedAOWeakPtr can have expired
     try {
-        AbstractObjectPtr myAOPtr(ui->graphicsView->theSelectedAOWeakPtr);
+        AbstractObjectPtr myAOPtr(theSelectedAOWeakPtr);
         if (nullptr == myAOPtr)
             return;
         Vector myDelta(0.5*myAOPtr->getTheWidth(), -0.5*myAOPtr->getTheHeight());

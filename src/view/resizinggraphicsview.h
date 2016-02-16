@@ -79,8 +79,6 @@ private slots:
 public slots:
     void slot_actionSkipLevel();
     void slot_clearWinFailDialogPtr();
-    void slot_updateObjectDialog(AbstractObjectPtr anAOPtr);
-	void slot_editObjectDialog_destroyed();
 	void slot_showGameResourcesDialog();
 
 private:
@@ -91,7 +89,6 @@ private:
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;
     QAction*            theFrameRateViewPtr;
-    AbstractObjectWeakPtr theSelectedAOWeakPtr;
     friend class LevelCreator;
 };
 
