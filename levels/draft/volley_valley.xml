@@ -1,0 +1,136 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Volley Valley</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Topple the bowling pin.</description>
+        <date>17.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Quarter arc" count="1">
+            <object Y="0" angle="3.14159" width="0.8" type="QuarterArc80" height="0.8" X="0">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7.4" height="5"/>
+        <predefined>
+            <object Y="1.5466" angle="0" width="0.702646" type="LeftRamp" height="0.156034" X="3.70411"/>
+            <object Y="1.43095" angle="0" width="1.61165" type="Floor" height="0.1" X="2.53406"/>
+            <object Y="1.46658" angle="0" width="1.67422" type="Floor" height="0.1" X="6.23128"/>
+            <object Y="4.54107" angle="0" width="0.21" type="VolleyBall" height="0.21" X="1.1245"/>
+            <object ID="pin" Y="1.68814" angle="0" width="0.12" type="BowlingPin" height="0.34" X="7.01417"/>
+            <object Y="4.22927" angle="0" width="0.22" type="PostIt" height="0.22" X="0.464704">
+                <property key="ZValue">1</property>
+                <property key="page1">Sometimes the obvious way does not lead to your destination.</property>
+            </object>
+            <object Y="3.42682" angle="-1.57" width="2.46611" type="Floor" height="0.1" X="0.971156"/>
+            <object Y="1.0507" angle="0" width="1" type="Scenery" height="0.341963" X="1.38538">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.91586" angle="0" width="1" type="Scenery" height="0.341963" X="4.40048">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.921252" angle="0" width="1" type="Scenery" height="0.341963" X="3.49973">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.985978" angle="0" width="1" type="Scenery" height="0.341963" X="1.97869">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.948222" angle="0" width="1" type="Scenery" height="0.341963" X="2.52886">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.899678" angle="0" width="1" type="Scenery" height="0.341963" X="3.0952">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="1.0561" angle="0" width="1" type="Scenery" height="0.341963" X="0.522389">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.990492" angle="0" width="1" type="Scenery" height="0.341963" X="7.71079">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.915859" angle="0" width="1" type="Scenery" height="0.341963" X="7.00028">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.942827" angle="0" width="1" type="Scenery" height="0.341963" X="6.11031">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.985978" angle="0" width="1" type="Scenery" height="0.341963" X="5.24192">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.736787" angle="0" width="1.47465" type="Scenery" height="0.536138" X="5.45228">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.763756" angle="0" width="1.47465" type="Scenery" height="0.536138" X="4.20632">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.763756" angle="0" width="1.47465" type="Scenery" height="0.536138" X="3.0143">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.801513" angle="0" width="1.47465" type="Scenery" height="0.536138" X="1.77913">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.833875" angle="0" width="1.47465" type="Scenery" height="0.536138" X="0.635662">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.785331" angle="0" width="1.47465" type="Scenery" height="0.536138" X="8.30791">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.76915" angle="0" width="1.47465" type="Scenery" height="0.536138" X="6.4663">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object Y="0.544231" angle="0" width="3.52967" type="Scenery" height="1.07012" X="2.87676">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">5</property>
+            </object>
+            <object Y="0.544231" angle="0" width="3.52967" type="Scenery" height="1.07012" X="0.508904">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">5</property>
+            </object>
+            <object Y="0.550915" angle="0" width="3.52967" type="Scenery" height="1.07012" X="7.7014">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">5</property>
+            </object>
+            <object Y="0.544231" angle="0" width="3.52967" type="Scenery" height="1.07012" X="5.01268">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">5</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="1">0.847059;0.94902;1;1</gradientstop>
+            <gradientstop pos="0.58">0.839216;0.858824;0.933333;1</gradientstop>
+            <gradientstop pos="0.18">0.964706;0.964706;0.956863;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pin</property>
+            <property key="xover">7.2000000000000002</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pin</property>
+            <property key="ybelow">0.6</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
