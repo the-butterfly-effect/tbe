@@ -2,7 +2,7 @@
 We are working on Milestone B (also known as the '0.9.3' release)
 
 If you want to know the current status, please look at
-https://github.com/kaa-ching/tbe/milestones/Milestone%20B
+https://github.com/the-butterfly-effect/tbe/milestones/Milestone%20B
 
 This is a fully playable game of beta quality, well on its way to a shiny
 1.0 release. For anyone who has played earlier versions of the game, you'll
@@ -32,7 +32,7 @@ The Level Creator should be workable again once Milestone B is released!
 
 ###Alternative solutions
 If you feel you found a solution to a level that is not right, please post an
-issue on github: https://github.com/kaa-ching/tbe/issues. 
+issue on github: https://github.com/the-butterfly-effect/tbe/issues. 
 More info is also availble in the TBE Help menus.
 
 ###Running in English, Dutch, Spanish, Russian, Malay

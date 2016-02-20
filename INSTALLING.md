@@ -7,7 +7,7 @@ this file already suggests you're done - the installer did its work.
 This file explains step-by-step how to build TBE from the source archive.
 For now, this only discusses how to build for Linux platforms.
 Building for other platforms should be documented here:
-https://github.com/kaa-ching/tbe/wiki/HowToMakeARelease
+https://github.com/the-butterfly-effect/tbe/wiki/HowToMakeARelease
 
 1)
 Make sure that you have all tools & libraries installed that you need.
@@ -31,7 +31,7 @@ requires building QT first - you'll now also need:
   * wget
 However, doing a static build is beyond the scope of this document, 
 please refer to the TBE wiki:
-https://github.com/kaa-ching/tbe/wiki/HowToMakeARelease
+https://github.com/the-butterfly-effect/tbe/wiki/HowToMakeARelease
 
 2)
 As a *NORMAL* user, build the main project. 

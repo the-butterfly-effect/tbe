@@ -5,7 +5,7 @@ Summary:        The Butterfly Effect is a physics-based puzzle game
 Group:          Games/Puzzles
 License:        GPLv2
 URL:            http://kaa-ching.github.io/tbe
-# https://github.com/kaa-ching/tbe/archive/v%{version}.tar.gz
+# https://github.com/the-butterfly-effect/tbe/archive/v%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  qt5-devel

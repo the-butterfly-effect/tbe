@@ -140,8 +140,8 @@ void MainWindow::on_action_Bug_Reports_triggered()
                    "If you come across anything that you think should not "
                    "happen, please let us know. Go to our ticket website:"
                    "<br><a href=\""
-                   "https://github.com/kaa-ching/tbe/issues\">"
-                   "https://github.com/kaa-ching/tbe/issues</a><br>"
+                   "https://github.com/the-butterfly-effect/tbe/issues\">"
+                   "https://github.com/the-butterfly-effect/tbe/issues</a><br>"
                    "Please tell us at least the <i>name</i> of the level, what you "
                    "expected to happen and what did happen. If you want to "
                    "learn how we fix your issue, please provide a valid "
@@ -217,7 +217,7 @@ void MainWindow::on_action_New_Level_Ideas_triggered()
 				   "Even if your level is not finished yet, don't hesitate to share it with us! "
 				   "Of course, define how you think it should work so others can join in."
 				   "<br><br>Please file a ticket on github with your idea:<br>"
-				   "<a href=\"https://github.com/kaa-ching/tbe/issues\">https://github.com/kaa-ching/tbe/issues</a><br>"
+				   "<a href=\"https://github.com/the-butterfly-effect/tbe/issues\">https://github.com/the-butterfly-effect/tbe/issues</a><br>"
 				   ""), this);
 }
 
