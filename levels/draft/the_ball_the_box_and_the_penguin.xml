@@ -102,6 +102,12 @@
             <property key="object">ball</property>
             <property key="ybelow">0.3</property>
         </goal>
+        <goal type="escapedPingusCount" isFail="true">
+            <property key="lessthan">1</property>
+        </goal>
     </goals>
-    <hints/>
+    <hints>
+		<hint X="2.50" Y="2.75" number="1" object="Wall"/>
+        <hint X="6.46" Y="0.94" number="2" object="Wall"/>
+    </hints>
 </tbe-level>
