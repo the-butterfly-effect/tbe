@@ -16,6 +16,7 @@
    <level> draft/turn-it-around.xml </level>
    <level> draft/contraption1.xml </level>
    <level> draft/bridge_gap.xml </level>
+   <level> draft/the_ball_the_box_and_the_penguin.xml </level>
    <level> draft/steam-machine.xml </level>
    <level> draft/balloons-go-up.xml </level>
    <level> draft/balloons-do-poof.xml </level>
@@ -27,6 +28,7 @@
    <level> draft/in_the_attic.xml </level>
    <level> draft/poofpoofpoof.xml </level>
    <level> elce09/005.xml </level>
+   <level> draft/volley_valley.xml </level>
    <level> draft/maze.xml </level>
    <level> draft/topple-the-other-way.xml </level>
    <level> games/pingus-introduction.xml </level>
@@ -58,6 +60,7 @@
    <level> picnic/picnic-2.xml </level>
    <level> draft/loopings2.xml </level>
    <level> elce09/007.xml </level>
+   <level> draft/hanging_box.xml </level>
    <!--level> draft/zoingandboom.xml </level-->
    <level> draft/find-the-message.v2.xml </level>
 </tbe-levels>
