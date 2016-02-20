@@ -14,7 +14,7 @@ Note: the above doesn't work for Ubuntu 14.04: it comes with a too old version o
 There is a package `ruby2-dev` available in the `trusty-updates` repository, though.
 
 If you don't have the whole project cloned and just want to work on the site,
-clone the branch: `git clone https://github.com/kaa-ching/tbe -b gh-pages --single-branch tbe`
+clone the branch: `git clone https://github.com/the-butterfly-effect/tbe -b gh-pages --single-branch tbe`
 
 Get another terminal, where you run `jekyll serve --base-url` (leave base-url empty). Visit your
 clone at http://localhost:4000 - leave the terminal open.

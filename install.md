@@ -42,7 +42,7 @@ There are essentially three options:
 
 ## Self-extracting archive
 
-<p class="text-warning">[This is currently being worked on.](https://github.com/kaa-ching/tbe/issues/59)</p>
+<p class="text-warning">[This is currently being worked on.](https://github.com/the-butterfly-effect/tbe/issues/59)</p>
 
 ## Windows
 

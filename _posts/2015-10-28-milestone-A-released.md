@@ -15,6 +15,6 @@ Today we released _Milestone A_, the first milestone of _The Butterfly Effect_ u
  *  Automated testing of various levels to help ensure that the games runs the same on all platforms
  *  Disabled level editor - it is too broken to release
 
-[Next up is Milestone B](https://github.com/kaa-ching/tbe/milestones/), which we plan to have one new major object, several new levels and the level editor will be enabled again.
+[Next up is Milestone B](https://github.com/the-butterfly-effect/tbe/milestones/), which we plan to have one new major object, several new levels and the level editor will be enabled again.
 
 To download the latest Milestone, please go to the [Downloads](/tbe/#Download) page. 

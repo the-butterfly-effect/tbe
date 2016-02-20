@@ -27,4 +27,4 @@ The penguin will be a major new feature of the upcoming Milestone B. Right now, 
 
 ![New level brother plays soccer with our penguin](/images/2015-12-26-pingus-goalie-level.png)
 
-If you spot a bug in our little new object, please [file a new issue at our github](https://github.com/kaa-ching/tbe/issues). However, we have spent considerable time tuning. We're very proud of our new helper and we hope you'll like him, too!
+If you spot a bug in our little new object, please [file a new issue at our github](https://github.com/the-butterfly-effect/tbe/issues). However, we have spent considerable time tuning. We're very proud of our new helper and we hope you'll like him, too!

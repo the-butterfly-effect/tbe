@@ -4,7 +4,7 @@ author: Klaas van Gend
 tags: features, levels
 ---
 
-Thanks to [@Wuzzy2](https://github.com/kaa-ching/tbe/pull/84), our newest contributor, we can now present you with five (!) new levels. Wuzzy2 used the still very raw TBE level editor to design levels that are significantly closer to the original levels from "The Incredible Machine" than most of the other levels in TBE. But... even better: the levers are on average much more difficult, too!
+Thanks to [@Wuzzy2](https://github.com/the-butterfly-effect/tbe/pull/84), our newest contributor, we can now present you with five (!) new levels. Wuzzy2 used the still very raw TBE level editor to design levels that are significantly closer to the original levels from "The Incredible Machine" than most of the other levels in TBE. But... even better: the levers are on average much more difficult, too!
 
 The first level we are going to show is "in the attic", a relatively straightforward level where the goal is to get the bowling pin from the attic to the floor below.
 ![New Level "In the Attic"](/images/2016-01-11-in_the_attic.png)

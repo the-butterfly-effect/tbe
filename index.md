@@ -40,18 +40,18 @@ _The Butterfly Effect_ has been over five years in the making. That means that e
 
 We have packages of the latest version available for the following Linux distributions and Windows:
 
-If you need them, please refer to our [installation instructions](install). If you want to know what's most popular, please take a look at our [download statistics](http://www.somsubhra.com/github-release-stats/?username=kaa-ching&repository=tbe).
+If you need them, please refer to our [installation instructions](install). If you want to know what's most popular, please take a look at our [download statistics](http://www.somsubhra.com/github-release-stats/?username=the-butterfly-effect&repository=tbe).
 
 | Operating System       | MD5SUM     | &nbsp;Download files&nbsp; | Notes |
 |:-----------------------|:----------:|:--------------------------:|:------|
-| Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.ubuntu1404.deb) | Validated to work on Ubuntu 14.04 |
+| Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.ubuntu1404.deb) | Validated to work on Ubuntu 14.04 |
 | Fedora                 | n/a        | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop)  | Fedora 21 and 22 |
-| Opensuse               | a477..50c3 |  [tbe.rpm](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.opensuse132.rpm) | Validated to work on Opensuse 13.2 |
+| Opensuse               | a477..50c3 |  [tbe.rpm](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.opensuse132.rpm) | Validated to work on Opensuse 13.2 |
 | Arch Linux             |  n/a       |  n/a | if you want TBE in Arch, please [vote](https://aur.archlinux.org/packages/tbe/) |
 | Mageia Linux           |  n/a       | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop) | Mageia 5 |
-| Other Linux            | f523..be6b |  [tbe.sh](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
-| Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/kaa-ching/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
-| MacOS X                |  TBD       |   Bundle announced later &nbsp; | [Build from source](https://github.com/kaa-ching/tbe/wiki/MacOSXBuild) works |
+| Other Linux            | f523..be6b |  [tbe.sh](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
+| Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
+| MacOS X                |  TBD       |   Bundle announced later &nbsp; | [Build from source](https://github.com/the-butterfly-effect/tbe/wiki/MacOSXBuild) works |
 
 
 _if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to [contact the developers](#BugsFeedback)_
@@ -89,16 +89,16 @@ Note that levels and the UI have different translation mechanisms, but both are 
 
 If you have ideas for levels, we'd love to hear from you!
 
-Probably the easiest way to let us know about your ideas, is to create a login on the [GitHub website](https://github.com/kaa-ching/tbe) and create an issue for TBE. We'll work with you to make your ideas happen. Note that _Milestone B_ will feature a level editor again, so you can design your own levels!
+Probably the easiest way to let us know about your ideas, is to create a login on the [GitHub website](https://github.com/the-butterfly-effect/tbe) and create an issue for TBE. We'll work with you to make your ideas happen. Note that _Milestone B_ will feature a level editor again, so you can design your own levels!
 
 #### Add more code
 
 If you are a C++ programmer, we'd love to hear from you - there's always more things that can be coded!
 
-Create a login on the [GitHub website](https://github.com/kaa-ching/tbe), clone the repo and start hacking. We love patches and pull requests!
+Create a login on the [GitHub website](https://github.com/the-butterfly-effect/tbe), clone the repo and start hacking. We love patches and pull requests!
 
 #### Found any bugs? Or you have feedback? {#BugsFeedback}
 
 Oh boy. Does TBE still contain bugs?
 
-Please log in to GitHub and [file an issue](https://github.com/kaa-ching/tbe/issues) or contact lead developer [kaa-ching](https://github.com/kaa-ching) by e-mail.
+Please log in to GitHub and [file an issue](https://github.com/the-butterfly-effect/tbe/issues) or contact lead developer [the-butterfly-effect](https://github.com/the-butterfly-effect) by e-mail.
