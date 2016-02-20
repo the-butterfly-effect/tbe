@@ -146,6 +146,8 @@ void GoalEditor::on_toolButtonGoalsMinus_clicked()
 	ui.tableViewGoals->setFocus(Qt::OtherFocusReason);
 	if (theGoalsModelPtr->rowCount()==0)
 		return;
+	if (!ui.tableViewGoals->currentIndex().isValid())
+		return;
 	int myLine = ui.tableViewGoals->currentIndex().row();
 
 	QString myRowString = rowToString(theGoalsModelPtr, myLine, ' ');
@@ -164,6 +166,8 @@ void GoalEditor::on_toolButtonFailsMinus_clicked()
 {
 	ui.tableViewFails->setFocus(Qt::OtherFocusReason);
 	if (theFailsModelPtr->rowCount()==0)
+		return;
+	if (!ui.tableViewFails->currentIndex().isValid())
 		return;
 	int myLine = ui.tableViewFails->currentIndex().row();
 
@@ -252,6 +256,8 @@ void GoalEditor::populate(void)
 QString GoalEditor::rowToString(const QStandardItemModel* aModel, int aRow, char aSeparator) const
 {
 	if (aModel->rowCount()<aRow)
+		return "";
+	if (aRow < 0)
 		return "";
 	return QString("%1%2%3%4%5%6%7%8%9")
 			.arg(aModel->item(aRow,0)->text()).arg(aSeparator)
