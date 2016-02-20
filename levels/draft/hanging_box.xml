@@ -81,7 +81,7 @@
                 <property key="ZValue">1</property>
                 <property key="page1">There was once Jack the clown,&lt;br>he was juggling with balls upside down.</property>
                 <property key="page2">He was the circus super-star,&lt;br>he and his helper from Antarctica.</property>
-                <property key="page3">Oh, what fun!&lt;br>Oh, what joy!&lt;br>&lt;br>—The post-it boy</property>
+                <property key="page3">Oh, what fun!&lt;br>Oh, what joy!&lt;br>&lt;br>—The Post-It Boy</property>
             </object>
             <object width="2.78546" X="5.93829" angle="0" type="Floor" Y="3.45944" height="0.1"/>
             <object width="1" X="9.02644" angle="0" type="LeftRamp" Y="0.164405" height="0.162674"/>
