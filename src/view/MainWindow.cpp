@@ -372,21 +372,6 @@ void MainWindow::repopulateSceneAndToolbox()
 }
 
 
-void MainWindow::setLanguageCheckmark()
-{
-    // remove all checks
-    // and set the active language to checked
-    QString myCurrentLanguage = TheTranslator.getCurrentLanguage();
-    for(auto i : ui->menuLanguages->actions())
-    {
-        i->setCheckable(true);
-        if (i->text()==myCurrentLanguage)
-            i->setChecked(true);
-        else
-            i->setChecked(false);
-    }
-}
-
 void MainWindow::purgeLevel()
 {
 	DEBUG1ENTRY;
@@ -407,42 +392,21 @@ void MainWindow::reloadLevel()
 	loadLevel(myLevelName);
 }
 
-bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
+void MainWindow::setLanguageCheckmark()
 {
-	DEBUG1ENTRY;
-	Hint* myHintPtr = theLevelPtr->getHint(aHintNumber);
-	if (myHintPtr==nullptr)
-		return false;
-
-	// If we get here, the hint exists.
-	// Because we only care about regression right now, we don't need to worry
-	// that the object has been inserted before, that the hint has been used
-	// before, etc...
-
-	// Find the right ToolboxGroup.
-	// We need to work with the internal name - the other name might be translated...
-	ToolboxGroup* myTBGPtr = nullptr;
-	for(int i=0; i < ui->listWidget->count(); i++)
-	{
-		ToolboxListWidgetItem* myItemPtr = dynamic_cast<ToolboxListWidgetItem*>(ui->listWidget->item(i));
-		ToolboxGroup* myGPtr = myItemPtr->getToolboxGroupPtr();
-		if (myGPtr->theInternalName == myHintPtr->getHintInternalName())
-		{
-			myTBGPtr = myGPtr;
-			break;
-		}
-	}
-	if (myTBGPtr == nullptr)
-		return false;
-
-	// OK, we found the TBG to take the object from.
-	// Create the InsertUndoCommand
-    InsertUndoCommand::createInsertUndoCommand(myTBGPtr, Position(), myHintPtr);
-
-
-	// successfully done
-	return true;
+    // remove all checks
+    // and set the active language to checked
+    QString myCurrentLanguage = TheTranslator.getCurrentLanguage();
+    for(auto i : ui->menuLanguages->actions())
+    {
+        i->setCheckable(true);
+        if (i->text()==myCurrentLanguage)
+            i->setChecked(true);
+        else
+            i->setChecked(false);
+    }
 }
+
 
 void MainWindow::setupView()
 {
@@ -500,3 +464,40 @@ void MainWindow::setupView()
 	}
 }
 
+
+bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
+{
+    DEBUG1ENTRY;
+    Hint* myHintPtr = theLevelPtr->getHint(aHintNumber);
+    if (myHintPtr==nullptr)
+        return false;
+
+    // If we get here, the hint exists.
+    // Because we only care about regression right now, we don't need to worry
+    // that the object has been inserted before, that the hint has been used
+    // before, etc...
+
+    // Find the right ToolboxGroup.
+    // We need to work with the internal name - the other name might be translated...
+    ToolboxGroup* myTBGPtr = nullptr;
+    for(int i=0; i < ui->listWidget->count(); i++)
+    {
+        ToolboxListWidgetItem* myItemPtr = dynamic_cast<ToolboxListWidgetItem*>(ui->listWidget->item(i));
+        ToolboxGroup* myGPtr = myItemPtr->getToolboxGroupPtr();
+        if (myGPtr->theInternalName == myHintPtr->getHintInternalName())
+        {
+            myTBGPtr = myGPtr;
+            break;
+        }
+    }
+    if (myTBGPtr == nullptr)
+        return false;
+
+    // OK, we found the TBG to take the object from.
+    // Create the InsertUndoCommand
+    InsertUndoCommand::createInsertUndoCommand(myTBGPtr, Position(), myHintPtr);
+
+
+    // successfully done
+    return true;
+}
