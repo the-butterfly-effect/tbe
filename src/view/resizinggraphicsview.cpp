@@ -190,9 +190,11 @@ void ResizingGraphicsView::slot_actionSkipLevel()
 	DEBUG3ENTRY;
     if (theIsLevelCreator==false)
     {
-        QString myLevelFileName = Level::getLevelFileName();
+        QString myKey = "completed/" + Level::getLevelFileName();
         QSettings mySettings;
-        mySettings.setValue("completed/"+myLevelFileName, "skipped");
+        // don't overwrite an existing value, it might be "done" already...
+        if (!mySettings.value(myKey).isValid())
+            mySettings.setValue(myKey, "skipped");
     }
     slot_actionNextLevel();
 }
