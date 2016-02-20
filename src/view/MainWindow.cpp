@@ -362,6 +362,7 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
 
 void MainWindow::repopulateSceneAndToolbox()
 {
+    ui->listWidget->clear();
     ViewWorld* myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
     for (auto i : theLevelPtr->theToolboxList)
         new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
