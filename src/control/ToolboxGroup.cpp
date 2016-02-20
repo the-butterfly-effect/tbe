@@ -24,7 +24,6 @@ ToolboxGroup::ToolboxGroup(const QString &aGroupName)
     : theGroupName(aGroupName),
       theWidgetItemPtr(nullptr)
 {
-    printf("ToolboxGroup for '%s'\n", ASCII(aGroupName));
     // nothing to do
 }
 
