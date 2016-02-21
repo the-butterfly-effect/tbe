@@ -1,0 +1,199 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>The Core</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Pop the red balloon in the center and trigger the dynamite and detonator boxes in the scene.</description>
+        <date>19.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="Bowling ball">
+            <object X="0" type="BowlingBall" Y="0" angle="0" width="0.22" height="0.22"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Detonator box">
+            <object X="0" type="DetonatorBox" Y="0" angle="0" width="0.33" height="0.35"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Dynamite">
+            <object X="0" type="Dynamite" Y="0" angle="0" ID="555-4096" width="0.43" height="0.32"/>
+        </toolboxitem>
+        <toolboxitem count="3" name="Floor">
+            <object X="0" type="Floor" Y="0" angle="0" width="0.25" height="0.1"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Left ramp">
+            <object X="0" type="LeftRamp" Y="0" angle="0" width="0.693635" height="0.662999"/>
+        </toolboxitem>
+        <toolboxitem count="3" name="Right ramp">
+            <object X="0" type="RightRamp" Y="0" angle="0" width="0.693635" height="0.662999"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Wall">
+            <object X="0" type="Wall" Y="0" angle="0" width="0.1" height="1">
+                <property key="Resizable">vertical</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7.1" height="7.32"/>
+        <predefined>
+            <object X="3.76287" type="Floor" Y="0.161381" angle="0" width="5.63518" height="0.1"/>
+            <object X="1.91284" type="QuarterArc80" Y="2.13182" angle="3.16833" width="0.8" height="0.8"/>
+            <object X="0.544983" type="QuarterArc80" Y="0.506147" angle="3.15767" width="0.8" height="0.8"/>
+            <object X="4.1563" type="QuarterArc80" Y="2.93401" angle="4.7062" width="0.8" height="0.8"/>
+            <object X="4.59591" type="Floor" Y="0.936081" angle="0" width="1.39914" height="0.1"/>
+            <object X="3.79508" type="Floor" Y="1.787" angle="0" width="2.94248" height="0.1"/>
+            <object X="3.39694" type="Floor" Y="2.57523" angle="0" width="0.756634" height="0.1"/>
+            <object X="3.14657" type="QuarterArc40" Y="3.32909" angle="-3.15808" width="0.4" height="0.4"/>
+            <object X="1.22255" type="QuarterArc80" Y="1.28619" angle="3.14622" width="0.8" height="0.8"/>
+            <object X="2.62226" type="QuarterArc80" Y="2.91715" angle="3.14218" width="0.8" height="0.8"/>
+            <object X="5.69175" type="QuarterArc80" Y="1.28836" angle="-1.56646" width="0.8" height="0.8"/>
+            <object X="3.54434" type="QuarterArc40" Y="3.33074" angle="4.72572" width="0.4" height="0.4"/>
+            <object X="3.54061" type="QuarterArc40" Y="3.73579" angle="0" width="0.4" height="0.4"/>
+            <object X="3.20276" type="Balloon" Y="3.5707" angle="0" ID="GoalBalloon" width="0.27" height="0.36">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object X="2.82804" type="Floor" Y="3.89071" angle="0" width="1.02036" height="0.1"/>
+            <object X="3.48579" type="Cactus" Y="3.54434" angle="0" width="0.25" height="0.4"/>
+            <object X="3.3479" type="Floor" Y="3.2801" angle="0" width="0.482201" height="0.12589"/>
+            <object X="0.18479" type="Wall" Y="2.21717" angle="0" width="0.102913" height="2.6377"/>
+            <object X="0.18479" type="Wall" Y="4.85477" angle="0" width="0.102913" height="2.6377"/>
+            <object X="0.864401" type="Wall" Y="2.53361" angle="0" width="0.102913" height="1.70325"/>
+            <object X="1.55728" type="Wall" Y="2.74331" angle="0" width="0.102913" height="0.44671"/>
+            <object X="2.27202" type="Wall" Y="3.6266" angle="0" width="0.100065" height="0.615275"/>
+            <object X="4.50194" type="Wall" Y="3.87454" angle="0" width="0.102913" height="1.09299"/>
+            <object X="3.38393" type="Floor" Y="4.47136" angle="0" width="2.34801" height="0.1"/>
+            <object X="1.20841" type="QuarterArc80" Y="5.82261" angle="-4.69955" width="0.8" height="0.8"/>
+            <object X="5.21446" type="Wall" Y="3.25278" angle="0" width="0.102913" height="2.82565"/>
+            <object X="4.85922" type="QuarterArc80" Y="5.06062" angle="0" width="0.8" height="0.8"/>
+            <object X="3.38575" type="Floor" Y="5.4171" angle="0" width="2.14153" height="0.1"/>
+            <object X="1.92147" type="QuarterArc80" Y="5.06699" angle="1.56657" width="0.8" height="0.8"/>
+            <object X="1.56343" type="Wall" Y="4.13879" angle="0" width="0.102913" height="1.08231"/>
+            <object X="6.03813" type="Wall" Y="2.30648" angle="0" width="0.102805" height="1.24339"/>
+            <object X="5.97875" type="Wall" Y="4.86942" angle="0" width="0.103991" height="1.14638"/>
+            <object X="5.62481" type="QuarterArc80" Y="5.8411" angle="0" width="0.8" height="0.8"/>
+            <object X="3.41289" type="Floor" Y="6.1911" angle="0" width="3.62276" height="0.1"/>
+            <object X="0.54013" type="QuarterArc80" Y="6.57357" angle="1.56602" width="0.8" height="0.8"/>
+            <object X="6.52999" type="Wall" Y="1.83996" angle="0" width="0.101834" height="3.25902"/>
+            <object X="3.35851" type="Floor" Y="6.92438" angle="0" width="4.84393" height="0.1"/>
+            <object X="6.18091" type="QuarterArc80" Y="6.57438" angle="0" width="0.8" height="0.8"/>
+            <object X="2.36707" type="Pingus" Y="4.64312" angle="0" width="0.28" height="0.28"/>
+            <object X="4.54223" type="Floor" Y="4.99353" angle="0" width="1.19914" height="0.1"/>
+            <object X="4.08974" type="SoccerBall" Y="5.1633" angle="0" width="0.22" height="0.22"/>
+            <object X="4.53404" type="Dynamite" Y="5.20521" angle="0" ID="555-1024" width="0.43" height="0.32"/>
+            <object X="3.55221" type="DetonatorBox" Y="2.01934" angle="0" ID="DB1" width="0.33" height="0.35"/>
+            <object X="5.64251" type="Balloon" Y="2.1522" angle="0" width="0.27" height="0.36">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object X="4.44833" type="DetonatorBox" Y="0.395604" angle="0" ID="DB2" width="0.33" height="0.35"/>
+            <object X="3.57462" type="ColaMintBottle" Y="2.71083" angle="-1.58093" width="0.166" height="0.5"/>
+            <object X="2.77666" type="Floor" Y="3.50688" angle="0" width="0.525135" height="0.1"/>
+            <object X="3.31839" type="Dynamite" Y="5.63412" angle="0" ID="555-2048" width="0.43" height="0.32"/>
+            <object X="2.86427" type="BowlingBall" Y="6.02878" angle="0" width="0.22" height="0.22"/>
+            <object X="3.76804" type="BowlingBall" Y="6.02112" angle="0" width="0.22" height="0.22"/>
+            <object X="1.66179" type="BowlingBall" Y="6.35812" angle="0" width="0.22" height="0.22"/>
+            <object X="5.76768" type="BirchBar" Y="6.60194" angle="0" width="0.954048" height="0.1">
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object X="5.76768" type="Scenery" Y="6.60194" angle="0" width="0.08" height="0.08">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object X="5.76768" type="PetanqueBoule" Y="6.69054" angle="0" width="0.076" height="0.076"/>
+            <object X="5.19903" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="4.80076" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="4.41014" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="3.99655" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="3.59827" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="3.21532" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="2.80939" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="2.42643" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="2.04347" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
+            <object X="2.64002" type="ColaMintBottle" Y="3.64584" angle="-1.57744" width="0.166" height="0.5"/>
+            <object X="6.5315" type="Wall" Y="4.83095" angle="0" width="0.100431" height="2.70841"/>
+            <object X="2.44426" type="Floor" Y="0.933959" angle="0" width="1.674" height="0.1"/>
+            <object X="1.45418" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="1.45418" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="2.5464" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="3.63862" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="4.73085" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="5.82308" type="Scenery" Y="6.55421" angle="0" width="1.09223" height="0.74479">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="3.98355" type="Scenery" Y="3.04819" angle="0" width="1.09223" height="0.96589">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="2.89133" type="Scenery" Y="4.01407" angle="0" width="1.09223" height="0.96589">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="3.98355" type="Scenery" Y="4.01407" angle="0" width="1.09223" height="0.96589">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="2.89133" type="Scenery" Y="3.04819" angle="0" width="1.09223" height="0.96589">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object X="3.68689" type="Wall" Y="3.14026" angle="0" width="0.105243" height="0.64466"/>
+            <object X="1.60803" type="PostIt" Y="1.79699" angle="0" width="0.22" height="0.22">
+                <property key="ZValue">1</property>
+                <property key="page1">Timing is everything.</property>
+                <property key="page2">If you feel things happen to fast, slow down a little.</property>
+                <property key="page3">Finding a way to buy some time here could be very important here.</property>
+                <property key="page4">At least you have all the time in the world to figure this one out.&lt;br>&lt;br>—The post-it boy</property>
+            </object>
+            <object X="0.863916" type="Wall" Y="4.40369" angle="0" width="0.0973463" height="2.05023"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.12">0.854902;1;0.886275;1</gradientstop>
+            <gradientstop pos="0.24">0.847059;1;0.756863;1</gradientstop>
+            <gradientstop pos="0.34">1;0.992157;0.709804;1</gradientstop>
+            <gradientstop pos="0.42">1;0.737255;0.513726;1</gradientstop>
+            <gradientstop pos="0.45">0.882353;0.529412;0.537255;1</gradientstop>
+            <gradientstop pos="0.52">0.882353;0.529412;0.537255;1</gradientstop>
+            <gradientstop pos="0.55">1;0.737255;0.513726;1</gradientstop>
+            <gradientstop pos="0.62">1;0.972549;0.713726;1</gradientstop>
+            <gradientstop pos="0.75">0.847059;1;0.756863;1</gradientstop>
+            <gradientstop pos="0.88">0.854902;1;0.886275;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" isFail="false">
+            <property key="object">GoalBalloon</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-1024</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-2048</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">DB1</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">DB2</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
