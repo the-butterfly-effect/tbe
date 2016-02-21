@@ -11,7 +11,7 @@
         <toolboxitem count="1" name="10kg Weight">
             <object width="0.6" type="Weight" ID="Weight"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object width="1.6" height="0.5" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
             </object>

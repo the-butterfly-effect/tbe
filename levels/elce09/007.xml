@@ -24,7 +24,7 @@
                 <property key="Resizable">none</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object width="1.0" height="0.5" type="LeftRamp" angle="0"/>
         </toolboxitem>
     </toolbox>

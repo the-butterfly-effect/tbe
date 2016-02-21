@@ -8,10 +8,10 @@
         <date>10/6/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Cactus">
+        <toolboxitem count="1">
             <object type="Cactus"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>

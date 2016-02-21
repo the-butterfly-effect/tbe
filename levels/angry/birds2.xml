@@ -8,10 +8,10 @@
         <date>6/15/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Dynamite">
+        <toolboxitem count="1">
             <object width="0.430" X="7.960" Y="1.128" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Cola+mint">
+        <toolboxitem count="1">
             <object width="0.166" X="1.119" Y="5.837" height="0.500" type="ColaMintBottle" angle="1.774">
                 <property key="Thrust">9</property>
             </object>

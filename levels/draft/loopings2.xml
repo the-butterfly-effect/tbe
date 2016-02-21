@@ -13,10 +13,10 @@
                 <property key="Mass">0.2</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="1/4 Arc">
+        <toolboxitem count="2">
             <object width="0.750" height="0.750" type="QuarterArc80" angle="0.00"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Balloon">
+        <toolboxitem count="2">
             <object type="Balloon" angle="0"/>
         </toolboxitem>
     </toolbox>

@@ -8,10 +8,10 @@
         <date>12/21/09, updated 07/02/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Volley Ball">
+        <toolboxitem count="1">
             <object type="VolleyBall"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Spring">
+        <toolboxitem count="1">
             <object width="0.400" X="2.399" Y="2.665" height="0.200" type="Spring" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="2" name="Birch wedge">
@@ -20,7 +20,7 @@
                 <property key="Mass">1.0</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Dynamite">
+        <toolboxitem count="1">
             <object width="0.430" X="0.346" Y="1.230" height="0.320" type="Dynamite" ID="555-9999" angle="0.000"/>
         </toolboxitem>
     </toolbox>

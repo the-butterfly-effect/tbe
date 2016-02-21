@@ -8,12 +8,12 @@
         <date>March 7, 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Skyhook">
+        <toolboxitem count="1">
             <object type="Skyhook" ID="Skyhook">
                 <property key="ZValue">0.2</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Steel I-Beam">
+        <toolboxitem count="2">
             <object width="1.4" height="0.1" type="IBeam">
                 <property key="Friction">0.8</property>
                 <property key="Resizable">none</property>

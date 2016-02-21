@@ -8,15 +8,15 @@
         <date>5/15/12</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Quarter Arc">
+        <toolboxitem count="1">
             <object width="0.800" height="0.800" type="QuarterArc80" angle="0">
                 <property key="Rotatable"> true </property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object width="0.220" height="0.220" type="BowlingBall" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="3" name="Cactus">
+        <toolboxitem count="3">
             <object type="Cactus"/>
         </toolboxitem>
     </toolbox>

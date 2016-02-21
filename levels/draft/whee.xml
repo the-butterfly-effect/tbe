@@ -8,12 +8,12 @@
         <date>04.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Left ramp" count="2">
+        <toolboxitem count="2">
             <object width="2.89" Y="0" angle="0" type="LeftRamp" X="0" height="0.85">
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Right ramp" count="1">
+        <toolboxitem count="1">
             <object width="2.85" Y="0" angle="0" type="RightRamp" X="0" height="0.88">
                 <property key="Resizable">totalresize</property>
             </object>

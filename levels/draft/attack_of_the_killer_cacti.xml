@@ -8,7 +8,7 @@
         <date>1/30/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Floor" count="4">
+        <toolboxitem count="4">
             <object height="0.100" angle="5.565" type="Floor" width="0.750">
                 <property key="Rotatable">true</property>
             </object>

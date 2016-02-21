@@ -8,15 +8,15 @@
         <date>11/17/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Cola-mint">
+        <toolboxitem count="1">
             <object width="0.170" X="0.858" Y="2.511" height="0.500" type="ColaMintBottle" angle="0.000">
                 <property key="Thrust">6</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object width="1.910" X="2.018" Y="2.576" height="0.594" type="LeftRamp" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Soccer Ball">
+        <toolboxitem count="1">
             <object width="0.220" X="2.501" Y="2.864" height="0.220" type="SoccerBall" angle="0.000"/>
         </toolboxitem>
     </toolbox>

@@ -8,15 +8,15 @@
         <date>04/17/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Hammer">
+        <toolboxitem count="1">
 			<object type="Hammer"/>
 		</toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object width="1.6" height="0.5" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \">
+        <toolboxitem count="1">
             <object width="1.6" height="0.5" type="RightRamp">
                 <property key="ImageName">RightRamp</property>
             </object>

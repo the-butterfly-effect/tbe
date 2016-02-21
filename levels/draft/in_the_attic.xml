@@ -11,7 +11,7 @@
         <toolboxitem count="1" name="Birch block">
             <object width="0.630" height="0.152" type="BirchBar"/>
         </toolboxitem>
-        <toolboxitem count="7" name="Pétanque ball">
+        <toolboxitem count="7">
             <object type="PetanqueBoule"/>
         </toolboxitem>
     </toolbox>

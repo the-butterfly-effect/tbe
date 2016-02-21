@@ -8,23 +8,23 @@
         <date>15.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Floor" count="3">
+        <toolboxitem count="3">
             <object width="1" X="0" angle="0" type="Floor" Y="0" height="0.1">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Left ramp" count="3">
+        <toolboxitem count="3">
             <object width="2.18554" X="0" angle="0" type="LeftRamp" Y="0" height="0.234628"/>
         </toolboxitem>
-        <toolboxitem name="Quarter arc" count="3">
+        <toolboxitem count="3">
             <object width="0.4" X="0" angle="0" type="QuarterArc40" Y="0" height="0.4">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Right ramp" count="3">
+        <toolboxitem count="3">
             <object width="1.75674" X="0" angle="0" type="RightRamp" Y="0" height="0.283711"/>
         </toolboxitem>
-        <toolboxitem name="Wall" count="4">
+        <toolboxitem count="4">
             <object width="0.1" X="0" angle="0" type="Wall" Y="0" height="1">
                 <property key="Resizable">vertical</property>
             </object>

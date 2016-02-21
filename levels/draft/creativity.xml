@@ -8,56 +8,56 @@
         <date>02.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Bed of nails" count="1">
+        <toolboxitem count="1">
             <object Y="2.675" type="BedOfNails" height="0.15" angle="0" width="0.8" X="2.35"/>
         </toolboxitem>
-        <toolboxitem name="Birch bar" count="1">
+        <toolboxitem count="1">
             <object Y="2.10022" type="BirchBar" height="0.1" angle="0" width="1" X="7.67826"/>
         </toolboxitem>
-        <toolboxitem name="Bowling pin" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="BowlingPin" height="0.34" angle="0" width="0.12" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Cactus" count="1">
+        <toolboxitem count="1">
             <object Y="2.17427" type="Cactus" height="0.4" angle="0" width="0.25" X="7.56966"/>
         </toolboxitem>
-        <toolboxitem name="Detonator box" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="DetonatorBox" height="0.35" angle="0" width="0.33" X="0">
                 <property key="PhoneNumber">555-0003</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Dynamite" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="Dynamite" height="0.32" angle="0" width="0.43" ID="555-0003" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Floor" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="Floor" height="0.1" angle="0" width="1" X="0"/>
         </toolboxitem>
         <toolboxitem name="Left birch wedge" count="1">
             <object Y="0" type="LeftWedge" height="0.5" angle="0" width="0.5" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Right ramp" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="RightRamp" height="0.5" angle="0" width="0.5" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Skyhook" count="2">
+        <toolboxitem count="2">
             <object Y="0" type="Skyhook" height="0.23" angle="0" width="0.2" X="0">
                 <property key="ZValue">0.2</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Soccer ball" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="SoccerBall" height="0.22" angle="0" width="0.22" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Spring" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="Spring" height="0.2" angle="0" width="0.4" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Steel I-beam" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="IBeam" height="0.1" angle="0" width="1.4" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Tennis ball" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="TennisBall" height="0.068" angle="0" width="0.068" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Wall" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="Wall" height="1" angle="0" width="0.2" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Weight" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="Weight" height="0.4" angle="0" width="0.4" X="0"/>
         </toolboxitem>
     </toolbox>

@@ -14,7 +14,7 @@
 				<tooltip>Small glass marble. Will it be enough?</tooltip>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object width="5.0" height="1.3" type="LeftRamp" angle="0" />
         </toolboxitem>
     </toolbox>

@@ -17,12 +17,12 @@
         <toolboxitem name="Dynamite (555-8155)" count="1">
             <object Y="0.000" angle="0.000" width="0.430" type="Dynamite" ID="555-8155" X="0.000" height="0.320"/>
         </toolboxitem>
-        <toolboxitem name="Floor" count="2">
+        <toolboxitem count="2">
             <object Y="0.000" angle="0.000" width="1.000" type="Floor" X="0.000" height="0.100">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Hammer" count="1">
+        <toolboxitem count="1">
             <object Y="0.000" angle="0.000" type="Hammer" />
         </toolboxitem>
         <toolboxitem name="Large quarter arc" count="2">
@@ -33,7 +33,7 @@
         <toolboxitem name="Large right ramp" count="1">
             <object Y="0.000" angle="0.000" width="0.872" type="RightRamp" X="0.000" height="0.380"/>
         </toolboxitem>
-        <toolboxitem name="Left ramp" count="1">
+        <toolboxitem count="1">
             <object Y="0.000" angle="0.000" width="0.921" type="LeftRamp" X="0.000" height="0.148"/>
         </toolboxitem>
         <toolboxitem name="Small quarter arc" count="2">

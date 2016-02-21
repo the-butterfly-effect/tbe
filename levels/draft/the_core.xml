@@ -8,25 +8,25 @@
         <date>19.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Bowling ball">
+		<toolboxitem count="1">
             <object X="0" type="BowlingBall" Y="0" angle="0" width="0.22" height="0.22"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Detonator box">
+        <toolboxitem count="1">
             <object X="0" type="DetonatorBox" Y="0" angle="0" width="0.33" height="0.35"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Dynamite">
+        <toolboxitem count="1">
             <object X="0" type="Dynamite" Y="0" angle="0" ID="555-4096" width="0.43" height="0.32"/>
         </toolboxitem>
-        <toolboxitem count="3" name="Floor">
+        <toolboxitem count="3">
             <object X="0" type="Floor" Y="0" angle="0" width="0.25" height="0.1"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Left ramp">
+        <toolboxitem count="2">
             <object X="0" type="LeftRamp" Y="0" angle="0" width="0.693635" height="0.662999"/>
         </toolboxitem>
-        <toolboxitem count="3" name="Right ramp">
+        <toolboxitem count="3">
             <object X="0" type="RightRamp" Y="0" angle="0" width="0.693635" height="0.662999"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Wall">
+        <toolboxitem count="1">
             <object X="0" type="Wall" Y="0" angle="0" width="0.1" height="1">
                 <property key="Resizable">vertical</property>
             </object>

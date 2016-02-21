@@ -20,7 +20,7 @@
                 <tooltip>This wooden bar has been attached to the wall and will,&lt;br>when pushed, rotate around its own axis.</tooltip>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Cola+mint bottle">
+        <toolboxitem count="1">
             <object width="0.166" height="0.5" Y="0" angle="-3.16517" type="ColaMintBottle" X="0"/>
         </toolboxitem>
         <toolboxitem count="1" name="Left fixed wedge (large)">
@@ -32,7 +32,7 @@
         <toolboxitem count="1" name="Left fixed wedge (small)">
             <object width="0.660195" height="0.26753" Y="1.21144" angle="0" type="LeftFixedWedge" X="12.6138"/>
         </toolboxitem>
-        <toolboxitem count="4" name="Quarter arc">
+        <toolboxitem count="4">
             <object width="0.664119" height="0.664119" Y="0" angle="0" type="QuarterArc40" X="0">
                 <property key="Rotatable">true</property>
             </object>
@@ -46,10 +46,10 @@
         <toolboxitem count="3" name="Right fixed wedge (small)">
             <object width="0.56" height="0.09" Y="0" angle="0" type="RightFixedWedge" X="0"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp">
+        <toolboxitem count="1">
             <object width="0.592233" height="0.577131" Y="3.03507" angle="0" type="RightRamp" X="10.9488"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Wall">
+        <toolboxitem count="2">
             <object width="0.2" height="1" Y="4.26429" angle="0" type="Wall" X="10.5694">
                 <property key="Resizable">vertical</property>
             </object>

@@ -8,7 +8,7 @@
         <date>12/22/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Ramp \">
+        <toolboxitem count="1">
             <object width="2.000" X="0.000" Y="0.000" height="0.500" type="RightRamp" angle="0.000"/>
         </toolboxitem>
     </toolbox>

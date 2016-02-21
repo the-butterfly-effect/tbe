@@ -8,7 +8,7 @@
         <date>9/9/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Bed of Nails">
+        <toolboxitem count="2">
             <object type="BedOfNails">
                 <property key="Rotatable">true</property>
             </object>

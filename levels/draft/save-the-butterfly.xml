@@ -8,10 +8,10 @@
         <date>10/11/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Right Ramp">
+        <toolboxitem count="1">
             <object width="0.9" height="0.5" type="RightRamp"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Cactus">
+        <toolboxitem count="2">
             <object type="Cactus"/>
         </toolboxitem>
     </toolbox>

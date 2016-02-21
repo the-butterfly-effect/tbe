@@ -15,12 +15,12 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Left Ramp">
+        <toolboxitem count="2">
             <object type="LeftRamp" width="1.000" height="0.500" angle="0.000" X="0.000" Y="0.000">
                 <property key="Rotatable"> false </property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Right Ramp">
+        <toolboxitem count="1">
             <object type="RightRamp" width="1.000" height="0.542" angle="0.000" X="0.000" Y="0.000">
                 <property key="Rotatable"> false </property>
             </object>

@@ -8,21 +8,21 @@
         <date>06.01.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Bed of nails">
+        <toolboxitem count="1">
             <object width="0.800" X="0.000" Y="0.000" height="0.150" type="BedOfNails" angle="0.000">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Birch bar">
+        <toolboxitem count="1">
             <object width="0.724" X="0.000" Y="0.000" height="0.100" type="BirchBar" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Floor">
+        <toolboxitem count="1">
             <object width="2.369" X="1.603" Y="0.650" height="0.100" type="Floor" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Pétanque ball">
+        <toolboxitem count="2">
             <object width="0.076" X="0.000" Y="0.000" height="0.076" type="PetanqueBoule" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Quarter arc">
+        <toolboxitem count="1">
             <object width="0.550" X="0.000" Y="0.000" height="0.550" type="QuarterArc80" angle="0.000">
                 <property key="Rotatable">true</property>
             </object>

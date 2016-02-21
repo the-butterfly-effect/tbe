@@ -14,13 +14,13 @@
                 <tooltip>This wooden bar has been attached to the wall and will.&lt;br>when pushed. rotate around its own axis.</tooltip>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Floor">
+        <toolboxitem count="2">
             <object height="0.100" X="0.000" width="1.000" type="Floor" angle="0.000" Y="0.000">
                 <property key="Resizable">horizontal</property>
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Skyhook">
+        <toolboxitem count="2">
             <object height="0.230" X="0.000" width="0.200" type="Skyhook" angle="0.000" Y="0.000">
                 <property key="ZValue">0.2</property>
             </object>

@@ -8,7 +8,7 @@
         <date>10/9/10</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>

@@ -8,24 +8,24 @@
         <date>02.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Cola+mint bottle">
+        <toolboxitem count="1">
             <object X="1.85174" width="0.166" Y="2.98355" height="0.5" type="ColaMintBottle" angle="0"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Floor">
+        <toolboxitem count="2">
             <object X="0" width="1" Y="0" height="0.1" type="Floor" angle="0">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Left ramp">
+        <toolboxitem count="2">
             <object X="0" width="0.8" Y="0" height="0.8" type="LeftRamp" angle="0"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp">
+        <toolboxitem count="1">
             <object X="0" width="0.8" Y="0" height="0.8" type="RightRamp" angle="0"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Volleyball">
+        <toolboxitem count="2">
             <object X="0" width="0.21" Y="0" height="0.21" type="VolleyBall" angle="0"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Wall">
+        <toolboxitem count="1">
             <object X="6.06289" width="0.2" Y="2.10302" height="1" type="Wall" angle="0">
                 <property key="Resizable">vertical</property>
             </object>

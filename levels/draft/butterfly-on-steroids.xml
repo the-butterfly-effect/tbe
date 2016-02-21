@@ -8,7 +8,7 @@
         <date>13 May 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Bowling Ball" count="3">
+        <toolboxitem count="3">
             <object height="0.220" type="BowlingBall" X="0.000" width="0.220" Y="0.000" angle="0.000"/>
         </toolboxitem>
     </toolbox>

@@ -8,15 +8,15 @@
         <date>6/15/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Detonator Box">
+        <toolboxitem count="1">
             <object width="0.330" X="0.256" Y="0.265" height="0.350" type="DetonatorBox" angle="0.000">
                 <property key="PhoneNumber">555-0000</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Dynamite">
+        <toolboxitem count="1">
             <object width="0.430" X="7.960" Y="1.128" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object width="0.220" X="1.657" Y="1.917" height="0.220" type="BowlingBall" angle="0.000"/>
         </toolboxitem>
     </toolbox>

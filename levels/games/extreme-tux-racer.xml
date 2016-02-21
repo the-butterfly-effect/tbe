@@ -8,10 +8,10 @@
         <date>March 6, 2014</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Dynamite">
+        <toolboxitem count="1">
             <object width="0.430" X="0.217" Y="3.513" height="0.320" type="Dynamite" ID="555-0000" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Soccerball">
+        <toolboxitem count="1">
             <object width="0.220" X="0.000" Y="0.000" height="0.220" type="SoccerBall" angle="0.000"/>
         </toolboxitem>
     </toolbox>

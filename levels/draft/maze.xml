@@ -8,10 +8,10 @@
         <date>29.01.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Left fixed wedge">
+        <toolboxitem count="2">
             <object angle="0.000" type="LeftFixedWedge" X="0.000" height="0.250" width="0.250" Y="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right fixed wedge">
+        <toolboxitem count="1">
             <object angle="0.000" type="RightFixedWedge" X="3.768" height="0.250" width="0.250" Y="3.207"/>
         </toolboxitem>
     </toolbox>

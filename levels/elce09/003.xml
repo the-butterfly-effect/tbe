@@ -8,7 +8,7 @@
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Ramp /">
+        <toolboxitem count="2">
             <object width="4.500" height="0.600" type="PolyObject" angle="0.000">
                 <property key="Polygons">(-2.25,-0.28)=(-2.25,-0.3)=(-1.5,-0.3)=(2.,0.15)=(2.25,0.3)</property>
                 <property key="ImageName">LeftRamp</property>

@@ -8,15 +8,15 @@
         <date>07.01.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Butterfly">
+        <toolboxitem count="2">
             <object width="0.150" X="0.000" Y="0.000" height="0.228" type="Butterfly" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Floor">
+        <toolboxitem count="2">
             <object width="1" height="0.100" type="Floor" angle="0.000">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Left ramp">
+        <toolboxitem count="1">
             <object width="1.000" X="0.756" Y="1.984" height="1.000" type="LeftRamp" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Long left fixed wedge">

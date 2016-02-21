@@ -8,7 +8,7 @@
         <date>13 Dec 2015</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Soccer Ball">
+        <toolboxitem count="1">
             <object width="0.220" X="0.000" Y="0.000" height="0.220" type="SoccerBall" ID="soc" angle="0.000"/>
         </toolboxitem>
     </toolbox>

@@ -13,7 +13,7 @@
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Bowling pin" count="1">
+        <toolboxitem count="1">
             <object height="0.34" type="BowlingPin" width="0.12" angle="0" Y="1.44731" X="2.45699"/>
         </toolboxitem>
         <toolboxitem name="Wood triangle" count="1">

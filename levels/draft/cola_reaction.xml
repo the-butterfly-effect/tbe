@@ -8,17 +8,17 @@
         <date>1/29/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Bed of nails">
+        <toolboxitem count="1">
             <object type="BedOfNails" X="0.000" Y="0.000" width="0.800" height="0.150" angle="0.000">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="3" name="Floor">
+        <toolboxitem count="3">
             <object type="Floor" X="0.000" Y="0.000" width="1.000" height="0.100" angle="0.000">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp">
+        <toolboxitem count="1">
             <object type="RightRamp" X="0.000" Y="0.000" width="0.922" height="0.612" angle="0.000"/>
         </toolboxitem>
     </toolbox>

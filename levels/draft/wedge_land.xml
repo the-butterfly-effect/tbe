@@ -8,12 +8,12 @@
         <date>04.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Left fixed wedge" count="2">
+        <toolboxitem count="2">
             <object type="LeftFixedWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Right fixed wedge" count="3">
+        <toolboxitem count="3">
             <object type="RightFixedWedge" angle="0" width="0.68" height="0.28" X="0" Y="0">
                 <property key="Resizable">totalresize</property>
             </object>

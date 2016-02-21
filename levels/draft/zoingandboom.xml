@@ -8,13 +8,13 @@
         <date>April 3rd, 2011</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Quarter Arc">
+        <toolboxitem count="1">
             <object Y="0" type="QuarterArc80" width="0.8" angle="0" X="0" height="0.8"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp /">
+        <toolboxitem count="1">
             <object Y="0" type="LeftRamp" width="0.96" angle="0" X="0" height="0.71"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Ramp \">
+        <toolboxitem count="1">
             <object Y="0" type="RightRamp" width="0.7" angle="0" X="0" height="0.527"/>
         </toolboxitem>
     </toolbox>

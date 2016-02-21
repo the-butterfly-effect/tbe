@@ -14,17 +14,17 @@
         <toolboxitem name="Cola+mint bottle (right)" count="1">
             <object height="0.5" width="0.166" Y="0" X="0" type="ColaMintBottle" angle="1.577"/>
         </toolboxitem>
-        <toolboxitem name="Floor" count="5">
+        <toolboxitem count="5">
             <object height="0.1" width="1" Y="0" X="0" type="Floor" angle="0">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Quarter arc" count="1">
+        <toolboxitem count="1">
             <object height="0.789" width="0.789" Y="0" X="0" type="QuarterArc40" angle="0">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Wall" count="3">
+        <toolboxitem count="3">
             <object height="1" width="0.2" Y="0" X="0" type="Wall" angle="0">
                 <property key="Resizable">vertical</property>
             </object>

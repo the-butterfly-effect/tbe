@@ -14,10 +14,10 @@
         <toolboxitem count="2" name="Low wall">
             <object type="Wall" width="0.138" Y="0.000" angle="0.000" X="0.000" height="0.514"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp">
+        <toolboxitem count="1">
             <object type="RightRamp" width="1.000" Y="0.000" angle="0.000" X="0.000" height="0.479"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Skyhook">
+        <toolboxitem count="2">
             <object type="Skyhook" width="0.200" Y="0.000" angle="0.000" X="0.000" height="0.230">
                 <property key="ZValue">1</property>
             </object>

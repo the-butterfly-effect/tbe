@@ -14,7 +14,7 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Cactus">
+        <toolboxitem count="1">
             <object width="0.19" height="0.34" type="Cactus">
                 <property key="Rotatable">true</property>
             </object>

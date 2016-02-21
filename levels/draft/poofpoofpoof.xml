@@ -8,7 +8,7 @@
         <date>6/3/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Saw Blade">
+        <toolboxitem count="1">
             <object width="0.380" X="0.555" Y="2.466" height="0.380" type="CircularSaw" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Left birch wedge">
@@ -16,10 +16,10 @@
                 <property key="Mass">0.6</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Cactus">
+        <toolboxitem count="1">
             <object type="Cactus"/>
         </toolboxitem>
     </toolbox>

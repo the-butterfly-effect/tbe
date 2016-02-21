@@ -13,7 +13,7 @@
         <date>2/1/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Floor" count="17">
+        <toolboxitem count="17">
             <object angle="0.000" height="0.100" Y="0.000" type="Floor" X="0.000" width="1.000">
                 <property key="Resizable">horizontal</property>
                 <property key="Rotatable">true</property>

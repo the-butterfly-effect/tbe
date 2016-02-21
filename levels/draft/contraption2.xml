@@ -16,10 +16,10 @@
                 <property key="Mass">1.0</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Pin">
+        <toolboxitem count="1">
             <object type="BowlingPin"/>
         </toolboxitem>
     </toolbox>

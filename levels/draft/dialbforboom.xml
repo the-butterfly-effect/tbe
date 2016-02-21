@@ -8,13 +8,13 @@
         <date>4/5/11</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Bed of Nails">
+        <toolboxitem count="1">
             <object type="BedOfNails">
                 <property key="Rotatable"> true </property>
                 <property key="Resizable"> false </property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Bowling Ball">
+        <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>
