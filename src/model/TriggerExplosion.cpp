@@ -118,7 +118,8 @@ void DetonatorBox::createPhysicsObject(void)
 void DetonatorBox::deletePhysicsObject(void)
 {
 	RectObject::deletePhysicsObject();
-    theHandle->deletePhysicsObject();
+    if (theHandle)
+        theHandle->deletePhysicsObject();
 }
 
 QStringList DetonatorBox::getAllPhoneNumbers(void)
