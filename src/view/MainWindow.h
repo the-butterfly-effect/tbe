@@ -142,6 +142,9 @@ private:
 
     World* theWorldPtr;
 
+    /// This ActionGroup ensures that only one language in the menu is checked.
+    QActionGroup theLanguagesGroup;
+
     friend class LevelCreator;
     friend class RegressionTest;
 };

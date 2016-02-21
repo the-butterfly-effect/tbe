@@ -44,12 +44,13 @@
 
 
 MainWindow::MainWindow(bool isMaximized, QWidget *parent)
-	: QMainWindow(parent),
-	  theRegressionTest(nullptr),
+    : QMainWindow(parent),
+      theRegressionTest(nullptr),
       theLevelCreator(nullptr),
-	  ui(new Ui::MainWindow),
-	  theLevelPtr(nullptr),
-	  theWorldPtr(nullptr)
+      ui(new Ui::MainWindow),
+      theLevelPtr(nullptr),
+      theWorldPtr(nullptr),
+      theLanguagesGroup(this)
 {
     ui->setupUi(this);
     setupView();
@@ -394,16 +395,11 @@ void MainWindow::reloadLevel()
 
 void MainWindow::setLanguageCheckmark()
 {
-    // remove all checks
-    // and set the active language to checked
     QString myCurrentLanguage = TheTranslator.getCurrentLanguage();
     for(auto i : ui->menuLanguages->actions())
     {
-        i->setCheckable(true);
         if (i->text()==myCurrentLanguage)
             i->setChecked(true);
-        else
-            i->setChecked(false);
     }
 }
 
@@ -439,6 +435,8 @@ void MainWindow::setupView()
     {
         InsertMenuQAction* myTempActionPtr = new InsertMenuQAction(l, nullptr);
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_switchLanguage(QString)));
+        myTempActionPtr->setCheckable(true);
+        theLanguagesGroup.addAction(myTempActionPtr);
         ui->menuLanguages->addAction(myTempActionPtr);
     }
     setLanguageCheckmark();
