@@ -113,12 +113,8 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     QAction* myLevNameActionPtr = new QAction(tr("&Name && Description Editor..."), nullptr);
     myLevNameActionPtr->setEnabled(false);
     myLevNameActionPtr->setIcon(QIcon::fromTheme("accessories-text-editor"));
-    connect (myLevNameActionPtr, SIGNAL(triggered()), this, SLOT(on_levelNameEditorAction_clicked()));
+    //TODO: connect (myLevNameActionPtr, SIGNAL(triggered()), this, SLOT(on_levelNameEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevNameActionPtr);
-    myEditorsMenuPtr->addSeparator();
-    QAction* myEditObjectActionPtr = new QAction(tr("&Object Editor..."), nullptr);
-    connect (myEditObjectActionPtr, SIGNAL(triggered()), this, SLOT(on_objectEditorAction_clicked()));
-    myEditorsMenuPtr->addAction(myEditObjectActionPtr);
     theLevelCreatorToolbarPtr->addActions(myEditorsMenuPtr->actions());
     theLevelCreatorToolbarPtr->addSeparator();
 

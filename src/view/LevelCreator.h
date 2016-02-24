@@ -43,6 +43,7 @@ public slots:
     // menu Editors (Level Creator)
     void on_goalEditorAction_clicked();
     void on_levelPropertiesEditorAction_clicked();
+    //TODO: void on_levelNameEditorAction_clicked();
     void on_objectEditorAction_clicked();
 
     // menu Edit (Level Creator)
