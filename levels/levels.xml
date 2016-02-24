@@ -58,10 +58,11 @@
    <level> draft/contraption2.xml </level>
    <level> draft/balloon_blues.xml </level>
    <level> picnic/picnic-2.xml </level>
+   <level> draft/domino_chest.xml </level>
    <level> draft/loopings2.xml </level>
    <level> elce09/007.xml </level>
    <level> draft/hanging_box.xml </level>
-   <!--level> draft/zoingandboom.xml </level-->
+   <level> draft/zoingandboom.xml </level>
    <level> draft/find-the-message.v2.xml </level>
 </tbe-levels>
 
@@ -69,7 +70,6 @@
     The Core
     Boom! Boom! Boom!
     Goal Maker
-    Domino Chest
     Hat-trick
     Cola Reaction
     Butterfly Race
