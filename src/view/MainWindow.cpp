@@ -334,6 +334,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     // everything is in the constructor of LevelCreator now...
     Q_ASSERT(nullptr == theLevelCreator);
     theLevelCreator = new LevelCreator(this);
+    repopulateSceneAndToolbox();
 }
 
 
@@ -364,12 +365,15 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
 void MainWindow::repopulateSceneAndToolbox()
 {
     ui->listWidget->clear();
-    ViewWorld* myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+    // if no ViewWorld already exists, create one
+    ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
+    if (nullptr == myVWPtr)
+        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
     for (auto i : theLevelPtr->theToolboxList)
         new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
     if (theIsLevelCreator)
-    connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
-            theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
+                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
 }
 
 
