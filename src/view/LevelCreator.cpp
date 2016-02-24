@@ -252,5 +252,6 @@ void LevelCreator::on_objectEditorAction_clicked()
 
 void LevelCreator::slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr)
 {
+    theSelectedAOWeakPtr = anAOPtr;
     emit theEditObjectDialogPtr->updateAbstractObjectPtr(anAOPtr);
 }
