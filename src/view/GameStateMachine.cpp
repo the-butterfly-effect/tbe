@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "GameControls.h"
+#include "GameStateMachine.h"
 #include "tbe_global.h"
 
 ///---------------------------------------------------------------------------
@@ -39,40 +39,40 @@ void GameState::onExit ( QEvent * event )
 
 
 ///---------------------------------------------------------------------------
-///------------------------ GameControls -------------------------------------
+///------------------------ GameStateMachine ---------------------------------
 ///---------------------------------------------------------------------------
 
-GameControls::GameControls(QObject *parent) :
+GameStateMachine::GameStateMachine(QObject *parent) :
     QObject(parent)
 {
 }
 
 
-void GameControls::slot_Forward_triggered()
+void GameStateMachine::slot_Forward_triggered()
 {
 
 }
 
 
-void GameControls::slot_Pause_triggered()
+void GameStateMachine::slot_Pause_triggered()
 {
 
 }
 
 
-void GameControls::slot_Play_triggered()
+void GameStateMachine::slot_Play_triggered()
 {
 
 }
 
 
-void GameControls::slot_RealFast_triggered()
+void GameStateMachine::slot_RealFast_triggered()
 {
 
 }
 
 
-void GameControls::slot_Slow_triggered()
+void GameStateMachine::slot_Slow_triggered()
 {
 
 }
