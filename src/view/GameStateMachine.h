@@ -16,8 +16,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#ifndef GAMECONTROLS_H
-#define GAMECONTROLS_H
+#ifndef GAMESTATEMACHINE_H
+#define GAMESTATEMACHINE_H
 
 #include <QObject>
 #include <QState>
@@ -47,11 +47,11 @@ private:
 };
 
 
-class GameControls : public QObject
+class GameStateMachine : public QObject
 {
     Q_OBJECT
 public:
-    explicit GameControls(QObject *parent = 0);
+    explicit GameStateMachine(QObject *parent = 0);
 
 signals:
 
@@ -94,4 +94,4 @@ private:
     GameState* theWonRunningSubState;
 };
 
-#endif // GAMECONTROLS_H
+#endif // GAMESTATEMACHINE_H
