@@ -62,6 +62,11 @@ public slots:
     void slot_RealFast_triggered();
     void slot_Slow_triggered();
 
+    void slot_Reset_triggered();
+
+    void slot_Fail_happened();
+    void slot_Won_happened();
+
 private:
     QStateMachine theGameStateMachine;
 
