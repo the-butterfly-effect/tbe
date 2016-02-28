@@ -45,6 +45,35 @@ void GameState::onExit ( QEvent * event )
 GameStateMachine::GameStateMachine(QObject *parent) :
     QObject(parent)
 {
+    // ****************************************************
+    // initialize all states and substates
+    theFailedState             = new GameState(&theGameStateMachine, "FailedState");
+
+    theProblemState            = new GameState(&theGameStateMachine, "ProblemState");
+
+    theRunningState            = new GameState(&theGameStateMachine, "RunningState");
+    theRunningForwardSubState  = new GameState(&theRunningState,      "RunningForwardSubState");
+    theRunningNormalSubState   = new GameState(&theRunningState,      "RunningNormalSubState");
+    theRunningPausedSubState   = new GameState(&theRunningState,      "RunningPausedSubState");
+    theRunningRealFastSubState = new GameState(&theRunningState,      "RunningRealFastSubState");
+    theRunningSlowSubState     = new GameState(&theRunningState,      "RunningSlowSubState");
+    theRunningState->setInitialState(theRunningNormalSubState);
+
+    theStoppedState            = new GameState(&theGameStateMachine, "StoppedState");
+
+    theWonState                = new GameState(&theGameStateMachine, "WonState");
+    theWonPausedSubState       = new GameState(&theWonState,          "WonPausedSubState");
+    theWonRunningSubState      = new GameState(&theWonState,          "WonRunningSubState");
+    theWonState->setInitialState(theWonRunningSubState);
+
+    theGameStateMachine.setInitialState(theStoppedState);
+
+    // ****************************************************
+    // setup all state transitions
+
+    // TODO: theFailedState->addTransition();
+    // etc
+
 }
 
 
