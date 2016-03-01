@@ -73,6 +73,7 @@ GameStateMachine::GameStateMachine(QObject *parent) :
 
     theFailedState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     connect(theFailedState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
+    connect(theFailedState, SIGNAL(entered()), this, SIGNAL(signal_Game_Failed()));
 
     theProblemState->addTransition(this, SIGNAL(signal_Problems_solved()), theStoppedState);
 
@@ -122,7 +123,10 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     theWonState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     theWonRunningSubState->addTransition(this, SIGNAL(todo), theWonPausedSubState);
     connect(theWonState, SIGNAL(entered()), this, SLOT(slot_SetWonRunningTimeout()));
+    connect(theWonRunningSubState, SIGNAL(entered()), this, SIGNAL(signal_Game_Is_Won()));
     theWonPausedSubState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
+
+    emit theGameStateMachine.start();
 }
 
 
