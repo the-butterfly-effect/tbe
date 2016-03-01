@@ -25,8 +25,11 @@
 
 #include <cstdio>
 
+#include <QMenu>
+
 GameControls::GameControls(QWidget *parent) :
     QLabel(parent),
+    theGameButtonGroup(this),
     ui(new Ui::GameControls)
 {
     ui->setupUi(this);
@@ -37,14 +40,27 @@ GameControls::GameControls(QWidget *parent) :
     thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", myIconSize);
     theResetIcon  = ImageCache::getQIcon("ActionUndo", myIconSize);
 
-	ImageCache::getPixmap("StatusFail",   QSize(64,64), &theFailedStatusPixmap);
-    ImageCache::getPixmap("StatusFF",     QSize(64,64), &theForwardStatusPixmap);
-    ImageCache::getPixmap("StatusPlay",   QSize(64,64), &theRunningStatusPixmap);
-    ImageCache::getPixmap("StatusPause",  QSize(64,64), &thePausedStatusPixmap);
-    ImageCache::getPixmap("StatusProblem",QSize(64,64), &theProblemStatusPixmap);
-    ImageCache::getPixmap("StatusStop",   QSize(64,64), &theStoppedStatusPixmap);
-    ImageCache::getPixmap("Status4F",     QSize(64,64), &the4FStatusPixmap);
-    ui->statusLabel->setPixmap(theStoppedStatusPixmap);
+    // ordering is important for the below operations!
+    QPixmap myTempPixmap;
+    ImageCache::getPixmap("StatusFail",   QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusFF",     QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusPlay",   QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusPause",  QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusProblem",QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusRealFast", QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusSlow",   QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusStop",   QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ImageCache::getPixmap("StatusWon",    QSize(64,64), &myTempPixmap);
+    thePixmaps.append(myTempPixmap);
+    ui->statusLabel->setPixmap(thePixmaps[0]);
 }
 
 
@@ -56,8 +72,9 @@ GameControls::~GameControls()
 
 void GameControls::parentResize(const QSize& aSize)
 {
-	move(aSize.width()-size().width(),0);
+    move(aSize.width()-size().width(),0);
 }
+
 
 void GameControls::setup(QMenu* aMenuPtr)
 {
@@ -94,16 +111,38 @@ void GameControls::setup(QMenu* aMenuPtr)
     theSlowAction->setShortcut(mySlowKey);
     this->addAction(theSlowAction);
 
-
+    // do not add Slow and RealFast - they're keyboard shortcuts only
     aMenuPtr->addAction(thePauseAction);
     aMenuPtr->addAction(thePlayAction);
     aMenuPtr->addAction(theResetAction);
     aMenuPtr->addAction(theForwardAction);
+
+    // add everything to the QActionGroup to make them mutually exclusive
+    theGameButtonGroup.addAction(theForwardAction);
+    theGameButtonGroup.addAction(thePauseAction);
+    theGameButtonGroup.addAction(thePlayAction);
+    theGameButtonGroup.addAction(theRealFastAction);
+    theGameButtonGroup.addAction(theResetAction);
+    theGameButtonGroup.addAction(theSlowAction);
 
 	ui->buttonForward->setDefaultAction(theForwardAction);
     ui->buttonPause->setDefaultAction(thePauseAction);
     ui->buttonPlay->setDefaultAction(thePlayAction);
     ui->buttonReset->setDefaultAction(theResetAction);
 
-	QLabel* myLabelPtr = ui->statusLabel;
+    // hook the triggered() signals to this class' signals
+    connect (theForwardAction, SIGNAL(triggered()), this,  SIGNAL(signal_Forward_triggered()));
+    connect (thePauseAction, SIGNAL(triggered()), this,    SIGNAL(signal_Pause_triggered()));
+    connect (thePlayAction, SIGNAL(triggered()), this,     SIGNAL(signal_Play_triggered()));
+    connect (theRealFastAction, SIGNAL(triggered()), this, SIGNAL(signal_RealFast_triggered()));
+    connect (theResetAction, SIGNAL(triggered()), this,    SIGNAL(signal_Reset_triggered()));
+    connect (theSlowAction, SIGNAL(triggered()), this,     SIGNAL(signal_Slow_triggered()));
+}
+
+
+void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
+{
+    Q_ASSERT(aStatus >= GameStateMachine::FailedStatus);
+    Q_ASSERT(aStatus <= GameStateMachine::WonStatus);
+    ui->statusLabel->setPixmap(thePixmaps[aStatus]);
 }
