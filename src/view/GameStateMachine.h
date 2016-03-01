@@ -22,7 +22,7 @@
 #include <QObject>
 #include <QState>
 #include <QStateMachine>
-
+#include <QTimer>
 
 /// This direct QState derivative was created to have meaningful
 /// debug messages when SimulationControls switches state
@@ -54,18 +54,40 @@ public:
     explicit GameStateMachine(QObject *parent = 0);
 
 signals:
+    /// retransmitted signal: that the simulation failed.
+    void signal_Fail_happened();
+    /// retransmitted signal: user triggered the Fast Forward action.
+    void signal_Forward_triggered();
+    /// retransmitted signal: user triggered the Pause action.
+    void signal_Pause_triggered();
+    /// retransmitted signal: user triggered the Play action.
+    void signal_Play_triggered();
+    /// retransmitted signal: user triggered the Really Fast forward action.
+    void signal_RealFast_triggered();
+    /// retransmitted signal: user triggered the Reset action.
+    void signal_Reset_triggered();
+    /// retransmitted signal: user triggered the Slow action.
+    void signal_Slow_triggered();
+    /// retransmitted signal: the simulation has reached all Won conditions.
+    void signal_Won_happened();
+
+    /// Signal indicates that all crosses have disappeared.
+    void signal_Problems_solved();
+    /// Signal indicates that one of the objects now has a cross decorator.
+    void signal_Problems_arised();
+
+    void signal_Stop_Gameplay();
 
 public slots:
-    void slot_Play_triggered();
-    void slot_Pause_triggered();
-    void slot_Forward_triggered();
-    void slot_RealFast_triggered();
-    void slot_Slow_triggered();
+    /// Resizinggraphicsview connects CrossRegisterSingleton to this signal
+    /// and it will be called whenever the user has a cross on one of his
+    /// decorators - or removes one.
+    void slot_NumberOfCrossesChanged(int aNewNumber);
 
-    void slot_Reset_triggered();
-
-    void slot_Fail_happened();
-    void slot_Won_happened();
+private slots:
+    /// On entry of WonRunningSubState, start a timer to stop simulation and
+    /// transition to WonPausedSubState;
+    void slot_SetWonRunningTimeout();
 
 private:
     QStateMachine theGameStateMachine;
@@ -97,6 +119,10 @@ private:
     GameState* theWonState;
     GameState* theWonPausedSubState;
     GameState* theWonRunningSubState;
+
+    /// Timer is used to time the WonRunningSubState and transition to
+    /// WonPausedSubState.
+    QTimer theWonRunningTimer;
 };
 
 #endif // GAMESTATEMACHINE_H
