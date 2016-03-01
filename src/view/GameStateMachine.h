@@ -69,6 +69,10 @@ signals:
     /// retransmitted signal: user triggered the Slow action.
     void signal_Slow_triggered();
     /// retransmitted signal: the simulation has reached all Won conditions.
+    /// @note This signal is for inside use only and may be emitted dozens of
+    ///       times.
+    ///       Outside of GameStatemachine should not connect to this signal,
+    ///       please connect to signal_Game_Is_Won instead.
     void signal_Won_happened();
 
     /// Signal indicates that all crosses have disappeared.
@@ -77,6 +81,16 @@ signals:
     void signal_Problems_arised();
 
     void signal_Stop_Gameplay();
+
+    /// Emitted whenever the game is won. E.g. ResizingGraphicsView should
+    /// connect to this signal to know when to throw the "Won" dialog.
+    /// @note Signal should be emitted only once.
+    void signal_Game_Is_Won();
+
+    /// Emitted whenever the game has failed. E.g. ResizingGraphicsView should
+    /// connect to this signal to know when to throw the "Failed" dialog.
+    /// @note Signal should be emitted only once.
+    void signal_Game_Failed();
 
 public slots:
     /// Resizinggraphicsview connects CrossRegisterSingleton to this signal
