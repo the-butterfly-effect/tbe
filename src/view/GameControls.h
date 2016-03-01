@@ -19,19 +19,22 @@
 #ifndef GAMECONTROLS_H
 #define GAMECONTROLS_H
 
+#include <QVector>
 #include <QLabel>
-#include <QMenu>
 #include <QIcon>
 #include <QAction>
+#include <QActionGroup>
 #include "tbe_global.h"
-#include "ViewWorld.h"
+
+#include "GameStateMachine.h"
 
 namespace Ui {
 class GameControls;
 }
 
 // forward declarations:
-class MainWindow;
+//class MainWindow;
+class QMenu;
 
 
 /** This state machine controls how the simulation runs
@@ -55,13 +58,27 @@ public:
 //    void hookSignalsUp(ViewWorld* aViewWorld, ResizingGraphicsView *aRGVPtr);
 
 signals:
+    /// User triggered the Fast Forward action.
+    void signal_Forward_triggered();
+    /// User triggered the Pause action.
+    void signal_Pause_triggered();
+    /// User triggered the Play action.
+    void signal_Play_triggered();
+    /// User triggered the Really Fast forward action.
+    void signal_RealFast_triggered();
+    /// User triggered the Reset action.
+    void signal_Reset_triggered();
+    /// User triggered the Slow action.
+    void signal_Slow_triggered();
 
 public slots:
+    void slot_updateIcon(GameStateMachine::States aStatus);
 
 private:
+    QActionGroup theGameButtonGroup;
     QAction* theForwardAction;
-    QAction* thePlayAction;
     QAction* thePauseAction;
+    QAction* thePlayAction;
     QAction* theRealFastAction;
     QAction* theResetAction;
     QAction* theSlowAction;
@@ -71,13 +88,7 @@ private:
     QIcon thePlayIcon;
     QIcon theResetIcon;
 
-    QPixmap the4FStatusPixmap;
-    QPixmap theForwardStatusPixmap;
-    QPixmap theFailedStatusPixmap;
-    QPixmap thePausedStatusPixmap;
-    QPixmap theProblemStatusPixmap;
-    QPixmap theRunningStatusPixmap;
-    QPixmap theStoppedStatusPixmap;
+    QVector<QPixmap> thePixmaps;
 
     Ui::GameControls *ui;
 };

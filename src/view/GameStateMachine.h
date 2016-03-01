@@ -38,6 +38,12 @@ public:
 
     bool isActive;
 
+signals:
+    /// emitted onEntry
+    /// @param aPtr will contain the this pointer for the GameState that is
+    ///        activated.
+    void activated(GameState* aPtr);
+
 protected:
     virtual void onEntry ( QEvent * event );
     virtual void onExit  ( QEvent * event );
@@ -52,6 +58,25 @@ class GameStateMachine : public QObject
     Q_OBJECT
 public:
     explicit GameStateMachine(QObject *parent = 0);
+
+    /// The states that the GameStateMachine can be in.
+    /// @note That for some superstates (like running) all sub-states are in
+    ///       this list instead, where for other states (like Won), only the
+    ///       superstate is present.
+    /// @note There is a one-to-one connection between these states and the
+    ///       image that is shown by GameControls.
+    enum States
+    {
+        FailedStatus,
+        ForwardStatus,
+        NormalStatus,
+        PausedStatus,
+        ProblemStatus,
+        RealFastStatus,
+        SlowStatus,
+        StoppedStatus,
+        WonStatus
+    };
 
 signals:
     /// retransmitted signal: that the simulation failed.
@@ -92,6 +117,10 @@ signals:
     /// @note Signal should be emitted only once.
     void signal_Game_Failed();
 
+    /// Emitted whenever the game state changes.
+    /// The slot for this signal is mostly GameControls::slot_updateIcon().
+    void signal_State_Changed(States aNewState);
+
 public slots:
     /// Resizinggraphicsview connects CrossRegisterSingleton to this signal
     /// and it will be called whenever the user has a cross on one of his
@@ -102,6 +131,9 @@ private slots:
     /// On entry of WonRunningSubState, start a timer to stop simulation and
     /// transition to WonPausedSubState;
     void slot_SetWonRunningTimeout();
+
+    /// Called whenever a state changes.
+    void slot_State_Activated(GameState* aPtr);
 
 private:
     QStateMachine theGameStateMachine;
