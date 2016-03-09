@@ -5,7 +5,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIconFile</key>
-	<string>tbeicon.icns</string>
+	<string>tbe-icon.icns</string>
 	<key>CFBundleName</key>
 	<string>tbe</string>
 	<key>CFBundleDevelopmentRegion</key>
