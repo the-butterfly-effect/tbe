@@ -136,15 +136,7 @@
             <object X="3.285" Y="1.395" width="0.756" angle="0" type="RectObject" height="0.402">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object X="4.071" Y="0.94" width="0.822" angle="0" type="RectObject" height="0.14">
-                <property key="ImageName">birch_bar</property>
-                <property key="Mass">0.1</property>
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object ID="BrassPin" X="4.071" Y="0.94" width="0.1" angle="0" type="Scenery" height="0.1">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">4.5</property>
-            </object>
+            <object X="4.071" Y="0.94" width="0.822" angle="0" type="SeesawSmall" height="0.14" />
             <object X="2.963" Y="2.179" width="1.206" angle="1.57" type="Floor" height="0.1"/>
             <object X="4.87" Y="1.15" width="1" angle="0" type="RectObject" height="0.14">
                 <property key="ImageName">birch_bar</property>

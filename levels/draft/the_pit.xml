@@ -8,17 +8,11 @@
         <date>05.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Attached bar (long)">
-            <object width="2.19345" height="0.1" Y="0" angle="-1.57" type="BirchBar" X="0">
-                <property key="PivotPoint">(0,0)</property>
-                <tooltip>This wooden bar has been attached to the wall and will,&lt;br>when pushed, rotate around its own axis.</tooltip>
-            </object>
+        <toolboxitem count="1" name="Rotating bar (long)">
+            <object width="2.19345" height="0.1" Y="0" angle="-1.57" type="RotatingBar" X="0" />
         </toolboxitem>
-        <toolboxitem count="4" name="Attached bar (short)">
-            <object width="1.05327" height="0.1" Y="0" angle="-1.57" type="BirchBar" X="0">
-                <property key="PivotPoint">(0,0)</property>
-                <tooltip>This wooden bar has been attached to the wall and will,&lt;br>when pushed, rotate around its own axis.</tooltip>
-            </object>
+        <toolboxitem count="4" name="Rotating bar (short)">
+            <object width="1.05327" height="0.1" Y="0" angle="-1.57" type="RotatingBar" X="0" />
         </toolboxitem>
         <toolboxitem count="1">
             <object width="0.166" height="0.5" Y="0" angle="-3.16517" type="ColaMintBottle" X="0"/>
@@ -109,12 +103,7 @@
             <object width="0.705502" height="0.1" Y="5.70513" angle="0" type="Floor" X="3.60518"/>
             <object width="0.131607" height="0.101402" Y="5.41748" angle="0" type="RightFixedWedge" X="2.48004"/>
             <object width="0.109385" height="1.12837" Y="4.79072" angle="0" type="Wall" X="4.311"/>
-            <object width="0.864078" height="0.1" Y="4.82163" angle="0" type="BirchBar" ID="pingubar_h" X="3.76752">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object width="0.08" height="0.08" Y="4.82163" angle="0" type="Scenery" X="3.76752">
-                <property key="ImageName">brass-pin</property>
-            </object>
+            <object width="0.864078" height="0.1" Y="4.82163" angle="0" type="RotatingBar" ID="pingubar_h" X="3.76752" />
             <object width="0.758533" height="0.1" Y="4.48527" angle="-1.57" type="RectObject" ID="pingubar_v" X="3.28156">
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">styrofoam</property>
@@ -132,18 +121,8 @@
             <object width="2.66128" height="0.1" Y="5.75043" angle="0" type="Floor" X="6.68986"/>
             <object width="0.4" height="0.4" Y="5.60043" angle="-4.71474" type="QuarterArc40" X="5.16246"/>
             <object width="0.068" height="0.068" Y="6.12889" angle="0" type="TennisBall" ID="tb1" X="8.67367"/>
-            <object width="0.713142" height="0.1" Y="2.59977" angle="-1.57" type="BirchBar" ID="tb4bar" X="5.81429">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object width="0.08" height="0.08" Y="2.59977" angle="0" type="Scenery" X="5.81429">
-                <property key="ImageName">brass-pin</property>
-            </object>
-            <object width="0.713142" height="0.1" Y="1.49804" angle="-1.57" type="BirchBar" ID="dominobar_left" X="1.68896">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object width="0.08" height="0.08" Y="1.49804" angle="0" type="Scenery" X="1.68896">
-                <property key="ImageName">brass-pin</property>
-            </object>
+            <object width="0.713142" height="0.1" Y="2.59977" angle="-1.57" type="RotatingBar" ID="tb4bar" X="5.81429" />
+            <object width="0.713142" height="0.1" Y="1.49804" angle="-1.57" type="RotatingBar" ID="dominobar_left" X="1.68896" />
             <object width="2.66127" height="0.1" Y="0.842124" angle="0" type="Floor" X="2.84628"/>
             <object width="0.784938" height="0.777389" Y="1.07931" angle="-3.1415" type="QuarterArc40" X="1.13121"/>
             <object width="1.26429" height="0.243474" Y="5.23317" angle="0" type="RectObject" X="6.32362">
@@ -187,18 +166,8 @@
             <object width="0.068" height="0.068" Y="2.25349" angle="0" type="TennisBall" ID="tb4" X="5.91584"/>
             <object width="1.11327" height="0.288781" Y="5.94137" angle="0" type="Floor" X="8.1494"/>
             <object width="0.068" height="0.068" Y="2.88779" angle="0" type="TennisBall" ID="tb5" X="3.45414"/>
-            <object width="0.660447" height="0.1" Y="2.71604" angle="-1.57389" type="BirchBar" ID="tb5bar" X="3.30323">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object width="0.08" height="0.08" Y="2.71604" angle="0" type="Scenery" X="3.30323">
-                <property key="ImageName">brass-pin</property>
-            </object>
-            <object width="0.57736" height="0.1" Y="1.29261" angle="-1.57389" type="BirchBar" ID="dominobar_right" X="3.79394">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object width="0.08" height="0.08" Y="1.29261" angle="0" type="Scenery" X="3.79394">
-                <property key="ImageName">brass-pin</property>
-            </object>
+            <object width="0.660447" height="0.1" Y="2.71604" angle="-1.57389" type="RotatingBar" ID="tb5bar" X="3.30323" />
+            <object width="0.57736" height="0.1" Y="1.29261" angle="-1.57389" type="RotatingBar" ID="dominobar_right" X="3.79394" />
             <object  Y="6.20719" angle="-0.97614" type="Hammer" X="1.36777"/>
             <object width="0.954694" height="0.984898" Y="1.38003" angle="0" type="ToyChest" X="7.54153"/>
             <object width="0.109385" height="2.14023" Y="4.45685" angle="0" type="Wall" X="0.171307"/>

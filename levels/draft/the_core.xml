@@ -90,13 +90,7 @@
             <object X="2.86427" type="BowlingBall" Y="6.02878" angle="0" width="0.22" height="0.22"/>
             <object X="3.76804" type="BowlingBall" Y="6.02112" angle="0" width="0.22" height="0.22"/>
             <object X="1.66179" type="BowlingBall" Y="6.35812" angle="0" width="0.22" height="0.22"/>
-            <object X="5.76768" type="BirchBar" Y="6.60194" angle="0" width="0.954048" height="0.1">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object X="5.76768" type="Scenery" Y="6.60194" angle="0" width="0.08" height="0.08">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object X="5.76768" type="RotatingBar" Y="6.60194" angle="0" width="0.954048" height="0.1" />
             <object X="5.76768" type="PetanqueBoule" Y="6.69054" angle="0" width="0.076" height="0.076"/>
             <object X="5.19903" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>
             <object X="4.80076" type="DominoBlue" Y="6.49385" angle="0" width="0.1" height="0.5"/>

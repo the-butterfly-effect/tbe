@@ -8,11 +8,8 @@
         <date>1/31/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Attached bar">
-            <object height="0.100" X="2.400" width="2.000" type="BirchBar" angle="0.000" Y="3.350">
-                <property key="PivotPoint">(0,0)</property>
-                <tooltip>This wooden bar has been attached to the wall and will.&lt;br>when pushed. rotate around its own axis.</tooltip>
-            </object>
+        <toolboxitem count="1">
+            <object height="0.100" X="2.400" width="2.000" type="RotatingBar" angle="0.000" Y="3.350" />
         </toolboxitem>
         <toolboxitem count="2">
             <object height="0.100" X="0.000" width="1.000" type="Floor" angle="0.000" Y="0.000">
