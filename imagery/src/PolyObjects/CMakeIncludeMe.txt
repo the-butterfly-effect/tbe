@@ -4,6 +4,7 @@ install(FILES
         ${SRCDIRNAME}/Skyhook.svg
         ${SRCDIRNAME}/QuarterArc.png
         ${SRCDIRNAME}/QuarterArc80.png
+	${SRCDIRNAME}/rotating_bar.svg
         ${SRCDIRNAME}/CardboardBox.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )
