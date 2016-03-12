@@ -40,12 +40,18 @@ public:
 	//
 
 	/// elaborate constructor, only one to use!
+	/// @param aDefaultPropertiesString other default properties than the ones
+	///        already mentioned in the constructor specifically, e.g. use for
+	///        a pivot point:   "PivotPoint:(0,0)"   
+	///        No need to end with a trailing slash.
 	explicit
 	PolyObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& anImageName,
 				const QString& anOutline,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness);
+				qreal aWidth, qreal aHeight, 
+				qreal aMass, qreal aBounciness,
+				const QString& aDefaultPropertiesString = "");
 
 	/// Destructor
 	virtual ~PolyObject ( );
@@ -131,18 +137,21 @@ public:
 		qreal aWidth,
 		qreal aHeight,
 		qreal aMass,
-		qreal aBounciness)
+		qreal aBounciness,
+		const QString& aDefaultPropertiesString = "")
 			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
 			  theImageName(anImageName), theOutline(anOutline),
 			  theWidth(aWidth), theHeight(aHeight),
-			  theMass(aMass), theBounciness(aBounciness)
+			  theMass(aMass), theBounciness(aBounciness),
+			  theDefaultProperties(aDefaultPropertiesString)
 	{	announceObjectType(anInternalName, this); }
 
 	virtual AbstractObject* createObject(void) const
 	{	return fixObject(new PolyObject(tr(theDisplayName), tr(theTooltip),
 										theImageName, theOutline,
 										theWidth, theHeight, theMass,
-										theBounciness)); }
+										theBounciness,
+										theDefaultProperties)); }
 private:
 		const char* theDisplayName;
 		const char* theTooltip;
@@ -152,6 +161,7 @@ private:
 		qreal theHeight;
 		qreal theMass;
 		qreal theBounciness;
+		QString theDefaultProperties;
 };
 
 #endif // POLYOBJECT_H
