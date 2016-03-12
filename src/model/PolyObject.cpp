@@ -175,7 +175,23 @@ static AbstractPolyObjectFactory theCardboardBoxFactory(
 	"(-0.35,-0.4)=(-0.35,-0.35)=(0.35,-0.35)=(0.35,-0.4)",
     0.9, 0.78809, 0.5, 0.06 );
 
+static AbstractPolyObjectFactory theSmallSeesawFactory(
+    "SeesawSmall",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Small Seesaw"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "One usually puts toddlers on a seesaw, but they're in short supply."),
+    "seesaw-tiny",
+        "(-1.25,0.15)=(-1.25,0.01)=(1.25,0.01)=(1.25,0.15);"
+        "(-1.25,0.01)=(-1.25,-0.15)=(-1.18,-0.15)=(-0.85,0.01);"
+        "(1.25,0.01)=(0.85,0.01)==(1.18,-0.15)=(1.25,-0.15)",
+    2.5, 0.30, 5.0, 0.4, "PivotPoint:(0.0,0.05)" );
 
+static AbstractPolyObjectFactory theRotatingBarFactory(
+    "RotatingBar",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Rotating Bar"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This wooden bar rotates around its center."),
+    "rotating_bar",
+        "(-.5,0.05)=(-.5,-0.05)=(.5,-0.05)=(.5,0.05)",
+    1.0, 0.12, 4.0, 0.4, "PivotPoint:(0.0,0.00)" );
 
 
 // Constructors/Destructors
@@ -185,7 +201,8 @@ PolyObject::PolyObject( const QString& aDisplayName,
 				const QString& aTooltip,
 				const QString& aImageName,
 				const QString& anOutline,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness )
+				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+				const QString& aDefaultPropertiesString)
     : theNameString(aDisplayName)
 {
 	DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
@@ -194,8 +211,8 @@ PolyObject::PolyObject( const QString& aDisplayName,
 		Property::FRICTION_STRING + QString(":/") +
 		Property::IMAGE_NAME_STRING + QString(":") + aImageName + QString("/") +
 		Property::MASS_STRING + ":" + QString::number(aMass) + QString("/") +
-		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/")
-		);
+		Property::POLYGONS_STRING + QString(":") + anOutline + QString("/") +
+		aDefaultPropertiesString + QString("/") );
 
 	setTheBounciness(aBounciness);
 	setTheWidth(aWidth, false);
