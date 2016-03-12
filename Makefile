@@ -31,6 +31,7 @@ regression: usr/games/tbe
 	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
               --regression=levels/draft/construction_yard.xml:26, \
               --regression levels/draft/contraption1.xml:36, \
+              --regression levels/draft/float-balloon-float.xml:21, \
 	      --regression levels/draft/geyser.xml:16, \
 	      --regression levels/draft/house_of_cards.xml:20, \
 	      --regression=levels/draft/in_the_attic.xml:17, \
