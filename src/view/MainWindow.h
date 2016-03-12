@@ -28,6 +28,7 @@ namespace Ui {
 class MainWindow;
 }
 
+class GameStateMachine;
 class Level;
 class LevelCreator;
 class QGraphicsRectWidget;
@@ -130,6 +131,9 @@ private slots:
     // menu Languages
     void on_switchLanguage(QString);
 
+public slots:
+    void slot_actionNextLevel();
+
 private:
     /// set a checkmark in front of the appropriate language in the menu
     void setLanguageCheckmark();
@@ -144,6 +148,8 @@ private:
 
     /// This ActionGroup ensures that only one language in the menu is checked.
     QActionGroup theLanguagesGroup;
+
+    GameStateMachine* theGameStateMachinePtr;
 
     friend class LevelCreator;
     friend class RegressionTest;

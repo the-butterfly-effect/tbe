@@ -26,6 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
+#include "GameStateMachine.h"
 #include "Hint.h"
 #include "ImageCache.h"
 #include "InsertUndoCommand.h"
@@ -50,7 +51,8 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       ui(new Ui::MainWindow),
       theLevelPtr(nullptr),
       theWorldPtr(nullptr),
-      theLanguagesGroup(this)
+      theLanguagesGroup(this),
+      theGameStateMachinePtr(nullptr)
 {
     ui->setupUi(this);
     setupView();
@@ -312,8 +314,17 @@ void MainWindow::on_action_Save_As_triggered()
 
 void MainWindow::on_action_Skip_Level_triggered()
 {
-    if (Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
-        ui->graphicsView->slot_actionSkipLevel();
+    if (theIsLevelCreator==false)
+    {
+        if (!Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
+            return;
+        QString myKey = "completed/" + Level::getLevelFileName();
+        QSettings mySettings;
+        // don't overwrite an existing value, it might be "done" already...
+        if (!mySettings.value(myKey).isValid())
+            mySettings.setValue(myKey, "skipped");
+    }
+    slot_actionNextLevel();
 }
 
 
@@ -446,8 +457,10 @@ void MainWindow::setupView()
     }
     setLanguageCheckmark();
 
+    theGameStateMachinePtr = new GameStateMachine(this);
 
-    ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
+    ui->graphicsView->setup(this, theGameStateMachinePtr, ui->menuBar, ui->menuControls);
+    connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
 
 	if (theIsRunAsRegression)
     {
@@ -465,6 +478,18 @@ void MainWindow::setupView()
 		else
 			QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 	}
+}
+
+
+void MainWindow::slot_actionNextLevel()
+{
+    DEBUG3ENTRY;
+    ui->graphicsView->slot_clearWinFailDialogPtr();
+    QString myNextLevelName = ChooseLevel::getNextLevelName();
+    if (myNextLevelName.isEmpty()==false)
+        loadLevel(myNextLevelName);
+    else
+        on_action_Open_Level_triggered();
 }
 
 

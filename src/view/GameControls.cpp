@@ -122,7 +122,7 @@ void GameControls::setup(QMenu* aMenuPtr)
     theGameButtonGroup.addAction(thePauseAction);
     theGameButtonGroup.addAction(thePlayAction);
     theGameButtonGroup.addAction(theRealFastAction);
-    theGameButtonGroup.addAction(theResetAction);
+    //theGameButtonGroup.addAction(theResetAction); reset is not mutually exclusive
     theGameButtonGroup.addAction(theSlowAction);
 
 	ui->buttonForward->setDefaultAction(theForwardAction);
@@ -142,7 +142,34 @@ void GameControls::setup(QMenu* aMenuPtr)
 
 void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
 {
+    DEBUG1ENTRY;
     Q_ASSERT(aStatus >= GameStateMachine::FailedStatus);
     Q_ASSERT(aStatus <= GameStateMachine::WonStatus);
     ui->statusLabel->setPixmap(thePixmaps[aStatus]);
+    switch(aStatus)
+    {
+    case GameStateMachine::FailedStatus:
+    case GameStateMachine::ProblemStatus:
+    case GameStateMachine::WonStatus:
+        // disable the game controls incl. reset
+        theResetAction->setEnabled(false);
+        theGameButtonGroup.setEnabled(false);
+        break;
+    case GameStateMachine::StoppedStatus:
+        // enable the game controls incl. reset
+        theResetAction->setEnabled(false);
+        theGameButtonGroup.setEnabled(true);
+        break;
+    case GameStateMachine::ForwardStatus:
+    case GameStateMachine::NormalStatus:
+    case GameStateMachine::RealFastStatus:
+    case GameStateMachine::SlowStatus:
+        // don't allow reset while running (even though the state machine can handle it)
+        theResetAction->setEnabled(false);
+        break;
+    case GameStateMachine::PausedStatus:
+        // enable the reset - only makes sense in this state :-)
+        theResetAction->setEnabled(true);
+        break;
+    }
 }
