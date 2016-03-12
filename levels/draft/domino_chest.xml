@@ -8,11 +8,9 @@
         <date>1/28/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Attached bar" count="2">
-            <object angle="0.000" type="BirchBar" X="0.000" height="0.100" Y="0.000" width="0.678">
-                <property key="PivotPoint">(0,0)</property>
+        <toolboxitem count="2">
+            <object angle="0.000" type="RotatingBar" X="0.000" height="0.100" Y="0.000" width="0.678">
                 <property key="Rotatable">true</property>
-                <tooltip>This wooden bar has been attached to the wall and will.&lt;br>when pushed. rotate around its own axis.</tooltip>
             </object>
         </toolboxitem>
         <toolboxitem count="2">
@@ -39,13 +37,7 @@
             <object angle="0.000" type="DominoBlue" X="2.352" height="0.500" Y="4.687" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="2.007" height="0.500" Y="4.687" width="0.100"/>
             <object angle="0.000" type="Floor" X="1.910" height="0.100" Y="4.385" width="2.858"/>
-            <object angle="-1.570" type="BirchBar" X="3.462" height="0.100" Y="4.621" width="0.698">
-                <property key="PivotPoint">(0.33,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="3.462" height="0.090" Y="4.291" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object angle="-1.570" type="RotatingBar" X="3.462" height="0.100" Y="4.621" width="0.698" />
             <object angle="0.000" type="ToyChest" X="7.816" height="1.998" Y="1.004" width="1.448">
                 <property key="ZValue">4</property>
             </object>
@@ -65,20 +57,8 @@
             <object angle="0.000" type="DominoGreen" X="2.561" height="0.500" Y="3.548" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="2.212" height="0.500" Y="3.554" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="1.893" height="0.500" Y="3.549" width="0.100"/>
-            <object angle="-1.570" type="BirchBar" X="1.583" height="0.100" Y="3.576" width="0.698">
-                <property key="PivotPoint">(0.33,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="1.583" height="0.090" Y="3.246" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
-            <object angle="0.000" type="BirchBar" X="0.584" height="0.100" Y="3.240" width="0.734">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="0.584" height="0.090" Y="3.240" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object angle="-1.570" type="RotatingBar" X="1.583" height="0.100" Y="3.576" width="0.698" />
+            <object angle="0.000" type="RotatingBar" X="0.584" height="0.100" Y="3.240" width="0.734" />
             <object angle="0.000" type="Floor" X="2.390" height="0.100" Y="2.292" width="2.580"/>
             <object angle="0.000" type="DominoBlue" X="2.129" height="0.500" Y="2.599" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="3.233" height="0.500" Y="2.594" width="0.100"/>
@@ -115,13 +95,7 @@
             <object angle="0.000" type="Wall" X="0.524" height="0.674" Y="3.998" width="0.099"/>
             <object angle="0.000" type="Floor" X="0.239" height="0.100" Y="3.122" width="0.098"/>
             <object angle="0.000" type="Wall" X="0.648" height="0.478" Y="1.657" width="0.099"/>
-            <object angle="0.000" type="BirchBar" X="4.930" height="0.100" Y="3.989" width="0.627">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="4.930" height="0.090" Y="3.989" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object angle="0.000" type="RotatingBar" X="4.930" height="0.100" Y="3.989" width="0.627" />
             <object angle="0.000" type="VolleyBall" X="4.930" height="0.210" Y="4.159" width="0.210"/>
             <object angle="0.000" type="Floor" X="6.951" height="0.100" Y="1.224" width="0.110"/>
         </predefined>

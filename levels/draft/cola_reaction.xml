@@ -28,13 +28,7 @@
             <object type="Floor" X="5.853" Y="1.079" width="0.590" height="0.100" angle="-1.888"/>
             <object type="ColaMintBottle" X="5.743" ID="cola" Y="1.183" width="0.166" height="0.500" angle="-0.304"/>
             <object type="Floor" X="5.552" Y="0.928" width="0.371" height="0.100" angle="-0.332"/>
-            <object type="BirchBar" X="5.146" Y="1.961" width="0.685" height="0.100" angle="0.000">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object type="Scenery" X="5.146" Y="1.961" width="0.090" height="0.090" angle="0.000">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object type="RotatingBar" X="5.146" Y="1.961" width="0.685" height="0.100" angle="0.000" />
             <object type="VolleyBall" X="5.146" Y="2.117" width="0.210" height="0.210" angle="0.000"/>
             <object type="Balloon" X="4.042" Y="0.575" width="0.270" height="0.360" angle="0.000"/>
             <object type="Balloon" X="3.555" Y="0.567" width="0.270" height="0.360" angle="0.000"/>

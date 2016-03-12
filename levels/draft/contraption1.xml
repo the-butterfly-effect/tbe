@@ -37,41 +37,13 @@
                 <property key="ImageName">LeftRamp</property>
             </object>
             <!-- top ball stop -->
-            <object width="0.1" X="0.8" Y="2.2" height="0.1" type="RectObject" ID="BrassPin">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">4.5</property>
-            </object>
-            <object width="1.3" X="0.8" Y="2.2" height="0.1" type="RectObject" ID="Bar" angle="-0.2">
-                <property key="ImageName">birch_bar</property>
-                <property key="Mass">4</property>
-                <property key="Friction">0.7</property>
-                <property key="Bounciness">0.0</property>
-            </object>
-            <object X="0.8" Y="2.2" type="PivotPoint">
-                <property key="object1">Bar</property>
-                <property key="object2">BrassPin</property>
-                <property key="collide">false</property>
-            </object>
+            <object width="1.3" X="0.8" Y="2.2" height="0.14" type="SeesawSmall" angle="-0.2" />
             <object X="1.56" Y="2.07" type="BowlingBall"/>
             <object width="1.4" X="1.3" Y="1.85" height="0.5" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>
             </object>
             <!-- bottom ball stop -->
-            <object width="0.1" X="0.8" Y="1.25" height="0.1" type="RectObject" ID="BrassPin2">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">4.5</property>
-            </object>
-            <object width="1.3" X="0.8" Y="1.25" height="0.1" type="RectObject" ID="Bar2" angle="-0.2">
-                <property key="ImageName">birch_bar</property>
-                <property key="Mass">4</property>
-                <property key="Friction">0.7</property>
-                <property key="Bounciness">0.0</property>
-            </object>
-            <object X="0.8" Y="1.25" type="PivotPoint">
-                <property key="object1">Bar2</property>
-                <property key="object2">BrassPin2</property>
-                <property key="collide">false</property>
-            </object>
+            <object width="1.3" X="0.8" Y="1.25" height="0.14" type="SeesawSmall" angle="-0.2" />
             <object X="1.56" Y="1.12" type="BowlingBall"/>
             <object width="1.4" X="1.3" Y="0.95" height="0.3" type="LeftRamp">
                 <property key="ImageName">LeftRamp</property>

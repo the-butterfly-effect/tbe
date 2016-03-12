@@ -30,16 +30,8 @@
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
             <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0"/>
             <object width="0.27" X="1.08660069216264" Y="0.2484542043386307" height="0.36" type="Balloon" angle="0"/>
-            <object width="0.1" X="2.5" Y="1.07" height="0.1" type="Scenery" angle="0">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">5.5</property>
-            </object>
             <object width="0.22" X="0.1890082300884956" Y="0.7" height="0.22" type="BowlingBall" angle="0"/>
-            <object width="1.3" X="2.5" Y="1.07" height="0.1" type="RectObject" ID="Lever" angle="0">
-                <property key="ImageName">birch_bar</property>
-                <property key="Mass">1.0</property>
-                <property key="PivotPoint">(0,0)</property>
-            </object>
+            <object width="1.3" X="2.5" Y="1.05" height="0.14" type="SeesawSmall" angle="0" />
             <object width="0.1" X="3.95" Y="0.6" height="1" type="RectObject" angle="0">
                 <property key="ImageName">oldbrick</property>
             </object>

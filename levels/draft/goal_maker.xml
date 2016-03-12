@@ -90,13 +90,7 @@
             <object angle="0.000" width="0.314" Y="1.191" height="0.100" X="0.181" type="Floor"/>
             <object angle="-0.584" width="0.637" Y="1.680" height="0.100" X="3.149" type="Floor"/>
             <object angle="0.000" width="0.200" Y="1.675" height="0.051" X="1.290" type="Wall"/>
-            <object angle="-1.572" width="1.239" Y="0.803" height="0.100" X="0.461" type="BirchBar">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object angle="-1.572" width="0.090" Y="0.803" height="0.090" X="0.461" type="Scenery">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object angle="-1.572" width="1.239" Y="0.803" height="0.100" X="0.461" type="RotatingBar" />
             <object angle="0.000" width="0.220" Y="1.818" height="0.220" X="1.348" type="BowlingBall"/>
             <object angle="0.000" width="0.210" Y="3.104" height="0.210" X="5.320" type="VolleyBall"/>
             <object angle="0.000" width="0.076" Y="2.452" height="0.076" X="2.184" type="PetanqueBoule"/>
