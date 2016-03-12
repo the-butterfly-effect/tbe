@@ -21,7 +21,6 @@ SET(view_SOURCES
     view/RegressionTest.cpp
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
-    view/SimulationControls.cpp
     view/ToolboxListWidgetItem.cpp
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
@@ -52,7 +51,6 @@ SET(view_HEADERS
     view/RegressionTest.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
-    view/SimulationControls.h
     view/ToolboxListWidgetItem.h
     view/ViewDetonatorBox.h
     view/ViewLink.h
@@ -75,7 +73,6 @@ SET(view_UIFORMS
     view/ListViewItemTooltip.ui
     view/MainWindow.ui
     view/SaveLevelInfo.ui
-    view/SimulationControls.ui
     view/ViewPostIt.ui
     view/WinFailDialog.ui
 )

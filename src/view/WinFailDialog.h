@@ -48,8 +48,6 @@ protected:
 
 private:
     Ui::WinFailDialog *ui;
-
-    ResizingGraphicsView* theParentPtr;
 };
 
 #endif // WINFAILDIALOG_H

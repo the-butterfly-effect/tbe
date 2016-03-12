@@ -18,6 +18,7 @@
 
 #include "ChooseLevel.h"
 #include "EditObjectDialog.h"
+#include "GameControls.h"
 #include "GameResources.h"
 #include "Level.h"
 #include "LevelCreator.h"
@@ -26,7 +27,6 @@
 #include "Popup.h"
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
-#include "SimulationControls.h"
 #include "Translator.h"
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
@@ -45,6 +45,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     theGameResourcesPtr(nullptr),
     theMainWindowPtr(nullptr),
     theObjectEditorPtr(nullptr),
+    theGameStateMachinePtr(nullptr),
     theWinFailDialogPtr(nullptr),
     theFrameRateViewPtr(nullptr)
 {
@@ -52,7 +53,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 	setDragMode(QGraphicsView::NoDrag);
 	setFrameStyle(QFrame::Plain + QFrame::NoFrame);
 	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-	theSimControlsPtr = new SimulationControls(this);
+    theGameControlsPtr = new GameControls(this);
 	theGameResourcesPtr = new GameResources(this);
 	theRSGVPtr = this;
 }
@@ -60,7 +61,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 
 ResizingGraphicsView::~ResizingGraphicsView()
 {
-	delete theSimControlsPtr;
+    delete theGameControlsPtr;
 	theRSGVPtr = nullptr;
 }
 
@@ -101,21 +102,34 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	if (event!=nullptr)
 		QGraphicsView::resizeEvent(event);
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
-	theSimControlsPtr->parentResize(frameSize());
+    theGameControlsPtr->parentResize(frameSize());
 	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
 
-void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
+void ResizingGraphicsView::setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
 {
 	theMainWindowPtr = aMWPtr;
-	theSimControlsPtr->setup(anMenuControlsPtr);
-	connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), theSimControlsPtr, SLOT(slotNumberOfCrossesChanged(int)));
+    theGameControlsPtr->setup(anMenuControlsPtr);
+    connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr, SLOT(slot_NumberOfCrossesChanged(int)));
 
 	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
 			 theMainWindowPtr, SLOT(reloadLevel()));
 
-	// this one displays the frame rate counter if active
+    connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
+             theGameControlsPtr, SLOT(slot_updateIcon(GameStateMachine::States)));
+
+    theGameStateMachinePtr = aGSMPtr;
+    connect (theGameControlsPtr, SIGNAL(signal_Forward_triggered()),  aGSMPtr, SIGNAL(signal_Forward_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Pause_triggered()),    aGSMPtr, SIGNAL(signal_Pause_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Play_triggered()),     aGSMPtr, SIGNAL(signal_Play_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_RealFast_triggered()), aGSMPtr, SIGNAL(signal_RealFast_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Reset_triggered()),    aGSMPtr, SIGNAL(signal_Reset_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Slow_triggered()),     aGSMPtr, SIGNAL(signal_Slow_triggered()));
+    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),    this,    SLOT(slot_levelWon()));
+    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()),    this,    SLOT(slot_levelDeath()));
+
+    // this one displays the frame rate counter if active
 	theFrameRateViewPtr= aMenuBarPtr->addAction("");
 }
 
@@ -123,7 +137,7 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
                                         const QString& aLevelName)
 {
-	DEBUG1("MainWindow::setViewWorld(%p, \"%s\")", aScenePtr,
+    DEBUG1("ResizingGraphicsView::setViewWorld(%p, \"%s\")", aScenePtr,
                ASCII(aLevelName));
 	theScenePtr=aScenePtr;
 
@@ -133,13 +147,8 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 	resizeEvent(nullptr);
 	theMainWindowPtr->setWindowTitle(APPNAME + " - " + TheGetText(aLevelName));
 
-	// also set the startstopwatch view
-    theSimControlsPtr->hookSignalsUp(aScenePtr, this);
-
-    connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), this, SLOT(slot_levelWon()));
-    connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), this, SLOT(slot_levelDeath()));
-    connect(aScenePtr, SIGNAL(needReset()), theSimControlsPtr, SLOT(onReset()));
-    connect(aScenePtr, SIGNAL(needPause()), theSimControlsPtr, SLOT(onPause()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()),   theGameStateMachinePtr, SIGNAL(signal_Won_happened()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theGameStateMachinePtr, SIGNAL(signal_Fail_happened()));
 
 	if (theIsRunAsRegression)
 	{
@@ -147,27 +156,14 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest, SLOT(slot_Fail()));
 	}
 
+    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  aScenePtr, SLOT(slot_signalFF()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     aScenePtr, SLOT(slot_signalPlay()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    aScenePtr, SLOT(slot_signalPause()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), aScenePtr, SLOT(slot_signal4F()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    aScenePtr, SLOT(slot_signalReset()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr, SLOT(slot_signalPause()));
+
 	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
-}
-
-
-void ResizingGraphicsView::slot_actionChooseLevel()
-{
-	DEBUG3ENTRY;
-    slot_clearWinFailDialogPtr();
-    emit theMainWindowPtr->on_action_Open_Level_triggered();
-}
-
-
-void ResizingGraphicsView::slot_actionNextLevel()
-{
-	DEBUG3ENTRY;
-    slot_clearWinFailDialogPtr();
-	QString myNextLevelName = ChooseLevel::getNextLevelName();
-	if (myNextLevelName.isEmpty()==false)
-		theMainWindowPtr->loadLevel(myNextLevelName);
-	else
-		emit slot_actionChooseLevel();
 }
 
 
@@ -178,46 +174,19 @@ void ResizingGraphicsView::slot_clearWinFailDialogPtr()
 }
 
 
-void ResizingGraphicsView::slot_actionReplay()
-{
-	DEBUG3ENTRY;
-    slot_clearWinFailDialogPtr();
-    emit theSimControlsPtr->onReset();
-}
-
-void ResizingGraphicsView::slot_actionSkipLevel()
-{
-	DEBUG3ENTRY;
-    if (theIsLevelCreator==false)
-    {
-        QString myKey = "completed/" + Level::getLevelFileName();
-        QSettings mySettings;
-        // don't overwrite an existing value, it might be "done" already...
-        if (!mySettings.value(myKey).isValid())
-            mySettings.setValue(myKey, "skipped");
-    }
-    slot_actionNextLevel();
-}
-
-
+// TODO/FIXME: logic is now ok, should be triggered by GameStateMachine::signal_Game_Failed()
 void ResizingGraphicsView::slot_levelDeath(void)
 {
-	// only need to display the dialog once...
-	if (theWinFailDialogPtr!=nullptr)
-		return;
 	DEBUG3ENTRY;
 	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
-	emit theSimControlsPtr->onFailed();
 	emit theWinFailDialogPtr->appearAnimated();
 }
 
 
+//TODO/FIXME: Part of this logic doesn't belong here
 void ResizingGraphicsView::slot_levelWon(void)
 {
-	// Only need to display the dialog once...
-	if (theWinFailDialogPtr!=nullptr)
-		return;
-	DEBUG3ENTRY;
+    DEBUG1ENTRY;
 
     // Anti-cheat:
     // Don't label the level as complete when we're in level editor mode
@@ -230,13 +199,10 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
 	emit theWinFailDialogPtr->appearAnimated();
-
-	// Make the sim stop once the above animation is (almost) done...
-	QTimer::singleShot(3000, theScenePtr, SLOT(slot_signalPause()));
 }
 
 
 void ResizingGraphicsView::slot_showGameResourcesDialog()
 {
-	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
+    QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
 }

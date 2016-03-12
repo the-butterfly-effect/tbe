@@ -28,6 +28,7 @@ void GameState::onEntry ( QEvent * event )
     DEBUG4("GameControls-GameState %s onEntry!", ASCII(theName));
     QState::onEntry(event);
     isActive = true;
+    emit activated(this);
 }
 
 void GameState::onExit ( QEvent * event )
@@ -130,10 +131,11 @@ GameStateMachine::GameStateMachine(QObject *parent) :
 
     theWonState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     connect(theWonState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
-    theWonRunningSubState->addTransition(this, SIGNAL(todo), theWonPausedSubState);
+    theWonRunningSubState->addTransition(&theWonRunningTimer, SIGNAL(timeout()), theWonPausedSubState);
     connect(theWonState, SIGNAL(entered()), this, SLOT(slot_SetWonRunningTimeout()));
     connect(theWonRunningSubState, SIGNAL(entered()), this, SIGNAL(signal_Game_Is_Won()));
     theWonPausedSubState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
+    connect(theWonPausedSubState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
 
     emit theGameStateMachine.start();
 }

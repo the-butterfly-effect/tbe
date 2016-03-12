@@ -69,6 +69,7 @@ public:
     {
         FailedStatus,
         ForwardStatus,
+        // NoLevelStatus,  // not implemented yet, issue #108
         NormalStatus,
         PausedStatus,
         ProblemStatus,
@@ -119,7 +120,7 @@ signals:
 
     /// Emitted whenever the game state changes.
     /// The slot for this signal is mostly GameControls::slot_updateIcon().
-    void signal_State_Changed(States aNewState);
+    void signal_State_Changed(GameStateMachine::States aNewState);
 
 public slots:
     /// Resizinggraphicsview connects CrossRegisterSingleton to this signal

@@ -24,11 +24,12 @@
 
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
+class GameControls;
 class GameResources;
+class GameStateMachine;
 class MainWindow;
 class QMenu;
 class QMenuBar;
-class SimulationControls;
 class ViewWorld;
 class WinFailDialog;
 
@@ -56,7 +57,7 @@ public:
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
+    void setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
 
     /// @returns a pointer to the GameResourcesDialog.
     /// @note this member is only used to hand a pointer to Level.
@@ -68,16 +69,21 @@ public:
 //protected:
     virtual void resizeEvent(QResizeEvent *event);
 
+signals:
+    /// retransmitted from WinFailDialog
+    void signal_actionChooseLevel();
+    /// retransmitted from WinFailDialog
+    void signal_actionNextLevel();
+    /// retransmitted from WinFailDialog
+    void signal_actionReplay();
+    /// retransmitted from WinFailDialog
+    void signal_actionSkipLevel();
+
 private slots:
     void slot_levelDeath(void);
     void slot_levelWon(void);
 
-    void slot_actionChooseLevel();
-    void slot_actionNextLevel();
-    void slot_actionReplay();
-
 public slots:
-    void slot_actionSkipLevel();
     void slot_clearWinFailDialogPtr();
 	void slot_showGameResourcesDialog();
 
@@ -85,7 +91,8 @@ private:
     GameResources*      theGameResourcesPtr;
     MainWindow*         theMainWindowPtr;
     EditObjectDialog*   theObjectEditorPtr;
-    SimulationControls* theSimControlsPtr;
+    GameControls*       theGameControlsPtr;
+    GameStateMachine*   theGameStateMachinePtr;
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;
     QAction*            theFrameRateViewPtr;

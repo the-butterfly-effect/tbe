@@ -24,8 +24,7 @@
 WinFailDialog::WinFailDialog(MessageType aType,
                              ResizingGraphicsView* aParent) :
     AnimatedDialog(aParent),
-    ui(new Ui::WinFailDialog),
-    theParentPtr(aParent)
+    ui(new Ui::WinFailDialog)
 {
     ui->setupUi(this);
     ui->replayButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
@@ -37,20 +36,20 @@ WinFailDialog::WinFailDialog(MessageType aType,
 			//: make sure the translated text fits - the rest won't be shown
 			myMessage = tr("Congratulations!");
 			ui->nextButton->setEnabled(true);
-                        ui->skipButton->setVisible(false);
+            ui->skipButton->setVisible(false);
 			break;
 		case DEATH:
 			//: make sure the translated text fits - the rest won't be shown
 			myMessage = tr("Fail - retry?");
 			ui->nextButton->setEnabled(false);
-                        ui->replayButton->setText(tr("&Retry"));
+            ui->replayButton->setText(tr("&Retry"));
 			break;
 	}
 	ui->label->setText(myMessage);
-	connect(ui->chooseButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionChooseLevel()));
-	connect(ui->nextButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionNextLevel()));
-	connect(ui->replayButton, SIGNAL(clicked()), theParentPtr, SLOT(slot_actionReplay()));
-	connect(ui->skipButton,   SIGNAL(clicked()), theParentPtr, SLOT(slot_actionSkipLevel()));
+    connect(ui->chooseButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionChooseLevel()));
+    connect(ui->nextButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionNextLevel()));
+    connect(ui->replayButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionReplay()));
+    connect(ui->skipButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionSkipLevel()));
 }
 
 WinFailDialog::~WinFailDialog()

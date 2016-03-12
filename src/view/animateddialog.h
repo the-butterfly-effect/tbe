@@ -104,8 +104,7 @@ private:
     /// appearance animation (which is also the starting point of the disappear).
     QPointF getInsidePoint() const;
 
-    /// Private pointer to our parent - which should at least be a QWidget
-    /// but preferable a resizinggraphicsview...
+    /// Private pointer to our parent, the "resizinggraphicsview".
     ResizingGraphicsView* theOurParentPtr;
     QPropertyAnimation theAnimation;
 
