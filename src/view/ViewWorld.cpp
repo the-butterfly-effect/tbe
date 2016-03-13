@@ -156,6 +156,8 @@ void ViewWorld::setupBackground(void)
 
 void ViewWorld::slot_signalFF()
 {
+    if (isSimRunning==false)
+        slot_signalPlay();
     theSimSpeed = 250;
     emit theTimer.start();
 }
@@ -163,6 +165,8 @@ void ViewWorld::slot_signalFF()
 
 void ViewWorld::slot_signal4F()
 {
+    if (isSimRunning==false)
+        slot_signalPlay();
     theSimSpeed = 60;
     emit theTimer.start();
 }
