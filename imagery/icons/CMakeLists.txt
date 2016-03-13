@@ -31,13 +31,16 @@ install(FILES
 	icons/ProxyResizeTotal.svg
 	icons/ProxyResizeVerti.svg
 	icons/ProxyRotate.svg
+	icons/Status4F.svg
 	icons/StatusFail.svg
 	icons/StatusFF.svg
 	icons/StatusPause.svg
 	icons/StatusPlay.svg
 	icons/StatusProblem.svg
-	icons/Status4F.svg
+	icons/StatusSlow.svg
 	icons/StatusStop.svg
+        icons/StatusWon.svg
+
 
 	DESTINATION ${TBE_IMAGES_DIR}
 )
