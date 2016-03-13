@@ -84,6 +84,7 @@ public slots:
     void slot_signalPause();
     void slot_signalPlay();
     void slot_signalReset();
+    void slot_signalSlow();
 
     void on_sizeAdjust(void);
     void setupBackground(void);

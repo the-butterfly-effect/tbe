@@ -217,6 +217,14 @@ void ViewWorld::slot_signalReset()
 }
 
 
+void ViewWorld::slot_signalSlow()
+{
+    if (isSimRunning==false)
+        slot_signalPlay();
+    theSimSpeed = 3000;
+    emit theTimer.start();
+}
+
 // ---------------------------------------------------------------------------
 //                Below is the b2DebugDraw implementation
 // ---------------------------------------------------------------------------

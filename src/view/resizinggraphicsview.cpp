@@ -161,6 +161,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
     connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    aScenePtr, SLOT(slot_signalPause()));
     connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), aScenePtr, SLOT(slot_signal4F()));
     connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    aScenePtr, SLOT(slot_signalReset()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     aScenePtr, SLOT(slot_signalSlow()));
     connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr, SLOT(slot_signalPause()));
 
 	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));

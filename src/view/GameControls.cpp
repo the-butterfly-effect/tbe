@@ -52,7 +52,7 @@ GameControls::GameControls(QWidget *parent) :
     thePixmaps.append(myTempPixmap);
     ImageCache::getPixmap("StatusProblem",QSize(64,64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusRealFast", QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("Status4F",     QSize(64,64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
     ImageCache::getPixmap("StatusSlow",   QSize(64,64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
@@ -82,12 +82,15 @@ void GameControls::setup(QMenu* aMenuPtr)
     theForwardAction = new QAction(theForwardIcon, tr("&Forward"), nullptr);
     //: translators: 'f' is for (fast) forward
     theForwardAction->setShortcut(QKeySequence(tr("f")));
+    theForwardAction->setCheckable(true);
 
     // add actions and their quick keys
     thePauseAction = new QAction(thePauseIcon, tr("P&ause"), nullptr);
+    thePauseAction->setCheckable(true);
 
     // add actions and their quick keys
     thePlayAction = new QAction(thePlayIcon, tr("&Play"), nullptr);
+    thePlayAction->setCheckable(true);
 
     // add actions and their quick keys
     theResetAction = new QAction(theResetIcon, tr("&Reset"), nullptr);
@@ -124,6 +127,7 @@ void GameControls::setup(QMenu* aMenuPtr)
     theGameButtonGroup.addAction(theRealFastAction);
     //theGameButtonGroup.addAction(theResetAction); reset is not mutually exclusive
     theGameButtonGroup.addAction(theSlowAction);
+    theGameButtonGroup.setExclusive(true);
 
 	ui->buttonForward->setDefaultAction(theForwardAction);
     ui->buttonPause->setDefaultAction(thePauseAction);
