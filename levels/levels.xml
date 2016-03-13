@@ -64,17 +64,15 @@
    <level> draft/hanging_box.xml </level>
    <level> draft/zoingandboom.xml </level>
    <level> draft/find-the-message.v2.xml </level>
+   <level> draft/the_core.xml </level>
+   <level> draft/the_pit.xml </level>
+   <level> draft/boom_boom_boom.xml </level>
+   <level> draft/goal_maker.xml </level>
+   <level> draft/hattrick.xml </level>
+   <level> draft/cola_reaction.xml </level>
+   <level> draft/butterfly_race.xml </level>
+   <level> draft/sorting-2.xml </level>
+   <level> draft/sorting-3.xml </level>
+   <level> draft/sorting-4.xml </level>
+   <level> draft/sorting-5.xml </level>
 </tbe-levels>
-
-<!-- todo: 
-    The Core
-    Boom! Boom! Boom!
-    Goal Maker
-    Hat-trick
-    Cola Reaction
-    Butterfly Race
-    draft/sorting-2.xml
-    draft/sorting-3.xml
-    draft/sorting-4.xml
-    draft/sorting-5.xml
--->
