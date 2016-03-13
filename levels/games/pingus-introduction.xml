@@ -67,6 +67,9 @@
         <goal type="escapedPingusCount" isFail="false">
             <property key="equalmore">5</property>
         </goal>
+        <goal type="escapedPingusCount" isFail="true">
+            <property key="lessthan">3</property>
+        </goal>
     </goals>
     <hints/>
 </tbe-level>
