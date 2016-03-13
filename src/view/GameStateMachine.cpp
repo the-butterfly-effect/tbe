@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "animateddialog.h"
 #include "GameStateMachine.h"
 #include "tbe_global.h"
 
@@ -127,7 +128,8 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     theStoppedState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
     theStoppedState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
     connect(theStoppedState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
-    connect(theStoppedState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theStoppedState, &GameState::entered, &AnimatedDialog::makeAllAnimatedDialogsDisappear);
+    connect(theStoppedState, &GameState::activated, this, &GameStateMachine::slot_State_Activated);
 
     theWonState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     connect(theWonState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));

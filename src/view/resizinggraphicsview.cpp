@@ -129,6 +129,11 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, 
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),    this,    SLOT(slot_levelWon()));
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()),    this,    SLOT(slot_levelDeath()));
 
+    connect (this, SIGNAL(signal_actionChooseLevel()), theMainWindowPtr, SLOT(on_action_Open_Level_triggered()));
+    connect (this, SIGNAL(signal_actionNextLevel()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
+    connect (this, SIGNAL(signal_actionReplay()),      aGSMPtr, SIGNAL(signal_Reset_triggered()));
+    connect (this, SIGNAL(signal_actionSkipLevel()),   theMainWindowPtr, SLOT(on_action_Skip_Level_triggered()));
+
     // this one displays the frame rate counter if active
 	theFrameRateViewPtr= aMenuBarPtr->addAction("");
 }
