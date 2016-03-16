@@ -65,6 +65,8 @@
    <level> draft/zoingandboom.xml </level>
    <level> draft/find-the-message.v2.xml </level>
    <level> draft/the_core.xml </level>
+   <level> draft/butterflies_of_doom.xml </level>
+   <level> draft/wedge_land.xml </level>
    <level> draft/the_pit.xml </level>
    <level> draft/boom_boom_boom.xml </level>
    <level> draft/goal_maker.xml </level>
@@ -75,4 +77,5 @@
    <level> draft/sorting-3.xml </level>
    <level> draft/sorting-4.xml </level>
    <level> draft/sorting-5.xml </level>
+   <level> elce09/10_kilograms_above_the_ground.xml </level>
 </tbe-levels>
