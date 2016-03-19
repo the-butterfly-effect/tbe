@@ -9,12 +9,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="48"/>
-        <source>Bowling pins are meant to be run over - most
-people prefer to do that using a Bowling Ball.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/PolyObject.cpp" line="60"/>
         <source>Skyhook</source>
         <translation type="unfinished"></translation>
@@ -30,8 +24,14 @@ people prefer to do that using a Bowling Ball.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/model/PolyObject.cpp" line="48"/>
+        <source>Bowling pins are meant to be run over—most
+people prefer to do that using a bowling ball.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/model/PolyObject.cpp" line="71"/>
-        <source>A serious mass. As heavy as it looks!</source>
+        <source>A serious mass. It is very heavy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -99,6 +99,13 @@ The left is higher than the right, so things slide to the right.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/model/PolyObject.cpp" line="129"/>
+        <location filename="../src/model/PolyObject.cpp" line="143"/>
+        <source>This quarter arc is attached to the scene.
+It can&apos;t be moved, penetrated or destroyed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/model/PolyObject.cpp" line="159"/>
         <source>Toy Chest</source>
         <translation type="unfinished"></translation>
@@ -119,14 +126,28 @@ The left is higher than the right, so things slide to the right.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="128"/>
-        <source>Quarter Arc Small</source>
+        <location filename="../src/model/PolyObject.cpp" line="180"/>
+        <source>Small Seesaw</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PolyObject.cpp" line="129"/>
-        <location filename="../src/model/PolyObject.cpp" line="143"/>
-        <source>This is a quarter arc. Or ninety degrees, or 1.57 radians if you want.</source>
+        <location filename="../src/model/PolyObject.cpp" line="181"/>
+        <source>One usually puts toddlers on a seesaw, but they&apos;re in short supply.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="190"/>
+        <source>Rotating Bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="191"/>
+        <source>This wooden bar rotates around its center.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PolyObject.cpp" line="128"/>
+        <source>Quarter Arc Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -155,7 +176,37 @@ Birch wood beams move and float.</source>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="59"/>
-        <source>The famous plastic red domino stone</source>
+        <source>The famous red plastic domino stone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="64"/>
+        <source>The famous blue plastic domino stone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="69"/>
+        <source>The famous green plastic domino stone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="74"/>
+        <source>This is the floor. It is attached to the scene
+and can&apos;t be moved, penetrated or destroyed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="81"/>
+        <source>This is a steel I-beam. Steel I-beams are large and heavy
+and useful to build bridges and other constructions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="92"/>
+        <source>This is a hammer which has been attached
+to the scene at the end of its handle.
+The hammer can be used to apply a force
+to some of the heavier objects.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -164,18 +215,8 @@ Birch wood beams move and float.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="64"/>
-        <source>The famous plastic blue domino stone</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/RectObject.cpp" line="68"/>
         <source>Domino (Green)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/RectObject.cpp" line="69"/>
-        <source>The famous plastic green domino stone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -184,19 +225,8 @@ Birch wood beams move and float.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="74"/>
-        <source>It doesn&apos;t move.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
         <source>Steel I-Beam</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/RectObject.cpp" line="81"/>
-        <source>An I Beam is named after the shape of its cross-section.
- It&apos;s heavy, don&apos;t drop one on your foot.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -205,13 +235,14 @@ Birch wood beams move and float.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="91"/>
-        <source>Hammer</source>
+        <location filename="../src/model/RectObject.cpp" line="86"/>
+        <source>This is a brick wall. It is attached to the scene
+and can&apos;t be moved, penetrated or destroyed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/RectObject.cpp" line="92"/>
-        <source>A hammer usually has a hickory handle and a steel head.</source>
+        <location filename="../src/model/RectObject.cpp" line="91"/>
+        <source>Hammer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -311,17 +342,32 @@ Double-click for the post-it notes for help.
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
-        <source>Your average bowling ball - heavy, round and willing to roll</source>
+        <source>Your average bowling ball: heavy, round and willing to roll.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="35"/>
-        <source>Volley Ball</source>
+        <source>Volleyball</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
-        <source>A volley ball - you know: light, soft and fairly bouncy.</source>
+        <source>A volleyball—you know: light, soft and very bouncy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="45"/>
+        <source>A tennis ball is small, fuzzy and bouncy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="53"/>
+        <source>A soccer ball is large and bouncy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/CircleObjects.cpp" line="61"/>
+        <source>A pétanque ball is made of metal and is quite heavy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -330,28 +376,13 @@ Double-click for the post-it notes for help.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="45"/>
-        <source>A tennis ball is small, fuzzy and known for turning heads.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/CircleObjects.cpp" line="52"/>
         <source>Soccer Ball</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/CircleObjects.cpp" line="53"/>
-        <source>A football (of the spherical persuasion).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
         <source>Pétanque Boule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/CircleObjects.cpp" line="61"/>
-        <source>A pétanque ball is made of metal and heavy.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -772,32 +803,27 @@ Nothing was changed yet, please fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/LevelCreator.cpp" line="119"/>
-        <source>&amp;Object Editor...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/LevelCreator.cpp" line="126"/>
+        <location filename="../src/view/LevelCreator.cpp" line="122"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/LevelCreator.cpp" line="128"/>
+        <location filename="../src/view/LevelCreator.cpp" line="124"/>
         <source>&amp;Draw Debug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/LevelCreator.cpp" line="135"/>
+        <location filename="../src/view/LevelCreator.cpp" line="131"/>
         <source>&amp;Draw Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/LevelCreator.cpp" line="158"/>
+        <location filename="../src/view/LevelCreator.cpp" line="154"/>
         <source>Object Properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/LevelCreator.cpp" line="159"/>
+        <location filename="../src/view/LevelCreator.cpp" line="155"/>
         <source>Toolbox</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1051,106 +1077,106 @@ Nothing was changed yet, please fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="98"/>
+        <location filename="../src/view/MainWindow.cpp" line="99"/>
         <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="104"/>
+        <location filename="../src/view/MainWindow.cpp" line="105"/>
         <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="138"/>
+        <location filename="../src/view/MainWindow.cpp" line="139"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="159"/>
+        <location filename="../src/view/MainWindow.cpp" line="160"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="124"/>
+        <location filename="../src/view/MainWindow.cpp" line="125"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;version: %2&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015,2016 Klaas van Gend and many others&lt;br&gt;&lt;br&gt;Code licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;Levels and graphics may have different open/free licenses.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="176"/>
+        <location filename="../src/view/MainWindow.cpp" line="177"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to &lt;a href=&quot;http://www.box2d.org/&quot;&gt;http://www.box2d.org/&lt;/a&gt;.&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to &lt;a href=&quot;http://qt-project.org/&quot;&gt;http://qt-project.org/&lt;/a&gt;.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="193"/>
+        <location filename="../src/view/MainWindow.cpp" line="194"/>
         <source>Do you really want to discard the current level and start a new one?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="214"/>
+        <location filename="../src/view/MainWindow.cpp" line="215"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="236"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
         <source>Open level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="236"/>
+        <location filename="../src/view/MainWindow.cpp" line="237"/>
         <source>TBE levels (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="245"/>
+        <location filename="../src/view/MainWindow.cpp" line="246"/>
         <source>really?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="254"/>
+        <location filename="../src/view/MainWindow.cpp" line="255"/>
         <source>You have unsaved changes,
 really reload Level from disk?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="259"/>
+        <location filename="../src/view/MainWindow.cpp" line="260"/>
         <source>Level has no name - could not be reloaded. Please use &quot;Save As...&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="274"/>
+        <location filename="../src/view/MainWindow.cpp" line="275"/>
         <source>Level has no name - could not be saved. Please use &quot;Save As...&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="279"/>
+        <location filename="../src/view/MainWindow.cpp" line="280"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="300"/>
+        <location filename="../src/view/MainWindow.cpp" line="301"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="314"/>
+        <location filename="../src/view/MainWindow.cpp" line="315"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="321"/>
+        <location filename="../src/view/MainWindow.cpp" line="322"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="342"/>
+        <location filename="../src/view/MainWindow.cpp" line="345"/>
         <source>
 You have unsaved undo actions.
 You lose your actions when switching languages.
@@ -1159,7 +1185,7 @@ You lose your actions when switching languages.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="345"/>
+        <location filename="../src/view/MainWindow.cpp" line="348"/>
         <source>You requested a switch to language:
 %1
 Be careful: not all languages are 100% complete.
@@ -1178,27 +1204,27 @@ Be careful: not all languages are 100% complete.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="415"/>
+        <location filename="../src/view/MainWindow.cpp" line="416"/>
         <source>&amp;Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="417"/>
+        <location filename="../src/view/MainWindow.cpp" line="418"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="419"/>
+        <location filename="../src/view/MainWindow.cpp" line="420"/>
         <source>&amp;Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="422"/>
+        <location filename="../src/view/MainWindow.cpp" line="423"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="422"/>
+        <location filename="../src/view/MainWindow.cpp" line="423"/>
         <source>Shift+Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1272,7 +1298,25 @@ Be careful: not all languages are 100% complete.
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="59"/>
-        <source>a Helium Balloon. Lighter than air, it moves up.</source>
+        <source>A helium balloon. Lighter than air, it moves up.
+It will pop when it hits sharp objects or gets squashed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/BalloonCactus.cpp" line="267"/>
+        <source>Cactus (Cactacea Bulbuous Stingus):
+A cactus has sharp spines.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/BalloonCactus.cpp" line="345"/>
+        <source>A wooden board attached to the scene.
+It has many sharp nails on one side.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/BalloonCactus.cpp" line="415"/>
+        <source>A rotating disc with sharp teeth.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1281,18 +1325,8 @@ Be careful: not all languages are 100% complete.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="267"/>
-        <source>Cactacea Bulbuous Stingus - a Cactus has spines!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/BalloonCactus.cpp" line="344"/>
         <source>BedOfNails</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="345"/>
-        <source>Do not touch a bed of nails - it stings!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1301,18 +1335,8 @@ Be careful: not all languages are 100% complete.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/BalloonCactus.cpp" line="415"/>
-        <source>a rotating disc with sharp teeth.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/Butterfly.h" line="41"/>
         <source>Butterfly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/Butterfly.cpp" line="45"/>
-        <source>Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1323,7 +1347,8 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="50"/>
         <source>This is a prepared cola bottle with a mint in it.
-Look: it blows if triggered!</source>
+If you shake it just a little bit, a reaction starts,
+which makes the bottle spit a long stream of cola.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1362,13 +1387,6 @@ Look: it blows if triggered!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/PostIt.cpp" line="52"/>
-        <source>Someone left notes all over the place.
-You know, those yellow 3x3 inch pieces of paper.
-You might want to read them - it may help!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/model/Scenery.h" line="45"/>
         <source>Scenery</source>
         <translation type="unfinished"></translation>
@@ -1380,11 +1398,12 @@ You might want to read them - it may help!</source>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="77"/>
-        <source>Something springy.</source>
+        <source>A loose spring. When a force is applied to it,
+it retracts and expands.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/Spring.cpp" line="211"/>
+        <location filename="../src/model/Spring.cpp" line="212"/>
         <source>Spring End</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1404,37 +1423,60 @@ You might want to read them - it may help!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/TriggerExplosion.cpp" line="148"/>
+        <location filename="../src/model/TriggerExplosion.cpp" line="149"/>
         <source>(empty)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="155"/>
-        <source>Send BOOM to %1</source>
+        <source>This is a detonator box attached to a cell phone.
+It triggers dynamite remotely if the handle is pushed.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="159"/>
+        <source>This one doesn&apos;t make any calls yet,
+select a phone number!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="162"/>
+        <source>This one calls %1.</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/TriggerExplosion.cpp" line="224"/>
+        <location filename="../src/model/TriggerExplosion.cpp" line="234"/>
+        <source>This is the handle of a detonator box.
+Throw a heavy object on it to push it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="431"/>
+        <source>It&apos;s dynamite attached to a cell phone.
+This cell phone doesn&apos;t take any calls, however.</source>
+        <extracomment>Translators: “
+” means “newline”, keep it.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="434"/>
+        <source>It&apos;s dynamite attached to a cell phone, ready to be
+remotely triggered by a detonator box.
+Dial %1 to make the dynamite go boom.</source>
+        <extracomment>Translators: “
+” means “newline”, keep it. “%1” will be replaced by the phone number</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/TriggerExplosion.cpp" line="233"/>
         <source>Detonator Box Handle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/model/TriggerExplosion.cpp" line="225"/>
-        <source>Push Here To BOOM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/TriggerExplosion.cpp" line="313"/>
+        <location filename="../src/model/TriggerExplosion.cpp" line="322"/>
         <source>Dynamite</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/model/TriggerExplosion.cpp" line="421"/>
-        <source>Dynamite: invented by Alfred Nobel. 
- Dial %1 for a nice explosion.</source>
-        <extracomment>Translators: the 
- means &quot;newline&quot; - keep it. The %1 will be replaced by a phone number</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1483,7 +1525,25 @@ Parse error at line %1, column %2:
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="54"/>
-        <source>The famous penguin. He walks and believes in your guidance. Keep him alive!</source>
+        <source>A penguin walks left or right and turns around when
+it collides with something heavy. It and can push
+light objects around. It also likes to slide down
+slopes but can&apos;t take much abuse.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/Butterfly.cpp" line="45"/>
+        <source>Butterfly (Flappus Chaoticus Fragilius):
+It slowly flies to the right and is attracted
+to flowers. It is very fragile.
+You have to keep it safe at all costs!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/model/PostIt.cpp" line="52"/>
+        <source>Someone left notes all over the place.
+You know, those yellow 3×3 inch pieces of paper.
+You might want to read them—it may help!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
