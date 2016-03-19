@@ -124,6 +124,11 @@ IF(WIN32 OR APPLE)
             ${CMAKE_SOURCE_DIR}/src/libintl/libintl3.dll
             DESTINATION ${TBE_BIN_DIR}
         )
+        # On Windows, package qt's own qm files for standard strings like yes/non/cancel.
+        FILE(GLOB qtqmfiles ${QTMYLIB}/../translations/qt_*.qm)
+        INSTALL(FILES ${qtqmfiles}
+            DESTINATION ${TBE_I18N_DIR}
+        )
     endif()
     if (APPLE)
         set_target_properties(tbe PROPERTIES MACOSX_BUNDLE false)
