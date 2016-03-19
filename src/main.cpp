@@ -170,7 +170,7 @@ int main(int argc, char *argv[])
 {
 	//** init Qt (graphics toolkit) - www.qtsoftware.com
 	QApplication app(argc, argv);
-    putenv("QT_HASH_SEED=1");
+    setenv("QT_HASH_SEED","1", 1);
 
 	//** init splash screen, do it as early in program start as possible
 	QSplashScreen mySplash(QPixmap(":/title_page.png"));
