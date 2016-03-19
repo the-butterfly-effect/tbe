@@ -8,14 +8,15 @@ if (WIN32 OR APPLE)
     # At least on Win, the CMAKE_INSTALL_PREFIX is the location inside
     # 'build' where all files are copied prior to creating the package.
     if (WIN32)
-        set(TBE_LEVELS_DIR  levels)
-        set(TBE_IMAGES_DIR  images)
-        set(TBE_I18N_DIR    i18n)
-        set(TBE_DOC_DIR     doc)
-        set(TBE_DESKTOP_DIR applications)
-        set(TBE_ICON_DIR    icons)
+        set(TBE_LEVELS_DIR    "levels")
+        set(TBE_IMAGES_DIR    "images")
+        set(TBE_I18N_DIR      "i18n")
+        set(TBE_DOC_DIR       "doc")
+        set(TBE_DESKTOP_DIR   "applications")
+        set(TBE_ICON_DIR      "icons")
         set(TBE_TARGET_PREFIX "./")
-        set(TBE_BIN_DIR     ".")
+        set(TBE_BIN_DIR       ".")
+        set(CMAKE_INSTALL_PREFIX ".")
 #    endif ()
     else (APPLE)
         set(TBE_TOPLEVEL_DIR tbe.app/Contents)
@@ -28,8 +29,8 @@ if (WIN32 OR APPLE)
         set(TBE_ICON_DIR    ${TBE_RESOURCES_DIR}/icons)
         set(TBE_TARGET_PREFIX "../../../")
         set(TBE_BIN_DIR     ${TBE_TOPLEVEL_DIR}/MacOS)
+        set(CMAKE_INSTALL_PREFIX installprefix)
     endif ()
-    set(CMAKE_INSTALL_PREFIX installprefix)
 else ()
     # i.e. Linux variants
     set (CMAKE_INSTALL_PREFIX "/usr")
@@ -123,6 +124,11 @@ IF(WIN32 OR APPLE)
             ${CMAKE_SOURCE_DIR}/src/libintl/libiconv2.dll
             ${CMAKE_SOURCE_DIR}/src/libintl/libintl3.dll
             DESTINATION ${TBE_BIN_DIR}
+        )
+        # On Windows, package qt's own qm files for standard strings like yes/non/cancel.
+        FILE(GLOB qtqmfiles ${QTMYLIB}/../translations/qt_*.qm)
+        INSTALL(FILES ${qtqmfiles}
+            DESTINATION ${TBE_I18N_DIR}
         )
     endif()
     if (APPLE)
