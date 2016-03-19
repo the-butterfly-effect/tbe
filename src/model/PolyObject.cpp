@@ -46,8 +46,8 @@ static AbstractPolyObjectFactory theBowlingPinFactory(
 	"BowlingPin",
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling Pin"),
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Bowling pins are meant to be run "
-				"over - most\npeople prefer to do that using "
-				"a Bowling Ball."),
+				"over—most\npeople prefer to do that using "
+				"a bowling ball."),
 	"BowlingPin",
 	"(0.02,0.17)=(-0.02,0.17)=(-0.045,0.14)=(-0.04,0.065)=(0.0,0.04)"
 	"=(0.04,0.065)=(0.045,0.14);"
@@ -68,7 +68,7 @@ static AbstractPolyObjectFactory theSkyhookFactory(
 static AbstractPolyObjectFactory theWeightFactory(
 	"Weight",
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Weight"),
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A serious mass. As heavy as it looks!"),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A serious mass. It is very heavy."),
 	"Weight",
 	"(-0.20,-0.20)=(0.20,-0.20)=(0.06,0.20)=(-0.06,0.20)",
 	0.40, 0.40, 10.0, 0.3 );
@@ -126,7 +126,7 @@ static AbstractPolyObjectFactory theRightFixedWedgeFactory(
 static AbstractPolyObjectFactory the40QuarterArcFactory(
 	"QuarterArc40",
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Small"),
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This quarter arc is attached to the scene.\nIt can't be moved, penetrated or destroyed."),
 	"QuarterArc",
 	"(0.100,-.200)=(0.200,-.200)=(0.180,-.076)=(0.085,-.107);"
 	"(0.085,-.107)=(0.180,-.076)=(0.124,0.035)=(0.043,-.024);"
@@ -140,7 +140,7 @@ static AbstractPolyObjectFactory the40QuarterArcFactory(
 static AbstractPolyObjectFactory the80QuarterArcFactory(
 	"QuarterArc80",
 	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Large"),
-	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This is a quarter arc. Or ninety degrees, or 1.57 radians if you want."),
+	QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "This quarter arc is attached to the scene.\nIt can't be moved, penetrated or destroyed."),
 	"QuarterArc80",
 	"( 0.300,-0.400)=( 0.400,-0.400)=( 0.388,-0.261)=( 0.289,-0.278);"
 	"( 0.289,-0.278)=( 0.388,-0.261)=( 0.352,-0.126)=( 0.258,-0.161);"

@@ -49,11 +49,13 @@
                 <property key="Mass">1.0</property>
             </object>
             <object width="0.100" X="2.880" Y="0.925" height="0.250" type="Balloon" angle="0.000">
+                <tooltip>The famous blue plastic domino stone.</tooltip>
                 <property key="Polygons">(-0.11,0.175)=(-0.11,-0.175)=(0.11,-0.175)=(0.11,0.175)</property>
                 <property key="ImageName">DominoBlue;Empty;Empty;Empty</property>
                 <property key="Mass">1.0</property>
             </object>
             <object width="0.100" X="3.110" Y="1.175" height="0.250" type="Balloon" angle="0.000">
+                <tooltip>The famous blue plastic domino stone.</tooltip>
                 <property key="Polygons">(-0.11,0.175)=(-0.11,-0.175)=(0.11,-0.175)=(0.11,0.175)</property>
                 <property key="ImageName">DominoBlue;Empty;Empty;Empty</property>
                 <property key="Mass">1.0</property>

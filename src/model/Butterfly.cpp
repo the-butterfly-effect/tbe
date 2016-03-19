@@ -42,7 +42,10 @@ const double Butterfly::theButterflyMass = 0.01;
 Butterfly::Butterfly()
         : RectObject(), theCountdown(1)
 {
-    theToolTip = QObject::tr("Butterfly (Flappus Chaoticus Fragilius) - always in search of flowers.");
+    theToolTip = QObject::tr("Butterfly (Flappus Chaoticus Fragilius):\n"
+                             "It slowly flies to the right and is attracted\n"
+                             "to flowers. It is very fragile.\n"
+                             "You have to keep it safe at all costs!");
 	theProps.setDefaultPropertiesString(
 			Property::OBJECT_STRING + QString(":/") +
 			Property::BOUNCINESS_STRING + QString(":0/") +
