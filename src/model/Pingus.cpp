@@ -51,7 +51,7 @@ int Pingus::theAliveCount = 0;
 
 Pingus::Pingus()
 		: CircleObject(QObject::tr("Pingus"),
-					 QObject::tr("The famous penguin. He walks and believes in your guidance. Keep him alive!"),
+					 QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It and can push\nlight objects around. It also likes to slide down\nslopes but can't take much abuse."),
 					 "",
                      PINGUS_RADIUS, PINGUS_MASS, 0.0 )
 {

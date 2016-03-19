@@ -32,6 +32,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.600" X="1.169" Y="3.481" height="0.250" type="RectObject" ID="penguin" angle="0.000">
+                <tooltip>This is Tux, he looks a bit sleepy. Wake him up with something!</tooltip>
                 <property key="ImageName">penguin_gliding</property>
                 <property key="Mass">1.5</property>
                 <property key="Friction">0.1</property>
@@ -78,6 +79,7 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.300" X="1.340" Y="3.760" height="0.300" type="Balloon" angle="0.000">
+                <tooltip></tooltip>
                 <property key="ImageName">zzz;Empty;Empty;Empty</property>
                 <property key="Mass">2</property>
                 <property key="Polygons">(-0.1,0.1)=(-0.1,-0.1)=(0.1,-0.1)=(0.1,0.1)</property>
