@@ -42,6 +42,7 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">3</property>
                 <property key="TranslationGuide">0</property>
+                <tooltip>This peg can move freely horizontally</tooltip>
             </object>
             <object type="Weight" X="2.756" ID="hangingweight" Y="0.547" width="0.400" height="0.400" angle="0.000"/>
             <object type="Link" X="0.000" Y="0.000" width="1.000" height="1.000" angle="0.000">

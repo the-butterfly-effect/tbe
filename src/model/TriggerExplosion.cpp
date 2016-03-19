@@ -152,10 +152,11 @@ QString DetonatorBox::getEmptyString() const
 
 const QString DetonatorBox::getToolTip ( ) const
 {
-	QString part1 = QObject::tr("This is a detonator box attached to a cell phone\nto trigger a dynamite remotely by pushing the handle.\n");
+	QString part1 = QObject::tr("This is a detonator box attached to a cell phone.\n"
+	                            "It triggers dynamite remotely if the handle is pushed.\n");
 	QString part2;
 	if (getCurrentPhoneNumber() == getEmptyString())
-		part2 = QObject::tr("This one doesn't make any calls,\nchoose a phone number with the pie menu!");
+		part2 = QObject::tr("This one doesn't make any calls yet,\nselect a phone number!");
 	else
 		//: Translators: The %1 will be replaced by a phone number.
 		part2 = QObject::tr("This one calls %1.").arg(getCurrentPhoneNumber());

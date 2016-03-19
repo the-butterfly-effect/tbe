@@ -73,8 +73,9 @@ static SpringObjectFactory theSpringObjectFactory;
 
 
 Spring::Spring()
-    :	RectObject( QObject::tr("Spring"),
-                    QObject::tr("A loose spring. When a force is applied to it, it retracts\nand expands which will make things bounce off from it."),
+    :   RectObject( QObject::tr("Spring"),
+                    QObject::tr("A loose spring. When a force is applied to it,\n"
+                                "it retracts and expands."),
                     "spring20",
                     0.4, 0.2, 0.8, 0.0),
       theOtherEndPtr(nullptr),
