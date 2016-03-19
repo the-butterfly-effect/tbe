@@ -8,9 +8,9 @@
         <date>June 6, 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="3" name="Something weird">
+        <toolboxitem count="3" name="Peg">
             <object width="0.14" X="1.0" Y="2.7" height="0.14" type="CustomBall">
-                <tooltip>It's shiny and it hangs in the sky.</tooltip>
+                <tooltip>A round obstacle which is attached to the scene.</tooltip>
                 <property key="Radius">0.07</property>
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName">brass-pin</property>
@@ -52,8 +52,8 @@
                 <property key="page2">Volley balls can do that, too.&lt;br>&lt;br>Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>
                 <property key="page4">&lt;br> &lt;br> the Post-It Boy </property>
-                <property key="page5">By the way: it is possible with only one of those weird thingies!</property>
-                <property key="page6">And you already realized that the weird thingies can adjust the trajectories of both the ball and the bottle, right?</property>
+                <property key="page5">By the way: it is possible with only one of those pegs!</property>
+                <property key="page6">And you already realized that the pegs can adjust the trajectories of both the ball and the bottle, right?</property>
             </object>
             <object width="5.0" X="2.5" Y="0.05" height="0.1" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>

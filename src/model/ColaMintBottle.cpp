@@ -47,7 +47,7 @@ static const float BOTTLEHEIGHT=0.50;
 
 ColaMintBottle::ColaMintBottle()
 		: PolyObject(QObject::tr("Cola+Mint Bottle"),
-					 QObject::tr("This is a prepared cola bottle with a mint in it.\nLook: it blows if triggered!"),
+					 QObject::tr("This is a prepared cola bottle with a mint in it.\nIf you shake it just a little bit, a reaction starts,\nwhich causes the bottle to fire a long stream\nof cola which pushes the bottle and light\nobjects around."),
 					 "ColaBottleNormal;ColaBottleFoaming;ColaBottleBlowing;ColaBottleEmpty",
 					 "(-0.01,0.25)=(-0.083,0.12)=(-0.075,-0.234)=(-0.060,-0.25)"
 					 "=(0.060,-0.25)=(0.075,-0.234)=(0.083,0.12)=(0.01,0.25)",

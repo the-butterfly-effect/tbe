@@ -72,5 +72,8 @@ void ChoosePhoneNumber::on_comboBox_activated()
 
 	// let's notify the detonator box
 	assert(theDBPtr!=nullptr);
-	theDBPtr->setPhoneNumber(myLine);
+	if(myLine == theDBPtr->getEmptyString())
+		theDBPtr->setPhoneNumber("");
+	else
+		theDBPtr->setPhoneNumber(myLine);
 }
