@@ -49,7 +49,7 @@
                 <property key="page1">You see that butterfly?</property>
                 <property key="page2">It wants to go to the flower...</property>
                 <property key="page3">&lt;i>Once this Post-It is gone,&lt;/i>&lt;br>&lt;br>click the play button top-right &lt;br>to make it happen!</property>
-                <property key="page4">If you click the pause button, the simulation will stop.&lt;br>There's also a green 'reset' button now. &lt;br> &lt;br> During the simulation, there's also a 'fast forward'.</property>
+                <property key="page4">If you click the pause button, the simulation will stop.&lt;br>There's also a green 'reset' button.</property>
                 <property key="page5">But I've said enough...&lt;br>&lt;br> Good luck!</property>
                 <property key="page6">... The Post-It boy</property>
             </object>
