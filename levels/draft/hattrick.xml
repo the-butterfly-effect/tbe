@@ -42,7 +42,7 @@
             <object Y="4.212" X="6.431" width="0.220" type="SoccerBall" ID="ball1" height="0.220" angle="0.000"/>
             <object Y="0.372" X="0.802" width="0.220" type="SoccerBall" ID="ball2" height="0.220" angle="0.000"/>
             <object Y="3.501" X="1.366" width="0.220" type="SoccerBall" ID="ball3" height="0.220" angle="0.000"/>
-            <object Y="1.990" X="4.735" width="0.094" type="BirchBar" height="1.130" angle="6.282"/>
+            <object Y="1.990" X="4.735" width="1.130" type="BirchBar" height="0.094" angle="1.57"/>
             <object Y="0.083" X="6.692" width="3.859" type="Floor" height="0.100" angle="0.000"/>
             <object Y="0.150" X="2.430" width="4.845" type="Floor" height="0.224" angle="0.000"/>
             <object Y="3.405" X="3.950" width="1.199" type="Floor" height="0.100" angle="0.000"/>
@@ -70,7 +70,7 @@
             <object Y="2.056" X="8.826" width="0.220" type="PostIt" height="0.220" angle="0.000">
                 <property key="ZValue">1</property>
                 <property key="page1">This looks like a very unusal way to play soccer. But yet it is not very different from it.</property>
-                <property key="page2">Unlike my brother I think soccer is kind of boring: It just goes back and forth all the time.</property>
+                <property key="page2">I think &lt;i&gt;watching&lt;/i&gt; soccer is kind of boring: It just goes back and forth all the time.</property>
                 <property key="page3">Wake me up when all 3 soccer balls are in the goal.</property>
                 <property key="page4">—The Post-it boy</property>
             </object>
