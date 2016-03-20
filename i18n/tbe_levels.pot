@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-19 10:47+0100\n"
+"POT-Creation-Date: 2016-03-20 21:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2002,12 +2002,25 @@ msgstr ""
 msgid "This peg can move freely horizontally"
 msgstr ""
 
+#: tbe_levels:463
+msgid ""
+"This piece of wood has a triangular shape with one tip pointing upwards. It "
+"doesn't move."
+msgstr ""
+
 #: tbe_levels:464
 msgid "This styrofoam wedge has been glued to the wall."
 msgstr ""
 
 #: tbe_levels:465
 msgid "Those pins always long for company."
+msgstr ""
+
+#: tbe_levels:466
+msgid ""
+"Throw all the balls into these slots, from left to right:<br>• Bowling "
+"balls<br>• Pétanque balls<br>• Volley balls<br>• Tennis balls<br>• Soccer "
+"balls"
 msgstr ""
 
 #: tbe_levels:467
@@ -2295,12 +2308,4 @@ msgstr ""
 
 #: tbe_levels:533
 msgid "Zzz"
-msgstr ""
-
-#: tbe_levels:466
-msgid "Throw all the balls into these slots, from left to right:"
-msgstr ""
-
-#: tbe_levels:463
-msgid "This piece of wood has a triangular shape with"
 msgstr ""
