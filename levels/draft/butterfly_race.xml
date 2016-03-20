@@ -63,7 +63,7 @@
             <object Y="2.899" angle="0.000" width="0.330" type="DetonatorBox" X="8.628" height="0.350">
                 <property key="PhoneNumber">555-1170</property>
             </object>
-            <object Y="1.610" angle="0.000" width="0.199" type="BirchBar" X="5.757" height="0.653"/>
+            <object Y="1.610" angle="1.57" width="0.653" type="BirchBar" X="5.757" height="0.199"/>
             <object Y="2.398" angle="0.000" width="0.270" type="Balloon" ID="balloon" X="5.003" height="0.360"/>
             <object Y="2.932" angle="0.000" width="0.250" type="Cactus" X="8.135" height="0.400"/>
             <object Y="3.909" angle="0.000" width="0.995" type="Floor" X="5.109" height="0.100"/>

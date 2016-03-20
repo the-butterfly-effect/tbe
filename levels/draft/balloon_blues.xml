@@ -28,7 +28,7 @@
             </object>
         </toolboxitem>
         <toolboxitem count="1" name="Right ramp">
-            <object width="1.000" X="4.781" Y="0.788" height="0.100" type="Floor" angle="-0.622"/>
+            <object width="0.93" X="4.781" Y="0.788" height="0.66" type="RightRamp" angle="0"/>
         </toolboxitem>
         <toolboxitem count="1" name="Wooden block">
             <object width="0.107" X="1.376" Y="1.069" height="0.100" type="Floor" angle="0.000"/>
