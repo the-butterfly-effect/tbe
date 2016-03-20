@@ -18,8 +18,7 @@
         </toolboxitem>
         <toolboxitem name="Wood triangle" count="1">
             <object height="0.22" type="LeftFixedWedge" width="0.22" angle="-3.91635" Y="0.987901" X="1.49779">
-                <tooltip>This piece of wood has a triangular shape with
-one tip pointing upwards. It doesn't move.</tooltip>
+                <tooltip>This piece of wood has a triangular shape with one tip pointing upwards. It doesn't move.</tooltip>
             </object>
         </toolboxitem>
     </toolbox>
