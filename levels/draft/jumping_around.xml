@@ -46,12 +46,8 @@
             <object Y="0.85" width="0.6" height="0.1" X="4.1" angle="0" type="Floor">
                 <property key="Bounciness">0.1</property>
             </object>
-            <object Y="0.44" width="0.1" height="0.78" X="4.35" angle="0" type="Floor">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
-            <object Y="0.653344" width="0.1" height="1.3" X="5.10383" angle="0" type="Floor">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object Y="0.44" width="0.1" height="0.78" X="4.35" angle="0" type="Floor"/>
+            <object Y="0.653344" width="0.1" height="1.3" X="5.10383" angle="0" type="Floor"/>
             <object Y="0.575" width="0.6" height="0.95" X="4.7" angle="0" type="ToyChest">
                 <property key="ZValue">12</property>
             </object>

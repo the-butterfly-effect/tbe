@@ -133,13 +133,10 @@
             <object X="3.458" Y="3.681" width="0.45" angle="0" type="Hammer" height="0.18">
                 <property key="Mass">15.0</property>
             </object>
-            <object X="3.285" Y="1.395" width="0.756" angle="0" type="RectObject" height="0.402">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object X="3.285" Y="1.395" width="0.756" angle="0" type="Floor" height="0.402"/>
             <object X="4.071" Y="0.94" width="0.822" angle="0" type="SeesawSmall" height="0.14" />
             <object X="2.963" Y="2.179" width="1.206" angle="1.57" type="Floor" height="0.1"/>
-            <object X="4.87" Y="1.15" width="1" angle="0" type="RectObject" height="0.14">
-                <property key="ImageName">birch_bar</property>
+            <object X="4.87" Y="1.15" width="1" angle="0" type="BirchBar" height="0.14">
                 <property key="Mass">3</property>
                 <property key="PivotPoint">(0,0)</property>
             </object>

@@ -43,35 +43,28 @@
             </object>
             <object width="0.210" X="1.500" Y="3.000" height="0.210" type="VolleyBall" angle="0.000"/>
             <object width="0.220" X="0.200" Y="1.000" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object width="1.600" X="1.250" Y="0.773" height="0.100" type="RectObject" angle="-0.250">
+            <object width="1.600" X="1.250" Y="0.773" height="0.100" type="Floor" angle="-0.250">
                 <property key="Bounciness">0.05</property>
                 <property key="Friction">0.5</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.600" X="2.310" Y="0.573" height="0.100" type="RectObject" angle="0.000">
+            <object width="0.600" X="2.310" Y="0.573" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.00</property>
                 <property key="Friction">0.5</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="2.520" Y="0.450" height="0.200" type="RectObject" angle="0.000">
+            <object width="0.100" X="2.520" Y="0.450" height="0.200" type="Floor" angle="0.000">
                 <property key="Bounciness">0.00</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.119" X="2.789" Y="0.577" height="0.100" type="RectObject" angle="0.000">
+            <object width="0.119" X="2.789" Y="0.577" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.5</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.166" X="2.660" Y="0.350" height="0.500" type="ColaMintBottle" angle="0.000">
                 <property key="Thrust">7</property>
             </object>
-            <object width="0.100" X="2.800" Y="0.349" height="0.500" type="RectObject" angle="0.000">
+            <object width="0.100" X="2.800" Y="0.349" height="0.500" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="2.900" Y="0.150" height="0.100" type="RectObject" angle="0.000">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.100" X="2.900" Y="0.150" height="0.100" type="Floor" angle="0.000"/>
             <object width="1.000" X="2.700" Y="1.100" height="0.100" type="Scenery" angle="1.570">
                 <property key="ImageName">carpenters-rule</property>
                 <property key="ZValue">0.5</property>
@@ -81,18 +74,15 @@
                 <property key="ZValue">0.6</property>
             </object>
             <object width="0.120" X="3.500" Y="0.270" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000"/>
-            <object width="1.200" X="4.400" Y="0.320" height="0.100" type="RectObject" angle="0.450">
+            <object width="1.200" X="4.400" Y="0.320" height="0.100" type="Floor" angle="0.450">
                 <property key="Bounciness">0.05</property>
                 <property key="Friction">0.5</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.950" Y="0.650" height="1.100" type="RectObject" angle="0.000">
+            <object width="0.100" X="4.950" Y="0.650" height="1.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="2.000" X="3.900" Y="1.150" height="0.100" type="RectObject" angle="0.000">
+            <object width="2.000" X="3.900" Y="1.150" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.200" X="3.300" Y="0.650" height="0.230" type="Skyhook" angle="0.000">
                 <property key="Bounciness">0.05</property>
