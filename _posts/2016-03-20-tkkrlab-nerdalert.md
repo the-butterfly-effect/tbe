@@ -28,7 +28,7 @@ Playing the game together works really well, it was done before at different con
 
 See for more info [Open Dag Hackerspace 2016](https://tkkrlab.nl/wiki/OpenDag_Hackerspaces_2016)
 
-
+## NerdAlert : TBE on the radio
 
 The day after (Sunday March 20), a Dutch local radio show, [NerdAlert](https://www.facebook.com/nerdalertradio) mentioned The Butterfly Effect, spelled the URL and gave a brief description of what it is. Although NerdAlert is on a local radio station (Aalsmeer), it has listeners all over the Netherlands because they visit hacker spaces and conferences and they have an IRC chat (#nerdalert). They broadcast every Sunday 20:00 - 23:00.
 
