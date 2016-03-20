@@ -28,7 +28,7 @@ Playing the game together works really well, it was done before at different con
 
 See for more info [Open Dag Hackerspace 2016](https://tkkrlab.nl/wiki/OpenDag_Hackerspaces_2016)
 
-Of course, if you want to prepare up front - you can [download the game for Windows, Linux and Mac](#download) to practice.
+Of course, if you want to prepare up front - you can [download the game for Windows, Linux and Mac](/#download) to practice.
 
 ## NerdAlert : TBE on the radio
 
