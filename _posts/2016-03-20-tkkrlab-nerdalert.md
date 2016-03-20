@@ -8,6 +8,7 @@ title: TkkrLab & NerdAlert
 Last Saturday, March 19 2016, The Butterfly Effect was played in a hacker space in Enschede, the Netherlands: TkkrLab. Tkkrlab exists for five years and organised an anniversary party. Our game was played by young kids and hackers of different ages. Discussing together what a good solution might be for a puzzle gave a good vibe. Next week, March 26 is the open day for hackerspaces and in Enschede The Butterfly Effect will be played again using a beamer.
 
 Playing the game together works really well, it was done before at different conferences (already in 2009!). The attendees playing gave valuable feedback and the game was installed on different laptops. Everybody is welcome on March 26 in Enschede at Tkkrlab to play the game, meet some of the developers and look around in a hacker space and see what is done:
+
     * tour in the space
     * Workshops
             * Arduino beginners / advanced
