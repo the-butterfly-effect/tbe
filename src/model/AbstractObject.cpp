@@ -34,31 +34,48 @@ const float AbstractObject::MINIMUM_DIMENSION = 0.03;
 static b2World* theStaticB2WorldPtr = nullptr;
 
 
+
 AbstractObject::AbstractObject()
+    : AbstractObject("", "", 1.0, 1.0, 0.0, 0.5, "")
+{
+}
+
+AbstractObject::AbstractObject(const QString& aTooltip,
+                                const QString& aImageName,
+                                qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+                                const QString& aPropertiesText)
     : theB2BodyPtr(nullptr),
-	  hasCustomToolTip(false),
-	  theViewObjectPtr(nullptr),
+      theToolTip(aTooltip),
+      hasCustomToolTip(false),
+      theViewObjectPtr(nullptr),
       theChildPivotPointPtr(nullptr),
       theChildTranslationGuidePtr(nullptr),
-	  theBounciness(0.5),
-      theHeight(1.0),
-	  theIsMovable(false),
-	  theWidth(1.0),
-	  theWorldPtr(nullptr)
+      theBounciness(aBounciness),
+      theHeight(aHeight),
+      theIsMovable(false),
+      theWidth(aWidth),
+      theWorldPtr(nullptr)
 {
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;
-	theB2BodyDefPtr= new b2BodyDef();
+    theB2BodyDefPtr= new b2BodyDef();
 
-	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":/") +
-		Property::MASS_STRING + QString(":/") +
-		Property::BOUNCINESS_STRING + QString(":0.3/") +
-		Property::NOCOLLISION_STRING+ QString(":/") +
-		Property::PIVOTPOINT_STRING + QString(":/") +
-		Property::ROTATABLE_STRING + QString(":false/") +
-		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
-		Property::ZVALUE_STRING + QString(":2.0/") );
+    theProps.setDefaultPropertiesString(
+                Property::IMAGE_NAME_STRING + QString(":%1/").arg(aImageName) +
+                Property::BOUNCINESS_STRING + QString(":%1/").arg(theBounciness) +
+                Property::NOCOLLISION_STRING+ QString(":/") +
+                Property::PIVOTPOINT_STRING + QString(":/") +
+                Property::ROTATABLE_STRING + QString(":false/") +
+                Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+                Property::ZVALUE_STRING + QString(":2.0/") );
+    // and overrule the default props set above if needed...
+    theProps.setDefaultPropertiesString(aPropertiesText);
+
+    if (aMass > 0.001)
+        theProps.setDefaultPropertiesString(
+                    QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
+    else
+        theProps.removeProperty(Property::MASS_STRING);
 }
 
 AbstractObject::~AbstractObject ( )
