@@ -226,8 +226,8 @@ void PolyObject::fillShapeList(void)
 {
 	DEBUG5ENTRY;
 
-	float myMass;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
+	float myMass = 0.0;
+	bool hasMass = theProps.property2Float(Property::MASS_STRING, &myMass);
 
 	QString myPolygons;
 	theProps.property2String(Property::POLYGONS_STRING, &myPolygons);
@@ -264,7 +264,7 @@ void PolyObject::fillShapeList(void)
 			// get mass:  no mass -> no density -> no motion
 			b2FixtureDef* myFixtureDef = new b2FixtureDef();
 			myFixtureDef->shape   = myPolyShape;
-			if (myMass != 0.0)
+			if (hasMass)
 				myFixtureDef->density = myMass / (getTheWidth()*getTheHeight());
 			myFixtureDef->userData = this;
 			setFriction(myFixtureDef);
@@ -279,8 +279,7 @@ void PolyObject::fillShapeList(void)
 b2BodyType PolyObject::getObjectType(void) const
 {
 	float myMass;
-	theProps.property2Float(Property::MASS_STRING, &myMass);
-	if (myMass > 0.001)
+	if (theProps.property2Float(Property::MASS_STRING, &myMass))
 		return b2_dynamicBody;
 	return b2_staticBody;
 }
