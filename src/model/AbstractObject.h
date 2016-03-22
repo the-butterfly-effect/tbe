@@ -310,7 +310,7 @@ public:
     AbstractObjectPtr getThisPtr() const
     { return AbstractObjectPtr(theThisPtr); }
 
-	/// @returns the Tooltip of the object.
+    /// @returns the Tooltip of the object (translated).
     virtual const QString getToolTip ( ) const;
 
 	/// @returns true if the object can be moved by the user
