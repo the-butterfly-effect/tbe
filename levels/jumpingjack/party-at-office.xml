@@ -134,11 +134,14 @@
             <object X="1.57" height="0.1" type="Floor" width="1.942" Y="1.61" angle="0"/>
             <object X="0.641" height="0.22" type="BowlingBall" width="0.22" Y="1.307" angle="0"/>
             <object X="1.297" height="0.36" type="Balloon" width="0.27" Y="1.84" angle="0" ID="balloon"/>
-            <object X="1.684" height="0.12" type="Floor" width="1.905" Y="1.162" angle="0"/>
+            <object X="1.684" height="0.12" type="Floor" width="1.905" Y="1.162" angle="0">
+                <property key="Friction">0.03</property>
+            </object>
             <object X="2.121" height="0.34" type="BowlingPin" width="0.12" Y="0.726" angle="0" ID="top pin"/>
-            <object X="0.883062" height="0.20302" type="RectObject" width="0.24" Y="1.32451" angle="0" ID="gift">
+            <object X="0.883062" height="0.20302" type="RectObject" width="0.24" Y="1.33" angle="0" ID="gift">
                 <property key="ImageName">flat_blue_giftbox</property>
                 <property key="Mass">0.1</property>
+                <property key="Friction">0.03</property>
                 <tooltip>Send the gift to the Jumping Jack!</tooltip>
             </object>
             <object X="0.575" height="0.1" type="Floor" width="0.393" Y="1.103" angle="0.366"/>
@@ -169,6 +172,7 @@
             </object>
             <object X="1.868" height="0.1" type="Floor" width="0.52" Y="1.19" angle="0.1">
                 <property key="ZValue">1.0</property>
+                <property key="Friction">0.03</property>
             </object>
             <object X="1.86" height="0.15" type="BedOfNails" width="0.8" Y="2.09" angle="-3.14"/>
             <object X="0.129" height="0.4" type="Cactus" width="0.25" Y="2.342" angle="0"/>
