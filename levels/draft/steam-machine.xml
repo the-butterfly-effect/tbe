@@ -42,8 +42,7 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.0</property>
             </object>
-            <object width="0.8" X="1.2" Y="1.35" height="0.10" type="RectObject" ID="Lever">
-                <property key="ImageName">birch_bar</property>
+            <object width="0.8" X="1.2" Y="1.35" height="0.10" type="BirchBar" ID="Lever">
                 <property key="Friction">0.0</property>
                 <property key="Mass">3.0</property>
             </object>
@@ -65,8 +64,7 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object width="0.4" X="1.2" Y="0.65" height="0.10" type="RectObject" ID="FreeThingie">
-                <property key="ImageName">birch_bar</property>
+            <object width="0.4" X="1.2" Y="0.65" height="0.10" type="BirchBar" ID="FreeThingie">
                 <property key="Friction">0.0</property>
                 <property key="Mass">3.0</property>
             </object>

@@ -20,9 +20,7 @@
     <scene>
         <scenesize width="6.5" height="4"/>
         <predefined>
-            <object width="0.200" X="0.100" Y="2.000" height="4.000" type="RectObject" angle="0.000">
-                <property key="ImageName">oldbrick</property>
-            </object>
+            <object width="0.200" X="0.100" Y="2.000" height="4.000" type="Wall" angle="0.000"/>
             <object width="1.400" X="0.710" Y="3.950" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.800" X="0.500" Y="3.600" height="0.800" type="QuarterArc80" angle="1.570"/>
             <object width="2.039" X="4.066" Y="0.693" height="0.100" type="Floor" angle="0.000"/>
@@ -39,7 +37,7 @@
             <object width="0.744" X="3.837" Y="0.354" height="0.100" type="Floor" angle="-1.056"/>
             <object width="0.754" X="4.364" Y="0.350" height="0.100" type="Floor" angle="1.056"/>
             <object width="0.728" X="4.833" Y="0.361" height="0.100" type="Floor" angle="-1.056"/>
-            <object width="0.800" X="3.500" Y="0.090" height="0.180" type="RectObject" angle="0.000">
+            <object width="0.800" X="3.500" Y="0.090" height="0.180" type="Floor" angle="0.000">
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">20.0</property>
             </object>

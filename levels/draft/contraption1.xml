@@ -18,12 +18,10 @@
     <scene>
         <scenesize width="4.7" height="3.5"/>
         <predefined>
-            <object width="0.1" X="0.05" Y="1.80" height="3.4" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
+            <object width="0.1" X="0.05" Y="1.80" height="3.4" type="Floor">
                 <property key="Bounciness">0.05</property>
             </object>
             <object width="4.7" X="2.35" Y="0.05" height="0.10" type="Floor">
-                <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.6</property>
             </object>
             <object X="3.5" Y="1.0" type="PostIt">
@@ -73,18 +71,13 @@
             <object X="4.3" Y="0.36" type="Balloon"/>
             <!-- ===================== 'outer slakkenhuis' ================= -->
             <object width="3.7" X="2.45" Y="0.61" height="0.10" type="Floor">
-                <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object width="0.1" X="4.65" Y="1.30" height="2.4" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
+            <object width="0.1" X="4.65" Y="1.30" height="2.4" type="Floor">
                 <property key="Friction">0.1</property>
             </object>
-            <object width="0.1" X="2.05" Y="1.50" height="1.8" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.1" X="2.05" Y="1.50" height="1.8" type="Floor"/>
             <object width="2.6" X="3.3" Y="2.45" height="0.10" type="Floor">
-                <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
             <object width="0.3" X="4.45" Y="2.1" height="0.6" type="RightFixedWedge" angle="3.14">
@@ -95,18 +88,14 @@
             <object width="0.8" X="2.17" Y="1.96" height="0.15" type="BedOfNails" angle="-1.57"/>
             <!-- ===================== 'inner slakkenhuis' ================= -->
             <object X="3.7" Y="0.84" type="BowlingPin" ID="BowlingPin2"/>
-            <object width="0.1" X="4.15" Y="1.20" height="1.2" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.1" X="4.15" Y="1.20" height="1.2" type="Floor"/>
             <object width="1.6" X="3.3" Y="1.8" height="0.10" type="Floor" angle="0.05">
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.2" X="4.10" Y="1.85" height="0.10" type="Floor">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.1" X="2.55" Y="1.45" height="0.7" type="RectObject">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.1" X="2.55" Y="1.45" height="0.7" type="Floor"/>
             <object X="4.20" Y="2.00" type="VolleyBall"/>
             <object X="1.509" Y="1.612" width="1.000" angle="0.000" type="Floor" height="0.100"/>
         </predefined>

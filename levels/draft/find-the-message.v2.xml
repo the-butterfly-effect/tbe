@@ -28,9 +28,8 @@
         <scenesize width="6" height="4"/>
         <predefined>
             <object width="5.528" X="3.241" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.100" X="0.050" Y="1.299" height="2.586" type="RectObject" angle="0.000">
+            <object width="0.100" X="0.050" Y="1.299" height="2.586" type="Floor" angle="0.000">
                 <property key="Bounciness">0.05</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="2.000" X="2.100" Y="1.750" height="1.400" type="Scenery" angle="0.000">
                 <property key="ImageName">thank-you-stone</property>

@@ -19,13 +19,10 @@
     <scene>
         <scenesize width="5" height="3"/>
         <predefined>
-            <object width="0.900" X="1.100" Y="2.400" height="0.100" type="RectObject" angle="0.000">
+            <object width="0.900" X="1.100" Y="2.400" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="1.050" Y="1.200" height="2.300" type="RectObject" angle="0.000">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.100" X="1.050" Y="1.200" height="2.300" type="Floor" angle="0.000"/>
             <object width="0.600" X="0.300" Y="2.660" height="0.400" type="RightRamp" angle="0.000"/>
             <object width="0.220" X="2.000" Y="0.500" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Soccer Balls are a little bouncy, but sometimes "a little" is not enough.</property>
@@ -34,27 +31,20 @@
                 <property key="page4">Notice a new trick: rotate.</property>
                 <property key="page5">the Post-It Boy</property>
             </object>
-            <object width="4.400" X="2.200" Y="0.050" height="0.100" type="RectObject" angle="0.000">
+            <object width="4.400" X="2.200" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="1.200" X="4.387" Y="1.828" height="0.100" type="RectObject" angle="0.000">
+            <object width="1.200" X="4.387" Y="1.828" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.600" X="4.091" Y="0.987" height="0.100" type="RectObject" angle="0.000">
+            <object width="0.600" X="4.091" Y="0.987" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
-            <object width="0.100" X="4.350" Y="0.541" height="0.981" type="RectObject" angle="0.000">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.100" X="4.350" Y="0.541" height="0.981" type="Floor" angle="0.000"/>
             <object width="0.500" X="4.650" Y="0.450" height="0.900" type="Scenery" angle="0.000">
                 <property key="ImageName">basket</property>
             </object>
-            <object width="0.100" X="4.950" Y="0.934" height="1.868" type="RectObject" angle="0.000">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="0.100" X="4.950" Y="0.934" height="1.868" type="Floor" angle="0.000"/>
             <object width="0.120" X="4.354" Y="1.220" height="0.340" type="BowlingPin" ID="the Pin" angle="0.000"/>
             <object width="0.220" X="0.221" Y="2.868" height="0.220" type="SoccerBall" angle="0.000">
                 <property key="Mass">1</property>
