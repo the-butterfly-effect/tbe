@@ -34,5 +34,6 @@ Of course, if you want to prepare up front - you can [download the game for Wind
 
 The day after (Sunday March 20), a Dutch local radio show, [NerdAlert](https://www.facebook.com/nerdalertradio) mentioned The Butterfly Effect, spelled the URL and gave a brief description of what it is. Although NerdAlert is on a local radio station (Aalsmeer), it has listeners all over the Netherlands because they visit hacker spaces and conferences and they have an IRC chat (#nerdalert). They broadcast every Sunday 20:00 - 23:00.
 
+[Listen to the sample from NerdAlert](/audio/2016-03-20-NerdAlert.mp3).
 
 This was a great weekend for The Butterfly Effect!
