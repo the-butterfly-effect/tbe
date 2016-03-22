@@ -72,9 +72,11 @@
                 <property key="NoCollision">leftplatform</property>
             </object>
             <object width="0.340" X="5.150" Y="0.420" height="0.100" type="Floor" angle="1.570"/>
-            <object width="1.700" X="5.150" Y="1.595" height="0.100" type="Floor" ID="vertibar" angle="1.571">
+            <object width="1.600" X="5.150" Y="1.645" height="0.100" type="Floor" ID="vertibar" angle="1.571">
                 <property key="NoCollision">top-lever</property>
             </object>
+            <object width="0.100" X="5.150" Y="0.794" height="0.100" type="LeftFixedWedge" angle="3.142"/>
+
             <object width="0.600" X="5.090" Y="2.480" height="0.100" type="BirchBar" ID="top-lever" angle="0.590">
                 <property key="Mass">1</property>
                 <property key="NoCollision">verti-bar</property>
@@ -109,9 +111,9 @@
             <object width="0.634" X="1.423" Y="2.288" height="0.780" type="RightFixedWedge" angle="0.000"/>
             <object width="0.400" X="3.950" Y="0.700" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.400" X="3.650" Y="0.600" height="0.100" type="Floor" angle="0.005"/>
-            <object width="0.400" X="3.350" Y="0.500" height="0.100" type="Floor" angle="0.005"/>
-            <object width="0.400" X="3.050" Y="0.400" height="0.100" type="Floor" angle="0.008"/>
-            <object width="0.400" X="2.750" Y="0.300" height="0.100" type="Floor" angle="0.013"/>
+            <object width="0.400" X="3.350" Y="0.500" height="0.100" type="Floor" angle="0.010"/>
+            <object width="0.400" X="3.050" Y="0.400" height="0.100" type="Floor" angle="0.015"/>
+            <object width="0.400" X="2.750" Y="0.300" height="0.100" type="Floor" angle="0.015"/>
             <object width="0.120" X="3.970" Y="1.420" height="0.120" type="RectObject" ID="blocker2" angle="0.000">
                 <property key="ImageName">brass-pin</property>
             </object>
@@ -150,23 +152,23 @@
             </object>
             <object width="0.100" X="1.000" Y="0.360" height="0.720" type="RectObject" ID="Base" angle="0.00">
                 <property key="ImageName">styrofoam</property>
-                <property key="Mass">0.01</property>
+                <property key="Mass">0.5</property>
             </object>
             <object width="1.000" X="0.550" Y="0.770" height="0.100" type="RectObject" ID="Styro" angle="0.00">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro2,Styro3</property>
-                <property key="Mass">0.01</property>
+                <property key="Mass">0.1</property>
                 <property key="PivotPoint">(-0.5,0.0)</property>
             </object>
             <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro2" angle="-0.05">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro,Styro3</property>
-                <property key="Mass">0.01</property>
+                <property key="Mass">0.1</property>
             </object>
             <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro3" angle="0.05">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro2,Styro3</property>
-                <property key="Mass">0.01</property>
+                <property key="Mass">0.1</property>
             </object>
             <object width="0.010" X="0.900" Y="0.770" height="0.100" type="PivotPoint" angle="0">
                 <property key="object1">Styro2</property>
