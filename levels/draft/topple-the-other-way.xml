@@ -40,10 +40,9 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="2.800" X="2.200" Y="2.300" height="0.150" type="RectObject" ID="Bar" angle="0.000">
+            <object width="2.800" X="2.200" Y="2.300" height="0.150" type="BirchBar" ID="Bar" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.7</property>
-                <property key="ImageName">birch_bar</property>
                 <property key="Mass">8</property>
             </object>
             <object width="1.000" X="2.200" Y="2.300" height="1.000" type="PivotPoint" angle="0.000">
