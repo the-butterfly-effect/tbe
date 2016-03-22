@@ -9,12 +9,7 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="2">
-            <object width="4.500" height="0.600" type="PolyObject" angle="0.000">
-                <property key="Polygons">(-2.25,-0.28)=(-2.25,-0.3)=(-1.5,-0.3)=(2.,0.15)=(2.25,0.3)</property>
-                <property key="ImageName">LeftRamp</property>
-                <tooltip>Balls will roll to the left and speed up along the way.</tooltip>
-                <property key="Resizable">none</property>
-            </object>
+            <object width="4.500" height="0.600" type="LeftRamp" angle="0.000" />
         </toolboxitem>
     </toolbox>
     <scene>
@@ -64,7 +59,7 @@
         </goal>
     </goals>
     <hints>
-        <hint X="4.25" Y="3.06" number="1" object="PolyObject"/>
-        <hint X="4.24" Y="1.28" number="2" object="PolyObject"/>
+        <hint X="4.25" Y="3.06" number="1" object="LeftRamp"/>
+        <hint X="4.24" Y="1.28" number="2" object="LeftRamp"/>
     </hints>
 </tbe-level>
