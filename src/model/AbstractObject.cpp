@@ -20,6 +20,7 @@
 #include "AbstractObjectSerializer.h"
 #include "Box2D.h"
 #include "PivotPoint.h"
+#include "Translator.h"
 #include "TranslationGuide.h"
 #include "ViewObject.h"
 #include "World.h"
@@ -230,7 +231,7 @@ const QString AbstractObject::getToolTip() const
 	// originally we had the concept of a 'Description' property.
 	// however, that is not translatable.
 	assert (!theProps.doesPropertyExists("Description"));
-    return theToolTip;
+    return TheGetText(theToolTip);
 }
 
 

@@ -21,10 +21,7 @@
             <object width="0.220" X="1.000" Y="2.500" height="0.220" type="SoccerBall" ID="soc" angle="0.000"/>
             <object width="0.220" X="1.300" Y="2.500" height="0.220" type="BowlingBall" ID="bow1" angle="0.000"/>
             <object width="0.220" X="1.600" Y="2.500" height="0.220" type="BowlingBall" ID="bow2" angle="0.000"/>
-            <object width="4.000" X="2.000" Y="0.050" height="0.100" type="RectObject" angle="0.000">
-                <property key="Bounciness">0.2</property>
-                <property key="ImageName">used_wood_bar</property>
-            </object>
+            <object width="4.000" X="2.000" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.220" X="1.500" Y="0.500" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Welcome back!</property>
                 <property key="page2">No butterfly here...&lt;br>&lt;br>Don't worry - we haven't seen the last one yet</property>

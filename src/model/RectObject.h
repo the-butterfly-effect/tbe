@@ -41,7 +41,8 @@ public:
 	//
 
 	/**
-	 * Empty Constructor
+	 * Empty Constructor, used to create "empty" RectObjects that are customized using
+	 * properties in the level XML.
 	 */
 	RectObject ( );
 

@@ -9,7 +9,7 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="2" name="Heavy Crate">
-            <object type="RectObject" width="0.600" height="0.300" angle="0.000" X="0.000" Y="0.000">
+            <object type="RectObject" width="0.600" height="0.370" angle="0.000" X="0.000" Y="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">50</property>
                 <property key="Rotatable">true</property>
@@ -58,14 +58,30 @@
                 <property key="Friction">0.5</property>
             </object>
             <object type="Floor" width="4.376" height="0.100" angle="0.020" X="5.092" Y="3.650"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.100" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.600" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.100" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.600" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.100" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.600" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.100" Y="3.880"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.600" Y="3.880"/>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.100" Y="3.880" ID="p1">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.600" Y="3.880" ID="p2">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.100" Y="3.880" ID="p3">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.600" Y="3.880" ID="p4">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.100" Y="3.880" ID="p5">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.600" Y="3.880" ID="p6">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.100" Y="3.880" ID="p7">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
+            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.600" Y="3.880" ID="p8">
+                <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
+            </object>
             <object type="Floor" width="4.768" height="0.100" angle="0.000" X="2.399" Y="2.648"/>
             <object type="Floor" width="3.259" height="0.100" angle="0.000" X="4.896" Y="2.059"/>
             <object type="Floor" width="4.754" height="0.100" angle="0.000" X="2.377" Y="0.895"/>
@@ -246,6 +262,6 @@
         <hint number="2" object="LeftRamp" angle="0.000" X="5.6" Y="2.390"/>
         <hint number="3" object="LeftRamp" angle="0.000" X="2.775" Y="1.711"/>
         <hint number="4" object="RectObject" angle="1.571" X="1.408" Y="1.360"/>
-        <hint number="5" object="RectObject" angle="0.000" X="5.136" Y="0.271"/>
+        <hint number="5" object="RectObject" angle="0.000" X="5.136" Y="0.300"/>
     </hints>
 </tbe-level>

@@ -25,10 +25,9 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object width="2.200" X="1.400" Y="1.400" height="0.150" type="RectObject" ID="Bar" angle="0.000">
+            <object width="2.200" X="1.400" Y="1.400" height="0.150" type="BirchBar" ID="Bar" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.7</property>
-                <property key="ImageName">birch_bar</property>
                 <property key="Mass">8</property>
             </object>
             <object width="1.000" X="1.400" Y="1.400" height="1.000" type="PivotPoint" angle="0.000">
@@ -109,10 +108,9 @@
                 <property key="object1">BikeBody</property>
                 <property key="object2">RightWheel</property>
             </object>
-            <object width="1.220" X="3.200" Y="0.300" height="0.100" type="RectObject" ID="Lever" angle="0.000">
+            <object width="1.220" X="3.200" Y="0.300" height="0.100" type="BirchBar" ID="Lever" angle="0.000">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.4</property>
-                <property key="ImageName">birch_bar</property>
                 <property key="Mass">3.0</property>
             </object>
             <object width="0.100" X="3.300" Y="0.300" height="0.100" type="RectObject" ID="Fulcrum" angle="0.000">
@@ -127,16 +125,16 @@
                 <property key="Friction">0.4</property>
             </object>
             <object width="0.120" X="3.179" Y="1.500" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000"/>
-            <object width="0.100" X="2.750" Y="1.424" height="0.747" type="RectObject" angle="0.000">
+            <object width="0.100" X="2.750" Y="1.424" height="0.747" type="Floor" angle="0.000">
                 <property key="Friction">0.4</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.496" X="3.021" Y="1.280" height="0.100" type="Floor" angle="0.000">
                 <property key="Friction">0.4</property>
             </object>
             <object width="0.270" X="4.301" Y="1.014" height="0.360" type="Balloon" angle="0.000"/>
-            <object width="2.655" X="4.838" Y="1.303" height="0.100" type="Floor" angle="1.571"/>
-            <object width="0.242" X="4.302" Y="1.245" height="0.100" type="Floor" angle="0.000"/>
+            <object width="2.655" X="4.805" Y="1.303" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.200" X="4.250" Y="1.245" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.100" X="4.400" Y="1.245" height="0.100" type="LeftFixedWedge" angle="3.142"/>
             <object width="1.176" X="3.712" Y="1.646" height="0.100" type="Floor" angle="0.658"/>
             <object width="0.300" X="4.300" Y="1.997" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.220" X="4.330" Y="2.190" height="0.220" type="SoccerBall" angle="0.000"/>
@@ -146,8 +144,8 @@
                 <property key="ImageName">chickenwire-texture</property>
             </object>
             <object width="0.739" X="4.470" Y="2.502" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.470" X="4.700" Y="2.290" height="0.100" type="Floor" angle="-0.910"/>
-            <object width="0.795" X="4.401" Y="1.592" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.470" X="4.670" Y="2.30" height="0.100" type="Floor" angle="-0.910"/>
+            <object width="0.695" X="4.401" Y="1.642" height="0.100" type="Floor" angle="1.571"/>
             <object width="2.600" X="1.300" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="Friction">0.4</property>
             </object>

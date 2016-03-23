@@ -37,15 +37,13 @@
             <object width="0.2" X="1.47" Y="1.9" height="0.23" type="Skyhook" ID="Skyhook" angle="0">
                 <property key="ZValue">0.5</property>
             </object>
-            <object width="2.6" X="1.59" Y="1.95" height="0.1" type="RectObject" angle="0">
+            <object width="2.6" X="1.59" Y="1.95" height="0.1" type="IBeam" angle="0">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.5</property>
-                <property key="ImageName">i-beam</property>
                 <property key="Mass">100</property>
             </object>
-            <object width="3.2" X="2.1" Y="0.5" height="0.1" type="RectObject" angle="0">
+            <object width="3.2" X="2.1" Y="0.5" height="0.1" type="Floor" angle="0">
                 <property key="Bounciness">0.0</property>
-                <property key="ImageName">used_wood_bar</property>
             </object>
             <object width="0.15" X="3.9" Y="0.3" height="0.4" type="RectObject" angle="0">
                 <property key="Bounciness">0.6</property>
@@ -60,10 +58,8 @@
             <object width="0.15" X="2.5" Y="0.9399999999999999" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0">
                 <property key="Object">Flower</property>
             </object>
-            <object width="0.5" X="4.25" Y="0.48" height="0.1" type="RectObject" angle="0">
-                <property key="ImageName">used_wood_bar</property>
-            </object>
-            <object width="0.5" X="4.25" Y="0.58" height="0.1" type="RectObject" angle="0">
+            <object width="0.5" X="4.25" Y="0.48" height="0.1" type="Floor" angle="0"/>
+            <object width="0.5" X="4.25" Y="0.58" height="0.1" type="Floor" angle="0">
                 <property key="ImageName">White-to-green</property>
             </object>
             <object width="0.2" X="4.3" Y="0.775" height="0.45" type="RectObject" angle="0">
