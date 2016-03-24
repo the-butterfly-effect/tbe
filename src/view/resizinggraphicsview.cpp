@@ -46,7 +46,8 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     theMainWindowPtr(nullptr),
     theObjectEditorPtr(nullptr),
     theWinFailDialogPtr(nullptr),
-    theFrameRateViewPtr(nullptr)
+    theFrameRateViewPtr(nullptr),
+    theMousePosLabelPtr(nullptr)
 {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setDragMode(QGraphicsView::NoDrag);
@@ -105,8 +106,21 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
+void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
+{
+	if (event!=nullptr)
+		QGraphicsView::mouseMoveEvent(event);
+	if(theMousePosLabelPtr==nullptr)
+		return;
 
-void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
+	QPointF mousePos = this->mapToScene(event->pos());
+	Position p = Position(mousePos, 0);
+
+	//: Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator
+	theMousePosLabelPtr->setText(tr("Coordinates: (%1,%2)").arg(QString::number(p.x, 'f', 3), QString::number(p.y, 'f', 3)));
+}
+
+void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr, QStatusBar* aStatusBarPtr)
 {
 	theMainWindowPtr = aMWPtr;
 	theSimControlsPtr->setup(anMenuControlsPtr);
@@ -117,6 +131,9 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMen
 
 	// this one displays the frame rate counter if active
 	theFrameRateViewPtr= aMenuBarPtr->addAction("");
+	//: Shown before the cursor is moved on the scene, after that the coordinates will be shown
+        theMousePosLabelPtr = new QLabel(tr("Coordinates: —"));
+	aStatusBarPtr->addPermanentWidget(theMousePosLabelPtr);
 }
 
 

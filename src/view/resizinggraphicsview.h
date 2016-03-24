@@ -21,8 +21,12 @@
 
 #include <QGraphicsView>
 #include <QResizeEvent>
+#include <QMouseEvent>
+#include <QLabel>
+#include <QStatusBar>
 
 #include "AbstractObjectPtr.h"
+#include "Position.h"
 class EditObjectDialog;
 class GameResources;
 class MainWindow;
@@ -56,7 +60,8 @@ public:
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
+    /// @param aStatusBarPtr
+    void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr, QStatusBar* aStatusBarPtr);
 
     /// @returns a pointer to the GameResourcesDialog.
     /// @note this member is only used to hand a pointer to Level.
@@ -67,6 +72,7 @@ public:
 
 //protected:
     virtual void resizeEvent(QResizeEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
 
 private slots:
     void slot_levelDeath(void);
@@ -89,6 +95,7 @@ private:
     ViewWorld*          theScenePtr;
     WinFailDialog*      theWinFailDialogPtr;
     QAction*            theFrameRateViewPtr;
+    QLabel*             theMousePosLabelPtr;
     friend class LevelCreator;
 };
 

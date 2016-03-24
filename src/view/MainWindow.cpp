@@ -58,6 +58,7 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
         on_action_Switch_to_Level_Editor_triggered();
     if (isMaximized)
         showMaximized();
+    statusBar();
 }
 
 
@@ -447,7 +448,7 @@ void MainWindow::setupView()
     setLanguageCheckmark();
 
 
-    ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
+    ui->graphicsView->setup(this, ui->menuBar, ui->menuControls, statusBar());
 
 	if (theIsRunAsRegression)
     {
