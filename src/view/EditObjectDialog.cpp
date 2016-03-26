@@ -16,14 +16,17 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "AbstractObject.h"
 #include "EditObjectDialog.h"
 #include "ViewObject.h"
 #include "ImageCache.h"
+#include "MoveUndoCommand.h"
+#include "UndoSingleton.h"
 
 #include <QCloseEvent>
 
 EditObjectDialog::EditObjectDialog(QWidget *aParent)
-        : QDialog(aParent, Qt::Tool)
+        : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr)
 {
     DEBUG1ENTRY;
     ui.setupUi(this);
@@ -31,16 +34,6 @@ EditObjectDialog::EditObjectDialog(QWidget *aParent)
 
 EditObjectDialog::~EditObjectDialog()
 {
-}
-
-
-AbstractUndoCommand* EditObjectDialog::getUndoPtr(void)
-{
-    AbstractObject* myRealPtr = getAORealPtr();
-    if (myRealPtr)
-        return myRealPtr->theViewObjectPtr->theMUCPtr;
-    else
-        return nullptr;
 }
 
 
@@ -59,29 +52,28 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 
 void EditObjectDialog::position_editingFinished()
 {
-/*
-	if (theUndoPtr != nullptr)
-	{
-		// just to make sure the latest change also got in...
-		position_valueChanged(0);
-		theUndoPtr->pushYourself();
-	}
-	theUndoPtr = nullptr;
-*/
+    theMUCPtr->basicReleaseEvent();
+    // todo: figure out if this is a memory leak (probably not)
+    theMUCPtr=nullptr;
 }
 
 void EditObjectDialog::position_valueChanged (double )
 {
-/*
-    if (theUndoPtr == nullptr)
-        theUndoPtr = MoveUndoCommand::createUndoObject(theAOPtr);
-	theUndoPtr->update(
-			Position(ui.spinBoxX->value(),
-					 ui.spinBoxY->value(),
-					 ui.spinBoxAngle->value() ),
-			Vector(ui.spinBoxWidth->value(),
-				   ui.spinBoxHeight->value()));
-*/
+    if (nullptr ==theMUCPtr)
+    {
+        // get rid of the PieMenu icons or everything falls to pieces
+        PieMenuSingleton::clearPieMenu();
+        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+        theMUCPtr = (MoveUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
+                                                     ActionIcon::ACTION_MOVE);
+        theMUCPtr->basicPressEvent(THESCALE*QPointF(ui.spinBoxX->value(),
+                                                    -ui.spinBoxY->value()));
+    }
+    else
+    {
+        theMUCPtr->basicMoveEvent(THESCALE*QPointF(ui.spinBoxX->value(),
+                                                   -ui.spinBoxY->value()));
+    }
 }
 
 
@@ -120,15 +112,15 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
 {
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end
-	disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-	disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-	disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+    disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double)));
+    disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
+    disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
 	disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 	disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 
-	disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	disconnect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(angle_editingFinished()) );
+    disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
+    disconnect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
 	disconnect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 	disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 
@@ -181,15 +173,15 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
 		ui.tableWidget->resizeColumnToContents(0);
 	}
 
-	connect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	connect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	connect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    connect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(angle_editingFinished()) );
+    connect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
+    connect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
 	connect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 	connect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 
-	connect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
-	connect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-	connect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+    connect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double) ));
+    connect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
+    connect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
 	connect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
 	connect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
 

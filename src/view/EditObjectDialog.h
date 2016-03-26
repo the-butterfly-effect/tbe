@@ -25,8 +25,8 @@
 #include "AbstractUndoCommand.h"
 #include <QDialog>
 
-class AbstractUndoCommand;
-
+//class AbstractUndoCommand;
+class MoveUndoCommand;
 
 /** Dialog to edit all properties of an object.
   * Owned and created by ResizingGraphicsView, which also has a
@@ -53,8 +53,12 @@ public slots:
     void updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr);
 
 private slots:
+//    void angle_editingFinished();
+//    void angle_valueChanged(double);
     void position_editingFinished();
     void position_valueChanged(double);
+//    void size_editingFinished();
+//    void size_valueChanged(double);
     void propertyCellChanged ( int row, int column );
     void lineEditID_valueChanged ( void );
 
@@ -62,6 +66,7 @@ private:
     Ui::EditObjectDialog ui;
 
     AbstractObjectWeakPtr theAOPtr;
+    MoveUndoCommand* theMUCPtr;
 
     /// use whenever you need something from the real object instead of the
     /// std::weak_ptr.
@@ -72,9 +77,6 @@ private:
         else
             return AbstractObjectPtr(theAOPtr).get();
     }
-
-    /// @returns pointer to the *Abstract* UndoCommand
-    AbstractUndoCommand* getUndoPtr(void);
 
     // kill possibility for copy constructor&assignment operator
     EditObjectDialog(const EditObjectDialog&) = delete;

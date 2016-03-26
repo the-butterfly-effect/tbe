@@ -33,6 +33,13 @@ public:
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
 
+    /// only to be called by EditObjectDialog and internals
+    void basicMoveEvent   (const QPointF& aPos);
+    /// only to be called by EditObjectDialog and internals
+    void basicPressEvent  (const QPointF& aPos);
+    /// only to be called by EditObjectDialog and internals
+    bool basicReleaseEvent(void);
+
 private:
     Position theLastKnownGood;
 };
