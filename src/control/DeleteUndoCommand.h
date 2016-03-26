@@ -36,11 +36,11 @@ public:
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
     /// is firstly done OR when it needs to be redone.
-    virtual void redo();
+    void redo() override;
 
     /// Called by the Undo stack to undo the action specified in
     /// this command.
-    virtual void undo();
+    void undo() override;
 };
 
 #endif // DELETEUNDOCOMMAND_H

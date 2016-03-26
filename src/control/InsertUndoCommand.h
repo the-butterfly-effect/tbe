@@ -50,19 +50,19 @@ public:
     static bool createInsertUndoCommand(AbstractObjectPtr anAOPtr);
 
     /// mandatory, but we don't care - not used
-	virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
     /// mandatory, but we don't care - not used
-	virtual bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; }
 
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
     /// is firstly done OR when it needs to be redone.
-	virtual void redo() override;
+    void redo() override;
 
     /// Called by the Undo stack to undo the action specified in
     /// this command.
-	virtual void undo() override;
+    void undo() override;
 
 protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo).
