@@ -28,7 +28,7 @@ class ViewObject;
 class QGraphicsSceneMouseEvent;
 
 /** this abstract class is the godfather of all undo classes
-  * (Delete/Insert/Move/Resize/Rotate)
+  * (ChoosePhone/Delete/EditProperty/Insert/Move/Resize/Rotate)
   */
 class AbstractUndoCommand : public QUndoCommand
 {
