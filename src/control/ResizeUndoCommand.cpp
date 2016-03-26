@@ -58,6 +58,30 @@ ResizeUndoCommand::ResizeUndoCommand(
 }
 
 
+bool ResizeUndoCommand::basicMoveEvent(const Position& aNewPos, qreal aNewWidth, qreal aNewHeight)
+{
+    bool myReturnvalue = true;
+    // only commit local values if they are larger than minimum size
+    // NOTE: TODO/FIXME: the below code isn't good enough
+    if (aNewWidth>AbstractObject::MINIMUM_DIMENSION &&
+        aNewHeight>AbstractObject::MINIMUM_DIMENSION)
+    {
+        theNewPos = aNewPos;
+        theNewWidth = aNewWidth;
+        theNewHeight= aNewHeight;
+        theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
+        myReturnvalue=true;
+    }
+    else
+    {
+        myReturnvalue=false;
+    }
+    theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
+    setDecoratorStateMouseMove();
+    return myReturnvalue;
+}
+
+
 bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
     QPointF myNewMousePosLocal = toLocalPos(anEventPtr->scenePos());
@@ -84,20 +108,8 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
             myDeltaLength = -myDeltaLength;
         myNewWidth = theOrigWidth + myDeltaLength;
     }
-
-    // only commit local values if they are larger than minimum size
-    if (myNewWidth>AbstractObject::MINIMUM_DIMENSION &&
-        myNewHeight>AbstractObject::MINIMUM_DIMENSION)
-    {
-        theNewPos = myNewPos;
-        theNewWidth = myNewWidth;
-        theNewHeight= myNewHeight;
-        theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
-    }
-    setDecoratorStateMouseMove();
-    return true;
+    return basicMoveEvent(myNewPos, myNewWidth, myNewHeight);
 }
-
 
 bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
