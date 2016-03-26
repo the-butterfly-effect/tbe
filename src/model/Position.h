@@ -90,7 +90,7 @@ public:
 	/**
 	 * Constructor - set x (m), y(m), angle(radial)
 	 */
-        Position (qreal anX=NAN, qreal aY=NAN, qreal anAngle=0.0);
+	Position (qreal anX=NAN, qreal aY=NAN, qreal anAngle=0.0);
 
 	Position (const QPointF& aPoint, qreal anAngle = 0.0);
 	Position (const Vector& aPoint, qreal anAngle = 0.0);
@@ -110,9 +110,9 @@ public:
 	const static qreal minimalMove;
 	const static qreal minimalRot;
 
-        /// @returns true if Position exists, or false if used uninitialised
-        bool isValid() const
-        { return (std::isnan(x)==0 && std::isnan(y)==0); }
+	/// @returns true if Position exists, or false if used uninitialised
+	bool isValid() const
+	{ return (false==std::isnan(x) && false==std::isnan(y)); }
 
         b2Vec2  toB2Vec2(void) const;
 	QPointF toQPointF(void) const
