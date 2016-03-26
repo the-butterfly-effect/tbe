@@ -58,8 +58,8 @@ private slots:
     void angle_valueChanged(double);
     void position_editingFinished();
     void position_valueChanged(double);
-//    void size_editingFinished();
-//    void size_valueChanged(double);
+    void size_editingFinished();
+    void size_valueChanged(double);
     void propertyCellChanged ( int row, int column );
     void lineEditID_valueChanged ( void );
 

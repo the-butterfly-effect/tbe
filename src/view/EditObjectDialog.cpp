@@ -68,7 +68,7 @@ void EditObjectDialog::closeExistingUndos()
 {
     angle_editingFinished();
     position_editingFinished();
-    //size_editingFinished();
+    size_editingFinished();
 }
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
@@ -113,7 +113,6 @@ void EditObjectDialog::position_valueChanged (double )
 }
 
 
-
 void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 {
 	// retrieve corresponding key and value
@@ -141,6 +140,32 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 	// now we need to make sure the properties are updated...
     if (!theAOPtr.expired())
         getAORealPtr()->parseProperties();
+}
+
+
+void EditObjectDialog::size_editingFinished()
+{
+    if (nullptr != theRszUCPtr)
+    {
+        theRszUCPtr->mouseReleaseEvent(nullptr);
+    }
+    theRszUCPtr = nullptr;
+}
+
+void EditObjectDialog::size_valueChanged(double)
+{
+    if (nullptr == theRszUCPtr)
+    {
+        // get rid of the PieMenu icons or everything falls to pieces
+        PieMenuSingleton::clearPieMenu();
+        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+        closeExistingUndos();
+        theRszUCPtr = (ResizeUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
+                                                        ActionIcon::ACTION_RESIZE);
+    }
+    theRszUCPtr->basicMoveEvent(getAORealPtr()->getOrigCenter(),
+                                ui.spinBoxWidth->value(),
+                                ui.spinBoxHeight->value());
 }
 
 
