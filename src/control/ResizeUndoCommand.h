@@ -30,8 +30,10 @@ class ResizeUndoCommand : public AbstractUndoCommand
 public:
     explicit ResizeUndoCommand(ViewObjectPtr anViewObjectPtr);
 
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) override;
+    bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) override;
+
+    bool basicMoveEvent   (const Position& aNewPos, qreal aNewWidth, qreal aNewHeight);
 
     /// Calculate the local position from a scene position
     /// (but remain in scene units)

@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Loopings II</title>
+        <title>Loopings</title>
         <author>Klaas van Gend</author>
         <license>MIT</license>
         <description>Push the bowling pin into the goal.</description>
@@ -46,11 +46,7 @@
             </object>
             <object width="0.233" X="2.545" Y="0.895" height="0.100" type="Floor" angle="1.571"/>
             <object width="0.159" X="1.819" Y="1.754" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.090" X="3.631" Y="0.495" height="0.500" type="RectObject" angle="0.409">
-                <property key="ImageName">birch_bar</property>
-                <property key="Mass">1.0</property>
-                <property key="PivotPoint">(0,0)</property>
-            </object>
+            <object width="0.5" X="3.631" Y="0.495" height="0.09" type="RotatingBar" angle="1.986"/>
             <object width="0.100" X="3.631" Y="0.495" height="0.100" type="Scenery" ID="BrassPin" angle="0.000">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">4.5</property>

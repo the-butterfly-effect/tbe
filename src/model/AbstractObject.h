@@ -177,6 +177,13 @@ class AbstractObject : public SensorInterface, public ImpulseInterface
 public:
 	AbstractObject();
 
+    /// elaborate constructor
+    /// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
+    AbstractObject( const QString& aTooltip,
+                    const QString& aImageName,
+                    qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+                    const QString& aPropertiesText = nullptr);
+
 	virtual ~AbstractObject();
 
 	enum SizeDirections
@@ -303,7 +310,7 @@ public:
     AbstractObjectPtr getThisPtr() const
     { return AbstractObjectPtr(theThisPtr); }
 
-	/// @returns the Tooltip of the object.
+    /// @returns the Tooltip of the object (translated).
     virtual const QString getToolTip ( ) const;
 
 	/// @returns true if the object can be moved by the user

@@ -93,6 +93,12 @@ static AbstractRectObjectFactory theHammerFactory("Hammer",
 	"hammer", 0.45,0.18, 2.0, 0.0,
 	"Friction:0.0/PivotPoint:(0.2,0)/");
 
+static AbstractRectObjectFactory theColaCrateFactory("ColaCrate",
+    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Cola Crate"),
+    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A crate of 12 filled cola bottles.\nIt's very heavy and hard to push around."),
+    "cola-crate", 0.85, 0.6, 18.0, 0.1,
+    "Friction:0.1/");
+
 // Constructors/Destructors
 //
 
@@ -112,27 +118,16 @@ RectObject::RectObject(const QString& aDisplayName,
 				const QString& aImageName,
 				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
 				const char *aPropertiesText)
-    : theNameString(aDisplayName)
+    : AbstractObject(aTooltip, aImageName,
+                     aWidth, aHeight, aMass, aBounciness,
+                     aPropertiesText), theNameString (aDisplayName)
 {
 	// This is the enhanced constructor for RectObjects.
 	// When called, the ImageName is the default for that type of RectObject.
 	// So we set it as a default property (which means it is not saved).
 	Q_ASSERT(aDisplayName!=DEFAULT_RECTOBJECT_NAME);
-	theProps.setDefaultPropertiesString(QString("%1:%2/").arg(Property::IMAGE_NAME_STRING).arg(aImageName));
-	theToolTip = aTooltip;
-	setTheWidth(aWidth);
-	setTheHeight(aHeight);
 
-	if (aPropertiesText != nullptr)
-		theProps.setDefaultPropertiesString(aPropertiesText);
-
-	if (aMass > 0.001)
-		theProps.setDefaultPropertiesString(
-			QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
-	else
-		theProps.removeProperty(Property::MASS_STRING);
-	setTheBounciness(aBounciness);
-	initRectAttributes();
+    initRectAttributes();
 }
 
 RectObject::~RectObject ( )

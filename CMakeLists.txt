@@ -130,6 +130,10 @@ IF(WIN32 OR APPLE)
         INSTALL(FILES ${qtqmfiles}
             DESTINATION ${TBE_I18N_DIR}
         )
+        # Windows also needs qpa file in the bindir/platforms directory
+        INSTALL(FILES "${QTMYLIB}/../plugins/platforms/qwindows.dll"
+            DESTINATION "${TBE_BIN_DIR}/platforms/"
+        )
     endif()
     if (APPLE)
         set_target_properties(tbe PROPERTIES MACOSX_BUNDLE false)
