@@ -32,6 +32,10 @@ public:
     virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr);
     virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr);
 
+    virtual bool editAngleMove    (qreal aCurrentAngle);
+    virtual bool editAngleDone    (qreal aFinalAngle);
+
+
 private:
     /// angle in radians of the button down position compared to object center
     qreal theButtonDownVectorAngle;

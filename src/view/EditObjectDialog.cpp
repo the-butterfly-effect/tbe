@@ -21,12 +21,15 @@
 #include "ViewObject.h"
 #include "ImageCache.h"
 #include "MoveUndoCommand.h"
+#include "ResizeUndoCommand.h"
+#include "RotateUndoCommand.h"
 #include "UndoSingleton.h"
 
 #include <QCloseEvent>
 
 EditObjectDialog::EditObjectDialog(QWidget *aParent)
-        : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr)
+        : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr),
+          theRszUCPtr(nullptr), theRotUCPtr(nullptr)
 {
     DEBUG1ENTRY;
     ui.setupUi(this);
@@ -36,6 +39,37 @@ EditObjectDialog::~EditObjectDialog()
 {
 }
 
+
+void EditObjectDialog::angle_editingFinished()
+{
+    if (nullptr != theRotUCPtr)
+    {
+        theRotUCPtr->editAngleDone(ui.spinBoxAngle->value());
+    }
+    theRotUCPtr = nullptr;
+}
+
+void EditObjectDialog::angle_valueChanged(double)
+{
+    if (nullptr == theRotUCPtr)
+    {
+        // get rid of the PieMenu icons or everything falls to pieces
+        PieMenuSingleton::clearPieMenu();
+        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+        closeExistingUndos();
+        theRotUCPtr = (RotateUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
+                                                        ActionIcon::ACTION_ROTATE);
+    }
+    theRotUCPtr->editAngleMove(ui.spinBoxAngle->value());
+}
+
+
+void EditObjectDialog::closeExistingUndos()
+{
+    angle_editingFinished();
+    position_editingFinished();
+    //size_editingFinished();
+}
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
@@ -52,18 +86,20 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 
 void EditObjectDialog::position_editingFinished()
 {
-    theMUCPtr->basicReleaseEvent();
+    if (theMUCPtr)
+        theMUCPtr->basicReleaseEvent();
     // todo: figure out if this is a memory leak (probably not)
     theMUCPtr=nullptr;
 }
 
 void EditObjectDialog::position_valueChanged (double )
 {
-    if (nullptr ==theMUCPtr)
+    if (nullptr == theMUCPtr)
     {
         // get rid of the PieMenu icons or everything falls to pieces
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+        closeExistingUndos();
         theMUCPtr = (MoveUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                                      ActionIcon::ACTION_MOVE);
         theMUCPtr->basicPressEvent(THESCALE*QPointF(ui.spinBoxX->value(),
@@ -192,5 +228,6 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
 		setEnabled(false);
 	else
 		setEnabled(true);
-	return;
+    return;
 }
+

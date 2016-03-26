@@ -33,6 +33,20 @@ RotateUndoCommand::RotateUndoCommand(
 }
 
 
+bool RotateUndoCommand::editAngleMove(qreal aCurrentAngle)
+{
+    theNewPos.angle = aCurrentAngle;
+    theViewObjPtr->setNewGeometry(theNewPos);
+    setDecoratorStateMouseMove();
+    return true;
+}
+
+bool RotateUndoCommand::editAngleDone(qreal aFinalAngle)
+{
+    theNewPos.angle = aFinalAngle;
+    return AbstractUndoCommand::mouseReleaseEvent(nullptr);
+}
+
 bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
     qreal myOrigAngle = theOrigPos.angle;
@@ -54,3 +68,4 @@ bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
     theButtonDownVectorAngle = Vector(theButtonDownPosition - theOrigPos.toQPointF()).toAngle();
     return true;
 }
+
