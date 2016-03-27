@@ -23,6 +23,7 @@
 #include "tbe_global.h"
 #include "AbstractObject.h"
 #include "AbstractUndoCommand.h"
+#include "Property.h"
 #include <QDialog>
 
 class MoveUndoCommand;
@@ -70,6 +71,8 @@ private:
     MoveUndoCommand* theMUCPtr;
     ResizeUndoCommand* theRszUCPtr;
     RotateUndoCommand* theRotUCPtr;
+
+    PropertyList theObjectProps;
 
     /// use whenever you need something from the real object instead of the
     /// std::weak_ptr.

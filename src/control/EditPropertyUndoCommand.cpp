@@ -16,7 +16,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "AbstractObject.h"
+#include "AbstractObjectPtr.h"
 #include "EditPropertyUndoCommand.h"
+#include "Property.h"
+#include "ViewObject.h"
 
 EditPropertyUndoCommand::EditPropertyUndoCommand(
         ViewObjectPtr anViewObjectPtr)
@@ -29,4 +33,34 @@ EditPropertyUndoCommand::EditPropertyUndoCommand(
 EditPropertyUndoCommand::~EditPropertyUndoCommand()
 {
     DEBUG1ENTRY;
+}
+
+
+void EditPropertyUndoCommand::changedProperty(const QString& aKey, const QString& anOldValue, const QString& aNewValue)
+{
+    DEBUG4ENTRY;
+    theKey = aKey;
+    theOldValue = anOldValue;
+    theNewValue = aNewValue;
+}
+
+
+void EditPropertyUndoCommand::redo(void)
+{
+    DEBUG4("EditPropertyUndoCommand::redo for '%s'", ASCII(text()));
+    AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
+    myAOPtr->theProps.setProperty(theKey, theNewValue);
+
+    // our parent also has to do some things...
+    AbstractUndoCommand::redo();
+}
+
+
+void EditPropertyUndoCommand::undo(void)
+{
+    DEBUG4("EditPropertyUndoCommand::undo for '%s'", ASCII(text()));
+    AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
+    myAOPtr->theProps.setProperty(theKey, theOldValue);
+
+    AbstractUndoCommand::undo();
 }

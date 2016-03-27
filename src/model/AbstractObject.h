@@ -497,6 +497,7 @@ private:
     // TODO/FIXME: debugging code - should go away at some point
     friend class ViewPostIt;
     friend class EditObjectDialog;
+    friend class EditPropertyUndoCommand;
 
 	/// static width of the object (i.e. at rest before simulation starts)
 	qreal theWidth;

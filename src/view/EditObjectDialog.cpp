@@ -20,6 +20,7 @@
 #include "EditObjectDialog.h"
 #include "ViewObject.h"
 #include "ImageCache.h"
+#include "EditPropertyUndoCommand.h"
 #include "MoveUndoCommand.h"
 #include "ResizeUndoCommand.h"
 #include "RotateUndoCommand.h"
@@ -124,22 +125,20 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
         getAORealPtr()->theProps.property2String(myKey, &myPropValue);
 	if (myValue == myPropValue)
 		return;
-	// so, yes it changed.
 
-// FIXME/TODO: this line doesn't work as expected - it will crash tbe.
-// I think this is due to recursive calling propertyCellChanged...
-//	ui.tableWidget->item(aRow, 0)->setIcon(ImageStore::getQIcon("IconModified", QSize(32,32)));
+    // If we get here, yes it changed.
+    // Let's act on it!
+    ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+    closeExistingUndos();
+    EditPropertyUndoCommand* myUndoPtr =
+            (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
+                                            ActionIcon::ACTION_EDITPROPERTIES);
+    QString myOrigValue;
+    theObjectProps.property2String(myKey, &myOrigValue);
+    myUndoPtr->changedProperty(myKey, myOrigValue, myValue);
 
-/*
-    UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(theAOPtr);
-    theAOPtr->theProps.setProperty(myKey, myValue);
-	myUndoPtr->update(myKey, myValue);
-	myUndoPtr->pushYourself();
-*/
-
-	// now we need to make sure the properties are updated...
-    if (!theAOPtr.expired())
-        getAORealPtr()->parseProperties();
+    // commit this undo and make sure its changes are 'permanent'
+    myUndoPtr->mouseReleaseEvent(nullptr);
 }
 
 
@@ -171,6 +170,7 @@ void EditObjectDialog::size_valueChanged(double)
 
 void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr)
 {
+    closeExistingUndos();
 	// prevent spawning of signals for every update we do below
 	// connect everything back up at the end
     disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double)));
@@ -220,7 +220,9 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
 			QString myKey = *myI;
 			QString myValue;
             myAORealPtr->theProps.property2String(*myI, &myValue);
-			QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
+            theObjectProps.setProperty(myKey, myValue);
+
+            QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
 			ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
 			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
 			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
