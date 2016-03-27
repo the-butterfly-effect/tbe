@@ -42,20 +42,20 @@ public:
 
     /// Mandatory, but we don't care - not used for any dummies
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) { return false; }
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
 
     /// Mandatory, but we don't care - not used for any dummies because we don't
     /// implement decorators either.
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent*) { return false; };
+    bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; };
 
     /// Overridden because we don't have anything to do and need
     /// to prove this member is never called.
-    virtual void redo() { Q_ASSERT(false); };
+    void redo() override { Q_ASSERT(false); };
 
     /// Overridden because we don't have anything to do and need
     /// to prove this member is never called.
-    virtual void undo() { Q_ASSERT(false); };
+    void undo() override { Q_ASSERT(false); };
 };
 
 #endif // DUMMYUNDOCOMMAND_H

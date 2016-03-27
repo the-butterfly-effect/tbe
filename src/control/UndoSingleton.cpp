@@ -23,6 +23,7 @@
 #include "InsertUndoCommand.h"
 #include "DeleteUndoCommand.h"
 #include "ChoosePhoneUndoCommand.h"
+#include "EditPropertyUndoCommand.h"
 
 static UndoSingleton* theUndoSingletonPtr = nullptr;
 static AbstractUndoCommand* theCurrentlyActiveUndoCommand = nullptr;
@@ -81,9 +82,12 @@ UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
 	case ActionIcon::ACTION_DELETE:
 		return new DeleteUndoCommand(anObject);
 		break;
-	case ActionIcon::ACTION_EDITSPECIAL:
+    case ActionIcon::ACTION_EDITPROPERTIES:
+        return new EditPropertyUndoCommand(anObject);
+        break;
+    //case ActionIcon::ACTION_EDITSPECIAL:
 		// TODO/FIXME
-		break;
+        //break;
 	}
 	if (theCurrentlyActiveUndoCommand!=nullptr)
 		delete theCurrentlyActiveUndoCommand;

@@ -28,7 +28,7 @@ class ViewObject;
 class QGraphicsSceneMouseEvent;
 
 /** this abstract class is the godfather of all undo classes
-  * (Delete/Insert/Move/Resize/Rotate)
+  * (ChoosePhone/Delete/EditProperty/Insert/Move/Resize/Rotate)
   */
 class AbstractUndoCommand : public QUndoCommand
 {
@@ -61,11 +61,11 @@ public:
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
     /// is firstly done OR when it needs to be redone.
-    virtual void redo();
+    void redo() override;
 
     /// Called by the Undo stack to undo the action specified in
     /// this command.
-    virtual void undo();
+    void undo() override;
 
 protected:
     /// This member sets the Proxy image in the ViewObjectActionDecorator.
