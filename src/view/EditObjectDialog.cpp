@@ -26,8 +26,6 @@
 #include "RotateUndoCommand.h"
 #include "UndoSingleton.h"
 
-#include <QCloseEvent>
-
 EditObjectDialog::EditObjectDialog(QWidget *aParent)
         : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr),
           theRszUCPtr(nullptr), theRotUCPtr(nullptr)
@@ -74,15 +72,17 @@ void EditObjectDialog::closeExistingUndos()
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
-	// note: this member also gets called whenever we change a property,
-	// I have no clue why - the good news is that pushYourself() will figure
-	// out if anything changed and not push and ID change if there is none...
-/*    UndoObjectChange* myUndoPtr = UndoObjectChange::createUndoObject(theAOPtr);
-	QString myID = ui.lineEditID->text().trimmed();
-    theAOPtr->setID(myID);
-	myUndoPtr->update(myID);
-	myUndoPtr->pushYourself();
-*/
+    // TODO/FIXME: Code duplication warning: this member is rather close
+    // to the propertyCellChanged() member.
+    ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+    closeExistingUndos();
+    EditPropertyUndoCommand* myUndoPtr =
+            (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
+                                            ActionIcon::ACTION_EDITPROPERTIES);
+    myUndoPtr->changedID(getAORealPtr()->theID, ui.lineEditID->text());
+
+    // commit this undo and make sure its changes are 'permanent'
+    myUndoPtr->mouseReleaseEvent(nullptr);
 }
 
 void EditObjectDialog::position_editingFinished()

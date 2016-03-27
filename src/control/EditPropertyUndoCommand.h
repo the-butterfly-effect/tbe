@@ -33,6 +33,9 @@ public:
     /// Store a changed property and commit this Undo.
     void changedProperty(const QString& aKey, const QString& anOldValue, const QString& aNewValue);
 
+    /// Store a changed property and commit this Undo.
+    void changedID(const QString& anOldID, const QString& aNewID);
+
     /// Mandatory, but we don't care for this one
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
     bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
@@ -53,6 +56,9 @@ private:
     QString theKey;
     QString theOldValue;
     QString theNewValue;
+
+    QString theOldID;
+    QString theNewID;
 };
 
 #endif // EDITPROPERTYUNDOCOMMAND_H

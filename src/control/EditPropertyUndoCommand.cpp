@@ -36,6 +36,14 @@ EditPropertyUndoCommand::~EditPropertyUndoCommand()
 }
 
 
+void EditPropertyUndoCommand::changedID(const QString& anOldID, const QString& aNewID)
+{
+    DEBUG4ENTRY;
+    theOldID = anOldID;
+    theNewID = aNewID;
+}
+
+
 void EditPropertyUndoCommand::changedProperty(const QString& aKey, const QString& anOldValue, const QString& aNewValue)
 {
     DEBUG4ENTRY;
@@ -49,7 +57,10 @@ void EditPropertyUndoCommand::redo(void)
 {
     DEBUG4("EditPropertyUndoCommand::redo for '%s'", ASCII(text()));
     AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
-    myAOPtr->theProps.setProperty(theKey, theNewValue);
+    if (!theKey.isNull())
+        myAOPtr->theProps.setProperty(theKey, theNewValue);
+    else
+        myAOPtr->theID = theNewID;
 
     // our parent also has to do some things...
     AbstractUndoCommand::redo();
@@ -60,7 +71,10 @@ void EditPropertyUndoCommand::undo(void)
 {
     DEBUG4("EditPropertyUndoCommand::undo for '%s'", ASCII(text()));
     AbstractObjectPtr myAOPtr = theViewObjPtr->getAbstractObjectPtr();
-    myAOPtr->theProps.setProperty(theKey, theOldValue);
+    if (!theKey.isNull())
+        myAOPtr->theProps.setProperty(theKey, theOldValue);
+    else
+        myAOPtr->theID = theOldID;
 
     AbstractUndoCommand::undo();
 }

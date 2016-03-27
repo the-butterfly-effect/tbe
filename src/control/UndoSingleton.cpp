@@ -85,9 +85,9 @@ UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
     case ActionIcon::ACTION_EDITPROPERTIES:
         return new EditPropertyUndoCommand(anObject);
         break;
-    case ActionIcon::ACTION_EDITSPECIAL:
+    //case ActionIcon::ACTION_EDITSPECIAL:
 		// TODO/FIXME
-		break;
+        //break;
 	}
 	if (theCurrentlyActiveUndoCommand!=nullptr)
 		delete theCurrentlyActiveUndoCommand;
