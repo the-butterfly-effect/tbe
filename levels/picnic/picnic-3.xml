@@ -192,7 +192,8 @@
                 <property key="page1">I like Minigolf.</property>
                 <property key="page2">It's fun because all holes are different.</property>
                 <property key="page3">Into the monkey's mouth, and out from the ... ahum.</property>
-                <property key="page4">Did you know there was so much technology underneath a hole?&lt;br&gt;&lt;br&gt;&lt;br&gt;... the Post-It Boy</property>
+		<property key="page4">Did you know there was so much technology underneath a hole?</property>
+		<property key="page5">&lt;br>&lt;br>... Post-It Boy</property>
             </object>
         </predefined>
         <background>

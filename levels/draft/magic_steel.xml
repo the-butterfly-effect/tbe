@@ -34,7 +34,7 @@
             <object width="0.220" X="1.033" Y="3.795" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">These I-beams have truly remarkable properties.</property>
                 <property key="page2">They have an incredible stability under extreme conditions.</property>
-                <property key="page3">Sorry. that's all I can tell you.&lt;br&gt;— Post-it boy</property>
+		<property key="page3">Sorry, that's all I can tell you.&lt;br>&lt;br>Post-It Boy</property>
             </object>
         </predefined>
         <background>

@@ -26,7 +26,7 @@
                 <property key="page1">Bowling Ball vs Bowling Pin.&lt;br>&lt;br>Who will win?</property>
                 <property key="page2">I don't think the Bowling Ball can reach the pin...</property>
                 <property key="page3">But that ball has a jumpy friend!</property>
-                <property key="page4">the Post-It Boy</property>
+                <property key="page4">Post-It Boy</property>
             </object>
             <object Y="0.05" width="4" height="0.1" X="2" angle="0" type="Floor">
                 <property key="Bounciness">0.1</property>

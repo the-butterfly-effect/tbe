@@ -35,7 +35,7 @@
                 <property key="page3">And you can hang a lot of weight on it, too!</property>
                 <property key="page4">Don't tell anyone about it, I still need to file a patent!</property>
                 <property key="page5">Have you read 'Foucault's Pendulum'?</property>
-                <property key="page6">&lt;br>&lt;br> ... the Post-It boy</property>
+                <property key="page6">&lt;br>&lt;br>... Post-It Boy</property>
             </object>
             <object X="2.72" Y="3.52" type="Skyhook" ID="Skyhook">
                 <property key="ZValue">0.3</property>
