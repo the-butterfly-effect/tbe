@@ -54,11 +54,14 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 {
     ui->setupUi(this);
     setupView();
-    if (theIsLevelCreator)
+    statusBar();
+    if (theIsLevelCreator) {
         on_action_Switch_to_Level_Editor_triggered();
+    } else
+        statusBar()->hide();
+
     if (isMaximized)
         showMaximized();
-    statusBar();
 }
 
 
@@ -337,6 +340,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     theLevelCreator = new LevelCreator(this);
     if (theLevelPtr)
         repopulateSceneAndToolbox();
+    statusBar()->show();
 }
 
 

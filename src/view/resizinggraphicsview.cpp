@@ -110,7 +110,7 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
 	if (event!=nullptr)
 		QGraphicsView::mouseMoveEvent(event);
-	if(theMousePosLabelPtr==nullptr)
+	if (theMousePosLabelPtr==nullptr || !theIsLevelCreator)
 		return;
 
 	QPointF mousePos = this->mapToScene(event->pos());
