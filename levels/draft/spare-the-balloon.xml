@@ -80,7 +80,7 @@
                 <property key="page1">That poor balloon is on its way to its doom</property>
                 <property key="page2">Let's spare the balloon, there's a pin that needs kicking.</property>
                 <property key="page3">I still have other ideas that need balloons...</property>
-                <property key="page4">... the Post-it Boy</property>
+                <property key="page4">... Post-It Boy</property>
             </object>
             <object width="0.700" X="2.693" Y="0.661" height="0.100" type="Floor" angle="6.009"/>
             <object width="0.306" X="0.155" Y="1.835" height="0.100" type="Floor" angle="0.750"/>

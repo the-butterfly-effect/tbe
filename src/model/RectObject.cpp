@@ -193,6 +193,7 @@ void  RectObject::setFriction(b2FixtureDef* aFixtureDef)
 	float myFriction = 0;
 	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
 		aFixtureDef->friction = myFriction;
-	else
-		assert(false);
+    else
+        // use a "sane default" if something weird is going on
+        aFixtureDef->friction = 0.3;
 }

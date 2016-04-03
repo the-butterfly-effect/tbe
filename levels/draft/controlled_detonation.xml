@@ -60,7 +60,7 @@
                 <property key="page1">What a wonderful day! It's the perfect weather for explosions.</property>
                 <property key="page2">You have probably noticed your toolbox is empty this time. Don't worry.</property>
                 <property key="page3">Remember you can choose the phone number the detonator boxes are calling.</property>
-                <property key="page4">Find the right combination and blow everything up.&lt;br>—Post-it boy</property>
+                <property key="page4">Find the right combination and blow everything up.&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object Y="4.90922" angle="0" width="0.2" X="5.13662" type="Wall" height="1"/>
             <object Y="3.3747" angle="0" width="0.102913" X="7.43975" type="Wall" height="1.25351"/>

@@ -36,8 +36,8 @@
             <object X="2" Y="0.5" type="PostIt">
                 <property key="page1">Remember this gap?</property>
                 <property key="page2">I also have a Bowling Ball that wants to cross.</property>
-                <property key="page3">&lt;br> &lt;br> the Post-It Boy &lt;br> &lt;br> likes building bridges </property>
-                <property key="page4">&lt;br> &lt;br> ... and he likes crashing bridges even more!</property>
+		<property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>likes building bridges</property>
+                <property key="page4">&lt;br>&lt;br>... and he likes crashing bridges even more!</property>
             </object>
             <object width="4.4" X="2.2" Y="0.05" height="0.1" type="Floor">
                 <property key="Bounciness">0.1</property>

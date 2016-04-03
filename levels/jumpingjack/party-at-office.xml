@@ -168,7 +168,7 @@
                 <property key="page2">(Jack usually doesn't get much attention, he's already happy that we thought of him)</property>
                 <property key="page3">There's cola,&lt;br>and there's even a gift!</property>
                 <property key="page4">Let's present the gift to him, shall we?</property>
-                <property key="page5">... the Post-it Boy</property>
+                <property key="page5">... Post-It Boy</property>
             </object>
             <object X="1.868" height="0.1" type="Floor" width="0.52" Y="1.19" angle="0.1">
                 <property key="ZValue">1.0</property>

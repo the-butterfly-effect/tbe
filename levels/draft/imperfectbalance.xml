@@ -32,7 +32,7 @@
                 <property key="page2">Poor little butterfly has no clue what's hanging above its head...</property>
                 <property key="page3">Like a 'Sword of Damocles'. &lt;br>&lt;br>Would it also loose appetite if it knew?</property>
                 <property key="page4">Please make the butterfly happy!&lt;br>&lt;br>That's the least we can do.</property>
-                <property key="page5">&lt;br>&lt;br>... An unhappy&lt;br>&lt;br>Post-It Boy</property>
+                <property key="page5">&lt;br>&lt;br>... an unhappy Post-It Boy</property>
             </object>
             <object width="0.2" X="1.47" Y="1.9" height="0.23" type="Skyhook" ID="Skyhook" angle="0">
                 <property key="ZValue">0.5</property>

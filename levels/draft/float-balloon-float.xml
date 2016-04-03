@@ -23,8 +23,8 @@
             <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">Where do Balloons go?&lt;br>They can't keep going up forever!</property>
                 <property key="page2">Or do they fly to the stars?</property>
-                <property key="page3">I want to be a balloon &lt;br> ... &lt;br> and be the first to set foot on Alpha Centauri!</property>
-                <property key="page4">... The Post-It Boy</property>
+                <property key="page3">I want to be a balloon &lt;br>... &lt;br>and be the first to set foot on Alpha Centauri!</property>
+                <property key="page4">... Post-It Boy</property>
             </object>
             <object width="0.12" X="0.18" Y="0.278" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
             <object width="0.4" X="1.65" Y="0.54" height="0.88" type="Wall" angle="0"/>

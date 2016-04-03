@@ -33,7 +33,7 @@
             </object>
             <object width="0.220" X="2.200" Y="2.600" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Pin topples to green in two moves.</property>
-                <property key="page2">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br> ... is brief for once</property>
+                <property key="page2">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>is brief for once</property>
                 <property key="page3">(Ssst... I'm playing chess)</property>
             </object>
             <object width="0.100" X="2.200" Y="2.300" height="0.100" type="RectObject" ID="BrassPin" angle="0.000">

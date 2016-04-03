@@ -40,7 +40,7 @@
                 <property key="page3">The bowling pin seems really out of place. It's not even as heavy as the weight.</property>
                 <property key="page4">Could it be that it serves as some kind of counter-weight? I don't know.</property>
                 <property key="page5">At least you can choose the birch bar to be as long as you want to be. Nice!</property>
-                <property key="page6">—The Post-It Boy</property>
+                <property key="page6">Post-It Boy</property>
             </object>
             <object height="0.228027" type="Butterfly" width="0.15" angle="0" Y="0.509773" X="2.05041" ID="butterfly"/>
             <object height="0.585761" type="RectObject" width="0.307443" angle="0" Y="0.347086" X="3.06231" ID="flower">

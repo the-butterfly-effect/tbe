@@ -29,7 +29,7 @@
                 <property key="page2">I thought of using helium, but Mythbusters explained that won't work...</property>
                 <property key="page3">But fear not! There's always a true mechanical solution.</property>
                 <property key="page4">Notice a new trick: rotate.</property>
-                <property key="page5">the Post-It Boy</property>
+                <property key="page5">Post-It Boy</property>
             </object>
             <object width="4.400" X="2.200" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>

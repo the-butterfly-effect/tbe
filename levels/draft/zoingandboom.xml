@@ -127,7 +127,7 @@
                 <property key="page1">Zoing Ploing Boing Woing&lt;br>Zzap Whoosh Smack Boom</property>
                 <property key="page2">Don't you love these old cartoons?</property>
                 <property key="page3">But let me give you one hint:&lt;br>&lt;br> First a Boom, then the Zoinggg.</property>
-                <property key="page4">the Post-It Boy</property>
+                <property key="page4">Post-It Boy</property>
             </object>
             <object X="3.793" Y="3.379" width="0.22" angle="0" type="BowlingBall" height="0.22"/>
             <object X="3.458" Y="3.681" width="0.45" angle="0" type="Hammer" height="0.18">
