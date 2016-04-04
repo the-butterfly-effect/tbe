@@ -386,6 +386,7 @@ void MainWindow::repopulateSceneAndToolbox()
     if (theIsLevelCreator)
         connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
                 theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+    emit theGameStateMachinePtr->signal_Reset_triggered();
 }
 
 
