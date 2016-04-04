@@ -374,22 +374,6 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
 }
 
 
-void MainWindow::repopulateSceneAndToolbox()
-{
-    ui->listWidget->clear();
-    // if no ViewWorld already exists, create one
-    ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
-    if (nullptr == myVWPtr)
-        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-    for (auto i : theLevelPtr->theToolboxList)
-        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
-    if (theIsLevelCreator)
-        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
-                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
-    emit theGameStateMachinePtr->signal_Reset_triggered();
-}
-
-
 void MainWindow::purgeLevel()
 {
 	DEBUG1ENTRY;
@@ -409,6 +393,23 @@ void MainWindow::reloadLevel()
 	purgeLevel();
 	loadLevel(myLevelName);
 }
+
+
+void MainWindow::repopulateSceneAndToolbox()
+{
+    ui->listWidget->clear();
+    // if no ViewWorld already exists, create one
+    ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
+    if (nullptr == myVWPtr)
+        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+    for (auto i : theLevelPtr->theToolboxList)
+        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
+    if (theIsLevelCreator)
+        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
+                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+    emit theGameStateMachinePtr->signal_Reset_triggered();
+}
+
 
 void MainWindow::setLanguageCheckmark()
 {
