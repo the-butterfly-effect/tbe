@@ -26,6 +26,10 @@
 #include "RotateUndoCommand.h"
 #include "UndoSingleton.h"
 
+// Initializer for theClosePreventer global static variable.
+std::atomic<bool> EditObjectDialog::PreventClose::theClosePreventer(false);
+
+
 EditObjectDialog::EditObjectDialog(QWidget *aParent)
         : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr),
           theRszUCPtr(nullptr), theRotUCPtr(nullptr)
@@ -41,6 +45,7 @@ EditObjectDialog::~EditObjectDialog()
 
 void EditObjectDialog::angle_editingFinished()
 {
+    PreventClose myLocalDoNotClose;
     if (nullptr != theRotUCPtr)
     {
         theRotUCPtr->editAngleDone(ui.spinBoxAngle->value());
@@ -56,6 +61,7 @@ void EditObjectDialog::angle_valueChanged(double)
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
         closeExistingUndos();
+        PreventClose myLocalDoNotClose;
         theRotUCPtr = (RotateUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                                         ActionIcon::ACTION_ROTATE);
     }
@@ -76,6 +82,7 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
     // to the propertyCellChanged() member.
     ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
     closeExistingUndos();
+    PreventClose myLocalDoNotClose;
     EditPropertyUndoCommand* myUndoPtr =
             (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                             ActionIcon::ACTION_EDITPROPERTIES);
@@ -87,6 +94,7 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 
 void EditObjectDialog::position_editingFinished()
 {
+    PreventClose myLocalDoNotClose;
     if (theMUCPtr)
         theMUCPtr->basicReleaseEvent();
     // todo: figure out if this is a memory leak (probably not)
@@ -101,6 +109,7 @@ void EditObjectDialog::position_valueChanged (double )
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
         closeExistingUndos();
+        PreventClose myLocalDoNotClose;
         theMUCPtr = (MoveUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                                      ActionIcon::ACTION_MOVE);
         theMUCPtr->basicPressEvent(THESCALE*QPointF(ui.spinBoxX->value(),
@@ -108,6 +117,7 @@ void EditObjectDialog::position_valueChanged (double )
     }
     else
     {
+        PreventClose myLocalDoNotClose;
         theMUCPtr->basicMoveEvent(THESCALE*QPointF(ui.spinBoxX->value(),
                                                    -ui.spinBoxY->value()));
     }
@@ -130,6 +140,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
     // Let's act on it!
     ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
     closeExistingUndos();
+    PreventClose myLocalDoNotClose;
     EditPropertyUndoCommand* myUndoPtr =
             (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                             ActionIcon::ACTION_EDITPROPERTIES);
@@ -144,6 +155,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 
 void EditObjectDialog::size_editingFinished()
 {
+    PreventClose myLocalDoNotClose;
     if (nullptr != theRszUCPtr)
     {
         theRszUCPtr->mouseReleaseEvent(nullptr);
@@ -162,6 +174,7 @@ void EditObjectDialog::size_valueChanged(double)
         theRszUCPtr = (ResizeUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                                         ActionIcon::ACTION_RESIZE);
     }
+    PreventClose myLocalDoNotClose;
     theRszUCPtr->basicMoveEvent(getAORealPtr()->getOrigCenter(),
                                 ui.spinBoxWidth->value(),
                                 ui.spinBoxHeight->value());
@@ -170,23 +183,30 @@ void EditObjectDialog::size_valueChanged(double)
 
 void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr)
 {
-    closeExistingUndos();
-	// prevent spawning of signals for every update we do below
-	// connect everything back up at the end
+    // This member gets called whenever the anyone calls ViewObject::setNewGeometry.
+    // That includes when it gets called from (Abstract|Move|Resize|Rotate)UndoCommand.
+    // In the case of a user manipulating the ViewObject by mouse, that's fine
+    //  - if there's an undo object open in our UI, it should be closed.
+    // If the user manipulated our UI, we should not close the undo...
+    if (!PreventClose::isClosePrevented())
+        closeExistingUndos();
+
+    // prevent spawning of signals for every update we do below
+    // connect everything back up at the end
     disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double)));
     disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
     disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
-	disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-	disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+    disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+    disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
 
     disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(angle_editingFinished()) );
     disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
     disconnect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
-	disconnect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    disconnect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 
-	disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
-	disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
+    disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
+    disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
 
     theAOPtr = anAbstractObjectPtr;
     if (!theAOPtr.expired())
