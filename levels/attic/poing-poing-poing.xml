@@ -48,10 +48,10 @@
                 <property key="ImageName">used_wood_bar</property>
             </object>
             <object X="2" Y="0.5" type="PostIt">
-                <property key="page1">Poing Poing Poing &lt;br> &lt;br> ... a world-famous song of the &lt;i>Rotterdam Termination Source&lt;/i></property>
+                <property key="page1">Poing Poing Poing &lt;br>&lt;br>... a world-famous song of the &lt;i>Rotterdam Termination Source&lt;/i></property>
                 <property key="page2">Volley balls can do that, too.&lt;br>&lt;br>Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>
-                <property key="page4">&lt;br> &lt;br> the Post-It Boy </property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
                 <property key="page5">By the way: it is possible with only one of those pegs!</property>
                 <property key="page6">And you already realized that the pegs can adjust the trajectories of both the ball and the bottle, right?</property>
             </object>

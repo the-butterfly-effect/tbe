@@ -50,7 +50,6 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
     }
 	ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
 	slotUpdateCount();
-    setText(TheGetText(theTBGPtr->theGroupName));
 	setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
 	setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     setSizeHint(QSize(90,150));
@@ -89,7 +88,8 @@ void ToolboxListWidgetItem::slotUpdateCount(void)
     else
     {
         setIcon(theRealPixmap);
-        setText(TheGetText(theTBGPtr->theGroupName));
+        //: %1 is the number of items, %2 is the name of the item
+        setText( tr("%1x %2").arg(theTBGPtr->count()).arg(TheGetText(theTBGPtr->theGroupName)));
     }
     listWidget()->update();
 }

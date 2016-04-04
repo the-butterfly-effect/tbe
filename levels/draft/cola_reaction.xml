@@ -71,7 +71,7 @@
                 <property key="page1">Do you see the weird peg from which the weight is hanging?</property>
                 <property key="page2">It lies in a guide rail, it can move freely left and right.</property>
                 <property key="page3">But why would anyone need a hanging weight here, anyways?</property>
-                <property key="page4">—Post-It Boy</property>
+                <property key="page4">Post-It Boy</property>
             </object>
         </predefined>
         <background>

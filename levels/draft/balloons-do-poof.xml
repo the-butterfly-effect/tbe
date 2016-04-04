@@ -64,7 +64,7 @@
                 <property key="page1">Look: two pins need kicking.</property>
                 <property key="page2">And a balloon that wants to go up.</property>
                 <property key="page3">I'm sure the balloon has something to do with the solution to this level!</property>
-                <property key="page4">...&lt;br>was signed:&lt;br>the Post-it Boy</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
             </object>
         </predefined>
     </scene>

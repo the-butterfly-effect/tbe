@@ -25,7 +25,7 @@
                 <property key="page1">You've seen this before: a Bowling Ball and a Bowling Pin. But this time, there's a wall in-between.</property>
                 <property key="page2">I'm pretty sure that Bowling Balls cannot climb walls - they don't have hands, do they?</property>
                 <property key="page3">Do you know what an unstable equilibrium is?</property>
-                <property key="page4">... The Post-It boy</property>
+                <property key="page4">... Post-It Boy</property>
             </object>
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
             <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0"/>

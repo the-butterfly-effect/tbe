@@ -66,7 +66,7 @@
                 <property key="page2"> :-( </property>
                 <property key="page3">Look for the last message</property>
                 <property key="page4">I don't want to hurry you, but find it before the Butterfly meets her final flower.</property>
-                <property key="page5">... the Post-It Boy</property>
+                <property key="page5">... Post-It Boy</property>
             </object>
             <object width="2.551" X="5.946" Y="1.329" height="0.100" type="Floor" angle="1.570"/>
             <object width="0.600" X="5.570" Y="0.250" height="0.100" type="BirchBar" angle="0.360">

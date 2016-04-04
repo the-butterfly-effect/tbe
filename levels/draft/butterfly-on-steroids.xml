@@ -40,8 +40,8 @@
             </object>
             <object height="0.260" type="PostIt" X="3.020" width="0.260" Y="2.280" angle="0.000">
                 <property key="page1">Flying from flower to flower can be hard. A real hurdle race.</property>
-                <property key="page2">Two hurdles must be overcome. And butterfly has to start everything himself. Or herself?</property>
-                <property key="page3">&lt;br>&lt;br>&lt;br>...Post-it boy&lt;br>(male, I think)</property>
+                <property key="page2">Two hurdles must be overcome. And the butterfly has to start everything himself. Or herself?</property>
+                <property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>(male, I think)</property>
             </object>
             <object height="0.100" ID="BrassPin" type="RectObject" X="1.250" width="0.100" Y="0.800" angle="0.000">
                 <property key="ImageName">brass-pin</property>

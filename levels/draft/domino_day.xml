@@ -123,10 +123,10 @@
                 <property key="Bounciness">0.1</property>
             </object>
             <object width="0.220" X="0.200" Y="1.400" height="0.220" type="PostIt" angle="0.000">
-                <property key="page1">It falls down, blows ...&lt;br>&lt;br>and doesn't do anything useful</property>
+                <property key="page1">It falls down, blows...&lt;br>&lt;br>and doesn't do anything useful</property>
                 <property key="page2">Sounds like a junk, does it?</property>
                 <property key="page3">That's half of the problem you need to fix here...</property>
-                <property key="page4">&lt;br>&lt;br> ... the Post-It boy</property>
+                <property key="page4">&lt;br>&lt;br>... Post-It Boy</property>
                 <property key="page5">PS: Those dominos are quite big, aren't they?</property>
             </object>
             <object width="0.600" X="5.700" Y="1.280" height="0.550" type="RightRamp" angle="3.140"/>

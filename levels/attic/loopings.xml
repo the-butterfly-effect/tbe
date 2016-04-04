@@ -30,7 +30,7 @@
                 <property key="page1">Vrooom Vrooom Vrooom</property>
                 <property key="page2">Wooosh Wooosh Wooosh</property>
                 <property key="page3">Loopings are fun!</property>
-                <property key="page4">... Post-It boy once spoke with&lt;br>Sonic the Hedgehog!</property>
+                <property key="page4">Post-It Boy once spoke with...&lt;br>&lt;br>Sonic the Hedgehog!</property>
             </object>
             <object width="0.120" X="3.100" Y="0.280" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000">
                 <property key="Mass">3.5</property>

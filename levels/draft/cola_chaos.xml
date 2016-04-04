@@ -98,7 +98,7 @@
                 <property key="page2">But that's not good enough. The bottles are going crazy and the cola just goes all over the place.</property>
                 <property key="page3">By the way, you don't have to insert or trigger the 2 bottles from the toolbox. But it might help!</property>
                 <property key="page4">I wonder if it is easier to solve this puzzle the chaotic way or in a controlled fashion.</property>
-                <property key="page5">—A thoughtful&lt;br>Post-it boy</property>
+		<property key="page5">&lt;br>&lt;br>... a thoughtful Post-It Boy</property>
             </object>
         </predefined>
         <background>

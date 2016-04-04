@@ -28,7 +28,7 @@
                 <property key="page1">Don't worry.</property>
                 <property key="page2">This is not as complicated as it looks. It almost works!</property>
                 <property key="page3">Put the wedges in place, and enjoy your first large Rube Goldberg-ish contraption.</property>
-                <property key="page4">&lt;br>&lt;br>the Post-it Boy</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object X="4.3" Y="3.3" type="BowlingBall"/>
             <object width="4.0" X="2.6" Y="2.8" height="0.6" type="LeftRamp">

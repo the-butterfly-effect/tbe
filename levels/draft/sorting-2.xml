@@ -49,7 +49,7 @@
                 <property key="page1">What? Only 3 floors this time? This isn't fair!</property>
                 <property key="page2">Surely this level can only solved by trial-and-error and pure luck.</property>
                 <property key="page3">But wait! Maybe there is a trick which does not involve that much trial-and-error.</property>
-                <property key="page4">—Post it boy</property>
+                <property key="page4">Post-It Boy</property>
             </object>
             <object angle="0.000" Y="4.399" width="0.068" ID="tb1" height="0.068" type="TennisBall" X="0.903"/>
             <object angle="0.000" Y="4.431" width="0.068" ID="tb2" height="0.068" type="TennisBall" X="1.518"/>

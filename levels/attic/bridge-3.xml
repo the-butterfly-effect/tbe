@@ -40,7 +40,7 @@
             <object X="2" Y="0.5" type="PostIt">
                 <property key="page1">Look, another gap.</property>
                 <property key="page2">It's a tennis ball this time that wants to cross.</property>
-                <property key="page3">&lt;br> &lt;br> the Post-It Boy &lt;br> &lt;br> is on it again </property>
+                <property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>is on it again</property>
             </object>
             <object width="4.4" X="2.2" Y="0.05" height="0.1" type="RectObject">
                 <property key="ImageName">used_wood_bar</property>

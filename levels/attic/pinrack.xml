@@ -13,7 +13,7 @@
                 <property key="ZValue">3.0</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="5"">
+        <toolboxitem count="5">
             <object width="0.8" height="0.1" type="BirchBar">
                 <property key="Friction">0.8</property>
                 <property key="Resizable">horizontal</property>
@@ -65,7 +65,7 @@
                 <property key="page2">And again my best invention yet: the skyhook.</property>
                 <property key="page3">As you can guess, I only want maximum score...</property>
                 <property key="page4">One Hundred, please!</property>
-                <property key="page5">&lt;br>&lt;br> ... the Post-It boy</property>
+                <property key="page5">&lt;br>&lt;br>... Post-It Boy</property>
             </object>
             <object X="1.5" Y="3.9" type="Hammer">
                 <property key="Mass">0.3</property>
