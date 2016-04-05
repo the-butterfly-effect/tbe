@@ -91,6 +91,18 @@ private:
     // kill possibility for copy constructor&assignment operator
     EditObjectDialog(const EditObjectDialog&) = delete;
     const EditObjectDialog& operator=(const EditObjectDialog&) = delete;
+
+    /// Simple RAII to make threadsafe/exceptionsafe boolean to prevent
+    /// recursive calling of closeExistingUndos() in updateAbstractObjectPtr().
+    class PreventClose final
+    {
+    public:
+        PreventClose() {assert(!theClosePreventer); theClosePreventer=true;}
+        ~PreventClose() {assert(theClosePreventer); theClosePreventer=false;}
+        static bool isClosePrevented() { return theClosePreventer;}
+    private:
+        static std::atomic<bool> theClosePreventer;
+    };
 };
 
 #endif // EDITOBJECTDIALOG_H
