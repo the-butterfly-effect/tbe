@@ -38,7 +38,7 @@ public:
                      const QString& anUndoName);
 
     /// Overridden to just make sure not to push anything.
-    virtual void commit(void);
+    virtual void commit(void) override;
 
     /// Mandatory, but we don't care - not used for any dummies
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
