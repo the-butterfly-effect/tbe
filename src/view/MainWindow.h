@@ -72,6 +72,8 @@ public:
 	explicit MainWindow(bool isMaximized, QWidget *parent = 0);
     ~MainWindow();
 
+    static const QString getWelcomeMessage();
+
     /// deletes the existing Level instance and removes its view
 	void purgeLevel();
 

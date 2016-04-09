@@ -175,6 +175,7 @@ int main(int argc, char *argv[])
 
 	//** init splash screen, do it as early in program start as possible
 	QSplashScreen mySplash(QPixmap(":/title_page.png"));
+	mySplash.showMessage(MainWindow::getWelcomeMessage());
 	mySplash.show();
 	app.processEvents();
 

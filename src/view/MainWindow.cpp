@@ -68,6 +68,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
@@ -79,6 +80,12 @@ void MainWindow::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+
+const QString MainWindow::getWelcomeMessage()
+{
+    return tr("Welcome to The Butterfly Effect!");
 }
 
 
