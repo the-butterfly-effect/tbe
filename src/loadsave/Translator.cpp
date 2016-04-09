@@ -134,15 +134,23 @@ bool Singleton::Translator::setLanguage(const QString& aLocale)
     // ***
     // *** For strings from TBE
     // ***
-    if (!attemptTbeQtTranslatorLoad("", myLocale))
-		if (!attemptTbeQtTranslatorLoad("./", myLocale))
-            attemptTbeQtTranslatorLoad(I18N_DIRECTORY + "/", myLocale);
-    if (theTbeQtTranslator.isEmpty())
+    QCoreApplication::instance()->removeTranslator(&theTbeQtTranslator);
+    if (myLocale == "en_US")
     {
-        DEBUG1("NOTE: translator for TBE is empty");
+        DEBUG1("setting en_US means removing all existing translators, done.");
     }
     else
-        QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
+    {
+        if (!attemptTbeQtTranslatorLoad("", myLocale))
+            if (!attemptTbeQtTranslatorLoad("./", myLocale))
+                attemptTbeQtTranslatorLoad(I18N_DIRECTORY + "/", myLocale);
+        if (theTbeQtTranslator.isEmpty())
+        {
+            DEBUG1("NOTE: translator for TBE is empty");
+        }
+        else
+            QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
+    }
 
     // ***
     // *** For strings from Qt itself
@@ -174,15 +182,19 @@ void Singleton::Translator::setLanguageGettext(const QString &aLocale)
 
 bool Singleton::Translator::setLanguageQtIself(const QString &aLocale)
 {
-    if (!theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        theQtTranslator.load("qt_" + aLocale, theBaseTbeQtLocation);
-
-    if (theQtTranslator.isEmpty())
+    QCoreApplication::instance()->removeTranslator(&theQtTranslator);
+    if ("en_US" != aLocale)
     {
-        DEBUG2("NOTE: translator for Qt itself is empty");
-        return false;
+        if (!theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+            theQtTranslator.load("qt_" + aLocale, theBaseTbeQtLocation);
+
+        if (theQtTranslator.isEmpty())
+        {
+            DEBUG2("NOTE: translator for Qt itself is empty");
+            return false;
+        }
+        QCoreApplication::instance()->installTranslator(&theQtTranslator);
     }
-    QCoreApplication::instance()->installTranslator(&theQtTranslator);
     return true;
 }
 
