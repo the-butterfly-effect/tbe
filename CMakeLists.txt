@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8.5)
+cmake_minimum_required (VERSION 2.8.12)
 project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
