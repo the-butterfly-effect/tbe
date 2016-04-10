@@ -23,6 +23,7 @@
 #include <QListWidget>
 #include <QMainWindow>
 #include <QTimer>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -97,6 +98,12 @@ public slots:
     /// Because we have the filename already, no need to specify here.
 	void reloadLevel();
 
+    /// To be called when the cursor changed position in the graphicsview,
+    /// in order to display the coordinates.
+    /// x and y hold the world position of the cursor
+    void on_action_mouse_move(qreal x, qreal y);
+
+
 private slots:
 	/// Inserts one of the hints from the level into the Scene.
 	/// @note: for now, this is an internal function, usable by the
@@ -141,6 +148,9 @@ private:
     Level* theLevelPtr;
 
     World* theWorldPtr;
+
+    /// Label showing the world coordinates of the cursor. Only used in level creator
+    QLabel* theMousePosLabelPtr;
 
     /// This ActionGroup ensures that only one language in the menu is checked.
     QActionGroup theLanguagesGroup;
