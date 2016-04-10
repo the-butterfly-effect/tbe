@@ -117,7 +117,8 @@ void MainWindow::loadLevel(const QString& aFileName)
 		}
 	}
 
-    repopulateSceneAndToolbox();
+    repopulateScene();
+    repopulateToolbox();
 }
 
 
@@ -214,7 +215,8 @@ void MainWindow::on_action_New_triggered()
 	// pop-up the modal LevelProperties dialog
     emit theLevelCreator->on_levelPropertiesEditorAction_clicked();
 
-    repopulateSceneAndToolbox();
+    repopulateScene();
+    repopulateToolbox();
 }
 
 
@@ -353,7 +355,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     Q_ASSERT(nullptr == theLevelCreator);
     theLevelCreator = new LevelCreator(this);
     if (theLevelPtr)
-        repopulateSceneAndToolbox();
+        repopulateScene();
 }
 
 
@@ -402,19 +404,24 @@ void MainWindow::reloadLevel()
 }
 
 
-void MainWindow::repopulateSceneAndToolbox()
+void MainWindow::repopulateScene()
 {
-    ui->listWidget->clear();
     // if no ViewWorld already exists, create one
     ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
     if (nullptr == myVWPtr)
         myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-    for (auto i : theLevelPtr->theToolboxList)
-        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
     if (theIsLevelCreator)
         connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
                 theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
     emit theGameStateMachinePtr->signal_Reset_triggered();
+}
+
+
+void MainWindow::repopulateToolbox()
+{
+    ui->listWidget->clear();
+    for (auto i : theLevelPtr->theToolboxList)
+        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
 
 

@@ -83,8 +83,10 @@ public:
 protected:
 	virtual void changeEvent(QEvent *e) override;
 
-    /// Internal function to redo scene and toolbox.
-    void repopulateSceneAndToolbox();
+    /// Internal function to redo scene.
+    void repopulateScene();
+    /// Internal function to redo toolbox.
+    void repopulateToolbox();
 
     /// Adds dynamic menus, i.e. 'Edit' and 'Languages'.
 	void setupView();
