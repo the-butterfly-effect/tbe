@@ -21,6 +21,8 @@
 
 #include <QGraphicsView>
 #include <QResizeEvent>
+#include <QStatusBar>
+#include <QMouseEvent>
 
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
@@ -68,6 +70,7 @@ public:
 
 //protected:
     virtual void resizeEvent(QResizeEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
 
 signals:
     /// retransmitted from WinFailDialog

@@ -106,6 +106,16 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
+void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
+{
+	if (event!=nullptr) {
+		QGraphicsView::mouseMoveEvent(event);
+
+		QPointF mousePos = this->mapToScene(event->pos());
+		Position p = Position(mousePos, 0);
+		emit theMainWindowPtr->on_action_mouse_move(p.x, p.y);
+        }
+}
 
 void ResizingGraphicsView::setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
 {
