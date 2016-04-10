@@ -156,12 +156,14 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     case GameStateMachine::ProblemStatus:
     case GameStateMachine::WonStatus:
         // disable the game controls incl. reset
+        thePauseAction->setEnabled(false);
         theResetAction->setEnabled(false);
         theGameButtonGroup.setEnabled(false);
         break;
     case GameStateMachine::StoppedStatus:
         // enable the game controls incl. reset
         theResetAction->setEnabled(false);
+        thePauseAction->setEnabled(false);
         theGameButtonGroup.setEnabled(true);
         break;
     case GameStateMachine::ForwardStatus:
@@ -169,10 +171,12 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     case GameStateMachine::RealFastStatus:
     case GameStateMachine::SlowStatus:
         // don't allow reset while running (even though the state machine can handle it)
+        thePauseAction->setEnabled(true);
         theResetAction->setEnabled(false);
         break;
     case GameStateMachine::PausedStatus:
         // enable the reset - only makes sense in this state :-)
+        thePauseAction->setEnabled(false);
         theResetAction->setEnabled(true);
         break;
     }
