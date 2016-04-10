@@ -122,6 +122,11 @@ signals:
     /// The slot for this signal is mostly GameControls::slot_updateIcon().
     void signal_State_Changed(GameStateMachine::States aNewState);
 
+    /// Emitted whenever we enter or exit the 'stopped' or 'problem' states.
+    /// Listened to by the Toolbox, it will enable/disable itself
+    /// @param isInsertionDisallowed true when the toolbox must be disabled.
+    void signal_InsertionDisallowed(bool isInsertionDisallowed);
+
 public slots:
     /// Resizinggraphicsview connects CrossRegisterSingleton to this signal
     /// and it will be called whenever the user has a cross on one of his
@@ -135,6 +140,16 @@ private slots:
 
     /// Called whenever a state changes.
     void slot_State_Activated(GameState* aPtr);
+
+    /// Called when entering 'stopped' or 'problem',
+    /// will emit signal_Exit_StoppedState(false).
+    void slot_AllowEntered()
+    { emit signal_InsertionDisallowed(false); }
+
+    /// Called when exiting 'stopped' or 'problem',
+    /// will emit signal_Exit_StoppedState(true).
+    void slot_AllowExited()
+    { emit signal_InsertionDisallowed(true); }
 
 private:
     QStateMachine theGameStateMachine;

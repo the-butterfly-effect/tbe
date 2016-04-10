@@ -472,6 +472,9 @@ void MainWindow::setupView()
     connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
     connect(ui->graphicsView, &ResizingGraphicsView::signal_actionReload, this, &MainWindow::reloadLevel);
 
+    connect(theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
+            ui->listWidget, SLOT(setDisabled(bool)));
+
 	if (theIsRunAsRegression)
     {
 		Q_ASSERT(theRegressionTest==nullptr);

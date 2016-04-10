@@ -80,6 +80,8 @@ GameStateMachine::GameStateMachine(QObject *parent) :
 
     theProblemState->addTransition(this, SIGNAL(signal_Problems_solved()), theStoppedState);
     connect(theProblemState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theProblemState, SIGNAL(entered()), this, SLOT(slot_AllowEntered()));
+    connect(theProblemState, SIGNAL(exited()), this, SLOT(slot_AllowExited()));
 
     theRunningState->addTransition(this, SIGNAL(signal_Fail_happened()), theFailedState);
     theRunningState->addTransition(this, SIGNAL(signal_Won_happened()), theWonState);
@@ -130,6 +132,8 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     connect(theStoppedState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
     connect(theStoppedState, &GameState::entered, &AnimatedDialog::makeAllAnimatedDialogsDisappear);
     connect(theStoppedState, &GameState::activated, this, &GameStateMachine::slot_State_Activated);
+    connect(theStoppedState, SIGNAL(entered()), this, SLOT(slot_AllowEntered()));
+    connect(theStoppedState, SIGNAL(exited()), this, SLOT(slot_AllowExited()));
 
     theWonState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     connect(theWonState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
