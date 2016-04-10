@@ -78,7 +78,7 @@ QToolButton:pressed {
          <bool>false</bool>
         </property>
         <property name="dragDropMode">
-         <enum>QAbstractItemView::DragDrop</enum>
+         <enum>QAbstractItemView::NoDragDrop</enum>
         </property>
         <property name="iconSize">
          <size>
@@ -89,11 +89,17 @@ QToolButton:pressed {
         <property name="textElideMode">
          <enum>Qt::ElideMiddle</enum>
         </property>
+        <property name="movement">
+         <enum>QListView::Static</enum>
+        </property>
         <property name="flow">
          <enum>QListView::TopToBottom</enum>
         </property>
         <property name="isWrapping" stdset="0">
          <bool>false</bool>
+        </property>
+        <property name="resizeMode">
+         <enum>QListView::Adjust</enum>
         </property>
         <property name="viewMode">
          <enum>QListView::IconMode</enum>

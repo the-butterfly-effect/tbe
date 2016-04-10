@@ -156,6 +156,8 @@ void ViewWorld::setupBackground(void)
 
 void ViewWorld::slot_signalFF()
 {
+    if (isSimRunning==false)
+        slot_signalPlay();
     theSimSpeed = 250;
     emit theTimer.start();
 }
@@ -163,6 +165,8 @@ void ViewWorld::slot_signalFF()
 
 void ViewWorld::slot_signal4F()
 {
+    if (isSimRunning==false)
+        slot_signalPlay();
     theSimSpeed = 60;
     emit theTimer.start();
 }
@@ -212,6 +216,14 @@ void ViewWorld::slot_signalReset()
 	theWorldPtr->updateViewWorld(false);
 }
 
+
+void ViewWorld::slot_signalSlow()
+{
+    if (isSimRunning==false)
+        slot_signalPlay();
+    theSimSpeed = 3000;
+    emit theTimer.start();
+}
 
 // ---------------------------------------------------------------------------
 //                Below is the b2DebugDraw implementation

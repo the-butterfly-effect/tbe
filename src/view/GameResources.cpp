@@ -37,6 +37,9 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
     ui->setupUi(this);
     ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
     setAutoFillBackground (true);
+
+    connect(this, &GameResources::signalReloadLevel,
+            aRSGVPtr, &ResizingGraphicsView::signal_actionReload);
 }
 
 

@@ -26,6 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
+#include "GameStateMachine.h"
 #include "Hint.h"
 #include "ImageCache.h"
 #include "InsertUndoCommand.h"
@@ -50,7 +51,8 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       ui(new Ui::MainWindow),
       theLevelPtr(nullptr),
       theWorldPtr(nullptr),
-      theLanguagesGroup(this)
+      theLanguagesGroup(this),
+      theGameStateMachinePtr(nullptr)
 {
     ui->setupUi(this);
     setupView();
@@ -66,6 +68,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
@@ -77,6 +80,12 @@ void MainWindow::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+
+const QString MainWindow::getWelcomeMessage()
+{
+    return tr("Welcome to The Butterfly Effect!");
 }
 
 
@@ -312,8 +321,17 @@ void MainWindow::on_action_Save_As_triggered()
 
 void MainWindow::on_action_Skip_Level_triggered()
 {
-    if (Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
-        ui->graphicsView->slot_actionSkipLevel();
+    if (theIsLevelCreator==false)
+    {
+        if (!Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
+            return;
+        QString myKey = "completed/" + Level::getLevelFileName();
+        QSettings mySettings;
+        // don't overwrite an existing value, it might be "done" already...
+        if (!mySettings.value(myKey).isValid())
+            mySettings.setValue(myKey, "skipped");
+    }
+    slot_actionNextLevel();
 }
 
 
@@ -363,21 +381,6 @@ void MainWindow::on_switchLanguage(QString aNewLanguage)
 }
 
 
-void MainWindow::repopulateSceneAndToolbox()
-{
-    ui->listWidget->clear();
-    // if no ViewWorld already exists, create one
-    ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
-    if (nullptr == myVWPtr)
-        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
-    for (auto i : theLevelPtr->theToolboxList)
-        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
-    if (theIsLevelCreator)
-        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
-                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
-}
-
-
 void MainWindow::purgeLevel()
 {
 	DEBUG1ENTRY;
@@ -397,6 +400,23 @@ void MainWindow::reloadLevel()
 	purgeLevel();
 	loadLevel(myLevelName);
 }
+
+
+void MainWindow::repopulateSceneAndToolbox()
+{
+    ui->listWidget->clear();
+    // if no ViewWorld already exists, create one
+    ViewWorld* myVWPtr = static_cast<ViewWorld*>(ui->graphicsView->scene());
+    if (nullptr == myVWPtr)
+        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+    for (auto i : theLevelPtr->theToolboxList)
+        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
+    if (theIsLevelCreator)
+        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
+                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+    emit theGameStateMachinePtr->signal_Reset_triggered();
+}
+
 
 void MainWindow::setLanguageCheckmark()
 {
@@ -446,8 +466,14 @@ void MainWindow::setupView()
     }
     setLanguageCheckmark();
 
+    theGameStateMachinePtr = new GameStateMachine(this);
 
-    ui->graphicsView->setup(this, ui->menuBar, ui->menuControls);
+    ui->graphicsView->setup(this, theGameStateMachinePtr, ui->menuBar, ui->menuControls);
+    connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
+    connect(ui->graphicsView, &ResizingGraphicsView::signal_actionReload, this, &MainWindow::reloadLevel);
+
+    connect(theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
+            ui->listWidget, SLOT(setDisabled(bool)));
 
 	if (theIsRunAsRegression)
     {
@@ -465,6 +491,18 @@ void MainWindow::setupView()
 		else
 			QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
 	}
+}
+
+
+void MainWindow::slot_actionNextLevel()
+{
+    DEBUG3ENTRY;
+    ui->graphicsView->slot_clearWinFailDialogPtr();
+    QString myNextLevelName = ChooseLevel::getNextLevelName();
+    if (myNextLevelName.isEmpty()==false)
+        loadLevel(myNextLevelName);
+    else
+        on_action_Open_Level_triggered();
 }
 
 

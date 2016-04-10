@@ -8,7 +8,9 @@ SET(view_SOURCES
     view/ChoosePhoneNumber.cpp
     view/EditLevelProperties.cpp
     view/EditObjectDialog.cpp
+    view/GameControls.cpp
     view/GameResources.cpp
+    view/GameStateMachine.cpp
     view/GoalEditor.cpp
     view/ImageCache.cpp
     view/LevelCreator.cpp
@@ -19,7 +21,6 @@ SET(view_SOURCES
     view/RegressionTest.cpp
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
-    view/SimulationControls.cpp
     view/ToolboxListWidgetItem.cpp
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
@@ -37,7 +38,9 @@ SET(view_HEADERS
     view/ChoosePhoneNumber.h
     view/EditLevelProperties.h
     view/EditObjectDialog.h
+    view/GameControls.h
     view/GameResources.h
+    view/GameStateMachine.h
     view/GoalEditor.h
     view/ImageCache.h
     view/LevelCreator.h
@@ -48,7 +51,6 @@ SET(view_HEADERS
     view/RegressionTest.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
-    view/SimulationControls.h
     view/ToolboxListWidgetItem.h
     view/ViewDetonatorBox.h
     view/ViewLink.h
@@ -65,12 +67,12 @@ SET(view_UIFORMS
     view/ChoosePhoneNumber.ui
     view/EditLevelProperties.ui
     view/EditObjectDialog.ui
+    view/GameControls.ui
     view/GameResources.ui
     view/GoalEditor.ui
     view/ListViewItemTooltip.ui
     view/MainWindow.ui
     view/SaveLevelInfo.ui
-    view/SimulationControls.ui
     view/ViewPostIt.ui
     view/WinFailDialog.ui
 )
