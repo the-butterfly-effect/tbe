@@ -35,13 +35,14 @@ class ListViewItemTooltip : public AnimatedDialog
 public:
     /// explicit constructor
     /// @param aTBGPtr
-    /// @param aVPos    vertical position in pixels to align top of tooltip to
     /// @param parent   resizinggraphicsview*
     explicit ListViewItemTooltip(
             ToolboxGroup* aTBGPtr,
-            int aVPos,
             ResizingGraphicsView* parent = 0);
     ~ListViewItemTooltip();
+
+    /// @param aVPos    vertical position in pixels to align top of tooltip to
+    void adjustVPos(int aVPos);
     
 public slots:
     void on_buttonRemove_clicked();

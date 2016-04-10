@@ -87,7 +87,8 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
     if (theTBGPtr->count()!=0)
     {
         ListViewItemTooltip* myNewTooltip =
-            new ListViewItemTooltip(theTBGPtr, myBoundingRectInViewPort.top(), theRSGVPtr);
+            new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
+        myNewTooltip->adjustVPos(myBoundingRectInViewPort.top());
         emit myNewTooltip->appearAnimated();
     }
 }

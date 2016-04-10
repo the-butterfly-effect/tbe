@@ -27,7 +27,7 @@
 #include "ViewObject.h"
 #include "ui_ListViewItemTooltip.h"
 
-ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr, int aVPos,
+ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr,
                                          ResizingGraphicsView* aParent) :
     AnimatedDialog(aParent, AnimatedDialog::TOOLTIP),
     ui(new Ui::ListViewItemTooltip),
@@ -75,10 +75,6 @@ ListViewItemTooltip::ListViewItemTooltip(ToolboxGroup *aTBGPtr, int aVPos,
 		addActionIcon("ActionRotate", tr("You can rotate the object."));
 	if (dynamic_cast<DetonatorBox*>(myAOPtr.get())!=nullptr)
 		addActionIcon("ActionSetNumber", tr("You can set the phone number."));
-
-    // make it appear at the right height (next to the object that is clicked)
-    // TODO: hardcoded Y coordinate for now...
-    theYCoord = aVPos;
 }
 
 
@@ -97,6 +93,21 @@ void ListViewItemTooltip::addActionIcon(const QString& anIconName, const QString
 	myLabelPtr->setStyleSheet("border-image: url(:/transparant.png);");
 	myLabelPtr->setToolTip(aToolTip);
 	ui->optionsLayout->addWidget(myLabelPtr);
+}
+
+
+void ListViewItemTooltip::adjustVPos(int aVPos)
+{
+    // First make sure that the dialog is on screen and properly sized.
+    show();
+
+    // Make it appear at the right height (next to the object that is clicked),
+    // but don't go out of the screen (and give it a small margin)!
+
+    if (aVPos+height() < thRSGVPtr->height())
+        theYCoord = aVPos;
+    else
+        theYCoord = thRSGVPtr->height()-height()-2;
 }
 
 
