@@ -132,6 +132,8 @@ void RegressionTest::slotRegressionProgress(void)
 	States myNextState = START;
 	DEBUG1("AUTOMATED TESTING, LEVEL %d STATE %d '%s'--------------------------",
 		   theLevelIndex, theState, ASCII(theStateNames[theState]));
+	theMainWindowPtr->activateWindow();
+	qApp->processEvents();
 	switch (theState)
 	{
 	case START:
