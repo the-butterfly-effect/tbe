@@ -26,7 +26,6 @@
 #include <QStatusBar>
 
 #include "AbstractObjectPtr.h"
-#include "Position.h"
 class EditObjectDialog;
 class GameResources;
 class MainWindow;
