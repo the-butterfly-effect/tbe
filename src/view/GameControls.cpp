@@ -97,9 +97,6 @@ void GameControls::setup(QMenu* aMenuPtr)
     //: translators: 'r' is for reset
     theResetAction->setShortcut(QKeySequence(tr("r")));
 
-    QKeySequence mySpaceKey(tr("Space"));
-    QKeySequence myEmptyKey(tr(""));
-
     //: translators: really-fast-forward is only available as a key shortcut
     //: it should be shift-<normal fast-forward>...
     QKeySequence myRealFastKey(tr("Shift+f"));
@@ -150,6 +147,8 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     Q_ASSERT(aStatus >= GameStateMachine::FailedStatus);
     Q_ASSERT(aStatus <= GameStateMachine::WonStatus);
     ui->statusLabel->setPixmap(thePixmaps[aStatus]);
+    QKeySequence mySpaceKey(tr("Space", "key for start/pause the simulation"));
+    QKeySequence myEmptyKey("");
     switch(aStatus)
     {
     case GameStateMachine::FailedStatus:
@@ -157,13 +156,17 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     case GameStateMachine::WonStatus:
         // disable the game controls incl. reset
         thePauseAction->setEnabled(false);
+        thePauseAction->setShortcut(myEmptyKey);
+        thePlayAction->setShortcut(myEmptyKey);
         theResetAction->setEnabled(false);
         theGameButtonGroup.setEnabled(false);
         break;
     case GameStateMachine::StoppedStatus:
         // enable the game controls incl. reset
-        theResetAction->setEnabled(false);
         thePauseAction->setEnabled(false);
+        thePauseAction->setShortcut(myEmptyKey);
+        thePlayAction->setShortcut(mySpaceKey);
+        theResetAction->setEnabled(false);
         theGameButtonGroup.setEnabled(true);
         break;
     case GameStateMachine::ForwardStatus:
@@ -172,11 +175,15 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     case GameStateMachine::SlowStatus:
         // don't allow reset while running (even though the state machine can handle it)
         thePauseAction->setEnabled(true);
+        thePauseAction->setShortcut(mySpaceKey);
+        thePlayAction->setShortcut(myEmptyKey);
         theResetAction->setEnabled(false);
         break;
     case GameStateMachine::PausedStatus:
         // enable the reset - only makes sense in this state :-)
         thePauseAction->setEnabled(false);
+        thePauseAction->setShortcut(myEmptyKey);
+        thePlayAction->setShortcut(mySpaceKey);
         theResetAction->setEnabled(true);
         break;
     }
