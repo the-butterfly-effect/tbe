@@ -113,9 +113,6 @@ void ResizingGraphicsView::setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, 
     theGameControlsPtr->setup(anMenuControlsPtr);
     connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr, SLOT(slot_NumberOfCrossesChanged(int)));
 
-	connect (theGameResourcesPtr, SIGNAL(signalReloadLevel()),
-			 theMainWindowPtr, SLOT(reloadLevel()));
-
     connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
              theGameControlsPtr, SLOT(slot_updateIcon(GameStateMachine::States)));
 
@@ -169,7 +166,7 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
     connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     aScenePtr, SLOT(slot_signalSlow()));
     connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr, SLOT(slot_signalPause()));
 
-	QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
+    slot_showGameResourcesDialog();
 }
 
 

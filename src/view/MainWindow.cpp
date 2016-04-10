@@ -470,6 +470,7 @@ void MainWindow::setupView()
 
     ui->graphicsView->setup(this, theGameStateMachinePtr, ui->menuBar, ui->menuControls);
     connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
+    connect(ui->graphicsView, &ResizingGraphicsView::signal_actionReload, this, &MainWindow::reloadLevel);
 
 	if (theIsRunAsRegression)
     {

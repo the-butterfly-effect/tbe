@@ -78,6 +78,8 @@ signals:
     void signal_actionReplay();
     /// retransmitted from WinFailDialog
     void signal_actionSkipLevel();
+    /// retransmitted from GameResources
+    void signal_actionReload();
 
 private slots:
     void slot_levelDeath(void);
@@ -85,7 +87,7 @@ private slots:
 
 public slots:
     void slot_clearWinFailDialogPtr();
-	void slot_showGameResourcesDialog();
+    void slot_showGameResourcesDialog();
 
 private:
     GameResources*      theGameResourcesPtr;
