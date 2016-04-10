@@ -36,6 +36,7 @@ regression: usr/games/tbe
 	      --regression levels/draft/house_of_cards.xml:20, \
 	      --regression=levels/draft/in_the_attic.xml:17, \
 	      --regression levels/draft/jumping_around-2.xml:10, \
+	      --regression=levels/draft/loopings2.xml:22, \
 	      --regression levels/draft/save-the-butterfly.xml:28, \
 	      --regression levels/draft/spare-the-balloon.xml:25, \
 	      --regression levels/draft/the_ball_the_box_and_the_penguin.xml:32, \
