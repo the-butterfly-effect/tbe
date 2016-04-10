@@ -51,13 +51,18 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       ui(new Ui::MainWindow),
       theLevelPtr(nullptr),
       theWorldPtr(nullptr),
+      theMousePosLabelPtr(nullptr),
       theLanguagesGroup(this),
       theGameStateMachinePtr(nullptr)
 {
     ui->setupUi(this);
     setupView();
-    if (theIsLevelCreator)
+    statusBar();
+    if (theIsLevelCreator) {
         on_action_Switch_to_Level_Editor_triggered();
+    } else
+        statusBar()->hide();
+
     if (isMaximized)
         showMaximized();
 }
@@ -354,10 +359,21 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     // everything is in the constructor of LevelCreator now...
     Q_ASSERT(nullptr == theLevelCreator);
     theLevelCreator = new LevelCreator(this);
-    if (theLevelPtr)
+    theMousePosLabelPtr = new QLabel(tr("Coordinates: –"));
+    statusBar()->addPermanentWidget(theMousePosLabelPtr);
+    if (theLevelPtr) {
         repopulateScene();
+    }
+    statusBar()->show();
 }
 
+void MainWindow::on_action_mouse_move(qreal x, qreal y)
+{
+    if (theIsLevelCreator && theMousePosLabelPtr != nullptr) {
+	//: Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator
+	theMousePosLabelPtr->setText(tr("Coordinates: (%1,%2)").arg(QString::number(x, 'f', 3), QString::number(y, 'f', 3)));
+    }
+}
 
 void MainWindow::on_switchLanguage(QString aNewLanguage)
 {
