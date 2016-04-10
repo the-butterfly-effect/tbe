@@ -226,6 +226,17 @@ benutzt werden, um eine Kraft auf etwas schwerere
 Objekte auszuüben.</translation>
     </message>
     <message>
+        <location filename="../src/model/RectObject.cpp" line="97"/>
+        <source>Cola Crate</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/model/RectObject.cpp" line="98"/>
+        <source>A crate of 12 filled cola bottles.
+It&apos;s very heavy and hard to push around.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
         <source>Domino (Blue)</source>
         <translation>Dominostein (blau)</translation>
@@ -535,44 +546,122 @@ recht schwer.</translation>
         <translation>Mittelpunktkoordinaten: (</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="100"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="103"/>
         <source>,</source>
         <translation>;</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="114"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="120"/>
         <source>)</source>
         <translation>)</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="125"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="131"/>
         <source>Angle:</source>
         <translation>Winkel:</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="145"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="154"/>
         <source>Radians</source>
         <translation>Radiant</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="156"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="165"/>
         <source>Width:</source>
         <translation>Breite:</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.ui" line="170"/>
+        <location filename="../src/view/EditObjectDialog.ui" line="182"/>
         <source>   Height:</source>
         <translation>   Höhe:</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="143"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="216"/>
         <source>Basic Properties for &apos;%1&apos;</source>
         <translation>Grundeigenschaften für „%1“:</translation>
     </message>
     <message>
-        <location filename="../src/view/EditObjectDialog.cpp" line="161"/>
+        <location filename="../src/view/EditObjectDialog.cpp" line="234"/>
         <source>Value</source>
         <translation>Wert</translation>
+    </message>
+</context>
+<context>
+    <name>GameControls</name>
+    <message>
+        <location filename="../src/view/GameControls.ui" line="32"/>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.ui" line="92"/>
+        <source>Reset</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.ui" line="133"/>
+        <source>Pause</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.ui" line="152"/>
+        <source>Play</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.ui" line="171"/>
+        <source>FF</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="82"/>
+        <source>&amp;Forward</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="84"/>
+        <source>f</source>
+        <extracomment>translators: 'f' is for (fast) forward</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="88"/>
+        <source>P&amp;ause</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="92"/>
+        <source>&amp;Play</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="96"/>
+        <source>&amp;Reset</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="98"/>
+        <source>r</source>
+        <extracomment>translators: 'r' is for reset</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="102"/>
+        <source>Shift+f</source>
+        <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="109"/>
+        <source>Shift+s</source>
+        <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/GameControls.cpp" line="150"/>
+        <source>Space</source>
+        <comment>key for start/pause the simulation</comment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -626,12 +715,12 @@ p, li { white-space: pre-wrap; }
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/view/GameResources.cpp" line="75"/>
+        <location filename="../src/view/GameResources.cpp" line="78"/>
         <source>Undo all your work and go back to a clean start of this level?</source>
         <translation>All Ihre Arbeit rückgängig machen und mit dem Level von vorne anfangen?</translation>
     </message>
     <message>
-        <location filename="../src/view/GameResources.cpp" line="91"/>
+        <location filename="../src/view/GameResources.cpp" line="94"/>
         <source>Level by: &lt;b&gt;%1&lt;/b&gt;</source>
         <extracomment>translators: please do not try to translate the &lt;b&gt;%1&lt;/b&gt; part!</extracomment>
         <translation>Level von: &lt;b&gt;%1&lt;/b&gt;</translation>
@@ -935,250 +1024,255 @@ Nichts wurde geändert, bitte beheben Sie das.</translation>
         <translation>Der Schmetterlingseffekt</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="169"/>
+        <location filename="../src/view/MainWindow.ui" line="175"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="186"/>
+        <location filename="../src/view/MainWindow.ui" line="192"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="191"/>
+        <location filename="../src/view/MainWindow.ui" line="197"/>
         <source>&amp;Controls</source>
         <translation>&amp;Steuerung</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="196"/>
+        <location filename="../src/view/MainWindow.ui" line="202"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="200"/>
+        <location filename="../src/view/MainWindow.ui" line="206"/>
         <source>&amp;Contribute</source>
         <translation>&amp;Mitarbeit</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="230"/>
+        <location filename="../src/view/MainWindow.ui" line="236"/>
         <source>&amp;Open Level...</source>
         <translation>Level &amp;öffnen …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="246"/>
+        <location filename="../src/view/MainWindow.ui" line="252"/>
         <source>O&amp;pen File...</source>
         <translation>Datei ö&amp;ffnen …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="233"/>
+        <location filename="../src/view/MainWindow.ui" line="239"/>
         <source>Ctrl+O</source>
         <translation>Strg+O</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="117"/>
+        <location filename="../src/view/MainWindow.ui" line="123"/>
         <source>Shows the level information again</source>
         <translation>Zeigt die Levelinformationen erneut an</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="120"/>
+        <location filename="../src/view/MainWindow.ui" line="126"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="139"/>
+        <location filename="../src/view/MainWindow.ui" line="145"/>
         <source>Choose a different level to play</source>
         <translation>Einen anderen Level zum Spielen wählen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="142"/>
+        <location filename="../src/view/MainWindow.ui" line="148"/>
         <source>Eject</source>
         <translation>Auswerfen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="214"/>
+        <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>&amp;Languages</source>
         <translation>S&amp;prachen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="254"/>
+        <location filename="../src/view/MainWindow.ui" line="260"/>
         <source>S&amp;kip Level</source>
         <translation>Level &amp;überspringen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="264"/>
+        <location filename="../src/view/MainWindow.ui" line="270"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="269"/>
+        <location filename="../src/view/MainWindow.ui" line="275"/>
         <source>Libraries...</source>
         <translation>Programmierbibliotheken …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="274"/>
+        <location filename="../src/view/MainWindow.ui" line="280"/>
         <source>&amp;Keyboard Shortcuts...</source>
         <translation>&amp;Tastenkürzel …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="284"/>
+        <location filename="../src/view/MainWindow.ui" line="290"/>
         <source>&amp;About...</source>
         <translation>&amp;Über …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="289"/>
+        <location filename="../src/view/MainWindow.ui" line="295"/>
         <source>&amp;Suggestions...</source>
         <translation>&amp;Vorschläge …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="299"/>
+        <location filename="../src/view/MainWindow.ui" line="305"/>
         <source>&amp;Bug Reports...</source>
         <translation>&amp;Fehlerberichte …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="304"/>
+        <location filename="../src/view/MainWindow.ui" line="310"/>
         <source>New Level Ideas...</source>
         <translation>Neue Levelideen …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="314"/>
+        <location filename="../src/view/MainWindow.ui" line="320"/>
         <source>&amp;Switch to Level Editor</source>
         <translation>Zum Level&amp;editor wechseln</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="317"/>
+        <location filename="../src/view/MainWindow.ui" line="323"/>
         <source>Switch</source>
         <translation>Wechseln</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="330"/>
+        <location filename="../src/view/MainWindow.ui" line="336"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="333"/>
+        <location filename="../src/view/MainWindow.ui" line="339"/>
         <source>Save current level under its current name</source>
         <translation>Das aktuelle Level unter dem aktuellen Namen speichern</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="336"/>
+        <location filename="../src/view/MainWindow.ui" line="342"/>
         <source>Ctrl+S</source>
         <translation>Strg+S</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="352"/>
+        <location filename="../src/view/MainWindow.ui" line="358"/>
         <source>Save &amp;As...</source>
         <translation>Speichern &amp;unter …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="355"/>
+        <location filename="../src/view/MainWindow.ui" line="361"/>
         <source>Save level under a new name</source>
         <translation>Das Level unter einem neuen Namen speichern</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="368"/>
+        <location filename="../src/view/MainWindow.ui" line="374"/>
         <source>New Level...</source>
         <translation>Neuer Level …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="371"/>
+        <location filename="../src/view/MainWindow.ui" line="377"/>
         <source>Ctrl+N</source>
         <translation>Strg+N</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="387"/>
+        <location filename="../src/view/MainWindow.ui" line="393"/>
         <source>&amp;Reload Level</source>
         <translation>Level e&amp;rneut laden</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="390"/>
+        <location filename="../src/view/MainWindow.ui" line="396"/>
         <source>Reload the current level from disk</source>
         <translation>Den aktuellen Level erneut vom Datenträger laden</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="393"/>
+        <location filename="../src/view/MainWindow.ui" line="399"/>
         <source>Ctrl+R</source>
         <translation>Strg+R</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="419"/>
+        <location filename="../src/view/MainWindow.ui" line="425"/>
         <source>&amp;Size &amp;&amp; Backgrounds...</source>
         <translation>&amp;Größe und Hintergründe …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="434"/>
+        <location filename="../src/view/MainWindow.ui" line="440"/>
         <source>&amp;Name &amp;&amp; Description...</source>
         <translation>&amp;Name und Beschreibung …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="437"/>
+        <location filename="../src/view/MainWindow.ui" line="443"/>
         <source>Name &amp; Description Editor</source>
         <translation>Namens-und-Beschreibungs-Editor</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="99"/>
+        <location filename="../src/view/MainWindow.cpp" line="113"/>
         <source>ERROR during reading file '%1': '%2'
 </source>
         <translation>FEHLER beim Lesen der Datei „%1“: „%2“</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="105"/>
+        <location filename="../src/view/MainWindow.cpp" line="119"/>
         <source>Non-fatal problem reading file '%1': '%2'.
 This may affect playability, though!</source>
         <translation>Nichtkritisches Problem beim Lesen der Datei „%1“: „%2“.
 Dies könnte jedoch die Spielbarkeit beeinträchtigen!</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="139"/>
+        <location filename="../src/view/MainWindow.cpp" line="154"/>
         <source>&lt;b&gt;The Butterfly Effect - Bug Reports&lt;/b&gt;&lt;br&gt;&lt;br&gt;Of course, this game is not bug free yet.&lt;br&gt;If you come across anything that you think should not happen, please let us know. Go to our ticket website:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;Please tell us at least the &lt;i&gt;name&lt;/i&gt; of the level, what you expected to happen and what did happen. If you want to learn how we fix your issue, please provide a valid e-mail address.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Der Schmetterlingseffekt – Fehlerberichte&lt;/b&gt;&lt;br&gt;&lt;br&gt;Natürlich ist dieses Spiel noch nicht fehlerfrei.&lt;br&gt;Falls Sie über irgendetwas stolpern, wovon Sie meinen, dass es nicht passieren sollte, lassen Sie es uns bitte wissen. Besuchen Sie unsere Ticket-Webseite:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;Bitte sagen Sie uns wenigstens den &lt;i&gt;Namen&lt;/i&gt; des Levels, was für ein Programmverhalten Sie erwartet haben, und was tatsächlich passiert ist. Falls Sie mehr darüber erfahren möchten, wie wir ihr Problem beheben, bitte geben Sie eine gültige E-Mail-Adresse an.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="160"/>
+        <location filename="../src/view/MainWindow.cpp" line="175"/>
         <source>&lt;b&gt;The Butterfly Effect - Keyboard shortcuts&lt;/b&gt;&lt;br&gt;&lt;br&gt;The following keys can be used to accelerate actions you&apos;d have to do with the mouse otherwise&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Key&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Function &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Space&lt;/td&gt;&lt;td&gt;start / stop simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(during simulation) fast forward / slow down &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;shift+f&lt;/td&gt;&lt;td&gt;(during simulation) really fast forward &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;reset the simulation &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Z&lt;/td&gt;&lt;td&gt; undo last action &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Ctrl-Y&lt;/td&gt;&lt;td&gt; redo last action &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively, please make sure to please make sure to match the statements in this dialog with your shortcuts</extracomment>
         <translation>&lt;b&gt;Der Schmetterlingseffekt – Tastenkürzel&lt;/b&gt;&lt;br&gt;&lt;br&gt;Die folgenden Tasten können benutzt werden, um Aktionen, die Sie sonst mit der Maus tun müssten, zu beschleunigen.&lt;table cellpadding=&quot;4&quot;&gt;&lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Taste&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Funktion &lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Leertaste&lt;/td&gt;&lt;td&gt;Simulation starten/anhalten&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;f&lt;/td&gt;&lt;td&gt;(Während der Simulation) Vorspulen / normales Tempo &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Umschalt+f&lt;/td&gt;&lt;td&gt;(Während der Simulation) Wirklich schnell vorspulen &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;r&lt;/td&gt;&lt;td&gt;Die Simulation zurücksetzen &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Strg+Z&lt;/td&gt;&lt;td&gt; Letze Aktion rückgängig machen &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;Strg+Y&lt;/td&gt;&lt;td&gt; Letztes Rückgängigmachen zurücknehmen (wiederholen) &lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="125"/>
+        <location filename="../src/view/MainWindow.cpp" line="140"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;version: %2&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015,2016 Klaas van Gend and many others&lt;br&gt;&lt;br&gt;Code licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;Levels and graphics may have different open/free licenses.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Der Schmetterlingseffekt&lt;/b&gt;&lt;br&gt;Version: %2&lt;br&gt;Ein Open-Source-Spiel, das realistische Physiksimulationen benutzt, um viele einfache mechanische Elemente zu kombinieren, um ein einfaches Ziel auf die kompliziertest mögliche Art und Weise zu erreichen.&lt;br&gt;&lt;br&gt;(C) 2009, 2010, 2011, 2012, 2013, 2015, 2006 Klaas van Gend und vielen anderen&lt;br&gt;&lt;br&gt;Lizensiert unter der GPL, &lt;i&gt;nur&lt;/i&gt; Version 2.&lt;br&gt;&lt;br&gt;Siehe &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; für mehr Informationen zum Projekt.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="177"/>
+        <location filename="../src/view/MainWindow.cpp" line="93"/>
+        <source>Welcome to The Butterfly Effect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="192"/>
         <source>&lt;b&gt;The Butterfly Effect - Libraries&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Butterfly Effect is a proud user of the Box2D Physics Library. Please refer to &lt;a href=&quot;http://www.box2d.org/&quot;&gt;http://www.box2d.org/&lt;/a&gt;.&lt;br&gt;The Butterfly Effect uses the Qt GUI toolkit. Please refer to &lt;a href=&quot;http://qt-project.org/&quot;&gt;http://qt-project.org/&lt;/a&gt;.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Der Schmetterlingseffekt – Programmierbibliotheken&lt;/b&gt;&lt;br&gt;&lt;br&gt;Der Schmetterlingseffekt ist ein stolzer Benutzer der Box2D-Physikbibliothek. Siehe &lt;a href=&quot;http://www.box2d.org/&quot;&gt;http://www.box2d.org/&lt;/a&gt;.&lt;br&gt;Der Schmetterlingseffekt benutzt das Qt-GUI-Toolkit. Siehe &lt;a href=&quot;http://qt-project.org/&quot;&gt;http://qt-project.org/&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="194"/>
+        <location filename="../src/view/MainWindow.cpp" line="209"/>
         <source>Do you really want to discard the current level and start a new one?</source>
         <translation>Wollen Sie wirklich den aktuellen Level verwerfen und mit einem neuen anfangen?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="215"/>
+        <location filename="../src/view/MainWindow.cpp" line="231"/>
         <source>&lt;b&gt;The Butterfly Effect - Create New Levels&lt;/b&gt;&lt;br&gt;&lt;br&gt;We know you can design better levels than we do!&lt;br&gt;Use the Level Creator to build your levels and please submit them to us.&lt;br&gt;Even if your level is not finished yet, don&apos;t hesitate to share it with us! Of course, define how you think it should work so others can join in.&lt;br&gt;&lt;br&gt;Please file a ticket on github with your idea:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
         <translation>&lt;b&gt;Der Schmetterlingseffekt – Neue Levels erstellen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wir wissen, dass Sie Levels besser als wir gestalten können!&lt;br&gt;Benutzen Sie den Leveleditor, um Ihre Levels zu bauen und bitte schicken Sie sie uns.&lt;br&gt;Selbst, wenn Ihr Level noch nicht fertig ist, zögern Sie nicht, ihn mit uns zu teilen! Natürlich sollten Sie festlegen, wie Sie meinen, wie der Level funktionieren soll, damit andere einspringen können.&lt;br&gt;&lt;br&gt;Bitte erstellen Sie ein Ticket auf GitHub mit Ihrer Idee:&lt;br&gt;&lt;a href=&quot;https://github.com/the-butterfly-effect/tbe/issues&quot;&gt;https://github.com/the-butterfly-effect/tbe/issues&lt;/a&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="237"/>
+        <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>Open level</source>
         <translation>Level öffnen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="237"/>
+        <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>TBE levels (*.xml)</source>
         <translation>DSE-Level (*.xml)</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="246"/>
+        <location filename="../src/view/MainWindow.cpp" line="262"/>
         <source>really?</source>
         <translation>Wirklich?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="255"/>
+        <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>You have unsaved changes,
 really reload Level from disk?</source>
         <translation>Sie haben ungespeicherte Änderungen,
@@ -1186,38 +1280,44 @@ wollen Sie wirklich den Level vom
 Datenträger neu laden?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="260"/>
+        <location filename="../src/view/MainWindow.cpp" line="276"/>
         <source>Level has no name - could not be reloaded. Please use &quot;Save As...&quot;</source>
         <translation>Level hat keinen Namen – konnte nicht erneut geladen werden. Bitte benutzen Sie „Speichern unter …“.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="275"/>
+        <location filename="../src/view/MainWindow.cpp" line="291"/>
         <source>Level has no name - could not be saved. Please use &quot;Save As...&quot;</source>
         <translation>Level hat keinen Namen – konnte nicht gespeichert werden. Bitte benutzen Sie „Speichern unter …“.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="280"/>
+        <location filename="../src/view/MainWindow.cpp" line="296"/>
         <source>File &apos;%1&apos; could not be saved.</source>
         <translation>Datei „%1“ konnte nicht gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="301"/>
+        <location filename="../src/view/MainWindow.cpp" line="317"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
         <translation>Sie haben nicht alle Felder ausgefüllt – das Level wurde trotzdem gespeichert.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="315"/>
+        <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
         <translation>Das Level als „übersprungen“ kennzeichnen und mit dem nächsten Level fortsetzen?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="322"/>
+        <location filename="../src/view/MainWindow.cpp" line="347"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
         <translation>&lt;b&gt;Der Schmetterlingseffekt – Vorschläge&lt;/b&gt;&lt;br&gt;&lt;br&gt;Falls Sie großartige Ideen für neue Funktionen für das Spiel haben, bitte gehen Sie zu unseren schönen Foren auf &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;,&lt;br&gt;um Ihre Ideen mit der Welt zu teilen.</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="345"/>
+        <location filename="../src/view/MainWindow.cpp" line="374"/>
+        <source>Coordinates: (%1,%2)</source>
+        <extracomment>Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/MainWindow.cpp" line="381"/>
         <source>
 You have unsaved undo actions.
 You lose your actions when switching languages.
@@ -1230,7 +1330,7 @@ Sie werden Ihre Aktionen verlieren, wenn Sie die Sprache wechseln.
 </translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="348"/>
+        <location filename="../src/view/MainWindow.cpp" line="384"/>
         <source>You requested a switch to language:
 %1
 Be careful: not all languages are 100% complete.
@@ -1242,37 +1342,37 @@ Vorsicht: Nicht alle Sprachen sind zu 100% fertig.
 %2Sind Sie sich sicher?</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="409"/>
+        <location filename="../src/view/MainWindow.ui" line="415"/>
         <source>&amp;Goal Editor...</source>
         <translation>&amp;Ziel-Editor …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.ui" line="424"/>
+        <location filename="../src/view/MainWindow.ui" line="430"/>
         <source>&amp;Object Editor...</source>
         <translation>&amp;Objekteditor …</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="416"/>
+        <location filename="../src/view/MainWindow.cpp" line="459"/>
         <source>&amp;Undo</source>
         <translation>&amp;Rückgängig</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="418"/>
+        <location filename="../src/view/MainWindow.cpp" line="461"/>
         <source>Ctrl+Z</source>
         <translation>Strg+Z</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="420"/>
+        <location filename="../src/view/MainWindow.cpp" line="463"/>
         <source>&amp;Redo</source>
         <translation>&amp;Wiederholen</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="423"/>
+        <location filename="../src/view/MainWindow.cpp" line="466"/>
         <source>Ctrl+Y</source>
         <translation>Strg+Y</translation>
     </message>
     <message>
-        <location filename="../src/view/MainWindow.cpp" line="423"/>
+        <location filename="../src/view/MainWindow.cpp" line="466"/>
         <source>Shift+Ctrl+Z</source>
         <translation>Umschalt+Strg+Z</translation>
     </message>
@@ -1599,13 +1699,10 @@ Parsing-Fehler an Zeile %1, Spalte %2:
     <message>
         <location filename="../src/model/Pingus.cpp" line="54"/>
         <source>A penguin walks left or right and turns around when
-it collides with something heavy. It and can push
+it collides with something heavy. It can push
 light objects around. It also likes to slide down
 slopes but can&apos;t take much abuse.</source>
-        <translation>Ein Pinguin geht nach links oder rechts und dreht
-sich um, wenn er mit etwas Schwerem kollidiert.
-Er kann leichte Objekte herumschieben. Er schlittert
-auch gerne Abhänge hinunter, ist aber recht verletzlich.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Butterfly.cpp" line="45"/>
@@ -1626,6 +1723,11 @@ You might want to read them—it may help!</source>
         <translation>Jemand hat hier überall Klebezettel hinterlassen.
 Sie wissen schon, diese kleinen gelben quadradischen Papierfetzen.
 Sie möchten sie vielleicht lesen – es könnte helfen!</translation>
+    </message>
+    <message>
+        <location filename="../src/control/EditPropertyUndoCommand.cpp" line="27"/>
+        <source>EditProperty</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1698,82 +1800,17 @@ Sie möchten sie vielleicht lesen – es könnte helfen!</translation>
     </message>
 </context>
 <context>
-    <name>SimulationControls</name>
-    <message>
-        <location filename="../src/view/SimulationControls.ui" line="32"/>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.ui" line="92"/>
-        <source>Reset</source>
-        <translation>Zurücksetzen</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.ui" line="133"/>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.ui" line="152"/>
-        <source>Play</source>
-        <translation>Spielen</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.ui" line="171"/>
-        <source>FF</source>
-        <translation>VS</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="113"/>
-        <source>&amp;Forward</source>
-        <translation>&amp;Vorspulen</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="115"/>
-        <source>f</source>
-        <extracomment>translators: 'f' is for (fast) forward</extracomment>
-        <translation>f</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="118"/>
-        <source>P&amp;ause</source>
-        <translation>P&amp;ause</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="121"/>
-        <source>&amp;Play</source>
-        <translation>Abs&amp;pielen</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="124"/>
-        <source>&amp;Reset</source>
-        <translation>Zu&amp;rücksetzen</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="126"/>
-        <source>r</source>
-        <extracomment>translators: 'r' is for reset</extracomment>
-        <translation>r</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="128"/>
-        <source>Space</source>
-        <translation>Leertaste</translation>
-    </message>
-    <message>
-        <location filename="../src/view/SimulationControls.cpp" line="133"/>
-        <source>Shift+f</source>
-        <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation>Umschalt+f</translation>
-    </message>
-</context>
-<context>
     <name>ToolboxListWidgetItem</name>
     <message>
-        <location filename="../src/view/ToolboxListWidgetItem.cpp" line="87"/>
+        <location filename="../src/view/ToolboxListWidgetItem.cpp" line="103"/>
         <source>(empty)</source>
         <translation>(leer)</translation>
+    </message>
+    <message>
+        <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
+        <source>%1x %2</source>
+        <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1852,19 +1889,19 @@ Die Simulation zurücksetzen?</translation>
         <translation>&amp;Weiter&gt;</translation>
     </message>
     <message>
-        <location filename="../src/view/WinFailDialog.cpp" line="38"/>
+        <location filename="../src/view/WinFailDialog.cpp" line="37"/>
         <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Glückwunsch!</translation>
     </message>
     <message>
-        <location filename="../src/view/WinFailDialog.cpp" line="44"/>
+        <location filename="../src/view/WinFailDialog.cpp" line="43"/>
         <source>Fail - retry?</source>
         <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
         <translation>Versagt!</translation>
     </message>
     <message>
-        <location filename="../src/view/WinFailDialog.cpp" line="46"/>
+        <location filename="../src/view/WinFailDialog.cpp" line="45"/>
         <source>&amp;Retry</source>
         <translation>Zu&amp;rücksetzen</translation>
     </message>
