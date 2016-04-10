@@ -359,7 +359,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     // everything is in the constructor of LevelCreator now...
     Q_ASSERT(nullptr == theLevelCreator);
     theLevelCreator = new LevelCreator(this);
-    theMousePosLabelPtr = new QLabel(tr("Coordinates: –"));
+    theMousePosLabelPtr = new QLabel("");
     statusBar()->addPermanentWidget(theMousePosLabelPtr);
     if (theLevelPtr) {
         repopulateScene();
