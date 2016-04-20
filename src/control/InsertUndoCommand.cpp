@@ -37,6 +37,7 @@ InsertUndoCommand::InsertUndoCommand(
 
 ViewObjectPtr InsertUndoCommand::createVOfromAO(AbstractObjectPtr anAOPtr)
 {
+    assert(anAOPtr!=nullptr);
     // put our shiny new object in the middle of the world
     Position myPos(World::getWorldPtr()->getTheWorldWidth()/2.0,
                    World::getWorldPtr()->getTheWorldHeight()/2.0, anAOPtr->getOrigCenter().angle);

@@ -223,8 +223,11 @@ void LevelCreator::on_goalEditorAction_clicked()
 void LevelCreator::on_insert(const QString& anObjectName)
 {
     DEBUG1ENTRY;
+    // strip out ampersands in the name
+    QString myFilteredName = anObjectName;
+    myFilteredName.remove('&');
     InsertUndoCommand::createInsertUndoCommand(
-                ObjectFactory::createObject(anObjectName, Position(1,1)));
+                ObjectFactory::createObject(myFilteredName, Position(1,1)));
 }
 
 void LevelCreator::on_levelPropertiesEditorAction_clicked()

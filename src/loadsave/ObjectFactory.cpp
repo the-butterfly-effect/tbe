@@ -88,6 +88,7 @@ ObjectFactory::createObject(
 	if (anHeight!=1.0)
 		myObjectPtr->theHeight=anHeight;
     // finally, get rid of the actual pointer and return the shared_ptr
+    assert (nullptr!=mySharedOPtr);
     return mySharedOPtr;
 }
 
