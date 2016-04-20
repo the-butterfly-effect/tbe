@@ -40,7 +40,7 @@
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="doubleSpinBoxWidth">
         <property name="toolTip">
-         <string>width of the level in meters</string>
+         <string>Width of the level in meters</string>
         </property>
         <property name="whatsThis">
          <string/>
