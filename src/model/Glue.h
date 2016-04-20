@@ -49,30 +49,30 @@ public:
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only two joints)
-	virtual void createPhysicsObject(void);
+    void createPhysicsObject(void) override;
 
 	/// overridden from AbstractObject
 	/// returns the Name of the object.
-	virtual const QString getName ( ) const
+    const QString getName ( ) const override
 	{	return QObject::tr("Glue");	}
 
 	/** Get the current center position of the object.
 	 * @return the value of theCenter
 	 */
-	virtual Position getTempCenter ( ) const;
+    Position getTempCenter ( ) const override;
 
 	/// overridden from AbstractObject
 	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
+    bool isRotatable ( ) const override
 	{	return false;	}
 
 	/// overridden from AbstractObject
 	/// parses all properties that Glue understands
 	/// - only "object1" and "object2"
-	virtual void  parseProperties(void);
+    void  parseProperties(void) override;
 
 	/// implemented from AbstractJoint
-	virtual void updateOrigCenter(void);
+    void updateOrigCenter(void) override;
 
 private:
 	AbstractObjectPtr theFirstPtr;
