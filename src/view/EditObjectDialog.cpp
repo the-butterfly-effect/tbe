@@ -112,7 +112,7 @@ void EditObjectDialog::position_valueChanged (double )
         PreventClose myLocalDoNotClose;
         theMUCPtr = (MoveUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
                                                      ActionIcon::ACTION_MOVE);
-        theMUCPtr->basicPressEvent(THESCALE*QPointF(ui.spinBoxX->value(),
+        theMUCPtr->basicPressEvent(false, THESCALE*QPointF(ui.spinBoxX->value(),
                                                     -ui.spinBoxY->value()));
     }
     else

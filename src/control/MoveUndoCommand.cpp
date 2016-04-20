@@ -57,12 +57,13 @@ void MoveUndoCommand::basicMoveEvent(const QPointF& aPos)
 }
 
 
-void MoveUndoCommand::basicPressEvent(const QPointF& aPos)
+void MoveUndoCommand::basicPressEvent(bool isMouseUndo, const QPointF& aPos)
 {
     DEBUG4ENTRY;
     theButtonDownPosition = aPos;
     // Replace theOrigPos (as set by the constructor) to use the butondown position.
-    theOrigPos = Position(aPos, theOrigPos.angle);
+    if (!isMouseUndo)
+        theOrigPos = Position(aPos, theOrigPos.angle);
     // Essential is *not* to initialize theLastKnowngood here - so it remains invalid.
 }
 
@@ -88,7 +89,7 @@ bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
 bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 {
-    basicPressEvent(anEventPtr->scenePos());
+    basicPressEvent(true, anEventPtr->scenePos());
     return false;
 }
 
