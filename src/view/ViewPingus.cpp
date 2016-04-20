@@ -39,7 +39,7 @@ ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr)
 	DEBUG5ENTRY;
 	QPixmap myTempPixmap;
 	// don't want the image to be antialiased
-	ImageCache::getPixmap("pingus", QSize(512,224), &myTempPixmap, QPainter::NonCosmeticDefaultPen);
+	ImageCache::getPixmap("pingus", QSize(512,384), &myTempPixmap, QPainter::NonCosmeticDefaultPen);
 
 	thePixmapWidth = 32;
 	thePixmapHeight= 32;
