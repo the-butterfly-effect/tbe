@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>150</height>
+    <width>364</width>
+    <height>168</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -63,7 +63,7 @@
        <number>15</number>
       </property>
       <property name="rightMargin">
-       <number>20</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>15</number>
@@ -274,10 +274,13 @@
              <string notr="true">border-image: url(:/transparant.png);</string>
             </property>
             <property name="text">
-             <string>This is a dummy string to test the widget size</string>
+             <string/>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
