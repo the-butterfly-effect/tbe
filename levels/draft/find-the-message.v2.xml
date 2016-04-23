@@ -97,6 +97,7 @@
             <object width="0.735" X="1.302" Y="0.492" height="0.100" type="Floor" angle="5.869"/>
             <object width="0.166" X="1.538" Y="0.554" height="0.500" type="ColaMintBottle" angle="10.603"/>
             <object width="0.270" X="2.418" Y="0.428" height="0.360" type="Balloon" angle="0.000">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
                 <property key="Mass">0.01</property>
             </object>
             <object width="0.494" X="0.754" Y="0.627" height="0.100" type="Floor" angle="0.000"/>

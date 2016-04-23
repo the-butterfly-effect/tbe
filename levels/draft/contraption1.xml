@@ -68,7 +68,9 @@
             <object X="1.5" Y="0.3" height="0.4" type="DominoRed"/>
             <object X="1.2" Y="0.3" height="0.4" type="DominoGreen"/>
             <object X="0.9" Y="0.3" height="0.4" type="DominoBlue"/>
-            <object X="4.3" Y="0.36" type="Balloon"/>
+            <object X="4.3" Y="0.36" type="Balloon">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
             <!-- ===================== 'outer slakkenhuis' ================= -->
             <object width="3.7" X="2.45" Y="0.61" height="0.10" type="Floor">
                 <property key="Friction">0.4</property>

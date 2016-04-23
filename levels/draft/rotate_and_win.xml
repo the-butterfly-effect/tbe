@@ -41,7 +41,9 @@
             <object Y="0.608" width="0.918" height="0.100" type="RotatingBar" angle="0.000" X="3.810" />
             <object Y="0.496" width="0.931" height="0.100" type="RotatingBar" angle="0.000" X="1.067" />
             <object Y="3.447" width="0.625" height="0.100" type="RotatingBar" angle="0.000" X="3.681" />
-            <object Y="0.252" width="0.270" height="0.360" ID="balloon" type="Balloon" angle="0.000" X="2.415"/>
+            <object Y="0.252" width="0.270" height="0.360" ID="balloon" type="Balloon" angle="0.000" X="2.415">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
             <object Y="2.735" width="1.017" height="0.100" type="Floor" angle="0.000" X="2.453"/>
             <object Y="2.182" width="1.000" height="0.100" type="Floor" angle="-1.570" X="2.000"/>
             <object Y="2.178" width="1.000" height="0.100" type="Floor" angle="-1.570" X="2.911"/>
