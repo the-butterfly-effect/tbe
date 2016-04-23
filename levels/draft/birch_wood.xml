@@ -1,0 +1,96 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Birch Wood</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Roll the upper Pétanque ball to the other ones.</description>
+        <date>22.04.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object angle="0" width="1" height="0.1" type="Floor" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" width="1" height="0.1" type="BirchBar" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" width="1" height="0.356" type="LeftWedge" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" width="1" height="0.356" type="LeftFixedWedge" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" width="1" height="0.356" type="RightWedge" X="0" Y="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4.6" height="3"/>
+        <predefined>
+            <object angle="0" width="1" height="0.306" type="RightFixedWedge" X="1.04616" Y="2.68521"/>
+            <object angle="0" ID="ball" width="0.076" height="0.076" type="PetanqueBoule" X="0.737306" Y="2.90026"/>
+            <object angle="0" width="1" height="0.1" type="Floor" X="1.98721" Y="2.37436"/>
+            <object angle="0" width="1" height="0.1" type="BirchBar" X="3.01168" Y="2.37102"/>
+            <object angle="0" width="0.16574" height="0.1" type="Floor" X="2.5178" Y="2.14744"/>
+            <object angle="0" width="0.16574" height="0.1" type="Floor" X="3.506" Y="2.147"/>
+            <object angle="0" width="1.25695" height="0.1" type="Floor" X="3.88098" Y="1.61018"/>
+            <object angle="0" width="1.39356" height="0.1" type="Floor" X="2.65795" Y="1.10962"/>
+            <object angle="1.5708" width="0.399333" height="0.1" type="Floor" X="3.302" Y="1.3599"/>
+            <object angle="1.5708" width="0.312569" height="0.1" type="Floor" X="2.1401" Y="1.31702"/>
+            <object angle="0" width="0.16574" height="0.1" type="Floor" X="1.10957" Y="1.10962"/>
+            <object angle="0" width="1.11992" height="0.1" type="Floor" X="1.58687" Y="1.00951"/>
+            <object angle="0" width="3.30923" height="0.1" type="Floor" X="1.75028" Y="0.689155"/>
+            <object angle="1.5708" width="0.636262" height="0.1" type="Floor" X="0.145162" Y="0.320412"/>
+            <object angle="0" width="1.58065" height="0.1" type="Floor" X="0.799222" Y="2.00395"/>
+            <object angle="1.5708" width="0.269188" height="0.1" type="Floor" X="1.53943" Y="2.18966"/>
+            <object angle="0" width="2.60177" height="0.1" type="Floor" X="2.09033" Y="0.252002"/>
+            <object angle="0" width="0.592881" height="0.1" type="Floor" X="0.49188" Y="0.0517798"/>
+            <object angle="1.5708" width="0.19911" height="0.1" type="Floor" X="0.838321" Y="0.102336"/>
+            <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.48002" Y="0.143869"/>
+            <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.650209" Y="0.140532"/>
+            <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.326516" Y="0.140532"/>
+            <object angle="0" width="0.22" height="0.22" type="PostIt" X="3.57154" Y="1.35663">
+                <property key="ZValue">1</property>
+                <property key="page1">Look what I’ve found in the cellar: A bunch of birch wood!</property>
+                <property key="page2">You already know the dark old wood: It is static and doesn’t move.</property>
+                <property key="page3">The bright birch wood, on the other hand, is subject to gravity.</property>
+                <property key="page4">Use the right wood at the right spots to solve this problem.</property>
+                <property key="page5">Post-It Boy</property>
+            </object>
+            <object angle="1.5708" width="1.64739" height="0.1" type="Floor" X="4.555" Y="0.838"/>
+            <object angle="0" width="0.34" height="0.34" type="Scenery" X="1.76" Y="2.158">
+                <property key="ImageName">SpidersWeb</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="-1.5708" width="0.5" height="0.5" type="Scenery" X="4.26571" Y="1.32333">
+                <property key="ImageName">SpidersWeb</property>
+                <property key="ZValue">1</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.662745;0.521569;0.282353;1</gradientstop>
+            <gradientstop pos="1">0.780392;0.619608;0.34902;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="xover">0.14</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="xbelow">0.84</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="ybelow">0.2</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint object="Floor" X="2.708" number="1" Y="1.5401"/>
+        <hint object="LeftFixedWedge" X="3.83" number="2" Y="0.59"/>
+        <hint object="BirchBar" X="1.54004" number="3" Y="1.30973"/>
+        <hint object="RightWedge" X="0.582314" number="4" Y="1.00501"/>
+        <hint object="LeftWedge" X="4.00945" number="5" Y="1.96774"/>
+    </hints>
+</tbe-level>
