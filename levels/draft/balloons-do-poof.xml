@@ -25,7 +25,9 @@
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">10</property>
             </object>
-            <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" ID="balloon" angle="0"/>
+            <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" ID="balloon" angle="0">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
             <object width="0.1" X="0.7" Y="0.15" height="0.199" type="Link" angle="0.000">
                 <property key="ImageName">#E0E000</property>
                 <property key="object1">balloon@(0,-0.17)</property>

@@ -152,7 +152,9 @@
                 <property key="object1">balloon@(0.00,-0.17)</property>
                 <property key="object2">gift@(0.10,0.06)</property>
             </object>
-            <object X="1.032" height="0.36" type="Balloon" width="0.27" Y="1.837" angle="0" ID="balloon2"/>
+            <object X="1.032" height="0.36" type="Balloon" width="0.27" Y="1.837" angle="0" ID="balloon2">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
             <object X="1.184" height="0.256" type="Link" width="0.383" Y="1.487" angle="0">
                 <property key="ImageName">shortballoonrope</property>
                 <property key="ZValue">10.0</property>

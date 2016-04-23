@@ -30,7 +30,9 @@
             <object width="0.4" X="1.65" Y="0.54" height="0.88" type="Wall" angle="0"/>
             <object width="1.0" X="1.65" Y="1.07" height="0.12" type="RotatingBar" angle="0" />
             <object width="0.22" X="1.65" Y="1.24" height="0.22" type="BowlingBall" angle="0"/>
-            <object width="0.27" X="0.47" Y="0.36" height="0.36" type="Balloon" angle="0"/>
+            <object width="0.27" X="0.47" Y="0.36" height="0.36" type="Balloon" angle="0">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
         </predefined>
     </scene>
     <goals>
