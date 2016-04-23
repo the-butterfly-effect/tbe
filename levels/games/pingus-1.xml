@@ -233,8 +233,8 @@
                 <property key="ImageName">scaffolding-mount</property>
                 <property key="ZValue">4.5</property>
             </object>
-            <object type="CircularSaw" width="0.380" height="0.380" angle="0.000" X="1.718" Y="2.981" ID="saw1"/>
-            <object type="PivotPoint" width="1.000" height="1.000" angle="0.000" X="1.718" Y="2.981">
+            <object type="CircularSaw" width="0.380" height="0.380" angle="0.000" X="1.950" Y="2.981" ID="saw1"/>
+            <object type="PivotPoint" width="1.000" height="1.000" angle="0.000" X="1.950" Y="2.981">
                 <property key="Speed">-4.0</property>
                 <property key="object">saw1</property>
             </object>
