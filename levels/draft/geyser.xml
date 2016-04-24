@@ -32,8 +32,14 @@
     <scene>
         <scenesize width="5" height="3"/>
         <predefined>
-            <object width="5.000" X="2.500" Y="0.050" height="0.100" type="Floor" angle="0.000">
+            <object width="2.950" X="1.475" Y="0.050" height="0.100" type="Floor" angle="0.000">
                 <property key="Friction">0.5</property>
+            </object>
+            <object width="1.500" X="4.250" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.5</property>
+            </object>
+            <object width="0.550" X="3.225" Y="0.050" height="0.100" type="Scenery" angle="0.000">
+                <property key="ImageName">White-to-green</property>
             </object>
             <object width="0.220" X="2.900" Y="2.400" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">"Old Faithful" is a geyser in Yellowstone National Park, Wyoming, USA.</property>
