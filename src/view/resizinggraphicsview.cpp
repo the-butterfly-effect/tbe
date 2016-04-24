@@ -217,5 +217,5 @@ void ResizingGraphicsView::slot_levelWon(void)
 
 void ResizingGraphicsView::slot_showGameResourcesDialog()
 {
-    QTimer::singleShot(100, theGameResourcesPtr, SLOT(appearAnimated()));
+    QTimer::singleShot(50, theGameResourcesPtr, SLOT(appearAnimated()));
 }

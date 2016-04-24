@@ -498,22 +498,22 @@ void MainWindow::setupView()
     connect(theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
             ui->listWidget, SLOT(setDisabled(bool)));
 
-	if (theIsRunAsRegression)
+    if (theIsRunAsRegression)
     {
-		Q_ASSERT(theRegressionTest==nullptr);
-		theRegressionTest = new RegressionTest(this);
-		theRegressionTest->startRegressionRun();
+        Q_ASSERT(theRegressionTest==nullptr);
+        theRegressionTest = new RegressionTest(this);
+        theRegressionTest->startRegressionRun();
     }
     else
-	{
-		if (theStartFileName.isEmpty())
-			theStartFileName = ChooseLevel::getNextLevelName();
-		// if all levels have been played, this remains empty
-		if (theStartFileName.isEmpty())
-			QTimer::singleShot(200, this, SLOT(on_action_Open_Level_triggered()));
-		else
-			QTimer::singleShot(200, this, SLOT(loadLevelDelayed()));
-	}
+    {
+        if (theStartFileName.isEmpty())
+            theStartFileName = ChooseLevel::getNextLevelName();
+        // if all levels have been played, this remains empty
+        if (theStartFileName.isEmpty())
+            QTimer::singleShot(200, this, SLOT(on_action_Open_Level_triggered()));
+        else
+            QTimer::singleShot(800, this, SLOT(loadLevelDelayed()));
+    }
 }
 
 
