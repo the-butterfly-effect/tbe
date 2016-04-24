@@ -161,6 +161,8 @@ void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
 
     connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()),   theGameStateMachinePtr, SIGNAL(signal_Won_happened()));
     connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theGameStateMachinePtr, SIGNAL(signal_Fail_happened()));
+    connect(aScenePtr, SIGNAL(needPause()),   theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()));
+    connect(aScenePtr, SIGNAL(needReset()),   theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
 
 	if (theIsRunAsRegression)
 	{
