@@ -113,7 +113,7 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
 
 		QPointF mousePos = this->mapToScene(event->pos());
 		Position p = Position(mousePos, 0);
-		emit theMainWindowPtr->on_action_mouse_move(p.x, p.y);
+		emit theMainWindowPtr->slot_mouse_move(p.x, p.y);
         }
 }
 

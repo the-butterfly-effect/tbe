@@ -367,7 +367,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
     statusBar()->show();
 }
 
-void MainWindow::on_action_mouse_move(qreal x, qreal y)
+void MainWindow::slot_mouse_move(qreal x, qreal y)
 {
     if (theIsLevelCreator && theMousePosLabelPtr != nullptr) {
 	//: Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator

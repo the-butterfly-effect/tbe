@@ -106,7 +106,7 @@ public slots:
     /// To be called when the cursor changed position in the graphicsview,
     /// in order to display the coordinates.
     /// x and y hold the world position of the cursor
-    void on_action_mouse_move(qreal x, qreal y);
+    void slot_mouse_move(qreal x, qreal y);
 
 
 private slots:
