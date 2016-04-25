@@ -49,9 +49,9 @@
                 <property key="ZValue">3</property>
             </object>
             <object type="Floor" angle="0" Y="0.656041" X="3.07713" height="0.1" width="0.320389"/>
-            <object type="Floor" angle="0" Y="0.761758" X="4.67044" height="0.1" width="1.07552"/>
-            <object type="DetonatorBox" angle="0" Y="0.289401" X="5.49627" height="0.35" width="0.33"/>
-            <object type="Floor" angle="0" Y="0.059493" X="5.49353" height="0.1" width="0.969795"/>
+            <object type="Floor" angle="0" Y="0.761758" X="4.939" height="0.1" width="0.928"/>
+            <object type="DetonatorBox" angle="0" Y="0.289" X="5.59" height="0.35" width="0.33"/>
+            <object type="Floor" angle="0" Y="0.052" X="5.591" height="0.1" width="0.775"/>
             <object type="Wall" angle="0" Y="2.12405" X="7.1999" height="1.01511" width="0.2"/>
             <object type="Wall" angle="0" Y="2.22222" X="6.44477" height="1.21143" width="0.2"/>
             <object type="Floor" angle="0" Y="1.56219" X="6.81877" height="0.1" width="0.962244"/>
@@ -122,8 +122,8 @@
             <object type="DominoBlue" angle="0" Y="3.17449" X="6.06413" height="0.5" width="0.1"/>
             <object type="Wall" angle="0" Y="4.44229" X="4.75307" height="0.87918" width="0.2"/>
             <object type="DominoBlue" angle="0" Y="6.06661" X="3.76101" height="0.5" width="0.1"/>
-            <object type="Wall" angle="0" Y="0.402686" X="5.10799" height="0.606711" width="0.2"/>
-            <object type="Wall" angle="0" Y="0.508247" X="5.87821" height="0.803356" width="0.2"/>
+            <object type="Wall" angle="0" Y="0.407" X="5.303" height="0.599" width="0.2"/>
+            <object type="Wall" angle="0" Y="0.528" X="5.878" height="0.842" width="0.2"/>
             <object type="RightRamp" angle="0" Y="1.05178" X="5.58015" height="0.169364" width="0.765912"/>
             <object type="Wall" angle="0" Y="2.21483" X="4.20939" height="1.19664" width="0.2"/>
             <object type="QuarterArc40" angle="-1.55345" Y="5.91273" X="7.34887" height="0.4" width="0.4"/>
