@@ -160,8 +160,9 @@ PieMenu::PieMenu(ViewObjectPtr aParentPtr)
 
 PieMenu::~PieMenu()
 {
-	if (!theVOPtr.isNull())
+    if (!theVOPtr.isNull())
         theVOPtr->setZValue(theVOsOriginalZValue);
+    theVOPtr.clear();
 }
 
 

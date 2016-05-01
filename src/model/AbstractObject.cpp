@@ -196,10 +196,8 @@ void AbstractObject::deletePhysicsObject()
 
 void AbstractObject::deleteViewObject(void)
 {
-	// delete the corresponding ViewObject
-	// note that delete nullptr is allowed
-	delete theViewObjectPtr;
-	theViewObjectPtr = nullptr;
+    // clear the corresponding ViewObject
+    theViewObjectPtr.clear();
 }
 
 

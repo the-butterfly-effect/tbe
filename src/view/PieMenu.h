@@ -23,6 +23,7 @@
 #include <QGraphicsWidget>
 #include <QStateMachine>
 #include <QGraphicsEffect>
+#include <QPointer>
 
 
 #include "tbe_global.h"
@@ -176,7 +177,7 @@ public:
 									   QPointF aPositionInSceneCoord);
 
 	static void clearPieMenu(void)
-	{ addPieMenuToViewObject(nullptr, QPointF(0,0)); }
+	{ addPieMenuToViewObject(ViewObjectPtr(nullptr), QPointF(0,0)); }
 
 	/// Sets up all state to check if an ActionIcon will be clicked.
 	/// - see ViewWorld::mousePressEvent()
