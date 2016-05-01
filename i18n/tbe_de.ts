@@ -228,13 +228,15 @@ Objekte auszuüben.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="97"/>
         <source>Cola Crate</source>
-        <translation type="unfinished"/>
+        <translation>Colakiste</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="98"/>
         <source>A crate of 12 filled cola bottles.
 It&apos;s very heavy and hard to push around.</source>
-        <translation type="unfinished"/>
+        <translation>Eine Kiste mit 12 gefüllten Colaflaschen.
+Sie ist sehr schwer und lässt sich nur
+mit Mühe bewegen.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
@@ -591,77 +593,77 @@ recht schwer.</translation>
     <message>
         <location filename="../src/view/GameControls.ui" line="32"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="92"/>
         <source>Reset</source>
-        <translation type="unfinished"/>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="133"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="152"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Abspielen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="171"/>
         <source>FF</source>
-        <translation type="unfinished"/>
+        <translation>Vorspulen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vorspulen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="84"/>
         <source>f</source>
         <extracomment>translators: 'f' is for (fast) forward</extracomment>
-        <translation type="unfinished"/>
+        <translation>v</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="88"/>
         <source>P&amp;ause</source>
-        <translation type="unfinished"/>
+        <translation>P&amp;ause</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="92"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>Abs&amp;pielen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="96"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished"/>
+        <translation>Zu&amp;rücksetzen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="98"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
-        <translation type="unfinished"/>
+        <translation>r</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="102"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Umschalt+f</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="109"/>
         <source>Shift+s</source>
         <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Umschalt+s</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="150"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation type="unfinished"/>
+        <translation>Leertaste</translation>
     </message>
 </context>
 <context>
@@ -1232,12 +1234,12 @@ Dies könnte jedoch die Spielbarkeit beeinträchtigen!</translation>
         <location filename="../src/view/MainWindow.cpp" line="140"/>
         <source>&lt;b&gt;The Butterfly Effect&lt;/b&gt;&lt;br&gt;version: %2&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015,2016 Klaas van Gend and many others&lt;br&gt;&lt;br&gt;Code licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;Levels and graphics may have different open/free licenses.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation>&lt;b&gt;Der Schmetterlingseffekt&lt;/b&gt;&lt;br&gt;Version: %2&lt;br&gt;Ein Open-Source-Spiel, das realistische Physiksimulationen benutzt, um viele einfache mechanische Elemente zu kombinieren, um ein einfaches Ziel auf die kompliziertest mögliche Art und Weise zu erreichen.&lt;br&gt;&lt;br&gt;(C) 2009, 2010, 2011, 2012, 2013, 2015, 2006 Klaas van Gend und vielen anderen&lt;br&gt;&lt;br&gt;Lizensiert unter der GPL, &lt;i&gt;nur&lt;/i&gt; Version 2.&lt;br&gt;&lt;br&gt;Siehe &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; für mehr Informationen zum Projekt.</translation>
+        <translation>&lt;b&gt;Der Schmetterlingseffekt&lt;/b&gt;&lt;br&gt;Version: %2&lt;br&gt;Ein Open-Source-Spiel, das realistische Physiksimulationen benutzt, um viele einfache mechanische Elemente zu kombinieren, um ein einfaches Ziel auf die kompliziertest mögliche Art und Weise zu erreichen.&lt;br&gt;&lt;br&gt;(C) 2009, 2010, 2011, 2012, 2013, 2015, 2016 Klaas van Gend und vielen anderen&lt;br&gt;&lt;br&gt;Lizensiert unter der GPL, &lt;i&gt;nur&lt;/i&gt; Version 2.&lt;br&gt;&lt;br&gt;Siehe &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; für mehr Informationen zum Projekt.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="93"/>
         <source>Welcome to The Butterfly Effect!</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen zu dem Schmetterlingseffekt!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
@@ -1314,7 +1316,7 @@ Datenträger neu laden?</translation>
         <location filename="../src/view/MainWindow.cpp" line="374"/>
         <source>Coordinates: (%1,%2)</source>
         <extracomment>Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator</extracomment>
-        <translation type="unfinished"/>
+        <translation>Koordinaten: (%1;%2)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="381"/>
@@ -1702,7 +1704,11 @@ Parsing-Fehler an Zeile %1, Spalte %2:
 it collides with something heavy. It can push
 light objects around. It also likes to slide down
 slopes but can&apos;t take much abuse.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Pinguin geht nach links oder rechts und dreht
+sich um, sobald er mit etwas Schwerem kollidiert.
+Er kann leichte Objekte herumschubsen. Er rutscht
+auch gerne Abhänge hinab, ist aber nicht besonders
+widerstandsfähig.</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.cpp" line="45"/>
@@ -1727,7 +1733,7 @@ Sie möchten sie vielleicht lesen – es könnte helfen!</translation>
     <message>
         <location filename="../src/control/EditPropertyUndoCommand.cpp" line="27"/>
         <source>EditProperty</source>
-        <translation type="unfinished"/>
+        <translation>EditProperty</translation>
     </message>
 </context>
 <context>
@@ -1810,7 +1816,7 @@ Sie möchten sie vielleicht lesen – es könnte helfen!</translation>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
         <source>%1x %2</source>
         <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1× %2</translation>
     </message>
 </context>
 <context>

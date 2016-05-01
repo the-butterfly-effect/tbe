@@ -215,13 +215,14 @@ to some of the heavier objects.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="97"/>
         <source>Cola Crate</source>
-        <translation type="unfinished"/>
+        <translation>Cola krat</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="98"/>
         <source>A crate of 12 filled cola bottles.
 It&apos;s very heavy and hard to push around.</source>
-        <translation type="unfinished"/>
+        <translation>Een krat met 12 flessen Cola.
+Heel zwaar en moeilijk te verschuiven.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
@@ -360,7 +361,7 @@ Klik op de post-it briefjes voor hulp.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
         <source>Your average bowling ball: heavy, round and willing to roll.</source>
-        <translation type="unfinished"/>
+        <translation>Een gewone bowlingbal - zwaar, rond en rolt lekker door</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="35"/>
@@ -370,22 +371,22 @@ Klik op de post-it briefjes voor hulp.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
         <source>A volleyball—you know: light, soft and very bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Een volley bal. Je weet wel, licht zacht en stuitert wel lekker. </translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="45"/>
         <source>A tennis ball is small, fuzzy and bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Een tennisbal is klein, pluizig en kan alle hoofden ritmisch laten draaien. Stuitert ook wel lekker.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="53"/>
         <source>A soccer ball is large and bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Een voetbal is groot en veerkrachtig.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="61"/>
         <source>A pétanque ball is made of metal and is quite heavy.</source>
-        <translation type="unfinished"/>
+        <translation>Een petanque bal is van staal en best zwaar.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="44"/>
@@ -575,77 +576,77 @@ Klik op de post-it briefjes voor hulp.
     <message>
         <location filename="../src/view/GameControls.ui" line="32"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulier</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="92"/>
         <source>Reset</source>
-        <translation type="unfinished"/>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="133"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pauze</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="152"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Afspelen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="171"/>
         <source>FF</source>
-        <translation type="unfinished"/>
+        <translation>FF</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Versneld</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="84"/>
         <source>f</source>
         <extracomment>translators: 'f' is for (fast) forward</extracomment>
-        <translation type="unfinished"/>
+        <translation>f</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="88"/>
         <source>P&amp;ause</source>
-        <translation type="unfinished"/>
+        <translation>P&amp;auze</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="92"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Afspelen</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="96"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Resetten</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="98"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
-        <translation type="unfinished"/>
+        <translation>r</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="102"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Shift+f</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="109"/>
         <source>Shift+s</source>
         <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Shift+s</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="150"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation type="unfinished"/>
+        <translation>Spatie</translation>
     </message>
 </context>
 <context>
@@ -1216,7 +1217,7 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="93"/>
         <source>Welcome to The Butterfly Effect!</source>
-        <translation type="unfinished"/>
+        <translation>Welkom bij het Vlindereffect</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
@@ -1254,17 +1255,18 @@ Dit kan echter wel gevolgen heben voor de speelbaarheid!</translation>
         <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>You have unsaved changes,
 really reload Level from disk?</source>
-        <translation type="unfinished"/>
+        <translation>Je hebt niet opgeslagen wijzigingen, 
+wil je het level echt opnieuw ophalen van schijf?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="276"/>
         <source>Level has no name - could not be reloaded. Please use &quot;Save As...&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Level heeft geen naam, kon niet opnieuw worden geladen. Gebruik alsjeblieft &quot;opslaan als...&quot;.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="291"/>
         <source>Level has no name - could not be saved. Please use &quot;Save As...&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Level heeft geen naam, kon niet worden opgeslagen. Gebruik alsjeblieft &quot;opslaan als...&quot;.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="296"/>
@@ -1286,13 +1288,13 @@ really reload Level from disk?</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="347"/>
         <source>&lt;b&gt;The Butterfly Effect - Suggestions&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you have great ideas for new features in the game, please go to our shiny forums at: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;to share your ideas with the world.</source>
-        <translation type="unfinished"/>
+        <translation>&lt;b&gt;The Butterfly Effect - Suggesties&lt;/b&gt;&lt;br&gt;&lt;br&gt;Heb je goede ideeen voor nieuwe functies? Ga dan naar onze forums op: &lt;br&gt;&lt;a href=&quot;http://the-butterfly-effect.org/&quot;&gt;http://the-butterfly-effect.org/&lt;/a&gt;&lt;br&gt;en deel je ideeen met de wereld.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="374"/>
         <source>Coordinates: (%1,%2)</source>
         <extracomment>Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator</extracomment>
-        <translation type="unfinished"/>
+        <translation>Coordinaten: (%1,%2)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="381"/>
@@ -1301,7 +1303,8 @@ You have unsaved undo actions.
 You lose your actions when switching languages.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Je hebt niet opgeslagen undo acties.
+Deze zullen verloren gaan als je van taal veranderd.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="384"/>
@@ -1310,7 +1313,10 @@ You lose your actions when switching languages.
 Be careful: not all languages are 100% complete.
 %2Are you sure?</source>
         <extracomment>translators: the %1 contains the language string, the %2 may contain a message about unsaved actions.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Je verzocht om een wijziging naar taal:
+%1
+Pas op, niet alle talen zijn 100% compleet.
+%2weet je dit zeker?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="415"/>
@@ -1419,24 +1425,27 @@ Be careful: not all languages are 100% complete.
         <location filename="../src/model/BalloonCactus.cpp" line="59"/>
         <source>A helium balloon. Lighter than air, it moves up.
 It will pop when it hits sharp objects or gets squashed.</source>
-        <translation type="unfinished"/>
+        <translation>Een helium ballon. Lichter dan lucht, hij stijgt op.
+Hij zal knallen bij contact met een scherp voorwerp of als hij geplet wordt. </translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="267"/>
         <source>Cactus (Cactacea Bulbuous Stingus):
 A cactus has sharp spines.</source>
-        <translation type="unfinished"/>
+        <translation>Cactus (Cactacea Bulbuous Steculosa):
+Een cactus heeft scherpe stekels!</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="345"/>
         <source>A wooden board attached to the scene.
 It has many sharp nails on one side.</source>
-        <translation type="unfinished"/>
+        <translation>Een houten plank vastgemaakt aan het decor.
+Aan één kant vol met scherpe spijkers.</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="415"/>
         <source>A rotating disc with sharp teeth.</source>
-        <translation type="unfinished"/>
+        <translation>Een draaiende schijf met scherpe tanden.</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="266"/>
@@ -1468,7 +1477,9 @@ It has many sharp nails on one side.</source>
         <source>This is a prepared cola bottle with a mint in it.
 If you shake it just a little bit, a reaction starts,
 which makes the bottle spit a long stream of cola.</source>
-        <translation type="unfinished"/>
+        <translation>Dit is een geprepareerde Colafles met een pepermuntje er in.
+Als je hem een klein beetje schudt start de reactie.
+Dan spuit de Cola met kracht uit de fles.</translation>
     </message>
     <message>
         <location filename="../src/model/Glue.h" line="57"/>
@@ -1519,7 +1530,7 @@ which makes the bottle spit a long stream of cola.</source>
         <location filename="../src/model/Spring.cpp" line="77"/>
         <source>A loose spring. When a force is applied to it,
 it retracts and expands.</source>
-        <translation type="unfinished"/>
+        <translation>Een losse veer. Als je er een kracht op uitoefent zal hij inveren en weer terug springen.</translation>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="212"/>
@@ -1551,25 +1562,27 @@ it retracts and expands.</source>
         <source>This is a detonator box attached to a cell phone.
 It triggers dynamite remotely if the handle is pushed.
 </source>
-        <translation type="unfinished"/>
+        <translation>Dit is en ontstekerkastje verbonden met een mobieltje.
+Als het handvat wordt ingedrukt kun je hiermee op afstand dynamiet laten ontploffen.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="159"/>
         <source>This one doesn't make any calls yet,
 select a phone number!</source>
-        <translation type="unfinished"/>
+        <translation>Deze maakt nog geen verbinding,
+Selecteer eerst een telefoonnummer.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="162"/>
         <source>This one calls %1.</source>
         <extracomment>Translators: The %1 will be replaced by a phone number.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Deze belt %1.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="234"/>
         <source>This is the handle of a detonator box.
 Throw a heavy object on it to push it.</source>
-        <translation type="unfinished"/>
+        <translation>Dit is het handvat van een ontstekerkastje. Laat er iets zwaars op vallen om hem in te drukken.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="431"/>
@@ -1577,7 +1590,8 @@ Throw a heavy object on it to push it.</source>
 This cell phone doesn&apos;t take any calls, however.</source>
         <extracomment>Translators: “
 ” means “newline”, keep it.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Het is dynamiet verbonden met een mobieltje.
+Dat mobieltje is echter niet bereikbaar.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="434"/>
@@ -1586,7 +1600,8 @@ remotely triggered by a detonator box.
 Dial %1 to make the dynamite go boom.</source>
         <extracomment>Translators: “
 ” means “newline”, keep it. “%1” will be replaced by the phone number</extracomment>
-        <translation type="unfinished"/>
+        <translation>Het is dynamiet verbonden met een mobieltje, klaar om van afstand geactiveerd te worden.
+ Kies %1 voor BOEM!</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="233"/>
@@ -1652,7 +1667,7 @@ Inleesfout in regel %1, kolom %2:
 it collides with something heavy. It can push
 light objects around. It also likes to slide down
 slopes but can&apos;t take much abuse.</source>
-        <translation type="unfinished"/>
+        <translation>Een pinguïn loopt naar links of naar rechts en draait om als hij niet verder kan. Hij kan licht voorwerpen verschuiven. Hij vind het ook heerlijk om van hellingen af te glijden maar hij kan niet echt tegen een stootje.</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.cpp" line="45"/>
@@ -1660,19 +1675,23 @@ slopes but can&apos;t take much abuse.</source>
 It slowly flies to the right and is attracted
 to flowers. It is very fragile.
 You have to keep it safe at all costs!</source>
-        <translation type="unfinished"/>
+        <translation>Vlinder (Flappus Chaoticus Frgilius):
+Hij vliegt langzaam naar rechts en wordt aangetrokken door bloemen. Uiterst breekbaar.
+Dient koste wat kost beschermd te worden.</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="52"/>
         <source>Someone left notes all over the place.
 You know, those yellow 3×3 inch pieces of paper.
 You might want to read them—it may help!</source>
-        <translation type="unfinished"/>
+        <translation>Iemand heeft allemaal gele velletjes achtergelaten.
+Met notities erop.
+Misschien wil je ze lezen - het zou kunnen helpen!</translation>
     </message>
     <message>
         <location filename="../src/control/EditPropertyUndoCommand.cpp" line="27"/>
         <source>EditProperty</source>
-        <translation type="unfinished"/>
+        <translation>WijzigEigenschap</translation>
     </message>
 </context>
 <context>
@@ -1756,7 +1775,7 @@ You might want to read them—it may help!</source>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
         <source>%1x %2</source>
         <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1x %2</translation>
     </message>
 </context>
 <context>

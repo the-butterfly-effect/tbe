@@ -1,129 +1,133 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr" version="2.1">
 <context>
     <name>AbstractPolyObjectFactory</name>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="47"/>
         <source>Bowling Pin</source>
-        <translation>Birillo</translation>
+        <translation>Bowling Kukası</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="60"/>
         <source>Skyhook</source>
-        <translation type="unfinished"/>
+        <translation>Gök kanca</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="61"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation type="unfinished"/>
+        <translation>Gök kanca havada asılıdır. Üzerine oldukça fazla ağırlık asabilirsiniz!</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="70"/>
         <source>Weight</source>
-        <translation>Peso</translation>
+        <translation>Ağırlık</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="48"/>
         <source>Bowling pins are meant to be run over—most
 people prefer to do that using a bowling ball.</source>
-        <translation type="unfinished"/>
+        <translation>Bowling kukalarının üzerinden geçilir. Çoğu 
+kişi bunu Bowling topuyla yapmayı yeğler.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="71"/>
         <source>A serious mass. It is very heavy.</source>
-        <translation type="unfinished"/>
+        <translation>Ciddi bir kütle. Çok ağır.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="78"/>
         <source>Left Ramp</source>
-        <translation>Rampa da sinistra</translation>
+        <translation>Sola Eğimli Yüzey</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="79"/>
         <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
-        <translation>Questa è una rampa. Il lato sinistro è più basso rispetto a quello destro,
-quindi gli oggetti scorreranno verso sinistra.</translation>
+        <translation>Alçak tarafı solda olan ve sağa doğru yükselen eğimli yüzey. Üzerindeki nesneler sola kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="86"/>
         <source>Right Ramp</source>
-        <translation>Rampa da destra</translation>
+        <translation>Sağa Eğimli Yüzey</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="87"/>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation>Questa è una rampa. Il lato destro è più basso rispetto a quello sinitro,
-quindi gli oggetti scorreranno verso destra.</translation>
+        <translation>Alçak tarafı sağda olan ve sola doğru yükselen eğimli yüzey. Üzerindeki nesneler sağa kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="94"/>
         <source>Left Birch Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Sol Huş Ağacı Takozu</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="95"/>
         <source>This is a movable birch wedge.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"/>
+        <translation>Bu oynatılabilir bir huş ağacı takozu.
+Sol sağdan daha alçaktır, böylece nesneler sola doğru kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="102"/>
         <source>Right Birch Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Sağ Huş Ağacı Takozu</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="103"/>
         <source>This is a movable birch wedge.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"/>
+        <translation>Bu oynatılabilir bir huş ağacı takozu.
+Sol sağdan daha yüksektir, böylece nesneler sağa doğru kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="110"/>
         <source>Left Fixed Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Sola Sabitlenmiş Takoz</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="111"/>
         <source>This is an immovable wedge.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"/>
+        <translation>Bu oynatılamaz bir takoz.
+Sol sağdan daha alçaktır, böylece nesneler sola kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="118"/>
         <source>Right Fixed Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Sağa Sabitlenmiş Takoz</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="119"/>
         <source>This is an immovable wedge.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"/>
+        <translation>Bu oynatılamaz bir takoz.
+Sol sağdan daha yüksektir, böylece nesneler sağa kayar.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="129"/>
         <location filename="../src/model/PolyObject.cpp" line="143"/>
         <source>This quarter arc is attached to the scene.
 It can&apos;t be moved, penetrated or destroyed.</source>
-        <translation type="unfinished"/>
+        <translation>Bu çeyrek yay sahneye eklenmiş.
+Oynatılamaz, delinemez ya da yok edilemez.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="159"/>
         <source>Toy Chest</source>
-        <translation type="unfinished"/>
+        <translation>Oyuncak Sandığı</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="160"/>
         <source>Most people use a chest to keep things.</source>
-        <translation type="unfinished"/>
+        <translation>Pek çok insan nesneleri saklamak için bir sandık kullanır.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="170"/>
         <source>Cardboard Box</source>
-        <translation type="unfinished"/>
+        <translation>Karton Kutu</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="171"/>
         <source>Cardboard boxes are used to carry small and light things around.</source>
-        <translation type="unfinished"/>
+        <translation>Karton kutu küçük ve hafif şeyleri taşımak için kullanılır.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="180"/>
@@ -138,22 +142,22 @@ It can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="190"/>
         <source>Rotating Bar</source>
-        <translation type="unfinished"/>
+        <translation>Dönen Çubuk</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="191"/>
         <source>This wooden bar rotates around its center.</source>
-        <translation type="unfinished"/>
+        <translation>Merkezi etrafında dönen tahta çubuk.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="128"/>
         <source>Quarter Arc Small</source>
-        <translation type="unfinished"/>
+        <translation>Küçük Çeyrek Yay</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="142"/>
         <source>Quarter Arc Large</source>
-        <translation type="unfinished"/>
+        <translation>Büyük Çeyrek Yay</translation>
     </message>
 </context>
 <context>
@@ -161,7 +165,7 @@ It can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="53"/>
         <source>Wooden Bar</source>
-        <translation>Barra di legno</translation>
+        <translation>Tahta Çubuk</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="54"/>
@@ -172,34 +176,36 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="58"/>
         <source>Domino (Red)</source>
-        <translation>Domino (Rosso)</translation>
+        <translation>Domino (Kırmızı)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="59"/>
         <source>The famous red plastic domino stone.</source>
-        <translation type="unfinished"/>
+        <translation>Meşhur kırmızı plastik domino taşı.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="64"/>
         <source>The famous blue plastic domino stone.</source>
-        <translation type="unfinished"/>
+        <translation>Meşhur mavi plastik domino taşı.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="69"/>
         <source>The famous green plastic domino stone.</source>
-        <translation type="unfinished"/>
+        <translation>Meşhur yeşil plastik domino taşı.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="74"/>
         <source>This is the floor. It is attached to the scene
 and can&apos;t be moved, penetrated or destroyed.</source>
-        <translation type="unfinished"/>
+        <translation>Zemin sahnenin bir parçasıdır ve taşınamaz,
+içine geçilemez ya da silinemez.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="81"/>
         <source>This is a steel I-beam. Steel I-beams are large and heavy
 and useful to build bridges and other constructions.</source>
-        <translation type="unfinished"/>
+        <translation>I biçiminde çelik destek. Uzun ve ağırdır. 
+Köprü ve diğer inşaat işlemlerinde kullanılır.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="92"/>
@@ -212,49 +218,51 @@ to some of the heavier objects.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="97"/>
         <source>Cola Crate</source>
-        <translation type="unfinished"/>
+        <translation>Kola Kolisi</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="98"/>
         <source>A crate of 12 filled cola bottles.
 It&apos;s very heavy and hard to push around.</source>
-        <translation type="unfinished"/>
+        <translation>12 dolu kola kutusu bulunan koli.
+Çok ağırdır ve itmek çok zordur.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
         <source>Domino (Blue)</source>
-        <translation>Domino (Blu)</translation>
+        <translation>Domino (Mavi)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="68"/>
         <source>Domino (Green)</source>
-        <translation>Domino (Verde)</translation>
+        <translation>Domino (Yeşil)</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="73"/>
         <source>Floor</source>
-        <translation>Pavimento</translation>
+        <translation>Zemin</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
         <source>Steel I-Beam</source>
-        <translation type="unfinished"/>
+        <translation>I Biçiminde Çelik Destek</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="85"/>
         <source>Wall</source>
-        <translation>Muro</translation>
+        <translation>Duvar</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="86"/>
         <source>This is a brick wall. It is attached to the scene
 and can&apos;t be moved, penetrated or destroyed.</source>
-        <translation type="unfinished"/>
+        <translation>Tuğla duvar sahnenin bir parçasıdır ve taşınamaz,
+içine geçilemez ya da silinemez.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="91"/>
         <source>Hammer</source>
-        <translation>Martello</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -262,12 +270,12 @@ and can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="14"/>
         <source>Choose your game!</source>
-        <translation>Scegli il tuo gioco!</translation>
+        <translation>Oyununuzu seçin!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="103"/>
         <source>Choose your next level</source>
-        <translation>Scegli il prossimo livelli</translation>
+        <translation>Geçmek istediğiniz düzeyi seçin</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="128"/>
@@ -275,37 +283,39 @@ and can&apos;t be moved, penetrated or destroyed.</source>
 
 Double-click for the post-it notes for help.
 </source>
-        <translation type="unfinished"/>
+        <translation>Oynamak istediğiniz düzeyi seçin.
+
+Yardım almak için sarı notlara çift tıklayın.</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="148"/>
         <source>#</source>
-        <translation>#</translation>
+        <translation>No</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="153"/>
         <source>Level Title</source>
-        <translation>Titolo del livello</translation>
+        <translation>Düzey Başlığı</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="166"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation>İptal</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="189"/>
         <source>Go!</source>
-        <translation>Vai!</translation>
+        <translation>Başla!</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="92"/>
         <source>done</source>
-        <translation>fatto</translation>
+        <translation>geçildi</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="95"/>
         <source>skipped</source>
-        <translation>saltato</translation>
+        <translation>atlandı</translation>
     </message>
 </context>
 <context>
@@ -313,27 +323,27 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="20"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="117"/>
         <source>Select phone to dial</source>
-        <translation type="unfinished"/>
+        <translation>Aranacak telefonu seçin</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="169"/>
         <source>Phone Number:</source>
-        <translation>Numero di telfono:</translation>
+        <translation>Telefon Numarası:</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="216"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Tamam</translation>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="226"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation>İptal</translation>
     </message>
 </context>
 <context>
@@ -341,7 +351,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/control/ChoosePhoneUndoCommand.cpp" line="24"/>
         <source>ChoosePhone</source>
-        <translation>ScegliTelefono</translation>
+        <translation>Telefonu Seçin</translation>
     </message>
 </context>
 <context>
@@ -349,52 +359,52 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="29"/>
         <source>Bowling Ball</source>
-        <translation>Palla da bowling</translation>
+        <translation>Bowling Topu</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
         <source>Your average bowling ball: heavy, round and willing to roll.</source>
-        <translation type="unfinished"/>
+        <translation>Sıradan bowling topu: ağırdır, yuvarlaktır ve yuvarlanmak ister.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="35"/>
         <source>Volleyball</source>
-        <translation>Pallavolo</translation>
+        <translation>Voleybol</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
         <source>A volleyball—you know: light, soft and very bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Bildiğin voleybol topu: hafiftir, yumuşaktır ve zıplar durur.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="45"/>
         <source>A tennis ball is small, fuzzy and bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Tenis topu küçüktür, oraya buraya belirsiz şekilde zıplar.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="53"/>
         <source>A soccer ball is large and bouncy.</source>
-        <translation type="unfinished"/>
+        <translation>Futbol topu büyüktür ve zıplar.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="61"/>
         <source>A pétanque ball is made of metal and is quite heavy.</source>
-        <translation type="unfinished"/>
+        <translation>Petank topu metalden yapılmıştır ve oldukça ağırdır.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="44"/>
         <source>Tennis Ball</source>
-        <translation>Palla da tennis</translation>
+        <translation>Tenis Topu</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="52"/>
         <source>Soccer Ball</source>
-        <translation>Palla da calcio</translation>
+        <translation>Futbol Topu</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
         <source>Pétanque Boule</source>
-        <translation type="unfinished"/>
+        <translation>Petank Topu</translation>
     </message>
 </context>
 <context>
@@ -402,7 +412,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialogo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="20"/>
@@ -412,62 +422,62 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="30"/>
         <source>Level Properties</source>
-        <translation>Proprietà del livello</translation>
+        <translation>Düzey Özellikleri</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="36"/>
         <source>Level width:</source>
-        <translation>Larghezza del livello:</translation>
+        <translation>Düzey genişliği:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="43"/>
         <source>width of the level in meters</source>
-        <translation>larghezza del livello in metri</translation>
+        <translation>Metre cinsinden düzeyin genişliği</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="68"/>
         <source>Level height:</source>
-        <translation>Altezza del livello:</translation>
+        <translation>Düzey yüksekliği:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="75"/>
         <source>Height of the level in meters</source>
-        <translation>Altezza del livello in metri</translation>
+        <translation>Metre cinsinden düzeyin yüksekliği</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="103"/>
         <source>Background Properties</source>
-        <translation type="unfinished"/>
+        <translation>Artalan Özellikleri</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="111"/>
         <source>Image name:</source>
-        <translation>Nome dell&apos;immagine:</translation>
+        <translation>Görsel adı:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="121"/>
         <source>Specify the image name here. Omit the extension. Any image within the level directory or the images directory will be found.</source>
-        <translation type="unfinished"/>
+        <translation>Görsel adını yazın. Uzantısını yazmayın. Düzey klasörü ya da images klasöründeki tüm görseller bulunur.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="132"/>
         <source>Image repeat width</source>
-        <translation type="unfinished"/>
+        <translation>Görsel yineleme genişliği</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="142"/>
         <source>The distance in which the image will repeat itself. use zero for no repeat - the image will be stretched to fit the level.</source>
-        <translation type="unfinished"/>
+        <translation>Görselin yineleneceği genişlik. Yineleme olmaması için sıfır yazın. Bu durumda görsel düzeyi dolduracak şekilde genişletilir.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="155"/>
         <source>height</source>
-        <translation>altezza</translation>
+        <translation>yükseklik</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="165"/>
         <source>The distance in which the image will repeat itself vertically. use zero for no repeat - the image will be stretched to fit the level.</source>
-        <translation type="unfinished"/>
+        <translation>Görselin yineleneceği yükseklik. Yineleme olmaması için sıfır yazın. Bu durumda görsel düzeyi dolduracak şekilde genişletilir.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="180"/>
@@ -487,18 +497,18 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="225"/>
         <source>new line</source>
-        <translation>nuova linea</translation>
+        <translation>satır ekle</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="232"/>
         <source>delete line</source>
-        <translation>cancella linea</translation>
+        <translation>satırı sil</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.cpp" line="80"/>
         <source>VPos;Color;Transparency</source>
         <extracomment>translators: keep the semicolons - they separate the column descriptions</extracomment>
-        <translation type="unfinished"/>
+        <translation>YatayKonum;Renk;Saydamlık</translation>
     </message>
 </context>
 <context>
@@ -506,22 +516,22 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="20"/>
         <source>Edit Object</source>
-        <translation type="unfinished"/>
+        <translation>Nesneyi Düzenle</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="32"/>
         <source>Basics for: %1</source>
-        <translation type="unfinished"/>
+        <translation>%1 için temel özellikler</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="40"/>
         <source>Object ID:</source>
-        <translation>ID oggetto:</translation>
+        <translation>Nesne Kodu:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="86"/>
         <source>Center coord: (</source>
-        <translation type="unfinished"/>
+        <translation>Merkez koordinatı: (</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="103"/>
@@ -536,32 +546,32 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="131"/>
         <source>Angle:</source>
-        <translation>Angolo:</translation>
+        <translation>Açı:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="154"/>
         <source>Radians</source>
-        <translation>Radianti</translation>
+        <translation>Radyan</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="165"/>
         <source>Width:</source>
-        <translation>Larghezza:</translation>
+        <translation>Genişlik:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="182"/>
         <source>   Height:</source>
-        <translation>Altezza:</translation>
+        <translation>Yükseklik:</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="216"/>
         <source>Basic Properties for &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; için Temel Özellikler</translation>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="234"/>
         <source>Value</source>
-        <translation>Valore</translation>
+        <translation>Değer</translation>
     </message>
 </context>
 <context>
@@ -569,32 +579,32 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameControls.ui" line="32"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="92"/>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="133"/>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="152"/>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="171"/>
         <source>FF</source>
-        <translation>FF</translation>
+        <translation>Hızlı</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>İ&amp;leri</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="84"/>
@@ -605,23 +615,23 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameControls.cpp" line="88"/>
         <source>P&amp;ause</source>
-        <translation>P&amp;ausa</translation>
+        <translation>&amp;Duraklat</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="92"/>
         <source>&amp;Play</source>
-        <translation>&amp;Play</translation>
+        <translation>&amp;Oynat</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="96"/>
         <source>&amp;Reset</source>
-        <translation>&amp;Reset</translation>
+        <translation>&amp;Sıfırla</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="98"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
-        <translation>r</translation>
+        <translation>s</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="102"/>
@@ -639,7 +649,7 @@ Double-click for the post-it notes for help.
         <location filename="../src/view/GameControls.cpp" line="150"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation>Barra spaziatrice</translation>
+        <translation>Boşluk</translation>
     </message>
 </context>
 <context>
@@ -647,12 +657,12 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameResources.ui" line="14"/>
         <source>Toolbox</source>
-        <translation type="unfinished"/>
+        <translation>Araç Çubuğu</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="66"/>
         <source>This is the level title</source>
-        <translation>Questo è il nome del livello</translation>
+        <translation>Düzey başlığı</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="108"/>
@@ -666,38 +676,42 @@ Double-click for the post-it notes for help.
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="159"/>
         <source>By: The Author</source>
-        <translation>Di: L&apos;autore</translation>
+        <translation>Geliştiren: Yazar</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="194"/>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="213"/>
         <source>Clicking on this button will make the dialog go up.</source>
-        <translation type="unfinished"/>
+        <translation>Bu düğmeye tıklandığında pencere açılır.</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="219"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Tamam</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.cpp" line="78"/>
         <source>Undo all your work and go back to a clean start of this level?</source>
-        <translation type="unfinished"/>
+        <translation>Tüm çalışmalarınızı geri alıp bu düzeye baştan başlamak ister misiniz?</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.cpp" line="94"/>
         <source>Level by: &lt;b&gt;%1&lt;/b&gt;</source>
         <extracomment>translators: please do not try to translate the &lt;b&gt;%1&lt;/b&gt; part!</extracomment>
-        <translation>Livello di: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Düzeyi hazırlayan: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -705,7 +719,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GoalEditor.ui" line="14"/>
         <source>Goal and Fail Editor </source>
-        <translation type="unfinished"/>
+        <translation>Amaç ve Kayıp Düzenleyici</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="20"/>
@@ -715,7 +729,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;Bir düzey yalnız &lt;span style=&quot; font-style:italic;&quot;&gt;tüm&lt;/span&gt; amaçlara ulaşıldığında kazanılır.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Bir nesne kodunun kırmızı olması bu kodun bulunamadığı anlamına gelir.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="43"/>
@@ -736,25 +755,30 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;KAYIPLAR&lt;/span&gt;&lt;br /&gt;Bir düzey yalnız &lt;span style=&quot; font-style:italic;&quot;&gt;hiç bir&lt;/span&gt; kayıp koşulu gerçeklememiş ise kazanılabilir.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="89"/>
         <source>Not all goals/fails were OK
 Nothing was changed yet, please fix.</source>
-        <translation type="unfinished"/>
+        <translation>Tüm amaç ya da kayıplar tamam değil
+Henüz bir şey değişmedi, lütfen düzeltin.</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="156"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
         <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 amacını silmek istediğinize emin misiniz:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="177"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
         <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1 kaybını silmek istediğinize emin misiniz:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="191"/>
@@ -762,18 +786,18 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/view/GoalEditor.cpp" line="204"/>
         <location filename="../src/view/GoalEditor.cpp" line="207"/>
         <source>no object</source>
-        <translation>nessun oggetto</translation>
+        <translation>henüz bir nesne yok</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="277"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
         <extracomment>translators: Cond. is short for Condition - otherwise it doesn't fit</extracomment>
-        <translation type="unfinished"/>
+        <translation>Değişken;Nesne;Koşul;Değer;Nesne2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.h" line="48"/>
         <source>change</source>
-        <translation type="unfinished"/>
+        <translation>değiştir</translation>
     </message>
 </context>
 <context>
@@ -782,12 +806,12 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/loadsave/Level.cpp" line="158"/>
         <location filename="../src/loadsave/Level.cpp" line="179"/>
         <source>Cannot read file &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; dosyası okunamadı</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="185"/>
         <source>Cannot parse file - not valid XML?</source>
-        <translation type="unfinished"/>
+        <translation>Dosya işlenemedi. XML biçiminde değil mi?</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="195"/>
@@ -798,50 +822,50 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/loadsave/Level.cpp" line="299"/>
         <location filename="../src/loadsave/Level.cpp" line="357"/>
         <source>Parsing &apos;%1&apos; section failed: </source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; bölümü işlenemedi:</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="240"/>
         <source>scene width or height unspecified</source>
-        <translation type="unfinished"/>
+        <translation>sahne genişliği ya da yüksekliği belirtilmemiş</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="255"/>
         <source>Parsing &apos;%1&apos; section failed: %2</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; bölümü işlenemedi: %2</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="279"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;</source>
-        <translation type="unfinished"/>
+        <translation>bir &lt;%1&gt; bölümü beklenirken &lt;%2&gt; ile karşılaşıldı</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="286"/>
         <location filename="../src/loadsave/Level.cpp" line="331"/>
         <location filename="../src/loadsave/Level.cpp" line="391"/>
         <source>createObjectFromDom failed</source>
-        <translation type="unfinished"/>
+        <translation>createObjectFromDom tamamlanamadı</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="303"/>
         <source>no &lt;%1&gt; section found!</source>
-        <translation type="unfinished"/>
+        <translation>&lt;%1&gt; bölümü bulunamadı!</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="323"/>
         <location filename="../src/loadsave/Level.cpp" line="383"/>
         <source>expected a &lt;%1&gt; section, got &lt;%2&gt;. </source>
-        <translation type="unfinished"/>
+        <translation>bir &lt;%1&gt; bölümü beklenirken &lt;%2&gt; ile karşılaşıldı.</translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="337"/>
         <source>&lt;%1&gt; properties could not be parsed. </source>
-        <translation type="unfinished"/>
+        <translation>&lt;%1&gt; özellikleri işlenemedi. </translation>
     </message>
     <message>
         <location filename="../src/loadsave/Level.cpp" line="507"/>
         <source>Cannot write file &apos;%1&apos;: %2.</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; dosyasına yazılamadı: %2.</translation>
     </message>
 </context>
 <context>
@@ -849,72 +873,72 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="36"/>
         <source>LevelCreator</source>
-        <translation type="unfinished"/>
+        <translation>DüzeyOluşturucu</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="61"/>
         <source>&amp;Clone object</source>
-        <translation>&amp;Clone oggetto</translation>
+        <translation>&amp;Nesne kopyala</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="67"/>
         <source>&amp;Collision OK</source>
-        <translation>&amp;Collisione OK</translation>
+        <translation>Çakışma &amp;Olabilir</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="75"/>
         <source>&amp;Prevent Collision</source>
-        <translation type="unfinished"/>
+        <translation>Çakışmayı &amp;Engelle</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="86"/>
         <source>&amp;Insert</source>
-        <translation>&amp;Inserisci</translation>
+        <translation>&amp;Ekle</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="102"/>
         <source>E&amp;ditors</source>
-        <translation>E&amp;ditor</translation>
+        <translation>&amp;Düzenleyiciler</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="105"/>
         <source>&amp;Goal Editor...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Amaç Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="109"/>
         <source>&amp;Size &amp;&amp; Background Editor...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Boyut ve Artalan Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="113"/>
         <source>&amp;Name &amp;&amp; Description Editor...</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;d ve Açıklama Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="122"/>
         <source>&amp;View</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Görünüm</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="124"/>
         <source>&amp;Draw Debug</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hata Ayıklama Çizimi</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="131"/>
         <source>&amp;Draw Normal</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Normal Çizim</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="154"/>
         <source>Object Properties</source>
-        <translation type="unfinished"/>
+        <translation>Nesne Özellikleri</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="155"/>
         <source>Toolbox</source>
-        <translation type="unfinished"/>
+        <translation>Araç Çubuğu</translation>
     </message>
 </context>
 <context>
@@ -922,7 +946,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation type="unfinished"/>
+        <translation>AraçÇubuğuİpUcu</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="137"/>
@@ -934,7 +958,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="277"/>
         <source>This is a dummy string to test the widget size</source>
-        <translation type="unfinished"/>
+        <translation>Bu metin araç boyutunu görmek için kullanılır</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="124"/>
@@ -955,27 +979,27 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="66"/>
         <source>You can resize the object in all directions.</source>
-        <translation type="unfinished"/>
+        <translation>Nesnenin boyutunu tüm yönlere doğru değiştirebilirsiniz.</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="70"/>
         <source>You can resize the object horizontally.</source>
-        <translation type="unfinished"/>
+        <translation>Nesnenin boyutunu yatay olarak değiştirebilirsiniz.</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="72"/>
         <source>You can resize the object vertically.</source>
-        <translation type="unfinished"/>
+        <translation>Nesnenin boyutunu dikey olarak değiştirebilirsiniz.</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="75"/>
         <source>You can rotate the object.</source>
-        <translation type="unfinished"/>
+        <translation>Nesneyi döndürebilirsiniz.</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="77"/>
         <source>You can set the phone number.</source>
-        <translation type="unfinished"/>
+        <translation>Telefon numarasını yazabilirsiniz.</translation>
     </message>
 </context>
 <context>
@@ -983,42 +1007,42 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="14"/>
         <source>The Butterfly Effect</source>
-        <translation>Effetto farfalla</translation>
+        <translation>Kelebek Etkisi</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="175"/>
         <source>&amp;File</source>
-        <translation>&amp;File</translation>
+        <translation>&amp;Dosya</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="192"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"/>
+        <translation>Dü&amp;zenle</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="197"/>
         <source>&amp;Controls</source>
-        <translation>&amp;Controlli</translation>
+        <translation>D&amp;enetimler</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="202"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Yardım</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="206"/>
         <source>&amp;Contribute</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Katkıda Bulunun</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="236"/>
         <source>&amp;Open Level...</source>
-        <translation type="unfinished"/>
+        <translation>Düzey &amp;Aç...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="252"/>
         <source>O&amp;pen File...</source>
-        <translation type="unfinished"/>
+        <translation>D&amp;osya Aç...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="239"/>
@@ -1028,87 +1052,87 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="123"/>
         <source>Shows the level information again</source>
-        <translation type="unfinished"/>
+        <translation>Düzey bilgileri yeniden görüntülensin</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="126"/>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Bilgiler</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="145"/>
         <source>Choose a different level to play</source>
-        <translation type="unfinished"/>
+        <translation>Oynamak için başka bir düzey seçin</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="148"/>
         <source>Eject</source>
-        <translation type="unfinished"/>
+        <translation>Çıkart</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Diller</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="260"/>
         <source>S&amp;kip Level</source>
-        <translation type="unfinished"/>
+        <translation>Düzeyi A&amp;tla</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="270"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"/>
+        <translation>Çı&amp;k</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="275"/>
         <source>Libraries...</source>
-        <translation>Librerie...</translation>
+        <translation>Kitaplıklar...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="280"/>
         <source>&amp;Keyboard Shortcuts...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tuştakımı Kısayolları...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="290"/>
         <source>&amp;About...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hakkında</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="295"/>
         <source>&amp;Suggestions...</source>
-        <translation type="unfinished"/>
+        <translation>Ö&amp;neriler</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="305"/>
         <source>&amp;Bug Reports...</source>
-        <translation type="unfinished"/>
+        <translation>Hata &amp;Bildirimleri</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="310"/>
         <source>New Level Ideas...</source>
-        <translation type="unfinished"/>
+        <translation>Yeni Düzey Fikirleri...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="320"/>
         <source>&amp;Switch to Level Editor</source>
-        <translation type="unfinished"/>
+        <translation>Düzey Düzenleyiciye &amp;Geç</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="323"/>
         <source>Switch</source>
-        <translation type="unfinished"/>
+        <translation>Geç</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="336"/>
         <source>&amp;Save</source>
-        <translation>&amp;Salva</translation>
+        <translation>&amp;Kaydet</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="339"/>
         <source>Save current level under its current name</source>
-        <translation type="unfinished"/>
+        <translation>Geçerli düzeyi geçerli ad ile kaydet</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="342"/>
@@ -1118,17 +1142,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="358"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Farklı Kaydet...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="361"/>
         <source>Save level under a new name</source>
-        <translation type="unfinished"/>
+        <translation>Geçerli düzeyi farklı bir ad ile kaydet</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="374"/>
         <source>New Level...</source>
-        <translation type="unfinished"/>
+        <translation>Yeni Düzey...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="377"/>
@@ -1138,12 +1162,12 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="393"/>
         <source>&amp;Reload Level</source>
-        <translation type="unfinished"/>
+        <translation>Düzeyi &amp;Yeniden Yükle</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="396"/>
         <source>Reload the current level from disk</source>
-        <translation type="unfinished"/>
+        <translation>Geçerli düzeyi diskten yeniden yükler</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="399"/>
@@ -1153,17 +1177,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="425"/>
         <source>&amp;Size &amp;&amp; Backgrounds...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Boyut ve Artalanlar...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="440"/>
         <source>&amp;Name &amp;&amp; Description...</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;d ve Açıklama...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="443"/>
         <source>Name &amp; Description Editor</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;d ve Açıklama Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="113"/>
@@ -1220,23 +1244,24 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>Open level</source>
-        <translation type="unfinished"/>
+        <translation>Düzey aç</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>TBE levels (*.xml)</source>
-        <translation type="unfinished"/>
+        <translation>TBE düzeyleri (*.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="262"/>
         <source>really?</source>
-        <translation>sei sicuro?</translation>
+        <translation>gerçekten mi?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>You have unsaved changes,
 really reload Level from disk?</source>
-        <translation type="unfinished"/>
+        <translation>Kaydedilmemiş değişiklikler var,
+düzey diskten yeniden yüklensin mi?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="276"/>
@@ -1296,17 +1321,17 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/view/MainWindow.ui" line="415"/>
         <source>&amp;Goal Editor...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Amaç Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="430"/>
         <source>&amp;Object Editor...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nesne Düzenleyici...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="459"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Geri Al</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="461"/>
@@ -1316,7 +1341,7 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/view/MainWindow.cpp" line="463"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Yinele</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="466"/>
@@ -1334,57 +1359,57 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/control/DeleteUndoCommand.cpp" line="32"/>
         <source>Remove</source>
-        <translation>Rimuovi</translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <location filename="../src/control/InsertUndoCommand.h" line="35"/>
         <source>Insert</source>
-        <translation>Inserisci</translation>
+        <translation>Ekle</translation>
     </message>
     <message>
         <location filename="../src/control/MoveUndoCommand.cpp" line="29"/>
         <source>Move</source>
-        <translation>Sposta</translation>
+        <translation>Taşı</translation>
     </message>
     <message>
         <location filename="../src/control/ResizeUndoCommand.cpp" line="29"/>
         <source>Resize</source>
-        <translation>Ridimensiona</translation>
+        <translation>Boyutunu Değiştir</translation>
     </message>
     <message>
         <location filename="../src/control/RotateUndoCommand.cpp" line="27"/>
         <source>Rotate</source>
-        <translation>Ruota</translation>
+        <translation>Döndür</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="180"/>
         <source>Position X</source>
-        <translation>Posizione X</translation>
+        <translation>X Konumu</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="181"/>
         <source>Position Y</source>
-        <translation>Posizione Y</translation>
+        <translation>Y Konumu</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="182"/>
         <source>Angle</source>
-        <translation>Angolo</translation>
+        <translation>Açı</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="183"/>
         <source>X/Y/Angle</source>
-        <translation>X/Y/Angolo</translation>
+        <translation>X/Y/Açı</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="184"/>
         <source>Distance</source>
-        <translation>Distanza</translation>
+        <translation>Aralık</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="185"/>
         <source>Object State</source>
-        <translation type="unfinished"/>
+        <translation>Nesne Durumu</translation>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="186"/>
@@ -1394,7 +1419,7 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="58"/>
         <source>Balloon</source>
-        <translation>Palloncino</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="59"/>
@@ -1422,7 +1447,7 @@ It has many sharp nails on one side.</source>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="266"/>
         <source>Cactus</source>
-        <translation>Cactus</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="344"/>
@@ -1437,7 +1462,7 @@ It has many sharp nails on one side.</source>
     <message>
         <location filename="../src/model/Butterfly.h" line="41"/>
         <source>Butterfly</source>
-        <translation>Farfalla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="49"/>
@@ -1454,7 +1479,7 @@ which makes the bottle spit a long stream of cola.</source>
     <message>
         <location filename="../src/model/Glue.h" line="57"/>
         <source>Glue</source>
-        <translation>Colla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Glue.cpp" line="47"/>
@@ -1484,17 +1509,17 @@ which makes the bottle spit a long stream of cola.</source>
     <message>
         <location filename="../src/model/PostIt.h" line="48"/>
         <source>PostIt</source>
-        <translation>PostIt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Scenery.h" line="45"/>
         <source>Scenery</source>
-        <translation>Scenario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="76"/>
         <source>Spring</source>
-        <translation>Primavera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="77"/>
@@ -1525,7 +1550,7 @@ it retracts and expands.</source>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="149"/>
         <source>(empty)</source>
-        <translation>(vuoto)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="155"/>
@@ -1577,22 +1602,22 @@ Dial %1 to make the dynamite go boom.</source>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="322"/>
         <source>Dynamite</source>
-        <translation>Dinamite</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/tbe_global.h.in" line="22"/>
         <source>The Butterfly Effect</source>
-        <translation>Effetto farfalla</translation>
+        <translation>The Butterfly Effect</translation>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="48"/>
         <source>critical error</source>
-        <translation>errore critico</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="71"/>
         <source>informational message</source>
-        <translation>messaggio informativo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="87"/>
@@ -1621,7 +1646,7 @@ Parse error at line %1, column %2:
     <message>
         <location filename="../src/model/Pingus.cpp" line="53"/>
         <source>Pingus</source>
-        <translation>Pingus</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="54"/>
@@ -1667,7 +1692,7 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="39"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="48"/>
@@ -1677,27 +1702,27 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="54"/>
         <source>Title:</source>
-        <translation>Titolo:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="71"/>
         <source>Author Name:</source>
-        <translation>Nome autore:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="88"/>
         <source>License:</source>
-        <translation>Licenza:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="95"/>
         <source>GPLv2</source>
-        <translation>GPLv2</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="102"/>
         <source>Date:</source>
-        <translation>Data:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="115"/>
@@ -1707,12 +1732,12 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="96"/>
         <source>Save Level</source>
-        <translation>Salva livello</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="96"/>
         <source>TBE levels (*.tbe *.xml)</source>
-        <translation>livello TBE (*.tbe *.xml)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="113"/>
@@ -1726,13 +1751,13 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="103"/>
         <source>(empty)</source>
-        <translation>(vuoto)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
         <source>%1x %2</source>
         <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
-        <translation>%1x %2</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1750,7 +1775,7 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/ViewPostIt.ui" line="122"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ViewPostIt.cpp" line="154"/>
@@ -1769,7 +1794,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/ViewWorld.cpp" line="117"/>
         <source>    %1 fps; %2 s</source>
-        <translation>    %1 fps; %2 s</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1777,7 +1802,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="75"/>
@@ -1802,7 +1827,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="158"/>
         <source>Go to next level</source>
-        <translation>Vai al prossimo livello</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="164"/>
@@ -1813,7 +1838,7 @@ Reset the simulation?</source>
         <location filename="../src/view/WinFailDialog.cpp" line="37"/>
         <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
-        <translation>Congratulazioni!</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="43"/>

@@ -218,13 +218,14 @@ to some of the heavier objects.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="97"/>
         <source>Cola Crate</source>
-        <translation type="unfinished"/>
+        <translation>Ящик с кока-колой</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="98"/>
         <source>A crate of 12 filled cola bottles.
 It&apos;s very heavy and hard to push around.</source>
-        <translation type="unfinished"/>
+        <translation>Ящик с дюжиной заполненных бутылок кока-колы.
+Он очень тяжёлый и трудно сдвигаемый.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
@@ -579,77 +580,77 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameControls.ui" line="32"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="92"/>
         <source>Reset</source>
-        <translation type="unfinished"/>
+        <translation>Сброс</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="133"/>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Пауза</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="152"/>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Играть</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="171"/>
         <source>FF</source>
-        <translation type="unfinished"/>
+        <translation>FF</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Вперёд</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="84"/>
         <source>f</source>
         <extracomment>translators: 'f' is for (fast) forward</extracomment>
-        <translation type="unfinished"/>
+        <translation>f</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="88"/>
         <source>P&amp;ause</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Пауза</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="92"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Играть</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="96"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Сброс</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="98"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
-        <translation type="unfinished"/>
+        <translation>r</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="102"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Shift+f</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="109"/>
         <source>Shift+s</source>
         <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
-        <translation type="unfinished"/>
+        <translation>Shift+s</translation>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="150"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation type="unfinished"/>
+        <translation>Пробел</translation>
     </message>
 </context>
 <context>
@@ -1224,7 +1225,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="93"/>
         <source>Welcome to The Butterfly Effect!</source>
-        <translation type="unfinished"/>
+        <translation>Добро пожаловать в Эффект бабочки!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
@@ -1301,7 +1302,7 @@ really reload Level from disk?</source>
         <location filename="../src/view/MainWindow.cpp" line="374"/>
         <source>Coordinates: (%1,%2)</source>
         <extracomment>Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator</extracomment>
-        <translation type="unfinished"/>
+        <translation>Координаты: (%1,%2)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="381"/>
@@ -1680,7 +1681,10 @@ Parse error at line %1, column %2:
 it collides with something heavy. It can push
 light objects around. It also likes to slide down
 slopes but can&apos;t take much abuse.</source>
-        <translation type="unfinished"/>
+        <translation>Пингвин ходит влево или вправо и поворачивается,
+когда он сталкивается с чем-то тяжёлым. Он может
+толкнуть лёгкие предметы вокруг. Он также любит
+скользить вниз по склонам, но не может стать обузой.</translation>
     </message>
     <message>
         <location filename="../src/model/Butterfly.cpp" line="45"/>
@@ -1705,7 +1709,7 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/control/EditPropertyUndoCommand.cpp" line="27"/>
         <source>EditProperty</source>
-        <translation type="unfinished"/>
+        <translation>Редактировать Свойство</translation>
     </message>
 </context>
 <context>
@@ -1789,7 +1793,7 @@ You might want to read them—it may help!</source>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
         <source>%1x %2</source>
         <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1x %2</translation>
     </message>
 </context>
 <context>

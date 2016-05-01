@@ -377,6 +377,11 @@ void MainWindow::slot_mouse_move(qreal x, qreal y)
 
 void MainWindow::on_switchLanguage(QString aNewLanguage)
 {
+    // Strip '&' from the language name if it contains one.
+    aNewLanguage.remove('&');
+
+    // Throw a warning message, as not all strings are translated yet.
+    // For now, we don't keep a list of completion levels.
     QString myReloadString = UndoSingleton::isClean() ? "" :
                                  tr("\nYou have unsaved undo actions.\n"
                                     "You lose your actions when switching languages.\n\n");

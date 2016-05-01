@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: thebutterflyeffect\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-10 20:57+0200\n"
-"PO-Revision-Date: 2016-04-10 19:00+0000\n"
-"Last-Translator: Klaas van Gend <klaas@opentux.nl>\n"
+"PO-Revision-Date: 2016-05-01 10:33+0000\n"
+"Last-Translator: Wuzzy <almikes@aol.com>\n"
 "Language-Team: German (http://www.transifex.com/Magic/thebutterflyeffect/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,7 +120,7 @@ msgstr "Wenigstens können Sie sich aussuchen, wie lang der Birkenholzbalken sei
 msgid ""
 "At least you have all the time in the world to figure this one out.<br><br"
 ">Post-It Boy"
-msgstr ""
+msgstr "Wenigstens haben Sie alle Zeit der Welt, um dieses Rätsel zu lösen.<br><br>– der Notizschreiber"
 
 #: tbe_levels:25
 msgid "Attack of the Killer Cacti"
@@ -206,31 +206,31 @@ msgstr "Bowling-Pin spielt Fußball …"
 
 #: tbe_levels:45
 msgid "<br><br>... a busy Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein beschäftigter Notizschreiber"
 
 #: tbe_levels:46
 msgid "<br><br>... a hungry Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein hungriger Notizschreiber"
 
 #: tbe_levels:47
 msgid "<br><br>... a lazy Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein fauler Notizschreiber"
 
 #: tbe_levels:48
 msgid "<br><br>... and he likes crashing bridges even more!"
-msgstr ""
+msgstr "<br><br>… und er mag es noch mehr, Brücken zum Einsturz zu bringen!"
 
 #: tbe_levels:49
 msgid "<br><br>... an unhappy Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein unglücklicher Notizschreiber"
 
 #: tbe_levels:50
 msgid "<br><br>... a thirsty Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein durstiger Notizschreiber"
 
 #: tbe_levels:51
 msgid "<br><br>... a thoughtful Post-It Boy"
-msgstr ""
+msgstr "<br><br>– ein nachdenklicher Notizschreiber"
 
 #: tbe_levels:52
 msgid "<br><br><br><br>...me"
@@ -242,59 +242,59 @@ msgstr "<br>...<br><br>Ich wollte dies schon immer sagen!"
 
 #: tbe_levels:54 tbe_levels:56
 msgid "<br><br>... Post-It Boy"
-msgstr ""
+msgstr "<br><br>– Notizschreiber"
 
 #: tbe_levels:55
 msgid "<br><br>Post-It Boy"
-msgstr ""
+msgstr "<br><br>– Notizschreiber"
 
 #: tbe_levels:57
 msgid "<br><br>Post-It Boy<br><br>... almost done with his home work!"
-msgstr ""
+msgstr "<br><br>– Notizschreiber<br><br>… fast fertig mit seiner Hausarbeit!"
 
 #: tbe_levels:58
 msgid "<br><br>Post-It Boy<br><br><i>(insert joke about bridge here)</i>"
-msgstr ""
+msgstr "<br><br>– Notizschreiber <br><br><i>(Witz über Brücken hier einfügen)</i>"
 
 #: tbe_levels:59
 msgid "<br><br>Post-It Boy<br><br>(in a destructive mood)"
-msgstr ""
+msgstr "<br><br>– Notizschreiber<br>(in einer destruktiven Stimmung)"
 
 #: tbe_levels:60
 msgid "<br><br>Post-It Boy<br><br>is brief for once"
-msgstr ""
+msgstr "<br><br>– Notizschreiber<br><br> fässt sich mal kurz"
 
 #: tbe_levels:61
 msgid "<br><br>Post-It Boy<br><br>is on it again"
-msgstr ""
+msgstr "<br><br>Notizschreiber<br><br>ist wieder da"
 
 #: tbe_levels:62
 msgid "<br><br>Post-It Boy<br><br>likes building bridges"
-msgstr ""
+msgstr "<br><br>Notizschreiber<br><br>mag es, Brücken zu bauen"
 
 #: tbe_levels:63
 msgid "<br><br>Post-It Boy<br><br>(male, I think)"
-msgstr ""
+msgstr "<br><br>Notizschreiber<br><br>(männlich, denke ich)"
 
 #: tbe_levels:64
 msgid "<br><br>Post-It Boy<br><br>saves the animals..."
-msgstr ""
+msgstr "<br><br>Notizschreiber<br><br>rettet die Tiere …"
 
 #: tbe_levels:65
 msgid "<br><br>Post-It Boy<br><br>... thinks of an ancient steam engine"
-msgstr ""
+msgstr "<br><br>Notizschreiber<br><br> … denkt an eine altertümliche Dampfmaschine"
 
 #: tbe_levels:66
 msgid "Bridge the Gap 1"
-msgstr ""
+msgstr "Überbrückung 1"
 
 #: tbe_levels:67
 msgid "Bridge the Gap 2"
-msgstr ""
+msgstr "Überbrückung 2"
 
 #: tbe_levels:68
 msgid "Bridge the Gap 3"
-msgstr ""
+msgstr "Überbrückung 3"
 
 #: tbe_levels:69
 msgid "But a lot needs to happen before that pin moves."
@@ -331,7 +331,7 @@ msgstr "Aber ich habe genug gesagt …<br><br>Viel Glück!"
 
 #: tbe_levels:77
 msgid "But let me give you one hint:<br><br> First a Boom, then the Zoinggg."
-msgstr "Aber lassen Sie mich einen Hinweis geben:<br><br> Zuerst ein Bumm und dann das Zoing."
+msgstr "Aber lassen Sie mich einen Tipp geben:<br><br>Zuerst ein Bumm und dann das Zoing."
 
 #: tbe_levels:78
 msgid "Butterflies of Doom"
@@ -508,7 +508,7 @@ msgstr "Wählen Sie die richtige Nummer!"
 
 #: tbe_levels:118
 msgid "Did you know there was so much technology underneath a hole?"
-msgstr ""
+msgstr "Wussten Sie, dass sich unter einem Loch so viel Technologie befindet?"
 
 #: tbe_levels:119
 msgid "Domino"
@@ -582,7 +582,7 @@ msgstr "Extreme Tux Racer"
 
 #: tbe_levels:136
 msgid "Feeling a winner already...<br><br>Post-It Boy"
-msgstr ""
+msgstr "Ich fühle mich jetzt schon wie ein Sieger … <br><br>der Notizschreiber"
 
 #: tbe_levels:137
 msgid "Finding a way to buy some time here could be very important..."
@@ -594,7 +594,7 @@ msgstr "Finden Sie die Nachricht …"
 
 #: tbe_levels:139
 msgid "Find the right combination and blow everything up.<br><br>Post-It Boy"
-msgstr ""
+msgstr "Finden Sie die korrekte Kombination und jagen Sie alles in die Luft.<br><br>– Notizschreiber"
 
 #: tbe_levels:140
 msgid "Five Balloons"
@@ -602,7 +602,7 @@ msgstr "Fünf Ballons"
 
 #: tbe_levels:141
 msgid "Float, balloon, float!"
-msgstr ""
+msgstr "Schweb, Ballon, schweb!"
 
 #: tbe_levels:142
 msgid "Flying from flower to flower can be hard. A real hurdle race."
@@ -674,7 +674,7 @@ msgid ""
 "demonstration. Click “Play” in the top-right and watch the butterfly fly. "
 "When it is at the flower, you've won your first level.<br><br>You might want"
 " to click on the Post-it note!"
-msgstr "Hallo!<br>Willkommen bei „Der Schmetterlingseffekt“!<br><br>Dieser Level ist eine erste Demonstration. Klicken Sie auf „Abspielen“ auf der oberen rechten Seite und schauen Sie sich den fliegenden Schmetterling an. Sobald dieser die Blume erreicht hat, haben Sie Ihr erstes Level gewonnen.<br><br>Sie möchten vielleicht auch auf den Klebezettel klicken!"
+msgstr "Hallo!<br>Willkommen bei „Der Schmetterlingseffekt“!<br>Dieser Level ist eine erste Demonstration. Klicken Sie auf „Abspielen“ auf der oberen rechten Seite und schauen Sie sich den fliegenden Schmetterling an. Sobald dieser die Blume erreicht hat, haben Sie Ihr erstes Level gewonnen.<br>Sie möchten vielleicht auch auf den Klebezettel klicken!"
 
 #: tbe_levels:158
 msgid ""
@@ -727,11 +727,11 @@ msgstr "Tipp: Legen Sie ihn zuerst auf den Boden,<br>dann passen Sie danach die 
 msgid ""
 "His aim is best if the ball is in the front of his face...<br><br>(if my "
 "calculations are correct)"
-msgstr ""
+msgstr "Er zielt am Besten, wenn der Ball vor seinem Gesicht ist … (falls meine Berechnungen stimmen sollten)"
 
 #: tbe_levels:170
 msgid "Hmmm... <br><br>Post-It Boy"
-msgstr ""
+msgstr "Hmmm …<br><br>– Notizschreiber"
 
 #: tbe_levels:171
 msgid "Hmmm... <br><br>This reminds me of a kids' game!"
@@ -780,7 +780,7 @@ msgstr "Falls Sie hier Probleme haben, probieren Sie einen der vorherigen »Sort
 msgid ""
 "If you click the pause button, the simulation will stop.<br>There's also a "
 "green 'reset' button."
-msgstr ""
+msgstr "Drücken Sie Pause zum Pausieren. Es gibt auch einen grünen „Zurücksetzen“-Knopf."
 
 #: tbe_levels:182
 msgid "If you feel things happen too fast, slow down a little."
@@ -861,13 +861,13 @@ msgstr "Ich habe noch andere Ideen, wofür man Ballons benötigt …"
 
 #: tbe_levels:199
 msgid "It falls down, blows...<br><br>and doesn't do anything useful"
-msgstr ""
+msgstr "Es fällt herunter, explodiert … <br><br>und macht nichts nützliches."
 
 #: tbe_levels:200
 msgid ""
 "I think <i>watching</i> soccer is kind of boring: It just goes back and "
 "forth all the time."
-msgstr ""
+msgstr "Ich finde, beim Fußball <i>zuzuschauen</i> ist ziemlich öde: Es geht die ganze Zeit nur hin und her."
 
 #: tbe_levels:201
 msgid "I think something's cooking here..."
@@ -934,7 +934,7 @@ msgstr "Ich bin auch zu groß für mein Fahrrad geworden."
 msgid ""
 "I want to be a balloon <br>... <br>and be the first to set foot on Alpha "
 "Centauri!"
-msgstr ""
+msgstr "Ich möchte ein Ballon sein …<br>und der Erste, der seinen Fuß auf Alpha Centauri setzt!"
 
 #: tbe_levels:216
 msgid ""
@@ -954,11 +954,11 @@ msgstr "Bringen Sie alle Bowling-Pins zusammen."
 
 #: tbe_levels:219
 msgid "Jumping Around 1"
-msgstr ""
+msgstr "Herumhüpfen 1"
 
 #: tbe_levels:220
 msgid "Jumping Around 2"
-msgstr ""
+msgstr "Herumhüpfen 2"
 
 #: tbe_levels:221
 msgid "Just hook it up in the air<br>and it stays there."
@@ -1077,7 +1077,7 @@ msgstr "Sehen Sie, eine weitere Lücke."
 
 #: tbe_levels:249
 msgid "Look... <br><br>I made an engine to power my bike."
-msgstr "Sehen Sie:<br><br>Ich hab einen Motor gebaut, um mein Fahrrad anzutreiben."
+msgstr "Schauen Sie mal:<br><br>Ich hab einen Motor gebaut, um mein Fahrrad anzutreiben."
 
 #: tbe_levels:250
 msgid "Look for the last message"
@@ -1229,7 +1229,7 @@ msgstr "Ach Quatsch! Wir haben ja gar keine Seile. Nur etwas altes Holz vom Schr
 
 #: tbe_levels:285
 msgid "Oh, what fun!<br>Oh, what joy!<br><br>Post-It Boy"
-msgstr ""
+msgstr "Welch eine Show!<br>Welch ein Spaß!<br><br>Das war's!"
 
 #: tbe_levels:286
 msgid "\"Old Faithful\" is a geyser in Yellowstone National Park, Wyoming, USA."
@@ -1241,7 +1241,7 @@ msgstr "Einhundert bitte!"
 
 #: tbe_levels:288
 msgid "(Or a \"soccer\" ball for you Americans)"
-msgstr "(oder ein „soccer ball“ für euch Amerikaner)"
+msgstr "Das Runde muss ja bekanntlich ins Eckige."
 
 #: tbe_levels:289
 msgid "Or do they fly to the stars?"
@@ -1325,7 +1325,7 @@ msgstr "Poing Poing Poing "
 msgid ""
 "Poing Poing Poing <br><br>... a world-famous song of the <i>Rotterdam "
 "Termination Source</i>"
-msgstr ""
+msgstr "Poing Poing Poing <br><br>… ein weltbekanntes Lied von der <i>Rotterdam Termination Source</i>"
 
 #: tbe_levels:308
 msgid "PolyObject test Level..."
@@ -1359,11 +1359,11 @@ msgstr "Lassen Sie den roten Ballon in der Mitte platzen und lösen Sie die Dyna
 
 #: tbe_levels:315
 msgid "... Post-It Boy"
-msgstr ""
+msgstr "– Notizschreiber"
 
 #: tbe_levels:316
 msgid "Post-It Boy"
-msgstr ""
+msgstr "Notizschreiber"
 
 #: tbe_levels:317
 msgid "Post-It Boy<br><br><br>(has a dirty mind)"
@@ -1372,7 +1372,7 @@ msgstr "Notizschreiber<br><br><br>(hat versaute Gedanken)"
 #: tbe_levels:318
 msgid ""
 "Post-It Boy<br>likes playing with styrofoam... <br><br>... for breakfast!"
-msgstr ""
+msgstr "Notizschreiber<br>spielt gerne mit Styropor … <br><br>… zum Frühstück!"
 
 #: tbe_levels:319
 msgid "Post-It Boy likes to \"Make it Complex, Comrade\""
@@ -1380,15 +1380,15 @@ msgstr "Der Notizschreiber mag „Mach es kompliziert, Kamerad“"
 
 #: tbe_levels:320
 msgid "Post-It Boy once spoke with...<br><br>Sonic the Hedgehog!"
-msgstr ""
+msgstr "… der Notizschreiber, der einmal mit Sonic the Hedgehog gesprochen hat!"
 
 #: tbe_levels:321
 msgid "Post-It Boy played the world cup soccer...<br><br>(in a previous life)"
-msgstr ""
+msgstr "Der Notizschreiber spielte bei der Fußball-<br>weltmeisterschaft … (in einem vorherigen Leben)"
 
 #: tbe_levels:322
 msgid "Post-It Boy (who likes to play with boxes)"
-msgstr ""
+msgstr "– Notizschreiber (der gerne mit Kisten spielt)"
 
 #: tbe_levels:323
 msgid "PS: Those dominos are quite big, aren't they?"
@@ -1463,7 +1463,7 @@ msgstr "Viertelbogen #3"
 
 #: tbe_levels:340
 msgid "Racing Penguin"
-msgstr ""
+msgstr "Rasender Pinguin"
 
 #: tbe_levels:341
 msgid "Remember this gap?"
@@ -1628,11 +1628,11 @@ msgstr "Manchmal führt der offensichtliche Weg nicht zu Ihrem Ziel."
 
 #: tbe_levels:379
 msgid "Sorry, no more hints here.<br><br>Post-It Boy"
-msgstr ""
+msgstr "Tut mir Leid, mehr Tipps gibt es hier nicht.<br><br>– Notizschreiber"
 
 #: tbe_levels:380
 msgid "Sorry, that's all I can tell you.<br><br>Post-It Boy"
-msgstr ""
+msgstr "Tut mir Leid, das ist alles, was ich Ihnen verraten kann.<br><br>– Notizschreiber"
 
 #: tbe_levels:381
 msgid "Sorting 1"
@@ -1724,7 +1724,7 @@ msgstr "Der arme Ballon ist auf dem Weg zu seinen Untergang."
 
 #: tbe_levels:403
 msgid "That's all I know about them. I hope it helps!<br><br>Post-It Boy"
-msgstr ""
+msgstr "Das ist alles, was ich über sie weiß. Ich hoffe, das hilft!<br><br>– Notizschreiber"
 
 #: tbe_levels:404
 msgid ""
@@ -2084,7 +2084,7 @@ msgstr "Umdrehen"
 msgid ""
 "Two hurdles must be overcome. And the butterfly has to start everything "
 "himself. Or herself?"
-msgstr ""
+msgstr "Zwei Hürden müssen genommen werden. Und der Schmetterling muss alles selber machen."
 
 #: tbe_levels:481
 msgid ""
@@ -2248,7 +2248,7 @@ msgstr "Zoing und Bumm"
 
 #: tbe_levels:519
 msgid "Zoing Ploing Boing Woing<br>Zzap Whoosh Smack Boom"
-msgstr "Zoing, ploing, boing, woing<br>Zapp, wusch, krach, bumm"
+msgstr "Zoing, ploing, boing, woing,<br>zapp, wusch, krach, bumm!"
 
 #: tbe_levels:520
 msgid "Zzz"

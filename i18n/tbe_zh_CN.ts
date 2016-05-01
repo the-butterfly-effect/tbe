@@ -1,25 +1,25 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
 <context>
     <name>AbstractPolyObjectFactory</name>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="47"/>
         <source>Bowling Pin</source>
-        <translation>Birillo</translation>
+        <translation>保龄球住</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="60"/>
         <source>Skyhook</source>
-        <translation type="unfinished"/>
+        <translation>天钩</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="61"/>
         <source>A skyhook just hangs in the air. And you can hang a lot of weight on it!</source>
-        <translation type="unfinished"/>
+        <translation>天钩悬于空中。可以挂很多重物！</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="70"/>
         <source>Weight</source>
-        <translation>Peso</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="48"/>
@@ -35,24 +35,22 @@ people prefer to do that using a bowling ball.</source>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="78"/>
         <source>Left Ramp</source>
-        <translation>Rampa da sinistra</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="79"/>
         <source>This is a ramp. The left is lower than the right, so things slide to the left.</source>
-        <translation>Questa è una rampa. Il lato sinistro è più basso rispetto a quello destro,
-quindi gli oggetti scorreranno verso sinistra.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="86"/>
         <source>Right Ramp</source>
-        <translation>Rampa da destra</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="87"/>
         <source>This is a ramp. The left is higher than the right, so things slide to the right.</source>
-        <translation>Questa è una rampa. Il lato destro è più basso rispetto a quello sinitro,
-quindi gli oggetti scorreranno verso destra.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="94"/>
@@ -161,7 +159,7 @@ It can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="53"/>
         <source>Wooden Bar</source>
-        <translation>Barra di legno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="54"/>
@@ -172,7 +170,7 @@ Birch wood beams move and float.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="58"/>
         <source>Domino (Red)</source>
-        <translation>Domino (Rosso)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="59"/>
@@ -223,17 +221,17 @@ It&apos;s very heavy and hard to push around.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
         <source>Domino (Blue)</source>
-        <translation>Domino (Blu)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="68"/>
         <source>Domino (Green)</source>
-        <translation>Domino (Verde)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="73"/>
         <source>Floor</source>
-        <translation>Pavimento</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
@@ -243,7 +241,7 @@ It&apos;s very heavy and hard to push around.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="85"/>
         <source>Wall</source>
-        <translation>Muro</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="86"/>
@@ -254,7 +252,7 @@ and can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="91"/>
         <source>Hammer</source>
-        <translation>Martello</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -262,12 +260,12 @@ and can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="14"/>
         <source>Choose your game!</source>
-        <translation>Scegli il tuo gioco!</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="103"/>
         <source>Choose your next level</source>
-        <translation>Scegli il prossimo livelli</translation>
+        <translation>选择下一等级</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="128"/>
@@ -275,37 +273,40 @@ and can&apos;t be moved, penetrated or destroyed.</source>
 
 Double-click for the post-it notes for help.
 </source>
-        <translation type="unfinished"/>
+        <translation>请选择想要玩的等级。
+
+双击查看帮助便签。
+</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="148"/>
         <source>#</source>
-        <translation>#</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="153"/>
         <source>Level Title</source>
-        <translation>Titolo del livello</translation>
+        <translation>等级标题</translation>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="166"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.ui" line="189"/>
         <source>Go!</source>
-        <translation>Vai!</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="92"/>
         <source>done</source>
-        <translation>fatto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChooseLevel.cpp" line="95"/>
         <source>skipped</source>
-        <translation>saltato</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -313,7 +314,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="20"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="117"/>
@@ -323,17 +324,17 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="169"/>
         <source>Phone Number:</source>
-        <translation>Numero di telfono:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="216"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ChoosePhoneNumber.ui" line="226"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -341,7 +342,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/control/ChoosePhoneUndoCommand.cpp" line="24"/>
         <source>ChoosePhone</source>
-        <translation>ScegliTelefono</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -349,7 +350,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="29"/>
         <source>Bowling Ball</source>
-        <translation>Palla da bowling</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
@@ -359,7 +360,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="35"/>
         <source>Volleyball</source>
-        <translation>Pallavolo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
@@ -384,12 +385,12 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="44"/>
         <source>Tennis Ball</source>
-        <translation>Palla da tennis</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="52"/>
         <source>Soccer Ball</source>
-        <translation>Palla da calcio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
@@ -402,7 +403,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialogo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="20"/>
@@ -412,27 +413,27 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="30"/>
         <source>Level Properties</source>
-        <translation>Proprietà del livello</translation>
+        <translation>等级属性</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="36"/>
         <source>Level width:</source>
-        <translation>Larghezza del livello:</translation>
+        <translation>等级宽度:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="43"/>
         <source>width of the level in meters</source>
-        <translation>larghezza del livello in metri</translation>
+        <translation>等级的宽度，单位为米</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="68"/>
         <source>Level height:</source>
-        <translation>Altezza del livello:</translation>
+        <translation>等级高度:</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="75"/>
         <source>Height of the level in meters</source>
-        <translation>Altezza del livello in metri</translation>
+        <translation>等级的高度，单位为米</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="103"/>
@@ -442,7 +443,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="111"/>
         <source>Image name:</source>
-        <translation>Nome dell&apos;immagine:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="121"/>
@@ -462,7 +463,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="155"/>
         <source>height</source>
-        <translation>altezza</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="165"/>
@@ -487,12 +488,12 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="225"/>
         <source>new line</source>
-        <translation>nuova linea</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="232"/>
         <source>delete line</source>
-        <translation>cancella linea</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.cpp" line="80"/>
@@ -516,7 +517,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="40"/>
         <source>Object ID:</source>
-        <translation>ID oggetto:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="86"/>
@@ -526,32 +527,32 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="103"/>
         <source>,</source>
-        <translation>,</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="120"/>
         <source>)</source>
-        <translation>)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="131"/>
         <source>Angle:</source>
-        <translation>Angolo:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="154"/>
         <source>Radians</source>
-        <translation>Radianti</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="165"/>
         <source>Width:</source>
-        <translation>Larghezza:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.ui" line="182"/>
         <source>   Height:</source>
-        <translation>Altezza:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="216"/>
@@ -561,7 +562,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/EditObjectDialog.cpp" line="234"/>
         <source>Value</source>
-        <translation>Valore</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -569,27 +570,27 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameControls.ui" line="32"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="92"/>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="133"/>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="152"/>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.ui" line="171"/>
         <source>FF</source>
-        <translation>FF</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="82"/>
@@ -600,46 +601,46 @@ Double-click for the post-it notes for help.
         <location filename="../src/view/GameControls.cpp" line="84"/>
         <source>f</source>
         <extracomment>translators: 'f' is for (fast) forward</extracomment>
-        <translation>f</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="88"/>
         <source>P&amp;ause</source>
-        <translation>P&amp;ausa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="92"/>
         <source>&amp;Play</source>
-        <translation>&amp;Play</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="96"/>
         <source>&amp;Reset</source>
-        <translation>&amp;Reset</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="98"/>
         <source>r</source>
         <extracomment>translators: 'r' is for reset</extracomment>
-        <translation>r</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="102"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation>Shift+f</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="109"/>
         <source>Shift+s</source>
         <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
-        <translation>Shift+s</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameControls.cpp" line="150"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation>Barra spaziatrice</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -652,7 +653,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/view/GameResources.ui" line="66"/>
         <source>This is the level title</source>
-        <translation>Questo è il nome del livello</translation>
+        <translation>这是等级的标题</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="108"/>
@@ -671,12 +672,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GameResources.ui" line="159"/>
         <source>By: The Author</source>
-        <translation>Di: L&apos;autore</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="194"/>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="213"/>
@@ -686,7 +687,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/view/GameResources.ui" line="219"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GameResources.cpp" line="78"/>
@@ -697,7 +698,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../src/view/GameResources.cpp" line="94"/>
         <source>Level by: &lt;b&gt;%1&lt;/b&gt;</source>
         <extracomment>translators: please do not try to translate the &lt;b&gt;%1&lt;/b&gt; part!</extracomment>
-        <translation>Livello di: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -721,13 +722,13 @@ p, li { white-space: pre-wrap; }
         <location filename="../src/view/GoalEditor.ui" line="43"/>
         <location filename="../src/view/GoalEditor.ui" line="94"/>
         <source>+</source>
-        <translation>+</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="50"/>
         <location filename="../src/view/GoalEditor.ui" line="101"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.ui" line="72"/>
@@ -762,7 +763,7 @@ Nothing was changed yet, please fix.</source>
         <location filename="../src/view/GoalEditor.cpp" line="204"/>
         <location filename="../src/view/GoalEditor.cpp" line="207"/>
         <source>no object</source>
-        <translation>nessun oggetto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="277"/>
@@ -849,17 +850,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="36"/>
         <source>LevelCreator</source>
-        <translation type="unfinished"/>
+        <translation>等级创建器</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="61"/>
         <source>&amp;Clone object</source>
-        <translation>&amp;Clone oggetto</translation>
+        <translation>克隆对象(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="67"/>
         <source>&amp;Collision OK</source>
-        <translation>&amp;Collisione OK</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="75"/>
@@ -869,12 +870,12 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="86"/>
         <source>&amp;Insert</source>
-        <translation>&amp;Inserisci</translation>
+        <translation>插入(&amp;I)</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="102"/>
         <source>E&amp;ditors</source>
-        <translation>E&amp;ditor</translation>
+        <translation>编辑(&amp;D)</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="105"/>
@@ -884,17 +885,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="109"/>
         <source>&amp;Size &amp;&amp; Background Editor...</source>
-        <translation type="unfinished"/>
+        <translation>尺寸 &amp;&amp; 背景编辑器(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="113"/>
         <source>&amp;Name &amp;&amp; Description Editor...</source>
-        <translation type="unfinished"/>
+        <translation>名称 &amp;&amp; 描述编辑器(&amp;N)...</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="122"/>
         <source>&amp;View</source>
-        <translation type="unfinished"/>
+        <translation>查看(&amp;V)</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="124"/>
@@ -909,12 +910,12 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="154"/>
         <source>Object Properties</source>
-        <translation type="unfinished"/>
+        <translation>对象属性</translation>
     </message>
     <message>
         <location filename="../src/view/LevelCreator.cpp" line="155"/>
         <source>Toolbox</source>
-        <translation type="unfinished"/>
+        <translation>工具箱</translation>
     </message>
 </context>
 <context>
@@ -922,7 +923,7 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="20"/>
         <source>ToolboxTooltip</source>
-        <translation type="unfinished"/>
+        <translation>工具箱工具提示</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.ui" line="137"/>
@@ -955,27 +956,27 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="66"/>
         <source>You can resize the object in all directions.</source>
-        <translation type="unfinished"/>
+        <translation>对象可以在任意方向上改变尺寸。</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="70"/>
         <source>You can resize the object horizontally.</source>
-        <translation type="unfinished"/>
+        <translation>对象可以水平改变尺寸。</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="72"/>
         <source>You can resize the object vertically.</source>
-        <translation type="unfinished"/>
+        <translation>对象可以垂直改变尺寸。</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="75"/>
         <source>You can rotate the object.</source>
-        <translation type="unfinished"/>
+        <translation>对象可以旋转。</translation>
     </message>
     <message>
         <location filename="../src/view/ListViewItemTooltip.cpp" line="77"/>
         <source>You can set the phone number.</source>
-        <translation type="unfinished"/>
+        <translation>可以设置电话号码。</translation>
     </message>
 </context>
 <context>
@@ -983,42 +984,42 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="14"/>
         <source>The Butterfly Effect</source>
-        <translation>Effetto farfalla</translation>
+        <translation>蝴蝶效应</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="175"/>
         <source>&amp;File</source>
-        <translation>&amp;File</translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="192"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"/>
+        <translation>编辑(&amp;E)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="197"/>
         <source>&amp;Controls</source>
-        <translation>&amp;Controlli</translation>
+        <translation>控件(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="202"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>帮助(&amp;H)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="206"/>
         <source>&amp;Contribute</source>
-        <translation type="unfinished"/>
+        <translation>贡献(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="236"/>
         <source>&amp;Open Level...</source>
-        <translation type="unfinished"/>
+        <translation>打开等级(&amp;O)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="252"/>
         <source>O&amp;pen File...</source>
-        <translation type="unfinished"/>
+        <translation>打开文件(&amp;P)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="239"/>
@@ -1028,87 +1029,87 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="123"/>
         <source>Shows the level information again</source>
-        <translation type="unfinished"/>
+        <translation>再次显示等级信息</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="126"/>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>信息</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="145"/>
         <source>Choose a different level to play</source>
-        <translation type="unfinished"/>
+        <translation>选择其他等级来玩</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="148"/>
         <source>Eject</source>
-        <translation type="unfinished"/>
+        <translation>弹出</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="220"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished"/>
+        <translation>语言(&amp;L)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="260"/>
         <source>S&amp;kip Level</source>
-        <translation type="unfinished"/>
+        <translation>跳级(&amp;K)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="270"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"/>
+        <translation>退出(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="275"/>
         <source>Libraries...</source>
-        <translation>Librerie...</translation>
+        <translation>库...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="280"/>
         <source>&amp;Keyboard Shortcuts...</source>
-        <translation type="unfinished"/>
+        <translation>快捷键(&amp;K)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="290"/>
         <source>&amp;About...</source>
-        <translation type="unfinished"/>
+        <translation>关于(&amp;A)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="295"/>
         <source>&amp;Suggestions...</source>
-        <translation type="unfinished"/>
+        <translation>建议(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="305"/>
         <source>&amp;Bug Reports...</source>
-        <translation type="unfinished"/>
+        <translation>错误报告(&amp;B)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="310"/>
         <source>New Level Ideas...</source>
-        <translation type="unfinished"/>
+        <translation>新等级主意...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="320"/>
         <source>&amp;Switch to Level Editor</source>
-        <translation type="unfinished"/>
+        <translation>切换到等级编辑器(&amp;S)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="323"/>
         <source>Switch</source>
-        <translation type="unfinished"/>
+        <translation>切换</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="336"/>
         <source>&amp;Save</source>
-        <translation>&amp;Salva</translation>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="339"/>
         <source>Save current level under its current name</source>
-        <translation type="unfinished"/>
+        <translation>以当前名称保存当前等级</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="342"/>
@@ -1118,17 +1119,17 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="358"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"/>
+        <translation>另存为(&amp;A)...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="361"/>
         <source>Save level under a new name</source>
-        <translation type="unfinished"/>
+        <translation>以新名称保存当前等级</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="374"/>
         <source>New Level...</source>
-        <translation type="unfinished"/>
+        <translation>新等级...</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="377"/>
@@ -1138,12 +1139,12 @@ Nothing was changed yet, please fix.</source>
     <message>
         <location filename="../src/view/MainWindow.ui" line="393"/>
         <source>&amp;Reload Level</source>
-        <translation type="unfinished"/>
+        <translation>重新加载等级(&amp;R)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="396"/>
         <source>Reload the current level from disk</source>
-        <translation type="unfinished"/>
+        <translation>从磁盘重新加载当前等级</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.ui" line="399"/>
@@ -1220,49 +1221,51 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>Open level</source>
-        <translation type="unfinished"/>
+        <translation>打开等级</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="253"/>
         <source>TBE levels (*.xml)</source>
-        <translation type="unfinished"/>
+        <translation>TBE 等级 (*.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="262"/>
         <source>really?</source>
-        <translation>sei sicuro?</translation>
+        <translation>确定?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="271"/>
         <source>You have unsaved changes,
 really reload Level from disk?</source>
-        <translation type="unfinished"/>
+        <translation>您有尚未保存的改动，
+是否确定要从磁盘重新加载等级?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="276"/>
         <source>Level has no name - could not be reloaded. Please use &quot;Save As...&quot;</source>
-        <translation type="unfinished"/>
+        <translation>等级没有名称 - 无法重新加载。请用“另存为...”</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="291"/>
         <source>Level has no name - could not be saved. Please use &quot;Save As...&quot;</source>
-        <translation type="unfinished"/>
+        <translation>等级没有名称 - 无法保存。请用“另存为...”</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="296"/>
         <source>File &apos;%1&apos; could not be saved.</source>
-        <translation type="unfinished"/>
+        <translation>文件 &apos;%1&apos; 无法保存。</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="317"/>
         <source>You did not fill in all fields - but level saved anyway
 </source>
-        <translation type="unfinished"/>
+        <translation>您有字段尚未填写 - 但等级已保存
+</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="333"/>
         <source>Mark this level &apos;skipped&apos; and continue with the next level?</source>
-        <translation type="unfinished"/>
+        <translation>将该等级标记为“已跳过”并继续下一个等级?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="347"/>
@@ -1311,7 +1314,7 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/view/MainWindow.cpp" line="461"/>
         <source>Ctrl+Z</source>
-        <translation>Ctrl+Z</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="463"/>
@@ -1321,12 +1324,12 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/view/MainWindow.cpp" line="466"/>
         <source>Ctrl+Y</source>
-        <translation>Ctrl+Y</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="466"/>
         <source>Shift+Ctrl+Z</source>
-        <translation>Shift+Ctrl+Z</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1334,52 +1337,52 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/control/DeleteUndoCommand.cpp" line="32"/>
         <source>Remove</source>
-        <translation>Rimuovi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/control/InsertUndoCommand.h" line="35"/>
         <source>Insert</source>
-        <translation>Inserisci</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/control/MoveUndoCommand.cpp" line="29"/>
         <source>Move</source>
-        <translation>Sposta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/control/ResizeUndoCommand.cpp" line="29"/>
         <source>Resize</source>
-        <translation>Ridimensiona</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/control/RotateUndoCommand.cpp" line="27"/>
         <source>Rotate</source>
-        <translation>Ruota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="180"/>
         <source>Position X</source>
-        <translation>Posizione X</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="181"/>
         <source>Position Y</source>
-        <translation>Posizione Y</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="182"/>
         <source>Angle</source>
-        <translation>Angolo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="183"/>
         <source>X/Y/Angle</source>
-        <translation>X/Y/Angolo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="184"/>
         <source>Distance</source>
-        <translation>Distanza</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/loadsave/GoalSerializer.cpp" line="185"/>
@@ -1394,7 +1397,7 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="58"/>
         <source>Balloon</source>
-        <translation>Palloncino</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="59"/>
@@ -1422,7 +1425,7 @@ It has many sharp nails on one side.</source>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="266"/>
         <source>Cactus</source>
-        <translation>Cactus</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="344"/>
@@ -1437,7 +1440,7 @@ It has many sharp nails on one side.</source>
     <message>
         <location filename="../src/model/Butterfly.h" line="41"/>
         <source>Butterfly</source>
-        <translation>Farfalla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/ColaMintBottle.cpp" line="49"/>
@@ -1454,7 +1457,7 @@ which makes the bottle spit a long stream of cola.</source>
     <message>
         <location filename="../src/model/Glue.h" line="57"/>
         <source>Glue</source>
-        <translation>Colla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Glue.cpp" line="47"/>
@@ -1484,17 +1487,17 @@ which makes the bottle spit a long stream of cola.</source>
     <message>
         <location filename="../src/model/PostIt.h" line="48"/>
         <source>PostIt</source>
-        <translation>PostIt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Scenery.h" line="45"/>
         <source>Scenery</source>
-        <translation>Scenario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="76"/>
         <source>Spring</source>
-        <translation>Primavera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Spring.cpp" line="77"/>
@@ -1525,7 +1528,7 @@ it retracts and expands.</source>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="149"/>
         <source>(empty)</source>
-        <translation>(vuoto)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="155"/>
@@ -1577,22 +1580,22 @@ Dial %1 to make the dynamite go boom.</source>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="322"/>
         <source>Dynamite</source>
-        <translation>Dinamite</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/tbe_global.h.in" line="22"/>
         <source>The Butterfly Effect</source>
-        <translation>Effetto farfalla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="48"/>
         <source>critical error</source>
-        <translation>errore critico</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="71"/>
         <source>informational message</source>
-        <translation>messaggio informativo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/Popup.h" line="87"/>
@@ -1609,19 +1612,23 @@ Dial %1 to make the dynamite go boom.</source>
         <source>Level parser:
 Cannot read the level descriptions in '%1':
 %2.</source>
-        <translation type="unfinished"/>
+        <translation>等级解析器:
+无法读取“%1”中的等级描述信息:
+%2。</translation>
     </message>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="164"/>
         <source>LevelList:
 Parse error at line %1, column %2:
 %3</source>
-        <translation type="unfinished"/>
+        <translation>等级列表:
+解析错误，行 %1，列 %2:
+%3</translation>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="53"/>
         <source>Pingus</source>
-        <translation>Pingus</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="54"/>
@@ -1657,7 +1664,7 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="14"/>
         <source>Save Level - Information</source>
-        <translation type="unfinished"/>
+        <translation>保存等级 - 信息</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="22"/>
@@ -1667,52 +1674,52 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="39"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="48"/>
         <source>Level information - Use English Only</source>
-        <translation type="unfinished"/>
+        <translation>等级信息 - 请只使用英文填写</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="54"/>
         <source>Title:</source>
-        <translation>Titolo:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="71"/>
         <source>Author Name:</source>
-        <translation>Nome autore:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="88"/>
         <source>License:</source>
-        <translation>Licenza:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="95"/>
         <source>GPLv2</source>
-        <translation>GPLv2</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="102"/>
         <source>Date:</source>
-        <translation>Data:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.ui" line="115"/>
         <source>Level Description (summary, make sure to use Post-it notes for real hints):</source>
-        <translation type="unfinished"/>
+        <translation>等级描述 (概述，实际的提示请用便签功能):</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="96"/>
         <source>Save Level</source>
-        <translation>Salva livello</translation>
+        <translation>保存等级</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="96"/>
         <source>TBE levels (*.tbe *.xml)</source>
-        <translation>livello TBE (*.tbe *.xml)</translation>
+        <translation>TBE 等级 (*.tbe *.xml)</translation>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="113"/>
@@ -1726,13 +1733,13 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="103"/>
         <source>(empty)</source>
-        <translation>(vuoto)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ToolboxListWidgetItem.cpp" line="110"/>
         <source>%1x %2</source>
         <extracomment>%1 is the number of items, %2 is the name of the item</extracomment>
-        <translation>%1x %2</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1750,7 +1757,7 @@ You might want to read them—it may help!</source>
     <message>
         <location filename="../src/view/ViewPostIt.ui" line="122"/>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/ViewPostIt.cpp" line="154"/>
@@ -1769,7 +1776,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/ViewWorld.cpp" line="117"/>
         <source>    %1 fps; %2 s</source>
-        <translation>    %1 fps; %2 s</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1777,7 +1784,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="75"/>
@@ -1802,7 +1809,7 @@ Reset the simulation?</source>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="158"/>
         <source>Go to next level</source>
-        <translation>Vai al prossimo livello</translation>
+        <translation>转到下一等级</translation>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.ui" line="164"/>
@@ -1813,7 +1820,7 @@ Reset the simulation?</source>
         <location filename="../src/view/WinFailDialog.cpp" line="37"/>
         <source>Congratulations!</source>
         <extracomment>make sure the translated text fits - the rest won't be shown</extracomment>
-        <translation>Congratulazioni!</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/WinFailDialog.cpp" line="43"/>

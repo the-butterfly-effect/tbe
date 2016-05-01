@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Giuseppe Pignataro <rogepix@gmail.com>, 2016
 # Riccardo Di Maio <riccardodimaio11@gmail.com>, 2015
+# Sebastiano Pistore <olatusrooc@virgilio.it>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: thebutterflyeffect\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-10 20:57+0200\n"
-"PO-Revision-Date: 2016-04-10 19:00+0000\n"
-"Last-Translator: Klaas van Gend <klaas@opentux.nl>\n"
+"PO-Revision-Date: 2016-05-01 10:33+0000\n"
+"Last-Translator: Sebastiano Pistore <olatusrooc@virgilio.it>\n"
 "Language-Team: Italian (http://www.transifex.com/Magic/thebutterflyeffect/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +26,7 @@ msgstr " :-( "
 
 #: tbe_levels:2
 msgid "10kg Weight"
-msgstr ""
+msgstr "Un peso di 10 kg"
 
 #: tbe_levels:3
 msgid ""
@@ -34,7 +36,7 @@ msgstr ""
 
 #: tbe_levels:4
 msgid "99 Luftballons"
-msgstr ""
+msgstr "99 palloncini"
 
 #: tbe_levels:5
 msgid "99 Luftballons,<br>nanana na nana naaa..."
@@ -84,7 +86,7 @@ msgstr ""
 
 #: tbe_levels:16
 msgid "Another game from my childhood."
-msgstr ""
+msgstr "Questo è un altro gioco della mia infanzia."
 
 #: tbe_levels:17
 msgid "Another pin needs kicking!"
@@ -177,7 +179,7 @@ msgstr ""
 
 #: tbe_levels:38
 msgid "Boom! Boom! Boom!"
-msgstr ""
+msgstr "Boom! Boom! Boom!"
 
 #: tbe_levels:39
 msgid "Both pins have to go down."
@@ -285,15 +287,15 @@ msgstr ""
 
 #: tbe_levels:66
 msgid "Bridge the Gap 1"
-msgstr ""
+msgstr "Colma la lacuna 1"
 
 #: tbe_levels:67
 msgid "Bridge the Gap 2"
-msgstr ""
+msgstr "Colma la lacuna 2"
 
 #: tbe_levels:68
 msgid "Bridge the Gap 3"
-msgstr ""
+msgstr "Colma la lacuna 3"
 
 #: tbe_levels:69
 msgid "But a lot needs to happen before that pin moves."
@@ -466,11 +468,11 @@ msgstr ""
 
 #: tbe_levels:108
 msgid "Contraption 1"
-msgstr ""
+msgstr "Congegno 1"
 
 #: tbe_levels:109
 msgid "Contraption 2"
-msgstr ""
+msgstr "Congegno 2"
 
 #: tbe_levels:110
 msgid "Controlled Detonation"
@@ -483,7 +485,7 @@ msgstr ""
 
 #: tbe_levels:112
 msgid "Creativity"
-msgstr ""
+msgstr "Creatività"
 
 #: tbe_levels:113
 msgid "Deliver the birthday present to Jumping Jack."
@@ -499,7 +501,7 @@ msgstr ""
 
 #: tbe_levels:116
 msgid "Dial B for Boom"
-msgstr ""
+msgstr "Selezionare B per Boom"
 
 #: tbe_levels:117
 msgid "Dial the right number!"
@@ -511,7 +513,7 @@ msgstr ""
 
 #: tbe_levels:119
 msgid "Domino"
-msgstr ""
+msgstr "Domino"
 
 #: tbe_levels:120
 msgid "Domino Chest"
@@ -536,7 +538,7 @@ msgstr ""
 
 #: tbe_levels:125
 msgid "Don't worry."
-msgstr ""
+msgstr "Non ti preoccupare."
 
 #: tbe_levels:126
 msgid "Don't you love these old cartoons?"
@@ -561,19 +563,19 @@ msgstr ""
 
 #: tbe_levels:131
 msgid "Dynamite (555-0547)"
-msgstr ""
+msgstr "Dinamite (555-0547)"
 
 #: tbe_levels:132
 msgid "Dynamite (555-1170)"
-msgstr ""
+msgstr "Dinamite (555-1170)"
 
 #: tbe_levels:133
 msgid "Dynamite (555-8155)"
-msgstr ""
+msgstr "Dinamite (555-8155)"
 
 #: tbe_levels:134
 msgid "En garde! (That's French)"
-msgstr ""
+msgstr "En garde! (è francese)"
 
 #: tbe_levels:135
 msgid "Extreme Tux Racer"
@@ -589,7 +591,7 @@ msgstr ""
 
 #: tbe_levels:138
 msgid "Find the Message..."
-msgstr ""
+msgstr "Trova il Messaggio..."
 
 #: tbe_levels:139
 msgid "Find the right combination and blow everything up.<br><br>Post-It Boy"
@@ -613,15 +615,15 @@ msgstr ""
 
 #: tbe_levels:144
 msgid "Geyser"
-msgstr ""
+msgstr "Geyser"
 
 #: tbe_levels:145
 msgid "Goal Maker"
-msgstr ""
+msgstr "Attaccante"
 
 #: tbe_levels:146
 msgid "GOOOOAAAAAL !!!"
-msgstr ""
+msgstr "GOL!!!"
 
 #: tbe_levels:147
 msgid "Got Milk?"
@@ -629,7 +631,7 @@ msgstr ""
 
 #: tbe_levels:148
 msgid "Hammer"
-msgstr ""
+msgstr "Martello"
 
 #: tbe_levels:149
 msgid "Hanging Box"
@@ -787,11 +789,11 @@ msgstr ""
 
 #: tbe_levels:183
 msgid "I hate Angry Birds!"
-msgstr ""
+msgstr "Io odio Angry Birds!"
 
 #: tbe_levels:184
 msgid "I like Minigolf."
-msgstr ""
+msgstr "Amo il minigolf."
 
 #: tbe_levels:185
 msgid ""
@@ -846,7 +848,7 @@ msgstr ""
 
 #: tbe_levels:196
 msgid "Introducing Pingus"
-msgstr ""
+msgstr "La presentazione di Pingus"
 
 #: tbe_levels:197
 msgid ""
@@ -1113,7 +1115,7 @@ msgstr ""
 
 #: tbe_levels:258
 msgid "Low wall"
-msgstr ""
+msgstr "Muro basso"
 
 #: tbe_levels:259
 msgid "Magic Steel"
@@ -1133,7 +1135,7 @@ msgstr ""
 
 #: tbe_levels:263
 msgid "Marble"
-msgstr ""
+msgstr "Marmo"
 
 #: tbe_levels:264
 msgid "Marble Boulevard"
@@ -1141,7 +1143,7 @@ msgstr ""
 
 #: tbe_levels:265
 msgid "Maze"
-msgstr ""
+msgstr "Labirinto"
 
 #: tbe_levels:266
 msgid "Medium Domino"
@@ -1276,7 +1278,7 @@ msgstr ""
 
 #: tbe_levels:297
 msgid "Pingus"
-msgstr ""
+msgstr "Pingus"
 
 #: tbe_levels:298
 msgid ""
@@ -1675,7 +1677,7 @@ msgstr ""
 
 #: tbe_levels:391
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: tbe_levels:392
 msgid "Styrofoam"
@@ -2251,4 +2253,4 @@ msgstr ""
 
 #: tbe_levels:520
 msgid "Zzz"
-msgstr ""
+msgstr "Zzz"

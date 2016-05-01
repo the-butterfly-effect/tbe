@@ -25,12 +25,12 @@
         <location filename="../src/model/PolyObject.cpp" line="48"/>
         <source>Bowling pins are meant to be run over—most
 people prefer to do that using a bowling ball.</source>
-        <translation type="unfinished"/>
+        <translation>Bowlingkäglor är avsedda att göras ner - och de flesta föredrar att använda ett bowlingklot för det ändamålet.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="71"/>
         <source>A serious mass. It is very heavy.</source>
-        <translation type="unfinished"/>
+        <translation>En rejäl tyngd. Den är väldigt tung.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="78"/>
@@ -55,93 +55,98 @@ people prefer to do that using a bowling ball.</source>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="94"/>
         <source>Left Birch Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Vänster björkkil</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="95"/>
         <source>This is a movable birch wedge.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en flyttbar björkkil.
+Vänstersidan är lägre än den högra, så saker glider till vänster.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="102"/>
         <source>Right Birch Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Höger björkkil</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="103"/>
         <source>This is a movable birch wedge.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en flyttbar björkkil.
+Vänster sida är högre än den högra, så saker glider till höger.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="110"/>
         <source>Left Fixed Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Vänster fixerad kil</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="111"/>
         <source>This is an immovable wedge.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en fastsittande kil.
+Vänstersidan är lägre än den högra, så saker glider till vänster. </translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="118"/>
         <source>Right Fixed Wedge</source>
-        <translation type="unfinished"/>
+        <translation>Höger fixerad kil</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="119"/>
         <source>This is an immovable wedge.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är en fastsittande kil.
+Vänstersidan är högre än den högra, så saker glider till höger.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="129"/>
         <location filename="../src/model/PolyObject.cpp" line="143"/>
         <source>This quarter arc is attached to the scene.
 It can&apos;t be moved, penetrated or destroyed.</source>
-        <translation type="unfinished"/>
+        <translation>Den här kvartscirkeln är fäst vid scenen.
+Den kan inte flyttas, genomborras eller förstöras.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="159"/>
         <source>Toy Chest</source>
-        <translation type="unfinished"/>
+        <translation>Leksakskista</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="160"/>
         <source>Most people use a chest to keep things.</source>
-        <translation type="unfinished"/>
+        <translation>De flesta använder en kista för att spara saker.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="170"/>
         <source>Cardboard Box</source>
-        <translation type="unfinished"/>
+        <translation>Pappkartong</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="171"/>
         <source>Cardboard boxes are used to carry small and light things around.</source>
-        <translation type="unfinished"/>
+        <translation>Pappkartonger används för att bära omkring små och lätta saker.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="180"/>
         <source>Small Seesaw</source>
-        <translation type="unfinished"/>
+        <translation>Liten gungbräda</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="181"/>
         <source>One usually puts toddlers on a seesaw, but they&apos;re in short supply.</source>
-        <translation type="unfinished"/>
+        <translation>Man sätter oftast småbarn på gungbrädor, men det finns inte många av dem.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="190"/>
         <source>Rotating Bar</source>
-        <translation type="unfinished"/>
+        <translation>Roterande stång</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="191"/>
         <source>This wooden bar rotates around its center.</source>
-        <translation type="unfinished"/>
+        <translation>Den här trästången roterar runt sitt centrum.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="128"/>
@@ -159,13 +164,14 @@ It can&apos;t be moved, penetrated or destroyed.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="53"/>
         <source>Wooden Bar</source>
-        <translation type="unfinished"/>
+        <translation>Trästång</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="54"/>
         <source>Birch is a type of wood.
 Birch wood beams move and float.</source>
-        <translation type="unfinished"/>
+        <translation>Björk är ett träslag.
+Bjälkar av björkträ rör sig och flyter.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="58"/>

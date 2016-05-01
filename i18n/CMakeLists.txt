@@ -1,7 +1,7 @@
 # i18n handling for The Butterfly Effect
 # Note that the actual translations are handled through transifex
 
-set (ALL_LINGUAS be de es fr gl hr is it lt ms nl ru sv uk)
+set (ALL_LINGUAS be cs da de es et fr gl hr is it lt ms nl oc pl ru sv tr uk zh_CN)
 
 ##############################################################################
 ###  TBE Application translations
