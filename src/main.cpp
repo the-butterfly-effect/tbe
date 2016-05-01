@@ -173,12 +173,6 @@ int main(int argc, char *argv[])
     char* myHashSeedString = strdup("QT_HASH_SEED=1");
     putenv (myHashSeedString);
 
-	//** init splash screen, do it as early in program start as possible
-	QSplashScreen mySplash(QPixmap(":/title_page.png"));
-	mySplash.showMessage(MainWindow::getWelcomeMessage());
-	mySplash.show();
-	app.processEvents();
-
 	//** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
@@ -264,6 +258,12 @@ int main(int argc, char *argv[])
 	}
 	else
         TheTranslator.init();
+
+    //** init splash screen, do it as early in program start as possible
+    QSplashScreen mySplash(QPixmap(":/title_page.png"));
+    mySplash.showMessage(MainWindow::getWelcomeMessage());
+    mySplash.show();
+    app.processEvents();
 
 	DEBUG3("SUMMARY:");
 	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
