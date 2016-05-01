@@ -49,8 +49,6 @@ static const qreal SMALL_RADIUS = CENTER_RADIUS/1.613;
 static const qreal OUTER_DISTANCE = CENTER_RADIUS+SMALL_RADIUS;
 static const qreal TOTAL_RADIUS = OUTER_DISTANCE + SMALL_RADIUS;
 
-static qreal theActionIconScaling = 1.0;
-
 void NamedState::onEntry ( QEvent * event )
 {
 //	DEBUG4("SimulationControls-SimState %s onEntry!", ASCII(theName));
@@ -79,10 +77,6 @@ ActionIcon::ActionIcon(ActionType anActionType,
 					   -OUTER_DISTANCE*sin(anActionType*45.0/180.0*PI) - SMALL_RADIUS);
 	QPointF mySInnerPos(-SMALL_RADIUS, -SMALL_RADIUS);
 	QPointF myLInnerPos(-CENTER_RADIUS,-CENTER_RADIUS);
-
-	// Quite a convoluted way to figure out the scaling transformation that the QGraphicsWidget parent of ours does
-	// TODO/FIXME: I have no clue where that 0.5 comes from, but it appears to work reasonably well...
-	theActionIconScaling = 0.5*mapFromScene(QRectF(0,0,CENTER_RADIUS,CENTER_RADIUS)).boundingRect().width() / CENTER_RADIUS;
 
 	if (isEnabled==false)
 	{
@@ -253,20 +247,8 @@ void PieMenuSingleton::addPieMenuToViewObject(ViewObjectPtr aViewObjectPtr,
 		me()->theCurrentPieMenuPtr = new PieMenu(aViewObjectPtr);
 		me()->theCurrentPieMenuPtr->setup();
 
-		// We need to move the pie menu if otherwise icons
+		// TODO: We need to move the pie menu if otherwise icons
 		// would fall outside of the view.
-		qreal PIE_RADIUS = TOTAL_RADIUS/theActionIconScaling;
-
-		if (aPositionInSceneCoord.x() < theViewRect.left()+PIE_RADIUS)
-			aPositionInSceneCoord.setX(theViewRect.left()+PIE_RADIUS);
-		if (aPositionInSceneCoord.x()> theViewRect.right()-PIE_RADIUS)
-			aPositionInSceneCoord.setX(theViewRect.right()-PIE_RADIUS);
-
-		if (aPositionInSceneCoord.y()<theViewRect.top()+PIE_RADIUS)
-			aPositionInSceneCoord.setY(theViewRect.top()+PIE_RADIUS);
-		if (aPositionInSceneCoord.y()>theViewRect.bottom()-PIE_RADIUS)
-			aPositionInSceneCoord.setY(theViewRect.bottom()-PIE_RADIUS);
-
 		me()->theCurrentPieMenuPtr->setPos(me()->theCurrentPieMenuPtr->mapToParent(me()->theCurrentPieMenuPtr->mapFromScene(aPositionInSceneCoord)));
 	}
 }
