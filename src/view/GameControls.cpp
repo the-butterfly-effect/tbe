@@ -158,7 +158,7 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
         thePauseAction->setEnabled(false);
         thePauseAction->setShortcut(myEmptyKey);
         thePlayAction->setShortcut(myEmptyKey);
-        theResetAction->setEnabled(false);
+        theResetAction->setEnabled(true);
         theGameButtonGroup.setEnabled(false);
         break;
     case GameStateMachine::StoppedStatus:
