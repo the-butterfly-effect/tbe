@@ -173,7 +173,12 @@ int main(int argc, char *argv[])
     char* myHashSeedString = strdup("QT_HASH_SEED=1");
     putenv (myHashSeedString);
 
-	//** set the names to our website
+    //** init splash screen, do it as early in program start as possible
+    QSplashScreen mySplash(QPixmap(":/title_page.png"));
+    mySplash.show();
+    app.processEvents();
+
+    //** set the names to our website
 	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
 	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
 	QCoreApplication::setApplicationName(APPNAME);
@@ -258,11 +263,8 @@ int main(int argc, char *argv[])
 	}
 	else
         TheTranslator.init();
-
-    //** init splash screen, do it as early in program start as possible
-    QSplashScreen mySplash(QPixmap(":/title_page.png"));
+    //** now the i18n is set up, let's show a message in the user's language.
     mySplash.showMessage(MainWindow::getWelcomeMessage());
-    mySplash.show();
     app.processEvents();
 
 	DEBUG3("SUMMARY:");
