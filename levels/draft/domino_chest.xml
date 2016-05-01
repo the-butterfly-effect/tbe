@@ -8,11 +8,9 @@
         <date>1/28/16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Attached bar" count="2">
-            <object angle="0.000" type="BirchBar" X="0.000" height="0.100" Y="0.000" width="0.678">
-                <property key="PivotPoint">(0,0)</property>
+        <toolboxitem count="2">
+            <object angle="0.000" type="RotatingBar" X="0.000" height="0.090" Y="0.000" width="0.75">
                 <property key="Rotatable">true</property>
-                <tooltip>This wooden bar has been attached to the wall and will.&lt;br>when pushed. rotate around its own axis.</tooltip>
             </object>
         </toolboxitem>
         <toolboxitem count="2">
@@ -39,7 +37,7 @@
             <object angle="0.000" type="DominoBlue" X="2.352" height="0.500" Y="4.687" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="2.007" height="0.500" Y="4.687" width="0.100"/>
             <object angle="0.000" type="Floor" X="1.910" height="0.100" Y="4.385" width="2.858"/>
-            <object angle="-1.570" type="BirchBar" X="3.462" height="0.100" Y="4.621" width="0.698">
+            <object angle="-1.5708" type="BirchBar" X="3.462" height="0.100" Y="4.621" width="0.698">
                 <property key="PivotPoint">(0.33,0)</property>
             </object>
             <object angle="0.000" type="Scenery" X="3.462" height="0.090" Y="4.291" width="0.090">
@@ -65,21 +63,15 @@
             <object angle="0.000" type="DominoGreen" X="2.561" height="0.500" Y="3.548" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="2.212" height="0.500" Y="3.554" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="1.893" height="0.500" Y="3.549" width="0.100"/>
-            <object angle="-1.570" type="BirchBar" X="1.583" height="0.100" Y="3.576" width="0.698">
+            <object angle="-1.5708" type="BirchBar" X="1.583" height="0.100" Y="3.576" width="0.698">
                 <property key="PivotPoint">(0.33,0)</property>
             </object>
             <object angle="0.000" type="Scenery" X="1.583" height="0.090" Y="3.246" width="0.090">
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">3</property>
             </object>
-            <object angle="0.000" type="BirchBar" X="0.584" height="0.100" Y="3.240" width="0.734">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="0.584" height="0.090" Y="3.240" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
-            <object angle="0.000" type="Floor" X="2.390" height="0.100" Y="2.292" width="2.580"/>
+            <object angle="0.000" type="RotatingBar" X="0.592" height="0.090" Y="3.235" width="0.75"/>
+            <object angle="0.000" type="Floor" X="2.362" height="0.100" Y="2.292" width="2.635"/>
             <object angle="0.000" type="DominoBlue" X="2.129" height="0.500" Y="2.599" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="3.233" height="0.500" Y="2.594" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="2.871" height="0.500" Y="2.600" width="0.100"/>
@@ -89,7 +81,7 @@
             </object>
             <object angle="0.000" type="Floor" X="3.565" height="0.100" Y="0.992" width="7.014"/>
             <object angle="-5.437" type="Floor" X="4.358" height="0.100" Y="1.851" width="0.681"/>
-            <object angle="-0.726" type="Floor" X="4.067" height="0.100" Y="1.725" width="0.157"/>
+            <object angle="-0.726" type="Floor" X="4.071" height="0.100" Y="1.721" width="0.168"/>
             <object angle="0.000" type="Floor" X="6.278" height="0.100" Y="3.079" width="1.437"/>
             <object angle="0.000" type="Floor" X="6.025" height="0.100" Y="2.346" width="1.944"/>
             <object angle="0.000" type="DominoRed" X="6.893" height="0.500" Y="3.381" width="0.100" ID="goaldomino3">
@@ -107,21 +99,15 @@
             <object angle="0.000" type="DominoGreen" X="6.585" height="0.500" Y="3.386" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="6.294" height="0.500" Y="3.381" width="0.100"/>
             <object angle="0.000" type="DominoGreen" X="5.970" height="0.500" Y="3.381" width="0.100"/>
-            <object angle="-1.573" type="QuarterArc40" X="0.848" height="0.483" Y="2.144" width="0.495"/>
+            <object angle="-1.5708" type="QuarterArc40" X="0.848" height="0.483" Y="2.144" width="0.495"/>
             <object angle="0.000" type="Wall" X="0.120" height="4.393" Y="3.242" width="0.130"/>
             <object angle="9.099" type="Floor" X="5.186" height="0.100" Y="3.497" width="0.782"/>
             <object angle="-0.019" type="Wall" X="7.890" height="2.704" Y="3.616" width="0.200"/>
-            <object angle="4.707" type="Floor" X="1.044" height="0.100" Y="2.544" width="0.295"/>
+            <object angle="-1.5708" type="Floor" X="1.034" height="0.120" Y="2.544" width="0.305"/>
             <object angle="0.000" type="Wall" X="0.524" height="0.674" Y="3.998" width="0.099"/>
             <object angle="0.000" type="Floor" X="0.239" height="0.100" Y="3.122" width="0.098"/>
             <object angle="0.000" type="Wall" X="0.648" height="0.478" Y="1.657" width="0.099"/>
-            <object angle="0.000" type="BirchBar" X="4.930" height="0.100" Y="3.989" width="0.627">
-                <property key="PivotPoint">(0,0)</property>
-            </object>
-            <object angle="0.000" type="Scenery" X="4.930" height="0.090" Y="3.989" width="0.090">
-                <property key="ImageName">brass-pin</property>
-                <property key="ZValue">3</property>
-            </object>
+            <object angle="0.000" type="RotatingBar" X="4.930" height="0.09" Y="3.989" width="0.75"/>
             <object angle="0.000" type="VolleyBall" X="4.930" height="0.210" Y="4.159" width="0.210"/>
             <object angle="0.000" type="Floor" X="6.951" height="0.100" Y="1.224" width="0.110"/>
         </predefined>
