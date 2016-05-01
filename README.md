@@ -18,9 +18,9 @@ to run the game.
 If you downloaded the installer, you now have an icon on your desktop: 
 just (double-)click it to enjoy the game.
 
-There are 45 levels.
-All levels up to "Find the Message" are definitely playable, a few levels may
-need a bit more polish. 
+There are 76 levels.
+All 63 levels up to and including "Find the Message" are definitely playable, 
+a few levels may need a bit more polish. 
 The levels after "Find the Message" are harder levels, play at your own risk!
 
 
