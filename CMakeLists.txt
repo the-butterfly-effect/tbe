@@ -49,10 +49,6 @@ configure_file(
     ${PROJECT_BINARY_DIR}/tbe_paths.h
 )
 
-# for internal Qt-related debugging sessions
-#set(QT_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../qt-4.x-src-verify/install")
-#set(QT_QMAKE_EXECUTABLE ${QT_ROOT_DIR}/bin/qmake)
-
 add_subdirectory(imagery)
 add_subdirectory(src)
 add_subdirectory(i18n)
@@ -171,7 +167,7 @@ ELSE()
         SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installer/License")
     endif("${RPM}")
 
-    set(CPACK_RPM_PACKAGE_REQUIRES "libqt5-x11 >= 5.2.0")
+    set(CPACK_RPM_PACKAGE_REQUIRES "libQt5Core5 >= 5.2.0")
     #set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/postinst;${CMAKE_CURRENT_SOURCE_DIR}/installer/debian/prerm;" )
     set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt5-svg (>=5.2), libqtgui5 (>=5.2), libqt5-xml (>=5.2), libqtcore5 (>=5.2)")
     set(CPACK_DEBIAN_PACKAGE_SECTION "games")
