@@ -5,6 +5,9 @@ description: The Butterfly Effect is a free and open source physics puzzle game.
 # Jekyll settings
 exclude: [README.md, TODO.md]
 permalink: /blog/:year/:month/:day/:title/
+gems:
+        - jekyll-sitemap
+        - jekyll-feed
 # Front Matter
 defaults:
   - 
