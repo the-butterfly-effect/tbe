@@ -140,7 +140,7 @@ ActionIcon::ActionIcon(ActionType anActionType,
 
 
 PieMenu::PieMenu(ViewObjectPtr aParentPtr)
-	: QGraphicsWidget(aParentPtr), theVOPtr(aParentPtr), wasIconClicked(false)
+    : QGraphicsWidget(aParentPtr.data()), theVOPtr(aParentPtr), wasIconClicked(false)
 {
 	theAOPtr = aParentPtr->getAbstractObjectPtr();
 
@@ -220,7 +220,7 @@ PieMenuSingleton::PieMenuSingleton(void)
 ViewObjectPtr PieMenuSingleton::getPieMenuParent(void)
 {
 	if (me()->theCurrentPieMenuPtr==nullptr)
-		return nullptr;
+        return ViewObjectPtr(nullptr);
 	return me()->theCurrentPieMenuPtr->theVOPtr;
 }
 

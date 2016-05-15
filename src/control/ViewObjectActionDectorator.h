@@ -72,7 +72,7 @@ public:
 
     /// Attach as a child to the parent ViewObject
     /// @param aParentPtr  pointer to the ViewObject to become a child to
-    void setViewObject(ViewObjectPtr aParentPtr);
+    void setViewObject(ViewObject* aParentPtr);
 
     /// Set the Decorator proxy image and set the object to call
     /// upon mouse movements.

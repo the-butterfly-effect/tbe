@@ -69,7 +69,7 @@ ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
     QString myImageName;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
         myImageName = getInternalName();
-    theViewObjectPtr = new ViewLink(getThisPtr(), myImageName);
+    theViewObjectPtr = ViewObject::factoryMethod<ViewLink>(getThisPtr(), myImageName);
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     return theViewObjectPtr;
 }
@@ -174,9 +174,7 @@ void Link::updateViewObject(bool ) const
     }
 
     // Sim running: don't need to adjust objects that are static or asleep
-	ViewObject* myVOPtr = theViewObjectPtr;
-	assert(myVOPtr!=nullptr);
-	ViewLink* theVLPtr = dynamic_cast<ViewLink*>(myVOPtr);
+    ViewLink* theVLPtr = dynamic_cast<ViewLink*>(theViewObjectPtr.data());
     assert(theVLPtr!=nullptr);
 
     Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();

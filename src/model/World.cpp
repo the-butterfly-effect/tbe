@@ -127,9 +127,9 @@ void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
 	ViewObjectPtr myVOPtr = anAOPtr->createViewObject();
 	if (nullptr != myVOPtr)
     {
-        theViewWorldPtr->addItem(myVOPtr);
+        theViewWorldPtr->addItem(myVOPtr.data());
         anAOPtr->updateViewObject(false);
-        connect(myVOPtr, SIGNAL(updateEditObjectDialog(AbstractObjectPtr)),
+        connect(myVOPtr.data(), SIGNAL(updateEditObjectDialog(AbstractObjectPtr)),
                 theViewWorldPtr, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
         // TODO: connect(myVOPtr, SIGNAL(destroyed()), ### );
     }

@@ -173,7 +173,7 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getInternalName();
 
-    theViewObjectPtr = new ViewObject(getThisPtr(), myImageName);
+    theViewObjectPtr = ViewObject::factoryMethod<ViewObject>(getThisPtr(), myImageName);
 
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
@@ -197,6 +197,7 @@ void AbstractObject::deletePhysicsObject()
 void AbstractObject::deleteViewObject(void)
 {
     // clear the corresponding ViewObject
+//    delete theViewObjectPtr;
     theViewObjectPtr.clear();
 }
 

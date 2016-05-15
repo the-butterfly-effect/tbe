@@ -36,14 +36,17 @@ class ViewPingus : public ViewObject
 
 	Q_OBJECT
 
-public:
 	// Constructors/Destructors
 	//
 
-	/// Image Constructor
+protected:
+    /// Image Constructor, protected - you cannot create directly,
+    /// use ViewObject::factoryMethod<ViewPingus>(aAbstractObjectPtr) instead.
 	explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
+    friend class ViewObject;
 
-	/**
+public:
+    /**
 	 * Empty Destructor
 	 */
 	virtual ~ViewPingus ( ) override;

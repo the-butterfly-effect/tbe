@@ -35,13 +35,15 @@ class ViewLink : public ViewObject
 
 	Q_OBJECT
 
-public:
 	// Constructors/Destructors
 	//
 
+protected:
 	/// Image Constructor
-        explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
+    explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
+    friend class ViewObject;
 
+public:
 	/**
 	 * Empty Destructor
 	 */

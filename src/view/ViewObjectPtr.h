@@ -20,11 +20,14 @@
 #ifndef VIEWOBJECTPTR_H
 #define VIEWOBJECTPTR_H
 
-/// For making object lifetime code simpler, for ViewObject
-/// we're going to use the QPointer type of Qt.
-/// it will result NULL if the ViewObject we're pointing to, has been removed
-#include <QtCore/QPointer>
+// For making object lifetime code simpler, we're using a QSharedPointer
+// instead of ViewObject*. This allows for 'automatic garbage collection'
+// i.e. the last user of the object automatically frees it.
+
+#define QT_SHAREDPOINTER_TRACK_POINTERS
+#include <QtCore/QSharedPointer>
 class ViewObject;
-typedef QPointer<ViewObject> ViewObjectPtr;
+typedef QSharedPointer<ViewObject> ViewObjectPtr;
+typedef QWeakPointer<ViewObject> ViewObjectWeakPtr;
 
 #endif // VIEWOBJECTPTR_H

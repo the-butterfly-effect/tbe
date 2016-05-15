@@ -68,7 +68,7 @@ ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 {
 	if (nullptr!=theViewObjectPtr)
 		return theViewObjectPtr;
-	theViewObjectPtr = new ViewPostIt(getThisPtr());
+    theViewObjectPtr = ViewObject::factoryMethod<ViewPostIt>(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	return theViewObjectPtr;
 }

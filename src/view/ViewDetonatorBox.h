@@ -35,14 +35,16 @@ class ViewDetonatorBox : public ViewObject
 
 	Q_OBJECT
 
-public:
+protected:
 	// Constructors/Destructors
 	//
 
 	/// Image Constructor
 	ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
+    friend class ViewObject;
 
-	/**
+public:
+    /**
 	 * Empty Destructor
 	 */
     virtual ~ViewDetonatorBox ( ) override;

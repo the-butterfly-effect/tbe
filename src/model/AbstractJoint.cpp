@@ -38,7 +38,7 @@ AbstractJoint::~AbstractJoint()
 ViewObjectPtr AbstractJoint::createViewObject(float aDefaultDepth)
 {
 	if (isChildJoint())
-		return nullptr;
+        return ViewObjectPtr(nullptr);
 	else
 		return AbstractObject::createViewObject(aDefaultDepth);
 }

@@ -39,16 +39,18 @@ class ViewPostIt : public ViewObject
 
 	Q_OBJECT
 
-public:
 	// Constructors/Destructors
 	//
 
+protected:
 	/**
 	 * Empty Constructor
 	 */
     explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr);
+    friend class ViewObject;
 
-	/**
+public:
+    /**
 	 * Empty Destructor
 	 */
 	virtual ~ViewPostIt ( );

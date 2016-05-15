@@ -306,7 +306,7 @@ ViewObjectPtr  Pingus::createViewObject(float aDefaultDepth)
 {
 	if (nullptr != theViewObjectPtr)
 		return theViewObjectPtr;
-	theViewObjectPtr = new ViewPingus(getThisPtr());
+    theViewObjectPtr = ViewObject::factoryMethod<ViewPingus>(getThisPtr());
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	updateViewPingus();
 	return theViewObjectPtr;

@@ -90,7 +90,7 @@ bool AbstractUndoCommand::isViewObjectColliding(void)
             myCollidingItems += i->collidingItems(Qt::IntersectsItemShape );
     }
     // Add theViewObject to the list as well
-    myChildItems += theViewObjPtr;
+    myChildItems += theViewObjPtr.data();
 
     // Finally... Check for collisions.
     foreach(QGraphicsItem* j, myCollidingItems)

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2012 Klaas van Gend
+ * This file copyright (C) 2011,2012,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -78,6 +78,7 @@ ViewObject::~ViewObject()
 {
     DEBUG1ENTRY;
     emit updateEditObjectDialog(nullptr);
+    // theAOPtr has refcounting, so the below aids towards automatic removal
     theAbstractObjectPtr = nullptr;
 }
 
@@ -183,11 +184,11 @@ void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent )
     // Don't allow moving if a pie menu is already visible on this object...
     if (theMUCPtr==nullptr
             && theAbstractObjectPtr->isMovable()
-            && PieMenuSingleton::getPieMenuParent()!=this)
+            && PieMenuSingleton::getPieMenuParent()!=getThisPtr())
     {
         hoverLeaveEvent(nullptr);
         PieMenuSingleton::clearPieMenu();
-        theMUCPtr=UndoSingleton::createUndoCommand(this,
+        theMUCPtr=UndoSingleton::createUndoCommand(getThisPtr(),
                                                    ActionIcon::ACTION_MOVE);
         theMUCPtr->mousePressEvent(anEvent);
     }
@@ -241,7 +242,7 @@ void ViewObject::realMousePressEvent(void)
     if (theMUCPtr==nullptr)
     {
         hoverLeaveEvent(nullptr);
-        PieMenuSingleton::addPieMenuToViewObject(this, theClickedScenePos);
+        PieMenuSingleton::addPieMenuToViewObject(getThisPtr(), theClickedScenePos);
     }
 }
 

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2012 Klaas van Gend
+ * This file copyright (C) 2011,2012,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@
 class AbstractUndoCommand;
 #include "ViewObjectActionDectorator.h"
 
+
 /** class ViewObject
   *
   * This class abstracts the actual drawing of objects
@@ -38,20 +39,37 @@ class ViewObject : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT;
 
-public:
-	/// simple constructor
+protected:
+    /// simple constructor, do not use directly - use factoryMethod instead
     explicit ViewObject(AbstractObjectPtr anAbstractObjectPtr);
 
 	/// image name constructor
     ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName);
 
-	/**
+public:
+    /// Static factory method member for ViewObjects and all children.
+    /// Usage: ViewObjectPtr ChildPtr = ViewObject::factoryMethod<ViewPingus>(usual constructor arguments);
+    /// @param _Tp  is ChildObjectName - class name of the child object
+    /// @param __args  are the arguments to be forwarded to the constructor of the child object
+    /// @returns a QSharedPointer pointing to the ViewObject (child) instance.
+    template<typename _Tp, typename... _Args>
+      static ViewObjectPtr factoryMethod(_Args&&... __args)
+      {
+        QSharedPointer<_Tp> p(new _Tp(std::forward<_Args>(__args)...));
+        p->theThisPtr = p;
+        return p;
+      }
+
+    /**
 	 * Empty Destructor
 	 */
 	virtual ~ViewObject ( );
 
     AbstractObjectPtr getAbstractObjectPtr(void) const
     { return theAbstractObjectPtr->getThisPtr(); }
+
+    ViewObjectPtr getThisPtr() const
+    { return ViewObjectPtr(theThisPtr); }
 
 	const QString& getBaseImageName() const
 	{ return theBaseImageName; }
@@ -139,6 +157,8 @@ private:
 	qreal theOldWidth;
 	qreal theOldHeight;
 	Position theOldPos;
+
+    ViewObjectWeakPtr theThisPtr;
 
     // no copy constructor or assignment operators here!
     Q_DISABLE_COPY ( ViewObject )

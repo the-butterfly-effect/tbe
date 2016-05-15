@@ -97,7 +97,7 @@ ViewObjectPtr  DetonatorBox::createViewObject(float aDefaultDepth)
 	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
 		myImageName = getName();
 
-    theViewObjectPtr = new ViewDetonatorBox(getThisPtr(), myImageName);
+    theViewObjectPtr = ViewObject::factoryMethod<ViewDetonatorBox>(getThisPtr(), myImageName);
 	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
 	updateViewObject(false);
 
