@@ -99,7 +99,7 @@ void TranslationGuide::createPhysicsObject(void)
 	myJointDef.maxMotorForce = myForce;
 	myJointDef.motorSpeed = -myMotorSpeed;
 
-	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    theJointPtr = (b2PrismaticJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 void TranslationGuide::initTG_Attributes ( )

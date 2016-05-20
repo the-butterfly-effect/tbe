@@ -110,7 +110,7 @@ void Link::createPhysicsObject(void)
                           (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toB2Vec2(),
                           (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toB2Vec2());
     myJointDef.userData = this;
-    theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    theJointPtr = (b2DistanceJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 Position Link::getTempCenter() const
