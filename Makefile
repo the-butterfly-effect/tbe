@@ -12,9 +12,12 @@ all: usr/games/tbe
 
 usr/games/tbe: ${BUILDDIR}/src/tbe
 
+sanitizers:	EXTRACMAKEFLAGS=-DECM_ENABLE_SANITIZERS='address;leak;undefined' -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=clang++
+sanitizers:     ${BUILDDIR}/src/tbe
+
 ${BUILDDIR}/src/tbe:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=${BUILDTYPE} -DWITH_DOCS=${WITH_DOCS} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+	cd ${BUILDDIR} && cmake ${EXTRACMAKEFLAGS} -DCMAKE_BUILD_TYPE=${BUILDTYPE} -DWITH_DOCS=${WITH_DOCS} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 	cd ${BUILDDIR} && make -j 6
 	cd ${BUILDDIR} && make DESTDIR=.. install
 	ln -sf usr/games/tbe .
@@ -25,7 +28,6 @@ slow:
 
 regression: usr/games/tbe
 	./tbe --regression levels/draft/balloons-do-poof.xml:6, \
-	      --regression levels/draft/balloons-go-up.xml:9, \
 	      --regression levels/draft/bouncing_balls.xml:6, \
 	      --regression levels/draft/butterfly-on-steroids.xml:65, \
 	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
