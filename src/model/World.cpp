@@ -54,11 +54,17 @@ World::World ( void) : theB2WorldPtr(nullptr)
 
 World::~World ( )
 {
-	DEBUG3ENTRY;
-	theObjectPtrList.clear();
-	theToBeRemovedList.clear();
-	AbstractObject::setTheB2WorldPtr(nullptr);
-	theStaticWorldPtr = nullptr;
+    DEBUG3ENTRY;
+    // Call delete on Goals explictly - they are not shared_ptrs.
+    for (auto& i : theGoalPtrList)
+        delete i;
+    // Clear these two lists, we need to ensure that they no longer have
+    // shared_ptrs pointing to our Objects, so they hopefully wither away.
+    theObjectPtrList.clear();
+    theToBeRemovedList.clear();
+    AbstractObject::setTheB2WorldPtr(nullptr);
+    theStaticWorldPtr = nullptr;
+    DEBUG3("end of ~World()");
 }
 
 //
