@@ -177,7 +177,7 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
         thePauseAction->setEnabled(true);
         thePauseAction->setShortcut(mySpaceKey);
         thePlayAction->setShortcut(myEmptyKey);
-        theResetAction->setEnabled(false);
+        theResetAction->setEnabled(true);
         break;
     case GameStateMachine::PausedStatus:
         // enable the reset - only makes sense in this state :-)
