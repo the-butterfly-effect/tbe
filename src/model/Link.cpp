@@ -52,7 +52,15 @@ Link::Link(void)
 
 Link::~Link ()
 {
-    // nothing real to do ?!?
+    DEBUG5("Link::~Link() %p", this);
+    clearObjectReferences();
+}
+
+
+void Link::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+
     theFirstPtr  = nullptr;
     theSecondPtr = nullptr;
 
@@ -61,6 +69,7 @@ Link::~Link ()
     delete theSecondLocalPosPtr;
     theSecondLocalPosPtr = nullptr;
 }
+
 
 ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
 {

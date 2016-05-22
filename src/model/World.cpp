@@ -55,13 +55,25 @@ World::World ( void) : theB2WorldPtr(nullptr)
 World::~World ( )
 {
     DEBUG3ENTRY;
+    deletePhysicsWorld();
+    // Remove all contactpoints
+    clearLists();
     // Call delete on Goals explictly - they are not shared_ptrs.
     for (auto& i : theGoalPtrList)
         delete i;
-    // Clear these two lists, we need to ensure that they no longer have
-    // shared_ptrs pointing to our Objects, so they hopefully wither away.
-    theObjectPtrList.clear();
     theToBeRemovedList.clear();
+    theNoCollisionList.clear();
+    // Clear the ObjectPtrList, we need to ensure that it no longer has
+    // shared_ptrs pointing to our Objects, so they hopefully wither away.
+    while (!theObjectPtrList.empty())
+    {
+        AbstractObjectPtr myOPtr = theObjectPtrList.front();
+        // first clear the references in this object
+        myOPtr->clearObjectReferences();
+        // then remove the sharedptr from the list
+        theObjectPtrList.pop_front();
+        // then let the local sharedptr go into oblivion
+    }
     AbstractObject::setTheB2WorldPtr(nullptr);
     theStaticWorldPtr = nullptr;
     DEBUG3("end of ~World()");
@@ -319,7 +331,6 @@ bool World::removeObject(AbstractObjectPtr anObjectPtr)
 {
 	if (anObjectPtr == nullptr)
 		return false;
-    DEBUG5("removeObject(%p = %s)", anObjectPtr.get(), ASCII(anObjectPtr->getName()));
 	int myPos = theObjectPtrList.indexOf(anObjectPtr);
 
 	if (myPos == -1)

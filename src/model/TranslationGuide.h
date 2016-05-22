@@ -52,9 +52,12 @@ public:
 	  */
 	TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection);
 
-	virtual ~TranslationGuide() {}
+    virtual ~TranslationGuide();
 
-	/// overridden from AbstractObject
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
+    /// overridden from AbstractObject
 	/// (this class does not have a body, only a joint)
     void createPhysicsObject(void) override;
 

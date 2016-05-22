@@ -57,7 +57,17 @@ PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativ
 PivotPoint::~PivotPoint()
 {
 	DEBUG5("PivotPoint::~PivotPoint() for %p", this);
+    clearObjectReferences();
 }
+
+void PivotPoint::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+
+    theFirstPtr  = nullptr;
+    theSecondPtr = nullptr;
+}
+
 
 void PivotPoint::createPhysicsObject(void)
 {

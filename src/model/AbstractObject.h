@@ -224,6 +224,12 @@ public:
     ///       override it.
     virtual void causeWounded(WhyWounded aReason);
 
+    /// Upon destruction, we need to be able to first kill all references this
+    /// object has to other objects, before we send its sharedptr into oblivion
+    /// (otherwise, the destructor will not be called because other objects
+    /// still referring to it)
+    virtual void clearObjectReferences();
+
 	/// @returns Pointer to the B2Body for the relative position asked for.
 	///          Might return nullptr if no body or if outside body (see warning)
 	/// @param   Relative position (to the center of the object) to look for
@@ -511,7 +517,6 @@ protected:
 	friend class AbstractObjectSerializer;
 	friend class ObjectFactory;
 	friend class AbstractJoint;
-
 
 private:
 	// disable copy constructor / assignment operator

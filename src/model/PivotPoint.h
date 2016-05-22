@@ -58,6 +58,9 @@ public:
 
 	virtual ~PivotPoint();
 
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
     /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
 	ViewObjectPtr createViewObject(float) override
 	{ return ViewObjectPtr(nullptr); }

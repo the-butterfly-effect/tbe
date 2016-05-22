@@ -36,7 +36,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
     : QGraphicsPixmapItem(nullptr), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
     // nothing to do yet :-)
-	DEBUG5ENTRY;
+    DEBUG4("VO::VO(AOPtr) this=%p", this);
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
     initViewObjectAttributes();
 }
@@ -44,7 +44,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr)
 ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName) :
     QGraphicsPixmapItem(nullptr), theAbstractObjectPtr(anAbstractObjectPtr.get())
 {
-	DEBUG5ENTRY;
+    DEBUG4("VO::VO(AOPtr,imgname) this=%p %s", this, ASCII(anImageName));
     Q_ASSERT(anAbstractObjectPtr!=nullptr);
 
 	if (!anImageName.isEmpty())
@@ -76,7 +76,7 @@ ViewObject::ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anI
 
 ViewObject::~ViewObject()
 {
-    DEBUG1ENTRY;
+    DEBUG4("VO::~VO() this=%p, img=%s", this, ASCII(theBaseImageName));
     emit updateEditObjectDialog(nullptr);
     // theAOPtr has refcounting, so the below aids towards automatic removal
     theAbstractObjectPtr = nullptr;

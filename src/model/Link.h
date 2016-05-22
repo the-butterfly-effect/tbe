@@ -42,6 +42,9 @@ public:
 
 	virtual ~Link();
 
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
 	/** (overridden from AbstractJoint to fixup aspect ratio and overlap)
 	  * @returns pointer to AbstractObject
 	  */

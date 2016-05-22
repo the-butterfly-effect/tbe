@@ -55,6 +55,19 @@ TranslationGuide::TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDi
 	initTG_Attributes();
 }
 
+TranslationGuide::~TranslationGuide()
+{
+}
+
+
+void TranslationGuide::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+
+    theObjectPtr = nullptr;
+}
+
+
 void TranslationGuide::createPhysicsObject(void)
 {
 	if (theWorldPtr==nullptr)
@@ -69,7 +82,7 @@ void TranslationGuide::createPhysicsObject(void)
     }
     if (theObjectPtr==nullptr)
 	{
-		DEBUG2("TranslationGuide: No valid object found...");
+        DEBUG1("TranslationGuide: No valid object found...");
 		return;
 	}
 	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,

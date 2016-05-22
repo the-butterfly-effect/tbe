@@ -39,6 +39,7 @@ static b2World* theStaticB2WorldPtr = nullptr;
 AbstractObject::AbstractObject()
     : AbstractObject("", "", 1.0, 1.0, 0.0, 0.5, "")
 {
+    DEBUG5("AbstractObject::AbstractObject() for %p", this);
 }
 
 AbstractObject::AbstractObject(const QString& aTooltip,
@@ -57,6 +58,7 @@ AbstractObject::AbstractObject(const QString& aTooltip,
       theWidth(aWidth),
       theWorldPtr(nullptr)
 {
+    DEBUG5("AbstractObject::AbstractObject(...) for %p '%s'", this, ASCII(aImageName));
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;
     theB2BodyDefPtr= new b2BodyDef();
@@ -81,11 +83,7 @@ AbstractObject::AbstractObject(const QString& aTooltip,
 
 AbstractObject::~AbstractObject ( )
 {
-	DEBUG5("AbstractObject::~AbstractObject() for %p '%s'", this, ASCII(getID()));
-
-	// destroy the Body
-	//
-	deletePhysicsObject();
+    DEBUG5("AbstractObject::~AbstractObject() for %p '%s'", this, ASCII(getID()));
 
 	// destroy the ShapeDefs
 	//
@@ -101,7 +99,20 @@ AbstractObject::~AbstractObject ( )
 
 void AbstractObject::causeWounded(AbstractObject::WhyWounded)
 {
-  // nothing to do, 'normal' objects cannot 'die'
+    // nothing to do, 'normal' objects cannot 'die'
+}
+
+void AbstractObject::clearObjectReferences()
+{
+    // destroy the Body, if still necessary
+    //
+    deletePhysicsObject();
+
+    // destroy the references to the joints
+    DEBUG3("  deleting %lu joints...", theJointList.size());
+    theJointList.clear();
+    theChildPivotPointPtr = nullptr;
+    theChildTranslationGuidePtr = nullptr;
 }
 
 
@@ -196,9 +207,10 @@ void AbstractObject::deletePhysicsObject()
 
 void AbstractObject::deleteViewObject(void)
 {
+    DEBUG3ENTRY;
     // clear the corresponding ViewObject
-//    delete theViewObjectPtr;
     theViewObjectPtr.clear();
+    assert(theViewObjectPtr.data()==nullptr);
 }
 
 
@@ -288,6 +300,7 @@ void AbstractObject::parseProperties(void)
     if (theChildPivotPointPtr)
     {
         theWorldPtr->removeObject(theChildPivotPointPtr);
+        theChildPivotPointPtr = nullptr;
     }
     Vector myDelta;
 	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
@@ -304,6 +317,7 @@ void AbstractObject::parseProperties(void)
 	if (theChildTranslationGuidePtr)
 	{
 		theWorldPtr->removeObject(theChildTranslationGuidePtr);
+        theChildTranslationGuidePtr = nullptr;
 	}
 	float myAngle;
 	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
