@@ -1,5 +1,14 @@
 # Makefile to 'simplify' using cmake
 #
+# Possible targets:
+#   - all         - Use only once, it builds everything and installs the built tree for local runs.
+#   - slow        - For incremental builds after running 'all'.
+#   - clean       - Removes all build artefacts and the installed tree.
+#   - sanitizers  - Will build using clang++ and ASAN/USAN/LSAN, the 'google sanitizers'.
+#                   The build will output extra messages for run-time problems, useful for debugging.
+#   - regression  - Will run a set of levels with its intended solution to validate the game engine
+#                   is still operating as expected. Spoilers! For developers only.
+#   - package     - Will build installer packages.
 #
 
 BUILDDIR=build
@@ -54,11 +63,8 @@ regression: usr/games/tbe
 	      --regression=levels/picnic/picnic-3.xml:70
 
 # levels currently known to fail regression:
-# TODO: must be fixed before Milestone B release, see issue #34!!!
 failregression: usr/games/tbe
-	# zoing-and-boom
-	# picnic-3
-	# springboard
+	# zoingandboom (cannot set phone numbers using hints yet)
 
 clean:
 	rm -rf ${BUILDDIR} ./tbe usr
