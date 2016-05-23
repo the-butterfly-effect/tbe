@@ -9,7 +9,7 @@
 	<file>SimulationButtonNormal.png</file>
 	<file>SimulationControlsButtonFrame.png</file>
 	<file>SimulationControlsLabelFrame.png</file>
-        <file>tbe-icon.ico</file>
+        <file>../illustrations/tbe-icon.ico</file>
         <file>transparant.png</file>
         <file>WinFail.png</file>
     </qresource>
