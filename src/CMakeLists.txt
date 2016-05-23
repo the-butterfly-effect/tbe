@@ -49,7 +49,6 @@ find_package(Qt5Widgets)
 find_package(Qt5Core)
 find_package(Qt5Xml)
 find_package(Qt5Svg)
-find_package(Qt5Test)
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 # Instruct CMake to run moc automatically when needed.
@@ -82,7 +81,7 @@ endif (ECM_ENABLE_SANITIZERS)
 
 #INCLUDE(${QT_USE_FILE})
 #TARGET_LINK_LIBRARIES(tbe ${QT_LIBRARIES} Box2D)
-TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Qt5::Test Box2D)
+TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
 
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)
