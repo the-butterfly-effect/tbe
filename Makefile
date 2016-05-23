@@ -75,10 +75,10 @@ distclean:
 
 package:
 	mkdir -p ${BUILDDIR}
-	cd ${BUILDDIR} && cmake -DBUILDTYPE=Release ..
+	cd ${BUILDDIR} && cmake -DCMAKE_BUILD_TYPE=Release ..
 	cd ${BUILDDIR} && cpack -G TGZ
 	cd ${BUILDDIR} && cpack -G STGZ
-	cd ${BUILDDIR} && cmake -DRPM=1 -DBUILDTYPE=Release ..
+	cd ${BUILDDIR} && cmake -DRPM=1 -DCMAKE_BUILD_TYPE=Release ..
 	cd ${BUILDDIR} && cpack -G DEB
 	cd ${BUILDDIR} && cpack -G RPM
 
