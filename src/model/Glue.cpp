@@ -59,8 +59,6 @@ Glue::~Glue()
     theFirstLocalPosPtr  = nullptr;
     delete theSecondLocalPosPtr;
     theSecondLocalPosPtr = nullptr;
-    delete theLinkPtr;
-    theLinkPtr = nullptr;
 }
 
 
