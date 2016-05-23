@@ -5,8 +5,7 @@ If you want to know the current status, please look at
 https://github.com/the-butterfly-effect/tbe/milestones/Milestone%20B
 
 This is a fully playable game of beta quality, well on its way to a shiny
-1.0 release. For anyone who has played earlier versions of the game, you'll
-notice a shiny new user interface - but the same levels and objects.
+1.0 release. 
 
 You can download the game at its website, 
 go to          http://the-butterfly-effect.org/
@@ -25,18 +24,20 @@ The levels after "Find the Message" are harder levels, play at your own risk!
 
 
 ###New features & highlights in Milestone B:
- * the Level Creator works
+ * the Level Creator works (mostly)
  * many playability fixes in levels
  * over 20 new levels
  * many new languages, plus the ability to switch language on-the-fly
- * new objects, including the Pingus
- * switch to Qt5
+ * new objects, including the Pingus, cardboard box, and Seesaw
+ * switch to Qt5 for the UI, making the game more "future proof"
+ * visual improvements to existing levels
 
  
 ###Alternative solutions
 If you feel you found a solution to a level that is not right, please post an
 issue on github: https://github.com/the-butterfly-effect/tbe/issues. 
 More info is also availble in the TBE Help menus.
+We plan to add a 'save my solution' option in Milestone C.
 
 
 ###Running in other languages
@@ -51,6 +52,7 @@ Aternatively, you can switch language through the menu "Languages".
 
 ###Known bugs and issues:
   * we are not happy with the current UI, this is the major item for Milestone C.
+  * you will crash the level creator if you enter bogus text in the object editor.
 
 
 ###Thanks:
