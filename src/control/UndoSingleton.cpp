@@ -37,6 +37,8 @@ UndoSingleton::UndoSingleton(void)
 
 void UndoSingleton::clear()
 {
+    delete theCurrentlyActiveUndoCommand;
+    theCurrentlyActiveUndoCommand = nullptr;
     me()->theUndoStack.clear();
 }
 
