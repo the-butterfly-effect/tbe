@@ -262,7 +262,7 @@ içine geçilemez ya da silinemez.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="91"/>
         <source>Hammer</source>
-        <translation type="unfinished"/>
+        <translation>Çekiç</translation>
     </message>
 </context>
 <context>
@@ -412,12 +412,12 @@ Yardım almak için sarı notlara çift tıklayın.</translation>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>İleti</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="20"/>
         <source>Note: changes in this dialog are not undoable!</source>
-        <translation type="unfinished"/>
+        <translation>Not: Bu ileti üzerinde yapılan değişiklikler geri alınamaz.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="30"/>
@@ -482,7 +482,7 @@ Yardım almak için sarı notlara çift tıklayın.</translation>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="180"/>
         <source>Gradient (in front of image):</source>
-        <translation type="unfinished"/>
+        <translation>Gradyan (resmin önünde)</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="189"/>
@@ -492,7 +492,7 @@ Yardım almak için sarı notlara çift tıklayın.</translation>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="214"/>
         <source>The resulting gradient is shown here</source>
-        <translation type="unfinished"/>
+        <translation>Gradyanın son hali burada gösterilir.</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="225"/>
@@ -667,7 +667,7 @@ Yardım almak için sarı notlara çift tıklayın.</translation>
     <message>
         <location filename="../src/view/GameResources.ui" line="108"/>
         <source>This box describes your task.</source>
-        <translation type="unfinished"/>
+        <translation>Bu kutu sizin görevinizi tarif eder.</translation>
     </message>
     <message>
         <location filename="../src/view/GameResources.ui" line="117"/>
@@ -1193,7 +1193,8 @@ Henüz bir şey değişmedi, lütfen düzeltin.</translation>
         <location filename="../src/view/MainWindow.cpp" line="113"/>
         <source>ERROR during reading file '%1': '%2'
 </source>
-        <translation type="unfinished"/>
+        <translation>%1&apos;: &apos;%2&apos; adlı dosyayı kaydederken HATA oluştu.
+</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="119"/>
@@ -1222,7 +1223,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="93"/>
         <source>Welcome to The Butterfly Effect!</source>
-        <translation type="unfinished"/>
+        <translation>Kelebek Etkisi&apos;ne hoş geldiniz!</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
@@ -1233,7 +1234,7 @@ This may affect playability, though!</source>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="209"/>
         <source>Do you really want to discard the current level and start a new one?</source>
-        <translation type="unfinished"/>
+        <translation>Gerçekten mevcut bölümü atmak ve yenisine başlamak istiyor musunuz?</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="231"/>
