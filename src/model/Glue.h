@@ -45,7 +45,10 @@ class Glue : public AbstractJoint
 public:
 	Glue();
 
-	virtual ~Glue() {}
+    virtual ~Glue();
+
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
 
 	/// overridden from AbstractObject
 	/// (this class does not have a body, only two joints)

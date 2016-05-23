@@ -92,6 +92,9 @@ public:
 	DetonatorBox();
     virtual ~DetonatorBox() override;
 
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
 	/// this enum defines the states of the detonator
 	enum States
 	{
@@ -211,7 +214,10 @@ public:
 	Dynamite();
 	virtual ~Dynamite();
 
-	/// overridden from PolyObject because this class wants to register for
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
+    /// overridden from PolyObject because this class wants to register for
 	/// callbacks and needs to restart its state machine
 	virtual void createPhysicsObject(void) override;
 

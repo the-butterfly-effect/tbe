@@ -53,6 +53,26 @@ Glue::Glue() : AbstractJoint()
 }
 
 
+Glue::~Glue()
+{
+    delete theFirstLocalPosPtr;
+    theFirstLocalPosPtr  = nullptr;
+    delete theSecondLocalPosPtr;
+    theSecondLocalPosPtr = nullptr;
+    delete theLinkPtr;
+    theLinkPtr = nullptr;
+}
+
+
+void Glue::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+
+    theFirstPtr  = nullptr;
+    theSecondPtr = nullptr;
+}
+
+
 void Glue::createPhysicsObject(void)
 {
 	DEBUG5("Glue::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());

@@ -48,6 +48,9 @@ public:
 	Spring();
 	virtual ~Spring();
 
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
+
 	/// overridden from RectObject to be able to create the other SpringEnd
 	/// and because this class wants to register for callbacks and
 	/// needs to restart its state machine
@@ -119,7 +122,7 @@ public:
     SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
     virtual ~SpringEnd();
 
-	/// overridden to allow setting a custom ZValue
+    /// overridden to allow setting a custom ZValue
 	ViewObjectPtr createViewObject(float) override
 	{ return ViewObjectPtr(nullptr); }
 

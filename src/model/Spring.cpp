@@ -122,6 +122,13 @@ void Spring::buildShapeList(void)
 	theShapeList.push_back(myBoxFixture);
 }
 
+
+void Spring::clearObjectReferences()
+{
+    theOtherEndPtr = nullptr;
+}
+
+
 void Spring::createPhysicsObject(void)
 {
 	clearShapeList();
@@ -224,6 +231,7 @@ SpringEnd::SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aH
 SpringEnd::~SpringEnd()
 {
 }
+
 
 void SpringEnd::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/)
 {

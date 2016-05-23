@@ -88,6 +88,14 @@ void DetonatorBox::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 	}
 }
 
+
+void DetonatorBox::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+    theHandle = nullptr;
+}
+
+
 ViewObjectPtr  DetonatorBox::createViewObject(float aDefaultDepth)
 {
     if (theViewObjectPtr!=nullptr)
@@ -334,6 +342,14 @@ Dynamite::Dynamite()
 Dynamite::~Dynamite()
 {
 }
+
+
+void Dynamite::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+    theSplatterList.clear();
+}
+
 
 void Dynamite::callbackStep (qreal /*aTimeStep*/, qreal aTotalTime)
 {
