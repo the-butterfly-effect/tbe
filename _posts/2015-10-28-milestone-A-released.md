@@ -17,4 +17,4 @@ Today we released _Milestone A_, the first milestone of _The Butterfly Effect_ u
 
 [Next up is Milestone B](https://github.com/the-butterfly-effect/tbe/milestones/), which we plan to have one new major object, several new levels and the level editor will be enabled again.
 
-To download the latest Milestone, please go to the [Downloads]/#Download) page. 
+To download the latest Milestone, please go to the [Downloads]/#download) page. 
