@@ -4,18 +4,18 @@ layout: page
 
 The Butterfly Effect is a free and open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.
 
-This is a fully playable game of alpha quality, well on its way to a shiny 1.0 release. For anyone who has played earlier versions of the game, you'll notice a sparkling new user interface - but the same levels and objects.
+This is a fully playable game of alpha quality, well on its way to a shiny 1.0 release.
 
 ## Features
 
 _The Butterfly Effect_ has been over five years in the making. That means that even though the game has been designed by hobbyists, the game is rich in features:
 
- * Many different objects: cola bottles, balloons, butterflies, domino stones, springs, dynamite
+ * Many different objects: cola bottles, balloons, butterflies, domino stones, springs, dynamite, seesaws, penguins
  * Many different types of puzzles
- * Works on Linux and Windows
- * Playable in English, Russian, Dutch, Swedish, Spanish, German, Malay, and several other languages. Note that not all languages are 100% [yet](#HelpTranslating)
+ * Works on Linux, Windows and MacOX
+ * Playable in English, Dutch, German, Russian, French, Danish, Swedish, Turkish, Ukrainian and several other languages. Note that not all languages are 100% [yet](#HelpTranslating)
  * Using vector graphics - all images always rendered at the highest quality
- * There are 45 levels. All levels are playable, but a few levels may need a bit more polish.
+ * in Milestone B, there are roughly 70 levels. All levels are playable, but a few levels may need a bit more polish.
 
 ## Screenshots
 
@@ -44,15 +44,14 @@ If you need them, please refer to our [installation instructions](install). If y
 
 | Operating System       | MD5SUM     | &nbsp;Download files&nbsp; | Notes |
 |:-----------------------|:----------:|:--------------------------:|:------|
-| Debian / Ubuntu / Mint | 6fef..fb61 |  [tbe.deb](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.ubuntu1404.deb) | Validated to work on Ubuntu 14.04 |
+| Debian / Ubuntu / Mint | 2df5..b6c6 |  [tbe.deb](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.3.1/the-butterfly-effect.org-0.9.3.1-Linux.deb) |  |
 | Fedora                 | n/a        | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop)  | Fedora 21 and 22 |
-| Opensuse               | a477..50c3 |  [tbe.rpm](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.opensuse132.rpm) | Validated to work on Opensuse 13.2 |
+| Opensuse               | afb6..5df1 |  [tbe.rpm](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.3.1/the-butterfly-effect.org-0.9.3.1-Linux.rpm) | Validated to work on Opensuse 42.1 |
 | Arch Linux             |  n/a       |  n/a | if you want TBE in Arch, please [vote](https://aur.archlinux.org/packages/tbe/) |
 | Mageia Linux           |  n/a       | see [pkgs.org](http://pkgs.org/search//usr/share/applications/tbe.desktop) | Mageia 5 |
-| Other Linux            | f523..be6b |  [tbe.sh](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-Linux.sh) | Self-extracting archive, make sure to install Qt4 4.7+ |
-| Windows 7 or newer     | fe00..11dd |  [tbe.exe](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.2.1/thebutterflyeffect-0.9.2.1-win32.exe) | Windows 7 or newer |
-| MacOS X                |  TBD       |   Bundle announced later &nbsp; | [Build from source](https://github.com/the-butterfly-effect/tbe/wiki/MacOSXBuild) works |
-
+| Other Linux            | 02d7..ccaf |  [tbe.sh](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.3.1/the-butterfly-effect.org-0.9.3.1-Linux.sh) | Self-extracting archive, make sure to install Qt5 5.2+ |
+| Windows 7 or newer     | f257..1189 |  [tbe.exe](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.3.1/the-butterfly-effect.org-0.9.3.1-win32.exe) | Windows 7 or newer |
+| MacOS X                | 0836..cc1e | El Captitan only:  | [tbe.zip](https://github.com/the-butterfly-effect/tbe/releases/download/v0.9.3.1/the-butterfly-effect.org-c98676323e380704a1f9b41a8337bc362b88f779-OSX.zip) |
 
 _if you are a packager and want to add TBE to a distribution or build for another platform, do not hesitate to [contact the developers](#BugsFeedback)_
 
@@ -89,7 +88,7 @@ Note that levels and the UI have different translation mechanisms, but both are 
 
 If you have ideas for levels, we'd love to hear from you!
 
-Probably the easiest way to let us know about your ideas, is to create a login on the [GitHub website](https://github.com/the-butterfly-effect/tbe) and create an issue for TBE. We'll work with you to make your ideas happen. Note that _Milestone B_ will feature a level editor again, so you can design your own levels!
+Probably the easiest way to let us know about your ideas, is to create a login on the [GitHub website](https://github.com/the-butterfly-effect/tbe) and create an issue for TBE. We'll work with you to make your ideas happen. Note that as of _Milestone B_ we have a level editor again, so you can design your own levels!
 
 #### Add more code
 
@@ -101,4 +100,4 @@ Create a login on the [GitHub website](https://github.com/the-butterfly-effect/t
 
 Oh boy. Does TBE still contain bugs?
 
-Please log in to GitHub and [file an issue](https://github.com/the-butterfly-effect/tbe/issues) or contact lead developer [the-butterfly-effect](https://github.com/the-butterfly-effect) by e-mail.
+Please log in to GitHub and [file an issue](https://github.com/the-butterfly-effect/tbe/issues) or contact the developers [the-butterfly-effect](https://github.com/the-butterfly-effect) by e-mail.

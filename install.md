@@ -9,7 +9,7 @@ Thanks to packager/developer _AlexL_, TBE will be available directly from within
 
 ## RPM-based distributions
 
-<p class="text-warning">As of mid-october 2015, we only supply the RPM for Opensuse 13.2 as one of the developers works on Opensuse. We will update this page once other packages catch up after the final release.</p>
+<p class="text-warning">As of mid-october 2015, we only supply the RPM for Opensuse 42.1 as one of the developers works on Opensuse. We will update this page once other packages catch up after the final release.</p>
 
 Every RPM-based distribution allows to use the `rpm` command to install the RPM package like this (make sure to supply the correct file name):
 ```
@@ -50,5 +50,5 @@ Download the installer, double click the installer and follow the steps. The gam
 
 ## MacOSX
 
-For now, please compile the game yourself. We plan to have packaging done before Christmas 2015.
+We have rudimentary MacOSX El *Capitan* _bundle_ available. Download and click it.
 
