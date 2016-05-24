@@ -1,0 +1,54 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Inversion</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Topple the cactus.</description>
+        <date>22.04.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="LeftRamp" angle="0" Y="0" width="1" height="0.325918" X="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="RightRamp" angle="0" Y="0" width="1" height="0.325918" X="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="2.4" height="2.2"/>
+        <predefined>
+            <object type="Floor" angle="0" Y="1.00951" width="1" height="0.1" X="0.572326"/>
+            <object type="Floor" angle="0" Y="1.01" width="1" height="0.1" X="1.84"/>
+            <object type="PostIt" angle="0" Y="1.82715" width="0.22" height="0.22" X="1.21258">
+                <property key="ZValue">1</property>
+                <property key="page1">The wooden bar in the center is screwed on tightly and rotates around its own axis.</property>
+                <property key="page2">If you push the upper end towards one direction, the lower end will go the other way.</property>
+                <property key="page3">Post-It Boy</property>
+            </object>
+            <object type="RotatingBar" angle="-1.5708" Y="0.919" width="1" height="0.12" X="1.203"/>
+            <object type="Cactus" angle="0" Y="0.455729" width="0.25" height="0.4" ID="cactus" X="1.43451"/>
+            <object type="Floor" angle="0" Y="0.201947" width="2.23" height="0.1" X="1.21969"/>
+            <object type="VolleyBall" angle="0" Y="0.357" width="0.21" height="0.21" X="1.013"/>
+            <object type="SoccerBall" angle="0" Y="1.75374" width="0.22" height="0.22" X="2.22037"/>
+            <object type="SoccerBall" angle="0" Y="1.807" width="0.22" height="0.22" X="0.232"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.623529;0.866667;0.87451;1</gradientstop>
+            <gradientstop pos="1">0.713726;0.945098;0.984314;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">cactus</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">cactus</property>
+            <property key="xover">1.7</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint Y="1.26579" number="1" object="LeftRamp" X="1.81954"/>
+    </hints>
+</tbe-level>
