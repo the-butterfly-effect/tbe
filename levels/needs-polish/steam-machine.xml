@@ -29,6 +29,7 @@
                 <property key="ImageName">steam-wheel</property>
                 <property key="Radius">0.8</property>
                 <property key="Mass">3.0</property>
+                <tooltip>This wheel rotates on its own.</tooltip>
             </object>
             <object X="3.2" Y="1.8" type="PivotPoint">
                 <property key="object">SteamWheel</property>

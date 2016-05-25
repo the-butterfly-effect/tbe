@@ -38,6 +38,7 @@
                 <property key="ImageName">golfclub</property>
                 <property key="PivotPoint">(0.6,0)</property>
                 <property key="ZValue">5.0</property>
+                <tooltip>A golf club.</tooltip>
             </object>
             <object width="0.43" X="2.1" Y="3.50" height="1.43" type="Scenery" angle="0">
                 <property key="ImageName">golfer</property>
@@ -118,6 +119,7 @@
             <object width="0.400" X="2.750" Y="0.300" height="0.100" type="Floor" angle="0.015"/>
             <object width="0.120" X="3.970" Y="1.420" height="0.120" type="RectObject" ID="blocker2" angle="0.000">
                 <property key="ImageName">brass-pin</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
             <object width="1.200" X="3.380" Y="1.030" height="0.100" type="BirchBar" angle="5.950">
                 <property key="Mass">3</property>
@@ -155,22 +157,26 @@
             <object width="0.100" X="1.000" Y="0.360" height="0.720" type="RectObject" ID="Base" angle="0.00">
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.5</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="1.000" X="0.550" Y="0.770" height="0.100" type="RectObject" ID="Styro" angle="0.00">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro2,Styro3</property>
                 <property key="Mass">0.1</property>
                 <property key="PivotPoint">(-0.5,0.0)</property>
+                <tooltip>This piece of styrofoam is attached to something.</tooltip>
             </object>
             <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro2" angle="-0.05">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro,Styro3</property>
                 <property key="Mass">0.1</property>
+                <tooltip>This piece of styrofoam is attached to something.</tooltip>
             </object>
             <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro3" angle="0.05">
                 <property key="ImageName">styrofoam</property>
                 <property key="NoCollision">Styro2,Styro3</property>
                 <property key="Mass">0.1</property>
+                <tooltip>This piece of styrofoam is attached to something.</tooltip>
             </object>
             <object width="0.010" X="0.900" Y="0.770" height="0.100" type="PivotPoint" angle="0">
                 <property key="object1">Styro2</property>

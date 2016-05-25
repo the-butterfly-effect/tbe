@@ -8,15 +8,15 @@
         <date>10/13/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" icon="Domino-Stone-Red" name="Domino">
+        <toolboxitem count="2">
             <object type="DominoRed">
                 <property key="Mass">0.3</property>
                 <property key="Resizable">none</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Styrofoam">
+        <toolboxitem count="1" name="Styrofoam Block">
             <object width="0.25" height="0.8" type="RectObject">
-                <tooltip>Styrofoam is light and durable.</tooltip>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
                 <property key="Friction">0.3</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
@@ -52,30 +52,35 @@
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.35" X="6.63" Y="3.1" height="1" type="RectObject">
                 <property key="Friction">0.1</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.35" X="6.60" Y="2.1" height="1" type="RectObject">
                 <property key="Friction">0.1</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.35" X="6.67" Y="1.1" height="1" type="RectObject">
                 <property key="Friction">0.1</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.35" X="6.62" Y="0.35" height="0.5" type="RectObject">
                 <property key="Friction">0.1</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.6" X="7.55" Y="1.94" height="3.65" type="Wall"/>
             <object width="0.2" X="5.5" Y="0.9" height="1.6" type="Floor">
@@ -102,6 +107,7 @@
                 <property key="ImageName">styrofoam</property>
                 <property key="TranslationGuide">1.57</property>
                 <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="1.7" X="4.1" Y="2" height="0.6" type="RightRamp" angle="0">
                 <property key="Bounciness">0.1</property>

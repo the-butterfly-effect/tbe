@@ -44,6 +44,7 @@
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1.5</property>
                 <property key="TranslationGuide">0</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="1.715" X="0.945" Y="1.500" height="0.100" type="Floor" angle="0.000"/>
             <object width="3.507" X="3.455" Y="1.500" height="0.100" type="Floor" angle="0.000"/>
@@ -53,6 +54,7 @@
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1.5</property>
                 <property key="TranslationGuide">0</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="5.447" X="2.811" Y="1.000" height="0.100" type="Floor" angle="0.000"/>
             <object width="2.000" X="2.100" Y="1.250" height="0.380" type="RectObject" ID="styro-bot" angle="0.000">
@@ -60,6 +62,7 @@
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">1.5</property>
                 <property key="TranslationGuide">0</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.220" X="4.311" Y="2.824" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">It’s almost time&lt;br>for goodbyes.</property>

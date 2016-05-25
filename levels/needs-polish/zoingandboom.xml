@@ -60,6 +60,7 @@
                 <property key="Friction">0.02</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.020</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object X="3.5" Y="1.7" width="0.655" angle="0" type="Link" height="0.218">
                 <property key="ImageName">#8080FF</property>
@@ -94,17 +95,20 @@
                 <property key="ImageName">CactusWheel</property>
                 <property key="Mass">0.1</property>
                 <property key="Radius">0.05</property>
+                <tooltip>A suspension bracket with wheels, it can hold an object in mid-air.</tooltip>
             </object>
             <object ID="CactusWheel2" X="4.61" Y="2.35" width="0.1" angle="0" type="CustomBall" height="0.1">
                 <property key="ImageName">CactusWheel</property>
                 <property key="Mass">0.1</property>
                 <property key="Radius">0.05</property>
+                <tooltip>A suspension bracket with wheels, it can hold an object in mid-air.</tooltip>
             </object>
             <object ID="tuigje" X="4.73" Y="2.17" width="0.33" angle="0" type="RectObject" height="0.41">
                 <property key="ImageName">CactusBracket</property>
                 <property key="Mass">0.1</property>
                 <property key="NoCollision">Cactus;CactusWheel1;CactusWheel2;vloertje</property>
                 <property key="ZValue">4.0</property>
+                <tooltip>A suspension bracket with wheels, it can hold an object in mid-air.</tooltip>
             </object>
             <object X="4.86" Y="2.35" width="1" angle="0" type="PivotPoint" height="1">
                 <property key="object1">CactusWheel1</property>
@@ -171,24 +175,28 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
                 <property key="Radius">0.07</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
             <object X="2.22642" Y="1.77547" width="0.14" angle="0" type="CustomBall" height="0.14">
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
                 <property key="Radius">0.07</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
             <object X="2.84509" Y="0.60217" width="0.14" angle="0" type="CustomBall" height="0.14">
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
                 <property key="Radius">0.07</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
             <object X="2.68943" Y="1.57151" width="0.14" angle="0" type="CustomBall" height="0.14">
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
                 <property key="Radius">0.07</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
         </predefined>
         <background>

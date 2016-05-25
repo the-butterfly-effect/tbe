@@ -38,10 +38,12 @@
             <object width="0.2" X="2.90902" angle="0" type="CustomBall" Y="3.8254" height="0.2" ID="wheel1">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Mass">0.1</property>
+                <tooltip>A wheel.</tooltip>
             </object>
             <object width="0.2" X="3.70981" angle="0" type="CustomBall" Y="3.8254" height="0.2" ID="wheel2">
                 <property key="ImageName">steam-wheel</property>
                 <property key="Mass">0.1</property>
+                <tooltip>A wheel.</tooltip>
             </object>
             <object width="0.9" X="3.2923" angle="0" type="CardboardBox" Y="2.18925" height="0.78809" ID="hangingBox">
                 <property key="ZValue">3</property>

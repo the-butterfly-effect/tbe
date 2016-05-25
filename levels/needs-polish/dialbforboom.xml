@@ -68,21 +68,25 @@
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.500" X="2.020" Y="1.350" height="0.100" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.250" X="2.875" Y="1.350" height="0.100" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.250" X="3.125" Y="1.350" height="0.100" type="RectObject" angle="0.000">
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.600" X="1.500" Y="1.100" height="0.100" type="Floor" angle="1.570"/>
             <object width="0.430" X="0.758" Y="0.973" height="0.320" type="Dynamite" ID="555-1234" angle="0.000"/>

@@ -26,42 +26,52 @@
             <object width="0.800" X="6.799" Y="1.567" height="0.340" type="RectObject" angle="1.571">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">1</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="9.200" Y="2.020" height="0.340" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">1</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="7.178" Y="1.582" height="0.340" type="RectObject" angle="1.571">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">1</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="8.990" Y="0.970" height="0.340" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">1</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="7.144" Y="0.282" height="0.340" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">1</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="1.100" Y="0.170" height="0.340" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <property key="Mass">0</property>
+                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.700" X="8.550" Y="1.500" height="0.700" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_square</property>
                 <property key="Mass">5</property>
+                <tooltip>A heavy wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.700" X="7.088" Y="0.817" height="0.700" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_square</property>
                 <property key="Mass">3</property>
+                <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
             <object width="0.700" X="9.402" Y="1.500" height="0.700" type="RectObject" angle="3.140">
                 <property key="ImageName">wood_crate_square</property>
                 <property key="Mass">3</property>
+                <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
             <object width="0.700" X="9.050" Y="0.450" height="0.700" type="RectObject" angle="0.000">
                 <property key="ImageName">wood_crate_square</property>
                 <property key="Mass">3</property>
+                <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
             <object width="4.000" X="8.000" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
             <object width="2.500" X="7.892" Y="2.196" height="0.200" type="BirchBar" angle="0.101">
@@ -71,10 +81,12 @@
             <object width="1.000" X="8.650" Y="2.380" height="1.000" type="RightWedge" angle="-2.268">
                 <property key="Friction">1</property>
                 <property key="Mass">1</property>
+                <tooltip>This is a movable birch wedge.</tooltip>
             </object>
             <object width="1.000" X="7.228" Y="2.247" height="1.000" type="RightWedge" angle="-2.268">
                 <property key="Friction">1</property>
                 <property key="Mass">1</property>
+                <tooltip>This is a movable birch wedge.</tooltip>
             </object>
             <object width="0.270" X="7.695" Y="0.303" height="0.360" type="Balloon" ID="egg1" angle="0.000">
                 <property key="ImageName">egg_1;egg_2;egg_3;Empty</property>

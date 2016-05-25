@@ -88,17 +88,20 @@
                 <property key="ImageName">blue_bike_wheel</property>
                 <property key="Radius">0.22</property>
                 <property key="ZValue">4</property>
+                <tooltip>A bike.</tooltip>
             </object>
             <object width="0.440" X="2.200" Y="0.320" height="0.440" type="CustomBall" ID="RightWheel" angle="0.000">
                 <property key="ImageName">blue_bike_wheel</property>
                 <property key="Mass">3.0</property>
                 <property key="Radius">0.22</property>
                 <property key="ZValue">4</property>
+                <tooltip>A bike.</tooltip>
             </object>
             <object width="1.100" X="1.750" Y="0.530" height="0.700" type="RectObject" ID="BikeBody" angle="0.000">
                 <property key="ImageName">blue_bike_frame</property>
                 <property key="Mass">10.0</property>
                 <property key="ZValue">5</property>
+                <tooltip>A bike.</tooltip>
             </object>
             <object width="1.000" X="1.300" Y="0.320" height="1.000" type="PivotPoint" angle="0.000">
                 <property key="object1">BikeBody</property>

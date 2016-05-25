@@ -34,7 +34,7 @@
             <object width="0.400" X="6.300" Y="0.402" height="0.750" type="ColaMintBottle" ID="kart" angle="-1.571">
                 <property key="ImageName">tuxkart</property>
                 <property key="Thrust">9</property>
-                <tooltip>Vroom, vroom, vroom!</tooltip>
+                <tooltip>Tux will start racing soon.</tooltip>
             </object>
             <object width="1.200" X="0.600" Y="0.600" height="1.200" type="QuarterArc80" angle="3.141"/>
             <object width="1.800" X="0.075" Y="2.000" height="0.150" type="Floor" angle="1.571">

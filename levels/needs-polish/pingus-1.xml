@@ -11,6 +11,7 @@
         <toolboxitem count="2" name="Heavy Crate">
             <object type="RectObject" width="0.600" height="0.370" angle="0.000" X="0.000" Y="0.000">
                 <property key="ImageName">wood_crate_flat</property>
+                <tooltip>A pretty heavy wooden crate, great for stacking.</tooltip>
                 <property key="Mass">50</property>
                 <property key="Rotatable">true</property>
             </object>
@@ -43,6 +44,7 @@
                 <property key="Mass">50</property>
                 <property key="PivotPoint">(-0.307,0.0)</property>
                 <property key="ZValue">4.5</property>
+                <tooltip>Don’t let the pingus get hammered!</tooltip>
             </object>
             <object type="PivotPoint" width="1.000" height="1.000" angle="0.000" X="0.300" Y="3.700">
                 <property key="Speed">-7.0</property>
@@ -184,12 +186,15 @@
             </object>
             <object type="RectObject" width="0.600" height="0.600" angle="0.000" X="5.890" Y="0.400">
                 <property key="ImageName">wood_crate_square</property>
+                <tooltip>A very heavy wooden crate, it doesn’t move.</tooltip>
             </object>
             <object type="RectObject" width="0.600" height="0.600" angle="0.000" X="0.890" Y="0.400">
                 <property key="ImageName">wood_crate_square</property>
+                <tooltip>A very heavy wooden crate, it doesn’t move.</tooltip>
             </object>
             <object type="RectObject" width="0.600" height="0.600" angle="0.000" X="1.410" Y="3.002">
                 <property key="ImageName">wood_crate_square</property>
+                <tooltip>A very heavy wooden crate, it doesn’t move.</tooltip>
             </object>
             <object type="Scenery" width="0.477" height="0.703" angle="0.000" X="2.221" Y="0.456">
                 <property key="ImageName">opendoor</property>

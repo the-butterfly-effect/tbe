@@ -31,6 +31,7 @@
                 <property key="ImageName">Bell</property>
                 <property key="Mass"> 2.0 </property>
                 <property key="PivotPoint">(0.0, 0.27)</property>
+                <tooltip>A bell, it rings when it is hit by something.</tooltip>
             </object>
             <object width="0.220" X="5.656" Y="1.449" height="0.220" type="SoccerBall" angle="0.000"/>
             <object width="0.749" X="3.366" Y="0.352" height="0.100" type="Floor" angle="1.056"/>
@@ -85,6 +86,7 @@
                 <property key="Bounciness">0.7</property>
                 <property key="ImageName">brass-pin</property>
                 <property key="Mass">0</property>
+                <tooltip>A round obstacle, pinned to the sky.</tooltip>
             </object>
         </predefined>
         <background>
