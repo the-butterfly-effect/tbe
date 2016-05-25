@@ -58,28 +58,28 @@
                 <property key="Friction">0.5</property>
             </object>
             <object type="Floor" width="4.376" height="0.100" angle="0.020" X="5.092" Y="3.650"/>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.100" Y="3.880" ID="p1">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="3.100" Y="3.880" ID="p1">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="3.600" Y="3.880" ID="p2">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="3.600" Y="3.880" ID="p2">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.100" Y="3.880" ID="p3">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="4.100" Y="3.880" ID="p3">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="4.600" Y="3.880" ID="p4">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="4.600" Y="3.880" ID="p4">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.100" Y="3.880" ID="p5">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="5.100" Y="3.880" ID="p5">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="5.600" Y="3.880" ID="p6">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="5.600" Y="3.880" ID="p6">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.100" Y="3.880" ID="p7">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="6.100" Y="3.880" ID="p7">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
-            <object type="Pingus" width="0.280" height="0.280" angle="0.000" X="6.600" Y="3.880" ID="p8">
+            <object type="PingusWalkLeft" width="0.280" height="0.280" angle="0.000" X="6.600" Y="3.880" ID="p8">
                 <property key="NoCollision">p1;p2;p3;p4;p5;p6;p7;p8</property>
             </object>
             <object type="Floor" width="4.768" height="0.100" angle="0.000" X="2.399" Y="2.648"/>

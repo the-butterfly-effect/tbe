@@ -75,7 +75,7 @@
             <object X="6.52999" type="Wall" Y="1.83996" angle="0" width="0.101834" height="3.25902"/>
             <object X="3.35851" type="Floor" Y="6.92438" angle="0" width="4.84393" height="0.1"/>
             <object X="6.18091" type="QuarterArc80" Y="6.57438" angle="0" width="0.8" height="0.8"/>
-            <object X="2.36707" type="Pingus" Y="4.64312" angle="0" width="0.28" height="0.28"/>
+            <object X="2.36707" type="PingusWalkLeft" Y="4.64312" angle="0" width="0.28" height="0.28"/>
             <object X="4.54223" type="Floor" Y="4.99353" angle="0" width="1.19914" height="0.1"/>
             <object X="4.08974" type="SoccerBall" Y="5.1633" angle="0" width="0.22" height="0.22"/>
             <object X="4.53404" type="Dynamite" Y="5.20521" angle="0" ID="555-1024" width="0.43" height="0.32"/>

@@ -11,52 +11,53 @@
     <scene>
         <scenesize width="9" height="5"/>
         <predefined>
-            <object type="Balloon" angle="0" Y="2.93705" width="0.27" height="0.36" X="7.25743"/>
-            <object type="BedOfNails" angle="0" Y="2.96067" width="0.8" height="0.15" X="1.57174"/>
-            <object type="BirchBar" angle="0" Y="4.60579" width="1" height="0.1" X="7.38915"/>
-            <object type="BowlingBall" angle="0" Y="1.24176" width="0.22" height="0.22" X="1.0046"/>
-            <object type="Butterfly" angle="0" Y="4.51088" width="0.15" height="0.228027" X="1.40419"/>
-            <object type="Cactus" angle="0" Y="1.66096" width="0.25" height="0.4" X="2.70314"/>
-            <object type="CardboardBox" angle="0" Y="0.890716" width="0.9" height="0.78809" X="2.74077"/>
-            <object type="Floor" angle="0" Y="0.411624" width="1" height="0.1" X="2.72636"/>
-            <object type="ColaCrate" angle="0" Y="0.356078" width="0.85" height="0.6" X="7.94721"/>
-            <object type="CircularSaw" angle="0" Y="4.07304" width="0.38" height="0.38" X="1.70003"/>
-            <object type="ColaMintBottle" angle="0" Y="4.14831" width="0.166" height="0.5" X="6.26055"/>
-            <object type="DetonatorBox" angle="0" Y="0.178073" width="0.33" height="0.35" X="5.51671"/>
-            <object type="Dynamite" angle="0" Y="0.171021" width="0.43" height="0.32" X="6.07674"/>
-            <object type="DominoBlue" angle="0" Y="0.281146" width="0.1" height="0.5" X="6.61018"/>
-            <object type="DominoGreen" angle="0" Y="0.253337" width="0.1" height="0.5" X="7.02731"/>
-            <object type="DominoRed" angle="0" Y="0.286707" width="0.1" height="0.5" X="7.3332"/>
-            <object type="Hammer" angle="0" Y="2.90804" width="0.45" height="0.18" X="3.75964"/>
-            <object type="IBeam" angle="0" Y="4.27979" width="1.4" height="0.1" X="7.38114"/>
-            <object type="LeftFixedWedge" angle="0" Y="1.42158" width="1" height="1" X="7.5228"/>
-            <object type="LeftRamp" angle="0" Y="3.53065" width="1" height="1" X="1.57672"/>
-            <object type="LeftWedge" angle="0" Y="2.57832" width="1" height="1" X="7.54719"/>
-            <object type="PetanqueBoule" angle="0" Y="1.70975" width="0.076" height="0.076" X="0.615065"/>
-            <object type="Pingus" angle="0" Y="0.151991" width="0.28" height="0.28" X="2.83275"/>
-            <object type="PingusExit" angle="0" Y="0.503309" width="1" height="1" X="3.83615"/>
-            <object type="PostIt" angle="0" Y="4.04533" width="0.22" height="0.22" X="0.663719"/>
-            <object type="QuarterArc40" angle="0" Y="4.19041" width="0.4" height="0.4" X="3.41772"/>
-            <object type="QuarterArc80" angle="0" Y="4.37397" width="0.8" height="0.8" X="3.6171"/>
-            <object type="RightFixedWedge" angle="0" Y="1.41006" width="1" height="1" X="6.51886"/>
-            <object type="RightWedge" angle="0" Y="2.57276" width="1" height="1" X="6.53105"/>
-            <object type="RotatingBar" angle="0" Y="2.56792" width="1" height="0.12" X="3.40156"/>
-            <object type="SeesawSmall" angle="0" Y="2.08304" width="2.5" height="0.3" X="3.36902"/>
-            <object type="Skyhook" angle="0" Y="3.71982" width="0.2" height="0.23" X="3.36774"/>
-            <object type="SoccerBall" angle="0" Y="1.96413" width="0.22" height="0.22" X="0.370942"/>
-            <object type="Spring" angle="0" Y="0.113056" width="0.4" height="0.2" X="2.3723"/>
-            <object type="TennisBall" angle="0" Y="1.36415" width="0.068" height="0.068" X="0.753496"/>
-            <object type="ToyChest" angle="0" Y="0.858447" width="1" height="1.7" X="1.48899"/>
-            <object type="VolleyBall" angle="0" Y="2.37688" width="0.21" height="0.21" X="0.248498"/>
-            <object type="Wall" angle="0" Y="3.63889" width="0.2" height="1" X="7.28047"/>
-            <object type="Weight" angle="0" Y="1.31001" width="0.4" height="0.4" X="5.50356"/>
-            <object type="RightRamp" angle="0" Y="1.29607" width="1" height="1" X="0.5599"/>
-            <object type="CustomBall" angle="0" Y="2.86385" width="0.2" height="0.2" X="0.16012"/>
-            <object type="RectObject" angle="0" Y="3.29594" width="1" height="1" X="4.8026"/>
-            <object type="SleepingPingus" angle="0" Y="0.147284" width="0.28" height="0.28" X="4.56839"/>
-            <object type="PolyObject" angle="0" Y="4.43908" width="1" height="1" X="4.70639"/>
-            <object type="Scenery" angle="0" Y="3.62417" width="1" height="1" X="7.96605"/>
-            <object type="BowlingPin" angle="0" Y="0.387692" width="0.12" height="0.34" X="5.09385"/>
+            <object X="7.25743" Y="2.93705" width="0.27" angle="0" type="Balloon" height="0.36"/>
+            <object X="1.57174" Y="2.96067" width="0.8" angle="0" type="BedOfNails" height="0.15"/>
+            <object X="7.38915" Y="4.60579" width="1" angle="0" type="BirchBar" height="0.1"/>
+            <object X="1.0046" Y="1.24176" width="0.22" angle="0" type="BowlingBall" height="0.22"/>
+            <object X="1.40419" Y="4.51088" width="0.15" angle="0" type="Butterfly" height="0.228027"/>
+            <object X="2.70314" Y="1.66096" width="0.25" angle="0" type="Cactus" height="0.4"/>
+            <object X="2.74077" Y="0.890716" width="0.9" angle="0" type="CardboardBox" height="0.78809"/>
+            <object X="2.72636" Y="0.411624" width="1" angle="0" type="Floor" height="0.1"/>
+            <object X="7.94721" Y="0.356078" width="0.85" angle="0" type="ColaCrate" height="0.6"/>
+            <object X="1.70003" Y="4.07304" width="0.38" angle="0" type="CircularSaw" height="0.38"/>
+            <object X="6.26055" Y="4.14831" width="0.166" angle="0" type="ColaMintBottle" height="0.5"/>
+            <object X="5.51671" Y="0.178073" width="0.33" angle="0" type="DetonatorBox" height="0.35"/>
+            <object X="6.07674" Y="0.171021" width="0.43" angle="0" type="Dynamite" height="0.32"/>
+            <object X="6.61018" Y="0.281146" width="0.1" angle="0" type="DominoBlue" height="0.5"/>
+            <object X="7.02731" Y="0.253337" width="0.1" angle="0" type="DominoGreen" height="0.5"/>
+            <object X="7.3332" Y="0.286707" width="0.1" angle="0" type="DominoRed" height="0.5"/>
+            <object X="3.75964" Y="2.90804" width="0.45" angle="0" type="Hammer" height="0.18"/>
+            <object X="7.38114" Y="4.27979" width="1.4" angle="0" type="IBeam" height="0.1"/>
+            <object X="7.5228" Y="1.42158" width="1" angle="0" type="LeftFixedWedge" height="1"/>
+            <object X="1.57672" Y="3.53065" width="1" angle="0" type="LeftRamp" height="1"/>
+            <object X="7.54719" Y="2.57832" width="1" angle="0" type="LeftWedge" height="1"/>
+            <object X="0.615065" Y="1.70975" width="0.076" angle="0" type="PetanqueBoule" height="0.076"/>
+            <object X="2.68" Y="0.152" width="0.28" angle="0" type="PingusSleeping" height="0.28"/>
+            <object X="2.357" Y="0.134" width="0.28" angle="0" type="PingusWalkLeft" height="0.28"/>
+            <object X="3.01789" Y="0.151991" width="0.28" angle="0" type="PingusWalkRight" height="0.28"/>
+            <object X="3.83615" Y="0.503309" width="1" angle="0" type="PingusExit" height="1"/>
+            <object X="0.663719" Y="4.04533" width="0.22" angle="0" type="PostIt" height="0.22"/>
+            <object X="3.41772" Y="4.19041" width="0.4" angle="0" type="QuarterArc40" height="0.4"/>
+            <object X="3.6171" Y="4.37397" width="0.8" angle="0" type="QuarterArc80" height="0.8"/>
+            <object X="6.51886" Y="1.41006" width="1" angle="0" type="RightFixedWedge" height="1"/>
+            <object X="6.53105" Y="2.57276" width="1" angle="0" type="RightWedge" height="1"/>
+            <object X="3.40156" Y="2.56792" width="1" angle="0" type="RotatingBar" height="0.12"/>
+            <object X="3.36902" Y="2.08304" width="2.5" angle="0" type="SeesawSmall" height="0.3"/>
+            <object X="3.36774" Y="3.71982" width="0.2" angle="0" type="Skyhook" height="0.23"/>
+            <object X="0.370942" Y="1.96413" width="0.22" angle="0" type="SoccerBall" height="0.22"/>
+            <object X="1.5068" Y="2.08616" width="0.4" angle="0" type="Spring" height="0.2"/>
+            <object X="0.753496" Y="1.36415" width="0.068" angle="0" type="TennisBall" height="0.068"/>
+            <object X="1.48899" Y="0.858447" width="1" angle="0" type="ToyChest" height="1.7"/>
+            <object X="0.248498" Y="2.37688" width="0.21" angle="0" type="VolleyBall" height="0.21"/>
+            <object X="7.28047" Y="3.63889" width="0.2" angle="0" type="Wall" height="1"/>
+            <object X="5.50356" Y="1.31001" width="0.4" angle="0" type="Weight" height="0.4"/>
+            <object X="0.5599" Y="1.29607" width="1" angle="0" type="RightRamp" height="1"/>
+            <object X="0.16012" Y="2.86385" width="0.2" angle="0" type="CustomBall" height="0.2"/>
+            <object X="4.8026" Y="3.29594" width="1" angle="0" type="RectObject" height="1"/>
+            <object X="4.70639" Y="4.43908" width="1" angle="0" type="PolyObject" height="1"/>
+            <object X="7.96605" Y="3.62417" width="1" angle="0" type="Scenery" height="1"/>
+            <object X="5.09385" Y="0.387692" width="0.12" angle="0" type="BowlingPin" height="0.34"/>
         </predefined>
         <background>
             <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
@@ -64,7 +65,7 @@
         </background>
     </scene>
     <goals>
-        <goal type="escapedPingusCount" isFail="false">
+        <goal isFail="false" type="escapedPingusCount">
             <property key="equalmore">1</property>
         </goal>
     </goals>

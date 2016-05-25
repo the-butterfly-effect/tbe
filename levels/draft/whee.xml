@@ -33,7 +33,7 @@
             </object>
             <object width="1.86192" Y="1.3966" angle="0" type="Floor" X="6.16181" height="0.1"/>
             <object width="3.21467" Y="1.38905" angle="0" type="Floor" X="2.11435" height="0.1"/>
-            <object width="0.28" Y="3.38319" angle="0" type="Pingus" X="6.50401" height="0.28"/>
+            <object width="0.28" Y="3.38319" angle="0" type="PingusWalkLeft" X="6.50401" height="0.28"/>
             <object width="0.492988" Y="0.400917" angle="0" type="Floor" X="1.52913" height="0.207875"/>
             <object width="0.2" Y="0.996224" angle="0" type="Wall" X="5.33366" height="0.693635"/>
             <object width="0.169363" Y="3.36128" angle="0" type="Floor" X="7.00943" height="0.207875"/>

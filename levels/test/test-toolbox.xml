@@ -31,7 +31,9 @@
         <toolboxitem count="1"><object type="LeftRamp"/></toolboxitem>
         <toolboxitem count="1"><object type="LeftWedge"/></toolboxitem>
         <toolboxitem count="1"><object type="PetanqueBoule"/></toolboxitem>
-        <toolboxitem count="1"><object type="Pingus"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusSleeping"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusWalkLeft"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusWalkRight"/></toolboxitem>
         <toolboxitem count="1"><object type="PingusExit"/></toolboxitem>
         <toolboxitem count="1"><object type="QuarterArc40"/></toolboxitem>
         <toolboxitem count="1"><object type="QuarterArc80"/></toolboxitem>
@@ -40,7 +42,6 @@
         <toolboxitem count="1"><object type="RightWedge"/></toolboxitem>
         <toolboxitem count="1"><object type="RotatingBar"/></toolboxitem>
         <toolboxitem count="1"><object type="SeesawSmall"/></toolboxitem>
-        <toolboxitem count="1"><object type="SleepingPingus"/></toolboxitem>
         <toolboxitem count="1"><object type="Skyhook"/></toolboxitem>
         <toolboxitem count="1"><object type="SoccerBall"/></toolboxitem>
         <toolboxitem count="1"><object type="Spring"/></toolboxitem>
