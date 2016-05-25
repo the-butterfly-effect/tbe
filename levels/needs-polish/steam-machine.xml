@@ -8,7 +8,7 @@
         <date>22 June 2010</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="10kg Weight">
+        <toolboxitem count="1">
             <object width="0.6" type="Weight" ID="Weight"/>
         </toolboxitem>
         <toolboxitem count="1">
@@ -74,11 +74,6 @@
                 <property key="object2">FreeThingie@(0,0)</property>
                 <property key="ImageName">driver-1m</property>
                 <property key="ZValue">5</property>
-            </object>
-            <object X="2.2" Y="2.6" type="PostIt">
-                <property key="page1">Pin topples to green in two moves.</property>
-                <property key="page2">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>is brief for once</property>
-                <property key="page3">(Shh … I’m playing chess.)</property>
             </object>
             <object X="2.2" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
         </predefined>
