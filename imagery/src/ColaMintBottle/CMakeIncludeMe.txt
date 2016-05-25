@@ -5,5 +5,6 @@ install(FILES
         ${SRCDIRNAME}/ColaBottleFoaming.svg
         ${SRCDIRNAME}/ColaBottleNormal.svg
         ${SRCDIRNAME}/ColaSplatter.svg
+        ${SRCDIRNAME}/tuxkart.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

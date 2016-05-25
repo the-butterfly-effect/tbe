@@ -1,5 +1,6 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
         ${SRCDIRNAME}/BowlingPin.svg
+        ${SRCDIRNAME}/Milkman666_Cone_svg_1.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

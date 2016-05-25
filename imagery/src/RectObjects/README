@@ -1,15 +1,47 @@
 * basket.svg
 * brass-pin.svg
-* cola_crate.svg        *
-* goal-scenery.svg      *
+* black.svg
+* boulder.svg
+* card-back-blue.svg
+* card-back-red.svg
+* carpenters-rule.svg      *
+* circus-stripe.svg
+* cola_crate.svg           *
+* DarkerBlue.svg
+* DarkerGreen.svg
+* DarkerRed.svg
+* driver-1m.svg
+* driver-2m.svg
+* goal-scenery.svg         *
 * hammer.svg
-* i-beam.svg            *
+* i-beam.svg               *
+* right-side-frame-003.svg
+* sand.svg
 * spring20.svg
+* steam-wheel.svg          *
 * the-sun.svg
+* White-to-green.svg
+* Yellow-to-brown.svg
+
 AUTHOR: Klaas van Gend
 License: PD
 Original graphics for The Butterfly Effect
 The images marked with an asterisk are uploaded to www.openclipart.org
+
+* nicubunu_White_deck_2_of_spades.svg
+* nicubunu_White_deck_6_of_diamonds.svg
+* nicubunu_White_deck_10_of_hearts.svg
+* nicubunu_White_deck_Jack_of_hearts.svg
+* nicubunu_White_deck_Queen_of_spades.svg
+AUTHOR: nicubunu
+SOURCE: www.openclipart.org
+License: PD
+
+* agone_chain.svg
+* agone_chain_rot.svg
+AUTHOR:  "agone"
+LICENSE: PD
+SOURCE:  http://openclipart.org/media/files/agone/11265
 
 * Anonymous_daffodil.svg
 SOURCE:  http://openclipart.org/media/files/Anonymous/12393
@@ -18,8 +50,37 @@ LICENSE: PD
 * Anonymous_daffodil_klaas.svg
 Adapted by Klaas van Gend: mirrored, added leaves.
 
+* Anonymous_Blue_bike.svg
+AUTHOR:  Franck Doucet
+LICENSE: PD
+SOURCE:  Blue bicycle (originally named "vtt_02")
+         http://www.openclipart.org/detail/23878
+
+* blue_bike_frame.svg
+AUTHOR:  Klaas van Gend
+LICENSE: PD
+Remix of the above Anonymous_Blue_bike to fit what's needed for TBE and
+make sure that it renders as expected in Qt's SVG engine.
+
 * rg1024_Grass_texture.svg
 http://openclipart.org/people/rg1024/rg1024_Grass_texture.svg
 As with all images from openclipart.org,  the originals and the derived works
 are in the Public Domain.
+
+* penguinmigrating.svg
+originally drawn by Moini and published on openclipart.org:
+https://openclipart.org/people/Moini/penguinmigrating.svg
+
+* penguin_gliding.svg
+modification of penguinmigrating.svg by Klaas van Gend, march 2014.
+
+* Bell.svg
+SOURCE: http://openclipart.org/detail/96343/christmas-l9-by-inky2010
+LICENSE: CC-0
+Remixed by Klaas van Gend in 2012
+
+* Milk_Carton.svg, milk.png
+SOURCE: http://openclipart.org/detail/23491/tango-style-milk-carton-by-rugby471
+LICENSE: CC-0
+Remixed by Klaas van Gend in 2012
 

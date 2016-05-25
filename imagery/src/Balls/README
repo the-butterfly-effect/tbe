@@ -29,3 +29,23 @@ license:   PD (Public Domain)
 filename:  PetanqueBoule.svg
 author:    Klaas van Gend, original work for The Butterfly Effect
 license:   PD (Public Domain)
+
+filename:  coconut.svg, round_coconut.svg
+author:    Klaas van Gend, original work for The Butterfly Effect
+license:   PD (Public Domain)
+
+filename:  steam-wheel.svg
+author:    Klaas van Gend, original work for The Butterfly Effect
+license:   PD (Public Domain)
+
+filename:  SABROG_Glass_Blue_Ball.svg
+author:    "sabrog"
+license:   PD (Public Domain)
+source:    http://openclipart.org/media/files/SABROG/7098
+
+filename:  blue_bike_wheel.svg
+author:    Klaas van Gend
+license:   PD (Public Domain)
+Remix of Anonymous_Blue_bike.svg (RectObjects) to fit what's needed
+for TBE and make sure that it renders as expected in Qt's SVG engine.
+

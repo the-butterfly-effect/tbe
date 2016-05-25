@@ -1,14 +1,48 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
         ${SRCDIRNAME}/Anonymous_daffodil_klaas.svg
+        ${SRCDIRNAME}/agone_chains.svg
         ${SRCDIRNAME}/basket.svg
+        ${SRCDIRNAME}/Bell.svg
+        ${SRCDIRNAME}/blue_bike_frame.svg
+        ${SRCDIRNAME}/boulder.svg
+        ${SRCDIRNAME}/BottleKnot-left.svg
+        ${SRCDIRNAME}/BottleKnot-right.svg
         ${SRCDIRNAME}/brass-pin.svg
+        ${SRCDIRNAME}/brother-soccer-leg.svg
+        ${SRCDIRNAME}/CactusBracket.svg
+        ${SRCDIRNAME}/card-back-blue.svg
+        ${SRCDIRNAME}/card-back-red.svg
+        ${SRCDIRNAME}/circus-stripe.svg
         ${SRCDIRNAME}/cola-crate.svg
+        ${SRCDIRNAME}/DarkerBlue.svg
+        ${SRCDIRNAME}/DarkerGreen.svg
+        ${SRCDIRNAME}/DarkerRed.svg
+        ${SRCDIRNAME}/driver-1m.svg
+        ${SRCDIRNAME}/driver-2m.svg
         ${SRCDIRNAME}/goal-scenery.svg
+        ${SRCDIRNAME}/golfclub.svg
         ${SRCDIRNAME}/hammer.svg
+        ${SRCDIRNAME}/hammerer-2.svg
         ${SRCDIRNAME}/i-beam.svg
+        ${SRCDIRNAME}/milk.png
+        ${SRCDIRNAME}/nicubunu_White_deck_10_of_hearts.svg
+        ${SRCDIRNAME}/nicubunu_White_deck_2_of_spades.svg
+        ${SRCDIRNAME}/nicubunu_White_deck_6_of_diamonds.svg
+        ${SRCDIRNAME}/nicubunu_White_deck_Jack_of_hearts.svg
+        ${SRCDIRNAME}/nicubunu_White_deck_Queen_of_spades.svg
+        ${SRCDIRNAME}/penguin_gliding.svg
+        ${SRCDIRNAME}/picnic-0-rope.svg
+        ${SRCDIRNAME}/picnic-0-pole.svg
+        ${SRCDIRNAME}/picnic-2-left-underarm.svg
+        ${SRCDIRNAME}/right-side-frame-003.svg
 	${SRCDIRNAME}/rg1024_Grass_texture.svg
+        ${SRCDIRNAME}/sand.svg
         ${SRCDIRNAME}/spring20.svg
+        ${SRCDIRNAME}/stick-figure-attack.svg
+        ${SRCDIRNAME}/stick-figure-shoot.svg
         ${SRCDIRNAME}/the-sun.svg
+        ${SRCDIRNAME}/Yellow-to-brown.svg
+        ${SRCDIRNAME}/White-to-green.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

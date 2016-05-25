@@ -1,27 +1,22 @@
-cloud-door.svg
-   author:   Klaas van Gend
-   license: Public Domain
-   Original graphics for The Butterfly Effect
-
 clouds.svg
    author:   Klaas van Gend, based on an image by mokush
    source:   https://openclipart.org/detail/25281/cute-cartoon-clouds-with-stars
    license:  public domain 
    adjusted to match the Pingus levels by Klaas van Gend
 
-scaffolding-clamp.svg
-scaffolding-mount.svg
-scaffolding-vertical-tube.svg
-   author:  Klaas van Gend
-   license: Public Domain
-   Original graphics for The Butterfly Effect
-
 SpidersWeb.svg 
   author:   Klaas van Gend, based on an image by "nayrhcrel"
   source:   https://openclipart.org/detail/2122/ragno-with-a-half-web 
   license:  public domain 
 
+scaffolding-clamp.svg
+scaffolding-mount.svg
+scaffolding-vertical-tube.svg
 toychest.svg
+prizes.svg
+cloud-door.svg
+xray2000.svg
+carpenters-rule.svg
    author:  Klaas van Gend
    license: Public Domain
    Original graphics for The Butterfly Effect
@@ -35,3 +30,20 @@ wood_crate_square.svg
    author:  Klaas van Gend, based on an image by "Erulisseuiin"
    license: Public Domain
    source:  http://www.openclipart.org/detail/62833
+
+dream-of-hovering.svg
+   author:  Klaas van Gend
+   license: Public Domain
+   source:  mostly original work, uses "vlodco_zotov_CELL_PHONE_MIESENS.svg" by vlodco_zotov (http://www.openclipart.org/detail/2028)
+
+stk-logo.png
+   supertuxkart logo taken from http://stkaddons.net/
+   presumed to be under a suitably free license
+
+picnic-1-background.svg
+   Remixed by Klaas van Gend in 2012
+   sources:
+   - http://openclipart.org/detail/80773/tea-cup-by-notklaatu
+   - http://openclipart.org/detail/169445/teapot-by-hatalar205
+   license: CC-0
+
