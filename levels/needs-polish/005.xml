@@ -8,15 +8,15 @@
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Cola+mint Bottle">
+        <toolboxitem count="2">
             <object type="ColaMintBottle" angle="0">
                 <property key="Bounciness">0</property>
                 <property key="Rotatable">false</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" icon="styrofoam" name="Styrofoam">
+        <toolboxitem count="1" icon="styrofoam" name="Styrofoam Block">
             <object width="0.25" height="0.8" type="RectObject">
-                 <tooltip>Why would you need a styrofoam block?</tooltip>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
                <property key="Friction">0.3</property>
                 <property key="Bounciness">0.2</property>
                 <property key="ImageName">styrofoam</property>

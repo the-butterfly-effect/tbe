@@ -22,7 +22,7 @@
         <toolboxitem count="1" name="Long left fixed wedge">
             <object width="0.575" X="2.063" Y="1.475" height="0.186" type="LeftFixedWedge" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right fixed wedge">
+        <toolboxitem count="1">
             <object width="0.653" X="0.303" Y="1.380" height="0.696" type="RightFixedWedge" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1" name="Short left fixed wedge">
