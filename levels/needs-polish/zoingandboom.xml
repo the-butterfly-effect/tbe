@@ -22,9 +22,7 @@
         <scenesize width="6" height="4.5"/>
         <predefined>
             <object ID="555-1234" X="0.291" Y="1.326" width="0.43" angle="4.906" type="Dynamite" height="0.32"/>
-            <object X="2.474" Y="4.33" width="0.2" angle="0" type="Scenery" height="0.23">
-                <property key="ImageName">Skyhook</property>
-            </object>
+            <object X="2.474" Y="4.33" width="0.2" angle="0" type="Skyhook" height="0.23" ID="hook"/>
             <object X="0.606" Y="3.906" width="0.4" angle="1.571" type="QuarterArc40" height="0.4"/>
             <object X="0.4" Y="4.181" width="0.8" angle="1.571" type="QuarterArc80" height="0.8"/>
             <object ID="rechtervertikaal" X="0.459" Y="2.036" width="3.337" angle="1.57" type="Floor" height="0.1"/>
@@ -40,7 +38,7 @@
             <object X="1.2" Y="4.258" width="0.22" angle="0" type="SoccerBall" height="0.22"/>
             <object ID="SpringBall" X="1.5" Y="4.258" width="0.22" angle="0" type="SoccerBall" height="0.22"/>
             <object ID="Spring" X="2" Y="4.26" width="1" angle="0" type="Spring" height="0.15">
-                <property key="NoCollision">SpringBall;tiltedfloor</property>
+                <property key="NoCollision">SpringBall;tiltedfloor;hook</property>
                 <property key="SpringConstant">20</property>
             </object>
             <object X="1.5" Y="4.258" width="1" angle="0" type="PivotPoint" height="1">
