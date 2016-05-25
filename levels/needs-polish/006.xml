@@ -8,15 +8,10 @@
         <date>10/11/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Cola Crate">
-            <object width="0.85" height="0.6" type="RectObject">
-                <tooltip>This is how you properly buy cola:&lt;br>a dozen bottles of that precious brown liquid at a time!</tooltip>
-                <property key="ImageName">cola-crate</property>
-                <property key="Mass">18</property>
-                <property key="Friction">1</property>
+        <toolboxitem count="2">
+            <object width="0.85" height="0.6" type="ColaCrate">
                 <property key="Resizable">none</property>
                 <property key="Rotatable">true</property>
-                <property key="Bounciness">0.1</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1">
@@ -53,9 +48,10 @@
             </object>
             <object X="4.4" Y="2.85" type="BowlingBall" ID="Coconut">
                 <property key="ImageName">coconut</property>
-                <tooltip>Hey, I'm a coconut!</tooltip>
+                <tooltip>Hey, I’m a coconut!</tooltip>
             </object>
             <object width="0.1" X="1.175" Y="0.15" height="0.1" type="RectObject" angle="0">
+                <tooltip>A pretty hard piece of rock, it sticks to the ground.</tooltip>
                 <property key="ImageName">boulder</property>
                 <property key="Bounciness">0.1</property>
             </object>
@@ -70,10 +66,12 @@
                 <property key="ImageName">006-stick-figure-arm</property>
             </object>
             <object width="0.1" X="5.1" Y="0.15" height="0.1" type="RectObject" angle="0">
+                <tooltip>A pretty hard piece of rock, it sticks to the ground.</tooltip>
                 <property key="ImageName">boulder</property>
                 <property key="Bounciness">0.1</property>
             </object>
             <object width="0.1" X="2.65" Y="0.15" height="0.1" type="RectObject" angle="0">
+                <tooltip>A pretty hard piece of rock, it sticks to the ground.</tooltip>
                 <property key="ImageName">boulder</property>
                 <property key="Bounciness">0.1</property>
             </object>
