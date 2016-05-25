@@ -178,10 +178,10 @@
                 <property key="ImageName">RightRamp</property>
             </object>
             <object X="2.0" Y="1.7" type="PostIt">
-                <property key="page1">The final killer challenge...</property>
-                <property key="page2">Look: it's that butterfly and flower again.</property>
-                <property key="page3">But there's some styrofoam blocks in the way...</property>
-                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>... almost done with his home work!</property>
+                <property key="page1">This is the final killer challenge.</property>
+                <property key="page2">Look: it’s that butterfly and flower again.</property>
+                <property key="page3">But there’s some styrofoam blocks in the way.</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>… almost done with his home work!</property>
             </object>
         </predefined>
     </scene>

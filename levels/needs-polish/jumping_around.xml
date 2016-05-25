@@ -24,7 +24,7 @@
             <object Y="2.64" width="0.6" height="0.35" X="0.3" angle="0" type="RightRamp"/>
             <object Y="0.5" width="0.22" height="0.22" X="2" angle="0" type="PostIt">
                 <property key="page1">Bowling Ball vs Bowling Pin.&lt;br>&lt;br>Who will win?</property>
-                <property key="page2">I don't think the Bowling Ball can reach the pin...</property>
+                <property key="page2">I don’t think the bowling ball can reach the pin.</property>
                 <property key="page3">But that ball has a jumpy friend!</property>
                 <property key="page4">Post-It Boy</property>
             </object>

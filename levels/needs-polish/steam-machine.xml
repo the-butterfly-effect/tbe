@@ -77,7 +77,7 @@
             <object X="2.2" Y="2.6" type="PostIt">
                 <property key="page1">Pin topples to green in two moves.</property>
                 <property key="page2">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>is brief for once</property>
-                <property key="page3">(Ssst... I'm playing chess)</property>
+                <property key="page3">(Shh … I’m playing chess.)</property>
             </object>
             <object X="2.2" Y="0.27" type="BowlingPin" ID="BowlingPin"/>
         </predefined>

@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Bowling Pin plays soccer...</title>
+        <title>Bowling Pin plays soccer</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Kick the bowling pin into the goal.</description>
@@ -73,13 +73,13 @@
                 <property key="ImageName">chickenwire-texture</property>
             </object>
             <object X="3.6" Y="0.7" type="PostIt">
-                <property key="page1">I'm like my brother - I play soccer, too!</property>
-                <property key="page2">Kick that pin in the goal!</property>
-                <property key="page3">GOOOOAAAAAL !!!</property>
-                <property key="page4">Wait a minute!&lt;br>That Bowling Ball won't do it...</property>
-                <property key="page5">But that's not an ordinary cola bottle...</property>
-                <property key="page6">It's a Cola-mint Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
-                <property key="page7">Post-It Boy played the world cup soccer...&lt;br>&lt;br>(in a previous life)</property>
+                <property key="page1">I’m like my brother—I play soccer, too!</property>
+                <property key="page2">Kick that pin into the goal!</property>
+                <property key="page3">GOOOOAAAAAL!</property>
+                <property key="page4">Wait a minute!&lt;br>That bowling ball won’t do it.</property>
+                <property key="page5">But that’s not an ordinary cola bottle …</property>
+                <property key="page6">It’s a cola-mint fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page7">Post-It Boy played the world cup soccer …&lt;br>&lt;br>in a previous life.</property>
             </object>
         </predefined>
     </scene>

@@ -57,8 +57,8 @@
             <object Y="0.615426" angle="0" width="0.2" X="8.04887" type="Wall" height="1"/>
             <object Y="1.13376" angle="0" width="0.22" X="5.31931" type="PostIt" height="0.22">
                 <property key="ZValue">1</property>
-                <property key="page1">What a wonderful day! It's the perfect weather for explosions.</property>
-                <property key="page2">You have probably noticed your toolbox is empty this time. Don't worry.</property>
+                <property key="page1">What a wonderful day! It’s the perfect weather for explosions.</property>
+                <property key="page2">You have probably noticed your toolbox is empty this time. Don’t worry.</property>
                 <property key="page3">Remember you can choose the phone number the detonator boxes are calling.</property>
                 <property key="page4">Find the right combination and blow everything up.&lt;br>&lt;br>Post-It Boy</property>
             </object>

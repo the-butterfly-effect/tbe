@@ -215,10 +215,10 @@
                 <property key="ZValue">7.0</property>
             </object>
             <object type="PostIt" width="0.220" height="0.220" angle="0.000" X="3.902" Y="1.843">
-                <property key="page1">Oh no!&lt;br>&lt;br>It's raining penguins.</property>
-                <property key="page2">Wait a minute... Don't they look just like the penguins from Pingus?</property>
-                <property key="page3">Let's bring them home safely!</property>
-                <property key="page4">... Post-It Boy</property>
+                <property key="page1">Oh no!&lt;br>&lt;br>It’s raining penguins.</property>
+                <property key="page2">Wait a minute … Don't they look just like the penguins from Pingus?</property>
+                <property key="page3">Let’s bring them home safely!</property>
+                <property key="page4">… Post-It Boy</property>
             </object>
             <object type="Floor" width="0.967" height="0.100" angle="-6.216" X="6.610" Y="2.673"/>
             <object type="Scenery" width="0.070" height="2.800" angle="0.024" X="6.951" Y="1.501">

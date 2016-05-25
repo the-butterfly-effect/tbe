@@ -75,10 +75,10 @@
             <object width="0.1" height="0.1" angle="0" type="LeftFixedWedge" X="1.9" Y="1.875"/>
             <object width="1.6" height="0.1" angle="0" type="Floor" X="2.75" Y="1.875"/>
             <object width="0.22" height="0.22" angle="0" type="PostIt" X="1.2326" Y="1.55878">
-                <property key="page1">That poor balloon is on its way to its doom</property>
-                <property key="page2">Let's spare the balloon, there's a pin that needs kicking.</property>
-                <property key="page3">I still have other ideas that need balloons...</property>
-                <property key="page4">... Post-It Boy</property>
+                <property key="page1">That poor balloon is on its way to its doom.</property>
+                <property key="page2">Let’s spare the balloon, there’s a pin that needs kicking.</property>
+                <property key="page3">I still have other ideas that need balloons.</property>
+                <property key="page4">… Post-It Boy</property>
             </object>
             <object width="0.654179" height="0.1" angle="-0.41" type="Floor" X="2.64771" Y="0.609879"/>
             <object width="0.460662" height="0.1" angle="0.75" type="Floor" X="0.206705" Y="1.7845">

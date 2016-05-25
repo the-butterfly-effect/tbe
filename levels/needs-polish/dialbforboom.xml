@@ -100,7 +100,7 @@
                 <property key="page2">I agree that the best way to do it, is with scissors.</property>
                 <property key="page3">But there are no scissors here to pop the balloon with!</property>
                 <property key="page4">Dial the right number!</property>
-                <property key="page5">&lt;br>&lt;br>... Post-It Boy</property>
+                <property key="page5">&lt;br>&lt;br>… Post-It Boy</property>
             </object>
             <object width="0.213" X="0.704" Y="0.428" height="0.100" type="Floor" angle="-0.910"/>
             <object width="0.172" X="0.567" Y="0.467" height="0.100" type="Floor" angle="0.000"/>

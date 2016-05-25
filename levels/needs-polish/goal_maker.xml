@@ -111,7 +111,7 @@
                 <property key="page1">It should be obvious that it all depends on the bowling ball here.</property>
                 <property key="page2">But how to make it roll? That big wall is in the way.</property>
                 <property key="page3">The balloon could push the bowling ball from below, but it is too far away.</property>
-		<property key="page4">Hmmm... &lt;br>&lt;br>Post-It Boy</property>
+		<property key="page4">Hmmm … &lt;br>&lt;br>Post-It Boy</property>
             </object>
         </predefined>
         <background>

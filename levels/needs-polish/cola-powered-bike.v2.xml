@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Cola Powered Bike</title>
+        <title>Cola-Powered Bike</title>
         <author>Peter van Ginneken, Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Topple the bowling pin.</description>
@@ -16,10 +16,10 @@
         <scenesize width="4.8" height="3"/>
         <predefined>
             <object width="0.220" X="1.400" Y="1.100" height="0.220" type="PostIt" angle="0.000">
-                <property key="page1">I'm too lazy for my old bike.</property>
-                <property key="page2">I've grown too large for my bike, too.</property>
-                <property key="page3">Look... &lt;br>&lt;br>I made an engine to power my bike.</property>
-                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>... thinks of an ancient steam engine</property>
+                <property key="page1">I’m too lazy for my old bike.</property>
+                <property key="page2">I’ve grown too large for my bike, too.</property>
+                <property key="page3">Look,&lt;br>&lt;br>I made an engine to power my bike.</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>… thinks of an ancient steam engine</property>
             </object>
             <object width="0.100" X="1.400" Y="1.400" height="0.100" type="RectObject" ID="BrassPin" angle="0.000">
                 <property key="ImageName">brass-pin</property>

@@ -22,10 +22,10 @@
                 <property key="ZValue">10</property>
             </object>
             <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostIt" angle="0">
-                <property key="page1">Have you seen the movie "UP"?&lt;br>&lt;br>Unfortunately, I don't have that many balloons.</property>
-                <property key="page2">I don't think it's not fair: butterflies can fly by themselves.</property>
+                <property key="page1">Have you seen the movie “Up”?&lt;br>&lt;br>Unfortunately, I don’t have that many balloons.</property>
+                <property key="page2">I don’t think it’s not fair: butterflies can fly by themselves.</property>
                 <property key="page3">Our goal is to keep the butterfly alive. And put the pin in the chest.</property>
-                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>saves the animals...</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>saves the animals …</property>
             </object>
             <object width="0.2212238609790802" X="5.800" Y="0.3000" height="0.4064355790615082" type="RectObject" angle="0">
                 <property key="ImageName">Anonymous_daffodil_klaas</property>

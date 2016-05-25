@@ -73,8 +73,8 @@
             </object>
             <object Y="3.33588" X="0.941142" angle="0" height="0.22" width="0.22" type="PostIt">
                 <property key="ZValue">1</property>
-                <property key="page1">Cardboard boxes are versatile and useful for many purposes, but this one topples into the wrong direction.</property>
-                <property key="page2">Place the walls at the correct places so everything walks, rolls and slides into the correct direction.</property>
+                <property key="page1">Cardboard boxes are versatile and useful for many purposes, but this one topples towards the wrong direction.</property>
+                <property key="page2">Place the walls at the correct places so everything walks, rolls and slides correctly.</property>
                 <property key="page3">Post-It Boy (who likes to play with boxes)</property>
             </object>
         </predefined>

@@ -25,7 +25,7 @@
                 <property key="Friction">0.6</property>
             </object>
             <object X="3.4" Y="1.0" type="PostIt">
-                <property key="page1">Don't worry.</property>
+                <property key="page1">Don’t worry.</property>
                 <property key="page2">This is not as complicated as it looks. It almost works!</property>
                 <property key="page3">Put the wedges in place, and enjoy your first large Rube Goldberg-ish contraption.</property>
                 <property key="page4">&lt;br>&lt;br>Post-It Boy</property>

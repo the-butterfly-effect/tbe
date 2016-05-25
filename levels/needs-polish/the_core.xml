@@ -149,7 +149,7 @@
                 <property key="ZValue">1</property>
                 <property key="page1">Timing is everything.</property>
                 <property key="page2">If you feel things happen too fast, slow down a little.</property>
-                <property key="page3">Finding a way to buy some time here could be very important...</property>
+                <property key="page3">Finding a way to buy some time here could be very important …</property>
                 <property key="page4">At least you have all the time in the world to figure this one out.&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object X="0.863916" type="Wall" Y="4.40369" angle="0" width="0.0973463" height="2.05023"/>

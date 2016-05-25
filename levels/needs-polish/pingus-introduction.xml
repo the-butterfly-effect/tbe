@@ -35,14 +35,14 @@
             </object>
             <object type="PostIt" width="0.220" Y="1.286" angle="0.000" X="0.609" height="0.220">
                 <property key="ZValue">1</property>
-                <property key="page1">Aren't they cute, these little pingus (or “penguins”)?</property>
+                <property key="page1">Aren’t they cute, these little pingus (or “penguins”)?</property>
                 <property key="page2">They got lost and need to find their way to the door below so they can escape this place.</property>
                 <property key="page3">Here are some pingu facts:</property>
                 <property key="page4">Pingus walk to the left or right until they bump into something heavy, after which they turn around.</property>
                 <property key="page5">They like to slide down slopes. But they have a hard time walking up steep slopes.</property>
                 <property key="page6">They are totally capable of playing soccer!</property>
                 <property key="page7">But they are a bit frail. They should not fall too far or get squashed by heavy things.</property>
-		<property key="page8">That's all I know about them. I hope it helps!&lt;br>&lt;br>Post-It Boy</property>
+		<property key="page8">That’s all I know about them. I hope it helps!&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object type="Weight" width="0.400" Y="2.750" angle="0.000" X="2.989" height="0.400"/>
             <object type="Pingus" width="0.280" Y="1.709" angle="0.000" X="2.940" height="0.280" ID="pingu2"/>

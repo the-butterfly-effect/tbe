@@ -4,7 +4,7 @@
         <title>The Butterfly effect 102</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
-        <description>Let the butterfly fly to the flower, but don't hurt it!</description>
+        <description>Let the butterfly fly to the flower, but don’t hurt it!</description>
         <date>10/10/09</date>
     </levelinfo>
     <toolbox>
@@ -56,9 +56,9 @@
                 <property key="ZValue">0.4</property>
             </object>
             <object X="1.1" Y="1.0" type="PostIt">
-                <property key="page1">Our little Butterfly...&lt;br>&lt;br>Another day, another flower...</property>
-                <property key="page2">But I'm not so sure about that volley ball.</property>
-                <property key="page3">Hmmm... You see that hole?&lt;br>Behind the volley ball!</property>
+                <property key="page1">Our little Butterfly …&lt;br>&lt;br>Another day, another flower …</property>
+                <property key="page2">But I’m not so sure about that volley ball.</property>
+                <property key="page3">Hmmm … You see that hole?&lt;br>Behind the volley ball!</property>
                 <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
                 <property key="page5">Note:&lt;br>If the game runs, a green fast forward button appears in the top-right corner.&lt;br>&lt;br>That will speed up the simulation.</property>
             </object>

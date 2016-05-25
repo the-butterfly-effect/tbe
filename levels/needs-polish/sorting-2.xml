@@ -46,7 +46,7 @@
             </object>
             <object angle="0.000" Y="4.049" width="0.220" height="0.220" type="PostIt" X="0.831">
                 <property key="ZValue">1</property>
-                <property key="page1">What? Only 3 floors this time? This isn't fair!</property>
+                <property key="page1">What? Only 3 floors this time? This isn’t fair!</property>
                 <property key="page2">Surely this level can only solved by trial-and-error and pure luck.</property>
                 <property key="page3">But wait! Maybe there is a trick which does not involve that much trial-and-error.</property>
                 <property key="page4">Post-It Boy</property>

@@ -1,7 +1,7 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title>Find the Message...</title>
+        <title>Find the Message</title>
         <author>Klaas van Gend</author>
         <license>GPLv2</license>
         <description>Reveal the message hidden by the large rectangular pieces of styrofoam before the butterfly reaches the flower.</description>
@@ -62,11 +62,11 @@
                 <property key="TranslationGuide">0</property>
             </object>
             <object width="0.220" X="4.311" Y="2.824" height="0.220" type="PostIt" angle="0.000">
-                <property key="page1">It's almost time&lt;br>for goodbyes</property>
+                <property key="page1">It’s almost time&lt;br>for goodbyes.</property>
                 <property key="page2"> :-( </property>
-                <property key="page3">Look for the last message</property>
-                <property key="page4">I don't want to hurry you, but find it before the Butterfly meets her final flower.</property>
-                <property key="page5">... Post-It Boy</property>
+                <property key="page3">Look for the last message.</property>
+                <property key="page4">I don’t want to hurry you, but find it before the butterfly meets the final flower.</property>
+                <property key="page5">… Post-It Boy</property>
             </object>
             <object width="2.551" X="5.946" Y="1.329" height="0.100" type="Floor" angle="1.570"/>
             <object width="0.600" X="5.570" Y="0.250" height="0.100" type="BirchBar" angle="0.360">

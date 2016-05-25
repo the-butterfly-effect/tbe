@@ -34,7 +34,7 @@
             </object>
             <object width="0.100" X="1.850" Y="1.000" height="1.800" type="DominoBlue" ID="leftpole" angle="0.000">
                 <property key="ImageName">picnic-0-pole</property>
-                <tooltip>tent poles are usually made from something...</tooltip>
+                <tooltip>Tent poles are usually made from something.</tooltip>
             </object>
             <object width="0.200" X="2.200" Y="1.790" height="0.100" type="RectObject" ID="leftrope1" angle="0.000">
                 <property key="ImageName">picnic-0-rope</property>
@@ -50,7 +50,7 @@
             </object>
             <object width="0.100" X="3.350" Y="1.000" height="1.800" type="DominoBlue" ID="centerpole" angle="0.000">
                 <property key="ImageName">picnic-0-pole</property>
-                <tooltip>I don't know... this middle pole is kept up by two ropes?</tooltip>
+                <tooltip>I don’t know … This middle pole is kept up by two ropes?</tooltip>
             </object>
             <object width="0.200" X="3.700" Y="1.790" height="0.100" type="RectObject" ID="rightrope1" angle="0.000">
                 <property key="ImageName">picnic-0-rope</property>
@@ -157,9 +157,9 @@
                 <property key="page1">Meet Ad and Lies.&lt;br&gt;&lt;br&gt;They really like camping.</property>
                 <property key="page2">Unfortunately, they always get confused when they want to put up their tent.</property>
                 <property key="page3">They got the tent poles up already, but are now looking confused at the canvas.</property>
-                <property key="page4">While they're not looking, let's kick over their tent poles.</property>
-                <property key="page5">Heh. Heh. Heh.</property>
-                <property key="page6">I made a new feature in the game: that Quarter Arc can be rotated.&lt;br&gt;&lt;br&gt;I suggest you try it!</property>
+                <property key="page4">While they’re not looking, let’s kick over their tent poles.</property>
+                <property key="page5">Hehehe.</property>
+                <property key="page6">I made a new feature in the game: the quarter arc can be rotated.&lt;br&gt;&lt;br&gt;I suggest you try it!</property>
                 <property key="page7">Post-It Boy</property>
             </object>
         </predefined>

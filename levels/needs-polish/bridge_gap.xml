@@ -34,8 +34,8 @@
             </object>
             <object X="0.5" Y="2.35" type="SoccerBall" ID="Ball"/>
             <object X="2" Y="0.5" type="PostIt">
-                <property key="page1">Wow, that's a huge gap for a Soccer Ball.</property>
-                <property key="page2">I'm sure it needs help to cross over to the pin.</property>
+                <property key="page1">Wow, that’s a huge gap for a soccer ball.</property>
+                <property key="page2">I’m sure it needs help to cross over to the pin.</property>
                 <property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>&lt;i>(insert joke about bridge here)&lt;/i></property>
             </object>
             <object width="4.4" X="2.2" Y="0.05" height="0.1" type="Floor">

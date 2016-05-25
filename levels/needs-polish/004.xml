@@ -44,11 +44,11 @@
             </object>
             <object width="0.220" X="4.000" Y="1.200" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">The goal here is to topple the pins below.</property>
-                <property key="page2">I'm thirsty!</property>
-                <property key="page3">But that's not an ordinary cola bottle...</property>
-                <property key="page4">It's a Cola-mint Fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page2">I’m thirsty!</property>
+                <property key="page3">But that’s not an ordinary cola bottle …</property>
+                <property key="page4">It’s a cola-mint fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
                 <property key="page5">Where does the cola go?</property>
-                <property key="page6">&lt;br>&lt;br>... a thirsty Post-It Boy</property>
+                <property key="page6">&lt;br>&lt;br>… a thirsty Post-It Boy</property>
             </object>
             <object width="1.436" X="1.851" Y="0.780" height="0.150" type="Floor" angle="0.155"/>
             <object width="0.500" X="2.570" Y="0.700" height="0.100" type="Floor" angle="1.570"/>

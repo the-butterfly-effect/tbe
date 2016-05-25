@@ -79,7 +79,7 @@
             <object Y="0.130" width="0.643" height="0.100" type="Floor" angle="-0.231" X="1.437"/>
             <object Y="1.533" width="0.941" height="0.100" type="Floor" angle="-1.570" X="4.746"/>
             <object Y="1.772" width="0.220" height="0.220" type="PostIt" angle="0.000" X="4.452">
-                <property key="page1">Note to myself:&lt;br&gt;Don't leave hints in the level title!</property>
+                <property key="page1">Note to myself:&lt;br&gt;Don’t leave hints in the level title!</property>
             </object>
         </predefined>
         <background>
