@@ -1,63 +1,63 @@
 <!DOCTYPE levellist>
 <tbe-levels>
    <level> needs-polish/001.xml </level>
-   <level> needs-polish/bouncing_balls.xml </level>
+   <level> finished/bouncing_balls.xml </level>
    <level> needs-polish/002.xml </level>
-   <level> needs-polish/jumping_around.xml </level>
+   <level> finished/jumping_around.xml </level>
    <level> needs-polish/house_of_cards.xml </level>
    <level> needs-polish/003.xml </level>
    <level> needs-polish/picnic-0.xml </level>
    <level> needs-polish/brother-plays-soccer.xml </level>
    <level> needs-polish/bowling_pin_plays_soccer.xml </level>
-   <level> needs-polish/attack_of_the_killer_cacti.xml</level>
+   <level> finished/attack_of_the_killer_cacti.xml</level>
    <level> needs-polish/brother-plays-penguin-goalie.xml </level>
    <level> needs-polish/picnic-1.xml </level>
-   <level> needs-polish/jumping_around-2.xml </level>
+   <level> finished/jumping_around-2.xml </level>
    <level> needs-polish/turn-it-around.xml </level>
    <level> needs-polish/contraption1.xml </level>
-   <level> needs-polish/bridge_gap.xml </level>
-   <level> needs-polish/the_ball_the_box_and_the_penguin.xml </level>
+   <level> finished/bridge_gap.xml </level>
+   <level> finished/the_ball_the_box_and_the_penguin.xml </level>
    <level> needs-polish/steam-machine.xml </level>
    <level> needs-polish/balloons-go-up.xml </level>
    <level> needs-polish/balloons-do-poof.xml </level>
    <level> needs-polish/004.xml </level>
    <level> needs-polish/cola-powered-bike.v2.xml </level>
-   <level> needs-polish/little_balloon_puzzle.xml </level>
+   <level> finished/little_balloon_puzzle.xml </level>
    <level> needs-polish/styrofoam.xml </level>
    <level> needs-polish/party-at-office.xml </level>
-   <level> needs-polish/in_the_attic.xml </level>
+   <level> finished/in_the_attic.xml </level>
    <level> needs-polish/poofpoofpoof.xml </level>
    <level> needs-polish/005.xml </level>
-   <level> needs-polish/volley_valley.xml </level>
-   <level> needs-polish/maze.xml </level>
+   <level> finished/volley_valley.xml </level>
+   <level> finished/maze.xml </level>
    <level> needs-polish/topple-the-other-way.xml </level>
    <level> needs-polish/pingus-introduction.xml </level>
    <level> needs-polish/birds1.xml </level>
    <level> needs-polish/birds2.xml </level>
    <level> needs-polish/dialbforboom.xml </level>
-   <level> needs-polish/magic_steel.xml </level>
-   <level> needs-polish/sorting-1.xml </level>
+   <level> finished/magic_steel.xml </level>
+   <level> finished/sorting-1.xml </level>
    <level> needs-polish/spare-the-balloon.xml </level>
-   <level> needs-polish/controlled_detonation.xml </level>
-   <level> needs-polish/float-balloon-float.xml </level>
-   <level> needs-polish/creativity.xml </level>
-   <level> needs-polish/bridge-2.xml </level>
+   <level> finished/controlled_detonation.xml </level>
+   <level> finished/float-balloon-float.xml </level>
+   <level> finished/creativity.xml </level>
+   <level> finished/bridge-2.xml </level>
    <level> needs-polish/extreme-tux-racer.xml </level>
    <level> needs-polish/supertuxkart.xml </level>
    <level> needs-polish/pingus-1.xml </level>
    <level> needs-polish/imperfectbalance.xml </level>
    <level> needs-polish/picnic-3.xml </level>
    <level> needs-polish/save-the-butterfly.xml</level>
-   <level> needs-polish/rotate_and_win.xml</level>
-   <level> needs-polish/construction_yard.xml</level>
-   <level> needs-polish/domino_day.xml </level>
+   <level> finished/rotate_and_win.xml</level>
+   <level> finished/construction_yard.xml</level>
+   <level> finished/domino_day.xml </level>
    <level> needs-polish/geyser.xml </level>
    <level> needs-polish/butterfly-on-steroids.xml </level>
    <level> needs-polish/006.xml </level>
    <level> needs-polish/contraption2.xml </level>
    <level> needs-polish/balloon_blues.xml </level>
    <level> needs-polish/picnic-2.xml </level>
-   <level> needs-polish/domino_chest.xml </level>
+   <level> finished/domino_chest.xml </level>
    <level> needs-polish/loopings2.xml </level>
    <level> needs-polish/007.xml </level>
    <level> needs-polish/hanging_box.xml </level>
@@ -66,14 +66,14 @@
    <level> needs-polish/the_core.xml </level>
    <level> needs-polish/butterflies_of_doom.xml </level>
    <level> needs-polish/the_pit.xml </level>
-   <level> needs-polish/boom_boom_boom.xml </level>
+   <level> finished/boom_boom_boom.xml </level>
    <level> needs-polish/goal_maker.xml </level>
    <level> needs-polish/hattrick.xml </level>
    <level> needs-polish/cola_reaction.xml </level>
    <level> needs-polish/butterfly_race.xml </level>
-   <level> needs-polish/sorting-2.xml </level>
-   <level> needs-polish/sorting-3.xml </level>
-   <level> needs-polish/sorting-4.xml </level>
-   <level> needs-polish/sorting-5.xml </level>
+   <level> finished/sorting-2.xml </level>
+   <level> finished/sorting-3.xml </level>
+   <level> finished/sorting-4.xml </level>
+   <level> finished/sorting-5.xml </level>
    <level> needs-polish/10_kilograms_above_the_ground.xml </level>
 </tbe-levels>
