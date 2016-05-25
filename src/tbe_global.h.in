@@ -26,6 +26,10 @@
 /* for your special versioning needs, normally empty */
 #ifndef APPFLAVOUR
 #define APPFLAVOUR ""
+
+// if you want to display the git revision:
+#define GITREVISION "${GIT_VERSION_HASH}"
+
 #endif
 #include <QtGlobal>
 #include <QString>
