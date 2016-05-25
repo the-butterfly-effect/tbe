@@ -379,7 +379,7 @@ Pingus::States Pingus::goToState(Pingus::States aNewState)
 			break;
 		}
 	}
-	DEBUG4("Pingus %p change state request from %d to %d %s.",
+    DEBUG5("Pingus %p change state request from %d to %d %s.",
 		   this, myOldState, aNewState, (theState==myOldState)?"DENIED":"approved");
 	theAnimationFrameIndex = 0;
 	return theState;
