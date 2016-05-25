@@ -20,6 +20,7 @@ install(FILES
         ${SRCDIRNAME}/DarkerRed.svg
         ${SRCDIRNAME}/driver-1m.svg
         ${SRCDIRNAME}/driver-2m.svg
+        ${SRCDIRNAME}/flat_blue_giftbox.svg
         ${SRCDIRNAME}/goal-scenery.svg
         ${SRCDIRNAME}/golfclub.svg
         ${SRCDIRNAME}/hammer.svg
@@ -37,6 +38,7 @@ install(FILES
         ${SRCDIRNAME}/picnic-2-left-underarm.svg
         ${SRCDIRNAME}/right-side-frame-003.svg
 	${SRCDIRNAME}/rg1024_Grass_texture.svg
+        ${SRCDIRNAME}/rope.svg
         ${SRCDIRNAME}/sand.svg
         ${SRCDIRNAME}/spring20.svg
         ${SRCDIRNAME}/stick-figure-attack.svg
