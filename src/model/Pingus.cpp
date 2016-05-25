@@ -23,18 +23,6 @@
 #include "Property.h"
 #include "ViewPingus.h"
 
-//// this class' ObjectFactory
-class PingusObjectFactory : public ObjectFactory
-{
-public:
-	PingusObjectFactory()
-	{	announceObjectType("Pingus", this); }
-	AbstractObject* createObject() const override
-	{	return fixObject(new Pingus()); }
-};
-static PingusObjectFactory thePingusObjectFactory;
-
-
 static const qreal FALLING_TIME   = 0.16; // seconds
 static const qreal PINGUS_RADIUS  = 0.14; // m
 static const qreal PINGUS_MASS    = 1.50; // kg
@@ -464,40 +452,116 @@ void Pingus::updateViewPingus()
 
 
 ///---------------------------------------------------------------------------
-///------------------------- SleepingPingus ----------------------------------
+///------------------------- PingusSleeping ----------------------------------
 ///---------------------------------------------------------------------------
 
 //// this class' ObjectFactory
-class SleepingPingusObjectFactory : public ObjectFactory
+class PingusSleepingObjectFactory : public ObjectFactory
 {
 public:
-    SleepingPingusObjectFactory()
-    {	announceObjectType("SleepingPingus", this); }
+    PingusSleepingObjectFactory()
+    {	announceObjectType("PingusSleeping", this); }
 	AbstractObject* createObject() const override
-    {	return fixObject(new SleepingPingus()); }
+    {	return fixObject(new PingusSleeping()); }
 };
-static SleepingPingusObjectFactory theSleepingPingusObjectFactory;
+static PingusSleepingObjectFactory thePingusSleepingObjectFactory;
 
 
-SleepingPingus::SleepingPingus()
+PingusSleeping::PingusSleeping()
 		: Pingus()
 {
 	resetParameters();
 }
 
 
-SleepingPingus::~SleepingPingus()
+PingusSleeping::~PingusSleeping()
 {
 }
 
 
-void SleepingPingus::resetParameters()
+void PingusSleeping::resetParameters()
 {
 	Pingus::resetParameters();
     theState = SLEEPING;
 	// resetParameters already calls updateViewPingus(), but we change the
 	// starting state, so we need to call it again...
 	updateViewPingus();
+}
+
+
+///---------------------------------------------------------------------------
+///------------------------- PingusWalkLeft ----------------------------------
+///---------------------------------------------------------------------------
+
+//// this class' ObjectFactory
+class PingusWalkLeftObjectFactory : public ObjectFactory
+{
+public:
+    PingusWalkLeftObjectFactory()
+    {	announceObjectType("PingusWalkLeft", this); }
+    AbstractObject* createObject() const override
+    {	return fixObject(new PingusWalkLeft()); }
+};
+static PingusWalkLeftObjectFactory thePingusWalkLeftObjectFactory;
+
+
+PingusWalkLeft::PingusWalkLeft()
+        : Pingus()
+{
+    resetParameters();
+}
+
+
+PingusWalkLeft::~PingusWalkLeft()
+{
+}
+
+
+void PingusWalkLeft::resetParameters()
+{
+    Pingus::resetParameters();
+    theState = Pingus::WALKINGLEFT;
+    // resetParameters already calls updateViewPingus(), but we change the
+    // starting state, so we need to call it again...
+    updateViewPingus();
+}
+
+
+///---------------------------------------------------------------------------
+///------------------------- PingusWalkRight ----------------------------------
+///---------------------------------------------------------------------------
+
+//// this class' ObjectFactory
+class PingusWalkRightObjectFactory : public ObjectFactory
+{
+public:
+    PingusWalkRightObjectFactory()
+    {	announceObjectType("PingusWalkRight", this); }
+    AbstractObject* createObject() const override
+    {	return fixObject(new PingusWalkRight()); }
+};
+static PingusWalkRightObjectFactory thePingusWalkRightObjectFactory;
+
+
+PingusWalkRight::PingusWalkRight()
+        : Pingus()
+{
+    resetParameters();
+}
+
+
+PingusWalkRight::~PingusWalkRight()
+{
+}
+
+
+void PingusWalkRight::resetParameters()
+{
+    Pingus::resetParameters();
+    theState = Pingus::WALKINGRIGHT;
+    // resetParameters already calls updateViewPingus(), but we change the
+    // starting state, so we need to call it again...
+    updateViewPingus();
 }
 
 

@@ -165,23 +165,61 @@ protected:
 
 
 ///---------------------------------------------------------------------------
-///------------------------- SleepingPingus -----------------------------------
+///------------------------- PingusSleeping ----------------------------------
 ///---------------------------------------------------------------------------
 
 
-/// The SleepingPingus acts like a normal Pingus, except that he starts out
+/// The PingusSleeping acts like a normal Pingus, except that he starts out
 /// as a sleeping Pingus, he's not trying to get moving, you need to "help"
 /// him. If he ever gets stuck (e.g. wedgedagainst the bottom of a ramp)
 /// he's probably going to wait and stay awake, though.
-class SleepingPingus : public Pingus
+class PingusSleeping : public Pingus
 {
 public:
-    SleepingPingus();
+    PingusSleeping();
 
-    virtual ~SleepingPingus();
+    virtual ~PingusSleeping();
 
 protected:
 	void resetParameters() override;
+};
+
+
+///---------------------------------------------------------------------------
+///------------------------- PingusWalkLeft -----------------------------------
+///---------------------------------------------------------------------------
+
+
+/// The PingusWalkRight acts like a normal Pingus, except that he starts out
+/// walking towards the left.
+class PingusWalkLeft : public Pingus
+{
+public:
+    PingusWalkLeft();
+
+    virtual ~PingusWalkLeft();
+
+protected:
+    void resetParameters() override;
+};
+
+
+///---------------------------------------------------------------------------
+///------------------------- PingusWalkRight -----------------------------------
+///---------------------------------------------------------------------------
+
+
+/// The PingusWalkRight acts like a normal Pingus, except that he starts out
+/// walking towards the right.
+class PingusWalkRight : public Pingus
+{
+public:
+    PingusWalkRight();
+
+    virtual ~PingusWalkRight();
+
+protected:
+    void resetParameters() override;
 };
 
 
