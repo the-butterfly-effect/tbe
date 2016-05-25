@@ -33,7 +33,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="7.1" height="7.32"/>
+        <scenesize width="7.32" height="7.32"/>
         <predefined>
             <object X="3.76287" type="Floor" Y="0.161381" angle="0" width="5.63518" height="0.1"/>
             <object X="1.91284" type="QuarterArc80" Y="2.13182" angle="3.16833" width="0.8" height="0.8"/>

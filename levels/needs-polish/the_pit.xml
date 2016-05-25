@@ -50,7 +50,7 @@
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="9" height="7"/>
+        <scenesize width="9.5" height="7"/>
         <predefined>
             <object width="8.24164" height="0.1" Y="0.0643474" angle="0" type="Floor" X="4.64725"/>
             <object width="1.40777" height="0.349191" Y="1.82001" angle="0" type="Floor" X="3.46548"/>
