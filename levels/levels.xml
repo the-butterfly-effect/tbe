@@ -4,24 +4,24 @@
    <level> finished/bouncing_balls.xml </level>
    <level> needs-polish/002.xml </level>
    <level> finished/jumping_around.xml </level>
-   <level> needs-polish/house_of_cards.xml </level>
-   <level> needs-polish/003.xml </level>
-   <level> needs-polish/picnic-0.xml </level>
+   <level> finished/house_of_cards.xml </level>
+   <level> finished/003.xml </level>
+   <level> finished/picnic-0.xml </level>
    <level> needs-polish/brother-plays-soccer.xml </level>
    <level> needs-polish/bowling_pin_plays_soccer.xml </level>
    <level> finished/attack_of_the_killer_cacti.xml</level>
    <level> needs-polish/brother-plays-penguin-goalie.xml </level>
-   <level> needs-polish/picnic-1.xml </level>
+   <level> finished/picnic-1.xml </level>
    <level> finished/jumping_around-2.xml </level>
    <level> needs-polish/turn-it-around.xml </level>
-   <level> needs-polish/contraption1.xml </level>
+   <level> finished/contraption1.xml </level>
    <level> finished/bridge_gap.xml </level>
    <level> finished/the_ball_the_box_and_the_penguin.xml </level>
    <level> needs-polish/steam-machine.xml </level>
    <level> needs-polish/balloons-go-up.xml </level>
    <level> needs-polish/balloons-do-poof.xml </level>
    <level> needs-polish/004.xml </level>
-   <level> needs-polish/cola-powered-bike.v2.xml </level>
+   <level> finished/cola-powered-bike.v2.xml </level>
    <level> finished/little_balloon_puzzle.xml </level>
    <level> needs-polish/styrofoam.xml </level>
    <level> needs-polish/party-at-office.xml </level>
@@ -31,9 +31,9 @@
    <level> finished/volley_valley.xml </level>
    <level> finished/maze.xml </level>
    <level> needs-polish/topple-the-other-way.xml </level>
-   <level> needs-polish/pingus-introduction.xml </level>
-   <level> needs-polish/birds1.xml </level>
-   <level> needs-polish/birds2.xml </level>
+   <level> finished/pingus-introduction.xml </level>
+   <level> finished/birds1.xml </level>
+   <level> finished/birds2.xml </level>
    <level> needs-polish/dialbforboom.xml </level>
    <level> finished/magic_steel.xml </level>
    <level> finished/sorting-1.xml </level>
@@ -43,10 +43,10 @@
    <level> finished/creativity.xml </level>
    <level> finished/bridge-2.xml </level>
    <level> needs-polish/extreme-tux-racer.xml </level>
-   <level> needs-polish/supertuxkart.xml </level>
-   <level> needs-polish/pingus-1.xml </level>
+   <level> finished/supertuxkart.xml </level>
+   <level> finished/pingus-1.xml </level>
    <level> needs-polish/imperfectbalance.xml </level>
-   <level> needs-polish/picnic-3.xml </level>
+   <level> finished/picnic-3.xml </level>
    <level> needs-polish/save-the-butterfly.xml</level>
    <level> finished/rotate_and_win.xml</level>
    <level> finished/construction_yard.xml</level>
@@ -54,8 +54,8 @@
    <level> needs-polish/geyser.xml </level>
    <level> needs-polish/butterfly-on-steroids.xml </level>
    <level> needs-polish/006.xml </level>
-   <level> needs-polish/contraption2.xml </level>
-   <level> needs-polish/balloon_blues.xml </level>
+   <level> finished/contraption2.xml </level>
+   <level> finished/balloon_blues.xml </level>
    <level> needs-polish/picnic-2.xml </level>
    <level> finished/domino_chest.xml </level>
    <level> needs-polish/loopings2.xml </level>
