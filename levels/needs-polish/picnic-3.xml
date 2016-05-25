@@ -18,8 +18,10 @@
                 <property key="Thrust"> 8.0 </property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Stop">
-            <object width="0.200" X="3.850" Y="0.500" height="0.200" type="Floor" angle="0.000"/>
+        <toolboxitem count="1" name="Wooden block">
+            <object width="0.200" X="3.850" Y="0.500" height="0.200" type="Floor" angle="0.000">
+                <tooltip>A small immovable obstacle.</tooltip>
+            </object>
         </toolboxitem>
         <toolboxitem count="1">
             <object X="0.550" Y="0.960" type="BowlingBall" angle="0.000"/>
