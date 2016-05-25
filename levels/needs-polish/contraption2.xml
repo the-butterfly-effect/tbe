@@ -197,8 +197,9 @@
             <object width="0.1" X="3.55" Y="3.05" height="0.6" type="Floor" angle="0">
                 <property key="Bounciness">0.05</property>
             </object>
-            <object width="0.6" X="3.9" Y="3.05" height="0.4" type="Scenery" angle="0">
+            <object width="0.6" X="3.9" Y="3.001" height="0.301" type="Scenery" angle="0">
                 <property key="ImageName">basket</property>
+                <property key="ZValue">0</property>
             </object>
             <object width="0.1" X="4.2" Y="1.9" height="2.7" type="Floor" angle="0">
                 <property key="Bounciness">0.05</property>
