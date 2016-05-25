@@ -81,6 +81,11 @@ SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 include(GetGitRevisionDescription)
 get_git_head_revision(GIT_REFSPEC GIT_VERSION_HASH)
 configure_file(
+    ${PROJECT_SOURCE_DIR}/src/tbe_version.h.in
+    ${PROJECT_BINARY_DIR}/tbe_version.h
+)
+
+configure_file(
     ${PROJECT_SOURCE_DIR}/src/tbe_global.h.in
     ${PROJECT_BINARY_DIR}/tbe_global.h
 )
