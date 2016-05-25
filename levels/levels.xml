@@ -13,12 +13,12 @@
    <level> needs-polish/brother-plays-penguin-goalie.xml </level>
    <level> finished/picnic-1.xml </level>
    <level> finished/jumping_around-2.xml </level>
-   <level> needs-polish/turn-it-around.xml </level>
+   <level> finished/turn-it-around.xml </level>
    <level> finished/contraption1.xml </level>
    <level> finished/bridge_gap.xml </level>
    <level> finished/the_ball_the_box_and_the_penguin.xml </level>
-   <level> needs-polish/steam-machine.xml </level>
-   <level> needs-polish/balloons-go-up.xml </level>
+   <level> finished/steam-machine.xml </level>
+   <level> finished/balloons-go-up.xml </level>
    <level> needs-polish/balloons-do-poof.xml </level>
    <level> needs-polish/004.xml </level>
    <level> finished/cola-powered-bike.v2.xml </level>
@@ -27,10 +27,10 @@
    <level> needs-polish/party-at-office.xml </level>
    <level> finished/in_the_attic.xml </level>
    <level> needs-polish/poofpoofpoof.xml </level>
-   <level> needs-polish/005.xml </level>
+   <level> finished/005.xml </level>
    <level> finished/volley_valley.xml </level>
    <level> finished/maze.xml </level>
-   <level> needs-polish/topple-the-other-way.xml </level>
+   <level> finished/topple-the-other-way.xml </level>
    <level> finished/pingus-introduction.xml </level>
    <level> finished/birds1.xml </level>
    <level> finished/birds2.xml </level>
@@ -53,19 +53,19 @@
    <level> finished/domino_day.xml </level>
    <level> needs-polish/geyser.xml </level>
    <level> needs-polish/butterfly-on-steroids.xml </level>
-   <level> needs-polish/006.xml </level>
+   <level> finished/006.xml </level>
    <level> finished/contraption2.xml </level>
    <level> finished/balloon_blues.xml </level>
    <level> needs-polish/picnic-2.xml </level>
    <level> finished/domino_chest.xml </level>
    <level> needs-polish/loopings2.xml </level>
    <level> needs-polish/007.xml </level>
-   <level> needs-polish/hanging_box.xml </level>
+   <level> finished/hanging_box.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
    <level> needs-polish/find-the-message.v2.xml </level>
-   <level> needs-polish/the_core.xml </level>
+   <level> finished/the_core.xml </level>
    <level> needs-polish/butterflies_of_doom.xml </level>
-   <level> needs-polish/the_pit.xml </level>
+   <level> finished/the_pit.xml </level>
    <level> finished/boom_boom_boom.xml </level>
    <level> needs-polish/goal_maker.xml </level>
    <level> needs-polish/hattrick.xml </level>
