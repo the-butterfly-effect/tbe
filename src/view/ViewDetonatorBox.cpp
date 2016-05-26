@@ -31,11 +31,12 @@
 // Constructors/Destructors
 //
 
-ViewDetonatorBox::ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName)
-	: ViewObject(aAbstractObjectPtr, anImageName)
+ViewDetonatorBox::ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr,
+                                    const QString &anImageName)
+    : ViewObject(aAbstractObjectPtr, anImageName)
 {
-	// Everything is done in the ViewObject constructor...
-	DEBUG5ENTRY;
+    // Everything is done in the ViewObject constructor...
+    DEBUG5ENTRY;
 }
 
 ViewDetonatorBox::~ViewDetonatorBox ( )
@@ -56,28 +57,28 @@ ViewDetonatorBox::~ViewDetonatorBox ( )
 
 void ViewDetonatorBox::displayChoosePhoneNumber(void)
 {
-	// display a combobox with those numbers
-    DetonatorBox* myDetBoxPtr = dynamic_cast<DetonatorBox*>(theAbstractObjectPtr);
-	assert (myDetBoxPtr != nullptr);
-	ChoosePhoneNumber* myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, ResizingGraphicsView::me());
-	myDialogPtr->appearAnimated();
+    // display a combobox with those numbers
+    DetonatorBox *myDetBoxPtr = dynamic_cast<DetonatorBox *>(theAbstractObjectPtr);
+    assert (myDetBoxPtr != nullptr);
+    ChoosePhoneNumber *myDialogPtr = new ChoosePhoneNumber(myDetBoxPtr, ResizingGraphicsView::me());
+    myDialogPtr->appearAnimated();
 
-	// The dialog will set the phone numbers itself, no need for us to worry
-	// it will also clean up after itself, I hope :-)
+    // The dialog will set the phone numbers itself, no need for us to worry
+    // it will also clean up after itself, I hope :-)
 }
 
 
-void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+void ViewDetonatorBox::hoverEnterEvent ( QGraphicsSceneHoverEvent * )
 {
-	// always execute Hover - even if object is not movable.
-	realHoverEnterEvent();
-	// update the tooltip because it might have been changed
-	setToolTip(theAbstractObjectPtr->getToolTip());
+    // always execute Hover - even if object is not movable.
+    realHoverEnterEvent();
+    // update the tooltip because it might have been changed
+    setToolTip(theAbstractObjectPtr->getToolTip());
 }
 
 
-void ViewDetonatorBox::mousePressEvent ( QGraphicsSceneMouseEvent* anEvent )
+void ViewDetonatorBox::mousePressEvent ( QGraphicsSceneMouseEvent *anEvent )
 {
-	theClickedScenePos = anEvent->scenePos();
-	QTimer::singleShot(thePieMenuDelay, this, SLOT(realMousePressEvent()));
+    theClickedScenePos = anEvent->scenePos();
+    QTimer::singleShot(thePieMenuDelay, this, SLOT(realMousePressEvent()));
 }

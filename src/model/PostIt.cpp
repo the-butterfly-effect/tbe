@@ -26,10 +26,14 @@
 class PostItObjectFactory : public ObjectFactory
 {
 public:
-	PostItObjectFactory(void)
-	{	announceObjectType("PostIt", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new PostIt()); }
+    PostItObjectFactory(void)
+    {
+        announceObjectType("PostIt", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new PostIt());
+    }
 };
 static PostItObjectFactory theFactory;
 
@@ -37,38 +41,38 @@ static PostItObjectFactory theFactory;
 
 PostIt::PostIt( )
 {
-	// Post-Its are 3x3 inch (i.e. 8x8 cm)
-	// but because they are too small, we will triple each side and make them 22x22 cm...
-	const double mySideLength = 0.22;
+    // Post-Its are 3x3 inch (i.e. 8x8 cm)
+    // but because they are too small, we will triple each side and make them 22x22 cm...
+    const double mySideLength = 0.22;
 
-	setTheWidth(mySideLength);
-	setTheHeight(mySideLength);
+    setTheWidth(mySideLength);
+    setTheHeight(mySideLength);
 
-	// Note that PostIt doesn't have a physics representation
-	// it is only graphics
-	theProps.setDefaultPropertiesString(
-			QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
-			"-" + Property::MASS_STRING + QString(":/") );
+    // Note that PostIt doesn't have a physics representation
+    // it is only graphics
+    theProps.setDefaultPropertiesString(
+        QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
+        "-" + Property::MASS_STRING + QString(":/") );
     theToolTip = QObject::tr("Someone left notes all over the place.\n"
                              "You know, those yellow 3×3 inch pieces of paper.\n"
                              "You might want to read them—it may help!");
 
-	DEBUG5("PostIt::PostIt done");
+    DEBUG5("PostIt::PostIt done");
 }
 
 
 PostIt::~PostIt( )
 {
-	;
+    ;
 }
 
 
 
 ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 {
-	if (nullptr!=theViewObjectPtr)
-		return theViewObjectPtr;
+    if (nullptr != theViewObjectPtr)
+        return theViewObjectPtr;
     theViewObjectPtr = ViewObject::factoryMethod<ViewPostIt>(getThisPtr());
-	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
-	return theViewObjectPtr;
+    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    return theViewObjectPtr;
 }

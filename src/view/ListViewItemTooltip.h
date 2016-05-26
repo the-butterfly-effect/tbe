@@ -31,31 +31,31 @@ class ListViewItemTooltip;
 class ListViewItemTooltip : public AnimatedDialog
 {
     Q_OBJECT
-    
+
 public:
     /// explicit constructor
     /// @param aTBGPtr
     /// @param parent   resizinggraphicsview*
     explicit ListViewItemTooltip(
-            ToolboxGroup* aTBGPtr,
-            ResizingGraphicsView* parent = 0);
+        ToolboxGroup *aTBGPtr,
+        ResizingGraphicsView *parent = 0);
     ~ListViewItemTooltip();
 
     /// @param aVPos    vertical position in pixels to align top of tooltip to
     void adjustVPos(int aVPos);
-    
+
 public slots:
     void on_buttonRemove_clicked();
     void on_buttonObjectImage_clicked();
 
 private:
-	/// TODO
-	void addActionIcon(const QString& anIconName, const QString &aToolTip);
+    /// TODO
+    void addActionIcon(const QString &anIconName, const QString &aToolTip);
 
-	Ui::ListViewItemTooltip *ui;
-    ToolboxGroup* theTBGPtr;
+    Ui::ListViewItemTooltip *ui;
+    ToolboxGroup *theTBGPtr;
 
-    ResizingGraphicsView* thRSGVPtr;
+    ResizingGraphicsView *thRSGVPtr;
 };
 
 #endif // LISTVIEWITEMTOOLTIP_H

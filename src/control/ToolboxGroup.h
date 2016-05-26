@@ -29,25 +29,29 @@ class ToolboxListWidgetItem;
 class ToolboxGroup
 {
 public:
-    explicit ToolboxGroup(const QString& aGroupName);
+    explicit ToolboxGroup(const QString &aGroupName);
     ~ToolboxGroup();
 
     void addObject(AbstractObjectPtr anObjectPtr);
 
     int count(void)
-    { return theObjectsList.count(); }
+    {
+        return theObjectsList.count();
+    }
 
     /// @returns a pointer to the first object in this group
     ///          without removing it .
     /// (compare to popObject(), that removes the LAST one)
     AbstractObjectPtr last() const
-    { return theObjectsList.last(); }
+    {
+        return theObjectsList.last();
+    }
 
     /// Removes the last object from the group.
     /// @note: you already used last() to retrieve its pointer
     AbstractObjectPtr popObject(void);
 
-    void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
+    void setItemPtr(ToolboxListWidgetItem *aWidgetItemPtr);
 
     QString     theGroupName;    // translatable
     QString     theInternalName; // not translatable
@@ -55,7 +59,7 @@ public:
 private:
     typedef QList<AbstractObjectPtr> ObjectsList;
     ObjectsList theObjectsList;
-    ToolboxListWidgetItem* theWidgetItemPtr;
+    ToolboxListWidgetItem *theWidgetItemPtr;
 };
 
 #endif // TOOLBOXGROUP_H

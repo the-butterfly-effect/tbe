@@ -29,37 +29,41 @@
 class ColaSplatter : public CircleObject
 {
 public:
-	ColaSplatter();
-	virtual ~ColaSplatter();
+    ColaSplatter();
+    virtual ~ColaSplatter();
 
-	/// @returns true if the object should not surive a World::deletePhysicsWorld()
-	/// overridden from AbstractObject
-	virtual bool isTemp() const override
-	{ return true; }
+    /// @returns true if the object should not surive a World::deletePhysicsWorld()
+    /// overridden from AbstractObject
+    virtual bool isTemp() const override
+    {
+        return true;
+    }
 
     /** sets all parameters of the splatter
-	  * @param aWorldPtr
-	  * @param aStartPos
-	  * @param aVelocity
-	  * @param aSplatterMass
-	  */
-    void setAll(const Position& aStartPos,
-				qreal aVelocity, qreal aSplatterMass);
+      * @param aWorldPtr
+      * @param aStartPos
+      * @param aVelocity
+      * @param aSplatterMass
+      */
+    void setAll(const Position &aStartPos,
+                qreal aVelocity, qreal aSplatterMass);
 
-	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void) override
-	{ return true; }
+    /// overridden from AbstractObject - we want reports on NormalImpulse
+    virtual bool isInterestedInNormalImpulse(void) override
+    {
+        return true;
+    }
 
-	/** overridden from AbstractObject - if we have an impulse, we hit something
-	  * and we'd better disband ourselves soon...
-	  * @param anImpulseLength length of the normal impulse vector
-	  */
+    /** overridden from AbstractObject - if we have an impulse, we hit something
+      * and we'd better disband ourselves soon...
+      * @param anImpulseLength length of the normal impulse vector
+      */
     void reportNormalImpulseLength(qreal anImpulseLength,
-                                   AbstractObject* anOtherObjectPtr) override;
+                                   AbstractObject *anOtherObjectPtr) override;
 
 protected:
-	const static qreal theRadius;
-	bool hasRequestedRemoval;
+    const static qreal theRadius;
+    bool hasRequestedRemoval;
 };
 
 
@@ -75,89 +79,96 @@ protected:
 class ColaMintBottle : public PolyObject, public SimStepCallbackInterface
 {
 public:
-	ColaMintBottle();
+    ColaMintBottle();
 
-	enum BottleStatus
-	{
-		UNTRIGGERED,
-		TRIGGERED,
-		BLOWING,
-		EMPTY
-	};
+    enum BottleStatus {
+        UNTRIGGERED,
+        TRIGGERED,
+        BLOWING,
+        EMPTY
+    };
 
-	/// one of the two ways to trigger the blowing:
-	void setBottleStatus(BottleStatus aNewStat);
+    /// one of the two ways to trigger the blowing:
+    void setBottleStatus(BottleStatus aNewStat);
 
-	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void) override;
+    /// let's mis-use deletePhysicsObject to reset our object state
+    virtual void deletePhysicsObject(void) override;
 
-	/// @returns the current bottle state
-	BottleStatus getBottleStatus(void)
-	{ return theBottleStatus; }
+    /// @returns the current bottle state
+    BottleStatus getBottleStatus(void)
+    {
+        return theBottleStatus;
+    }
 
-	/// overridden from AbstractObject to allow representation of the states
-	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const override
-	{ return theBottleStatus; }
+    /// overridden from AbstractObject to allow representation of the states
+    /// @returns: returns a numerical index similar to the state
+    virtual unsigned int getImageIndex(void) const override
+    {
+        return theBottleStatus;
+    }
 
-	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void) override
-	{ return true; }
+    /// overridden from AbstractObject - we want reports on NormalImpulse
+    virtual bool isInterestedInNormalImpulse(void) override
+    {
+        return true;
+    }
 
-	/** overridden from AbstractObject - we want to receive
-	  * reports on the normal impulse.
-	  * @param anImpulseLength length of the normal impulse vector
-	  */
+    /** overridden from AbstractObject - we want to receive
+      * reports on the normal impulse.
+      * @param anImpulseLength length of the normal impulse vector
+      */
     void reportNormalImpulseLength(qreal anImpulseLength,
-                                   AbstractObject* anOtherObjectPtr) override;
+                                   AbstractObject *anOtherObjectPtr) override;
 
-	/// overridden from AbstractObject because this class wants to register for callbacks
-	virtual void createPhysicsObject(void) override;
-
-private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
-
-	/** generate a new Cola splatter
-	 *  @param aSequenceNr the sequence number of the splatter
-	 */
-	void newSplatter(unsigned int aSequenceNr);
+    /// overridden from AbstractObject because this class wants to register for callbacks
+    virtual void createPhysicsObject(void) override;
 
 private:
-	// Private things
+    /// implemented from SimStepCallbackInterface
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	/// adjusts the object's mass based on theColaAmount variable
-	void updateMass(void);
+    /** generate a new Cola splatter
+     *  @param aSequenceNr the sequence number of the splatter
+     */
+    void newSplatter(unsigned int aSequenceNr);
+
+private:
+    // Private things
+
+    /// adjusts the object's mass based on theColaAmount variable
+    void updateMass(void);
 
 
-	// Things from RectObject that need adjustments:
+    // Things from RectObject that need adjustments:
 
-	/// overridden from RectObject to remove the functionality
-	virtual void adjustParameters(void)
-	{ ; };
+    /// overridden from RectObject to remove the functionality
+    virtual void adjustParameters(void)
+    {
+        ;
+    };
 
 
 private:
-	BottleStatus theBottleStatus;
+    BottleStatus theBottleStatus;
 
-	/// the amount of liquid still in the bottle
-	/// 2.0l at start, reducing fast whilst blowing.
-	/// unit: kg or l (who cares)
-	/// (note: using the MASS property, you can adjust this)
-	float theColaAmount;
+    /// the amount of liquid still in the bottle
+    /// 2.0l at start, reducing fast whilst blowing.
+    /// unit: kg or l (who cares)
+    /// (note: using the MASS property, you can adjust this)
+    float theColaAmount;
 
-	/// the weight of an empty bottle in [kg]
-	static const double theBottleMass;
+    /// the weight of an empty bottle in [kg]
+    static const double theBottleMass;
 
-	/// the number of splatters splat.
-	/// used in the calculation of the exit velocity of the splatter
-	int theSplatterCount;
+    /// the number of splatters splat.
+    /// used in the calculation of the exit velocity of the splatter
+    int theSplatterCount;
 
-	/// starts ticking once the bottle is triggered
-	int theCountdown;
+    /// starts ticking once the bottle is triggered
+    int theCountdown;
 
-	/// constant that describes how much the ColaSplatter acts on the bottle
-	float theThrust;
+    /// constant that describes how much the ColaSplatter acts on the bottle
+    float theThrust;
 
 
 };

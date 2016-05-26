@@ -30,7 +30,7 @@ class LevelCreator : public QObject
 {
     Q_OBJECT
 public:
-    explicit LevelCreator(MainWindow* aParent);
+    explicit LevelCreator(MainWindow *aParent);
 
     // note how there's no public members here :-)
 
@@ -56,18 +56,18 @@ public slots:
     void slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr);
 
 private:
-    MainWindow* theMWPtr;
+    MainWindow *theMWPtr;
     Ui::MainWindow *ui;
 
-    QToolBar* theLevelCreatorToolbarPtr;
+    QToolBar *theLevelCreatorToolbarPtr;
 
-    QAction* theCollisionOffActionPtr;
-    QAction* theCollisionOnActionPtr;
+    QAction *theCollisionOffActionPtr;
+    QAction *theCollisionOnActionPtr;
 
-    QAction* theDrawDebugActionPtr;
-    QAction* theDrawNormalActionPtr;
+    QAction *theDrawDebugActionPtr;
+    QAction *theDrawNormalActionPtr;
 
-    EditObjectDialog* theEditObjectDialogPtr;
+    EditObjectDialog *theEditObjectDialogPtr;
     AbstractObjectWeakPtr theSelectedAOWeakPtr;
 };
 

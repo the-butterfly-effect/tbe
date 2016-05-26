@@ -23,44 +23,53 @@
 #include <QString>
 
 // TODO/FIXME: move this into TestChapter
-#define testmsg(format, ...)	printf("    " format, ## __VA_ARGS__)
+#define testmsg(format, ...)    printf("    " format, ## __VA_ARGS__)
 
 
 class TestChapter
 {
 public:
-	TestChapter(QString aTitle);
-	virtual ~TestChapter();
+    TestChapter(QString aTitle);
+    virtual ~TestChapter();
 
-	/// will contain the setup code
-	/// init should only contain setup code that cannot go wrong
-	/// otherwise: write a test for it
-	virtual bool setUp();
+    /// will contain the setup code
+    /// init should only contain setup code that cannot go wrong
+    /// otherwise: write a test for it
+    virtual bool setUp();
 
-	/// will contain the shutdown code
-	/// if any teardown fails, return false
-	virtual bool tearDown();
-	
-	/// will contain the actual tests, or calls to actual tests
-	/// if you want to define paragraphs
-	virtual bool runTests() = 0;
+    /// will contain the shutdown code
+    /// if any teardown fails, return false
+    virtual bool tearDown();
+
+    /// will contain the actual tests, or calls to actual tests
+    /// if you want to define paragraphs
+    virtual bool runTests() = 0;
 
 
 
 public:  // the below are only for TestChapter
-	void finish(void);
+    void finish(void);
 
-	const QString& getTitle(void) const {return theTitle;}
-	int getOKs(void) const {return theNumberOfOKs;}
-	int getFAILs(void) const {return theNumberOfFAILs;}
+    const QString &getTitle(void) const
+    {
+        return theTitle;
+    }
+    int getOKs(void) const
+    {
+        return theNumberOfOKs;
+    }
+    int getFAILs(void) const
+    {
+        return theNumberOfFAILs;
+    }
 
 protected:
-	bool check(bool aCondition, const QString& aMessage, bool abortIfWrong=false);
+    bool check(bool aCondition, const QString &aMessage, bool abortIfWrong = false);
 
-	int theNumberOfOKs;
-	int theNumberOfFAILs;
+    int theNumberOfOKs;
+    int theNumberOfFAILs;
 
-	QString theTitle;
+    QString theTitle;
 };
 
 #endif // TESTCHAPTER_H

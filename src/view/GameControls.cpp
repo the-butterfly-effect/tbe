@@ -34,31 +34,31 @@ GameControls::GameControls(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    const QSize myIconSize(16,16);
-    theForwardIcon= ImageCache::getQIcon("ActionFastForward", myIconSize);
+    const QSize myIconSize(16, 16);
+    theForwardIcon = ImageCache::getQIcon("ActionFastForward", myIconSize);
     thePauseIcon  = ImageCache::getQIcon("ActionMenuPause", myIconSize);
     thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", myIconSize);
     theResetIcon  = ImageCache::getQIcon("ActionUndo", myIconSize);
 
     // ordering is important for the below operations!
     QPixmap myTempPixmap;
-    ImageCache::getPixmap("StatusFail",   QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusFail",   QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusFF",     QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusFF",     QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusPlay",   QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusPlay",   QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusPause",  QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusPause",  QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusProblem",QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusProblem", QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("Status4F",     QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("Status4F",     QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusSlow",   QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusSlow",   QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusStop",   QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusStop",   QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
-    ImageCache::getPixmap("StatusWon",    QSize(64,64), &myTempPixmap);
+    ImageCache::getPixmap("StatusWon",    QSize(64, 64), &myTempPixmap);
     thePixmaps.append(myTempPixmap);
     ui->statusLabel->setPixmap(thePixmaps[0]);
 }
@@ -70,13 +70,13 @@ GameControls::~GameControls()
 }
 
 
-void GameControls::parentResize(const QSize& aSize)
+void GameControls::parentResize(const QSize &aSize)
 {
-    move(aSize.width()-size().width(),0);
+    move(aSize.width() - size().width(), 0);
 }
 
 
-void GameControls::setup(QMenu* aMenuPtr)
+void GameControls::setup(QMenu *aMenuPtr)
 {
     // add actions and their quick keys
     theForwardAction = new QAction(theForwardIcon, tr("&Forward"), nullptr);
@@ -126,7 +126,7 @@ void GameControls::setup(QMenu* aMenuPtr)
     theGameButtonGroup.addAction(theSlowAction);
     theGameButtonGroup.setExclusive(true);
 
-	ui->buttonForward->setDefaultAction(theForwardAction);
+    ui->buttonForward->setDefaultAction(theForwardAction);
     ui->buttonPause->setDefaultAction(thePauseAction);
     ui->buttonPlay->setDefaultAction(thePlayAction);
     ui->buttonReset->setDefaultAction(theResetAction);
@@ -149,8 +149,7 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     ui->statusLabel->setPixmap(thePixmaps[aStatus]);
     QKeySequence mySpaceKey(tr("Space", "key for start/pause the simulation"));
     QKeySequence myEmptyKey("");
-    switch(aStatus)
-    {
+    switch (aStatus) {
     case GameStateMachine::FailedStatus:
     case GameStateMachine::ProblemStatus:
     case GameStateMachine::WonStatus:

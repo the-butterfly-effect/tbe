@@ -30,38 +30,42 @@
 class PostIt : public AbstractObject
 {
 public:
-	PostIt();
+    PostIt();
 
-	virtual ~PostIt();
+    virtual ~PostIt();
 
-	// Public attribute accessor methods
-	//
+    // Public attribute accessor methods
+    //
 
-	/// @returns Pointer to the B2Body for the relative position asked for.
-	/// @note    because this object has no body, always returns nullptr
-//	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
-//	{ assert(false); return nullptr; }
+    /// @returns Pointer to the B2Body for the relative position asked for.
+    /// @note    because this object has no body, always returns nullptr
+//  virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition)
+//  { assert(false); return nullptr; }
 
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const override
-	{
-		return QObject::tr("PostIt");
-	}
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return QObject::tr("PostIt");
+    }
 
-	/// Post-its have no mass. But no b2Body will be created either :-)
-	virtual b2BodyType getObjectType(void) const override
-	{	return b2_staticBody; }
+    /// Post-its have no mass. But no b2Body will be created either :-)
+    virtual b2BodyType getObjectType(void) const override
+    {
+        return b2_staticBody;
+    }
 
-	/// returns true if the object can be rotated by the user
-	/// PostIts cannot be adjusted by the player
-	virtual bool isRotatable ( ) const override
-	{	return false; }
+    /// returns true if the object can be rotated by the user
+    /// PostIts cannot be adjusted by the player
+    virtual bool isRotatable ( ) const override
+    {
+        return false;
+    }
 
-	/// overridden because we have our own ViewObject that displays
-	/// the PostIt
-	/// @param   aDefaultDepth, ZValue depth in view if not set as property,
-	///          the higher the value the more likely it is drawn on top
-	ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
+    /// overridden because we have our own ViewObject that displays
+    /// the PostIt
+    /// @param   aDefaultDepth, ZValue depth in view if not set as property,
+    ///          the higher the value the more likely it is drawn on top
+    ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
 
 };
 

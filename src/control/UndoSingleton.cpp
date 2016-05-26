@@ -25,13 +25,13 @@
 #include "ChoosePhoneUndoCommand.h"
 #include "EditPropertyUndoCommand.h"
 
-static UndoSingleton* theUndoSingletonPtr = nullptr;
-static AbstractUndoCommand* theCurrentlyActiveUndoCommand = nullptr;
+static UndoSingleton *theUndoSingletonPtr = nullptr;
+static AbstractUndoCommand *theCurrentlyActiveUndoCommand = nullptr;
 
 
 UndoSingleton::UndoSingleton(void)
 {
-	// nothing to do
+    // nothing to do
 }
 
 
@@ -43,58 +43,57 @@ void UndoSingleton::clear()
 }
 
 
-QAction* UndoSingleton::createRedoAction (QObject* parent,const QString& prefix)
+QAction *UndoSingleton::createRedoAction (QObject *parent, const QString &prefix)
 {
-	return me()->theUndoStack.createRedoAction(parent, prefix);
+    return me()->theUndoStack.createRedoAction(parent, prefix);
 }
 
 
-QAction* UndoSingleton::createUndoAction (QObject* parent,const QString& prefix)
+QAction *UndoSingleton::createUndoAction (QObject *parent, const QString &prefix)
 {
-	return me()->theUndoStack.createUndoAction(parent, prefix);
+    return me()->theUndoStack.createUndoAction(parent, prefix);
 }
 
 
-AbstractUndoCommand*
+AbstractUndoCommand *
 UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
-								 ActionIcon::ActionType anUndoType)
+                                 ActionIcon::ActionType anUndoType)
 {
-	DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);
+    DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);
 
-	AbstractUndoCommand* myNewCommand = nullptr;
-	// return immediately for UndoActions that do not need further
-	// user interactions (i.e. those derived from Dummy).
-	switch(anUndoType)
-	{
-	case ActionIcon::ACTION_INSERT:
-		return new InsertUndoCommand(anObject);
-		break;
-	case ActionIcon::ACTION_MOVE:
-		myNewCommand = new MoveUndoCommand(anObject);
-		break;
-	case ActionIcon::ACTION_ROTATE:
-		myNewCommand =  new RotateUndoCommand(anObject);
-		break;
-	case ActionIcon::ACTION_RESIZE:
-		myNewCommand =  new ResizeUndoCommand(anObject);
-		break;
-	case ActionIcon::ACTION_SETPHONE:
-		return new ChoosePhoneUndoCommand(anObject);
-		break;
-	case ActionIcon::ACTION_DELETE:
-		return new DeleteUndoCommand(anObject);
-		break;
+    AbstractUndoCommand *myNewCommand = nullptr;
+    // return immediately for UndoActions that do not need further
+    // user interactions (i.e. those derived from Dummy).
+    switch (anUndoType) {
+    case ActionIcon::ACTION_INSERT:
+        return new InsertUndoCommand(anObject);
+        break;
+    case ActionIcon::ACTION_MOVE:
+        myNewCommand = new MoveUndoCommand(anObject);
+        break;
+    case ActionIcon::ACTION_ROTATE:
+        myNewCommand =  new RotateUndoCommand(anObject);
+        break;
+    case ActionIcon::ACTION_RESIZE:
+        myNewCommand =  new ResizeUndoCommand(anObject);
+        break;
+    case ActionIcon::ACTION_SETPHONE:
+        return new ChoosePhoneUndoCommand(anObject);
+        break;
+    case ActionIcon::ACTION_DELETE:
+        return new DeleteUndoCommand(anObject);
+        break;
     case ActionIcon::ACTION_EDITPROPERTIES:
         return new EditPropertyUndoCommand(anObject);
         break;
-    //case ActionIcon::ACTION_EDITSPECIAL:
-		// TODO/FIXME
+        //case ActionIcon::ACTION_EDITSPECIAL:
+        // TODO/FIXME
         //break;
-	}
-	if (theCurrentlyActiveUndoCommand!=nullptr)
-		delete theCurrentlyActiveUndoCommand;
-	theCurrentlyActiveUndoCommand = myNewCommand;
-	return myNewCommand;
+    }
+    if (theCurrentlyActiveUndoCommand != nullptr)
+        delete theCurrentlyActiveUndoCommand;
+    theCurrentlyActiveUndoCommand = myNewCommand;
+    return myNewCommand;
 }
 
 
@@ -105,26 +104,26 @@ bool UndoSingleton::isClean()
 }
 
 
-UndoSingleton* UndoSingleton::me(void)
+UndoSingleton *UndoSingleton::me(void)
 {
-	if (theUndoSingletonPtr==nullptr)
-		theUndoSingletonPtr = new UndoSingleton();
-	return theUndoSingletonPtr;
+    if (theUndoSingletonPtr == nullptr)
+        theUndoSingletonPtr = new UndoSingleton();
+    return theUndoSingletonPtr;
 }
 
 
-void UndoSingleton::notifyGone(AbstractUndoCommand* anAUCPtr)
+void UndoSingleton::notifyGone(AbstractUndoCommand *anAUCPtr)
 {
-	if (anAUCPtr == theCurrentlyActiveUndoCommand)
-		theCurrentlyActiveUndoCommand = nullptr;
+    if (anAUCPtr == theCurrentlyActiveUndoCommand)
+        theCurrentlyActiveUndoCommand = nullptr;
 }
 
 
-void UndoSingleton::push(AbstractUndoCommand* anAUCPtr)
+void UndoSingleton::push(AbstractUndoCommand *anAUCPtr)
 {
-	DEBUG3("UndoSingleton::push for '%s'", ASCII(anAUCPtr->text()));
-	me()->theUndoStack.push(anAUCPtr);
-	notifyGone(anAUCPtr);
+    DEBUG3("UndoSingleton::push for '%s'", ASCII(anAUCPtr->text()));
+    me()->theUndoStack.push(anAUCPtr);
+    notifyGone(anAUCPtr);
 }
 
 

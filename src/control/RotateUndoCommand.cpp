@@ -23,7 +23,7 @@
 #include <QGraphicsSceneMouseEvent>
 
 RotateUndoCommand::RotateUndoCommand(
-        ViewObjectPtr anViewObjectPtr)
+    ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Rotate"), nullptr),
       theButtonDownVectorAngle(999.f)
 {
@@ -47,13 +47,13 @@ bool RotateUndoCommand::editAngleDone(qreal aFinalAngle)
     return AbstractUndoCommand::mouseReleaseEvent(nullptr);
 }
 
-bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     qreal myOrigAngle = theOrigPos.angle;
 
-    Vector myNewVector = Position(anEventPtr->scenePos())-theOrigPos;
+    Vector myNewVector = Position(anEventPtr->scenePos()) - theOrigPos;
 
-    theNewPos.angle = -theButtonDownVectorAngle+myNewVector.toAngle()
+    theNewPos.angle = -theButtonDownVectorAngle + myNewVector.toAngle()
                       + myOrigAngle;
 
     theViewObjPtr->setNewGeometry(theNewPos);
@@ -61,7 +61,7 @@ bool RotateUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     return true;
 }
 
-bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool RotateUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     DEBUG3ENTRY;
     theButtonDownPosition = anEventPtr->scenePos();

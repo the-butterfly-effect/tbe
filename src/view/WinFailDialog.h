@@ -34,13 +34,12 @@ class WinFailDialog : public AnimatedDialog
     Q_OBJECT
 
 public:
-	enum MessageType
-	{
-		CONGRATS,
-		DEATH
-	};
+    enum MessageType {
+        CONGRATS,
+        DEATH
+    };
 
-    explicit WinFailDialog(MessageType aType, ResizingGraphicsView* aParent = 0);
+    explicit WinFailDialog(MessageType aType, ResizingGraphicsView *aParent = 0);
     virtual ~WinFailDialog();
 
 protected:

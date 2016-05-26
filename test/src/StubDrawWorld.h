@@ -35,46 +35,46 @@ class DrawWorld : public QGraphicsScene
 {
 public:
 
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/**
-	 * Empty Constructor
-	 */
-	DrawWorld (void);
-//	DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
+    /**
+     * Empty Constructor
+     */
+    DrawWorld (void);
+//  DrawWorld (MainWindow* aMainWindowPtr, World* aWorldPtr);
 
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~DrawWorld ( );
+    /**
+     * Empty Destructor
+     */
+    virtual ~DrawWorld ( );
 
-	// Public accessor methods
-	//
+    // Public accessor methods
+    //
 
-	qreal getWidth();
-	qreal getHeight();
+    qreal getWidth();
+    qreal getHeight();
 
-	QUndoStack* getTheUndoStackPtr(void);
+    QUndoStack *getTheUndoStackPtr(void);
 
-	/** iterate through all registered objects and make them create new
-	  * bitmap caches.
-	  */
-	void invalidateCaching(void);
-
-public:
-		const static int theMaxNumberOfGraphicsListElements = 125;
-		typedef QList<QGraphicsItem*> GraphicsList;
-		GraphicsList theGraphicsList;
-		void addDebugDrawToList(QGraphicsItem* anItem);
-		void clearGraphicsList(int aCount);
+    /** iterate through all registered objects and make them create new
+      * bitmap caches.
+      */
+    void invalidateCaching(void);
 
 public:
-	World* theWorldPtr;
-	void initAttributes ( ) ;
+    const static int theMaxNumberOfGraphicsListElements = 125;
+    typedef QList<QGraphicsItem *> GraphicsList;
+    GraphicsList theGraphicsList;
+    void addDebugDrawToList(QGraphicsItem *anItem);
+    void clearGraphicsList(int aCount);
+
+public:
+    World *theWorldPtr;
+    void initAttributes ( ) ;
 
 };
 

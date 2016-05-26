@@ -21,34 +21,34 @@
 #include "TriggerExplosion.h"
 
 
-ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView *aParentPtr) :
-	AnimatedDialog(aParentPtr),
-	m_ui(new Ui::ChoosePhoneNumber),
-	theDBPtr(aBoxPtr)
+ChoosePhoneNumber::ChoosePhoneNumber(DetonatorBox *aBoxPtr, ResizingGraphicsView *aParentPtr) :
+    AnimatedDialog(aParentPtr),
+    m_ui(new Ui::ChoosePhoneNumber),
+    theDBPtr(aBoxPtr)
 {
-	m_ui->setupUi(this);
-	assert(theDBPtr!=nullptr);
+    m_ui->setupUi(this);
+    assert(theDBPtr != nullptr);
 
-	// all possible phone numbers are inserted below
-	m_ui->comboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
-	QStringList myPhoneList = theDBPtr->getAllPhoneNumbers();
-	myPhoneList.sort();
-	m_ui->comboBox->clear();
-	m_ui->comboBox->addItems(myPhoneList);
+    // all possible phone numbers are inserted below
+    m_ui->comboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
+    QStringList myPhoneList = theDBPtr->getAllPhoneNumbers();
+    myPhoneList.sort();
+    m_ui->comboBox->clear();
+    m_ui->comboBox->addItems(myPhoneList);
 
-	// and select the current item from the DetonatorBox
-	QString myPhoneNumber = theDBPtr->getCurrentPhoneNumber();
-	int myPhoneNrIndex = m_ui->comboBox->findText (myPhoneNumber, Qt::MatchExactly);
-	m_ui->comboBox->setCurrentIndex(myPhoneNrIndex);
+    // and select the current item from the DetonatorBox
+    QString myPhoneNumber = theDBPtr->getCurrentPhoneNumber();
+    int myPhoneNrIndex = m_ui->comboBox->findText (myPhoneNumber, Qt::MatchExactly);
+    m_ui->comboBox->setCurrentIndex(myPhoneNrIndex);
 
-	connect(m_ui->pushButton_Cancel,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
-	connect(m_ui->pushButton_OK,SIGNAL(clicked()), this, SLOT(disappearAnimated()));
-	this->adjustSize();
+    connect(m_ui->pushButton_Cancel, SIGNAL(clicked()), this, SLOT(disappearAnimated()));
+    connect(m_ui->pushButton_OK, SIGNAL(clicked()), this, SLOT(disappearAnimated()));
+    this->adjustSize();
 }
 
 ChoosePhoneNumber::~ChoosePhoneNumber()
 {
-	delete m_ui;
+    delete m_ui;
 }
 
 void ChoosePhoneNumber::changeEvent(QEvent *e)
@@ -65,15 +65,15 @@ void ChoosePhoneNumber::changeEvent(QEvent *e)
 
 void ChoosePhoneNumber::on_comboBox_activated()
 {
-	// is the empty line selected?
-	QString myLine = m_ui->comboBox->currentText();
-	DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'", ASCII(myLine));
-	assert(myLine.isEmpty()==false);
+    // is the empty line selected?
+    QString myLine = m_ui->comboBox->currentText();
+    DEBUG4("ChoosePhoneNumber::on_comboBox_activated - selected '%s'", ASCII(myLine));
+    assert(myLine.isEmpty() == false);
 
-	// let's notify the detonator box
-	assert(theDBPtr!=nullptr);
-	if(myLine == theDBPtr->getEmptyString())
-		theDBPtr->setPhoneNumber("");
-	else
-		theDBPtr->setPhoneNumber(myLine);
+    // let's notify the detonator box
+    assert(theDBPtr != nullptr);
+    if (myLine == theDBPtr->getEmptyString())
+        theDBPtr->setPhoneNumber("");
+    else
+        theDBPtr->setPhoneNumber(myLine);
 }

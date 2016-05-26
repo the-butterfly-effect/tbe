@@ -47,7 +47,7 @@ class InsertMenuQAction : public QAction
 {
     Q_OBJECT
 public:
-    InsertMenuQAction( const QString & text, QObject * parent )
+    InsertMenuQAction( const QString &text, QObject *parent )
         : QAction (text, parent)
     {
         connect (this, SIGNAL(triggered()), this, SLOT(sendTriggerName()));
@@ -55,12 +55,13 @@ public:
 
 public slots:
     /// will be connected
-    void sendTriggerName() {
+    void sendTriggerName()
+    {
         emit triggeredName(text());
     }
 
 signals:
-    void triggeredName(const QString& aName);
+    void triggeredName(const QString &aName);
 };
 
 
@@ -70,19 +71,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-	explicit MainWindow(bool isMaximized, QWidget *parent = 0);
+    explicit MainWindow(bool isMaximized, QWidget *parent = 0);
     ~MainWindow();
 
     static const QString getWelcomeMessage();
 
     /// deletes the existing Level instance and removes its view
-	void purgeLevel();
+    void purgeLevel();
 
-    RegressionTest* theRegressionTest;
-    LevelCreator*    theLevelCreator;
+    RegressionTest *theRegressionTest;
+    LevelCreator    *theLevelCreator;
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
+    virtual void changeEvent(QEvent *e) override;
 
     /// Internal function to redo scene.
     void repopulateScene();
@@ -90,18 +91,18 @@ protected:
     void repopulateToolbox();
 
     /// Adds dynamic menus, i.e. 'Edit' and 'Languages'.
-	void setupView();
+    void setupView();
 
 public slots:
     /// Loads the level specified by the file name.
     /// @param aFileName guess what: the file name. Duh.
-    void loadLevel(const QString& aFileName);
+    void loadLevel(const QString &aFileName);
 
-	void loadLevelDelayed();
+    void loadLevelDelayed();
 
     /// Restarts the level already active.
     /// Because we have the filename already, no need to specify here.
-	void reloadLevel();
+    void reloadLevel();
 
     /// To be called when the cursor changed position in the graphicsview,
     /// in order to display the coordinates.
@@ -110,27 +111,27 @@ public slots:
 
 
 private slots:
-	/// Inserts one of the hints from the level into the Scene.
-	/// @note: for now, this is an internal function, usable by the
-	///        regression system only. To make it work for users, we need
-	///        a lot more 'weird' handling, like applying a hint for an object
-	///        that is already in the scene (i.e. not insert but move)
-	/// @note: internally uses the InsertUndoCommand mechanism
-	bool slot_insertHint(unsigned int aHintNumber) const;
+    /// Inserts one of the hints from the level into the Scene.
+    /// @note: for now, this is an internal function, usable by the
+    ///        regression system only. To make it work for users, we need
+    ///        a lot more 'weird' handling, like applying a hint for an object
+    ///        that is already in the scene (i.e. not insert but move)
+    /// @note: internally uses the InsertUndoCommand mechanism
+    bool slot_insertHint(unsigned int aHintNumber) const;
 
     // menu Help
-	void on_action_About_triggered();
-	void on_action_Bug_Reports_triggered();
-	void on_action_Keyboard_Shortcuts_triggered();
-	void on_action_Libraries_triggered();
-	void on_action_New_Level_Ideas_triggered();
-	void on_action_Quit_triggered();
-	void on_action_Skip_Level_triggered();
-	void on_action_Suggestions_triggered();
+    void on_action_About_triggered();
+    void on_action_Bug_Reports_triggered();
+    void on_action_Keyboard_Shortcuts_triggered();
+    void on_action_Libraries_triggered();
+    void on_action_New_Level_Ideas_triggered();
+    void on_action_Quit_triggered();
+    void on_action_Skip_Level_triggered();
+    void on_action_Suggestions_triggered();
 
     // menu File
-	void on_action_New_triggered();
-	void on_action_Open_File_triggered();
+    void on_action_New_triggered();
+    void on_action_Open_File_triggered();
 public slots:
     void on_action_Open_Level_triggered();
 private slots:
@@ -153,17 +154,17 @@ private:
     Ui::MainWindow *ui;
 
     /// Pointer to the current level.
-    Level* theLevelPtr;
+    Level *theLevelPtr;
 
-    World* theWorldPtr;
+    World *theWorldPtr;
 
     /// Label showing the world coordinates of the cursor. Only used in level creator
-    QLabel* theMousePosLabelPtr;
+    QLabel *theMousePosLabelPtr;
 
     /// This ActionGroup ensures that only one language in the menu is checked.
     QActionGroup theLanguagesGroup;
 
-    GameStateMachine* theGameStateMachinePtr;
+    GameStateMachine *theGameStateMachinePtr;
 
     friend class LevelCreator;
     friend class RegressionTest;

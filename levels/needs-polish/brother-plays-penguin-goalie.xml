@@ -87,7 +87,7 @@
 		<property key="page4">&lt;br>&lt;br>… Post-It Boy</property>
                 <property key="page5">Please, dear bro, keep my penguin alive!</property>
             </object>
-            <object width="0.280" X="3.4" Y="0.24" height="0.280" type="Pingus" angle="0.000" ID="thePingus"/>
+            <object width="0.280" X="3.4" Y="0.24" height="0.280" type="PingusWalkLeft" angle="0.000" ID="thePingus"/>
             <object width="6.4" X="4.6" Y="1.65" height="3.5" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
                 <property key="ZValue">0.1</property>

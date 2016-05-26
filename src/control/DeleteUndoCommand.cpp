@@ -28,7 +28,7 @@
 
 
 DeleteUndoCommand::DeleteUndoCommand(
-        ViewObjectPtr anViewObjectPtr)
+    ViewObjectPtr anViewObjectPtr)
     : InsertUndoCommand(anViewObjectPtr, QObject::tr("Remove"))
 {
     DEBUG3ENTRY;
@@ -38,7 +38,7 @@ DeleteUndoCommand::DeleteUndoCommand(
     theTBGPtr = Level::findToolBoxGroup(theAOPtr);
 
     // only either TBGPtr or AOPtr can be non-null
-    if (nullptr!=theTBGPtr)
+    if (nullptr != theTBGPtr)
         theAOPtr = nullptr;
     commit();
 }

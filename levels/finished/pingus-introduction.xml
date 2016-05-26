@@ -26,7 +26,7 @@
     <scene>
         <scenesize width="5.5" height="3"/>
         <predefined>
-            <object type="Pingus" width="0.280" Y="2.279" angle="0.000" X="1.076" height="0.280" ID="pingu1"/>
+            <object type="PingusWalkLeft" width="0.280" Y="2.279" angle="0.000" X="1.076" height="0.280" ID="pingu1"/>
             <object type="Floor" width="1.745" Y="2.106" angle="0.000" X="1.398" height="0.100"/>
             <object type="Floor" width="3.442" Y="1.532" angle="0.000" X="3.779" height="0.100"/>
             <object type="PingusExit" width="0.330" Y="0.678" angle="0.000" X="1.367" height="0.460">
@@ -45,16 +45,16 @@
 		<property key="page8">That’s all I know about them. I hope it helps!&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object type="Weight" width="0.400" Y="2.750" angle="0.000" X="2.989" height="0.400"/>
-            <object type="Pingus" width="0.280" Y="1.709" angle="0.000" X="2.940" height="0.280" ID="pingu2"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.709" angle="0.000" X="2.940" height="0.280" ID="pingu2"/>
             <object type="SoccerBall" width="0.210" Y="1.688" angle="0.000" X="4.284" height="0.210" ID="ball"/>
             <object type="Floor" width="1.906" Y="0.874" angle="0.000" X="3.505" height="0.100"/>
             <object type="Floor" width="4.797" Y="0.396" angle="0.000" X="3.114" height="0.100"/>
-            <object type="Pingus" width="0.280" Y="1.048" angle="0.000" X="3.824" height="0.280" ID="pingu3"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.048" angle="0.000" X="3.824" height="0.280" ID="pingu3"/>
             <object type="Floor" width="0.991" Y="1.525" angle="0.000" X="1.024" height="0.100"/>
             <object type="Wall" width="0.237" Y="0.298" angle="0.000" X="0.191" height="0.507"/>
-            <object type="Pingus" width="0.280" Y="1.699" angle="0.000" X="0.858" height="0.280" ID="pingu4"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.699" angle="0.000" X="0.858" height="0.280" ID="pingu4"/>
             <object type="Floor" width="0.839" Y="2.146" angle="0.000" X="4.296" height="0.100"/>
-            <object type="Pingus" width="0.280" Y="1.705" angle="0.000" X="4.736" height="0.280" ID="pingu5"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.705" angle="0.000" X="4.736" height="0.280" ID="pingu5"/>
             <object type="QuarterArc40" width="0.400" Y="0.243" angle="-1.572" X="0.510" height="0.400"/>
             <object type="Cactus" width="0.250" Y="0.752" angle="0.000" X="0.194" height="0.400"/>
         </predefined>

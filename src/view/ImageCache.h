@@ -36,18 +36,18 @@ public:
     /// convenience version of the other findPixmap(), where
     /// you cannot set the size and will have to do with the
     /// standard bitmap size (only relevant for SVG images anyway)
-    static bool getPixmap(const QString& anImageBaseName,
-                          QPixmap* anOutputPixmap);
+    static bool getPixmap(const QString &anImageBaseName,
+                          QPixmap *anOutputPixmap);
 
     ///
     /// @param anImageBaseName
     /// @param aSize
     /// @param anOutputPixmap
-	/// @param aHint     (default set to QPainter::Antialiasing)
-    static bool getPixmap(const QString& anImageBaseName,
-                          const QSize& aSize,
-						  QPixmap* anOutputPixmap,
-						  QPainter::RenderHint aHint = QPainter::Antialiasing);
+    /// @param aHint     (default set to QPainter::Antialiasing)
+    static bool getPixmap(const QString &anImageBaseName,
+                          const QSize &aSize,
+                          QPixmap *anOutputPixmap,
+                          QPainter::RenderHint aHint = QPainter::Antialiasing);
 
 
     /** always accessible (singleton) function to get an Icon from an image
@@ -56,7 +56,7 @@ public:
      *   @returns a QIcon with the image requested. if no image found,
      *            QIcon will contain either the NotFound image or white field
      */
-    static QIcon getQIcon(const QString& anImageName, const QSize& aSize);
+    static QIcon getQIcon(const QString &anImageName, const QSize &aSize);
 
 
 private:

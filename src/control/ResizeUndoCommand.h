@@ -30,28 +30,27 @@ class ResizeUndoCommand : public AbstractUndoCommand
 public:
     explicit ResizeUndoCommand(ViewObjectPtr anViewObjectPtr);
 
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) override;
-    bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) override;
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *anEventPtr) override;
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *anEventPtr) override;
 
-    bool basicMoveEvent   (const Position& aNewPos, qreal aNewWidth, qreal aNewHeight);
+    bool basicMoveEvent   (const Position &aNewPos, qreal aNewWidth, qreal aNewHeight);
 
     /// Calculate the local position from a scene position
     /// (but remain in scene units)
     /// @param aScenePos position in scene coords
     /// @returns position in local coords
     ///          (using theOrigPos from the parent class)
-    QPointF toLocalPos(const QPointF& aScenePos);
+    QPointF toLocalPos(const QPointF &aScenePos);
 
 private:
     AbstractObject::SizeDirections theResizingOptions;
 
-    enum Axis
-    {
+    enum Axis {
         NONE,
-        WIDTHLEFT=1,
-        WIDTHRIGHT=2,
-        HEIGHTBOTTOM=4,
-        HEIGHTTOP=8
+        WIDTHLEFT = 1,
+        WIDTHRIGHT = 2,
+        HEIGHTBOTTOM = 4,
+        HEIGHTTOP = 8
     };
     // TODO/FIXME: make this one use enum Axis
     int theAxis;

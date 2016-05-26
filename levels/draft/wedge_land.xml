@@ -39,14 +39,14 @@
             <object type="Floor" angle="0" width="2.67422" height="0.1" X="8.20982" Y="1.62638"/>
             <object type="Floor" angle="0" width="1.02985" height="0.1" X="10.0245" Y="0.0643474"/>
             <object type="Wall" angle="0" width="0.2" height="1" X="9.42967" Y="0.511866"/>
-            <object ID="IWantToGoRight1" type="Pingus" angle="0" width="0.28" height="0.28" X="6.53314" Y="2.01368"/>
+            <object ID="IWantToGoRight1" type="PingusWalkRight" angle="0" width="0.28" height="0.28" X="6.53314" Y="2.01368"/>
             <object type="Floor" angle="0" width="3.07443" height="0.1" X="4.14348" Y="3.03306"/>
             <object type="Floor" angle="-1.57" width="0.373561" height="0.310356" X="10.6566" Y="0.199315"/>
             <object type="Floor" angle="0" width="3.29018" height="0.1" X="5.11516" Y="3.83646"/>
             <object type="Floor" angle="0" width="1.35706" height="0.1" X="6.97924" Y="3.03387"/>
-            <object ID="IWantToGoRight3" type="Pingus" angle="0" width="0.28" height="0.28" X="3.8155" Y="3.2114"/>
+            <object ID="IWantToGoRight3" type="PingusWalkRight" angle="0" width="0.28" height="0.28" X="3.8155" Y="3.2114"/>
             <object ID="PitBall2" type="SoccerBall" angle="0" width="0.22" height="0.22" X="7.49599" Y="3.50893"/>
-            <object ID="IWantToGoRight2" type="Pingus" angle="0" width="0.28" height="0.28" X="5.90858" Y="4.01665"/>
+            <object ID="IWantToGoRight2" type="PingusWalkRight" angle="0" width="0.28" height="0.28" X="5.90858" Y="4.01665"/>
             <object ID="ChestBall" type="VolleyBall" angle="0" width="0.21" height="0.21" X="4.22159" Y="3.99721"/>
             <object ID="PitBall1" type="SoccerBall" angle="0" width="0.22" height="0.22" X="4.22522" Y="3.19825"/>
             <object type="LeftFixedWedge" angle="0" width="0.68069" height="0.69795" X="9.20739" Y="2.02724"/>

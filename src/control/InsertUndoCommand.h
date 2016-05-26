@@ -32,27 +32,34 @@ class Hint;
 class InsertUndoCommand : public AbstractUndoCommand
 {
 public:
-    explicit InsertUndoCommand(ViewObjectPtr anViewObjectPtr, QString anActionString = QObject::tr("Insert"));
+    explicit InsertUndoCommand(ViewObjectPtr anViewObjectPtr,
+                               QString anActionString = QObject::tr("Insert"));
 
     /// This static member creates an InsertUndoCommand from a Toolboxgroup pointer
     /// and an optional Hint pointer and handles everything - including the commit().
     /// @param anToolboxGroupPtr    pointer to the toolboxgroup to take the object from
     /// @param aHint                (optional) pointer to a Hint to take object position and size from
     /// @returns true if successful (which is always)
-    static bool createInsertUndoCommand(ToolboxGroup* anToolboxGroupPtr,
+    static bool createInsertUndoCommand(ToolboxGroup *anToolboxGroupPtr,
                                         Position aPosition = Position(),
-                                        Hint* aHintPtr = nullptr);
+                                        Hint *aHintPtr = nullptr);
 
-	/// This static member creates an InsertUndoCommand from an AbstractObjectPtr
+    /// This static member creates an InsertUndoCommand from an AbstractObjectPtr
     /// and handles everything - including the commit().
     /// @param anToolboxGroup       pointer to the toolboxgroup to take the object from
     /// @returns true if successful (which is always)
     static bool createInsertUndoCommand(AbstractObjectPtr anAOPtr);
 
     /// mandatory, but we don't care - not used
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    }
     /// mandatory, but we don't care - not used
-    bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    }
 
 
     /// Called by the Undo stack after the action of this
@@ -67,7 +74,7 @@ public:
 protected:
     /// Pointer to the toolboxgroup to take the object from (redo) / push back (undo).
     /// @note: is nullptr in the case of a insert from menu in level creator.
-    ToolboxGroup* theTBGPtr;
+    ToolboxGroup *theTBGPtr;
 
     /// Pointer to the AbstractObject in case there is no ToolboxGroup, i.e.
     /// when inserting/cloning new objects in the Level Creator.
@@ -75,11 +82,11 @@ protected:
     AbstractObjectPtr theAOPtr;
 
     /// TODO: document
-	static ViewObjectPtr createVOfromAO(AbstractObjectPtr anAOPtr);
+    static ViewObjectPtr createVOfromAO(AbstractObjectPtr anAOPtr);
 
     /// TODO: document
-    static InsertUndoCommand* createInsertUndoCommandIntern(
-            AbstractObjectPtr anAOPtr);
+    static InsertUndoCommand *createInsertUndoCommandIntern(
+        AbstractObjectPtr anAOPtr);
 
 };
 

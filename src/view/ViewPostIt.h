@@ -37,71 +37,73 @@ class AbstractObject;
 class ViewPostIt : public ViewObject
 {
 
-	Q_OBJECT
+    Q_OBJECT
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
 protected:
-	/**
-	 * Empty Constructor
-	 */
+    /**
+     * Empty Constructor
+     */
     explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr);
     friend class ViewObject;
 
 public:
     /**
-	 * Empty Destructor
-	 */
-	virtual ~ViewPostIt ( );
+     * Empty Destructor
+     */
+    virtual ~ViewPostIt ( );
 
-	/// this member starts the display of the actual Post-It dialog
-	void displayPostit(void);
+    /// this member starts the display of the actual Post-It dialog
+    void displayPostit(void);
 
-	/** overridden from QGraphicsItem
-	 * upon a double click event, let's show the text of the note-its
-	 */
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* );
+    /** overridden from QGraphicsItem
+     * upon a double click event, let's show the text of the note-its
+     */
+    virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent * );
 
-	/** overridden from QGraphicsItem
-	 * also, upon a single click event, let's show the text of the note-its
+    /** overridden from QGraphicsItem
+     * also, upon a single click event, let's show the text of the note-its
      * (or just do move if we're in the level creator)
-	 */
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent* anEvent);
+     */
+    virtual void mousePressEvent(QGraphicsSceneMouseEvent *anEvent);
 
-	/// overridden from ViewObject to make sure it is not selected
-	virtual void focusInEvent ( QFocusEvent* )
-		{ ; }
+    /// overridden from ViewObject to make sure it is not selected
+    virtual void focusInEvent ( QFocusEvent * )
+    {
+        ;
+    }
 
 protected slots:
-	void nextClicked();
+    void nextClicked();
 
 protected:
-	/// overridden to allow highlighting
-	virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event );
-	/// overridden to allow highlighting
-	virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * event );
+    /// overridden to allow highlighting
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent *event );
+    /// overridden to allow highlighting
+    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent *event );
 
 private:
-	virtual void initAttributes ( ) ;
+    virtual void initAttributes ( ) ;
 
-	/** retrieves the Post-It page from the AbstractObject's properties list
-	  * the pages are numbered  "page1", "page2", etc.
-	  * i18n exists: "page1_nl" is the dutch version of page1.
-	  * if a page only exists in English, that one is returned.
-	  * returns an empty string if the page does not exist.
-	  */
-	QString getPageString(unsigned int aPage);
+    /** retrieves the Post-It page from the AbstractObject's properties list
+      * the pages are numbered  "page1", "page2", etc.
+      * i18n exists: "page1_nl" is the dutch version of page1.
+      * if a page only exists in English, that one is returned.
+      * returns an empty string if the page does not exist.
+      */
+    QString getPageString(unsigned int aPage);
 
-	unsigned int theCurrentPage;
+    unsigned int theCurrentPage;
 
-        AnimatedDialog*	theDialogPtr;
+    AnimatedDialog *theDialogPtr;
 
-	Ui::ViewPostIt* theUIPtr;
+    Ui::ViewPostIt *theUIPtr;
 
-	// prevent copy constructor / assignment operator
-	ViewPostIt(const ViewPostIt&);
-	const ViewPostIt& operator= (const ViewPostIt&);
+    // prevent copy constructor / assignment operator
+    ViewPostIt(const ViewPostIt &);
+    const ViewPostIt &operator= (const ViewPostIt &);
 
 };
 

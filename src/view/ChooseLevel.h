@@ -29,49 +29,52 @@
 #include <QXmlDefaultHandler>
 
 namespace Ui {
-	class ChooseLevel;
+class ChooseLevel;
 }
 
-class ChooseLevel : public AnimatedDialog {
-	Q_OBJECT
+class ChooseLevel : public AnimatedDialog
+{
+    Q_OBJECT
 public:
-	/// @param aParentPtr
-	/// @param isNoShow
-	/// @param aDirectory (only used for testing)
-	/// @param aFileName  (only used for testing)
-	ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow=false,
-				const QString &aDirectory = LEVELS_DIRECTORY, const QString &aFileName = "levels.xml");
-	virtual ~ChooseLevel();
+    /// @param aParentPtr
+    /// @param isNoShow
+    /// @param aDirectory (only used for testing)
+    /// @param aFileName  (only used for testing)
+    ChooseLevel(ResizingGraphicsView *aParentPtr = 0, bool isNoShow = false,
+                const QString &aDirectory = LEVELS_DIRECTORY, const QString &aFileName = "levels.xml");
+    virtual ~ChooseLevel();
 
-	/// TODO: move to (singleton version of) LevelList
-	/// @returns The name of the next level to play, or "" if no more levels.
-	static QString getNextLevelName(void);
+    /// TODO: move to (singleton version of) LevelList
+    /// @returns The name of the next level to play, or "" if no more levels.
+    static QString getNextLevelName(void);
 
 signals:
-	void loadLevel(const QString&);
+    void loadLevel(const QString &);
 
 protected slots:
-	void on_theTreeWidget_itemDoubleClicked()
-	{ on_pushButton_go_clicked();}
+    void on_theTreeWidget_itemDoubleClicked()
+    {
+        on_pushButton_go_clicked();
+    }
 
-	void on_pushButton_go_clicked();
+    void on_pushButton_go_clicked();
 
-	void on_pushButton_cancel_clicked();
+    void on_pushButton_cancel_clicked();
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
+    virtual void changeEvent(QEvent *e) override;
 
-	/// @returns the currently selected level, which should be the first
-	/// not-conquered level. If there is none, returns an empty string.
-	QString getCurrent(void);
+    /// @returns the currently selected level, which should be the first
+    /// not-conquered level. If there is none, returns an empty string.
+    QString getCurrent(void);
 
-	/// (Re-)fills the treewidget with current info from theLLPtr
-	void fillTreeWidget();
+    /// (Re-)fills the treewidget with current info from theLLPtr
+    void fillTreeWidget();
 
 private:
-	Ui::ChooseLevel *m_ui;
+    Ui::ChooseLevel *m_ui;
 
-	static std::shared_ptr<LevelList> theLLPtr;
+    static std::shared_ptr<LevelList> theLLPtr;
 };
 
 #endif // ChooseLevel_H

@@ -36,7 +36,7 @@ public:
     /// Only access to the actual pointer to the class,
     /// used by ResizingGraphicsView to hook up this class to the SimControls.
     /// @returns pointer to the instance of the singleton.
-    static CrossRegisterSingleton* me(void);
+    static CrossRegisterSingleton *me(void);
 
     void updateCrossState(signed int anAddOrSubtract);
 
@@ -68,21 +68,22 @@ public:
 
     /// clear the pointer to the UndoCommand
     void clearUndoPointer()
-    {   theAUCPtr = nullptr; }
+    {
+        theAUCPtr = nullptr;
+    }
 
     /// Attach as a child to the parent ViewObject
     /// @param aParentPtr  pointer to the ViewObject to become a child to
-    void setViewObject(ViewObject* aParentPtr);
+    void setViewObject(ViewObject *aParentPtr);
 
     /// Set the Decorator proxy image and set the object to call
     /// upon mouse movements.
     /// @param aDecoratorName the proxy image to set (no path, no extension)
     /// @param anAbstractUndoCommandPtr  pointer to the undo class instance
-    void setDecoratorImage(const QString&       aDecoratorName,
-                           AbstractUndoCommand* anAbstractUndoCommandPtr);
+    void setDecoratorImage(const QString       &aDecoratorName,
+                           AbstractUndoCommand *anAbstractUndoCommandPtr);
 
-    enum CrossState
-    {
+    enum CrossState {
         NONE,       /// no image
         PROXY,      /// only proxy image
         CROSS,      /// only cross
@@ -95,21 +96,23 @@ public:
 protected:
     /// overridden from QGraphicsSvgItem so we can send that info
     /// on to our AbstractUndoCommand boss to act on...
-    virtual void	mouseMoveEvent ( QGraphicsSceneMouseEvent* event );
+    virtual void    mouseMoveEvent ( QGraphicsSceneMouseEvent *event );
 
     /// overridden from QGraphicsSvgItem so we can send that info
     /// on to our AbstractUndoCommand boss to act on...
-    virtual void	mousePressEvent ( QGraphicsSceneMouseEvent* event );
+    virtual void    mousePressEvent ( QGraphicsSceneMouseEvent *event );
 
     /// overridden from QGraphicsSvgItem so we can send that info
     /// on to our AbstractUndoCommand boss to act on...
-    virtual void	mouseReleaseEvent( QGraphicsSceneMouseEvent* event );
+    virtual void    mouseReleaseEvent( QGraphicsSceneMouseEvent *event );
 
     int impliesCross(CrossState aState)
-    { return (aState==CROSS||aState==COMBINED)?1:0; }
+    {
+        return (aState == CROSS || aState == COMBINED) ? 1 : 0;
+    }
 
 private:
-    AbstractUndoCommand* theAUCPtr;
+    AbstractUndoCommand *theAUCPtr;
 
     QPixmap theCombinedImage;
     QPixmap theCrossImage;

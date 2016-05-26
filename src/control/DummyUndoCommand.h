@@ -35,27 +35,39 @@ class DummyUndoCommand : public QObject, public AbstractUndoCommand
 
 public:
     DummyUndoCommand(ViewObjectPtr anViewObjectPtr,
-                     const QString& anUndoName);
+                     const QString &anUndoName);
 
     /// Overridden to just make sure not to push anything.
     virtual void commit(void) override;
 
     /// Mandatory, but we don't care - not used for any dummies
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    }
 
     /// Mandatory, but we don't care - not used for any dummies because we don't
     /// implement decorators either.
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; };
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    };
 
     /// Overridden because we don't have anything to do and need
     /// to prove this member is never called.
-    void redo() override { Q_ASSERT(false); };
+    void redo() override
+    {
+        Q_ASSERT(false);
+    };
 
     /// Overridden because we don't have anything to do and need
     /// to prove this member is never called.
-    void undo() override { Q_ASSERT(false); };
+    void undo() override
+    {
+        Q_ASSERT(false);
+    };
 };
 
 #endif // DUMMYUNDOCOMMAND_H

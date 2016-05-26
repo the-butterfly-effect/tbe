@@ -51,9 +51,9 @@ public:
 
     virtual ~GameControls();
 
-    void setup(QMenu* aMenuPtr);
+    void setup(QMenu *aMenuPtr);
 
-    void parentResize(const QSize& aSize);
+    void parentResize(const QSize &aSize);
 
 //    void hookSignalsUp(ViewWorld* aViewWorld, ResizingGraphicsView *aRGVPtr);
 
@@ -76,12 +76,12 @@ public slots:
 
 private:
     QActionGroup theGameButtonGroup;
-    QAction* theForwardAction;
-    QAction* thePauseAction;
-    QAction* thePlayAction;
-    QAction* theRealFastAction;
-    QAction* theResetAction;
-    QAction* theSlowAction;
+    QAction *theForwardAction;
+    QAction *thePauseAction;
+    QAction *thePlayAction;
+    QAction *theRealFastAction;
+    QAction *theResetAction;
+    QAction *theSlowAction;
 
     QIcon theForwardIcon;
     QIcon thePauseIcon;

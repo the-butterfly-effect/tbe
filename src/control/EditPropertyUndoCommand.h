@@ -31,18 +31,24 @@ public:
     virtual ~EditPropertyUndoCommand();
 
     /// Store a changed property and commit this Undo.
-    void changedProperty(const QString& aKey, const QString& anOldValue, const QString& aNewValue);
+    void changedProperty(const QString &aKey, const QString &anOldValue, const QString &aNewValue);
 
     /// Store a changed property and commit this Undo.
-    void changedID(const QString& anOldID, const QString& aNewID);
+    void changedID(const QString &anOldID, const QString &aNewID);
 
     /// Mandatory, but we don't care for this one
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent*) override { return false; }
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    }
 
     /// Mandatory, but we don't care for this one
     /// @note that mouseReleaseEvent is not overridden - it will still call commit().
-    bool mousePressEvent  (QGraphicsSceneMouseEvent*) override { return false; };
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *) override
+    {
+        return false;
+    };
 
     /// Called by the Undo stack after the action of this
     /// class instance is firstly done OR when it needs to be redone.

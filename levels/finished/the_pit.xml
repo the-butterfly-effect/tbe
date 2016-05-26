@@ -115,7 +115,7 @@
                 <property key="object1">pingubar_h@(-0.390,0.34)</property>
                 <property key="object2">pingubar_v</property>
             </object>
-            <object width="0.28" height="0.28" Y="4.24835" angle="0" type="Pingus" X="3.64425"/>
+            <object width="0.28" height="0.28" Y="4.24835" angle="0" type="PingusWalkLeft" X="3.64425"/>
             <object width="0.2" height="0.343042" Y="5.53075" angle="0" type="Wall" X="6.54617"/>
             <object width="0.2" height="1.0151" Y="4.89266" angle="0" type="Wall" X="5.06613"/>
             <object width="2.66128" height="0.1" Y="5.75043" angle="0" type="Floor" X="6.68986"/>

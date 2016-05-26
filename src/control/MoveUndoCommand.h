@@ -29,14 +29,14 @@ class MoveUndoCommand : public AbstractUndoCommand
 public:
     explicit MoveUndoCommand(ViewObjectPtr anViewObjectPtr);
 
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) override;
-    bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) override;
-    bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr) override;
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *anEventPtr) override;
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *anEventPtr) override;
+    bool mouseReleaseEvent(QGraphicsSceneMouseEvent *anEventPtr) override;
 
     /// only to be called by EditObjectDialog and internals
-    void basicMoveEvent   (const QPointF& aPos);
+    void basicMoveEvent   (const QPointF &aPos);
     /// only to be called by EditObjectDialog and internals
-    void basicPressEvent  (bool isMouseUndo, const QPointF& aPos);
+    void basicPressEvent  (bool isMouseUndo, const QPointF &aPos);
     /// only to be called by EditObjectDialog and internals
     bool basicReleaseEvent(void);
 

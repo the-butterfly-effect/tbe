@@ -3,6 +3,9 @@ project (thebutterflyeffect)
 
 option(WITH_DOCS "build package with(out) documentation")
 
+# add the custom cmake scripts
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 if (WIN32 OR APPLE)
     # Win and Mac both have a rather flat directory layout.
     # At least on Win, the CMAKE_INSTALL_PREFIX is the location inside
@@ -73,6 +76,14 @@ SET(CPACK_PACKAGE_VERSION_MAJOR "0")
 SET(CPACK_PACKAGE_VERSION_MINOR "9.4")
 SET(CPACK_PACKAGE_VERSION_PATCH "1")
 SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+
+# use rpavlik's cmake scripts to fetch the current git version hash
+include(GetGitRevisionDescription)
+get_git_head_revision(GIT_REFSPEC GIT_VERSION_HASH)
+configure_file(
+    ${PROJECT_SOURCE_DIR}/src/tbe_version.h.in
+    ${PROJECT_BINARY_DIR}/tbe_version.h
+)
 
 configure_file(
     ${PROJECT_SOURCE_DIR}/src/tbe_global.h.in

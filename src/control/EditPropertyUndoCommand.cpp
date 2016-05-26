@@ -23,10 +23,10 @@
 #include "ViewObject.h"
 
 EditPropertyUndoCommand::EditPropertyUndoCommand(
-        ViewObjectPtr anViewObjectPtr)
+    ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("EditProperty"))
 {
-	DEBUG3ENTRY;
+    DEBUG3ENTRY;
 }
 
 
@@ -36,7 +36,7 @@ EditPropertyUndoCommand::~EditPropertyUndoCommand()
 }
 
 
-void EditPropertyUndoCommand::changedID(const QString& anOldID, const QString& aNewID)
+void EditPropertyUndoCommand::changedID(const QString &anOldID, const QString &aNewID)
 {
     DEBUG4ENTRY;
     theOldID = anOldID;
@@ -44,7 +44,8 @@ void EditPropertyUndoCommand::changedID(const QString& anOldID, const QString& a
 }
 
 
-void EditPropertyUndoCommand::changedProperty(const QString& aKey, const QString& anOldValue, const QString& aNewValue)
+void EditPropertyUndoCommand::changedProperty(const QString &aKey, const QString &anOldValue,
+                                              const QString &aNewValue)
 {
     DEBUG4ENTRY;
     theKey = aKey;

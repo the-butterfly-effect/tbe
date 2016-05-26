@@ -27,10 +27,14 @@
 class TranslationGuideObjectFactory : public ObjectFactory
 {
 public:
-	TranslationGuideObjectFactory(void)
-	{	announceObjectType("TranslationGuide", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new TranslationGuide()); }
+    TranslationGuideObjectFactory(void)
+    {
+        announceObjectType("TranslationGuide", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new TranslationGuide());
+    }
 };
 static TranslationGuideObjectFactory theRFactory;
 
@@ -41,18 +45,18 @@ TranslationGuide::TranslationGuide()
       theObjectPtr(nullptr),
       theDirection(0.f)
 {
-	DEBUG5ENTRY;
-	initTG_Attributes ();
+    DEBUG5ENTRY;
+    initTG_Attributes ();
 }
 
 TranslationGuide::TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection)
-		: AbstractJoint(), theObjectPtr(anAbstractObject)
+    : AbstractJoint(), theObjectPtr(anAbstractObject)
 {
-	DEBUG5("TranslationGuide::TranslationGuide(%p, %f)",
+    DEBUG5("TranslationGuide::TranslationGuide(%p, %f)",
            anAbstractObject.get(), aDirection);
-	theDirection = aDirection;
-	updateOrigCenter();
-	initTG_Attributes();
+    theDirection = aDirection;
+    updateOrigCenter();
+    initTG_Attributes();
 }
 
 TranslationGuide::~TranslationGuide()
@@ -70,73 +74,72 @@ void TranslationGuide::clearObjectReferences()
 
 void TranslationGuide::createPhysicsObject(void)
 {
-	if (theWorldPtr==nullptr)
-		return;
+    if (theWorldPtr == nullptr)
+        return;
 
     // *** parse object/object1 - if we didn't get theFirstPtr from the constructor
-    if (theObjectPtr==nullptr)
-    {
+    if (theObjectPtr == nullptr) {
         theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
-        if (theObjectPtr==nullptr)
+        if (theObjectPtr == nullptr)
             theObjectPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
     }
-    if (theObjectPtr==nullptr)
-	{
+    if (theObjectPtr == nullptr) {
         DEBUG1("TranslationGuide: No valid object found...");
-		return;
-	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,
-											   getOrigCenter()-theObjectPtr->getOrigCenter());
+        return;
+    }
+    b2Body *myFirstB2BodyPtr = getB2BodyPtrFor(theObjectPtr,
+                                               getOrigCenter() - theObjectPtr->getOrigCenter());
     theObjectPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
-	assert (myFirstB2BodyPtr);
+    assert (myFirstB2BodyPtr);
 
-	// Contrary to PivotPoint, there is no object2, so use the ground body.
-	// available as theGroundBodyPtr...
-	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
+    // Contrary to PivotPoint, there is no object2, so use the ground body.
+    // available as theGroundBodyPtr...
+    b2Body *mySecondB2BodyPtr = getGroundBodyPtr();
 
-	// *** initialise Box2D's joint:
-	// note: Initialize() uses a global coordinate...
-	b2PrismaticJointDef myJointDef;
-	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2(), Vector(theDirection).toB2Vec2());
+    // *** initialise Box2D's joint:
+    // note: Initialize() uses a global coordinate...
+    b2PrismaticJointDef myJointDef;
+    myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2(),
+                          Vector(theDirection).toB2Vec2());
     myJointDef.userData = this;
-	myJointDef.collideConnected = areObjectsColliding;
+    myJointDef.collideConnected = areObjectsColliding;
 
-	// set motor speed and/or torque
-	// note that we have the + defined in the mathematical way,
-	// with the y in the opposite direction from QT, that means a minus somewhere
-	float myForce = 1000.0;
-	myJointDef.enableMotor = theProps.property2Float(Property::FORCE_STRING, &myForce);
-	float myMotorSpeed = 0.0;
-	if (theProps.property2Float(Property::SPEED_STRING, &myMotorSpeed))
-		myJointDef.enableMotor = true;
-	myJointDef.maxMotorForce = myForce;
-	myJointDef.motorSpeed = -myMotorSpeed;
+    // set motor speed and/or torque
+    // note that we have the + defined in the mathematical way,
+    // with the y in the opposite direction from QT, that means a minus somewhere
+    float myForce = 1000.0;
+    myJointDef.enableMotor = theProps.property2Float(Property::FORCE_STRING, &myForce);
+    float myMotorSpeed = 0.0;
+    if (theProps.property2Float(Property::SPEED_STRING, &myMotorSpeed))
+        myJointDef.enableMotor = true;
+    myJointDef.maxMotorForce = myForce;
+    myJointDef.motorSpeed = -myMotorSpeed;
 
-    theJointPtr = (b2PrismaticJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    theJointPtr = (b2PrismaticJoint *) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 void TranslationGuide::initTG_Attributes ( )
 {
-	areObjectsColliding=false;
+    areObjectsColliding = false;
 
     theToolTip = QObject::tr("Objects are limited to only move along one axis");
     theProps.setDefaultPropertiesString(
-		Property::OBJECT_STRING + QString(":/") +
-		Property::SPEED_STRING + QString(":/") +
-		Property::FORCE_STRING + QString(":/") +
-		Property::COLLIDE_STRING + QString(":false/") +
-		"-" + Property::MASS_STRING + ":/" );
+        Property::OBJECT_STRING + QString(":/") +
+        Property::SPEED_STRING + QString(":/") +
+        Property::FORCE_STRING + QString(":/") +
+        Property::COLLIDE_STRING + QString(":false/") +
+        "-" + Property::MASS_STRING + ":/" );
 }
 
 void TranslationGuide::parseProperties(void)
 {
-	AbstractJoint::parseProperties();
-	theProps.property2Bool(Property::COLLIDE_STRING, &areObjectsColliding);
+    AbstractJoint::parseProperties();
+    theProps.property2Bool(Property::COLLIDE_STRING, &areObjectsColliding);
 }
 
 
 void TranslationGuide::updateOrigCenter(void)
 {
-	setOrigCenter(theObjectPtr->getOrigCenter());
+    setOrigCenter(theObjectPtr->getOrigCenter());
 }
 
