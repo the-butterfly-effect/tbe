@@ -76,101 +76,98 @@ QString theStartFileName;
 
 static bool displayHelp(QString /*anArgument*/ )
 {
-	printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
-	printf(" --draw-debug        debug draw (draw outlines on physical boundaries of all objects)");
-	printf(" --help              gives this help text\n");
-	printf(" -h                  gives this help text\n");
-	printf(" --level-creator     start in level creator mode\n");
-	printf(" -L                  start in level creator mode\n");
-	printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
-	printf(" -v <lvl>            set verbosity\n");
+    printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
+    printf(" --draw-debug        debug draw (draw outlines on physical boundaries of all objects)");
+    printf(" --help              gives this help text\n");
+    printf(" -h                  gives this help text\n");
+    printf(" --level-creator     start in level creator mode\n");
+    printf(" -L                  start in level creator mode\n");
+    printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
+    printf(" -v <lvl>            set verbosity\n");
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
     printf("                     (comma-separated list, time is level runtime in seconds)\n");
-	printf(" --windowed          display in a window (default is fullscreen)\n");
-	printf(" -W                  display in a window (default is fullscreen)\n");
-	printf("\n");
-	exit(1);
+    printf(" --windowed          display in a window (default is fullscreen)\n");
+    printf(" -W                  display in a window (default is fullscreen)\n");
+    printf("\n");
+    exit(1);
 }
 
 static bool goLevelCreator( QString /*anArgument*/ )
 {
     theIsLevelCreator = true;
-	return true;
+    return true;
 }
 
 static bool setDrawDebug(QString /*anArgument*/ )
 {
-	theDrawDebug = true;
-	return true;
+    theDrawDebug = true;
+    return true;
 }
 
 static bool setVerbosity(QString anArgument)
 {
-	// the argument should be a number. Let's parse.
-	int myNumber = anArgument.toInt();
-	if (myNumber < 1 || myNumber > MAX_VERBOSITY)
-	{
-		printf("ERROR: verbosity argument should be between 1 and %d\n", MAX_VERBOSITY);
-		return false;
-	}
-	theVerbosity = myNumber;
-	DEBUG2("set verbosity level to %d", theVerbosity);
-	return true;
+    // the argument should be a number. Let's parse.
+    int myNumber = anArgument.toInt();
+    if (myNumber < 1 || myNumber > MAX_VERBOSITY) {
+        printf("ERROR: verbosity argument should be between 1 and %d\n", MAX_VERBOSITY);
+        return false;
+    }
+    theVerbosity = myNumber;
+    DEBUG2("set verbosity level to %d", theVerbosity);
+    return true;
 }
 
 // local variable
 static bool theIsMaximized = true;
 static bool setWindowed( QString /*anArgument*/ )
 {
-	theIsMaximized = false;
-	return true;
+    theIsMaximized = false;
+    return true;
 }
 
 std::atomic<bool> theIsRunAsRegression(false);
 static bool runRegression( QString aListOfLevels )
 {
-	theStartFileName += aListOfLevels;
-	theIsRunAsRegression = true;
-	return true;
+    theStartFileName += aListOfLevels;
+    theIsRunAsRegression = true;
+    return true;
 }
 
 // this struct is used to list all long and short arguments
 // it also contains a function pointer to a static function below
 // that actually acts on the argument
-struct s_args
-{
-	QString theFullCommand;
-	QString theShortCommand;
-	bool needsArgument;
-	bool (*theFunctionPtr)(QString anArgument);
+struct s_args {
+    QString theFullCommand;
+    QString theShortCommand;
+    bool needsArgument;
+    bool (*theFunctionPtr)(QString anArgument);
 };
 
 
-static struct s_args theArgsTable[] =
-{
+static struct s_args theArgsTable[] = {
 // keep sorted alphabetically, please
-	{ "draw-debug",    "",  false, setDrawDebug, },
-	{ "help",          "h", false, displayHelp, },
-	{ "level-creator", "L", false, goLevelCreator, },
-	{ "regression",    "",  true,  runRegression, },
+    { "draw-debug",    "",  false, setDrawDebug, },
+    { "help",          "h", false, displayHelp, },
+    { "level-creator", "L", false, goLevelCreator, },
+    { "regression",    "",  true,  runRegression, },
     { "verbosity",     "v", true,  setVerbosity, },
-	{ "windowed",      "W", false, setWindowed, },
-//	keep this one last:
-	{ "\0", "\0", false, nullptr, },
+    { "windowed",      "W", false, setWindowed, },
+//  keep this one last:
+    { "\0", "\0", false, nullptr, },
 };
 
 
 
 #ifdef QT_DEBUG
- extern void setupBacktrace(void);
+extern void setupBacktrace(void);
 #endif
 
 
 int main(int argc, char *argv[])
 {
-	//** init Qt (graphics toolkit) - www.qtsoftware.com
-	QApplication app(argc, argv);
-    char* myHashSeedString = strdup("QT_HASH_SEED=1");
+    //** init Qt (graphics toolkit) - www.qtsoftware.com
+    QApplication app(argc, argv);
+    char *myHashSeedString = strdup("QT_HASH_SEED=1");
     putenv (myHashSeedString);
 
     //** init splash screen, do it as early in program start as possible
@@ -179,119 +176,102 @@ int main(int argc, char *argv[])
     app.processEvents();
 
     //** set the names to our website
-	QCoreApplication::setOrganizationName("the-butterfly-effect.org");
-	QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
-	QCoreApplication::setApplicationName(APPNAME);
+    QCoreApplication::setOrganizationName("the-butterfly-effect.org");
+    QCoreApplication::setOrganizationDomain("the-butterfly-effect.org");
+    QCoreApplication::setApplicationName(APPNAME);
 
-	//** parse the command line arguments
-	QStringList myCmdLineList = app.arguments();
-	bool isParsingSuccess=true;
-	// we can skip argument zero - that's the tbe executable itself
-	for (int i=1; i<myCmdLineList.size() && isParsingSuccess; i++)
-	{
-		QString myArg = myCmdLineList[i];
-		if (myArg.startsWith("-"))
-		{
-			// remove one or two dashes - we're slightly more flexible than usual
-			myArg.remove(0,1);
-			if (myArg.startsWith("-"))
-				myArg.remove(0,1);
+    //** parse the command line arguments
+    QStringList myCmdLineList = app.arguments();
+    bool isParsingSuccess = true;
+    // we can skip argument zero - that's the tbe executable itself
+    for (int i = 1; i < myCmdLineList.size() && isParsingSuccess; i++) {
+        QString myArg = myCmdLineList[i];
+        if (myArg.startsWith("-")) {
+            // remove one or two dashes - we're slightly more flexible than usual
+            myArg.remove(0, 1);
+            if (myArg.startsWith("-"))
+                myArg.remove(0, 1);
 
-			// extract value with = if there is one
-			QStringList myExp = myArg.split("=");
+            // extract value with = if there is one
+            QStringList myExp = myArg.split("=");
 
-			// is it matching with short or long?
-			int j=0;
-			bool isMatch=false;
-			while(theArgsTable[j].theFunctionPtr != nullptr)
-			{
-				if (myExp[0] == theArgsTable[j].theFullCommand
-					|| myExp[0] == theArgsTable[j].theShortCommand)
-				{
-					isMatch=true;
-					QString myVal;
-					if (theArgsTable[j].needsArgument == true)
-					{
-						// was it '='?
-						if (myExp.count()==2)
-							myVal = myExp[1];
-						else
-						{
-							// or is it ' ' -> which means we need to grab next arg
-							if (i+1<myCmdLineList.size())
-							{
-								myVal = myCmdLineList[i+1];
-								i++;
-							}
-							else
-							{
-								isParsingSuccess=false;
-								break;
-							}
-						}
-					}
-					if (theArgsTable[j].theFunctionPtr(myVal)==false)
-						isParsingSuccess=false;
-				}
-				++j;
-			}
-			if (isMatch==false)
-			{
-				isParsingSuccess=false;
-				break;
-			}
-		}
-		else
-		{
-			// if it is a single string, it probably is a file name
-			theStartFileName = myArg;
-		}
+            // is it matching with short or long?
+            int j = 0;
+            bool isMatch = false;
+            while (theArgsTable[j].theFunctionPtr != nullptr) {
+                if (myExp[0] == theArgsTable[j].theFullCommand
+                        || myExp[0] == theArgsTable[j].theShortCommand) {
+                    isMatch = true;
+                    QString myVal;
+                    if (theArgsTable[j].needsArgument == true) {
+                        // was it '='?
+                        if (myExp.count() == 2)
+                            myVal = myExp[1];
+                        else {
+                            // or is it ' ' -> which means we need to grab next arg
+                            if (i + 1 < myCmdLineList.size()) {
+                                myVal = myCmdLineList[i + 1];
+                                i++;
+                            } else {
+                                isParsingSuccess = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (theArgsTable[j].theFunctionPtr(myVal) == false)
+                        isParsingSuccess = false;
+                }
+                ++j;
+            }
+            if (isMatch == false) {
+                isParsingSuccess = false;
+                break;
+            }
+        } else {
+            // if it is a single string, it probably is a file name
+            theStartFileName = myArg;
+        }
 
-	}
+    }
 
-	if (isParsingSuccess==false)
-		displayHelp("");
+    if (isParsingSuccess == false)
+        displayHelp("");
 
 #ifdef QT_DEBUG
-	setupBacktrace();
+    setupBacktrace();
 #endif
 
-	//** read the locale from the environment and set the output language
-	if (theIsRunAsRegression)
-	{
-		DEBUG1("Regression: not loading any translators!");
-	}
-	else
+    //** read the locale from the environment and set the output language
+    if (theIsRunAsRegression) {
+        DEBUG1("Regression: not loading any translators!");
+    } else
         TheTranslator.init();
     //** now the i18n is set up, let's show a message in the user's language.
     mySplash.showMessage(MainWindow::getWelcomeMessage());
     app.processEvents();
 
-	DEBUG3("SUMMARY:");
-	DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
-    if (theIsRunAsRegression)
-    {
-		DEBUG3("  Regression levels: '%s'", ASCII(theStartFileName));
-    }
-    else
-    {
-		DEBUG3("  Start file name is: '%s'", ASCII(theStartFileName));
+    DEBUG3("SUMMARY:");
+    DEBUG3("  Verbosity is: %d / Fullscreen is %d", theVerbosity, theIsMaximized);
+    if (theIsRunAsRegression) {
+        DEBUG3("  Regression levels: '%s'", ASCII(theStartFileName));
+    } else {
+        DEBUG3("  Start file name is: '%s'", ASCII(theStartFileName));
     }
 
-	QSettings mySettings;
-	DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
+    QSettings mySettings;
+    DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
 
-	//** setup main window, shut down splash screen
-	MainWindow myMain(theIsMaximized);
-	myMain.show();
-	mySplash.finish(&myMain);
+    //** setup main window, shut down splash screen
+    MainWindow myMain(theIsMaximized);
+    myMain.show();
+    mySplash.finish(&myMain);
 
-	//** run the main display loop until oblivion
-	return app.exec();
+    //** run the main display loop until oblivion
+    return app.exec();
 }
 
 
-const char* ASCII(const QString& aQString)
+const char *ASCII(const QString &aQString)
 {
     static char myString[256];
     strncpy(myString, aQString.toLatin1().constData(), 255);
