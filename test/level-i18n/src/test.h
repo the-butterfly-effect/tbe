@@ -3,10 +3,10 @@
 
 class Test : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	Test();
-	virtual ~Test() {}
+    Test();
+    virtual ~Test() {}
 
     void print();
 };

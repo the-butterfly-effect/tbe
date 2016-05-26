@@ -24,8 +24,7 @@
 #include <QStringList>
 #include <QLocale>
 
-namespace Singleton
-{
+namespace Singleton {
 
 /// Singleton class to govern handing out translated strings and switching
 /// of languages.
@@ -38,7 +37,7 @@ class Translator
 {
 public:
     /// Singleton: call this member to get a reference to the real instance.
-    static Translator& me();
+    static Translator &me();
 
     //------------------------------
     /// Retrieves a list of possible language settings
@@ -47,12 +46,12 @@ public:
     /// Use to get the current translation for a level XML string.
     /// @param aStringToTranslate string to translate
     /// @returns translated string according to the currently set locale if possible
-    const char* getText(const char* aStringToTranslate);
+    const char *getText(const char *aStringToTranslate);
 
     /// Use to get the current translation for a level XML string.
     /// @param aStringToTranslate string to translate
     /// @returns translated string according to the currently set locale if possible
-    const QString getText(const QString& aStringToTranslate);
+    const QString getText(const QString &aStringToTranslate);
 
     /// Called at application startup to initialise the locales.
     bool init();
@@ -64,7 +63,7 @@ public:
     ///                 the uppercase denotes the local variant.
     ///                 (longer string will be cut off)
     /// @returns True when it was possible to load a translator for aLocale.
-    bool setLanguage(const QString& aLocale);
+    bool setLanguage(const QString &aLocale);
 
 private:
     /// Private constructor: we're a singleton after all.
@@ -74,25 +73,25 @@ private:
     //~Translator();
 
     /// No copy constructor.
-    Translator(const Translator&) = delete;
+    Translator(const Translator &) = delete;
     /// No assignment operator.
-    const Translator& operator= (const Translator&) = delete;
+    const Translator &operator= (const Translator &) = delete;
 
     /// Attempts to load a <aPath>/tbe_<aLocale>.qm file.
     /// When successful, also sets variable theBaseTbeQtLocation.
     /// @param aPath
     /// @param aLocale
     /// @returns true when successful, false when not.
-    bool attemptTbeQtTranslatorLoad(const QString& aPath,
-                                    const QString& aLocale);
+    bool attemptTbeQtTranslatorLoad(const QString &aPath,
+                                    const QString &aLocale);
 
     /// Set the language for gettext messages to aLocale.
     void setLanguageGettext(const QString &aLocale);
     /// Set the language for the Qt library messages to aLocale.
-    bool setLanguageQtIself(const QString& aLocale);
+    bool setLanguageQtIself(const QString &aLocale);
 
     /// QTextCodec pointer for handling all input (set to UTF-8 by init()).
-    QTextCodec* theTextCodecPtr;
+    QTextCodec *theTextCodecPtr;
     /// QTranslator for all TBE C++ code strings.
     QTranslator theTbeQtTranslator;
     /// QTranslator for the Qt internal strings.

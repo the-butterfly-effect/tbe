@@ -24,10 +24,10 @@
 class PivotPoint : public BaseObject
 {
 public:
-	PivotPoint();
-	PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition);
+    PivotPoint();
+    PivotPoint(BaseObject *aBaseObject, const Vector &aRelativePosition);
 
-	virtual ~PivotPoint() {}
+    virtual ~PivotPoint() {}
 };
 
 #endif // STUBPIVOTPOINT_H

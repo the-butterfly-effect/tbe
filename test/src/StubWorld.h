@@ -34,92 +34,95 @@ class World
 {
 public:
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/**
-	 * Simple Constructor
-	 */
-	World (void);
+    /**
+     * Simple Constructor
+     */
+    World (void);
 
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~World ( );
+    /**
+     * Empty Destructor
+     */
+    virtual ~World ( );
 
-	/** adds object to the World
-	 *  if the AbstractObject knows about a DrawObject,
-	 *      that one will be added to the DrawWorld as well.
-	 *  @param anObjectPtr
-	 *  @return true if success - false if object already present
-	 */
-	bool addObject(AbstractObject* anObjectPtr);
+    /** adds object to the World
+     *  if the AbstractObject knows about a DrawObject,
+     *      that one will be added to the DrawWorld as well.
+     *  @param anObjectPtr
+     *  @return true if success - false if object already present
+     */
+    bool addObject(AbstractObject *anObjectPtr);
 
-	/** add the set of anObject1 and anObject2 to a list of objects that
-	  * cannot collide.
-	  * @param anObject1	pointer to an object
-	  * @param anObject2	pointer to a second object
-	  */
-	void addNoCollisionCombo(AbstractObject* anObject1, AbstractObject* anObject2);
+    /** add the set of anObject1 and anObject2 to a list of objects that
+      * cannot collide.
+      * @param anObject1    pointer to an object
+      * @param anObject2    pointer to a second object
+      */
+    void addNoCollisionCombo(AbstractObject *anObject1, AbstractObject *anObject2);
 
-	/** find an object with a given ID within world
-	 *  @param anID  the ID to find for. Because not all objects have an ID,
-	 *               an empty ID will cause a NULL return.
-	 *  @returns NULL if not found or a pointer if found.
-	 */
-	AbstractObject* findObjectByID(const QString& anID);
+    /** find an object with a given ID within world
+     *  @param anID  the ID to find for. Because not all objects have an ID,
+     *               an empty ID will cause a NULL return.
+     *  @returns NULL if not found or a pointer if found.
+     */
+    AbstractObject *findObjectByID(const QString &anID);
 
-	virtual qreal getG(void) { return -9.81; }
+    virtual qreal getG(void)
+    {
+        return -9.81;
+    }
 
-	/** removes a joint from the World
-	 *  NOTE: the b2Bodies the joint is linked to should both still exist!
-	 *  @param aJointPtr pointer to the joint to remove
-	 */
-	void removeJoint(b2Joint* aJointPtr)
-	{
-		if (theB2WorldPtr!=NULL)
-			theB2WorldPtr->DestroyJoint(aJointPtr);
-	}
+    /** removes a joint from the World
+     *  NOTE: the b2Bodies the joint is linked to should both still exist!
+     *  @param aJointPtr pointer to the joint to remove
+     */
+    void removeJoint(b2Joint *aJointPtr)
+    {
+        if (theB2WorldPtr != NULL)
+            theB2WorldPtr->DestroyJoint(aJointPtr);
+    }
 
-	/** removes the AbstractObject pointed to from world after all simulations
-	  * have run for another aDeltaTime seconds
-	  * removal will be done after everything has simulated.
-	  * World will take care of everything
-	  * @param anObjectPtr
-	  * @param aDeltaTime   time (in seconds) the object still has to live
-	  */
-	void removeMe(AbstractObject* anObjectPtr, qreal aDeltaTime);
+    /** removes the AbstractObject pointed to from world after all simulations
+      * have run for another aDeltaTime seconds
+      * removal will be done after everything has simulated.
+      * World will take care of everything
+      * @param anObjectPtr
+      * @param aDeltaTime   time (in seconds) the object still has to live
+      */
+    void removeMe(AbstractObject *anObjectPtr, qreal aDeltaTime);
 
-	/** removes the AbstractObject pointed to by anObjectPtr from the World.
-	 *  This means that the caller is now responsible for the pointer
-	 *   - World doesn't destroy the AbstractObject !!!
-	 *  It does not remove the DrawObject from the DrawWorld, though!
-	 *  @param anObjectPtr pointer to object to be removed
-	 *  @return true if success - false if object was not found
-	 */
-	bool removeObject(AbstractObject* anObjectPtr);
+    /** removes the AbstractObject pointed to by anObjectPtr from the World.
+     *  This means that the caller is now responsible for the pointer
+     *   - World doesn't destroy the AbstractObject !!!
+     *  It does not remove the DrawObject from the DrawWorld, though!
+     *  @param anObjectPtr pointer to object to be removed
+     *  @return true if success - false if object was not found
+     */
+    bool removeObject(AbstractObject *anObjectPtr);
 
-	/// keep the scene, set all objects back in original position
-	void reset (void);
+    /// keep the scene, set all objects back in original position
+    void reset (void);
 
 public:
-	void addAbstractObjectToDrawWorld(AbstractObject* aBOPtr);
-	void initAttributes ( ) ;
+    void addAbstractObjectToDrawWorld(AbstractObject *aBOPtr);
+    void initAttributes ( ) ;
 
-	typedef QList<AbstractObject*> AbstractObjectPtrList;
-	DrawWorld* theDrawWorldPtr;
+    typedef QList<AbstractObject *> AbstractObjectPtrList;
+    DrawWorld *theDrawWorldPtr;
 
-	/// the list of all objects managed by this World
-	AbstractObjectPtrList theObjectPtrList;
+    /// the list of all objects managed by this World
+    AbstractObjectPtrList theObjectPtrList;
 
-	typedef QMap<AbstractObject*, qreal> ToRemoveList;
-	ToRemoveList theToBeRemovedList;
+    typedef QMap<AbstractObject *, qreal> ToRemoveList;
+    ToRemoveList theToBeRemovedList;
 
-	b2World* theB2WorldPtr;
-	b2AABB*  theAABBPtr;
+    b2World *theB2WorldPtr;
+    b2AABB  *theAABBPtr;
 
-	/// Do we want to let bodies sleep?
-	static const bool doSleep = true;
+    /// Do we want to let bodies sleep?
+    static const bool doSleep = true;
 };
 
 #endif // STUBWORLD_H

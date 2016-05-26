@@ -25,14 +25,16 @@ class TestFramework
 public:
     TestFramework(int argc, char *argv[]);
     ~TestFramework();
-    
-    void add(TestChapter* aChapterPtr)
-    { theChapters.push_back(aChapterPtr); }
-    
+
+    void add(TestChapter *aChapterPtr)
+    {
+        theChapters.push_back(aChapterPtr);
+    }
+
     void run(void);
 
 
 private:
-    typedef QVector<TestChapter*> ChapterList;
+    typedef QVector<TestChapter *> ChapterList;
     ChapterList theChapters;
 };

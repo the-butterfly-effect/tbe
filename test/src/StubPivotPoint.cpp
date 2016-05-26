@@ -20,11 +20,11 @@
 
 PivotPoint::PivotPoint()
 {
-	DEBUG5("StubPivotPoint::PivotPoint\n");
+    DEBUG5("StubPivotPoint::PivotPoint\n");
 }
 
-PivotPoint::PivotPoint(BaseObject* aBaseObject, const Vector& aRelativePosition)
+PivotPoint::PivotPoint(BaseObject *aBaseObject, const Vector &aRelativePosition)
 {
-	DEBUG4("StubPivotPoint::PivotPoint(%p, (%f,%f))\n",
-		   aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
+    DEBUG4("StubPivotPoint::PivotPoint(%p, (%f,%f))\n",
+           aBaseObject, aRelativePosition.dx, aRelativePosition.dy);
 }
