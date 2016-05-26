@@ -30,7 +30,7 @@
 #ifdef QT_DEBUG
 int theVerbosity = 4;
 #else
-int theVerbosity = 2;
+//int theVerbosity = 2;
 #endif
 
 // This variable defines whether we are playing or the level creator is on
@@ -77,13 +77,15 @@ QString theStartFileName;
 static bool displayHelp(QString /*anArgument*/ )
 {
     printf("The Butterfly Effect" " " APPRELEASE "" APPFLAVOUR "\n\nhelp text\n\n");
-    printf(" --draw-debug        debug draw (draw outlines on physical boundaries of all objects)");
+    printf(" --draw-debug        debug draw (draw outlines on physical boundaries of all objects)\n");
     printf(" --help              gives this help text\n");
     printf(" -h                  gives this help text\n");
     printf(" --level-creator     start in level creator mode\n");
     printf(" -L                  start in level creator mode\n");
-    printf(" --verbosity <lvl>   set verbosity, 1=little (default), %d=all\n", MAX_VERBOSITY);
+#ifdef QT_DEBUG
+    printf(" --verbosity <lvl>   set verbosity, 1=little, (default=%d), %d=all\n", theVerbosity, MAX_VERBOSITY);
     printf(" -v <lvl>            set verbosity\n");
+#endif
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
     printf("                     (comma-separated list, time is level runtime in seconds)\n");
     printf(" --windowed          display in a window (default is fullscreen)\n");
@@ -106,6 +108,7 @@ static bool setDrawDebug(QString /*anArgument*/ )
 
 static bool setVerbosity(QString anArgument)
 {
+#ifdef QT_DEBUG
     // the argument should be a number. Let's parse.
     int myNumber = anArgument.toInt();
     if (myNumber < 1 || myNumber > MAX_VERBOSITY) {
@@ -115,6 +118,10 @@ static bool setVerbosity(QString anArgument)
     theVerbosity = myNumber;
     DEBUG2("set verbosity level to %d", theVerbosity);
     return true;
+#else
+    printf("WARNING: Setting verbosity in release builds is not suppported\n");
+    return true;
+#endif
 }
 
 // local variable
