@@ -37,23 +37,22 @@ Singleton::Translator::Translator()
 QStringList Singleton::Translator::getLanguageList()
 {
     QDir myDir = QDir(theBaseTbeQtLocation);
-    QStringList myRawList = myDir.entryList(QStringList("tbe_*.qm"), QDir::Readable|QDir::Files);
+    QStringList myRawList = myDir.entryList(QStringList("tbe_*.qm"), QDir::Readable | QDir::Files);
 
     // for each of the entries found, strip off the filename stuff
     QStringList myFinalList;
-    for(auto& i : myRawList)
-    {
+    for (auto &i : myRawList) {
         char my5char[6];
-        int c=0;
-        for(; c<5; c++)
-        {
-            if ('.' == i.at(c+4))
+        int c = 0;
+        for (; c < 5; c++) {
+            if ('.' == i.at(c + 4))
                 break;
-            my5char[c]=i.at(c+4).toLatin1();
+            my5char[c] = i.at(c + 4).toLatin1();
         }
-        my5char[c]='\0';
+        my5char[c] = '\0';
         QLocale myLocale (my5char);
-        QString myLocaleName = QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(myLocale.language()));
+        QString myLocaleName = QString("%1 = %2").arg(myLocale.name()).arg(QLocale::languageToString(
+                                                                               myLocale.language()));
         myFinalList.append(myLocaleName);
     }
     return myFinalList;
@@ -85,44 +84,39 @@ bool Singleton::Translator::init()
 }
 
 bool Singleton::Translator::attemptTbeQtTranslatorLoad(
-	const QString& aPath,
-	const QString& aLocale)
+    const QString &aPath,
+    const QString &aLocale)
 {
     QString myLocation = aPath + "tbe_" + aLocale;
     DEBUG3("Attemp: load translator from %s", ASCII(myLocation));
-    if (theTbeQtTranslator.load(myLocation))
-    {
+    if (theTbeQtTranslator.load(myLocation)) {
         DEBUG3("   ... success");
-		theBaseTbeQtLocation = aPath;
-		return true;
+        theBaseTbeQtLocation = aPath;
+        return true;
+    } else {
+        DEBUG3("   ... fail");
+        return false;
     }
-    else
-	{
-		DEBUG3("   ... fail");
-		return false;
-	}
 }
 
 
-bool Singleton::Translator::setLanguage(const QString& aLocale)
+bool Singleton::Translator::setLanguage(const QString &aLocale)
 {
     // ***
     // *** Only use the part up to the first space
     // ***
-    QString myLocale = aLocale.section(' ', 0,0);
+    QString myLocale = aLocale.section(' ', 0, 0);
     DEBUG2("Singleton::Translator::setLanguage for locale '%s'", ASCII(myLocale));
 
     // ***
     // *** For strings from TBE
     // ***
     if (!attemptTbeQtTranslatorLoad("", myLocale))
-		if (!attemptTbeQtTranslatorLoad("./", myLocale))
+        if (!attemptTbeQtTranslatorLoad("./", myLocale))
             attemptTbeQtTranslatorLoad(I18N_DIRECTORY + "/", myLocale);
-    if (theTbeQtTranslator.isEmpty())
-    {
+    if (theTbeQtTranslator.isEmpty()) {
         DEBUG1("NOTE: translator for TBE is empty");
-    }
-    else
+    } else
         QCoreApplication::instance()->installTranslator(&theTbeQtTranslator);
 
     // ***
@@ -157,8 +151,7 @@ bool Singleton::Translator::setLanguageQtIself(const QString &aLocale)
     if (!theQtTranslator.load("qt_" + aLocale, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         theQtTranslator.load("qt_" + aLocale, theBaseTbeQtLocation);
 
-    if (theQtTranslator.isEmpty())
-    {
+    if (theQtTranslator.isEmpty()) {
         DEBUG2("NOTE: translator for Qt itself is empty");
         return false;
     }

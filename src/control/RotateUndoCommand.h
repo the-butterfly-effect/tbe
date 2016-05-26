@@ -29,8 +29,8 @@ class RotateUndoCommand : public AbstractUndoCommand
 public:
     explicit RotateUndoCommand(ViewObjectPtr anViewObjectPtr);
 
-    bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) override;
-    bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) override;
+    bool mouseMoveEvent   (QGraphicsSceneMouseEvent *anEventPtr) override;
+    bool mousePressEvent  (QGraphicsSceneMouseEvent *anEventPtr) override;
 
     virtual bool editAngleMove    (qreal aCurrentAngle);
     virtual bool editAngleDone    (qreal aFinalAngle);

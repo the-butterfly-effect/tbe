@@ -24,7 +24,7 @@
 ///------------------------ GameState ----------------------------------------
 ///---------------------------------------------------------------------------
 
-void GameState::onEntry ( QEvent * event )
+void GameState::onEntry ( QEvent *event )
 {
     DEBUG4("GameControls-GameState %s onEntry!", ASCII(theName));
     QState::onEntry(event);
@@ -32,7 +32,7 @@ void GameState::onEntry ( QEvent * event )
     emit activated(this);
 }
 
-void GameState::onExit ( QEvent * event )
+void GameState::onExit ( QEvent *event )
 {
     QState::onExit(event);
     isActive = false;
@@ -76,10 +76,12 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     theFailedState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
     connect(theFailedState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
     connect(theFailedState, SIGNAL(entered()), this, SIGNAL(signal_Game_Failed()));
-    connect(theFailedState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theFailedState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
     theProblemState->addTransition(this, SIGNAL(signal_Problems_solved()), theStoppedState);
-    connect(theProblemState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theProblemState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
     connect(theProblemState, SIGNAL(entered()), this, SLOT(slot_AllowEntered()));
     connect(theProblemState, SIGNAL(exited()), this, SLOT(slot_AllowExited()));
 
@@ -88,46 +90,72 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     theRunningState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
 
     //theRunningForwardSubState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
-    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
-    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
-    theRunningForwardSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
-    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
-    connect(theRunningForwardSubState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Pause_triggered()),
+                                             theRunningPausedSubState);
+    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Play_triggered()),
+                                             theRunningNormalSubState);
+    theRunningForwardSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()),
+                                             theRunningRealFastSubState);
+    theRunningForwardSubState->addTransition(this, SIGNAL(signal_Slow_triggered()),
+                                             theRunningSlowSubState);
+    connect(theRunningForwardSubState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
-    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
-    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
+    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Forward_triggered()),
+                                            theRunningForwardSubState);
+    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Pause_triggered()),
+                                            theRunningPausedSubState);
     //theRunningNormalSubState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
-    theRunningNormalSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
-    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
-    connect(theRunningNormalSubState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    theRunningNormalSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()),
+                                            theRunningRealFastSubState);
+    theRunningNormalSubState->addTransition(this, SIGNAL(signal_Slow_triggered()),
+                                            theRunningSlowSubState);
+    connect(theRunningNormalSubState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
-    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
+    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Forward_triggered()),
+                                            theRunningForwardSubState);
     //theRunningPausedSubState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
-    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
-    theRunningPausedSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
-    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
-    connect(theRunningPausedSubState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Play_triggered()),
+                                            theRunningNormalSubState);
+    theRunningPausedSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()),
+                                            theRunningRealFastSubState);
+    theRunningPausedSubState->addTransition(this, SIGNAL(signal_Slow_triggered()),
+                                            theRunningSlowSubState);
+    connect(theRunningPausedSubState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
-    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
-    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
-    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
+    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Forward_triggered()),
+                                              theRunningForwardSubState);
+    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Pause_triggered()),
+                                              theRunningPausedSubState);
+    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Play_triggered()),
+                                              theRunningNormalSubState);
     //theRunningRealFastSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
-    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
-    connect(theRunningRealFastSubState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    theRunningRealFastSubState->addTransition(this, SIGNAL(signal_Slow_triggered()),
+                                              theRunningSlowSubState);
+    connect(theRunningRealFastSubState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
-    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
-    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
-    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
-    theRunningSlowSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
+    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Forward_triggered()),
+                                          theRunningForwardSubState);
+    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Pause_triggered()),
+                                          theRunningPausedSubState);
+    theRunningSlowSubState->addTransition(this, SIGNAL(signal_Play_triggered()),
+                                          theRunningNormalSubState);
+    theRunningSlowSubState->addTransition(this, SIGNAL(signal_RealFast_triggered()),
+                                          theRunningRealFastSubState);
     //theRunningSlowSubState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
-    connect(theRunningSlowSubState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theRunningSlowSubState, SIGNAL(activated(GameState *)), this,
+            SLOT(slot_State_Activated(GameState *)));
 
     theStoppedState->addTransition(this, SIGNAL(signal_Problems_arised()), theProblemState);
     // TODO: figure out if immediately jump to substate or to master & retransmit
     theStoppedState->addTransition(this, SIGNAL(signal_Forward_triggered()), theRunningForwardSubState);
     theStoppedState->addTransition(this, SIGNAL(signal_Pause_triggered()), theRunningPausedSubState);
     theStoppedState->addTransition(this, SIGNAL(signal_Play_triggered()), theRunningNormalSubState);
-    theStoppedState->addTransition(this, SIGNAL(signal_RealFast_triggered()), theRunningRealFastSubState);
+    theStoppedState->addTransition(this, SIGNAL(signal_RealFast_triggered()),
+                                   theRunningRealFastSubState);
     theStoppedState->addTransition(this, SIGNAL(signal_Slow_triggered()), theRunningSlowSubState);
     connect(theStoppedState, SIGNAL(entered()), this, SIGNAL(signal_Stop_Gameplay()));
     connect(theStoppedState, &GameState::entered, &AnimatedDialog::makeAllAnimatedDialogsDisappear);
@@ -136,7 +164,7 @@ GameStateMachine::GameStateMachine(QObject *parent) :
     connect(theStoppedState, SIGNAL(exited()), this, SLOT(slot_AllowExited()));
 
     theWonState->addTransition(this, SIGNAL(signal_Reset_triggered()), theStoppedState);
-    connect(theWonState, SIGNAL(activated(GameState*)), this, SLOT(slot_State_Activated(GameState*)));
+    connect(theWonState, SIGNAL(activated(GameState *)), this, SLOT(slot_State_Activated(GameState *)));
     theWonRunningSubState->addTransition(&theWonRunningTimer, SIGNAL(timeout()), theWonPausedSubState);
     connect(theWonState, SIGNAL(entered()), this, SLOT(slot_SetWonRunningTimeout()));
     connect(theWonRunningSubState, SIGNAL(entered()), this, SIGNAL(signal_Game_Is_Won()));

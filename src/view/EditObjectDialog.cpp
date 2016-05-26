@@ -31,8 +31,8 @@ std::atomic<bool> EditObjectDialog::PreventClose::theClosePreventer(false);
 
 
 EditObjectDialog::EditObjectDialog(QWidget *aParent)
-        : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr),
-          theRszUCPtr(nullptr), theRotUCPtr(nullptr)
+    : QDialog(aParent, Qt::Tool), theMUCPtr(nullptr),
+      theRszUCPtr(nullptr), theRotUCPtr(nullptr)
 {
     DEBUG1ENTRY;
     ui.setupUi(this);
@@ -46,8 +46,7 @@ EditObjectDialog::~EditObjectDialog()
 void EditObjectDialog::angle_editingFinished()
 {
     PreventClose myLocalDoNotClose;
-    if (nullptr != theRotUCPtr)
-    {
+    if (nullptr != theRotUCPtr) {
         theRotUCPtr->editAngleDone(ui.spinBoxAngle->value());
     }
     theRotUCPtr = nullptr;
@@ -55,15 +54,14 @@ void EditObjectDialog::angle_editingFinished()
 
 void EditObjectDialog::angle_valueChanged(double)
 {
-    if (nullptr == theRotUCPtr)
-    {
+    if (nullptr == theRotUCPtr) {
         // get rid of the PieMenu icons or everything falls to pieces
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
         closeExistingUndos();
         PreventClose myLocalDoNotClose;
-        theRotUCPtr = (RotateUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
-                                                        ActionIcon::ACTION_ROTATE);
+        theRotUCPtr = (RotateUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+                                                                            ActionIcon::ACTION_ROTATE);
     }
     theRotUCPtr->editAngleMove(ui.spinBoxAngle->value());
 }
@@ -83,9 +81,9 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
     ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
     closeExistingUndos();
     PreventClose myLocalDoNotClose;
-    EditPropertyUndoCommand* myUndoPtr =
-            (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
-                                            ActionIcon::ACTION_EDITPROPERTIES);
+    EditPropertyUndoCommand *myUndoPtr =
+        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+                                                                    ActionIcon::ACTION_EDITPROPERTIES);
     myUndoPtr->changedID(getAORealPtr()->theID, ui.lineEditID->text());
 
     // commit this undo and make sure its changes are 'permanent'
@@ -98,52 +96,49 @@ void EditObjectDialog::position_editingFinished()
     if (theMUCPtr)
         theMUCPtr->basicReleaseEvent();
     // todo: figure out if this is a memory leak (probably not)
-    theMUCPtr=nullptr;
+    theMUCPtr = nullptr;
 }
 
 void EditObjectDialog::position_valueChanged (double )
 {
-    if (nullptr == theMUCPtr)
-    {
+    if (nullptr == theMUCPtr) {
         // get rid of the PieMenu icons or everything falls to pieces
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
         closeExistingUndos();
         PreventClose myLocalDoNotClose;
-        theMUCPtr = (MoveUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
-                                                     ActionIcon::ACTION_MOVE);
-        theMUCPtr->basicPressEvent(false, THESCALE*QPointF(ui.spinBoxX->value(),
-                                                    -ui.spinBoxY->value()));
-    }
-    else
-    {
+        theMUCPtr = (MoveUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+                                                                        ActionIcon::ACTION_MOVE);
+        theMUCPtr->basicPressEvent(false, THESCALE * QPointF(ui.spinBoxX->value(),
+                                                             -ui.spinBoxY->value()));
+    } else {
         PreventClose myLocalDoNotClose;
-        theMUCPtr->basicMoveEvent(THESCALE*QPointF(ui.spinBoxX->value(),
-                                                   -ui.spinBoxY->value()));
+        theMUCPtr->basicMoveEvent(THESCALE * QPointF(ui.spinBoxX->value(),
+                                                     -ui.spinBoxY->value()));
     }
 }
 
 
 void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 {
-	// retrieve corresponding key and value
-	QString myKey   = ui.tableWidget->verticalHeaderItem(aRow)->text();
-	QString myValue = ui.tableWidget->item(aRow, aColumn)->text().trimmed();
-	// is the value changed?
-	QString myPropValue;
+    // retrieve corresponding key and value
+    QString myKey   = ui.tableWidget->verticalHeaderItem(aRow)->text();
+    QString myValue = ui.tableWidget->item(aRow, aColumn)->text().trimmed();
+    // is the value changed?
+    QString myPropValue;
     if (!theAOPtr.expired())
         getAORealPtr()->theProps.property2String(myKey, &myPropValue);
-	if (myValue == myPropValue)
-		return;
+    if (myValue == myPropValue)
+        return;
 
     // If we get here, yes it changed.
     // Let's act on it!
     ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
     closeExistingUndos();
     PreventClose myLocalDoNotClose;
-    EditPropertyUndoCommand* myUndoPtr =
-            (EditPropertyUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
-                                            ActionIcon::ACTION_EDITPROPERTIES);
+    EditPropertyUndoCommand *myUndoPtr =
+        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+                                                                    ActionIcon::ACTION_EDITPROPERTIES);
     QString myOrigValue;
     theObjectProps.property2String(myKey, &myOrigValue);
     myUndoPtr->changedProperty(myKey, myOrigValue, myValue);
@@ -156,8 +151,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 void EditObjectDialog::size_editingFinished()
 {
     PreventClose myLocalDoNotClose;
-    if (nullptr != theRszUCPtr)
-    {
+    if (nullptr != theRszUCPtr) {
         theRszUCPtr->mouseReleaseEvent(nullptr);
     }
     theRszUCPtr = nullptr;
@@ -165,14 +159,13 @@ void EditObjectDialog::size_editingFinished()
 
 void EditObjectDialog::size_valueChanged(double)
 {
-    if (nullptr == theRszUCPtr)
-    {
+    if (nullptr == theRszUCPtr) {
         // get rid of the PieMenu icons or everything falls to pieces
         PieMenuSingleton::clearPieMenu();
         ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
         closeExistingUndos();
-        theRszUCPtr = (ResizeUndoCommand*)UndoSingleton::createUndoCommand(myVOPtr,
-                                                        ActionIcon::ACTION_RESIZE);
+        theRszUCPtr = (ResizeUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+                                                                            ActionIcon::ACTION_RESIZE);
     }
     PreventClose myLocalDoNotClose;
     theRszUCPtr->basicMoveEvent(getAORealPtr()->getOrigCenter(),
@@ -196,8 +189,10 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
     disconnect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double)));
     disconnect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
     disconnect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
-    disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
-    disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double)));
+    disconnect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this,
+               SLOT(position_valueChanged(double)));
+    disconnect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this,
+               SLOT(position_valueChanged(double)));
 
     disconnect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(angle_editingFinished()) );
     disconnect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
@@ -206,16 +201,16 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
     disconnect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 
     disconnect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
-    disconnect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
+    disconnect(ui.tableWidget,   SIGNAL(cellChanged(int, int)), this, SLOT(propertyCellChanged(int,
+                                                                                               int)));
 
     theAOPtr = anAbstractObjectPtr;
-    if (!theAOPtr.expired())
-    {
-        AbstractObject* myAORealPtr = anAbstractObjectPtr.get();
+    if (!theAOPtr.expired()) {
+        AbstractObject *myAORealPtr = anAbstractObjectPtr.get();
         ui.lineEditID->setText(myAORealPtr->getID());
         ui.groupBox->setTitle(tr("Basic Properties for '%1'").arg(myAORealPtr->getName()));
 
-		//  TODO: QLabel *labelUnique;
+        //  TODO: QLabel *labelUnique;
 
         ui.spinBoxX     -> setValue(myAORealPtr->getOrigCenter().x);
         ui.spinBoxY     -> setValue(myAORealPtr->getOrigCenter().y);
@@ -224,57 +219,56 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
         ui.spinBoxHeight-> setValue(myAORealPtr->getTheHeight());
 
         QStringList myAllPropertiesList = myAORealPtr->theProps.getDefaultPropertyList();
-		QStringList::iterator myI= myAllPropertiesList.begin();
+        QStringList::iterator myI = myAllPropertiesList.begin();
 
-		ui.tableWidget->clear();
-		ui.tableWidget->setColumnCount(1);
-		ui.tableWidget->setRowCount(myAllPropertiesList.count());
+        ui.tableWidget->clear();
+        ui.tableWidget->setColumnCount(1);
+        ui.tableWidget->setRowCount(myAllPropertiesList.count());
 
-		QTableWidgetItem* myCol = new QTableWidgetItem();
-		myCol->setText(tr("Value"));
-		ui.tableWidget->setHorizontalHeaderItem(0,myCol);
+        QTableWidgetItem *myCol = new QTableWidgetItem();
+        myCol->setText(tr("Value"));
+        ui.tableWidget->setHorizontalHeaderItem(0, myCol);
 
-		int myRow = 0;
-		while (myI != myAllPropertiesList.end())
-		{
-			QString myKey = *myI;
-			QString myValue;
+        int myRow = 0;
+        while (myI != myAllPropertiesList.end()) {
+            QString myKey = *myI;
+            QString myValue;
             myAORealPtr->theProps.property2String(*myI, &myValue);
             theObjectProps.setProperty(myKey, myValue);
 
-            QTableWidgetItem* myKeyItem = new QTableWidgetItem(myKey);
-			ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
-			QTableWidgetItem* myValueItem = new QTableWidgetItem(myValue);
-			myValueItem->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
+            QTableWidgetItem *myKeyItem = new QTableWidgetItem(myKey);
+            ui.tableWidget->setVerticalHeaderItem(myRow, myKeyItem);
+            QTableWidgetItem *myValueItem = new QTableWidgetItem(myValue);
+            myValueItem->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
             if (myValue != myAORealPtr->theProps.getDefaultProperty(*myI))
-                myValueItem->setIcon(ImageCache::getQIcon("IconModified", QSize(32,32)));
-			ui.tableWidget->setItem(myRow, 0, myValueItem);
+                myValueItem->setIcon(ImageCache::getQIcon("IconModified", QSize(32, 32)));
+            ui.tableWidget->setItem(myRow, 0, myValueItem);
 
-			myRow++;
-			myI++;
-		}
-		ui.tableWidget->resizeColumnToContents(0);
-	}
+            myRow++;
+            myI++;
+        }
+        ui.tableWidget->resizeColumnToContents(0);
+    }
 
     connect(ui.spinBoxAngle,  SIGNAL(editingFinished()), this, SLOT(angle_editingFinished()) );
     connect(ui.spinBoxHeight, SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
     connect(ui.spinBoxWidth,  SIGNAL(editingFinished()), this, SLOT(size_editingFinished()) );
-	connect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
-	connect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    connect(ui.spinBoxX,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
+    connect(ui.spinBoxY,      SIGNAL(editingFinished()), this, SLOT(position_editingFinished()) );
 
     connect(ui.spinBoxAngle,  SIGNAL(valueChanged(double)), this, SLOT(angle_valueChanged(double) ));
     connect(ui.spinBoxHeight, SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
     connect(ui.spinBoxWidth,  SIGNAL(valueChanged(double)), this, SLOT(size_valueChanged(double)));
-	connect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
-	connect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
+    connect(ui.spinBoxX,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
+    connect(ui.spinBoxY,      SIGNAL(valueChanged(double)), this, SLOT(position_valueChanged(double) ));
 
-	connect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
-	connect(ui.tableWidget,   SIGNAL(cellChanged(int,int)), this, SLOT(propertyCellChanged(int,int)));
+    connect(ui.lineEditID,    SIGNAL(editingFinished()),    this, SLOT(lineEditID_valueChanged() ));
+    connect(ui.tableWidget,   SIGNAL(cellChanged(int, int)), this, SLOT(propertyCellChanged(int, int)));
 
     if (theAOPtr.expired())
-		setEnabled(false);
-	else
-		setEnabled(true);
+        setEnabled(false);
+    else
+        setEnabled(true);
     return;
 }
 

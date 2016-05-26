@@ -40,15 +40,17 @@ class ViewWorld : public QGraphicsScene, public b2Draw
     Q_OBJECT
 
 public:
-    explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
+    explicit ViewWorld (ResizingGraphicsView *aGraphicsViewPtr, World *aWorldPtr);
 
     virtual ~ViewWorld();
 
     // Public accessor methods
     //
 
-    const World* getWorldPtr() const
-    { return theWorldPtr; }
+    const World *getWorldPtr() const
+    {
+        return theWorldPtr;
+    }
 
     qreal getWidth(void) const;
     qreal getHeight(void) const;
@@ -59,7 +61,7 @@ public:
     // QGraphicsScene events
     //
 
-    void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent ) override;
+    void    mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent ) override;
 
     /// Constant defining the goal FPS (frames per second)
     /// @note: This does not say that the game achieves this number.
@@ -94,7 +96,9 @@ public slots:
     /// ViewWorld will immediately re-emit a signal for it.
     /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
     void slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr)
-    { emit signal_updateEditObjectDialog(anAOPtr); }
+    {
+        emit signal_updateEditObjectDialog(anAOPtr);
+    }
 
 private slots:
     /// called whenever a timer tick happens
@@ -104,49 +108,51 @@ private slots:
     void on_framerateTimerTick(void);
 
 private:
-	// Private attributes
-	//
+    // Private attributes
+    //
 
-	World* theWorldPtr;
+    World *theWorldPtr;
 
-	QTimer theTimer;
-	QTimer theFramerateTimer;
-	QTime  theSimulationTime;
-	QTime  theGameStopwatch;
+    QTimer theTimer;
+    QTimer theFramerateTimer;
+    QTime  theSimulationTime;
+    QTime  theGameStopwatch;
 
-	/// current number of milliseconds per time step
-	/// (note that TBE is configured to run at "half of reality" speed)
-	qreal theSimSpeed;
+    /// current number of milliseconds per time step
+    /// (note that TBE is configured to run at "half of reality" speed)
+    qreal theSimSpeed;
 
-	unsigned int theFramesPerSecond;
+    unsigned int theFramesPerSecond;
 
-	QAction* theFrameRateViewPtr;
+    QAction *theFrameRateViewPtr;
 
 private:
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
 
-	// the below is for the Debug drawing of Box2D
+    // the below is for the Debug drawing of Box2D
 protected:
-	/// Draw a closed polygon provided in CCW order.
-	virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) override;
-	/// Draw a solid closed polygon provided in CCW order.
-	virtual void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) override;
-	/// Draw a circle.
-	virtual void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color) override;
-	/// Draw a solid circle.
-	virtual void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color) override;
-	/// Draw a line segment.
-	virtual void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) override;
-	/// Draw a transform. Choose your own length scale.
-	/// @param xf a transform.
-	virtual void DrawTransform(const b2Transform& xf) override;
+    /// Draw a closed polygon provided in CCW order.
+    virtual void DrawPolygon(const b2Vec2 *vertices, int32 vertexCount, const b2Color &color) override;
+    /// Draw a solid closed polygon provided in CCW order.
+    virtual void DrawSolidPolygon(const b2Vec2 *vertices, int32 vertexCount,
+                                  const b2Color &color) override;
+    /// Draw a circle.
+    virtual void DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &color) override;
+    /// Draw a solid circle.
+    virtual void DrawSolidCircle(const b2Vec2 &center, float32 radius, const b2Vec2 &axis,
+                                 const b2Color &color) override;
+    /// Draw a line segment.
+    virtual void DrawSegment(const b2Vec2 &p1, const b2Vec2 &p2, const b2Color &color) override;
+    /// Draw a transform. Choose your own length scale.
+    /// @param xf a transform.
+    virtual void DrawTransform(const b2Transform &xf) override;
 
-	const static int theMaxNumberOfGraphicsListElements;
-	typedef QList<QGraphicsItem*> GraphicsList;
-	GraphicsList theGraphicsList;
-	void addDebugDrawToList(QGraphicsItem* anItem);
-	void clearGraphicsList(int aCount);
+    const static int theMaxNumberOfGraphicsListElements;
+    typedef QList<QGraphicsItem *> GraphicsList;
+    GraphicsList theGraphicsList;
+    void addDebugDrawToList(QGraphicsItem *anItem);
+    void clearGraphicsList(int aCount);
 
 };
 

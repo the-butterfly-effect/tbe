@@ -30,23 +30,25 @@ class ToolboxListWidgetItem : public QObject, public QListWidgetItem
     Q_OBJECT
 
 public:
-    explicit ToolboxListWidgetItem(ResizingGraphicsView* aRSGVPtr,
-                                   ToolboxGroup* aTBGPtr,
+    explicit ToolboxListWidgetItem(ResizingGraphicsView *aRSGVPtr,
+                                   ToolboxGroup *aTBGPtr,
                                    QListWidget *parent = 0);
 
-	/// @returns a pointer to the ToolboxGroup
-	ToolboxGroup* getToolboxGroupPtr()
-	{ return theTBGPtr;	}
+    /// @returns a pointer to the ToolboxGroup
+    ToolboxGroup *getToolboxGroupPtr()
+    {
+        return theTBGPtr;
+    }
 
 signals:
 
 public slots:
-    void slotSelected(QListWidgetItem*);
+    void slotSelected(QListWidgetItem *);
     void slotUpdateCount(void);
 
 private:
-    ToolboxGroup* theTBGPtr;
-    ResizingGraphicsView* theRSGVPtr;
+    ToolboxGroup *theTBGPtr;
+    ResizingGraphicsView *theRSGVPtr;
     QPixmap theRealPixmap;
 
     const int theIconSize = 80;

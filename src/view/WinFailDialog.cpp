@@ -22,30 +22,29 @@
 #include "ui_WinFailDialog.h"
 
 WinFailDialog::WinFailDialog(MessageType aType,
-                             ResizingGraphicsView* aParent) :
+                             ResizingGraphicsView *aParent) :
     AnimatedDialog(aParent),
     ui(new Ui::WinFailDialog)
 {
     ui->setupUi(this);
-    ui->replayButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
+    ui->replayButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32, 32)));
 
-	QString myMessage;
-	switch(aType)
-	{
-		case CONGRATS:
-			//: make sure the translated text fits - the rest won't be shown
-			myMessage = tr("Congratulations!");
-			ui->nextButton->setEnabled(true);
-            ui->skipButton->setVisible(false);
-			break;
-		case DEATH:
-			//: make sure the translated text fits - the rest won't be shown
-			myMessage = tr("Fail - retry?");
-			ui->nextButton->setEnabled(false);
-            ui->replayButton->setText(tr("&Retry"));
-			break;
-	}
-	ui->label->setText(myMessage);
+    QString myMessage;
+    switch (aType) {
+    case CONGRATS:
+        //: make sure the translated text fits - the rest won't be shown
+        myMessage = tr("Congratulations!");
+        ui->nextButton->setEnabled(true);
+        ui->skipButton->setVisible(false);
+        break;
+    case DEATH:
+        //: make sure the translated text fits - the rest won't be shown
+        myMessage = tr("Fail - retry?");
+        ui->nextButton->setEnabled(false);
+        ui->replayButton->setText(tr("&Retry"));
+        break;
+    }
+    ui->label->setText(myMessage);
     connect(ui->chooseButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionChooseLevel()));
     connect(ui->nextButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionNextLevel()));
     connect(ui->replayButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionReplay()));
@@ -54,7 +53,7 @@ WinFailDialog::WinFailDialog(MessageType aType,
 
 WinFailDialog::~WinFailDialog()
 {
-	delete ui;
+    delete ui;
 }
 
 void WinFailDialog::changeEvent(QEvent *e)

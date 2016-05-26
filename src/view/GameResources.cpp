@@ -27,7 +27,7 @@
 #include "ui_GameResources.h"
 #include "ViewObject.h"
 
-GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
+GameResources::GameResources(ResizingGraphicsView *aRSGVPtr) :
     AnimatedDialog(aRSGVPtr, AnimatedDialog::FROM_TOPRIGHT),
     ui(new Ui::GameResources),
     theLevelPtr(nullptr),
@@ -35,7 +35,7 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
 {
     DEBUG1ENTRY;
     ui->setupUi(this);
-    ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32,32)));
+    ui->theResetButton->setIcon(ImageCache::getQIcon("ActionUndo", QSize(32, 32)));
     setAutoFillBackground (true);
 
     connect(this, &GameResources::signalReloadLevel,
@@ -45,15 +45,14 @@ GameResources::GameResources(ResizingGraphicsView* aRSGVPtr) :
 
 GameResources::~GameResources()
 {
-	delete ui;
+    delete ui;
 }
 
 
 void GameResources::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
-    switch (e->type())
-    {
+    switch (e->type()) {
     case QEvent::LanguageChange:
         ui->retranslateUi(this);
         // TODO/FIXME: add change of Description and Title to new language...
@@ -67,7 +66,7 @@ void GameResources::changeEvent(QEvent *e)
 void GameResources::on_theOKButton_clicked()
 {
     // update the toolbox viewing
- //   slot_startAppearing();
+//   slot_startAppearing();
     // and go away
     emit disappearAnimated();
 }
@@ -75,18 +74,17 @@ void GameResources::on_theOKButton_clicked()
 
 void GameResources::on_theResetButton_clicked()
 {
-    if (Popup::YesNoQuestion(tr("Undo all your work and go back to a clean start of this level?")))
-    {
+    if (Popup::YesNoQuestion(tr("Undo all your work and go back to a clean start of this level?"))) {
         emit disappearAnimated();
         emit signalReloadLevel();
     }
 }
 
 
-void GameResources::setLevelPtr(Level* aLevelPtr)
+void GameResources::setLevelPtr(Level *aLevelPtr)
 {
-	DEBUG5ENTRY;
-    Q_ASSERT(aLevelPtr!=nullptr);
+    DEBUG5ENTRY;
+    Q_ASSERT(aLevelPtr != nullptr);
     theLevelPtr = aLevelPtr;
 
     ui->theLevelTitle->setText(TheGetText(theLevelPtr->theLevelName));

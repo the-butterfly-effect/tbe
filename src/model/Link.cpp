@@ -29,9 +29,13 @@ class LinkObjectFactory : public ObjectFactory
 {
 public:
     LinkObjectFactory(void)
-    {	announceObjectType("Link", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new Link()); }
+    {
+        announceObjectType("Link", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new Link());
+    }
 };
 static LinkObjectFactory theLinkFactory;
 
@@ -42,12 +46,12 @@ Link::Link(void)
       theFirstLocalPosPtr(nullptr),
       theSecondLocalPosPtr(nullptr)
 {
-    theToolTip=QObject::tr("A Link is a massless, bodyless connection between two objects.");
+    theToolTip = QObject::tr("A Link is a massless, bodyless connection between two objects.");
     theProps.setDefaultPropertiesString(
-                Property::OBJECT1_STRING + QString(":/") +
-                Property::OBJECT2_STRING + QString(":/") +
-                Property::OVERLAP_STRING + QString(":10/") +
-                "-" + Property::MASS_STRING + ":/" );
+        Property::OBJECT1_STRING + QString(":/") +
+        Property::OBJECT2_STRING + QString(":/") +
+        Property::OVERLAP_STRING + QString(":10/") +
+        "-" + Property::MASS_STRING + ":/" );
 }
 
 Link::~Link ()
@@ -73,10 +77,10 @@ void Link::clearObjectReferences()
 
 ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
 {
-    if (theViewObjectPtr!=nullptr)
+    if (theViewObjectPtr != nullptr)
         return theViewObjectPtr;
     QString myImageName;
-    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
         myImageName = getInternalName();
     theViewObjectPtr = ViewObject::factoryMethod<ViewLink>(getThisPtr(), myImageName);
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
@@ -86,28 +90,26 @@ ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
 
 void Link::createPhysicsObject(void)
 {
-    if (theWorldPtr==nullptr)
+    if (theWorldPtr == nullptr)
         return;
 
-    assert(theFirstPtr!=nullptr);
-    assert(theFirstLocalPosPtr!=nullptr);
-    if (theFirstPtr==nullptr)
-    {
-		DEBUG4("Link: No valid first object found...");
+    assert(theFirstPtr != nullptr);
+    assert(theFirstLocalPosPtr != nullptr);
+    if (theFirstPtr == nullptr) {
+        DEBUG4("Link: No valid first object found...");
         return;
     }
-    b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
+    b2Body *myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
     assert (myFirstB2BodyPtr);
     theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
-    assert(theSecondPtr!=nullptr);
-    assert(theSecondLocalPosPtr!=nullptr);
-    if (theSecondPtr==nullptr)
-    {
-		DEBUG4("Link: No valid second object found...");
+    assert(theSecondPtr != nullptr);
+    assert(theSecondLocalPosPtr != nullptr);
+    if (theSecondPtr == nullptr) {
+        DEBUG4("Link: No valid second object found...");
         return;
     }
-    b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
+    b2Body *mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
     assert (mySecondB2BodyPtr);
     theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
@@ -116,20 +118,20 @@ void Link::createPhysicsObject(void)
     b2DistanceJointDef myJointDef;
 
     myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
-                          (theFirstPtr->getOrigCenter()+*theFirstLocalPosPtr).toB2Vec2(),
-                          (theSecondPtr->getOrigCenter()+*theSecondLocalPosPtr).toB2Vec2());
+                          (theFirstPtr->getOrigCenter() + *theFirstLocalPosPtr).toB2Vec2(),
+                          (theSecondPtr->getOrigCenter() + *theSecondLocalPosPtr).toB2Vec2());
     myJointDef.userData = this;
-    theJointPtr = (b2DistanceJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    theJointPtr = (b2DistanceJoint *) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 Position Link::getTempCenter() const
 {
-    if (theFirstPtr==nullptr || theFirstLocalPosPtr==nullptr ||
-            theSecondPtr==nullptr || theSecondLocalPosPtr==nullptr)
+    if (theFirstPtr == nullptr || theFirstLocalPosPtr == nullptr ||
+            theSecondPtr == nullptr || theSecondLocalPosPtr == nullptr)
         return getOrigCenter();
 
-    Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
-    Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
+    Vector myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
+    Vector myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
     Vector myMiddle = myV1 + myV2;
     myMiddle = 0.5 * myMiddle;
 
@@ -143,7 +145,7 @@ Position Link::getTempCenter() const
 void Link::parseProperties(void)
 {
     AbstractObject::parseProperties();
-    if (theWorldPtr==nullptr)
+    if (theWorldPtr == nullptr)
         return;
 
     // *** parse object1 & object2
@@ -169,24 +171,23 @@ void Link::updateOrigCenter(void)
 void Link::updateViewObject(bool ) const
 {
     // no ViewObject: nothing to update ;-)
-    if(theViewObjectPtr == nullptr)
+    if (theViewObjectPtr == nullptr)
         return;
 
     // no b2body: no part of simulation
     // PROBLEM: joints also don't have a b2Body - that's why they have their own
     // overriden version of this member...
-    if (theFirstPtr==nullptr || theSecondPtr==nullptr)
-    {
+    if (theFirstPtr == nullptr || theSecondPtr == nullptr) {
         // problem
-		DEBUG1("Link::updateViewObject()  while first or second is zero");
+        DEBUG1("Link::updateViewObject()  while first or second is zero");
         assert(false);
     }
 
     // Sim running: don't need to adjust objects that are static or asleep
-    ViewLink* theVLPtr = dynamic_cast<ViewLink*>(theViewObjectPtr.data());
-    assert(theVLPtr!=nullptr);
+    ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewObjectPtr.data());
+    assert(theVLPtr != nullptr);
 
-    Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
-    Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
+    Vector myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
+    Vector myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
     theVLPtr->setEndpoints(myV1, myV2);
 }

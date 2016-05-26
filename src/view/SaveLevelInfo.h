@@ -26,48 +26,52 @@
 
 class SaveLevelInfo : public QDialog
 {
-	 Q_OBJECT
+    Q_OBJECT
 
 public:
-	SaveLevelInfo(Level* aLevelPtr, QWidget *parent = 0);
-	virtual ~SaveLevelInfo();
+    SaveLevelInfo(Level *aLevelPtr, QWidget *parent = 0);
+    virtual ~SaveLevelInfo();
 
-	/** takes the input from the form and fills in the Level fields
-	 *  @returns false if level data is invalid - Level is not changed.
-	 */
-	bool commitToLevel(void);
+    /** takes the input from the form and fills in the Level fields
+     *  @returns false if level data is invalid - Level is not changed.
+     */
+    bool commitToLevel(void);
 
-	QString getFileName(void) const
-		{ return ui.theFileNameField->text(); }
+    QString getFileName(void) const
+    {
+        return ui.theFileNameField->text();
+    }
 
 public slots:
-	void FileDialogButton_clicked();
+    void FileDialogButton_clicked();
 
-	/// overridden to intercept the accept and allow to check the file name
-	virtual void accept();
+    /// overridden to intercept the accept and allow to check the file name
+    virtual void accept();
 
-	/// called whenever the user changes the text.
-	void fileNameChanged()
-		{ isUserOKOverwritingFile = false; }
+    /// called whenever the user changes the text.
+    void fileNameChanged()
+    {
+        isUserOKOverwritingFile = false;
+    }
 
 
 private:
-	Ui::SaveLevelInfo ui;
-	Level*	theLevelPtr;
+    Ui::SaveLevelInfo ui;
+    Level  *theLevelPtr;
 
-	/** checks whether a file name already exists.
-	 *  if the file exists and isUserOKOverwrintingFile is not true,
-	 *  it will popup a question for overwrite?
-	 *  @returns true if user is OK with overwriting
-	 *           *or* isUserOKOverwrintingFile is already true
-	 *           *or* the file does not exist yet
-	 */
-	bool performFileExists(const QString& aFileName);
+    /** checks whether a file name already exists.
+     *  if the file exists and isUserOKOverwrintingFile is not true,
+     *  it will popup a question for overwrite?
+     *  @returns true if user is OK with overwriting
+     *           *or* isUserOKOverwrintingFile is already true
+     *           *or* the file does not exist yet
+     */
+    bool performFileExists(const QString &aFileName);
 
 
 
-	/// set to true if user answered the question whether the file should be overwritten
-	bool isUserOKOverwritingFile;
+    /// set to true if user answered the question whether the file should be overwritten
+    bool isUserOKOverwritingFile;
 };
 
 #endif // SAVELEVELINFO_H

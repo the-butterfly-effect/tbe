@@ -28,7 +28,7 @@
 // Constructors/Destructors
 //
 
-ViewLink::ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName)
+ViewLink::ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName)
     : ViewObject(aAbstractObjectPtr, "Empty"), theImageName(anImageName)
 {
     // Everything is done in the ViewObject constructor...
@@ -42,17 +42,16 @@ ViewLink::~ViewLink ( )
 }
 
 
-void ViewLink::setEndpoints(const Vector& aFirstPoint,
-                            const Vector& aSecondPoint)
+void ViewLink::setEndpoints(const Vector &aFirstPoint,
+                            const Vector &aSecondPoint)
 {
-    if (theLinePtr==nullptr)
-    {
+    if (theLinePtr == nullptr) {
         // We expect the ImageName to contain the color information.
         // If no image name, invisible line
 
         theLinePtr = new QGraphicsLineItem(nullptr);
         QPen pen;
-        if (theImageName=="" || theImageName=="Empty" || theImageName=="Link")
+        if (theImageName == "" || theImageName == "Empty" || theImageName == "Link")
             pen = QPen(QColor("transparent"), 2, Qt::NoPen);
         else
             pen = QPen(QColor(theImageName), 2, Qt::SolidLine);

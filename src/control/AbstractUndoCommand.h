@@ -36,7 +36,7 @@ public:
     /// Unlike QUndoCommand, we always require arguments
     /// to the constructor.
     AbstractUndoCommand(ViewObjectPtr anViewObjectPtr,
-                        const QString& anUndoName,
+                        const QString &anUndoName,
                         QUndoCommand *parent = 0);
 
     virtual ~AbstractUndoCommand();
@@ -54,9 +54,9 @@ public:
 
     /// TODO/FIXME: Implement
     /// @returns true if event is handled already.
-    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent* anEventPtr) = 0;
-    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent* anEventPtr) = 0;
-    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
+    virtual bool mouseMoveEvent   (QGraphicsSceneMouseEvent *anEventPtr) = 0;
+    virtual bool mousePressEvent  (QGraphicsSceneMouseEvent *anEventPtr) = 0;
+    virtual bool mouseReleaseEvent(QGraphicsSceneMouseEvent *anEventPtr);
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
@@ -70,7 +70,7 @@ public:
 protected:
     /// This member sets the Proxy image in the ViewObjectActionDecorator.
     /// @param anImageName  theImage to use as Proxy (no path, no extension)
-    void setDecoratorImage(const QString& anImageName);
+    void setDecoratorImage(const QString &anImageName);
 
     /// Reset the DecoratorPosition to align with the ViewObject.
     void resetDecoratorPosition();
@@ -114,9 +114,9 @@ private:
     /// keep private & unimplemented: no default constructor
     AbstractUndoCommand();
     /// keep private & unimplemented: no copy constructor
-    AbstractUndoCommand(AbstractUndoCommand&);
+    AbstractUndoCommand(AbstractUndoCommand &);
     /// keep private & unimplemented: no assignment operator
-    AbstractUndoCommand& operator=(AbstractUndoCommand&);
+    AbstractUndoCommand &operator=(AbstractUndoCommand &);
 };
 
 #endif // ABSTRACTUNDOCOMMAND_H

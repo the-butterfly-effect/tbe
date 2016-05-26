@@ -26,69 +26,71 @@
 class FactoryList
 {
 public:
-	void insert(const QString& aName, ObjectFactory* theFactoryPtr)
-		{ theMap[aName]=theFactoryPtr; }
-	const ObjectFactory* getFactoryPtr(const QString& aName) const
-		{ return theMap.value(aName); }
+    void insert(const QString &aName, ObjectFactory *theFactoryPtr)
+    {
+        theMap[aName] = theFactoryPtr;
+    }
+    const ObjectFactory *getFactoryPtr(const QString &aName) const
+    {
+        return theMap.value(aName);
+    }
 
-	ObjectFactory::ObjectFactoryList* getAllFactories(void)
-	{
-		ObjectFactory::ObjectFactoryList* myList = new ObjectFactory::ObjectFactoryList();
-		TheMap::iterator myI = theMap.begin();
-		while (myI != theMap.end())
-		{
-			myList->push_back(*myI);
-			++myI;
-		}
-		return myList;
-	}
+    ObjectFactory::ObjectFactoryList *getAllFactories(void)
+    {
+        ObjectFactory::ObjectFactoryList *myList = new ObjectFactory::ObjectFactoryList();
+        TheMap::iterator myI = theMap.begin();
+        while (myI != theMap.end()) {
+            myList->push_back(*myI);
+            ++myI;
+        }
+        return myList;
+    }
 
 private:
-	typedef QMap<QString, ObjectFactory*> TheMap;
-	TheMap theMap;
+    typedef QMap<QString, ObjectFactory *> TheMap;
+    TheMap theMap;
 };
-static FactoryList* theFactoryListPtr=nullptr;
+static FactoryList *theFactoryListPtr = nullptr;
 
 
 void
-ObjectFactory::announceObjectType(const QString& anObjectTypeName, ObjectFactory* aThisPtr)
+ObjectFactory::announceObjectType(const QString &anObjectTypeName, ObjectFactory *aThisPtr)
 {
-	DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)",
-			ASCII(anObjectTypeName), aThisPtr);
-	if (theFactoryListPtr==nullptr)
-		theFactoryListPtr = new FactoryList();
-	theFactoryListPtr->insert(anObjectTypeName,aThisPtr);
-	aThisPtr->theFactoryName = anObjectTypeName;
+    DEBUG4("ObjectFactory::announceObjectType(\"%s\", %p)",
+           ASCII(anObjectTypeName), aThisPtr);
+    if (theFactoryListPtr == nullptr)
+        theFactoryListPtr = new FactoryList();
+    theFactoryListPtr->insert(anObjectTypeName, aThisPtr);
+    aThisPtr->theFactoryName = anObjectTypeName;
 }
 
 AbstractObjectPtr
 ObjectFactory::createObject(
-		const QString& aName,
-		const Position aPosition,
-		const qreal aWidth,
-		const qreal anHeight)
+    const QString &aName,
+    const Position aPosition,
+    const qreal aWidth,
+    const qreal anHeight)
 {
-	const ObjectFactory* myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
-	DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p", ASCII(aName), myFactoryPtr);
-	if (myFactoryPtr == nullptr)
-	{
-		DEBUG1("There is no factory for Object type '%s'", ASCII(aName));
-		return nullptr;
-	}
-    AbstractObject* myObjectPtr = myFactoryPtr->createObject();
-    assert (myObjectPtr!=nullptr);
+    const ObjectFactory *myFactoryPtr = theFactoryListPtr->getFactoryPtr(aName);
+    DEBUG5("ObjectFactory::createObject(\"%s\") Factory=%p", ASCII(aName), myFactoryPtr);
+    if (myFactoryPtr == nullptr) {
+        DEBUG1("There is no factory for Object type '%s'", ASCII(aName));
+        return nullptr;
+    }
+    AbstractObject *myObjectPtr = myFactoryPtr->createObject();
+    assert (myObjectPtr != nullptr);
     AbstractObjectPtr mySharedOPtr = AbstractObjectPtr(myObjectPtr);
     myObjectPtr->theThisPtr = mySharedOPtr;
-	DEBUG5("  object created = %p, i18n name = '%s'", myObjectPtr, ASCII(myObjectPtr->getName()));
-	assert (aName.contains(" ")==false);
-	myObjectPtr->theInternalName = aName;
-	myObjectPtr->theCenter=aPosition;
-	if (aWidth!=1.0)
-		myObjectPtr->theWidth=aWidth;
-	if (anHeight!=1.0)
-		myObjectPtr->theHeight=anHeight;
+    DEBUG5("  object created = %p, i18n name = '%s'", myObjectPtr, ASCII(myObjectPtr->getName()));
+    assert (aName.contains(" ") == false);
+    myObjectPtr->theInternalName = aName;
+    myObjectPtr->theCenter = aPosition;
+    if (aWidth != 1.0)
+        myObjectPtr->theWidth = aWidth;
+    if (anHeight != 1.0)
+        myObjectPtr->theHeight = anHeight;
     // finally, get rid of the actual pointer and return the shared_ptr
-    assert (nullptr!=mySharedOPtr);
+    assert (nullptr != mySharedOPtr);
     return mySharedOPtr;
 }
 
@@ -97,10 +99,10 @@ ObjectFactory::cloneObject(const AbstractObjectPtr anOriginalPtr)
 {
     // *** use our factory to create a similar object
     AbstractObjectPtr myClonePtr = createObject(
-                anOriginalPtr->getInternalName(),
-                anOriginalPtr->theCenter,
-                anOriginalPtr->theWidth,
-                anOriginalPtr->theHeight);
+                                       anOriginalPtr->getInternalName(),
+                                       anOriginalPtr->theCenter,
+                                       anOriginalPtr->theWidth,
+                                       anOriginalPtr->theHeight);
     // *** copy all Properties that make sense
     myClonePtr->theProps = anOriginalPtr->theProps;
 
@@ -113,15 +115,15 @@ ObjectFactory::cloneObject(const AbstractObjectPtr anOriginalPtr)
 }
 
 
-AbstractObject* ObjectFactory::fixObject(AbstractObject *anObjectPtr) const
+AbstractObject *ObjectFactory::fixObject(AbstractObject *anObjectPtr) const
 {
     anObjectPtr->theInternalName = theFactoryName;
     return anObjectPtr;
 }
 
-ObjectFactory::ObjectFactoryList* ObjectFactory::getAllFactories(void)
+ObjectFactory::ObjectFactoryList *ObjectFactory::getAllFactories(void)
 {
-	if (theFactoryListPtr==nullptr)
-		return nullptr;
-	return theFactoryListPtr->getAllFactories();
+    if (theFactoryListPtr == nullptr)
+        return nullptr;
+    return theFactoryListPtr->getAllFactories();
 }

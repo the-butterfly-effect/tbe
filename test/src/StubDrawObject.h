@@ -32,43 +32,43 @@ class DrawWorld;
 class DrawObject : public QGraphicsItem
 {
 public:
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/// Simple Constructor
-	DrawObject (BaseObject* aBaseObjectPtr);
+    /// Simple Constructor
+    DrawObject (BaseObject *aBaseObjectPtr);
 
-	enum ImageType
-	{
-		IMAGE_PNG,
-		IMAGE_SVG,
-		IMAGE_ANY
-	};
+    enum ImageType {
+        IMAGE_PNG,
+        IMAGE_SVG,
+        IMAGE_ANY
+    };
 
-	/// Svg/Png Constructor
-	DrawObject (BaseObject* aBaseObjectPtr, const QString& anImageName, ImageType anImageType = IMAGE_ANY);
-
-
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~DrawObject ( );
+    /// Svg/Png Constructor
+    DrawObject (BaseObject *aBaseObjectPtr, const QString &anImageName,
+                ImageType anImageType = IMAGE_ANY);
 
 
-	/// overriden from QGraphicsItem
-	virtual QRectF boundingRect() const;
+    /**
+     * Empty Destructor
+     */
+    virtual ~DrawObject ( );
 
-	/// overriden from QGraphicsItem
-	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-			   QWidget *widget);
-	/// setup caching for this object
-	void setupCache(void);
 
-public:
-	BaseObject* theBaseObjectPtr;
+    /// overriden from QGraphicsItem
+    virtual QRectF boundingRect() const;
+
+    /// overriden from QGraphicsItem
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+                       QWidget *widget);
+    /// setup caching for this object
+    void setupCache(void);
 
 public:
-	virtual void initAttributes ( ) ;
+    BaseObject *theBaseObjectPtr;
+
+public:
+    virtual void initAttributes ( ) ;
 
 };
 

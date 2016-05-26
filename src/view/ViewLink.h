@@ -33,34 +33,34 @@ class AbstractObject;
 class ViewLink : public ViewObject
 {
 
-	Q_OBJECT
+    Q_OBJECT
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
 protected:
-	/// Image Constructor
-    explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
+    /// Image Constructor
+    explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName);
     friend class ViewObject;
 
 public:
-	/**
-	 * Empty Destructor
-	 */
-        virtual ~ViewLink ( );
+    /**
+     * Empty Destructor
+     */
+    virtual ~ViewLink ( );
 
 
-        /// todo
-        void setEndpoints(const Vector& aFirstPoint,
-                          const Vector& aSecondPoint);
+    /// todo
+    void setEndpoints(const Vector &aFirstPoint,
+                      const Vector &aSecondPoint);
 
 private:
-	// prevent copy constructor / assignment operator
-        ViewLink(const ViewLink&);
-        const ViewLink& operator= (const ViewLink&);
+    // prevent copy constructor / assignment operator
+    ViewLink(const ViewLink &);
+    const ViewLink &operator= (const ViewLink &);
 
-        QGraphicsLineItem* theLinePtr;
-        QString theImageName;
+    QGraphicsLineItem *theLinePtr;
+    QString theImageName;
 };
 
 #endif // VIEWLINK_H

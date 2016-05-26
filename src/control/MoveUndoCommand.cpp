@@ -25,7 +25,7 @@
 
 
 MoveUndoCommand::MoveUndoCommand(
-        ViewObjectPtr anViewObjectPtr)
+    ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Move"), nullptr)
 {
     DEBUG3ENTRY;
@@ -33,31 +33,27 @@ MoveUndoCommand::MoveUndoCommand(
 }
 
 
-void MoveUndoCommand::basicMoveEvent(const QPointF& aPos)
+void MoveUndoCommand::basicMoveEvent(const QPointF &aPos)
 {
     DEBUG4ENTRY;
-    theNewPos = theOrigPos.toVector() + Vector(aPos-theButtonDownPosition);
+    theNewPos = theOrigPos.toVector() + Vector(aPos - theButtonDownPosition);
     theNewPos.angle = theOrigPos.angle;
     theViewObjPtr->setNewGeometry(theNewPos);
-    if (true==setDecoratorStateMouseMove())
-    {
-        if (theLastKnownGood.isValid())
-        {
+    if (true == setDecoratorStateMouseMove()) {
+        if (theLastKnownGood.isValid()) {
             // if we get here, we can leave the object object at its location
             // and only move the decorator around
             theViewObjPtr->setNewGeometry(theLastKnownGood);
             setDecoratorPosition(theNewPos.toVector());
         }
-    }
-    else
-    {
+    } else {
         theLastKnownGood = theNewPos;
         resetDecoratorPosition();
     }
 }
 
 
-void MoveUndoCommand::basicPressEvent(bool isMouseUndo, const QPointF& aPos)
+void MoveUndoCommand::basicPressEvent(bool isMouseUndo, const QPointF &aPos)
 {
     DEBUG4ENTRY;
     theButtonDownPosition = aPos;
@@ -71,8 +67,7 @@ void MoveUndoCommand::basicPressEvent(bool isMouseUndo, const QPointF& aPos)
 bool MoveUndoCommand::basicReleaseEvent(void)
 {
     DEBUG4ENTRY;
-    if (theLastKnownGood!=theNewPos)
-    {
+    if (theLastKnownGood != theNewPos) {
         if (theLastKnownGood.isValid())
             theNewPos = theLastKnownGood;
     }
@@ -80,21 +75,21 @@ bool MoveUndoCommand::basicReleaseEvent(void)
 }
 
 
-bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool MoveUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     QPointF myMousePos = anEventPtr->scenePos();
     basicMoveEvent(myMousePos);
     return true;
 }
 
-bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool MoveUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     basicPressEvent(true, anEventPtr->scenePos());
     return false;
 }
 
 
-bool MoveUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
+bool MoveUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
     return basicReleaseEvent();
 }

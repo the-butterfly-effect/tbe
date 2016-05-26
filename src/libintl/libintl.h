@@ -17,7 +17,7 @@
    USA.  */
 
 #ifndef _LIBINTL_H
-#define _LIBINTL_H	1
+#define _LIBINTL_H  1
 
 #ifdef LIBINTL_STATIC
 #define LIBINTL_DLL_EXPORTED
@@ -27,7 +27,7 @@
 #else
 #define LIBINTL_DLL_EXPORTED __declspec(dllimport)
 #endif
-#endif /* LIBINTL_STATIC */ 
+#endif /* LIBINTL_STATIC */
 
 #include <locale.h>
 
@@ -119,14 +119,14 @@ extern "C" {
 extern LIBINTL_DLL_EXPORTED char *libintl_gettext (const char *__msgid);
 static inline char *gettext (const char *__msgid)
 {
-  return libintl_gettext (__msgid);
+    return libintl_gettext (__msgid);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define gettext libintl_gettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *gettext (const char *__msgid)
-       _INTL_ASM (libintl_gettext);
+_INTL_ASM (libintl_gettext);
 #endif
 
 /* Look up MSGID in the DOMAINNAME message catalog for the current
@@ -135,33 +135,33 @@ extern LIBINTL_DLL_EXPORTED char *gettext (const char *__msgid)
 extern LIBINTL_DLL_EXPORTED char *libintl_dgettext (const char *__domainname, const char *__msgid);
 static inline char *dgettext (const char *__domainname, const char *__msgid)
 {
-  return libintl_dgettext (__domainname, __msgid);
+    return libintl_dgettext (__domainname, __msgid);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define dgettext libintl_dgettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *dgettext (const char *__domainname, const char *__msgid)
-       _INTL_ASM (libintl_dgettext);
+_INTL_ASM (libintl_dgettext);
 #endif
 
 /* Look up MSGID in the DOMAINNAME message catalog for the current CATEGORY
    locale.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_dcgettext (const char *__domainname, const char *__msgid,
-				int __category);
+                                                     int __category);
 static inline char *dcgettext (const char *__domainname, const char *__msgid,
-			       int __category)
+                               int __category)
 {
-  return libintl_dcgettext (__domainname, __msgid, __category);
+    return libintl_dcgettext (__domainname, __msgid, __category);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define dcgettext libintl_dcgettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *dcgettext (const char *__domainname, const char *__msgid,
-			int __category)
-       _INTL_ASM (libintl_dcgettext);
+                                             int __category)
+_INTL_ASM (libintl_dcgettext);
 #endif
 
 
@@ -169,61 +169,61 @@ extern LIBINTL_DLL_EXPORTED char *dcgettext (const char *__domainname, const cha
    number N.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_ngettext (const char *__msgid1, const char *__msgid2,
-			       unsigned long int __n);
+                                                    unsigned long int __n);
 static inline char *ngettext (const char *__msgid1, const char *__msgid2,
-			      unsigned long int __n)
+                              unsigned long int __n)
 {
-  return libintl_ngettext (__msgid1, __msgid2, __n);
+    return libintl_ngettext (__msgid1, __msgid2, __n);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define ngettext libintl_ngettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *ngettext (const char *__msgid1, const char *__msgid2,
-		       unsigned long int __n)
-       _INTL_ASM (libintl_ngettext);
+                                            unsigned long int __n)
+_INTL_ASM (libintl_ngettext);
 #endif
 
 /* Similar to `dgettext' but select the plural form corresponding to the
    number N.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_dngettext (const char *__domainname, const char *__msgid1,
-				const char *__msgid2, unsigned long int __n);
+                                                     const char *__msgid2, unsigned long int __n);
 static inline char *dngettext (const char *__domainname, const char *__msgid1,
-			       const char *__msgid2, unsigned long int __n)
+                               const char *__msgid2, unsigned long int __n)
 {
-  return libintl_dngettext (__domainname, __msgid1, __msgid2, __n);
+    return libintl_dngettext (__domainname, __msgid1, __msgid2, __n);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define dngettext libintl_dngettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *dngettext (const char *__domainname,
-			const char *__msgid1, const char *__msgid2,
-			unsigned long int __n)
-       _INTL_ASM (libintl_dngettext);
+                                             const char *__msgid1, const char *__msgid2,
+                                             unsigned long int __n)
+_INTL_ASM (libintl_dngettext);
 #endif
 
 /* Similar to `dcgettext' but select the plural form corresponding to the
    number N.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_dcngettext (const char *__domainname,
-				 const char *__msgid1, const char *__msgid2,
-				 unsigned long int __n, int __category);
+                                                      const char *__msgid1, const char *__msgid2,
+                                                      unsigned long int __n, int __category);
 static inline char *dcngettext (const char *__domainname,
-				const char *__msgid1, const char *__msgid2,
-				unsigned long int __n, int __category)
+                                const char *__msgid1, const char *__msgid2,
+                                unsigned long int __n, int __category)
 {
-  return libintl_dcngettext (__domainname, __msgid1, __msgid2, __n, __category);
+    return libintl_dcngettext (__domainname, __msgid1, __msgid2, __n, __category);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define dcngettext libintl_dcngettext
 #endif
 extern LIBINTL_DLL_EXPORTED char *dcngettext (const char *__domainname,
-			 const char *__msgid1, const char *__msgid2,
-			 unsigned long int __n, int __category)
-       _INTL_ASM (libintl_dcngettext);
+                                              const char *__msgid1, const char *__msgid2,
+                                              unsigned long int __n, int __category)
+_INTL_ASM (libintl_dcngettext);
 #endif
 
 
@@ -234,51 +234,51 @@ extern LIBINTL_DLL_EXPORTED char *dcngettext (const char *__domainname,
 extern LIBINTL_DLL_EXPORTED char *libintl_textdomain (const char *__domainname);
 static inline char *textdomain (const char *__domainname)
 {
-  return libintl_textdomain (__domainname);
+    return libintl_textdomain (__domainname);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define textdomain libintl_textdomain
 #endif
 extern LIBINTL_DLL_EXPORTED char *textdomain (const char *__domainname)
-       _INTL_ASM (libintl_textdomain);
+_INTL_ASM (libintl_textdomain);
 #endif
 
 /* Specify that the DOMAINNAME message catalog will be found
    in DIRNAME rather than in the system locale data base.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_bindtextdomain (const char *__domainname,
-				     const char *__dirname);
+                                                          const char *__dirname);
 static inline char *bindtextdomain (const char *__domainname,
-				    const char *__dirname)
+                                    const char *__dirname)
 {
-  return libintl_bindtextdomain (__domainname, __dirname);
+    return libintl_bindtextdomain (__domainname, __dirname);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define bindtextdomain libintl_bindtextdomain
 #endif
 extern LIBINTL_DLL_EXPORTED char *bindtextdomain (const char *__domainname, const char *__dirname)
-       _INTL_ASM (libintl_bindtextdomain);
+_INTL_ASM (libintl_bindtextdomain);
 #endif
 
 /* Specify the character encoding in which the messages from the
    DOMAINNAME message catalog will be returned.  */
 #ifdef _INTL_REDIRECT_INLINE
 extern LIBINTL_DLL_EXPORTED char *libintl_bind_textdomain_codeset (const char *__domainname,
-					      const char *__codeset);
+                                                                   const char *__codeset);
 static inline char *bind_textdomain_codeset (const char *__domainname,
-					     const char *__codeset)
+                                             const char *__codeset)
 {
-  return libintl_bind_textdomain_codeset (__domainname, __codeset);
+    return libintl_bind_textdomain_codeset (__domainname, __codeset);
 }
 #else
 #ifdef _INTL_REDIRECT_MACROS
 # define bind_textdomain_codeset libintl_bind_textdomain_codeset
 #endif
 extern LIBINTL_DLL_EXPORTED char *bind_textdomain_codeset (const char *__domainname,
-				      const char *__codeset)
-       _INTL_ASM (libintl_bind_textdomain_codeset);
+                                                           const char *__codeset)
+_INTL_ASM (libintl_bind_textdomain_codeset);
 #endif
 
 
@@ -382,8 +382,8 @@ extern LIBINTL_DLL_EXPORTED int vswprintf (wchar_t *, size_t, const wchar_t *, v
    instead of "/").  */
 #define libintl_set_relocation_prefix libintl_set_relocation_prefix
 extern LIBINTL_DLL_EXPORTED void
-       libintl_set_relocation_prefix (const char *orig_prefix,
-				      const char *curr_prefix);
+libintl_set_relocation_prefix (const char *orig_prefix,
+                               const char *curr_prefix);
 
 
 #ifdef __cplusplus

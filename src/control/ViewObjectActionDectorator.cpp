@@ -36,10 +36,10 @@ CrossRegisterSingleton::CrossRegisterSingleton()
 }
 
 
-CrossRegisterSingleton* CrossRegisterSingleton::me(void)
+CrossRegisterSingleton *CrossRegisterSingleton::me(void)
 {
-    static CrossRegisterSingleton* theCrossRegisterSingletonPtr = nullptr;
-    if (theCrossRegisterSingletonPtr==nullptr)
+    static CrossRegisterSingleton *theCrossRegisterSingletonPtr = nullptr;
+    if (theCrossRegisterSingletonPtr == nullptr)
         theCrossRegisterSingletonPtr = new CrossRegisterSingleton();
     return theCrossRegisterSingletonPtr;
 }
@@ -78,7 +78,7 @@ ViewObjectActionDecorator::~ViewObjectActionDecorator()
 
 
 void
-ViewObjectActionDecorator::setViewObject(ViewObject* aParentPtr)
+ViewObjectActionDecorator::setViewObject(ViewObject *aParentPtr)
 {
     setParentItem(aParentPtr);
 
@@ -88,42 +88,41 @@ ViewObjectActionDecorator::setViewObject(ViewObject* aParentPtr)
     // we need to have the same size as our parent
     QRectF parSize = aParentPtr->boundingRect();
     QRectF mySize = boundingRect();
-    setTransform(QTransform::fromScale(parSize.width()/mySize.width(),parSize.height()/mySize.height()), true);
+    setTransform(QTransform::fromScale(parSize.width() / mySize.width(),
+                                       parSize.height() / mySize.height()), true);
     setFlags(ItemIsMovable);
     setVisible(false);
 }
 
 
 void
-ViewObjectActionDecorator::mouseMoveEvent ( QGraphicsSceneMouseEvent* event )
+ViewObjectActionDecorator::mouseMoveEvent ( QGraphicsSceneMouseEvent *event )
 {
-    if (theAUCPtr->mouseMoveEvent(event)==false)
+    if (theAUCPtr->mouseMoveEvent(event) == false)
         QGraphicsPixmapItem::mouseMoveEvent(event);
 }
 
 
 void
-ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent* event )
+ViewObjectActionDecorator::mousePressEvent ( QGraphicsSceneMouseEvent *event )
 {
     // if there is no undo registered, let's delegate to someone else
     // (i.e. our parent)
-    if (theAUCPtr==nullptr)
-    {
+    if (theAUCPtr == nullptr) {
         event->ignore();
         return;
     }
-    if (theAUCPtr->mousePressEvent(event)==false)
+    if (theAUCPtr->mousePressEvent(event) == false)
         QGraphicsPixmapItem::mousePressEvent(event);
 }
 
 
 void
-ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
+ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent *event )
 {
-    if (theAUCPtr->mouseReleaseEvent(event)==false)
+    if (theAUCPtr->mouseReleaseEvent(event) == false)
         QGraphicsPixmapItem::mouseReleaseEvent(event);
-    else
-    {
+    else {
         // TODO: finish up by killing myself and propagating that
     }
 
@@ -133,10 +132,9 @@ ViewObjectActionDecorator::mouseReleaseEvent ( QGraphicsSceneMouseEvent* event )
 void ViewObjectActionDecorator::setCrossState(CrossState aCrossState)
 {
     // no need to change to the same
-    if (aCrossState==theCurrentCrossState)
+    if (aCrossState == theCurrentCrossState)
         return;
-    switch (aCrossState)
-    {
+    switch (aCrossState) {
     case NONE:
         break;
     case PROXY:
@@ -149,25 +147,25 @@ void ViewObjectActionDecorator::setCrossState(CrossState aCrossState)
         setPixmap(theCrossImage);
         break;
     }
-    setVisible(aCrossState!=NONE);
+    setVisible(aCrossState != NONE);
 
     // And tell the singleton where we are
     CrossRegisterSingleton::me()->updateCrossState(impliesCross(aCrossState)
-                                                   -impliesCross(theCurrentCrossState));
+                                                   - impliesCross(theCurrentCrossState));
     theCurrentCrossState = aCrossState;
 }
 
 
 void
 ViewObjectActionDecorator::setDecoratorImage(
-        const QString& aDecoratorName,
-        AbstractUndoCommand* anAbstractUndoCommandPtr)
+    const QString &aDecoratorName,
+    AbstractUndoCommand *anAbstractUndoCommandPtr)
 {
     DEBUG5ENTRY;
     theAUCPtr = anAbstractUndoCommandPtr;
 
-	ImageCache::getPixmap(aDecoratorName, &theProxyImage);
-	setPixmap(theProxyImage);
+    ImageCache::getPixmap(aDecoratorName, &theProxyImage);
+    setPixmap(theProxyImage);
 
     // Paint the combined image, where the cross is drawn
     // on top of the proxy image.

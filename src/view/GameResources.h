@@ -20,7 +20,7 @@
 #define GAMERESOURCES_H
 
 namespace Ui {
-    class GameResources;
+class GameResources;
 }
 
 #include "animateddialog.h"
@@ -39,20 +39,20 @@ class GameResources : public AnimatedDialog
     Q_OBJECT
 
 public:
-    explicit GameResources(ResizingGraphicsView* aRSGVPtr);
+    explicit GameResources(ResizingGraphicsView *aRSGVPtr);
     ~GameResources();
 
     /// Set the Level where we're going to get our info from:
     /// i.e. level name, author but also the contents of the Toolbox view.
-    void setLevelPtr(Level* aLevelPtr);
+    void setLevelPtr(Level *aLevelPtr);
 
     /// Hooks up the two actions of the Game Resources dialog into
     /// the menu bar.
-    void setup(QMenu* aMenuPtr);
+    void setup(QMenu *aMenuPtr);
 
 protected:
     /// ill-named standard Qt member to change the i18n of the dialog
-	virtual void changeEvent(QEvent *e) override;
+    virtual void changeEvent(QEvent *e) override;
 
 signals:
     /// Emitted when the player wants to restart the level.
@@ -66,10 +66,10 @@ private:
     Ui::GameResources *ui;
 
     /// pointer to Level instance, which contains level names and such
-    Level* theLevelPtr;
+    Level *theLevelPtr;
 
     /// GraphicsView holding the ViewWorld, we are an overlay to that View
-    ResizingGraphicsView* theParentPtr;
+    ResizingGraphicsView *theParentPtr;
 
 public:
 };

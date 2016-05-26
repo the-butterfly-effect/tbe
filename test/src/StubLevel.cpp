@@ -19,27 +19,27 @@
 // Strings identifying elements/nodes in the XML file
 // (the ones without static are also used in BaseObjectSerializer.cpp)
 //
-static const char* theRootNodeString= "tbe-level";
-static const char* theLevelInfoString = "levelinfo";
-	static const char* theLevelAuthorString       = "author";
-	static const char* theLevelDateString         = "date";
-	static const char* theLevelDescriptionString  = "description";
-	static const char* theLevelLicenseString      = "license";
-	static const char* theLevelNameString         = "title";
-static const char* theSceneString = "scene";
-	static const char* theSceneSizeString  = "scenesize";
-	static const char* theViewString       = "view";
-	static const char* thePredefinedString = "predefined";
-		   const char* theObjectString     = "object";
-		   const char* thePropertyString   = "property";
-static const char* theToolboxString = "toolbox";
-static const char* theGoalsString = "goals";
-		   const char* theGoalString = "goal";
+static const char *theRootNodeString = "tbe-level";
+static const char *theLevelInfoString = "levelinfo";
+static const char *theLevelAuthorString       = "author";
+static const char *theLevelDateString         = "date";
+static const char *theLevelDescriptionString  = "description";
+static const char *theLevelLicenseString      = "license";
+static const char *theLevelNameString         = "title";
+static const char *theSceneString = "scene";
+static const char *theSceneSizeString  = "scenesize";
+static const char *theViewString       = "view";
+static const char *thePredefinedString = "predefined";
+const char *theObjectString     = "object";
+const char *thePropertyString   = "property";
+static const char *theToolboxString = "toolbox";
+static const char *theGoalsString = "goals";
+const char *theGoalString = "goal";
 
-const char* theWidthAttributeString     = "width";
-const char* theHeightAttributeString    = "height";
-const char* theXAttributeString         = "X";
-const char* theYAttributeString         = "Y";
-const char* theAngleAttributeString     = "angle";
-const char* theTypeAttributeString      = "type";
-const char* theIDAttributeString        = "ID";
+const char *theWidthAttributeString     = "width";
+const char *theHeightAttributeString    = "height";
+const char *theXAttributeString         = "X";
+const char *theYAttributeString         = "Y";
+const char *theAngleAttributeString     = "angle";
+const char *theTypeAttributeString      = "type";
+const char *theIDAttributeString        = "ID";

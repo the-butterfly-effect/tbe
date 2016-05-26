@@ -24,9 +24,9 @@
 #include "ViewObject.h"
 
 ToolboxListWidgetItem::ToolboxListWidgetItem(
-        ResizingGraphicsView *aRSGVPtr,
-        ToolboxGroup* aTBGPtr,
-        QListWidget *parent) :
+    ResizingGraphicsView *aRSGVPtr,
+    ToolboxGroup *aTBGPtr,
+    QListWidget *parent) :
     QObject(parent),
     QListWidgetItem(parent, QListWidgetItem::UserType),
     theTBGPtr(aTBGPtr),
@@ -44,38 +44,35 @@ ToolboxListWidgetItem::ToolboxListWidgetItem(
 
     QSize myPixmapSize;
     float myObjectAspectRatio = myAOPtr->getTheWidth() / myAOPtr->getTheHeight();
-    if (myObjectAspectRatio > 1.0)
-    {
+    if (myObjectAspectRatio > 1.0) {
         myPixmapSize.setWidth(theIconSize);
-        myPixmapSize.setHeight(theIconSize/myObjectAspectRatio);
+        myPixmapSize.setHeight(theIconSize / myObjectAspectRatio);
         ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &theRealPixmap);
-    }
-    else
-    {
+    } else {
         // first render tall object at scale
-        qreal myWidth = theIconSize*myObjectAspectRatio;
+        qreal myWidth = theIconSize * myObjectAspectRatio;
         myPixmapSize.setWidth(myWidth);
         myPixmapSize.setHeight(theIconSize);
         QPixmap myTempPixmap;
         ImageCache::getPixmap(myVOPtr->getBaseImageName(), myPixmapSize, &myTempPixmap);
         // then center it in the final pixmap
         theRealPixmap = QPixmap(QSize(theIconSize, theIconSize));
-        theRealPixmap.fill(QColor(255,255,255,0));
+        theRealPixmap.fill(QColor(255, 255, 255, 0));
         QPainter myPainter;
         myPainter.begin(&theRealPixmap);
-        myPainter.drawPixmap( (theIconSize - myWidth)/2, 0, myTempPixmap);
+        myPainter.drawPixmap( (theIconSize - myWidth) / 2, 0, myTempPixmap);
         myPainter.end();
     }
     slotUpdateCount();
     setTextAlignment(Qt::AlignCenter);
     setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-    connect(parent, SIGNAL(itemClicked(QListWidgetItem*)),
-            this, SLOT(slotSelected(QListWidgetItem*)));
+    connect(parent, SIGNAL(itemClicked(QListWidgetItem *)),
+            this, SLOT(slotSelected(QListWidgetItem *)));
 }
 
 
-void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
+void ToolboxListWidgetItem::slotSelected(QListWidgetItem *who)
 {
     // I'd hoped that when we're called, we already knew it would be about us
     // Alas, it isn't so :-(
@@ -84,9 +81,8 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
 
     QRect myBoundingRectInViewPort = listWidget()->visualItemRect(this);
 
-    if (theTBGPtr->count()!=0)
-    {
-        ListViewItemTooltip* myNewTooltip =
+    if (theTBGPtr->count() != 0) {
+        ListViewItemTooltip *myNewTooltip =
             new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
         myNewTooltip->adjustVPos(myBoundingRectInViewPort.top());
         emit myNewTooltip->appearAnimated();
@@ -95,16 +91,13 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem* who)
 
 void ToolboxListWidgetItem::slotUpdateCount(void)
 {
-    if (theTBGPtr->count()==0)
-    {
+    if (theTBGPtr->count() == 0) {
         QPixmap myEmptyPixmap = QPixmap(theRealPixmap);
-        myEmptyPixmap.fill(QColor(255,255,255,0));
+        myEmptyPixmap.fill(QColor(255, 255, 255, 0));
         setIcon(myEmptyPixmap);
         setText(tr("(empty)"));
         setFlags(Qt::NoItemFlags);
-    }
-    else
-    {
+    } else {
         setIcon(theRealPixmap);
         //: %1 is the number of items, %2 is the name of the item
         setText( tr("%1x %2").arg(theTBGPtr->count()).arg(TheGetText(theTBGPtr->theGroupName)));

@@ -26,63 +26,59 @@
 
 TestChapter::TestChapter(QString aTitle) : theTitle(aTitle)
 {
-	theNumberOfOKs = 0;
-	theNumberOfFAILs = 0;
+    theNumberOfOKs = 0;
+    theNumberOfFAILs = 0;
 }
 
 TestChapter::~TestChapter()
 {
-	// empty
+    // empty
 }
 
-bool TestChapter::check(bool aCondition, const QString& aMessage, bool abortIfWrong)
+bool TestChapter::check(bool aCondition, const QString &aMessage, bool abortIfWrong)
 {
-	if (aCondition)
-	{
-		QString myTotalLine ="* \033[1m\033[32mOK\033[m  : " + aMessage;
-		printf ("%s", ASCII(myTotalLine));
-		theNumberOfOKs++;
-	}
-	else
-	{
-		printf("* \033[1m\033[31mFAIL: %s \033[m", ASCII(aMessage));
-		if (errno != EAGAIN)
-			testmsg("the strerror might help: '%s'\n", strerror(errno));
-		else
-			testmsg("\n");
-		theNumberOfFAILs++;
-		
-		if (abortIfWrong)
-		{
-			printf("*****************************\nFATAL FAIL\n");
-			finish();
-			exit(35);
-		}
-	} 
-	
-	return aCondition;
+    if (aCondition) {
+        QString myTotalLine = "* \033[1m\033[32mOK\033[m  : " + aMessage;
+        printf ("%s", ASCII(myTotalLine));
+        theNumberOfOKs++;
+    } else {
+        printf("* \033[1m\033[31mFAIL: %s \033[m", ASCII(aMessage));
+        if (errno != EAGAIN)
+            testmsg("the strerror might help: '%s'\n", strerror(errno));
+        else
+            testmsg("\n");
+        theNumberOfFAILs++;
+
+        if (abortIfWrong) {
+            printf("*****************************\nFATAL FAIL\n");
+            finish();
+            exit(35);
+        }
+    }
+
+    return aCondition;
 }
 
 
 void TestChapter::finish(void)
 {
-	int myTotal = theNumberOfOKs + theNumberOfFAILs;
-	assert(myTotal > 0);
-	printf("\nChapter summary:");
-	printf("OKs  : % 3d, (% 4d %%)   /    ",
-		   theNumberOfOKs, (100*theNumberOfOKs)/myTotal);
-	printf("FAILs: % 3d, (% 4d %%)\n\n",
-		   theNumberOfFAILs, (100*theNumberOfFAILs)/myTotal);
+    int myTotal = theNumberOfOKs + theNumberOfFAILs;
+    assert(myTotal > 0);
+    printf("\nChapter summary:");
+    printf("OKs  : % 3d, (% 4d %%)   /    ",
+           theNumberOfOKs, (100 * theNumberOfOKs) / myTotal);
+    printf("FAILs: % 3d, (% 4d %%)\n\n",
+           theNumberOfFAILs, (100 * theNumberOfFAILs) / myTotal);
 }
 
 
 bool TestChapter::setUp()
 {
-	return true;
+    return true;
 }
 
 bool TestChapter::tearDown()
 {
-	return true;
+    return true;
 }
 

@@ -27,10 +27,14 @@
 class SceneryObjectFactory : public ObjectFactory
 {
 public:
-	SceneryObjectFactory(void)
-	{	announceObjectType("Scenery", this); }
-	AbstractObject* createObject(void) const override
-	{	return fixObject(new Scenery()); }
+    SceneryObjectFactory(void)
+    {
+        announceObjectType("Scenery", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new Scenery());
+    }
 };
 static SceneryObjectFactory theFactory;
 
@@ -38,20 +42,20 @@ static SceneryObjectFactory theFactory;
 
 Scenery::Scenery( ) : AbstractObject()
 {
-	// only keep DESCRIPTION, IMAGE_NAME and ZVALUE
-	theProps.setDefaultPropertiesString(
-		QString("-")   + Property::BOUNCINESS_STRING  +
-		QString(":/-") + Property::FRICTION_STRING    +
-		QString(":/-") + Property::PIVOTPOINT_STRING  +
-		QString(":/-") + Property::RESIZABLE_STRING   +
-		QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
+    // only keep DESCRIPTION, IMAGE_NAME and ZVALUE
+    theProps.setDefaultPropertiesString(
+        QString("-")   + Property::BOUNCINESS_STRING  +
+        QString(":/-") + Property::FRICTION_STRING    +
+        QString(":/-") + Property::PIVOTPOINT_STRING  +
+        QString(":/-") + Property::RESIZABLE_STRING   +
+        QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
 
-	DEBUG5("Scenery::Scenery done");
+    DEBUG5("Scenery::Scenery done");
 }
 
 
 Scenery::~Scenery( )
 {
-	;
+    ;
 }
 

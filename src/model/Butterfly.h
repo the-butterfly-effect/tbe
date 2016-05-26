@@ -29,82 +29,89 @@
 class Butterfly : public RectObject, public SimStepCallbackInterface
 {
 public:
-	Butterfly();
+    Butterfly();
 
-	virtual ~Butterfly();
+    virtual ~Butterfly();
 
     /// overridden because a Balloon can 'die' through external reasons
     void causeWounded(WhyWounded aReason) override;
 
     /// @returns the Name of the object.
-	const QString getName ( ) const override
-	{	return QObject::tr("Butterfly"); }
+    const QString getName ( ) const override
+    {
+        return QObject::tr("Butterfly");
+    }
 
-	/// overridden from AbstractObject because this class wants to register for callbacks
-	void createPhysicsObject(void) override;
+    /// overridden from AbstractObject because this class wants to register for callbacks
+    void createPhysicsObject(void) override;
 
-	enum ButterflyStatus
-	{
-		STILL,				// not implemented yet
-		FLAP_OPEN,
-		FLAP_HALF,
-		DEAD				// not implemented yet
-	};
+    enum ButterflyStatus {
+        STILL,              // not implemented yet
+        FLAP_OPEN,
+        FLAP_HALF,
+        DEAD                // not implemented yet
+    };
 
-	/// @returns the state of the butterfly state machine
-	ButterflyStatus getState(void) const
-	{	return theButterflyState; }
+    /// @returns the state of the butterfly state machine
+    ButterflyStatus getState(void) const
+    {
+        return theButterflyState;
+    }
 
-	/// overridden from AbstractObject to allow representation of the states
-	/// @returns: returns a numerical index similar to the state
-	unsigned int getImageIndex(void) const override
-	{ return getState(); }
+    /// overridden from AbstractObject to allow representation of the states
+    /// @returns: returns a numerical index similar to the state
+    unsigned int getImageIndex(void) const override
+    {
+        return getState();
+    }
 
-	/** sets up the Butterfly to fly to a Flower
-	  * or flap idly if there is no flower
-	  */
-	void goToFlower(void);
+    /** sets up the Butterfly to fly to a Flower
+      * or flap idly if there is no flower
+      */
+    void goToFlower(void);
 
 
 public:
-	// the following two members are part of the normal impulse reporting
+    // the following two members are part of the normal impulse reporting
 
-	/// overridden from AbstractObject - we want reports on NormalImpulse
-	bool isInterestedInNormalImpulse(void) override
-	{ return true; }
+    /// overridden from AbstractObject - we want reports on NormalImpulse
+    bool isInterestedInNormalImpulse(void) override
+    {
+        return true;
+    }
 
-	/** overridden from AbstractObject - we want to receive
-	  * reports on the normal impulse.
-	  * @param anImpulseLength length of the normal impulse vector
-	  */
+    /** overridden from AbstractObject - we want to receive
+      * reports on the normal impulse.
+      * @param anImpulseLength length of the normal impulse vector
+      */
     void reportNormalImpulseLength(qreal anImpulseLength,
-                                   AbstractObject* anOtherObjectPtr) override;
+                                   AbstractObject *anOtherObjectPtr) override;
 
 protected:
-	/// suggest a new state of the butterfly state machine
-	void setState(ButterflyStatus aNewStateSuggestion);
+    /// suggest a new state of the butterfly state machine
+    void setState(ButterflyStatus aNewStateSuggestion);
 
 private:
-	/// implemented from SimStepCallbackInterface
-	void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
+    /// implemented from SimStepCallbackInterface
+    void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
 private:
-	// Private things
+    // Private things
 
-	// Things from RectObject that need adjustments:
+    // Things from RectObject that need adjustments:
 
 private:
-	/// the weight of the butterfly (100 grams)
-	static const double theButterflyMass;
+    /// the weight of the butterfly (100 grams)
+    static const double theButterflyMass;
 
-	/// central variable of the Butterfly state machine
-	ButterflyStatus theButterflyState;
+    /// central variable of the Butterfly state machine
+    ButterflyStatus theButterflyState;
 
-	/// FIXME: TODO
-	signed int theCountdown;
+    /// FIXME: TODO
+    signed int theCountdown;
 
-	/// if moving to a flower, this is the target position for the butterfly
-	Position theTargetPos;
+    /// if moving to a flower, this is the target position for the butterfly
+    Position theTargetPos;
 };
 
 #endif // BUTTERFLY_H

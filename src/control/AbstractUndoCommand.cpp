@@ -22,9 +22,9 @@
 #include "ViewObject.h"
 
 AbstractUndoCommand::AbstractUndoCommand(
-        ViewObjectPtr aViewObjectPtr,
-        const QString& anUndoName,
-        QUndoCommand* parent)
+    ViewObjectPtr aViewObjectPtr,
+    const QString &anUndoName,
+    QUndoCommand *parent)
     : QUndoCommand(parent),
       theViewObjPtr(aViewObjectPtr),
       handleDecoratorOnDestructionBool(true)
@@ -44,8 +44,7 @@ AbstractUndoCommand::AbstractUndoCommand(
 AbstractUndoCommand::~AbstractUndoCommand()
 {
     DEBUG1ENTRY;
-    if (handleDecoratorOnDestructionBool)
-    {
+    if (handleDecoratorOnDestructionBool) {
         setDecoratorStateUndoRedo();
         clearDecoratorPointerToMe();
     }
@@ -80,12 +79,11 @@ bool AbstractUndoCommand::isViewObjectColliding(void)
     // other object (but not the ViewObject or the VOAD).
     int myCollisionCount = 0;
 
-    QList<QGraphicsItem*> myCollidingItems = theViewObjPtr->collidingItems ( Qt::IntersectsItemShape );
-    QList<QGraphicsItem*> myChildItems = theViewObjPtr->childItems();
+    QList<QGraphicsItem *> myCollidingItems = theViewObjPtr->collidingItems ( Qt::IntersectsItemShape );
+    QList<QGraphicsItem *> myChildItems = theViewObjPtr->childItems();
 
     // Make the CollidingItems list complete for all childs
-    foreach(QGraphicsItem* i, myChildItems)
-    {
+    foreach (QGraphicsItem *i, myChildItems) {
         if (i != &(theViewObjPtr->theDecorator))
             myCollidingItems += i->collidingItems(Qt::IntersectsItemShape );
     }
@@ -93,16 +91,15 @@ bool AbstractUndoCommand::isViewObjectColliding(void)
     myChildItems += theViewObjPtr.data();
 
     // Finally... Check for collisions.
-    foreach(QGraphicsItem* j, myCollidingItems)
-    {
+    foreach (QGraphicsItem *j, myCollidingItems) {
         if (!myChildItems.contains(j))
             myCollisionCount++;
     }
-    return myCollisionCount>0;
- }
+    return myCollisionCount > 0;
+}
 
 
-bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
+bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
     // It's time to finalize everything
     // and push the Undo on the stack
@@ -115,12 +112,11 @@ bool AbstractUndoCommand::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
 
 void AbstractUndoCommand::redo(void)
 {
-	DEBUG3("AbstractUndoCommand::redo for '%s'", ASCII(text()));
+    DEBUG3("AbstractUndoCommand::redo for '%s'", ASCII(text()));
 
     // in the case of DeleteUndoCommand, we won't have a ViewObject left
     // when we get here ;-)
-    if (theViewObjPtr)
-    {
+    if (theViewObjPtr) {
         theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
         setDecoratorStateUndoRedo();
     }
@@ -129,14 +125,14 @@ void AbstractUndoCommand::redo(void)
 
 void AbstractUndoCommand::resetDecoratorPosition()
 {
-    Q_ASSERT(theViewObjPtr!=nullptr);
-    theViewObjPtr->theDecorator.setPos( QPointF(0,0) );
+    Q_ASSERT(theViewObjPtr != nullptr);
+    theViewObjPtr->theDecorator.setPos( QPointF(0, 0) );
 }
 
 
-void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
+void AbstractUndoCommand::setDecoratorImage(const QString &anImageName)
 {
-    Q_ASSERT(theViewObjPtr!=nullptr);
+    Q_ASSERT(theViewObjPtr != nullptr);
     theViewObjPtr->theDecorator.setDecoratorImage(anImageName, this);
     setDecoratorStateMouseMove();
 }
@@ -144,7 +140,7 @@ void AbstractUndoCommand::setDecoratorImage(const QString& anImageName)
 
 void AbstractUndoCommand::setDecoratorPosition(Vector aScenePos)
 {
-    Q_ASSERT(theViewObjPtr!=nullptr);
+    Q_ASSERT(theViewObjPtr != nullptr);
     theViewObjPtr->theDecorator.setPos( theViewObjPtr->mapFromScene(aScenePos.toQPointF())
                                         - theViewObjPtr->boundingRect().center() );
 }
@@ -152,13 +148,10 @@ void AbstractUndoCommand::setDecoratorPosition(Vector aScenePos)
 
 bool AbstractUndoCommand::setDecoratorStateMouseMove(void)
 {
-    if (isViewObjectColliding()) // && theIsCollisionOn)
-    {
+    if (isViewObjectColliding()) { // && theIsCollisionOn)
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::COMBINED);
         return true;
-    }
-    else
-    {
+    } else {
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::PROXY);
         return false;
     }
@@ -167,13 +160,11 @@ bool AbstractUndoCommand::setDecoratorStateMouseMove(void)
 
 bool AbstractUndoCommand::setDecoratorStateUndoRedo(void)
 {
-    if ((isViewObjectColliding() || theNewPos.y-0.5*theNewHeight<0) && theViewObjPtr->isVisible()==true)
-    {
+    if ((isViewObjectColliding() || theNewPos.y - 0.5 * theNewHeight < 0)
+            && theViewObjPtr->isVisible() == true) {
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::CROSS);
         return true;
-    }
-    else
-    {
+    } else {
         theViewObjPtr->theDecorator.setCrossState(ViewObjectActionDecorator::NONE);
         return false;
     }
@@ -182,12 +173,11 @@ bool AbstractUndoCommand::setDecoratorStateUndoRedo(void)
 
 void AbstractUndoCommand::undo(void)
 {
-	DEBUG3("AbstractUndoCommand::undo for '%s'", ASCII(text()));
+    DEBUG3("AbstractUndoCommand::undo for '%s'", ASCII(text()));
 
     // in the case of InsertUndoCommand, we won't have a ViewObject left
     // when we get here ;-)
-    if (theViewObjPtr)
-    {
+    if (theViewObjPtr) {
         theViewObjPtr->setNewGeometry(theOrigPos, theOrigWidth, theOrigHeight);
         setDecoratorStateUndoRedo();
     }

@@ -29,75 +29,75 @@ int theVerbosity = 4;
 class TestLocalString : public TestChapter
 {
 public:
-	TestLocalString() : TestChapter("Test LocalString class")	{}
-	virtual bool runTests();
+    TestLocalString() : TestChapter("Test LocalString class")   {}
+    virtual bool runTests();
 };
 
 bool TestLocalString::runTests(void)
 {
-	// setup the string for mining...
-	LocalString myLS;
-	myLS.add("one","");
-	myLS.add("een", "nl");
-	myLS.add("einsz", "de_AT"); // yeah, I know it's wrong - but I need to see the difference
-	myLS.add("eins", "de");
-	myLS.add("un", "fr");
-	myLS.add("eene", "nl_BE");  // this one is also deliberately wrong!
+    // setup the string for mining...
+    LocalString myLS;
+    myLS.add("one", "");
+    myLS.add("een", "nl");
+    myLS.add("einsz", "de_AT"); // yeah, I know it's wrong - but I need to see the difference
+    myLS.add("eins", "de");
+    myLS.add("un", "fr");
+    myLS.add("eene", "nl_BE");  // this one is also deliberately wrong!
 
-	// and now, let's check...
-	myLS.the5Char = "en";
-	check (myLS.result() == "one", "test 1\n");
-	myLS.the5Char = "nl";
-	check (myLS.result() == "een", "test 2\n");
-	myLS.the5Char = "nl_BE";
-	check (myLS.result() == "eene", "test 3\n");
-	myLS.the5Char = "nl_NL";
-	check (myLS.result() == "een", "test 4\n");
-	myLS.the5Char = "de_DE";
-	check (myLS.result() == "eins", "test 5\n");
-	myLS.the5Char = "de";
-	check (myLS.result() == "eins", "test 6\n");
-	myLS.the5Char = "de_AT";
-	check (myLS.result() == "einsz", "test 7\n");
+    // and now, let's check...
+    myLS.the5Char = "en";
+    check (myLS.result() == "one", "test 1\n");
+    myLS.the5Char = "nl";
+    check (myLS.result() == "een", "test 2\n");
+    myLS.the5Char = "nl_BE";
+    check (myLS.result() == "eene", "test 3\n");
+    myLS.the5Char = "nl_NL";
+    check (myLS.result() == "een", "test 4\n");
+    myLS.the5Char = "de_DE";
+    check (myLS.result() == "eins", "test 5\n");
+    myLS.the5Char = "de";
+    check (myLS.result() == "eins", "test 6\n");
+    myLS.the5Char = "de_AT";
+    check (myLS.result() == "einsz", "test 7\n");
 
 
-	return true;
+    return true;
 }
 
 class TestWithChooseLevel : public TestChapter
 {
 public:
-	TestWithChooseLevel() : TestChapter("Test LocalString class in combination with ChooseLevel")	{}
-	virtual bool runTests();
+    TestWithChooseLevel() : TestChapter("Test LocalString class in combination with ChooseLevel")   {}
+    virtual bool runTests();
 };
 
 bool TestWithChooseLevel::runTests(void)
 {
-	// setup the string for mining...
-	LocalString myLS;
-	myLS.add("one","");
-	myLS.add("een", "nl");
-	myLS.add("uno", "it");
-	myLS.add("eins", "de");
-	myLS.add("un", "fr");
-	myLS.add("eene", "ru");
-	
-	
+    // setup the string for mining...
+    LocalString myLS;
+    myLS.add("one", "");
+    myLS.add("een", "nl");
+    myLS.add("uno", "it");
+    myLS.add("eins", "de");
+    myLS.add("un", "fr");
+    myLS.add("eene", "ru");
 
 
-	return true;
+
+
+    return true;
 }
 
 
 
 int main(int argc, char *argv[])
 {
-	TestFramework myFramework(argc, argv);
+    TestFramework myFramework(argc, argv);
 
-	myFramework.add( new TestLocalString );
-	myFramework.add( new TestWithChooseLevel );
+    myFramework.add( new TestLocalString );
+    myFramework.add( new TestWithChooseLevel );
 
-	myFramework.run();
+    myFramework.run();
 
-	return 0;
+    return 0;
 }

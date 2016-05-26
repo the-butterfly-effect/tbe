@@ -36,85 +36,88 @@ class PolyObject : public AbstractObject
 {
 public:
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/// elaborate constructor, only one to use!
-	/// @param aDefaultPropertiesString other default properties than the ones
-	///        already mentioned in the constructor specifically, e.g. use for
-	///        a pivot point:   "PivotPoint:(0,0)"   
-	///        No need to end with a trailing slash.
-	explicit
-	PolyObject( const QString& aDisplayName,
-				const QString& aTooltip,
-				const QString& anImageName,
-				const QString& anOutline,
-				qreal aWidth, qreal aHeight, 
-				qreal aMass, qreal aBounciness,
-				const QString& aDefaultPropertiesString = "");
+    /// elaborate constructor, only one to use!
+    /// @param aDefaultPropertiesString other default properties than the ones
+    ///        already mentioned in the constructor specifically, e.g. use for
+    ///        a pivot point:   "PivotPoint:(0,0)"
+    ///        No need to end with a trailing slash.
+    explicit
+    PolyObject( const QString &aDisplayName,
+                const QString &aTooltip,
+                const QString &anImageName,
+                const QString &anOutline,
+                qreal aWidth, qreal aHeight,
+                qreal aMass, qreal aBounciness,
+                const QString &aDefaultPropertiesString = "");
 
-	/// Destructor
-	virtual ~PolyObject ( );
+    /// Destructor
+    virtual ~PolyObject ( );
 
-	// Public attribute accessor methods
-	//
+    // Public attribute accessor methods
+    //
 
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const override
-	{	return theNameString;	}
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return theNameString;
+    }
 
-	/// child objects must specify what type of body they are
-	/// @returns b2_staticBody if this object has no mass
-	///          or b2_dynamicBody if the property mass was set
+    /// child objects must specify what type of body they are
+    /// @returns b2_staticBody if this object has no mass
+    ///          or b2_dynamicBody if the property mass was set
     b2BodyType getObjectType() const override;
 
-	/// parse all properties
-	/// partially overridden from AbstractObject
-	virtual void  parseProperties(void) override;
+    /// parse all properties
+    /// partially overridden from AbstractObject
+    virtual void  parseProperties(void) override;
 
 protected:
-	/// TODO/FIXME: see same notes in RectObject...
-	virtual void setFriction(b2FixtureDef* aFixtureDef);
+    /// TODO/FIXME: see same notes in RectObject...
+    virtual void setFriction(b2FixtureDef *aFixtureDef);
 
-	/** Parse the property POLYGONS_STRING into
-	 *  shapes.
-	 *  note: does not clear the shapelist!
-	 */
-	virtual void fillShapeList(void);
+    /** Parse the property POLYGONS_STRING into
+     *  shapes.
+     *  note: does not clear the shapelist!
+     */
+    virtual void fillShapeList(void);
 
 private:
-	PolyObject(const PolyObject& aRef);
-	PolyObject& operator = (const PolyObject& aRef);
+    PolyObject(const PolyObject &aRef);
+    PolyObject &operator = (const PolyObject &aRef);
 
 protected:
-	QString theNameString;
+    QString theNameString;
 
-	/// AABB calculates the Axis-Aligned Bounding Box
-	/// which we can use for scaling
-	class AABB {
-	public:
-		// default constructor, just to make sure we can detect uninit usage
-		AABB(void);
+    /// AABB calculates the Axis-Aligned Bounding Box
+    /// which we can use for scaling
+    class AABB
+    {
+    public:
+        // default constructor, just to make sure we can detect uninit usage
+        AABB(void);
 
-		/// constructor
-		/// @param myPolygons string with the polygons definiton
-		explicit AABB(QString& myPolygons);
+        /// constructor
+        /// @param myPolygons string with the polygons definiton
+        explicit AABB(QString &myPolygons);
 
-		/// @returns the width of the unscaled object
-		float getOrigWidth();
-		/// @returns the height the unscaled object
-		float getOrigHeight();
-		/// @returns true if the AABB are initialised
-		bool isInitialised();
+        /// @returns the width of the unscaled object
+        float getOrigWidth();
+        /// @returns the height the unscaled object
+        float getOrigHeight();
+        /// @returns true if the AABB are initialised
+        bool isInitialised();
 
-	private:
-		float theOrigWidth;
-		float theOrigHeight;
+    private:
+        float theOrigWidth;
+        float theOrigHeight;
 
         static constexpr float UNDEFINED = 99999.0f;
-	};
+    };
 
-	AABB theAABB;
+    AABB theAABB;
 };
 
 
@@ -126,42 +129,46 @@ protected:
  */
 class AbstractPolyObjectFactory : public ObjectFactory
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	AbstractPolyObjectFactory(
-		const QString& anInternalName,
-		const char*    aDisplayName,
-		const char*    aTooltip,
-		const QString& anImageName,
-		const QString& anOutline,
-		qreal aWidth,
-		qreal aHeight,
-		qreal aMass,
-		qreal aBounciness,
-		const QString& aDefaultPropertiesString = "")
-			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
-			  theImageName(anImageName), theOutline(anOutline),
-			  theWidth(aWidth), theHeight(aHeight),
-			  theMass(aMass), theBounciness(aBounciness),
-			  theDefaultProperties(aDefaultPropertiesString)
-	{	announceObjectType(anInternalName, this); }
+    AbstractPolyObjectFactory(
+        const QString &anInternalName,
+        const char    *aDisplayName,
+        const char    *aTooltip,
+        const QString &anImageName,
+        const QString &anOutline,
+        qreal aWidth,
+        qreal aHeight,
+        qreal aMass,
+        qreal aBounciness,
+        const QString &aDefaultPropertiesString = "")
+        : theDisplayName(aDisplayName), theTooltip(aTooltip),
+          theImageName(anImageName), theOutline(anOutline),
+          theWidth(aWidth), theHeight(aHeight),
+          theMass(aMass), theBounciness(aBounciness),
+          theDefaultProperties(aDefaultPropertiesString)
+    {
+        announceObjectType(anInternalName, this);
+    }
 
-	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new PolyObject(tr(theDisplayName), tr(theTooltip),
-										theImageName, theOutline,
-										theWidth, theHeight, theMass,
-										theBounciness,
-										theDefaultProperties)); }
+    virtual AbstractObject *createObject(void) const
+    {
+        return fixObject(new PolyObject(tr(theDisplayName), tr(theTooltip),
+                                        theImageName, theOutline,
+                                        theWidth, theHeight, theMass,
+                                        theBounciness,
+                                        theDefaultProperties));
+    }
 private:
-		const char* theDisplayName;
-		const char* theTooltip;
-		QString theImageName;
-		QString theOutline;
-		qreal theWidth;
-		qreal theHeight;
-		qreal theMass;
-		qreal theBounciness;
-		QString theDefaultProperties;
+    const char *theDisplayName;
+    const char *theTooltip;
+    QString theImageName;
+    QString theOutline;
+    qreal theWidth;
+    qreal theHeight;
+    qreal theMass;
+    qreal theBounciness;
+    QString theDefaultProperties;
 };
 
 #endif // POLYOBJECT_H

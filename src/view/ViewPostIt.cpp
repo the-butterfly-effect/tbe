@@ -30,15 +30,15 @@
 //
 
 ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr)
-	: ViewObject(aAbstractObjectPtr, "PostIt"),
-	  theCurrentPage(0),
-	  theDialogPtr(nullptr),
-	  theUIPtr(nullptr)
+    : ViewObject(aAbstractObjectPtr, "PostIt"),
+      theCurrentPage(0),
+      theDialogPtr(nullptr),
+      theUIPtr(nullptr)
 {
     // everything is done in the ViewObject constructor
-	DEBUG5ENTRY;
+    DEBUG5ENTRY;
 
-    setFlag(QGraphicsItem::ItemIsSelectable,true);
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 ViewPostIt::~ViewPostIt ( )
@@ -62,36 +62,36 @@ ViewPostIt::~ViewPostIt ( )
 void ViewPostIt::displayPostit(void)
 {
     theUIPtr = new Ui::ViewPostIt();
-    QLabel* myUIWidgetPtr = new QLabel();
+    QLabel *myUIWidgetPtr = new QLabel();
     theUIPtr->setupUi(myUIWidgetPtr);
     theDialogPtr = new AnimatedDialog(ResizingGraphicsView::me());
-    theDialogPtr->resize(240,240);
+    theDialogPtr->resize(240, 240);
 
     QPixmap myPixmap;
-    ImageCache::getPixmap("PostItBackground", QSize(240,240), &myPixmap);
-    Q_ASSERT(myPixmap.isNull()==false);
+    ImageCache::getPixmap("PostItBackground", QSize(240, 240), &myPixmap);
+    Q_ASSERT(myPixmap.isNull() == false);
     myUIWidgetPtr->setPixmap(myPixmap);
     myUIWidgetPtr->setParent(theDialogPtr);
 
     theCurrentPage = 0;
     nextClicked();
 
-    connect(static_cast<QObject*>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
+    connect(static_cast<QObject *>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
             this, SLOT(nextClicked()));
-    connect(static_cast<QObject*>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
+    connect(static_cast<QObject *>(theUIPtr->pushButton_Cancel), SIGNAL(clicked()),
             theDialogPtr, SLOT(disappearAnimated()));
     emit theDialogPtr->appearAnimated();
 }
 
-void ViewPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent* )
+void ViewPostIt::hoverEnterEvent ( QGraphicsSceneHoverEvent * )
 {
     // this looks great, but unfortunately it also affects all children
-    QGraphicsColorizeEffect* myEffect = new QGraphicsColorizeEffect();
+    QGraphicsColorizeEffect *myEffect = new QGraphicsColorizeEffect();
     myEffect->setColor(QColor(192, 192, 0));
     setGraphicsEffect(myEffect);
 }
 
-void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
+void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent * )
 {
     setGraphicsEffect(nullptr);
 }
@@ -100,7 +100,7 @@ void ViewPostIt::hoverLeaveEvent ( QGraphicsSceneHoverEvent* )
 
 QString ViewPostIt::getPageString(unsigned int aPage)
 {
-    QString myPageNr = "page"+QString::number(aPage);
+    QString myPageNr = "page" + QString::number(aPage);
     return theAbstractObjectPtr->theProps.getPropertyNoDefault(myPageNr);
 }
 
@@ -111,20 +111,20 @@ void ViewPostIt::initAttributes ( )
 }
 
 
-void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
+void ViewPostIt::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	DEBUG5("double click!!!");
-//	if (theIsLevelCreator)
-//	{
-//		QDialog* myEditorPtr = new PostItEditor(theAbstractObjectPtr, this);
-//		myEditorPtr->exec();
-//	}
-//	else
+    DEBUG5("double click!!!");
+//  if (theIsLevelCreator)
+//  {
+//      QDialog* myEditorPtr = new PostItEditor(theAbstractObjectPtr, this);
+//      myEditorPtr->exec();
+//  }
+//  else
     displayPostit();
     event->accept();
 }
 
-void ViewPostIt::mousePressEvent(QGraphicsSceneMouseEvent* anEvent)
+void ViewPostIt::mousePressEvent(QGraphicsSceneMouseEvent *anEvent)
 {
     // depending on whether we're level editor or not, move or display
     if (theIsLevelCreator)
@@ -139,17 +139,16 @@ void ViewPostIt::nextClicked()
     QString myPageString = getPageString(theCurrentPage);
 
     // no page? that means the user has hit the finish button
-    if (myPageString.isEmpty())
-    {
+    if (myPageString.isEmpty()) {
         emit theDialogPtr->disappearAnimated();
         return;
     }
 
-    theUIPtr->theLabel->setText("<b>"+TheGetText(myPageString)+"</b>");
+    theUIPtr->theLabel->setText("<b>" + TheGetText(myPageString) + "</b>");
     theUIPtr->theLabel->setAlignment(Qt::AlignCenter);
     theUIPtr->theLabel->setWordWrap(true);
 
     // if there is no next page, replace button text with "Finish"
-    if (getPageString(theCurrentPage+1).isEmpty())
+    if (getPageString(theCurrentPage + 1).isEmpty())
         theUIPtr->pushButton_Next->setText(tr("Finish"));
 }

@@ -30,7 +30,7 @@ class GameState : public QState
 {
     Q_OBJECT
 public:
-    explicit GameState(QState* parent = 0, const QString& aStateName = "")
+    explicit GameState(QState *parent = 0, const QString &aStateName = "")
         : QState(parent), isActive(false), theName(aStateName) {}
 
     virtual ~GameState()
@@ -42,11 +42,11 @@ signals:
     /// emitted onEntry
     /// @param aPtr will contain the this pointer for the GameState that is
     ///        activated.
-    void activated(GameState* aPtr);
+    void activated(GameState *aPtr);
 
 protected:
-    virtual void onEntry ( QEvent * event );
-    virtual void onExit  ( QEvent * event );
+    virtual void onEntry ( QEvent *event );
+    virtual void onExit  ( QEvent *event );
 
 private:
     QString theName;
@@ -65,8 +65,7 @@ public:
     ///       superstate is present.
     /// @note There is a one-to-one connection between these states and the
     ///       image that is shown by GameControls.
-    enum States
-    {
+    enum States {
         FailedStatus,
         ForwardStatus,
         // NoLevelStatus,  // not implemented yet, issue #108
@@ -139,48 +138,52 @@ private slots:
     void slot_SetWonRunningTimeout();
 
     /// Called whenever a state changes.
-    void slot_State_Activated(GameState* aPtr);
+    void slot_State_Activated(GameState *aPtr);
 
     /// Called when entering 'stopped' or 'problem',
     /// will emit signal_Exit_StoppedState(false).
     void slot_AllowEntered()
-    { emit signal_InsertionDisallowed(false); }
+    {
+        emit signal_InsertionDisallowed(false);
+    }
 
     /// Called when exiting 'stopped' or 'problem',
     /// will emit signal_Exit_StoppedState(true).
     void slot_AllowExited()
-    { emit signal_InsertionDisallowed(true); }
+    {
+        emit signal_InsertionDisallowed(true);
+    }
 
 private:
     QStateMachine theGameStateMachine;
 
     /// When a simulation fails, enter this state.
     /// Only exitable through 'reset'.
-    GameState* theFailedState;
+    GameState *theFailedState;
 
     /// When the user creates an illegal state (e.g. overlapping objects),
     /// enter this state. Game cannot be started until problem(s) resolved.
-    GameState* theProblemState;
+    GameState *theProblemState;
 
     /// State when simulation is ongoing.
-    GameState* theRunningState;
-    GameState* theRunningForwardSubState;
-    GameState* theRunningNormalSubState;
-    GameState* theRunningPausedSubState;
-    GameState* theRunningRealFastSubState;
-    GameState* theRunningSlowSubState;
+    GameState *theRunningState;
+    GameState *theRunningForwardSubState;
+    GameState *theRunningNormalSubState;
+    GameState *theRunningPausedSubState;
+    GameState *theRunningRealFastSubState;
+    GameState *theRunningSlowSubState;
 
     /// State when simulation is halted and the user can make changes to
     /// the scene. TODO: figure out if this is the parent of theProblemState.
     /// Hitting any simulationcontrol will trigger switch to theRunningState.
-    GameState* theStoppedState;
+    GameState *theStoppedState;
 
     /// State when simulation has been won.
     /// The simulation will continue for a few seconds (RunningSubState) and
     /// then stop (PausedSubState).
-    GameState* theWonState;
-    GameState* theWonPausedSubState;
-    GameState* theWonRunningSubState;
+    GameState *theWonState;
+    GameState *theWonPausedSubState;
+    GameState *theWonRunningSubState;
 
     /// Timer is used to time the WonRunningSubState and transition to
     /// WonPausedSubState.

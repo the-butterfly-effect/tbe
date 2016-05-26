@@ -28,28 +28,32 @@
 class GlueObjectFactory : public ObjectFactory
 {
 public:
-	GlueObjectFactory(void)
-	{	announceObjectType("Glue", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new Glue()); }
+    GlueObjectFactory(void)
+    {
+        announceObjectType("Glue", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new Glue());
+    }
 };
 static GlueObjectFactory theGlueFactory;
 
 Glue::Glue() : AbstractJoint()
 {
-	DEBUG5("Glue::Glue() start");
-	theFirstPtr = nullptr;
-	theSecondPtr = nullptr;
-	theFirstLocalPosPtr = nullptr;
-	theSecondLocalPosPtr = nullptr;
-	theLinkPtr = nullptr;
+    DEBUG5("Glue::Glue() start");
+    theFirstPtr = nullptr;
+    theSecondPtr = nullptr;
+    theFirstLocalPosPtr = nullptr;
+    theSecondLocalPosPtr = nullptr;
+    theLinkPtr = nullptr;
 
     theToolTip = QObject::tr("Glue links two objects immovably together.");
     theProps.setDefaultPropertiesString(
-			Property::OBJECT1_STRING + QString(":/") +
-			Property::OBJECT2_STRING + QString(":/") +
-			"-" + Property::MASS_STRING + ":/" );
-	DEBUG5("Glue::Glue() end");
+        Property::OBJECT1_STRING + QString(":/") +
+        Property::OBJECT2_STRING + QString(":/") +
+        "-" + Property::MASS_STRING + ":/" );
+    DEBUG5("Glue::Glue() end");
 }
 
 
@@ -73,84 +77,82 @@ void Glue::clearObjectReferences()
 
 void Glue::createPhysicsObject(void)
 {
-	DEBUG5("Glue::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
-	if (theWorldPtr==nullptr)
-		return;
+    DEBUG5("Glue::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
+    if (theWorldPtr == nullptr)
+        return;
 
-	assert(theFirstPtr!=nullptr);
-	assert(theFirstLocalPosPtr!=nullptr);
-	if (theFirstPtr==nullptr)
-	{
-		DEBUG4("Link: No valid first object found...");
-		return;
-	}
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
-	assert (myFirstB2BodyPtr);
+    assert(theFirstPtr != nullptr);
+    assert(theFirstLocalPosPtr != nullptr);
+    if (theFirstPtr == nullptr) {
+        DEBUG4("Link: No valid first object found...");
+        return;
+    }
+    b2Body *myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, theFirstLocalPosPtr->toPosition());
+    assert (myFirstB2BodyPtr);
     theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
-	assert(theSecondPtr!=nullptr);
-	assert(theSecondLocalPosPtr!=nullptr);
-	if (theSecondPtr==nullptr)
-	{
-		DEBUG4("Link: No valid second object found...");
-		return;
-	}
-	b2Body* mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
-	assert (mySecondB2BodyPtr);
+    assert(theSecondPtr != nullptr);
+    assert(theSecondLocalPosPtr != nullptr);
+    if (theSecondPtr == nullptr) {
+        DEBUG4("Link: No valid second object found...");
+        return;
+    }
+    b2Body *mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, theSecondLocalPosPtr->toPosition());
+    assert (mySecondB2BodyPtr);
     theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
 
-	Position myCenter = getTempCenter();
-	Vector   myHalfWidth(getTheWidth()/2.0, 0);
+    Position myCenter = getTempCenter();
+    Vector   myHalfWidth(getTheWidth() / 2.0, 0);
 
-	// *** initialise Box2D's revolute joint (from AbstractJoint):
-	b2RevoluteJointDef myRevJointDef;
-	myRevJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, (myCenter-myHalfWidth).toB2Vec2());
+    // *** initialise Box2D's revolute joint (from AbstractJoint):
+    b2RevoluteJointDef myRevJointDef;
+    myRevJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, (myCenter - myHalfWidth).toB2Vec2());
     myRevJointDef.userData = this;
-	myRevJointDef.collideConnected = true;
-	theJointPtr = static_cast<b2RevoluteJoint*>(getB2WorldPtr()->CreateJoint(&myRevJointDef));
+    myRevJointDef.collideConnected = true;
+    theJointPtr = static_cast<b2RevoluteJoint *>(getB2WorldPtr()->CreateJoint(&myRevJointDef));
 
-	// *** initialise Box2D's distance joint (new in Glue classdef):
-	b2DistanceJointDef myDisJointDef;
-	myDisJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
-						  (myCenter+myHalfWidth).toB2Vec2(),
-						  (myCenter+myHalfWidth).toB2Vec2());
+    // *** initialise Box2D's distance joint (new in Glue classdef):
+    b2DistanceJointDef myDisJointDef;
+    myDisJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr,
+                             (myCenter + myHalfWidth).toB2Vec2(),
+                             (myCenter + myHalfWidth).toB2Vec2());
     myDisJointDef.userData = this;
-	myDisJointDef.collideConnected = true;
-	theLinkPtr = static_cast<b2DistanceJoint*>(getB2WorldPtr()->CreateJoint(&myDisJointDef));
+    myDisJointDef.collideConnected = true;
+    theLinkPtr = static_cast<b2DistanceJoint *>(getB2WorldPtr()->CreateJoint(&myDisJointDef));
 }
 
 Position Glue::getTempCenter() const
 {
-	if (theFirstPtr==nullptr || theFirstLocalPosPtr==nullptr ||
-		theSecondPtr==nullptr || theSecondLocalPosPtr==nullptr)
-		return getOrigCenter();
+    if (theFirstPtr == nullptr || theFirstLocalPosPtr == nullptr ||
+            theSecondPtr == nullptr || theSecondLocalPosPtr == nullptr)
+        return getOrigCenter();
 
-	Vector myV1 = (theFirstPtr->getTempCenter()+*theFirstLocalPosPtr).toVector();
-	Vector myV2 = (theSecondPtr->getTempCenter()+*theSecondLocalPosPtr).toVector();
-	Vector myMiddle = myV1 + myV2;
-	myMiddle = 0.5 * myMiddle;
+    Vector myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
+    Vector myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
+    Vector myMiddle = myV1 + myV2;
+    myMiddle = 0.5 * myMiddle;
 
-	Vector myDiff = myV1 - myV2;
-	double myAngle = myDiff.toAngle() - PI/2.0;
+    Vector myDiff = myV1 - myV2;
+    double myAngle = myDiff.toAngle() - PI / 2.0;
 
-	return Position(myMiddle.toB2Vec2(), myAngle);
+    return Position(myMiddle.toB2Vec2(), myAngle);
 }
 
 
 void Glue::parseProperties(void)
 {
-	AbstractJoint::parseProperties();
+    AbstractJoint::parseProperties();
 
-	// *** parse object1 & object2
-	// NOTE: if we used the constructor with AbstractObject, (i.e. properties
-	// aren't read yet) this will still work because propertyToObjectPtr
-	// only modifies theFirstPtr/theSecondPtr if successful
+    // *** parse object1 & object2
+    // NOTE: if we used the constructor with AbstractObject, (i.e. properties
+    // aren't read yet) this will still work because propertyToObjectPtr
+    // only modifies theFirstPtr/theSecondPtr if successful
     theFirstPtr =  theProps.property2ObjectPlusVectorPtr(theWorldPtr,
-                                    Property::OBJECT1_STRING,
-                                    &theFirstLocalPosPtr);
+                                                         Property::OBJECT1_STRING,
+                                                         &theFirstLocalPosPtr);
     theSecondPtr = theProps.property2ObjectPlusVectorPtr(theWorldPtr,
-                                    Property::OBJECT2_STRING,
-                                    &theSecondLocalPosPtr);
+                                                         Property::OBJECT2_STRING,
+                                                         &theSecondLocalPosPtr);
 }
 
 void Glue::updateOrigCenter(void)

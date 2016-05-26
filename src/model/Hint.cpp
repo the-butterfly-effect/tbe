@@ -25,32 +25,31 @@
 
 #include <QStringList>
 
-const char* Hint::WIDTH_STRING="width";
-const char* Hint::HEIGHT_STRING="height";
-const char* Hint::ANGLE_STRING="angle";
-const char* Hint::XPOS_STRING="X";
-const char* Hint::YPOS_STRING="Y";
+const char *Hint::WIDTH_STRING = "width";
+const char *Hint::HEIGHT_STRING = "height";
+const char *Hint::ANGLE_STRING = "angle";
+const char *Hint::XPOS_STRING = "X";
+const char *Hint::YPOS_STRING = "Y";
 
 
 Hint::Hint() : theHintIndex(0), theObjectName("-")
 {
-	// nothing to do here
+    // nothing to do here
 }
 
 Hint::~Hint()
 {
-	// nothing to do here
+    // nothing to do here
 }
 
 bool Hint::updateFromHint(qreal &aFloat, const char *aString)
 {
-	bool myOK = true;
-	if (theParams.doesPropertyExists(aString))
-	{
-		aFloat = theParams.getPropertyNoDefault(aString).toFloat(&myOK);
-		if (myOK)
-			DEBUG1("Read updated property %s: %f", aString, aFloat);
-	}
-	return myOK;
+    bool myOK = true;
+    if (theParams.doesPropertyExists(aString)) {
+        aFloat = theParams.getPropertyNoDefault(aString).toFloat(&myOK);
+        if (myOK)
+            DEBUG1("Read updated property %s: %f", aString, aFloat);
+    }
+    return myOK;
 }
 
