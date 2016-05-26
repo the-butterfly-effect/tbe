@@ -39,7 +39,7 @@ ToolboxGroup::~ToolboxGroup()
 
 void ToolboxGroup::addObject(AbstractObjectPtr anObjectPtr)
 {
-    Q_ASSERT(anObjectPtr!=nullptr);
+    Q_ASSERT(anObjectPtr != nullptr);
     theObjectsList.push_back(anObjectPtr);
     theInternalName = anObjectPtr->getInternalName();
 
@@ -58,7 +58,7 @@ AbstractObjectPtr ToolboxGroup::popObject(void)
 }
 
 
-void ToolboxGroup::setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr)
+void ToolboxGroup::setItemPtr(ToolboxListWidgetItem *aWidgetItemPtr)
 {
     theWidgetItemPtr = aWidgetItemPtr;
 }

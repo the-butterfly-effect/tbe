@@ -25,7 +25,7 @@
 #include "AbstractObject.h"
 
 ResizeUndoCommand::ResizeUndoCommand(
-        ViewObjectPtr anViewObjectPtr)
+    ViewObjectPtr anViewObjectPtr)
     : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Resize"), nullptr),
       theButtonDownLength(999.f)
 {
@@ -35,12 +35,11 @@ ResizeUndoCommand::ResizeUndoCommand(
     //     are we allowed to resize horizontally
     //     or vertically, or both???
     if (theIsLevelCreator)
-		theResizingOptions = AbstractObject::TOTALRESIZE;
-	else
-		theResizingOptions = anViewObjectPtr->getAbstractObjectPtr()->isResizable();
-	//theResizingOptions = AbstractObject::TOTALRESIZE;
-    switch (theResizingOptions)
-    {
+        theResizingOptions = AbstractObject::TOTALRESIZE;
+    else
+        theResizingOptions = anViewObjectPtr->getAbstractObjectPtr()->isResizable();
+    //theResizingOptions = AbstractObject::TOTALRESIZE;
+    switch (theResizingOptions) {
     case AbstractObject::NORESIZING:
         // I hope not - this should not be possible
         Q_ASSERT(false);
@@ -58,23 +57,20 @@ ResizeUndoCommand::ResizeUndoCommand(
 }
 
 
-bool ResizeUndoCommand::basicMoveEvent(const Position& aNewPos, qreal aNewWidth, qreal aNewHeight)
+bool ResizeUndoCommand::basicMoveEvent(const Position &aNewPos, qreal aNewWidth, qreal aNewHeight)
 {
     bool myReturnvalue = true;
     // only commit local values if they are larger than minimum size
     // NOTE: TODO/FIXME: the below code isn't good enough
-    if (aNewWidth>AbstractObject::MINIMUM_DIMENSION &&
-        aNewHeight>AbstractObject::MINIMUM_DIMENSION)
-    {
+    if (aNewWidth > AbstractObject::MINIMUM_DIMENSION &&
+            aNewHeight > AbstractObject::MINIMUM_DIMENSION) {
         theNewPos = aNewPos;
         theNewWidth = aNewWidth;
-        theNewHeight= aNewHeight;
+        theNewHeight = aNewHeight;
         theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
-        myReturnvalue=true;
-    }
-    else
-    {
-        myReturnvalue=false;
+        myReturnvalue = true;
+    } else {
+        myReturnvalue = false;
     }
     theViewObjPtr->setNewGeometry(theNewPos, theNewWidth, theNewHeight);
     setDecoratorStateMouseMove();
@@ -82,7 +78,7 @@ bool ResizeUndoCommand::basicMoveEvent(const Position& aNewPos, qreal aNewWidth,
 }
 
 
-bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     QPointF myNewMousePosLocal = toLocalPos(anEventPtr->scenePos());
     qreal myDeltaLength; // in world coordinates
@@ -90,28 +86,25 @@ bool ResizeUndoCommand::mouseMoveEvent(QGraphicsSceneMouseEvent* anEventPtr)
     // first create local values
     Position myNewPos;
     qreal    myNewWidth = theNewWidth;
-    qreal    myNewHeight= theNewHeight;
+    qreal    myNewHeight = theNewHeight;
 
-    if ( theAxis&(HEIGHTBOTTOM|HEIGHTTOP))
-    {
-        myDeltaLength = (myNewMousePosLocal.y() - theButtonDownLength)/THESCALE;
-        myNewPos = theOrigPos + Vector(0, myDeltaLength/2.0);
-        if (theAxis&HEIGHTBOTTOM)
+    if ( theAxis & (HEIGHTBOTTOM | HEIGHTTOP)) {
+        myDeltaLength = (myNewMousePosLocal.y() - theButtonDownLength) / THESCALE;
+        myNewPos = theOrigPos + Vector(0, myDeltaLength / 2.0);
+        if (theAxis & HEIGHTBOTTOM)
             myDeltaLength = -myDeltaLength;
         myNewHeight = theOrigHeight + myDeltaLength;
-    }
-    else
-    {
-        myDeltaLength = (myNewMousePosLocal.x() - theButtonDownLength)/THESCALE;
-        myNewPos = theOrigPos + Vector(myDeltaLength/2.0, 0);
-        if (theAxis&WIDTHLEFT)
+    } else {
+        myDeltaLength = (myNewMousePosLocal.x() - theButtonDownLength) / THESCALE;
+        myNewPos = theOrigPos + Vector(myDeltaLength / 2.0, 0);
+        if (theAxis & WIDTHLEFT)
             myDeltaLength = -myDeltaLength;
         myNewWidth = theOrigWidth + myDeltaLength;
     }
     return basicMoveEvent(myNewPos, myNewWidth, myNewHeight);
 }
 
-bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
+bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent *anEventPtr)
 {
     DEBUG3ENTRY;
 
@@ -121,16 +114,14 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
 
     // are we within 1/3 of any of the edges?
     theAxis = NONE;
-    if (fabs(theButtonDownPosition.x())/THESCALE>theOrigWidth/6)
-    {
-        if(theButtonDownPosition.x()<0)
+    if (fabs(theButtonDownPosition.x()) / THESCALE > theOrigWidth / 6) {
+        if (theButtonDownPosition.x() < 0)
             theAxis = WIDTHLEFT;
         else
             theAxis = WIDTHRIGHT;
     }
-    if (fabs(theButtonDownPosition.y())/THESCALE>theOrigHeight/6)
-    {
-        if(theButtonDownPosition.y()<0)
+    if (fabs(theButtonDownPosition.y()) / THESCALE > theOrigHeight / 6) {
+        if (theButtonDownPosition.y() < 0)
             theAxis |= HEIGHTBOTTOM;
         else
             theAxis |= HEIGHTTOP;
@@ -141,31 +132,30 @@ bool ResizeUndoCommand::mousePressEvent(QGraphicsSceneMouseEvent* anEventPtr)
         goto ignoreClick;
 
     // match edges with actions
-    switch(theResizingOptions)
-    {
+    switch (theResizingOptions) {
     case AbstractObject::NORESIZING:
         // I hope not - this should not be possible
         Q_ASSERT(false);
         break;
     case AbstractObject::HORIZONTALRESIZE:
-        if (!(theAxis & (WIDTHLEFT|WIDTHRIGHT)))
+        if (!(theAxis & (WIDTHLEFT | WIDTHRIGHT)))
             goto ignoreClick;
-        theAxis &= (WIDTHLEFT|WIDTHRIGHT);
+        theAxis &= (WIDTHLEFT | WIDTHRIGHT);
         theButtonDownLength = theButtonDownPosition.x();
         break;
     case AbstractObject::VERTICALRESIZE:
-        if (!(theAxis & (HEIGHTBOTTOM|HEIGHTTOP)))
+        if (!(theAxis & (HEIGHTBOTTOM | HEIGHTTOP)))
             goto ignoreClick;
-        theAxis &= (HEIGHTBOTTOM|HEIGHTTOP);
+        theAxis &= (HEIGHTBOTTOM | HEIGHTTOP);
         theButtonDownLength = theButtonDownPosition.y();
         break;
     case AbstractObject::TOTALRESIZE:
         // clicked near one of the corners? - ignore
-        if ( (theAxis&(HEIGHTBOTTOM|HEIGHTTOP)) &&
-             (theAxis & (WIDTHLEFT|WIDTHRIGHT)))
+        if ( (theAxis & (HEIGHTBOTTOM | HEIGHTTOP)) &&
+                (theAxis & (WIDTHLEFT | WIDTHRIGHT)))
             goto ignoreClick;
         // horizontal or vertical?
-        if ( theAxis&(HEIGHTBOTTOM|HEIGHTTOP))
+        if ( theAxis & (HEIGHTBOTTOM | HEIGHTTOP))
             theButtonDownLength = theButtonDownPosition.y();
         else
             theButtonDownLength = theButtonDownPosition.x();
@@ -184,7 +174,7 @@ ignoreClick:
 }
 
 
-QPointF ResizeUndoCommand::toLocalPos(const QPointF& aScenePos)
+QPointF ResizeUndoCommand::toLocalPos(const QPointF &aScenePos)
 {
     QPointF myRelPos = aScenePos - theOrigPos.toQPointF();
     qreal myCos = cos(theOrigPos.angle);
