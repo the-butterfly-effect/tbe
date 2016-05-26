@@ -45,52 +45,52 @@ typedef std::shared_ptr<ExplosionSplatter> ExplosionSplatterPtr;
 class Spring : public RectObject
 {
 public:
-	Spring();
-	virtual ~Spring();
+    Spring();
+    virtual ~Spring();
 
     /// (overridden from AbstractObject to remove extra sharedptrs)
     virtual void clearObjectReferences() override;
 
-	/// overridden from RectObject to be able to create the other SpringEnd
-	/// and because this class wants to register for callbacks and
-	/// needs to restart its state machine
-	virtual void createPhysicsObject(void) override;
+    /// overridden from RectObject to be able to create the other SpringEnd
+    /// and because this class wants to register for callbacks and
+    /// needs to restart its state machine
+    virtual void createPhysicsObject(void) override;
 
-	/// overridden from AbstractObject to allow for the handle
-	virtual void deletePhysicsObject(void) override;
+    /// overridden from AbstractObject to allow for the handle
+    virtual void deletePhysicsObject(void) override;
 
-	/// @returns Pointer to the B2Body for the relative position asked for.
-	///          Might return nullptr if no body or if outside body (see warning)
-	/// @param   Relative position (to the center of the object) to look for
-	/// @warning Because the default AbstractObject just returns its pointer
-	///          without any checking, don't expect this member to fail if
-	///          aRelPosition points outside the object's body.
-	/// @note    depending on the position, will either return pointer to
-	///          Spring's or to SpringEnd's b2Body
-	virtual b2Body* getB2BodyPtrForPosition(UNUSED_ARG const Position& aRelPosition) override;
+    /// @returns Pointer to the B2Body for the relative position asked for.
+    ///          Might return nullptr if no body or if outside body (see warning)
+    /// @param   Relative position (to the center of the object) to look for
+    /// @warning Because the default AbstractObject just returns its pointer
+    ///          without any checking, don't expect this member to fail if
+    ///          aRelPosition points outside the object's body.
+    /// @note    depending on the position, will either return pointer to
+    ///          Spring's or to SpringEnd's b2Body
+    virtual b2Body *getB2BodyPtrForPosition(UNUSED_ARG const Position &aRelPosition) override;
 
-	/**
-	 * Get the current Position of the object.
-	 * This is the current center, i.e. where the object is now.
-	 * For Spring, this is right inbetween the centers of both physobjects
-	 *
-	 * @return the value of theCenter
-	 */
-	virtual Position getTempCenter ( ) const override;
+    /**
+     * Get the current Position of the object.
+     * This is the current center, i.e. where the object is now.
+     * For Spring, this is right inbetween the centers of both physobjects
+     *
+     * @return the value of theCenter
+     */
+    virtual Position getTempCenter ( ) const override;
 
     /// overridden from AbstractObject in order to also move the SpringEnd
-    virtual void setOrigCenter ( const Position& aNewPos ) override;
+    virtual void setOrigCenter ( const Position &aNewPos ) override;
 
-	/// get the actual width - with compression accounted for
-	virtual qreal getTempWidth() const override;
+    /// get the actual width - with compression accounted for
+    virtual qreal getTempWidth() const override;
 
 protected:
-	/// this member fixes up the physical model based on new width or height
-	/// overridden from RectObject, assuming that springs are never
-	/// extremely tall or wide
-	void adjustParameters(void);
+    /// this member fixes up the physical model based on new width or height
+    /// overridden from RectObject, assuming that springs are never
+    /// extremely tall or wide
+    void adjustParameters(void);
 
-	void buildShapeList(void);
+    void buildShapeList(void);
 
 private:
     /// offset of center of the handle to the center of the box
@@ -103,11 +103,11 @@ private:
     qreal theSpringWidth;
 
 private:
-	// disable copy constructor / assignment operator
-	Spring(const Spring& aBORefToCopy);
-	Spring& operator = (const Spring& aBORefToCopy);
+    // disable copy constructor / assignment operator
+    Spring(const Spring &aBORefToCopy);
+    Spring &operator = (const Spring &aBORefToCopy);
 
-	friend class SpringEnd;
+    friend class SpringEnd;
 };
 
 
@@ -119,46 +119,50 @@ class SpringEnd : public RectObject, public SimStepCallbackInterface
 {
 public:
     /// @param Spring pointer to a Spring, the only object allowed to create a SpringEnd
-    SpringEnd(Spring* aDBox, const Position& aPos, qreal aWidth, qreal aHeight);
+    SpringEnd(Spring *aDBox, const Position &aPos, qreal aWidth, qreal aHeight);
     virtual ~SpringEnd();
 
     /// overridden to allow setting a custom ZValue
-	ViewObjectPtr createViewObject(float) override
-	{ return ViewObjectPtr(nullptr); }
+    ViewObjectPtr createViewObject(float) override
+    {
+        return ViewObjectPtr(nullptr);
+    }
 
-	/// overridden from RectObject to allow for the special joints
-	/// and because this class wants to register for callbacks
-	void createPhysicsObject() override;
+    /// overridden from RectObject to allow for the special joints
+    /// and because this class wants to register for callbacks
+    void createPhysicsObject() override;
 
-	/// overridden from AbstractObject to allow for the special joints
-	virtual void deletePhysicsObject(void) override;
+    /// overridden from AbstractObject to allow for the special joints
+    virtual void deletePhysicsObject(void) override;
 
-	/// get the actual displacement of the prismatic joint
-	/// where zero means no compression/extension
-	qreal getDistance(void) const;
+    /// get the actual displacement of the prismatic joint
+    /// where zero means no compression/extension
+    qreal getDistance(void) const;
 
-	/// updates the ViewObject to the position of the underlying b2body
-	/// OVERRIDDEN from AbstractObject to not draw this object
-	virtual void updateViewObject(bool) const override
-	{ ; }
+    /// updates the ViewObject to the position of the underlying b2body
+    /// OVERRIDDEN from AbstractObject to not draw this object
+    virtual void updateViewObject(bool) const override
+    {
+        ;
+    }
 
 
-	friend class Spring;
+    friend class Spring;
 
 private:
     /// implemented from SimStepCallbackInterface
     virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-    Spring* theOtherEndPtr;
-    b2PrismaticJoint* theJointPtr;
+    Spring *theOtherEndPtr;
+    b2PrismaticJoint *theJointPtr;
 
     /// 'k' from Hooke's law
     float theSpringConstant;
 
 private:
-	// disable copy constructor / assignment operator
-	SpringEnd(const SpringEnd& aBORefToCopy);
-	SpringEnd& operator = (const SpringEnd& aBORefToCopy);
+    // disable copy constructor / assignment operator
+    SpringEnd(const SpringEnd &aBORefToCopy);
+    SpringEnd &operator = (const SpringEnd &aBORefToCopy);
 };
 
 
