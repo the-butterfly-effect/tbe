@@ -29,7 +29,7 @@ class QStandardItemModel;
 class QStandardItem;
 
 namespace Ui {
-    class EditLevelProperties;
+class EditLevelProperties;
 }
 
 // this header file contains two class declarations:
@@ -37,30 +37,31 @@ namespace Ui {
 
 
 /// this class allows editing of various Level and World settings
-class EditLevelProperties : public QDialog {
+class EditLevelProperties : public QDialog
+{
     Q_OBJECT
 public:
-	EditLevelProperties(Level* aLevelPtr, QWidget *parent = 0);
+    EditLevelProperties(Level *aLevelPtr, QWidget *parent = 0);
     ~EditLevelProperties();
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
-	void populateTableAndGradient(Background* aBGPtr);
-	void writeChanges(void);
+    virtual void changeEvent(QEvent *e) override;
+    void populateTableAndGradient(Background *aBGPtr);
+    void writeChanges(void);
 
 private slots:
-	/// overridden to actually write the results to the Level/World
-	void slot_accepted();
+    /// overridden to actually write the results to the Level/World
+    void slot_accepted();
 
-	/// to update the gradient based on the model
-	void slot_modelItemChanged(QStandardItem* anItem);
+    /// to update the gradient based on the model
+    void slot_modelItemChanged(QStandardItem *anItem);
 
 signals:
     void requestRedraw();
 
 private:
-	Level* theLevelPtr;
-	QStandardItemModel* theModel;
+    Level *theLevelPtr;
+    QStandardItemModel *theModel;
     Ui::EditLevelProperties *m_ui;
 };
 
@@ -71,20 +72,20 @@ private:
 /// this is the Delegate to edit a field using a QDoubleSpinBox
 class ColorPickerDelegate : public QItemDelegate
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit ColorPickerDelegate(QObject *parent);
+    explicit ColorPickerDelegate(QObject *parent);
 
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
-						  const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const;
 
-	void setEditorData(QWidget *editor, const QModelIndex &index) const;
-	void setModelData(QWidget *editor, QAbstractItemModel *model,
-					  const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    void setModelData(QWidget *editor, QAbstractItemModel *model,
+                      const QModelIndex &index) const;
 
-	void updateEditorGeometry(QWidget *editor,
-							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void updateEditorGeometry(QWidget *editor,
+                              const QStyleOptionViewItem &option, const QModelIndex &index) const;
 };
 
 

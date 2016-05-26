@@ -37,76 +37,79 @@ class QStandardItem;
 /// the GoalEditor dialog pops up a QTableView with rows that each represent
 /// a Goal.
 /// Each column has a dedicated delegate to edit the contents of that column.
-class GoalEditor : public QDialog {
+class GoalEditor : public QDialog
+{
     Q_OBJECT
 public:
-	GoalEditor(World* aWorldPtr, QWidget *parent = 0);
+    GoalEditor(World *aWorldPtr, QWidget *parent = 0);
     ~GoalEditor();
 
-	/// @returns the translation of "change"
-	static QString getT10nOf_change(void)
-	{ return tr("change"); }
+    /// @returns the translation of "change"
+    static QString getT10nOf_change(void)
+    {
+        return tr("change");
+    }
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
+    virtual void changeEvent(QEvent *e) override;
 
-	/** depending on the contents of the cells,
-	  * turns cells red (if object names do not exist) or greys/ungreys cells
-	  * @param aModel  the QStandardItemModel to do this for
-	  * @param aRow to fix the coloring for.
-	  */
-	void fixupCellColoring(QStandardItemModel* aModel, int aRow);
+    /** depending on the contents of the cells,
+      * turns cells red (if object names do not exist) or greys/ungreys cells
+      * @param aModel  the QStandardItemModel to do this for
+      * @param aRow to fix the coloring for.
+      */
+    void fixupCellColoring(QStandardItemModel *aModel, int aRow);
 
-	void populate(void);
+    void populate(void);
 
-	/** retrieves the input from the fields of row aRow and
-	  * collides them to a string - with separator aSeparator
-	  * @param aModel  the QStandardItemModel to do this for
-	  * @param aRow  row identifier
-	  * @param aSeparator character to separate the fields
-	  *                   probably only ' ' and ';' will be used
-	  * @return the concatenated string
-	  */
-	QString rowToString(const QStandardItemModel* aModel, int aRow, char aSeparator) const;
+    /** retrieves the input from the fields of row aRow and
+      * collides them to a string - with separator aSeparator
+      * @param aModel  the QStandardItemModel to do this for
+      * @param aRow  row identifier
+      * @param aSeparator character to separate the fields
+      *                   probably only ' ' and ';' will be used
+      * @return the concatenated string
+      */
+    QString rowToString(const QStandardItemModel *aModel, int aRow, char aSeparator) const;
 
-	/** Sets up the tableView and corresponding QStandardItemModel
-	  * @param aModelPtrPTr double pointer to the QStandardItemModel to initialise
-	  * @param aViewPtr view to initialise and assign aModelPtrPtr to
-	  */
-	void setupViewAndModel(QTableView* aViewPtr, QStandardItemModel** aModelPtrPtr);
+    /** Sets up the tableView and corresponding QStandardItemModel
+      * @param aModelPtrPTr double pointer to the QStandardItemModel to initialise
+      * @param aViewPtr view to initialise and assign aModelPtrPtr to
+      */
+    void setupViewAndModel(QTableView *aViewPtr, QStandardItemModel **aModelPtrPtr);
 
-	typedef QList<Goal*> GoalPtrList;
-	/** creates a Goal from line i in aModel and adds it to aList
-	  * @param aList     list of pointers to Goals
-	  * @param i         line number of aModel to handle
-	  * @param aModel    QSIModel to handle
-	  * @param anIsFail  true if this is a Fail, false if this is a Goal
-	  */
-	bool addNewGoalToList(GoalPtrList& aList, int i, const QStandardItemModel& aModel, bool anIsFail);
+    typedef QList<Goal *> GoalPtrList;
+    /** creates a Goal from line i in aModel and adds it to aList
+      * @param aList     list of pointers to Goals
+      * @param i         line number of aModel to handle
+      * @param aModel    QSIModel to handle
+      * @param anIsFail  true if this is a Fail, false if this is a Goal
+      */
+    bool addNewGoalToList(GoalPtrList &aList, int i, const QStandardItemModel &aModel, bool anIsFail);
 
 
 public slots:
-	/** Overridden from QDialog to be able to save the Goals
-	  * when the user closes the dialog and prevent the
-	  * dialog from closing when the Goals cannot be saved due to errors.
-	  */
-	virtual void accept() override;
+    /** Overridden from QDialog to be able to save the Goals
+      * when the user closes the dialog and prevent the
+      * dialog from closing when the Goals cannot be saved due to errors.
+      */
+    virtual void accept() override;
 
 private slots:
-	void on_toolButtonFailsMinus_clicked();
-	void on_toolButtonFailsPlus_clicked();
+    void on_toolButtonFailsMinus_clicked();
+    void on_toolButtonFailsPlus_clicked();
 
-	void on_toolButtonGoalsMinus_clicked();
-	void on_toolButtonGoalsPlus_clicked();
+    void on_toolButtonGoalsMinus_clicked();
+    void on_toolButtonGoalsPlus_clicked();
 
-	void slot_itemChanged(QStandardItem* anItem);
+    void slot_itemChanged(QStandardItem *anItem);
 
 private:
-	Ui::GoalEditor ui;
-	QStandardItemModel* theGoalsModelPtr;
-	QStandardItemModel* theFailsModelPtr;
+    Ui::GoalEditor ui;
+    QStandardItemModel *theGoalsModelPtr;
+    QStandardItemModel *theFailsModelPtr;
 
-	World* theWorldPtr;
+    World *theWorldPtr;
 };
 
 
@@ -116,23 +119,23 @@ private:
 /// this is the Delegate to edit a field using a ComboBox with predefined values
 class ComboBoxDelegate : public QItemDelegate
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit ComboBoxDelegate(QObject *parent = 0);
+    explicit ComboBoxDelegate(QObject *parent = 0);
 
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
-						  const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const;
 
-	void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
 
-	void setItems(const QStringList);
+    void setItems(const QStringList);
 
-	void setModelData(QWidget *editor, QAbstractItemModel *model,
-					  const QModelIndex &index) const;
+    void setModelData(QWidget *editor, QAbstractItemModel *model,
+                      const QModelIndex &index) const;
 
 private:
-	QStringList theList;
+    QStringList theList;
 };
 
 
@@ -143,23 +146,23 @@ private:
 /// this is the Delegate to edit a field using a QDoubleSpinBox
 class DoubleSpinBoxDelegate : public QItemDelegate
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	DoubleSpinBoxDelegate(QObject *parent, float aMin, float aMax);
+    DoubleSpinBoxDelegate(QObject *parent, float aMin, float aMax);
 
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
-						  const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const;
 
-	void setEditorData(QWidget *editor, const QModelIndex &index) const;
-	void setModelData(QWidget *editor, QAbstractItemModel *model,
-					  const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    void setModelData(QWidget *editor, QAbstractItemModel *model,
+                      const QModelIndex &index) const;
 
-	void updateEditorGeometry(QWidget *editor,
-							  const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void updateEditorGeometry(QWidget *editor,
+                              const QStyleOptionViewItem &option, const QModelIndex &index) const;
 private:
-	float theMax;
-	float theMin;
+    float theMax;
+    float theMin;
 };
 
 

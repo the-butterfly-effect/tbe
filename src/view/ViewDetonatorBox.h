@@ -33,35 +33,35 @@ class AbstractObject;
 class ViewDetonatorBox : public ViewObject
 {
 
-	Q_OBJECT
+    Q_OBJECT
 
 protected:
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/// Image Constructor
-	ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString& anImageName);
+    /// Image Constructor
+    ViewDetonatorBox (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName);
     friend class ViewObject;
 
 public:
     /**
-	 * Empty Destructor
-	 */
+     * Empty Destructor
+     */
     virtual ~ViewDetonatorBox ( ) override;
 
-	/// this member starts the display of the actual ChoosePhoneNumber dialog
-	void displayChoosePhoneNumber(void);
+    /// this member starts the display of the actual ChoosePhoneNumber dialog
+    void displayChoosePhoneNumber(void);
 
 protected:
-	/// overridden to ALWAYS allow highlighting
-    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * event ) override;
-	/// overridden to ALWAYS allow mouse button presses
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* event) override;
+    /// overridden to ALWAYS allow highlighting
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent *event ) override;
+    /// overridden to ALWAYS allow mouse button presses
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent *event) override;
 
 private:
-	// prevent copy constructor / assignment operator
-	ViewDetonatorBox(const ViewDetonatorBox&);
-	const ViewDetonatorBox& operator= (const ViewDetonatorBox&);
+    // prevent copy constructor / assignment operator
+    ViewDetonatorBox(const ViewDetonatorBox &);
+    const ViewDetonatorBox &operator= (const ViewDetonatorBox &);
 };
 
 #endif // VIEWDETONATORBOX_H

@@ -37,7 +37,7 @@
 #include <QMenuBar>
 #include <QSettings>
 
-static ResizingGraphicsView* theRSGVPtr = nullptr;
+static ResizingGraphicsView *theRSGVPtr = nullptr;
 
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
@@ -49,134 +49,154 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     theWinFailDialogPtr(nullptr),
     theFrameRateViewPtr(nullptr)
 {
-	setAlignment(Qt::AlignLeft | Qt::AlignTop);
-	setDragMode(QGraphicsView::NoDrag);
-	setFrameStyle(QFrame::Plain + QFrame::NoFrame);
-	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+    setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    setDragMode(QGraphicsView::NoDrag);
+    setFrameStyle(QFrame::Plain + QFrame::NoFrame);
+    setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     theGameControlsPtr = new GameControls(this);
-	theGameResourcesPtr = new GameResources(this);
-	theRSGVPtr = this;
+    theGameResourcesPtr = new GameResources(this);
+    theRSGVPtr = this;
 }
 
 
 ResizingGraphicsView::~ResizingGraphicsView()
 {
     delete theGameControlsPtr;
-	theRSGVPtr = nullptr;
+    theRSGVPtr = nullptr;
 }
 
 
 void ResizingGraphicsView::clearViewWorld(void)
 {
-	DEBUG3ENTRY;
-	// disconnect & delete the Scene//DrawWorld
-	// keep in mind that we have a view that's not happy now!
-	setScene(nullptr);
-	QMatrix myMatrix;
-	setMatrix(myMatrix);
+    DEBUG3ENTRY;
+    // disconnect & delete the Scene//DrawWorld
+    // keep in mind that we have a view that's not happy now!
+    setScene(nullptr);
+    QMatrix myMatrix;
+    setMatrix(myMatrix);
 
     slot_clearWinFailDialogPtr();
     delete theScenePtr;
-	theScenePtr = nullptr;
+    theScenePtr = nullptr;
 }
 
 
-GameResources* ResizingGraphicsView::getGameResourcesDialogPtr()
+GameResources *ResizingGraphicsView::getGameResourcesDialogPtr()
 {
-	Q_ASSERT(theGameResourcesPtr != nullptr);
-    delete 	theGameResourcesPtr;
+    Q_ASSERT(theGameResourcesPtr != nullptr);
+    delete  theGameResourcesPtr;
     theGameResourcesPtr = new GameResources(this);
-	return theGameResourcesPtr;
+    return theGameResourcesPtr;
 }
 
 
-ResizingGraphicsView* ResizingGraphicsView::me(void)
+ResizingGraphicsView *ResizingGraphicsView::me(void)
 {
-	Q_ASSERT(theRSGVPtr!=nullptr);
-	return theRSGVPtr;
+    Q_ASSERT(theRSGVPtr != nullptr);
+    return theRSGVPtr;
 }
 
 
 void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
 {
-	if (event!=nullptr)
-		QGraphicsView::resizeEvent(event);
-	fitInView(sceneRect(), Qt::KeepAspectRatio);
+    if (event != nullptr)
+        QGraphicsView::resizeEvent(event);
+    fitInView(sceneRect(), Qt::KeepAspectRatio);
     theGameControlsPtr->parentResize(frameSize());
-	PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
+    PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
-	if (event!=nullptr) {
-		QGraphicsView::mouseMoveEvent(event);
+    if (event != nullptr) {
+        QGraphicsView::mouseMoveEvent(event);
 
-		QPointF mousePos = this->mapToScene(event->pos());
-		Position p = Position(mousePos, 0);
-		emit theMainWindowPtr->slot_mouse_move(p.x, p.y);
-        }
+        QPointF mousePos = this->mapToScene(event->pos());
+        Position p = Position(mousePos, 0);
+        emit theMainWindowPtr->slot_mouse_move(p.x, p.y);
+    }
 }
 
-void ResizingGraphicsView::setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr)
+void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameStateMachine *aGSMPtr,
+                                 QMenuBar *aMenuBarPtr, QMenu *anMenuControlsPtr)
 {
-	theMainWindowPtr = aMWPtr;
+    theMainWindowPtr = aMWPtr;
     theGameControlsPtr->setup(anMenuControlsPtr);
-    connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr, SLOT(slot_NumberOfCrossesChanged(int)));
+    connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr,
+            SLOT(slot_NumberOfCrossesChanged(int)));
 
     connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
              theGameControlsPtr, SLOT(slot_updateIcon(GameStateMachine::States)));
 
     theGameStateMachinePtr = aGSMPtr;
-    connect (theGameControlsPtr, SIGNAL(signal_Forward_triggered()),  aGSMPtr, SIGNAL(signal_Forward_triggered()));
-    connect (theGameControlsPtr, SIGNAL(signal_Pause_triggered()),    aGSMPtr, SIGNAL(signal_Pause_triggered()));
-    connect (theGameControlsPtr, SIGNAL(signal_Play_triggered()),     aGSMPtr, SIGNAL(signal_Play_triggered()));
-    connect (theGameControlsPtr, SIGNAL(signal_RealFast_triggered()), aGSMPtr, SIGNAL(signal_RealFast_triggered()));
-    connect (theGameControlsPtr, SIGNAL(signal_Reset_triggered()),    aGSMPtr, SIGNAL(signal_Reset_triggered()));
-    connect (theGameControlsPtr, SIGNAL(signal_Slow_triggered()),     aGSMPtr, SIGNAL(signal_Slow_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Forward_triggered()),  aGSMPtr,
+             SIGNAL(signal_Forward_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Pause_triggered()),    aGSMPtr,
+             SIGNAL(signal_Pause_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Play_triggered()),     aGSMPtr,
+             SIGNAL(signal_Play_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_RealFast_triggered()), aGSMPtr,
+             SIGNAL(signal_RealFast_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Reset_triggered()),    aGSMPtr,
+             SIGNAL(signal_Reset_triggered()));
+    connect (theGameControlsPtr, SIGNAL(signal_Slow_triggered()),     aGSMPtr,
+             SIGNAL(signal_Slow_triggered()));
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),    this,    SLOT(slot_levelWon()));
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()),    this,    SLOT(slot_levelDeath()));
 
-    connect (this, SIGNAL(signal_actionChooseLevel()), theMainWindowPtr, SLOT(on_action_Open_Level_triggered()));
+    connect (this, SIGNAL(signal_actionChooseLevel()), theMainWindowPtr,
+             SLOT(on_action_Open_Level_triggered()));
     connect (this, SIGNAL(signal_actionNextLevel()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
     connect (this, SIGNAL(signal_actionReplay()),      aGSMPtr, SIGNAL(signal_Reset_triggered()));
-    connect (this, SIGNAL(signal_actionSkipLevel()),   theMainWindowPtr, SLOT(on_action_Skip_Level_triggered()));
+    connect (this, SIGNAL(signal_actionSkipLevel()),   theMainWindowPtr,
+             SLOT(on_action_Skip_Level_triggered()));
 
     // this one displays the frame rate counter if active
-	theFrameRateViewPtr= aMenuBarPtr->addAction("");
+    theFrameRateViewPtr = aMenuBarPtr->addAction("");
 }
 
 
-void ResizingGraphicsView::setViewWorld(ViewWorld* aScenePtr,
-                                        const QString& aLevelName)
+void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
+                                        const QString &aLevelName)
 {
     DEBUG1("ResizingGraphicsView::setViewWorld(%p, \"%s\")", aScenePtr,
-               ASCII(aLevelName));
-	theScenePtr=aScenePtr;
+           ASCII(aLevelName));
+    theScenePtr = aScenePtr;
 
-	setScene(aScenePtr);
-	fitInView(0, -aScenePtr->getHeight(),
-			  aScenePtr->getWidth(), aScenePtr->getHeight());
-	resizeEvent(nullptr);
-	theMainWindowPtr->setWindowTitle(APPNAME + " - " + TheGetText(aLevelName));
+    setScene(aScenePtr);
+    fitInView(0, -aScenePtr->getHeight(),
+              aScenePtr->getWidth(), aScenePtr->getHeight());
+    resizeEvent(nullptr);
+    theMainWindowPtr->setWindowTitle(APPNAME + " - " + TheGetText(aLevelName));
 
-    connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()),   theGameStateMachinePtr, SIGNAL(signal_Won_happened()));
-    connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theGameStateMachinePtr, SIGNAL(signal_Fail_happened()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()),   theGameStateMachinePtr,
+            SIGNAL(signal_Won_happened()));
+    connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theGameStateMachinePtr,
+            SIGNAL(signal_Fail_happened()));
     connect(aScenePtr, SIGNAL(needPause()),   theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()));
     connect(aScenePtr, SIGNAL(needReset()),   theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
 
-	if (theIsRunAsRegression)
-	{
-		connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), theMainWindowPtr->theRegressionTest, SLOT(slot_Won()));
-		connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest, SLOT(slot_Fail()));
-	}
+    if (theIsRunAsRegression) {
+        connect(aScenePtr->getWorldPtr(), SIGNAL(signalWon()), theMainWindowPtr->theRegressionTest,
+                SLOT(slot_Won()));
+        connect(aScenePtr->getWorldPtr(), SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest,
+                SLOT(slot_Fail()));
+    }
 
-    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  aScenePtr, SLOT(slot_signalFF()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     aScenePtr, SLOT(slot_signalPlay()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    aScenePtr, SLOT(slot_signalPause()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), aScenePtr, SLOT(slot_signal4F()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    aScenePtr, SLOT(slot_signalReset()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     aScenePtr, SLOT(slot_signalSlow()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr, SLOT(slot_signalPause()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  aScenePtr,
+            SLOT(slot_signalFF()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     aScenePtr,
+            SLOT(slot_signalPlay()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    aScenePtr,
+            SLOT(slot_signalPause()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), aScenePtr,
+            SLOT(slot_signal4F()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    aScenePtr,
+            SLOT(slot_signalReset()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     aScenePtr,
+            SLOT(slot_signalSlow()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr,
+            SLOT(slot_signalPause()));
 
     slot_showGameResourcesDialog();
 }
@@ -192,9 +212,9 @@ void ResizingGraphicsView::slot_clearWinFailDialogPtr()
 // TODO/FIXME: logic is now ok, should be triggered by GameStateMachine::signal_Game_Failed()
 void ResizingGraphicsView::slot_levelDeath(void)
 {
-	DEBUG3ENTRY;
-	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
-	emit theWinFailDialogPtr->appearAnimated();
+    DEBUG3ENTRY;
+    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
+    emit theWinFailDialogPtr->appearAnimated();
 }
 
 
@@ -205,15 +225,14 @@ void ResizingGraphicsView::slot_levelWon(void)
 
     // Anti-cheat:
     // Don't label the level as complete when we're in level editor mode
-    if (!theIsLevelCreator)
-    {
+    if (!theIsLevelCreator) {
         QString myLevelFileName = Level::getLevelFileName();
         QSettings mySettings;
-        mySettings.setValue("completed/"+myLevelFileName, "done");
+        mySettings.setValue("completed/" + myLevelFileName, "done");
     }
 
-	theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
-	emit theWinFailDialogPtr->appearAnimated();
+    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
+    emit theWinFailDialogPtr->appearAnimated();
 }
 
 

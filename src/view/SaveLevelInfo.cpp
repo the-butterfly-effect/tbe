@@ -21,29 +21,28 @@
 #include "Popup.h"
 #include <QFileDialog>
 
-SaveLevelInfo::SaveLevelInfo(Level* aLevelPtr, QWidget *parent)
-	: QDialog(parent), theLevelPtr(aLevelPtr)
+SaveLevelInfo::SaveLevelInfo(Level *aLevelPtr, QWidget *parent)
+    : QDialog(parent), theLevelPtr(aLevelPtr)
 {
-	isUserOKOverwritingFile = false;
+    isUserOKOverwritingFile = false;
 
-	ui.setupUi(this);
-	ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
-	ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
+    ui.setupUi(this);
+    ui.theFileNameField        ->setText(theLevelPtr->getLevelFileName());
+    ui.theAuthorNameField      ->setText(theLevelPtr->theLevelAuthor);
     ui.theLevelDescriptionField->setText(theLevelPtr->theLevelDescription);
-	ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
+    ui.theLicenseField         ->setText(theLevelPtr->theLevelLicense);
     ui.theTitleField           ->setText(theLevelPtr->theLevelName);
 
-	QDate myDate = QDate::fromString(theLevelPtr->theLevelDate);
-	if (myDate.isValid())
-		ui.theDateEdit->setDate(myDate);
-	else
-	{
-		DEBUG5("SaveLevelInfo::SaveLevelInfo - Date '%s' is not understood, setting to current date",
-			   ASCII(theLevelPtr->theLevelDate));
-		ui.theDateEdit->setDate(QDate::currentDate());
-	}
+    QDate myDate = QDate::fromString(theLevelPtr->theLevelDate);
+    if (myDate.isValid())
+        ui.theDateEdit->setDate(myDate);
+    else {
+        DEBUG5("SaveLevelInfo::SaveLevelInfo - Date '%s' is not understood, setting to current date",
+               ASCII(theLevelPtr->theLevelDate));
+        ui.theDateEdit->setDate(QDate::currentDate());
+    }
 
-	connect(ui.theFileNameField, SIGNAL(textEdited(const QString &)), this, SLOT(fileNameChanged()));
+    connect(ui.theFileNameField, SIGNAL(textEdited(const QString &)), this, SLOT(fileNameChanged()));
 }
 
 
@@ -55,11 +54,10 @@ SaveLevelInfo::~SaveLevelInfo()
 
 void SaveLevelInfo::accept()
 {
-	if (performFileExists(ui.theFileNameField->text()))
-	{
-		commitToLevel();
-		QDialog::accept();
-	}
+    if (performFileExists(ui.theFileNameField->text())) {
+        commitToLevel();
+        QDialog::accept();
+    }
 }
 
 
@@ -71,49 +69,49 @@ bool SaveLevelInfo::commitToLevel(void)
     theLevelPtr->theLevelDescription = ui.theLevelDescriptionField->toPlainText().trimmed();
     theLevelPtr->theLevelName        = ui.theTitleField->text().trimmed();
 
-	if (ui.theFileNameField->text().isEmpty())
-		return false;
-	else
-		theLevelPtr->setLevelFileName(ui.theFileNameField->text());
+    if (ui.theFileNameField->text().isEmpty())
+        return false;
+    else
+        theLevelPtr->setLevelFileName(ui.theFileNameField->text());
 
-	if (ui.theTitleField->text().isEmpty())
-		return false;
-	if (ui.theAuthorNameField->text().isEmpty())
-		return false;
+    if (ui.theTitleField->text().isEmpty())
+        return false;
+    if (ui.theAuthorNameField->text().isEmpty())
+        return false;
 
-	return true;
+    return true;
 }
 
 
 void SaveLevelInfo::FileDialogButton_clicked()
 {
-	// use QFileInfo to brush up the file name
-	QFileInfo myFileInfo(ui.theFileNameField->text());
+    // use QFileInfo to brush up the file name
+    QFileInfo myFileInfo(ui.theFileNameField->text());
 
-	isUserOKOverwritingFile = false;
+    isUserOKOverwritingFile = false;
 
-	QString myFileName = QFileDialog::getSaveFileName(this,
-		tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
+    QString myFileName = QFileDialog::getSaveFileName(this,
+                                                      tr("Save Level"), myFileInfo.absoluteFilePath(), tr("TBE levels (*.tbe *.xml)"));
 
-	if (performFileExists(myFileName)==false)
-		return;
+    if (performFileExists(myFileName) == false)
+        return;
 
-	ui.theFileNameField->setText(myFileName);
+    ui.theFileNameField->setText(myFileName);
 }
 
 
-bool SaveLevelInfo::performFileExists(const QString& aFileName)
+bool SaveLevelInfo::performFileExists(const QString &aFileName)
 {
-	if (isUserOKOverwritingFile==true)
-		return true;
+    if (isUserOKOverwritingFile == true)
+        return true;
 
-	if (QFile::exists(aFileName))
-	{
-		DEBUG5("File '%s' already exists!", ASCII(aFileName) );
-		if (Popup::YesNoQuestion(tr("A File with name '%1' file already exists. Overwrite?\n").arg(aFileName),
-								 this)==false)
-			return false;
-		isUserOKOverwritingFile = true;
-	}
-	return true;
+    if (QFile::exists(aFileName)) {
+        DEBUG5("File '%s' already exists!", ASCII(aFileName) );
+        if (Popup::YesNoQuestion(tr("A File with name '%1' file already exists. Overwrite?\n").arg(
+                                     aFileName),
+                                 this) == false)
+            return false;
+        isUserOKOverwritingFile = true;
+    }
+    return true;
 }

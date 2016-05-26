@@ -48,25 +48,28 @@ public:
     void clearViewWorld(void);
 
     /// used by various components to get to the RSGView
-    static ResizingGraphicsView* me(void);
+    static ResizingGraphicsView *me(void);
 
     /// only to be called by ViewWorld, to register itself
     /// in the view
-    void setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName);
+    void setViewWorld(ViewWorld *aScenePtr, const QString &aLevelName);
 
     /// This member does initialisation beyond creation,
     /// i.e. hooking up various UI elements to actions.
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow* aMWPtr, GameStateMachine* aGSMPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
+    void setup(MainWindow *aMWPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
+               QMenu *anMenuControlsPtr);
 
     /// @returns a pointer to the GameResourcesDialog.
     /// @note this member is only used to hand a pointer to Level.
-    GameResources* getGameResourcesDialogPtr();
+    GameResources *getGameResourcesDialogPtr();
 
-    QAction* getFrameRateViewPtr()
-    { return theFrameRateViewPtr; }
+    QAction *getFrameRateViewPtr()
+    {
+        return theFrameRateViewPtr;
+    }
 
 //protected:
     virtual void resizeEvent(QResizeEvent *event);
@@ -93,14 +96,14 @@ public slots:
     void slot_showGameResourcesDialog();
 
 private:
-    GameResources*      theGameResourcesPtr;
-    MainWindow*         theMainWindowPtr;
-    EditObjectDialog*   theObjectEditorPtr;
-    GameControls*       theGameControlsPtr;
-    GameStateMachine*   theGameStateMachinePtr;
-    ViewWorld*          theScenePtr;
-    WinFailDialog*      theWinFailDialogPtr;
-    QAction*            theFrameRateViewPtr;
+    GameResources      *theGameResourcesPtr;
+    MainWindow         *theMainWindowPtr;
+    EditObjectDialog   *theObjectEditorPtr;
+    GameControls       *theGameControlsPtr;
+    GameStateMachine   *theGameStateMachinePtr;
+    ViewWorld          *theScenePtr;
+    WinFailDialog      *theWinFailDialogPtr;
+    QAction            *theFrameRateViewPtr;
     friend class LevelCreator;
 };
 

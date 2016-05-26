@@ -34,47 +34,47 @@ class AbstractObject;
 class ViewPingus : public ViewObject
 {
 
-	Q_OBJECT
+    Q_OBJECT
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
 protected:
     /// Image Constructor, protected - you cannot create directly,
     /// use ViewObject::factoryMethod<ViewPingus>(aAbstractObjectPtr) instead.
-	explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
+    explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
     friend class ViewObject;
 
 public:
     /**
-	 * Empty Destructor
-	 */
-	virtual ~ViewPingus ( ) override;
+     * Empty Destructor
+     */
+    virtual ~ViewPingus ( ) override;
 
-	/// Sets the image to be displayed to the image pointed to by anIndex.
-	/// @note Supposed to be only used by Pingus object
-	/// @note New images are only loaded upon creation of the object.
-	virtual void setNewImageIndex(unsigned int) override
-	{ }
+    /// Sets the image to be displayed to the image pointed to by anIndex.
+    /// @note Supposed to be only used by Pingus object
+    /// @note New images are only loaded upon creation of the object.
+    virtual void setNewImageIndex(unsigned int) override
+    { }
 
-	/// Sets the state of the pingus (walking left/right, etc).
-	/// Replaces setNewImageIndex that cannot work for Pingus.
-	/// @param
-	/// @param
-	void setNewAnimationFrame(unsigned int aState, unsigned int aFrameIndex);
+    /// Sets the state of the pingus (walking left/right, etc).
+    /// Replaces setNewImageIndex that cannot work for Pingus.
+    /// @param
+    /// @param
+    void setNewAnimationFrame(unsigned int aState, unsigned int aFrameIndex);
 
-	/// overriden from ViewObject because we want to keep the pingus upright
-	virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight,
-									 const Position& aCenter) override;
+    /// overriden from ViewObject because we want to keep the pingus upright
+    virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight,
+                                     const Position &aCenter) override;
 
 private:
-	// prevent copy constructor / assignment operator
-	ViewPingus(const ViewPingus&);
-	const ViewPingus& operator= (const ViewPingus&);
+    // prevent copy constructor / assignment operator
+    ViewPingus(const ViewPingus &);
+    const ViewPingus &operator= (const ViewPingus &);
 
-	QPixmap theBigBitmap;
+    QPixmap theBigBitmap;
 
-	int theIndexInImageList[Pingus::DEAD+1];
+    int theIndexInImageList[Pingus::DEAD + 1];
 };
 
 #endif // VIEWPINGUS_H

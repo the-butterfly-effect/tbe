@@ -24,25 +24,26 @@
 class DetonatorBox;
 
 namespace Ui {
-    class ChoosePhoneNumber;
+class ChoosePhoneNumber;
 }
 
-class ChoosePhoneNumber : public AnimatedDialog {
+class ChoosePhoneNumber : public AnimatedDialog
+{
     Q_OBJECT
 public:
-    ChoosePhoneNumber(DetonatorBox* aBoxPtr, ResizingGraphicsView *aParentPtr = 0);
+    ChoosePhoneNumber(DetonatorBox *aBoxPtr, ResizingGraphicsView *aParentPtr = 0);
     ~ChoosePhoneNumber();
 
 public slots:
-	/// all magic is done in this slot
-	void on_comboBox_activated();
+    /// all magic is done in this slot
+    void on_comboBox_activated();
 
 protected:
-	virtual void changeEvent(QEvent *e) override;
+    virtual void changeEvent(QEvent *e) override;
 
 private:
-	Ui::ChoosePhoneNumber *m_ui;
-	DetonatorBox* theDBPtr;
+    Ui::ChoosePhoneNumber *m_ui;
+    DetonatorBox *theDBPtr;
 };
 
 #endif // CHOOSEPHONENUMBER_H

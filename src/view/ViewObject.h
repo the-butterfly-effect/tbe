@@ -43,8 +43,8 @@ protected:
     /// simple constructor, do not use directly - use factoryMethod instead
     explicit ViewObject(AbstractObjectPtr anAbstractObjectPtr);
 
-	/// image name constructor
-    ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString& anImageName);
+    /// image name constructor
+    ViewObject(AbstractObjectPtr anAbstractObjectPtr, const QString &anImageName);
 
 public:
     /// Static factory method member for ViewObjects and all children.
@@ -53,52 +53,58 @@ public:
     /// @param __args  are the arguments to be forwarded to the constructor of the child object
     /// @returns a QSharedPointer pointing to the ViewObject (child) instance.
     template<typename _Tp, typename... _Args>
-      static ViewObjectPtr factoryMethod(_Args&&... __args)
-      {
+    static ViewObjectPtr factoryMethod(_Args &&... __args)
+    {
         QSharedPointer<_Tp> p(new _Tp(std::forward<_Args>(__args)...));
         p->theThisPtr = p;
         return p;
-      }
+    }
 
     /**
-	 * Empty Destructor
-	 */
-	virtual ~ViewObject ( );
+     * Empty Destructor
+     */
+    virtual ~ViewObject ( );
 
     AbstractObjectPtr getAbstractObjectPtr(void) const
-    { return theAbstractObjectPtr->getThisPtr(); }
+    {
+        return theAbstractObjectPtr->getThisPtr();
+    }
 
     ViewObjectPtr getThisPtr() const
-    { return ViewObjectPtr(theThisPtr); }
+    {
+        return ViewObjectPtr(theThisPtr);
+    }
 
-	const QString& getBaseImageName() const
-	{ return theBaseImageName; }
+    const QString &getBaseImageName() const
+    {
+        return theBaseImageName;
+    }
 
-	/// @returns Aspect ratio (width/height) of the (first) image,
-	///          before it was scaled to width and height dimensions.
-//	qreal getOrigImageAspectRatio(void)
+    /// @returns Aspect ratio (width/height) of the (first) image,
+    ///          before it was scaled to width and height dimensions.
+//  qreal getOrigImageAspectRatio(void)
 //    { return thePixmapWidth / thePixmapHeight; }
 
-	/// Sets new geometry for this object.
-	/// @note This member should only be called by UndoCommands
-	/// @note It will set the geometry in the AbstractObject and
-	/// then update itself.
-	/// @param aNewPosition
-	/// @param aNewWidth
-	/// @param aNewHeight
-	void setNewGeometry(const Position& aNewPosition,
-						qreal aNewWidth,
-						qreal aNewHeight);
-	void setNewGeometry(const Position& aNewPosition);
+    /// Sets new geometry for this object.
+    /// @note This member should only be called by UndoCommands
+    /// @note It will set the geometry in the AbstractObject and
+    /// then update itself.
+    /// @param aNewPosition
+    /// @param aNewWidth
+    /// @param aNewHeight
+    void setNewGeometry(const Position &aNewPosition,
+                        qreal aNewWidth,
+                        qreal aNewHeight);
+    void setNewGeometry(const Position &aNewPosition);
 
     /// Sets the image to be displayed to the image pointed to by anIndex.
     /// @note Supposed to be only used by AbstractObject::updateViewObject().
     /// @note New images are only loaded upon creation of the object.
-	virtual void setNewImageIndex(unsigned int anIndex);
+    virtual void setNewImageIndex(unsigned int anIndex);
 
     /// based on changes in the underlying AbstractObject, adjust the image
     /// by resizing and/or rotation. This is overkill for just moving...
-	virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position& aCenter);
+    virtual void adjustObjectDrawing(qreal aWidth, qreal aHeight, const Position &aCenter);
 
 signals:
     /// SIGNAL
@@ -111,52 +117,52 @@ protected:
     void adjustObjectDrawing(void);
 
     /// overridden to allow detection of mouse button presses & moves
-    virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent* anEvent );
+    virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent *anEvent );
     /// overridden to allow detection of mouse button presses & moves
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent* anEvent);
+    virtual void mousePressEvent ( QGraphicsSceneMouseEvent *anEvent);
     /// overridden to allow detection of mouse button presses & moves
-    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* anEventPtr);
+    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *anEventPtr);
 
     /// overridden to allow object highlighting
-    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent* event );
+    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent *event );
     /// overridden to allow highlighting
-    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent* event );
+    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent *event );
 
     void realHoverEnterEvent(void);
 protected slots:
     void realMousePressEvent(void);
 
 protected:
-	// Protected attributes
-	//
+    // Protected attributes
+    //
 
     /// because of the symbiosis between AbstractObject and ViewObject,
     /// we're not storing the shared_ptr, but the real pointer
     /// (otherwise, no AbstractObject would ever be cleaned away)
-    AbstractObject* theAbstractObjectPtr;
+    AbstractObject *theAbstractObjectPtr;
 
-	typedef QList<QPixmap> ImageList;
-	ImageList thePixmapList;
+    typedef QList<QPixmap> ImageList;
+    ImageList thePixmapList;
 
-	ViewObjectActionDecorator theDecorator;
+    ViewObjectActionDecorator theDecorator;
 
     friend class AbstractUndoCommand;
     friend class EditObjectDialog;
-    AbstractUndoCommand* theMUCPtr;
+    AbstractUndoCommand *theMUCPtr;
     QPointF theClickedScenePos;
     const static int thePieMenuDelay = 225;
 
-	qreal thePixmapWidth;
-	qreal thePixmapHeight;
+    qreal thePixmapWidth;
+    qreal thePixmapHeight;
 
 private:
-	void initViewObjectAttributes(void);
+    void initViewObjectAttributes(void);
 
-	QString theBaseImageName;
+    QString theBaseImageName;
 
-	qreal theOldWidth;
-	qreal theOldHeight;
-	Position theOldPos;
+    qreal theOldWidth;
+    qreal theOldHeight;
+    Position theOldPos;
 
     ViewObjectWeakPtr theThisPtr;
 
