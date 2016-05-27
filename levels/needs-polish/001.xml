@@ -12,9 +12,11 @@
         <predefined>
             <object width="2.400" X="2.000" Y="1.400" height="0.9" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
+                <tooltip>Butterflies think the sun is nice and warm.</tooltip>
             </object>
             <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject">
                 <property key="ImageName">Anonymous_daffodil_klaas</property>
+                <tooltip>This is a daffodil: Butterflies want to fly there!</tooltip>
             </object>
             <object width="0.2" X="1.95" Y="0.63" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName">Empty</property>
@@ -24,6 +26,7 @@
             </object>
             <object width="2.3" X="1.15" Y="0.05" type="Floor">
                 <property key="ImageName">White-to-green</property>
+                <tooltip></tooltip>
             </object>
             <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
                 <property key="ImageName">rg1024_Grass_texture</property>
@@ -38,6 +41,14 @@
                 <property key="ZValue">20.0</property>
             </object>
             <object width="0.800" X="2.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.300" Y="0.090" height="0.180" type="Scenery" angle="0.000">
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">20.0</property>
             </object>
