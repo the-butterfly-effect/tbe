@@ -1,16 +1,17 @@
 For quality assurance, levels are structured in multiple directories
-which reflect their quality and completeness level.
+which reflect their quality, completeness and correctness.
 
-Here is the meaning of the directories:
 
-* draft: WIP levels which are not playable yet or have serious
+## Significance of the directories
+
+* `draft`: WIP levels which are not playable yet or have serious
   gameplay or graphical issues. Can change radically at
   any time
-* needs-polish:	Solvable and has proper goal text but has some minor
+* `needs-polish`: Solvable and has proper goal text but has some minor
   issues, mostly graphical (caused by level itself, not by the engine).
   Also, a needs-polish level should be expected to not change significantly
   (esp. in gameplay)
-* finished: Solvable and highly polished. High quality requirements, can be
+* `finished`: Solvable and highly polished. High quality requirements, can be
   presented in levels.xml and releases without embarrassing ourselves.
   Requirements:
     * Solvable
@@ -30,19 +31,28 @@ Here is the meaning of the directories:
     * For levels supposed to be difficult: No easy shortcuts should be
       possible. Must be decided on a case-on-case basis
     * Correct spelling and grammar
+    * Hints are supplied so correct operation of the level can be validated
+      by the regression framework
     * (Add your own requirements here if you have more ideas)
-* attic: Old retired levels
-* test: Levels for testing the engine and other things
+* `attic`: Old retired levels. These levels have been given up on: mechanics
+   don't work, the level isn't fun or we have no ideas on how to make it good.
+* `test`: Levels for testing the engine and other things
 
-Levels in finished should generally go into levels.xml. Levels in
-needs-polish may go into level.xml, needs to be decided on a case-by-case
-basis. Levels from other directories should not be included.
+Levels in `finished` should generally go into levels.xml. 
+Levels in `needs-polish` may go into levels.xml, this needs to be decided on a 
+case-by-case basis. Levels from other directories should not be included.
 
-Custom images should generally NOT go into needs-polish or finished.
+
+## Images
+
+Custom images should generally NOT go into `needs-polish` or `finished`.
 Instead, move them directly to the main imagery directory so these
 images become available for all levels, no matter the directory.
 It is okay to have custom images in draft, attic and test since it is
 often easier and quicker to handle.
+
+
+## Suggested workflow
 
 Here's the suggested workflow of creating a new level and adding it into
 the repository:
@@ -50,8 +60,8 @@ the repository:
 * If the level is in a playable state, move it either to needs-polish or
   directly to finished if it meets the requirements (important!)
 * Polish the level and fix the remaining issues
-* If you consider the level finished, do one final check and then move it
-  into finished
+* If you consider the level finished, do one final check and then issue 
+  a pull request to move it into finished
 * Custom resources of finished levels should be made available globally
 * If the level is good, add it to levels.xml
 * Later on: If any level in finished must be changed for any reason,
@@ -59,4 +69,4 @@ the repository:
   regressions. If the check fails, fix the problems, then commit. If this
   is not possible or you are too lazy, either don't commit or move the
   level back to needs-polish.
-* Consider adding finished levels into the Makefile for regression testing
+* Add finished levels into the top-level Makefile for regression testing
