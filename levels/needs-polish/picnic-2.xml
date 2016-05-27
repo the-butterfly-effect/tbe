@@ -88,6 +88,7 @@
             <object width="3.000" X="2.500" Y="0.050" height="0.100" type="Scenery" angle="0.000">
                 <property key="ImageName">sand</property>
                 <property key="ZValue">0.5</property>
+                <tooltip>A sand pit with a very rough surface.</tooltip>
             </object>
             <object width="3.000" X="2.500" Y="0.025" height="0.050" type="RectObject" ID="SandBottom" angle="0.000">
                 <property key="ImageName">Empty</property>
