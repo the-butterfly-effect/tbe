@@ -1,0 +1,48 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Float, balloon, float!</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Topple the pin.</description>
+        <date>9/9/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object type="BedOfNails">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="2.3" height="2.0"/>
+        <predefined>
+            <object width="2.3" X="1.15" Y="0.05" height="0.1" type="Floor" angle="0">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
+                <property key="page1">Where do balloons go?&lt;br>They can’t keep going up forever!</property>
+                <property key="page2">Or do they fly to the stars?</property>
+                <property key="page3">I want to be a balloon &lt;br>… &lt;br>and be the first one to set foot on Alpha Centauri!</property>
+                <property key="page4">… Post-It Boy</property>
+            </object>
+            <object width="0.12" X="0.18" Y="0.278" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
+            <object width="0.4" X="1.65" Y="0.54" height="0.88" type="Wall" angle="0"/>
+            <object width="1.0" X="1.65" Y="1.07" height="0.12" type="RotatingBar" angle="0" />
+            <object width="0.22" X="1.65" Y="1.24" height="0.22" type="BowlingBall" angle="0"/>
+            <object width="0.27" X="0.47" Y="0.36" height="0.36" type="Balloon" angle="0">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="xbelow">0.17</property>
+            <property key="object">thePin</property>
+        </goal>
+    </goals>
+    <hints>
+		<hint X="1.17" Y="1.70" number="1" object="BedOfNails" angle="3.14" />
+        <hint X="0.61" Y="1.30" number="2" object="BedOfNails" angle="0.60" />
+    </hints>
+</tbe-level>

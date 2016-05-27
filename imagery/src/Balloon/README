@@ -14,3 +14,17 @@ LICENSE: WTFPL
 * BalloonPoof.svg BedOfNails.svg Cactus.svg CircularSaw.svg
 AUTHOR: Klaas van Gend
 LICENSE: PD 
+
+* r1024_eggs.svg
+AUTHOR: r1024
+LICENSE: PD
+SOURCE: http://www.openclipart.org/detail/20158
+
+* egg_1.svg egg_2.svg egg_3.svg
+AUTHOR: Klaas van Gend simplified the above r1024_eggs.svg to fit one frame each.
+LICENSE: PD
+
+* yellow_bird.svg
+AUTHOR: Klaas van Gend
+SOURCE: Original work for The Butterfly Effect
+LICENSE: PD

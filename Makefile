@@ -36,31 +36,31 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/draft/balloons-do-poof.xml:6, \
-	      --regression levels/draft/bouncing_balls.xml:6, \
-	      --regression levels/draft/butterfly-on-steroids.xml:65, \
-	      --regression levels/draft/cola-powered-bike.v2.xml:20, \
-              --regression=levels/draft/construction_yard.xml:26, \
-              --regression levels/draft/contraption1.xml:36, \
-              --regression levels/draft/float-balloon-float.xml:21, \
-	      --regression levels/draft/geyser.xml:16, \
-	      --regression levels/draft/house_of_cards.xml:20, \
-	      --regression=levels/draft/in_the_attic.xml:17, \
-	      --regression levels/draft/jumping_around-2.xml:10, \
-	      --regression=levels/draft/loopings2.xml:22, \
-	      --regression levels/draft/save-the-butterfly.xml:28, \
-	      --regression levels/draft/spare-the-balloon.xml:25, \
-	      --regression levels/draft/the_ball_the_box_and_the_penguin.xml:32, \
-	      --regression levels/angry/birds1.xml:13, \
-	      --regression levels/elce09/002.xml:30, \
-	      --regression levels/elce09/003.xml:40, \
-	      --regression levels/elce09/004.xml:15, \
-	      --regression levels/elce09/006.xml:8, \
-	      --regression levels/games/pingus-1.xml:65, \
-	      --regression levels/jumpingjack/party-at-office.xml:15, \
-	      --regression levels/picnic/picnic-0.xml:13, \
-	      --regression levels/picnic/picnic-1.xml:13, \
-	      --regression=levels/picnic/picnic-3.xml:70
+	./tbe --regression levels/needs-polish/balloons-do-poof.xml:6, \
+	      --regression levels/finished/bouncing_balls.xml:6, \
+	      --regression levels/needs-polish/butterfly-on-steroids.xml:65, \
+	      --regression levels/finished/cola-powered-bike.v2.xml:20, \
+              --regression=levels/finished/construction_yard.xml:26, \
+              --regression levels/finished/contraption1.xml:36, \
+              --regression levels/finished/float-balloon-float.xml:21, \
+	      --regression levels/needs-polish/geyser.xml:16, \
+	      --regression levels/finished/house_of_cards.xml:20, \
+	      --regression=levels/finished/in_the_attic.xml:17, \
+	      --regression levels/finished/jumping_around-2.xml:10, \
+	      --regression=levels/needs-polish/loopings2.xml:22, \
+	      --regression levels/needs-polish/save-the-butterfly.xml:28, \
+	      --regression levels/needs-polish/spare-the-balloon.xml:25, \
+	      --regression levels/finished/the_ball_the_box_and_the_penguin.xml:32, \
+	      --regression levels/finished/birds1.xml:13, \
+	      --regression levels/needs-polish/002.xml:30, \
+	      --regression levels/finished/003.xml:40, \
+	      --regression levels/needs-polish/004.xml:15, \
+	      --regression levels/finished/006.xml:8, \
+	      --regression levels/finished/pingus-1.xml:65, \
+	      --regression levels/needs-polish/party-at-office.xml:15, \
+	      --regression levels/finished/picnic-0.xml:13, \
+	      --regression levels/finished/picnic-1.xml:13, \
+	      --regression=levels/finished/picnic-3.xml:70
 
 # levels currently known to fail regression:
 failregression: usr/games/tbe

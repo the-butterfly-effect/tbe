@@ -1,0 +1,82 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Blow da Bottle</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Join all bowling pins together.</description>
+        <date>10/11/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Boulder" count="10">
+            <object X="2.7" width="0.1" type="RectObject" Y="0.15" angle="0" height="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">boulder</property>
+                <property key="Mass">0.2</property>
+                <tooltip>Not an impressive piece of stone.</tooltip>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object X="0" width="0.166" type="ColaMintBottle" Y="0" angle="0" height="0.5">
+                <property key="Bounciness">0</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Styrofoam Block" count="1">
+            <object X="0" width="0.25" type="RectObject" Y="0" angle="0" height="0.8">
+                <property key="Bounciness">0.2</property>
+                <property key="Friction">0.3</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3" height="2.25"/>
+        <predefined>
+            <object X="1.5" width="3" type="Floor" Y="0.05" angle="0" height="0.1">
+                <property key="ImageName">Yellow-to-brown</property>
+            </object>
+            <object X="1.3025" width="2.6" type="RightRamp" Y="2.07002" angle="0" height="0.4"/>
+            <object X="2.13" width="0.44" type="Wall" Y="0.7" angle="0" height="1.2">
+                <property key="Bounciness">0</property>
+            </object>
+            <object X="1.86" width="0.21" type="VolleyBall" Y="1.4" angle="0" height="0.21"/>
+            <object X="2.34" width="0.12" type="BowlingPin" Y="1.47" angle="0" ID="Pin" height="0.34"/>
+            <object X="2.45" width="0.12" type="BowlingPin" Y="0.3" angle="0" height="0.34"/>
+            <object X="2.55" width="0.12" type="BowlingPin" Y="0.5" angle="0" height="0.34"/>
+            <object X="2.65" width="0.12" type="BowlingPin" Y="0.3" angle="0" height="0.34"/>
+            <object X="2.75" width="0.12" type="BowlingPin" Y="0.5" angle="0" height="0.34"/>
+            <object X="2.85" width="0.12" type="BowlingPin" Y="0.3" angle="0" height="0.34"/>
+            <object X="2.95" width="0.1" type="Wall" Y="0.5" angle="0" height="0.8">
+                <property key="Bounciness">0</property>
+            </object>
+            <object X="0.430006" width="0.85" type="ColaCrate" Y="0.402503" angle="0" height="0.6"/>
+            <object X="0.467525" width="0.85" type="ColaCrate" Y="1.00501" angle="0" height="0.6"/>
+            <object X="1.32002" width="0.85" type="ColaCrate" Y="0.402503" angle="0" height="0.6"/>
+            <object X="1.33003" width="0.85" type="ColaCrate" Y="1.00501" angle="0" height="0.6"/>
+            <object X="1.31499" width="0.85" type="ColaCrate" Y="1.61001" angle="0" height="0.6"/>
+            <object X="2.8" width="0.22" type="PostIt" Y="1.4" angle="0" height="0.22">
+                <property key="page1">Those pins always long for company.</property>
+                <property key="page2">Let’s join the lonely one above with his friends below.</property>
+                <property key="page3">By the way: you may sometimes have more in your toolbox than you need …</property>
+                <property key="page4">&lt;br>&lt;br>… Post-It Boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">Pin</property>
+            <property key="ybelow">1.0</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">Pin</property>
+            <property key="xover">2.36</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

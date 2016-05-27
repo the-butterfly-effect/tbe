@@ -1,0 +1,86 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Balloons do Poof</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Push the bowling pins into the goal.</description>
+        <date>10/6/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="Cactus"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="BowlingBall"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3" height="2"/>
+        <predefined>
+            <object width="0.1" X="0.9" Y="1.25" height="1.5" type="Wall" angle="0"/>
+            <object width="3" X="1.5" Y="0.05" height="0.1" type="Floor" angle="0"/>
+            <object width="0.1" X="0.65" Y="0.05" height="0.1" type="Floor" angle="0" ID="block"/>
+            <object width="0.70" X="0.80" Y="0.30" height="0.60" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.27" X="0.7" Y="0.33" height="0.36" type="Balloon" ID="balloon" angle="0">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object width="0.1" X="0.7" Y="0.15" height="0.199" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon@(0,-0.17)</property>
+                <property key="object2">block@(0,0.03)</property>
+            </object>
+            <object width="0.1" X="0.5" Y="1.05" height="1.9" type="Wall" angle="0"/>
+            <object width="0.21" X="0.7" Y="1.86" height="0.21" type="VolleyBall" angle="0"/>
+            <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightWedge" angle="0">
+                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
+                <property key="Bounciness">0.6</property>
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Mass">0.2</property>
+                <property key="TranslationGuide">1.57</property>
+            </object>
+            <object width="0.4" X="2.93" Y="0.3" height="0.14" type="LeftRamp" angle="1.57">
+                <property key="Bounciness">0.3</property>
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.12" X="2.350375162511972" Y="0.2752126157283783" height="0.34" type="BowlingPin" ID="the-left-pin" angle="0"/>
+            <object width="0.12" X="2.500249973691478" Y="0.2815407482722643" height="0.34" type="BowlingPin" ID="the-right-pin" angle="0"/>
+            <object width="1.6" X="1.75" Y="0.5499999999999999" height="0.11" type="Floor" angle="0"/>
+            <object width="0.25" X="1.159779813680971" Y="0.8068034382721538" height="0.4" type="Cactus" angle="0"/>
+            <object width="0.25" X="0.2143071428039244" Y="0.2983491595897771" height="0.4" type="Cactus" angle="0"/>
+            <object width="0.3200000000000001" X="2.800000000000004" Y="0.4" height="0.6" type="Scenery" angle="0">
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.24" X="2.76" Y="0.65" height="0.1" type="Floor" angle="-0.05">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.25" X="2.290144957414487" Y="0.8026012603048934" height="0.4" type="Cactus" angle="0"/>
+            <object width="0.2499999999999999" X="1.483432302040413" Y="0.8488243365579708" height="0.5" type="Scenery" angle="0">
+                <property key="ImageName">Anonymous_daffodil_klaas</property>
+            </object>
+            <object width="0.22" X="1.886743276842394" Y="0.9034516804479167" height="0.22" type="PostIt" angle="0">
+                <property key="page1">Look: two pins need kicking.</property>
+                <property key="page2">And there’s a balloon that wants to go up.</property>
+                <property key="page3">I’m sure the balloon has something to do with the solution to this level.</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="object">the-right-pin</property>
+            <property key="xover">2.75</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="object">the-left-pin</property>
+            <property key="xover">2.6</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="0.7" Y="1.5" number="1" object="BowlingBall"/>
+    </hints>
+</tbe-level>

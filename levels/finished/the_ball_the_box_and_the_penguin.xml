@@ -1,0 +1,113 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>The Ball, the Box and the Penguin</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Put the soccer ball into the pit and lead the little penguin to the door.</description>
+        <date>17.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object Y="0" X="0" angle="0" height="1" width="0.2" type="Wall"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="3.9" width="6.6"/>
+        <predefined>
+            <object Y="1.58159" X="2.84928" angle="0" height="0.78809" width="0.9" type="CardboardBox">
+                <property key="ZValue">5</property>
+            </object>
+            <object Y="3.34557" X="4.04727" angle="0" height="0.22" width="0.22" type="SoccerBall" ID="ball"/>
+            <object Y="1.13593" X="2.45883" angle="0" height="0.1" width="3.74805" type="Floor"/>
+            <object Y="2.93897" X="3.70521" angle="0" height="0.590529" width="1" type="LeftRamp"/>
+            <object Y="1.36054" X="0.780614" angle="0" height="0.28" width="0.28" type="PingusWalkRight"/>
+            <object Y="0.530084" X="3.2948" angle="0" height="0.1" width="5.46724" type="Floor">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object Y="0.814128" X="3.16838" angle="0" height="0.494429" width="0.310585" type="PingusExit">
+                <property key="ImageName">opendoor</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="0.0649026" X="6.20021" angle="0" height="0.1" width="0.741643" type="Floor">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object Y="0.275439" X="6.45641" angle="0" height="0.322423" width="0.2" type="Wall"/>
+            <object Y="0.295119" X="5.92994" angle="0" height="0.371576" width="0.2" type="Wall"/>
+            <object Y="0.270543" X="6.19046" angle="0" height="0.332173" width="0.332173" type="Scenery">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object Y="1.21845" X="0.780583" angle="0" height="0.0825243" width="0.398058" type="RightFixedWedge"/>
+            <object Y="0.570874" X="1.11311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="1.11311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="2.01311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="2.91311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="3.81311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="4.71311" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.570874" X="5.57913" angle="0" height="0.184466" width="1.1" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="0.1" X="6.22476" angle="0" height="0.184466" width="0.94466" type="Scenery">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object Y="3.33588" X="0.941142" angle="0" height="0.22" width="0.22" type="PostIt">
+                <property key="ZValue">1</property>
+                <property key="page1">Cardboard boxes are versatile and useful for many purposes, but this one topples towards the wrong direction.</property>
+                <property key="page2">Place the walls at the correct places so everything walks, rolls and slides correctly.</property>
+                <property key="page3">Post-It Boy (who likes to play with boxes)</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.309804;0.407843;0.0980392;1</gradientstop>
+            <gradientstop pos="0.05">0.301961;0.501961;0.109804;1</gradientstop>
+            <gradientstop pos="0.12">0.392157;0.65098;0.145098;1</gradientstop>
+            <gradientstop pos="0.16">0.701961;0.701961;0.882353;1</gradientstop>
+            <gradientstop pos="1">0.494118;0.494118;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="equalmore">1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="xover">5.93</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="xbelow">6.46</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="ybelow">0.3</property>
+        </goal>
+        <goal type="escapedPingusCount" isFail="true">
+            <property key="lessthan">1</property>
+        </goal>
+    </goals>
+    <hints>
+		<hint X="2.50" Y="2.75" number="1" object="Wall"/>
+        <hint X="6.46" Y="0.94" number="2" object="Wall"/>
+    </hints>
+</tbe-level>
