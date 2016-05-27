@@ -14,13 +14,13 @@ which reflect their quality, completeness and correctness.
 * `finished`: Solvable and highly polished. High quality requirements, can be
   presented in levels.xml and releases without embarrassing ourselves.
   Requirements:
-    * Solvable
-    * Unique name
-    * Proper goal description. Succinct and to the point. Story-telling goes
-      to post-it notes
+    * Must be solvable
+    * Must have a unique name
+    * Proper goal description. Succinct and to the point.
+      Story-telling goes to Post-It notes.
     * No customized object is allowed if a standard object would have been
-      appropriate as well. For example, no using RectObject with wood texture
-      since Floor does the same thing.
+      appropriate as well. For example, no using RectObject with old wood
+      texture since Floor does the same thing.
     * Appropriate scene size (test by resizing the window)
     * All object descriptions/tooltips must be correct, if present
     * Custom non-trivial objects must have tooltips
@@ -31,14 +31,15 @@ which reflect their quality, completeness and correctness.
     * For levels supposed to be difficult: No easy shortcuts should be
       possible. Must be decided on a case-on-case basis
     * Correct spelling and grammar
-    * Hints are supplied so correct operation of the level can be validated
-      by the regression framework
     * (Add your own requirements here if you have more ideas)
+  Soon to become a requirement (thus optional for now):
+    * Hints should be supplied so correct operation of the level can be
+      validated by the regression framework
 * `attic`: Old retired levels. These levels have been given up on: mechanics
    don't work, the level isn't fun or we have no ideas on how to make it good.
 * `test`: Levels for testing the engine and other things
 
-Levels in `finished` should generally go into levels.xml. 
+Levels in `finished` should generally go into levels.xml.
 Levels in `needs-polish` may go into levels.xml, this needs to be decided on a 
 case-by-case basis. Levels from other directories should not be included.
 
