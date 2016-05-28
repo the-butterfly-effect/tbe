@@ -1,13 +1,37 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
+        ${SRCDIRNAME}/006-stick-figure.svg
+        ${SRCDIRNAME}/006-stick-figure-arm.svg
+        ${SRCDIRNAME}/brother-soccer.svg
+        ${SRCDIRNAME}/carpenters-rule.svg
         ${SRCDIRNAME}/cloud-door.svg
         ${SRCDIRNAME}/clouds.svg
+        ${SRCDIRNAME}/dream-of-flowers.svg
+        ${SRCDIRNAME}/dream-of-hovering.svg
+        ${SRCDIRNAME}/extreme-tux-racer.png
+        ${SRCDIRNAME}/golfer.svg
+        ${SRCDIRNAME}/jj-body.png
+        ${SRCDIRNAME}/hammerer-1.svg
+        ${SRCDIRNAME}/monkey.svg
+        ${SRCDIRNAME}/palmtree.svg
+        ${SRCDIRNAME}/picnic-0-tent-canvas.svg
+        ${SRCDIRNAME}/picnic-1-background.svg
+        ${SRCDIRNAME}/picnic-2-left-body.svg
+        ${SRCDIRNAME}/pole.svg
+        ${SRCDIRNAME}/prizes.svg
         ${SRCDIRNAME}/scaffolding-clamp.svg
         ${SRCDIRNAME}/scaffolding-mount.svg
         ${SRCDIRNAME}/scaffolding-vertical-tube.svg
         ${SRCDIRNAME}/SpidersWeb.svg
+        ${SRCDIRNAME}/start-banner.svg
+        ${SRCDIRNAME}/stk-logo.png
+        ${SRCDIRNAME}/thank-you-stone.png
+        ${SRCDIRNAME}/triangle.svg
         ${SRCDIRNAME}/toychest.svg
+        ${SRCDIRNAME}/used_wood_triangle.png
         ${SRCDIRNAME}/wood_crate_flat.svg
         ${SRCDIRNAME}/wood_crate_square.svg
+        ${SRCDIRNAME}/xray2000.svg
+        ${SRCDIRNAME}/zzz.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

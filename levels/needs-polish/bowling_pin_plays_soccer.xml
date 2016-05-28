@@ -1,0 +1,92 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bowling Pin plays soccer</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Kick the bowling pin into the goal.</description>
+        <date>12/17/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="TennisBall"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6" height="3.0"/>
+        <predefined>
+            <object width="0.1" X="0.05" Y="1.45" height="2.7" type="Floor">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object X="0.5" Y="2.4" type="BowlingBall"/>
+            <object width="3.6" X="1.9" Y="1.72" height="0.8" type="RightRamp" angle="0">
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object X="3.95" Y="1.19" type="ColaMintBottle" angle="-1.57"/>
+            <object width="4.3" X="2.5" Y="1.05" type="Floor"/>
+            <object width="1.2" X="4.05" Y="1.85" height="0.1" type="Floor"/>
+            <object width="0.1" X="4.45" Y="1.65" height="0.3" type="Floor"/>
+            <object width="2.4" X="1.3" Y="1.25" height="0.1" type="Floor"/>
+            <object width="3.7" X="1.95" Y="0.50" height="0.4" type="RightRamp" angle="0">
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin">
+                <property key="Mass"> 1.0</property>
+            </object>
+            <object width="0.5" X="5.5" Y="0.5" height="0.8" type="Scenery">
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object width="0.5" X="4.25" Y="0.5" height="0.8" type="Scenery">
+                <property key="ImageName">goal-scenery</property>
+                <property key="ZValue">4</property>
+            </object>
+            <object width="0.15" X="5.67" Y="0.45" height="0.7" type="RightRamp" angle="3.14">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.15" X="4.42" Y="0.45" height="0.7" type="RightRamp" angle="3.14">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="6.0" X="3.0" Y="0.05" type="Floor"/>
+            <object width="4.5" X="2.25" Y="0.55" height="1.0" type="Scenery">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="2.0" X="1.1" Y="1.75" height="1.4" type="Scenery">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.800" X="0.5" Y="0.325" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="0.800" X="1.3" Y="0.325" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="0.800" X="2.1" Y="0.325" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="0.800" X="0.5" Y="0.975" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="0.800" X="1.3" Y="0.975" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="0.800" X="2.1" Y="0.975" height="0.65" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object X="3.6" Y="0.7" type="PostIt">
+                <property key="page1">I’m like my brother—I play soccer, too!</property>
+                <property key="page2">Kick that pin into the goal!</property>
+                <property key="page3">GOOOOAAAAAL!</property>
+                <property key="page4">Wait a minute!&lt;br>That bowling ball won’t do it.</property>
+                <property key="page5">But that’s not an ordinary cola bottle …</property>
+                <property key="page6">It’s a cola-mint fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page7">Post-It Boy played the world cup soccer …&lt;br>&lt;br>in a previous life.</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="xover">4.0</property>
+            <property key="object">thepin</property>
+        </goal>
+    </goals>
+</tbe-level>

@@ -1,0 +1,142 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Balloon Blues</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Pop all balloons.</description>
+        <date>06.01.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.800" X="0.000" Y="0.000" height="0.150" type="BedOfNails" angle="0.000">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.724" X="0.000" Y="0.000" height="0.100" type="BirchBar" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="2.369" X="1.603" Y="0.650" height="0.100" type="Floor" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object width="0.076" X="0.000" Y="0.000" height="0.076" type="PetanqueBoule" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.550" X="0.000" Y="0.000" height="0.550" type="QuarterArc80" angle="0.000">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Right ramp">
+            <object width="0.93" X="4.781" Y="0.788" height="0.66" type="RightRamp" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Wooden block">
+            <object width="0.107" X="1.376" Y="1.069" height="0.100" type="Floor" angle="0.000">
+                <tooltip>A small immovable obstacle.</tooltip>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5.6" height="3.2"/>
+        <predefined>
+            <object width="2.678" X="1.645" Y="0.052" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.166" X="0.217" Y="0.252" height="0.500" type="ColaMintBottle" angle="0.000"/>
+            <object width="0.380" X="4.524" Y="2.803" height="0.380" type="CircularSaw" angle="0.000"/>
+            <object width="0.544" X="0.537" Y="1.786" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.250" X="0.808" Y="2.036" height="0.400" type="Cactus" angle="0.000"/>
+            <object width="0.220" X="0.290" Y="1.962" height="0.220" type="SoccerBall" angle="0.000"/>
+            <object width="0.270" X="1.214" Y="0.887" height="0.360" type="Balloon" ID="balloon1" angle="0.000"/>
+            <object width="0.270" X="2.610" Y="0.297" height="0.360" type="Balloon" ID="balloon2" angle="0.000"/>
+            <object width="0.270" X="1.599" Y="0.300" height="0.360" type="Balloon" ID="balloon3" angle="0.000"/>
+            <object width="0.270" X="0.639" Y="0.301" height="0.360" type="Balloon" ID="balloon4" angle="0.000"/>
+            <object width="0.256" X="3.858" Y="1.671" height="1.186" type="Wall" angle="0.000"/>
+            <object width="0.200" X="4.492" Y="1.668" height="1.043" type="Wall" angle="0.000"/>
+            <object width="0.767" X="0.705" Y="1.073" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.210" X="3.150" Y="1.592" height="1.220" type="Wall" angle="0.000"/>
+            <object width="0.200" X="0.027" Y="0.965" height="1.928" type="Wall" angle="0.000"/>
+            <object width="0.270" X="4.133" Y="0.468" height="0.360" type="Balloon" ID="balloon5" angle="0.000"/>
+            <object width="0.270" X="2.104" Y="0.884" height="0.360" type="Balloon" ID="balloon6" angle="0.000"/>
+            <object width="0.200" X="1.863" Y="1.463" height="1.515" type="Wall" angle="0.000"/>
+            <object width="0.104" X="2.383" Y="1.316" height="1.214" type="Wall" angle="0.000"/>
+            <object width="0.910" X="2.802" Y="2.277" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.220" X="1.869" Y="2.338" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.430" X="4.546" Y="0.165" height="0.320" type="Dynamite" ID="555-8561" angle="0.000"/>
+            <object width="0.330" X="0.204" Y="2.769" height="0.350" type="DetonatorBox" angle="-1.571">
+                <property key="PhoneNumber">555-8561</property>
+            </object>
+            <object width="1.000" X="0.500" Y="2.549" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.250" X="2.697" Y="2.660" height="0.400" type="Cactus" angle="1.565"/>
+            <object width="0.400" X="0.572" Y="1.333" height="0.200" type="Spring" angle="-1.575"/>
+            <object width="0.270" X="4.155" Y="1.907" height="0.360" type="Balloon" ID="balloon7" angle="0.000"/>
+            <object width="0.400" X="5.170" Y="2.786" height="0.400" type="Weight" angle="0.000"/>
+            <object width="0.270" X="5.045" Y="0.217" height="0.360" type="Balloon" ID="balloon8" angle="0.000"/>
+            <object width="0.126" X="5.471" Y="1.645" height="1.090" type="Wall" angle="0.000"/>
+            <object width="1.166" X="4.973" Y="2.242" height="0.100" type="BirchBar" angle="0.000"/>
+            <object width="0.100" X="0.862" Y="0.863" height="0.319" type="Wall" angle="0.000"/>
+            <object width="0.500" X="0.200" Y="2.300" height="0.500" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.500" X="0.700" Y="2.300" height="0.500" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.500" X="0.200" Y="1.800" height="0.500" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="0.500" X="0.700" Y="1.800" height="0.500" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.00;0.16;0.55;1.00</gradientstop>
+            <gradientstop pos="1.00">0.24;0.29;0.58;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon1</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon2</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon3</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon4</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon5</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon6</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon7</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon8</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+	<hints>
+		<hint X="2.77" Y="2.38" number="1" object="PetanqueBoule"/>
+		<hint X="3.18" Y="2.38" number="2" object="PetanqueBoule"/>
+		<hint X="4.36" Y="2.41" number="3" object="BedOfNails" angle="-2.70"/>
+		<hint X="3.09" Y="2.48" number="4" object="BirchBar"/>
+		<hint X="1.49" Y="0.65" number="5" object="Floor"/>
+		<hint X="3.54" Y="0.39" number="6" object="QuarterArc80" angle="-1.49"/>
+		<!--hint X="4.87" Y="0.80" number="7" object="Floor" angle="-0.62"/-->
+		<!--hint X="1.39" Y="1.08" number="8" object="Floor"/-->
+	</hints>
+</tbe-level>

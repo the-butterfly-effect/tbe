@@ -1,0 +1,201 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Double Action</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Help the butterfly reach the flower.</description>
+        <date>10/13/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object type="DominoRed">
+                <property key="Mass">0.3</property>
+                <property key="Resizable">none</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Styrofoam Block">
+            <object width="0.25" height="0.8" type="RectObject">
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+                <property key="Friction">0.3</property>
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <property key="Resizable">none</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="1.0" height="0.5" type="LeftRamp" angle="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="8" height="5"/>
+        <predefined>
+            <object width="8" X="4" Y="0.05" type="Floor">
+                <property key="Bounciness">0.1</property>
+                <property key="Friction">0.6</property>
+                <property key="ImageName">DarkerGreen</property>
+            </object>
+            <object width="0.4" X="7.4" Y="4.2" height="0.9" type="RectObject">
+                <property key="ImageName">Anonymous_daffodil_klaas</property>
+            </object>
+            <object width="0.2" X="7.3" Y="4.55" height="0.2" type="Scenery" ID="Flower">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object X="4.95" Y="4.39" type="Butterfly" ID="Butterfly">
+                <property key="Object">Flower</property>
+            </object>
+            <object width="0.85" X="5.91" Y="3.73" height="0.86" type="Wall">
+                <property key="Friction">1</property>
+            </object>
+            <object width="0.35" X="6.67" Y="4.1" height="1" type="RectObject">
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.35" X="6.63" Y="3.1" height="1" type="RectObject">
+                <property key="Friction">0.1</property>
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.35" X="6.60" Y="2.1" height="1" type="RectObject">
+                <property key="Friction">0.1</property>
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.35" X="6.67" Y="1.1" height="1" type="RectObject">
+                <property key="Friction">0.1</property>
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.35" X="6.62" Y="0.35" height="0.5" type="RectObject">
+                <property key="Friction">0.1</property>
+                <property key="Bounciness">0.2</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.6" X="7.55" Y="1.94" height="3.65" type="Wall"/>
+            <object width="0.2" X="5.5" Y="0.9" height="1.6" type="Floor">
+                <property key="Bounciness">0.2</property>
+            </object>
+            <object width="0.2" X="4.79" Y="1.0" height="1.4" type="Floor">
+                <property key="Bounciness">0.2</property>
+            </object>
+            <object X="5.168435573577881" Y="0.35" type="ColaMintBottle" angle="3.1415">
+                <property key="Bounciness">0.1</property>
+                <property key="Thrust">20</property>
+            </object>
+            <object X="5.337530612945557" Y="0.35" type="ColaMintBottle" angle="3.1415">
+                <property key="Bounciness">0.1</property>
+                <property key="Thrust">20</property>
+            </object>
+            <object X="4.999340057373047" Y="0.35" type="ColaMintBottle" angle="3.1415">
+                <property key="Bounciness">0.1</property>
+                <property key="Thrust">20</property>
+            </object>
+            <object width="0.48" X="5.15" Y="0.83" height="0.5" type="RectObject">
+                <property key="Bounciness">0.1</property>
+                <property key="Friction">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="TranslationGuide">1.57</property>
+                <property key="Mass">1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="1.7" X="4.1" Y="2" height="0.6" type="RightRamp" angle="0">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object width="0.4" X="5.80" Y="1.5" height="0.4" type="RightRamp" angle="0">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object width="2.3" X="2.1" Y="2.25" type="Floor">
+                <property key="ImageName">DarkerGreen</property>
+            </object>
+            <object X="3.1" Y="2.5" type="BowlingBall"/>
+            <object width="0.1" X="3.1" Y="2.35" height="0.1" type="Floor">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object X="2.8" Y="2.55" type="DominoBlue"/>
+            <object X="2.5" Y="2.55" type="DominoBlue"/>
+            <object X="2.2" Y="2.55" type="DominoBlue"/>
+            <object X="1.9" Y="2.55" type="DominoBlue"/>
+            <object X="1.6" Y="2.55" type="DominoBlue"/>
+            <object X="1.3" Y="2.55" type="DominoBlue"/>
+            <object X="0.44" Y="0.18" type="ColaMintBottle" angle="1.55">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object X="1.18" Y="4.7" type="BowlingBall"/>
+            <object X="4.3" Y="4.30" type="DominoRed"/>
+            <object X="4.0" Y="4.30" type="DominoRed"/>
+            <object X="3.7" Y="4.30" type="DominoRed"/>
+            <object X="3.4" Y="4.30" type="DominoRed"/>
+            <object X="3.1" Y="4.30" type="DominoRed"/>
+            <object X="2.8" Y="4.30" type="DominoRed"/>
+            <object X="2.5" Y="4.30" type="DominoRed"/>
+            <object X="2.2" Y="4.30" type="DominoRed">
+                <property key="Mass">1.3</property>
+            </object>
+            <object X="1.9" Y="4.30" type="DominoRed">
+                <property key="Mass">1.0</property>
+            </object>
+            <object X="1.6" Y="4.30" type="DominoRed">
+                <property key="Mass">0.6</property>
+            </object>
+            <object width="0.1" X="1.0" Y="4.0" type="Floor">
+                <property key="Friction">0.6</property>
+                <property key="ImageName">DarkerBlue</property>
+            </object>
+            <object width="3.1" X="2.8" Y="4.0" type="Floor">
+                <property key="ImageName">DarkerBlue</property>
+            </object>
+            <object X="4.3" Y="3.55" type="DominoGreen"/>
+            <object X="4.0" Y="3.55" type="DominoGreen"/>
+            <object X="3.7" Y="3.55" type="DominoGreen"/>
+            <object X="3.4" Y="3.55" type="DominoGreen"/>
+            <object X="3.1" Y="3.55" type="DominoGreen"/>
+            <object X="2.8" Y="3.55" type="DominoGreen"/>
+            <object X="2.5" Y="3.55" type="DominoGreen"/>
+            <object X="2.2" Y="3.55" type="DominoGreen"/>
+            <object X="1.9" Y="3.55" type="DominoGreen"/>
+            <object X="1.6" Y="3.55" type="DominoGreen"/>
+            <object X="1.3" Y="3.55" type="DominoGreen"/>
+            <object width="5.1" X="3.8" Y="3.25" type="Floor">
+                <property key="ImageName">DarkerRed</property>
+            </object>
+            <object width="0.5" X="0.95" Y="2.8" height="0.5" type="RightRamp" angle="0">
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object width="2.5" X="2.5" Y="1.1" height="0.8" type="LeftRamp" angle="0">
+                <property key="ImageName">LeftRamp</property>
+            </object>
+            <object width="1.6" X="5.5" Y="2.7" height="0.8" type="LeftRamp" angle="0">
+                <property key="ImageName">LeftRamp</property>
+            </object>
+            <object width="0.8" X="4.2" Y="0.8" height="0.5" type="RightRamp" angle="0">
+                <property key="ImageName">RightRamp</property>
+            </object>
+            <object X="2.0" Y="1.7" type="PostIt">
+                <property key="page1">This is the final killer challenge.</property>
+                <property key="page2">Look: it’s that butterfly and flower again.</property>
+                <property key="page3">But there’s some styrofoam blocks in the way.</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>… almost done with his home work!</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="distance">
+            <property key="lessthan">0.27</property>
+            <property key="object1">Butterfly</property>
+            <property key="object2">Flower</property>
+        </goal>
+    </goals>
+</tbe-level>

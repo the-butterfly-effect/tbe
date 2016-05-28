@@ -1,0 +1,136 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Dial B for Boom</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Pop the balloon.</description>
+        <date>4/5/11</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="BedOfNails">
+                <property key="Rotatable"> true </property>
+                <property key="Resizable"> false </property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="BowlingBall"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4" height="2.5"/>
+        <predefined>
+            <object width="0.270" X="0.565" Y="0.226" height="0.360" type="Balloon" ID="Balloon" angle="0.000"/>
+            <object width="2.164" X="0.054" Y="1.087" height="0.100" type="Floor" angle="1.570"/>
+            <object width="0.996" X="0.461" Y="0.910" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.220" X="3.730" Y="2.341" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="2.491" X="3.957" Y="1.249" height="0.100" type="Floor" angle="1.571"/>
+            <object width="2.496" X="3.507" Y="1.248" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.330" X="3.733" Y="0.175" height="0.350" type="DetonatorBox" angle="0.000">
+                <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
+            </object>
+            <object width="0.100" X="2.026" Y="1.244" height="0.500" type="DominoGreen" angle="-1.571">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="2.019" Y="1.132" height="0.500" type="DominoGreen" angle="1.571">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="1.380" Y="1.050" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="1.040" Y="1.050" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="2.694" X="1.774" Y="0.750" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.500" X="0.700" Y="1.350" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.100" X="2.880" Y="1.175" height="0.250" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="0.100" X="2.880" Y="0.925" height="0.250" type="Balloon" angle="0.000">
+                <tooltip>The famous blue plastic domino stone.</tooltip>
+                <property key="Polygons">(-0.11,0.175)=(-0.11,-0.175)=(0.11,-0.175)=(0.11,0.175)</property>
+                <property key="ImageName">DominoBlue;Empty;Empty;Empty</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="0.100" X="3.110" Y="1.175" height="0.250" type="Balloon" angle="0.000">
+                <tooltip>The famous blue plastic domino stone.</tooltip>
+                <property key="Polygons">(-0.11,0.175)=(-0.11,-0.175)=(0.11,-0.175)=(0.11,0.175)</property>
+                <property key="ImageName">DominoBlue;Empty;Empty;Empty</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="0.100" X="3.110" Y="0.925" height="0.250" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="0.487" X="1.204" Y="1.356" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.500" X="2.020" Y="1.350" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.250" X="2.875" Y="1.350" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.250" X="3.125" Y="1.350" height="0.100" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Mass">0.1</property>
+                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            </object>
+            <object width="0.600" X="1.500" Y="1.100" height="0.100" type="Floor" angle="1.570"/>
+            <object width="0.430" X="0.758" Y="0.973" height="0.320" type="Dynamite" ID="555-1234" angle="0.000"/>
+            <object width="0.430" X="1.805" Y="0.969" height="0.320" type="Dynamite" ID="555-5678" angle="0.000"/>
+            <object width="0.430" X="2.607" Y="0.988" height="0.320" type="Dynamite" ID="555-9012" angle="0.000"/>
+            <object width="0.569" X="2.326" Y="1.086" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.250" X="1.630" Y="1.350" height="0.100" type="Floor" angle="0.000"/>
+            <object width="2.500" X="2.200" Y="2.047" height="0.456" type="LeftRamp" angle="0.000"/>
+            <object width="1.000" X="2.961" Y="0.330" height="0.460" type="LeftRamp" angle="0.000"/>
+            <object width="0.276" X="2.228" Y="0.936" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.456" X="2.517" Y="1.320" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.216" X="3.364" Y="1.345" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.220" X="3.000" Y="1.856" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">Sir Alfred Hitchcock made a good movie about a devious phone call.</property>
+                <property key="page2">I agree that the best way to do it, is with scissors.</property>
+                <property key="page3">But there are no scissors here to pop the balloon with!</property>
+                <property key="page4">Dial the right number!</property>
+                <property key="page5">&lt;br>&lt;br>… Post-It Boy</property>
+            </object>
+            <object width="0.213" X="0.704" Y="0.428" height="0.100" type="Floor" angle="-0.910"/>
+            <object width="0.172" X="0.567" Y="0.467" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.300" X="3.290" Y="0.690" height="1.300" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="1.300" X="1.990" Y="0.690" height="1.300" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="1.300" X="0.690" Y="0.690" height="1.300" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object width="2.400" X="2.264" Y="0.058" height="0.100" type="Floor" angle="0.000"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.00;0.02;0.47;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">Balloon</property>
+            <property key="statechanged"/>
+        </goal>
+    </goals>
+</tbe-level>

@@ -10,5 +10,9 @@ install(FILES
 	${SRCDIRNAME}/BedOfNails.svg
 	${SRCDIRNAME}/Cactus.svg
 	${SRCDIRNAME}/CircularSaw.svg
+	${SRCDIRNAME}/egg_1.svg
+	${SRCDIRNAME}/egg_2.svg
+	${SRCDIRNAME}/egg_3.svg
+	${SRCDIRNAME}/yellow_bird.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

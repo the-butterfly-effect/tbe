@@ -1,0 +1,119 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Poof Poof Poof</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Make all balloons pop.</description>
+        <date>6/3/11</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.380" X="0.555" Y="2.466" height="0.380" type="CircularSaw" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="1" name="Left birch wedge">
+            <object width="0.400" height="0.200" type="LeftWedge">
+                <property key="Mass">0.6</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="BowlingBall"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="Cactus"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3.5" height="2.5"/>
+        <predefined>
+            <object width="0.270" X="0.700" Y="0.394" height="0.360" type="Balloon" ID="balloon4" angle="0.000">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object width="3.304" X="1.752" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.100" X="1.220" Y="0.100" height="0.100" type="Floor" ID="block1" angle="0.000"/>
+            <object width="0.100" X="1.780" Y="0.100" height="0.100" type="Floor" ID="block3" angle="0.000"/>
+            <object width="0.100" X="1.500" Y="0.100" height="0.100" type="Floor" ID="block2" angle="0.000"/>
+            <object width="1.469" X="2.661" Y="0.398" height="0.604" type="Floor" angle="0.000">
+                <property key="ImageName">big_used_wood_bar</property>
+            </object>
+            <object width="0.166" X="2.176" Y="0.796" height="0.500" type="ColaMintBottle" angle="-1.581">
+                <property key="Thrust">2</property>
+            </object>
+            <object width="0.270" X="1.780" Y="0.814" height="0.360" type="Balloon" ID="balloon3" angle="0.000">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object width="0.270" X="1.500" Y="0.814" height="0.360" type="Balloon" ID="balloon2" angle="0.000">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object width="0.270" X="1.220" Y="0.814" height="0.360" type="Balloon" ID="balloon1" angle="0.000">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object width="0.400" X="0.866" Y="0.791" height="0.400" type="QuarterArc40" angle="1.571"/>
+            <object width="0.900" X="3.450" Y="0.450" height="0.100" type="Floor" angle="1.570"/>
+            <object width="0.598" X="1.169" Y="0.499" height="0.199" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon1@(0,-0.17)</property>
+                <property key="object2">block1@(0,0)</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="0.598" X="1.500" Y="2.840" height="0.199" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon2@(0,-0.17)</property>
+                <property key="object2">block2@(0,0)</property>
+            </object>
+            <object width="0.598" X="1.780" Y="2.840" height="0.199" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon3@(0,-0.17)</property>
+                <property key="object2">block3@(0,0)</property>
+            </object>
+            <object width="0.400" X="3.231" Y="1.877" height="0.400" type="QuarterArc40" angle="-1.571"/>
+            <object width="2.178" X="1.946" Y="1.665" height="0.100" type="Floor" angle="0.062"/>
+            <object width="0.800" X="0.075" Y="1.376" height="0.150" type="BedOfNails" angle="-1.571"/>
+            <object width="0.800" X="0.663" Y="1.290" height="0.800" type="QuarterArc80" angle="3.142"/>
+            <object width="0.270" X="0.345" Y="0.967" height="0.360" type="Balloon" ID="balloon5" angle="0.000">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object width="0.100" X="0.345" Y="0.150" height="0.100" type="Floor" ID="block5" angle="0.000"/>
+            <object width="0.712" X="0.345" Y="2.840" height="0.237" type="Link" angle="0.000">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">balloon5@(0,-0.17)</property>
+                <property key="object2">block5@(0,0)</property>
+            </object>
+            <object width="0.825" X="0.307" Y="2.087" height="0.100" type="Floor" angle="1.571"/>
+            <object width="0.824" X="1.512" Y="0.473" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.220" X="1.636" Y="1.412" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">Five Balloons.</property>
+                <property key="page2">All need popping.</property>
+                <property key="page3">But only use two different methods!</property>
+                <property key="page4">Post-It Boy likes to “Make it Complex, Comrade”.</property>
+                <property key="page5">Or was it “Keep it Simple, Stupid”?</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon1</property>
+            <property key="statechanged"/>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon2</property>
+            <property key="statechanged"/>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon3</property>
+            <property key="statechanged"/>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon4</property>
+            <property key="statechanged"/>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon5</property>
+            <property key="statechanged"/>
+        </goal>
+    </goals>
+</tbe-level>

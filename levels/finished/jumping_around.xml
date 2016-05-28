@@ -1,0 +1,76 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Jumping Around 1</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Put the pin into the chest.</description>
+        <date>March 6, 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object Y="2.395" width="0.21" height="0.21" X="2.395" angle="0" type="VolleyBall"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3.1"/>
+        <predefined>
+            <object Y="2.93" width="0.22" height="0.22" ID="the Ball" X="0.12" angle="0" type="BowlingBall"/>
+            <object Y="2.4" width="0.9" height="0.1" X="1.1" angle="0" type="Floor">
+                <property key="Bounciness">0.1</property>
+                <property key="Friction">1.0</property>
+            </object>
+            <object Y="1.2" width="0.1" height="2.3" X="1.05" angle="0" type="Floor"/>
+            <object Y="2.64" width="0.6" height="0.35" X="0.3" angle="0" type="RightRamp"/>
+            <object Y="0.5" width="0.22" height="0.22" X="2" angle="0" type="PostIt">
+                <property key="page1">Bowling Ball vs Bowling Pin.&lt;br>&lt;br>Who will win?</property>
+                <property key="page2">I don’t think the bowling ball can reach the pin.</property>
+                <property key="page3">But that ball has a jumpy friend!</property>
+                <property key="page4">Post-It Boy</property>
+            </object>
+            <object Y="0.05" width="4" height="0.1" X="2" angle="0" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object Y="0.05" width="0.3" height="0.1" X="4.15" angle="0" type="Scenery">
+                <property key="ImageName">basket</property>
+            </object>
+            <object Y="0.05" width="0.757174" height="0.1" X="4.67859" angle="0" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object Y="0.15" width="0.9" height="0.1" X="3.55" angle="0.3" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object Y="1.35" width="1.35717" height="0.1" X="4.47859" angle="0" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object Y="0.85" width="0.6" height="0.1" X="4.1" angle="0" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object Y="0.44" width="0.1" height="0.78" X="4.35" angle="0" type="Floor"/>
+            <object Y="0.653344" width="0.1" height="1.3" X="5.10383" angle="0" type="Floor"/>
+            <object Y="0.575" width="0.6" height="0.95" X="4.7" angle="0" type="ToyChest">
+                <property key="ZValue">12</property>
+            </object>
+            <object Y="1.07" width="0.12" height="0.34" ID="the Pin" X="4.1" angle="0" type="BowlingPin"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">the Pin</property>
+            <property key="ybelow">0.5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">the Pin</property>
+            <property key="xover">4.3</property>
+        </goal>
+        <goal isFail="true" type="positionchange">
+            <property key="object">the Ball</property>
+            <property key="ybelow">0.18</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

@@ -1,0 +1,198 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Party at the office</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Deliver the birthday present to Jumping Jack.</description>
+        <date>Jul 08, 2010 - Oct 23, 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object X="0" height="0.1" type="Floor" width="0.6" Y="0" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="0" height="0.3" type="RightRamp" width="0.6" Y="0" angle="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="2.8" width="4.4"/>
+        <predefined>
+            <object X="2.2" height="0.1" type="Floor" width="4.4" Y="0.04" angle="0"/>
+            <object X="2.91" height="0.93" type="Scenery" width="0.45" Y="2.03" angle="0">
+                <property key="ImageName">jj-body</property>
+                <property key="ZValue">12.0</property>
+            </object>
+            <object X="2.75" height="0.385" type="PolyObject" width="0.203" Y="1.2" angle="0" ID="leftfoot">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-leftfoot</property>
+                <property key="Mass">0.5</property>
+                <property key="Polygons">(0.096,0.121)=(0.030,0.182)=(-0.010,0.182)=(-0.04,0.11)=(-0.042,-0.187)=(0.072,-0.188)</property>
+            </object>
+            <object X="2.8" height="0.451" type="PolyObject" width="0.211" Y="1.5" angle="0" ID="leftleg">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-leftleg</property>
+                <property key="Mass">0.5</property>
+                <property key="PivotPoint">(-0.005,0.125)</property>
+                <property key="Polygons">(0.038,0.200)=(-0.064,0.200)=(-0.101,0.115)=(-0.076,-0.191)=(-0.046,-0.221)=(0.015,-0.221)=(0.046,-0.191)</property>
+            </object>
+            <object X="2.787" height="1" type="PivotPoint" width="1" Y="1.346" angle="0">
+                <property key="object1">leftfoot</property>
+                <property key="object2">leftleg</property>
+            </object>
+            <object X="3.08" height="0.385" type="PolyObject" width="0.203" Y="1.2" angle="0" ID="rightfoot">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-rightfoot</property>
+                <property key="Mass">0.5</property>
+                <property key="Polygons">(-0.072,-0.188)=(0.042,-0.187)=(0.04,0.12)=(0.010,0.182)=(-0.030,0.182)=(-0.096,0.121)</property>
+            </object>
+            <object X="3.03" height="0.451" type="PolyObject" width="0.211" Y="1.5" angle="0" ID="rightleg">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-rightleg</property>
+                <property key="Mass">0.5</property>
+                <property key="PivotPoint">(0.005,0.125)</property>
+                <property key="Polygons">(-0.046,-0.191)=(-0.015,-0.221)=(0.046,-0.221)=(0.076,-0.191)=(0.101,0.115)=(0.064,0.200)=(-0.038,0.200)</property>
+            </object>
+            <object X="3.043" height="1" type="PivotPoint" width="1" Y="1.346" angle="0">
+                <property key="object1">rightfoot</property>
+                <property key="object2">rightleg</property>
+            </object>
+            <object X="2.58" height="0.224" type="PolyObject" width="0.602" Y="2.1" angle="0" ID="lefthand">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-lefthand</property>
+                <property key="Mass">1.0</property>
+                <property key="PivotPoint">(0.208,0.036)</property>
+                <property key="Polygons">(0.290,0.012)=(0.210,0.102)=(-0.297,0.057)=(-0.297,0.007)=(-0.284,-0.015)=(0.050,-0.105)</property>
+            </object>
+            <object X="3.23" height="0.224" type="PolyObject" width="0.602" Y="2.11" angle="0" ID="righthand">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">jj-righthand</property>
+                <property key="Mass">1.0</property>
+                <property key="PivotPoint">(-0.208,0.036)</property>
+                <property key="Polygons">(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)=(-0.293,-0.012)</property>
+            </object>
+            <object X="2.91" height="0.5" type="RectObject" width="0.1" Y="1.72" angle="0" ID="rope1">
+                <property key="ImageName">rope</property>
+                <property key="Mass">0.1</property>
+                <property key="NoCollision">leftleg;rightleg;leftfoot;rightfoot;lefthand;righthand</property>
+            </object>
+            <object X="2.89" height="1" type="Link" width="1" Y="1.64" angle="0">
+                <property key="ImageName">Empty</property>
+                <property key="object1">lefthand@(0.285,0.020)</property>
+                <property key="object2">rope1@(-0.05,0.25)</property>
+            </object>
+            <object X="2.93" height="1" type="Link" width="1" Y="1.64" angle="0">
+                <property key="ImageName">Empty</property>
+                <property key="object1">righthand@(-0.285,0.020)</property>
+                <property key="object2">rope1@(0.05,0.25)</property>
+            </object>
+            <object X="2.89" height="1" type="Link" width="1" Y="1.24" angle="0">
+                <property key="ImageName">Empty</property>
+                <property key="object1">rightleg@(-0.095,0.135)</property>
+                <property key="object2">rope1@(0.05,-0.25)</property>
+            </object>
+            <object X="2.93" height="1" type="Link" width="1" Y="1.24" angle="0">
+                <property key="ImageName">Empty</property>
+                <property key="object1">leftleg@(0.090,0.135)</property>
+                <property key="object2">rope1@(-0.05,-0.25)</property>
+            </object>
+            <object X="2.95" height="0.18" type="RectObject" width="0.1" Y="1.15" angle="0" ID="rope2">
+                <property key="ImageName">rope</property>
+                <property key="Mass">0.1</property>
+                <property key="NoCollision">leftleg;rightleg;leftfoot;rightfoot</property>
+            </object>
+            <object X="2.89" height="0.35" type="Weight" width="0.35" Y="0.73" angle="0" ID="Weight">
+                <property key="Mass">20</property>
+            </object>
+            <object X="2.91" height="0.044" type="Link" width="0.133" Y="0.94" angle="0">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">rope2@(0.00,-0.08)</property>
+                <property key="object2">Weight@(0.0,0.15)</property>
+            </object>
+            <object X="2.8" height="0.099" type="Link" width="0.297" Y="0.94" angle="0">
+                <property key="ImageName">#E0E000</property>
+                <property key="object1">rope1@(0.00,-0.23)</property>
+                <property key="object2">rope2@(0.0,0.08)</property>
+            </object>
+            <object X="2.9" height="0.1" type="BirchBar" width="0.6" Y="0.49" angle="0">
+                <property key="Bounciness">0.0</property>
+                <property key="Mass">1.0</property>
+                <property key="PivotPoint">(-0.3,-0.05)</property>
+            </object>
+            <object X="2.3" height="0.1" type="Floor" width="0.6" Y="0.49" angle="0">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object X="3.55" height="0.1" type="Floor" width="0.6" Y="0.49" angle="0">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object X="3.15" height="0.34" type="BowlingPin" width="0.12" Y="0.27" angle="0" ID="pin">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object X="0.43" height="0.5" type="QuarterArc40" width="0.4" Y="2.27" angle="1.57"/>
+            <object X="2.2" height="0.501" type="ColaMintBottle" width="0.166" Y="2.25" angle="4.73"/>
+            <object X="0.142" height="0.316" type="Floor" width="0.335" Y="1.968" angle="1.57"/>
+            <object X="1.57" height="0.1" type="Floor" width="1.942" Y="1.61" angle="0"/>
+            <object X="0.641" height="0.22" type="BowlingBall" width="0.22" Y="1.307" angle="0"/>
+            <object X="1.297" height="0.36" type="Balloon" width="0.27" Y="1.84" angle="0" ID="balloon"/>
+            <object X="1.684" height="0.12" type="Floor" width="1.905" Y="1.162" angle="0">
+                <property key="Friction">0.03</property>
+            </object>
+            <object X="2.121" height="0.34" type="BowlingPin" width="0.12" Y="0.726" angle="0" ID="top pin"/>
+            <object X="0.883062" height="0.20302" type="RectObject" width="0.24" Y="1.33" angle="0" ID="gift">
+                <property key="ImageName">flat_blue_giftbox</property>
+                <property key="Mass">0.1</property>
+                <property key="Friction">0.03</property>
+                <tooltip>Send the gift to the Jumping Jack!</tooltip>
+            </object>
+            <object X="0.575" height="0.1" type="Floor" width="0.393" Y="1.103" angle="0.366"/>
+            <object X="0.05" height="1.8" type="Floor" width="0.1" Y="1" angle="0"/>
+            <object X="1.184" height="0.309" type="Link" width="0.464" Y="1.487" angle="0">
+                <property key="ImageName">shortballoonrope</property>
+                <property key="ZValue">10.0</property>
+                <property key="object1">balloon@(0.00,-0.17)</property>
+                <property key="object2">gift@(0.10,0.06)</property>
+            </object>
+            <object X="1.032" height="0.36" type="Balloon" width="0.27" Y="1.837" angle="0" ID="balloon2">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object X="1.184" height="0.256" type="Link" width="0.383" Y="1.487" angle="0">
+                <property key="ImageName">shortballoonrope</property>
+                <property key="ZValue">10.0</property>
+                <property key="object1">balloon2@(0.00,-0.17)</property>
+                <property key="object2">gift@(-0.10,0.06)</property>
+            </object>
+            <object X="2.6" height="0.1" type="Scenery" width="0.1" Y="0.45" angle="0">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">12.0</property>
+            </object>
+            <object X="1.087" height="0.22" type="PostIt" width="0.22" Y="0.887" angle="0">
+                <property key="page1">It’s party time at the office!&lt;br>&lt;br>Jumping Jack has his birthday!</property>
+                <property key="page2">(Jack usually doesn’t get much attention, he’s already happy that we thought of him.)</property>
+                <property key="page3">There’s cola,&lt;br>and there’s even a gift!</property>
+                <property key="page4">Let’s present the gift to him, shall we?</property>
+                <property key="page5">… Post-It Boy</property>
+            </object>
+            <object X="1.868" height="0.1" type="Floor" width="0.52" Y="1.19" angle="0.1">
+                <property key="ZValue">1.0</property>
+                <property key="Friction">0.03</property>
+            </object>
+            <object X="1.86" height="0.15" type="BedOfNails" width="0.8" Y="2.09" angle="-3.14"/>
+            <object X="0.129" height="0.4" type="Cactus" width="0.25" Y="2.342" angle="0"/>
+            <object X="0.4" height="0.4" type="QuarterArc40" width="0.4" Y="1.77" angle="3.142"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">gift</property>
+            <property key="xover">2</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="1.110" Y="2.100" number="2" object="Floor"/>
+        <hint X="0.430" Y="0.370" number="1" object="RightRamp"/>
+    </hints>
+</tbe-level>

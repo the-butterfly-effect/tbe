@@ -1,0 +1,184 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Cola Chaos</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Trigger all cola+mint bottles in the scene.</description>
+        <date>04.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem name="Cola+mint bottle (right)" count="1">
+            <object height="0.5" width="0.166" Y="0" X="0" type="ColaMintBottle" angle="4.72"/>
+        </toolboxitem>
+        <toolboxitem name="Cola+mint bottle (left)" count="1">
+            <object height="0.5" width="0.166" Y="0" X="0" type="ColaMintBottle" angle="1.577"/>
+        </toolboxitem>
+        <toolboxitem count="5">
+            <object height="0.1" width="1" Y="0" X="0" type="Floor" angle="0">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object height="0.789" width="0.789" Y="0" X="0" type="QuarterArc40" angle="0">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="3">
+            <object height="1" width="0.2" Y="0" X="0" type="Wall" angle="0">
+                <property key="Resizable">vertical</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="4" width="8"/>
+        <predefined>
+            <object height="0.140179" width="3.34424" Y="0.470296" X="3.0033" type="Floor" angle="0"/>
+            <object ID="c1" height="0.5" width="0.166" Y="1.24346" X="4.58669" type="ColaMintBottle" angle="-3.1539"/>
+            <object height="0.1" width="2.64856" Y="0.783015" X="3.17259" type="Floor" angle="0"/>
+            <object ID="c3" height="0.5" width="0.166" Y="0.6297" X="5.19937" type="ColaMintBottle" angle="4.72"/>
+            <object height="0.1" width="6.83865" Y="0.162" X="3.98632" type="Floor" angle="0"/>
+            <object height="2.843" width="0.2" Y="1.634" X="0.66" type="Wall" angle="0"/>
+            <object ID="c5" height="0.5" width="0.166" Y="0.781755" X="1.75574" type="ColaMintBottle" angle="-3.13039"/>
+            <object height="0.460626" width="0.192116" Y="1.65944" X="2.68294" type="Wall" angle="0"/>
+            <object ID="c6" height="0.5" width="0.166" Y="1.07107" X="2.49394" type="ColaMintBottle" angle="-9.41113"/>
+            <object ID="c7" height="0.5" width="0.166" Y="1.57997" X="0.849851" type="ColaMintBottle" angle="-3.147"/>
+            <object height="0.709954" width="0.2" Y="1.37009" X="1.04794" type="Wall" angle="0"/>
+            <object height="0.1" width="0.042" Y="1.35735" X="0.786" type="Floor" angle="0"/>
+            <object height="0.1" width="0.042" Y="1.36135" X="0.924945" type="Floor" angle="0"/>
+            <object ID="c8" height="0.5" width="0.166" Y="1.82091" X="1.56682" type="ColaMintBottle" angle="4.72"/>
+            <object height="0.602871" width="0.2" Y="2.21506" X="1.053" type="Wall" angle="0"/>
+            <object height="0.1" width="0.672551" Y="1.97814" X="4.16145" type="Floor" angle="0"/>
+            <object ID="c9" height="0.5" width="0.166" Y="2.39423" X="4.41434" type="ColaMintBottle" angle="4.72"/>
+            <object height="0.1" width="0.33137" Y="1.836" X="4.85731" type="Floor" angle="0"/>
+            <object height="0.1" width="1.34116" Y="3.44599" X="6.52297" type="Floor" angle="0"/>
+            <object height="1.30683" width="0.2" Y="1.47909" X="5.579" type="Wall" angle="0"/>
+            <object height="0.1" width="0.517" Y="2.078" X="5.947" type="Floor" angle="0"/>
+            <object ID="c10" height="0.5" width="0.166" Y="2.38693" X="5.83589" type="ColaMintBottle" angle="0.0949831"/>
+            <object height="0.6807" width="0.2" Y="2.66385" X="6.127" type="Wall" angle="0"/>
+            <object height="1.08216" width="0.338393" Y="1.08201" X="1.50152" type="Wall" angle="0"/>
+            <object height="0.1" width="1.24659" Y="1.96561" X="1.77635" type="Floor" angle="0"/>
+            <object ID="c11" height="0.5" width="0.166" Y="2.10161" X="2.38208" type="ColaMintBottle" angle="4.72"/>
+            <object ID="c2" height="0.5" width="0.166" Y="2.10161" X="1.41107" type="ColaMintBottle" angle="4.72"/>
+            <object ID="c4" height="0.5" width="0.166" Y="2.399" X="2.24883" type="ColaMintBottle" angle="4.72"/>
+            <object height="0.1" width="1.25375" Y="2.25869" X="1.78088" type="Floor" angle="0"/>
+            <object height="1.28" width="0.2" Y="2.95069" X="1.894" type="Wall" angle="0"/>
+            <object ID="c12" height="0.5" width="0.166" Y="2.39853" X="1.532" type="ColaMintBottle" angle="4.72"/>
+            <object ID="c13" height="0.5" width="0.166" Y="0.920472" X="3.31592" type="ColaMintBottle" angle="1.577"/>
+            <object ID="c14" height="0.5" width="0.166" Y="0.920472" X="4.03916" type="ColaMintBottle" angle="-1.52836"/>
+            <object height="0.076" width="0.076" Y="0.743955" X="0.90352" type="PetanqueBoule" angle="0"/>
+            <object height="0.478325" width="0.2" Y="0.451214" X="0.863" type="Wall" angle="0"/>
+            <object height="0.1" width="0.871" Y="3.148" X="5.218" type="Floor" angle="0"/>
+            <object height="0.464725" width="0.2" Y="3.28953" X="4.677" type="Wall" angle="0"/>
+            <object height="0.1" width="0.892401" Y="3.446" X="5.22457" type="Floor" angle="0"/>
+            <object height="0.1" width="0.871" Y="3.15263" X="6.266" type="Floor" angle="0"/>
+            <object height="3.18765" width="0.2" Y="1.88868" X="7.301" type="Wall" angle="0"/>
+            <object height="0.1" width="0.443645" Y="1.547" X="6.79976" type="Floor" angle="0"/>
+            <object ID="c16" height="0.5" width="0.166" Y="1.137" X="6.452" type="ColaMintBottle" angle="-4.703"/>
+            <object height="0.076" width="0.076" Y="2.17182" X="6.00325" type="PetanqueBoule" angle="0"/>
+            <object height="0.35293" width="0.2" Y="2.06787" X="4.79374" type="Wall" angle="0"/>
+            <object ID="c17" height="0.5" width="0.166" Y="1.31158" X="7.11402" type="ColaMintBottle" angle="-3.147"/>
+            <object height="0.076" width="0.076" Y="3.04776" X="6.15024" type="PetanqueBoule" angle="0"/>
+            <object height="0.1" width="0.771755" Y="2.86748" X="6.61358" type="Floor" angle="0"/>
+            <object ID="c18" height="0.5" width="0.166" Y="3.01374" X="6.93092" type="ColaMintBottle" angle="-4.703"/>
+            <object height="0.76708" width="0.2" Y="1.22649" X="1.95016" type="Wall" angle="0"/>
+            <object height="0.076" width="0.076" Y="1.81472" X="2.10143" type="PetanqueBoule" angle="0"/>
+            <object height="0.456311" width="0.2" Y="1.06688" X="2.6794" type="Wall" angle="0"/>
+            <object height="0.98274" width="0.169795" Y="1.32578" X="2.96634" type="Wall" angle="0"/>
+            <object ID="c19" height="0.5" width="0.166" Y="0.358954" X="7.48604" type="ColaMintBottle" angle="-6.26546"/>
+            <object height="3.37515" width="0.2" Y="1.80576" X="7.67184" type="Wall" angle="0"/>
+            <object height="0.1" width="7.20084" Y="0.0584142" X="4.16279" type="Floor" angle="0"/>
+            <object height="0.076" width="0.076" Y="0.251644" X="4.25164" type="PetanqueBoule" angle="0"/>
+            <object height="0.1" width="0.396095" Y="2.96241" X="2.20163" type="Floor" angle="0"/>
+            <object height="0.4" width="0.2" Y="2.70885" X="2.29968" type="Wall" angle="0"/>
+            <object height="0.272573" width="0.2" Y="2.05568" X="3.72143" type="Wall" angle="0"/>
+            <object height="0.22" width="0.22" Y="0.644464" X="0.269464" type="PostIt" angle="0">
+                <property key="ZValue">1</property>
+                <property key="page1">That’s nice. You don’t have to do anything and many of the bottles are already triggered.</property>
+                <property key="page2">But that’s not good enough. The bottles are going crazy and the cola just goes all over the place.</property>
+                <property key="page3">By the way, you don’t have to insert or trigger the 2 bottles from the toolbox. But it might help!</property>
+                <property key="page4">I wonder if it is easier to solve this puzzle the chaotic way or in a controlled fashion.</property>
+		<property key="page5">&lt;br>&lt;br>… a thoughtful Post-It Boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.713726;0.560784;0.364706;1</gradientstop>
+            <gradientstop pos="1">0.792157;0.65098;0.32549;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">c1</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c2</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c3</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c4</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c5</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c6</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c7</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c8</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c9</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c10</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c11</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c12</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c13</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c14</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c16</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c17</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c18</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal isFail="false" type="statechange">
+            <property key="object">c19</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

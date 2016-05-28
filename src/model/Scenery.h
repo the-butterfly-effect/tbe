@@ -51,13 +51,6 @@ public:
         return b2_staticBody;
     }
 
-    /// returns the Tooltip of the object.
-    virtual const QString getToolTip ( ) const override
-    {
-        // no tooltip, no i18n
-        return "";
-    }
-
     /// returns true if the object can be rotated by the user
     /// Scenerys cannot be adjusted by the player
     virtual bool isRotatable ( ) const override

@@ -1,0 +1,185 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Domino Day</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Topple the bowling pin.</description>
+        <date>9/29/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" icon="Domino-Stone-Red" name="Small Domino">
+            <object height="0.5" type="DominoBlue"/>
+        </toolboxitem>
+        <toolboxitem count="1" icon="Domino-Stone-Red" name="Medium Domino">
+            <object height="0.6" type="DominoRed"/>
+        </toolboxitem>
+        <toolboxitem count="1" icon="Domino-Stone-Red" name="Large Domino">
+            <object width="0.1" height="0.7" type="DominoGreen"/>
+        </toolboxitem>
+        <toolboxitem count="1" icon="styrofoam" name="Styrofoam Block">
+            <object width="0.8" height="0.1" type="RectObject">
+                <tooltip>Resizable styrofoam blocks … What an invention!</tooltip>
+                <property key="Friction">0.2</property>
+                <property key="Mass">0.2</property>
+                <property key="Bounciness">0.5</property>
+                <property key="ImageName">styrofoam</property>
+                <property key="Resizable">vertical</property>
+                <property key="Rotate">no</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6" height="3"/>
+        <predefined>
+            <object width="6.000" X="3.000" Y="-0.040" height="0.100" type="Floor" angle="0.000">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="1.000" X="0.500" Y="2.750" height="0.400" type="RightRamp" angle="0.000"/>
+            <object width="0.220" X="0.780" Y="2.880" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="4.000" X="3.000" Y="2.350" height="0.100" type="Floor" angle="0.000">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.100" X="1.100" Y="2.650" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="1.500" Y="2.650" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="1.900" Y="2.650" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="2.300" Y="2.650" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="2.700" Y="2.650" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="3.100" Y="2.650" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="3.500" Y="2.650" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="3.900" Y="2.650" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="4.300" Y="2.650" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="4.700" Y="2.650" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="4.200" X="3.300" Y="1.600" height="0.100" type="Floor" angle="0.000">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object width="0.300" X="5.800" Y="2.050" height="1.000" type="Floor" angle="0.000">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object width="0.220" X="5.100" Y="1.970" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.600" X="5.350" Y="1.700" height="0.300" type="Floor" angle="0.000">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.100" X="4.900" Y="1.900" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">1.0</property>
+            </object>
+            <object width="0.100" X="4.500" Y="1.900" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="4.100" Y="1.900" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="3.700" Y="1.900" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="3.300" Y="1.900" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="2.900" Y="1.900" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="2.500" Y="1.900" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="2.100" Y="1.900" height="0.500" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="1.700" Y="1.900" height="0.500" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="1.300" Y="1.900" height="0.500" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">0.5</property>
+            </object>
+            <object width="5.000" X="2.500" Y="0.800" height="0.100" type="Floor" angle="0.000">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.300" X="1.050" Y="1.500" height="0.100" type="Floor" angle="0.000">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object width="0.166" X="1.050" Y="1.800" height="0.500" type="ColaMintBottle" angle="0.000"/>
+            <object width="0.100" X="1.100" Y="0.930" height="0.160" type="Floor" angle="0.000">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.220" X="0.200" Y="1.400" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">It falls down, blows …&lt;br>&lt;br>and doesn’t do anything useful.</property>
+                <property key="page2">Sounds like a junk, does it?</property>
+                <property key="page3">That’s half of the problem you need to fix here.</property>
+                <property key="page4">&lt;br>&lt;br>… Post-It Boy</property>
+                <property key="page5">PS: Those dominoes are quite big, aren’t they?</property>
+            </object>
+            <object width="0.600" X="5.700" Y="1.280" height="0.550" type="RightRamp" angle="3.140"/>
+            <object width="0.100" X="4.500" Y="0.200" height="0.400" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">1.5</property>
+            </object>
+            <object width="0.100" X="4.400" Y="-0.010" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.100" X="4.200" Y="0.200" height="0.400" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="3.900" Y="0.200" height="0.400" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="3.600" Y="0.200" height="0.400" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="3.300" Y="0.200" height="0.400" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="3.000" Y="0.200" height="0.400" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="0.100" X="2.700" Y="0.200" height="0.400" type="DominoBlue" angle="0.000">
+                <property key="ImageName">DominoBlue</property>
+            </object>
+            <object width="0.100" X="2.400" Y="0.200" height="0.400" type="DominoRed" angle="0.000">
+                <property key="ImageName">DominoRed</property>
+            </object>
+            <object width="0.100" X="2.100" Y="0.200" height="0.400" type="DominoGreen" angle="0.000">
+                <property key="ImageName">DominoGreen</property>
+            </object>
+            <object width="1.200" X="5.400" Y="0.650" height="0.700" type="LeftRamp" angle="0.000"/>
+            <object width="0.350" X="0.760" Y="0.205" height="0.410" type="Floor" angle="0.000"/>
+            <object width="0.220" X="0.900" Y="0.530" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.120" X="0.500" Y="0.320" height="0.340" type="BowlingPin" ID="Left-Bottom-Pin" angle="0.000"/>
+            <object width="0.200" X="0.500" Y="0.060" height="0.120" type="Floor" angle="0.000"/>
+            <object width="1.000" X="5.460" Y="1.200" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="5.470" Y="0.400" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged">achanged</property>
+            <property key="object">Left-Bottom-Pin</property>
+        </goal>
+    </goals>
+</tbe-level>

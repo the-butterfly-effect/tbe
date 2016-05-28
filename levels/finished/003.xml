@@ -1,0 +1,67 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Marble Boulevard</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Topple the bowling pin.</description>
+        <date>10/11/09</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object width="4.500" height="0.600" type="LeftRamp" angle="0.000" />
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6.9" height="5"/>
+        <predefined>
+            <!--object width="6.900" X="3.450" Y="-0.050" height="0.100" type="Floor" angle="0.000" /-->
+            <object width="0.220" X="0.300" Y="2.750" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.220" X="0.300" Y="1.100" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.220" X="2.600" Y="4.400" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.250" X="6.375" Y="0.620" height="0.150" type="LeftRamp" angle="0.000"/>
+            <object width="0.120" X="6.400" Y="0.390" height="0.340" type="BowlingPin" ID="Pin" angle="0.000"/>
+            <object width="5.000" X="2.600" Y="4.100" height="0.700" type="RightRamp" angle="0.000"/>
+            <object width="5.000" X="2.600" Y="2.300" height="0.700" type="RightRamp" angle="0.000"/>
+            <object width="4.600" X="2.400" Y="0.560" height="0.700" type="RightRamp" angle="0.000"/>
+            <object width="0.400" X="6.700" Y="2.800" height="4.400" type="RectObject" angle="0.000">
+                <tooltip>An immovable obstacle.</tooltip>
+                <property key="ImageName">right-side-frame-003</property>
+            </object>
+            <object width="0.100" X="0.050" Y="2.500" height="5.000" type="RectObject" angle="3.141">
+                <tooltip>An immovable obstacle.</tooltip>
+                <property key="ImageName">right-side-frame-003</property>
+            </object>
+            <object width="0.300" X="6.400" Y="0.115" height="0.230" type="Floor" angle="0.000"/>
+            <object width="1.032" X="5.016" Y="0.115" height="0.230" type="Floor" angle="0.000"/>
+            <object width="0.100" X="6.850" Y="0.320" height="0.640" type="Floor" angle="0.000"/>
+            <object width="1.000" X="5.800" Y="-0.03" height="0.100" type="Floor" angle="-0.050"/>
+            <object width="2.400" X="5.700" Y="-0.05" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.220" X="6.300" Y="0.800" height="0.220" type="PostIt" angle="0.000">
+                <property key="page1">No butterflies here!&lt;br>&lt;br></property>
+                <property key="page2">Topple the bowling pin below.</property>
+                <property key="page3">Hmmm … &lt;br>&lt;br>This reminds me of a kid’s game!</property>
+                <property key="page4">By the way: There are two ramps in the toolbox. Use them wisely!</property>
+                <property key="page5">&lt;br>&lt;br>… Post-It Boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.67;1.00;0.50;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="anglechanged">anglechanged</property>
+            <property key="object">Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">6.42</property>
+            <property key="object">Pin</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="4.25" Y="3.06" number="1" object="LeftRamp"/>
+        <hint X="4.24" Y="1.28" number="2" object="LeftRamp"/>
+    </hints>
+</tbe-level>
