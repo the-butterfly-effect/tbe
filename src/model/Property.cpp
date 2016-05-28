@@ -213,10 +213,7 @@ AbstractObjectPtr PropertyList::property2ObjectPlusVectorPtr(
     if (myStrings.count() > 2 || myStrings.count() == 0)
         return nullptr;
 
-    AbstractObjectPtr myAOPtr = property2ObjectPtr(aWPtr, myStrings[0]);
-    if (myAOPtr == nullptr)
-        return nullptr;
-
+    AbstractObjectPtr myAOPtr = aWPtr->findObjectsByID(myStrings[0]).first();
     Vector *myVPtr = new Vector();
     if (myStrings.count() == 2) {
         if (myVPtr->fromString(myStrings[1]) == false) {
