@@ -29,6 +29,8 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include <QProgressDialog>
+// nocommit - this patch isn't ready to be in TBE yet
+#include <QtTest/QTest>
 
 #if 0
 /// for use with automated testing within Valgrid or Pareon Verify
@@ -143,10 +145,7 @@ void RegressionTest::slotRegressionProgress(void)
         myNextState = STARTLEVELTOFAIL;
         break;
     case STARTLEVELTOFAIL: { // Start Level, expect failure - either death or timeout
-        QKeyEvent *myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
-        QKeyEvent *myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+        QTest::keyClick(theMainWindowPtr, Qt::Key_Space);
         myNextDelay = myLevelDurationSeconds * 1000;
         theIsWon = false;
         theIsFail = false;
@@ -167,16 +166,10 @@ void RegressionTest::slotRegressionProgress(void)
         break;
     case STOPANDRESETLEVEL: { // Reset after timeout
         theWantWonFail = false;
-        QKeyEvent *myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
-        QKeyEvent *myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+        QTest::keyClick(theMainWindowPtr, Qt::Key_Space);
         // This is not i18n proof: We're just pressing 'R' (for 'replay') here...
         // It was 'fixed' by ensuring that regression runs in english only.
-        QKeyEvent *myEvent3Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent3Ptr);
-        QKeyEvent *myEvent4Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent4Ptr);
+        QTest::keyClick(theMainWindowPtr, Qt::Key_R);
         myNextDelay = 800;
         myNextState = ADDHINTS;
         break;
@@ -184,10 +177,7 @@ void RegressionTest::slotRegressionProgress(void)
     case RESETLEVEL: { // Reset
         // This is not i18n proof: We're just pressing Alt-R (for reset) here...
         // It was 'fixed' by ensuring that regression runs in english only.
-        QKeyEvent *myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_R , Qt::AltModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
-        QKeyEvent *myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_R , Qt::AltModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+        QTest::keyClick(theMainWindowPtr, Qt::Key_R);
         myNextDelay = 800;
         myNextState = ADDHINTS;
         break;
@@ -206,10 +196,7 @@ void RegressionTest::slotRegressionProgress(void)
     }
     case STARTLEVELTOWIN: { // Start Level, expect success
         theWantWonFail = true;
-        QKeyEvent *myEvent1Ptr = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent1Ptr);
-        QKeyEvent *myEvent2Ptr = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Space, Qt::NoModifier);
-        QCoreApplication::postEvent (theMainWindowPtr, myEvent2Ptr);
+        QTest::keyClick(theMainWindowPtr, Qt::Key_Space);
         myNextDelay = myLevelDurationSeconds * 1000;
         theIsWon = false;
         theIsFail = false;

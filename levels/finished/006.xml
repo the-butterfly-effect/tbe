@@ -90,7 +90,7 @@
         </goal>
     </goals>
     <hints>
-        <hint X="1.66" Y="0.41" number="1" object="RectObject"/>
+        <hint X="1.66" Y="0.41" number="1" object="ColaCrate"/>
         <hint X="1.0" Y="0.9" number="2" object="BirchBar"/>
     </hints>
 </tbe-level>
