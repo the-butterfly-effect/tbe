@@ -116,8 +116,8 @@ public:
     /// overridden from AbstractObject to allow for the handle
     virtual void deletePhysicsObject(void) override;
 
-    /// @returns a list of all phone numbers found in the scene
-    /// note that all IDs starting with a number are considered phone numbers
+    /// @returns List of all Dynamite phone numbers in scene, no duplicates.
+    /// @note Always adds an empty string at the end, to allow deselection.
     QStringList getAllPhoneNumbers(void);
 
     /// @returns the currently set phone number

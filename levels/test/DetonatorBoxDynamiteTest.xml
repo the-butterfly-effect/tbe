@@ -11,14 +11,14 @@
     <scene>
         <scenesize width="4" height="2.5"/>
         <predefined>
-            <object X="2.276" width="1.47" Y="0.697" angle="0" height="0.1" type="Floor"/>
+            <object X="2.276" width="1.47" Y="0.697" angle="0" height="0.1" type="Floor" ID="555-0 is a floor"/>
             <object X="2.316" width="0.43" Y="0.907" angle="0" height="0.32" type="Dynamite" ID="555-1234"/>
             <object X="2.72" width="0.1" Y="0.84" angle="0" height="0.2" type="DominoRed"/>
             <object X="1.82" width="0.1" Y="0.89" angle="0" height="0.3" type="DominoGreen"/>
             <object X="0.286" width="0.33" Y="0.254" angle="0" height="0.35" type="DetonatorBox">
-                <property key="PhoneNumber">555-1234</property>
+                <property key="PhoneNumber">no phone number</property>
             </object>
-            <object X="0.347" width="0.22" Y="1.057" angle="0" height="0.22" type="BowlingBall"/>
+            <object X="0.347" width="0.22" Y="1.057" angle="0" height="0.22" type="BowlingBall" ID="555-ball"/>
             <object X="0.5" width="1" Y="0.05" angle="0" height="0.1" type="Floor"/>
             <object X="2.72" width="0.1" Y="1.04" angle="0" height="0.2" type="DominoRed"/>
             <object X="2.72" width="0.1" Y="1.24" angle="0" height="0.2" type="DominoRed"/>

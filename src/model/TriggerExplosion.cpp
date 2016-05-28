@@ -132,14 +132,23 @@ void DetonatorBox::deletePhysicsObject(void)
 
 QStringList DetonatorBox::getAllPhoneNumbers(void)
 {
-    QRegExp myRX("^\\d.*");
     assert(theWorldPtr != nullptr);
-    QStringList myList = theWorldPtr->getAllIDs().filter(myRX);
-    if (myList.contains(getCurrentPhoneNumber()) == false)
-        myList.append(getCurrentPhoneNumber());
-    if (!myList.contains(getEmptyString()))
-        myList.append(getEmptyString());
-    return myList;
+    QStringList myList = theWorldPtr->getAllIDs();
+    QStringList myFinalList;
+    myList.removeDuplicates();
+    for (auto i : myList) {
+        bool isDynamite = false;
+        QList<AbstractObjectPtr> myObjs = theWorldPtr->findObjectsByID(i);
+        for (auto j : myObjs) {
+            Dynamite *myDynamite = dynamic_cast<Dynamite *>(j.get());
+            if (nullptr != myDynamite)
+                isDynamite = true;
+        }
+        if (isDynamite)
+            myFinalList.push_back(i);
+    }
+    myFinalList.append(getEmptyString());
+    return myFinalList;
 }
 
 QString DetonatorBox::getCurrentPhoneNumber(void) const
