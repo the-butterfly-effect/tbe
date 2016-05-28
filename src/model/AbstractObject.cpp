@@ -325,9 +325,9 @@ void AbstractObject::parseProperties(void)
     QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
     QStringList::iterator myI = myObjIDList.begin();
     while (myI != myObjIDList.end()) {
-        AbstractObjectPtr myObjPtr = theWorldPtr->findObjectByID(*myI);
-        if (myObjPtr != nullptr)
-            theWorldPtr->addNoCollisionCombo(getThisPtr(), myObjPtr);
+        QList<AbstractObjectPtr> myObjPtrs = theWorldPtr->findObjectsByID(*myI);
+        for (auto i : myObjPtrs)
+            theWorldPtr->addNoCollisionCombo(getThisPtr(), i);
         ++myI;
     }
 

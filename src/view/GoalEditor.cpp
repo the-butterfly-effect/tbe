@@ -107,11 +107,11 @@ void GoalEditor::changeEvent(QEvent *e)
 void GoalEditor::fixupCellColoring(QStandardItemModel *aModel, int aRow)
 {
     // highlight cells as red if object name doesn't exist
-    if (theWorldPtr->findObjectByID(aModel->item(aRow, 1)->text()) == nullptr)
+    if (theWorldPtr->findObjectsByID(aModel->item(aRow, 1)->text()).empty())
         aModel->item(aRow, 1)->setForeground(QBrush(Qt::red));
     else
         aModel->item(aRow, 1)->setForeground(QBrush(Qt::black));
-    if (theWorldPtr->findObjectByID(aModel->item(aRow, 4)->text()) == nullptr)
+    if (theWorldPtr->findObjectsByID(aModel->item(aRow, 4)->text()).empty())
         aModel->item(aRow, 4)->setForeground(Qt::red);
     else
         aModel->item(aRow, 4)->setForeground(Qt::black);

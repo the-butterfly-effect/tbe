@@ -197,7 +197,10 @@ AbstractObjectPtr PropertyList::property2ObjectPtr(
     QString myValue = getPropertyNoDefault(aPropertyName);
     if (myValue.isEmpty())
         return nullptr;
-    return aWPtr->findObjectByID(myValue);
+    QList<AbstractObjectPtr> myList = aWPtr->findObjectsByID(myValue);
+    if (myList.empty())
+        return nullptr;
+    return myList.first();
 }
 
 
@@ -210,7 +213,7 @@ AbstractObjectPtr PropertyList::property2ObjectPlusVectorPtr(
     if (myStrings.count() > 2 || myStrings.count() == 0)
         return nullptr;
 
-    AbstractObjectPtr myAOPtr = aWPtr->findObjectByID(myStrings[0]);
+    AbstractObjectPtr myAOPtr = property2ObjectPtr(aWPtr, myStrings[0]);
     if (myAOPtr == nullptr)
         return nullptr;
 

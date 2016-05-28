@@ -273,22 +273,6 @@ bool World::findNoCollisionCombo(AbstractObject *anObjectPtr1, AbstractObject *a
 }
 
 
-AbstractObjectPtr World::findObjectByID(const QString &anID)
-{
-    if (anID.isEmpty())
-        return nullptr;
-
-    // iterate through all AbstractObjects
-    AbstractObjectPtrList::iterator i;
-    for (auto i : theObjectPtrList) {
-        if (i->getID() == anID)
-            return i;
-    }
-
-    return nullptr;
-}
-
-
 QList<AbstractObjectPtr> World::findObjectsByID(const QString &anID)
 {
     QList<AbstractObjectPtr> myList;
