@@ -1,50 +1,53 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <author/>
-        <license/>
-        <date/>
+        <title></title>
+        <author></author>
+        <license></license>
+        <description></description>
+        <date></date>
     </levelinfo>
     <toolbox/>
     <scene>
         <scenesize width="4" height="2.5"/>
         <predefined>
-            <object width="1.470" X="2.276" Y="0.697" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.430" X="2.316" Y="0.907" height="0.320" type="Dynamite" ID="555-1234" angle="0.000"/>
-            <object width="0.100" X="2.720" Y="0.840" height="0.200" type="DominoRed" angle="0.000">
-                <property key="ImageName">DominoRed</property>
-                <property key="Mass">2.5</property>
-            </object>
-            <object width="0.100" X="1.820" Y="0.890" height="0.300" type="DominoGreen" angle="0.000">
-                <property key="ImageName">DominoGreen</property>
-                <property key="Mass">2.5</property>
-            </object>
-            <object width="0.330" X="0.286" Y="0.254" height="0.350" type="DetonatorBox" angle="0.000">
-                <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
-                <property key="Mass">4</property>
+            <object X="2.276" width="1.47" Y="0.697" angle="0" height="0.1" type="Floor"/>
+            <object X="2.316" width="0.43" Y="0.907" angle="0" height="0.32" type="Dynamite" ID="555-1234"/>
+            <object X="2.72" width="0.1" Y="0.84" angle="0" height="0.2" type="DominoRed"/>
+            <object X="1.82" width="0.1" Y="0.89" angle="0" height="0.3" type="DominoGreen"/>
+            <object X="0.286" width="0.33" Y="0.254" angle="0" height="0.35" type="DetonatorBox">
                 <property key="PhoneNumber">555-1234</property>
             </object>
-            <object width="0.220" X="0.347" Y="1.057" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object width="1.000" X="0.500" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.100" X="2.720" Y="1.040" height="0.200" type="DominoRed" angle="0.000">
-                <property key="ImageName">DominoRed</property>
-                <property key="Mass">2.5</property>
-            </object>
-            <object width="0.100" X="2.720" Y="1.240" height="0.200" type="DominoRed" angle="0.000">
-                <property key="ImageName">DominoRed</property>
-                <property key="Mass">2.5</property>
-            </object>
-            <object width="0.100" X="1.819" Y="1.194" height="0.300" type="DominoGreen" angle="0.000">
-                <property key="ImageName">DominoGreen</property>
-                <property key="Mass">2.5</property>
-            </object>
-            <object width="0.120" X="1.635" Y="0.920" height="0.340" type="BowlingPin" angle="0.000"/>
-            <object width="1.487" X="2.276" Y="0.260" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.523" X="1.576" Y="0.459" height="0.100" type="Floor" angle="1.571"/>
-            <object width="0.220" X="2.910" Y="0.850" height="0.220" type="BowlingBall" angle="0.000"/>
-            <object width="0.430" X="1.919" Y="0.479" height="0.320" type="Dynamite" ID="555-1234" angle="0.000"/>
-            <object width="0.250" X="2.748" Y="0.423" height="0.400" type="Cactus" ID="flying_cactus1" angle="4.744"/>
+            <object X="0.347" width="0.22" Y="1.057" angle="0" height="0.22" type="BowlingBall"/>
+            <object X="0.5" width="1" Y="0.05" angle="0" height="0.1" type="Floor"/>
+            <object X="2.72" width="0.1" Y="1.04" angle="0" height="0.2" type="DominoRed"/>
+            <object X="2.72" width="0.1" Y="1.24" angle="0" height="0.2" type="DominoRed"/>
+            <object X="1.819" width="0.1" Y="1.194" angle="0" height="0.3" type="DominoGreen"/>
+            <object X="1.635" width="0.12" Y="0.92" angle="0" height="0.34" type="BowlingPin" ID="thePIN"/>
+            <object X="2.276" width="1.487" Y="0.26" angle="0" height="0.1" type="Floor"/>
+            <object X="1.576" width="0.523" Y="0.459" angle="1.571" height="0.1" type="Floor"/>
+            <object X="2.91" width="0.22" Y="0.85" angle="0" height="0.22" type="BowlingBall" ID="theBall"/>
+            <object X="1.919" width="0.43" Y="0.479" angle="0" height="0.32" type="Dynamite" ID="555-1234"/>
+            <object X="2.748" width="0.25" Y="0.423" angle="4.744" height="0.4" type="Cactus" ID="flying_cactus1"/>
         </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
     </scene>
-    <goals/>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">thePIN</property>
+            <property key="ybelow">0.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">theBall</property>
+            <property key="ybelow">0.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">flying_cactus1</property>
+            <property key="xover">3.5</property>
+        </goal>
+    </goals>
+    <hints/>
 </tbe-level>

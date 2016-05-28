@@ -192,12 +192,22 @@ public:
     void createPhysicsWorld(void);
     void deletePhysicsWorld(void);
 
-    /** find an object with a given ID within world
-     *  @param anID  the ID to find for. Because not all objects have an ID,
+    /** Find a SINGLE object with a given ID within world.
+     *  (see findObjectsByID for the multiple version).
+     *  @param anID  The ID to find for. Because not all objects have an ID,
      *               an empty ID will cause a nullptr return.
-     *  @returns nullptr if not found or a pointer if found.
+     *  @returns     The nullptr if not found, or a pointer if found.
      */
     AbstractObjectPtr findObjectByID(const QString &anID);
+
+    /** Find a SERIES of objects with a given ID within world.
+     *  (see findObjectByID for the single version).
+     *  @param anID  The ID to find for. Because not all objects have an ID,
+     *               an empty ID will cause a nullptr return.
+     *  @returns     Empty QList if nothing found,
+     *               otherwise there'll be entries in it.
+     */
+    QList<AbstractObjectPtr> findObjectsByID(const QString &anID);
 
     /** @returns a list with all object IDs present in the World
       * this list can be empty

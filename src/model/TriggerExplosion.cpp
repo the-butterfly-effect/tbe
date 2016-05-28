@@ -187,13 +187,14 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 
 void DetonatorBox::notifyExplosions(void)
 {
-    AbstractObjectPtr myObjectToSignal = theWorldPtr->findObjectByID(getCurrentPhoneNumber());
-    Dynamite *myDynamite = dynamic_cast<Dynamite *>(myObjectToSignal.get());
-
-    // did the user select a wrong phone number?
-    if (myDynamite == nullptr)
-        return;
-    myDynamite->trigger();
+    QList<AbstractObjectPtr> myObjectsToSignal = theWorldPtr->findObjectsByID(getCurrentPhoneNumber());
+    for (auto i : myObjectsToSignal)
+    {
+        Dynamite *myDynamite = dynamic_cast<Dynamite *>(i.get());
+        if (nullptr == myDynamite)
+            return;
+        myDynamite->trigger();
+    }
 }
 
 

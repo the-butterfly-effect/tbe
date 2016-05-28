@@ -288,6 +288,19 @@ AbstractObjectPtr World::findObjectByID(const QString &anID)
     return nullptr;
 }
 
+
+QList<AbstractObjectPtr> World::findObjectsByID(const QString &anID)
+{
+    QList<AbstractObjectPtr> myList;
+    if (!anID.isEmpty())
+        for (auto i : theObjectPtrList) {
+            if (i->getID() == anID)
+                myList.push_back(i);
+        }
+    return myList;
+}
+
+
 QStringList World::getAllIDs(void) const
 {
     QStringList myIDList;
