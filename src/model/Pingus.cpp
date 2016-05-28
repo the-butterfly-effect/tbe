@@ -38,12 +38,13 @@ const unsigned int Pingus::FramesPerState[] = { 8, 8, 8, 1, 1, 16, 6, 9, 9, 1, 5
 int Pingus::theEscapedCount = 0;
 int Pingus::theAliveCount = 0;
 
-Pingus::Pingus()
+Pingus::Pingus(const QString &anIconName)
     : CircleObject(QObject::tr("Pingus"),
                    QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can't take much abuse."),
                    "",
                    PINGUS_RADIUS, PINGUS_MASS, 0.0 )
 {
+    theIconName = anIconName;
     resetParameters();
 }
 
@@ -284,7 +285,7 @@ ViewObjectPtr  Pingus::createViewObject(float aDefaultDepth)
 {
     if (nullptr != theViewObjectPtr)
         return theViewObjectPtr;
-    theViewObjectPtr = ViewObject::factoryMethod<ViewPingus>(getThisPtr());
+    theViewObjectPtr = ViewObject::factoryMethod<ViewPingus>(getThisPtr(), theIconName);
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     updateViewPingus();
     return theViewObjectPtr;
@@ -453,7 +454,7 @@ static PingusSleepingObjectFactory thePingusSleepingObjectFactory;
 
 
 PingusSleeping::PingusSleeping()
-    : Pingus()
+    : Pingus("pingussleeper")
 {
     resetParameters();
 }
@@ -495,7 +496,7 @@ static PingusWalkLeftObjectFactory thePingusWalkLeftObjectFactory;
 
 
 PingusWalkLeft::PingusWalkLeft()
-    : Pingus()
+    : Pingus("pinguswalkleft")
 {
     resetParameters();
 }
@@ -537,7 +538,7 @@ static PingusWalkRightObjectFactory thePingusWalkRightObjectFactory;
 
 
 PingusWalkRight::PingusWalkRight()
-    : Pingus()
+    : Pingus("pinguswalkright")
 {
     resetParameters();
 }

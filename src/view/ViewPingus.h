@@ -42,7 +42,7 @@ class ViewPingus : public ViewObject
 protected:
     /// Image Constructor, protected - you cannot create directly,
     /// use ViewObject::factoryMethod<ViewPingus>(aAbstractObjectPtr) instead.
-    explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr);
+    explicit ViewPingus (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName);
     friend class ViewObject;
 
 public:

@@ -36,7 +36,7 @@
 class Pingus : public CircleObject, public SimStepCallbackInterface
 {
 public:
-    Pingus();
+    explicit Pingus(const QString& anIconName);
 
     virtual ~Pingus();
 
@@ -147,6 +147,9 @@ protected:
     void updateViewPingus();
 
     // "Private" things
+
+    /// Contains the name of the icon of this pingu in the Toolbox.
+    QString theIconName;
 
     /// The state variable
     States theState;

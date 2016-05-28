@@ -32,8 +32,8 @@
 // Constructors/Destructors
 //
 
-ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr)
-    : ViewObject(aAbstractObjectPtr, "")
+ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName)
+    : ViewObject(aAbstractObjectPtr, anImageName)
 {
     // Override everything from the ViewObject constructor because we are special, baby
     DEBUG5ENTRY;
