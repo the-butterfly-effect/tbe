@@ -48,7 +48,8 @@ Scenery::Scenery( ) : AbstractObject()
         QString(":/-") + Property::FRICTION_STRING    +
         QString(":/-") + Property::PIVOTPOINT_STRING  +
         QString(":/-") + Property::RESIZABLE_STRING   +
-        QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
+        QString(":/-") + Property::ROTATABLE_STRING   +
+        QString(":/")  + Property::ZVALUE_STRING + ":0.1/" );
 
     DEBUG5("Scenery::Scenery done");
 }
