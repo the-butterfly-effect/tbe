@@ -1,11 +1,11 @@
 <!DOCTYPE mydocument>
 <tbe-level>
     <levelinfo>
-        <title></title>
-        <author></author>
+        <title>Testing DetonatorBox and Dynamite</title>
+        <author>Klaas van Gend</author>
         <license></license>
-        <description></description>
-        <date></date>
+        <description>This test showcases a few usages of the dynamite and how to trigger it.</description>
+        <date>December 2010</date>
     </levelinfo>
     <toolbox/>
     <scene>
