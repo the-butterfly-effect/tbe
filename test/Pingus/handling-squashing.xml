@@ -21,12 +21,12 @@
 			<object width="4.000" X="6.100" Y="3.700" height="1.400" type="LeftRamp" angle="0.000"/>
 			<object width="4.000" X="6.100" Y="3.700" height="1.400" type="LeftRamp" angle="0.000"/>
 
-            <object X="3.8" Y="0.3" type="Pingus" angle="0.000" ID="pingus0"/>
-            <object X="3.8" Y="1.8" type="Pingus" angle="0.000" ID="pingus1"/>
-            <object X="3.8" Y="3.3" type="Pingus" angle="0.000" ID="pingus2"/>
-            <object X="4.3" Y="0.3" type="Pingus" angle="0.000" ID="pingus3"/>
-            <object X="4.3" Y="1.8" type="Pingus" angle="0.000" ID="pingus4"/>
-            <object X="4.3" Y="3.3" type="Pingus" angle="0.000" ID="pingus5"/>
+            <object X="3.8" Y="0.3" type="PingusWalkLeft" angle="0.000" ID="pingus0"/>
+            <object X="3.8" Y="1.8" type="PingusWalkLeft" angle="0.000" ID="pingus1"/>
+            <object X="3.8" Y="3.3" type="PingusWalkLeft" angle="0.000" ID="pingus2"/>
+            <object X="4.3" Y="0.3" type="PingusWalkRight" angle="0.000" ID="pingus3"/>
+            <object X="4.3" Y="1.8" type="PingusWalkRight" angle="0.000" ID="pingus4"/>
+            <object X="4.3" Y="3.3" type="PingusWalkRight" angle="0.000" ID="pingus5"/>
 			
             <object width="0.220" X="0.300" Y="1.500" height="0.220" type="BowlingBall" angle="0.000"/>
             <object width="0.220" X="2.300" Y="2.300" height="0.220" type="BowlingBall" angle="0.000"/>
@@ -42,10 +42,10 @@
             <object X="8.66" Y="4.4"  type="PetanqueBoule"/>
             <object X="9.01" Y="4.5"  type="PetanqueBoule"/>
 
-            <object X="7.95" Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus6"/>
-            <object X="8.3"  Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus7"/>
-            <object X="8.65" Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus8"/>
-            <object X="9.0"  Y="0.14" type="SleepingPingus" angle="0.000" ID="pingus9"/>
+            <object X="7.95" Y="0.14" type="PingusSleeping" angle="0.000" ID="pingus6"/>
+            <object X="8.3"  Y="0.14" type="PingusSleeping" angle="0.000" ID="pingus7"/>
+            <object X="8.65" Y="0.14" type="PingusSleeping" angle="0.000" ID="pingus8"/>
+            <object X="9.0"  Y="0.14" type="PingusSleeping" angle="0.000" ID="pingus9"/>
             <object width="1.600" X="8.45" Y="-0.05" height="0.100" type="Floor" ID="floor" angle="0.000"/>
 
         </predefined>
