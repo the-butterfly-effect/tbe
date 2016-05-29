@@ -21,7 +21,6 @@ install(FILES
         ${SRCDIRNAME}/driver-1m.svg
         ${SRCDIRNAME}/driver-2m.svg
         ${SRCDIRNAME}/flat_blue_giftbox.svg
-        ${SRCDIRNAME}/goal-scenery.svg
         ${SRCDIRNAME}/golfclub.svg
         ${SRCDIRNAME}/hammer.svg
         ${SRCDIRNAME}/hammerer-2.svg

@@ -182,7 +182,7 @@ static AbstractPolyObjectFactory theGoalFactory(
     "Goal",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Goal"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A goal is a metal frame holding a net.\nIt is open on one side."),
-    "goal-scenery",
+    "goal",
     "(-0.386,0.490)=(-0.386,0.435)=(0.209,0.435)=(0.194,0.470);"
     "(0.160,0.410)=(0.40,-0.488)=(0.45,-0.479)=(0.230,0.430);",
     0.4, 0.7, 0.0, 0.2, Property::ZVALUE_STRING + QString(":4.5") );
