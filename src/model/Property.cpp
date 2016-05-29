@@ -210,10 +210,13 @@ AbstractObjectPtr PropertyList::property2ObjectPlusVectorPtr(
     Vector **aVectorPtrPtr)
 {
     QStringList myStrings = getPropertyNoDefault(aPropertyName).split("@");
-    if (myStrings.count() > 2 || myStrings.count() == 0)
+    if (myStrings.size() > 2 || myStrings.size() == 0)
         return nullptr;
 
-    AbstractObjectPtr myAOPtr = aWPtr->findObjectsByID(myStrings[0]).first();
+    QList<AbstractObjectPtr> myObjs = aWPtr->findObjectsByID(myStrings[0]);
+    if (myObjs.size() == 0)
+        return nullptr;
+    AbstractObjectPtr myAOPtr = myObjs.first();
     Vector *myVPtr = new Vector();
     if (myStrings.count() == 2) {
         if (myVPtr->fromString(myStrings[1]) == false) {
