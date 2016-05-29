@@ -63,6 +63,14 @@ static CircleObjectFactory thePetanqueFactory("PetanqueBoule",
                                                                      "A pétanque ball is made of metal and is quite heavy."),
                                               "PetanqueBoule", 0.038, 0.700, 0.1);
 
+// size based on old version of picnic-2 level
+static CircleObjectFactory thePegFactory("Peg",
+                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Peg"),
+                                         QT_TRANSLATE_NOOP("CircleObjectFactory",
+                                                           "A round obstacle, pinned to the sky."),
+                                         "brass-pin", 0.07, 0.0, 0.7);
+
+
 // Constructors/Destructors
 //
 
