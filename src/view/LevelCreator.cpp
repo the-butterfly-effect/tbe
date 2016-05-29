@@ -101,14 +101,15 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
     QAction *myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
-    myGoalActionPtr->setIcon(QIcon::fromTheme("bookmarks"));
+    myTmpIcon = ImageCache::getQIcon("ActionGoals", QSize(64, 64));
+    myGoalActionPtr->setIcon(myTmpIcon);
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
     QAction *myLevPropActionPtr = new QAction(tr("&Size && Background Editor..."), nullptr);
     connect (myLevPropActionPtr, SIGNAL(triggered()), this,
              SLOT(on_levelPropertiesEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myLevPropActionPtr);
-    myLevPropActionPtr->setIcon(QIcon::fromTheme("tools-wizard"));
+    myLevPropActionPtr->setIcon(QIcon::fromTheme("document-properties"));
     QAction *myLevNameActionPtr = new QAction(tr("&Name && Description Editor..."), nullptr);
     myLevNameActionPtr->setEnabled(false);
     myLevNameActionPtr->setIcon(QIcon::fromTheme("accessories-text-editor"));
