@@ -60,7 +60,7 @@ regression: usr/games/tbe
 	      --regression levels/needs-polish/004.xml:15, \
 	      --regression levels/finished/006.xml:8, \
 	      --regression levels/finished/pingus-1.xml:65, \
-	      --regression levels/needs-polish/party-at-office.xml:15, \
+	      --regression levels/finished/party-at-office.xml:15, \
 	      --regression levels/finished/picnic-0.xml:13, \
 	      --regression levels/finished/picnic-1.xml:13, \
 	      --regression=levels/finished/picnic-3.xml:70
