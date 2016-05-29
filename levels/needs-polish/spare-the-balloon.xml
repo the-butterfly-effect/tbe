@@ -23,7 +23,7 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Wooden bar" count="1">
+        <toolboxitem count="1">
             <object width="0.32" height="0.1" angle="0" type="Floor" X="0" Y="0">
                 <property key="Rotatable">true</property>
             </object>
