@@ -61,12 +61,6 @@ public:
     /// (overridden from AbstractObject to remove extra sharedptrs)
     virtual void clearObjectReferences() override;
 
-    /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
-    ViewObjectPtr createViewObject(float) override
-    {
-        return ViewObjectPtr(nullptr);
-    }
-
     /// overridden from AbstractObject
     /// (this class does not have a body, only a joint)
     virtual void createPhysicsObject(void) override;
