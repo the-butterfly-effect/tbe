@@ -22,12 +22,14 @@
             <object X="2.91" height="0.93" type="Scenery" width="0.45" Y="2.03" angle="0">
                 <property key="ImageName">jj-body</property>
                 <property key="ZValue">12.0</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="2.75" height="0.385" type="PolyObject" width="0.203" Y="1.2" angle="0" ID="leftfoot">
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">jj-leftfoot</property>
                 <property key="Mass">0.5</property>
                 <property key="Polygons">(0.096,0.121)=(0.030,0.182)=(-0.010,0.182)=(-0.04,0.11)=(-0.042,-0.187)=(0.072,-0.188)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="2.8" height="0.451" type="PolyObject" width="0.211" Y="1.5" angle="0" ID="leftleg">
                 <property key="Bounciness">0.1</property>
@@ -35,6 +37,7 @@
                 <property key="Mass">0.5</property>
                 <property key="PivotPoint">(-0.005,0.125)</property>
                 <property key="Polygons">(0.038,0.200)=(-0.064,0.200)=(-0.101,0.115)=(-0.076,-0.191)=(-0.046,-0.221)=(0.015,-0.221)=(0.046,-0.191)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="2.787" height="1" type="PivotPoint" width="1" Y="1.346" angle="0">
                 <property key="object1">leftfoot</property>
@@ -45,6 +48,7 @@
                 <property key="ImageName">jj-rightfoot</property>
                 <property key="Mass">0.5</property>
                 <property key="Polygons">(-0.072,-0.188)=(0.042,-0.187)=(0.04,0.12)=(0.010,0.182)=(-0.030,0.182)=(-0.096,0.121)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="3.03" height="0.451" type="PolyObject" width="0.211" Y="1.5" angle="0" ID="rightleg">
                 <property key="Bounciness">0.1</property>
@@ -52,6 +56,7 @@
                 <property key="Mass">0.5</property>
                 <property key="PivotPoint">(0.005,0.125)</property>
                 <property key="Polygons">(-0.046,-0.191)=(-0.015,-0.221)=(0.046,-0.221)=(0.076,-0.191)=(0.101,0.115)=(0.064,0.200)=(-0.038,0.200)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="3.043" height="1" type="PivotPoint" width="1" Y="1.346" angle="0">
                 <property key="object1">rightfoot</property>
@@ -63,6 +68,7 @@
                 <property key="Mass">1.0</property>
                 <property key="PivotPoint">(0.208,0.036)</property>
                 <property key="Polygons">(0.290,0.012)=(0.210,0.102)=(-0.297,0.057)=(-0.297,0.007)=(-0.284,-0.015)=(0.050,-0.105)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="3.23" height="0.224" type="PolyObject" width="0.602" Y="2.11" angle="0" ID="righthand">
                 <property key="Bounciness">0.1</property>
@@ -70,6 +76,7 @@
                 <property key="Mass">1.0</property>
                 <property key="PivotPoint">(-0.208,0.036)</property>
                 <property key="Polygons">(-0.042,-0.102)=(0.293,0.014)=(0.290,0.055)=(0.219,0.091)=(-0.215,0.091)=(-0.293,-0.012)</property>
+                <tooltip>This is Jumping Jack, a paper doll with jointed paper limbs which are tied to a pull string.&lt;br&gt;When the string is pulled, the arms and legs will wiggle.</tooltip>
             </object>
             <object X="2.91" height="0.5" type="RectObject" width="0.1" Y="1.72" angle="0" ID="rope1">
                 <property key="ImageName">rope</property>
@@ -142,7 +149,7 @@
                 <property key="ImageName">flat_blue_giftbox</property>
                 <property key="Mass">0.1</property>
                 <property key="Friction">0.03</property>
-                <tooltip>Send the gift to the Jumping Jack!</tooltip>
+                <tooltip>A birthday gift for Jumping Jack.</tooltip>
             </object>
             <object X="0.575" height="0.1" type="Floor" width="0.393" Y="1.103" angle="0.366"/>
             <object X="0.05" height="1.8" type="Floor" width="0.1" Y="1" angle="0"/>
