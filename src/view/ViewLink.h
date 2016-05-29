@@ -23,6 +23,29 @@
 
 // forward declarations
 class AbstractObject;
+class ViewLink;
+
+/**
+ * @brief The ViewLine class is used by ViewLink to draw the line and allows
+ *        selecting and hovering by the user if in Level Creator mode.
+ */
+class ViewLine : public QGraphicsLineItem
+{
+public:
+    ViewLine(ViewLink* aParentPtr) : QGraphicsLineItem(nullptr), theParent(aParentPtr)
+    {
+        setFlag(QGraphicsItem::ItemIsSelectable, true);
+    }
+
+protected:
+    /** Overridden from QGraphicsLineItem.
+     *  If we're in Level Creator mode, allow clicking the object.
+     */
+    void mousePressEvent(QGraphicsSceneMouseEvent *anEvent) override;
+
+private:
+    ViewLink* theParent;
+};
 
 /** class ViewLink
   *
@@ -39,7 +62,14 @@ class ViewLink : public ViewObject
     //
 
 protected:
-    /// Image Constructor
+    /// Image Constructor, specify a color for the line.
+    /// @param anImageName  Specify a color. Color syntax needs to be parsible by QColor::setNamedColor().
+    ///                     Examples:
+    ///                       * names: "transparent", "olive", "red"
+    ///                         see https://www.w3.org/TR/SVG/types.html#ColorKeywords
+    ///                       * #RGB (each of R, G, and B is a single hex digit)
+    ///                       * #RRGGBB  (e.g. #FF0000 is red)
+    ///                       * #AARRGGBB (so alpha is the FIRST field, 00=transparent, FF=opaque)
     explicit ViewLink (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName);
     friend class ViewObject;
 
@@ -50,7 +80,10 @@ public:
     virtual ~ViewLink ( );
 
 
-    /// todo
+    /// Draws a line between aFirstPoint and aSecondPoint, using the color
+    /// specified in anImageName during construction.
+    /// @param aFirstPoint  first end point of the line
+    /// @param aSecondPoint second end point of the line
     void setEndpoints(const Vector &aFirstPoint,
                       const Vector &aSecondPoint);
 
@@ -59,7 +92,9 @@ private:
     ViewLink(const ViewLink &);
     const ViewLink &operator= (const ViewLink &);
 
-    QGraphicsLineItem *theLinePtr;
+    ViewLine *theLinePtr;
+    friend class ViewLine;
+
     QString theImageName;
 };
 

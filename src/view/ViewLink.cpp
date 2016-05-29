@@ -18,12 +18,21 @@
 
 #include "AbstractObject.h"
 #include "ViewLink.h"
+#include "tbe_global.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
 #include <QPainter>
 #include <QStyleOption>
+
+
+void ViewLine::mousePressEvent(QGraphicsSceneMouseEvent *anEvent)
+{
+    if (theIsLevelCreator)
+        theParent->mousePressEvent(anEvent);
+}
+
 
 // Constructors/Destructors
 //
@@ -49,16 +58,12 @@ void ViewLink::setEndpoints(const Vector &aFirstPoint,
         // We expect the ImageName to contain the color information.
         // If no image name, invisible line
 
-        theLinePtr = new QGraphicsLineItem(nullptr);
-        QPen pen;
-        if (theImageName == "" || theImageName == "Empty" || theImageName == "Link")
-            pen = QPen(QColor("transparent"), 2, Qt::NoPen);
-        else
-            pen = QPen(QColor(theImageName), 2, Qt::SolidLine);
+        theLinePtr = new ViewLine(this);
+        QPen pen(QColor(theImageName), 2, Qt::SolidLine);
         theLinePtr->setPen(pen);
 
         scene()->addItem(theLinePtr);
-        theLinePtr->setZValue(20.0);
+        theLinePtr->setZValue(zValue());
     }
 
     theLinePtr->setLine(QLineF(aFirstPoint.toQPointF(),

@@ -51,7 +51,9 @@ Link::Link(void)
         Property::OBJECT1_STRING + QString(":/") +
         Property::OBJECT2_STRING + QString(":/") +
         Property::OVERLAP_STRING + QString(":10/") +
-        "-" + Property::MASS_STRING + ":/" );
+        "-" + Property::MASS_STRING + ":/" +
+        Property::ZVALUE_STRING + QString(":20.0/"));
+
 }
 
 Link::~Link ()
@@ -174,20 +176,23 @@ void Link::updateViewObject(bool ) const
     if (theViewObjectPtr == nullptr)
         return;
 
-    // no b2body: no part of simulation
-    // PROBLEM: joints also don't have a b2Body - that's why they have their own
-    // overriden version of this member...
-    if (theFirstPtr == nullptr || theSecondPtr == nullptr) {
-        // problem
-        DEBUG1("Link::updateViewObject()  while first or second is zero");
-        assert(false);
-    }
-
     // Sim running: don't need to adjust objects that are static or asleep
     ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewObjectPtr.data());
     assert(theVLPtr != nullptr);
 
-    Vector myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
-    Vector myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
+    Vector myV1, myV2;
+    if (theFirstPtr != nullptr) {
+        myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
+    }
+    else {
+        myV1 = getTempCenter() - getTheWidth() * Vector(0.5,0.);
+    }
+    if (theSecondPtr != nullptr) {
+        myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
+    }
+    else {
+        myV2 = getTempCenter() + getTheWidth() * Vector(0.5,0.);
+    }
+
     theVLPtr->setEndpoints(myV1, myV2);
 }
