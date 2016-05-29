@@ -42,10 +42,9 @@ Pingus::Pingus(const QString &anIconName)
     : CircleObject(QObject::tr("Pingus"),
                    QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can't take much abuse."),
                    "",
-                   PINGUS_RADIUS, PINGUS_MASS, 0.0 )
+                   PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING), theAnimationFrameIndex(0)
 {
-    theIconName = anIconName;
-    resetParameters();
+    updateViewPingus();
 }
 
 
@@ -56,7 +55,7 @@ Pingus::~Pingus()
 
 void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
 {
-    DEBUG6("Pingus receives callback");
+    DEBUG6("Pingus %p receives callback", this);
     if (isPhysicsObjectCreated() == false)
         return;
 
@@ -75,6 +74,11 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
             else
                 myNewXSuggestion = WALKINGLEFT;
         }
+    }
+    else
+    {
+        if (aTotalTime < 0.5)
+            myNewXSuggestion = getStartDirection();
     }
 
     // based on Y velocity, determine the right state
@@ -216,15 +220,17 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
     if (SLEEPING == theState)
         return;
 
+    qreal aSign = (getStartDirection()==WALKINGLEFT)?-1.0:1.0;
+
     // If the Penguin is watching right, let's nudge him and see if it makes hime move
     if (theAnimationFrameIndex == 3) {
-        Vector myTotXImpulse = aTimeStep * Vector(5, 0);
+        Vector myTotXImpulse = aTimeStep * aSign * Vector(5, 0);
         theB2BodyPtr->ApplyLinearImpulse(
             myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
     }
     // If the Penguin is watching left, let's nudge him and see if it makes hime move
     if (theAnimationFrameIndex == 0) {
-        Vector myTotXImpulse = aTimeStep * Vector(-5, 0);
+        Vector myTotXImpulse = aTimeStep * aSign * Vector(-5, 0);
         theB2BodyPtr->ApplyLinearImpulse(
             myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
     }
@@ -240,7 +246,7 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal)
     // With the current settings it remains 0.0003 m/s below it.
     qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
     Q_ASSERT (fabs(myXd) < WALKING_SPEED);
-    qreal myXImpulse = copysign(5.0 * (WALKING_SPEED - fabs(myXd)) / WALKING_SPEED, myXd);
+    qreal myXImpulse = copysign(5.0 * (WALKING_SPEED - fabs(myXd)) / WALKING_SPEED, (theState==WALKINGLEFT)?-1.0:1.0);
     Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0);
     theB2BodyPtr->ApplyLinearImpulse(
         myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
@@ -386,7 +392,7 @@ void Pingus::reportNormalImpulseLength(qreal anImpulseLength, AbstractObject *)
 
 void Pingus::resetParameters()
 {
-    theState = FALLING;
+    theState = getStartDirection();
     theAnimationFrameIndex = 0;
     theFallingTimeStart   = -1.0;
     theSplattingTimeStart = -1.0;
@@ -456,22 +462,11 @@ static PingusSleepingObjectFactory thePingusSleepingObjectFactory;
 PingusSleeping::PingusSleeping()
     : Pingus("pingussleeper")
 {
-    resetParameters();
 }
 
 
 PingusSleeping::~PingusSleeping()
 {
-}
-
-
-void PingusSleeping::resetParameters()
-{
-    Pingus::resetParameters();
-    theState = SLEEPING;
-    // resetParameters already calls updateViewPingus(), but we change the
-    // starting state, so we need to call it again...
-    updateViewPingus();
 }
 
 
@@ -498,22 +493,11 @@ static PingusWalkLeftObjectFactory thePingusWalkLeftObjectFactory;
 PingusWalkLeft::PingusWalkLeft()
     : Pingus("pinguswalkleft")
 {
-    resetParameters();
 }
 
 
 PingusWalkLeft::~PingusWalkLeft()
 {
-}
-
-
-void PingusWalkLeft::resetParameters()
-{
-    Pingus::resetParameters();
-    theState = Pingus::WALKINGLEFT;
-    // resetParameters already calls updateViewPingus(), but we change the
-    // starting state, so we need to call it again...
-    updateViewPingus();
 }
 
 
@@ -546,16 +530,6 @@ PingusWalkRight::PingusWalkRight()
 
 PingusWalkRight::~PingusWalkRight()
 {
-}
-
-
-void PingusWalkRight::resetParameters()
-{
-    Pingus::resetParameters();
-    theState = Pingus::WALKINGRIGHT;
-    // resetParameters already calls updateViewPingus(), but we change the
-    // starting state, so we need to call it again...
-    updateViewPingus();
 }
 
 

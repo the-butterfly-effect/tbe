@@ -146,6 +146,10 @@ protected:
     /// Update the animation frame of the ViewPingus
     void updateViewPingus();
 
+    /// Pure virtual, implemented by all subclasses to indicate the
+    /// start direction.
+    virtual States getStartDirection() = 0;
+
     // "Private" things
 
     /// Contains the name of the icon of this pingu in the Toolbox.
@@ -192,7 +196,10 @@ public:
     virtual ~PingusSleeping();
 
 protected:
-    void resetParameters() override;
+    States getStartDirection() override
+    {
+        return SLEEPING;
+    }
 };
 
 
@@ -211,7 +218,10 @@ public:
     virtual ~PingusWalkLeft();
 
 protected:
-    void resetParameters() override;
+    States getStartDirection() override
+    {
+        return WALKINGLEFT;
+    }
 };
 
 
@@ -230,7 +240,10 @@ public:
     virtual ~PingusWalkRight();
 
 protected:
-    void resetParameters() override;
+    States getStartDirection() override
+    {
+        return WALKINGRIGHT;
+    }
 };
 
 
