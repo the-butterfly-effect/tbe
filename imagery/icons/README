@@ -6,5 +6,7 @@ except:
 except:
   StatusWon, which contains "thumbs-up-right" drawn by "SavanaPrice", see https://openclipart.org/detail/192852/thumbs-up
   (C) Klaas van Gend 2009,2010,2011,2012, 2016
+except:
+  ActionGoals, image derived from "Wavy checkerd flag" by J_Alves, see https://openclipart.org/detail/62779/wavy-checkered-flag
 licensed as Public Domain.
 

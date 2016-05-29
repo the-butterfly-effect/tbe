@@ -8,6 +8,7 @@ install(FILES
 	icons/ActionDrawNormal.svg
 	icons/ActionMenuEject.svg
 	icons/ActionFastForward.svg
+	icons/ActionGoals.svg
 	icons/ActionMenuPause.svg
 	icons/ActionMenuPlay.svg
 	icons/ActionMenuStop.svg
