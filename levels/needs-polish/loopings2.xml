@@ -41,9 +41,7 @@
             <object height="0.34" ID="kegel" width="0.12" type="BowlingPin" angle="0" X="3.868" Y="0.302"/>
             <object height="0.4" width="0.4" type="QuarterArc40" angle="0" X="2.4" Y="1.2"/>
             <object height="0.4" width="0.4" type="QuarterArc40" angle="-1.57" X="2.4" Y="0.6"/>
-            <object height="0.793" width="0.469" type="Scenery" angle="0" X="4.161" Y="0.404">
-                <property key="ImageName">goal-scenery</property>
-            </object>
+            <object height="0.793" width="0.469" type="Goal" angle="0" X="4.161" Y="0.404"/>
             <object height="0.1" width="0.233" type="Floor" angle="1.571" X="2.545" Y="0.895"/>
             <object height="0.1" width="0.159" type="Floor" angle="0" X="1.819" Y="1.754"/>
             <object height="0.09" width="0.5" type="RotatingBar" angle="1.986" X="3.631" Y="0.495"/>

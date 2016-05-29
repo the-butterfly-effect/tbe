@@ -83,13 +83,7 @@
             <object width="0.120" X="3.900" Y="0.260" height="0.340" type="BowlingPin" ID="thepin" angle="0.000">
                 <property key="Mass">0.5</property>
             </object>
-            <object width="0.400" X="4.170" Y="0.450" height="0.700" type="Scenery" angle="0.000">
-                <property key="ImageName">goal-scenery</property>
-                <property key="ZValue">4</property>
-            </object>
-            <object width="0.150" X="4.300" Y="0.450" height="0.700" type="RightFixedWedge" angle="3.140">
-                <property key="ImageName">Empty</property>
-            </object>
+            <object width="0.400" X="4.170" Y="0.450" height="0.700" type="Goal" angle="0.000"/>
             <object width="4.500" X="2.250" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.220" X="3.600" Y="0.700" height="0.220" type="PostIt" angle="0.000">
                 <property key="page1">Another pin needs kicking!</property>
