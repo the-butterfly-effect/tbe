@@ -24,7 +24,7 @@
 
 EditPropertyUndoCommand::EditPropertyUndoCommand(
     ViewObjectPtr anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("EditProperty"))
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Edit property of %1"))
 {
     DEBUG3ENTRY;
 }

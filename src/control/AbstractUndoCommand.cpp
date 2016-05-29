@@ -31,10 +31,9 @@ AbstractUndoCommand::AbstractUndoCommand(
 {
     AbstractObjectPtr myObjectPtr = theViewObjPtr->getAbstractObjectPtr();
 
-    // This is the undo action: %1 will contain e.g. "Move"
-    // and %2 might contain BowlingBall
-    setText( QString("%1 %2").arg(anUndoName)
-             .arg(myObjectPtr->getName()) );
+    // This is the undo action, anUndoName is e.g. “Move %s” and
+    // myObjectPtr->getName() is e.g. “Birch Bar”
+    setText( anUndoName.arg(myObjectPtr->getName()));
     theOrigPos    = theNewPos    = myObjectPtr->getOrigCenter();
     theOrigWidth  = theNewWidth  = myObjectPtr->getTheWidth();
     theOrigHeight = theNewHeight = myObjectPtr->getTheHeight();
