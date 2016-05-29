@@ -52,6 +52,7 @@ Glue::Glue() : AbstractJoint()
     theProps.setDefaultPropertiesString(
         Property::OBJECT1_STRING + QString(":/") +
         Property::OBJECT2_STRING + QString(":/") +
+        Property::ZVALUE_STRING + QString(":5.0/") +
         "-" + Property::MASS_STRING + ":/" );
     DEBUG5("Glue::Glue() end");
 }

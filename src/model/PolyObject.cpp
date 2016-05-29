@@ -68,7 +68,7 @@ static AbstractPolyObjectFactory theSkyhookFactory(
     "Skyhook",
     "(-0.03,-0.07)=(0.01,-0.11)=(0.05,-0.11)=(0.1,-0.05)=(0.1,-0.02)"
     "=(0.08,0.00)=(-0.02,-0.03);(-0.10,0.12)",
-    0.20, 0.23, 0.0, 0.4 );
+    0.20, 0.23, 0.0, 0.4, Property::ZVALUE_STRING + QString(":1.0") );
 
 static AbstractPolyObjectFactory theWeightFactory(
     "Weight",
@@ -176,7 +176,7 @@ static AbstractPolyObjectFactory theToyChestFactory(
     "(0.3,-0.82)=(0.4,-0.82)=(0.4,-0.08)=(0.3,-0.10);"
     "(0.4,-0.08)=(0.45,0.0)=(0.45,0.18)=(0.38,0.45)=(0.2,0.75)=(0.12,0.80)=(0.04,0.82);"
     "(-0.4,-0.82)=(0.3,-0.82)=(0.3,-0.73)=(-0.4,-0.73)",
-    1.0, 1.7, 0.0, 0.05 );
+    1.0, 1.7, 0.0, 0.05, Property::ZVALUE_STRING + QString(":3.0") );
 
 static AbstractPolyObjectFactory theCardboardBoxFactory(
     "CardboardBox",
@@ -187,7 +187,7 @@ static AbstractPolyObjectFactory theCardboardBoxFactory(
     "(-0.40,-0.4)=(-0.35,-0.4)=(-0.35,0.40)=(-0.40,0.40);"
     "(0.35,-0.4)=(0.4,-0.4)=(0.4,0.40)=(0.35,0.40);"
     "(-0.35,-0.4)=(-0.35,-0.35)=(0.35,-0.35)=(0.35,-0.4)",
-    0.9, 0.78809, 0.5, 0.06 );
+    0.9, 0.78809, 0.5, 0.06, Property::ZVALUE_STRING + QString(":4.0") );
 
 static AbstractPolyObjectFactory theSmallSeesawFactory(
     "SeesawSmall",
