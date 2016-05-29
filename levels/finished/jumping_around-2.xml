@@ -28,7 +28,7 @@
                 <property key="page1">Soccer balls are a little bouncy, but sometimes this is not enough.</property>
                 <property key="page2">I thought of using helium, but Mythbusters explained that it won’t work.</property>
                 <property key="page3">But fear not! There’s always a true mechanical solution.</property>
-                <property key="page4">Notice a new trick: rotate.</property>
+                <property key="page4">Note you can rotate your object here.</property>
                 <property key="page5">Post-It Boy</property>
             </object>
             <object width="4.400" X="2.200" Y="0.050" height="0.100" type="Floor" angle="0.000">
