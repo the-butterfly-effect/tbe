@@ -108,4 +108,7 @@
 			<property key="morethan">10</property>
         </goal>
     </goals>
+    <hints>
+        <hint X="1.287" Y="1.809" number="1" object="SoccerBall"/>
+    </hints>
 </tbe-level>

@@ -89,4 +89,7 @@
             <property key="object">thepin</property>
         </goal>
     </goals>
+    <hints>
+        <hint X="3.000" Y="1.150" number="1" object="TennisBall"/>
+    </hints>
 </tbe-level>

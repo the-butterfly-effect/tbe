@@ -224,7 +224,7 @@
     <hints>
         <hint X="5.300" Y="0.250" number="1" object="ColaMintBottle"/>
         <hint X="2.216" Y="0.886" number="2" object="Spring"/>
-		<hint X="0.550" Y="0.960" number="3" object="BowlingBall"/>
-		<hint X="3.850" Y="0.450" number="4" object="Floor"/>
-	</hints>
+        <hint X="0.550" Y="0.960" number="3" object="BowlingBall"/>
+        <hint X="3.850" Y="0.450" number="4" object="Floor"/>
+    </hints>
 </tbe-level>
