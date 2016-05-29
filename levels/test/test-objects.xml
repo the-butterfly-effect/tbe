@@ -58,6 +58,7 @@
             <object X="4.70639" Y="4.43908" width="1" angle="0" type="PolyObject" height="1"/>
             <object X="7.96605" Y="3.62417" width="1" angle="0" type="Scenery" height="1"/>
             <object X="5.09385" Y="0.387692" width="0.12" angle="0" type="BowlingPin" height="0.34"/>
+            <object X="4.67179" height="0.7" type="Goal" angle="0" Y="0.361538" width="0.4"/>
         </predefined>
         <background>
             <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
