@@ -49,7 +49,9 @@ find_package(Qt5Widgets)
 find_package(Qt5Core)
 find_package(Qt5Xml)
 find_package(Qt5Svg)
-find_package(Qt5Test)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    find_package(Qt5Test)
+endif()
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 # Instruct CMake to run moc automatically when needed.
@@ -80,9 +82,11 @@ if (ECM_ENABLE_SANITIZERS)
     include(ECMEnableSanitizers)
 endif (ECM_ENABLE_SANITIZERS)
 
-#TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
-# nocommit !!!
-TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Qt5::Test Box2D)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Qt5::Test Box2D)
+else()
+    TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
+endif ()
 
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)

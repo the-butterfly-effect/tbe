@@ -42,6 +42,8 @@ const qreal theTestMultiplier = 1.0;
 const qreal theTestAddition   = 0.0;
 #endif
 
+#ifdef QT_DEBUG
+
 RegressionTest::RegressionTest(MainWindow *parent) :
     QObject(parent),
     theIsWon(false),
@@ -244,3 +246,31 @@ void RegressionTest::slotRegressionProgress(void)
     DEBUG1("start timer for %3.3f sec!", (myNextDelay * theTestMultiplier + theTestAddition) / 1000.);
     theRegressionTimer.start(myNextDelay * theTestMultiplier + theTestAddition);
 }
+
+#else // defined QT_DEBUG
+RegressionTest::RegressionTest(MainWindow *parent) :
+    QObject(parent)
+{
+}
+
+void RegressionTest::startRegressionRun()
+{
+}
+
+void RegressionTest::slot_Won()
+{
+}
+
+void RegressionTest::slot_Cancel()
+{
+}
+
+void RegressionTest::slot_Fail()
+{
+}
+
+void RegressionTest::slotRegressionProgress()
+{
+}
+
+#endif

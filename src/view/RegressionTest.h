@@ -47,7 +47,6 @@ public:
         REGRESSIONTESTDONE,
     };
 
-
     explicit RegressionTest(MainWindow *parent = 0);
 
     /// Starts the automated regression tests
@@ -65,6 +64,7 @@ public slots:
 private slots:
     ///
     void slotRegressionProgress(void);
+#ifdef QT_DEBUG
 
 private:
 
@@ -83,6 +83,8 @@ private:
     QStringList theStateNames;
 
     QProgressDialog *theProgressPtr;
+
+#endif
 };
 
 #endif // REGRESSIONTEST_H

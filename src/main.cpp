@@ -85,9 +85,9 @@ static bool displayHelp(QString /*anArgument*/ )
 #ifdef QT_DEBUG
     printf(" --verbosity <lvl>   set verbosity, 1=little, (default=%d), %d=all\n", theVerbosity, MAX_VERBOSITY);
     printf(" -v <lvl>            set verbosity\n");
-#endif
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
     printf("                     (comma-separated list, time is level runtime in seconds)\n");
+#endif
     printf(" --windowed          display in a window (default is fullscreen)\n");
     printf(" -W                  display in a window (default is fullscreen)\n");
     printf("\n");
@@ -135,9 +135,14 @@ static bool setWindowed( QString /*anArgument*/ )
 std::atomic<bool> theIsRunAsRegression(false);
 static bool runRegression( QString aListOfLevels )
 {
+#ifdef QT_DEBUG
     theStartFileName += aListOfLevels;
     theIsRunAsRegression = true;
     return true;
+#else
+    printf("WARNING: Running regression in release builds is not suppported\n");
+    return true;
+#endif
 }
 
 // this struct is used to list all long and short arguments
