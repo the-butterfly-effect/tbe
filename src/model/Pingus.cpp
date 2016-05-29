@@ -568,6 +568,8 @@ PingusExit::PingusExit()
     mySensorDef->isSensor = true;
     mySensorDef->userData = this;
     theShapeList.push_back(mySensorDef);
+    theProps.setDefaultPropertiesString(
+        Property::ZVALUE_STRING + QString(":0.5/") );
 }
 
 

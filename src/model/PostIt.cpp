@@ -51,6 +51,7 @@ PostIt::PostIt( )
     // Note that PostIt doesn't have a physics representation
     // it is only graphics
     theProps.setDefaultPropertiesString(
+        Property::ZVALUE_STRING + QString(":1.5/") +
         QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
         "-" + Property::MASS_STRING + QString(":/") );
     theToolTip = QObject::tr("Someone left notes all over the place.\n"
