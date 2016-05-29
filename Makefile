@@ -38,8 +38,8 @@ slow:
 regression: usr/games/tbe
 	./tbe --regression levels/needs-polish/balloons-do-poof.xml:6, \
 	      --regression levels/finished/bouncing_balls.xml:6, \
-	      --regression=levels/needs-polish/bowling_pin_plays_soccer.xml:17 \
-	      --regression=levels/needs-polish/brother-plays-penguin-goalie.xml:5 \
+	      --regression=levels/finished/bowling_pin_plays_soccer.xml:17 \
+	      --regression=levels/finished/brother-plays-penguin-goalie.xml:5 \
 	      --regression=levels/needs-polish/brother-plays-soccer.xml:8 \
 	      --regression levels/needs-polish/butterfly-on-steroids.xml:65, \
 	      --regression levels/finished/cola-powered-bike.v2.xml:20, \
@@ -50,7 +50,7 @@ regression: usr/games/tbe
 	      --regression levels/finished/house_of_cards.xml:20, \
 	      --regression=levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
-	      --regression=levels/needs-polish/loopings2.xml:22, \
+	      --regression=levels/finished/loopings2.xml:22, \
 	      --regression levels/needs-polish/save-the-butterfly.xml:28, \
 	      --regression levels/needs-polish/spare-the-balloon.xml:25, \
 	      --regression levels/finished/the_ball_the_box_and_the_penguin.xml:32, \
