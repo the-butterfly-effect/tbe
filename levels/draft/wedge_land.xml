@@ -119,5 +119,11 @@
             <property key="ybelow">0.5</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="RightFixedWedge" X="2.209" Y="2.469" width="0.680" height="0.280"/>
+        <hint number="2" object="RightFixedWedge" X="5.687" Y="2.442" width="1.713" height="0.214"/>
+        <hint number="3" object="RightFixedWedge" X="7.719" Y="1.78" width="1.653" height="0.202"/>
+        <hint number="4" object="LeftFixedWedge" X="6.422" Y="4.034" width="0.680" height="0.280"/>
+        <hint number="5" object="LeftFixedWedge" X="7.343" Y="3.251" width="0.680" height="0.322"/>
+    </hints>
 </tbe-level>
