@@ -54,15 +54,12 @@
             <object type="RightFixedWedge" angle="0" width="0.64617" height="0.300971" X="5.93662" Y="1.27909"/>
             <object type="Scenery" angle="0" width="1.01194" height="0.701451" X="0.998717" Y="0.574777">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object type="Scenery" angle="0" width="1.10748" height="0.534263" X="1.02857" Y="4.86792">
                 <property key="ImageName">clouds</property>
-                <property key="ZValue">1</property>
             </object>
             <object type="Scenery" angle="0" width="1.66278" height="0.534263" X="9.00282" Y="4.92165">
                 <property key="ImageName">clouds</property>
-                <property key="ZValue">1</property>
             </object>
         </predefined>
         <background>
@@ -73,51 +70,51 @@
         </background>
     </scene>
     <goals>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall1</property>
             <property key="xover">0.4</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall1</property>
             <property key="xbelow">1.6</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall1</property>
             <property key="yover">0.18</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall1</property>
-            <property key="ybelow">1.7</property>
+            <property key="ybelow">0.8</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall2</property>
             <property key="xover">0.4</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall2</property>
             <property key="xbelow">1.6</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall2</property>
             <property key="yover">0.18</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">PitBall2</property>
-            <property key="ybelow">1.7</property>
+            <property key="ybelow">0.8</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">ChestBall</property>
-            <property key="xover">9.43</property>
+            <property key="xover">9.58</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">ChestBall</property>
-            <property key="xbelow">10.5</property>
+            <property key="xbelow">10.45</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">ChestBall</property>
-            <property key="yover">0.06</property>
+            <property key="yover">0.14</property>
         </goal>
-        <goal isFail="false" type="positionchange">
+        <goal type="positionchange" isFail="false">
             <property key="object">ChestBall</property>
             <property key="ybelow">0.5</property>
         </goal>
