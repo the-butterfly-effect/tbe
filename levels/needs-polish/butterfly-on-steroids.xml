@@ -143,12 +143,7 @@
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object height="0.800" type="RectObject" X="3.700" width="0.150" Y="1.450" angle="0.000">
-                <property key="Bounciness">0.2</property>
-                <property key="Friction">0.1</property>
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">1</property>
-            </object>
+            <object height="0.800" type="Styrofoam" X="3.700" width="0.150" Y="1.450" angle="0.000"/>
             <object height="0.800" type="QuarterArc80" X="3.906" width="1.000" Y="2.206" angle="3.635"/>
             <object height="0.608" type="QuarterArc80" X="2.845" width="1.000" Y="2.414" angle="0.350"/>
             <object height="0.400" type="QuarterArc40" X="0.197" width="0.400" Y="2.015" angle="3.142"/>

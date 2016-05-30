@@ -151,26 +151,24 @@
             <object width="0.170" X="4.200" Y="0.460" height="0.500" type="ColaMintBottle" angle="1.810">
                 <property key="Thrust"> 2.5 </property>
             </object>
-            <object width="0.100" X="1.000" Y="0.360" height="0.720" type="RectObject" ID="Base" angle="0.00">
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">0.5</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
+            <object width="0.100" X="1.000" Y="0.360" height="0.720" type="Styrofoam" ID="Base" angle="0.00">
+                <property key="Bounciness">0.5</property>
             </object>
-            <object width="1.000" X="0.550" Y="0.770" height="0.100" type="RectObject" ID="Styro" angle="0.00">
-                <property key="ImageName">styrofoam</property>
+            <object width="1.000" X="0.550" Y="0.770" height="0.100" type="Styrofoam" ID="Styro" angle="0.00">
+                <property key="Bounciness">0.5</property>
                 <property key="NoCollision">Styro2,Styro3</property>
                 <property key="Mass">0.1</property>
                 <property key="PivotPoint">(-0.5,0.0)</property>
                 <tooltip>This piece of styrofoam is attached to something.</tooltip>
             </object>
-            <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro2" angle="-0.05">
-                <property key="ImageName">styrofoam</property>
+            <object width="1.050" X="0.550" Y="0.790" height="0.100" type="Styrofoam" ID="Styro2" angle="-0.05">
+                <property key="Bounciness">0.5</property>
                 <property key="NoCollision">Styro,Styro3</property>
                 <property key="Mass">0.1</property>
                 <tooltip>This piece of styrofoam is attached to something.</tooltip>
             </object>
-            <object width="1.050" X="0.550" Y="0.790" height="0.100" type="RectObject" ID="Styro3" angle="0.05">
-                <property key="ImageName">styrofoam</property>
+            <object width="1.050" X="0.550" Y="0.790" height="0.100" type="Styrofoam" ID="Styro3" angle="0.05">
+                <property key="Bounciness">0.5</property>
                 <property key="NoCollision">Styro2,Styro3</property>
                 <property key="Mass">0.1</property>
                 <tooltip>This piece of styrofoam is attached to something.</tooltip>

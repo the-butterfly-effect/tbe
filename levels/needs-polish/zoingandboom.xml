@@ -53,12 +53,10 @@
             <object ID="Balloon3" X="3.77" Y="2" width="0.27" angle="0" type="Balloon" height="0.36"/>
             <object ID="Balloon4" X="4.04" Y="2" width="0.27" angle="0" type="Balloon" height="0.36"/>
             <object ID="Balloon5" X="4.31" Y="2" width="0.27" angle="0" type="Balloon" height="0.36"/>
-            <object ID="Styro" X="3.77" Y="1.4" width="0.15" angle="0" type="RectObject" height="0.4">
+            <object ID="Styro" X="3.77" Y="1.4" width="0.15" angle="0" type="Styrofoam" height="0.4">
                 <property key="Bounciness">0.7</property>
                 <property key="Friction">0.02</property>
-                <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.020</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object X="3.5" Y="1.7" width="0.655" angle="0" type="Link" height="0.218">
                 <property key="ImageName">#8080FF</property>

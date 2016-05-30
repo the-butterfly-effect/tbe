@@ -59,6 +59,12 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
                                                                       "Birch is a type of wood.\nBirch wood beams move and float."),
                                                     "birch_bar", 1.0, 0.1, 7.2, 0.15 );
 
+static AbstractRectObjectFactory theStyrofoamFactory("Styrofoam",
+                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
+                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                   "Styrofoam blocks are light and bouncy."),
+                                                 "styrofoam", 0.5, 0.25, 0.5, 0.6 );
+
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous red plastic domino stone."),

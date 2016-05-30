@@ -21,14 +21,8 @@
                 <property key="Bounciness">0</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Styrofoam Block" count="1">
-            <object X="0" width="0.25" type="RectObject" Y="0" angle="0" height="0.8">
-                <property key="Bounciness">0.2</property>
-                <property key="Friction">0.3</property>
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">1</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
-            </object>
+        <toolboxitem count="1">
+            <object X="0" width="0.25" type="Styrofoam" Y="0" angle="0" height="0.8"/>
         </toolboxitem>
     </toolbox>
     <scene>
