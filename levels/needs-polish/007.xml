@@ -41,11 +41,21 @@
             <object width="0.85" X="5.91" Y="3.73" height="0.86" type="Wall">
                 <property key="Friction">1</property>
             </object>
-            <object width="0.35" X="6.67" Y="4.1" height="1" type="Styrofoam"/>
-            <object width="0.35" X="6.63" Y="3.1" height="1" type="Styrofoam"/>
-            <object width="0.35" X="6.60" Y="2.1" height="1" type="Styrofoam"/>
-            <object width="0.35" X="6.67" Y="1.1" height="1" type="Styrofoam"/>
-            <object width="0.35" X="6.62" Y="0.35" height="0.5" type="Styrofoam"/>
+            <object width="0.35" X="6.67" Y="4.1" height="1" type="Styrofoam">
+                <property key="Mass">1</property>
+            </object>
+            <object width="0.35" X="6.63" Y="3.1" height="1" type="Styrofoam">
+                <property key="Mass">1</property>
+            </object>
+            <object width="0.35" X="6.60" Y="2.1" height="1" type="Styrofoam">
+                <property key="Mass">1</property>
+            </object>
+            <object width="0.35" X="6.67" Y="1.1" height="1" type="Styrofoam">
+                <property key="Mass">1</property>
+            </object>
+            <object width="0.35" X="6.62" Y="0.35" height="0.5" type="Styrofoam">
+                <property key="Mass">1</property>
+            </object>
             <object width="0.6" X="7.55" Y="1.94" height="3.65" type="Wall"/>
             <object width="0.2" X="5.5" Y="0.9" height="1.6" type="Floor">
                 <property key="Bounciness">0.2</property>
