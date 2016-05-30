@@ -363,8 +363,15 @@ void AbstractObject::setTheWidth ( qreal new_var, bool mustRunParseProperties )
 void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 {
     assert(theViewObjectPtr != nullptr);
-    // if no property with a float type found, leave aDefaultValue is unchanged
-    theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
+    // we have several cases:
+    //  a) aDefaultValue = 2.0 ,  default property set -> use default property
+    //  b) aDefaultValue !=2   ,  default property set -> use aDefaultValue
+    //  c) aDefaultValue = 2.0 ,  non-default property set -> use non-default property
+    //  d) aDefaultValue !=2   ,  non-default property set -> use non-default property
+    float myTemp = -99.684;
+    theProps.property2Float(Property::ZVALUE_STRING, &myTemp, true);
+    if (aDefaultValue == 2.0 && myTemp != -99.684)
+        aDefaultValue = myTemp;
     theViewObjectPtr->setZValue(aDefaultValue);
 }
 
