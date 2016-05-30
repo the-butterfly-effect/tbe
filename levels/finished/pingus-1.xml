@@ -8,8 +8,8 @@
         <date>January 3, 2016</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Heavy Crate">
-            <object type="RectObject" width="0.600" height="0.370" angle="0.000" X="0.000" Y="0.000">
+        <toolboxitem count="2">
+            <object type="WoodCrateFlat" width="0.600" height="0.370" angle="0.000" X="0.000" Y="0.000">
                 <property key="ImageName">wood_crate_flat</property>
                 <tooltip>A pretty heavy wooden crate, great for stacking.</tooltip>
                 <property key="Mass">50</property>

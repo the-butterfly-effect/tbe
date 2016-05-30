@@ -20,55 +20,38 @@
     <scene>
         <scenesize width="10" height="6.5"/>
         <predefined>
-            <object width="0.720" X="6.800" Y="1.530" height="0.340" type="RectObject" angle="1.570">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.720" X="6.800" Y="1.530" height="0.340" type="WoodCrateFlat" angle="1.570">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.800" X="9.210" Y="2.010" height="0.340" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.800" X="9.210" Y="2.010" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.720" X="7.180" Y="1.530" height="0.340" type="RectObject" angle="1.570">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.720" X="7.180" Y="1.530" height="0.340" type="WoodCrateFlat" angle="1.570">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.800" X="8.780" Y="0.980" height="0.340" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.800" X="8.780" Y="0.980" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
             <object width="0.800" X="7.060" Y="0.270" height="0.360" type="Floor" angle="0.000"/>
-            <object width="0.800" X="7.080" Y="2.040" height="0.300" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.800" X="7.080" Y="2.040" height="0.300" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.800" X="8.380" Y="2.010" height="0.340" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_flat</property>
+            <object width="0.800" X="8.380" Y="2.010" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
-                <tooltip>A light wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="8.640" Y="1.500" height="0.700" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_square</property>
+            <object width="0.700" X="8.640" Y="1.500" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Mass">5</property>
-                <tooltip>A heavy wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="7.088" Y="0.817" height="0.700" type="RectObject" angle="0.000">
-                <property key="ImageName">wood_crate_square</property>
+            <object width="0.700" X="7.088" Y="0.817" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Mass">3</property>
                 <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="9.410" Y="1.490" height="0.700" type="RectObject" angle="3.140">
-                <property key="ImageName">wood_crate_square</property>
+            <object width="0.700" X="9.410" Y="1.490" height="0.700" type="WoodCrateSquare" angle="3.140">
                 <property key="Mass">6</property>
                 <tooltip>A pretty heavy wooden crate, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="8.810" Y="0.450" height="0.700" type="RectObject" angle="0.000">
+            <object width="0.700" X="8.810" Y="0.450" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Friction">1</property>
-                <property key="ImageName">wood_crate_square</property>
                 <property key="Mass">3</property>
                 <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
