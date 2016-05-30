@@ -5,7 +5,7 @@ it makes use of (e.g. a level with a configurable detonator
 box before birds-2).
 -->
 <tbe-levels>
-   <level> needs-polish/001.xml </level> <!-- Introduces post-it, butterfly, simulation controls. MUST BE FIRST LEVEL! -->
+   <level> finished/001.xml </level> <!-- Introduces post-it, butterfly, simulation controls. MUST BE FIRST LEVEL! -->
    <level> finished/bouncing_balls.xml </level> <!-- Introduces toolbox. MUST BE SECOND LEVEL! -->
    <level> needs-polish/002.xml </level> <!-- First level with a butterfly in danger -->
    <level> finished/jumping_around.xml </level>
