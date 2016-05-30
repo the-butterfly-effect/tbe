@@ -109,6 +109,18 @@ static AbstractRectObjectFactory theColaCrateFactory("ColaCrate",
                                                      "cola-crate", 0.85, 0.6, 18.0, 0.1,
                                                      "Friction:0.1/");
 
+static AbstractRectObjectFactory theLightWoodCrateFactory("WoodCrateLight",
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Light Wooden Crate"),
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                       "A light wooden crate, great for stacking."),
+                                                     "wood_crate_flat", 0.8, 0.34, 3.0, 0.1);
+
+static AbstractRectObjectFactory theHeavyWoodCrateFactory("WoodCrateHeavy",
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Heavy Wooden Crate"),
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                       "A heavy wooden crate, great for stacking."),
+                                                     "wood_crate_square", 0.7, 0.7, 6.0, 0.1);
+
 // Constructors/Destructors
 //
 
