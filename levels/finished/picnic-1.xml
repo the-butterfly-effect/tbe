@@ -81,7 +81,7 @@
             <object width="6.4" X="5.2" Y="3.1" height="2.5" type="Scenery" angle="0.000">
                 <property key="ImageName">the-sun</property>
             </object>
-            <object width="0.14" X="2.5" Y="0.6" height="0.14" type="Peg"/>
+            <object width="0.14" X="2.5" Y="0.6" height="0.14" type="PegMetal"/>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>

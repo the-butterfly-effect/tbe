@@ -9,7 +9,7 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="3">
-            <object type="Peg"/>
+            <object type="PegMetal"/>
         </toolboxitem>
     </toolbox>
     <scene>

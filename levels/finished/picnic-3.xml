@@ -117,9 +117,7 @@
             <object width="0.400" X="3.350" Y="0.500" height="0.100" type="Floor" angle="0.010"/>
             <object width="0.400" X="3.050" Y="0.400" height="0.100" type="Floor" angle="0.015"/>
             <object width="0.400" X="2.750" Y="0.300" height="0.100" type="Floor" angle="0.015"/>
-            <object width="0.120" X="3.970" Y="1.420" height="0.120" type="Peg" ID="blocker2" angle="0.000">
-                <property key="Radius">0.06</property>
-            </object>
+            <object width="0.140" X="3.970" Y="1.420" height="0.140" type="PegWood" ID="blocker2" angle="0.000"/>
             <object width="1.200" X="3.380" Y="1.030" height="0.100" type="BirchBar" angle="5.950">
                 <property key="Mass">3</property>
                 <property key="PivotPoint">(-0.08,0)</property>
