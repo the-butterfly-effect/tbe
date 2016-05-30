@@ -64,7 +64,7 @@ box before birds-2).
    <level> needs-polish/picnic-2.xml </level>
    <level> finished/domino_chest.xml </level>
    <level> needs-polish/loopings2.xml </level>
-   <level> needs-polish/007.xml </level>
+   <level> finished/007.xml </level>
    <level> finished/hanging_box.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
    <level> needs-polish/find-the-message.v2.xml </level> <!-- “Good-bye” level, should be the last level. -->
@@ -81,5 +81,5 @@ box before birds-2).
    <level> finished/sorting-3.xml </level>
    <level> finished/sorting-4.xml </level>
    <level> finished/sorting-5.xml </level>
-   <level> needs-polish/10_kilograms_above_the_ground.xml </level>
+   <level> finished/10_kilograms_above_the_ground.xml </level>
 </tbe-levels>
