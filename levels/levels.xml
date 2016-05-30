@@ -1,8 +1,7 @@
 <!DOCTYPE levellist>
-<!-- NOTE: When adding a level, make surre it is not placed
-before a level which introduces an element or concept
-it makes use of (e.g. a level with a configurable detonator
-box before birds-2).
+<!-- NOTE: When adding a level, make sure it is not placed before a level
+which introduces an element or concept it makes use of
+(e.g. a level with a configurable detonator box before birds-2).
 -->
 <tbe-levels>
    <level> finished/001.xml </level> <!-- Introduces post-it, butterfly, simulation controls. MUST BE FIRST LEVEL! -->
@@ -46,6 +45,7 @@ box before birds-2).
    <level> finished/the_ball_the_box_and_the_penguin.xml </level>
    <level> finished/controlled_detonation.xml </level>
    <level> finished/float-balloon-float.xml </level>
+   <level> finished/wedge_land.xml </level>
    <level> finished/little_balloon_puzzle.xml </level>
    <level> finished/creativity.xml </level>
    <level> finished/bridge-2.xml </level>

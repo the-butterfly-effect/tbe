@@ -38,20 +38,20 @@ slow:
 regression: usr/games/tbe
 	./tbe --regression levels/needs-polish/balloons-do-poof.xml:6, \
 	      --regression levels/finished/bouncing_balls.xml:6, \
-	      --regression=levels/needs-polish/bowling_pin_plays_soccer.xml:17, \
-	      --regression=levels/needs-polish/brother-plays-penguin-goalie.xml:5, \
-	      --regression=levels/needs-polish/brother-plays-soccer.xml:8, \
+	      --regression levels/needs-polish/bowling_pin_plays_soccer.xml:17, \
+	      --regression levels/needs-polish/brother-plays-penguin-goalie.xml:5, \
+	      --regression levels/needs-polish/brother-plays-soccer.xml:8, \
 	      --regression levels/needs-polish/butterfly-on-steroids.xml:65, \
 	      --regression levels/finished/cola-powered-bike.v2.xml:20, \
-              --regression=levels/finished/construction_yard.xml:26, \
+              --regression levels/finished/construction_yard.xml:26, \
               --regression levels/finished/contraption1.xml:36, \
               --regression levels/finished/float-balloon-float.xml:21, \
 	      --regression levels/needs-polish/geyser.xml:16, \
 	      --regression levels/finished/house_of_cards.xml:20, \
 	      --regression levels/needs-polish/imperfectbalance.xml:30, \
-	      --regression=levels/finished/in_the_attic.xml:17, \
+	      --regression levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
-	      --regression=levels/finished/loopings2.xml:22, \
+	      --regression levels/finished/loopings2.xml:22, \
 	      --regression levels/needs-polish/save-the-butterfly.xml:28, \
 	      --regression levels/needs-polish/spare-the-balloon.xml:25, \
 	      --regression levels/finished/the_ball_the_box_and_the_penguin.xml:32, \
@@ -64,7 +64,8 @@ regression: usr/games/tbe
 	      --regression levels/finished/party-at-office.xml:15, \
 	      --regression levels/finished/picnic-0.xml:13, \
 	      --regression levels/finished/picnic-1.xml:13, \
-	      --regression=levels/finished/picnic-3.xml:70
+	      --regression levels/finished/picnic-3.xml:70, \
+              --regression levels/finished/wedge_land.xml:49
 
 # levels currently known to fail regression:
 failregression: usr/games/tbe
