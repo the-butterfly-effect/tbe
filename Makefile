@@ -50,7 +50,7 @@ regression: usr/games/tbe
 	      --regression levels/finished/house_of_cards.xml:20, \
 	      --regression=levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
-	      --regression=levels/needs-polish/loopings2.xml:22, \
+	      --regression=levels/finished/loopings2.xml:22, \
 	      --regression levels/needs-polish/save-the-butterfly.xml:28, \
 	      --regression levels/needs-polish/spare-the-balloon.xml:25, \
 	      --regression levels/finished/the_ball_the_box_and_the_penguin.xml:32, \

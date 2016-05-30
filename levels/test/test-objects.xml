@@ -61,6 +61,8 @@
             <object X="8.987" Y="3.888" type="Styrofoam" />
             <object X="9.244" Y="2.801" type="RightStyrofoamWedge" />
             <object X="9.244" Y="0.9" type="LeftStyrofoamWedge" />
+            <object X="5.09385" Y="0.387692" width="0.12" angle="0" type="BowlingPin" height="0.34"/>
+            <object X="4.67179" height="0.7" type="Goal" angle="0" Y="0.361538" width="0.4"/>
         </predefined>
         <background>
             <gradientstop pos="0">0.8;0.8;1;1</gradientstop>

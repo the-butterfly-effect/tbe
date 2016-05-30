@@ -25,6 +25,7 @@
         <toolboxitem count="1"><object type="DominoGreen"/></toolboxitem>
         <toolboxitem count="1"><object type="Dynamite"/></toolboxitem>
         <toolboxitem count="1"><object type="Floor"/></toolboxitem>
+        <toolboxitem count="1"><object type="Goal"/></toolboxitem>
         <toolboxitem count="1"><object type="Hammer"/></toolboxitem>
         <toolboxitem count="1"><object type="IBeam"/></toolboxitem>
         <toolboxitem count="1"><object type="LeftFixedWedge"/></toolboxitem>

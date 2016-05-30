@@ -12,5 +12,6 @@ install(FILES
         ${SRCDIRNAME}/jj-rightfoot.png
         ${SRCDIRNAME}/jj-righthand.png
         ${SRCDIRNAME}/jj-rightleg.png
+        ${SRCDIRNAME}/goal.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )
