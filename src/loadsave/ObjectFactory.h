@@ -104,6 +104,13 @@ protected:
      */
     virtual AbstractObject *createObject(void) const = 0;
 
+    /// @returns true if the object created by this factory should be listed in
+    /// the "Insert" menu of our Level Creator.
+    virtual bool isObjectForInsertList(void) const
+    {
+        return true;
+    }
+
 private:
     QString theFactoryName;
 

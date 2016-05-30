@@ -35,6 +35,10 @@ public:
     {
         return fixObject(new TranslationGuide());
     }
+    bool isObjectForInsertList(void) const override
+    {
+        return false;
+    }
 };
 static TranslationGuideObjectFactory theRFactory;
 

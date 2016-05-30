@@ -35,6 +35,11 @@ public:
     {
         return fixObject(new PivotPoint());
     }
+
+    bool isObjectForInsertList(void) const override
+    {
+        return false;
+    }
 };
 static PivotPointObjectFactory theRFactory;
 

@@ -87,11 +87,13 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     // add all objects into it
     ObjectFactory::ObjectFactoryList *myOFListPtr = ObjectFactory::getAllFactories();
     for (auto i : *myOFListPtr) {
-        // TODO: remove the Link-derived ones from the list
-        // TODO: add icons to the action
-        InsertMenuQAction *myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), nullptr);
-        connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
-        myInsertMenuPtr->addAction(myTempActionPtr);
+        // Remove some objects without ViewObject from the list
+        if (i->isObjectForInsertList()) {
+            // TODO: add icons to the action
+            InsertMenuQAction *myTempActionPtr = new InsertMenuQAction(i->getFactoryName(), nullptr);
+            connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_insert(QString)));
+            myInsertMenuPtr->addAction(myTempActionPtr);
+        }
     }
     delete myOFListPtr;
     myOFListPtr = nullptr;
