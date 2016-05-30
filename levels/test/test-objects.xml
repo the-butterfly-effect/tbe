@@ -9,7 +9,7 @@
     </levelinfo>
     <toolbox/>
     <scene>
-        <scenesize width="9" height="5"/>
+        <scenesize width="10" height="5"/>
         <predefined>
             <object X="7.25743" Y="2.93705" width="0.27" angle="0" type="Balloon" height="0.36"/>
             <object X="1.57174" Y="2.96067" width="0.8" angle="0" type="BedOfNails" height="0.15"/>
@@ -57,7 +57,9 @@
             <object X="4.8026" Y="3.29594" width="1" angle="0" type="RectObject" height="1"/>
             <object X="4.70639" Y="4.43908" width="1" angle="0" type="PolyObject" height="1"/>
             <object X="7.96605" Y="3.62417" width="1" angle="0" type="Scenery" height="1"/>
-            <object X="5.09385" Y="0.387692" width="0.12" angle="0" type="BowlingPin" height="0.34"/>
+            <object X="8.987" Y="3.888" type="Styrofoam" />
+            <object X="9.244" Y="2.801" type="RightStyrofoamWedge" />
+            <object X="9.244" Y="0.9" type="LeftStyrofoamWedge" />
         </predefined>
         <background>
             <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
