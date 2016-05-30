@@ -23,36 +23,36 @@
     <scene>
         <scenesize width="10" height="6.5"/>
         <predefined>
-            <object width="0.800" X="6.799" Y="1.567" height="0.340" type="WoodCrateLight" angle="1.571">
+            <object width="0.800" X="6.799" Y="1.567" height="0.340" type="WoodCrateFlat" angle="1.571">
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="9.200" Y="2.020" height="0.340" type="WoodCrateLight" angle="0.000">
+            <object width="0.800" X="9.200" Y="2.020" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="7.178" Y="1.582" height="0.340" type="WoodCrateLight" angle="1.571">
+            <object width="0.800" X="7.178" Y="1.582" height="0.340" type="WoodCrateFlat" angle="1.571">
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="8.990" Y="0.970" height="0.340" type="WoodCrateLight" angle="0.000">
+            <object width="0.800" X="8.990" Y="0.970" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="7.144" Y="0.282" height="0.340" type="WoodCrateLight" angle="0.000">
+            <object width="0.800" X="7.144" Y="0.282" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">1</property>
             </object>
-            <object width="0.800" X="1.100" Y="0.170" height="0.340" type="WoodCrateLight" angle="0.000">
+            <object width="0.800" X="1.100" Y="0.170" height="0.340" type="WoodCrateFlat" angle="0.000">
                 <property key="Mass">0</property>
             </object>
-            <object width="0.700" X="8.550" Y="1.500" height="0.700" type="WoodCrateHeavy" angle="0.000">
+            <object width="0.700" X="8.550" Y="1.500" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Mass">5</property>
             </object>
-            <object width="0.700" X="7.088" Y="0.817" height="0.700" type="WoodCrateHeavy" angle="0.000">
+            <object width="0.700" X="7.088" Y="0.817" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Mass">3</property>
                 <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="9.402" Y="1.500" height="0.700" type="WoodCrateHeavy" angle="3.140">
+            <object width="0.700" X="9.402" Y="1.500" height="0.700" type="WoodCrateSquare" angle="3.140">
                 <property key="Mass">3</property>
                 <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
-            <object width="0.700" X="9.050" Y="0.450" height="0.700" type="WoodCrateHeavy" angle="0.000">
+            <object width="0.700" X="9.050" Y="0.450" height="0.700" type="WoodCrateSquare" angle="0.000">
                 <property key="Mass">3</property>
                 <tooltip>A wooden crate of medium weight, great for stacking.</tooltip>
             </object>
