@@ -107,7 +107,7 @@ bool Singleton::Translator::attemptTbeQtTranslatorLoad(
     const QString &aLocale)
 {
     QString myLocation = aPath + "tbe_" + aLocale;
-    DEBUG3("Attemp: load translator from %s", ASCII(myLocation));
+    DEBUG3("Attempt: load translator from %s", ASCII(myLocation));
     if (theTbeQtTranslator.load(myLocation)) {
         DEBUG3("   ... success");
         theBaseTbeQtLocation = aPath;
@@ -179,10 +179,11 @@ bool Singleton::Translator::setLanguageQtIself(const QString &aLocale)
             theQtTranslator.load("qt_" + aLocale, theBaseTbeQtLocation);
 
         if (theQtTranslator.isEmpty()) {
-            DEBUG2("NOTE: translator for Qt itself is empty");
+            DEBUG2("NOTE: translator for '%s' for Qt itself is unfortunately empty/missing.", ASCII(aLocale));
             return false;
         }
         QCoreApplication::instance()->installTranslator(&theQtTranslator);
+        DEBUG3("Installed translator for Qt itself for '%s'.", ASCII(aLocale));
     }
     return true;
 }
