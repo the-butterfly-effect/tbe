@@ -104,11 +104,9 @@
             <object width="0.131607" height="0.101402" Y="5.41748" angle="0" type="RightFixedWedge" X="2.48004"/>
             <object width="0.109385" height="1.12837" Y="4.79072" angle="0" type="Wall" X="4.311"/>
             <object width="0.864078" height="0.1" Y="4.82163" angle="0" type="RotatingBar" ID="pingubar_h" X="3.76752" />
-            <object width="0.758533" height="0.1" Y="4.48527" angle="-1.57" type="RectObject" ID="pingubar_v" X="3.28156">
+            <object width="0.758533" height="0.1" Y="4.48527" angle="-1.57" type="Styrofoam" ID="pingubar_v" X="3.28156">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.04" height="0.1" Y="0" angle="-1.57" type="Glue" X="0">
                 <property key="ImageName">GlueBlob</property>
@@ -125,17 +123,13 @@
             <object width="0.713142" height="0.1" Y="1.49804" angle="-1.57" type="RotatingBar" ID="dominobar_left" X="1.68896" />
             <object width="2.66127" height="0.1" Y="0.842124" angle="0" type="Floor" X="2.84628"/>
             <object width="0.784938" height="0.777389" Y="1.07931" angle="-3.1415" type="QuarterArc40" X="1.13121"/>
-            <object width="1.26429" height="0.243474" Y="5.23317" angle="0" type="RectObject" X="6.32362">
+            <object width="1.26429" height="0.243474" Y="5.23317" angle="0" type="Styrofoam" X="6.32362">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
-            <object width="1.24919" height="0.213269" Y="4.59886" angle="0" type="RectObject" X="6.33872">
+            <object width="1.24919" height="0.213269" Y="4.59886" angle="0" type="Styrofoam" X="6.33872">
                 <property key="Bounciness">0.1</property>
-                <property key="ImageName">styrofoam</property>
                 <property key="Mass">1</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="1.23409" height="0.1" Y="5.05571" angle="0" type="Floor" X="7.06364"/>
             <object width="0.758361" height="0.1" Y="5.05571" angle="0" type="Floor" X="5.54207"/>
