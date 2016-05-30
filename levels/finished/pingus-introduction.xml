@@ -35,7 +35,7 @@
             </object>
             <object type="PostIt" width="0.220" Y="1.286" angle="0.000" X="0.609" height="0.220">
                 <property key="ZValue">1</property>
-                <property key="page1">Aren’t they cute, these little pingus (or “penguins”)?</property>
+                <property key="page1">Aren’t they cute, these little penguins (or “pingus”)?</property>
                 <property key="page2">They got lost and need to find their way to the door below so they can escape this place.</property>
                 <property key="page3">Here are some pingu facts:</property>
                 <property key="page4">Pingus walk to the left or right until they bump into something heavy, after which they turn around.</property>
