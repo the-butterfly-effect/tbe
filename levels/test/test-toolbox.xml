@@ -30,7 +30,8 @@
         <toolboxitem count="1"><object type="LeftFixedWedge"/></toolboxitem>
         <toolboxitem count="1"><object type="LeftRamp"/></toolboxitem>
         <toolboxitem count="1"><object type="LeftWedge"/></toolboxitem>
-        <toolboxitem count="1"><object type="Peg"/></toolboxitem>
+        <toolboxitem count="1"><object type="PegMetal"/></toolboxitem>
+        <toolboxitem count="1"><object type="PegWood"/></toolboxitem>
         <toolboxitem count="1"><object type="PetanqueBoule"/></toolboxitem>
         <toolboxitem count="1"><object type="PingusSleeping"/></toolboxitem>
         <toolboxitem count="1"><object type="PingusWalkLeft"/></toolboxitem>
@@ -51,6 +52,8 @@
         <toolboxitem count="1"><object type="VolleyBall"/></toolboxitem>
         <toolboxitem count="1"><object type="Wall"/></toolboxitem>
         <toolboxitem count="1"><object type="Weight"/></toolboxitem>
+        <toolboxitem count="1"><object type="WoodCrateFlat"/></toolboxitem>
+        <toolboxitem count="1"><object type="WoodCrateSquare"/></toolboxitem>
     </toolbox>
     <scene>
         <scenesize width="8.5" height="5"/>
