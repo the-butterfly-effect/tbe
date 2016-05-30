@@ -8,14 +8,8 @@
         <date>5/7/12</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="3" name="Peg">
-            <object width="0.14" X="1.0" Y="2.7" height="0.14" type="CustomBall">
-                <tooltip>A round obstacle, pinned to the sky.</tooltip>
-                <property key="Radius">0.07</property>
-                <property key="Bounciness">0.7</property>
-                <property key="ImageName">brass-pin</property>
-                <property key="Mass">0</property>
-            </object>
+        <toolboxitem count="3">
+            <object type="Peg"/>
         </toolboxitem>
     </toolbox>
     <scene>
