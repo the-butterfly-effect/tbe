@@ -39,7 +39,7 @@ int Pingus::theEscapedCount = 0;
 int Pingus::theAliveCount = 0;
 
 Pingus::Pingus(const QString &anIconName)
-    : CircleObject(QObject::tr("Pingus"),
+    : CircleObject(QObject::tr("Penguin"),
                    QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can't take much abuse."),
                    "",
                    PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING), theAnimationFrameIndex(0)
@@ -568,8 +568,20 @@ PingusExit::PingusExit()
     mySensorDef->isSensor = true;
     mySensorDef->userData = this;
     theShapeList.push_back(mySensorDef);
+
+    setTheWidth(0.406);
+    setTheHeight(0.703);
+
+    theNameString = QObject::tr("Exit");
+    theToolTip = QObject::tr("Penguins will escape here, never to be seen again.");
     theProps.setDefaultPropertiesString(
-        Property::ZVALUE_STRING + QString(":0.5/") );
+        Property::ZVALUE_STRING + QString(":0.5/") +
+        Property::IMAGE_NAME_STRING + QString(":opendoor/") +
+        Property::RESIZABLE_STRING + QString(":none/") +
+        QString("-") + Property::BOUNCINESS_STRING + QString(":/") +
+        QString("-") + Property::NOCOLLISION_STRING + QString(":/") +
+        QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
+        QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );
 }
 
 

@@ -24,11 +24,13 @@
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
+        <toolboxitem count="1">
+            <object Y="3.318" X="2.872" type="PingusWalkLeft" />
+        </toolboxitem>
     </toolbox>
     <scene>
         <scenesize height="4" width="5.6"/>
         <predefined>
-            <object angle="0" Y="3.318" X="2.872" height="0.28" type="PingusWalkLeft" width="0.28"/>
             <object angle="1.5708" Y="3.379" X="4.765" height="0.15" type="BedOfNails" width="0.8"/>
             <object angle="-1.5708" Y="3.37861" X="0.925429" height="0.15" type="BedOfNails" width="0.8"/>
             <object angle="0" Y="3.318" X="1.578" height="0.1" type="Floor" width="0.777"/>
