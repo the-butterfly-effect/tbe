@@ -62,7 +62,7 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
 static AbstractRectObjectFactory theStyrofoamFactory("Styrofoam",
                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
-                                                                   "Styrofoam blocks are light and durable."),
+                                                                   "Styrofoam blocks are light and bouncy."),
                                                  "styrofoam", 0.5, 0.25, 0.5, 0.6 );
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
