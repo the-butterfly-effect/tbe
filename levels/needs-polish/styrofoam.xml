@@ -8,13 +8,9 @@
         <date>12/20/09</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="2" name="Styrofoam Block">
-            <object width="1.0" height="0.5" type="RectObject">
-                <tooltip>Resizable styrofoam blocks... What an invention!</tooltip>
-                <property key="ImageName">styrofoam</property>
-                <property key="Bounciness">0.6</property>
+        <toolboxitem count="2">
+            <object width="1.0" height="0.5" type="Styrofoam">
                 <property key="Resizable">totalresize</property>
-                <property key="Mass">1.0</property>
             </object>
         </toolboxitem>
     </toolbox>
@@ -46,11 +42,7 @@
                 <property key="ImageName">styrofoam-left</property>
                 <property key="Mass">0.6</property>
             </object>
-            <object width="1.000" X="3.900" Y="1.150" height="0.300" type="RectObject" angle="0.000">
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
-                <property key="Bounciness">0.6</property>
-                <property key="ImageName">styrofoam</property>
-            </object>
+            <object width="1.000" X="3.900" Y="1.150" height="0.300" type="Styrofoam" angle="0.000"/>
             <object width="3.800" X="2.500" Y="0.950" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.400" X="0.800" Y="1.150" height="0.250" type="LeftWedge" angle="0.000">
                 <tooltip>A light movable wedge made out of styrofoam.</tooltip>
@@ -69,11 +61,7 @@
                 <property key="ImageName">styrofoam-right</property>
                 <property key="Mass">0.6</property>
             </object>
-            <object width="1.000" X="0.600" Y="0.250" height="0.300" type="RectObject" angle="0.000">
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
-                <property key="Bounciness">0.5</property>
-                <property key="ImageName">styrofoam</property>
-            </object>
+            <object width="1.000" X="0.600" Y="0.250" height="0.300" type="Styrofoam" angle="0.000"/>
             <object width="0.400" X="3.400" Y="0.250" height="0.250" type="RightWedge" angle="0.000">
                 <tooltip>A light movable wedge made out of styrofoam.</tooltip>
                 <property key="Bounciness">0.6</property>

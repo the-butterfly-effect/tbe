@@ -48,13 +48,11 @@
                 <property key="Friction">0.9</property>
             </object>
             <object width="0.22" X="0.19" Y="3.382929022271148" height="0.22" type="BowlingBall" angle="0"/>
-            <object width="0.15" X="3.8" Y="0.45" height="0.7" type="RectObject" ID="Styro" angle="0">
+            <object width="0.15" X="3.8" Y="0.45" height="0.7" type="Styrofoam" ID="Styro" angle="0">
                 <property key="Bounciness">0.7</property>
                 <property key="Friction">0.02</property>
-                <property key="ImageName">styrofoam</property>
                 <property key="Mass">0.026</property>
                 <property key="TranslationGuide">1.57</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
             <object width="0.27" X="3.48" Y="1.84" height="0.36" type="Balloon" ID="Balloon1" angle="0.18">
                 <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>

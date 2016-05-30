@@ -45,18 +45,8 @@
             <object width="3.2" X="2.1" Y="0.5" height="0.1" type="Floor" angle="0">
                 <property key="Bounciness">0.0</property>
             </object>
-            <object width="0.15" X="3.9" Y="0.3" height="0.4" type="RectObject" angle="0">
-                <property key="Bounciness">0.6</property>
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">0.3</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
-            </object>
-            <object width="0.15" X="3.88" Y="0.7" height="0.4" type="RectObject" angle="0">
-                <property key="Bounciness">0.6</property>
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">0.3</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
-            </object>
+            <object width="0.15" X="3.9" Y="0.3" height="0.4" type="Styrofoam" angle="0"/>
+            <object width="0.15" X="3.88" Y="0.7" height="0.4" type="Styrofoam" angle="0"/>
             <object width="0.15" X="2.5" Y="0.9399999999999999" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0">
                 <property key="Object">Flower</property>
             </object>

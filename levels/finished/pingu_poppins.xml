@@ -19,12 +19,9 @@
         <toolboxitem count="1">
             <object angle="0" Y="2.23749" X="5.37931" height="0.187986" type="RightRamp" width="0.560623"/>
         </toolboxitem>
-        <toolboxitem name="Styrofoam" count="2">
-            <object angle="0" Y="0" X="0" height="1" type="RectObject" width="1">
-                <property key="ImageName">styrofoam</property>
-                <property key="Mass">0.5</property>
+        <toolboxitem count="2">
+            <object angle="0" Y="0" X="0" width="1" height="0.5" type="Styrofoam">
                 <property key="Resizable">totalresize</property>
-                <tooltip>Styrofoam blocks are light and durable.</tooltip>
             </object>
         </toolboxitem>
     </toolbox>

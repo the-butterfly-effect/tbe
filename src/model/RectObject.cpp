@@ -59,11 +59,11 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
                                                                       "Birch is a type of wood.\nBirch wood beams move and float."),
                                                     "birch_bar", 1.0, 0.1, 7.2, 0.15 );
 
-static AbstractRectObjectFactory theFloorFactory("Styrofoam",
+static AbstractRectObjectFactory theStyrofoamFactory("Styrofoam",
                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
                                                                    "Styrofoam blocks are light and durable."),
-                                                 "styrofoam", 0.5, 0.25, 0.9, 0.6 );
+                                                 "styrofoam", 0.5, 0.25, 0.5, 0.6 );
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),

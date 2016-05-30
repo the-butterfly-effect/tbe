@@ -17,15 +17,9 @@
         <toolboxitem count="1" icon="Domino-Stone-Red" name="Large Domino">
             <object width="0.1" height="0.7" type="DominoGreen"/>
         </toolboxitem>
-        <toolboxitem count="1" icon="styrofoam" name="Styrofoam Block">
-            <object width="0.8" height="0.1" type="RectObject">
-                <tooltip>Resizable styrofoam blocks … What an invention!</tooltip>
-                <property key="Friction">0.2</property>
-                <property key="Mass">0.2</property>
-                <property key="Bounciness">0.5</property>
-                <property key="ImageName">styrofoam</property>
+        <toolboxitem count="1">
+            <object width="0.8" height="0.1" type="Styrofoam">
                 <property key="Resizable">vertical</property>
-                <property key="Rotate">no</property>
             </object>
         </toolboxitem>
     </toolbox>
