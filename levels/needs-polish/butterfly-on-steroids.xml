@@ -60,9 +60,7 @@
                 <property key="Mass">0.015</property>
                 <property key="object">Flower</property>
             </object>
-            <object height="0.800" type="RectObject" X="4.300" width="0.350" Y="1.300" angle="0.000">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object height="0.800" type="Daffodil" X="4.300" width="0.350" Y="1.300" angle="0.000"/>
             <object height="0.200" ID="Flower" type="Scenery" X="4.200" width="0.200" Y="1.800" angle="0.000">
                 <property key="ImageName">Empty</property>
             </object>

@@ -50,14 +50,8 @@
         <predefined>
             <object Y="2.971" angle="0.000" width="0.150" type="Butterfly" ID="butterfly_high" X="3.811" height="0.228"/>
             <object Y="2.299" angle="0.000" width="0.150" type="Butterfly" ID="butterfly_low" X="3.537" height="0.228"/>
-            <object Y="2.842" angle="0.000" width="0.214" type="Scenery" ID="flower_high" X="6.193" height="0.421">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-                <property key="ZValue">1</property>
-            </object>
-            <object Y="2.161" angle="0.000" width="0.214" type="Scenery" ID="flower_low" X="6.193" height="0.421">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-                <property key="ZValue">1</property>
-            </object>
+            <object Y="2.842" angle="0.000" width="0.214" type="Daffodil" ID="flower_high" X="6.193" height="0.421"/>
+            <object Y="2.161" angle="0.000" width="0.214" type="Daffodil" ID="flower_low" X="6.193" height="0.421"/>
             <object Y="1.892" angle="0.000" width="0.286" type="Floor" X="6.225" height="0.100"/>
             <object Y="4.157" angle="0.000" width="0.200" type="Wall" X="6.769" height="1.670"/>
             <object Y="2.899" angle="0.000" width="0.330" type="DetonatorBox" X="8.628" height="0.350">
@@ -184,12 +178,12 @@
     </scene>
     <goals>
         <goal type="distance" isFail="true">
-            <property key="lessthan">0.2</property>
+            <property key="lessthan">0.22</property>
             <property key="object1">butterfly_high</property>
             <property key="object2">flower_high</property>
         </goal>
         <goal type="distance" isFail="false">
-            <property key="lessthan">0.2</property>
+            <property key="lessthan">0.22</property>
             <property key="object1">butterfly_low</property>
             <property key="object2">flower_low</property>
         </goal>

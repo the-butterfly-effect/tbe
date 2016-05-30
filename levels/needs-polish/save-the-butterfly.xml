@@ -27,9 +27,7 @@
                 <property key="page3">Our goal is to keep the butterfly alive. And put the pin in the chest.</property>
                 <property key="page4">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>saves the animals …</property>
             </object>
-            <object width="0.2212238609790802" X="5.800" Y="0.3000" height="0.4064355790615082" type="RectObject" angle="0">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.221" X="5.8" Y="0.3" height="0.406" type="Daffodil" angle="0"/>
             <object width="0.2" X="5.76" Y="0.4" height="0.2" type="Scenery" ID="Flower" angle="0">
                 <property key="ImageName">Empty</property>
             </object>

@@ -36,9 +36,7 @@
                 <property key="Friction">0.6</property>
                 <property key="ImageName">DarkerGreen</property>
             </object>
-            <object width="0.4" X="7.4" Y="4.2" height="0.9" type="RectObject">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.4" X="7.4" Y="4.2" height="0.9" type="Daffodil"/>
             <object width="0.2" X="7.3" Y="4.55" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName">Empty</property>
             </object>

@@ -14,10 +14,7 @@
                 <property key="ImageName">the-sun</property>
                 <tooltip>Butterflies think the sun is nice and warm.</tooltip>
             </object>
-            <object width="0.4" X="2" Y="0.45" height="0.9" type="RectObject">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-                <tooltip>This is a daffodil: Butterflies want to fly there!</tooltip>
-            </object>
+            <object width="0.4" X="2" Y="0.45" height="0.9" type="Daffodil"/>
             <object width="0.2" X="1.95" Y="0.63" height="0.2" type="Scenery" ID="Flower">
                 <property key="ImageName">Empty</property>
             </object>

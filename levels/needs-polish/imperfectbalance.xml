@@ -64,9 +64,7 @@
             <object width="0.5" X="4.25" Y="0.58" height="0.1" type="Floor" angle="0">
                 <property key="ImageName">White-to-green</property>
             </object>
-            <object width="0.2" X="4.3" Y="0.775" height="0.45" type="RectObject" angle="0">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.2" X="4.3" Y="0.775" height="0.45" type="Daffodil" angle="0"/>
             <object width="0.1" X="4.3" Y="0.93" height="0.1" type="Scenery" ID="Flower" angle="0">
                 <property key="ImageName">Empty</property>
             </object>
