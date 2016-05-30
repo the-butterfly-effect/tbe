@@ -456,11 +456,11 @@ void MainWindow::setupView()
 {
     // setup UndoGroup's QActions and add them to Edit menu
     // note that this doesn't enable them yet, our ViewWorld should handle that...
-    QAction *myUndoActionPtr = UndoSingleton::createUndoAction(this, tr("&Undo"));
+    QAction *myUndoActionPtr = UndoSingleton::createUndoAction(this);
     myUndoActionPtr->setIcon(QIcon::fromTheme("edit-undo"));
     myUndoActionPtr->setShortcut(tr("Ctrl+Z"));
     ui->menuEdit->addAction(myUndoActionPtr);
-    QAction *myRedoActionPtr = UndoSingleton::createRedoAction(this, tr("&Redo"));
+    QAction *myRedoActionPtr = UndoSingleton::createRedoAction(this);
     myRedoActionPtr->setIcon(QIcon::fromTheme("edit-redo"));
     QList<QKeySequence> redoShortcuts;
     redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
