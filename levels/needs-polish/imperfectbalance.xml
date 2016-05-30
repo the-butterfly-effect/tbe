@@ -22,6 +22,46 @@
                 <property key="Bounciness">0.0</property>
                 <property key="ImageName">White-to-green</property>
             </object>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.800" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="5.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="5.800" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
             <object width="0.22" X="1.5" Y="1.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">“Im Perfect Balance” …&lt;br>&lt;br>It almost sounds like an “Art Of Noise” album title.</property>
                 <property key="page2">Poor little butterfly has no clue what’s hanging above its head …</property>
@@ -42,16 +82,15 @@
             </object>
             <object width="0.15" X="3.9" Y="0.3" height="0.4" type="Styrofoam" angle="0"/>
             <object width="0.15" X="3.88" Y="0.7" height="0.4" type="Styrofoam" angle="0"/>
+            <object width="0.55" X="4.273" Y="0.590" height="0.120" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
             <object width="0.15" X="2.5" Y="0.9399999999999999" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0">
                 <property key="Object">Flower</property>
             </object>
             <object width="0.5" X="4.25" Y="0.48" height="0.1" type="Floor" angle="0"/>
-            <object width="0.5" X="4.25" Y="0.58" height="0.1" type="Floor" angle="0">
-                <property key="ImageName">White-to-green</property>
-            </object>
-            <object width="0.2" X="4.3" Y="0.775" height="0.45" type="RectObject" angle="0">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.2" X="4.3" Y="0.775" height="0.45" type="Daffodil" angle="0"/>
             <object width="0.1" X="4.3" Y="0.93" height="0.1" type="Scenery" ID="Flower" angle="0">
                 <property key="ImageName">Empty</property>
             </object>
@@ -64,4 +103,8 @@
             <property key="object2">Flower</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="BowlingBall" angle="0.000" X="0.476" Y="2.210"/>
+        <hint number="2" object="RightWedge" angle="0.000" X="0.334" Y="0.347"/>
+    </hints>
 </tbe-level>

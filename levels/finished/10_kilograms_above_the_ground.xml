@@ -43,9 +43,7 @@
                 <property key="page6">Post-It Boy</property>
             </object>
             <object height="0.228027" type="Butterfly" width="0.15" angle="0" Y="0.509773" X="2.05041" ID="butterfly"/>
-            <object height="0.585761" type="RectObject" width="0.307443" angle="0" Y="0.347086" X="3.06231" ID="flower">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object height="0.585761" type="Daffodil" width="0.307443" angle="0" Y="0.347086" X="3.06231" ID="flower"/>
             <object height="1.54693" type="Scenery" width="4.47896" angle="0" Y="2.4458" X="4.59142">
                 <property key="ImageName">the-sun</property>
                 <property key="ZValue">1</property>

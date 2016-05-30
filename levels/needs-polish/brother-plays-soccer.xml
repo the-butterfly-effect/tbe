@@ -67,9 +67,7 @@
             </object>
             <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin"/>
             <object width="0.4" X="4.4" Y="0.45" height="0.7" type="Goal"/>
-            <object width="0.20" X="4.9" Y="0.325" height="0.55" type="RectObject">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.30" X="4.8" Y="0.325" height="0.55" type="Daffodil"/>
             <object width="0.1" X="4.9" Y="0.53" height="0.1" type="Scenery" ID="Flower">
                 <property key="ImageName">Empty</property>
             </object>

@@ -48,6 +48,7 @@ regression: usr/games/tbe
               --regression levels/finished/float-balloon-float.xml:21, \
 	      --regression levels/needs-polish/geyser.xml:16, \
 	      --regression levels/finished/house_of_cards.xml:20, \
+	      --regression levels/needs-polish/imperfectbalance.xml:30, \
 	      --regression=levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
 	      --regression=levels/finished/loopings2.xml:22, \
