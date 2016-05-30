@@ -54,6 +54,7 @@
             <object X="5.50356" Y="1.31001" width="0.4" angle="0" type="Weight" height="0.4"/>
             <object X="0.5599" Y="1.29607" width="1" angle="0" type="RightRamp" height="1"/>
             <object X="0.16012" Y="2.86385" width="0.2" angle="0" type="CustomBall" height="0.2"/>
+            <object X="0.16012" Y="2.615" width="0.14" angle="0" type="Peg" height="0.14"/>
             <object X="4.8026" Y="3.29594" width="1" angle="0" type="RectObject" height="1"/>
             <object X="4.70639" Y="4.43908" width="1" angle="0" type="PolyObject" height="1"/>
             <object X="7.96605" Y="3.62417" width="1" angle="0" type="Scenery" height="1"/>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="443"
+   height="443"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="wood-pin.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7486601"
+     inkscape:cx="155.20848"
+     inkscape:cy="189.06999"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1024"
+     inkscape:window-x="0"
+     inkscape:window-y="31"
+     inkscape:window-maximized="1"
+     showguides="false" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3351">
+      <stop
+         style="stop-color:#cba767;stop-opacity:1"
+         offset="0"
+         id="stop3353" />
+      <stop
+         style="stop-color:#ad8740;stop-opacity:1"
+         offset="1"
+         id="stop3355" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3351"
+       id="radialGradient58159"
+       cx="461.52084"
+       cy="296.88736"
+       fx="461.52084"
+       fy="296.88736"
+       r="221.5"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3351"
+       id="radialGradient58159-0"
+       cx="461.52084"
+       cy="296.88736"
+       fx="461.52084"
+       fy="296.88736"
+       r="221.5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.9908984e-4,-1.6535547e-4)" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <dc:date>March 21, 2010</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Klaas van Gend</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1"
+     transform="translate(-240.02101,-75.387197)">
+    <circle
+       id="path2383-78"
+       style="fill:url(#radialGradient58159-0);fill-opacity:1;stroke:none;stroke-width:35.21757507;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       r="221.5"
+       cy="296.88721"
+       cx="461.521" />
+    <path
+       id="path2383"
+       style="fill:url(#radialGradient58159);fill-opacity:1.0;stroke:none;stroke-width:35.21757507;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       r="221.5"
+       cy="296.88736"
+       cx="461.52084" />
+    <circle
+       id="path2383-7"
+       style="opacity:0.074;fill:none;fill-opacity:1;stroke:#4f432f;stroke-width:13.23;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       cx="460.34702"
+       cy="301.03864"
+       r="177.4747" />
+    <circle
+       id="path2383-7-0"
+       style="opacity:0.024;fill:none;fill-opacity:1;stroke:#4f432f;stroke-width:7.05707359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       cx="458.11389"
+       cy="297.31693"
+       r="88.017876" />
+    <circle
+       id="path2383-7-0-8"
+       style="opacity:0.044;fill:none;fill-opacity:1;stroke:#4f432f;stroke-width:10.55722618;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       cx="459.60263"
+       cy="297.31696"
+       r="131.67281" />
+  </g>
+</svg>

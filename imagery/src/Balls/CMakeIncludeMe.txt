@@ -9,5 +9,6 @@ install(FILES
 	${SRCDIRNAME}/steam-wheel.svg
         ${SRCDIRNAME}/TennisBall.png 
 	${SRCDIRNAME}/VolleyBall.svg 
+	${SRCDIRNAME}/wood-pin.svg 
         DESTINATION ${TBE_IMAGES_DIR}
 )

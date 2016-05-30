@@ -57,13 +57,7 @@
                 <property key="object1">Bar</property>
                 <property key="object2">BrassPin</property>
             </object>
-            <object width="0.1000000014901161" X="1.4" Y="2.5" height="0.1000000014901161" type="CustomBall" angle="0">
-                <property key="ImageName">brass-pin</property>
-                <property key="Mass">0</property>
-                <property key="Radius">0.05</property>
-                <property key="ZValue">4.5</property>
-                <tooltip>A round obstacle, pinned to the sky.</tooltip>
-            </object>
+            <object width="0.14" X="1.4" Y="2.48" height="0.14" type="PegWood" angle="0"/>
             <object width="0.35" X="1.9" Y="2.46" height="0.1" type="Floor" angle="0.7">
                 <property key="Friction">0.8</property>
             </object>
@@ -99,13 +93,7 @@
             </object>
             <object width="0.22" X="0.25" Y="1.11" height="0.22" type="BowlingBall" angle="0"/>
             <object width="0.2" X="0.2" Y="1.01" height="0.15" type="RightRamp" angle="0"/>
-            <object width="0.1000000014901161" X="0.7" Y="1.1" height="0.1000000014901161" type="CustomBall" angle="0">
-                <property key="ImageName">brass-pin</property>
-                <property key="Mass">0</property>
-                <property key="Radius">0.05</property>
-                <property key="ZValue">4.5</property>
-                <tooltip>A round obstacle, pinned to the sky.</tooltip>
-            </object>
+            <object width="0.14" X="0.7" Y="1.08" height="0.14" type="PegWood" angle="0"/>
             <object width="1.4" X="3.05" Y="1.2" height="0.1" type="BirchBar" ID="Bar3" angle="0.2">
                 <property key="Bounciness">0.0</property>
                 <property key="Friction">0.1</property>

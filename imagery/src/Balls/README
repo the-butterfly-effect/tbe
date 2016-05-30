@@ -49,3 +49,6 @@ license:   PD (Public Domain)
 Remix of Anonymous_Blue_bike.svg (RectObjects) to fit what's needed
 for TBE and make sure that it renders as expected in Qt's SVG engine.
 
+filename:  wood-pin.svg
+author:    Wuzzy, original work for The Butterfly Effect
+license:   WTFPL
