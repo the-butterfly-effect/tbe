@@ -81,10 +81,7 @@
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">20.0</property>
             </object>
-            <object angle="0.000" width="0.400" Y="0.448" height="0.700" X="4.764" type="Scenery">
-                <property key="ImageName">goal-scenery</property>
-                <property key="ZValue">4</property>
-            </object>
+            <object angle="0.000" width="0.400" Y="0.448" height="0.700" X="4.764" type="Goal"/>
             <object angle="0.000" width="4.563" Y="1.195" height="0.077" X="2.803" type="Floor"/>
             <object angle="-1.570" width="0.400" Y="1.442" height="0.400" X="1.090" type="QuarterArc40"/>
             <object angle="0.000" width="0.314" Y="1.191" height="0.100" X="0.181" type="Floor"/>
@@ -99,9 +96,6 @@
             <object angle="0.000" width="1.468" Y="2.322" height="0.215" X="3.705" type="RightRamp"/>
             <object angle="0.000" width="0.270" Y="0.473" height="0.360" X="5.512" type="Balloon"/>
             <object angle="0.000" width="0.200" Y="2.715" height="0.764" X="2.861" type="Wall"/>
-            <object angle="0.167" width="0.200" Y="0.533" height="0.831" X="4.978" type="Wall">
-                <property key="ImageName">Empty</property>
-            </object>
             <object angle="0.000" width="0.517" Y="1.997" height="0.100" X="1.340" type="Floor"/>
             <object angle="0.000" width="0.127" Y="2.479" height="1.000" X="5.293" type="Wall"/>
             <object angle="0.000" width="0.101" Y="2.732" height="2.394" X="1.660" type="Wall"/>

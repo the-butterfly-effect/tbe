@@ -26,16 +26,7 @@
     <scene>
         <scenesize width="9.5" height="5"/>
         <predefined>
-            <object Y="0.849" X="8.978" width="0.768" type="Scenery" height="1.517" angle="0.000">
-                <property key="ImageName">goal-scenery</property>
-                <property key="ZValue">3</property>
-            </object>
-            <object Y="0.786" X="9.248" width="0.045" type="Wall" height="1.501" angle="0.141">
-                <property key="ImageName">Empty</property>
-            </object>
-            <object Y="1.550" X="8.877" width="0.045" type="Wall" height="0.544" angle="1.449">
-                <property key="ImageName">Empty</property>
-            </object>
+            <object Y="0.849" X="8.978" width="0.768" type="Goal" height="1.517" angle="0.000"/>
             <object Y="0.117" X="8.158" width="2.574" type="Floor" height="0.121" angle="-0.053">
                 <property key="ZValue">4</property>
             </object>

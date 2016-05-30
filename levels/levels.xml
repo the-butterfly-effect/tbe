@@ -13,7 +13,7 @@ box before birds-2).
    <level> finished/003.xml </level>
    <level> finished/picnic-0.xml </level> <!-- Introduces rotation -->
    <level> needs-polish/brother-plays-soccer.xml </level>
-   <level> needs-polish/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
+   <level> finished/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
    <level> finished/attack_of_the_killer_cacti.xml</level>
    <level> finished/picnic-1.xml </level>
    <level> finished/jumping_around-2.xml </level>
@@ -25,7 +25,7 @@ box before birds-2).
    <level> needs-polish/balloons-do-poof.xml </level>
    <level> needs-polish/004.xml </level>
    <level> finished/cola-powered-bike.v2.xml </level>
-   <level> needs-polish/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
+   <level> finished/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
    <level> finished/party-at-office.xml </level>
    <level> finished/in_the_attic.xml </level>
    <level> needs-polish/poofpoofpoof.xml </level>
@@ -39,7 +39,7 @@ box before birds-2).
    <level> finished/pingus-introduction.xml </level> <!-- Introduces pingus and exit -->
    <level> finished/pingus-1.xml </level>
    <level> finished/magic_steel.xml </level>
-   <level> needs-polish/brother-plays-penguin-goalie.xml </level>
+   <level> finished/brother-plays-penguin-goalie.xml </level>
    <level> finished/domino_day.xml </level> <!-- Introduces scaling restricted to one axis only -->
    <level> finished/sorting-1.xml </level>
    <level> needs-polish/spare-the-balloon.xml </level>
@@ -63,7 +63,7 @@ box before birds-2).
    <level> finished/balloon_blues.xml </level>
    <level> needs-polish/picnic-2.xml </level>
    <level> finished/domino_chest.xml </level>
-   <level> needs-polish/loopings2.xml </level>
+   <level> finished/loopings2.xml </level>
    <level> needs-polish/007.xml </level>
    <level> finished/hanging_box.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
@@ -73,8 +73,8 @@ box before birds-2).
    <level> finished/butterflies_of_doom.xml </level>
    <level> finished/the_pit.xml </level>
    <level> finished/boom_boom_boom.xml </level>
-   <level> needs-polish/goal_maker.xml </level>
-   <level> needs-polish/hattrick.xml </level>
+   <level> finished/goal_maker.xml </level>
+   <level> finished/hattrick.xml </level>
    <level> needs-polish/cola_reaction.xml </level>
    <level> needs-polish/butterfly_race.xml </level>
    <level> finished/sorting-2.xml </level>

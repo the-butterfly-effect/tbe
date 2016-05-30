@@ -23,7 +23,7 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Wooden bar" count="1">
+        <toolboxitem count="1">
             <object width="0.32" height="0.1" angle="0" type="Floor" X="0" Y="0">
                 <property key="Rotatable">true</property>
             </object>
@@ -63,13 +63,7 @@
             <object width="0.22" height="0.22" angle="0" type="SoccerBall" X="2.435" Y="0.917"/>
             <object width="0.12" height="0.34" angle="0" type="BowlingPin" X="3.046" Y="0.276" ID="thepin"/>
             <object width="1.404" height="0.1" angle="0" type="Floor" X="0.702" Y="1.95"/>
-            <object width="0.4" height="0.7" angle="0" type="Scenery" X="3.3" Y="0.44">
-                <property key="ImageName">goal-scenery</property>
-                <property key="ZValue">8.0</property>
-            </object>
-            <object width="1" height="0.148" angle="1.57" type="LeftRamp" X="3.417" Y="0.604">
-                <property key="ImageName">Empty</property>
-            </object>
+            <object width="0.4" height="0.7" angle="0" type="Goal" X="3.3" Y="0.44"/>
             <object width="0.7" height="0.1" angle="1.57" type="Floor" X="1.45" Y="1.65"/>
             <object width="0.1" height="0.1" angle="0" type="Floor" X="2.78863" Y="1.24979"/>
             <object width="0.1" height="0.1" angle="0" type="LeftFixedWedge" X="1.9" Y="1.875"/>
