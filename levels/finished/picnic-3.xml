@@ -143,6 +143,7 @@
                 <property key="PivotPoint">(0,-0.13)</property>
             </object>
             <object width="0.100" X="4.160" Y="1.49" height="0.100" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
                 <property key="object1">reversehammer2@(0.00,0.1)</property>
                 <property key="object2">reversehammer2w@(0.04,0.0)</property>
             </object>

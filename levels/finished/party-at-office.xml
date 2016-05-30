@@ -84,22 +84,22 @@
                 <property key="NoCollision">leftleg;rightleg;leftfoot;rightfoot;lefthand;righthand</property>
             </object>
             <object X="2.89" height="1" type="Link" width="1" Y="1.64" angle="0">
-                <property key="ImageName">Empty</property>
+                <property key="ImageName">transparent</property>
                 <property key="object1">lefthand@(0.285,0.020)</property>
                 <property key="object2">rope1@(-0.05,0.25)</property>
             </object>
             <object X="2.93" height="1" type="Link" width="1" Y="1.64" angle="0">
-                <property key="ImageName">Empty</property>
+                <property key="ImageName">transparent</property>
                 <property key="object1">righthand@(-0.285,0.020)</property>
                 <property key="object2">rope1@(0.05,0.25)</property>
             </object>
             <object X="2.89" height="1" type="Link" width="1" Y="1.24" angle="0">
-                <property key="ImageName">Empty</property>
+                <property key="ImageName">transparent</property>
                 <property key="object1">rightleg@(-0.095,0.135)</property>
                 <property key="object2">rope1@(0.05,-0.25)</property>
             </object>
             <object X="2.93" height="1" type="Link" width="1" Y="1.24" angle="0">
-                <property key="ImageName">Empty</property>
+                <property key="ImageName">transparent</property>
                 <property key="object1">leftleg@(0.090,0.135)</property>
                 <property key="object2">rope1@(-0.05,-0.25)</property>
             </object>

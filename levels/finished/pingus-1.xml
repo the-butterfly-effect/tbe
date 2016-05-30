@@ -51,7 +51,7 @@
                 <property key="object">Wheel1</property>
             </object>
             <object type="Link" width="1.000" height="1.000" angle="0.000" X="0.000" Y="0.000">
-                <property key="ImageName">Empty</property>
+                <property key="ImageName">transparent</property>
                 <property key="ZValue">5</property>
                 <property key="object1">hammer@(0.3,0.1)</property>
                 <property key="object2">Wheel1@(0.10,-0.25)</property>
@@ -266,7 +266,7 @@
         <hint number="1" object="RightRamp" angle="0.000" X="2.898" Y="2.991"/>
         <hint number="2" object="LeftRamp" angle="0.000" X="5.6" Y="2.390"/>
         <hint number="3" object="LeftRamp" angle="0.000" X="2.775" Y="1.711"/>
-        <hint number="4" object="RectObject" angle="1.571" X="1.408" Y="1.360"/>
-        <hint number="5" object="RectObject" angle="0.000" X="5.136" Y="0.300"/>
+        <hint number="4" object="WoodCrateFlat" angle="1.571" X="1.408" Y="1.360"/>
+        <hint number="5" object="WoodCrateFlat" angle="0.000" X="5.136" Y="0.300"/>
     </hints>
 </tbe-level>
