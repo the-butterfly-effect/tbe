@@ -114,6 +114,24 @@ static AbstractPolyObjectFactory theRightWedgeFactory(
     "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 2.0, 0.2 );
 
+static AbstractPolyObjectFactory theLeftStyrofoamWedgeFactory(
+    "LeftStyrofoamWedge",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Styrofoam Wedge"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
+                      "Styrofoam wedges are light and bouncy."),
+    "styrofoam-left",
+    "(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
+    1.0, 1.0, 0.5, 0.6 );
+
+static AbstractPolyObjectFactory theRightStyrofoamWedgeFactory(
+    "RightStyrofoamWedge",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Styrofoam Wedge"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
+                      "Styrofoam wedges are light and bouncy."),
+    "styrofoam-right",
+    "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
+    1.0, 1.0, 0.5, 0.6 );
+
 static AbstractPolyObjectFactory theLeftFixedWedgeFactory(
     "LeftFixedWedge",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Fixed Wedge"),
