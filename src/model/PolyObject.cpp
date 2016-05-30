@@ -208,6 +208,14 @@ static AbstractPolyObjectFactory theRotatingBarFactory(
     "(-.5,0.05)=(-.5,-0.05)=(.5,-0.05)=(.5,0.05)",
     1.0, 0.12, 4.0, 0.4, "PivotPoint:(0.0,0.00)" );
 
+static AbstractPolyObjectFactory theDaffodilFactory(
+    "Daffodil",
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Daffodil"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Daffodil (Narcissus Flappus Attractus):\nButterflies want to fly there."),
+    "Anonymous_daffodil_klaas",
+    "(-0.5,0.347)=(-0.5,0.12)=(-0.141,0.019)=(0.388,0.061)=(0.5,0.37)=(0.022,0.5)=(-0.45,0.391);"
+    "(0,-0.5)",
+    0.4, 0.9, 0.0, 0.1, "Friction:0.05/ZValue:1.2" );
 
 // Constructors/Destructors
 //
