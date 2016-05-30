@@ -26,7 +26,7 @@
 
 ResizeUndoCommand::ResizeUndoCommand(
     ViewObjectPtr anViewObjectPtr)
-    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Resize"), nullptr),
+    : AbstractUndoCommand(anViewObjectPtr, QObject::tr("Resize %1"), nullptr),
       theButtonDownLength(999.f)
 {
     DEBUG3ENTRY;

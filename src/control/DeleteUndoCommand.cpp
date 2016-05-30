@@ -29,7 +29,7 @@
 
 DeleteUndoCommand::DeleteUndoCommand(
     ViewObjectPtr anViewObjectPtr)
-    : InsertUndoCommand(anViewObjectPtr, QObject::tr("Remove"))
+    : InsertUndoCommand(anViewObjectPtr, QObject::tr("Remove %1"))
 {
     DEBUG3ENTRY;
     // The list of toolboxes is kept in Level as a QMap.
