@@ -11,13 +11,8 @@
         <toolboxitem count="1">
             <object type="BowlingBall"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right styrofoam wedge">
-            <object width="0.6" height="0.3" type="RightWedge">
-                <tooltip>A light movable wedge made out of styrofoam.</tooltip>
-                <property key="ImageName">styrofoam-right</property>
-                <property key="Bounciness">0.1</property>
-                <property key="Mass">0.3</property>
-            </object>
+        <toolboxitem count="1">
+            <object width="0.6" height="0.3" type="RightWedge"/>
         </toolboxitem>
     </toolbox>
     <scene>
