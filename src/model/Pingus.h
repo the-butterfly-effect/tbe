@@ -265,10 +265,9 @@ public:
     void callBackSensor(const ContactInfo &aPoint) override;
     /// returns the Name of the object.
 
-    // PingusExit doesn't have a user visible name
     const QString getName ( ) const override
     {
-        return "";
+        return theNameString;
     }
 
     /// child objects must specify what type of body they are
@@ -278,6 +277,9 @@ public:
     {
         return b2_staticBody;
     }
+
+protected:
+    QString theNameString;
 };
 
 #endif // PINGUS_H

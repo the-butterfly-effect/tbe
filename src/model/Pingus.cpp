@@ -568,8 +568,20 @@ PingusExit::PingusExit()
     mySensorDef->isSensor = true;
     mySensorDef->userData = this;
     theShapeList.push_back(mySensorDef);
+
+    setTheWidth(0.406);
+    setTheHeight(0.703);
+
+    theNameString = QObject::tr("Exit");
+    theToolTip = QObject::tr("Penguins will escape here, never to be seen again.");
     theProps.setDefaultPropertiesString(
-        Property::ZVALUE_STRING + QString(":0.5/") );
+        Property::ZVALUE_STRING + QString(":0.5/") +
+        Property::IMAGE_NAME_STRING + QString(":opendoor/") +
+        Property::RESIZABLE_STRING + QString(":none/") +
+        QString("-") + Property::BOUNCINESS_STRING + QString(":/") +
+        QString("-") + Property::NOCOLLISION_STRING + QString(":/") +
+        QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
+        QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );
 }
 
 
