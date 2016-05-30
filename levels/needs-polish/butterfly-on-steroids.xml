@@ -153,6 +153,14 @@
             <object height="0.400" type="QuarterArc40" X="3.807" width="0.400" Y="0.297" angle="1.571"/>
             <object height="0.719" type="QuarterArc80" X="1.952" width="1.000" Y="2.712" angle="3.426"/>
             <object height="0.800" type="QuarterArc80" X="0.915" width="1.000" Y="3.074" angle="0.344"/>
+            <object height="0.100" type="Floor" X="4.301" width="0.409" Y="0.953" angle="0.000">
+                <property key="ZValue">3.0</property>
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object height="0.167" type="Scenery" X="4.323" width="0.452" Y="0.986" angle="0.000">
+                <property key="ZValue">4.0</property>
+                <property key="ImageName">rg1024_Grass_texture</property>
+            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.00;0.67;0.00;1.00</gradientstop>

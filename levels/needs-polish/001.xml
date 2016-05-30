@@ -21,9 +21,8 @@
             <object width="0.4" X="0.55" Y="0.65" height="0.4" type="Scenery">
                 <property key="ImageName">dream-of-flowers</property>
             </object>
-            <object width="2.3" X="1.15" Y="0.05" type="Floor">
+            <object width="3.624" X="1.812" Y="0.05" type="Floor">
                 <property key="ImageName">White-to-green</property>
-                <tooltip></tooltip>
             </object>
             <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
                 <property key="ImageName">rg1024_Grass_texture</property>
@@ -50,7 +49,6 @@
                 <property key="ZValue">20.0</property>
             </object>
             <object X="0.3" Y="0.35" type="Butterfly" ID="Butterfly">
-                <tooltip>This is the butterfly.</tooltip>
                 <property key="object">Flower</property>
             </object>
             <object X="1.1" Y="1.5" type="PostIt">

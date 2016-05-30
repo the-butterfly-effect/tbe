@@ -27,6 +27,39 @@
                 <property key="Bounciness">0.0</property>
                 <property key="ImageName">White-to-green</property>
             </object>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.800" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.000" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+
             <object width="0.22" X="1.5" Y="1.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">“Im Perfect Balance” …&lt;br>&lt;br>It almost sounds like an “Art Of Noise” album title.</property>
                 <property key="page2">Poor little butterfly has no clue what’s hanging above its head …</property>
@@ -44,6 +77,10 @@
             </object>
             <object width="3.2" X="2.1" Y="0.5" height="0.1" type="Floor" angle="0">
                 <property key="Bounciness">0.0</property>
+            </object>
+            <object width="0.55" X="4.273" Y="0.611" height="0.163" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
             </object>
             <object width="0.15" X="3.9" Y="0.3" height="0.4" type="RectObject" angle="0">
                 <property key="Bounciness">0.6</property>
