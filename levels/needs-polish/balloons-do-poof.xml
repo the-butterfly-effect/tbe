@@ -46,9 +46,7 @@
             <object width="0.25" X="0.2143071428039244" Y="0.2983491595897771" height="0.4" type="Cactus" angle="0"/>
             <object width="0.4" X="2.84" Y="0.447" height="0.7" type="Goal" angle="0"/>
             <object width="0.25" X="2.290144957414487" Y="0.8026012603048934" height="0.4" type="Cactus" angle="0"/>
-            <object width="0.2499999999999999" X="1.483432302040413" Y="0.8488243365579708" height="0.5" type="Scenery" angle="0">
-                <property key="ImageName">Anonymous_daffodil_klaas</property>
-            </object>
+            <object width="0.25" X="1.483" Y="0.849" height="0.5" type="Daffodil" angle="0"/>
             <object width="0.22" X="1.886743276842394" Y="0.9034516804479167" height="0.22" type="PostIt" angle="0">
                 <property key="page1">Look: two pins need kicking.</property>
                 <property key="page2">And there’s a balloon that wants to go up.</property>
