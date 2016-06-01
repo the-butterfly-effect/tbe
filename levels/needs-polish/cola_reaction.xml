@@ -4,83 +4,103 @@
         <title>Cola Reaction</title>
         <author>Wuzzy</author>
         <license>WTFPL</license>
-        <description>Trigger the reaction in the mint+cola bottle.</description>
+        <description>Trigger the reaction in the cola+mint bottle.</description>
         <date>1/29/16</date>
     </levelinfo>
     <toolbox>
         <toolboxitem count="1">
-            <object type="BedOfNails" X="0.000" Y="0.000" width="0.800" height="0.150" angle="0.000">
+            <object type="BedOfNails">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
         <toolboxitem count="3">
-            <object type="Floor" X="0.000" Y="0.000" width="1.000" height="0.100" angle="0.000">
+            <object type="Floor">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1">
-            <object type="RightRamp" X="0.000" Y="0.000" width="0.922" height="0.612" angle="0.000"/>
+            <object height="0.612" width="0.922" type="RightRamp"/>
         </toolboxitem>
     </toolbox>
     <scene>
-        <scenesize width="6" height="4"/>
+        <scenesize height="4" width="6"/>
         <predefined>
-            <object type="Floor" X="5.853" Y="1.079" width="0.590" height="0.100" angle="-1.888"/>
-            <object type="ColaMintBottle" X="5.743" ID="cola" Y="1.183" width="0.166" height="0.500" angle="-0.304"/>
-            <object type="Floor" X="5.552" Y="0.928" width="0.371" height="0.100" angle="-0.332"/>
-            <object type="RotatingBar" X="5.146" Y="1.961" width="0.685" height="0.100" angle="0.000" />
-            <object type="VolleyBall" X="5.146" Y="2.117" width="0.210" height="0.210" angle="0.000"/>
-            <object type="Balloon" X="4.042" Y="0.575" width="0.270" height="0.360" angle="0.000"/>
-            <object type="Balloon" X="3.555" Y="0.567" width="0.270" height="0.360" angle="0.000"/>
-            <object type="SoccerBall" X="3.360" Y="3.187" width="0.220" height="0.220" angle="0.000"/>
-            <object type="Balloon" X="0.340" ID="ballballoon1" Y="1.102" width="0.270" height="0.360" angle="0.000"/>
-            <object type="Balloon" X="2.960" ID="ballballoon2" Y="3.221" width="0.270" height="0.360" angle="0.000"/>
-            <object type="Balloon" X="4.069" ID="ballballoon3" Y="1.447" width="0.270" height="0.360" angle="0.000"/>
-            <object type="TennisBall" X="2.258" ID="balloonball" Y="2.591" width="0.068" height="0.068" angle="0.000"/>
-            <object type="Floor" X="2.694" Y="2.720" width="0.644" height="0.100" angle="0.736"/>
-            <object type="CustomBall" X="2.756" ID="translatorroll" Y="1.772" width="0.200" height="0.200" angle="0.000">
-                <property key="ImageName">brass-pin</property>
-                <property key="Mass">3</property>
-                <property key="TranslationGuide">0</property>
-                <tooltip>This peg can move freely horizontally</tooltip>
+            <object Y="1.079" angle="-1.888" height="0.1" X="5.853" width="0.59" type="Floor"/>
+            <object Y="1.183" angle="-0.304" ID="cola" height="0.5" X="5.743" width="0.166" type="ColaMintBottle"/>
+            <object Y="0.928" angle="-0.332" height="0.1" X="5.552" width="0.371" type="Floor"/>
+            <object Y="1.961" angle="0" height="0.08" X="5.146" width="0.71" type="RotatingBar"/>
+            <object Y="2.117" angle="0" height="0.21" X="5.146" width="0.21" type="VolleyBall"/>
+            <object Y="0.575" angle="0" height="0.36" X="4.042" width="0.27" type="Balloon">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
             </object>
-            <object type="Weight" X="2.756" ID="hangingweight" Y="0.547" width="0.400" height="0.400" angle="0.000"/>
-            <object type="Link" X="0.000" Y="0.000" width="1.000" height="1.000" angle="0.000">
-                <property key="ImageName">#FFA040</property>
-                <property key="object1">translatorroll@(0,0)</property>
+            <object Y="0.567" angle="0" height="0.36" X="3.555" width="0.27" type="Balloon">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object Y="3.187" angle="0" height="0.22" X="3.36" width="0.22" type="SoccerBall"/>
+            <object Y="1.102" angle="0" ID="ballballoon1" height="0.36" X="0.34" width="0.27" type="Balloon">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object Y="3.221" angle="0" ID="ballballoon2" height="0.36" X="2.96" width="0.27" type="Balloon">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object Y="1.307" angle="0" ID="ballballoon3" height="0.36" X="4.069" width="0.27" type="Balloon">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object Y="2.591" angle="0" ID="balloonball" height="0.068" X="2.258" width="0.068" type="TennisBall"/>
+            <object Y="2.72" angle="0.736" height="0.1" X="2.694" width="0.644" type="Floor"/>
+            <object Y="1.562" angle="0" ID="translatorroll" height="0.15" X="2.756" width="0.15" type="CustomBall">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">guardrailring</property>
+                <property key="Mass">2.1</property>
+                <property key="Radius">0.075</property>
+                <property key="TranslationGuide">0</property>
+                <tooltip>This is a guard rail ring. It can be inserted into a guard rail to constraint its movement.</tooltip>
+            </object>
+            <object Y="1.562" angle="0" height="0.08" X="2.71623" width="3.57253" type="Scenery">
+                <property key="ImageName">guardrail</property>
+                <tooltip>This is a guard rail, some things can be inserted to it to constrain their movement.</tooltip>
+            </object>
+            <object Y="0.547" angle="0" ID="hangingweight" height="0.4" X="2.756" width="0.4" type="Weight"/>
+            <object Y="0" angle="0" height="1" X="0" width="1" type="Link">
+                <property key="ImageName">#B37E00</property>
+                <property key="object1">translatorroll@(0,-0.05)</property>
                 <property key="object2">hangingweight@(0,0.17)</property>
             </object>
-            <object type="Floor" X="2.557" Y="1.869" width="0.112" height="0.100" angle="-1.548"/>
-            <object type="Wall" X="4.548" Y="2.346" width="0.114" height="2.342" angle="0.000"/>
-            <object type="Wall" X="5.100" Y="1.020" width="0.114" height="1.250" angle="0.000"/>
-            <object type="Scenery" X="0.549" Y="3.820" width="3.313" height="1.578" angle="3.137">
-                <property key="ImageName">the-sun</property>
-                <property key="ZValue">1</property>
+            <object Y="1.562" angle="0" height="0.153" X="0.924" width="0.05" type="Floor"/>
+            <object Y="2.346" angle="0" height="2.342" X="4.548" width="0.114" type="Wall"/>
+            <object Y="1.02" angle="0" height="1.25" X="5.1" width="0.114" type="Wall"/>
+            <object Y="1.1529" angle="0.571" height="0.1" X="2.83964" width="1.02183" type="Floor"/>
+            <object Y="2.281" angle="0" height="0.22" X="1.65055" width="0.22" type="BowlingBall"/>
+            <object Y="2.812" angle="0" height="0.531" X="3.36" width="0.107" type="Floor"/>
+            <object Y="2.505" angle="0" height="0.1" X="2.834" width="1.16" type="Floor"/>
+            <object Y="2.279" angle="0.82" height="0.1" X="2.179" width="0.368" type="Floor"/>
+            <object Y="0.995" angle="0.817" height="0.1" X="4.405" width="0.387" type="Floor"/>
+            <object Y="3.312" angle="0" height="0.928" X="2.394" width="0.107" type="Floor"/>
+            <object Y="2.117" angle="0" height="0.1" X="1.831" width="0.379" type="Floor"/>
+            <object Y="2.924" angle="0" height="0.1" X="3.018" width="0.586" type="Floor"/>
+            <object Y="2.717" angle="0" height="0.22" X="3.101" width="0.22" type="PostIt">
+                <property key="page1">Do you see the weird ring from which the weight is hanging?</property>
+                <property key="page2">It is a part of a guard rail mechanism, contraining it in its movement.</property>
+                <property key="page3">It can only move along the guard rail but nowhere else.</property>
+                <property key="page4">But I wonder why anyone would need a hanging weight here in the first place.</property>
+                <property key="page5">Post-It Boy</property>
             </object>
-            <object type="Floor" X="2.842" Y="1.169" width="0.847" height="0.100" angle="0.571"/>
-            <object type="BowlingBall" X="1.655" Y="2.281" width="0.220" height="0.220" angle="0.000"/>
-            <object type="Floor" X="3.360" Y="2.812" width="0.107" height="0.531" angle="0.000"/>
-            <object type="Floor" X="2.834" Y="2.505" width="1.160" height="0.100" angle="0.000"/>
-            <object type="Floor" X="2.179" Y="2.279" width="0.368" height="0.100" angle="0.820"/>
-            <object type="Floor" X="4.405" Y="0.995" width="0.387" height="0.100" angle="0.817"/>
-            <object type="Floor" X="2.394" Y="3.312" width="0.107" height="0.928" angle="0.000"/>
-            <object type="Floor" X="1.831" Y="2.117" width="0.379" height="0.100" angle="0.000"/>
-            <object type="Floor" X="3.018" Y="2.924" width="0.586" height="0.100" angle="0.000"/>
-            <object type="PostIt" X="3.101" Y="2.717" width="0.220" height="0.220" angle="0.000">
-                <property key="ZValue">1</property>
-                <property key="page1">Do you see the weird peg from which the weight is hanging?</property>
-                <property key="page2">It lies in a guide rail, it can move freely left and right.</property>
-                <property key="page3">But why would anyone need a hanging weight here, anyways?</property>
-                <property key="page4">Post-It Boy</property>
+            <object Y="1.562" angle="0" height="0.153" X="4.466" width="0.05" type="Floor"/>
+            <object Y="4.05516" angle="3.137" height="1.38698" X="0.229529" width="3.22403" type="Scenery">
+                <property key="ImageName">the-sun</property>
             </object>
         </predefined>
         <background>
-            <gradientstop pos="0.00">0.99;1.00;0.80;1.00</gradientstop>
-            <gradientstop pos="1.00">0.90;0.87;0.50;1.00</gradientstop>
+            <gradientstop pos="0.2">0.298039;0.290196;0.196078;1</gradientstop>
+            <gradientstop pos="0.44">0.34902;0.337255;0.227451;1</gradientstop>
+            <gradientstop pos="0.57">1;0.960784;0.8;1</gradientstop>
+            <gradientstop pos="0.76">1;0.917647;0.603922;1</gradientstop>
+            <gradientstop pos="0.9">1;0.894118;0.603922;1</gradientstop>
+            <gradientstop pos="1">1;0.960784;0.54902;1</gradientstop>
         </background>
     </scene>
     <goals>
-        <goal type="statechange" isFail="false">
+        <goal isFail="false" type="statechange">
             <property key="object">cola</property>
             <property key="statechanged"></property>
         </goal>
