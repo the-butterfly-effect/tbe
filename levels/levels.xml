@@ -11,7 +11,7 @@ which introduces an element or concept it makes use of
    <level> finished/house_of_cards.xml </level>
    <level> finished/003.xml </level>
    <level> finished/picnic-0.xml </level> <!-- Introduces rotation -->
-   <level> needs-polish/brother-plays-soccer.xml </level>
+   <level> finished/brother-plays-soccer.xml </level>
    <level> finished/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
    <level> finished/attack_of_the_killer_cacti.xml</level>
    <level> finished/picnic-1.xml </level>
@@ -51,13 +51,13 @@ which introduces an element or concept it makes use of
    <level> finished/bridge-2.xml </level>
    <level> needs-polish/extreme-tux-racer.xml </level>
    <level> finished/supertuxkart.xml </level>
-   <level> needs-polish/imperfectbalance.xml </level>
+   <level> finished/imperfectbalance.xml </level>
    <level> finished/picnic-3.xml </level>
    <level> needs-polish/save-the-butterfly.xml</level>
    <level> finished/rotate_and_win.xml</level>
    <level> finished/construction_yard.xml</level>
    <level> needs-polish/geyser.xml </level>
-   <level> needs-polish/butterfly-on-steroids.xml </level>
+   <level> finished/butterfly-on-steroids.xml </level>
    <level> finished/006.xml </level>
    <level> finished/contraption2.xml </level>
    <level> finished/balloon_blues.xml </level>
@@ -67,7 +67,7 @@ which introduces an element or concept it makes use of
    <level> finished/007.xml </level>
    <level> finished/hanging_box.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
-   <level> needs-polish/find-the-message.v2.xml </level> <!-- “Good-bye” level, should be the last level. -->
+   <level> finished/find-the-message.v2.xml </level> <!-- “Good-bye” level, should be the last level. -->
    <!-- Chaos zone begins here, levels here are not well sorted (yet). -->
    <level> finished/the_core.xml </level>
    <level> finished/butterflies_of_doom.xml </level>

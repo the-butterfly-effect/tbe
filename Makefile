@@ -38,17 +38,17 @@ slow:
 regression: usr/games/tbe
 	./tbe --regression levels/needs-polish/balloons-do-poof.xml:6, \
 	      --regression levels/finished/bouncing_balls.xml:6, \
-	      --regression levels/needs-polish/bowling_pin_plays_soccer.xml:17, \
-	      --regression levels/needs-polish/brother-plays-penguin-goalie.xml:5, \
-	      --regression levels/needs-polish/brother-plays-soccer.xml:8, \
-	      --regression levels/needs-polish/butterfly-on-steroids.xml:65, \
+	      --regression levels/finished/bowling_pin_plays_soccer.xml:17, \
+	      --regression levels/finished/brother-plays-penguin-goalie.xml:5, \
+	      --regression levels/finished/brother-plays-soccer.xml:8, \
+	      --regression levels/finished/butterfly-on-steroids.xml:65, \
 	      --regression levels/finished/cola-powered-bike.v2.xml:20, \
               --regression levels/finished/construction_yard.xml:26, \
               --regression levels/finished/contraption1.xml:36, \
               --regression levels/finished/float-balloon-float.xml:21, \
 	      --regression levels/needs-polish/geyser.xml:16, \
 	      --regression levels/finished/house_of_cards.xml:20, \
-	      --regression levels/needs-polish/imperfectbalance.xml:30, \
+	      --regression levels/finished/imperfectbalance.xml:30, \
 	      --regression levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
 	      --regression levels/finished/loopings2.xml:22, \
