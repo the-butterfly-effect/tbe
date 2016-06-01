@@ -21,6 +21,35 @@
             <object width="4" X="2.000055150302851" Y="0.05" height="0.1" type="Floor" angle="0">
                 <property key="ImageName">White-to-green</property>
             </object>
+            <object width="0.800" X="0.38" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="0.98" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="1.58" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="2.18" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="2.78" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="3.38" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="3.683" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+
             <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">You’ve seen this before: a bowling ball and a bowling pin. But this time, there’s a wall in-between.</property>
                 <property key="page2">I’m pretty sure that bowling balls cannot climb walls—they don’t have hands, do they?</property>
@@ -28,7 +57,7 @@
                 <property key="page4">… Post-It Boy</property>
             </object>
             <object width="0.12" X="2.928365582373796" Y="0.2934924750150832" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
-            <object width="0.4" X="2.5" Y="0.54" height="0.88" type="Wall" angle="0"/>
+            <object width="0.4" X="2.5" Y="0.521" height="0.971" type="Wall" angle="0"/>
             <object width="0.27" X="1.08660069216264" Y="0.288" height="0.36" type="Balloon" angle="0">
                 <property key="ImageName">BalloonYellow;BalloonPoof;BalloonYellowRest;Empty</property>
             </object>

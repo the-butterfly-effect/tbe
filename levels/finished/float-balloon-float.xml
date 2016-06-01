@@ -17,8 +17,24 @@
     <scene>
         <scenesize width="2.3" height="2.0"/>
         <predefined>
-            <object width="2.3" X="1.15" Y="0.05" height="0.1" type="Floor" angle="0">
+            <object width="2.516" X="1.258" Y="0.05" height="0.1" type="Floor" angle="0">
                 <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="0.800" X="0.38" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="0.98" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="1.58" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="2.20" Y="0.075" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
             </object>
             <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
                 <property key="page1">Where do balloons go?&lt;br>They can’t keep going up forever!</property>
@@ -27,7 +43,9 @@
                 <property key="page4">… Post-It Boy</property>
             </object>
             <object width="0.12" X="0.18" Y="0.278" height="0.34" type="BowlingPin" ID="thePin" angle="0"/>
-            <object width="0.4" X="1.65" Y="0.54" height="0.88" type="Wall" angle="0"/>
+            <object width="0.4" X="1.65" Y="0.521" height="0.918" type="Wall" angle="0">
+                <property key="ZValue">1.8</property>
+            </object>
             <object width="1.0" X="1.65" Y="1.07" height="0.12" type="RotatingBar" angle="0" />
             <object width="0.22" X="1.65" Y="1.24" height="0.22" type="BowlingBall" angle="0"/>
             <object width="0.27" X="0.47" Y="0.36" height="0.36" type="Balloon" angle="0">
