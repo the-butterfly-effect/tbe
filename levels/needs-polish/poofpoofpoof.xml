@@ -81,13 +81,6 @@
             </object>
             <object width="0.825" X="0.307" Y="2.087" height="0.100" type="Floor" angle="1.571"/>
             <object width="0.824" X="1.512" Y="0.473" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="1.636" Y="1.412" height="0.220" type="PostIt" angle="0.000">
-                <property key="page1">Five Balloons.</property>
-                <property key="page2">All need popping.</property>
-                <property key="page3">But only use two different methods!</property>
-                <property key="page4">Post-It Boy likes to “Make it Complex, Comrade”.</property>
-                <property key="page5">Or was it “Keep it Simple, Stupid”?</property>
-            </object>
         </predefined>
         <background>
             <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
