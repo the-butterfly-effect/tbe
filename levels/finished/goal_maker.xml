@@ -101,7 +101,6 @@
             <object angle="0.000" width="0.101" Y="2.732" height="2.394" X="1.660" type="Wall"/>
             <object angle="0.000" width="1.112" Y="2.553" height="0.172" X="4.650" type="RightRamp"/>
             <object angle="0.000" width="0.220" Y="3.331" height="0.220" X="0.591" type="PostIt">
-                <property key="ZValue">1</property>
                 <property key="page1">It should be obvious that it all depends on the bowling ball here.</property>
                 <property key="page2">But how to make it roll? That big wall is in the way.</property>
                 <property key="page3">The balloon could push the bowling ball from below, but it is too far away.</property>

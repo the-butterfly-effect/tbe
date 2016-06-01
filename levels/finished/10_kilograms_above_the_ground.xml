@@ -34,7 +34,6 @@
             <object height="0.161489" type="Floor" width="0.0614887" angle="0" Y="2.17006" X="2.45955"/>
             <object height="0.1" type="Floor" width="5.7767" angle="0" Y="2.04304" X="2.90373"/>
             <object height="0.22" type="PostIt" width="0.22" angle="0" Y="2.76298" X="0.264598">
-                <property key="ZValue">1</property>
                 <property key="page1">Ha! This is one easy. Just tie the weight to a rope. Done!</property>
                 <property key="page2">Oh, wait, we don’t have any ropes. Just some old wood from the junkyard and a bowling pin.</property>
                 <property key="page3">The bowling pin seems really out of place. It’s not even as heavy as the weight.</property>
@@ -46,19 +45,19 @@
             <object height="0.585761" type="Daffodil" width="0.307443" angle="0" Y="0.347086" X="3.06231" ID="flower"/>
             <object height="1.54693" type="Scenery" width="4.47896" angle="0" Y="2.4458" X="4.59142">
                 <property key="ImageName">the-sun</property>
-                <property key="ZValue">1</property>
+                <property key="ZValue">0.1</property>
             </object>
             <object height="0.381877" type="Scenery" width="1.49515" angle="0" Y="2.42638" X="4.15453">
                 <property key="ImageName">clouds</property>
-                <property key="ZValue">1</property>
+                <property key="ZValue">0.2</property>
             </object>
             <object height="0.210356" type="Scenery" width="1.02265" angle="0" Y="2.67395" X="1.74353">
                 <property key="ImageName">clouds</property>
-                <property key="ZValue">1</property>
+                <property key="ZValue">0.2</property>
             </object>
             <object height="0.381877" type="Scenery" width="1.24595" angle="0" Y="2.3843" X="0.751618">
                 <property key="ImageName">clouds</property>
-                <property key="ZValue">1</property>
+                <property key="ZValue">0.2</property>
             </object>
             <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="0">
                 <property key="ImageName">rg1024_Grass_texture</property>

@@ -18,9 +18,7 @@
             </object>
         </toolboxitem>
         <toolboxitem count="2">
-            <object height="0.230" X="0.000" width="0.200" type="Skyhook" angle="0.000" Y="0.000">
-                <property key="ZValue">0.2</property>
-            </object>
+            <object height="0.230" X="0.000" width="0.200" type="Skyhook" angle="0.000" Y="0.000"/>
         </toolboxitem>
     </toolbox>
     <scene>
@@ -34,11 +32,9 @@
             <object height="0.100" X="3.418" width="6.410" type="Floor" angle="0.000" Y="0.068"/>
             <object height="0.542" X="0.815" width="1.210" type="Scenery" angle="0.000" Y="0.382">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object height="0.542" X="6.007" width="1.221" type="Scenery" angle="0.000" Y="0.387">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object height="0.220" ID="bb1" X="4.398" width="0.220" type="BowlingBall" angle="0.000" Y="4.569"/>
             <object height="0.220" ID="bb2" X="6.360" width="0.220" type="BowlingBall" angle="0.000" Y="4.642"/>

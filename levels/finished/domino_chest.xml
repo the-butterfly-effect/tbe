@@ -44,9 +44,7 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">3</property>
             </object>
-            <object angle="0.000" type="ToyChest" X="7.816" height="1.998" Y="1.004" width="1.448">
-                <property key="ZValue">4</property>
-            </object>
+            <object angle="0.000" type="ToyChest" X="7.816" height="1.998" Y="1.004" width="1.448"/>
             <object angle="0.000" type="Floor" X="5.753" height="0.100" Y="4.336" width="2.381"/>
             <object angle="0.000" type="DominoBlue" X="4.638" height="0.500" Y="4.638" width="0.100"/>
             <object angle="0.000" type="DominoBlue" X="6.494" height="0.500" Y="4.638" width="0.100"/>
