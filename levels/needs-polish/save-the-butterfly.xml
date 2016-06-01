@@ -18,9 +18,7 @@
     <scene>
         <scenesize width="7" height="4"/>
         <predefined>
-            <object width="0.800" X="6.610" Y="0.780" height="1.360" type="ToyChest" angle="0.000">
-                <property key="ZValue">10</property>
-            </object>
+            <object width="0.800" X="6.610" Y="0.780" height="1.360" type="ToyChest" angle="0.000"/>
             <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostIt" angle="0">
                 <property key="page1">Have you seen the movie “Up”?&lt;br>&lt;br>Unfortunately, I don’t have that many balloons.</property>
                 <property key="page2">I don’t think it’s not fair: butterflies can fly by themselves.</property>
@@ -34,8 +32,27 @@
             <object width="3.125626087188721" X="5.43718695640564" Y="0.05000000074505806" height="0.1" type="Floor" angle="0">
                 <property key="ImageName">White-to-green</property>
             </object>
+            <object width="0.800" X="4.289" Y="0.08" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="4.889" Y="0.08" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="5.489" Y="0.08" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="6.089" Y="0.08" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="0.800" X="6.689" Y="0.08" height="0.150" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
             <object width="0.15" X="3.958200313402838" Y="0.2940220136943474" height="0.2280269058295964" type="Butterfly" ID="Butterfly" angle="0">
-                <tooltip>This is the butterfly.</tooltip>
                 <property key="object">Flower</property>
             </object>
             <object width="0.22" X="0.8054592312308121" Y="3.401516555575522" height="0.22" type="BowlingBall" angle="0"/>
