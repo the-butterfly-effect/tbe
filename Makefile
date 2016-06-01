@@ -52,13 +52,13 @@ regression: usr/games/tbe
 	      --regression levels/finished/in_the_attic.xml:17, \
 	      --regression levels/finished/jumping_around-2.xml:10, \
 	      --regression levels/finished/loopings2.xml:22, \
-	      --regression levels/needs-polish/save-the-butterfly.xml:28, \
+	      --regression levels/finished/save-the-butterfly.xml:28, \
 	      --regression levels/needs-polish/spare-the-balloon.xml:25, \
 	      --regression levels/finished/the_ball_the_box_and_the_penguin.xml:32, \
 	      --regression levels/finished/birds1.xml:13, \
 	      --regression levels/needs-polish/002.xml:30, \
 	      --regression levels/finished/003.xml:40, \
-	      --regression levels/needs-polish/004.xml:15, \
+	      --regression levels/finished/004.xml:15, \
 	      --regression levels/finished/006.xml:8, \
 	      --regression levels/finished/pingus-1.xml:65, \
 	      --regression levels/finished/party-at-office.xml:15, \

@@ -22,7 +22,7 @@ which introduces an element or concept it makes use of
    <level> finished/steam-machine.xml </level>
    <level> finished/balloons-go-up.xml </level>
    <level> needs-polish/balloons-do-poof.xml </level>
-   <level> needs-polish/004.xml </level>
+   <level> finished/004.xml </level>
    <level> finished/cola-powered-bike.v2.xml </level>
    <level> finished/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
    <level> finished/party-at-office.xml </level>
@@ -53,7 +53,7 @@ which introduces an element or concept it makes use of
    <level> finished/supertuxkart.xml </level>
    <level> finished/imperfectbalance.xml </level>
    <level> finished/picnic-3.xml </level>
-   <level> needs-polish/save-the-butterfly.xml</level>
+   <level> finished/save-the-butterfly.xml</level>
    <level> finished/rotate_and_win.xml</level>
    <level> finished/construction_yard.xml</level>
    <level> needs-polish/geyser.xml </level>
