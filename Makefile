@@ -36,7 +36,7 @@ slow:
 	cp ${BUILDDIR}/src/tbe usr/games
 
 regression: usr/games/tbe
-	./tbe --regression levels/needs-polish/balloons-do-poof.xml:6, \
+	./tbe --regression levels/finished/balloons-do-poof.xml:6, \
 	      --regression levels/finished/bouncing_balls.xml:6, \
 	      --regression levels/finished/bowling_pin_plays_soccer.xml:17, \
 	      --regression levels/finished/brother-plays-penguin-goalie.xml:5, \

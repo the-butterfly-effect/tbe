@@ -21,20 +21,20 @@ which introduces an element or concept it makes use of
    <level> finished/bridge_gap.xml </level>
    <level> finished/steam-machine.xml </level>
    <level> finished/balloons-go-up.xml </level>
-   <level> needs-polish/balloons-do-poof.xml </level>
+   <level> finished/balloons-do-poof.xml </level>
    <level> finished/004.xml </level>
    <level> finished/cola-powered-bike.v2.xml </level>
    <level> finished/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
    <level> finished/party-at-office.xml </level>
    <level> finished/in_the_attic.xml </level>
-   <level> needs-polish/poofpoofpoof.xml </level>
+   <level> finished/poofpoofpoof.xml </level>
    <level> finished/005.xml </level>
    <level> finished/volley_valley.xml </level>
    <level> finished/maze.xml </level>
    <level> finished/topple-the-other-way.xml </level>
    <level> finished/birds1.xml </level> <!-- Introduces dynamite and detonator box -->
    <level> finished/birds2.xml </level> <!-- Introduces changing detonator box' phone number -->
-   <level> needs-polish/dialbforboom.xml </level>
+   <level> finished/dialbforboom.xml </level>
    <level> finished/pingus-introduction.xml </level> <!-- Introduces pingus and exit -->
    <level> finished/pingus-1.xml </level>
    <level> finished/magic_steel.xml </level>
@@ -75,7 +75,7 @@ which introduces an element or concept it makes use of
    <level> finished/boom_boom_boom.xml </level>
    <level> finished/goal_maker.xml </level>
    <level> finished/hattrick.xml </level>
-   <level> needs-polish/cola_reaction.xml </level>
+   <level> finished/cola_reaction.xml </level>
    <level> needs-polish/butterfly_race.xml </level>
    <level> finished/sorting-2.xml </level>
    <level> finished/sorting-3.xml </level>
