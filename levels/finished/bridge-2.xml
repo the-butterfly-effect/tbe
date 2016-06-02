@@ -71,4 +71,10 @@
             <property key="object">Ball</property>
         </goal>
     </goals>
+    <hints>
+        <hint number="1" object="IBeam" X="1.751" Y="2.174" />
+        <hint number="2" object="Skyhook" X="2.455" Y="1.849" />
+        <hint number="3" object="IBeam" X="3.243" Y="2.134" />
+        <hint number="4" object="IBeam" X="2.605" Y="2.025" />
+    </hints>
 </tbe-level>

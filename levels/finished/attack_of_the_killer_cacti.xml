@@ -66,5 +66,10 @@
             <property key="yover">3.2</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="Floor" angle="2.4336" X="1.142" Y="1.759" />
+        <hint number="2" object="Floor" angle="2.4336" X="2.289" Y="1.759" />
+        <hint number="3" object="Floor" angle="2.4336" X="3.379" Y="1.759" />
+        <hint number="4" object="Floor" angle="2.4336" X="4.463" Y="1.759" />
+    </hints>
 </tbe-level>

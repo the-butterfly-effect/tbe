@@ -94,5 +94,7 @@
             <property key="ybelow">0.4</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="RightFixedWedge" X="3.794" Y="3.172"/>
+    </hints>
 </tbe-level>

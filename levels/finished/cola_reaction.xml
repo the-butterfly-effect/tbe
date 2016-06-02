@@ -105,5 +105,11 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="BedOfNails" X="2.531" Y="3.396" angle="-1.5708" />
+        <hint number="2" object="Floor" X="3.995" Y="0.871" width="0.471" />
+        <hint number="3" object="Floor" X="2.151" Y="1.458" width="1" />
+        <hint number="4" object="RightRamp" X="1.302" Y="1.941" />
+        <hint number="5" object="Floor" X="3.219" Y="3.465" width="1" />
+    </hints>
 </tbe-level>

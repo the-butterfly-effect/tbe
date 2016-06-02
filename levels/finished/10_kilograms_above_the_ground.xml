@@ -115,5 +115,9 @@
             <property key="xover">2.8</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="LeftFixedWedge" X="2.580" Y="0.99" />
+        <hint number="2" object="BirchBar" width="3.929" X="3.196" Y="1.197" />
+        <hint number="3" object="BowlingPin" X="5.022" Y="1.425" />
+    </hints>
 </tbe-level>
