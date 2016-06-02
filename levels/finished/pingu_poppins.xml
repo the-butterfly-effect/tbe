@@ -9,23 +9,23 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1">
-            <object angle="0" Y="2.4995" X="2.87152" height="0.1" type="Floor" width="1">
+            <object angle="0" height="0.1" type="Floor" width="1">
                 <property key="Resizable">horizontal</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1">
-            <object angle="0" Y="2.857" X="3.887" height="0.188" type="LeftRamp" width="0.561"/>
+            <object angle="0" height="0.188" type="LeftRamp" width="0.561"/>
         </toolboxitem>
         <toolboxitem count="1">
-            <object angle="0" Y="2.23749" X="5.37931" height="0.187986" type="RightRamp" width="0.560623"/>
+            <object angle="0" height="0.187986" type="RightRamp" width="0.560623"/>
         </toolboxitem>
         <toolboxitem count="2">
-            <object angle="0" Y="0" X="0" width="1" height="0.5" type="Styrofoam">
+            <object angle="0" width="1" height="0.5" type="Styrofoam">
                 <property key="Resizable">totalresize</property>
             </object>
         </toolboxitem>
         <toolboxitem count="1">
-            <object Y="3.318" X="2.872" type="PingusWalkLeft" />
+            <object type="PingusWalkLeft" />
         </toolboxitem>
     </toolbox>
     <scene>
@@ -92,5 +92,12 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="PingusWalkLeft" X="2.825" Y="2.971" />
+        <hint number="2" object="Floor" X="2.833" Y="2.767" width="1.429" />
+        <hint number="3" object="LeftRamp" X="3.846" Y="2.880" />
+        <hint number="4" object="RightRamp" X="1.811" Y="2.876" />
+        <hint number="5" object="Styrofoam" X="3.408" Y="3.055" width="0.603" height="0.177" />
+        <hint number="6" object="Styrofoam" X="2.233" Y="3.055" width="0.603" height="0.177" />
+    </hints>
 </tbe-level>

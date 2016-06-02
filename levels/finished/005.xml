@@ -72,5 +72,7 @@
             <property key="xover">2.36</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="RectObject" X="2.267" Y="1.775" />
+    </hints>
 </tbe-level>

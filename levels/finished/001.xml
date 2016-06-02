@@ -69,4 +69,5 @@
             <property key="object2">Flower</property>
         </goal>
     </goals>
+    <hints/>
 </tbe-level>

@@ -65,7 +65,15 @@ regression: usr/games/tbe
 	      --regression levels/finished/picnic-0.xml:13, \
 	      --regression levels/finished/picnic-1.xml:13, \
 	      --regression levels/finished/picnic-3.xml:70, \
-              --regression levels/finished/wedge_land.xml:49
+              --regression levels/finished/wedge_land.xml:49, \
+              --regression levels/finished/005.xml:3, \
+              --regression levels/finished/10_kilograms_above_the_ground.xml:17, \
+              --regression levels/finished/attack_of_the_killer_cacti.xml:15, \
+              --regression levels/finished/bridge-2.xml:10, \
+              --regression levels/finished/bridge_gap.xml:10, \
+              --regression levels/finished/maze.xml:10, \
+              --regression levels/finished/pingu_poppins.xml:40, \
+              --regression levels/finished/cola_reaction.xml:60
 
 # levels currently known to fail regression:
 failregression: usr/games/tbe
