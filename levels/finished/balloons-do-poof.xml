@@ -33,11 +33,11 @@
                 <property key="object1">balloon@(0,-0.17)</property>
                 <property key="object2">block@(0,0.03)</property>
             </object>
-            <object width="0.1" X="0.5" Y="1.05" height="1.9" type="Wall" angle="0"/>
+            <object width="0.1" X="0.497" Y="1.05" height="1.9" type="Wall" angle="0"/>
             <object width="0.21" X="0.7" Y="1.86" height="0.21" type="VolleyBall" angle="0"/>
             <object width="0.3" X="0.7" Y="0.7" height="0.3" type="RightStyrofoamWedge" angle="0">
                 <property key="Mass">0.2</property>
-                <property key="TranslationGuide">1.57</property>
+                <property key="TranslationGuide">1.5708</property>
             </object>
             <object width="0.12" X="2.350375162511972" Y="0.2752126157283783" height="0.34" type="BowlingPin" ID="the-left-pin" angle="0"/>
             <object width="0.12" X="2.500249973691478" Y="0.2815407482722643" height="0.34" type="BowlingPin" ID="the-right-pin" angle="0"/>

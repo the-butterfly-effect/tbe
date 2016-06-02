@@ -26,27 +26,22 @@
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="8.117" width="0.200"/>
             <object angle="0.000" height="0.676" Y="0.448" type="Scenery" X="3.297" width="1.738">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" height="0.715" Y="0.442" type="Scenery" X="7.135" width="1.751">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="6.188" width="0.200"/>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="11.974" width="0.200"/>
             <object angle="0.000" height="0.676" Y="0.448" type="Scenery" X="10.999" width="1.738">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="10.059" width="0.200"/>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="13.890" width="0.200"/>
             <object angle="0.000" height="0.688" Y="0.442" type="Scenery" X="18.675" width="1.761">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" height="0.728" Y="0.435" type="Scenery" X="14.844" width="1.712">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="15.806" width="0.200"/>
             <object angle="0.000" height="0.819" Y="0.519" type="Wall" X="17.722" width="0.200"/>
@@ -82,7 +77,6 @@
             <object ID="tb5" angle="0.000" height="0.068" Y="11.445" type="TennisBall" X="5.490" width="0.068"/>
             <object ID="tb6" angle="0.000" height="0.068" Y="11.406" type="TennisBall" X="11.017" width="0.068"/>
             <object angle="0.000" height="0.220" Y="0.430" type="PostIt" X="1.932" width="0.220">
-                <property key="ZValue">0.5</property>
                 <property key="page1">This is the ultimate ball sorting challenge: Bring order to complete chaos.</property>
                 <property key="page2">25 balls fall from the sky, 5 ball types, 5 balls per type and 5 slots to put them into.</property>
                 <property key="page3">Place all balls into the correct slot. For your convenience, 5 balls have already been placed the correct slot.</property>

@@ -21,7 +21,7 @@
             <object Y="3.34557" X="4.04727" angle="0" height="0.22" width="0.22" type="SoccerBall" ID="ball"/>
             <object Y="1.13593" X="2.45883" angle="0" height="0.1" width="3.74805" type="Floor"/>
             <object Y="2.93897" X="3.70521" angle="0" height="0.590529" width="1" type="LeftRamp"/>
-            <object Y="1.36054" X="0.780614" angle="0" height="0.28" width="0.28" type="PingusWalkRight"/>
+            <object Y="1.317" X="0.780614" angle="0" height="0.28" width="0.28" type="PingusWalkRight"/>
             <object Y="0.530084" X="3.2948" angle="0" height="0.1" width="5.46724" type="Floor">
                 <property key="ImageName">White-to-green</property>
             </object>
@@ -36,9 +36,7 @@
             <object Y="0.295119" X="5.92994" angle="0" height="0.371576" width="0.2" type="Wall"/>
             <object Y="0.270543" X="6.19046" angle="0" height="0.332173" width="0.332173" type="Scenery">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
-            <object Y="1.21845" X="0.780583" angle="0" height="0.0825243" width="0.398058" type="RightFixedWedge"/>
             <object Y="0.570874" X="1.11311" angle="0" height="0.184466" width="1.1" type="Scenery">
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">3</property>
@@ -72,7 +70,6 @@
                 <property key="ZValue">3</property>
             </object>
             <object Y="3.33588" X="0.941142" angle="0" height="0.22" width="0.22" type="PostIt">
-                <property key="ZValue">1</property>
                 <property key="page1">Cardboard boxes are versatile and useful for many purposes, but this one topples towards the wrong direction.</property>
                 <property key="page2">Place the walls at the correct places so everything walks, rolls and slides correctly.</property>
                 <property key="page3">Post-It Boy (who likes to play with boxes)</property>

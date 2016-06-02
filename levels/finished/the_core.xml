@@ -146,7 +146,6 @@
             </object>
             <object X="3.68689" type="Wall" Y="3.14026" angle="0" width="0.105243" height="0.64466"/>
             <object X="1.60803" type="PostIt" Y="1.79699" angle="0" width="0.22" height="0.22">
-                <property key="ZValue">1</property>
                 <property key="page1">Timing is everything.</property>
                 <property key="page2">If you feel things happen too fast, slow down a little.</property>
                 <property key="page3">Finding a way to buy some time here could be very important …</property>

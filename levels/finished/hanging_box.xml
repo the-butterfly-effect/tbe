@@ -33,7 +33,7 @@
     <scene>
         <scenesize width="9.3" height="5.5"/>
         <predefined>
-            <object width="0.28" X="9.21855" angle="0" type="Pingus" Y="0.449255" height="0.28"/>
+            <object width="0.28" X="9.079" angle="0" type="PingusWalkLeft" Y="0.24" height="0.28"/>
             <object width="2.64306" X="3.23336" angle="0" type="Floor" Y="3.65919" height="0.1"/>
             <object width="0.2" X="2.90902" angle="0" type="CustomBall" Y="3.8254" height="0.2" ID="wheel1">
                 <property key="ImageName">steam-wheel</property>
@@ -78,7 +78,7 @@
                 <property key="object1">wheel2@(0,0)</property>
                 <property key="object2">hangingBox@(0.4,0.4)</property>
             </object>
-            <object width="5.94781" X="5.53203" angle="0" type="Floor" Y="0.0538296" height="0.1"/>
+            <object width="7.127" X="6.122" angle="0" type="Floor" Y="0.0538296" height="0.1"/>
             <object width="0.22" X="1.17517" angle="0" type="PostIt" Y="0.729536" height="0.22">
                 <property key="ZValue">1</property>
                 <property key="page1">There was once Jack the clown,&lt;br>he was juggling with balls upside down.</property>
@@ -86,7 +86,6 @@
                 <property key="page3">Oh, what fun!&lt;br>Oh, what joy!&lt;br>&lt;br>Post-It Boy</property>
             </object>
             <object width="2.78546" X="5.93829" angle="0" type="Floor" Y="3.45944" height="0.1"/>
-            <object width="1" X="9.02644" angle="0" type="LeftRamp" Y="0.164405" height="0.162674"/>
             <object width="2.7206" X="3.6432" angle="0" type="Floor" Y="3.99342" height="0.1"/>
             <object width="0.2" X="7.24115" angle="0" type="Wall" Y="4.9021" height="1.16613"/>
             <object ID="tb9" width="0.068" X="2.97749" angle="0" type="TennisBall" Y="2.61886" height="0.068"/>

@@ -38,21 +38,27 @@
             <object width="6.0" X="3.0" Y="0.05" type="Floor"/>
             <object width="0.800" X="0.5" Y="0.325" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object width="0.800" X="1.3" Y="0.325" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object width="0.800" X="2.1" Y="0.325" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object width="0.800" X="0.5" Y="0.975" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object width="0.800" X="1.3" Y="0.975" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object width="0.800" X="2.1" Y="0.975" height="0.65" type="Scenery" angle="0.000">
                 <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">15.0</property>
             </object>
             <object X="3.6" Y="0.7" type="PostIt">
                 <property key="page1">I’m like my brother—I play soccer, too!</property>

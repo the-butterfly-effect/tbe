@@ -36,7 +36,6 @@
             <object angle="0.000" type="Floor" X="3.412" height="0.100" Y="0.068" width="6.809"/>
             <object angle="0.000" type="Scenery" X="3.040" height="0.542" Y="0.386" width="0.876">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" type="BowlingBall" X="3.040" height="0.220" Y="0.238" width="0.220"/>
             <object angle="0.000" type="Wall" X="2.499" height="0.699" Y="0.469" width="0.200"/>
@@ -50,17 +49,14 @@
             <object angle="0.000" type="SoccerBall" X="7.025" ID="sb4" height="0.220" Y="4.732" width="0.220"/>
             <object angle="0.000" type="Scenery" X="5.171" height="0.542" Y="0.391" width="0.876">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" type="VolleyBall" X="5.171" height="0.210" Y="0.228" width="0.210"/>
             <object angle="0.000" type="Scenery" X="4.113" height="0.542" Y="0.386" width="0.876">
                 <property key="ImageName">basket</property>
-                <property key="ZValue">1</property>
             </object>
             <object angle="0.000" type="SoccerBall" X="4.113" height="0.220" Y="0.238" width="0.220"/>
             <object angle="0.000" type="Wall" X="5.708" height="0.710" Y="0.475" width="0.200"/>
             <object angle="0.000" X="5" Y="3" type="PostIt">
-                <property key="ZValue">1</property>
                 <property key="page1">Balls sorted by elasticity:&lt;br&gt;1: Volleyball&lt;br&gt;2: Soccer ball&lt;br&gt;3: Bowling ball</property>
             </object>
         </predefined>

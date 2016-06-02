@@ -28,7 +28,7 @@
         <predefined>
             <object Y="0.849" X="8.978" width="0.768" type="Goal" height="1.517" angle="0.000"/>
             <object Y="0.117" X="8.158" width="2.574" type="Floor" height="0.121" angle="-0.053">
-                <property key="ZValue">4</property>
+                <property key="ZValue">5</property>
             </object>
             <object Y="4.212" X="6.431" width="0.220" type="SoccerBall" ID="ball1" height="0.220" angle="0.000"/>
             <object Y="0.372" X="0.802" width="0.220" type="SoccerBall" ID="ball2" height="0.220" angle="0.000"/>

@@ -102,7 +102,6 @@
             <object width="0.097" X="1.726" Y="1.330" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.440" X="1.078" Y="1.575" height="0.100" type="Floor" angle="0.000"/>
             <object X="0.273" Y="0.476" type="PostIt">
-                <property key="ZValue">1</property>
                 <property key="page1">They say a flap of a butterfly can cause a hurricane. It’s called “butterfly effect”.</property>
                 <property key="page2">Well, I doubt that. Can butterflies even cause explosions? Let’s find out!</property>
                 <property key="page3">What I know for sure: Butterflies can push very light objects around.</property>

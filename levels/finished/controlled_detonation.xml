@@ -27,7 +27,6 @@
             <object Y="3.52498" angle="0" width="0.660194" X="1.40021" type="Floor" height="0.1"/>
             <object Y="3.78157" angle="0" width="8.45955" X="3.54153" type="Scenery" height="3.95577">
                 <property key="ImageName">the-sun</property>
-                <property key="ZValue">1</property>
             </object>
             <object Y="1.13592" angle="0" width="1.80367" X="2.49515" type="LeftRamp" height="0.681769"/>
             <object Y="3.53344" angle="0" width="1.63646" X="2.43311" type="RightRamp" height="0.665588"/>
@@ -56,7 +55,6 @@
             <object Y="2.14995" angle="0" width="0.0975189" X="4.79914" type="Wall" height="0.29342"/>
             <object Y="0.615426" angle="0" width="0.2" X="8.04887" type="Wall" height="1"/>
             <object Y="1.13376" angle="0" width="0.22" X="5.31931" type="PostIt" height="0.22">
-                <property key="ZValue">1</property>
                 <property key="page1">What a wonderful day! It’s the perfect weather for explosions.</property>
                 <property key="page2">You have probably noticed your toolbox is empty this time. Don’t worry.</property>
                 <property key="page3">Remember you can choose the phone number the detonator boxes are calling.</property>
