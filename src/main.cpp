@@ -178,9 +178,9 @@ extern void setupBacktrace(void);
 int main(int argc, char *argv[])
 {
     //** init Qt (graphics toolkit) - www.qtsoftware.com
+    // note: environment variable parsing is done by Qt before main is entered.
+    // This makes setting environment vars to modify Qt behavior impossible.
     QApplication app(argc, argv);
-    char *myHashSeedString = strdup("QT_HASH_SEED=1");
-    putenv (myHashSeedString);
 
     //** init splash screen, do it as early in program start as possible
     QSplashScreen mySplash(QPixmap(":/title_page.png"));
@@ -272,6 +272,19 @@ int main(int argc, char *argv[])
 
     QSettings mySettings;
     DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
+
+    if (theIsLevelCreator)
+    {
+        // TODO: check for environment variable QT_HASH_SEED=1
+        if (NULL==getenv("QT_HASH_SEED"))
+        {
+            printf("\nIMPORTANT:\n");
+            printf("Please 'export QT_HASH_SEED=1' before starting the TBE level creator.\n");
+            printf("This ensures that the level files will be written in a consistent order.\n");
+            exit(1);
+        }
+        DEBUG3("  got QT_HASH_SEED environment set, xml consistent order writing enabled");
+    }
 
     //** setup main window, shut down splash screen
     MainWindow myMain(theIsMaximized);
