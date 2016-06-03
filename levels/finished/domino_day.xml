@@ -116,7 +116,13 @@
             <object width="0.100" X="1.100" Y="0.930" height="0.160" type="Floor" angle="0.000">
                 <property key="Bounciness">0.1</property>
             </object>
-            <object width="0.220" X="0.200" Y="1.400" height="0.220" type="PostItHint" angle="0.000">
+            <object width="0.220" X="0.179" Y="2.501" height="0.220" type="PostItTutorial" angle="0.000">
+                <property key="page1">Look! You got another one of those amazing resizable styrofoam blocks!</property>
+                <property key="page2">But it is of the cheap kind: It can only be resized in one direction.</property>
+                <property key="page3">I hope that won’t be a problem for you.</property>
+            </object>
+
+            <object width="0.220" X="0.538" Y="2.374" height="0.220" type="PostItHint" angle="0.000">
                 <property key="page1">It falls down, blows …&lt;br>&lt;br>and doesn’t do anything useful.</property>
                 <property key="page2">Sounds like a junk, does it?</property>
                 <property key="page3">That’s half of the problem you need to fix here.</property>

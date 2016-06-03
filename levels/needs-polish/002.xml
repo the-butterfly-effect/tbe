@@ -77,12 +77,20 @@
             <object width="0.4" X="0.25" Y="0.73" height="0.1" type="Floor" angle="0.7">
                 <property key="ZValue">3.9</property>
             </object>
-            <object X="1.1" Y="1.0" type="PostItHint">
-                <property key="page1">Our little Butterfly …&lt;br>&lt;br>Another day, another flower …</property>
-                <property key="page2">But I’m not so sure about that volley ball.</property>
-                <property key="page3">Hmmm … You see that hole?&lt;br>Behind the volley ball!</property>
-                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
-                <property key="page5">Note:&lt;br>If the game runs, a green fast forward button appears in the top-right corner.&lt;br>&lt;br>That will speed up the simulation.</property>
+            <object X="1.1" Y="1.0" type="PostItTutorial">
+                <property key="page1">Today I will tell you about various things. But first things first.</property>
+                <property key="page2">Butterflies must &lt;i>never&lt;/i> be harmed (not just here), or else you have to try again.</property>
+                <property key="page3">You can use the green fast forward button in the top-right corner to speed up the simulation.</property>
+                <property key="page4">I will sometimes give you hints in the yellow post-it notes.</property>
+                <property key="page5">In any case …&lt;br&gt;Happy playing!</property>
+            </object>
+            <object X="1.5" Y="1.0" type="PostItHint">
+                <property key="page1">Are you helpless? I got you covered! In the yellow notes I give you little hints for solving the problem.</property>
+                <property key="page2">But if you want to do it all on your own, stop reading now and click on “Cancel”. Good luck!</property>
+                <property key="page3">Our little Butterfly …&lt;br>&lt;br>Another day, another flower …</property>
+                <property key="page4">But I’m not so sure about that volley ball.</property>
+                <property key="page5">Hmmm … You see that hole?&lt;br>Behind the volley ball!</property>
+                <property key="page6">&lt;br>&lt;br>Post-It Boy</property>
             </object>
         </predefined>
     </scene>

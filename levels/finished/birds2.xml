@@ -100,7 +100,9 @@
                 <property key="page2">I hate Angry Birds!</property>
                 <property key="page3">The good news: they cannot lift a bowling ball, and a volley ball is too light to set off the detonator.</property>
                 <property key="page4">But why not reverse the trick? You can select what phone number to call!</property>
-                <property key="page5">Return of the Post-It Pig</property>
+                <property key="page5">First, hover on a dynamite to learn its phone number.</property>
+                <property key="page6">Then use the detonator box to select a phone number.</property>
+                <property key="page7">Return of the Post-It Pig</property>
             </object>
             <object width="0.330" X="9.820" Y="0.300" height="0.350" type="DetonatorBox" angle="0.000">
                 <property key="ImageName">DetonatorBoxDone;DetonatorBoxActivated;DetonatorBoxRinging;DetonatorBoxDone</property>
