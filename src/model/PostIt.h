@@ -34,7 +34,8 @@ public:
         const char    *aDisplayName,
         const char    *aTooltip,
         const QString &aBackgroundImageName,
-        const QString &anImageName);
+        const QString &anImageName,
+        const QString &aButtonStyle);
 
     virtual ~PostIt();
 
@@ -82,6 +83,7 @@ private:
     const char *theTooltip;
     QString theImageName;
     QString theBackgroundImageName;
+    QString theButtonStyle;
 
 };
 
@@ -98,22 +100,25 @@ public:
         const char    *aDisplayName,
         const char    *aTooltip,
         const QString &anImageName,
-        const QString &aBackgroundImageName)
+        const QString &aBackgroundImageName,
+        const QString &aButtonStyle)
         : theDisplayName(aDisplayName), theTooltip(aTooltip),
-          theImageName(anImageName), theBackgroundImageName(aBackgroundImageName)
+          theImageName(anImageName), theBackgroundImageName(aBackgroundImageName),
+          theButtonStyle(aButtonStyle)
     {
         announceObjectType(anInternalName, this);
     }
 
     virtual AbstractObject *createObject(void) const
     {
-        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName));
+        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName, theButtonStyle));
     }
 private:
     const char *theDisplayName;
     const char *theTooltip;
     QString theImageName;
     QString theBackgroundImageName;
+    QString theButtonStyle;
 };
 
 #endif // POSTIT_H
