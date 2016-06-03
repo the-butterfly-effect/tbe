@@ -60,7 +60,7 @@
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object X="3.3" Y="3.7" type="PostIt">
+            <object X="3.3" Y="3.7" type="PostItMisc">
                 <property key="page1">Another game from my childhood.</property>
                 <property key="page2">And again my best invention yet: the skyhook.</property>
                 <property key="page3">As you can guess, I only want maximum score...</property>

@@ -53,12 +53,14 @@
             </object>
             <object width="0.400" X="4.170" Y="0.450" height="0.700" type="Goal" angle="0.000"/>
             <object width="4.500" X="2.250" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
-            <object width="0.220" X="3.600" Y="0.700" height="0.220" type="PostIt" angle="0.000">
+            <object width="0.220" X="3.600" Y="0.700" height="0.220" type="PostItTutorial" angle="0.000">
                 <property key="page1">Another pin needs kicking!</property>
                 <property key="page2">Use a proper soccer ball this time!</property>
                 <property key="page3">Looks like there’s something missing.</property>
-                <property key="page4">Hint: first put it on the floor,&lt;br>then adjust height,&lt;br>then the width.</property>
-                <property key="page5">Post-It Boy&lt;br>likes playing with styrofoam&lt;br>&lt;br>… for breakfast!</property>
+                <property key="page4">But look at my latest invention: Resizable styrofoam blocks!</property>
+                <property key="page5">Now with adjustable height &lt;i&gt;and&lt;/i&gt; width. How amazing is that?</property>
+                <property key="page6">First put them on the floor,&lt;br>then adjust height,&lt;br>then the width.</property>
+                <property key="page7">Post-It Boy&lt;br>likes playing with styrofoam&lt;br>&lt;br>… for breakfast!</property>
             </object>
         </predefined>
         <background>

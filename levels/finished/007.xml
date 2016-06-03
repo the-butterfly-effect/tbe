@@ -150,7 +150,7 @@
             <object width="0.8" X="4.2" Y="0.8" height="0.5" type="RightRamp" angle="0">
                 <property key="ImageName">RightRamp</property>
             </object>
-            <object X="2.0" Y="1.7" type="PostIt">
+            <object X="2.0" Y="1.7" type="PostItMisc">
                 <property key="page1">This is the final killer challenge.</property>
                 <property key="page2">Look: it’s that butterfly and flower again.</property>
                 <property key="page3">But there’s some styrofoam blocks in the way.</property>

@@ -192,7 +192,7 @@
             </object>
             <object width="1.000" X="6.020" Y="2.300" height="1.700" type="ToyChest" angle="0.000"/>
             <object width="1.000" X="6.000" Y="1.400" height="0.100" type="Floor" angle="0.000"/>
-            <object X="4.8" Y="3.3" type="PostIt">
+            <object X="4.8" Y="3.3" type="PostItMisc">
                 <property key="page1">I like minigolf.</property>
                 <property key="page2">It’s fun because all holes are different.</property>
                 <property key="page3">Into the monkey’s mouth, and out from the … ahum.</property>

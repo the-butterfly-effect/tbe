@@ -28,7 +28,7 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object X="1.2" Y="2.6" type="PostIt">
+            <object X="1.2" Y="2.6" type="PostItHint">
                 <property key="page1">Sometimes, it's a team effort. One does the work; the other reaps the benefit.</property>
                 <property key="page2">That's also true for circus acts. They all train, but some fly more than others.</property>
                 <property key="page3">It's always the blokes lifting the girls!</property>

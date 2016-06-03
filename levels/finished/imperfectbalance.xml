@@ -62,7 +62,7 @@
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">20.0</property>
             </object>
-            <object width="0.22" X="1.5" Y="1.5" height="0.22" type="PostIt" angle="0">
+            <object width="0.22" X="1.5" Y="1.5" height="0.22" type="PostItMisc" angle="0">
                 <property key="page1">“Im Perfect Balance” …&lt;br>&lt;br>It almost sounds like an “Art Of Noise” album title.</property>
                 <property key="page2">Poor little butterfly has no clue what’s hanging above its head …</property>
                 <property key="page3">Like a “Sword of Damocles”. &lt;br>&lt;br>Would it also loose appetite if it knew?</property>

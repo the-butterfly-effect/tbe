@@ -77,7 +77,7 @@
                 <property key="ImageName">boulder</property>
                 <property key="Bounciness">0.1</property>
             </object>
-            <object X="2.8" Y="1.4" type="PostIt">
+            <object X="2.8" Y="1.4" type="PostItMisc">
                 <property key="page1">This is Ruud.&lt;br>&lt;br>He’s on a small desert island.</property>
                 <property key="page2">A few crates of cola washed up shore lately—so he’s not thirsty.</property>
                 <property key="page3">But do you see those coconuts?</property>

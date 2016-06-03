@@ -123,7 +123,7 @@
                 <property key="object2">tuigje</property>
             </object>
             <object X="3.89864" Y="3.163" width="1.66672" angle="0" type="Floor" height="0.1"/>
-            <object X="2.486" Y="0.724" width="0.22" angle="0" type="PostIt" height="0.22">
+            <object X="2.486" Y="0.724" width="0.22" angle="0" type="PostItHint" height="0.22">
                 <property key="page1">Zoing, ploing, boing, woing!&lt;br>Zap, whoosh, smack, boom!</property>
                 <property key="page2">Don’t you love these old cartoons?</property>
                 <property key="page3">But let me give you one hint:&lt;br>&lt;br> First a “Boom”, then the “Zoing”.</property>

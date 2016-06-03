@@ -75,7 +75,7 @@
                 <property key="Object">Flower</property>
                 <property key="Mass">0.01</property>
             </object>
-            <object X="2.8" Y="1.4" type="PostIt">
+            <object X="2.8" Y="1.4" type="PostItMisc">
                 <property key="page1">This is my brother.&lt;br>&lt;br>He is of the sporty type.</property>
                 <property key="page2">But he has no friends, only a bowling pin.</property>
                 <property key="page3">He wants to shoot the pin into the goal.</property>

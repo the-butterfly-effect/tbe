@@ -172,7 +172,7 @@
                 <property key="ImageName">brass-pin</property>
                 <property key="ZValue">12.0</property>
             </object>
-            <object X="1.087" height="0.22" type="PostIt" width="0.22" Y="0.887" angle="0">
+            <object X="1.087" height="0.22" type="PostItMisc" width="0.22" Y="0.887" angle="0">
                 <property key="page1">It’s party time at the office!&lt;br>&lt;br>Jumping Jack has his birthday!</property>
                 <property key="page2">(Jack usually doesn’t get much attention, he’s already happy that we thought of him.)</property>
                 <property key="page3">There’s cola,&lt;br>and there’s even a gift!</property>

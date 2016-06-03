@@ -21,7 +21,7 @@
     <scene>
         <scenesize width="14" height="10"/>
         <predefined>
-            <object width="0.7" X="1.1" Y="8.5" height="0.7" type="PostIt">
+            <object width="0.7" X="1.1" Y="8.5" height="0.7" type="PostItHint">
                 <property key="page1">This is a house of cards.</property>
                 <property key="page2">As you know,&lt;br>those are not too sturdy.</property>
                 <property key="page3">Your job:&lt;br>tear it down!</property>

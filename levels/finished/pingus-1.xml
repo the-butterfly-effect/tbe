@@ -219,7 +219,7 @@
                 <property key="ImageName">cloud-door</property>
                 <property key="ZValue">7.0</property>
             </object>
-            <object type="PostIt" width="0.220" height="0.220" angle="0.000" X="3.902" Y="1.843">
+            <object type="PostItMisc" width="0.220" height="0.220" angle="0.000" X="3.902" Y="1.843">
                 <property key="page1">Oh no!&lt;br>&lt;br>It’s raining penguins.</property>
                 <property key="page2">Wait a minute … Don’t they look just like the penguins from Pingus?</property>
                 <property key="page3">Let’s bring them home safely!</property>

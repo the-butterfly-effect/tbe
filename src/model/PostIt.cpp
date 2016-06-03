@@ -22,24 +22,25 @@
 #include "PostIt.h"
 #include "ViewPostIt.h"
 
-// this class' ObjectFactory
-class PostItObjectFactory : public ObjectFactory
-{
-public:
-    PostItObjectFactory(void)
-    {
-        announceObjectType("PostIt", this);
-    }
-    AbstractObject *createObject(void) const override
-    {
-        return fixObject(new PostIt());
-    }
-};
-static PostItObjectFactory theFactory;
+static PostItObjectFactory postItHint("PostItHint",
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with hint"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Someone left you a note here.\nYellow post-it notes give you a little hint for solving this level."),
+
+                                      "PostItHint", "PostItHintBackground", QString("color: #000000; background-color: #FFFF00;"));
+
+static PostItObjectFactory postItTutorial("PostItTutorial",
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with tutorial text"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Someone left you a note here.\nGreen post-it notes explain how to play the game."),
+                                      "PostItTutorial", "PostItTutorialBackground", QString("color: #000000; background-color: #8FFF4B;"));
+
+static PostItObjectFactory postItMisc("PostItMisc",
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with miscellaneous content"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Someone left you a note here.\nWhat might be written on it?"),
+                                      "PostItMisc", "PostItMiscBackground", QString("color: #000000; background-color: #FFFFFF;"));
 
 
-
-PostIt::PostIt( )
+PostIt::PostIt(const char *aDisplayName, const char *aTooltip, const QString &anImageName, const QString &aBackgroundImageName, const QString &aButtonStyle)
+        : theDisplayName(aDisplayName), theImageName(anImageName), theBackgroundImageName(aBackgroundImageName), theButtonStyle(aButtonStyle)
 {
     // Post-Its are 3x3 inch (i.e. 8x8 cm)
     // but because they are too small, we will triple each side and make them 22x22 cm...
@@ -48,15 +49,14 @@ PostIt::PostIt( )
     setTheWidth(mySideLength);
     setTheHeight(mySideLength);
 
+    theTooltip = aTooltip;
+
     // Note that PostIt doesn't have a physics representation
     // it is only graphics
     theProps.setDefaultPropertiesString(
         Property::ZVALUE_STRING + QString(":1.5/") +
-        QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
+        Property::IMAGE_NAME_STRING + QString(":%1/").arg(theImageName) +
         "-" + Property::MASS_STRING + QString(":/") );
-    theToolTip = QObject::tr("Someone left notes all over the place.\n"
-                             "You know, those yellow 3×3 inch pieces of paper.\n"
-                             "You might want to read them—it may help!");
 
     DEBUG5("PostIt::PostIt done");
 }
@@ -67,13 +67,16 @@ PostIt::~PostIt( )
     ;
 }
 
-
-
 ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 {
-    if (nullptr != theViewObjectPtr)
+    if (theViewObjectPtr != nullptr)
         return theViewObjectPtr;
-    theViewObjectPtr = ViewObject::factoryMethod<ViewPostIt>(getThisPtr());
+    QString myImageName;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
+        myImageName = getInternalName();
+
+    theViewObjectPtr = ViewObject::factoryMethod<ViewPostIt>(getThisPtr(), myImageName, theBackgroundImageName, theButtonStyle);
+
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     return theViewObjectPtr;
 }

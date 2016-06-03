@@ -19,7 +19,7 @@
         <scenesize width="7" height="4"/>
         <predefined>
             <object width="0.800" X="6.610" Y="0.780" height="1.360" type="ToyChest" angle="0.000"/>
-            <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostIt" angle="0">
+            <object width="0.22" X="4.5" Y="1.2" height="0.22" type="PostItMisc" angle="0">
                 <property key="page1">Have you seen the movie “Up”?&lt;br>&lt;br>Unfortunately, I don’t have that many balloons.</property>
                 <property key="page2">I don’t think it’s not fair: butterflies can fly by themselves.</property>
                 <property key="page3">Our goal is to keep the butterfly alive. And put the pin in the chest.</property>

@@ -50,7 +50,7 @@
                 <property key="ZValue">9.0</property>
             </object>
 
-            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
+            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostItHint" angle="0">
                 <property key="page1">You’ve seen this before: a bowling ball and a bowling pin. But this time, there’s a wall in-between.</property>
                 <property key="page2">I’m pretty sure that bowling balls cannot climb walls—they don’t have hands, do they?</property>
                 <property key="page3">Do you know what an unstable equilibrium is?</property>

@@ -29,11 +29,13 @@
 // Constructors/Destructors
 //
 
-ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr)
-    : ViewObject(aAbstractObjectPtr, "PostIt"),
+ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName, const QString &aBackgroundImageName, const QString &aButtonStyle)
+    : ViewObject(aAbstractObjectPtr, anImageName),
       theCurrentPage(0),
       theDialogPtr(nullptr),
-      theUIPtr(nullptr)
+      theUIPtr(nullptr),
+      theBackgroundImageName(aBackgroundImageName),
+      theButtonStyle(aButtonStyle)
 {
     // everything is done in the ViewObject constructor
     DEBUG5ENTRY;
@@ -68,13 +70,16 @@ void ViewPostIt::displayPostit(void)
     theDialogPtr->resize(240, 240);
 
     QPixmap myPixmap;
-    ImageCache::getPixmap("PostItBackground", QSize(240, 240), &myPixmap);
+    ImageCache::getPixmap(theBackgroundImageName, QSize(240, 240), &myPixmap);
     Q_ASSERT(myPixmap.isNull() == false);
     myUIWidgetPtr->setPixmap(myPixmap);
     myUIWidgetPtr->setParent(theDialogPtr);
 
     theCurrentPage = 0;
     nextClicked();
+
+    theUIPtr->pushButton_Next->setStyleSheet(theButtonStyle);
+    theUIPtr->pushButton_Cancel->setStyleSheet(theButtonStyle);
 
     connect(static_cast<QObject *>(theUIPtr->pushButton_Next), SIGNAL(clicked()),
             this, SLOT(nextClicked()));

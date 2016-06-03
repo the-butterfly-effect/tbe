@@ -22,7 +22,7 @@
             <object Y="1.46658" angle="0" width="1.67422" type="Floor" height="0.1" X="6.23128"/>
             <object Y="4.54107" angle="0" width="0.21" type="VolleyBall" height="0.21" X="1.1245"/>
             <object ID="pin" Y="1.68814" angle="0" width="0.12" type="BowlingPin" height="0.34" X="7.01417"/>
-            <object Y="4.22927" angle="0" width="0.22" type="PostIt" height="0.22" X="0.464704">
+            <object Y="4.22927" angle="0" width="0.22" type="PostItHint" height="0.22" X="0.464704">
                 <property key="ZValue">1</property>
                 <property key="page1">Sometimes the obvious way does not lead to your destination.</property>
             </object>

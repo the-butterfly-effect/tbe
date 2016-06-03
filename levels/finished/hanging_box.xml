@@ -79,7 +79,7 @@
                 <property key="object2">hangingBox@(0.4,0.4)</property>
             </object>
             <object width="7.127" X="6.122" angle="0" type="Floor" Y="0.0538296" height="0.1"/>
-            <object width="0.22" X="1.17517" angle="0" type="PostIt" Y="0.729536" height="0.22">
+            <object width="0.22" X="1.17517" angle="0" type="PostItHint" Y="0.729536" height="0.22">
                 <property key="ZValue">1</property>
                 <property key="page1">There was once Jack the clown,&lt;br>he was juggling with balls upside down.</property>
                 <property key="page2">He was the circus super-star,&lt;br>he and his helper from Antarctica.</property>

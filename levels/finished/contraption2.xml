@@ -27,7 +27,7 @@
             <object width="4.6" X="2.3" Y="0.05" height="0.1" type="Floor" angle="0">
                 <property key="Friction">0.6</property>
             </object>
-            <object width="0.22" X="2.7" Y="2.1" height="0.22" type="PostIt" angle="0">
+            <object width="0.22" X="2.7" Y="2.1" height="0.22" type="PostItHint" angle="0">
                 <property key="page1">Another contraption for the creative mind.</property>
                 <property key="page2">You see that bowling ball at the top-right? &lt;br>&lt;br>It wants to topple the pin next to it.</property>
                 <property key="page3">But a lot needs to happen before that pin moves.</property>

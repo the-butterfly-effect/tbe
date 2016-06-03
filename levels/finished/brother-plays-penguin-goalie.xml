@@ -69,7 +69,7 @@
             </object>
             <object width="0.120" X="3.900" Y="0.270" height="0.340" type="BowlingPin" ID="thepin" angle="0.000"/>
             <object width="0.400" X="4.400" Y="0.450" height="0.700" type="Goal" angle="0.000"/>
-            <object width="0.220" X="2.800" Y="1.400" height="0.220" type="PostIt" angle="0.000">
+            <object width="0.220" X="2.800" Y="1.400" height="0.220" type="PostItHint" angle="0.000">
                 <property key="page1">My dear bro.&lt;br>&lt;br>Still playing soccer.</property>
                 <property key="page2">He found a penguin willing to play goal keeper.&lt;br>&lt;br>The penguin is a little short, though.&lt;br>&lt;br>But still my bro can practice aiming high.</property>
 		<property key="page3">His aim is best if the ball is in the front of his face&lt;br>&lt;br>(if my calculations are correct).</property>

@@ -29,7 +29,7 @@
                 <property key="Bounciness">0.1</property>
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object X="3.0" Y="3.5" type="PostIt">
+            <object X="3.0" Y="3.5" type="PostItTutorial">
                 <property key="page1">Look, that's a skyhook.&lt;br>&lt;br>A pretty nifty invention, if I may say so.</property>
                 <property key="page2">Just hook it up in the air&lt;br>and it stays there.</property>
                 <property key="page3">And you can hang a lot of weight on it, too!</property>
