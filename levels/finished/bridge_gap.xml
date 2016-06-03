@@ -68,6 +68,10 @@
             <property key="xover">4.3</property>
             <property key="object">Ball</property>
         </goal>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">Ball</property>
+        </goal>
     </goals>
     <hints>
         <hint number="1" object="Skyhook" X="2.464" Y="1.936" />
