@@ -86,6 +86,10 @@
                 <property key="PivotPoint">(0,0)</property>
                 <property key="ZValue">5.0</property>
             </object>
+            <object width="0.1" X="5.09" Y="2.48" height="0.1" type="Scenery">
+                <property key="ZValue">9</property>
+                <property key="ImageName">brass-pin</property>
+            </object>
             <object width="6.124" X="2.121" Y="2.741" height="0.100" type="Floor" angle="0.000">
                 <property key="NoCollision">top-lever</property>
             </object>
@@ -104,7 +108,7 @@
                 <property key="PivotPoint">(-0.1,0.0)</property>
             </object>
             <object width="0.1" X="3.400" Y="1.690" height="0.1" type="Scenery">
-                <property key="ZVale">10</property>
+                <property key="ZValue">10</property>
                 <property key="ImageName">brass-pin</property>
             </object>
             <object width="0.220" X="3.579" Y="2.356" height="0.220" type="BowlingBall" angle="0.000"/>
@@ -123,7 +127,7 @@
                 <property key="PivotPoint">(-0.08,0)</property>
             </object>
             <object width="0.1" X="3.30" Y="1.06" height="0.1" type="Scenery">
-                <property key="ZVale">10</property>
+                <property key="ZValue">10</property>
                 <property key="ImageName">brass-pin</property>
             </object>
             <object width="0.400" X="1.800" Y="0.986" height="0.400" type="QuarterArc40" angle="1.571"/>
