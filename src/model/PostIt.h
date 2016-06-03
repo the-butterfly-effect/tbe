@@ -30,7 +30,11 @@
 class PostIt : public AbstractObject
 {
 public:
-    PostIt();
+    PostIt(
+        const char    *aDisplayName,
+        const char    *aTooltip,
+        const QString &aBackgroundImageName,
+        const QString &anImageName);
 
     virtual ~PostIt();
 
@@ -45,7 +49,13 @@ public:
     /// returns the Name of the object.
     virtual const QString getName ( ) const override
     {
-        return QObject::tr("PostIt");
+        return QObject::trUtf8(theDisplayName);
+    }
+
+    /// returns the tooltip of the object.
+    virtual const QString getToolTip ( ) const override
+    {
+        return QObject::trUtf8(theTooltip);
     }
 
     /// Post-its have no mass. But no b2Body will be created either :-)
@@ -67,6 +77,43 @@ public:
     ///          the higher the value the more likely it is drawn on top
     ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
 
+private:
+    const char *theDisplayName;
+    const char *theTooltip;
+    QString theImageName;
+    QString theBackgroundImageName;
+
+};
+
+
+#include "ObjectFactory.h"
+/** the AbstractPostItFactory
+ */
+class PostItObjectFactory : public ObjectFactory
+{
+    Q_OBJECT
+public:
+    PostItObjectFactory(
+        const QString &anInternalName,
+        const char    *aDisplayName,
+        const char    *aTooltip,
+        const QString &anImageName,
+        const QString &aBackgroundImageName)
+        : theDisplayName(aDisplayName), theTooltip(aTooltip),
+          theImageName(anImageName), theBackgroundImageName(aBackgroundImageName)
+    {
+        announceObjectType(anInternalName, this);
+    }
+
+    virtual AbstractObject *createObject(void) const
+    {
+        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName));
+    }
+private:
+    const char *theDisplayName;
+    const char *theTooltip;
+    QString theImageName;
+    QString theBackgroundImageName;
 };
 
 #endif // POSTIT_H

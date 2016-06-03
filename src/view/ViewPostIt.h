@@ -46,7 +46,7 @@ protected:
     /**
      * Empty Constructor
      */
-    explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr);
+    explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr, const QString &anImageName, const QString &aBackgroundImageName);
     friend class ViewObject;
 
 public:
@@ -100,6 +100,8 @@ private:
     AnimatedDialog *theDialogPtr;
 
     Ui::ViewPostIt *theUIPtr;
+
+    const QString theBackgroundImageName;
 
     // prevent copy constructor / assignment operator
     ViewPostIt(const ViewPostIt &);

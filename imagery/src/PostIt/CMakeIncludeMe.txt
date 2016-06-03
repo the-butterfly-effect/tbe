@@ -1,6 +1,9 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
-        ${SRCDIRNAME}/PostIt.svg
-        ${SRCDIRNAME}/PostItBackground.svg
+        ${SRCDIRNAME}/PostItHint.svg
+        ${SRCDIRNAME}/PostItHintBackground.svg
+        ${SRCDIRNAME}/PostItTutorial.svg
+        ${SRCDIRNAME}/PostItTutorialBackground.svg
+        ${SRCDIRNAME}/PostItMisc.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )
