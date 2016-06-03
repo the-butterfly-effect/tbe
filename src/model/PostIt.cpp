@@ -34,9 +34,9 @@ static PostItObjectFactory postItTutorial("PostItTutorial",
                                       "PostItTutorial", "PostItTutorialBackground");
 
 static PostItObjectFactory postItMisc("PostItMisc",
-                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with misc. content"),
-                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Someone left a note here.\nWhat might be written on it?"),
-                                      "PostItMisc", "PostItHintBackground");
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with miscellaneous content"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Someone left you a note here.\nWhat might be written on it?"),
+                                      "PostItMisc", "PostItMiscBackground");
 
 
 PostIt::PostIt(const char *aDisplayName, const char *aTooltip, const QString &anImageName, const QString &aBackgroundImageName)
