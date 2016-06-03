@@ -12,7 +12,7 @@
             <object width="0.400" height="0.250" type="Spring">
                 <property key="ImageName">spring20</property>
                 <property key="Rotatable">true</property>
-                <property key="SpringConstant">250</property>
+                <property key="SpringConstant">300</property>
             </object>
         </toolboxitem>
     </toolbox>
@@ -49,7 +49,7 @@
             <object width="0.220" X="0.221" Y="2.868" height="0.220" type="SoccerBall" angle="0.000">
                 <property key="Mass">1</property>
             </object>
-            <object width="1.425" X="1.797" Y="0.150" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.464" X="1.817" Y="0.150" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.910" X="1.550" Y="0.250" height="0.100" type="Floor" angle="0.000"/>
             <object width="0.460" X="1.310" Y="0.350" height="0.100" type="Floor" angle="0.000"/>
         </predefined>
@@ -69,6 +69,6 @@
         </goal>
     </goals>
     <hints>
-        <hint X="2.64" Y="0.32" number="1" angle="1.57" object="Spring"/>
+        <hint X="2.682" Y="0.303" number="1" angle="1.57" object="Spring"/>
     </hints>
 </tbe-level>
