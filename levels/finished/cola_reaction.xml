@@ -80,7 +80,7 @@
             <object Y="2.924" angle="0" height="0.1" X="3.018" width="0.586" type="Floor"/>
             <object Y="2.717" angle="0" height="0.22" X="3.101" width="0.22" type="PostItTutorial">
                 <property key="page1">Do you see the weird ring from which the weight is hanging?</property>
-                <property key="page2">It is a part of a guard rail mechanism, contraining it in its movement.</property>
+                <property key="page2">It is a part of a guard rail mechanism, constraining it in its movement.</property>
                 <property key="page3">It can only move along the guard rail but nowhere else.</property>
                 <property key="page4">But I wonder why anyone would need a hanging weight here in the first place.</property>
                 <property key="page5">Post-It Boy</property>
