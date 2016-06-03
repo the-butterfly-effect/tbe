@@ -95,7 +95,7 @@
                 <property key="Mass">1</property>
                 <tooltip>Mr. Big Bird looks angry. He is rather frail, however.</tooltip>
             </object>
-            <object width="0.440" X="3.584" Y="0.399" height="0.440" type="PostIt" angle="0.000">
+            <object width="0.440" X="3.584" Y="0.399" height="0.440" type="PostItTutorial" angle="0.000">
                 <property key="page1">Blast it! They stole my dynamite!</property>
                 <property key="page2">I hate Angry Birds!</property>
                 <property key="page3">The good news: they cannot lift a bowling ball, and a volley ball is too light to set off the detonator.</property>

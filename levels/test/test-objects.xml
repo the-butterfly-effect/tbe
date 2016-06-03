@@ -37,7 +37,9 @@
             <object X="2.357" Y="0.134" width="0.28" angle="0" type="PingusWalkLeft" height="0.28"/>
             <object X="3.01789" Y="0.151991" width="0.28" angle="0" type="PingusWalkRight" height="0.28"/>
             <object X="3.83615" Y="0.503309" width="1" angle="0" type="PingusExit" height="1"/>
-            <object X="0.663719" Y="4.04533" width="0.22" angle="0" type="PostIt" height="0.22"/>
+            <object X="0.663719" Y="4.04533" width="0.22" angle="0" type="PostItHint" height="0.22"/>
+            <object X="0.963719" Y="4.04533" width="0.22" angle="0" type="PostItTutorial" height="0.22"/>
+            <object X="1.363719" Y="4.04533" width="0.22" angle="0" type="PostItMisc" height="0.22"/>
             <object X="3.41772" Y="4.19041" width="0.4" angle="0" type="QuarterArc40" height="0.4"/>
             <object X="3.6171" Y="4.37397" width="0.8" angle="0" type="QuarterArc80" height="0.8"/>
             <object X="6.51886" Y="1.41006" width="1" angle="0" type="RightFixedWedge" height="1"/>

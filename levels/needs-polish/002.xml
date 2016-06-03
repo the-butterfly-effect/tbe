@@ -77,7 +77,7 @@
             <object width="0.4" X="0.25" Y="0.73" height="0.1" type="Floor" angle="0.7">
                 <property key="ZValue">3.9</property>
             </object>
-            <object X="1.1" Y="1.0" type="PostIt">
+            <object X="1.1" Y="1.0" type="PostItHint">
                 <property key="page1">Our little Butterfly …&lt;br>&lt;br>Another day, another flower …</property>
                 <property key="page2">But I’m not so sure about that volley ball.</property>
                 <property key="page3">Hmmm … You see that hole?&lt;br>Behind the volley ball!</property>

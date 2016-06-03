@@ -78,7 +78,7 @@
             <object Y="3.312" angle="0" height="0.928" X="2.394" width="0.107" type="Floor"/>
             <object Y="2.117" angle="0" height="0.1" X="1.831" width="0.379" type="Floor"/>
             <object Y="2.924" angle="0" height="0.1" X="3.018" width="0.586" type="Floor"/>
-            <object Y="2.717" angle="0" height="0.22" X="3.101" width="0.22" type="PostIt">
+            <object Y="2.717" angle="0" height="0.22" X="3.101" width="0.22" type="PostItTutorial">
                 <property key="page1">Do you see the weird ring from which the weight is hanging?</property>
                 <property key="page2">It is a part of a guard rail mechanism, contraining it in its movement.</property>
                 <property key="page3">It can only move along the guard rail but nowhere else.</property>

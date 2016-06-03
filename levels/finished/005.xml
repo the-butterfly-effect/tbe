@@ -50,7 +50,7 @@
             <object X="1.32002" width="0.85" type="ColaCrate" Y="0.402503" angle="0" height="0.6"/>
             <object X="1.33003" width="0.85" type="ColaCrate" Y="1.00501" angle="0" height="0.6"/>
             <object X="1.31499" width="0.85" type="ColaCrate" Y="1.61001" angle="0" height="0.6"/>
-            <object X="2.8" width="0.22" type="PostIt" Y="1.4" angle="0" height="0.22">
+            <object X="2.8" width="0.22" type="PostItHint" Y="1.4" angle="0" height="0.22">
                 <property key="page1">Those pins always long for company.</property>
                 <property key="page2">Let’s join the lonely one above with his friends below.</property>
                 <property key="page3">By the way: you may sometimes have more in your toolbox than you need …</property>

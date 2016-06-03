@@ -76,7 +76,7 @@
             <object ID="tb4" angle="0.000" height="0.068" Y="11.408" type="TennisBall" X="19.039" width="0.068"/>
             <object ID="tb5" angle="0.000" height="0.068" Y="11.445" type="TennisBall" X="5.490" width="0.068"/>
             <object ID="tb6" angle="0.000" height="0.068" Y="11.406" type="TennisBall" X="11.017" width="0.068"/>
-            <object angle="0.000" height="0.220" Y="0.430" type="PostIt" X="1.932" width="0.220">
+            <object angle="0.000" height="0.220" Y="0.430" type="PostItHint" X="1.932" width="0.220">
                 <property key="page1">This is the ultimate ball sorting challenge: Bring order to complete chaos.</property>
                 <property key="page2">25 balls fall from the sky, 5 ball types, 5 balls per type and 5 slots to put them into.</property>
                 <property key="page3">Place all balls into the correct slot. For your convenience, 5 balls have already been placed the correct slot.</property>

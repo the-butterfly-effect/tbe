@@ -267,7 +267,7 @@
                 <property key="ImageName">used_wood_bar</property>
                 <property key="Friction">0.4</property>
             </object>
-            <object X="4.7" Y="2.8" type="PostIt">
+            <object X="4.7" Y="2.8" type="PostItHint">
                 <property key="page1">This is a factory.</property>
                 <property key="page2">I think something's cooking here...</property>
                 <property key="page3">... waiting for breakfast</property>

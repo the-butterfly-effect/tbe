@@ -47,7 +47,7 @@
             <object width="0.1" X="0.2" Y="1.8" height="0.7" type="RectObject" angle="-0.4">
                 <property key="ImageName">used_wood_bar</property>
             </object>
-            <object X="2" Y="0.5" type="PostIt">
+            <object X="2" Y="0.5" type="PostItHint">
                 <property key="page1">Poing Poing Poing &lt;br>&lt;br>... a world-famous song of the &lt;i>Rotterdam Termination Source&lt;/i></property>
                 <property key="page2">Volley balls can do that, too.&lt;br>&lt;br>Wanna bet?</property>
                 <property key="page3">Both pins have to go down.</property>

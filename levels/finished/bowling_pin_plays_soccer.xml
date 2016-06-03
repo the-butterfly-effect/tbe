@@ -60,7 +60,7 @@
                 <property key="ImageName">chickenwire-texture</property>
                 <property key="ZValue">15.0</property>
             </object>
-            <object X="3.6" Y="0.7" type="PostIt">
+            <object X="3.6" Y="0.7" type="PostItTutorial">
                 <property key="page1">I’m like my brother—I play soccer, too!</property>
                 <property key="page2">Kick that pin into the goal!</property>
                 <property key="page3">GOOOOAAAAAL!</property>

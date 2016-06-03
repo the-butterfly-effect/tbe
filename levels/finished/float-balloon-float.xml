@@ -36,7 +36,7 @@
                 <property key="ImageName">rg1024_Grass_texture</property>
                 <property key="ZValue">9.0</property>
             </object>
-            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostIt" angle="0">
+            <object width="0.22" X="2.1" Y="0.5" height="0.22" type="PostItHint" angle="0">
                 <property key="page1">Where do balloons go?&lt;br>They can’t keep going up forever!</property>
                 <property key="page2">Or do they fly to the stars?</property>
                 <property key="page3">I want to be a balloon &lt;br>… &lt;br>and be the first one to set foot on Alpha Centauri!</property>

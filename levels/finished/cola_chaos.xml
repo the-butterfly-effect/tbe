@@ -92,7 +92,7 @@
             <object height="0.1" width="0.396095" Y="2.96241" X="2.20163" type="Floor" angle="0"/>
             <object height="0.4" width="0.2" Y="2.70885" X="2.29968" type="Wall" angle="0"/>
             <object height="0.272573" width="0.2" Y="2.05568" X="3.72143" type="Wall" angle="0"/>
-            <object height="0.22" width="0.22" Y="0.644464" X="0.269464" type="PostIt" angle="0">
+            <object height="0.22" width="0.22" Y="0.644464" X="0.269464" type="PostItHint" angle="0">
                 <property key="ZValue">1</property>
                 <property key="page1">That’s nice. You don’t have to do anything and many of the bottles are already triggered.</property>
                 <property key="page2">But that’s not good enough. The bottles are going crazy and the cola just goes all over the place.</property>

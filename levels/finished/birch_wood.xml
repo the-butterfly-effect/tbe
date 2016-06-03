@@ -49,7 +49,7 @@
             <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.48002" Y="0.143869"/>
             <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.650209" Y="0.140532"/>
             <object angle="0" width="0.076" height="0.076" type="PetanqueBoule" X="0.326516" Y="0.140532"/>
-            <object angle="0" width="0.22" height="0.22" type="PostIt" X="3.57154" Y="1.35663">
+            <object angle="0" width="0.22" height="0.22" type="PostItTutorial" X="3.57154" Y="1.35663">
                 <property key="ZValue">1</property>
                 <property key="page1">Look what I’ve found in the cellar: A bunch of birch wood!</property>
                 <property key="page2">You already know the dark old wood: It is static and doesn’t move.</property>

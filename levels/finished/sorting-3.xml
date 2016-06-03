@@ -56,7 +56,7 @@
             </object>
             <object angle="0.000" type="SoccerBall" X="4.113" height="0.220" Y="0.238" width="0.220"/>
             <object angle="0.000" type="Wall" X="5.708" height="0.710" Y="0.475" width="0.200"/>
-            <object angle="0.000" X="5" Y="3" type="PostIt">
+            <object angle="0.000" X="5" Y="3" type="PostItHint">
                 <property key="page1">Balls sorted by elasticity:&lt;br&gt;1: Volleyball&lt;br&gt;2: Soccer ball&lt;br&gt;3: Bowling ball</property>
             </object>
         </predefined>

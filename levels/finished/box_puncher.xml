@@ -26,7 +26,7 @@
             </object>
             <object height="0.22" X="0.317976" width="0.22" angle="0" type="BowlingBall" Y="2.68477"/>
             <object height="1.25695" X="0.154449" width="0.106563" angle="0" type="Wall" Y="2.23304"/>
-            <object height="0.22" X="0.251235" width="0.22" angle="0" type="PostIt" Y="0.705907">
+            <object height="0.22" X="0.251235" width="0.22" angle="0" type="PostItTutorial" Y="0.705907">
                 <property key="ZValue">1</property>
                 <property key="page1">A lot of new things are here, but they just make a huge mess.</property>
                 <property key="page2">Place your stuff at the right spots to keep things tidy.</property>

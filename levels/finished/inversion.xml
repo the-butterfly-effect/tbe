@@ -20,7 +20,7 @@
         <predefined>
             <object type="Floor" angle="0" Y="1.00951" width="1" height="0.1" X="0.572326"/>
             <object type="Floor" angle="0" Y="1.01" width="1" height="0.1" X="1.84"/>
-            <object type="PostIt" angle="0" Y="1.82715" width="0.22" height="0.22" X="1.21258">
+            <object type="PostItTutorial" angle="0" Y="1.82715" width="0.22" height="0.22" X="1.21258">
                 <property key="ZValue">1</property>
                 <property key="page1">The wooden bar in the center is screwed on tightly and rotates around its own axis.</property>
                 <property key="page2">If you push the upper end towards one direction, the lower end will go the other way.</property>

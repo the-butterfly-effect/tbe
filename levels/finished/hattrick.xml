@@ -58,7 +58,7 @@
             <object Y="0.144" X="6.582" width="0.697" type="Floor" height="0.213" angle="0.000"/>
             <object Y="0.661" X="0.607" width="0.400" type="QuarterArc40" height="0.400" angle="1.594"/>
             <object Y="2.410" X="5.776" width="1.022" type="LeftRamp" height="0.612" angle="0.000"/>
-            <object Y="2.056" X="8.826" width="0.220" type="PostIt" height="0.220" angle="0.000">
+            <object Y="2.056" X="8.826" width="0.220" type="PostItHint" height="0.220" angle="0.000">
                 <property key="ZValue">1</property>
                 <property key="page1">This looks like a very unusal way to play soccer. But yet it is not very different from it.</property>
                 <property key="page2">I think &lt;i&gt;watching&lt;/i&gt; soccer is kind of boring: It just goes back and forth all the time.</property>
