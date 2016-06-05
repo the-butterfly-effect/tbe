@@ -173,7 +173,7 @@ const QString DetonatorBox::getToolTip ( ) const
                                 "It triggers dynamite remotely if the handle is pushed.\n");
     QString part2;
     if (getCurrentPhoneNumber() == getEmptyString())
-        part2 = QObject::tr("This one doesn't make any calls yet,\nselect a phone number!");
+        part2 = QObject::tr("This one doesn’t make any calls yet,\nselect a phone number!");
     else
         //: Translators: The %1 will be replaced by a phone number.
         part2 = QObject::tr("This one calls %1.").arg(getCurrentPhoneNumber());
@@ -451,10 +451,10 @@ const QString Dynamite::getToolTip ( ) const
 {
     if (getID().isNull() || getID().isEmpty()) {
         //: Translators: “\n” means “newline”, keep it.
-        return QObject::tr("It's dynamite attached to a cell phone.\nThis cell phone doesn't take any calls, however.");
+        return QObject::tr("It’s dynamite attached to a cell phone.\nThis cell phone doesn’t take any calls, however.");
     } else {
         //: Translators: “\n” means “newline”, keep it. “%1” will be replaced by the phone number
-        return QObject::tr("It's dynamite attached to a cell phone, ready to be\nremotely triggered by a detonator box.\nDial %1 to make the dynamite go boom.").arg(
+        return QObject::tr("It’s dynamite attached to a cell phone, ready to be\nremotely triggered by a detonator box.\nDial %1 to make the dynamite go boom.").arg(
                    getID());
     }
 }

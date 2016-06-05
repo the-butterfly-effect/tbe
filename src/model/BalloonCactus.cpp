@@ -346,7 +346,7 @@ static BedOfNailsObjectFactory theBedOfNailsObjectFactory;
 
 
 BedOfNails::BedOfNails()
-    : PolyObject(QObject::tr("Bed of nails"),
+    : PolyObject(QObject::tr("Bed of Nails"),
                  QObject::tr("A wooden board attached to the scene.\nIt has many sharp nails on one side."),
                  "BedOfNails",
                  // first the bar:
@@ -421,8 +421,8 @@ public:
 static CircularSawObjectFactory theCircularSawObjectFactory;
 
 CircularSaw::CircularSaw()
-    : CircleObject(QObject::tr("Circular saw"),
-                   QObject::tr("A rotating disc with sharp teeth."),
+    : CircleObject(QObject::tr("Circular Saw"),
+                   QObject::tr("A light rotating disc with sharp teeth,\ndangerous for balloons and penguins alike."),
                    "CircularSaw",
                    CIRCRADIUS, CIRCMASS, 0.1)
 {

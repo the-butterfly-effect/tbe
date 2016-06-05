@@ -40,7 +40,7 @@ int Pingus::theAliveCount = 0;
 
 Pingus::Pingus(const QString &anIconName)
     : CircleObject(QObject::tr("Penguin"),
-                   QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can't take much abuse."),
+                   QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can’t take much abuse."),
                    "",
                    PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING), theAnimationFrameIndex(0)
 {
