@@ -266,6 +266,15 @@ PolyObject::PolyObject( const QString &aDisplayName,
     float myFriction = 0.0;
     if(!theProps.property2Float(Property::FRICTION_STRING, &myFriction))
         theProps.setDefaultPropertiesString(Property::FRICTION_STRING + QString(":/"));
+
+    // Make mass-related attributes for the generic object since those are hidden otherwise
+    if(aDisplayName == DEFAULT_POLYOBJECT_NAME)
+    {
+        theProps.setDefaultPropertiesString(
+            Property::MASS_STRING + QString(":/") +
+            Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+            Property::PIVOTPOINT_STRING + QString(":/"));
+    }
 }
 
 
