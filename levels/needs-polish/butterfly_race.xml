@@ -25,23 +25,23 @@
         <toolboxitem count="1">
             <object Y="0.000" angle="0.000" type="Hammer" />
         </toolboxitem>
-        <toolboxitem name="Large quarter arc" count="2">
+        <toolboxitem count="2">
             <object Y="0.000" angle="0.000" width="0.800" type="QuarterArc80" X="0.000" height="0.800">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Large right ramp" count="1">
+        <toolboxitem name="Large Right Ramp" count="1">
             <object Y="0.000" angle="0.000" width="0.872" type="RightRamp" X="0.000" height="0.380"/>
         </toolboxitem>
         <toolboxitem count="1">
             <object Y="0.000" angle="0.000" width="0.921" type="LeftRamp" X="0.000" height="0.148"/>
         </toolboxitem>
-        <toolboxitem name="Small quarter arc" count="2">
+        <toolboxitem count="2">
             <object Y="0.000" angle="0.000" width="0.400" type="QuarterArc40" X="0.000" height="0.400">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Small right ramp" count="1">
+        <toolboxitem name="Small Right Ramp" count="1">
             <object Y="0.000" angle="0.000" width="0.514" type="RightRamp" X="0.000" height="0.431"/>
         </toolboxitem>
     </toolbox>

@@ -19,21 +19,21 @@
         <toolboxitem count="1">
             <object width="1.000" X="0.756" Y="1.984" height="1.000" type="LeftRamp" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Long left fixed wedge">
+        <toolboxitem count="1" name="Long Left Inclined Plane">
             <object width="0.575" X="2.063" Y="1.475" height="0.186" type="LeftFixedWedge" angle="0.000"/>
         </toolboxitem>
         <toolboxitem count="1">
             <object width="0.653" X="0.303" Y="1.380" height="0.696" type="RightFixedWedge" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Short left fixed wedge">
+        <toolboxitem count="1" name="Short Left Inclined Plane">
             <object width="0.286" X="5.412" Y="0.341" height="0.311" type="LeftFixedWedge" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Small quarter arc">
+        <toolboxitem count="1" name="Small Quarter Arc">
             <object width="0.461" X="1.080" Y="0.736" height="0.404" type="QuarterArc80">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Very small quarter arc">
+        <toolboxitem count="1" name="Very Small Quarter Arc">
             <object width="0.356" X="2.700" Y="1.707" height="0.276" type="QuarterArc80">
                 <property key="Rotatable">true</property>
             </object>

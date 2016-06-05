@@ -11,7 +11,7 @@
         <toolboxitem count="2">
             <object height="0.36" width="0.27" type="Balloon" angle="0" X="0" Y="0"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Birch block">
+        <toolboxitem count="2" name="Birch Block">
             <object height="0.2" width="0.28" type="BirchBar" angle="0" X="0" Y="0">
                 <property key="Mass">0.2</property>
                 <tooltip>A small movable block out of birch wood,&lt;br&gt;it’s a bit lighter than a regular birch wood beam.</tooltip>

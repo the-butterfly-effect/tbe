@@ -27,10 +27,10 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp">
+        <toolboxitem count="1">
             <object width="0.93" X="4.781" Y="0.788" height="0.66" type="RightRamp" angle="0"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Wooden block">
+        <toolboxitem count="1" name="Wooden Block">
             <object width="0.107" X="1.376" Y="1.069" height="0.100" type="Floor" angle="0.000">
                 <tooltip>A small immovable obstacle.</tooltip>
             </object>

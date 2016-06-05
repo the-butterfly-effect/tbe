@@ -13,17 +13,17 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Large quarter arc (left)" count="1">
+        <toolboxitem name="Left Large Quarter Arc" count="1">
             <object Y="0.000" width="0.538" height="1.225" type="QuarterArc80" angle="0.000" X="0.000">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Large quarter arc (right)" count="1">
+        <toolboxitem name="Right Large Quarter Arc" count="1">
             <object Y="0.000" width="0.843" height="0.556" type="QuarterArc80" angle="0.000" X="0.000">
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem name="Small quarter arc" count="1">
+        <toolboxitem count="1">
             <object Y="0.000" width="0.379" height="0.858" type="QuarterArc40" angle="0.000" X="0.000">
                 <property key="Rotatable">true</property>
             </object>

@@ -11,7 +11,7 @@
         <toolboxitem count="1">
             <object width="0.380" X="0.555" Y="2.466" height="0.380" type="CircularSaw" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Left birch wedge">
+        <toolboxitem count="1">
             <object width="0.400" height="0.200" type="LeftWedge">
                 <property key="Mass">0.6</property>
             </object>

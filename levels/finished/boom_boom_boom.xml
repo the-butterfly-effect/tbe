@@ -24,10 +24,10 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="2" name="Right ramp (large)">
+        <toolboxitem count="2" name="Large Right Ramp">
             <object type="RightRamp" angle="0" Y="5.15587" X="10.1977" height="0.705502" width="0.848975"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Right ramp (small)">
+        <toolboxitem count="1" name="Small Right Ramp">
             <object type="RightRamp" angle="0" Y="3.69093" X="10.2846" height="0.297735" width="0.448759"/>
         </toolboxitem>
         <toolboxitem count="2">
