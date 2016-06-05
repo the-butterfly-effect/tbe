@@ -145,7 +145,7 @@ static AbstractPolyObjectFactory theRightFixedWedgeFactory(
     "RightFixedWedge",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Inclined Plane"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "It’s a fixed obstacle with a tilted surface.\nThe left is higher than the right, so things slide to the right."),
+                      "It’s a fixed obstacle with a tilted surface.\nThe left is lower than the right, so things slide to the left."),
     "usedwood-wedge-right",
     "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 0.0, 0.1 );
