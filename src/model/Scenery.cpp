@@ -48,6 +48,8 @@ Scenery::Scenery( ) : AbstractObject()
         QString(":/-") + Property::FRICTION_STRING    +
         QString(":/-") + Property::PIVOTPOINT_STRING  +
         QString(":/-") + Property::RESIZABLE_STRING   +
+        QString(":/-") + Property::TRANSLATIONGUIDE_STRING   +
+        QString(":/-") + Property::NOCOLLISION_STRING   +
         QString(":/-") + Property::ROTATABLE_STRING   +
         QString(":/")  + Property::ZVALUE_STRING + ":0.1/" );
 

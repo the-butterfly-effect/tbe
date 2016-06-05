@@ -67,18 +67,24 @@ AbstractObject::AbstractObject(const QString &aTooltip,
         Property::IMAGE_NAME_STRING + QString(":%1/").arg(aImageName) +
         Property::BOUNCINESS_STRING + QString(":%1/").arg(theBounciness) +
         Property::NOCOLLISION_STRING + QString(":/") +
-        Property::PIVOTPOINT_STRING + QString(":/") +
         Property::ROTATABLE_STRING + QString(":false/") +
-        Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+        Property::RESIZABLE_STRING + QString(":none/") +
         Property::ZVALUE_STRING + QString(":2.0/") );
-    // and overrule the default props set above if needed...
-    theProps.setDefaultPropertiesString(aPropertiesText);
 
     if (aMass > 0.001)
         theProps.setDefaultPropertiesString(
-            QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
+            QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)) +
+            QString("%1:/").arg(Property::PIVOTPOINT_STRING) +
+            QString("%1:/").arg(Property::TRANSLATIONGUIDE_STRING));
     else
+    {
         theProps.removeProperty(Property::MASS_STRING);
+        theProps.removeProperty(Property::PIVOTPOINT_STRING);
+        theProps.removeProperty(Property::TRANSLATIONGUIDE_STRING);
+    }
+
+    // and overrule the default props set above if needed...
+    theProps.setDefaultPropertiesString(aPropertiesText);
 }
 
 AbstractObject::~AbstractObject ( )

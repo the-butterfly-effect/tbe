@@ -52,6 +52,12 @@ Link::Link(void)
         Property::OBJECT2_STRING + QString(":/") +
         Property::OVERLAP_STRING + QString(":10/") +
         "-" + Property::MASS_STRING + ":/" +
+        "-" + Property::BOUNCINESS_STRING + ":/" +
+        "-" + Property::PIVOTPOINT_STRING + ":/" +
+        "-" + Property::ROTATABLE_STRING + ":/" +
+        "-" + Property::RESIZABLE_STRING + ":/" +
+        "-" + Property::TRANSLATIONGUIDE_STRING + ":/" +
+        "-" + Property::NOCOLLISION_STRING + ":/" +
         Property::ZVALUE_STRING + QString(":20.0/"));
 
 }

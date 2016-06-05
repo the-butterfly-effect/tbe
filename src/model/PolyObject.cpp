@@ -260,9 +260,12 @@ PolyObject::PolyObject( const QString &aDisplayName,
     DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
     theToolTip = aTooltip;
     theProps.setDefaultPropertiesString(
-        Property::FRICTION_STRING + QString(":/") +
         Property::POLYGONS_STRING + QString(":") + anOutline + QString("/") +
         aDefaultPropertiesString + QString("/") );
+
+    float myFriction = 0.0;
+    if(!theProps.property2Float(Property::FRICTION_STRING, &myFriction))
+        theProps.setDefaultPropertiesString(Property::FRICTION_STRING + QString(":/"));
 }
 
 

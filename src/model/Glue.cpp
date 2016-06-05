@@ -53,7 +53,13 @@ Glue::Glue() : AbstractJoint()
         Property::OBJECT1_STRING + QString(":/") +
         Property::OBJECT2_STRING + QString(":/") +
         Property::ZVALUE_STRING + QString(":5.0/") +
-        "-" + Property::MASS_STRING + ":/" );
+        "-" + Property::MASS_STRING + ":/"
+        "-" + Property::NOCOLLISION_STRING + ":/"
+        "-" + Property::PIVOTPOINT_STRING + ":/"
+        "-" + Property::ROTATABLE_STRING + ":/"
+        "-" + Property::RESIZABLE_STRING + ":/"
+        "-" + Property::TRANSLATIONGUIDE_STRING + ":/"
+        "-" + Property::BOUNCINESS_STRING + ":/" );
     DEBUG5("Glue::Glue() end");
 }
 

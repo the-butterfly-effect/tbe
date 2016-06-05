@@ -92,6 +92,8 @@ CircleObject::CircleObject (const QString &aName,
 {
     DEBUG5ENTRY;
     createBallShapeFixture(aRadius, aMass);
+    theProps.setDefaultPropertiesString(
+        QString("%1:%2/").arg(Property::RADIUS_STRING, QString::number(aRadius)));
 }
 
 CircleObject::~CircleObject ( ) { }
