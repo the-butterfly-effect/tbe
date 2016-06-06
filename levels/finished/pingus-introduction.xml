@@ -8,10 +8,10 @@
         <date>10.01.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="High wall">
+        <toolboxitem count="1" name="High Wall">
             <object type="Wall" width="0.138" Y="0.000" angle="0.000" X="0.000" height="1.028"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Low wall">
+        <toolboxitem count="2" name="Low Wall">
             <object type="Wall" width="0.138" Y="0.000" angle="0.000" X="0.000" height="0.514"/>
         </toolboxitem>
         <toolboxitem count="1">

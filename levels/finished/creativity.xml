@@ -31,7 +31,7 @@
         <toolboxitem count="1">
             <object Y="0" type="Floor" height="0.1" angle="0" width="1" X="0"/>
         </toolboxitem>
-        <toolboxitem name="Left birch wedge" count="1">
+        <toolboxitem count="1">
             <object Y="0" type="LeftWedge" height="0.5" angle="0" width="0.5" X="0"/>
         </toolboxitem>
         <toolboxitem count="1">

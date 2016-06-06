@@ -8,22 +8,22 @@
         <date>05.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem count="1" name="Rotating bar (long)">
+        <toolboxitem count="1" name="Long Rotating Bar">
             <object width="2.19345" height="0.1" Y="0" angle="-1.57" type="RotatingBar" X="0" />
         </toolboxitem>
-        <toolboxitem count="4" name="Rotating bar (short)">
+        <toolboxitem count="4" name="Short Rotating Bar">
             <object width="1.05327" height="0.1" Y="0" angle="-1.57" type="RotatingBar" X="0" />
         </toolboxitem>
         <toolboxitem count="1">
             <object width="0.166" height="0.5" Y="0" angle="-3.16517" type="ColaMintBottle" X="0"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Left fixed wedge (large)">
+        <toolboxitem count="1" name="Large Left Inclined Plane">
             <object width="1.00755" height="0.546925" Y="4.52859" angle="0" type="LeftFixedWedge" X="12.061"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Left fixed wedge (medium)">
+        <toolboxitem count="2" name="Medium Left Inclined Plane">
             <object width="0.879181" height="0.350593" Y="0.632157" angle="0" type="LeftFixedWedge" X="12.5858"/>
         </toolboxitem>
-        <toolboxitem count="1" name="Left fixed wedge (small)">
+        <toolboxitem count="1" name="Small Left Inclined Plane">
             <object width="0.660195" height="0.26753" Y="1.21144" angle="0" type="LeftFixedWedge" X="12.6138"/>
         </toolboxitem>
         <toolboxitem count="4">
@@ -31,13 +31,13 @@
                 <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
-        <toolboxitem count="1" name="Right fixed wedge (large)">
+        <toolboxitem count="1" name="Large Right Inclined Plane">
             <object width="1.0151" height="0.290184" Y="0.188241" angle="0" type="RightFixedWedge" X="12.6553"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Right fixed wedge (medium)">
+        <toolboxitem count="2" name="Medium Right Inclined Plane">
             <object width="0.773462" height="0.20712" Y="0.645094" angle="0" type="RightFixedWedge" X="11.2433"/>
         </toolboxitem>
-        <toolboxitem count="3" name="Right fixed wedge (small)">
+        <toolboxitem count="3" name="Small Right Inclined Plane">
             <object width="0.56" height="0.09" Y="0" angle="0" type="RightFixedWedge" X="0"/>
         </toolboxitem>
         <toolboxitem count="1">

@@ -82,7 +82,7 @@ static AbstractPolyObjectFactory theLeftRampFactory(
     "LeftRamp",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Ramp"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is a ramp. The left is lower than the right, so things slide to the left."),
+                      "This is a ramp.\nThe left is lower than the right, so things slide to the left."),
     "LeftRamp",
     "(-0.5,-0.46)=(-0.5,-0.5)=(-0.3,-0.5)=(0.4,0.2)=(0.5,0.4)=(0.5,0.5)",
     1.0, 1.0, 0.0, 0.2 );
@@ -91,7 +91,7 @@ static AbstractPolyObjectFactory theRightRampFactory(
     "RightRamp",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Ramp"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is a ramp. The left is higher than the right, so things slide to the right."),
+                      "This is a ramp.\nThe left is higher than the right, so things slide to the right."),
     "RightRamp",
     "(-0.5,0.5)=(-0.5,0.4)=(-0.4,0.2)=(0.3,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 0.0, 0.2 );
@@ -100,7 +100,7 @@ static AbstractPolyObjectFactory theLeftWedgeFactory(
     "LeftWedge",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Birch Wedge"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is a movable birch wedge.\nThe left is lower than the right, so things slide to the left."),
+                      "Birch wedges can be moved and are rather heavy.\nThe left is lower than the right, so things slide to the left."),
     "birch-wedge-left",
     "(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
     1.0, 1.0, 2.0, 0.2 );
@@ -109,7 +109,7 @@ static AbstractPolyObjectFactory theRightWedgeFactory(
     "RightWedge",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Birch Wedge"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is a movable birch wedge.\nThe left is higher than the right, so things slide to the right."),
+                      "Birch wedges can be moved and are rather heavy.\nThe left is higher than the right, so things slide to the right."),
     "birch-wedge-right",
     "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 2.0, 0.2 );
@@ -134,18 +134,18 @@ static AbstractPolyObjectFactory theRightStyrofoamWedgeFactory(
 
 static AbstractPolyObjectFactory theLeftFixedWedgeFactory(
     "LeftFixedWedge",
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Fixed Wedge"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Left Inclined Plane"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is an immovable wedge.\nThe left is lower than the right, so things slide to the left."),
+                      "It’s a fixed obstacle with a tilted surface.\nThe left is lower than the right, so things slide to the left."),
     "usedwood-wedge-left",
     "(-0.5,-0.46)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,0.5)",
     1.0, 1.0, 0.0, 0.1 );
 
 static AbstractPolyObjectFactory theRightFixedWedgeFactory(
     "RightFixedWedge",
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Fixed Wedge"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Right Inclined Plane"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This is an immovable wedge.\nThe left is higher than the right, so things slide to the right."),
+                      "It’s a fixed obstacle with a tilted surface.\nThe left is higher than the right, so things slide to the right."),
     "usedwood-wedge-right",
     "(-0.5,0.5)=(-0.5,-0.5)=(0.5,-0.5)=(0.5,-0.46)",
     1.0, 1.0, 0.0, 0.1 );
@@ -154,9 +154,9 @@ static AbstractPolyObjectFactory theRightFixedWedgeFactory(
 // on both the inside and the outside - you can use both if you want :-)
 static AbstractPolyObjectFactory the40QuarterArcFactory(
     "QuarterArc40",
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Small"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Small Quarter Arc"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This quarter arc is attached to the scene.\nIt can't be moved, penetrated or destroyed."),
+                      "A quarter arc is a fixed obstacle\nand useful to divert things."),
     "QuarterArc",
     "(0.100,-.200)=(0.200,-.200)=(0.180,-.076)=(0.085,-.107);"
     "(0.085,-.107)=(0.180,-.076)=(0.124,0.035)=(0.043,-.024);"
@@ -169,9 +169,9 @@ static AbstractPolyObjectFactory the40QuarterArcFactory(
 // on both the inside and the outside - you can use both if you want :-)
 static AbstractPolyObjectFactory the80QuarterArcFactory(
     "QuarterArc80",
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Quarter Arc Large"),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Large Quarter Arc"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "This quarter arc is attached to the scene.\nIt can't be moved, penetrated or destroyed."),
+                      "A quarter arc is a fixed obstacle\nand useful to divert things."),
     "QuarterArc80",
     "( 0.300,-0.400)=( 0.400,-0.400)=( 0.388,-0.261)=( 0.289,-0.278);"
     "( 0.289,-0.278)=( 0.388,-0.261)=( 0.352,-0.126)=( 0.258,-0.161);"
@@ -220,7 +220,7 @@ static AbstractPolyObjectFactory theSmallSeesawFactory(
     "SeesawSmall",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Small Seesaw"),
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
-                      "One usually puts toddlers on a seesaw, but they're in short supply."),
+                      "If this seesaw is pushed on one side,\nthe other side moves in the other direction."),
     "seesaw-tiny",
     "(-1.25,0.15)=(-1.25,0.01)=(1.25,0.01)=(1.25,0.15);"
     "(-1.25,0.01)=(-1.25,-0.15)=(-1.18,-0.15)=(-0.85,0.01);"

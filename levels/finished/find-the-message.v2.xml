@@ -14,7 +14,7 @@
         <toolboxitem count="1">
             <object width="0.400" X="2.399" Y="2.665" height="0.200" type="Spring" angle="0.000"/>
         </toolboxitem>
-        <toolboxitem count="2" name="Birch wedge">
+        <toolboxitem count="2" name="Birch Wedge">
             <object width="0.350" height="0.350" type="RightWedge">
                 <tooltip>This is a movable birch wedge.</tooltip>
                 <property key="Rotatable">true</property>

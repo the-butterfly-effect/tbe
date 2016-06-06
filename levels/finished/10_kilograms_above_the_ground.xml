@@ -16,7 +16,7 @@
         <toolboxitem count="1">
             <object height="0.34" type="BowlingPin" width="0.12" angle="0" Y="1.44731" X="2.45699"/>
         </toolboxitem>
-        <toolboxitem name="Wood triangle" count="1">
+        <toolboxitem name="Wooden Triangle" count="1">
             <object height="0.22" type="LeftFixedWedge" width="0.22" angle="-3.91635" Y="0.987901" X="1.49779">
                 <tooltip>This piece of wood has a triangular shape with one tip pointing upwards. It doesn’t move.</tooltip>
             </object>

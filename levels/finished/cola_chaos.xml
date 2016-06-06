@@ -8,10 +8,10 @@
         <date>04.02.16</date>
     </levelinfo>
     <toolbox>
-        <toolboxitem name="Cola+mint bottle (right)" count="1">
+        <toolboxitem name="Right Cola+Mint Bottle" count="1">
             <object height="0.5" width="0.166" Y="0" X="0" type="ColaMintBottle" angle="4.72"/>
         </toolboxitem>
-        <toolboxitem name="Cola+mint bottle (left)" count="1">
+        <toolboxitem name="Left Cola+Mint Bottle" count="1">
             <object height="0.5" width="0.166" Y="0" X="0" type="ColaMintBottle" angle="1.577"/>
         </toolboxitem>
         <toolboxitem count="5">

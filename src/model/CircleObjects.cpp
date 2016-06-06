@@ -27,14 +27,13 @@
 // the non-uniform weight distribution in the ball - we assume it to be uniform
 static CircleObjectFactory theBBFactory("BowlingBall",
                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Bowling Ball"),
-                                        QT_TRANSLATE_NOOP("CircleObjectFactory",
-                                                          "Your average bowling ball: heavy, round and willing to roll."),
+                                        QT_TRANSLATE_NOOP("CircleObjectFactory", "A bowling ball is very heavy and doesn’t bounce much."),
                                         "BowlingBall", 0.11, 6.0, 0.1 );
 
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static CircleObjectFactory theVBFactory("VolleyBall",
                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Volleyball"),
-                                        QT_TRANSLATE_NOOP("CircleObjectFactory", "A volleyball—you know: light, soft and very bouncy."),
+                                        QT_TRANSLATE_NOOP("CircleObjectFactory", "A volleyball is light and very bouncy."),
                                         "VolleyBall", 0.105, 0.280, 0.65);
 
 
@@ -43,7 +42,7 @@ static CircleObjectFactory theVBFactory("VolleyBall",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static CircleObjectFactory theTBFactory("TennisBall",
                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Tennis Ball"),
-                                        QT_TRANSLATE_NOOP("CircleObjectFactory", "A tennis ball is small, fuzzy and bouncy."),
+                                        QT_TRANSLATE_NOOP("CircleObjectFactory", "A tennis ball is very light and pretty bouncy."),
                                         "TennisBall", 0.034, 0.058, 0.56);
 
 // the official standards say that a soccer is 68-70cm circumference and weighs 410-450 grams
@@ -51,16 +50,15 @@ static CircleObjectFactory theTBFactory("TennisBall",
 // we are lazy and do not model the air, we assume it to be uniform in mass
 static CircleObjectFactory theSoccerFactory("SoccerBall",
                                             QT_TRANSLATE_NOOP("CircleObjectFactory", "Soccer Ball"),
-                                            QT_TRANSLATE_NOOP("CircleObjectFactory", "A soccer ball is large and bouncy."),
+                                            QT_TRANSLATE_NOOP("CircleObjectFactory", "A soccer ball is of medium weight and pretty bouncy."),
                                             "SoccerBall", 0.110, 0.430, 0.56);
 
 // there is not much of official standards for a petanque ball, but
 // thanks to http://en.wikipedia.org/wiki/Petanque we at least know:
 // diameter between 70.5 and 80mm, weight between 650 and 800 grams.
 static CircleObjectFactory thePetanqueFactory("PetanqueBoule",
-                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "Pétanque Boule"),
-                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory",
-                                                                     "A pétanque ball is made of metal and is quite heavy."),
+                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "Pétanque Ball"),
+                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "A pétanque ball is quite heavy and doesn’t bounce much."),
                                               "PetanqueBoule", 0.038, 0.700, 0.1);
 
 // size based on old version of picnic-2 level
@@ -74,7 +72,7 @@ static CircleObjectFactory thePegMetalFactory("PegMetal",
 static CircleObjectFactory thePegWoodFactory("PegWood",
                                          QT_TRANSLATE_NOOP("CircleObjectFactory", "Wooden Peg"),
                                          QT_TRANSLATE_NOOP("CircleObjectFactory",
-                                                           "A round obstacle, pinned to the sky.\nThings will bounce off weakly."),
+                                                           "A round obstacle, pinned to the sky.\nThings won’t bounce off much."),
                                          "wood-pin", 0.07, 0.0, 0.1);
 
 // Constructors/Destructors

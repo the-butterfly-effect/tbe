@@ -140,7 +140,7 @@ void PivotPoint::initPivotAttributes ( )
     theSecondPtr = nullptr;
     areObjectsColliding = false;
 
-    theToolTip = QObject::tr("Objects rotate around this point");
+    theToolTip = QObject::tr("Objects rotate around this point.");
     theProps.setDefaultPropertiesString(
         Property::OBJECT1_STRING + QString(":/") +
         Property::OBJECT2_STRING + QString(":/") +
