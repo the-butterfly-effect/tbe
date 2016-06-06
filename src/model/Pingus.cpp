@@ -588,6 +588,7 @@ PingusExit::PingusExit()
         Property::IMAGE_NAME_STRING + QString(":opendoor/") +
         Property::RESIZABLE_STRING + QString(":none/") +
         QString("-") + Property::BOUNCINESS_STRING + QString(":/") +
+        QString("-") + Property::FRICTION_STRING + QString(":/") +
         QString("-") + Property::NOCOLLISION_STRING + QString(":/") +
         QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
         QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );

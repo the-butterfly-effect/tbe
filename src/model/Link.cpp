@@ -53,6 +53,7 @@ Link::Link(void)
         Property::OVERLAP_STRING + QString(":10/") +
         "-" + Property::MASS_STRING + ":/" +
         "-" + Property::BOUNCINESS_STRING + ":/" +
+        "-" + Property::FRICTION_STRING + ":/" +
         "-" + Property::PIVOTPOINT_STRING + ":/" +
         "-" + Property::ROTATABLE_STRING + ":/" +
         "-" + Property::RESIZABLE_STRING + ":/" +

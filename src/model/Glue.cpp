@@ -54,6 +54,7 @@ Glue::Glue() : AbstractJoint()
         Property::OBJECT2_STRING + QString(":/") +
         Property::ZVALUE_STRING + QString(":5.0/") +
         "-" + Property::MASS_STRING + ":/"
+        "-" + Property::FRICTION_STRING + ":/" +
         "-" + Property::NOCOLLISION_STRING + ":/"
         "-" + Property::PIVOTPOINT_STRING + ":/"
         "-" + Property::ROTATABLE_STRING + ":/"

@@ -263,9 +263,6 @@ PolyObject::PolyObject( const QString &aDisplayName,
         Property::POLYGONS_STRING + QString(":") + anOutline + QString("/") +
         aDefaultPropertiesString + QString("/") );
 
-    if(theProps.doesPropertyExists(Property::FRICTION_STRING))
-        theProps.setDefaultPropertiesString(Property::FRICTION_STRING + QString(":/"));
-
     // Make mass-related attributes for the generic object since those are hidden otherwise
     if(aDisplayName == DEFAULT_POLYOBJECT_NAME)
     {

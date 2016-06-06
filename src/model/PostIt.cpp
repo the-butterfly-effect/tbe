@@ -58,6 +58,7 @@ PostIt::PostIt(const char *aDisplayName, const char *aTooltip, const QString &an
         Property::IMAGE_NAME_STRING + QString(":%1/").arg(theImageName) +
         QString("page1:/page2:/page3:/page4:/page5:/page6:/page7:/page8:/page9:/") +
         "-" + Property::BOUNCINESS_STRING + QString(":/") +
+        "-" + Property::FRICTION_STRING + QString(":/") +
         "-" + Property::NOCOLLISION_STRING + QString(":/") +
         "-" + Property::ROTATABLE_STRING + QString(":/") +
         "-" + Property::RESIZABLE_STRING + QString(":/") +

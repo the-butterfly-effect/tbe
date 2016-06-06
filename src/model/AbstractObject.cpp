@@ -66,6 +66,7 @@ AbstractObject::AbstractObject(const QString &aTooltip,
     theProps.setDefaultPropertiesString(
         Property::IMAGE_NAME_STRING + QString(":%1/").arg(aImageName) +
         Property::BOUNCINESS_STRING + QString(":%1/").arg(theBounciness) +
+        Property::FRICTION_STRING + QString(":/") +
         Property::NOCOLLISION_STRING + QString(":/") +
         Property::ROTATABLE_STRING + QString(":false/") +
         Property::RESIZABLE_STRING + QString(":none/") +
