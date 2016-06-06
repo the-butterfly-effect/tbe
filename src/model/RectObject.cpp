@@ -190,8 +190,7 @@ b2BodyType RectObject::getObjectType(void) const
 
 void RectObject::initRectAttributes ( )
 {
-    float myFriction = 0.0;
-    if(!theProps.property2Float(Property::FRICTION_STRING, &myFriction))
+    if(theProps.doesPropertyExists(Property::FRICTION_STRING))
         theProps.setDefaultPropertiesString(Property::FRICTION_STRING + QString(":/"));
 }
 
