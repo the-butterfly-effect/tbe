@@ -16,6 +16,7 @@
             <object X="7.38915" Y="4.60579" width="1" angle="0" type="BirchBar" height="0.1"/>
             <object X="1.0046" Y="1.24176" width="0.22" angle="0" type="BowlingBall" height="0.22"/>
             <object X="1.40419" Y="4.51088" width="0.15" angle="0" type="Butterfly" height="0.228027"/>
+            <object X="2.853" Y="4.283" angle="0" type="Daffodil" />
             <object X="2.70314" Y="1.66096" width="0.25" angle="0" type="Cactus" height="0.4"/>
             <object X="2.74077" Y="0.890716" width="0.9" angle="0" type="CardboardBox" height="0.78809"/>
             <object X="2.72636" Y="0.411624" width="1" angle="0" type="Floor" height="0.1"/>
@@ -36,7 +37,7 @@
             <object X="2.68" Y="0.152" width="0.28" angle="0" type="PingusSleeping" height="0.28"/>
             <object X="2.357" Y="0.134" width="0.28" angle="0" type="PingusWalkLeft" height="0.28"/>
             <object X="3.01789" Y="0.151991" width="0.28" angle="0" type="PingusWalkRight" height="0.28"/>
-            <object X="3.83615" Y="0.503309" width="1" angle="0" type="PingusExit" height="1"/>
+            <object X="3.829" Y="0.361" angle="0" type="PingusExit"/>
             <object X="0.663719" Y="4.04533" width="0.22" angle="0" type="PostItHint" height="0.22"/>
             <object X="0.963719" Y="4.04533" width="0.22" angle="0" type="PostItTutorial" height="0.22"/>
             <object X="1.363719" Y="4.04533" width="0.22" angle="0" type="PostItMisc" height="0.22"/>
