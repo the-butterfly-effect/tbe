@@ -270,8 +270,11 @@ int main(int argc, char *argv[])
         DEBUG3("  Start file name is: '%s'", ASCII(theStartFileName));
     }
 
-    QSettings mySettings;
-    DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
+    // scope limiting
+    {
+        QSettings mySettings;
+        DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
+    }
 
     if (theIsLevelCreator)
     {

@@ -64,8 +64,31 @@ public:
     // Public accessor methods
     //
 
+    // Subsequent statuses are stronger and when set, replace a lower one.
+    enum LevelStatus {
+        FRESH     = 0,  // Level hasn't been opened yet
+        PLAYED    = 5,  // Level has been opened, but not skipped or won
+        SKIPPED   = 6,  // Level has been played and skipped
+        COMPLETED = 9   // Level has been won
+    };
+
+    /// @returns the LevelStatus of the current level.
+    static LevelStatus getLevelStatus();
+
+    /// @returns the LevelStatus of the named level.
+    static LevelStatus getLevelStatus(const QString &aLevelName);
+
+    /// Sets the LevelStatus for the current level.
+    /// @note: will not overwrite an existing higer status.
+    static void setLevelStatus(LevelStatus aNewLevelStatus);
+
+    /// Sets the LevelStatus for the current level.
+    /// @note: will not overwrite an existing higer status.
+    static void setLevelStatus(const QString& aLevelName,
+                               LevelStatus aNewLevelStatus);
+
     /// @returns the Level's title (NOT translated).
-    virtual QString getName ( ) const
+    QString getName ( ) const
     {
         return theLevelName;
     }
@@ -102,8 +125,8 @@ public:
     /// @note that the hint does not change owners: still belongs to the Level
     Hint *getHint(int anIndex);
 
-    /// The File name of the Level is used in recording winning the level
-    /// @returns the name of the file that describes the current level
+    /// The File name of the Level is used in recording winning the level.
+    /// @returns the FULL PATH of the file that describes the current level.
     static QString getLevelFileName(void);
 
     /// sets the name of the file that describes the current level
