@@ -137,6 +137,12 @@ RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_
     // because this object is very flexible and many parameters can be set through
     // the Properties, do not assume too much here...
 
+    // Make mass-related attributes for the generic object since those are hidden otherwise
+    theProps.setDefaultPropertiesString(
+        Property::MASS_STRING + QString(":/") +
+        Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+        Property::PIVOTPOINT_STRING + QString(":/"));
+
     // also: keep in mind that child objects may set some things automatically
     initRectAttributes();
 }
@@ -184,9 +190,6 @@ b2BodyType RectObject::getObjectType(void) const
 
 void RectObject::initRectAttributes ( )
 {
-    theProps.setDefaultPropertiesString(
-        Property::FRICTION_STRING    + QString(":/") +
-        Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" );
 }
 
 

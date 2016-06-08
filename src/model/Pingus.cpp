@@ -44,6 +44,15 @@ Pingus::Pingus(const QString &anIconName)
                    "",
                    PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING), theAnimationFrameIndex(0)
 {
+    theProps.setDefaultPropertiesString(
+        Property::FRICTION_STRING + QString(":/") +
+        QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
+        QString("-") + Property::FRICTION_STRING + QString(":/") +
+        QString("-") + Property::RADIUS_STRING + QString(":/") +
+        QString("-") + Property::ROTATABLE_STRING + QString(":false/") +
+        QString("-") + Property::RESIZABLE_STRING + QString(":false/") +
+        QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
+        QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );
     updateViewPingus();
 }
 
@@ -579,6 +588,7 @@ PingusExit::PingusExit()
         Property::IMAGE_NAME_STRING + QString(":opendoor/") +
         Property::RESIZABLE_STRING + QString(":none/") +
         QString("-") + Property::BOUNCINESS_STRING + QString(":/") +
+        QString("-") + Property::FRICTION_STRING + QString(":/") +
         QString("-") + Property::NOCOLLISION_STRING + QString(":/") +
         QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
         QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );

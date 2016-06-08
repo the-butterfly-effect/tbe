@@ -260,9 +260,17 @@ PolyObject::PolyObject( const QString &aDisplayName,
     DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
     theToolTip = aTooltip;
     theProps.setDefaultPropertiesString(
-        Property::FRICTION_STRING + QString(":/") +
         Property::POLYGONS_STRING + QString(":") + anOutline + QString("/") +
         aDefaultPropertiesString + QString("/") );
+
+    // Make mass-related attributes for the generic object since those are hidden otherwise
+    if(aDisplayName == DEFAULT_POLYOBJECT_NAME)
+    {
+        theProps.setDefaultPropertiesString(
+            Property::MASS_STRING + QString(":/") +
+            Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+            Property::PIVOTPOINT_STRING + QString(":/"));
+    }
 }
 
 
