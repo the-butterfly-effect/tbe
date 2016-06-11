@@ -35,7 +35,6 @@
 #include "World.h"
 
 #include <QMenuBar>
-#include <QSettings>
 
 static ResizingGraphicsView *theRSGVPtr = nullptr;
 
@@ -226,9 +225,7 @@ void ResizingGraphicsView::slot_levelWon(void)
     // Anti-cheat:
     // Don't label the level as complete when we're in level editor mode
     if (!theIsLevelCreator) {
-        QString myLevelFileName = Level::getLevelFileName();
-        QSettings mySettings;
-        mySettings.setValue("completed/" + myLevelFileName, "done");
+        Level::setLevelStatus(Level::COMPLETED);
     }
 
     theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);

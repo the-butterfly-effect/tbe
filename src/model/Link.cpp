@@ -52,6 +52,13 @@ Link::Link(void)
         Property::OBJECT2_STRING + QString(":/") +
         Property::OVERLAP_STRING + QString(":10/") +
         "-" + Property::MASS_STRING + ":/" +
+        "-" + Property::BOUNCINESS_STRING + ":/" +
+        "-" + Property::FRICTION_STRING + ":/" +
+        "-" + Property::PIVOTPOINT_STRING + ":/" +
+        "-" + Property::ROTATABLE_STRING + ":/" +
+        "-" + Property::RESIZABLE_STRING + ":/" +
+        "-" + Property::TRANSLATIONGUIDE_STRING + ":/" +
+        "-" + Property::NOCOLLISION_STRING + ":/" +
         Property::ZVALUE_STRING + QString(":20.0/"));
 
 }
@@ -183,15 +190,13 @@ void Link::updateViewObject(bool ) const
     Vector myV1, myV2;
     if (theFirstPtr != nullptr) {
         myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
-    }
-    else {
-        myV1 = getTempCenter() - getTheWidth() * Vector(0.5,0.);
+    } else {
+        myV1 = getTempCenter() - getTheWidth() * Vector(0.5, 0.);
     }
     if (theSecondPtr != nullptr) {
         myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
-    }
-    else {
-        myV2 = getTempCenter() + getTheWidth() * Vector(0.5,0.);
+    } else {
+        myV2 = getTempCenter() + getTheWidth() * Vector(0.5, 0.);
     }
 
     theVLPtr->setEndpoints(myV1, myV2);

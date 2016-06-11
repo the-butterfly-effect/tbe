@@ -42,8 +42,18 @@ Pingus::Pingus(const QString &anIconName)
     : CircleObject(QObject::tr("Penguin"),
                    QObject::tr("A penguin walks left or right and turns around when\nit collides with something heavy. It can push\nlight objects around. It also likes to slide down\nslopes but can’t take much abuse."),
                    "",
-                   PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING), theAnimationFrameIndex(0)
+                   PINGUS_RADIUS, PINGUS_MASS, 0.0 ), theIconName(anIconName), theState(FALLING),
+      theAnimationFrameIndex(0)
 {
+    theProps.setDefaultPropertiesString(
+        Property::FRICTION_STRING + QString(":/") +
+        QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
+        QString("-") + Property::FRICTION_STRING + QString(":/") +
+        QString("-") + Property::RADIUS_STRING + QString(":/") +
+        QString("-") + Property::ROTATABLE_STRING + QString(":false/") +
+        QString("-") + Property::RESIZABLE_STRING + QString(":false/") +
+        QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
+        QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );
     updateViewPingus();
 }
 
@@ -74,9 +84,7 @@ void Pingus::callbackStep (qreal aDeltaTime, qreal aTotalTime)
             else
                 myNewXSuggestion = WALKINGLEFT;
         }
-    }
-    else
-    {
+    } else {
         if (aTotalTime < 0.5)
             myNewXSuggestion = getStartDirection();
     }
@@ -220,7 +228,7 @@ void Pingus::callbackStepWaiting(qreal aTimeStep, qreal aTotalTime)
     if (SLEEPING == theState)
         return;
 
-    qreal aSign = (getStartDirection()==WALKINGLEFT)?-1.0:1.0;
+    qreal aSign = (getStartDirection() == WALKINGLEFT) ? -1.0 : 1.0;
 
     // If the Penguin is watching right, let's nudge him and see if it makes hime move
     if (theAnimationFrameIndex == 3) {
@@ -246,7 +254,8 @@ void Pingus::callbackStepWalking(qreal aTimeStep, qreal)
     // With the current settings it remains 0.0003 m/s below it.
     qreal myXd = theB2BodyPtr->GetLinearVelocity().x;
     Q_ASSERT (fabs(myXd) < WALKING_SPEED);
-    qreal myXImpulse = copysign(5.0 * (WALKING_SPEED - fabs(myXd)) / WALKING_SPEED, (theState==WALKINGLEFT)?-1.0:1.0);
+    qreal myXImpulse = copysign(5.0 * (WALKING_SPEED - fabs(myXd)) / WALKING_SPEED,
+                                (theState == WALKINGLEFT) ? -1.0 : 1.0);
     Vector myTotXImpulse = aTimeStep * Vector(myXImpulse, 0);
     theB2BodyPtr->ApplyLinearImpulse(
         myTotXImpulse.toB2Vec2(), getTempCenter().toB2Vec2(), true);
@@ -579,6 +588,7 @@ PingusExit::PingusExit()
         Property::IMAGE_NAME_STRING + QString(":opendoor/") +
         Property::RESIZABLE_STRING + QString(":none/") +
         QString("-") + Property::BOUNCINESS_STRING + QString(":/") +
+        QString("-") + Property::FRICTION_STRING + QString(":/") +
         QString("-") + Property::NOCOLLISION_STRING + QString(":/") +
         QString("-") + Property::PIVOTPOINT_STRING + QString(":/") +
         QString("-") + Property::TRANSLATIONGUIDE_STRING + QString(":/") );

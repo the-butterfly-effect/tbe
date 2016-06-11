@@ -32,7 +32,7 @@ class ViewLink;
 class ViewLine : public QGraphicsLineItem
 {
 public:
-    ViewLine(ViewLink* aParentPtr) : QGraphicsLineItem(nullptr), theParent(aParentPtr)
+    ViewLine(ViewLink *aParentPtr) : QGraphicsLineItem(nullptr), theParent(aParentPtr)
     {
         setFlag(QGraphicsItem::ItemIsSelectable, true);
     }
@@ -44,7 +44,7 @@ protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *anEvent) override;
 
 private:
-    ViewLink* theParent;
+    ViewLink *theParent;
 };
 
 /** class ViewLink

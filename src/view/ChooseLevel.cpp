@@ -24,7 +24,6 @@
 
 #include <QCoreApplication>
 #include <QXmlSimpleReader>
-#include <QSettings>
 #include <QTreeWidgetItemIterator>
 
 static const int  NR_COLUMN = 0;
@@ -86,10 +85,10 @@ void ChooseLevel::fillTreeWidget()
         item->setText(TITLE_COLUMN, TheGetText(myMeta.theTitle));
         item->setToolTip(TITLE_COLUMN, TheGetText(myMeta.theDescription));
         switch (myMeta.theStatus) {
-        case LevelList::LevelMetaInfo::COMPLETED:
+        case Level::COMPLETED:
             item->setText(NR_COLUMN, tr("done"));
             break;
-        case LevelList::LevelMetaInfo::SKIPPED:
+        case Level::SKIPPED:
             item->setText(NR_COLUMN, tr("skipped"));
             if (!hasSkipped) {
                 hasSkipped = true;

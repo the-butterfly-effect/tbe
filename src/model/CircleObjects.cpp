@@ -58,22 +58,23 @@ static CircleObjectFactory theSoccerFactory("SoccerBall",
 // diameter between 70.5 and 80mm, weight between 650 and 800 grams.
 static CircleObjectFactory thePetanqueFactory("PetanqueBoule",
                                               QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "Pétanque Ball"),
-                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory", "A pétanque ball is quite heavy and doesn’t bounce much."),
+                                              QT_TRANSLATE_NOOP_UTF8("CircleObjectFactory",
+                                                                     "A pétanque ball is quite heavy and doesn’t bounce much."),
                                               "PetanqueBoule", 0.038, 0.700, 0.1);
 
 // size based on old version of picnic-2 level
 static CircleObjectFactory thePegMetalFactory("PegMetal",
-                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Metal Peg"),
-                                         QT_TRANSLATE_NOOP("CircleObjectFactory",
-                                                           "A round obstacle, pinned to the sky.\nThings will bounce off heavily."),
-                                         "brass-pin", 0.07, 0.0, 0.7);
+                                              QT_TRANSLATE_NOOP("CircleObjectFactory", "Metal Peg"),
+                                              QT_TRANSLATE_NOOP("CircleObjectFactory",
+                                                                "A round obstacle, pinned to the sky.\nThings will bounce off heavily."),
+                                              "brass-pin", 0.07, 0.0, 0.7);
 
 // size based on old version of picnic-2 level
 static CircleObjectFactory thePegWoodFactory("PegWood",
-                                         QT_TRANSLATE_NOOP("CircleObjectFactory", "Wooden Peg"),
-                                         QT_TRANSLATE_NOOP("CircleObjectFactory",
-                                                           "A round obstacle, pinned to the sky.\nThings won’t bounce off much."),
-                                         "wood-pin", 0.07, 0.0, 0.1);
+                                             QT_TRANSLATE_NOOP("CircleObjectFactory", "Wooden Peg"),
+                                             QT_TRANSLATE_NOOP("CircleObjectFactory",
+                                                               "A round obstacle, pinned to the sky.\nThings won’t bounce off much."),
+                                             "wood-pin", 0.07, 0.0, 0.1);
 
 // Constructors/Destructors
 //
@@ -90,6 +91,8 @@ CircleObject::CircleObject (const QString &aName,
 {
     DEBUG5ENTRY;
     createBallShapeFixture(aRadius, aMass);
+    theProps.setDefaultPropertiesString(
+        QString("%1:%2/").arg(Property::RADIUS_STRING, QString::number(aRadius)));
 }
 
 CircleObject::~CircleObject ( ) { }

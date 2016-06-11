@@ -20,8 +20,6 @@
 #include "tbe_global.h"
 #include "tbe_paths.h"
 
-#include <qsettings.h>
-
 // TODO: get rid of!
 #include "Popup.h"
 
@@ -107,7 +105,7 @@ QString LevelList::getNextToPlayLevel()
     updateSkippedCompleted();
     // find first level that is not complete or skipped
     for (int i = 0; i < theMetaList.size(); i++) {
-        if (theMetaList.at(i).theStatus == LevelMetaInfo::FRESH)
+        if (theMetaList.at(i).theStatus == Level::FRESH)
             return theMetaList.at(i).theFileName;
     }
     return "";
@@ -164,17 +162,8 @@ bool LevelList::fatalError(const QXmlParseException &exception)
 
 void LevelList::updateSkippedCompleted()
 {
-    QSettings mySettings;
-    for (int i = 0; i < theMetaList.size(); i++) {
-        QString myLevelStatus = mySettings.value("completed/" + theMetaList.at(i).theFileName).toString();
-        theMetaList[i].theStatus = LevelMetaInfo::FRESH;
-        if (myLevelStatus.isEmpty() == false) {
-            if (myLevelStatus == "done")
-                theMetaList[i].theStatus = LevelMetaInfo::COMPLETED;
-            else if (myLevelStatus == "skipped")
-                theMetaList[i].theStatus = LevelMetaInfo::SKIPPED;
-        }
-    }
+    for (int i = 0; i < theMetaList.size(); i++)
+        theMetaList[i].theStatus = Level::getLevelStatus(theMetaList.at(i).theFileName);
 }
 
 // ###################################################

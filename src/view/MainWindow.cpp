@@ -325,11 +325,7 @@ void MainWindow::on_action_Skip_Level_triggered()
     if (theIsLevelCreator == false) {
         if (!Popup::YesNoQuestion(tr("Mark this level 'skipped' and continue with the next level?"), this))
             return;
-        QString myKey = "completed/" + Level::getLevelFileName();
-        QSettings mySettings;
-        // don't overwrite an existing value, it might be "done" already...
-        if (!mySettings.value(myKey).isValid())
-            mySettings.setValue(myKey, "skipped");
+        Level::setLevelStatus(Level::SKIPPED);
     }
     slot_actionNextLevel();
 }

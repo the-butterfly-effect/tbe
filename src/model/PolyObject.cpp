@@ -199,7 +199,8 @@ static AbstractPolyObjectFactory theToyChestFactory(
 static AbstractPolyObjectFactory theGoalFactory(
     "Goal",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Goal"),
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "A goal is a metal frame holding a net.\nIt is open on one side."),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
+                      "A goal is a metal frame holding a net.\nIt is open on one side."),
     "goal",
     "(-0.386,0.490)=(-0.386,0.435)=(0.209,0.435)=(0.194,0.470);"
     "(0.160,0.410)=(0.40,-0.488)=(0.45,-0.479)=(0.230,0.430);",
@@ -238,7 +239,8 @@ static AbstractPolyObjectFactory theRotatingBarFactory(
 static AbstractPolyObjectFactory theDaffodilFactory(
     "Daffodil",
     QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Daffodil"),
-    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory", "Daffodil (Narcissus Flappus Attractus):\nButterflies want to fly there."),
+    QT_TRANSLATE_NOOP("AbstractPolyObjectFactory",
+                      "Daffodil (Narcissus Flappus Attractus):\nButterflies want to fly there."),
     "Anonymous_daffodil_klaas",
     "(-0.5,0.347)=(-0.5,0.12)=(-0.141,0.019)=(0.388,0.061)=(0.5,0.37)=(0.022,0.5)=(-0.45,0.391);"
     "(0,-0.5)",
@@ -260,9 +262,16 @@ PolyObject::PolyObject( const QString &aDisplayName,
     DEBUG5("PolyObject::PolyObject(%s, %f, %f)", ASCII(aDisplayName), aWidth, aHeight);
     theToolTip = aTooltip;
     theProps.setDefaultPropertiesString(
-        Property::FRICTION_STRING + QString(":/") +
         Property::POLYGONS_STRING + QString(":") + anOutline + QString("/") +
         aDefaultPropertiesString + QString("/") );
+
+    // Make mass-related attributes for the generic object since those are hidden otherwise
+    if (aDisplayName == DEFAULT_POLYOBJECT_NAME) {
+        theProps.setDefaultPropertiesString(
+            Property::MASS_STRING + QString(":/") +
+            Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+            Property::PIVOTPOINT_STRING + QString(":/"));
+    }
 }
 
 

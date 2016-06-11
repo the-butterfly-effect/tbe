@@ -19,6 +19,8 @@
 #ifndef LevelList_H
 #define LevelList_H
 
+#include "Level.h"
+
 #include <QCoreApplication>
 #include <QXmlDefaultHandler>
 
@@ -28,10 +30,7 @@ class LevelList : protected QXmlDefaultHandler
 public:
     /// Describes the meta-info for a level in the game
     struct LevelMetaInfo {
-        enum Status
-        { FRESH, SKIPPED, COMPLETED };
-
-        enum Status theStatus;
+        enum Level::LevelStatus theStatus;
         QString     theFileName;
         QString     theTitle;       // translatable
         QString     theDescription; // translatable

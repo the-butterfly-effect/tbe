@@ -29,6 +29,7 @@
 
 #include <QFile>
 #include <QFileInfo>
+#include <QSettings>
 #include <QTextStream>
 
 // Strings identifying elements/nodes in the XML file
@@ -144,6 +145,68 @@ QString
 Level::getLevelFileName()
 {
     return theFileName;
+}
+
+
+Level::LevelStatus Level::getLevelStatus()
+{
+    return getLevelStatus(getLevelFileName());
+}
+
+
+Level::LevelStatus Level::getLevelStatus(const QString &aLevelName)
+{
+    DEBUG5("Level::getLevelStatus(%s)", ASCII(aLevelName));
+    QSettings mySettings;
+    LevelStatus myReturnStatus = FRESH;
+    QFileInfo myFI(aLevelName);
+    QString myLevelStatus = mySettings.value("completed/" + myFI.baseName()).toString();
+    if (myLevelStatus.isEmpty() == false) {
+        if (myLevelStatus == "played")
+            myReturnStatus = PLAYED;
+        if (myLevelStatus == "done")
+            myReturnStatus = COMPLETED;
+        if (myLevelStatus == "skipped")
+            myReturnStatus = SKIPPED;
+    }
+    return myReturnStatus;
+}
+
+
+void Level::setLevelStatus(Level::LevelStatus aNewLevelStatus)
+{
+    setLevelStatus(getLevelFileName(), aNewLevelStatus);
+}
+
+
+void Level::setLevelStatus(const QString &aLevelName, Level::LevelStatus aNewLevelStatus)
+{
+    QFileInfo myFI(aLevelName);
+    LevelStatus myCurrentStatus = getLevelStatus(myFI.baseName());
+    QString myValue;
+    // only overwrite if new status is higher than the old one
+    // i.e. if you've won, TBE itself cannot reset the status to fresh.
+    if (aNewLevelStatus > myCurrentStatus) {
+        QSettings mySettings;
+        switch (aNewLevelStatus) {
+        case PLAYED:
+            myValue = "played";
+            break;
+        case SKIPPED:
+            myValue = "skipped";
+            break;
+        case COMPLETED:
+            myValue = "done";
+            break;
+        default:
+            // shouldn't happen!
+            assert(false);
+            // safe behavior in release mode:
+            return;
+        }
+        QString myKey = "completed/" + myFI.baseName();
+        mySettings.setValue(myKey, myValue);
+    }
 }
 
 

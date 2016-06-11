@@ -36,7 +36,7 @@
 class Pingus : public CircleObject, public SimStepCallbackInterface
 {
 public:
-    explicit Pingus(const QString& anIconName);
+    explicit Pingus(const QString &anIconName);
 
     virtual ~Pingus();
 
