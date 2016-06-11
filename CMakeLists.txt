@@ -74,7 +74,7 @@ SET(CPACK_PACKAGE_NAME "the-butterfly-effect.org")
 SET(CPACK_PACKAGE_VENDOR "the-butterfly-effect.org")
 SET(CPACK_PACKAGE_VERSION_MAJOR "0")
 SET(CPACK_PACKAGE_VERSION_MINOR "9.4")
-SET(CPACK_PACKAGE_VERSION_PATCH "1")
+SET(CPACK_PACKAGE_VERSION_PATCH "git")
 SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 
 # use rpavlik's cmake scripts to fetch the current git version hash

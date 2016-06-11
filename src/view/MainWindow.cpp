@@ -133,7 +133,7 @@ void MainWindow::loadLevelDelayed()
 void MainWindow::on_action_About_triggered()
 {
     //: translators: <b> and <br> are statements for bold and newline, respectively
-    Popup::Info(tr("<b>The Butterfly Effect</b><br>version: %2<br>git commit: %3<br>"
+    Popup::Info(tr("<b>The Butterfly Effect %2</b><br>git commit: %3<br>"
                    "An open source game that uses realistic physics"
                    " simulations to combine lots of simple mechanical elements"
                    " to achieve a simple goal in the most complex way possible.<br><br>"
