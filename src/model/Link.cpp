@@ -190,15 +190,13 @@ void Link::updateViewObject(bool ) const
     Vector myV1, myV2;
     if (theFirstPtr != nullptr) {
         myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
-    }
-    else {
-        myV1 = getTempCenter() - getTheWidth() * Vector(0.5,0.);
+    } else {
+        myV1 = getTempCenter() - getTheWidth() * Vector(0.5, 0.);
     }
     if (theSecondPtr != nullptr) {
         myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
-    }
-    else {
-        myV2 = getTempCenter() + getTheWidth() * Vector(0.5,0.);
+    } else {
+        myV2 = getTempCenter() + getTheWidth() * Vector(0.5, 0.);
     }
 
     theVLPtr->setEndpoints(myV1, myV2);

@@ -197,8 +197,7 @@ DetonatorBox::States DetonatorBox::goToState(DetonatorBox::States aNewState)
 void DetonatorBox::notifyExplosions(void)
 {
     QList<AbstractObjectPtr> myObjectsToSignal = theWorldPtr->findObjectsByID(getCurrentPhoneNumber());
-    for (auto i : myObjectsToSignal)
-    {
+    for (auto i : myObjectsToSignal) {
         Dynamite *myDynamite = dynamic_cast<Dynamite *>(i.get());
         if (nullptr == myDynamite)
             return;

@@ -111,7 +111,8 @@ public:
 
     virtual AbstractObject *createObject(void) const
     {
-        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName, theButtonStyle));
+        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName,
+                                    theButtonStyle));
     }
 private:
     const char *theDisplayName;

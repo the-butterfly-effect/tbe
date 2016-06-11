@@ -60,24 +60,27 @@ static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
                                                     "birch_bar", 1.0, 0.1, 7.2, 0.15 );
 
 static AbstractRectObjectFactory theStyrofoamFactory("Styrofoam",
-                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
-                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
-                                                                   "Styrofoam blocks are light and pretty bouncy."),
-                                                 "styrofoam", 0.5, 0.25, 0.5, 0.6 );
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                       "Styrofoam blocks are light and pretty bouncy."),
+                                                     "styrofoam", 0.5, 0.25, 0.5, 0.6 );
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
-                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A red plastic domino, it can be toppled with ease."),
+                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                    "A red plastic domino, it can be toppled with ease."),
                                                   "DominoRed", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Blue)"),
-                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A blue plastic domino, it can be toppled with ease."),
+                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                     "A blue plastic domino, it can be toppled with ease."),
                                                    "DominoBlue", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Green)"),
-                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A green plastic domino, it can be toppled with ease."),
+                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                      "A green plastic domino, it can be toppled with ease."),
                                                     "DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
@@ -116,16 +119,16 @@ static AbstractRectObjectFactory theColaCrateFactory("ColaCrate",
                                                      "Friction:0.1/");
 
 static AbstractRectObjectFactory theLightWoodCrateFactory("WoodCrateFlat",
-                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Flat Wooden Crate"),
-                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
-                                                                       "A flat and light wooden crate, great for stacking."),
-                                                     "wood_crate_flat", 0.8, 0.34, 3.0, 0.1);
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Flat Wooden Crate"),
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                            "A flat and light wooden crate, great for stacking."),
+                                                          "wood_crate_flat", 0.8, 0.34, 3.0, 0.1);
 
 static AbstractRectObjectFactory theHeavyWoodCrateFactory("WoodCrateSquare",
-                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Square Wooden Crate"),
-                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
-                                                                       "A heavy wooden crate, great for stacking."),
-                                                     "wood_crate_square", 0.7, 0.7, 6.0, 0.1);
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Square Wooden Crate"),
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                            "A heavy wooden crate, great for stacking."),
+                                                          "wood_crate_square", 0.7, 0.7, 6.0, 0.1);
 
 // Constructors/Destructors
 //

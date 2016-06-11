@@ -83,7 +83,8 @@ static bool displayHelp(QString /*anArgument*/ )
     printf(" --level-creator     start in level creator mode\n");
     printf(" -L                  start in level creator mode\n");
 #ifdef QT_DEBUG
-    printf(" --verbosity <lvl>   set verbosity, 1=little, (default=%d), %d=all\n", theVerbosity, MAX_VERBOSITY);
+    printf(" --verbosity <lvl>   set verbosity, 1=little, (default=%d), %d=all\n", theVerbosity,
+           MAX_VERBOSITY);
     printf(" -v <lvl>            set verbosity\n");
     printf("--regression <lvl:time,[lvl:time]>  levels to run in automated regression\n");
     printf("                     (comma-separated list, time is level runtime in seconds)\n");
@@ -276,11 +277,9 @@ int main(int argc, char *argv[])
         DEBUG3("  using settings from: '%s'", ASCII(mySettings.fileName()));
     }
 
-    if (theIsLevelCreator)
-    {
+    if (theIsLevelCreator) {
         // TODO: check for environment variable QT_HASH_SEED=1
-        if (NULL==getenv("QT_HASH_SEED"))
-        {
+        if (NULL == getenv("QT_HASH_SEED")) {
             printf("\nIMPORTANT:\n");
             printf("Please 'export QT_HASH_SEED=1' before starting the TBE level creator.\n");
             printf("This ensures that the level files will be written in a consistent order.\n");
