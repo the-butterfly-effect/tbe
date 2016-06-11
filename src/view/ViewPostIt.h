@@ -46,7 +46,8 @@ protected:
     /**
      * Empty Constructor
      */
-    explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr, const QString &anImageName, const QString &aBackgroundImageName, const QString &aButtonStyle);
+    explicit ViewPostIt (AbstractObjectPtr anAbstractObjectPtr, const QString &anImageName,
+                         const QString &aBackgroundImageName, const QString &aButtonStyle);
     friend class ViewObject;
 
 public:

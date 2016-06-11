@@ -29,7 +29,8 @@
 // Constructors/Destructors
 //
 
-ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName, const QString &aBackgroundImageName, const QString &aButtonStyle)
+ViewPostIt::ViewPostIt (AbstractObjectPtr aAbstractObjectPtr, const QString &anImageName,
+                        const QString &aBackgroundImageName, const QString &aButtonStyle)
     : ViewObject(aAbstractObjectPtr, anImageName),
       theCurrentPage(0),
       theDialogPtr(nullptr),

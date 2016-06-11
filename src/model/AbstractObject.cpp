@@ -77,8 +77,7 @@ AbstractObject::AbstractObject(const QString &aTooltip,
             QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)) +
             QString("%1:/").arg(Property::PIVOTPOINT_STRING) +
             QString("%1:/").arg(Property::TRANSLATIONGUIDE_STRING));
-    else
-    {
+    else {
         theProps.removeProperty(Property::MASS_STRING);
         theProps.removeProperty(Property::PIVOTPOINT_STRING);
         theProps.removeProperty(Property::TRANSLATIONGUIDE_STRING);

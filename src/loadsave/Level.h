@@ -84,7 +84,7 @@ public:
 
     /// Sets the LevelStatus for the current level.
     /// @note: will not overwrite an existing higer status.
-    static void setLevelStatus(const QString& aLevelName,
+    static void setLevelStatus(const QString &aLevelName,
                                LevelStatus aNewLevelStatus);
 
     /// @returns the Level's title (NOT translated).
