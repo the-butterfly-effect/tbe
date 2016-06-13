@@ -1,0 +1,91 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Box Bouncer</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Put the volley ball into the toy chest and the soccer ball into the cardboard box.</description>
+        <date>27.05.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="BowlingBall" X="0.268198" height="0.22" width="0.22" Y="1.86214" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object type="CardboardBox" X="1.68607" height="0.78809" width="0.9" Y="0.513743" angle="0">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="LeftRamp" X="8.55967" height="1.216" width="1" Y="5.76509" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object type="RightRamp" X="0.654449" height="1.21557" width="1" Y="5.89888" angle="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="7.7" width="10.1"/>
+        <predefined>
+            <object type="VolleyBall" X="0.386" height="0.21" width="0.21" Y="6.426" ID="v" angle="0"/>
+            <object type="Floor" X="7.511" height="0.1" width="15" Y="0.051" angle="0"/>
+            <object type="SoccerBall" X="8.83" height="0.22" width="0.22" Y="6.426" ID="s" angle="0"/>
+            <object type="ToyChest" X="8.94828" height="1.7" width="1" Y="1.78353" angle="0"/>
+            <object type="CardboardBox" X="4.52827" height="0.78809" width="0.9" Y="1.61366" angle="0"/>
+            <object type="Floor" X="4.52403" height="0.1" width="1.33771" Y="1.16502" angle="0"/>
+            <object type="Wall" X="3.95495" height="0.273192" width="0.2" Y="1.3574" angle="0"/>
+            <object type="Wall" X="5.09288" height="0.273192" width="0.2" Y="1.3574" angle="0"/>
+            <object type="PostItHint" X="2.7816" height="0.22" width="0.22" Y="2.39528" angle="0">
+                <property key="page1">Choo, choo! The cardboard box train will depart soon.</property>
+                <property key="page2">We advice all passengers to not climb on the roof of the moving train.</property>
+                <property key="page3">Violators will be bounced. Repeat violators will be bounced again.</property>
+                <property key="page4">We wish all passengers a pleasant journey. Next stop: Toy Chest City.</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">1;0.776471;0.337255;1</gradientstop>
+            <gradientstop pos="0.8">0.721569;0.564706;0.364706;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">v</property>
+            <property key="xover">8.49</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">v</property>
+            <property key="xbelow">9.31</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">v</property>
+            <property key="yover">0.99</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">v</property>
+            <property key="ybelow">1.5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">s</property>
+            <property key="xover">4.09</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">s</property>
+            <property key="xbelow">4.95</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">s</property>
+            <property key="yover">1.2</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">s</property>
+            <property key="ybelow">1.6</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" X="8.55967" Y="5.76509" object="LeftRamp"/>
+        <hint number="2" X="0.654449" Y="5.89888" object="RightRamp"/>
+        <hint number="3" X="0.597" Y="0.875" object="RightRamp"/>
+        <hint number="4" X="0.268198" Y="1.86214" object="BowlingBall"/>
+        <hint number="5" X="1.68607" Y="0.513743" object="CardboardBox" angle="-3.1416"/>
+        <hint number="6" X="6.18" Y="0.513743" object="CardboardBox" angle="-3.1416"/>
+    </hints>
+</tbe-level>

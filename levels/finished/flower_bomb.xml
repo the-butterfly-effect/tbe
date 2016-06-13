@@ -1,0 +1,144 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Flower Bomb</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Blow up the dynamite.</description>
+        <date>06.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.27" type="Balloon" angle="0" height="0.36" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.38" type="CircularSaw" angle="0" height="0.38" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.1" type="DominoGreen" angle="0" height="0.5" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.166" type="ColaMintBottle" angle="0" height="0.5" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object width="0.8" type="WoodCrateFlat" angle="0" height="0.34" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.25" type="Cactus" angle="0" height="0.4" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.14" type="PegMetal" angle="0" height="0.14" X="2.29906" Y="1.4238"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="1.4" type="IBeam" angle="0" height="0.1" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.5" type="Styrofoam" angle="0" height="0.25" X="0" Y="0">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.068" type="TennisBall" angle="0" height="0.068" X="0" Y="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="4"/>
+        <predefined>
+            <object width="0.33" type="DetonatorBox" angle="0" height="0.35" X="2.5" Y="2.281">
+                <property key="PhoneNumber">555-0420</property>
+            </object>
+            <object width="0.43" type="Dynamite" angle="0" height="0.32" ID="555-0420" X="2.5" Y="3.069"/>
+            <object width="4.94382" type="Floor" angle="0" height="0.1" X="2.47447" Y="2.856">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="0.4" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="1" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="1.6" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="2.2" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="2.8" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="3.4" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="4" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="4.62" Y="2.895">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.2" type="Wall" angle="0" height="2.80145" X="4.84716" Y="1.40518"/>
+            <object width="0.2" type="Wall" angle="0" height="2.80089" X="0.103003" Y="1.40545"/>
+            <object width="4.54339" type="Floor" angle="0" height="0.1" X="2.47525" Y="0.0528921">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="0.6" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="1.2" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="1.8" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="2.4" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="3" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="3.6" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="4.2" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.8" type="Scenery" angle="0" height="0.18" X="4.417" Y="0.09">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.4" type="Daffodil" angle="0" height="0.9" X="1.59699" Y="3.32975"/>
+            <object width="0.4" type="Daffodil" angle="0" height="0.9" X="3.17764" Y="3.30362"/>
+            <object width="0.4" type="Daffodil" angle="0" height="0.9" X="0.535818" Y="3.30306"/>
+            <object width="0.4" type="Daffodil" angle="0" height="0.9" X="4.28887" Y="3.31252"/>
+            <object width="4.54339" type="Floor" angle="0" height="0.1" X="2.4758" Y="2.75562"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.247059;0.87451;0.266667;1</gradientstop>
+            <gradientstop pos="0.7">0.647059;0.937255;0.54902;1</gradientstop>
+            <gradientstop pos="1">0.721569;0.94902;0.956863;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" isFail="false">
+            <property key="object">555-0420</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints>
+        <hint object="PegMetal" X="2.539" number="1" Y="1.407"/>
+    </hints>
+</tbe-level>

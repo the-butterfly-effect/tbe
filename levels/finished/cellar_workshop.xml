@@ -1,0 +1,156 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Cellar Workshop</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Put all pétanque balls into the toy chest and don’t let the penguin go further down.</description>
+        <date>13.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object X="0" angle="0" height="0.12" type="RotatingBar" Y="0" width="1">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem name="Large Left Ramp" count="2">
+            <object X="2.44906" angle="0" height="0.275" type="LeftRamp" Y="0.934803" width="1.392"/>
+        </toolboxitem>
+        <toolboxitem name="Large Right Ramp" count="2">
+            <object X="5.20405" angle="0" height="0.275" type="RightRamp" Y="2.33433" width="1.392"/>
+        </toolboxitem>
+        <toolboxitem name="Small Left Ramp" count="1">
+            <object X="0" angle="0" height="0.417" type="LeftRamp" Y="0" width="0.417"/>
+        </toolboxitem>
+        <toolboxitem name="Small Right Ramp" count="2">
+            <object X="0" angle="0" height="0.417" type="RightRamp" Y="0" width="0.417"/>
+        </toolboxitem>
+        <toolboxitem count="6">
+            <object X="4.80331" angle="0" height="0.7" type="WoodCrateSquare" Y="0.353206" width="0.7"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="4" width="6.1"/>
+        <predefined>
+            <object X="4.09164" angle="0" height="0.28" ID="pingu" type="PingusWalkRight" Y="1.21484" width="0.28"/>
+            <object X="4.20996" angle="0" height="0.1" type="Floor" Y="1.03342" width="2.11679"/>
+            <object X="4.12744" angle="0" height="0.1" type="Floor" Y="1.861" width="0.394883"/>
+            <object X="4.1253" angle="0" height="0.2" type="Spring" Y="2.01124" width="0.4"/>
+            <object X="4.42531" angle="0" height="1.78754" type="Wall" Y="2.4188" width="0.2"/>
+            <object X="3.33688" angle="0" height="0.1" type="Floor" Y="1.86101" width="0.80178"/>
+            <object X="2.76984" angle="0" height="0.076" ID="pb5" type="PetanqueBoule" Y="2.12819" width="0.076"/>
+            <object X="0.843261" angle="0" height="0.076" ID="pb6" type="PetanqueBoule" Y="3.20783" width="0.076"/>
+            <object X="0.834359" angle="0" height="0.076" ID="pb4" type="PetanqueBoule" Y="2.43809" width="0.076"/>
+            <object X="1.43576" angle="0" height="0.27475" type="RightRamp" Y="2.21413" width="1.39155"/>
+            <object X="1.43576" angle="0" height="0.27475" type="RightRamp" Y="2.97497" width="1.39155"/>
+            <object X="1.77369" angle="0" height="0.275" type="LeftRamp" Y="2.64114" width="1.392"/>
+            <object X="2.57436" angle="0" height="1" type="Wall" Y="2.83482" width="0.2"/>
+            <object X="0.634427" angle="0" height="1.602" type="Wall" Y="2.47175" width="0.2"/>
+            <object X="4.48286" angle="0" height="0.076" ID="pb2" type="PetanqueBoule" Y="3.35466" width="0.076"/>
+            <object X="2.3694" angle="0" height="0.076" ID="pb3" type="PetanqueBoule" Y="2.84743" width="0.076"/>
+            <object X="0.576294" angle="0" height="0.076" ID="pb1" type="PetanqueBoule" Y="3.31462" width="0.076"/>
+            <object X="1.945" angle="0" height="0.335817" type="Floor" Y="1.38047" width="1.81347"/>
+            <object X="2.23798" angle="0" height="0.275" type="LeftRamp" Y="1.93458" width="1.392"/>
+            <object X="3.03865" angle="0" height="0.204452" type="Wall" Y="2.0099" width="0.2"/>
+            <object X="5.25349" angle="0" height="0.36" type="Balloon" Y="0.792191" width="0.27"/>
+            <object X="1.1734" angle="0" height="0.36" type="Balloon" Y="1.03246" width="0.27"/>
+            <object X="0.113849" angle="0" height="2.95328" type="Wall" Y="1.47998" width="0.2"/>
+            <object X="5.61457" angle="0" height="1.26841" type="ToyChest" Y="0.647108" width="0.919911"/>
+            <object X="2.62114" angle="0" height="0.1" type="Floor" Y="3.872" width="5.23569"/>
+            <object X="5.13749" angle="0" height="1.09198" type="Wall" Y="3.27576" width="0.2"/>
+            <object X="0.729078" angle="0" height="0.417" type="RightRamp" Y="1.46892" width="0.417"/>
+            <object X="3.27118" angle="0" height="0.135595" type="Floor" Y="1.47685" width="0.843454"/>
+            <object X="4.72478" angle="0" height="0.1" type="Floor" Y="1.861" width="0.403782"/>
+            <object X="5.39933" angle="0" height="0.22" type="PostItHint" Y="2.92547" width="0.22">
+                <property key="page1">Right, left, right, left, and so on. Can you keep track?</property>
+                <property key="page2">A lot of different tricks need to be done before the balls go into the chest.</property>
+                <property key="page3">Let me give you a hint: There are other ways to divert things than using ramps.</property>
+                <property key="page4">What is the spring doing here?</property>
+                <property key="page5">… Post it boy</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.176471;0.176471;0.176471;1</gradientstop>
+            <gradientstop pos="1">0.321569;0.321569;0.321569;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="true" type="positionchange">
+            <property key="object">pingu</property>
+            <property key="ybelow">1.2</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb1</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb1</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb1</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb2</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb2</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb2</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb3</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb3</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb3</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb4</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb4</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb4</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb5</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb5</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb5</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb6</property>
+            <property key="xover">5.17</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb6</property>
+            <property key="xbelow">5.98</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pb6</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
