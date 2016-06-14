@@ -1,0 +1,94 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Curvy</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Topple the pins!</description>
+        <date>14.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="7">
+            <object X="0" type="QuarterArc80" Y="0" width="0.8" angle="0" height="0.8">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object X="0" type="QuarterArc40" Y="0" width="0.4" angle="0" height="0.4">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5.1" height="6.5"/>
+        <predefined>
+            <object X="3.28754" type="Floor" Y="1.28815" width="1" angle="0" height="0.1"/>
+            <object X="3.60685" type="BowlingPin" Y="1.50853" width="0.12" ID="pin3" angle="0" height="0.34"/>
+            <object X="2.39" type="QuarterArc80" Y="2.446" width="0.8" ID="KEEP1" angle="1.5708" height="0.8"/>
+            <object X="3.11402" type="Floor" Y="2.36157" width="1.21357" angle="0" height="0.1"/>
+            <object X="2.94129" type="Dynamite" Y="2.57192" width="0.43" ID="555-1570" angle="0" height="0.32"/>
+            <object X="3.33604" type="VolleyBall" Y="2.51958" width="0.21" angle="0" height="0.21"/>
+            <object X="3.25034" type="Floor" Y="2.80317" width="0.938933" angle="0" height="0.1"/>
+            <object X="0.708565" type="Floor" Y="1.48003" width="0.156" angle="0" height="0.1"/>
+            <object X="1.40489" type="Floor" Y="0.574027" width="0.586207" angle="0" height="0.1"/>
+            <object X="0.71475" type="BowlingPin" Y="1.70709" width="0.12" ID="pin2" angle="0" height="0.34"/>
+            <object X="1.40674" type="DetonatorBox" Y="0.802197" width="0.33" angle="0" height="0.35"/>
+            <object X="2.88526" type="Floor" Y="3.47725" width="0.969637" angle="0" height="0.1"/>
+            <object X="3.9148" type="QuarterArc40" Y="2.95417" width="0.4" ID="KEEP2" angle="-1.5708" height="0.4"/>
+            <object X="2.987" type="Floor" Y="3.968" width="1.481" angle="0" height="0.3"/>
+            <object X="2.37345" type="Floor" Y="4.47836" width="0.256" angle="0" height="0.1"/>
+            <object X="2.36714" type="BowlingPin" Y="4.69841" width="0.12" ID="pin1" angle="0" height="0.34"/>
+            <object X="3.11985" type="Floor" Y="5.08504" width="1.44" angle="0" height="0.3"/>
+            <object X="1.86208" type="BowlingBall" Y="6.25874" width="0.22" angle="0" height="0.22"/>
+            <object X="1.43749" type="VolleyBall" Y="6.28276" width="0.21" angle="0" height="0.21"/>
+            <object X="1.86847" type="Floor" Y="3.1911" width="3.1336" angle="0" height="0.1"/>
+            <object X="1.35139" type="Floor" Y="5.09433" width="2.09967" angle="0" height="0.1"/>
+            <object X="4.2218" type="Floor" Y="3.96641" width="0.986215" angle="0" height="0.1"/>
+            <object X="4.85711" type="Wall" Y="3.22358" width="0.3" angle="0" height="6.444"/>
+            <object X="0.156285" type="Wall" Y="3.22377" width="0.3" angle="0" height="6.444"/>
+            <object X="3.60617" type="Floor" Y="1.80456" width="2.19688" angle="0" height="0.1"/>
+            <object X="2.97909" type="LeftFixedWedge" Y="4.21774" width="1.49889" angle="0" height="0.2"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.627451;1;0.513726;1</gradientstop>
+            <gradientstop pos="1">0.494118;0.886275;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pin1</property>
+            <property key="ybelow">4.48</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pin2</property>
+            <property key="ybelow">1.48</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">pin3</property>
+            <property key="ybelow">1.39</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">pin1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">pin2</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">pin3</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="4.12836" Y="3.51435" width="0.8" number="1" object="QuarterArc80" angle="0" height="0.8"/>
+        <hint X="4.12169" Y="2.71346" width="0.8" number="2" object="QuarterArc80" angle="-1.5708" height="0.8"/>
+        <hint X="2.38643" Y="1.64561" width="0.8" number="3" object="QuarterArc80" angle="-3.1416" height="0.8"/>
+        <hint X="1.99933" Y="3.83526" width="0.8" number="4" object="QuarterArc80" angle="-3.1416" height="0.8"/>
+        <hint X="1.99844" Y="4.63615" width="0.8" number="5" object="QuarterArc80" angle="1.5708" height="0.8"/>
+        <hint X="4.12837" Y="4.92836" width="0.8" number="6" object="QuarterArc80" angle="-1.5708" height="0.8"/>
+        <hint X="1.38465" Y="6.05495" width="0.4" number="7" object="QuarterArc40" angle="-3.13933" height="0.4"/>
+        <hint X="3.57174" Y="3.32242" width="0.4" number="8" object="QuarterArc40" angle="0" height="0.4"/>
+        <hint X="1.99199" Y="5.55055" width="0.8" number="9" object="QuarterArc80" angle="-3.1416" height="0.8"/>
+    </hints>
+</tbe-level>
