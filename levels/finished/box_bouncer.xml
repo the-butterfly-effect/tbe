@@ -82,7 +82,7 @@
     </goals>
     <hints>
         <hint number="1" X="8.55967" Y="5.76509" object="LeftRamp"/>
-        <hint number="2" X="0.654449" Y="5.89888" object="RightRamp"/>
+        <hint number="2" X="0.654449" Y="5.86888" object="RightRamp"/>
         <hint number="3" X="0.597" Y="0.875" object="RightRamp"/>
         <hint number="4" X="0.268198" Y="1.86214" object="BowlingBall"/>
         <hint number="5" X="1.68607" Y="0.513743" object="CardboardBox" angle="-3.1416"/>
