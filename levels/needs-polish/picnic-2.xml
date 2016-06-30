@@ -59,6 +59,7 @@
             </object>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="PetanqueBoule" ID="LeftBoule" angle="0.000"/>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
                 <property key="object1">Shoulder@(-0.05,0.0)</property>
                 <property key="object2">LeftArmEnd@(-0.10,0.05)</property>
             </object>
@@ -72,6 +73,7 @@
                 <property key="Mass">2.5</property>
             </object>
             <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
                 <property key="object1">LeftArmTop@(0.0,0.0)</property>
                 <property key="object2">LeftArmEnd@(0.0,0.0)</property>
             </object>
