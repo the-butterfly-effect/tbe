@@ -32,6 +32,7 @@
                 <property key="NoCollision">RightArm</property>
             </object>
             <object width="0.100" X="5.160" Y="1.590" height="0.100" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
                 <property key="object1">RightArm@(0.50,0.05)</property>
                 <property key="object2">RightArmEnd@(0.05,-0.05)</property>
             </object>
@@ -44,6 +45,7 @@
                 <property key="ZValue">20.0</property>
             </object>
             <object width="0.100" X="5.160" Y="1.590" height="0.100" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
                 <property key="object1">RightArm@(-0.40,-0.05)</property>
                 <property key="object2">RightWeight@(0.0,0.20)</property>
             </object>
