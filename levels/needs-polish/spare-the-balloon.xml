@@ -25,7 +25,6 @@
         </toolboxitem>
         <toolboxitem count="1">
             <object X="1.55" Y="0.965" width="0.4" angle="0" type="LeftWedge" height="0.07">
-                <property key="Rotatable">true</property>
             </object>
         </toolboxitem>
     </toolbox>
