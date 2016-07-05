@@ -9,7 +9,7 @@ which introduces an element or concept it makes use of
    <level> needs-polish/002.xml </level> <!-- First level with a butterfly in danger -->
    <level> finished/jumping_around.xml </level>
    <level> finished/house_of_cards.xml </level>
-   <level> finished/003.xml </level>
+   <!--level> finished/003.xml </level-->
    <level> finished/picnic-0.xml </level> <!-- Introduces rotation -->
    <level> finished/brother-plays-soccer.xml </level>
    <level> finished/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
