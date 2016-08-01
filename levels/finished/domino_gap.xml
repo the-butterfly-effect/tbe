@@ -1,0 +1,106 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Domino Gap</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Topple the dominoes.</description>
+        <date>17.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="8">
+            <object X="0" Y="0" width="0.1" height="0.5" angle="0" type="DominoRed"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="7.5" height="4"/>
+        <predefined>
+            <object X="4.95" Y="0.358" width="0.1" height="0.5" angle="0" ID="d2" type="DominoRed"/>
+            <object X="4.6" Y="0.358" width="0.1" height="0.5" angle="0" ID="d1" type="DominoRed"/>
+            <object X="0.179701" Y="0.357194" width="0.1" height="0.5" angle="-0.414747" ID="ds1" type="DominoRed"/>
+            <object X="0.83" Y="0.358" width="0.1" height="0.5" angle="0" ID="ds3" type="DominoRed"/>
+            <object X="0.479558" Y="0.35755" width="0.1" height="0.5" angle="0" ID="ds2" type="DominoRed"/>
+            <object X="4.01561" Y="0.054" width="8.03042" height="0.1" angle="0" type="Floor"/>
+            <object X="5.3" Y="0.363" width="0.1" height="0.5" angle="0" ID="d3" type="DominoRed"/>
+            <object X="5.65" Y="0.363" width="0.1" height="0.5" angle="0" ID="d4" type="DominoRed"/>
+            <object X="6" Y="0.359" width="0.1" height="0.5" angle="0" ID="d5" type="DominoRed"/>
+            <object X="6.35" Y="0.359" width="0.1" height="0.5" angle="0" ID="d6" type="DominoRed"/>
+            <object X="3" Y="1.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+            <object X="5" Y="1.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+            <object X="7" Y="1.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+            <object X="3" Y="3.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+            <object X="5" Y="3.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+            <object X="7" Y="3.09" width="2" height="2" angle="0" type="Scenery">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">20</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.690196;0.427451;0.435294;1</gradientstop>
+            <gradientstop pos="1">0.768627;0.25098;0.258824;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d2</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d3</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d4</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d5</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">d6</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">ds1</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">ds2</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">ds3</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="1.75484" Y="0.362536" height="0.5" width="0.1" number="1" angle="0" object="DominoRed"/>
+        <hint X="1.43433" Y="0.357194" height="0.5" width="0.1" number="2" angle="0" object="DominoRed"/>
+        <hint X="1.76481" Y="0.876068" height="0.5" width="0.1" number="3" angle="0" object="DominoRed"/>
+        <hint X="1.77479" Y="1.37963" height="0.5" width="0.1" number="4" angle="0" object="DominoRed"/>
+        <hint X="1.78405" Y="1.88319" height="0.5" width="0.1" number="5" angle="0" object="DominoRed"/>
+        <hint X="1.11702" Y="0.357194" height="0.5" width="0.1" number="6" angle="0" object="DominoRed"/>
+        <hint X="1.81004" Y="2.38675" height="0.5" width="0.1" number="7" angle="0" object="DominoRed"/>
+        <hint X="1.81432" Y="2.89494" height="0.5" width="0.1" number="8" angle="0" object="DominoRed"/>
+    </hints>
+</tbe-level>

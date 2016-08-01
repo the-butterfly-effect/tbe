@@ -1,0 +1,52 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Triangles</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Make the bowling ball cross the gap.</description>
+        <date>14.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2" name="Large Birch Wedge">
+            <object Y="2.92214" X="2.5673" height="1" type="RightWedge" angle="0" width="1">
+                <tooltip>This is a movable birch wedge.</tooltip>
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Medium Birch Wedge">
+            <object Y="0" X="0" height="0.75" type="RightWedge" angle="0" width="0.75">
+                <tooltip>This is a movable birch wedge.</tooltip>
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Small Birch Wedge">
+            <object Y="0" X="0" height="0.5" type="RightWedge" angle="0" width="0.5">
+                <tooltip>This is a movable birch wedge.</tooltip>
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="3.5" width="4"/>
+        <predefined>
+            <object Y="0.933871" X="2.74444" height="0.1" type="Floor" angle="0" width="1.43537"/>
+            <object Y="1.23054" X="1.92169" height="2.45328" type="Wall" angle="0" width="0.2"/>
+            <object Y="2.41974" X="1.38688" height="0.1" type="Floor" angle="0" width="0.866518"/>
+            <object Y="1.2272" X="3.56352" height="2.4522" type="Wall" angle="0" width="0.2"/>
+            <object ID="bb" Y="3.1137" X="0.424705" height="0.22" type="BowlingBall" angle="0" width="0.22"/>
+            <object Y="2.77541" X="0.552503" height="0.8" type="QuarterArc80" angle="-3.1416" width="0.8"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.619608;0.517647;0.321569;1</gradientstop>
+            <gradientstop pos="1">0.780392;0.65098;0.403922;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">bb</property>
+            <property key="xover">4</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
