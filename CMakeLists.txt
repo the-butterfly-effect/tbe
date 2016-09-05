@@ -1,5 +1,6 @@
-cmake_minimum_required (VERSION 2.8.12)
-project (thebutterflyeffect)
+cmake_minimum_required (VERSION 3.3)
+project (the-butterfly-effect)
+add_compile_options(-std=c++11)
 
 option(WITH_DOCS "build package with(out) documentation")
 

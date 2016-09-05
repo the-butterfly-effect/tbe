@@ -11,6 +11,7 @@ SUBDIRS(Box2D)
 INCLUDE(control/control.txt)
 INCLUDE(loadsave/loadsave.txt)
 INCLUDE(model/model.txt)
+INCLUDE(qml/qml.txt)
 INCLUDE(view/view.txt)
 
 include_directories(
@@ -19,6 +20,7 @@ include_directories(
     loadsave
     model
     view
+    qml
     ${CMAKE_SOURCE_DIR}
     ${PROJECT_BINARY_DIR}
     ${CMAKE_WORK_DIR}
@@ -42,15 +44,13 @@ SET(tbe_SOURCES ${control_SOURCES} ${loadsave_SOURCES} ${main_SOURCES} ${model_S
 SET(tbe_HEADERS ${control_HEADERS} ${loadsave_HEADERS} ${main_HEADERS} ${model_HEADERS} ${view_HEADERS})
 SET(tbe_UIFORMS ${control_UIFORMS} ${loadsave_UIFORMS} ${main_UIFORMS} ${model_UIFORMS} ${view_UIFORMS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpointer-arith -DQT_NO_ASCII_CAST -std=gnu++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpointer-arith -DQT_NO_ASCII_CAST")
 
 # all Qt-specifics
-find_package(Qt5Widgets)
-find_package(Qt5Core)
-find_package(Qt5Xml)
-find_package(Qt5Svg)
+find_package(Qt5 COMPONENTS Core Quick Svg Test Widgets Xml)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    find_package(Qt5Test)
+    message("***** Building DEBUG version *****")
+    set(USE_QT5TEST Test)
 endif()
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
@@ -72,6 +72,7 @@ ADD_EXECUTABLE(tbe
     ${tbe_FORMS_HEADERS}
     ${tbe_RESOURCES_RCC}
 )
+QT5_USE_MODULES(tbe Core Widgets Quick Xml Svg ${USE_QT5TEST})
 
 # If you want to run with the sanitizers, enable the cmake plugin.
 # It is suggested that you run 'make clean sanitizers' from the root of the
