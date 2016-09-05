@@ -147,17 +147,8 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     ui->action_Open_File->setVisible(true);
 
     // Add EditObject pane to the UI
-    auto myToolboxPtr = ui->listWidget;
-    ui->verticalLayout->removeWidget(myToolboxPtr);
-    auto myButtonsPtr = ui->theInfoEjectLayout;
-    ui->verticalLayout->removeItem(myButtonsPtr);
-    QTabWidget *myTabWidgetPtr = new QTabWidget();
     theEditObjectDialogPtr = new EditObjectDialog();
-    myTabWidgetPtr->addTab(theEditObjectDialogPtr, tr("Object Properties"));
-    myTabWidgetPtr->addTab(myToolboxPtr, tr("Toolbox"));
-    ui->verticalLayout->addWidget(myTabWidgetPtr);
-    ui->verticalLayout->addItem(myButtonsPtr);
-    myTabWidgetPtr->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    ui->centralWidget->layout()->addWidget(theEditObjectDialogPtr);
 }
 
 
