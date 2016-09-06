@@ -56,8 +56,6 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
-# do no longer automatically moc all header files:
-#QT4_WRAP_CPP(tbe_HEADERS ${control_HEADERS} ${view_HEADERS} ${model_HEADERS} ${loadsave_HEADERS})
 
 QT5_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
 QT5_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
@@ -83,11 +81,8 @@ if (ECM_ENABLE_SANITIZERS)
     include(ECMEnableSanitizers)
 endif (ECM_ENABLE_SANITIZERS)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Qt5::Test Box2D)
-else()
-    TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
-endif ()
+# make sure to link against our static Box2D library
+TARGET_LINK_LIBRARIES(tbe Box2D)
 
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)
