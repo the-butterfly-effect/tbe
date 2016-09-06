@@ -17,41 +17,33 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 
+
+/// Each entry in the toolbox consists of a rounded rectangle with contents.
+/// The Rectangle has two states: default and 'opened', depending on the state
+/// it shows different contents.
 Rectangle {
-    id: gameView
+    id: toolboxEntry
 
-    function img(A) {
-        return "image://tbe/"+A;
-    }
+    width: parent.width - 2
+    height: iconSize + 20;
+    color: "whitesmoke"
+    border.color: "darkgrey"
+    border.width: 3
+    radius: 7
+    clip: true
 
-    border.color: "black"
+    property real iconSize: 50
 
-    gradient: Gradient {
-        GradientStop {
-            position: 0.00;
-            color: "#6baaf1";
-        }
-        GradientStop {
-            position: 0.64;
-            color: "#ffffff";
-        }
-        GradientStop {
-            position: 0.98;
-            color: "#175800";
-        }
-    }
+    // layout:
+    // * closed:
+    //   - left: icon (small, not rotated)
+    //   - right:  number x short name
+    // * opened:
+    //   - topleft: full-size image (rotated/scaled/etc)
+    //   - topright: close icon (on top of image if needed)
+    //   - below image: number x short name
+    //   - below name: tooltip
 
-    Image {
-        id: ball
-        source: img("VolleyBall")
-        width: 100
-        height: 100
-    }
-
-    // TODO/FIXME: temporary, to see it work
-    ToolboxEntry {
-        anchors.top: ball.bottom
-    }
 }
-

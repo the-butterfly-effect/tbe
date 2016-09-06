@@ -2,5 +2,6 @@
     <qresource prefix="/qml">
         <file>main.qml</file>
         <file>Toolbox.qml</file>
+        <file>ToolboxEntry.qml</file>
     </qresource>
 </RCC>
