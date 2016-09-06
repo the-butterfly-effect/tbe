@@ -12,7 +12,6 @@ set(CMAKE_INSTALL_PREFIX installprefix)
 
 
 
-set_target_properties(tbe PROPERTIES MACOSX_BUNDLE false)
 set(CPACK_GENERATOR tgz)
 set_source_files_properties(${CMAKE_INSTALL_PREFIX} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 # set(CPACK_SET_DESTDIR "ON")

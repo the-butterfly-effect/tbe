@@ -1,3 +1,5 @@
+set_target_properties(tbe PROPERTIES MACOSX_BUNDLE false)
+
 ##
 ## Detect if the "port" command is valid on this system; if so, return full path
 ##
