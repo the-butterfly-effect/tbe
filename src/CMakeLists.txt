@@ -58,7 +58,7 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 set(CMAKE_AUTOMOC ON)
 
 QT5_WRAP_UI(tbe_FORMS_HEADERS ${tbe_UIFORMS})
-QT5_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES})
+QT5_ADD_RESOURCES(tbe_RESOURCES_RCC ${view_RESOURCES} ${qml_RESOURCES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_USE_QTXML TRUE)
@@ -83,6 +83,10 @@ endif (ECM_ENABLE_SANITIZERS)
 
 # make sure to link against our static Box2D library
 TARGET_LINK_LIBRARIES(tbe Box2D)
+
+IF (APPLE)
+    include(MacOSX-libs)
+ENDIF()
 
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)
