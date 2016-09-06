@@ -44,6 +44,9 @@
 
 #include "tbe_version.h"
 
+#include <QQuickWidget>
+#include <QQmlEngine>
+
 MainWindow::MainWindow(bool isMaximized, QWidget *parent)
     : QMainWindow(parent),
       theRegressionTest(nullptr),
@@ -451,7 +454,14 @@ void MainWindow::setLanguageCheckmark()
 
 void MainWindow::setupQml()
 {
+    QQmlEngine *engine = ui->quickWidget->engine();
 
+//    QQmlContext *ctxt = ui->quickWidget->rootContext();
+
+    ui->quickWidget->connect(engine, &QQmlEngine::quit, this, &MainWindow::close);
+    ui->quickWidget->setSource(QUrl("qrc:/qml/main.qml"));
+    if (ui->quickWidget->status() == QQuickWidget::Error)
+        exit(-1);
 }
 
 

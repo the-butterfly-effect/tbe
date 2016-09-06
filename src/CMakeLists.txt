@@ -47,7 +47,7 @@ SET(tbe_UIFORMS ${control_UIFORMS} ${loadsave_UIFORMS} ${main_UIFORMS} ${model_U
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpointer-arith -DQT_NO_ASCII_CAST")
 
 # all Qt-specifics
-find_package(Qt5 COMPONENTS Core Quick Svg Test Widgets Xml)
+find_package(Qt5 COMPONENTS Core Quick QuickWidgets Svg Test Widgets Xml)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     message("***** Building DEBUG version *****")
     set(USE_QT5TEST Test)
@@ -70,7 +70,7 @@ ADD_EXECUTABLE(tbe
     ${tbe_FORMS_HEADERS}
     ${tbe_RESOURCES_RCC}
 )
-QT5_USE_MODULES(tbe Core Widgets Quick Xml Svg ${USE_QT5TEST})
+QT5_USE_MODULES(tbe Core Widgets Quick QuickWidgets Xml Svg ${USE_QT5TEST})
 
 # If you want to run with the sanitizers, enable the cmake plugin.
 # It is suggested that you run 'make clean sanitizers' from the root of the

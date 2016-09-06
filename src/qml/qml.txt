@@ -1,4 +1,9 @@
 # to add all QML sources in this directory to qtcreator
 
-FILE(GLOB QML_SRC "*.qml")
-ADD_CUSTOM_TARGET(${PROJECT_NAME} SOURCES ${QML_SRC})
+FILE(GLOB QML_SRC "*.qml" "qml/*.qml")
+ADD_CUSTOM_TARGET(tbe-qml SOURCES ${QML_SRC})
+
+# all *.qml files must be added manually to qml.qrc for now :-(
+SET(qml_RESOURCES
+    qml/qml.qrc
+)
