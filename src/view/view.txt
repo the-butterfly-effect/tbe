@@ -13,6 +13,7 @@ SET(view_SOURCES
     view/GameStateMachine.cpp
     view/GoalEditor.cpp
     view/ImageCache.cpp
+    view/ImageProvider.cpp
     view/LevelCreator.cpp
     view/ListViewItemTooltip.cpp
     view/MainWindow.cpp
@@ -43,6 +44,7 @@ SET(view_HEADERS
     view/GameStateMachine.h
     view/GoalEditor.h
     view/ImageCache.h
+    view/ImageProvider.h
     view/LevelCreator.h
     view/ListViewItemTooltip.h
     view/MainWindow.h

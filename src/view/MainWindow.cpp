@@ -29,6 +29,7 @@
 #include "GameStateMachine.h"
 #include "Hint.h"
 #include "ImageCache.h"
+#include "ImageProvider.h"
 #include "InsertUndoCommand.h"
 #include "Level.h"
 #include "LevelCreator.h"
@@ -455,6 +456,7 @@ void MainWindow::setLanguageCheckmark()
 void MainWindow::setupQml()
 {
     QQmlEngine *engine = ui->quickWidget->engine();
+    engine->addImageProvider(QLatin1String("tbe"), new ImageProvider);
 
 //    QQmlContext *ctxt = ui->quickWidget->rootContext();
 

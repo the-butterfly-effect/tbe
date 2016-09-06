@@ -25,6 +25,12 @@ Rectangle {
             color: "#175800";
         }
     }
+
+    Image {
+        source: img("VolleyBall")
+        anchors.fill: parent
+    }
+
 }
 
 // TODO: real content, for later
