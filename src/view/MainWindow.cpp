@@ -57,6 +57,7 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
 {
     ui->setupUi(this);
     setupView();
+    setupQml();
     statusBar();
     if (theIsLevelCreator) {
         on_action_Switch_to_Level_Editor_triggered();
@@ -445,6 +446,12 @@ void MainWindow::setLanguageCheckmark()
         if (i->text() == myCurrentLanguage)
             i->setChecked(true);
     }
+}
+
+
+void MainWindow::setupQml()
+{
+
 }
 
 

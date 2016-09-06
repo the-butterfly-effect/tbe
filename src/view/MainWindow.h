@@ -93,6 +93,9 @@ protected:
     /// Adds dynamic menus, i.e. 'Edit' and 'Languages'.
     void setupView();
 
+    /// Sets up everything related to QML
+    void setupQml();
+
 public slots:
     /// Loads the level specified by the file name.
     /// @param aFileName guess what: the file name. Duh.
