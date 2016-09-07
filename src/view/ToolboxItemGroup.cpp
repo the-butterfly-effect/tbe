@@ -16,24 +16,18 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-import QtQuick 2.0
-import QtQuick.Controls 1.4
+#include "ToolboxItemGroup.h"
 
-Rectangle {
+ToolboxItemGroup::ToolboxItemGroup(QObject *parent) : QObject(parent)
+{
 
-    Component {
-        id: toolboxDelegate
-        ToolboxEntry {
-            width: parent.width - 4
-            x: 2
-        }
-    }
+}
 
-    ListView {
-        id: listView
-        anchors.fill: parent
-        model: myToolboxModel
-        delegate: toolboxDelegate
-        spacing: 2
-    }
+
+ToolboxItemGroup::ToolboxItemGroup(const QString &aName, int aCount, qreal aWidth,
+                                   qreal aHeight, const QString& anIconName,
+                                   const QString &aTooltip, QObject *parent)
+    : QObject(parent), theName(aName), theCount (aCount), theWidth(aWidth),
+      theHeight(aHeight), theIconName(anIconName), theTooltipText(aTooltip)
+{
 }

@@ -32,7 +32,7 @@ Rectangle {
     height: iconSize + 20;
     color: "whitesmoke"
     border.color: "darkgrey"
-    border.width: 3
+    border.width: 2
     radius: 7
     clip: true
 
@@ -55,9 +55,9 @@ Rectangle {
         // TODO: turn this into something drag&droppable
         Image {
             id: itemIcon
-            width: iconSize;
-            height: iconSize;
-            source: img("VolleyBall")
+            width: iconSize
+            height: iconSize
+            source: img(iconName)
         }
 
         Text {
@@ -65,7 +65,7 @@ Rectangle {
             y: -5
             width: parent.width - itemIcon.width - 15
             height: parent.height
-            text: "3x Volley Ball"
+            text: "%1x\n%2".arg(count).arg(name)
             font.bold: true
             font.pointSize: 14
             fontSizeMode: Text.Fit
@@ -96,7 +96,7 @@ Rectangle {
     Text {
         id: midTitle
         anchors { top: topRow.bottom }
-        text: topTitle.text
+        text: "%1x %2".arg(count).arg(name)
         font.bold: true;
         font.pointSize: 14
         wrapMode: Text.Wrap

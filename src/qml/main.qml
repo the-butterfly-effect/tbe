@@ -25,35 +25,17 @@ Rectangle {
         return "image://tbe/"+A;
     }
 
-    border.color: "black"
+    // probably needs to move to Toolbox later
+    color: "white"
+    border.color: "darkgrey"
+    border.width: 1
+    radius: 7
 
-    gradient: Gradient {
-        GradientStop {
-            position: 0.00;
-            color: "#6baaf1";
-        }
-        GradientStop {
-            position: 0.64;
-            color: "#ffffff";
-        }
-        GradientStop {
-            position: 0.98;
-            color: "#175800";
-        }
-    }
-
-    Image {
-        id: ball
-        source: img("VolleyBall")
-        width: 100
-        height: 100
-    }
-
-    // TODO/FIXME: temporary, to see it work
-    ToolboxEntry {
-        anchors.top: ball.bottom
-        width: parent.width - 4
-        x: 2
+    Toolbox {
+        width: parent.width
+        height: 400
+        color: "transparent"
+        y: 2
     }
 }
 
