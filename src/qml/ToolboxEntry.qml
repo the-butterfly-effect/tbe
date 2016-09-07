@@ -21,7 +21,7 @@ import QtQuick.Controls 1.4
 
 
 /// Each entry in the toolbox consists of a rounded rectangle with contents.
-/// The Rectangle has two states: default and 'opened', depending on the state
+/// The Rectangle has two states: default and 'Opened'; depending on the state
 /// it shows different contents.
 Rectangle {
     id: toolboxEntry
@@ -29,7 +29,7 @@ Rectangle {
     property real iconSize: 50
 
     width: parent.width - 2
-    height: iconSize + 200;
+    height: iconSize + 20;
     color: "whitesmoke"
     border.color: "darkgrey"
     border.width: 3
@@ -38,14 +38,14 @@ Rectangle {
 
 
     // layout:
-    // * closed:
+    // * '' (default):
     //   - left: icon (small, not rotated)
     //   - right:  number x short name
-    // * opened:
+    // * 'Opened':
     //   - topleft: full-size image (rotated/scaled/etc)
     //   - topright: close icon (on top of image if needed)
     //   - below image: number x short name
-    //   - below name: tooltip
+    //   - below name: tooltip (always visible, but clipped if in default state)
 
     Row {
         id: topRow
@@ -71,12 +71,12 @@ Rectangle {
             fontSizeMode: Text.Fit
             minimumPointSize: 8
             verticalAlignment: Qt.AlignVCenter
-            // visible:
+            visible: toolboxEntry.state != 'Opened'
             wrapMode: Text.Wrap
         }
     }
 
-    // the close button is only visible when 'opened':
+    // the close button, only visible when 'Opened':
     ToolButton {
         anchors {
             horizontalCenter: topRow.right
@@ -86,11 +86,13 @@ Rectangle {
         }
         height: 18
         iconSource: "qrc:/Shrink.png"
+        onClicked: toolboxEntry.state = '';
         width: 18
-        // visible:
+        visible: toolboxEntry.state == 'Opened'
+        z: 10
     }
 
-    // either the topTitle (closed) or the midTitle (opened) should be visible
+    // either the topTitle (closed) or the midTitle (Opened) should be visible
     Text {
         id: midTitle
         anchors { top: topRow.bottom }
@@ -100,7 +102,7 @@ Rectangle {
         wrapMode: Text.Wrap
         width: parent.width-14
         x: 10
-        // visible:
+        visible: toolboxEntry.state == 'Opened'
     }
 
     Text {
@@ -113,7 +115,36 @@ Rectangle {
         width: parent.width-14
         x: 10
         y: 5
-        // visible:
+    }
+
+    // This mouse region covers the entire toolboxEntry.
+    // When clicked it changes mode to 'Opened'.
+    // If we are already in 'Opened' state, then nothing happens.
+    MouseArea {
+        anchors.fill: parent
+        onClicked: { toolboxEntry.state = 'Opened'; }
+    }
+
+    states: State {
+        name: "Opened"
+
+        PropertyChanges {
+            target: toolboxEntry;
+            color: "white"
+        }
+        PropertyChanges {
+            target: toolboxEntry;
+            // Ensure we can see the full tooltip+image
+            height: tooltipText.height + midTitle.height + 25 + itemIcon.height
+        }
+    }
+
+    transitions: Transition {
+        // Make the state changes smooth
+        ParallelAnimation {
+            ColorAnimation  { duration: 300; property: "color"; }
+            NumberAnimation { duration: 300; property: "height" }
+        }
     }
 
 }
