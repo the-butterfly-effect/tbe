@@ -31,6 +31,9 @@ Rectangle {
 
     ListView {
         id: listView
+
+        signal allClose()
+
         anchors.fill: parent
         model: myToolboxModel
         delegate: toolboxDelegate

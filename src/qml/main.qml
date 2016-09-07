@@ -33,7 +33,7 @@ Rectangle {
 
     Toolbox {
         width: parent.width
-        height: 400
+        height: parent.height - 4
         color: "transparent"
         y: 2
     }

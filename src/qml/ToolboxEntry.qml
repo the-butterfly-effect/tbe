@@ -28,6 +28,10 @@ Rectangle {
 
     property real iconSize: 50
 
+    function closeItem() {
+        state = '';
+    }
+
     width: parent.width - 2
     height: iconSize + 20;
     color: "whitesmoke"
@@ -36,6 +40,9 @@ Rectangle {
     radius: 7
     clip: true
 
+    Component.onCompleted: {
+        listView.allClose.connect(closeItem)
+    }
 
     // layout:
     // * '' (default):
@@ -122,7 +129,7 @@ Rectangle {
     // If we are already in 'Opened' state, then nothing happens.
     MouseArea {
         anchors.fill: parent
-        onClicked: { toolboxEntry.state = 'Opened'; }
+        onClicked: { listView.allClose(); toolboxEntry.state = 'Opened'; }
     }
 
     states: State {
