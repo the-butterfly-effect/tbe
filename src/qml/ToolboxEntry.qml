@@ -26,15 +26,16 @@ import QtQuick.Controls 1.4
 Rectangle {
     id: toolboxEntry
 
+    property real iconSize: 50
+
     width: parent.width - 2
-    height: iconSize + 20;
+    height: iconSize + 200;
     color: "whitesmoke"
     border.color: "darkgrey"
     border.width: 3
     radius: 7
     clip: true
 
-    property real iconSize: 50
 
     // layout:
     // * closed:
@@ -45,5 +46,74 @@ Rectangle {
     //   - topright: close icon (on top of image if needed)
     //   - below image: number x short name
     //   - below name: tooltip
+
+    Row {
+        id: topRow
+        x: 10; y: 10; width: parent.width-x*2; height: iconSize+y;
+        spacing: 10
+
+        // TODO: turn this into something drag&droppable
+        Image {
+            id: itemIcon
+            width: iconSize;
+            height: iconSize;
+            source: img("VolleyBall")
+        }
+
+        Text {
+            id: topTitle
+            y: -5
+            width: parent.width - itemIcon.width - 15
+            height: parent.height
+            text: "3x Volley Ball"
+            font.bold: true
+            font.pointSize: 14
+            fontSizeMode: Text.Fit
+            minimumPointSize: 8
+            verticalAlignment: Qt.AlignVCenter
+            // visible:
+            wrapMode: Text.Wrap
+        }
+    }
+
+    // the close button is only visible when 'opened':
+    ToolButton {
+        anchors {
+            horizontalCenter: topRow.right
+            horizontalCenterOffset: -5
+            verticalCenter: topRow.top
+            verticalCenterOffset: 5
+        }
+        height: 18
+        iconSource: "qrc:/Shrink.png"
+        width: 18
+        // visible:
+    }
+
+    // either the topTitle (closed) or the midTitle (opened) should be visible
+    Text {
+        id: midTitle
+        anchors { top: topRow.bottom }
+        text: topTitle.text
+        font.bold: true;
+        font.pointSize: 14
+        wrapMode: Text.Wrap
+        width: parent.width-14
+        x: 10
+        // visible:
+    }
+
+    Text {
+        id: tooltipText
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ipsum diam, accumsan vitae diam vitae, iaculis fringilla tellus. Sed eu elit eget ex ornare auctor. Suspendisse id dui id velit laoreet dapibus eu ut nisi."
+        anchors { top: midTitle.bottom }
+        font.bold: false;
+        font.pointSize: 10
+        wrapMode: Text.Wrap
+        width: parent.width-14
+        x: 10
+        y: 5
+        // visible:
+    }
 
 }

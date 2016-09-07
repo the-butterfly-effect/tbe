@@ -52,6 +52,8 @@ Rectangle {
     // TODO/FIXME: temporary, to see it work
     ToolboxEntry {
         anchors.top: ball.bottom
+        width: parent.width - 4
+        x: 2
     }
 }
 
