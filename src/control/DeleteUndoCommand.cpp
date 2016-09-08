@@ -21,7 +21,7 @@
 #include "tbe_global.h"
 #include "AbstractObject.h"
 #include "DeleteUndoCommand.h"
-#include "Level.h"
+#include "Toolbox.h"
 #include "UndoSingleton.h"
 #include "ViewObject.h"
 #include "World.h"
@@ -35,7 +35,7 @@ DeleteUndoCommand::DeleteUndoCommand(
     // The list of toolboxes is kept in Level as a QMap.
     // so we need to ask Level...
     theAOPtr = theViewObjPtr->getAbstractObjectPtr();
-    theTBGPtr = Level::findToolBoxGroup(theAOPtr);
+    theTBGPtr = Toolbox::findToolBoxGroup(theAOPtr);
 
     // only either TBGPtr or AOPtr can be non-null
     if (nullptr != theTBGPtr)

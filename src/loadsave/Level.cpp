@@ -74,9 +74,6 @@ const char *theNumberString = "number";
 // for this file only
 static QString theFileName;
 
-
-static Level *theCurrentLevelPtr = nullptr;
-
 // Constructors/Destructors
 //
 
@@ -86,16 +83,11 @@ Level::Level ( )
     theWorldPtr = new World();
     theWorldPtr->theWorldWidth  = 3.0;
     theWorldPtr->theWorldHeight = 2.0;
-
-    assert(theCurrentLevelPtr == nullptr);
-    theCurrentLevelPtr = this;
 }
 
 Level::~Level ( )
 {
     DEBUG1ENTRY;
-    assert(theCurrentLevelPtr == this);
-    theCurrentLevelPtr = nullptr;
     delete theWorldPtr;
     theWorldPtr = nullptr;
 
@@ -109,17 +101,6 @@ Level::~Level ( )
 //
 // Methods
 //
-
-
-ToolboxGroup *
-Level::findToolBoxGroup(AbstractObjectPtr anAOPtr)
-{
-    foreach (ToolboxGroup *i, theCurrentLevelPtr->theToolboxList) {
-        if (i->theInternalName == anAOPtr->getInternalName())
-            return i;
-    }
-    return nullptr;
-}
 
 
 QString
@@ -279,7 +260,7 @@ Level::load(const QString &aFileName, GameResources *aLevelInfoToolbox)
             myErrorMessage += myExtraError;
             goto not_good;
         }
-        theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
+        theToolbox.theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
     }
 
     //
@@ -504,7 +485,7 @@ bool Level::save(const QString &aFileName)
     QDomElement myToolboxDomNode = myDocument.createElement(theToolboxString);
     myRoot.appendChild(myToolboxDomNode);
     // ... and add the various groups
-    for (auto myI : theToolboxList) {
+    for (auto myI : theToolbox.theToolboxList) {
         myToolboxDomNode.appendChild(ToolboxGroupSerializer::serialize(myDocument, myI));
     }
 

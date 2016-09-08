@@ -11,7 +11,8 @@ SET(control_SOURCES
     control/MoveUndoCommand.cpp 
     control/ResizeUndoCommand.cpp 
     control/RotateUndoCommand.cpp 
-    control/ToolboxGroup.cpp 
+    control/Toolbox.cpp
+    control/ToolboxGroup.cpp
     control/UndoSingleton.cpp 
     control/ViewObjectActionDectorator.cpp
 )
@@ -26,7 +27,8 @@ SET(control_HEADERS
     control/MoveUndoCommand.h 
     control/ResizeUndoCommand.h 
     control/RotateUndoCommand.h 
-    control/ToolboxGroup.h 
+    control/Toolbox.h
+    control/ToolboxGroup.h
 #    control/UndoSingleton.h 
     control/ViewObjectActionDectorator.h
 )

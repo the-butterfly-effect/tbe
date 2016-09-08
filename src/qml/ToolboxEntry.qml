@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.0
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.4    // for the ToolButton
 
 
 /// Each entry in the toolbox consists of a rounded rectangle with contents.
@@ -40,11 +40,13 @@ Rectangle {
     radius: 7
     clip: true
 
+    // Register our closeItem() slot with the listView, so it can be
+    // called when another item opens.
     Component.onCompleted: {
         listView.allClose.connect(closeItem)
     }
 
-    // layout:
+    // Layout:
     // * '' (default):
     //   - left: icon (small, not rotated)
     //   - right:  number x short name
@@ -60,6 +62,7 @@ Rectangle {
         spacing: 10
 
         // TODO: turn this into something drag&droppable
+        // TODO: adjust the size of the icon to 'real life size'
         Image {
             id: itemIcon
             width: iconSize

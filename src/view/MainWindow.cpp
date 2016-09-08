@@ -440,7 +440,7 @@ void MainWindow::repopulateScene()
 void MainWindow::repopulateToolbox()
 {
     ui->listWidget->clear();
-    for (auto i : theLevelPtr->theToolboxList)
+    for (auto i : theLevelPtr->theToolbox.theToolboxList)
         new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
 
