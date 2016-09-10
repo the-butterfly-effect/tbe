@@ -22,7 +22,7 @@
 class ToolboxGroup;
 #include "AbstractObjectPtr.h"
 
-//#include <QObject>
+#include <QDomElement>
 #include <QMap>
 
 // This class keeps track of all ToolboxGroup, which each contain
@@ -34,8 +34,25 @@ public:
     Toolbox();
     ~Toolbox();
 
-    /// @note (used by DeleteUndoCommand only)
+    /// Create a ToolboxGroup from a QDomNode and add it to the Toolbox.
+    /// @param q The DomNode to create the group from.
+    /// @note Member only called by Level.
+    /// @returns an empty QString if everything went fine or an error if not.
+    QString addToolboxGroup(const QDomNode& aNode);
+
+    /// Clear the contents of the Toolbox.
+    void clear();
+
+    /// Serialize all contents of the toolbox to aDomNodeRef
+    /// in aDocumentRef.
+    /// @note Member only called by Level.
+    /// @param aDocumentRef
+    /// @param aDomNodeRef
+    void serialize(QDomDocument& aDocumentRef,
+                   QDomElement& aDomNodeRef);
+
     /// Finds the ToolboxGroup that the object belongs to.
+    /// @note (used by DeleteUndoCommand only)
     /// @param anAOPtr the object to find a TBG for.
     static ToolboxGroup *findToolBoxGroup(AbstractObjectPtr anAOPtr);
 
@@ -43,7 +60,6 @@ private:
     typedef QMap<QString, ToolboxGroup *> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
-    friend class Level;
     friend class MainWindow;
 };
 

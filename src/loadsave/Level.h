@@ -50,10 +50,9 @@ class Level :  public QObject
     //
 public:
 
-    /**
-     * Empty Constructor
-     */
-    Level ( );
+    /// The only constructor
+    /// @param aToolboxPtr  pointer to the Toolbox to add the items to
+    explicit Level ( Toolbox* aToolboxPtr);
 
     /**
      * Empty Destructor
@@ -150,7 +149,7 @@ private:
     typedef QList<Hint *>  HintList;
     HintList theHintPtrList;
 
-    Toolbox theToolbox;
+    Toolbox* theToolboxPtr;
 
     friend class SaveLevelInfo;
     friend class GameResources;

@@ -77,7 +77,7 @@ static QString theFileName;
 // Constructors/Destructors
 //
 
-Level::Level ( )
+Level::Level (Toolbox *aToolboxPtr) : theToolboxPtr(aToolboxPtr)
 {
     theFileName = "";
     theWorldPtr = new World();
@@ -250,17 +250,15 @@ Level::load(const QString &aFileName, GameResources *aLevelInfoToolbox)
     //
     // parse the Toolbox section
     //
+    theToolboxPtr->clear();
     myErrorMessage = tr("Parsing '%1' section failed: ").arg(theToolboxString);
     myNode = myDocElem.firstChildElement(theToolboxString);
     for (q = myNode.firstChild(); !q.isNull(); q = q.nextSibling()) {
-        // no sanity checks, leave that to the serializer
-        QString myExtraError;
-        ToolboxGroup *myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(q, &myExtraError);
-        if (myTbGPtr == nullptr) {
+        QString myExtraError = theToolboxPtr->addToolboxGroup(q);
+        if (!myExtraError.isEmpty()) {
             myErrorMessage += myExtraError;
             goto not_good;
         }
-        theToolbox.theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
     }
 
     //
@@ -485,9 +483,7 @@ bool Level::save(const QString &aFileName)
     QDomElement myToolboxDomNode = myDocument.createElement(theToolboxString);
     myRoot.appendChild(myToolboxDomNode);
     // ... and add the various groups
-    for (auto myI : theToolbox.theToolboxList) {
-        myToolboxDomNode.appendChild(ToolboxGroupSerializer::serialize(myDocument, myI));
-    }
+    theToolboxPtr->serialize(myDocument, myToolboxDomNode);
 
     // Scene
     QDomElement mySceneParent = myDocument.createElement(theSceneString);

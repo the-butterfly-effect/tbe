@@ -107,7 +107,7 @@ void MainWindow::loadLevel(const QString &aFileName)
         purgeLevel();
 
     // create level and display in main window
-    theLevelPtr = new Level();
+    theLevelPtr = new Level(&theToolbox);
     QString myErrorMessage = theLevelPtr->load(aFileName,
                                                ui->graphicsView->getGameResourcesDialogPtr());
     if (!myErrorMessage.isEmpty()) {
@@ -216,7 +216,7 @@ void MainWindow::on_action_New_triggered()
         purgeLevel();
     }
 
-    theLevelPtr = new Level();
+    theLevelPtr = new Level(&theToolbox);
     theStartFileName.clear();
     ui->listWidget->clear();
 
@@ -440,7 +440,7 @@ void MainWindow::repopulateScene()
 void MainWindow::repopulateToolbox()
 {
     ui->listWidget->clear();
-    for (auto i : theLevelPtr->theToolbox.theToolboxList)
+    for (auto i : theToolbox.theToolboxList)
         new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
 }
 

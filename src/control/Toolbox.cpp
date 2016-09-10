@@ -18,6 +18,7 @@
 
 #include "Toolbox.h"
 #include "ToolboxGroup.h"
+#include "ToolboxGroupSerializer.h"
 
 static Toolbox *theCurrentToolboxPtr = nullptr;
 
@@ -28,11 +29,29 @@ Toolbox::Toolbox()
     theCurrentToolboxPtr = this;
 }
 
+
 Toolbox::~Toolbox ( )
 {
     DEBUG1ENTRY;
     assert(theCurrentToolboxPtr == this);
     theCurrentToolboxPtr = nullptr;
+}
+
+
+QString Toolbox::addToolboxGroup(const QDomNode& aNode)
+{
+    // no sanity checks, leave that to the serializer
+    QString myExtraError;
+    ToolboxGroup *myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(aNode, &myExtraError);
+    if (myTbGPtr)
+        theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
+    return myExtraError;
+}
+
+
+void Toolbox::clear()
+{
+    theToolboxList.clear();
 }
 
 
@@ -44,4 +63,13 @@ Toolbox::findToolBoxGroup(AbstractObjectPtr anAOPtr)
             return i;
     }
     return nullptr;
+}
+
+
+void Toolbox::serialize(QDomDocument& aDocumentRef,
+                        QDomElement& aToolboxDomNodeRef)
+{
+    for (auto myI : theToolboxList) {
+        aToolboxDomNodeRef.appendChild(ToolboxGroupSerializer::serialize(aDocumentRef, myI));
+    }
 }

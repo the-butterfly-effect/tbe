@@ -19,6 +19,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "Toolbox.h"
+
 #include <QAction>
 #include <QListWidget>
 #include <QMainWindow>
@@ -168,6 +170,9 @@ private:
     QActionGroup theLanguagesGroup;
 
     GameStateMachine *theGameStateMachinePtr;
+
+    /// Contains all logic to interface with the Toolbox UI component
+    Toolbox theToolbox;
 
     friend class LevelCreator;
     friend class RegressionTest;
