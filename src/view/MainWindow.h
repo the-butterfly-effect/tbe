@@ -89,8 +89,6 @@ protected:
 
     /// Internal function to redo scene.
     void repopulateScene();
-    /// Internal function to redo toolbox.
-    void repopulateToolbox();
 
     /// Adds dynamic menus, i.e. 'Edit' and 'Languages'.
     void setupView();

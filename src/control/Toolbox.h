@@ -25,13 +25,17 @@ class ToolboxGroup;
 #include <QDomElement>
 #include <QMap>
 
+class ResizingGraphicsView;
+class QListWidget;
+class QQuickWidget;
+
 // This class keeps track of all ToolboxGroup, which each contain
 // objects to add to levels.
 // It also knows on where and how to update the UI.
 class Toolbox
 {
 public:
-    Toolbox();
+    explicit Toolbox();
     ~Toolbox();
 
     /// Create a ToolboxGroup from a QDomNode and add it to the Toolbox.
@@ -43,6 +47,10 @@ public:
     /// Clear the contents of the Toolbox.
     void clear();
 
+    /// Setup everything again in the Toolbox.
+    /// @note probably going away when switch to new Qml toolbox complete.
+    void repopulateToolbox(ResizingGraphicsView *aGVPtr);
+
     /// Serialize all contents of the toolbox to aDomNodeRef
     /// in aDocumentRef.
     /// @note Member only called by Level.
@@ -50,6 +58,9 @@ public:
     /// @param aDomNodeRef
     void serialize(QDomDocument& aDocumentRef,
                    QDomElement& aDomNodeRef);
+
+    void setupOld(QListWidget *aToolboxOldStylePtr);
+    void setupQml(QQuickWidget *aToolboxQmlStylePtr);
 
     /// Finds the ToolboxGroup that the object belongs to.
     /// @note (used by DeleteUndoCommand only)
@@ -60,7 +71,8 @@ private:
     typedef QMap<QString, ToolboxGroup *> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
-    friend class MainWindow;
+    QListWidget *theToolboxOldStylePtr;
+    QQuickWidget *theToolboxQmlStylePtr;
 };
 
 #endif // TOOLBOX_H

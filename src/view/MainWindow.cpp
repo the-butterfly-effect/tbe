@@ -126,7 +126,7 @@ void MainWindow::loadLevel(const QString &aFileName)
     }
 
     repopulateScene();
-    repopulateToolbox();
+    theToolbox.repopulateToolbox(ui->graphicsView);
 }
 
 
@@ -224,7 +224,7 @@ void MainWindow::on_action_New_triggered()
     emit theLevelCreator->on_levelPropertiesEditorAction_clicked();
 
     repopulateScene();
-    repopulateToolbox();
+    theToolbox.repopulateToolbox(ui->graphicsView);
 }
 
 
@@ -437,14 +437,6 @@ void MainWindow::repopulateScene()
 }
 
 
-void MainWindow::repopulateToolbox()
-{
-    ui->listWidget->clear();
-    for (auto i : theToolbox.theToolboxList)
-        new ToolboxListWidgetItem(ui->graphicsView, i, ui->listWidget);
-}
-
-
 void MainWindow::setLanguageCheckmark()
 {
     QString myCurrentLanguage = TheTranslator.getCurrentLanguage();
@@ -530,6 +522,8 @@ void MainWindow::setupView()
 
     connect(theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
             ui->listWidget, SLOT(setDisabled(bool)));
+
+    theToolbox.setupOld(ui->listWidget);
 
     if (theIsRunAsRegression) {
         Q_ASSERT(theRegressionTest == nullptr);
