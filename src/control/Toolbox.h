@@ -22,11 +22,13 @@
 class ToolboxGroup;
 #include "AbstractObjectPtr.h"
 
+#include <QList>
 #include <QDomElement>
 #include <QMap>
 
 class ResizingGraphicsView;
 class QListWidget;
+class QObject;
 class QQuickWidget;
 
 // This class keeps track of all ToolboxGroup, which each contain
@@ -73,6 +75,9 @@ private:
 
     QListWidget *theToolboxOldStylePtr;
     QQuickWidget *theToolboxQmlStylePtr;
+
+    // the new list for the QML Toolboxgroups
+    QList<QObject*> theTBGList;
 };
 
 #endif // TOOLBOX_H

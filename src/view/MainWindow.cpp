@@ -448,6 +448,8 @@ void MainWindow::setLanguageCheckmark()
 
 void MainWindow::setupQml()
 {
+    QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
+
     QQmlEngine *engine = ui->quickWidget->engine();
     engine->addImageProvider(QLatin1String("tbe"), new ImageProvider);
 
