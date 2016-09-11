@@ -81,11 +81,22 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
     for (auto i : theToolboxList)
         new ToolboxListWidgetItem(aGVPtr, i, theToolboxOldStylePtr);
 
+
+    // TODO/FIXME: Temporary code to setup ToolboxItemGroups from ToolboxList
     theTBGList.clear();
-    theTBGList.append(new ToolboxItemGroup("Volley Ball", 3, 0.21, 0.21, "VolleyBall", "A volleyball is light and very bouncy."));
-    theTBGList.append(new ToolboxItemGroup("Slightly Bigger Left Ramp", 1, 1.0, 0.4, "LeftRamp", "This is a ramp.\nThe left is lower than the right, so things slide to the left."));
-    theTBGList.append(new ToolboxItemGroup("Penguin", 2, 0.28, 0.28, "pinguswalkleft", "A penguin walks left or right and turns around when it collides with something heavy. It can push light objects around. It also likes to slide down slopes but can’t take much abuse."));
-    theTBGList.append(new ToolboxItemGroup("Balloon", 5, 0.27, 0.36, "Balloon", "A helium balloon. Lighter than air, it moves up.\nIt will pop when it hits sharp objects or gets squashed."));
+    for (auto i : theToolboxList)
+    {
+        AbstractObjectPtr myItemPtr = i->last();
+        ToolboxItemGroup* myTIGPtr = new ToolboxItemGroup(
+                myItemPtr->getName(),
+                i->count(),
+                myItemPtr->getTheWidth(),
+                myItemPtr->getTheHeight(),
+                "VolleyBall",
+                myItemPtr->getToolTip());
+        theTBGList.append(myTIGPtr);
+        printf("Add one!\n");
+    }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
     ctxt->setContextProperty("myToolboxModel", QVariant::fromValue(theTBGList));
 }

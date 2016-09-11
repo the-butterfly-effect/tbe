@@ -117,7 +117,7 @@ Rectangle {
 
     Text {
         id: tooltipText
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ipsum diam, accumsan vitae diam vitae, iaculis fringilla tellus. Sed eu elit eget ex ornare auctor. Suspendisse id dui id velit laoreet dapibus eu ut nisi."
+        text: tooltip
         anchors { top: midTitle.bottom }
         font.bold: false;
         font.pointSize: 10
