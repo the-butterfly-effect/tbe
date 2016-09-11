@@ -51,7 +51,9 @@ QString Toolbox::addToolboxGroup(const QDomNode& aNode)
 {
     // no sanity checks, leave that to the serializer
     QString myExtraError;
-    ToolboxGroup *myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(aNode, &myExtraError);
+    ToolboxGroup *myTbGPtr = ToolboxGroupSerializer::createObjectFromDom(
+                                    aNode,
+                                    &myExtraError);
     if (myTbGPtr)
         theToolboxList.insert(myTbGPtr->theGroupName, myTbGPtr);
     return myExtraError;
@@ -82,7 +84,8 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
         new ToolboxListWidgetItem(aGVPtr, i, theToolboxOldStylePtr);
 
 
-    // TODO/FIXME: Temporary code to setup ToolboxItemGroups from ToolboxList
+    // TODO/FIXME: Temporary code to setup ToolboxItemGroups from ToolboxList.
+    // In the final design, we no longer have theToolboxList, only theTBGList.
     theTBGList.clear();
     for (auto i : theToolboxList)
     {
@@ -98,7 +101,8 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
         printf("Add one!\n");
     }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
-    ctxt->setContextProperty("myToolboxModel", QVariant::fromValue(theTBGList));
+    ctxt->setContextProperty("myToolboxModel",
+                             QVariant::fromValue(theTBGList));
 }
 
 
@@ -106,7 +110,8 @@ void Toolbox::serialize(QDomDocument& aDocumentRef,
                         QDomElement& aToolboxDomNodeRef)
 {
     for (auto myI : theToolboxList) {
-        aToolboxDomNodeRef.appendChild(ToolboxGroupSerializer::serialize(aDocumentRef, myI));
+        aToolboxDomNodeRef.appendChild(
+                    ToolboxGroupSerializer::serialize(aDocumentRef, myI));
     }
 }
 
