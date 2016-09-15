@@ -17,25 +17,63 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Layouts 1.2
 
-Rectangle {
-    id: gameView
+RowLayout {
+    id: window
+    width: 800; height: 400
 
     function img(A) {
         return "image://tbe/"+A;
     }
 
-    // probably needs to move to Toolbox later
-    color: "white"
-    border.color: "darkgrey"
-    border.width: 1
-    radius: 7
+    property real theScale: 250
 
-    Toolbox {
-        width: parent.width
-        height: parent.height - 4
-        color: "transparent"
-        y: 2
+   Rectangle {
+        id: gameView
+
+        Layout.fillWidth: true
+        Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+        Layout.preferredHeight: width * 0.5
+        border.color: "black"
+
+        gradient: Gradient {
+            GradientStop {
+                position: 0.00;
+                color: "#6baaf1";
+            }
+            GradientStop {
+                position: 0.64;
+                color: "#ffffff";
+            }
+            GradientStop {
+                position: 0.98;
+                color: "#175800";
+            }
+        }
     }
+
+   Rectangle {
+       color: "white"
+       border.color: "darkgrey"
+       border.width: 1
+       radius: 7
+
+       id: toolbox
+       width: 200;
+       Layout.fillHeight: true
+       Layout.alignment: Qt.AlignRight
+
+       Toolbox {
+           width: parent.width
+           height: parent.height - 4
+           color: "transparent"
+           y: 2
+       }
+   }
 }
+
+
+
+
 

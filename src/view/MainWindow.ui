@@ -112,7 +112,7 @@ QToolButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QQuickWidget" name="quickWidget">
+         <widget class="ResizeAwareQuickWidget" name="quickWidget">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -121,18 +121,18 @@ QToolButton:pressed {
           </property>
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>0</height>
+            <width>300</width>
+            <height>200</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>200</width>
+            <width>800</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="resizeMode">
-           <enum>QQuickWidget::SizeRootObjectToView</enum>
+           <enum>ResizeAwareQuickWidget::SizeRootObjectToView</enum>
           </property>
          </widget>
         </item>
@@ -463,9 +463,9 @@ QToolButton:pressed {
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QQuickWidget</class>
+   <class>ResizeAwareQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header>ResizeAwareQuickWidget.h</header>
   </customwidget>
   <customwidget>
    <class>ResizingGraphicsView</class>
