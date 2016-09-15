@@ -68,6 +68,12 @@ Rectangle {
             width: iconSize
             height: iconSize
             source: img(iconName)
+            // the below will at least make sure that the icon is rendered
+            // perfectly, instead of resized.
+            // E.g. for VolleyBall.svg this makes big difference.
+            // TODO: figure out what to do with the large image...
+            sourceSize.width: iconSize
+            sourceSize.height: iconSize
         }
 
         Text {
