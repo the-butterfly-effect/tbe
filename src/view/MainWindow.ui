@@ -127,7 +127,7 @@ QToolButton:pressed {
           </property>
           <property name="maximumSize">
            <size>
-            <width>800</width>
+            <width>980</width>
             <height>16777215</height>
            </size>
           </property>

@@ -21,7 +21,6 @@ import QtQuick.Layouts 1.2     // for RowLayout and ColumnLayout
 
 RowLayout {
     id: window
-    width: 800; height: 400
 
     function img(A) {
         return "image://tbe/"+A;
