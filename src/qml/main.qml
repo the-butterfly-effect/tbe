@@ -18,8 +18,6 @@
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.2     // for RowLayout and ColumnLayout
-import QtQuick.Controls 1.4    // for the ToolButton
-import QtQuick.Controls.Styles 1.4  // for styles
 
 RowLayout {
     id: window
@@ -84,42 +82,12 @@ RowLayout {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.minimumHeight: 48
 
-            Button {
-                width: theButtonSize
-                height: theButtonSize
-                style: ButtonStyle {
-                    background: Image {
-                        source: control.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
-                    }
-                    label: Image {
-                        source: img("IconInfo")
-                        width: theIconSize
-                        height: theIconSize
-                        sourceSize.width: width
-                        sourceSize.height: height
-                        x: control.pressed ? 0 : -1
-                        y: control.pressed ? 0 : -1
-                    }
-                }
+            IconButton {
+                iconsource: img("IconInfo")
                 tooltip: "Shows the level information again"
             }
-            Button {
-                width: theButtonSize
-                height: theButtonSize
-                style: ButtonStyle {
-                    background: Image {
-                        source: control.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
-                    }
-                    label: Image {
-                        source: img("ActionMenuEject")
-                        width: theIconSize
-                        height: theIconSize
-                        sourceSize.width: width
-                        sourceSize.height: height
-                        x: control.pressed ? 0 : -1
-                        y: control.pressed ? 0 : -1
-                    }
-                }
+            IconButton {
+                iconsource: img("ActionMenuEject")
                 tooltip: "Choose a different level to play"
             }
         }
