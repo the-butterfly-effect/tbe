@@ -85,10 +85,16 @@ RowLayout {
             IconButton {
                 iconsource: img("IconInfo")
                 tooltip: "Shows the level information again"
+                onClicked: {
+                    ResizingGraphicsView.slot_showGameResourcesDialog();
+                }
             }
             IconButton {
                 iconsource: img("ActionMenuEject")
                 tooltip: "Choose a different level to play"
+                onClicked: {
+                    MainWindow.on_action_Open_Level_triggered();
+                }
             }
         }
     }

@@ -138,54 +138,6 @@ QToolButton:pressed {
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="theInfoEjectLayout">
-        <item>
-         <widget class="QToolButton" name="toolButton_infoLevel">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Shows the level information again</string>
-          </property>
-          <property name="text">
-           <string>Info</string>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButton_chooseLevel">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Choose a different level to play</string>
-          </property>
-          <property name="text">
-           <string>Eject</string>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>16</width>
-            <height>16</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
      </layout>
     </item>
    </layout>

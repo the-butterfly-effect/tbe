@@ -455,6 +455,9 @@ void MainWindow::setupQml()
 
     theToolbox.setupQml(ui->quickWidget);
 
+    ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("MainWindow"), this);
+    ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("ResizingGraphicsView"), ui->graphicsView);
+
     ui->quickWidget->connect(engine, &QQmlEngine::quit, this, &MainWindow::close);
     ui->quickWidget->setSource(QUrl("qrc:/qml/main.qml"));
 
@@ -484,16 +487,6 @@ void MainWindow::setupView()
     redoShortcuts << tr("Ctrl+Y") << tr("Shift+Ctrl+Z");
     myRedoActionPtr->setShortcuts(redoShortcuts);
     ui->menuEdit->addAction(myRedoActionPtr);
-
-    // set up the actions for the two buttons below the toolbox
-    QIcon myEjectIcon  = ImageCache::getQIcon("ActionMenuEject", QSize(16, 16));
-    ui->toolButton_chooseLevel->setIcon(myEjectIcon);
-    connect(ui->toolButton_chooseLevel, SIGNAL(clicked(bool)),
-            this, SLOT(on_action_Open_Level_triggered()));
-    QIcon myInfoIcon  = ImageCache::getQIcon("IconInfo", QSize(16, 16));
-    ui->toolButton_infoLevel->setIcon(myInfoIcon);
-    connect(ui->toolButton_infoLevel, SIGNAL(clicked(bool)),
-            ui->graphicsView, SLOT(slot_showGameResourcesDialog()));
 
     // set up the languages menu, so the user can switch languages
     QStringList myLanguageList = TheTranslator.getLanguageList();
