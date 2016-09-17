@@ -83,6 +83,7 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
         return false;
 
     theGameViewPtr = rootObject()->findChild<QQuickItem*>("gameView");
+    assert(nullptr != theGameViewPtr);
     if (nullptr == theGameViewPtr) {
         return false;
     }

@@ -24,24 +24,32 @@ import TBEView 1.0
 // directly with the World instance.
 ViewWorldItem {
 
+    function insertGradient(aList) {
+        backgroundcanvas.gradientList = aList;
+    }
+
     Rectangle {
         border.color: "black"
         anchors.fill: parent
-
-        gradient: Gradient {
-            GradientStop {
-                position: 0.00;
-                color: "#6baaf1";
-            }
-            GradientStop {
-                position: 0.64;
-                color: "#ffffff";
-            }
-            GradientStop {
-                position: 0.98;
-                color: "#175800";
+        Canvas {
+            id: backgroundcanvas
+            property var gradientList
+            anchors.fill: parent
+            anchors.topMargin: 1
+            anchors.leftMargin: 1
+            anchors.rightMargin: 1
+            anchors.bottomMargin: 1
+            onPaint: {
+                var ctx
+                ctx = backgroundcanvas.getContext('2d');
+                ctx.beginPath();
+                var gradient = ctx.createLinearGradient(50, backgroundcanvas.height, 50, 0);
+                for (var colstop in gradientList) {
+                    gradient.addColorStop(colstop, gradientList[colstop]);
+                }
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0,0,backgroundcanvas.width,backgroundcanvas.height);
             }
         }
     }
-
 }

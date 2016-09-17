@@ -38,8 +38,9 @@ public:
 
     virtual ~ViewWorldItem();
 
+    static ViewWorldItem* me();
 
-    void setWorldPtr(World*& aWorldPtr);
+    void setWorldPtr(World* aWorldPtr);
 
     const World *getWorldPtr() const
     {

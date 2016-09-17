@@ -24,20 +24,30 @@
 
 #include "tbe_global.h"
 
+static ViewWorldItem* theVWIPtr = nullptr;
 
 ViewWorldItem::ViewWorldItem(QQuickItem *aParentPtr)
     : QQuickItem(aParentPtr),
       theWorldPtr(nullptr)
 {
-
+    assert(nullptr == theVWIPtr);
+    theVWIPtr = this;
 }
 
 ViewWorldItem::~ViewWorldItem()
 {
     DEBUG3ENTRY;
+    assert(this == theVWIPtr);
+    theVWIPtr = nullptr;
 }
 
-void ViewWorldItem::setWorldPtr(World *&aWorldPtr)
+ViewWorldItem *ViewWorldItem::me()
+{
+    assert(nullptr != theVWIPtr);
+    return theVWIPtr;
+}
+
+void ViewWorldItem::setWorldPtr(World *aWorldPtr)
 {
     // TODO/FIXME: for now, we don't accept loading a new World into the existing object
     assert (nullptr == theWorldPtr);
@@ -49,6 +59,8 @@ void ViewWorldItem::setWorldPtr(World *&aWorldPtr)
 
 void ViewWorldItem::setupBackground(void)
 {
+    DEBUG1ENTRY;
+    assert(nullptr != theWorldPtr);
     if (theWorldPtr->theBackground.theBackgroundGradient.count() == 0 &&
             theWorldPtr->theBackground.theImageName.isEmpty()) {
         // the default if nothing else specified: a blue gradient background
@@ -57,21 +69,10 @@ void ViewWorldItem::setupBackground(void)
         theWorldPtr->theBackground.theBackgroundGradient.push_back(
             Background::GradientStop(1, 0.5, 0.5, 0.9, 1.0));
     }
-/*
-    setBackgroundBrush(Qt::blue);
-    QLinearGradient myBackground(0, 0, 0, -getHeight());
-    foreach (Background::GradientStop myGS, theWorldPtr->theBackground.theBackgroundGradient)
-        myBackground.setColorAt(myGS.thePosition, QColor(
-                                    static_cast<int>(myGS.theR * 255),
-                                    static_cast<int>(myGS.theG * 255),
-                                    static_cast<int>(myGS.theB * 255),
-                                    static_cast<int>(myGS.theAlpha * 255)));
-    setBackgroundBrush(myBackground);
-
-    // Set a very light 1-pixel pen line on the left and bottom borders.
-    // This will prevent the player to move objects outside the borders.
-    QPen myPen(QColor(255, 255, 255, 1), 0);
-    addLine(0, 0, 0, -4 * getHeight(), myPen);
-    addLine(0, 0, 4 * getWidth(), 0, myPen);
-*/
+    QVariantMap map;
+    for (auto i : theWorldPtr->theBackground.theBackgroundGradient) {
+        map.insert(QString("%1").arg(i.thePosition), QColor(i.theR*255, i.theG*255, i.theB*255, i.theAlpha*255));
+    }
+    QMetaObject::invokeMethod(this, "insertGradient",
+                              Q_ARG(QVariant, QVariant::fromValue(map)));
 }

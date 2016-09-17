@@ -25,6 +25,7 @@
 #include "Box2D.h"
 #include "Pingus.h"
 #include "ViewWorld.h"
+#include "ViewWorldItem.h"
 
 const qreal World::theDeltaTime = 0.004;
 const unsigned int World::theVelocityIterationcount = 40;
@@ -215,6 +216,9 @@ ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
     // the graphicsView in the main window
     assert(theViewWorldPtr == nullptr);
     theViewWorldPtr = new ViewWorld(myRSGVPtr, this);
+
+    // Setup the link between ViewWorldItem and World.
+    ViewWorldItem::me()->setWorldPtr(this);
 
     // get all AbstractObjects to register themselves in the ViewWorld
     AbstractObjectPtrList::iterator i;
