@@ -21,6 +21,7 @@ install(FILES
 	icons/ActionRotate.svg
 	icons/ActionSetNumber.svg
 	icons/ActionUndo.svg
+	icons/EmptyGroup.svg
 	icons/IconBold.svg
 	icons/IconInfo.svg
 	icons/IconItalics.svg
