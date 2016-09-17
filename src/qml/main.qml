@@ -26,30 +26,15 @@ RowLayout {
         return "image://tbe/"+A;
     }
 
-    Rectangle {
+    ViewWorld {
         id: gameView
         objectName: "gameView"
 
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         Layout.preferredHeight: width / ResizeInfo.aspectRatio
-        border.color: "black"
 
-        gradient: Gradient {
-            GradientStop {
-                position: 0.00;
-                color: "#6baaf1";
-            }
-            GradientStop {
-                position: 0.64;
-                color: "#ffffff";
-            }
-            GradientStop {
-                position: 0.98;
-                color: "#175800";
-            }
-        }
-
+        // TODO/FIXME: These objects should be generated from Level, obviously
         ViewObject {
             xInM: 1.0
             yInM: 0.99
