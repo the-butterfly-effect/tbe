@@ -19,22 +19,44 @@
 #include "ResizeAwareQuickWidget.h"
 
 #include <QApplication>
+#include <QScreen>
 #include <QQmlContext>
 #include <QQuickItem>
+
+
+// TODO: make configurable using QSettings
+static const qreal theHandleSizeMM = 4.; // handle is resolution independent, 4mm wide and tall
+static const int   theHandleMinPix = 18; // never make handle smaller than 18 pixels
+
+static const int   theButtonHeightPix = 40;
+static const int   theButtonIconPix   = 20;
 
 ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
     : QQuickWidget(parent),
       theWorldWidthInMeters(4.5),
       theWorldHeightInMeters(3.1),
-      pixPerMeter(100),
+      theButtonHeight(theButtonHeightPix),
+      theButtonIconSize(theButtonIconPix),
+      thePixPerMeter(100),
       theGameViewPtr(nullptr)
 {
+    // Enable objects in the QML world to see our properties.
     rootContext()->setContextProperty(QStringLiteral("ResizeInfo"), this);
+
+    // Pre-calculate the handle sizes, they normally won't change during play...
+    QScreen* myQScreenPtr = QApplication::primaryScreen();
+    assert (myQScreenPtr != nullptr);
+    theHandleHeight = theHandleSizeMM / 25.4 * myQScreenPtr->physicalDotsPerInchX();
+    if (theHandleHeight < theHandleMinPix)
+        theHandleHeight = theHandleMinPix;
+    theHandleWidth = theHandleSizeMM / 25.4 * myQScreenPtr->physicalDotsPerInchY();
+    if (theHandleWidth < theHandleMinPix)
+        theHandleWidth = theHandleMinPix;
 }
 
 void ResizeAwareQuickWidget::resizeEvent(QResizeEvent *event)
 {
-    pixPerMeter = theGameViewPtr->width() / theWorldWidthInMeters;
+    thePixPerMeter = theGameViewPtr->width() / theWorldWidthInMeters;
     emit pixPerMeterChanged();
 
     QQuickWidget::resizeEvent(event);

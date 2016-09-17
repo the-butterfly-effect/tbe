@@ -27,16 +27,16 @@ import QtQuick.Controls 1.4    // for the Button
 Button {
     property var iconsource
 
-    width: theButtonSize   // defined in main.qml
-    height: theButtonSize
+    width: ResizeInfo.buttonHeight
+    height: ResizeInfo.buttonHeight
     style: ButtonStyle {
         background: Image {
             source: control.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
         }
         label: Image {
             source: iconsource // should be defined by user
-            width: theIconSize // defined in main.qml
-            height: theIconSize
+            width: ResizeInfo.buttonIconSize
+            height: ResizeInfo.buttonIconSize
             sourceSize.width: width
             sourceSize.height: height
             x: control.pressed ? 0 : -1

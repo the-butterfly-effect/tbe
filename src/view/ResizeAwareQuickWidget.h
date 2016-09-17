@@ -36,11 +36,15 @@ public:
 
     /// Property describes the number of pixels per meter. This number changes
     /// if the user resizes the window.
-    Q_PROPERTY(int pixPerMeter MEMBER pixPerMeter NOTIFY pixPerMeterChanged)
+    Q_PROPERTY(int pixPerMeter MEMBER thePixPerMeter NOTIFY pixPerMeterChanged)
 
     Q_PROPERTY(qreal aspectRatio READ aspectRatio NOTIFY aspectRatioChanged)
     qreal aspectRatio() const
     { return theWorldWidthInMeters / theWorldHeightInMeters; }
+
+    Q_PROPERTY(int buttonHeight MEMBER theButtonHeight NOTIFY buttonHeightChanged)
+    Q_PROPERTY(int buttonIconSize MEMBER theButtonIconSize NOTIFY buttonIconSizeChanged)
+
 
     /// Maps a coordinate inside the widget (in pixels) into the same
     /// coordinate in the model world (meters).
@@ -58,10 +62,10 @@ public:
 
 signals:
     void aspectRatioChanged();
-
+    void buttonHeightChanged();
+    void buttonIconSizeChanged();
     void handleWidthChanged();
     void handleHeightChanged();
-
     void pixPerMeterChanged();
 
 protected:
@@ -70,11 +74,13 @@ protected:
 private:
     int theHandleHeight;
     int theHandleWidth;
+    int theButtonHeight;
+    int theButtonIconSize;
 
     qreal theWorldWidthInMeters;
     qreal theWorldHeightInMeters;
 
-    int pixPerMeter;
+    int thePixPerMeter;
 
     QQuickItem* theGameViewPtr;
 };

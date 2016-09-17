@@ -26,9 +26,6 @@ RowLayout {
         return "image://tbe/"+A;
     }
 
-    property int theButtonSize: 40
-    property int theIconSize: 20
-
     Rectangle {
         id: gameView
         objectName: "gameView"

@@ -23,5 +23,5 @@ import QtQuick.Controls 1.4    // for the Button
 // TODO: This is just a placeholder until I get around to implement a nice button
 
 Button {
-    height: theButtonSize
+    height: ResizeInfo.buttonHeight
 }
