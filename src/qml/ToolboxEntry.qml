@@ -58,7 +58,7 @@ Rectangle {
 
     Row {
         id: topRow
-        x: 10; y: 10; width: parent.width-x*2; height: iconSize+y;
+        x: 10; y: 10; width: parent.width-x*2; height: itemIcon.height+y;
         spacing: 10
 
         // TODO: turn this into something drag&droppable
@@ -153,13 +153,19 @@ Rectangle {
             // Ensure we can see the full tooltip+image
             height: tooltipText.height + midTitle.height + 25 + itemIcon.height
         }
+        // when opened, make icon image match size in scene (if not empty image)
+        PropertyChanges {
+            target: itemIcon;
+            width:  (count > 0) ? owidth *ResizeInfo.pixPerMeter : iconSize;
+            height: (count > 0) ? oheight*ResizeInfo.pixPerMeter : iconSize }
     }
 
     transitions: Transition {
         // Make the state changes smooth
         ParallelAnimation {
-            ColorAnimation  { duration: 300; property: "color"; }
+            ColorAnimation  { duration: 300; property: "color" }
             NumberAnimation { duration: 300; property: "height" }
+            NumberAnimation { duration: 300; properties: "width,height" }
         }
     }
 
