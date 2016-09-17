@@ -20,24 +20,28 @@ import QtQuick 2.0
 import TBEView 1.0
 
 
-// TODO: for now, this is just a Rectangle.
-// In the near future, this will be the representation of the ViewWorldItem
-// class and talk directly with the World instance.
-Rectangle {
-    border.color: "black"
+// This is the QML representation of the ViewWorldItem instance, that talks
+// directly with the World instance.
+ViewWorldItem {
 
-    gradient: Gradient {
-        GradientStop {
-            position: 0.00;
-            color: "#6baaf1";
-        }
-        GradientStop {
-            position: 0.64;
-            color: "#ffffff";
-        }
-        GradientStop {
-            position: 0.98;
-            color: "#175800";
+    Rectangle {
+        border.color: "black"
+        anchors.fill: parent
+
+        gradient: Gradient {
+            GradientStop {
+                position: 0.00;
+                color: "#6baaf1";
+            }
+            GradientStop {
+                position: 0.64;
+                color: "#ffffff";
+            }
+            GradientStop {
+                position: 0.98;
+                color: "#175800";
+            }
         }
     }
+
 }

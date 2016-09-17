@@ -32,6 +32,7 @@ SET(view_SOURCES
     view/ViewPingus.cpp
     view/ViewPostIt.cpp
     view/ViewWorld.cpp
+    view/ViewWorldItem.cpp
     view/WinFailDialog.cpp
 )
 
@@ -67,6 +68,7 @@ SET(view_HEADERS
     view/ViewPingus.h
     view/ViewPostIt.h
     view/ViewWorld.h
+    view/ViewWorldItem.h
     view/WinFailDialog.h
 )
 

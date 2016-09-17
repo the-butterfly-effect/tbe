@@ -18,6 +18,7 @@
 
 #include "ResizeAwareQuickWidget.h"
 #include "ViewItem.h"
+#include "ViewWorldItem.h"
 
 #include <QApplication>
 #include <QScreen>
@@ -46,6 +47,7 @@ ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
 
     // TODO/FIXME: Does this belong here???
     qmlRegisterType<ViewItem>("TBEView", 1, 0, "ViewItem");
+    qmlRegisterType<ViewWorldItem>("TBEView", 1, 0, "ViewWorldItem");
 
     // Pre-calculate the handle sizes, they normally won't change during play...
     QScreen* myQScreenPtr = QApplication::primaryScreen();
