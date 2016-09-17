@@ -18,8 +18,45 @@
 
 #include "ResizeAwareQuickWidget.h"
 
-ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
-    : QQuickWidget(parent)
-{
+#include <QApplication>
+#include <QQmlContext>
+#include <QQuickItem>
 
+ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
+    : QQuickWidget(parent),
+      theWorldWidthInMeters(4.5),
+      theWorldHeightInMeters(3.1),
+      pixPerMeter(100),
+      theGameViewPtr(nullptr)
+{
+    rootContext()->setContextProperty(QStringLiteral("ResizeInfo"), this);
+}
+
+void ResizeAwareQuickWidget::resizeEvent(QResizeEvent *event)
+{
+    pixPerMeter = theGameViewPtr->width() / theWorldWidthInMeters;
+    emit pixPerMeterChanged();
+
+    QQuickWidget::resizeEvent(event);
+}
+
+bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
+{
+    setSource(url);
+
+    // Set the pixels in the corners to the MainWindow's background color.
+    // FIXME/TODO: too bad that this doesn't really work when that color
+    // happens to be a gradient, like in Linux' KDE5...
+    QPalette myPalette = QApplication::palette(this);
+    QColor myBackgroundColor = myPalette.color(QPalette::Window);
+    setClearColor(myBackgroundColor);
+
+    if (status() == QQuickWidget::Error)
+        return false;
+
+    theGameViewPtr = rootObject()->findChild<QQuickItem*>("gameView");
+    if (nullptr == theGameViewPtr) {
+        return false;
+    }
+    return true;
 }

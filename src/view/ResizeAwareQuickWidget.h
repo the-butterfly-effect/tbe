@@ -24,6 +24,8 @@
 
 class ResizeAwareQuickWidget : public QQuickWidget
 {
+    Q_OBJECT
+
 public:
     ResizeAwareQuickWidget(QWidget *parent = Q_NULLPTR);
 
@@ -33,11 +35,12 @@ public:
     Q_PROPERTY(int handleHeight MEMBER theHandleHeight NOTIFY handleHeightChanged)
 
     /// Property describes the number of pixels per meter. This number changes
-    /// if the user resizes the window. Horizontal version.
-    Q_PROPERTY(int hPixPerMeter READ hPixPerMeter NOTIFY hPixPerMeterChanged)
-    /// Property describes the number of pixels per meter. This number changes
-    /// if the user resizes the window. Vertical version.
-    Q_PROPERTY(int vPixPerMeter READ vPixPerMeter NOTIFY vPixPerMeterChanged)
+    /// if the user resizes the window.
+    Q_PROPERTY(int pixPerMeter MEMBER pixPerMeter NOTIFY pixPerMeterChanged)
+
+    Q_PROPERTY(qreal aspectRatio READ aspectRatio NOTIFY aspectRatioChanged)
+    qreal aspectRatio() const
+    { return theWorldWidthInMeters / theWorldHeightInMeters; }
 
     /// Maps a coordinate inside the widget (in pixels) into the same
     /// coordinate in the model world (meters).
@@ -50,13 +53,30 @@ public:
     qreal mapMetersToPixX(qreal anX) const;
     qreal mapMetersToPixY(qreal aY) const;
 
+    ///
+    bool setupQmlSource(const QUrl &url);
+
 signals:
+    void aspectRatioChanged();
+
     void handleWidthChanged();
     void handleHeightChanged();
+
+    void pixPerMeterChanged();
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     int theHandleHeight;
     int theHandleWidth;
+
+    qreal theWorldWidthInMeters;
+    qreal theWorldHeightInMeters;
+
+    int pixPerMeter;
+
+    QQuickItem* theGameViewPtr;
 };
 
 #endif // RESIZEAWAREQUICKWIDGET_H

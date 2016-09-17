@@ -459,17 +459,7 @@ void MainWindow::setupQml()
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("ResizingGraphicsView"), ui->graphicsView);
 
     ui->quickWidget->connect(engine, &QQmlEngine::quit, this, &MainWindow::close);
-    ui->quickWidget->setSource(QUrl("qrc:/qml/main.qml"));
-
-    // Set the pixels in the corners to the MainWindow's background color.
-    // FIXME/TODO: too bad that this doesn't really work when that color
-    // happens to be a gradient, like in Linux' KDE5...
-    QPalette myPalette = QApplication::palette(this);
-    QColor myBackgroundColor = myPalette.color(QPalette::Window);
-    ui->quickWidget->setClearColor(myBackgroundColor);
-
-    if (ui->quickWidget->status() == QQuickWidget::Error)
-        exit(-1);
+    ui->quickWidget->setupQmlSource(QUrl("qrc:/qml/main.qml"));
 }
 
 

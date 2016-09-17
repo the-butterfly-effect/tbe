@@ -26,17 +26,16 @@ RowLayout {
         return "image://tbe/"+A;
     }
 
-    property real theScale: 250
-
     property int theButtonSize: 40
     property int theIconSize: 20
 
     Rectangle {
         id: gameView
+        objectName: "gameView"
 
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-        Layout.preferredHeight: width * 0.5
+        Layout.preferredHeight: width / ResizeInfo.aspectRatio
         border.color: "black"
 
         gradient: Gradient {
@@ -52,6 +51,31 @@ RowLayout {
                 position: 0.98;
                 color: "#175800";
             }
+        }
+
+        Image {
+            id: myVolleyBall
+            width: 0.21*ResizeInfo.pixPerMeter;
+            height: 0.21*ResizeInfo.pixPerMeter;
+            x: 1.0*ResizeInfo.pixPerMeter;
+            y: 0.99*ResizeInfo.pixPerMeter;
+            source: img("VolleyBall")
+            // the following triggers re-reads of the image for every resize
+            sourceSize.width: width
+            sourceSize.height: height
+
+        }
+
+        Image {
+            id: myFloor
+            width: 1.0*ResizeInfo.pixPerMeter;
+            height: 0.2*ResizeInfo.pixPerMeter;
+            x: 0.5*ResizeInfo.pixPerMeter;
+            y: 1.2*ResizeInfo.pixPerMeter;
+            source: img("used_wood_bar")
+            // the following triggers re-reads of the image for every resize
+            sourceSize.width: width
+            sourceSize.height: height
         }
     }
 
