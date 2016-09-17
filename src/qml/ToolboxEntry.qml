@@ -67,7 +67,7 @@ Rectangle {
             id: itemIcon
             width: iconSize
             height: iconSize
-            source: img(iconName)
+            source: count > 0 ? img(iconName) : img("EmptyGroup")
             // the below will at least make sure that the icon is rendered
             // perfectly, instead of resized.
             // E.g. for VolleyBall.svg this makes big difference.
