@@ -33,10 +33,10 @@ static const int   theButtonIconPix   = 20;
 
 ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
     : QQuickWidget(parent),
-      theWorldWidthInMeters(4.5),
-      theWorldHeightInMeters(3.1),
       theButtonHeight(theButtonHeightPix),
       theButtonIconSize(theButtonIconPix),
+      theWorldWidthInMeters(4.5),
+      theWorldHeightInMeters(3.1),
       thePixPerMeter(100),
       theGameViewPtr(nullptr)
 {
