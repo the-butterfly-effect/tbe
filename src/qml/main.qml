@@ -50,29 +50,19 @@ RowLayout {
             }
         }
 
-        Image {
-            id: myVolleyBall
-            width: 0.21*ResizeInfo.pixPerMeter;
-            height: 0.21*ResizeInfo.pixPerMeter;
-            x: 1.0*ResizeInfo.pixPerMeter;
-            y: 0.99*ResizeInfo.pixPerMeter;
-            source: img("VolleyBall")
-            // the following triggers re-reads of the image for every resize
-            sourceSize.width: width
-            sourceSize.height: height
-
+        ViewObject {
+            xInM: 1.0
+            yInM: 0.99
+            widthInM: 0.21
+            heightInM: 0.21
+            imageName: "VolleyBall"
         }
-
-        Image {
-            id: myFloor
-            width: 1.0*ResizeInfo.pixPerMeter;
-            height: 0.2*ResizeInfo.pixPerMeter;
-            x: 0.5*ResizeInfo.pixPerMeter;
-            y: 1.2*ResizeInfo.pixPerMeter;
-            source: img("used_wood_bar")
-            // the following triggers re-reads of the image for every resize
-            sourceSize.width: width
-            sourceSize.height: height
+        ViewObject {
+            xInM: 0.5
+            yInM: 1.2
+            widthInM: 1.0
+            heightInM: 0.2
+            imageName: "used_wood_bar"
         }
     }
 

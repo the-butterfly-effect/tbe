@@ -27,6 +27,7 @@ SET(view_SOURCES
     view/ToolboxListWidgetItem.cpp
     view/ViewObject.cpp
     view/ViewDetonatorBox.cpp
+    view/ViewItem.cpp
     view/ViewLink.cpp
     view/ViewPingus.cpp
     view/ViewPostIt.cpp
@@ -59,6 +60,7 @@ SET(view_HEADERS
     view/ToolboxItemGroup.h
     view/ToolboxListWidgetItem.h
     view/ViewDetonatorBox.h
+    view/ViewItem.h
     view/ViewLink.h
     view/ViewObject.h
     view/ViewObjectPtr.h
