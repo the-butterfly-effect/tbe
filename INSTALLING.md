@@ -29,6 +29,7 @@ if you do not, you'll need to build the static version, which in turn
 requires building QT first - you'll now also need:
   * a lot of X11 development libraries
   * wget
+
 However, doing a static build is beyond the scope of this document, 
 please refer to the TBE wiki:
 https://github.com/the-butterfly-effect/tbe/wiki/HowToMakeARelease
