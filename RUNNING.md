@@ -23,12 +23,15 @@ you can force this by typing this:
 
 At the moment, TBE accepts the following command line arguments:
 
-  --help              gives this help text
-  -h                  gives this help text
-  --verbosity <lvl>   set verbosity, 1=little, 6=max 
-  -v <lvl>            set verbosity
-  --windowed          display in a window (default is fullscreen)
-  -W                  display in a window
+    --draw-debug        debug draw (draw outlines on physical boundaries of all objects)
+    --help              gives this help text
+    -h                  gives this help text
+    --verbosity <lvl>   set verbosity, 1=little, 6=max 
+    --level-creator     start in level creator mode
+    -L                  start in level creator mode
+    -v <lvl>            set verbosity
+    --windowed          display in a window (default is fullscreen)
+    -W                  display in a window
 
 
 
