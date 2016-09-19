@@ -24,7 +24,7 @@ import TBEView 1.0
 // handle the display of what we want.
 ViewItem {
     x: ResizeInfo.pixPerMeter * xInM;
-    y: ResizeInfo.pixPerMeter * yInM;
+    y: gameView.height - ResizeInfo.pixPerMeter * yInM;
     width: ResizeInfo.pixPerMeter * widthInM;
     height: ResizeInfo.pixPerMeter * heightInM;
 
