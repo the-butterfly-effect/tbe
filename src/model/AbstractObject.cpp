@@ -201,9 +201,12 @@ ViewItem *AbstractObject::createViewItem(float aDefaultDepth)
 {
     ViewWorldItem* myVWIPtr = ViewWorldItem::me();
     assert(nullptr != myVWIPtr);
+    QString myImageName;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
+        myImageName = getInternalName();
 
     // TODO: store locally!
-    return myVWIPtr->createViewItem(getThisPtr(), aDefaultDepth, "");
+    return myVWIPtr->createViewItem(getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"").arg(myImageName));
 }
 
 

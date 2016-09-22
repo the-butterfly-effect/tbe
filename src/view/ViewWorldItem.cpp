@@ -87,13 +87,12 @@ ViewItem *ViewWorldItem::impl::createViewItem(
 
     // TODO: angle
     QString myObjectDescription = QString(
-            "ViewObject { xInM:%1; yInM:%2; z:%3; widthInM:%4; heightInM:%5; imageName: \"%6\"; %7 }")
+            "ViewObject { xInM:%1; yInM:%2; z:%3; widthInM:%4; heightInM:%5; %6 }")
             .arg(myPos.x - 0.5*myW)
             .arg(myPos.y + 0.5*myH)
             .arg(aDefaultDepth)
             .arg(myW)
             .arg(myH)
-            .arg(anAOPtr->getInternalName())
             .arg(extraOptions);
 
     // TODO: let's create all plain QML ViewObjects for now
