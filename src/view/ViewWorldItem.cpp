@@ -24,11 +24,96 @@
 
 #include "tbe_global.h"
 
+#include <QQmlComponent>
+#include <QQmlContext>
+#include <QQmlEngine>
+
+/// singleton-like pointer: there's only one.
 static ViewWorldItem* theVWIPtr = nullptr;
+
+
+
+static void dumpErrors(const QString& aSite, const QQmlComponent& aComponent)
+{
+    printf("Dumping errors for %s\n", aSite.toLatin1().constData());
+    if (aComponent.isError()) {
+        QList<QQmlError> myList = aComponent.errors();
+        for (auto& i : myList) {
+            printf("  error: '%s'.\n", i.toString().toLatin1().constData());
+        }
+        exit(1);
+    }
+    printf("  no errors found.\n");
+}
+
+
+
+/// Impl of ViewWorldItem that creates ViewItems,
+/// only exists as pImpl of ViewWorldItem.
+class ViewWorldItem::impl {
+public:
+    impl(QQuickItem* aViewWorldItemPtr, QQmlEngine* aQmlEnginePtr, const QUrl& aSource)
+        :
+        theParentPtr(aViewWorldItemPtr),
+        theQmlComponent(aQmlEnginePtr),
+        theQmlContext(theQmlEnginePtr->contextForObject(aViewWorldItemPtr)),
+        theQmlEnginePtr(aQmlEnginePtr),
+        theSource(aSource)
+    {
+        // nothing to do here?
+        dumpErrors("theQmlComponent in impl constructor", theQmlComponent);
+    }
+
+    ViewItem *createViewItem(const AbstractObjectPtr anAOPtr,
+                             float aDefaultDepth, const QString &extraOptions);
+
+private:
+    QQuickItem* theParentPtr;
+    QQmlComponent theQmlComponent;
+    QQmlContext theQmlContext;
+    QQmlEngine* theQmlEnginePtr;
+    QUrl theSource;
+};
+
+
+ViewItem *ViewWorldItem::impl::createViewItem(
+        const AbstractObjectPtr anAOPtr,
+        float aDefaultDepth,
+        const QString &extraOptions)
+{
+    Position myPos = anAOPtr->getOrigCenter();
+    qreal myW = anAOPtr->getTheWidth();
+    qreal myH = anAOPtr->getTheHeight();
+
+    // TODO: angle
+    QString myObjectDescription = QString(
+            "ViewObject { xInM:%1; yInM:%2; z:%3; widthInM:%4; heightInM:%5; imageName: \"%6\"; %7 }")
+            .arg(myPos.x - 0.5*myW)
+            .arg(myPos.y + 0.5*myH)
+            .arg(aDefaultDepth)
+            .arg(myW)
+            .arg(myH)
+            .arg(anAOPtr->getInternalName())
+            .arg(extraOptions);
+
+    // TODO: let's create all plain QML ViewObjects for now
+    theQmlComponent.setData( myObjectDescription.toLatin1(), theSource);
+    dumpErrors("theQmlComponent after setData", theQmlComponent);
+    ViewItem* myItemPtr = qobject_cast<ViewItem*>(theQmlComponent.create(&theQmlContext));
+    dumpErrors("theQmlComponent after create()", theQmlComponent);
+    assert(nullptr != myItemPtr);
+    myItemPtr->setParentItem(theParentPtr);
+    myItemPtr->setParent(theParentPtr);
+    return myItemPtr;
+}
+
+
+// ---------------------------------------------------------------------------
 
 ViewWorldItem::ViewWorldItem(QQuickItem *aParentPtr)
     : QQuickItem(aParentPtr),
-      theWorldPtr(nullptr)
+      theWorldPtr(nullptr),
+      pImpl(nullptr)
 {
     assert(nullptr == theVWIPtr);
     theVWIPtr = this;
@@ -39,6 +124,8 @@ ViewWorldItem::~ViewWorldItem()
     DEBUG3ENTRY;
     assert(this == theVWIPtr);
     theVWIPtr = nullptr;
+    if (pImpl)
+        delete pImpl;
 }
 
 ViewWorldItem *ViewWorldItem::me()
@@ -46,6 +133,23 @@ ViewWorldItem *ViewWorldItem::me()
     assert(nullptr != theVWIPtr);
     return theVWIPtr;
 }
+
+
+ViewItem *ViewWorldItem::createViewItem(const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString &extraOptions)
+{
+    assert(nullptr != pImpl);
+    return pImpl->createViewItem(anAOPtr, aDefaultDepth, extraOptions);
+}
+
+
+void ViewWorldItem::setQmlEnginePtr(QQmlEngine *anEnginePtr, const QUrl &aSource)
+{
+    assert(nullptr != anEnginePtr);
+    assert(nullptr == pImpl);
+    pImpl = new impl(this, anEnginePtr, aSource);
+    assert(nullptr != pImpl);
+}
+
 
 void ViewWorldItem::setWorldPtr(World *aWorldPtr)
 {

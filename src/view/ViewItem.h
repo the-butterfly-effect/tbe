@@ -25,8 +25,8 @@
 #include "AbstractObjectPtr.h"
 
 /// ViewItem is the base of our QML ViewObject class.
-/// @note The ViewItem is owned by the QQuickView, so you should pay attention
-///       whether a ViewItem is still alive when needed.
+/// @note The ViewItem is owned by the ViewWorldItem, so you should pay
+///       attention whether a ViewItem is still alive when needed.
 class ViewItem : public QQuickItem
 {
     Q_OBJECT

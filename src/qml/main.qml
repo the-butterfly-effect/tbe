@@ -33,22 +33,6 @@ RowLayout {
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         Layout.preferredHeight: width / ResizeInfo.aspectRatio
-
-        // TODO/FIXME: These objects should be generated from Level, obviously
-        ViewObject {
-            xInM: 1.0
-            yInM: 0.99
-            widthInM: 0.21
-            heightInM: 0.21
-            imageName: "VolleyBall"
-        }
-        ViewObject {
-            xInM: 0.5
-            yInM: 1.2
-            widthInM: 1.0
-            heightInM: 0.2
-            imageName: "used_wood_bar"
-        }
     }
 
     ColumnLayout {

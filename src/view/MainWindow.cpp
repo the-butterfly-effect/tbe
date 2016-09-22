@@ -41,6 +41,7 @@
 #include "Translator.h"
 #include "UndoSingleton.h"
 #include "ViewWorld.h"
+#include "ViewWorldItem.h"
 #include "World.h"
 
 #include "tbe_version.h"
@@ -450,16 +451,18 @@ void MainWindow::setupQml()
 {
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
 
-    QQmlEngine *engine = ui->quickWidget->engine();
-    engine->addImageProvider(QLatin1String("tbe"), new ImageProvider);
+    QQmlEngine *myQmlEnginePtr = ui->quickWidget->engine();
+    myQmlEnginePtr->addImageProvider(QLatin1String("tbe"), new ImageProvider);
 
     theToolbox.setupQml(ui->quickWidget);
 
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("MainWindow"), this);
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("ResizingGraphicsView"), ui->graphicsView);
 
-    ui->quickWidget->connect(engine, &QQmlEngine::quit, this, &MainWindow::close);
-    ui->quickWidget->setupQmlSource(QUrl("qrc:/qml/main.qml"));
+    ui->quickWidget->connect(myQmlEnginePtr, &QQmlEngine::quit, this, &MainWindow::close);
+    QUrl mySource("qrc:/qml/main.qml");
+    ui->quickWidget->setupQmlSource(mySource);
+    ViewWorldItem::me()->setQmlEnginePtr(myQmlEnginePtr, mySource);
 }
 
 

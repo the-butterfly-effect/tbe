@@ -41,6 +41,7 @@ class b2World;
 class AbstractObjectSerializer;
 struct ContactInfo;
 
+class ViewItem;
 
 //   ************************************************
 //   *                                              *
@@ -436,6 +437,9 @@ public:
       */
     virtual ViewObjectPtr createViewObject(float aDefaultDepth = 2.0);
     void deleteViewObject();
+
+    virtual ViewItem* createViewItem(float aDefaultDepth = 2.0);
+    virtual void deleteViewItem();
 
     /// updates the ViewObject to the position of the underlying b2body
     /// (it won't update if the object is asleep if sim is running)

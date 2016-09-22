@@ -22,7 +22,9 @@
 #include "PivotPoint.h"
 #include "Translator.h"
 #include "TranslationGuide.h"
+#include "ViewItem.h"
 #include "ViewObject.h"
+#include "ViewWorldItem.h"
 #include "World.h"
 
 #include <QStringList>
@@ -179,6 +181,7 @@ void AbstractObject::createPhysicsObject(const Position &aPosition)
     notifyJoints(JointInterface::CREATED);
 }
 
+
 ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 {
     if (theViewObjectPtr != nullptr)
@@ -191,6 +194,23 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     return theViewObjectPtr;
+}
+
+
+ViewItem *AbstractObject::createViewItem(float aDefaultDepth)
+{
+    ViewWorldItem* myVWIPtr = ViewWorldItem::me();
+    assert(nullptr != myVWIPtr);
+
+    // TODO: store locally!
+    return myVWIPtr->createViewItem(getThisPtr(), aDefaultDepth, "");
+}
+
+
+void AbstractObject::deleteViewItem()
+{
+    // TODO: Implement!
+    assert(false);
 }
 
 

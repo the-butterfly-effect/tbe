@@ -37,8 +37,8 @@ ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
     : QQuickWidget(parent),
       theButtonHeight(theButtonHeightPix),
       theButtonIconSize(theButtonIconPix),
-      theWorldWidthInMeters(4.5),
-      theWorldHeightInMeters(3.1),
+      theWorldWidthInMeters(7.0),
+      theWorldHeightInMeters(4.0),
       thePixPerMeter(100),
       theGameViewPtr(nullptr)
 {

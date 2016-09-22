@@ -22,12 +22,16 @@ import TBEView 1.0
 
 // This is the QML representation of the ViewWorldItem instance, that talks
 // directly with the World instance.
+// The ViewWorldItem instantiates all ViewObjects from C++.
 ViewWorldItem {
 
     function insertGradient(aList) {
         backgroundcanvas.gradientList = aList;
     }
 
+    // This rectangle is just for the backdrop. For now, that's only gradients.
+    // Hopefully re-allow a picture image backdrop in the near future. That was
+    // disabled back in the milestone 8 times due to performance issues...
     Rectangle {
         border.color: "black"
         anchors.fill: parent

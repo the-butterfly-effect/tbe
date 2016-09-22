@@ -19,11 +19,19 @@
 #ifndef VIEWWORLDITEM_H
 #define VIEWWORLDITEM_H
 
-#include <QQuickItem>
-
 #include "AbstractObjectPtr.h"
 
+#include <QQuickItem>
+
+// for std::unique_ptr
+#include <memory>
+
+class ViewItem;
 class World;
+
+class QQmlComponent;
+class QQmlContext;
+class QQmlEngine;
 
 /** class ViewWorldItem
   * This class is the C++ representation of ViewWorld in QML.
@@ -39,6 +47,14 @@ public:
     virtual ~ViewWorldItem();
 
     static ViewWorldItem* me();
+
+    /// Factory method for creating ViewItems to match the AbstractObjectPtr.
+    /// The created ViewItem will automatically be added as a visible child of the ViewWorldItem.
+    /// @note: Returns a *pointer* to a ViewItem. Ownership of this pointer
+    ///        remains with this ViewWorldItem - we delete the object!
+    ViewItem* createViewItem(const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString& extraOptions);
+
+    void setQmlEnginePtr(QQmlEngine* anEnginePtr, const QUrl& aSource);
 
     void setWorldPtr(World* aWorldPtr);
 
@@ -56,6 +72,10 @@ private slots:
 
 private:
     World *theWorldPtr;
+
+    /// impl/pimpl containing the ViewItem factory
+    class impl;
+    impl* pImpl;
 
 private:
 };

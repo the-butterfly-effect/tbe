@@ -133,6 +133,7 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
 
     if (theViewWorldPtr != nullptr)
         addAbstractObjectToViewWorld(anObjectPtr);
+    addAbstractObjectToViewWorldItem(anObjectPtr);
     return true;
 }
 
@@ -147,8 +148,18 @@ void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
         anAOPtr->updateViewObject(false);
         connect(myVOPtr.data(), SIGNAL(updateEditObjectDialog(AbstractObjectPtr)),
                 theViewWorldPtr, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
-        // TODO: connect(myVOPtr, SIGNAL(destroyed()), ### );
     }
+}
+
+
+void World::addAbstractObjectToViewWorldItem(AbstractObjectPtr anAOPtr)
+{
+    ViewWorldItem* myVWIPtr = ViewWorldItem::me();
+    assert(nullptr != myVWIPtr);
+    DEBUG5("World::addAbstractObjectToViewWorldItem(%p)", anAOPtr.get());
+
+    // the below call creates + hooks the new object into the ViewWorldItem
+    anAOPtr->createViewItem();
 }
 
 
@@ -225,6 +236,7 @@ ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
     for (i = theObjectPtrList.begin(); i != theObjectPtrList.end(); ++i) {
         DEBUG5("adding item %p", (*i).get());
         addAbstractObjectToViewWorld(*i);
+        addAbstractObjectToViewWorldItem(*i);
     }
     return theViewWorldPtr;
 }

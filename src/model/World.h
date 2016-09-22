@@ -310,6 +310,8 @@ private:
     /// to the corresponding ViewWorld
     void addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr);
 
+    void addAbstractObjectToViewWorldItem(AbstractObjectPtr anAOPtr);
+
 public:
     // Public attribute accessor methods
     //
