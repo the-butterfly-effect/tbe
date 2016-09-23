@@ -23,7 +23,28 @@ import TBEView 1.0
 // click behavior for PostIts.
 ViewObject {
     Rectangle {
-        anchors.fill: parent
+        id: postit
+        width: 240
+        height: 240
+        visible: false
+        color: "yellow"
+        Text {
+            text: "Hello, world!"
+        }
+
+        states: State {
+            name: "Opened"
+
+            PropertyChanges {
+                target: postit;
+                visible: true
+            }
+        }
+    }
+
+    Rectangle {
+        width: parent.width
+        height: parent.height
         id: highlight
         color: "transparent"
     }
@@ -33,5 +54,7 @@ ViewObject {
         hoverEnabled: true
         onEntered: highlight.color = "#FFFFFFE0"
         onExited:  highlight.color = "transparent"
+        onClicked: postit.state = "Opened"
     }
+}
 }
