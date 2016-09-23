@@ -22,23 +22,33 @@ import TBEView 1.0
 // Use a ViewObject for the basics, as we only want to override the hover and
 // click behavior for PostIts.
 ViewObject {
-    Rectangle {
+    property var backgroundImg
+
+    Image {
         id: postit
         width: 0
         height: 0
         // make sure that the larger post-it always fits in the screen
         x: (parent.x<gameView.width-width) ? 0 : parent.width-width
-        y: (parent.y<gameView.height-height) ? 0 : parent.height-height
+        y: (parent.y<gameView.height-height) ? -15 : parent.height-height+15
         z: 100
         visible: false
-        color: "yellow"
+        source: img(backgroundImg)
+        sourceSize.width: 240
+        sourceSize.height: 240
         clip: true
         Text {
+            anchors.top: postit.top
+            anchors.topMargin: 20
+            anchors.leftMargin: 20
+            anchors.left: postit.left
+            width: parent.width - 40
             text: "Hello, world!"
         }
 
         Row {
             anchors.bottom: postit.bottom
+            anchors.bottomMargin: 20
             anchors.horizontalCenter: postit.horizontalCenter
             TextButton {
                 text: "Next>"

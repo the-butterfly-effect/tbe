@@ -442,7 +442,7 @@ public:
      *  @param aDefaultDepth  Z-value of the object (0.1=back, 2=default)
      */
     virtual ViewItem* createViewItem(float aDefaultDepth=2.0) {
-        return createViewItemInt(aDefaultDepth, "ViewObject", "");
+        return createViewItemInt(aDefaultDepth, "ViewObject", "", "");
     }
 
 protected:
@@ -451,12 +451,14 @@ protected:
      *  @param aVOType        Type of the QML class to instantiate
      *  @param anImageName    Name of the image to use. If not specified, read
      *                        from the properties (=default).
+     *  @param extraOptions   Extra variables to set in the QML class
      *  @note: Although it is possible to override this one, you probably want
      *         to override the member with only one argument.
      */
     virtual ViewItem* createViewItemInt(float aDefaultDepth,
                                         const QString& aVOType,
-                                        const QString& anImageName);
+                                        const QString& anImageName,
+                                        const QString& extraOptions);
 
 public:
     virtual void deleteViewItem();

@@ -96,5 +96,5 @@ ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 
 ViewItem *PostIt::createViewItem(float aDefaultDepth)
 {
-    return createViewItemInt(aDefaultDepth, "ViewPostIt", "");
+    return createViewItemInt(aDefaultDepth, "ViewPostIt", "", QString("backgroundImg: \"%1\"").arg(theBackgroundImageName));
 }

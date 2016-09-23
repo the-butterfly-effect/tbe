@@ -197,7 +197,7 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 }
 
 
-ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& aVOType, const QString& anImageName)
+ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& aVOType, const QString& anImageName, const QString& extraOptions)
 {
     ViewWorldItem* myVWIPtr = ViewWorldItem::me();
     assert(nullptr != myVWIPtr);
@@ -211,7 +211,7 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
         myImageName = anImageName;
 
     // TODO: store locally!
-    return myVWIPtr->createViewItem(aVOType, getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"").arg(myImageName));
+    return myVWIPtr->createViewItem(aVOType, getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
 }
 
 
