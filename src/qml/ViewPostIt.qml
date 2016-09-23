@@ -24,21 +24,38 @@ import TBEView 1.0
 ViewObject {
     Rectangle {
         id: postit
-        width: 240
-        height: 240
+        width: 0
+        height: 0
+        // make sure that the larger post-it always fits in the screen
+        x: (parent.x<gameView.width-width) ? 0 : parent.width-width
+        y: (parent.y<gameView.height-height) ? 0 : parent.height-height
+        z: 100
         visible: false
         color: "yellow"
+        clip: true
         Text {
             text: "Hello, world!"
+        }
+
+        Row {
+            anchors.bottom: postit.bottom
+            anchors.horizontalCenter: postit.horizontalCenter
+            TextButton {
+                text: "Next>"
+            }
+            TextButton {
+                text: "Cancel"
+                onClicked: postit.state = ""
+            }
         }
 
         states: State {
             name: "Opened"
 
-            PropertyChanges {
-                target: postit;
-                visible: true
-            }
+            PropertyChanges { target: postit; visible: true; width: 240; height:240 }
+        }
+        transitions: Transition {
+            NumberAnimation { duration: 240; properties: "height" }
         }
     }
 
@@ -56,5 +73,4 @@ ViewObject {
         onExited:  highlight.color = "transparent"
         onClicked: postit.state = "Opened"
     }
-}
 }
