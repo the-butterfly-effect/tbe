@@ -197,7 +197,7 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 }
 
 
-ViewItem *AbstractObject::createViewItem(float aDefaultDepth, const QString& aVOType, const QString& anImageName)
+ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& aVOType, const QString& anImageName)
 {
     ViewWorldItem* myVWIPtr = ViewWorldItem::me();
     assert(nullptr != myVWIPtr);

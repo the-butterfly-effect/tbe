@@ -93,3 +93,8 @@ ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
     setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
     return theViewObjectPtr;
 }
+
+ViewItem *PostIt::createViewItem(float aDefaultDepth)
+{
+    return createViewItemInt(aDefaultDepth, "ViewPostIt", "");
+}

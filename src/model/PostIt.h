@@ -78,6 +78,10 @@ public:
     ///          the higher the value the more likely it is drawn on top
     ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
 
+    /// overridden because we have our own ViewObject that displays
+    /// the PostIt
+    ViewItem* createViewItem(float aDefaultDepth=2.0) override;
+
 private:
     const char *theDisplayName;
     const char *theTooltip;

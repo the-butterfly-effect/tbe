@@ -6,6 +6,7 @@
         <file>Toolbox.qml</file>
         <file>ToolboxEntry.qml</file>
         <file>ViewObject.qml</file>
+        <file>ViewPostIt.qml</file>
         <file>ViewWorld.qml</file>
     </qresource>
 </RCC>
