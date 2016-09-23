@@ -29,8 +29,8 @@ ViewObject {
         width: 0
         height: 0
         // make sure that the larger post-it always fits in the screen
-        x: (parent.x<gameView.width-width) ? 0 : parent.width-width
-        y: (parent.y<gameView.height-height) ? -15 : parent.height-height+15
+        x: (parent.x<gameView.width-240) ? 0 : parent.width-240
+        y: (parent.y<gameView.height-240) ? -15 : parent.height-240+20
         z: 100
         visible: false
         source: img(backgroundImg)
