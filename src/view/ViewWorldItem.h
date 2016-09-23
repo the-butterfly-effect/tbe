@@ -52,7 +52,7 @@ public:
     /// The created ViewItem will automatically be added as a visible child of the ViewWorldItem.
     /// @note: Returns a *pointer* to a ViewItem. Ownership of this pointer
     ///        remains with this ViewWorldItem - we delete the object!
-    ViewItem* createViewItem(const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString& extraOptions);
+    ViewItem* createViewItem(const QString& aVOType, const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString& extraOptions);
 
     void setQmlEnginePtr(QQmlEngine* anEnginePtr, const QUrl& aSource);
 

@@ -38,6 +38,7 @@ ViewWorldItem {
         Canvas {
             id: backgroundcanvas
             property var gradientList
+            z: 0.0
             anchors.fill: parent
             anchors.topMargin: 1
             anchors.leftMargin: 1

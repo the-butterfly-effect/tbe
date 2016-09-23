@@ -438,7 +438,15 @@ public:
     virtual ViewObjectPtr createViewObject(float aDefaultDepth = 2.0);
     void deleteViewObject();
 
-    virtual ViewItem* createViewItem(float aDefaultDepth = 2.0);
+    /** Creates the QML ViewObject (and its base ViewItem).
+     *  @param aDefaultDepth  Z-value of the object (0.1=back, 2=default)
+     *  @param aVOType        Type of the QML class to instantiate
+     *  @param anImageName    Name of the image to use. If not specified, read
+     *                        from the properties (=default).
+     */
+    virtual ViewItem* createViewItem(float aDefaultDepth=2.0,
+                                     const QString& aVOType = "ViewObject",
+                                     const QString& anImageName = "");
     virtual void deleteViewItem();
 
     /// updates the ViewObject to the position of the underlying b2body

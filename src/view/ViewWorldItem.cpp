@@ -64,7 +64,7 @@ public:
         dumpErrors("theQmlComponent in impl constructor", theQmlComponent);
     }
 
-    ViewItem *createViewItem(const AbstractObjectPtr anAOPtr,
+    ViewItem *createViewItem(const QString &aVOType, const AbstractObjectPtr anAOPtr,
                              float aDefaultDepth, const QString &extraOptions);
 
 private:
@@ -77,6 +77,7 @@ private:
 
 
 ViewItem *ViewWorldItem::impl::createViewItem(
+        const QString &aVOType,
         const AbstractObjectPtr anAOPtr,
         float aDefaultDepth,
         const QString &extraOptions)
@@ -87,7 +88,8 @@ ViewItem *ViewWorldItem::impl::createViewItem(
 
     // TODO: angle
     QString myObjectDescription = QString(
-            "ViewObject { xInM:%1; yInM:%2; z:%3; widthInM:%4; heightInM:%5; %6 }")
+            "%1 { xInM:%2; yInM:%3; z:%4; widthInM:%5; heightInM:%6; %7 }")
+            .arg(aVOType)
             .arg(myPos.x - 0.5*myW)
             .arg(myPos.y + 0.5*myH)
             .arg(aDefaultDepth)
@@ -134,10 +136,10 @@ ViewWorldItem *ViewWorldItem::me()
 }
 
 
-ViewItem *ViewWorldItem::createViewItem(const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString &extraOptions)
+ViewItem *ViewWorldItem::createViewItem(const QString &aVOType, const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString &extraOptions)
 {
     assert(nullptr != pImpl);
-    return pImpl->createViewItem(anAOPtr, aDefaultDepth, extraOptions);
+    return pImpl->createViewItem(aVOType, anAOPtr, aDefaultDepth, extraOptions);
 }
 
 
