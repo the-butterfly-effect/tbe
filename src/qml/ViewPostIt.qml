@@ -19,10 +19,23 @@
 import QtQuick 2.0
 import TBEView 1.0
 
-// Use a ViewObject for the basics, as we only want to override the hover and
-// click behavior for PostIts.
+/// Use a ViewObject for the basics, as we only want to override the hover and
+/// click behavior for PostIts (and implement the PostIt viewer itself).
 ViewObject {
+
+    /// Will contain the name of the background image.
     property var backgroundImg
+    /// Array containing the post it pages text.
+    property var pages
+
+    /// Private property containing the current page to view.
+    property var pageNumber: 0
+
+    function cleanup() {
+        postit.state = "";
+        pageNumber = 0;
+        nextButton.text = "Next>"
+    }
 
     Image {
         id: postit
@@ -37,31 +50,46 @@ ViewObject {
         sourceSize.width: 240
         sourceSize.height: 240
         clip: true
+
         Text {
             anchors.top: postit.top
-            anchors.topMargin: 20
+            anchors.topMargin: 40
             anchors.leftMargin: 20
             anchors.left: postit.left
-            width: parent.width - 40
-            text: "Hello, world!"
+            font.bold: true;
+            horizontalAlignment: Text.AlignHCenter
+            text: pages[pageNumber]
+            width: parent.width - 50
+            wrapMode: Text.Wrap
         }
 
         Row {
             anchors.bottom: postit.bottom
             anchors.bottomMargin: 20
-            anchors.horizontalCenter: postit.horizontalCenter
+            anchors.right: postit.right
+            anchors.rightMargin: 20
             TextButton {
+                id: nextButton
                 text: "Next>"
+                onClicked: {
+                    if (pageNumber >= pages.length-1) {
+                        cleanup();
+                    }
+                    else {
+                        if (pageNumber >= pages.length-2)
+                            text = "Finish";
+                        pageNumber++;
+                    }
+                }
             }
             TextButton {
                 text: "Cancel"
-                onClicked: postit.state = ""
+                onClicked: cleanup();
             }
         }
 
         states: State {
             name: "Opened"
-
             PropertyChanges { target: postit; visible: true; width: 240; height:240 }
         }
         transitions: Transition {
@@ -70,9 +98,9 @@ ViewObject {
     }
 
     Rectangle {
+        id: highlight
         width: parent.width
         height: parent.height
-        id: highlight
         color: "transparent"
     }
 

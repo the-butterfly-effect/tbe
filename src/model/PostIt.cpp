@@ -20,6 +20,7 @@
 #include "Box2D.h"
 #include "ObjectFactory.h"
 #include "PostIt.h"
+#include "Translator.h"
 #include "ViewPostIt.h"
 
 static PostItObjectFactory postItHint("PostItHint",
@@ -96,5 +97,16 @@ ViewObjectPtr  PostIt::createViewObject(float aDefaultDepth)
 
 ViewItem *PostIt::createViewItem(float aDefaultDepth)
 {
-    return createViewItemInt(aDefaultDepth, "ViewPostIt", "", QString("backgroundImg: \"%1\"").arg(theBackgroundImageName));
+    QString myPageList("pages : [");
+    for (int i=1; i<10; i++) {
+        QString myPageNr = "page" + QString::number(i);
+        QString myPageText =  theProps.getPropertyNoDefault(myPageNr);
+        if (myPageText.isEmpty())
+            break;
+        myPageList += QString("\"%1\",").arg(TheGetText(myPageText));
+    }
+    myPageList += "];";
+
+    return createViewItemInt(aDefaultDepth, "ViewPostIt", "", QString("backgroundImg: \"%1\"; %2")
+                             .arg(theBackgroundImageName).arg(myPageList));
 }
