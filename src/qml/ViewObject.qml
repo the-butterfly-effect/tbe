@@ -37,7 +37,10 @@ ViewItem {
         sourceSize.width: parent.width
         sourceSize.height: parent.height
     }
-    Tooltip {
-        text: parent.tooltip
-    }
+
+    // Disabled: current implementation is too crude.
+    // Unfortunately, it will steal all hover/click events away from other MouseAreas.
+//    Tooltip {
+//        text: parent.tooltip
+//    }
 }
