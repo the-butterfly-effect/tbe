@@ -107,7 +107,7 @@ ViewObject {
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
-        onEntered: highlight.color = "#FFFFFFE0"
+        onEntered: highlight.color = "#80FFFFFF"
         onExited:  highlight.color = "transparent"
         onClicked: postit.state = "Opened"
     }
