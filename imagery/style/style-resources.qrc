@@ -6,11 +6,14 @@
         <file>IconDelete.png</file>
         <file>ListViewItemTooltip.png</file>
         <file>Shrink.png</file>
-	<file>SimulationButtonInverted.png</file>
-	<file>SimulationButtonNormal.png</file>
-	<file>SimulationControlsButtonFrame.png</file>
-	<file>SimulationControlsLabelFrame.png</file>
+        <file>SimulationButtonInverted.png</file>
+        <file>SimulationButtonNormal.png</file>
+        <file>SimulationControlsButtonFrame.png</file>
+        <file>SimulationControlsLabelFrame.png</file>
         <file>../illustrations/tbe-icon.ico</file>
+        <file>TextButtonHighlighted.png</file>
+        <file>TextButtonInverted.png</file>
+        <file>TextButtonNormal.png</file>
         <file>transparant.png</file>
         <file>WinFail.png</file>
     </qresource>
