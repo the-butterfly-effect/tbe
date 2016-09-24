@@ -154,7 +154,7 @@
                 <property key="ZValue">20.0</property>
             </object>
             <object X="4" Y="2.0" type="PostItTutorial">
-                <property key="page1">Meet Ad and Lies.&lt;br&gt;&lt;br&gt;They really like camping.</property>
+                <property key="page1">Meet Joe and Lynn.&lt;br&gt;&lt;br&gt;They really like camping.</property>
                 <property key="page2">Unfortunately, they always get confused when they want to put up their tent.</property>
                 <property key="page3">They got the tent poles up already, but are now looking confused at the canvas.</property>
                 <property key="page4">While they’re not looking, let’s kick over their tent poles.</property>
