@@ -159,6 +159,7 @@ void ViewWorldItem::setWorldPtr(World *aWorldPtr)
     assert (nullptr != aWorldPtr);
     theWorldPtr = aWorldPtr;
     setupBackground();
+    emit dimensionsChanged(theWorldPtr->getTheWorldWidth(), theWorldPtr->getTheWorldHeight());
 }
 
 

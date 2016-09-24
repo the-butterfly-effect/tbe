@@ -37,8 +37,8 @@ ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
     : QQuickWidget(parent),
       theButtonHeight(theButtonHeightPix),
       theButtonIconSize(theButtonIconPix),
-      theWorldWidthInMeters(7.0),
-      theWorldHeightInMeters(4.0),
+      theWorldWidthInMeters(1.0),
+      theWorldHeightInMeters(1.0),
       thePixPerMeter(100),
       theGameViewPtr(nullptr)
 {
@@ -65,7 +65,8 @@ void ResizeAwareQuickWidget::resizeEvent(QResizeEvent *event)
     thePixPerMeter = theGameViewPtr->width() / theWorldWidthInMeters;
     emit pixPerMeterChanged();
 
-    QQuickWidget::resizeEvent(event);
+    if (nullptr != event)
+        QQuickWidget::resizeEvent(event);
 }
 
 bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
@@ -87,5 +88,15 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
     if (nullptr == theGameViewPtr) {
         return false;
     }
+    connect(theGameViewPtr, SIGNAL(dimensionsChanged(qreal, qreal)), this, SLOT(updateWorldSize(qreal,qreal)));
     return true;
+}
+
+void ResizeAwareQuickWidget::updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter)
+{
+    DEBUG1ENTRY;
+    theWorldWidthInMeters = aWidthInMeter;
+    theWorldHeightInMeters= aHeightInMeter;
+    emit aspectRatioChanged();
+    emit resizeEvent(nullptr);
 }

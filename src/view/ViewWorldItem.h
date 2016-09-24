@@ -64,6 +64,7 @@ public:
     }
 
 signals:
+    void dimensionsChanged(qreal aWidthInMeter, qreal aHeightInMeter);
 
 public slots:
     void setupBackground(void);

@@ -68,6 +68,11 @@ signals:
     void handleHeightChanged();
     void pixPerMeterChanged();
 
+public slots:
+    /// Re-calculate all dimensions based on the new world sizes.
+    /// Will emit various signals for changed dimensions.
+    void updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter);
+
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
