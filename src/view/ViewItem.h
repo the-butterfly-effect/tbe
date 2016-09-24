@@ -38,6 +38,7 @@ public:
     Q_PROPERTY(qreal yInM MEMBER theYinM NOTIFY sizeChanged)
     Q_PROPERTY(qreal widthInM MEMBER theWidthInM NOTIFY sizeChanged)
     Q_PROPERTY(qreal heightInM MEMBER theHeightInM NOTIFY sizeChanged)
+    Q_PROPERTY(qreal angleInDegrees MEMBER theAngleInDegrees NOTIFY angleChanged)
 
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
@@ -51,6 +52,7 @@ public:
 
 signals:
     void sizeChanged();
+    void angleChanged();
 
 public slots:
 
@@ -64,6 +66,7 @@ private:
     qreal theYinM;
     qreal theWidthInM;
     qreal theHeightInM;
+    qreal theAngleInDegrees;
 };
 
 #endif // VIEWITEM_H

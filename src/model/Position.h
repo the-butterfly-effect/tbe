@@ -134,6 +134,12 @@ public:
         return angle * 180 / PI;
     }
 
+    // TODO/FIXME: QML positive rotation is clockwise, not counterclockwise :-(
+    qreal angleInQDegrees(void) const
+    {
+        return -angle * 180 / PI;
+    }
+
     qreal length(void);
 };
 

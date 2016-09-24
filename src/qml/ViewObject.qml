@@ -28,6 +28,7 @@ ViewItem {
     y: gameView.height - ResizeInfo.pixPerMeter * yInM;
     width: ResizeInfo.pixPerMeter * widthInM;
     height: ResizeInfo.pixPerMeter * heightInM;
+    rotation: angleInDegrees;
 
     property var tooltip;
     property var imageName;
