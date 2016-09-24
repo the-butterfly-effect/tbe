@@ -32,9 +32,9 @@
 static ViewWorldItem* theVWIPtr = nullptr;
 
 
-
 static void dumpErrors(const QString& aSite, const QQmlComponent& aComponent)
 {
+#if 0
     printf("Dumping errors for %s\n", aSite.toLatin1().constData());
     if (aComponent.isError()) {
         QList<QQmlError> myList = aComponent.errors();
@@ -44,8 +44,8 @@ static void dumpErrors(const QString& aSite, const QQmlComponent& aComponent)
         exit(1);
     }
     printf("  no errors found.\n");
+#endif
 }
-
 
 
 /// Impl of ViewWorldItem that creates ViewItems,

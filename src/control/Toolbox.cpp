@@ -98,7 +98,6 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
                 "VolleyBall",
                 myItemPtr->getToolTip());
         theTBGList.append(myTIGPtr);
-        printf("Add one!\n");
     }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
     ctxt->setContextProperty("myToolboxModel",
