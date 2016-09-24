@@ -25,6 +25,8 @@ import QtQuick.Controls 1.4    // for the Button
 /// clicked and hover animations. You can adjust the height.
 /// The button scales width to match the text inside.
 /// Use it like a normal Button.
+///
+/// @note: doesn't support QML Actions (yet)
 BorderImage {
     property var text
     signal clicked()
