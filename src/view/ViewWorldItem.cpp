@@ -88,11 +88,12 @@ ViewItem *ViewWorldItem::impl::createViewItem(
 
     // TODO: angle
     QString myObjectDescription = QString(
-            "%1 { xInM:%2; yInM:%3; z:%4; widthInM:%5; heightInM:%6; %7 }")
+            "%1 { xInM:%2; yInM:%3; z:%4; tooltip: \"%5\"; widthInM:%6; heightInM:%7; %8 }")
             .arg(aVOType)
             .arg(myPos.x - 0.5*myW)
             .arg(myPos.y + 0.5*myH)
             .arg(aDefaultDepth)
+            .arg(anAOPtr->getToolTip()) // tooltip is already translated
             .arg(myW)
             .arg(myH)
             .arg(extraOptions);

@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 import TBEView 1.0
 
 // The ViewItem is an object we own from C++, it contains all info we need.
@@ -28,11 +29,15 @@ ViewItem {
     width: ResizeInfo.pixPerMeter * widthInM;
     height: ResizeInfo.pixPerMeter * heightInM;
 
+    property var tooltip;
     property var imageName;
     Image {
         anchors.fill: parent
         source: img(imageName)
         sourceSize.width: parent.width
         sourceSize.height: parent.height
+    }
+    Tooltip {
+        text: parent.tooltip
     }
 }
