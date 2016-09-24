@@ -53,12 +53,6 @@ public:
     /// @param aStringToTranslate string to translate
     /// @returns translated string according to the currently set locale if possible
     /// @note please refer to the convenience macro TheGetText() below
-    const char *getText(const char *aStringToTranslate);
-
-    /// Use to get the current translation for a level XML string.
-    /// @param aStringToTranslate string to translate
-    /// @returns translated string according to the currently set locale if possible
-    /// @note please refer to the convenience macro TheGetText() below
     const QString getText(const QString &aStringToTranslate);
 
     /// Called at application startup to initialise the locales.
