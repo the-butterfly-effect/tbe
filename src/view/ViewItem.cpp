@@ -26,67 +26,30 @@ ViewItem::ViewItem(QQuickItem *aParentPtr)
     // Nothing to do here...
 }
 
-#if 0
-// TODO: create a destructor, because we need to take the AO from the world upon destruction.
+// Maybe still TODO: create a destructor, because we need to take the AO from the world upon destruction.
 
 void
 ViewItem::adjustObjectDrawingFromAO()
 {
-    assert(theAOPtr!=nullptr);
+    AbstractObjectPtr myAOPtr(theAOPtr);
+    if (nullptr == myAOPtr)
+        return;
 
-    // convert width and height from SI to pixels and set them
-    QSize mySize = Vector(theAOPtr->theWidth, theAOPtr->theHeight).toQSize();
-    parentItem()->setWidth(mySize.width());
-    parentItem()->setHeight(mySize.height());
+    theWidthInM = myAOPtr->getTempWidth();
+    theHeightInM= myAOPtr->getTempHeight();
 
-    // convert center position from SI to pixels and set the top-left position
-    parentItem()->setRotation(theAOPtr->theCenter.angleInDegrees());
-    QPointF myCenter = theAOPtr->theCenter.toQPointF();
-    qreal myHalfW =  mySize.width() / 2.;
-    qreal myHalfH =  mySize.height() / 2.;
-    parentItem()->setX(myCenter.x() - myHalfW);
-    parentItem()->setY(myCenter.y() - myHalfH);
+    Position myPos = myAOPtr->getTempCenter();
+    theXinM = myPos.x - 0.5 * theWidthInM;
+    theYinM = myPos.y + 0.5 * theHeightInM;
+    theAngleInDegrees = myPos.angleInQDegrees();
 
-    // TODO: Frame number
-
-    // and make sure that we are updated whenever the UI changes a parameter,
-    // so we can update the AO and check for collisions
-    connect (parentItem(), SIGNAL(heightChanged()), this, SLOT(parentParamChanged()));
-    connect (parentItem(), SIGNAL(widthChanged()),  this, SLOT(parentParamChanged()));
-    connect (parentItem(), SIGNAL(xChanged()),      this, SLOT(parentParamChanged()));
-    connect (parentItem(), SIGNAL(yChanged()),      this, SLOT(parentParamChanged()));
-    connect (parentItem(), SIGNAL(zChanged()),      this, SLOT(parentParamChanged()));
-    connect (parentItem(), SIGNAL(rotationChanged()),this,SLOT(parentParamChanged()));
+    emit sizeChanged();
+    emit angleChanged();
 }
 
-
-ViewItem *ViewItem::findVIinVO(QQuickItem *anVOPtr)
+void ViewItem::setParents(QQuickItem *aParentPtr, AbstractObjectPtr anAOPtr)
 {
-    assert (anVOPtr!=nullptr);
-    ViewItem* myVIPtr = nullptr;
-    QList<QQuickItem*> myChilds = anVOPtr->childItems();
-    for (auto I : myChilds) {
-        if (I->objectName() == "theVI")
-            myVIPtr = qobject_cast<ViewItem*>(I);
-    }
-    return myVIPtr;
-}
-
-
-void ViewItem::setAbstractObjectPtr(AbstractObject *anAOPtr)
-{
-    assert (anAOPtr != nullptr);
+    setParentItem(aParentPtr);
+    setParent(aParentPtr);
     theAOPtr = anAOPtr;
-
-    // TODO: retrieve image info
-    //
-
-    // TODO: update isHResize / isVResize / isRotate
-    rand();
-    parentItem()->setProperty("isHResize", true); //rand() % 2);
-    parentItem()->setProperty("isVResize", true); // rand() % 2);
-    parentItem()->setProperty("isRotate", true); // rand() % 2);
-
-    adjustObjectDrawingFromAO();
 }
-#endif

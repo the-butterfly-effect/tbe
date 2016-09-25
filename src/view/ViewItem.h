@@ -42,13 +42,11 @@ public:
 
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
-    /// TODO: Updated are: position (incl angle), width, height.
-    /// TODO: image frame number, ZValue.
+    /// Updated are: position (incl angle), width, height.
+    /// TODO: image frame number
     void adjustObjectDrawingFromAO();
 
-    /// Set the AbstractObject, read info from it.
-    /// TODO: and retrieve the image information.
-    void setAbstractObjectPtr(AbstractObject *anAOPtr);
+    void setParents(QQuickItem* aParentPtr, AbstractObjectPtr anAOPtr);
 
 signals:
     void sizeChanged();

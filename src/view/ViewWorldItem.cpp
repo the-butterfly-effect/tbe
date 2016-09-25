@@ -31,10 +31,12 @@
 /// singleton-like pointer: there's only one.
 static ViewWorldItem* theVWIPtr = nullptr;
 
-
+#if 1
+static void dumpErrors(const QString&, const QQmlComponent&)
+{
+#else
 static void dumpErrors(const QString& aSite, const QQmlComponent& aComponent)
 {
-#if 0
     printf("Dumping errors for %s\n", aSite.toLatin1().constData());
     if (aComponent.isError()) {
         QList<QQmlError> myList = aComponent.errors();
@@ -86,7 +88,10 @@ ViewItem *ViewWorldItem::impl::createViewItem(
     qreal myW = anAOPtr->getTheWidth();
     qreal myH = anAOPtr->getTheHeight();
 
-    // TODO: angle
+    // This first update doesn't use ViewItem::adjustObjectDrawingFromAO()
+    // because we want to prevent creating a default object and then having to
+    // move it around.
+    // Secondly: this one uses the 'original' coordinates, i.e. the start values.
     QString myObjectDescription = QString(
             "%1 { xInM:%2; yInM:%3; z:%4; tooltip: \"%5\"; widthInM:%6; heightInM:%7; angleInDegrees:%8; %9 }")
             .arg(aVOType)
@@ -105,8 +110,8 @@ ViewItem *ViewWorldItem::impl::createViewItem(
     ViewItem* myItemPtr = qobject_cast<ViewItem*>(theQmlComponent.create(&theQmlContext));
     dumpErrors("theQmlComponent after create()", theQmlComponent);
     assert(nullptr != myItemPtr);
-    myItemPtr->setParentItem(theParentPtr);
-    myItemPtr->setParent(theParentPtr);
+
+    myItemPtr->setParents(theParentPtr, anAOPtr);
     return myItemPtr;
 }
 

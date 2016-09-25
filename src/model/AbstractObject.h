@@ -511,6 +511,7 @@ protected:
 
     /// pointer to a ViewObject that will draw this object
     ViewObjectPtr theViewObjectPtr;
+    ViewItem* theViewItemPtr;
 
     typedef QList<b2FixtureDef *> ShapeList;
     /// list holding all the shapes associated with this object

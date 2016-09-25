@@ -52,6 +52,7 @@ AbstractObject::AbstractObject(const QString &aTooltip,
       theToolTip(aTooltip),
       hasCustomToolTip(false),
       theViewObjectPtr(nullptr),
+      theViewItemPtr(nullptr),
       theChildPivotPointPtr(nullptr),
       theChildTranslationGuidePtr(nullptr),
       theBounciness(aBounciness),
@@ -210,8 +211,8 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
     else
         myImageName = anImageName;
 
-    // TODO: store locally!
-    return myVWIPtr->createViewItem(aVOType, getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
+    theViewItemPtr = myVWIPtr->createViewItem(aVOType, getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
+    return theViewItemPtr;
 }
 
 
@@ -411,27 +412,34 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
 
 void AbstractObject::updateViewObject(bool isSimRunning) const
 {
-    // no ViewObject: nothing to update ;-)
-    if (theViewObjectPtr == nullptr)
-        return;
-
     // no b2body: no part of simulation
     // PROBLEM: joints also don't have a b2Body - that's why they have their own
     // overriden version of this member...
     if (theB2BodyPtr == nullptr) {
         if (!isSimRunning) {
             // No sim running: adjust object drawing using static position & dimensions
-            theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
+            if (nullptr != theViewObjectPtr)
+                theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
+            if (nullptr != theViewItemPtr)
+                theViewItemPtr->adjustObjectDrawingFromAO();
         }
-        theViewObjectPtr->setNewImageIndex(getImageIndex());
+        if (nullptr != theViewObjectPtr) {
+            theViewObjectPtr->setNewImageIndex(getImageIndex());
+        }
+        // TODO: the ViewItemPtr setImageIndex one
         return;
     }
 
     // Sim running: don't need to adjust objects that are static or asleep
     if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass() > 0.0001 || !isSimRunning) {
-        theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
-                                              getTempHeight(),
-                                              getTempCenter());
+        if (nullptr != theViewObjectPtr)
+            theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
+                                                  getTempHeight(),
+                                                  getTempCenter());
+        if (nullptr != theViewItemPtr)
+            theViewItemPtr->adjustObjectDrawingFromAO();
     }
-    theViewObjectPtr->setNewImageIndex(getImageIndex());
+    if (nullptr != theViewObjectPtr)
+        theViewObjectPtr->setNewImageIndex(getImageIndex());
+    // TODO: the ViewItemPtr setImageIndex one
 }
