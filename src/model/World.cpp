@@ -46,7 +46,7 @@ void DestructionListener::SayGoodbye(b2Joint *joint)
 }
 
 
-World::World ( void) : theB2WorldPtr(nullptr)
+World::World (void) : theB2WorldPtr(nullptr)
 {
     theViewWorldPtr = nullptr;
     theTotalTime = 0.0f;
@@ -133,7 +133,8 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
 
     if (theViewWorldPtr != nullptr)
         addAbstractObjectToViewWorld(anObjectPtr);
-    addAbstractObjectToViewWorldItem(anObjectPtr);
+    // TODO/FIXME: no need for this call here - it will happen at createScene ?!?
+    //addAbstractObjectToViewWorldItem(anObjectPtr);
     return true;
 }
 
