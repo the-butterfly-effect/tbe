@@ -34,8 +34,10 @@ ViewObject {
     function cleanup() {
         postit.state = "";
         pageNumber = 0;
-        nextButton.text = "Next>"
+        nextButton.text = qsTr("Next>")
     }
+
+    Component.onCompleted: cleanup()
 
     Image {
         id: postit
@@ -70,20 +72,19 @@ ViewObject {
             anchors.rightMargin: 20
             TextButton {
                 id: nextButton
-                text: "Next>"
                 onClicked: {
                     if (pageNumber >= pages.length-1) {
                         cleanup();
                     }
                     else {
                         if (pageNumber >= pages.length-2)
-                            text = "Finish";
+                            text = qsTr("Finish");
                         pageNumber++;
                     }
                 }
             }
             TextButton {
-                text: "Cancel"
+                text: qsTr("Cancel")
                 onClicked: cleanup();
             }
         }
