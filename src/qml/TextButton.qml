@@ -35,10 +35,12 @@ BorderImage {
     height: 40
     border { left: height/2; top: height/2; right: height/2; bottom: height/2 }
     horizontalTileMode: BorderImage.Stretch
+    opacity: enabled ? 1.0 : 0.6;
     verticalTileMode: BorderImage.Stretch   // let's hope we don't need this, will not look pretty
     source: mycontrol.pressed ? "qrc:/TextButtonInverted.png" :
                mycontrol.containsMouse ? "qrc:/TextButtonHighlighted.png" :
                    "qrc:/TextButtonNormal.png"
+
 
     Text {
         id: mytext
@@ -48,12 +50,13 @@ BorderImage {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: !mycontrol.pressed ? 0 : 1
         text: parent.text
+        opacity: enabled ? 1.0 : 0.6;
     }
 
     MouseArea {
         id: mycontrol
         anchors.fill: parent
-        onClicked: parent.clicked()
-        hoverEnabled: true
+        onClicked: if (enabled) parent.clicked()
+        hoverEnabled: enabled
     }
 }

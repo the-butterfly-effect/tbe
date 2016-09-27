@@ -20,10 +20,16 @@ import QtQuick 2.0
 
 
 /// This is the dialog shown when a player wins or fails a Level.
-/// That's why the text can be set. Text will be scaled to fit the dialog.
+/// @param isWin: true: win; false: fail
 Image {
     id: winFailDialog
-    property string text : "Hello, world!"
+    property bool isWin : true;
+
+// TODO:
+//    connect(ui->chooseButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionChooseLevel()));
+//    connect(ui->nextButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionNextLevel()));
+//    connect(ui->replayButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionReplay()));
+//    connect(ui->skipButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionSkipLevel()));
 
     height:153
     source: img("WinFail")
@@ -46,7 +52,7 @@ Image {
             font.pointSize: 36
             fontSizeMode: Text.Fit
             minimumPointSize: 12
-            text: winFailDialog.text
+            text: winFailDialog.isWin ? qsTr("Congratulations!") : qsTr("Fail - retry?")
             wrapMode: Text.NoWrap
             anchors.top: parent.top
             x: 48
@@ -59,7 +65,7 @@ Image {
             spacing: 5
 
             TextButton {
-                text: qsTr("Replay");
+                text: winFailDialog.isWin ? qsTr("Replay") : qsTr("Retry");
             }
 
             TextButton {
@@ -79,6 +85,7 @@ Image {
             }
             TextButton {
                 text: qsTr("Next>")
+                enabled: winFailDialog.isWin
             }
         }
 

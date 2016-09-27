@@ -38,7 +38,7 @@ RowLayout {
         Layout.preferredHeight: width / ResizeInfo.aspectRatio
 
         WinFailDialog {
-
+            isWin: false
         }
     }
 
