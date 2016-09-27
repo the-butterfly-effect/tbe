@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/qml">
+        <file>HandleResizeHorizontal.qml</file>
+        <file>HandleResizeVertical.qml</file>
         <file>IconButton.qml</file>
         <file>main.qml</file>
         <file>TextButton.qml</file>
@@ -9,5 +11,6 @@
         <file>ViewObject.qml</file>
         <file>ViewPostIt.qml</file>
         <file>ViewWorld.qml</file>
+        <file>ResizeRotateMoveDecorator.qml</file>
     </qresource>
 </RCC>

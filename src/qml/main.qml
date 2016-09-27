@@ -26,6 +26,9 @@ RowLayout {
         return "image://tbe/"+A;
     }
 
+    /// Refers to the currently by the user selected item.
+    property var selectedItem : undefined;
+
     ViewWorld {
         id: gameView
         objectName: "gameView"

@@ -31,6 +31,7 @@ SET(view_SOURCES
     view/ViewLink.cpp
     view/ViewPingus.cpp
     view/ViewPostIt.cpp
+    view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
     view/ViewWorldItem.cpp
     view/WinFailDialog.cpp
@@ -67,6 +68,7 @@ SET(view_HEADERS
     view/ViewObjectPtr.h
     view/ViewPingus.h
     view/ViewPostIt.h
+    view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
     view/ViewWorldItem.h
     view/WinFailDialog.h

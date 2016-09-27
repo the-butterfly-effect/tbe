@@ -39,9 +39,39 @@ ViewItem {
         sourceSize.height: parent.height
     }
 
+    MouseArea {
+        anchors.fill: parent
+        drag{
+            target: parent
+            smoothed: true
+        }
+        onPressed: {
+            if(selectedItem)
+                if (selectedItem.theDecorated != parent) {
+                    selectedItem.destroy();
+                    selectedItem = undefined
+                }
+            if(!selectedItem) {
+                var component = Qt.createComponent("ResizeRotateMoveDecorator.qml");
+                if (component.status == Component.Ready) {
+                    selectedItem = component.createObject(gameView, {
+                                                           "theDecorated": parent,
+                                                           "x": parent.x,
+                                                           "y": parent.y,
+                                                           "rotationAngle": parent.rotation,
+                                                           "width": parent.width,
+                                                           "height": parent.height})
+                }
+                else
+                    console.log("Error creating component: '" + component.errorString() + "'");
+            }
+        }
+    }
+
     // Disabled: current implementation is too crude.
     // Unfortunately, it will steal all hover/click events away from other MouseAreas.
 //    Tooltip {
 //        text: parent.tooltip
 //    }
+
 }
