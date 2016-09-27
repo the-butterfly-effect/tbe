@@ -30,12 +30,10 @@
 class PostIt : public AbstractObject
 {
 public:
-    PostIt(
-        const char    *aDisplayName,
+    PostIt(const char    *aDisplayName,
         const char    *aTooltip,
         const QString &aBackgroundImageName,
-        const QString &anImageName,
-        const QString &aButtonStyle);
+        const QString &anImageName);
 
     virtual ~PostIt();
 
@@ -74,21 +72,13 @@ public:
 
     /// overridden because we have our own ViewObject that displays
     /// the PostIt
-    /// @param   aDefaultDepth, ZValue depth in view if not set as property,
-    ///          the higher the value the more likely it is drawn on top
-    ViewObjectPtr createViewObject(float aDefaultDepth = 10.0) override;
-
-    /// overridden because we have our own ViewObject that displays
-    /// the PostIt
-    ViewItem* createViewItem(float aDefaultDepth=2.0) override;
+    ViewItem* createViewItem(float aDefaultDepth=10.0) override;
 
 private:
     const char *theDisplayName;
     const char *theTooltip;
     QString theImageName;
     QString theBackgroundImageName;
-    QString theButtonStyle;
-
 };
 
 
@@ -104,26 +94,22 @@ public:
         const char    *aDisplayName,
         const char    *aTooltip,
         const QString &anImageName,
-        const QString &aBackgroundImageName,
-        const QString &aButtonStyle)
+        const QString &aBackgroundImageName)
         : theDisplayName(aDisplayName), theTooltip(aTooltip),
-          theImageName(anImageName), theBackgroundImageName(aBackgroundImageName),
-          theButtonStyle(aButtonStyle)
+          theImageName(anImageName), theBackgroundImageName(aBackgroundImageName)
     {
         announceObjectType(anInternalName, this);
     }
 
     virtual AbstractObject *createObject(void) const
     {
-        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName,
-                                    theButtonStyle));
+        return fixObject(new PostIt(theDisplayName, theTooltip, theImageName, theBackgroundImageName));
     }
 private:
     const char *theDisplayName;
     const char *theTooltip;
     QString theImageName;
     QString theBackgroundImageName;
-    QString theButtonStyle;
 };
 
 #endif // POSTIT_H
