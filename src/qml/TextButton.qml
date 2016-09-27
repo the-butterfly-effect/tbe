@@ -17,8 +17,6 @@
  */
 
 import QtQuick 2.0
-import QtQuick.Controls.Styles 1.4  // for styles
-import QtQuick.Controls 1.4    // for the Button
 
 /// This is a custom Button implementation to satisfy kaa-ching's needs for
 /// having his own styled textbuttons. The button is semi-transparant and has
