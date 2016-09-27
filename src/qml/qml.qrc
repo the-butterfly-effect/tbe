@@ -4,6 +4,7 @@
         <file>HandleResizeVertical.qml</file>
         <file>IconButton.qml</file>
         <file>main.qml</file>
+        <file>ResizeRotateMoveDecorator.qml</file>
         <file>TextButton.qml</file>
         <file>Toolbox.qml</file>
         <file>ToolboxEntry.qml</file>
@@ -11,6 +12,6 @@
         <file>ViewObject.qml</file>
         <file>ViewPostIt.qml</file>
         <file>ViewWorld.qml</file>
-        <file>ResizeRotateMoveDecorator.qml</file>
+        <file>WinFailDialog.qml</file>
     </qresource>
 </RCC>

@@ -36,6 +36,10 @@ RowLayout {
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         Layout.preferredHeight: width / ResizeInfo.aspectRatio
+
+        WinFailDialog {
+
+        }
     }
 
     ColumnLayout {
