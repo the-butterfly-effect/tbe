@@ -43,13 +43,12 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
         myRequestedSize = theDefaultSize;
     }
 
-    DEBUG4("ImageProvider: request for %s size %dx%d",
+    DEBUG4("ImageProvider: request for '%s'' size %dx%d",
            ASCII(aPixmapName), aRequestedSize.width(), aRequestedSize.height());
 
     QPixmap myTempPixmap;
-    Q_ASSERT(aPixmapName.isEmpty() == false);
     if (aPixmapName.isEmpty())
-        return myTempPixmap;
+        return requestPixmap("NotFound", aFinalSizePr, aRequestedSize);
 
     // only names, no paths, no extensions
     Q_ASSERT(aPixmapName.contains(".") == false);
