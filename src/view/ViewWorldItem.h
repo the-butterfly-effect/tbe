@@ -54,6 +54,12 @@ public:
     ///        remains with this ViewWorldItem - we delete the object!
     ViewItem* createViewItem(const QString& aVOType, const AbstractObjectPtr anAOPtr, float aDefaultDepth, const QString& extraOptions);
 
+    /// Factory method for creating a Dialog. The dialog will be shown centrally.
+    /// @param aVOType      String describing the dialog type.
+    /// @param extraOptions List of extra options to pass, in style "count: 3; borg:false;"
+    /// @note: Currently, the dialog is shown without any animations.
+    QQuickItem* createDialog(const QString& aVOType, const QString& extraOptions);
+
     void setQmlEnginePtr(QQmlEngine* anEnginePtr, const QUrl& aSource);
 
     void setWorldPtr(World* aWorldPtr);

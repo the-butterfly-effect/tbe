@@ -55,6 +55,7 @@ SET(view_HEADERS
     view/Popup.h
     view/PieMenu.h
     view/RegressionTest.h
+    view/RequestDialog.h
     view/ResizeAwareQuickWidget.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h

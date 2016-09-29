@@ -35,6 +35,7 @@
 #include "World.h"
 
 #include <QMenuBar>
+#include <QQuickItem>
 
 static ResizingGraphicsView *theRSGVPtr = nullptr;
 
@@ -46,6 +47,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     theObjectEditorPtr(nullptr),
     theGameStateMachinePtr(nullptr),
     theWinFailDialogPtr(nullptr),
+    theNewWinFailDialogPtr(nullptr),
     theFrameRateViewPtr(nullptr)
 {
     setAlignment(Qt::AlignLeft | Qt::AlignTop);

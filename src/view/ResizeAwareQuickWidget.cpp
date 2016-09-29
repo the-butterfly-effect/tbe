@@ -26,6 +26,8 @@
 #include <QQmlContext>
 #include <QQuickItem>
 
+#include <QTimer>
+
 
 // TODO: make configurable using QSettings
 static const qreal theHandleSizeMM = 4.; // handle is resolution independent, 4mm wide and tall
@@ -85,13 +87,25 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
     if (status() == QQuickWidget::Error)
         return false;
 
-    theGameViewPtr = rootObject()->findChild<QQuickItem*>("gameView");
+    theGameViewPtr = qobject_cast<ViewWorldItem*>(rootObject()->findChild<QQuickItem*>("gameView"));
     assert(nullptr != theGameViewPtr);
     if (nullptr == theGameViewPtr) {
         return false;
     }
     connect(theGameViewPtr, SIGNAL(dimensionsChanged(qreal, qreal)), this, SLOT(updateWorldSize(qreal,qreal)));
+
+    QTimer::singleShot(4000, this, SLOT(slot_showWinFailDialog()));
     return true;
+}
+
+QQuickItem *ResizeAwareQuickWidget::showWinFail(bool isWin)
+{
+    return theGameViewPtr->createDialog("WinFailDialog", QString("isWin: %1;").arg(isWin?"true":"false"));
+}
+
+void ResizeAwareQuickWidget::slot_showWinFailDialog()
+{
+    showWinFail(true);
 }
 
 void ResizeAwareQuickWidget::updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter)

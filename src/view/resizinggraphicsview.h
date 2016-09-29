@@ -32,6 +32,7 @@ class GameStateMachine;
 class MainWindow;
 class QMenu;
 class QMenuBar;
+class QQuickItem;
 class ViewWorld;
 class WinFailDialog;
 
@@ -103,6 +104,7 @@ private:
     GameStateMachine   *theGameStateMachinePtr;
     ViewWorld          *theScenePtr;
     WinFailDialog      *theWinFailDialogPtr;
+    QQuickItem         *theNewWinFailDialogPtr;
     QAction            *theFrameRateViewPtr;
     friend class LevelCreator;
 };

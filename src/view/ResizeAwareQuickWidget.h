@@ -20,9 +20,12 @@
 #define RESIZEAWAREQUICKWIDGET_H
 
 #include "Position.h"
+#include "RequestDialog.h"
 #include <QQuickWidget>
 
-class ResizeAwareQuickWidget : public QQuickWidget
+class ViewWorldItem;
+
+class ResizeAwareQuickWidget : public QQuickWidget, public RequestDialog
 {
     Q_OBJECT
 
@@ -60,6 +63,10 @@ public:
     ///
     bool setupQmlSource(const QUrl &url);
 
+    // --------------------------------------- RequestDialog implementation
+    QQuickItem *showWinFail(bool isWin) override;
+
+
 signals:
     void aspectRatioChanged();
     void buttonHeightChanged();
@@ -72,6 +79,9 @@ public slots:
     /// Re-calculate all dimensions based on the new world sizes.
     /// Will emit various signals for changed dimensions.
     void updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter);
+
+    /// temporary
+    void slot_showWinFailDialog();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -87,7 +97,7 @@ private:
 
     int thePixPerMeter;
 
-    QQuickItem* theGameViewPtr;
+    ViewWorldItem* theGameViewPtr;
 };
 
 #endif // RESIZEAWAREQUICKWIDGET_H

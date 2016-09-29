@@ -69,6 +69,8 @@ public:
     ViewItem *createViewItem(const QString &aVOType, const AbstractObjectPtr anAOPtr,
                              float aDefaultDepth, const QString &extraOptions);
 
+    QQuickItem *createObject(const QString &aVOType, const QString &extraOptions);
+
 private:
     QQuickItem* theParentPtr;
     QQmlComponent theQmlComponent;
@@ -92,9 +94,8 @@ ViewItem *ViewWorldItem::impl::createViewItem(
     // because we want to prevent creating a default object and then having to
     // move it around.
     // Secondly: this one uses the 'original' coordinates, i.e. the start values.
-    QString myObjectDescription = QString(
-            "%1 { xInM:%2; yInM:%3; z:%4; tooltip: \"%5\"; widthInM:%6; heightInM:%7; angleInDegrees:%8; %9 }")
-            .arg(aVOType)
+    QString myObjectOpts = QString(
+            "xInM:%1; yInM:%2; z:%3; tooltip: \"%4\"; widthInM:%5; heightInM:%6; angleInDegrees:%7; %8")
             .arg(myPos.x - 0.5*myW)
             .arg(myPos.y + 0.5*myH)
             .arg(aDefaultDepth)
@@ -104,16 +105,29 @@ ViewItem *ViewWorldItem::impl::createViewItem(
             .arg(myPos.angleInQDegrees())
             .arg(extraOptions);
 
-    // TODO: let's create all plain QML ViewObjects for now
-    theQmlComponent.setData( myObjectDescription.toLatin1(), theSource);
-    dumpErrors("theQmlComponent after setData", theQmlComponent);
-    ViewItem* myItemPtr = qobject_cast<ViewItem*>(theQmlComponent.create(&theQmlContext));
-    dumpErrors("theQmlComponent after create()", theQmlComponent);
+    ViewItem* myItemPtr = qobject_cast<ViewItem*>(createObject(aVOType, myObjectOpts));
     assert(nullptr != myItemPtr);
 
     myItemPtr->setParents(theParentPtr, anAOPtr);
     return myItemPtr;
 }
+
+
+QQuickItem *ViewWorldItem::impl::createObject(const QString &aVOType,
+                                              const QString &extraOptions)
+{
+    QString myObjectDescription = QString("%1 { %9 }").arg(aVOType).arg(extraOptions);
+
+    printf("impl::createObject(%s)\n", myObjectDescription.toLatin1().constData());
+
+    // TODO: let's create all plain QML ViewObjects for now
+    theQmlComponent.setData( myObjectDescription.toLatin1(), theSource);
+    dumpErrors("theQmlComponent after setData", theQmlComponent);
+    QQuickItem* myItemPtr = qobject_cast<QQuickItem*>(theQmlComponent.create(&theQmlContext));
+    dumpErrors("theQmlComponent after create()", theQmlComponent);
+    return myItemPtr;
+}
+
 
 
 // ---------------------------------------------------------------------------
@@ -147,6 +161,17 @@ ViewItem *ViewWorldItem::createViewItem(const QString &aVOType, const AbstractOb
 {
     assert(nullptr != pImpl);
     return pImpl->createViewItem(aVOType, anAOPtr, aDefaultDepth, extraOptions);
+}
+
+QQuickItem *ViewWorldItem::createDialog(const QString &aVOType, const QString &extraOptions)
+{
+    assert(nullptr != pImpl);
+    QString myExtraOptions = QString("anchors.horizontalCenter: parent.horizontalCenter; anchors.verticalCenter: parent.verticalCenter; %1").arg(extraOptions);
+    QQuickItem* myDialogPtr = pImpl->createObject(aVOType, myExtraOptions);
+    assert(nullptr != myDialogPtr);
+    myDialogPtr->setParent(this);
+    myDialogPtr->setParentItem(this);
+    return myDialogPtr;
 }
 
 
