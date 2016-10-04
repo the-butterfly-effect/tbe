@@ -1,6 +1,12 @@
 #Welcome to "The Butterfly Effect"
 We are working on Milestone C (also known as the '0.9.4' release)
 
+
+
+THIS IS THE BRANCH CONTAINING THE "OLD" UI!
+
+
+
 If you want to know the current status, please look at
 https://github.com/the-butterfly-effect/tbe/milestones/Milestone%20C
 
@@ -61,6 +67,7 @@ Especially:
  * Suzanne, Rutger and Julia
  * Alexl a.k.a. glixx
  * Wuzzy, who also contributed many new levels
+ * Niels Vastenhout, Tim and Jos de Coo
 
 We would love to hear your thoughts and comments about the game!
 
