@@ -67,6 +67,7 @@ Especially:
  * Suzanne, Rutger and Julia
  * Alexl a.k.a. glixx
  * Wuzzy, who also contributed many new levels
+ * Niels Vastenhout, Tim and Jos de Coo
 
 We would love to hear your thoughts and comments about the game!
 
