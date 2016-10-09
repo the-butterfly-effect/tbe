@@ -20,10 +20,9 @@
 
 // quite a bit of includes - we're friends of most of them and need
 // to grab inside their innards :-(
-#include <MainWindow.h>
+#include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <resizinggraphicsview.h>
-#include <WinFailDialog.h>
+#include "resizinggraphicsview.h"
 
 #include <QCoreApplication>
 #include <QEvent>
