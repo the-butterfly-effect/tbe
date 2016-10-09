@@ -26,7 +26,7 @@
 
 #include "AbstractObject.h"
 #include "ChooseLevel.h"
-#include "GameStateMachine.h"
+#include "GameFlow.h"
 #include "Hint.h"
 #include "ImageCache.h"
 #include "ImageProvider.h"
@@ -59,9 +59,11 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       theWorldPtr(nullptr),
       theMousePosLabelPtr(nullptr),
       theLanguagesGroup(this),
-      theGameStateMachinePtr(nullptr)
+      theGameFlowPtr(nullptr)
 {
     ui->setupUi(this);
+    theGameFlowPtr = new GameFlow(this, ui->quickWidget);
+
     setupView();
     setupQml();
     statusBar();
@@ -433,7 +435,7 @@ void MainWindow::repopulateScene()
     if (theIsLevelCreator)
         connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
                 theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
-    emit theGameStateMachinePtr->signal_Reset_triggered();
+    emit theGameFlowPtr->theGameStateMachinePtr->signal_Reset_triggered();
 }
 
 
@@ -492,15 +494,13 @@ void MainWindow::setupView()
     }
     setLanguageCheckmark();
 
-    theGameStateMachinePtr = new GameStateMachine(this);
-
-    ui->graphicsView->setup(this, theGameStateMachinePtr, ui->menuBar, ui->menuControls);
-    connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameStateMachinePtr,
+    ui->graphicsView->setup(this, theGameFlowPtr, theGameFlowPtr->theGameStateMachinePtr, ui->menuBar, ui->menuControls);
+    connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameFlowPtr->theGameStateMachinePtr,
             SIGNAL(signal_Reset_triggered()));
     connect(ui->graphicsView, &ResizingGraphicsView::signal_actionReload, this,
             &MainWindow::reloadLevel);
 
-    connect(theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
+    connect(theGameFlowPtr->theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
             ui->listWidget, SLOT(setDisabled(bool)));
 
     theToolbox.setupOld(ui->listWidget);
@@ -524,7 +524,7 @@ void MainWindow::setupView()
 void MainWindow::slot_actionNextLevel()
 {
     DEBUG3ENTRY;
-    ui->graphicsView->slot_clearWinFailDialogPtr();
+    theGameFlowPtr->slot_clearWinFailDialogPtr();
     QString myNextLevelName = ChooseLevel::getNextLevelName();
     if (myNextLevelName.isEmpty() == false)
         loadLevel(myNextLevelName);

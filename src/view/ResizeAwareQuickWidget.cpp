@@ -26,6 +26,7 @@
 #include <QQmlContext>
 #include <QQuickItem>
 
+// TODO/FIXME: remove!
 #include <QTimer>
 
 
@@ -93,8 +94,6 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
         return false;
     }
     connect(theGameViewPtr, SIGNAL(dimensionsChanged(qreal, qreal)), this, SLOT(updateWorldSize(qreal,qreal)));
-
-    QTimer::singleShot(4000, this, SLOT(slot_showWinFailDialog()));
     return true;
 }
 
@@ -103,6 +102,7 @@ QQuickItem *ResizeAwareQuickWidget::showWinFail(bool isWin)
     return theGameViewPtr->createDialog("WinFailDialog", QString("isWin: %1;").arg(isWin?"true":"false"));
 }
 
+// TODO/FIXME: remove!
 void ResizeAwareQuickWidget::slot_showWinFailDialog()
 {
     showWinFail(true);

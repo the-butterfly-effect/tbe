@@ -118,8 +118,6 @@ QQuickItem *ViewWorldItem::impl::createObject(const QString &aVOType,
 {
     QString myObjectDescription = QString("%1 { %9 }").arg(aVOType).arg(extraOptions);
 
-    printf("impl::createObject(%s)\n", myObjectDescription.toLatin1().constData());
-
     // TODO: let's create all plain QML ViewObjects for now
     theQmlComponent.setData( myObjectDescription.toLatin1(), theSource);
     dumpErrors("theQmlComponent after setData", theQmlComponent);

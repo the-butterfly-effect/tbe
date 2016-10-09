@@ -19,6 +19,7 @@
 #include "ChooseLevel.h"
 #include "EditObjectDialog.h"
 #include "GameControls.h"
+#include "GameFlow.h"
 #include "GameResources.h"
 #include "Level.h"
 #include "LevelCreator.h"
@@ -31,7 +32,6 @@
 #include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
 #include "ViewWorld.h"
-#include "WinFailDialog.h"
 #include "World.h"
 
 #include <QMenuBar>
@@ -46,8 +46,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     theMainWindowPtr(nullptr),
     theObjectEditorPtr(nullptr),
     theGameStateMachinePtr(nullptr),
-    theWinFailDialogPtr(nullptr),
-    theNewWinFailDialogPtr(nullptr),
     theFrameRateViewPtr(nullptr)
 {
     setAlignment(Qt::AlignLeft | Qt::AlignTop);
@@ -76,7 +74,7 @@ void ResizingGraphicsView::clearViewWorld(void)
     QMatrix myMatrix;
     setMatrix(myMatrix);
 
-    slot_clearWinFailDialogPtr();
+    emit theGameFlowPtr->slot_clearWinFailDialogPtr();
     delete theScenePtr;
     theScenePtr = nullptr;
 }
@@ -118,9 +116,10 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameStateMachine *aGSMPtr,
+void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr,
                                  QMenuBar *aMenuBarPtr, QMenu *anMenuControlsPtr)
 {
+    theGameFlowPtr = aGFPtr;
     theMainWindowPtr = aMWPtr;
     theGameControlsPtr->setup(anMenuControlsPtr);
     connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr,
@@ -142,15 +141,6 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameStateMachine *aGSMPtr,
              SIGNAL(signal_Reset_triggered()));
     connect (theGameControlsPtr, SIGNAL(signal_Slow_triggered()),     aGSMPtr,
              SIGNAL(signal_Slow_triggered()));
-    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),    this,    SLOT(slot_levelWon()));
-    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()),    this,    SLOT(slot_levelDeath()));
-
-    connect (this, SIGNAL(signal_actionChooseLevel()), theMainWindowPtr,
-             SLOT(on_action_Open_Level_triggered()));
-    connect (this, SIGNAL(signal_actionNextLevel()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
-    connect (this, SIGNAL(signal_actionReplay()),      aGSMPtr, SIGNAL(signal_Reset_triggered()));
-    connect (this, SIGNAL(signal_actionSkipLevel()),   theMainWindowPtr,
-             SLOT(on_action_Skip_Level_triggered()));
 
     // this one displays the frame rate counter if active
     theFrameRateViewPtr = aMenuBarPtr->addAction("");
@@ -200,38 +190,6 @@ void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
             SLOT(slot_signalPause()));
 
     slot_showGameResourcesDialog();
-}
-
-
-void ResizingGraphicsView::slot_clearWinFailDialogPtr()
-{
-    delete theWinFailDialogPtr;
-    theWinFailDialogPtr = nullptr;
-}
-
-
-// TODO/FIXME: logic is now ok, should be triggered by GameStateMachine::signal_Game_Failed()
-void ResizingGraphicsView::slot_levelDeath(void)
-{
-    DEBUG3ENTRY;
-    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::DEATH, this);
-    emit theWinFailDialogPtr->appearAnimated();
-}
-
-
-//TODO/FIXME: Part of this logic doesn't belong here
-void ResizingGraphicsView::slot_levelWon(void)
-{
-    DEBUG1ENTRY;
-
-    // Anti-cheat:
-    // Don't label the level as complete when we're in level editor mode
-    if (!theIsLevelCreator) {
-        Level::setLevelStatus(Level::COMPLETED);
-    }
-
-    theWinFailDialogPtr = new WinFailDialog(WinFailDialog::CONGRATS, this);
-    emit theWinFailDialogPtr->appearAnimated();
 }
 
 

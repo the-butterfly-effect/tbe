@@ -9,6 +9,7 @@ SET(view_SOURCES
     view/EditLevelProperties.cpp
     view/EditObjectDialog.cpp
     view/GameControls.cpp
+    view/GameFlow.cpp
     view/GameResources.cpp
     view/GameStateMachine.cpp
     view/GoalEditor.cpp
@@ -33,7 +34,6 @@ SET(view_SOURCES
     view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
     view/ViewWorldItem.cpp
-    view/WinFailDialog.cpp
 )
 
 SET(view_HEADERS 
@@ -44,6 +44,7 @@ SET(view_HEADERS
     view/EditLevelProperties.h
     view/EditObjectDialog.h
     view/GameControls.h
+    view/GameFlow.h
     view/GameResources.h
     view/GameStateMachine.h
     view/GoalEditor.h
@@ -70,7 +71,6 @@ SET(view_HEADERS
     view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
     view/ViewWorldItem.h
-    view/WinFailDialog.h
 )
 
 SET(view_UIFORMS
@@ -84,7 +84,6 @@ SET(view_UIFORMS
     view/ListViewItemTooltip.ui
     view/MainWindow.ui
     view/SaveLevelInfo.ui
-    view/WinFailDialog.ui
 )
 
 SET(view_RESOURCES

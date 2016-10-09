@@ -31,7 +31,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class GameStateMachine;
+class GameFlow;
 class Level;
 class LevelCreator;
 class QGraphicsRectWidget;
@@ -167,7 +167,8 @@ private:
     /// This ActionGroup ensures that only one language in the menu is checked.
     QActionGroup theLanguagesGroup;
 
-    GameStateMachine *theGameStateMachinePtr;
+    /// Contains all UI logic
+    GameFlow* theGameFlowPtr;
 
     /// Contains all logic to interface with the Toolbox UI component
     Toolbox theToolbox;

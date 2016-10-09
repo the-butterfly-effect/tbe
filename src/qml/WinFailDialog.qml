@@ -25,6 +25,11 @@ Image {
     id: winFailDialog
     property bool isWin : true;
 
+    signal chooseButton_clicked();
+    signal nextButton_clicked();
+    signal replayButton_clicked();
+    signal skipButton_clicked();
+
 // TODO:
 //    connect(ui->chooseButton, SIGNAL(clicked()), aParent, SIGNAL(signal_actionChooseLevel()));
 //    connect(ui->nextButton,   SIGNAL(clicked()), aParent, SIGNAL(signal_actionNextLevel()));
@@ -66,10 +71,14 @@ Image {
 
             TextButton {
                 text: winFailDialog.isWin ? qsTr("Replay") : qsTr("Retry");
+                onClicked: winFailDialog.replayButton_clicked();
+
             }
 
             TextButton {
                 text: qsTr("Skip");
+                enabled: !winFailDialog.isWin
+                onClicked: winFailDialog.skipButton_clicked();
             }
         }
 
@@ -82,10 +91,12 @@ Image {
 
             TextButton {
                 text: qsTr("Choose...")
+                onClicked: winFailDialog.chooseButton_clicked();
             }
             TextButton {
                 text: qsTr("Next>")
                 enabled: winFailDialog.isWin
+                onClicked: winFailDialog.nextButton_clicked();
             }
         }
 

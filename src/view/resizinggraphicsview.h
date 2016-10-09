@@ -27,6 +27,7 @@
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
 class GameControls;
+class GameFlow;
 class GameResources;
 class GameStateMachine;
 class MainWindow;
@@ -34,7 +35,8 @@ class QMenu;
 class QMenuBar;
 class QQuickItem;
 class ViewWorld;
-class WinFailDialog;
+
+#include <memory>
 
 class ResizingGraphicsView : public QGraphicsView
 {
@@ -60,7 +62,7 @@ public:
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow *aMWPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
+    void setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
                QMenu *anMenuControlsPtr);
 
     /// @returns a pointer to the GameResourcesDialog.
@@ -88,12 +90,7 @@ signals:
     /// retransmitted from GameResources
     void signal_actionReload();
 
-private slots:
-    void slot_levelDeath(void);
-    void slot_levelWon(void);
-
 public slots:
-    void slot_clearWinFailDialogPtr();
     void slot_showGameResourcesDialog();
 
 private:
@@ -101,10 +98,9 @@ private:
     MainWindow         *theMainWindowPtr;
     EditObjectDialog   *theObjectEditorPtr;
     GameControls       *theGameControlsPtr;
+    GameFlow           *theGameFlowPtr;
     GameStateMachine   *theGameStateMachinePtr;
     ViewWorld          *theScenePtr;
-    WinFailDialog      *theWinFailDialogPtr;
-    QQuickItem         *theNewWinFailDialogPtr;
     QAction            *theFrameRateViewPtr;
     friend class LevelCreator;
 };

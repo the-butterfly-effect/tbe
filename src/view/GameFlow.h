@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2012 Klaas van Gend
+ * This file copyright (C) 2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,37 +16,43 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#ifndef WINFAILDIALOG_H
-#define WINFAILDIALOG_H
+#ifndef GAMEFLOW_H
+#define GAMEFLOW_H
 
-#include "animateddialog.h"
+#include "GameStateMachine.h"
+#include <QObject>
 
-namespace Ui {
-class WinFailDialog;
-}
+class MainWindow;
+class QQuickItem;
+class RequestDialog;
 
-/** This dialog is shown whenever the user fails or wins a level.
-  * It contains options to go to the next level, to replay or to choose a
-  * specific level.
-  */
-class WinFailDialog : public AnimatedDialog
+
+class GameFlow : public QObject
 {
     Q_OBJECT
 
 public:
-    enum MessageType {
-        CONGRATS,
-        DEATH
-    };
+    explicit GameFlow(MainWindow *parent, RequestDialog *anRDPtr);
 
-    explicit WinFailDialog(MessageType aType, ResizingGraphicsView *aParent = 0);
-    virtual ~WinFailDialog();
+    GameStateMachine* theGameStateMachinePtr;
 
-protected:
-    void changeEvent(QEvent *e) override;
+signals:
+
+private slots:
+    void slot_levelDeath(void);
+    void slot_levelWon(void);
+
+public slots:
+    void slot_clearWinFailDialogPtr();
+    void slot_showGameResourcesDialog();
+
 
 private:
-    Ui::WinFailDialog *ui;
+    void setupWinFail(bool isAWin);
+
+    MainWindow* theMainWindowPtr;
+    QQuickItem* theNewWinFailDialogPtr;
+    RequestDialog* theRequestDialogItfPtr;
 };
 
-#endif // WINFAILDIALOG_H
+#endif // GAMEFLOW_H
