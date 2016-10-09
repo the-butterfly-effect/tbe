@@ -80,10 +80,6 @@ public slots:
     /// Will emit various signals for changed dimensions.
     void updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter);
 
-    // TODO/FIXME: remove!
-    /// temporary
-    void slot_showWinFailDialog();
-
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
