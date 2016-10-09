@@ -35,7 +35,7 @@ MoveUndoCommand::MoveUndoCommand(
 
 void MoveUndoCommand::basicMoveEvent(const QPointF &aPos)
 {
-    DEBUG4ENTRY;
+    DEBUG5ENTRY;
     theNewPos = theOrigPos.toVector() + Vector(aPos - theButtonDownPosition);
     theNewPos.angle = theOrigPos.angle;
     theViewObjPtr->setNewGeometry(theNewPos);
