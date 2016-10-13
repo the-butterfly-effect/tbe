@@ -45,9 +45,12 @@ In total, kaa-ching did 5 spikes, but some were only to prove a certain approach
 ## Implementing the real thing: in progress!
 
 If you download and build the current git tree, you'll see both UIs next to each other. Some things can only be done on the left, some things can only be done on the right. Be careful not to mix, or it might crash... The objects in the toolbox all resemble a Volley Ball, some objects like the penguin and the balloon are drawn as the "object not found" image. Objects added to the left only appear when you hit "play". The good news: the new UI is so powerful, that its overhead is almost negligible. 
+We expect that on all platforms drawing performance will improve. And as a bonus, Android will become a possibility, too!
+
+The below image is rather wide, you'll have to click it to see it in its full with (1920 pixels wide!).
+<a href="/images/2016-10-13-tbe-qml-current-dual-ui.png"><img src="/images/2016-10-13-tbe-qml-current-dual-ui.png" alt="Side-by-side: old and new UI" style="width: 720px;"/></a>
 
 Obviously, this is still work in progress. But we think we now got things right. Object scaling feels almost trivial - a good sign of being done right!
-<img src="/images/2016-10-13-tbe-qml-current-dual-ui.png" alt="Side-by-side: old and new UI" style="width: 720px;"/>
 
 Unfortunately, the new UI is progressing slowly. Not in the least because kaa-ching just started a new job and had to focus there. But there's progress, every week!
 
