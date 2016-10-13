@@ -92,7 +92,7 @@ ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
         myImageName = getInternalName();
     theViewObjectPtr = ViewObject::factoryMethod<ViewLink>(getThisPtr(), myImageName);
-    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     return theViewObjectPtr;
 }
 

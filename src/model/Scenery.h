@@ -66,9 +66,15 @@ public:
       * @returns pointer to ViewObject
       * @note: a ZValue set in a property always overrides aDefaultDepth
       */
-    ViewObjectPtr createViewObject(float aDefaultDepth = 0.1) override
-    {
+    ViewObjectPtr createViewObject(float aDefaultDepth = 0.1) override {
+        printf("VO Scenery here! depth=%f\n", aDefaultDepth);
         return AbstractObject::createViewObject(aDefaultDepth);
+    }
+
+    /// Overriden to set the default zvalue for scenery.
+    ViewItem* createViewItem(float aDefaultDepth = 0.1) override {
+        printf("Scenery here! depth=%f\n", aDefaultDepth);
+        return AbstractObject::createViewItem(aDefaultDepth);
     }
 };
 

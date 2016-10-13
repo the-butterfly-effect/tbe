@@ -193,7 +193,7 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 
     theViewObjectPtr = ViewObject::factoryMethod<ViewObject>(getThisPtr(), myImageName);
 
-    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     return theViewObjectPtr;
 }
 
@@ -211,7 +211,8 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
     else
         myImageName = anImageName;
 
-    theViewItemPtr = myVWIPtr->createViewItem(aVOType, getThisPtr(), aDefaultDepth, QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
+    theViewItemPtr = myVWIPtr->createViewItem(aVOType, getThisPtr(), calculateZValue(aDefaultDepth),
+                                              QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
     return theViewItemPtr;
 }
 
@@ -395,9 +396,8 @@ void AbstractObject::setTheWidth ( qreal new_var, bool mustRunParseProperties )
 
 
 
-void  AbstractObject::setViewObjectZValue(float aDefaultValue)
+float AbstractObject::calculateZValue(float aDefaultValue)
 {
-    assert(theViewObjectPtr != nullptr);
     // we have several cases:
     //  a) aDefaultValue = 2.0 ,  default property set -> use default property
     //  b) aDefaultValue !=2   ,  default property set -> use aDefaultValue
@@ -407,7 +407,7 @@ void  AbstractObject::setViewObjectZValue(float aDefaultValue)
     theProps.property2Float(Property::ZVALUE_STRING, &myTemp, true);
     if (aDefaultValue == 2.0 && myTemp != -99.684)
         aDefaultValue = myTemp;
-    theViewObjectPtr->setZValue(aDefaultValue);
+    return aDefaultValue;
 }
 
 void AbstractObject::updateViewObject(bool isSimRunning) const

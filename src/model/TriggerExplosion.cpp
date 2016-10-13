@@ -106,7 +106,7 @@ ViewObjectPtr  DetonatorBox::createViewObject(float aDefaultDepth)
         myImageName = getName();
 
     theViewObjectPtr = ViewObject::factoryMethod<ViewDetonatorBox>(getThisPtr(), myImageName);
-    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     updateViewObject(false);
 
     return theViewObjectPtr;
@@ -272,7 +272,7 @@ void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/
 ViewObjectPtr  DetonatorBoxHandle::createViewObject(float aZ)
 {
     RectObject::createViewObject(aZ);
-    setViewObjectZValue(theDBoxPtr->getZValue() / 1.1);
+    theViewObjectPtr->setZValue(calculateZValue(theDBoxPtr->getZValue() / 1.1));
     return theViewObjectPtr;
 }
 

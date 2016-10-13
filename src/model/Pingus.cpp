@@ -301,7 +301,7 @@ ViewObjectPtr  Pingus::createViewObject(float aDefaultDepth)
     if (nullptr != theViewObjectPtr)
         return theViewObjectPtr;
     theViewObjectPtr = ViewObject::factoryMethod<ViewPingus>(getThisPtr(), theIconName);
-    setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
+    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     updateViewPingus();
     return theViewObjectPtr;
 }
