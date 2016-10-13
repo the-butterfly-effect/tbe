@@ -27,13 +27,18 @@ class RequestDialog
 {
 
 public:
-/*    virtual QQuickItem* showChooseLevel() = 0;
-    virtual QQuickItem* showGameInfo() = 0;
-*/
+//  virtual QQuickItem* showChooseLevel() = 0;
+
+    /// Show the LevelInfo dialog.
+    /// @note Although you get a pointer to the Item, ownership remains with
+    ///       the QML engine.
+    virtual QQuickItem* showLevelInfo() = 0;
+
     /// Show the WinFail dialog.
     /// @note Although you get a pointer to the Item, ownership remains with
     ///       the QML engine.
     virtual QQuickItem* showWinFail(bool isAWin) = 0;
+
 
 };
 

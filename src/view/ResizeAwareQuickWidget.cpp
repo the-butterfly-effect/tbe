@@ -94,6 +94,11 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
     return true;
 }
 
+QQuickItem *ResizeAwareQuickWidget::showLevelInfo()
+{
+    return theGameViewPtr->createDialog("LevelInfoDialog", "");
+}
+
 QQuickItem *ResizeAwareQuickWidget::showWinFail(bool isWin)
 {
     return theGameViewPtr->createDialog("WinFailDialog", QString("isWin: %1;").arg(isWin?"true":"false"));

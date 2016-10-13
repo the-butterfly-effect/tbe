@@ -3,6 +3,7 @@
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>
         <file>IconButton.qml</file>
+        <file>LevelInfoDialog.qml</file>
         <file>main.qml</file>
         <file>ResizeRotateMoveDecorator.qml</file>
         <file>TextButton.qml</file>
