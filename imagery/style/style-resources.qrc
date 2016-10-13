@@ -15,6 +15,5 @@
         <file>TextButtonInverted.png</file>
         <file>TextButtonNormal.png</file>
         <file>transparant.png</file>
-        <file>WinFail.png</file>
     </qresource>
 </RCC>

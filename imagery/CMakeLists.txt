@@ -25,6 +25,6 @@ endif (WITH_DOCS)
 include("src/CMakeLists.txt")
 #include("illustrations/illustrations.txt")
 include("icons/CMakeLists.txt")
-#include("style/CMakeLists.txt")
+include("style/CMakeLists.txt")
 include("textures/CMakeLists.txt")
 
