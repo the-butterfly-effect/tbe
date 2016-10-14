@@ -442,7 +442,6 @@ public:
      *  @param aDefaultDepth  Z-value of the object (0.1=back, 2=default)
      */
     virtual ViewItem* createViewItem(float aDefaultDepth=2.0) {
-        printf("AO here! depth=%f\n", aDefaultDepth);
         return createViewItemInt(aDefaultDepth, "ViewObject", "", "");
     }
 

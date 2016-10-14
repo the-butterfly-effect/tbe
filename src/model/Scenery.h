@@ -57,25 +57,6 @@ public:
     {
         return false;
     }
-
-    /** Creates the ViewObject, finds associated images,
-      * sets ZValue and returns a pointer to it.
-      * Overridden to set a default depth of 0.1 so it moves behind everything.
-      * @param   aDefaultDepth, ZValue depth in view if not set as property,
-      *          the higher the value the more likely it is drawn on top
-      * @returns pointer to ViewObject
-      * @note: a ZValue set in a property always overrides aDefaultDepth
-      */
-    ViewObjectPtr createViewObject(float aDefaultDepth = 0.1) override {
-        printf("VO Scenery here! depth=%f\n", aDefaultDepth);
-        return AbstractObject::createViewObject(aDefaultDepth);
-    }
-
-    /// Overriden to set the default zvalue for scenery.
-    ViewItem* createViewItem(float aDefaultDepth = 0.1) override {
-        printf("Scenery here! depth=%f\n", aDefaultDepth);
-        return AbstractObject::createViewItem(aDefaultDepth);
-    }
 };
 
 #endif // Scenery_H
