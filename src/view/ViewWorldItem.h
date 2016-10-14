@@ -69,6 +69,10 @@ public:
         return theWorldPtr;
     }
 
+    /// Set a context property.
+    /// E.g. used to hand a list of levels to ChooseLevelDialog.
+    void setContextProperty(const QString &aName, const QVariant &aValue);
+
 signals:
     void dimensionsChanged(qreal aWidthInMeter, qreal aHeightInMeter);
 

@@ -94,6 +94,11 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
     return true;
 }
 
+QQuickItem *ResizeAwareQuickWidget::showChooseLevel()
+{
+    return theGameViewPtr->createDialog("ChooseLevelDialog", "");
+}
+
 QQuickItem *ResizeAwareQuickWidget::showLevelInfo()
 {
     return theGameViewPtr->createDialog("LevelInfoDialog", "");
@@ -102,6 +107,11 @@ QQuickItem *ResizeAwareQuickWidget::showLevelInfo()
 QQuickItem *ResizeAwareQuickWidget::showWinFail(bool isWin)
 {
     return theGameViewPtr->createDialog("WinFailDialog", QString("isWin: %1;").arg(isWin?"true":"false"));
+}
+
+void ResizeAwareQuickWidget::setContextProperty(const QString &aName, const QVariant &aValue)
+{
+    theGameViewPtr->setContextProperty(aName, aValue);
 }
 
 void ResizeAwareQuickWidget::updateWorldSize(qreal aWidthInMeter, qreal aHeightInMeter)

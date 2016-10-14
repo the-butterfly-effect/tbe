@@ -64,8 +64,11 @@ public:
     bool setupQmlSource(const QUrl &url);
 
     // --------------------------------------- RequestDialog implementation
-    QQuickItem* showLevelInfo() override;
+    QQuickItem *showChooseLevel() override;
+    QQuickItem *showLevelInfo() override;
     QQuickItem *showWinFail(bool isWin) override;
+    void setContextProperty(const QString &aName, const QVariant &aValue) override;
+
 
 
 signals:

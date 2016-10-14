@@ -25,7 +25,6 @@
 #include <QFileDialog>
 
 #include "AbstractObject.h"
-#include "ChooseLevel.h"
 #include "GameFlow.h"
 #include "Hint.h"
 #include "ImageCache.h"
@@ -245,9 +244,7 @@ void MainWindow::on_action_New_Level_Ideas_triggered()
 
 void MainWindow::on_action_Open_Level_triggered()
 {
-    ChooseLevel *myDialogPtr = new ChooseLevel(ui->graphicsView);
-    connect(myDialogPtr, SIGNAL(loadLevel(QString)),
-            this, SLOT(loadLevel(QString)));
+    theGameFlowPtr->slot_showChooseLevelDialog();
 }
 
 
@@ -508,7 +505,7 @@ void MainWindow::setupView()
         theRegressionTest->startRegressionRun();
     } else {
         if (theStartFileName.isEmpty())
-            theStartFileName = ChooseLevel::getNextLevelName();
+            theStartFileName = theGameFlowPtr->getNextLevelName();
         // if all levels have been played, this remains empty
         if (theStartFileName.isEmpty())
             QTimer::singleShot(200, this, SLOT(on_action_Open_Level_triggered()));
@@ -522,7 +519,7 @@ void MainWindow::slot_actionNextLevel()
 {
     DEBUG3ENTRY;
     theGameFlowPtr->slot_clearDialog();
-    QString myNextLevelName = ChooseLevel::getNextLevelName();
+    QString myNextLevelName = theGameFlowPtr->getNextLevelName();
     if (myNextLevelName.isEmpty() == false)
         loadLevel(myNextLevelName);
     else

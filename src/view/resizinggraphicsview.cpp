@@ -16,7 +16,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "ChooseLevel.h"
 #include "EditObjectDialog.h"
 #include "GameControls.h"
 #include "GameFlow.h"

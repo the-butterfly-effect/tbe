@@ -27,7 +27,10 @@ class RequestDialog
 {
 
 public:
-//  virtual QQuickItem* showChooseLevel() = 0;
+    /// Show the LevelInfo dialog.
+    /// @note Although you get a pointer to the Item, ownership remains with
+    ///       the QML engine.
+    virtual QQuickItem* showChooseLevel() = 0;
 
     /// Show the LevelInfo dialog.
     /// @note Although you get a pointer to the Item, ownership remains with
@@ -39,7 +42,9 @@ public:
     ///       the QML engine.
     virtual QQuickItem* showWinFail(bool isAWin) = 0;
 
-
+    /// Set a context property.
+    /// E.g. used to hand a list of levels to ChooseLevelDialog.
+    virtual void setContextProperty(const QString &aName, const QVariant &aValue) = 0;
 };
 
 #endif // REQUESTDIALOG_H

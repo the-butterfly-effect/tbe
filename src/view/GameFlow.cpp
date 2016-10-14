@@ -18,30 +18,78 @@
 
 #include "GameFlow.h"
 #include "Level.h"
+#include "LevelList.h"
 #include "MainWindow.h"
 #include "RequestDialog.h"
+#include "Translator.h"
 #include "tbe_global.h"
+#include "tbe_paths.h"
 
 #include <QQuickItem>
+#include <QQmlContext>
+
+
+ListRow::ListRow(const QString &aNumber, const QString &aTitle, const QString& aFileName)
+    : QObject(nullptr),
+      theNumber(aNumber), theTitle(aTitle), theFileName(aFileName)
+{
+}
+
 
 GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
     : QObject(parent),
       theGameStateMachinePtr(nullptr),
       theDialogPtr(nullptr),
       theMainWindowPtr(parent),
-      theRequestDialogItfPtr(anRDPtr)
+      theRequestDialogItfPtr(anRDPtr),
+      theLevelList(new LevelList(LEVELS_DIRECTORY, "levels.xml"))
 {
     theGameStateMachinePtr = new GameStateMachine(this);
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()), this, SLOT(slot_levelWon()));
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()), this, SLOT(slot_levelDeath()));
+}
 
-//    connect (this, SIGNAL(signal_actionChooseLevel()), theMainWindowPtr,
-//             SLOT(on_action_Open_Level_triggered()));
-//    connect (this, SIGNAL(signal_actionNextLevel()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
-//    connect (this, SIGNAL(signal_actionReplay()),      theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
-//    connect (this, SIGNAL(signal_actionSkipLevel()),   theMainWindowPtr,
-//             SLOT(on_action_Skip_Level_triggered()));
 
+void GameFlow::generateLevelList()
+{
+    theLevelStringList.clear();
+//    bool isFirst = true;
+//    bool hasSkipped = false;
+    QString myNextName = theLevelList->getFirstLevel();
+    int myNr = 0;
+    do {
+        ++myNr;
+        LevelList::LevelMetaInfo myMeta = theLevelList->getLevelMetaInfo(myNextName);
+        ListRow* myRowPtr = new ListRow("", TheGetText(myMeta.theTitle), myMeta.theFileName);
+//      item->setToolTip(TITLE_COLUMN, TheGetText(myMeta.theDescription));
+        switch (myMeta.theStatus) {
+        case Level::COMPLETED:
+            myRowPtr->theNumber = tr("done");
+            break;
+        case Level::SKIPPED:
+            myRowPtr->theNumber = tr("skipped");
+//            if (!hasSkipped) {
+//                hasSkipped = true;
+//                firstSkipped = item;
+//            }
+            break;
+        default:
+            myRowPtr->theNumber = QString::number(myNr);
+//            if (isFirst)
+//                m_ui->theTreeWidget->setCurrentItem(item);
+//            isFirst = false;
+            break;
+        }
+
+        theLevelStringList.append(myRowPtr);
+        myNextName = theLevelList->getNextLevel(myNextName);
+    } while (!myNextName.isEmpty() );
+}
+
+
+QString GameFlow::getNextLevelName()
+{
+    return theLevelList->getNextToPlayLevel();
 }
 
 
@@ -79,6 +127,17 @@ void GameFlow::slot_levelWon(void)
     setupWinFail(true);
 }
 
+void GameFlow::slot_showChooseLevelDialog()
+{
+    if (theDialogPtr)
+        slot_clearDialog();
+
+    generateLevelList();
+    theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(theLevelStringList));
+    theDialogPtr = theRequestDialogItfPtr->showChooseLevel();
+    connect(theDialogPtr, SIGNAL(cancelButton_clicked()),
+            this, SLOT(slot_clearDialog()));
+}
 
 void GameFlow::slot_showLevelInfoDialog()
 {

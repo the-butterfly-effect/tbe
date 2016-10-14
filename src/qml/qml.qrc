@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/qml">
+        <file>ChooseLevelDialog.qml</file>
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>
         <file>IconButton.qml</file>

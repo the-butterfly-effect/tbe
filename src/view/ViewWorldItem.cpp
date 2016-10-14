@@ -31,7 +31,7 @@
 /// singleton-like pointer: there's only one.
 static ViewWorldItem* theVWIPtr = nullptr;
 
-#if 1
+#if 0
 static void dumpErrors(const QString&, const QQmlComponent&)
 {
 #else
@@ -70,6 +70,8 @@ public:
                              float aDefaultDepth, const QString &extraOptions);
 
     QQuickItem *createObject(const QString &aVOType, const QString &extraOptions);
+
+    void setContextProperty(const QString &aName, const QVariant &aValue);
 
 private:
     QQuickItem* theParentPtr;
@@ -126,6 +128,11 @@ QQuickItem *ViewWorldItem::impl::createObject(const QString &aVOType,
     return myItemPtr;
 }
 
+void ViewWorldItem::impl::setContextProperty(const QString &aName,
+                                             const QVariant &aValue)
+{
+    theQmlContext.setContextProperty(aName, aValue);
+}
 
 
 // ---------------------------------------------------------------------------
@@ -173,6 +180,13 @@ QQuickItem *ViewWorldItem::createDialog(const QString &aVOType, const QString &e
 }
 
 
+void ViewWorldItem::setContextProperty(const QString &aName, const QVariant &aValue)
+{
+    assert(nullptr != pImpl);
+    pImpl->setContextProperty(aName, aValue);
+}
+
+
 void ViewWorldItem::setQmlEnginePtr(QQmlEngine *anEnginePtr, const QUrl &aSource)
 {
     assert(nullptr != anEnginePtr);
@@ -191,7 +205,6 @@ void ViewWorldItem::setWorldPtr(World *aWorldPtr)
     setupBackground();
     emit dimensionsChanged(theWorldPtr->getTheWorldWidth(), theWorldPtr->getTheWorldHeight());
 }
-
 
 void ViewWorldItem::setupBackground(void)
 {

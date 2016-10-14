@@ -75,7 +75,7 @@ RowLayout {
                 iconsource: img("ActionMenuEject")
                 tooltip: qsTr("Choose a different level to play")
                 onClicked: {
-                    MainWindow.on_action_Open_Level_triggered();
+                    GameFlow.slot_showChooseLevelDialog();
                 }
             }
         }
