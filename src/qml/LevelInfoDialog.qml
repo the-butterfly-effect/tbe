@@ -23,11 +23,74 @@ import QtQuick 2.0
 Image {
     id: levelInfoDialog
 
+    property string levelName
+    property string description
+    property string author
+
+    signal resetButton_clicked();
+    signal okButton_clicked();
+
     height: 400
     source: img("GameResources")
+    sourceSize.width: width
+    sourceSize.height: height
     width: 600
+    z: 99999
 
     Text {
-        text: qsTr("Level Information")
+        id: levelNameText;
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 20
+        font.bold: true
+        font.pointSize: 36
+        fontSizeMode: Text.Fit
+        height: 40
+        horizontalAlignment: Text.AlignHCenter
+        minimumPointSize: 12
+        text: levelName
+        width: parent.width - 88
+        wrapMode: Text.NoWrap
     }
+
+    Text {
+        anchors.top: levelNameText.bottom
+        anchors.topMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pointSize: 14
+        fontSizeMode: Text.Fit
+        height: 220
+        minimumPointSize: 8
+        text: description
+        width: parent.width - 60
+        wrapMode: Text.WordWrap
+    }
+
+
+    Text {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 30
+        anchors.left: parent.left
+        anchors.leftMargin: 30
+        text: qsTr("Level by <b>%1</b>").arg(author)
+    }
+
+    Row {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.right: parent.right
+        anchors.rightMargin: 88
+        spacing: 5
+
+        TextButton {
+            text: qsTr("Reset all")
+            onClicked: levelInfoDialog.resetButton_clicked();
+        }
+        TextButton {
+            text: qsTr("Ok")
+            onClicked: levelInfoDialog.okButton_clicked();
+        }
+    }
+
+
 }
