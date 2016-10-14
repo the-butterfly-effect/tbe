@@ -110,8 +110,7 @@ void MainWindow::loadLevel(const QString &aFileName)
 
     // create level and display in main window
     theLevelPtr = new Level(&theToolbox);
-    QString myErrorMessage = theLevelPtr->load(aFileName,
-                                               ui->graphicsView->getGameResourcesDialogPtr());
+    QString myErrorMessage = theLevelPtr->load(aFileName);
     if (!myErrorMessage.isEmpty()) {
         QChar myFirst = myErrorMessage[0];
         myErrorMessage = myErrorMessage.mid(1);
@@ -459,7 +458,7 @@ void MainWindow::setupQml()
     theToolbox.setupQml(ui->quickWidget);
 
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("MainWindow"), this);
-    ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("ResizingGraphicsView"), ui->graphicsView);
+    ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("GameFlow"), theGameFlowPtr);
 
     ui->quickWidget->connect(myQmlEnginePtr, &QQmlEngine::quit, this, &MainWindow::close);
     QUrl mySource("qrc:/qml/main.qml");
@@ -497,8 +496,6 @@ void MainWindow::setupView()
     ui->graphicsView->setup(this, theGameFlowPtr, theGameFlowPtr->theGameStateMachinePtr, ui->menuBar, ui->menuControls);
     connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameFlowPtr->theGameStateMachinePtr,
             SIGNAL(signal_Reset_triggered()));
-    connect(ui->graphicsView, &ResizingGraphicsView::signal_actionReload, this,
-            &MainWindow::reloadLevel);
 
     connect(theGameFlowPtr->theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
             ui->listWidget, SLOT(setDisabled(bool)));
@@ -524,7 +521,7 @@ void MainWindow::setupView()
 void MainWindow::slot_actionNextLevel()
 {
     DEBUG3ENTRY;
-    theGameFlowPtr->slot_clearWinFailDialogPtr();
+    theGameFlowPtr->slot_clearDialog();
     QString myNextLevelName = ChooseLevel::getNextLevelName();
     if (myNextLevelName.isEmpty() == false)
         loadLevel(myNextLevelName);

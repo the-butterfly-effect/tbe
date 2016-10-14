@@ -28,7 +28,6 @@
 #include "Toolbox.h"
 
 // Forward Declarations:
-class GameResources;
 class Hint;
 class MainWindow;
 class World;
@@ -102,11 +101,10 @@ public:
      *  Also:
      *
      * @param aFileName file to parse and populate Level with.
-     * @param aLevelInfoToolbox pointer to class that will hold level info and toolbox
      * @return empty string is returned if loading was successful, otherwise
      *          the return will contain the i18n'ed error message
      */
-    QString load(const QString &aFileName, GameResources *aLevelInfoToolbox);
+    QString load(const QString &aFileName);
 
     /** save the Level to a file
      *  the file name must be unique - overwriting is not allowed here
@@ -131,6 +129,12 @@ public:
     /// sets the name of the file that describes the current level
     void setLevelFileName(const QString &aName);
 
+    QString theLevelName; // translatable
+    QString theLevelAuthor;
+    QString theLevelLicense;
+    QString theLevelDescription; // translatable
+    QString theLevelDate;
+
 protected:
     // TODO FIXME: move these two somewhere else so we no longer need the #include for QDomElement here
     void addTextElement(QDomElement aParent, const QString &anElementName, const QString &aText) const;
@@ -140,21 +144,12 @@ protected:
 private:
     World *theWorldPtr;
 
-    QString theLevelName; // translatable
-    QString theLevelAuthor;
-    QString theLevelLicense;
-    QString theLevelDescription; // translatable
-    QString theLevelDate;
-
     typedef QList<Hint *>  HintList;
     HintList theHintPtrList;
 
     Toolbox* theToolboxPtr;
 
-    friend class SaveLevelInfo;
-    friend class GameResources;
     friend class EditLevelProperties;
-    friend class MainWindow;
 
 private:
     // prevent copy constructor / assignment operator

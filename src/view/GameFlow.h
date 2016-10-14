@@ -42,16 +42,17 @@ private slots:
     void slot_levelDeath(void);
     void slot_levelWon(void);
 
+
 public slots:
-    void slot_clearWinFailDialogPtr();
-    void slot_showGameResourcesDialog();
+    void slot_clearDialog();
+    void slot_showLevelInfoDialog();
 
 
 private:
     void setupWinFail(bool isAWin);
 
+    QQuickItem* theDialogPtr;
     MainWindow* theMainWindowPtr;
-    QQuickItem* theNewWinFailDialogPtr;
     RequestDialog* theRequestDialogItfPtr;
 };
 

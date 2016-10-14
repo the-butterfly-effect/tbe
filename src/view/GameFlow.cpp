@@ -27,8 +27,8 @@
 GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
     : QObject(parent),
       theGameStateMachinePtr(nullptr),
+      theDialogPtr(nullptr),
       theMainWindowPtr(parent),
-      theNewWinFailDialogPtr(nullptr),
       theRequestDialogItfPtr(anRDPtr)
 {
     theGameStateMachinePtr = new GameStateMachine(this);
@@ -47,19 +47,19 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
 
 void GameFlow::setupWinFail(bool isAWin)
 {
-    theNewWinFailDialogPtr = theRequestDialogItfPtr->showWinFail(isAWin);
-    connect(theNewWinFailDialogPtr, SIGNAL(chooseButton_clicked()), theMainWindowPtr, SLOT(on_action_Open_Level_triggered()));
-    connect(theNewWinFailDialogPtr, SIGNAL(nextButton_clicked()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
-    connect(theNewWinFailDialogPtr, SIGNAL(replayButton_clicked()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
-    connect(theNewWinFailDialogPtr, SIGNAL(skipButton_clicked()),   theMainWindowPtr, SLOT(on_action_Skip_Level_triggered()));
+    theDialogPtr = theRequestDialogItfPtr->showWinFail(isAWin);
+    connect(theDialogPtr, SIGNAL(chooseButton_clicked()), theMainWindowPtr, SLOT(on_action_Open_Level_triggered()));
+    connect(theDialogPtr, SIGNAL(nextButton_clicked()),   theMainWindowPtr, SLOT(slot_actionNextLevel()));
+    connect(theDialogPtr, SIGNAL(replayButton_clicked()), theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
+    connect(theDialogPtr, SIGNAL(skipButton_clicked()),   theMainWindowPtr, SLOT(on_action_Skip_Level_triggered()));
 }
 
 
-void GameFlow::slot_clearWinFailDialogPtr()
+void GameFlow::slot_clearDialog()
 {
-    theNewWinFailDialogPtr = nullptr;
+    theDialogPtr->deleteLater();
+    theDialogPtr = nullptr;
 }
-
 
 void GameFlow::slot_levelDeath(void)
 {
@@ -80,7 +80,18 @@ void GameFlow::slot_levelWon(void)
 }
 
 
-void GameFlow::slot_showGameResourcesDialog()
+void GameFlow::slot_showLevelInfoDialog()
 {
-//    QTimer::singleShot(50, theGameResourcesPtr, SLOT(appearAnimated()));
+    if (theDialogPtr)
+        slot_clearDialog();
+
+    theDialogPtr = theRequestDialogItfPtr->showLevelInfo();
+    theDialogPtr->setProperty("levelName", theMainWindowPtr->theLevelPtr->theLevelName);
+    theDialogPtr->setProperty("description", theMainWindowPtr->theLevelPtr->theLevelDescription);
+    theDialogPtr->setProperty("author", theMainWindowPtr->theLevelPtr->theLevelAuthor);
+
+    connect(theDialogPtr, SIGNAL(resetButton_clicked()),
+            theMainWindowPtr, SLOT(reloadLevel()));
+    connect(theDialogPtr, SIGNAL(okButton_clicked()),
+            this, SLOT(slot_clearDialog()));
 }

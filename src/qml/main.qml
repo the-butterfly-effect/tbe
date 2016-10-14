@@ -68,7 +68,7 @@ RowLayout {
                 iconsource: img("IconInfo")
                 tooltip: qsTr("Shows the level information again")
                 onClicked: {
-                    ResizingGraphicsView.slot_showGameResourcesDialog();
+                    GameFlow.slot_showLevelInfoDialog();
                 }
             }
             IconButton {

@@ -20,7 +20,6 @@
 #include "EditObjectDialog.h"
 #include "GameControls.h"
 #include "GameFlow.h"
-#include "GameResources.h"
 #include "Level.h"
 #include "LevelCreator.h"
 #include "MainWindow.h"
@@ -42,7 +41,6 @@ static ResizingGraphicsView *theRSGVPtr = nullptr;
 
 ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     QGraphicsView(aParentPtr),
-    theGameResourcesPtr(nullptr),
     theMainWindowPtr(nullptr),
     theObjectEditorPtr(nullptr),
     theGameStateMachinePtr(nullptr),
@@ -53,7 +51,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     setFrameStyle(QFrame::Plain + QFrame::NoFrame);
     setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     theGameControlsPtr = new GameControls(this);
-    theGameResourcesPtr = new GameResources(this);
     theRSGVPtr = this;
 }
 
@@ -74,18 +71,9 @@ void ResizingGraphicsView::clearViewWorld(void)
     QMatrix myMatrix;
     setMatrix(myMatrix);
 
-    emit theGameFlowPtr->slot_clearWinFailDialogPtr();
+    emit theGameFlowPtr->slot_clearDialog();
     delete theScenePtr;
     theScenePtr = nullptr;
-}
-
-
-GameResources *ResizingGraphicsView::getGameResourcesDialogPtr()
-{
-    Q_ASSERT(theGameResourcesPtr != nullptr);
-    delete  theGameResourcesPtr;
-    theGameResourcesPtr = new GameResources(this);
-    return theGameResourcesPtr;
 }
 
 
@@ -189,11 +177,5 @@ void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
     connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr,
             SLOT(slot_signalPause()));
 
-    slot_showGameResourcesDialog();
-}
-
-
-void ResizingGraphicsView::slot_showGameResourcesDialog()
-{
-    QTimer::singleShot(50, theGameResourcesPtr, SLOT(appearAnimated()));
+    theGameFlowPtr->slot_showLevelInfoDialog();
 }

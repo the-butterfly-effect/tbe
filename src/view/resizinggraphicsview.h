@@ -28,7 +28,6 @@
 class EditObjectDialog;
 class GameControls;
 class GameFlow;
-class GameResources;
 class GameStateMachine;
 class MainWindow;
 class QMenu;
@@ -46,8 +45,6 @@ public:
     ~ResizingGraphicsView();
 
     /// only to be called by MainWindow,
-    /// clears everything related to the ViewWorld and GameResourcesDialog
-    /// and hides the sim controls again.
     void clearViewWorld(void);
 
     /// used by various components to get to the RSGView
@@ -64,10 +61,6 @@ public:
     /// @param aMenuControlsPtr
     void setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
                QMenu *anMenuControlsPtr);
-
-    /// @returns a pointer to the GameResourcesDialog.
-    /// @note this member is only used to hand a pointer to Level.
-    GameResources *getGameResourcesDialogPtr();
 
     QAction *getFrameRateViewPtr()
     {
@@ -90,11 +83,7 @@ signals:
     /// retransmitted from GameResources
     void signal_actionReload();
 
-public slots:
-    void slot_showGameResourcesDialog();
-
 private:
-    GameResources      *theGameResourcesPtr;
     MainWindow         *theMainWindowPtr;
     EditObjectDialog   *theObjectEditorPtr;
     GameControls       *theGameControlsPtr;

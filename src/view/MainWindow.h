@@ -173,6 +173,7 @@ private:
     /// Contains all logic to interface with the Toolbox UI component
     Toolbox theToolbox;
 
+    friend class GameFlow;
     friend class LevelCreator;
     friend class RegressionTest;
 };

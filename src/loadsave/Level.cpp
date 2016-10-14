@@ -18,7 +18,6 @@
 
 #include "AbstractObjectSerializer.h"
 #include "BackgroundSerializer.h"
-#include "GameResources.h"
 #include "Goal.h"
 #include "GoalSerializer.h"
 #include "Hint.h"
@@ -192,7 +191,7 @@ void Level::setLevelStatus(const QString &aLevelName, Level::LevelStatus aNewLev
 
 
 QString
-Level::load(const QString &aFileName, GameResources *aLevelInfoToolbox)
+Level::load(const QString &aFileName)
 {
     theFileName = aFileName;
     DEBUG2("Level::load(\"%s\")", ASCII(aFileName));
@@ -426,7 +425,6 @@ Level::load(const QString &aFileName, GameResources *aLevelInfoToolbox)
     }
 
     // and everything went OK - we're done :-)
-    aLevelInfoToolbox->setLevelPtr(this);
     return "";
 
     // if goto not_good was called, we get here, too
