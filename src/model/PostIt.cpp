@@ -89,7 +89,7 @@ ViewItem *PostIt::createViewItem(float aDefaultDepth)
         myPageList += QString("\"%1\",").arg(TheGetText(myPageText));
     }
     myPageList += "];";
-
+    aDefaultDepth = 100;
     return createViewItemInt(aDefaultDepth, "ViewPostIt", "", QString("backgroundImg: \"%1\"; %2")
                              .arg(theBackgroundImageName).arg(myPageList));
 }
