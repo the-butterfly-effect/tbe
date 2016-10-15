@@ -31,7 +31,7 @@
 /// singleton-like pointer: there's only one.
 static ViewWorldItem* theVWIPtr = nullptr;
 
-#if 0
+#if 1
 static void dumpErrors(const QString&, const QQmlComponent&)
 {
 #else
