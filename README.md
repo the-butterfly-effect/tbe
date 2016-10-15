@@ -2,9 +2,8 @@
 We are working on Milestone C (also known as the '0.9.4' release)
 
 
-
-THIS IS THE BRANCH CONTAINING THE "OLD" UI!
-
+You're currently looking at the development branch, where the switchover
+from Qt C++ Widgets to QML is happening. **This impacts playability**
 
 
 If you want to know the current status, please look at
