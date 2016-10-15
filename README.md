@@ -29,7 +29,7 @@ The levels after "Find the Message" are harder levels, play at your own risk!
 
 
 ###New features & highlights in Milestone C:
- * New UI.
+ * New UI, based on QML. See http://the-butterfly-effect.org/blog/2016/10/13/sneak-peek/
  * We plan to add a 'save my solution' option in Milestone C.
  * More sturdy Level Creator.
  
