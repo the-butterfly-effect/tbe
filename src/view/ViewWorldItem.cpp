@@ -66,12 +66,15 @@ public:
         dumpErrors("theQmlComponent in impl constructor", theQmlComponent);
     }
 
+    void clearAllViewItemChildren();
+
     ViewItem *createViewItem(const QString &aVOType, const AbstractObjectPtr anAOPtr,
                              float aDefaultDepth, const QString &extraOptions);
 
     QQuickItem *createObject(const QString &aVOType, const QString &extraOptions);
 
     void setContextProperty(const QString &aName, const QVariant &aValue);
+
 
 private:
     QQuickItem* theParentPtr;
@@ -80,6 +83,23 @@ private:
     QQmlEngine* theQmlEnginePtr;
     QUrl theSource;
 };
+
+
+void ViewWorldItem::impl::clearAllViewItemChildren()
+{
+    QList<QQuickItem *> allItems = theParentPtr->childItems();
+    while (!allItems.isEmpty()) {
+        QQuickItem* p = allItems.first();
+        ViewItem* q = qobject_cast<ViewItem*>(p);
+        if (q)
+        {
+            q->setParentItem(0);
+            delete q;
+        }
+        allItems.pop_front();
+    }
+}
+
 
 
 ViewItem *ViewWorldItem::impl::createViewItem(
@@ -198,9 +218,9 @@ void ViewWorldItem::setQmlEnginePtr(QQmlEngine *anEnginePtr, const QUrl &aSource
 
 void ViewWorldItem::setWorldPtr(World *aWorldPtr)
 {
-    // TODO/FIXME: for now, we don't accept loading a new World into the existing object
-    assert (nullptr == theWorldPtr);
     assert (nullptr != aWorldPtr);
+    if (nullptr != pImpl)
+        pImpl->clearAllViewItemChildren();
     theWorldPtr = aWorldPtr;
     setupBackground();
     emit dimensionsChanged(theWorldPtr->getTheWorldWidth(), theWorldPtr->getTheWorldHeight());
