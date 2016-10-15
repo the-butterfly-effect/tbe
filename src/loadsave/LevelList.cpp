@@ -89,6 +89,16 @@ LevelList::LevelMetaInfo LevelList::getLevelMetaInfo(QString aName)
     return theMetaList.at(i);
 }
 
+LevelList::LevelMetaInfo LevelList::getLevelMetaInfo(int aNumber)
+{
+    if (aNumber < 0 || aNumber > theMetaList.size()-1) {
+        // empty LMI
+        LevelMetaInfo myLMI;
+        return myLMI;
+    }
+    return theMetaList.at(aNumber);
+}
+
 QString LevelList::getNextLevel(QString aName)
 {
     int i = findNameInList(aName);

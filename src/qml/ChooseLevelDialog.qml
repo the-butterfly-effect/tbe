@@ -23,7 +23,12 @@ Image {
     id: chooseLevelDialog
 
     signal cancelButton_clicked();
-    signal goButton_clicked();
+    signal goButton_clicked(var number);
+
+    function setActive(number) {
+        view.currentRow = number
+        view.selection.select(number)
+    }
 
     height: 400
     source: img("GameResources")
@@ -70,10 +75,15 @@ Image {
         anchors.rightMargin: 20
         anchors.top: explain.bottom
         anchors.topMargin: 10
-
-        TableViewColumn { role: "number"; title: qsTr("#"); width: 100 }
-        TableViewColumn { role: "title";  title: qsTr("Level Title")}
+        backgroundVisible: true
         model: theLevelList
+        selectionMode: SelectionMode.SingleSelection
+
+        TableViewColumn { resizable: false; movable: false; role: "number"; title: qsTr("#"); width: 100}
+        TableViewColumn { resizable: false; movable: false; role: "title";   title: qsTr("Level Title"); width: view.width - 130}
+        TableViewColumn { resizable: false; movable: false; role: "filename"; title: ""; width: 1}
+
+        onDoubleClicked: chooseLevelDialog.goButton_clicked(row)
     }
 
     TextButton {
@@ -91,6 +101,6 @@ Image {
         anchors.right: parent.right
         anchors.rightMargin: 88
         text: qsTr("Go!")
-        onClicked: chooseLevelDialog.goButton_clicked();
+        onClicked: chooseLevelDialog.goButton_clicked(view.currentRow);
     }
 }

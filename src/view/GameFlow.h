@@ -70,6 +70,8 @@ private slots:
     void slot_levelDeath(void);
     void slot_levelWon(void);
 
+    void slot_onLevelIndexSelected(const QVariant& anIndex);
+
 
 public slots:
     void slot_clearDialog();
@@ -91,6 +93,7 @@ private:
     RequestDialog* theRequestDialogItfPtr;
 
     std::unique_ptr<LevelList> theLevelList;
+    int theFirstSelectableLevel;
 };
 
 #endif // GAMEFLOW_H

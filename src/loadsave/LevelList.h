@@ -45,6 +45,10 @@ public:
     /// @note: if aName doesn't exit, return value will be an empty struct
     LevelMetaInfo getLevelMetaInfo(QString aName);
 
+    /// @returns a COPY of the meta info for level aNumber (0-indexed!)
+    /// @note: if aNumber doesn't exit, return value will be an empty struct
+    LevelMetaInfo getLevelMetaInfo(int aNumber);
+
     /// @returns Full path for the first level in the list.
     /// @note    If there is no level in the list, return value will be empty.
     /// @note    As a side-effect, will reload all Skipped/Completed statuses.
