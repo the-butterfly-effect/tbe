@@ -44,6 +44,7 @@ signals:
     void titleChanged();
     void filenameChanged();
 };
+typedef QList<QObject*> RowList;
 
 
 /// this class contains a list of all levels
@@ -67,11 +68,16 @@ public:
 
 
     /// Generate a (translated) list of all levels for the ChooseLevelDialog.
-    /// TODO: fix the return type;
-    /// TODO: move to LevelList (duh)
-    void generateLevelList();
-    QList<QObject*> theLevelStringList;
-    int theFirstSelectableLevel;
+    /// @note: returns a pointer to an internal list - that list can change!
+    RowList& generateLevelList();
+
+    /// Returns the first selectable level. This is:
+    ///   1) first not solved/skipped level
+    ///   2) if all solved, first skipped level
+    ///   3) if all solved and nothing skipped, last level
+    /// @note: this value is updated by generateLevelList(), so run that first.
+    int getFirstSelectableLevel()
+    { return theFirstSelectableLevel; }
 
     /// @returns a COPY of the meta info for level aName (full path!)
     /// @note: if aName doesn't exit, return value will be an empty struct
@@ -124,6 +130,10 @@ private:
 
     typedef QList<LevelMetaInfo> MetaInfoList;
     MetaInfoList theMetaList;
+
+    RowList theLevelStringList;
+    int theFirstSelectableLevel;
+
 
     /// Finds aName in theMetaList.
     /// @returns the index to the element containing aName, or -1 if not found

@@ -34,7 +34,7 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
       theDialogPtr(nullptr),
       theMainWindowPtr(parent),
       theRequestDialogItfPtr(anRDPtr),
-      theLevelList(new LevelList(LEVELS_DIRECTORY, "levels.xml"))
+      theLevelList(LEVELS_DIRECTORY, "levels.xml")
 {
     theGameStateMachinePtr = new GameStateMachine(this);
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()), this, SLOT(slot_levelWon()));
@@ -44,7 +44,7 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
 
 QString GameFlow::getNextLevelName()
 {
-    return theLevelList->getNextToPlayLevel();
+    return theLevelList.getNextToPlayLevel();
 }
 
 
@@ -84,7 +84,7 @@ void GameFlow::slot_levelWon(void)
 
 void GameFlow::slot_onLevelIndexSelected(const QVariant& anIndex)
 {
-    LevelList::LevelMetaInfo myLevelInfo = theLevelList->getLevelMetaInfo(anIndex.toInt());
+    LevelList::LevelMetaInfo myLevelInfo = theLevelList.getLevelMetaInfo(anIndex.toInt());
     slot_clearDialog();
     emit theMainWindowPtr->loadLevel(myLevelInfo.theFileName);
 }
@@ -94,12 +94,12 @@ void GameFlow::slot_showChooseLevelDialog()
     if (theDialogPtr)
         slot_clearDialog();
 
-    theLevelList->generateLevelList();
-    theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(theLevelList->theLevelStringList));
+    RowList& myList = theLevelList.generateLevelList();
+    theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(myList));
     theDialogPtr = theRequestDialogItfPtr->showChooseLevel();
     connect(theDialogPtr, SIGNAL(cancelButton_clicked()),
             this, SLOT(slot_clearDialog()));
-    QMetaObject::invokeMethod(theDialogPtr, "setActive", Q_ARG(QVariant, theLevelList->theFirstSelectableLevel));
+    QMetaObject::invokeMethod(theDialogPtr, "setActive", Q_ARG(QVariant, theLevelList.getFirstSelectableLevel()));
     connect(theDialogPtr, SIGNAL(goButton_clicked(QVariant)),
             this, SLOT(slot_onLevelIndexSelected(QVariant)));
 }

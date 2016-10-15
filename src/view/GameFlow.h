@@ -22,7 +22,6 @@
 #include "GameStateMachine.h"
 #include "LevelList.h"
 #include <QObject>
-#include <memory>
 
 class MainWindow;
 class QQuickItem;
@@ -66,7 +65,7 @@ private:
     MainWindow* theMainWindowPtr;
     RequestDialog* theRequestDialogItfPtr;
 
-    std::unique_ptr<LevelList> theLevelList;
+    LevelList theLevelList;
 };
 
 #endif // GAMEFLOW_H

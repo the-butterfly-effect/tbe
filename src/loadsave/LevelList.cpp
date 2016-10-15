@@ -75,13 +75,13 @@ int LevelList::findNameInList(const QString &aName)
 }
 
 
-void LevelList::generateLevelList()
+RowList& LevelList::generateLevelList()
 {
     theLevelStringList.clear();
     theFirstSelectableLevel = -1;
     bool isFirst = true;
     int myFirstSkipped = -1;
-    QString myNextName = getFirstLevel();
+    QString myNextName = getFirstLevel(); // already contains updateSkippedCompleted();
     int myNr = 0;
     do {
         ++myNr;
@@ -104,10 +104,10 @@ void LevelList::generateLevelList()
             }
             break;
         }
-
         theLevelStringList.append(myRowPtr);
         myNextName = getNextLevel(myNextName);
     } while (!myNextName.isEmpty() );
+
     if (-1 == theFirstSelectableLevel) {
         if (-1 != myFirstSkipped)
             theFirstSelectableLevel = myFirstSkipped;
@@ -115,6 +115,7 @@ void LevelList::generateLevelList()
             theFirstSelectableLevel = myNr-1;
     }
     assert (-1 != theFirstSelectableLevel);
+    return theLevelStringList;
 }
 
 
