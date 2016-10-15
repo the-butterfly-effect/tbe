@@ -27,6 +27,11 @@ ViewResizeRotateMoveUndo {
 
     property real oldWidth;
     property real oldHeight;
+    property real oldZ;
+
+    Component.onDestruction: {
+        theDecorated.z = oldZ;
+    }
 
     Rectangle {
         anchors.fill: parent;

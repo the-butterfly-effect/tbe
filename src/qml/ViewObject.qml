@@ -61,10 +61,13 @@ ViewItem {
                                                            "rotationAngle": parent.rotation,
                                                            "oldWidth": parent.width,
                                                            "oldHeight": parent.height,
+                                                           "oldZ": parent.z,
                                                            "width": parent.width,
                                                            "height": parent.height})
                     // we explicitly set the decorator to be a child of the decorated
                     selectedItem.parent = viewItem;
+                    // raise to the front while moving/resizing/rotating
+                    viewItem.z = 9999;
                 }
                 else
                     console.log("Error creating component: '" + component.errorString() + "'");
