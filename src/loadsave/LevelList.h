@@ -24,9 +24,33 @@
 #include <QCoreApplication>
 #include <QXmlDefaultHandler>
 
+
+struct ListRow : public QObject {
+    Q_OBJECT
+
+public:
+    ListRow(const QString& aNumber, const QString& aTitle, const QString &aFileName);
+
+    Q_PROPERTY(QString number   MEMBER theNumber   NOTIFY numberChanged)
+    Q_PROPERTY(QString title    MEMBER theTitle    NOTIFY titleChanged)
+    Q_PROPERTY(QString filename MEMBER theFileName NOTIFY filenameChanged)
+
+    QString theNumber;
+    QString theTitle;
+    QString theFileName;
+
+signals:
+    void numberChanged();
+    void titleChanged();
+    void filenameChanged();
+};
+
+
 /// this class contains a list of all levels
-class LevelList : protected QXmlDefaultHandler
+class LevelList : public QObject, protected QXmlDefaultHandler
 {
+    Q_OBJECT
+
 public:
     /// Describes the meta-info for a level in the game
     struct LevelMetaInfo {
@@ -40,6 +64,14 @@ public:
     /// @param aBaseDir   Base directory to find aFileName in, also base for all level file name
     /// @param aFileName  Name of the 'levels.xml' file - usually just that.
     LevelList(const QString &aBaseDir, const QString &aFileName);
+
+
+    /// Generate a (translated) list of all levels for the ChooseLevelDialog.
+    /// TODO: fix the return type;
+    /// TODO: move to LevelList (duh)
+    void generateLevelList();
+    QList<QObject*> theLevelStringList;
+    int theFirstSelectableLevel;
 
     /// @returns a COPY of the meta info for level aName (full path!)
     /// @note: if aName doesn't exit, return value will be an empty struct
@@ -84,7 +116,6 @@ private:
     void updateSkippedCompleted();
 
 private:
-    int     theNr;
     QString currentText;
     QString errorStr;
 

@@ -21,19 +21,11 @@
 #include "LevelList.h"
 #include "MainWindow.h"
 #include "RequestDialog.h"
-#include "Translator.h"
 #include "tbe_global.h"
 #include "tbe_paths.h"
 
 #include <QQuickItem>
 #include <QQmlContext>
-
-
-ListRow::ListRow(const QString &aNumber, const QString &aTitle, const QString& aFileName)
-    : QObject(nullptr),
-      theNumber(aNumber), theTitle(aTitle), theFileName(aFileName)
-{
-}
 
 
 GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
@@ -47,49 +39,6 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
     theGameStateMachinePtr = new GameStateMachine(this);
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()), this, SLOT(slot_levelWon()));
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()), this, SLOT(slot_levelDeath()));
-}
-
-
-void GameFlow::generateLevelList()
-{
-    theLevelStringList.clear();
-    theFirstSelectableLevel = -1;
-    bool isFirst = true;
-    int myFirstSkipped = -1;
-    QString myNextName = theLevelList->getFirstLevel();
-    int myNr = 0;
-    do {
-        ++myNr;
-        LevelList::LevelMetaInfo myMeta = theLevelList->getLevelMetaInfo(myNextName);
-        ListRow* myRowPtr = new ListRow("", TheGetText(myMeta.theTitle), myMeta.theFileName);
-        switch (myMeta.theStatus) {
-        case Level::COMPLETED:
-            myRowPtr->theNumber = tr("done");
-            break;
-        case Level::SKIPPED:
-            myRowPtr->theNumber = tr("skipped");
-            if (-1 == myFirstSkipped)
-                myFirstSkipped = myNr-1;
-            break;
-        default:
-            myRowPtr->theNumber = QString::number(myNr);
-            if (isFirst) {
-                theFirstSelectableLevel = myNr-1;
-                isFirst = false;
-            }
-            break;
-        }
-
-        theLevelStringList.append(myRowPtr);
-        myNextName = theLevelList->getNextLevel(myNextName);
-    } while (!myNextName.isEmpty() );
-    if (-1 == theFirstSelectableLevel) {
-        if (-1 != myFirstSkipped)
-            theFirstSelectableLevel = myFirstSkipped;
-        else
-            theFirstSelectableLevel = myNr-1;
-    }
-    assert (-1 != theFirstSelectableLevel);
 }
 
 
@@ -145,12 +94,12 @@ void GameFlow::slot_showChooseLevelDialog()
     if (theDialogPtr)
         slot_clearDialog();
 
-    generateLevelList();
-    theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(theLevelStringList));
+    theLevelList->generateLevelList();
+    theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(theLevelList->theLevelStringList));
     theDialogPtr = theRequestDialogItfPtr->showChooseLevel();
     connect(theDialogPtr, SIGNAL(cancelButton_clicked()),
             this, SLOT(slot_clearDialog()));
-    QMetaObject::invokeMethod(theDialogPtr, "setActive", Q_ARG(QVariant, theFirstSelectableLevel));
+    QMetaObject::invokeMethod(theDialogPtr, "setActive", Q_ARG(QVariant, theLevelList->theFirstSelectableLevel));
     connect(theDialogPtr, SIGNAL(goButton_clicked(QVariant)),
             this, SLOT(slot_onLevelIndexSelected(QVariant)));
 }

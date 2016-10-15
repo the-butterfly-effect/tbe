@@ -17,17 +17,24 @@
  */
 
 #include "LevelList.h"
+#include "Translator.h"
 #include "tbe_global.h"
-#include "tbe_paths.h"
 
 // TODO: get rid of!
 #include "Popup.h"
+
+
+ListRow::ListRow(const QString &aNumber, const QString &aTitle, const QString& aFileName)
+    : QObject(nullptr),
+      theNumber(aNumber), theTitle(aTitle), theFileName(aFileName)
+{
+}
+
 
 LevelList::LevelList(const QString &aBaseDir, const QString &aFileName)
     : theBaseLevelsDir(aBaseDir)
 {
     DEBUG5ENTRY;
-    theNr = 0;
     currentText.clear();
 
     if (!theBaseLevelsDir.endsWith("/"))
@@ -65,6 +72,49 @@ int LevelList::findNameInList(const QString &aName)
             return i;
     }
     return -1;
+}
+
+
+void LevelList::generateLevelList()
+{
+    theLevelStringList.clear();
+    theFirstSelectableLevel = -1;
+    bool isFirst = true;
+    int myFirstSkipped = -1;
+    QString myNextName = getFirstLevel();
+    int myNr = 0;
+    do {
+        ++myNr;
+        LevelList::LevelMetaInfo myMeta = getLevelMetaInfo(myNextName);
+        ListRow* myRowPtr = new ListRow("", TheGetText(myMeta.theTitle), myMeta.theFileName);
+        switch (myMeta.theStatus) {
+        case Level::COMPLETED:
+            myRowPtr->theNumber = tr("done");
+            break;
+        case Level::SKIPPED:
+            myRowPtr->theNumber = tr("skipped");
+            if (-1 == myFirstSkipped)
+                myFirstSkipped = myNr-1;
+            break;
+        default:
+            myRowPtr->theNumber = QString::number(myNr);
+            if (isFirst) {
+                theFirstSelectableLevel = myNr-1;
+                isFirst = false;
+            }
+            break;
+        }
+
+        theLevelStringList.append(myRowPtr);
+        myNextName = getNextLevel(myNextName);
+    } while (!myNextName.isEmpty() );
+    if (-1 == theFirstSelectableLevel) {
+        if (-1 != myFirstSkipped)
+            theFirstSelectableLevel = myFirstSkipped;
+        else
+            theFirstSelectableLevel = myNr-1;
+    }
+    assert (-1 != theFirstSelectableLevel);
 }
 
 
