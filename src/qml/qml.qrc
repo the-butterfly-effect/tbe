@@ -3,6 +3,7 @@
         <file>ChooseLevelDialog.qml</file>
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>
+        <file>HandleRotate.qml</file>
         <file>IconButton.qml</file>
         <file>LevelInfoDialog.qml</file>
         <file>main.qml</file>

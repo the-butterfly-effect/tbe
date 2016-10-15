@@ -44,7 +44,6 @@ ViewResizeRotateMoveUndo {
         z: 999
     }
 
-
     HandleResizeHorizontal {
         id: left
         sign: -1
@@ -63,6 +62,18 @@ ViewResizeRotateMoveUndo {
     HandleResizeVertical {
         id: down
         sign: 1
+    }
+
+    HandleRotate {
+        id: topleft
+        hsign: -1
+        vsign: -1
+    }
+
+    HandleRotate {
+        id: bottomright
+        hsign: 1
+        vsign: 1
     }
 
 }
