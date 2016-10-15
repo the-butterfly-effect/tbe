@@ -22,8 +22,11 @@ import TBEView 1.0
 ViewResizeRotateMoveUndo {
     id: theDecorator;
     objectName: "theDecorator";
-    property int minSize: 50
-    property int rotationAngle: 0
+    property real minSize: ResizeInfo.pixPerMeter * 0.1
+    property real rotationAngle: 0
+
+    property real oldWidth;
+    property real oldHeight;
 
     Rectangle {
         anchors.fill: parent;

@@ -39,11 +39,12 @@ Image {
         onMouseXChanged: {
             if(drag.active){
                 var myMouseY = mouseY
-                if (theDecorator.height +sign*mouseY < minSize)
-                    myMouseY = -sign*(theDecorator.height-minSize)
-                theDecorator.height += sign*myMouseY
-                theDecorator.x -= myMouseY * 0.5 * Math.sin(rotationAngle/180*Math.PI)
-                theDecorator.y -= sign*myMouseY * (0.5 -sign*0.5*Math.cos(rotationAngle/180*Math.PI))
+                if (theDecorated.height +sign*mouseY < minSize)
+                    myMouseY = -sign*(theDecorated.height-minSize)
+                theDecorated.height += sign*myMouseY
+                theDecorated.x -= myMouseY * 0.5 * Math.sin(rotationAngle/180*Math.PI)
+                theDecorated.y -= sign*myMouseY * (0.5 -sign*0.5*Math.cos(rotationAngle/180*Math.PI))
+                theDecorator.height = theDecorated.height
             }
         }
     }

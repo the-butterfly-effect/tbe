@@ -24,6 +24,7 @@ import TBEView 1.0
 // We use an embedded Image (and in the future probably also a Text) to
 // handle the display of what we want.
 ViewItem {
+    id: viewItem
     x: ResizeInfo.pixPerMeter * xInM;
     y: gameView.height - ResizeInfo.pixPerMeter * yInM;
     width: ResizeInfo.pixPerMeter * widthInM;
@@ -35,8 +36,9 @@ ViewItem {
     Image {
         anchors.fill: parent
         source: img(imageName)
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
+        // performance optimization: do not ask for redraw of images while resizing/rotating/dragging
+        sourceSize.width:  (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldWidth : width
+        sourceSize.height: (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldHeight: height
     }
 
     MouseArea {
@@ -56,11 +58,13 @@ ViewItem {
                 if (component.status == Component.Ready) {
                     selectedItem = component.createObject(gameView, {
                                                            "theDecorated": parent,
-                                                           "x": parent.x,
-                                                           "y": parent.y,
                                                            "rotationAngle": parent.rotation,
+                                                           "oldWidth": parent.width,
+                                                           "oldHeight": parent.height,
                                                            "width": parent.width,
                                                            "height": parent.height})
+                    // we explicitly set the decorator to be a child of the decorated
+                    selectedItem.parent = viewItem;
                 }
                 else
                     console.log("Error creating component: '" + component.errorString() + "'");
