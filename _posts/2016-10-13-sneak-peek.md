@@ -14,7 +14,7 @@ The vacation was great, relaxed and warm. So let's focus on the new user interfa
 ## Why a new UI?
 There are two reasons for a new UI. The first one, is that we were annoyed with the current one. It looked on the original screenshots, but the pie menu just wasn't a good concept in real life. The UI felt rather cumbersome, you needed a lot of mouse clicks to accomplish simple things. We felt we could do better.
 
-The second reason was of a more technical kind: we wanted to switch to the latest possibilities in the Qt library. For two years now, Qt has a new programming paradigm called QML. QML promises very interactive, very responsive user interfaces - with significantly less code. Martian was already using QML at his current job, so we wanted to see if it work out for TBE. We chose to do two small, separate tests first.
+The second reason was of a more technical kind: we wanted to switch to the latest possibilities in the Qt library. For several years now, Qt has a new programming paradigm called QML. QML promises very interactive, very responsive user interfaces - with significantly less code. Martian was already using QML at his current job, so we wanted to see if it would work out for TBE. We chose to do two small, separate tests first.
 
 
 ## Architecture spike 1: handing objects
@@ -22,7 +22,7 @@ The first small test (a 'spike'), was about moving/rotating/resizing objects. Se
 
 We even implemented the basics of undo/redo - something very complex. Unfortunately, QML didn't help us there.
 
-We kept to Qt's own make system, qmake. And were really unhappy with it.
+We kept to Qt's own make system, qmake. And were again nhappy with it: it doesn't give us enough control.
 
 Another thing we learned from this spike is that although it looked great and worked really well for users, the code was all wrong. Calculations for scaling and aspect ratio were overly complex and weren't even fully correct. So we had to do that different in the real thing.
 ![Spike 1: handing objects](/images/2016-10-13-tbe-qml-ui-spike.png)
@@ -47,7 +47,7 @@ In total, kaa-ching did 5 spikes, but some were only to prove a certain approach
 If you download and build the current git tree, you'll see both UIs next to each other. Some things can only be done on the left, some things can only be done on the right. Be careful not to mix, or it might crash... The objects in the toolbox all resemble a Volley Ball, some objects like the penguin and the balloon are drawn as the "object not found" image. Objects added to the left only appear when you hit "play". The good news: the new UI is so powerful, that its overhead is almost negligible. 
 We expect that on all platforms drawing performance will improve. And as a bonus, Android will become a possibility, too!
 
-The below image is rather wide, you'll have to click it to see it in its full with (1920 pixels wide!).
+The below image is rather wide, you'll have to click it to see it in its full with (1885 pixels wide!).
 <a href="/images/2016-10-13-tbe-qml-current-dual-ui.png"><img src="/images/2016-10-13-tbe-qml-current-dual-ui.png" alt="Side-by-side: old and new UI" style="width: 720px;"/></a>
 
 Obviously, this is still work in progress. But we think we now got things right. Object scaling feels almost trivial - a good sign of being done right!
@@ -64,8 +64,10 @@ At the same time, Wuzzy has designed a few new levels. Not all of them are added
 
 We hope you liked this update. There's a lot going on, even if you cannot see it from the website. It will probably take until Christmas or so to complete, but the new UI is coming along. If your fingers start itching, why not try the current state yourself?
 
+&nbsp;
 
 Oh, by the way, it is really Sneak Peek. Just ask [the Oatmeal](http://theoatmeal.com/comics/sneak_peek).
 
+&nbsp;
 
-**We hope to hear from you!**
+**How do *you* like the new UI? We hope to hear from you!**
