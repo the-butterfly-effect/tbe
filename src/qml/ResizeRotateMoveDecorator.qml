@@ -23,7 +23,6 @@ ViewResizeRotateMoveUndo {
     id: theDecorator;
     objectName: "theDecorator";
     property real minSize: ResizeInfo.pixPerMeter * 0.1
-    property real rotationAngle: 0
 
     property real oldWidth;
     property real oldHeight;
@@ -69,9 +68,22 @@ ViewResizeRotateMoveUndo {
         }
 
         HandleRotate {
+            id: topright
+            hsign:  1
+            vsign: -1
+        }
+
+        HandleRotate {
             id: bottomright
             hsign: 1
             vsign: 1
         }
+
+        HandleRotate {
+            id: bottomleft
+            hsign: -1
+            vsign:  1
+        }
+
     }
 }

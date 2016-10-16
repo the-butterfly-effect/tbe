@@ -30,7 +30,11 @@
 class ViewResizeRotateMoveUndo : public QQuickItem
 {
     Q_OBJECT
+public:
+
     Q_PROPERTY(QQuickItem* theDecorated MEMBER theDecoratedPtr NOTIFY theDecoratedChanged)
+
+    Q_INVOKABLE qreal vector2AngleDegrees(qreal dx, qreal dy);
 
 public:
     explicit ViewResizeRotateMoveUndo(QQuickItem *parent = nullptr);

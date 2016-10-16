@@ -59,6 +59,12 @@ public:
     QPointF  toQPointF(void) const;
     QString  toString(void) const;
 
+    // TODO/FIXME: QML positive rotation is clockwise, not counterclockwise :-(
+    qreal toAngleInQDegrees(void) const
+    {
+        return -toAngle() * 180 / PI;
+    }
+
     /// @returns a Vector in the same direction, but with length one.
     Vector   toUnitVector(void) const;
 

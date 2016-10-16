@@ -41,8 +41,8 @@ Image {
                 if (theDecorated.width + sign*mouseX < minSize)
                     myMouseX = - sign*theDecorated.width + sign*minSize
                 theDecorated.width += sign*myMouseX
-                theDecorated.x += -sign*myMouseX * (0.5 - sign*0.5*Math.cos(rotationAngle/180*Math.PI))
-                theDecorated.y += myMouseX * 0.5 * Math.sin(rotationAngle/180*Math.PI)
+                theDecorated.x += -sign*myMouseX * (0.5 - sign*0.5*Math.cos(theDecorated.rotation/180*Math.PI))
+                theDecorated.y += myMouseX * 0.5 * Math.sin(theDecorated.rotation/180*Math.PI)
                 theDecorator.width = theDecorated.width
             }
         }

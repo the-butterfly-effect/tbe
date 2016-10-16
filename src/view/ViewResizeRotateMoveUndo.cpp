@@ -53,3 +53,10 @@ void ViewResizeRotateMoveUndo::slot_parentChanged()
     theRRMUCPtr = dynamic_cast<ResizeRotateMoveUndoCommand*>(UndoSingleton::createUndoCommand(myVIPtr->theAOPtr, UndoSingleton::ACTION_RESIZEROTATE));
 }
 */
+
+
+qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
+{
+    Vector myVector(dx, dy);
+    return myVector.toAngle()* 180/PI;
+}

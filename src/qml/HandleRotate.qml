@@ -19,8 +19,14 @@
 import QtQuick 2.0
 
 Image {
+    id: rotateHandle
+
     property real hsign: 1; // 1 means right, -1 means left
     property real vsign: 1; // 1 means down, -1 means up
+
+    property bool isFirstPress: true;
+    property real startAngle: 0;
+    property var  cpos;
 
     anchors.horizontalCenter: (hsign>0) ? parent.right : parent.left
     anchors.horizontalCenterOffset: hsign*width/3
@@ -39,12 +45,20 @@ Image {
         anchors.fill: parent
         drag{ target: parent; }
         onPositionChanged: {
-            if(drag.active){
-                var myMouseX = mouseX
-                var myMouseY = mouseY
-                // STILL TODO
+            if (rotateHandle.isFirstPress) {
+                var mpos = this.mapToItem(gameView, mouseX, mouseY);
+                cpos = theDecorated.mapToItem(gameView, theDecorated.width/2, theDecorated.height/2);
+                rotateHandle.startAngle = theDecorated.rotation - theDecorator.vector2AngleDegrees(mpos.x -cpos.x, mpos.y - cpos.y);
+                rotateHandle.isFirstPress = false;
+            }
+            else {
+                var mpos = mapToItem(gameView, mouseX, mouseY);
+                var newAngle = theDecorator.vector2AngleDegrees(mpos.x-cpos.x, mpos.y-cpos.y) + rotateHandle.startAngle;
+                theDecorated.rotation = Math.floor(newAngle/15. + 0.5)* 15.;
             }
         }
+        onReleased: {
+            rotateHandle.isFirstPress = true;
+        }
     }
-
 }

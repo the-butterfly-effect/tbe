@@ -58,7 +58,6 @@ ViewItem {
                 if (component.status == Component.Ready) {
                     selectedItem = component.createObject(gameView, {
                                                            "theDecorated": parent,
-                                                           "rotationAngle": parent.rotation,
                                                            "oldWidth": parent.width,
                                                            "oldHeight": parent.height,
                                                            "oldZ": parent.z,

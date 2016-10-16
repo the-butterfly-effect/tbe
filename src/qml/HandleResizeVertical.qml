@@ -41,8 +41,8 @@ Image {
                 if (theDecorated.height +sign*mouseY < minSize)
                     myMouseY = -sign*(theDecorated.height-minSize)
                 theDecorated.height += sign*myMouseY
-                theDecorated.x -= myMouseY * 0.5 * Math.sin(rotationAngle/180*Math.PI)
-                theDecorated.y -= sign*myMouseY * (0.5 -sign*0.5*Math.cos(rotationAngle/180*Math.PI))
+                theDecorated.x -= myMouseY * 0.5 * Math.sin(theDecorated.rotation/180*Math.PI)
+                theDecorated.y -= sign*myMouseY * (0.5 -sign*0.5*Math.cos(theDecorated.rotation/180*Math.PI))
                 theDecorator.height = theDecorated.height
             }
         }
