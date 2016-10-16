@@ -41,39 +41,37 @@ ViewResizeRotateMoveUndo {
         }
         color: /* theDecorated.isColliding ? "#80FF5050" :*/ "#8050FF50"
         visible: true
-        z: 999
-    }
 
-    HandleResizeHorizontal {
-        id: left
-        sign: -1
-    }
+        HandleResizeHorizontal {
+            id: left
+            sign: -1
+        }
 
-    HandleResizeHorizontal {
-        id: right
-        sign: 1
-    }
+        HandleResizeHorizontal {
+            id: right
+            sign: 1
+        }
 
-    HandleResizeVertical {
-        id: up
-        sign: -1
-    }
+        HandleResizeVertical {
+            id: up
+            sign: -1
+        }
 
-    HandleResizeVertical {
-        id: down
-        sign: 1
-    }
+        HandleResizeVertical {
+            id: down
+            sign: 1
+        }
 
-    HandleRotate {
-        id: topleft
-        hsign: -1
-        vsign: -1
-    }
+        HandleRotate {
+            id: topleft
+            hsign: -1
+            vsign: -1
+        }
 
-    HandleRotate {
-        id: bottomright
-        hsign: 1
-        vsign: 1
+        HandleRotate {
+            id: bottomright
+            hsign: 1
+            vsign: 1
+        }
     }
-
 }

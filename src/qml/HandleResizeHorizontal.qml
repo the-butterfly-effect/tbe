@@ -29,7 +29,6 @@ Image {
 
     width: ResizeInfo.handleWidth
     height: ResizeInfo.handleHeight
-    z: 99999
     sourceSize.width: width
     sourceSize.height: height
 
