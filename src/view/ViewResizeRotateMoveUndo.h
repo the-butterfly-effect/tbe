@@ -24,9 +24,8 @@
 
 /// An instance of this class gets instantiated every time a ResizeRotateMoveDecorator
 /// item gets created. It will be destroyed upon destruction as well.
-/// The VRRMU has a QUndoCommand member, that it will populate. Upon destruction, it
-/// will make the decision whether to push the QUndoCommand or just destroy it
-/// when nothing really changed.
+/// The VRRMU has a QUndoCommand member, that it will populate when instructed.
+/// Upon destruction or whenever told, it will push the QUndoCommand.
 class ViewResizeRotateMoveUndo : public QQuickItem
 {
     Q_OBJECT
@@ -47,8 +46,8 @@ public slots:
 //    void slot_parentChanged();
 
 private:
-    //ResizeRotateMoveUndoCommand *theRRMUCPtr;
     QQuickItem* theDecoratedPtr;
+//    QUndoCommand *theRRMUCPtr
 };
 
 #endif // VIEWRESIZEROTATEMOVEUNDO_H

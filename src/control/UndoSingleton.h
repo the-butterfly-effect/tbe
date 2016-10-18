@@ -51,7 +51,7 @@ public:
 
     /// Push the UndoCommand on to the UndoStack and delist it from the
     /// currently active undo commands.
-    static void push(AbstractUndoCommand *anAUCPtr);
+    static void push(QUndoCommand *anUndoPtr);
 
     /// This is a notification that the UndoCommand is deleted and
     /// no longer exists - delist it from the

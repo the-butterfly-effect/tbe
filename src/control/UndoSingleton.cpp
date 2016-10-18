@@ -119,11 +119,10 @@ void UndoSingleton::notifyGone(AbstractUndoCommand *anAUCPtr)
 }
 
 
-void UndoSingleton::push(AbstractUndoCommand *anAUCPtr)
+void UndoSingleton::push(QUndoCommand *anUndoPtr)
 {
-    DEBUG3("UndoSingleton::push for '%s'", ASCII(anAUCPtr->text()));
-    me()->theUndoStack.push(anAUCPtr);
-    notifyGone(anAUCPtr);
+    DEBUG3("UndoSingleton::push for '%s'", ASCII(anUndoPtr->text()));
+    me()->theUndoStack.push(anUndoPtr);
 }
 
 

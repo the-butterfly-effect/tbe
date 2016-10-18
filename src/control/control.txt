@@ -3,6 +3,7 @@
 
 SET(control_SOURCES 
     control/AbstractUndoCommand.cpp 
+    control/AbstractQUndoCommand.cpp 
     control/ChoosePhoneUndoCommand.cpp 
     control/DeleteUndoCommand.cpp 
     control/DummyUndoCommand.cpp 
@@ -11,6 +12,7 @@ SET(control_SOURCES
     control/MoveUndoCommand.cpp 
     control/ResizeUndoCommand.cpp 
     control/RotateUndoCommand.cpp 
+    control/RotateQUndoCommand.cpp 
     control/Toolbox.cpp
     control/ToolboxGroup.cpp
     control/UndoSingleton.cpp 
@@ -18,7 +20,7 @@ SET(control_SOURCES
 )
 
 SET(control_HEADERS
-    control/AbstractUndoCommand.h 
+    control/AbstractQUndoCommand.h 
     control/ChoosePhoneUndoCommand.h 
     control/DeleteUndoCommand.h 
     control/DummyUndoCommand.h 
@@ -27,6 +29,7 @@ SET(control_HEADERS
     control/MoveUndoCommand.h 
     control/ResizeUndoCommand.h 
     control/RotateUndoCommand.h 
+    control/RotateQUndoCommand.h 
     control/Toolbox.h
     control/ToolboxGroup.h
 #    control/UndoSingleton.h 
