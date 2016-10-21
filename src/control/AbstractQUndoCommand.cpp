@@ -18,19 +18,22 @@
 
 #include "AbstractQUndoCommand.h"
 #include "UndoSingleton.h"
+#include "ViewItem.h"
 
-AbstractQUndoCommand::AbstractQUndoCommand(
-    AbstractObjectPtr anAbstractObjectPtr,
-    const QString &anUndoName,
-    QUndoCommand *parent)
-    : QUndoCommand(parent)
+AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
+                                           QQuickItem* aHandlePtr,
+                                           const QString &anUndoText,
+                                           QUndoCommand *parent)
+    : QUndoCommand(parent),
+      theHandlePtr(aHandlePtr),
+      theAOPtr(anViewItemPtr->theAOPtr)
 {
-    // This is the undo action, anUndoName is e.g. “Move %s” and
+    // This is the undo action, anUndoText is e.g. “Move %s” and
     // anAbstractObjectPtr->getName() is e.g. “Birch Bar”
-    setText(anUndoName.arg(anAbstractObjectPtr->getName()));
-    theOrigPos    = theNewPos    = anAbstractObjectPtr->getOrigCenter();
-    theOrigWidth  = theNewWidth  = anAbstractObjectPtr->getTheWidth();
-    theOrigHeight = theNewHeight = anAbstractObjectPtr->getTheHeight();
+    setText(anUndoText.arg(theAOPtr->getName()));
+    theOrigPos    = theAOPtr->getOrigCenter();
+    theOrigWidth  = theAOPtr->getTheWidth();
+    theOrigHeight = theAOPtr->getTheHeight();
 }
 
 
@@ -47,23 +50,43 @@ void AbstractQUndoCommand::commit(void)
     UndoSingleton::push(this);
 }
 
+ViewItem *AbstractQUndoCommand::getVIPtr()
+{
+    assert(theAOPtr->theViewItemPtr);
+    return theAOPtr->theViewItemPtr;
+}
 
 bool AbstractQUndoCommand::isObjectColliding(void)
 {
-    // TODO/FIXME: implement this one!
+    // TODO/FIXME: implement this one as a property!
     return false;
 }
-
 
 void AbstractQUndoCommand::redo(void)
 {
     DEBUG3("AbstractQUndoCommand::redo for '%s'", ASCII(text()));
-    // TODO/FIXME: implement this one!
+    // nothing to do here :-)
 }
-
 
 void AbstractQUndoCommand::undo(void)
 {
     DEBUG3("AbstractQUndoCommand::undo for '%s'", ASCII(text()));
-    // TODO/FIXME: implement this one!
+    // nothing to do here :-)
+}
+
+void AbstractQUndoCommand::updateAO(const Position &aPosition)
+{
+    theAOPtr->setOrigCenter(aPosition);
+}
+
+void AbstractQUndoCommand::updateAO(qreal aWidth, qreal aHeight)
+{
+    theAOPtr->setTheWidth(aWidth);
+    theAOPtr->setTheHeight(aHeight);
+}
+
+void AbstractQUndoCommand::updateVI()
+{
+    assert(theAOPtr->theViewItemPtr);
+    theAOPtr->theViewItemPtr->adjustObjectDrawingFromAO();
 }

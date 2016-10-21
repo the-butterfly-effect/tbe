@@ -22,12 +22,12 @@ import QtQuick.Layouts 1.2     // for RowLayout and ColumnLayout
 RowLayout {
     id: window
 
+    /// Refers to the currently by the user selected item.
+    property var selectedItem : undefined;
+
     function img(A) {
         return "image://tbe/"+A;
     }
-
-    /// Refers to the currently by the user selected item.
-    property var selectedItem : undefined;
 
     ViewWorld {
         id: gameView
@@ -36,16 +36,25 @@ RowLayout {
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         Layout.preferredHeight: width / ResizeInfo.aspectRatio
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if(selectedItem)
+                    selectedItem.destroy()
+            }
+        }
     }
 
     ColumnLayout {
         Rectangle {
+            id: toolbox
+
             color: "white"
             border.color: "darkgrey"
             border.width: 1
             radius: 7
 
-            id: toolbox
             width: 200;
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignRight

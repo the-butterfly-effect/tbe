@@ -101,6 +101,7 @@ public:
     Position (const QPointF &aPoint, qreal anAngle = 0.0);
     Position (const Vector &aPoint, qreal anAngle = 0.0);
     Position (const b2Vec2 &aVec, qreal anAngle = 0.0);
+    Position (const Position& aPos, qreal anAngleInQDegrees);
 
     // Public attributes
 

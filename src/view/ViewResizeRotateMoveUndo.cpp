@@ -17,46 +17,54 @@
  */
 
 #include "ViewResizeRotateMoveUndo.h"
-#include "UndoSingleton.h"
 #include "ViewItem.h"
+#include "UndoSingleton.h"
+#include "AbstractQUndoCommand.h"
 
 ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
-    : QQuickItem(parent)
-//    theRRMUCPtr(nullptr)
+    : QQuickItem(parent),
+      theUndoPtr(nullptr)
 {
     assert(nullptr == parent);
     // Once theDecorated is set, we want to know so we can create
     // our UndoCommand and have it grab the initial data.
-//    connect(this, SIGNAL(theDecoratedChanged()), this, SLOT(slot_parentChanged()));
+    //    connect(this, SIGNAL(theDecoratedChanged()), this, SLOT(slot_parentChanged()));
 }
 
-/*
-ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
+QQuickItem *ViewResizeRotateMoveUndo::activeHandle()
 {
-    assert (nullptr != theRRMUCPtr);
+    if (nullptr == theUndoPtr)
+        return nullptr;
+    return theUndoPtr->theHandlePtr;
+}
 
-    // *** Is changed? then push to undocommand stack
-    if (theRRMUCPtr->isChanged())
-        theRRMUCPtr->commit();
+void ViewResizeRotateMoveUndo::commitChanges()
+{
+    if (theUndoPtr->isChanged())
+        theUndoPtr->commit();
     else
-        delete theRRMUCPtr;
-
+        delete theUndoPtr;
+    theUndoPtr = nullptr;
 }
-
-
-void ViewResizeRotateMoveUndo::slot_parentChanged()
-{
-    // We need access to the ViewItem: the 'theVI' child of 'theDecorated'.
-    ViewItem* myVIPtr = ViewItem::findVIinVO(theDecoratedPtr);
-    assert (myVIPtr!=nullptr);
-    assert (myVIPtr->theAOPtr != nullptr);
-    theRRMUCPtr = dynamic_cast<ResizeRotateMoveUndoCommand*>(UndoSingleton::createUndoCommand(myVIPtr->theAOPtr, UndoSingleton::ACTION_RESIZEROTATE));
-}
-*/
 
 
 qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
 {
     Vector myVector(dx, dy);
     return myVector.toAngle()* 180/PI;
+}
+
+void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType, QQuickItem *aHandlePtr)
+{
+    // do we need to take care of the previous undo first?
+    if (theUndoPtr)
+    {
+        commitChanges();
+        theUndoPtr = nullptr;
+    }
+    if (aHandlePtr)
+    {
+        theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
+        emit theActiveHandleChanged();
+    }
 }

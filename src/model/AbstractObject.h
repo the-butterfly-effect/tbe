@@ -590,6 +590,7 @@ protected:
     friend class AbstractObjectSerializer;
     friend class ObjectFactory;
     friend class AbstractJoint;
+    friend class AbstractQUndoCommand;
 
 private:
     // disable copy constructor / assignment operator

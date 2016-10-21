@@ -24,7 +24,6 @@ Image {
     property real hsign: 1; // 1 means right, -1 means left
     property real vsign: 1; // 1 means down, -1 means up
 
-    property bool isFirstPress: true;
     property real startAngle: 0;
     property var  cpos;
 
@@ -45,11 +44,11 @@ Image {
         anchors.fill: parent
         drag{ target: parent; }
         onPositionChanged: {
-            if (rotateHandle.isFirstPress) {
+            if (theDecorator.theActiveHandle != this) {
+                theDecorator.startNewUndo("HandleRotate", this);
                 var mpos = this.mapToItem(gameView, mouseX, mouseY);
                 cpos = theDecorated.mapToItem(gameView, theDecorated.width/2, theDecorated.height/2);
                 rotateHandle.startAngle = theDecorated.rotation - theDecorator.vector2AngleDegrees(mpos.x -cpos.x, mpos.y - cpos.y);
-                rotateHandle.isFirstPress = false;
             }
             else {
                 var mpos = mapToItem(gameView, mouseX, mouseY);
@@ -58,7 +57,9 @@ Image {
             }
         }
         onReleased: {
-            rotateHandle.isFirstPress = true;
+            // TODO/FIXME: this is too harsh - triggers a commit on every release
+            theDecorator.startNewUndo("", 0);
+            theDecorated.restoreBindings();
         }
     }
 }

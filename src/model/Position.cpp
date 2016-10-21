@@ -53,6 +53,12 @@ Position::Position (const b2Vec2 &aVec, qreal anAngle)
     ; // nothing to do here, sorry...
 }
 
+Position::Position(const Position &aPos, qreal anAngleInQDegrees)
+    : x (aPos.x), y(aPos.y), angle(-anAngleInQDegrees/180*PI)
+{
+    ; // nothing to do here, sorry...
+}
+
 
 qreal Position::length(void)
 {

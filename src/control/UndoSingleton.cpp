@@ -25,6 +25,8 @@
 #include "ChoosePhoneUndoCommand.h"
 #include "EditPropertyUndoCommand.h"
 
+#include "RotateQUndoCommand.h"
+
 static UndoSingleton *theUndoSingletonPtr = nullptr;
 static AbstractUndoCommand *theCurrentlyActiveUndoCommand = nullptr;
 
@@ -94,6 +96,15 @@ UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
         delete theCurrentlyActiveUndoCommand;
     theCurrentlyActiveUndoCommand = myNewCommand;
     return myNewCommand;
+}
+
+AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, QQuickItem *aHandlePtr, const QString &anUndoType)
+{
+    DEBUG1("UndoSingleton::createQUndoCommand(%p,%p, %s)", aViewItemPtr, aHandlePtr, ASCII(anUndoType));
+    // TODO: factory for all types (duh)
+    if (anUndoType == "HandleRotate")
+        return new RotateQUndoCommand(aViewItemPtr, aHandlePtr);
+    return nullptr;
 }
 
 

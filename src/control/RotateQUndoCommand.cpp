@@ -17,28 +17,38 @@
  */
 
 #include "RotateQUndoCommand.h"
+#include "ViewItem.h"
 #include "UndoSingleton.h"
-#include "AbstractObject.h"
 
-RotateQUndoCommand::RotateQUndoCommand(
-    AbstractObjectPtr anAbstractObjectPtr)
-    : AbstractQUndoCommand(anAbstractObjectPtr, QObject::tr("Rotate %1"), nullptr)
+#include <QQmlProperty>
+#include <QQuickItem>
+
+RotateQUndoCommand::RotateQUndoCommand(ViewItem* anViewItemPtr,
+                                       QQuickItem* aHandlePtr,
+                                       QUndoCommand *parent)
+    : AbstractQUndoCommand(anViewItemPtr, aHandlePtr, QObject::tr("Rotate %1"), parent)
 {
-    DEBUG3ENTRY;
+    theNewAngleInQDegrees = anViewItemPtr->rotation();
 }
 
-
-bool RotateQUndoCommand::editAngleMove(qreal aCurrentAngle)
+bool RotateQUndoCommand::isChanged()
 {
-//    theNewPos.angle = aCurrentAngle;
-//    theViewObjPtr->setNewGeometry(theNewPos);
-//    setDecoratorStateMouseMove();
+    theNewAngleInQDegrees = getVIPtr()->rotation();
+    if (areQRealsTheSame(theOrigPos.angleInQDegrees(),theNewAngleInQDegrees))
+        return false;
     return true;
 }
 
-bool RotateQUndoCommand::editAngleDone(qreal aFinalAngle)
+void RotateQUndoCommand::redo()
 {
-//    theNewPos.angle = aFinalAngle;
-//    return AbstractUndoCommand::mouseReleaseEvent(nullptr);
-    return true;
+    updateAO(Position(theOrigPos,theNewAngleInQDegrees));
+    updateVI();
+    AbstractQUndoCommand::redo();
+}
+
+void RotateQUndoCommand::undo()
+{
+    updateAO(theOrigPos);
+    updateVI();
+    AbstractQUndoCommand::undo();
 }

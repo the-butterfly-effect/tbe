@@ -33,21 +33,28 @@ class ViewItem;
 class AbstractQUndoCommand : public QUndoCommand
 {
 public:
-    /// Unlike QUndoCommand, we always require arguments
-    /// to the constructor.
-    AbstractQUndoCommand(AbstractObjectPtr anAbstractObjectPtr,
-                        const QString &anUndoName,
+    /// Unlike QUndoCommand, we always require arguments to the constructor.
+    /// @param anViewItemPtr   Pointer to the ViewItem. Is only used once,
+    ///                        afterwards we'll always retrieve the ptr through
+    ///                        the AbstractObject.
+    AbstractQUndoCommand(ViewItem* anViewItemPtr,
+                         QQuickItem* aHandlePtr,
+                         const QString &anUndoText,
                         QUndoCommand *parent = 0);
 
     virtual ~AbstractQUndoCommand();
 
     /// Call this member to cement this action into the undo stack
     /// and redo the last action to make sure the object is correct.
-    /// @note Overridden in DummyUndoCommand.
-    virtual void commit(void);
+    virtual void commit();
 
+    /// Obtains all the latest changes and checks if actually changed.
+    /// @returns true if this undo/redo changes one or more properties.
+    virtual bool isChanged() = 0;
+
+    //TODO: turn into QPROPERTY
     /// @returns true if the ViewObject is in collision with anything else
-    bool isObjectColliding(void);
+    bool isObjectColliding();
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
@@ -58,14 +65,20 @@ public:
     /// this command.
     void undo() override;
 
+    QQuickItem* theHandlePtr;
+
 protected:
+    AbstractObjectPtr theAOPtr;
+
     // All positions and sizes are in meters!
     Position theOrigPos;
-    Position theNewPos;
     qreal theOrigWidth;
-    qreal theNewWidth;
     qreal theOrigHeight;
-    qreal theNewHeight;
+
+    void updateAO(const Position& aPosition);
+    void updateAO(qreal aWidth, qreal aHeight);
+    ViewItem* getVIPtr();
+    void updateVI();
 };
 
 #endif // AbstractQUndoCommand_H

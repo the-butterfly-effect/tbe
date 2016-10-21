@@ -22,22 +22,27 @@
 #include "AbstractQUndoCommand.h"
 #include "Position.h"
 
-/// implementation of AbstractUndoCommand to handle
+/// implementation of AbstractQUndoCommand to handle
 /// rotation of an QQuickItem by the user
 class RotateQUndoCommand : public QObject, public AbstractQUndoCommand
 {
     Q_OBJECT
 
 public:
-    explicit RotateQUndoCommand(AbstractObjectPtr anAbstractObjectPtr);
+    explicit RotateQUndoCommand(ViewItem* anViewItemPtr,
+                                QQuickItem* aHandlePtr,
+                                QUndoCommand *parent = 0);
 
-    virtual bool editAngleMove    (qreal aCurrentAngle);
-    virtual bool editAngleDone    (qreal aFinalAngle);
+    /// Obtains all the latest changes and checks if actually changed.
+    /// @returns true if this undo/redo changes one or more properties.
+    bool isChanged() override;
 
+    void redo() override;
+    void undo() override;
 
 private:
     /// angle in radians of the button down position compared to object center
-    qreal theButtonDownVectorAngle;
+    qreal theNewAngleInQDegrees;
 };
 
 #endif // ROTATEQUNDOCOMMAND_H

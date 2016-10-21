@@ -25,14 +25,25 @@ import TBEView 1.0
 // handle the display of what we want.
 ViewItem {
     id: viewItem
+
+    property var tooltip;
+    property var imageName;
+
+    function restoreBindings() {
+        x        = Qt.binding(function() { return ResizeInfo.pixPerMeter * xInM})
+        y        = Qt.binding(function() { return gameView.height - ResizeInfo.pixPerMeter * yInM})
+        width    = Qt.binding(function() { return ResizeInfo.pixPerMeter * widthInM})
+        height   = Qt.binding(function() { return ResizeInfo.pixPerMeter * heightInM})
+        rotation = Qt.binding(function() { return angleInDegrees})
+    }
+
     x: ResizeInfo.pixPerMeter * xInM;
     y: gameView.height - ResizeInfo.pixPerMeter * yInM;
     width: ResizeInfo.pixPerMeter * widthInM;
     height: ResizeInfo.pixPerMeter * heightInM;
     rotation: angleInDegrees;
 
-    property var tooltip;
-    property var imageName;
+
     Image {
         anchors.fill: parent
         source: img(imageName)

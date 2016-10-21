@@ -65,6 +65,8 @@ private:
     qreal theWidthInM;
     qreal theHeightInM;
     qreal theAngleInDegrees;
+
+    friend class AbstractQUndoCommand;
 };
 
 #endif // VIEWITEM_H

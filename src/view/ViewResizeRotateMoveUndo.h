@@ -19,7 +19,9 @@
 #ifndef VIEWRESIZEROTATEMOVEUNDO_H
 #define VIEWRESIZEROTATEMOVEUNDO_H
 
-#include "ViewResizeRotateMoveUndo.h"
+#include "ViewItem.h"
+
+class AbstractQUndoCommand;
 #include <QQuickItem>
 
 /// An instance of this class gets instantiated every time a ResizeRotateMoveDecorator
@@ -31,23 +33,38 @@ class ViewResizeRotateMoveUndo : public QQuickItem
     Q_OBJECT
 public:
 
-    Q_PROPERTY(QQuickItem* theDecorated MEMBER theDecoratedPtr NOTIFY theDecoratedChanged)
+    Q_PROPERTY(ViewItem* theDecorated MEMBER theDecoratedPtr NOTIFY theDecoratedChanged)
+    Q_PROPERTY(QQuickItem* theActiveHandle READ activeHandle NOTIFY theActiveHandleChanged)
+
 
     Q_INVOKABLE qreal vector2AngleDegrees(qreal dx, qreal dy);
+
+    /// Calling this member will start a new undo process and commit the old undo
+    /// - if there is one. Technically, this is a factory method.
+    Q_INVOKABLE void startNewUndo(const QString& aType, QQuickItem* aHandlePtr);
 
 public:
     explicit ViewResizeRotateMoveUndo(QQuickItem *parent = nullptr);
     virtual ~ViewResizeRotateMoveUndo() {};
 
+    QQuickItem* activeHandle();
+
 signals:
     void theDecoratedChanged();
+    void theActiveHandleChanged();
 
 public slots:
 //    void slot_parentChanged();
 
 private:
-    QQuickItem* theDecoratedPtr;
-//    QUndoCommand *theRRMUCPtr
+    /// Take the dimensions/position/angle from the object and pass to our undo.
+    /// Then make it commit() itself to the stack (or not, if nothing changed?).
+    void commitChanges();
+
+private:
+    ViewItem* theDecoratedPtr;
+
+    AbstractQUndoCommand* theUndoPtr;
 };
 
 #endif // VIEWRESIZEROTATEMOVEUNDO_H

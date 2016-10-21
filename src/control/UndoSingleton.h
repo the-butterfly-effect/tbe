@@ -26,7 +26,9 @@
 
 // forward declarations
 class QUndoStack;
+class AbstractQUndoCommand;
 class AbstractUndoCommand;
+class QQuickItem;
 
 class UndoSingleton
 {
@@ -40,6 +42,10 @@ public:
     ///       The object is now owned by the ViewObject anObject.
     static AbstractUndoCommand *createUndoCommand(ViewObjectPtr anObject,
                                                   ActionIcon::ActionType anUndoType);
+
+    static AbstractQUndoCommand *createQUndoCommand(ViewItem* aViewItemPtr,
+                                                    QQuickItem* aHandlePtr,
+                                                    const QString& anUndoType);
 
     /// Clean up the stack (i.e. start a new level)
     /// this removes all UndoObjects from the stack
