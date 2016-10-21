@@ -49,17 +49,6 @@ public:
     Q_PROPERTY(int buttonIconSize MEMBER theButtonIconSize NOTIFY buttonIconSizeChanged)
 
 
-    /// Maps a coordinate inside the widget (in pixels) into the same
-    /// coordinate in the model world (meters).
-    Vector mapPixToMeters(qreal anX, qreal aY) const;
-    //Vector mapPixToMeters(QPointF aPixelPos) const;
-
-    /// Maps a coordinate in the model world (meters) into the same
-    /// coordinate inside the widget (in pixels).
-    QPointF mapMetersToPix(Vector aPos) const;
-    qreal mapMetersToPixX(qreal anX) const;
-    qreal mapMetersToPixY(qreal aY) const;
-
     ///
     bool setupQmlSource(const QUrl &url);
 
