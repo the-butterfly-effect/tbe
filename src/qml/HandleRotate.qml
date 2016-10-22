@@ -44,8 +44,8 @@ Image {
         anchors.fill: parent
         drag{ target: parent; }
         onPositionChanged: {
-            if (theDecorator.theActiveHandle != this) {
-                theDecorator.startNewUndo("HandleRotate", this);
+            if (theDecorator.theActiveHandle != parent) {
+                theDecorator.startNewUndo("HandleRotate", parent);
                 var mpos = this.mapToItem(gameView, mouseX, mouseY);
                 cpos = theDecorated.mapToItem(gameView, theDecorated.width/2, theDecorated.height/2);
                 rotateHandle.startAngle = theDecorated.rotation - theDecorator.vector2AngleDegrees(mpos.x -cpos.x, mpos.y - cpos.y);
@@ -54,11 +54,11 @@ Image {
                 var mpos = mapToItem(gameView, mouseX, mouseY);
                 var newAngle = theDecorator.vector2AngleDegrees(mpos.x-cpos.x, mpos.y-cpos.y) + rotateHandle.startAngle;
                 theDecorated.rotation = Math.floor(newAngle/15. + 0.5)* 15.;
+                theDecorated.updateVars();
             }
         }
         onReleased: {
-            // TODO/FIXME: this is too harsh - triggers a commit on every release
-            theDecorator.startNewUndo("", 0);
+            theDecorated.updateVars();
             theDecorated.restoreBindings();
         }
     }

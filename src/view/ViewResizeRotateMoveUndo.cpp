@@ -26,9 +26,12 @@ ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
       theUndoPtr(nullptr)
 {
     assert(nullptr == parent);
-    // Once theDecorated is set, we want to know so we can create
-    // our UndoCommand and have it grab the initial data.
-    //    connect(this, SIGNAL(theDecoratedChanged()), this, SLOT(slot_parentChanged()));
+}
+
+ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
+{
+    // Flush the last existing undo.
+    startNewUndo("", nullptr);
 }
 
 QQuickItem *ViewResizeRotateMoveUndo::activeHandle()
@@ -56,6 +59,7 @@ qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
 
 void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType, QQuickItem *aHandlePtr)
 {
+    DEBUG1ENTRY;
     // do we need to take care of the previous undo first?
     if (theUndoPtr)
     {

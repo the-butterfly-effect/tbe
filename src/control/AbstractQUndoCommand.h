@@ -75,6 +75,9 @@ protected:
     qreal theOrigWidth;
     qreal theOrigHeight;
 
+    /// Contains the connection to the ViewItem.
+    QMetaObject::Connection theVIConnection;
+
     void updateAO(const Position& aPosition);
     void updateAO(qreal aWidth, qreal aHeight);
     ViewItem* getVIPtr();

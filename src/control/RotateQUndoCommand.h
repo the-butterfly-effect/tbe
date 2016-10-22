@@ -33,15 +33,18 @@ public:
                                 QQuickItem* aHandlePtr,
                                 QUndoCommand *parent = 0);
 
-    /// Obtains all the latest changes and checks if actually changed.
+    void commit() override;
+
     /// @returns true if this undo/redo changes one or more properties.
     bool isChanged() override;
 
     void redo() override;
     void undo() override;
 
+private slots:
+    void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM);
+
 private:
-    /// angle in radians of the button down position compared to object center
     qreal theNewAngleInQDegrees;
 };
 

@@ -45,16 +45,13 @@ public:
 
 public:
     explicit ViewResizeRotateMoveUndo(QQuickItem *parent = nullptr);
-    virtual ~ViewResizeRotateMoveUndo() {};
+    virtual ~ViewResizeRotateMoveUndo();
 
     QQuickItem* activeHandle();
 
 signals:
     void theDecoratedChanged();
     void theActiveHandleChanged();
-
-public slots:
-//    void slot_parentChanged();
 
 private:
     /// Take the dimensions/position/angle from the object and pass to our undo.

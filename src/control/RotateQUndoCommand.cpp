@@ -28,12 +28,18 @@ RotateQUndoCommand::RotateQUndoCommand(ViewItem* anViewItemPtr,
                                        QUndoCommand *parent)
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr, QObject::tr("Rotate %1"), parent)
 {
-    theNewAngleInQDegrees = anViewItemPtr->rotation();
+    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
+                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
+}
+
+void RotateQUndoCommand::commit()
+{
+    disconnect(theVIConnection);
+    AbstractQUndoCommand::commit();
 }
 
 bool RotateQUndoCommand::isChanged()
 {
-    theNewAngleInQDegrees = getVIPtr()->rotation();
     if (areQRealsTheSame(theOrigPos.angleInQDegrees(),theNewAngleInQDegrees))
         return false;
     return true;
@@ -44,6 +50,12 @@ void RotateQUndoCommand::redo()
     updateAO(Position(theOrigPos,theNewAngleInQDegrees));
     updateVI();
     AbstractQUndoCommand::redo();
+}
+
+void RotateQUndoCommand::slot_updateVars(qreal /*anXM*/, qreal /*aYM*/, qreal aRotDegrees, qreal /*aWidthM*/, qreal /*aHeightM*/)
+{
+    theNewAngleInQDegrees = aRotDegrees;
+    redo();
 }
 
 void RotateQUndoCommand::undo()

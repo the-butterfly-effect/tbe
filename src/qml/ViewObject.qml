@@ -29,12 +29,25 @@ ViewItem {
     property var tooltip;
     property var imageName;
 
+    signal signalUpdateVars(real anXM, real aYM, real aRotDegrees, real aWidthM, real aHeightM);
+
     function restoreBindings() {
         x        = Qt.binding(function() { return ResizeInfo.pixPerMeter * xInM})
         y        = Qt.binding(function() { return gameView.height - ResizeInfo.pixPerMeter * yInM})
         width    = Qt.binding(function() { return ResizeInfo.pixPerMeter * widthInM})
         height   = Qt.binding(function() { return ResizeInfo.pixPerMeter * heightInM})
         rotation = Qt.binding(function() { return angleInDegrees})
+    }
+
+    /// Update using a function+signal instead of 5 existing signals to save
+    /// execution overhead.
+    function updateVars() {
+        var cpos = this.mapToItem(gameView, x+width/2, y+height/2);
+        signalUpdateVars( cpos.x / ResizeInfo.pixPerMeter,
+                          (gameView.height-cpos.y) / ResizeInfo.pixPerMeter,
+                          rotation,
+                          width / ResizeInfo.pixPerMeter,
+                          height / ResizeInfo.pixPerMeter);
     }
 
     x: ResizeInfo.pixPerMeter * xInM;

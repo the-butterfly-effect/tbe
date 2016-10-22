@@ -46,7 +46,7 @@ AbstractQUndoCommand::~AbstractQUndoCommand()
 
 void AbstractQUndoCommand::commit(void)
 {
-    DEBUG4ENTRY;
+    DEBUG1ENTRY;
     UndoSingleton::push(this);
 }
 
