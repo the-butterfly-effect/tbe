@@ -95,7 +95,7 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
                 i->count(),
                 myItemPtr->getTheWidth(),
                 myItemPtr->getTheHeight(),
-                "VolleyBall",
+                myItemPtr->getImageName(),
                 myItemPtr->getToolTip());
         theTBGList.append(myTIGPtr);
     }

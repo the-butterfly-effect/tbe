@@ -63,24 +63,18 @@ Rectangle {
 
         // TODO: turn this into something drag&droppable
         // TODO: adjust the size of the icon to 'real life size'
-        Image {
+        ToolboxDraggableIcon {
             id: itemIcon
             width: iconSize
             height: iconSize
             source: count > 0 ? img(iconName) : img("EmptyGroup")
-            // the below will at least make sure that the icon is rendered
-            // perfectly, instead of resized.
-            // E.g. for VolleyBall.svg this makes big difference.
-            // TODO: figure out what to do with the large image...
-            sourceSize.width: iconSize
-            sourceSize.height: iconSize
         }
 
         Text {
             id: topTitle
             y: -5
             width: parent.width - itemIcon.width - 15
-            height: parent.height
+            height: iconSize
             text: "%1x\n%2".arg(count).arg(name)
             font.bold: true
             font.pointSize: 14
