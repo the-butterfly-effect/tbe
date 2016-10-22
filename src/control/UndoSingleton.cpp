@@ -25,6 +25,7 @@
 #include "ChoosePhoneUndoCommand.h"
 #include "EditPropertyUndoCommand.h"
 
+#include "ResizeQUndoCommand.h"
 #include "RotateQUndoCommand.h"
 
 static UndoSingleton *theUndoSingletonPtr = nullptr;
@@ -102,6 +103,8 @@ AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, 
 {
     DEBUG1("UndoSingleton::createQUndoCommand(%p,%p, %s)", aViewItemPtr, aHandlePtr, ASCII(anUndoType));
     // TODO: factory for all types (duh)
+    if (anUndoType == "HandleResize")
+        return new ResizeQUndoCommand(aViewItemPtr, aHandlePtr);
     if (anUndoType == "HandleRotate")
         return new RotateQUndoCommand(aViewItemPtr, aHandlePtr);
     return nullptr;

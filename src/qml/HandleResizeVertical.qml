@@ -36,6 +36,8 @@ Image {
         anchors.fill: parent
         drag{ target: parent; axis: Drag.XAxis}
         onMouseXChanged: {
+            if (theDecorator.theActiveHandle != parent)
+                theDecorator.startNewUndo("HandleResize", parent);
             if(drag.active){
                 var myMouseY = mouseY
                 if (theDecorated.height +sign*mouseY < minSize)
@@ -44,8 +46,12 @@ Image {
                 theDecorated.x -= myMouseY * 0.5 * Math.sin(theDecorated.rotation/180*Math.PI)
                 theDecorated.y -= sign*myMouseY * (0.5 -sign*0.5*Math.cos(theDecorated.rotation/180*Math.PI))
                 theDecorator.height = theDecorated.height
+                theDecorated.updateVars();
             }
         }
+        onReleased: {
+            theDecorated.updateVars();
+            theDecorated.restoreBindings();
+        }
     }
-
 }

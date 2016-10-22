@@ -42,14 +42,17 @@ ViewItem {
     /// Update using a function+signal instead of 5 existing signals to save
     /// execution overhead.
     function updateVars() {
-        var cpos = this.mapToItem(gameView, x+width/2, y+height/2);
-        signalUpdateVars( cpos.x / ResizeInfo.pixPerMeter,
-                          (gameView.height-cpos.y) / ResizeInfo.pixPerMeter,
+        signalUpdateVars(  (x+width/2)/ ResizeInfo.pixPerMeter,
+                          (gameView.height-(y+height/2)) / ResizeInfo.pixPerMeter,
                           rotation,
                           width / ResizeInfo.pixPerMeter,
                           height / ResizeInfo.pixPerMeter);
     }
 
+    // Any variables that we modify using the ResizeRotateMoveDecorator will
+    // lose their binding to the ViewItem properties. The above restoreBindings()
+    // function 'fixes' that. The above updateVars() function updates the undo
+    // object with the current values (that wind up in the ViewItem via the undo).
     x: ResizeInfo.pixPerMeter * xInM;
     y: gameView.height - ResizeInfo.pixPerMeter * yInM;
     width: ResizeInfo.pixPerMeter * widthInM;
