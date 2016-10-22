@@ -47,6 +47,19 @@ ViewResizeRotateMoveUndo {
                 target: theDecorated
                 smoothed: true
             }
+            onPositionChanged: {
+                theDecorated.updateVars();
+            }
+            onPressed: {
+                if (theDecorator.theActiveHandle != parent) {
+                    theDecorator.startNewUndo("Move", parent);
+                }
+                theDecorated.updateVars();
+            }
+            onReleased: {
+                theDecorated.updateVars();
+                theDecorated.restoreBindings();
+            }
         }
 
         HandleResizeHorizontal {

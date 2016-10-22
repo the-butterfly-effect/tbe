@@ -9,6 +9,7 @@ SET(control_SOURCES
     control/DummyUndoCommand.cpp
     control/EditPropertyUndoCommand.cpp
     control/InsertUndoCommand.cpp
+    control/MoveQUndoCommand.cpp
     control/MoveUndoCommand.cpp
     control/ResizeUndoCommand.cpp
     control/ResizeQUndoCommand.cpp
@@ -27,6 +28,7 @@ SET(control_HEADERS
     control/DummyUndoCommand.h
     control/EditPropertyUndoCommand.h
     control/InsertUndoCommand.h
+    control/MoveQUndoCommand.h
     control/MoveUndoCommand.h
     control/ResizeUndoCommand.h
     control/ResizeQUndoCommand.h
