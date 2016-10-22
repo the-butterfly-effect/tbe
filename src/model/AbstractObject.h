@@ -445,6 +445,8 @@ public:
         return createViewItemInt(aDefaultDepth, "ViewObject", "", "");
     }
 
+    virtual const QString getImageName() const;
+
 protected:
     /** INTERNAL Creates the QML ViewObject (and its base ViewItem).
      *  @param aDefaultDepth  Z-value of the object (0.1=back, 2=default)

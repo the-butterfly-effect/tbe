@@ -187,11 +187,7 @@ ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
 {
     if (theViewObjectPtr != nullptr)
         return theViewObjectPtr;
-    QString myImageName;
-    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
-        myImageName = getInternalName();
-
-    theViewObjectPtr = ViewObject::factoryMethod<ViewObject>(getThisPtr(), myImageName);
+    theViewObjectPtr = ViewObject::factoryMethod<ViewObject>(getThisPtr(), getImageName());
 
     theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     return theViewObjectPtr;
@@ -205,8 +201,7 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
 
     QString myImageName;
     if (anImageName.isEmpty()) {
-        if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
-            myImageName = getInternalName();
+        myImageName = getImageName();
     }
     else
         myImageName = anImageName;
@@ -251,6 +246,15 @@ b2World *AbstractObject::getB2WorldPtr(void) const
 {
     assert (theStaticB2WorldPtr);
     return theStaticB2WorldPtr;
+}
+
+
+const QString AbstractObject::getImageName() const
+{
+    QString myImageName;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
+        myImageName = getInternalName();
+    return myImageName;
 }
 
 
