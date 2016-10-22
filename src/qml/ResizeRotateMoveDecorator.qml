@@ -41,6 +41,14 @@ ViewResizeRotateMoveUndo {
         color: /* theDecorated.isColliding ? "#80FF5050" :*/ "#8050FF50"
         visible: true
 
+        MouseArea {
+            anchors.fill: parent
+            drag{
+                target: theDecorated
+                smoothed: true
+            }
+        }
+
         HandleResizeHorizontal {
             id: left
             sign: -1

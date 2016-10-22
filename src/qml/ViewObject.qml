@@ -70,10 +70,6 @@ ViewItem {
 
     MouseArea {
         anchors.fill: parent
-        drag{
-            target: parent
-            smoothed: true
-        }
         onPressed: {
             if(selectedItem)
                 if (selectedItem.theDecorated != parent) {
