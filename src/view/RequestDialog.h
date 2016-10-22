@@ -21,6 +21,8 @@
 // forward decls
 class QQuickItem;
 
+#include "QVariant"
+
 /// Interface to request various dialogs to be shown.
 /// Intended to be only used by the GameFlow class!
 class RequestDialog
