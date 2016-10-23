@@ -16,18 +16,34 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "ToolboxGroup.h"
 #include "ToolboxItemGroup.h"
+#include "ViewItem.h"
+
+#include <QQuickItem>
 
 ToolboxItemGroup::ToolboxItemGroup(QObject *parent) : QObject(parent)
 {
-
+assert(false);
 }
-
 
 ToolboxItemGroup::ToolboxItemGroup(const QString &aName, int aCount, qreal aWidth,
                                    qreal aHeight, const QString& anIconName,
-                                   const QString &aTooltip, QObject *parent)
-    : QObject(parent), theName(aName), theCount (aCount), theWidth(aWidth),
-      theHeight(aHeight), theIconName(anIconName), theTooltipText(aTooltip)
+                                   const QString &aTooltip, ToolboxGroup *aTBGPtr)
+    : QObject(nullptr), theName(aName), theCount (aCount), theWidth(aWidth),
+      theHeight(aHeight), theIconName(anIconName), theTooltipText(aTooltip), theTBGPtr(aTBGPtr)
 {
+}
+
+QQuickItem *ToolboxItemGroup::insertObject(qreal anXinM, qreal aYinM)
+{
+    // At this point, we know what object to insert as we will have an AO
+    // and a position on the screen to push it to.
+    printf("Insert object of %fx%f\n", anXinM, aYinM);
+
+    AbstractObjectPtr myAOPtr = theTBGPtr->last();
+    // TODO: figure out rotation
+    myAOPtr->setOrigCenter(Position(anXinM, aYinM, 0.));
+    ViewItem* myVIPtr = myAOPtr->createViewItem();
+    return myVIPtr;
 }

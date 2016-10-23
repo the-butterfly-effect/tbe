@@ -96,7 +96,8 @@ void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
                 myItemPtr->getTheWidth(),
                 myItemPtr->getTheHeight(),
                 myItemPtr->getImageName(),
-                myItemPtr->getToolTip());
+                myItemPtr->getToolTip(),
+                i);
         theTBGList.append(myTIGPtr);
     }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();

@@ -39,9 +39,9 @@ public:
         return theObjectsList.count();
     }
 
-    /// @returns a pointer to the first object in this group
+    /// @returns a pointer to the last object in this group
     ///          without removing it .
-    /// (compare to popObject(), that removes the LAST one)
+    /// (compare to popObject(), that REMOVES the last one)
     AbstractObjectPtr last() const
     {
         return theObjectsList.last();
@@ -60,6 +60,8 @@ private:
     typedef QList<AbstractObjectPtr> ObjectsList;
     ObjectsList theObjectsList;
     ToolboxListWidgetItem *theWidgetItemPtr;
+
+    friend class ToolboxItemGroup;
 };
 
 #endif // TOOLBOXGROUP_H

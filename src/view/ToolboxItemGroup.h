@@ -21,8 +21,11 @@
 
 #include <QObject>
 
+class ToolboxGroup;
+class QQuickItem;
+
 /// This class manages one group of identical items in the toolbox.
-/// This class is responible for keeping refs to (maybe again) unused
+/// This class is responsible for keeping refs to (maybe again) unused
 /// AbstractObjects and/or ViewItems.
 class ToolboxItemGroup : public QObject
 {
@@ -31,7 +34,7 @@ public:
     explicit ToolboxItemGroup(QObject *parent = nullptr);
     ToolboxItemGroup(const QString &aName, int aCount, qreal aWidth, qreal aHeight,
                      const QString& anIconName, const QString &aTooltip,
-                     QObject *parent = 0);
+                     ToolboxGroup *parent);
 
     Q_PROPERTY(QString name    MEMBER theName NOTIFY nameChanged)
     Q_PROPERTY(int     count   READ count WRITE setCount NOTIFY countChanged)
@@ -39,6 +42,9 @@ public:
     Q_PROPERTY(qreal   oheight MEMBER theHeight NOTIFY oheightChanged)
     Q_PROPERTY(QString iconName MEMBER theIconName NOTIFY iconNameChanged)
     Q_PROPERTY(QString tooltip MEMBER theTooltipText NOTIFY tooltipChanged)
+
+    /// anX and aY are both in meters and top-left of the icon
+    Q_INVOKABLE QQuickItem* insertObject(qreal anXinM, qreal aYinM);
 
     QString name();
     int count() { return theCount; }
@@ -67,6 +73,9 @@ private:
     qreal   theHeight;
     QString theIconName;
     QString theTooltipText;
+
+    // TODO: for now
+    ToolboxGroup* theTBGPtr;
 };
 
 #endif // TOOLBOXITEMGROUP_H
