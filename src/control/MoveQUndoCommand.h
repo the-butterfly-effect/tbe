@@ -22,8 +22,8 @@
 #include "AbstractQUndoCommand.h"
 #include "Position.h"
 
-/// implementation of AbstractQUndoCommand to handle
-/// rotation of an QQuickItem by the user
+/// Implementation of AbstractQUndoCommand to handle moving of an
+/// an QQuickItem by the user.
 class MoveQUndoCommand : public QObject, public AbstractQUndoCommand
 {
     Q_OBJECT
