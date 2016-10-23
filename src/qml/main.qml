@@ -29,6 +29,22 @@ RowLayout {
         return "image://tbe/"+A;
     }
 
+    function xwh2m(aDimInPix) {
+        return aDimInPix / ResizeInfo.pixPerMeter;
+    }
+
+    function m2xwh(aDimInM) {
+        return ResizeInfo.pixPerMeter * aDimInM;
+    }
+
+    function y2m(aYInPix) {
+         return (gameView.height-aYInPix) / ResizeInfo.pixPerMeter;
+    }
+
+    function m2y(aYInM) {
+        return gameView.height - ResizeInfo.pixPerMeter * aYInM;
+    }
+
     ViewWorld {
         id: gameView
         objectName: "gameView"

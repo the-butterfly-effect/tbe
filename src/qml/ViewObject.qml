@@ -32,31 +32,31 @@ ViewItem {
     signal signalUpdateVars(real anXM, real aYM, real aRotDegrees, real aWidthM, real aHeightM);
 
     function restoreBindings() {
-        x        = Qt.binding(function() { return ResizeInfo.pixPerMeter * xInM})
-        y        = Qt.binding(function() { return gameView.height - ResizeInfo.pixPerMeter * yInM})
-        width    = Qt.binding(function() { return ResizeInfo.pixPerMeter * widthInM})
-        height   = Qt.binding(function() { return ResizeInfo.pixPerMeter * heightInM})
+        x        = Qt.binding(function() { return m2xwh(xInM); })
+        y        = Qt.binding(function() { return m2y(yInM); })
+        width    = Qt.binding(function() { return m2xwh(widthInM); })
+        height   = Qt.binding(function() { return m2xwh(heightInM); })
         rotation = Qt.binding(function() { return angleInDegrees})
     }
 
     /// Update using a function+signal instead of 5 existing signals to save
     /// execution overhead.
     function updateVars() {
-        signalUpdateVars(  (x+width/2)/ ResizeInfo.pixPerMeter,
-                          (gameView.height-(y+height/2)) / ResizeInfo.pixPerMeter,
+        signalUpdateVars( xwh2m(x+width/2),
+                          y2m(y+height/2),
                           rotation,
-                          width / ResizeInfo.pixPerMeter,
-                          height / ResizeInfo.pixPerMeter);
+                          xwh2m(width),
+                          xwh2m(height));
     }
 
     // Any variables that we modify using the ResizeRotateMoveDecorator will
     // lose their binding to the ViewItem properties. The above restoreBindings()
     // function 'fixes' that. The above updateVars() function updates the undo
     // object with the current values (that wind up in the ViewItem via the undo).
-    x: ResizeInfo.pixPerMeter * xInM;
-    y: gameView.height - ResizeInfo.pixPerMeter * yInM;
-    width: ResizeInfo.pixPerMeter * widthInM;
-    height: ResizeInfo.pixPerMeter * heightInM;
+    x: m2xwh(xInM);
+    y: m2y(yInM);
+    width: m2xwh(widthInM);
+    height: m2xwh(heightInM);
     rotation: angleInDegrees;
 
 

@@ -22,7 +22,7 @@ import TBEView 1.0
 ViewResizeRotateMoveUndo {
     id: theDecorator;
     objectName: "theDecorator";
-    property real minSize: ResizeInfo.pixPerMeter * 0.1
+    property real minSize: m2xwh(0.1)
 
     property real oldWidth;
     property real oldHeight;

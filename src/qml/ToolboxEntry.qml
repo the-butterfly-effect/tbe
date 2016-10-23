@@ -58,16 +58,16 @@ Rectangle {
 
     Row {
         id: topRow
-        x: 10; y: 10; width: parent.width-x*2; height: itemIcon.height+y;
+        x: 10; y: 10; z: 2; width: parent.width-x*2; height: itemIcon.height+y;
         spacing: 10
 
         // TODO: turn this into something drag&droppable
-        // TODO: adjust the size of the icon to 'real life size'
         ToolboxDraggableIcon {
             id: itemIcon
             width: iconSize
             height: iconSize
             source: count > 0 ? img(iconName) : img("EmptyGroup")
+            z: 10
         }
 
         Text {
@@ -131,6 +131,7 @@ Rectangle {
     // When clicked it changes mode to 'Opened'.
     // If we are already in 'Opened' state, then nothing happens.
     MouseArea {
+        z: 1
         anchors.fill: parent
         onClicked: { listView.allClose(); toolboxEntry.state = 'Opened'; }
     }
@@ -150,8 +151,8 @@ Rectangle {
         // when opened, make icon image match size in scene (if not empty image)
         PropertyChanges {
             target: itemIcon;
-            width:  (count > 0) ? owidth *ResizeInfo.pixPerMeter : iconSize;
-            height: (count > 0) ? oheight*ResizeInfo.pixPerMeter : iconSize }
+            width:  (count > 0) ? m2xwh(owidth) : iconSize;
+            height: (count > 0) ? m2xwh(oheight): iconSize }
     }
 
     transitions: Transition {
