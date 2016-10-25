@@ -41,8 +41,6 @@ QObject *ToolboxItemGroup::createUndo(QQuickItem *aHandlePtr, qreal anXinM, qrea
 {
     // At this point, we know what object to insert as we will have an AO
     // and a position on the screen to push it to.
-    printf("Insert object of %fx%f\n", anXinM, aYinM);
-
     AbstractObjectPtr myAOPtr = getAOfromToolbox();
     // TODO: figure out rotation
     myAOPtr->setOrigCenter(Position(anXinM+myAOPtr->getTheWidth()/2.,
@@ -58,14 +56,18 @@ QObject *ToolboxItemGroup::createUndo(QQuickItem *aHandlePtr, qreal anXinM, qrea
 
 AbstractObjectPtr ToolboxItemGroup::getAOfromToolbox()
 {
+    setCount(theTBGPtr->count()-1);
     return theTBGPtr->popObject();
-    theCount = theTBGPtr->count();
-    emit countChanged();
 }
 
 void ToolboxItemGroup::returnAO2Toolbox(AbstractObjectPtr anAOPtr)
 {
     theTBGPtr->addObject(anAOPtr);
-    theCount = theTBGPtr->count();
+    setCount(theTBGPtr->count());
+}
+
+void ToolboxItemGroup::setCount(int aNewCount)
+{
+    theCount = aNewCount;
     emit countChanged();
 }

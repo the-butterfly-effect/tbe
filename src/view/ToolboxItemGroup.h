@@ -61,8 +61,7 @@ public:
     QString iconName();
     QString tooltip();
 
-    void setCount(int aNewCount)
-    {theCount = aNewCount; emit countChanged();}
+    void setCount(int aNewCount);
 
 signals:
     void nameChanged();
