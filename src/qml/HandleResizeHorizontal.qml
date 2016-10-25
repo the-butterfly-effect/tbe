@@ -22,6 +22,7 @@ Image {
     property real sign: 1; // 1 means right, -1 means left
 
     anchors.horizontalCenter: (sign>0) ? parent.right : parent.left
+    anchors.horizontalCenterOffset: sign * width/3
     anchors.verticalCenter: parent.verticalCenter
     source: img("ActionResizeHorizontally")
 

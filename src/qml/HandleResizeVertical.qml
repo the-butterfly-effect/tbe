@@ -23,6 +23,7 @@ Image {
 
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.verticalCenter: (sign>0) ? parent.bottom : parent.top
+    anchors.verticalCenterOffset: sign * height/3
     source: img("ActionResizeVertically")
 
     //visible: theDecorated.isVResize === true;
