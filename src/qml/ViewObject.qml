@@ -39,6 +39,33 @@ ViewItem {
         rotation = Qt.binding(function() { return angleInDegrees})
     }
 
+    function setupDecorator() {
+        if(selectedItem)
+            if (selectedItem.theDecorated != viewItem) {
+                selectedItem.destroy();
+                selectedItem = undefined
+            }
+        if(!selectedItem) {
+            var component = Qt.createComponent("ResizeRotateMoveDecorator.qml");
+            if (component.status == Component.Ready) {
+                selectedItem = component.createObject(gameView, {
+                                                       "theDecorated": viewItem,
+                                                       "oldWidth": viewItem.width,
+                                                       "oldHeight": viewItem.height,
+                                                       "oldZ": viewItem.z,
+                                                       "width": viewItem.width,
+                                                       "height": viewItem.height})
+                // we explicitly set the decorator to be a child of the decorated
+                selectedItem.parent = viewItem;
+                // raise to the front while moving/resizing/rotating
+                viewItem.z = 9999;
+            }
+            else
+                console.log("Error creating component: '" + component.errorString() + "'");
+        }
+    }
+
+
     /// Update using a function+signal instead of 5 existing signals to save
     /// execution overhead.
     function updateVars() {
@@ -70,31 +97,7 @@ ViewItem {
 
     MouseArea {
         anchors.fill: parent
-        onPressed: {
-            if(selectedItem)
-                if (selectedItem.theDecorated != parent) {
-                    selectedItem.destroy();
-                    selectedItem = undefined
-                }
-            if(!selectedItem) {
-                var component = Qt.createComponent("ResizeRotateMoveDecorator.qml");
-                if (component.status == Component.Ready) {
-                    selectedItem = component.createObject(gameView, {
-                                                           "theDecorated": parent,
-                                                           "oldWidth": parent.width,
-                                                           "oldHeight": parent.height,
-                                                           "oldZ": parent.z,
-                                                           "width": parent.width,
-                                                           "height": parent.height})
-                    // we explicitly set the decorator to be a child of the decorated
-                    selectedItem.parent = viewItem;
-                    // raise to the front while moving/resizing/rotating
-                    viewItem.z = 9999;
-                }
-                else
-                    console.log("Error creating component: '" + component.errorString() + "'");
-            }
-        }
+        onPressed: setupDecorator();
     }
 
     // Disabled: current implementation is too crude.

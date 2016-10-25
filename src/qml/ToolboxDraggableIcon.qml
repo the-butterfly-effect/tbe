@@ -19,14 +19,18 @@
 import QtQuick 2.0
 
 Rectangle {
-    id: paletteItem
+    id: draggableIcon
 
     property string source;
+    property var    newItem : undefined;
+    property var    startmousepos;
+    property var    undoObject : undefined;
     color: "transparent"
 
     Image {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        // TODO: take pre-set rotation into account
         width:  (owidth/oheight > 1.0)? parent.width : parent.height/owidth*oheight;
         height: (owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height;
         source: parent.source
@@ -37,13 +41,37 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
 
-        // ensure that non-drag 'click' events arrive in 'recipe'
+        // ensure that non-drag 'click' events arrive in 'toolboxEntry'
         propagateComposedEvents: true
         onClicked: mouse.accepted = false;
 
-        // we keep drag&drop events here
-//        onPressed: if (count > 0) Code.startDrag(mouse);
-//        onPositionChanged: Code.continueDrag(mouse);
-//        onReleased: Code.endDrag(mouse);
+        // Drag&Drop events:
+        onPressed: {
+            listView.interactive = false;
+            var tlpos = draggableIcon.mapToItem(gameView, 0,0);
+            startmousepos = {x:  mouse.x, y: mouse.y};
+            undoObject = createUndo(this,
+                                    xwh2m(tlpos.x+startmousepos.x),
+                                    y2m(tlpos.y+startmousepos.y));
+            newItem = undoObject.getTheDecorated();
+            newItem.setupDecorator();
+        }
+        onPositionChanged: {
+            // in this one, we keep everything in pixels :-)
+            if (null == newItem)
+                return;
+            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
+            newItem.x = cmpos.x - startmousepos.x;
+            newItem.y = cmpos.y - startmousepos.y;
+            newItem.updateVars();
+        }
+        onReleased: {
+            listView.interactive = true;
+            newItem.updateVars();
+            newItem.restoreBindings();
+            undoObject.doneMoving();
+            newItem = null;
+            undoObject = null;
+        }
     }
 }

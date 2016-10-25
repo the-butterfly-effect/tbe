@@ -43,8 +43,16 @@ public:
     Q_PROPERTY(QString iconName MEMBER theIconName NOTIFY iconNameChanged)
     Q_PROPERTY(QString tooltip MEMBER theTooltipText NOTIFY tooltipChanged)
 
-    /// anX and aY are both in meters and top-left of the icon
-    Q_INVOKABLE QQuickItem* insertObject(qreal anXinM, qreal aYinM);
+    /// Creates the insertMoveQUndoCommand and returns it.
+    /// @param aHandlePtr pointer to ToolboxDraggableIcon.
+    /// @param anX,aY are both in meters and top-left of the icon
+    Q_INVOKABLE QObject* createUndo(QQuickItem* aHandlePtr, qreal anXinM, qreal aYinM);
+
+    /// "Returns" the AbstractObject to the toolbox.
+    void returnAO2Toolbox(AbstractObjectPtr anAOPtr);
+
+    /// "Retrieves" the AbstractObject from the toolbox.
+    AbstractObjectPtr getAOfromToolbox(void);
 
     QString name();
     int count() { return theCount; }

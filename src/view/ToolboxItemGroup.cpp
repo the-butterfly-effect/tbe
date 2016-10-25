@@ -16,8 +16,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "InsertMoveQUndoCommand.h"
 #include "ToolboxGroup.h"
 #include "ToolboxItemGroup.h"
+#include "UndoSingleton.h"
 #include "ViewItem.h"
 
 #include <QQuickItem>
@@ -35,15 +37,35 @@ ToolboxItemGroup::ToolboxItemGroup(const QString &aName, int aCount, qreal aWidt
 {
 }
 
-QQuickItem *ToolboxItemGroup::insertObject(qreal anXinM, qreal aYinM)
+QObject *ToolboxItemGroup::createUndo(QQuickItem *aHandlePtr, qreal anXinM, qreal aYinM)
 {
     // At this point, we know what object to insert as we will have an AO
     // and a position on the screen to push it to.
     printf("Insert object of %fx%f\n", anXinM, aYinM);
 
-    AbstractObjectPtr myAOPtr = theTBGPtr->last();
+    AbstractObjectPtr myAOPtr = getAOfromToolbox();
     // TODO: figure out rotation
-    myAOPtr->setOrigCenter(Position(anXinM, aYinM, 0.));
+    myAOPtr->setOrigCenter(Position(anXinM+myAOPtr->getTheWidth()/2.,
+                                    aYinM+myAOPtr->getTheHeight()/2., 0.));
     ViewItem* myVIPtr = myAOPtr->createViewItem();
-    return myVIPtr;
+
+    AbstractQUndoCommand* myQUndoPtr = UndoSingleton::createQUndoCommand(myVIPtr, aHandlePtr, "ToolboxInsert");
+    InsertMoveQUndoCommand* myIMQUCPtr = dynamic_cast<InsertMoveQUndoCommand*>(myQUndoPtr);
+    assert (nullptr != myIMQUCPtr);
+    myIMQUCPtr->setToolboxItemGroupPtr(this);
+    return myIMQUCPtr;
+}
+
+AbstractObjectPtr ToolboxItemGroup::getAOfromToolbox()
+{
+    return theTBGPtr->popObject();
+    theCount = theTBGPtr->count();
+    emit countChanged();
+}
+
+void ToolboxItemGroup::returnAO2Toolbox(AbstractObjectPtr anAOPtr)
+{
+    theTBGPtr->addObject(anAOPtr);
+    theCount = theTBGPtr->count();
+    emit countChanged();
 }

@@ -25,6 +25,7 @@
 #include "ChoosePhoneUndoCommand.h"
 #include "EditPropertyUndoCommand.h"
 
+#include "InsertMoveQUndoCommand.h"
 #include "MoveQUndoCommand.h"
 #include "ResizeQUndoCommand.h"
 #include "RotateQUndoCommand.h"
@@ -108,6 +109,8 @@ AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, 
         return new ResizeQUndoCommand(aViewItemPtr, aHandlePtr);
     if (anUndoType == "HandleRotate")
         return new RotateQUndoCommand(aViewItemPtr, aHandlePtr);
+    if (anUndoType == "ToolboxInsert")
+        return new InsertMoveQUndoCommand(aViewItemPtr, aHandlePtr);
     if (anUndoType == "Move")
         return new MoveQUndoCommand(aViewItemPtr, aHandlePtr);
     return nullptr;
