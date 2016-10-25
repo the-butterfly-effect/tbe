@@ -47,6 +47,10 @@ Rectangle {
 
         // Drag&Drop events:
         onPressed: {
+            if (count <= 0) {
+                mouse.accepted = false;
+                return;
+            }
             listView.interactive = false;
             var tlpos = draggableIcon.mapToItem(gameView, 0,0);
             startmousepos = {x:  mouse.x, y: mouse.y};
