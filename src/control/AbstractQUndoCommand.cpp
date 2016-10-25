@@ -52,7 +52,6 @@ void AbstractQUndoCommand::commit(void)
 
 ViewItem *AbstractQUndoCommand::getVIPtr()
 {
-    assert(theAOPtr->theViewItemPtr);
     return theAOPtr->theViewItemPtr;
 }
 
