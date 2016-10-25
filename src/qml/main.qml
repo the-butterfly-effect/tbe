@@ -48,6 +48,7 @@ RowLayout {
     ViewWorld {
         id: gameView
         objectName: "gameView"
+        z: 3
 
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
@@ -63,6 +64,8 @@ RowLayout {
     }
 
     ColumnLayout {
+        z: 2
+
         Rectangle {
             id: toolbox
 
@@ -80,6 +83,7 @@ RowLayout {
                 height: parent.height - 4
                 color: "transparent"
                 y: 2
+                z: 2
             }
         }
 
