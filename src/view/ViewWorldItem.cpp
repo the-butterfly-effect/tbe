@@ -58,8 +58,7 @@ public:
         :
         theParentPtr(aViewWorldItemPtr),
         theQmlComponent(aQmlEnginePtr),
-        theQmlContext(theQmlEnginePtr->contextForObject(aViewWorldItemPtr)),
-        theQmlEnginePtr(aQmlEnginePtr),
+        theQmlContext(aQmlEnginePtr->contextForObject(aViewWorldItemPtr)),
         theSource(aSource)
     {
         // nothing to do here?
@@ -80,7 +79,6 @@ private:
     QQuickItem* theParentPtr;
     QQmlComponent theQmlComponent;
     QQmlContext theQmlContext;
-    QQmlEngine* theQmlEnginePtr;
     QUrl theSource;
 };
 
