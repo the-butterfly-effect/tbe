@@ -86,6 +86,6 @@ void AbstractQUndoCommand::updateAO(qreal aWidth, qreal aHeight)
 
 void AbstractQUndoCommand::updateVI()
 {
-    assert(theAOPtr->theViewItemPtr);
-    theAOPtr->theViewItemPtr->adjustObjectDrawingFromAO();
+    if (nullptr != theAOPtr->theViewItemPtr)
+	    theAOPtr->theViewItemPtr->adjustObjectDrawingFromAO();
 }
