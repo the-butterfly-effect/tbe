@@ -53,12 +53,12 @@ public:
     bool setupQmlSource(const QUrl &url);
 
     // --------------------------------------- RequestDialog implementation
+    // (only available through the RequestDialog interface!)
+private:
     QQuickItem *showChooseLevel() override;
     QQuickItem *showLevelInfo() override;
     QQuickItem *showWinFail(bool isWin) override;
     void setContextProperty(const QString &aName, const QVariant &aValue) override;
-
-
 
 signals:
     void aspectRatioChanged();
