@@ -214,12 +214,13 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
 
 void AbstractObject::deleteViewItem()
 {
-    assert(nullptr != theViewItemPtr);
+    if (nullptr == theViewItemPtr)
+        return;
     ViewItem* myVIPtr = theViewItemPtr;
     theViewItemPtr = nullptr;
     myVIPtr->setParent(nullptr);
     myVIPtr->setParentItem(nullptr);
-    delete myVIPtr;
+    myVIPtr->deleteLater();
 }
 
 
