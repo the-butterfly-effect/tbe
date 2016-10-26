@@ -154,34 +154,50 @@ void GameControls::slot_updateIcon(GameStateMachine::States aStatus)
     case GameStateMachine::ProblemStatus:
     case GameStateMachine::WonStatus:
         // disable the game controls incl. reset
+        theForwardAction->setEnabled(false);
         thePauseAction->setEnabled(false);
         thePauseAction->setShortcut(myEmptyKey);
         thePlayAction->setShortcut(myEmptyKey);
+        thePlayAction->setEnabled(false);
         theResetAction->setEnabled(true);
         theGameButtonGroup.setEnabled(false);
         break;
     case GameStateMachine::StoppedStatus:
         // enable the game controls incl. reset
+        theForwardAction->setEnabled(true);
         thePauseAction->setEnabled(false);
         thePauseAction->setShortcut(myEmptyKey);
         thePlayAction->setShortcut(mySpaceKey);
+        thePlayAction->setEnabled(true);
         theResetAction->setEnabled(false);
         theGameButtonGroup.setEnabled(true);
         break;
-    case GameStateMachine::ForwardStatus:
     case GameStateMachine::NormalStatus:
+        // don't allow reset while running (even though the state machine can handle it)
+        theForwardAction->setEnabled(true);
+        thePauseAction->setEnabled(true);
+        thePauseAction->setShortcut(mySpaceKey);
+        thePlayAction->setEnabled(false);
+        thePlayAction->setShortcut(myEmptyKey);
+        theResetAction->setEnabled(true);
+        break;
+    case GameStateMachine::ForwardStatus:
     case GameStateMachine::RealFastStatus:
     case GameStateMachine::SlowStatus:
         // don't allow reset while running (even though the state machine can handle it)
+        theForwardAction->setEnabled(false);
         thePauseAction->setEnabled(true);
         thePauseAction->setShortcut(mySpaceKey);
+        thePlayAction->setEnabled(true);
         thePlayAction->setShortcut(myEmptyKey);
         theResetAction->setEnabled(true);
         break;
     case GameStateMachine::PausedStatus:
         // enable the reset - only makes sense in this state :-)
+        theForwardAction->setEnabled(true);
         thePauseAction->setEnabled(false);
         thePauseAction->setShortcut(myEmptyKey);
+        thePlayAction->setEnabled(true);
         thePlayAction->setShortcut(mySpaceKey);
         theResetAction->setEnabled(true);
         break;
