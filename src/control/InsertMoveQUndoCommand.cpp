@@ -20,6 +20,7 @@
 #include "ToolboxItemGroup.h"
 #include "ViewItem.h"
 #include "UndoSingleton.h"
+#include "World.h"
 
 #include <QQmlProperty>
 #include <QQuickItem>
@@ -74,6 +75,7 @@ void InsertMoveQUndoCommand::redo()
         theAOPtr->createViewItem();
     }
     updateAO(theNewPos);
+    World::getWorldPtr()->addObject(theAOPtr);
     updateVI();
     AbstractQUndoCommand::redo();
 }
@@ -99,6 +101,10 @@ void InsertMoveQUndoCommand::undo()
     assert(nullptr != theTIGPtr);
     theAOPtr->deleteViewItem();
     assert(nullptr==getVIPtr());
+    // remove from the world and viewworld
+    bool myResult = World::getWorldPtr()->removeObject(theAOPtr);
+    Q_ASSERT(myResult == true);
+    /* and remove compiler warning: */ (void)myResult;
 
     theTIGPtr->returnAO2Toolbox(theAOPtr);
     theAOPtr = nullptr;
