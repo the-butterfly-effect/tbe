@@ -216,11 +216,14 @@ void AbstractObject::deleteViewItem()
 {
     if (nullptr == theViewItemPtr)
         return;
-    ViewItem* myVIPtr = theViewItemPtr;
-    theViewItemPtr = nullptr;
-    myVIPtr->setParent(nullptr);
-    myVIPtr->setParentItem(nullptr);
-    myVIPtr->deleteLater();
+    // TODO: debug once the old undo stuff is gone:
+    theViewItemPtr->setVisible(false);
+    theViewItemPtr=nullptr;
+//    ViewItem* myVIPtr = theViewItemPtr;
+//    theViewItemPtr = nullptr;
+//    myVIPtr->setParent(nullptr);
+//    myVIPtr->setParentItem(nullptr);
+//    myVIPtr->deleteLater();
 }
 
 
