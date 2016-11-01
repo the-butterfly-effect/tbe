@@ -105,6 +105,13 @@ ViewResizeRotateMoveUndo {
             hsign: -1
             vsign:  1
         }
+        // TODO: attach to topleft or bottomright, depending on which is closest to the center of the screen...
+        HandleDelete {
+            id: deletehandle
+            anchors.right: topleft.left;
+            anchors.verticalCenter: topleft.verticalCenter;
+            anchors.rightMargin: ResizeInfo.handleWidth / 5;
+        }
 
     }
 }
