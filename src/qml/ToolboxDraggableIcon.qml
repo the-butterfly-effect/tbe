@@ -33,6 +33,7 @@ Rectangle {
         // TODO: take pre-set rotation into account
         width:  (owidth/oheight > 1.0)? parent.width : parent.height/owidth*oheight;
         height: (owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height;
+        opacity: (gameView.isModifyAllowed)?1:0.4
         source: parent.source
         sourceSize.width: width
         sourceSize.height: height
@@ -47,7 +48,7 @@ Rectangle {
 
         // Drag&Drop events:
         onPressed: {
-            if (count <= 0) {
+            if ((!gameView.isModifyAllowed) || count <= 0) {
                 mouse.accepted = false;
                 return;
             }

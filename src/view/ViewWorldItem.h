@@ -46,6 +46,10 @@ public:
 
     virtual ~ViewWorldItem();
 
+    /// False if the game is in a non-stopped state.
+    /// (Only in stopped state, one can move the objects around).
+    Q_PROPERTY(bool isModifyAllowed MEMBER theIsModifyAllowed WRITE setIsModifyAllowed NOTIFY isModifyAllowedChanged)
+
     static ViewWorldItem* me();
 
     /// Factory method for creating ViewItems to match the AbstractObjectPtr.
@@ -60,10 +64,6 @@ public:
     /// @note: Currently, the dialog is shown without any animations.
     QQuickItem* createDialog(const QString& aVOType, const QString& extraOptions);
 
-    void setQmlEnginePtr(QQmlEngine* anEnginePtr, const QUrl& aSource);
-
-    void setWorldPtr(World* aWorldPtr);
-
     const World *getWorldPtr() const
     {
         return theWorldPtr;
@@ -73,8 +73,22 @@ public:
     /// E.g. used to hand a list of levels to ChooseLevelDialog.
     void setContextProperty(const QString &aName, const QVariant &aValue);
 
+    /// Setter backing the Q_PROPERTY isModifyAllowed.
+    void setIsModifyAllowed(bool isAllowed)
+    {
+        theIsModifyAllowed = isAllowed;
+        emit isModifyAllowedChanged();
+    }
+
+    void setQmlEnginePtr(QQmlEngine* anEnginePtr, const QUrl& aSource);
+
+    void setWorldPtr(World* aWorldPtr);
+
+
+
 signals:
     void dimensionsChanged(qreal aWidthInMeter, qreal aHeightInMeter);
+    void isModifyAllowedChanged();
 
 public slots:
     void setupBackground(void);
@@ -89,6 +103,8 @@ private:
     impl* pImpl;
 
 private:
+    /// Variable backing the Q_PROPERTY.
+    bool theIsModifyAllowed;
 };
 
 #endif // VIEWWORLDITEM_H

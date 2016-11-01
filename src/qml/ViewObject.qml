@@ -40,6 +40,8 @@ ViewItem {
     }
 
     function setupDecorator() {
+        if(!gameView.isModifyAllowed)
+            return;
         if(selectedItem)
             if (selectedItem.theDecorated != viewItem) {
                 selectedItem.destroy();

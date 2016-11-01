@@ -50,6 +50,13 @@ RowLayout {
         objectName: "gameView"
         z: 3
 
+        onIsModifyAllowedChanged: {
+            if (!isModifyAllowed) {
+                selectedItem.destroy();
+                selectedItem = undefined;
+            }
+        }
+
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         Layout.preferredHeight: width / ResizeInfo.aspectRatio

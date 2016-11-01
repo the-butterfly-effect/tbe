@@ -50,6 +50,7 @@ private slots:
 
     void slot_onLevelIndexSelected(const QVariant& anIndex);
 
+    void slot_InsertionDisallowed(bool isInsertionDisallowed);
 
 public slots:
     void slot_clearDialog();

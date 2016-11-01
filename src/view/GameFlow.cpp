@@ -22,6 +22,7 @@
 #include "MainWindow.h"
 #include "RequestDialog.h"
 #include "tbe_global.h"
+#include "ViewWorldItem.h"
 #include "tbe_paths.h"
 
 #include <QQuickItem>
@@ -37,8 +38,12 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
       theLevelList(LEVELS_DIRECTORY, "levels.xml")
 {
     theGameStateMachinePtr = new GameStateMachine(this);
-    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()), this, SLOT(slot_levelWon()));
-    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()), this, SLOT(slot_levelDeath()));
+    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),
+             this, SLOT(slot_levelWon()));
+    connect (theGameStateMachinePtr, SIGNAL(signal_Game_Failed()),
+             this, SLOT(slot_levelDeath()));
+    connect (theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
+             this, SLOT(slot_InsertionDisallowed(bool)));
 }
 
 
@@ -87,6 +92,11 @@ void GameFlow::slot_onLevelIndexSelected(const QVariant& anIndex)
     LevelList::LevelMetaInfo myLevelInfo = theLevelList.getLevelMetaInfo(anIndex.toInt());
     slot_clearDialog();
     emit theMainWindowPtr->loadLevel(myLevelInfo.theFileName);
+}
+
+void GameFlow::slot_InsertionDisallowed(bool isInsertionDisallowed)
+{
+    ViewWorldItem::me()->setIsModifyAllowed(!isInsertionDisallowed);
 }
 
 void GameFlow::slot_showChooseLevelDialog()
