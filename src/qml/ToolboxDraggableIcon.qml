@@ -71,10 +71,19 @@ Rectangle {
             newItem.updateVars();
         }
         onReleased: {
+            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
             listView.interactive = true;
-            newItem.updateVars();
-            newItem.restoreBindings();
-            undoObject.doneMoving();
+            if (cmpos.x+width/2 < gameView.width) {
+                newItem.updateVars();
+                newItem.restoreBindings();
+                undoObject.doneMoving();
+            }
+            else {
+                undoObject.failMoving();
+                undoObject.destroy();
+                selectedItem.destroy();
+                selectedItem = undefined;
+            }
             newItem = null;
             undoObject = null;
         }

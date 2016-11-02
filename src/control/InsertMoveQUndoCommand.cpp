@@ -53,6 +53,11 @@ void InsertMoveQUndoCommand::doneMoving()
     commit();
 }
 
+void InsertMoveQUndoCommand::failMoving()
+{
+    undo();
+}
+
 bool InsertMoveQUndoCommand::isChanged()
 {
     if (areQRealsTheSame(theNewPos.x,theOrigPos.x)
@@ -102,10 +107,7 @@ void InsertMoveQUndoCommand::undo()
     theAOPtr->deleteViewItem();
     assert(nullptr==getVIPtr());
     // remove from the world and viewworld
-    bool myResult = World::getWorldPtr()->removeObject(theAOPtr);
-    Q_ASSERT(myResult == true);
-    /* and remove compiler warning: */ (void)myResult;
-
+    World::getWorldPtr()->removeObject(theAOPtr);
     theTIGPtr->returnAO2Toolbox(theAOPtr);
     theAOPtr = nullptr;
 
