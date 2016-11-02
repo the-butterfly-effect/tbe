@@ -21,7 +21,7 @@ all: usr/games/tbe
 
 usr/games/tbe: ${BUILDDIR}/src/tbe
 
-sanitizers:	EXTRACMAKEFLAGS=-DECM_ENABLE_SANITIZERS='address;leak;undefined' -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=clang++
+sanitizers:	EXTRACMAKEFLAGS=-DECM_ENABLE_SANITIZERS='address;leak;undefined' -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=clang++ -DCMAKE_CXX_FLAGS= "-fno-omit-frame-pointer"
 sanitizers:     ${BUILDDIR}/src/tbe
 
 ${BUILDDIR}/src/tbe:
