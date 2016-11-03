@@ -31,7 +31,7 @@ Image {
     }
 
     height: 400
-    source: img("GameResources")
+    source: img("LevelInfo")
     sourceSize.width: width
     sourceSize.height: height
     width: 600
