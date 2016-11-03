@@ -39,16 +39,12 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
                                      const QSize &aRequestedSize)
 {
     QSize myRequestedSize(aRequestedSize);
-    if (myRequestedSize.isEmpty()) {
-        myRequestedSize = theDefaultSize;
-    }
-
-    DEBUG4("ImageProvider: request for '%s'' size %dx%d",
-           ASCII(aPixmapName), aRequestedSize.width(), aRequestedSize.height());
+    DEBUG4("ImageProvider: request for '%s' size %dx%d",
+           ASCII(aPixmapName), myRequestedSize.width(), myRequestedSize.height());
 
     QPixmap myTempPixmap;
     if (aPixmapName.isEmpty())
-        return requestPixmap("NotFound", aFinalSizePr, aRequestedSize);
+        return requestPixmap("NotFound", aFinalSizePr, myRequestedSize);
 
     // only names, no paths, no extensions
     Q_ASSERT(aPixmapName.contains(".") == false);
@@ -78,6 +74,9 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
         if (QFile::exists(myFullPathName)) {
             // render the SVG into the Pixmap
             // rely on operator= to make copy
+            if (myRequestedSize.isEmpty()) {
+                myRequestedSize = theDefaultSize;
+            }
             myTempPixmap = QPixmap(myRequestedSize);
             myTempPixmap.fill(QColor(255, 255, 255, 0));
 
@@ -102,7 +101,7 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
 
     // if the PNG or JPG was found, load it:
     if (myTempPixmap.isNull()) {
-        myTempPixmap = QPixmap(myFullPathName).scaled(myRequestedSize);
+        myTempPixmap = QPixmap(myFullPathName); //.scaled(myRequestedSize);
     }
 
     if (nullptr != aFinalSizePr) {

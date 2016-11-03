@@ -21,6 +21,7 @@
 #include "Box2D.h"
 #include "ObjectFactory.h"
 #include "Property.h"
+#include "ViewItem.h"
 #include "ViewPingus.h"
 
 static const qreal FALLING_TIME   = 0.16; // seconds
@@ -445,6 +446,12 @@ void Pingus::updateViewPingus()
     ViewPingus *theVPPtr = static_cast<ViewPingus *>(theViewObjectPtr.data());
     if (nullptr != theVPPtr)
         theVPPtr->setNewAnimationFrame(theState, theAnimationFrameIndex);
+
+    // for QML:
+    if (theViewItemPtr) {
+        theViewItemPtr->setProperty("statenr", theState);
+        theViewItemPtr->setProperty("framenr", theAnimationFrameIndex);
+    }
 }
 
 
