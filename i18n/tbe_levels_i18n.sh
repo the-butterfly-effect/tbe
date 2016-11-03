@@ -56,6 +56,11 @@ function create_pot_file {
   echo "Done"
 }
 
+function create_ts_file {
+  echo "Creating TS file..."
+  $lconvert_cmd i18n/tbe_levels.pot -o i18n/tbe_levels_en.ts
+  echo "Done"
+}
 
 function check_dependencies {
   echo "Checking dependencies..."
@@ -78,6 +83,18 @@ function check_dependencies {
     echo "Error: missing gettext."
     exit 1
   fi
+  lconvert_cmd="lconvert-qt5"
+  a=`which lconvert-qt5`
+  if [ -z "$a" ]
+  then
+     lconvert_cmd="lconvert"
+     a=`which lconvert`
+  fi
+  if [ -z "$a" ]
+  then
+     echo "Could not find lconvert."
+     exit 1
+  fi
   echo "Done"
 }
 
@@ -87,5 +104,6 @@ lev_dir="levels"
 
 check_dependencies
 create_pot_file
+create_ts_file
 
 echo "Script tbe_levels_i18n.sh was finished"
