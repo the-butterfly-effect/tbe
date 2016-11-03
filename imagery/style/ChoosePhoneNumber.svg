@@ -14,7 +14,7 @@
    height="110"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="ChoosePhoneNumber.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
@@ -23,6 +23,17 @@
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient4413">
+      <stop
+         id="stop4415"
+         offset="0"
+         style="stop-color:#414141;stop-opacity:0.7887789" />
+      <stop
+         id="stop4417"
+         offset="1"
+         style="stop-color:#c7c7c7;stop-opacity:0.80858088" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3587">
       <stop
@@ -64,7 +75,7 @@
        gradientTransform="matrix(0.61271809,0,0,0.89276985,58.201628,25.65291)" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient3161"
+       xlink:href="#linearGradient4413"
        id="linearGradient3175"
        x1="168.50684"
        y1="216.48723"
@@ -1314,15 +1325,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.3274738"
-     inkscape:cx="300"
-     inkscape:cy="207.33823"
+     inkscape:cx="137.66158"
+     inkscape:cy="208.09154"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="720"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -1368,7 +1379,7 @@
        ry="8"
        rx="8" />
     <g
-       transform="matrix(0.04697221,0.02643178,-0.02643178,0.04697221,147.96583,324.27168)"
+       transform="matrix(0.07420311,0.03543725,-0.04175491,0.06297593,144.62098,355.95547)"
        id="g3568"
        inkscape:label="Layer 1">
       <g
@@ -1524,7 +1535,7 @@
        inkscape:label="Layer 1">
       <path
          transform="matrix(2.2944285,0,0,2.489045,214.02812,100.11299)"
-         d="m 8.7323923,39.154922 c 0,8.712097 -7.6616046,15.774646 -17.1126728,15.774646 -9.4510685,0 -17.1126725,-7.062549 -17.1126725,-15.774646 0,-8.712096 7.661604,-15.774645 17.1126725,-15.774645 9.4510682,0 17.1126728,7.062549 17.1126728,15.774645 z"
+         d="M 8.7323923,39.154922 A 17.112673,15.774646 0 0 1 -8.3802805,54.929568 17.112673,15.774646 0 0 1 -25.492953,39.154922 17.112673,15.774646 0 0 1 -8.3802805,23.380277 17.112673,15.774646 0 0 1 8.7323923,39.154922 Z"
          sodipodi:ry="15.774646"
          sodipodi:rx="17.112673"
          sodipodi:cy="39.154922"

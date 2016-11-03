@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/qml">
         <file>ChooseLevelDialog.qml</file>
+	<file>ChoosePhoneNumberDialog.qml</file>
         <file>HandleDelete.qml</file>
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>

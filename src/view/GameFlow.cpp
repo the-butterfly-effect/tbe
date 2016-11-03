@@ -114,6 +114,13 @@ void GameFlow::slot_showChooseLevelDialog()
             this, SLOT(slot_onLevelIndexSelected(QVariant)));
 }
 
+void GameFlow::slot_showChoosePhoneNumberDialog()
+{
+    QStringList myNumbers;
+    myNumbers << "555-1234" << "555-4567";
+    theDialogPtr = theRequestDialogItfPtr->showChoosePhoneNumber(myNumbers);
+}
+
 void GameFlow::slot_showLevelInfoDialog()
 {
     if (theDialogPtr)

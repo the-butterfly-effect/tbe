@@ -91,12 +91,22 @@ bool ResizeAwareQuickWidget::setupQmlSource(const QUrl &url)
         return false;
     }
     connect(theGameViewPtr, SIGNAL(dimensionsChanged(qreal, qreal)), this, SLOT(updateWorldSize(qreal,qreal)));
+
     return true;
 }
 
 QQuickItem *ResizeAwareQuickWidget::showChooseLevel()
 {
     return theGameViewPtr->createDialog("ChooseLevelDialog", "");
+}
+
+QQuickItem *ResizeAwareQuickWidget::showChoosePhoneNumber(const QStringList &aSeriesOfNumbers)
+{
+    QString myNumbers = "theNumbers:[";
+    for (auto& i : aSeriesOfNumbers)
+        myNumbers += QString("\"%1\",").arg(i);
+    myNumbers += "];";
+    return theGameViewPtr->createDialog("ChoosePhoneNumberDialog", myNumbers);
 }
 
 QQuickItem *ResizeAwareQuickWidget::showLevelInfo()

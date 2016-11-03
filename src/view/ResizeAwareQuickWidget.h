@@ -56,6 +56,7 @@ public:
     // (only available through the RequestDialog interface!)
 private:
     QQuickItem *showChooseLevel() override;
+    QQuickItem *showChoosePhoneNumber(const QStringList& aSeriesOfNumbers) override;
     QQuickItem *showLevelInfo() override;
     QQuickItem *showWinFail(bool isWin) override;
     void setContextProperty(const QString &aName, const QVariant &aValue) override;

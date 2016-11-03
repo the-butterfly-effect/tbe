@@ -21,6 +21,7 @@
 // forward decls
 class QQuickItem;
 
+#include "QStringList"
 #include "QVariant"
 
 /// Interface to request various dialogs to be shown.
@@ -29,10 +30,15 @@ class RequestDialog
 {
 
 public:
-    /// Show the LevelInfo dialog.
+    /// Show the ChooseLevel dialog.
     /// @note Although you get a pointer to the Item, ownership remains with
     ///       the QML engine.
     virtual QQuickItem* showChooseLevel() = 0;
+
+    /// Show the ChoosePhoneNumber dialog.
+    /// @note Although you get a pointer to the Item, ownership remains with
+    ///       the QML engine.
+    virtual QQuickItem* showChoosePhoneNumber(const QStringList& aSeriesOfNumbers) = 0;
 
     /// Show the LevelInfo dialog.
     /// @note Although you get a pointer to the Item, ownership remains with
@@ -45,7 +51,8 @@ public:
     virtual QQuickItem* showWinFail(bool isAWin) = 0;
 
     /// Set a context property.
-    /// E.g. used to hand a list of levels to ChooseLevelDialog.
+    /// E.g. used to hand a list of levels to ChooseLevelDialog
+    ///      or numbers to ChoosePhoneNumber.
     virtual void setContextProperty(const QString &aName, const QVariant &aValue) = 0;
 };
 
