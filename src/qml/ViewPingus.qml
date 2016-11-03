@@ -18,8 +18,8 @@
 
 import QtQuick 2.5
 
-/// Use a ViewObject for the basics, as we only want to override the animation
-/// using the QML Sprite type.
+/// Use a ViewObject for the basics, as we only want to override the animation.
+/// I'm not using the QML Sprite type because it doesn't do what I want.
 ViewObject {
 
     /// Contains the row number.
@@ -27,20 +27,22 @@ ViewObject {
     /// Contains the column number.
     property int framenr : 0;
 
+    rotation: 0
     onFramenrChanged: {
         console.log("framenr = ", framenr);
     }
 
-    // The code is here, but animation doesn't work as expected...
-    SpriteSequence {
-        anchors.fill: parent
-        id: penguin
-        Sprite {
+    Item {
+        clip: true
+        height: 32
+        width: 32
+        Image {
+            height: 384
             source: img("pingus")
-            frameX: framenr*32;
-            frameY: statenr*32;
-            frameWidth: 32
-            frameHeight: 32
+            width: 512
+            x: framenr*-32
+            y: statenr*-32
         }
     }
+
 }
