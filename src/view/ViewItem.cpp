@@ -47,6 +47,15 @@ ViewItem::adjustObjectDrawingFromAO()
     emit angleChanged();
 }
 
+QString ViewItem::firstImageName()
+{
+    QStringList myImageNameList = this->property("imageName").toString().split(";");
+    if (myImageNameList.size()<1)
+        return "";
+    else
+        return myImageNameList[0];
+}
+
 void ViewItem::setParents(QQuickItem *aParentPtr, AbstractObjectPtr anAOPtr)
 {
     setParentItem(aParentPtr);

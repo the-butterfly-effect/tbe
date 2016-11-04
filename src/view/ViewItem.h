@@ -40,17 +40,33 @@ public:
     Q_PROPERTY(qreal heightInM MEMBER theHeightInM NOTIFY sizeChanged)
     Q_PROPERTY(qreal angleInDegrees MEMBER theAngleInDegrees NOTIFY angleChanged)
 
+    Q_PROPERTY(QString imageName READ imageName WRITE setImageName NOTIFY imageNameChanged)
+    Q_PROPERTY(QString firstImageName READ firstImageName NOTIFY firstImageNameChanged)
+
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
     /// Updated are: position (incl angle), width, height.
     /// TODO: image frame number
     void adjustObjectDrawingFromAO();
 
+    QString firstImageName();
+    QString imageName()
+    { return theImageName; }
+
+    void setImageName(const QString& aNewName)
+    {
+        theImageName = aNewName;
+        emit imageNameChanged();
+        emit firstImageNameChanged();
+    }
+
     void setParents(QQuickItem* aParentPtr, AbstractObjectPtr anAOPtr);
 
 signals:
     void sizeChanged();
     void angleChanged();
+    void firstImageNameChanged();
+    void imageNameChanged();
 
 public slots:
 
@@ -65,6 +81,8 @@ private:
     qreal theWidthInM;
     qreal theHeightInM;
     qreal theAngleInDegrees;
+
+    QString theImageName;
 
     friend class AbstractQUndoCommand;
 };

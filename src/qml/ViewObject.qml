@@ -27,7 +27,6 @@ ViewItem {
     id: viewItem
 
     property var tooltip;
-    property var imageName;
 
     signal signalUpdateVars(real anXM, real aYM, real aRotDegrees, real aWidthM, real aHeightM);
 
@@ -91,7 +90,7 @@ ViewItem {
 
     Image {
         anchors.fill: parent
-        source: img(imageName)
+        source: img(firstImageName)
         // performance optimization: do not ask for redraw of images while resizing/rotating/dragging
         sourceSize.width:  (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldWidth : width
         sourceSize.height: (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldHeight: height
