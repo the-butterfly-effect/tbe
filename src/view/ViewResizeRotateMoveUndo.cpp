@@ -43,6 +43,7 @@ QQuickItem *ViewResizeRotateMoveUndo::activeHandle()
 
 void ViewResizeRotateMoveUndo::commitChanges()
 {
+    disconnect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
     if (theUndoPtr->isChanged())
         theUndoPtr->commit();
     else
