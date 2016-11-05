@@ -21,7 +21,8 @@
 #include "ViewItem.h"
 
 ViewItem::ViewItem(QQuickItem *aParentPtr)
-                       : QQuickItem(aParentPtr)
+                       : QQuickItem(aParentPtr),
+                         theFrameNumber(0)
 {
     // Nothing to do here...
 }
@@ -47,13 +48,10 @@ ViewItem::adjustObjectDrawingFromAO()
     emit angleChanged();
 }
 
-QString ViewItem::firstImageName()
+void ViewItem::setNewImageIndex(unsigned int anIndex)
 {
-    QStringList myImageNameList = this->property("imageName").toString().split(";");
-    if (myImageNameList.size()<1)
-        return "";
-    else
-        return myImageNameList[0];
+    theFrameNumber = anIndex;
+    emit frameNumberChanged();
 }
 
 void ViewItem::setParents(QQuickItem *aParentPtr, AbstractObjectPtr anAOPtr)

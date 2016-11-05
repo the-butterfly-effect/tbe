@@ -136,9 +136,8 @@ ViewItem *ViewWorldItem::impl::createViewItem(
 QQuickItem *ViewWorldItem::impl::createObject(const QString &aVOType,
                                               const QString &extraOptions)
 {
-    QString myObjectDescription = QString("%1 { %9 }").arg(aVOType).arg(extraOptions);
+    QString myObjectDescription = QString("import QtQuick 2.5; %1 { %2 }").arg(aVOType).arg(extraOptions);
 
-    // TODO: let's create all plain QML ViewObjects for now
     theQmlComponent.setData( myObjectDescription.toLatin1(), theSource);
     dumpErrors("theQmlComponent after setData", theQmlComponent);
     QQuickItem* myItemPtr = qobject_cast<QQuickItem*>(theQmlComponent.create(&theQmlContext));

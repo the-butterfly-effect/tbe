@@ -27,7 +27,7 @@ ViewItem {
     id: viewItem
 
     property var tooltip;
-
+    property list<Item> theImageList;
     signal signalUpdateVars(real anXM, real aYM, real aRotDegrees, real aWidthM, real aHeightM);
 
     function restoreBindings() {
@@ -87,13 +87,18 @@ ViewItem {
     height: m2xwh(heightInM);
     rotation: angleInDegrees;
 
+    onFrameNumberChanged: {
+        theImage.item.accessImage
+                = theImageList[frameNumber].source;
+    }
 
-    Image {
+
+    // Use this Loader to be able to switch between the actual images: they are
+    // displayed by the Loader in turn.
+    Loader {
+        id: theImage
         anchors.fill: parent
-        source: img(firstImageName)
-        // performance optimization: do not ask for redraw of images while resizing/rotating/dragging
-        sourceSize.width:  (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldWidth : width
-        sourceSize.height: (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldHeight: height
+        source: "ViewObjectSubImage.qml"
     }
 
     MouseArea {

@@ -40,33 +40,29 @@ public:
     Q_PROPERTY(qreal heightInM MEMBER theHeightInM NOTIFY sizeChanged)
     Q_PROPERTY(qreal angleInDegrees MEMBER theAngleInDegrees NOTIFY angleChanged)
 
-    Q_PROPERTY(QString imageName READ imageName WRITE setImageName NOTIFY imageNameChanged)
-    Q_PROPERTY(QString firstImageName READ firstImageName NOTIFY firstImageNameChanged)
+    /// For animated objects (except Pingus!): adjust the frameNumber to
+    /// display the different images.
+    Q_PROPERTY(int   frameNumber MEMBER theFrameNumber WRITE setNewImageIndex NOTIFY frameNumberChanged)
 
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
     /// Updated are: position (incl angle), width, height.
-    /// TODO: image frame number
     void adjustObjectDrawingFromAO();
 
     QString firstImageName();
     QString imageName()
     { return theImageName; }
 
-    void setImageName(const QString& aNewName)
-    {
-        theImageName = aNewName;
-        emit imageNameChanged();
-        emit firstImageNameChanged();
-    }
+    /// Called by objects to adjust their image index.
+    /// (this is used for animations based on state changes)
+    void setNewImageIndex(unsigned int anIndex);
 
     void setParents(QQuickItem* aParentPtr, AbstractObjectPtr anAOPtr);
 
 signals:
     void sizeChanged();
     void angleChanged();
-    void firstImageNameChanged();
-    void imageNameChanged();
+    void frameNumberChanged();
 
 public slots:
 
@@ -81,6 +77,8 @@ private:
     qreal theWidthInM;
     qreal theHeightInM;
     qreal theAngleInDegrees;
+
+    int   theFrameNumber;
 
     QString theImageName;
 

@@ -206,8 +206,15 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
     else
         myImageName = anImageName;
 
+    QString myImageListString = "theImageList: [";
+    for (auto& i: myImageName.split(";")) {
+        myImageListString += QString("Image{source:img(\"%1\")},").arg(i);
+    }
+    myImageListString.chop(1);
+    myImageListString += "]";
+
     theViewItemPtr = myVWIPtr->createViewItem(aVOType, getThisPtr(), calculateZValue(aDefaultDepth),
-                                              QString("imageName: \"%1\"; %2").arg(myImageName).arg(extraOptions));
+                                              QString("%1 %2").arg(myImageListString).arg(extraOptions));
     return theViewItemPtr;
 }
 
@@ -437,8 +444,9 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
         }
         if (nullptr != theViewObjectPtr) {
             theViewObjectPtr->setNewImageIndex(getImageIndex());
+        if (nullptr != theViewItemPtr)
+            theViewItemPtr->setNewImageIndex(getImageIndex());
         }
-        // TODO: the ViewItemPtr setImageIndex one
         return;
     }
 
@@ -453,5 +461,6 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
     }
     if (nullptr != theViewObjectPtr)
         theViewObjectPtr->setNewImageIndex(getImageIndex());
-    // TODO: the ViewItemPtr setImageIndex one
+    if (nullptr != theViewItemPtr)
+        theViewItemPtr->setNewImageIndex(getImageIndex());
 }

@@ -16,6 +16,7 @@
         <file>ToolboxEntry.qml</file>
         <file>Tooltip.qml</file>
         <file>ViewObject.qml</file>
+        <file>ViewObjectSubImage.qml</file>
         <file>ViewPingus.qml</file>
         <file>ViewPostIt.qml</file>
         <file>ViewWorld.qml</file>
