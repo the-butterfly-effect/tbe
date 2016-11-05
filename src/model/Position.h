@@ -150,6 +150,16 @@ public:
     qreal length(void);
 };
 
+struct AABB
+{
+    AABB(const Position& aPos, qreal aWidth, qreal aHeight);
+
+    qreal maxX;
+    qreal maxY;
+    qreal minX;
+    qreal minY;
+};
+
 
 /** add a Vector to a Position
  *  - that implies that the vector is multiplied with the angle

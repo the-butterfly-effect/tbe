@@ -27,6 +27,23 @@ qreal THESCALE = 100;
 const qreal Position::minimalMove = b2_linearSlop;
 const qreal Position::minimalRot  = b2_angularSlop;
 
+
+
+AABB::AABB(const Position &aPos, qreal aWidth, qreal aHeight)
+{
+    minX = aPos.x - fabs(aWidth*cos(aPos.angle)*.5) - fabs(aHeight*sin(aPos.angle)*.5);
+    maxX = aPos.x + fabs(aWidth*cos(aPos.angle)*.5) + fabs(aHeight*sin(aPos.angle)*.5);
+    minY = aPos.y - fabs(aWidth*sin(aPos.angle)*.5) - fabs(aHeight*cos(aPos.angle)*.5);
+    maxY = aPos.y + fabs(aWidth*sin(aPos.angle)*.5) + fabs(aHeight*cos(aPos.angle)*.5);
+
+/*    printf("(%f,%f)@%fx%fx%f: AABB topleft: (%f,%f) botright: (%f,%f)\n",
+           aPos.x, aPos.y, aPos.angle,
+           aWidth, aHeight,
+           minX, maxY,
+           maxX, minY); */
+}
+
+
 // Constructors/Destructors
 
 Position::Position (qreal anX, qreal aY, qreal anAngle)
@@ -324,3 +341,4 @@ QDebug operator<<(QDebug dbg, const Vector &v)
     return dbg.space();
 }
 #endif
+
