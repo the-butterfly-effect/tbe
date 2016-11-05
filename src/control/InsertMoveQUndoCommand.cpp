@@ -31,14 +31,10 @@ InsertMoveQUndoCommand::InsertMoveQUndoCommand(ViewItem* anViewItemPtr,
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr,
                            QObject::tr("Insert %1"), parent)
 {
-    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
-                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
-
 }
 
 void InsertMoveQUndoCommand::commit()
 {
-    disconnect(theVIConnection);
     AbstractQUndoCommand::commit();
 }
 

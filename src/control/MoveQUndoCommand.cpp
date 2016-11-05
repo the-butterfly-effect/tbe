@@ -29,14 +29,10 @@ MoveQUndoCommand::MoveQUndoCommand(ViewItem* anViewItemPtr,
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr,
                            QObject::tr("Move %1"), parent)
 {
-    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
-                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
-
 }
 
 void MoveQUndoCommand::commit()
 {
-    disconnect(theVIConnection);
     AbstractQUndoCommand::commit();
 }
 

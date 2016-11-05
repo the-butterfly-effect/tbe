@@ -29,14 +29,10 @@ ResizeQUndoCommand::ResizeQUndoCommand(ViewItem* anViewItemPtr,
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr,
                            QObject::tr("Resize %1"), parent)
 {
-    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
-                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
-
 }
 
 void ResizeQUndoCommand::commit()
 {
-    disconnect(theVIConnection);
     AbstractQUndoCommand::commit();
 }
 

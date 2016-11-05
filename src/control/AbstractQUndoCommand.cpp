@@ -37,12 +37,16 @@ AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
     theOrigPos    = theAOPtr->getOrigCenter();
     theOrigWidth  = theAOPtr->getTheWidth();
     theOrigHeight = theAOPtr->getTheHeight();
-}
 
+    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
+                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
+
+}
 
 AbstractQUndoCommand::~AbstractQUndoCommand()
 {
     DEBUG1ENTRY;
+    disconnect(theVIConnection);
     //TODO:    UndoSingleton::notifyGone(this);
 }
 
@@ -69,6 +73,7 @@ bool AbstractQUndoCommand::checkForCollisions()
 void AbstractQUndoCommand::commit(void)
 {
     DEBUG1ENTRY;
+    disconnect(theVIConnection);
     UndoSingleton::push(this);
 }
 

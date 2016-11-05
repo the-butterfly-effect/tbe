@@ -41,8 +41,8 @@ public:
     void redo() override;
     void undo() override;
 
-private slots:
-    void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM);
+private:
+    void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;
 
 private:
     qreal theNewAngleInQDegrees;

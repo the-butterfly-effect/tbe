@@ -74,6 +74,10 @@ public:
     /// this command.
     void undo() override;
 
+private slots:
+    /// pure virtual slot
+    virtual void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) = 0;
+
 signals:
      void isCollidingChanged();
 

@@ -43,6 +43,11 @@ public:
     void undo() override;
 
 private:
+    /// Not needed for DeleteQUndo:
+    void slot_updateVars(qreal, qreal, qreal, qreal, qreal) override
+    {};
+
+private:
     /// Upon redo, this is the ToolboxItemGroup to return the object to.
     /// (but only if the object came from a toolbox!)
     ToolboxItemGroup* theTIGPtr;

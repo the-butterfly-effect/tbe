@@ -28,13 +28,10 @@ RotateQUndoCommand::RotateQUndoCommand(ViewItem* anViewItemPtr,
                                        QUndoCommand *parent)
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr, QObject::tr("Rotate %1"), parent)
 {
-    theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
-                              this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
 }
 
 void RotateQUndoCommand::commit()
 {
-    disconnect(theVIConnection);
     AbstractQUndoCommand::commit();
 }
 
