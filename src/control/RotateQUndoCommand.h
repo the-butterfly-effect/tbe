@@ -24,7 +24,7 @@
 
 /// implementation of AbstractQUndoCommand to handle
 /// rotation of an QQuickItem by the user
-class RotateQUndoCommand : public QObject, public AbstractQUndoCommand
+class RotateQUndoCommand : public AbstractQUndoCommand
 {
     Q_OBJECT
 

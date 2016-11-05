@@ -20,13 +20,16 @@
 #include "UndoSingleton.h"
 #include "ViewItem.h"
 
+#include <chrono>
+
 AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
                                            QQuickItem* aHandlePtr,
                                            const QString &anUndoText,
                                            QUndoCommand *parent)
     : QUndoCommand(parent),
       theHandlePtr(aHandlePtr),
-      theAOPtr(anViewItemPtr->theAOPtr)
+      theAOPtr(anViewItemPtr->theAOPtr),
+      isObjectColliding(false)
 {
     // This is the undo action, anUndoText is e.g. “Move %s” and
     // anAbstractObjectPtr->getName() is e.g. “Birch Bar”
@@ -40,7 +43,26 @@ AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
 AbstractQUndoCommand::~AbstractQUndoCommand()
 {
     DEBUG1ENTRY;
-//TODO:    UndoSingleton::notifyGone(this);
+    //TODO:    UndoSingleton::notifyGone(this);
+}
+
+bool AbstractQUndoCommand::checkForCollisions()
+{
+    bool newCollision = false;
+
+    // TODO: temporary code!!!
+    static std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
+    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+    std::chrono::duration<double> delta = now - start;
+    newCollision = static_cast<long>(delta.count())%2 ? 1 : 0;
+
+    if (newCollision != isObjectColliding)
+    {
+        printf("isCollidingChanged!\n");
+        isObjectColliding = newCollision;
+        emit isCollidingChanged();
+    }
+    return newCollision;
 }
 
 
@@ -53,12 +75,6 @@ void AbstractQUndoCommand::commit(void)
 ViewItem *AbstractQUndoCommand::getVIPtr()
 {
     return theAOPtr->theViewItemPtr;
-}
-
-bool AbstractQUndoCommand::isObjectColliding(void)
-{
-    // TODO/FIXME: implement this one as a property!
-    return false;
 }
 
 void AbstractQUndoCommand::redo(void)

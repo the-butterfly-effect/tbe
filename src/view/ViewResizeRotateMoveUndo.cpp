@@ -69,6 +69,15 @@ void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType, QQuickItem *aH
     if (aHandlePtr)
     {
         theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
+        connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
         emit theActiveHandleChanged();
     }
+}
+
+bool ViewResizeRotateMoveUndo::isColliding()
+{
+    DEBUG1ENTRY;
+    if (theUndoPtr)
+        return theUndoPtr->isColliding();
+    return true;
 }

@@ -24,7 +24,7 @@
 
 /// Implementation of AbstractQUndoCommand to handle moving of an
 /// an QQuickItem by the user.
-class MoveQUndoCommand : public QObject, public AbstractQUndoCommand
+class MoveQUndoCommand : public AbstractQUndoCommand
 {
     Q_OBJECT
 

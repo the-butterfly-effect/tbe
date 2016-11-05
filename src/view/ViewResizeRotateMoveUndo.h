@@ -35,13 +35,15 @@ public:
 
     Q_PROPERTY(ViewItem* theDecorated MEMBER theDecoratedPtr NOTIFY theDecoratedChanged)
     Q_PROPERTY(QQuickItem* theActiveHandle READ activeHandle NOTIFY theActiveHandleChanged)
-
+    Q_PROPERTY(bool isColliding READ isColliding NOTIFY isCollidingChanged)
 
     Q_INVOKABLE qreal vector2AngleDegrees(qreal dx, qreal dy);
 
     /// Calling this member will start a new undo process and commit the old undo
     /// - if there is one. Technically, this is a factory method.
     Q_INVOKABLE void startNewUndo(const QString& aType, QQuickItem* aHandlePtr);
+
+    bool isColliding();
 
 public:
     explicit ViewResizeRotateMoveUndo(QQuickItem *parent = nullptr);
@@ -50,6 +52,7 @@ public:
     QQuickItem* activeHandle();
 
 signals:
+    void isCollidingChanged();
     void theDecoratedChanged();
     void theActiveHandleChanged();
 

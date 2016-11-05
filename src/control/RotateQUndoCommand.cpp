@@ -55,6 +55,7 @@ void RotateQUndoCommand::redo()
 void RotateQUndoCommand::slot_updateVars(qreal /*anXM*/, qreal /*aYM*/, qreal aRotDegrees, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewAngleInQDegrees = aRotDegrees;
+    checkForCollisions();
     redo();
 }
 

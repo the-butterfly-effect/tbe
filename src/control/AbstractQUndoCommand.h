@@ -30,8 +30,10 @@ class ViewItem;
 /** this abstract class is the godfather of all undo classes
   * (ChoosePhone/Delete/EditProperty/Insert/Move/Resize/Rotate)
   */
-class AbstractQUndoCommand : public QUndoCommand
+class AbstractQUndoCommand : public QObject, public QUndoCommand
 {
+    Q_OBJECT
+
 public:
     /// Unlike QUndoCommand, we always require arguments to the constructor.
     /// @param anViewItemPtr   Pointer to the ViewItem. Is only used once,
@@ -44,6 +46,12 @@ public:
 
     virtual ~AbstractQUndoCommand();
 
+    Q_PROPERTY(bool isColliding READ isColliding NOTIFY isCollidingChanged)
+
+    /// Check for collisions and emit signal isCollidingChanged() if necessary.
+    /// @returns true if the ViewObject is in collision with anything else.
+    virtual bool checkForCollisions();
+
     /// Call this member to cement this action into the undo stack
     /// and redo the last action to make sure the object is correct.
     virtual void commit();
@@ -52,9 +60,10 @@ public:
     /// @returns true if this undo/redo changes one or more properties.
     virtual bool isChanged() = 0;
 
-    //TODO: turn into QPROPERTY
-    /// @returns true if the ViewObject is in collision with anything else
-    bool isObjectColliding();
+    /// @returns true if the ViewObject is in collision with anything else.
+    virtual bool isColliding()
+    {   return isObjectColliding; }
+
 
     /// Called by the Undo stack after the action of this
     /// class instance (Move/Rotate/Insert/Delete/Resize)
@@ -65,15 +74,23 @@ public:
     /// this command.
     void undo() override;
 
-    QQuickItem* theHandlePtr;
+signals:
+     void isCollidingChanged();
 
 protected:
+    // Is friends to be able to access theHandlePtr.
+    friend class ViewResizeRotateMoveUndo;
+    /// Pointer to QML Handle that the user is currently moving around.
+    QQuickItem* theHandlePtr;
+
     AbstractObjectPtr theAOPtr;
 
     // All positions and sizes are in meters!
     Position theOrigPos;
     qreal theOrigWidth;
     qreal theOrigHeight;
+
+    bool isObjectColliding;
 
     /// Contains the connection to the ViewItem.
     QMetaObject::Connection theVIConnection;

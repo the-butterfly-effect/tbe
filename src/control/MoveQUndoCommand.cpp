@@ -59,7 +59,7 @@ void MoveQUndoCommand::redo()
 void MoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
-    if (!isObjectColliding())
+    if (!checkForCollisions())
         theLastKnownGood = theNewPos;
     redo();
 }

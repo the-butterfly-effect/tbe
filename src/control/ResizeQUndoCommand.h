@@ -24,7 +24,7 @@
 
 /// Implementation of AbstractQUndoCommand to handle resizing
 /// (either horizontal or vertical) of an QQuickItem by the user.
-class ResizeQUndoCommand : public QObject, public AbstractQUndoCommand
+class ResizeQUndoCommand : public AbstractQUndoCommand
 {
     Q_OBJECT
 

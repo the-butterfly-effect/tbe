@@ -94,7 +94,7 @@ void InsertMoveQUndoCommand::setToolboxItemGroupPtr(ToolboxItemGroup *aTIGPtr)
 void InsertMoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
-    if (!isObjectColliding())
+    if (!checkForCollisions())
         theLastKnownGood = theNewPos;
     updateAO(theNewPos);
     updateVI();

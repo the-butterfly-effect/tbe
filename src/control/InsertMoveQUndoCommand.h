@@ -28,7 +28,7 @@ class ToolboxItemGroup;
 /// by the user.
 /// Note that the user is immediately moving the object around, that's why
 /// this class is called InsertMoveQUndoCommand ;-)
-class InsertMoveQUndoCommand : public QObject, public AbstractQUndoCommand
+class InsertMoveQUndoCommand : public AbstractQUndoCommand
 {
     Q_OBJECT
 

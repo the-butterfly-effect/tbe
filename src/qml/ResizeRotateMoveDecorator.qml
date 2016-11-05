@@ -38,7 +38,7 @@ ViewResizeRotateMoveUndo {
             width: 1
             color: "black"
         }
-        color: /* theDecorated.isColliding ? "#80FF5050" :*/ "#8050FF50"
+        color: isColliding ? "#80FF5050" : "#8050FF50"
         visible: true
 
         MouseArea {
@@ -105,13 +105,15 @@ ViewResizeRotateMoveUndo {
             hsign: -1
             vsign:  1
         }
+
+        // TODO: only enable the "delete" handle in Level Creator mode
         // TODO: attach to topleft or bottomright, depending on which is closest to the center of the screen...
-        HandleDelete {
-            id: deletehandle
-            anchors.right: topleft.left;
-            anchors.verticalCenter: topleft.verticalCenter;
-            anchors.rightMargin: ResizeInfo.handleWidth / 5;
-        }
+//        HandleDelete {
+//            id: deletehandle
+//            anchors.right: topleft.left;
+//            anchors.verticalCenter: topleft.verticalCenter;
+//            anchors.rightMargin: ResizeInfo.handleWidth / 5;
+//        }
 
     }
 }
