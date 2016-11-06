@@ -29,6 +29,7 @@
 #include "InsertMoveQUndoCommand.h"
 #include "MoveQUndoCommand.h"
 #include "ResizeQUndoCommand.h"
+#include "ReturnToToolboxQUndoCommand.h"
 #include "RotateQUndoCommand.h"
 
 static UndoSingleton *theUndoSingletonPtr = nullptr;
@@ -112,10 +113,12 @@ AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, 
         return new ResizeQUndoCommand(aViewItemPtr, aHandlePtr);
     if (anUndoType == "HandleRotate")
         return new RotateQUndoCommand(aViewItemPtr, aHandlePtr);
-    if (anUndoType == "ToolboxInsert")
-        return new InsertMoveQUndoCommand(aViewItemPtr, aHandlePtr);
+    if (anUndoType == "ReturnToToolbox")
+        return new ReturnToToolboxQUndoCommand(aViewItemPtr);
     if (anUndoType == "Move")
         return new MoveQUndoCommand(aViewItemPtr, aHandlePtr);
+    if (anUndoType == "ToolboxInsert")
+        return new InsertMoveQUndoCommand(aViewItemPtr, aHandlePtr);
     return nullptr;
 }
 

@@ -105,7 +105,9 @@ void AbstractQUndoCommand::redo(void)
 
 void AbstractQUndoCommand::undo(void)
 {
-    DEBUG5("AbstractQUndoCommand::undo for '%s'", ASCII(text()));
+    if (nullptr == theAOPtr)
+        return;
+    DEBUG3("AbstractQUndoCommand::undo for '%s'", ASCII(text()));
     updateAO(theOrigPos);
     updateAO(theOrigWidth, theOrigHeight);
     updateVI();

@@ -58,7 +58,18 @@ ViewResizeRotateMoveUndo {
             }
             onReleased: {
                 theDecorated.updateVars();
-                theDecorated.restoreBindings();
+                if (isBackInToolbox) {
+                    // Delete this object...
+                    console.log("Time for a delete!")
+                    startNewUndo("ReturnToToolbox", theDecorator);
+                    selectedItem.destroy();
+                    selectedItem = null;
+                    console.log("Deletion done!");
+                }
+                else {
+                    // Move succeeded...
+                    theDecorated.restoreBindings();
+                }
             }
         }
 

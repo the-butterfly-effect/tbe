@@ -33,7 +33,10 @@ MoveQUndoCommand::MoveQUndoCommand(ViewItem* anViewItemPtr,
 
 void MoveQUndoCommand::commit()
 {
-    AbstractQUndoCommand::commit();
+    if (isBackInToolbox())
+        undo();
+    else
+        AbstractQUndoCommand::commit();
 }
 
 bool MoveQUndoCommand::isChanged()

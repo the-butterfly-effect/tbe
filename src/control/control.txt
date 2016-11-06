@@ -15,6 +15,7 @@ SET(control_SOURCES
     control/MoveUndoCommand.cpp
     control/ResizeUndoCommand.cpp
     control/ResizeQUndoCommand.cpp
+    control/ReturnToToolboxQUndoCommand.cpp
     control/RotateUndoCommand.cpp
     control/RotateQUndoCommand.cpp
     control/Toolbox.cpp
@@ -36,6 +37,7 @@ SET(control_HEADERS
     control/MoveUndoCommand.h
     control/ResizeUndoCommand.h
     control/ResizeQUndoCommand.h
+    control/ReturnToToolboxQUndoCommand.h
     control/RotateUndoCommand.h
     control/RotateQUndoCommand.h
     control/Toolbox.h

@@ -92,6 +92,8 @@ void InsertMoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRot
 
 void InsertMoveQUndoCommand::undo()
 {
+    if (nullptr == theAOPtr)
+        return;
     // UNDO: Take AO from world, return AO to the ToolboxItemGroup, delete VI.
     assert(nullptr != theTIGPtr);
     theAOPtr->deleteViewItem();
