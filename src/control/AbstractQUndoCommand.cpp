@@ -20,6 +20,8 @@
 #include "Position.h"
 #include "UndoSingleton.h"
 #include "ViewItem.h"
+#include "ViewWorldItem.h"
+#include "World.h"
 
 AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
                                            QQuickItem* aHandlePtr,
@@ -54,6 +56,8 @@ bool AbstractQUndoCommand::checkForCollisions()
     // check for collision with walls of scene
     AABB myAABB(theNewPos, theNewWidth, theNewHeight);
     if (myAABB.minX < 0 || myAABB.minY < 0)
+        hasCollision = true;
+    if (myAABB.maxY > ViewWorldItem::me()->getWorldPtr()->getTheWorldHeight())
         hasCollision = true;
 
     // TODO: check for collision with other objects
