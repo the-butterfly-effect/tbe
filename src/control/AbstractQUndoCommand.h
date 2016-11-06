@@ -47,7 +47,7 @@ public:
     virtual ~AbstractQUndoCommand();
 
     Q_PROPERTY(bool isColliding READ isColliding NOTIFY isCollidingChanged)
-//    Q_PROPERTY(bool isBackInToolbox)
+    Q_PROPERTY(bool isBackInToolbox READ isBackInToolbox NOTIFY isBackInToolboxChanged )
 
     /// Check for collisions and emit signal isCollidingChanged() if necessary.
     /// @returns true if the ViewObject is in collision with anything else.
@@ -60,6 +60,10 @@ public:
     /// Obtains all the latest changes and checks if actually changed.
     /// @returns true if this undo/redo changes one or more properties.
     virtual bool isChanged() = 0;
+
+    /// @returns true if the ViewObject is at least partially over toolbox
+    virtual bool isBackInToolbox()
+    {   return isInToolbox; }
 
     /// @returns true if the ViewObject is in collision with anything else.
     virtual bool isColliding()
@@ -80,6 +84,7 @@ private slots:
     virtual void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) = 0;
 
 signals:
+    void isBackInToolboxChanged();
      void isCollidingChanged();
 
 protected:
@@ -99,6 +104,7 @@ protected:
     qreal theNewHeight;
 
     bool isObjectColliding;
+    bool isInToolbox;
 
     /// Contains the connection to the ViewItem.
     QMetaObject::Connection theVIConnection;

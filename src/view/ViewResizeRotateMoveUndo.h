@@ -35,6 +35,7 @@ public:
 
     Q_PROPERTY(ViewItem* theDecorated MEMBER theDecoratedPtr NOTIFY theDecoratedChanged)
     Q_PROPERTY(QQuickItem* theActiveHandle READ activeHandle NOTIFY theActiveHandleChanged)
+    Q_PROPERTY(bool isBackInToolbox READ isBackInToolbox NOTIFY isBackInToolboxChanged)
     Q_PROPERTY(bool isColliding READ isColliding NOTIFY isCollidingChanged)
 
     Q_INVOKABLE qreal vector2AngleDegrees(qreal dx, qreal dy);
@@ -46,6 +47,7 @@ public:
                                   QQuickItem* aHandlePtr,
                                   QObject* anUndoToUse = nullptr);
 
+    bool isBackInToolbox();
     bool isColliding();
 
 public:
@@ -55,6 +57,7 @@ public:
     QQuickItem* activeHandle();
 
 signals:
+    void isBackInToolboxChanged();
     void isCollidingChanged();
     void theDecoratedChanged();
     void theActiveHandleChanged();

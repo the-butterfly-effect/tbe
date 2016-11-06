@@ -33,7 +33,7 @@ Image {
     anchors.verticalCenterOffset: vsign*width/3
     source: img("ActionRotate")
 
-    //visible: theDecorated.isRotate === true;
+    visible: theDecorated.isRotate === true && theDecorator.isBackInToolbox !== true;
 
     width: ResizeInfo.handleWidth
     height: ResizeInfo.handleHeight

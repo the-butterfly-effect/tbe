@@ -5,6 +5,7 @@
         <file>HandleDelete.qml</file>
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>
+        <file>HandleReturnToToolbox.qml</file>
         <file>HandleRotate.qml</file>
         <file>IconButton.qml</file>
         <file>LevelInfoDialog.qml</file>

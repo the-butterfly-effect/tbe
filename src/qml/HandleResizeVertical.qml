@@ -26,7 +26,7 @@ Image {
     anchors.verticalCenterOffset: sign * height/3
     source: img("ActionResizeVertically")
 
-    //visible: theDecorated.isVResize === true;
+    visible: theDecorated.isVResize === true && theDecorator.isBackInToolbox !== true;
 
     width: ResizeInfo.handleWidth
     height: ResizeInfo.handleHeight

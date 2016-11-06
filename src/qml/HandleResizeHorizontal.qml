@@ -26,7 +26,7 @@ Image {
     anchors.verticalCenter: parent.verticalCenter
     source: img("ActionResizeHorizontally")
 
-    //visible: theDecorated.isHResize === true;
+    visible: theDecorated.isHResize === true && theDecorator.isBackInToolbox !== true;
 
     width: ResizeInfo.handleWidth
     height: ResizeInfo.handleHeight

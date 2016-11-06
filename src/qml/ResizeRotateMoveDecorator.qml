@@ -106,6 +106,10 @@ ViewResizeRotateMoveUndo {
             vsign:  1
         }
 
+        HandleReturnToToolbox {
+            id: returnToToolbox
+        }
+
         // TODO: only enable the "delete" handle in Level Creator mode
         // TODO: attach to topleft or bottomright, depending on which is closest to the center of the screen...
 //        HandleDelete {

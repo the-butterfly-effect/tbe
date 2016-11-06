@@ -52,23 +52,31 @@ AbstractQUndoCommand::~AbstractQUndoCommand()
 bool AbstractQUndoCommand::checkForCollisions()
 {
     bool hasCollision = false;
+    bool isOverToolbox = false;
 
     // check for collision with walls of scene
     AABB myAABB(theNewPos, theNewWidth, theNewHeight);
     if (myAABB.minX < 0 || myAABB.minY < 0)
         hasCollision = true;
-    if (myAABB.maxY > ViewWorldItem::me()->getWorldPtr()->getTheWorldHeight())
+    const World* myWPtr = ViewWorldItem::me()->getWorldPtr();
+    if (myAABB.maxY > myWPtr->getTheWorldHeight())
         hasCollision = true;
+    if (myAABB.maxX > myWPtr->getTheWorldWidth()) {
+        isOverToolbox = true;
+        hasCollision = true;
+    }
 
     // TODO: check for collision with other objects
     ;
 
     // process results and notify everyone
-    if (hasCollision != isObjectColliding)
-    {
+    if (hasCollision != isObjectColliding) {
         isObjectColliding = hasCollision;
-        printf("isColling is now %d\n", isObjectColliding);
         emit isCollidingChanged();
+    }
+    if (isOverToolbox != isInToolbox) {
+        isInToolbox = isOverToolbox;
+        emit isBackInToolboxChanged();
     }
     return isObjectColliding;
 }

@@ -44,6 +44,10 @@ public:
     /// display the different images.
     Q_PROPERTY(int   frameNumber MEMBER theFrameNumber WRITE setNewImageIndex NOTIFY frameNumberChanged)
 
+    Q_PROPERTY(bool isHResize READ isHResize NOTIFY isHResizeChanged)
+    Q_PROPERTY(bool isRotate READ isRotate NOTIFY isRotateChanged)
+    Q_PROPERTY(bool isVResize READ isVResize NOTIFY isVResizeChanged)
+
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
     /// Updated are: position (incl angle), width, height.
@@ -52,6 +56,10 @@ public:
     QString firstImageName();
     QString imageName()
     { return theImageName; }
+
+    bool isHResize() { return true; };
+    bool isRotate()  { return true; };
+    bool isVResize() { return true; };
 
     /// Called by objects to adjust their image index.
     /// (this is used for animations based on state changes)
@@ -63,6 +71,10 @@ signals:
     void sizeChanged();
     void angleChanged();
     void frameNumberChanged();
+
+    void isHResizeChanged();
+    void isRotateChanged();
+    void isVResizeChanged();
 
 public slots:
 
