@@ -253,7 +253,7 @@ public:
     qreal simStep (void);
 
     /// returns the gravity constant for this world
-    virtual qreal getG(void)
+    virtual qreal getG(void) const
     {
         return -9.81;
     }
@@ -323,11 +323,11 @@ public:
         return theLevelName;
     }
 
-    qreal getTheWorldWidth(void)
+    qreal getTheWorldWidth(void) const
     {
         return theWorldWidth;
     }
-    qreal getTheWorldHeight(void)
+    qreal getTheWorldHeight(void) const
     {
         return theWorldHeight;
     }
