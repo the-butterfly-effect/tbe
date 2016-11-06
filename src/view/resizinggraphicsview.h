@@ -26,7 +26,6 @@
 
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
-class GameControls;
 class GameFlow;
 class GameStateMachine;
 class MainWindow;
@@ -86,7 +85,6 @@ signals:
 private:
     MainWindow         *theMainWindowPtr;
     EditObjectDialog   *theObjectEditorPtr;
-    GameControls       *theGameControlsPtr;
     GameFlow           *theGameFlowPtr;
     GameStateMachine   *theGameStateMachinePtr;
     ViewWorld          *theScenePtr;
