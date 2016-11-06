@@ -17,30 +17,42 @@
  */
 
 import QtQuick 2.0
-import QtQuick.Controls.Styles 1.4  // for styles
-import QtQuick.Controls 1.4    // for the Button
 
-// TODO: I don't like the size of the icon in the button as it is now.
-//       It doesn't actually follow the width/height/etc of the label image.
-//       kaa-ching, Sept 15, 2016.
-
-Button {
+/// This is a custom Button implementation to satisfy kaa-ching's needs for
+/// having his own styled iconbuttons. The button has clicked animations.
+/// The button scales width to match the text inside.
+/// Use it like a normal Button.
+///
+/// @note: doesn't support QML Actions (yet)
+Image {
     property var iconsource
+    property string tooltip
+
+    signal clicked()
 
     width: ResizeInfo.buttonHeight
     height: ResizeInfo.buttonHeight
-    style: ButtonStyle {
-        background: Image {
-            source: control.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
-        }
-        label: Image {
-            source: iconsource // should be defined by user
-            width: ResizeInfo.buttonIconSize
-            height: ResizeInfo.buttonIconSize
-            sourceSize.width: width
-            sourceSize.height: height
-            x: control.pressed ? 0 : -1
-            y: control.pressed ? 0 : -1
-        }
+    source: mycontrol.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
+
+    Image {
+        id: myicon
+        anchors.horizontalCenter: parent.horizontalCenter
+        // No need for horizontal offset as it looks good with just vertical offset
+        //anchors.horizontalCenterOffset: !mycontrol.pressed ? 0 : -1
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: !mycontrol.pressed ? 0 : 1
+        source: iconsource
+        opacity: parent.enabled ? 1.0 : 0.3;
+        width: ResizeInfo.buttonHeight * 0.45
+        height: ResizeInfo.buttonHeight * 0.45
+        sourceSize.width: width
+        sourceSize.height: height
+    }
+
+    MouseArea {
+        id: mycontrol
+        anchors.fill: parent
+        onClicked: if (parent.enabled) parent.clicked()
+//        hoverEnabled: enabled
     }
 }

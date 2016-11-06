@@ -38,6 +38,7 @@ Item {
 
             IconButton {
                 iconsource: img("ActionUndo")
+                enabled: false
                 tooltip: qsTr("Reset")
 //                onClicked: {
 //                    GameFlow.slot_showLevelInfoDialog();
@@ -52,6 +53,7 @@ Item {
 
             IconButton {
                 iconsource: img("ActionMenuPause")
+                enabled: false
                 tooltip: qsTr("Pause")
 //                onClicked: {
 //                    GameFlow.slot_showChooseLevelDialog();
