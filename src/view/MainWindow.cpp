@@ -62,8 +62,8 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
     ui->setupUi(this);
     theGameFlowPtr = new GameFlow(this, ui->quickWidget);
 
-    setupView();
     setupQml();
+    setupView();
     statusBar();
     if (theIsLevelCreator) {
         on_action_Switch_to_Level_Editor_triggered();

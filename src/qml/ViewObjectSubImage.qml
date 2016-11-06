@@ -10,9 +10,8 @@ Rectangle {
     Image{
         id:virtual;
         anchors.fill: parent
-        source:""
-        // performance optimization: do not ask for redraw of images while resizing/rotating/dragging
-        sourceSize.width:  (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldWidth : width
-        sourceSize.height: (selectedItem != undefined && selectedItem.theDecorated===viewItem) ? selectedItem.oldHeight: height
+        source: ""
+        sourceSize.width:  width
+        sourceSize.height: height
     }
 }

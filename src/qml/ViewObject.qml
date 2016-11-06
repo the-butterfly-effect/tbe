@@ -92,7 +92,6 @@ ViewItem {
                 = theImageList[frameNumber].source;
     }
 
-
     // Use this Loader to be able to switch between the actual images: they are
     // displayed by the Loader in turn.
     Loader {

@@ -18,6 +18,7 @@
 
 #include "EditObjectDialog.h"
 #include "GameControls.h"
+#include "GameQControls.h"
 #include "GameFlow.h"
 #include "Level.h"
 #include "LevelCreator.h"
@@ -109,11 +110,15 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameState
     theGameFlowPtr = aGFPtr;
     theMainWindowPtr = aMWPtr;
     theGameControlsPtr->setup(anMenuControlsPtr);
+    GameQControls::me()->setup(anMenuControlsPtr);
     connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr,
             SLOT(slot_NumberOfCrossesChanged(int)));
 
     connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
              theGameControlsPtr, SLOT(slot_updateIcon(GameStateMachine::States)));
+
+    connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
+             GameQControls::me(), SLOT(slot_updateIcon(GameStateMachine::States)));
 
     theGameStateMachinePtr = aGSMPtr;
     connect (theGameControlsPtr, SIGNAL(signal_Forward_triggered()),  aGSMPtr,
@@ -127,6 +132,19 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameState
     connect (theGameControlsPtr, SIGNAL(signal_Reset_triggered()),    aGSMPtr,
              SIGNAL(signal_Reset_triggered()));
     connect (theGameControlsPtr, SIGNAL(signal_Slow_triggered()),     aGSMPtr,
+             SIGNAL(signal_Slow_triggered()));
+
+    connect (GameQControls::me(), SIGNAL(signal_Forward_triggered()),  aGSMPtr,
+             SIGNAL(signal_Forward_triggered()));
+    connect (GameQControls::me(), SIGNAL(signal_Pause_triggered()),    aGSMPtr,
+             SIGNAL(signal_Pause_triggered()));
+    connect (GameQControls::me(), SIGNAL(signal_Play_triggered()),     aGSMPtr,
+             SIGNAL(signal_Play_triggered()));
+    connect (GameQControls::me(), SIGNAL(signal_RealFast_triggered()), aGSMPtr,
+             SIGNAL(signal_RealFast_triggered()));
+    connect (GameQControls::me(), SIGNAL(signal_Reset_triggered()),    aGSMPtr,
+             SIGNAL(signal_Reset_triggered()));
+    connect (GameQControls::me(), SIGNAL(signal_Slow_triggered()),     aGSMPtr,
              SIGNAL(signal_Slow_triggered()));
 
     // this one displays the frame rate counter if active

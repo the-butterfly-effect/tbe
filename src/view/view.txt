@@ -6,6 +6,7 @@ SET(view_SOURCES
     view/EditLevelProperties.cpp
     view/EditObjectDialog.cpp
     view/GameControls.cpp
+    view/GameQControls.cpp
     view/GameFlow.cpp
     view/GameStateMachine.cpp
     view/GoalEditor.cpp
@@ -35,6 +36,7 @@ SET(view_HEADERS
     view/EditLevelProperties.h
     view/EditObjectDialog.h
     view/GameControls.h
+    view/GameQControls.h
     view/GameFlow.h
     view/GameStateMachine.h
     view/GoalEditor.h
