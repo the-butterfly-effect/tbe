@@ -68,6 +68,12 @@ RowLayout {
                     selectedItem.destroy()
             }
         }
+
+        GameControls {
+            anchors.right: gameView.right;
+            anchors.top: gameView.top;
+            z: 400
+        }
     }
 
     ColumnLayout {
