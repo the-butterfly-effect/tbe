@@ -104,6 +104,7 @@ void InsertMoveQUndoCommand::undo()
     theTIGPtr->returnAO2Toolbox(theAOPtr);
     theAOPtr = nullptr;
 
-    AbstractQUndoCommand::undo();
+    // Note how we don't call AbstractQUndoCommand::undo()!!!
+    // (as there's nothing to undo - we just removed it all)
 }
 
