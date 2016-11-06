@@ -53,6 +53,13 @@ Image {
         id: mycontrol
         anchors.fill: parent
         onClicked: if (parent.enabled) parent.clicked()
-//        hoverEnabled: enabled
+        hoverEnabled: enabled
+        onEntered: mytooltip.show(true);
+        onExited: mytooltip.show(false);
+    }
+
+    Tooltip {
+        id: mytooltip
+        text: parent.tooltip
     }
 }
