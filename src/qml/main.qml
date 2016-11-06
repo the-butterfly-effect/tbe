@@ -52,7 +52,8 @@ RowLayout {
 
         onIsModifyAllowedChanged: {
             if (!isModifyAllowed) {
-                selectedItem.destroy();
+                if (selectedItem)
+                    selectedItem.destroy();
                 selectedItem = undefined;
             }
         }
