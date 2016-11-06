@@ -48,7 +48,7 @@ bool MoveQUndoCommand::isChanged()
 void MoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
-    if (!checkForCollisions())
-        theLastKnownGood = theNewPos;
     redo();
+    if (!isColliding())
+        theLastKnownGood = theNewPos;
 }

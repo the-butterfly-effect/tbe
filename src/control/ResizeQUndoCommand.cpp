@@ -50,6 +50,5 @@ void ResizeQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegr
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
     theNewWidth = aWidthM;
     theNewHeight = aHeightM;
-    checkForCollisions();
     redo();
 }

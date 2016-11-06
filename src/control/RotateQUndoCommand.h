@@ -43,9 +43,6 @@ public:
 
 private:
     void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;
-
-private:
-    qreal theNewAngleInQDegrees;
 };
 
 #endif // ROTATEQUNDOCOMMAND_H

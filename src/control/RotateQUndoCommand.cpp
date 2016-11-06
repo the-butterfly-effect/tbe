@@ -37,15 +37,11 @@ void RotateQUndoCommand::commit()
 
 bool RotateQUndoCommand::isChanged()
 {
-    if (areQRealsTheSame(theOrigPos.angleInQDegrees(),theNewAngleInQDegrees))
-        return false;
-    return true;
+   return theOrigPos != theNewPos;
 }
 
 void RotateQUndoCommand::slot_updateVars(qreal /*anXM*/, qreal /*aYM*/, qreal aRotDegrees, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
-    theNewAngleInQDegrees = aRotDegrees;
-    theNewPos = Position(theOrigPos,theNewAngleInQDegrees);
-    checkForCollisions();
+    theNewPos = Position(theOrigPos,aRotDegrees);
     redo();
 }

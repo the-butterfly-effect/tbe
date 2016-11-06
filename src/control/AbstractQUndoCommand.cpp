@@ -87,6 +87,7 @@ void AbstractQUndoCommand::redo(void)
     DEBUG5("AbstractQUndoCommand::redo for '%s'", ASCII(text()));
     updateAO(theNewPos);
     updateAO(theNewWidth, theNewHeight);
+    checkForCollisions();
     updateVI();
 }
 
