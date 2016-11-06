@@ -31,8 +31,12 @@ ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
 
 ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
 {
-    // Flush the last existing undo.
-    startNewUndo("", nullptr);
+    if (theUndoPtr) {
+        DEBUG3("ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo(), but still unfinished undo present.");
+        DEBUG3("  this is common: it likely didn't get completed yet.")
+        DEBUG3("  theUndoPtr: %p, name: '%s'.", theUndoPtr, ASCII(theUndoPtr->text()));
+        commitChanges();
+    }
 }
 
 QQuickItem *ViewResizeRotateMoveUndo::activeHandle()

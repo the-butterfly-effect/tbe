@@ -35,7 +35,10 @@ InsertMoveQUndoCommand::InsertMoveQUndoCommand(ViewItem* anViewItemPtr,
 
 void InsertMoveQUndoCommand::commit()
 {
-    AbstractQUndoCommand::commit();
+    if (isBackInToolbox())
+        undo();
+    else
+        AbstractQUndoCommand::commit();
 }
 
 QQuickItem *InsertMoveQUndoCommand::getTheDecorated()

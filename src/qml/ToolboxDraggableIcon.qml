@@ -72,10 +72,9 @@ Rectangle {
             newItem.updateVars();
         }
         onReleased: {
-            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
+            newItem.updateVars();
             listView.interactive = true;
-            if (cmpos.x+width/2 < gameView.width) {
-                newItem.updateVars();
+            if (!selectedItem.isBackInToolbox) {
                 newItem.restoreBindings();
             }
             else {
