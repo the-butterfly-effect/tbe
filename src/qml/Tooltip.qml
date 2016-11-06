@@ -24,6 +24,27 @@ Rectangle {
     id: toolTipBase;
     property string text
 
+    function show(isToShow) {
+        visible = isToShow;
+        console.log("hi ", toolTipBase.parent.x, width, gameView.width);
+        if (isToShow==true) {
+            var botright = mapToItem(gameView, x+width, y+height);
+            if (botright.x > gameView.width) {
+                console.log("align right instead of left")
+                anchors.left = undefined
+                anchors.right = toolTipBase.parent.right
+            }
+            if (botright.y > gameView.height) {
+                console.log("align top instead of bottom")
+                anchors.top = undefined
+                anchors.bottom = toolTipBase.parent.top
+            }
+        }
+    }
+
+    anchors.top: parent.bottom
+    anchors.left: parent.left
+
     color: "yellow"
     border.color: "black"
     width: 200
@@ -31,9 +52,6 @@ Rectangle {
     visible: false
     radius: 4
     z: 99999    // only makes this one the highest of the siblings of parent, not the top-most object
-
-    anchors.top: parent.bottom
-    anchors.left: parent.left
 
     Text {
         id: toolTipText
@@ -45,27 +63,4 @@ Rectangle {
         wrapMode: Text.Wrap
     }
 
-    function onShowTooltip(isToShow) {
-        visible = isToShow;
-        if (isToShow==true) {
-            if (parent.x + width > parent.parent.width) {
-                anchors.left = undefined
-                anchors.right = parent.right
-            }
-            if (parent.y + parent.height + height > parent.parent.height) {
-                anchors.top = undefined
-                anchors.bottom = parent.top
-            }
-        }
-    }
-
-    Component.onCompleted: {
-        // only add toolTip if there is one
-        if (toolTipBase.text) {
-            var extraWatch = Qt.createQmlObject('import QtQuick 2.0; MouseArea {signal showTooltip(bool a); anchors.fill:parent; hoverEnabled: true; onEntered: {showTooltip(true)} onExited: {showTooltip(false)} }',
-                                                parent, "mouseItem");
-            extraWatch.showTooltip.connect(onShowTooltip);
-            extraWatch.showTooltip.connect(onShowTooltip);
-        }
-    }
 }
