@@ -42,23 +42,10 @@ bool RotateQUndoCommand::isChanged()
     return true;
 }
 
-void RotateQUndoCommand::redo()
-{
-    updateAO(Position(theOrigPos,theNewAngleInQDegrees));
-    updateVI();
-    AbstractQUndoCommand::redo();
-}
-
 void RotateQUndoCommand::slot_updateVars(qreal /*anXM*/, qreal /*aYM*/, qreal aRotDegrees, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewAngleInQDegrees = aRotDegrees;
+    theNewPos = Position(theOrigPos,theNewAngleInQDegrees);
     checkForCollisions();
     redo();
-}
-
-void RotateQUndoCommand::undo()
-{
-    updateAO(theOrigPos);
-    updateVI();
-    AbstractQUndoCommand::undo();
 }

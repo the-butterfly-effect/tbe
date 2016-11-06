@@ -75,9 +75,7 @@ void InsertMoveQUndoCommand::redo()
         updateAO(theNewPos);
         theAOPtr->createViewItem();
     }
-    updateAO(theNewPos);
     World::getWorldPtr()->addObject(theAOPtr);
-    updateVI();
     AbstractQUndoCommand::redo();
 }
 

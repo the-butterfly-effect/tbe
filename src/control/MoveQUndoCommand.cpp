@@ -45,13 +45,6 @@ bool MoveQUndoCommand::isChanged()
     return true;
 }
 
-void MoveQUndoCommand::redo()
-{
-    updateAO(theNewPos);
-    updateVI();
-    AbstractQUndoCommand::redo();
-}
-
 void MoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
@@ -59,11 +52,3 @@ void MoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegree
         theLastKnownGood = theNewPos;
     redo();
 }
-
-void MoveQUndoCommand::undo()
-{
-    updateAO(theOrigPos);
-    updateVI();
-    AbstractQUndoCommand::undo();
-}
-

@@ -38,35 +38,18 @@ void ResizeQUndoCommand::commit()
 
 bool ResizeQUndoCommand::isChanged()
 {
-    if (areQRealsTheSame(theOrigWidth,theNewWidthM)
-            && areQRealsTheSame(theOrigHeight,theNewHeightM)) {
+    if (areQRealsTheSame(theOrigWidth,theNewWidth)
+            && areQRealsTheSame(theOrigHeight,theNewHeight)) {
         return false;
     }
     return true;
 }
 
-void ResizeQUndoCommand::redo()
-{
-    updateAO(theNewPos);
-    updateAO(theNewWidthM, theNewHeightM);
-    updateVI();
-    AbstractQUndoCommand::redo();
-}
-
 void ResizeQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal aWidthM, qreal aHeightM)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
-    theNewWidthM = aWidthM;
-    theNewHeightM = aHeightM;
+    theNewWidth = aWidthM;
+    theNewHeight = aHeightM;
     checkForCollisions();
     redo();
 }
-
-void ResizeQUndoCommand::undo()
-{
-    updateAO(theOrigPos);
-    updateAO(theOrigWidth, theOrigHeight);
-    updateVI();
-    AbstractQUndoCommand::undo();
-}
-

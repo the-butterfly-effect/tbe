@@ -38,8 +38,8 @@ public:
     /// @returns true if this undo/redo changes one or more properties.
     bool isChanged() override;
 
-    void redo() override;
-    void undo() override;
+    //void redo() override;
+    //void undo() override;
 
 private:
     void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;

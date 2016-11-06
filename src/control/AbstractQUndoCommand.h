@@ -47,6 +47,7 @@ public:
     virtual ~AbstractQUndoCommand();
 
     Q_PROPERTY(bool isColliding READ isColliding NOTIFY isCollidingChanged)
+//    Q_PROPERTY(bool isBackInToolbox)
 
     /// Check for collisions and emit signal isCollidingChanged() if necessary.
     /// @returns true if the ViewObject is in collision with anything else.
@@ -93,6 +94,9 @@ protected:
     Position theOrigPos;
     qreal theOrigWidth;
     qreal theOrigHeight;
+    Position theNewPos;
+    qreal theNewWidth;
+    qreal theNewHeight;
 
     bool isObjectColliding;
 

@@ -59,7 +59,6 @@ private:
     void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;
 
 private:
-    Position theNewPos;
     Position theLastKnownGood;
 
     /// Upon undo, this is the ToolboxItemGroup to return the object to.

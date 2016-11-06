@@ -104,6 +104,10 @@ ViewItem {
     MouseArea {
         anchors.fill: parent
         onPressed: setupDecorator();
+        drag{
+            target: viewItem
+            smoothed: true
+        }
     }
 
     // Disabled: current implementation is too crude.

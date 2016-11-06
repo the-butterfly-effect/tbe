@@ -17,10 +17,9 @@
  */
 
 #include "AbstractQUndoCommand.h"
+#include "Position.h"
 #include "UndoSingleton.h"
 #include "ViewItem.h"
-
-#include <chrono>
 
 AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
                                            QQuickItem* aHandlePtr,
@@ -34,13 +33,11 @@ AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
     // This is the undo action, anUndoText is e.g. “Move %s” and
     // anAbstractObjectPtr->getName() is e.g. “Birch Bar”
     setText(anUndoText.arg(theAOPtr->getName()));
-    theOrigPos    = theAOPtr->getOrigCenter();
-    theOrigWidth  = theAOPtr->getTheWidth();
-    theOrigHeight = theAOPtr->getTheHeight();
-
+    theOrigPos    = theNewPos    = theAOPtr->getOrigCenter();
+    theOrigWidth  = theNewWidth  = theAOPtr->getTheWidth();
+    theOrigHeight = theNewHeight = theAOPtr->getTheHeight();
     theVIConnection = connect(anViewItemPtr, SIGNAL(signalUpdateVars(qreal,qreal,qreal,qreal,qreal)),
                               this, SLOT(slot_updateVars(qreal,qreal,qreal,qreal,qreal)));
-
 }
 
 AbstractQUndoCommand::~AbstractQUndoCommand()
@@ -52,21 +49,24 @@ AbstractQUndoCommand::~AbstractQUndoCommand()
 
 bool AbstractQUndoCommand::checkForCollisions()
 {
-    bool newCollision = false;
+    bool hasCollision = false;
 
-    // TODO: temporary code!!!
-    static std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
-    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-    std::chrono::duration<double> delta = now - start;
-    newCollision = static_cast<long>(delta.count())%2 ? 1 : 0;
+    // check for collision with walls of scene
+    AABB myAABB(theNewPos, theNewWidth, theNewHeight);
+    if (myAABB.minX < 0 || myAABB.minY < 0)
+        hasCollision = true;
 
-    if (newCollision != isObjectColliding)
+    // TODO: check for collision with other objects
+    ;
+
+    // process results and notify everyone
+    if (hasCollision != isObjectColliding)
     {
-        printf("isCollidingChanged!\n");
-        isObjectColliding = newCollision;
+        isObjectColliding = hasCollision;
+        printf("isColling is now %d\n", isObjectColliding);
         emit isCollidingChanged();
     }
-    return newCollision;
+    return isObjectColliding;
 }
 
 
@@ -84,14 +84,18 @@ ViewItem *AbstractQUndoCommand::getVIPtr()
 
 void AbstractQUndoCommand::redo(void)
 {
-    DEBUG3("AbstractQUndoCommand::redo for '%s'", ASCII(text()));
-    // nothing to do here :-)
+    DEBUG5("AbstractQUndoCommand::redo for '%s'", ASCII(text()));
+    updateAO(theNewPos);
+    updateAO(theNewWidth, theNewHeight);
+    updateVI();
 }
 
 void AbstractQUndoCommand::undo(void)
 {
-    DEBUG3("AbstractQUndoCommand::undo for '%s'", ASCII(text()));
-    // nothing to do here :-)
+    DEBUG5("AbstractQUndoCommand::undo for '%s'", ASCII(text()));
+    updateAO(theOrigPos);
+    updateAO(theOrigWidth, theOrigHeight);
+    updateVI();
 }
 
 void AbstractQUndoCommand::updateAO(const Position &aPosition)

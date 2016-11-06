@@ -26,6 +26,7 @@ ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
       theUndoPtr(nullptr)
 {
     assert(nullptr == parent);
+    emit isCollidingChanged();
 }
 
 ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
@@ -72,6 +73,7 @@ void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType, QQuickItem *aH
         theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
         connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
         emit theActiveHandleChanged();
+        emit isCollidingChanged();
     }
 }
 
