@@ -39,8 +39,6 @@ public:
 
     Q_INVOKABLE QQuickItem *getTheDecorated();
 
-    Q_INVOKABLE void doneMoving();
-
     Q_INVOKABLE void failMoving();
 
     void commit() override;

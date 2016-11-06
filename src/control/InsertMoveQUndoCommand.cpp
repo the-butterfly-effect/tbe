@@ -43,12 +43,6 @@ QQuickItem *InsertMoveQUndoCommand::getTheDecorated()
     return getVIPtr();
 }
 
-void InsertMoveQUndoCommand::doneMoving()
-{
-    theOrigPos = theNewPos;
-    commit();
-}
-
 void InsertMoveQUndoCommand::failMoving()
 {
     undo();

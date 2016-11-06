@@ -77,13 +77,12 @@ Rectangle {
             if (cmpos.x+width/2 < gameView.width) {
                 newItem.updateVars();
                 newItem.restoreBindings();
-                undoObject.doneMoving();
             }
             else {
                 undoObject.failMoving();
-                undoObject.destroy();
                 selectedItem.destroy();
                 selectedItem = undefined;
+                undoObject.destroy();
             }
             newItem = null;
             undoObject = null;
