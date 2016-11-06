@@ -69,6 +69,11 @@ void GameFlow::slot_clearDialog()
     theDialogPtr = nullptr;
 }
 
+void GameFlow::slot_makeAllDialogsDisappear()
+{
+    // TODO
+}
+
 void GameFlow::slot_levelDeath(void)
 {
     DEBUG3ENTRY;

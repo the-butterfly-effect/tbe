@@ -32,7 +32,6 @@
 #include "InsertUndoCommand.h"
 #include "Level.h"
 #include "LevelCreator.h"
-#include "ListViewItemTooltip.h"
 #include "Popup.h"
 #include "RegressionTest.h"
 #include "SaveLevelInfo.h"

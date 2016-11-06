@@ -17,7 +17,6 @@
  */
 
 #include "AbstractObject.h"
-#include "ChoosePhoneNumber.h"
 #include "ImageCache.h"
 #include "TriggerExplosion.h"
 #include "ViewPingus.h"

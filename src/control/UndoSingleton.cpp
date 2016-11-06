@@ -22,7 +22,6 @@
 #include "MoveUndoCommand.h"
 #include "InsertUndoCommand.h"
 #include "DeleteUndoCommand.h"
-#include "ChoosePhoneUndoCommand.h"
 #include "EditPropertyUndoCommand.h"
 
 #include "DeleteQUndoCommand.h"
@@ -85,7 +84,7 @@ UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
         myNewCommand =  new ResizeUndoCommand(anObject);
         break;
     case ActionIcon::ACTION_SETPHONE:
-        return new ChoosePhoneUndoCommand(anObject);
+        assert(false);
         break;
     case ActionIcon::ACTION_DELETE:
         return new DeleteUndoCommand(anObject);

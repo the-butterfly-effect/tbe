@@ -126,6 +126,9 @@ signals:
     /// @param isInsertionDisallowed true when the toolbox must be disabled.
     void signal_InsertionDisallowed(bool isInsertionDisallowed);
 
+    /// TODO
+    void signal_makeAllDialogsDisappear();
+
 public slots:
     /// Resizinggraphicsview connects CrossRegisterSingleton to this signal
     /// and it will be called whenever the user has a cross on one of his

@@ -18,7 +18,6 @@
 
 #include "AbstractObject.h"
 #include "ImageCache.h"
-#include "ListViewItemTooltip.h"
 #include "ToolboxListWidgetItem.h"
 #include "Translator.h"
 #include "ViewObject.h"
@@ -82,10 +81,7 @@ void ToolboxListWidgetItem::slotSelected(QListWidgetItem *who)
     QRect myBoundingRectInViewPort = listWidget()->visualItemRect(this);
 
     if (theTBGPtr->count() != 0) {
-        ListViewItemTooltip *myNewTooltip =
-            new ListViewItemTooltip(theTBGPtr, theRSGVPtr);
-        myNewTooltip->adjustVPos(myBoundingRectInViewPort.top());
-        emit myNewTooltip->appearAnimated();
+        // TODO - removed listviewitemtooltip thingie
     }
 }
 

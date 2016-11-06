@@ -18,7 +18,8 @@
 
 #include "TriggerExplosion.h"
 #include "tbe_global.h"
-#include "ViewDetonatorBox.h"
+#include "ViewObject.h"
+#include "ViewObjectPtr.h"
 
 #include <cassert>
 
@@ -93,23 +94,6 @@ void DetonatorBox::clearObjectReferences()
 {
     AbstractObject::clearObjectReferences();
     theHandle = nullptr;
-}
-
-
-ViewObjectPtr  DetonatorBox::createViewObject(float aDefaultDepth)
-{
-    if (theViewObjectPtr != nullptr)
-        return theViewObjectPtr;
-
-    QString myImageName;
-    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
-        myImageName = getName();
-
-    theViewObjectPtr = ViewObject::factoryMethod<ViewDetonatorBox>(getThisPtr(), myImageName);
-    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
-    updateViewObject(false);
-
-    return theViewObjectPtr;
 }
 
 void DetonatorBox::createPhysicsObject(void)

@@ -17,7 +17,6 @@
  */
 
 #include "AbstractObject.h"
-#include "animateddialog.h"
 #include "PieMenu.h"
 #include "Popup.h"
 #include "Position.h"
@@ -181,7 +180,7 @@ void ViewWorld::slot_signalPause()
 void ViewWorld::slot_signalPlay()
 {
     // remove any dialogs when user starts playing
-    AnimatedDialog::makeAllAnimatedDialogsDisappear();
+//    AnimatedDialog::makeAllAnimatedDialogsDisappear();
     PieMenuSingleton::clearPieMenu();
 
     if (isSimRunning == false)

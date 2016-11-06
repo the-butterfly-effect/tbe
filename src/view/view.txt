@@ -3,8 +3,6 @@
 
 
 SET(view_SOURCES 
-    view/animateddialog.cpp
-    view/ChoosePhoneNumber.cpp
     view/EditLevelProperties.cpp
     view/EditObjectDialog.cpp
     view/GameControls.cpp
@@ -14,7 +12,6 @@ SET(view_SOURCES
     view/ImageCache.cpp
     view/ImageProvider.cpp
     view/LevelCreator.cpp
-    view/ListViewItemTooltip.cpp
     view/MainWindow.cpp
     view/Popup.h
     view/PieMenu.cpp
@@ -25,7 +22,6 @@ SET(view_SOURCES
     view/ToolboxItemGroup.cpp
     view/ToolboxListWidgetItem.cpp
     view/ViewObject.cpp
-    view/ViewDetonatorBox.cpp
     view/ViewItem.cpp
     view/ViewLink.cpp
     view/ViewPingus.cpp
@@ -35,9 +31,7 @@ SET(view_SOURCES
 )
 
 SET(view_HEADERS 
-    view/animateddialog.h
     view/Background.h
-    view/ChoosePhoneNumber.h
     view/EditLevelProperties.h
     view/EditObjectDialog.h
     view/GameControls.h
@@ -47,7 +41,6 @@ SET(view_HEADERS
     view/ImageCache.h
     view/ImageProvider.h
     view/LevelCreator.h
-    view/ListViewItemTooltip.h
     view/MainWindow.h
     view/Popup.h
     view/PieMenu.h
@@ -58,7 +51,6 @@ SET(view_HEADERS
     view/SaveLevelInfo.h
     view/ToolboxItemGroup.h
     view/ToolboxListWidgetItem.h
-    view/ViewDetonatorBox.h
     view/ViewItem.h
     view/ViewLink.h
     view/ViewObject.h
@@ -70,12 +62,10 @@ SET(view_HEADERS
 )
 
 SET(view_UIFORMS
-    view/ChoosePhoneNumber.ui
     view/EditLevelProperties.ui
     view/EditObjectDialog.ui
     view/GameControls.ui
     view/GoalEditor.ui
-    view/ListViewItemTooltip.ui
     view/MainWindow.ui
     view/SaveLevelInfo.ui
 )

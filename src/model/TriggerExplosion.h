@@ -106,8 +106,6 @@ public:
         DONE       // end state, handle down and cell dark...
     };
 
-    ViewObjectPtr createViewObject(float aDefaultDepth = 2.0) override;
-
     /// overridden from RectObject to be able to create the handle and
     /// because this class wants to register for
     /// callbacks and needs to restart its state machine

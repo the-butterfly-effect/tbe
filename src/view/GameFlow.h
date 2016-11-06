@@ -54,6 +54,7 @@ private slots:
 
 public slots:
     void slot_clearDialog();
+    void slot_makeAllDialogsDisappear();
     void slot_showLevelInfoDialog();
     void slot_showChooseLevelDialog();
     void slot_showChoosePhoneNumberDialog();
