@@ -26,16 +26,13 @@ Rectangle {
 
     function show(isToShow) {
         visible = isToShow;
-        console.log("hi ", toolTipBase.parent.x, width, gameView.width);
         if (isToShow==true) {
             var botright = mapToItem(gameView, x+width, y+height);
             if (botright.x > gameView.width) {
-                console.log("align right instead of left")
                 anchors.left = undefined
                 anchors.right = toolTipBase.parent.right
             }
             if (botright.y > gameView.height) {
-                console.log("align top instead of bottom")
                 anchors.top = undefined
                 anchors.bottom = toolTipBase.parent.top
             }
