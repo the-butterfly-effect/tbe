@@ -59,18 +59,24 @@ qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
     return myVector.toAngle()* 180/PI;
 }
 
-void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType, QQuickItem *aHandlePtr)
+void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType,
+                                            QQuickItem *aHandlePtr,
+                                            QObject* anUndoToUse)
 {
     DEBUG1ENTRY;
+
     // do we need to take care of the previous undo first?
     if (theUndoPtr)
     {
         commitChanges();
         theUndoPtr = nullptr;
     }
-    if (aHandlePtr)
+    if (nullptr != aHandlePtr || nullptr!=anUndoToUse)
     {
-        theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
+        if (anUndoToUse)
+            theUndoPtr = qobject_cast<AbstractQUndoCommand*>(anUndoToUse);
+        else
+            theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
         connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
         emit theActiveHandleChanged();
         emit isCollidingChanged();

@@ -41,7 +41,10 @@ public:
 
     /// Calling this member will start a new undo process and commit the old undo
     /// - if there is one. Technically, this is a factory method.
-    Q_INVOKABLE void startNewUndo(const QString& aType, QQuickItem* aHandlePtr);
+    /// If anUndoToUse is specified, it will use that one instead of creating one.
+    Q_INVOKABLE void startNewUndo(const QString& aType,
+                                  QQuickItem* aHandlePtr,
+                                  QObject* anUndoToUse = nullptr);
 
     bool isColliding();
 

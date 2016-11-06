@@ -60,6 +60,7 @@ Rectangle {
                                     y2m(tlpos.y+startmousepos.y));
             newItem = undoObject.getTheDecorated();
             newItem.setupDecorator();
+            selectedItem.startNewUndo("", null, undoObject);
         }
         onPositionChanged: {
             // in this one, we keep everything in pixels :-)
