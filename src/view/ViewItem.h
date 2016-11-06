@@ -57,9 +57,12 @@ public:
     QString imageName()
     { return theImageName; }
 
-    bool isHResize() { return true; };
-    bool isRotate()  { return true; };
-    bool isVResize() { return true; };
+    /// TODO: hook up to AbstractObject
+    bool isHResize() { return true; }
+    /// TODO: hook up to AbstractObject
+    bool isRotate()  { return true; }
+    /// TODO: hook up to AbstractObject
+    bool isVResize() { return true; }
 
     /// Called by objects to adjust their image index.
     /// (this is used for animations based on state changes)
