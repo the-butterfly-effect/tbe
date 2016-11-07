@@ -107,12 +107,13 @@ ViewItem {
             target: viewItem
             smoothed: true
         }
+        hoverEnabled: enabled
+        onEntered: mytooltip.show(true);
+        onExited: mytooltip.show(false);
     }
 
-    // Disabled: current implementation is too crude.
-    // Unfortunately, it will steal all hover/click events away from other MouseAreas.
-//    Tooltip {
-//        text: parent.tooltip
-//    }
-
+    Tooltip {
+        id: mytooltip
+        text: parent.tooltip
+    }
 }
