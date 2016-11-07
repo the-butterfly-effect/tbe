@@ -22,7 +22,6 @@
 #include "ui_EditObjectDialog.h"
 #include "tbe_global.h"
 #include "AbstractObject.h"
-#include "AbstractUndoCommand.h"
 #include "Property.h"
 #include <QDialog>
 

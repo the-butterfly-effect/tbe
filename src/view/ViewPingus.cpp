@@ -55,7 +55,6 @@ ViewPingus::ViewPingus (AbstractObjectPtr aAbstractObjectPtr, const QString &anI
         }
     }
     setPixmap(thePixmapList[0]);
-    theDecorator.setViewObject(this);
 }
 
 

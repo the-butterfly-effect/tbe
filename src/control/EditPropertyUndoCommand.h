@@ -19,6 +19,8 @@
 #ifndef EDITPROPERTYUNDOCOMMAND_H
 #define EDITPROPERTYUNDOCOMMAND_H
 
+#if 0
+
 #include "AbstractUndoCommand.h"
 
 /// Implementation of EditPropertyUndoCommand, used by the
@@ -66,5 +68,7 @@ private:
     QString theOldID;
     QString theNewID;
 };
+
+#endif
 
 #endif // EDITPROPERTYUNDOCOMMAND_H

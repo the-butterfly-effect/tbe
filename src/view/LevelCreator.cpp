@@ -23,7 +23,6 @@
 #include "EditObjectDialog.h"
 #include "GoalEditor.h"
 #include "ImageCache.h"
-#include "InsertUndoCommand.h"
 #include "Level.h"
 #include "ObjectFactory.h"
 
@@ -163,7 +162,7 @@ void LevelCreator::on_action_Clone_triggered()
         Vector myDelta(0.5 * myAOPtr->getTheWidth(), -0.5 * myAOPtr->getTheHeight());
         AbstractObjectPtr myClonePtr = ObjectFactory::cloneObject(myAOPtr);
         myClonePtr->setOrigCenter(myAOPtr->getOrigCenter() + myDelta);
-        InsertUndoCommand::createInsertUndoCommand(myClonePtr);
+//TODO        InsertUndoCommand::createInsertUndoCommand(myClonePtr);
     } catch (std::bad_weak_ptr) {
         DEBUG1("ERROR: on_action_Clone_triggered() for outdated object...");
         return;
@@ -217,8 +216,8 @@ void LevelCreator::on_insert(const QString &anObjectName)
     // strip out ampersands in the name
     QString myFilteredName = anObjectName;
     myFilteredName.remove('&');
-    InsertUndoCommand::createInsertUndoCommand(
-        ObjectFactory::createObject(myFilteredName, Position(1, 1)));
+//TODO    InsertUndoCommand::createInsertUndoCommand(
+//TODO        ObjectFactory::createObject(myFilteredName, Position(1, 1)));
 }
 
 void LevelCreator::on_levelPropertiesEditorAction_clicked()

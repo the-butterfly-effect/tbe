@@ -21,9 +21,6 @@
 #include "ViewObject.h"
 #include "ImageCache.h"
 #include "EditPropertyUndoCommand.h"
-#include "MoveUndoCommand.h"
-#include "ResizeUndoCommand.h"
-#include "RotateUndoCommand.h"
 #include "UndoSingleton.h"
 
 // Initializer for theClosePreventer global static variable.
@@ -76,18 +73,18 @@ void EditObjectDialog::closeExistingUndos()
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
 {
-    // TODO/FIXME: Code duplication warning: this member is rather close
-    // to the propertyCellChanged() member.
-    ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
-    closeExistingUndos();
-    PreventClose myLocalDoNotClose;
-    EditPropertyUndoCommand *myUndoPtr =
-        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
-                                                                    ActionIcon::ACTION_EDITPROPERTIES);
-    myUndoPtr->changedID(getAORealPtr()->theID, ui.lineEditID->text());
+//    // TODO/FIXME: Code duplication warning: this member is rather close
+//    // to the propertyCellChanged() member.
+//    ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+//    closeExistingUndos();
+//    PreventClose myLocalDoNotClose;
+//    EditPropertyUndoCommand *myUndoPtr =
+//        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+//                                                                    ActionIcon::ACTION_EDITPROPERTIES);
+//    myUndoPtr->changedID(getAORealPtr()->theID, ui.lineEditID->text());
 
-    // commit this undo and make sure its changes are 'permanent'
-    myUndoPtr->mouseReleaseEvent(nullptr);
+//    // commit this undo and make sure its changes are 'permanent'
+//    myUndoPtr->mouseReleaseEvent(nullptr);
 }
 
 void EditObjectDialog::position_editingFinished()
@@ -135,16 +132,16 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
     // Let's act on it!
     ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
     closeExistingUndos();
-    PreventClose myLocalDoNotClose;
-    EditPropertyUndoCommand *myUndoPtr =
-        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
-                                                                    ActionIcon::ACTION_EDITPROPERTIES);
-    QString myOrigValue;
-    theObjectProps.property2String(myKey, &myOrigValue);
-    myUndoPtr->changedProperty(myKey, myOrigValue, myValue);
+//    PreventClose myLocalDoNotClose;
+//    EditPropertyUndoCommand *myUndoPtr =
+//        (EditPropertyUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+//                                                                    ActionIcon::ACTION_EDITPROPERTIES);
+//    QString myOrigValue;
+//    theObjectProps.property2String(myKey, &myOrigValue);
+//    myUndoPtr->changedProperty(myKey, myOrigValue, myValue);
 
-    // commit this undo and make sure its changes are 'permanent'
-    myUndoPtr->mouseReleaseEvent(nullptr);
+//    // commit this undo and make sure its changes are 'permanent'
+//    myUndoPtr->mouseReleaseEvent(nullptr);
 }
 
 

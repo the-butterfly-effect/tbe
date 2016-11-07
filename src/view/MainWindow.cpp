@@ -29,7 +29,6 @@
 #include "Hint.h"
 #include "ImageCache.h"
 #include "ImageProvider.h"
-#include "InsertUndoCommand.h"
 #include "Level.h"
 #include "LevelCreator.h"
 #include "Popup.h"
@@ -553,7 +552,7 @@ bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
 
     // OK, we found the TBG to take the object from.
     // Create the InsertUndoCommand
-    InsertUndoCommand::createInsertUndoCommand(myTBGPtr, Position(), myHintPtr);
+//TODO    InsertUndoCommand::createInsertUndoCommand(myTBGPtr, Position(), myHintPtr);
 
 
     // successfully done

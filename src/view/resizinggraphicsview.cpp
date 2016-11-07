@@ -26,7 +26,6 @@
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
 #include "Translator.h"
-#include "ViewObjectActionDectorator.h"
 #include "ViewObject.h"
 #include "ViewWorld.h"
 #include "World.h"
@@ -104,8 +103,6 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameState
     theGameFlowPtr = aGFPtr;
     theMainWindowPtr = aMWPtr;
     GameQControls::me()->setup(anMenuControlsPtr);
-    connect(CrossRegisterSingleton::me(), SIGNAL(signalNumberCrossesChanged(int)), aGSMPtr,
-            SLOT(slot_NumberOfCrossesChanged(int)));
 
     connect (aGSMPtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
              GameQControls::me(), SLOT(slot_updateIcon(GameStateMachine::States)));

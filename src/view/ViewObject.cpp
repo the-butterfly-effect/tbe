@@ -18,8 +18,6 @@
 
 #include "AbstractObject.h"
 #include "ImageCache.h"
-#include "MoveUndoCommand.h"
-#include "PieMenu.h"
 #include "Position.h"
 #include "resizinggraphicsview.h"
 #include "UndoSingleton.h"
@@ -146,7 +144,6 @@ void ViewObject::initViewObjectAttributes(void)
 {
     setFlags(QGraphicsItem::ItemIsFocusable);
     setAcceptHoverEvents(true);
-    theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
     theOldWidth = 0.0;
     theOldHeight = 0.0;

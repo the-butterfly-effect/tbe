@@ -17,12 +17,7 @@
  */
 
 #include "UndoSingleton.h"
-#include "RotateUndoCommand.h"
-#include "ResizeUndoCommand.h"
-#include "MoveUndoCommand.h"
-#include "InsertUndoCommand.h"
-#include "DeleteUndoCommand.h"
-#include "EditPropertyUndoCommand.h"
+//#include "EditPropertyUndoCommand.h"
 
 #include "DeleteQUndoCommand.h"
 #include "InsertMoveQUndoCommand.h"
@@ -32,7 +27,6 @@
 #include "RotateQUndoCommand.h"
 
 static UndoSingleton *theUndoSingletonPtr = nullptr;
-static AbstractUndoCommand *theCurrentlyActiveUndoCommand = nullptr;
 
 
 UndoSingleton::UndoSingleton(void)
@@ -43,8 +37,6 @@ UndoSingleton::UndoSingleton(void)
 
 void UndoSingleton::clear()
 {
-    delete theCurrentlyActiveUndoCommand;
-    theCurrentlyActiveUndoCommand = nullptr;
     me()->theUndoStack.clear();
 }
 
@@ -58,48 +50,6 @@ QAction *UndoSingleton::createRedoAction (QObject *parent, const QString &prefix
 QAction *UndoSingleton::createUndoAction (QObject *parent, const QString &prefix)
 {
     return me()->theUndoStack.createUndoAction(parent, prefix);
-}
-
-
-AbstractUndoCommand *
-UndoSingleton::createUndoCommand(ViewObjectPtr anObject,
-                                 ActionIcon::ActionType anUndoType)
-{
-    DEBUG3("UndoSingleton::createUndoCommand() for '%d'", anUndoType);
-
-    AbstractUndoCommand *myNewCommand = nullptr;
-    // return immediately for UndoActions that do not need further
-    // user interactions (i.e. those derived from Dummy).
-    switch (anUndoType) {
-    case ActionIcon::ACTION_INSERT:
-        return new InsertUndoCommand(anObject);
-        break;
-    case ActionIcon::ACTION_MOVE:
-        myNewCommand = new MoveUndoCommand(anObject);
-        break;
-    case ActionIcon::ACTION_ROTATE:
-        myNewCommand =  new RotateUndoCommand(anObject);
-        break;
-    case ActionIcon::ACTION_RESIZE:
-        myNewCommand =  new ResizeUndoCommand(anObject);
-        break;
-    case ActionIcon::ACTION_SETPHONE:
-        assert(false);
-        break;
-    case ActionIcon::ACTION_DELETE:
-        return new DeleteUndoCommand(anObject);
-        break;
-    case ActionIcon::ACTION_EDITPROPERTIES:
-        return new EditPropertyUndoCommand(anObject);
-        break;
-        //case ActionIcon::ACTION_EDITSPECIAL:
-        // TODO/FIXME
-        //break;
-    }
-    if (theCurrentlyActiveUndoCommand != nullptr)
-        delete theCurrentlyActiveUndoCommand;
-    theCurrentlyActiveUndoCommand = myNewCommand;
-    return myNewCommand;
 }
 
 AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, QQuickItem *aHandlePtr, const QString &anUndoType)
@@ -134,13 +84,6 @@ UndoSingleton *UndoSingleton::me(void)
     if (theUndoSingletonPtr == nullptr)
         theUndoSingletonPtr = new UndoSingleton();
     return theUndoSingletonPtr;
-}
-
-
-void UndoSingleton::notifyGone(AbstractUndoCommand *anAUCPtr)
-{
-    if (anAUCPtr == theCurrentlyActiveUndoCommand)
-        theCurrentlyActiveUndoCommand = nullptr;
 }
 
 

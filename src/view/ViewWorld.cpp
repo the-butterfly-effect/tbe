@@ -17,7 +17,6 @@
  */
 
 #include "AbstractObject.h"
-#include "PieMenu.h"
 #include "Popup.h"
 #include "Position.h"
 #include "resizinggraphicsview.h"

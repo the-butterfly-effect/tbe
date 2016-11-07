@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,14 +20,12 @@
 #define UNDOSINGLETON_H
 
 #include "AbstractObject.h"
-#include "PieMenu.h"
 
 #include <QUndoCommand>
 
 // forward declarations
 class QUndoStack;
 class AbstractQUndoCommand;
-class AbstractUndoCommand;
 class QQuickItem;
 
 class UndoSingleton
@@ -40,9 +38,6 @@ public:
     /// @note The newly created command is not put on the stack yet.
     ///       If you want it to, call commit() on the Command.
     ///       The object is now owned by the ViewObject anObject.
-    static AbstractUndoCommand *createUndoCommand(ViewObjectPtr anObject,
-                                                  ActionIcon::ActionType anUndoType);
-
     static AbstractQUndoCommand *createQUndoCommand(ViewItem* aViewItemPtr,
                                                     QQuickItem* aHandlePtr,
                                                     const QString& anUndoType);
@@ -58,11 +53,6 @@ public:
     /// Push the UndoCommand on to the UndoStack and delist it from the
     /// currently active undo commands.
     static void push(QUndoCommand *anUndoPtr);
-
-    /// This is a notification that the UndoCommand is deleted and
-    /// no longer exists - delist it from the
-    /// currently active undo commands.
-    static void notifyGone(AbstractUndoCommand *anAUCPtr);
 
     static QAction *createRedoAction ( QObject *parent, const QString &prefix = QString() );
     static QAction *createUndoAction ( QObject *parent, const QString &prefix = QString() );
@@ -81,8 +71,6 @@ private:
     Q_DISABLE_COPY ( UndoSingleton )
 
     QUndoStack theUndoStack;
-
-    friend class UndoObject;
 };
 
 #endif // UNDOSINGLETON_H

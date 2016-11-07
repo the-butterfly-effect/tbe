@@ -42,7 +42,6 @@ SET(view_HEADERS
     view/LevelCreator.h
     view/MainWindow.h
     view/Popup.h
-    view/PieMenu.h
     view/RegressionTest.h
     view/RequestDialog.h
     view/ResizeAwareQuickWidget.h

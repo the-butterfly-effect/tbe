@@ -27,8 +27,6 @@
 // forward declarations
 #include "AbstractObject.h"
 class AbstractUndoCommand;
-#include "ViewObjectActionDectorator.h"
-
 
 /** class ViewObject
   *
@@ -127,8 +125,6 @@ protected:
 
     typedef QList<QPixmap> ImageList;
     ImageList thePixmapList;
-
-    ViewObjectActionDecorator theDecorator;
 
     friend class AbstractUndoCommand;
     friend class EditObjectDialog;
