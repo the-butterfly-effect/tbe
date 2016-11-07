@@ -14,7 +14,6 @@ SET(view_SOURCES
     view/LevelCreator.cpp
     view/MainWindow.cpp
     view/Popup.h
-    view/PieMenu.cpp
     view/RegressionTest.cpp
     view/ResizeAwareQuickWidget.cpp
     view/resizinggraphicsview.cpp

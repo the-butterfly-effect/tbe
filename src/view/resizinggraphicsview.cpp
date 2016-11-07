@@ -22,7 +22,6 @@
 #include "Level.h"
 #include "LevelCreator.h"
 #include "MainWindow.h"
-#include "PieMenu.h"
 #include "Popup.h"
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
@@ -86,7 +85,6 @@ void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
     if (event != nullptr)
         QGraphicsView::resizeEvent(event);
     fitInView(sceneRect(), Qt::KeepAspectRatio);
-    PieMenuSingleton::setViewInSceneCoords(mapToScene(rect()));
 }
 
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)

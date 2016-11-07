@@ -45,33 +45,33 @@ EditObjectDialog::~EditObjectDialog()
 
 void EditObjectDialog::angle_editingFinished()
 {
-    PreventClose myLocalDoNotClose;
-    if (nullptr != theRotUCPtr) {
-        theRotUCPtr->editAngleDone(ui.spinBoxAngle->value());
-    }
-    theRotUCPtr = nullptr;
+//    PreventClose myLocalDoNotClose;
+//    if (nullptr != theRotUCPtr) {
+//        theRotUCPtr->editAngleDone(ui.spinBoxAngle->value());
+//    }
+//    theRotUCPtr = nullptr;
 }
 
 void EditObjectDialog::angle_valueChanged(double)
 {
-    if (nullptr == theRotUCPtr) {
-        // get rid of the PieMenu icons or everything falls to pieces
-        PieMenuSingleton::clearPieMenu();
-        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
-        closeExistingUndos();
-        PreventClose myLocalDoNotClose;
-        theRotUCPtr = (RotateUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
-                                                                            ActionIcon::ACTION_ROTATE);
-    }
-    theRotUCPtr->editAngleMove(ui.spinBoxAngle->value());
+//    if (nullptr == theRotUCPtr) {
+//        // get rid of the PieMenu icons or everything falls to pieces
+//        PieMenuSingleton::clearPieMenu();
+//        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+//        closeExistingUndos();
+//        PreventClose myLocalDoNotClose;
+//        theRotUCPtr = (RotateUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+//                                                                            ActionIcon::ACTION_ROTATE);
+//    }
+//    theRotUCPtr->editAngleMove(ui.spinBoxAngle->value());
 }
 
 
 void EditObjectDialog::closeExistingUndos()
 {
-    angle_editingFinished();
-    position_editingFinished();
-    size_editingFinished();
+//    angle_editingFinished();
+//    position_editingFinished();
+//    size_editingFinished();
 }
 
 void EditObjectDialog::lineEditID_valueChanged ( void )
@@ -92,30 +92,30 @@ void EditObjectDialog::lineEditID_valueChanged ( void )
 
 void EditObjectDialog::position_editingFinished()
 {
-    PreventClose myLocalDoNotClose;
-    if (theMUCPtr)
-        theMUCPtr->basicReleaseEvent();
-    // todo: figure out if this is a memory leak (probably not)
-    theMUCPtr = nullptr;
+//    PreventClose myLocalDoNotClose;
+//    if (theMUCPtr)
+//        theMUCPtr->basicReleaseEvent();
+//    // todo: figure out if this is a memory leak (probably not)
+//    theMUCPtr = nullptr;
 }
 
 void EditObjectDialog::position_valueChanged (double )
 {
-    if (nullptr == theMUCPtr) {
-        // get rid of the PieMenu icons or everything falls to pieces
-        PieMenuSingleton::clearPieMenu();
-        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
-        closeExistingUndos();
-        PreventClose myLocalDoNotClose;
-        theMUCPtr = (MoveUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
-                                                                        ActionIcon::ACTION_MOVE);
-        theMUCPtr->basicPressEvent(false, THESCALE * QPointF(ui.spinBoxX->value(),
-                                                             -ui.spinBoxY->value()));
-    } else {
-        PreventClose myLocalDoNotClose;
-        theMUCPtr->basicMoveEvent(THESCALE * QPointF(ui.spinBoxX->value(),
-                                                     -ui.spinBoxY->value()));
-    }
+//    if (nullptr == theMUCPtr) {
+//        // get rid of the PieMenu icons or everything falls to pieces
+//        PieMenuSingleton::clearPieMenu();
+//        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+//        closeExistingUndos();
+//        PreventClose myLocalDoNotClose;
+//        theMUCPtr = (MoveUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+//                                                                        ActionIcon::ACTION_MOVE);
+//        theMUCPtr->basicPressEvent(false, THESCALE * QPointF(ui.spinBoxX->value(),
+//                                                             -ui.spinBoxY->value()));
+//    } else {
+//        PreventClose myLocalDoNotClose;
+//        theMUCPtr->basicMoveEvent(THESCALE * QPointF(ui.spinBoxX->value(),
+//                                                     -ui.spinBoxY->value()));
+//    }
 }
 
 
@@ -150,27 +150,27 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 
 void EditObjectDialog::size_editingFinished()
 {
-    PreventClose myLocalDoNotClose;
-    if (nullptr != theRszUCPtr) {
-        theRszUCPtr->mouseReleaseEvent(nullptr);
-    }
-    theRszUCPtr = nullptr;
+//    PreventClose myLocalDoNotClose;
+//    if (nullptr != theRszUCPtr) {
+//        theRszUCPtr->mouseReleaseEvent(nullptr);
+//    }
+//    theRszUCPtr = nullptr;
 }
 
 void EditObjectDialog::size_valueChanged(double)
 {
-    if (nullptr == theRszUCPtr) {
-        // get rid of the PieMenu icons or everything falls to pieces
-        PieMenuSingleton::clearPieMenu();
-        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
-        closeExistingUndos();
-        theRszUCPtr = (ResizeUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
-                                                                            ActionIcon::ACTION_RESIZE);
-    }
-    PreventClose myLocalDoNotClose;
-    theRszUCPtr->basicMoveEvent(getAORealPtr()->getOrigCenter(),
-                                ui.spinBoxWidth->value(),
-                                ui.spinBoxHeight->value());
+//    if (nullptr == theRszUCPtr) {
+//        // get rid of the PieMenu icons or everything falls to pieces
+//        PieMenuSingleton::clearPieMenu();
+//        ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+//        closeExistingUndos();
+//        theRszUCPtr = (ResizeUndoCommand *)UndoSingleton::createUndoCommand(myVOPtr,
+//                                                                            ActionIcon::ACTION_RESIZE);
+//    }
+//    PreventClose myLocalDoNotClose;
+//    theRszUCPtr->basicMoveEvent(getAORealPtr()->getOrigCenter(),
+//                                ui.spinBoxWidth->value(),
+//                                ui.spinBoxHeight->value());
 }
 
 

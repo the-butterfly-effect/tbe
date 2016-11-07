@@ -401,7 +401,6 @@ void MainWindow::purgeLevel()
 {
     DEBUG1ENTRY;
     UndoSingleton::clear();
-    PieMenuSingleton::clearPieMenu();
     if (theIsLevelCreator)
         emit theLevelCreator->slot_updateEditObjectDialog(nullptr);
     delete theLevelPtr;

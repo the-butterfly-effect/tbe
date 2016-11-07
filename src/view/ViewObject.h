@@ -116,22 +116,6 @@ signals:
 protected:
     void adjustObjectDrawing(void);
 
-    /// overridden to allow detection of mouse button presses & moves
-    virtual void mouseMoveEvent ( QGraphicsSceneMouseEvent *anEvent );
-    /// overridden to allow detection of mouse button presses & moves
-    virtual void mousePressEvent ( QGraphicsSceneMouseEvent *anEvent);
-    /// overridden to allow detection of mouse button presses & moves
-    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *anEventPtr);
-
-    /// overridden to allow object highlighting
-    virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent *event );
-    /// overridden to allow highlighting
-    virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent *event );
-
-    void realHoverEnterEvent(void);
-protected slots:
-    void realMousePressEvent(void);
-
 protected:
     // Protected attributes
     //
@@ -148,9 +132,6 @@ protected:
 
     friend class AbstractUndoCommand;
     friend class EditObjectDialog;
-    AbstractUndoCommand *theMUCPtr;
-    QPointF theClickedScenePos;
-    const static int thePieMenuDelay = 225;
 
     qreal thePixmapWidth;
     qreal thePixmapHeight;

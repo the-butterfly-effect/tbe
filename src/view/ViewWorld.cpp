@@ -74,25 +74,6 @@ qreal ViewWorld::getWidth(void) const
 }
 
 
-void
-ViewWorld::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
-{
-    // If the simulation is running (or at least is not in reset mode)
-    // players cannot change anything.
-    if (isSimRunning) {
-        // we go at least to pause mode now - update the simcontrols
-        emit needPause();
-        if (Popup::YesNoQuestion(
-                    tr("You cannot make changes now, the simulation is ongoing.\nReset the simulation?")) == true)
-            emit needReset();
-        return;
-    }
-    PieMenuSingleton::startClickCheck();
-    QGraphicsScene::mousePressEvent(mouseEvent);
-    PieMenuSingleton::endClickCheck();
-}
-
-
 void ViewWorld::on_timerTick()
 {
     QTime myCurrentTime = QTime::currentTime();
@@ -181,7 +162,7 @@ void ViewWorld::slot_signalPlay()
 {
     // remove any dialogs when user starts playing
 //    AnimatedDialog::makeAllAnimatedDialogsDisappear();
-    PieMenuSingleton::clearPieMenu();
+//    PieMenuSingleton::clearPieMenu();
 
     if (isSimRunning == false)
         theWorldPtr->createPhysicsWorld();

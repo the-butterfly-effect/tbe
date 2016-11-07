@@ -142,102 +142,15 @@ void ViewObject::adjustObjectDrawing(void)
                         theAbstractObjectPtr->getOrigCenter());
 }
 
-void ViewObject::hoverEnterEvent ( QGraphicsSceneHoverEvent * )
-{
-    // only in debugging mode, also put coordinates in tooltip...
-    if (theDrawDebug)
-        setToolTip(theAbstractObjectPtr->getOrigCenter().toString()
-                   + ", " +
-                   QString("%1x%2").arg(theAbstractObjectPtr->getTheWidth()).arg(theAbstractObjectPtr->getTheHeight())
-                   + " : " +
-                   theAbstractObjectPtr->getToolTip());
-    if (theAbstractObjectPtr->isMovable())
-        realHoverEnterEvent();
-}
-
-
-void ViewObject::hoverLeaveEvent ( QGraphicsSceneHoverEvent * )
-{
-    setGraphicsEffect(nullptr);
-}
-
 void ViewObject::initViewObjectAttributes(void)
 {
     setFlags(QGraphicsItem::ItemIsFocusable);
     setAcceptHoverEvents(true);
     theDecorator.setViewObject(this);
     setToolTip(theAbstractObjectPtr->getToolTip());
-    theMUCPtr = nullptr;
     theOldWidth = 0.0;
     theOldHeight = 0.0;
 }
-
-
-void ViewObject::mouseMoveEvent ( QGraphicsSceneMouseEvent *anEvent )
-{
-    // Overridden so we can actually start a move immediately without
-    // having to go through the pie menu.
-    // Don't allow moving if a pie menu is already visible on this object...
-    if (theMUCPtr == nullptr
-            && theAbstractObjectPtr->isMovable()
-            && PieMenuSingleton::getPieMenuParent() != getThisPtr()) {
-        hoverLeaveEvent(nullptr);
-        PieMenuSingleton::clearPieMenu();
-        theMUCPtr = UndoSingleton::createUndoCommand(getThisPtr(),
-                                                     ActionIcon::ACTION_MOVE);
-        theMUCPtr->mousePressEvent(anEvent);
-    }
-    if (theMUCPtr)
-        theMUCPtr->mouseMoveEvent(anEvent);
-}
-
-
-void ViewObject::mousePressEvent ( QGraphicsSceneMouseEvent *anEvent )
-{
-    // There's two things here:
-    // 1) we want to add a delay of 150ms where the user can start dragging
-    //    the object where we won't put up a pie menu
-    // 2) we only want to initiate a pie menu when the object is allowed to
-    //    move
-    // 3) if you hit the right mousebutton during a drag (yes, people do that)
-    //    you get an extra mousePressEvent...
-    if (theMUCPtr != nullptr)
-        return;
-    emit updateEditObjectDialog(getAbstractObjectPtr());
-    if (theAbstractObjectPtr->isMovable()) {
-        theClickedScenePos = anEvent->scenePos();
-        QTimer::singleShot(thePieMenuDelay,
-                           this,
-                           SLOT(realMousePressEvent()));
-    }
-}
-
-
-void ViewObject::mouseReleaseEvent ( QGraphicsSceneMouseEvent *anEvent )
-{
-    if (theMUCPtr != nullptr)
-        theMUCPtr->mouseReleaseEvent(anEvent);
-    theMUCPtr = nullptr;
-}
-
-
-void ViewObject::realHoverEnterEvent(void)
-{
-    // only set hover effect when no menu present
-    if (PieMenuSingleton::getPieMenuParent() != this) {
-        QGraphicsEffect *myEffect = new QGraphicsColorizeEffect();
-        setGraphicsEffect(myEffect);
-    }
-}
-
-void ViewObject::realMousePressEvent(void)
-{
-    if (theMUCPtr == nullptr) {
-        hoverLeaveEvent(nullptr);
-        PieMenuSingleton::addPieMenuToViewObject(getThisPtr(), theClickedScenePos);
-    }
-}
-
 
 void ViewObject::setNewGeometry(const Position &aNewPosition, qreal aNewWidth, qreal aNewHeight)
 {

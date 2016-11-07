@@ -61,8 +61,6 @@ public:
     // QGraphicsScene events
     //
 
-    void    mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent ) override;
-
     /// Constant defining the goal FPS (frames per second)
     /// @note: This does not say that the game achieves this number.
     ///        It however, will mean that the game will *attempt* not to render
