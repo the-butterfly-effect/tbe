@@ -47,6 +47,8 @@ RowLayout {
 
     ViewWorld {
         id: gameView
+
+        clip: true
         objectName: "gameView"
         z: 3
 
