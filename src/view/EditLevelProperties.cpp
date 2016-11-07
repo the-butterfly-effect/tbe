@@ -125,7 +125,6 @@ void EditLevelProperties::slot_modelItemChanged(QStandardItem * /*anItem*/)
     if (myPtr) {
         emit myPtr->setupBackground();
         emit myPtr->on_sizeAdjust();
-        ResizingGraphicsView::me()->resizeEvent(nullptr);
     }
     populateTableAndGradient(&(theLevelPtr->theWorldPtr->theBackground));
 }

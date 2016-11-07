@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2014 Klaas van Gend
+ * This file copyright (C) 2011,2014,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,6 @@
 #include <QList>
 #include <QString>
 #include <QVariant>
-class ToolboxListWidgetItem;
 
 /// This class holds a series of objects for the Toolbox
 class ToolboxGroup
@@ -51,15 +50,12 @@ public:
     /// @note: you already used last() to retrieve its pointer
     AbstractObjectPtr popObject(void);
 
-    void setItemPtr(ToolboxListWidgetItem *aWidgetItemPtr);
-
     QString     theGroupName;    // translatable
     QString     theInternalName; // not translatable
 
 private:
     typedef QList<AbstractObjectPtr> ObjectsList;
     ObjectsList theObjectsList;
-    ToolboxListWidgetItem *theWidgetItemPtr;
 
     friend class ToolboxItemGroup;
 };

@@ -51,7 +51,8 @@ public:
 
     /// Setup everything again in the Toolbox.
     /// @note probably going away when switch to new Qml toolbox complete.
-    void repopulateToolbox(ResizingGraphicsView *aGVPtr);
+    void repopulateToolbox();
+
 
     /// Serialize all contents of the toolbox to aDomNodeRef
     /// in aDocumentRef.
@@ -61,7 +62,6 @@ public:
     void serialize(QDomDocument& aDocumentRef,
                    QDomElement& aDomNodeRef);
 
-    void setupOld(QListWidget *aToolboxOldStylePtr);
     void setupQml(QQuickWidget *aToolboxQmlStylePtr);
 
     /// Finds the ToolboxGroup that the object belongs to.
@@ -73,7 +73,6 @@ private:
     typedef QMap<QString, ToolboxGroup *> ToolboxGroupList;
     ToolboxGroupList theToolboxList;
 
-    QListWidget *theToolboxOldStylePtr;
     QQuickWidget *theToolboxQmlStylePtr;
 
     // the new list for the QML Toolboxgroups

@@ -20,7 +20,6 @@
 #include "ToolboxGroup.h"
 #include "ToolboxGroupSerializer.h"
 #include "ToolboxItemGroup.h"
-#include "ToolboxListWidgetItem.h"
 
 #include <QGraphicsView>
 #include <QListWidget>
@@ -31,8 +30,7 @@ static Toolbox *theCurrentToolboxPtr = nullptr;
 
 
 Toolbox::Toolbox()
-    : theToolboxOldStylePtr(nullptr),
-      theToolboxQmlStylePtr(nullptr)
+    : theToolboxQmlStylePtr(nullptr)
 {
     assert(theCurrentToolboxPtr == nullptr);
     theCurrentToolboxPtr = this;
@@ -77,13 +75,8 @@ Toolbox::findToolBoxGroup(AbstractObjectPtr anAOPtr)
 }
 
 
-void Toolbox::repopulateToolbox(ResizingGraphicsView* aGVPtr)
+void Toolbox::repopulateToolbox()
 {
-    theToolboxOldStylePtr->clear();
-    for (auto i : theToolboxList)
-        new ToolboxListWidgetItem(aGVPtr, i, theToolboxOldStylePtr);
-
-
     // TODO/FIXME: Temporary code to setup ToolboxItemGroups from ToolboxList.
     // In the final design, we no longer have theToolboxList, only theTBGList.
     theTBGList.clear();
@@ -114,14 +107,6 @@ void Toolbox::serialize(QDomDocument& aDocumentRef,
                     ToolboxGroupSerializer::serialize(aDocumentRef, myI));
     }
 }
-
-void Toolbox::setupOld(QListWidget *aToolboxOldStylePtr)
-{
-    assert (nullptr == theToolboxOldStylePtr);
-    theToolboxOldStylePtr = aToolboxOldStylePtr;
-    assert (theToolboxOldStylePtr);
-}
-
 
 void Toolbox::setupQml(QQuickWidget *aToolboxQmlStylePtr)
 {

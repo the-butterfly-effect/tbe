@@ -34,7 +34,6 @@
 #include "Popup.h"
 #include "RegressionTest.h"
 #include "SaveLevelInfo.h"
-#include "ToolboxListWidgetItem.h"
 #include "Translator.h"
 #include "UndoSingleton.h"
 #include "ViewWorld.h"
@@ -124,7 +123,7 @@ void MainWindow::loadLevel(const QString &aFileName)
     }
 
     repopulateScene();
-    theToolbox.repopulateToolbox(ui->graphicsView);
+    theToolbox.repopulateToolbox();
 }
 
 
@@ -216,13 +215,11 @@ void MainWindow::on_action_New_triggered()
 
     theLevelPtr = new Level(&theToolbox);
     theStartFileName.clear();
-    ui->listWidget->clear();
 
     // pop-up the modal LevelProperties dialog
     emit theLevelCreator->on_levelPropertiesEditorAction_clicked();
 
     repopulateScene();
-    theToolbox.repopulateToolbox(ui->graphicsView);
 }
 
 
@@ -491,11 +488,6 @@ void MainWindow::setupView()
     connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameFlowPtr->theGameStateMachinePtr,
             SIGNAL(signal_Reset_triggered()));
 
-    connect(theGameFlowPtr->theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
-            ui->listWidget, SLOT(setDisabled(bool)));
-
-    theToolbox.setupOld(ui->listWidget);
-
     if (theIsRunAsRegression) {
         Q_ASSERT(theRegressionTest == nullptr);
         theRegressionTest = new RegressionTest(this);
@@ -539,14 +531,15 @@ bool MainWindow::slot_insertHint(unsigned int aHintNumber) const
     // Find the right ToolboxGroup.
     // We need to work with the internal name - the other name might be translated...
     ToolboxGroup *myTBGPtr = nullptr;
-    for (int i = 0; i < ui->listWidget->count(); i++) {
-        ToolboxListWidgetItem *myItemPtr = dynamic_cast<ToolboxListWidgetItem *>(ui->listWidget->item(i));
-        ToolboxGroup *myGPtr = myItemPtr->getToolboxGroupPtr();
-        if (myGPtr->theInternalName == myHintPtr->getHintInternalName()) {
-            myTBGPtr = myGPtr;
-            break;
-        }
-    }
+    assert(false);
+//TODO:    for (int i = 0; i < ui->listWidget->count(); i++) {
+//        ToolboxListWidgetItem *myItemPtr = dynamic_cast<ToolboxListWidgetItem *>(ui->listWidget->item(i));
+//        ToolboxGroup *myGPtr = myItemPtr->getToolboxGroupPtr();
+//        if (myGPtr->theInternalName == myHintPtr->getHintInternalName()) {
+//            myTBGPtr = myGPtr;
+//            break;
+//        }
+//    }
     if (myTBGPtr == nullptr)
         return false;
 

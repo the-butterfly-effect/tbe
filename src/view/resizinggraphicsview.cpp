@@ -78,14 +78,6 @@ ResizingGraphicsView *ResizingGraphicsView::me(void)
     return theRSGVPtr;
 }
 
-
-void ResizingGraphicsView::resizeEvent(QResizeEvent *event)
-{
-    if (event != nullptr)
-        QGraphicsView::resizeEvent(event);
-    fitInView(sceneRect(), Qt::KeepAspectRatio);
-}
-
 void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
     if (event != nullptr) {

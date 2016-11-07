@@ -67,7 +67,7 @@ public:
     }
 
 //protected:
-    virtual void resizeEvent(QResizeEvent *event);
+//    virtual void resizeEvent(QResizeEvent *event);
     virtual void mouseMoveEvent(QMouseEvent *event);
 
 signals:
