@@ -35,9 +35,9 @@ BorderImage {
     horizontalTileMode: BorderImage.Stretch
     opacity: enabled ? 1.0 : 0.6;
     verticalTileMode: BorderImage.Stretch   // let's hope we don't need this, will not look pretty
-    source: mycontrol.pressed ? "qrc:/TextButtonInverted.png" :
-               mycontrol.containsMouse ? "qrc:/TextButtonHighlighted.png" :
-                   "qrc:/TextButtonNormal.png"
+    source: mycontrol.pressed ? img("TextButtonInverted") :
+               mycontrol.containsMouse ? img("TextButtonHighlighted") :
+                   img("TextButtonNormal")
 
 
     Text {

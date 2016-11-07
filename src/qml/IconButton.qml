@@ -32,7 +32,7 @@ Image {
 
     width: ResizeInfo.buttonHeight
     height: ResizeInfo.buttonHeight
-    source: mycontrol.pressed ? "qrc:/SimulationButtonInverted.png" : "qrc:/SimulationButtonNormal.png"
+    source: mycontrol.pressed ? img("SimulationButtonInverted") : img("SimulationButtonNormal")
 
     Image {
         id: myicon
