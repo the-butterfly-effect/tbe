@@ -25,8 +25,8 @@ Rectangle {
     property string text
 
     function show(isToShow) {
-        visible = isToShow;
         if (isToShow==true) {
+            delay.start();
             var botright = mapToItem(gameView, x+width, y+height);
             if (botright.x > gameView.width) {
                 anchors.left = undefined
@@ -37,6 +37,17 @@ Rectangle {
                 anchors.bottom = toolTipBase.parent.top
             }
         }
+        else {
+            delay.stop();
+            visible = false;
+        }
+    }
+
+    Timer {
+        id: delay
+        interval: 500;
+        repeat: false
+        onTriggered: visible = true;
     }
 
     anchors.top: parent.bottom
