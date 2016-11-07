@@ -22,7 +22,6 @@ SET(view_SOURCES
     view/ViewObject.cpp
     view/ViewItem.cpp
     view/ViewLink.cpp
-    view/ViewPingus.cpp
     view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
     view/ViewWorldItem.cpp
@@ -51,7 +50,6 @@ SET(view_HEADERS
     view/ViewLink.h
     view/ViewObject.h
     view/ViewObjectPtr.h
-    view/ViewPingus.h
     view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
     view/ViewWorldItem.h

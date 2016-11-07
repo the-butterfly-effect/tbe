@@ -22,7 +22,7 @@
 #include "ObjectFactory.h"
 #include "Property.h"
 #include "ViewItem.h"
-#include "ViewPingus.h"
+#include "ViewObject.h"
 
 static const qreal FALLING_TIME   = 0.16; // seconds
 static const qreal PINGUS_RADIUS  = 0.14; // m
@@ -297,17 +297,6 @@ void Pingus::createPhysicsObject()
 }
 
 
-ViewObjectPtr  Pingus::createViewObject(float aDefaultDepth)
-{
-    if (nullptr != theViewObjectPtr)
-        return theViewObjectPtr;
-    theViewObjectPtr = ViewObject::factoryMethod<ViewPingus>(getThisPtr(), theIconName);
-    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
-    updateViewPingus();
-    return theViewObjectPtr;
-}
-
-
 void Pingus::deletePhysicsObject()
 {
     // nothing much to do here that actually has to do with delete...
@@ -441,13 +430,6 @@ void Pingus::startYourExit()
 
 void Pingus::updateViewPingus()
 {
-    // We know for sure that for the Pingus, this will be a ViewPingus,
-    // so no need to use RTTI's dynamic_cast<ViewPingus*> here...
-    ViewPingus *theVPPtr = static_cast<ViewPingus *>(theViewObjectPtr.data());
-    if (nullptr != theVPPtr)
-        theVPPtr->setNewAnimationFrame(theState, theAnimationFrameIndex);
-
-    // for QML:
     if (theViewItemPtr) {
         theViewItemPtr->setProperty("statenr", theState);
         theViewItemPtr->setProperty("framenr", theAnimationFrameIndex);

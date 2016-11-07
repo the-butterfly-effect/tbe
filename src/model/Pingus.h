@@ -43,12 +43,9 @@ public:
     /// overridden because a Pingus can 'die' through external reasons
     void causeWounded(WhyWounded aReason) override;
 
-    ViewObjectPtr  createViewObject(float aDefaultDepth) override;
-
     ViewItem* createViewItem(float aDefaultDepth=2.0) override {
         return createViewItemInt(aDefaultDepth, "ViewPingus", "Empty", "");
     }
-
 
     /// Overridden from CircleObject because this class wants to register for
     /// callbacks and needs to restart its state machine.
