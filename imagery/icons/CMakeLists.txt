@@ -12,8 +12,6 @@ install(FILES
 	icons/ActionMenuPause.svg
 	icons/ActionMenuPlay.svg
 	icons/ActionMenuStop.svg
-	icons/ActionMove.svg
-	icons/ActionNone.svg
 	icons/ActionResizeRotate.svg
 	icons/ActionResize.svg
 	icons/ActionResizeHori.svg
@@ -30,12 +28,6 @@ install(FILES
 	icons/IconItalics.svg
 	icons/IconModified.svg
 	icons/IconNewline.svg
-	icons/IconSetPhone.svg
-	icons/ProxyMove.svg
-	icons/ProxyResizeHori.svg
-	icons/ProxyResizeTotal.svg
-	icons/ProxyResizeVerti.svg
-	icons/ProxyRotate.svg
 	icons/Status4F.svg
 	icons/StatusFail.svg
 	icons/StatusFF.svg
