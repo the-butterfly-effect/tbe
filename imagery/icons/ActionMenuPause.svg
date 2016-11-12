@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -12,7 +13,7 @@
    height="35.433071"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.91 r13725"
    version="1.0"
    sodipodi:docname="ActionMenuPause.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
@@ -36,17 +37,18 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.635111"
+     inkscape:zoom="21.533555"
      inkscape:cx="17.716536"
      inkscape:cy="17.716536"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="mm"
-     inkscape:window-width="828"
-     inkscape:window-height="783"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
      inkscape:window-x="0"
-     inkscape:window-y="0" />
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -55,6 +57,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,21 +66,22 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g4425">
+       id="g4425"
+       style="stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke:#000000;stroke-opacity:1">
       <rect
          y="2.1745925"
          x="4.7329364"
          height="30.955969"
          width="11.643187"
          id="rect4401"
-         style="opacity:1;fill:#aaccff;fill-opacity:1;stroke:none;stroke-width:1.04200006;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:8.336, 4.168;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#aaccff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <rect
          y="2.1745925"
          x="19.792469"
          height="30.955969"
          width="11.643187"
          id="rect4423"
-         style="opacity:1;fill:#aaccff;fill-opacity:1;stroke:none;stroke-width:1.04200006;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:8.336, 4.168;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#aaccff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
   </g>
 </svg>
