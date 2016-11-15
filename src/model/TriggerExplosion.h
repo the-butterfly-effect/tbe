@@ -50,7 +50,7 @@ public:
     virtual ~DetonatorBoxHandle() override;
 
     /// Overridden from RectObject to allow setting a custom ZValue
-    ViewObjectPtr createViewObject(float aDefaultDepth) override;
+    ViewItem* createViewItem(float aDefaultDepth) override;
 
     /// overridden from AbstractObject to allow for the special joints
     virtual void createPhysicsObject(void) override;

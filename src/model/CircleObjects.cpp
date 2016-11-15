@@ -167,10 +167,10 @@ CustomBall::~CustomBall ( )
 {
 }
 
-ViewObjectPtr CustomBall::createViewObject(float aDefaultDepth)
+ViewItem* CustomBall::createViewItem(float aDefaultDepth)
 {
     parseProperties();
-    return CircleObject::createViewObject(aDefaultDepth);
+    return CircleObject::createViewItem(aDefaultDepth);
 }
 
 void  CustomBall::parseProperties(void)

@@ -17,7 +17,7 @@
  */
 
 #include "AbstractJoint.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 #include "World.h"
 
 #include <cassert>
@@ -35,12 +35,13 @@ AbstractJoint::~AbstractJoint()
 }
 
 
-ViewObjectPtr AbstractJoint::createViewObject(float aDefaultDepth)
+ViewItem* AbstractJoint::createViewItem(float aDefaultDepth)
 {
+    // TODO: do we need something special for ViewLink here???
     if (isChildJoint())
-        return ViewObjectPtr(nullptr);
+        return nullptr;
     else
-        return AbstractObject::createViewObject(aDefaultDepth);
+        return createViewItemInt(aDefaultDepth, "ViewObject", "", "");
 }
 
 
@@ -51,8 +52,8 @@ void AbstractJoint::deletePhysicsObject(void)
     // of AbstractObject, right?
     DEBUG5("AbstractJoint::deletePhysicsObject(void)");
     theJointPtr = nullptr;
-    if (theViewObjectPtr)
-        theViewObjectPtr->setVisible(true);
+//    if (theViewObjectPtr)
+//        theViewObjectPtr->setVisible(true);
 }
 
 b2Body *AbstractJoint::getB2BodyPtrFor(AbstractObjectPtr anObject, const Position &aPosition)
@@ -76,8 +77,8 @@ void AbstractJoint::jointWasDeleted(void)
     // if this member is called, the joint is already gone
     DEBUG4("AbstractJoint::jointWasDeleted(void) for %p", this);
     theJointPtr = nullptr;
-    if (theViewObjectPtr)
-        theViewObjectPtr->setVisible(false);
+    if (theViewItemPtr)
+        theViewItemPtr->setVisible(false);
 }
 
 
@@ -92,8 +93,8 @@ void AbstractJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 {
     switch (aStatus) {
     case JointInterface::CREATED:
-        if (theViewObjectPtr)
-            theViewObjectPtr->setVisible(true);
+        if (theViewItemPtr)
+            theViewItemPtr->setVisible(true);
         break;
     case JointInterface::DELETED:
         jointWasDeleted();
@@ -113,12 +114,10 @@ void AbstractJoint::setGroundBodyPtr(b2Body *aPtr)
 
 void AbstractJoint::updateViewObject(bool) const
 {
-    // no ViewObject: nothing to update ;-)
-    if (theViewObjectPtr == nullptr)
+    // no ViewItem: nothing to update ;-)
+    if (theViewItemPtr == nullptr)
         return;
 
-    theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
-                                          getTempHeight(),
-                                          getTempCenter());
-    theViewObjectPtr->setNewImageIndex(getImageIndex());
+    theViewItemPtr->adjustObjectDrawingFromAO();
+    theViewItemPtr->setNewImageIndex(getImageIndex());
 }

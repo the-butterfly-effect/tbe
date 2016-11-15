@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "Link.h"
 #include "ObjectFactory.h"
-#include "ViewLink.h"
+//#include "ViewLink.h"
 
 #include "Box2D.h"
 #include <cassert>
@@ -84,9 +84,9 @@ void Link::clearObjectReferences()
 }
 
 
-ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
+ViewItem*  Link::createViewItem(float aDefaultDepth)
 {
-    if (theViewObjectPtr != nullptr)
+/*    if (theViewObjectPtr != nullptr)
         return theViewObjectPtr;
     QString myImageName;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
@@ -94,6 +94,8 @@ ViewObjectPtr  Link::createViewObject(float aDefaultDepth)
     theViewObjectPtr = ViewObject::factoryMethod<ViewLink>(getThisPtr(), myImageName);
     theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
     return theViewObjectPtr;
+    */
+    return nullptr;
 }
 
 
@@ -180,9 +182,10 @@ void Link::updateOrigCenter(void)
 void Link::updateViewObject(bool ) const
 {
     // no ViewObject: nothing to update ;-)
-    if (theViewObjectPtr == nullptr)
+    if (theViewItemPtr == nullptr)
         return;
 
+/*
     // Sim running: don't need to adjust objects that are static or asleep
     ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewObjectPtr.data());
     assert(theVLPtr != nullptr);
@@ -200,4 +203,5 @@ void Link::updateViewObject(bool ) const
     }
 
     theVLPtr->setEndpoints(myV1, myV2);
+    */
 }

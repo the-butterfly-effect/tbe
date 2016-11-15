@@ -20,7 +20,7 @@
 #include "Popup.h"
 #include "Position.h"
 #include "resizinggraphicsview.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 #include "ViewWorld.h"
 #include "World.h"
 
@@ -186,8 +186,8 @@ void ViewWorld::slot_signalReset()
     isSimRunning = false;
     emit theTimer.stop();
     emit theFramerateTimer.stop();
-    if (theDrawDebug)
-        clearGraphicsList(0);
+//    if (theDrawDebug)
+//        clearGraphicsList(0);
     theWorldPtr->deletePhysicsWorld();
     theWorldPtr->updateViewWorld(false);
 }
@@ -205,6 +205,7 @@ void ViewWorld::slot_signalSlow()
 //                Below is the b2DebugDraw implementation
 // ---------------------------------------------------------------------------
 
+#if 0
 const int ViewWorld::theMaxNumberOfGraphicsListElements = 200;
 
 // Draw a closed polygon provided in CCW order.
@@ -287,3 +288,4 @@ void ViewWorld::clearGraphicsList(int aCount)
         delete myItemPtr;
     }
 }
+#endif

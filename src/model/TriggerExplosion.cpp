@@ -18,8 +18,7 @@
 
 #include "TriggerExplosion.h"
 #include "tbe_global.h"
-#include "ViewObject.h"
-#include "ViewObjectPtr.h"
+#include "ViewItem.h"
 
 #include <cassert>
 
@@ -167,7 +166,7 @@ const QString DetonatorBox::getToolTip ( ) const
 
 qreal DetonatorBox::getZValue(void)
 {
-    return theViewObjectPtr->zValue();
+    return theViewItemPtr->property("z").toDouble();
 }
 
 
@@ -253,11 +252,11 @@ void DetonatorBoxHandle::callbackStep (qreal /*aTimeStep*/, qreal /*aTotalTime*/
     }
 }
 
-ViewObjectPtr  DetonatorBoxHandle::createViewObject(float aZ)
+ViewItem*  DetonatorBoxHandle::createViewItem(float aZ)
 {
-    RectObject::createViewObject(aZ);
-    theViewObjectPtr->setZValue(calculateZValue(theDBoxPtr->getZValue() / 1.1));
-    return theViewObjectPtr;
+    //TODO: use special string: z value to be 90% of parent (and set parent)
+    RectObject::createViewItem(aZ);
+    return theViewItemPtr;
 }
 
 void DetonatorBoxHandle::createPhysicsObject(void)

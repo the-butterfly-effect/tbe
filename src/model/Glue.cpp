@@ -20,7 +20,7 @@
 #include "Glue.h"
 #include "ObjectFactory.h"
 #include "tbe_global.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 
 #include <cassert>
 

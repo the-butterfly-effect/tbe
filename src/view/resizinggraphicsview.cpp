@@ -26,7 +26,6 @@
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
 #include "Translator.h"
-#include "ViewObject.h"
 #include "ViewWorld.h"
 #include "World.h"
 

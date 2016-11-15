@@ -20,7 +20,6 @@
 #include "tbe_global.h"
 #include "ObjectFactory.h"
 #include "PivotPoint.h"
-#include "ViewObject.h"
 #include "World.h"
 
 //// this class' ObjectFactory

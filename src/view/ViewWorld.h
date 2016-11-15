@@ -35,7 +35,7 @@ class World;
   * It contains the timers that run the simulation.
   * It also contains the debug callbacks from Box2D to draw outlines.
   */
-class ViewWorld : public QGraphicsScene, public b2Draw
+class ViewWorld : public QGraphicsScene //, public b2Draw
 {
     Q_OBJECT
 
@@ -130,7 +130,7 @@ private:
 
     // the below is for the Debug drawing of Box2D
 protected:
-    /// Draw a closed polygon provided in CCW order.
+/*    /// Draw a closed polygon provided in CCW order.
     virtual void DrawPolygon(const b2Vec2 *vertices, int32 vertexCount, const b2Color &color) override;
     /// Draw a solid closed polygon provided in CCW order.
     virtual void DrawSolidPolygon(const b2Vec2 *vertices, int32 vertexCount,
@@ -151,7 +151,7 @@ protected:
     GraphicsList theGraphicsList;
     void addDebugDrawToList(QGraphicsItem *anItem);
     void clearGraphicsList(int aCount);
-
+*/
 };
 
 #endif // VIEWWORLD_H

@@ -24,7 +24,6 @@
 #include "Position.h"
 #include "Property.h"
 #include "TranslationGuidePtr.h"
-#include "ViewObjectPtr.h"
 
 #include "Box2D.h"
 
@@ -428,16 +427,6 @@ public:
     /// @param aPosition the position of the center of the object.
     virtual void createPhysicsObject(const Position &aPosition);
 
-    /** Creates the ViewObject, finds associated images,
-      * sets ZValue and returns a pointer to it.
-      * @param   aDefaultDepth, ZValue depth in view if not set as property,
-      *          the higher the value the more likely it is drawn on top
-      * @returns pointer to ViewObject
-      * @note: a ZValue set in a property always overrides aDefaultDepth
-      */
-    virtual ViewObjectPtr createViewObject(float aDefaultDepth = 2.0);
-    void deleteViewObject();
-
     /** Creates the QML ViewObject (and its base ViewItem).
      *  @param aDefaultDepth  Z-value of the object (0.1=back, 2=default)
      */
@@ -511,8 +500,7 @@ protected:
     /// the properties of the object instance
     PropertyList theProps;
 
-    /// pointer to a ViewObject that will draw this object
-    ViewObjectPtr theViewObjectPtr;
+    /// pointer to a ViewItem that will draw this object
     ViewItem* theViewItemPtr;
 
     typedef QList<b2FixtureDef *> ShapeList;

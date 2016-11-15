@@ -46,9 +46,9 @@ public:
     virtual void clearObjectReferences() override;
 
     /** (overridden from AbstractJoint to fixup aspect ratio and overlap)
-      * @returns pointer to AbstractObject
+      * @returns pointer to ViewItem
       */
-    ViewObjectPtr createViewObject(float aDefaultDepth = 2.0) override;
+    ViewItem* createViewItem(float aDefaultDepth = 2.0) override;
 
     /// overridden from AbstractObject
     /// (this class does not have a body, only a joint)

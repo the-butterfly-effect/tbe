@@ -62,9 +62,9 @@ public:
     virtual void clearObjectReferences() override;
 
     /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
-    ViewObjectPtr createViewObject(float) override
+    ViewItem* createViewItem(float) override
     {
-        return ViewObjectPtr(nullptr);
+        return nullptr;
     }
 
     /// overridden from AbstractObject

@@ -20,7 +20,6 @@
 #define SPRING_H
 
 #include "RectObject.h"
-#include "ViewObject.h"
 #include "World.h"
 
 #include <QStringList>
@@ -122,10 +121,10 @@ public:
     SpringEnd(Spring *aDBox, const Position &aPos, qreal aWidth, qreal aHeight);
     virtual ~SpringEnd();
 
-    /// overridden to allow setting a custom ZValue
-    ViewObjectPtr createViewObject(float) override
+    /// overridden to never return any object
+    ViewItem* createViewItem(float) override
     {
-        return ViewObjectPtr(nullptr);
+        return nullptr;
     }
 
     /// overridden from RectObject to allow for the special joints

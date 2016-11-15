@@ -19,7 +19,6 @@
 #include "Scenery.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "ViewObject.h"
 #include "Property.h"
 #include "ObjectFactory.h"
 

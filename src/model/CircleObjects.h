@@ -91,7 +91,7 @@ public:
     /// virtual destructor
     virtual ~CustomBall ( );
 
-    ViewObjectPtr createViewObject(float aDefaultDepth = 2.0) override;
+    ViewItem* createViewItem(float aDefaultDepth = 2.0) override;
 
     /// we need to parse the Radius - duh
     virtual void  parseProperties(void) override;

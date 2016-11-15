@@ -22,7 +22,6 @@
 #include "ObjectFactory.h"
 #include "Property.h"
 #include "ViewItem.h"
-#include "ViewObject.h"
 
 static const qreal FALLING_TIME   = 0.16; // seconds
 static const qreal PINGUS_RADIUS  = 0.14; // m

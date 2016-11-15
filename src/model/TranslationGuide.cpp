@@ -20,7 +20,6 @@
 #include "ObjectFactory.h"
 #include "tbe_global.h"
 #include "TranslationGuide.h"
-#include "ViewObject.h"
 #include "World.h"
 
 //// this class' ObjectFactory

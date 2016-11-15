@@ -18,7 +18,7 @@
 
 #include "AbstractObject.h"
 #include "EditObjectDialog.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 #include "ImageCache.h"
 #include "EditPropertyUndoCommand.h"
 #include "UndoSingleton.h"
@@ -130,7 +130,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 
     // If we get here, yes it changed.
     // Let's act on it!
-    ViewObjectPtr myVOPtr = getAORealPtr()->theViewObjectPtr;
+    ViewItem* myVIPtr = getAORealPtr()->theViewItemPtr;
     closeExistingUndos();
 //    PreventClose myLocalDoNotClose;
 //    EditPropertyUndoCommand *myUndoPtr =

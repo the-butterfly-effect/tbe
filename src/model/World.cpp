@@ -20,7 +20,7 @@
 #include "AbstractObject.h"
 #include "Goal.h"
 #include "resizinggraphicsview.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 #include "AbstractJoint.h"
 #include "Box2D.h"
 #include "Pingus.h"
@@ -131,25 +131,9 @@ bool World::addObject(AbstractObjectPtr anObjectPtr)
     anObjectPtr->parseProperties();
     anObjectPtr->registerChildObjects();
 
-    if (theViewWorldPtr != nullptr)
-        addAbstractObjectToViewWorld(anObjectPtr);
     // TODO/FIXME: no need for this call here - it will happen at createScene ?!?
     //addAbstractObjectToViewWorldItem(anObjectPtr);
     return true;
-}
-
-
-void World::addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr)
-{
-    assert(theViewWorldPtr != nullptr);
-    DEBUG5("World::addAbstractObjectToViewWorld(%p)", anAOPtr.get());
-    ViewObjectPtr myVOPtr = anAOPtr->createViewObject();
-    if (nullptr != myVOPtr) {
-        theViewWorldPtr->addItem(myVOPtr.data());
-        anAOPtr->updateViewObject(false);
-        connect(myVOPtr.data(), SIGNAL(updateEditObjectDialog(AbstractObjectPtr)),
-                theViewWorldPtr, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
-    }
 }
 
 
@@ -181,13 +165,13 @@ void World::createPhysicsWorld(void)
     // if theDrawDebug is true, we can ask Box2D to ask ViewWorld to draw
     // all shapes - useful for debugging new objects. But we have to register
     // the debug thingie first.
-    if (theDrawDebug) {
-        theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
-        const uint32 myDebugFlags = b2Draw::e_shapeBit |
-                                    b2Draw::e_jointBit |
-                                    b2Draw::e_centerOfMassBit;
-        theViewWorldPtr->AppendFlags(myDebugFlags);
-    }
+//    if (theDrawDebug) {
+//        theB2WorldPtr->SetDebugDraw(theViewWorldPtr);
+//        const uint32 myDebugFlags = b2Draw::e_shapeBit |
+//                                    b2Draw::e_jointBit |
+//                                    b2Draw::e_centerOfMassBit;
+//        theViewWorldPtr->AppendFlags(myDebugFlags);
+//    }
 
     // Define the ground body.
     b2BodyDef groundBodyDef;
@@ -236,7 +220,6 @@ ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
     AbstractObjectPtrList::iterator i;
     for (i = theObjectPtrList.begin(); i != theObjectPtrList.end(); ++i) {
         DEBUG5("adding item %p", (*i).get());
-        addAbstractObjectToViewWorld(*i);
         addAbstractObjectToViewWorldItem(*i);
     }
     return theViewWorldPtr;

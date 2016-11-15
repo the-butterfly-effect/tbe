@@ -19,9 +19,7 @@ SET(view_SOURCES
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
     view/ToolboxItemGroup.cpp
-    view/ViewObject.cpp
     view/ViewItem.cpp
-    view/ViewLink.cpp
     view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
     view/ViewWorldItem.cpp
@@ -47,9 +45,6 @@ SET(view_HEADERS
     view/SaveLevelInfo.h
     view/ToolboxItemGroup.h
     view/ViewItem.h
-    view/ViewLink.h
-    view/ViewObject.h
-    view/ViewObjectPtr.h
     view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
     view/ViewWorldItem.h

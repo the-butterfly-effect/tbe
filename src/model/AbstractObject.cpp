@@ -23,7 +23,6 @@
 #include "Translator.h"
 #include "TranslationGuide.h"
 #include "ViewItem.h"
-#include "ViewObject.h"
 #include "ViewWorldItem.h"
 #include "World.h"
 
@@ -51,7 +50,6 @@ AbstractObject::AbstractObject(const QString &aTooltip,
     : theB2BodyPtr(nullptr),
       theToolTip(aTooltip),
       hasCustomToolTip(false),
-      theViewObjectPtr(nullptr),
       theViewItemPtr(nullptr),
       theChildPivotPointPtr(nullptr),
       theChildTranslationGuidePtr(nullptr),
@@ -103,7 +101,7 @@ AbstractObject::~AbstractObject ( )
     delete theB2BodyDefPtr;
     theB2BodyDefPtr = nullptr;
 
-    deleteViewObject();
+    deleteViewItem();
 }
 
 void AbstractObject::causeWounded(AbstractObject::WhyWounded)
@@ -183,17 +181,6 @@ void AbstractObject::createPhysicsObject(const Position &aPosition)
 }
 
 
-ViewObjectPtr  AbstractObject::createViewObject(float aDefaultDepth)
-{
-    if (theViewObjectPtr != nullptr)
-        return theViewObjectPtr;
-    theViewObjectPtr = ViewObject::factoryMethod<ViewObject>(getThisPtr(), getImageName());
-
-    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
-    return theViewObjectPtr;
-}
-
-
 ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& aVOType, const QString& anImageName, const QString& extraOptions)
 {
     ViewWorldItem* myVWIPtr = ViewWorldItem::me();
@@ -219,21 +206,6 @@ ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& 
 }
 
 
-void AbstractObject::deleteViewItem()
-{
-    if (nullptr == theViewItemPtr)
-        return;
-    // TODO: debug once the old undo stuff is gone:
-    theViewItemPtr->setVisible(false);
-    theViewItemPtr=nullptr;
-//    ViewItem* myVIPtr = theViewItemPtr;
-//    theViewItemPtr = nullptr;
-//    myVIPtr->setParent(nullptr);
-//    myVIPtr->setParentItem(nullptr);
-//    myVIPtr->deleteLater();
-}
-
-
 void AbstractObject::deletePhysicsObject()
 {
     DEBUG5("AbstractObject::deletePhysicsObject() for %p %s", this, ASCII(getID()));
@@ -248,12 +220,19 @@ void AbstractObject::deletePhysicsObject()
     theJointList.clear();
 }
 
-void AbstractObject::deleteViewObject(void)
+
+void AbstractObject::deleteViewItem()
 {
-    DEBUG3ENTRY;
-    // clear the corresponding ViewObject
-    theViewObjectPtr.clear();
-    assert(theViewObjectPtr.data() == nullptr);
+    if (nullptr == theViewItemPtr)
+        return;
+    // TODO: debug once the old undo stuff is gone:
+    theViewItemPtr->setVisible(false);
+    theViewItemPtr=nullptr;
+//    ViewItem* myVIPtr = theViewItemPtr;
+//    theViewItemPtr = nullptr;
+//    myVIPtr->setParent(nullptr);
+//    myVIPtr->setParentItem(nullptr);
+//    myVIPtr->deleteLater();
 }
 
 
@@ -437,30 +416,19 @@ void AbstractObject::updateViewObject(bool isSimRunning) const
     if (theB2BodyPtr == nullptr) {
         if (!isSimRunning) {
             // No sim running: adjust object drawing using static position & dimensions
-            if (nullptr != theViewObjectPtr)
-                theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
             if (nullptr != theViewItemPtr)
                 theViewItemPtr->adjustObjectDrawingFromAO();
         }
-        if (nullptr != theViewObjectPtr) {
-            theViewObjectPtr->setNewImageIndex(getImageIndex());
         if (nullptr != theViewItemPtr)
             theViewItemPtr->setNewImageIndex(getImageIndex());
-        }
         return;
     }
 
     // Sim running: don't need to adjust objects that are static or asleep
     if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass() > 0.0001 || !isSimRunning) {
-        if (nullptr != theViewObjectPtr)
-            theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
-                                                  getTempHeight(),
-                                                  getTempCenter());
         if (nullptr != theViewItemPtr)
             theViewItemPtr->adjustObjectDrawingFromAO();
     }
-    if (nullptr != theViewObjectPtr)
-        theViewObjectPtr->setNewImageIndex(getImageIndex());
     if (nullptr != theViewItemPtr)
         theViewItemPtr->setNewImageIndex(getImageIndex());
 }

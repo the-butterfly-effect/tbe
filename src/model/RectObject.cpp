@@ -19,7 +19,6 @@
 #include "RectObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "ViewObject.h"
 #include "Property.h"
 
 static const char *DEFAULT_RECTOBJECT_NAME = "RectObject";
