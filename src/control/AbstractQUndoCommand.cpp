@@ -30,7 +30,8 @@ AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
     : QUndoCommand(parent),
       theHandlePtr(aHandlePtr),
       theAOPtr(anViewItemPtr->theAOPtr),
-      isObjectColliding(false)
+      isObjectColliding(false),
+      isInToolbox(false)
 {
     // This is the undo action, anUndoText is e.g. “Move %s” and
     // anAbstractObjectPtr->getName() is e.g. “Birch Bar”
