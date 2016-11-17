@@ -44,8 +44,10 @@ public:
     /// - if there is one. Technically, this is a factory method.
     /// If anUndoToUse is specified, it will use that one instead of creating one.
     Q_INVOKABLE void startNewUndo(const QString& aType,
-                                  QQuickItem* aHandlePtr,
-                                  QObject* anUndoToUse = nullptr);
+                                  QQuickItem* aHandlePtr);
+    /// Call this member from ToolboxDraggableIcon to add the (preexisting) undo to the
+    /// just created instance of this class.
+    Q_INVOKABLE void addUndo(QObject* anUndoToUse = nullptr);
 
     bool isBackInToolbox();
     bool isColliding();
@@ -66,6 +68,9 @@ private:
     /// Take the dimensions/position/angle from the object and pass to our undo.
     /// Then make it commit() itself to the stack (or not, if nothing changed?).
     void commitChanges();
+
+    /// Connect ourselves.
+    void hookup();
 
 private:
     ViewItem* theDecoratedPtr;

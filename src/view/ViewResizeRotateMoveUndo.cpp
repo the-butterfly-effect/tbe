@@ -48,12 +48,23 @@ QQuickItem *ViewResizeRotateMoveUndo::activeHandle()
 
 void ViewResizeRotateMoveUndo::commitChanges()
 {
+    DEBUG1ENTRY
     disconnect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
     if (theUndoPtr->isChanged())
         theUndoPtr->commit();
     else
         delete theUndoPtr;
     theUndoPtr = nullptr;
+}
+
+
+void ViewResizeRotateMoveUndo::hookup()
+{
+    connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
+    connect(theUndoPtr, SIGNAL(isBackInToolboxChanged()), this, SIGNAL(isBackInToolboxChanged()));
+    emit theActiveHandleChanged();
+    emit isCollidingChanged();
+    emit isBackInToolboxChanged();
 }
 
 
@@ -64,8 +75,7 @@ qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
 }
 
 void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType,
-                                            QQuickItem *aHandlePtr,
-                                            QObject* anUndoToUse)
+                                            QQuickItem *aHandlePtr)
 {
     DEBUG1ENTRY;
 
@@ -75,18 +85,19 @@ void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType,
         commitChanges();
         theUndoPtr = nullptr;
     }
-    if (nullptr != aHandlePtr || nullptr!=anUndoToUse)
-    {
-        if (anUndoToUse)
-            theUndoPtr = qobject_cast<AbstractQUndoCommand*>(anUndoToUse);
-        else
-            theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
-        connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
-        connect(theUndoPtr, SIGNAL(isBackInToolboxChanged()), this, SIGNAL(isBackInToolboxChanged()));
-        emit theActiveHandleChanged();
-        emit isCollidingChanged();
-        //emit isBackInToolboxChanged();
-    }
+    assert(nullptr != aHandlePtr);
+    theUndoPtr = UndoSingleton::createQUndoCommand(theDecoratedPtr, aHandlePtr, aType);
+    hookup();
+}
+
+void ViewResizeRotateMoveUndo::addUndo(QObject* anUndoToUse)
+{
+    DEBUG1ENTRY;
+
+    // do we need to take care of the previous undo first?
+    assert(nullptr==theUndoPtr);
+    theUndoPtr = qobject_cast<AbstractQUndoCommand*>(anUndoToUse);
+    hookup();
 }
 
 bool ViewResizeRotateMoveUndo::isBackInToolbox()
