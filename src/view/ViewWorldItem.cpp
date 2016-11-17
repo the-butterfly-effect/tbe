@@ -174,7 +174,8 @@ ViewWorldItem::~ViewWorldItem()
 
 ViewWorldItem *ViewWorldItem::me()
 {
-    assert(nullptr != theVWIPtr);
+    if (nullptr==theVWIPtr)
+        DEBUG1("Warning: returning nullptr ViewWorldItem*");
     return theVWIPtr;
 }
 

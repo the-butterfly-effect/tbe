@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
+#include "ViewWorldItem.h"
 #include "ViewResizeRotateMoveUndo.h"
 #include "ViewItem.h"
 #include "UndoSingleton.h"
@@ -31,6 +32,10 @@ ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
 
 ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
 {
+    // check if we're being deleted because the parent ends...
+    if (nullptr==ViewWorldItem::me())
+        return;
+    // if not, we're probably up for an undo commit...
     if (theUndoPtr) {
         DEBUG3("ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo(), but still unfinished undo present.");
         DEBUG3("  this is common: it likely didn't get completed yet.")

@@ -56,10 +56,12 @@ Rectangle {
             listView.interactive = false;
             var tlpos = draggableIcon.mapToItem(gameView, 0,0);
             startmousepos = {x:  mouse.x, y: mouse.y};
+            // createUndo() is in ToolboxItemGroup
             undoObject = createUndo(this,
                                     xwh2m(tlpos.x+startmousepos.x),
                                     y2m(tlpos.y+startmousepos.y));
             newItem = undoObject.getTheDecorated();
+            newItem.z = 9999;
             newItem.setupDecorator();
             selectedItem.addUndo(undoObject);
         }
