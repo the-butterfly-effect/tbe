@@ -31,7 +31,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         // TODO: take pre-set rotation into account
-        width:  (owidth/oheight > 1.0)? parent.width : parent.height/owidth*oheight;
+        width:  (owidth/oheight > 1.0)? parent.width : parent.height/oheight*owidth;
         height: (owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height;
         opacity: (gameView.isModifyAllowed)?1:0.4
         source: parent.source
