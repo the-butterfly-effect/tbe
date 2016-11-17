@@ -30,9 +30,10 @@ Rectangle {
     Image {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        // TODO: take pre-set rotation into account
-        width:  (owidth/oheight > 1.0)? parent.width : parent.height/oheight*owidth;
-        height: (owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height;
+        // Adjust width/height for aspect ratio, but use standard sizes if we show the 'empty' icon.
+        // TODO: take pre-set rotation into account.
+        width:  count > 0 ? ((owidth/oheight > 1.0)? parent.width : parent.height/oheight*owidth) : iconSize;
+        height: count > 0 ? ((owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height) : iconSize;
         opacity: (gameView.isModifyAllowed)?1:0.4
         source: parent.source
         sourceSize.width: width
