@@ -21,6 +21,7 @@ import QtQuick 2.5
 /// Use a ViewObject for the basics, as we only want to override the animation.
 /// I'm not using the QML Sprite type because it doesn't do what I want.
 ViewObject {
+    id: viewPingus
 
     /// Contains the row number.
     property int statenr : 0;
@@ -32,6 +33,11 @@ ViewObject {
         console.log("framenr = ", framenr);
     }
 
+    transform: Scale {
+        xScale: viewPingus.width/32.
+        yScale: xScale
+    }
+
     Item {
         clip: true
         height: 32
@@ -39,6 +45,8 @@ ViewObject {
         Image {
             height: 384
             source: img("pingus")
+            sourceSize.height: 384
+            sourceSize.width: 512
             width: 512
             x: framenr*-32
             y: statenr*-32
