@@ -476,7 +476,7 @@ void MainWindow::setupView()
     // set up the languages menu, so the user can switch languages
     QStringList myLanguageList = TheTranslator.getLanguageList();
     for (auto l : myLanguageList) {
-        InsertMenuQAction *myTempActionPtr = new InsertMenuQAction(l, nullptr);
+        InsertMenuQAction *myTempActionPtr = new InsertMenuQAction(l, this);
         connect(myTempActionPtr, SIGNAL(triggeredName(QString)), this, SLOT(on_switchLanguage(QString)));
         myTempActionPtr->setCheckable(true);
         theLanguagesGroup.addAction(myTempActionPtr);
