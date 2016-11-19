@@ -21,11 +21,11 @@ import QtQuick 2.0
 /// First shot at implementing a Tooltip, as Qt only starts providing one in 5.7.
 /// @param text   Custom provided text
 Rectangle {
-    id: toolTipBase;
+    id: toolTipBase
     property string text
 
     function show(isToShow) {
-        if (isToShow==true) {
+        if (isToShow===true && text!=="") {
             delay.start();
             var botright = mapToItem(gameView, x+width, y+height);
             if (botright.x > gameView.width) {
@@ -43,13 +43,6 @@ Rectangle {
         }
     }
 
-    Timer {
-        id: delay
-        interval: 500;
-        repeat: false
-        onTriggered: visible = true;
-    }
-
     anchors.top: parent.bottom
     anchors.left: parent.left
 
@@ -59,6 +52,7 @@ Rectangle {
     height: toolTipText.height + 10
     visible: false
     radius: 4
+    rotation: -parent.rotation
     z: 99999    // only makes this one the highest of the siblings of parent, not the top-most object
 
     Text {
@@ -71,4 +65,10 @@ Rectangle {
         wrapMode: Text.Wrap
     }
 
+    Timer {
+        id: delay
+        interval: 500;
+        repeat: false
+        onTriggered: visible = true;
+    }
 }
