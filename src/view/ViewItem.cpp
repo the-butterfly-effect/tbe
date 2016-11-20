@@ -48,6 +48,40 @@ ViewItem::adjustObjectDrawingFromAO()
     emit angleChanged();
 }
 
+bool ViewItem::isAnything()
+{
+    return isHResize() | isMovable() | isRotate() | isVResize();
+}
+
+bool ViewItem::isHResize()
+{
+    if (auto p = theAOPtr.lock())
+        return (p->isResizable()&AbstractObject::HORIZONTALRESIZE) > 0;
+    return false;
+}
+
+bool ViewItem::isMovable()
+{
+    if (auto p = theAOPtr.lock())
+        return p->isMovable();
+    return false;
+}
+
+bool ViewItem::isRotate()
+{
+    if (auto p = theAOPtr.lock())
+        return p->isRotatable();
+    return false;
+}
+
+bool ViewItem::isVResize()
+{
+    if (auto p = theAOPtr.lock())
+        return (p->isResizable()&AbstractObject::VERTICALRESIZE) > 0;
+    return false;
+}
+
+
 void ViewItem::setNewImageIndex(unsigned int anIndex)
 {
     theFrameNumber = anIndex;
