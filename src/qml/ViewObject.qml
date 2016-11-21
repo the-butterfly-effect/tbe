@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import TBEView 1.0
+import QtGraphicalEffects 1.0
 
 // The ViewItem is an object we own from C++, it contains all info we need.
 // We use an embedded Image (and in the future probably also a Text) to
@@ -100,6 +101,16 @@ ViewItem {
         source: "ViewObjectSubImage.qml"
     }
 
+    Colorize {
+        id: glow
+        anchors.fill: parent
+        hue: 0.6
+        lightness:  0.1
+        saturation: 0.5
+        source: theImage
+        visible: false
+    }
+
     MouseArea {
         anchors.fill: parent
         onPressed: setupDecorator();
@@ -108,8 +119,15 @@ ViewItem {
             smoothed: true
         }
         hoverEnabled: enabled
-        onEntered: mytooltip.show(true);
-        onExited: mytooltip.show(false);
+        onEntered: {
+            if (viewItem.isAnything)
+                glow.visible=true;
+            mytooltip.show(true);
+        }
+        onExited: {
+            glow.visible=false;
+            mytooltip.show(false);
+        }
     }
 
     Tooltip {
