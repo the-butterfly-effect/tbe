@@ -50,7 +50,7 @@ ViewItem::adjustObjectDrawingFromAO()
 
 bool ViewItem::isAnything()
 {
-    return isHResize() | isMovable() | isRotate() | isVResize();
+    return isHResize() | isMovable() | isPhone() | isRotate() | isVResize();
 }
 
 bool ViewItem::isHResize()
@@ -64,6 +64,13 @@ bool ViewItem::isMovable()
 {
     if (auto p = theAOPtr.lock())
         return p->isMovable();
+    return false;
+}
+
+bool ViewItem::isPhone()
+{
+//    if (auto p = theAOPtr.lock())
+//        return p->isPhoneNumberAdjustable();
     return false;
 }
 

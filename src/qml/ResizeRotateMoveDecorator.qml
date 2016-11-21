@@ -36,7 +36,7 @@ ViewResizeRotateMoveUndo {
         anchors.fill: parent;
         border {
             width: 1
-            color: "black"
+            color: isColliding ? "#transparent" : "black"
         }
         color: isColliding ? "#80FF5050" : "#8050FF50"
         visible: true
@@ -119,6 +119,19 @@ ViewResizeRotateMoveUndo {
 
         HandleReturnToToolbox {
             id: returnToToolbox
+        }
+
+        Image {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            source: img("ActionMove")
+
+            visible: theDecorated.isMovable === true && theDecorator.isBackInToolbox !== true;
+
+            width: ResizeInfo.handleWidth
+            height: ResizeInfo.handleHeight
+            sourceSize.width: width
+            sourceSize.height: height
         }
 
         // TODO: only enable the "delete" handle in Level Creator mode

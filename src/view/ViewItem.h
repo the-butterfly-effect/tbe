@@ -44,9 +44,12 @@ public:
     /// display the different images.
     Q_PROPERTY(int   frameNumber MEMBER theFrameNumber WRITE setNewImageIndex NOTIFY frameNumberChanged)
 
-    Q_PROPERTY(bool isHResize READ isHResize NOTIFY isHResizeChanged)
-    Q_PROPERTY(bool isRotate READ isRotate NOTIFY isRotateChanged)
-    Q_PROPERTY(bool isVResize READ isVResize NOTIFY isVResizeChanged)
+    Q_PROPERTY(bool isAnything READ isAnything NOTIFY isAnythingChanged)
+    Q_PROPERTY(bool isHResize  READ isHResize  NOTIFY isHResizeChanged)
+    Q_PROPERTY(bool isMovable  READ isMovable  NOTIFY isMovableChanged)
+    Q_PROPERTY(bool isPhone    READ isPhone    NOTIFY isPhoneChanged)
+    Q_PROPERTY(bool isRotate   READ isRotate   NOTIFY isRotateChanged)
+    Q_PROPERTY(bool isVResize  READ isVResize  NOTIFY isVResizeChanged)
 
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
@@ -57,12 +60,12 @@ public:
     QString imageName()
     { return theImageName; }
 
-    /// @returns true if anything (movable/hresize/vresize/rotate) is true
-    bool isAnything();
-    bool isMovable();
-    bool isHResize();
-    bool isRotate();
-    bool isVResize();
+    bool isAnything();      /// @returns true if anything (movable/hresize/phone/rotate/vresize) is true
+    bool isMovable();       /// @returns true if player can move object around
+    bool isHResize();       /// @returns true if player can resize object horizontally
+    bool isPhone();         /// @returns true if player can set a phone number on the object (DetonatorBox)
+    bool isRotate();        /// @returns true if player can rotate object
+    bool isVResize();       /// @returns true if player can resize object vertically
 
     /// Called by objects to adjust their image index.
     /// (this is used for animations based on state changes)
@@ -75,7 +78,10 @@ signals:
     void angleChanged();
     void frameNumberChanged();
 
+    void isAnythingChanged();
     void isHResizeChanged();
+    void isMovableChanged();
+    void isPhoneChanged();
     void isRotateChanged();
     void isVResizeChanged();
 
