@@ -40,7 +40,7 @@ ViewItem {
     }
 
     function setupDecorator() {
-        if(!gameView.isModifyAllowed)
+        if(!gameView.isModifyAllowed || !viewItem.isAnything)
             return;
         if(selectedItem)
             if (selectedItem.theDecorated != viewItem) {
