@@ -12,6 +12,7 @@ install(FILES
 	icons/ActionMenuPause.svg
 	icons/ActionMenuPlay.svg
 	icons/ActionMenuStop.svg
+	icons/ActionMove.svg
 	icons/ActionResizeRotate.svg
 	icons/ActionResize.svg
 	icons/ActionResizeHori.svg
