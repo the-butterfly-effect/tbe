@@ -41,7 +41,7 @@ ViewItem {
 
     function setupDecorator() {
         if(!gameView.isModifyAllowed || !viewItem.isAnything)
-            return;
+            return false;
         if(selectedItem)
             if (selectedItem.theDecorated != viewItem) {
                 selectedItem.destroy();
@@ -65,6 +65,7 @@ ViewItem {
             else
                 console.log("Error creating component: '" + component.errorString() + "'");
         }
+        return true;
     }
 
 
@@ -124,7 +125,9 @@ ViewItem {
 
     MouseArea {
         anchors.fill: parent
-        onPressed: setupDecorator();
+        onPressed: {
+            mouse.accepted = setupDecorator();
+        }
         drag{
             target: viewItem
             smoothed: true
