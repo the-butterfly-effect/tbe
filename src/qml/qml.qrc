@@ -4,6 +4,7 @@
 	<file>ChoosePhoneNumberDialog.qml</file>
 	<file>GameControls.qml</file>
 	<file>GameControlsSubImage.qml</file>
+        <file>HandleChoosePhoneNumber.qml</file>
         <file>HandleDelete.qml</file>
         <file>HandleResizeHorizontal.qml</file>
         <file>HandleResizeVertical.qml</file>

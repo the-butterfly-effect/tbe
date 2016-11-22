@@ -58,6 +58,8 @@ AbstractQUndoCommand *UndoSingleton::createQUndoCommand(ViewItem *aViewItemPtr, 
     // TODO: factory for all types (duh)
     if (anUndoType == "HandleDelete")
         return new DeleteQUndoCommand(aViewItemPtr);
+    if (anUndoType == "HandleDelete")
+        return new DeleteQUndoCommand(aViewItemPtr);
     if (anUndoType == "HandleResize")
         return new ResizeQUndoCommand(aViewItemPtr, aHandlePtr);
     if (anUndoType == "HandleRotate")

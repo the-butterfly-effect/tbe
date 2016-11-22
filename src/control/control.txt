@@ -10,6 +10,7 @@ SET(control_SOURCES
     control/ResizeQUndoCommand.cpp
     control/ReturnToToolboxQUndoCommand.cpp
     control/RotateQUndoCommand.cpp
+    control/SetPhoneQUndoCommand.cpp
     control/Toolbox.cpp
     control/ToolboxGroup.cpp
     control/UndoSingleton.cpp
@@ -24,6 +25,7 @@ SET(control_HEADERS
     control/ResizeQUndoCommand.h
     control/ReturnToToolboxQUndoCommand.h
     control/RotateQUndoCommand.h
+    control/SetPhoneQUndoCommand.h
     control/Toolbox.h
     control/ToolboxGroup.h
     control/UndoSingleton.h

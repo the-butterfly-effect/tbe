@@ -121,6 +121,10 @@ ViewResizeRotateMoveUndo {
             id: returnToToolbox
         }
 
+        HandleChoosePhoneNumber {
+            id: setPhoneNumber
+        }
+
         Image {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
