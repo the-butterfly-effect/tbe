@@ -356,6 +356,9 @@ public:
     /// @returns true if the object can be moved by the user
     virtual bool isMovable ( ) const;
 
+    virtual bool isPhoneNumberAdjustable () const
+    { return false; }
+
     /// @returns Whether the object can be resized by the user.
     /// @note This member is not const as overrides may choose to adjust
     ///       internal state (none do currently).

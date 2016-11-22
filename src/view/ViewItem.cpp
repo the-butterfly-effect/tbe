@@ -46,6 +46,7 @@ ViewItem::adjustObjectDrawingFromAO()
 
     emit sizeChanged();
     emit angleChanged();
+    emit isAnythingChanged();
 }
 
 bool ViewItem::isAnything()
@@ -69,8 +70,8 @@ bool ViewItem::isMovable()
 
 bool ViewItem::isPhone()
 {
-//    if (auto p = theAOPtr.lock())
-//        return p->isPhoneNumberAdjustable();
+    if (auto p = theAOPtr.lock())
+        return p->isPhoneNumberAdjustable();
     return false;
 }
 

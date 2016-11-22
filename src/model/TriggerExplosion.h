@@ -114,6 +114,9 @@ public:
     /// overridden from AbstractObject to allow for the handle
     virtual void deletePhysicsObject(void) override;
 
+    bool isPhoneNumberAdjustable () const override
+    { return true; }
+
     /// @returns List of all Dynamite phone numbers in scene, no duplicates.
     /// @note Always adds an empty string at the end, to allow deselection.
     QStringList getAllPhoneNumbers(void);

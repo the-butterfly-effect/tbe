@@ -101,6 +101,7 @@ ViewItem {
         source: "ViewObjectSubImage.qml"
     }
 
+    // Highlight on hover for all user modifyable objects.
     Colorize {
         id: glow
         anchors.fill: parent
@@ -118,7 +119,7 @@ ViewItem {
             target: viewItem
             smoothed: true
         }
-        hoverEnabled: enabled
+        hoverEnabled: viewItem.tooltip!=="" || (viewItem.isAnything && gameView.isModifyAllowed)
         onEntered: {
             if (viewItem.isAnything)
                 glow.visible=true;

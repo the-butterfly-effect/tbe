@@ -45,11 +45,11 @@ public:
     Q_PROPERTY(int   frameNumber MEMBER theFrameNumber WRITE setNewImageIndex NOTIFY frameNumberChanged)
 
     Q_PROPERTY(bool isAnything READ isAnything NOTIFY isAnythingChanged)
-    Q_PROPERTY(bool isHResize  READ isHResize  NOTIFY isHResizeChanged)
-    Q_PROPERTY(bool isMovable  READ isMovable  NOTIFY isMovableChanged)
-    Q_PROPERTY(bool isPhone    READ isPhone    NOTIFY isPhoneChanged)
-    Q_PROPERTY(bool isRotate   READ isRotate   NOTIFY isRotateChanged)
-    Q_PROPERTY(bool isVResize  READ isVResize  NOTIFY isVResizeChanged)
+    Q_PROPERTY(bool isHResize  READ isHResize  NOTIFY isAnythingChanged)
+    Q_PROPERTY(bool isMovable  READ isMovable  NOTIFY isAnythingChanged)
+    Q_PROPERTY(bool isPhone    READ isPhone    NOTIFY isAnythingChanged)
+    Q_PROPERTY(bool isRotate   READ isRotate   NOTIFY isAnythingChanged)
+    Q_PROPERTY(bool isVResize  READ isVResize  NOTIFY isAnythingChanged)
 
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
@@ -79,11 +79,6 @@ signals:
     void frameNumberChanged();
 
     void isAnythingChanged();
-    void isHResizeChanged();
-    void isMovableChanged();
-    void isPhoneChanged();
-    void isRotateChanged();
-    void isVResizeChanged();
 
 public slots:
 

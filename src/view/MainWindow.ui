@@ -34,8 +34,8 @@ QToolButton:pressed {
      <widget class="ResizingGraphicsView" name="graphicsView" native="true">
       <property name="maximumSize">
        <size>
-        <width>200</width>
-        <height>200</height>
+        <width>1</width>
+        <height>1</height>
        </size>
       </property>
       <property name="lineWidth" stdset="0">
