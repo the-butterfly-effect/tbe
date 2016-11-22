@@ -101,6 +101,16 @@ ViewItem {
         source: "ViewObjectSubImage.qml"
     }
 
+    // Put a permanent halo around all user modifyable objects.
+    Glow {
+        anchors.fill: parent
+        color: "white"
+        radius: 8
+        samples: 13
+        source: theImage
+        visible: viewItem.isAnything //&& gameView.isModifyAllowed
+    }
+
     // Highlight on hover for all user modifyable objects.
     Colorize {
         id: glow
