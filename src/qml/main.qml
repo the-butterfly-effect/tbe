@@ -45,7 +45,11 @@ RowLayout {
         return gameView.height - ResizeInfo.pixPerMeter * aYInM;
     }
 
-    ViewWorld {
+    Item {
+        Layout.fillWidth: true
+    }
+
+   ViewWorld {
         id: gameView
 
         clip: true
@@ -60,9 +64,11 @@ RowLayout {
             }
         }
 
-        Layout.fillWidth: true
-        Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-        Layout.preferredHeight: width / ResizeInfo.aspectRatio
+        Layout.fillWidth: ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio)
+        Layout.fillHeight: !((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio)
+        Layout.alignment: Qt.AlignTop | Qt.AlignRight
+        Layout.preferredWidth:  ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio) ? 100 : window.height * ResizeInfo.aspectRatio
+        Layout.preferredHeight: ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio) ? width / ResizeInfo.aspectRatio : 100
 
         MouseArea {
             anchors.fill: parent
@@ -81,6 +87,8 @@ RowLayout {
 
     ColumnLayout {
         z: 2
+
+        Layout.minimumWidth: toolbox.width
 
         Rectangle {
             id: toolbox
