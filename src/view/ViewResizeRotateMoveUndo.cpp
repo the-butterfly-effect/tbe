@@ -51,6 +51,16 @@ QQuickItem *ViewResizeRotateMoveUndo::activeHandle()
     return theUndoPtr->theHandlePtr;
 }
 
+void ViewResizeRotateMoveUndo::addUndo(QObject* anUndoToUse)
+{
+    DEBUG1ENTRY;
+
+    // do we need to take care of the previous undo first?
+    assert(nullptr==theUndoPtr);
+    theUndoPtr = qobject_cast<AbstractQUndoCommand*>(anUndoToUse);
+    hookup();
+}
+
 void ViewResizeRotateMoveUndo::commitChanges()
 {
     DEBUG1ENTRY
@@ -73,10 +83,18 @@ void ViewResizeRotateMoveUndo::hookup()
 }
 
 
-qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
+bool ViewResizeRotateMoveUndo::isBackInToolbox()
 {
-    Vector myVector(dx, dy);
-    return myVector.toAngle()* 180/PI;
+    if (theUndoPtr)
+        return theUndoPtr->isBackInToolbox();
+    return false;
+}
+
+bool ViewResizeRotateMoveUndo::isColliding()
+{
+    if (theUndoPtr)
+        return theUndoPtr->isColliding();
+    return true;
 }
 
 void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType,
@@ -95,28 +113,8 @@ void ViewResizeRotateMoveUndo::startNewUndo(const QString& aType,
     hookup();
 }
 
-void ViewResizeRotateMoveUndo::addUndo(QObject* anUndoToUse)
+qreal ViewResizeRotateMoveUndo::vector2AngleDegrees(qreal dx, qreal dy)
 {
-    DEBUG1ENTRY;
-
-    // do we need to take care of the previous undo first?
-    assert(nullptr==theUndoPtr);
-    theUndoPtr = qobject_cast<AbstractQUndoCommand*>(anUndoToUse);
-    hookup();
-}
-
-bool ViewResizeRotateMoveUndo::isBackInToolbox()
-{
-    DEBUG1ENTRY;
-    if (theUndoPtr)
-        return theUndoPtr->isBackInToolbox();
-    return false;
-}
-
-bool ViewResizeRotateMoveUndo::isColliding()
-{
-    DEBUG1ENTRY;
-    if (theUndoPtr)
-        return theUndoPtr->isColliding();
-    return true;
+    Vector myVector(dx, dy);
+    return myVector.toAngle()* 180/PI;
 }
