@@ -31,7 +31,13 @@ static UndoSingleton *theUndoSingletonPtr = nullptr;
 
 UndoSingleton::UndoSingleton(void)
 {
-    // nothing to do
+    DEBUG1ENTRY;
+    assert(nullptr==theUndoSingletonPtr);
+}
+
+UndoSingleton::~UndoSingleton()
+{
+    DEBUG1ENTRY;
 }
 
 
