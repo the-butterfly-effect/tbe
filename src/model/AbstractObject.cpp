@@ -341,12 +341,12 @@ void AbstractObject::parseProperties(void)
     }
 
     // Child Translation Guid
-    if (theChildTranslationGuidePtr) {
+    if (theChildTranslationGuidePtr && theWorldPtr) {
         theWorldPtr->removeObject(theChildTranslationGuidePtr);
         theChildTranslationGuidePtr = nullptr;
     }
     float myAngle;
-    if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle)) {
+    if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle) && theWorldPtr) {
         theChildTranslationGuidePtr = ObjectFactory::createChildObject<TranslationGuide>(getThisPtr(),
                                                                                          myAngle);
         theChildTranslationGuidePtr->markAsChild();
@@ -358,11 +358,13 @@ void AbstractObject::parseProperties(void)
     theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
     QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
     QStringList::iterator myI = myObjIDList.begin();
-    while (myI != myObjIDList.end()) {
-        QList<AbstractObjectPtr> myObjPtrs = theWorldPtr->findObjectsByID(*myI);
-        for (auto i : myObjPtrs)
-            theWorldPtr->addNoCollisionCombo(getThisPtr(), i);
-        ++myI;
+    if (theWorldPtr) {
+        while (myI != myObjIDList.end()) {
+            QList<AbstractObjectPtr> myObjPtrs = theWorldPtr->findObjectsByID(*myI);
+            for (auto i : myObjPtrs)
+                theWorldPtr->addNoCollisionCombo(getThisPtr(), i);
+            ++myI;
+        }
     }
 
     // force parsing of resize info

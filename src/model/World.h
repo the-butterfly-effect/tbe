@@ -26,11 +26,13 @@
 //#include "BaseJoint.h"
 #include "Background.h"
 
+#include <QObject>
 #include <QString>
 #include <QList>
 #include <QSet>
 
 #include <unordered_map>
+#include <vector>
 
 // Forward Definitions:
 class Goal;

@@ -53,11 +53,11 @@ GoalSerializer::createObjectFromDom(const QDomNode &q)
     Goal *myGPtr = nullptr;
     if (myObjectType == "distance")
         myGPtr = new GoalDistance();
-    if (myObjectType == "positionchange")
+    else if (myObjectType == "positionchange")
         myGPtr = new GoalPositionChange();
-    if (myObjectType == "statechange")
+    else if (myObjectType == "statechange")
         myGPtr = new GoalStateChange();
-    if (myObjectType == "escapedPingusCount")
+    else if (myObjectType == "escapedPingusCount")
         myGPtr = new GoalEscapedPingusCounter();
 
     if (myGPtr == nullptr) {
@@ -157,7 +157,7 @@ Goal *GoalSerializer::createObjectFromString(World *aWorldPtr, const QString &aS
         break;
     }
 
-    if (myGoal->parseProperties(aWorldPtr) == true)
+    if (myGoal && (myGoal->parseProperties(aWorldPtr) == true))
         return myGoal;
     delete myGoal;
     return nullptr;
