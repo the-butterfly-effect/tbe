@@ -43,13 +43,13 @@ ViewItem {
         if(!gameView.isModifyAllowed || !viewItem.isAnything)
             return false;
         if(selectedItem)
-            if (selectedItem.theDecorated != viewItem) {
+            if (selectedItem.theDecorated !== viewItem) {
                 selectedItem.destroy();
                 selectedItem = undefined
             }
         if(!selectedItem) {
             var component = Qt.createComponent("ResizeRotateMoveDecorator.qml");
-            if (component.status == Component.Ready) {
+            if (component.status === Component.Ready) {
                 selectedItem = component.createObject(gameView, {
                                                        "theDecorated": viewItem,
                                                        "oldWidth": viewItem.width,

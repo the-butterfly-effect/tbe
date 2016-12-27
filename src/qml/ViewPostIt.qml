@@ -29,7 +29,7 @@ ViewObject {
     property var pages
 
     /// Private property containing the current page to view.
-    property var pageNumber: 0
+    property int pageNumber: 0
 
     function cleanup() {
         postit.state = "";
