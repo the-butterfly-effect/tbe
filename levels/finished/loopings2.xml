@@ -1,0 +1,84 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Loopings</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Push the bowling pin into the goal.</description>
+        <date>5/26/11</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object height="0.36" width="0.27" type="Balloon" angle="0" X="0" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Birch Block">
+            <object height="0.2" width="0.28" type="BirchBar" angle="0" X="0" Y="0">
+                <property key="Mass">0.2</property>
+                <tooltip>A small movable block out of birch wood,&lt;br&gt;it’s a bit lighter than a regular birch wood beam.</tooltip>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object height="0.75" width="0.75" type="QuarterArc80" angle="0" X="0" Y="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="3.2" width="4.4"/>
+        <predefined>
+            <object height="0.5" width="0.17" type="ColaMintBottle" angle="1.57" X="0.37" Y="0.39">
+                <property key="Thrust">5</property>
+            </object>
+            <object height="0.8" width="1.09684" type="QuarterArc80" angle="-1.571" X="1.31603" Y="0.551421"/>
+            <object height="0.4" width="0.4" type="QuarterArc40" angle="1.57" X="1.54" Y="1.6"/>
+            <object height="0.1" width="0.92" type="Floor" angle="0" X="0.483019" Y="0.0955975"/>
+            <object height="0.8" width="0.8" type="QuarterArc80" angle="-1.571" X="2.603" Y="0.4"/>
+            <object height="0.1" width="0.205" type="Floor" angle="1.571" X="2.956" Y="0.898"/>
+            <object height="0.5" width="0.17" type="ColaMintBottle" angle="3.142" X="2.058" Y="0.26">
+                <property key="Thrust">4</property>
+            </object>
+            <object height="0.1" width="1.38448" type="Floor" angle="1.571" X="1.91498" Y="0.69924"/>
+            <object height="0.1" width="0.993" type="Floor" angle="1.571" X="2.205" Y="0.895"/>
+            <object height="0.1" width="1.492" type="Floor" angle="0" X="0.746" Y="2.15"/>
+            <object height="0.4" width="0.4" type="QuarterArc40" angle="0" X="1.7" Y="2"/>
+            <object height="0.34" ID="kegel" width="0.12" type="BowlingPin" angle="0" X="3.868" Y="0.302"/>
+            <object height="0.4" width="0.4" type="QuarterArc40" angle="0" X="2.4" Y="1.2"/>
+            <object height="0.4" width="0.4" type="QuarterArc40" angle="-1.57" X="2.4" Y="0.6"/>
+            <object height="0.793" width="0.469" type="Goal" angle="0" X="4.161" Y="0.404"/>
+            <object height="0.1" width="0.233" type="Floor" angle="1.571" X="2.545" Y="0.895"/>
+            <object height="0.1" width="0.159" type="Floor" angle="0" X="1.819" Y="1.754"/>
+            <object height="0.09" width="0.5" type="RotatingBar" angle="1.986" X="3.631" Y="0.495"/>
+            <object height="0.1" ID="BrassPin" width="0.1" type="Scenery" angle="0" X="3.631" Y="0.495">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object height="0.1" width="1.834" type="Floor" angle="0" X="3.078" Y="0.057"/>
+            <object height="0.1" width="1.783" type="Floor" angle="1.571" X="3.766" Y="1.471"/>
+            <object height="0.1" width="1.46743" type="Floor" angle="1.571" X="3.43601" Y="1.47272"/>
+            <object height="0.1" width="0.124528" type="Floor" angle="0" X="0.352264" Y="2.65"/>
+            <object height="0.1" width="2.70044" type="Floor" angle="-0.035" X="1.73997" Y="2.60452"/>
+            <object height="0.351969" width="0.4" type="QuarterArc40" angle="1.571" X="1.79248" Y="1.262"/>
+            <object height="0.4" width="0.4" type="QuarterArc40" angle="0" X="3.28" Y="2.4"/>
+            <object height="0.22" width="0.22" type="SoccerBall" angle="0" X="0.31" Y="2.85"/>
+            <object height="0.28" width="0.28" type="LeftWedge" angle="-3.14" X="0.14" Y="2.341">
+                <property key="Mass">0.2</property>
+                <property key="TranslationGuide">1.57</property>
+            </object>
+            <object height="0.1" width="0.44" type="Floor" angle="0" X="3.21" Y="0.95"/>
+            <object height="0.1" width="1" type="Floor" angle="0" X="0.5" Y="3.15"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">kegel</property>
+            <property key="xover">3.9</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" object="QuarterArc80" X="1.90" Y="2.18"/>
+        <hint number="2" object="QuarterArc80" X="2.60" Y="1.38"/>
+        <hint number="3" object="BirchBar" X="0.142" Y="2.626"/>
+    </hints>
+</tbe-level>

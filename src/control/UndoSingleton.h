@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011 Klaas van Gend
+ * This file copyright (C) 2011,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,59 +20,58 @@
 #define UNDOSINGLETON_H
 
 #include "AbstractObject.h"
-#include "PieMenu.h"
 
 #include <QUndoCommand>
 
 // forward declarations
 class QUndoStack;
-class AbstractUndoCommand;
+class AbstractQUndoCommand;
+class QQuickItem;
 
 class UndoSingleton
 {
 public:
-	/// Factory method for AbstractUndoCommands
-	/// @param anObject
-	/// @param anUndoType
-	/// @returns Pointer to a newly created AbstractUndoCommand.
-	/// @note The newly created command is not put on the stack yet.
-	///       If you want it to, call commit() on the Command.
-	///       The object is now owned by the ViewObject anObject.
-	static AbstractUndoCommand* createUndoCommand(ViewObject* anObject,
-										ActionIcon::ActionType anUndoType);
+    /// Factory method for AbstractUndoCommands
+    /// @param anObject
+    /// @param anUndoType
+    /// @returns Pointer to a newly created AbstractUndoCommand.
+    /// @note The newly created command is not put on the stack yet.
+    ///       If you want it to, call commit() on the Command.
+    ///       The object is now owned by the ViewObject anObject.
+    static AbstractQUndoCommand *createQUndoCommand(ViewItem* aViewItemPtr,
+                                                    QQuickItem* aHandlePtr,
+                                                    const QString& anUndoType);
 
-	/// Clean up the stack (i.e. start a new level)
-	/// this removes all UndoObjects from the stack
-	static void clear();
+    /// Clean up the stack (i.e. start a new level)
+    /// this removes all UndoObjects from the stack
+    static void clear();
 
-	/// Push the UndoCommand on to the UndoStack and delist it from the
-	/// currently active undo commands.
-	static void push(AbstractUndoCommand* anAUCPtr);
+    /// @returns true if the undo stack is in a clean state, i.e. there are
+    ///          no changes since the last save.
+    static bool isClean();
 
-	/// This is a notification that the UndoCommand is deleted and
-	/// no longer exists - delist it from the
-	/// currently active undo commands.
-	static void notifyGone(AbstractUndoCommand* anAUCPtr);
+    /// Push the UndoCommand on to the UndoStack and delist it from the
+    /// currently active undo commands.
+    static void push(QUndoCommand *anUndoPtr);
 
-	static QAction * createRedoAction ( QObject* parent, const QString & prefix = QString() );
-	static QAction * createUndoAction ( QObject* parent, const QString & prefix = QString() );
+    static QAction *createRedoAction ( QObject *parent, const QString &prefix = QString() );
+    static QAction *createUndoAction ( QObject *parent, const QString &prefix = QString() );
 
 public slots:
-	static void setClean();
+    static void setClean();
 
 private:
-	/// private constructor - this is a singleton class!
-	explicit UndoSingleton(void);
+    /// private constructor - this is a singleton class!
+    explicit UndoSingleton(void);
+    ~UndoSingleton();
 
-	/// @returns pointer to the existing singleton.
-	static UndoSingleton* me(void);
+    /// @returns pointer to the existing singleton.
+    static UndoSingleton *me(void);
 
-	// no copy constructor or assignment operators here!
-	Q_DISABLE_COPY ( UndoSingleton )
+    // no copy constructor or assignment operators here!
+    Q_DISABLE_COPY ( UndoSingleton )
 
-	QUndoStack theUndoStack;
-
-	friend class UndoObject;
+    QUndoStack theUndoStack;
 };
 
 #endif // UNDOSINGLETON_H

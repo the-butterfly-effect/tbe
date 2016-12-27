@@ -31,15 +31,15 @@ int theVerbosity = 4;
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
+    QApplication a(argc, argv);
 
-	ChooseLevel myMain(nullptr, true, "./", "levels.xml");
+    ChooseLevel myMain(nullptr, true, "./", "levels.xml");
 
-	return 0;
+    return 0;
 }
 
 
-const char* ASCII(const QString& aQString)
+const char *ASCII(const QString &aQString)
 {
-		return aQString.toAscii().constData();
+    return aQString.toAscii().constData();
 }

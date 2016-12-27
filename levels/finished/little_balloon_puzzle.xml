@@ -1,0 +1,55 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Little Balloon Puzzle</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Pop the balloon.</description>
+        <date>02.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object X="1.85174" width="0.166" Y="2.98355" height="0.5" type="ColaMintBottle" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object X="0" width="1" Y="0" height="0.1" type="Floor" angle="0">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object X="0" width="0.8" Y="0" height="0.8" type="LeftRamp" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="0" width="0.8" Y="0" height="0.8" type="RightRamp" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object X="0" width="0.21" Y="0" height="0.21" type="VolleyBall" angle="0"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="6.06289" width="0.2" Y="2.10302" height="1" type="Wall" angle="0">
+                <property key="Resizable">vertical</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3.5" height="2.8"/>
+        <predefined>
+            <object X="1.97611" width="0.27" Y="0.99476" height="0.36" type="Balloon" ID="balloon" angle="0">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object X="1.88371" width="0.8" Y="1.29394" height="0.15" type="BedOfNails" angle="0"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">1;0.992157;0.8;1</gradientstop>
+            <gradientstop pos="1">0.894118;0.894118;0.494118;1</gradientstop>
+            <gradientstop pos="2">0.494118;0.494118;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="statechange">
+            <property key="object">balloon</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

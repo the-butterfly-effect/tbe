@@ -20,8 +20,10 @@
 #include "AbstractObjectSerializer.h"
 #include "Box2D.h"
 #include "PivotPoint.h"
+#include "Translator.h"
 #include "TranslationGuide.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
+#include "ViewWorldItem.h"
 #include "World.h"
 
 #include <QStringList>
@@ -31,131 +33,182 @@
 const float AbstractObject::MINIMUM_DIMENSION = 0.03;
 
 // Static variables
-static b2World* theStaticB2WorldPtr = nullptr;
+static b2World *theStaticB2WorldPtr = nullptr;
+
 
 
 AbstractObject::AbstractObject()
+    : AbstractObject("", "", 1.0, 1.0, 0.0, 0.5, "")
+{
+    DEBUG5("AbstractObject::AbstractObject() for %p", this);
+}
+
+AbstractObject::AbstractObject(const QString &aTooltip,
+                               const QString &aImageName,
+                               qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+                               const QString &aPropertiesText)
     : theB2BodyPtr(nullptr),
-      theViewObjectPtr(nullptr),
+      theToolTip(aTooltip),
+      hasCustomToolTip(false),
+      theViewItemPtr(nullptr),
       theChildPivotPointPtr(nullptr),
       theChildTranslationGuidePtr(nullptr),
-      theBounciness(0.5),
-      theHeight(1.0),
+      theBounciness(aBounciness),
+      theHeight(aHeight),
       theIsMovable(false),
-      theWidth(1.0),
+      theWidth(aWidth),
       theWorldPtr(nullptr)
 {
+    DEBUG5("AbstractObject::AbstractObject(...) for %p '%s'", this, ASCII(aImageName));
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;
-	theB2BodyDefPtr= new b2BodyDef();
+    theB2BodyDefPtr = new b2BodyDef();
 
-	theProps.setDefaultPropertiesString(
-		Property::IMAGE_NAME_STRING + QString(":/") +
-		Property::MASS_STRING + QString(":/") +
-		Property::BOUNCINESS_STRING + QString(":0.3/") +
-		Property::NOCOLLISION_STRING+ QString(":/") +
-		Property::PIVOTPOINT_STRING + QString(":/") +
-		Property::ROTATABLE_STRING + QString(":false/") +
-		Property::TRANSLATIONGUIDE_STRING + QString(":/") +
-		Property::ZVALUE_STRING + QString(":2.0/") );
+    theProps.setDefaultPropertiesString(
+        Property::IMAGE_NAME_STRING + QString(":%1/").arg(aImageName) +
+        Property::BOUNCINESS_STRING + QString(":%1/").arg(theBounciness) +
+        Property::FRICTION_STRING + QString(":/") +
+        Property::NOCOLLISION_STRING + QString(":/") +
+        Property::ROTATABLE_STRING + QString(":false/") +
+        Property::RESIZABLE_STRING + QString(":none/") +
+        Property::ZVALUE_STRING + QString(":2.0/") );
+
+    if (aMass > 0.001)
+        theProps.setDefaultPropertiesString(
+            QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)) +
+            QString("%1:/").arg(Property::PIVOTPOINT_STRING) +
+            QString("%1:/").arg(Property::TRANSLATIONGUIDE_STRING));
+    else {
+        theProps.removeProperty(Property::MASS_STRING);
+        theProps.removeProperty(Property::PIVOTPOINT_STRING);
+        theProps.removeProperty(Property::TRANSLATIONGUIDE_STRING);
+    }
+
+    // and overrule the default props set above if needed...
+    theProps.setDefaultPropertiesString(aPropertiesText);
 }
 
 AbstractObject::~AbstractObject ( )
 {
-	DEBUG5("AbstractObject::~AbstractObject() for %p '%s'", this, ASCII(getID()));
+    DEBUG5("AbstractObject::~AbstractObject() for %p '%s'", this, ASCII(getID()));
 
-	// destroy the Body
-	//
-	deletePhysicsObject();
+    // destroy the ShapeDefs
+    //
+    clearShapeList();
 
-	// destroy the ShapeDefs
-	//
-	clearShapeList();
+    // destroy the BodyDef
+    //
+    delete theB2BodyDefPtr;
+    theB2BodyDefPtr = nullptr;
 
-	// destroy the BodyDef
-	//
-	delete theB2BodyDefPtr;
-	theB2BodyDefPtr=nullptr;
+    deleteViewItem();
+}
 
-	deleteViewObject();
+void AbstractObject::causeWounded(AbstractObject::WhyWounded)
+{
+    // nothing to do, 'normal' objects cannot 'die'
+}
+
+void AbstractObject::clearObjectReferences()
+{
+    // destroy the Body, if still necessary
+    //
+    deletePhysicsObject();
+
+    // destroy the references to the joints
+    DEBUG3("  deleting %lu joints...", theJointList.size());
+    theJointList.clear();
+    theChildPivotPointPtr = nullptr;
+    theChildTranslationGuidePtr = nullptr;
 }
 
 
 void AbstractObject::clearShapeList()
 {
-	while(theShapeList.isEmpty()==false)
-	{
-		b2FixtureDef* myFixtureDefPtr = theShapeList.first();
-		if (myFixtureDefPtr!=nullptr)
-		{
-			const b2Shape* myShapePtr = myFixtureDefPtr->shape;
-			delete myShapePtr;
-		}
-		delete myFixtureDefPtr;
-		theShapeList.pop_front();
-	}
+    while (theShapeList.isEmpty() == false) {
+        b2FixtureDef *myFixtureDefPtr = theShapeList.first();
+        if (myFixtureDefPtr != nullptr) {
+            const b2Shape *myShapePtr = myFixtureDefPtr->shape;
+            delete myShapePtr;
+        }
+        delete myFixtureDefPtr;
+        theShapeList.pop_front();
+    }
 }
 
 
 void AbstractObject::createPhysicsObject(void)
 {
-	createPhysicsObject(theCenter);
+    createPhysicsObject(theCenter);
 }
 
-void AbstractObject::createPhysicsObject(const Position& aPosition)
+void AbstractObject::createPhysicsObject(const Position &aPosition)
 {
-	DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
-	// first fixup the bodydef with the current position
-	assert(theB2BodyDefPtr!=nullptr);
-	theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
-	theB2BodyDefPtr->angle = aPosition.angle;
-	theB2BodyDefPtr->type  = getObjectType();
-	// do not set mass properties here - that will be done in derived classes
-	// (and as such is done already when we get here)
+    DEBUG5("AbstractObject::createPhysicsObject() for %s, type %d", ASCII(getName()), getObjectType());
+    // first fixup the bodydef with the current position
+    assert(theB2BodyDefPtr != nullptr);
+    theB2BodyDefPtr->position.Set(aPosition.x, aPosition.y);
+    theB2BodyDefPtr->angle = aPosition.angle;
+    theB2BodyDefPtr->type  = getObjectType();
+    // do not set mass properties here - that will be done in derived classes
+    // (and as such is done already when we get here)
 
-	assert (theB2BodyPtr==nullptr);
-	if (theShapeList.count()==0)
-		return;
+    assert (theB2BodyPtr == nullptr);
+    if (theShapeList.count() == 0)
+        return;
 
-	theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
-	assert(theB2BodyPtr != nullptr);
+    theB2BodyPtr = getB2WorldPtr()->CreateBody(theB2BodyDefPtr);
+    assert(theB2BodyPtr != nullptr);
 
-	// then create the shapes from the shapedefs
-	ShapeList::const_iterator myI = theShapeList.begin();
-	for (;myI != theShapeList.end(); ++myI)
-	{
-		(*myI)->restitution = theBounciness;
-		b2Fixture* myPtr = theB2BodyPtr->CreateFixture(*myI);
+    // then create the shapes from the shapedefs
+    ShapeList::const_iterator myI = theShapeList.begin();
+    for (; myI != theShapeList.end(); ++myI) {
+        (*myI)->restitution = theBounciness;
 #ifdef QT_DEBUG
-		b2AABB myAABB;
-		b2Transform myT;
-		myT.SetIdentity();
-        myPtr->GetShape()->ComputeAABB(&myAABB, myT, 0);
-		DEBUG5("  Shape* = %p", myPtr);
-		DEBUG5("    %fx%f", myAABB.GetExtents().x, myAABB.GetExtents().y);
+        b2Fixture *myPtr =
 #endif
-	}
-	notifyJoints(JointInterface::CREATED);
+            theB2BodyPtr->CreateFixture(*myI);
+#ifdef QT_DEBUG
+        b2AABB myAABB;
+        b2Transform myT;
+        myT.SetIdentity();
+        myPtr->GetShape()->ComputeAABB(&myAABB, myT, 0);
+        DEBUG5("  Shape* = %p", myPtr);
+        DEBUG5("    %fx%f", myAABB.GetExtents().x, myAABB.GetExtents().y);
+#endif
+    }
+    notifyJoints(JointInterface::CREATED);
 }
 
-ViewObject*  AbstractObject::createViewObject(float aDefaultDepth)
+
+ViewItem *AbstractObject::createViewItemInt(float aDefaultDepth, const QString& aVOType, const QString& anImageName, const QString& extraOptions)
 {
-	if (theViewObjectPtr!=nullptr)
-		return theViewObjectPtr;
-	QString myImageName;
-	if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true)==false)
-		myImageName = getInternalName();
+    ViewWorldItem* myVWIPtr = ViewWorldItem::me();
+    assert(nullptr != myVWIPtr);
 
-    theViewObjectPtr = new ViewObject(getThisPtr(), myImageName);
+    QString myImageName;
+    if (anImageName.isEmpty()) {
+        myImageName = getImageName();
+    }
+    else
+        myImageName = anImageName;
 
-	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
-	return theViewObjectPtr;
+    QString myImageListString = "theImageList: [";
+    for (auto& i: myImageName.split(";")) {
+        myImageListString += QString("Image{source:img(\"%1\")},").arg(i);
+    }
+    myImageListString.chop(1);
+    myImageListString += "]";
+
+    theViewItemPtr = myVWIPtr->createViewItem(aVOType, getThisPtr(), calculateZValue(aDefaultDepth),
+                                              QString("%1 %2").arg(myImageListString).arg(extraOptions));
+    return theViewItemPtr;
 }
 
 
 void AbstractObject::deletePhysicsObject()
 {
-	DEBUG5("AbstractObject::deletePhysicsObject() for %p %s", this, ASCII(getID()));
+    DEBUG5("AbstractObject::deletePhysicsObject() for %p %s", this, ASCII(getID()));
 
     // we're only setting the pointer to zero - let's Box2D take care
     // of actually removing everything when we do delete world...
@@ -167,23 +220,39 @@ void AbstractObject::deletePhysicsObject()
     theJointList.clear();
 }
 
-void AbstractObject::deleteViewObject(void)
+
+void AbstractObject::deleteViewItem()
 {
-	// delete the corresponding ViewObject
-	// note that delete nullptr is allowed
-	delete theViewObjectPtr;
-	theViewObjectPtr = nullptr;
+    if (nullptr == theViewItemPtr)
+        return;
+    // TODO: debug once the old undo stuff is gone:
+    theViewItemPtr->setVisible(false);
+    theViewItemPtr=nullptr;
+//    ViewItem* myVIPtr = theViewItemPtr;
+//    theViewItemPtr = nullptr;
+//    myVIPtr->setParent(nullptr);
+//    myVIPtr->setParentItem(nullptr);
+//    myVIPtr->deleteLater();
 }
 
 
-b2World* AbstractObject::getB2WorldPtr(void) const
+b2World *AbstractObject::getB2WorldPtr(void) const
 {
-	assert (theStaticB2WorldPtr);
-	return theStaticB2WorldPtr;
+    assert (theStaticB2WorldPtr);
+    return theStaticB2WorldPtr;
 }
 
 
-const AbstractObjectSerializer* AbstractObject::getSerializer(void) const
+const QString AbstractObject::getImageName() const
+{
+    QString myImageName;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
+        myImageName = getInternalName();
+    return myImageName;
+}
+
+
+const AbstractObjectSerializer *AbstractObject::getSerializer(void) const
 {
     return new AbstractObjectSerializer(getThisPtr());
 }
@@ -191,154 +260,175 @@ const AbstractObjectSerializer* AbstractObject::getSerializer(void) const
 
 Position AbstractObject::getTempCenter (void) const
 {
-	// no physics object, no temp center
-	if (isPhysicsObjectCreated()==false)
-		return getOrigCenter();
+    // no physics object, no temp center
+    if (isPhysicsObjectCreated() == false)
+        return getOrigCenter();
 
-	return Position(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
+    return Position(theB2BodyPtr->GetPosition(), theB2BodyPtr->GetAngle());
 }
 
 
 const QString AbstractObject::getToolTip() const
 {
-	// originally we had the concept of a 'Description' property.
-	// however, that is not translatable.
-	assert (!theProps.doesPropertyExists("Description"));
-	return theToolTip.result();
+    // originally we had the concept of a 'Description' property.
+    // however, that is not translatable.
+    assert (!theProps.doesPropertyExists("Description"));
+    return TheGetText(theToolTip);
+}
+
+
+AbstractObject::SizeDirections AbstractObject::isResizable ( )
+{
+    QString myString;
+    SizeDirections myResizeInfo = NORESIZING;
+    if (theProps.property2String(Property::RESIZABLE_STRING, &myString)) {
+        // We do not need to check for none, that's the default.
+        if (myString == Property::HORIZONTAL_STRING)
+            myResizeInfo = HORIZONTALRESIZE;
+        if (myString == Property::VERTICAL_STRING)
+            myResizeInfo = VERTICALRESIZE;
+        if (myString == Property::TOTALRESIZE_STRING)
+            myResizeInfo = TOTALRESIZE;
+    }
+    return myResizeInfo;
 }
 
 
 bool AbstractObject::isMovable ( ) const
 {
-	if (theIsLevelEditor)
-		return true;
-	else
-		return theIsMovable;
+    if (theIsLevelCreator)
+        return true;
+    else
+        return theIsMovable;
 }
 
 
 bool AbstractObject::isRotatable ( ) const
 {
-	bool myRotatableInfo = false;
-	theProps.property2Bool(Property::ROTATABLE_STRING, &myRotatableInfo);
-	return myRotatableInfo;
+    bool myRotatableInfo = false;
+    theProps.property2Bool(Property::ROTATABLE_STRING, &myRotatableInfo);
+    return myRotatableInfo;
 }
 
 
 void AbstractObject::notifyJoints(JointInterface::JointStatus aStatus)
 {
-    foreach(JointInterfacePtr j, theJointList)
-                j->physicsObjectStatus(aStatus);
-        if (aStatus==JointInterface::DELETED)
-            theJointList.clear();
+    foreach (JointInterfacePtr j, theJointList)
+        j->physicsObjectStatus(aStatus);
+    if (aStatus == JointInterface::DELETED)
+        theJointList.clear();
 }
 
 void AbstractObject::parseProperties(void)
 {
-	// Bounciness
-	float myFloat = 0.5;
-	theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
-	setTheBounciness(myFloat);
+    // Bounciness
+    float myFloat = 0.5;
+    theProps.property2Float(Property::BOUNCINESS_STRING, &myFloat);
+    setTheBounciness(myFloat);
 
-	// Child Pivot Point
-    if (theChildPivotPointPtr)
-    {
+    // Child Pivot Point
+    if (theChildPivotPointPtr) {
         theWorldPtr->removeObject(theChildPivotPointPtr);
+        theChildPivotPointPtr = nullptr;
     }
     Vector myDelta;
-	if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta))
-	{
-        theChildPivotPointPtr = ObjectFactory::createChildObject<PivotPoint>(getThisPtr(), myDelta);
-		theChildPivotPointPtr->markAsChild();
-		theWorldPtr->addObject(theChildPivotPointPtr);
-	}
+    if (theProps.property2Vector(Property::PIVOTPOINT_STRING, &myDelta)) {
+        if (theWorldPtr) {
+            theChildPivotPointPtr = ObjectFactory::createChildObject<PivotPoint>(getThisPtr(), myDelta);
+            theChildPivotPointPtr->markAsChild();
+            theWorldPtr->addObject(theChildPivotPointPtr);
+        }
+    }
 
-	// Child Translation Guid
-	if (theChildTranslationGuidePtr)
-	{
-		theWorldPtr->removeObject(theChildTranslationGuidePtr);
-	}
-	float myAngle;
-	if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle))
-	{
-        theChildTranslationGuidePtr = ObjectFactory::createChildObject<TranslationGuide>(getThisPtr(), myAngle);
+    // Child Translation Guid
+    if (theChildTranslationGuidePtr) {
+        theWorldPtr->removeObject(theChildTranslationGuidePtr);
+        theChildTranslationGuidePtr = nullptr;
+    }
+    float myAngle;
+    if (theProps.property2Float(Property::TRANSLATIONGUIDE_STRING, &myAngle)) {
+        theChildTranslationGuidePtr = ObjectFactory::createChildObject<TranslationGuide>(getThisPtr(),
+                                                                                         myAngle);
         theChildTranslationGuidePtr->markAsChild();
-		theWorldPtr->addObject(theChildTranslationGuidePtr);
-	}
+        theWorldPtr->addObject(theChildTranslationGuidePtr);
+    }
 
-	// NoCollision
-	QString myNoCollisionObjectIDs;
-	theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
-	QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
-	QStringList::iterator myI = myObjIDList.begin();
-	while (myI != myObjIDList.end())
-	{
-        AbstractObjectPtr myObjPtr = theWorldPtr->findObjectByID(*myI);
-        if (myObjPtr!=nullptr)
-            theWorldPtr->addNoCollisionCombo(getThisPtr(), myObjPtr);
-		++myI;
-	}
+    // NoCollision
+    QString myNoCollisionObjectIDs;
+    theProps.property2String(Property::NOCOLLISION_STRING, &myNoCollisionObjectIDs);
+    QStringList myObjIDList = myNoCollisionObjectIDs.split(";", QString::SkipEmptyParts);
+    QStringList::iterator myI = myObjIDList.begin();
+    while (myI != myObjIDList.end()) {
+        QList<AbstractObjectPtr> myObjPtrs = theWorldPtr->findObjectsByID(*myI);
+        for (auto i : myObjPtrs)
+            theWorldPtr->addNoCollisionCombo(getThisPtr(), i);
+        ++myI;
+    }
+
+    // force parsing of resize info
+    isResizable();
 }
 
 
-void AbstractObject::setTheB2WorldPtr(b2World* aPtr)
+void AbstractObject::setTheB2WorldPtr(b2World *aPtr)
 {
-	theStaticB2WorldPtr = aPtr;
+    theStaticB2WorldPtr = aPtr;
 }
 
 
 void AbstractObject::setTheHeight ( qreal new_var, bool mustRunParseProperties )
 {
-	if (new_var>AbstractObject::MINIMUM_DIMENSION)
-		theHeight = new_var;
-	if (mustRunParseProperties)
-		parseProperties();
+    if (new_var > AbstractObject::MINIMUM_DIMENSION)
+        theHeight = new_var;
+    if (mustRunParseProperties)
+        parseProperties();
 }
 
 void AbstractObject::setTheWidth ( qreal new_var, bool mustRunParseProperties )
 {
-	if (new_var>AbstractObject::MINIMUM_DIMENSION)
-		theWidth = new_var;
-	if (mustRunParseProperties)
-		parseProperties();
+    if (new_var > AbstractObject::MINIMUM_DIMENSION)
+        theWidth = new_var;
+    if (mustRunParseProperties)
+        parseProperties();
 }
 
 
 
-void  AbstractObject::setViewObjectZValue(float aDefaultValue)
+float AbstractObject::calculateZValue(float aDefaultValue)
 {
-	assert(theViewObjectPtr != nullptr);
-	// if no property with a float type found, leave aDefaultValue is unchanged
-	theProps.property2Float(Property::ZVALUE_STRING, &aDefaultValue, false);
-	theViewObjectPtr->setZValue(aDefaultValue);
+    // we have several cases:
+    //  a) aDefaultValue = 2.0 ,  default property set -> use default property
+    //  b) aDefaultValue !=2   ,  default property set -> use aDefaultValue
+    //  c) aDefaultValue = 2.0 ,  non-default property set -> use non-default property
+    //  d) aDefaultValue !=2   ,  non-default property set -> use non-default property
+    float myTemp = -99.684;
+    theProps.property2Float(Property::ZVALUE_STRING, &myTemp, true);
+    if (aDefaultValue == 2.0 && myTemp != -99.684)
+        aDefaultValue = myTemp;
+    return aDefaultValue;
 }
 
 void AbstractObject::updateViewObject(bool isSimRunning) const
 {
-	// no ViewObject: nothing to update ;-)
-	if(theViewObjectPtr == nullptr)
-		return;
+    // no b2body: no part of simulation
+    // PROBLEM: joints also don't have a b2Body - that's why they have their own
+    // overriden version of this member...
+    if (theB2BodyPtr == nullptr) {
+        if (!isSimRunning) {
+            // No sim running: adjust object drawing using static position & dimensions
+            if (nullptr != theViewItemPtr)
+                theViewItemPtr->adjustObjectDrawingFromAO();
+        }
+        if (nullptr != theViewItemPtr)
+            theViewItemPtr->setNewImageIndex(getImageIndex());
+        return;
+    }
 
-	// no b2body: no part of simulation
-	// PROBLEM: joints also don't have a b2Body - that's why they have their own
-	// overriden version of this member...
-	if (theB2BodyPtr==nullptr)
-	{
-		if (!isSimRunning)
-		{
-			// No sim running: adjust object drawing using static position & dimensions
-			theViewObjectPtr->adjustObjectDrawing(theWidth, theHeight, theCenter);
-		}
-		theViewObjectPtr->setNewImageIndex(getImageIndex());
-		return;
-	}
-
-	// Sim running: don't need to adjust objects that are static or asleep
-	if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass()>0.0001 || !isSimRunning)
-	{
-		theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
-											  getTempHeight(),
-											  getTempCenter());
-	}
-	theViewObjectPtr->setNewImageIndex(getImageIndex());
+    // Sim running: don't need to adjust objects that are static or asleep
+    if (theB2BodyPtr->IsAwake() || theB2BodyPtr->GetMass() > 0.0001 || !isSimRunning) {
+        if (nullptr != theViewItemPtr)
+            theViewItemPtr->adjustObjectDrawingFromAO();
+    }
+    if (nullptr != theViewItemPtr)
+        theViewItemPtr->setNewImageIndex(getImageIndex());
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>My brother likes soccer</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Kick the pin into the goal, but do not hit the butterfly.</description>
+        <date>10 Feb 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="SoccerBall" ID="soc"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5.0" height="3"/>
+        <predefined>
+            <object width="0.345" X="0.75" Y="1.05" height="1.9" type="Scenery">
+                <property key="ImageName">brother-soccer</property>
+            </object>
+            <object width="5.0" X="2.5" Y="0.05" type="Floor" ID="thefloor">
+                <property key="Bounciness">0.4</property>
+                <property key="Friction">0.2</property>
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="0.800" X="0.400" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.100" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="1.800" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="2.500" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="3.900" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.600" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="5.300" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="6.4" X="4.6" Y="1.75" height="3.7" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+                <property key="ZValue">0.1</property>
+            </object>
+            <object width="0.15" X="0.50" Y="0.65" height="0.84" type="RectObject" angle="-0.8">
+                <property key="ImageName">brother-soccer-leg</property>
+                <property key="PivotPoint">(0.0,0.38)</property>
+                <property key="Mass">20.0</property>
+                <property key="NoCollision">thefloor</property>
+            </object>
+            <object X="3.9" Y="0.26" type="BowlingPin" ID="thepin"/>
+            <object width="0.4" X="4.4" Y="0.45" height="0.7" type="Goal"/>
+            <object width="0.30" X="4.8" Y="0.325" height="0.55" type="Daffodil"/>
+            <object width="0.1" X="4.9" Y="0.53" height="0.1" type="Scenery" ID="Flower">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object X="2.2" Y="0.52" type="Butterfly" ID="Butterfly">
+                <property key="Object">Flower</property>
+                <property key="Mass">0.01</property>
+            </object>
+            <object X="2.8" Y="1.4" type="PostItMisc">
+                <property key="page1">This is my brother.&lt;br>&lt;br>He is of the sporty type.</property>
+                <property key="page2">But he has no friends, only a bowling pin.</property>
+                <property key="page3">He wants to shoot the pin into the goal.</property>
+                <property key="page4">Why is that butterfly there?</property>
+                <property key="page5">&lt;br>&lt;br>… a lazy Post-It Boy</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="xover">4.2</property>
+            <property key="object">thepin</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="1.287" Y="0.400" number="1" object="SoccerBall"/>
+    </hints>
+</tbe-level>

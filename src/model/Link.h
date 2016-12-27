@@ -38,51 +38,58 @@
 class Link : public AbstractJoint
 {
 public:
-	Link(void);
+    Link(void);
 
-	virtual ~Link();
+    virtual ~Link();
 
-	/** (overridden from AbstractJoint to fixup aspect ratio and overlap)
-	  * @returns pointer to AbstractObject
-	  */
-	virtual ViewObject* createViewObject(float aDefaultDepth = 2.0);
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
 
-	/// overridden from AbstractObject
-	/// (this class does not have a body, only a joint)
-	virtual void createPhysicsObject(void);
+    /** (overridden from AbstractJoint to fixup aspect ratio and overlap)
+      * @returns pointer to ViewItem
+      */
+    ViewItem* createViewItem(float aDefaultDepth = 2.0) override;
 
-	/// overridden from AbstractObject
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const
-	{	return QObject::tr("Link");	}
+    /// overridden from AbstractObject
+    /// (this class does not have a body, only a joint)
+    virtual void createPhysicsObject(void) override;
 
-	/** Get the current center position of the object.
-	 * @return the value of theCenter
-	 */
-	virtual Position getTempCenter ( ) const;
+    /// overridden from AbstractObject
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return QObject::tr("Link");
+    }
 
-	/// overridden from AbstractObject
-	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
-	{	return false;	}
+    /** Get the current center position of the object.
+     * @return the value of theCenter
+     */
+    virtual Position getTempCenter ( ) const override;
 
-	/// overridden from AbstractObject
-	/// parses all properties that Link understands
-	virtual void  parseProperties(void);
+    /// overridden from AbstractObject
+    /// returns true if the object can be rotated by the user
+    virtual bool isRotatable ( ) const override
+    {
+        return false;
+    }
 
-	/// implemented from BaseJoint
-	virtual void updateOrigCenter(void);
+    /// overridden from AbstractObject
+    /// parses all properties that Link understands
+    virtual void  parseProperties(void) override;
 
-        /// updates the ViewLink to still have its line between the underlying b2bodys
-        /// (it won't update if the object is asleep if sim is running)
-        /// @param isSimRunning  set to true if you want to use position/size from sim
-        virtual void updateViewObject(bool isSimRunning) const;
+    /// implemented from BaseJoint
+    virtual void updateOrigCenter(void) override;
+
+    /// updates the ViewLink to still have its line between the underlying b2bodys
+    /// (it won't update if the object is asleep if sim is running)
+    /// @param isSimRunning  set to true if you want to use position/size from sim
+    virtual void updateViewObject(bool isSimRunning) const override;
 
 private:
-	AbstractObjectPtr theFirstPtr;
-	AbstractObjectPtr theSecondPtr;
-	Vector*     theFirstLocalPosPtr;
-        Vector*     theSecondLocalPosPtr;
+    AbstractObjectPtr theFirstPtr;
+    AbstractObjectPtr theSecondPtr;
+    Vector     *theFirstLocalPosPtr;
+    Vector     *theSecondLocalPosPtr;
 
 };
 

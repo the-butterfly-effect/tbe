@@ -1,0 +1,146 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Skyhook</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Push both bowling pins towards the styrofoam pyramid.</description>
+        <date>Feb 13, 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="ColaMintBottle">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6.5" height="3.7"/>
+        <predefined>
+            <object width="0.1" X="-0.05" Y="1.75" height="3.5" type="RectObject">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.1" X="6.45" Y="1.75" height="3.5" type="RectObject">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="6.4" X="3.2" Y="0.05" height="0.1" type="RectObject">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="3.0" Y="3.5" type="PostItTutorial">
+                <property key="page1">Look, that's a skyhook.&lt;br>&lt;br>A pretty nifty invention, if I may say so.</property>
+                <property key="page2">Just hook it up in the air&lt;br>and it stays there.</property>
+                <property key="page3">And you can hang a lot of weight on it, too!</property>
+                <property key="page4">Don't tell anyone about it, I still need to file a patent!</property>
+                <property key="page5">Have you read 'Foucault's Pendulum'?</property>
+                <property key="page6">&lt;br>&lt;br>... Post-It Boy</property>
+            </object>
+            <object X="2.72" Y="3.52" type="Skyhook" ID="Skyhook">
+                <property key="ZValue">0.3</property>
+            </object>
+            <object width="0.44" X="2.74" Y="3.22" height="0.10" type="RectObject" ID="Chain1" angle="1.57">
+                <property key="ImageName">agone_chains</property>
+                <property key="Mass">0.3</property>
+            </object>
+            <object X="2.74" Y="3.44" type="PivotPoint">
+                <property key="object1">Skyhook</property>
+                <property key="object2">Chain1</property>
+                <property key="collide">false</property>
+            </object>
+            <object width="0.44" X="2.74" Y="2.50" height="0.10" type="RectObject" ID="Chain3" angle="1.57">
+                <property key="ImageName">agone_chains</property>
+                <property key="Mass">0.5</property>
+            </object>
+            <object X="2.74" Y="2.64" type="PivotPoint">
+                <property key="object1">Chain2</property>
+                <property key="object2">Chain3</property>
+                <property key="collide">false</property>
+            </object>
+            <object X="2.74" Y="2.84" type="Link">
+                <property key="object1">Chain1@(-0.20,0)</property>
+                <property key="object2">Chain3@(0.20,0)</property>
+                <property key="ImageName">agone_chains</property>
+                <property key="Overlap">20</property>
+            </object>
+            <object width="0.44" X="2.74" Y="1.74" height="0.10" type="RectObject" ID="Chain5" angle="1.57">
+                <property key="ImageName">agone_chains</property>
+                <property key="Mass">0.5</property>
+            </object>
+            <object X="2.74" Y="2.04" type="Link">
+                <property key="object1">Chain3@(-0.20,0)</property>
+                <property key="object2">Chain5@(0.20,0)</property>
+                <property key="ImageName">agone_chains</property>
+                <property key="Overlap">20</property>
+            </object>
+            <object X="2.74" Y="1.38" height="0.35" type="Weight" ID="Weight"/>
+            <object X="2.74" Y="1.54" type="PivotPoint">
+                <property key="object1">Chain5</property>
+                <property key="object2">Weight</property>
+                <property key="collide">false</property>
+            </object>
+            <object width="1.46" X="0.97" Y="1.4" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="0.25" Y="1.55" type="VolleyBall" ID="leftball"/>
+            <object X="1.64" Y="1.54" type="ColaMintBottle" angle="-1.57">
+                <property key="TranslationGuide">0</property>
+            </object>
+            <object width="1.7" X="0.85" Y="1.74" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="2.38" X="4.97" Y="1.4" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="5.13" Y="1.55" type="VolleyBall" ID="rightball"/>
+            <object X="3.82" Y="1.54" type="ColaMintBottle" angle="1.57">
+                <property key="TranslationGuide">0</property>
+            </object>
+            <object width="2.6" X="5.1" Y="1.74" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object X="2.24" Y="0.27" type="BowlingPin" ID="Left-Pin"/>
+            <object X="3.24" Y="0.27" type="BowlingPin" ID="Right-Pin"/>
+            <object width="0.2" X="2.65" Y="0.4" height="0.6" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+            <object width="0.2" X="2.85" Y="0.4" height="0.6" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+            <object width="2.08" X="2.74" Y="0.7" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.1" X="1.65" Y="1.0" height="0.7" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.1" X="3.83" Y="1.0" height="0.7" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.4" X="0.2" Y="0.3" height="0.4" type="RightRamp">
+                <property key="ImageName">styrofoam-right</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+            <object width="0.4" X="6.2" Y="0.3" height="0.4" type="LeftRamp">
+                <property key="ImageName">styrofoam-left</property>
+                <property key="Bounciness">0.3</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="xover">2.26</property>
+            <property key="object">Left-Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xbelow">3.22</property>
+            <property key="object">Right-Pin</property>
+        </goal>
+    </goals>
+</tbe-level>

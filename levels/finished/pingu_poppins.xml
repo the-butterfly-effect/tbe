@@ -1,0 +1,103 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Pingu Poppins</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Pop all balloons.</description>
+        <date>22.04.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object angle="0" height="0.1" type="Floor" width="1">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" height="0.188" type="LeftRamp" width="0.561"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0" height="0.187986" type="RightRamp" width="0.560623"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object angle="0" width="1" height="0.5" type="Styrofoam">
+                <property key="Resizable">totalresize</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="PingusWalkLeft" />
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="4" width="5.6"/>
+        <predefined>
+            <object angle="1.5708" Y="3.379" X="4.765" height="0.15" type="BedOfNails" width="0.8"/>
+            <object angle="-1.5708" Y="3.37861" X="0.925429" height="0.15" type="BedOfNails" width="0.8"/>
+            <object angle="0" Y="3.318" X="1.578" height="0.1" type="Floor" width="0.777"/>
+            <object angle="0" Y="2.797" X="0.911" height="0.188" type="LeftRamp" width="0.649988"/>
+            <object ID="b4" angle="0" Y="1.224" X="4.779" height="0.36" type="Balloon" width="0.27">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object ID="b6" angle="0" Y="0.409" X="4.779" height="0.36" type="Balloon" width="0.27">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object ID="b2" angle="0" Y="2" X="4.779" height="0.36" type="Balloon" width="0.27"/>
+            <object ID="b5" angle="0" Y="0.409" X="0.911" height="0.36" type="Balloon" width="0.27">
+                <property key="ImageName">BalloonRed;BalloonPoof;BalloonRestRed;Empty</property>
+            </object>
+            <object ID="b3" angle="0" Y="1.224" X="0.911" height="0.36" type="Balloon" width="0.27">
+                <property key="ImageName">BalloonYellow;BalloonPoof;BalloonRestYellow;Empty</property>
+            </object>
+            <object ID="b1" angle="0" Y="2" X="0.911" height="0.36" type="Balloon" width="0.27"/>
+            <object angle="0" Y="2.797" X="4.779" height="0.188" type="RightRamp" width="0.65"/>
+            <object angle="0" Y="3.37542" X="1.38025" height="0.801324" type="Scenery" width="1.05595">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0" Y="3.375" X="4.311" height="0.801324" type="Scenery" width="1.05595">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">3</property>
+            </object>
+            <object angle="0" Y="3.312" X="4.078" height="0.1" type="Floor" width="0.777"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.976471;0.792157;0.756863;1</gradientstop>
+            <gradientstop pos="0.3">0.992157;1;0.666667;1</gradientstop>
+            <gradientstop pos="1">0.419608;0.647059;0.94902;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" isFail="false">
+            <property key="object">b1</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">b2</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">b3</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">b4</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">b5</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="statechange" isFail="false">
+            <property key="object">b6</property>
+            <property key="statechanged"></property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" object="PingusWalkLeft" X="2.825" Y="2.971" />
+        <hint number="2" object="Floor" X="2.833" Y="2.767" width="1.429" />
+        <hint number="3" object="LeftRamp" X="3.846" Y="2.880" />
+        <hint number="4" object="RightRamp" X="1.811" Y="2.876" />
+        <hint number="5" object="Styrofoam" X="3.408" Y="3.055" width="0.603" height="0.177" />
+        <hint number="6" object="Styrofoam" X="2.233" Y="3.055" width="0.603" height="0.177" />
+    </hints>
+</tbe-level>

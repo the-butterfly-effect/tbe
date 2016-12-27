@@ -37,59 +37,54 @@ class RectObject : public AbstractObject
 {
 public:
 
-	// Constructors/Destructors
-	//
+    // Constructors/Destructors
+    //
 
-	/**
-	 * Empty Constructor
-	 */
-	RectObject ( );
+    /**
+     * Empty Constructor, used to create "empty" RectObjects that are customized using
+     * properties in the level XML.
+     */
+    RectObject ( );
 
-	/// elaborate constructor, only used by the ConcreteRectObject thingies
-	/// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
-	RectObject( const QString& aDisplayName,
-				const QString& aTooltip,
-				const QString& aImageName,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
-				const char* aPropertiesText = nullptr);
+    /// elaborate constructor, only used by the ConcreteRectObject thingies
+    /// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
+    RectObject( const QString &aDisplayName,
+                const QString &aTooltip,
+                const QString &aImageName,
+                qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+                const char *aPropertiesText = nullptr);
 
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~RectObject ( );
+    /**
+     * Empty Destructor
+     */
+    virtual ~RectObject ( );
 
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const override
-	{
-		return theNameString;
-	}
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return theNameString;
+    }
 
-	/// child objects must specify what type of body they are
-	/// @returns b2_staticBody if this object has no mass
-	///          or b2_dynamicBody if the property mass was set
-	virtual b2BodyType getObjectType(void) const override;
+    /// child objects must specify what type of body they are
+    /// @returns b2_staticBody if this object has no mass
+    ///          or b2_dynamicBody if the property mass was set
+    virtual b2BodyType getObjectType(void) const override;
 
-	/// @returns whether the object can be resized by the user
-	AbstractObject::SizeDirections isResizable ( ) override;
-
-	/// Parse all properties.
-	/// Partially overridden from AbstractObject
-	virtual void  parseProperties(void) override;
+    /// Parse all properties.
+    /// Partially overridden from AbstractObject
+    virtual void  parseProperties(void) override;
 
 protected:
-	virtual void initRectAttributes ( );
+    virtual void initRectAttributes ( );
 
-	static const qreal ASPECT_RATIO;
+    static const qreal ASPECT_RATIO;
 
-	/// TODO/FIXME: promote this member to AbstractObject???
-	/// TODO/FIXME: add documentation for this member!!!
-	void setFriction(b2FixtureDef* aFixtureDef);
+    /// TODO/FIXME: promote this member to AbstractObject???
+    /// TODO/FIXME: add documentation for this member!!!
+    void setFriction(b2FixtureDef *aFixtureDef);
 
 protected:
-	QString theNameString;
-
-	/// Stores whether the object can be resized
-	AbstractObject::SizeDirections theResizableInfo;
+    QString theNameString;
 };
 
 
@@ -100,37 +95,41 @@ protected:
  */
 class AbstractRectObjectFactory : public ObjectFactory
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	/// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
-	AbstractRectObjectFactory(
-		const QString& anInternalName,
-		const char*    aDisplayName,
-		const char*    aTooltip,
-		const QString& anImageName,
-		qreal aWidth,
-		qreal aHeight,
-		qreal aMass,
-		qreal aBounciness,
-		const char* aPropertiesText = nullptr)
-			: theDisplayName(aDisplayName),	theTooltip(aTooltip),
-			  theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
-			  theMass(aMass), theBounciness(aBounciness), theProperties(aPropertiesText)
-	{	announceObjectType(anInternalName, this); }
+    /// @param aPropertiesText  update default properties like "Resizable:true/PivotPoint:(0,0)/"
+    AbstractRectObjectFactory(
+        const QString &anInternalName,
+        const char    *aDisplayName,
+        const char    *aTooltip,
+        const QString &anImageName,
+        qreal aWidth,
+        qreal aHeight,
+        qreal aMass,
+        qreal aBounciness,
+        const char *aPropertiesText = nullptr)
+        : theDisplayName(aDisplayName), theTooltip(aTooltip),
+          theImageName(anImageName), theWidth(aWidth), theHeight(aHeight),
+          theMass(aMass), theBounciness(aBounciness), theProperties(aPropertiesText)
+    {
+        announceObjectType(anInternalName, this);
+    }
 
-	virtual AbstractObject* createObject(void) const
-	{	return fixObject(new RectObject(tr(theDisplayName), tr(theTooltip),
-										theImageName, theWidth, theHeight,
-										theMass, theBounciness, theProperties)); }
+    virtual AbstractObject *createObject(void) const
+    {
+        return fixObject(new RectObject(tr(theDisplayName), tr(theTooltip),
+                                        theImageName, theWidth, theHeight,
+                                        theMass, theBounciness, theProperties));
+    }
 private:
-		const char* theDisplayName;
-		const char* theTooltip;
-		QString theImageName;
-		qreal theWidth;
-		qreal theHeight;
-		qreal theMass;
-		qreal theBounciness;
-		const char* theProperties;
+    const char *theDisplayName;
+    const char *theTooltip;
+    QString theImageName;
+    qreal theWidth;
+    qreal theHeight;
+    qreal theMass;
+    qreal theBounciness;
+    const char *theProperties;
 };
 
 #endif // RECTOBJECT_H

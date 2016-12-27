@@ -19,10 +19,9 @@
 #include "RectObject.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "ViewObject.h"
 #include "Property.h"
 
-static const char* DEFAULT_RECTOBJECT_NAME = "RectObject";
+static const char *DEFAULT_RECTOBJECT_NAME = "RectObject";
 
 const qreal RectObject::ASPECT_RATIO = 10.0;
 
@@ -31,10 +30,14 @@ const qreal RectObject::ASPECT_RATIO = 10.0;
 class RectObjectFactory : public ObjectFactory
 {
 public:
-	RectObjectFactory(void)
-	{	announceObjectType(DEFAULT_RECTOBJECT_NAME, this); }
-	AbstractObject* createObject(void) const override
-	{	return fixObject(new RectObject()); }
+    RectObjectFactory(void)
+    {
+        announceObjectType(DEFAULT_RECTOBJECT_NAME, this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new RectObject());
+    }
 };
 static RectObjectFactory theRectObjectFactory;
 
@@ -50,91 +53,117 @@ static RectObjectFactory theRectObjectFactory;
 
 // birch wood: 600 kg/m^3, i.e. a beam of 10cm x 10cm x 1.2m equals 7.2kg
 static AbstractRectObjectFactory theBirchBarFactory("BirchBar",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wooden Bar"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Birch is a type of wood.\nBirch wood beams move and float."),
-	"birch_bar", 1.0, 0.1, 7.2, 0.15 );
+                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Birch Bar"),
+                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                      "Pieces of birch wood are movable and usually really heavy."),
+                                                    "birch_bar", 1.0, 0.1, 7.2, 0.15 );
+
+static AbstractRectObjectFactory theStyrofoamFactory("Styrofoam",
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Styrofoam Block"),
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                       "Styrofoam blocks are light and pretty bouncy."),
+                                                     "styrofoam", 0.5, 0.25, 0.5, 0.6 );
 
 static AbstractRectObjectFactory theDomRedFactory("DominoRed",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic red domino stone"),
-	"DominoRed", 0.1, 0.5, 2.5, 0.1 );
+                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Red)"),
+                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                    "A red plastic domino, it can be toppled with ease."),
+                                                  "DominoRed", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomBlueFactory("DominoBlue",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Blue)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic blue domino stone"),
-	"DominoBlue", 0.1, 0.5, 2.5, 0.1 );
+                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Blue)"),
+                                                   QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                     "A blue plastic domino, it can be toppled with ease."),
+                                                   "DominoBlue", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theDomGreenFactory("DominoGreen",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Green)"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "The famous plastic green domino stone"),
-	"DominoGreen", 0.1, 0.5, 2.5, 0.1 );
+                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Domino (Green)"),
+                                                    QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                      "A green plastic domino, it can be toppled with ease."),
+                                                    "DominoGreen", 0.1, 0.5, 2.5, 0.1 );
 
 static AbstractRectObjectFactory theFloorFactory("Floor",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Floor"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "It doesn't move."),
-	"used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
+                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Floor"),
+                                                 QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                   "This is a floor, a fixed obstacle."),
+                                                 "used_wood_bar", 1.0, 0.1, 0.0, 0.1 );
 
 // see http://www.saginawpipe.com/steel_i_beams.htm
 // a 4"x4" beam weighs 13 pounds per feet, i.e. a 1.4m beam weighs 27kg.
 static AbstractRectObjectFactory theSteelHBeamFactory("IBeam",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Steel I-Beam"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "An I Beam is named after the shape of its cross-section.\n It's heavy, don't drop one on your foot."),
-	"i-beam", 1.4, 0.1, 27.0, 0.0 );
+                                                      QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Steel I-Beam"),
+                                                      QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                        "Steel I-beams are large and heavy\nand useful to build bridges and other constructions."),
+                                                      "i-beam", 1.4, 0.1, 27.0, 0.0 );
 
 static AbstractRectObjectFactory theWallFactory("Wall",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wall"),
-	"",
-	"oldbrick", 0.2, 1.0, 0.0, 0.05 );
+                                                QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Wall"),
+                                                QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                  "This is a brick wall, a fixed obstacle."),
+                                                "oldbrick", 0.2, 1.0, 0.0, 0.05 );
 
 // Note that this hammer is kind-of heavy, a normal hammer would be around 400 grams, only
 static AbstractRectObjectFactory theHammerFactory("Hammer",
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Hammer"),
-	QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "A hammer usually has a hickory handle and a steel head."),
-	"hammer", 0.45,0.18, 2.0, 0.0,
-	"Friction:0.0/PivotPoint:(0.2,0)/");
+                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Hammer"),
+                                                  QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                    "This is a hammer which has been attached\nto the scene at the end of its handle.\nThe hammer can be used to apply a force\nto some of the heavier objects."),
+                                                  "hammer", 0.45, 0.18, 2.0, 0.0,
+                                                  "Friction:0.0/PivotPoint:(0.2,0)/");
+
+static AbstractRectObjectFactory theColaCrateFactory("ColaCrate",
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Cola Crate"),
+                                                     QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                       "A crate of 12 filled cola bottles.\nIt's very heavy and hard to push around."),
+                                                     "cola-crate", 0.85, 0.6, 18.0, 0.1,
+                                                     "Friction:0.1/");
+
+static AbstractRectObjectFactory theLightWoodCrateFactory("WoodCrateFlat",
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Flat Wooden Crate"),
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                            "A flat and light wooden crate, great for stacking."),
+                                                          "wood_crate_flat", 0.8, 0.34, 3.0, 0.1);
+
+static AbstractRectObjectFactory theHeavyWoodCrateFactory("WoodCrateSquare",
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory", "Square Wooden Crate"),
+                                                          QT_TRANSLATE_NOOP("AbstractRectObjectFactory",
+                                                                            "A heavy wooden crate, great for stacking."),
+                                                          "wood_crate_square", 0.7, 0.7, 6.0, 0.1);
 
 // Constructors/Destructors
 //
 
-RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME),
-	theResizableInfo(SizeDirections::NORESIZING)
+RectObject::RectObject ( ) : AbstractObject(), theNameString(DEFAULT_RECTOBJECT_NAME)
 {
-	DEBUG5("RectObject::RectObject");
+    DEBUG5("RectObject::RectObject");
 
-	// because this object is very flexible and many parameters can be set through
-	// the Properties, do not assume too much here...
+    // because this object is very flexible and many parameters can be set through
+    // the Properties, do not assume too much here...
 
-	// also: keep in mind that child objects may set some things automatically
-	initRectAttributes();
+    // Make mass-related attributes for the generic object since those are hidden otherwise
+    theProps.setDefaultPropertiesString(
+        Property::MASS_STRING + QString(":/") +
+        Property::TRANSLATIONGUIDE_STRING + QString(":/") +
+        Property::PIVOTPOINT_STRING + QString(":/"));
+
+    // also: keep in mind that child objects may set some things automatically
+    initRectAttributes();
 }
 
-RectObject::RectObject(const QString& aDisplayName,
-				const QString& aTooltip,
-				const QString& aImageName,
-				qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
-				const char *aPropertiesText)
-	: theNameString(aDisplayName),
-	  theResizableInfo(SizeDirections::NORESIZING)
+RectObject::RectObject(const QString &aDisplayName,
+                       const QString &aTooltip,
+                       const QString &aImageName,
+                       qreal aWidth, qreal aHeight, qreal aMass, qreal aBounciness,
+                       const char *aPropertiesText)
+    : AbstractObject(aTooltip, aImageName,
+                     aWidth, aHeight, aMass, aBounciness,
+                     aPropertiesText), theNameString (aDisplayName)
 {
-	// This is the enhanced constructor for RectObjects.
-	// When called, the ImageName is the default for that type of RectObject.
-	// So we set it as a default property (which means it is not saved).
-	Q_ASSERT(aDisplayName!=DEFAULT_RECTOBJECT_NAME);
-	theProps.setDefaultPropertiesString(QString("%1:%2/").arg(Property::IMAGE_NAME_STRING).arg(aImageName));
-	theToolTip = aTooltip;
-	setTheWidth(aWidth);
-	setTheHeight(aHeight);
+    // This is the enhanced constructor for RectObjects.
+    // When called, the ImageName is the default for that type of RectObject.
+    // So we set it as a default property (which means it is not saved).
+    Q_ASSERT(aDisplayName != DEFAULT_RECTOBJECT_NAME);
 
-	if (aPropertiesText != nullptr)
-		theProps.setDefaultPropertiesString(aPropertiesText);
-
-	if (aMass > 0.001)
-		theProps.setDefaultPropertiesString(
-			QString("%1:%2/").arg(Property::MASS_STRING).arg(QString::number(aMass)));
-	else
-		theProps.removeProperty(Property::MASS_STRING);
-	setTheBounciness(aBounciness);
-	initRectAttributes();
+    initRectAttributes();
 }
 
 RectObject::~RectObject ( )
@@ -155,72 +184,49 @@ RectObject::~RectObject ( )
 
 b2BodyType RectObject::getObjectType(void) const
 {
-	float myMass;
-	if (theProps.property2Float(Property::MASS_STRING, &myMass))
-		return b2_dynamicBody;
-	return b2_staticBody;
+    float myMass;
+    if (theProps.property2Float(Property::MASS_STRING, &myMass))
+        return b2_dynamicBody;
+    return b2_staticBody;
 }
 
 void RectObject::initRectAttributes ( )
 {
-	theProps.setDefaultPropertiesString(
-		Property::FRICTION_STRING    + QString(":/") +
-		Property::RESIZABLE_STRING   + QString(":") + Property::NONE_STRING + "/" );
-	theResizableInfo = NORESIZING;
 }
 
-
-AbstractObject::SizeDirections RectObject::isResizable ( )
-{
-	QString myString;
-	if (theProps.property2String(Property::RESIZABLE_STRING, &myString))
-	{
-		// we do not check for none, that's the default
-		theResizableInfo = NORESIZING;
-		if (myString == Property::HORIZONTAL_STRING)
-			theResizableInfo = HORIZONTALRESIZE;
-		if (myString == Property::VERTICAL_STRING)
-			theResizableInfo = VERTICALRESIZE;
-		if (myString == Property::TOTALRESIZE_STRING)
-			theResizableInfo = TOTALRESIZE;
-	}
-	return theResizableInfo;
-}
 
 void  RectObject::parseProperties(void)
 {
-	// first parse everything that AbstractObject already knows about
-	AbstractObject::parseProperties();
+    // first parse everything that AbstractObject already knows about
+    AbstractObject::parseProperties();
 
-	theProps.property2String(Property::OBJECT_NAME_STRING,&theNameString);
+    theProps.property2String(Property::OBJECT_NAME_STRING, &theNameString);
 
-	// force parsing of resize info
-	isResizable();
+    clearShapeList();
+    b2PolygonShape *myBoxShape = new b2PolygonShape();
+    myBoxShape->SetAsBox(getTheWidth() / 2.0, getTheHeight() / 2.0);
 
-	clearShapeList();
-	b2PolygonShape* myBoxShape = new b2PolygonShape();
-	myBoxShape->SetAsBox(getTheWidth()/2.0, getTheHeight()/2.0);
-
-	// get mass:  if no mass set, we'll make this a b2_staticBody
-	b2FixtureDef* myBoxDef = new b2FixtureDef();
-	float myMass;
-	if (theProps.property2Float(Property::MASS_STRING, &myMass))
-		myBoxDef->density = myMass / (getTheWidth()*getTheHeight());
-	myBoxDef->shape   = myBoxShape;
-	myBoxDef->userData = this;
-	setFriction(myBoxDef);
-	theShapeList.push_back(myBoxDef);
+    // get mass:  if no mass set, we'll make this a b2_staticBody
+    b2FixtureDef *myBoxDef = new b2FixtureDef();
+    float myMass;
+    if (theProps.property2Float(Property::MASS_STRING, &myMass))
+        myBoxDef->density = myMass / (getTheWidth() * getTheHeight());
+    myBoxDef->shape   = myBoxShape;
+    myBoxDef->userData = this;
+    setFriction(myBoxDef);
+    theShapeList.push_back(myBoxDef);
 }
 
-void  RectObject::setFriction(b2FixtureDef* aFixtureDef)
+void  RectObject::setFriction(b2FixtureDef *aFixtureDef)
 {
-	// only set friction if it is special
-	if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
-		return;
+    // only set friction if it is special
+    if (theProps.getPropertyNoDefault(Property::FRICTION_STRING).isEmpty())
+        return;
 
-	float myFriction = 0;
-	if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
-		aFixtureDef->friction = myFriction;
-	else
-		assert(false);
+    float myFriction = 0;
+    if (theProps.property2Float(Property::FRICTION_STRING, &myFriction))
+        aFixtureDef->friction = myFriction;
+    else
+        // use a "sane default" if something weird is going on
+        aFixtureDef->friction = 0.3;
 }

@@ -1,4 +1,4 @@
-filename:  pingus.png
+filenames:  pingus.png, pingussleeper.png, pinguswalkleft.png, pinguswalkright.png
 author(s): Alan Tennent, Craig Timpany, Erik Søe Sørensen, Ingo Ruhnke, Jarno Elonen, Joel Fauche, Mark Collinson, Michael Mestre, Stefan Stiasny, Tom Flavel
 license:   GPLv3 or later 
 source:    Created from various files at https://github.com/Pingus/pingus/tree/master/data/images/pingus/player0" 

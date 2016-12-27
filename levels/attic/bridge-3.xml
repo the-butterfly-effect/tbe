@@ -1,0 +1,88 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bridge the Gap 3</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Throw the tennis ball and the bowling pin into the brown hole.</description>
+        <date>March 9, 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object type="Skyhook" ID="Skyhook">
+                <property key="ZValue">0.2</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object width="0.8" height="0.1" type="IBeam">
+                <property key="Friction">0.1</property>
+                <property key="Resizable">none</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+			<object type="Hammer">
+                <property key="Mass">20.0</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3"/>
+        <predefined>
+            <object width="0.9" X="0.7" Y="2.15" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="1.0" X="0.75" Y="1.1" height="2.0" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object X="0.8" Y="2.95" type="TennisBall" ID="Ball"/>
+            <object X="2" Y="0.5" type="PostItMisc">
+                <property key="page1">Look, another gap.</property>
+                <property key="page2">It's a tennis ball this time that wants to cross.</property>
+                <property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>is on it again</property>
+            </object>
+            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="1.2" X="4.4" Y="2.35" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.6" X="4.1" Y="1.77" height="0.1" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.1" X="4.35" Y="0.90" height="1.70" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.5" X="4.65" Y="0.45" height="0.9" type="Scenery">
+                <property key="ImageName">basket</property>
+            </object>
+            <object width="0.1" X="4.95" Y="1.15" height="2.3" type="RectObject">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.1" X="3.87" Y="1.82" height="0.1" type="RectObject" angle="0.79">
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object X="4.25" Y="1.99" type="BowlingPin" ID="the Pin">
+                <property key="Mass">0.8</property>
+			</object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.35</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.3</property>
+            <property key="object">Ball</property>
+        </goal>
+    </goals>
+</tbe-level>

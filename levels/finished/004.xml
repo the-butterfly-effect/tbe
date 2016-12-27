@@ -1,0 +1,111 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Balancing Cola</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Topple the pins!</description>
+        <date>01.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object X="2.40886" angle="0" width="0.22" type="BowlingBall" Y="0.768462" height="0.22"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3"/>
+        <predefined>
+            <object X="1.4" angle="0" width="2.2" type="BirchBar" Y="0.4" ID="Bar" height="0.1">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">2.0</property>
+                <property key="Mass">6.0</property>
+            </object>
+            <object X="2.1" angle="0" width="4.2" type="Floor" Y="0.101613" height="0.196774">
+                <property key="Friction">0.6</property>
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object width="1" X="0.4" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="1" X="1.2" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="1" X="2" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="1" X="2.8" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="1" X="3.6" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object width="1" X="3.798" Y="0.15" height="0.3" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">9.0</property>
+            </object>
+            <object X="4.45708" angle="0" width="0.514123" type="Scenery" Y="0.0982759" height="0.1901">
+                <property key="ImageName">basket</property>
+            </object>
+            <object X="0.4" angle="0" width="0.166" type="ColaMintBottle" Y="0.7" height="0.501">
+                <property key="Friction">2.0</property>
+            </object>
+            <object X="1.7" angle="2.3562" width="0.22" type="LeftFixedWedge" Y="0.186" height="0.22">
+                <tooltip>This piece of wood has a triangular shape with one tip pointing upwards. It doesn’t move.</tooltip>
+            </object>
+            <object X="4.14338" angle="0" width="0.12" type="BowlingPin" Y="0.373337" ID="Pin2" height="0.34"/>
+            <object X="3.98676" angle="0" width="0.12" type="BowlingPin" Y="0.373337" ID="Pin3" height="0.34"/>
+            <object X="2.123" angle="0" width="0.255" type="Floor" Y="0.76" height="0.327"/>
+            <object X="3.8" angle="0" width="1.4" type="LeftRamp" Y="0.75" height="0.2"/>
+            <object X="0.7" angle="0" width="1.4" type="RectObject" Y="3.05" height="0.1">
+                <property key="Bounciness">0.0</property>
+                <property key="ImageName">Empty</property>
+            </object>
+            <object X="4" angle="0" width="0.22" type="PostItTutorial" Y="1.3" height="0.22">
+                <property key="page1">The goal here is to topple the pins below.</property>
+                <property key="page2">I’m thirsty!</property>
+                <property key="page3">But that’s not an ordinary cola bottle …</property>
+                <property key="page4">It’s a cola-mint fountain, ready to blow!&lt;br>Just a light shock will start it!</property>
+                <property key="page5">Where does the cola go?</property>
+                <property key="page6">&lt;br>&lt;br>… a thirsty Post-It Boy</property>
+            </object>
+            <object X="1.851" angle="0.155" width="1.436" type="Floor" Y="0.88" height="0.15"/>
+            <object X="2.57" angle="1.57" width="0.5" type="Floor" Y="0.8" height="0.1"/>
+            <object X="3.506" angle="0" width="1.972" type="Floor" Y="0.6" height="0.1"/>
+            <object X="2.75" angle="0" width="0.25" type="Cactus" Y="0.85" height="0.4"/>
+            <object X="1.661" angle="0" width="1.056" type="Floor" Y="0.719" height="0.244">
+                <property key="ImageName">big_used_wood_bar</property>
+            </object>
+            <object X="4.81454" angle="0" width="0.2" type="Wall" Y="0.501327" height="1"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.886275;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.486275;0.447059;0.329412;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">Pin2</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="anglechanged"></property>
+            <property key="object">Pin3</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">Pin2</property>
+            <property key="xover">4.2000000000000002</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">Pin3</property>
+            <property key="xover">4.2000000000000002</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="2.38" Y="0.75" number="1" object="BowlingBall"/>
+    </hints>
+</tbe-level>

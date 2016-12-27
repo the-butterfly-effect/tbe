@@ -17,13 +17,13 @@
  */
 
 #include "AbstractJoint.h"
-#include "ViewObject.h"
+#include "ViewItem.h"
 #include "World.h"
 
 #include <cassert>
 
 /// pointer to World's groundbody.
-static b2Body* theGroundBodyPtr = nullptr;
+static b2Body *theGroundBodyPtr = nullptr;
 
 AbstractJoint::AbstractJoint(void) : theJointPtr(nullptr), isChild(false)
 {
@@ -31,96 +31,93 @@ AbstractJoint::AbstractJoint(void) : theJointPtr(nullptr), isChild(false)
 
 AbstractJoint::~AbstractJoint()
 {
-	DEBUG5("AbstractJoint::~AbstractJoint() for %p", this);
+    DEBUG5("AbstractJoint::~AbstractJoint() for %p", this);
 }
 
 
-ViewObject* AbstractJoint::createViewObject(float aDefaultDepth)
+ViewItem* AbstractJoint::createViewItem(float aDefaultDepth)
 {
-	if (isChildJoint())
-		return nullptr;
-	else
-		return AbstractObject::createViewObject(aDefaultDepth);
+    // TODO: do we need something special for ViewLink here???
+    if (isChildJoint())
+        return nullptr;
+    else
+        return createViewItemInt(aDefaultDepth, "ViewObject", "", "");
 }
 
 
 void AbstractJoint::deletePhysicsObject(void)
 {
-	// TODO/FIXME: there's logic behind this member that needs documenting
-	// because otherwise we would have left it to the deletePhysicsObject()
-	// of AbstractObject, right?
-	DEBUG5("AbstractJoint::deletePhysicsObject(void)");
+    // TODO/FIXME: there's logic behind this member that needs documenting
+    // because otherwise we would have left it to the deletePhysicsObject()
+    // of AbstractObject, right?
+    DEBUG5("AbstractJoint::deletePhysicsObject(void)");
     theJointPtr = nullptr;
-	if (theViewObjectPtr)
-		theViewObjectPtr->setVisible(true);
+//    if (theViewObjectPtr)
+//        theViewObjectPtr->setVisible(true);
 }
 
-b2Body* AbstractJoint::getB2BodyPtrFor(AbstractObjectPtr anObject, const Position& aPosition)
+b2Body *AbstractJoint::getB2BodyPtrFor(AbstractObjectPtr anObject, const Position &aPosition)
 {
-	b2Body* myReturn = anObject->getB2BodyPtrForPosition(aPosition);
-	if (myReturn == nullptr)
-	{
-		anObject->createPhysicsObject();
-		myReturn = anObject->getB2BodyPtrForPosition(aPosition);
-	}
-	return myReturn;
+    b2Body *myReturn = anObject->getB2BodyPtrForPosition(aPosition);
+    if (myReturn == nullptr) {
+        anObject->createPhysicsObject();
+        myReturn = anObject->getB2BodyPtrForPosition(aPosition);
+    }
+    return myReturn;
 }
 
 
-b2Body* AbstractJoint::getGroundBodyPtr(void)
+b2Body *AbstractJoint::getGroundBodyPtr(void)
 {
-	return theGroundBodyPtr;
+    return theGroundBodyPtr;
 }
 
 void AbstractJoint::jointWasDeleted(void)
 {
-	// if this member is called, the joint is already gone
-	DEBUG4("AbstractJoint::jointWasDeleted(void) for %p", this);
-	theJointPtr = nullptr;
-	if (theViewObjectPtr)
-		theViewObjectPtr->setVisible(false);
+    // if this member is called, the joint is already gone
+    DEBUG4("AbstractJoint::jointWasDeleted(void) for %p", this);
+    theJointPtr = nullptr;
+    if (theViewItemPtr)
+        theViewItemPtr->setVisible(false);
 }
 
 
 void AbstractJoint::markAsChild(void)
 {
-	theProps.setProperty(Property::ISCHILD_STRING, "yes");
-	isChild = true;
+    theProps.setProperty(Property::ISCHILD_STRING, "yes");
+    isChild = true;
 }
 
 
 void AbstractJoint::physicsObjectStatus(JointInterface::JointStatus aStatus)
 {
-	switch (aStatus)
-	{
-	case JointInterface::CREATED:
-		if (theViewObjectPtr)
-			theViewObjectPtr->setVisible(true);
-		break;
-	case JointInterface::DELETED:
-		jointWasDeleted();
-		break;
-	case JointInterface::POSUPDATE:
-		updateOrigCenter();
-		break;
-	}
+    switch (aStatus) {
+    case JointInterface::CREATED:
+        if (theViewItemPtr)
+            theViewItemPtr->setVisible(true);
+        break;
+    case JointInterface::DELETED:
+        jointWasDeleted();
+        break;
+    case JointInterface::POSUPDATE:
+        updateOrigCenter();
+        break;
+    }
 }
 
 
-void AbstractJoint::setGroundBodyPtr(b2Body* aPtr)
+void AbstractJoint::setGroundBodyPtr(b2Body *aPtr)
 {
-	theGroundBodyPtr = aPtr;
+    theGroundBodyPtr = aPtr;
 }
 
 
 void AbstractJoint::updateViewObject(bool) const
 {
-	// no ViewObject: nothing to update ;-)
-	if(theViewObjectPtr == nullptr)
-		return;
+    // no ViewItem: nothing to update ;-)
+    if (theViewItemPtr == nullptr)
+        return;
 
-	theViewObjectPtr->adjustObjectDrawing(getTempWidth(),
-									  getTempHeight(),
-									  getTempCenter());
-	theViewObjectPtr->setNewImageIndex(getImageIndex());
+    theViewItemPtr->adjustObjectDrawingFromAO();
+    theViewItemPtr->setNewImageIndex(getImageIndex());
 }

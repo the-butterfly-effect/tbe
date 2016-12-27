@@ -22,11 +22,12 @@
 #include "ui_EditObjectDialog.h"
 #include "tbe_global.h"
 #include "AbstractObject.h"
-#include "AbstractUndoCommand.h"
+#include "Property.h"
 #include <QDialog>
 
-class AbstractUndoCommand;
-
+class MoveUndoCommand;
+class ResizeUndoCommand;
+class RotateUndoCommand;
 
 /** Dialog to edit all properties of an object.
   * Owned and created by ResizingGraphicsView, which also has a
@@ -38,7 +39,7 @@ public:
     Q_OBJECT
 
 public:
-    EditObjectDialog(AbstractObjectPtr aAbstractObjectPtr, QWidget *parent = 0);
+    EditObjectDialog(QWidget *parent = 0);
     virtual ~EditObjectDialog();
 
 public slots:
@@ -49,13 +50,16 @@ public slots:
       * @param anAbstractObjectPtr pointer to AbstractObject to read all data
       *                       from, or a nullptr pointer to grey out all
       *                       values
-      * @returns true if successful - which should be always
       */
-    void readFromObject(AbstractObjectPtr anAbstractObjectPtr);
+    void updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjectPtr);
 
 private slots:
+    void angle_editingFinished();
+    void angle_valueChanged(double);
     void position_editingFinished();
     void position_valueChanged(double);
+    void size_editingFinished();
+    void size_valueChanged(double);
     void propertyCellChanged ( int row, int column );
     void lineEditID_valueChanged ( void );
 
@@ -63,10 +67,15 @@ private:
     Ui::EditObjectDialog ui;
 
     AbstractObjectWeakPtr theAOPtr;
+    MoveUndoCommand *theMUCPtr;
+    ResizeUndoCommand *theRszUCPtr;
+    RotateUndoCommand *theRotUCPtr;
+
+    PropertyList theObjectProps;
 
     /// use whenever you need something from the real object instead of the
     /// std::weak_ptr.
-    AbstractObject* getAORealPtr(void)
+    AbstractObject *getAORealPtr(void)
     {
         if (theAOPtr.expired())
             return nullptr;
@@ -74,15 +83,36 @@ private:
             return AbstractObjectPtr(theAOPtr).get();
     }
 
-    /// @returns pointer to the *Abstract* UndoCommand
-    AbstractUndoCommand* getUndoPtr(void);
+    /// Call this member to ensure that no other undo commands are present.
+    /// If an undo command was present, it will be 'finished'.
+    void closeExistingUndos();
 
     // kill possibility for copy constructor&assignment operator
-    EditObjectDialog(const EditObjectDialog&) = delete;
-    const EditObjectDialog& operator=(const EditObjectDialog&) = delete;
+    EditObjectDialog(const EditObjectDialog &) = delete;
+    const EditObjectDialog &operator=(const EditObjectDialog &) = delete;
 
-    // persistant position of the dialog
-    static QPoint thePosition;
+    /// Simple RAII to make threadsafe/exceptionsafe boolean to prevent
+    /// recursive calling of closeExistingUndos() in updateAbstractObjectPtr().
+    class PreventClose final
+    {
+    public:
+        PreventClose()
+        {
+            assert(!theClosePreventer);
+            theClosePreventer = true;
+        }
+        ~PreventClose()
+        {
+            assert(theClosePreventer);
+            theClosePreventer = false;
+        }
+        static bool isClosePrevented()
+        {
+            return theClosePreventer;
+        }
+    private:
+        static std::atomic<bool> theClosePreventer;
+    };
 };
 
 #endif // EDITOBJECTDIALOG_H

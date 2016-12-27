@@ -40,7 +40,7 @@
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="doubleSpinBoxWidth">
         <property name="toolTip">
-         <string>width of the level in meters</string>
+         <string>Width of the level in meters</string>
         </property>
         <property name="whatsThis">
          <string/>
@@ -214,6 +214,37 @@
            <string>The resulting gradient is shown here</string>
           </property>
          </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QToolButton" name="toolButton_new">
+          <property name="text">
+           <string>new line</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButton_delete">
+          <property name="text">
+           <string>delete line</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>

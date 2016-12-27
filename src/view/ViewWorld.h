@@ -19,11 +19,12 @@
 #ifndef VIEWWORLD_H
 #define VIEWWORLD_H
 
-#include <QtGui/QGraphicsScene>
-#include <QtCore/QTime>
-#include <QtCore/QTimer>
+#include <QGraphicsScene>
+#include <QTime>
+#include <QTimer>
 
 #include "Box2D.h"
+#include "AbstractObjectPtr.h"
 
 class QAction;
 class ResizingGraphicsView;
@@ -34,104 +35,123 @@ class World;
   * It contains the timers that run the simulation.
   * It also contains the debug callbacks from Box2D to draw outlines.
   */
-class ViewWorld : public QGraphicsScene, public b2Draw
+class ViewWorld : public QGraphicsScene //, public b2Draw
 {
     Q_OBJECT
 
 public:
-	explicit ViewWorld (ResizingGraphicsView* aGraphicsViewPtr, World* aWorldPtr);
+    explicit ViewWorld (ResizingGraphicsView *aGraphicsViewPtr, World *aWorldPtr);
 
-	~ViewWorld();
+    virtual ~ViewWorld();
 
-	// Public accessor methods
-	//
+    // Public accessor methods
+    //
 
-	const World* getWorldPtr() const
-	{ return theWorldPtr; }
+    const World *getWorldPtr() const
+    {
+        return theWorldPtr;
+    }
 
-	qreal getWidth(void) const;
-	qreal getHeight(void) const;
+    qreal getWidth(void) const;
+    qreal getHeight(void) const;
 
-	/// @returns true if the simulation is not in 'stopped' mode.
-	static bool getIsSimRunning();
+    /// @returns true if the simulation is not in 'stopped' mode.
+    static bool getIsSimRunning();
 
-	// QGraphicsScene events
-	//
+    // QGraphicsScene events
+    //
 
-	virtual void	mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent );
-
-	/// Constant defining the goal FPS (frames per second)
-	/// @note: This does not say that the game achieves this number.
-	///        It however, will mean that the game will *attempt* not to render
-	///        more frames than this per second. No guarantees.
-	static const int MAX_FPS;
+    /// Constant defining the goal FPS (frames per second)
+    /// @note: This does not say that the game achieves this number.
+    ///        It however, will mean that the game will *attempt* not to render
+    ///        more frames than this per second. No guarantees.
+    static const int MAX_FPS;
 
 signals:
-	void needReset();
+    void needReset();
+    void needPause();
+
+    /// any ViewObject that has changes to mention to EditObjectDialog will
+    /// emit a signal that is sent here.
+    /// ViewWorld will re-emit a signal for it.
+    /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
+    void signal_updateEditObjectDialog(AbstractObjectPtr anAOPtr);
 
 public slots:
-        // signals to start/stop/ffwd/reset the game
-        void slot_signal4F();
-        void slot_signalFF();
-        void slot_signalPause();
-        void slot_signalPlay();
-        void slot_signalReset();
+    // signals to start/stop/ffwd/reset the game
+    void slot_signal4F();
+    void slot_signalFF();
+    void slot_signalPause();
+    void slot_signalPlay();
+    void slot_signalReset();
+    void slot_signalSlow();
 
-        void on_sizeAdjust(void);
-        void setupBackground(void);
+    void on_sizeAdjust(void);
+    void setupBackground(void);
+
+    /// any ViewObject that has changes to mention to EditObjectDialog will
+    /// emit a signal that is sent here.
+    /// ViewWorld will immediately re-emit a signal for it.
+    /// @param anAOPtr std::shared_ptr to the AbstractObject underneath.
+    void slot_updateEditObjectDialog(AbstractObjectPtr anAOPtr)
+    {
+        emit signal_updateEditObjectDialog(anAOPtr);
+    }
 
 private slots:
-	/// called whenever a timer tick happens
-	void on_timerTick(void);
+    /// called whenever a timer tick happens
+    void on_timerTick(void);
 
-	/// called whenever the framerate timer tick happens
-	void on_framerateTimerTick(void);
+    /// called whenever the framerate timer tick happens
+    void on_framerateTimerTick(void);
 
 private:
-	// Private attributes
-	//
+    // Private attributes
+    //
 
-	World* theWorldPtr;
+    World *theWorldPtr;
 
-	QTimer theTimer;
-	QTimer theFramerateTimer;
-	QTime  theSimulationTime;
-	QTime  theGameStopwatch;
+    QTimer theTimer;
+    QTimer theFramerateTimer;
+    QTime  theSimulationTime;
+    QTime  theGameStopwatch;
 
-	/// current number of milliseconds per time step
-	/// (note that TBE is configured to run at "half of reality" speed)
-	qreal theSimSpeed;
+    /// current number of milliseconds per time step
+    /// (note that TBE is configured to run at "half of reality" speed)
+    qreal theSimSpeed;
 
-	unsigned int theFramesPerSecond;
+    unsigned int theFramesPerSecond;
 
-	QAction* theFrameRateViewPtr;
+    QAction *theFrameRateViewPtr;
 
 private:
     // keep this one last, it kills copy constructors & assignment operators
     Q_DISABLE_COPY ( ViewWorld );
 
-	// the below is for the Debug drawing of Box2D
+    // the below is for the Debug drawing of Box2D
 protected:
-	/// Draw a closed polygon provided in CCW order.
-	virtual void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
-	/// Draw a solid closed polygon provided in CCW order.
-	virtual void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
-	/// Draw a circle.
-	virtual void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color);
-	/// Draw a solid circle.
-	virtual void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color);
-	/// Draw a line segment.
-	virtual void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color);
-	/// Draw a transform. Choose your own length scale.
-	/// @param xf a transform.
-	virtual void DrawTransform(const b2Transform& xf);
+/*    /// Draw a closed polygon provided in CCW order.
+    virtual void DrawPolygon(const b2Vec2 *vertices, int32 vertexCount, const b2Color &color) override;
+    /// Draw a solid closed polygon provided in CCW order.
+    virtual void DrawSolidPolygon(const b2Vec2 *vertices, int32 vertexCount,
+                                  const b2Color &color) override;
+    /// Draw a circle.
+    virtual void DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &color) override;
+    /// Draw a solid circle.
+    virtual void DrawSolidCircle(const b2Vec2 &center, float32 radius, const b2Vec2 &axis,
+                                 const b2Color &color) override;
+    /// Draw a line segment.
+    virtual void DrawSegment(const b2Vec2 &p1, const b2Vec2 &p2, const b2Color &color) override;
+    /// Draw a transform. Choose your own length scale.
+    /// @param xf a transform.
+    virtual void DrawTransform(const b2Transform &xf) override;
 
-	const static int theMaxNumberOfGraphicsListElements;
-	typedef QList<QGraphicsItem*> GraphicsList;
-	GraphicsList theGraphicsList;
-	void addDebugDrawToList(QGraphicsItem* anItem);
-	void clearGraphicsList(int aCount);
-
+    const static int theMaxNumberOfGraphicsListElements;
+    typedef QList<QGraphicsItem *> GraphicsList;
+    GraphicsList theGraphicsList;
+    void addDebugDrawToList(QGraphicsItem *anItem);
+    void clearGraphicsList(int aCount);
+*/
 };
 
 #endif // VIEWWORLD_H

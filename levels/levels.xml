@@ -1,52 +1,85 @@
 <!DOCTYPE levellist>
+<!-- NOTE: When adding a level, make sure it is not placed before a level
+which introduces an element or concept it makes use of
+(e.g. a level with a configurable detonator box before birds-2).
+-->
 <tbe-levels>
-   <level> elce09/001.xml </level>
-   <level> draft/bouncing_balls.xml </level>
-   <level> elce09/002.xml </level>
-   <level> draft/jumping_around.xml </level>
-   <level> draft/house_of_cards.xml </level>
-   <level> elce09/003.xml </level>
-   <level> picnic/picnic-0.xml </level>
-   <level> elce09/brother-plays-soccer.xml </level>
-   <level> draft/bowling_pin_plays_soccer.xml </level>
-   <level> elce09/brother-plays-penguin-goalie.xml </level>
-   <level> picnic/picnic-1.xml </level>
-   <level> draft/jumping_around-2.xml </level>
-   <level> draft/turn-it-around.xml </level>
-   <level> draft/contraption1.xml </level>
-   <level> draft/bridge_gap.xml </level>
-   <level> draft/balloons-go-up.xml </level>
-   <level> draft/balloons-do-poof.xml </level>
-   <level> elce09/004.xml </level>
-   <level> draft/cola-powered-bike.v2.xml </level>
-   <level> draft/styrofoam.xml </level>
-   <level> jumpingjack/party-at-office.xml </level>
-   <level> draft/poing-poing-poing.xml </level>
-   <level> draft/poofpoofpoof.xml </level>
-   <level> elce09/005.xml </level>
-   <level> draft/loopings.xml </level>
-   <level> draft/topple-the-other-way.xml </level>
-   <level> angry/birds1.xml </level>
-   <level> angry/birds2.xml </level>
-   <level> draft/dialbforboom.xml </level>
-   <!--level> draft/springboard.xml </level-->
-   <level> draft/spare-the-balloon.xml </level>
-   <level> draft/float-balloon-float.xml </level>
-   <level> draft/bridge-2.xml </level>
-   <level> games/extreme-tux-racer.xml </level>
-   <level> games/supertuxkart.xml </level>
-   <level> draft/imperfectbalance.xml </level>
-   <level> draft/bridge-3.xml </level>
-   <level> picnic/picnic-3.xml </level>
-   <level> draft/save-the-butterfly.xml</level>
-   <level> draft/domino_day.xml </level>
-   <level> draft/geyser.xml </level>
-   <level> draft/butterfly-on-steroids.xml </level>
-   <level> elce09/006.xml </level>
-   <level> draft/contraption2.xml </level>
-   <level> picnic/picnic-2.xml </level>
-   <level> draft/loopings2.xml </level>
-   <level> elce09/007.xml </level>
-   <!--level> draft/zoingandboom.xml </level-->
-   <level> draft/find-the-message.v2.xml </level>
+   <level> finished/001.xml </level> <!-- Introduces post-it, butterfly, simulation controls. MUST BE FIRST LEVEL! -->
+   <level> finished/bouncing_balls.xml </level> <!-- Introduces toolbox. MUST BE SECOND LEVEL! -->
+   <level> needs-polish/002.xml </level> <!-- First level with a butterfly in danger -->
+   <level> finished/jumping_around.xml </level>
+   <level> finished/house_of_cards.xml </level>
+   <!--level> finished/003.xml </level-->
+   <level> finished/picnic-0.xml </level> <!-- Introduces rotation -->
+   <level> finished/brother-plays-soccer.xml </level>
+   <level> finished/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
+   <level> finished/attack_of_the_killer_cacti.xml</level>
+   <level> finished/picnic-1.xml </level>
+   <level> finished/jumping_around-2.xml </level>
+   <level> finished/turn-it-around.xml </level>
+   <level> finished/contraption1.xml </level>
+   <level> finished/bridge_gap.xml </level>
+   <level> finished/steam-machine.xml </level>
+   <level> finished/balloons-go-up.xml </level>
+   <level> finished/balloons-do-poof.xml </level>
+   <level> finished/004.xml </level>
+   <level> finished/cola-powered-bike.v2.xml </level>
+   <level> finished/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
+   <level> finished/party-at-office.xml </level>
+   <level> finished/in_the_attic.xml </level>
+   <level> finished/poofpoofpoof.xml </level>
+   <level> finished/005.xml </level>
+   <level> finished/volley_valley.xml </level>
+   <level> finished/maze.xml </level>
+   <level> finished/topple-the-other-way.xml </level>
+   <level> finished/birds1.xml </level> <!-- Introduces dynamite and detonator box -->
+   <level> finished/birds2.xml </level> <!-- Introduces changing detonator box' phone number -->
+   <level> finished/dialbforboom.xml </level>
+   <level> finished/pingus-introduction.xml </level> <!-- Introduces pingus and exit -->
+   <level> finished/pingus-1.xml </level>
+   <level> finished/magic_steel.xml </level>
+   <level> finished/brother-plays-penguin-goalie.xml </level>
+   <level> finished/domino_day.xml </level> <!-- Introduces scaling restricted to one axis only -->
+   <level> finished/sorting-1.xml </level>
+   <level> needs-polish/spare-the-balloon.xml </level>
+   <level> finished/the_ball_the_box_and_the_penguin.xml </level>
+   <level> finished/controlled_detonation.xml </level>
+   <level> finished/float-balloon-float.xml </level>
+   <level> finished/wedge_land.xml </level>
+   <level> finished/little_balloon_puzzle.xml </level>
+   <level> finished/creativity.xml </level>
+   <level> finished/bridge-2.xml </level>
+   <level> needs-polish/extreme-tux-racer.xml </level>
+   <level> finished/supertuxkart.xml </level>
+   <level> finished/imperfectbalance.xml </level>
+   <level> finished/picnic-3.xml </level>
+   <level> finished/save-the-butterfly.xml</level>
+   <level> finished/rotate_and_win.xml</level>
+   <level> finished/construction_yard.xml</level>
+   <level> needs-polish/geyser.xml </level>
+   <level> finished/butterfly-on-steroids.xml </level>
+   <level> finished/006.xml </level>
+   <level> finished/contraption2.xml </level>
+   <level> finished/balloon_blues.xml </level>
+   <level> needs-polish/picnic-2.xml </level>
+   <level> finished/domino_chest.xml </level>
+   <level> finished/loopings2.xml </level>
+   <level> finished/007.xml </level>
+   <level> finished/hanging_box.xml </level>
+   <level> needs-polish/zoingandboom.xml </level>
+   <level> finished/find-the-message.v2.xml </level> <!-- “Good-bye” level, should be the last level. -->
+   <!-- Chaos zone begins here, levels here are not well sorted (yet). -->
+   <level> finished/the_core.xml </level>
+   <level> finished/butterflies_of_doom.xml </level>
+   <level> finished/the_pit.xml </level>
+   <level> finished/boom_boom_boom.xml </level>
+   <level> finished/goal_maker.xml </level>
+   <level> finished/hattrick.xml </level>
+   <level> finished/cola_reaction.xml </level>
+   <level> needs-polish/butterfly_race.xml </level>
+   <level> finished/sorting-2.xml </level>
+   <level> finished/sorting-3.xml </level>
+   <level> finished/sorting-4.xml </level>
+   <level> finished/sorting-5.xml </level>
+   <level> finished/10_kilograms_above_the_ground.xml </level>
 </tbe-levels>

@@ -19,7 +19,6 @@
 #include "Scenery.h"
 #include "tbe_global.h"
 #include "Box2D.h"
-#include "ViewObject.h"
 #include "Property.h"
 #include "ObjectFactory.h"
 
@@ -27,10 +26,14 @@
 class SceneryObjectFactory : public ObjectFactory
 {
 public:
-	SceneryObjectFactory(void)
-	{	announceObjectType("Scenery", this); }
-	AbstractObject* createObject(void) const override
-	{	return fixObject(new Scenery()); }
+    SceneryObjectFactory(void)
+    {
+        announceObjectType("Scenery", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new Scenery());
+    }
 };
 static SceneryObjectFactory theFactory;
 
@@ -38,20 +41,23 @@ static SceneryObjectFactory theFactory;
 
 Scenery::Scenery( ) : AbstractObject()
 {
-	// only keep DESCRIPTION, IMAGE_NAME and ZVALUE
-	theProps.setDefaultPropertiesString(
-		QString("-")   + Property::BOUNCINESS_STRING  +
-		QString(":/-") + Property::FRICTION_STRING    +
-		QString(":/-") + Property::PIVOTPOINT_STRING  +
-		QString(":/-") + Property::RESIZABLE_STRING   +
-		QString(":/-") + Property::ROTATABLE_STRING   + QString(":/") );
+    // only keep DESCRIPTION, IMAGE_NAME and ZVALUE
+    theProps.setDefaultPropertiesString(
+        QString("-")   + Property::BOUNCINESS_STRING  +
+        QString(":/-") + Property::FRICTION_STRING    +
+        QString(":/-") + Property::PIVOTPOINT_STRING  +
+        QString(":/-") + Property::RESIZABLE_STRING   +
+        QString(":/-") + Property::TRANSLATIONGUIDE_STRING   +
+        QString(":/-") + Property::NOCOLLISION_STRING   +
+        QString(":/-") + Property::ROTATABLE_STRING   +
+        QString(":/")  + Property::ZVALUE_STRING + ":0.1/" );
 
-	DEBUG5("Scenery::Scenery done");
+    DEBUG5("Scenery::Scenery done");
 }
 
 
 Scenery::~Scenery( )
 {
-	;
+    ;
 }
 

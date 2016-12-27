@@ -9,7 +9,7 @@
 
 printf "Updating all i18n files\n"
 
-lupdate_cmd=`which lupdate-qt4`
+lupdate_cmd=`which lupdate-qt5`
 if [ -z "$lupdate_cmd" ]
 then
    lupdate_cmd=`which lupdate`
@@ -20,7 +20,7 @@ then
    exit 1
 fi
 
-$lupdate_cmd -codecfortr utf8 -I ../src/* -ts *.ts
+$lupdate_cmd -I ../src/* -ts *.ts
 
 printf "\n\n"
 printf "\n   translation file  %%ready   (unfinished/(total-obsolete))\n"

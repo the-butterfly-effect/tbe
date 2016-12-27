@@ -19,18 +19,22 @@
 #ifndef RESIZINGGRAPHICSVIEW_H
 #define RESIZINGGRAPHICSVIEW_H
 
-#include <QtGui/QGraphicsView>
-#include <QtGui/QResizeEvent>
+#include <QGraphicsView>
+#include <QResizeEvent>
+#include <QStatusBar>
+#include <QMouseEvent>
 
 #include "AbstractObjectPtr.h"
 class EditObjectDialog;
-class GameResources;
+class GameFlow;
+class GameStateMachine;
 class MainWindow;
 class QMenu;
 class QMenuBar;
-class SimulationControls;
+class QQuickItem;
 class ViewWorld;
-class WinFailDialog;
+
+#include <memory>
 
 class ResizingGraphicsView : public QGraphicsView
 {
@@ -40,57 +44,52 @@ public:
     ~ResizingGraphicsView();
 
     /// only to be called by MainWindow,
-    /// clears everything related to the ViewWorld and GameResourcesDialog
-    /// and hides the sim controls again.
     void clearViewWorld(void);
 
     /// used by various components to get to the RSGView
-    static ResizingGraphicsView* me(void);
+    static ResizingGraphicsView *me(void);
 
     /// only to be called by ViewWorld, to register itself
     /// in the view
-    void setViewWorld(ViewWorld* aScenePtr, const QString& aLevelName);
+    void setViewWorld(ViewWorld *aScenePtr, const QString &aLevelName);
 
     /// This member does initialisation beyond creation,
     /// i.e. hooking up various UI elements to actions.
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow* aMWPtr, QMenuBar* aMenuBarPtr, QMenu* anMenuControlsPtr);
+    void setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
+               QMenu *anMenuControlsPtr);
 
-    /// @returns a pointer to the GameResourcesDialog.
-    /// @note this member is only used to hand a pointer to Level.
-    GameResources* getGameResourcesDialogPtr() const;
-
-    QAction* getFrameRateViewPtr()
-    { return theFrameRateViewPtr; }
+    QAction *getFrameRateViewPtr()
+    {
+        return theFrameRateViewPtr;
+    }
 
 //protected:
-    virtual void resizeEvent(QResizeEvent *event);
+//    virtual void resizeEvent(QResizeEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
 
-private slots:
-    void slot_levelDeath(void);
-    void slot_levelWon(void);
-
-    void slot_actionChooseLevel();
-    void slot_actionNextLevel();
-    void slot_actionReplay();
-
-public slots:
-    void slot_actionSkipLevel();
-    void slot_showEditObjectDialog(AbstractObjectPtr anAOPtr);
-	void slot_editObjectDialog_destroyed();
-	void slot_showGameResourcesDialog();
+signals:
+    /// retransmitted from WinFailDialog
+    void signal_actionChooseLevel();
+    /// retransmitted from WinFailDialog
+    void signal_actionNextLevel();
+    /// retransmitted from WinFailDialog
+    void signal_actionReplay();
+    /// retransmitted from WinFailDialog
+    void signal_actionSkipLevel();
+    /// retransmitted from GameResources
+    void signal_actionReload();
 
 private:
-    GameResources*      theGameResourcesPtr;
-    MainWindow*         theMainWindowPtr;
-    EditObjectDialog*   theObjectEditorPtr;
-    SimulationControls* theSimControlsPtr;
-    ViewWorld*          theScenePtr;
-    WinFailDialog*      theWinFailDialogPtr;
-
-    QAction*            theFrameRateViewPtr;
+    MainWindow         *theMainWindowPtr;
+    EditObjectDialog   *theObjectEditorPtr;
+    GameFlow           *theGameFlowPtr;
+    GameStateMachine   *theGameStateMachinePtr;
+    ViewWorld          *theScenePtr;
+    QAction            *theFrameRateViewPtr;
+    friend class LevelCreator;
 };
 
 #endif // RESIZINGGRAPHICSVIEW_H

@@ -4,5 +4,14 @@ install(FILES
         ${SRCDIRNAME}/Skyhook.svg
         ${SRCDIRNAME}/QuarterArc.png
         ${SRCDIRNAME}/QuarterArc80.png
+	${SRCDIRNAME}/rotating_bar.svg
+        ${SRCDIRNAME}/CardboardBox.svg
+        ${SRCDIRNAME}/jj-leftfoot.png
+        ${SRCDIRNAME}/jj-lefthand.png
+        ${SRCDIRNAME}/jj-leftleg.png
+        ${SRCDIRNAME}/jj-rightfoot.png
+        ${SRCDIRNAME}/jj-righthand.png
+        ${SRCDIRNAME}/jj-rightleg.png
+        ${SRCDIRNAME}/goal.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

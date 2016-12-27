@@ -1,0 +1,76 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Toolbox Test</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Test of default objects in toolbox.</description>
+        <date>5/25/16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1"><object type="Balloon"/></toolboxitem>
+        <toolboxitem count="1"><object type="BedOfNails"/></toolboxitem>
+        <toolboxitem count="1"><object type="BirchBar"/></toolboxitem>
+        <toolboxitem count="1"><object type="BowlingBall"/></toolboxitem>
+        <toolboxitem count="1"><object type="BowlingPin"/></toolboxitem>
+        <toolboxitem count="1"><object type="Butterfly"/></toolboxitem>
+        <toolboxitem count="1"><object type="Cactus"/></toolboxitem>
+        <toolboxitem count="1"><object type="CardboardBox"/></toolboxitem>
+        <toolboxitem count="1"><object type="ColaCrate"/></toolboxitem>
+        <toolboxitem count="1"><object type="CircularSaw"/></toolboxitem>
+        <toolboxitem count="1"><object type="ColaMintBottle"/></toolboxitem>
+        <toolboxitem count="1"><object type="Daffodil"/></toolboxitem>
+        <toolboxitem count="1"><object type="DetonatorBox"/></toolboxitem>
+        <toolboxitem count="1"><object type="DominoBlue"/></toolboxitem>
+        <toolboxitem count="1"><object type="DominoRed"/></toolboxitem>
+        <toolboxitem count="1"><object type="DominoGreen"/></toolboxitem>
+        <toolboxitem count="1"><object type="Dynamite"/></toolboxitem>
+        <toolboxitem count="1"><object type="Floor"/></toolboxitem>
+        <toolboxitem count="1"><object type="Goal"/></toolboxitem>
+        <toolboxitem count="1"><object type="Hammer"/></toolboxitem>
+        <toolboxitem count="1"><object type="IBeam"/></toolboxitem>
+        <toolboxitem count="1"><object type="LeftFixedWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="LeftRamp"/></toolboxitem>
+        <toolboxitem count="1"><object type="LeftStyrofoamWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="LeftWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="PegMetal"/></toolboxitem>
+        <toolboxitem count="1"><object type="PegWood"/></toolboxitem>
+        <toolboxitem count="1"><object type="PetanqueBoule"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusSleeping"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusWalkLeft"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusWalkRight"/></toolboxitem>
+        <toolboxitem count="1"><object type="PingusExit"/></toolboxitem>
+        <toolboxitem count="1"><object type="QuarterArc40"/></toolboxitem>
+        <toolboxitem count="1"><object type="QuarterArc80"/></toolboxitem>
+        <toolboxitem count="1"><object type="RightFixedWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="RightRamp"/></toolboxitem>
+        <toolboxitem count="1"><object type="RightStyrofoamWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="RightWedge"/></toolboxitem>
+        <toolboxitem count="1"><object type="RotatingBar"/></toolboxitem>
+        <toolboxitem count="1"><object type="SeesawSmall"/></toolboxitem>
+        <toolboxitem count="1"><object type="Skyhook"/></toolboxitem>
+        <toolboxitem count="1"><object type="SoccerBall"/></toolboxitem>
+        <toolboxitem count="1"><object type="Spring"/></toolboxitem>
+        <toolboxitem count="1"><object type="Styrofoam"/></toolboxitem>
+        <toolboxitem count="1"><object type="TennisBall"/></toolboxitem>
+        <toolboxitem count="1"><object type="ToyChest"/></toolboxitem>
+        <toolboxitem count="1"><object type="VolleyBall"/></toolboxitem>
+        <toolboxitem count="1"><object type="Wall"/></toolboxitem>
+        <toolboxitem count="1"><object type="Weight"/></toolboxitem>
+        <toolboxitem count="1"><object type="WoodCrateFlat"/></toolboxitem>
+        <toolboxitem count="1"><object type="WoodCrateSquare"/></toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="8.5" height="5"/>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.494118;0.494118;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="escapedPingusCount" isFail="false">
+            <property key="equalmore">1</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

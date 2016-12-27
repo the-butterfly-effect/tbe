@@ -1,0 +1,85 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Loopings I</title>
+        <author>Thijs van Ginneken, Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Topple the bowling pin from the right.</description>
+        <date>11/17/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.170" X="0.858" Y="2.511" height="0.500" type="ColaMintBottle" angle="0.000">
+                <property key="Thrust">6</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="1.910" X="2.018" Y="2.576" height="0.594" type="LeftRamp" angle="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="0.220" X="2.501" Y="2.864" height="0.220" type="SoccerBall" angle="0.000"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3"/>
+        <predefined>
+            <object width="5.000" X="2.500" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.5</property>
+            </object>
+            <object width="0.220" X="2.900" Y="2.400" height="0.220" type="PostItHint" angle="0.000">
+                <property key="page1">Vrooom Vrooom Vrooom</property>
+                <property key="page2">Wooosh Wooosh Wooosh</property>
+                <property key="page3">Loopings are fun!</property>
+                <property key="page4">Post-It Boy once spoke with...&lt;br>&lt;br>Sonic the Hedgehog!</property>
+            </object>
+            <object width="0.120" X="3.100" Y="0.280" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000">
+                <property key="Mass">3.5</property>
+            </object>
+            <object width="1.200" X="4.400" Y="0.320" height="0.100" type="RectObject" angle="0.450">
+                <property key="Bounciness">0.05</property>
+                <property key="Friction">0.5</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.100" X="4.950" Y="0.863" height="1.525" type="RectObject" angle="0.000">
+                <property key="Bounciness">0.05</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object width="0.640" X="2.280" Y="0.330" height="0.640" type="QuarterArc80" angle="-1.570"/>
+            <object width="0.800" X="1.947" Y="1.980" height="0.800" type="QuarterArc80" angle="0.410"/>
+            <object width="0.800" X="1.360" Y="1.860" height="0.800" type="QuarterArc80" angle="1.570"/>
+            <object width="0.800" X="1.361" Y="1.120" height="0.800" type="QuarterArc80" angle="3.140"/>
+            <object width="0.700" X="4.323" Y="1.317" height="0.700" type="QuarterArc80" angle="6.504"/>
+            <object width="0.640" X="2.340" Y="0.420" height="0.640" type="QuarterArc80" angle="4.990"/>
+            <object width="0.700" X="4.528" Y="0.735" height="0.700" type="QuarterArc80" angle="5.179"/>
+            <object width="2.025" X="0.348" Y="1.785" height="0.100" type="Floor" angle="1.526"/>
+            <object width="0.980" X="1.276" Y="2.204" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.800" X="0.660" Y="0.399" height="0.800" type="QuarterArc80" angle="3.136"/>
+            <object width="0.800" X="1.546" Y="0.994" height="0.800" type="QuarterArc80" angle="3.543"/>
+            <object width="1.477" X="3.284" Y="0.784" height="0.100" type="Floor" angle="0.003"/>
+            <object width="1.000" X="4.420" Y="0.400" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.165" X="4.408" Y="1.600" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="4.420" Y="1.200" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="3.420" Y="0.400" height="0.800" type="Scenery" angle="0.000">
+                <property key="ImageName">chickenwire-texture</property>
+            </object>
+            <object width="1.000" X="0.739" Y="1.755" height="0.100" type="Floor" angle="1.418"/>
+            <object width="1.000" X="2.891" Y="1.791" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.625" X="3.647" Y="1.671" height="0.100" type="Floor" angle="-0.418"/>
+            <object width="0.800" X="3.72" Y="0.739" height="0.800" type="QuarterArc80" angle="-1.571"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">BowlingPin</property>
+            <property key="xbelow">3</property>
+        </goal>
+    </goals>
+</tbe-level>

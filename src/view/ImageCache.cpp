@@ -20,26 +20,26 @@
 #include "tbe_paths.h"
 #include "ImageCache.h"
 #include "Level.h"
-#include <QtCore/QCoreApplication>
-#include <QtCore/QFile>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmapCache>
-#include <QtSvg/QSvgRenderer>
+#include <QCoreApplication>
+#include <QFile>
+#include <QPainter>
+#include <QPixmapCache>
+#include <QSvgRenderer>
 
 //
-QSize ImageCache::theDefaultSize(160,160);
+QSize ImageCache::theDefaultSize(160, 160);
 
 
-bool ImageCache::getPixmap(const QString& anImageBaseName,
-                           QPixmap* anOutputPixmapPtr)
+bool ImageCache::getPixmap(const QString &anImageBaseName,
+                           QPixmap *anOutputPixmapPtr)
 {
     return getPixmap(anImageBaseName, theDefaultSize, anOutputPixmapPtr);
 }
 
-bool ImageCache::getPixmap(const QString& anImageBaseName,
-                           const QSize& aSize,
-						   QPixmap* anOutputPixmapPtr,
-						   QPainter::RenderHint aHint)
+bool ImageCache::getPixmap(const QString &anImageBaseName,
+                           const QSize &aSize,
+                           QPixmap *anOutputPixmapPtr,
+                           QPainter::RenderHint aHint)
 {
     DEBUG5ENTRY;
 
@@ -47,89 +47,86 @@ bool ImageCache::getPixmap(const QString& anImageBaseName,
     if (anImageBaseName.isEmpty())
         return false;
 
-	// TODO/FIXME:
-	// prefix size to pixmapname for cache
+    // TODO/FIXME:
+    // prefix size to pixmapname for cache
 
 
-	// only names, no paths, no extensions
-	Q_ASSERT(anImageBaseName.contains(".")==false);
-	Q_ASSERT(anImageBaseName.contains("/")==false);
+    // only names, no paths, no extensions
+    Q_ASSERT(anImageBaseName.contains(".") == false);
+    Q_ASSERT(anImageBaseName.contains("/") == false);
 
-//	// is the image present in the cache?
-//	if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
-//	{
-//		DEBUG4("Image '%s' found in image cache!", ASCII(anImageBaseName));
-//		// is the image the right size?
-//		if (anOutputPixmapPtr->size()!=aSize && aSize!=theDefaultSize)
-//		{
-//			*anOutputPixmapPtr = anOutputPixmapPtr->scaled(aSize, Qt::IgnoreAspectRatio);
-//		}
-//		return true;
-//	}
+//  // is the image present in the cache?
+//  if (QPixmapCache::find(anImageBaseName, anOutputPixmapPtr))
+//  {
+//      DEBUG4("Image '%s' found in image cache!", ASCII(anImageBaseName));
+//      // is the image the right size?
+//      if (anOutputPixmapPtr->size()!=aSize && aSize!=theDefaultSize)
+//      {
+//          *anOutputPixmapPtr = anOutputPixmapPtr->scaled(aSize, Qt::IgnoreAspectRatio);
+//      }
+//      return true;
+//  }
 
-	// No, it isn't. Let's try to load the image.
-	QString myFullPathName;
-	QPixmap myTempPixmap;
+    // No, it isn't. Let's try to load the image.
+    QString myFullPathName;
+    QPixmap myTempPixmap;
 
-	// we have 3 locations to search for:
-	QStringList mySearchPath;
-	mySearchPath << IMAGES_DIRECTORY;
-	mySearchPath << ":";	// this is Qt-speak for compiled-in resources
-	mySearchPath << Level::getPathToLevelFile();
-	for (int i=0; i<mySearchPath.count()+1; i++)
-	{
-		// if i equals that, we know we have exhausted our search paths
-		if (i==mySearchPath.count())
-		{
-			myFullPathName = IMAGES_DIRECTORY + "/NotFound.png";
-			DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-			break;
-		}
+    // we have 3 locations to search for:
+    QStringList mySearchPath;
+    mySearchPath << IMAGES_DIRECTORY;
+    mySearchPath << ":";    // this is Qt-speak for compiled-in resources
+    mySearchPath << Level::getPathToLevelFile();
+    for (int i = 0; i < mySearchPath.count() + 1; i++) {
+        // if i equals that, we know we have exhausted our search paths
+        if (i == mySearchPath.count()) {
+            myFullPathName = IMAGES_DIRECTORY + "/NotFound.png";
+            DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+            break;
+        }
 
-		myFullPathName = QString(mySearchPath[i] + "/%1.png").arg(anImageBaseName);
-		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-		if (QFile::exists(myFullPathName))
-			break;
+        myFullPathName = QString(mySearchPath[i] + "/%1.png").arg(anImageBaseName);
+        DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+        if (QFile::exists(myFullPathName))
+            break;
 
-		myFullPathName = QString(mySearchPath[i] + "/%1.jpg").arg(anImageBaseName);
-		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-		if (QFile::exists(myFullPathName))
-			break;
+        myFullPathName = QString(mySearchPath[i] + "/%1.jpg").arg(anImageBaseName);
+        DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+        if (QFile::exists(myFullPathName))
+            break;
 
-		myFullPathName = QString(mySearchPath[i] + "/%1.svg").arg(anImageBaseName);
-		DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
-		if (QFile::exists(myFullPathName))
-		{
-			// render the SVG into the Pixmap
-			// rely on operator= to make copy
-			myTempPixmap = QPixmap(aSize);
-			myTempPixmap.fill(QColor(255,255,255,0));
+        myFullPathName = QString(mySearchPath[i] + "/%1.svg").arg(anImageBaseName);
+        DEBUG5("attempt to load '%s'", ASCII(myFullPathName));
+        if (QFile::exists(myFullPathName)) {
+            // render the SVG into the Pixmap
+            // rely on operator= to make copy
+            myTempPixmap = QPixmap(aSize);
+            myTempPixmap.fill(QColor(255, 255, 255, 0));
 
-			QSvgRenderer myRenderer(myFullPathName);
-			QPainter myPainter;
-			myPainter.begin(&myTempPixmap);
-			myPainter.setRenderHint(aHint);
-			myRenderer.render(&myPainter);
-			myPainter.end();
-			break;
-		}
-	}
+            QSvgRenderer myRenderer(myFullPathName);
+            QPainter myPainter;
+            myPainter.begin(&myTempPixmap);
+            myPainter.setRenderHint(aHint);
+            myRenderer.render(&myPainter);
+            myPainter.end();
+            break;
+        }
+    }
 
-	DEBUG5("  going to use image: %s!", ASCII(myFullPathName));
-	if (myTempPixmap.isNull())
-		myTempPixmap = QPixmap(myFullPathName);
-//	QPixmapCache::insert(anImageBaseName, myTempPixmap);
-	*anOutputPixmapPtr = myTempPixmap;
+    DEBUG5("  going to use image: %s!", ASCII(myFullPathName));
+    if (myTempPixmap.isNull())
+        myTempPixmap = QPixmap(myFullPathName).scaled(aSize);
+//  QPixmapCache::insert(anImageBaseName, myTempPixmap);
+    *anOutputPixmapPtr = myTempPixmap;
 
-	return true;
+    return true;
 }
 
 
 
-QIcon ImageCache::getQIcon(const QString& anImageName, const QSize& aSize)
+QIcon ImageCache::getQIcon(const QString &anImageName, const QSize &aSize)
 {
     QPixmap myPixmap(aSize);
-    myPixmap.fill(QColor(255,255,255,0));
+    myPixmap.fill(QColor(255, 255, 255, 0));
     ImageCache::getPixmap(anImageName, aSize, &myPixmap);
     return QIcon(myPixmap);
 }

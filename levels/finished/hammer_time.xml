@@ -1,0 +1,119 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Hammer Time</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Throw all bowling pins to the bottom.</description>
+        <date>06.06.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="7">
+            <object Y="2.775" type="Hammer" angle="-1.5708" X="3.06" height="0.18" width="0.45"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object Y="1.38654" type="LeftRamp" angle="0" X="2.01468" height="0.290323" width="1"/>
+        </toolboxitem>
+        <toolboxitem count="3">
+            <object Y="2.40484" type="RightRamp" angle="0" X="2.65" height="0.290323" width="1"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object Y="0" type="Butterfly" angle="0" X="0" height="0.228027" width="0.15"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="5.1" width="6.3"/>
+        <predefined>
+            <object Y="4.12205" type="BowlingPin" angle="0" ID="pin1" X="1.86659" height="0.34" width="0.12"/>
+            <object Y="3.9" type="Floor" angle="0" X="1.867" height="0.1" width="0.1"/>
+            <object Y="3.324" type="BowlingPin" angle="0" ID="pin4" X="2.587" height="0.34" width="0.12"/>
+            <object Y="3.1" type="Floor" angle="0" X="2.587" height="0.1" width="0.1"/>
+            <object Y="2.3" type="Floor" angle="0" X="1.867" height="0.1" width="0.1"/>
+            <object Y="2.524" type="BowlingPin" angle="0" ID="pin5" X="1.867" height="0.34" width="0.12"/>
+            <object Y="1.501" type="Floor" angle="0" X="2.587" height="0.1" width="0.1"/>
+            <object Y="1.728" type="BowlingPin" angle="0" ID="pin8" X="2.587" height="0.34" width="0.12"/>
+            <object Y="1.248" type="Floor" angle="0" X="0.97" height="0.1" width="0.1"/>
+            <object Y="1.47233" type="BowlingPin" angle="0" ID="pin7" X="0.97" height="0.34" width="0.12"/>
+            <object Y="1.29619" type="BowlingPin" angle="0" ID="pin9" X="4.12843" height="0.34" width="0.12"/>
+            <object Y="1.073" type="Floor" angle="0" X="4.128" height="0.1" width="0.1"/>
+            <object Y="2.00651" type="Wall" angle="0" X="3.09944" height="1.73026" width="0.2"/>
+            <object Y="1.47869" type="Wall" angle="0" X="1.40267" height="1.2386" width="0.2"/>
+            <object Y="2.33133" type="BowlingPin" angle="0" ID="pin6" X="3.434" height="0.34" width="0.12"/>
+            <object Y="2.1104" type="Floor" angle="0" X="3.43399" height="0.1" width="0.1"/>
+            <object Y="0.525" type="Floor" angle="0" X="1.83" height="0.1" width="0.1"/>
+            <object Y="0.747" type="BowlingPin" angle="0" ID="pin10" X="1.83" height="0.34" width="0.12"/>
+            <object Y="1.07071" type="BowlingPin" angle="0" ID="pin2" X="6.14834" height="0.34" width="0.12"/>
+            <object Y="0.849" type="Floor" angle="0" X="6.148" height="0.1" width="0.1"/>
+            <object Y="0.577586" type="Floor" angle="0" X="4.8916" height="0.1" width="0.1"/>
+            <object Y="0.799" type="BowlingPin" angle="0" ID="pin3" X="4.892" height="0.34" width="0.12"/>
+            <object Y="4.4539" type="PostItHint" angle="0" X="0.549566" height="0.22" width="0.22">
+                <property key="page1">Look: It took me a lot of time to balance those hammers perfectly.</property>
+                <property key="page2">Even the slightest push will make them swing.</property>
+                <property key="page3">And then, things would just go downhill from there.</property>
+                <property key="page4">Think about it: Do you really want this?</property>
+                <property key="page5">&lt;br>&lt;br>… Post-It Boy</property>
+            </object>
+            <object Y="1.30996" type="LeftRamp" angle="0" X="2.0203" height="0.290323" width="1"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.854902;0.564706;0.0901961;1</gradientstop>
+            <gradientstop pos="1">1;0.682353;0.176471;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin1</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin2</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin3</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin4</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin5</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin6</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin7</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin8</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin9</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">pin10</property>
+            <property key="ybelow">0.44</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint Y="4.5" number="1" object="Hammer" X="2.234"/>
+        <hint Y="2.97887" number="2" object="RightRamp" X="3.15962"/>
+        <hint Y="1.59878" number="3" angle="0" object="RightRamp" X="4.58621" height="0.290323" width="1"/>
+        <hint Y="2.15907" number="4" angle="0" object="LeftRamp" X="1.29978" height="0.29" width="1"/>
+        <hint Y="0.951107" number="5" angle="0" object="LeftRamp" X="2.4634" height="0.29" width="1"/>
+        <hint Y="1.27486" number="6" angle="0" object="RightRamp" X="5.54638" height="0.290323" width="1"/>
+        <hint Y="3.7" number="7" angle="-1.5708" object="Hammer" X="2.234" height="0.18" width="0.45"/>
+        <hint Y="2.9" number="8" angle="-1.5708" object="Hammer" X="2.234" height="0.18" width="0.45"/>
+        <hint Y="2.1" number="9" angle="-1.5708" object="Hammer" X="2.234" height="0.18" width="0.45"/>
+        <hint Y="2.725" number="10" angle="-1.5708" object="Hammer" X="3.8021" height="0.18" width="0.45"/>
+        <hint Y="1.92967" number="11" angle="-1.5708" object="Hammer" X="0.639144" height="0.18" width="0.45"/>
+        <hint Y="1.911" number="12" angle="-1.5708" object="Hammer" X="3.805" height="0.18" width="0.45"/>
+    </hints>
+</tbe-level>

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2015  Klaas van Gend
+ * This file copyright (C) 2015,2016  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,26 +38,32 @@ class QDomNode;
 class HintSerializer
 {
 public:
-	/// always have a virtual destructor
-	virtual ~HintSerializer() {};
+    /// always have a virtual destructor
+    virtual ~HintSerializer() {};
 
 
-	/** create a Hint from the information in the provided Dom
-	 *  @param q  the QDomNode containing the Hint definition
-	 *  @returns  nullptr if failed or a pointer to a valid Hint if successful.
-	 *            Note that that Hint is still on its own - not attached to a Level yet.
-	 */
-	static Hint* createObjectFromDom(const QDomNode& q);
+    /** create a Hint from the information in the provided Dom
+     *  @param q  the QDomNode containing the Hint definition
+     *  @returns  nullptr if failed or a pointer to a valid Hint if successful.
+     *            Note that that Hint is still on its own - not attached to a Level yet.
+     */
+    static Hint *createObjectFromDom(const QDomNode &q);
+
+    /** create a QDomElement of Hint aHintPtr and add it to aParent
+      * @param aHintPtr pointer to the hint to serialize (=save)
+      * @param aParent QDomElement pointer to add the serialized data to
+      * @returns true if successful
+      */
+    static bool serialize(const Hint *aHintPtr, QDomElement &aParent);
 
 private:
-	/// constructor only called by Hint
-	// (not implemented yet)
-	//HintSerializer(const Hint* anObjectPtr);
+    /// constructor, never called
+    //HintSerializer(const Hint* anObjectPtr);
 
-	/// Neutralize copy constructor and assignment operator
-	HintSerializer(HintSerializer&) = delete;
-	/// Neutralize copy constructor and assignment operator
-	HintSerializer& operator=(const HintSerializer&) = delete;
+    /// Neutralize copy constructor and assignment operator
+    HintSerializer(HintSerializer &) = delete;
+    /// Neutralize copy constructor and assignment operator
+    HintSerializer &operator=(const HintSerializer &) = delete;
 };
 
 #endif // HINTSERIALIZER_H

@@ -1,0 +1,675 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Domino Flip Machine</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Topple the dominoes.</description>
+        <date>24.09.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.1" angle="-0.2618" type="DominoBlue" X="7.06506" height="0.5" Y="4.07314"/>
+        </toolboxitem>
+        <toolboxitem count="9">
+            <object width="1.1" angle="-1.5708" type="RotatingBar" X="0" height="0.14" Y="0"/>
+        </toolboxitem>
+        <toolboxitem count="4">
+            <object width="1" angle="0" type="LeftRamp" X="6.8141" height="1" Y="1.5406"/>
+        </toolboxitem>
+        <toolboxitem count="4">
+            <object width="1" angle="0" type="RightRamp" X="0" height="1" Y="0"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="15" height="7.5"/>
+        <predefined>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.27863" height="0.5" ID="d1" Y="3.97515"/>
+            <object width="5.95406" angle="0" type="Floor" X="10.7518" height="0.1" Y="0.127278"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="9.00605" height="0.5" ID="d2" Y="3.96935"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.66147" height="0.5" ID="d3" Y="3.96935"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.30982" height="0.5" ID="d4" Y="3.96935"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.96525" height="0.5" ID="d5" Y="3.96935"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.62775" height="0.5" ID="d6" Y="3.97936"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="1.19359" height="0.5" ID="d7" Y="1.05627"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="1.54971" height="0.5" ID="d8" Y="1.05627"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="1.90727" height="0.5" ID="d9" Y="1.05627"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="2.25057" height="0.5" ID="d10" Y="1.05627"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="2.60242" height="0.5" ID="d11" Y="1.05627"/>
+            <object width="4.84545" angle="0" type="Floor" X="3.39423" height="0.1" Y="2.00128"/>
+            <object width="0.1" angle="0" type="DominoRed" X="1.83034" height="0.5" ID="d12" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="2.14658" height="0.5" ID="d13" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="2.45427" height="0.5" ID="d14" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="2.75342" height="0.5" ID="d15" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="3.05256" height="0.5" ID="d16" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="3.37735" height="0.5" ID="d17" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="3.69359" height="0.5" ID="d18" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="4.01838" height="0.5" ID="d19" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="4.34316" height="0.5" ID="d20" Y="2.30556"/>
+            <object width="6.30983" angle="0" type="Floor" X="3.73077" height="0.1" Y="0.749149"/>
+            <object width="0.1" angle="0" type="DominoRed" X="4.66795" height="0.5" ID="d21" Y="2.30556"/>
+            <object width="0.1" angle="0" type="DominoRed" X="5.00128" height="0.5" ID="d22" Y="2.30556"/>
+            <object width="0.2" angle="0" type="Wall" X="5.93525" height="0.794872" Y="4.02457"/>
+            <object width="2.26617" angle="0" type="Floor" X="4.24298" height="0.1" Y="3.25769"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.17222" height="0.5" ID="d23" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.84744" height="0.5" ID="d24" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.50556" height="0.5" ID="d25" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.18077" height="0.5" ID="d26" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.86453" height="0.5" ID="d27" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.5312" height="0.5" ID="d28" Y="3.56197"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.26941" height="0.5" ID="d29" Y="4.78333"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.6139" height="0.5" ID="d30" Y="4.78333"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.9413" height="0.5" ID="d31" Y="4.78186"/>
+            <object width="2.87693" angle="0" type="Floor" X="4.59157" height="0.1" Y="4.48003"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.25812" height="0.5" ID="d32" Y="4.78059"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.58849" height="0.5" ID="d33" Y="4.78059"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.90884" height="0.5" ID="d34" Y="4.78059"/>
+            <object width="3.35747" angle="0" type="Floor" X="8.26565" height="0.1" Y="5.24088"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.25911" height="0.5" ID="d35" Y="4.78059"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.60943" height="0.5" ID="d36" Y="4.78059"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.93971" height="0.5" ID="d37" Y="4.78059"/>
+            <object width="0.1" angle="0" type="DominoRed" X="6.68081" height="0.5" ID="d38" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoRed" X="7.07125" height="0.5" ID="d39" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoRed" X="7.42164" height="0.5" ID="d40" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoRed" X="7.79205" height="0.5" ID="d41" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.15245" height="0.5" ID="d42" Y="4.81062"/>
+            <object width="2.79685" angle="0" type="Floor" X="8.00536" height="0.1" Y="4.51007"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.54288" height="0.5" ID="d43" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.9233" height="0.5" ID="d44" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="6.65829" height="0.5" ID="d45" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.04933" height="0.5" ID="d46" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.43829" height="0.5" ID="d47" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="7.82873" height="0.5" ID="d48" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.19847" height="0.5" ID="d49" Y="5.54143"/>
+            <object width="2.06118" angle="0" type="Floor" X="4.25862" height="0.1" Y="5.36101"/>
+            <object width="0.1" angle="0" type="DominoRed" X="3.38715" height="0.5" ID="d50" Y="5.66157"/>
+            <object width="0.1" angle="0" type="DominoRed" X="3.72753" height="0.5" ID="d51" Y="5.66157"/>
+            <object width="0.1" angle="0" type="DominoRed" X="4.0579" height="0.5" ID="d52" Y="5.66157"/>
+            <object width="0.1" angle="0" type="DominoRed" X="4.38826" height="0.5" ID="d53" Y="5.66157"/>
+            <object width="3.19872" angle="0" type="Floor" X="2.7488" height="0.1" Y="6.252"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.21808" height="0.5" ID="d54" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.83765" height="0.5" ID="d55" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.43721" height="0.5" ID="d56" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="3.03676" height="0.5" ID="d57" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="2.62627" height="0.5" ID="d58" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="2.24588" height="0.5" ID="d59" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="1.87547" height="0.5" ID="d60" Y="6.55256"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="1.51507" height="0.5" ID="d61" Y="6.55256"/>
+            <object width="3.6438" angle="0" type="Floor" X="7.8582" height="0.1" Y="3.66913"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="9.3738" height="0.5" ID="d62" Y="3.96969"/>
+            <object width="0.1" angle="0" type="DominoRed" X="9.34377" height="0.5" ID="d63" Y="4.81062"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.5889" height="0.5" ID="d64" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.93525" height="0.5" ID="d65" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="9.32569" height="0.5" ID="d66" Y="5.54143"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="9.74018" height="0.5" ID="d67" Y="5.54143"/>
+            <object width="3.02131" angle="0" type="Floor" X="11.4578" height="0.1" Y="2.34818"/>
+            <object width="1.76891" angle="0" type="Floor" X="11.6352" height="0.1" Y="3.97952"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.451" height="0.5" ID="d68" Y="1.28862"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.0935" height="0.5" ID="d69" Y="1.28862"/>
+            <object width="1.77603" angle="0" type="Floor" X="11.5218" height="0.1" Y="4.9906"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.38091" height="0.5" ID="d70" Y="1.45213"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="12.347" height="0.5" ID="d71" Y="5.29116"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.9967" height="0.5" ID="d72" Y="5.29116"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.6563" height="0.5" ID="d73" Y="5.29116"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.316" height="0.5" ID="d74" Y="5.29116"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.0056" height="0.5" ID="d75" Y="5.29116"/>
+            <object width="2.45588" angle="0" type="Floor" X="12.1703" height="0.1" Y="5.76146"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.0957" height="0.5" ID="d76" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.5874" height="0.5" ID="d77" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.207" height="0.5" ID="d78" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.8365" height="0.5" ID="d79" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.4661" height="0.5" ID="d80" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.9578" height="0.5" ID="d81" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoRed" X="13.3282" height="0.5" ID="d82" Y="6.06201"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="4.63857" height="0.5" ID="d83" Y="1.04983"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.03841" height="0.5" ID="d84" Y="1.04983"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.44039" height="0.5" ID="d85" Y="1.04983"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="5.80817" height="0.5" ID="d86" Y="1.04983"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="6.18023" height="0.5" ID="d87" Y="1.04983"/>
+            <object width="0.1" angle="0" type="DominoRed" X="13.0324" height="0.5" ID="d88" Y="0.434572"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.6326" height="0.5" ID="d89" Y="0.434572"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.1964" height="0.5" ID="d90" Y="0.434572"/>
+            <object width="0.1" angle="0" type="DominoRed" X="10.1708" height="0.5" ID="d91" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="10.5697" height="0.5" ID="d92" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="10.9885" height="0.5" ID="d93" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.3873" height="0.5" ID="d94" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.7662" height="0.5" ID="d95" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="9.80185" height="0.5" ID="d96" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="9.42293" height="0.5" ID="d97" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="9.05399" height="0.5" ID="d98" Y="0.428775"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.69501" height="0.5" ID="d99" Y="0.428775"/>
+            <object width="2.06603" angle="0" type="Floor" X="11.9898" height="0.1" Y="0.987749"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.8161" height="0.5" ID="d100" Y="1.30627"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="12.1958" height="0.5" ID="d101" Y="1.29594"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.34601" height="0.5" ID="d102" Y="0.438746"/>
+            <object width="2.06603" angle="0" type="Floor" X="9.34733" height="0.1" Y="1.14729"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="8.72493" height="0.5" ID="d103" Y="1.45584"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="9.06396" height="0.5" ID="d104" Y="1.45584"/>
+            <object width="1.73839" angle="0" type="Floor" X="8.21984" height="0.1" Y="2.04473"/>
+            <object width="0.1" angle="0" type="DominoRed" X="9.01767" height="0.5" ID="d105" Y="2.35328"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.67934" height="0.5" ID="d106" Y="2.35328"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.01126" height="0.5" ID="d107" Y="2.35328"/>
+            <object width="0.1" angle="0" type="DominoRed" X="7.68504" height="0.5" ID="d108" Y="2.35328"/>
+            <object width="0.1" angle="0" type="DominoRed" X="10.8353" height="0.5" ID="d109" Y="2.65313"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.2381" height="0.5" ID="d110" Y="2.65313"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.6202" height="0.5" ID="d111" Y="2.65313"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.0127" height="0.5" ID="d112" Y="2.65313"/>
+            <object width="2.02986" angle="0" type="Floor" X="11.9565" height="0.1" Y="3.15264"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="12.1263" height="0.5" ID="d113" Y="3.45869"/>
+            <object width="0.1" angle="0" type="DominoGreen" X="11.7545" height="0.5" ID="d114" Y="3.45869"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.0504" height="0.5" ID="d115" Y="4.27991"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.4179" height="0.5" ID="d116" Y="4.27991"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.3816" height="0.5" ID="d117" Y="4.27991"/>
+            <object width="0.1" angle="0" type="DominoRed" X="11.7128" height="0.5" ID="d118" Y="4.27991"/>
+            <object width="0.1" angle="0" type="DominoRed" X="12.0547" height="0.5" ID="d119" Y="4.27991"/>
+            <object width="0.1" angle="0" type="DominoRed" X="8.34744" height="0.5" ID="d120" Y="2.34615"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.713726;1;0.54902;1</gradientstop>
+            <gradientstop pos="0.5">1;0.647059;0.67451;1</gradientstop>
+            <gradientstop pos="1">0.54902;0.647059;1;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d1</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d2</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d3</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d4</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d5</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d6</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d7</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d8</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d9</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d10</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d11</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d12</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d13</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d14</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d15</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d16</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d17</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d18</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d19</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d20</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d21</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d22</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d23</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d24</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d25</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d26</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d27</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d28</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d29</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d30</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d31</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d32</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d33</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d34</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d35</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d36</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d37</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d38</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d39</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d40</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d41</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d42</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d43</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d44</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d45</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d46</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d47</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d48</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d49</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d50</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d51</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d52</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d53</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d54</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d55</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d56</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d57</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d58</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d59</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d60</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d61</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d62</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d63</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d64</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d65</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d66</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d67</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d68</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d69</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d70</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d71</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d72</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d73</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d74</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d75</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d76</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d77</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d78</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d79</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d80</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d81</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d82</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d83</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d84</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d85</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d86</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d87</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d88</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d89</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d90</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d91</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d92</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d93</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d94</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d95</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d96</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d97</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d98</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d99</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d100</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d101</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d102</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d103</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d104</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d105</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d106</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d107</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d108</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d109</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d110</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d111</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d112</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d113</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d114</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d115</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d116</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d117</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d118</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d119</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="anglechanged"></property>
+            <property key="object">d120</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" X="0.505698" object="RightRamp" Y="1.5584"/>
+        <hint number="2" X="10.4455" object="RightRamp" Y="4.78087"/>
+        <hint number="3" X="6.78297" object="LeftRamp" Y="1.59093"/>
+        <hint number="4" X="10.1891" object="RightRamp" Y="3.17699"/>
+        <hint number="5" X="12.9053" object="LeftRamp" Y="3.9213"/>
+        <hint number="6" X="14.4886" object="LeftRamp" Y="1.84936"/>
+        <hint number="7" X="2.85648" object="RightRamp" Y="4.05556"/>
+        <hint number="8" X="5.67593" object="LeftRamp" Y="2.80591"/>
+        <hint width="1.1" angle="-1.5708" number="9" X="6.35086" height="0.14" object="RotatingBar" Y="5.32094"/>
+        <hint width="1.1" angle="-1.5708" number="10" X="3.07184" height="0.14" object="RotatingBar" Y="5.45045"/>
+        <hint width="1.1" angle="-1.5708" number="11" X="4.5885" height="0.14" object="RotatingBar" Y="6.31146"/>
+        <hint width="1.1" angle="-1.5708" number="12" X="9.59541" height="0.14" object="RotatingBar" Y="4.58223"/>
+        <hint width="1.1" angle="-1.5708" number="13" X="12.5601" height="0.14" object="RotatingBar" Y="4.84987"/>
+        <hint width="1.1" angle="-1.5708" number="14" X="10.7754" height="0.14" object="RotatingBar" Y="5.83092"/>
+        <hint width="1.1" angle="-1.5708" number="15" X="10.8189" height="0.14" object="RotatingBar" Y="1.08903"/>
+        <hint width="1.1" angle="-1.5708" number="16" X="8.17647" height="0.14" object="RotatingBar" Y="1.14886"/>
+        <hint width="1.1" angle="-1.5708" number="17" X="9.29328" height="0.14" object="RotatingBar" Y="2.01638"/>
+        <hint angle="-0.2618" number="18" X="7.04445" object="DominoBlue" Y="3.97524"/>
+    </hints>
+</tbe-level>

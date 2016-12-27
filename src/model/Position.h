@@ -37,43 +37,49 @@ bool areQRealsTheSame(qreal anA, qreal aB);
 class Vector
 {
 public:
-	// obvious constructors
-	Vector (void);
-	Vector (qreal aDX, qreal aDY);
-	Vector (const QPointF& aPoint);
-	Vector (const b2Vec2& aVec);
+    // obvious constructors
+    Vector (void);
+    Vector (qreal aDX, qreal aDY);
+    Vector (const QPointF &aPoint);
+    Vector (const b2Vec2 &aVec);
 
-	/// constructor ignores the angle from the Position
-	/// think twice before using this one - physically it makes no sense!
-	Vector (const Position& aPosition);
+    /// constructor ignores the angle from the Position
+    /// think twice before using this one - physically it makes no sense!
+    Vector (const Position &aPosition);
 
-	/// constructs a vector of length 1 in direction anAngle
-	Vector (qreal anAngle);
+    /// constructs a vector of length 1 in direction anAngle
+    Vector (qreal anAngle);
 
-	/// @returns the length of the Vector
-	qreal length(void) const;
+    /// @returns the length of the Vector
+    qreal length(void) const;
 
-	qreal	 toAngle(void) const;
-	b2Vec2   toB2Vec2(void) const;
-	Position toPosition(void) const;
-	QPointF	 toQPointF(void) const;
-	QString  toString(void) const;
+    qreal    toAngle(void) const;
+    b2Vec2   toB2Vec2(void) const;
+    Position toPosition(void) const;
+    QPointF  toQPointF(void) const;
+    QString  toString(void) const;
 
-        /// @returns a Vector in the same direction, but with length one.
-	Vector   toUnitVector(void) const;
+    // TODO/FIXME: QML positive rotation is clockwise, not counterclockwise :-(
+    qreal toAngleInQDegrees(void) const
+    {
+        return -toAngle() * 180 / PI;
+    }
 
-	/// @returns this vector, rotated along anAngle
-	Vector rotate(qreal anAngle) const;
+    /// @returns a Vector in the same direction, but with length one.
+    Vector   toUnitVector(void) const;
 
-	/** Converts a string in format "(0.0,0.0)" into this Vector
-	  * If the conversion is not successful, the Vector is not modified.
-	  * @param aString the string to convert
-	  * @returns true if conversion successful.
-	  */
-	bool fromString(QString aString);
+    /// @returns this vector, rotated along anAngle
+    Vector rotate(qreal anAngle) const;
 
-	qreal dx;
-	qreal dy;
+    /** Converts a string in format "(0.0,0.0)" into this Vector
+      * If the conversion is not successful, the Vector is not modified.
+      * @param aString the string to convert
+      * @returns true if conversion successful.
+      */
+    bool fromString(QString aString);
+
+    qreal dx;
+    qreal dy;
 };
 
 /**
@@ -85,46 +91,73 @@ class Position
 {
 public:
 
-	// Constructors/Destructors
+    // Constructors/Destructors
 
-	/**
-	 * Constructor - set x (m), y(m), angle(radial)
-	 */
-        Position (qreal anX=NAN, qreal aY=NAN, qreal anAngle=0.0);
+    /**
+     * Constructor - set x (m), y(m), angle(radial)
+     */
+    Position (qreal anX = NAN, qreal aY = NAN, qreal anAngle = 0.0);
 
-	Position (const QPointF& aPoint, qreal anAngle = 0.0);
-	Position (const Vector& aPoint, qreal anAngle = 0.0);
-	Position (const b2Vec2& aVec, qreal anAngle = 0.0);
+    Position (const QPointF &aPoint, qreal anAngle = 0.0);
+    Position (const Vector &aPoint, qreal anAngle = 0.0);
+    Position (const b2Vec2 &aVec, qreal anAngle = 0.0);
+    Position (const Position& aPos, qreal anAngleInQDegrees);
 
-	// Public attributes
+    // Public attributes
 
-	/// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
-	qreal x;
+    /// x-coordinate: x=0 is lower left corner, positive is right. unit: meter
+    qreal x;
 
-	/// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
-	qreal y;
+    /// y-coordinate: y=0 is lower left corner, positive is up. unit: meter
+    qreal y;
 
-	/// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
-	qreal angle;
+    /// angle coordinate: angle=0 is positive x direction, turning counterclockwise. unit: 2Pi for a full turn
+    qreal angle;
 
-	const static qreal minimalMove;
-	const static qreal minimalRot;
+    const static qreal minimalMove;
+    const static qreal minimalRot;
 
-        /// @returns true if Position exists, or false if used uninitialised
-        bool isValid() const
-        { return (std::isnan(x)==0 && std::isnan(y)==0); }
+    /// @returns true if Position exists, or false if used uninitialised
+    bool isValid() const
+    {
+        return (false == std::isnan(x) && false == std::isnan(y));
+    }
 
-        b2Vec2  toB2Vec2(void) const;
-	QPointF toQPointF(void) const
-        {   assert(isValid()); return QPointF(THESCALE*x,-THESCALE*y); }
-	QString toString(void) const;
-	Vector  toVector(void) const
-        { assert(isValid()); return Vector(*this); }
+    b2Vec2  toB2Vec2(void) const;
+    QPointF toQPointF(void) const
+    {
+        assert(isValid());
+        return QPointF(THESCALE * x, -THESCALE * y);
+    }
+    QString toString(void) const;
+    Vector  toVector(void) const
+    {
+        assert(isValid());
+        return Vector(*this);
+    }
 
-	qreal angleInDegrees(void) const
-	{ return angle*180/PI; }
+    qreal angleInDegrees(void) const
+    {
+        return angle * 180 / PI;
+    }
 
-	qreal length(void);
+    // TODO/FIXME: QML positive rotation is clockwise, not counterclockwise :-(
+    qreal angleInQDegrees(void) const
+    {
+        return -angle * 180 / PI;
+    }
+
+    qreal length(void);
+};
+
+struct AABB
+{
+    AABB(const Position& aPos, qreal aWidth, qreal aHeight);
+
+    qreal maxX;
+    qreal maxY;
+    qreal minX;
+    qreal minY;
 };
 
 
@@ -132,37 +165,37 @@ public:
  *  - that implies that the vector is multiplied with the angle
  *    i.e. in the local object coordinates
  */
-Position operator+(const Position& p1, const Vector& v1);
+Position operator+(const Position &p1, const Vector &v1);
 /// subtracts Vector from a Position
-Position operator-(const Position& p1, const Vector& v1);
+Position operator-(const Position &p1, const Vector &v1);
 
 /// add Position and QPointF
-Position operator+(const Position& p1, const QPointF& p2);
+Position operator+(const Position &p1, const QPointF &p2);
 /// subtracts Position and QPointF
-Position operator+(const Position& p1, const QPointF& p2);
+Position operator+(const Position &p1, const QPointF &p2);
 
 /// adds a Vector to a Vector
-Vector operator+(const Vector& v1, const Vector& v2);
+Vector operator+(const Vector &v1, const Vector &v2);
 
 /// subtracts two Vectors
-Vector operator-(const Vector& p1, const Vector& p2);
+Vector operator-(const Vector &p1, const Vector &p2);
 
 /// constant multiplies vector
-Vector operator*(const qreal c1, const Vector& p1);
+Vector operator*(const qreal c1, const Vector &p1);
 
 /// scale - Vector multiplies Vector into a Vector
-Vector operator*(const Vector& v1, const Vector& v2);
+Vector operator*(const Vector &v1, const Vector &v2);
 
 /// compare two positions
-bool operator==(const Position& p1, const Position& p2);
-bool operator!=(const Position& p1, const Position& p2);
+bool operator==(const Position &p1, const Position &p2);
+bool operator!=(const Position &p1, const Position &p2);
 
 /// compare two vectors
-bool operator==(const Vector& p1, const Vector& v2);
-bool operator!=(const Vector& p1, const Vector& v2);
+bool operator==(const Vector &p1, const Vector &v2);
+bool operator!=(const Vector &p1, const Vector &v2);
 
 /// send to debug directly
-QDebug operator<<(QDebug dbg, const Position& p);
-QDebug operator<<(QDebug dbg, const Vector& v);
+QDebug operator<<(QDebug dbg, const Position &p);
+QDebug operator<<(QDebug dbg, const Vector &v);
 
 #endif // POSITION_H

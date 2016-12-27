@@ -43,44 +43,51 @@ class b2DistanceJoint;
 class Glue : public AbstractJoint
 {
 public:
-	Glue();
+    Glue();
 
-	virtual ~Glue() {}
+    virtual ~Glue();
 
-	/// overridden from AbstractObject
-	/// (this class does not have a body, only two joints)
-	virtual void createPhysicsObject(void);
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
 
-	/// overridden from AbstractObject
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const
-	{	return QObject::tr("Glue");	}
+    /// overridden from AbstractObject
+    /// (this class does not have a body, only two joints)
+    void createPhysicsObject(void) override;
 
-	/** Get the current center position of the object.
-	 * @return the value of theCenter
-	 */
-	virtual Position getTempCenter ( ) const;
+    /// overridden from AbstractObject
+    /// returns the Name of the object.
+    const QString getName ( ) const override
+    {
+        return QObject::tr("Glue");
+    }
 
-	/// overridden from AbstractObject
-	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
-	{	return false;	}
+    /** Get the current center position of the object.
+     * @return the value of theCenter
+     */
+    Position getTempCenter ( ) const override;
 
-	/// overridden from AbstractObject
-	/// parses all properties that Glue understands
-	/// - only "object1" and "object2"
-	virtual void  parseProperties(void);
+    /// overridden from AbstractObject
+    /// returns true if the object can be rotated by the user
+    bool isRotatable ( ) const override
+    {
+        return false;
+    }
 
-	/// implemented from AbstractJoint
-	virtual void updateOrigCenter(void);
+    /// overridden from AbstractObject
+    /// parses all properties that Glue understands
+    /// - only "object1" and "object2"
+    void  parseProperties(void) override;
+
+    /// implemented from AbstractJoint
+    void updateOrigCenter(void) override;
 
 private:
-	AbstractObjectPtr theFirstPtr;
-	AbstractObjectPtr theSecondPtr;
-	Vector*     theFirstLocalPosPtr;
-	Vector*     theSecondLocalPosPtr;
+    AbstractObjectPtr theFirstPtr;
+    AbstractObjectPtr theSecondPtr;
+    Vector     *theFirstLocalPosPtr;
+    Vector     *theSecondLocalPosPtr;
 
-	b2DistanceJoint* theLinkPtr;
+    b2DistanceJoint *theLinkPtr;
 };
 
 #endif // GLUE_H

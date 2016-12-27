@@ -22,6 +22,7 @@
 #include "ToolboxGroup.h"
 
 // forward declarations:
+class QDomDocument;
 class QDomElement;
 class QDomNode;
 class QString;
@@ -39,22 +40,22 @@ public:
      *  @param aDomDocument QDomDocument to create the serialized data for
      *  @param theToolboxGroupPtr   ToolboxGroup to serialize
      */
-    static QDomElement serialize(QDomDocument &aDomDocument, ToolboxGroup* aToolboxGroupPtr);
+    static QDomElement serialize(QDomDocument &aDomDocument, ToolboxGroup *aToolboxGroupPtr);
 
     /** fill up ToolboxGroup from the information in the provided Dom
      *  @param q  the QDomNode containing the object definition
      *  @param aTbGPtr   OUTPUT (must already exist) filled in struct
      *  @returns  error message if failed / empty string if successful.
      */
-    static ToolboxGroup* createObjectFromDom(const QDomNode& q, QString* anOutputErrorMsg);
+    static ToolboxGroup *createObjectFromDom(const QDomNode &q, QString *anOutputErrorMsg);
 
 private:
     /// constructor only called by ToolboxGroup
-    ToolboxGroupSerializer(const ToolboxGroup* anObjectPtr);
+    ToolboxGroupSerializer(const ToolboxGroup *anObjectPtr);
     /// Neutralize copy constructor and assignment operator
-    ToolboxGroupSerializer(ToolboxGroupSerializer&) = delete;
+    ToolboxGroupSerializer(ToolboxGroupSerializer &) = delete;
     /// Neutralize copy constructor and assignment operator
-    ToolboxGroupSerializer& operator=(const ToolboxGroupSerializer&) = delete;
+    ToolboxGroupSerializer &operator=(const ToolboxGroupSerializer &) = delete;
 };
 
 #endif // TOOLBOXGROUPSERIALIZER_H

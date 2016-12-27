@@ -30,47 +30,33 @@
 class Scenery : public AbstractObject
 {
 public:
-	Scenery();
+    Scenery();
 
-	virtual ~Scenery();
+    virtual ~Scenery();
 
-	/// Make sure there is no physics body by overriding
-	/// the creational member of AbstractObject.
-	virtual void createPhysicsObject(const Position&) override
-	{ };
+    /// Make sure there is no physics body by overriding
+    /// the creational member of AbstractObject.
+    virtual void createPhysicsObject(const Position &) override
+    { };
 
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const override
-	{
-		return QObject::tr("Scenery");
-	}
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return QObject::tr("Scenery");
+    }
 
-	/// Scenery has no mass. But no b2Body will be created either :-)
-	virtual b2BodyType getObjectType(void) const override
-	{	return b2_staticBody; }
+    /// Scenery has no mass. But no b2Body will be created either :-)
+    virtual b2BodyType getObjectType(void) const override
+    {
+        return b2_staticBody;
+    }
 
-	/// returns the Tooltip of the object.
-    virtual const QString getToolTip ( ) const override
-	{
-		// no tooltip, no i18n
-		return "";
-	}
-
-	/// returns true if the object can be rotated by the user
-	/// Scenerys cannot be adjusted by the player
-	virtual bool isRotatable ( ) const override
-	{	return false; }
-
-	/** Creates the ViewObject, finds associated images,
-	  * sets ZValue and returns a pointer to it.
-	  * Overridden to set a default depth of 0.1 so it moves behind everything.
-	  * @param   aDefaultDepth, ZValue depth in view if not set as property,
-	  *          the higher the value the more likely it is drawn on top
-	  * @returns pointer to ViewObject
-	  * @note: a ZValue set in a property always overrides aDefaultDepth
-	  */
-	virtual ViewObject* createViewObject(float aDefaultDepth = 0.1) override
-	{ return AbstractObject::createViewObject(aDefaultDepth); }
+    /// returns true if the object can be rotated by the user
+    /// Scenerys cannot be adjusted by the player
+    virtual bool isRotatable ( ) const override
+    {
+        return false;
+    }
 };
 
 #endif // Scenery_H

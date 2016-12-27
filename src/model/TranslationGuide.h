@@ -23,7 +23,7 @@
 #include "TranslationGuidePtr.h"
 
 /// This class implements translational joints - for now only between one
-/// object and "the world". 
+/// object and "the world".
 /// Translational joints can have an engine (implementing force and/or
 /// translation speed).
 ///
@@ -43,51 +43,58 @@
 class TranslationGuide : public AbstractJoint
 {
 public:
-	/// empty constructor
-	TranslationGuide(void);
+    /// empty constructor
+    TranslationGuide(void);
 
-	/** constructor to add translation joint for an object to world
-	  * @param aAbstractObject
-	  * @param aDirection	 the allowed direction of translation
-	  */
-	TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection);
+    /** constructor to add translation joint for an object to world
+      * @param aAbstractObject
+      * @param aDirection    the allowed direction of translation
+      */
+    TranslationGuide(AbstractObjectPtr anAbstractObject, qreal aDirection);
 
-	virtual ~TranslationGuide() {}
+    virtual ~TranslationGuide();
 
-	/// overridden from AbstractObject
-	/// (this class does not have a body, only a joint)
-	virtual void createPhysicsObject(void);
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
 
-	/// overridden from AbstractObject
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const
-	{	return QObject::tr("TranslationGuide");	}
+    /// overridden from AbstractObject
+    /// (this class does not have a body, only a joint)
+    void createPhysicsObject(void) override;
 
-	/// overridden from AbstractObject
-	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
-	{	return false;	}
+    /// overridden from AbstractObject
+    /// returns the Name of the object.
+    const QString getName ( ) const override
+    {
+        return QObject::tr("TranslationGuide");
+    }
 
-	/// overridden from AbstractObject
-	/// parses all properties that TranslationGuide understands
-	virtual void  parseProperties(void);
+    /// overridden from AbstractObject
+    /// returns true if the object can be rotated by the user
+    bool isRotatable ( ) const override
+    {
+        return false;
+    }
 
-	/// implemented from AbstractJoint
-	virtual void updateOrigCenter(void);
+    /// overridden from AbstractObject
+    /// parses all properties that TranslationGuide understands
+    void  parseProperties(void) override;
+
+    /// implemented from AbstractJoint
+    void updateOrigCenter(void) override;
 
 protected:
 
 private:
-	void initTG_Attributes ( );
+    void initTG_Attributes ( );
 
-	AbstractObjectPtr theObjectPtr;
+    AbstractObjectPtr theObjectPtr;
 
-	/** use property 'collide' to set this.
-	  * true means that objects can collide
-	  */
-	bool areObjectsColliding;
+    /** use property 'collide' to set this.
+      * true means that objects can collide
+      */
+    bool areObjectsColliding;
 
-	qreal	theDirection;
+    qreal   theDirection;
 };
 
 #endif // TRANSLATIONGUIDE_H

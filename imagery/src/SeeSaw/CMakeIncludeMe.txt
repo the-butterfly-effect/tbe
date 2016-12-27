@@ -1,0 +1,6 @@
+# this file is meant to be included by ../CMakeFiles.txt
+install(FILES
+        ${SRCDIRNAME}/seesaw-tall.svg
+        ${SRCDIRNAME}/seesaw-tiny.svg
+        DESTINATION ${TBE_IMAGES_DIR}
+)

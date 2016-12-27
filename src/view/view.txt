@@ -3,77 +3,64 @@
 
 
 SET(view_SOURCES 
-    view/animateddialog.cpp
-    view/ChooseLevel.cpp
-    view/ChoosePhoneNumber.cpp
     view/EditLevelProperties.cpp
     view/EditObjectDialog.cpp
-    view/GameResources.cpp
+    view/GameQControls.cpp
+    view/GameFlow.cpp
+    view/GameStateMachine.cpp
     view/GoalEditor.cpp
     view/ImageCache.cpp
-    view/ListViewItemTooltip.cpp
+    view/ImageProvider.cpp
+    view/LevelCreator.cpp
     view/MainWindow.cpp
     view/Popup.h
-    view/PieMenu.cpp
     view/RegressionTest.cpp
+    view/ResizeAwareQuickWidget.cpp
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
-    view/SimulationControls.cpp
-    view/ToolboxListWidgetItem.cpp
-    view/ViewObject.cpp
-    view/ViewDetonatorBox.cpp
-    view/ViewLink.cpp
-    view/ViewPingus.cpp
-    view/ViewPostIt.cpp
+    view/ToolboxItemGroup.cpp
+    view/ViewItem.cpp
+    view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
-    view/WinFailDialog.cpp
+    view/ViewWorldItem.cpp
 )
 
 SET(view_HEADERS 
-    view/animateddialog.h
     view/Background.h
-    view/ChooseLevel.h
-    view/ChoosePhoneNumber.h
     view/EditLevelProperties.h
     view/EditObjectDialog.h
-    view/GameResources.h
+    view/GameQControls.h
+    view/GameFlow.h
+    view/GameStateMachine.h
     view/GoalEditor.h
     view/ImageCache.h
-    view/ListViewItemTooltip.h
+    view/ImageProvider.h
+    view/LevelCreator.h
     view/MainWindow.h
     view/Popup.h
-    view/PieMenu.h
     view/RegressionTest.h
+    view/RequestDialog.h
+    view/ResizeAwareQuickWidget.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
-    view/SimulationControls.h
-    view/ToolboxListWidgetItem.h
-    view/ViewDetonatorBox.h
-    view/ViewLink.h
-    view/ViewObject.h
-    view/ViewPingus.h
-    view/ViewPostIt.h
+    view/ToolboxItemGroup.h
+    view/ViewItem.h
+    view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
-    view/WinFailDialog.h
+    view/ViewWorldItem.h
 )
 
 SET(view_UIFORMS
-    view/ChooseLevel.ui
-    view/ChoosePhoneNumber.ui
     view/EditLevelProperties.ui
     view/EditObjectDialog.ui
-    view/GameResources.ui
     view/GoalEditor.ui
-    view/ListViewItemTooltip.ui
     view/MainWindow.ui
     view/SaveLevelInfo.ui
-    view/SimulationControls.ui
-    view/ViewPostIt.ui
-    view/WinFailDialog.ui
 )
 
 SET(view_RESOURCES
     ../imagery/style/style-resources.qrc
+    ../imagery/illustrations/tbe-icon.qrc
 )
 
 

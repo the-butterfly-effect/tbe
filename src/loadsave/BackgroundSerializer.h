@@ -25,8 +25,8 @@
 class QDomElement;
 class QDomNode;
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 
 /** This Serializer cannot be created.
@@ -37,34 +37,26 @@ class QDomNode;
 class BackgroundSerializer
 {
 public:
-	/** create a QDomElement of the Background pointed to
-	 *  @param aParent QDomElement pointer to add the serialized data to
-	 *  @param theBackgroundPtr   Background to serialize
-	 */
-	static void serialize(QDomElement* aParent, Background* aBackgroundPtr);
+    /** create a QDomElement of the Background pointed to
+     *  @param aParent QDomElement pointer to add the serialized data to
+     *  @param theBackgroundPtr   Background to serialize
+     */
+    static void serialize(QDomElement *aParent, Background *aBackgroundPtr);
 
-	/** fill up Background from the information in the provided Dom
-	 *  @param q  the QDomNode containing the object definition
-	 *  @param aBGPtr   OUTPUT (must already exist) filled in struct
-	 *  @returns  error message if failed / empty string if successful.
-	 */
-	static QString createObjectFromDom(const QDomNode& q, Background* aBGPtr);
-
-	/** returns a string representation of the float
-	 *  - maximum 2 digits
-	 *  - always a dot as decimal separator
-	 *  @param aValue the float to convert
-	 *  @returns a QString with the string representation of aValue.
-	 */
-	static QString floatToString(float aValue);
+    /** fill up Background from the information in the provided Dom
+     *  @param q  the QDomNode containing the object definition
+     *  @param aBGPtr   OUTPUT (must already exist) filled in struct
+     *  @returns  error message if failed / empty string if successful.
+     */
+    static QString createObjectFromDom(const QDomNode &q, Background *aBGPtr);
 
 private:
-	/// constructor only called by Background
-	BackgroundSerializer(const Background* anObjectPtr);
-	/// Neutralize copy constructor and assignment operator
-	BackgroundSerializer(BackgroundSerializer&);
-	/// Neutralize copy constructor and assignment operator
-	BackgroundSerializer& operator=(const BackgroundSerializer&);
+    /// constructor only called by Background
+    BackgroundSerializer(const Background *anObjectPtr);
+    /// Neutralize copy constructor and assignment operator
+    BackgroundSerializer(BackgroundSerializer &);
+    /// Neutralize copy constructor and assignment operator
+    BackgroundSerializer &operator=(const BackgroundSerializer &);
 };
 
 #endif // BACKGROUNDSERIALIZER_H

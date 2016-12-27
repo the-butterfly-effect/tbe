@@ -20,128 +20,143 @@
 #include "tbe_global.h"
 #include "ObjectFactory.h"
 #include "PivotPoint.h"
-#include "ViewObject.h"
 #include "World.h"
 
 //// this class' ObjectFactory
 class PivotPointObjectFactory : public ObjectFactory
 {
 public:
-	PivotPointObjectFactory(void)
-	{	announceObjectType("PivotPoint", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new PivotPoint()); }
+    PivotPointObjectFactory(void)
+    {
+        announceObjectType("PivotPoint", this);
+    }
+    AbstractObject *createObject(void) const override
+    {
+        return fixObject(new PivotPoint());
+    }
+
+    bool isObjectForInsertList(void) const override
+    {
+        return false;
+    }
 };
 static PivotPointObjectFactory theRFactory;
 
 
 
 PivotPoint::PivotPoint()
-		: AbstractJoint(), theFirstPtr(nullptr)
+    : AbstractJoint(), theFirstPtr(nullptr)
 
 {
-	DEBUG5("PivotPoint::PivotPoint");
-	initPivotAttributes ();
+    DEBUG5("PivotPoint::PivotPoint");
+    initPivotAttributes ();
 }
 
-PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativePosition)
-		: AbstractJoint(), theFirstPtr(aAbstractObject)
+PivotPoint::PivotPoint(AbstractObjectPtr aAbstractObject, const Vector &aRelativePosition)
+    : AbstractJoint(), theFirstPtr(aAbstractObject)
 {
-	DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))",
+    DEBUG4("PivotPoint::PivotPoint(aAbstractObject*=%p, aPos=(%f,%f))",
            aAbstractObject.get(), aRelativePosition.dx, aRelativePosition.dy);
     thePosRelativeToFirst = aRelativePosition;
-	updateOrigCenter();
-	initPivotAttributes();
+    updateOrigCenter();
+    initPivotAttributes();
 }
 
 PivotPoint::~PivotPoint()
 {
-	DEBUG5("PivotPoint::~PivotPoint() for %p", this);
+    DEBUG5("PivotPoint::~PivotPoint() for %p", this);
+    clearObjectReferences();
 }
+
+void PivotPoint::clearObjectReferences()
+{
+    AbstractObject::clearObjectReferences();
+
+    theFirstPtr  = nullptr;
+    theSecondPtr = nullptr;
+}
+
 
 void PivotPoint::createPhysicsObject(void)
 {
-    assert(theWorldPtr!=nullptr);
-    if (theWorldPtr==nullptr)
-		return;
+    assert(theWorldPtr != nullptr);
+    if (theWorldPtr == nullptr)
+        return;
 
     // *** parse object/object1 - if we didn't get theFirstPtr from the constructor
-    if (theFirstPtr==nullptr)
-    {
+    if (theFirstPtr == nullptr) {
         theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT1_STRING);
-        if (theFirstPtr==nullptr)
+        if (theFirstPtr == nullptr)
             theFirstPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT_STRING);
     }
-    if (theFirstPtr==nullptr)
-	{
-		DEBUG4("PivotPoint: No valid first object found...");
-		return;
-	}
+    if (theFirstPtr == nullptr) {
+        DEBUG4("PivotPoint: No valid first object found...");
+        return;
+    }
 
-	Vector myRelPos = (getOrigCenter().toVector()-theFirstPtr->getOrigCenter().toVector())
-					  .rotate(-theFirstPtr->getOrigCenter().angle);
-	b2Body* myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, myRelPos);
+    Vector myRelPos = (getOrigCenter().toVector() - theFirstPtr->getOrigCenter().toVector())
+                      .rotate(-theFirstPtr->getOrigCenter().angle);
+    b2Body *myFirstB2BodyPtr = getB2BodyPtrFor(theFirstPtr, myRelPos);
     theFirstPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
-	assert (myFirstB2BodyPtr);
+    assert (myFirstB2BodyPtr);
 
-	// *** parse (optional) object2
+    // *** parse (optional) object2
     theSecondPtr = theProps.property2ObjectPtr(theWorldPtr, Property::OBJECT2_STRING);
 
-	// if there is no object2, use the ground body.
-	// available as theGroundBodyPtr...
-	b2Body* mySecondB2BodyPtr = getGroundBodyPtr();
-    if (theSecondPtr != nullptr)
-	{
-		Vector my2RelPos = (getOrigCenter().toVector()-theSecondPtr->getOrigCenter().toVector())
-					  .rotate(-theSecondPtr->getOrigCenter().angle);
-		mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, my2RelPos);
+    // if there is no object2, use the ground body.
+    // available as theGroundBodyPtr...
+    b2Body *mySecondB2BodyPtr = getGroundBodyPtr();
+    if (theSecondPtr != nullptr) {
+        Vector my2RelPos = (getOrigCenter().toVector() - theSecondPtr->getOrigCenter().toVector())
+                           .rotate(-theSecondPtr->getOrigCenter().angle);
+        mySecondB2BodyPtr = getB2BodyPtrFor(theSecondPtr, my2RelPos);
         theSecondPtr->addJoint(std::dynamic_pointer_cast<JointInterface>(getThisPtr()));
-	}
+    }
 
-	// *** initialise Box2D's joint:
-	// note: Initialize() uses a global coordinate...
-	b2RevoluteJointDef myJointDef;
-	myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
+    // *** initialise Box2D's joint:
+    // note: Initialize() uses a global coordinate...
+    b2RevoluteJointDef myJointDef;
+    myJointDef.Initialize(myFirstB2BodyPtr, mySecondB2BodyPtr, getOrigCenter().toB2Vec2());
     myJointDef.userData = this;
-	myJointDef.collideConnected = areObjectsColliding;
+    myJointDef.collideConnected = areObjectsColliding;
 
-	// set motor speed and/or torque
-	// note that we have the + defined in the mathematical way,
-	// with the y in the opposite direction from QT, that means a minus somewhere
-	float myTorque = 1000.0;
-	myJointDef.enableMotor = theProps.property2Float(Property::TORQUE_STRING, &myTorque);
-	float myMotorSpeed = 0.0;
-	if (theProps.property2Float(Property::SPEED_STRING, &myMotorSpeed))
-		myJointDef.enableMotor = true;
-	myJointDef.maxMotorTorque = myTorque;
-	myJointDef.motorSpeed = -myMotorSpeed;
+    // set motor speed and/or torque
+    // note that we have the + defined in the mathematical way,
+    // with the y in the opposite direction from QT, that means a minus somewhere
+    float myTorque = 1000.0;
+    myJointDef.enableMotor = theProps.property2Float(Property::TORQUE_STRING, &myTorque);
+    float myMotorSpeed = 0.0;
+    if (theProps.property2Float(Property::SPEED_STRING, &myMotorSpeed))
+        myJointDef.enableMotor = true;
+    myJointDef.maxMotorTorque = myTorque;
+    myJointDef.motorSpeed = -myMotorSpeed;
 
-	theJointPtr = (b2RevoluteJoint*) getB2WorldPtr()->CreateJoint(&myJointDef);
+    theJointPtr = (b2RevoluteJoint *) getB2WorldPtr()->CreateJoint(&myJointDef);
 }
 
 void PivotPoint::initPivotAttributes ( )
 {
-	theSecondPtr = nullptr;
-	areObjectsColliding=false;
+    theSecondPtr = nullptr;
+    areObjectsColliding = false;
 
-    theToolTip = QObject::tr("Objects rotate around this point");
+    theToolTip = QObject::tr("Objects rotate around this point.");
     theProps.setDefaultPropertiesString(
-		Property::OBJECT1_STRING + QString(":/") +
-		Property::OBJECT2_STRING + QString(":/") +
-		Property::SPEED_STRING + QString(":/") +
-		Property::TORQUE_STRING + QString(":/") +
-		Property::COLLIDE_STRING + QString(":false/") +
-		"-" + Property::MASS_STRING + ":/" );
+        Property::OBJECT1_STRING + QString(":/") +
+        Property::OBJECT2_STRING + QString(":/") +
+        Property::SPEED_STRING + QString(":/") +
+        Property::TORQUE_STRING + QString(":/") +
+        Property::COLLIDE_STRING + QString(":false/") +
+        "-" + Property::MASS_STRING + ":/" );
 }
 
 void PivotPoint::parseProperties(void)
 {
-	AbstractJoint::parseProperties();
-	theProps.property2Bool(Property::COLLIDE_STRING, &areObjectsColliding);
+    AbstractJoint::parseProperties();
+    theProps.property2Bool(Property::COLLIDE_STRING, &areObjectsColliding);
 }
 
 
 void PivotPoint::updateOrigCenter(void)
 {
-	setOrigCenter(theFirstPtr->getOrigCenter()+thePosRelativeToFirst);
+    setOrigCenter(theFirstPtr->getOrigCenter() + thePosRelativeToFirst);
 }

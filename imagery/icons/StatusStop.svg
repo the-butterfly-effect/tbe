@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -13,9 +14,9 @@
    height="64"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.91 r13725"
    version="1.0"
-   sodipodi:docname="statusStop.svg"
+   sodipodi:docname="StatusStop.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/kaa-ching/Programming/tbe/trunk/images/icons/statusPlay.png"
    inkscape:export-xdpi="90"
@@ -27,15 +28,15 @@
       <stop
          id="stop3188"
          offset="0"
-         style="stop-color:#595959;stop-opacity:1;" />
+         style="stop-color:#00395a;stop-opacity:1" />
       <stop
-         style="stop-color:#595959;stop-opacity:0.75294119;"
+         style="stop-color:#00395a;stop-opacity:0.75294119"
          offset="0.77023149"
          id="stop3192" />
       <stop
          id="stop3190"
          offset="1"
-         style="stop-color:#5a5a5a;stop-opacity:0;" />
+         style="stop-color:#00395a;stop-opacity:0" />
     </linearGradient>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
@@ -67,17 +68,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.65625"
-     inkscape:cx="28.294708"
+     inkscape:cx="12.410231"
      inkscape:cy="31.423461"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1272"
      inkscape:window-height="783"
-     inkscape:window-x="1280"
+     inkscape:window-x="640"
      inkscape:window-y="182"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:window-maximized="0">
     <sodipodi:guide
        orientation="0,1"
        position="19.292419,46.093863"
@@ -91,6 +93,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -106,8 +109,8 @@
        x="0"
        y="0" />
     <path
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:4.25196838000000010;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 29.34375 8.65625 L 29.34375 39.84375 L 45.40625 39.84375 L 47.125 39.84375 L 58.8125 39.84375 L 58.8125 8.65625 L 47.125 8.65625 L 45.40625 8.65625 L 29.34375 8.65625 z "
+       style="opacity:1;fill:#00004f;fill-opacity:1;stroke:none;stroke-width:4.25196838;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 29.34375 8.6640625 L 29.34375 39.855469 L 46.556641 39.855469 L 50.251953 39.855469 L 58.800781 39.855469 L 58.800781 8.6640625 L 50.251953 8.6640625 L 46.556641 8.6640625 L 29.34375 8.6640625 z "
        id="rect3177" />
   </g>
 </svg>

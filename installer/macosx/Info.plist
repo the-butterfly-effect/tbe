@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>tbe-icon.icns</string>
+	<key>CFBundleName</key>
+	<string>tbe</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>tbe</string>
+	<key>CFBundleGetInfoString</key>
+	<string>lalala</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.the-butterfly-effect</string>
+	<key>CFBundleLongVersionString</key>
+	<string></string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.9.3.1</string>
+	<key>CFBundleSignature</key>
+	<string>OSCR</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>LSRequiresCarbon</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>doe maar wat</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.puzzle-games</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
+</dict>
+</plist>

@@ -23,8 +23,8 @@
 #include "PivotPointPtr.h"
 
 /// This class implements rotational joints - between objects or between one
-/// object and "the world". 
-/// Rotational joints can have an engine (implementing torque and/or 
+/// object and "the world".
+/// Rotational joints can have an engine (implementing torque and/or
 /// rotational speed).
 ///
 /// Example usage:
@@ -38,7 +38,7 @@
 ///        <property key="Torque">50.0</property>
 ///    </object>
 ///
-///	   <object type="PivotPoint" X="3.95" Y="0.95">
+///    <object type="PivotPoint" X="3.95" Y="0.95">
 ///       <property key="object1">Bar</property>
 ///       <property key="object2">Handle</property>
 ///       <property key="collide">false</property>
@@ -46,57 +46,66 @@
 class PivotPoint : public AbstractJoint
 {
 public:
-	/// empty constructor
-	PivotPoint(void);
+    /// empty constructor
+    PivotPoint(void);
 
-	/** constructor to add pivot for an object to world
-	  * @param aAbstractObject
-	  * @param aRelativePosition the (relative!) position of this pivot point
-	  *                          relative to the center of the AbstractObject
-	  */
-	PivotPoint(AbstractObjectPtr aAbstractObject, const Vector& aRelativePosition);
+    /** constructor to add pivot for an object to world
+      * @param aAbstractObject
+      * @param aRelativePosition the (relative!) position of this pivot point
+      *                          relative to the center of the AbstractObject
+      */
+    PivotPoint(AbstractObjectPtr aAbstractObject, const Vector &aRelativePosition);
 
-	virtual ~PivotPoint();
+    virtual ~PivotPoint();
+
+    /// (overridden from AbstractObject to remove extra sharedptrs)
+    virtual void clearObjectReferences() override;
 
     /// Overridden from AbstractObject/AbstractJoint: never create ViewObject.
-    virtual ViewObject* createViewObject(float)
-    { return nullptr; }
+    ViewItem* createViewItem(float) override
+    {
+        return nullptr;
+    }
 
-	/// overridden from AbstractObject
-	/// (this class does not have a body, only a joint)
-	virtual void createPhysicsObject(void);
+    /// overridden from AbstractObject
+    /// (this class does not have a body, only a joint)
+    virtual void createPhysicsObject(void) override;
 
-	/// overridden from AbstractObject
-	/// returns the Name of the object.
-	virtual const QString getName ( ) const
-	{	return QObject::tr("PivotPoint");	}
+    /// overridden from AbstractObject
+    /// returns the Name of the object.
+    virtual const QString getName ( ) const override
+    {
+        return QObject::tr("PivotPoint");
+    }
 
-	/// overridden from AbstractObject
-	/// returns true if the object can be rotated by the user
-	virtual bool isRotatable ( ) const
-	{	return false;	}
+    /// overridden from AbstractObject
+    /// returns true if the object can be rotated by the user
+    virtual bool isRotatable ( ) const override
+    {
+        return false;
+    }
 
-	/// overridden from AbstractObject
-	/// parses all properties that PivotPoint understands
-	virtual void  parseProperties(void);
+    /// overridden from AbstractObject
+    /// parses all properties that PivotPoint understands
+    virtual void  parseProperties(void) override;
 
-	/// implemented from AbstractJoint
-	virtual void updateOrigCenter(void);
+    /// implemented from AbstractJoint
+    virtual void updateOrigCenter(void) override;
 
 protected:
 
 private:
-	void initPivotAttributes ( );
+    void initPivotAttributes ( );
 
-	AbstractObjectPtr theFirstPtr;
-	AbstractObjectPtr theSecondPtr;
+    AbstractObjectPtr theFirstPtr;
+    AbstractObjectPtr theSecondPtr;
 
-	/** use property 'collide' to set this.
-	  * true means that objects can collide - useful for true hinges
-	  */
-	bool areObjectsColliding;
+    /** use property 'collide' to set this.
+      * true means that objects can collide - useful for true hinges
+      */
+    bool areObjectsColliding;
 
-	Vector thePosRelativeToFirst;
+    Vector thePosRelativeToFirst;
 };
 
 

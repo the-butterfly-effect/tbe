@@ -17,9 +17,9 @@
 			<object width="5.000" X="2.500" Y="1.100" height="1.400" type="RightRamp" angle="0.000"/>
             <object width="0.100" X="3.050" Y="0.200" height="0.400" type="Floor" angle="0.000"/>
 			<object width="0.400" X="2.75" Y="0.10" height="0.200" type="Spring" angle="0.000"/>
-            <object width="0.320" X="0.2" Y="3.4" height="0.320" type="Pingus" angle="0.000" ID="pingus0"/>
-            <object width="0.320" X="0.2" Y="2.0" height="0.320" type="Pingus" angle="0.000" ID="pingus1"/>
-            <object width="0.320" X="0.2" Y="0.3" height="0.320" type="Pingus" angle="0.000" ID="pingus2"/>
+            <object width="0.320" X="0.2" Y="3.4" height="0.320" type="PingusWalkRight" angle="0.000" ID="pingus0"/>
+            <object width="0.320" X="0.2" Y="2.0" height="0.320" type="PingusWalkRight" angle="0.000" ID="pingus1"/>
+            <object width="0.320" X="0.2" Y="0.3" height="0.320" type="PingusWalkRight" angle="0.000" ID="pingus2"/>
             <object width="0.270" X="7.8" Y="0.300" height="0.360" type="Balloon" angle="0.000"/>
         </predefined>
         <background>

@@ -30,60 +30,61 @@ class QProgressDialog;
 
 class RegressionTest : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
 
-	enum States
-	{
-		START = 0,
-		LOADLEVEL,
-		STARTLEVELTOFAIL,
-		LEVELFAILED,
-		STOPANDRESETLEVEL,
-		RESETLEVEL,
-		ADDHINTS,
-		STARTLEVELTOWIN,
-		LEVELWON,
-		NEXTLEVEL,
-		REGRESSIONTESTDONE,
-	};
+    enum States {
+        START = 0,
+        LOADLEVEL,
+        STARTLEVELTOFAIL,
+        LEVELFAILED,
+        STOPANDRESETLEVEL,
+        RESETLEVEL,
+        ADDHINTS,
+        STARTLEVELTOWIN,
+        LEVELWON,
+        NEXTLEVEL,
+        REGRESSIONTESTDONE,
+    };
 
+    explicit RegressionTest(MainWindow *parent = 0);
 
-	explicit RegressionTest(MainWindow *parent = 0);
-
-	/// Starts the automated regression tests
-	/// TODO: for now contains the entire event state machine for tests
-	/// @note: can only be started if the is true
-	void startRegressionRun(void);
+    /// Starts the automated regression tests
+    /// TODO: for now contains the entire event state machine for tests
+    /// @note: can only be started if the is true
+    void startRegressionRun(void);
 
 signals:
 
 public slots:
-	void slot_Won();
-	void slot_Fail();
-	void slot_Cancel();
+    void slot_Won();
+    void slot_Fail();
+    void slot_Cancel();
 
 private slots:
-	///
-	void slotRegressionProgress(void);
+    ///
+    void slotRegressionProgress(void);
+#ifdef QT_DEBUG
 
 private:
 
-	bool theIsWon;
-	bool theIsFail;
-	bool theWantWonFail;	/// true if slot_Won or slot_Fail should work...
+    bool theIsWon;
+    bool theIsFail;
+    bool theWantWonFail;    /// true if slot_Won or slot_Fail should work...
 
-	int theHintIndex;	/// integer hinting at what the last applied hint is. -1 means no hint yet.
-	int theLevelIndex;
-	QStringList theLevels;
-	MainWindow* theMainWindowPtr;
-	States theState;
-	QTimer theRegressionTimer;
+    int theHintIndex;   /// integer hinting at what the last applied hint is. -1 means no hint yet.
+    int theLevelIndex;
+    QStringList theLevels;
+    MainWindow *theMainWindowPtr;
+    States theState;
+    QTimer theRegressionTimer;
 
-	/// will contain the names of the various regression states
-	QStringList theStateNames;
+    /// will contain the names of the various regression states
+    QStringList theStateNames;
 
-	QProgressDialog* theProgressPtr;
+    QProgressDialog *theProgressPtr;
+
+#endif
 };
 
 #endif // REGRESSIONTEST_H

@@ -5,8 +5,9 @@ Project Management:
 * lspacenl@gmail.com   - Peter van Ginneken
 
 Development:
-* klaas@opentux.nl - Klaas van Gend
+* 'kaa-ching' - klaas@opentux.nl - Klaas van Gend
 * many contributors submitted a few fixes
+* macosx port monitored and maintained by 'martian'.
 The Butterfly Effect is a happy user of the Box2D and QT libraries.
 
 Graphics:
@@ -16,7 +17,8 @@ Graphics:
   Some images (e.g. Pingus) are under a GPLv3+ license.
 
 Levels:
-* most levels were implemented by Klaas van Gend
+* quite a few levels were designed by 'Wuzzy'
+* many other levels were implemented by Klaas van Gend
   - but many contain ideas coined by others - thank you!
   - almost all levels have seen playtesting by a lot of volunteers - thank you!
 

@@ -1,0 +1,84 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Objects Test</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Test of objects with default properties in scene.</description>
+        <date>5/25/16</date>
+    </levelinfo>
+    <toolbox/>
+    <scene>
+        <scenesize width="10" height="5"/>
+        <predefined>
+            <object X="7.25743" Y="2.93705" width="0.27" angle="0" type="Balloon" height="0.36"/>
+            <object X="1.57174" Y="2.96067" width="0.8" angle="0" type="BedOfNails" height="0.15"/>
+            <object X="7.38915" Y="4.60579" width="1" angle="0" type="BirchBar" height="0.1"/>
+            <object X="1.0046" Y="1.24176" width="0.22" angle="0" type="BowlingBall" height="0.22"/>
+            <object X="1.40419" Y="4.51088" width="0.15" angle="0" type="Butterfly" height="0.228027"/>
+            <object X="2.853" Y="4.283" angle="0" type="Daffodil" />
+            <object X="2.70314" Y="1.66096" width="0.25" angle="0" type="Cactus" height="0.4"/>
+            <object X="2.74077" Y="0.890716" width="0.9" angle="0" type="CardboardBox" height="0.78809"/>
+            <object X="2.72636" Y="0.411624" width="1" angle="0" type="Floor" height="0.1"/>
+            <object X="7.94721" Y="0.356078" width="0.85" angle="0" type="ColaCrate" height="0.6"/>
+            <object X="1.70003" Y="4.07304" width="0.38" angle="0" type="CircularSaw" height="0.38"/>
+            <object X="6.26055" Y="4.14831" width="0.166" angle="0" type="ColaMintBottle" height="0.5"/>
+            <object X="5.51671" Y="0.178073" width="0.33" angle="0" type="DetonatorBox" height="0.35"/>
+            <object X="6.07674" Y="0.171021" width="0.43" angle="0" type="Dynamite" height="0.32"/>
+            <object X="6.61018" Y="0.281146" width="0.1" angle="0" type="DominoBlue" height="0.5"/>
+            <object X="7.02731" Y="0.253337" width="0.1" angle="0" type="DominoGreen" height="0.5"/>
+            <object X="7.3332" Y="0.286707" width="0.1" angle="0" type="DominoRed" height="0.5"/>
+            <object X="3.75964" Y="2.90804" width="0.45" angle="0" type="Hammer" height="0.18"/>
+            <object X="7.38114" Y="4.27979" width="1.4" angle="0" type="IBeam" height="0.1"/>
+            <object X="7.5228" Y="1.42158" width="1" angle="0" type="LeftFixedWedge" height="1"/>
+            <object X="1.57672" Y="3.53065" width="1" angle="0" type="LeftRamp" height="1"/>
+            <object X="7.54719" Y="2.57832" width="1" angle="0" type="LeftWedge" height="1"/>
+            <object X="0.615065" Y="1.70975" width="0.076" angle="0" type="PetanqueBoule" height="0.076"/>
+            <object X="2.68" Y="0.152" width="0.28" angle="0" type="PingusSleeping" height="0.28"/>
+            <object X="2.357" Y="0.134" width="0.28" angle="0" type="PingusWalkLeft" height="0.28"/>
+            <object X="3.01789" Y="0.151991" width="0.28" angle="0" type="PingusWalkRight" height="0.28"/>
+            <object X="3.829" Y="0.361" angle="0" type="PingusExit"/>
+            <object X="0.663719" Y="4.04533" width="0.22" angle="0" type="PostItHint" height="0.22"/>
+            <object X="0.963719" Y="4.04533" width="0.22" angle="0" type="PostItTutorial" height="0.22"/>
+            <object X="1.363719" Y="4.04533" width="0.22" angle="0" type="PostItMisc" height="0.22"/>
+            <object X="3.41772" Y="4.19041" width="0.4" angle="0" type="QuarterArc40" height="0.4"/>
+            <object X="3.6171" Y="4.37397" width="0.8" angle="0" type="QuarterArc80" height="0.8"/>
+            <object X="6.51886" Y="1.41006" width="1" angle="0" type="RightFixedWedge" height="1"/>
+            <object X="6.53105" Y="2.57276" width="1" angle="0" type="RightWedge" height="1"/>
+            <object X="3.40156" Y="2.56792" width="1" angle="0" type="RotatingBar" height="0.12"/>
+            <object X="3.36902" Y="2.08304" width="2.5" angle="0" type="SeesawSmall" height="0.3"/>
+            <object X="3.36774" Y="3.71982" width="0.2" angle="0" type="Skyhook" height="0.23"/>
+            <object X="0.370942" Y="1.96413" width="0.22" angle="0" type="SoccerBall" height="0.22"/>
+            <object X="1.5068" Y="2.08616" width="0.4" angle="0" type="Spring" height="0.2"/>
+            <object X="0.753496" Y="1.36415" width="0.068" angle="0" type="TennisBall" height="0.068"/>
+            <object X="1.48899" Y="0.858447" width="1" angle="0" type="ToyChest" height="1.7"/>
+            <object X="0.248498" Y="2.37688" width="0.21" angle="0" type="VolleyBall" height="0.21"/>
+            <object X="7.28047" Y="3.63889" width="0.2" angle="0" type="Wall" height="1"/>
+            <object X="5.50356" Y="1.31001" width="0.4" angle="0" type="Weight" height="0.4"/>
+            <object X="0.5599" Y="1.29607" width="1" angle="0" type="RightRamp" height="1"/>
+            <object X="0.16012" Y="2.86385" width="0.2" angle="0" type="CustomBall" height="0.2"/>
+            <object X="0.16012" Y="2.615" width="0.14" angle="0" type="PegMetal" height="0.14"/>
+            <object X="0.846" Y="2.882" width="0.14" angle="0" type="PegWood" height="0.14"/>
+            <object X="4.8026" Y="3.29594" width="1" angle="0" type="RectObject" height="1"/>
+            <object X="4.70639" Y="4.43908" width="1" angle="0" type="PolyObject" height="1"/>
+            <object X="7.96605" Y="3.62417" width="1" angle="0" type="Scenery" height="1"/>
+            <object X="8.987" Y="3.888" type="Styrofoam" />
+            <object X="9.244" Y="2.801" type="RightStyrofoamWedge" />
+            <object X="9.244" Y="0.9" type="LeftStyrofoamWedge" />
+            <object X="5.09385" Y="0.387692" width="0.12" angle="0" type="BowlingPin" height="0.34"/>
+            <object X="4.67179" height="0.7" type="Goal" angle="0" Y="0.361538" width="0.4"/>
+            <object X="2.417" Y="3.268" type="WoodCrateSquare"/>
+            <object X="2.417" Y="2.531" type="WoodCrateFlat"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.494118;0.494118;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="equalmore">1</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

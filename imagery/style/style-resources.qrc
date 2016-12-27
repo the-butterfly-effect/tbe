@@ -1,16 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>button.png</file>
-        <file>ChoosePhoneNumber.png</file>
-        <file>GameResources.png</file>
-        <file>IconDelete.png</file>
-        <file>ListViewItemTooltip.png</file>
-	<file>SimulationButtonInverted.png</file>
-	<file>SimulationButtonNormal.png</file>
-	<file>SimulationControlsButtonFrame.png</file>
-	<file>SimulationControlsLabelFrame.png</file>
-        <file>tbe-icon.ico</file>
+        <file>Shrink.png</file>
+        <file>../illustrations/tbe-icon.ico</file>
         <file>transparant.png</file>
-        <file>WinFail.png</file>
     </qresource>
 </RCC>

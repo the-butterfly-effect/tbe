@@ -40,49 +40,45 @@ class QDomNode;
 class AbstractObjectSerializer : public ObjectFactory
 {
 public:
-	/** create a QDomElement of the AbstractObject this instance
-	 *  was created by and add it to aParent
-	 *  @param aParent QDomElement pointer to add the serialized data to
-	 */
-	void serialize(QDomElement* aParent) const;
+    /** create a QDomElement of the AbstractObject this instance
+     *  was created by and add it to aParent
+     *  @param aParent QDomElement pointer to add the serialized data to
+     */
+    void serialize(QDomElement *aParent) const;
 
-	virtual ~AbstractObjectSerializer() {};
+    virtual ~AbstractObjectSerializer() {};
 
 
-	/** create a AbstractObject from the information in the provided Dom
-	 *  @param q  the QDomNode containing the object definition
-	 *  @param isMovable  set to true if object is not to be moved by the user
-	 *  @param isXYMandatory  set to true if X="" and Y="" are mandatory for the object
-	 *  @returns  nullptr if failed or a pointer to a valid AbstractObject if successful.
-	 *            Note that that AbstractObject is still on its own - not attached to a World yet.
-	 */
-    static AbstractObjectPtr createObjectFromDom(const QDomNode& q,
-											   bool isMovable,
-											   bool isXYMandatory);
+    /** create a AbstractObject from the information in the provided Dom
+     *  @param q  the QDomNode containing the object definition
+     *  @param isMovable  set to true if object is not to be moved by the user
+     *  @param isXYMandatory  set to true if X="" and Y="" are mandatory for the object
+     *  @returns  nullptr if failed or a pointer to a valid AbstractObject if successful.
+     *            Note that that AbstractObject is still on its own - not attached to a World yet.
+     */
+    static AbstractObjectPtr createObjectFromDom(const QDomNode &q,
+                                                 bool isMovable,
+                                                 bool isXYMandatory);
 
-	/** returns a string representation of the float
-	 *  - maximum 3 digits
-	 *  - always a dot as decimal separator
-	 *  @param aValue the float to convert
-	 *  @returns a QString with the string representation of aValue.
-	 */
-	QString floatToString(float aValue) const;
 
 private:
-	/// constructor only called by AbstractObject
+    /// constructor only called by AbstractObject
     explicit AbstractObjectSerializer(const AbstractObjectPtr anObjectPtr);
 
-	friend class AbstractObject;
+    friend class AbstractObject;
 
     const AbstractObjectPtr theAbstractObjectPtr;
 
-	/// implementation of ObjectFactory - not needed in AbstractObjectSerializer...
-    virtual AbstractObject* createObject(void) const { return nullptr; }
+    /// implementation of ObjectFactory - not needed in AbstractObjectSerializer...
+    virtual AbstractObject *createObject(void) const
+    {
+        return nullptr;
+    }
 
-	/// Neutralize copy constructor and assignment operator
-	AbstractObjectSerializer(AbstractObjectSerializer&);
-	/// Neutralize copy constructor and assignment operator
-	AbstractObjectSerializer& operator=(const AbstractObjectSerializer&);
+    /// Neutralize copy constructor and assignment operator
+    AbstractObjectSerializer(AbstractObjectSerializer &);
+    /// Neutralize copy constructor and assignment operator
+    AbstractObjectSerializer &operator=(const AbstractObjectSerializer &);
 };
 
 #endif // ABSTRACTOBJECTSERIALIZER_H

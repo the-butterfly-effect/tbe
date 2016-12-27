@@ -1,0 +1,100 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Maze</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Roll the bowling ball to the bottom floor.</description>
+        <date>29.01.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object angle="0.000" type="LeftFixedWedge" X="0.000" height="0.250" width="0.250" Y="0.000"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object angle="0.000" type="RightFixedWedge" X="3.768" height="0.250" width="0.250" Y="3.207"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="4" width="6.5"/>
+        <predefined>
+            <object angle="0.000" type="BowlingBall" X="3.821" ID="ball" height="0.220" width="0.220" Y="3.317"/>
+            <object angle="0.000" type="Floor" X="3.877" height="0.100" width="7.744" Y="0.052"/>
+            <object angle="0.000" type="Floor" X="2.624" height="0.100" width="2.070" Y="2.997"/>
+            <object angle="0.000" type="Floor" X="4.612" height="0.100" width="1.246" Y="2.990"/>
+            <object angle="0.000" type="Floor" X="2.943" height="0.100" width="1.427" Y="2.273"/>
+            <object angle="0.000" type="Floor" X="3.138" height="0.100" width="1.000" Y="2.616"/>
+            <object angle="0.000" type="Floor" X="4.082" height="0.100" width="0.883" Y="1.865"/>
+            <object angle="-1.570" type="Floor" X="4.488" height="0.100" width="0.366" Y="2.759"/>
+            <object angle="-1.570" type="Floor" X="3.601" height="0.100" width="0.404" Y="2.020"/>
+            <object angle="-1.570" type="Floor" X="4.066" height="0.100" width="0.387" Y="2.426"/>
+            <object angle="-1.570" type="Floor" X="1.887" height="0.100" width="0.339" Y="2.799"/>
+            <object angle="0.000" type="Floor" X="4.698" height="0.100" width="0.339" Y="2.628"/>
+            <object angle="0.000" type="Floor" X="4.275" height="0.100" width="0.331" Y="2.282"/>
+            <object angle="-1.570" type="Floor" X="5.277" height="0.100" width="2.378" Y="1.848"/>
+            <object angle="-1.570" type="Floor" X="4.879" height="0.100" width="0.844" Y="1.800"/>
+            <object angle="0.000" type="Floor" X="4.659" height="0.100" width="0.374" Y="1.432"/>
+            <object angle="-1.570" type="Floor" X="4.040" height="0.100" width="0.417" Y="1.276"/>
+            <object angle="0.000" type="Floor" X="3.859" height="0.100" width="1.215" Y="1.074"/>
+            <object angle="-1.570" type="Floor" X="4.425" height="0.100" width="0.447" Y="1.252"/>
+            <object angle="0.000" type="Floor" X="3.141" height="0.100" width="1.081" Y="1.453"/>
+            <object angle="-1.570" type="Floor" X="2.259" height="0.100" width="0.417" Y="2.829"/>
+            <object angle="-1.570" type="Floor" X="4.895" height="0.100" width="0.417" Y="0.836"/>
+            <object angle="0.000" type="Floor" X="4.694" height="0.100" width="1.281" Y="0.646"/>
+            <object angle="0.000" type="Floor" X="3.252" height="0.100" width="0.771" Y="0.651"/>
+            <object angle="-1.570" type="Floor" X="3.294" height="0.100" width="0.417" Y="0.862"/>
+            <object angle="0.000" type="Floor" X="1.934" height="0.100" width="0.697" Y="0.651"/>
+            <object angle="-1.570" type="Floor" X="3.238" height="0.100" width="0.417" Y="1.699"/>
+            <object angle="0.000" type="Floor" X="2.388" height="0.100" width="0.948" Y="1.867"/>
+            <object angle="-1.570" type="Floor" X="2.265" height="0.100" width="0.702" Y="1.474"/>
+            <object angle="0.000" type="Floor" X="2.114" height="0.100" width="0.417" Y="1.099"/>
+            <object angle="0.000" type="Floor" X="1.764" height="0.100" width="0.331" Y="1.501"/>
+            <object angle="-1.570" type="Floor" X="1.552" height="0.100" width="2.451" Y="1.822"/>
+            <object angle="0.000" type="Floor" X="1.738" height="0.100" width="0.339" Y="2.273"/>
+            <object angle="-1.570" type="Floor" X="2.919" height="0.100" width="0.447" Y="0.907"/>
+            <object angle="0.000" type="Floor" X="2.750" height="0.100" width="0.300" Y="1.086"/>
+            <object angle="0.000" type="Floor" X="2.446" height="0.100" width="0.339" Y="0.651"/>
+            <object angle="0.000" type="Scenery" X="4.334" height="0.310" width="1.000" Y="3.794">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="1.658" height="0.310" width="1.000" Y="3.721">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="0.584" height="0.310" width="1.000" Y="3.553">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="7.009" height="0.310" width="1.000" Y="3.686">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="2.892" height="0.310" width="1.000" Y="3.635">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+            <object angle="0.000" type="Scenery" X="5.706" height="0.310" width="1.000" Y="3.717">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">1</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="0.10">0.70;0.70;0.81;1.00</gradientstop>
+            <gradientstop pos="0.15">0.57;0.57;0.72;1.00</gradientstop>
+            <gradientstop pos="0.60">0.33;0.33;0.69;1.00</gradientstop>
+            <gradientstop pos="0.80">0.25;0.25;0.63;1.00</gradientstop>
+            <gradientstop pos="1.00">0.05;0.05;0.41;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">ball</property>
+            <property key="ybelow">0.4</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" object="RightFixedWedge" X="3.794" Y="3.172"/>
+    </hints>
+</tbe-level>

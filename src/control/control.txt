@@ -2,29 +2,31 @@
 # and contains all source files for this control directory.
 
 SET(control_SOURCES 
-    control/AbstractUndoCommand.cpp 
-    control/ChoosePhoneUndoCommand.cpp 
-    control/DeleteUndoCommand.cpp 
-    control/DummyUndoCommand.cpp 
-    control/InsertUndoCommand.cpp 
-    control/MoveUndoCommand.cpp 
-    control/ResizeUndoCommand.cpp 
-    control/RotateUndoCommand.cpp 
-    control/ToolboxGroup.cpp 
-    control/UndoSingleton.cpp 
-    control/ViewObjectActionDectorator.cpp
+    control/AbstractQUndoCommand.cpp
+    control/DeleteQUndoCommand.cpp
+    #control/EditPropertyUndoCommand.cpp
+    control/InsertMoveQUndoCommand.cpp
+    control/MoveQUndoCommand.cpp
+    control/ResizeQUndoCommand.cpp
+    control/ReturnToToolboxQUndoCommand.cpp
+    control/RotateQUndoCommand.cpp
+    control/SetPhoneQUndoCommand.cpp
+    control/Toolbox.cpp
+    control/ToolboxGroup.cpp
+    control/UndoSingleton.cpp
 )
 
 SET(control_HEADERS
-    control/AbstractUndoCommand.h 
-    control/ChoosePhoneUndoCommand.h 
-    control/DeleteUndoCommand.h 
-    control/DummyUndoCommand.h 
-    control/InsertUndoCommand.h 
-    control/MoveUndoCommand.h 
-    control/ResizeUndoCommand.h 
-    control/RotateUndoCommand.h 
-    control/ToolboxGroup.h 
-#    control/UndoSingleton.h 
-    control/ViewObjectActionDectorator.h
+    control/AbstractQUndoCommand.h
+    control/DeleteQUndoCommand.h
+    #control/EditPropertyUndoCommand.h
+    control/InsertMoveQUndoCommand.h
+    control/MoveQUndoCommand.h
+    control/ResizeQUndoCommand.h
+    control/ReturnToToolboxQUndoCommand.h
+    control/RotateQUndoCommand.h
+    control/SetPhoneQUndoCommand.h
+    control/Toolbox.h
+    control/ToolboxGroup.h
+    control/UndoSingleton.h
 )

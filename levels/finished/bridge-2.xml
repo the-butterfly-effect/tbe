@@ -1,0 +1,80 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Bridge the Gap 2</title>
+        <author>Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Throw the bowling ball and the bowling pin into the hole on the right.</description>
+        <date>March 8, 2010</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object type="Skyhook" ID="Skyhook">
+                <property key="ZValue">0.2</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="3">
+            <object width="1.2" height="0.1" type="IBeam">
+                <property key="Friction">0.1</property>
+                <property key="Resizable">none</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="3"/>
+        <predefined>
+            <object width="0.9" X="0.7" Y="2.15" height="0.1" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="1.0" X="0.75" Y="1.1" height="2.0" type="Floor">
+                <property key="Bounciness">0.0</property>
+            </object>
+            <object X="0.25" Y="2.7" type="Hammer">
+                <property key="Mass">80.0</property>
+            </object>
+            <object X="0.5" Y="2.35" type="BowlingBall" ID="Ball"/>
+            <object X="2" Y="0.5" type="PostItHint">
+                <property key="page1">Remember this gap?</property>
+                <property key="page2">I also have a bowling ball that wants to cross.</property>
+		<property key="page3">&lt;br>&lt;br>Post-It Boy&lt;br>&lt;br>likes building bridges</property>
+                <property key="page4">&lt;br>&lt;br>… and he likes crashing bridges even more!</property>
+            </object>
+            <object width="4.4" X="2.2" Y="0.05" height="0.1" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="1.2" X="4.4" Y="2.35" height="0.1" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.6" X="4.1" Y="1.77" height="0.1" type="Floor">
+                <property key="Bounciness">0.1</property>
+            </object>
+            <object width="0.1" X="4.35" Y="0.90" height="1.70" type="Floor"/>
+            <object width="0.5" X="4.65" Y="0.45" height="0.9" type="Scenery">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="0.1" X="4.95" Y="1.15" height="2.3" type="Floor"/>
+            <object X="4.1" Y="1.99" type="BowlingPin" ID="the Pin"/>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="ybelow">0.5</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.3</property>
+            <property key="object">the Pin</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="xover">4.3</property>
+            <property key="object">Ball</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" object="IBeam" X="1.751" Y="2.174" />
+        <hint number="2" object="Skyhook" X="2.455" Y="1.849" />
+        <hint number="3" object="IBeam" X="3.243" Y="2.134" />
+        <hint number="4" object="IBeam" X="2.605" Y="2.025" />
+    </hints>
+</tbe-level>

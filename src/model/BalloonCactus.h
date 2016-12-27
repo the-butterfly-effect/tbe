@@ -37,85 +37,89 @@
 class Balloon : public PolyObject, public SimStepCallbackInterface
 {
 public:
-	Balloon();
+    Balloon();
 
-	virtual ~Balloon();
+    virtual ~Balloon();
 
-	/// overridden from PolyObject because this class wants to register for
-	/// callbacks and needs to restart its state machine
-	virtual void createPhysicsObject(void) override;
+    /// overridden because a Balloon can 'die' through external reasons
+    void causeWounded(WhyWounded aReason) override;
 
-	/// let's mis-use deletePhysicsObject to reset our object state
-	virtual void deletePhysicsObject(void) override;
+    /// overridden from PolyObject because this class wants to register for
+    /// callbacks and needs to restart its state machine
+    virtual void createPhysicsObject(void) override;
 
-	/// deletePhysicsObject() doesn't really delete the physics object
-	/// anymore - but we need a true deleter here...
-	void deletePhysicsObjectForReal(void);
+    /// let's mis-use deletePhysicsObject to reset our object state
+    virtual void deletePhysicsObject(void) override;
 
-	/// this enum defines the states of the balloon
-	enum States
-	{
-		BALLOON,
-		POPPING,
-		POPPED,
-		GONE
-	};
+    /// deletePhysicsObject() doesn't really delete the physics object
+    /// anymore - but we need a true deleter here...
+    void deletePhysicsObjectForReal(void);
 
-	/// called by a Cactus or BedOfNails if the balloon is hit
-	void stung(void);
+    /// this enum defines the states of the balloon
+    enum States {
+        BALLOON,
+        POPPING,
+        POPPED,
+        GONE
+    };
 
-	/// overridden from AbstractObject to allow representation of the states
-	/// @returns: returns a numerical index similar to the state
-	virtual unsigned int getImageIndex(void) const override
-	{ return theState; }
+    /// overridden from AbstractObject to allow representation of the states
+    /// @returns: returns a numerical index similar to the state
+    virtual unsigned int getImageIndex(void) const override
+    {
+        return theState;
+    }
 
-	/// overridden to make sure joints are not re-created outside BALLOON state
-	virtual void notifyJoints(JointInterface::JointStatus aStatus) override;
+    /// overridden to make sure joints are not re-created outside BALLOON state
+    virtual void notifyJoints(JointInterface::JointStatus aStatus) override;
 
 protected:
-	/// call this function to suggest a state change to the Balloon
-	/// note that the Balloon can decide not to follow your state change,
-	/// going from popped to balloon isn't supported (just like real life)
-	/// @param aNewState the suggestion for a new state
-	/// @returns the state after this function completes
-	States goToState(States aNewState);
+    /// call this function to suggest a state change to the Balloon
+    /// note that the Balloon can decide not to follow your state change,
+    /// going from popped to balloon isn't supported (just like real life)
+    /// @param aNewState the suggestion for a new state
+    /// @returns the state after this function completes
+    States goToState(States aNewState);
 
-	/// will replace the existing set of shapes by a smaller shape that
-	/// fits the BalloonRest image. Do not call from within a Box2D callback
-	void switchToSmallShape(void);
+    /// will replace the existing set of shapes by a smaller shape that
+    /// fits the BalloonRest image. Do not call from within a Box2D callback
+    void switchToSmallShape(void);
 
 public:
-	// the following two members are part of the normal impulse reporting
+    // the following two members are part of the normal impulse reporting
 
-	/// overridden from AbstractObject - we want reports on NormalImpulse
-	virtual bool isInterestedInNormalImpulse(void) override
-	{ return true; }
+    /// overridden from AbstractObject - we want reports on NormalImpulse
+    virtual bool isInterestedInNormalImpulse(void) override
+    {
+        return true;
+    }
 
-	/** overridden from AbstractObject - we want to receive
-	  * reports on the normal impulse.
-	  * @param anImpulseLength length of the normal impulse vector
-	  */
-	virtual void reportNormalImpulseLength(qreal anImpulseLength) override;
-
-private:
-	/// implemented from SimStepCallbackInterface
-	virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
-
-	void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepPopped  (qreal aTimeStep, qreal aTotalTime);
-	void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
+    /** overridden from AbstractObject - we want to receive
+      * reports on the normal impulse.
+      * @param anImpulseLength length of the normal impulse vector
+      */
+    virtual void reportNormalImpulseLength(qreal anImpulseLength,
+                                           AbstractObject *anOtherObjectPtr) override;
 
 private:
-	// Private things
+    /// implemented from SimStepCallbackInterface
+    virtual void callbackStep (qreal aTimeStep, qreal aTotalTime) override;
 
-	/// the state variable
-	States theState;
+    void callbackStepBalloon (qreal aTimeStep, qreal aTotalTime);
+    void callbackStepPopped  (qreal aTimeStep, qreal aTotalTime);
+    void callbackStepPopping (qreal aTimeStep, qreal aTotalTime);
 
-	qreal thePoppingTimeStart;
+private:
+    // Private things
 
-	const static qreal POPPING_TIME;
-	const static qreal POPPED_MASS;
-	const static qreal POPPED_TIME;
+    /// the state variable
+    States theState;
+
+    qreal thePoppingTimeStart;
+
+    const static qreal POPPING_TIME;
+    const static qreal POPPED_MASS;
+    const static qreal POPPED_TIME;
 };
 
 
@@ -130,18 +134,18 @@ private:
 class Cactus : public PolyObject
 {
 public:
-	Cactus();
+    Cactus();
 
-	virtual ~Cactus();
+    virtual ~Cactus();
 
-	/// Overridden so we will get notified if something poppable hits our
-	/// sharp points
-	void callBackSensor(const ContactInfo& aPoint) override;
+    /// Overridden so we will get notified if something poppable hits our
+    /// sharp points
+    void callBackSensor(const ContactInfo &aPoint) override;
 
-	/** Overridden from PolyObject because we also have a sensor
-	 *  here...
-	 */
-	void fillShapeList(void) override;
+    /** Overridden from PolyObject because we also have a sensor
+     *  here...
+     */
+    void fillShapeList(void) override;
 };
 
 
@@ -156,17 +160,17 @@ public:
 class BedOfNails : public PolyObject
 {
 public:
-	BedOfNails();
+    BedOfNails();
 
-	virtual ~BedOfNails();
+    virtual ~BedOfNails();
 
-	/// Overridden so we will get notified if something poppable hits our
-	/// sharp points
-	void callBackSensor(const ContactInfo& aPoint) override;
+    /// Overridden so we will get notified if something poppable hits our
+    /// sharp points
+    void callBackSensor(const ContactInfo &aPoint) override;
 
-	/** Just like Cactus, we need to redefine the shapes
-	 */
-	void fillShapeList(void) override;
+    /** Just like Cactus, we need to redefine the shapes
+     */
+    void fillShapeList(void) override;
 };
 
 
@@ -179,21 +183,21 @@ public:
 class CircularSaw : public CircleObject
 {
 public:
-	CircularSaw();
+    CircularSaw();
 
-	virtual ~CircularSaw();
+    virtual ~CircularSaw();
 
-	/// Overridden so we will get notified if something poppable hits our
-	/// sharp points
-	void callBackSensor(const ContactInfo& aPoint) override;
+    /// Overridden so we will get notified if something poppable hits our
+    /// sharp points
+    void callBackSensor(const ContactInfo &aPoint) override;
 
-	/** Overridden from AbstractBall because we also have to define
-	 *  a sensor here...
-	 */
-	void createBallShapeFixture(float aRadius, float aMass) override;
+    /** Overridden from AbstractBall because we also have to define
+     *  a sensor here...
+     */
+    void createBallShapeFixture(float aRadius, float aMass) override;
 
-	/// we need to adjust the size based on the radius
-	void  parseProperties(void) override;
+    /// we need to adjust the size based on the radius
+    void  parseProperties(void) override;
 };
 
 

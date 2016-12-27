@@ -19,60 +19,57 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 /// information on the background of the world/scene
 /// will be used by DrawWorld, of course
-struct Background
-{
-	/// The background image is at the back of the screen, scaled
-	/// to fit the World's coordinates.
-	QString theImageName;
+struct Background {
+    /// The background image is at the back of the screen, scaled
+    /// to fit the World's coordinates.
+    QString theImageName;
 
-	/// Horizontal distance for repeat of the image ("tiling")
-	/// a value less than 0.01 means no repeat
-	float theImageHRepeat;
+    /// Horizontal distance for repeat of the image ("tiling")
+    /// a value less than 0.01 means no repeat
+    float theImageHRepeat;
 
-	/// Vertical distance for repeat of the image ("tiling")
-	/// a value less than 0.01 means no repeat
-	float theImageVRepeat;
+    /// Vertical distance for repeat of the image ("tiling")
+    /// a value less than 0.01 means no repeat
+    float theImageVRepeat;
 
-	/// types of how to handle the gradient - directly "copied" from the
-	/// definitions in QGradient - please check the Qt manual for imagery :-)
-	/// TODO/FIXME: not implemented yet!!!
-	enum GradientSpread
-	{
-		PadSpread=0,	//	The area is filled with the closest stop color. This is the default.
-		RepeatSpread=2, //	The gradient is repeated outside the gradient area.
-		ReflectSpread=1,//  The gradient is reflected outside the gradient area.
-	};
+    /// types of how to handle the gradient - directly "copied" from the
+    /// definitions in QGradient - please check the Qt manual for imagery :-)
+    /// TODO/FIXME: not implemented yet!!!
+    enum GradientSpread {
+        PadSpread = 0,  //  The area is filled with the closest stop color. This is the default.
+        RepeatSpread = 2, //  The gradient is repeated outside the gradient area.
+        ReflectSpread = 1, //  The gradient is reflected outside the gradient area.
+    };
 
-	struct GradientStop
-	{
-		/// 0.0=bottom / 1.0 = top of the level
-		float thePosition;
-		/// color red [0-1]
-		float theR;
-		/// color green [0-1]
-		float theG;
-		/// color blue [0-1]
-		float theB;
-		/// alpha transparancy [0-1]
-		float theAlpha;
+    struct GradientStop {
+        /// 0.0=bottom / 1.0 = top of the level
+        float thePosition;
+        /// color red [0-1]
+        float theR;
+        /// color green [0-1]
+        float theG;
+        /// color blue [0-1]
+        float theB;
+        /// alpha transparancy [0-1]
+        float theAlpha;
 
-		GradientStop(float p, float r, float g, float b, float a)
-				: thePosition(p), theR(r), theG(g), theB(b), theAlpha(a) {}
-	};
+        GradientStop(float p, float r, float g, float b, float a)
+            : thePosition(p), theR(r), theG(g), theB(b), theAlpha(a) {}
+    };
 
-	/// The gradient is in front of the image, you can use alpha
-	/// transparancy to blend the image, etc...
-	/// If empty list, do not display a gradient - unless also no
-	/// image name was specified, in that case use a blue gradient.
-	QList<GradientStop> theBackgroundGradient;
+    /// The gradient is in front of the image, you can use alpha
+    /// transparancy to blend the image, etc...
+    /// If empty list, do not display a gradient - unless also no
+    /// image name was specified, in that case use a blue gradient.
+    QList<GradientStop> theBackgroundGradient;
 
-	/// default constructor to make sure we get the repeat set correctly
-	Background() : theImageHRepeat(0.0), theImageVRepeat(0.0) {}
+    /// default constructor to make sure we get the repeat set correctly
+    Background() : theImageHRepeat(0.0), theImageVRepeat(0.0) {}
 };
 
 #endif // BACKGROUND_H

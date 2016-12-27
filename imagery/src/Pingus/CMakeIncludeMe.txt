@@ -1,6 +1,9 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
         ${SRCDIRNAME}/pingus.png
+        ${SRCDIRNAME}/pingussleeper.png
+        ${SRCDIRNAME}/pinguswalkleft.png
+        ${SRCDIRNAME}/pinguswalkright.png
         ${SRCDIRNAME}/opendoor.svg
         DESTINATION ${TBE_IMAGES_DIR}
 )

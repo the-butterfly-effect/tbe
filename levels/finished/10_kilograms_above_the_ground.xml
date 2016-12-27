@@ -1,0 +1,123 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Ten Kilograms above the Ground</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Don’t let the weight rise or fall until the butterfly reaches the flower.</description>
+        <date>07.02.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object height="0.1" type="BirchBar" width="1" angle="0" Y="0" X="0">
+                <property key="Resizable">horizontal</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object height="0.34" type="BowlingPin" width="0.12" angle="0" Y="1.44731" X="2.45699"/>
+        </toolboxitem>
+        <toolboxitem name="Wooden Triangle" count="1">
+            <object height="0.22" type="LeftFixedWedge" width="0.22" angle="-3.91635" Y="0.987901" X="1.49779">
+                <tooltip>This piece of wood has a triangular shape with one tip pointing upwards. It doesn’t move.</tooltip>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="3" width="5.4"/>
+        <predefined>
+            <object height="0.4" type="Weight" width="0.4" angle="0" Y="1.44887" X="1.48447" ID="weight"/>
+            <object height="0.1" type="Floor" width="5.79288" angle="0" Y="0.912783" X="2.90777"/>
+            <object height="0.116181" type="Floor" width="5.78318" angle="0" Y="0.0632686" X="2.90615">
+                <property key="ImageName">White-to-green</property>
+            </object>
+            <object height="0.4" type="Cactus" width="0.25" angle="0" Y="2.29677" X="2.67921"/>
+            <object height="0.161489" type="Floor" width="0.0614887" angle="0" Y="2.17006" X="2.45955"/>
+            <object height="0.1" type="Floor" width="5.7767" angle="0" Y="2.04304" X="2.90373"/>
+            <object height="0.22" type="PostItHint" width="0.22" angle="0" Y="2.76298" X="0.264598">
+                <property key="page1">Ha! This is one easy. Just tie the weight to a rope. Done!</property>
+                <property key="page2">Oh, wait, we don’t have any ropes. Just some old wood from the junkyard and a bowling pin.</property>
+                <property key="page3">The bowling pin seems really out of place. It’s not even as heavy as the weight.</property>
+                <property key="page4">Could it be that it serves as some kind of counter-weight? I don’t know.</property>
+                <property key="page5">At least you can choose the birch bar to be as long as you want to be. Nice!</property>
+                <property key="page6">Post-It Boy</property>
+            </object>
+            <object height="0.228027" type="Butterfly" width="0.15" angle="0" Y="0.509773" X="2.05041" ID="butterfly"/>
+            <object height="0.585761" type="Daffodil" width="0.307443" angle="0" Y="0.347086" X="3.06231" ID="flower"/>
+            <object height="1.54693" type="Scenery" width="4.47896" angle="0" Y="2.4458" X="4.59142">
+                <property key="ImageName">the-sun</property>
+                <property key="ZValue">0.1</property>
+            </object>
+            <object height="0.381877" type="Scenery" width="1.49515" angle="0" Y="2.42638" X="4.15453">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.2</property>
+            </object>
+            <object height="0.210356" type="Scenery" width="1.02265" angle="0" Y="2.67395" X="1.74353">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.2</property>
+            </object>
+            <object height="0.381877" type="Scenery" width="1.24595" angle="0" Y="2.3843" X="0.751618">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.2</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="0">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="0.7">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="1.4">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="2.1">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="2.8">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="3.5">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="4.2">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="4.9">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object height="0.18" type="Scenery" width="0.8" angle="0" Y="0.0964724" X="5.6">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.494118;0.494118;0.894118;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="positionchange" isFail="true">
+            <property key="object">weight</property>
+            <property key="ybelow">1.4099999999999999</property>
+        </goal>
+        <goal type="positionchange" isFail="true">
+            <property key="object">weight</property>
+            <property key="yover">1.46</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">butterfly</property>
+            <property key="xover">2.8</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint number="1" object="LeftFixedWedge" X="2.580" Y="0.99" />
+        <hint number="2" object="BirchBar" width="3.929" X="3.196" Y="1.197" />
+        <hint number="3" object="BowlingPin" X="5.022" Y="1.425" />
+    </hints>
+</tbe-level>

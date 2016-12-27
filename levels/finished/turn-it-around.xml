@@ -1,0 +1,89 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Turn it around</title>
+        <author>Peter van Ginneken, Klaas van Gend</author>
+        <license>GPLv2</license>
+        <description>Topple the pin towards the green floor.</description>
+        <date>04/17/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+			<object type="Hammer"/>
+		</toolboxitem>
+        <toolboxitem count="1">
+            <object width="1.6" height="0.5" type="LeftRamp">
+                <property key="ImageName">LeftRamp</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object width="1.6" height="0.5" type="RightRamp">
+                <property key="ImageName">RightRamp</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4.4" height="3"/>
+        <predefined>
+            <object width="1.300" X="4.500" Y="2.650" height="0.300" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="1.300" X="3.400" Y="2.700" height="0.300" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.6</property>
+            </object>
+            <object width="5.000" X="2.700" Y="0.30" height="1.500" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
+            <object width="1.200" X="0.780" Y="0.320" height="0.100" type="Floor" angle="-0.450">
+                <property key="Bounciness">0.05</property>
+                <property key="Friction">0.5</property>
+            </object>
+            <object width="0.940" X="1.770" Y="0.050" height="0.100" type="Floor" angle="0.000">
+                <property key="Friction">0.4</property>
+            </object>
+            <object width="1.200" X="3.620" Y="0.320" height="0.100" type="Floor" angle="0.450">
+                <property key="Bounciness">0.05</property>
+                <property key="Friction">0.5</property>
+            </object>
+            <object width="0.220" X="2.200" Y="2.600" height="0.220" type="PostItHint" angle="0.000">
+                <property key="page1">This is not a stable equilibrium, any excitation will make it move.</property>
+                <property key="page2">Topple pin to the right.&lt;br>No: Left!&lt;br>OK, OK, to the right.</property>
+                <property key="page3">&lt;br>&lt;br>&lt;br>&lt;br>… me</property>
+            </object>
+            <object width="0.100" X="2.200" Y="1.900" height="0.100" type="RectObject" ID="BrassPin" angle="0.000">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="2.800" X="2.200" Y="1.900" height="0.150" type="BirchBar" ID="Bar" angle="0.000">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.7</property>
+                <property key="Mass">8</property>
+            </object>
+            <object width="1.000" X="2.200" Y="1.900" height="1.000" type="PivotPoint" angle="0.000">
+                <property key="object1">Bar</property>
+                <property key="object2">BrassPin</property>
+            </object>
+            <object width="0.220" X="2.200" Y="2.080" height="0.220" type="BowlingBall" angle="0.000"/>
+            <object width="0.120" X="2.200" Y="0.270" height="0.340" type="BowlingPin" ID="BowlingPin" angle="0.000"/>
+            <object width="0.854" X="2.670" Y="0.048" height="0.100" type="Floor" angle="0.000">
+                <property key="ImageName">White-to-green</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="true" type="positionchange">
+            <property key="object">BowlingPin</property>
+            <property key="xbelow">1.8</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">BowlingPin</property>
+            <property key="xover">2.6</property>
+        </goal>
+    </goals>
+</tbe-level>

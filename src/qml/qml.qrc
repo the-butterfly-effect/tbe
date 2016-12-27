@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>ChooseLevelDialog.qml</file>
+	<file>ChoosePhoneNumberDialog.qml</file>
+	<file>GameControls.qml</file>
+	<file>GameControlsSubImage.qml</file>
+        <file>HandleChoosePhoneNumber.qml</file>
+        <file>HandleDelete.qml</file>
+        <file>HandleResizeHorizontal.qml</file>
+        <file>HandleResizeVertical.qml</file>
+        <file>HandleReturnToToolbox.qml</file>
+        <file>HandleRotate.qml</file>
+        <file>IconButton.qml</file>
+        <file>LevelInfoDialog.qml</file>
+        <file>main.qml</file>
+        <file>ResizeRotateMoveDecorator.qml</file>
+        <file>TextButton.qml</file>
+        <file>Toolbox.qml</file>
+        <file>ToolboxDraggableIcon.qml</file>
+        <file>ToolboxEntry.qml</file>
+        <file>Tooltip.qml</file>
+        <file>ViewObject.qml</file>
+        <file>ViewObjectSubImage.qml</file>
+        <file>ViewPingus.qml</file>
+        <file>ViewPostIt.qml</file>
+        <file>ViewWorld.qml</file>
+        <file>WinFailDialog.qml</file>
+    </qresource>
+</RCC>

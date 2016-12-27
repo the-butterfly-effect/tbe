@@ -4,11 +4,14 @@ license:   public domain
 source:    original work for The Butterfly Effect, using the 2009-03-17-styrofoam_texture.jpg texture
            which has a "everything is 100% FREE" license. See the appropriate section for more info.
 
-filename:  birch-wedge-left.png birch-wedge-right.png 
-author:    Klaas van Gend
-license:   public domain
-source:    original work for The Butterfly Effect, using the birch_bar.png texture
-           which was already PD.
+filename:  birch-wedge-left.svg birch-wedge-right.svg
+author:    Wuzzy
+license:   WTFPL
+source:    Based on birch-bar.svg in textures/
 
-
+filename:  usedwood-wedge-left.png usedwood-wedge-right.png
+author:    Wuzzy
+license:   WTFPL
+source:    original work for The Butterfly Effect, using the big_used_wood_bar.jpg
+           texture which was Public Domain.
 

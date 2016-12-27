@@ -22,92 +22,99 @@
 #include <QtCore/QStringList>
 
 #include "tbe_global.h"
-#include <cstdio>
 
 // these are declared in Level.cpp
-extern const char* theToolboxGroupString;
-extern const char* theObjectString;
+extern const char *theToolboxGroupString;
+extern const char *theObjectString;
 
-static const char* theToolboxItemString = "toolboxitem";
-static const char* theNameString = "name";
-static const char* theCountString = "count";
+static const char *theToolboxItemString = "toolboxitem";
+static const char *theNameString = "name";
+static const char *theCountString = "count";
 
-ToolboxGroup*
-ToolboxGroupSerializer::createObjectFromDom(const QDomNode& aBaseDomNode,
-											QString *anOutputErrorMsg)
+ToolboxGroup *
+ToolboxGroupSerializer::createObjectFromDom(const QDomNode &aBaseDomNode,
+                                            QString *anOutputErrorMsg)
 {
-	bool             isOK = false;
-	int              myCount = 0;
-	QString          myErrorMessage;
-	QDomNamedNodeMap myNodeMap = aBaseDomNode.attributes();
-	ToolboxGroup*    myTbGPtr = nullptr;
-	LocalString      myToolBoxGroupName;
+    bool             isOK = false;
+    int              myCount = 0;
+    QString          myErrorMessage;
+    QDomNamedNodeMap myNodeMap;
+    QDomNode         myObjectTag;
+    ToolboxGroup    *myTbGPtr = nullptr;
+    QString          myToolBoxGroupName;
 
-	// a toolbox object entry has the following layout:
-	// <toolboxitem count="1" name="Ramp \" icon="RightRamp">
-	//      <name lang="nl">Helling \</name>
-	//      <object width="2" height="1" type="RightRamp" />
-	// </toolboxitem>
+    // a toolbox object entry has the following layout:
+    // <toolboxitem count="1" name="Ramp \" icon="RightRamp">
+    //      <object width="2" height="1" type="RightRamp" />
+    // </toolboxitem>
 
-	// note that name is optional, if no name specified, we will take the
-	// name from the object - which *might* be localized (maybe not)...
+    // note that name is optional, if no name specified, we will take the
+    // name from the object - which *might* be localized (maybe not)...
 
-	// simple sanity checks
-	if (aBaseDomNode.nodeName() != theToolboxItemString)
-	{
-		myErrorMessage = QString("parse error: expected <%1> but got <%2>\n")
-			   .arg(theToolboxItemString).arg(aBaseDomNode.nodeName());
-		goto not_good;
-	}
-
-	myToolBoxGroupName.fillFromDOM(aBaseDomNode, theNameString,
-						   myNodeMap.namedItem(theNameString).nodeValue());
-	myTbGPtr = new ToolboxGroup(myToolBoxGroupName);
-	myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
-	if (myCount == 0 || isOK == false)
-		myCount = 1;
-
-	for (int i=0; i< myCount; i++)
-	{
-		QDomNode myObjectTag = aBaseDomNode.firstChildElement(theObjectString);
-		if (myObjectTag.isNull())
-		{
-			myErrorMessage = QString("parse error: no <%1> found\n")
-				   .arg(theObjectString);
-			goto not_good;
-		}
+    // simple sanity checks
+    if (aBaseDomNode.nodeName() != theToolboxItemString) {
+        myErrorMessage = QString("parse error: expected <%1> but got <%2>\n")
+                         .arg(theToolboxItemString).arg(aBaseDomNode.nodeName());
+        goto not_good;
+    }
+    myObjectTag = aBaseDomNode.firstChildElement(theObjectString);
+    if (myObjectTag.isNull()) {
+        myErrorMessage = QString("parse error: no <%1> found\n")
+                         .arg(theObjectString);
+        goto not_good;
+    }
+    myNodeMap = aBaseDomNode.attributes();
+    myToolBoxGroupName =  myNodeMap.namedItem(theNameString).nodeValue();
+    if (myToolBoxGroupName.isEmpty()) {
+        // temporary object, will go away once out of scope
         AbstractObjectPtr myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
-																				true, false);
-		if (myAOPtr == nullptr)
-		{
-			myErrorMessage = "createObjectFromDom failed";
-			goto not_good;
-		}
-		myTbGPtr->addObject(myAOPtr);
-	}
+                                                                                  true, false);
+        if (myAOPtr == nullptr) {
+            myErrorMessage = "createObjectFromDom failed";
+            goto not_good;
+        }
+        myToolBoxGroupName = myAOPtr->getName();
+    }
+    myTbGPtr = new ToolboxGroup(myToolBoxGroupName);
 
-	DEBUG4("createTBGFromDom for '%s' successful", ASCII(myTbGPtr->theInternalName));
-	return myTbGPtr;
+    myCount = myNodeMap.namedItem(theCountString).nodeValue().toInt(&isOK);
+    if (myCount == 0 || isOK == false)
+        myCount = 1;
+
+    for (int i = 0; i < myCount; i++) {
+        AbstractObjectPtr myAOPtr = AbstractObjectSerializer::createObjectFromDom(myObjectTag,
+                                                                                  true, false);
+        if (myAOPtr == nullptr) {
+            myErrorMessage = "createObjectFromDom failed";
+            goto not_good;
+        }
+        myTbGPtr->addObject(myAOPtr);
+    }
+
+    DEBUG4("createTBGFromDom for '%s' successful", ASCII(myTbGPtr->theInternalName));
+    return myTbGPtr;
 
 not_good:
-	*anOutputErrorMsg = myErrorMessage;
-	delete myTbGPtr;
-	return nullptr;
+    *anOutputErrorMsg = myErrorMessage;
+    delete myTbGPtr;
+    return nullptr;
 }
 
 
-QDomElement ToolboxGroupSerializer::serialize(QDomDocument& aDomDocument, ToolboxGroup* aToolboxGroupPtr)
+QDomElement ToolboxGroupSerializer::serialize(QDomDocument &aDomDocument,
+                                              ToolboxGroup *aToolboxGroupPtr)
 {
-    QDomElement myToolboxNode = aDomDocument.createElement(theToolboxItemString);
-    myToolboxNode.setAttribute(theCountString, aToolboxGroupPtr->count());
-    myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName.english());
 
-    aToolboxGroupPtr->theGroupName.serializeTo(myToolboxNode);
-    {
-        const AbstractObjectSerializer* myAOSerializerPtr = aToolboxGroupPtr->first()->getSerializer();
-        myAOSerializerPtr->serialize(&myToolboxNode);
-        delete myAOSerializerPtr;
-    }
+    // write the properties of the toolboxgroup itself
+    QDomElement myToolboxNode = aDomDocument.createElement(theToolboxItemString);
+    myToolboxNode.setAttribute(theCountString, QString::number(aToolboxGroupPtr->count()));
+    // only write the toolboxgroup name if it differs from the object's name
+    if (aToolboxGroupPtr->last()->getName() != aToolboxGroupPtr->theGroupName)
+        myToolboxNode.setAttribute(theNameString, aToolboxGroupPtr->theGroupName);
+    // write the properties of (one of the) object(s) in the toolboxgroup
+    const AbstractObjectSerializer *myAOSerializerPtr = aToolboxGroupPtr->last()->getSerializer();
+    myAOSerializerPtr->serialize(&myToolboxNode);
+    delete myAOSerializerPtr;
 
     return myToolboxNode;
 }

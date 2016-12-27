@@ -20,55 +20,76 @@
 #include "Box2D.h"
 #include "ObjectFactory.h"
 #include "PostIt.h"
-#include "ViewPostIt.h"
+#include "Translator.h"
 
-// this class' ObjectFactory
-class PostItObjectFactory : public ObjectFactory
+static PostItObjectFactory postItHint("PostItHint",
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with hint"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory",
+                                                        "Someone left you a note here.\nYellow post-it notes give you a little hint for solving this level."),
+
+                                      "PostItHint", "PostItHintBackground");
+
+static PostItObjectFactory postItTutorial("PostItTutorial",
+                                          QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with tutorial text"),
+                                          QT_TRANSLATE_NOOP("PostItObjectFactory",
+                                                            "Someone left you a note here.\nGreen post-it notes explain how to play the game."),
+                                          "PostItTutorial", "PostItTutorialBackground");
+
+static PostItObjectFactory postItMisc("PostItMisc",
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory", "Post-it with miscellaneous content"),
+                                      QT_TRANSLATE_NOOP("PostItObjectFactory",
+                                                        "Someone left you a note here.\nWhat might be written on it?"),
+                                      "PostItMisc", "PostItMiscBackground");
+
+
+PostIt::PostIt(const char *aDisplayName, const char *aTooltip, const QString &anImageName,
+               const QString &aBackgroundImageName)
+    : theDisplayName(aDisplayName), theImageName(anImageName),
+      theBackgroundImageName(aBackgroundImageName)
 {
-public:
-	PostItObjectFactory(void)
-	{	announceObjectType("PostIt", this); }
-    AbstractObject* createObject(void) const override
-    {	return fixObject(new PostIt()); }
-};
-static PostItObjectFactory theFactory;
+    // Post-Its are 3x3 inch (i.e. 8x8 cm)
+    // but because they are too small, we will triple each side and make them 22x22 cm...
+    const double mySideLength = 0.22;
 
+    setTheWidth(mySideLength);
+    setTheHeight(mySideLength);
 
+    theTooltip = aTooltip;
 
-PostIt::PostIt( )
-{
-	// Post-Its are 3x3 inch (i.e. 8x8 cm)
-	// but because they are too small, we will triple each side and make them 22x22 cm...
-	const double mySideLength = 0.22;
+    // Note that PostIt doesn't have a physics representation
+    // it is only graphics
+    theProps.setDefaultPropertiesString(
+        Property::ZVALUE_STRING + QString(":1.5/") +
+        Property::IMAGE_NAME_STRING + QString(":%1/").arg(theImageName) +
+        QString("page1:/page2:/page3:/page4:/page5:/page6:/page7:/page8:/page9:/") +
+        "-" + Property::BOUNCINESS_STRING + QString(":/") +
+        "-" + Property::FRICTION_STRING + QString(":/") +
+        "-" + Property::NOCOLLISION_STRING + QString(":/") +
+        "-" + Property::ROTATABLE_STRING + QString(":/") +
+        "-" + Property::RESIZABLE_STRING + QString(":/") +
+        "-" + Property::MASS_STRING + QString(":/") );
 
-	setTheWidth(mySideLength);
-	setTheHeight(mySideLength);
-
-	// Note that PostIt doesn't have a physics representation
-	// it is only graphics
-	theProps.setDefaultPropertiesString(
-			QString("-") + Property::IMAGE_NAME_STRING + QString(":/") +
-			"-" + Property::MASS_STRING + QString(":/") );
-    theToolTip = QObject::tr("Someone left notes all over the place.\n"
-                             "You know, those yellow 3x3 inch pieces of paper.\n"
-                             "You might want to read them - it may help!");
-
-	DEBUG5("PostIt::PostIt done");
+    DEBUG5("PostIt::PostIt done");
 }
 
 
 PostIt::~PostIt( )
 {
-	;
+    ;
 }
 
-
-
-ViewObject*  PostIt::createViewObject(float aDefaultDepth)
+ViewItem *PostIt::createViewItem(float aDefaultDepth)
 {
-	if (nullptr!=theViewObjectPtr)
-		return theViewObjectPtr;
-	theViewObjectPtr = new ViewPostIt(getThisPtr());
-	setViewObjectZValue(aDefaultDepth); // will set ZValue different if set in property
-	return theViewObjectPtr;
+    QString myPageList("pages : [");
+    for (int i=1; i<10; i++) {
+        QString myPageNr = "page" + QString::number(i);
+        QString myPageText =  theProps.getPropertyNoDefault(myPageNr);
+        if (myPageText.isEmpty())
+            break;
+        myPageList += QString("\"%1\",").arg(TheGetText(myPageText));
+    }
+    myPageList += "];";
+    aDefaultDepth = 100;
+    return createViewItemInt(aDefaultDepth, "ViewPostIt", "", QString("backgroundImg: \"%1\"; %2")
+                             .arg(theBackgroundImageName).arg(myPageList));
 }

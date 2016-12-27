@@ -1,0 +1,284 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Pétanque</title>
+        <author>Klaas van Gend</author>
+        <license>PD</license>
+        <description>Toss both Pétanque balls so they end up very close to the tennis ball.</description>
+        <date>5/7/12</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="3">
+            <object type="PegMetal"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5" height="4"/>
+        <predefined>
+            <object width="7.000" X="4.700" Y="3.00" height="2.000" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
+            <object width="1.000" X="4.500" Y="0.050" height="0.100" type="Floor" angle="0.000"/>
+            <object width="1.000" X="0.500" Y="0.100" height="0.200" type="Floor" angle="0.000"/>
+            <object width="0.068" X="2.178" Y="2.143" height="0.068" type="TennisBall" ID="le but" angle="0.000"/>
+            <object width="0.068" X="4.869" Y="0.934" height="0.068" type="PetanqueBoule" ID="RightBoule" angle="0.000"/>
+            <object width="0.400" X="4.072" Y="0.826" height="0.400" type="Weight" ID="RightWeight" angle="0.000"/>
+            <object width="1.000" X="4.500" Y="0.950" height="0.100" type="BirchBar" ID="RightArm" angle="-0.290">
+                <property key="Mass">0.5</property>
+                <property key="PivotPoint">(0,0)</property>
+            </object>
+            <object width="0.250" X="4.951" Y="0.892" height="0.100" type="BirchBar" ID="RightArmEnd" angle="1.280">
+                <property key="Mass">0.5</property>
+                <property key="NoCollision">RightArm</property>
+            </object>
+            <object width="0.100" X="5.160" Y="1.590" height="0.100" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
+                <property key="object1">RightArm@(0.50,0.05)</property>
+                <property key="object2">RightArmEnd@(0.05,-0.05)</property>
+            </object>
+            <object width="0.100" X="4.500" Y="0.950" height="0.100" type="PivotPoint" angle="0.000">
+                <property key="object">RightArmEnd</property>
+            </object>
+            <object width="0.100" X="4.500" Y="0.950" height="0.100" type="RectObject" angle="0.000">
+                <property key="ImageName">brass-pin</property>
+                <property key="NoCollision">RightArm</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.100" X="5.160" Y="1.590" height="0.100" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
+                <property key="object1">RightArm@(-0.40,-0.05)</property>
+                <property key="object2">RightWeight@(0.0,0.20)</property>
+            </object>
+            <object width="0.600" X="0.400" Y="1.00" height="1.600" type="Scenery" angle="0.000">
+                <property key="ImageName">picnic-2-left-body</property>
+            </object>
+            <object width="0.2" X="0.4" Y="1.3" height="0.10" type="Floor" ID="Shoulder" angle="0">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.340" X="0.180" Y="0.720" height="0.100" type="RectObject" ID="LeftArmEnd" angle="0.000">
+                <property key="ImageName">picnic-2-left-underarm</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.068" X="0.338" Y="0.801" height="0.068" type="PetanqueBoule" ID="LeftBoule" angle="0.000"/>
+            <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
+                <property key="object1">Shoulder@(-0.05,0.0)</property>
+                <property key="object2">LeftArmEnd@(-0.10,0.05)</property>
+            </object>
+            <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000">
+                <property key="ImageName">#000000</property>
+                <property key="object1">Shoulder@( 0.05,0.0)</property>
+                <property key="object2">LeftArmEnd@(0.0,0.05)</property>
+            </object>
+            <object width="0.10" X="0.250" Y="0.820" height="0.100" type="RectObject" ID="LeftArmTop" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.068" X="0.338" Y="0.801" height="0.068" type="Link" angle="0.000">
+                <property key="ImageName">transparent</property>
+                <property key="object1">LeftArmTop@(0.0,0.0)</property>
+                <property key="object2">LeftArmEnd@(0.0,0.0)</property>
+            </object>
+            <object width="0.10" X="0.250" Y="0.820" height="0.100" type="PivotPoint" angle="0.000">
+                <property key="object1">LeftArmTop</property>
+                <property key="object2">LeftArmEnd</property>
+            </object>
+            <object width="3.000" X="2.500" Y="0.050" height="0.100" type="Scenery" angle="0.000">
+                <property key="ImageName">sand</property>
+                <property key="ZValue">0.5</property>
+                <tooltip>A sand pit with a very rough surface.</tooltip>
+            </object>
+            <object width="3.000" X="2.500" Y="0.025" height="0.050" type="RectObject" ID="SandBottom" angle="0.000">
+                <property key="ImageName">Empty</property>
+            </object>
+            <object width="0.060" X="1.030" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.090" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.150" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.270" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.330" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.390" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.450" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.570" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.630" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.690" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.750" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.870" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.930" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="1.990" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.050" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.170" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.230" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.290" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.350" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.470" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.530" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.590" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.650" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.770" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.830" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.890" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="2.950" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.070" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.130" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.190" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.250" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.370" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.430" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.490" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.550" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.670" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.730" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.790" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.850" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.910" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+            <object width="0.060" X="3.970" Y="0.030" height="0.060" type="TennisBall" angle="0.000">
+                <property key="ImageName">Empty</property>
+                <property key="NoCollision">SandBottom</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="distance">
+            <property key="lessthan">0.3</property>
+            <property key="object1">le but</property>
+            <property key="object2">RightBoule</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">RightBoule</property>
+            <property key="ybelow">0.2</property>
+        </goal>
+        <goal isFail="false" type="distance">
+            <property key="lessthan">0.3</property>
+            <property key="object1">le but</property>
+            <property key="object2">LeftBoule</property>
+        </goal>
+        <goal isFail="false" type="positionchange">
+            <property key="object">LeftBoule</property>
+            <property key="ybelow">0.2</property>
+        </goal>
+    </goals>
+</tbe-level>

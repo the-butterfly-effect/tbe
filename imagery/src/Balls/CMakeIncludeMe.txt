@@ -1,8 +1,15 @@
 # this file is meant to be included by ../CMakeFiles.txt
 install(FILES
+	${SRCDIRNAME}/blue_bike_wheel.svg
+	${SRCDIRNAME}/CactusWheel.svg
+	${SRCDIRNAME}/coconut.svg
+	${SRCDIRNAME}/guardrailring.svg
+	${SRCDIRNAME}/PetanqueBoule.svg
+	${SRCDIRNAME}/SABROG_Glass_Blue_Ball.svg
+	${SRCDIRNAME}/SoccerBall.png
+	${SRCDIRNAME}/steam-wheel.svg
         ${SRCDIRNAME}/TennisBall.png 
 	${SRCDIRNAME}/VolleyBall.svg 
-	${SRCDIRNAME}/SoccerBall.png 
-	${SRCDIRNAME}/PetanqueBoule.svg
+	${SRCDIRNAME}/wood-pin.svg 
         DESTINATION ${TBE_IMAGES_DIR}
 )

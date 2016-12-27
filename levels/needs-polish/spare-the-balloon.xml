@@ -1,0 +1,125 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Spare the Balloon</title>
+        <author>Klaas van Gend</author>
+        <license>MIT</license>
+        <description>Save the balloon from popping and kick the pin into the goal.</description>
+        <date>10/24/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object X="0" Y="0" width="0.25" angle="0" type="Cactus" height="0.4">
+                <property key="Mass">4</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="0" Y="0" width="0.166" angle="0" type="ColaMintBottle" height="0.5">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="0" Y="0" width="0.32" angle="0" type="Floor" height="0.1">
+                <property key="Rotatable">true</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object X="1.55" Y="0.965" width="0.4" angle="0" type="LeftWedge" height="0.07">
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="3.5" height="2"/>
+        <predefined>
+            <object X="1.75" Y="0.05" width="3.5" angle="0" ID="floor" type="Floor" height="0.1"/>
+            <object X="0.81" Y="0.39" width="0.27" angle="0" ID="theBalloon" type="Balloon" height="0.36"/>
+            <object X="1.006" Y="1.821" width="0.8" angle="-3.14" type="BedOfNails" height="0.15"/>
+            <object X="1.85" Y="2" width="0.8" angle="-3.14" type="BedOfNails" height="0.15"/>
+            <object X="0.3" Y="0.5" width="0.6" angle="0" type="Wall" height="0.8"/>
+            <object X="0.05" Y="1.409" width="0.1" angle="0" type="Floor" height="1.022"/>
+            <object X="1.08874" Y="0.300573" width="0.25" angle="0" type="Cactus" height="0.4"/>
+            <object X="1.96" Y="0.7" width="0.25" angle="0" type="Wall" height="1.2"/>
+            <object X="2.17725" Y="1.12035" width="0.566071" angle="0.994812" type="Floor" height="0.1">
+                <property key="ZValue">0.5</property>
+            </object>
+            <object X="1.893" Y="1.593" width="0.1" angle="0" type="DominoBlue" height="0.4">
+                <property key="Mass">0.02</property>
+            </object>
+            <object X="2.337" Y="1.348" width="1" angle="0" type="Floor" height="0.1">
+                <property key="Friction">1.0</property>
+            </object>
+            <object X="2.194" Y="1.596" width="0.1" angle="0" type="DominoGreen" height="0.4">
+                <property key="Mass">0.02</property>
+            </object>
+            <object X="2.494" Y="1.596" width="0.1" angle="0" type="DominoRed" height="0.4">
+                <property key="Mass">0.05</property>
+            </object>
+            <object X="2.789" Y="1.593" width="0.1" angle="0" type="DominoBlue" height="0.4">
+                <property key="Mass">0.1</property>
+            </object>
+            <object X="2.996" Y="1.132" width="1" angle="0" type="LeftRamp" height="0.695"/>
+            <object X="2.412" Y="0.756" width="0.172" angle="0" type="Floor" height="0.12"/>
+            <object X="2.435" Y="0.917" width="0.22" angle="0" type="SoccerBall" height="0.22"/>
+            <object X="3.046" Y="0.276" width="0.12" angle="0" ID="thepin" type="BowlingPin" height="0.34"/>
+            <object X="0.702" Y="1.95" width="1.404" angle="0" type="Floor" height="0.1"/>
+            <object X="3.3" Y="0.44" width="0.4" angle="0" type="Goal" height="0.7"/>
+            <object X="1.45" Y="1.65" width="0.7" angle="1.57" type="Floor" height="0.1"/>
+            <object X="2.78863" Y="1.24979" width="0.1" angle="0" type="Floor" height="0.1"/>
+            <object X="1.9" Y="1.875" width="0.1" angle="0" type="LeftFixedWedge" height="0.1"/>
+            <object X="2.75" Y="1.875" width="1.6" angle="0" type="Floor" height="0.1"/>
+            <object X="1.2326" Y="1.55878" width="0.22" angle="0" type="PostItHint" height="0.22">
+                <property key="page1">That poor balloon is on its way to its doom.</property>
+                <property key="page2">Let’s spare the balloon, there’s a pin that needs kicking.</property>
+                <property key="page3">I still have other ideas that need balloons.</property>
+                <property key="page4">… Post-It Boy</property>
+            </object>
+            <object X="2.65822" Y="0.605313" width="0.67709" angle="-0.41" type="Floor" height="0.1"/>
+            <object X="0.206705" Y="1.7845" width="0.460662" angle="0.75" type="Floor" height="0.1">
+                <property key="ZValue">0.5</property>
+            </object>
+            <object X="1.3292" Y="0.303912" width="0.25" angle="0" type="Cactus" height="0.4"/>
+            <object X="2.39356" Y="0.216334" width="0.847919" angle="-0.41" type="Floor" height="0.1">
+                <property key="ZValue">0.5</property>
+            </object>
+            <object X="2.41416" Y="0.467074" width="0.975662" angle="-0.41" type="Scenery" height="0.545616">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object X="2.63032" Y="0.964145" width="0.975662" angle="-0.41" type="Scenery" height="0.545616">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object X="2.85131" Y="1.46359" width="0.975662" angle="-0.41" type="Scenery" height="0.545616">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+            <object X="3.07231" Y="1.96525" width="0.975662" angle="-0.41" type="Scenery" height="0.545616">
+                <property key="ImageName">chickenwire-texture</property>
+                <property key="ZValue">10</property>
+            </object>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="statechange" isFail="true">
+            <property key="object">theBalloon</property>
+            <property key="statechanged"></property>
+        </goal>
+        <goal type="positionchange" isFail="true">
+            <property key="object">theBalloon</property>
+            <property key="yover">2.2</property>
+        </goal>
+        <goal type="positionchange" isFail="false">
+            <property key="object">thepin</property>
+            <property key="xover">3.1</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="0.37" Y="1.25" angle="-1.11" number="1" object="ColaMintBottle"/>
+        <hint X="0.39" Y="1.0" angle="0" number="2" object="LeftWedge"/>
+        <hint X="1.63" Y="1.755" angle="-5.27" number="3" object="Floor"/>
+    </hints>
+</tbe-level>

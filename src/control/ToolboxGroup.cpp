@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2014 Klaas van Gend
+ * This file copyright (C) 2011,2014,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,11 +18,9 @@
 
 #include "AbstractObject.h"
 #include "ToolboxGroup.h"
-#include "ToolboxListWidgetItem.h"
 
-ToolboxGroup::ToolboxGroup(const LocalString& aGroupName)
-    : theGroupName(aGroupName),
-      theWidgetItemPtr(nullptr)
+ToolboxGroup::ToolboxGroup(const QString &aGroupName)
+    : theGroupName(aGroupName)
 {
     // nothing to do
 }
@@ -39,27 +37,15 @@ ToolboxGroup::~ToolboxGroup()
 
 void ToolboxGroup::addObject(AbstractObjectPtr anObjectPtr)
 {
-    Q_ASSERT(anObjectPtr!=nullptr);
+    Q_ASSERT(anObjectPtr != nullptr);
     theObjectsList.push_back(anObjectPtr);
     theInternalName = anObjectPtr->getInternalName();
-
-    if (theWidgetItemPtr)
-        emit theWidgetItemPtr->slotUpdateCount();
 }
 
 
-AbstractObjectPtr ToolboxGroup::getObject(void)
+AbstractObjectPtr ToolboxGroup::popObject(void)
 {
     Q_ASSERT(theObjectsList.count() > 0);
-    AbstractObjectPtr myAOPtr = theObjectsList.last();
-    theObjectsList.pop_back();
-    if (theWidgetItemPtr)
-        emit theWidgetItemPtr->slotUpdateCount();
+    AbstractObjectPtr myAOPtr = theObjectsList.takeLast();
     return myAOPtr;
-}
-
-
-void ToolboxGroup::setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr)
-{
-    theWidgetItemPtr = aWidgetItemPtr;
 }

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2014 Klaas van Gend
+ * This file copyright (C) 2011,2014,2016 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,44 +20,44 @@
 #define TOOLBOXGROUP_H
 
 #include "AbstractObject.h"
-#include "LocalString.h"
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QVariant>
-class ToolboxListWidgetItem;
+#include <QList>
+#include <QString>
+#include <QVariant>
 
 /// This class holds a series of objects for the Toolbox
 class ToolboxGroup
 {
 public:
-    explicit ToolboxGroup(const LocalString& aGroupName);
+    explicit ToolboxGroup(const QString &aGroupName);
     ~ToolboxGroup();
 
     void addObject(AbstractObjectPtr anObjectPtr);
 
     int count(void)
-    { return theObjectsList.count(); }
+    {
+        return theObjectsList.count();
+    }
 
-    /// @returns a pointer to the first object in this group
+    /// @returns a pointer to the last object in this group
     ///          without removing it .
-    /// (compare to getObject(), that returns+removes the LAST one)
-    AbstractObjectPtr first() const
-    { return theObjectsList.first(); }
+    /// (compare to popObject(), that REMOVES the last one)
+    AbstractObjectPtr last() const
+    {
+        return theObjectsList.last();
+    }
 
-    /// @returns a pointer to one of the objects that was in the group
-    ///          the object is removed from the group.
-    /// (compare to first(), which just returns a pointer to the FIRST one)
-    AbstractObjectPtr getObject(void);
+    /// Removes the last object from the group.
+    /// @note: you already used last() to retrieve its pointer
+    AbstractObjectPtr popObject(void);
 
-    void setItemPtr(ToolboxListWidgetItem* aWidgetItemPtr);
-
-    LocalString theGroupName;
-    QString     theInternalName;
+    QString     theGroupName;    // translatable
+    QString     theInternalName; // not translatable
 
 private:
     typedef QList<AbstractObjectPtr> ObjectsList;
     ObjectsList theObjectsList;
-    ToolboxListWidgetItem* theWidgetItemPtr;
+
+    friend class ToolboxItemGroup;
 };
 
 #endif // TOOLBOXGROUP_H

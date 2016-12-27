@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>EditObjectDialog</class>
- <widget class="QDialog" name="EditObjectDialog">
+ <widget class="QWidget" name="EditObjectDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>281</width>
+    <width>292</width>
     <height>502</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Edit Object</string>
@@ -83,6 +89,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="spinBoxX">
+          <property name="decimals">
+           <number>3</number>
+          </property>
           <property name="singleStep">
            <double>0.010000000000000</double>
           </property>
@@ -97,6 +106,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="spinBoxY">
+          <property name="decimals">
+           <number>3</number>
+          </property>
           <property name="singleStep">
            <double>0.010000000000000</double>
           </property>
@@ -122,6 +134,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="spinBoxAngle">
+          <property name="decimals">
+           <number>4</number>
+          </property>
           <property name="minimum">
            <double>-10.000000000000000</double>
           </property>
@@ -153,6 +168,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="spinBoxWidth">
+          <property name="decimals">
+           <number>3</number>
+          </property>
           <property name="singleStep">
            <double>0.010000000000000</double>
           </property>
@@ -167,6 +185,9 @@
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="spinBoxHeight">
+          <property name="decimals">
+           <number>3</number>
+          </property>
           <property name="singleStep">
            <double>0.010000000000000</double>
           </property>
@@ -178,7 +199,32 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableWidget" name="tableWidget"/>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>260</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>260</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>32</number>
+     </attribute>
+    </widget>
    </item>
   </layout>
  </widget>

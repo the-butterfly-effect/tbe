@@ -19,21 +19,21 @@
 #include "DrawObject.h"
 #include "BaseObject.h"
 
-DrawObject::DrawObject (BaseObject* aBaseObjectPtr)
-	: theBaseObjectPtr(aBaseObjectPtr)
+DrawObject::DrawObject (BaseObject *aBaseObjectPtr)
+    : theBaseObjectPtr(aBaseObjectPtr)
 {
-	DEBUG6("StubDrawObject::DrawObject(%p)\n", aBaseObjectPtr);
-	if (theBaseObjectPtr!=NULL)
-		initAttributes();
+    DEBUG6("StubDrawObject::DrawObject(%p)\n", aBaseObjectPtr);
+    if (theBaseObjectPtr != NULL)
+        initAttributes();
 }
 
-DrawObject::DrawObject (BaseObject* aBaseObjectPtr,
-						const QString& anImageName,
-						UNUSED_ARG DrawObject::ImageType anImageType)
-	: theBaseObjectPtr(aBaseObjectPtr)
+DrawObject::DrawObject (BaseObject *aBaseObjectPtr,
+                        const QString &anImageName,
+                        UNUSED_ARG DrawObject::ImageType anImageType)
+    : theBaseObjectPtr(aBaseObjectPtr)
 {
-	DEBUG6("StubDrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
-	initAttributes();
+    DEBUG6("StubDrawObject::DrawObject(%p,%s)\n", aBaseObjectPtr, ASCII(anImageName));
+    initAttributes();
 }
 
 
@@ -44,11 +44,12 @@ DrawObject::~DrawObject ( )
 
 QRectF DrawObject::boundingRect() const
 {
-	qreal myWidth = theBaseObjectPtr->getTheWidth();
-	qreal myHeight= theBaseObjectPtr->getTheHeight();
-	qreal adjust = 0.03;
+    qreal myWidth = theBaseObjectPtr->getTheWidth();
+    qreal myHeight = theBaseObjectPtr->getTheHeight();
+    qreal adjust = 0.03;
 
-	return QRectF(-myWidth/2-adjust, -myHeight/2-adjust, myWidth+2*adjust, myHeight+2*adjust);
+    return QRectF(-myWidth / 2 - adjust, -myHeight / 2 - adjust, myWidth + 2 * adjust,
+                  myHeight + 2 * adjust);
 }
 
 
@@ -57,7 +58,7 @@ void DrawObject::initAttributes ( )
 }
 
 
-void DrawObject::paint(QPainter*, const QStyleOptionGraphicsItem *, QWidget *)
+void DrawObject::paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *)
 {
 }
 

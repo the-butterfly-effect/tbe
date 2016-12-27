@@ -1,0 +1,75 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Introducing Pingus</title>
+        <author>Wuzzy</author>
+        <license>WTFPL</license>
+        <description>Lead all the little penguins to the exit.</description>
+        <date>10.01.16</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1" name="High Wall">
+            <object type="Wall" width="0.138" Y="0.000" angle="0.000" X="0.000" height="1.028"/>
+        </toolboxitem>
+        <toolboxitem count="2" name="Low Wall">
+            <object type="Wall" width="0.138" Y="0.000" angle="0.000" X="0.000" height="0.514"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="RightRamp" width="1.000" Y="0.000" angle="0.000" X="0.000" height="0.479"/>
+        </toolboxitem>
+        <toolboxitem count="2">
+            <object type="Skyhook" width="0.200" Y="0.000" angle="0.000" X="0.000" height="0.230">
+                <property key="ZValue">1</property>
+            </object>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="5.5" height="3"/>
+        <predefined>
+            <object type="PingusWalkLeft" width="0.280" Y="2.279" angle="0.000" X="1.076" height="0.280" ID="pingu1"/>
+            <object type="Floor" width="1.745" Y="2.106" angle="0.000" X="1.398" height="0.100"/>
+            <object type="Floor" width="3.442" Y="1.532" angle="0.000" X="3.779" height="0.100"/>
+            <object type="PingusExit" width="0.330" Y="0.678" angle="0.000" X="1.367" height="0.460">
+                <property key="ImageName">opendoor</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object type="PostItTutorial" width="0.220" Y="1.286" angle="0.000" X="0.609" height="0.220">
+                <property key="ZValue">1</property>
+                <property key="page1">Aren’t they cute, these little penguins (or “pingus”)?</property>
+                <property key="page2">They got lost and need to find their way to the door below so they can escape this place.</property>
+                <property key="page3">Here are some pingu facts:</property>
+                <property key="page4">Pingus walk to the left or right until they bump into something heavy, after which they turn around.</property>
+                <property key="page5">They like to slide down slopes. But they have a hard time walking up steep slopes.</property>
+                <property key="page6">They are totally capable of playing soccer!</property>
+                <property key="page7">But they are a bit frail. They should not fall too far or get squashed by heavy things.</property>
+		<property key="page8">That’s all I know about them. I hope it helps!&lt;br>&lt;br>Post-It Boy</property>
+            </object>
+            <object type="Weight" width="0.400" Y="2.750" angle="0.000" X="2.989" height="0.400"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.709" angle="0.000" X="2.940" height="0.280" ID="pingu2"/>
+            <object type="SoccerBall" width="0.210" Y="1.688" angle="0.000" X="4.284" height="0.210" ID="ball"/>
+            <object type="Floor" width="1.906" Y="0.874" angle="0.000" X="3.505" height="0.100"/>
+            <object type="Floor" width="4.797" Y="0.396" angle="0.000" X="3.114" height="0.100"/>
+            <object type="PingusWalkRight" width="0.280" Y="1.048" angle="0.000" X="3.824" height="0.280" ID="pingu3"/>
+            <object type="Floor" width="0.991" Y="1.525" angle="0.000" X="1.024" height="0.100"/>
+            <object type="Wall" width="0.237" Y="0.298" angle="0.000" X="0.191" height="0.507"/>
+            <object type="PingusWalkLeft" width="0.280" Y="1.699" angle="0.000" X="0.858" height="0.280" ID="pingu4"/>
+            <object type="Floor" width="0.839" Y="2.146" angle="0.000" X="4.296" height="0.100"/>
+            <object type="PingusWalkRight" width="0.280" Y="1.705" angle="0.000" X="4.736" height="0.280" ID="pingu5"/>
+            <object type="QuarterArc40" width="0.400" Y="0.243" angle="-1.572" X="0.510" height="0.400"/>
+            <object type="Cactus" width="0.250" Y="0.752" angle="0.000" X="0.194" height="0.400"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.60;0.97;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.69;0.89;1.00;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal type="escapedPingusCount" isFail="false">
+            <property key="equalmore">5</property>
+        </goal>
+        <goal type="escapedPingusCount" isFail="true">
+            <property key="lessthan">3</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>

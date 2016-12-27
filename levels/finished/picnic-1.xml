@@ -1,0 +1,102 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Ring the Bell</title>
+        <author>Klaas van Gend</author>
+        <license>PD</license>
+        <description>It’s coffee time. Ring the bell.</description>
+        <date>22 April 2012</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="2">
+            <object width="0.800" height="0.800" type="QuarterArc80" angle="0.000">
+                <property key="Rotatable"> true </property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="1" name="Wooden Beam">
+            <object width="2.000" height="0.100" type="BirchBar" angle="0.000"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="6.5" height="4"/>
+        <predefined>
+            <object width="0.200" X="0.100" Y="2.000" height="4.000" type="Wall" angle="0.000"/>
+            <object width="1.400" X="0.710" Y="3.950" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.800" X="0.500" Y="3.600" height="0.800" type="QuarterArc80" angle="1.570"/>
+            <object width="2.039" X="4.066" Y="0.693" height="0.100" type="Floor" angle="0.000"/>
+            <object width="0.170" X="3.105" Y="0.982" height="0.500" type="ColaMintBottle" angle="0.0">
+                <property key="Thrust"> 4.0 </property>
+            </object>
+            <object width="0.500" X="1.320" Y="3.580" height="0.600" type="RectObject" ID="Bell" angle="0.000">
+                <property key="ImageName">Bell</property>
+                <property key="Mass"> 2.0 </property>
+                <property key="PivotPoint">(0.0, 0.27)</property>
+                <tooltip>A bell, it rings when it is hit by something.</tooltip>
+            </object>
+            <object width="0.220" X="5.656" Y="1.449" height="0.220" type="SoccerBall" angle="0.000"/>
+            <object width="0.749" X="3.366" Y="0.352" height="0.100" type="Floor" angle="1.056"/>
+            <object width="0.744" X="3.837" Y="0.354" height="0.100" type="Floor" angle="-1.056"/>
+            <object width="0.754" X="4.364" Y="0.350" height="0.100" type="Floor" angle="1.056"/>
+            <object width="0.728" X="4.833" Y="0.361" height="0.100" type="Floor" angle="-1.056"/>
+            <object width="0.800" X="3.500" Y="0.090" height="0.180" type="Floor" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.150" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="4.850" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="5.500" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.800" X="6.200" Y="0.090" height="0.180" type="Scenery" angle="0.000">
+                <property key="ImageName">rg1024_Grass_texture</property>
+                <property key="ZValue">20.0</property>
+            </object>
+            <object width="0.160" X="3.458" Y="0.943" height="0.400" type="DominoBlue" angle="0.000">
+                <property key="ImageName">milk</property>
+                <property key="Mass">1.5</property>
+		<tooltip>Got Milk?</tooltip>
+            </object>
+            <object width="0.160" X="3.858" Y="0.943" height="0.400" type="DominoBlue" angle="0.000">
+                <property key="ImageName">milk</property>
+                <property key="Mass">1.5</property>
+		<tooltip>Got Milk?</tooltip>
+            </object>
+            <object width="0.160" X="4.258" Y="0.943" height="0.400" type="PolyObject" angle="0.000">
+                <property key="ImageName">milk</property>
+                <property key="Mass">2.0</property>
+                <property key="Polygons">(0.04,-0.2)=(0.08,-0.15)=(0.08,0.2)=(-0.08,0.2)=(-0.08,-0.15)=(-0.04,-0.2)</property>
+		<tooltip>Got Milk?</tooltip>
+            </object>
+            <object width="1.590" X="4.015" Y="1.254" height="2.542" type="Scenery" angle="0.000">
+                <property key="ImageName">picnic-1-background</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="6.4" X="5.2" Y="3.1" height="2.5" type="Scenery" angle="0.000">
+                <property key="ImageName">the-sun</property>
+            </object>
+            <object width="0.14" X="2.5" Y="0.6" height="0.14" type="PegMetal"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0.00">0.80;0.80;1.00;1.00</gradientstop>
+            <gradientstop pos="1.00">0.50;0.50;0.90;1.00</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="positionchange">
+            <property key="object">Bell</property>
+            <property key="xover">1.32</property>
+        </goal>
+    </goals>
+    <hints>
+        <hint X="2.100" Y="0.050" number="1" object="BirchBar"/>
+        <hint X="0.601" Y="0.400" number="2" angle="-3.140" object="QuarterArc80"/>
+        <hint X="5.492" Y="1.048" number="3" angle="-1.571" object="QuarterArc80"/>
+    </hints>
+</tbe-level>

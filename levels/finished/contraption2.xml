@@ -1,0 +1,217 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Contraption 2</title>
+        <author>Klaas van Gend, Peter van Ginneken</author>
+        <license>GPLv2</license>
+        <description>Topple the bowling pin.</description>
+        <date>06/04/10</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="1">
+            <object width="0.6" height="0.35" type="RightStyrofoamWedge"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="BowlingBall"/>
+        </toolboxitem>
+        <toolboxitem count="1">
+            <object type="BowlingPin"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize width="4.6" height="3.7"/>
+        <predefined>
+            <object width="0.1" X="0.05" Y="1.9" height="3.6" type="Floor" angle="0">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="4.6" X="2.3" Y="0.05" height="0.1" type="Floor" angle="0">
+                <property key="Friction">0.6</property>
+            </object>
+            <object width="0.22" X="2.7" Y="2.1" height="0.22" type="PostItHint" angle="0">
+                <property key="page1">Another contraption for the creative mind.</property>
+                <property key="page2">You see that bowling ball at the top-right? &lt;br>&lt;br>It wants to topple the pin next to it.</property>
+                <property key="page3">But a lot needs to happen before that pin moves.</property>
+                <property key="page4">&lt;br>&lt;br>Post-It Boy</property>
+            </object>
+            <object width="0.22" X="3.45" Y="3.5" height="0.22" type="BowlingBall" angle="0"/>
+            <object width="2.8" X="2.2" Y="3.15" height="0.1" type="Floor" angle="0.14">
+                <property key="Friction">0.8</property>
+            </object>
+            <object width="0.1000000014901161" X="1" Y="2.7" height="0.1000000014901161" type="CustomBall" ID="BrassPin" angle="0">
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.05</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="1.3" X="1" Y="2.7" height="0.1" type="BirchBar" ID="Bar" angle="-0.2">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.7</property>
+                <property key="Mass">4</property>
+            </object>
+            <object width="1" X="1" Y="2.7" height="1" type="PivotPoint" angle="0">
+                <property key="object1">Bar</property>
+                <property key="object2">BrassPin</property>
+            </object>
+            <object width="0.14" X="1.4" Y="2.48" height="0.14" type="PegWood" angle="0"/>
+            <object width="0.35" X="1.9" Y="2.46" height="0.1" type="Floor" angle="0.7">
+                <property key="Friction">0.8</property>
+            </object>
+            <object width="0.4" X="0.3" Y="2.27" height="0.2" type="LeftRamp" angle="0"/>
+            <object width="0.1000000014901161" X="1" Y="1.25" height="0.1000000014901161" type="CustomBall" ID="BrassPin2" angle="0">
+                <property key="ImageName">brass-pin</property>
+                <property key="Mass">0</property>
+                <property key="Radius">0.05</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="1.3" X="1" Y="1.25" height="0.1" type="BirchBar" ID="Bar2" angle="0.15">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.7</property>
+                <property key="Mass">4</property>
+            </object>
+            <object width="1" X="1" Y="1.25" height="1" type="PivotPoint" angle="0">
+                <property key="object1">Bar2</property>
+                <property key="object2">BrassPin2</property>
+            </object>
+            <object width="0.3" X="0.39" Y="1.26" height="0.1" type="BirchBar" ID="Bar2x" angle="1.72">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.7</property>
+                <property key="Mass">0.1</property>
+            </object>
+            <object width="1" X="0.35" Y="1.2" height="1" type="PivotPoint" angle="0">
+                <property key="object1">Bar2</property>
+                <property key="object2">Bar2x</property>
+            </object>
+            <object width="0.1" X="0.45" Y="1.25" height="0.05" type="Glue" angle="1.57">
+                <property key="ImageName">Empty</property>
+                <property key="object1">Bar2@(-0.58,0)</property>
+                <property key="object2">Bar2x@(0.05,-0.10)</property>
+            </object>
+            <object width="0.22" X="0.25" Y="1.11" height="0.22" type="BowlingBall" angle="0"/>
+            <object width="0.2" X="0.2" Y="1.01" height="0.15" type="RightRamp" angle="0"/>
+            <object width="0.14" X="0.7" Y="1.08" height="0.14" type="PegWood" angle="0"/>
+            <object width="1.4" X="3.05" Y="1.2" height="0.1" type="BirchBar" ID="Bar3" angle="0.2">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.1</property>
+                <property key="Mass">6</property>
+            </object>
+            <object width="0.1" X="3.1" Y="1.18" height="0.1" type="RectObject" ID="BrassPin3" angle="0">
+                <property key="ImageName">brass-pin</property>
+                <property key="ZValue">4.5</property>
+            </object>
+            <object width="1" X="3.1" Y="1.18" height="1" type="PivotPoint" angle="0">
+                <property key="object1">Bar3</property>
+                <property key="object2">BrassPin3</property>
+            </object>
+            <object width="0.3" X="3.77" Y="1.45" height="0.1" type="BirchBar" ID="Bar3x" angle="1.72">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.7</property>
+                <property key="Mass">0.1</property>
+            </object>
+            <object width="0.04" X="3.70" Y="1.35" height="0.1" type="Glue" angle="0">
+                <property key="ImageName">Empty</property>
+                <property key="object1">Bar3@(0.7,0)</property>
+                <property key="object2">Bar3x@(-0.05,-0.10)</property>
+            </object>
+            <object width="1" X="3.75" Y="1.45" height="1" type="PivotPoint" angle="0">
+                <property key="object1">Bar3</property>
+                <property key="object2">Bar3x</property>
+            </object>
+            <object width="0.22" X="2.25" Y="1.04" height="0.22" type="BowlingBall" angle="0"/>
+            <object width="0.3" X="2.13" Y="0.96" height="0.15" type="RightRamp" angle="0"/>
+            <object width="1" X="1.7" Y="0.7" height="0.1" type="Floor" angle="0">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.1</property>
+            </object>
+            <object width="1.4" X="3.5" Y="0.6" height="0.1" type="Floor" angle="0">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.1</property>
+            </object>
+            <object width="0.7" X="0.42" Y="0.13" height="0.16" type="Floor" angle="0.17">
+                <property key="Friction">0.8</property>
+            </object>
+            <object width="0.1" X="3.98" Y="0.3" height="0.4" type="DominoGreen" angle="0">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">5.0</property>
+            </object>
+            <object width="0.1" X="3.66" Y="0.3" height="0.4" type="DominoBlue" angle="0">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">4.0</property>
+            </object>
+            <object width="0.1" X="3.34" Y="0.3" height="0.4" type="DominoRed" angle="0">
+                <property key="ImageName">DominoRed</property>
+                <property key="Mass">3.5</property>
+            </object>
+            <object width="0.1" X="3.06" Y="0.3" height="0.4" type="DominoGreen" angle="0">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">3.5</property>
+            </object>
+            <object width="0.1" X="2.9" Y="0.15" height="0.1" type="Floor" angle="0.01">
+                <property key="Bounciness">0.0</property>
+                <property key="Friction">0.1</property>
+            </object>
+            <object width="0.1" X="2.35" Y="0.3" height="0.4" type="DominoRed" angle="0">
+                <property key="ImageName">DominoRed</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.1" X="2.05" Y="0.3" height="0.4" type="DominoGreen" angle="0">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.1" X="1.75" Y="0.3" height="0.4" type="DominoBlue" angle="0">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.1" X="1.45" Y="0.3" height="0.4" type="DominoRed" angle="0">
+                <property key="ImageName">DominoRed</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.1" X="1.15" Y="0.3" height="0.4" type="DominoGreen" angle="0">
+                <property key="ImageName">DominoGreen</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.1" X="0.85" Y="0.3" height="0.4" type="DominoBlue" angle="0">
+                <property key="ImageName">DominoBlue</property>
+                <property key="Mass">2.5</property>
+            </object>
+            <object width="0.12" X="4.2" Y="3.43" height="0.34" type="BowlingPin" ID="BowlingPin2" angle="0"/>
+            <object width="0.5600000000000001" X="3.87" Y="2.8" height="0.1" type="Floor" angle="0">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="0.1" X="3.55" Y="3.05" height="0.6" type="Floor" angle="0">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="0.6" X="3.9" Y="3.001" height="0.301" type="Scenery" angle="0">
+                <property key="ImageName">basket</property>
+                <property key="ZValue">0</property>
+            </object>
+            <object width="0.1" X="4.2" Y="1.9" height="2.7" type="Floor" angle="0">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="0.166" X="4.38" Y="0.35" height="0.501" type="ColaMintBottle" angle="3.14">
+                <property key="Thrust">5</property>
+            </object>
+            <object width="0.4" X="4.42" Y="3.5" height="0.2" type="LeftRamp" angle="1.57"/>
+            <object width="0.1" X="4.55" Y="1.9" height="3.6" type="Floor" angle="0">
+                <property key="Bounciness">0.05</property>
+            </object>
+            <object width="3.000" X="1.700" Y="3.500" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+            <object width="3.000" X="4.500" Y="3.550" height="0.803" type="Scenery" angle="0.000">
+                <property key="ImageName">clouds</property>
+                <property key="ZValue">0.5</property>
+            </object>
+        </predefined>
+    </scene>
+    <goals>
+        <goal type="positionchange">
+            <property key="object">BowlingPin2</property>
+            <property key="xbelow">4.1</property>
+        </goal>
+        <goal type="positionchange">
+            <property key="object">BowlingPin2</property>
+            <property key="ybelow">3.0</property>
+        </goal>
+    </goals>
+</tbe-level>
