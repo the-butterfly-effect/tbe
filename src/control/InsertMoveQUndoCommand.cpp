@@ -29,7 +29,8 @@ InsertMoveQUndoCommand::InsertMoveQUndoCommand(ViewItem* anViewItemPtr,
                                        QQuickItem* aHandlePtr,
                                        QUndoCommand *parent)
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr,
-                           QObject::tr("Insert %1"), parent)
+                           QObject::tr("Insert %1"), parent),
+      theTIGPtr(nullptr)
 {
 }
 

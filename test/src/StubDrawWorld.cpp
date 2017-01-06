@@ -18,7 +18,8 @@
 
 #include "StubDrawWorld.h"
 
-DrawWorld::DrawWorld()
+DrawWorld::DrawWorld() : 
+    theWorldPtr(nullptr)
 {
 }
 
