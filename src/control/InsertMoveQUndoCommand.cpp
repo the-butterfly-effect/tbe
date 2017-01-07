@@ -17,7 +17,7 @@
  */
 
 #include "InsertMoveQUndoCommand.h"
-#include "ToolboxItemGroup.h"
+#include "ToolboxModelItem.h"
 #include "ViewItem.h"
 #include "UndoSingleton.h"
 #include "World.h"
@@ -77,7 +77,7 @@ void InsertMoveQUndoCommand::redo()
     AbstractQUndoCommand::redo();
 }
 
-void InsertMoveQUndoCommand::setToolboxItemGroupPtr(ToolboxItemGroup *aTIGPtr)
+void InsertMoveQUndoCommand::setToolboxItemGroupPtr(ToolboxModelItem *aTIGPtr)
 {
     assert(nullptr != aTIGPtr);
     theTIGPtr = aTIGPtr;

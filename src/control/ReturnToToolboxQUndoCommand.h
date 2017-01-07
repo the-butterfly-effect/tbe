@@ -21,7 +21,7 @@
 
 #include "AbstractQUndoCommand.h"
 
-class ToolboxItemGroup;
+class ToolboxModelItem;
 
 /// Implementation of AbstractQUndoCommand to handle deletion of a QQuickItem
 /// by the user.
@@ -48,9 +48,9 @@ private:
     {};
 
 private:
-    /// Upon redo, this is the ToolboxItemGroup to return the object to.
+    /// Upon redo, this is the ToolboxModelItem to return the object to.
     /// (but only if the object came from a toolbox!)
-    ToolboxItemGroup* theTIGPtr;
+    ToolboxModelItem* theTMIPtr;
 };
 
 #endif // RETURNTOTOOLBOXQUNDOCOMMAND_H

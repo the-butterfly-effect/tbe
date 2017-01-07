@@ -22,7 +22,7 @@
 #include "AbstractQUndoCommand.h"
 #include "Position.h"
 
-class ToolboxItemGroup;
+class ToolboxModelItem;
 
 /// Implementation of AbstractQUndoCommand to handle insertion of an object
 /// by the user.
@@ -49,7 +49,7 @@ public:
 
     void redo() override;
 
-    void setToolboxItemGroupPtr(ToolboxItemGroup* aTIGPtr);
+    void setToolboxItemGroupPtr(ToolboxModelItem* aTIGPtr);
 
     void undo() override;
 
@@ -60,7 +60,7 @@ private:
     Position theLastKnownGood;
 
     /// Upon undo, this is the ToolboxItemGroup to return the object to.
-    ToolboxItemGroup* theTIGPtr;
+    ToolboxModelItem* theTIGPtr;
 };
 
 #endif // INSERTInsertMoveQUndoCommand_H

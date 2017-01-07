@@ -18,7 +18,7 @@ SET(view_SOURCES
     view/ResizeAwareQuickWidget.cpp
     view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
-    view/ToolboxItemGroup.cpp
+    view/ToolboxModelItem.cpp
     view/ViewItem.cpp
     view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
@@ -43,7 +43,7 @@ SET(view_HEADERS
     view/ResizeAwareQuickWidget.h
     view/resizinggraphicsview.h
     view/SaveLevelInfo.h
-    view/ToolboxItemGroup.h
+    view/ToolboxModelItem.h
     view/ViewItem.h
     view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h

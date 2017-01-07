@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2016 Klaas van Gend
+ * This file copyright (C) 2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 #include "Toolbox.h"
 #include "ToolboxGroup.h"
 #include "ToolboxGroupSerializer.h"
-#include "ToolboxItemGroup.h"
+#include "ToolboxModelItem.h"
 
 #include <QGraphicsView>
 #include <QListWidget>
@@ -77,13 +77,15 @@ Toolbox::findToolBoxGroup(AbstractObjectPtr anAOPtr)
 
 void Toolbox::repopulateToolbox()
 {
-    // TODO/FIXME: Temporary code to setup ToolboxItemGroups from ToolboxList.
-    // In the final design, we no longer have theToolboxList, only theTBGList.
-    theTBGList.clear();
+    // The list for the QML Toolbox, containing ToolboxModelItems.
+    // I made this list static to this member because it is a "one way street":
+    // we repopulate it; but otherwise, it's only used by the QML ListView.
+    QList<QObject*> myTMIList;
+    myTMIList.clear();
     for (auto i : theToolboxList)
     {
         AbstractObjectPtr myItemPtr = i->last();
-        ToolboxItemGroup* myTIGPtr = new ToolboxItemGroup(
+        ToolboxModelItem* myTIGPtr = new ToolboxModelItem(
                 myItemPtr->getName(),
                 i->count(),
                 myItemPtr->getTheWidth(),
@@ -91,11 +93,11 @@ void Toolbox::repopulateToolbox()
                 myItemPtr->getImageName(),
                 myItemPtr->getToolTip(),
                 i);
-        theTBGList.append(myTIGPtr);
+        myTMIList.append(myTIGPtr);
     }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
     ctxt->setContextProperty("myToolboxModel",
-                             QVariant::fromValue(theTBGList));
+                             QVariant::fromValue(myTMIList));
 }
 
 
@@ -114,5 +116,5 @@ void Toolbox::setupQml(QQuickWidget *aToolboxQmlStylePtr)
     theToolboxQmlStylePtr = aToolboxQmlStylePtr;
     assert (theToolboxQmlStylePtr);
 
-    qmlRegisterType<ToolboxItemGroup>("TBEView", 1, 0, "ToolboxItemGroup");
+//    qmlRegisterType<ToolboxModelItem>("TBEView", 1, 0, "ToolboxModelItem");
 }

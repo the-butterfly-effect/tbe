@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2016 Klaas van Gend
+ * This file copyright (C) 2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -49,8 +49,7 @@ public:
     /// Clear the contents of the Toolbox.
     void clear();
 
-    /// Setup everything again in the Toolbox.
-    /// @note probably going away when switch to new Qml toolbox complete.
+    /// (Re-)populates the QML Toolbox from theToolboxList.
     void repopulateToolbox();
 
 
@@ -74,9 +73,6 @@ private:
     ToolboxGroupList theToolboxList;
 
     QQuickWidget *theToolboxQmlStylePtr;
-
-    // the new list for the QML Toolboxgroups
-    QList<QObject*> theTBGList;
 };
 
 #endif // TOOLBOX_H

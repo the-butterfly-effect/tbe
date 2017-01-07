@@ -17,7 +17,7 @@
  */
 
 #include "ReturnToToolboxQUndoCommand.h"
-#include "ToolboxItemGroup.h"
+#include "ToolboxModelItem.h"
 #include "UndoSingleton.h"
 #include "ViewItem.h"
 #include "World.h"
@@ -29,7 +29,7 @@ ReturnToToolboxQUndoCommand::ReturnToToolboxQUndoCommand(ViewItem* anViewItemPtr
                                        QUndoCommand *parent)
     : AbstractQUndoCommand(anViewItemPtr, nullptr,
                            QObject::tr("%1 back in toolbox"), parent),
-      theTIGPtr(nullptr)
+      theTMIPtr(nullptr)
 {
 }
 
@@ -47,9 +47,9 @@ void ReturnToToolboxQUndoCommand::redo()
     Q_ASSERT(myResult == true);
     /* and remove compiler warning: */ (void)myResult;
 
-    // let's find which TIG to return to...
+    // let's find which ToolboxModelItem to return to...
     if (false) {
-        theTIGPtr->returnAO2Toolbox(theAOPtr);
+        theTMIPtr->returnAO2Toolbox(theAOPtr);
         theAOPtr = nullptr;
     }
 
@@ -61,9 +61,9 @@ void ReturnToToolboxQUndoCommand::undo()
     DEBUG1ENTRY
     // 1) (if TIG pointer set): take AO out of the TIG and create a new VI
     // 2) (if not set): re-use the AO (we should have kept the pointer alive) and create a new VI
-    if(nullptr != theTIGPtr) {
+    if(nullptr != theTMIPtr) {
         assert(nullptr == theAOPtr);
-        theAOPtr = theTIGPtr->getAOfromToolbox();
+        theAOPtr = theTMIPtr->getAOfromToolbox();
         updateAO(theOrigPos);
         theAOPtr->createViewItem();
     }
