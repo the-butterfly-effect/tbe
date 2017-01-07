@@ -17,6 +17,7 @@
  */
 
 #include "GameQControls.h"
+#include "InsertMoveProxy.h"
 #include "ResizeAwareQuickWidget.h"
 #include "ViewItem.h"
 #include "ViewResizeRotateMoveUndo.h"
@@ -52,6 +53,7 @@ ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
     qmlRegisterType<ViewResizeRotateMoveUndo>("TBEView", 1, 0, "ViewResizeRotateMoveUndo");
     qmlRegisterType<ViewWorldItem>("TBEView", 1, 0, "ViewWorldItem");
     qmlRegisterType<GameQControls>("TBEView", 1, 0, "GameQControls");
+    qmlRegisterType<InsertMoveProxy>("TBEView", 1, 0, "InsertMoveProxy");
 
     // Pre-calculate the handle sizes, they normally won't change during play...
     QScreen* myQScreenPtr = QApplication::primaryScreen();

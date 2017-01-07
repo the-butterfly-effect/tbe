@@ -11,6 +11,7 @@ SET(view_SOURCES
     view/GoalEditor.cpp
     view/ImageCache.cpp
     view/ImageProvider.cpp
+    view/InsertMoveProxy.cpp
     view/LevelCreator.cpp
     view/MainWindow.cpp
     view/Popup.h
@@ -35,6 +36,7 @@ SET(view_HEADERS
     view/GoalEditor.h
     view/ImageCache.h
     view/ImageProvider.h
+    view/InsertMoveProxy.h
     view/LevelCreator.h
     view/MainWindow.h
     view/Popup.h

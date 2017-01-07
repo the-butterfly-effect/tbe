@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2016 Klaas van Gend
+ * This file copyright (C) 2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,6 +25,7 @@ Rectangle {
 //    property var    newItem : undefined;
     property var    startmousepos;
 //    property var    undoObject : undefined;
+    property var    itemProxy;
     color: "transparent"
 
     Image {
@@ -54,8 +55,9 @@ Rectangle {
                 return;
             }
             listView.interactive = false;
-//            var tlpos = draggableIcon.mapToItem(gameView, 0,0);
-//            startmousepos = {x:  mouse.x, y: mouse.y};
+            var tlpos = draggableIcon.mapToItem(gameView, 0,0);
+            startmousepos = {x:  mouse.x, y: mouse.y};
+            itemProxy = Qt.createQmlObject('import QtQuick 2.0; import TBEView 1.0; InsertMoveProxy {}', this, "");
         }
         onPositionChanged: {
             // in this one, we keep everything in pixels :-)
@@ -69,7 +71,7 @@ Rectangle {
         onReleased: {
 //            newItem.updateVars();
             listView.interactive = true;
-//            newItem = null;
+            itemProxy.destroy();
 //            undoObject = null;
         }
     }
