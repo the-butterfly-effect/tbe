@@ -22,9 +22,9 @@ Rectangle {
     id: draggableIcon
 
     property string source;
-    property var    newItem : undefined;
+//    property var    newItem : undefined;
     property var    startmousepos;
-    property var    undoObject : undefined;
+//    property var    undoObject : undefined;
     color: "transparent"
 
     Image {
@@ -54,40 +54,23 @@ Rectangle {
                 return;
             }
             listView.interactive = false;
-            var tlpos = draggableIcon.mapToItem(gameView, 0,0);
-            startmousepos = {x:  mouse.x, y: mouse.y};
-            // createUndo() is in ToolboxItemGroup
-            undoObject = createUndo(this,
-                                    xwh2m(tlpos.x+startmousepos.x),
-                                    y2m(tlpos.y+startmousepos.y));
-            newItem = undoObject.getTheDecorated();
-            newItem.z = 9999;
-            newItem.setupDecorator();
-            selectedItem.addUndo(undoObject);
+//            var tlpos = draggableIcon.mapToItem(gameView, 0,0);
+//            startmousepos = {x:  mouse.x, y: mouse.y};
         }
         onPositionChanged: {
             // in this one, we keep everything in pixels :-)
-            if (null == newItem)
-                return;
-            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
-            newItem.x = cmpos.x - startmousepos.x;
-            newItem.y = cmpos.y - startmousepos.y;
-            newItem.updateVars();
+//            if (null == newItem)
+//                return;
+//            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
+//            newItem.x = cmpos.x - startmousepos.x;
+//            newItem.y = cmpos.y - startmousepos.y;
+//            newItem.updateVars();
         }
         onReleased: {
-            newItem.updateVars();
+//            newItem.updateVars();
             listView.interactive = true;
-            if (!selectedItem.isBackInToolbox) {
-                newItem.restoreBindings();
-            }
-            else {
-                undoObject.failMoving();
-                selectedItem.destroy();
-                selectedItem = undefined;
-                undoObject.destroy();
-            }
-            newItem = null;
-            undoObject = null;
+//            newItem = null;
+//            undoObject = null;
         }
     }
 }

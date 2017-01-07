@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011,2012,2016 Klaas van Gend
+ * This file copyright (C) 2011,2012,2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -37,19 +37,11 @@ public:
                                 QQuickItem* aHandlePtr,
                                 QUndoCommand *parent = 0);
 
-    Q_INVOKABLE QQuickItem *getTheDecorated();
-
-    Q_INVOKABLE void failMoving();
-
     void commit() override;
 
-    /// Obtains all the latest changes and checks if actually changed.
-    /// @returns true if this undo/redo changes one or more properties.
     bool isChanged() override;
 
     void redo() override;
-
-    void setToolboxItemGroupPtr(ToolboxModelItem* aTIGPtr);
 
     void undo() override;
 
@@ -57,8 +49,6 @@ private:
     void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;
 
 private:
-    Position theLastKnownGood;
-
     /// Upon undo, this is the ToolboxItemGroup to return the object to.
     ToolboxModelItem* theTIGPtr;
 };
