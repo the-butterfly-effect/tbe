@@ -27,7 +27,10 @@ ViewItem::ViewItem(QQuickItem *aParentPtr)
     // Nothing to do here...
 }
 
-// Maybe still TODO: create a destructor, because we need to take the AO from the world upon destruction.
+ViewItem::~ViewItem()
+{
+    DEBUG1ENTRY;
+}
 
 void
 ViewItem::adjustObjectDrawingFromAO()
