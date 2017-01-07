@@ -113,6 +113,9 @@ protected:
     void updateAO(qreal aWidth, qreal aHeight);
     ViewItem* getVIPtr();
     void updateVI();
+
+protected:
+    Q_DISABLE_COPY(AbstractQUndoCommand)
 };
 
 #endif // AbstractQUndoCommand_H

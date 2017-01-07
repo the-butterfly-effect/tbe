@@ -63,6 +63,7 @@ public slots:
 private:
     /// private constructor - this is a singleton class!
     explicit UndoSingleton(void);
+    ~UndoSingleton();
 
     /// @returns pointer to the existing singleton.
     static UndoSingleton *me(void);

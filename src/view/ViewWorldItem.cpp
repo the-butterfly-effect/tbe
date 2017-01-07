@@ -157,7 +157,8 @@ void ViewWorldItem::impl::setContextProperty(const QString &aName,
 ViewWorldItem::ViewWorldItem(QQuickItem *aParentPtr)
     : QQuickItem(aParentPtr),
       theWorldPtr(nullptr),
-      pImpl(nullptr)
+      pImpl(nullptr),
+      theIsModifyAllowed(false)
 {
     assert(nullptr == theVWIPtr);
     theVWIPtr = this;

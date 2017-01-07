@@ -33,7 +33,7 @@ AbstractQUndoCommand::AbstractQUndoCommand(ViewItem* anViewItemPtr,
       isObjectColliding(false),
       isInToolbox(false)
 {
-    // This is the undo action, anUndoText is e.g. “Move %s” and
+    // This is the undo action, anUndoText is e.g. “Move %1” and
     // anAbstractObjectPtr->getName() is e.g. “Birch Bar”
     setText(anUndoText.arg(theAOPtr->getName()));
     theOrigPos    = theNewPos    = theAOPtr->getOrigCenter();
@@ -47,7 +47,6 @@ AbstractQUndoCommand::~AbstractQUndoCommand()
 {
     DEBUG1ENTRY;
     disconnect(theVIConnection);
-    //TODO:    UndoSingleton::notifyGone(this);
 }
 
 bool AbstractQUndoCommand::checkForCollisions()
