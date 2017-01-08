@@ -310,8 +310,6 @@ private:
 
     /// the actual (internal) call to add the DrawObject of a AbstractObject
     /// to the corresponding ViewWorld
-    void addAbstractObjectToViewWorld(AbstractObjectPtr anAOPtr);
-
     void addAbstractObjectToViewWorldItem(AbstractObjectPtr anAOPtr);
 
 public:
