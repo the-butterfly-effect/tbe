@@ -32,11 +32,13 @@ class InsertMoveProxy : public QQuickItem
 
 public:
     InsertMoveProxy(QQuickItem *parent = Q_NULLPTR);
-    ~InsertMoveProxy();
+    virtual ~InsertMoveProxy();
 
-signals:
+    /// Called by ToolboxDraggableIcon to start the undo creation.
+    Q_INVOKABLE void createUndo(QObject* aTMIPtr,
+                                QQuickItem* aHandlePtr, qreal anXinM, qreal aYinM);
 
-public slots:
+    Q_INVOKABLE void updateVars(qreal anXM, qreal aYM);
 
 private:
     InsertMoveQUndoCommand* theIMQCPtr;

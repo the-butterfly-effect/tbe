@@ -32,7 +32,7 @@ class ViewItem : public QQuickItem
     Q_OBJECT
 
 public:
-    explicit ViewItem(QQuickItem *aParentPtr = Q_NULLPTR);
+    ViewItem(QQuickItem *aParentPtr = Q_NULLPTR);
     ~ViewItem();
 
     Q_PROPERTY(qreal xInM MEMBER theXinM NOTIFY sizeChanged)

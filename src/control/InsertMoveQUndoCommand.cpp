@@ -30,8 +30,13 @@ InsertMoveQUndoCommand::InsertMoveQUndoCommand(ViewItem* anViewItemPtr,
                                        QUndoCommand *parent)
     : AbstractQUndoCommand(anViewItemPtr, aHandlePtr,
                            QObject::tr("Insert %1"), parent),
-      theTIGPtr(nullptr)
+      theTMIPtr(nullptr)
 {
+}
+
+InsertMoveQUndoCommand::~InsertMoveQUndoCommand()
+{
+    DEBUG1ENTRY;
 }
 
 void InsertMoveQUndoCommand::commit()
@@ -49,17 +54,46 @@ bool InsertMoveQUndoCommand::isChanged()
 
 void InsertMoveQUndoCommand::redo()
 {
-    //AbstractQUndoCommand::redo();
+    // REDO:
+    // 1) (if VI gone): take AO out of the TIG and create a new VI
+    // 2) (if VI exists): do little updating only
+    assert(nullptr != theTMIPtr);
+    if (nullptr == theAOPtr)
+    {
+        theAOPtr = theTMIPtr->getAOfromToolbox();
+        updateAO(theNewPos);
+        theAOPtr->createViewItem();
+    }
+    World::getWorldPtr()->addObject(theAOPtr);
+    AbstractQUndoCommand::redo();
+}
+
+void InsertMoveQUndoCommand::setToolboxModelItemPtr(ToolboxModelItem *aPtr)
+{
+    assert (nullptr == theTMIPtr);
+    theTMIPtr = aPtr;
+    assert (nullptr != theTMIPtr);
 }
 
 void InsertMoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
     theNewPos = Position(anXM, aYM, theOrigPos.angle);
-//    redo();
+    AbstractQUndoCommand::redo();
 }
 
 void InsertMoveQUndoCommand::undo()
 {
+    if (nullptr == theAOPtr)
+            return;
+    // UNDO: Take AO from world, return AO to the ToolboxItemGroup, delete VI.
+    assert(nullptr != theTMIPtr);
+    theAOPtr->deleteViewItem();
+    assert(nullptr==getVIPtr());
+    // remove from the world and viewworld
+    World::getWorldPtr()->removeObject(theAOPtr);
+    theTMIPtr->returnAO2Toolbox(theAOPtr);
+    theAOPtr = nullptr;
+
     // Note how we don't call AbstractQUndoCommand::undo()!!!
     // (as there's nothing to undo - we just removed it all)
 }

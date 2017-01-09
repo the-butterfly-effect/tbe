@@ -37,20 +37,24 @@ public:
                                 QQuickItem* aHandlePtr,
                                 QUndoCommand *parent = 0);
 
+    virtual ~InsertMoveQUndoCommand();
+
     void commit() override;
 
     bool isChanged() override;
 
     void redo() override;
 
+    void setToolboxModelItemPtr(ToolboxModelItem* aPtr);
+
     void undo() override;
 
-private:
-    void slot_updateVars(qreal anXM, qreal aYM, qreal aRotDegrees, qreal aWidthM, qreal aHeightM) override;
+    void slot_updateVars(qreal anXM, qreal aYM,
+                         qreal aRotDegrees = 0., qreal aWidthM = 0., qreal aHeightM = 0.) override;
 
 private:
     /// Upon undo, this is the ToolboxItemGroup to return the object to.
-    ToolboxModelItem* theTIGPtr;
+    ToolboxModelItem* theTMIPtr;
 };
 
 #endif // INSERTInsertMoveQUndoCommand_H

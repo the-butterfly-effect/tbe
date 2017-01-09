@@ -25,6 +25,7 @@ ViewItem::ViewItem(QQuickItem *aParentPtr)
                          theFrameNumber(0)
 {
     // Nothing to do here...
+    DEBUG1ENTRY;
 }
 
 ViewItem::~ViewItem()
@@ -46,6 +47,8 @@ ViewItem::adjustObjectDrawingFromAO()
     theXinM = myPos.x - 0.5 * theWidthInM;
     theYinM = myPos.y + 0.5 * theHeightInM;
     theAngleInDegrees = myPos.angleInQDegrees();
+
+    printf("(x,y): (%f,%f)\n", theXinM, theYinM);
 
     emit sizeChanged();
     emit angleChanged();
@@ -101,6 +104,7 @@ void ViewItem::setNewImageIndex(unsigned int anIndex)
 
 void ViewItem::setParents(QQuickItem *aParentPtr, AbstractObjectPtr anAOPtr)
 {
+    DEBUG1ENTRY;
     setParentItem(aParentPtr);
     setParent(aParentPtr);
     theAOPtr = anAOPtr;

@@ -22,9 +22,7 @@ Rectangle {
     id: draggableIcon
 
     property string source;
-//    property var    newItem : undefined;
     property var    startmousepos;
-//    property var    undoObject : undefined;
     property var    itemProxy;
     color: "transparent"
 
@@ -50,29 +48,32 @@ Rectangle {
 
         // Drag&Drop events:
         onPressed: {
+            // Do not respond if not allowed to insert.
             if ((!gameView.isModifyAllowed) || count <= 0) {
                 mouse.accepted = false;
                 return;
             }
+            // Create the RAII itemProxy that holds the InsertMoveQUndoCommand.
             listView.interactive = false;
             var tlpos = draggableIcon.mapToItem(gameView, 0,0);
             startmousepos = {x:  mouse.x, y: mouse.y};
-            itemProxy = Qt.createQmlObject('import QtQuick 2.0; import TBEView 1.0; InsertMoveProxy {}', this, "");
+            itemProxy = Qt.createQmlObject('import TBEView 1.0; InsertMoveProxy {}', this, "");
+            itemProxy.createUndo(getTMIPtr(), this,
+                                 xwh2m(tlpos.x + startmousepos.x),
+                                 y2m(tlpos.y + startmousepos.y));
         }
         onPositionChanged: {
-            // in this one, we keep everything in pixels :-)
-//            if (null == newItem)
-//                return;
-//            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
-//            newItem.x = cmpos.x - startmousepos.x;
-//            newItem.y = cmpos.y - startmousepos.y;
-//            newItem.updateVars();
+            if (null === itemProxy)
+                return;
+            var cmpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
+            itemProxy.updateVars(xwh2m(cmpos.x - startmousepos.x),
+                                 y2m(cmpos.y - startmousepos.y));
         }
         onReleased: {
-//            newItem.updateVars();
             listView.interactive = true;
+            // Our object itemProxy is an RAII, upon destroy it will either
+            // commit or delete its associated InsertMoveQUndoCommand.
             itemProxy.destroy();
-//            undoObject = null;
         }
     }
 }
