@@ -67,6 +67,8 @@ Rectangle {
             width: iconSize
             height: iconSize
             source: count > 0 ? img(iconName) : img("EmptyGroup")
+            finalwidth: iconSize
+            finalheight: iconSize
             z: 10
         }
 
@@ -152,14 +154,15 @@ Rectangle {
         PropertyChanges {
             target: itemIcon;
             width:  (count > 0) ? m2xwh(owidth) : iconSize;
-            height: (count > 0) ? m2xwh(oheight): iconSize }
+            height: (count > 0) ? m2xwh(oheight): iconSize;
+            finalwidth: (count > 0) ? m2xwh(owidth) : iconSize;
+            finalheight: (count > 0) ? m2xwh(oheight) : iconSize;}
     }
 
     transitions: Transition {
         // Make the state changes smooth
         ParallelAnimation {
             ColorAnimation  { duration: 300; property: "color" }
-            NumberAnimation { duration: 300; property: "height" }
             NumberAnimation { duration: 300; properties: "width,height" }
         }
     }

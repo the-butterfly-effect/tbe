@@ -26,6 +26,9 @@ Rectangle {
     property var    itemProxy;
     color: "transparent"
 
+    property var finalwidth;
+    property var finalheight;
+
     Image {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -35,8 +38,8 @@ Rectangle {
         height: count > 0 ? ((owidth/oheight > 1.0)? parent.width/owidth*oheight : parent.height) : iconSize;
         opacity: (gameView.isModifyAllowed)?1:0.4
         source: parent.source
-        sourceSize.width: width
-        sourceSize.height: height
+        sourceSize.width: finalwidth
+        sourceSize.height: finalheight
     }
 
     MouseArea {
