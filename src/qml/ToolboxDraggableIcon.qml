@@ -56,11 +56,11 @@ Rectangle {
             // Create the RAII itemProxy that holds the InsertMoveQUndoCommand.
             listView.interactive = false;
             var tlpos = draggableIcon.mapToItem(gameView, 0,0);
-            startmousepos = {x:  mouse.x, y: mouse.y};
+            var clickpos = draggableIcon.mapToItem(gameView, mouse.x, mouse.y);
+            startmousepos = {x: clickpos.x - tlpos.x, y: clickpos.y - tlpos.y };
             itemProxy = Qt.createQmlObject('import TBEView 1.0; InsertMoveProxy {}', this, "");
             itemProxy.createUndo(getToolboxModelItemPtr(), this,
-                                 xwh2m(tlpos.x + startmousepos.x),
-                                 y2m(tlpos.y + startmousepos.y));
+                                 xwh2m(tlpos.x), y2m(tlpos.y));
         }
         onPositionChanged: {
             if (null === itemProxy)

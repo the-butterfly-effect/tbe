@@ -77,7 +77,7 @@ void InsertMoveQUndoCommand::setToolboxModelItemPtr(ToolboxModelItem *aPtr)
 
 void InsertMoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRotDegrees*/, qreal /*aWidthM*/, qreal /*aHeightM*/)
 {
-    theNewPos = Position(anXM, aYM, theOrigPos.angle);
+    theNewPos = Position(anXM + theAOPtr->getTheWidth()/2, aYM - theAOPtr->getTheHeight()/2, theOrigPos.angle);
     AbstractQUndoCommand::redo();
 }
 
