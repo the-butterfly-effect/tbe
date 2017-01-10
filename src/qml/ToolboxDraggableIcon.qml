@@ -58,7 +58,7 @@ Rectangle {
             var tlpos = draggableIcon.mapToItem(gameView, 0,0);
             startmousepos = {x:  mouse.x, y: mouse.y};
             itemProxy = Qt.createQmlObject('import TBEView 1.0; InsertMoveProxy {}', this, "");
-            itemProxy.createUndo(getTMIPtr(), this,
+            itemProxy.createUndo(getToolboxModelItemPtr(), this,
                                  xwh2m(tlpos.x + startmousepos.x),
                                  y2m(tlpos.y + startmousepos.y));
         }

@@ -54,14 +54,23 @@ InsertMoveProxy::~InsertMoveProxy()
 void InsertMoveProxy::createUndo(QObject* aTMIPtr,
                               QQuickItem* aHandlePtr, qreal anXinM, qreal aYinM)
 {
-    DEBUG1ENTRY;
+    DEBUG3ENTRY;
     assert (nullptr == theIMQCPtr);
     auto myTMIPtr = qobject_cast<ToolboxModelItem*>(aTMIPtr);
     assert (nullptr != myTMIPtr);
-    theIMQCPtr = myTMIPtr->createUndo(aHandlePtr, anXinM, aYinM);
-    assert (nullptr != theIMQCPtr);
-}
 
+    AbstractObjectPtr myAOPtr = myTMIPtr->getAOfromToolbox();
+    // TODO: figure out rotation
+    myAOPtr->setOrigCenter(Position(anXinM+myAOPtr->getTheWidth()/2.,
+                                    aYinM+myAOPtr->getTheHeight()/2., 0.));
+    ViewItem* myVIPtr = myAOPtr->createViewItem();
+    myVIPtr->setNewImageIndex(0);
+
+    AbstractQUndoCommand* myQUndoPtr = UndoSingleton::createQUndoCommand(myVIPtr, aHandlePtr, "ToolboxInsert");
+    theIMQCPtr = dynamic_cast<InsertMoveQUndoCommand*>(myQUndoPtr);
+    assert (nullptr != theIMQCPtr);
+    theIMQCPtr->setToolboxModelItemPtr(myTMIPtr);
+}
 
 void InsertMoveProxy::updateVars(qreal anXM, qreal aYM)
 {

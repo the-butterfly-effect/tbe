@@ -16,10 +16,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "InsertMoveQUndoCommand.h"
 #include "ToolboxGroup.h"
 #include "ToolboxModelItem.h"
-#include "UndoSingleton.h"
 #include "ViewItem.h"
 
 #include <QQuickItem>
@@ -37,28 +35,8 @@ ToolboxModelItem::ToolboxModelItem(const QString &aName, int aCount, qreal aWidt
 {
 }
 
-InsertMoveQUndoCommand *ToolboxModelItem::createUndo(QQuickItem *aHandlePtr, qreal anXinM, qreal aYinM)
+QObject *ToolboxModelItem::getToolboxModelItemPtr()
 {
-    printf("createUndo: TMI=%p\n", this);
-    // At this point, we know what object to insert as we will have an AO
-    // and a position on the screen to push it to.
-    AbstractObjectPtr myAOPtr = getAOfromToolbox();
-    // TODO: figure out rotation
-    myAOPtr->setOrigCenter(Position(anXinM+myAOPtr->getTheWidth()/2.,
-                                    aYinM+myAOPtr->getTheHeight()/2., 0.));
-    ViewItem* myVIPtr = myAOPtr->createViewItem();
-    myVIPtr->setNewImageIndex(0);
-
-    AbstractQUndoCommand* myQUndoPtr = UndoSingleton::createQUndoCommand(myVIPtr, aHandlePtr, "ToolboxInsert");
-    InsertMoveQUndoCommand* myIMQUCPtr = dynamic_cast<InsertMoveQUndoCommand*>(myQUndoPtr);
-    assert (nullptr != myIMQUCPtr);
-    myIMQUCPtr->setToolboxModelItemPtr(this);
-    return myIMQUCPtr;
-}
-
-QObject *ToolboxModelItem::getTMIPtr()
-{
-    DEBUG1ENTRY;
     return this;
 }
 

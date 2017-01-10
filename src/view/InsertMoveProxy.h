@@ -35,6 +35,9 @@ public:
     virtual ~InsertMoveProxy();
 
     /// Called by ToolboxDraggableIcon to start the undo creation.
+    /// @param aTMIPtr      pointer to ToolboxModelItem
+    /// @param aHandlePtr   pointer to ToolboxDraggableIcon.
+    /// @param anXinM,aYinM top-left of the icon
     Q_INVOKABLE void createUndo(QObject* aTMIPtr,
                                 QQuickItem* aHandlePtr, qreal anXinM, qreal aYinM);
 

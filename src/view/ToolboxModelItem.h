@@ -21,7 +21,6 @@
 
 #include <QObject>
 
-class InsertMoveQUndoCommand;
 class ToolboxGroup;
 class QQuickItem;
 
@@ -43,12 +42,8 @@ public:
     Q_PROPERTY(QString iconName MEMBER theIconName NOTIFY iconNameChanged)
     Q_PROPERTY(QString tooltip MEMBER theTooltipText NOTIFY tooltipChanged)
 
-    /// Creates the insertMoveQUndoCommand and returns it.
-    /// @param aHandlePtr pointer to ToolboxDraggableIcon.
-    /// @param anX,aY are both in meters and top-left of the icon
-    InsertMoveQUndoCommand* createUndo(QQuickItem* aHandlePtr, qreal anXinM, qreal aYinM);
-
-    Q_INVOKABLE QObject* getTMIPtr();
+    /// @returns pointer to this object instance.
+    Q_INVOKABLE QObject* getToolboxModelItemPtr();
 
     /// "Returns" the AbstractObject to the toolbox.
     void returnAO2Toolbox(AbstractObjectPtr anAOPtr);
