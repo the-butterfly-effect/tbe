@@ -104,6 +104,7 @@ ViewItem {
 
     // Put a permanent halo around all user modifyable objects.
     Glow {
+        id: halo
         anchors.fill: parent
         color: "white"
         radius: 8
@@ -114,7 +115,7 @@ ViewItem {
 
     // Highlight on hover for all user modifyable objects.
     Colorize {
-        id: glow
+        id: highlight
         anchors.fill: parent
         hue: 0.6
         lightness:  0.1
@@ -135,11 +136,11 @@ ViewItem {
         hoverEnabled: viewItem.tooltip!=="" || (viewItem.isAnything && gameView.isModifyAllowed)
         onEntered: {
             if (viewItem.isAnything)
-                glow.visible=true;
+                highlight.visible=true;
             mytooltip.show(true);
         }
         onExited: {
-            glow.visible=false;
+            highlight.visible=false;
             mytooltip.show(false);
         }
     }
