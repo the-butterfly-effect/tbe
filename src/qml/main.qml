@@ -75,6 +75,7 @@ RowLayout {
             onClicked: {
                 if(selectedItem)
                     selectedItem.destroy()
+                selectedItem = null;
             }
         }
 

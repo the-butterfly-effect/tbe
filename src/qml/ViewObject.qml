@@ -143,6 +143,10 @@ ViewItem {
             highlight.visible=false;
             mytooltip.show(false);
         }
+
+        onPositionChanged: {
+            updateVars();
+        }
     }
 
     Tooltip {

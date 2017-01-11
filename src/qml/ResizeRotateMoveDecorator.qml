@@ -28,6 +28,10 @@ ViewResizeRotateMoveUndo {
     property real oldHeight;
     property real oldZ;
 
+    Component.onCompleted: {
+        theDecorator.startNewUndo("Move", parent);
+    }
+
     Component.onDestruction: {
         theDecorated.z = oldZ;
     }

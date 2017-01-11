@@ -27,7 +27,6 @@ ViewResizeRotateMoveUndo::ViewResizeRotateMoveUndo(QQuickItem *parent)
       theUndoPtr(nullptr)
 {
     assert(nullptr == parent);
-    emit isCollidingChanged();
 }
 
 ViewResizeRotateMoveUndo::~ViewResizeRotateMoveUndo()
@@ -77,6 +76,7 @@ void ViewResizeRotateMoveUndo::hookup()
 {
     connect(theUndoPtr, SIGNAL(isCollidingChanged()), this, SIGNAL(isCollidingChanged()));
     connect(theUndoPtr, SIGNAL(isBackInToolboxChanged()), this, SIGNAL(isBackInToolboxChanged()));
+    theUndoPtr->checkForCollisions();
     emit theActiveHandleChanged();
     emit isCollidingChanged();
     emit isBackInToolboxChanged();
