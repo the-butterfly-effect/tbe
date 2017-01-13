@@ -20,6 +20,7 @@
 #include "InsertMoveProxy.h"
 #include "ResizeAwareQuickWidget.h"
 #include "ViewItem.h"
+#include "ViewLink.h"
 #include "ViewResizeRotateMoveUndo.h"
 #include "ViewWorldItem.h"
 
@@ -50,6 +51,7 @@ ResizeAwareQuickWidget::ResizeAwareQuickWidget(QWidget *parent)
 
     // TODO/FIXME: Does this belong here???
     qmlRegisterType<ViewItem>("TBEView", 1, 0, "ViewItem");
+    qmlRegisterType<ViewLink>("TBEView", 1, 0, "ViewLink");
     qmlRegisterType<ViewResizeRotateMoveUndo>("TBEView", 1, 0, "ViewResizeRotateMoveUndo");
     qmlRegisterType<ViewWorldItem>("TBEView", 1, 0, "ViewWorldItem");
     qmlRegisterType<GameQControls>("TBEView", 1, 0, "GameQControls");

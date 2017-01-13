@@ -55,7 +55,7 @@ public:
     /// Update drawing of the object based on the contents in the provided
     /// AbstractObject.
     /// Updated are: position (incl angle), width, height.
-    void adjustObjectDrawingFromAO();
+    virtual void adjustObjectDrawingFromAO();
 
     QString firstImageName();
     QString imageName()

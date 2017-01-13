@@ -19,6 +19,7 @@
         <file>ToolboxDraggableIcon.qml</file>
         <file>ToolboxEntry.qml</file>
         <file>Tooltip.qml</file>
+        <file>ViewLinkQML.qml</file>
         <file>ViewObject.qml</file>
         <file>ViewObjectSubImage.qml</file>
         <file>ViewPingus.qml</file>

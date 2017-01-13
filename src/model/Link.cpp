@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2010,2012  Klaas van Gend
+ * This file copyright (C) 2010,2012,2017  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "Link.h"
 #include "ObjectFactory.h"
-//#include "ViewLink.h"
+#include "ViewLink.h"
 
 #include "Box2D.h"
 #include <cassert>
@@ -86,18 +86,11 @@ void Link::clearObjectReferences()
 
 ViewItem*  Link::createViewItem(float aDefaultDepth)
 {
-/*    if (theViewObjectPtr != nullptr)
-        return theViewObjectPtr;
     QString myImageName;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
-        myImageName = getInternalName();
-    theViewObjectPtr = ViewObject::factoryMethod<ViewLink>(getThisPtr(), myImageName);
-    theViewObjectPtr->setZValue(calculateZValue(aDefaultDepth)); // will set ZValue different if set in property
-    return theViewObjectPtr;
-    */
-    return nullptr;
+        myImageName = "green";
+    return createViewItemInt(aDefaultDepth, "ViewLinkQML", "", QString("myColor: \"%1\"").arg(myImageName));
 }
-
 
 void Link::createPhysicsObject(void)
 {
@@ -184,24 +177,13 @@ void Link::updateViewObject(bool ) const
     // no ViewObject: nothing to update ;-)
     if (theViewItemPtr == nullptr)
         return;
-
 /*
     // Sim running: don't need to adjust objects that are static or asleep
-    ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewObjectPtr.data());
+    ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewItemPtr);
     assert(theVLPtr != nullptr);
 
-    Vector myV1, myV2;
-    if (theFirstPtr != nullptr) {
-        myV1 = (theFirstPtr->getTempCenter() + *theFirstLocalPosPtr).toVector();
-    } else {
-        myV1 = getTempCenter() - getTheWidth() * Vector(0.5, 0.);
-    }
-    if (theSecondPtr != nullptr) {
-        myV2 = (theSecondPtr->getTempCenter() + *theSecondLocalPosPtr).toVector();
-    } else {
-        myV2 = getTempCenter() + getTheWidth() * Vector(0.5, 0.);
-    }
+    // we already have the center point, now calculate length and angle
 
-    theVLPtr->setEndpoints(myV1, myV2);
-    */
+//    theVLPtr->setEndpoints(myV1, myV2);
+*/
 }
