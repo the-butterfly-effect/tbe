@@ -41,7 +41,7 @@ InsertMoveQUndoCommand::~InsertMoveQUndoCommand()
 
 void InsertMoveQUndoCommand::commit()
 {
-    if (isBackInToolbox())
+    if (isBackInToolbox() || isColliding())
         undo();
     else
         AbstractQUndoCommand::commit();
@@ -79,6 +79,7 @@ void InsertMoveQUndoCommand::slot_updateVars(qreal anXM, qreal aYM, qreal /*aRot
 {
     theNewPos = Position(anXM + theAOPtr->getTheWidth()/2, aYM - theAOPtr->getTheHeight()/2, theOrigPos.angle);
     AbstractQUndoCommand::redo();
+    getVIPtr()->setOpacity(isColliding() ? 0.3 : 1.0);
 }
 
 void InsertMoveQUndoCommand::undo()
