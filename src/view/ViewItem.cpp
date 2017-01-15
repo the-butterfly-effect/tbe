@@ -102,7 +102,6 @@ void ViewItem::setNewImageIndex(unsigned int anIndex)
 
 void ViewItem::setParents(QQuickItem *aParentPtr, AbstractObjectPtr anAOPtr)
 {
-    DEBUG1ENTRY;
     setParentItem(aParentPtr);
     setParent(aParentPtr);
     theAOPtr = anAOPtr;
