@@ -65,7 +65,7 @@ Link::Link(void)
 
 Link::~Link ()
 {
-    DEBUG5("Link::~Link() %p", this);
+    DEBUG5ENTRY
     clearObjectReferences();
 }
 
@@ -86,10 +86,10 @@ void Link::clearObjectReferences()
 
 ViewItem*  Link::createViewItem(float aDefaultDepth)
 {
-    QString myImageName;
-    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myImageName, true) == false)
-        myImageName = "green";
-    return createViewItemInt(aDefaultDepth, "ViewLinkQML", "", QString("myColor: \"%1\"").arg(myImageName));
+    QString myLineColor;
+    if (theProps.property2String(Property::IMAGE_NAME_STRING, &myLineColor, true) == false)
+        myLineColor = "green";
+    return createViewItemInt(aDefaultDepth, "ViewLinkQML", "", QString("myColor: \"%1\"").arg(myLineColor));
 }
 
 void Link::createPhysicsObject(void)
