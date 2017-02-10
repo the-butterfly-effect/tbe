@@ -185,11 +185,9 @@ public:
      */
     void addGoal(Goal *aGoalPtr);
 
-    /** creates the corresponding ViewWorld and asks it to
-     *  sets itself up as the GraphicsScene
-     *  it will add all known AbstractObjects to the Scene
+    /** Will add all known AbstractObjects to the ViewWorldItem
      */
-    ViewWorld *createScene(ResizingGraphicsView *myRSGVPtr);
+    void createScene();
 
     void createPhysicsWorld(void);
     void deletePhysicsWorld(void);

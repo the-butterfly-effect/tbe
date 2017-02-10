@@ -26,7 +26,6 @@
 #include "RegressionTest.h"
 #include "resizinggraphicsview.h"
 #include "Translator.h"
-#include "ViewWorld.h"
 #include "World.h"
 
 #include <QMenuBar>
@@ -52,21 +51,6 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
 ResizingGraphicsView::~ResizingGraphicsView()
 {
     theRSGVPtr = nullptr;
-}
-
-
-void ResizingGraphicsView::clearViewWorld(void)
-{
-    DEBUG3ENTRY;
-    // disconnect & delete the Scene//DrawWorld
-    // keep in mind that we have a view that's not happy now!
-    setScene(nullptr);
-    QMatrix myMatrix;
-    setMatrix(myMatrix);
-
-    emit theGameFlowPtr->slot_clearDialog();
-    delete theScenePtr;
-    theScenePtr = nullptr;
 }
 
 
@@ -114,7 +98,7 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameState
 
 }
 
-
+#if 0
 void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
                                         const QString &aLevelName)
 {
@@ -157,3 +141,4 @@ void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
 
     theGameFlowPtr->slot_showLevelInfoDialog();
 }
+#endif

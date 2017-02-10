@@ -36,7 +36,6 @@
 #include "SaveLevelInfo.h"
 #include "Translator.h"
 #include "UndoSingleton.h"
-#include "ViewWorld.h"
 #include "ViewWorldItem.h"
 #include "World.h"
 
@@ -401,7 +400,6 @@ void MainWindow::purgeLevel()
         emit theLevelCreator->slot_updateEditObjectDialog(nullptr);
     delete theLevelPtr;
     theLevelPtr = nullptr;
-    ui->graphicsView->clearViewWorld();
 }
 
 
@@ -418,14 +416,12 @@ void MainWindow::reloadLevel()
 
 void MainWindow::repopulateScene()
 {
-    // if no ViewWorld already exists, create one
-    ViewWorld *myVWPtr = static_cast<ViewWorld *>(ui->graphicsView->scene());
-    if (nullptr == myVWPtr)
-        myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
     theGameFlowPtr->setWorldPtr(theLevelPtr->getTheWorldPtr());
-    if (theIsLevelCreator)
-        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
-                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
+    theLevelPtr->getTheWorldPtr()->createScene();
+    setWindowTitle(APPNAME + " - " + TheGetText(theLevelPtr->getName()));
+//    if (theIsLevelCreator)
+//        connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
+//                theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
     emit theGameFlowPtr->theGameStateMachinePtr->signal_Reset_triggered();
 }
 

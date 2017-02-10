@@ -24,7 +24,6 @@
 #include "AbstractJoint.h"
 #include "Box2D.h"
 #include "Pingus.h"
-#include "ViewWorld.h"
 #include "ViewWorldItem.h"
 
 const qreal World::theDeltaTime = 0.004;
@@ -206,13 +205,8 @@ void World::createPhysicsWorld(void)
     }
 }
 
-ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
+void World::createScene()
 {
-    // create a ViewWorld instance, that will immediately attach itself to
-    // the graphicsView in the main window
-    assert(theViewWorldPtr == nullptr);
-    theViewWorldPtr = new ViewWorld(myRSGVPtr, this);
-
     // Setup the link between ViewWorldItem and World.
     ViewWorldItem::me()->setWorldPtr(this);
 
@@ -222,7 +216,6 @@ ViewWorld *World::createScene(ResizingGraphicsView *myRSGVPtr)
         DEBUG5("adding item %p", (*i).get());
         addAbstractObjectToViewWorldItem(*i);
     }
-    return theViewWorldPtr;
 }
 
 void World::deletePhysicsWorld()

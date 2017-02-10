@@ -43,15 +43,8 @@ public:
     explicit ResizingGraphicsView(QWidget *aParentPtr = 0);
     ~ResizingGraphicsView();
 
-    /// only to be called by MainWindow,
-    void clearViewWorld(void);
-
     /// used by various components to get to the RSGView
     static ResizingGraphicsView *me(void);
-
-    /// only to be called by ViewWorld, to register itself
-    /// in the view
-    void setViewWorld(ViewWorld *aScenePtr, const QString &aLevelName);
 
     /// This member does initialisation beyond creation,
     /// i.e. hooking up various UI elements to actions.

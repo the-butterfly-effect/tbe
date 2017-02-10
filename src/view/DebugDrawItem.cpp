@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2010,2011,2012 Klaas van Gend
+ * This file copyright (C) 2009,2010,2011,2012,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,20 +16,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "AbstractObject.h"
-#include "Popup.h"
-#include "Position.h"
-#include "resizinggraphicsview.h"
-#include "ViewItem.h"
-#include "ViewWorld.h"
+#include "DebugDrawItem.h"
 #include "World.h"
-
-#include <QAction>
-#include <QGraphicsSceneMouseEvent>
 
 #include "tbe_global.h"
 
-
+#if 0
 ViewWorld::ViewWorld (ResizingGraphicsView *aGraphicsViewPtr, World *aWorldPtr)
     : QGraphicsScene(0, -THESCALE * aWorldPtr->getTheWorldHeight(),
                      THESCALE * aWorldPtr->getTheWorldWidth(), THESCALE * aWorldPtr->getTheWorldHeight()),
@@ -67,7 +59,6 @@ void ViewWorld::on_sizeAdjust(void)
 //                Below is the b2DebugDraw implementation
 // ---------------------------------------------------------------------------
 
-#if 0
 const int ViewWorld::theMaxNumberOfGraphicsListElements = 200;
 
 // Draw a closed polygon provided in CCW order.

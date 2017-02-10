@@ -110,6 +110,35 @@ void GameFlow::setWorldPtr(World *aWorldPtr)
 {
     assert(nullptr != aWorldPtr);
     theWorldPtr = aWorldPtr;
+
+    connect(aWorldPtr, SIGNAL(signalWon()),   theGameStateMachinePtr, SIGNAL(signal_Won_happened()));
+    connect(aWorldPtr, SIGNAL(signalDeath()), theGameStateMachinePtr, SIGNAL(signal_Fail_happened()));
+
+/*
+    if (theIsRunAsRegression) {
+        connect(aWorldPtr, SIGNAL(signalWon()), theMainWindowPtr->theRegressionTest,
+                SLOT(slot_Won()));
+        connect(aWorldPtr, SIGNAL(signalDeath()), theMainWindowPtr->theRegressionTest,
+                SLOT(slot_Fail()));
+    }
+*/
+
+    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  this,
+            SLOT(slot_signalFF()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     this,
+            SLOT(slot_signalPlay()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    this,
+            SLOT(slot_signalPause()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), this,
+            SLOT(slot_signal4F()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    this,
+            SLOT(slot_signalReset()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     this,
+            SLOT(slot_signalSlow()));
+    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      this,
+            SLOT(slot_signalPause()));
+
+    slot_showLevelInfoDialog();
 }
 
 void GameFlow::slot_clearDialog()
