@@ -19,7 +19,7 @@
 #include "tbe_global.h"
 #include "Link.h"
 #include "ObjectFactory.h"
-#include "ViewLink.h"
+#include "ViewItem.h"
 
 #include "Box2D.h"
 #include <cassert>
@@ -61,6 +61,9 @@ Link::Link(void)
         "-" + Property::NOCOLLISION_STRING + ":/" +
         Property::ZVALUE_STRING + QString(":20.0/"));
 
+    // Note that currently, setTheHeight will set it to minimal dimension, which
+    // happens to be 0.1 or so. That's why we also override getTempHeight() :-)
+    setTheHeight(0.04, false);
 }
 
 Link::~Link ()
@@ -89,7 +92,7 @@ ViewItem*  Link::createViewItem(float aDefaultDepth)
     QString myLineColor;
     if (theProps.property2String(Property::IMAGE_NAME_STRING, &myLineColor, true) == false)
         myLineColor = "green";
-    return createViewItemInt(aDefaultDepth, "ViewLinkQML", "", QString("myColor: \"%1\"").arg(myLineColor));
+    return createViewItemInt(aDefaultDepth, "ViewLink", "", QString("myColor: \"%1\"").arg(myLineColor));
 }
 
 void Link::createPhysicsObject(void)
@@ -126,6 +129,11 @@ void Link::createPhysicsObject(void)
                           (theSecondPtr->getOrigCenter() + *theSecondLocalPosPtr).toB2Vec2());
     myJointDef.userData = this;
     theJointPtr = (b2DistanceJoint *) getB2WorldPtr()->CreateJoint(&myJointDef);
+
+    // TODO/FIXME: I don't like this code here
+    if (theViewItemPtr)
+        theViewItemPtr->setVisible(true);
+
 }
 
 Position Link::getTempCenter() const
@@ -141,8 +149,9 @@ Position Link::getTempCenter() const
 
     Vector myDiff = myV1 - myV2;
     double myAngle = myDiff.toAngle();
+    theLength = myDiff.length();
 
-    return Position(myMiddle.toB2Vec2(), myAngle);
+    return Position(myMiddle, myAngle);
 }
 
 
@@ -168,22 +177,4 @@ void Link::parseProperties(void)
 
 void Link::updateOrigCenter(void)
 {
-}
-
-
-
-void Link::updateViewObject(bool ) const
-{
-    // no ViewObject: nothing to update ;-)
-    if (theViewItemPtr == nullptr)
-        return;
-/*
-    // Sim running: don't need to adjust objects that are static or asleep
-    ViewLink *theVLPtr = dynamic_cast<ViewLink *>(theViewItemPtr);
-    assert(theVLPtr != nullptr);
-
-    // we already have the center point, now calculate length and angle
-
-//    theVLPtr->setEndpoints(myV1, myV2);
-*/
 }

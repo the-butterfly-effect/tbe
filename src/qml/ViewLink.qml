@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2017  Klaas van Gend
+ * This file copyright (C) 2016,2017  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,14 +16,28 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA.
  */
 
-#include "ViewLink.h"
+import QtQuick 2.0
+import TBEView 1.0
 
-ViewLink::~ViewLink()
-{
-    DEBUG1ENTRY;
-}
+/// The ViewLinkAABB is a complicated version of ViewObject.
+/// For the visual part of a Link, we need to draw a line between two points.
+/// However, that's rather infeasible in QML. Hence this monstrosity.
+ViewItem {
+    id: viewLink
 
-void ViewLink::adjustObjectDrawingFromAO()
-{
-    // TODO
+    property var myColor;
+    property var tooltip;
+    property list<Item> theImageList;
+
+    x: m2xwh(xInM);
+    y: m2y(yInM);
+    width: m2xwh(widthInM);
+    height: m2xwh(heightInM);
+    rotation: angleInDegrees;
+
+    Rectangle {
+        anchors.fill: parent
+        color: myColor;
+        radius: width/2.;
+    }
 }

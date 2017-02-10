@@ -21,7 +21,6 @@ SET(view_SOURCES
     view/SaveLevelInfo.cpp
     view/ToolboxModelItem.cpp
     view/ViewItem.cpp
-    view/ViewLink.cpp
     view/ViewResizeRotateMoveUndo.cpp
     view/ViewWorld.cpp
     view/ViewWorldItem.cpp
@@ -48,7 +47,6 @@ SET(view_HEADERS
     view/SaveLevelInfo.h
     view/ToolboxModelItem.h
     view/ViewItem.h
-    view/ViewLink.h
     view/ViewResizeRotateMoveUndo.h
     view/ViewWorld.h
     view/ViewWorldItem.h

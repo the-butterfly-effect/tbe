@@ -43,7 +43,7 @@ public:
     virtual ~Link();
 
     /// (overridden from AbstractObject to remove extra sharedptrs)
-    virtual void clearObjectReferences() override;
+    void clearObjectReferences() override;
 
     /** (overridden from AbstractJoint to fixup aspect ratio and overlap)
       * @returns pointer to ViewItem
@@ -52,11 +52,11 @@ public:
 
     /// overridden from AbstractObject
     /// (this class does not have a body, only a joint)
-    virtual void createPhysicsObject(void) override;
+    void createPhysicsObject(void) override;
 
     /// overridden from AbstractObject
     /// returns the Name of the object.
-    virtual const QString getName ( ) const override
+    const QString getName ( ) const override
     {
         return QObject::tr("Link");
     }
@@ -64,26 +64,27 @@ public:
     /** Get the current center position of the object.
      * @return the value of theCenter
      */
-    virtual Position getTempCenter ( ) const override;
+    Position getTempCenter ( ) const override;
+
+    qreal getTempWidth() const override
+    { return theLength; }
+
+    qreal getTempHeight() const override
+    { return 0.04; }
 
     /// overridden from AbstractObject
     /// returns true if the object can be rotated by the user
-    virtual bool isRotatable ( ) const override
+    bool isRotatable ( ) const override
     {
         return false;
     }
 
     /// overridden from AbstractObject
     /// parses all properties that Link understands
-    virtual void  parseProperties(void) override;
+    void  parseProperties(void) override;
 
     /// implemented from BaseJoint
-    virtual void updateOrigCenter(void) override;
-
-    /// updates the ViewLink to still have its line between the underlying b2bodys
-    /// (it won't update if the object is asleep if sim is running)
-    /// @param isSimRunning  set to true if you want to use position/size from sim
-    virtual void updateViewObject(bool isSimRunning) const override;
+    void updateOrigCenter(void) override;
 
 private:
     AbstractObjectPtr theFirstPtr;
@@ -91,6 +92,8 @@ private:
     Vector     *theFirstLocalPosPtr;
     Vector     *theSecondLocalPosPtr;
 
+    /// contains the length, which will be returned by getTempWidth().
+    mutable qreal       theLength;
 };
 
 #endif // LINK_H
