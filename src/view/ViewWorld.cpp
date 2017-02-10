@@ -29,24 +29,16 @@
 
 #include "tbe_global.h"
 
-static bool isSimRunning = false;
-
-const int ViewWorld::MAX_FPS = 60;
 
 ViewWorld::ViewWorld (ResizingGraphicsView *aGraphicsViewPtr, World *aWorldPtr)
     : QGraphicsScene(0, -THESCALE * aWorldPtr->getTheWorldHeight(),
                      THESCALE * aWorldPtr->getTheWorldWidth(), THESCALE * aWorldPtr->getTheWorldHeight()),
-      theWorldPtr(aWorldPtr),
-      theSimSpeed(1000)
+      theWorldPtr(aWorldPtr)
 {
     aGraphicsViewPtr->setViewWorld(this, theWorldPtr->getName());
-    theFrameRateViewPtr = aGraphicsViewPtr->getFrameRateViewPtr();
 
     setupBackground();
 
-    connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
-    connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
-    isSimRunning = false;
 }
 
 ViewWorld::~ViewWorld()
@@ -61,41 +53,9 @@ qreal ViewWorld::getHeight(void) const
 }
 
 
-bool ViewWorld::getIsSimRunning()
-{
-    return isSimRunning;
-}
-
-
 qreal ViewWorld::getWidth(void) const
 {
     return THESCALE * theWorldPtr->getTheWorldWidth();
-}
-
-
-void ViewWorld::on_timerTick()
-{
-    QTime myCurrentTime = QTime::currentTime();
-    // whatever happens, draw every 25 frames
-    for (int i = 0; i < 25 && theSimulationTime < myCurrentTime; i++) {
-        theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * 2 * theSimSpeed);
-    }
-
-    // iterate through all known objects to update the graphics part
-    theWorldPtr->updateViewWorld(true);
-    theFramesPerSecond++;
-}
-
-void ViewWorld::on_framerateTimerTick()
-{
-// Updating the framerate on MacOSX results in no fps on screen, yet we get
-// "QMenu: No OSMenuRef created for popup menu" warnings on the console.
-// That's why we do not even try to put it on screen on Mac.
-#ifndef Q_WS_MAC
-    theFrameRateViewPtr->setText(tr("    %1 fps; %2 s").arg(theFramesPerSecond).arg(
-                                     theGameStopwatch.elapsed() / 1000));
-#endif
-    theFramesPerSecond = 0;
 }
 
 
@@ -132,74 +92,6 @@ void ViewWorld::setupBackground(void)
     addLine(0, 0, 4 * getWidth(), 0, myPen);
 }
 
-void ViewWorld::slot_signalFF()
-{
-    if (isSimRunning == false)
-        slot_signalPlay();
-    theSimSpeed = 250;
-    emit theTimer.start();
-}
-
-
-void ViewWorld::slot_signal4F()
-{
-    if (isSimRunning == false)
-        slot_signalPlay();
-    theSimSpeed = 60;
-    emit theTimer.start();
-}
-
-
-void ViewWorld::slot_signalPause()
-{
-    emit theTimer.stop();
-    emit theFramerateTimer.stop();
-}
-
-
-void ViewWorld::slot_signalPlay()
-{
-    // remove any dialogs when user starts playing
-//    AnimatedDialog::makeAllAnimatedDialogsDisappear();
-//    PieMenuSingleton::clearPieMenu();
-
-    if (isSimRunning == false)
-        theWorldPtr->createPhysicsWorld();
-    isSimRunning = true;
-    theSimulationTime = QTime::currentTime();
-    theSimSpeed = 1000;
-    theFramesPerSecond = 0;
-    emit theTimer.start(1000 / MAX_FPS);
-
-    if (theDisplayFramerate) {
-        // update framerate every second
-        theFramesPerSecond = 0;
-        theFramerateTimer.start(1000);
-        theGameStopwatch.start();
-    } else
-        theFrameRateViewPtr->setText("");
-}
-
-
-void ViewWorld::slot_signalReset()
-{
-    isSimRunning = false;
-    emit theTimer.stop();
-    emit theFramerateTimer.stop();
-//    if (theDrawDebug)
-//        clearGraphicsList(0);
-    theWorldPtr->deletePhysicsWorld();
-    theWorldPtr->updateViewWorld(false);
-}
-
-
-void ViewWorld::slot_signalSlow()
-{
-    if (isSimRunning == false)
-        slot_signalPlay();
-    theSimSpeed = 3000;
-    emit theTimer.start();
-}
 
 // ---------------------------------------------------------------------------
 //                Below is the b2DebugDraw implementation

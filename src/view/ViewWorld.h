@@ -20,13 +20,10 @@
 #define VIEWWORLD_H
 
 #include <QGraphicsScene>
-#include <QTime>
-#include <QTimer>
 
 #include "Box2D.h"
 #include "AbstractObjectPtr.h"
 
-class QAction;
 class ResizingGraphicsView;
 class World;
 
@@ -55,17 +52,9 @@ public:
     qreal getWidth(void) const;
     qreal getHeight(void) const;
 
-    /// @returns true if the simulation is not in 'stopped' mode.
-    static bool getIsSimRunning();
-
     // QGraphicsScene events
     //
 
-    /// Constant defining the goal FPS (frames per second)
-    /// @note: This does not say that the game achieves this number.
-    ///        It however, will mean that the game will *attempt* not to render
-    ///        more frames than this per second. No guarantees.
-    static const int MAX_FPS;
 
 signals:
     void needReset();
@@ -78,14 +67,6 @@ signals:
     void signal_updateEditObjectDialog(AbstractObjectPtr anAOPtr);
 
 public slots:
-    // signals to start/stop/ffwd/reset the game
-    void slot_signal4F();
-    void slot_signalFF();
-    void slot_signalPause();
-    void slot_signalPlay();
-    void slot_signalReset();
-    void slot_signalSlow();
-
     void on_sizeAdjust(void);
     void setupBackground(void);
 
@@ -98,31 +79,12 @@ public slots:
         emit signal_updateEditObjectDialog(anAOPtr);
     }
 
-private slots:
-    /// called whenever a timer tick happens
-    void on_timerTick(void);
-
-    /// called whenever the framerate timer tick happens
-    void on_framerateTimerTick(void);
-
 private:
     // Private attributes
     //
 
     World *theWorldPtr;
 
-    QTimer theTimer;
-    QTimer theFramerateTimer;
-    QTime  theSimulationTime;
-    QTime  theGameStopwatch;
-
-    /// current number of milliseconds per time step
-    /// (note that TBE is configured to run at "half of reality" speed)
-    qreal theSimSpeed;
-
-    unsigned int theFramesPerSecond;
-
-    QAction *theFrameRateViewPtr;
 
 private:
     // keep this one last, it kills copy constructors & assignment operators

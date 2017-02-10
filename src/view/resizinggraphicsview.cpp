@@ -39,8 +39,7 @@ ResizingGraphicsView::ResizingGraphicsView(QWidget *aParentPtr) :
     QGraphicsView(aParentPtr),
     theMainWindowPtr(nullptr),
     theObjectEditorPtr(nullptr),
-    theGameStateMachinePtr(nullptr),
-    theFrameRateViewPtr(nullptr)
+    theGameStateMachinePtr(nullptr)
 {
     setAlignment(Qt::AlignLeft | Qt::AlignTop);
     setDragMode(QGraphicsView::NoDrag);
@@ -89,7 +88,7 @@ void ResizingGraphicsView::mouseMoveEvent(QMouseEvent *event)
 }
 
 void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr,
-                                 QMenuBar *aMenuBarPtr, QMenu *anMenuControlsPtr)
+                                 QMenu *anMenuControlsPtr)
 {
     theGameFlowPtr = aGFPtr;
     theMainWindowPtr = aMWPtr;
@@ -112,8 +111,7 @@ void ResizingGraphicsView::setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameState
     connect (GameQControls::me(), SIGNAL(signal_Slow_triggered()),     aGSMPtr,
              SIGNAL(signal_Slow_triggered()));
 
-    // this one displays the frame rate counter if active
-    theFrameRateViewPtr = aMenuBarPtr->addAction("");
+
 }
 
 
@@ -144,19 +142,19 @@ void ResizingGraphicsView::setViewWorld(ViewWorld *aScenePtr,
                 SLOT(slot_Fail()));
     }
 
-    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Forward_triggered()),  theGameFlowPtr,
             SLOT(slot_signalFF()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Play_triggered()),     theGameFlowPtr,
             SLOT(slot_signalPlay()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Pause_triggered()),    theGameFlowPtr,
             SLOT(slot_signalPause()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()), theGameFlowPtr,
             SLOT(slot_signal4F()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Reset_triggered()),    theGameFlowPtr,
             SLOT(slot_signalReset()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Slow_triggered()),     theGameFlowPtr,
             SLOT(slot_signalSlow()));
-    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      aScenePtr,
+    connect(theGameStateMachinePtr, SIGNAL(signal_Stop_Gameplay()),      theGameFlowPtr,
             SLOT(slot_signalPause()));
 
     theGameFlowPtr->slot_showLevelInfoDialog();

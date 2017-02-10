@@ -58,7 +58,7 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       theGameFlowPtr(nullptr)
 {
     ui->setupUi(this);
-    theGameFlowPtr = new GameFlow(this, ui->quickWidget);
+    theGameFlowPtr = new GameFlow(this, ui->menuBar, ui->quickWidget);
 
     setupQml();
     setupView();
@@ -422,6 +422,7 @@ void MainWindow::repopulateScene()
     ViewWorld *myVWPtr = static_cast<ViewWorld *>(ui->graphicsView->scene());
     if (nullptr == myVWPtr)
         myVWPtr = theLevelPtr->getTheWorldPtr()->createScene(ui->graphicsView);
+    theGameFlowPtr->setWorldPtr(theLevelPtr->getTheWorldPtr());
     if (theIsLevelCreator)
         connect(myVWPtr, SIGNAL(signal_updateEditObjectDialog(AbstractObjectPtr)),
                 theLevelCreator, SLOT(slot_updateEditObjectDialog(AbstractObjectPtr)));
@@ -484,7 +485,7 @@ void MainWindow::setupView()
     }
     setLanguageCheckmark();
 
-    ui->graphicsView->setup(this, theGameFlowPtr, theGameFlowPtr->theGameStateMachinePtr, ui->menuBar, ui->menuControls);
+    ui->graphicsView->setup(this, theGameFlowPtr, theGameFlowPtr->theGameStateMachinePtr, ui->menuControls);
     connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameFlowPtr->theGameStateMachinePtr,
             SIGNAL(signal_Reset_triggered()));
 

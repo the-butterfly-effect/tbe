@@ -58,13 +58,7 @@ public:
     /// @param aMWPtr
     /// @param aMenuBarPtr
     /// @param aMenuControlsPtr
-    void setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr, QMenuBar *aMenuBarPtr,
-               QMenu *anMenuControlsPtr);
-
-    QAction *getFrameRateViewPtr()
-    {
-        return theFrameRateViewPtr;
-    }
+    void setup(MainWindow *aMWPtr, GameFlow *aGFPtr, GameStateMachine *aGSMPtr, QMenu *anMenuControlsPtr);
 
 //protected:
 //    virtual void resizeEvent(QResizeEvent *event);
@@ -88,7 +82,6 @@ private:
     GameFlow           *theGameFlowPtr;
     GameStateMachine   *theGameStateMachinePtr;
     ViewWorld          *theScenePtr;
-    QAction            *theFrameRateViewPtr;
     friend class LevelCreator;
 };
 

@@ -24,18 +24,25 @@
 #include "tbe_global.h"
 #include "ViewWorldItem.h"
 #include "tbe_paths.h"
+#include "World.h"
 
+#include <QMenuBar>
 #include <QQuickItem>
 #include <QQmlContext>
 
+static bool isSimRunning = false;
 
-GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
+const int GameFlow::MAX_FPS = 60;
+
+
+GameFlow::GameFlow(MainWindow *parent, QMenuBar* aMenuBarPtr, RequestDialog* anRDPtr)
     : QObject(parent),
       theGameStateMachinePtr(nullptr),
       theDialogPtr(nullptr),
       theMainWindowPtr(parent),
       theRequestDialogItfPtr(anRDPtr),
-      theLevelList(LEVELS_DIRECTORY, "levels.xml")
+      theLevelList(LEVELS_DIRECTORY, "levels.xml"),
+      theSimSpeed(1000)
 {
     theGameStateMachinePtr = new GameStateMachine(this);
     connect (theGameStateMachinePtr, SIGNAL(signal_Game_Is_Won()),
@@ -44,12 +51,49 @@ GameFlow::GameFlow(MainWindow *parent, RequestDialog* anRDPtr)
              this, SLOT(slot_levelDeath()));
     connect (theGameStateMachinePtr, SIGNAL(signal_InsertionDisallowed(bool)),
              this, SLOT(slot_InsertionDisallowed(bool)));
+
+    // this one displays the frame rate counter if active
+    theFrameRateViewPtr = aMenuBarPtr->addAction("");
+
+    connect(&theFramerateTimer, SIGNAL(timeout()), this, SLOT(on_framerateTimerTick()));
+    connect(&theTimer, SIGNAL(timeout()), this, SLOT(on_timerTick()));
+    isSimRunning = false;
 }
 
+bool GameFlow::getIsSimRunning()
+{
+    return isSimRunning;
+}
 
 QString GameFlow::getNextLevelName()
 {
     return theLevelList.getNextToPlayLevel();
+}
+
+
+void GameFlow::on_timerTick()
+{
+    QTime myCurrentTime = QTime::currentTime();
+    // whatever happens, draw every 25 frames
+    for (int i = 0; i < 25 && theSimulationTime < myCurrentTime; i++) {
+        theSimulationTime = theSimulationTime.addMSecs(theWorldPtr->simStep() * 2 * theSimSpeed);
+    }
+
+    // iterate through all known objects to update the graphics part
+    theWorldPtr->updateViewWorld(true);
+    theFramesPerSecond++;
+}
+
+void GameFlow::on_framerateTimerTick()
+{
+// Updating the framerate on MacOSX results in no fps on screen, yet we get
+// "QMenu: No OSMenuRef created for popup menu" warnings on the console.
+// That's why we do not even try to put it on screen on Mac.
+#ifndef Q_WS_MAC
+    theFrameRateViewPtr->setText(tr("    %1 fps; %2 s").arg(theFramesPerSecond).arg(
+                                     theGameStopwatch.elapsed() / 1000));
+#endif
+    theFramesPerSecond = 0;
 }
 
 
@@ -62,16 +106,17 @@ void GameFlow::setupWinFail(bool isAWin)
     connect(theDialogPtr, SIGNAL(skipButton_clicked()),   theMainWindowPtr, SLOT(on_action_Skip_Level_triggered()));
 }
 
+void GameFlow::setWorldPtr(World *aWorldPtr)
+{
+    assert(nullptr != aWorldPtr);
+    theWorldPtr = aWorldPtr;
+}
 
 void GameFlow::slot_clearDialog()
 {
-    theDialogPtr->deleteLater();
+    if (theDialogPtr)
+        theDialogPtr->deleteLater();
     theDialogPtr = nullptr;
-}
-
-void GameFlow::slot_makeAllDialogsDisappear()
-{
-    // TODO
 }
 
 void GameFlow::slot_levelDeath(void)
@@ -92,6 +137,11 @@ void GameFlow::slot_levelWon(void)
     setupWinFail(true);
 }
 
+void GameFlow::slot_makeAllDialogsDisappear()
+{
+    // TODO
+}
+
 void GameFlow::slot_onLevelIndexSelected(const QVariant& anIndex)
 {
     LevelList::LevelMetaInfo myLevelInfo = theLevelList.getLevelMetaInfo(anIndex.toInt());
@@ -106,8 +156,7 @@ void GameFlow::slot_InsertionDisallowed(bool isInsertionDisallowed)
 
 void GameFlow::slot_showChooseLevelDialog()
 {
-    if (theDialogPtr)
-        slot_clearDialog();
+    slot_clearDialog();
 
     RowList& myList = theLevelList.generateLevelList();
     theRequestDialogItfPtr->setContextProperty("theLevelList", QVariant::fromValue(myList));
@@ -128,8 +177,7 @@ void GameFlow::slot_showChoosePhoneNumberDialog()
 
 void GameFlow::slot_showLevelInfoDialog()
 {
-    if (theDialogPtr)
-        slot_clearDialog();
+    slot_clearDialog();
 
     theDialogPtr = theRequestDialogItfPtr->showLevelInfo();
     theDialogPtr->setProperty("levelName", theMainWindowPtr->theLevelPtr->theLevelName);
@@ -140,4 +188,73 @@ void GameFlow::slot_showLevelInfoDialog()
             theMainWindowPtr, SLOT(reloadLevel()));
     connect(theDialogPtr, SIGNAL(okButton_clicked()),
             this, SLOT(slot_clearDialog()));
+}
+
+void GameFlow::slot_signalFF()
+{
+    if (isSimRunning == false)
+        slot_signalPlay();
+    theSimSpeed = 250;
+    emit theTimer.start();
+}
+
+
+void GameFlow::slot_signal4F()
+{
+    if (isSimRunning == false)
+        slot_signalPlay();
+    theSimSpeed = 60;
+    emit theTimer.start();
+}
+
+
+void GameFlow::slot_signalPause()
+{
+    emit theTimer.stop();
+    emit theFramerateTimer.stop();
+}
+
+
+void GameFlow::slot_signalPlay()
+{
+    // remove any dialogs when user starts playing
+//    AnimatedDialog::makeAllAnimatedDialogsDisappear();
+    slot_clearDialog();
+
+    if (isSimRunning == false)
+        theWorldPtr->createPhysicsWorld();
+    isSimRunning = true;
+    theSimulationTime = QTime::currentTime();
+    theSimSpeed = 1000;
+    theFramesPerSecond = 0;
+    emit theTimer.start(1000 / MAX_FPS);
+
+    if (theDisplayFramerate) {
+        // update framerate every second
+        theFramesPerSecond = 0;
+        theFramerateTimer.start(1000);
+        theGameStopwatch.start();
+    } else
+        theFrameRateViewPtr->setText("");
+}
+
+
+void GameFlow::slot_signalReset()
+{
+    isSimRunning = false;
+    emit theTimer.stop();
+    emit theFramerateTimer.stop();
+//    if (theDrawDebug)
+//        clearGraphicsList(0);
+    theWorldPtr->deletePhysicsWorld();
+    theWorldPtr->updateViewWorld(false);
+}
+
+
+void GameFlow::slot_signalSlow()
+{
+    if (isSimRunning == false)
+        slot_signalPlay();
+    theSimSpeed = 3000;
+    emit theTimer.start();
 }
