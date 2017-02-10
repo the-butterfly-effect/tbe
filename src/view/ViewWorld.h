@@ -65,7 +65,6 @@ signals:
 
 public slots:
     void on_sizeAdjust(void);
-    void setupBackground(void);
 
     /// any ViewObject that has changes to mention to EditObjectDialog will
     /// emit a signal that is sent here.

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2010  Klaas van Gend
+ * This file copyright (C) 2009,2010,2017  Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@
 
 #include "Level.h"
 #include "World.h"
-#include "ViewWorld.h"
+#include "ViewWorldItem.h"
 #include "GoalEditor.h"    // contains DoubleSpinBoxDelegate
 #include "resizinggraphicsview.h"
 #include <QStandardItem>
@@ -109,9 +109,7 @@ void EditLevelProperties::slot_accepted()
     writeChanges();
 
     // and force the redraw...
-    ViewWorld *myPtr = theLevelPtr->theWorldPtr->theViewWorldPtr;
-    if (myPtr)
-        emit myPtr->setupBackground();
+    ViewWorldItem::me()->setupBackground();
 }
 
 void EditLevelProperties::slot_modelItemChanged(QStandardItem * /*anItem*/)
@@ -121,11 +119,7 @@ void EditLevelProperties::slot_modelItemChanged(QStandardItem * /*anItem*/)
     writeChanges();
 
     // and force the redraw...
-    ViewWorld *myPtr = theLevelPtr->theWorldPtr->theViewWorldPtr;
-    if (myPtr) {
-        emit myPtr->setupBackground();
-        emit myPtr->on_sizeAdjust();
-    }
+    ViewWorldItem::me()->setupBackground();
     populateTableAndGradient(&(theLevelPtr->theWorldPtr->theBackground));
 }
 
