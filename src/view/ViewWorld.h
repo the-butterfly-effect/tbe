@@ -57,9 +57,6 @@ public:
 
 
 signals:
-    void needReset();
-    void needPause();
-
     /// any ViewObject that has changes to mention to EditObjectDialog will
     /// emit a signal that is sent here.
     /// ViewWorld will re-emit a signal for it.
