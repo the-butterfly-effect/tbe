@@ -37,7 +37,6 @@ AbstractJoint::~AbstractJoint()
 
 ViewItem* AbstractJoint::createViewItem(float aDefaultDepth)
 {
-    // TODO: do we need something special for ViewLink here???
     if (isChildJoint())
         return nullptr;
     else
@@ -120,4 +119,5 @@ void AbstractJoint::updateViewObject(bool) const
 
     theViewItemPtr->adjustObjectDrawingFromAO();
     theViewItemPtr->setNewImageIndex(getImageIndex());
+    theViewItemPtr->setVisible(true);
 }
