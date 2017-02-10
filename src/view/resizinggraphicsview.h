@@ -32,7 +32,6 @@ class MainWindow;
 class QMenu;
 class QMenuBar;
 class QQuickItem;
-class ViewWorld;
 
 #include <memory>
 
@@ -74,7 +73,6 @@ private:
     EditObjectDialog   *theObjectEditorPtr;
     GameFlow           *theGameFlowPtr;
     GameStateMachine   *theGameStateMachinePtr;
-    ViewWorld          *theScenePtr;
     friend class LevelCreator;
 };
 

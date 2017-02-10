@@ -38,7 +38,6 @@ class QGraphicsRectWidget;
 class QGraphicsScene;
 class QToolbar;
 class RegressionTest;
-class ViewWorld;
 class World;
 
 /** Local class, specifically meant to have menu items in the "Insert" menu

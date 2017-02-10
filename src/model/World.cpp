@@ -47,7 +47,6 @@ void DestructionListener::SayGoodbye(b2Joint *joint)
 
 World::World (void) : theB2WorldPtr(nullptr)
 {
-    theViewWorldPtr = nullptr;
     theTotalTime = 0.0f;
     theStaticWorldPtr = this;
 }
