@@ -175,7 +175,7 @@ AbstractObjectPtr AbstractObjectSerializer::createObjectFromDom(const QDomNode &
         }
     }
 
-    DEBUG4("createObjectFromDom for '%s' successful", ASCII(myObjectType));
+    DEBUG5("createObjectFromDom for '%s' successful", ASCII(myObjectType));
     return myAOPtr;
 not_good:
     // myAOPtr is a shared_ptr - will take care of its own destruction if needed

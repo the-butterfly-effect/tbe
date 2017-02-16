@@ -40,7 +40,7 @@ static b2World *theStaticB2WorldPtr = nullptr;
 AbstractObject::AbstractObject()
     : AbstractObject("", "", 1.0, 1.0, 0.0, 0.5, "")
 {
-    DEBUG1("AbstractObject::AbstractObject() for %p", this);
+    DEBUG5("AbstractObject::AbstractObject() for %p", this);
 }
 
 AbstractObject::AbstractObject(const QString &aTooltip,
@@ -59,7 +59,7 @@ AbstractObject::AbstractObject(const QString &aTooltip,
       theWidth(aWidth),
       theWorldPtr(nullptr)
 {
-    DEBUG1("AbstractObject::AbstractObject(...) for %p '%s'", this, ASCII(aImageName));
+    DEBUG5("AbstractObject::AbstractObject(...) for %p '%s'", this, ASCII(aImageName));
     theThisPtr = AbstractObjectPtr(nullptr);
     DEBUG5ENTRY;
     theB2BodyDefPtr = new b2BodyDef();

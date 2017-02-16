@@ -39,7 +39,7 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
                                      const QSize &aRequestedSize)
 {
     QSize myRequestedSize(aRequestedSize);
-    DEBUG4("ImageProvider: request for '%s' size %dx%d",
+    DEBUG5("ImageProvider: request for '%s' size %dx%d",
            ASCII(aPixmapName), myRequestedSize.width(), myRequestedSize.height());
 
     QPixmap myTempPixmap;
