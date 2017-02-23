@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2016 Klaas van Gend
+ * This file copyright (C) 2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2009,2011,2012,2013,2014,2015,2016 Klaas van Gend
+ * This file copyright (C) 2009,2011,2012,2013,2014,2015,2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,7 +29,6 @@
 #include "GameFlow.h"
 #include "GameQControls.h"
 #include "Hint.h"
-#include "ImageCache.h"
 #include "ImageProvider.h"
 #include "Level.h"
 #include "LevelCreator.h"
@@ -141,7 +140,7 @@ void MainWindow::on_action_About_triggered()
                    "An open source game that uses realistic physics"
                    " simulations to combine lots of simple mechanical elements"
                    " to achieve a simple goal in the most complex way possible.<br><br>"
-                   "(C) 2009,2010,2011,2012,2013,2015,2016 Klaas van Gend and many others<br><br>"
+                   "(C) 2009,2010,2011,2012,2013,2015,2016,2017 Klaas van Gend and many others<br><br>"
                    "Code licensed under GPL version 2 - <i>only</i>.<br>Levels and graphics may have different open/free licenses.<br><br>"
                    "See <a href=\"http://%1/\">http://%1/</a> for more info on this project.")
                 .arg(QCoreApplication::instance()->organizationDomain()).arg(APPRELEASE)
