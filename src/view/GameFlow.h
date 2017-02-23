@@ -80,6 +80,11 @@ public slots:
     void slot_showChooseLevelDialog();
     void slot_showChoosePhoneNumberDialog();
 
+    /// To be called when the cursor changed position in the graphicsview,
+    /// in order to display the coordinates.
+    /// x and y hold the position of the cursor in world coordinates
+    void slot_mouse_move(qreal x, qreal y);
+
 public slots:
     // signals to start/stop/ffwd/reset the game
     void slot_signal4F();

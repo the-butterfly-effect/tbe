@@ -359,7 +359,7 @@ void MainWindow::on_action_Switch_to_Level_Editor_triggered()
 void MainWindow::slot_mouse_move(qreal x, qreal y)
 {
     if (theIsLevelCreator && theMousePosLabelPtr != nullptr) {
-        //: Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma seperates both numbers, the translation may need a different seperator
+        //: Shows the cursor coordinates as decimal numbers. %1 is x, %1 is y. The comma separates both numbers, the translation may need a different seperator
         theMousePosLabelPtr->setText(tr("Coordinates: (%1,%2)").arg(QString::number(x, 'f', 3),
                                                                     QString::number(y, 'f', 3)));
     }

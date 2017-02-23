@@ -105,11 +105,10 @@ public slots:
     /// Because we have the filename already, no need to specify here.
     void reloadLevel();
 
-    /// To be called when the cursor changed position in the graphicsview,
+    /// To be called when the cursor changed position in the gameView,
     /// in order to display the coordinates.
-    /// x and y hold the world position of the cursor
+    /// x and y hold the position of the cursor in world coordinates.
     void slot_mouse_move(qreal x, qreal y);
-
 
 private slots:
     /// Inserts one of the hints from the level into the Scene.

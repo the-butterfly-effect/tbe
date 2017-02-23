@@ -57,4 +57,12 @@ ViewWorldItem {
             }
         }
     }
+
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true;
+        onPositionChanged: {
+            GameFlow.slot_mouse_move(xwh2m(mouse.x), y2m(mouse.y));
+        }
+    }
 }

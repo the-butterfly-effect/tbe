@@ -172,6 +172,11 @@ void GameFlow::slot_makeAllDialogsDisappear()
     // TODO
 }
 
+void GameFlow::slot_mouse_move(qreal x, qreal y)
+{
+    theMainWindowPtr->slot_mouse_move(x,y);
+}
+
 void GameFlow::slot_onLevelIndexSelected(const QVariant& anIndex)
 {
     LevelList::LevelMetaInfo myLevelInfo = theLevelList.getLevelMetaInfo(anIndex.toInt());
