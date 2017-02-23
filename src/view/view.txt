@@ -9,7 +9,6 @@ SET(view_SOURCES
     view/GameFlow.cpp
     view/GameStateMachine.cpp
     view/GoalEditor.cpp
-    view/ImageCache.cpp
     view/ImageProvider.cpp
     view/InsertMoveProxy.cpp
     view/LevelCreator.cpp
@@ -32,7 +31,6 @@ SET(view_HEADERS
     view/GameFlow.h
     view/GameStateMachine.h
     view/GoalEditor.h
-    view/ImageCache.h
     view/ImageProvider.h
     view/InsertMoveProxy.h
     view/LevelCreator.h

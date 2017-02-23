@@ -18,7 +18,7 @@
 
 #include "tbe_global.h"
 #include "GameQControls.h"
-#include "ImageCache.h"
+#include "ImageProvider.h"
 #include "MainWindow.h"
 
 #include <cstdio>
@@ -35,10 +35,10 @@ GameQControls::GameQControls(QQuickItem *parent) :
     theGameButtonGroup(this)
 {
     const QSize myIconSize(16, 16);
-    theForwardIcon = ImageCache::getQIcon("ActionFastForward", myIconSize);
-    thePauseIcon  = ImageCache::getQIcon("ActionMenuPause", myIconSize);
-    thePlayIcon   = ImageCache::getQIcon("ActionMenuPlay", myIconSize);
-    theResetIcon  = ImageCache::getQIcon("ActionUndo", myIconSize);
+    theForwardIcon = ImageProvider::getQIcon("ActionFastForward", myIconSize);
+    thePauseIcon  = ImageProvider::getQIcon("ActionMenuPause", myIconSize);
+    thePlayIcon   = ImageProvider::getQIcon("ActionMenuPlay", myIconSize);
+    theResetIcon  = ImageProvider::getQIcon("ActionUndo", myIconSize);
 
     updateIcon(0);
     assert(nullptr == theGQCPtr);

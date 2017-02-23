@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011, 2016 Klaas van Gend
+ * This file copyright (C) 2011, 2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,9 +29,12 @@
 //
 QSize ImageProvider::theDefaultSize(200, 200);
 
+static ImageProvider* theImageProviderPtr = nullptr;
+
 ImageProvider::ImageProvider()
     : QQuickImageProvider(QQuickImageProvider::Pixmap)
 {
+    theImageProviderPtr = this;
 }
 
 QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
@@ -108,4 +111,10 @@ QPixmap ImageProvider::requestPixmap(const QString &aPixmapName,
         *aFinalSizePr = myRequestedSize;
     }
     return myTempPixmap;
+}
+
+QIcon ImageProvider::getQIcon(const QString &anImageName, const QSize &aSize)
+{
+    QSize aDummySize;
+    return QIcon(theImageProviderPtr->requestPixmap(anImageName, &aDummySize, aSize));
 }

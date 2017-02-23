@@ -22,7 +22,7 @@
 #include "EditLevelProperties.h"
 #include "EditObjectDialog.h"
 #include "GoalEditor.h"
-#include "ImageCache.h"
+#include "ImageProvider.h"
 #include "Level.h"
 #include "ObjectFactory.h"
 
@@ -55,13 +55,13 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
 
     // add new items to top menu "Edit"
     QAction *myCloneActionPtr = new QAction(tr("&Clone object"), nullptr);
-    QIcon myTmpIcon  = ImageCache::getQIcon("ActionClone", QSize(64, 64));
+    QIcon myTmpIcon  = ImageProvider::getQIcon("ActionClone", QSize(64, 64));
     myCloneActionPtr->setIcon(myTmpIcon);
     ui->menuEdit->addSeparator();
     ui->menuEdit->addAction(myCloneActionPtr);
     connect (myCloneActionPtr, SIGNAL(triggered()), this, SLOT(on_action_Clone_triggered()));
     theCollisionOffActionPtr = new QAction(tr("&Collision OK"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionCollisionOK", QSize(64, 64));
+    myTmpIcon  = ImageProvider::getQIcon("ActionCollisionOK", QSize(64, 64));
     theCollisionOffActionPtr->setIcon(myTmpIcon);
     theCollisionOffActionPtr->setCheckable(true);
     theCollisionOffActionPtr->setChecked(!theIsCollisionOn);
@@ -70,7 +70,7 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     connect (theCollisionOffActionPtr, SIGNAL(triggered()), this,
              SLOT(on_action_CollisionOff_triggered()));
     theCollisionOnActionPtr = new QAction(tr("&Prevent Collision"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionCollisionWrong", QSize(64, 64));
+    myTmpIcon  = ImageProvider::getQIcon("ActionCollisionWrong", QSize(64, 64));
     theCollisionOnActionPtr->setIcon(myTmpIcon);
     theCollisionOnActionPtr->setCheckable(true);
     theCollisionOnActionPtr->setChecked(theIsCollisionOn);
@@ -102,7 +102,7 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myEditorsMenuPtr);
     // TODO: add some of the original dialogs to it
     QAction *myGoalActionPtr = new QAction(tr("&Goal Editor..."), nullptr);
-    myTmpIcon = ImageCache::getQIcon("ActionGoals", QSize(64, 64));
+    myTmpIcon = ImageProvider::getQIcon("ActionGoals", QSize(64, 64));
     myGoalActionPtr->setIcon(myTmpIcon);
     connect (myGoalActionPtr, SIGNAL(triggered()), this, SLOT(on_goalEditorAction_clicked()));
     myEditorsMenuPtr->addAction(myGoalActionPtr);
@@ -123,14 +123,14 @@ LevelCreator::LevelCreator(MainWindow *aParent) :
     QMenu *myViewMenuPtr = new QMenu(tr("&View"), nullptr);
     ui->menuBar->insertMenu(ui->menu_Help->menuAction(), myViewMenuPtr);
     theDrawDebugActionPtr = new QAction(tr("&Draw Debug"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionDrawDebug", QSize(64, 64));
+    myTmpIcon  = ImageProvider::getQIcon("ActionDrawDebug", QSize(64, 64));
     theDrawDebugActionPtr->setCheckable(true);
     theDrawDebugActionPtr->setChecked(theDrawDebug);
     theDrawDebugActionPtr->setIcon(myTmpIcon);
     connect (theDrawDebugActionPtr, SIGNAL(triggered()), this, SLOT(on_action_DrawDebug_triggered()));
     myViewMenuPtr->addAction(theDrawDebugActionPtr);
     theDrawNormalActionPtr = new QAction(tr("&Draw Normal"), nullptr);
-    myTmpIcon  = ImageCache::getQIcon("ActionDrawNormal", QSize(64, 64));
+    myTmpIcon  = ImageProvider::getQIcon("ActionDrawNormal", QSize(64, 64));
     theDrawNormalActionPtr->setCheckable(true);
     theDrawNormalActionPtr->setChecked(!theDrawDebug);
     theDrawNormalActionPtr->setIcon(myTmpIcon);

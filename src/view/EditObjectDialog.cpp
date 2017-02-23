@@ -19,7 +19,7 @@
 #include "AbstractObject.h"
 #include "EditObjectDialog.h"
 #include "ViewItem.h"
-#include "ImageCache.h"
+#include "ImageProvider.h"
 #include "EditPropertyUndoCommand.h"
 #include "UndoSingleton.h"
 
@@ -238,7 +238,7 @@ void EditObjectDialog::updateAbstractObjectPtr(AbstractObjectPtr anAbstractObjec
             QTableWidgetItem *myValueItem = new QTableWidgetItem(myValue);
             myValueItem->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
             if (myValue != myAORealPtr->theProps.getDefaultProperty(*myI))
-                myValueItem->setIcon(ImageCache::getQIcon("IconModified", QSize(32, 32)));
+                myValueItem->setIcon(ImageProvider::getQIcon("IconModified", QSize(32, 32)));
             ui.tableWidget->setItem(myRow, 0, myValueItem);
 
             myRow++;

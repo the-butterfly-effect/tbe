@@ -1,5 +1,5 @@
 /* The Butterfly Effect
- * This file copyright (C) 2011, 2016 Klaas van Gend
+ * This file copyright (C) 2011,2016,2017 Klaas van Gend
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,6 +19,7 @@
 #ifndef IMAGEPROVIDER_H
 #define IMAGEPROVIDER_H
 
+#include <QIcon>
 #include <QSize>
 #include <QQuickImageProvider>
 
@@ -40,6 +41,14 @@ public:
     /// @returns anImageName, prepended with "image://tbe/"
     static QString setPath(QString& anImageName)
     { return "image://tbe/"+anImageName; }
+
+    /** always accessible (singleton) function to get an Icon from an image
+     *   @param   anImageName   file name (no search path, no extension)
+     *   @param   aSize         QSize of the icon
+     *   @returns a QIcon with the image requested. if no image found,
+     *            QIcon will contain either the NotFound image or white field
+     */
+    static QIcon getQIcon(const QString &anImageName, const QSize &aSize);
 
 private:
     /// if no size specified, this is the size used for the
