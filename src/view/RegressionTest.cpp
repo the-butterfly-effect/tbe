@@ -22,7 +22,6 @@
 // to grab inside their innards :-(
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include "resizinggraphicsview.h"
 
 #include <QCoreApplication>
 #include <QEvent>

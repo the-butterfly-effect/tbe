@@ -19,7 +19,6 @@
 #include "World.h"
 #include "AbstractObject.h"
 #include "Goal.h"
-#include "resizinggraphicsview.h"
 #include "ViewItem.h"
 #include "AbstractJoint.h"
 #include "Box2D.h"

@@ -23,9 +23,11 @@
 #include <QtGui>
 #include <QListWidgetItem>
 #include <QFileDialog>
+#include <QStatusBar>
 
 #include "AbstractObject.h"
 #include "GameFlow.h"
+#include "GameQControls.h"
 #include "Hint.h"
 #include "ImageCache.h"
 #include "ImageProvider.h"
@@ -57,7 +59,6 @@ MainWindow::MainWindow(bool isMaximized, QWidget *parent)
       theGameFlowPtr(nullptr)
 {
     ui->setupUi(this);
-    theGameFlowPtr = new GameFlow(this, ui->menuBar, ui->quickWidget);
 
     setupQml();
     setupView();
@@ -446,12 +447,14 @@ void MainWindow::setupQml()
     theToolbox.setupQml(ui->quickWidget);
 
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("MainWindow"), this);
+    theGameFlowPtr = new GameFlow(this, ui->menuBar, ui->quickWidget);
     ui->quickWidget->rootContext()->setContextProperty(QStringLiteral("GameFlow"), theGameFlowPtr);
 
     ui->quickWidget->connect(myQmlEnginePtr, &QQmlEngine::quit, this, &MainWindow::close);
     QUrl mySource("qrc:/qml/main.qml");
     ui->quickWidget->setupQmlSource(mySource);
     ViewWorldItem::me()->setQmlEnginePtr(myQmlEnginePtr, mySource);
+    GameQControls::me()->setup(ui->menuControls, theGameFlowPtr->theGameStateMachinePtr);
 }
 
 
@@ -480,10 +483,6 @@ void MainWindow::setupView()
         ui->menuLanguages->addAction(myTempActionPtr);
     }
     setLanguageCheckmark();
-
-    ui->graphicsView->setup(this, theGameFlowPtr, theGameFlowPtr->theGameStateMachinePtr, ui->menuControls);
-    connect(ui->graphicsView, SIGNAL(signal_actionReplay()), theGameFlowPtr->theGameStateMachinePtr,
-            SIGNAL(signal_Reset_triggered()));
 
     if (theIsRunAsRegression) {
         Q_ASSERT(theRegressionTest == nullptr);

@@ -23,7 +23,6 @@
 #include "World.h"
 #include "ViewWorldItem.h"
 #include "GoalEditor.h"    // contains DoubleSpinBoxDelegate
-#include "resizinggraphicsview.h"
 #include <QStandardItem>
 #include <QTableView>
 #include <QColorDialog>

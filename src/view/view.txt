@@ -17,7 +17,6 @@ SET(view_SOURCES
     view/Popup.h
     view/RegressionTest.cpp
     view/ResizeAwareQuickWidget.cpp
-    view/resizinggraphicsview.cpp
     view/SaveLevelInfo.cpp
     view/ToolboxModelItem.cpp
     view/ViewItem.cpp
@@ -42,7 +41,6 @@ SET(view_HEADERS
     view/RegressionTest.h
     view/RequestDialog.h
     view/ResizeAwareQuickWidget.h
-    view/resizinggraphicsview.h
     view/SaveLevelInfo.h
     view/ToolboxModelItem.h
     view/ViewItem.h

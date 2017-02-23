@@ -47,7 +47,7 @@ public:
 
     virtual ~GameQControls();
 
-    void setup(QMenu *aMenuPtr);
+    void setup(QMenu *aMenuPtr, GameStateMachine *aGameStateMachinePtr);
 
     /// TODO: REMOVE public accessor
     static GameQControls* me();

@@ -17,6 +17,7 @@
  */
 
 #include "GameFlow.h"
+#include "GameQControls.h"
 #include "Level.h"
 #include "LevelList.h"
 #include "MainWindow.h"

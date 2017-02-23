@@ -35,7 +35,6 @@ class GameFlow;
 class Level;
 class LevelCreator;
 class QGraphicsRectWidget;
-class QGraphicsScene;
 class QToolbar;
 class RegressionTest;
 class World;

@@ -20,7 +20,6 @@
 #include "GameQControls.h"
 #include "ImageCache.h"
 #include "MainWindow.h"
-#include "resizinggraphicsview.h"
 
 #include <cstdio>
 #include <cassert>
@@ -52,7 +51,7 @@ GameQControls::~GameQControls()
 }
 
 
-void GameQControls::setup(QMenu *aMenuPtr)
+void GameQControls::setup(QMenu *aMenuPtr, GameStateMachine* aGameStateMachinePtr)
 {
     // add actions and their quick keys
     theForwardAction = new QAction(theForwardIcon, tr("&Forward"), nullptr);
@@ -109,6 +108,23 @@ void GameQControls::setup(QMenu *aMenuPtr)
     connect (theRealFastAction, SIGNAL(triggered()), this, SIGNAL(signal_RealFast_triggered()));
     connect (theResetAction, SIGNAL(triggered()), this,    SIGNAL(signal_Reset_triggered()));
     connect (theSlowAction, SIGNAL(triggered()), this,     SIGNAL(signal_Slow_triggered()));
+
+    connect (aGameStateMachinePtr, SIGNAL(signal_State_Changed(GameStateMachine::States)),
+             this, SLOT(slot_updateIcon(GameStateMachine::States)));
+
+    connect (this, SIGNAL(signal_Forward_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_Forward_triggered()));
+    connect (this, SIGNAL(signal_Pause_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_Pause_triggered()));
+    connect (this, SIGNAL(signal_Play_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_Play_triggered()));
+    connect (this, SIGNAL(signal_RealFast_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_RealFast_triggered()));
+    connect (this, SIGNAL(signal_Reset_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_Reset_triggered()));
+    connect (this, SIGNAL(signal_Slow_triggered()),
+             aGameStateMachinePtr, SIGNAL(signal_Slow_triggered()));
+
 }
 
 
