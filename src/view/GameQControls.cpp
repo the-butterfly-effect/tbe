@@ -30,9 +30,10 @@
 static GameQControls* theGQCPtr = nullptr;
 
 
-GameQControls::GameQControls(QQuickItem *parent) :
-    QQuickItem(parent),
-    theGameButtonGroup(this)
+GameQControls::GameQControls(QQuickItem *parent)
+    : QQuickItem(parent)
+    , theGameButtonGroup(this)
+    , theForwardAction(nullptr)
 {
     const QSize myIconSize(16, 16);
     theForwardIcon = ImageProvider::getQIcon("ActionFastForward", myIconSize);
@@ -241,7 +242,10 @@ void GameQControls::button_reset_clicked()
 
 void GameQControls::updateIcon(int aNumber)
 {
-    QMetaObject::invokeMethod(this, "setIcon",
-            Q_ARG(QVariant, aNumber));
-
+    // No need to call the javascript setIcon() if it doesn't yet exist.
+    // While we cannot reliably detect its existence, we know that our actions
+    // will be valid at the time. So let's check for that.
+    if(!theForwardAction)
+        return;
+    QMetaObject::invokeMethod(this, "setIcon", Q_ARG(QVariant, aNumber));
 }
