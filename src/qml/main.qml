@@ -19,7 +19,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.2     // for RowLayout and ColumnLayout
 
-RowLayout {
+Item {
     id: window
 
     /// Refers to the currently by the user selected item.
@@ -45,10 +45,6 @@ RowLayout {
         return gameView.height - ResizeInfo.pixPerMeter * aYInM;
     }
 
-    Item {
-        Layout.fillWidth: true
-    }
-
    ViewWorld {
         id: gameView
 
@@ -64,11 +60,14 @@ RowLayout {
             }
         }
 
-        Layout.fillWidth: ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio)
-        Layout.fillHeight: !((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio)
-        Layout.alignment: Qt.AlignTop | Qt.AlignRight
-        Layout.preferredWidth:  ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio) ? 100 : window.height * ResizeInfo.aspectRatio
-        Layout.preferredHeight: ((window.width-toolbox.width)/window.height < ResizeInfo.aspectRatio) ? width / ResizeInfo.aspectRatio : 100
+        // Depending on the aspect ratio, we want to fill up available width or height.
+        readonly property real aspectRatio: (window.width-toolbox.width) / window.height
+        anchors.right: toolcol.left
+        anchors.top: parent.top
+        height: (aspectRatio < ResizeInfo.aspectRatio)
+                ? (window.width-toolbox.width) / ResizeInfo.aspectRatio : window.height
+        width: (aspectRatio > ResizeInfo.aspectRatio)
+               ? window.height * ResizeInfo.aspectRatio : (window.width-toolbox.width)
 
         MouseArea {
             anchors.fill: parent
@@ -87,9 +86,13 @@ RowLayout {
     }
 
     ColumnLayout {
+        id: toolcol
         z: 2
 
-        Layout.minimumWidth: toolbox.width
+        width: toolbox.width + 10
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
 
         Rectangle {
             id: toolbox
@@ -106,6 +109,7 @@ RowLayout {
             Toolbox {
                 width: parent.width
                 height: parent.height - 4
+                clip: true
                 color: "transparent"
                 y: 2
                 z: 2
@@ -117,6 +121,7 @@ RowLayout {
             width: parent.width
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.minimumHeight: 48
+            Layout.maximumHeight: 48
 
             IconButton {
                 iconsource: img("IconInfo")
