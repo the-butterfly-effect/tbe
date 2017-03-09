@@ -96,8 +96,7 @@ void Toolbox::repopulateToolbox()
         myTMIList.append(myTIGPtr);
     }
     QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
-    ctxt->setContextProperty("myToolboxModel",
-                             QVariant::fromValue(myTMIList));
+    ctxt->setContextProperty("myToolboxModel", QVariant::fromValue(myTMIList));
 }
 
 
@@ -116,5 +115,9 @@ void Toolbox::setupQml(QQuickWidget *aToolboxQmlStylePtr)
     theToolboxQmlStylePtr = aToolboxQmlStylePtr;
     assert (theToolboxQmlStylePtr);
 
-//    qmlRegisterType<ToolboxModelItem>("TBEView", 1, 0, "ToolboxModelItem");
+    // Add dummy list for now, once repopulateToolbox() is called,
+    // we'll have a real list.
+    QList<QObject*> myTMIList;
+    QQmlContext *ctxt = theToolboxQmlStylePtr->rootContext();
+    ctxt->setContextProperty("myToolboxModel", QVariant::fromValue(myTMIList));
 }
