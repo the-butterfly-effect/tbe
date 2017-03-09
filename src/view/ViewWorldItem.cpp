@@ -190,7 +190,7 @@ ViewItem *ViewWorldItem::createViewItem(const QString &aVOType, const AbstractOb
 QQuickItem *ViewWorldItem::createDialog(const QString &aVOType, const QString &extraOptions)
 {
     assert(nullptr != pImpl);
-    QString myExtraOptions = QString("anchors.horizontalCenter: parent.horizontalCenter; anchors.verticalCenter: parent.verticalCenter; %1").arg(extraOptions);
+    QString myExtraOptions = QString("anchors.centerIn: parent; %1").arg(extraOptions);
     QQuickItem* myDialogPtr = pImpl->createObject(aVOType, myExtraOptions);
     assert(nullptr != myDialogPtr);
     myDialogPtr->setParent(this);
