@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="en">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
 <context>
     <name>AbstractPolyObjectFactory</name>
     <message>
@@ -105,80 +103,87 @@ It can&apos;t be moved, penetrated or destroyed.</translation>
         <location filename="../src/model/PolyObject.cpp" line="84"/>
         <source>This is a ramp.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
+        <translation>This is a ramp.
+The left is lower than the right, so things slide to the left.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="93"/>
         <source>This is a ramp.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
+        <translation>This is a ramp.
+The left is higher than the right, so things slide to the right.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="102"/>
         <source>Birch wedges can be moved and are rather heavy.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
+        <translation>Birch wedges can be moved and are rather heavy.
+The left is lower than the right, so things slide to the left.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="111"/>
         <source>Birch wedges can be moved and are rather heavy.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
+        <translation>Birch wedges can be moved and are rather heavy.
+The left is higher than the right, so things slide to the right.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="119"/>
         <source>Left Styrofoam Wedge</source>
-        <translation type="unfinished"></translation>
+        <translation>Left Styrofoam Wedge</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="120"/>
         <location filename="../src/model/PolyObject.cpp" line="129"/>
         <source>Styrofoam wedges are light and bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Styrofoam wedges are light and bouncy.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="128"/>
         <source>Right Styrofoam Wedge</source>
-        <translation type="unfinished"></translation>
+        <translation>Right Styrofoam Wedge</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="137"/>
         <source>Left Inclined Plane</source>
-        <translation type="unfinished"></translation>
+        <translation>Left Inclined Plane</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="138"/>
         <source>It’s a fixed obstacle with a tilted surface.
 The left is lower than the right, so things slide to the left.</source>
-        <translation type="unfinished"></translation>
+        <translation>It’s a fixed obstacle with a tilted surface.
+The left is lower than the right, so things slide to the left.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="146"/>
         <source>Right Inclined Plane</source>
-        <translation type="unfinished"></translation>
+        <translation>Right Inclined Plane</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="147"/>
         <source>It’s a fixed obstacle with a tilted surface.
 The left is higher than the right, so things slide to the right.</source>
-        <translation type="unfinished"></translation>
+        <translation>It’s a fixed obstacle with a tilted surface.
+The left is higher than the right, so things slide to the right.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="157"/>
         <source>Small Quarter Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Small Quarter Arc</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="158"/>
         <location filename="../src/model/PolyObject.cpp" line="173"/>
         <source>A quarter arc is a fixed obstacle
 and useful to divert things.</source>
-        <translation type="unfinished"></translation>
+        <translation>A quarter arc is a fixed obstacle
+and useful to divert things.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="172"/>
         <source>Large Quarter Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Large Quarter Arc</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="190"/>
@@ -193,13 +198,14 @@ and useful to divert things.</source>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="201"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Goal</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="202"/>
         <source>A goal is a metal frame holding a net.
 It is open on one side.</source>
-        <translation type="unfinished"></translation>
+        <translation>A goal is a metal frame holding a net.
+It is open on one side.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="211"/>
@@ -220,18 +226,20 @@ It is open on one side.</source>
         <location filename="../src/model/PolyObject.cpp" line="223"/>
         <source>If this seesaw is pushed on one side,
 the other side moves in the other direction.</source>
-        <translation type="unfinished"></translation>
+        <translation>If this seesaw is pushed on one side,
+the other side moves in the other direction.</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="241"/>
         <source>Daffodil</source>
-        <translation type="unfinished"></translation>
+        <translation>Daffodil</translation>
     </message>
     <message>
         <location filename="../src/model/PolyObject.cpp" line="242"/>
         <source>Daffodil (Narcissus Flappus Attractus):
 Butterflies want to fly there.</source>
-        <translation type="unfinished"></translation>
+        <translation>Daffodil (Narcissus Flappus Attractus):
+Butterflies want to fly there.</translation>
     </message>
     <message>
         <source>One usually puts toddlers on a seesaw, but they&apos;re in short supply.</source>
@@ -328,32 +336,32 @@ It&apos;s very heavy and hard to push around.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="56"/>
         <source>Birch Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Birch Bar</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="57"/>
         <source>Pieces of birch wood are movable and usually really heavy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pieces of birch wood are movable and usually really heavy.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="62"/>
         <source>Styrofoam Block</source>
-        <translation type="unfinished"></translation>
+        <translation>Styrofoam Block</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="63"/>
         <source>Styrofoam blocks are light and pretty bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Styrofoam blocks are light and pretty bouncy.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="69"/>
         <source>A red plastic domino, it can be toppled with ease.</source>
-        <translation type="unfinished"></translation>
+        <translation>A red plastic domino, it can be toppled with ease.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="75"/>
         <source>A blue plastic domino, it can be toppled with ease.</source>
-        <translation type="unfinished"></translation>
+        <translation>A blue plastic domino, it can be toppled with ease.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="80"/>
@@ -363,7 +371,7 @@ It&apos;s very heavy and hard to push around.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="81"/>
         <source>A green plastic domino, it can be toppled with ease.</source>
-        <translation type="unfinished"></translation>
+        <translation>A green plastic domino, it can be toppled with ease.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="86"/>
@@ -373,7 +381,7 @@ It&apos;s very heavy and hard to push around.</translation>
     <message>
         <location filename="../src/model/RectObject.cpp" line="87"/>
         <source>This is a floor, a fixed obstacle.</source>
-        <translation type="unfinished"></translation>
+        <translation>This is a floor, a fixed obstacle.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="94"/>
@@ -384,7 +392,8 @@ It&apos;s very heavy and hard to push around.</translation>
         <location filename="../src/model/RectObject.cpp" line="95"/>
         <source>Steel I-beams are large and heavy
 and useful to build bridges and other constructions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Steel I-beams are large and heavy
+and useful to build bridges and other constructions.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="100"/>
@@ -394,27 +403,27 @@ and useful to build bridges and other constructions.</source>
     <message>
         <location filename="../src/model/RectObject.cpp" line="101"/>
         <source>This is a brick wall, a fixed obstacle.</source>
-        <translation type="unfinished"></translation>
+        <translation>This is a brick wall, a fixed obstacle.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="121"/>
         <source>Flat Wooden Crate</source>
-        <translation type="unfinished"></translation>
+        <translation>Flat Wooden Crate</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="122"/>
         <source>A flat and light wooden crate, great for stacking.</source>
-        <translation type="unfinished"></translation>
+        <translation>A flat and light wooden crate, great for stacking.</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="127"/>
         <source>Square Wooden Crate</source>
-        <translation type="unfinished"></translation>
+        <translation>Square Wooden Crate</translation>
     </message>
     <message>
         <location filename="../src/model/RectObject.cpp" line="128"/>
         <source>A heavy wooden crate, great for stacking.</source>
-        <translation type="unfinished"></translation>
+        <translation>A heavy wooden crate, great for stacking.</translation>
     </message>
     <message>
         <source>This is a brick wall. It is attached to the scene
@@ -478,32 +487,32 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="51"/>
         <source>Choose your next level</source>
-        <translation type="unfinished">Choose your next level</translation>
+        <translation>Choose your next level</translation>
     </message>
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="63"/>
         <source>Please select the level you want to play.&lt;br&gt;Double-click for the post-it notes for help.</source>
-        <translation type="unfinished"></translation>
+        <translation>Please select the level you want to play.&lt;br&gt;Double-click for the post-it notes for help.</translation>
     </message>
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="82"/>
         <source>#</source>
-        <translation type="unfinished">#</translation>
+        <translation>#</translation>
     </message>
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="83"/>
         <source>Level Title</source>
-        <translation type="unfinished">Level Title</translation>
+        <translation>Level Title</translation>
     </message>
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="95"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../src/qml/ChooseLevelDialog.qml" line="103"/>
         <source>Go!</source>
-        <translation type="unfinished">Go!</translation>
+        <translation>Go!</translation>
     </message>
 </context>
 <context>
@@ -534,22 +543,22 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/qml/ChoosePhoneNumberDialog.qml" line="55"/>
         <source>Select phone to dial</source>
-        <translation type="unfinished">Select phone to dial</translation>
+        <translation>Select phone to dial</translation>
     </message>
     <message>
         <location filename="../src/qml/ChoosePhoneNumberDialog.qml" line="69"/>
         <source>Phone Number:</source>
-        <translation type="unfinished">Phone Number:</translation>
+        <translation>Phone Number:</translation>
     </message>
     <message>
         <location filename="../src/qml/ChoosePhoneNumberDialog.qml" line="89"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>Ok</translation>
     </message>
     <message>
         <location filename="../src/qml/ChoosePhoneNumberDialog.qml" line="93"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
@@ -594,12 +603,12 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="30"/>
         <source>A bowling ball is very heavy and doesn’t bounce much.</source>
-        <translation type="unfinished"></translation>
+        <translation>A bowling ball is very heavy and doesn’t bounce much.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="36"/>
         <source>A volleyball is light and very bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>A volleyball is light and very bouncy.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="44"/>
@@ -609,7 +618,7 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="45"/>
         <source>A tennis ball is very light and pretty bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>A tennis ball is very light and pretty bouncy.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="52"/>
@@ -619,39 +628,41 @@ Double-click for the post-it notes for help.
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="53"/>
         <source>A soccer ball is of medium weight and pretty bouncy.</source>
-        <translation type="unfinished"></translation>
+        <translation>A soccer ball is of medium weight and pretty bouncy.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="60"/>
         <source>Pétanque Ball</source>
-        <translation type="unfinished"></translation>
+        <translation>Pétanque Ball</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="61"/>
         <source>A pétanque ball is quite heavy and doesn’t bounce much.</source>
-        <translation type="unfinished"></translation>
+        <translation>A pétanque ball is quite heavy and doesn’t bounce much.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="67"/>
         <source>Metal Peg</source>
-        <translation type="unfinished"></translation>
+        <translation>Metal Peg</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="68"/>
         <source>A round obstacle, pinned to the sky.
 Things will bounce off heavily.</source>
-        <translation type="unfinished"></translation>
+        <translation>A round obstacle, pinned to the sky.
+Things will bounce off heavily.</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="74"/>
         <source>Wooden Peg</source>
-        <translation type="unfinished"></translation>
+        <translation>Wooden Peg</translation>
     </message>
     <message>
         <location filename="../src/model/CircleObjects.cpp" line="75"/>
         <source>A round obstacle, pinned to the sky.
 Things won’t bounce off much.</source>
-        <translation type="unfinished"></translation>
+        <translation>A round obstacle, pinned to the sky.
+Things won’t bounce off much.</translation>
     </message>
     <message>
         <source>Pétanque Boule</source>
@@ -687,7 +698,7 @@ Things won’t bounce off much.</source>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="43"/>
         <source>Width of the level in meters</source>
-        <translation type="unfinished"></translation>
+        <translation>Width of the level in meters</translation>
     </message>
     <message>
         <location filename="../src/view/EditLevelProperties.ui" line="68"/>
@@ -853,7 +864,7 @@ Things won’t bounce off much.</source>
     <message>
         <location filename="../src/qml/GameControls.qml" line="85"/>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Forward</translation>
     </message>
     <message>
         <source>FF</source>
@@ -865,7 +876,7 @@ Things won’t bounce off much.</source>
     </message>
     <message>
         <source>f</source>
-        <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
+        <extracomment>translators: 'f' is for (fast) forward</extracomment>
         <translation type="vanished">f</translation>
     </message>
     <message>
@@ -882,7 +893,7 @@ Things won’t bounce off much.</source>
     </message>
     <message>
         <source>r</source>
-        <extracomment>translators: &apos;r&apos; is for reset</extracomment>
+        <extracomment>translators: 'r' is for reset</extracomment>
         <translation type="vanished">r</translation>
     </message>
     <message>
@@ -906,7 +917,7 @@ Things won’t bounce off much.</source>
     <message>
         <location filename="../src/view/GameFlow.cpp" line="94"/>
         <source>    %1 fps; %2 s</source>
-        <translation type="unfinished">    %1 fps; %2 s</translation>
+        <translation>    %1 fps; %2 s</translation>
     </message>
 </context>
 <context>
@@ -914,52 +925,52 @@ Things won’t bounce off much.</source>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="58"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished">&amp;Forward</translation>
+        <translation>&amp;Forward</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="60"/>
         <source>f</source>
-        <extracomment>translators: &apos;f&apos; is for (fast) forward</extracomment>
-        <translation type="unfinished">f</translation>
+        <extracomment>translators: 'f' is for (fast) forward</extracomment>
+        <translation>f</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="64"/>
         <source>P&amp;ause</source>
-        <translation type="unfinished">P&amp;ause</translation>
+        <translation>P&amp;ause</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="68"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Play</translation>
+        <translation>&amp;Play</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="72"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished">&amp;Reset</translation>
+        <translation>&amp;Reset</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="74"/>
         <source>r</source>
-        <extracomment>translators: &apos;r&apos; is for reset</extracomment>
-        <translation type="unfinished">r</translation>
+        <extracomment>translators: 'r' is for reset</extracomment>
+        <translation>r</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="78"/>
         <source>Shift+f</source>
         <extracomment>translators: really-fast-forward is only available as a key shortcut it should be shift-&lt;normal fast-forward&gt;...</extracomment>
-        <translation type="unfinished">Shift+f</translation>
+        <translation>Shift+f</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="85"/>
         <source>Shift+s</source>
         <extracomment>translators: slow is only available as a key shortcut it should be shift-S...</extracomment>
-        <translation type="unfinished">Shift+s</translation>
+        <translation>Shift+s</translation>
     </message>
     <message>
         <location filename="../src/view/GameQControls.cpp" line="146"/>
         <source>Space</source>
         <comment>key for start/pause the simulation</comment>
-        <translation type="unfinished">Space</translation>
+        <translation>Space</translation>
     </message>
 </context>
 <context>
@@ -980,7 +991,7 @@ Things won’t bounce off much.</source>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1026,7 +1037,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GOALS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;all&lt;/span&gt; goals are satisfied.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If an ObjectID is red, that ID currently does not exist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -1053,7 +1064,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;FAILS&lt;/span&gt;&lt;br /&gt;A level can only be won if &lt;span style=&quot; font-style:italic;&quot;&gt;never&lt;/span&gt; any of the fail conditions is met.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1071,13 +1082,13 @@ Nothing was changed yet, please fix.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="153"/>
         <source>Are you sure you want to remove goal %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Are you sure you want to remove goal %1:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="173"/>
         <source>Are you sure you want to remove fail %1:&lt;br&gt;%2</source>
-        <extracomment>translator, be careful not to translate the %&apos;s and the &lt;br&gt;&apos;s...</extracomment>
+        <extracomment>translator, be careful not to translate the %'s and the &lt;br&gt;'s...</extracomment>
         <translation>Are you sure you want to remove fail %1:&lt;br&gt;%2</translation>
     </message>
     <message>
@@ -1091,7 +1102,7 @@ Nothing was changed yet, please fix.</translation>
     <message>
         <location filename="../src/view/GoalEditor.cpp" line="268"/>
         <source>Variable;Object;Cond.;Value;Object2</source>
-        <extracomment>translators: Cond. is short for Condition - otherwise it doesn&apos;t fit</extracomment>
+        <extracomment>translators: Cond. is short for Condition - otherwise it doesn't fit</extracomment>
         <translation>Variable;Object;Cond.;Value;Object2</translation>
     </message>
     <message>
@@ -1244,17 +1255,17 @@ Nothing was changed yet, please fix.</translation>
     <message>
         <location filename="../src/qml/LevelInfoDialog.qml" line="75"/>
         <source>Level by &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Level by &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/qml/LevelInfoDialog.qml" line="86"/>
         <source>Reset all</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset all</translation>
     </message>
     <message>
         <location filename="../src/qml/LevelInfoDialog.qml" line="90"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>Ok</translation>
     </message>
 </context>
 <context>
@@ -1262,12 +1273,12 @@ Nothing was changed yet, please fix.</translation>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="92"/>
         <source>done</source>
-        <translation type="unfinished">done</translation>
+        <translation>done</translation>
     </message>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="95"/>
         <source>skipped</source>
-        <translation type="unfinished">skipped</translation>
+        <translation>skipped</translation>
     </message>
 </context>
 <context>
@@ -1278,7 +1289,7 @@ Nothing was changed yet, please fix.</translation>
     </message>
     <message>
         <source>Esc</source>
-        <comment>Probably &apos;Esc&apos; for any language</comment>
+        <comment>Probably 'Esc' for any language</comment>
         <extracomment>escape should close the listviewtooltip</extracomment>
         <translation type="vanished">Esc</translation>
     </message>
@@ -1504,14 +1515,14 @@ Nothing was changed yet, please fix.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="113"/>
-        <source>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
+        <source>ERROR during reading file '%1': '%2'
 </source>
         <translation>ERROR during reading file &apos;%1&apos;: &apos;%2&apos;
 </translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="118"/>
-        <source>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
+        <source>Non-fatal problem reading file '%1': '%2'.
 This may affect playability, though!</source>
         <translation>Non-fatal problem reading file &apos;%1&apos;: &apos;%2&apos;.
 This may affect playability, though!</translation>
@@ -1542,7 +1553,7 @@ This may affect playability, though!</translation>
         <location filename="../src/view/MainWindow.cpp" line="139"/>
         <source>&lt;b&gt;The Butterfly Effect %2&lt;/b&gt;&lt;br&gt;git commit: %3&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015,2016,2017 Klaas van Gend and many others&lt;br&gt;&lt;br&gt;Code licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;Levels and graphics may have different open/free licenses.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; for more info on this project.</source>
         <extracomment>translators: &lt;b&gt; and &lt;br&gt; are statements for bold and newline, respectively</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;The Butterfly Effect %2&lt;/b&gt;&lt;br&gt;git commit: %3&lt;br&gt;An open source game that uses realistic physics simulations to combine lots of simple mechanical elements to achieve a simple goal in the most complex way possible.&lt;br&gt;&lt;br&gt;(C) 2009,2010,2011,2012,2013,2015,2016,2017 Klaas van Gend and many others&lt;br&gt;&lt;br&gt;Code licensed under GPL version 2 - &lt;i&gt;only&lt;/i&gt;.&lt;br&gt;Levels and graphics may have different open/free licenses.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;http://%1/&quot;&gt;http://%1/&lt;/a&gt; for more info on this project.</translation>
     </message>
     <message>
         <location filename="../src/view/MainWindow.cpp" line="192"/>
@@ -1685,35 +1696,38 @@ Be careful: not all languages are 100% complete.
     <message>
         <location filename="../src/model/PostIt.cpp" line="26"/>
         <source>Post-it with hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Post-it with hint</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="27"/>
         <source>Someone left you a note here.
 Yellow post-it notes give you a little hint for solving this level.</source>
-        <translation type="unfinished"></translation>
+        <translation>Someone left you a note here.
+Yellow post-it notes give you a little hint for solving this level.</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="33"/>
         <source>Post-it with tutorial text</source>
-        <translation type="unfinished"></translation>
+        <translation>Post-it with tutorial text</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="34"/>
         <source>Someone left you a note here.
 Green post-it notes explain how to play the game.</source>
-        <translation type="unfinished"></translation>
+        <translation>Someone left you a note here.
+Green post-it notes explain how to play the game.</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="39"/>
         <source>Post-it with miscellaneous content</source>
-        <translation type="unfinished"></translation>
+        <translation>Post-it with miscellaneous content</translation>
     </message>
     <message>
         <location filename="../src/model/PostIt.cpp" line="40"/>
         <source>Someone left you a note here.
 What might be written on it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Someone left you a note here.
+What might be written on it?</translation>
     </message>
 </context>
 <context>
@@ -1795,7 +1809,7 @@ A cactus has sharp spines.</translation>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="349"/>
         <source>Bed of Nails</source>
-        <translation type="unfinished"></translation>
+        <translation>Bed of Nails</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="350"/>
@@ -1807,13 +1821,14 @@ It has many sharp nails on one side.</translation>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="424"/>
         <source>Circular Saw</source>
-        <translation type="unfinished"></translation>
+        <translation>Circular Saw</translation>
     </message>
     <message>
         <location filename="../src/model/BalloonCactus.cpp" line="425"/>
         <source>A light rotating disc with sharp teeth,
 dangerous for balloons and penguins alike.</source>
-        <translation type="unfinished"></translation>
+        <translation>A light rotating disc with sharp teeth,
+dangerous for balloons and penguins alike.</translation>
     </message>
     <message>
         <source>A rotating disc with sharp teeth.</source>
@@ -1939,7 +1954,8 @@ It triggers dynamite remotely if the handle is pushed.
         <location filename="../src/model/TriggerExplosion.cpp" line="159"/>
         <source>This one doesn’t make any calls yet,
 select a phone number!</source>
-        <translation type="unfinished"></translation>
+        <translation>This one doesn’t make any calls yet,
+select a phone number!</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="436"/>
@@ -1947,7 +1963,8 @@ select a phone number!</source>
 This cell phone doesn’t take any calls, however.</source>
         <extracomment>Translators: “
 ” means “newline”, keep it.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>It’s dynamite attached to a cell phone.
+This cell phone doesn’t take any calls, however.</translation>
     </message>
     <message>
         <location filename="../src/model/TriggerExplosion.cpp" line="439"/>
@@ -1956,10 +1973,12 @@ remotely triggered by a detonator box.
 Dial %1 to make the dynamite go boom.</source>
         <extracomment>Translators: “
 ” means “newline”, keep it. “%1” will be replaced by the phone number</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>It’s dynamite attached to a cell phone, ready to be
+remotely triggered by a detonator box.
+Dial %1 to make the dynamite go boom.</translation>
     </message>
     <message>
-        <source>This one doesn&apos;t make any calls yet,
+        <source>This one doesn't make any calls yet,
 select a phone number!</source>
         <translation type="vanished">This one doesn&apos;t make any calls yet,
 select a phone number!</translation>
@@ -1978,7 +1997,7 @@ Throw a heavy object on it to push it.</source>
 Throw a heavy object on it to push it.</translation>
     </message>
     <message>
-        <source>It&apos;s dynamite attached to a cell phone.
+        <source>It's dynamite attached to a cell phone.
 This cell phone doesn&apos;t take any calls, however.</source>
         <extracomment>Translators: “
 ” means “newline”, keep it.</extracomment>
@@ -1986,7 +2005,7 @@ This cell phone doesn&apos;t take any calls, however.</source>
 This cell phone doesn&apos;t take any calls, however.</translation>
     </message>
     <message>
-        <source>It&apos;s dynamite attached to a cell phone, ready to be
+        <source>It's dynamite attached to a cell phone, ready to be
 remotely triggered by a detonator box.
 Dial %1 to make the dynamite go boom.</source>
         <extracomment>Translators: “
@@ -2033,7 +2052,7 @@ Dial %1 to make the dynamite go boom.</translation>
     <message>
         <location filename="../src/loadsave/LevelList.cpp" line="51"/>
         <source>Level parser:
-Cannot read the level descriptions in &apos;%1&apos;:
+Cannot read the level descriptions in '%1':
 %2.</source>
         <translation>Level parser:
 Cannot read the level descriptions in &apos;%1&apos;:
@@ -2088,47 +2107,47 @@ You might want to read them—it may help!</translation>
     <message>
         <location filename="../src/control/DeleteQUndoCommand.cpp" line="31"/>
         <source>Delete %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete %1</translation>
     </message>
     <message>
         <location filename="../src/control/EditPropertyUndoCommand.cpp" line="27"/>
         <source>Edit property of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit property of %1</translation>
     </message>
     <message>
         <location filename="../src/control/InsertMoveQUndoCommand.cpp" line="32"/>
         <source>Insert %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert %1</translation>
     </message>
     <message>
         <location filename="../src/control/MoveQUndoCommand.cpp" line="30"/>
         <source>Move %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Move %1</translation>
     </message>
     <message>
         <location filename="../src/control/ResizeQUndoCommand.cpp" line="30"/>
         <source>Resize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Resize %1</translation>
     </message>
     <message>
         <location filename="../src/control/ReturnToToolboxQUndoCommand.cpp" line="31"/>
         <source>%1 back in toolbox</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 back in toolbox</translation>
     </message>
     <message>
         <location filename="../src/control/RotateQUndoCommand.cpp" line="29"/>
         <source>Rotate %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotate %1</translation>
     </message>
     <message>
         <location filename="../src/control/SetPhoneQUndoCommand.cpp" line="31"/>
         <source>Set phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Set phone number</translation>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="42"/>
         <source>Penguin</source>
-        <translation type="unfinished"></translation>
+        <translation>Penguin</translation>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="43"/>
@@ -2136,22 +2155,25 @@ You might want to read them—it may help!</translation>
 it collides with something heavy. It can push
 light objects around. It also likes to slide down
 slopes but can’t take much abuse.</source>
-        <translation type="unfinished"></translation>
+        <translation>A penguin walks left or right and turns around when
+it collides with something heavy. It can push
+light objects around. It also likes to slide down
+slopes but can’t take much abuse.</translation>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="572"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Exit</translation>
     </message>
     <message>
         <location filename="../src/model/Pingus.cpp" line="573"/>
         <source>Penguins will escape here, never to be seen again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Penguins will escape here, never to be seen again.</translation>
     </message>
     <message>
         <location filename="../src/model/PivotPoint.cpp" line="142"/>
         <source>Objects rotate around this point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Objects rotate around this point.</translation>
     </message>
 </context>
 <context>
@@ -2218,7 +2240,7 @@ slopes but can’t take much abuse.</source>
     </message>
     <message>
         <location filename="../src/view/SaveLevelInfo.cpp" line="110"/>
-        <source>A File with name &apos;%1&apos; file already exists. Overwrite?
+        <source>A File with name '%1' file already exists. Overwrite?
 </source>
         <translation>A File with name &apos;%1&apos; file already exists. Overwrite?
 </translation>
@@ -2314,27 +2336,27 @@ Reset the simulation?</translation>
     <message>
         <location filename="../src/qml/WinFailDialog.qml" line="73"/>
         <source>Replay</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay</translation>
     </message>
     <message>
         <location filename="../src/qml/WinFailDialog.qml" line="73"/>
         <source>Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>Retry</translation>
     </message>
     <message>
         <location filename="../src/qml/WinFailDialog.qml" line="79"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation>Skip</translation>
     </message>
     <message>
         <location filename="../src/qml/WinFailDialog.qml" line="93"/>
         <source>Choose...</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose...</translation>
     </message>
     <message>
         <location filename="../src/qml/WinFailDialog.qml" line="97"/>
         <source>Next&gt;</source>
-        <translation type="unfinished">Next&gt;</translation>
+        <translation>Next&gt;</translation>
     </message>
     <message>
         <source>&amp;Retry</source>
@@ -2346,12 +2368,12 @@ Reset the simulation?</translation>
     <message>
         <location filename="../src/qml/main.qml" line="128"/>
         <source>Shows the level information again</source>
-        <translation type="unfinished">Shows the level information again</translation>
+        <translation>Shows the level information again</translation>
     </message>
     <message>
         <location filename="../src/qml/main.qml" line="135"/>
         <source>Choose a different level to play</source>
-        <translation type="unfinished">Choose a different level to play</translation>
+        <translation>Choose a different level to play</translation>
     </message>
 </context>
 </TS>
