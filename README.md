@@ -25,7 +25,6 @@ just (double-)click it to enjoy the game.
 There are 76 levels.
 All 63 levels up to and including "Find the Message" are definitely playable, 
 a few levels may need a bit more polish. 
-The levels after "Find the Message" are harder levels, play at your own risk!
 
 
 ###New features & highlights in Milestone C:
