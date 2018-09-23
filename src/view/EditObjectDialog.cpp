@@ -130,7 +130,7 @@ void EditObjectDialog::propertyCellChanged ( int aRow, int aColumn )
 
     // If we get here, yes it changed.
     // Let's act on it!
-    ViewItem* myVIPtr = getAORealPtr()->theViewItemPtr;
+    //ViewItem* myVIPtr = getAORealPtr()->theViewItemPtr;
     closeExistingUndos();
 //    PreventClose myLocalDoNotClose;
 //    EditPropertyUndoCommand *myUndoPtr =
