@@ -1,4 +1,4 @@
-#Welcome to "The Butterfly Effect"
+# Welcome to "The Butterfly Effect"
 We are working on Milestone C (also known as the '0.9.4' release)
 
 
@@ -27,19 +27,19 @@ All 63 levels up to and including "Find the Message" are definitely playable,
 a few levels may need a bit more polish. 
 
 
-###New features & highlights in Milestone C:
+### New features & highlights in Milestone C:
  * New UI, based on QML. See http://the-butterfly-effect.org/blog/2016/10/13/sneak-peek/
  * We plan to add a 'save my solution' option in Milestone C.
  * More sturdy Level Creator.
  
  
-###Alternative solutions
+### Alternative solutions
 If you feel you found a solution to a level that is not right, please post an
 issue on github: https://github.com/the-butterfly-effect/tbe/issues. 
 More info is also availble in the TBE Help menus.
 
 
-###Running in other languages
+### Running in other languages
 If you want to change language, start TBE from the command line and
 type:
 > `LANGUAGE="nl" ./tbe`
@@ -49,12 +49,12 @@ Of course, for German you use "de", for spanish "es" and for Russian "ru".
 Aternatively, you can switch language through the menu "Languages".
 
 
-###Known bugs and issues:
+### Known bugs and issues:
   * we are not happy with the current UI, this is the major item for Milestone C.
   * you will crash the level creator if you enter bogus text in the object editor.
 
 
-###Thanks:
+### Thanks:
 We thank our beta players for their comments on the playability of the levels.
 Especially:
  * All attendees at ELCE 2009, T-Dose 2010, TkkrLab
