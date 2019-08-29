@@ -26,7 +26,6 @@ include_directories(
     ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
     .
-    /opt/local/include
 )
 
 if (MINGW)
