@@ -4,3 +4,5 @@
 /tbe
 /CMakeLists.txt.user
 /Users/
+/i18n/*.gmo
+/i18n/*.qm
