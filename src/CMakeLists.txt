@@ -24,7 +24,6 @@ include_directories(
     ${CMAKE_WORK_DIR}
     ${QT_INCLUDES}
     .
-    /opt/local/include
 )
 
 if (MINGW)
@@ -88,41 +87,13 @@ else()
     TARGET_LINK_LIBRARIES(tbe Qt5::Xml Qt5::Svg Box2D)
 endif ()
 
+IF (APPLE)
+    include(MacOSX-libs)
+ENDIF()
+
 IF (WIN32)
     TARGET_LINK_LIBRARIES(tbe ${CMAKE_SOURCE_DIR}/src/libintl/libintl.dll.a)
 ENDIF ()
 
-if (APPLE)
-    # Detect if the "port" command is valid on this system; if so, return full path
-    EXECUTE_PROCESS(COMMAND which port RESULT_VARIABLE DETECT_MACPORTS OUTPUT_VARIABLE MACPORTS_PREFIX ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-    IF (${DETECT_MACPORTS} EQUAL 0)
-        # "/opt/local/bin/port" doesn't have libs, so we get the parent directory
-        GET_FILENAME_COMPONENT(MACPORTS_PREFIX ${MACPORTS_PREFIX} DIRECTORY)
-
-        # "/opt/local/bin" doesn't have libs, so we get the parent directory
-        GET_FILENAME_COMPONENT(MACPORTS_PREFIX ${MACPORTS_PREFIX} DIRECTORY)
-
-        # "/opt/local" is where MacPorts lives, add `/lib` suffix and link
-        LINK_DIRECTORIES(${LINK_DIRECTORIES} ${MACPORTS_PREFIX}/lib)
-
-        MESSAGE("-- Detected MacPorts: ${MACPORTS_PREFIX}")
-    ENDIF()
-
-    find_library(LIBINTL_LIBRARIES 
-        NAMES intl
-        PATHS /usr/lib /usr/local/lib ${MACPORTS_PREFIX}/lib
-    )
-    IF(LIBINTL_LIBRARIES)
-        SET(LIBINTL_FOUND TRUE)
-    ELSE()
-        SET(LIBINTL_FOUND FALSE)
-    ENDIF()
-    MESSAGE("-- Detected LIBINTL: ${LIBINTL_FOUND} ${LIBINTL_LIBRARIES}")
-endif ()
-
-IF (APPLE)
-    TARGET_LINK_LIBRARIES(tbe ${LIBINTL_LIBRARIES})
-ENDIF ()
  
 INSTALL(TARGETS tbe DESTINATION ${TBE_BIN_DIR})
