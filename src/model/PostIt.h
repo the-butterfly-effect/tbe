@@ -48,13 +48,13 @@ public:
     /// returns the Name of the object.
     virtual const QString getName ( ) const override
     {
-        return QObject::trUtf8(theDisplayName);
+        return QObject::tr(theDisplayName);
     }
 
     /// returns the tooltip of the object.
     virtual const QString getToolTip ( ) const override
     {
-        return QObject::trUtf8(theTooltip);
+        return QObject::tr(theTooltip);
     }
 
     /// Post-its have no mass. But no b2Body will be created either :-)
