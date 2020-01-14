@@ -21,8 +21,8 @@ This is a fully playable game of beta quality, well on its way to a shiny
 
 We are working on Milestone C (also known as the '0.9.4' release).
 
-THIS IS THE BRANCH CONTAINING THE "OLD" USER INTERFACE! We plan to
-replace the user interface later.
+THIS IS THE BRANCH CONTAINING THE "OLD" USER INTERFACE!
+We are working to replace the user interface, it is available on a different branch.
 
 If you want to know the current status, please look at
 https://github.com/the-butterfly-effect/tbe/milestones/Milestone%20C
