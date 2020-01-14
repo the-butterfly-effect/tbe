@@ -4,8 +4,10 @@ which introduces an element or concept it makes use of
 (e.g. a level with a configurable detonator box before birds-2).
 -->
 <tbe-levels>
+<!-- INTRO LEVELS -->
    <level> finished/001.xml </level> <!-- Introduces post-it, butterfly, simulation controls. MUST BE FIRST LEVEL! -->
    <level> finished/bouncing_balls.xml </level> <!-- Introduces toolbox. MUST BE SECOND LEVEL! -->
+<!-- MAIN LEVELS -->
    <level> needs-polish/002.xml </level> <!-- First level with a butterfly in danger -->
    <level> finished/jumping_around.xml </level>
    <level> finished/house_of_cards.xml </level>
@@ -39,11 +41,13 @@ which introduces an element or concept it makes use of
    <level> finished/pingus-1.xml </level>
    <level> finished/magic_steel.xml </level>
    <level> finished/brother-plays-penguin-goalie.xml </level>
+   <level> finished/goal_maker.xml </level>
    <level> finished/domino_day.xml </level> <!-- Introduces scaling restricted to one axis only -->
    <level> finished/sorting-1.xml </level>
    <level> needs-polish/spare-the-balloon.xml </level>
    <level> finished/the_ball_the_box_and_the_penguin.xml </level>
    <level> finished/controlled_detonation.xml </level>
+   <level> finished/cola_reaction.xml </level>
    <level> finished/float-balloon-float.xml </level>
    <level> finished/wedge_land.xml </level>
    <level> finished/little_balloon_puzzle.xml </level>
@@ -56,29 +60,30 @@ which introduces an element or concept it makes use of
    <level> finished/save-the-butterfly.xml</level>
    <level> finished/rotate_and_win.xml</level>
    <level> finished/construction_yard.xml</level>
+   <level> finished/10_kilograms_above_the_ground.xml </level>
    <level> needs-polish/geyser.xml </level>
    <level> finished/butterfly-on-steroids.xml </level>
    <level> finished/006.xml </level>
    <level> finished/contraption2.xml </level>
-   <level> finished/balloon_blues.xml </level>
    <level> needs-polish/picnic-2.xml </level>
    <level> finished/domino_chest.xml </level>
    <level> finished/loopings2.xml </level>
    <level> finished/007.xml </level>
-   <level> finished/hanging_box.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
+<!-- HARD LEVELS -->
+   <level> finished/balloon_blues.xml </level>
+   <level> finished/hanging_box.xml </level>
    <level> finished/sorting-2.xml </level>
-   <level> finished/10_kilograms_above_the_ground.xml </level>
-   <level> finished/cola_reaction.xml </level>
    <level> finished/sorting-3.xml </level>
-   <level> finished/goal_maker.xml </level>
    <level> finished/sorting-4.xml </level>
    <level> finished/hattrick.xml </level>
    <level> finished/boom_boom_boom.xml </level>
+<!-- VERY HARD LEVELS -->
    <level> finished/butterflies_of_doom.xml </level>
    <level> finished/the_core.xml </level>
    <level> finished/sorting-5.xml </level>
    <level> needs-polish/butterfly_race.xml </level>
    <level> finished/the_pit.xml </level>
+<!-- OUTRO LEVEL -->
    <level> finished/find-the-message.v2.xml </level> <!-- “Good-bye” level. MUST BE FINAL LEVEL! -->
 </tbe-levels>
