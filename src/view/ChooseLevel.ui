@@ -125,10 +125,7 @@ QLabel {
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Please select the level you want to play.
-
-Double-click for the post-it notes for help.
-</string>
+         <string>Please select the level you want to play.</string>
         </property>
        </widget>
       </item>
