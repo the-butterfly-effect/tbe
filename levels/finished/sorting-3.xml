@@ -211,5 +211,9 @@
             <property key="ybelow">0.68</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="1.207" Y="2.018" angle="-0.8130" width="3.369" height="0.1" object="Floor" />
+        <hint number="2" X="4.629" Y="0.931" width="0.2" height="0.175" object="Wall" />
+        <hint number="3" X="5.947" Y="2.163" width="0.2" height="2.860" object="Wall" />
+    </hints>
 </tbe-level>

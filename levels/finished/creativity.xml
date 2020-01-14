@@ -100,5 +100,14 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="1.491" Y="3.163" object="Cactus" />
+        <hint number="2" X="1.454" Y="2.736" object="Skyhook" />
+        <hint number="3" X="3.022" Y="2.821" object="Weight" />
+        <hint number="4" X="3.021" Y="1.776" object="IBeam" />
+        <hint number="5" X="3.033" Y="1.088" PhoneNumber="555-0003" object="DetonatorBox" />
+        <hint number="6" X="3.060" Y="0.775" object="Floor" />
+        <hint number="7" X="5.926" Y="1.981" object="Wall" />
+        <hint number="8" X="5.933" Y="2.770" object="Dynamite" ID="555-0003" />
+    </hints>
 </tbe-level>

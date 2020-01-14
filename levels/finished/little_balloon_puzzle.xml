@@ -51,5 +51,14 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="2.921" Y="2.416" object="VolleyBall" />
+        <hint number="2" X="2.555" Y="1.365" object="VolleyBall" />
+        <hint number="3" X="2.826" Y="0.539" object="Wall" />
+        <hint number="4" X="3.016" Y="0.339" object="ColaMintBottle" />
+        <hint number="5" X="2.430" Y="2.257" width="1.016" object="Floor" />
+        <hint number="6" X="2.202" Y="0.806" object="LeftRamp" />
+        <hint number="7" X="1.299" Y="1.864" object="LeftRamp" />
+        <hint number="8" X="2.332" Y="1.857" object="RightRamp" />
+    </hints>
 </tbe-level>

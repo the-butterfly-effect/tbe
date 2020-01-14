@@ -149,5 +149,19 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <!-- TODO: Set phone number of detonator boxes in scene.
+            lowest DetonatorBox:  555-1337
+            middle DetonatorBox:  555-0815
+            highest DetonatorBox: 555-9001
+        -->
+        <hint number="1" X="8.526" Y="4.422" width="0.2" height="5.093" object="Wall" />
+        <hint number="2" X="0.550" Y="4.198" width="0.2" height="5.403" object="QuarterArc80" />
+        <hint number="3" X="8.121" Y="1.453" angle="1.57079" object="QuarterArc80" />
+        <hint number="4" X="0.958" Y="1.104" angle="3.14159" object="QuarterArc80" />
+        <hint number="5" X="3.308" Y="5.655" height="0.705502" width="0.848975" object="RightRamp" />
+        <hint number="6" X="4.130" Y="3.973" height="0.705502" width="0.848975" object="RightRamp" />
+        <hint number="7" X="2.711" Y="4.024" height="0.705502" width="0.848975" object="RightRamp" />
+        <hint number="8" X="1.423" Y="0.479" height="0.478965" width="1.42287" object="LeftRamp" />
+    </hints>
 </tbe-level>

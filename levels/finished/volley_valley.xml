@@ -132,5 +132,7 @@
             <property key="ybelow">0.6</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="0.669" object="QuarterArc80" Y="2.067" angle="0.2899"/>
+    </hints>
 </tbe-level>

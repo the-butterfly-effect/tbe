@@ -82,5 +82,14 @@
             <property key="ybelow">1.6000000000000001</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="4.950" Y="3.637" object="IBeam" />
+        <hint number="2" X="4.733" Y="2.786" object="IBeam" />
+        <hint number="3" X="4.541" Y="1.371" object="IBeam" />
+        <hint number="4" X="4.003" Y="3.144" object="ColaCrate" />
+        <hint number="5" X="5.143" Y="3.182" object="ColaCrate" />
+        <hint number="6" X="4.688" Y="2.414" object="ColaCrate" />
+        <hint number="7" X="4.490" Y="1.768" object="ColaCrate" />
+        <hint number="8" X="5.136" Y="1.019" object="ColaCrate" />
+    </hints>
 </tbe-level>

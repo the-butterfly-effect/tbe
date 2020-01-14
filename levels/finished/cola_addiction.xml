@@ -48,5 +48,16 @@
             <property key="ybelow">1.55</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+       <hint number="1" X="1.327" Y="1.640" object="ColaCrate" />
+       <hint number="2" X="2.204" Y="1.640" object="ColaCrate" />
+       <hint number="3" X="3.064" Y="1.640" object="ColaCrate" />
+       <hint number="4" X="3.950" Y="1.640" object="ColaCrate" />
+       <hint number="5" X="1.663" Y="1.008" object="ColaCrate" />
+       <hint number="6" X="2.825" Y="1.008" object="ColaCrate" />
+       <hint number="7" X="3.912" Y="1.008" object="ColaCrate" />
+       <hint number="8" X="1.420" Y="0.406" object="ColaCrate" />
+       <hint number="9" X="2.460" Y="0.406" object="ColaCrate" />
+       <hint number="10" X="3.652" Y="0.406" object="ColaCrate" />
+    </hints>
 </tbe-level>

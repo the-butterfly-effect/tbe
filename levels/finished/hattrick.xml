@@ -109,5 +109,13 @@
             <property key="ybelow">1.62</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="5.613" Y="3.878" width="1.874" height="0.272" object="LeftRamp" />
+        <hint number="2" X="0.802" Y="2.787" width="1.361" height="0.250" object="RightRamp" />
+        <hint number="3" X="0.782" Y="2.091" width="1.361" height="0.250" object="RightRamp" />
+        <hint number="4" X="4.424" Y="2.963" width="1.361" height="0.250" object="RightRamp" />
+        <hint number="6" X="2.946" Y="1.923" width="2.865" height="0.1" object="Floor" />
+        <hint number="7" X="2.770" Y="0.835" width="3.838" height="0.1" object="Floor" />
+        <hint number="8" X="0.392" Y="0.373" angle="1.57" object="ColaMintBottle" />
+    </hints>
 </tbe-level>

@@ -48,5 +48,9 @@
             <property key="equalmore">1</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="4.452" Y="2.715" width="2.697" height="0.786"  object="LeftRamp" />
+        <hint number="2" X="3.083" Y="1.804" width="2.452" height="0.697" object="RightRamp" />
+        <hint number="3" X="4.075" Y="0.966" width="2.102" height="0.695" object="LeftRamp" />
+    </hints>
 </tbe-level>

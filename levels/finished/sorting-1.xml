@@ -361,5 +361,11 @@
             <property key="ybelow">0.68</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" Y="3.12142" X="2.05542" angle="-0.168758" object="Floor" height="0.1" width="3.68506" />
+        <hint number="2" Y="2.37268" X="3.96907" angle="4.55282" object="Floor" height="0.1" width="1" />
+        <hint number="3" Y="2.14072" X="5.15722" angle="1.40395" object="Floor" height="0.1" width="0.974227" />
+        <hint number="4" Y="1.791" X="3.20805" angle="5.40047" object="Floor" height="0.1" width="2.4041" />
+        <hint number="5" Y="2.66134" X="4.57732" angle="6.07779" object="Floor" height="0.1" width="1" />
+    </hints>
 </tbe-level>

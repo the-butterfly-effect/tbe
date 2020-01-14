@@ -48,5 +48,8 @@
             <property key="xover">4</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="2.752" Y="2.477" width="1" height="1" angle="0.8078" object="RightWedge" />
+        <hint number="2" X="2.050" Y="1.721" width="1" height="1" angle="-3.9121" object="RightWedge" />
+    </hints>
 </tbe-level>

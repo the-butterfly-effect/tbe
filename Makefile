@@ -73,7 +73,21 @@ regression: usr/games/tbe
               --regression levels/finished/bridge_gap.xml:10, \
               --regression levels/finished/maze.xml:10, \
               --regression levels/finished/pingu_poppins.xml:40, \
-              --regression levels/finished/cola_reaction.xml:60
+              --regression levels/finished/cola_reaction.xml:60, \
+              --regression levels/finished/little_balloon_puzzle.xml:10, \
+              --regression levels/finished/statics.xml:12, \
+              --regression levels/finished/triangles.xml:6, \
+              --regression levels/finished/volley_valley.xml:8, \
+              --regression levels/finished/whee.xml:45, \
+              --regression levels/finished/cola_addiction.xml:10, \
+              --regression levels/finished/goal_maker.xml:60, \
+              --regression levels/finished/jumping_around.xml:8, \
+              --regression levels/finished/creativity.xml:15, \
+              --regression levels/finished/sorting-1.xml:45, \
+              --regression levels/finished/sorting-2.xml:45, \
+              --regression levels/finished/sorting-3.xml:45, \
+              --regression levels/finished/sorting-5.xml:90
+
 
 # levels currently known to fail regression:
 failregression: usr/games/tbe

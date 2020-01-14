@@ -72,5 +72,7 @@
             <property key="ybelow">0.18</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="0.843" Y="2.650" object="VolleyBall" />
+    </hints>
 </tbe-level>

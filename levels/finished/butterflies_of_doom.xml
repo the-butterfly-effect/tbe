@@ -123,5 +123,16 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="0.802" Y="2.134" width="1.000" height="1.000" object="LeftRamp" />
+        <hint number="2" X="0.724" Y="0.228" object="Butterfly" />
+        <hint number="3" X="1.837" Y="2.017" object="Butterfly" />
+        <hint number="4" X="1.115" Y="0.609" width="0.461" height="0.404" angle="-3.1419" object="QuarterArc80" />
+        <hint number="5" X="2.691" Y="1.716" width="0.356" height="0.276" angle="-1.5007" object="QuarterArc80" />
+        <hint number="6" X="5.414" Y="0.331" width="0.286" height="0.331" object="LeftFixedWedge" />
+        <hint number="7" X="2.066" Y="1.466" width="0.575" height="0.186" object="RightFixedWedge" />
+        <hint number="8" X="0.346" Y="1.382" width="0.653" height="0.696" object="LeftFixedWedge" />
+        <hint number="9" X="1.701" Y="0.402" width="0.685" height="0.1" object="Floor" />
+        <hint number="10" X="2.571" Y="2.332" width="1" height="0.1" object="Floor" />
+    </hints>
 </tbe-level>

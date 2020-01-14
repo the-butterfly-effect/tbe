@@ -451,5 +451,22 @@
             <property key="ybelow">0.78</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" Y="11.035" X="10.873" angle="0.006" object="Floor" height="0.1" width="16.823"/>
+        <hint number="2" Y="7.577" X="3.854" angle="5.2193" object="Floor" height="0.1" width="8.018"/>
+        <hint number="3" Y="3.216" X="6.475" angle="0" object="Floor" height="0.1" width="1"/>
+        <hint number="4" Y="3.29" X="7.675" angle="0" object="Floor" height="0.1" width="1"/>
+        <hint number="5" Y="1.00364" X="5.54408" angle="0.0123" object="Floor" height="0.1" width="2.42918"/>
+        <hint number="6" Y="2.8961" X="8.66206" angle="6.56937" object="Floor" height="0.1" width="2.69516"/>
+        <hint number="7" Y="2.73008" X="10.1055" angle="1.57333" object="Floor" height="0.1" width="3.54526"/>
+        <hint number="8" Y="4.55876" X="10.381" angle="6.1343" object="Floor" height="0.1" width="2.714"/>
+        <hint number="9" Y="5.13137" X="11.5468" angle="6.17685" object="Floor" height="0.1" width="3.254"/>
+        <hint number="10" Y="1.0838" X="15.6209" angle="9.28736" object="Floor" height="0.1" width="0.836599"/>
+        <hint number="11" Y="3.55508" X="13.71" angle="12.361" object="Floor" height="0.1" width="2.16715"/>
+        <hint number="12" Y="2.33559" X="12.2382" angle="1.31569" object="Floor" height="0.1" width="2.846"/>
+        <hint number="13" Y="5.601" X="17.582" angle="0.2642" object="Floor" height="0.1" width="8.729"/>
+        <hint number="14" Y="2.23207" X="15.0528" angle="4.76879" object="Floor" height="0.1" width="2.39986"/>
+        <hint number="15" Y="1.68327" X="16.5073" angle="-0.500927" object="Floor" height="0.1" width="2.96006"/>
+        <hint number="16" Y="3.271" X="19.53" angle="-4.6971" object="Floor" height="0.1" width="4.378"/>
+    </hints>
 </tbe-level>

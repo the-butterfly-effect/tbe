@@ -283,5 +283,37 @@
             <property key="ybelow">1.3</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="0.426" Y="5.896" width="0.664119" height="0.664119" angle="3.1465" object="QuarterArc40" />
+        <hint number="2" X="0.867" Y="3.657" width="0.664119" height="0.664119" angle="3.1505" object="QuarterArc40" />
+        <hint number="3" X="7.548" Y="4.244" width="0.664119" height="0.664119" angle="4.4395" object="QuarterArc40" />
+        <hint number="4" X="7.663" Y="2.512" width="0.664119" height="0.664119" angle="4.7135" object="QuarterArc40" />
+
+        <hint number="5" X="2.921" Y="5.625" width="0.660195" height="0.26753" object="LeftFixedWedge" />
+
+        <hint number="6" X="0.920" Y="0.487" width="0.773462" height="0.20712" object="RightFixedWedge" />
+        <hint number="7" X="5.583" Y="1.535" width="0.773462" height="0.20712" object="RightFixedWedge" />
+
+        <hint number="8" X="2.316" Y="1.824" width="0.879181" height="0.350593" object="LeftFixedWedge" />
+        <hint number="9" X="6.903" Y="1.973" width="0.879181" height="0.300593" object="LeftFixedWedge" />
+
+        <hint number="10" X="4.693" Y="1.854" height="0.290184" Y="0.188241" object="RightFixedWedge" />
+
+        <hint number="11" X="8.856" Y="1.508" width="2.19345" height="0.100" object="RotatingBar" />
+        <hint number="12" X="8.726" Y="2.988" width="1.05327" height="0.100" object="RotatingBar" />
+        <hint number="13" X="8.898" Y="3.898" width="1.05327" height="0.100" object="RotatingBar" />
+        <hint number="14" X="8.676" Y="4.775" width="1.05327" height="0.100" object="RotatingBar" />
+        <hint number="15" X="8.841" Y="5.723" width="1.05327" height="0.100" object="RotatingBar" />
+
+        <hint number="16" X="4.662" Y="4.186" width="0.592233" height="0.577131" object="RightRamp" />
+
+        <hint number="17" X="1.572" Y="4.649" width="0.200" height="0.401" object="Wall" />
+        <hint number="18" X="7.896" Y="5.121" width="0.200" height="0.836" object="Wall" />
+
+        <hint number="19" X="0.241" Y="4.689" object="ColaMintBottle" />
+
+        <hint number="20" X="2.293" Y="4.148" width="0.56" height="0.09" object="RightFixedWedge" />
+        <hint number="21" X="3.172" Y="3.267" width="0.56" height="0.09" object="RightFixedWedge" />
+        <hint number="22" X="5.275" Y="3.381" width="0.56" height="0.09" object="RightFixedWedge" />
+    </hints>
 </tbe-level>

@@ -164,5 +164,11 @@
             <property key="xbelow">8.5</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="4.400" Y="4.408" width="0.750" height="0.090" angle="4.3064" object="RotatingBar" />
+        <hint number="2" X="4.247" Y="3.821" width="0.750" height="0.090" angle="0" object="RotatingBar" />
+        <hint number="3" X="0.842" Y="4.934" width="1.061" height="0.311" object="RightFixedWedge" />
+        <hint number="4" X="0.462" Y="1.150" angle="1.5620" object="ColaMintBottle" />
+        <hint number="5" X="4.255" Y="1.952" angle="-3.9354" object="ColaMintBottle" />
+    </hints>
 </tbe-level>

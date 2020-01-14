@@ -118,5 +118,12 @@
             <property key="xover">4.75</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="1.828" Y="2.179" object="Wall" />
+        <hint number="2" X="2.108" Y="2.030" object="Wall" />
+        <hint number="3" X="4.345" Y="2.821" width="1.770" height="0.313" object="LeftRamp" />
+        <hint number="4" X="4.341" Y="1.926" width="1.770" height="0.313" object="LeftRamp" />
+        <hint number="5" X="1.501" Y="1.444" angle="3.14" object="QuarterArc40" />
+        <hint number="6" X="1.906" Y="1.444" angle="-1.5708" object="QuarterArc40" />
+    </hints>
 </tbe-level>

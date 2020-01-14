@@ -188,5 +188,20 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <!-- TODO: Set phone number of the already-placed detonator boxes.
+            ID="DB1": 555-4096
+            ID="DB2": 555-1024
+        -->
+        <hint number="1" X="1.212" Y="7.136" ID="555-4096" object="Dynamite" />
+        <hint number="2" X="6.796" Y="0.319" PhoneNumber="555-2048" object="DetonatorBox" />
+        <hint number="3" X="7.078" Y="3.683" width="0.1" height="7.128" object="Wall" />
+        <hint number="4" X="2.900" Y="5.805" width="0.694" height="0.663" object="LeftRamp" />
+        <hint number="5" X="5.640" Y="3.211" width="0.694" height="0.663" object="LeftRamp" />
+        <hint number="6" X="1.968" Y="4.127" width="0.694" height="0.663" object="RightRamp" />
+        <hint number="7" X="1.295" Y="3.357" width="0.694" height="0.663" object="RightRamp" />
+        <hint number="8" X="5.640" Y="3.965" width="0.694" height="0.663" object="RightRamp" />
+        <hint number="9" X="2.354" Y="4.952" width="0.25" height="0.1" object="Floor" />
+        <hint number="10" X="4.681" Y="3.857" width="0.25" height="0.1" object="Floor" />
+    </hints>
 </tbe-level>

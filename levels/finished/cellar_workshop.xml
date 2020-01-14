@@ -152,5 +152,19 @@
             <property key="ybelow">0.4</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="0.257" Y="3.495" width="0.417" height="0.417" object="LeftRamp" />
+        <hint number="2" X="4.807" Y="3.579" width="0.417" height="0.417" object="RightRamp" />
+        <hint number="3" X="5.360" Y="2.409" width="0.417" height="0.417" object="RightRamp" />
+        <hint number="4" X="1.445" Y="1.705" width="1.392" height="0.275" object="RightRamp" />
+        <hint number="5" X="0.931" Y="0.859" width="1.392" height="0.275" object="RightRamp" />
+        <hint number="6" X="2.432" Y="0.939" width="1.392" height="0.275" object="LeftRamp" />
+        <hint number="7" X="3.615" Y="2.268" width="1.392" height="0.275" object="LeftRamp" />
+        <hint number="8" X="1.900" Y="0.354" object="WoodCrateSquare" />
+        <hint number="9" X="2.605" Y="0.354" object="WoodCrateSquare" />
+        <hint number="10" X="3.309" Y="0.354" object="WoodCrateSquare" />
+        <hint number="11" X="4.013" Y="0.354" object="WoodCrateSquare" />
+        <hint number="12" X="4.718" Y="0.354" object="WoodCrateSquare" />
+        <hint number="13" X="4.877" Y="1.435" object="WoodCrateSquare" />
+    </hints>
 </tbe-level>
