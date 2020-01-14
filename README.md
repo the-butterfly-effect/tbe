@@ -15,7 +15,7 @@ This is a fully playable game of beta quality, well on its way to a shiny
 * Playable in English, Dutch, German, Russian, French, Danish, Swedish, Turkish,
   Ukrainian and several other languages. Note that not all languages are 100% yet
 * Using vector graphics - all images always rendered at the highest quality
-* Roughly 70 levels
+* Over 70 levels
 
 ## Development status
 
@@ -48,9 +48,7 @@ just (double-)click it to enjoy the game.
 ## Playing
 
 There are 76 levels.
-All levels up to and including "Find the Message" are definitely playable,
-a few levels may need a bit more polish.
-The levels after "Find the Message" are harder levels, play at your own risk!
+All levels are definitely playable, a few levels may need a bit more polish.
 
 ### Alternative solutions
 
