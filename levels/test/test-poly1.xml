@@ -9,7 +9,7 @@
     </levelinfo>
     <toolbox>
         <toolboxitem count="1">
-            <object type="Bowling Ball"/>
+            <object type="BowlingBall"/>
         </toolboxitem>
     </toolbox>
     <scene>
@@ -31,7 +31,7 @@
                 <property key="Mass">2.0</property>
                 <property key="Polygons">(-0.5,0.5)=(-0.5,-0.5)=(-0.4,-0.5)=(-0.4,0.5);(0.4,0.5)=(0.4,-0.5)=(0.5,-0.5)=(0.5,0.5)</property>
             </object>
-            <object X="3.65" Y="0.3" type="BowlingPin2" ID="pin"/>
+            <object X="3.65" Y="0.3" type="BowlingPin" ID="pin"/>
         </predefined>
     </scene>
     <goals>
