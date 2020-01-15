@@ -1,0 +1,163 @@
+<!DOCTYPE mydocument>
+<tbe-level>
+    <levelinfo>
+        <title>Dynamite Determinism Test</title>
+        <author>Wuzzy</author>
+        <license>MIT License</license>
+        <description>Test level to test if blowing up lots of dynamite always leads to the same result.</description>
+        <date>15.01.20</date>
+    </levelinfo>
+    <toolbox>
+        <toolboxitem count="5">
+            <object Y="0" X="0" height="0.1" angle="0" type="BirchBar" width="0.8">
+                <property key="Bounciness">0.4</property>
+                <property key="Friction">0.8</property>
+                <property key="Resizable">horizontal</property>
+                <property key="ZValue">3.0</property>
+            </object>
+        </toolboxitem>
+        <toolboxitem count="12">
+            <object Y="3.70686" X="2.54825" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+        </toolboxitem>
+    </toolbox>
+    <scene>
+        <scenesize height="4" width="6.5"/>
+        <predefined>
+            <object Y="0.0916074" X="3.19683" height="0.1" angle="0" type="RectObject" width="3.31828">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="4.45" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="4.05" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="3.65" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="3.25" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="2.85" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="2.45" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="0.25" X="2.05" height="0.3" angle="0" type="RectObject" width="0.1">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="3.38151" X="3.29847" height="0.1" angle="0" type="RectObject" width="1.04573">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="3.2" X="3.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="2.78" X="3.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="2.78" X="3.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="2.36" X="2.85" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="2.36" X="3.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="2.36" X="3.65" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.94" X="2.65" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.94" X="3.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.94" X="3.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.94" X="3.85" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.52" X="2.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.52" X="2.85" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.52" X="3.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.52" X="3.65" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.52" X="4.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="2.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="2.65" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="3.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="3.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="3.85" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="1.1" X="4.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="2.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="2.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="2.85" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="3.25" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="3.65" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="4.05" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="0.68" X="4.45" height="0.23" angle="0" type="Skyhook" width="0.2" ID="Skyhook"/>
+            <object Y="3.63374" X="2.89631" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-5555"/>
+            <object Y="0.21618" X="0.972269" height="0.35" angle="0" type="DetonatorBox" width="0.33"/>
+            <object Y="1.16881" X="0.971793" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+            <object Y="0.804232" X="1.4441" height="1.53165" angle="0" type="Wall" width="0.2"/>
+            <object Y="1.00996" X="4.95761" height="1.95235" angle="0" type="Wall" width="0.2"/>
+            <object Y="3.61643" X="3.36856" height="0.068" angle="0" type="TennisBall" width="0.068"/>
+            <object Y="3.64299" X="3.66373" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-4444"/>
+            <object Y="1.85387" X="1.79602" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-1111"/>
+            <object Y="2.27919" X="4.6392" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-3333"/>
+            <object Y="2.46873" X="1.80527" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-2222"/>
+            <object Y="3.56817" X="5.79825" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+            <object Y="0.248542" X="5.34105" height="0.35" angle="0" type="DetonatorBox" width="0.33"/>
+            <object Y="0.206935" X="0.325043" height="0.35" angle="0" type="DetonatorBox" width="0.33"/>
+            <object Y="0.267034" X="6.22867" height="0.35" angle="0" type="DetonatorBox" width="0.33"/>
+            <object Y="0.248542" X="5.77561" height="0.35" angle="0" type="DetonatorBox" width="0.33"/>
+            <object Y="1.66809" X="0.278336" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+            <object Y="2.82385" X="6.27442" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+            <object Y="1.57101" X="5.37293" height="0.22" angle="0" type="BowlingBall" width="0.22"/>
+            <object Y="2.25512" X="1.44861" height="0.1" angle="0" type="Floor" width="0.976885"/>
+            <object Y="1.64026" X="1.6659" height="0.1" angle="0" type="Floor" width="0.644026"/>
+            <object Y="2.05573" X="4.70597" height="0.1" angle="0" type="Floor" width="0.73081"/>
+            <object Y="3.90092" X="3.18482" height="0.1" angle="0" type="RectObject" width="3.18158">
+                <property key="Bounciness">0.1</property>
+                <property key="ImageName">used_wood_bar</property>
+            </object>
+            <object Y="1.1222" X="1.77696" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="1.08984" X="4.66174" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="1.53365" X="4.48144" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.3473" X="2.35484" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.35655" X="4.08848" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.78649" X="2.5675" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.77725" X="2.07283" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.79112" X="3.91743" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.76338" X="4.37973" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.18408" X="2.81714" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.21181" X="2.29936" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.23031" X="1.74459" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.1887" X="3.69552" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.18408" X="4.1532" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.18408" X="4.59701" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.67874" X="2.03585" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="3.67874" X="4.44908" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="0.587155" X="1.76366" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-1111"/>
+            <object Y="2.21447" X="3.19681" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-3333"/>
+            <object Y="1.84462" X="4.52824" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-5555"/>
+            <object Y="1.37307" X="3.59901" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-4444"/>
+            <object Y="2.61205" X="2.50797" height="0.32" angle="0" type="Dynamite" width="0.43" ID="555-2222"/>
+            <object Y="3.19203" X="1.44872" height="1.49929" angle="0" type="Wall" width="0.2"/>
+            <object Y="3.14349" X="4.90676" height="1.57788" angle="0" type="Wall" width="0.2"/>
+            <object Y="1.82291" X="1.01308" height="0.1" angle="4.72339" type="Floor" width="0.755044"/>
+            <object Y="2.08096" X="5.39779" height="0.1" angle="4.72339" type="Floor" width="0.505161"/>
+            <object Y="1.39451" X="1.15112" height="0.1" angle="0" type="Floor" width="0.380512"/>
+            <object Y="1.77432" X="5.26031" height="0.1" angle="0" type="Floor" width="0.380512"/>
+            <object Y="2.38919" X="5.2372" height="0.1" angle="0" type="Floor" width="0.380512"/>
+            <object Y="2.22507" X="0.59104" height="0.1" angle="1.5708" type="Floor" width="0.394381"/>
+            <object Y="1.97456" X="0.744164" height="0.1" angle="0" type="Floor" width="0.425074"/>
+            <object Y="2.49552" X="0.933144" height="0.1" angle="0" type="Floor" width="0.815078"/>
+            <object Y="2.84659" X="1.70761" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="1.94048" X="2.31785" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.84197" X="4.62937" height="0.23" angle="0" type="Skyhook" width="0.2"/>
+            <object Y="2.11718" X="1.84168" height="0.172475" angle="0" type="Wall" width="0.2"/>
+        </predefined>
+        <background>
+            <gradientstop pos="0">0.8;0.8;1;1</gradientstop>
+            <gradientstop pos="1">0.5;0.5;0.9;1</gradientstop>
+        </background>
+    </scene>
+    <goals>
+        <goal isFail="false" type="escapedPingusCount">
+            <property key="equalmore">1</property>
+        </goal>
+    </goals>
+    <hints/>
+</tbe-level>
