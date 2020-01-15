@@ -15,7 +15,7 @@ This is a fully playable game of beta quality, well on its way to a shiny
 * Playable in English, Dutch, German, Russian, French, Danish, Swedish, Turkish,
   Ukrainian and several other languages. Note that not all languages are 100% yet
 * Using vector graphics - all images always rendered at the highest quality
-* Over 70 levels
+* Over 80 levels
 
 ## Development status
 
@@ -47,7 +47,7 @@ just (double-)click it to enjoy the game.
 
 ## Playing
 
-There are 76 levels.
+There are over 80 levels.
 All levels are definitely playable, a few levels may need a bit more polish.
 
 ### Alternative solutions

@@ -12,12 +12,14 @@ which introduces an element or concept it makes use of
    <level> finished/jumping_around.xml </level>
    <level> finished/house_of_cards.xml </level>
    <!--level> finished/003.xml </level-->
+   <level> finished/box_puncher.xml </level>
    <level> finished/picnic-0.xml </level> <!-- Introduces rotation -->
    <level> finished/brother-plays-soccer.xml </level>
    <level> finished/bowling_pin_plays_soccer.xml </level> <!-- Introduces cola+mint bottle -->
    <level> finished/attack_of_the_killer_cacti.xml</level>
    <level> finished/picnic-1.xml </level>
    <level> finished/jumping_around-2.xml </level>
+   <level> finished/birch_wood.xml </level> <!-- Introduces birch wood -->
    <level> finished/turn-it-around.xml </level>
    <level> finished/contraption1.xml </level>
    <level> finished/bridge_gap.xml </level>
@@ -29,9 +31,11 @@ which introduces an element or concept it makes use of
    <level> finished/styrofoam.xml </level> <!-- Introduces scaling in both axes -->
    <level> finished/party-at-office.xml </level>
    <level> finished/in_the_attic.xml </level>
+   <level> finished/triangles.xml </level>
    <level> finished/poofpoofpoof.xml </level>
    <level> finished/005.xml </level>
    <level> finished/volley_valley.xml </level>
+   <level> finished/domino_gap.xml </level>
    <level> finished/maze.xml </level>
    <level> finished/topple-the-other-way.xml </level>
    <level> finished/birds1.xml </level> <!-- Introduces dynamite and detonator box -->
@@ -52,16 +56,19 @@ which introduces an element or concept it makes use of
    <level> finished/wedge_land.xml </level>
    <level> finished/little_balloon_puzzle.xml </level>
    <level> finished/creativity.xml </level>
+   <level> finished/flower_bomb.xml </level>
    <level> finished/bridge-2.xml </level>
    <level> needs-polish/extreme-tux-racer.xml </level>
    <level> finished/supertuxkart.xml </level>
    <level> finished/imperfectbalance.xml </level>
+   <level> finished/statics.xml </level>
    <level> finished/picnic-3.xml </level>
    <level> finished/save-the-butterfly.xml</level>
    <level> finished/rotate_and_win.xml</level>
    <level> finished/construction_yard.xml</level>
    <level> finished/10_kilograms_above_the_ground.xml </level>
    <level> needs-polish/geyser.xml </level>
+   <level> finished/domino_flip_machine.xml </level>
    <level> finished/butterfly-on-steroids.xml </level>
    <level> finished/006.xml </level>
    <level> finished/contraption2.xml </level>
@@ -71,8 +78,10 @@ which introduces an element or concept it makes use of
    <level> finished/007.xml </level>
    <level> needs-polish/zoingandboom.xml </level>
 <!-- HARD LEVELS -->
+   <level> finished/pingu_poppins.xml </level>
    <level> finished/balloon_blues.xml </level>
    <level> finished/hanging_box.xml </level>
+   <level> finished/cellar_workshop.xml </level>
    <level> finished/sorting-2.xml </level>
    <level> finished/sorting-3.xml </level>
    <level> finished/sorting-4.xml </level>
@@ -80,6 +89,7 @@ which introduces an element or concept it makes use of
    <level> finished/boom_boom_boom.xml </level>
 <!-- VERY HARD LEVELS -->
    <level> finished/butterflies_of_doom.xml </level>
+   <level> finished/cola_chaos.xml </level>
    <level> finished/the_core.xml </level>
    <level> finished/sorting-5.xml </level>
    <level> needs-polish/butterfly_race.xml </level>
