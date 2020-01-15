@@ -180,5 +180,17 @@
             <property key="statechanged"></property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" X="5.92817" object="Floor" Y="0.49623" width="2.45661" height="0.1" />
+        <hint number="2" X="6.69061" object="Floor" Y="0.974182" width="1" height="0.1" />
+        <hint number="3" X="3.46444" object="Floor" Y="2.25441" width="2.09246" height="0.1" />
+        <hint number="4" X="1.36913" object="Floor" Y="1.68257" width="0.4367" height="0.1" />
+        <hint number="5" X="2.03201" object="Floor" Y="1.69395" width="0.351351" height="0.1" />
+        <hint number="6" X="4.40156" object="Wall" Y="1.38336" width="0.2" height="1.07966" />
+        <hint number="7" X="4.78279" object="Wall" Y="1.1643" width="0.2" height="1.21053" />
+        <hint number="9" X="2.30114" object="Wall" Y="1.23826" width="0.2" height="0.795165" />
+        <hint number="8" angle="1.5708" X="0.935041" object="QuarterArc40" Y="3.50308" width="0.789" height="0.789" />
+        <hint number="10" angle="1.577" X="1.24839" object="ColaMintBottle" Y="0.299162" width="0.166" height="0.5" />
+        <hint number="11" angle="4.72" X="4.44811" object="ColaMintBottle" Y="0.64679" width="0.166" height="0.5" />
+    </hints>
 </tbe-level>

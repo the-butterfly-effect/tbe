@@ -71,5 +71,12 @@
             <property key="lessthan">3</property>
         </goal>
     </goals>
-    <hints/>
+    <hints>
+        <hint number="1" object="Wall" X="0.445" Y="1.993" width="0.138" height="1.028" />
+        <hint number="2" object="Wall" X="5.405" Y="1.871" width="0.138" height="0.514" />
+        <hint number="3" object="Wall" X="5.405" Y="0.733" width="0.138" height="0.514" />
+        <hint number="4" object="RightRamp" width="1.000" X="1.979" Y="1.180" height="0.479"/>
+        <hint number="5" object="Skyhook" X="2.842" Y="2.412" />
+        <hint number="6" object="Skyhook" X="3.077" Y="2.412" />
+    </hints>
 </tbe-level>
