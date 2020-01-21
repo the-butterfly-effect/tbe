@@ -36,5 +36,7 @@
 	<string>public.app-category.puzzle-games</string>
 	<key>CFBundleDisplayName</key>
 	<string></string>
+	<key>NSRequiresAquaSystemAppearance</key>
+	<true/>
 </dict>
 </plist>
