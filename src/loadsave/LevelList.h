@@ -30,7 +30,7 @@ class LevelList : protected QXmlDefaultHandler
 public:
     /// Describes the meta-info for a level in the game
     struct LevelMetaInfo {
-        enum Level::LevelStatus theStatus;
+        enum Level::LevelStatus theStatus = Level::FRESH;
         QString     theFileName;
         QString     theTitle;       // translatable
         QString     theDescription; // translatable
