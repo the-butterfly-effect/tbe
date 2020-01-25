@@ -127,7 +127,7 @@ public:
 
     virtual AbstractObject *createObject(void) const
     {
-        return fixObject(new CircleObject(tr(theDisplayName), trUtf8(theTooltip), theImageName,
+        return fixObject(new CircleObject(tr(theDisplayName), tr(theTooltip), theImageName,
                                           theRadius, theMass, theBounciness));
     }
 private:
