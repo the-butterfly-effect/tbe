@@ -47,7 +47,6 @@ static const qreal CENTER_RADIUS = 24.0;
 /// between the two is: (1-sin(22.5))/sin(22.5) = 1.613
 static const qreal SMALL_RADIUS = CENTER_RADIUS / 1.613;
 static const qreal OUTER_DISTANCE = CENTER_RADIUS + SMALL_RADIUS;
-static const qreal TOTAL_RADIUS = OUTER_DISTANCE + SMALL_RADIUS;
 
 void NamedState::onEntry ( QEvent *event )
 {

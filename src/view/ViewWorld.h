@@ -22,6 +22,7 @@
 #include <QGraphicsScene>
 #include <QTime>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "Box2D.h"
 #include "AbstractObjectPtr.h"
@@ -116,7 +117,7 @@ private:
     QTimer theTimer;
     QTimer theFramerateTimer;
     QTime  theSimulationTime;
-    QTime  theGameStopwatch;
+    QElapsedTimer  theGameStopwatch;
 
     /// current number of milliseconds per time step
     /// (note that TBE is configured to run at "half of reality" speed)
