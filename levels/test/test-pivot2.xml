@@ -3,7 +3,7 @@
     <levelinfo>
         <title>PivotPoint test Level...</title>
         <author>Klaas van Gend</author>
-        <license>GPLv2</license>
+        <license>CC0</license>
         <description>This is the second level to prove PivotPoint correct operation. This level shows the famous line of metal balls. Lifting one and letting it go should result in all balls staying stationary and the last ball moving up. NOTE THAT TBE DOESN'T BEHAVE LIKE THAT !!!</description>
         <date>Jan 16, 2010</date>
     </levelinfo>

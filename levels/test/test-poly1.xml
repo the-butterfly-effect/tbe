@@ -3,7 +3,7 @@
     <levelinfo>
         <title>PolyObject test Level...</title>
         <author>Klaas van Gend</author>
-        <license>GPLv2</license>
+        <license>CC0</license>
         <description>This is just a level to prove PolyObject correct operation. It will only make sense if you enable debug drawing.</description>
         <date>Feb 12, 2010</date>
     </levelinfo>
