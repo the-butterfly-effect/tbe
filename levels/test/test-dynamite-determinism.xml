@@ -3,7 +3,7 @@
     <levelinfo>
         <title>Dynamite Determinism Test</title>
         <author>Wuzzy</author>
-        <license>MIT License</license>
+        <license>CC0</license>
         <description>Test level to test if blowing up lots of dynamite always leads to the same result.</description>
         <date>15.01.20</date>
     </levelinfo>
